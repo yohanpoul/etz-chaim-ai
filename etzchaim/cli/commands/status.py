@@ -5,7 +5,9 @@ import json as _json
 
 import typer
 
+from etzchaim._paths import read_birthtime, read_shem
 from etzchaim.cli import compose, detect
+from etzchaim.cli._age import human_age
 from etzchaim.cli.app import app
 
 
@@ -22,8 +24,6 @@ def status(
         try:
             raw = compose.compose_ps(profile=p).strip()
             if raw:
-                # docker compose ps --format json outputs one JSON object per line (newer versions)
-                # or a single JSON array. Handle both.
                 if raw.startswith("["):
                     services = _json.loads(raw)
                 else:
@@ -35,11 +35,21 @@ def status(
                 typer.echo(f"⚠ Could not parse compose status : {e}", err=True)
             return
 
+    shem = read_shem()
+    birthtime = read_birthtime()
+
     if json:
-        typer.echo(_json.dumps({"profile": p, "services": services}, indent=2))
+        payload: dict = {"profile": p, "services": services, "shem": shem}
+        if birthtime is not None:
+            payload["birthtime"] = birthtime.isoformat()
+            payload["age"] = human_age(birthtime)
+        typer.echo(_json.dumps(payload, indent=2))
         return
 
-    typer.echo(f"Etz Chaim AI — status (profile: {p})")
+    if birthtime is not None:
+        typer.echo(f"◉ {shem} · {human_age(birthtime)} old  (profile: {p})")
+    else:
+        typer.echo(f"◉ {shem}  (profile: {p})")
     typer.echo("")
     typer.echo("Services :")
     if not services:
