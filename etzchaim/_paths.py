@@ -73,3 +73,53 @@ def daemon_state_file() -> Path:
 def daemon_events_file() -> Path:
     """Append-only JSONL of MazalEngine events."""
     return state_dir() / "daemon_events.jsonl"
+
+
+from datetime import datetime
+
+
+DEFAULT_SHEM = "Etz Chaim"
+
+
+def _read_env_var(key: str) -> str | None:
+    """Read a single KEY=value line from compose/.env. Strips surrounding quotes.
+
+    Returns None if the file doesn't exist or the key isn't found.
+    """
+    path = env_file()
+    if not path.exists():
+        return None
+    for raw in path.read_text().splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        if "=" not in line:
+            continue
+        k, v = line.split("=", 1)
+        if k.strip() != key:
+            continue
+        v = v.strip()
+        if len(v) >= 2 and v[0] == v[-1] and v[0] in ('"', "'"):
+            v = v[1:-1]
+        return v
+    return None
+
+
+def read_shem() -> str:
+    """Return the saved instance name, or the default 'Etz Chaim'."""
+    value = _read_env_var("ETZCHAIM_SHEM")
+    return value or DEFAULT_SHEM
+
+
+def read_birthtime() -> datetime | None:
+    """Return the saved birthtime as an aware datetime, or None if unset/invalid."""
+    value = _read_env_var("ETZCHAIM_BIRTHTIME")
+    if not value:
+        return None
+    try:
+        dt = datetime.fromisoformat(value)
+    except ValueError:
+        return None
+    if dt.tzinfo is None:
+        return None
+    return dt
