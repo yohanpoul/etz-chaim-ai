@@ -1,12 +1,6 @@
 """Tests for _paths.read_shem / read_birthtime helpers."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
-
-
-def _write_env(tmp_path, content: str):
-    (tmp_path / ".env").write_text(content)
-
 
 def test_read_shem_default_when_env_missing(monkeypatch, tmp_path):
     monkeypatch.setenv("ETZCHAIM_STATE_DIR", str(tmp_path))

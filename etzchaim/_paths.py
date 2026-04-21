@@ -6,7 +6,10 @@ Never hardcodes absolute paths.
 from __future__ import annotations
 
 import os
+from datetime import datetime
 from pathlib import Path
+
+DEFAULT_SHEM = "Etz Chaim"
 
 
 def state_dir() -> Path:
@@ -73,12 +76,6 @@ def daemon_state_file() -> Path:
 def daemon_events_file() -> Path:
     """Append-only JSONL of MazalEngine events."""
     return state_dir() / "daemon_events.jsonl"
-
-
-from datetime import datetime
-
-
-DEFAULT_SHEM = "Etz Chaim"
 
 
 def _read_env_var(key: str) -> str | None:
