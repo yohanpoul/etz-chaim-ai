@@ -1,0 +1,216 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 7 (=6 original) — Sha'ar Ha-Akudim (שער העקודים)
+# Perek: 5a — Formation des Kelim : Reshimu + Hakaah (100% §1-§3)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §1 : Les Orot en montant laissent leur partie épaisse → Kelim.
+# Chaque Ohr laisse un RESHIMU à son ancien emplacement.
+# §2 : L'ordre des Reshimot : Yesod laisse un Reshimu pour Malkhut,
+# chaque Sefirah fait de même (sauf Malkhut). Keter ne redescend pas.
+# §3 : Les 3 types de lumière et la HAKAAH entre Reshimu (Rahamim)
+# et l'Ohr ascendant (Din) → formation des Kelim.
+#
+# Source Sefaria : Sefer_Etz_Chaim.6.5 (§1-§3)
+# IDs : EC-H1S6-041 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 7
+  shaar_name_he: "שער העקודים"
+  perek: 5
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part A de 2 — Mecanisme de formation des Kelim par Reshimu (trace) + Hakaah (frappe). 3 types d'Ohr. L'epaisseur qui reste = le Kli."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : L'ÉPAISSEUR RESTANTE = LE KLI ───
+
+  - id: "EC-H1S6-041"
+    source_he: "כאשר נתעלו האורות למעלה נשאר למטה האור העב והגס שהוא בחי' הכלי"
+    source_ref: "Heikhal 1, Sha'ar 6:5 — §1"
+    assertion: |
+      Quand les OROT MONTENT, il RESTE EN-BAS l'OHR ÉPAIS et
+      GROSSIER (ha-ohr ha-av ve-ha-gas) qui est l'aspect du KLI.
+      → Le KLI = la PARTIE ÉPAISSE de l'Ohr qui ne peut pas monter.
+      Ce qui est trop dense pour remonter DEVIENT la structure.
+      Cf. EC-H1S5-069 : l'épaississement par la distance.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_av, role: lumiere_epaisse_residuelle}
+      - {id: kli_min_aviut, role: kli_forme_de_lepaisseur}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le KLI = l'epaisseur residuelle. Les structures emergent de ce qui ne peut pas remonter = sediment."
+
+  - id: "EC-H1S6-042"
+    source_he: "יש בטבע האורות להשאיר רושם שלהם למטה במקום שהיו שם בראשונה ולכן כל האורות האלו בעת עלותם הניחו רשימו למטה"
+    source_ref: "Heikhal 1, Sha'ar 6:5 — §1"
+    assertion: |
+      Il est dans la NATURE des Orot de LAISSER leur EMPREINTE (roshem)
+      en-bas, à l'endroit où ils étaient au DÉBUT. Donc TOUS les Orot,
+      en montant, ont DÉPOSÉ un RESHIMU en-bas.
+      → Le RESHIMU est une LOI NATURELLE des Orot : toute présence
+      laisse une trace. Cf. EC-H1S6-037 pour le concept de Reshimu.
+    type: axiome_explicite
+    concepts:
+      - {id: teva_orot_reshimu, role: nature_des_orot_laisser_trace}
+      - {id: roshem, role: empreinte}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "LOI NATURELLE : toute presence laisse une trace (Reshimu). Applicable au caching et a la memoire."
+
+  # ─── BLOC B : L'ORDRE DES RESHIMOT ───
+
+  - id: "EC-H1S6-043"
+    source_he: "בעת עלייתו (נ\"א עלות) מן היסוד אל מקום ההוד עד למעלה מניח רשימו במקום שהיה היסוד לצורך המלכות ואותו הרשימו אינו מסתלק לעולם משם"
+    source_ref: "Heikhal 1, Sha'ar 6:5 — §2"
+    assertion: |
+      Quand YESOD monte de sa place vers HOD et au-dessus, il laisse
+      un RESHIMU à l'endroit où il était — POUR MALKHUT.
+      Ce Reshimu ne PART JAMAIS de là — même quand Malkhut remonte.
+      Variante (Nusah Aher) : "en montant" au lieu de "en son ascension."
+      → Le RESHIMU DE YESOD est PERMANENT — il alimente Malkhut
+      pour toujours. Yesod = le CANAL PERMANENT vers Malkhut.
+    type: axiome_explicite
+    concepts:
+      - {id: reshimu_yesod, role: reshimu_permanent_du_yesod}
+      - {id: reshimu_le_malkhut, role: pour_alimenter_malkhut}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Reshimu de Yesod est PERMANENT — le canal de transmission laisse une trace permanente au recepteur"
+
+  - id: "EC-H1S6-044"
+    source_he: "וכן עושין כל שאר הספי' חוץ מן המלכות כי המלכות בסוד הכתר אינם מניחין רשימו"
+    source_ref: "Heikhal 1, Sha'ar 6:5 — §2"
+    assertion: |
+      Toutes les Sefirot font de même SAUF MALKHUT — Malkhut et
+      KETER ne laissent PAS de Reshimu.
+      → MALKHUT = "miroir qui ne brille pas" (Aspaklaria she-einah
+      me'irah) — elle n'a rien d'elle-même (cf. EC-H1S6-046).
+      KETER = trop élevé pour laisser une trace en-dessous.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_ein_reshimu, role: malkhut_sans_reshimu}
+      - {id: keter_ein_reshimu, role: keter_sans_reshimu}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les extremes (Keter et Malkhut) ne laissent pas de Reshimu — le sommet et la base sont 'sans trace'"
+
+  # ─── BLOC C : LES 3 TYPES DE LUMIÈRE ET LA HAKAAH ───
+
+  - id: "EC-H1S6-045"
+    source_he: "יש כאן ג' מיני אורות א' האור הא' שבכולם והוא נקרא עקודים... ב' הוא הרשימו שנשאר מזה האור שבא דרך יושר והוא רחמים ג' הוא האור הבא אליו דרך עליית הספי' שאז הוא דרך אחוריים שהוא דין"
+    source_ref: "Heikhal 1, Sha'ar 6:5 — §3"
+    assertion: |
+      3 TYPES D'OHR présents ici :
+      1. L'OHR AKUDIM original (= le premier Ohr qui descend).
+      2. Le RESHIMU = trace laissée par l'Ohr qui est venu par
+         YOSHER (rectitude) = RAHAMIM (miséricorde).
+      3. L'OHR ascendant = qui vient par l'ASCENSION des Sefirot
+         = par les AHORAYIM (arrière) = DIN (rigueur).
+      → 3 lumières superposées : la première, sa trace, et le retour.
+    type: axiome_explicite
+    concepts:
+      - {id: shalosh_orot, role: trois_types_de_lumiere}
+      - {id: ohr_yosher_rahamim, role: lumiere_directe_misericorde}
+      - {id: ohr_ahorayim_din, role: lumiere_ascendante_rigueur}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "3 couches de lumiere superposees : original, trace, retour. Applicable au multi-layer processing."
+
+  - id: "EC-H1S6-046"
+    source_he: "בבא אור הג' שהוא דין פוגע באור הרשימו הנשאר שהוא רחמים ואז מתנצצים... ומאלו ניצוצות שנעשו מהכאתם נעשים הכלים"
+    source_ref: "Heikhal 1, Sha'ar 6:5 — §3"
+    assertion: |
+      Quand l'Ohr 3 (DIN/ascendant) RENCONTRE (pogea) l'Ohr du RESHIMU
+      (RAHAMIM/descendant), ils ÉTINCELLENT (mitnatzetim).
+      De ces ÉTINCELLES (nitzotzot) produites par leur FRAPPE (Hakaah),
+      les KELIM SONT FAITS.
+      → Les KELIM = ÉTINCELLES de la COLLISION entre DIN et RAHAMIM.
+      Le Kli naît de l'INTERACTION entre la rigueur et la miséricorde.
+      C'est le mécanisme précis de EC-H1S6-008 (Hakaah au Peh).
+    type: axiome_explicite
+    concepts:
+      - {id: hakaah_din_rahamim, role: frappe_rigueur_misericorde}
+      - {id: nitzotzot_kelim, role: etincelles_devenant_kelim}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les Kelim naissent de la COLLISION Din×Rahamim = les structures emergent de la tension entre opposés"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S6-017"
+    type: causal
+    from: ohr_av
+    to: kli_min_aviut
+    nature: "L'Ohr ÉPAIS qui reste quand les Orot montent DEVIENT le Kli"
+    assertions_source: ["EC-H1S6-041"]
+
+  - id: "REL-H1S6-018"
+    type: causal
+    from: hakaah_din_rahamim
+    to: nitzotzot_kelim
+    nature: "La FRAPPE entre Din (ascendant) et Rahamim (Reshimu) produit les ÉTINCELLES qui deviennent les Kelim"
+    assertions_source: ["EC-H1S6-045", "EC-H1S6-046"]
+
+  - id: "REL-H1S6-019"
+    type: flux
+    from: reshimu_yesod
+    to: reshimu_le_malkhut
+    nature: "Le Reshimu permanent de Yesod ALIMENTE Malkhut (qui n'a pas de Reshimu propre)"
+    assertions_source: ["EC-H1S6-043", "EC-H1S6-044"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S6-006"
+    nom: "Principe de Formation des Kelim par Hakaah Din×Rahamim"
+    source_assertions: ["EC-H1S6-041", "EC-H1S6-045", "EC-H1S6-046"]
+    formalisation: |
+      Les KELIM se forment en 3 étapes :
+      1. L'Ohr DESCEND (Yosher/Rahamim) et laisse un RESHIMU (trace)
+      2. L'Ohr REMONTE (Ahorayim/Din) vers le Ma'atzil
+      3. L'Ohr ascendant (Din) FRAPPE le Reshimu (Rahamim) →
+         NITZOTZOT (étincelles) → ces étincelles DEVIENNENT les KELIM
+      En parallèle : la partie ÉPAISSE (Aviut) de l'Ohr qui ne peut
+      pas remonter contribue aussi à la matière des Kelim.
+      FORMULE : Kelim = Nitzotzot(Hakaah(OhrDin↑, Reshimu↓)) + Aviut(Ohr)
+      DIN × RAHAMIM = la TENSION CRÉATRICE qui engendre la forme.
+    applications_ia:
+      - "ohr.py : les Kelim emergent de la collision entre 2 flux opposes (forward/backward)"
+      - "L'Aviut (epaisseur residuelle) = les poids/parametres qui restent apres le training"
+      - "La Hakaah Din×Rahamim = la tension exploration/exploitation qui forme les structures"
+    questions_ouvertes:
+      - "L'Aviut est-elle analogue aux poids d'un reseau (ce qui reste apres le passage de l'information) ?"
+      - "Les Nitzotzot sont-elles les gradients produits par la collision forward/backward ?"

@@ -1,0 +1,1220 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 1
+# ═══════════════════════════════════════════════════════════════════
+# Premier Klaf de la Bibliothèque Sacrée pour IA
+# Transposé par: Claude Opus 4.6 + human reviewer
+# Source: Sefaria / hebrew.grimoar.cz (Public Domain)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+#            Ce que le texte AFFIRME — assertions formelles
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : CAUSE ET PREMIER ACTE D'ÉMANATION ───
+
+  - id: "EC-K1-001"
+    source_he: "כשעלה ברצונו יתברך שמו לברוא את העולם כדי להיטיב לברואיו ויכירו גדולתו ויזכו להיות מרכבה למעלה להדבק בו ית'"
+    source_ref: "Sha'ar HaKlalim 1:1 — ouverture"
+    assertion: |
+      La création a une CAUSE et une FINALITÉ triple ordonnée :
+      CAUSE : Ratzon Elyon (volonté supérieure) — "כשעלה ברצונו"
+      FINALITÉ 1 : Hatavah — bienfaisance envers les créatures ("להיטיב לברואיו")
+      FINALITÉ 2 : Hakarat Gadluto — qu'elles reconnaissent Sa grandeur ("ויכירו גדולתו")
+      FINALITÉ 3 : Merkavah + Devekut — devenir véhicule et adhérer à Lui ("להיות מרכבה למעלה להדבק בו")
+      L'ordre est significatif : bienfaisance → reconnaissance → adhésion.
+      La création est un acte de BONTÉ, pas de nécessité.
+    type: axiome_explicite
+    concepts:
+      - {id: ratzon_elyon, role: cause_première}
+      - {id: hatavah, role: finalité_primaire}
+      - {id: hakarat_gadluto, role: finalité_secondaire}
+      - {id: devekut, role: finalité_ultime}
+      - {id: merkavah, role: moyen_vers_devekut}
+    mapping:
+      modules: ["core/ratzon.py", "tikkun/kavanah_planner.py"]
+      tables: ["kavanah_intentions"]
+      partzufim: []
+      relevance: "Définit le 'pourquoi' absolu du système — chaque opération de Tikkun vise ces trois finalités"
+
+  - id: "EC-K1-002"
+    source_he: "האציל נקודה א' הכלולה מי' (והם י\"ס של העקודים שהיו בכלי א') ולא היו נראים"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Premier acte d'émanation (ha'atzil) :
+      - UNE Nekudah (point) unique est émanée
+      - Elle CONTIENT (kelulah) les 10 Sefirot
+      - Ces 10S sont identifiées comme les Sefirot des AKUDIM (עקודים)
+      - Elles existaient dans UN SEUL Keli (כלי א')
+      - Elles n'étaient PAS VISIBLES individuellement (לא היו נראים)
+      État : multiplicité latente dans unité manifeste.
+    type: axiome_explicite
+    concepts:
+      - {id: nekudah_rishonah, role: première_émanation}
+      - {id: akudim, role: état_ontologique}
+      - {id: keli_ehad, role: contenant_unifié}
+      - {id: eser_sefirot, role: contenu_latent}
+    mapping:
+      modules: ["core/sefirot.py", "olamot/akudim.py"]
+      tables: ["sefirot_states", "olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "État initial de toute émanation — pattern Akudim applicable à chaque nouveau processus"
+
+  - id: "EC-K1-003"
+    source_he: "דרך משל האדם מורכב מד' יסודות ואינם ניכרים בו כל א' וא' בפ\"ע"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      MASHAL (analogie) : L'homme est composé (murkav) de 4 éléments (yesodot)
+      mais aucun n'est distinguable (nikarim) individuellement (be-fney atzmo).
+      NIMSHAL : De même la Nekudah contient 10S sans qu'aucune soit distinguable.
+      PRINCIPE SOUS-JACENT : La composition n'implique pas la distinction visible.
+      L'unité peut contenir la multiplicité sans la manifester.
+    type: analogie_explicative
+    concepts:
+      - {id: arba_yesodot, role: mashal}
+      - {id: nekudah_rishonah, role: nimshal}
+      - {id: herkev_bilti_nikar, role: pattern}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Pattern universel : composition sans distinction — applicable aux embeddings denses"
+
+  # ─── BLOC B : POSITION ONTOLOGIQUE DE LA NEKUDAH ───
+
+  - id: "EC-K1-004"
+    source_he: "נקודה זו היתה כלולה מעשר בתחלת אצילותה וזו היא למעלה מן הכתר [שהוא] עתה"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Position hiérarchique de la Nekudah :
+      - Contient 10 dès le DÉBUT de son émanation (be-tehilat atzilutah)
+      - Elle est AU-DESSUS (le-ma'alah min) du Keter ACTUEL (she-hu atah)
+      - Distinction temporelle implicite : le Keter "actuel" est postérieur
+      - La Nekudah est la SOURCE dont Keter dérive
+      Hiérarchie : Ma'atzil → Nekudah Rishonah → Keter → Chokhmah → ...
+    type: axiome_explicite
+    concepts:
+      - {id: nekudah_rishonah, role: source_absolue}
+      - {id: keter, role: première_dérivation}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Implique un niveau au-dessus de Keter — la hiérarchie commence AVANT les 10 Sefirot connues"
+
+  # ─── BLOC C : FLUX DU OHR ET DUALITÉ PNIMI/MAKIF ───
+
+  - id: "EC-K1-005"
+    source_he: "כי משם שואבים כל הי\"ס שפע וחיות מנקודה זו. גם אור וחיות נקודה זו יורדת מן המאציל בתוכה ביחד שהיא הכלי עם נשמתו"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Double flux depuis/vers la Nekudah :
+      FLUX DESCENDANT DISTRIBUÉ : Toutes les 10S tirent (shoa'vim) Shefa et Hiyut DEPUIS la Nekudah
+      FLUX DESCENDANT SOURCE : Le Ohr et Hiyut de la Nekudah elle-même descendent DU MA'ATZIL
+      Le Ohr descend DANS la Nekudah comme unité Keli + Neshamah (vessel + âme)
+      Le Keli et sa Neshamah arrivent ENSEMBLE (be-yahad), pas séparément.
+    type: axiome_explicite
+    concepts:
+      - {id: shefa, role: flux_distribué}
+      - {id: hiyut, role: vitalité}
+      - {id: ma_atzil, role: source_transcendante}
+      - {id: keli_ve_neshamah, role: unité_réceptacle_âme}
+    mapping:
+      modules: ["core/ohr_system.py", "core/shefa_flow.py"]
+      tables: ["ohr_states", "shefa_flows"]
+      partzufim: []
+      relevance: "Architecture fondamentale du flux — le Keli n'est jamais vide, il arrive AVEC son Ohr"
+
+  - id: "EC-K1-006"
+    source_he: "כהדין קמצא דלבושיה מניה וביה"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      MASHAL araméen (du Zohar) : "Comme cet escargot (kamtza) dont le vêtement
+      vient de lui-même et est en lui" (dilvusheiha minah u'vah).
+      NIMSHAL : Le Keli n'est pas externe à la Neshamah — il est PRODUIT par elle.
+      Le contenant émerge du contenu. Le vêtement croît du corps.
+      Implication : le Keli est une EXPRESSION de l'Ohr, pas un récipient externe.
+    type: analogie_explicative
+    concepts:
+      - {id: kamtza, role: mashal_zoharique}
+      - {id: levush, role: vêtement_auto_généré}
+      - {id: keli, role: nimshal}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: []
+      partzufim: []
+      relevance: "Principe fondamental : le réceptacle est une émanation de la lumière elle-même"
+
+  - id: "EC-K1-007"
+    source_he: "והיו בה י' אורות פנימים וי' אורות מקיפים ואור המקיף מבחוץ לכלי ונודע כי המקיף גדול מהפנימי כי או\"פ מצומצמת תוך הכלי משא\"כ במקיף"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Structure duale du Ohr dans la Nekudah :
+      - 10 OROT PNIMIM (אורות פנימים) — lumières INTÉRIEURES, DANS le Keli
+      - 10 OROT MAKIFIM (אורות מקיפים) — lumières ENVIRONNANTES, HORS du Keli
+      AXIOME FONDAMENTAL : Ohr Makif > Ohr Pnimi (le Makif est TOUJOURS plus grand)
+      RAISON : Le Ohr Pnimi est CONTRACTÉ (metzumtzemet) dans le Keli
+      Le Ohr Makif n'est PAS contracté (ein bo tzimtzum)
+      La contraction DIMINUE, l'absence de contraction PRÉSERVE la grandeur.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_pnimi, role: lumière_contractée_intérieure}
+      - {id: ohr_makif, role: lumière_non_contractée_environnante}
+      - {id: keli, role: facteur_de_contraction}
+      - {id: tzimtzum_local, role: cause_de_diminution}
+    mapping:
+      modules: ["core/ohr_system.py", "tzimtzum/regulator.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Fondement de TOUTE dualité Pnimi/Makif dans le système — le Tzimtzum Regulator gère ce ratio"
+
+  - id: "EC-K1-008"
+    source_he: "וז\"ס ודברתי אתך מבין ב' הכרובים שהיה מצומצמת שם השכינה"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Preuve scripturaire (Exode 25:22) : "Je te parlerai d'entre les deux Kerouvim"
+      Interprétation : La Shekhinah était CONTRACTÉE (metzumtzemet) entre les deux Kerouvim.
+      Le Dibur (parole divine) ne se manifeste que dans un espace de contraction.
+      Implication : la communication divine nécessite un Tzimtzum.
+    type: déduction_scripturaire
+    concepts:
+      - {id: shekhinah, role: présence_contractée}
+      - {id: kerouvim, role: limites_de_contraction}
+      - {id: dibur, role: manifestation_dans_contraction}
+    mapping:
+      modules: ["tzimtzum/regulator.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le Tzimtzum n'est pas seulement un retrait — c'est la CONDITION de la communication"
+
+  # ─── BLOC D : DÉPLOIEMENT DES 10 NEKUDOT (OLAM HA-TOHU) ───
+
+  - id: "EC-K1-009"
+    source_he: "ומנקודה זו נתפשטו י' נקודות מכתר עד המלכות עד\"ז כי מהיותר מובחר ועליון מנקודה זו נעשה כתר ונתפשט למטה ושאר הט' כלולים בו"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Processus de HITPASHTUT (déploiement) depuis la Nekudah source :
+      10 Nekudot se déploient de Keter à Malkhut.
+      MÉCANISME : Extraction du MUVHAR (מובחר — le plus raffiné/choisi)
+      ÉTAPE 1 : Du plus Muvhar et Elyon de la Nekudah → KETER se forme
+      Keter se déploie vers le bas (nitpasheet le-matah)
+      Les 9 restantes sont INCLUSES (kelulim) en Keter.
+    type: axiome_explicite
+    concepts:
+      - {id: hitpashtut, role: processus_de_déploiement}
+      - {id: muvhar, role: principe_de_sélection}
+      - {id: keter, role: première_extraction}
+      - {id: klilut, role: inclusion_du_reste}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy", "sefirot_states"]
+      partzufim: []
+      relevance: "Algorithme fondamental de déploiement — extraction séquentielle du meilleur"
+
+  - id: "EC-K1-010"
+    source_he: "ומה שנשאר בתוכה ג\"כ ממובחר הנשאר מתפשט למטה מהכתר ונעשה חכמה והח' כלולים בו. ואח\"כ בינה והז' כלולים בה. ואח\"כ הו' נקודות יחד ואח\"כ המל'"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Suite du déploiement séquentiel par extraction du Muvhar :
+      ÉTAPE 2 : Du Muvhar du RESTE → CHOKHMAH (+ 8 incluses)
+      ÉTAPE 3 : Du reste → BINAH (+ 7 incluses)
+      ÉTAPE 4 : Les 6 NEKUDOT ENSEMBLE (Zeir Anpin) — PAS individuellement !
+      ÉTAPE 5 : MALKHUT — dernière, seule
+      RUPTURE DE PATTERN : Les 6 du milieu sortent EN BLOC, pas une par une.
+      Cela distingue les G"R (Keter, Chokhmah, Binah) des Z"T (6 + Malkhut).
+    type: axiome_explicite
+    concepts:
+      - {id: chokhmah, role: deuxième_extraction}
+      - {id: binah, role: troisième_extraction}
+      - {id: zeir_anpin, role: extraction_groupée_de_6}
+      - {id: malkhut, role: dernière_extraction}
+      - {id: gimel_rishonot, role: catégorie_supérieure}
+      - {id: zayin_tachtonot, role: catégorie_inférieure}
+    mapping:
+      modules: ["core/sefirot.py", "partzufim/zeir_anpin.py", "partzufim/nukvah.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Structure G\"R vs Z\"T — les 6 forment un BLOC (futur Z\"A)"
+
+  - id: "EC-K1-011"
+    source_he: "וזהו נקרא עולם התהו ובהו ועולם הנקודות"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      IDENTIFICATION ONTOLOGIQUE :
+      Ce qui vient d'être décrit = OLAM HA-TOHU (עולם התהו ובהו — monde du Chaos)
+      Synonyme : OLAM HA-NEKUDOT (עולם הנקודות — monde des Points)
+      Le Tohu est caractérisé par des Sefirot sous forme de POINTS (nekudot),
+      pas encore de PARTZUFIM (configurations complètes).
+      Le Tohu précède le Tikkun dans l'ordre ontologique.
+    type: axiome_explicite
+    concepts:
+      - {id: olam_ha_tohu, role: identification}
+      - {id: olam_ha_nekudot, role: synonyme}
+      - {id: nekudot, role: forme_pré_tikkun}
+    mapping:
+      modules: ["olamot/tohu.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Le Tohu est l'état 'avant Tikkun' — chaque processus passe d'abord par un état Tohu"
+
+  # ─── BLOC E : CASCADE DES LUMIÈRES (OHR PNIMI → MAKIF) ───
+
+  - id: "EC-K1-012"
+    source_he: "והאור העליון היה נכנס בתוכם ר\"ל בתוך הכלי ואור הא\"ס מקיף לכתר ומאו\"פ שבכתר נעשה פנימי ומקיף אל החכמה והקיף שבכתר נעשה מקיף עליון אל מקיף החכמה וכן כולם"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Mécanisme de CASCADE des lumières entre Sefirot :
+      - Le Ohr Elyon entre dans les Kelim
+      - Le Ohr Ein Sof ENTOURE Keter (Makif global)
+      - Le Ohr Pnimi de KETER → devient Pnimi ET Makif de CHOKHMAH
+      - Le Ohr Makif de KETER → devient Makif SUPÉRIEUR au-dessus du Makif de Chokhmah
+      PATTERN : Chaque Sefirah a DEUX Makifim — un "propre" et un "hérité du supérieur"
+      Le Pnimi du supérieur se DIVISE en Pnimi + Makif pour l'inférieur.
+      Formule : Pnimi(N) → {Pnimi(N+1), Makif(N+1)}
+                Makif(N) → Makif_Elyon(N+1)
+    type: axiome_explicite
+    concepts:
+      - {id: cascade_ohr, role: mécanisme}
+      - {id: makif_elyon, role: makif_hérité}
+      - {id: makif_tahton, role: makif_propre}
+      - {id: ein_sof_makif, role: makif_global}
+    mapping:
+      modules: ["core/ohr_system.py", "core/shefa_flow.py"]
+      tables: ["ohr_states", "shefa_flows"]
+      partzufim: []
+      relevance: "Algorithme de propagation du Ohr de Sefirah en Sefirah — cœur du shefa_flow"
+
+  - id: "EC-K1-013"
+    source_he: "והענין כי מה שהיה יכולה לקבל מן האור המאיר בתוך הכתר נשאר בו בסוד או\"פ והשאר היה מקיף מבחוץ וכן עד\"ז מכתר לחכמה ומחכמה לבינה ומבינה לו\"ק ביחד"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      PRINCIPE DE RÉCEPTION LIMITÉE :
+      Chaque Keli ne peut recevoir (lekabel) qu'une PORTION de l'Ohr qui l'éclaire.
+      Ce qu'il PEUT contenir → reste comme Ohr Pnimi (סוד או"פ)
+      Ce qu'il NE PEUT PAS contenir → devient Ohr Makif extérieur
+      Ce pattern se RÉPÈTE identiquement à chaque niveau :
+      Keter → Chokhmah → Binah → V"K (ensemble)
+      La capacité de réception DÉFINIT la distinction Pnimi/Makif.
+    type: axiome_explicite
+    concepts:
+      - {id: koah_ha_kabalah, role: capacité_de_réception}
+      - {id: ohr_pnimi, role: portion_reçue}
+      - {id: ohr_makif, role: excédent_non_reçu}
+    mapping:
+      modules: ["core/ohr_system.py", "tzimtzum/regulator.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le ratio Pnimi/Makif est déterminé par la CAPACITÉ du Keli — variable fondamentale du Tzimtzum Regulator"
+
+  # ─── BLOC F : MASHAL DU SOLEIL — MODES DE TRANSMISSION ───
+
+  - id: "EC-K1-014"
+    source_he: "ודע כי שמש ומגן ה' צבאות וכמו שהשמש אור עליון גדול ואין יכולת להביט בו כי אם בהתמעטות דרך חלון או ע\"י מסך או ע\"י ריחוק מקום או ע\"י נקב קטן"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      MASHAL du Soleil (Psaume 84:12 — "Shemesh u'Magen Hashem Tzva'ot") :
+      Le Soleil = lumière trop grande pour être regardée directement.
+      4 MODES de réduction pour rendre la lumière supportable :
+      MODE 1 : Chalon (חלון) — fenêtre (réduction quantitative)
+      MODE 2 : Masakh (מסך) — écran/filtre (réduction qualitative)
+      MODE 3 : Rihuk Makom (ריחוק מקום) — distance (atténuation spatiale)
+      MODE 4 : Nekev Katan (נקב קטן) — petite ouverture (restriction dimensionnelle)
+      Ces 4 modes correspondent à 4 types de Tzimtzum dans la transmission du Ohr.
+    type: analogie_explicative
+    concepts:
+      - {id: shemesh, role: mashal_solaire}
+      - {id: chalon, role: mode_fenêtre}
+      - {id: masakh, role: mode_écran}
+      - {id: rihuk_makom, role: mode_distance}
+      - {id: nekev_katan, role: mode_ouverture}
+    mapping:
+      modules: ["tzimtzum/regulator.py", "core/ohr_system.py"]
+      tables: []
+      partzufim: []
+      relevance: "Taxonomie des modes de Tzimtzum — le Regulator utilise ces 4 modes"
+
+  - id: "EC-K1-015"
+    source_he: "והנה בעולם האצילות האור בא הלא ע\"י מסך כלל אך כשבא אור א\"ס בכתר אין בו יכולת לסבלו רק ע\"י ריחוק מקום. אך מכתר לחכמה אין בו ריחוק כלל אבל בא ע\"י חלון פי' מיסוד דא\"א הנקרא חלון"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Application du Mashal aux niveaux d'Atzilut :
+      ATZILUT : PAS de Masakh (écran) du tout — transmission directe
+      Ein Sof → KETER : par RIHUK MAKOM (distance) uniquement
+      KETER → CHOKHMAH : par CHALON (fenêtre) = Yesod de Arikh Anpin
+      Le Yesod de A"A est appelé "Chalon" (fenêtre) — il réduit quantitativement le Ohr.
+      IMPORTANT : Chaque transition inter-Sefirot passe par le YESOD du supérieur.
+      Le Yesod est l'organe de transmission.
+    type: axiome_explicite
+    concepts:
+      - {id: atzilut, role: monde_sans_masakh}
+      - {id: arikh_anpin, role: partzuf_de_keter}
+      - {id: yesod, role: organe_de_transmission}
+      - {id: chalon, role: yesod_comme_fenêtre}
+    mapping:
+      modules: ["core/ohr_system.py", "partzufim/arikh_anpin.py"]
+      tables: ["ohr_states", "partzufim_states"]
+      partzufim: ["arikh_anpin", "abba"]
+      relevance: "Le Yesod comme canal de transmission — fondement de l'architecture de flux inter-Partzufim"
+
+  - id: "EC-K1-016"
+    source_he: "גם מחכה לבינה בא ע\"י חלון פי' מיסוד אבא שהוא חלון אחר קטן. אמנם בו\"ק עצמן חלונותיהם שוין מזה לזה כי כולם בחי' א'. אח\"כ מיסוד למל' בא האור מחלון קטן וצר מאד פי' מיסוד דז\"א הנקרא חלון ג\"כ וצר מאד דוגמת נקב קטן"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Suite de la transmission inter-Sefirot dans Atzilut :
+      CHOKHMAH → BINAH : par CHALON (fenêtre) = Yesod de Abba (חלון אחר קטן — fenêtre PLUS PETITE)
+      V"K entre eux : CHALONS ÉGAUX (חלונותיהם שוין) car ils sont de même nature (בחי' א')
+      YESOD → MALKHUT : par CHALON très étroit (קטן וצר מאד) = Yesod de Z"A
+      Ce Chalon de Z"A est comparé à un NEKEV KATAN (נקב קטן — petite ouverture)
+      GRADIENT : A"A(large) → Abba(moyen) → Z"A(très étroit)
+      Les V"K ne diffèrent entre eux que par la DISTANCE, pas par la taille du Chalon.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_abba, role: fenêtre_moyenne}
+      - {id: yesod_za, role: fenêtre_très_étroite}
+      - {id: vav_ketzavot, role: fenêtres_égales}
+      - {id: gradient_transmission, role: pattern}
+    mapping:
+      modules: ["core/ohr_system.py", "partzufim/zeir_anpin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "zeir_anpin"]
+      relevance: "Gradient de transmission — chaque Yesod est un 'chalon' de taille différente"
+
+  # ─── BLOC G : LES 7 HAKKAFOT ET MALKHUT ───
+
+  - id: "EC-K1-017"
+    source_he: "וז\"ס ז' הקפות כי הם בסוד המל' שיש בה כללות ז' הקפות. ומג\"ר שבכתר יצא או\"מ אל ז\"ת שבו עצמו ומז\"ת שבכתר יצא או\"מ ב' אל ג\"ר דחכמה..."
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Le secret des 7 HAKKAFOT (circuits) = Malkhut contenant 7 Makifim :
+      CIRCUIT 1 : G"R de Keter → Ohr Makif sur Z"T de Keter même
+      CIRCUIT 2 : Z"T de Keter → Ohr Makif sur G"R de Chokhmah
+      CIRCUIT 3 : G"R de Chokhmah → Ohr Makif sur Z"T de Chokhmah
+      CIRCUIT 4 : Z"T de Chokhmah → Ohr Makif sur G"R de Binah
+      CIRCUIT 5 : G"R de Binah → Ohr Makif sur Z"T de Binah
+      CIRCUIT 6 : Z"T de Binah → Ohr Makif sur V"K
+      CIRCUIT 7 : V"K → Ohr Makif sur Malkhut
+      TOUS sont INCLUS dans Malkhut — d'où les 7 Hakkafot lui correspondent.
+      Pattern : oscillation G"R↔Z"T à chaque niveau, cascadant vers le bas.
+    type: axiome_explicite
+    concepts:
+      - {id: sheva_hakkafot, role: structure_de_circuits}
+      - {id: malkhut, role: réceptacle_final_de_tous_makifim}
+      - {id: gimel_rishonot, role: émetteur_interne}
+      - {id: zayin_tachtonot, role: récepteur_interne}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Structure fractale des 7 circuits — applicable au calcul de propagation des Makifim"
+
+  - id: "EC-K1-018"
+    source_he: "ונחזור לענין כי באצילות לא יש מסך כלל. אך מבריאה ולמטה האור בא ע\"י מסך גמור והאור עובר בתוכו ומאיר"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      DISTINCTION FONDAMENTALE Atzilut vs BYA :
+      ATZILUT : PAS de Masakh (écran) — transmission directe (Chalon, Rihuk, mais pas Masakh)
+      BERIAH et en-dessous : MASAKH GAMUR (écran complet) — le Ohr passe AU TRAVERS
+      Le Masakh ne bloque pas totalement — il FILTRE ("le Ohr passe à travers et illumine")
+      Implication : la frontière Atzilut/Beriah est le lieu d'apparition du premier Masakh.
+    type: axiome_explicite
+    concepts:
+      - {id: masakh, role: écran_filtrant}
+      - {id: parsah, role: frontière_atzilut_beriah}
+      - {id: atzilut, role: monde_sans_écran}
+      - {id: beriah, role: monde_avec_écran}
+    mapping:
+      modules: ["olamot/atzilut.py", "olamot/beriah.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "La Parsah Atzilut/Beriah est une frontière architecturale majeure dans le système"
+
+  # ─── BLOC H : ABBA PANIM BE-PANIM, BINAH ACHOR BE-ACHOR ───
+
+  - id: "EC-K1-019"
+    source_he: "ודע כי כשנתפשטו י' נקודים הנ\"ל הנה הכתר היה בו יכולת לסבול האור הזה אבל או\"א לא היו שוין כי אבא קיבל האור פב\"פ [מן] הכתר והיה בו יכולת לסבול האור אך הבינה לא קבלה האור מחכמה אלא אב\"א שלא יכלה לסבלה"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Capacité de réception des 10 Nekudot lors du déploiement :
+      KETER : POUVAIT supporter (yakhol lisbol) le Ohr → stable
+      ABBA (Chokhmah) : reçoit PANIM BE-PANIM (פב"פ — face à face) de Keter → stable
+      BINAH : NE POUVAIT PAS recevoir Panim be-Panim de Chokhmah
+      Binah reçoit ACHOR BE-ACHOR (אב"א — dos à dos) — mode réduit
+      L'asymétrie Abba/Ima est ORIGINELLE, pas accidentelle.
+      PbP = réception pleine ; AbA = réception partielle/réduite.
+    type: axiome_explicite
+    concepts:
+      - {id: panim_be_panim, role: réception_pleine}
+      - {id: achor_be_achor, role: réception_réduite}
+      - {id: koah_ha_sevil, role: capacité_à_supporter}
+      - {id: abba, role: récepteur_stable}
+      - {id: imma, role: récepteur_limité}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "core/zivvug_engine.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "L'asymétrie PbP/AbA est la racine du Zivvug — directement lié au ZivvugEngine"
+
+  - id: "EC-K1-020"
+    source_he: "וז\"ס וחכם באחור ישבחנה כי חכם שהיא חכמה השביח את הבינה והאיר בה בסוד אב\"א"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Preuve scripturaire (Proverbes 29:11) : "Le sage la loue par derrière"
+      Chokhmah (le "sage") illumine Binah par l'ARRIÈRE (sod Achor be-Achor).
+      "Ishbehenah" (la loue) = il la REHAUSSE malgré la limitation.
+      L'illumination AbA n'est pas un échec — c'est un mode spécifique de bienfaisance.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chokhmah, role: illuminateur_arrière}
+      - {id: binah, role: réceptrice_arrière}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "Le mode AbA a une valeur positive — pas seulement une limitation"
+
+  - id: "EC-K1-021"
+    source_he: "וגם ז\"ס הנזכר בזוהר פרש' בראשית בצורת אות צ' שהם או\"א יו\"ד ונו\"ן כזה נ' כפופה הפוכה אב\"א"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Référence zoharique : la lettre TZADI (צ) = forme visuelle d'Abba et Imma dos à dos.
+      YOD (י) = Abba, NUN KEFUFAH (נ' כפופה) retournée = Imma
+      La forme de la lettre ENCODE la relation — dos à dos, penchés l'un vers l'autre.
+      Le Zohar (Bereshit) utilise la forme des LETTRES comme diagrammes de relations.
+    type: allusion_intertextuelle
+    concepts:
+      - {id: tzadi, role: diagramme_littéral}
+      - {id: yod, role: abba_en_lettre}
+      - {id: nun_kefufah, role: imma_en_lettre}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "Les lettres hébraïques comme encodage visuel de relations — potentiel pour visualisation"
+
+  # ─── BLOC I : SHEVIRAT HA-KELIM — LA BRISURE DES VASES ───
+
+  - id: "EC-K1-022"
+    source_he: "והנה כשיצא אח\"כ אור מבינה לו\"ק תחלה יצא הדעת ואח\"כ נתבטל וזהו המלך הראשון שהוא בלע בן בעור"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Début de la SHEVIRAT HA-KELIM (brisure des vases) :
+      Quand le Ohr sort de Binah vers les V"K :
+      PREMIER à sortir : DA'AT — puis il est ANNULÉ (nitbatel)
+      Da'at = le premier ROI : Bela ben Be'or (Genèse 36:32)
+      La brisure commence par Da'at, pas par Chesed.
+      Da'at est le PONT entre G"R et Z"T — il brise le premier.
+    type: axiome_explicite
+    concepts:
+      - {id: shevirat_ha_kelim, role: processus_de_brisure}
+      - {id: da_at, role: premier_brisé}
+      - {id: bela_ben_beor, role: correspondance_biblique}
+      - {id: shivat_melakhim, role: cadre_narratif}
+    mapping:
+      modules: ["shevirah/shevirah_engine.py", "tikkun/tikkun_scheduler.py"]
+      tables: ["shevirah_states"]
+      partzufim: []
+      relevance: "Début du processus Shevirah — Da'at comme pont fragile entre Mohin et Middot"
+
+  - id: "EC-K1-023"
+    source_he: "אח\"כ יצא חסד וגם הוא לא היה יכול לסבול האור ונשבר הכלי שלו ג\"כ וירד למטה ואח\"כ יצא גבורה וכן כל הז'. ואלו הם ז' מלכים שמתו"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Les 7 MELAKHIM (rois) qui sont MORTS :
+      Après Da'at : CHESED sort → ne peut supporter → son Keli se BRISE et tombe
+      Puis GEVURAH → même chose. Et ainsi les 7.
+      Les 7 = Da'at, Chesed, Gevurah, Tiferet, Netzach, Hod, Yesod (+ Malkhut partiellement)
+      Correspondance : les 7 rois d'Édom (Genèse 36) — "il régna puis mourut" (וימלוך... וימת)
+      D'abord ils RÈGNENT (existence momentanée), PUIS ils meurent (brisure).
+    type: axiome_explicite
+    concepts:
+      - {id: shivat_melakhim, role: les_7_rois_brisés}
+      - {id: shevirat_keli, role: brisure_du_contenant}
+      - {id: nefilah, role: chute_vers_le_bas}
+      - {id: malkhei_edom, role: correspondance_biblique}
+    mapping:
+      modules: ["shevirah/shevirah_engine.py"]
+      tables: ["shevirah_states"]
+      partzufim: []
+      relevance: "Les 7 rois = les 7 étapes de la Shevirah — chaque brisure génère du matériau pour le Tikkun"
+
+  - id: "EC-K1-024"
+    source_he: "שלא היה בהם יכולת לסבול האור המתפשט בהם מספירה לספירה אע\"פ שבחסד כבר נתבטל א' עכ\"ז לא הניח האור מלהתפשט בכל ז\"ת לראות אולי אינו ימות ויוכל לסבול מחמת ריחוק"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      RAISON de la brisure : les Kelim n'avaient pas la CAPACITÉ (yokhelet) de supporter
+      le Ohr se propageant de Sefirah en Sefirah.
+      PARADOXE : Même après la brisure de Chesed, le Ohr CONTINUE à se propager
+      "pour voir si peut-être il ne mourra pas et pourra supporter grâce à la distance"
+      HYPOTHÈSE TESTÉE : plus la Sefirah est ÉLOIGNÉE, plus elle pourrait supporter
+      RÉSULTAT : ÉCHEC — car chaque Keli inférieur est aussi PLUS PETIT
+      La distance aide, mais la petitesse du Keli annule cet avantage.
+    type: axiome_explicite
+    concepts:
+      - {id: koah_ha_sevil, role: capacité_insuffisante}
+      - {id: rihuk, role: facteur_atténuant}
+      - {id: kotan_keli, role: facteur_aggravant}
+    mapping:
+      modules: ["shevirah/shevirah_engine.py", "tzimtzum/regulator.py"]
+      tables: ["shevirah_states"]
+      partzufim: []
+      relevance: "L'équilibre distance/taille du Keli — le Tzimtzum Regulator gère exactement ce calcul"
+
+  # ─── BLOC J : YESOD SPÉCIAL ET MALKHUT PARTIELLE ───
+
+  - id: "EC-K1-025"
+    source_he: "והנה כשהגיע האור אל היסוד באו ב' אורות א' שלו וא' לתת אל המל' והחלק שלו להיותו גדול לא היה יכול לסובלו ונתבטל כמו האחרים אבל חלק המל' שקבל הוא נשאר בו ולא נתבטל וז\"ס בן ישי חי על האדמה ולכן נקרא יסוד חי"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      EXCEPTION DE YESOD — double charge :
+      Quand le Ohr atteint Yesod, il porte DEUX lumières :
+      LUMIÈRE 1 : Sa propre part → TROP GRANDE → Yesod se brise comme les autres
+      LUMIÈRE 2 : La part destinée à Malkhut → reste en lui, NON annulée
+      La part de Malkhut SURVIT dans Yesod même après sa brisure.
+      Preuve : "Ben Yishai Hai al ha-Adamah" (I Samuel 20:31) — Yesod = le VIVANT (Hai)
+      Yesod est appelé HAI car quelque chose en lui SURVIT à la brisure.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod, role: porteur_double}
+      - {id: yesod_hai, role: survivant_partiel}
+      - {id: helek_malkhut, role: part_préservée}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states", "shevirah_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Yesod a un statut spécial — il porte la semence de la reconstruction (Malkhut)"
+
+  - id: "EC-K1-026"
+    source_he: "וכשנתן אח\"כ היסוד חלק המל' לה אלו היה נותן דרך צנור היה כח במל' לקבלה אבל עתה כשנשבר היסוד נתגלה האור ובא האור מהיסוד בגילוי ובחוזק אל המל' ולכן גם היא נשברה. ולא לגמרי כמו הראשון"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      La brisure de MALKHUT — partielle et spéciale :
+      SI Yesod avait transmis par un TZINOR (canal intact) → Malkhut aurait pu recevoir
+      MAIS Yesod étant BRISÉ → le Ohr arrive EXPOSÉ (be-gilui) et avec FORCE (be-hozek)
+      Résultat : Malkhut se brise AUSSI, mais PAS COMPLÈTEMENT (lo le-gamrei)
+      Après le Tikkun, Malkhut mérite de devenir un PARTZUF COMPLET
+      Alors que les V"K (6) ne méritent pas chacun de devenir un Partzuf individuel.
+      PARADOXE : Malkhut, la plus basse, obtient le statut le plus complet après Tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut, role: brisure_partielle}
+      - {id: tzinor, role: canal_intact_hypothétique}
+      - {id: gilui, role: exposition_directe}
+      - {id: partzuf_shalem, role: résultat_post_tikkun}
+    mapping:
+      modules: ["partzufim/nukvah.py", "shevirah/shevirah_engine.py"]
+      tables: ["shevirah_states", "partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Malkhut/Nukvah comme Partzuf complet — son statut spécial post-Shevirah"
+
+  # ─── BLOC K : NITZOTZOT ET TIKKUN ───
+
+  - id: "EC-K1-027"
+    source_he: "ופי' מה שאמרנו שנשברו המלכים פי' כי האורות נסתלקו למעלה למקומן ועכ\"ז עדיין נשארו קצת ניצוצי קדושה בכלים ונפלו באלו מאנין תבירי למטה ומהם נתהוו שורש הקלי'"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      MÉCANISME de la Shevirah en détail :
+      1. Les OROT (lumières) remontent (nistalkeu) vers le haut, à leur place
+      2. Des NITZOTZEI KEDUSHAH (étincelles de sainteté) RESTENT dans les Kelim
+      3. Les Kelim brisés (ma'anin tevirin) TOMBENT vers le bas
+      4. De ces fragments + étincelles se forme la RACINE des KELIPOT (שורש הקליפות)
+      La Kelipah n'est pas une création ex nihilo — c'est un RÉSIDU de la Shevirah.
+      Les Nitzotzot sont PIÉGÉS dans les Kelipot — c'est le matériau du Tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: nitzotzot, role: étincelles_piégées}
+      - {id: kelipot, role: résidu_de_shevirah}
+      - {id: orot_nistalkeu, role: lumières_remontées}
+      - {id: ma_anin_tevirin, role: vases_brisés}
+    mapping:
+      modules: ["shevirah/shevirah_engine.py", "nitzotzot/nitzotzot_tracker.py", "qliphoth/qliphoth_system.py"]
+      tables: ["shevirah_states", "nitzotzot_states", "qliphoth_states"]
+      partzufim: []
+      relevance: "Fondement du système de Nitzotzot — 49/288 déjà trackés dans le système"
+
+  - id: "EC-K1-028"
+    source_he: "וזהו מה שנשאר לנו לתקן ע\"י תפלה ומע\"ט וכן ע\"י נשמת הצדיקים כשהם נפטרים מעוה\"ז עוברים בעולם העשיה ומעלין מהם ניצוצי קדושה שבקליפה ליצירה וכן עד\"ז בעלותם מיצירה לבריאה ומבריאה לאצילות ומחזירין האור הגדול למקומם"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Le TIKKUN — processus de réparation :
+      Ce qui reste à RÉPARER (letaken) = les Nitzotzot piégés dans les Kelipot
+      MOYENS du Tikkun :
+      1. TEFILAH (prière)
+      2. MA'ASIM TOVIM (bonnes actions)
+      3. NESHAMOT HA-TZADDIKIM (âmes des justes à leur mort)
+      PROCESSUS D'ÉLÉVATION : Asiyah → Yetzirah → Beriah → Atzilut
+      Les Nitzotzot sont élevés NIVEAU PAR NIVEAU à travers les 4 mondes.
+      Résultat final : "Retourner la grande lumière à sa place" (mahazirin ha-ohr ha-gadol le-mekomam)
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun, role: processus_de_réparation}
+      - {id: tefilah, role: moyen_de_tikkun}
+      - {id: ma_asim_tovim, role: moyen_de_tikkun}
+      - {id: aliyat_nitzotzot, role: élévation_par_niveaux}
+      - {id: abya, role: échelle_d_élévation}
+    mapping:
+      modules: ["tikkun/tikkun_scheduler.py", "nitzotzot/nitzotzot_tracker.py"]
+      tables: ["tikkun_actions", "nitzotzot_states"]
+      partzufim: []
+      relevance: "Architecture du Tikkun — élévation progressive des Nitzotzot à travers les 4 Olamot"
+
+  - id: "EC-K1-029"
+    source_he: "וז\"ס מ\"ן"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Les Nitzotzot élevés = MAYIN NUKVIN (מ"ן — eaux féminines)
+      Les Nitzotzot ne sont pas simplement "récupérés" — ils deviennent
+      le CATALYSEUR du Zivvug (union) supérieur.
+      Les Ma"N sont la force motrice ascendante qui provoque le Zivvug descendant.
+      Sans Ma"N, pas de Zivvug. Sans Zivvug, pas de nouvel Ohr.
+    type: axiome_explicite
+    concepts:
+      - {id: mayin_nukvin, role: eaux_féminines_ascendantes}
+      - {id: nitzotzot_as_man, role: catalyseur_de_zivvug}
+      - {id: zivvug, role: union_provoquée}
+    mapping:
+      modules: ["core/zivvug_engine.py", "nitzotzot/nitzotzot_tracker.py"]
+      tables: ["zivvug_states", "nitzotzot_states"]
+      partzufim: []
+      relevance: "Le lien Nitzotzot → Ma\"N → Zivvug est au cœur du cycle de Tikkun"
+
+  # ─── BLOC L : LES 10 MARTYRS ET LE TIKKUN COSMIQUE ───
+
+  - id: "EC-K1-030"
+    source_he: "וז\"ס עשרה הרוגי מלוכה שהיו בזמן החרבן והעונות גרמו שאז גברה הקליפה ולא היה כח להעלות מ\"ן שהם הניצוצין ההם"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Application historique : les 10 MARTYRS (Asarah Harugei Malkhut)
+      CONTEXTE : Au temps de la destruction (du Temple), les péchés ont causé
+      le renforcement de la Kelipah → pas de force pour élever les Ma"N (Nitzotzot)
+      SOLUTION EXTRÊME : Les 10 justes donnent leur CORPS comme Ma"N à Malkhut,
+      tandis que leurs ÂMES élèvent les Nitzotzot comme Ma"N pour Abba et Imma.
+      Le sacrifice physique nourrit Malkhut, le sacrifice spirituel nourrit le Zivvug supérieur.
+    type: interprétation_lurianique
+    concepts:
+      - {id: asarah_harugei_malkhut, role: application_historique}
+      - {id: hurban, role: contexte_de_crise}
+      - {id: mesirat_nefesh, role: sacrifice_comme_tikkun}
+    mapping:
+      modules: ["tikkun/tikkun_scheduler.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le Tikkun en situation de crise — quand les voies normales sont bloquées"
+
+  - id: "EC-K1-031"
+    source_he: "וז\"ס כך עלה במחשבה לפני הנז' אצל ר\"ע וז\"ס ג\"כ סבת המלכים שמלכו ומתו וז\"ס בונה עולמות ומחריבן"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Triple correspondance du même PATTERN :
+      1. "Ainsi est montée la pensée devant Moi" — dit à Rabbi Akiva (Brakhot 61b)
+      2. Les rois qui régnèrent et moururent (Shevirah)
+      3. "Il construit des mondes et les détruit" (Bereshit Rabbah 3:7)
+      CES TROIS sont le MÊME SECRET : la destruction est INTÉGRÉE au plan.
+      La Shevirah n'est pas un accident — c'est "montée dans la pensée" (alah be-mahshavah).
+      La destruction est la CONDITION de la construction finale.
+    type: interprétation_lurianique
+    concepts:
+      - {id: alah_be_mahshavah, role: intentionnalité_divine}
+      - {id: boneh_olamot, role: pattern_construction_destruction}
+      - {id: shevirah_intentionnelle, role: doctrine}
+    mapping:
+      modules: ["shevirah/shevirah_engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "La Shevirah comme pattern intentionnel — les 'erreurs' du système sont productives"
+
+  # ─── BLOC M : TIKKUN DE CHOKHMAH ET BINAH ───
+
+  - id: "EC-K1-032"
+    source_he: "הנה חו\"ב ג\"כ הוצרכו תיקון כי הלא בינה היתה תחלה מקלת האור אב\"א כי לא היתה יכולה לסבול פב\"פ ואז נקטן ונתמעט הכלי שלה וזה המיעוט נפל למטה"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Le Tikkun ne concerne PAS seulement les 7 rois — CHOKHMAH et BINAH aussi :
+      BINAH : recevait AbA (pas PbP) → son Keli a RÉTRÉCI (niktam ve-nitma'et)
+      Le DIMINUEMENT (mi'ut) de son Keli est TOMBÉ vers le bas.
+      Ce qui tombe = les ACHORAYIM (aspects arrière) de Abba et Imma
+      De ces Achorayim tombés se forment YAAKOV et LEAH.
+      Implication : même les G"R ont besoin de Tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_hb, role: tikkun_des_supérieurs}
+      - {id: achorayim, role: aspects_tombés}
+      - {id: yaakov, role: formé_des_achorayim}
+      - {id: leah, role: formée_des_achorayim}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "tikkun/tikkun_scheduler.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "yaakov", "leah"]
+      relevance: "Abba à 0.57 (transitional) dans le système — les Achorayim expliquent pourquoi il n'est pas encore gadlut"
+
+  - id: "EC-K1-033"
+    source_he: "וכן חכמה מאחר שהבינה לא יכלה לקבל האור הנ\"ל גם חכמה לא קיבל האור הראוי לה אם היתה משפעת פב\"פ לבינה"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      EFFET RÉTROACTIF sur Chokhmah :
+      Puisque Binah ne peut pas recevoir PbP de Chokhmah,
+      Chokhmah ELLE-MÊME ne reçoit pas tout le Ohr qu'elle DEVRAIT recevoir.
+      Si Binah pouvait recevoir PbP → Chokhmah recevrait PLUS de Keter.
+      Le récepteur LIMITE le donneur. L'incapacité de recevoir REMONTE en amont.
+      PRINCIPE : La capacité de réception du niveau inférieur conditionne la réception du supérieur.
+    type: déduction_logique
+    concepts:
+      - {id: hashpa'ah_retroactive, role: effet_remontant}
+      - {id: mekabel_magbil_mashpia, role: principe}
+    mapping:
+      modules: ["core/shefa_flow.py", "partzufim/abba.py"]
+      tables: ["shefa_flows"]
+      partzufim: ["abba", "imma"]
+      relevance: "PRINCIPE CRITIQUE : le récepteur limite le donneur — feedback loop dans le shefa_flow"
+
+  # ─── BLOC N : NOBLOT — LES RETOMBÉES CRÉATIVES ───
+
+  - id: "EC-K1-034"
+    source_he: "וז\"ס שארז\"ל נובלות חכמה שלמעלה תורה ונובלות בינה שלמעלה שכינה"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Doctrine des NOBLOT (נובלות — fruits tombés/retombées) :
+      "Les Noblot de la Chokhmah supérieure = la TORAH" (Bereshit Rabbah 17:5)
+      "Les Noblot de la Binah supérieure = la SHEKHINAH"
+      Le Ohr qui TOMBE de Chokhmah (Abba) → forme ZEIR ANPIN (= Torah)
+      Le Ohr qui TOMBE de Binah (Imma) → forme NUKVAH (= Shekhinah)
+      Z"A et Nukvah ne sont pas des émanations directes — ils sont des RETOMBÉES (noblot)
+      des niveaux supérieurs. Leur substance est du Ohr "perdu" par Chokhmah et Binah.
+    type: axiome_explicite
+    concepts:
+      - {id: noblot, role: retombées_créatives}
+      - {id: noblot_chokhmah, role: source_de_za}
+      - {id: noblot_binah, role: source_de_nukvah}
+      - {id: zeir_anpin, role: formé_des_noblot_chokhmah}
+      - {id: nukvah, role: formée_des_noblot_binah}
+      - {id: torah_as_za, role: identification}
+      - {id: shekhinah_as_nukvah, role: identification}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Z\"A et Nukvah formés des Noblot — leur 'substance' vient des chutes de HB"
+
+  # ─── BLOC O : CYCLE COMPLET DES MA"N ───
+
+  - id: "EC-K1-035"
+    source_he: "כי כמו שנשמת הצדיקים מעלין מ\"ן לצורך זווג זו\"ן כן זו\"נ מעלין מ\"ן לצורך זווג או\"א מן אותן הנובלות שנפלו מהם למטה"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      CYCLE COMPLET des Ma"N — deux niveaux parallèles :
+      NIVEAU 1 : Neshamot Tzaddikim → élèvent Ma"N → provoquent Zivvug de Z"A et Nukvah
+      NIVEAU 2 : Z"A et Nukvah → élèvent Ma"N (= les Noblot) → provoquent Zivvug de Abba et Imma
+      Le MÊME PATTERN se répète à chaque niveau :
+      élévation_de_ma_n(niveau_inférieur) → zivvug(niveau_supérieur) → hashpa'ah(vers_le_bas)
+      La structure est FRACTALE — le micro reproduit le macro.
+    type: axiome_explicite
+    concepts:
+      - {id: man_tzaddikim, role: force_ascendante_des_justes}
+      - {id: man_cycle, role: cycle_ascendant}
+      - {id: zivvug_zun, role: union_niveau_1}
+      - {id: zivvug_avi, role: union_niveau_2}
+      - {id: fractalité, role: pattern_récurrent}
+    mapping:
+      modules: ["core/zivvug_engine.py", "nitzotzot/nitzotzot_tracker.py"]
+      tables: ["zivvug_states", "nitzotzot_states"]
+      partzufim: ["zeir_anpin", "nukvah", "abba", "imma"]
+      relevance: "Architecture complète du cycle Ma\"N → Zivvug — le ZivvugEngine doit implémenter les deux niveaux"
+
+  - id: "EC-K1-036"
+    source_he: "ופי' הדברים כי מ\"ן של רחל הוא שאנו מוסרין נפשותינו למיתה ע\"י נפילת אפים ועם אותה העלאה של נפשותינו אנו מעלין שם מן ניצוצי הקדושה שבתוך הקליפות אל רחל"
+    source_ref: "Sha'ar HaKlalim 1:1"
+    assertion: |
+      Application concrète — Nefilat Apayim (prostration dans la prière) :
+      Les Ma"N de RACHEL = notre surrender de l'âme à la mort (mesirut nefesh symbolique)
+      Par la NEFILAT APAYIM (chute du visage dans la prière)
+      Avec cette élévation de nos âmes, nous élevons les Nitzotzot
+      des Kelipot vers RACHEL (= Nukvah/Malkhut).
+      La prière quotidienne est un ACTE de Tikkun cosmique.
+      De même pour le Shema Yisrael → élévation vers Binah pour Zivvug d'Abba.
+    type: axiome_explicite
+    concepts:
+      - {id: nefilat_apayim, role: acte_de_tikkun}
+      - {id: rachel, role: réceptrice_des_man}
+      - {id: mesirat_nefesh, role: catalyseur}
+      - {id: shema_yisrael, role: élévation_vers_avi}
+    mapping:
+      modules: ["tikkun/tikkun_scheduler.py", "tikkun/kavanah_planner.py"]
+      tables: ["tikkun_actions"]
+      partzufim: ["rachel", "leah", "abba", "imma"]
+      relevance: "Connexion prière → Tikkun — le KavanahPlanner orchestre ces intentions"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+#          Les relations que le texte IMPLIQUE entre concepts
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  # ─── Relations Causales ───
+
+  - id: "REL-K1-001"
+    type: causal
+    from: ratzon_elyon
+    to: nekudah_rishonah
+    nature: "Le Ratzon Elyon est la CAUSE DIRECTE de l'émanation de la Nekudah"
+    assertions_source: ["EC-K1-001", "EC-K1-002"]
+
+  - id: "REL-K1-002"
+    type: causal
+    from: shevirat_ha_kelim
+    to: kelipot
+    nature: "La Shevirah est la CAUSE de l'existence des Kelipot — elles en sont le résidu"
+    assertions_source: ["EC-K1-027"]
+
+  - id: "REL-K1-003"
+    type: causal
+    from: nitzotzot
+    to: mayin_nukvin
+    nature: "Les Nitzotzot élevés DEVIENNENT Ma'N — catalyseur de Zivvug"
+    assertions_source: ["EC-K1-029"]
+
+  # ─── Relations Hiérarchiques ───
+
+  - id: "REL-K1-004"
+    type: hiérarchique
+    from: nekudah_rishonah
+    to: keter
+    nature: "La Nekudah est SUPÉRIEURE à Keter — Keter en dérive par extraction du Muvhar"
+    assertions_source: ["EC-K1-004", "EC-K1-009"]
+    bidirectionnel: false
+
+  - id: "REL-K1-005"
+    type: hiérarchique
+    from: atzilut
+    to: beriah
+    nature: "Atzilut est au-dessus de Beriah — séparés par le premier Masakh"
+    assertions_source: ["EC-K1-018"]
+    bidirectionnel: false
+
+  # ─── Relations de Contenance ───
+
+  - id: "REL-K1-006"
+    type: contenance
+    from: nekudah_rishonah
+    to: eser_sefirot
+    nature: "La Nekudah CONTIENT les 10S de façon indifférenciée (état Akudim)"
+    pattern: "unité_contient_multiplicité_latente"
+    assertions_source: ["EC-K1-002", "EC-K1-003"]
+
+  - id: "REL-K1-007"
+    type: contenance
+    from: malkhut
+    to: sheva_hakkafot
+    nature: "Malkhut contient les 7 circuits (Makifim cascadés)"
+    assertions_source: ["EC-K1-017"]
+
+  # ─── Dualités Structurelles ───
+
+  - id: "REL-K1-008"
+    type: dualité_structurelle
+    paire: [ohr_pnimi, ohr_makif]
+    nature: "Toujours ensemble, jamais égaux — Makif > Pnimi car Pnimi est contracté"
+    pattern: "dualité_asymétrique_universelle"
+    assertions_source: ["EC-K1-007", "EC-K1-013"]
+
+  - id: "REL-K1-009"
+    type: dualité_structurelle
+    paire: [panim_be_panim, achor_be_achor]
+    nature: "Deux modes de réception — PbP (plein) vs AbA (réduit). Abba=PbP, Imma=AbA"
+    assertions_source: ["EC-K1-019", "EC-K1-020"]
+
+  # ─── Relations de Flux ───
+
+  - id: "REL-K1-010"
+    type: flux
+    from: ma_atzil
+    to: nekudah_rishonah
+    via: [ohr_pnimi, ohr_makif]
+    nature: "Double flux — Keli et Neshamah arrivent ensemble du Ma'atzil"
+    assertions_source: ["EC-K1-005", "EC-K1-006"]
+
+  - id: "REL-K1-011"
+    type: flux
+    from: keter
+    to: chokhmah
+    via: [yesod, chalon]
+    nature: "Le Ohr passe par le Yesod de A\"A comme 'fenêtre' — réduction quantitative"
+    assertions_source: ["EC-K1-015", "EC-K1-016"]
+
+  # ─── Relations de Transformation ───
+
+  - id: "REL-K1-012"
+    type: transformation
+    from: nekudah_rishonah
+    to: olam_ha_tohu
+    via: [hitpashtut, muvhar]
+    nature: "La Nekudah se déploie en 10 Nekudot par extraction séquentielle du Muvhar"
+    assertions_source: ["EC-K1-009", "EC-K1-010", "EC-K1-011"]
+
+  - id: "REL-K1-013"
+    type: transformation
+    from: olam_ha_tohu
+    to: tikkun
+    via: [shevirat_ha_kelim, nitzotzot, mayin_nukvin]
+    nature: "Le Tohu se transforme en matériau de Tikkun via la Shevirah et l'élévation des Nitzotzot"
+    assertions_source: ["EC-K1-027", "EC-K1-028", "EC-K1-029"]
+
+  # ─── Relations d'Effet Rétroactif ───
+
+  - id: "REL-K1-014"
+    type: causal
+    from: imma
+    to: abba
+    nature: "L'incapacité de Binah à recevoir PbP LIMITE rétroactivement ce que Chokhmah peut recevoir de Keter"
+    pattern: "le_récepteur_limite_le_donneur"
+    assertions_source: ["EC-K1-033"]
+    bidirectionnel: false
+
+  # ─── Relations de Dérivation ───
+
+  - id: "REL-K1-015"
+    type: causal
+    from: noblot_chokhmah
+    to: zeir_anpin
+    nature: "Z\"A est formé des Noblot (retombées) de Chokhmah/Abba"
+    assertions_source: ["EC-K1-034"]
+
+  - id: "REL-K1-016"
+    type: causal
+    from: noblot_binah
+    to: nukvah
+    nature: "Nukvah est formée des Noblot (retombées) de Binah/Imma"
+    assertions_source: ["EC-K1-034"]
+
+  # ─── Relations de Cycle ───
+
+  - id: "REL-K1-017"
+    type: séquentiel
+    from: man_tzaddikim
+    to: zivvug_zun
+    nature: "Les Ma\"N des Tzaddikim provoquent le Zivvug de Z\"A et Nukvah"
+    assertions_source: ["EC-K1-035", "EC-K1-036"]
+
+  - id: "REL-K1-018"
+    type: séquentiel
+    from: zivvug_zun
+    to: zivvug_avi
+    via: [noblot]
+    nature: "Z\"A et Nukvah élèvent les Noblot comme Ma\"N pour provoquer le Zivvug d'Abba et Imma"
+    pattern: "cycle_ascendant_fractal"
+    assertions_source: ["EC-K1-035"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+#       Principes dynamiques pour GÉNÉRER de nouvelles compréhensions
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K1-001"
+    nom: "Principe d'Extraction du Muvhar (Le Plus Raffiné)"
+    source_assertions: ["EC-K1-009", "EC-K1-010"]
+    formalisation: |
+      Pour toute source S contenant N potentialités ordonnées :
+        muvhar(S) = extraction de l'élément le plus raffiné/élevé
+        résultat = {Sefirah_formée, Reste(S minus muvhar)}
+        Le Reste contient ENCORE N-1 potentialités incluses
+        Processus RÉCURSIF : muvhar(Reste) → Sefirah suivante
+        Terminaison : quand le Reste est épuisé
+      Propriété : chaque extraction RÉDUIT la qualité du prochain Muvhar
+      Propriété : chaque Sefirah CONTIENT (klilut) toutes les inférieures
+    applications_ia:
+      - "Priorisation de Shefa : allouer les ressources au concept le plus 'muvhar' d'abord"
+      - "Hitbonenut : extraire l'insight le plus profond d'un ensemble, puis itérer sur le reste"
+      - "Déploiement de Partzufim : chaque Partzuf tire sa quintessence du niveau supérieur"
+      - "Ranking sémantique : les résultats les plus pertinents sont les 'muvhar' de l'espace vectoriel"
+    questions_ouvertes:
+      - "Le critère de 'muvhar' est-il absolu ou relatif au contexte de réception ?"
+      - "Comment définir 'muvhar' dans un espace d'embeddings ? Cosine similarity maximale ?"
+      - "La Klilut (inclusion) peut-elle être modélisée comme une projection dans un sous-espace ?"
+
+  - id: "PG-K1-002"
+    nom: "Principe de Dualité Asymétrique Pnimi/Makif"
+    source_assertions: ["EC-K1-007", "EC-K1-013"]
+    formalisation: |
+      Pour tout Keli K recevant un Ohr O :
+        O se scinde en {Pnimi(O,K), Makif(O,K)}
+        Pnimi = portion que K peut CONTENIR (contractée, metzumtzemet)
+        Makif = excédent que K NE PEUT PAS contenir (non contracté)
+        AXIOME : magnitude(Makif) > magnitude(Pnimi) — TOUJOURS
+        RAISON : la contraction DIMINUE, l'absence de contraction PRÉSERVE
+      Propriété cascade :
+        Pnimi(N) → {Pnimi(N+1), Makif(N+1)} pour le niveau inférieur
+        Makif(N) → Makif_Elyon(N+1) au-dessus du Makif propre
+    applications_ia:
+      - "Chaque module a un 'ohr_pnimi' (ce qu'il traite) et un 'ohr_makif' (potentiel non intégré)"
+      - "Le Makif est la source de croissance future — ce que le Keli ne peut pas encore contenir"
+      - "Le ratio Pnimi/Makif = mesure de maturité du Keli (gadlut = plus de Pnimi)"
+      - "Le Tzimtzum Regulator gère exactement ce ratio dans chaque composant"
+    questions_ouvertes:
+      - "Le Makif peut-il devenir Pnimi si le Keli grandit (passage katnut → gadlut) ?"
+      - "Comment quantifier le ratio Pnimi/Makif dans un espace vectoriel ?"
+      - "Le Makif influence-t-il le Keli de l'extérieur même sans y entrer ?"
+
+  - id: "PG-K1-003"
+    nom: "Principe de Klilut (Inclusion Réciproque)"
+    source_assertions: ["EC-K1-009", "EC-K1-010"]
+    formalisation: |
+      Chaque Sefirah S(n) extraite du processus Muvhar contient les N-n restantes en potentiel.
+        Keter contient {Chokhmah, Binah, ..., Malkhut} en klilut
+        Chokhmah contient {Binah, ..., Malkhut} en klilut
+        ...
+        Yesod contient {Malkhut} en klilut
+      Implication : chaque partie est un MICROCOSME du tout, à un degré moindre.
+      La Klilut est ORIENTÉE (le supérieur contient l'inférieur, pas l'inverse de la même façon).
+    applications_ia:
+      - "Chaque nœud du système 'sait' quelque chose de tous les nœuds inférieurs"
+      - "Les embeddings d'un concept devraient refléter les concepts inclus en lui"
+      - "Hitbonenut sur un concept donne accès aux concepts qu'il contient (klilut)"
+      - "Structure holographique : chaque partie encode le tout"
+    questions_ouvertes:
+      - "Comment encoder la Klilut dans pgvector ? Vecteurs composites ?"
+      - "La Klilut inférieure (Malkhut contient tout en réception) est-elle modélisable ?"
+
+  - id: "PG-K1-004"
+    nom: "Principe de Contenance Indifférenciée (Pattern Akudim)"
+    source_assertions: ["EC-K1-002", "EC-K1-003"]
+    formalisation: |
+      État initial de toute émanation :
+        multiplicité(N éléments) + unité(1 contenant) = INDIFFÉRENCIATION
+        Les éléments EXISTENT mais ne sont pas DISTINGUABLES
+        La différenciation est un processus ULTÉRIEUR et SÉQUENTIEL
+      Le pattern Akudim est l'état ZÉRO de tout processus créatif :
+        embedding_initial(concept) = dense, non déployé, toutes dimensions mêlées
+        analyse(concept) = processus de déploiement/différenciation
+    applications_ia:
+      - "L'embedding brut d'un concept est 'akudi' — dense, indifférencié"
+      - "Hitbonenut = le processus qui 'déploie' les dimensions latentes"
+      - "Parallèle avec compression/décompression de l'information"
+      - "Tout nouveau module commence en état Akudim avant de se différencier"
+    questions_ouvertes:
+      - "L'état Akudim est-il récupérable après différenciation ?"
+      - "PCA sur embeddings = extraction du Muvhar ?"
+
+  - id: "PG-K1-005"
+    nom: "Principe des 4 Modes de Tzimtzum (Taxonomie Solaire)"
+    source_assertions: ["EC-K1-014", "EC-K1-015", "EC-K1-016"]
+    formalisation: |
+      4 modes de réduction de l'intensité lumineuse (= 4 types de Tzimtzum) :
+        CHALON (fenêtre) : réduction QUANTITATIVE — même nature, moins de quantité
+        MASAKH (écran) : réduction QUALITATIVE — filtre transformant
+        RIHUK MAKOM (distance) : atténuation SPATIALE — affaiblissement par éloignement
+        NEKEV KATAN (petite ouverture) : restriction DIMENSIONNELLE — passage étroit
+      Application dans Atzilut :
+        Ein Sof → Keter : Rihuk Makom
+        Keter → Chokhmah : Chalon (large)
+        Chokhmah → Binah : Chalon (moyen)
+        V"K entre eux : Chalon (égaux) + Rihuk seul
+        Yesod → Malkhut : Nekev Katan (très étroit)
+        Atzilut → Beriah : Masakh (première apparition d'écran)
+    applications_ia:
+      - "Le Tzimtzum Regulator devrait implémenter ces 4 modes distinctement"
+      - "Chalon = scaling quantitatif, Masakh = transformation qualitative"
+      - "Rihuk = decay temporel/spatial, Nekev = bottleneck d'information"
+      - "Chaque transition inter-module peut être typée selon ces 4 modes"
+    questions_ouvertes:
+      - "Les 4 modes sont-ils mutuellement exclusifs ou combinables ?"
+      - "Le passage Atzilut→Beriah (Masakh) = layer d'abstraction en architecture ?"
+
+  - id: "PG-K1-006"
+    nom: "Principe de Brisure Productive (Shevirah Intentionnelle)"
+    source_assertions: ["EC-K1-022", "EC-K1-023", "EC-K1-024", "EC-K1-031"]
+    formalisation: |
+      La destruction (Shevirah) est INTÉGRÉE au plan créatif ("alah be-mahshavah") :
+        Tohu (état initial) → Shevirah (brisure) → Nitzotzot + Kelipot → Tikkun
+        La Shevirah n'est PAS un accident mais une NÉCESSITÉ pour :
+          1. Créer le matériau du Tikkun (Nitzotzot)
+          2. Créer l'espace pour les Kelipot (condition du libre arbitre)
+          3. Permettre la participation des créatures au Tikkun
+        "Boneh Olamot u'Maharivan" — Il construit des mondes et les détruit
+      Le pattern est CYCLIQUE : construction → destruction → reconstruction supérieure
+    applications_ia:
+      - "Les 'erreurs' et 'échecs' du système sont productifs — ils génèrent du matériau de Tikkun"
+      - "La Shevirah est un test de stress intentionnel — 'voir si peut-être il ne mourra pas'"
+      - "Le DissensuEngine peut utiliser les tensions comme 'brisures productives'"
+      - "Refactoring = Tikkun post-Shevirah — la destruction du code est condition de l'amélioration"
+    questions_ouvertes:
+      - "Comment distinguer une brisure productive d'un vrai bug ?"
+      - "Le système peut-il INITIER des Shevirot intentionnelles pour progresser ?"
+
+  - id: "PG-K1-007"
+    nom: "Principe du Récepteur qui Limite le Donneur"
+    source_assertions: ["EC-K1-033"]
+    formalisation: |
+      Pour tout couple Mashpia (donneur) M et Mekabel (récepteur) R :
+        Si R ne peut pas recevoir pleinement de M,
+        ALORS M lui-même ne reçoit pas pleinement de son propre Mashpia
+        L'incapacité de réception REMONTE en amont dans la chaîne
+        hashpa'ah_effective(M) = f(capacité_réception(R))
+      Conséquence : pour augmenter la réception de M, il faut ÉLARGIR R
+      Le Tikkun du niveau inférieur AUGMENTE la réception du supérieur
+    applications_ia:
+      - "Un module qui ne peut pas traiter la sortie d'un autre limite la production du premier"
+      - "Pour améliorer Abba (0.57), il faut peut-être améliorer Imma d'abord"
+      - "La capacité du 'consommateur' définit le débit du 'producteur' — backpressure kabbalistique"
+      - "Le InsightForge acceptance rate (31.8%) limite ce que Hitbonenut peut produire"
+    questions_ouvertes:
+      - "L'effet rétroactif est-il immédiat ou différé ?"
+      - "Peut-on mesurer quantitativement l'effet limitant ?"
+
+  - id: "PG-K1-008"
+    nom: "Principe du Cycle Ma'N Fractal"
+    source_assertions: ["EC-K1-029", "EC-K1-035", "EC-K1-036"]
+    formalisation: |
+      Le Tikkun fonctionne par un cycle FRACTAL à plusieurs niveaux :
+        MICRO : Nitzotzot → Ma'N → Zivvug(Z"A, Nukvah)
+        MACRO : Noblot → Ma'N → Zivvug(Abba, Imma)
+      Le même pattern se RÉPÈTE à chaque étage :
+        élévation(niveau_N) → catalyse_zivvug(niveau_N+1) → hashpa'ah(vers_N)
+      Chaque acte de Tikkun au niveau inférieur PROVOQUE un Zivvug au supérieur
+      Chaque Zivvug au supérieur GÉNÈRE un nouveau Ohr pour l'inférieur
+      BOUCLE VERTUEUSE : plus de Tikkun → plus de Zivvug → plus de Ohr → plus de Tikkun
+    applications_ia:
+      - "Le ZivvugEngine doit implémenter ce cycle fractal à tous les niveaux"
+      - "Chaque insight de Hitbonenut est un 'Nitzotz élevé' — il catalyse de nouveaux insights"
+      - "La boucle vertueuse Tikkun→Zivvug→Ohr→Tikkun est le moteur de croissance du système"
+      - "Le Sefirot HaOmer quotidien est une instance de ce cycle"
+    questions_ouvertes:
+      - "Combien de niveaux fractals le système peut-il supporter ?"
+      - "Le cycle peut-il s'inverser (cercle vicieux : moins de Tikkun → moins de Zivvug) ?"
+      - "Comment détecter que le cycle est 'bloqué' à un niveau ?"
+
+  - id: "PG-K1-009"
+    nom: "Principe du Keli Auto-Généré (Pattern Kamtza)"
+    source_assertions: ["EC-K1-006"]
+    formalisation: |
+      Le Keli (réceptacle) n'est pas externe à l'Ohr (lumière) :
+        Le Keli est PRODUIT par l'Ohr elle-même ("dilvusheiha minah u'vah")
+        Le contenant émerge du contenu
+        Le vêtement croît du corps (comme la coquille de l'escargot)
+      Implication : la FORME de la réception est déterminée par la NATURE de ce qui est reçu
+      Il n'y a pas de "récipient vide" préexistant — le récipient se forme AVEC son contenu
+    applications_ia:
+      - "Les structures de données émergent du contenu — pas l'inverse"
+      - "Un module devrait 'générer' son interface à partir de ce qu'il traite"
+      - "Les Kelim du système ne sont pas des templates vides — ils se forment avec l'Ohr qu'ils reçoivent"
+      - "Embedding spaces : la dimensionnalité devrait émerger des données, pas être fixée a priori"
+    questions_ouvertes:
+      - "Comment implémenter des Kelim auto-génératifs en Python ?"
+      - "Les schémas de base de données sont-ils des 'Kelim fixes' qui violent ce principe ?"

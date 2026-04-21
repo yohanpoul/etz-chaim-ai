@@ -1,0 +1,33 @@
+Etz Chaim AI
+Copyright 2026 Etz Chaim AI Contributors
+
+This product includes software developed by the Etz Chaim AI project.
+
+-------------------------------------------------------------------------------
+Primary source corpus (Sifrei Yesod)
+-------------------------------------------------------------------------------
+
+The doctrinal corpus under `sifrei_yesod/sefarim/` is transposed from primary
+sources in the public domain :
+
+- Zohar (Aramaic) — based on Sefaria Mantua 1558 edition, CC-BY 3.0.
+  https://www.sefaria.org
+- Etz Chaim by Rabbi Hayyim Vital — public domain, multiple editions.
+- Tikkunei Zohar — public domain.
+
+Transposition annotations, relational structure, mapping to source code, and
+generative principles (`principes_generatifs`) are original work by the Etz
+Chaim AI Contributors, licensed under Apache License 2.0.
+
+-------------------------------------------------------------------------------
+Third-party dependencies
+-------------------------------------------------------------------------------
+
+See `requirements.txt` for pinned runtime dependencies. Each dependency is
+distributed under its own license. Notable components :
+
+- Flask (BSD-3-Clause)
+- psycopg2 (LGPL with OpenSSL exception)
+- pgvector (PostgreSQL License)
+- PyYAML (MIT)
+- pytest (MIT)

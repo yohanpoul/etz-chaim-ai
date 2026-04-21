@@ -1,0 +1,531 @@
+# ═══════════════════════════════════════════════════════════════════
+# Cube de l'Espace — Sefer Yetzirah, recension du Gra
+# ═══════════════════════════════════════════════════════════════════
+#
+# Source : SY 1:13, 3:2-5:4, recension du Gra (Gaon de Vilna)
+# Référence : Kaplan, A. "Sefer Yetzirah: The Book of Creation." Weiser, 1990.
+#
+# Les 22 lettres sont mappées sur un cube 3D :
+#   - 3 mères → 3 axes traversant le cube
+#   - 7 doubles → 6 faces + 1 centre
+#   - 12 simples → 12 arêtes (gvulei alakhson)
+#
+# Système de coordonnées :
+#   x : Est(+1) ↔ Ouest(-1)
+#   y : Nord(+1) ↔ Sud(-1)
+#   z : Haut(+1) ↔ Bas(-1)
+#
+# AVERTISSEMENT (E2) :
+#   Les attributions directionnelles, planétaires et tribales
+#   VARIENT entre recensions. Ce fichier suit le Gra via Kaplan.
+#   Les divergences significatives sont signalées.
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  source: "Sefer Yetzirah, recension du Gra"
+  primary_ref: "Kaplan 1990, ch. 1, 3-5"
+  critical_ref: "Hayman 2004"
+  structure: "22 lettres = 3 axes + 6 faces + 1 centre + 12 arêtes + 6 sceaux"
+
+# ─── 5 POSITIONS DE PRONONCIATION (SY 2:3) ──────────────────
+# "Il les plaça dans la bouche en cinq endroits."
+# De l'INTÉRIEUR vers l'EXTÉRIEUR : gorge → palais → langue → dents → lèvres
+# Chaque position encode une PROFONDEUR de traitement (5=caché → 1=manifesté).
+#
+# GORGE   (גרון, Garon)    : א ח ה ע  — sons gutturaux, profonds, cachés     — depth=5
+# PALAIS  (חיך, Chikk)     : ג י כ ק  — sons palataux, médians               — depth=4
+# LANGUE  (לשון, Lashon)   : ד ט ל נ ת — sons linguaux, articulés, précis     — depth=3
+# DENTS   (שיניים, Shinayim): ז ס ש ר צ — sons dentaux, sifflants, coupants   — depth=2
+# LÈVRES  (שפתיים, Sfatayim): ב ו מ פ  — sons labiaux, extérieurs, expressifs — depth=1
+#
+# Ref: SY 2:3, Kaplan 1990 pp. 99-106, Hayman 2004 §2.3
+pronunciation_positions:
+  gorge:
+    hebrew: "גרון"
+    transliteration: "garon"
+    depth: 5
+    quality: "gutturaux — sons profonds et cachés"
+    letters: ["aleph", "cheth", "heh", "ayin"]
+  palais:
+    hebrew: "חיך"
+    transliteration: "chikk"
+    depth: 4
+    quality: "palataux — sons médians"
+    letters: ["gimel", "yod", "kaph", "qoph"]
+  langue:
+    hebrew: "לשון"
+    transliteration: "lashon"
+    depth: 3
+    quality: "linguaux — sons articulés et précis"
+    letters: ["daleth", "teth", "lamed", "nun", "tav"]
+  dents:
+    hebrew: "שיניים"
+    transliteration: "shinayim"
+    depth: 2
+    quality: "dentaux — sons sifflants et coupants"
+    letters: ["zayin", "samekh", "shin", "resh", "tsadi"]
+  levres:
+    hebrew: "שפתיים"
+    transliteration: "sfatayim"
+    depth: 1
+    quality: "labiaux — sons extérieurs et expressifs"
+    letters: ["beth", "vav", "mem", "peh"]
+
+# ─── 6 SCEAUX — Permutations de YHV scellant les directions ───
+# SY 1:13 (GRA) : "Il choisit trois lettres [...] et Il les scella
+#   de six côtés. Il se tourna vers le haut et le scella avec YHV."
+#
+# Les 3! = 6 permutations de Yod-Hé-Vav scellent les 6 directions.
+# Chaque permutation définit un ORDRE DE PRIORITÉ cognitif :
+#   Y (Yod) = Chokmah = intuition/flash instantané
+#   H (Hé)  = Binah   = analyse/compréhension structurante
+#   V (Vav) = Tiferet = connexion/synthèse harmonisante
+#
+# L'ordre des lettres dans le sceau détermine la séquence
+# de traitement : quelle faculté est consultée en premier.
+
+seals:
+  haut:
+    permutation: "YHV"
+    hebrew: "יהו"
+    letters: ["yod", "heh", "vav"]
+    cognitive_order: ["intuition", "analyse", "synthèse"]
+    sephirotic_order: ["chokmah", "binah", "tiferet"]
+    description: >
+      Monter vers l'abstraction : l'intuition guide (Yod en tête),
+      puis l'analyse structure (Hé), puis la synthèse connecte (Vav).
+    sy_ref: "SY 1:13"
+
+  bas:
+    permutation: "YVH"
+    hebrew: "יוה"
+    letters: ["yod", "vav", "heh"]
+    cognitive_order: ["intuition", "synthèse", "analyse"]
+    sephirotic_order: ["chokmah", "tiferet", "binah"]
+    description: >
+      Descendre vers le concret : l'intuition guide (Yod),
+      la connexion précède l'analyse (Vav avant Hé) —
+      synthétiser avant de décomposer.
+    sy_ref: "SY 1:13"
+
+  est:
+    permutation: "HYV"
+    hebrew: "היו"
+    letters: ["heh", "yod", "vav"]
+    cognitive_order: ["analyse", "intuition", "synthèse"]
+    sephirotic_order: ["binah", "chokmah", "tiferet"]
+    description: >
+      Aller vers le nouveau (Est = lever du soleil) : comprendre
+      d'abord (Hé), puis laisser l'intuition affiner (Yod),
+      puis connecter au connu (Vav).
+    sy_ref: "SY 1:13"
+
+  ouest:
+    permutation: "HVY"
+    hebrew: "הוי"
+    letters: ["heh", "vav", "yod"]
+    cognitive_order: ["analyse", "synthèse", "intuition"]
+    sephirotic_order: ["binah", "tiferet", "chokmah"]
+    description: >
+      Retourner vers le connu (Ouest = coucher) : analyser
+      la situation (Hé), synthétiser avec l'existant (Vav),
+      puis l'intuition finale valide (Yod).
+    sy_ref: "SY 1:13"
+
+  nord:
+    permutation: "VYH"
+    hebrew: "ויה"
+    letters: ["vav", "yod", "heh"]
+    cognitive_order: ["synthèse", "intuition", "analyse"]
+    sephirotic_order: ["tiferet", "chokmah", "binah"]
+    description: >
+      Nord = le côté caché (tzafon) : la connexion guide (Vav),
+      l'intuition éclaire (Yod), l'analyse confirme (Hé).
+      Le chemin du mystère — sentir les liens d'abord.
+    sy_ref: "SY 1:13"
+
+  sud:
+    permutation: "VHY"
+    hebrew: "והי"
+    letters: ["vav", "heh", "yod"]
+    cognitive_order: ["synthèse", "analyse", "intuition"]
+    sephirotic_order: ["tiferet", "binah", "chokmah"]
+    description: >
+      Sud = le côté de la lumière (darom) : la connexion
+      harmonise (Vav), l'analyse éclaire (Hé), l'intuition
+      couronne (Yod). Le chemin de la clarté.
+    sy_ref: "SY 1:13"
+
+# ─── LES 3 REGISTRES (Olam, Shanah, Nefesh) ───────────────────
+# SY 3-5 : Chaque lettre opère SIMULTANÉMENT dans 3 registres :
+#   OLAM  (עולם) = Espace/Univers — ce que la lettre crée dans le monde
+#   SHANAH (שנה) = Temps/Année — ce que la lettre gouverne dans le cycle
+#   NEFESH (נפש) = Âme/Corps — ce que la lettre forme dans l'être
+#
+# Mapping des champs existants :
+#   Mères  : olam=element, shanah=season, nefesh=body_part
+#   Doubles: olam=planet,  shanah=day,    nefesh=gate
+#   Simples: olam=zodiac,  shanah=month,  nefesh=organ
+
+# ─── 3 MÈRES — Axes du cube ────────────────────────────────────
+# SY 3:2-4 : "Trois mères : Aleph Mem Shin."
+
+mothers:
+  aleph:
+    letter: "א"
+    gematria: 1
+    mouth_position: gorge
+    mouth_depth: 5
+    element: air
+    season: inter-saison      # le médiateur — ni été ni hiver
+    body_part: poitrine        # nefesh — le torse, siège du souffle (SY 3:4)
+    type: axis
+    axis: haut-bas
+    coordinates:
+      from: [0, 0, -1]
+      to:   [0, 0, 1]
+    role: "Médiateur — le souffle qui arbitre entre feu et eau"
+    sy_ref: "SY 3:4"
+
+  mem:
+    letter: "מ"
+    gematria: 40
+    mouth_position: levres
+    mouth_depth: 1
+    element: eau
+    season: hiver             # choref — la saison froide
+    body_part: ventre          # nefesh — le beten, siège de la digestion (SY 3:4)
+    type: axis
+    axis: est-ouest
+    coordinates:
+      from: [-1, 0, 0]
+      to:   [1, 0, 0]
+    role: "Réception horizontale — l'eau qui s'étend"
+    sy_ref: "SY 3:4"
+
+  shin:
+    letter: "ש"
+    gematria: 300
+    mouth_position: dents
+    mouth_depth: 2
+    element: feu
+    season: été               # kayitz — la saison chaude
+    body_part: tête            # nefesh — le rosh, siège de la pensée (SY 3:4)
+    type: axis
+    axis: nord-sud
+    coordinates:
+      from: [0, -1, 0]
+      to:   [0, 1, 0]
+    role: "Transformation verticale — le feu qui monte et descend"
+    sy_ref: "SY 3:4"
+
+# ─── 7 DOUBLES — 6 faces + 1 centre ───────────────────────────
+# SY 4:1-4 : "Sept doubles : Beth Gimel Daleth Kaph Peh Resh Tav."
+# Chaque double gouverne : un couple d'opposés, une planète,
+# un jour de la semaine, et une porte de l'âme (ouverture du visage).
+
+doubles:
+  beth:
+    letter: "ב"
+    gematria: 2
+    mouth_position: levres
+    mouth_depth: 1
+    type: face
+    direction: haut
+    coordinates: [0, 0, 1]
+    planet: saturne           # Shabtai
+    day: dimanche             # Yom Rishon — 1er jour
+    gate: oeil_droit          # porte de la vision droite
+    opposites:
+      dagesh: sagesse         # chokhmah
+      rafeh: folie            # ivvelet
+    sy_ref: "SY 4:2"
+
+  gimel:
+    letter: "ג"
+    gematria: 3
+    mouth_position: palais
+    mouth_depth: 4
+    type: face
+    direction: bas
+    coordinates: [0, 0, -1]
+    planet: jupiter           # Tzedek
+    day: lundi                # Yom Sheni — 2ème jour
+    gate: oeil_gauche
+    opposites:
+      dagesh: richesse        # osher
+      rafeh: pauvreté         # oni
+    sy_ref: "SY 4:2"
+
+  daleth:
+    letter: "ד"
+    gematria: 4
+    mouth_position: langue
+    mouth_depth: 3
+    type: face
+    direction: est
+    coordinates: [1, 0, 0]
+    planet: mars              # Maadim
+    day: mardi                # Yom Shlishi — 3ème jour
+    gate: oreille_droite
+    opposites:
+      dagesh: fertilité       # zera
+      rafeh: désolation       # shemamah
+    sy_ref: "SY 4:2"
+
+  kaph:
+    letter: "כ"
+    gematria: 20
+    mouth_position: palais
+    mouth_depth: 4
+    type: face
+    direction: ouest
+    coordinates: [-1, 0, 0]
+    planet: soleil            # Chamah
+    day: mercredi             # Yom Revi'i — 4ème jour
+    gate: oreille_gauche
+    opposites:
+      dagesh: vie             # chaim
+      rafeh: mort             # mavet
+    sy_ref: "SY 4:2"
+
+  peh:
+    letter: "פ"
+    gematria: 80
+    mouth_position: levres
+    mouth_depth: 1
+    type: face
+    direction: nord
+    coordinates: [0, 1, 0]
+    planet: vénus             # Nogah
+    day: jeudi                # Yom Chamishi — 5ème jour
+    gate: narine_droite
+    opposites:
+      dagesh: domination      # memshalah
+      rafeh: servitude        # avdut
+    sy_ref: "SY 4:2"
+
+  resh:
+    letter: "ר"
+    gematria: 200
+    mouth_position: dents
+    mouth_depth: 2
+    type: face
+    direction: sud
+    coordinates: [0, -1, 0]
+    planet: mercure           # Kokhav
+    day: vendredi             # Yom Shishi — 6ème jour
+    gate: narine_gauche
+    opposites:
+      dagesh: paix            # shalom
+      rafeh: guerre           # milchamah
+    sy_ref: "SY 4:2"
+
+  tav:
+    letter: "ת"
+    gematria: 400
+    mouth_position: langue
+    mouth_depth: 3
+    type: center
+    direction: centre
+    coordinates: [0, 0, 0]
+    planet: lune              # Levanah
+    day: shabbat              # 7ème jour — repos, intégration
+    gate: bouche              # peh — la sortie vers le monde
+    opposites:
+      dagesh: grâce           # chen
+      rafeh: laideur          # ki'ur
+    sy_ref: "SY 4:2"
+
+# ─── 12 SIMPLES — 12 arêtes (gvulei alakhson) ─────────────────
+# SY 5:1-4 : "Douze simples [...] douze limites diagonales."
+# Chaque simple gouverne : un sens, un signe zodiacal, un mois,
+# une tribu d'Israël, et un organe directeur du corps.
+#
+# TRIBUS : attribution GRA via Kaplan. Les 12 tribus incluent
+# Ephraim et Menashe (fils de Joseph) à la place de Joseph et Levi.
+# Divergences fréquentes entre recensions.
+#
+# ORGANES : les 12 se divisent en 6 paires externes (droite/gauche)
+# et 6 organes internes.
+
+simples:
+  heh:
+    letter: "ה"
+    gematria: 5
+    mouth_position: gorge
+    mouth_depth: 5
+    type: edge
+    direction: nord-est
+    coordinates: [1, 1, 0]
+    zodiac: bélier            # Taleh (Aries)
+    month: nisan
+    sense: vue                # re'iyah — perception directe
+    tribe: yehudah            # Judah — la tribu royale
+    organ: main_droite        # yad yemin
+    sy_ref: "SY 5:3"
+
+  vav:
+    letter: "ו"
+    gematria: 6
+    mouth_position: levres
+    mouth_depth: 1
+    type: edge
+    direction: sud-est
+    coordinates: [1, -1, 0]
+    zodiac: taureau           # Shor (Taurus)
+    month: iyyar
+    sense: ouïe               # shmi'ah — écoute
+    tribe: yissachar          # Issachar — la tribu de l'étude
+    organ: rein_droit         # kulyah yemin
+    sy_ref: "SY 5:3"
+
+  zayin:
+    letter: "ז"
+    gematria: 7
+    mouth_position: dents
+    mouth_depth: 2
+    type: edge
+    direction: est-haut
+    coordinates: [1, 0, 1]
+    zodiac: gémeaux           # Te'omim (Gemini)
+    month: sivan
+    sense: odorat             # re'iach — flair
+    tribe: zevulun            # Zebulun — la tribu du commerce
+    organ: pied_droit         # regel yemin
+    sy_ref: "SY 5:3"
+
+  cheth:
+    letter: "ח"
+    gematria: 8
+    mouth_position: gorge
+    mouth_depth: 5
+    type: edge
+    direction: est-bas
+    coordinates: [1, 0, -1]
+    zodiac: cancer            # Sartan (Cancer)
+    month: tammouz
+    sense: parole             # si'ach — articulation
+    tribe: reuven             # Reuben — le premier-né
+    organ: main_gauche        # yad smol
+    sy_ref: "SY 5:3"
+
+  teth:
+    letter: "ט"
+    gematria: 9
+    mouth_position: langue
+    mouth_depth: 3
+    type: edge
+    direction: nord-haut
+    coordinates: [0, 1, 1]
+    zodiac: lion              # Arieh (Leo)
+    month: av
+    sense: goût               # te'imah — discernement gustatif
+    tribe: shimon             # Simeon
+    organ: oesophage          # veshet
+    sy_ref: "SY 5:3"
+
+  yod:
+    letter: "י"
+    gematria: 10
+    mouth_position: palais
+    mouth_depth: 4
+    type: edge
+    direction: nord-bas
+    coordinates: [0, 1, -1]
+    zodiac: vierge            # Betulah (Virgo)
+    month: elul
+    sense: action             # ma'aseh — le faire
+    tribe: gad                # Gad — la tribu guerrière
+    organ: pied_gauche        # regel smol
+    sy_ref: "SY 5:3"
+
+  lamed:
+    letter: "ל"
+    gematria: 30
+    mouth_position: langue
+    mouth_depth: 3
+    type: edge
+    direction: sud-ouest
+    coordinates: [-1, -1, 0]
+    zodiac: balance           # Moznayim (Libra)
+    month: tishrei
+    sense: mouvement          # halakh — apprentissage
+    tribe: ephraim            # Ephraim — fils droit de Joseph
+    organ: vesicule           # marah — vésicule biliaire
+    sy_ref: "SY 5:3"
+
+  nun:
+    letter: "נ"
+    gematria: 50
+    mouth_position: langue
+    mouth_depth: 3
+    type: edge
+    direction: nord-ouest
+    coordinates: [-1, 1, 0]
+    zodiac: scorpion          # Akrav (Scorpio)
+    month: cheshvan
+    sense: marche             # hilukh — progression
+    tribe: menashe            # Manasseh — fils gauche de Joseph
+    organ: intestins          # me'aim
+    sy_ref: "SY 5:3"
+
+  samekh:
+    letter: "ס"
+    gematria: 60
+    mouth_position: dents
+    mouth_depth: 2
+    type: edge
+    direction: ouest-haut
+    coordinates: [-1, 0, 1]
+    zodiac: sagittaire        # Keshet (Sagittarius)
+    month: kislev
+    sense: sommeil            # shenah — consolidation
+    tribe: binyamin           # Benjamin — le plus jeune
+    organ: estomac            # keivah
+    sy_ref: "SY 5:3"
+
+  ayin:
+    letter: "ע"
+    gematria: 70
+    mouth_position: gorge
+    mouth_depth: 5
+    type: edge
+    direction: ouest-bas
+    coordinates: [-1, 0, -1]
+    zodiac: capricorne        # Gedi (Capricorn)
+    month: tevet
+    sense: colère             # tza'aq — réaction affective
+    tribe: dan                # Dan — la tribu du jugement
+    organ: foie               # kaved
+    sy_ref: "SY 5:3"
+
+  tsadi:
+    letter: "צ"
+    gematria: 90
+    mouth_position: dents
+    mouth_depth: 2
+    type: edge
+    direction: sud-haut
+    coordinates: [0, -1, 1]
+    zodiac: verseau           # Deli (Aquarius)
+    month: shevat
+    sense: pensée             # hirhurim — méditation
+    tribe: asher              # Asher — la tribu de l'abondance
+    organ: rein_gauche        # kulyah smol
+    sy_ref: "SY 5:3"
+
+  qoph:
+    letter: "ק"
+    gematria: 100
+    mouth_position: palais
+    mouth_depth: 4
+    type: edge
+    direction: sud-bas
+    coordinates: [0, -1, -1]
+    zodiac: poissons          # Dagim (Pisces)
+    month: adar
+    sense: méditation         # shenah amuqah — sommeil profond
+    tribe: naftali            # Naphtali — la tribu de la course
+    organ: rate               # techol
+    sy_ref: "SY 5:3"

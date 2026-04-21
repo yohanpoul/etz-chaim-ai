@@ -1,0 +1,490 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 1 — Igulim ve-Yosher (עגולים ויושר)
+# Perek: 1 — Les 2 Hakirot et la Chaîne d'Émanation
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 1
+  shaar_name_he: "שער עגולים ויושר"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : STRUCTURE DU TEXTE ───
+
+  - id: "EC-H1S1-001"
+    source_he: "היכל א מן שבעה היכלות, והוא היכל אדם קדמון, ובהיכל זה יש שבעה שערים"
+    source_ref: "Heikhal 1, Sha'ar 1:1 — ouverture"
+    assertion: |
+      STRUCTURE ARCHITECTURALE du Etz Chaim :
+      7 HEIKHALOT (palais) au total.
+      HEIKHAL 1 = Heikhal ADAM KADMON (le Palais de l'Homme Primordial)
+      Ce Heikhal contient 7 SHA'ARIM (portes).
+      Le SHA'AR 1 = IGULIM VE-YOSHER (Cercles et Rectitude) avec 5 ANAFIM (branches).
+      L'architecture 7×7 = 49 portes au total (Sha'arei Binah).
+    type: axiome_explicite
+    concepts:
+      - {id: shivah_heikhalot, role: sept_palais}
+      - {id: heikhal_adam_kadmon, role: premier_palais}
+      - {id: shivah_shaarim, role: sept_portes}
+      - {id: igulim_ve_yosher, role: première_porte}
+      - {id: hamesh_anafim, role: cinq_branches}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "La structure macro du Etz Chaim : 7 Heikhalot × 7 Sha'arim"
+
+  # ─── BLOC B : HAKIRAH 1 — POURQUOI LA CRÉATION ───
+
+  - id: "EC-H1S1-002"
+    source_he: "בענין תכלית הכוונה של בריאת העולמות נבאר עתה ב' חקירות שנתעסקו בהם המקובלים"
+    source_ref: "Heikhal 1, Sha'ar 1:1"
+    assertion: |
+      2 HAKIROT (investigations) fondamentales des Mekubalim :
+      HAKIRAH 1 : Quelle est la CAUSE/RAISON de la création des mondes ?
+      HAKIRAH 2 : Pourquoi la création a-t-elle eu lieu à CE MOMENT et pas avant/après ?
+      Ces 2 questions encadrent TOUT le Etz Chaim.
+      La 1ère est ontologique (POURQUOI), la 2ème est temporelle (QUAND).
+    type: axiome_explicite
+    concepts:
+      - {id: shtei_hakirot, role: deux_investigations}
+      - {id: hakirah_sibah, role: pourquoi_la_création}
+      - {id: hakirah_zman, role: pourquoi_ce_moment}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Les 2 questions fondamentales qui structurent tout le Etz Chaim"
+
+  - id: "EC-H1S1-003"
+    source_he: "ונמנו וגמרו וגזרו אומר כי סיבת הדבר היה לפי שהנה הוא יתברך מוכרח שיהיה שלם בכל פעולותיו וכוחותיו ובכל שמותיו של גדולה ומעלה וכבוד"
+    source_ref: "Heikhal 1, Sha'ar 1:1"
+    assertion: |
+      RÉPONSE à la Hakirah 1 — la cause de la création :
+      Les sages ont conclu (namnu ve-gamru) :
+      Il était NÉCESSAIRE (mukhrah) que le Créateur soit SHALEM (complet)
+      dans toutes ses PE'ULOT (actions), KOHOT (pouvoirs), et SHEMOT (noms).
+      Sans la création → Ses actions et pouvoirs resteraient en POTENTIEL (koah)
+      et ne seraient pas en ACTE (po'al).
+      Sans passage à l'acte → Il ne serait pas appelé SHALEM (complet).
+      La création = l'ACTUALISATION des potentialités divines.
+    type: axiome_explicite
+    concepts:
+      - {id: shlemut_ha_bore, role: complétude_du_créateur}
+      - {id: pe_ulot_kohot, role: actions_et_pouvoirs}
+      - {id: koah_le_poel, role: potentiel_vers_actuel}
+      - {id: sibat_ha_briah, role: raison_de_la_création}
+    mapping:
+      modules: ["core/ratzon.py"]
+      tables: []
+      partzufim: []
+      relevance: "La création = actualisation — le potentiel doit devenir acte pour être complet"
+
+  - id: "EC-H1S1-004"
+    source_he: "כי הנה השם הגדול שהוא בן ד' אותיות הוי\"ה נקרא כן על הוראות הוויותו הנצחית וקיומו לעד היה הוה ויהיה טרם הבריאה ובזמן קיום הבריאה ואחרי התהפכו אל מה שהיה"
+    source_ref: "Heikhal 1, Sha'ar 1:1"
+    assertion: |
+      Le NOM YHVH (הויה) = l'expression de l'EXISTENCE ÉTERNELLE :
+      HAYAH (היה — Il était) = AVANT la création
+      HOVEH (הוה — Il est) = PENDANT la création
+      YIHIYEH (יהיה — Il sera) = APRÈS le retour à l'état originel
+      Sans la création → la dimension HOVEH (présent) n'aurait pas de manifestation.
+      Le Nom YHVH NÉCESSITE la création pour manifester ses 3 temps.
+      De même ADNUT (אדנות) nécessite des SERVITEURS pour être "Adon" (Maître).
+      De même RAHUM, HANUN, EREKH APAYIM nécessitent des CRÉATURES pour s'appliquer.
+    type: axiome_explicite
+    concepts:
+      - {id: shem_havayah_3_times, role: passé_présent_futur}
+      - {id: shemot_need_briah, role: noms_nécessitent_création}
+      - {id: hayah_hoveh_yihiyeh, role: trois_temps}
+      - {id: adnut, role: maîtrise_nécessite_serviteurs}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les Shemot divins ne se manifestent que PAR la création — le système doit exister pour que les Noms soient complets"
+
+  - id: "EC-H1S1-005"
+    source_he: "אמנם בהיות העולמות נבראים אז יצאו פעולותיו וכוחותיו יתברך לידי פועל ויהיה נקרא שלם בכל מיני פעולותיו וכחותיו וגם יהיה שלם בכל השמות וכינוים בלתי שום חסרון כלל"
+    source_ref: "Heikhal 1, Sha'ar 1:1"
+    assertion: |
+      AVEC la création des mondes :
+      Les Pe'ulot et Kohot sortent EN ACTE (la-yedei po'al).
+      Il est alors appelé SHALEM (complet) dans :
+      - Toutes ses PE'ULOT (actions)
+      - Tous ses KOHOT (pouvoirs)
+      - Tous ses SHEMOT (noms)
+      - Tous ses KINUIM (appellations)
+      SANS AUCUN MANQUE (bilti shum hisaron klal).
+      Preuve du Zohar (Pinchas 257b) : avant la création, Il était appelé
+      par ces noms EN RÉFÉRENCE aux créatures FUTURES (she-hayu atidin le-hibra'ot).
+    type: axiome_explicite
+    concepts:
+      - {id: shlemut_post_briah, role: complétude_par_la_création}
+      - {id: bilti_hisaron, role: sans_aucun_manque}
+      - {id: atidin_le_hibra_ot, role: en_référence_au_futur}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "La Shlemut est atteinte PAR l'actualisation — pas avant"
+
+  # ─── BLOC C : HAKIRAH 2 — POURQUOI CE MOMENT ───
+
+  - id: "EC-H1S1-006"
+    source_he: "החקירה ב היא קרובה אל שאלת מה למעלה ומה למטה מה לפנים ומה לאחור במס' חגיגה פ' אין דורשין"
+    source_ref: "Heikhal 1, Sha'ar 1:1"
+    assertion: |
+      HAKIRAH 2 : Pourquoi la création à CE MOMENT et pas avant/après ?
+      Cette question est PROCHE de l'interdit de la Mishnah Hagigah (2:1) :
+      "Quiconque regarde ces 4 choses, mieux vaudrait qu'il ne soit pas venu au monde :
+      mah le-ma'alah (ce qui est en haut), mah le-matah (en bas),
+      mah le-fanim (devant/avant), mah le-ahor (derrière/après)"
+      Le texte AVERTIT : c'est une question PROFONDE et DANGEREUSE.
+      On ne peut l'aborder que "ke-matzitz min ha-harakim" (en regardant par une fente).
+      Le Etz Chaim s'engage à ne traiter que les RASHEI PERAKIM (têtes de chapitres).
+    type: axiome_explicite
+    concepts:
+      - {id: hakirah_zman, role: question_du_timing}
+      - {id: arba_devarim, role: quatre_choses_interdites}
+      - {id: matzitz_min_harakim, role: regarder_par_la_fente}
+      - {id: sakkanah, role: danger_de_l_approfondissement}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Le texte reconnaît ses propres LIMITES — certaines questions restent partiellement voilées"
+
+  # ─── BLOC D : EIN SOF — LA SOURCE ABSOLUE ───
+
+  - id: "EC-H1S1-007"
+    source_he: "האור העליון למעלה למעלה עד אין קץ הנקרא א\"ס שמו מוכיח עליו שאין בו שום תפיסה לא במחשבה ולא בהרהור כלל ועיקר. והוא מופשט ומובדל מכל מחשבות"
+    source_ref: "Heikhal 1, Sha'ar 1:1"
+    assertion: |
+      Définition du EIN SOF (אין סוף — Sans Fin) :
+      Le OHR ELYON (lumière suprême) au-delà de tout sans limite (ad ein ketz).
+      Son NOM MÊME prouve : AUCUNE SAISIE (tefisah) n'est possible en lui
+      — ni par MAHSHAVAH (pensée) ni par HIRHUR (réflexion).
+      Il est MUFSHAT (abstrait) et MUVDAL (séparé) de TOUTE pensée.
+      Il PRÉCÈDE tout : Neetzalim (émanés), Nivra'im (créés),
+      Yetzirim (formés), Na'asim (faits).
+      Il n'a PAS de ZMAN (temps), pas de HATHALAH (début), pas de RESHIT (commencement).
+      Il est TOUJOURS EXISTANT (tamid nimtza), PERMANENT (kayam la-ad),
+      SANS ROSH (début) ni SOF (fin).
+    type: axiome_explicite
+    concepts:
+      - {id: ein_sof, role: source_absolue}
+      - {id: lo_tefisah, role: insaisissable}
+      - {id: mufshat_muvdal, role: abstrait_et_séparé}
+      - {id: kodem_la_kol, role: précède_tout}
+      - {id: tamid_nimtza, role: toujours_existant}
+      - {id: ein_rosh_ve_sof, role: sans_début_ni_fin}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Ein Sof = la source absolue au-delà de toute saisie — le 'root' ultime du système"
+
+  # ─── BLOC E : ADAM KADMON ET LA CHAÎNE D'ÉMANATION ───
+
+  - id: "EC-H1S1-008"
+    source_he: "מן הא\"ס נשתלשל אח\"כ מציאות המאור הגדול הנקרא א\"ק לכל הקדומים"
+    source_ref: "Heikhal 1, Sha'ar 1:1"
+    assertion: |
+      Du EIN SOF → s'est enchaîné (nishtalshal) le GRAND LUMINAIRE :
+      ADAM KADMON (א"ק — l'Homme Primordial) — "le-khol ha-kedumim" (pour tous les anciens).
+      A"K est la PREMIÈRE émanation du Ein Sof.
+      Le terme HISHTALSHELUT (enchaînement) = pas une création ex nihilo
+      mais un DÉPLOIEMENT progressif depuis la source.
+    type: axiome_explicite
+    concepts:
+      - {id: adam_kadmon, role: première_émanation}
+      - {id: hishtalshelut, role: enchaînement_progressif}
+      - {id: ma_or_gadol, role: grand_luminaire}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Adam Kadmon = première émanation du Ein Sof — le sommet de la chaîne"
+
+  - id: "EC-H1S1-009"
+    source_he: "ואח\"כ נשתלשלו ממנו האורות הנתלין בא\"ק הנה הם אורות רבים היוצאים מתוכו ומאירין חוצה לו. מהם תלויין ממוחו ומהם מגולגלתא ומהם מעיניו ומהם מאזניו ומהם מחוטמו ומהם מפיו ומהם ממצחו"
+    source_ref: "Heikhal 1, Sha'ar 1:1"
+    assertion: |
+      D'ADAM KADMON sortent de NOMBREUSES LUMIÈRES (orot rabim) :
+      Elles sortent de l'INTÉRIEUR de A"K et brillent à l'EXTÉRIEUR.
+      7 SOURCES anatomiques de ces lumières :
+      1. MOAH (cerveau) — lumières du cerveau
+      2. GULGALTA (crâne) — lumières du crâne
+      3. EINAYIM (yeux) — lumières des yeux
+      4. OZNAYIM (oreilles) — lumières des oreilles
+      5. HOTEM (nez) — lumières du nez
+      6. PEH (bouche) — lumières de la bouche
+      7. METZAH (front) — lumières du front
+      + lumières autour du GUFAH (corps) = les 7 TACHTONIM (inférieures)
+      Autour de ces 7 → des lumières supplémentaires = OLAM HA-NEKUDIM (monde des Points).
+    type: axiome_explicite
+    concepts:
+      - {id: orot_ak, role: lumières_d_adam_kadmon}
+      - {id: moah_ak, role: cerveau}
+      - {id: gulgalta_ak, role: crâne}
+      - {id: einayim_ak, role: yeux}
+      - {id: oznayim_ak, role: oreilles}
+      - {id: hotem_ak, role: nez}
+      - {id: peh_ak, role: bouche}
+      - {id: metzah_ak, role: front}
+      - {id: olam_ha_nekudim, role: monde_des_points}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les 7 sources de lumière de A\"K — l'anatomie complète du Primordial"
+
+  - id: "EC-H1S1-010"
+    source_he: "ואח\"כ נשתלשלו ממנו ד' עולמות אבי\"ע הידועים ומפורסמים כנזכר בזוהר ובתיקונים"
+    source_ref: "Heikhal 1, Sha'ar 1:1"
+    assertion: |
+      D'Adam Kadmon se sont enchaînés les 4 MONDES ABYA :
+      ATZILUT (אצילות — Émanation)
+      BERIAH (בריאה — Création)
+      YETZIRAH (יצירה — Formation)
+      ASIYAH (עשיה — Action)
+      Ces 4 mondes sont "connus et célèbres" (yedui'im u-mefursamim)
+      comme mentionnés dans le Zohar et les Tikkunim.
+    type: axiome_explicite
+    concepts:
+      - {id: abya, role: quatre_mondes}
+      - {id: atzilut_olam, role: monde_émanation}
+      - {id: beriah_olam, role: monde_création}
+      - {id: yetzirah_olam, role: monde_formation}
+      - {id: asiyah_olam, role: monde_action}
+    mapping:
+      modules: ["olamot/atzilut.py", "olamot/beriah.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Les 4 mondes ABYA — l'architecture des 4 niveaux du système"
+
+  # ─── BLOC F : A"K A UN DÉBUT — CONTRAIREMENT AU EIN SOF ───
+
+  - id: "EC-H1S1-011"
+    source_he: "ואמנם אצילות א\"ק הזה ומכ\"ש שאר עולמות שתחתיו כנ\"ל היה להם ראש וסוף והיה להם זמן התחלת הויותן ואצילותן משא\"כ בא\"ס הנ\"ל"
+    source_ref: "Heikhal 1, Sha'ar 1:1"
+    assertion: |
+      DISTINCTION FONDAMENTALE Ein Sof ↔ Adam Kadmon :
+      ADAM KADMON (et a fortiori les mondes en-dessous) :
+      → a un ROSH (début) et un SOF (fin)
+      → a un ZMAN (temps) de début d'existence et d'émanation
+      EIN SOF :
+      → PAS de Rosh ni de Sof
+      → PAS de Zman de début
+      → TOUJOURS existant
+      Tout ce qui est en-dessous du Ein Sof a un COMMENCEMENT.
+      Seul le Ein Sof est véritablement ÉTERNEL (sans début).
+    type: axiome_explicite
+    concepts:
+      - {id: ak_has_beginning, role: commencement_temporel}
+      - {id: ein_sof_no_beginning, role: éternité_absolue}
+      - {id: distinction_es_ak, role: frontière_ontologique}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La frontière Ein Sof / A\"K = la frontière entre l'éternel et le temporel"
+
+  # ─── BLOC G : L'ORDRE SÉQUENTIEL DE LA CRÉATION ───
+
+  - id: "EC-H1S1-012"
+    source_he: "מן העת וזמן אשר התחיל התפשטות והשתלשלות האורות והעולמות הנ\"ל מאז התחיל הויות הנבראים כולם זה אח\"ז עד שבא הדבר אל המציאות אשר הוא עתה"
+    source_ref: "Heikhal 1, Sha'ar 1:1"
+    assertion: |
+      RÉPONSE à la Hakirah 2 — pourquoi ce moment :
+      Depuis le MOMENT où l'Hitpashtut (déploiement) a commencé,
+      les créatures sont venues à l'existence ZEH AHAR ZEH (l'une après l'autre).
+      Chaque monde est créé APRÈS celui qui est au-dessus de lui.
+      Il était IMPOSSIBLE (lo hayah efshar) d'AVANCER ou RETARDER la création.
+      Le TIMING n'est pas arbitraire — il est STRUCTURELLEMENT DÉTERMINÉ
+      par l'ORDRE de l'Hishtalshelut.
+      La création de ce monde arrive quand TOUS les mondes supérieurs sont en place.
+      Le texte conclut : "Dai be-zeh" (cela suffit) — le sujet reste partiellement voilé.
+    type: axiome_explicite
+    concepts:
+      - {id: zeh_ahar_zeh, role: séquence_obligatoire}
+      - {id: lo_efshar_le_hakdim, role: impossible_d_avancer}
+      - {id: seder_hishtalshelut, role: ordre_structurel}
+      - {id: dai_be_zeh, role: limite_de_l_explication}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "L'ordre de création est structurellement déterminé — pas de raccourci"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S1-001"
+    type: causal
+    from: shlemut_ha_bore
+    to: sibat_ha_briah
+    nature: "La nécessité de Shlemut (complétude) est la CAUSE de la création"
+    assertions_source: ["EC-H1S1-003"]
+
+  - id: "REL-H1S1-002"
+    type: causal
+    from: shemot_need_briah
+    to: sibat_ha_briah
+    nature: "Les Shemot divins nécessitent la création pour se manifester (YHVH, ADNI, Rahum...)"
+    assertions_source: ["EC-H1S1-004"]
+
+  - id: "REL-H1S1-003"
+    type: hiérarchique
+    from: ein_sof
+    to: adam_kadmon
+    nature: "Ein Sof → Adam Kadmon : première émanation, passage de l'éternel au temporel"
+    assertions_source: ["EC-H1S1-008", "EC-H1S1-011"]
+    bidirectionnel: false
+
+  - id: "REL-H1S1-004"
+    type: hiérarchique
+    from: adam_kadmon
+    to: abya
+    nature: "Adam Kadmon → 4 mondes ABYA : chaîne d'émanation descendante"
+    assertions_source: ["EC-H1S1-010"]
+    bidirectionnel: false
+
+  - id: "REL-H1S1-005"
+    type: contenance
+    from: adam_kadmon
+    to: orot_ak
+    nature: "Adam Kadmon contient 7+ sources de lumières (moah, gulgalta, einayim...)"
+    assertions_source: ["EC-H1S1-009"]
+
+  - id: "REL-H1S1-006"
+    type: séquentiel
+    from: ein_sof
+    to: asiyah_olam
+    via: [adam_kadmon, olam_ha_nekudim, atzilut_olam, beriah_olam, yetzirah_olam]
+    nature: "Chaîne complète : Ein Sof → A\"K → Nekudim → Atzilut → Beriah → Yetzirah → Asiyah"
+    assertions_source: ["EC-H1S1-008", "EC-H1S1-009", "EC-H1S1-010"]
+
+  - id: "REL-H1S1-007"
+    type: dualité_structurelle
+    paire: [ein_sof_no_beginning, ak_has_beginning]
+    nature: "Ein Sof = sans début (éternel). A\"K = avec début (temporel). Frontière ontologique"
+    assertions_source: ["EC-H1S1-011"]
+
+  - id: "REL-H1S1-008"
+    type: causal
+    from: seder_hishtalshelut
+    to: lo_efshar_le_hakdim
+    nature: "L'ordre structurel de l'Hishtalshelut rend IMPOSSIBLE d'avancer ou retarder la création"
+    assertions_source: ["EC-H1S1-012"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S1-001"
+    nom: "Principe d'Actualisation Nécessaire (Koah le-Po'al)"
+    source_assertions: ["EC-H1S1-003", "EC-H1S1-004", "EC-H1S1-005"]
+    formalisation: |
+      La COMPLÉTUDE (Shlemut) nécessite l'ACTUALISATION :
+      Un potentiel non actualisé = une INCOMPLÉTUDE (hisaron).
+      Formule : Shlemut = Koah (potentiel) + Po'al (acte)
+      Si Po'al = 0 → pas de Shlemut, même si Koah est infini.
+      Les NOMS (Shemot) ne sont complets que quand ils ont des RÉFÉRENTS réels :
+        YHVH → nécessite le TEMPS (hayah, hoveh, yihiyeh)
+        ADNI → nécessite des SERVITEURS
+        RAHUM → nécessite des CRÉATURES à qui faire miséricorde
+      La création n'est pas un choix — c'est une NÉCESSITÉ ONTOLOGIQUE de la complétude.
+    applications_ia:
+      - "Un module qui a des fonctionnalités non implémentées est INCOMPLET (Hisaron)"
+      - "Le code non déployé = Koah sans Po'al = pas de Shlemut"
+      - "Les Shemot du système (noms de fonctions, APIs) ne sont complets que quand ils ont des utilisateurs"
+      - "Le système DOIT créer des mondes (outputs) pour être complet"
+    questions_ouvertes:
+      - "L'actualisation est-elle un processus fini ou infini ?"
+      - "Peut-on être 'complet' avec seulement une partie actualisée ?"
+
+  - id: "PG-H1S1-002"
+    nom: "Principe de l'Ordre Structurel Irrévocable (Seder Hishtalshelut)"
+    source_assertions: ["EC-H1S1-012"]
+    formalisation: |
+      L'ORDRE de création est STRUCTURELLEMENT DÉTERMINÉ — pas arbitraire :
+      Chaque niveau DOIT être créé AVANT le niveau inférieur.
+      Il est IMPOSSIBLE (lo efshar) d'avancer ou de retarder.
+      Le TIMING de chaque étape = la conséquence STRUCTURELLE de l'étape précédente.
+      Corollaire : le timing de ce monde = le résultat de TOUTE la chaîne au-dessus.
+      ZEH AHAR ZEH (l'un après l'autre) = l'ordre est SÉQUENTIEL, pas parallèle.
+    applications_ia:
+      - "L'ordre de construction des modules est structurellement déterminé"
+      - "On ne peut pas construire un module avant que sa dépendance soit complète"
+      - "Le planning n'est pas arbitraire — il est dicté par la structure"
+      - "Les 'retards' ne sont pas des retards — c'est l'ordre naturel de l'Hishtalshelut"
+    questions_ouvertes:
+      - "Y a-t-il une parallélisation possible malgré la séquentialité ?"
+      - "Le Seder peut-il être CONNU à l'avance ou seulement découvert ?"
+
+  - id: "PG-H1S1-003"
+    nom: "Principe de la Frontière Ontologique (Ein Sof vs Émanation)"
+    source_assertions: ["EC-H1S1-007", "EC-H1S1-011"]
+    formalisation: |
+      Il existe une FRONTIÈRE ONTOLOGIQUE entre :
+      CE QUI EST ÉTERNEL (Ein Sof) : sans début, sans fin, insaisissable par la pensée
+      CE QUI EST ÉMANÉ (A"K et en-dessous) : avec début, avec fin, saisissable partiellement
+      TOUT ce qui est en-dessous de cette frontière a un COMMENCEMENT temporel.
+      RIEN au-dessus n'a de commencement.
+      La frontière n'est pas une SÉPARATION mais un SEUIL de nature ontologique.
+      Le Ein Sof est MUFSHAT (abstrait) de toute catégorie — temps, espace, pensée.
+    applications_ia:
+      - "Le système a un 'Ein Sof' = la source d'énergie/compute qui le précède et le dépasse"
+      - "Le code source (Ein Sof) précède le runtime (A\"K) qui précède les instances (ABYA)"
+      - "Certaines choses sont STRUCTURELLEMENT insaisissables par le système lui-même"
+      - "Le 'Dai be-zeh' (cela suffit) = accepter les limites de ce qui peut être compris"
+    questions_ouvertes:
+      - "Quel est le 'Ein Sof' du système Etz Chaim AI ?"
+      - "La frontière ontologique est-elle franchissable ?"
+
+  - id: "PG-H1S1-004"
+    nom: "Principe des Sources Anatomiques Multiples (7+ Orot de A\"K)"
+    source_assertions: ["EC-H1S1-009"]
+    formalisation: |
+      Un système primordial (A"K) émet ses lumières par MULTIPLES SOURCES anatomiques :
+      MOAH (cerveau) → pensée/computation
+      GULGALTA (crâne) → structure/protection
+      EINAYIM (yeux) → vision/perception
+      OZNAYIM (oreilles) → écoute/réception
+      HOTEM (nez) → discernement/filtrage
+      PEH (bouche) → expression/output
+      METZAH (front) → volonté/intention
+      GUFAH (corps) → exécution/action
+      Chaque source émet un TYPE de lumière différent.
+      Les lumières autour du corps = OLAM HA-NEKUDIM (monde des Points).
+    applications_ia:
+      - "Le système central (A\"K) a 7+ types d'output distincts"
+      - "Chaque 'organe' du système produit un flux de nature différente"
+      - "Les Orot des Einayim ≠ les Orot du Peh — même source, nature différente"
+      - "Le pattern anatomique est réutilisable pour structurer les canaux de sortie"
+    questions_ouvertes:
+      - "Les 7 sources sont-elles toutes nécessaires ou certaines sont-elles optionnelles ?"
+      - "L'ordre anatomique (haut→bas) correspond-il à un ordre de priorité ?"

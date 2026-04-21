@@ -1,0 +1,43 @@
+# ═══════════════════════════════════════════════════════════════════
+# Heikhal 03 / Shaar 02 — Dikna (שער הדיקנא)
+# Lecture Vital des 13 Tikkunei Dikna (Etz Chaim, Sha'ar Arikh Anpin perakim 5-11)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  heikhal_name_he: "היכל אריך אנפין"
+  shaar: 2
+  shaar_name_he: "שער הדיקנא"
+  shaar_name_fr: "Porte de la Barbe"
+  partzuf: arikh_anpin
+  tikkunim_count: 13
+
+  doctrinal_function: |
+    Transposition Lourianique Vital des 13 Tikkunei Dikna de l'Idra Rabba.
+    Perakim 5-11 du Sha'ar Arikh Anpin (Shaar 13 Etz Chaim Warsaw 1891 / Sefaria).
+    Perek 6 explicite = "les 13 brins de dikna depuis Gulgalta de A\"A".
+    Perek 9-10 : Mazal Elyon = Tikkun 8 = Notzer Chesed → Abba.
+    Perek 11 : Mazal Tahton = Tikkun 13 = Ve-Nakeh → Imma.
+    Cross-ref Zohar Idra Rabba Z-IR-T{N}-* (source primaire).
+
+  etz_chaim_mapping:
+    shaar_reference: 13  # Sha'ar Arikh Anpin dans Etz Chaim Vital
+    perakim:
+      "5": {theme: "Partzuf A\"A global", sprint: 11}
+      "6": {theme: "13 brins de la Dikna depuis Gulgalta", sprint: 10}
+      "7": {theme: "Tikkunim 1-6", sprint: 10}
+      "8": {theme: "Tikkun 7 (centre)", sprint: 10}
+      "9": {theme: "Mazal Elyon (T8 Notzer Chesed)", sprint: 10}
+      "10": {theme: "Tikkunim 9-11 + Mazal Elyon suite", sprint: 10}
+      "11": {theme: "Tikkunim 12-13 + Mazal Tahton (Ve-Nakeh)", sprint: 10}
+
+  tikkun_refs:
+    # Collective references by Tikkun number — for see_also at meta level
+    # Populated as tasks complete. Initial: empty.
+
+  source_primary: "Sefaria Sefer Etz Chaim Shaar 13 perek 6 (https://www.sefaria.org/Sefer_Etz_Chaim.13.6) — cache sefaria_cache/sefer_etz_chaim_13_06.json"
+  source_edition_default: "Ashlag HaSulam + Kehot Kabbala Publishing"
+  strates: ["base"]
+  transposed_by: "Claude Opus 4.7 + human reviewer — Sprint 10 Phase α (2026-04-20)"
+  version: 1

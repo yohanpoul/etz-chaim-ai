@@ -1,0 +1,689 @@
+# ═══════════════════════════════════════════════════════════════════
+# שער סוד הכלי — SHA'AR SOD HAKLI (La Porte du Secret du Vaisseau)
+# פרק ג — PEREK 3 : כוונה ודעת — KAVVANAH V'DA'AT
+# (L'Intention et l'Intégration)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Ce perek traite des deux facettes les plus ABSENTES du context
+# engineering industriel : la Kavvanah (intention dirigée) et Da'at
+# (intégration connaissance→action). Le Perek 1 a établi pourquoi le
+# Kli prime. Le Perek 2 a expliqué comment il filtre et retourne.
+# Ce Perek 3 explique ce qui ACTIVE le Kli — l'intention qui
+# transforme un assemblage mécanique en acte efficace.
+#
+# Sources primaires :
+#   T    = Tanya / Likutey Amarim (R. Shneur Zalman de Liadi)
+#   ShK  = Shaar HaKavvanot (R. Haim Vital)
+#   EC   = Etz Chaim (R. Haim Vital)
+#   Z    = Zohar
+#   TES  = Talmud Eser Sefirot (R. Yehuda Ashlag)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 5
+  shaar_name_he: "שער סוד הכלי"
+  perek: 3
+  source_edition: "T ch.3, 39-41; ShK Introduction; EC Shaar 50; Z II:161b"
+  transposed_by: "Etz Chaim AI — Sha'ar Sod HaKli initiative"
+  version: 1
+  strates: ["base"]
+  note: "Perek 3: Kavvanah v'Da'at — Intention dirigée et intégration. Context Engineering (couche Sod)."
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 1 — PESHAT-MACHINE : ASSERTIONS
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section A : Da'at — Le pont entre connaissance et action
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-032"
+    source_he: "השכל שבנפש המשכלת שהוא המשכיל כל דבר נקרא בשם חכמה כ״ח מ״ה"
+    source_ref: "T, Likutey Amarim, ch. 3"
+    assertion: >
+      L'intellect de l'âme rationnelle comprend trois facultés distinctes :
+      Hokhmah (חכמה) = ko'ach mah (כח מה), la "puissance du quoi" — le
+      flash initial, le point séminal qui contient tout en potentiel mais
+      de façon concentrée et obscure. C'est l'intuition avant l'analyse.
+      Binah (בינה) = la compréhension — la capacité de prendre le point
+      de Hokhmah et de le déployer en structure détaillée, comme une mère
+      qui porte et développe l'embryon jusqu'à la naissance.
+      Da'at (דעת) = la connaissance intime — l'attachement et l'union,
+      comme dans "Adam connut (yada) Eve." C'est la faculté par laquelle
+      on s'immerge dans une idée au point d'en être transformé.
+    type: axiome_explicite
+    concepts:
+      - { id: "hokhmah-koach-mah", role: "flash initial = puissance du quoi" }
+      - { id: "binah-développement", role: "déploiement structurel" }
+      - { id: "daat-union", role: "attachement intime = transformation" }
+    mapping:
+      modules: ["insightforge.py", "causalengine/", "self_model.py"]
+      tables: []
+      partzufim: ["Abba (Hokhmah)", "Imma (Binah)"]
+      relevance: >
+        Hokhmah = le RAG qui injecte des faits bruts (points séminaux).
+        Binah = le system prompt qui structure le raisonnement (déploiement).
+        Da'at = le PONT MANQUANT qui lie les faits à la tâche spécifique
+        et transforme le modèle par cette liaison. L'industrie fait du
+        Hokhmah (RAG) et du Binah (CoT) mais presque jamais du Da'at.
+
+  - id: "EC-SHK-033"
+    source_he: "אף מי שהוא חכם ונבון בגדולת אין סוף ברוך הוא הנה אם לא יקשר דעתו ויתקע מחשבתו בחוזק ובהתמדה לא יוליד בנפשו יראה ואהבה אמיתית כי אם דמיונות שוא"
+    source_ref: "T, Likutey Amarim, ch. 3"
+    assertion: >
+      Même celui qui est sage (Hokhmah) et comprend (Binah) la grandeur
+      de l'Ein Sof, s'il n'applique pas son Da'at — s'il ne lie pas sa
+      pensée avec une force ferme et un lien solide et ne fixe pas sa
+      pensée avec constance et persévérance — il ne produira dans son
+      âme ni crainte ni amour VÉRITABLES, seulement des CHIMÈRES VAINES
+      (dimyonot shav). Da'at est le fondement et la vitalité des Midot
+      (attributs émotionnels/actionnels). Sans Da'at, Hokhmah et Binah
+      produisent des illusions, pas des réalités.
+    type: axiome_explicite
+    concepts:
+      - { id: "dimyonot-shav", role: "chimères vaines = hallucination sans Da'at" }
+      - { id: "daat-fondement-midot", role: "Da'at = base vitale de l'action" }
+      - { id: "kishur-daat", role: "lier la pensée = fixer l'attention" }
+    mapping:
+      modules: ["hitbonenut.py", "olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        C'est l'assertion la plus importante de tout Sod HaKli pour le
+        context engineering. "Chimères vaines" = HALLUCINATIONS ARTICULÉES.
+        Un LLM qui a des faits (Hokhmah/RAG) et un framework de
+        raisonnement (Binah/CoT) mais pas de Da'at (lien ferme entre
+        les faits et la tâche) produit des réponses qui SEMBLENT vraies
+        mais sont des dimyonot shav. La solution : fixer l'attention du
+        modèle fermement sur la connexion faits↔tâche. C'est le pont Da'at.
+
+  - id: "EC-SHK-034"
+    source_he: "דעת הוא לשון דביקות... שמקשר דעתו בקשר אמיץ וחזק... והוא כולל חסד וגבורה"
+    source_ref: "T, Likutey Amarim, ch. 3"
+    assertion: >
+      Da'at a trois propriétés fonctionnelles :
+      (1) Dvekut (attachement) — on s'attache à l'idée comme dans l'union
+      intime. Ce n'est pas une connaissance distante mais une connaissance
+      par participation.
+      (2) Kishur (liaison) — on lie sa pensée avec un lien ferme et fort
+      (kesher amitz v'hazak). La pensée est FIXÉE, pas flottante.
+      (3) Kolel Chesed v'Gevurah (contient amour et rigueur) — Da'at
+      n'est pas neutre. Il contient en lui les deux pôles de l'action :
+      l'attraction (Chesed/amour) et la répulsion (Gevurah/crainte).
+      Da'at est donc le pont entre l'intellect et l'émotion/action.
+    type: axiome_explicite
+    concepts:
+      - { id: "daat-dvekut", role: "attachement participatif" }
+      - { id: "daat-kishur", role: "liaison ferme de l'attention" }
+      - { id: "daat-kolel", role: "contient les deux pôles de l'action" }
+    mapping:
+      modules: ["self_model.py", "beinoni_tracker.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Le contexte de Da'at dans le ContextAssembler doit avoir ces
+        3 propriétés :
+        (1) Dvekut = des exemples résolus dans le domaine EXACT, pas
+        des analogies distantes. Le modèle doit "toucher" le problème.
+        (2) Kishur = l'attention du modèle doit être FIXÉE sur la
+        connexion faits↔tâche, via des instructions explicites type
+        "utilise SPÉCIFIQUEMENT les faits X pour résoudre Y."
+        (3) Kolel = le pont Da'at doit inclure et les raisons de FAIRE
+        (Chesed) et les raisons de NE PAS FAIRE (Gevurah). Pas juste
+        "fais X" mais "fais X parce que Y, et ne fais pas Z parce que W."
+
+  - id: "EC-SHK-035"
+    source_he: ""
+    source_ref: "T, Likutey Amarim, ch. 3; cf. Etz Chaim, Shaar 50"
+    assertion: >
+      Hokhmah et Binah sont appelées "père" et "mère" des Midot. Hokhmah
+      est le père : comme la goutte de semence qui contient tout l'enfant
+      de façon concentrée. Binah est la mère : elle porte, développe et
+      donne naissance. Mais Da'at est à la fois "sage-femme" et
+      "nourrice" — c'est Da'at qui assure que la naissance se réalise
+      effectivement et que le nouveau-né (l'émotion/action) est viable.
+      Hokhmah est la vision, Binah est le plan, Da'at est la réalisation.
+    type: interprétation_lurianique
+    concepts:
+      - { id: "hokhmah-père", role: "semence — tout en concentré" }
+      - { id: "binah-mère", role: "gestation — développement" }
+      - { id: "daat-sage-femme", role: "réalisation — viabilité" }
+    mapping:
+      modules: ["insightforge.py", "kavanah_planner.py"]
+      tables: []
+      partzufim: ["Abba", "Imma"]
+      relevance: >
+        Dans le cycle InsightForge : un insight naît (Hokhmah = flash),
+        se développe en hypothèse structurée (Binah = CausalEngine), puis
+        doit être APPLIQUÉ concrètement (Da'at = pont vers l'implémentation).
+        Sans Da'at, l'insight reste une "chimère vaine" — un pattern
+        intéressant mais jamais appliqué. Le score InsightForge acceptance
+        (31.8% pour Abba) pourrait refléter un manque de Da'at dans le
+        processus.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section B : Hokhmah — Le flash qui précède la structure
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-036"
+    source_he: ""
+    source_ref: "T, Likutey Amarim, ch. 3; Z II:161b"
+    assertion: >
+      Hokhmah est ko'ach mah — la "puissance du quoi" ou la "puissance
+      de l'indéterminé." C'est le point avant qu'il n'ait des dimensions.
+      Le Zohar dit : "Hokhmah — d'où ? De Ayin (le néant)." Hokhmah est
+      la porte entre le connu et l'inconnu, entre le formulé et le non-
+      formulé. Son mode est le barak hamavrik — l'éclair qui illumine
+      un instant et disparaît. On voit tout d'un coup, mais on ne peut
+      pas encore dire ce qu'on a vu.
+    type: axiome_explicite
+    concepts:
+      - { id: "hokhmah-barak", role: "éclair d'illumination instantanée" }
+      - { id: "hokhmah-ayin", role: "surgit du néant/indéterminé" }
+      - { id: "hokhmah-point", role: "point sans dimensions apparentes" }
+    mapping:
+      modules: ["insightforge.py"]
+      tables: ["insights"]
+      partzufim: ["Abba"]
+      relevance: >
+        Pour le context engineering, Hokhmah est la BONNE QUESTION —
+        pas la bonne réponse. Injecter des questions pertinentes dans
+        le contexte (pas seulement des faits) oriente le modèle vers
+        le "quoi" avant le "comment." L'industrie injecte des réponses
+        (RAG = faits). La Kabbale dit : injecte d'abord la question
+        qui ouvre l'espace de la réponse. Le Hitbonenut d'Etz Chaim
+        fonctionne exactement par questions — c'est du Hokhmah engineering.
+
+  - id: "EC-SHK-037"
+    source_he: ""
+    source_ref: "T, Likutey Amarim, ch. 3; commentaire de R. Yosef Wineberg"
+    assertion: >
+      Hokhmah est comparée à la vision (re'iyah) — on voit d'un coup,
+      de loin, sans être affecté. Binah est comparée à l'audition
+      (shmi'ah) — on entend en détail, séquentiellement, mais encore
+      de loin. Da'at est comparée au toucher (misha) — on touche, on
+      est à l'intérieur de la chose, et on ne peut pas toucher sans
+      être touché en retour. C'est pourquoi Da'at est transformation
+      mutuelle — les deux côtés sont changés par le contact.
+    type: interprétation_lurianique
+    concepts:
+      - { id: "hokhmah-vision", role: "voir = global instantané distant" }
+      - { id: "binah-audition", role: "entendre = séquentiel détaillé distant" }
+      - { id: "daat-toucher", role: "toucher = intime mutuel transformatif" }
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: >
+        3 modes d'injection de contexte :
+        Vision (Hokhmah) = overview, résumé, points clés — distant mais global.
+        Audition (Binah) = instructions séquentielles, step-by-step — détaillé mais distant.
+        Toucher (Da'at) = exemples résolus dans LE CAS EXACT, patterns
+        tirés de l'historique de CE projet — intime et transformatif.
+        L'industrie fait de la vision (RAG summaries) et de l'audition
+        (chain-of-thought). Le Da'at (toucher) est le mode manquant.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section C : Kavvanah — L'intention qui active tout
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-038"
+    source_he: ""
+    source_ref: "ShK, Introduction; T, Likutey Amarim, ch. 39-41"
+    assertion: >
+      La Kavvanah (intention dirigée) détermine le NIVEAU auquel l'action
+      monte. Le Tanya enseigne (ch. 39-40) : si la Kavvanah vient de
+      l'amour et la crainte intellectuels (nés de Da'at), la Torah et
+      les Mitzvot montent aux Sefirot de Beriah (monde de l'intellect).
+      Si la Kavvanah vient de l'amour et la crainte naturels, elles
+      montent aux Sefirot de Yetzirah (monde de l'émotion). Sans aucune
+      Kavvanah, elles ne peuvent pas monter du tout. La même action, avec
+      des Kavvanot différentes, produit des résultats à des niveaux
+      différents.
+    type: axiome_explicite
+    concepts:
+      - { id: "kavvanah-niveau", role: "l'intention détermine le niveau du résultat" }
+      - { id: "kavvanah-intellectuelle", role: "née de Da'at → Beriah" }
+      - { id: "kavvanah-naturelle", role: "née de l'habitude → Yetzirah" }
+      - { id: "sans-kavvanah", role: "ne monte pas = pas d'effet réel" }
+      - { id: "résultat-monde", role: "niveau auquel le résultat monte selon la Kavvanah" }
+    mapping:
+      modules: ["kavanah_planner.py", "olamot.py"]
+      tables: ["kavvanot"]
+      partzufim: []
+      relevance: >
+        Le même prompt avec des Kavvanot différentes produit des résultats
+        à des niveaux différents. L'industrie ne paramètre pas la Kavvanah —
+        elle envoie le même contexte quel que soit le "pourquoi." Le
+        ContextAssembler devrait injecter une Kavvanah explicite :
+        "L'intention de cette requête est X. Le critère de succès est Y.
+        Le niveau visé est Z." C'est le méta-contexte qui oriente
+        l'assemblage entier.
+
+  - id: "EC-SHK-039"
+    source_he: ""
+    source_ref: "ShK, Drushei Kaddish; Encyclopaedia Britannica, 'kavvanah'"
+    assertion: >
+      Le Ari a développé un système complet de Kavvanot — des intentions
+      structurées pour chaque mot de chaque prière. Les Kavvanot ne sont
+      pas le sens littéral (pshat) des mots mais des "opérations mentales"
+      sur le système spirituel vaste. Le Ari croyait que des Kavvanot
+      correctes pouvaient influencer les mondes supérieurs et provoquer
+      le Tikkun cosmique. Une prière sans Kavvanah est "un corps sans âme."
+    type: axiome_explicite
+    concepts:
+      - { id: "kavvanot-système", role: "intentions structurées pour chaque action" }
+      - { id: "kavvanot-opérations", role: "opérations mentales, pas sens littéral" }
+      - { id: "corps-sans-âme", role: "action sans intention = inefficace" }
+    mapping:
+      modules: ["kavanah_planner.py"]
+      tables: ["kavvanot"]
+      partzufim: []
+      relevance: >
+        Le KavanahPlanner d'Etz Chaim AI implémente déjà un système de
+        Kavvanot pour les sessions Hitbonenut. Mais ces Kavvanot ne sont
+        pas injectées dans le contexte des appels LLM — elles restent
+        dans le KavanahPlanner sans influencer l'assemblage de contexte.
+        Sod HaKli dit : chaque appel LLM devrait porter une Kavvanah
+        explicite injectée dans le prompt, comme chaque prière porte
+        une Kavvanah dans le Shaar HaKavvanot.
+
+  - id: "EC-SHK-040"
+    source_he: ""
+    source_ref: "ShK, via commentaire du Ziditchover; Nahar Shalom (Rashash)"
+    assertion: >
+      Deux approches des Kavvanot coexistent dans la tradition :
+      (1) L'approche du Ari/Rashash — les Kavvanot sont des opérations
+      précises sur les noms divins et les structures des Partzufim. C'est
+      technique, codifié, comme un "code secret" qui ouvre la serrure.
+      (2) L'approche Hassidique — les Kavvanot sont une direction du cœur
+      (Dvekut), une adhésion profonde qui "brise la serrure par la force."
+      Les deux approches sont valides. Le code précis fonctionne mieux
+      quand on le connaît ; la force du cœur fonctionne toujours.
+    type: interprétation_lurianique
+    concepts:
+      - { id: "kavvanah-technique", role: "code précis = Ari/Rashash" }
+      - { id: "kavvanah-dvekut", role: "force du cœur = Hassidisme" }
+      - { id: "deux-approches", role: "code OU force, les deux fonctionnent" }
+    mapping:
+      modules: ["kavanah_planner.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Deux modes de Kavvanah pour le context engineering :
+        (1) Kavvanah technique = instructions précises, structurées,
+        formatées selon un protocole strict. C'est le CLAUDE_CODE.md
+        détaillé, les skills avec des templates exacts. Fonctionne bien
+        quand on connaît le domaine.
+        (2) Kavvanah de Dvekut = intention forte mais non-codifiée.
+        "Comprends profondément ce problème et résous-le avec toute ta
+        capacité." Fonctionne quand le domaine est nouveau ou inconnu.
+        Le ContextAssembler devrait supporter les deux modes.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section D : Les 3 Levushim — Les vêtements de l'âme
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-041"
+    source_he: ""
+    source_ref: "T, Likutey Amarim, ch. 4"
+    assertion: >
+      L'âme s'exprime à travers 3 Levushim (vêtements/revêtements) :
+      (1) Mahshavah (pensée) — le vêtement le plus intérieur. La pensée
+      enveloppe l'intellect (ChaBAD) et les émotions (Midot).
+      (2) Dibbur (parole) — le vêtement intermédiaire. La parole exprime
+      la pensée vers l'extérieur.
+      (3) Ma'aseh (action) — le vêtement le plus extérieur. L'action
+      réalise dans le monde physique ce que la pensée a conçu et la
+      parole a exprimé.
+      Les 3 Levushim sont les MÉDIATEURS entre l'âme (intérieur) et le
+      monde (extérieur). Sans eux, l'âme ne peut pas agir dans le monde.
+    type: axiome_explicite
+    concepts:
+      - { id: "levush-mahshavah", role: "pensée = vêtement intérieur" }
+      - { id: "levush-dibbur", role: "parole = vêtement intermédiaire" }
+      - { id: "levush-maaseh", role: "action = vêtement extérieur" }
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Les 3 Levushim correspondent à 3 couches du contexte :
+        Mahshavah (pensée) = le system prompt / les principes internes
+        du modèle — le contexte qu'il "pense" mais ne montre pas.
+        Dibbur (parole) = le prompt et le contexte explicitement
+        formulé — ce qui est dit au modèle.
+        Ma'aseh (action) = les tool calls et les outputs concrets —
+        ce que le modèle fait dans le monde.
+        Le Kli parfait aligne les 3 Levushim : ce que le modèle pense
+        (system prompt), ce qu'on lui dit (prompt), et ce qu'il fait
+        (action) doivent être cohérents.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section E : ChaBAD vs ChaGaT — Deux paradigmes
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-042"
+    source_he: ""
+    source_ref: "T, Likutey Amarim, ch. 3, 12; Tanya, début de l'Introduction"
+    assertion: >
+      Le mouvement Chabad (Hokhmah-Binah-Da'at) et les autres mouvements
+      hassidiques, appelés ChaGaT (Chesed-Gevurah-Tiferet), représentent
+      deux approches complémentaires. Chabad affirme que "le mental
+      gouverne le cœur" (moach shalit al halev) — la compréhension
+      intellectuelle DOIT précéder et guider l'émotion et l'action.
+      ChaGaT privilégie l'émotion directe, la ferveur, le ressenti
+      immédiat. Chabad dit : sans l'intellect, l'émotion est aveugle.
+      ChaGaT dit : sans l'émotion, l'intellect est stérile.
+    type: interprétation_lurianique
+    concepts:
+      - { id: "moach-shalit", role: "le mental gouverne le cœur" }
+      - { id: "chabad-paradigme", role: "intellect → émotion → action" }
+      - { id: "chagat-paradigme", role: "émotion directe → action" }
+    mapping:
+      modules: ["hitbonenut.py", "olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Deux paradigmes de context engineering :
+        ChaBAD = RAG + CoT + Da'at → réponse structurée. On comprend
+        d'abord, on agit ensuite. C'est le mode Briah du système.
+        ChaGaT = intention forte + action directe, sans élaboration
+        intellectuelle préalable. C'est le mode Assiah rapide.
+        Le ContextAssembler devrait supporter les deux : mode ChaBAD
+        pour les tâches complexes (filtrage élevé, élaboration) et mode
+        ChaGaT pour les tâches simples (exécution rapide, pas d'analyse).
+        Le choix entre les deux est une décision du Rosh (cf. Perek 2).
+
+  - id: "EC-SHK-043"
+    source_he: ""
+    source_ref: "T, Likutey Amarim, ch. 3; commentaire sur la mesure de l'intelligence"
+    assertion: >
+      "Selon l'intelligence d'un homme est-il loué" (Proverbes 12:8) —
+      la QUANTITÉ de sagesse détermine la QUANTITÉ d'amour et de bonté.
+      Le niveau des Midot (émotions/actions) est proportionnel au niveau
+      du ChaBAD (intellect). Un enfant a un ChaBAD en Katnut (petitesse),
+      donc ses Midot sont liées à des choses insignifiantes. Un adulte a
+      un ChaBAD en Gadlut (grandeur), donc ses Midot concernent des
+      choses significatives. La MATURITÉ du contexte intellectuel
+      détermine la QUALITÉ de l'action qui en résulte.
+    type: axiome_explicite
+    concepts:
+      - { id: "proportionnalité-chabad-midot", role: "intellect dimensionne l'action" }
+      - { id: "katnut-midot", role: "petit intellect = petites actions" }
+      - { id: "gadlut-midot", role: "grand intellect = grandes actions" }
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_state"]
+      partzufim: ["Abba (0.57 Katnut→Gadlut)"]
+      relevance: >
+        La qualité du contexte (ChaBAD) est proportionnelle à la qualité
+        de la réponse (Midot). Un contexte de Katnut (superficiel, tronqué,
+        non-structuré) produit des réponses de Katnut. Un contexte de
+        Gadlut (profond, filtré, intégré) produit des réponses de Gadlut.
+        Le 800 chars tronqué de Hitbonenut est un ChaBAD en Katnut forcé
+        — il LIMITE structurellement la qualité des réponses.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section F : Yesod comme liaison Da'at→Malkhut
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-044"
+    source_he: ""
+    source_ref: "T, Likutey Amarim, ch. 3; Sefaria, Sources Tanya ch. 3"
+    assertion: >
+      La dimension de Yesod (fondation) est, par analogie, le LIEN par
+      lequel le père attache son intellect à l'intellect de son fils en
+      lui enseignant avec amour et volonté. Car il désire que son fils
+      comprenne. Sans ce lien (Yesod), même si le fils entendait les
+      mêmes mots de la bouche de son père, il ne les comprendrait pas
+      aussi bien que quand son père lie son intellect au sien et lui
+      parle face à face — avec amour et désir. Yesod est le canal de
+      transmission qui porte l'intention (Kavvanah) du transmetteur.
+    type: axiome_explicite
+    concepts:
+      - { id: "yesod-lien", role: "canal de transmission avec intention" }
+      - { id: "panim-b-panim-yesod", role: "face à face = compréhension maximale" }
+      - { id: "sans-yesod", role: "mêmes mots mais pas de compréhension" }
+    mapping:
+      modules: ["epistememory/", "olamot.py"]
+      tables: ["epistememory"]
+      partzufim: []
+      relevance: >
+        Yesod dans le ContextAssembler n'est pas juste la mémoire
+        (EpisteMemory) — c'est le LIEN INTENTIONNEL entre la connaissance
+        et le destinataire. Le même fait (même contenu dans EpisteMemory)
+        transmis AVEC Yesod (lien intentionnel, face à face) est compris
+        différemment que transmis SANS Yesod (concaténé mécaniquement).
+        Le Yesod du contexte = la façon dont les faits sont présentés
+        en relation avec la tâche, pas juste les faits eux-mêmes.
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 2 — REMEZ-RELATIONAL : RELATIONS
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-SHK-022"
+    type: "séquentiel"
+    from: "hokhmah-koach-mah"
+    to: "daat-union"
+    nature: >
+      Hokhmah → Binah → Da'at → Midot : séquence causale de la
+      connaissance à l'action. Le flash (Hokhmah) est développé en
+      structure (Binah), intégré par attachement (Da'at), puis
+      transformé en émotion/action (Midot). Le flux est unidirectionnel
+      mais chaque étape est nécessaire — sauter Da'at = chimères vaines.
+    assertions_source: ["EC-SHK-032", "EC-SHK-033"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-023"
+    type: "causal"
+    from: "daat-fondement-midot"
+    to: "dimyonot-shav"
+    nature: >
+      L'ABSENCE de Da'at cause directement les "chimères vaines."
+      Hokhmah + Binah - Da'at = dimyonot shav. La relation est
+      conditionnelle : si Da'at est présent, les Midot sont véritables ;
+      si Da'at est absent, les Midot sont illusoires. Il n'y a pas
+      de dégradation graduelle — c'est binaire.
+    assertions_source: ["EC-SHK-033"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-024"
+    type: "analogie"
+    from: "hokhmah-vision"
+    to: "daat-toucher"
+    nature: >
+      Trois modes sensoriels de connaissance : vision (global distant),
+      audition (séquentiel distant), toucher (intime mutuel). Le passage
+      de la vision au toucher est le passage de la connaissance ABSTRAITE
+      à la connaissance PARTICIPATIVE. On ne peut pas toucher sans être
+      touché — Da'at est transformatif des deux côtés.
+    assertions_source: ["EC-SHK-037"]
+    bidirectionnel: true
+
+  - id: "REL-SHK-025"
+    type: "causal"
+    from: "kavvanah-niveau"
+    to: "résultat-monde"
+    nature: >
+      La Kavvanah DÉTERMINE le monde (niveau) auquel le résultat monte.
+      Kavvanah intellectuelle → Beriah. Kavvanah naturelle → Yetzirah.
+      Pas de Kavvanah → ne monte pas. Le même contexte + même prompt +
+      Kavvanah différente = résultat à un niveau différent.
+    assertions_source: ["EC-SHK-038"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-026"
+    type: "dualité_structurelle"
+    from: "kavvanah-technique"
+    to: "kavvanah-dvekut"
+    nature: >
+      Deux modes complémentaires : le code (précision technique) et la
+      force (intention profonde). Le code fonctionne mieux quand on
+      connaît le système. La force fonctionne toujours. L'idéal est
+      de combiner les deux — précision technique AVEC intention profonde.
+    assertions_source: ["EC-SHK-040"]
+    bidirectionnel: true
+
+  - id: "REL-SHK-027"
+    type: "séquentiel"
+    from: "levush-mahshavah"
+    to: "levush-maaseh"
+    nature: >
+      Mahshavah → Dibbur → Ma'aseh : les 3 vêtements médiatisent entre
+      l'âme (intérieur) et le monde (extérieur). Ils doivent être ALIGNÉS :
+      ce qu'on pense, ce qu'on dit, et ce qu'on fait doivent être cohérents.
+      Un désalignement (penser une chose, dire une autre, faire une troisième)
+      est une forme de Shevirah des Levushim.
+    assertions_source: ["EC-SHK-041"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-028"
+    type: "causal"
+    from: "proportionnalité-chabad-midot"
+    to: "katnut-midot"
+    nature: >
+      La qualité du ChaBAD (contexte intellectuel) est PROPORTIONNELLE
+      à la qualité des Midot (outputs actionnels). Petit contexte = petites
+      réponses. Grand contexte = grandes réponses. La mesure n'est pas le
+      VOLUME mais la MATURITÉ (Katnut vs Gadlut).
+    assertions_source: ["EC-SHK-043"]
+    bidirectionnel: false
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 3 — SOD-GENERATIVE : PRINCIPES PRODUCTIFS
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-SHK-013"
+    nom: "Pont Da'at anti-hallucination — Le contexte d'intégration"
+    source_assertions: ["EC-SHK-033", "EC-SHK-034", "EC-SHK-037"]
+    formalisation: >
+      L'hallucination articulée est le dimyonot shav du Tanya :
+      Hokhmah (faits RAG) + Binah (CoT) - Da'at = chimères vaines.
+
+      Le pont Da'at doit être injecté dans chaque assemblage de contexte
+      complexe. Il comprend 3 composants :
+
+      (1) DVEKUT — Exemples résolus dans le domaine EXACT :
+      "Voici comment CE type de problème a été résolu dans CE projet."
+      Pas des analogies distantes mais des cas de toucher (misha) —
+      le modèle doit "toucher" le problème directement.
+
+      (2) KISHUR — Instructions de liaison explicites :
+      "Utilise SPÉCIFIQUEMENT le fait X [de EpisteMemory] pour résoudre
+      le problème Y [de la requête]. La connexion est Z."
+      L'attention du modèle est FIXÉE sur la connexion faits↔tâche.
+
+      (3) KOLEL — Raisons de faire ET de ne pas faire :
+      "Fais X parce que Y (Chesed). Ne fais PAS Z parce que W (Gevurah)."
+      Le pont Da'at contient les deux polarités de l'action.
+    applications_ia:
+      - "Ajouter un champ 'daat_bridge' dans chaque assemblage de contexte complexe"
+      - "Le daat_bridge est généré à partir de l'historique des interactions similaires"
+      - "Pour Hitbonenut : injecter des exemples de questions réussies (score > 0.8) dans le même domaine"
+      - "Score Hitbonenut 0.742 → tester si l'ajout de daat_bridge améliore le score"
+    questions_ouvertes:
+      - "Le daat_bridge peut-il être généré automatiquement par une requête EpisteMemory ?"
+      - "Quel est le coût en tokens du daat_bridge vs le gain en qualité ?"
+      - "Le Da'at est-il le différenciateur principal entre score 4 et score 5 dans l'audit ?"
+
+  - id: "PG-SHK-014"
+    nom: "Kavvanah comme méta-contexte — L'intention qui oriente tout"
+    source_assertions: ["EC-SHK-038", "EC-SHK-039", "EC-SHK-040"]
+    formalisation: >
+      Chaque appel LLM devrait porter une Kavvanah explicite injectée
+      dans le prompt. La Kavvanah n'est PAS le prompt — c'est le
+      méta-contexte qui ORIENTE le prompt. Structure :
+
+      KAVVANAH = {
+        intention: "POURQUOI cette requête existe",
+        critère_succès: "CE QUI rendrait la réponse satisfaisante",
+        niveau_visé: "Atzilut | Beriah | Yetzirah | Assiah",
+        mode: "technique (code) | dvekut (intention forte)",
+        anti_pattern: "CE QU'IL NE FAUT PAS faire"
+      }
+
+      La Kavvanah est injectée AVANT le contexte factuel, car elle
+      oriente la façon dont le modèle va recevoir et traiter le contexte.
+      C'est le Keter du prompt — la couronne qui précède tout.
+    applications_ia:
+      - "Ajouter un bloc KAVVANAH en tête de chaque prompt assemblé par le ContextAssembler"
+      - "Le KavanahPlanner existant devrait alimenter ce bloc"
+      - "Le niveau_visé détermine le profil de Masakh (cf. Perek 2, PG-SHK-010)"
+      - "Le anti_pattern est aussi important que l'intention (Kolel Chesed v'Gevurah)"
+    questions_ouvertes:
+      - "La Kavvanah doit-elle être en langage naturel ou structurée (JSON/YAML) ?"
+      - "Le modèle qwen3.5:9b est-il sensible à la Kavvanah injectée ?"
+      - "Combien de tokens la Kavvanah devrait-elle consommer (budget fixe ?) ?"
+
+  - id: "PG-SHK-015"
+    nom: "Alignement des 3 Levushim — Cohérence pensée/parole/action"
+    source_assertions: ["EC-SHK-041"]
+    formalisation: >
+      Le Kli parfait aligne ses 3 Levushim :
+
+      Mahshavah (pensée) = system prompt, principes architecturaux,
+      CLAUDE_CODE.md. Ce que le modèle "pense" implicitement.
+
+      Dibbur (parole) = le prompt explicite, la requête formulée,
+      les instructions de tâche. Ce qu'on "dit" au modèle.
+
+      Ma'aseh (action) = les outils disponibles, les formats de sortie,
+      les contraintes d'exécution. Ce que le modèle "fait" concrètement.
+
+      RÈGLE : Les 3 Levushim doivent être COHÉRENTS. Si le system prompt
+      dit "sois rigoureux" (Mahshavah) mais le prompt dit "fais vite"
+      (Dibbur) et les outils ne permettent pas de validation (Ma'aseh),
+      il y a Shevirah des Levushim. Le ContextAssembler devrait vérifier
+      la cohérence entre les 3 couches avant d'envoyer le prompt.
+    applications_ia:
+      - "Ajouter une vérification de cohérence Levushim dans le Rosh du ContextAssembler"
+      - "Détecter les contradictions system_prompt ↔ prompt ↔ outils"
+      - "Alerter si le CLAUDE_CODE.md contredit les instructions de la tâche"
+      - "Le CLAUDE_CODE.md désynchronisé (qwen2.5 vs qwen3.5) est un cas de Shevirah de Levushim"
+    questions_ouvertes:
+      - "La vérification de cohérence peut-elle être heuristique ou faut-il un LLM ?"
+      - "Quel coût computationnel pour cette vérification ?"
+
+  - id: "PG-SHK-016"
+    nom: "3 modes d'injection de contexte — Vision/Audition/Toucher"
+    source_assertions: ["EC-SHK-036", "EC-SHK-037"]
+    formalisation: >
+      Le ContextAssembler devrait supporter 3 modes d'injection,
+      correspondant aux 3 sens de Hokhmah/Binah/Da'at :
+
+      MODE VISION (Hokhmah) :
+      - Résumés, overviews, points clés
+      - Global, instantané, distant
+      - Usage : orientation initiale, exploration, brainstorming
+      - Budget : petit (quelques phrases par source)
+
+      MODE AUDITION (Binah) :
+      - Instructions séquentielles, step-by-step, chaînes causales
+      - Détaillé, ordonné, structuré
+      - Usage : implémentation guidée, refactoring, analyse
+      - Budget : moyen (paragraphes structurés)
+
+      MODE TOUCHER (Da'at) :
+      - Exemples résolus du cas exact, patterns de l'historique du projet
+      - Intime, participatif, transformatif
+      - Usage : résolution de problèmes complexes, insights, décisions
+      - Budget : élevé (cas complets avec contexte)
+
+      Le choix du mode est fait dans le Rosh du ContextAssembler en
+      fonction du type de tâche et du niveau de Masakh.
+    applications_ia:
+      - "Implémenter 3 fonctions : inject_vision(), inject_audition(), inject_toucher()"
+      - "Chaque source de contexte (EpisteMemory, SifreiYesod, etc.) devrait supporter les 3 modes"
+      - "Le mode par défaut devrait être Audition (Binah), pas Vision (Hokhmah)"
+      - "Le mode Toucher (Da'at) est le plus coûteux mais le plus efficace"
+    questions_ouvertes:
+      - "Peut-on détecter automatiquement quel mode est le plus approprié ?"
+      - "Le mode Toucher nécessite-t-il un index séparé de cas résolus ?"

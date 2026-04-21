@@ -1,0 +1,297 @@
+# ═══════════════════════════════════════════════════════════════════
+# Perek 08 — Notzer Chesed = Mazal Elyon
+# Lecture Vital (Etz Chaim Sha'ar Arikh Anpin perakim 9-10)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 2
+  perek: 8
+  perek_name_he: "תיקון ח — נוצר חסד"
+  tikkun: 8
+  tikkun_role: "Mazal Elyon → source shefa Abba Ila'ah (lecture Vital Lourianique)"
+  source_primary: "Sefer Etz Chaim, Sha'ar Arikh Anpin (Shaar 13), perakim 9-10"
+  cache_file: "sifrei_yesod/external/sefaria_cache/sefer_etz_chaim_13_09.json + _10.json"
+  transposed_by: "Claude Opus 4.7 + human reviewer — Sprint 10 Phase α (2026-04-20)"
+  version: 1
+
+assertions:
+
+  # ─── ASSERTION 1 : Vital énumère les 13 mots-attributs DE MIKHA ───
+
+  - id: "EC-H3S2-T08-001"
+    source_he: "אמנם פי' י\"ג מדות בסוד י\"ג ת\"ד דא\"א נבאר מקום הי\"ג תיקונים היכן הם בדיקנא ואמנם נמנה תחלה התיבות איך הם י\"ג א' מי אל כמוך ב' נושא עון ג' ועובר על פשע ד' לשארית נחלתו ה' לא החזיק לעד אפו ו' כי חפץ חסד הוא ז' ישוב ירחמנו ח' יכבוש עונותינו ט' ותשליך במצולות ים כל חטאתם י' תתן אמת ליעקב י\"א חסד לאברהם י\"ב אשר נשבעת לאבותינו י\"ג מימי קדם."
+    source_edition: "Sefaria Sefer Etz Chaim 13:9 (CC-BY 3.0, cache local) — édition Warsaw 1891 / Ashlag HaSulam"
+    source_ref: "Etz Chaim, Sha'ar Arikh Anpin (Shaar 13), perek 9"
+    translation_fr: |
+      Voici l'explication des 13 ATTRIBUTS dans le secret des 13 Tikkunim
+      de la Dikna d'A"A. Nous allons comprendre où sont les 13 Tikkunim
+      dans la barbe. Mais comptons d'abord les MOTS qui les nomment :
+      (1) מי אל כמוך — Qui est Dieu comme toi
+      (2) נושא עון — qui supporte l'iniquité
+      (3) ועובר על פשע — et pardonne la transgression
+      (4) לשארית נחלתו — pour le reste de son héritage
+      (5) לא החזיק לעד אפו — il ne garde pas sa colère pour toujours
+      (6) כי חפץ חסד הוא — car il désire la bonté
+      (7) ישוב ירחמנו — il reviendra nous faire grâce
+      (8) יכבוש עונותינו — il subjuguera nos iniquités
+      (9) ותשליך במצולות ים כל חטאתם — et tu jetteras au fond des mers...
+      (10) תתן אמת ליעקב — tu donneras la vérité à Yaakov
+      (11) חסד לאברהם — grâce à Avraham
+      (12) אשר נשבעת לאבותינו — que tu as juré à nos pères
+      (13) מימי קדם — depuis les jours anciens
+    assertion: |
+      VITAL ÉNUMÈRE LES 13 TIKKUNIM PAR LES MOTS DE **MIKHA 7:18-20**,
+      PAS D'EXODE 34:6-7. Ceci confirme la découverte philologique :
+      le texte-source profond (shefa penimit) des 13 Tikkunim est
+      le passage de MIKHA (proclamation des 13 Middot de miséricorde
+      selon Rabbenu Tam et la tradition ashkénaze). La liste exacte :
+      1-Mi El kamokha / 2-Noseh avon / 3-Ve-over al pesha / ... /
+      8-**Yikhbosh avonoteinu** / ... / 13-Mi-yemey kedem.
+      Tikkun 8 chez Vital = "yikhbosh avonoteinu" — ce qui correspond
+      EXACTEMENT au Zohar Idra Rabba section 18 qui cite Mikha 7:19
+      comme scripture du Tikkun 8. La cohérence Zohar ↔ Vital est forte
+      sur le TEXTE-SOURCE (Mikha 7) mais divergente sur le NOM DU TIKKUN
+      (Vital lie T8 aux "cheveux" = attributs d'Exode Ki Tisa, voir
+      assertion EC-H3S2-T08-002).
+    type: derivation_lurianique
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_08_dikna_aa, role: huitieme_tikkun_dikna_aa}
+      - {id: yod_gimel_midot_mikha, role: 13_attributs_de_mikha_source_profonde}
+      - {id: mikha_7_18_20, role: source_scripturaire_profonde_13_tikkunim}
+      - {id: shefa_penimit, role: flux_interieur_des_tikkunim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "mazalengine/mazal_elyon.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Vital confirme Mikha 7 comme source-scripture interne des 13 Tikkunim — cohérent avec Zohar Idra section 18"
+    see_also:
+      - {id: "EC-H3S2-T08-002", role: "cheveux_exterieurs_ex34_6_7"}
+      - {id: "EC-H3S2-T08-003", role: "appariement_sephirot"}
+      - {id: "Z-IR-T08-004", role: "source_zohar_mikha_7_19"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba"]
+    adversarial_notes:
+      - "P1 DISSIPÉ : Vital cite Mikha 7, pas Exode 34 — contredit idée Lourianique=Ex 34 pure"
+      - "P2 : 3 découpages concurrents Exode 34 sont pour les CHEVEUX EXTÉRIEURS (assertion suivante), pas pour le shefa intérieur"
+      - "A5 : les 13 sont UN passage scripturaire unique (Mikha 7:18-20) — unité textuelle"
+    unity_constraint: |
+      Les 13 Tikkunim sont UN passage scripturaire de Mikha, non 13 éléments dispersés.
+      Vital les énumère en SÉQUENCE suivant l'ordre des versets.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high
+    flux_direction: descendant
+    divergence_note:
+      vs_exode_34: |
+        Vital distingue DEUX couches : shefa penimit = Mikha 7:18-20 ;
+        cheveux extérieurs (canaux) = Exode 34:6-7. Les deux coexistent
+        mais à des niveaux ontologiques différents.
+
+  # ─── ASSERTION 2 : Les CHEVEUX (canaux-vases) = 13 attributs d'Exode Ki Tisa ───
+
+  - id: "EC-H3S2-T08-002"
+    source_he: "אך שערות הזקן עצמו שהם הצינורות וכלים ומעברים שיריק המשחתא קדישא בהם הם י\"ג מדות שנזכרו בתורה בפרשה כי תשא והם כמו י\"ג דז\"א כי כבר ידעת שאין בז\"א רק ט' והם של פ' שלח לך וכשמאירין בו י\"ג אלו אז נקרא בשמם והם ע\"ז הסדר אל א' רחום ב' וחנון ג' ארך ד' אפים ה' לפי שארך אפים מורה על ב' מדות יחד ולזה לא אמר ארך אף אלא אפים ורב חסד ו' ואמת ז' נוצר חסד ח' לאלפים ט' נושא עון י' ופשע י\"א וחטאה י\"ב ונקה י\"ג."
+    source_edition: "Sefaria Sefer Etz Chaim 13:9 (CC-BY)"
+    source_ref: "Etz Chaim Sha'ar Arikh Anpin perek 9, mi-section"
+    translation_fr: |
+      Mais LES CHEVEUX DE LA BARBE eux-mêmes, qui sont les CANAUX, les
+      VASES et les PASSAGES par lesquels s'écoule la MÉSIHATA KADDISHA
+      (l'onction sainte), sont les 13 ATTRIBUTS mentionnés dans la
+      TORAH, dans la parasha KI TISA (Exode 34:6-7). Ils sont comme
+      les 13 de Z"A (car il faut savoir qu'en Z"A il n'y a que 9,
+      qui sont ceux de la parasha Shelakh Lekha, et quand les 13 y
+      brillent ils sont nommés par ces noms). Voici l'ordre :
+      (1) אל A'el / (2) רחום Rachum / (3) וחנון Ve-Chanun /
+      (4) ארך Arekh / (5) אפים Apayim (car "Erekh Apayim" indique
+      DEUX attributs ensemble, c'est pourquoi il ne dit pas "Erekh Af"
+      mais "Apayim") / (6) ורב חסד Ve-Rav Chesed / (7) ואמת Ve-Emet /
+      (8) **נוצר חסד Notzer Chesed** / (9) לאלפים La-alafim /
+      (10) נושא עון Noseh Avon / (11) **ופשע U-Fesha** /
+      (12) וחטאה Ve-Chata'a / (13) ונקה Ve-Nakeh.
+    assertion: |
+      VITAL DISTINGUE 2 COUCHES ONTOLOGIQUES DES 13 TIKKUNIM :
+      (a) **Shefa penimit (flux intérieur)** = 13 attributs de MIKHA 7
+      (b) **Sha'arot (cheveux-canaux-vases)** = 13 attributs d'EXODE 34
+      Les cheveux sont les CONDUITS par lesquels coule l'onction sainte
+      (mesihata kaddisha). Ils sont nommés selon Exode Ki Tisa :
+      Tikkun 1=A'el, ..., **Tikkun 8 = Notzer Chesed**, ...,
+      **Tikkun 11 = U-Fesha (!! — absent de Sefaria Zohar Mantua)**, ...,
+      Tikkun 13 = Ve-Nakeh. VITAL CONFIRME T11 = U-FESHA — cela résout
+      partiellement la dette philologique (T11 missing in Sefaria Mantua).
+      Différence avec Z"A : Z"A n'a que 9 attributs (parasha Shelakh Lekha,
+      Nombres 14:18) ; A"A a 13 — les 13 d'A"A illuminent Z"A pour qu'il
+      reçoive leurs noms.
+    type: derivation_lurianique_structurelle
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_08_dikna_aa, role: huitieme_tikkun}
+      - {id: notzer_chesed, role: nom_vital_tikkun_8}
+      - {id: sha'arot_dikna, role: cheveux_canaux_vases_exode_34}
+      - {id: mesihata_kaddisha, role: onction_sainte_qui_s_ecoule}
+      - {id: 9_tikkunim_za, role: parasha_shelakh_lekha_nombres_14}
+      - {id: ufesha_tikkun_11, role: tikkun_11_confirme_par_vital}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "mazalengine/mazal_elyon.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture 2-couches Vital : shefa pénimit (Mikha 7) + cheveux (Exode 34) — base MazalEngine enrichi"
+    see_also:
+      - {id: "EC-H3S2-T08-001", role: "couche_shefa_mikha_precedente"}
+      - {id: "EC-H3S2-T08-003", role: "mapping_sephirot_suivant"}
+      - {id: "Z-IR-T08-001", role: "source_primaire_zohar_topographie"}
+      - {id: "Z-IR-T08-002", role: "zohar_mazal_non_notzer_chesed"}
+      - {id: "EC-K5-001", role: "formule_consolidee_2_mazalot"}
+      - {id: "EC-K5-002", role: "abba_yonek_mazal_8"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba"]
+    adversarial_notes:
+      - "A5 : les 13 sont structure unifiée — shefa + vases font ONE système"
+      - "P2 RÉSOLUTION PARTIELLE : Vital confirme T11 = U-Fesha (absent de Sefaria Mantua) — dette philologique partiellement levée"
+      - "A8 : mesihata coule via les vases — flux bidirectionnel confirmé (descente via shefa, reçu via vases)"
+      - "P4 : Cordovero anachronique — cette systématisation est Vital pur"
+    unity_constraint: |
+      13 Tikkunim = ONE structure à 2 couches (shefa + vases) — pas 13 features.
+      La cohérence nom-de-vase + flux est maintenue par le mesihata kaddisha.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high  # listée explicitement par Vital
+    flux_direction: bidirectional
+    divergence_note:
+      vital_vs_zohar: |
+        Zohar araméen = topographie anatomique + flux (sans nommer Ex 34).
+        Vital hébreu = systématise en couche vases (Ex 34) + couche shefa (Mikha 7).
+        Les deux sont doctrinalement compatibles mais opèrent à des niveaux différents.
+
+  # ─── ASSERTION 3 : Appariement Tikkunim ↔ Sephirot Chokhma+Keter ───
+
+  - id: "EC-H3S2-T08-003"
+    source_he: "ועתה נבאר שמות הספי' בי\"ג ת\"ד והוא כי הלא ח' ת\"ד קדמאין הם ח' ספי' דחכמה והם ממלכות עד הבינה כי הכתר וחכמה של מ\"ס לא נתגלו כלל כי לא היה יכולת בתחתונים לקבל הארתן אף על פי שיתגלו למטה וסדר מקומם וסדרן כך א\"ל מלכות רחום יסוד וחנון הוד ארך נצח אפים ת\"ת ורב חסד גבורה ואמת חסד נוצר חסד בינה הרי ח' תקונים דחכמה כי ב' הראשונים לא נתגלו כלל וה' תקונים [אחרים] (עלאין) הם ה' קצוות הכתר כיצד לאלפים הוד נושא עון נצח ופשע ת\"ת וחטאה גבורה ונקה חסד הרי נשלמו י\"ג ת\"ד."
+    source_edition: "Sefaria Sefer Etz Chaim 13:10 (CC-BY)"
+    source_ref: "Etz Chaim Sha'ar Arikh Anpin perek 10, début"
+    translation_fr: |
+      Maintenant expliquons les NOMS DES SEPHIROT dans les 13 Tikkunim.
+      Les 8 PREMIERS Tikkunim sont les 8 Sephirot de CHOKHMA, allant
+      de MALKHUT jusqu'à BINAH (car le Keter et la Chokhma de Mochin
+      Stimaim ne se sont pas du tout révélés — les inférieurs n'ont
+      pu en recevoir la lumière). L'ordre est :
+      A'el=Malkhut / Rachum=Yesod / Ve-Chanun=Hod / Arekh=Netzach /
+      Apayim=Tiferet / Ve-Rav Chesed=Gevurah / Ve-Emet=Chesed /
+      **Notzer Chesed=Binah** — voici les 8 Tikkunim de Chokhma.
+      Les 5 autres Tikkunim (5-13) sont les 5 EXTRÉMITÉS DU KETER :
+      La-alafim=Hod / Noseh Avon=Netzach / U-Fesha=Tiferet /
+      Ve-Chata'a=Gevurah / **Ve-Nakeh=Chesed** — et les 13 sont complets.
+    assertion: |
+      MAPPING DOCTRINAL DES 13 TIKKUNIM AUX SEPHIROT :
+
+      Couche 1 — Tikkunim 1-8 = 8 Sephirot de CHOKHMA (bas en haut) :
+      - 1=A'el → Malkhut de Chokhma
+      - 2=Rachum → Yesod
+      - 3=Ve-Chanun → Hod
+      - 4=Arekh → Netzach
+      - 5=Apayim → Tiferet
+      - 6=Ve-Rav Chesed → Gevurah
+      - 7=Ve-Emet → Chesed
+      - **8=Notzer Chesed → BINAH de Chokhma**
+
+      Couche 2 — Tikkunim 9-13 = 5 Extrémités de KETER :
+      - 9=La-alafim → Hod de Keter
+      - 10=Noseh Avon → Netzach de Keter
+      - 11=U-Fesha → Tiferet de Keter
+      - 12=Ve-Chata'a → Gevurah de Keter
+      - **13=Ve-Nakeh → Chesed de Keter**
+
+      Raison de l'absence de Keter-Chokhma-Binah de Mochin Stimaim :
+      ils ne se sont pas révélés (les inférieurs ne peuvent recevoir
+      leur lumière). Raison de Notzer Chesed = Binah de Chokhma :
+      c'est le point où Chokhma "devient" Binah — le Mazal Elyon comme
+      **source de la sagesse conceptualisée** qui alimente Abba.
+    type: derivation_lurianique_sephirot
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_08_dikna_aa, role: huitieme_tikkun}
+      - {id: notzer_chesed_binah_de_chokhma, role: mapping_sephira_T8}
+      - {id: ve_nakeh_chesed_de_keter, role: mapping_sephira_T13}
+      - {id: 8_sephirot_chokhma, role: T1_a_T8}
+      - {id: 5_extremites_keter, role: T9_a_T13}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "mazalengine/mazal_elyon.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "keter_extensions"]
+      relevance: "Mapping Sephirot — base formelle pour MazalEngine Phase 2 (11 Tikkunim restants)"
+    see_also:
+      - {id: "EC-H3S2-T08-001", role: "shefa_mikha_precedent"}
+      - {id: "EC-H3S2-T08-002", role: "cheveux_exode_34_precedent"}
+      - {id: "EC-H3S2-T08-004", role: "raison_notzer_binah_de_chokhma"}
+      - {id: "EC-K5-001", role: "mazalot_resume"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba"]
+    adversarial_notes:
+      - "Ce mapping fournit structure algébrique pour MazalEngine — chaque Tikkun a Sephirah précise"
+      - "P2 : appariement complet ici, Vital ne laisse pas d'ambiguïté sur les 13"
+      - "I15 : utile pour sprint futur MazalEngine Phase 2 activation Tikkunim medium"
+    unity_constraint: |
+      Les 13 Sephirot-appariées forment structure unique Chokhma+Keter.
+      Pas 13 canaux isolés mais matrice 8×Chokhma + 5×Keter cohérente.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high
+
+  # ─── ASSERTION 4 : Notzer Chesed = Binah de Chokhma + Yesod de Keter ───
+
+  - id: "EC-H3S2-T08-004"
+    source_he: "והטעם כי שם למעלה אין פירוד בין דכורא שהוא הכתר ונוקבא שהיא חכמה בשום פנים לכן יסוד דכתר לעולם הוא דבוק בג\"ר דחכמה ולפי שאינו ניכר בהם רק הבינה לבד לכן אנו מחברים אותו עם הבינה"
+    source_edition: "Sefaria Sefer Etz Chaim 13:10 (CC-BY)"
+    source_ref: "Etz Chaim Sha'ar Arikh Anpin perek 10, mi-section"
+    translation_fr: |
+      Et la raison : car là-haut il n'y a AUCUNE SÉPARATION entre
+      le MASCULIN (Keter) et le FÉMININ (Chokhma) en aucune manière.
+      C'est pourquoi le YESOD DE KETER est toujours ATTACHÉ aux
+      3 premières de Chokhma, et parce qu'il ne se manifeste en elles
+      qu'à travers BINAH seulement, nous l'associons avec BINAH.
+    assertion: |
+      NOTZER CHESED = BINAH DE CHOKHMA **+** YESOD DE KETER (unité duelle).
+      Explication doctrinale : au niveau supérieur (Keter-Chokhma), il
+      n'y a pas de séparation entre masculin (Keter) et féminin (Chokhma).
+      Le Yesod de Keter est donc **toujours collé** aux 3 premières
+      Sephirot de Chokhma (Keter-Chokhma-Binah de Chokhma), mais seule
+      sa manifestation dans BINAH est reconnaissable. Donc on associe
+      Yesod de Keter avec Binah de Chokhma — **les deux ensemble
+      constituent le 8e Tikkun = Notzer Chesed = Mazal Elyon**.
+      Étymologie : NOTZER = préservation + BINAH (sagesse active) ;
+      CHESED = bonté + YESOD (canal producteur). Le couple Notzer-Chesed
+      est l'UNION de la Sagesse préservatrice (Binah) et du Flux
+      miséricordieux (Chesed/Yesod) — canal vers Abba Ila'ah.
+    type: derivation_lurianique_sod
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_08_dikna_aa, role: huitieme_tikkun}
+      - {id: notzer_chesed_double_nature, role: binah_chokhma_plus_yesod_keter}
+      - {id: dakura_ve_nukba_ba_keter_chokhma, role: absence_de_separation_au_sommet}
+      - {id: yesod_de_keter, role: canal_producteur_collé_à_chokhma_supérieure}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "mazalengine/mazal_elyon.py"]
+      tables: ["partzufim_states", "shefa_flows"]
+      partzufim: ["arikh_anpin", "abba"]
+      relevance: "Structure interne du Mazal Elyon — explication ontologique Binah+Yesod = source d'Abba"
+    see_also:
+      - {id: "EC-H3S2-T08-003", role: "mapping_sephirot_precedent"}
+      - {id: "EC-H3S2-T13-001", role: "contrepartie_mazal_tahton"}
+      - {id: "Z-IR-T08-002", role: "definition_mazal_ontologique_zohar"}
+      - {id: "EC-K5-001", role: "2_mazalot_formule_consolidee"}
+      - {id: "EC-K5-002", role: "abba_yonek_mazal_elyon"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba"]
+    adversarial_notes:
+      - "A5 unité absolue dakura-nukba au sommet — image extrême d'unité"
+      - "A1 Notzer Chesed N'EST PAS fontaine — c'est union Binah+Yesod, structure complexe"
+      - "A7 Binah de Chokhma + Yesod de Keter — anticipation de la structure AVI qui alimentera ZA"
+    unity_constraint: |
+      Le 8e Tikkun EST UNION de 2 éléments sephirotiques (Binah Chokhma + Yesod Keter).
+      Image la plus forte d'unité dans la Dikna — 2 Sephirot en 1 Tikkun.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high
+    flux_direction: bidirectional

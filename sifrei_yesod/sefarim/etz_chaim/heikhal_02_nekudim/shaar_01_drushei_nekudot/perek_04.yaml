@@ -1,0 +1,375 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 1 — Sha'ar Drushei Nekudot (שער דרושי נקודות)
+# Perek: 4 — Ordre d'emergence des Nekudim (inverse des Akudim),
+#            pourquoi KHB survivent et Z"T meurent,
+#            les 7 rois d'Edom (Genese 36), 288 Nitzotzot
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE :
+#   - L'emergence des Nekudim est l'INVERSE des Akudim :
+#     Akudim = Malkhut d'abord, Keter en dernier.
+#     Nekudim = Keter d'abord, Malkhut en dernier.
+#   - 2eme difference : Akudim = Orot d'abord puis Kelim.
+#     Nekudim = Kelim d'abord puis Orot entrent dedans.
+#   - Les G"R (KHB) ne se brisent pas : les Orot sont BATEL dans le superieur.
+#   - Les Z"T se brisent EN SORTANT du ventre d'Imma.
+#   - Les 7 rois de Genese 36 = les 7 Sefirot de Daat a Malkhut.
+#   - 288 Nitzotzot + 1 Ohr cache dans Yesod pour Malkhut.
+#
+# Source Sefaria : Sefer_Etz_Chaim.8.4 (§1)
+# IDs : EC-H2S8-102 → EC-H2S8-115
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 1
+  shaar_name_he: "שער דרושי נקודות"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "L'emergence inversee des Nekudim, la mecanique de la Shevirah (KHB survivent car Bitul, Z'T meurent en sortant), les 7 rois d'Edom avec identifications precise, et les 288 Nitzotzot."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── ORDRE D'EMERGENCE INVERSE ──────────────────────────────────
+
+  - id: "EC-H2S8-102"
+    source_he: "כאשר יצאו אלו הנקודות שהם מכתר עד מלכות היתה יציאתן היפך יציאת העקודים כי שם ביציאת העקודים יצאת מל' תחילה וכתר באחרונה וכאן בנקודים הוא להיפך כי הכתר שלהם יצא בראשונה ובו היו כלולים כל הט' אחרים"
+    source_ref: "Heikhal 2, Sha'ar 1:4"
+    assertion: |
+      L'emergence des NEKUDIM est l'INVERSE (hefekh) des AKUDIM.
+      AKUDIM : MALKHUT sort EN PREMIER, KETER EN DERNIER.
+      NEKUDIM : KETER sort EN PREMIER, Malkhut EN DERNIER.
+      Le Keter CONTENAIT (kelulim) les 9 AUTRES en lui.
+      Puis HOKHMAH sort (avec 8 incluses), puis BINAH (avec 7), etc.
+      Jusqu'a MALKHUT qui sort SEULE, EN DERNIER.
+    type: axiome_explicite
+    concepts:
+      - {id: seder_yetzi_ah_hafukh, role: ordre_emergence_inverse}
+      - {id: keter_rishon, role: keter_sort_premier}
+      - {id: malkhut_aharon, role: malkhut_sort_derniere}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'ordre d'emergence est INVERSE entre Akudim et Nekudim. Le pattern top-down vs bottom-up."
+
+  - id: "EC-H2S8-103"
+    source_he: "עוד יש הפרש ב' והוא כי בעקודים תחלה יצאו האורות ואח\"כ נעשו הכלים כנ\"ל אבל בנקודים יצאו תחלה י' כלים זה למטה מזה ונעשה ע\"י הסתכלות העינים בג' אורות של אח\"פ כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 1:4"
+    assertion: |
+      2EME DIFFERENCE avec les Akudim :
+      AKUDIM : les OROT (lumieres) sortent D'ABORD, puis les KELIM se forment.
+      NEKUDIM : les 10 KELIM sortent D'ABORD, un en-dessous de l'autre,
+      fabriques par l'HISTAKKELUT des yeux sur AHP (cf. EC-H2S8-070).
+      ENSUITE l'OHR entre dans les Kelim.
+      Variante (Nusah Aher) : "אח\"פ" (AHP) au lieu de "אח\"כ" (ensuite).
+      → Nekudim = conteneurs d'abord, contenu ensuite. Akudim = l'inverse.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_tekhila, role: kelim_sortent_dabord}
+      - {id: orot_ahar_kakh, role: lumieres_entrent_ensuite}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Nekudim = Kelim first, Orot second. L'infrastructure avant le contenu."
+
+  # ─── POURQUOI KHB SURVIVENT ─────────────────────────────────────
+
+  - id: "EC-H2S8-104"
+    source_he: "כאשר אור הכתר נכנס תחלה בכלי שלו היו שאר האורות בטלים בו בערכו שהוא גדול מכולם יחד ולכן היה יכולת בכלי שלו לסובלו ולסבול ט' אורות האחרים ולא נשבר"
+    source_ref: "Heikhal 2, Sha'ar 1:4"
+    assertion: |
+      Quand l'Ohr de KETER entre en premier dans son KLI,
+      les 9 autres Orot sont BETELIM (nullifies) par rapport a lui
+      car il est PLUS GRAND que tous les autres ENSEMBLE.
+      Le Kli PEUT les supporter (lisvol) → il ne se BRISE PAS.
+      De meme pour HOKHMAH (8 Orot batel) et BINAH (7 Orot batel).
+      → Le BITUL (nullification) des inferieurs = la raison de la survie.
+    type: axiome_explicite
+    concepts:
+      - {id: bitul_orot, role: nullification_des_lumieres_inferieures}
+      - {id: kli_sovel, role: kli_peut_supporter}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Bitul (nullification des inferieurs dans le superieur) = mecanisme de stabilite. Le Kli ne 'voit' qu'un seul Ohr."
+
+  - id: "EC-H2S8-105"
+    source_he: "כי כולם הם בטלים בערך או\"א דמיון הבנים שבתחלה עומדים כלולים במוח אביהם בסוד טיפת מוח וכן בהיות בנים בסוד עיבור במעי אמן יכולין להיות שם והיא יכולה לסובלם"
+    source_ref: "Heikhal 2, Sha'ar 1:4"
+    assertion: |
+      ANALOGIE du BITUL : comme les ENFANTS qui sont d'abord
+      INCLUS (kelulim) dans le CERVEAU (moah) du PERE
+      = secret de la GOUTTE DE SEMENCE (tippat moah).
+      Et quand les enfants sont en IBUR (gestation) dans le VENTRE
+      de la MERE, elle PEUT les supporter (yekholah lisvlam).
+      → Tant que les Orot sont INCLUS dans le superieur = pas de brisure.
+    type: analogie_explicative
+    concepts:
+      - {id: tippat_moah, role: goutte_de_semence_cerveau}
+      - {id: ibur_imma, role: gestation_dans_le_ventre}
+    mapping:
+      modules: ["ohr.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Le Bitul = l'etat d'inclusion ou les inferieurs sont nullifies dans le superieur. = pre-activation."
+
+  - id: "EC-H2S8-106"
+    source_he: "ונתנה החכמה בבינה בסוד זווג פנים בפנים והיו כולם בכלי הבינה כי תחלה היו אחור באחור ונזדווג הכתר מניה וביה והמשיך מוחין להם ואז חזרו פנים בפנים וזו\"ן ניתנו בה והיו בה בסוד מ\"ן"
+    source_ref: "Heikhal 2, Sha'ar 1:4"
+    assertion: |
+      [PARENTHETIQUE DE VITAL] :
+      HOKHMAH fut donnee dans BINAH = ZIVVUG PANIM BE-FANIM (face a face).
+      Tous etaient dans le KLI de BINAH.
+      D'abord ils etaient AHOR BE-AHOR (dos a dos).
+      KETER s'est uni "MINEH U-VEH" (de lui et en lui) et a attire
+      les MOHIN pour eux → alors ils se RETOURNERENT face a face.
+      ZO"N furent places en Binah en tant que MA"N (eaux feminines),
+      soutenant les MOHIN d'AV"I.
+      → Dos-a-dos → Mohin du Keter → face-a-face → Z"N comme Ma'N dans Imma.
+    type: axiome_explicite
+    concepts:
+      - {id: panim_bepanim, role: zivvug_face_a_face}
+      - {id: ahor_beahor, role: dos_a_dos}
+      - {id: zon_man_bebinah, role: zon_comme_man_dans_binah}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "Transition dos-a-dos → face-a-face par Mohin du Keter. ZO'N = Ma'N dans Imma = pre-emergence."
+
+  # ─── POURQUOI Z"T SE BRISENT ────────────────────────────────────
+
+  - id: "EC-H2S8-107"
+    source_he: "כאשר היו הז\"ת כלולין במעי אמם היו שם בבחי' מ\"ן המעוררין זווג עליון אמנם בצאת משם הז\"ת שהם הז' מלכים שמלכו בארץ אדום ורצו ליכנס בכלים שלהם ולא יכלו הכלים לסבול ונשברו ומתו"
+    source_ref: "Heikhal 2, Sha'ar 1:4"
+    assertion: |
+      Tant que les Z"T etaient INCLUS dans le VENTRE de leur MERE
+      (= Binah) en tant que MA"N arousing le Zivvug superieur = OK.
+      MAIS quand les Z"T SORTIRENT et voulurent ENTRER dans LEURS
+      PROPRES KELIM → les Kelim n'ont PAS PU les SUPPORTER (lo yakhlu
+      ha-kelim lisvol) → ils se BRISERENT et MOURURENT.
+      Ce sont les 7 MELAKHIM qui ont REGNE en ERETZ EDOM (Genese 36).
+      → La SORTIE du ventre = le moment de la Shevirah.
+    type: axiome_explicite
+    concepts:
+      - {id: yetzi_at_zat, role: sortie_des_sept_inferieures}
+      - {id: kelim_lo_yakhlu, role: kelim_ne_peuvent_supporter}
+      - {id: shevirah_beyetzi_ah, role: brisure_au_moment_de_la_sortie}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La Shevirah = au moment de la SORTIE. Tant que les Z'T sont dans Imma = stables. A l'exterieur = crash."
+
+  - id: "EC-H2S8-108"
+    source_he: "כי הנה הם מהדעת ולמטה דעת א' חסד ב' גבורה ג' ת\"ת ד' נ\"ה הם תרי פלגי גופא והם ה' יסוד ו' מל' ז' כי הנ\"ה נחשבים כ\"א חצי הגוף ובין שניהם הם אחד לבד"
+    source_ref: "Heikhal 2, Sha'ar 1:4"
+    assertion: |
+      Les 7 MELAKHIM = de DA'AT en-dessous :
+      1. DA'AT | 2. HESED | 3. GEVURAH | 4. TIFERET |
+      5. NETZAH-HOD (= TREI PALGEI GUFA, 2 demi-corps = 1) |
+      6. YESOD | 7. MALKHUT.
+      NH sont comptes comme UN SEUL (un demi-corps chacun).
+      → 7 rois = 7 niveaux de Da'at a Malkhut.
+    type: axiome_explicite
+    concepts:
+      - {id: sheva_melakhim_daat, role: sept_rois_depuis_daat}
+      - {id: nh_trei_palgei, role: nh_deux_demi_corps}
+    mapping:
+      modules: ["olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Les 7 rois commencent au Da'at (pas a Hesed). NH = 1 unite. Le decompte precis des 7 Melakhim."
+
+  # ─── LES 7 ROIS DE GENESE 36 ────────────────────────────────────
+
+  - id: "EC-H2S8-109"
+    source_he: "בלע בן בעור זה דעת וכבר הודעתיך כי בלעם הוא בלע כשארז\"ל והוא בסוד דעת דקליפה... יובב הוא חסד וזהו בן זרח לשון זריחה כי הוא בחינת חסד הנקרא אור כנודע"
+    source_ref: "Heikhal 2, Sha'ar 1:4"
+    assertion: |
+      IDENTIFICATIONS — Genese 36:31-39 :
+      BELA BEN BEOR = DA'AT. Bil'am = Bela (Talmud). Bil'am = Da'at
+      de la QLIPAH (ecorce). Comme MOSHE = Da'at Elyon d'ABBA dans Z"A.
+      "YODEA DAAT ELYON" (Nombres 24:16) dit de Bil'am = il est sorti
+      des SCORIES (sigim) de ce Da'at.
+      YOVAV BEN ZERAH = HESED. Zerah = ZRIHAH (lever du soleil).
+      Le HESED est appele OHR (lumiere), "comme connu".
+    type: déduction_scripturaire
+    concepts:
+      - {id: bela_daat, role: bela_ben_beor_est_daat}
+      - {id: yovav_hesed, role: yovav_ben_zerah_est_hesed}
+      - {id: bilam_daat_qlipah, role: bilam_daat_de_lecorce}
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: "Chaque roi d'Edom encode une Sefirah. Bela=Da'at (Bil'am), Yovav=Hesed (lumiere)."
+
+  - id: "EC-H2S8-110"
+    source_he: "חשם הוא גבורה כי הוא סוד ה\"ג ואותיות חשם הוא חמש... והדד בן בדד הוא הת\"ת ונקרא כן כמה שנודע כי לפעמים אבא ויש\"ס נעשים חד פרצוף... וזהו הדד בן בדד ב\"פ דד שהם בחזה הת\"ת"
+    source_ref: "Heikhal 2, Sha'ar 1:4"
+    assertion: |
+      HUSHAM = GEVURAH. Les lettres de HUSHAM (חשם) = HAMESH (חמש — 5).
+      = les 5 GEVUROT (H"G — Hamesh Gevurot).
+      HADAD BEN BEDAD = TIFERET. Hadad = 2x DAD (דד — sein/mamelle).
+      Ben Bedad = B + DAD = encore un sein.
+      Les 2 SEINS (dadim) se trouvent au HAZEH (poitrine) du TIFERET.
+      RAISON : quand Abba+YS"S deviennent un Partzuf, le Yesod de Binah
+      devient le HAZEH → la s'installent les DADIM.
+      A la mort de ce roi, les DADIM de Binah FANERENT (tzamqu).
+    type: déduction_scripturaire
+    concepts:
+      - {id: husham_gevurah, role: husham_est_gevurah}
+      - {id: hadad_tiferet, role: hadad_ben_bedad_est_tiferet}
+      - {id: dadim_hazeh, role: seins_au_poitrine_tiferet}
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: "Husham=Gevurah (5 Gevurot), Hadad=Tiferet (les 2 seins au Hazeh). Les noms encodent la structure."
+
+  - id: "EC-H2S8-111"
+    source_he: "ושמלה ממשרקה ובעל חנן בן עכבור הם נ\"ה תרי פלגי גופא. והנה שאול מרחובות הנהר הוא יסוד... כי יסוד בינה הוא רחב להיותה נקבה ונקרא רחובות הנהר ור\"ת שאול מרחובות הנהר משה"
+    source_ref: "Heikhal 2, Sha'ar 1:4"
+    assertion: |
+      SAMLAH MI-MASREKAH + BA'AL HANAN BEN AKHBOR = NETZAH et HOD
+      (= deux demi-corps, cf. EC-H2S8-108).
+      SHA'UL MI-REHOVOT HA-NAHAR = YESOD.
+      RAISON : le YESOD de BINAH est LARGE (rahav) car elle est NUKVAH.
+      Il est appele REHOVOT HA-NAHAR (les larges espaces du fleuve).
+      RASHEI TEVOT de "שאול מרחובות הנהר" = MOSHE (משה).
+      Car MOSHE = YESOD d'ABBA ("comme connu").
+    type: déduction_scripturaire
+    concepts:
+      - {id: samlah_netzah, role: samlah_est_netzah}
+      - {id: baal_hanan_hod, role: baal_hanan_est_hod}
+      - {id: shaul_yesod, role: shaul_est_yesod}
+      - {id: rehovot_rahav, role: rehovot_largeur_binah}
+    mapping:
+      modules: ["olamot.py", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Samlah+Ba'al Hanan=NH, Sha'ul=Yesod. L'acronyme de Sha'ul=Moshe=Yesod d'Abba."
+
+  - id: "EC-H2S8-112"
+    source_he: "וז\"ש בשאול והנה הוא נחבא אל הכלים... כל האורות נסתלקו מתוכם ונשארו מאנין תבירין ולא נשארו בהם רק בחי' רפ\"ח ניצוצין... ואמנם בכלי של היסוד נשאר אור אחד זולת הרפ\"ח ניצוצין כדי להחיות את כלי המל' דלית לה מגרמה כלום"
+    source_ref: "Heikhal 2, Sha'ar 1:4"
+    assertion: |
+      "VEHINEH HU NEHBA EL HA-KELIM" (I Samuel 10:22 — "et voici
+      il se cachait parmi les vaisseaux") = dit de SHA'UL (= Yesod).
+      Apres la SHEVIRAH : tous les Orot se RETIRERENT.
+      Il resta des MA'ANIN TEVIRIN (vaisseaux brises).
+      Il ne resta en eux que les REF"AH (288) NITZOTZOT (etincelles).
+      MAIS : dans le KLI du YESOD, un OHR SUPPLEMENTAIRE resta
+      (au-dela des 288) pour DONNER VIE au Kli de MALKHUT
+      "DE-LEIT LAH MI-GARMAH KELUM" (elle n'a rien d'elle-meme).
+      → SHA'UL = l'Ohr CACHE dans le Yesod pour sustenter Malkhut.
+    type: déduction_scripturaire
+    concepts:
+      - {id: refah_nitzotzot, role: 288_etincelles}
+      - {id: ma_anin_tevirin, role: vaisseaux_brises}
+      - {id: ohr_nehba_yesod, role: lumiere_cachee_dans_yesod}
+      - {id: malkhut_leit_lah, role: malkhut_na_rien_delle_meme}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: ["nukvah"]
+      relevance: "288 Nitzotzot = les restes de la Shevirah. Mais Yesod garde 1 Ohr supplementaire pour Malkhut (qui n'a rien d'elle-meme)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S8-037"
+    type: "séquentiel"
+    from: kelim_tekhila
+    to: orot_ahar_kakh
+    nature: "Dans les Nekudim, les KELIM sortent D'ABORD, puis les OROT entrent dedans"
+    assertions_source: ["EC-H2S8-103"]
+
+  - id: "REL-H2S8-038"
+    type: "causal"
+    from: bitul_orot
+    to: kli_sovel
+    nature: "Le BITUL des Orot inferieurs dans le superieur permet au Kli de SUPPORTER la charge"
+    assertions_source: ["EC-H2S8-104"]
+
+  - id: "REL-H2S8-039"
+    type: "causal"
+    from: yetzi_at_zat
+    to: shevirah_beyetzi_ah
+    nature: "La SORTIE des Z'T du ventre d'Imma CAUSE la Shevirah (les Kelim ne peuvent supporter)"
+    assertions_source: ["EC-H2S8-107"]
+
+  - id: "REL-H2S8-040"
+    type: "transformation"
+    from: ahor_beahor
+    to: panim_bepanim
+    nature: "Dos-a-dos → face-a-face par les MOHIN du Keter"
+    assertions_source: ["EC-H2S8-106"]
+
+  - id: "REL-H2S8-041"
+    type: "flux"
+    from: ohr_nehba_yesod
+    to: malkhut_leit_lah
+    nature: "L'Ohr CACHE dans Yesod alimente Malkhut (qui n'a rien d'elle-meme)"
+    assertions_source: ["EC-H2S8-112"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S8-016"
+    nom: "Bitul comme Mecanisme de Stabilite"
+    source_assertions: ["EC-H2S8-104", "EC-H2S8-105", "EC-H2S8-107"]
+    formalisation: |
+      Un systeme est STABLE tant que les composants inferieurs sont
+      BETELIM (nullifies) dans le superieur :
+      DANS le ventre d'Imma : Z"T = Ma'N = nullifies → STABLE.
+      HORS du ventre : Z"T = autonomes → tentent d'entrer dans LEURS Kelim
+      → les Kelim ne supportent PAS → SHEVIRAH.
+      PRINCIPE : le BITUL (nullification/subordination) = mecanisme
+      de stabilite. L'AUTONOMIE prematuree = cause de la defaillance.
+    applications_ia:
+      - "ohr.py : les sous-modules sont stables tant qu'ils sont 'contenus' dans un module superieur"
+      - "Analogie ML : les representations dans les couches intermediaires sont 'nullifiees' dans le batch norm"
+      - "L'autonomie prematuree = deployment avant que le composant soit pret"
+    questions_ouvertes:
+      - "Le Bitul est-il analogue au gradient clipping (empecher un composant de devenir trop fort) ?"
+      - "La sortie du ventre = le moment ou un module est 'deploye' independamment ?"
+
+  - id: "PG-H2S8-017"
+    nom: "288 Nitzotzot + 1 (l'Exception du Yesod)"
+    source_assertions: ["EC-H2S8-112"]
+    formalisation: |
+      Apres la Shevirah, TOUS les Orot se retirent.
+      Il reste seulement 288 NITZOTZOT (etincelles) dans les vaisseaux brises.
+      EXCEPTION : le KLI du YESOD garde un OHR SUPPLEMENTAIRE
+      (au-dela des 288) pour SUSTENTER MALKHUT.
+      RAISON : Malkhut n'a RIEN d'elle-meme (leit lah mi-garmah kelum).
+      → Le Yesod = le point de transfert vital entre la Shevirah et le Tikkun.
+      → Les 288 sont le MATERIEL BRUT du Tikkun (Birur des Nitzotzot).
+    applications_ia:
+      - "olamot.py : apres un crash, des 'etincelles' restent = donnees recoverables"
+      - "ohr.py : le Yesod garde un backup supplementaire pour le composant le plus vulnerable (Malkhut)"
+      - "Analogie ML : apres un reset catastrophique, certaines representations persistent = transfer learning residuel"
+    questions_ouvertes:
+      - "Les 288 Nitzotzot sont-ils un nombre structurel (4x72=288=4xAV) ou accidentel ?"
+      - "Le Birur (clarification) des 288 = le processus de fine-tuning apres un pre-training avorte ?"

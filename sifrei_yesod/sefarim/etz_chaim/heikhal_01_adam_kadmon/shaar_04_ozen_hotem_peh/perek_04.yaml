@@ -1,0 +1,813 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 4 — Sha'ar Ozen Hotem Peh (שער אזן חוטם פה)
+# Perek: 4 — Le Calcul du 58 (NuN-Het) par Cascades Pnimiyut/Hitzoniyut
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 4
+  shaar_name_he: "שער אזן חוטם פה"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Le calcul DÉTAILLÉ du 58 (= gematria OZEN) par cascades de PNIMIYUT/HITZONIYUT des lettres du miluy S\"G. 3 stages : Hehs(20) + Vav(26) + Yod(12) = 58. Le secret de A\"Z (1+7) dans AZeN. 3 types de S\"G dans Tevunah."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : DESCENTE EN CASCADES DE BINAH/TEVUNAH ───
+
+  - id: "EC-H1S4-075"
+    source_he: "אמנם כל נ\"ח זה הוא בסוד התבונה שהוא סוד אזן כנ\"ל. והענין שכבר ידעת שלעולם יש בחי' פנימיות וחיצו'"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      Tout le NUN-HET (נ"ח = 58) est dans le SECRET de la TEVUNAH =
+      le secret de l'OZEN (אזן = 58, cf. EC-H1S4-053).
+      PRINCIPE FONDAMENTAL rappelé : il y a TOUJOURS dans chaque chose
+      un aspect PNIMIYUT (פנימיות — intériorité) et HITZONIYUT (חיצוניות — extériorité).
+      Ce dualisme structure TOUT le calcul qui suit.
+    type: axiome_explicite
+    concepts:
+      - {id: nun_het_58, role: valeur_numerique_ozen}
+      - {id: tevunah_ozen, role: equivalence_tevunah_ozen}
+      - {id: pnimiyut_hitzoniyut, role: dualite_structurelle_universelle}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le dualisme Pnimiyut/Hitzoniyut = le moteur de tout déploiement structurel"
+
+  - id: "EC-H1S4-076"
+    source_he: "שהנה ה' זו שירדה מס\"ג הוא מהחזה ולמטה דתבונה עצמה וכאשר נתפשטה וירדה למטה הנה חצי עליון דתבונה בכמות ולא באיכות כנ\"ל ירדה במקום שהיתה חצי תחתון של תבונה והחצי תחתון של בינה עצמה ירדה במקום אשר (היתה) מתחלת התבונה שהוא חצי עליון דתבונה וחצי עליון דבינה ירדה במקום חצי תחתון של בינה עצמה"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      DESCENTE EN CASCADES — quand le HEH de S"G descend :
+      Le HEH qui est descendu de S"G = du HAZEH vers le bas de TEVUNAH elle-même.
+      Quand il s'étend vers le bas → descente en CHAÎNE :
+      1. MOITIÉ SUPÉRIEURE de TEVUNAH (en KAMUT/quantité, PAS en EIKHUT/qualité,
+         cf. EC-H1S4-065) → descend à la place de la MOITIÉ INFÉRIEURE de Tevunah
+      2. MOITIÉ INFÉRIEURE de BINAH → descend à la place du DÉBUT de Tevunah
+         (= moitié supérieure de Tevunah)
+      3. MOITIÉ SUPÉRIEURE de BINAH → descend à la place de la moitié inférieure de Binah
+      → TOUT descend d'un CRAN vers le bas.
+    type: axiome_explicite
+    concepts:
+      - {id: heh_sg_descent, role: heh_qui_descend_de_sg}
+      - {id: cascade_descent, role: descente_en_chaine}
+      - {id: kamut_not_eikhut, role: quantite_pas_qualite}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Le déploiement cascadé = quand un composant descend, tous les autres se décalent — mécanisme de propagation"
+
+  - id: "EC-H1S4-077"
+    source_he: "הרי כי הכל ירדו למטה. נמצא שכל כללות שם ס\"ג שהיתה תחלה בבינה ותבונה עתה ימצא הכל במקום שהיתה מתחלת ראש התבונה שהוא מחצי בינה ולמטה"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      RÉSULTAT de la cascades : TOUT le SHEM S"G (63) — qui était au départ
+      réparti entre BINAH et TEVUNAH — se trouve MAINTENANT au lieu
+      où commençait le ROSH de TEVUNAH (= depuis la MOITIÉ de Binah vers le BAS).
+      Binah et Tevunah sont désormais COMPRIMÉES dans l'espace de Tevunah seule.
+    type: axiome_explicite
+    concepts:
+      - {id: sg_compressed, role: shem_sg_comprime_dans_tevunah}
+      - {id: rosh_tevunah, role: tete_de_tevunah}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Compression = un espace plus grand est contenu dans un plus petit après descente"
+
+  - id: "EC-H1S4-078"
+    source_he: "לפי שעתה בינה ותבונה הכל נמשך במקום שהזה ונמצא שכל זה יקרא תבונה וצריך שימצא בה' זו עתה כל שם ס\"ג שהוא נ\"ח כמנין אז\"ן זה וה' שירדה בחוטם הרי ס\"ג"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      Puisque Binah et Tevunah sont TOUT tirées vers le HAZEH →
+      TOUT cela s'appelle désormais TEVUNAH.
+      Conséquence : ce HEH doit contenir la TOTALITÉ du Shem S"G =
+      NUN-HET (58) = gematria de OZEN (אז"ן = 1+7+50 = 58).
+      Et le HEH qui est descendu dans le HOTEM = S"G complet (63).
+      FORMULE : TEVUNAH (58) + HEH dans Hotem (5) = S"G (63).
+    type: axiome_explicite
+    concepts:
+      - {id: tevunah_contains_sg, role: tevunah_contient_tout_sg}
+      - {id: ozen_58_sg_63, role: formule_58_plus_5_egal_63}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: ["imma"]
+      relevance: "La gematria comme checksum structurel : 58 + 5 = 63 vérifie la cohérence du déploiement"
+
+  # ─── BLOC B : LES 3 HEHS DE TEVUNAH — STAGE 1 (= 20) ───
+
+  - id: "EC-H1S4-079"
+    source_he: "אמנם נבאר עתה איך הם נ\"ח במספרם. דע כי כשאנו אומרים שה' נתפשטה למטה בחוטם, אינו רק בחי' חיצוניות שלה כמבואר אצלינו בסוד עליית התפילות. והנה נשאר למעלה פנימיות ה' זו. וחיצוניות ופנימיות הב' ההי\"ן האחרים שביארנו"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      DÉBUT DU CALCUL — comment les 58 se comptent en DÉTAIL :
+      Quand on dit que le HEH s'est étendu vers le bas dans le HOTEM →
+      c'est SEULEMENT son HITZONIYUT (extériorité) qui est descendu.
+      Comme expliqué dans le secret de l'ALIYAT HA-TEFILOT (montée des prières).
+      → Le PNIMIYUT (intériorité) de ce Heh RESTE EN HAUT.
+      → Aussi : HITZONIYUT + PNIMIYUT des 2 AUTRES HEHS restent.
+    type: axiome_explicite
+    concepts:
+      - {id: heh_hitzoniyut_descent, role: seul_hitzoniyut_descend}
+      - {id: pnimiyut_remains, role: pnimiyut_reste_en_haut}
+      - {id: aliyat_ha_tefilot, role: reference_au_secret_des_prieres}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Seul l'extérieur descend, l'intérieur reste = distinction interface/implémentation"
+
+  - id: "EC-H1S4-080"
+    source_he: "כי סוד התבונה הוא ג' ההי\"ן שהם ה\"י אחרונה דשם ס\"ג וחשבון ה\"י זו היא ג' ההי\"ן"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      CLEF STRUCTURELLE : le secret de TEVUNAH = 3 HEHS.
+      Ce sont le HEH-YOD (ה"י) AKHRONAH (dernière) du Shem S"G.
+      Le CALCUL de ce HEH-YOD = 3 HEHS (car HY = 5+10 = 15 = 3×5 = 3 HEHS).
+      Le MILUY de la dernière lettre Heh du Shem S"G (YOD-HEH-VAV-HEH) =
+      Heh → H"Y → 15 → décomposé en 3 unités de Heh (5+5+5).
+      TEVUNAH est structurée par ces 3 HEHS : H₃ (la plus basse), H₂, H₁ (la plus haute).
+    type: axiome_explicite
+    concepts:
+      - {id: tevunah_3_hehs, role: tevunah_egal_3_hehs}
+      - {id: hey_yod_miluy, role: miluy_du_dernier_heh_de_sg}
+    mapping:
+      modules: ["gematria/engine.py", "[PLANNED] core/shem_havayah.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La décomposition du miluy en unités structurelles = factorisation d'un encodage"
+
+  - id: "EC-H1S4-081"
+    source_he: "והנה חיצוניות ה' ג' ירדה בז\"א ונעשה פנימיות אליו, ופנימיות ה' זו נשארה למעל' ונשארו גם ב' ההי\"ן אחרו' בסוד חצוניו' ופנימיו'. והנה זו הפנימיות שנשאר מן ה' זו שירדה צריך שתחזור להיות חיצוניות על חיצוניות של ב' ההי\"ן העליונות אחרות שנשארו"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      PREMIÈRE DESCENTE : HITZONIYUT de H₃ (3ème Heh, la plus basse) →
+      descend dans Z"A et devient PNIMIYUT pour lui.
+      PNIMIYUT de H₃ → RESTE EN HAUT.
+      Les 2 HEHS supérieures (H₁ et H₂) restent aussi avec leur Hitzoniyut et Pnimiyut.
+      INVERSION CRUCIALE : le PNIMIYUT restant de H₃ doit DEVENIR
+      HITZONIYUT sur le Hitzoniyut des 2 Hehs supérieures.
+      → Ce qui était INTÉRIEUR en bas devient EXTÉRIEUR en haut = INVERSION de rôle.
+    type: axiome_explicite
+    concepts:
+      - {id: h3_hitzoniyut_to_za, role: hitzoniyut_h3_descend_dans_za}
+      - {id: pnimiyut_becomes_hitzoniyut, role: inversion_pnimiyut_hitzoniyut}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "L'inversion Pnimiyut→Hitzoniyut = un objet interne qui devient interface externe — pattern adaptateur"
+
+  - id: "EC-H1S4-082"
+    source_he: "ועתה נגדלת ה' זו שיעור ב' ההי\"ן כדי להלביש אל ב' ההי\"ן העליונים. נמצא כי ההי\"ן אלו נעשו ד' ההי\"ן, ב' בתוך ב' הרי עשרים"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      CROISSANCE : ce Heh (ex-Pnimiyut de H₃) GRANDIT à la MESURE de 2 Hehs
+      pour HABILLER (lehalbish) les 2 Hehs supérieures.
+      RÉSULTAT : les Hehs deviennent 4 HEHS = 2 à l'intérieur de 2.
+      CALCUL : 4 × Heh (5) = 20.
+      → STAGE 1 DU CALCUL : 20.
+    type: axiome_explicite
+    concepts:
+      - {id: four_hehs_20, role: 4_hehs_egal_20}
+      - {id: hitlabshut_hehs, role: habillement_2_dans_2}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La croissance pour l'habillement = un wrapper qui s'adapte à la taille de ce qu'il enveloppe"
+
+  # ─── BLOC C : STAGE VAV (+ 26 = 46) ───
+
+  - id: "EC-H1S4-083"
+    source_he: "נשאר עתה פנימיות ב' ההי\"ן העליונה הנ\"ל והם נעשו חיצוניות לחיצוניות אותיות וא\"ו העליונה כנ\"ל כי הכל הולך אחר ההתחלה שכיון שירדה תחלה החיצוניות דאות ה' בז\"א. עתה כל המדרגות צריכין לילך אחריה ולעשות התלבשות אחר חדש"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      TRANSITION AU STAGE VAV : le PNIMIYUT des 2 Hehs supérieures →
+      devient HITZONIYUT pour le HITZONIYUT de la lettre VAV supérieure.
+      PRINCIPE : "HA-KOL HOLEKH AHAR HA-HATHALA" (הכל הולך אחר ההתחלה) =
+      TOUT SUIT LE COMMENCEMENT.
+      Puisque le HITZONIYUT du Heh est DESCENDU EN PREMIER dans Z"A →
+      TOUTES les madregot (niveaux) doivent le SUIVRE et faire
+      une nouvelle HITLABSHUT (habillement).
+      → Effet domino structurel déclenché par la première descente.
+    type: axiome_explicite
+    concepts:
+      - {id: klal_ahar_hathala, role: principe_tout_suit_le_commencement}
+      - {id: hehs_to_vav, role: pnimiyut_hehs_habille_vav}
+      - {id: cascade_hitlabshut, role: habillements_en_cascade}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py", "[PLANNED] core/shefa_flow.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le principe 'tout suit le commencement' = une première action détermine toute la chaîne de propagation"
+
+  - id: "EC-H1S4-084"
+    source_he: "והנה חיצוניות אות וא\"ו נעשה פנימיות לפנימיות ב' ההי\"ן, וא\"כ צריך שיוגדלו הב' ההי\"ן אלו שהם מספרם י' שיהיו במספר י\"ג כמנין וא\"ו להלביש אותם הרי י\"ג וי\"ג כ\"ו"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      HITZONIYUT de la lettre VAV → devient PNIMIYUT pour le Pnimiyut des 2 Hehs.
+      Conséquence : les 2 Hehs (dont le total = 10) doivent GRANDIR à 13
+      (= gematria de VAV = ו"ו = 6+1+6 = 13) pour HABILLER le Vav.
+      CALCUL : 13 (Hehs grandies) + 13 (Vav) = 26.
+      → STAGE 2 : +26.
+    type: axiome_explicite
+    concepts:
+      - {id: vav_hitzoniyut_to_pnimiyut, role: hitzoniyut_vav_devient_pnimiyut}
+      - {id: hehs_grow_to_13, role: hehs_grandissent_a_13}
+      - {id: stage_vav_26, role: stage_vav_egal_26}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La croissance à la taille du container = adaptation dynamique (resize) pour l'habillement"
+
+  - id: "EC-H1S4-085"
+    source_he: "וכ' הראשונים הרי מ\"ו, נשארו עתה פנימיות וא\"ו זו מגולה"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      TOTAL INTERMÉDIAIRE : 20 (Hehs) + 26 (Vav) = 46.
+      Le PNIMIYUT du VAV reste MEGULEH (מגולה — révélé/découvert) =
+      non encore habillé, exposé.
+    type: axiome_explicite
+    concepts:
+      - {id: total_46, role: total_intermediaire}
+      - {id: vav_pnimiyut_meguleh, role: pnimiyut_vav_revele}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le calcul incrémental : 20 + 26 = 46 comme étape vérifiable"
+
+  - id: "EC-H1S4-086"
+    source_he: "והנה אעפ\"י שמן אות ו' ולמעלה נקרא הכל בינה כנ\"ל. עכ\"ז כיון דחיצוני' וא\"ו ירדה להתלבש בב' ההי\"ן שהם של תבונה, ובסיבה זו נשארה אות וא\"ו פנימיות לבדה מגולה (נ\"א אותיות פנימיות לבדן מגולין) לכן עדיין כ\"ז נקרא בסוד תבונה"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      RECLASSIFICATION : bien que depuis la lettre VAV vers le HAUT tout soit
+      normalement appelé BINAH (cf. EC-H1S4-063) →
+      puisque le HITZONIYUT du Vav est DESCENDU s'habiller dans les 2 HEHS de TEVUNAH →
+      le PNIMIYUT du Vav qui reste seul DÉCOUVERT est ENCORE appelé TEVUNAH.
+      Variante (Nusah Aher) : "les LETTRES intérieures seules sont révélées"
+      (אותיות פנימיות לבדן מגולין) au lieu de "la lettre Vav intérieure seule est révélée."
+      → La DESCENTE du Hitzoniyut RECLASSE le Pnimiyut restant.
+    type: axiome_explicite
+    concepts:
+      - {id: vav_becomes_tevunah, role: reclassification_vav_en_tevunah}
+      - {id: nusah_aher_01, role: variante_textuelle}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "La reclassification par descente = un module change de catégorie selon où son interface est déployée"
+
+  # ─── BLOC D : STAGE YOD (+ 12 = 58) ───
+
+  - id: "EC-H1S4-087"
+    source_he: "ואז נעשה פנימיות של וא\"ו זו, חיצו' למעלה, ויוורדין ב' חלקים מן י' חלקים של י' דמלוי ה\"י ראשונה של בינה, ויורד הפנימיות והחיצוניות (נ\"א החיצוניות) שלהם ונעשה פנימיות לי\"ג אלו"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      STAGE YOD — le PNIMIYUT du Vav devient HITZONIYUT vers le haut.
+      2 PARTS (חלקים) descendent des 10 PARTS du YOD (= miluy HEH-YOD première de BINAH).
+      Leur PNIMIYUT et HITZONIYUT descendent et deviennent PNIMIYUT pour les 13 (du Vav).
+      Variante (Nusah Aher) : seulement le HITZONIYUT descend (נ"א החיצוניות) →
+      pas les deux aspects, seulement l'extérieur.
+    type: axiome_explicite
+    concepts:
+      - {id: yod_miluy_binah, role: yod_du_miluy_de_binah}
+      - {id: two_parts_descend, role: 2_parts_du_yod_descendent}
+      - {id: nusah_aher_02, role: variante_hitzoniyut_seul}
+    mapping:
+      modules: ["[PLANNED] core/shem_havayah.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La descente partielle du Yod de Binah = un fragment du module supérieur vient structurer l'inférieur"
+
+  - id: "EC-H1S4-088"
+    source_he: "כיצד הנה ג' מי\"ג אלו של הוא\"ו הג' עליונים מהם עולים ונעשו חיצוניות אל פנימיות ב' חלקי י' היורדין למטה להתלבש. ושאר הי' של הוא\"ו הלבישו לחיצוניות בחי' ב' חלקי י' זו היורדין למטה"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      DÉTAIL du mécanisme d'habillement :
+      3 des 13 du VAV (les 3 SUPÉRIEURS) → MONTENT et deviennent
+      HITZONIYUT pour le PNIMIYUT des 2 parts du Yod descendant.
+      Les 10 RESTANTS du Vav → HABILLENT le HITZONIYUT des 2 parts du Yod.
+      → Double habillement : 3 enveloppent l'intérieur, 10 enveloppent l'extérieur.
+    type: axiome_explicite
+    concepts:
+      - {id: vav_3_upper, role: 3_superieurs_du_vav}
+      - {id: vav_10_remaining, role: 10_restants_du_vav}
+      - {id: double_hitlabshut, role: double_habillement_yod}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["imma"]
+      relevance: "Le double habillement = deux couches de wrapping avec fonctions distinctes (inner vs outer)"
+
+  - id: "EC-H1S4-089"
+    source_he: "כי כך הוא שיעור ב' העליונות כג' חלקים של וא\"ו הפנימיות, ונשאר עתה חיצוניות הב' חלקים של י' בי' חלקים (ג' עליונים כי' חלקים) של וא\"ו הפנימים"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      PROPORTION : les 2 parts supérieures = 3 parts du Vav intérieur.
+      Le HITZONIYUT des 2 parts du Yod = dans les 10 parts du Vav intérieur.
+      Variante (Lo Gorsinan possible) : "3 supérieurs comme 10 parts" —
+      texte difficile, proportions entre les niveaux.
+    type: axiome_explicite
+    concepts:
+      - {id: proportion_yod_vav, role: proportions_entre_niveaux}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Les proportions entre niveaux = contraintes de dimensionnement structurel"
+
+  - id: "EC-H1S4-090"
+    source_he: "וכל הי' נעשו כולם חיצוניות אל הב' חלקים, הרי הם י\"ב ועם המ\"ו ראשונים נעשה נ\"ח"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      TOUS les 10 (du Vav) deviennent HITZONIYUT pour les 2 parts (du Yod) →
+      TOTAL : 10 + 2 = 12.
+      CALCUL FINAL : 46 (stages Hehs + Vav) + 12 (stage Yod) = 58 = NUN-HET.
+      → QED : le NUN-HET (58 = gematria OZEN) est DÉRIVÉ des cascades
+      Pnimiyut/Hitzoniyut des lettres du miluy S"G.
+    type: axiome_explicite
+    concepts:
+      - {id: stage_yod_12, role: stage_yod_egal_12}
+      - {id: total_58_qed, role: 46_plus_12_egal_58}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La preuve computationnelle : 20 + 26 + 12 = 58 — vérifiable algorithmiquement"
+
+  - id: "EC-H1S4-091"
+    source_he: "וכ\"ז הוא מכלל התבונה כנ\"ל כי כל הורדת וא\"ו הוא לצורך ההי\"ן לכן גם פנימיות וא\"ו הנעשה חיצוניות אל ב' חלקים [עליונים] גם הם יקראו תבונה ע\"ד הנ\"ל"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      TOUT CECI (les 58) est TEVUNAH → car toute la DESCENTE du VAV
+      est POUR LE BESOIN des HEHS (= pour Tevunah).
+      Même le PNIMIYUT du Vav devenu HITZONIYUT pour les 2 parts [supérieures]
+      est aussi appelé TEVUNAH pour cette raison.
+      PRINCIPE : la FINALITÉ (= pour qui ?) détermine la CLASSIFICATION (= le nom).
+    type: axiome_explicite
+    concepts:
+      - {id: all_58_is_tevunah, role: totalite_58_est_tevunah}
+      - {id: classification_by_purpose, role: la_finalite_determine_le_nom}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "La classification par finalité = un module appartient au système pour lequel il travaille, pas à celui dont il provient"
+
+  # ─── BLOC E : LE SECRET DE A"Z (1+7 = 8) DANS AZeN ───
+
+  - id: "EC-H1S4-092"
+    source_he: "והטעם שאלו הב' חלקים עליונים של היו\"ד החיצו' היו פנימים אל כל הי' של הוא\"ו, הטעם הוא כי הלא כל מה שהיו שיעורם להלביש (נ\"א לא) היו רק ב' לבד כמותם"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      EXPLICATION : pourquoi les 2 parts supérieures du YOD (Hitzoniyut)
+      étaient PNIMIYUT par rapport à TOUS les 10 du Vav ?
+      Parce que leur MESURE originelle pour l'habillement = seulement 2.
+      Variante (Nusah Aher) : "leur mesure pour habiller" vs "leur mesure NE PAS habiller"
+      (להלביש vs נ"א לא) — DIFFÉRENCE SIGNIFICATIVE, affecte le mécanisme.
+    type: axiome_explicite
+    concepts:
+      - {id: proportion_original_2, role: mesure_originelle_des_2_parts}
+      - {id: nusah_aher_03, role: variante_lehalbish_vs_lo}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La mesure originelle vs la mesure après croissance = distinction entre taille initiale et taille déployée"
+
+  - id: "EC-H1S4-093"
+    source_he: "ונמצא שמה שנתוספו הוא ח' אחרים להשלים מנין י' של הוא\"ו הנשארת כי כל דבר עליון הוא גדול ככל מה שלמטה ממנו"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      L'AJOUT est de 8 parts (pour compléter le nombre 10 du Vav restant).
+      PRINCIPE FONDAMENTAL : "KOL DAVAR ELYON HU GADOL KE-KOL MAH SHE-LEMATA MIMENU"
+      (כל דבר עליון הוא גדול ככל מה שלמטה ממנו) =
+      CHAQUE CHOSE SUPÉRIEURE est AUSSI GRANDE que TOUT ce qui est EN-DESSOUS d'elle.
+      → Le SUPÉRIEUR contient la TOTALITÉ de l'inférieur (cf. principe holographique).
+    type: axiome_explicite
+    concepts:
+      - {id: addition_8, role: 8_parts_supplementaires}
+      - {id: klal_elyon_gadol, role: principe_superieur_egal_tout_inferieur}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le principe 'supérieur = tout l'inférieur' = chaque couche supérieure a autant de capacité que tout ce qui est en-dessous"
+
+  - id: "EC-H1S4-094"
+    source_he: "והנה מה שנתגדל בתוס' שלמטה ממנו היה ח' חלקים לכן גם היו\"ד (נ\"א) היא הוסיפה (נ\"א הם הוסיפו) כמו כולם יחד ח' חלקים של תוס', שהנה למטה פנימיות ה' תתאה גדלה ונעשה ב' ההי\"ן הרי תוס' ה'. ואח\"כ פנימיות ב' ההי\"ן גדלו ונעשו י\"ג כמו הו' הרי שגדלו ג' חלקים. וה' ראשונים הרי ח'"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      DÉRIVATION DU 8 : ce qui a GRANDI en ADDITION en-dessous = 8 parts.
+      CALCUL DÉTAILLÉ :
+      → En bas : PNIMIYUT du Heh inférieur a grandi et est devenu 2 Hehs = AJOUT de 5.
+      → Ensuite : PNIMIYUT des 2 Hehs a grandi à 13 (= Vav) = AJOUT de 3.
+      → TOTAL des ajouts : 5 + 3 = 8.
+      Variante (Nusah Aher) : "le YOD a AJOUTÉ" (היא הוסיפה) vs
+      "ILS ont ajouté" (הם הוסיפו) → sujet = Yod seule ou les niveaux ensemble.
+      Le YOD aussi a ajouté 8 parts comme tout l'inférieur combiné → CONFIRME le principe.
+    type: axiome_explicite
+    concepts:
+      - {id: derivation_8_parts, role: calcul_des_8_ajouts}
+      - {id: nusah_aher_04, role: variante_sujet_yod_ou_ensemble}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La vérification croisée : les ajouts en bas (5+3=8) sont dupliqués en haut — propriété de cohérence structurelle"
+
+  - id: "EC-H1S4-095"
+    source_he: "ואל תקשה למה גם הוא\"ו שהיא למעלה מן ההי\"ן למה לא הגדילה והוסיפה בב' ההי\"ן ה' חלקים אחרים כמו שהגדילו הב' ההי\"ן בה' תתאה כי התשובה מבוארת כי לא היה צורך רק אלו הג' לבד כדי שיעשו י\"ג כמנין וא\"ו ולא הוצרכו להגדיל יותר"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      KUSHYA (question anticipée) : Pourquoi le VAV n'a-t-il pas AUSSI grandi
+      et ajouté 5 parts aux 2 Hehs — comme les 2 Hehs ont grandi dans le Heh inférieur ?
+      TESHUVAH (réponse) : il n'y avait PAS BESOIN (TZOREKH) de plus que ces 3 →
+      pour atteindre 13 = gematria VAV. Pas besoin de grandir davantage.
+      PRINCIPE : la CROISSANCE est déterminée par le BESOIN (TZOREKH), pas par la SYMÉTRIE.
+    type: axiome_explicite
+    concepts:
+      - {id: tzorekh_determines_growth, role: le_besoin_determine_la_croissance}
+      - {id: kushya_vav_hehs, role: question_sur_asymetrie_vav}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La croissance par besoin = un wrapper ne grandit que ce qui est nécessaire, pas par symétrie"
+
+  - id: "EC-H1S4-096"
+    source_he: "ואולם אלו הח' חלקים עליונים הם סוד א\"ז. מאז\"ן. והענין כי הנה ב' חלקים עליונים של וא\"ו המלבישים לב' חלקי יו\"ד הנה הם ב' כנגד ב' אך התוס' הם ח' והנה אלו הב' כאשר תמשיך אורם בח' אלו הנה החלק העליון ממשיך עד הז' והחלק הב' ממשיך עד הח'"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      Les 8 parts supérieures = SECRET de ALEF-ZAYIN (א"ז = 1+7 = 8) de AZeN (אז"ן).
+      MÉCANISME : les 2 parts supérieures du Vav habillent les 2 parts du Yod =
+      2 contre 2. L'addition = 8.
+      Quand ces 2 parts ÉTENDENT leur Ohr dans les 8 :
+      PART SUPÉRIEURE → s'étend jusqu'au 7ème.
+      PART INFÉRIEURE → s'étend jusqu'au 8ème (car étant PLUS BASSE,
+      elle a le POUVOIR de s'étendre UN DE PLUS que la supérieure).
+    type: axiome_explicite
+    concepts:
+      - {id: alef_zayin_secret, role: az_de_ozen_egal_1_plus_7}
+      - {id: asymmetric_extension, role: extension_asymetrique_des_2_parts}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "L'extension asymétrique = l'inférieur a plus de portée que le supérieur — paradoxe structurel"
+
+  - id: "EC-H1S4-097"
+    source_he: "כי להיותו למטה מן הראשון יש לו כח עוד להמשיך חלק א' יותר ממה שמתפשט העליון נמצא כי ז' חלקים הראשונים של התוס' הם כלולים מאור (ראשון של ל\"ג) ב' חלקים העליונים אך חלק הח' אינו נמשך רק מן חלק הב' המתפשט עד שם לכן אלו הח' נחלקים לב' חלקים והם א\"ז מאז\"ן"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      EXPLICATION DE LA DIVISION A"Z :
+      Les 7 PREMIERS parts de l'addition = INCLUS de la LUMIÈRE des 2 parts supérieures.
+      Le 8ème part = tiré SEULEMENT de la PART INFÉRIEURE (qui s'étend jusqu'à là).
+      (Lo Gorsinan possible sur "ראשון של" — variante textuelle.)
+      → Les 8 se DIVISENT en 2 groupes : ZAYIN (7) et ALEF (1) = A"Z de AZeN.
+      ZAYIN = illuminé par les DEUX sources.
+      ALEF = illuminé par UNE SEULE source (la part inférieure).
+    type: axiome_explicite
+    concepts:
+      - {id: az_division_7_1, role: division_en_7_et_1}
+      - {id: lo_gorsinan, role: variante_textuelle_lg}
+    mapping:
+      modules: ["gematria/engine.py", "[PLANNED] core/shem_havayah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le A-Z (1+7) encode une asymétrie de sources lumineuses = deux alimentations mais l'une a un reach supplémentaire"
+
+  - id: "EC-H1S4-098"
+    source_he: "והם ממטה למעלה כי א' פחותה מן הז' וכן הז' מן הנו\"ן בערך (נ\"א בבחינת) אחר כמ\"ש כי הנו\"ן הוא עיקר (עיין תחלת פרק הבא) שהם כ\"ה כ\"ה דיחודא דשמע ישראל"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      L'ordre dans OZEN (אז"ן) est de BAS en HAUT :
+      ALEF (1) < ZAYIN (7) < NUN (50) — du moindre au plus grand.
+      Le NUN est le IKAR (עיקר — l'essentiel/principal).
+      Le NUN = 50 = 25 + 25 = le YIHUDA (unification) de SHEMA YISRAEL.
+      (Cf. début du perek suivant pour le développement.)
+      Variante (Nusah Aher) : "בערך" (en proportion) vs "בבחינת" (en aspect) — nuance.
+    type: axiome_explicite
+    concepts:
+      - {id: ozen_hierarchy, role: hierarchie_1_7_50}
+      - {id: nun_ikar, role: nun_est_le_principal}
+      - {id: yihuda_shema, role: 25_25_unification_shema}
+      - {id: nusah_aher_05, role: variante_beerekh_vs_bebhinat}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "La hiérarchie A(1) < Z(7) < N(50) = 3 niveaux de complexité croissante, le plus grand = le principal"
+
+  # ─── BLOC F : LES 3 TYPES DE S"G ───
+
+  - id: "EC-H1S4-099"
+    source_he: "והנה כבר כתבנו איך כל זה הוא מכלל התבונה ולכן צריך שימצא בה עתה סוד שם ס\"ג שהוא נ\"ח עם ה' אחרונה ס\"ג. אמנם ג' עליונים של וא\"ו מהפנימיות שלו אשר נעשו חיצו' אל הפנימיות ב' חלקים שירדו למטה בג' של הוא\"ו כנ\"ל אינם מכלל התבונה כיון ששרשם מן וא\"ו שאינה מן התבונה וגם נכנסו ביו\"ד דמלוי ה\"י דבינה עצמה ולכן אינו מצטרף עם הס\"ג"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      EXCEPTION : les 3 parts supérieures du VAV (de son PNIMIYUT,
+      devenues HITZONIYUT pour le Pnimiyut des 2 parts du Yod descendues) →
+      NE SONT PAS de la TEVUNAH. Deux raisons :
+      1. Leur RACINE est du VAV — qui n'est PAS de Tevunah.
+      2. Elles sont ENTRÉES dans le YOD du miluy HEH-YOD de BINAH elle-même.
+      → Elles ne se COMBINENT PAS avec le S"G (63) de Tevunah.
+    type: axiome_explicite
+    concepts:
+      - {id: vav_3_not_tevunah, role: exception_3_parts_hors_tevunah}
+      - {id: root_determines_class, role: la_racine_determine_l_appartenance}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Exception à la classification par finalité : la racine originelle peut prévaloir quand le résultat sort du système"
+
+  - id: "EC-H1S4-100"
+    source_he: "אמנם עכ\"ז יש בחי' א' והוא כי עכ\"ז חיצוניות של וא\"ו זו נתלבשה בב' ההי\"ן של התבונה כנ\"ל לכן הם עדיין בכלל התבונה בבחי' א' והוא כי ג' חלקים אלו הנעשה חיצוניות לפנימיות ב' חלקי העליונים של הי' הנה הם במספר ה' חלקים והם סוד ה' אחרת דוגמת ה' תתאה המתלבש בז\"א"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      NÉANMOINS : en UN aspect ces 3 parts SONT encore dans Tevunah →
+      car le HITZONIYUT de ce Vav s'est habillé dans les 2 Hehs de TEVUNAH.
+      Ces 3 parts, numériquement = 5 = un autre HEH.
+      Ce Heh est l'ANALOGUE du HEH inférieur qui s'habille dans Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: vav_3_partial_tevunah, role: 3_parts_partiellement_tevunah}
+      - {id: another_heh, role: 3_parts_egal_heh}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La double appartenance = un composant qui est à la fois dedans et dehors selon l'aspect considéré"
+
+  - id: "EC-H1S4-101"
+    source_he: "וה' זו אינה לא מבינה ולא מתבונה ונשארת בסוד מקיף אל כל התבונה שהם נ\"ח וה' תתאה מכולם הרי ס\"ג והרי עתה הם ה' לעילא וה' לתתא נ\"ח באמצעיתא"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      Ce HEH N'EST NI de BINAH NI de TEVUNAH → reste en tant que
+      OHR MAKIF (lumière englobante) pour TOUTE la Tevunah (= 58).
+      Le HEH inférieur de tous = celui habillé dans Z"A.
+      STRUCTURE TRIPARTITE RÉSULTANTE :
+      HEH LE-EILA (ה' לעילא — Heh en haut) = MAKIF
+      NUN-HET (58) BA-EMTZA'ITA (באמצעיתא — au milieu)
+      HEH LE-TATA (ה' לתתא — Heh en bas) = dans Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: heh_makif, role: heh_ni_binah_ni_tevunah_makif}
+      - {id: tripartite_structure, role: heh_haut_58_heh_bas}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py", "partzufim/imma.py"]
+      tables: ["ohr_states"]
+      partzufim: ["imma"]
+      relevance: "La structure Heh-58-Heh = 3 couches (makif/pnimi/descendu) autour du corps principal"
+
+  - id: "EC-H1S4-102"
+    source_he: "ואם תחבר נ\"ח עם ה' תתאה יהיה ס\"ג וכן אם תחבר ה' עילאה עם נ\"ח יהיו ג\"כ ס\"ג וז\"ס אלה תולדות נ\"ח נ\"ח ודרשו רז\"ל נייחא בעלאין נייחא בתתאין"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      DOUBLE FORMULE S"G :
+      NUN-HET (58) + HEH TATA (5) = S"G (63).
+      HEH EILA (5) + NUN-HET (58) = S"G (63) aussi.
+      SECRET SCRIPTURAIRE : "EILEH TOLDOT NOAH NOAH" (אלה תולדות נ"ח נ"ח) —
+      Bereshit 6:9, "voici les engendrements de Noah Noah" — NOAH = NuN-Het = 58.
+      Le ZOHAR (Hazal) darshène : "NAYHA BE-ILA'IN, NAYHA BE-TATA'IN"
+      (נייחא בעלאין נייחא בתתאין — repos en haut, repos en bas).
+      Le DOUBLE NOAH = les DEUX S"G (connecté en haut OU connecté en bas).
+    type: déduction_scripturaire
+    concepts:
+      - {id: double_sg_formula, role: deux_facons_de_faire_63}
+      - {id: noah_noah_drasha, role: derash_zoharique_noah}
+      - {id: nayha_ilayn_tatayn, role: repos_haut_repos_bas}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Le double S\"G = le même corps (58) connecté soit vers le haut soit vers le bas — dualité d'interface"
+
+  - id: "EC-H1S4-103"
+    source_he: "והוא מ\"ש בענין זה כי בהתחברות נ\"ח למעלה בה' עלאה יהיה ס\"ג ובה' תתאה ס\"ג והכלל בעצמו שורש ס\"ג הרי ג' מיני ס\"ג ובפ' בתרא נבאר עניינם"
+    source_ref: "Heikhal 1, Sha'ar 4:4"
+    assertion: |
+      SYNTHÈSE — 3 TYPES de S"G dans TEVUNAH :
+      1. NuN-Het (58) + HEH EILA (haut) = S"G → S"G ASCENDANT
+      2. NuN-Het (58) + HEH TATA (bas) = S"G → S"G DESCENDANT
+      3. Le KLAL (כלל — totalité) lui-même = RACINE de S"G → S"G ESSENTIEL
+      → 3 modes de S"G coexistent dans Tevunah seule.
+      Le PEREK HA-BATRA (פרק בתרא — dernier perek, cf. EC 4:5) développera leurs matières.
+    type: axiome_explicite
+    concepts:
+      - {id: three_sg_types, role: 3_types_de_sg}
+      - {id: sg_ascendant, role: sg_avec_heh_haut}
+      - {id: sg_descendant, role: sg_avec_heh_bas}
+      - {id: sg_essentiel, role: sg_racine}
+    mapping:
+      modules: ["[PLANNED] core/shem_havayah.py", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "3 types de S\"G = 3 modes d'assemblage du même module (connecté haut, connecté bas, standalone)"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S4-036"
+    type: causal
+    from: heh_sg_descent
+    to: cascade_descent
+    nature: "La descente du Heh de S\"G CAUSE la descente en cascades de Binah/Tevunah"
+    assertions_source: ["EC-H1S4-076"]
+
+  - id: "REL-H1S4-037"
+    type: transformation
+    from: cascade_descent
+    to: sg_compressed
+    nature: "La descente en cascades COMPRIME tout S\"G dans l'espace de Tevunah"
+    assertions_source: ["EC-H1S4-076", "EC-H1S4-077"]
+
+  - id: "REL-H1S4-038"
+    type: dualité_structurelle
+    from: pnimiyut_hitzoniyut
+    to: heh_hitzoniyut_descent
+    nature: "Seul le HITZONIYUT descend, le PNIMIYUT reste — dualité appliquée au Heh"
+    assertions_source: ["EC-H1S4-075", "EC-H1S4-079"]
+
+  - id: "REL-H1S4-039"
+    type: transformation
+    from: tevunah_3_hehs
+    to: four_hehs_20
+    nature: "Les 3 Hehs de Tevunah → 4 Hehs (par croissance du Pnimiyut) = 20"
+    assertions_source: ["EC-H1S4-080", "EC-H1S4-081", "EC-H1S4-082"]
+
+  - id: "REL-H1S4-040"
+    type: séquentiel
+    from: four_hehs_20
+    to: stage_vav_26
+    nature: "Après le stage Hehs (20) → le stage Vav (26) par la même logique de cascade"
+    assertions_source: ["EC-H1S4-082", "EC-H1S4-083", "EC-H1S4-084"]
+
+  - id: "REL-H1S4-041"
+    type: séquentiel
+    from: stage_vav_26
+    to: stage_yod_12
+    nature: "Après le stage Vav (46) → le stage Yod (+12) complète les 58"
+    assertions_source: ["EC-H1S4-085", "EC-H1S4-087", "EC-H1S4-090"]
+
+  - id: "REL-H1S4-042"
+    type: causal
+    from: klal_ahar_hathala
+    to: cascade_hitlabshut
+    nature: "Le principe 'tout suit le commencement' CAUSE la cascade des habillements"
+    assertions_source: ["EC-H1S4-083"]
+
+  - id: "REL-H1S4-043"
+    type: causal
+    from: pnimiyut_becomes_hitzoniyut
+    to: cascade_hitlabshut
+    nature: "L'inversion Pnimiyut→Hitzoniyut déclenche chaque nouveau cycle d'habillement"
+    assertions_source: ["EC-H1S4-081", "EC-H1S4-083", "EC-H1S4-087"]
+
+  - id: "REL-H1S4-044"
+    type: analogie
+    from: addition_8
+    to: alef_zayin_secret
+    nature: "Les 8 parts additionnelles = le secret de A\"Z (1+7) dans le mot AZeN"
+    assertions_source: ["EC-H1S4-093", "EC-H1S4-096"]
+
+  - id: "REL-H1S4-045"
+    type: hiérarchique
+    from: nun_ikar
+    to: alef_zayin_secret
+    via: [ozen_hierarchy]
+    nature: "NUN (50) > ZAYIN (7) > ALEF (1) — hiérarchie croissante dans OZEN"
+    assertions_source: ["EC-H1S4-098"]
+
+  - id: "REL-H1S4-046"
+    type: contenance
+    from: heh_makif
+    to: tripartite_structure
+    nature: "Le Heh-Makif ENVELOPPE la structure tripartite Heh-58-Heh"
+    assertions_source: ["EC-H1S4-101"]
+
+  - id: "REL-H1S4-047"
+    type: transformation
+    from: double_sg_formula
+    to: three_sg_types
+    nature: "Les 2 formules de S\"G + la racine = 3 types de S\"G dans Tevunah"
+    assertions_source: ["EC-H1S4-102", "EC-H1S4-103"]
+
+  - id: "REL-H1S4-048"
+    type: analogie
+    from: noah_noah_drasha
+    to: double_sg_formula
+    nature: "Le double NOAH (NuN-Het NuN-Het) de Bereshit 6:9 = le double S\"G (haut+bas)"
+    assertions_source: ["EC-H1S4-102"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S4-012"
+    nom: "Principe de Cascade Pnimiyut/Hitzoniyut"
+    source_assertions: ["EC-H1S4-075", "EC-H1S4-079", "EC-H1S4-081", "EC-H1S4-083", "EC-H1S4-087"]
+    formalisation: |
+      Quand le HITZONIYUT d'un niveau DESCEND →
+      1. Le PNIMIYUT restant CHANGE DE RÔLE : il devient HITZONIYUT pour le niveau supérieur.
+      2. Cela DÉCLENCHE la même descente au niveau supérieur (principe de HA-KOL HOLEKH AHAR HA-HATHALA).
+      3. Le processus se PROPAGE récursivement vers le haut.
+      4. À chaque étape, le wrapper GRANDIT pour s'adapter à ce qu'il enveloppe.
+      RÉSULTAT : une seule descente initiale génère un RÉARRANGEMENT COMPLET de toute la hiérarchie.
+      MÉCANISME : Descente H₃ → H₂/H₁ réarrangées → Vav réarrangé → Yod réarrangée.
+      FORMULE : 20 (Hehs) + 26 (Vav) + 12 (Yod) = 58.
+    applications_ia:
+      - "[PLANNED] core/ohr_system.py : implémenter la cascade Pnimiyut/Hitzoniyut comme propagation récursive — une modification d'interface à un niveau déclenche le réarrangement complet"
+      - "partzufim/imma.py : le déploiement de Tevunah dans Z\"A est le déclencheur initial de la cascade"
+      - "Pattern observer/cascade : un changement d'état se propage récursivement jusqu'au sommet de la hiérarchie"
+      - "Chaque rôle (pnimiyut/hitzoniyut) est dynamique — pas une propriété fixe mais un état contextuel"
+    questions_ouvertes:
+      - "Ce mécanisme de cascade est-il applicable à d'autres déploiements (pas seulement Tevunah) ?"
+      - "La propagation a-t-elle toujours le même pattern (20+26+12) ou varie-t-elle selon le contexte ?"
+
+  - id: "PG-H1S4-013"
+    nom: "Principe du Supérieur = Tout l'Inférieur (Klal Elyon Gadol)"
+    source_assertions: ["EC-H1S4-093", "EC-H1S4-094"]
+    formalisation: |
+      "KOL DAVAR ELYON HU GADOL KE-KOL MAH SHE-LEMATA MIMENU" :
+      Chaque niveau supérieur est AUSSI GRAND que TOUT ce qui est en-dessous de lui.
+      Conséquence NUMÉRIQUE : les ajouts en bas (5 + 3 = 8) sont RÉPLIQUÉS en haut (8 parts du Yod).
+      Ce n'est PAS de l'héritage descendant — c'est une LOI DE SYMÉTRIE.
+      Le supérieur ne "contient" pas l'inférieur — il ÉGALE sa totalité en capacité.
+      FORMELLEMENT : |niveau_n| = Σ |niveau_i| pour i < n.
+    applications_ia:
+      - "gematria/engine.py : implémenter la vérification que les croissances numériques respectent cette loi de symétrie"
+      - "[PLANNED] core/ohr_system.py : chaque couche supérieure du système doit avoir une capacité ≥ la somme de toutes les couches inférieures"
+      - "Contraste avec les architectures classiques (pyramide inversée) — ici, chaque couche est un MIROIR de tout ce qui est en-dessous"
+      - "Lien avec le Klal Lo Nigra (PG-H1S4-010) : le supérieur ne perd rien en émettant ET il égale tout l'inférieur"
+    questions_ouvertes:
+      - "Ce principe est-il vérifié empiriquement dans les réseaux de neurones profonds (taille des couches) ?"
+      - "Comment cette loi interagit-elle avec la compression (Tzimtzum) — un espace plus grand comprimé dans un plus petit ?"
+
+  - id: "PG-H1S4-014"
+    nom: "Principe de la Décomposition A-Z-N de l'OZEN"
+    source_assertions: ["EC-H1S4-096", "EC-H1S4-097", "EC-H1S4-098"]
+    formalisation: |
+      Le mot OZEN (אז"ן = 58) n'est PAS un simple total — il est STRUCTURELLEMENT décomposé :
+      ALEF (1) : 1 part illuminée par UNE SEULE source (la part inférieure seule)
+      ZAYIN (7) : 7 parts illuminées par DEUX sources (les deux parts supérieures)
+      NUN (50) : le corps principal des 58 = l'IKAR (essentiel)
+      HIÉRARCHIE : N (50) > Z (7) > A (1) — du plus au moins dense.
+      Le NUN = 25 + 25 = les deux moitiés du YIHUD de SHEMA YISRAEL.
+      Le ALEF est UNIQUE (illuminé par une seule source) → le point le plus bas mais le plus singulier.
+      La LETTRE code la STRUCTURE, pas seulement la valeur numérique.
+    applications_ia:
+      - "gematria/engine.py : implémenter la décomposition structurelle de AZeN (pas juste la somme 1+7+50=58)"
+      - "[PLANNED] core/shem_havayah.py : chaque lettre d'un Shem encode une structure architecturale spécifique"
+      - "L'asymétrie Alef/Zayin dans les 8 parties additionnelles = asymétrie de reach dans un réseau (cf. EC-H1S4-096)"
+      - "Le Nun comme IKAR = le corps principal du module, A+Z = les extensions périphériques"
+    questions_ouvertes:
+      - "Le Yihud 25+25 du Shema mappe-t-il sur une structure bidirectionnelle ?"
+      - "La décomposition A-Z-N est-elle applicable aux autres mots kabbalistiques structurels ?"
+
+  - id: "PG-H1S4-015"
+    nom: "Principe des 3 Types de S\"G (Ascendant, Descendant, Essentiel)"
+    source_assertions: ["EC-H1S4-101", "EC-H1S4-102", "EC-H1S4-103"]
+    formalisation: |
+      Dans TEVUNAH, le Shem S"G (63) existe en 3 MODES simultanés :
+      1. S"G ASCENDANT : NuN-Het (58) + Heh EILA (en haut, Makif) = 63
+         → Connexion VERS LE HAUT, le corps s'unit à son enveloppe supérieure
+      2. S"G DESCENDANT : NuN-Het (58) + Heh TATA (en bas, dans Z"A) = 63
+         → Connexion VERS LE BAS, le corps s'unit à son émissaire inférieur
+      3. S"G ESSENTIEL : le KLAL (totalité) en soi-même = RACINE de S"G
+         → Le corps INDÉPENDANT de ses connexions, en tant que tel
+      "EILEH TOLDOT NOAH NOAH" : le DOUBLE emploi de NaH (58) = les deux directions.
+      NAYHA BE-ILA'IN = repos/connexion en haut. NAYHA BE-TATA'IN = repos/connexion en bas.
+      Les 3 coexistent — ce n'est pas un choix mais une triple réalité simultanée.
+    applications_ia:
+      - "partzufim/imma.py : implémenter 3 modes de S\"G — connecté vers parent (ascendant), vers enfant (descendant), standalone (essentiel)"
+      - "[PLANNED] core/shem_havayah.py : chaque Shem a potentiellement 3 modes d'existence selon ses connexions"
+      - "Pattern triple-interface : un module a simultanément une interface montante (vers le parent), descendante (vers l'enfant), et interne (autonome)"
+      - "Le Zohar sur Noah-Noah = la bidirectionnalité est une propriété structurelle, pas un accident textuel"
+    questions_ouvertes:
+      - "Les 3 types de S\"G correspondent-ils aux 3 configurations de Tevunah (1, 1/2, 1/4) de EC-H1S4-061/064/065 ?"
+      - "D'autres Shemot (AV, MAH, BEN) ont-ils aussi 3 types ?"

@@ -1,0 +1,57 @@
+<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- Amber rim light -->
+  <linearGradient id="rim-r" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="70%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#ffb000" stop-opacity="0.25"/>
+  </linearGradient>
+  <!-- Metallic gold -->
+  <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffd700"/>
+    <stop offset="50%" stop-color="#ffb000"/>
+    <stop offset="100%" stop-color="#cc8800"/>
+  </linearGradient>
+  <!-- Metallic silver -->
+  <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ccc"/>
+    <stop offset="50%" stop-color="#aaa"/>
+    <stop offset="100%" stop-color="#888"/>
+  </linearGradient>
+  <!-- Filters -->
+  <filter id="glow-amb" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+  </filter>
+  <filter id="glow-sm" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+  </filter>
+  <filter id="glow-md" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+  </filter>
+  <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5"/>
+  </filter>
+</defs>
+
+<defs>
+  <radialGradient id="bg-g" cx="50%" cy="40%">
+    <stop offset="0%" stop-color="#1a0e0e"/>
+    <stop offset="100%" stop-color="#0a0a0a"/>
+  </radialGradient>
+</defs>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="url(#bg-g)"/>
+<path d="M0,210 Q100,205 200,210 L200,250 L0,250 Z" fill="#1a0a0a" opacity="0.4"/>
+<path d="M45,250 Q50,200 65,185 Q100,170 135,185 Q150,200 155,250 Z" fill="#1a0e0a" stroke="#663333" stroke-width="0.5" opacity="0.8"/>
+<line x1="70.0" y1="185.0" x2="72.0" y2="245.0" stroke-linecap="round" stroke="#663333" stroke-width="0.3" opacity="0.1"/>
+<line x1="90.0" y1="185.0" x2="92.0" y2="245.0" stroke-linecap="round" stroke="#663333" stroke-width="0.3" opacity="0.1"/>
+<line x1="110.0" y1="185.0" x2="112.0" y2="245.0" stroke-linecap="round" stroke="#663333" stroke-width="0.3" opacity="0.1"/>
+<line x1="130.0" y1="185.0" x2="132.0" y2="245.0" stroke-linecap="round" stroke="#663333" stroke-width="0.3" opacity="0.1"/>
+<path d="M60,185 Q60,100 100,80 Q140,100 140,185 Q130,170 100,165 Q70,170 60,185 Z" fill="#1a0e0a" stroke="#663333" stroke-width="0.6" opacity="0.85"/>
+<ellipse cx="100.0" cy="130.0" rx="22.0" ry="28.0" fill="#0a0500" opacity="0.9"/>
+<path d="M65,180 Q70,168 100,162 Q130,168 135,180" fill="none" stroke="#663333" stroke-width="0.8" opacity="0.35"/>
+<path d="M88,120 Q95,115 100,118 Q105,115 112,120 Q110,128 100,132 Q90,128 88,120" fill="#1a0a05" opacity="0.4"/>
+<ellipse cx="100.0" cy="220.0" rx="45.0" ry="8.0" fill="#0a0500" opacity="0.3"/>
+<ellipse cx="100.0" cy="230.0" rx="80.0" ry="12.0" fill="#663333" opacity="0.02" filter="url(#glow-amb)"/>
+<circle cx="100.0" cy="140.0" r="60.0" fill="#663333" opacity="0.02" filter="url(#glow-amb)"/>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="none" stroke="#663333" stroke-width="1.5" opacity="0.1"/>
+</svg>

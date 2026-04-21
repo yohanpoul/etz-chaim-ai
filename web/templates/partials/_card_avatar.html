@@ -1,0 +1,19 @@
+{# _card_avatar.html — carte-portrait pour un personnage.
+   Attend : p (personnage dict), card_class (str opt), grid_area (str opt) #}
+<div class="av-card {{ card_class|default('') }}"
+     id="card-{{ p.id }}"
+     data-etat="idle"
+     {% if p.id == 'zeir_anpin' %}data-mochin="gadlut"{% endif %}
+     {% if grid_area %}style="grid-area:{{ grid_area }}"{% endif %}>
+    <div class="av-card-img">
+        <img src="/static/avatars/{{ p.id }}.png" alt="{{ p.nom }}"
+             onerror="this.src='/static/avatars/{{ p.id }}.svg'">
+    </div>
+    <div class="av-card-body">
+        <div class="av-card-role">{{ p.role }}</div>
+        <div class="av-card-nom">{{ p.nom }}</div>
+        <div class="av-card-hebreu">{{ p.nom_hebreu }}</div>
+        <div class="av-card-desc">{{ p.description }}</div>
+        <a href="#" class="av-card-link" data-detail="{{ p.id }}">voir les details &rarr;</a>
+    </div>
+</div>

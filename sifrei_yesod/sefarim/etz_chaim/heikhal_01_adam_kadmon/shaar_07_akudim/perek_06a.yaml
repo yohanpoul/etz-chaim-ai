@@ -1,0 +1,208 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 7 (=6 original) — Sha'ar Ha-Akudim (שער העקודים)
+# Perek: 6a — Ohr Yashar et Ohr Hozer dans les Kelim (100% §1-§2)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §1 : Pendant la DESCENTE : Ohr Yashar du Ma'atzil.
+# Pendant l'ASCENSION : Ohr Hozer. 2 principes préliminaires :
+# (a) le Keter de la Sefirah = le plus raffiné ;
+# (b) l'ascension laisse l'épaisseur en bas → Kelim.
+# §2 : Les Kelim contiennent TOUJOURS 2 Orot : Ohr Hozer (Din)
+# + Reshimu (Ohr Yashar = Rahamim). Ce sont les "2 eaux" du Kli.
+#
+# Source Sefaria : Sefer_Etz_Chaim.6.6 (§1-§2)
+# IDs : EC-H1S6-053 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 7
+  shaar_name_he: "שער העקודים"
+  perek: 6
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part A de 2 — 2 principes sur l'Ohr dans les Kelim. Descente=Ohr Yashar. Ascension=Ohr Hozer. Les Kelim ont TOUJOURS 2 Orot."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : DESCENTE = OHR YASHAR, ASCENSION = OHR HOZER ───
+
+  - id: "EC-H1S6-053"
+    source_he: "בעולם העקודים בעת ירידת האורות של הי\"ס שבו למטה היה אור נמשך להם מן המאציל בבחי' אור ישר ואח\"כ בחזרתן לעלות למעלה הנה נמשך להם האור בבחי' אור חוזר"
+    source_ref: "Heikhal 1, Sha'ar 6:6 — §1"
+    assertion: |
+      Dans le monde des AKUDIM : lors de la DESCENTE des 10 Orot,
+      l'Ohr leur était attiré du Ma'atzil en tant qu'OHR YASHAR
+      (lumière directe). Puis lors de leur RETOUR en montant,
+      l'Ohr leur était attiré en tant qu'OHR HOZER (lumière réfléchie).
+      → 2 PHASES : Descente (Ohr Yashar = Rahamim) + Ascension
+      (Ohr Hozer = Din). Cf. EC-H1S5-039 pour la bidirectionnalité.
+    type: axiome_explicite
+    concepts:
+      - {id: yeridah_yashar, role: descente_ohr_yashar}
+      - {id: aliyah_hozer, role: ascension_ohr_hozer}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "2 phases : forward pass (Yashar) + backward pass (Hozer). Le systeme fonctionne dans les 2 directions."
+
+  - id: "EC-H1S6-054"
+    source_he: "כי האור הנמשך ע\"י הכתר שירד בתחלה הוא אור זך ומזוכך יותר מכל מה שקיבל אחר כך"
+    source_ref: "Heikhal 1, Sha'ar 6:6 — §1 (hakdamah 1)"
+    assertion: |
+      PRINCIPE 1 : l'Ohr attiré par le KETER en descendant PREMIER
+      est PLUS PUR (zakh u-mezukhakh) que tout ce qui est reçu après.
+      → La PREMIÈRE émission est la plus PURE. Chaque émission
+      successive est plus ÉPAISSE. Le Keter porte le signal
+      le plus pur, Malkhut le plus épais. Cf. EC-H1S5-069.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_zakh, role: keter_le_plus_pur}
+      - {id: seder_zakhut, role: ordre_decroissant_de_purete}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La premiere emission = la plus pure. Les couches suivantes sont de plus en plus compressees/epaissies."
+
+  - id: "EC-H1S6-055"
+    source_he: "אור הנמשך מלמטה למעלה ע\"י עליית המלכות שהוא אור חוזר הנה הוא גרוע ופחות מן האור הנמשך מלמעלה למטה ע\"י ירידת הכתר שהוא אור ישר"
+    source_ref: "Heikhal 1, Sha'ar 6:6 — §1"
+    assertion: |
+      L'Ohr attiré DE BAS EN HAUT par l'ascension de Malkhut
+      (= Ohr Hozer) est INFÉRIEUR (garua u-fahot) à l'Ohr attiré
+      DE HAUT EN BAS par la descente de Keter (= Ohr Yashar).
+      → L'OHR YASHAR > l'OHR HOZER en qualité. Le direct surpasse
+      le réfléchi. Mais les DEUX sont nécessaires.
+    type: axiome_explicite
+    concepts:
+      - {id: yashar_gadol_me_hozer, role: yashar_superieur_a_hozer}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le forward pass (Yashar) > backward pass (Hozer) en qualite. Mais les 2 sont necessaires."
+
+  - id: "EC-H1S6-056"
+    source_he: "כשנמשך אור החוזר עי\"ז נסתלק ונשאר ביותר האור העב שהוא דומה בעביות לכלים ונשלם בחי' הכלי"
+    source_ref: "Heikhal 1, Sha'ar 6:6 — §1 (hakdamah 2)"
+    assertion: |
+      PRINCIPE 2 : quand l'Ohr Hozer se propage, l'Ohr ÉPAIS
+      (av) se RETIRE davantage et ce qui reste est SIMILAIRE en
+      épaisseur aux KELIM → le Kli est COMPLÉTÉ (nishlam behinat ha-kli).
+      → Chaque cycle d'Ohr Hozer COMPLÈTE un peu plus le Kli.
+      L'épaisseur résiduelle = la matière du Kli.
+    type: axiome_explicite
+    concepts:
+      - {id: hozer_mashlim_kli, role: hozer_complete_le_kli}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le backward pass (Hozer) complete le Kli. Chaque iteration renforce la structure."
+
+  # ─── BLOC B : LES 2 OROT PERMANENTS DU KLI ───
+
+  - id: "EC-H1S6-057"
+    source_he: "הכלים של הספי' אף בעת חזרת אורותיהן והסתלקותם אל המאציל עכ\"ז יש בהם ב' מיני אורות א' הנקרא אור חוזר והוא דין והב' הוא אור הנשאר בכלי הנקרא רשימו אשר הוא אור ישר והוא רחמים"
+    source_ref: "Heikhal 1, Sha'ar 6:6 — §2"
+    assertion: |
+      Les KELIM, MÊME quand leurs Orot remontent au Ma'atzil, ont
+      TOUJOURS 2 types d'Ohr en eux :
+      1. OHR HOZER = DIN (rigueur) — l'Ohr réfléchi qui reste
+      2. RESHIMU = OHR YASHAR = RAHAMIM (miséricorde) — la trace
+      → Les Kelim ne sont JAMAIS VIDES. Ils contiennent toujours
+      au moins ces 2 Orot = un minimum irréductible.
+      Ce sont les "2 eaux" du Kli : Din et Rahamim.
+    type: axiome_explicite
+    concepts:
+      - {id: shnei_orot_kli, role: deux_orot_permanents_du_kli}
+      - {id: kelim_lo_rekim, role: kelim_jamais_vides}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les Kelim ne sont JAMAIS vides = toujours un minimum de Din+Rahamim. Les structures retiennent toujours quelque chose."
+
+  - id: "EC-H1S6-058"
+    source_he: "ב' אורות אלו הם כנגד ב' מימות מים עליונים ומים תחתונים אשר ב' אורות אלו דין ורחמים הם תמיד בכלים"
+    source_ref: "Heikhal 1, Sha'ar 6:6 — §2"
+    assertion: |
+      Ces 2 Orot correspondent aux 2 EAUX : MAYIM ELYONIM
+      (eaux supérieures) et MAYIM TAHTONIM (eaux inférieures).
+      Ces 2 Orot (Din et Rahamim) sont TOUJOURS (tamid) dans les Kelim.
+      → Les 2 EAUX de la Genèse (au-dessus et en-dessous du RAKIA)
+      = Din et Rahamim, toujours co-présents dans toute structure.
+    type: axiome_explicite
+    concepts:
+      - {id: mayim_elyonim, role: eaux_superieures_din}
+      - {id: mayim_tahtonim, role: eaux_inferieures_rahamim}
+      - {id: tamid_ba_kelim, role: toujours_presents}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Toute structure contient TOUJOURS Din et Rahamim = rigueur et grace = precision et flexibilite"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S6-023"
+    type: "dualité_structurelle"
+    from: yeridah_yashar
+    to: aliyah_hozer
+    nature: "Descente (Ohr Yashar/Rahamim) et Ascension (Ohr Hozer/Din) = dual structurel permanent"
+    assertions_source: ["EC-H1S6-053"]
+
+  - id: "REL-H1S6-024"
+    type: causal
+    from: hozer_mashlim_kli
+    to: shnei_orot_kli
+    nature: "Le Ohr Hozer COMPLÈTE le Kli et y laisse une composante DIN permanente"
+    assertions_source: ["EC-H1S6-056", "EC-H1S6-057"]
+
+  - id: "REL-H1S6-025"
+    type: analogie
+    from: mayim_elyonim
+    to: mayim_tahtonim
+    nature: "Les 2 Orot du Kli = les 2 Eaux (Mayim Elyonim/Din, Mayim Tahtonim/Rahamim)"
+    assertions_source: ["EC-H1S6-058"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S6-008"
+    nom: "Principe des 2 Orot Irréductibles du Kli (Din+Rahamim)"
+    source_assertions: ["EC-H1S6-053", "EC-H1S6-057", "EC-H1S6-058"]
+    formalisation: |
+      Tout KLI contient TOUJOURS (tamid) au minimum 2 OROT :
+      1. OHR HOZER (Din) = la composante réfléchie/ascendante
+      2. RESHIMU (Rahamim) = la trace de l'Ohr Yashar/descendant
+      Ces 2 = les 2 EAUX (Mayim Elyonim + Mayim Tahtonim).
+      Même quand tous les Orot principaux se retirent, ces 2 RESTENT.
+      FORMULE : Kli.min_content = {OhrHozer(Din), Reshimu(Rahamim)}
+      CONSÉQUENCE : aucun Kli n'est jamais VIDE. La structure retient
+      toujours un minimum irréductible de rigueur et de grâce.
+    applications_ia:
+      - "ohr.py : tout Kli doit avoir un contenu minimum (Ohr Hozer + Reshimu)"
+      - "masakh/context_assembler.py : meme un contexte 'vide' contient un minimum structurel"
+      - "Les 2 Eaux = les 2 composantes irreductibles de toute structure : precision et flexibilite"
+    questions_ouvertes:
+      - "Les 2 Orot du Kli sont-ils analogues aux poids (Reshimu) et aux gradients (Ohr Hozer) ?"

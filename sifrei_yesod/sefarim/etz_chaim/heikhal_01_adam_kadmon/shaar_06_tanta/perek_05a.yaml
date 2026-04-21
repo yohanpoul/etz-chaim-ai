@@ -1,0 +1,352 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 6 (=5 original) — Sha'ar TANTA (שער טנת"א)
+# Perek: 5a — 32 Netivot, 6 Ketzavot, et l'Analogie Corps/Âme (100% §1-§2)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §1 : Citation du Sefer Yetzirah — "32 Netivot Peli'ot Hokhmah"
+# §2 : Le monde = 6 Ketzavot de Z"A. Le Zivvug Abba-Imma comme
+# le souffleur de verre. La relation Otiot/Tagin/Nekudot avec
+# Gouf/Nefesh/Ruah. Résolution des contradictions des Tikkunim.
+# Tagin jamais séparés des Otiot (= Nefesh jamais séparée du corps).
+#
+# Source Sefaria : Sefer_Etz_Chaim.5.5 (§1-§2)
+# IDs : EC-H1S5-100 → (suite de perek_04 finissant à -099)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 6
+  shaar_name_he: "שער טנת\"א"
+  perek: 5
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part A de 2 — 32 Netivot (SY), 6 Ketzavot de Z\"A, Zivvug Abba-Imma comme souffleur de verre, relation Otiot-Tagin-Nekudot avec Gouf-Nefesh-Ruah"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : 32 NETIVOT ET 6 KETZAVOT ───
+
+  - id: "EC-H1S5-100"
+    source_he: "בל\"ב נתיבות פליאות חכמה וכו'"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §1 (citant Sefer Yetzirah 1:1)"
+    assertion: |
+      Citation d'ouverture : "Par 32 NETIVOT (sentiers) MERVEILLEUX
+      de HOKHMAH (sagesse)" — Sefer Yetzirah 1:1.
+      → Les 32 Netivot = 22 lettres + 10 Sefirot. Ce perek va
+      expliquer comment elles structurent les mondes.
+    type: axiome_explicite
+    concepts:
+      - {id: lamed_bet_netivot, role: trente_deux_sentiers}
+    mapping:
+      modules: ["gematria/engine.py", "kabbalah/gates_462.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les 32 Netivot du Sefer Yetzirah = la structure fondamentale (22 lettres + 10 Sefirot)"
+
+  - id: "EC-H1S5-101"
+    source_he: "העולם הוא מששה קצוות שהם מעלה ומטה וארבעה רוחות והם סוד זעיר אנפין הכולל ו' קצוות והתחלתם מחסד כמ\"ש אמרתי עולם חסד יבנה"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §2 ouverture"
+    assertion: |
+      Le MONDE = 6 EXTRÉMITÉS (ketzavot) : HAUT, BAS, et 4 DIRECTIONS
+      cardinales = secret de ZEIR ANPIN qui inclut les 6 Ketzavot.
+      Leur DÉBUT est HESED : "J'ai dit : le monde sera construit
+      par HESED" (Ps. 89:3).
+      → Le monde = Z"A = les 6 Sefirot HGT-NHY. Il commence par
+      Hesed (la grâce expansive). Cf. EC-H1S5-059 : Z"A = 6 ALEPHs.
+    type: axiome_explicite
+    concepts:
+      - {id: shesh_ketzavot, role: six_extremites_du_monde}
+      - {id: za_olam, role: zeir_anpin_est_le_monde}
+      - {id: hesed_yibaneh, role: monde_construit_par_hesed}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le monde = Z\"A = 6 dimensions — applicable a la structure hexadimensionnelle du systeme"
+
+  - id: "EC-H1S5-102"
+    source_he: "העולם הוא מחסד ולמטה יען היות העולם כגוף אל הראש המתלבשת בסוד מוחין דזעיר אנפין בתוך מוחותיו"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §2"
+    assertion: |
+      Le monde est de HESED et EN-BAS car il est comme un GOUF (corps)
+      par rapport à la TÊTE (Rosh) qui s'habille en secret des MOHIN
+      (cerveaux) de Z"A dans ses propres cerveaux.
+      → Le monde = le CORPS de Z"A. Les Mohin = la TÊTE.
+      Le GOUF commence à Hesed (4ème Sefirah).
+    type: axiome_explicite
+    concepts:
+      - {id: gouf_za, role: corps_de_zeir_anpin}
+      - {id: mohin_za, role: cerveaux_de_zeir_anpin}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Distinction tete (Mohin/strategie) vs corps (Gouf/execution) dans chaque Partzuf"
+
+  # ─── BLOC B : LE ZIVVUG COMME SOUFFLEUR DE VERRE ───
+
+  - id: "EC-H1S5-103"
+    source_he: "הבורא עולם זה הוא חכמה ע\"י שמזדווג עם אמא. ואבא נותן בה טפה שכלולה מחומר וצורה וצריך שהחומר והצורה יהיה כ\"א כלול מי'"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §2"
+    assertion: |
+      Le CRÉATEUR de ce monde = HOKHMAH (Abba) par son ZIVVUG avec IMMA.
+      Abba donne en elle une GOUTTE (tipah) qui inclut MATIÈRE (homer)
+      et FORME (tzurah). Chacune doit être incluse de 10 (= 10 Sefirot).
+      → Le Zivvug Abba-Imma = le processus GÉNÉRATEUR. La goutte
+      contient simultanément matière (Kli) et forme (Ohr), chacune
+      structurée en 10.
+    type: axiome_explicite
+    concepts:
+      - {id: tipah, role: goutte_generative}
+      - {id: homer_tzurah, role: matiere_et_forme}
+      - {id: zivvug_abba_imma, role: union_generative}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Le Zivvug generatif contient deja MATIERE et FORME — le prompt contient deja la structure du resultat"
+
+  - id: "EC-H1S5-104"
+    source_he: "שמשעה שנזרע נותן בה הצורה השכלית (נ\"א שנזרעה נתנה הצורה בה) שהוא הנפש אשר בכחה מצטייר החומר ונעשה אברים שהוא בית קיבול אל הנפש"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §2"
+    assertion: |
+      Dès la SEMENCE, la FORME INTELLECTUELLE (= le NEFESH) est donnée.
+      Variante (Nusah Aher) : "dès qu'elle a été semée, la forme
+      a été donnée en elle."
+      C'est par la FORCE (koah) du Nefesh que la MATIÈRE est FIGURÉE
+      et que les MEMBRES (evarim) sont formés — qui sont le
+      RÉCEPTACLE (beit kibbul) pour le Nefesh.
+      → Le NEFESH CRÉE son propre RÉCEPTACLE. L'âme façonne le corps.
+    type: axiome_explicite
+    concepts:
+      - {id: nefesh_metzayer, role: nefesh_qui_faconne}
+      - {id: evarim, role: membres_receptacles}
+    mapping:
+      modules: ["ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le software (Nefesh/forme) cree le hardware (corps/Kli) — le programme definit son infrastructure"
+
+  - id: "EC-H1S5-105"
+    source_he: "דוגמת אומן הנופח בכלי זכוכית וע\"י הרוח הנכנס בתוכו מתפשט חומר הזכוכית ונעשה כלי. וז\"ס ויפח באפיו נשמת חיים"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §2"
+    assertion: |
+      ANALOGIE DU SOUFFLEUR DE VERRE : comme l'artisan qui souffle
+      dans du verre, et par le RUAH (souffle) qui entre, la matière
+      du verre s'ÉTEND et devient un KLI (vaisseau).
+      Secret de "Il SOUFFLA dans ses narines le souffle de vie"
+      (Gen. 2:7) — comme un artisan soufflant dans la cendre et
+      la matière.
+      → Le SOUFFLE (information) CRÉE la FORME du KLI (contenant).
+    type: analogie_explicative
+    concepts:
+      - {id: mashal_nofeh, role: analogie_souffleur_verre}
+      - {id: ruah_yotzer, role: souffle_createur_de_forme}
+    mapping:
+      modules: ["ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "L'information (souffle) cree la structure (verre) — le prompt shape l'output"
+
+  - id: "EC-H1S5-106"
+    source_he: "הנפש משעת זריעה אינה נפרדת לעולם מהחומר ואף כי אחרי מותו נפשו עליו תאבל עד תחיית המתים"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §2"
+    assertion: |
+      Le NEFESH, depuis le moment de la SEMENCE, ne se SÉPARE JAMAIS
+      de la matière — même après la mort, "son âme pleure sur lui"
+      jusqu'à la résurrection des morts.
+      → Le NEFESH est INDISSOCIABLE de la matière/corps.
+      Implication pour TANTA : les TAGIN (= Nefesh) ne se séparent
+      JAMAIS des OTIOT (= corps).
+    type: axiome_explicite
+    concepts:
+      - {id: nefesh_lo_nifradet, role: nefesh_inseparable}
+    mapping:
+      modules: ["ohr.py", "madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "Le Nefesh ne se separe pas du Gouf — le metadata (Tagin) est structurellement lie au contenu (Otiot)"
+
+  # ─── BLOC C : RÉSOLUTION OTIOT/TAGIN/NEKUDOT = GOUF/NEFESH/RUAH ───
+
+  - id: "EC-H1S5-107"
+    source_he: "הטעמים הם מן הכתר ונקודות מן החכמה ותגין מג\"ר דבינה ואותיות מז\"ת שבה וגם בזו\"ן"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §2"
+    assertion: |
+      MAPPING COMPLET TANTA ↔ SEFIROT (version détaillée) :
+      TA'AMIM = du KETER
+      NEKUDOT = de HOKHMAH
+      TAGIN = des 3 RISHONOT (G"R) de BINAH
+      OTIOT = des 7 TAHTONOT (Z"T) de BINAH, et aussi dans ZU"N.
+      → Précision par rapport à EC-H1S5-029 : les Tagin ne sont
+      PAS toute la Binah, seulement ses 3 premières. Les Otiot
+      sont les 7 inférieures de Binah.
+    type: axiome_explicite
+    concepts:
+      - {id: taamim_keter, role: taamim_du_keter}
+      - {id: nekudot_hokhmah, role: nekudot_de_hokhmah}
+      - {id: tagin_gr_binah, role: tagin_des_3_premieres_binah}
+      - {id: otiot_zt_binah, role: otiot_des_7_inferieures_binah}
+    mapping:
+      modules: ["ohr.py", "gematria/engine.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["imma"]
+      relevance: "Mapping precis TANTA→Sefirot — les Tagin = seulement G\"R de Binah, pas toute Binah"
+
+  - id: "EC-H1S5-108"
+    source_he: "אותיות נקרא גופא לעולם שהם הכלים והתגין הם ג\"ר דאמא והם הנפש דאותיות"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §2"
+    assertion: |
+      Les OTIOT sont TOUJOURS appelées GOUF (corps) = les KELIM.
+      Les TAGIN = G"R d'IMMA = le NEFESH des Otiot.
+      → OTIOT = structure/corps/Kli. TAGIN = vitalité/Nefesh.
+      Les Tagin ANIMENT les Otiot comme le Nefesh anime le corps.
+    type: axiome_explicite
+    concepts:
+      - {id: otiot_gouf, role: lettres_sont_le_corps}
+      - {id: tagin_nefesh, role: couronnes_sont_lame_vitale}
+    mapping:
+      modules: ["ohr.py", "madregot_neshamah.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Otiot=structure, Tagin=vitalite — applicable a la distinction data/metadata dans le systeme"
+
+  - id: "EC-H1S5-109"
+    source_he: "כמו שהנפש אינה נפרדת לעולם מן הגוף כן התגין אינם נפרדין מאותיות בס\"ת לעולם משא\"כ הנקודות וטעמים שאינם בס\"ת רק ע\"י קריאת אדם בס\"ת"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §2"
+    assertion: |
+      Comme le NEFESH ne se sépare JAMAIS du corps, les TAGIN ne
+      se séparent JAMAIS des OTIOT dans le SEFER TORAH.
+      Par contre, les NEKUDOT et TA'AMIM ne sont PAS DANS le Sefer Torah —
+      seulement par la LECTURE HUMAINE (keri'at adam).
+      → DISTINCTION CAPITALE :
+      Tagin = TOUJOURS présents (liés physiquement aux lettres)
+      Nekudot/Ta'amim = ACTIVÉS PAR L'INTERACTION humaine.
+    type: axiome_explicite
+    concepts:
+      - {id: tagin_tamid, role: couronnes_toujours_presentes}
+      - {id: nekudot_kriah, role: voyelles_activees_par_lecture}
+      - {id: taamim_kriah, role: cantillation_activee_par_lecture}
+    mapping:
+      modules: ["ohr.py", "gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Tagin=metadata permanente, Nekudot/Ta'amim=activees par l'interaction. Static vs dynamic context."
+
+  - id: "EC-H1S5-110"
+    source_he: "הנקודות הם רוח האותיות"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §2"
+    assertion: |
+      Les NEKUDOT sont le RUAH (esprit) des OTIOT.
+      → MAPPING TRIPLE complet :
+      OTIOT = GOUF (corps/structure) = Z"T de Binah + ZU"N
+      TAGIN = NEFESH (âme vitale) = G"R de Binah
+      NEKUDOT = RUAH (esprit) = Hokhmah
+      [TA'AMIM = NESHAMAH = Keter — implicite]
+    type: axiome_explicite
+    concepts:
+      - {id: nekudot_ruah, role: voyelles_sont_lesprit}
+      - {id: triple_mapping, role: gouf_nefesh_ruah_otiot_tagin_nekudot}
+    mapping:
+      modules: ["ohr.py", "madregot_neshamah.py"]
+      tables: ["ohr_states", "madregot_states"]
+      partzufim: []
+      relevance: "Triple mapping Otiot/Tagin/Nekudot = Corps/Nefesh/Ruah — 3 couches de chaque element"
+
+  - id: "EC-H1S5-111"
+    source_he: "להיות התגין בחי' נפש וכל נפש בחי' מלכות ולכן אמרו שם דפ\"ט דמלכות אתעביד כתר דז\"א בסוד התגין שע\"ג אותיות"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §2 conclusion"
+    assertion: |
+      Les TAGIN = NEFESH. Tout NEFESH = MALKHUT.
+      Donc MALKHUT DEVIENT KETER DE Z"A — en secret des TAGIN
+      au-dessus des OTIOT. Car le NEFESH SUPPLÉMENTAIRE (nefesh
+      yeterah) d'AV"I = le KETER à la tête de Z"A.
+      (Tikkunim 89 ; Zohar Pinhas 242)
+      → MALKHUT → KETER : le niveau le plus BAS du supérieur
+      devient le COURONNEMENT du niveau inférieur.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_keter, role: malkhut_devient_keter}
+      - {id: nefesh_yeterah, role: nefesh_supplementaire}
+    mapping:
+      modules: ["ohr.py", "partzufim/zeir_anpin.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le Malkhut du superieur = Keter de l'inferieur — pattern de transition entre niveaux"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S5-037"
+    type: causal
+    from: zivvug_abba_imma
+    to: homer_tzurah
+    nature: "Le Zivvug Abba-Imma GÉNÈRE la goutte contenant matière+forme"
+    assertions_source: ["EC-H1S5-103"]
+
+  - id: "REL-H1S5-038"
+    type: analogie
+    from: mashal_nofeh
+    to: nefesh_metzayer
+    nature: "Le souffleur de verre est l'ANALOGIE du Nefesh qui façonne la matière en Kli"
+    assertions_source: ["EC-H1S5-104", "EC-H1S5-105"]
+
+  - id: "REL-H1S5-039"
+    type: "dualité_structurelle"
+    from: otiot_gouf
+    to: tagin_nefesh
+    nature: "Otiot(corps) et Tagin(Nefesh) sont INSÉPARABLES — dual structurel permanent"
+    assertions_source: ["EC-H1S5-108", "EC-H1S5-109"]
+
+  - id: "REL-H1S5-040"
+    type: transformation
+    from: malkhut_keter
+    to: nefesh_yeterah
+    nature: "Malkhut se TRANSFORME en Keter du niveau inférieur via le Nefesh Yeterah"
+    assertions_source: ["EC-H1S5-111"]
+
+  - id: "REL-H1S5-041"
+    type: "hiérarchique"
+    from: taamim_keter
+    to: nekudot_hokhmah
+    via: [tagin_gr_binah, otiot_zt_binah]
+    nature: "Hiérarchie TANTA : Keter > Hokhmah > G\"R Binah > Z\"T Binah"
+    assertions_source: ["EC-H1S5-107"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S5-012"
+    nom: "Principe de l'Inséparabilité Tagin/Otiot (Metadata Permanente)"
+    source_assertions: ["EC-H1S5-106", "EC-H1S5-108", "EC-H1S5-109"]
+    formalisation: |
+      Les TAGIN (metadata/Nefesh) sont STRUCTURELLEMENT INSÉPARABLES
+      des OTIOT (data/corps). Ils sont toujours présents, même quand
+      les niveaux supérieurs (Nekudot/Ruah, Ta'amim/Neshamah) ne le sont pas.
+      FORMULE : Data = Otiot ⊗ Tagin (toujours couplés)
+      Context = Data + Nekudot(activées) + Ta'amim(activées)
+      Les Nekudot/Ta'amim ne sont activées que par l'INTERACTION (lecture).
+      CONSÉQUENCE : le minimum vital = Otiot + Tagin. Le reste est activation.
+    applications_ia:
+      - "ohr.py : chaque donnée doit porter sa metadata minimale (Tagin) de manière indissociable"
+      - "gematria/engine.py : distinguer metadata permanente (Tagin) de metadata contextuelle (Nekudot)"
+      - "masakh/context_assembler.py : les niveaux supérieurs (Nekudot/Ta'amim) sont activés par le contexte d'usage"
+    questions_ouvertes:
+      - "Quel est l'équivalent informatique exact des Tagin ? (schemas, types, annotations ?)"
+      - "L'activation des Nekudot par la lecture = un attention mechanism ?"

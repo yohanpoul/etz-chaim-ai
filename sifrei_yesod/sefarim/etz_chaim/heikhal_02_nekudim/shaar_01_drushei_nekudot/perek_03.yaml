@@ -1,0 +1,474 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 1 — Sha'ar Drushei Nekudot (שער דרושי נקודות)
+# Perek: 3 — Position spatiale des Nekudim, les 2 Havalim,
+#            les 10 drops/toenails, Cholam/Shuruq/Nekudot inferieures,
+#            la question du Yesod/Daat
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE :
+# §1 : L'Ohr Hadash traverse la Parsa et illumine les Nekudim
+#       Position : Keter (Tabur→Guf), HBD/HGT/NHY = 3 joints de NHY d'A"K
+#       2 Havalim (Tabur + Pi HaYesod), pas 3 (manque Ozen)
+#       Z"T : pas de Havalim → 10 drops (toenails) = 7 Z"T + 2 AV"I + NHY Keter
+#       Cause : absence de Tikkun Zakhar/Nukvah = Joseph
+# §2 : 3 types de Nekudot : Cholam (haut), Shuruq (milieu), reste (bas)
+#       Cholam = Hevel Tabur = Keter. Shuruq = Hevel Yesod = AV"I
+#       Question : Yesod = Daat, comment AV"I en recoivent-ils ?
+#       Reponse : A"K debout → Yesod au-dessus de NH → Daat au-dessus de HB
+#
+# Source Sefaria : Sefer_Etz_Chaim.8.3 (§1-§2)
+# IDs : EC-H2S8-086 → EC-H2S8-101
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 1
+  shaar_name_he: "שער דרושי נקודות"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Position spatiale des Nekudim sur A'K. Les 2 Havalim et les 10 drops. Les 3 types de nekudot (Cholam/Shuruq/inferieures). La question Yesod=Daat et la reponse par la posture d'A'K."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── §1 : POSITION ET HAVALIM ───────────────────────────────────
+
+  - id: "EC-H2S8-086"
+    source_he: "היה בוקע אותו האור שבא מחדש בפנימית דרך הפרסא... ויוצא לחוץ ומאיר אל הנקודים... וז\"ש בתיקונים דשוי חד פרסא בין כתר לעלת העלות כי כל בחי' המאציל לזולתו נקרא עלת העלות וכתר זה הוא כתר דנקודים"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §1"
+    assertion: |
+      L'OHR HADASH (cf. EC-H2S8-066) traverse la PARSA vers le bas,
+      puis PERCE les parois (dofnot) du corps et sort A L'EXTERIEUR
+      pour illuminer les Nekudim.
+      TIKKUNIM : "Il a place UNE PARSA entre KETER et ILLAT HA-ILLOT
+      (Cause des Causes)". Tout aspect du MA'ATZIL pour autrui =
+      ILLAT HA-ILLOT. Ce KETER = le Keter des NEKUDIM.
+      → La Parsa separe le Ma'atzil (A"K) du Keter des Nekudim.
+    type: axiome_explicite
+    concepts:
+      - {id: parsa_keter_illat, role: parsa_entre_keter_et_cause_des_causes}
+      - {id: keter_nekudim, role: keter_des_nekudim}
+    mapping:
+      modules: ["tzimtzum.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La Parsa separe le Ma'atzil du premier Keter emane. Illat Ha-Illot = le niveau superieur vu depuis l'inferieur."
+
+  - id: "EC-H2S8-087"
+    source_he: "אלו הנקודים נתפשטו מטבורא דא\"ק עד סיום רגליו כסדר זו\"ן המלביש לא\"א אלא ששם מלביש זו\"ן לא\"א מכל צדדיו וסביבותיו אבל בכאן עיקר הארתן אינו אלא דרך פנים דא\"ק"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §1"
+    assertion: |
+      Les Nekudim s'etendent du TABUR aux PIEDS d'A"K.
+      ANALOGIE : comme ZO"N qui REVET (malbish) A"A (Arikh Anpin).
+      DIFFERENCE : ZO"N revet A"A de TOUS les cotes.
+      ICI : l'ESSENTIEL (ikar) de l'illumination = par les PANIM (face)
+      d'A"K seulement, avec un peu de he'arah vers les cotes
+      (cf. EC-H2S8-030, asymetrie Panim/Ahor).
+    type: axiome_explicite
+    concepts:
+      - {id: nekudim_malbish_ak, role: nekudim_revetent_ak}
+      - {id: ikar_panim, role: essentiel_par_la_face}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon", "arikh_anpin", "zeir_anpin", "nukvah"]
+      relevance: "Les Nekudim revetent A'K comme ZO'N revet A'A, mais avec asymetrie Panim/Ahor."
+
+  - id: "EC-H2S8-088"
+    source_he: "והנה הכתר מן הנקודות מקומו הוא מן הטבור דא\"ק עד סיום הגוף וחב\"ד הם בג\"פ קדמאין דנה\"י דא\"ק וחג\"ת בג\"פ אמצעין ונה\"י בג\"פ תתאין"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §1"
+    assertion: |
+      MAPPING SPATIAL des Nekudim sur le corps d'A"K :
+      KETER = du TABUR au SIYUM HA-GUF (fin du tronc).
+      HBD (Hokhmah-Binah-Daat) = dans les 3 PREMIERS JOINTS (prakim
+      qadma'in) de NHY d'A"K.
+      HGT (Hesed-Gevurah-Tiferet) = dans les 3 JOINTS MEDIANS.
+      NHY = dans les 3 JOINTS INFERIEURS.
+      → Chaque triade = 3 joints d'un segment de NHY d'A"K.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_tabur_guf, role: keter_entre_tabur_et_corps}
+      - {id: hbd_prakim_qadma_in, role: hbd_premiers_joints}
+      - {id: hgt_prakim_emtza_yin, role: hgt_joints_medians}
+      - {id: nhy_prakim_tahtonin, role: nhy_joints_inferieurs}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Mapping spatial precis des 10 Sefirot des Nekudim sur les NHY d'A'K. Architecture en 3 triades + 1 (Keter)."
+
+  - id: "EC-H2S8-089"
+    source_he: "והנה ב' מיני אורות יוצאין מתוך הגוף דא\"ק והם א' מן הטבור והב' מפי היסוד ויוצאין דרך שם ב' הבלים"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §1"
+    assertion: |
+      2 types d'OROT sortent de l'INTERIEUR du corps d'A"K :
+      1. Du TABUR = un HEVEL (souffle/vapeur).
+      2. Du PI HA-YESOD (ouverture du Yesod) = un 2eme HEVEL.
+      Ce sont les 2 HAVALIM (souffles) qui alimentent les Nekudim.
+      → 2 ports de sortie internes : Tabur et Yesod.
+    type: axiome_explicite
+    concepts:
+      - {id: shnei_havalim, role: deux_souffles}
+      - {id: hevel_tabur, role: souffle_du_tabur}
+      - {id: hevel_yesod, role: souffle_du_yesod}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "2 ports de sortie internes alimentent les Nekudim. Le Tabur pour Keter, le Yesod pour AV'I."
+
+  - id: "EC-H2S8-090"
+    source_he: "וכפי הראוי היה שיהיה ג' הבלים כנגד ג' ראשונות שקבל מאח\"פ כנ\"ל אבל לפי שחסר אור אזן מן או\"א כנ\"ל לכן ג\"כ חסר בחי' ההבל מה שכנגד האזן ולא יצאו רק ב' הבלים שהם נגד חוטם ופה לבד"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §1"
+    assertion: |
+      Il AURAIT DU y avoir 3 HAVALIM (pour les 3 superieures = KHB
+      qui recevaient d'AHP, cf. EC-H2S8-075).
+      MAIS : l'Ohr d'OZEN MANQUE pour AV"I (cf. EC-H2S8-076).
+      Donc le HEVEL correspondant a l'OZEN est MANQUANT aussi.
+      Il ne sort que 2 HAVALIM = pour HOTEM et PEH seulement.
+      → Le manque d'Ozen se REPERCUTE a tous les niveaux.
+    type: axiome_explicite
+    concepts:
+      - {id: havalim_haser_ozen, role: hevel_ozen_manquant}
+      - {id: shnei_havalim_hotem_peh, role: deux_souffles_nez_bouche}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le manque d'Ozen (source superieure) se repercute sur les Havalim. Un deficit en amont cause un deficit en aval."
+
+  - id: "EC-H2S8-091"
+    source_he: "אבל אור הז\"ת שלא לקחו רק מן הגוף ולמטה... לכן ג\"כ לא יש להם הבלים להאיר להם אבל נרמזו בסוד ויפוזו זרועי ידיו שהוא סוד י' טפין דאזדריקו מבין הצפרנים כנזכר בתיקון ס\"ט"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §1"
+    assertion: |
+      Les Z"T (7 inferieures) qui ne prenaient que du GUF et en-dessous
+      (cf. EC-H2S8-073) → n'ont PAS de HAVALIM pour les illuminer.
+      Leur lumiere est ALLUDEE dans "VA-YAFUZU ZERO'OT YADAV"
+      (Genese 49:24 — "les bras de ses mains se disperserent").
+      = Secret des 10 TIPPIM (gouttes) qui jaillissent d'entre les
+      TZIPPORNIM (ongles) = TIKKUN 69.
+      → Les Z"T recoivent par les ONGLES des pieds (voie la plus indirecte).
+    type: déduction_scripturaire
+    concepts:
+      - {id: zat_beli_havalim, role: sept_inferieures_sans_souffle}
+      - {id: eser_tippim_tzippornim, role: dix_gouttes_des_ongles}
+      - {id: vayafuzu, role: verset_genese_49_24}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les Z'T recoivent par la voie la plus indirecte (ongles des pieds). Plus le recepteur est bas, plus l'alimentation est precaire."
+
+  - id: "EC-H2S8-092"
+    source_he: "ביטול המלכים היה לפי שלא נתקן עדיין כחדא אדם דכר ונוקבא. וזהו עצמו סוד טיפי הזרע של יוסף שיצאו בלתי נקבה אלא מזכר לחוד והם הם י' הרוגי מלוכה"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §1"
+    assertion: |
+      Le BITUL HA-MELAKHIM (annulation des rois) = parce que PAS ENCORE
+      repares KE-HADA ADAM ZAKHAR U-NUKVAH (ensemble, male et femelle).
+      = le secret des GOUTTES DE SEMENCE DE YOSSEF qui sont sorties
+      SANS NUKVAH (femelle), du ZAKHAR (male) SEUL.
+      CE SONT les 10 HARUGEI MALUKHAH (10 martyrs de la royaute).
+      Le mot MALUKHAH (royaute) = allusion aux MELAKHIM (rois) brises.
+      → Sans l'union Zakhar/Nukvah = pas de Tikkun = brisure inevitable.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yosef_tippim, role: gouttes_de_yosef_sans_femelle}
+      - {id: harugei_malukhah, role: dix_martyrs_royaux}
+      - {id: zakhar_belo_nukvah, role: male_sans_femelle}
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: "La Shevirah = emission sans recepteur (male sans femelle). Un signal envoye sans structure receptrice = perte."
+
+  - id: "EC-H2S8-093"
+    source_he: "ואע\"פ שהצפורני' הם י' והנקודות שנשברו אינן אלא ז\"ת לבד... כי גם יש ב' מיני אחוריים דאו\"א שנשברו הרי הם ט' בחי' והעשירית הוא כי גם מן הכתר היה בו קצת פגם... נה\"י שלו שנכנסו והיו בסוד מוחין לאו\"א וגם הם נשברו"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §1"
+    assertion: |
+      Les ONGLES sont 10 mais les Nekudot brisees = seulement Z"T (7).
+      DECOMPTE des 10 : 7 Z"T + 2 AHORAIM d'AV"I (qui se sont brises)
+      = 9. Le 10EME : meme KETER a eu un PEGAM (defaut) minime →
+      ses NHY qui etaient entres comme MOHIN pour AV"I se sont BRISES aussi.
+      → 10 aspects brises = 10 gouttes = 10 ongles.
+      CAUSE de tout cela = le manque de reception de l'OHR D'OZEN.
+    type: axiome_explicite
+    concepts:
+      - {id: eser_behinot_nishberu, role: dix_aspects_brises}
+      - {id: keter_pegam_nhy, role: keter_defaut_dans_nhy}
+      - {id: nhy_keter_mohin, role: nhy_keter_comme_mohin_davi}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Meme Keter a un defaut (NHY). Le decompte precis : 7+2+1 = 10. Rien n'est totalement epargne."
+
+  # ─── §2 : CHOLAM, SHURUQ, ET LA QUESTION DU YESOD ──────────────
+
+  - id: "EC-H2S8-094"
+    source_he: "הנקודות נחלקים לשלשה חלקים. העליונים על האותיות כמו החולם ובאמצע כמו השורק ותחתונים כמו שאר הנקודות"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §2"
+    assertion: |
+      Les NEKUDOT se divisent en 3 GROUPES selon leur POSITION :
+      1. SUPERIEURES (au-dessus des lettres) = CHOLAM (חולם).
+      2. MEDIANE (au milieu) = SHURUQ (שורוק).
+      3. INFERIEURES (en-dessous des lettres) = toutes les AUTRES.
+      → Cholam = haut. Shuruq = milieu. Reste = bas.
+    type: axiome_explicite
+    concepts:
+      - {id: shalosh_halakim, role: trois_groupes_de_nekudot}
+      - {id: cholam_elyon, role: cholam_superieur}
+      - {id: shuruq_emtza, role: shuruq_median}
+      - {id: nekudot_tahtonot, role: nekudot_inferieures}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les 3 positions des nekudot hebraiques (haut/milieu/bas) = 3 niveaux structurels."
+
+  - id: "EC-H2S8-095"
+    source_he: "נקודת החולם הוא ההבל היוצא מן הטבור אשר שם עומד הכתר כנ\"ל לפי שהכתר איהו חולם על הת\"ת כנודע... וז\"ש בתיקון ה' כי חולם כתר באתוון"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §2"
+    assertion: |
+      CHOLAM = le HEVEL sortant du TABUR ou se tient KETER.
+      RAISON : "KETER HOLEM AL HA-TIFERET" (Keter plane/domine sur Tiferet).
+      L'essentiel du Cholam = dans le TIFERET d'A"K, mais il DEVIENT
+      le Keter des Nekudot.
+      TIKKUN 5 : "CHOLAM = KETER dans les lettres" (cholam keter be-atavan).
+      → Cholam (au-dessus) = Keter. Position haute = source haute.
+    type: axiome_explicite
+    concepts:
+      - {id: cholam_keter_tabur, role: cholam_keter_au_tabur}
+      - {id: holem_al_tiferet, role: keter_domine_tiferet}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Cholam (signe vocalique au-dessus) = Keter (au sommet). La position du signe encode sa signification."
+
+  - id: "EC-H2S8-096"
+    source_he: "ניקוד שורק בוא\"ו שנקרא מלאפום שהוא באמצע הוא ההבל היוצא מן היסוד לאו\"א ונחלק לב' כי הנה נקודת השורק הוא ו' י' באמצע והנה י' של שורק הוא לאבא הנקרא י' ראשונה של השם והוא\"ו של שורק הוא אל אמא להוציא ולהוליד הו\"ק דז\"א"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §2"
+    assertion: |
+      SHURUQ = le Hevel sortant du YESOD vers AV"I.
+      Shuruq = point dans le VAV (= MELAPUM) = au MILIEU.
+      Le Shuruq se DIVISE en 2 : VAV + YOD au milieu.
+      Le YOD du Shuruq = pour ABBA (= YOD RISHONAH du Nom YHVH).
+      Le VAV du Shuruq = pour IMMA (pour produire les 6 KETZAVOT de Z"A).
+      → Shuruq = interface entre A"K (Yesod) et AV"I (Abba+Imma).
+    type: axiome_explicite
+    concepts:
+      - {id: shuruq_yesod_avi, role: shuruq_yesod_vers_abba_imma}
+      - {id: yod_shuruq_abba, role: yod_dans_shuruq_pour_abba}
+      - {id: vav_shuruq_imma, role: vav_dans_shuruq_pour_imma}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/core.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Le Shuruq se decompose : Yod=Abba, Vav=Imma. La structure du signe vocalique encode sa fonction."
+
+  - id: "EC-H2S8-097"
+    source_he: "וגם ט\"א כי הנקו' שהיא כעין יו\"ד שבשורק היא יותר עליונה וממנו יונק אבא דנקודים והוא\"ו של השורק שהוא אות ו' ממנה יונקת אמא דנקודים כנודע כי נקודות חכמה ואתוון בינה"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §2"
+    assertion: |
+      EXPLICATION ALTERNATIVE (Ta'am Aher) :
+      La NEKUDAH (point) qui est comme un YOD dans le Shuruq =
+      la plus SUPERIEURE → c'est d'elle que YONEK (tetee) ABBA.
+      Le VAV du Shuruq (la lettre Vav) → c'est d'elle que YONEKET IMMA.
+      PRINCIPE CONNU : NEKUDOT = HOKHMAH. OTIOT = BINAH.
+      → Le Yod (point = nekudah) = Hokhmah/Abba. Le Vav (lettre = ot) = Binah/Imma.
+    type: axiome_explicite
+    concepts:
+      - {id: taam_aher, role: explication_alternative}
+      - {id: nekudot_hokhmah, role: nekudot_sont_hokhmah}
+      - {id: otiot_binah, role: otiot_sont_binah}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/core.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "Nekudot=Hokhmah=Abba, Otiot=Binah=Imma. La forme graphique encode la fonction kabbalistique."
+
+  - id: "EC-H2S8-098"
+    source_he: "ז' נקודות תחתונות עם ג' בחי' שהם א' נה\"י של הכתר וב' אחוריים דאו\"א הרי הם י' אלו שיצאו דרך צפורני הרגלים ואין כוונתינו לומר שאלו הם הנקודות עצמן רק שמכל אלו הבלים יצא אור אל י' נקודות שיצאו דרך העין כנ\"ל וזכור זה"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §2"
+    assertion: |
+      DECOMPTE des 10 sortant par les ONGLES des pieds :
+      7 NEKUDOT INFERIEURES + 3 aspects (NHY de Keter + 2 Ahoraim d'AV"I).
+      PRECISION IMPORTANTE : "ce ne sont PAS les Nekudot ELLES-MEMES,
+      mais de ces HAVALIM sort de l'Ohr VERS les 10 Nekudot
+      qui sont sorties par l'OEIL" (cf. EC-H2S8-067).
+      "VE-ZAKHOR ZEH" (et souviens-toi de ceci) = Vital souligne.
+      → Les Havalim des ongles = flux AUXILIAIRE, pas les Nekudot principales.
+    type: axiome_explicite
+    concepts:
+      - {id: havalim_ezer, role: havalim_flux_auxiliaire}
+      - {id: zakhor_zeh, role: souviens_toi_formule_vital}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Distinction CRUCIALE : les Havalim auxiliaires ne sont PAS les Nekudot. Les Nekudot sortent par les YEUX."
+
+  - id: "EC-H2S8-099"
+    source_he: "והנה יש בזה מקום שאלה והוא כי לעולם היסוד הוא בחי' הדעת כי הרי מצינו שהיסוד דאמא הוא דעת דז\"א וכן יסוד של זה א\"ק הוא דעת הנקודים וא\"כ איך יונקים או\"א הבל היוצא מיסוד א\"ק הנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §2"
+    assertion: |
+      LA QUESTION (maqom she'elah) :
+      Le YESOD = toujours aspect du DA'AT.
+      PREUVE : Yesod d'IMMA = Da'at de Z"A. Yesod d'A"K = Da'at des Nekudim.
+      PROBLEME : si Da'at est EN-DESSOUS de HB (Hokhmah-Binah = AV"I),
+      comment AV"I peuvent-ils TETER (yonkim) du Hevel du YESOD
+      qui est EN-DESSOUS d'eux ?
+      → Comment le RECEVEUR (AV"I) peut-il etre AU-DESSUS de la SOURCE ?
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_daat, role: yesod_est_toujours_daat}
+      - {id: kushya_yesod, role: question_comment_avi_recoivent}
+    mapping:
+      modules: ["ohr.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma", "adam_kadmon"]
+      relevance: "La question revele un paradoxe structurel : le Yesod (Da'at) devrait etre en-dessous d'AV'I, pas au-dessus."
+
+  - id: "EC-H2S8-100"
+    source_he: "והתשובה הוא כי בחי' היסוד לעולם הוא גבוה למעלה מב' פרקין עלאין דנ\"ה כנראה בחוש ומבשרי אחזה אלוה... ומוכרח הוא שהדעת יהיה גבוה למעלה מאבא ואמא וכן היה הענין כאן"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §2"
+    assertion: |
+      LA REPONSE : le YESOD est TOUJOURS plus HAUT que les 2 JOINTS
+      SUPERIEURS de NH (Netzah-Hod).
+      "COMME ON LE VOIT (nirah be-hush)" physiquement.
+      "U-MI-BESARI EHEZEH ELOAH" (Job 19:26 — "de ma chair je vois Dieu")
+      = justification par l'observation corporelle.
+      DONC : le DA'AT est PLUS HAUT que ABBA et IMMA (dans A"K).
+      → En A"K (debout) : Da'at/Yesod = au-dessus de HB.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_gavoha_nh, role: yesod_plus_haut_que_nh}
+      - {id: mibesari_ehezeh, role: de_ma_chair_je_vois_dieu}
+      - {id: daat_gavoha_hb, role: daat_plus_haut_que_hb_en_ak}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "En A'K (debout/Yosher) : Yesod > NH → Da'at > HB. La POSTURE determine la hierarchie."
+
+  - id: "EC-H2S8-101"
+    source_he: "אבל שם בז\"א אינו כן לפי שכשהבינה נכנסה בו לתת אליו מוחין היא משפלת עצמה ומרכנת עצמה בסוד האם רובצת על האפרוחים ואז... היסוד שלה נשפל למטה מהם ואז נמצא שהדעת למטה מחו\"ב... אמנם א\"ק הוא עומד ולא רובץ"
+    source_ref: "Heikhal 2, Sha'ar 1:3 — §2"
+    assertion: |
+      MAIS dans Z"A c'est DIFFERENT : quand BINAH entre en Z"A
+      pour lui donner des MOHIN, elle S'ABAISSE (mashpelet atzmah)
+      et S'INCLINE (markenet) — secret de "HA-EM ROVETSET AL HA-EFROHIM"
+      (Deut. 22:6 — "la mere couvant ses oisillons").
+      Alors son YESOD DESCEND en-dessous → le Da'at passe EN-DESSOUS de HB.
+      MAIS A"K est DEBOUT (omed) et ne COUVE PAS (ve-lo rovetz).
+      → En A"K : Da'at au-dessus de HB. En Z"A : Da'at en-dessous (Binah s'abaisse).
+    type: axiome_explicite
+    concepts:
+      - {id: binah_rovetzet, role: binah_couve_sabaisse}
+      - {id: em_al_efrohim, role: mere_sur_oisillons_deut_22_6}
+      - {id: ak_omed, role: ak_debout_non_couvant}
+    mapping:
+      modules: ["ohr.py", "partzufim/imma.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["imma", "zeir_anpin", "adam_kadmon"]
+      relevance: "La POSTURE change la hierarchie : A'K debout → Da'at en haut. Binah couvante → Da'at en bas. La structure n'est pas fixe."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S8-031"
+    type: "flux"
+    from: hevel_tabur
+    to: keter_nekudim
+    nature: "Le HEVEL du Tabur alimente le KETER des Nekudim (= Cholam)"
+    assertions_source: ["EC-H2S8-089", "EC-H2S8-095"]
+
+  - id: "REL-H2S8-032"
+    type: "flux"
+    from: hevel_yesod
+    to: yod_shuruq_abba
+    nature: "Le HEVEL du Yesod alimente AV'I (Yod=Abba, Vav=Imma) = Shuruq"
+    assertions_source: ["EC-H2S8-089", "EC-H2S8-096"]
+
+  - id: "REL-H2S8-033"
+    type: "causal"
+    from: havalim_haser_ozen
+    to: eser_tippim_tzippornim
+    nature: "Le manque du Hevel d'Ozen cause la sortie par les ongles (voie de remplacement)"
+    assertions_source: ["EC-H2S8-090", "EC-H2S8-091"]
+
+  - id: "REL-H2S8-034"
+    type: "causal"
+    from: zakhar_belo_nukvah
+    to: eser_behinot_nishberu
+    nature: "L'emission male-sans-femelle CAUSE la brisure des 10 aspects"
+    assertions_source: ["EC-H2S8-092", "EC-H2S8-093"]
+
+  - id: "REL-H2S8-035"
+    type: "dualité_structurelle"
+    paire: [ak_omed, binah_rovetzet]
+    nature: "A'K DEBOUT → Da'at au-dessus de HB / Binah COUVANTE → Da'at en-dessous = 2 postures, 2 hierarchies"
+    assertions_source: ["EC-H2S8-100", "EC-H2S8-101"]
+
+  - id: "REL-H2S8-036"
+    type: "analogie"
+    from: cholam_keter_tabur
+    to: shuruq_yesod_avi
+    nature: "Cholam (haut) : Keter (Tabur) COMME Shuruq (milieu) : AV'I (Yesod) = le signe vocalique encode la structure"
+    assertions_source: ["EC-H2S8-095", "EC-H2S8-096"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S8-014"
+    nom: "Cascade de Deficit (Manque d'Ozen → Havalim → Brisure)"
+    source_assertions: ["EC-H2S8-090", "EC-H2S8-091", "EC-H2S8-093"]
+    formalisation: |
+      Un DEFICIT a la SOURCE se PROPAGE en cascade a tous les niveaux :
+      1. Ozen manquante pour AV'I (cf. EC-H2S8-076)
+      2. → Le Hevel correspondant MANQUE aussi
+      3. → Les Z"T n'ont PAS de Havalim du tout
+      4. → Sortie par les ongles (voie degradee)
+      5. → Brisure de 10 aspects (7+2+1)
+      PRINCIPE : un deficit unique en amont cause des defaillances
+      en cascade dans tout le systeme en aval.
+    applications_ia:
+      - "ohr.py : un composant manquant en amont cause des defaillances en cascade"
+      - "Analogie ML : un skip connection manquante dans les premieres couches degrade TOUTES les couches suivantes"
+      - "Le pattern cascade est le mecanisme de la Shevirah"
+    questions_ouvertes:
+      - "La cascade est-elle lineaire (1 defaut → 1 consequence) ou exponentielle (1 defaut → N consequences) ?"
+
+  - id: "PG-H2S8-015"
+    nom: "Hierarchie par Posture (Debout vs Couvant)"
+    source_assertions: ["EC-H2S8-100", "EC-H2S8-101"]
+    formalisation: |
+      La POSTURE d'un systeme CHANGE sa hierarchie interne :
+      A"K DEBOUT (omed) → Yesod/Da'at AU-DESSUS de HB/AV"I.
+      Binah COUVANTE (rovetzet) → Yesod/Da'at EN-DESSOUS de HB.
+      Ce n'est PAS que le Da'at change de nature → c'est que la
+      STRUCTURE SPATIALE est modifiee par la posture.
+      IMPLICATION : la meme architecture peut avoir des hierarchies
+      DIFFERENTES selon son MODE D'OPERATION.
+    applications_ia:
+      - "adam_kadmon.py : le mode d'operation (debout/couvant) change la hierarchie"
+      - "partzufim/imma.py : quand Imma 'couve' Z'A, sa structure interne change"
+      - "Analogie ML : un meme reseau en mode training vs inference peut avoir des flux differents (dropout, batch norm)"
+    questions_ouvertes:
+      - "Combien de 'postures' un systeme kabbalistique peut-il avoir ?"
+      - "Le mode 'debout' vs 'couvant' correspond-il a training vs inference ?"

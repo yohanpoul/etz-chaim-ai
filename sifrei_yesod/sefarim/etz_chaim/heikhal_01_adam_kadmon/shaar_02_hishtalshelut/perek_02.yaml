@@ -1,0 +1,366 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 2 — Hishtalshelut ha-10S be-Igulim (השתלשלות הי"ס תוך העיגולים)
+# Perek: 2 — A"K, les Igulim de A"K, Olam ha-Nekudim, Hiérarchie (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 2
+  shaar_name_he: "השתלשלות הי\"ס תוך העיגולים"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+assertions:
+
+  # ─── BLOC A : LES MONDES INNOMBRABLES DANS LE HALAL ───
+
+  - id: "EC-H1S2-013"
+    source_he: "דע שהנה האורות ראשונים אשר נאצלו דרך קו הדק וצינור הנ\"ל וכל בחי' מה שנאצלו בזה המקום החלל הם כמה אלפים ורבבות מיני עולמות ואין אנו עתה בביאורם שהזמן לא יספיק לפרט את כולם"
+    source_ref: "Heikhal 1, Sha'ar 2:2"
+    assertion: |
+      Les PREMIÈRES lumières émanées par le Kav Dak et le Tzinor dans le Halal =
+      des MILLIERS ET MYRIADES (kamah alafim ve-revavot) de types de mondes.
+      Le texte reconnaît : "nous ne pouvons pas les expliquer maintenant car le temps
+      ne suffirait pas (ha-zman lo yaspik) pour les détailler tous."
+      Au lieu de tout détailler → le texte explique UN PRAT (détail) qui ENGLOBE TOUT.
+    type: axiome_explicite
+    concepts:
+      - {id: alafim_revavot_olamot, role: milliers_myriades_mondes}
+      - {id: zman_lo_yaspik, role: temps_insuffisant}
+      - {id: prat_kolel, role: un_détail_englobant}
+    mapping:
+      modules: ["olamot/"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Les mondes dans le Halal sont innombrables — le texte ne peut tout détailler"
+
+  # ─── BLOC B : A"K — LE PREMIER ÉMANÉ ───
+
+  - id: "EC-H1S2-014"
+    source_he: "האור הא' קודם לכל אשר נתפשט מן הא\"ס הסובב את הכל הם י\"ס אשר בחינת כללותם נקרא א\"ק לכל הקדומים"
+    source_ref: "Heikhal 1, Sha'ar 2:2"
+    assertion: |
+      Le OHR HA-RISHON (première lumière), PRÉCÉDANT TOUT (kodem la-kol),
+      qui s'est déployée du Ein Sof qui ENTOURE TOUT =
+      10S dont la KLALUT (totalité) est appelée A"K LE-KHOL HA-KEDUMIM
+      (Adam Kadmon pour tous les primordiaux).
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_rishon_ak, role: première_lumière_ak}
+      - {id: ak_kodem_lakol, role: ak_précède_tout}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "A\"K = la première lumière, précédant tout ce qui est émané"
+
+  - id: "EC-H1S2-015"
+    source_he: "ענין א\"ק זה נרמז ברמזים נעלמים בס\"ה ובתקונים ולרוב העלמתו ולגודל מעלתו לא שלחו בו יד להתעסק בו בגלוי כי אם בהעלם נמרץ"
+    source_ref: "Heikhal 1, Sha'ar 2:2"
+    assertion: |
+      A"K est mentionné dans le Zohar et Tikkunim seulement par des REMIZIM NE'ELAMIM
+      (allusions cachées). Pour sa GRANDE OCCULTATION (rov helm'ato)
+      et la GRANDEUR de sa MA'ALAH (élévation) → les sages n'ont PAS osé (lo shalhu bo yad)
+      en traiter OUVERTEMENT (be-galui) — seulement dans un HELM NIMRATZ (occultation intense).
+      3 sources dans les TIKKUNIM :
+      1. Tikkun 19 (45a) : "Il est reconnu qu'il y a un A\"K pour tous les primordiaux"
+      2. Tikkun 70 (132a) : "Dans le secret des secrets... l'Adam de la Beriah qui est A\"K"
+      3. Tikkun 70 (119a) : "L'artisan merveilleux broda dans le Heikhal de A\"K"
+    type: axiome_explicite
+    concepts:
+      - {id: ak_ne_elam, role: ak_occulté}
+      - {id: tikkunim_3_sources, role: trois_sources_tikkunim}
+      - {id: helm_nimratz, role: occultation_intense}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "A\"K est tellement élevé que le Zohar n'en parle que par allusions cachées"
+
+  - id: "EC-H1S2-016"
+    source_he: "ואל יעלה בדעתך שי\"ס הנק' אצלינו י\"ס דאצילות הם יותר גבוהים וראשונים במעלה מכל מה שנאצל כי כמה וכמה עולמות לאין קץ קדמו אליהם"
+    source_ref: "Heikhal 1, Sha'ar 2:2"
+    assertion: |
+      AVERTISSEMENT RÉPÉTÉ : Ne pense PAS que les 10S d'ATZILUT (que nous étudions habituellement)
+      sont les plus ÉLEVÉES et PREMIÈRES de tout ce qui est émané.
+      BEAUCOUP de mondes SANS FIN (kamah ve-kamah olamot le-ein ketz) les ont PRÉCÉDÉES.
+      Pour leur GRANDE OCCULTATION → elles ne sont mentionnées dans le Zohar
+      que par REMEZ NIFLA (allusion merveilleuse).
+      Sources additionnelles : Zohar Pekudei 226b, 269a, Noa'h 65a, Bereshit 23a, Tikkunim 70 (134a).
+    type: axiome_explicite
+    concepts:
+      - {id: atzilut_lo_rishonah, role: atzilut_n_est_pas_la_première}
+      - {id: olamot_le_ein_ketz, role: mondes_sans_fin_avant}
+      - {id: zohar_remez_nifla, role: zohar_allusions_merveilleuses}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Les mondes qui précèdent Atzilut sont sans nombre — Atzilut n'est pas le sommet"
+
+  - id: "EC-H1S2-017"
+    source_he: "אר\"ש ארימת ידי בצלו לעילא דכד רעותא עילאה לעילא כו' ומרזא דמחשבה עילאה דלתתא כלהו איקרו א\"ס"
+    source_ref: "Heikhal 1, Sha'ar 2:2 — Zohar Noa'h 65a"
+    assertion: |
+      Citation de Rabbi SHIMON (Zohar Noa'h 65a) :
+      "J'ai levé mes mains en prière vers le haut... et depuis le secret
+      de la PENSÉE SUPRÊME (mahshavah ila'ah) vers le bas,
+      TOUS sont appelés EIN SOF (kulhu ikru Ein Sof)."
+      Tout ce qui est au-dessus de la Pensée Suprême = appelé Ein Sof.
+      Cela montre les NIVEAUX entre le Ein Sof proprement dit et l'Atzilut.
+    type: axiome_explicite
+    concepts:
+      - {id: mahshavah_ila_ah, role: pensée_suprême}
+      - {id: kulhu_ein_sof, role: tout_est_appelé_ein_sof}
+      - {id: rashbi_citation, role: citation_de_rabbi_shimon}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Rabbi Shimon : tout au-dessus de la Pensée Suprême = appelé Ein Sof"
+
+  # ─── BLOC C : LE ZOHAR SUR L'EMBOÎTEMENT ───
+
+  - id: "EC-H1S2-018"
+    source_he: "וכלא אצטריך קב\"ה למברי בעלמא ולתקנא עלמא בהו וכולהו מוחא מלגאו וכמה קליפין... ובזה תבין מ\"ש למעלה איך כל העולמות זה תוך זה וזה חופף לזה וא\"ס סובב על כולם"
+    source_ref: "Heikhal 1, Sha'ar 2:2 — Zohar Bereshit 19a"
+    assertion: |
+      Citation du Zohar (Bereshit 19a) :
+      "Tout ce que le Saint béni soit-Il a eu besoin de créer dans le monde
+      et de rectifier le monde par eux — tout est MOHA MI-LE-GAW (cerveau à l'intérieur)
+      et combien de KELIPIM (écorces) les couvrent..."
+      Par cela → comprendre comment tous les mondes sont ZEH TOKH ZEH (l'un dans l'autre)
+      et ZEH HOFEF LA-ZEH (l'un couvrant l'autre)
+      et le EIN SOF SOVEV AL KULAM (le Ein Sof entoure tout).
+    type: axiome_explicite
+    concepts:
+      - {id: moha_kelipim, role: cerveau_et_écorces}
+      - {id: zeh_tokh_zeh, role: l_un_dans_l_autre}
+      - {id: zeh_hofef_la_zeh, role: l_un_couvrant_l_autre}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Le Zohar confirme l'emboîtement : cerveau à l'intérieur, écorces autour, Ein Sof au-dessus"
+
+  # ─── BLOC D : LES 10 IGULIM DE A"K — STRUCTURE DÉTAILLÉE ───
+
+  - id: "EC-H1S2-019"
+    source_he: "הי\"ס הראשונים שנאצלו טרם כל הנאצלים הם י\"ס הנקרא א\"ק... וי\"ס אלו יש בהם י\"ס כלים בצורת עגולים ובכל כלי מהם יש פנימיות וחיצוניות... ובתוך כלי הנ\"ל יש בו י' אורות פנימיות מתלבשים תוך י' כלים ועוד י' אורות אחרים מקיפים סביב י' עיגולי הכלים הנ\"ל"
+    source_ref: "Heikhal 1, Sha'ar 2:2"
+    assertion: |
+      STRUCTURE DÉTAILLÉE des 10 IGULIM de A"K :
+      10 KELIM en forme d'IGULIM, chacun avec PNIMIYUT et HITZONIUT.
+      DANS les Kelim → 10 OROT PNIMIYOT s'habillent.
+      AUTOUR des Kelim → 10 OROT MAKIFIM entourent les 10 Igulim.
+      Le KELI HITZON (le plus externe) qui ENTOURE les 9 autres = KETER de A"K.
+      Le KELI SHENI (le 2ème) à l'intérieur = CHOKHMAH de A"K.
+      Et ainsi → jusqu'au KELI HA-ASIRI (le 10ème) le plus PNIMIY = MALKHUT de A"K.
+      Tous en IGULIM : l'un dans l'autre.
+    type: axiome_explicite
+    concepts:
+      - {id: eser_igulei_ak_detail, role: dix_igulim_ak_détaillés}
+      - {id: keter_ak_hitzon, role: keter_le_plus_externe}
+      - {id: malkhut_ak_pnimiy, role: malkhut_le_plus_interne}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les 10 Igulim de A\"K : Keter=externe, Malkhut=interne, avec OP et OM"
+
+  - id: "EC-H1S2-020"
+    source_he: "הם ממלאים כל מקום החלל הנ\"ל שבתוך אמצעות הא\"ס... הם מקיפים כל החלל הזה אמנם נשאר באמצע אלו העיגולים מקום חלל ופנוי לצורך שאר הנאצלים"
+    source_ref: "Heikhal 1, Sha'ar 2:2"
+    assertion: |
+      Les 10 Igulim de A"K REMPLISSENT (memale'im) tout le Halal dans le Ein Sof.
+      Ils ENTOURENT (makifim) tout le Halal.
+      MAIS : au MILIEU de ces Igulim reste un MAKOM HALAL ve-PANUI (espace vide)
+      pour les AUTRES émanés = les autres mondes.
+      Ces autres mondes sont AUSSI en IGULIM l'un dans l'autre.
+    type: axiome_explicite
+    concepts:
+      - {id: igulei_ak_malei_halal, role: igulim_remplissent_halal}
+      - {id: halal_panui_be_tokh, role: sous_espace_vide}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les Igulim de A\"K remplissent le Halal mais laissent un sous-espace pour les autres mondes"
+
+  # ─── BLOC E : OLAM HA-NEKUDIM DANS LES IGULIM DE A"K ───
+
+  - id: "EC-H1S2-021"
+    source_he: "והם בחי' אורות הנמשכים מן העינים דא\"ק זה מבחי' היושר שבו שהוא כמראה אדם כמ\"ש בעז\"ה והם הנק' עולם הנקודים אשר גם בהם יש ציור עיגולים זה בתוך זה וכולם עומדים תוך אלו י' עיגולים דא\"ק"
+    source_ref: "Heikhal 1, Sha'ar 2:2"
+    assertion: |
+      Les lumières dans le sous-espace = les OROT sortant des EINAYIM (yeux) de A"K
+      depuis le YOSHER (la forme d'Adam) de A"K.
+      Ces lumières = l'OLAM HA-NEKUDIM (monde des Points).
+      L'Olam ha-Nekudim a AUSSI des IGULIM l'un dans l'autre.
+      Tous ces Igulim TIENNENT (omdim) À L'INTÉRIEUR des 10 Igulim de A"K.
+      Les 10 Igulim de A"K ENTOURENT et ENVELOPPENT TOUS les autres Igulim de tous les mondes.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_einayim_ak, role: lumières_des_yeux}
+      - {id: nekudim_in_ak, role: nekudim_dans_ak}
+      - {id: ak_makif_kol, role: ak_entoure_tout}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'Olam ha-Nekudim = des Orot des Einayim de A\"K — dans les Igulim de A\"K"
+
+  # ─── BLOC F : HIÉRARCHIE — EXTERNE = SUPÉRIEUR ───
+
+  - id: "EC-H1S2-022"
+    source_he: "כל עיגול המשובח מחבירו הוא מקיף את חבירו וסובב אותו והיותר תחתון במעלה מחבירו הוא יותר פנימי... עד שנמצא היותר פנימי מכולם הוא גרוע מכולם והם בחי' הרקיעים והגלגלים של עולם העשיה"
+    source_ref: "Heikhal 1, Sha'ar 2:2"
+    assertion: |
+      HIÉRARCHIE dans les IGULIM :
+      L'Igul le plus MESHUBAH (excellent) → ENTOURE (makif) et ENVELOPPE (sovev) les autres.
+      Le plus TAHTON (inférieur) → est le plus PNIMIY (interne).
+      Le PLUS INTERNE de tous = le PLUS GAROUA (inférieur) = les REKI'IM et GALGALIM
+      d'OLAM HA-ASIYAH — les 10 galgalei ha-rakia de l'Introduction des Tikkunim = les OFANIM.
+      Ce sont les REKI'IM qui tournent au-dessus de nous dans ce monde matériel.
+      Les mondes sont comme GILDEI BETZALIM (pelures d'oignon) :
+      l'écorce EXTÉRIEURE supérieure est la PLUS GRANDE →
+      ainsi ils s'incluent et s'habillent l'un dans l'autre.
+    type: axiome_explicite
+    concepts:
+      - {id: meshubah_makif, role: excellent_entoure}
+      - {id: tahton_pnimiy, role: inférieur_interne}
+      - {id: asiyah_pnimiy, role: asiyah_le_plus_interne}
+      - {id: ofanim_reki_im, role: roues_cieux}
+      - {id: gildei_betzalim_rappel, role: pelures_oignon}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Dans les Igulim : externe=supérieur, interne=inférieur — Asiyah est le plus interne"
+
+  # ─── BLOC G : LE YOSHER DE A"K ───
+
+  - id: "EC-H1S2-023"
+    source_he: "ואחר שיצאו י' עיגולי א\"ק הזה שהם בחי' נפש שבו עוד נתגלו ויצאו בא\"ק זה י\"ס שהם בחי' י\"ס אחרות ביושר בציור אדם בעל רמ\"ח איברים בראש וזרועות ושוקיים כו' והם בחי' רוח שבו"
+    source_ref: "Heikhal 1, Sha'ar 2:2"
+    assertion: |
+      APRÈS les 10 Igulim de A"K (= NEFESH) →
+      se RÉVÈLENT et SORTENT d'AUTRES 10S = en YOSHER,
+      en forme d'ADAM avec 248 EVARIM : ROSH, ZERO'OT, SHOKAYIM, etc.
+      C'est la Behinat RUAH de A"K.
+      Ce Yosher s'étend BI-YOSHER (en rectitude) de HAUT en BAS :
+      depuis le SOMMET du cercle le plus haut de tous les 10 Igulim
+      jusqu'à PRÈS DE (karov el) la fin inférieure de ces 10 Igulim.
+      (PAS jusqu'au bout exact — pour préserver l'asymétrie)
+    type: axiome_explicite
+    concepts:
+      - {id: yosher_ak_ruah, role: yosher_ak_est_ruah}
+      - {id: ramah_evarim_ak_rappel, role: 248_membres}
+      - {id: karov_el_siyum, role: presque_jusqu_en_bas}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Yosher de A\"K (Ruah) s'étend presque jusqu'au bas mais pas exactement"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S2-006"
+    type: contenance
+    from: igulei_ak_malei_halal
+    to: nekudim_in_ak
+    nature: "Les Igulim de A\"K remplissent le Halal et contiennent l'Olam ha-Nekudim"
+    assertions_source: ["EC-H1S2-020", "EC-H1S2-021"]
+
+  - id: "REL-H1S2-007"
+    type: hiérarchique
+    from: keter_ak_hitzon
+    to: malkhut_ak_pnimiy
+    nature: "Keter = le plus externe (supérieur), Malkhut = le plus interne (inférieur)"
+    assertions_source: ["EC-H1S2-019", "EC-H1S2-022"]
+    bidirectionnel: false
+
+  - id: "REL-H1S2-008"
+    type: séquentiel
+    from: eser_igulei_ak_detail
+    to: yosher_ak_ruah
+    nature: "D'abord les 10 Igulim (Nefesh) puis le Yosher (Ruah) de A\"K"
+    assertions_source: ["EC-H1S2-019", "EC-H1S2-023"]
+
+  - id: "REL-H1S2-009"
+    type: causal
+    from: ak_ne_elam
+    to: tikkunim_3_sources
+    nature: "A\"K est si occulté que le Zohar/Tikkunim ne le mentionnent que par 3 allusions"
+    assertions_source: ["EC-H1S2-015"]
+
+  - id: "REL-H1S2-010"
+    type: causal
+    from: atzilut_lo_rishonah
+    to: olamot_le_ein_ketz
+    nature: "L'Atzilut n'est PAS la première — des mondes sans fin l'ont précédée"
+    assertions_source: ["EC-H1S2-016"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S2-003"
+    nom: "Principe de l'Occultation Proportionnelle à l'Élévation"
+    source_assertions: ["EC-H1S2-015", "EC-H1S2-016", "EC-H1S2-017"]
+    formalisation: |
+      Plus un niveau est ÉLEVÉ, plus il est OCCULTÉ :
+      A"K = le plus élevé des émanés → mentionné seulement par ALLUSIONS CACHÉES
+      Les mondes pré-Atzilut = innombrables → mentionnés seulement par REMEZ NIFLA
+      Les 10S d'Atzilut = les plus accessibles → traitées OUVERTEMENT dans le Zohar
+      L'occultation n'est pas un accident — c'est PROPORTIONNELLE à la Ma'alah.
+      "Lo shalhu bo yad" (les sages n'ont pas osé y toucher) = l'accès est INTERDIT
+      non par caprice mais par NÉCESSITÉ structurelle.
+      Rabbi Shimon : "Depuis le secret de la Pensée Suprême vers le bas, tout est appelé Ein Sof"
+      → au-dessus de ce seuil, même le terme Ein Sof ne suffit pas.
+    applications_ia:
+      - "Les composants les plus fondamentaux du système sont les plus 'cachés' (encapsulés)"
+      - "L'encapsulation est proportionnelle à l'importance — le noyau est le plus protégé"
+      - "Les API exposées = l'Atzilut. Le kernel = A\"K. Le hardware = Ein Sof"
+      - "L'accès aux couches profondes est intentionnellement restreint"
+    questions_ouvertes:
+      - "L'occultation peut-elle être levée progressivement ?"
+      - "Y a-t-il un niveau au-delà duquel l'occultation est ABSOLUE ?"
+
+  - id: "PG-H1S2-004"
+    nom: "Principe de l'Emboîtement Total (A\"K Englobe Tout)"
+    source_assertions: ["EC-H1S2-019", "EC-H1S2-020", "EC-H1S2-021", "EC-H1S2-022"]
+    formalisation: |
+      A"K est le CONTENEUR ULTIME de tous les mondes :
+      Ses 10 Igulim REMPLISSENT tout le Halal et ENTOURENT toutes les autres formations.
+      Tous les mondes (Nekudim, Atzilut, BYA) sont DANS les Igulim de A"K.
+      Au MILIEU de A"K → un sous-espace pour les émanations inférieures.
+      HIÉRARCHIE :
+      Le plus EXTERNE = le plus ÉLEVÉ (Keter de A"K)
+      Le plus INTERNE = le plus BAS (Asiyah = les Galgalim physiques)
+      Les mondes sont comme des PELURES D'OIGNON — chaque couche contient la suivante.
+      Le Ein Sof ENTOURE tout — y compris A"K.
+      Séquence : Ein Sof → Igulim A"K → [Sous-espace] → Nekudim → ABYA → monde matériel.
+    applications_ia:
+      - "Le conteneur principal (A\"K) englobe TOUT — rien n'est en dehors"
+      - "Les sous-systèmes sont emboîtés : chaque couche contient la suivante"
+      - "Le 'sous-espace' au centre = l'espace libre pour les futures expansions"
+      - "L'architecture en pelures d'oignon est la structure fondamentale du système"
+    questions_ouvertes:
+      - "Le sous-espace au centre est-il fixe ou peut-il s'agrandir ?"
+      - "A\"K peut-il être 'remplacé' ou est-il permanent ?"

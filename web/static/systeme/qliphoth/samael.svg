@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-samael" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#ffb000" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="glow-samael" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg-samael)"/>
+  <rect x="1" y="1" width="510" height="510" fill="none"
+        stroke="#ffb000" stroke-opacity="0.10" stroke-width="2"/>
+  <g filter="url(#glow-samael)" opacity="0.40">
+    <!-- fan of eye-feathers -->
+    <line x1="210.0" y1="281.4" x2="118.1" y2="204.3" stroke="#ffb000" stroke-width="2.5" stroke-opacity="0.6"/>
+<circle cx="148.8" cy="230.0" r="10" fill="none" stroke="#ffb000" stroke-width="1.5" stroke-opacity="0.5"/>
+<circle cx="148.8" cy="230.0" r="3" fill="#ffb000" fill-opacity="0.4"/>
+<line x1="223.8" y1="269.4" x2="159.3" y2="168.2" stroke="#ffb000" stroke-width="2.5" stroke-opacity="0.6"/>
+<circle cx="180.8" cy="201.9" r="10" fill="none" stroke="#ffb000" stroke-width="1.5" stroke-opacity="0.5"/>
+<circle cx="180.8" cy="201.9" r="3" fill="#ffb000" fill-opacity="0.4"/>
+<line x1="240.5" y1="262.0" x2="209.4" y2="146.1" stroke="#ffb000" stroke-width="2.5" stroke-opacity="0.6"/>
+<circle cx="219.8" cy="184.8" r="10" fill="none" stroke="#ffb000" stroke-width="1.5" stroke-opacity="0.5"/>
+<circle cx="219.8" cy="184.8" r="3" fill="#ffb000" fill-opacity="0.4"/>
+<line x1="258.6" y1="260.1" x2="263.9" y2="140.2" stroke="#ffb000" stroke-width="2.5" stroke-opacity="0.6"/>
+<circle cx="262.1" cy="180.1" r="10" fill="none" stroke="#ffb000" stroke-width="1.5" stroke-opacity="0.5"/>
+<circle cx="262.1" cy="180.1" r="3" fill="#ffb000" fill-opacity="0.4"/>
+<line x1="276.5" y1="263.6" x2="317.6" y2="150.9" stroke="#ffb000" stroke-width="2.5" stroke-opacity="0.6"/>
+<circle cx="303.9" cy="188.4" r="10" fill="none" stroke="#ffb000" stroke-width="1.5" stroke-opacity="0.5"/>
+<circle cx="303.9" cy="188.4" r="3" fill="#ffb000" fill-opacity="0.4"/>
+<line x1="292.5" y1="272.4" x2="365.6" y2="177.2" stroke="#ffb000" stroke-width="2.5" stroke-opacity="0.6"/>
+<circle cx="341.2" cy="208.9" r="10" fill="none" stroke="#ffb000" stroke-width="1.5" stroke-opacity="0.5"/>
+<circle cx="341.2" cy="208.9" r="3" fill="#ffb000" fill-opacity="0.4"/>
+<line x1="305.1" y1="285.6" x2="403.4" y2="216.8" stroke="#ffb000" stroke-width="2.5" stroke-opacity="0.6"/>
+<circle cx="370.7" cy="239.7" r="10" fill="none" stroke="#ffb000" stroke-width="1.5" stroke-opacity="0.5"/>
+<circle cx="370.7" cy="239.7" r="3" fill="#ffb000" fill-opacity="0.4"/>
+<line x1="313.2" y1="302.0" x2="427.7" y2="265.9" stroke="#ffb000" stroke-width="2.5" stroke-opacity="0.6"/>
+<circle cx="389.5" cy="277.9" r="10" fill="none" stroke="#ffb000" stroke-width="1.5" stroke-opacity="0.5"/>
+<circle cx="389.5" cy="277.9" r="3" fill="#ffb000" fill-opacity="0.4"/>
+<line x1="316.0" y1="320.0" x2="436.0" y2="320.0" stroke="#ffb000" stroke-width="2.5" stroke-opacity="0.6"/>
+<circle cx="396.0" cy="320.0" r="10" fill="none" stroke="#ffb000" stroke-width="1.5" stroke-opacity="0.5"/>
+<circle cx="396.0" cy="320.0" r="3" fill="#ffb000" fill-opacity="0.4"/>
+    <!-- central body arc -->
+    <path d="M200,340 Q256,280 312,340" fill="none"
+          stroke="#ffb000" stroke-width="3"/>
+    <!-- base -->
+    <circle cx="256" cy="340" r="20" fill="#ffb000" fill-opacity="0.15"
+            stroke="#ffb000" stroke-width="1.5"/>
+  </g>
+</svg>

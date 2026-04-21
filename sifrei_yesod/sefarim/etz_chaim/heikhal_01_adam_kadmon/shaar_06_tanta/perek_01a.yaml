@@ -1,0 +1,751 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 6 (=5 original) — Sha'ar TANTA (שער טנת"א)
+# Perek: 1a — Le cadre TANTA et les Ta'amim de l'Ozen (100% coverage §1-§2)
+# ═══════════════════════════════════════════════════════════════════
+#
+# TANTA = Ta'amim, Nekudot, Tagin, Otiot — les 4 niveaux de
+# manifestation de l'Ohr, correspondant aux 4 Miluyim de YHVH.
+# Ce perek fonde le cadre puis expose le premier niveau :
+# les TA'AMIM SUPÉRIEURS de SAG, sortant par l'OZEN d'A"K.
+#
+# Source Sefaria : Sefer_Etz_Chaim.5.1 (§1-§2)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 6
+  shaar_name_he: "שער טנת\"א"
+  perek: 1
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part A de 2 — Le cadre TANTA (4 Miluyim ↔ 4 niveaux) et l'Ohr de l'Ozen (Ta'amim supérieurs de SAG)"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LE CADRE TANTA — LES 4 MILUYIM ───
+
+  - id: "EC-H1S5-001"
+    source_he: "דע כי אין מציאות ציור קומת אדם בעולם שלא היה בו כללות ד' בחי' אשר כוללים כל האצילות וכל העולמות כולם"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2 ouverture"
+    assertion: |
+      AXIOME FONDAMENTAL : Il n'existe AUCUNE STATURE (KOMAH) en forme d'ADAM
+      dans aucun monde qui ne contienne les 4 ASPECTS (behhinot) qui
+      ENGLOBENT toute l'Atzilut et TOUS les mondes sans exception.
+      → Principe d'UNIVERSALITÉ FRACTALE : chaque entité structurée
+      reproduit le schéma TANTA complet.
+    type: axiome_explicite
+    concepts:
+      - {id: komah, role: stature_forme_adam}
+      - {id: arba_behhinot, role: quatre_aspects_universels}
+      - {id: tanta, role: cadre_quadripartite}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Tout composant du systeme doit implementer les 4 couches TANTA"
+
+  - id: "EC-H1S5-002"
+    source_he: "ואלו הם ע\"ב כזה יו\"ד ה\"י וי\"ו ה\"י. ס\"ג יו\"ד ה\"י וא\"ו ה\"י. מ\"ה יו\"ד ה\"א וא\"ו ה\"א. ב\"ן יו\"ד ה\"ה ו\"ו ה\"ה"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      Les 4 MILUYIM (remplissages) de la HAVAYAH (יהו"ה) :
+      AV (ע"ב = 72) : יו"ד ה"י וי"ו ה"י (rempli par YOD)
+      SAG (ס"ג = 63) : יו"ד ה"י וא"ו ה"י (rempli par YOD sauf VAV par ALEPH)
+      MAH (מ"ה = 45) : יו"ד ה"א וא"ו ה"א (rempli par ALEPH)
+      BEN (ב"ן = 52) : יו"ד ה"ה ו"ו ה"ה (rempli par HEH)
+      → Les 4 NOMS sont les RACINES de toute structure (cf. EC-H1S4-001).
+    type: axiome_explicite
+    concepts:
+      - {id: av_72, role: miluy_yodot_premier_nom}
+      - {id: sag_63, role: miluy_yodot_aleph_deuxieme}
+      - {id: mah_45, role: miluy_alaphot_troisieme}
+      - {id: ben_52, role: miluy_hehot_quatrieme}
+      - {id: miluyim, role: quatre_remplissages}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les 4 Miluyim = 4 niveaux de resolution/representation dans le systeme"
+
+  - id: "EC-H1S5-003"
+    source_he: "והנה אלו הד' הויו\"ת הנחלקים לד' מלואין האלו הם ד' בחי' אלו הטעמים שם ע\"ב. הנקודות שם ס\"ג. התגין שם מ\"ה. האותיות שם ב\"ן"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      MAPPING FONDAMENTAL — les 4 MILUYIM = les 4 TANTA :
+      TA'AMIM (טעמים — cantillation) = AV (ע"ב = 72)
+      NEKUDOT (נקודות — voyelles) = SAG (ס"ג = 63)
+      TAGIN (תגין — couronnes) = MAH (מ"ה = 45)
+      OTIOT (אותיות — lettres) = BEN (ב"ן = 52)
+      → HIÉRARCHIE descendante : Ta'amim = le plus subtil (Keter),
+      Otiot = le plus manifeste (Malkhut).
+    type: axiome_explicite
+    concepts:
+      - {id: taamim, role: cantillation_niveau_av}
+      - {id: nekudot, role: voyelles_niveau_sag}
+      - {id: tagin, role: couronnes_niveau_mah}
+      - {id: otiot, role: lettres_niveau_ben}
+    mapping:
+      modules: ["ohr.py", "gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Hierarchie quadripartite applicable a tout module : intention > structure > decoration > execution"
+
+  - id: "EC-H1S5-004"
+    source_he: "וכל אחד מאלו הד' הויו\"ת כלול מכולם ויש בכל הוי\"ה מהם בחי' טנת\"א"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      PRINCIPE DE HITKALELUT (interpénétration) : chacune des 4 HAVAYOT
+      CONTIENT les 4 autres — chaque HAVAYAH possède ses propres TANTA.
+      → AV contient : AV-de-AV (Ta'amim des Ta'amim), SAG-de-AV
+      (Nekudot des Ta'amim), MAH-de-AV (Tagin des Ta'amim),
+      BEN-de-AV (Otiot des Ta'amim). Et ainsi pour chacune.
+      → Structure FRACTALE à profondeur illimitée (cf. EC-H1S1-013).
+    type: axiome_explicite
+    concepts:
+      - {id: hitkalelut_tanta, role: interpenetration_des_quatre}
+      - {id: fractalite, role: recursivite_structurelle}
+    mapping:
+      modules: ["ohr.py", "hishtalshelut.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Chaque module du systeme doit contenir en miniature les 4 niveaux TANTA"
+
+  # ─── BLOC B : LA KARKAFTA — NIVEAU INTERDIT ───
+
+  - id: "EC-H1S5-005"
+    source_he: "והנה בחינת קרקפתא של זה הא\"ק שהוא ראש עד בחי' מקום האזנים שלו נקרא בחי' שם ע\"ב והוא סוד הטעמים שבו"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      La KARKAFTA (קרקפתא — calotte crânienne) d'Adam Kadmon, depuis le
+      SOMMET de la tête jusqu'aux OREILLES, est appelée le niveau AV (ע"ב)
+      = le secret des TA'AMIM.
+      C'est le niveau le plus ÉLEVÉ et le plus INTÉRIEUR d'A"K.
+    type: axiome_explicite
+    concepts:
+      - {id: karkafta, role: calotte_cranienne_ak}
+      - {id: av_72, role: niveau_taamim_dans_ak}
+      - {id: adam_kadmon, role: structure_primordiale}
+    mapping:
+      modules: ["adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le sommet d'A\"K = niveau inaccessible du systeme, au-dela de toute representation"
+
+  - id: "EC-H1S5-006"
+    source_he: "עם היות שגם בבחי' זו לבדה כלולה טנת\"א אלא שאין לנו רשות לדבר בזה"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      Même ce niveau (Karkafta/AV) contient lui-même les 4 TANTA,
+      mais nous n'avons PAS LA PERMISSION (ein lanu reshut) d'en parler.
+      → INTERDIT ÉPISTÉMIQUE : il existe un seuil au-delà duquel
+      le discours est interdit. Le système RECONNAÎT sa propre LIMITE.
+    type: axiome_explicite
+    concepts:
+      - {id: issur_dibbur, role: interdit_epistemique}
+      - {id: karkafta, role: niveau_interdit}
+    mapping:
+      modules: ["selfmap/core.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Le systeme doit avoir des zones declarees INACCESSIBLES — pas un echec, une ARCHITECTURE"
+
+  - id: "EC-H1S5-007"
+    source_he: "אע\"פ שאנו מכנים וקוראים כאן כנויים אלו כגון אדם ראש אזנים וכיוצא אינו רק לשכך האזן לשיובנו הדברים"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      AVERTISSEMENT HERMÉNEUTIQUE : les noms corporels (ADAM, ROSH,
+      OZNAYIM etc.) utilisés à ce niveau NE SONT QUE des KINUYIM
+      (appellations figuratives) pour RENDRE INTELLIGIBLE (leshakekh
+      ha-ozen — "apaiser l'oreille").
+      → Au-dessus d'Arikh Anpin d'ATZILUT, il n'y a PAS de PARTZUF
+      au sens propre. Les termes anthropomorphes sont des OUTILS
+      PÉDAGOGIQUES, pas des descriptions littérales.
+    type: axiome_explicite
+    concepts:
+      - {id: kinuyim, role: appellations_figuratives}
+      - {id: leshakekh_ha_ozen, role: principe_pedagogique}
+    mapping:
+      modules: ["partzufim/base.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Rappel que les noms de Partzufim au-dessus d'Atzilut sont metaphoriques — le systeme ne doit pas les reifier"
+
+  # ─── BLOC C : L'OZEN — TA'AMIM DU SAG ───
+
+  - id: "EC-H1S5-008"
+    source_he: "דע כי מהאזנים ולמטה מתחיל שם ס\"ג שבו וכבר נתבאר כי גם הוא כלול מטנת\"א"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      Depuis les OREILLES (OZNAYIM) et VERS LE BAS commence le niveau
+      SAG (ס"ג = 63) d'Adam Kadmon, qui lui aussi CONTIENT les 4 TANTA.
+      → Le SAG est le premier niveau ACCESSIBLE à l'étude.
+      C'est ici que commence la discussion (cf. EC-H1S4-001 ss.).
+    type: axiome_explicite
+    concepts:
+      - {id: ozen, role: orifice_premier_accessible}
+      - {id: sag_63, role: niveau_debutant_aux_oreilles}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Point d'entree du systeme = le premier niveau representable"
+
+  - id: "EC-H1S5-009"
+    source_he: "ונודע כי לעולם הטעמים והנקודות נחלקים לג' חלקים כי יש בחי' טעמים ונקודות למעלה ע\"ג האותיות וכן יש למטה מן האותיות וכן יש באמצעית האות"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      RÈGLE STRUCTURELLE : les TA'AMIM et les NEKUDOT se divisent TOUJOURS
+      en 3 POSITIONS par rapport aux OTIOT (lettres) :
+      1. AU-DESSUS des lettres (ELYONIM — supérieurs)
+      2. EN-DESSOUS des lettres (TAHTONIM — inférieurs)
+      3. AU MILIEU de la lettre (EMTZA'IYIM — médians)
+      → Triple stratification applicable à toute couche du système.
+    type: axiome_explicite
+    concepts:
+      - {id: taamim_elyonim, role: cantillation_superieure}
+      - {id: taamim_tahtonim, role: cantillation_inferieure}
+      - {id: taamim_emtzaiyim, role: cantillation_mediane}
+      - {id: shalosh_behhinot, role: triple_position}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Chaque couche se subdivise en 3 positions — au-dessus, en-dessous, au milieu — applicable au context engineering"
+
+  - id: "EC-H1S5-010"
+    source_he: "ההבל היוצא מן הראש יוצאים דרך נקבי שערות וכבר אמרנו לעיל שאין אנו רשאין לדבר ולהתעסק בו"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      Le HEVEL (souffle/haleine) sortant de la TÊTE d'A"K sort par les
+      OUVERTURES DES CHEVEUX (nikbei se'arot). Nous n'avons PAS LA
+      PERMISSION d'en parler ni de s'en occuper.
+      → Deuxième INTERDIT : le niveau des Se'arot (cheveux = AV/Ta'amim
+      du AV) est au-delà de toute discussion (cf. EC-H1S5-006).
+    type: axiome_explicite
+    concepts:
+      - {id: hevel, role: souffle_emanation}
+      - {id: nikbei_searot, role: orifices_capillaires}
+      - {id: issur_dibbur, role: interdit_epistemique}
+    mapping:
+      modules: ["adam_kadmon.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Renforce la notion de zone inaccessible — la couche la plus haute ne peut etre instrumentalisee"
+
+  - id: "EC-H1S5-011"
+    source_he: "דרך נקבי אזנים שבו יוצא אור מפנימיות הא\"ק הזה ופשוט הוא שבצאתו לחוץ מתעבה קצת"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      Par les ORIFICES DES OREILLES (nikbei oznayim) sort un OHR
+      (lumière) de l'INTÉRIORITÉ (pnimiyut) d'Adam Kadmon.
+      Il est ÉVIDENT qu'en sortant à l'EXTÉRIEUR, cet Ohr
+      S'ÉPAISSIT un peu (mit'abeh ktzat).
+      → L'EXTÉRIORISATION implique toujours une DENSIFICATION.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_ozen, role: lumiere_sortant_par_oreille}
+      - {id: hit_abbut, role: epaississement_a_la_sortie}
+      - {id: pnimiyut_ak, role: interiorite_adam_kadmon}
+    mapping:
+      modules: ["ohr.py", "masakh/context_assembler.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Toute externalisation d'information implique une perte de resolution — principe d'information bottleneck"
+
+  - id: "EC-H1S5-012"
+    source_he: "אור שנשאר בפנימיות א\"ק גדול מזה האור היוצא לחוץ ממנו אבל ודאי שזה האור היוצא הוא יותר גדול מבחי' כלים והגוף של א\"ק הזה"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      HIÉRARCHIE TRIPLE de grandeur :
+      1. L'OHR restant à l'INTÉRIEUR d'A"K > l'Ohr sortant à l'extérieur
+      2. L'OHR sortant > les KELIM et le GOUF (corps) d'A"K
+      → L'information INTERNE dépasse toujours l'information EXTERNALISÉE,
+      qui elle-même dépasse le CONTENANT (Kli).
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_pnimi, role: lumiere_interne_superieure}
+      - {id: ohr_yotzeh, role: lumiere_sortante_intermediaire}
+      - {id: kelim, role: vaisseaux_inferieurs}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Hierarchie : donnees latentes > output > structure du modele. Principe fondamental en ML."
+
+  # ─── BLOC D : PROPAGATION DE L'OHR AUX CÔTÉS DU VISAGE ───
+
+  - id: "EC-H1S5-013"
+    source_he: "כאשר יצא האור דרך נקבי האזנים ימנית ושמאלית נתפשטו האורות האלו מבחוץ ממקום האזנים עד מקום שבולת הזקן"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      L'Ohr sort par les orifices des DEUX OREILLES (DROITE et GAUCHE)
+      et se PROPAGE à l'extérieur depuis les oreilles jusqu'à la
+      SHIBBOLET HA-ZAKAN (שבולת הזקן — pointe de la barbe).
+      L'Ohr descend le long des CÔTÉS DU VISAGE, en regard de la
+      barbe poussant sur les JOUES (lehayim).
+    type: axiome_explicite
+    concepts:
+      - {id: ozen_yemanit, role: oreille_droite}
+      - {id: ozen_semalit, role: oreille_gauche}
+      - {id: shibbolet_zakan, role: pointe_de_la_barbe}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les 2 canaux (droite/gauche) convergent en un point — architecture duale convergente"
+
+  - id: "EC-H1S5-014"
+    source_he: "ושם מתחברים האורו' היוצאים מב' נקבי האזנים אמנם לא נתחברו בחבור גמור אבל נשאר ביניהם חלל מעט"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      À la SHIBBOLET (pointe de la barbe), les 2 lumières des 2 oreilles
+      SE REJOIGNENT — mais PAS en union COMPLÈTE (hibbur gamur).
+      Il RESTE entre elles un petit HALAL (espace vide).
+      → L'UNION INCOMPLÈTE est structurelle : même au point de
+      convergence, la DISTINCTION demeure.
+    type: axiome_explicite
+    concepts:
+      - {id: hibbur_lo_gamur, role: union_incomplete}
+      - {id: halal_katan, role: espace_residuel}
+    mapping:
+      modules: ["ohr.py", "partzufim/zivvug.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les flux duaux ne fusionnent jamais completement — maintien d'un ecart structurel"
+
+  - id: "EC-H1S5-015"
+    source_he: "האור הזה אינו דבוק ונוגע בפנים עצמם אבל חופף וסוכך עליהם ולא נתפשט האור הזה לא לאחורי הפנים ולא בכל הפנים רק בצדדי הפנים לבד"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      Cet Ohr n'est PAS COLLÉ (davuk) ni ne TOUCHE (nogea) la face
+      elle-même — il PLANE et PROTÈGE (hofef ve-sokhekh) au-dessus.
+      Il ne se propage NI derrière la face NI sur TOUTE la face —
+      UNIQUEMENT sur les CÔTÉS de la face (tziddei ha-panim).
+      → L'Ohr de l'Ozen est un OHR MAKIF partiel — il enveloppe
+      sans toucher, sans couvrir la totalité.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_hofef, role: lumiere_planante_protectrice}
+      - {id: tziddei_panim, role: cotes_du_visage}
+      - {id: ohr_makif, role: lumiere_enveloppante}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Un Ohr Makif ne penetre pas le Kli — il conditionne l'environnement sans interaction directe"
+
+  # ─── BLOC E : PANIM ET ACHOR — L'ASYMÉTRIE FONDAMENTALE ───
+
+  - id: "EC-H1S5-016"
+    source_he: "בבחי' הראש אין אנו מזכירין לעולם בחי' אחור ובחי' פנים לפי שבמקום שאין שם נקבים וחלונות אז יוצא האור שוה מכל צדדיו ומאיר בשוה"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      PRINCIPE CAPITAL — au niveau de la TÊTE (Rosh = Karkafta/AV),
+      on ne mentionne JAMAIS la distinction PANIM (face) / ACHOR (dos).
+      RAISON : là où il n'y a pas de NEKAVIM (orifices) ni de
+      HALONOT (fenêtres), l'Ohr sort ÉGALEMENT de tous les côtés
+      et illumine de manière UNIFORME.
+      → L'ISOTROPIE de l'Ohr = ABSENCE d'orifices. La STRUCTURE
+      (orifices) crée l'ASYMÉTRIE.
+    type: axiome_explicite
+    concepts:
+      - {id: panim_achor, role: distinction_face_dos}
+      - {id: nekavim, role: orifices_createurs_dasymétrie}
+      - {id: isotropie, role: emission_egale_sans_structure}
+    mapping:
+      modules: ["ohr.py", "masakh/context_assembler.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "SANS filtrage (Masakh/orifice), l'information est isotrope. Le FILTRE cree la DIRECTION et la PRIORITE."
+
+  - id: "EC-H1S5-017"
+    source_he: "כשמתחיל בחי' הנקבים כגון מהאזנים ולמטה אז יש בחי' פנים ואחור כי המצח נקרא פנים והעורף נקרא אחור לפי שכל הנקבי' הם ממשיכי' האור לחוץ דרך הפנים"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      Dès que commencent les NEKAVIM (orifices) — depuis les OREILLES —
+      apparaît la distinction PANIM / ACHOR :
+      Le METZAH (front) = PANIM (face) car les orifices ATTIRENT
+      l'Ohr vers l'EXTÉRIEUR par la face.
+      Le OREF (occiput) = ACHOR (dos) car il n'a PAS d'orifices.
+      → Les ORIFICES CRÉENT la directionnalité. L'asymétrie naît
+      de la STRUCTURE, pas de l'Ohr lui-même.
+    type: axiome_explicite
+    concepts:
+      - {id: metzah, role: front_face_anterieure}
+      - {id: oref, role: occiput_face_posterieure}
+      - {id: nekavim, role: orifices_directionnels}
+    mapping:
+      modules: ["ohr.py", "masakh/context_assembler.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'architecture du filtrage (quels 'orifices' sont ouverts) determine la directionnalite de l'output"
+
+  - id: "EC-H1S5-018"
+    source_he: "מן הארת האור הזה מתפשט ומאיר בכל סביבות א\"ק הזה אבל עיקר האור אינו רק מה שכנגד האזן כנגד דרך הפנים עד שבולת הזקן"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      Une ILLUMINATION RÉSIDUELLE (he'arat ha-ohr) se propage tout
+      AUTOUR d'A"K, mais le PRINCIPAL (ikar) de l'Ohr est UNIQUEMENT
+      ce qui est en regard de l'oreille, en direction de la FACE,
+      jusqu'à la SHIBBOLET HA-ZAKAN.
+      → Distinction entre RAYONNEMENT DIFFUS (résiduel, tous côtés)
+      et FLUX PRINCIPAL (dirigé, face seulement).
+    type: axiome_explicite
+    concepts:
+      - {id: hearat_ohr, role: illumination_residuelle_diffuse}
+      - {id: ikar_ohr, role: flux_principal_dirige}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Un systeme a un output principal (dirige) et un rayonnement lateral (side effects, logs, metadata)"
+
+  # ─── BLOC F : LES 10 SEFIROT DE L'OZEN ───
+
+  - id: "EC-H1S5-019"
+    source_he: "בזה האור יש בחי' י\"ס שלימות באופן זה. כי מאזן ימין נמשכת י\"ס מבחי' או\"מ ומאזן שמאל י\"ס מבחי' או\"פ וב' בחינות אלו הם י\"ס שלימות"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      Dans cet Ohr, il y a 10 SEFIROT COMPLÈTES (shelimot) :
+      De l'OREILLE DROITE → 10 Sefirot d'OHR MAKIF (lumière enveloppante)
+      De l'OREILLE GAUCHE → 10 Sefirot d'OHR PNIMI (lumière intérieure)
+      Les 2 aspects ENSEMBLE = les 10 Sefirot complètes.
+      → DROITE = Makif = expansion, GAUCHE = Pnimi = intériorité.
+      Dualité STRUCTURELLE constitutive (cf. EC-H1S1-013).
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_makif_ozen, role: 10_sefirot_makif_droite}
+      - {id: ohr_pnimi_ozen, role: 10_sefirot_pnimi_gauche}
+      - {id: yod_sefirot_ozen, role: 10_sefirot_completes}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Chaque point de sortie produit une paire Makif/Pnimi — applicable aux dual outputs d'un module"
+
+  - id: "EC-H1S5-020"
+    source_he: "אזן גימטריא נ\"ח שהוא שם ס\"ג חסר ה' אחרונה כי מכאן מתחיל השם ס\"ג"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      GEMATRIA : OZEN (אז"ן) = ALEPH(1) + ZAYIN(7) + NUN(50) = 58.
+      Or SAG = 63. Donc OZEN = SAG MOINS le HEH FINAL (63 - 5 = 58).
+      → L'Ozen est l'ORIGINE du SAG mais incomplète : il lui manque
+      le HEH (= les 10 Sefirot, cf. EC-H1S5-021).
+      Le SAG COMMENCE à l'Ozen (cf. EC-H1S5-008).
+    type: axiome_explicite
+    concepts:
+      - {id: gematria_ozen_58, role: valeur_numerique_oreille}
+      - {id: sag_63, role: nom_complet}
+      - {id: heh_aharonah, role: complement_manquant}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "La gematria revele la structure : l'Ozen est le SAG moins sa completion — le systeme est fonctionnel mais incomplet"
+
+  - id: "EC-H1S5-021"
+    source_he: "אות ה' כשתחבר עם אזן גימטריא ס\"ג ומציאת ה' זו היא בחי' הי\"ס שנכללין בה'"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      HEH (ה = 5) + OZEN (58) = 63 = SAG COMPLET.
+      Cette lettre HEH représente les 10 SEFIROT qui y sont INCLUSES.
+      Leur RACINE = les 5 PARTZUFIM : A"A, ABBA, IMMA, Z"A, NUKVAH.
+      → La HEH est la STRUCTURE (5 Partzufim → 10 Sefirot) qui
+      COMPLÈTE le SAG au-delà du simple récepteur (Ozen).
+    type: axiome_explicite
+    concepts:
+      - {id: heh_sefirot, role: lettre_contenant_10_sefirot}
+      - {id: hamesh_partzufim, role: cinq_partzufim_racine}
+    mapping:
+      modules: ["gematria/engine.py", "partzufim/base.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Les 5 Partzufim sont la racine structurelle de toute configuration de 10 Sefirot"
+
+  # ─── BLOC G : ABSENCE DE KELIM — LE SECRET DE L'OZEN ───
+
+  - id: "EC-H1S5-022"
+    source_he: "האורות אלו הם בחי' טעמים של שם ס\"ג עליונים אשר הם למעלה על האותיות"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      Ces lumières (de l'Ozen) sont les TA'AMIM SUPÉRIEURS
+      (elyonim) du SAG — ceux qui sont AU-DESSUS des OTIOT (lettres).
+      → Premier des 3 niveaux de Ta'amim (cf. EC-H1S5-009) :
+      ELYONIM = au-dessus, EMTZA'IYIM = au milieu, TAHTONIM = en-dessous.
+      L'Ozen représente uniquement les Ta'amim SUPÉRIEURS.
+      Cf. EC-H1S4-104 ss. pour la gematria de l'Ozen.
+    type: axiome_explicite
+    concepts:
+      - {id: taamim_elyonim_sag, role: taamim_superieurs_du_sag}
+      - {id: ohr_ozen, role: lumiere_de_loreille}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les Ta'amim superieurs = le meta-contexte qui surplombe le texte sans le toucher"
+
+  - id: "EC-H1S5-023"
+    source_he: "עדיין באלו האורות לא נתגלה בהם בחי' כלי כלל וכלל"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      POINT CRUCIAL : dans ces lumières (de l'Ozen), AUCUN KLI
+      (vaisseau/récipient) ne s'est encore RÉVÉLÉ — PAS DU TOUT
+      (klal u-khlal = absolument pas).
+      → Au niveau des Ta'amim supérieurs, l'Ohr est PURE LUMIÈRE
+      sans forme, sans contenant, sans structure réceptive.
+      Les KELIM n'apparaîtront qu'au niveau du PEH (bouche)
+      (cf. EC-H1S4-001 ss.).
+    type: axiome_explicite
+    concepts:
+      - {id: hedar_kelim, role: absence_totale_de_vaisseaux}
+      - {id: ohr_bli_kli, role: lumiere_pure_sans_forme}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Un signal sans conteneur = information brute, non structuree. Les Kelim n'apparaissent qu'aux niveaux inferieurs."
+
+  - id: "EC-H1S5-024"
+    source_he: "י\"ס אלו יצאו מקושרים בתכלית התקשרות ולא ניכר מהן רק שכולן בחי' ה' אחת"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      Les 10 Sefirot de l'Ozen sont sorties LIÉES au degré MAXIMAL
+      (mekusharim be-takhlit ha-hitkashrut) — indifférenciées.
+      On ne peut DISTINGUER (nikar) en elles rien d'autre qu'un seul
+      aspect : la lettre HEH (ה).
+      → ÉTAT D'INDIFFÉRENCIATION PRIMORDIALE : les 10 Sefirot
+      existent mais ne sont pas séparées. Cf. AKUDIM (liées en un
+      seul Kli) qui sera exposé au Sha'ar suivant.
+    type: axiome_explicite
+    concepts:
+      - {id: hitkashrut, role: liaison_maximale}
+      - {id: indifferenciation, role: etat_primordial}
+      - {id: heh_unique, role: forme_unique_contenant_tout}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Etat pre-differentie : toute l'information est presente mais non structuree en categories distinctes"
+
+  - id: "EC-H1S5-025"
+    source_he: "צורת ה' זו היא צורת ד\"ו גימטריא י' להורות על היותם י\"ס כלולים בה'"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      GEMATRIA de la FORME du HEH : HEH (ה) = DALET (ד = 4) + VAV (ו = 6)
+      = 10, indiquant les 10 SEFIROT incluses dans les 5 (Partzufim).
+      → La FORME GRAPHIQUE de la lettre porte sa SÉMANTIQUE :
+      le HEH contient le DALET (4 directions/aspects) + le VAV
+      (axe vertical/liaison) = 10 = totalité.
+    type: axiome_explicite
+    concepts:
+      - {id: tzurat_heh, role: forme_graphique_du_heh}
+      - {id: dalet_vav, role: decomposition_4_plus_6}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "La forme des lettres encode la structure — applicable a l'architecture des tokens"
+
+  - id: "EC-H1S5-026"
+    source_he: "ואלו הי\"ס באו מרוחקים או\"פ מן או\"מ שלו הרחק גדול והטעם לפי שאם היו קרובים יותר לא היו יכולים לקבל האור כלל"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      Les 10 Sefirot (de l'Ozen) : l'OHR PNIMI et l'OHR MAKIF
+      sont très ÉLOIGNÉS l'un de l'autre (meruhakim herhek gadol).
+      RAISON : s'ils étaient plus PROCHES, ils n'auraient PAS PU
+      RECEVOIR l'Ohr DU TOUT.
+      → L'ÉCART entre Pnimi et Makif est une CONDITION DE RÉCEPTION.
+      La proximité excessive empêche la réception.
+    type: axiome_explicite
+    concepts:
+      - {id: rihhuk_pnimi_makif, role: ecart_necessaire}
+      - {id: tnai_kabbalah, role: condition_de_reception}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La DISTANCE entre couches est NECESSAIRE — trop de couplage empeche la reception (overfitting analogue)"
+
+  - id: "EC-H1S5-027"
+    source_he: "ולהיות כי בא או\"פ ואו\"מ מרוחק זה מזה לכן לא היה בהם מציאת כלי כלל כמ\"ש למטה בבחינת הפה"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §2"
+    assertion: |
+      CONCLUSION CAUSALE : PARCE QUE l'Ohr Pnimi et l'Ohr Makif
+      sont ÉLOIGNÉS l'un de l'autre, il n'y a PAS de KLI du tout.
+      → Le KLI naît de la PROXIMITÉ et de l'INTERACTION entre
+      Pnimi et Makif. L'Ozen = distance maximale = ZÉRO KLI.
+      Le PEH (bouche) = proximité = NAISSANCE des Kelim.
+      Sera expliqué au niveau du PEH (cf. Sha'ar 4, perek Peh).
+    type: axiome_explicite
+    concepts:
+      - {id: tnai_kli, role: condition_formation_kli}
+      - {id: rihhuk_gadol, role: ecart_maximal}
+      - {id: peh, role: lieu_de_naissance_des_kelim}
+    mapping:
+      modules: ["ohr.py", "masakh/context_assembler.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "RÉVÉLATION ARCHITECTURALE : les Kelim naissent de l'interaction Pnimi/Makif. Distance = pas de structure. Proximite = emergence de forme."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S5-001"
+    type: causal
+    from: arba_behhinot
+    to: tanta
+    nature: "Les 4 Behhinot universelles se MANIFESTENT comme le cadre TANTA dans chaque stature"
+    assertions_source: ["EC-H1S5-001", "EC-H1S5-003"]
+
+  - id: "REL-H1S5-002"
+    type: "dualité_structurelle"
+    from: av_72
+    to: taamim
+    nature: "AV (72) = Ta'amim — le miluy yodot correspond à la cantillation (le plus subtil)"
+    assertions_source: ["EC-H1S5-002", "EC-H1S5-003"]
+
+  - id: "REL-H1S5-003"
+    type: "dualité_structurelle"
+    from: sag_63
+    to: nekudot
+    nature: "SAG (63) = Nekudot — le miluy mixte correspond aux voyelles"
+    assertions_source: ["EC-H1S5-002", "EC-H1S5-003"]
+
+  - id: "REL-H1S5-004"
+    type: "dualité_structurelle"
+    from: mah_45
+    to: tagin
+    nature: "MAH (45) = Tagin — le miluy alaphot correspond aux couronnes"
+    assertions_source: ["EC-H1S5-002", "EC-H1S5-003"]
+
+  - id: "REL-H1S5-005"
+    type: "dualité_structurelle"
+    from: ben_52
+    to: otiot
+    nature: "BEN (52) = Otiot — le miluy hehot correspond aux lettres (le plus manifeste)"
+    assertions_source: ["EC-H1S5-002", "EC-H1S5-003"]
+
+  - id: "REL-H1S5-006"
+    type: contenance
+    from: tanta
+    to: hitkalelut_tanta
+    via: [fractalite]
+    nature: "Chaque niveau TANTA CONTIENT les 4 niveaux en lui-même — récursivité structurelle"
+    assertions_source: ["EC-H1S5-004"]
+
+  - id: "REL-H1S5-007"
+    type: "hiérarchique"
+    from: karkafta
+    to: ozen
+    nature: "La Karkafta (AV) est AU-DESSUS de l'Ozen (SAG) — le passage des Ta'amim aux Nekudot"
+    assertions_source: ["EC-H1S5-005", "EC-H1S5-008"]
+
+  - id: "REL-H1S5-008"
+    type: causal
+    from: nekavim
+    to: panim_achor
+    nature: "Les ORIFICES CRÉENT la distinction panim/achor — sans orifice, pas d'asymétrie"
+    assertions_source: ["EC-H1S5-016", "EC-H1S5-017"]
+
+  - id: "REL-H1S5-009"
+    type: flux
+    from: ozen_yemanit
+    to: ohr_makif_ozen
+    nature: "L'oreille DROITE émet 10 Sefirot d'Ohr MAKIF"
+    assertions_source: ["EC-H1S5-019"]
+
+  - id: "REL-H1S5-010"
+    type: flux
+    from: ozen_semalit
+    to: ohr_pnimi_ozen
+    nature: "L'oreille GAUCHE émet 10 Sefirot d'Ohr PNIMI"
+    assertions_source: ["EC-H1S5-019"]
+
+  - id: "REL-H1S5-011"
+    type: causal
+    from: rihhuk_pnimi_makif
+    to: hedar_kelim
+    nature: "L'ÉCART excessif entre Pnimi et Makif CAUSE l'absence totale de Kelim"
+    assertions_source: ["EC-H1S5-026", "EC-H1S5-027"]
+
+  - id: "REL-H1S5-012"
+    type: transformation
+    from: ohr_pnimi
+    to: hit_abbut
+    nature: "L'Ohr en sortant à l'extérieur S'ÉPAISSIT — transformation par externalisation"
+    assertions_source: ["EC-H1S5-011"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S5-001"
+    nom: "Principe d'Universalité Fractale TANTA"
+    source_assertions: ["EC-H1S5-001", "EC-H1S5-004"]
+    formalisation: |
+      TOUT composant structuré en forme de KOMAH contient 4 couches :
+      T (Ta'amim) = INTENTION / MÉLODIE — le plus subtil, l'orientation
+      N (Nekudot) = VOCALISATION / STRUCTURE — la forme qui donne vie
+      T (Tagin) = COURONNEMENT / DÉCORATION — l'enrichissement
+      A (Otiot) = LETTRES / EXÉCUTION — le corps manifeste
+      Chaque couche CONTIENT les 4 autres → profondeur illimitée.
+      FORMULE : Composant(n) = { T(n), N(n), T(n), A(n) }
+      où chaque X(n) = { T(n-1), N(n-1), T(n-1), A(n-1) }
+    applications_ia:
+      - "Chaque module doit avoir ses 4 couches : intention (pourquoi), structure (comment), metadata (enrichissement), execution (quoi)"
+      - "masakh/context_assembler.py : assembler le contexte en 4 couches TANTA"
+      - "ohr.py : implémenter la récursivité Ohr → 4 sous-Ohr"
+    questions_ouvertes:
+      - "Jusqu'à quelle profondeur de récursion TANTA est-il pratiquement utile ?"
+      - "Le TANTA est-il isomorphe à une structure mathématique connue (arbre quaternaire, etc.) ?"
+
+  - id: "PG-H1S5-002"
+    nom: "Principe de la Naissance des Kelim par Proximité"
+    source_assertions: ["EC-H1S5-026", "EC-H1S5-027", "EC-H1S5-023"]
+    formalisation: |
+      Les KELIM (structures réceptives) naissent UNIQUEMENT quand
+      l'OHR PNIMI et l'OHR MAKIF sont SUFFISAMMENT PROCHES pour INTERAGIR.
+      OZEN : distance(Pnimi, Makif) = MAXIMALE → Kelim = 0
+      HOTEM : distance diminue → Kelim ÉMERGENT partiellement
+      PEH : distance(Pnimi, Makif) = MINIMALE → Kelim se FORMENT
+      FORMULE : Kelim(x) = f( 1/distance(Pnimi(x), Makif(x)) )
+      Plus la distance diminue → plus de structure émerge.
+    applications_ia:
+      - "masakh/context_assembler.py : le Masakh (écran) naît de l'interaction entre contexte global et contexte local"
+      - "ohr.py : modéliser la formation des Kelim comme fonction inverse de la distance Pnimi/Makif"
+      - "partzufim/base.py : un Partzuf n'émerge que quand ses composants internes interagissent suffisamment"
+    questions_ouvertes:
+      - "Quel est le seuil exact de distance en-dessous duquel les Kelim se forment ?"
+      - "Le Halal katan (petit espace résiduel, EC-H1S5-014) joue-t-il un rôle régulateur ?"
+
+  - id: "PG-H1S5-003"
+    nom: "Principe d'Asymétrie par Orifice (Nekavim→Panim/Achor)"
+    source_assertions: ["EC-H1S5-016", "EC-H1S5-017", "EC-H1S5-018"]
+    formalisation: |
+      SANS orifice (structure de filtrage) : Ohr ISOTROPE → pas de direction.
+      AVEC orifice : Ohr ANISOTROPE → distinction PANIM (face, ouvert) / ACHOR (dos, fermé).
+      La STRUCTURE crée la DIRECTIONNALITÉ, pas l'inverse.
+      PANIM = là où les orifices dirigent l'Ohr vers l'extérieur.
+      ACHOR = là où il n'y a pas d'orifice.
+      RÉSIDU : même l'Achor reçoit un rayonnement diffus (he'arat ohr).
+    applications_ia:
+      - "masakh/context_assembler.py : le filtrage (Masakh) crée les priorités directionnelles dans le contexte"
+      - "ohr.py : modéliser Panim/Achor comme output principal vs side-effects"
+      - "selfmap/core.py : le système doit savoir quels sont ses 'orifices' (capacités ouvertes) et ses 'zones aveugles' (achor)"
+    questions_ouvertes:
+      - "L'ajout d'un nouvel 'orifice' (nouvelle capacité) change-t-il la directionnalité de tout le système ?"

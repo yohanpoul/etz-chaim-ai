@@ -1,0 +1,257 @@
+# ═══════════════════════════════════════════════════════════════════
+# FOLIO MAP — Zohar Idra Rabba (Sefaria ↔ Vilna folios)
+# ═══════════════════════════════════════════════════════════════════
+# Constructed: 2026-04-20 — Sprint 10 Phase 0 (Task 2)
+# Method: direct inspection of sefaria_cache (75 JSON files fetched via API v3)
+# Sources cross-référencées :
+#   - Sefaria Zohar Idra Rabba sections 1-30 (Vocalized Zohar Israel 2013)
+#   - Vilna folios annotés dans HTML Sefaria (<i data-overlay="Vilna Pages">)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: zohar
+  parashah: Naso
+  idra: rabba
+  folio_range: "Zohar III 127b-145a (Vilna)"
+  constructed_from:
+    - "Sefaria API v3 cache (sifrei_yesod/external/sefaria_cache/)"
+    - "Sefaria HTML overlays (<i data-overlay='Vilna Pages'>) pour folio annotation"
+  constructed_at: "2026-04-20"
+  constructor: "Claude Opus 4.7 — direct Sefaria JSON inspection"
+
+# ═══════════════════════════════════════════════════════════════════
+# RÉSULTAT D'AUDIT 12.0.b — Segmentation Ashlag Sulam
+# ═══════════════════════════════════════════════════════════════════
+ashlag_sulam_segmentation: per_section
+# Justification : Sulam on Zohar Idra Rabba est segmenté en ~220 sections
+# fines, alignées sur les versets du Zohar, pas 1-à-1 sur les 13 Tikkunim.
+# Un commentaire Ashlag pour un Tikkun doit agréger plusieurs sections Sulam.
+# → Schéma YAML utilise `commentary.ashlag_hasulam_section_refs: [...]`
+# plutôt que `ashlag_hasulam:` single field.
+
+# ═══════════════════════════════════════════════════════════════════
+# MAPPING SECTIONS SEFARIA ↔ FOLIOS VILNA ↔ CONTENU DOCTRINAL
+# ═══════════════════════════════════════════════════════════════════
+
+sections:
+
+  # --- Pré-Dikna (contexte Partzuf A"A) ---
+  section_1:
+    folios: "Zohar III 127b"
+    theme: "Ouverture Idra Rabba — convocation de Rashbi et Chevraia"
+    scope: "sprint_11 (phase β)"
+  section_2:
+    folios: "Zohar III 128a"
+    theme: "Avertissements initiatiques"
+    scope: "sprint_11"
+  section_3:
+    folios: "Zohar III 128a-128b"
+    theme: "Atika Kadisha — Ancien Saint"
+    scope: "sprint_11"
+  section_4:
+    folios: "Zohar III 128b-129a"
+    theme: "Arikh Anpin"
+    scope: "sprint_11"
+  section_5:
+    folios: "Zohar III 129a"
+    theme: "Gulgalta (crâne) d'A\"A — membrane de l'air de Chokhma supérieure"
+    scope: "sprint_11"
+  section_6:
+    folios: "Zohar III 129a-129b"
+    theme: "9 Tikkunei Gulgalta (9 rectifications du crâne)"
+    scope: "sprint_11 (phase β)"
+    note: "Attention : 9 Tikkunei Gulgalta ≠ 13 Tikkunei Dikna (Sprint 10). Ne PAS confondre."
+  section_7:
+    folios: "Zohar III 129b-130a"
+    theme: "Metzach (front) — Ratzon ha-Retzonot (Volonté des volontés)"
+    scope: "sprint_11"
+  section_8:
+    folios: "Zohar III 130a"
+    theme: "Eynin (yeux) blancs d'A\"A — sans paupières ni sourcils"
+    scope: "sprint_11"
+  section_9:
+    folios: "Zohar III 130a-130b"
+    theme: "Chotma (nez) — passage de vie"
+    scope: "sprint_11"
+
+  # --- DIKNA (Sprint 10 Phase α — scope) ---
+  section_10:
+    folios: "Zohar III 130b-131a"
+    theme: "Ouverture Dikna — Rabbi Shimon : 'Malheur à celui qui tend la main vers la barbe...'"
+    scope: "sprint_10 (contexte immédiat)"
+    dikna_content: "introduction_dikna"
+
+  section_11:
+    folios: "Zohar III 131b"
+    theme: "Tikkun 1 (תיקונא קדמאה, tiqquna qadma'ah)"
+    scope: "sprint_10"
+    dikna_content: "tikkun_01"
+    speaker: "Rabbi Yitzchak"
+    scriptural_opening: "Mikha 7:20 — 'Mi El kamokha...'"
+    # Note : section 11 mentionne explicitement les "13 mekhilin" (attributs)
+    # et "13 mabu'in di-mshach revut" (13 sources d'huile d'onction de la barbe)
+    # → CONFIRME l'appariement 13 Tikkunim ↔ 13 Middot
+
+  section_12:
+    folios: "Zohar III 131b-132a"
+    theme: "Tikkun 2 (תיקונא תניינא, tiqquna tinyana)"
+    scope: "sprint_10"
+    dikna_content: "tikkun_02"
+    topography: "cheveux de l'extrémité de la bouche à l'autre extrémité"
+
+  section_13:
+    folios: "Zohar III 132a"
+    theme: "Tikkun 3 (לא נכתב בלשון תיקונא — unnamed but placed by sequence)"
+    scope: "sprint_10"
+    dikna_content: "tikkun_03"
+    speaker: "Rabbi Chiya"
+    divergence_note: "Le mot 'tiqquna telita'ah' n'apparait pas littéralement dans section 13 (contrairement à 12 qui a 'tiqquna tinyana') — à vérifier dans Pritzker Matt Vol 8"
+
+  section_14:
+    folios: "Zohar III 132a"
+    theme: "Tikkun 4 (תיקונא רביעאה, tiqquna revi'ah)"
+    scope: "sprint_10"
+    dikna_content: "tikkun_04"
+    topography: "cheveux sous la bouche, d'une extrémité à l'autre"
+    scriptural_ref: "Mikha 7:18 — 'Li-she'erit nachalato'"
+
+  section_15:
+    folios: "Zohar III 132a-132b"
+    theme: "Tikkun 5 (תיקונא חמישאה, tiqquna chamisha'ah)"
+    scope: "sprint_10"
+    dikna_content: "tikkun_05"
+    topography: "autre passage sous la bouche"
+    scriptural_ref: "Mikha 7:18 — 'Lo hechezik la'ad apo'"
+    speaker: "Rabbi Yossi"
+
+  section_16:
+    folios: "Zohar III 132b"
+    theme: "Tikkun 6 (תיקונא שתיתאה, tiqquna shetita'ah)"
+    scope: "sprint_10"
+    dikna_content: "tikkun_06"
+    topography: "cheveux montant du bas vers le haut, couvrant comme un bouquet aromatique"
+
+  section_17:
+    folios: "Zohar III 132b-133a"
+    theme: "Tikkun 7 (תיקונא שביעאה, tiqquna shevi'ah) — CENTRE"
+    scope: "sprint_10"
+    dikna_content: "tikkun_07"
+    topography: "cheveux interrompus, 2 'pommes' apparaissent — joues découvertes"
+    philological_confidence: "high (topographie) / low (attribut Exode)"
+
+  section_18:
+    folios: "Zohar III 133a-133b"
+    theme: "Tikkun 8 (תיקונא תמינאה, tiqquna teminah) — MAZAL ELYON"
+    scope: "sprint_10"
+    dikna_content: "tikkun_08"
+    topography: "un fil de cheveux sort tout autour de la barbe, jusqu'au nombril"
+    philological_confidence: "high (E1+E2)"
+    mazal: "elyon"
+    alimente: "abba_ilaah"
+    speaker_invoked: "Rabbi Elazar (fils de Rabbi Shimon)"
+    scriptural_attribution: "Notzer Chesed (נוצר חסד, Ex 34:7) — attribution Lourianique (Vital Sha'ar HaKlalim 5:1)"
+
+  section_19:
+    folios: "Zohar III 133b-134a"
+    theme: "Tikkun 9 (תיקונא תשיעאה, tiqquna teshi'ah)"
+    scope: "sprint_10"
+    dikna_content: "tikkun_09"
+    topography: "cheveux mélangés avec ceux qui pendent, inséparables"
+    speaker: "Rabbi Abba"
+    philological_confidence: "low (attribut divergent)"
+
+  section_20:
+    folios: "Zohar III 134a"
+    theme: "Tikkun 10 (תיקונא עשיראה, tiqquna asira'ah)"
+    scope: "sprint_10"
+    dikna_content: "tikkun_10"
+    topography: "cheveux descendent sous la barbe, couvrent la gorge"
+    speaker: "Rabbi Yehuda"
+    philological_confidence: "low (attribut divergent)"
+
+  section_21:
+    folios: "Zohar III 134a-134b"
+    theme: "Tikkun 12 (תיקונא דתרסראה, tiqquna dit'reysar) — SAUT DE TIKKUN 11"
+    scope: "sprint_10"
+    dikna_content: "tikkun_12"
+    topography: "pas de cheveux suspendus sur la bouche, bouche dégagée de tous côtés"
+    philological_confidence: "medium (topographie + Hellner-Eshed 'Eternal Forgiveness')"
+    # ⚠️ DIVERGENCE PHILOLOGIQUE MAJEURE ⚠️
+    tikkun_11_missing_note: |
+      Sefaria Mantua (édition numérique) SAUTE le Tikkun 11 entre sections 20 (T10)
+      et 21 (T12). Deux hypothèses philologiques :
+      (a) T11 fusionné avec T10 dans cette édition (→ section 20 contient T10+T11)
+      (b) T11 absent de cette édition — variante manuscrite
+      RÉSOLUTION : vérification Pritzker Matt Vol 8 p. 318 sq. REQUISE pour établir T11.
+      Impact : T11 YAML doit être marqué philological_confidence.topography=low
+      en attendant cross-check Stanford PDF.
+
+  section_22:
+    folios: "Zohar III 134b-135a"
+    theme: "Tikkun 13 (תיקונא דתליסראה, tiqquna dit'leysar) — MAZAL TAHTON"
+    scope: "sprint_10"
+    dikna_content: "tikkun_13"
+    topography: "cheveux pendant sous la barbe de chaque côté, couvrent jusqu'au nombril"
+    philological_confidence: "high (E1+E2)"
+    mazal: "tahton"
+    alimente: "imma_ilaah"
+    scriptural_attribution: "Ve-Nakeh (ונקה, Ex 34:7) — attribution Lourianique (Vital Sha'ar HaKlalim 5:1)"
+
+  section_23:
+    folios: "Zohar III 135a"
+    theme: "Synthèse Rabbi Shimon — tous les Tikkunim descendent chez les Chevraia"
+    scope: "sprint_10 (conclusion Dikna)"
+    dikna_content: "conclusion_dikna"
+
+  # --- Post-Dikna (Ze'ir Anpin) ---
+  section_24:
+    folios: "Zohar III 135a-135b"
+    theme: "Transition vers Ze'ir Anpin — 'comment Z\"A se forme à partir des flux d'A\"A'"
+    scope: "sprint_11"
+  section_25:
+    folios: "Zohar III 135b"
+    theme: "Émanation Z\"A depuis Bouitzina de-Kardinuta"
+    scope: "sprint_11"
+  section_26:
+    folios: "Zohar III 136a"
+    theme: "Ze'ir Anpin structure"
+    scope: "sprint_11"
+  section_27:
+    folios: "Zohar III 136a-136b"
+    theme: "Ze'ir Anpin détails"
+    scope: "sprint_11"
+  section_28:
+    folios: "Zohar III 136b-137a"
+    theme: "Ze'ir Anpin Dikna (9 Tikkunim, Idra Zuta Z\"A)"
+    scope: "sprint_12 (phase γ)"
+  section_29:
+    folios: "Zohar III 137a"
+    theme: "Ze'ir Anpin suite"
+    scope: "sprint_11"
+  section_30:
+    folios: "Zohar III 137b"
+    theme: "Ze'ir Anpin suite"
+    scope: "sprint_11"
+
+# ═══════════════════════════════════════════════════════════════════
+# TIKKUNEI DIKNA → SECTIONS SEFARIA (mapping inverse, pour Sprint 10)
+# ═══════════════════════════════════════════════════════════════════
+tikkunei_dikna_mapping:
+  tikkun_1: {sefaria_section: 11, folios: "131b", speaker: "Rabbi Yitzchak"}
+  tikkun_2: {sefaria_section: 12, folios: "131b-132a"}
+  tikkun_3: {sefaria_section: 13, folios: "132a", speaker: "Rabbi Chiya", note: "mot 'tiqquna telita'ah' non-littéral — vérifier Pritzker"}
+  tikkun_4: {sefaria_section: 14, folios: "132a"}
+  tikkun_5: {sefaria_section: 15, folios: "132a-132b", speaker: "Rabbi Yossi"}
+  tikkun_6: {sefaria_section: 16, folios: "132b"}
+  tikkun_7: {sefaria_section: 17, folios: "132b-133a", role: "centre (joues découvertes)"}
+  tikkun_8: {sefaria_section: 18, folios: "133a-133b", role: "Mazal Elyon → Abba", speaker_invoked: "Rabbi Elazar"}
+  tikkun_9: {sefaria_section: 19, folios: "133b-134a", speaker: "Rabbi Abba"}
+  tikkun_10: {sefaria_section: 20, folios: "134a", speaker: "Rabbi Yehuda"}
+  tikkun_11:
+    sefaria_section: null
+    folios: "?"
+    status: "MISSING_IN_SEFARIA_MANTUA"
+    note: "Sefaria Mantua saute de T10 (section 20) à T12 (section 21). Possiblement fusionné avec T10 ou T12 selon manuscrit. À résoudre via Pritzker Matt Vol 8 p. 318+."
+    verification_required: "Pritzker Matt vol. 8, Idra Rabba — lire folios 134a en détail pour localiser T11"
+  tikkun_12: {sefaria_section: 21, folios: "134a-134b"}
+  tikkun_13: {sefaria_section: 22, folios: "134b-135a", role: "Mazal Tahton → Imma"}

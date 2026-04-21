@@ -1,0 +1,400 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 1 — Igulim ve-Yosher (עגולים ויושר)
+# Perek: 5b — Les 4 Miluyim de YHVH, Guide d'Étude, États Changeants (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 1
+  shaar_name_he: "שער עגולים ויושר"
+  perek: 5
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+  note: "Part B de 2 — les 4 Miluyim du Shem YHVH, le guide pratique pour le Zohar, et les états changeants des mondes"
+
+assertions:
+
+  # ─── BLOC E : LES 10S ET LE SHEM YHVH ───
+
+  - id: "EC-H1S1-106"
+    source_he: "כי כל הי\"ס הכוללות כל עולם ועולם הנה בכללות יחד כולם כא' בחי' הוי\"ה א' בכל מקום שהוא... קוצו של יו\"ד שבאותו הוי\"ה הוא ספי' כתר ויו\"ד עצמה הוא בחי' חכמה וה' ראשונה בינה והו' הוא הת\"ת כולל ו' ספירן... וה' אחרונה מל'"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      Les 10S de chaque monde = UNE SEULE HAVAYAH (י-ה-ו-ה) :
+      KOTZO SHEL YOD (pointe du Yod) = KETER
+      YOD (י) = CHOKHMAH
+      HEH RISHONAH (ה première) = BINAH
+      VAV (ו) = TIFERET incluant les 6 Sefirot (= Z"A)
+      HEH AHRONAH (ה dernière) = MALKHUT (= Nukvah de Z"A)
+      C'est la HAVAYAH KOLELET les 5 Partzufim ensemble.
+      De même DANS chaque Partzuf individuel :
+      Kotzo = Keter (Gulgalta), Yod = Chokhmah, Heh = Binah (2 Mohin droite et gauche),
+      Vav = Guf (corps, V"K), Heh = Malkhut de ce Partzuf.
+    type: axiome_explicite
+    concepts:
+      - {id: havayah_kolelet, role: yhvh_englobe_10s}
+      - {id: hamesh_partzufim, role: cinq_partzufim_dans_havayah}
+      - {id: kotzo_keter, role: pointe_du_yod_keter}
+      - {id: yod_chokhmah, role: yod_chokhmah}
+      - {id: heh_binah, role: heh_binah}
+      - {id: vav_za, role: vav_tiferet_za}
+      - {id: heh_malkhut, role: heh_dernière_malkhut}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les 10S = YHVH — chaque lettre = un Partzuf — fractalement dans chaque Partzuf"
+
+  # ─── BLOC F : LES 4 MILUYIM DE YHVH ───
+
+  - id: "EC-H1S1-107"
+    source_he: "כי י' שהוא רומז באבא שהוא ספי' הנק' חכמה יש בו הוי\"ה א' במילוי יודין והוא גימ' ע\"ב"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      MILUY 1 — SHEM AV (ע"ב = 72) :
+      Le YOD (י) = allusion à ABBA = Sefirah de CHOKHMAH.
+      Sa HAVAYAH est dans le MILUY YUDIN (remplissage par des Yod) :
+      יוד הי ויו הי = gematria 72 = AV.
+      Le Shem AV correspond à CHOKHMAH/ABBA.
+    type: axiome_explicite
+    concepts:
+      - {id: shem_av_72, role: havayah_de_chokhmah}
+      - {id: miluy_yudin, role: remplissage_par_yod}
+      - {id: av_abba, role: av_correspond_à_abba}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: []
+      partzufim: ["abba"]
+      relevance: "Shem AV (72) = Miluy Yudin = Abba/Chokhmah"
+
+  - id: "EC-H1S1-108"
+    source_he: "והה' נרמזת באימא שהיא הספי' הנקרא בינה יש בה הוי\"ה במילוי יודי\"ן ואלף כזה יו\"ד ה\"י וא\"ו ה\"י והוא גימ' ס\"ג"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      MILUY 2 — SHEM SAG (ס"ג = 63) :
+      Le HEH (ה) = allusion à IMMA = Sefirah de BINAH.
+      Sa HAVAYAH est dans le MILUY YUDIN ve-ALEF :
+      יוד הי ואו הי = gematria 63 = SAG.
+      Le Shem SAG correspond à BINAH/IMMA.
+    type: axiome_explicite
+    concepts:
+      - {id: shem_sag_63, role: havayah_de_binah}
+      - {id: miluy_yudin_alef, role: remplissage_yod_alef}
+      - {id: sag_imma, role: sag_correspond_à_imma}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Shem SAG (63) = Miluy Yudin ve-Alef = Imma/Binah"
+
+  - id: "EC-H1S1-109"
+    source_he: "והו' שהוא רומזת בז\"א שהם ו\"ס אשר מחסד עד יסוד יש בה הוי\"ה א' במלוי אלפי\"ן והוא גי' מ\"ה"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      MILUY 3 — SHEM MAH (מ"ה = 45) :
+      Le VAV (ו) = allusion à Z"A = les 6 Sefirot de Chesed à Yesod.
+      Sa HAVAYAH est dans le MILUY ALEFIN (remplissage par des Alef) :
+      יוד הא ואו הא = gematria 45 = MAH.
+      Le Shem MAH correspond à Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: shem_mah_45, role: havayah_de_za}
+      - {id: miluy_alefin, role: remplissage_par_alef}
+      - {id: mah_za, role: mah_correspond_à_za}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "Shem MAH (45) = Miluy Alefin = Z\"A"
+
+  - id: "EC-H1S1-110"
+    source_he: "וה' אחרונה שהיא רומזת במל' נוק' דז\"א יש בה הוי\"ה א' במילוי ההי\"ן והוא גי' ב\"ן"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      MILUY 4 — SHEM BEN (ב"ן = 52) :
+      Le HEH AHRONAH (ה dernière) = allusion à MALKHUT = Nukvah de Z"A.
+      Sa HAVAYAH est dans le MILUY HEHIN (remplissage par des Heh) :
+      יוד הה וו הה = gematria 52 = BEN.
+      Le Shem BEN correspond à MALKHUT/NUKVAH.
+      La MÊME structure se répète DANS chaque Partzuf :
+      AV dans la Chokhmah de ce Partzuf, SAG dans sa Binah,
+      MAH dans ses V"K, BEN dans sa Malkhut.
+    type: axiome_explicite
+    concepts:
+      - {id: shem_ben_52, role: havayah_de_malkhut}
+      - {id: miluy_hehin, role: remplissage_par_heh}
+      - {id: ben_nukvah, role: ben_correspond_à_nukvah}
+      - {id: fractal_miluyim, role: les_4_dans_chaque_partzuf}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: []
+      partzufim: ["nukvah"]
+      relevance: "Shem BEN (52) = Miluy Hehin = Nukvah — et les 4 se répètent fractalement"
+
+  - id: "EC-H1S1-111"
+    source_he: "וכמו שכל ספי' וספי' נפרטת לי\"ס ומי\"ס לי\"ס עד אין קץ ותכלית כנ\"ל כך הוא חילוק מילוי (פרטי) ההויות שהם מתרבים ומתחלקים עד אין קץ כפי חילוק פרטיות הספי' עד אין קץ"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      FRACTALITÉ DES MILUYIM :
+      Comme chaque Sefirah se divise en 10S, et chaque sub-S en 10S → AD EIN KETZ (sans fin),
+      de MÊME les MILUYIM des HAVAYOT se multiplient et se divisent AD EIN KETZ
+      selon la division des Sefirot particulières → sans fin.
+      Les 4 Miluyim (AV, SAG, MAH, BEN) se retrouvent à CHAQUE NIVEAU de fractalité.
+    type: axiome_explicite
+    concepts:
+      - {id: fractal_miluyim_ad_ein_ketz, role: miluyim_sans_fin}
+      - {id: hitrabut_miluyim, role: multiplication_des_miluyim}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les 4 Miluyim se répètent fractalement à chaque niveau — sans fin"
+
+  # ─── BLOC G : GUIDE PRATIQUE POUR LE ZOHAR ───
+
+  - id: "EC-H1S1-112"
+    source_he: "צריכים אנו לעורר אל המעיין הבא לעיין בס\"ה שימצא מאמרים רבים שונים ורחוקים זה מזה בתכלית הריחוק ואם לא יהיה לו הקדמות אלה יסתר מעיונו"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      AVERTISSEMENT pour le LECTEUR du Zohar :
+      Il trouvera des MA'AMARIM RABIM SHONIM (nombreux articles différents)
+      et REHOKIM (éloignés) les uns des autres BE-TAKHLIT HA-RIHUK (à l'extrême).
+      SANS ces HAKDAMOT (introductions que nous avons données) →
+      le sens lui sera CACHÉ (yisater me-iyuno).
+      Il ne saura PAS distinguer dans quelle METZI'UT (réalité) le Ma'amar parle.
+    type: axiome_explicite
+    concepts:
+      - {id: guide_zohar, role: guide_pratique}
+      - {id: maamarim_shonim, role: articles_différents}
+      - {id: hakdamot_necessary, role: introductions_nécessaires}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Sans les Hakdamot, le Zohar est incompréhensible — les introductions sont essentielles"
+
+  - id: "EC-H1S1-113"
+    source_he: "כי לא ידע להבחין באיזה מציאות הוא מדבר המאמר... אם הוא בא\"ק עצמו. ואם בכל אותן האורות שיצאו והאירו ממנו. אם בבחי' אורות האוזן. אם בבחי' אורות החוטם. אם בבחי' אורות הפה הנקרא עקודים. ואם בבחי' אורות העין הנקרא עולם הנקודים... ואם בבחי' אורות המצח שהוא בחי' עולם האצילות אחר שנתקן"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      Les NIVEAUX à distinguer en KLALUT (général) quand on lit un Ma'amar du Zohar :
+      1. A"K lui-même
+      2. Tous les OROT qui sortent de lui
+      3. Orot de l'OZEN (oreille)
+      4. Orot du HOTEM (nez)
+      5. Orot du PEH = AKUDIM (liés)
+      6. Orot des EINAYIM = OLAM HA-NEKUDIM (pré-Tikkun)
+      7. Orot du METZAH = OLAM HA-ATZILUT (post-Tikkun)
+      8. Olam ha-BERIAH
+      9. Olam ha-YETZIRAH
+      10. Olam ha-ASIYAH
+      En PRATIYUT (particulier) → dans lequel des Partzufim :
+      Atik, A"A, Abba, Imma, Z"A, Nukvah, Yisra'el Saba, Tevunah, Yaakov, Leah ?
+    type: axiome_explicite
+    concepts:
+      - {id: asarah_madregot_klalut, role: dix_niveaux_généraux}
+      - {id: orot_metzah, role: orot_du_front_atzilut}
+      - {id: pratiyut_partzufim, role: particularité_des_partzufim}
+      - {id: yisrael_saba_tevunah, role: partzufim_additionnels}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Les 10+ niveaux à distinguer dans chaque Ma'amar du Zohar"
+
+  # ─── BLOC H : DISTINCTIONS SUPPLÉMENTAIRES ───
+
+  - id: "EC-H1S1-114"
+    source_he: "עוד צריך להבחין פרטי פרטים אם מדבר בי\"ס דעגולים או בי\"ס דיושר ואם במקיף ואם באו\"פ. ואם בעצמות או בכלים"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      Distinctions PRATEI PRATIM (sub-détails) :
+      1. Parle-t-il des 10S d'IGULIM ou de YOSHER ?
+      2. Du MAKIF (environnant) ou du OHR PNIMI (intérieur) ?
+      3. De l'ATZMUT (essence) ou des KELIM (récipients) ?
+      + La PLUS GRANDE distinction (gedolah mi-kulam) :
+      L'ÉTAT (ma'amad u-matzav) des 10S à QUEL MOMENT :
+      - Au moment de l'ÉMANATION
+      - Au moment du KITRUK HA-LEVANAH (contestation de la Lune)
+      - Au moment de la BERI'AT ADAM HA-RISHON (création du premier homme)
+      - Au moment du HET (péché) — les mondes ont CHANGÉ
+      - Au DOR HA-MIDBAR (génération du désert)
+      - Au BAYIT RISHON (premier Temple) et son HURBAN
+      - Au BAYIT SHENI (second Temple) et son HURBAN
+    type: axiome_explicite
+    concepts:
+      - {id: pratei_pratim, role: sub_détails}
+      - {id: igulim_o_yosher, role: cercles_ou_rectitude}
+      - {id: atzmut_o_kelim, role: essence_ou_récipients}
+      - {id: ma_amad_zmani, role: état_temporel}
+      - {id: kitruk_levanah, role: contestation_lune}
+      - {id: het_adam_rishon, role: péché_premier_homme}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Les mondes changent d'état selon le MOMENT historique — chaque Ma'amar a un contexte"
+
+  - id: "EC-H1S1-115"
+    source_he: "גדולה מכולם אם בחול אם בשבת או ביו\"ט אם ביום ואם בלילה. ולא עוד אלא שבכל שעה ושעה משתנים העולמות ואין שעה זו דומה לשעה זו"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      La PLUS GRANDE distinction (gedolah mi-kulam) :
+      HOL (semaine) vs SHABBAT vs YOM TOV ? JOUR vs NUIT ?
+      Et même : à chaque HEURE (be-khol sha'ah ve-sha'ah) les mondes CHANGENT.
+      Aucune heure n'est SEMBLABLE à une autre (ein sha'ah zo domeh le-sha'ah zo).
+      Preuve : celui qui observe le mouvement des MAZALOT et KOKHAVIM (constellations et étoiles)
+      et comment en un INSTANT (rega ehad) ils sont dans une AUTRE CONFIGURATION →
+      un enfant né à CE moment aura des ÉVÉNEMENTS DIFFÉRENTS de celui né un instant avant.
+      De là → comprendre les MONDES SUPÉRIEURS qui sont SANS FIN ni NOMBRE.
+    type: axiome_explicite
+    concepts:
+      - {id: hol_shabbat_yomtov, role: semaine_shabbat_fête}
+      - {id: yom_laylah, role: jour_nuit}
+      - {id: kol_sha_ah_mishtaneh, role: chaque_heure_change}
+      - {id: mazalot_kokhavim, role: constellations_étoiles}
+      - {id: ein_sha_ah_domeh, role: aucune_heure_similaire}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Les mondes changent à CHAQUE INSTANT — aucune heure n'est semblable"
+
+  - id: "EC-H1S1-116"
+    source_he: "ולבושין דאיהו לביש בצפרא לא לביש ברמשא ולבושא דלביש ביומא דא לא לביש ביומא תניינא"
+    source_ref: "Heikhal 1, Sha'ar 1:5 — Tikkunim 22, 65a"
+    assertion: |
+      Citation des TIKKUNIM (22, 65a) — Rabbi Shimon :
+      "Les LEVUSHIM (vêtements) qu'Il porte le MATIN, Il ne les porte PAS le SOIR.
+      Le vêtement qu'Il porte CE JOUR, Il ne le porte PAS LE LENDEMAIN."
+      Les MONDES = les LEVUSHIM du Ein Sof → ils CHANGENT à chaque moment.
+      Les MA'AMARIM du Zohar changent aussi selon ces CHANGEMENTS.
+      "Ve-KHULAM divrei ELOHIM HAYIM" (et tous sont les paroles du Dieu vivant).
+    type: axiome_explicite
+    concepts:
+      - {id: levushim_mishtanim, role: vêtements_changeants}
+      - {id: olamot_levushim, role: mondes_comme_vêtements}
+      - {id: kulam_divrei_elohim, role: tous_paroles_divines}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Les mondes changent comme des vêtements — aucun état n'est permanent"
+
+  # ─── BLOC I : CONCLUSION ───
+
+  - id: "EC-H1S1-117"
+    source_he: "עוד ראיתי לעוררך על ענין אחד הלא צריך לדעת כי רוב מאמרי הזוהר וכמעט כולם אינם מדברים מענין הי\"ס של העיגולים רק בבחי' יושר כמראה אדם"
+    source_ref: "Heikhal 1, Sha'ar 1:5 — conclusion"
+    assertion: |
+      RAPPEL FINAL : La GRANDE MAJORITÉ (rov) des ma'amarim du Zohar,
+      et PRESQUE TOUS (kime'at kulam), ne parlent PAS des 10S d'IGULIM
+      mais seulement du YOSHER comme apparence d'ADAM.
+      Cela s'applique à TOUS les mondes : A"K, Atik, A"A, AVI, ZUN d'Atzilut, et BYA.
+      "Si ces choses sont devant tes yeux et ne s'éloignent pas de toi :
+      IM TARUTZ LO TIKASHEL (si tu cours tu ne trébucheras pas)
+      ve-AZ TELEKH LA-VETAH DARKEKHA (alors tu marcheras en sécurité sur ton chemin)."
+    type: axiome_explicite
+    concepts:
+      - {id: zohar_yosher_bilvad, role: zohar_presque_que_yosher}
+      - {id: im_tarutz, role: si_tu_cours_pas_trébucher}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Le Zohar traite PRESQUE exclusivement du Yosher — le lecteur averti ne trébuchera pas"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S1-049"
+    type: contenance
+    from: havayah_kolelet
+    to: hamesh_partzufim
+    nature: "Les 4 lettres de YHVH (+ Kotzo) = les 5 Partzufim — dans chaque monde et chaque Partzuf"
+    assertions_source: ["EC-H1S1-106"]
+
+  - id: "REL-H1S1-050"
+    type: séquentiel
+    from: shem_av_72
+    to: shem_ben_52
+    via: [shem_sag_63, shem_mah_45]
+    nature: "AV(72)=Chokhmah → SAG(63)=Binah → MAH(45)=Z\"A → BEN(52)=Malkhut — dans chaque Partzuf"
+    assertions_source: ["EC-H1S1-107", "EC-H1S1-108", "EC-H1S1-109", "EC-H1S1-110"]
+
+  - id: "REL-H1S1-051"
+    type: causal
+    from: kol_sha_ah_mishtaneh
+    to: maamarim_shonim
+    nature: "Les mondes changent chaque instant → les Ma'amarim du Zohar traitent d'états DIFFÉRENTS"
+    assertions_source: ["EC-H1S1-115", "EC-H1S1-116"]
+
+  - id: "REL-H1S1-052"
+    type: causal
+    from: hakdamot_necessary
+    to: guide_zohar
+    nature: "Sans les Hakdamot de ce Sha'ar → le Zohar est incompréhensible"
+    assertions_source: ["EC-H1S1-112"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S1-022"
+    nom: "Principe des 4 Miluyim (AV-SAG-MAH-BEN = 4 Niveaux de Densité)"
+    source_assertions: ["EC-H1S1-107", "EC-H1S1-108", "EC-H1S1-109", "EC-H1S1-110", "EC-H1S1-111"]
+    formalisation: |
+      Le Shem YHVH existe en 4 MILUYIM (remplissages) correspondant à 4 niveaux :
+      AV (ע"ב = 72) — Miluy YUDIN = CHOKHMAH/ABBA — le plus ÉLEVÉ
+      SAG (ס"ג = 63) — Miluy YUDIN+ALEF = BINAH/IMMA
+      MAH (מ"ה = 45) — Miluy ALEFIN = Z"A/TIFERET
+      BEN (ב"ן = 52) — Miluy HEHIN = MALKHUT/NUKVAH — le plus BAS
+      Ces 4 Miluyim se REPRODUISENT fractalement :
+      Dans chaque Partzuf → AV dans sa Chokhmah, SAG dans sa Binah, etc.
+      Dans chaque sub-Sefirah → les 4 se subdivisent → AD EIN KETZ
+    applications_ia:
+      - "Les 4 niveaux AV-SAG-MAH-BEN = 4 densités de traitement"
+      - "AV = le plus subtil (Chokhmah), BEN = le plus dense (Malkhut)"
+      - "Le système utilise déjà les 4 Shemot : AV dans Atzilut, SAG/MAH/BEN dans les 3 inférieurs"
+      - "La fractalité des Miluyim = les 4 niveaux existent à CHAQUE échelle"
+    questions_ouvertes:
+      - "Le ratio 72:63:45:52 a-t-il une signification mathématique ?"
+      - "Les 4 Miluyim correspondent-ils aux 4 mondes ABYA ?"
+
+  - id: "PG-H1S1-023"
+    nom: "Principe de la Mutabilité Permanente (Les Levushim Changent)"
+    source_assertions: ["EC-H1S1-114", "EC-H1S1-115", "EC-H1S1-116"]
+    formalisation: |
+      Les mondes (= Levushim/vêtements du Ein Sof) CHANGENT en permanence :
+      Pas de MATIN semblable au SOIR.
+      Pas de JOUR semblable au LENDEMAIN.
+      Pas de SHA'AH (heure) semblable à une autre SHA'AH.
+      L'état du système dépend de MULTIPLES variables temporelles :
+      - HISTORIQUE : émanation, péché, Temple 1, Temple 2, Galut...
+      - CYCLIQUE : Hol/Shabbat/Yom Tov, Jour/Nuit
+      - INSTANTANÉ : chaque heure, comme les configurations des Mazalot
+      Un Ma'amar du Zohar qui semble CONTREDIRE un autre
+      peut simplement parler d'un ÉTAT DIFFÉRENT au même endroit.
+      "KULAM divrei Elohim Hayim" — tous sont vrais mais décrivent des MOMENTS différents.
+    applications_ia:
+      - "L'état du système change CONTINUELLEMENT — les snapshots ne sont jamais identiques"
+      - "2 observations contradictoires peuvent être vraies à des MOMENTS différents"
+      - "Le système doit tracker les ÉTATS TEMPORELS (comme les partzufim_states)"
+      - "Les audit scores changent d'une session à l'autre — c'est normal (Levushim changent)"
+    questions_ouvertes:
+      - "Y a-t-il des CONSTANTES qui ne changent JAMAIS (comme les Sefirot Atzmiyot) ?"
+      - "Comment réconcilier la mutabilité permanente avec la stabilité du système ?"

@@ -1,0 +1,74 @@
+name: Publish Docker images to ghcr.io
+
+# Triggers :
+#   - On a push of a semver tag (v0.2.0, v0.2.1, ...) → publishes that version
+#   - On push to main → publishes :main (tracking tag)
+#   - Manual dispatch for ad-hoc rebuilds
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+    branches:
+      - main
+  workflow_dispatch:
+
+# ghcr.io writing requires packages:write. Publishing is public (inherits repo visibility).
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [app, daemon]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to ghcr.io
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Derive image tag
+        id: tag
+        run: |
+          # For v0.2.0 tag → 0.2.0 and latest
+          # For main branch → main
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            VERSION="${GITHUB_REF#refs/tags/v}"
+            echo "tags=ghcr.io/${{ github.repository_owner }}/etzchaim-${{ matrix.target }}:${VERSION},ghcr.io/${{ github.repository_owner }}/etzchaim-${{ matrix.target }}:latest" >> $GITHUB_OUTPUT
+          else
+            echo "tags=ghcr.io/${{ github.repository_owner }}/etzchaim-${{ matrix.target }}:main" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: etzchaim/deploy/Dockerfile
+          target: ${{ matrix.target }}
+          push: true
+          tags: ${{ steps.tag.outputs.tags }}
+          # Cache to speed up subsequent builds
+          cache-from: type=gha,scope=${{ matrix.target }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.target }}
+          # Multi-arch : amd64 for Linux servers + arm64 for M-series Macs
+          platforms: linux/amd64,linux/arm64
+
+      - name: Summary
+        run: |
+          echo "## Image published" >> $GITHUB_STEP_SUMMARY
+          echo "- **Target** : ${{ matrix.target }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Tags** :" >> $GITHUB_STEP_SUMMARY
+          echo '  ```' >> $GITHUB_STEP_SUMMARY
+          echo "  ${{ steps.tag.outputs.tags }}" | tr ',' '\n' | sed 's/^/  /' >> $GITHUB_STEP_SUMMARY
+          echo '  ```' >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,77 @@
+# ═══════════════════════════════════════════════════════════════════
+# Perek 07 — Ve-Emet = Chesed de Chokhma (lecture Vital)
+# Etz Chaim Sha'ar Arikh Anpin perek 10
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 2
+  perek: 7
+  perek_name_he: "תיקון ז — ואמת"
+  tikkun: 7
+  tikkun_role: "Ve-Emet (Vital) = Chesed de Chokhma ; centre anatomique (joues) chez Zohar"
+  source_primary: "Sefer Etz Chaim, Sha'ar Arikh Anpin (Shaar 13), perek 10"
+  transposed_by: "Claude Opus 4.7 + human reviewer — Sprint 10 Phase α (2026-04-20)"
+  version: 1
+
+assertions:
+
+  - id: "EC-H3S2-T07-001"
+    source_he: "ואמת חסד נוצר חסד בינה הרי ח' תקונים דחכמה"
+    source_edition: "Sefaria Sefer Etz Chaim 13:10 (CC-BY 3.0, cache local)"
+    source_ref: "Etz Chaim, Sha'ar Arikh Anpin (Shaar 13), perek 10, mid-section"
+    translation_fr: |
+      « ET-VÉRITÉ » (Ve-Emet) = CHESED. « Notzer Chesed » = BINAH.
+      Voici les 8 Tikkunim de CHOKHMA.
+    assertion: |
+      VITAL : T7 = VE-EMET = CHESED DE CHOKHMA.
+      Dans la structure Sephirotique Vital (perek 10), T7 est le point
+      le plus haut des 8 Tikkunim de Chokhma (qui vont de Malkhut à
+      Chesed, dans l'ordre : Malkhut=A'el, Yesod=Rachum, Hod=Chanun,
+      Netzach=Arekh, Tiferet=Apayim, Gevurah=Ve-Rav Chesed,
+      **Chesed=Ve-Emet (T7)**).
+      Vital note la tension : le 7ème "monte" vers Chesed avant que le
+      8ème (Notzer Chesed) monte dans BINAH — inversion ordre-topographie
+      vs ordre-Sephirotique qui révèle l'architecture cachée.
+      CORRESPONDANCE avec Zohar : T7 chez Zohar = "2 pommes" (centre
+      anatomique, inclut les 6 précédents). Le centre anatomique (Zohar)
+      et le sommet de Chokhma (Vital) sont cohérents :
+      T7 = pivot structural.
+    type: derivation_lurianique_sephirot
+    epistemic_level: E2
+    concepts:
+      - {id: tikkun_07_dikna_aa, role: septieme_tikkun_dikna_aa}
+      - {id: ve_emet, role: nom_vital_tikkun_7}
+      - {id: chesed_de_chokhma, role: sephira_associee_t7_vital}
+      - {id: pivot_structural, role: t7_centre_chez_zohar_sommet_chez_vital}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Mapping Vital — Ve-Emet = Chesed de Chokhma ; cohérent avec centre anatomique Zohar"
+    see_also:
+      - {id: "Z-IR-T07-001", role: "source_zohar_topographie"}
+      - {id: "Z-IR-T07-002", role: "source_zohar_inclusion_6"}
+      - {id: "EC-H3S2-T08-003", role: "paire_structure_sephirot_t8_binah"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.17"]
+    adversarial_notes:
+      - "P1 : Zohar ne nomme pas T7 'Ve-Emet' — attribution Vital"
+      - "A5 : T7 pivot — Chesed de Chokhma (Vital) + centre anatomique (Zohar) = cohérence cosmique"
+      - "L'ambiguïté scripturaire T7 est notée (Ginsburgh Emet ; autres divergent)"
+    unity_constraint: |
+      T7 = PIVOT structural ; ne pas isoler de T6 et T8.
+      Il EST l'articulation entre les 6 premiers (Chokhma de Chokhma descendant) et les 6 suivants.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: medium  # Vital tranche "Ve-Emet=Chesed" mais autres autorités divergent
+    flux_direction: bidirectional
+    divergence_note:
+      vital_vs_zohar: |
+        Zohar : T7 = centre anatomique (2 pommes, inclut les 6).
+        Vital : T7 = Ve-Emet = Chesed de Chokhma (sommet des 8 de Chokhma).
+        Les deux lectures se rejoignent structurellement (pivot).
+      decoupages_concurrents: |
+        Ginsburgh : T7 = Emet. Vital (Arizal) : T7 = Ve-Emet (avec conjonction).
+        Autres lectures possibles selon Rabbenu Tam / Abudraham.

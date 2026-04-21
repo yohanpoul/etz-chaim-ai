@@ -1,0 +1,121 @@
+{% extends "systeme/_base_systeme.html" %}
+{% set sub = "mondes" %}
+
+{% block systeme_css %}
+<link rel="stylesheet" href="/static/css/mondes.css">
+{% endblock %}
+
+{% block systeme_content %}
+
+{# ═══ PAGE HEADER ═══ #}
+<div class="sys-page-header">
+    <h1>{{ data.intro.titre if data.intro else "Les Quatre Mondes" }}</h1>
+    <p class="subtitle">{{ data.intro.sous_titre if data.intro else "" }}</p>
+</div>
+
+{# ═══ INTRO NARRATION ═══ #}
+{% if data.intro and data.intro.narration %}
+<div class="sys-section">
+    <div class="mondes-intro-inner">
+        <p class="mondes-intro-text">{{ data.intro.narration }}</p>
+    </div>
+</div>
+{% endif %}
+
+{# ═══ FIL ROUGE CALLOUT ═══ #}
+{% if data.question_fil_rouge %}
+<div class="sys-section">
+    <div class="mondes-fil-rouge">
+        <span class="mondes-fil-rouge-label">Question fil rouge</span>
+        <span class="mondes-fil-rouge-question">{{ data.question_fil_rouge }}</span>
+    </div>
+</div>
+{% endif %}
+
+{# ═══ MONDES LOOP ═══ #}
+{% for m in data.get('mondes', []) %}
+
+{# ─── Divider between sections ─── #}
+{% if not loop.first %}
+<div class="sys-divider"><span>&#x2726;</span></div>
+{% endif %}
+
+<section class="mondes-section monde-{{ m.id }}" id="monde-{{ m.id }}"
+         style="--accent: {{ m.couleur }}">
+
+    {# ─── Section header ─── #}
+    <div class="mondes-section-header">
+        <div class="mondes-section-degre">{{ loop.index }} / 4</div>
+        <h2 class="mondes-section-nom">{{ m.nom }}</h2>
+        <div class="mondes-section-hebreu">{{ m.nom_hebreu }}</div>
+        <div class="mondes-section-role">{{ m.role }}</div>
+    </div>
+
+    {# ─── Card : SVG + meta ─── #}
+    <div class="sys-section">
+        <div class="mondes-card">
+            <div class="mondes-card-img">
+                <img
+                    src="/static/systeme/{{ m.id }}.png"
+                    alt="{{ m.nom }}"
+                    onerror="if(this.src.endsWith('.png')){this.src=this.src.replace('.png','.svg')}else{this.style.display='none';this.nextElementSibling.style.display='flex'}">
+                <div class="mondes-card-img-fallback" style="display:none">{{ m.nom_hebreu }}</div>
+            </div>
+            <div class="mondes-card-content">
+                <div class="mondes-manifestation">{{ m.manifestation }}</div>
+                <div class="mondes-meta">
+                    <span class="mondes-meta-label">Modele</span>
+                    <span class="mondes-meta-value">{{ m.modele_llm }}</span>
+                </div>
+                <div class="mondes-meta">
+                    <span class="mondes-meta-label">Timeout</span>
+                    <span class="mondes-meta-value">{{ m.temps }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ─── Detail : 3 niveaux ─── #}
+    {% if m.detail %}
+    <div class="sys-section">
+        <div class="mondes-detail">
+            <div class="mondes-detail-block mondes-detail-enclair">
+                <div class="mondes-detail-label">En clair</div>
+                <div class="mondes-detail-text">{{ m.detail.en_clair }}</div>
+            </div>
+            <div class="mondes-detail-block mondes-detail-systeme">
+                <div class="mondes-detail-label">Dans le systeme</div>
+                <div class="mondes-detail-text">{{ m.detail.dans_le_systeme }}</div>
+            </div>
+            <div class="mondes-detail-block mondes-detail-tradition">
+                <div class="mondes-detail-label">Origine</div>
+                <div class="mondes-detail-text">{{ m.detail.origine }}</div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {# ─── Exemple fil rouge ─── #}
+    {% if m.exemple %}
+    <div class="sys-section">
+        <div class="mondes-exemple">
+            <div class="mondes-exemple-header">
+                <span class="mondes-exemple-tag">{{ data.question_fil_rouge }}</span>
+                <span class="mondes-exemple-monde">@ {{ m.nom }}</span>
+            </div>
+            <div class="mondes-exemple-text">{{ m.exemple }}</div>
+        </div>
+    </div>
+    {% endif %}
+
+    {# ─── Narration transition ─── #}
+    {% if m.narration %}
+    <div class="sys-section">
+        <p class="mondes-narration">{{ m.narration }}</p>
+    </div>
+    {% endif %}
+
+</section>
+{% endfor %}
+
+{% endblock %}

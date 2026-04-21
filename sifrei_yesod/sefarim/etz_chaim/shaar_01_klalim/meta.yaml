@@ -1,0 +1,31 @@
+sefer_id: "etz_chaim"
+shaar_number: 1
+shaar_name_he: "שער הכללים"
+shaar_name_fr: "La Porte des Principes Généraux"
+nombre_perakim: 13
+sujet_principal: |
+  Vue d'ensemble de la structure des Olamot, Sefirot et Partzufim.
+  Établit les fondations conceptuelles sur lesquelles reposent tous les
+  Sha'arim suivants. Traite de la Nekudah Rishonah, du déploiement
+  des 10 Sefirot, de la dualité Ohr Pnimi/Makif, et du principe
+  d'extraction du Muvhar.
+concepts_cles:
+  - ratzon_elyon
+  - nekudah_rishonah
+  - akudim
+  - ohr_pnimi
+  - ohr_makif
+  - muvhar
+  - hitpashtut
+  - klilut
+connexions_systeme:
+  modules:
+    - "core/sefirot.py"
+    - "core/ohr_system.py"
+    - "tzimtzum/regulator.py"
+    - "partzufim/"
+  domaines:
+    - "sefirot"
+    - "ohr"
+    - "partzufim"
+    - "olamot"

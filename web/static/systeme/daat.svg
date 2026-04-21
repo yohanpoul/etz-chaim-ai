@@ -1,0 +1,77 @@
+<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- Amber rim light -->
+  <linearGradient id="rim-r" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="70%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#ffb000" stop-opacity="0.25"/>
+  </linearGradient>
+  <!-- Metallic gold -->
+  <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffd700"/>
+    <stop offset="50%" stop-color="#ffb000"/>
+    <stop offset="100%" stop-color="#cc8800"/>
+  </linearGradient>
+  <!-- Metallic silver -->
+  <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ccc"/>
+    <stop offset="50%" stop-color="#aaa"/>
+    <stop offset="100%" stop-color="#888"/>
+  </linearGradient>
+  <!-- Filters -->
+  <filter id="glow-amb" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+  </filter>
+  <filter id="glow-sm" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+  </filter>
+  <filter id="glow-md" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+  </filter>
+  <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5"/>
+  </filter>
+</defs>
+
+<defs>
+  <radialGradient id="bg-g" cx="50%" cy="70%">
+    <stop offset="0%" stop-color="#121212"/>
+    <stop offset="100%" stop-color="#0a0a0a"/>
+  </radialGradient>
+</defs>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="url(#bg-g)"/>
+<rect x="0.0" y="100.0" width="200.0" height="150.0" fill="#050505"/>
+<ellipse cx="70.0" cy="140.0" rx="60.0" ry="12.0" fill="#555555" opacity="0.040" filter="url(#glow-amb)"/>
+<ellipse cx="100.0" cy="155.0" rx="55.0" ry="11.0" fill="#555555" opacity="0.035" filter="url(#glow-amb)"/>
+<ellipse cx="130.0" cy="170.0" rx="50.0" ry="10.0" fill="#555555" opacity="0.030" filter="url(#glow-amb)"/>
+<ellipse cx="70.0" cy="185.0" rx="45.0" ry="9.0" fill="#555555" opacity="0.025" filter="url(#glow-amb)"/>
+<ellipse cx="100.0" cy="200.0" rx="40.0" ry="8.0" fill="#555555" opacity="0.020" filter="url(#glow-amb)"/>
+<ellipse cx="130.0" cy="215.0" rx="35.0" ry="7.0" fill="#555555" opacity="0.015" filter="url(#glow-amb)"/>
+<path d="M0,80 Q15,85 25,90 L25,250 L0,250 Z" fill="#222222" stroke="#555555" stroke-width="0.5" opacity="0.8"/>
+<path d="M0,70 Q10,75 20,82 L25,90 L0,80 Z" fill="#2a2a2a" opacity="0.6"/>
+<path d="M200,80 Q185,85 175,90 L175,250 L200,250 Z" fill="#222222" stroke="#555555" stroke-width="0.5" opacity="0.8"/>
+<path d="M200,70 Q190,75 180,82 L175,90 L200,80 Z" fill="#2a2a2a" opacity="0.6"/>
+<path d="M25,105 L175,105 L175,112 L25,112 Z" fill="#2a2a2a" stroke="#555555" stroke-width="0.5" opacity="0.6"/>
+<rect x="28.0" y="105.0" width="10.0" height="7.0" fill="#333333" stroke="#444444" stroke-width="0.3" opacity="0.5"/>
+<rect x="40.5" y="105.0" width="10.0" height="7.0" fill="#333333" stroke="#444444" stroke-width="0.3" opacity="0.5"/>
+<rect x="53.0" y="105.0" width="10.0" height="7.0" fill="#333333" stroke="#444444" stroke-width="0.3" opacity="0.5"/>
+<rect x="65.5" y="105.0" width="10.0" height="7.0" fill="#333333" stroke="#444444" stroke-width="0.3" opacity="0.5"/>
+<rect x="78.0" y="105.0" width="10.0" height="7.0" fill="#333333" stroke="#444444" stroke-width="0.3" opacity="0.5"/>
+<rect x="90.5" y="105.0" width="10.0" height="7.0" fill="#333333" stroke="#444444" stroke-width="0.3" opacity="0.5"/>
+<rect x="103.0" y="105.0" width="10.0" height="7.0" fill="#333333" stroke="#444444" stroke-width="0.3" opacity="0.5"/>
+<rect x="115.5" y="105.0" width="10.0" height="7.0" fill="#333333" stroke="#444444" stroke-width="0.3" opacity="0.5"/>
+<rect x="128.0" y="105.0" width="10.0" height="7.0" fill="#333333" stroke="#444444" stroke-width="0.3" opacity="0.5"/>
+<rect x="140.5" y="105.0" width="10.0" height="7.0" fill="#333333" stroke="#444444" stroke-width="0.3" opacity="0.5"/>
+<rect x="153.0" y="105.0" width="10.0" height="7.0" fill="#333333" stroke="#444444" stroke-width="0.3" opacity="0.5"/>
+<rect x="165.5" y="105.0" width="10.0" height="7.0" fill="#333333" stroke="#444444" stroke-width="0.3" opacity="0.5"/>
+<path d="M25,95 Q60,92 100,93 Q140,92 175,95" fill="none" stroke="#555555" stroke-width="0.8" opacity="0.3"/>
+<path d="M25,100 Q60,97 100,98 Q140,97 175,100" fill="none" stroke="#555555" stroke-width="0.6" opacity="0.25"/>
+<line x1="35.0" y1="95.0" x2="35.0" y2="112.0" stroke-linecap="round" stroke="#555555" stroke-width="1" opacity="0.3"/>
+<line x1="75.0" y1="95.0" x2="75.0" y2="112.0" stroke-linecap="round" stroke="#555555" stroke-width="1" opacity="0.3"/>
+<line x1="125.0" y1="95.0" x2="125.0" y2="112.0" stroke-linecap="round" stroke="#555555" stroke-width="1" opacity="0.3"/>
+<line x1="165.0" y1="95.0" x2="165.0" y2="112.0" stroke-linecap="round" stroke="#555555" stroke-width="1" opacity="0.3"/>
+<ellipse cx="100.0" cy="108.0" rx="80.0" ry="10.0" fill="#555555" opacity="0.03" filter="url(#glow-amb)"/>
+<ellipse cx="100.0" cy="60.0" rx="70.0" ry="20.0" fill="#333333" opacity="0.03" filter="url(#glow-amb)"/>
+<circle cx="100.0" cy="230.0" r="20.0" fill="#333333" opacity="0.02" filter="url(#glow-amb)"/>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="none" stroke="#555555" stroke-width="1.5" opacity="0.12"/>
+</svg>

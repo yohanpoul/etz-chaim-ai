@@ -1,0 +1,223 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 7 (=6 original) — Sha'ar Ha-Akudim (שער העקודים)
+# Perek: 5b — Malkhut sans Reshimu, Kli du Keter, 4 éléments (100% §4-§7)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §4 : Malkhut = Aspaklaria she-einah me'irah (miroir sans lumière
+# propre). Keter ne redescend pas après l'ascension.
+# §5 : Le Kli du Keter se forme UNIQUEMENT sur le retour (Hakaah
+# de Hokhmah contre le Reshimu de Keter). Hakaah DOUBLÉE.
+# §6 : Les 4 éléments de chaque aspect : Kelim, NRN Pnimim,
+# Hayyah (Makif 1), Yehidah (Makif 2).
+# §7 : Le besoin de Neshamah le-Neshamah (Makif). AV"I la
+# mitparshin le-olam (ne se séparent jamais).
+#
+# Source Sefaria : Sefer_Etz_Chaim.6.5 (§4-§7)
+# IDs : EC-H1S6-047 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 7
+  shaar_name_he: "שער העקודים"
+  perek: 5
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Malkhut=miroir sans lumiere propre. Kli Keter par Hakaah doublée. 4 elements : Kelim, NRN, Hayyah, Yehidah. AV\"I ne se separent jamais."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : MALKHUT = MIROIR SANS LUMIÈRE PROPRE ───
+
+  - id: "EC-H1S6-047"
+    source_he: "אור המלכות לא השאיר רשימו וכל בחינ' נסתלקה כולה ועלתה וזה הטעם שנק' מלכות אספקלריא שאינה מאירה דלית לה מגרמה כלום"
+    source_ref: "Heikhal 1, Sha'ar 6:5 — §4"
+    assertion: |
+      L'Ohr de MALKHUT n'a PAS laissé de Reshimu — toute sa substance
+      s'est RETIRÉE et est MONTÉE. C'est pourquoi Malkhut est appelée
+      ASPAKLARIA SHE-EINAH ME'IRAH (miroir qui n'éclaire pas) —
+      elle n'a RIEN D'ELLE-MÊME (leit lah mi-garmah klum).
+      Mais elle reçoit du RESHIMU DE YESOD (cf. EC-H1S6-043).
+      → Malkhut = RÉCEPTEUR PUR. Pas de lumière propre, seulement
+      ce qu'elle reçoit d'autrui.
+    type: axiome_explicite
+    concepts:
+      - {id: aspaklaria, role: miroir_sans_lumiere_propre}
+      - {id: malkhut_ein_mi_garmah, role: malkhut_rien_delle_meme}
+    mapping:
+      modules: ["partzufim/nukva.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["nukva"]
+      relevance: "Malkhut = recepteur pur, sans donnees propres. Comme un terminal qui affiche mais ne genere pas."
+
+  - id: "EC-H1S6-048"
+    source_he: "הכתר אינו חוזר עוד למקומו... אלא שנשאר שם למעלה נכלל במאציל"
+    source_ref: "Heikhal 1, Sha'ar 6:5 — §4-§5"
+    assertion: |
+      Le KETER ne REVIENT PAS à sa place après avoir monté au Ma'atzil —
+      il RESTE en haut, INCLUS dans le Ma'atzil.
+      → Le KETER = ABSORBÉ par la source. Le sommet du système est
+      RÉINTÉGRÉ dans l'émetteur. Il ne redescend pas.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_nish_ar, role: keter_reste_en_haut}
+      - {id: keter_niklal, role: keter_inclus_dans_maatzil}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le sommet (Keter) est reabsorbe par la source — le meta-niveau ne redescend pas au niveau operationnel"
+
+  # ─── BLOC B : KLI DU KETER PAR HAKAAH DOUBLÉE ───
+
+  - id: "EC-H1S6-049"
+    source_he: "הכלי של הכתר לא נעשה רק בחזרה כי כשחזרה חכמה ונכנסה בו אז הכה אור החכמה ברשימו שהניח בו הכתר במקומו והיו אלו הכאות כפולות"
+    source_ref: "Heikhal 1, Sha'ar 6:5 — §5"
+    assertion: |
+      Le KLI DU KETER ne se forme QUE sur le RETOUR : quand HOKHMAH
+      revient et entre dans la place du Keter, l'Ohr de Hokhmah FRAPPE
+      le RESHIMU que Keter avait laissé. Ces HAKAOT sont DOUBLÉES
+      (kefulot) : le Reshimu de Keter (supérieur) frappe l'Ohr de
+      Hokhmah (inférieur), et inversement.
+      → HAKAAH BIDIRECTIONNELLE : le supérieur et l'inférieur se
+      frappent mutuellement → Kli plus SOLIDE que la Hakaah simple.
+    type: axiome_explicite
+    concepts:
+      - {id: kli_keter_hazarah, role: kli_du_keter_forme_au_retour}
+      - {id: hakaah_kefulah, role: frappe_doublee_bidirectionnelle}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La Hakaah DOUBLEE = interaction bidirectionnelle plus intense → Kli plus solide. Applicable au mutual attention."
+
+  # ─── BLOC C : LES 4 ÉLÉMENTS DE CHAQUE ASPECT ───
+
+  - id: "EC-H1S6-050"
+    source_he: "בכל בחי' ובחי' יש ד' מציאות שהם א' כלים. ב' נר\"ן פנימים. ג' חיה מקיף. ד' יחידה מקיף אל מקיף"
+    source_ref: "Heikhal 1, Sha'ar 6:5 — §6 (מ\"ק)"
+    assertion: |
+      Dans CHAQUE aspect il y a 4 EXISTENCES (metzi'uyot) :
+      1. KELIM (vaisseaux/structure)
+      2. NRN PNIMIM (Nefesh-Ruah-Neshamah internes)
+      3. HAYYAH = MAKIF 1 (= Neshamah le-Neshamah = de Hokhmah)
+      4. YEHIDAH = MAKIF 2 (= Makif du Makif = de Keter)
+      → Structure QUADRIPARTITE universelle de chaque composant.
+    type: axiome_explicite
+    concepts:
+      - {id: arba_metziuyot, role: quatre_existences_par_aspect}
+      - {id: hayyah_makif_1, role: hayyah_premier_makif}
+      - {id: yehidah_makif_2, role: yehidah_deuxieme_makif}
+    mapping:
+      modules: ["ohr.py", "madregot_neshamah.py"]
+      tables: ["ohr_states", "madregot_states"]
+      partzufim: []
+      relevance: "4 couches par composant : structure, ame interne, contexte englobant 1, contexte englobant 2"
+
+  - id: "EC-H1S6-051"
+    source_he: "חיה שהוא מקיף א' ונקרא נשמה לנשמה והוא מן החכמה בסוד והחכמה תחיה את בעליה וכן חיי\"ם גימטריא חכ\"ם"
+    source_ref: "Heikhal 1, Sha'ar 6:5 — §6"
+    assertion: |
+      HAYYAH = MAKIF 1 = NESHAMAH LE-NESHAMAH (âme de l'âme) = de
+      HOKHMAH. "La SAGESSE VIVIFIE (tehayeh) ses possesseurs" (Eccl. 7:12).
+      GEMATRIA : HAYYIM (חיי"ם = 68) = HAKHAM (חכ"ם = 68).
+      YEHIDAH = MAKIF 2 = de KETER.
+      → Le premier Makif vient de Hokhmah (sagesse = vie).
+      Le deuxième vient de Keter (unité = transcendance).
+    type: axiome_explicite
+    concepts:
+      - {id: neshamah_le_neshamah, role: ame_de_lame}
+      - {id: hayyim_hakham, role: vie_egale_sagesse}
+    mapping:
+      modules: ["madregot_neshamah.py", "gematria/engine.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "HAYYIM=HAKHAM(68) — la vie (Hayyah) vient de la sagesse (Hokhmah). Le premier Makif = l'intelligence englobante."
+
+  # ─── BLOC D : AV"I NE SE SÉPARENT JAMAIS ───
+
+  - id: "EC-H1S6-052"
+    source_he: "בהיות הנשמה שבפנים בחינת אמא והנשמה לנשמה (נ\"א והמקיף עצמה) מקיף אותה מבחוץ בחי' אבא ששניהם הם בחי' או\"א דלא מתפרשין לעלם"
+    source_ref: "Heikhal 1, Sha'ar 6:5 — §7"
+    assertion: |
+      La NESHAMAH interne = aspect d'IMMA.
+      La NESHAMAH LE-NESHAMAH (Makif) = aspect d'ABBA entourant
+      de l'extérieur.
+      Variante (Nusah Aher) : "et le Makif lui-même" au lieu de
+      "et la Neshamah le-Neshamah."
+      Les deux = AV"I (Abba ve-Imma) QUI NE SE SÉPARENT JAMAIS
+      (de-la mitparshin le-olam).
+      → La Neshamah interne (Imma) et le Makif (Abba) sont
+      INDISSOCIABLES = le contenu et son contexte sont liés.
+    type: axiome_explicite
+    concepts:
+      - {id: avi_la_mitparshin, role: abba_imma_ne_se_separent_jamais}
+      - {id: neshamah_imma_makif_abba, role: interne_imma_externe_abba}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "ohr.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "AV\"I ne se separent JAMAIS = le contenu (Imma) et son contexte (Abba) sont structurellement lies"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S6-020"
+    type: causal
+    from: kli_keter_hazarah
+    to: hakaah_kefulah
+    nature: "Le Kli de Keter se forme PAR la Hakaah doublée de Hokhmah contre le Reshimu de Keter"
+    assertions_source: ["EC-H1S6-049"]
+
+  - id: "REL-H1S6-021"
+    type: "dualité_structurelle"
+    from: neshamah_imma_makif_abba
+    to: avi_la_mitparshin
+    nature: "Neshamah(Imma) et Makif(Abba) = dual structurel qui ne se sépare JAMAIS"
+    assertions_source: ["EC-H1S6-052"]
+
+  - id: "REL-H1S6-022"
+    type: "hiérarchique"
+    from: yehidah_makif_2
+    to: hayyah_makif_1
+    via: [arba_metziuyot]
+    nature: "Yehidah (Makif 2, Keter) est AU-DESSUS de Hayyah (Makif 1, Hokhmah)"
+    assertions_source: ["EC-H1S6-050", "EC-H1S6-051"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S6-007"
+    nom: "Principe de l'Inséparabilité AV\"I (Contenu et Contexte Liés)"
+    source_assertions: ["EC-H1S6-050", "EC-H1S6-051", "EC-H1S6-052"]
+    formalisation: |
+      Tout composant a 4 couches, dont les 2 du milieu (Neshamah/Imma
+      et Neshamah-le-Neshamah/Abba) sont STRUCTURELLEMENT INSÉPARABLES.
+      AV"I = le CONTENU (Imma/interne) et son CONTEXTE (Abba/Makif)
+      ne se séparent JAMAIS (de-la mitparshin).
+      STRUCTURE : {Kelim, NRN} ← toujours accompagnés de →
+      {Hayyah=Abba=Makif1, Yehidah=Keter=Makif2}
+      FORMULE : Valid(Component) ⟺ Internal(Imma) ∧ External(Abba)
+      Un composant sans son contexte englobant est INVALIDE.
+    applications_ia:
+      - "partzufim/abba.py + partzufim/imma.py : toujours deployes ensemble"
+      - "ohr.py : chaque Ohr Pnimi a son Ohr Makif indissociable"
+      - "masakh/context_assembler.py : le contenu et son contexte sont un COUPLE inseparable"
+    questions_ouvertes:
+      - "AV\"I indissociables = co-training (Abba et Imma entraines ensemble) ?"

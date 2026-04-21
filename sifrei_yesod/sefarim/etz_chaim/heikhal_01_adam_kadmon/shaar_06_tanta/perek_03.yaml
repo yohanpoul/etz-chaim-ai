@@ -1,0 +1,470 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 6 (=5 original) — Sha'ar TANTA (שער טנת"א)
+# Perek: 3 — Les 22 Otiot, le Peh, et les 2 Zivvugim (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Les 22 lettres (OTIOT) et leur relation au PEH (bouche) d'A"K.
+# Les 5 MOTZAOT HA-PEH (sources de la bouche) et les 5 lettres
+# MaNTzPaKh. Les Kelim des Partzufim faits de lettres.
+# Les 2 types de Zivvug : pour les mondes (Otiot) et pour
+# les Neshamot (Nekudot).
+#
+# Source Sefaria : Sefer_Etz_Chaim.5.3 (§1-§2)
+# IDs : EC-H1S5-072 → (suite de perek_02 finissant à -071)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 6
+  shaar_name_he: "שער טנת\"א"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Les 22 Otiot et le Peh. MaNTzPaKh = 5 Gevurot. 5 Motzaot ha-Peh. Pitvei Hotam. Kelim de lettres. 2 Zivvugim (mondes vs neshamot)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LES 22 OTIOT ET LE PEH ───
+
+  - id: "EC-H1S5-072"
+    source_he: "כל העולמות נבראו ע\"י כ\"ב אתוון שבמלכות אשר מהם (נוצר הולד וגם יש בהם ל\"ג) נוצרה"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1 ouverture"
+    assertion: |
+      TOUS les mondes ont été créés par les 22 LETTRES (OTIOT)
+      qui sont dans MALKHUT, et c'est par elles que [Malkhut] est FORMÉE.
+      Variante (ל"ג) : certains suppriment "le fœtus a été formé
+      et aussi elles contiennent" (nutzar ha-vlad ve-gam yesh bahem).
+      → Les 22 Otiot = les ÉLÉMENTS CONSTITUTIFS de toute réalité.
+      Cf. Sefer Yetzirah : "22 lettres de fondation" (EC-K1-001).
+    type: axiome_explicite
+    concepts:
+      - {id: kaf_bet_otiot, role: vingt_deux_lettres}
+      - {id: malkhut_otiot, role: malkhut_source_des_lettres}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["nukva"]
+      relevance: "Les 22 lettres = les elements atomiques de toute structure — applicable au tokenization"
+
+  - id: "EC-H1S5-073"
+    source_he: "וגם יש בה ה' אותיות מנצפ\"ך שהם ה\"ג היוצאין מז\"א אליה ועי\"ז נגמר פרצוף רחל"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1"
+    assertion: |
+      En plus des 22, il y a 5 lettres FINALES (MaNTzPaKh —
+      מם נון צדי פא כף) = 5 GEVUROT (rigueurs) qui sortent de Z"A
+      vers [Malkhut]. Par elles le PARTZUF RACHEL est COMPLÉTÉ.
+      → Les lettres finales = les 5 CONTRACTIONS qui donnent sa
+      FORME DÉFINITIVE au Partzuf féminin.
+    type: axiome_explicite
+    concepts:
+      - {id: mantzpakh, role: cinq_lettres_finales}
+      - {id: hamesh_gevurot, role: cinq_rigueurs}
+      - {id: partzuf_rachel, role: partzuf_feminin_complete}
+    mapping:
+      modules: ["partzufim/nukva.py", "gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Les 5 Gevurot completent le Partzuf — applicable aux 5 etapes de finalisation d'un module"
+
+  - id: "EC-H1S5-074"
+    source_he: "וכנגדם יש ה' מוצאות הפה והם גרון וחיך וכו'"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1"
+    assertion: |
+      En correspondance avec les 5 MaNTzPaKh, il y a les 5 MOTZAOT
+      HA-PEH (sources/origines de la bouche) : GARON (gorge),
+      HEIKH (palais), LASHON (langue), SHINAYIM (dents), SFATAYIM (lèvres).
+      → Cf. Sefer Yetzirah 2:3 — les 5 groupes phonétiques.
+      Les 5 Gevurot STRUCTURENT le PEH en 5 canaux de sortie.
+    type: axiome_explicite
+    concepts:
+      - {id: hamesh_motzaot, role: cinq_sources_du_peh}
+      - {id: garon_heikh, role: gorge_palais_etc}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les 5 Motzaot = 5 canaux de sortie distincts — applicable aux types de sorties d'un systeme"
+
+  - id: "EC-H1S5-075"
+    source_he: "ה' אותיות מנצפ\"ך שהם ה\"ג כנודע ונקרא אותיות סתומות ועגולות כן הפה עגולה כמותם"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1"
+    assertion: |
+      Les MaNTzPaKh = lettres STOMOT (fermées/scellées) et AGULOT
+      (rondes/circulaires). Le PEH aussi est ROND comme elles.
+      → Le PEH partage la FORME de ses éléments constitutifs.
+      Les lettres finales sont FERMÉES (pas de sortie) = le Din
+      qui CONTIENT et DÉLIMITE.
+    type: axiome_explicite
+    concepts:
+      - {id: otiot_stumot, role: lettres_fermees_rondes}
+      - {id: peh_agulah, role: bouche_ronde}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "La forme du contenant reflète la forme de son contenu — isomorphie structure/element"
+
+  # ─── BLOC B : PITVEI HOTAM — LES OUVERTURES DU SCEAU ───
+
+  - id: "EC-H1S5-076"
+    source_he: "ה' מוצאות הפה נקרא פתוחי חותם דאמא עלאה... כי ה' נקודות יש (נ\"א שיש) פתוחי חתם הם נגד ה' מוצאות הפה שהם פתוחים ונפתחים (נ\"א נפתחים ופתוחים) ע\"י אימא עלאה הנקרא חותם"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1"
+    assertion: |
+      Les 5 Motzaot ha-Peh sont appelées PITVEI HOTAM (ouvertures du sceau)
+      de IMMA ILA'AH (Tikkunei Zohar 4b). 5 NEKUDOT = 5 PITVEI HOTAM
+      correspondant aux 5 Motzaot — OUVERTS (petuhim) et S'OUVRANT
+      (niftahim) par IMMA ILA'AH appelée HOTAM (sceau).
+      Variante (Nusah Aher) : "qu'il y a" (she-yesh) au lieu de "il y a" (yesh).
+      Variante (Nusah Aher) : "s'ouvrant et ouverts" (ordre inversé).
+      → IMMA = le SCEAU qui IMPRIME les 5 ouvertures dans le PEH.
+    type: axiome_explicite
+    concepts:
+      - {id: pitvei_hotam, role: ouvertures_du_sceau}
+      - {id: imma_hotam, role: imma_comme_sceau}
+    mapping:
+      modules: ["partzufim/imma.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["imma"]
+      relevance: "Imma (Binah) structure le Peh — elle cree les canaux de sortie"
+
+  - id: "EC-H1S5-077"
+    source_he: "שהוא יסוד שבה הנקרא חותם כנודע כי שם נחתמים ונצטיירין כל הציורין ומכח ה\"ג שבחותם דילה נפתחו אלו ה' מוצאות הפה הנקרא פתוחי חותם"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1"
+    assertion: |
+      Le HOTAM (sceau) = le YESOD DE IMMA, car c'est là que toutes
+      les FORMES (tziyurim) sont SCELLÉES (nehtamim) et FIGURÉES.
+      De la force des 5 GEVUROT dans son Hotam, les 5 Motzaot
+      ha-Peh s'OUVRENT = PITVEI HOTAM.
+      → Le Yesod de Binah = le moule qui IMPRIME la forme dans
+      la matière (le Peh). Les 5 Gevurot = les 5 canaux du moule.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_imma, role: fondement_dimma_sceau}
+      - {id: tziyurim, role: formes_figurees}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Le Yesod d'Imma = le template qui genere les formes — applicable au systeme de templates/schemas"
+
+  - id: "EC-H1S5-078"
+    source_he: "אז יצאו מה' מוצאות כל הכ\"ב אותיות בסוד אחע\"ה כו' הנחלקים לה' חלקים"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1"
+    assertion: |
+      Alors des 5 MOTZAOT sortent les 22 LETTRES, en secret de
+      AHE'EH (אחע"ה — Aleph Het Ayin Heh = gutturales) etc.,
+      divisées en 5 GROUPES phonétiques.
+      → Les 5 Motzaot produisent les 22 Otiot groupées en 5 classes :
+      gutturales, palatales, linguales, dentales, labiales.
+    type: axiome_explicite
+    concepts:
+      - {id: hamesh_hugot, role: cinq_groupes_phonetiques}
+      - {id: aheeh, role: gutturales_premiere_classe}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les 22 elements se repartissent en 5 classes — classification quintuple de tout ensemble"
+
+  - id: "EC-H1S5-079"
+    source_he: "יען הם נמשכין מגבורה שהם בחינת מל' הנקרא נפש ולכן האותיות נקרא נפש כנודע"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1"
+    assertion: |
+      Puisque les Otiot proviennent de GEVURAH = Malkhut = NEFESH,
+      les LETTRES sont appelées NEFESH.
+      → Les Otiot = le niveau le plus BAS de l'âme (Nefesh = corps
+      vital). Cf. EC-H1S5-003 : Otiot = BEN = le plus manifeste.
+    type: axiome_explicite
+    concepts:
+      - {id: otiot_nefesh, role: lettres_niveau_nefesh}
+    mapping:
+      modules: ["madregot_neshamah.py", "gematria/engine.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "Les Otiot (lettres) = Nefesh (vitalite) — le niveau le plus concret et le plus manifeste"
+
+  # ─── BLOC C : BINAH, DA'AT ET LE PEH ───
+
+  - id: "EC-H1S5-080"
+    source_he: "כל המקיפין נמשכין מבינה כי היא נקראת פום ממלל רברבן"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1"
+    assertion: |
+      Tous les MAKIFIM (lumières enveloppantes) proviennent de BINAH,
+      car elle est appelée "PUM MEMALLEL RAVREVAN" (bouche qui parle
+      de grandes choses — Daniel 7:8).
+      → BINAH = la source de tout OHR MAKIF. Le PEH (bouche) est
+      l'instrument de BINAH (cf. EC-H1S5-076 : Imma = Hotam).
+    type: axiome_explicite
+    concepts:
+      - {id: binah_makifin, role: binah_source_des_makifim}
+      - {id: pum_memallel, role: bouche_parlant_grandement}
+    mapping:
+      modules: ["ohr.py", "partzufim/imma.py"]
+      tables: ["ohr_states"]
+      partzufim: ["imma"]
+      relevance: "Binah = source de tous les Makifim — le contexte englobant vient de la comprehension (Binah)"
+
+  - id: "EC-H1S5-081"
+    source_he: "דעת גניז בפומא דמלכא כי ה' גבורו' של דעת נגנזו בפה בסוד ה' מוצאות הפה"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1 (citant Zohar Mishpatim 123)"
+    assertion: |
+      "DA'AT EST CACHÉ DANS LA BOUCHE DU ROI" (Zohar, Mishpatim 123) :
+      les 5 GEVUROT DE DA'AT se sont CACHÉES (nignezou) dans le PEH,
+      dans le secret des 5 Motzaot. Le PEH entier est FAIT d'elles.
+      → DA'AT (connaissance) est LATENTE dans le PEH — elle se
+      RÉVÈLE par la PAROLE et reste CACHÉE dans le SILENCE.
+    type: axiome_explicite
+    concepts:
+      - {id: daat_ganuz, role: daat_cache_dans_le_peh}
+      - {id: gevurot_daat, role: cinq_gevurot_de_daat}
+    mapping:
+      modules: ["ohr.py", "partzufim/zeir_anpin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Da'at (connaissance) est latente et ne se revele que par l'output (parole) — le silence contient aussi"
+
+  - id: "EC-H1S5-082"
+    source_he: "ברצונו מוציא גניזת האותיות הנ\"ל בסוד קול ודבור מהפה ולחוץ וכשרוצה נשארים גנוזות בפנים בסוד נאלמתי דומיה"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1"
+    assertion: |
+      Par sa VOLONTÉ (retzono), il fait sortir les lettres CACHÉES
+      en secret de KOL (voix) et DIBBUR (parole) du PEH vers l'extérieur.
+      Et quand il le veut, elles restent CACHÉES à l'intérieur en
+      secret de "Je me suis tu dans le SILENCE" (ne'elamti dumiyah, Ps. 39:3).
+      → Le PEH a 2 ÉTATS : PAROLE (émission) et SILENCE (rétention).
+      Le choix entre les deux est un acte de VOLONTÉ.
+    type: axiome_explicite
+    concepts:
+      - {id: kol_dibbur, role: voix_et_parole}
+      - {id: nelamti_dumiyah, role: silence_retentif}
+      - {id: ratzon, role: volonte_demission}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le systeme doit pouvoir CHOISIR entre output (parole) et retenue (silence) — pas de compulsion a repondre"
+
+  # ─── BLOC D : RÉSOLUTION DES CONTRADICTIONS ───
+
+  - id: "EC-H1S5-083"
+    source_he: "ב' המאמרים מחולקים בתיקונים אחד אומר שאותיות יצאו מבינה מחותם שלה בסוד פתוחי חותם והב' אומר שיצאו מפומא דז\"א וב' צדקו. כי היסוד דאמא הוא בפומא דז\"א ומשם יצאו האותיות"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1"
+    assertion: |
+      RÉSOLUTION DE CONTRADICTION : les Tikkunim disent tantôt que
+      les Otiot sortent de BINAH (de son Hotam = Pitvei Hotam),
+      tantôt qu'elles sortent du PEH DE Z"A.
+      LES DEUX ONT RAISON : car le YESOD D'IMMA est SITUÉ dans le
+      PEH DE Z"A — et c'est DE LÀ que sortent les Otiot.
+      → Le même processus vu de 2 perspectives (Imma / Z"A)
+      donne 2 descriptions apparemment contradictoires.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_imma_be_peh_za, role: yesod_dimma_dans_peh_de_za}
+      - {id: tiruts_stirah, role: resolution_de_contradiction}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "2 descriptions contradictoires d'un meme processus = 2 perspectives valides — pattern courant en kabbale"
+
+  # ─── BLOC E : KELIM DES PARTZUFIM FAITS D'OTIOT ───
+
+  - id: "EC-H1S5-084"
+    source_he: "מוחין ואימא הם בחי' כ\"ב אתוון ומהם נעשו כל הכלים דאו\"א וזו\"ן"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1"
+    assertion: |
+      Les MOHIN (cerveaux) et IMMA = les 22 LETTRES. C'est d'elles
+      que sont faits TOUS les KELIM d'AV"I (Abba ve-Imma) et de
+      ZU"N (Zeir Anpin et Nukvah).
+      → Les KELIM (structures réceptives) de TOUS les Partzufim sont
+      FAITS DE LETTRES — les Otiot sont la MATIÈRE des Kelim.
+      Cf. EC-H1S5-023 : au niveau de l'Ozen, pas de Kelim.
+      Ici (Peh), les Kelim EXISTENT grâce aux Otiot.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_otiot, role: kelim_faits_de_lettres}
+      - {id: mohin_imma_otiot, role: mohin_dimma_source_des_kelim}
+    mapping:
+      modules: ["ohr.py", "partzufim/imma.py"]
+      tables: ["ohr_states"]
+      partzufim: ["imma", "abba", "zeir_anpin", "nukva"]
+      relevance: "Les Kelim sont faits de LETTRES — la structure receptive est faite d'elements discrets"
+
+  - id: "EC-H1S5-085"
+    source_he: "או\"א להיותן יותר גדולים עד מאד מזו\"ן לכן נטלו ט\"ו אותיות... כי הם ב' אותיות י\"ה משם הוי\"ה גימטריא ט\"ו אך הזו\"ן נטלו ז' אותיות לבד כי הם ז' מלכים"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §1"
+    assertion: |
+      AV"I, étant bien plus GRANDS que ZU"N, ont pris 15 LETTRES
+      pour faire leurs Kelim — car ils sont YOD-HEH (י"ה) de YHVH
+      dont la gematria = 15.
+      ZU"N n'ont pris que 7 LETTRES — car ils sont les 7 ROIS
+      (shiv'ah melakhim, cf. Gen. 36 et la Shevirah).
+      → Gematria YH = 10+5 = 15 → AV"I. 22-15 = 7 → ZU"N.
+    type: axiome_explicite
+    concepts:
+      - {id: avi_tet_vav_otiot, role: abba_imma_15_lettres}
+      - {id: zun_zayin_otiot, role: za_nukva_7_lettres}
+      - {id: shivah_melakhim, role: sept_rois}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "La repartition 15+7=22 = les Partzufim superieurs consomment plus de ressources que les inferieurs"
+
+  # ─── BLOC F : LES 2 ZIVVUGIM (§2) ───
+
+  - id: "EC-H1S5-086"
+    source_he: "הזווג שבסוד האותיות (והוא וזה) הוא להחיות העולמות ובסוד הנקודות (והוא וזה) הוא לנשמות"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §2"
+    assertion: |
+      Le ZIVVUG dans le secret des OTIOT (lettres) = pour VIVIFIER
+      les MONDES (lehahayot ha-olamot).
+      Le ZIVVUG dans le secret des NEKUDOT (voyelles) = pour les
+      NESHAMOT (âmes).
+      → 2 TYPES DE ZIVVUG : un pour la MAINTENANCE du monde
+      (structural), un pour la CRÉATION des âmes (vital).
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_otiot, role: zivvug_pour_les_mondes}
+      - {id: zivvug_nekudot, role: zivvug_pour_les_ames}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "2 types de generation : maintenance (mondes) et creation (ames) — applicable aux 2 modes du systeme"
+
+  - id: "EC-H1S5-087"
+    source_he: "זווג הנקודות הם חכמה דאבא עם חכמה דאמא, והאותיות הוא בינה דאבא עם בינה דאמא (והנה ל\"ג)"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §2"
+    assertion: |
+      Le Zivvug des NEKUDOT = HOKHMAH d'Abba avec HOKHMAH d'Imma.
+      Le Zivvug des OTIOT = BINAH d'Abba avec BINAH d'Imma.
+      (Variante ל"ג : certains suppriment "et voici")
+      → Les Zivvugim sont SPÉCIFIQUES : chaque type engage une
+      SEFIRAH DIFFÉRENTE d'Abba et Imma. Nekudot = Hokhmah×Hokhmah.
+      Otiot = Binah×Binah.
+    type: axiome_explicite
+    concepts:
+      - {id: hokhmah_abba_imma, role: zivvug_hokhmah}
+      - {id: binah_abba_imma, role: zivvug_binah}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Differents types de Zivvug engagent differents niveaux — le mode de generation depend du niveau active"
+
+  - id: "EC-H1S5-088"
+    source_he: "ב' מיני זווגים הם, א' להחיות העולמות, וא' לנשמות, וגם (החיות ל\"ג) אותו זווג דחיות יועיל לחדש הנשמות ישנות שנאצלו בבריאת עולם"
+    source_ref: "Heikhal 1, Sha'ar 5:3 — §2"
+    assertion: |
+      Les 2 types de Zivvug : un pour VIVIFIER les mondes, un pour
+      les NESHAMOT. De plus, le Zivvug de VIVIFICATION aide aussi à
+      RENOUVELER les Neshamot ANCIENNES qui furent émanées lors de la
+      création du monde.
+      (Variante ל"ג : certains suppriment "ha-hayyot" — la vivification)
+      → Le Zivvug de maintenance N'EST PAS séparé du Zivvug créatif —
+      il CONTRIBUE aussi au renouvellement des âmes existantes.
+    type: axiome_explicite
+    concepts:
+      - {id: hiddush_neshamot, role: renouvellement_des_ames}
+      - {id: zivvug_dual, role: deux_types_interconnectes}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "Les 2 modes de generation ne sont pas exclusifs — la maintenance enrichit aussi la creation"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S5-027"
+    type: causal
+    from: hamesh_gevurot
+    to: hamesh_motzaot
+    nature: "Les 5 GEVUROT (MaNTzPaKh) OUVRENT les 5 MOTZAOT HA-PEH"
+    assertions_source: ["EC-H1S5-073", "EC-H1S5-074", "EC-H1S5-077"]
+
+  - id: "REL-H1S5-028"
+    type: flux
+    from: hamesh_motzaot
+    to: kaf_bet_otiot
+    nature: "Les 5 Motzaot PRODUISENT les 22 Otiot divisées en 5 groupes phonétiques"
+    assertions_source: ["EC-H1S5-078"]
+
+  - id: "REL-H1S5-029"
+    type: contenance
+    from: yesod_imma_be_peh_za
+    to: pitvei_hotam
+    nature: "Le Yesod d'Imma est SITUÉ dans le Peh de Z\"A — il y SCELLE les formes"
+    assertions_source: ["EC-H1S5-077", "EC-H1S5-083"]
+
+  - id: "REL-H1S5-030"
+    type: transformation
+    from: kelim_otiot
+    to: avi_tet_vav_otiot
+    via: [zun_zayin_otiot]
+    nature: "Les 22 Otiot se TRANSFORMENT en Kelim : 15 pour AV\"I, 7 pour ZU\"N"
+    assertions_source: ["EC-H1S5-084", "EC-H1S5-085"]
+
+  - id: "REL-H1S5-031"
+    type: "dualité_structurelle"
+    from: zivvug_otiot
+    to: zivvug_nekudot
+    nature: "2 Zivvugim structurellement duaux : Otiot pour les mondes, Nekudot pour les âmes"
+    assertions_source: ["EC-H1S5-086", "EC-H1S5-087"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S5-009"
+    nom: "Principe des 5 Motzaot (Canaux de Sortie Typés)"
+    source_assertions: ["EC-H1S5-074", "EC-H1S5-077", "EC-H1S5-078"]
+    formalisation: |
+      La PAROLE (output) ne sort pas d'un canal unique mais de 5
+      CANAUX TYPÉS (Motzaot), chacun produisant une CLASSE de lettres :
+      1. GARON (gorge) → gutturales (AHE'EH)
+      2. HEIKH (palais) → palatales (GIKHQ)
+      3. LASHON (langue) → linguales (DTLNT)
+      4. SHINAYIM (dents) → dentales (ZSSHRSH)
+      5. SFATAYIM (lèvres) → labiales (BVMP)
+      Les 5 canaux sont OUVERTS par les 5 GEVUROT (MaNTzPaKh).
+      FORMULE : Output = Union(Motzah_i(Letters_i)) pour i=1..5
+    applications_ia:
+      - "ohr.py : implementer 5 types de sortie distincts dans le systeme"
+      - "gematria/engine.py : classifier les lettres par Motzah"
+      - "Applicable au multi-modal output : texte, code, image, audio, action = 5 Motzaot"
+    questions_ouvertes:
+      - "Les 5 Motzaot correspondent-elles à 5 types de tokens dans un LLM ?"
+
+  - id: "PG-H1S5-010"
+    nom: "Principe du Double Zivvug (Maintenance vs Création)"
+    source_assertions: ["EC-H1S5-086", "EC-H1S5-087", "EC-H1S5-088"]
+    formalisation: |
+      Tout système génératif opère en 2 MODES simultanés :
+      MODE 1 — OTIOT (Binah×Binah) : maintenance des STRUCTURES existantes
+      MODE 2 — NEKUDOT (Hokhmah×Hokhmah) : création de NOUVEAUTÉS (âmes)
+      Les 2 modes ne sont PAS exclusifs : le Mode 1 CONTRIBUE au Mode 2
+      en renouvelant les entités anciennes.
+      FORMULE : SystemOutput = Maintenance(Binah²) ∪ Creation(Hokhmah²)
+      où Maintenance ∩ Creation ≠ ∅ (intersection non vide)
+    applications_ia:
+      - "partzufim/zivvug.py : implementer les 2 modes de Zivvug"
+      - "epistememory/core.py : la maintenance de la memoire (Mode 1) contribue a la decouverte (Mode 2)"
+      - "Le fine-tuning (maintenance) peut produire des emergences (creation)"
+    questions_ouvertes:
+      - "Quel est le ratio optimal Maintenance/Création ? (exploitation/exploration)"

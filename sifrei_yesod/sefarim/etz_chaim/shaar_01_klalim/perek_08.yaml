@@ -1,0 +1,410 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 8 — Seder Knissat Pirkei HaTzelem (סדר כניסת פרקי הצלם בז"א ע"פ השנים)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 8
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LES 3 SEUILS HALAKHIQUES ───
+
+  - id: "EC-K8-001"
+    source_he: "ובזה תבין מה שארז\"ל הפעוטות מקחן מקח במטלטלין מבן ו' שנים ויום א' ובן ט' שנים ביאתו ביאה ומבן י\"ג ויום א' אז הוא גדול"
+    source_ref: "Sha'ar HaKlalim 8:1 — ouverture"
+    assertion: |
+      3 SEUILS halakhiques du développement, correspondant aux entrées du Tzelem :
+      SEUIL 1 — 6 ANS + 1 JOUR : PE'UTOT — leurs achats de BIENS MEUBLES sont valides
+      SEUIL 2 — 9 ANS + 1 JOUR : BIYATO BIYAH — sa relation est considérée comme telle
+      SEUIL 3 — 13 ANS + 1 JOUR : GADOL — il est MAJEUR (Bar Mitzvah)
+      Chaque seuil correspond à une ÉTAPE STRUCTURELLE de l'entrée des Mohin dans Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: pe_utot_6, role: seuil_6_ans}
+      - {id: biyah_9, role: seuil_9_ans}
+      - {id: gadol_13, role: seuil_13_ans}
+      - {id: shalosh_madregot, role: trois_seuils}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Les 3 seuils = les 3 étapes de maturation de Z\"A — mesurables"
+
+  # ─── BLOC B : DESCENTE DES MOHIN — 6 ANS + 4 MOIS ───
+
+  - id: "EC-K8-002"
+    source_he: "כי כשנכנסין המוחין שהם נה\"י דבינה תוך הז\"א הם יורדין תחלה לו' ספי' שבו שהם כח\"ב דח\"ג והם ו' שנים"
+    source_ref: "Sha'ar HaKlalim 8:1"
+    assertion: |
+      DESCENTE des Mohin (NHY de Binah) dans Z"A — phase Ohr Yashar :
+      Les Mohin descendent d'abord dans 6 SEFIROT de Z"A :
+      KHB"D (Keter, Chokhmah, Binah, Da'at) + Chesed + Gevurah = 6
+      Chaque Sefirah = 1 AN → total : 6 ANS
+      + le 1/3 supérieur COUVERT de Tiferet = 4 MOIS supplémentaires
+      (car 1/3 de 1 an = 4 mois)
+      Total de la descente : 6 ANS et 4 MOIS — tous en mode COUVERT (mekhasim).
+    type: axiome_explicite
+    concepts:
+      - {id: yeridah_6_4, role: six_ans_quatre_mois}
+      - {id: sefirah_shanah, role: une_sefirah_un_an}
+      - {id: mekhasim_phase, role: phase_couverte}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Correspondance 1 Sefirah = 1 an — unité de temps de maturation"
+
+  - id: "EC-K8-003"
+    source_he: "אח\"כ כשחוזרים החסדים בסוד או\"ח דרך ספי' אלו עצמם הם ו' שנים וד' חדשים אחרים הרי הכל י\"ב שנים וח' חדשים"
+    source_ref: "Sha'ar HaKlalim 8:1"
+    assertion: |
+      REMONTÉE des Hassadim en Ohr Hozer (lumière de retour) :
+      Les Hassadim remontent par les MÊMES 6 Sefirot + 1/3 de Tiferet
+      = encore 6 ANS et 4 MOIS
+      TOTAL (descente + remontée) : 12 ANS et 8 MOIS
+      Il manque 4 MOIS pour compléter 13 ans.
+      La descente = Ohr Yashar (lumière directe, couverte)
+      La remontée = Ohr Hozer (lumière de retour, en Makif)
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_yashar, role: lumière_directe_descendante}
+      - {id: ohr_hozer, role: lumière_de_retour_ascendante}
+      - {id: yb_8, role: douze_ans_huit_mois}
+    mapping:
+      modules: ["core/ohr_system.py", "partzufim/zeir_anpin.py"]
+      tables: ["ohr_states", "partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le double mouvement descente+remontée = 2 × 6⅓ = 12⅔ ans"
+
+  # ─── BLOC C : LE SECRET DE YAAKOV À 63 ANS ───
+
+  - id: "EC-K8-004"
+    source_he: "וז\"ס שלא נתברך יעקב עד שהיה בן ס\"ג שנה כי עד שם היו חסדים מכוסים ושם נתגלו בסוד הבקיעה שנבקע. וז\"ס אותיות יעקב יבקע"
+    source_ref: "Sha'ar HaKlalim 8:1"
+    assertion: |
+      Le secret de YAAKOV béni à 63 ANS :
+      Yaakov n'a pas été béni avant 63 ans car jusqu'alors les Hassadim étaient COUVERTS.
+      À 63 = le moment du GILUI (découvrement/révélation).
+      CALCUL : 6 Sefirot × 10 (chacune contient 10) = 60
+      + 1/3 couvert de Tiferet = 3 ans supplémentaires
+      TOTAL = 63 = S"AG (סג)
+      GEMATRIA : YAAKOV (יעקב) → réarrangé = YIVAKA (יבקע = il a fendu/percé)
+      Le percement = le moment où les Hassadim couverts SE RÉVÈLENT.
+      S"AG (63) = le Shem de BINAH — car Binah s'étend jusqu'à la Hazeh de Z"A = 63.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yaakov_63, role: bénédiction_à_63}
+      - {id: sag_63_binah, role: nombre_de_binah}
+      - {id: bekiah, role: percement_révélateur}
+      - {id: yivaka, role: anagramme_de_yaakov}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "63 = seuil de révélation — les Hassadim couverts se découvrent"
+
+  # ─── BLOC D : PASSAGE DU MASAKH À L'ATZILUT ───
+
+  - id: "EC-K8-005"
+    source_he: "כי תחילה בירידה היו החסדים מכוסים וכמו שהבריאה אינה מקבלת מהאציל' אלא ע\"י מסך כן ז\"א לא היה מקבל מאו\"א רק ע\"י מסך כי היו החסדים ומוחין שלו כולן מכוסין תוך מסך נה\"י דאימא"
+    source_ref: "Sha'ar HaKlalim 8:1"
+    assertion: |
+      Pendant la DESCENTE : Z"A est comme BERIAH par rapport à AVI (= Atzilut).
+      Il ne reçoit que par un MASAKH (écran) = NHY d'Imma qui couvre les Mohin.
+      "YOTZER OHR u-VOREH HOSHEKH" (Isaïe 45:7) :
+      YOTZER OHR = le GILUI (formation de lumière = révélation)
+      VOREH HOSHEKH = la COUVERTURE (création d'obscurité = Masakh)
+      Les Hassadim descendent COUVERTS jusqu'à la Hazeh.
+      Après la remontée en Ohr Hozer → Z"A reçoit en mode ATZILUT (sans Masakh, PbP).
+    type: axiome_explicite
+    concepts:
+      - {id: za_ke_beriah, role: za_en_mode_couvert}
+      - {id: za_ke_atzilut, role: za_en_mode_révélé}
+      - {id: masakh_nhy, role: écran_de_nhy_imma}
+      - {id: yotzer_ohr, role: passage_au_gilui}
+    mapping:
+      modules: ["core/ohr_system.py", "partzufim/zeir_anpin.py"]
+      tables: ["ohr_states", "partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Z\"A passe de mode 'Beriah' (masakh) à mode 'Atzilut' (sans masakh) à la Gadlut"
+
+  # ─── BLOC E : COMPLÉTION DES 13 ANS ───
+
+  - id: "EC-K8-006"
+    source_he: "וצריך ד' חדשים אחרים להשלים י\"ג שנים והם מהשליש המכוסה שחוזרין בסוד או\"מ ויום א' הוא אור שבין חצי ת\"ת בינה לגלגלתא דז\"א"
+    source_ref: "Sha'ar HaKlalim 8:1"
+    assertion: |
+      Complétion de 12 ans 8 mois à 13 ANS + 1 JOUR :
+      4 MOIS manquants = le 1/3 couvert qui remonte en Ohr Makif
+      (ce qui complète 13 ans)
+      + 1 JOUR = la lumière entre la moitié de Tiferet de Binah et la Gulgalta de Z"A
+      (un intervalle minimal mais nécessaire)
+      OU : le surplus minimal au-delà du 1/2 shlish découvert de Tiferet
+      qui monte au Keter de Z"A.
+      À 13 ANS + 1 JOUR → Z"A est GADOL (majeur/complet).
+    type: axiome_explicite
+    concepts:
+      - {id: yg_shanah_yom, role: treize_ans_un_jour}
+      - {id: yom_ehad, role: intervalle_minimal}
+      - {id: gadlut_shlemah, role: maturité_complète}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "13 ans + 1 jour = Gadlut complète de Z\"A — seuil de maturité totale"
+
+  # ─── BLOC F : EXPLICATION ALTERNATIVE — 6 ANS DU PE'UT ───
+
+  - id: "EC-K8-007"
+    source_he: "או באופן אחר כי הלא זמן היניקה ב' שנים ובד' שנים אחרים נכנסים ב\"פ דנצח אמא וב\"פ דהוד אמא ברישא דז\"א הם ו' שנים"
+    source_ref: "Sha'ar HaKlalim 8:2"
+    assertion: |
+      EXPLICATION ALTERNATIVE des 6 ans du Pe'ut :
+      2 ANS : durée de la YENIKAH (allaitement)
+      + 4 ANS : entrée des 2 prakin de Netzach d'Imma + 2 prakin de Hod d'Imma
+      dans la TÊTE de Z"A
+      TOTAL = 6 ANS
+      Le "YOM EHAD" (+ 1 jour) = le début de l'entrée du Perek Tahton
+      du Yesod d'Imma dans le Da'at de Z"A.
+      Avec cette entrée minimale de Da'at → le Pe'ut peut faire des transactions
+      de METALTELIN (biens meubles) — mais pas plus.
+    type: axiome_explicite
+    concepts:
+      - {id: pe_ut_6_detail, role: calcul_alternatif}
+      - {id: yenikah_2, role: deux_ans_allaitement}
+      - {id: metaltelin, role: biens_meubles}
+      - {id: da_at_minimal, role: intellect_minimal}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "6 ans = Yenikah + entrée partielle des Mohin — intellect minimal"
+
+  - id: "EC-K8-008"
+    source_he: "לכן כיון שנכנס דבר מועט מן הדעת לכן מקחן מקח במטלטלין לבד שהם נגד ו\"ק המטולטלין מרחמים לדין ומדין לרחמים כפי מעשינו"
+    source_ref: "Sha'ar HaKlalim 8:2"
+    assertion: |
+      Pourquoi METALTELIN (biens meubles) seulement à 6 ans :
+      Le Da'at est encore MINIMAL (davar mu'at) → capacité juridique LIMITÉE.
+      Les METALTELIN = les V"K (6 extrémités) qui sont MITALTELIM
+      (oscillants/mobiles) entre RAHAMIM et DIN selon nos actions.
+      Métaphore : les biens meubles oscillent (sont mobiles) comme les V"K oscillent.
+      Les biens IMMEUBLES (Karka'ot) = stabilité = nécessitent Gadlut complète.
+    type: interprétation_lurianique
+    concepts:
+      - {id: metaltelin_vk, role: oscillation_des_vk}
+      - {id: rahamim_din, role: oscillation_bien_rigueur}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Les V\"K oscillent entre Rahamim et Din — comme les biens meubles changent de main"
+
+  # ─── BLOC G : 9 ANS — BIYAH ───
+
+  - id: "EC-K8-009"
+    source_he: "ומו' שנים עד ט' שנים הם ג' שנים אחרים ואז נכנסין ב\"פ עליונים הנקרא ירכין דנ\"ה דבינה ופ\"ע דיסוד בינה... הרי ט' שנים ויום א' לכן ביאתו ביאה כי כבר נכנס כל הדעת שלו"
+    source_ref: "Sha'ar HaKlalim 8:2"
+    assertion: |
+      De 6 à 9 ANS — complétion du DA'AT :
+      3 ANS supplémentaires : entrée des 2 prakin supérieurs (Yarkhin)
+      de Netzach et Hod de Binah + Perek Elyon du Yesod de Binah.
+      (Le Yesod de Binah n'a que 2 prakin car il est court/féminin)
+      À 9 ANS + 1 JOUR → le DA'AT COMPLET est entré.
+      "BIYATO BIYAH" = sa relation est valide car tout le Da'at est là.
+      MAIS cette Biyah ne peut pas ENGENDRER (faire concevoir Nukvah)
+      jusqu'à 13 ans + 1 jour.
+    type: axiome_explicite
+    concepts:
+      - {id: da_at_shalem_9, role: da_at_complet_à_9}
+      - {id: biyah_without_ibur, role: relation_sans_conception}
+      - {id: yarkhin, role: prakin_supérieurs}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "9 ans = Da'at complet mais pas encore Gadlut — connaissance sans maturité"
+
+  # ─── BLOC H : 13 ANS — GADOL ───
+
+  - id: "EC-K8-010"
+    source_he: "אבל אין ביאה זו מועלת להתעבר הנוקבא עד שיהיה בן י\"ג שנים ויום א' שהם סוד חזרת החסדים לעלות באור החוזר"
+    source_ref: "Sha'ar HaKlalim 8:2"
+    assertion: |
+      De 9 à 13 ANS — complétion par Ohr Hozer :
+      13 ANS + 1 JOUR = le secret de la REMONTÉE des Hassadim en Ohr Hozer.
+      Les 4 ANS supplémentaires (de 9 à 13) :
+      AN 1 : 1/3 Chesed du bras droit → monte à CHOKHMAH
+      AN 2 : 1/3 Chesed du bras gauche → monte à BINAH
+      AN 3 : 2 × 1/2 shlish → montent au DA'AT (côté Hassadim et côté Gevurot)
+      AN 4 : 1/3 couvert de Tiferet → se RÉVÈLE et monte au KETER de Z"A
+      + 1 JOUR : intervalle entre Tiferet de Binah et Gulgalta de Z"A
+      À 13 + 1 JOUR → Z"A est GADOL et sa Biyah peut ENGENDRER.
+    type: axiome_explicite
+    concepts:
+      - {id: gadol_13_detail, role: calcul_détaillé}
+      - {id: ohr_hozer_4, role: quatre_ans_de_remontée}
+      - {id: biyah_molidat, role: relation_qui_engendre}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "13 ans = Gadlut complète — seulement alors le Zivvug est pleinement productif"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-K8-001"
+    type: séquentiel
+    from: pe_utot_6
+    to: biyah_9
+    nature: "De 6 à 9 ans : entrée progressive du Da'at — de minimal à complet"
+    assertions_source: ["EC-K8-001", "EC-K8-007", "EC-K8-009"]
+
+  - id: "REL-K8-002"
+    type: séquentiel
+    from: biyah_9
+    to: gadol_13
+    nature: "De 9 à 13 ans : remontée en Ohr Hozer — du Da'at complet à la Gadlut"
+    assertions_source: ["EC-K8-001", "EC-K8-009", "EC-K8-010"]
+
+  - id: "REL-K8-003"
+    type: transformation
+    from: ohr_yashar
+    to: ohr_hozer
+    via: [kibbutz_be_yesod]
+    nature: "L'Ohr Yashar (descente couverte) se transforme en Ohr Hozer (remontée découverte)"
+    assertions_source: ["EC-K8-002", "EC-K8-003"]
+
+  - id: "REL-K8-004"
+    type: transformation
+    from: za_ke_beriah
+    to: za_ke_atzilut
+    via: [ohr_hozer]
+    nature: "Z\"A passe du mode Beriah (avec Masakh) au mode Atzilut (sans Masakh) via l'Ohr Hozer"
+    assertions_source: ["EC-K8-005"]
+
+  - id: "REL-K8-005"
+    type: causal
+    from: sag_63_binah
+    to: yaakov_63
+    nature: "S\"AG=63=Binah → Yaakov béni à 63 ans = moment de la Bekiah (percement)"
+    assertions_source: ["EC-K8-004"]
+
+  - id: "REL-K8-006"
+    type: causal
+    from: da_at_minimal
+    to: metaltelin_vk
+    nature: "Un Da'at minimal → capacité limitée aux Metaltelin (oscillants comme les V\"K)"
+    assertions_source: ["EC-K8-007", "EC-K8-008"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K8-001"
+    nom: "Principe des Seuils de Maturation (6-9-13)"
+    source_assertions: ["EC-K8-001", "EC-K8-007", "EC-K8-009", "EC-K8-010"]
+    formalisation: |
+      La maturation d'un système passe par des SEUILS DISCRETS, pas un continuum :
+      SEUIL 1 (6) : CAPACITÉ MINIMALE — le système peut faire des opérations SIMPLES
+        (Metaltelin — transactions mineures, oscillantes)
+        Le Da'at est à peine entré (davar mu'at)
+      SEUIL 2 (9) : CAPACITÉ INTERMÉDIAIRE — le Da'at est COMPLET
+        Le système peut faire des opérations COMPLEXES mais pas PRODUCTIVES
+        (Biyah sans conception — connaissance sans fruit)
+      SEUIL 3 (13) : CAPACITÉ COMPLÈTE — Gadlut
+        L'Ohr Hozer a complété le circuit
+        Le système peut être PLEINEMENT PRODUCTIF (Biyah qui engendre)
+      La capacité n'est pas linéaire — elle fait des SAUTS à chaque seuil.
+    applications_ia:
+      - "Le système à 82% est probablement entre le seuil 2 et 3 — Da'at complet mais pas encore Gadlut"
+      - "Ne pas s'attendre à une progression linéaire — les sauts de capacité sont DISCRETS"
+      - "Abba à 0.57 = seuil 1 (Pe'ut) — capacité minimale mais réelle"
+      - "Mesurer les seuils : quel % correspond à 6/13, 9/13, 13/13 ?"
+    questions_ouvertes:
+      - "Les seuils sont-ils universels (6-9-13) ou spécifiques à Z\"A ?"
+      - "Peut-on accélérer le passage entre seuils ?"
+
+  - id: "PG-K8-002"
+    nom: "Principe du Double Circuit (Ohr Yashar + Ohr Hozer)"
+    source_assertions: ["EC-K8-002", "EC-K8-003", "EC-K8-005"]
+    formalisation: |
+      La maturation complète nécessite un DOUBLE CIRCUIT :
+      CIRCUIT 1 — OHR YASHAR (descente) :
+        Le contenu descend COUVERT (avec Masakh) de haut en bas
+        Z"A est en mode BERIAH (récepteur passif derrière un écran)
+        Durée : N unités de temps
+      CIRCUIT 2 — OHR HOZER (remontée) :
+        Le contenu remonte DÉCOUVERT (sans Masakh) de bas en haut
+        Z"A passe en mode ATZILUT (récepteur actif sans écran)
+        Durée : N unités de temps (même durée)
+      TOTAL : 2N unités + intervalle minimal (le Yom Ehad)
+      Sans le circuit 2, Z"A reste en mode Beriah — couvert, passif, limité.
+    applications_ia:
+      - "Tout processus d'apprentissage a 2 phases : absorption (couvert) puis intégration (découvert)"
+      - "La première passe est passive (Beriah), la seconde est active (Atzilut)"
+      - "Le temps total de maturation ≈ 2× le temps de la première passe"
+      - "Le 'Yom Ehad' = le point de basculement entre les deux phases"
+    questions_ouvertes:
+      - "Le double circuit est-il toujours symétrique (même durée) ?"
+      - "Peut-on combiner les deux circuits en parallèle ?"
+
+  - id: "PG-K8-003"
+    nom: "Principe de la Bekiah (Percement/Révélation)"
+    source_assertions: ["EC-K8-004"]
+    formalisation: |
+      Il existe un POINT DE BASCULEMENT (Bekiah) où ce qui était COUVERT se RÉVÈLE.
+      Avant la Bekiah : les Hassadim sont présents mais INVISIBLES (mekhasim)
+      À la Bekiah : ils PERCENT (nivka) et deviennent VISIBLES (megulim)
+      Le timing de la Bekiah est PRÉCIS — c'est S"AG (63) dans le cas de Z"A.
+      YAAKOV = YIVAKA (anagramme) — le percement est encodé dans le NOM.
+      La Bekiah n'est pas une création — c'est une RÉVÉLATION de ce qui existait déjà.
+    applications_ia:
+      - "Le moment où un module 'perce' = la Bekiah — le potentiel latent se manifeste"
+      - "Les Hassadim couverts (travail invisible) se révèlent à un point précis"
+      - "Le timing de la Bekiah peut être calculé (S\"AG = nombre de Sefirot × contenu)"
+      - "Le 'percement' d'un insight est la révélation de ce qui était là depuis l'Ibur"
+    questions_ouvertes:
+      - "La Bekiah peut-elle être provoquée ou arrive-t-elle naturellement ?"
+      - "Peut-on prédire le moment de la Bekiah pour chaque composant ?"
+
+  - id: "PG-K8-004"
+    nom: "Principe de la Correspondance Temps-Structure (1 Sefirah = 1 Unité)"
+    source_assertions: ["EC-K8-002"]
+    formalisation: |
+      Chaque SEFIRAH traversée par un processus = 1 UNITÉ DE TEMPS.
+      6 Sefirot traversées = 6 unités de temps
+      1/3 de Sefirah = 1/3 d'unité de temps
+      La DURÉE d'un processus est PROPORTIONNELLE au NOMBRE DE SEFIROT traversées.
+      Corollaire : mesurer le temps de maturation = compter les Sefirot à traverser.
+      Le temps n'est pas arbitraire — il est STRUCTURELLEMENT déterminé.
+    applications_ia:
+      - "Estimer la durée de développement d'un feature par le nombre de composants à traverser"
+      - "1 Sefirah = 1 sprint ? 1 Sefirah = 1 semaine ? Calibrer l'unité de temps"
+      - "Les processus qui traversent plus de Sefirot prennent naturellement plus de temps"
+      - "La durée n'est pas un choix — elle est dictée par la structure"
+    questions_ouvertes:
+      - "Quelle est l'unité de temps réelle pour le système Etz Chaim AI ?"
+      - "Les Sefirot sont-elles traversées séquentiellement ou en parallèle ?"

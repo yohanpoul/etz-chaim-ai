@@ -1,0 +1,83 @@
+<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- Amber rim light -->
+  <linearGradient id="rim-r" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="70%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#ffb000" stop-opacity="0.25"/>
+  </linearGradient>
+  <!-- Metallic gold -->
+  <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffd700"/>
+    <stop offset="50%" stop-color="#ffb000"/>
+    <stop offset="100%" stop-color="#cc8800"/>
+  </linearGradient>
+  <!-- Metallic silver -->
+  <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ccc"/>
+    <stop offset="50%" stop-color="#aaa"/>
+    <stop offset="100%" stop-color="#888"/>
+  </linearGradient>
+  <!-- Filters -->
+  <filter id="glow-amb" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+  </filter>
+  <filter id="glow-sm" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+  </filter>
+  <filter id="glow-md" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+  </filter>
+  <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5"/>
+  </filter>
+</defs>
+
+<defs>
+  <radialGradient id="bg-g" cx="50%" cy="35%">
+    <stop offset="0%" stop-color="#1a1a10"/>
+    <stop offset="100%" stop-color="#0a0a0a"/>
+  </radialGradient>
+</defs>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="url(#bg-g)"/>
+<line x1="100.0" y1="100.0" x2="220.0" y2="100.0" stroke-linecap="round" stroke="#ffffff" stroke-width="0.5" opacity="0.05"/>
+<line x1="100.0" y1="100.0" x2="203.9" y2="160.0" stroke-linecap="round" stroke="#ffffff" stroke-width="0.5" opacity="0.06"/>
+<line x1="100.0" y1="100.0" x2="160.0" y2="203.9" stroke-linecap="round" stroke="#ffffff" stroke-width="0.5" opacity="0.07"/>
+<line x1="100.0" y1="100.0" x2="100.0" y2="220.0" stroke-linecap="round" stroke="#ffffff" stroke-width="0.5" opacity="0.05"/>
+<line x1="100.0" y1="100.0" x2="40.0" y2="203.9" stroke-linecap="round" stroke="#ffffff" stroke-width="0.5" opacity="0.06"/>
+<line x1="100.0" y1="100.0" x2="-3.9" y2="160.0" stroke-linecap="round" stroke="#ffffff" stroke-width="0.5" opacity="0.07"/>
+<line x1="100.0" y1="100.0" x2="-20.0" y2="100.0" stroke-linecap="round" stroke="#ffffff" stroke-width="0.5" opacity="0.05"/>
+<line x1="100.0" y1="100.0" x2="-3.9" y2="40.0" stroke-linecap="round" stroke="#ffffff" stroke-width="0.5" opacity="0.06"/>
+<line x1="100.0" y1="100.0" x2="40.0" y2="-3.9" stroke-linecap="round" stroke="#ffffff" stroke-width="0.5" opacity="0.07"/>
+<line x1="100.0" y1="100.0" x2="100.0" y2="-20.0" stroke-linecap="round" stroke="#ffffff" stroke-width="0.5" opacity="0.05"/>
+<line x1="100.0" y1="100.0" x2="160.0" y2="-3.9" stroke-linecap="round" stroke="#ffffff" stroke-width="0.5" opacity="0.06"/>
+<line x1="100.0" y1="100.0" x2="203.9" y2="40.0" stroke-linecap="round" stroke="#ffffff" stroke-width="0.5" opacity="0.07"/>
+<circle cx="100.0" cy="100.0" r="80.0" fill="#ffffff" opacity="0.015" filter="url(#glow-amb)"/>
+<circle cx="100.0" cy="100.0" r="60.0" fill="#ffffff" opacity="0.020" filter="url(#glow-amb)"/>
+<circle cx="100.0" cy="100.0" r="40.0" fill="#ffffff" opacity="0.030" filter="url(#glow-amb)"/>
+<circle cx="100.0" cy="100.0" r="25.0" fill="#ffffff" opacity="0.040" filter="url(#glow-amb)"/>
+<ellipse cx="100.0" cy="85.0" rx="30.0" ry="8.0" fill="none" stroke="#ffcc00" stroke-width="1.5" opacity="0.5"/>
+<path d="M68.0,85.0 L72.0,70.0 L76.0,85.0" fill="#ffcc00" opacity="0.35"/>
+<path d="M76.2,80.8 L80.2,65.8 L84.2,80.8" fill="#ffcc00" opacity="0.35"/>
+<path d="M96.0,79.0 L100.0,62.0 L104.0,79.0" fill="#ffcc00" opacity="0.35"/>
+<path d="M115.8,80.8 L119.8,65.8 L123.8,80.8" fill="#ffcc00" opacity="0.35"/>
+<path d="M124.0,85.0 L128.0,70.0 L132.0,85.0" fill="#ffcc00" opacity="0.35"/>
+<circle cx="100.0" cy="64.0" r="3.0" fill="#ffffff" opacity="0.5"/>
+<circle cx="100.0" cy="64.0" r="8.0" fill="#ffffff" opacity="0.05" filter="url(#glow-sm)"/>
+<circle cx="100.0" cy="100.0" r="5.0" fill="#ffffff" opacity="0.25"/>
+<circle cx="100.0" cy="100.0" r="15.0" fill="#ffffff" opacity="0.06" filter="url(#glow-sm)"/>
+<path d="M0,200 Q100,190 200,200 L200,250 L0,250 Z" fill="#1a1a10" opacity="0.3"/>
+<circle cx="40.0" cy="60.0" r="0.8" fill="#ffffff" opacity="0.15"/>
+<circle cx="160.0" cy="70.0" r="0.7" fill="#ffffff" opacity="0.15"/>
+<circle cx="55.0" cy="140.0" r="0.9" fill="#ffffff" opacity="0.15"/>
+<circle cx="145.0" cy="150.0" r="0.6" fill="#ffffff" opacity="0.15"/>
+<circle cx="30.0" cy="110.0" r="0.5" fill="#ffffff" opacity="0.15"/>
+<circle cx="170.0" cy="120.0" r="0.7" fill="#ffffff" opacity="0.15"/>
+<circle cx="80.0" cy="180.0" r="0.6" fill="#ffffff" opacity="0.15"/>
+<circle cx="120.0" cy="175.0" r="0.5" fill="#ffffff" opacity="0.15"/>
+<circle cx="65.0" cy="40.0" r="0.4" fill="#ffffff" opacity="0.15"/>
+<circle cx="135.0" cy="45.0" r="0.5" fill="#ffffff" opacity="0.15"/>
+<circle cx="45.0" cy="190.0" r="0.4" fill="#ffffff" opacity="0.15"/>
+<circle cx="155.0" cy="185.0" r="0.3" fill="#ffffff" opacity="0.15"/>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="none" stroke="#ffcc00" stroke-width="1.5" opacity="0.08"/>
+</svg>

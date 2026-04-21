@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% set active = "intentions" %}
+{% block title %}Etz Chaim — Intentions{% endblock %}
+{% block content %}
+
+<section class="panel">
+    <div class="panel-header">&#9484;&#9472; INTENTIONS &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <form class="term-form" id="intent-form">
+            <span class="term-prompt">&gt; intent: </span>
+            <input type="text" id="intent-goal" class="term-input" placeholder="nouvelle intention..." autocomplete="off">
+            <button type="submit" class="term-btn">[CREATE]</button>
+        </form>
+    </div>
+</section>
+
+<section class="panel">
+    <div class="panel-header">&#9484;&#9472; ACTIVES &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <div id="intentions-list" class="term-dim">Chargement...</div>
+    </div>
+</section>
+
+{% endblock %}
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => { initIntentions(); });
+</script>
+{% endblock %}

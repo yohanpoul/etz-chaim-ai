@@ -1,0 +1,708 @@
+# ═══════════════════════════════════════════════════════════════
+# Etz Chaim AI — configuration template
+# ═══════════════════════════════════════════════════════════════
+#
+# This file ships as a baseline. Run `etzchaim onboard` to generate a
+# personalized configuration, or edit this file directly.
+#
+# Etz Chaim maps four olamot (reasoning tiers) to LLM providers :
+#   Atziluth  — strategic decisions    (frontier model, high budget)
+#   Briah     — causal reasoning       (thinking-capable)
+#   Yetzirah  — general tasks          (mid-tier, fast)
+#   Assiah    — fast execution         (small / cheap)
+#
+# Six ready-to-use profiles are provided. Pick one with active_profile
+# or compose your own under profiles.custom.
+#
+# Any provider block pointing to a service whose env var is empty is
+# silently skipped at runtime (the dispatcher falls back to the next
+# provider in the chain).
+
+active_profile: local_only
+
+machine:
+  name: local
+  ram_gb: 16
+  chip: unknown
+  max_model_ram_gb: 12
+
+ollama:
+  host: ${OLLAMA_HOST:-http://localhost:11434}
+
+# ── Profile : local_only ──────────────────────────────────────
+# No API keys required. Runs entirely on Ollama.
+profiles:
+  local_only:
+    description: Fully local via Ollama. No API key required.
+    olamot:
+      atziluth:
+        provider: ollama
+        model: qwen3.5:9b
+        think: true
+        timeout: 180
+        usage: Strategic decisions
+        options:
+          temperature: 0.3
+          num_predict: 8192
+          num_ctx: 32768
+      briah:
+        provider: ollama
+        model: qwen3.5:9b
+        think: true
+        timeout: 120
+        usage: Causal reasoning, validation
+        options:
+          temperature: 0.3
+          num_predict: 8192
+          num_ctx: 32768
+      yetzirah:
+        provider: ollama
+        model: qwen3.5:9b
+        think: false
+        timeout: 60
+        usage: General tasks, judgment
+        options:
+          temperature: 0.7
+          num_predict: 8192
+          num_ctx: 8192
+      assiah:
+        provider: ollama
+        model: qwen3.5:9b
+        think: false
+        timeout: 30
+        usage: Fast execution
+        options:
+          temperature: 0.2
+          num_predict: 8192
+          num_ctx: 8192
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : anthropic_full ────────────────────────────────
+  # All reasoning via Anthropic API. Requires ANTHROPIC_API_KEY.
+  anthropic_full:
+    description: Claude Opus / Sonnet / Haiku via Anthropic API.
+    olamot:
+      atziluth:
+        provider: litellm
+        model: anthropic/claude-opus-4-7
+        timeout: 300
+        max_tokens: 16384
+      briah:
+        provider: litellm
+        model: anthropic/claude-opus-4-7
+        think: true
+        timeout: 180
+        options:
+          temperature: 0.3
+      yetzirah:
+        provider: litellm
+        model: anthropic/claude-sonnet-4-6
+        timeout: 120
+        options:
+          temperature: 0.7
+      assiah:
+        provider: litellm
+        model: anthropic/claude-haiku-4-5
+        timeout: 60
+        options:
+          temperature: 0.2
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : openai_full ───────────────────────────────────
+  # All reasoning via OpenAI API. Requires OPENAI_API_KEY.
+  openai_full:
+    description: GPT-5 / GPT-5-mini / GPT-5-nano via OpenAI API.
+    olamot:
+      atziluth:
+        provider: litellm
+        model: openai/gpt-5
+        timeout: 300
+        max_tokens: 16384
+      briah:
+        provider: litellm
+        model: openai/o1
+        think: true
+        timeout: 300
+      yetzirah:
+        provider: litellm
+        model: openai/gpt-5-mini
+        timeout: 120
+      assiah:
+        provider: litellm
+        model: openai/gpt-5-nano
+        timeout: 60
+    embedding:
+      provider: litellm
+      model: openai/text-embedding-3-small
+      dimensions: 1536
+
+  # ── Profile : gemini_full ───────────────────────────────────
+  # All reasoning via Google Gemini. Requires GOOGLE_API_KEY.
+  gemini_full:
+    description: Gemini 2.5 Pro / Flash / Flash-Lite via Google API.
+    olamot:
+      atziluth:
+        provider: litellm
+        model: gemini/gemini-2.5-pro
+        timeout: 300
+      briah:
+        provider: litellm
+        model: gemini/gemini-2.5-pro
+        think: true
+        timeout: 240
+      yetzirah:
+        provider: litellm
+        model: gemini/gemini-2.5-flash
+        timeout: 120
+      assiah:
+        provider: litellm
+        model: gemini/gemini-2.5-flash-lite
+        timeout: 60
+    embedding:
+      provider: litellm
+      model: gemini/text-embedding-004
+      dimensions: 768
+
+  # ── Profile : bedrock_full ──────────────────────────────────
+  # AWS Bedrock. Requires AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY.
+  bedrock_full:
+    description: Claude via AWS Bedrock (enterprise-compliant).
+    olamot:
+      atziluth:
+        provider: litellm
+        model: bedrock/anthropic.claude-opus-4-7-v1:0
+        timeout: 300
+      briah:
+        provider: litellm
+        model: bedrock/anthropic.claude-opus-4-7-v1:0
+        think: true
+        timeout: 180
+      yetzirah:
+        provider: litellm
+        model: bedrock/anthropic.claude-sonnet-4-6-v1:0
+        timeout: 120
+      assiah:
+        provider: litellm
+        model: bedrock/anthropic.claude-haiku-4-5-v1:0
+        timeout: 60
+    embedding:
+      provider: litellm
+      model: bedrock/amazon.titan-embed-text-v2:0
+      dimensions: 1024
+
+  # ── Profile : hybrid ────────────────────────────────────────
+  # Frontier cloud for reasoning, Ollama for execution. Cost-optimized.
+  hybrid:
+    description: Anthropic for deep reasoning, Ollama for fast / local tasks.
+    olamot:
+      atziluth:
+        provider: litellm
+        model: anthropic/claude-opus-4-7
+        timeout: 300
+        max_tokens: 16384
+        fallback: ollama
+      briah:
+        provider: litellm
+        model: anthropic/claude-opus-4-7
+        think: true
+        timeout: 180
+        fallback: ollama
+      yetzirah:
+        provider: ollama
+        model: qwen3.5:9b
+        timeout: 60
+      assiah:
+        provider: ollama
+        model: qwen3.5:9b
+        timeout: 30
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : claude_max ────────────────────────────────────
+  # Routes through the Claude Code CLI subscription (OAuth, no API key).
+  # Useful if you already pay for a Claude Max plan.
+  claude_max:
+    description: All reasoning via the Claude Code CLI (OAuth subscription).
+    olamot:
+      atziluth:
+        provider: claude_code
+        model: opus
+        timeout: 300
+        max_tokens: 16384
+      briah:
+        provider: claude_code
+        model: opus
+        think: true
+        timeout: 180
+      yetzirah:
+        provider: claude_code
+        model: sonnet
+        timeout: 120
+      assiah:
+        provider: claude_code
+        model: haiku
+        timeout: 60
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : xai_full ──────────────────────────────────────
+  # Grok family via xAI. Requires XAI_API_KEY.
+  xai_full:
+    description: Grok 4 / Grok 3 mini via xAI API.
+    olamot:
+      atziluth:
+        provider: litellm
+        model: xai/grok-4
+        timeout: 300
+        max_tokens: 16384
+      briah:
+        provider: litellm
+        model: xai/grok-4
+        think: true
+        timeout: 240
+      yetzirah:
+        provider: litellm
+        model: xai/grok-3
+        timeout: 120
+      assiah:
+        provider: litellm
+        model: xai/grok-3-mini
+        timeout: 60
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : mistral_full ──────────────────────────────────
+  # Mistral family. Requires MISTRAL_API_KEY.
+  mistral_full:
+    description: Mistral Large / Medium / Small via Mistral API.
+    olamot:
+      atziluth:
+        provider: litellm
+        model: mistral/mistral-large-latest
+        timeout: 300
+        max_tokens: 16384
+      briah:
+        provider: litellm
+        model: mistral/mistral-large-latest
+        think: true
+        timeout: 180
+      yetzirah:
+        provider: litellm
+        model: mistral/mistral-medium-latest
+        timeout: 120
+      assiah:
+        provider: litellm
+        model: mistral/mistral-small-latest
+        timeout: 60
+    embedding:
+      provider: litellm
+      model: mistral/mistral-embed
+      dimensions: 1024
+
+  # ── Profile : cohere_full ───────────────────────────────────
+  # Cohere Command family. Requires COHERE_API_KEY.
+  cohere_full:
+    description: Command A / R+ / R / R7b via Cohere API.
+    olamot:
+      atziluth:
+        provider: litellm
+        model: cohere/command-a-03-2025
+        timeout: 300
+        max_tokens: 16384
+      briah:
+        provider: litellm
+        model: cohere/command-r-plus
+        timeout: 180
+      yetzirah:
+        provider: litellm
+        model: cohere/command-r
+        timeout: 120
+      assiah:
+        provider: litellm
+        model: cohere/command-r7b-12-2024
+        timeout: 60
+    embedding:
+      provider: litellm
+      model: cohere/embed-english-v3.0
+      dimensions: 1024
+
+  # ── Profile : deepseek_full ─────────────────────────────────
+  # DeepSeek V3 + R1 reasoner. Requires DEEPSEEK_API_KEY.
+  deepseek_full:
+    description: DeepSeek V3 + R1 reasoner via DeepSeek API (cheap + strong).
+    olamot:
+      atziluth:
+        provider: litellm
+        model: deepseek/deepseek-reasoner
+        think: true
+        timeout: 300
+      briah:
+        provider: litellm
+        model: deepseek/deepseek-reasoner
+        think: true
+        timeout: 300
+      yetzirah:
+        provider: litellm
+        model: deepseek/deepseek-chat
+        timeout: 120
+      assiah:
+        provider: litellm
+        model: deepseek/deepseek-chat
+        timeout: 60
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : groq_full ─────────────────────────────────────
+  # Groq LPU inference (ultra-low latency). Requires GROQ_API_KEY.
+  groq_full:
+    description: Llama 3.3 / 3.1 on Groq LPU (fastest inference).
+    olamot:
+      atziluth:
+        provider: litellm
+        model: groq/llama-3.3-70b-versatile
+        timeout: 180
+        max_tokens: 8192
+      briah:
+        provider: litellm
+        model: groq/llama-3.3-70b-versatile
+        timeout: 180
+      yetzirah:
+        provider: litellm
+        model: groq/llama-3.3-70b-versatile
+        timeout: 60
+      assiah:
+        provider: litellm
+        model: groq/llama-3.1-8b-instant
+        timeout: 30
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : openrouter_full ───────────────────────────────
+  # Routes to any model via OpenRouter (single key, many models).
+  openrouter_full:
+    description: Frontier mix via OpenRouter (Claude + GPT + Gemini on one key).
+    olamot:
+      atziluth:
+        provider: litellm
+        model: openrouter/anthropic/claude-opus-4.1
+        timeout: 300
+        max_tokens: 16384
+      briah:
+        provider: litellm
+        model: openrouter/anthropic/claude-opus-4.1
+        think: true
+        timeout: 180
+      yetzirah:
+        provider: litellm
+        model: openrouter/anthropic/claude-sonnet-4.5
+        timeout: 120
+      assiah:
+        provider: litellm
+        model: openrouter/openai/gpt-5-mini
+        timeout: 60
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : together_full ─────────────────────────────────
+  # Open-weight models on Together AI. Requires TOGETHER_API_KEY.
+  together_full:
+    description: Llama 3.3 / DeepSeek via Together AI (open weights, fast).
+    olamot:
+      atziluth:
+        provider: litellm
+        model: together_ai/deepseek-ai/DeepSeek-V3
+        timeout: 300
+      briah:
+        provider: litellm
+        model: together_ai/deepseek-ai/DeepSeek-R1
+        think: true
+        timeout: 300
+      yetzirah:
+        provider: litellm
+        model: together_ai/meta-llama/Llama-3.3-70B-Instruct-Turbo
+        timeout: 120
+      assiah:
+        provider: litellm
+        model: together_ai/meta-llama/Llama-3.1-8B-Instruct-Turbo
+        timeout: 60
+    embedding:
+      provider: litellm
+      model: together_ai/togethercomputer/m2-bert-80M-8k-retrieval
+      dimensions: 768
+
+  # ── Profile : fireworks_full ────────────────────────────────
+  # Fireworks AI (serverless open-weight inference).
+  fireworks_full:
+    description: Open-weight models via Fireworks (serverless, low-latency).
+    olamot:
+      atziluth:
+        provider: litellm
+        model: fireworks_ai/accounts/fireworks/models/deepseek-v3
+        timeout: 300
+      briah:
+        provider: litellm
+        model: fireworks_ai/accounts/fireworks/models/deepseek-r1
+        think: true
+        timeout: 300
+      yetzirah:
+        provider: litellm
+        model: fireworks_ai/accounts/fireworks/models/llama-v3p3-70b-instruct
+        timeout: 120
+      assiah:
+        provider: litellm
+        model: fireworks_ai/accounts/fireworks/models/llama-v3p1-8b-instruct
+        timeout: 60
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : perplexity_full ───────────────────────────────
+  # Perplexity Sonar (search-augmented). Requires PERPLEXITY_API_KEY.
+  perplexity_full:
+    description: Sonar Pro / Sonar / Sonar Reasoning (with web search built-in).
+    olamot:
+      atziluth:
+        provider: litellm
+        model: perplexity/sonar-reasoning-pro
+        think: true
+        timeout: 300
+      briah:
+        provider: litellm
+        model: perplexity/sonar-reasoning-pro
+        think: true
+        timeout: 300
+      yetzirah:
+        provider: litellm
+        model: perplexity/sonar-pro
+        timeout: 120
+      assiah:
+        provider: litellm
+        model: perplexity/sonar
+        timeout: 60
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : codex_cli ─────────────────────────────────────
+  # OpenAI Codex CLI (ChatGPT subscription, OAuth — no API key).
+  # Requires `codex` binary on PATH. Install : npm install -g @openai/codex
+  # Auth   : codex  (runs the OAuth flow once)
+  # Note   : does NOT work inside Docker (browser OAuth). Host-only.
+  codex_cli:
+    description: OpenAI Codex CLI (ChatGPT subscription — OAuth, host-only).
+    olamot:
+      atziluth:
+        provider: cli
+        cli: codex
+        model: gpt-5
+        args: ["exec", "--model", "{model}", "-"]
+        response_parser: strip_codex_banner
+        timeout: 300
+      briah:
+        provider: cli
+        cli: codex
+        model: gpt-5
+        args: ["exec", "--model", "{model}", "-"]
+        response_parser: strip_codex_banner
+        timeout: 240
+      yetzirah:
+        provider: cli
+        cli: codex
+        model: gpt-5-mini
+        args: ["exec", "--model", "{model}", "-"]
+        response_parser: strip_codex_banner
+        timeout: 120
+      assiah:
+        provider: cli
+        cli: codex
+        model: gpt-5-nano
+        args: ["exec", "--model", "{model}", "-"]
+        response_parser: strip_codex_banner
+        timeout: 60
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : gemini_cli ────────────────────────────────────
+  # Google Gemini CLI (Google account OAuth — free tier 1000 req/day).
+  # Requires `gemini` binary. Install : npm install -g @google/gemini-cli
+  # Auth   : gemini login
+  # Note   : does NOT work inside Docker (browser OAuth). Host-only.
+  gemini_cli:
+    description: Google Gemini CLI (Google OAuth, free tier 1000 req/day).
+    olamot:
+      atziluth:
+        provider: cli
+        cli: gemini
+        model: gemini-2.5-pro
+        args: ["--model", "{model}", "--prompt-interactive=false"]
+        response_parser: identity
+        timeout: 300
+      briah:
+        provider: cli
+        cli: gemini
+        model: gemini-2.5-pro
+        args: ["--model", "{model}", "--prompt-interactive=false"]
+        response_parser: identity
+        timeout: 240
+      yetzirah:
+        provider: cli
+        cli: gemini
+        model: gemini-2.5-flash
+        args: ["--model", "{model}", "--prompt-interactive=false"]
+        response_parser: identity
+        timeout: 120
+      assiah:
+        provider: cli
+        cli: gemini
+        model: gemini-2.5-flash-lite
+        args: ["--model", "{model}", "--prompt-interactive=false"]
+        response_parser: identity
+        timeout: 60
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : copilot_cli ───────────────────────────────────
+  # GitHub Copilot CLI (GitHub Copilot subscription via gh extension).
+  # Requires `gh` + the copilot extension.
+  # Install : brew install gh  &&  gh extension install github/gh-copilot
+  # Auth    : gh auth login
+  # Note    : does NOT work inside Docker (browser OAuth). Host-only.
+  #           Copilot CLI is primarily a shell-command suggester, which
+  #           maps poorly to the four olamot. Use it for yetzirah/assiah
+  #           only, and keep briah/atziluth on another provider (hybrid).
+  copilot_cli:
+    description: GitHub Copilot CLI (subscription — shell / git suggestions).
+    olamot:
+      atziluth:
+        provider: cli
+        cli: gh copilot
+        model: gpt-5
+        args: ["suggest", "-t", "shell", "{prompt}"]
+        response_parser: strip_gh_copilot_wrapper
+        timeout: 180
+      briah:
+        provider: cli
+        cli: gh copilot
+        model: gpt-5
+        args: ["explain", "{prompt}"]
+        response_parser: strip_gh_copilot_wrapper
+        timeout: 180
+      yetzirah:
+        provider: cli
+        cli: gh copilot
+        model: gpt-5
+        args: ["suggest", "-t", "shell", "{prompt}"]
+        response_parser: strip_gh_copilot_wrapper
+        timeout: 120
+      assiah:
+        provider: cli
+        cli: gh copilot
+        model: gpt-5
+        args: ["suggest", "-t", "shell", "{prompt}"]
+        response_parser: strip_gh_copilot_wrapper
+        timeout: 60
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
+  # ── Profile : azure_full ────────────────────────────────────
+  # Azure OpenAI. Requires AZURE_API_KEY + AZURE_API_BASE. Model names
+  # are Azure deployment names — edit to match your deployments.
+  azure_full:
+    description: GPT family via Azure OpenAI (edit deployment names below).
+    olamot:
+      atziluth:
+        provider: litellm
+        model: azure/gpt-5
+        timeout: 300
+        max_tokens: 16384
+      briah:
+        provider: litellm
+        model: azure/o1
+        think: true
+        timeout: 300
+      yetzirah:
+        provider: litellm
+        model: azure/gpt-5-mini
+        timeout: 120
+      assiah:
+        provider: litellm
+        model: azure/gpt-5-nano
+        timeout: 60
+    embedding:
+      provider: litellm
+      model: azure/text-embedding-3-small
+      dimensions: 1536
+
+# ═══════════════════════════════════════════════════════════════
+# Sephirot → olam mapping (domain → reasoning tier)
+# ═══════════════════════════════════════════════════════════════
+sephirot:
+  yesod:
+    olam: assiah
+    embedding: true
+  hod:
+    olam: yetzirah
+    judge_olam: briah
+  netzach:
+    olam: assiah
+  tiferet:
+    olam: yetzirah
+  gevurah:
+    olam: yetzirah
+  chesed:
+    olam: yetzirah
+  daat:
+    olam: yetzirah
+  binah:
+    olam: briah
+  chokmah:
+    olam: briah
+  keter:
+    olam: atziluth
+
+# ═══════════════════════════════════════════════════════════════
+# Daemon
+# ═══════════════════════════════════════════════════════════════
+daemon:
+  # Hour 0-23 local time for auto-improvement cycle. Doctrinal value : 23.
+  auto_improve_hour: 21
+  auto_improve_max_cycles: 10
+  auto_improve_timeout: 300
+  novelty_threshold: 0.15
+
+# ═══════════════════════════════════════════════════════════════
+# MazalEngine
+# ═══════════════════════════════════════════════════════════════
+mazalengine:
+  # observe (default) : signal only.
+  # suggest           : observe + emit `mazal_action_proposed` events.
+  # act               : suggest + actually apply the action.
+  # Observe for 2-4 weeks before switching to `act`.
+  # Override via env var : MAZAL_RECTIFICATION_MODE=suggest|act
+  rectification_mode: observe

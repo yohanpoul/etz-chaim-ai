@@ -1,0 +1,38 @@
+# ═══════════════════════════════════════════════════════════════════
+# Heikhal 03 — Arikh Anpin (אריך אנפין)
+# Nouveau heikhal créé au Sprint 10 pour Sha'ar Arikh Anpin (Shaar 13 Etz Chaim)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  heikhal_name_he: "היכל אריך אנפין"
+  heikhal_name_fr: "Palais d'Arikh Anpin"
+  partzuf: arikh_anpin
+  partzuf_name_fr: "Long Visage (Ancien des Jours)"
+  etz_chaim_shaar_reference: 13  # Sha'ar 13 = Sha'ar Arikh Anpin dans numérotation Vital
+  shearim:
+    shaar_01_klalim_de_aa:
+      status: planned_sprint11
+      description: "Principes généraux d'Arikh Anpin"
+    shaar_02_dikna:
+      status: in_progress_sprint10
+      description: "13 Tikkunei Dikna d'A\"A (lecture Vital)"
+    shaar_03_chotem:
+      status: planned_sprint11
+      description: "Chotma (nez) d'A\"A"
+    shaar_04_eynim:
+      status: planned_sprint11
+      description: "Eynim (yeux) d'A\"A"
+    shaar_05_metzach:
+      status: planned_sprint11
+      description: "Metzach (front) d'A\"A"
+    shaar_06_galgulta:
+      status: planned_sprint11
+      description: "Gulgalta (crâne) + 9 Tikkunei Galgulta"
+
+  source_edition_default: "Ashlag HaSulam + Kehot Kabbala Publishing (édition Chabad moderne)"
+  source_tradition: "Etz Chaim de R. Hayyim Vital — lecture Lourianique systématique du Zohar"
+  transposed_by: "Claude Opus 4.7 + human reviewer — Sprint 10 Phase α (2026-04-20)"
+  version: 1
+  strates: ["base"]

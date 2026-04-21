@@ -1,0 +1,27 @@
+# Local development override : build images from source instead of pulling ghcr.io.
+#
+# Usage (maintainer on his machine, or contributor) :
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+#
+# Requires the repo cloned (build context = ../..).
+
+services:
+  app:
+    image: etzchaim-app:dev
+    pull_policy: never
+    build:
+      context: ../..
+      dockerfile: etzchaim/deploy/Dockerfile
+      target: app
+      args:
+        PYTHON_VERSION: "3.13"
+
+  daemon:
+    image: etzchaim-daemon:dev
+    pull_policy: never
+    build:
+      context: ../..
+      dockerfile: etzchaim/deploy/Dockerfile
+      target: daemon
+      args:
+        PYTHON_VERSION: "3.13"

@@ -1,0 +1,70 @@
+<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- Amber rim light -->
+  <linearGradient id="rim-r" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="70%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#ffb000" stop-opacity="0.25"/>
+  </linearGradient>
+  <!-- Metallic gold -->
+  <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffd700"/>
+    <stop offset="50%" stop-color="#ffb000"/>
+    <stop offset="100%" stop-color="#cc8800"/>
+  </linearGradient>
+  <!-- Metallic silver -->
+  <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ccc"/>
+    <stop offset="50%" stop-color="#aaa"/>
+    <stop offset="100%" stop-color="#888"/>
+  </linearGradient>
+  <!-- Filters -->
+  <filter id="glow-amb" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+  </filter>
+  <filter id="glow-sm" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+  </filter>
+  <filter id="glow-md" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+  </filter>
+  <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5"/>
+  </filter>
+</defs>
+
+<defs>
+  <radialGradient id="bg-g" cx="50%" cy="40%">
+    <stop offset="0%" stop-color="#1a0e00"/>
+    <stop offset="100%" stop-color="#0a0a0a"/>
+  </radialGradient>
+</defs>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="url(#bg-g)"/>
+<ellipse cx="100.0" cy="120.0" rx="35.0" ry="45.0" fill="#0e0800" opacity="0.9"/>
+<path d="M65,120 Q40,100 20,80 Q10,70 5,50" fill="none" stroke="#cc6600" stroke-width="3.0" opacity="0.200" stroke-linecap="round"/>
+<path d="M65,120 Q40,100 20,80 Q10,70 5,50" fill="none" stroke="#cc6600" stroke-width="6.0" opacity="0.040" filter="url(#glow-sm)"/>
+<path d="M135,120 Q160,100 180,80 Q190,70 195,50" fill="none" stroke="#cc6600" stroke-width="2.9" opacity="0.188" stroke-linecap="round"/>
+<path d="M135,120 Q160,100 180,80 Q190,70 195,50" fill="none" stroke="#cc6600" stroke-width="5.7" opacity="0.038" filter="url(#glow-sm)"/>
+<path d="M80,155 Q60,175 40,195 Q25,210 15,230" fill="none" stroke="#cc6600" stroke-width="2.7" opacity="0.176" stroke-linecap="round"/>
+<path d="M80,155 Q60,175 40,195 Q25,210 15,230" fill="none" stroke="#cc6600" stroke-width="5.4" opacity="0.035" filter="url(#glow-sm)"/>
+<path d="M120,155 Q140,175 160,195 Q175,210 185,230" fill="none" stroke="#cc6600" stroke-width="2.5" opacity="0.164" stroke-linecap="round"/>
+<path d="M120,155 Q140,175 160,195 Q175,210 185,230" fill="none" stroke="#cc6600" stroke-width="5.1" opacity="0.033" filter="url(#glow-sm)"/>
+<path d="M70,100 Q45,85 25,95 Q10,100 0,110" fill="none" stroke="#cc6600" stroke-width="2.4" opacity="0.152" stroke-linecap="round"/>
+<path d="M70,100 Q45,85 25,95 Q10,100 0,110" fill="none" stroke="#cc6600" stroke-width="4.8" opacity="0.030" filter="url(#glow-sm)"/>
+<path d="M130,100 Q155,85 175,95 Q190,100 200,110" fill="none" stroke="#cc6600" stroke-width="2.2" opacity="0.140" stroke-linecap="round"/>
+<path d="M130,100 Q155,85 175,95 Q190,100 200,110" fill="none" stroke="#cc6600" stroke-width="4.5" opacity="0.028" filter="url(#glow-sm)"/>
+<path d="M90,160 Q85,185 80,210 Q75,230 70,250" fill="none" stroke="#cc6600" stroke-width="2.1" opacity="0.128" stroke-linecap="round"/>
+<path d="M90,160 Q85,185 80,210 Q75,230 70,250" fill="none" stroke="#cc6600" stroke-width="4.2" opacity="0.026" filter="url(#glow-sm)"/>
+<path d="M110,160 Q115,185 120,210 Q125,230 130,250" fill="none" stroke="#cc6600" stroke-width="1.9" opacity="0.116" stroke-linecap="round"/>
+<path d="M110,160 Q115,185 120,210 Q125,230 130,250" fill="none" stroke="#cc6600" stroke-width="3.9" opacity="0.023" filter="url(#glow-sm)"/>
+<path d="M100,80 Q95,60 85,40 Q80,25 75,10" fill="none" stroke="#cc6600" stroke-width="1.8" opacity="0.104" stroke-linecap="round"/>
+<path d="M100,80 Q95,60 85,40 Q80,25 75,10" fill="none" stroke="#cc6600" stroke-width="3.6" opacity="0.021" filter="url(#glow-sm)"/>
+<path d="M100,80 Q105,60 115,40 Q120,25 125,10" fill="none" stroke="#cc6600" stroke-width="1.7" opacity="0.092" stroke-linecap="round"/>
+<path d="M100,80 Q105,60 115,40 Q120,25 125,10" fill="none" stroke="#cc6600" stroke-width="3.3" opacity="0.018" filter="url(#glow-sm)"/>
+<circle cx="100.0" cy="120.0" r="18.0" fill="#1a0a00" opacity="0.8"/>
+<circle cx="100.0" cy="120.0" r="12.0" fill="#cc6600" opacity="0.04" filter="url(#glow-sm)"/>
+<ellipse cx="90.0" cy="112.0" rx="3.0" ry="2.0" fill="#331a00" opacity="0.6"/>
+<ellipse cx="110.0" cy="112.0" rx="3.0" ry="2.0" fill="#331a00" opacity="0.6"/>
+<ellipse cx="100.0" cy="100.0" rx="70.0" ry="50.0" fill="#cc6600" opacity="0.02" filter="url(#glow-amb)"/>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="none" stroke="#cc6600" stroke-width="1.5" opacity="0.1"/>
+</svg>

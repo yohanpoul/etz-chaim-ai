@@ -1,0 +1,121 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+
+# Environment
+.env
+.env.local
+
+# DB local
+etz_chaim.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Garak venv
+.garak-venv/
+
+# Temp
+.tmp_uploads/
+/tmp/
+
+# IDE
+.vscode/
+.idea/
+
+# PDF (large binaries)
+*.pdf
+
+# Claude Code dev environment (perso — pas le repo)
+# Pattern `**/.claude/` attrape aussi les .claude/ nested (ex: sous sifrei_yesod/sefarim/*/raw/).
+**/.claude/
+.claude/settings.json
+.claude/settings.local.json
+.claude/agent-memory/
+.claude/agents/
+.claude/commands/
+.claude/hooks/
+.claude/rules/
+.claude/skills/
+
+# Omer temp
+.omer_suggestions.json
+
+# Etz Chaim state
+.etz-chaim/
+web/static/assets/dungeon/
+
+# External read-only corpora (Sprint 10+)
+sifrei_yesod/external/sefaria_export/
+sifrei_yesod/external/stanford_pdf_parsed.json
+
+# ── Phase G publication (Sprint 10) — large/binary assets ──
+# Web assets (générés, lourds — ne pas commit)
+web/static/assets/characters/
+web/static/assets/dungeon/
+web/static/assets/furniture/
+web/static/assets/models/
+web/static/_originals/
+
+# Halom (recherche exploratoire — pas scope public v0.1.0)
+halom/output/
+
+# Sandbox (expérimentations, non-production)
+sandbox/
+
+# Sefaria cache local (régénérable via scripts/fetch_sefaria_cache.py)
+sefaria_cache/
+
+# Scheduled tasks lock (runtime)
+.claude/scheduled_tasks.lock
+
+# Internal dev notes / audits / experiments (local only)
+audits/
+notes/
+experiments/
+backup/
+.superpowers/
+docs/superpowers/
+docs/internal/
+
+# Root-level internal docs
+AUDIT_*.md
+HANDOFF_*.md
+*_LEAK_*.md
+prompt-sifrei-yesod-infra.md
+WORLD_TEMPLE_AUDIT.md
+KABBALISTIC_AUDIT.md
+ROADMAP.md
+CLAUDE.md
+
+# Internal phase specs & diagnostics (local only)
+phases/
+diagnostic/
+
+# Dated / internal docs (local only)
+docs/audit-*.md
+docs/brainstorm_*.md
+docs/rpg_vision_*.md
+docs/veille-*.md
+docs/release-notes-*.md
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# MkDocs build
+site/

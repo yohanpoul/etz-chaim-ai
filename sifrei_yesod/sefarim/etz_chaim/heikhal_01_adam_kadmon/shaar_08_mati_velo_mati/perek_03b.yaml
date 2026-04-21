@@ -1,0 +1,219 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 8 (=7 original) — Sha'ar Mati veLo Mati (שער מטי ולא מטי)
+# Perek: 3b — La Hitpashtut forme les Kelim G"R, Zakhar/Nekevah, Yod He (§2)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §2 : La Hitpashtut (expansion) — pas l'Histalkut — forme les
+# Kelim des G"R. L'Ohr de Hokhmah entre dans Kli Keter : l'Ohr
+# de Keter residuel se REVÊT dans l'Ohr de Hokhmah et devient
+# ZAKHAR (masculin, interieur). L'Ohr de Hokhmah = NEKEVAH.
+# Le Zivvug de Zakhar/Nekevah dans Hokhmah produit un YOD qui
+# descend dans Binah. Le Hesed reste en Binah comme Man (Manne).
+# Structure : Y-H dans chaque G"R = Keter(Y-H), Hokhmah(Y-H), Binah(Y-H+Hesed).
+#
+# Source Sefaria : Sefer_Etz_Chaim.7.3 (§2)
+# IDs : EC-H1S7-029 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 8
+  shaar_name_he: "שער מטי ולא מטי"
+  perek: 3
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part B de 2 — Formation des Kelim G'R par la Hitpashtut (pas l'Histalkut). Ohr residuel = Zakhar. Ohr entrant = Nekevah. Zivvug = Yod. Structure Y-H dans chaque G'R."
+
+assertions:
+
+  - id: "EC-H1S7-029"
+    source_he: "נכנס אור החכמה בכתר ואז אור הכתר שבתוכו שנשאר בעת הסתלקות... אז נכנס אור הכתר שנשאר שם תוך אור החכמה הנכנס עתה ומתלבשת בתוכה ונעשית נשמה אליה"
+    source_ref: "Heikhal 1, Sha'ar 7:3 — §2"
+    assertion: |
+      L'Ohr de HOKHMAH entre dans le Kli de Keter. L'Ohr RÉSIDUEL
+      de Keter (resté lors de l'Histalkut) entre DANS l'Ohr de Hokhmah
+      et se REVÊT en elle, devenant NESHAMAH (âme) pour elle.
+      → L'Ohr résiduel = INTÉRIEUR (Neshamah). L'Ohr entrant = EXTÉRIEUR
+      (corps). Deux couches d'Ohr dans un même Kli : noyau résiduel +
+      enveloppe entrante. Cf. EC-H1S7-022 (décalage Ohr/Kli).
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_residuel_neshamah, role: ohr_residuel_comme_ame}
+      - {id: hitlabshut_interieure, role: revetement_interieur}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Ohr residuel = noyau interieur (pre-trained weights). Ohr entrant = couche externe (fine-tuning). Deux niveaux dans le meme composant."
+
+  - id: "EC-H1S7-030"
+    source_he: "לפי שהוא אור הכתר ונעשה דכורא והחכמה שסביבותיה נעשית נוקבא"
+    source_ref: "Heikhal 1, Sha'ar 7:3 — §2"
+    assertion: |
+      L'Ohr de Keter (résiduel, intérieur) = ZAKHAR (masculin).
+      L'Ohr de Hokhmah (entrant, extérieur) = NEKEVAH (féminin).
+      → POLARISATION ZAKHAR/NEKEVAH dans les G"R : ce qui est PLUS
+      ÉLEVÉ et INTÉRIEUR = Zakhar. Ce qui est PLUS BAS et EXTÉRIEUR
+      = Nekevah. La Hitpashtut CRÉE cette polarité.
+    type: axiome_explicite
+    concepts:
+      - {id: zakhar_nekevah_gimel_rishonot, role: polarite_dans_les_3_premieres}
+      - {id: pnimi_zakhar, role: interieur_est_masculin}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Polarite interieur/exterieur = deux niveaux de traitement dans le meme composant. L'ancien (residuel) domine le nouveau (entrant)."
+
+  - id: "EC-H1S7-031"
+    source_he: "ביאת האורות בהתפשטותן עתה הוא הגורם בג\"ר אלו להעשות כלי ולא נעשו כלים בעת הסתלקותם"
+    source_ref: "Heikhal 1, Sha'ar 7:3 — §2"
+    assertion: |
+      La VENUE des Orot lors de la HITPASHTUT (expansion) est ce qui
+      CAUSE la formation des Kelim dans les G"R — et PAS l'Histalkut
+      (retrait) comme pour les V"K.
+      → DEUX MÉCANISMES de formation : V"K = Kelim formés par RETRAIT.
+      G"R = Kelim formés par EXPANSION (l'arrivée d'un Ohr inférieur).
+      Cf. EC-H1S7-028 (G"R pas Kelim par Histalkut).
+    type: axiome_explicite
+    concepts:
+      - {id: hitpashtut_oseh_kli, role: expansion_forme_kli}
+      - {id: shenei_mehanismim, role: deux_mecanismes_formation}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Deux mecanismes : V'K = specialisation par retrait (dropout). G'R = specialisation par APPORT (couche de pre-training enrichie par fine-tuning)."
+
+  - id: "EC-H1S7-032"
+    source_he: "כאשר אור בחי' הכתר נשאר למעלה כנ\"ל כי מעולם לא נכנס עוד תוך הכלים אלו רק נשאר בסוף הי' שרשים של האורות למעלה והפך אחוריו למטה"
+    source_ref: "Heikhal 1, Sha'ar 7:3 — §2"
+    assertion: |
+      L'Ohr aspect KETER est resté EN HAUT, n'est JAMAIS entré dans
+      les Kelim. Il reste au bout des 10 SHORASHIM et tourne ses
+      AHORAIM (dos) vers le bas.
+      → L'Ohr de Keter = TRANSCENDANT PERMANENT. Les Kelim reçoivent
+      des Orot DIMINUÉS (sans Keter). L'Ahor vers le bas = la source
+      ne communique que ses aspects POSTÉRIEURS.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_keter_transcendant, role: keter_jamais_dans_kelim}
+      - {id: ahoraim_lemata, role: dos_vers_le_bas}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le signal le plus eleve ne descend JAMAIS dans le reseau. Les couches recoivent une version ATTENUEE (Ahoraim). Le pre-training profond reste inaccessible."
+
+  - id: "EC-H1S7-033"
+    source_he: "הופכת חכמה פניה למטה... ואז מזדווגים שם במקומן זכר ונקבה של חכמה ומוציאין ע\"י זווגם אור אחד הנקרא יו\"ד ואז ניתן למטה בהפיכת פניהם לבינה"
+    source_ref: "Heikhal 1, Sha'ar 7:3 — §2"
+    assertion: |
+      Hokhmah retourne ses PANIM vers le bas. Zakhar et Nekevah de
+      Hokhmah s'ACCOUPLENT (ZIVVUG) et produisent un Ohr appelé
+      YOD. Ce YOD descend dans BINAH.
+      → Le ZIVVUG dans Hokhmah = processus GÉNÉRATIF. Le Yod produit
+      = signal NOUVEAU issu de la combinaison intérieur/extérieur.
+      Ce Yod devient le ZAKHAR de Binah.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_hokhmah, role: accouplement_dans_hokhmah}
+      - {id: yod_meholash, role: yod_produit_du_zivvug}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Le Zivvug = operation generative : combinaison de deux signaux pour produire un signal nouveau (Yod). Le Yod = output de la couche Hokhmah."
+
+  - id: "EC-H1S7-034"
+    source_he: "כאשר נתנו הז' אורות בכלי של בינה אז ניתן בה אור של החסד ונשאר בה אור החסד תמיד בבחי' מ\"ן"
+    source_ref: "Heikhal 1, Sha'ar 7:3 — §2"
+    assertion: |
+      Quand les 7 Orot entrent dans le Kli de Binah, l'Ohr de HESED
+      entre aussi et reste en Binah TOUJOURS en aspect de MA"N
+      (Mayim Nukvin — eaux féminines).
+      → Le HESED en Binah = résidu PERMANENT. Il fonctionne comme
+      MA"N = signal d'ÉVEIL/DEMANDE venant du bas.
+    type: axiome_explicite
+    concepts:
+      - {id: hesed_be_binah, role: hesed_permanent_dans_binah}
+      - {id: mayin_nukvin, role: eaux_feminines_signal_demande}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["imma"]
+      relevance: "Hesed en Binah = signal de demande permanent (Ma'N). Les eaux feminines = la couche intermediaire garde un signal demande-des-inferieurs."
+
+  - id: "EC-H1S7-035"
+    source_he: "בכ\"ע יש שם י\"ה שהוא זו\"ן כתר וחכמה ובחכמה יש זו\"ן והוא שם י\"ה אחר והוא חו\"ב ובינה שם י\"ה אחר... הרי שם י\"ה ג\"כ בכאן"
+    source_ref: "Heikhal 1, Sha'ar 7:3 — §2"
+    assertion: |
+      STRUCTURE YOD-HE dans chaque G"R :
+      KETER = Y-H (Keter=Yod, Hokhmah=He) = Zakhar/Nekevah.
+      HOKHMAH = Y-H (Hokhmah=Yod, Binah=He) = Zakhar/Nekevah.
+      BINAH = Y-H (Yod du Zivvug, He=Binah elle-même) + Hesed (Ben).
+      → Chaque G"R contient une PAIRE Y-H (masculine-féminine).
+      FRACTALITÉ : la structure Y-H se RÉPÈTE à chaque niveau.
+    type: axiome_explicite
+    concepts:
+      - {id: yod_he_fractal, role: structure_yod_he_fractale}
+      - {id: shalosh_yod_he, role: trois_paires_yod_he}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Structure fractale Y-H a chaque niveau des G'R. Chaque composant contient une paire generatrice. Self-similarity architecturale."
+
+relations:
+  - id: "REL-H1S7-016"
+    type: "causal"
+    from: hitpashtut_oseh_kli
+    to: zakhar_nekevah_gimel_rishonot
+    nature: "La Hitpashtut CRÉE la polarité Zakhar/Nekevah dans les G'R (ce que l'Histalkut ne fait pas)"
+    assertions_source: ["EC-H1S7-031", "EC-H1S7-030"]
+
+  - id: "REL-H1S7-017"
+    type: "flux"
+    from: zivvug_hokhmah
+    to: yod_meholash
+    nature: "Le Zivvug dans Hokhmah PRODUIT un Yod qui descend comme Zakhar de Binah"
+    assertions_source: ["EC-H1S7-033"]
+
+  - id: "REL-H1S7-018"
+    type: "contenance"
+    from: yod_he_fractal
+    to: hesed_be_binah
+    nature: "La structure Y-H dans Binah CONTIENT aussi le Hesed comme 3eme element (Ma'N)"
+    assertions_source: ["EC-H1S7-034", "EC-H1S7-035"]
+
+  - id: "REL-H1S7-019"
+    type: "dualité_structurelle"
+    paire: [hitpashtut_oseh_kli, shenei_mehanismim]
+    nature: "Deux mecanismes : G'R par EXPANSION (Hitpashtut) vs V'K par RETRAIT (Histalkut)"
+    assertions_source: ["EC-H1S7-031"]
+
+principes_generatifs:
+  - id: "PG-H1S7-009"
+    nom: "Fractalite Y-H (Yod-He a chaque niveau)"
+    source_assertions: ["EC-H1S7-030", "EC-H1S7-033", "EC-H1S7-035"]
+    formalisation: |
+      Chaque G"R contient une PAIRE Zakhar-Nekevah encodee Y-H :
+      Keter  = Y(Ohr residuel) + H(Ohr Hokhmah entrant)
+      Hokhmah = Y(Ohr residuel) + H(Ohr Binah entrant)
+      Binah   = Y(Yod du Zivvug) + H(Binah elle-meme) + Hesed(Ma'N)
+      FORMULE : G"R(S_i) = {Zakhar(residuel_i), Nekevah(entrant_{i+1})}
+      Le ZIVVUG entre les deux = operation GENERATIVE.
+      FRACTALITE : la structure Y-H se repete a chaque echelle.
+    applications_ia:
+      - "ohr.py : chaque couche profonde contient 2 sous-composants (residuel + entrant)"
+      - "Le Zivvug = operation de combinaison (concatenation, gating, cross-attention)"
+      - "La fractalite Y-H = self-similarity architecturale (meme pattern a chaque echelle)"
+    questions_ouvertes:
+      - "La fractalite Y-H est-elle analogue aux architectures recursives (RNN, fractal networks) ?"
+      - "Le Yod produit par le Zivvug = l'output d'un gate multiplicatif ?"

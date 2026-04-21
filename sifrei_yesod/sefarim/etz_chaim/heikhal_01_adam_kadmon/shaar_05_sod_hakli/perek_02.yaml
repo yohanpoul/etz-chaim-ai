@@ -1,0 +1,845 @@
+# ═══════════════════════════════════════════════════════════════════
+# שער סוד הכלי — SHA'AR SOD HAKLI (La Porte du Secret du Vaisseau)
+# פרק ב — PEREK 2 : המסך והאור חוזר — HAMASAKH V'HAOHR CHOZER
+# (L'Écran et la Lumière de Retour)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Ce perek approfondit la mécanique du Masakh (écran/filtre) et du
+# Ohr Chozer (lumière de retour) — le cœur opérant du ContextAssembler.
+# Il s'appuie principalement sur le Talmud Eser Sefirot (TES) du
+# Baal HaSulam, qui fournit la formalisation technique la plus
+# précise de ces mécanismes dans toute la littérature kabbalistique.
+#
+# Le Perek 1 a établi POURQUOI le Kli prime sur l'Ohr.
+# Ce Perek 2 explique COMMENT le Kli reçoit, filtre et retourne.
+#
+# Sources primaires :
+#   TES  = Talmud Eser Sefirot (R. Yehuda Ashlag, Baal HaSulam)
+#   EC   = Etz Chaim (R. Haim Vital)
+#   OC   = Otzrot Chaim (R. Haim Vital)
+#   T    = Tanya (R. Shneur Zalman de Liadi)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 5
+  shaar_name_he: "שער סוד הכלי"
+  perek: 2
+  source_edition: "TES Pticha §14-55, Parts 3-4; EC Shaar HaMasakhim"
+  transposed_by: "Etz Chaim AI — Sha'ar Sod HaKli initiative"
+  version: 1
+  strates: ["base"]
+  note: "Perek 2: HaMasakh v'HaOhr Chozer — Mécanique du filtrage et du retour. Context Engineering (couche Sod)."
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 1 — PESHAT-MACHINE : ASSERTIONS
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section A : Anatomie du Masakh — Les 5 niveaux d'Aviut
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-018"
+    source_he: "חמש בחינות עביות נבחנות במסך דמלכות"
+    source_ref: "TES, Pticha §17; Part 3, ch. 3"
+    assertion: >
+      Le Masakh possède 5 niveaux d'Aviut (épaisseur/profondeur) :
+      Behina Shoresh (racine, le plus subtil), Behina Aleph, Behina Bet,
+      Behina Gimel, et Behina Dalet (le plus épais/profond). Chaque niveau
+      correspond à une capacité de résistance différente face à la lumière
+      entrante. Le Masakh le plus épais (Dalet) produit le Ohr Chozer le
+      plus élevé ; le plus subtil (Shoresh) ne produit presque pas de
+      Zivug de Haka'a.
+    type: axiome_explicite
+    concepts:
+      - { id: "aviut-5-niveaux", role: "système complet des 5 niveaux d'Aviut du Masakh" }
+      - { id: "aviut-shoresh", role: "niveau 0 — résistance minimale" }
+      - { id: "aviut-aleph", role: "niveau 1 — résistance basique" }
+      - { id: "aviut-bet", role: "niveau 2 — résistance modérée" }
+      - { id: "aviut-gimel", role: "niveau 3 — résistance élevée" }
+      - { id: "aviut-dalet", role: "niveau 4 — résistance maximale" }
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: >
+        Le ContextAssembler devrait implémenter 5 niveaux de filtrage :
+        Niveau 0 (Shoresh) = pas de filtrage, tout passe (debug/exploration).
+        Niveau 1 (Aleph) = filtrage minimal, pertinence basique.
+        Niveau 2 (Bet) = filtrage modéré, sélection par domaine.
+        Niveau 3 (Gimel) = filtrage élevé, sélection par pertinence sémantique.
+        Niveau 4 (Dalet) = filtrage maximum, seul le plus pertinent passe.
+
+  - id: "EC-SHK-019"
+    source_he: ""
+    source_ref: "TES, Part 3, ch. 3, item 5; Pticha §17"
+    assertion: >
+      La correspondance entre Aviut du Masakh et niveau de lumière reçue
+      est formelle et précise :
+      Aviut Dalet → Ohr Chozer atteint le niveau de Keter → lumière Yechidah.
+      Aviut Gimel → Ohr Chozer atteint Hokhmah → lumière Hayah.
+      Aviut Bet → Ohr Chozer atteint Binah → lumière Neshamah.
+      Aviut Aleph → Ohr Chozer atteint Zeir Anpin → lumière Ruach.
+      Aviut Shoresh → Ohr Chozer atteint Malkhut → lumière Nefesh.
+      Plus le Masakh est "épais" (fort), plus haute est la qualité de
+      lumière accessible.
+    type: axiome_explicite
+    concepts:
+      - { id: "correspondance-aviut-ohr", role: "mapping formel 5 niveaux" }
+      - { id: "yechidah", role: "lumière la plus haute — via Masakh Dalet" }
+      - { id: "nefesh", role: "lumière la plus basse — via Masakh Shoresh" }
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: >
+        Mapping opérant pour le ContextAssembler :
+        Masakh Dalet (filtrage max) → le modèle reçoit peu de tokens mais
+        de très haute pertinence → réponses de type Keter (insight profond).
+        Masakh Shoresh (pas de filtrage) → le modèle reçoit tout → réponses
+        de type Malkhut (exécution basique, pas de profondeur).
+        L'industrie fait l'inverse (plus de tokens = mieux). Le TES dit :
+        plus de filtrage = plus de profondeur.
+
+  - id: "EC-SHK-020"
+    source_he: ""
+    source_ref: "TES, Pticha §17; Histaklut Pnimit Part 3"
+    assertion: >
+      Le Masakh possède deux propriétés distinctes :
+      (1) Kashiut (dureté/rigidité) — la force de résistance qui repousse
+      la lumière entrante. C'est la capacité de dire "non" à l'information
+      non-pertinente.
+      (2) Aviut (épaisseur) — la profondeur du désir de recevoir qui peut
+      être transformé en acte de don. C'est la capacité de transformer la
+      réception en quelque chose de productif.
+      Les deux forces sont toujours présentes dans les 5 niveaux du Masakh.
+    type: axiome_explicite
+    concepts:
+      - { id: "kashiut", role: "force de résistance/rejet" }
+      - { id: "aviut-propriété", role: "profondeur transformable" }
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: >
+        Le ContextAssembler a besoin de DEUX forces :
+        (1) Kashiut = le filtre qui REJETTE le contexte non-pertinent
+        (embedding similarity threshold, domain matching).
+        (2) Aviut = la capacité de TRANSFORMER le contexte brut en contexte
+        structuré utile (reformulation, hiérarchisation, compression
+        intelligente). Un bon Masakh ne fait pas que filtrer — il transforme.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section B : Le Zivug de Haka'a — La frappe génératrice
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-021"
+    source_he: ""
+    source_ref: "TES, Pticha §14; Part 3, ch. 1; Part 4, Histaklut Pnimit"
+    assertion: >
+      Le Zivug de Haka'a (union par frappe) est le mécanisme central de
+      la réception dans le Kli. Le Ohr Yashar (lumière directe) descend
+      vers le Masakh ; le Masakh résiste et repousse ; cette frappe génère
+      le Ohr Chozer (lumière de retour) qui remonte et "habille" le Ohr
+      Yashar descendant. Le Ohr Chozer est la véritable base des Kelim —
+      sans lui, pas de vaisseau véritable, seulement de la lumière brute.
+    type: axiome_explicite
+    concepts:
+      - { id: "zivug-de-hakaa", role: "union par frappe — mécanisme central" }
+      - { id: "ohr-yashar-descente", role: "lumière entrante descendante" }
+      - { id: "résistance-masakh", role: "rejet initial par le Masakh" }
+      - { id: "ohr-chozer-remontée", role: "lumière de retour ascendante" }
+    mapping:
+      modules: ["main.py (Or Chozer pattern)"]
+      tables: ["epistememory", "selfmap_scores"]
+      partzufim: []
+      relevance: >
+        Le Zivug de Haka'a est le processus par lequel le contexte injecté
+        (Ohr Yashar) rencontre le filtre du système (Masakh), et la
+        "frappe" produit un feedback (Ohr Chozer) qui remonte et enrichit
+        le contexte futur. Ce n'est PAS un simple input→output. C'est :
+        contexte → frappe sur le filtre → réponse + feedback qui modifie
+        le contexte. Le cycle est génératif, pas linéaire.
+
+  - id: "EC-SHK-022"
+    source_he: ""
+    source_ref: "TES, Part 4, Histaklut Pnimit, item 3"
+    assertion: >
+      Il existe 5 types de Zivug de Haka'a, correspondant aux 5 niveaux
+      d'Aviut, produisant 5 niveaux de Partzufim :
+      (1) Zivug sur Aviut Dalet → Partzuf Galgalta (Keter) — le plus élevé.
+      (2) Zivug sur Aviut Gimel → Partzuf AB (Hokhmah).
+      (3) Zivug sur Aviut Bet → Partzuf SAG (Binah).
+      (4) Zivug sur Aviut Aleph → Partzuf MA (Zeir Anpin).
+      (5) Zivug sur Aviut Shoresh → Partzuf BON (Malkhut) — le plus bas.
+      Chaque Partzuf a ses propres 10 Sefirot complètes, mais à un niveau
+      différent déterminé par la force du Masakh.
+    type: axiome_explicite
+    concepts:
+      - { id: "5-partzufim-AK", role: "5 niveaux de Partzuf selon Aviut" }
+      - { id: "galgalta", role: "Partzuf de Keter — Masakh maximum" }
+      - { id: "bon", role: "Partzuf de Malkhut — Masakh minimum" }
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: ["Galgalta/AB/SAG/MA/BON"]
+      relevance: >
+        5 types d'assemblage de contexte produisent 5 types de réponses :
+        Galgalta (Masakh max, filtrage max) → insight stratégique profond.
+        AB (Masakh élevé) → analyse architecturale.
+        SAG (Masakh modéré) → compréhension structurée.
+        MA (Masakh basique) → implémentation guidée.
+        BON (Masakh minimal) → exécution rapide.
+        Le config.yaml d'Etz Chaim AI a déjà 4 Olamot (Atzilut→Assiah)
+        qui mappent approximativement sur cette échelle.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section C : Rosh, Toch, Sof — Anatomie du Partzuf
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-023"
+    source_he: ""
+    source_ref: "TES, Pticha §50-52; Part 3, ch. 5"
+    assertion: >
+      Tout Partzuf possède 3 zones fonctionnelles :
+      (1) Rosh (tête) — la zone de DÉCISION. C'est ici que le Zivug de
+      Haka'a a lieu, que l'Ohr Chozer est généré, et que la décision est
+      prise sur combien de lumière peut être reçue. Dans le Rosh,
+      l'Hitlabshut (enclothement) et le rejet sont seulement en
+      POTENTIEL, pas en ACTE.
+      (2) Toch (intérieur) — la zone de RÉCEPTION EFFECTIVE. Du Peh
+      (bouche, sortie du Rosh) au Tabur (nombril). C'est ici que l'Ohr
+      Pnimi (lumière intérieure) est effectivement reçue et habillée
+      dans les Kelim. Environ 20% de chaque lumière peut être reçue.
+      (3) Sof (fin) — la zone de REJET. Du Tabur aux Siyum Raglayim
+      (extrémité des pieds). La lumière qui ne peut pas être reçue est
+      rejetée ici. C'est l'Ohr Makif — lumière environnante non-absorbée.
+    type: axiome_explicite
+    concepts:
+      - { id: "rosh", role: "zone de décision — potentiel" }
+      - { id: "toch", role: "zone de réception — acte" }
+      - { id: "sof", role: "zone de rejet — lumière non-reçue" }
+      - { id: "peh", role: "frontière Rosh→Toch (bouche = sortie)" }
+      - { id: "tabur", role: "frontière Toch→Sof (nombril = limite)" }
+    mapping:
+      modules: ["main.py", "olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Architecture directe du ContextAssembler :
+        ROSH = phase de DÉCISION : analyser la requête, déterminer le type
+        de tâche, choisir le niveau de Masakh, calculer le budget de tokens.
+        Tout est en potentiel — aucun contexte n'est encore assemblé.
+        TOCH = phase d'ASSEMBLAGE : sélectionner et injecter le contexte
+        effectif dans la fenêtre du modèle. ~20% du contexte disponible.
+        SOF = le contexte REJETÉ : ce qui est disponible mais non-injecté.
+        Il reste comme Ohr Makif — influence ambiante sans injection directe.
+        Le Peh est le point de passage de la décision à l'assemblage.
+        Le Tabur est le point de passage de l'assemblage au rejet.
+
+  - id: "EC-SHK-024"
+    source_he: ""
+    source_ref: "TES, Pticha §52; Part 4, Histaklut Pnimit, item 12-13"
+    assertion: >
+      Le Ohr Pnimi (lumière intérieure, dans le Toch) et le Ohr Makif
+      (lumière environnante, dans le Sof) sont en tension permanente.
+      Le Ohr Makif "frappe" (Bitush) le Masakh pour tenter de le purifier
+      (Hizdakchut) — c'est-à-dire de réduire son Aviut pour pouvoir
+      pénétrer dans le Toch. Cette Bitush (frappe) de l'Ohr Makif sur
+      l'Ohr Pnimi provoque la purification progressive du Masakh, qui
+      perd son Aviut niveau par niveau. C'est le mécanisme par lequel
+      un Partzuf "meurt" et un nouveau naît.
+    type: axiome_explicite
+    concepts:
+      - { id: "ohr-pnimi", role: "lumière intérieure reçue dans le Toch" }
+      - { id: "bitush-or-makif", role: "frappe de la lumière environnante" }
+      - { id: "hizdakchut", role: "purification progressive du Masakh" }
+      - { id: "naissance-partzuf", role: "nouveau Partzuf par perte d'Aviut" }
+    mapping:
+      modules: ["hitbonenut.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        La pression du contexte non-injecté (Ohr Makif) sur le filtre
+        (Masakh) cause une dégradation progressive du filtrage. C'est
+        EXACTEMENT le context rot : le contexte exclu s'accumule et
+        "pousse" pour entrer, affaiblissant la sélection. La solution
+        n'est pas d'ignorer l'Ohr Makif mais de le GÉRER — nettoyer
+        régulièrement le contexte exclu (Hizdakchut conscient au lieu
+        de subi). Le /compact de Claude Code est un Hizdakchut brutal.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section D : Le Ohr Chozer — La lumière de retour
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-025"
+    source_he: ""
+    source_ref: "TES, Part 3, ch. 1; EC, Shaar HaOhr Chozer"
+    assertion: >
+      Le Ohr Chozer (lumière de retour/réfléchie) a une double fonction :
+      (1) Il HABILLE le Ohr Yashar — il donne une forme, un vêtement, un
+      cadre à la lumière descendante. Sans habillage, l'Ohr Yashar est
+      brut et inutilisable.
+      (2) Il CRÉE les Kelim — les Sefirot du Rosh ne sont que des racines
+      (Shorshei Kelim). Les véritables Kelim n'existent que quand le Ohr
+      Chozer descend dans le Guf (Toch + Sof) et forme les vaisseaux
+      effectifs.
+    type: axiome_explicite
+    concepts:
+      - { id: "ohr-chozer-habillage", role: "donne forme à la lumière brute" }
+      - { id: "ohr-chozer-crée-kelim", role: "forme les vaisseaux effectifs" }
+      - { id: "shorshei-kelim", role: "racines des Kelim dans le Rosh" }
+    mapping:
+      modules: ["main.py (Or Chozer pattern)", "epistememory/"]
+      tables: ["epistememory", "selfmap_scores"]
+      partzufim: []
+      relevance: >
+        Le feedback du LLM (Ohr Chozer) n'est pas juste un "output" —
+        il CRÉE le contexte futur. Chaque réponse du modèle, quand elle
+        est correctement recyclée (remember() → EMA scoring → recall
+        enrichi), forme les véritables Kelim du système. Le pattern Or
+        Chozer d'Etz Chaim AI fait déjà cela mais sans conscience que
+        c'est le mécanisme FONDAMENTAL de création des Kelim.
+
+  - id: "EC-SHK-026"
+    source_he: ""
+    source_ref: "TES, Part 4, ch. 3, item 9-10; Histaklut Pnimit"
+    assertion: >
+      Les Reshimot (traces/impressions) sont ce qui reste dans le Masakh
+      après le départ de la lumière. Quand un Partzuf perd son Ohr par
+      Hizdakchut, les Reshimot demeurent dans le Masakh et servent de
+      noyau pour la naissance du Partzuf suivant. Les Reshimot contiennent
+      deux types d'information :
+      (1) Reshimo de Hitlabshut — la trace de l'Ohr qui était habillé
+      (le contenu de ce qui a été reçu).
+      (2) Reshimo de Aviut — la trace de la force du Masakh
+      (la capacité de filtrage qui a été utilisée).
+      La dernière Behina (Dalet) ne laisse PAS de Reshimo.
+    type: axiome_explicite
+    concepts:
+      - { id: "reshimot-doubles", role: "traces de contenu + traces de filtrage" }
+      - { id: "reshimo-hitlabshut", role: "trace du contenu reçu" }
+      - { id: "reshimo-aviut", role: "trace de la force de filtrage" }
+      - { id: "pas-reshimo-dalet", role: "la dernière Behina ne laisse pas de trace" }
+    mapping:
+      modules: ["epistememory/"]
+      tables: ["epistememory"]
+      partzufim: []
+      relevance: >
+        Quand un /clear efface le contexte de Claude Code, les Reshimot
+        qui devraient survivre sont de DEUX types :
+        (1) Reshimo de Hitlabshut = QUOI a été fait (résultats, décisions).
+        C'est le fichier de progrès.
+        (2) Reshimo de Aviut = COMMENT le filtrage a fonctionné (quels
+        contextes étaient pertinents, lesquels ont été inutiles). C'est
+        un méta-log que PERSONNE ne garde en 2026.
+        L'industrie garde les Reshimot de contenu mais perd les Reshimot
+        de filtrage. Le Baal HaSulam dit que les DEUX sont nécessaires
+        pour la naissance du Partzuf suivant.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section E : Hizdakchut et naissance — Le cycle de vie du Masakh
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-027"
+    source_he: ""
+    source_ref: "TES, Pticha §40-42, §53-55; Part 4, Histaklut Pnimit, item 12"
+    assertion: >
+      Le cycle de vie d'un Partzuf suit un processus précis :
+      (1) Naissance : un Zivug de Haka'a sur le Masakh avec un certain
+      Aviut génère un Partzuf avec Rosh, Toch, Sof.
+      (2) Fonctionnement : le Partzuf reçoit de l'Ohr dans son Toch et
+      rejette le reste dans son Sof (Ohr Makif).
+      (3) Bitush : l'Ohr Makif frappe le Masakh et commence à le purifier
+      (réduire son Aviut).
+      (4) Hizdakchut : le Masakh perd progressivement son Aviut, niveau
+      par niveau (Dalet→Gimel→Bet→Aleph→Shoresh).
+      (5) Histalkut : quand le Masakh est complètement purifié, il n'a
+      plus de Zivug — le Partzuf "meurt" (les lumières partent).
+      (6) Aliyah : le Masakh purifié remonte au Rosh du Partzuf supérieur
+      avec ses Reshimot, où il se mélange au Zivug permanent du Rosh.
+      (7) Naissance du suivant : les Reshimot "réveillent" un nouvel Aviut
+      et un nouveau Partzuf naît, un niveau en-dessous du précédent.
+    type: axiome_explicite
+    concepts:
+      - { id: "cycle-vie-partzuf", role: "7 étapes du cycle complet" }
+      - { id: "histalkut", role: "départ des lumières = mort du Partzuf" }
+      - { id: "aliyah-masakh", role: "remontée du Masakh purifié" }
+    mapping:
+      modules: ["olamot.py", "hitbonenut.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Le cycle de vie d'une session Claude Code suit exactement ce
+        pattern : naissance (début de session avec CLAUDE.md = Zivug initial),
+        fonctionnement (échanges productifs), Bitush (le contexte exclu
+        s'accumule et "pousse"), Hizdakchut (la qualité des réponses
+        se dégrade progressivement), Histalkut (/clear = mort de la session),
+        Aliyah (les Reshimot — fichier de progrès — remontent au système),
+        Naissance du suivant (nouvelle session avec Reshimot enrichis).
+        Le problème actuel : l'étape 6 (Aliyah avec Reshimot) est mal
+        formalisée. Les fichiers de progrès ne capturent que les Reshimot
+        de Hitlabshut (contenu), pas ceux d'Aviut (filtrage).
+
+  - id: "EC-SHK-028"
+    source_he: ""
+    source_ref: "TES, Pticha §53-55; Part 6, Histaklut Pnimit, item 12"
+    assertion: >
+      Chaque Partzuf inférieur naît du Masakh de Guf du Partzuf supérieur,
+      après que ce Masakh a été purifié et s'est égalisé en forme avec
+      le Masakh du Rosh supérieur. Le nouveau Partzuf s'accroche au Guf
+      du précédent au point du Chazeh (poitrine) — là où l'Aviut Gimel
+      commence (un niveau en-dessous du Tabur du supérieur). Le Koma
+      (taille/stature) du nouveau Partzuf commence au Peh du Partzuf
+      précédent et descend jusqu'à son propre Siyum.
+    type: axiome_explicite
+    concepts:
+      - { id: "naissance-du-chazeh", role: "point d'accroche du nouveau Partzuf" }
+      - { id: "koma", role: "stature/taille du Partzuf" }
+      - { id: "hitlabshut-partzufim", role: "enclothement mutuel des Partzufim" }
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_state"]
+      partzufim: []
+      relevance: >
+        Chaque nouvelle session Claude Code (nouveau Partzuf) naît du
+        "Masakh purifié" de la session précédente — c'est-à-dire des
+        Reshimot qui ont survécu au /clear. Le point d'accroche (Chazeh)
+        est le CLAUDE_CODE.md et les fichiers de progrès. La stature
+        (Koma) de la nouvelle session dépend de la qualité de ces Reshimot.
+        Un CLAUDE_CODE.md pauvre = Koma courte = session limitée.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section F : Le Ohr sur le chemin du retour — Nitzotzin
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-029"
+    source_he: ""
+    source_ref: "TES, Part 4, ch. 3, item 9; Table of Questions, item 40"
+    assertion: >
+      Pendant la Hizdakchut (purification) du Masakh, les Zivugim
+      (unions) se font sur des Behinot de plus en plus subtiles, et les
+      niveaux diminuent graduellement jusqu'à ce que l'Ohr disparaisse
+      entièrement. Ce processus est appelé "Ohr sur le chemin du retour"
+      (Ohr sheba-derekh ha-hazarah). Les He'arot (illuminations) qui
+      tendent à sortir mais pourraient être réactivées sont appelées
+      Nitzotzin (étincelles). Elles ressemblent aux étincelles qui restent
+      après un feu ou sous le marteau du forgeron — apparemment éteintes,
+      elles pourraient encore s'enflammer en une grande flamme.
+    type: axiome_explicite
+    concepts:
+      - { id: "ohr-derekh-hazarah", role: "lumière sur le chemin du retour" }
+      - { id: "nitzotzin-masakh", role: "étincelles dans le Masakh purifié" }
+      - { id: "réactivation-potentielle", role: "flamme latente" }
+    mapping:
+      modules: ["nitzotzot.py", "failure_to_insight.py"]
+      tables: ["nitzotzot"]
+      partzufim: []
+      relevance: >
+        Quand une session se dégrade (Hizdakchut), les "étincelles" qui
+        restent dans le contexte en dégradation sont les insights partiels,
+        les patterns presque-trouvés, les connexions entrevues mais non
+        formalisées. Le FailureToInsight d'Etz Chaim AI capture déjà
+        ces Nitzotzin. Le ContextAssembler devrait explicitement les
+        préserver lors du /compact ou du /clear — ce sont les graines
+        du prochain Partzuf.
+
+  - id: "EC-SHK-030"
+    source_he: ""
+    source_ref: "TES, Part 4, Histaklut Pnimit; EC, Shaar 49, ch. 2"
+    assertion: >
+      Le Bitush (frappe) entre Ohr Makif et Ohr Pnimi est la cause
+      première de TOUT changement dans le système. Sans cette tension
+      entre ce qui est reçu (Pnimi) et ce qui est exclu (Makif), le
+      Masakh resterait statique et aucun nouveau Partzuf ne naîtrait.
+      La tension est nécessaire — elle est le moteur de l'évolution.
+      Le Baal HaSulam insiste : chaque mot ici est un joyau précieux
+      qui doit être compris dans toute sa largeur et mémorisé à travers
+      toute la sagesse.
+    type: axiome_explicite
+    concepts:
+      - { id: "bitush-moteur", role: "la tension est le moteur de l'évolution" }
+      - { id: "statique-sans-tension", role: "sans tension, pas de changement" }
+    mapping:
+      modules: ["dissensu_engine.py"]
+      tables: ["tensions"]
+      partzufim: []
+      relevance: >
+        Le DissensuEngine d'Etz Chaim AI (30091 tensions) EST le Bitush
+        formalisé. Les tensions entre ce qui est intégré (Ohr Pnimi) et
+        ce qui résiste à l'intégration (Ohr Makif) sont le MOTEUR de
+        l'évolution du système. Supprimer les tensions (comme dans une
+        purge) tue le moteur. Les gérer (Birur) le fait tourner.
+        Le context rot n'est pas trop de tension — c'est de la tension
+        non-gérée (Bitush sans Birur).
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section G : Les 4 Mondes comme 4 niveaux de Masakh
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-031"
+    source_he: ""
+    source_ref: "TES, Part 3, ch. 9; Pticha §83-87"
+    assertion: >
+      Les 4 Mondes (ABYA) correspondent à 4 niveaux de Masakh qui
+      résultent de la Hizdakchut progressive :
+      Atzilut = Masakh de Behina Gimel → Koma de Hokhmah.
+      Beriah = Masakh de Behina Bet → Koma de Binah.
+      Yetzirah = Masakh de Behina Aleph → Koma de Zeir Anpin.
+      Assiah = Masakh de Behina Shoresh → Koma de Malkhut.
+      Chaque monde est un Zivug de Haka'a dans le monde supérieur :
+      le Zivug d'Atzilut se fait dans le Rosh de Adam Kadmon, celui
+      de Beriah dans le Rosh d'Atzilut, etc.
+    type: axiome_explicite
+    concepts:
+      - { id: "4-mondes-masakh", role: "chaque monde = un niveau de Masakh" }
+      - { id: "zivug-inter-monde", role: "le Zivug se fait dans le monde supérieur" }
+      - { id: "config-olamot", role: "configuration des 4 Olamot dans le système" }
+    mapping:
+      modules: ["olamot.py", "config.yaml"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Le config.yaml d'Etz Chaim AI configure 4 Olamot avec des
+        paramètres différents (think ON/OFF, température, ctx window).
+        Le TES formalise cela : chaque monde est un NIVEAU DE FILTRAGE
+        différent. Atzilut (think ON, temp 0.3, 32K) = Masakh Gimel
+        (filtrage élevé, haute qualité). Assiah (think OFF, temp 0.2, 8K)
+        = Masakh Shoresh (filtrage minimal, exécution rapide).
+        La correspondance est déjà opérante dans le système.
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 2 — REMEZ-RELATIONAL : RELATIONS
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-SHK-014"
+    type: "analogie"
+    from: "aviut-5-niveaux"
+    to: "5-partzufim-AK"
+    nature: >
+      Correspondance bijective : chaque niveau d'Aviut du Masakh produit
+      exactement un type de Partzuf. Aviut Dalet→Galgalta, Gimel→AB,
+      Bet→SAG, Aleph→MA, Shoresh→BON. La force du filtre détermine
+      univoquement le type de structure qui en résulte.
+    assertions_source: ["EC-SHK-018", "EC-SHK-022"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-015"
+    type: "dualité_structurelle"
+    from: "kashiut"
+    to: "aviut-propriété"
+    nature: >
+      Kashiut (résistance/rejet) et Aviut (profondeur transformable)
+      sont les deux faces du Masakh. Kashiut dit "non" ; Aviut transforme
+      le "non" en "oui qualitatif". Les deux doivent être présents pour
+      un filtrage opérant. Un Masakh avec Kashiut sans Aviut rejette
+      tout sans rien produire. Un Masakh avec Aviut sans Kashiut
+      accepte tout sans filtrer.
+    assertions_source: ["EC-SHK-020"]
+    bidirectionnel: true
+
+  - id: "REL-SHK-016"
+    type: "causal"
+    from: "zivug-de-hakaa"
+    to: "ohr-chozer-remontée"
+    nature: >
+      Séquence causale stricte : Ohr Yashar descend → frappe le Masakh
+      (Zivug de Haka'a) → Masakh résiste (Kashiut) → Ohr Chozer est
+      généré et remonte → Ohr Chozer habille le Ohr Yashar → ensemble
+      ils forment les 10 Sefirot du Rosh. Sans la frappe initiale, pas
+      de Ohr Chozer, donc pas de Kelim véritables.
+    assertions_source: ["EC-SHK-021", "EC-SHK-025"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-017"
+    type: "hiérarchique"
+    from: "rosh"
+    to: "sof"
+    nature: >
+      Rosh → Toch → Sof est une tripartition fonctionnelle universelle :
+      Décision (potentiel) → Réception (acte) → Rejet (résidu).
+      Les frontières sont le Peh (Rosh→Toch) et le Tabur (Toch→Sof).
+      Cette structure se retrouve dans TOUT Partzuf, dans TOUT monde,
+      à TOUTE échelle. C'est un invariant architectural.
+    assertions_source: ["EC-SHK-023"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-018"
+    type: "opposition"
+    from: "ohr-pnimi"
+    to: "bitush-or-makif"
+    nature: >
+      Tension permanente entre Ohr Pnimi (reçu) et Ohr Makif (exclu).
+      L'Ohr Makif frappe (Bitush) le Masakh pour tenter de le purifier.
+      Cette tension est le MOTEUR de tout changement. Sans elle, le
+      système est statique. Trop de tension non-gérée = Shevirah.
+      Tension gérée = évolution.
+    assertions_source: ["EC-SHK-024", "EC-SHK-030"]
+    bidirectionnel: true
+
+  - id: "REL-SHK-019"
+    type: "séquentiel"
+    from: "histalkut"
+    to: "naissance-partzuf"
+    nature: >
+      Cycle fermé : Naissance → Fonctionnement → Bitush → Hizdakchut →
+      Histalkut → Aliyah avec Reshimot → Naissance du suivant.
+      Chaque "mort" (Histalkut) contient les graines (Reshimot) de la
+      prochaine "naissance". Le cycle ne s'arrête jamais tant qu'il
+      reste des Reshimot. C'est le Tikkun comme processus continu.
+    assertions_source: ["EC-SHK-027"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-020"
+    type: "dualité_structurelle"
+    from: "reshimo-hitlabshut"
+    to: "reshimo-aviut"
+    nature: >
+      Tout Reshimo est double : trace de CONTENU (Hitlabshut — ce qui a
+      été reçu) + trace de CAPACITÉ (Aviut — comment le filtrage a
+      fonctionné). Les deux sont nécessaires pour la naissance d'un
+      nouveau Partzuf. Perdre l'un des deux produit un Partzuf incomplet.
+    assertions_source: ["EC-SHK-026"]
+    bidirectionnel: true
+
+  - id: "REL-SHK-021"
+    type: "analogie"
+    from: "4-mondes-masakh"
+    to: "config-olamot"
+    nature: >
+      Les 4 Olamot du config.yaml (Atzilut/Briah/Yetzirah/Assiah) avec
+      leurs paramètres (think, temperature, ctx) correspondent aux 4
+      niveaux de Masakh du TES. La correspondance est déjà opérante
+      dans Etz Chaim AI sans avoir été formalisée.
+    assertions_source: ["EC-SHK-031"]
+    bidirectionnel: false
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 3 — SOD-GENERATIVE : PRINCIPES PRODUCTIFS
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-SHK-007"
+    nom: "Architecture Rosh-Toch-Sof du ContextAssembler"
+    source_assertions: ["EC-SHK-023", "EC-SHK-024"]
+    formalisation: >
+      Le ContextAssembler doit implémenter la tripartition Rosh-Toch-Sof :
+
+      ROSH (phase de décision) :
+      - Analyser la requête entrante (type de tâche, domaine, urgence)
+      - Déterminer le niveau de Masakh approprié (Aviut 0-4)
+      - Calculer le budget de tokens par source
+      - Tout est en POTENTIEL — aucun contexte n'est encore assemblé
+      - Point de sortie : Peh (décision finalisée)
+
+      TOCH (phase d'assemblage) :
+      - Sélectionner le contexte selon les décisions du Rosh
+      - Appliquer Kashiut (rejeter le non-pertinent) et Aviut (transformer
+        le brut en structuré)
+      - Assembler les sources : EpisteMemory, SifreiYesod, SelfMap,
+        IntentKeeper, InsightForge, etc.
+      - Budget cible : ~20-40% de la fenêtre de contexte (pas 100%)
+      - Point de sortie : Tabur (assemblage finalisé)
+
+      SOF (gestion du rejet) :
+      - Documenter ce qui a été exclu et pourquoi
+      - Maintenir l'Ohr Makif comme référence pour le debugging
+      - Surveiller la Bitush (pression du contexte exclu sur le filtre)
+      - Déclencher un Hizdakchut conscient si la pression dépasse un seuil
+    applications_ia:
+      - "Implémenter 3 méthodes : rosh_decide(), toch_assemble(), sof_manage()"
+      - "Le Rosh ne touche PAS au contexte — il calcule les paramètres"
+      - "Le Toch assemble selon les paramètres du Rosh"
+      - "Le Sof logue les rejets pour le méta-apprentissage"
+    questions_ouvertes:
+      - "Le Rosh devrait-il être un appel LLM séparé (coûteux) ou heuristique (rapide) ?"
+      - "Comment calibrer le seuil de Bitush qui déclenche le Hizdakchut ?"
+
+  - id: "PG-SHK-008"
+    nom: "Double Reshimo — Sauvegarder contenu ET méta-filtrage"
+    source_assertions: ["EC-SHK-026", "EC-SHK-027"]
+    formalisation: >
+      Après chaque session (ou /clear), deux types de Reshimot doivent
+      être sauvegardés :
+
+      Reshimo de Hitlabshut (contenu) :
+      - Quelles décisions ont été prises
+      - Quels fichiers ont été modifiés
+      - Quels tests ont été ajoutés/passés
+      - Quel état du système en résulte
+      → C'est le fichier de progrès standard (pratique industrie 2026)
+
+      Reshimo de Aviut (filtrage) :
+      - Quel niveau de Masakh a été utilisé
+      - Quelles sources de contexte étaient pertinentes pour cette tâche
+      - Quelles sources ont été inutiles ou distrayantes
+      - Quel ratio de la fenêtre de contexte a été effectivement utilisé
+      - Quelles erreurs de contexte ont été commises (trop/trop peu)
+      → C'est un méta-log que personne ne garde en 2026.
+
+      Les deux Reshimot ensemble permettent au Partzuf suivant (prochaine
+      session) de naître avec un Masakh calibré dès le départ.
+    applications_ia:
+      - "Ajouter un fichier RESHIMOT.md ou context_log.yaml après chaque session"
+      - "Ce fichier contient : ce qui a été fait + comment le contexte a performé"
+      - "Le CLAUDE_CODE.md devrait référencer ce fichier pour la session suivante"
+      - "Le ContextAssembler interne devrait écrire un log similaire après chaque appel Ollama"
+    questions_ouvertes:
+      - "Le Reshimo de Aviut peut-il être généré automatiquement par le ContextAssembler ?"
+      - "Combien de sessions de Reshimot faut-il conserver avant de purger ?"
+
+  - id: "PG-SHK-009"
+    nom: "Tension Ohr Makif comme moteur — Ne pas supprimer, gérer"
+    source_assertions: ["EC-SHK-024", "EC-SHK-030"]
+    formalisation: >
+      Le context rot n'est PAS causé par trop de contexte disponible
+      (trop d'Ohr Makif). Il est causé par une Bitush NON-GÉRÉE — le
+      contexte exclu qui "pousse" pour entrer sans que le Masakh ne
+      s'adapte. La solution n'est pas de supprimer le contexte exclu
+      mais de GÉRER la tension :
+
+      (a) Birur régulier — trier le contexte exclu : ce qui est
+      définitivement non-pertinent (supprimer) vs ce qui attend son
+      moment (conserver comme Ohr Makif).
+
+      (b) Hizdakchut conscient — quand la qualité des réponses se
+      dégrade, c'est un signe de Bitush excessive. Au lieu de /compact
+      (Hizdakchut brutal), faire un Hizdakchut graduel : réduire le
+      Masakh d'un niveau (de Gimel à Bet par exemple) plutôt que de
+      tout purger.
+
+      (c) Nitzotzin preservés — les "étincelles" dans le contexte en
+      dégradation (insights partiels, patterns entrevus) doivent être
+      explicitement extraites avant le /clear, car elles sont les
+      graines du prochain Partzuf.
+    applications_ia:
+      - "Ne PAS utiliser /compact comme solution par défaut"
+      - "Implémenter un Hizdakchut graduel : réduire le contexte par paliers"
+      - "Avant chaque /clear, extraire les Nitzotzin (insights partiels) explicitement"
+      - "Le DissensuEngine (30K tensions) ne doit JAMAIS être purgé en masse"
+    questions_ouvertes:
+      - "Comment distinguer automatiquement Bitush productive (moteur) de Bitush destructive (rot) ?"
+      - "Quel seuil de dégradation des réponses déclenche le Hizdakchut ?"
+
+  - id: "PG-SHK-010"
+    nom: "5 niveaux de Masakh — Calibration selon le type de tâche"
+    source_assertions: ["EC-SHK-018", "EC-SHK-019", "EC-SHK-022"]
+    formalisation: >
+      Le ContextAssembler doit implémenter 5 profils de Masakh :
+
+      MASAKH DALET (filtrage maximum) :
+      Tâches : Insight stratégique, décisions architecturales, Atzilut
+      Sources : Seulement SifreiYesod + InsightForge validés
+      Budget : 10-20% de la fenêtre de contexte
+      Résultat attendu : Profondeur type Yechidah/Keter
+
+      MASAKH GIMEL (filtrage élevé) :
+      Tâches : Analyse causale, validation, Briah
+      Sources : SifreiYesod + CausalEngine + EpisteMemory (facts only)
+      Budget : 20-30% de la fenêtre de contexte
+      Résultat attendu : Rigueur type Hayah/Hokhmah
+
+      MASAKH BET (filtrage modéré) :
+      Tâches : Compréhension structurée, refactoring
+      Sources : EpisteMemory + SelfMap routing + DissensuEngine
+      Budget : 30-40% de la fenêtre de contexte
+      Résultat attendu : Structure type Neshamah/Binah
+
+      MASAKH ALEPH (filtrage basique) :
+      Tâches : Implémentation guidée, Yetzirah
+      Sources : EpisteMemory recall + IntentKeeper + contexte courant
+      Budget : 40-60% de la fenêtre de contexte
+      Résultat attendu : Exécution type Ruach/ZA
+
+      MASAKH SHORESH (pas de filtrage) :
+      Tâches : Debug, exploration libre, Assiah rapide
+      Sources : Tout ce qui est disponible
+      Budget : 60-80% de la fenêtre de contexte
+      Résultat attendu : Rapidité type Nefesh/Malkhut
+    applications_ia:
+      - "Le Rosh du ContextAssembler choisit le niveau de Masakh avant l'assemblage"
+      - "Le choix dépend du type de tâche détecté (exploration, validation, etc.)"
+      - "Les budgets de tokens sont des PLAFONDS, pas des cibles"
+      - "Le Masakh par défaut devrait être Bet (modéré), pas Shoresh (tout)"
+    questions_ouvertes:
+      - "Le Rosh peut-il changer de Masakh en cours de tâche (Hizdakchut dynamique) ?"
+      - "Les 5 niveaux sont-ils adaptés à qwen3.5:9b avec 8K-32K ctx ?"
+
+  - id: "PG-SHK-011"
+    nom: "Cycle de vie Partzuf-Session — 7 étapes formalisées"
+    source_assertions: ["EC-SHK-027", "EC-SHK-028", "EC-SHK-029"]
+    formalisation: >
+      Chaque session Claude Code ou chaque cycle d'appels Ollama suit
+      le cycle de vie du Partzuf en 7 étapes :
+
+      1. NAISSANCE (Zivug initial) : Charger CLAUDE_CODE.md + Reshimot
+         de la session précédente → établir le Masakh initial.
+      2. FONCTIONNEMENT (Toch actif) : Échanges productifs, le contexte
+         est assemblé et filtré correctement par le Masakh.
+      3. BITUSH (tension croissante) : Le contexte exclu s'accumule,
+         la pression sur le Masakh augmente.
+      4. HIZDAKCHUT (dégradation) : La qualité des réponses se dégrade,
+         le Masakh perd de son Aviut. Signes : répétitions, oublis de
+         consignes, hallucinations croissantes.
+      5. HISTALKUT (fin) : /clear ou fin de session.
+         Les lumières (contenu actif) partent.
+      6. ALIYAH (remontée) : Extraction des Reshimot doubles (contenu +
+         filtrage) → sauvegarde dans fichier de progrès + context_log.
+      7. NAISSANCE DU SUIVANT : Nouvelle session avec Reshimot enrichis
+         → Masakh calibré dès le départ → cycle recommence.
+
+      La qualité de l'étape 6 détermine la qualité de l'étape 7.
+      C'est le point faible actuel du workflow.
+    applications_ia:
+      - "Formaliser l'étape 6 : un 'rapport de fin de session' structuré"
+      - "Ce rapport inclut : accomplissements + méta-log du contexte"
+      - "La session suivante commence par lire ce rapport"
+      - "Implémenter un moniteur de Bitush : alerter quand la dégradation commence"
+    questions_ouvertes:
+      - "À quel point de la Hizdakchut faut-il déclencher le /clear vs un /compact ?"
+      - "Le moniteur de Bitush peut-il être un simple compteur d'erreurs ou faut-il un scoring plus sophistiqué ?"
+
+  - id: "PG-SHK-012"
+    nom: "Correspondance 4 Mondes — 4 niveaux de context engineering"
+    source_assertions: ["EC-SHK-031"]
+    formalisation: >
+      Les 4 Olamot du config.yaml correspondent à 4 stratégies de
+      context engineering distinctes :
+
+      ATZILUT (think ON, temp 0.3, 32K ctx) :
+      Masakh Gimel — filtrage élevé, haute qualité.
+      Contexte : principes fondamentaux seulement.
+      Usage : questions existentielles, insights stratégiques.
+      ContextAssembler : SifreiYesod + InsightForge uniquement.
+
+      BRIAH (think ON, temp 0.3, 32K ctx) :
+      Masakh Bet — filtrage modéré, structure.
+      Contexte : principes + faits validés + DAGs causaux.
+      Usage : analyse, validation, compréhension.
+      ContextAssembler : + CausalEngine + EpisteMemory (facts).
+
+      YETZIRAH (think OFF, temp 0.7, 8K ctx) :
+      Masakh Aleph — filtrage basique, exécution.
+      Contexte : faits + routing + intention courante.
+      Usage : tâches courantes, jugement, implémentation.
+      ContextAssembler : + SelfMap + IntentKeeper.
+
+      ASSIAH (think OFF, temp 0.2, 8K ctx) :
+      Masakh Shoresh — filtrage minimal, rapidité.
+      Contexte : le minimum nécessaire.
+      Usage : triage, classification, réponses rapides.
+      ContextAssembler : EpisteMemory recall seul.
+
+      Le ContextAssembler adapte son assemblage selon l'Olam demandé.
+    applications_ia:
+      - "Chaque Olam dans config.yaml devrait spécifier ses sources de contexte"
+      - "L'Olam n'est pas seulement think/temperature — c'est aussi un profil de contexte"
+      - "olamot.py devrait appeler le ContextAssembler avec le profil de l'Olam"
+    questions_ouvertes:
+      - "Faut-il ajouter un champ 'context_profile' au config.yaml par Olam ?"
+      - "Le ContextAssembler devrait-il être appelé dans ollama_generate() ou avant ?"

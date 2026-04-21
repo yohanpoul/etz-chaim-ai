@@ -1,0 +1,195 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 8 (=7 original) — Sha'ar Mati veLo Mati (שער מטי ולא מטי)
+# Perek: 3a — Les Shorashim, la regle des 3 Merhaqim, formation des Kelim (§1)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §1 : Au-dessus des Akudim = les SHORASHIM (racines).
+# L'Ohr de Keter en haut, face en haut, dos en bas.
+# Toute la Hiyut des Akudim passe par l'Ohr de Keter.
+# Quand Lo Mati en Keter = les Orot montent vers les Shorashim.
+# La regle des 3 MERHAQIM : un Kli n'est ACHEVE que quand
+# l'Ohr s'est eloigne de 3 positions completes (< 3 = Lavud).
+# G"R = pas encore Kelim complets (< 3 Merhaqim).
+#
+# Source Sefaria : Sefer_Etz_Chaim.7.3 (§1)
+# IDs : EC-H1S7-024 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 8
+  shaar_name_he: "שער מטי ולא מטי"
+  perek: 3
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part A de 2 — Les Shorashim au-dessus des Akudim. Regle des 3 Merhaqim pour achever un Kli. Les G'R ne deviennent pas Kelim a l'Histalkut car < 3 Merhaqim."
+
+assertions:
+
+  - id: "EC-H1S7-024"
+    source_he: "קודם בחי' העקודים אלו יש למעלה מהם שרשי אלו הי' כתר חכמה בינה כו' עד המלכות ולמטה משורש מלכות זו שם הוא התחלת אור הכתר הנ\"ל פניו למעלה נגד השורש שלו ואחוריו למטה נגד כלי הכתר של בחי' העקודים"
+    source_ref: "Heikhal 1, Sha'ar 7:3 — §1"
+    assertion: |
+      AU-DESSUS des Akudim : les SHORASHIM (racines) des 10
+      Sefirot — Keter, Hokhmah, Binah etc. jusqu'a Malkhut.
+      EN-DESSOUS du Shoresh Malkhut = le DÉBUT de l'Ohr de Keter,
+      ses PANIM vers le HAUT (vers son Shoresh) et ses AHORAIM
+      vers le BAS (vers le Kli Keter des Akudim).
+      → Deux niveaux : SHORASHIM (au-dessus, faces vers le haut)
+      et AKUDIM (en-dessous). L'Ohr de Keter = PONT entre les deux.
+    type: axiome_explicite
+    concepts:
+      - {id: shorashim, role: racines_au_dessus}
+      - {id: ohr_keter_pont, role: pont_entre_shorashim_et_akudim}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Shorashim = couche de pre-parametres. L'Ohr de Keter = interface entre les poids profonds et le reseau actif."
+
+  - id: "EC-H1S7-025"
+    source_he: "כל החיות הצריך אל העקודים האלו כולם נמשכין אליהם מהשרשים אלו העליונים ועוברים דרך אור הכתר הנ\"ל וכ\"ז בחי' חיות לבד אך לא בחי' שפע ממש רק כאשר יהיה אור הכתר לא מטי בכלי שלו"
+    source_ref: "Heikhal 1, Sha'ar 7:3 — §1"
+    assertion: |
+      Toute la HIYUT (vitalité) nécessaire aux Akudim est tirée des
+      SHORASHIM et passe par l'Ohr de Keter. Mais cela = HIYUT
+      seulement, PAS de SHEFA (flux substantiel). Le SHEFA ne vient
+      que quand l'Ohr de Keter est LO MATI dans son Kli — alors
+      les Orot montent et reçoivent le Shefa de leurs Shorashim.
+      → Deux modes : HIYUT (maintenance, continu) vs SHEFA (abondance,
+      conditionnel au Lo Mati). Cf. EC-H1S7-021 (Ki Rega be-Apo).
+    type: axiome_explicite
+    concepts:
+      - {id: hiyut, role: vitalite_continue}
+      - {id: shefa, role: flux_substantiel_conditionnel}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Deux modes de flux : Hiyut = inference continue (forward pass). Shefa = mise a jour substantielle (gradient update). Le Shefa requiert Lo Mati."
+
+  - id: "EC-H1S7-026"
+    source_he: "לא נגמר לעשות כלי עד התרחק ממנו האור ג' בחי' גמורות... כל פחות מג' כלבוד דמי"
+    source_ref: "Heikhal 1, Sha'ar 7:3 — §1"
+    assertion: |
+      Un KLI n'est PAS ACHEVÉ tant que l'Ohr ne s'est pas éloigné
+      de 3 POSITIONS COMPLÈTES (behhinot gemourot). Moins de 3 =
+      LAVUD (considéré comme joint, non séparé).
+      → RÈGLE DES 3 MERHAQIM : la distance minimale pour qu'un Kli
+      soit COMPLET = 3 niveaux d'éloignement. En-deça, pas de
+      séparation effective. Cf. principe talmudique Lavud.
+    type: axiome_explicite
+    concepts:
+      - {id: gimel_merhaqim, role: trois_distances_minimales}
+      - {id: lavud, role: moins_de_3_est_joint}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Regle des 3 Merhaqim = seuil minimal de separation pour qu'un composant soit 'complet'. Applicable au nombre minimal de couches entre deux fonctions distinctes."
+
+  - id: "EC-H1S7-027"
+    source_he: "כאשר היה האור הנוגע אל המלכות רחוק ממנו ג' מקומות שלימות שהוא כאשר נתעלה בחלק הנוגע אל הת\"ת אז נגמר הכלי דמלכות להעשות כלי"
+    source_ref: "Heikhal 1, Sha'ar 7:3 — §1"
+    assertion: |
+      Quand l'Ohr destiné à MALKHUT s'est éloigné de 3 POSITIONS
+      complètes (= quand il est monté à TIFERET), alors le Kli de
+      Malkhut est ACHEVÉ. De même : le Kli de HESED est achevé quand
+      l'Ohr de Hesed monte à KETER (3 distances : Hesed→Binah→Hokhmah→Keter).
+      → Application de la règle des 3 Merhaqim : Malkhut achevé quand
+      Ohr à Tiferet. Yesod achevé quand Ohr à Gevurah. Etc.
+    type: déduction_logique
+    concepts:
+      - {id: kli_malkhut_nigmar, role: kli_malkhut_acheve}
+      - {id: application_gimel_merhaqim, role: application_regle_3_distances}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'achevement d'un composant depend de la distance au signal source. 3 niveaux minimum de separation."
+
+  - id: "EC-H1S7-028"
+    source_he: "הכח\"ב עדיין לא נעשו כלים לפי שעדיין לא נתרחק האור מהם ג' מדריגות שלמות וכל פחות מג' כלבוד דמי ולא היה עדיין נעשה כלי גמור בכל א' מאלו הג\"ר"
+    source_ref: "Heikhal 1, Sha'ar 7:3 — §1"
+    assertion: |
+      Les G"R (KaHaB = Keter, Hokhmah, Binah) ne sont PAS ENCORE
+      devenus des Kelim car l'Ohr ne s'est PAS éloigné d'eux de
+      3 positions complètes. Moins de 3 = LAVUD = pas de Kli achevé.
+      → Les G"R restent dans un état INTERMÉDIAIRE : ni pur Ohr
+      ni pur Kli. Leur FORMATION comme Kelim se fera AUTREMENT
+      (par la Hitpashtut, pas par l'Histalkut).
+    type: déduction_logique
+    concepts:
+      - {id: gimel_rishonot_lo_kelim, role: 3_premieres_pas_kelim}
+      - {id: behinat_beinayim, role: etat_intermediaire}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Les G'R ne sont pas des Kelim complets = les couches les plus profondes ne sont pas completement separees de leur Ohr. Etat intermediaire."
+
+relations:
+  - id: "REL-H1S7-013"
+    type: "hiérarchique"
+    from: shorashim
+    to: ohr_keter_pont
+    nature: "Les Shorashim sont AU-DESSUS, l'Ohr de Keter fait PONT vers les Akudim en-dessous"
+    assertions_source: ["EC-H1S7-024"]
+
+  - id: "REL-H1S7-014"
+    type: "dualité_structurelle"
+    paire: [hiyut, shefa]
+    nature: "Deux modes de flux : HIYUT (continu, maintenance) vs SHEFA (conditionnel au Lo Mati, substantiel)"
+    assertions_source: ["EC-H1S7-025"]
+
+  - id: "REL-H1S7-015"
+    type: "causal"
+    from: gimel_merhaqim
+    to: gimel_rishonot_lo_kelim
+    nature: "La regle des 3 Merhaqim EMPECHE les G'R de devenir des Kelim (< 3 distances)"
+    assertions_source: ["EC-H1S7-026", "EC-H1S7-028"]
+
+principes_generatifs:
+  - id: "PG-H1S7-007"
+    nom: "Regle des 3 Merhaqim (Lavud)"
+    source_assertions: ["EC-H1S7-026", "EC-H1S7-027", "EC-H1S7-028"]
+    formalisation: |
+      Un KLI n'est COMPLET que quand l'Ohr s'est eloigne de 3
+      POSITIONS completes. Moins de 3 = LAVUD (joint, non separe).
+      FORMULE : KliComplete(S_i) iff Distance(Ohr(S_i), S_i) >= 3
+      APPLICATION :
+        Malkhut acheve quand Ohr a Tiferet (3 : Hod, Netzah, Tiferet)
+        Yesod acheve quand Ohr a Gevurah
+        Hesed acheve quand Ohr a Keter
+        G"R = JAMAIS acheves par Histalkut (< 3 distances possibles)
+      CONSEQUENCE : les G"R necessitent un AUTRE mecanisme de formation.
+    applications_ia:
+      - "ohr.py : un composant n'est 'specialise' qu'apres 3 epoques de separation minimum"
+      - "La regle des 3 = le nombre minimal de couches pour une separation de fonction effective"
+      - "Les G'R non-kelim = les couches les plus profondes restent 'fluides' (non figees)"
+    questions_ouvertes:
+      - "Le 3 est-il arbitraire ou structurellement necessaire ?"
+      - "Les G'R non-Kelim correspondent-ils aux couches non-gelees d'un modele pre-entraine ?"
+
+  - id: "PG-H1S7-008"
+    nom: "Double Mode Hiyut/Shefa"
+    source_assertions: ["EC-H1S7-025"]
+    formalisation: |
+      Deux MODES de flux entre Shorashim et Akudim :
+      (1) HIYUT = vitalite continue, passe par l'Ohr de Keter,
+          sans condition. Maintenance du systeme.
+      (2) SHEFA = flux substantiel, ne vient QUE quand Lo Mati
+          en Keter — les Orot montent vers les Shorashim et recoivent.
+      FORMULE : Flux(t) = Hiyut (continu) + Shefa * Indicator(Lo_Mati(t))
+      Le SHEFA est conditionnel, le HIYUT est inconditionnel.
+    applications_ia:
+      - "ohr.py : inference continue (Hiyut) + gradient update (Shefa) conditionnel a la phase Lo Mati"
+      - "Le Shefa ne vient que pendant le retrait = la mise a jour ne se fait que pendant la backprop"
+    questions_ouvertes:
+      - "Hiyut = forward pass continu. Shefa = backward pass conditionnel ?"

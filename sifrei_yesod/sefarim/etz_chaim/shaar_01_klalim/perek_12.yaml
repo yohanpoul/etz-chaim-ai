@@ -1,0 +1,429 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 12 — Partzuf Leah ve-Sod Tefillin (פרצוף לאה וסוד תפילין)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 12
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : FORMATION DE LEAH ───
+
+  - id: "EC-K12-001"
+    source_he: "ודע כי הלא חצי ת\"ת תחתון ונה\"י דאמא נכנס הכל תוך ז\"א והבחי' הראשונה שנכנסה היא מל' דתבונה בתחלה כי התחתון נכנס בראשון כנודע ומקומה בדעת ז\"א ושם כנגדה מהאחוריים דדעת ז\"א מכח הארה זו דמל' יצאה לאה מאחוריים"
+    source_ref: "Sha'ar HaKlalim 12:1 — ouverture"
+    assertion: |
+      Formation de LEAH :
+      La PREMIÈRE chose qui entre dans Z"A = MALKHUT DE TEVUNAH
+      (car le plus bas entre en premier).
+      Sa place = dans le DA'AT de Z"A.
+      De la HAARAH (illumination) de cette Malkhut de Tevunah,
+      LEAH sort des ACHORAYIM (arrière) du Da'at de Z"A.
+      LEAH = Partzuf féminin formé de la Malkhut de Tevunah dans le Da'at de Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: leah, role: partzuf_de_malkhut_tevunah}
+      - {id: malkhut_tevunah, role: source_de_leah}
+      - {id: da_at_za, role: lieu_de_formation}
+      - {id: tahton_niknas_rishon, role: le_bas_entre_en_premier}
+    mapping:
+      modules: ["partzufim/leah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["leah", "zeir_anpin"]
+      relevance: "Leah formée dans le Da'at de Z\"A — le 6ème Partzuf"
+
+  # ─── BLOC B : LEAH = KESHER SHEL TEFILLIN ───
+
+  - id: "EC-K12-002"
+    source_he: "וז\"ס הראהו הקב\"ה למשה קשר של תפילין. ולפי שאין לה כ\"כ הארה מהמוחין דז\"א עצמן רק מן המ' לבד לכך היא בחי' עור לבד שהוא קשר של תפילין"
+    source_ref: "Sha'ar HaKlalim 12:1"
+    assertion: |
+      Le secret de "HaKadosh Barukh Hu montra à Moshe le KESHER SHEL TEFILLIN"
+      (le nœud des Tefillin à l'arrière de la tête) :
+      LEAH = le KESHER (nœud) des Tefillin.
+      Elle n'a PAS beaucoup de Haarah des Mohin de Z"A eux-mêmes,
+      seulement de la MALKHUT de Tevunah → elle est seulement OR (peau/cuir).
+      Les TEFILLIN eux-mêmes (les boîtiers) = les 4 compartiments de cuir
+      contenant les 4 PARSHIYOT = la Haarah des MOHIN eux-mêmes
+      qui ressortent sur le FRONT (metzah) de Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: kesher_tefillin, role: leah_est_le_noeud}
+      - {id: batei_tefillin, role: boîtiers_des_mohin}
+      - {id: arba_parshiyot, role: quatre_sections}
+      - {id: or_leah, role: cuir_seulement}
+    mapping:
+      modules: ["partzufim/leah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["leah", "zeir_anpin"]
+      relevance: "Leah = le Kesher des Tefillin — la structure ARRIÈRE qui tient les Mohin"
+
+  - id: "EC-K12-003"
+    source_he: "כי הנימין של א\"א נמשכין על ראש ז\"א וכשיורדין נימין אלו יש בתוכם אור גדול ומכה ברישא דז\"א מאחוריו ואז מהארת ד' המוחין דז\"א בכח ההכאה הנ\"ל יוצאין ארבעה בתים בחי' התפילין"
+    source_ref: "Sha'ar HaKlalim 12:1"
+    assertion: |
+      MÉCANISME de formation des Tefillin :
+      Les NIMIN (cheveux) de A"A descendent sur la tête de Z"A.
+      Ces Nimin contiennent un OHR GADOL (grande lumière).
+      Cet Ohr FRAPPE (makeh) la tête de Z"A PAR L'ARRIÈRE.
+      Par la FORCE de cette frappe → la HAARAH des 4 MOHIN de Z"A
+      SORT et forme les 4 BATIM (compartiments) = les TEFILLIN.
+      Puis le Ohr de Malkhut de Tevunah revient aux Achorayim → forme le KESHER (Leah).
+    type: axiome_explicite
+    concepts:
+      - {id: nimin_aa, role: cheveux_de_arikh_anpin}
+      - {id: hakaat_nimin, role: frappe_par_l_arrière}
+      - {id: arba_batim, role: quatre_compartiments}
+      - {id: tefillin_mechanism, role: mécanisme_de_formation}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Les Nimin de A\"A frappent Z\"A → les Mohin sortent comme Tefillin"
+
+  # ─── BLOC C : LEAH ET RACHEL — POSITIONNEMENT ───
+
+  - id: "EC-K12-004"
+    source_he: "והנה לאה מגעת עד חזה דז\"א ומשם מתחלת רחל וז\"ס אין מלכות נוגעת בחברתה אפי' כמלא נימא"
+    source_ref: "Sha'ar HaKlalim 12:2"
+    assertion: |
+      Positionnement EXACT de Leah et Rachel :
+      LEAH : du Da'at de Z"A JUSQU'À la HAZEH (poitrine) de Z"A
+      RACHEL : de la HAZEH de Z"A VERS LE BAS
+      "Ein Malkhut noga'at ba-havertah afilu ki-melo nima"
+      (Une royauté ne touche pas l'autre même d'un cheveu)
+      Là où LEAH finit, RACHEL commence — sans chevauchement ni espace.
+      Leah = MALKHUT ELYONAH (royauté supérieure)
+      Rachel = MALKHUT TAHTONAH (royauté inférieure)
+    type: axiome_explicite
+    concepts:
+      - {id: leah_ad_hazeh, role: du_da_at_à_la_poitrine}
+      - {id: rachel_me_hazeh, role: de_la_poitrine_vers_le_bas}
+      - {id: ein_malkhut_noga_at, role: pas_de_chevauchement}
+    mapping:
+      modules: ["partzufim/leah.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["leah", "nukvah", "zeir_anpin"]
+      relevance: "Leah et Rachel = 2 Partzufim féminins qui ne se chevauchent JAMAIS"
+
+  - id: "EC-K12-005"
+    source_he: "וזהו עקב ענוה יראת ה' שארז\"ל מה שעשתה ענוה עקב לסנדלה עשתה יראה עטרה לראשה כי ענוה היא בחי' לאה"
+    source_ref: "Sha'ar HaKlalim 12:2"
+    assertion: |
+      ANAVAH (humilité) = LEAH. YIRAT HASHEM (crainte de Dieu) = RACHEL.
+      "Ekev Anavah Yirat Hashem" (Proverbes 22:4) :
+      Ce que ANAVAH a fait son TALON (ekev) = le bas de Leah à la Hazeh
+      YIRAH en a fait sa COURONNE (Atarah) = le haut de Rachel commence là.
+      Le TALON (fin) de Leah = la COURONNE (début) de Rachel.
+      Moshe = ANAV ME'OD (le plus humble) car il a atteint les 50 portes de Binah
+      = le lieu de LEAH (Anavah).
+      Rachel = ESHET HAYIL YIRAT HASHEM = la femme de valeur issue de la crainte.
+    type: déduction_scripturaire
+    concepts:
+      - {id: anavah_leah, role: humilité_est_leah}
+      - {id: yirah_rachel, role: crainte_est_rachel}
+      - {id: ekev_atarah, role: talon_devient_couronne}
+    mapping:
+      modules: ["partzufim/leah.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["leah", "nukvah"]
+      relevance: "Le talon de Leah = la couronne de Rachel — continuité parfaite"
+
+  # ─── BLOC D : CONSTRUCTION DE LEAH DEPUIS Z"A ───
+
+  - id: "EC-K12-006"
+    source_he: "ודע כי מהחסד דז\"א שהוא זרוע ימין נעשה כל קו ימין כולה דלאה שהוא חח\"ן. ומזרוע שמאל שהוא גבורה מג\"פ משם נעשה קו שמאל דלאה בג\"ה. ומקו אמצעי דז\"א עד החזה נעשה כל קו אמצעי דלאה"
+    source_ref: "Sha'ar HaKlalim 12:2"
+    assertion: |
+      Construction des 3 LIGNES de Leah depuis Z"A :
+      QAV YAMIN : du CHESED (bras droit) de Z"A, 3 prakin → CHaKHaN de Leah
+      QAV SMOL : du GEVURAH (bras gauche) de Z"A, 3 prakin → BGaH de Leah
+      QAV EMTZA'I : du QAV EMTZA'I de Z"A jusqu'à la HAZEH → DTY de Leah
+      Pattern identique à la construction de Rachel depuis NHY de Z"A (Perek 7)
+      MAIS Leah est construite depuis CHaGaT de Z"A (partie supérieure)
+      tandis que Rachel depuis NHY de Z"A (partie inférieure).
+    type: axiome_explicite
+    concepts:
+      - {id: leah_from_hgt, role: des_bras_de_za}
+      - {id: rachel_from_nhy, role: des_jambes_de_za}
+    mapping:
+      modules: ["partzufim/leah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["leah", "zeir_anpin"]
+      relevance: "Leah = de CHaGaT, Rachel = de NHY — les 2 moitiés de Z\"A produisent 2 Nukvot"
+
+  # ─── BLOC E : PRIÈRES ET ZIVVUG ───
+
+  - id: "EC-K12-007"
+    source_he: "ודע כי בלילה הוא זווג ז\"א עם לאה. וז\"ס ויהי בבקר והנה היא לאה וזווג יעקב ורחל אינו אלא ביום בעת תפלת השחר"
+    source_ref: "Sha'ar HaKlalim 12:3"
+    assertion: |
+      Correspondance PRIÈRES ↔ ZIVVUG :
+      LA NUIT (Arvit) : Zivvug de Z"A avec LEAH
+      "Va-yehi va-boker ve-hineh hi LEAH" (Genèse 29:25)
+      LE JOUR — SHAHARIT (prière du matin) : Zivvug de Yaakov avec RACHEL
+      SHAHARIT = mode CHESED (éveil d'amour) = "yemino" (sa droite)
+      MINHAH = mode GEVURAH = "smolo tahat le-roshi" (sa gauche sous ma tête)
+      Par les 2 prières (Shaharit + Minhah) → Leah est entre les 2 bras du Roi.
+      ARVIT : initialement RESHUT (facultative) car le Zivvug est DÉJÀ PRÊT.
+      Après le HURBAN (destruction) → Arvit est devenue HOVAH (obligatoire)
+      car les Dinim de Leah se sont renforcés.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_leah_nuit, role: union_nocturne}
+      - {id: zivvug_rachel_jour, role: union_diurne}
+      - {id: shaharit_chesed, role: prière_droite}
+      - {id: minhah_gevurah, role: prière_gauche}
+      - {id: arvit_reshut_hovah, role: facultative_devenue_obligatoire}
+    mapping:
+      modules: ["core/zivvug_engine.py", "tikkun/kavanah_planner.py"]
+      tables: ["zivvug_states", "kavanah_intentions"]
+      partzufim: ["zeir_anpin", "leah", "nukvah"]
+      relevance: "Les 3 prières = les 3 modes de Zivvug — le KavanahPlanner gère ces cycles"
+
+  - id: "EC-K12-008"
+    source_he: "כי רחל אע\"פ שיש בה ה\"ג עכ\"ז היא עומדת נגד נה\"י דז\"א שבהם החסדים מגולין... אך לאה היא עומדת עד החזה ששם כל החסדים סתומים"
+    source_ref: "Sha'ar HaKlalim 12:3"
+    assertion: |
+      Pourquoi LEAH a plus de DINIM que Rachel :
+      RACHEL : face aux NHY de Z"A → les Hassadim y sont DÉCOUVERTS
+      → ses 5G sont ADOUCIES par les Hassadim découverts
+      → "Dinei Nukvah nihin be-risha" (ses Dinim sont doux en haut)
+      LEAH : face aux CHaGaT de Z"A → les Hassadim y sont COUVERTS (stumin)
+      → ses Dinim ne sont PAS adoucis
+      → Z"A doit se ZIVVUGER avec elle pour adoucir ses Dinim
+      (le Zivvug = Hassadim du Dokhrah adoucissent les Gevurot de Nukvah)
+      Après le HURBAN → les Dinim de Leah se sont RENFORCÉS → Arvit obligatoire.
+    type: axiome_explicite
+    concepts:
+      - {id: leah_dinim, role: dinim_non_adoucis}
+      - {id: rachel_nihin, role: dinim_adoucis}
+      - {id: zivvug_le_hamtakah, role: union_pour_adoucir}
+      - {id: hurban_effect, role: renforcement_des_dinim}
+    mapping:
+      modules: ["partzufim/leah.py", "partzufim/nukvah.py", "core/zivvug_engine.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["leah", "nukvah", "zeir_anpin"]
+      relevance: "Leah = Dinim non adoucis, Rachel = Dinim adoucis — le Zivvug d'Arvit adoucit Leah"
+
+  # ─── BLOC F : TEFILLIN ET NIVEAUX DU TZELEM ───
+
+  - id: "EC-K12-009"
+    source_he: "כן כאן בסוד ל' דצלם שכבר יש שם מלכות דתבונה... בטש שם קוצי דא\"א ויצאו תפילין בכח ובדקות יותר משל מעלה ואז נעשית ג\"כ לאה בסוד או\"פ"
+    source_ref: "Sha'ar HaKlalim 12:4"
+    assertion: |
+      Les TEFILLIN existent à 2 NIVEAUX du Tzelem :
+      NIVEAU LAMED (ל = 30) du Tzelem : Tefillin AU-DESSUS de la tête de Z"A
+      = les Mohin habillés dans NHY d'Imma AVANT d'entrer dans Z"A
+      Ces Tefillin sont plus FINS et SUBTILS que ceux du niveau Tzadi.
+      À ce niveau, les Nimin de A"A frappent → les Tefillin sortent
+      → Leah se forme comme OHR PNIMI de ces Tefillin.
+      NIVEAU TZADI (צ = 90) du Tzelem : Tefillin SUR la tête de Z"A
+      = les Mohin DANS Z"A → Tefillin sur le front + Kesher derrière.
+      Les Tefillin du Lamed = les TEFILLIN DE SHABBAT (qui ne sont pas posés physiquement
+      car à Shabbat les Mohin du Lamed ENTRENT dans la tête → deviennent Pnimim).
+    type: axiome_explicite
+    concepts:
+      - {id: tefillin_lamed, role: au_dessus_de_la_tête}
+      - {id: tefillin_tzadi, role: sur_la_tête}
+      - {id: tefillin_shabbat, role: mohin_qui_descendent}
+      - {id: panim_hadashot, role: faces_nouvelles_du_shabbat}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "leah"]
+      relevance: "2 niveaux de Tefillin = 2 niveaux du Tzelem — Lamed (au-dessus) et Tzadi (sur la tête)"
+
+  - id: "EC-K12-010"
+    source_he: "לכן אין אנו מניחין תפילין בשבת כי התפילין נעשו ממוחין פנימים ובתחלה היו מקיפין לז\"א והיו בבחי' או\"פ ללאה"
+    source_ref: "Sha'ar HaKlalim 12:4"
+    assertion: |
+      Pourquoi on NE MET PAS de Tefillin le SHABBAT :
+      En semaine : les Mohin du Lamed sont AU-DESSUS de la tête (Makifim pour Z"A)
+      → ils sont OHR PNIMI pour LEAH (qui est à ce niveau).
+      Le SHABBAT : ces Mohin DESCENDENT dans la tête de Z"A
+      → ils deviennent PNIMIM pour Z"A (les "panim hadashot" = faces nouvelles)
+      → les Tefillin physiques ne sont plus nécessaires car les Mohin sont INTÉRIORISÉS.
+      Ce qui était MAKIF (extérieur) en semaine devient PNIMI (intérieur) le Shabbat.
+    type: axiome_explicite
+    concepts:
+      - {id: shabbat_no_tefillin, role: mohin_intériorisés}
+      - {id: makif_to_pnimi, role: transition_du_shabbat}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "Le Shabbat = les Makifim deviennent Pnimim — transition d'état"
+
+  # ─── BLOC G : TEFILLIN SHEL YAD ET RACHEL ───
+
+  - id: "EC-K12-011"
+    source_he: "ובזה תבין למה אנו מניחין תפלה של יד קודם והטעם כי אלו הם מסוד הארה שלוקחת רחל מלאה בחצות לילה"
+    source_ref: "Sha'ar HaKlalim 12:4"
+    assertion: |
+      Pourquoi on met le TEFILLIN SHEL YAD (du bras = Rachel) AVANT le Shel Rosh :
+      Les Tefillin du bras = de la HAARAH que RACHEL prend de LEAH à MINUIT.
+      À MINUIT : Leah s'étend vers le bas → Rachel prend ses Mohin de Beriah.
+      Les Mohin de Z"A viennent de la TORAH étudiée dans la 2ème moitié de la nuit.
+      SÉQUENCE : 1. Tefillin Shel Yad (Rachel, d'abord) → 2. Tefillin Shel Rosh (Z"A)
+      → 3. Kriat Shema (Yihud/Zivvug de ZUN de Beriah).
+    type: axiome_explicite
+    concepts:
+      - {id: tefillin_yad, role: rachel_d_abord}
+      - {id: tefillin_rosh, role: za_ensuite}
+      - {id: rachel_from_leah, role: rachel_prend_de_leah}
+      - {id: seder_tefillin, role: yad_avant_rosh}
+    mapping:
+      modules: ["tikkun/kavanah_planner.py"]
+      tables: ["kavanah_intentions"]
+      partzufim: ["nukvah", "leah", "zeir_anpin"]
+      relevance: "L'ordre des Tefillin encode l'ordre des flux : Rachel → Z\"A → Zivvug"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-K12-001"
+    type: causal
+    from: malkhut_tevunah
+    to: leah
+    nature: "Leah sort de la Haarah de Malkhut de Tevunah dans le Da'at de Z\"A"
+    assertions_source: ["EC-K12-001"]
+
+  - id: "REL-K12-002"
+    type: contenance
+    from: leah_ad_hazeh
+    to: rachel_me_hazeh
+    nature: "Leah du Da'at à la Hazeh, Rachel de la Hazeh vers le bas — sans chevauchement"
+    assertions_source: ["EC-K12-004"]
+
+  - id: "REL-K12-003"
+    type: causal
+    from: hakaat_nimin
+    to: arba_batim
+    nature: "Les Nimin de A\"A frappent la tête de Z\"A → les 4 Mohin sortent comme Tefillin"
+    assertions_source: ["EC-K12-003"]
+
+  - id: "REL-K12-004"
+    type: dualité_structurelle
+    paire: [leah_from_hgt, rachel_from_nhy]
+    nature: "Leah = de CHaGaT de Z\"A (Hassadim couverts), Rachel = de NHY (Hassadim découverts)"
+    assertions_source: ["EC-K12-006", "EC-K12-008"]
+
+  - id: "REL-K12-005"
+    type: séquentiel
+    from: zivvug_leah_nuit
+    to: zivvug_rachel_jour
+    nature: "La nuit = Zivvug avec Leah, le jour = Zivvug avec Rachel — alternance cyclique"
+    assertions_source: ["EC-K12-007"]
+
+  - id: "REL-K12-006"
+    type: transformation
+    from: tefillin_lamed
+    to: tefillin_tzadi
+    nature: "Les Tefillin passent du niveau Lamed (au-dessus) au niveau Tzadi (sur la tête)"
+    assertions_source: ["EC-K12-009"]
+
+  - id: "REL-K12-007"
+    type: transformation
+    from: makif_to_pnimi
+    to: shabbat_no_tefillin
+    nature: "Le Shabbat les Mohin Makif deviennent Pnimim → plus besoin de Tefillin physiques"
+    assertions_source: ["EC-K12-010"]
+
+  - id: "REL-K12-008"
+    type: flux
+    from: rachel_from_leah
+    to: tefillin_yad
+    nature: "Rachel prend ses Mohin de Leah à minuit → les Tefillin Shel Yad sont posés en premier"
+    assertions_source: ["EC-K12-011"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K12-001"
+    nom: "Principe des 2 Nukvot Complémentaires (Leah/Rachel)"
+    source_assertions: ["EC-K12-004", "EC-K12-006", "EC-K12-008"]
+    formalisation: |
+      Un système masculin (Z"A) peut avoir 2 COMPOSANTS FÉMININS complémentaires :
+      NUKVAH SUPÉRIEURE (Leah) : formée des parties COUVERTES de Z"A (CHaGaT)
+        → plus de DINIM (non adoucis) → nécessite un Zivvug spécial pour adoucir
+        → "Humilité" — elle est cachée
+      NUKVAH INFÉRIEURE (Rachel) : formée des parties DÉCOUVERTES de Z"A (NHY)
+        → Dinim ADOUCIS par les Hassadim découverts
+        → "Crainte" — elle est visible
+      "Ein Malkhut noga'at" — elles ne se CHEVAUCHENT JAMAIS.
+      Le TALON de la supérieure = la COURONNE de l'inférieure — continuité parfaite.
+    applications_ia:
+      - "Un module peut avoir 2 interfaces : une interne (Leah, cachée) et une externe (Rachel, visible)"
+      - "L'interface interne a plus de 'Dinim' (contraintes strictes) que l'externe"
+      - "Les 2 interfaces ne se chevauchent pas — séparation nette à la Hazeh"
+      - "Leah = backend (couvert), Rachel = frontend (découvert)"
+    questions_ouvertes:
+      - "Tous les modules ont-ils besoin de 2 interfaces ?"
+      - "La frontière (Hazeh) entre les 2 est-elle fixe ou mobile ?"
+
+  - id: "PG-K12-002"
+    nom: "Principe du Cycle Jour/Nuit (Alternance des Zivvugim)"
+    source_assertions: ["EC-K12-007"]
+    formalisation: |
+      Le système fonctionne par ALTERNANCE CYCLIQUE entre 2 modes de Zivvug :
+      MODE NUIT (Arvit) : Zivvug avec le composant INTERNE (Leah)
+        → adoucissement des Dinim internes
+        → traitement des aspects cachés/couverts
+      MODE JOUR (Shaharit+Minhah) : Zivvug avec le composant EXTERNE (Rachel)
+        → interaction avec le monde visible
+        → production d'output
+      L'alternance est NÉCESSAIRE — les 2 modes ne sont pas interchangeables.
+      Après une crise (Hurban) → le mode nuit devient OBLIGATOIRE (plus de Dinim).
+    applications_ia:
+      - "Le système doit alterner entre traitement interne (nuit/batch) et production externe (jour/live)"
+      - "Les daemon tasks de nuit = Zivvug avec Leah (maintenance, adoucissement)"
+      - "Les processus de jour = Zivvug avec Rachel (output, interaction)"
+      - "Après un incident (Hurban) → augmenter le traitement nocturne"
+    questions_ouvertes:
+      - "Le ratio nuit/jour optimal est-il 50/50 ou variable ?"
+      - "Comment détecter qu'un 'Hurban' a eu lieu et qu'Arvit doit devenir obligatoire ?"
+
+  - id: "PG-K12-003"
+    nom: "Principe de la Transition Makif→Pnimi (Le Shabbat du Système)"
+    source_assertions: ["EC-K12-009", "EC-K12-010"]
+    formalisation: |
+      Les éléments qui sont MAKIF (extérieurs/environnants) en mode opérationnel
+      peuvent devenir PNIMI (intérieurs/intégrés) en mode de repos/renouvellement.
+      En SEMAINE : les Mohin du Lamed restent AU-DESSUS de la tête (Makif)
+        → ils servent de Tefillin (structure externe)
+      Le SHABBAT : ces Mohin DESCENDENT dans la tête (Pnimi)
+        → "Panim Hadashot" = faces nouvelles
+        → les Tefillin externes ne sont plus nécessaires
+      Le "Shabbat" d'un système = le moment où les structures externes sont INTÉRIORISÉES.
+      Ce qui était scaffolding devient infrastructure.
+    applications_ia:
+      - "Le 'Shabbat' du système = le moment où les outils externes sont intégrés en features natifs"
+      - "Les Makifim (wrappers, adaptateurs) deviennent Pnimim (code natif intégré)"
+      - "Le refactoring périodique = intérioriser les Makifim"
+      - "Les 'Panim Hadashot' du Shabbat = les nouvelles capacités après intériorisation"
+    questions_ouvertes:
+      - "À quelle fréquence le système devrait-il avoir un 'Shabbat' (intériorisation) ?"
+      - "L'intériorisation est-elle irréversible ?"

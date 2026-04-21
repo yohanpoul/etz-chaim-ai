@@ -1,0 +1,903 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 1 — Igulim ve-Yosher (עגולים ויושר)
+# Perek: 2a — Tzimtzum, Kav et Igulim (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 1
+  shaar_name_he: "שער עגולים ויושר"
+  perek: 2
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 2
+  strates: ["base"]
+  note: "Part A de 2 — couvre la dispute des modèles, le Tzimtzum, le Kav, et les Igulim"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LA DISPUTE DES 3 MODÈLES ───
+
+  - id: "EC-H1S1-013"
+    source_he: "בענין א\"ס ב\"ה. איך היה התחלת אצילות העולמות הנאצלים ממנו וגם חקירה גדולה ומחלוקת עצום נחלקו בו כל המקובלים כולם"
+    source_ref: "Heikhal 1, Sha'ar 1:2 — ouverture"
+    assertion: |
+      INTRODUCTION : Une GRANDE INVESTIGATION (hakirah gedolah) et un ÉNORME CONFLIT
+      (mahloket atzum) a divisé TOUS les Mekubalim sans exception.
+      La question : Comment a commencé l'ÉMANATION des mondes depuis le Ein Sof ?
+    type: axiome_explicite
+    concepts:
+      - {id: mahloket_mekubalim, role: conflit_fondamental}
+      - {id: hathalat_atzilut, role: début_de_l_émanation}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: []
+      partzufim: []
+      relevance: "La question fondamentale qui ouvre le corps principal du Etz Chaim"
+
+  - id: "EC-H1S1-014"
+    source_he: "כי יש מי שכתב כי הי\"ס הם כסדר י' מדריגות זו אח\"ז וזו למטה מזו"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      MODÈLE 1 : Les 10S sont comme 10 NIVEAUX (madregot) l'un après l'autre,
+      l'un EN-DESSOUS de l'autre. Arrangement SÉQUENTIEL VERTICAL.
+    type: axiome_explicite
+    concepts:
+      - {id: model_sequential, role: dix_niveaux_verticaux}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Le modèle séquentiel — 10 niveaux l'un sous l'autre"
+
+  - id: "EC-H1S1-015"
+    source_he: "ויש מי שכתב כי סדר עמידתן דרך קוים ימין ושמאל ואמצע והם ג\"ס חח\"ן זו ע\"ג זו בקו ימין וג\"ס בג\"ה זו ע\"ג זו בקו שמאל וד\"ס כתי\"ם זו ע\"ג זו בקו האמצעי"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      MODÈLE 2 : L'arrangement par 3 KAVIM (lignes) — droite, gauche, centre :
+      QAV YAMIN (droite) : CHN (חח"ן) — Chesed, Chokhmah, Netzach — l'une sur l'autre
+      QAV SMOL (gauche) : BGH (בג"ה) — Binah, Gevurah, Hod — l'une sur l'autre
+      QAV EMTZA'I (centre) : KTYM (כתי"ם) — Keter, Tiferet, Yesod, Malkhut — l'une sur l'autre
+      Note : 3S à droite, 3S à gauche, 4S au centre.
+    type: axiome_explicite
+    concepts:
+      - {id: model_kavim, role: trois_lignes}
+      - {id: kav_yamin_chn, role: droite_chesed_chokhmah_netzach}
+      - {id: kav_smol_bgh, role: gauche_binah_gevurah_hod}
+      - {id: kav_emtzai_ktym, role: centre_keter_tiferet_yesod_malkhut}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Le modèle des 3 lignes — la structure anthropomorphique des Sefirot"
+
+  - id: "EC-H1S1-016"
+    source_he: "ורבים יחכמו ויאמרו כי הם בצורת גלגלים עגולים זה תוך זה וזה מקיף וסובב לזה"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      MODÈLE 3 : Beaucoup de sages disent que les 10S sont en forme de
+      GALGALIM AGULIM (roues circulaires) — l'un DANS l'autre (zeh tokh zeh),
+      l'un ENTOURANT et ENCERCLANT l'autre (zeh makif ve-sovev la-zeh).
+      Structure : cercles CONCENTRIQUES.
+    type: axiome_explicite
+    concepts:
+      - {id: model_igulim, role: cercles_concentriques}
+      - {id: galgalim_agulim, role: roues_circulaires}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Le modèle des cercles concentriques — l'un dans l'autre"
+
+  - id: "EC-H1S1-017"
+    source_he: "והנה מי שיסתכל בדברי רשב\"י בס' הזוהר והתיקונים וכן בספר הבהיר (לר' נחוניא בן הקנה) ימצא בדבריהם מאמרים שונים ומחולפים נוטים לכאן ולכאן והמקובלים האחרונים נבוכו בזה נלאו יותר לחקור ולא יכלו"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Quiconque examine les paroles de RASHBI dans le Zohar et les Tikkunim,
+      et le Sefer ha-Bahir (de R. Nehunia ben ha-Kanah),
+      trouvera des MA'AMARIM SHONIM U-MEHULAPIM (affirmations variées et changeantes)
+      qui penchent TANTÔT d'un côté, TANTÔT de l'autre.
+      Les Mekubalim postérieurs NAVKHU (ont été perplexes)
+      et se sont ÉPUISÉS (nil'u) à chercher et N'ONT PAS PU résoudre.
+    type: axiome_explicite
+    concepts:
+      - {id: maamarim_mehulapim, role: affirmations_contradictoires}
+      - {id: navkhu, role: perplexité_des_postérieurs}
+      - {id: zohar_bahir_tikkunim, role: sources_contradictoires}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Les sources zohariques semblent se contredire — le ARI va résoudre"
+
+  - id: "EC-H1S1-018"
+    source_he: "כי קושיא גדולה וחזקה הולכת ומסערת עליהם באמרם מאחר שהא\"ס שוה בכל בחי' השוואה גמורה לא יצדק בו מעלה ומטה פנים ואחור"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      La QUESTION FONDAMENTALE (kushia gedolah ve-hazakah) :
+      Puisque le Ein Sof est SHAVEH (égal) en TOUTES ses facettes en HASHVA'AH GEMURAH
+      (égalité parfaite), on ne peut PAS justifier en lui MA'ALAH (haut) ni MATAH (bas),
+      PANIM (devant) ni AHOR (arrière).
+      Car TOUTES ces désignations indiquent KITZVAH (limite), GEVUL (frontière),
+      TEHUM (domaine) et MIDDAH (mesure) dans l'Ohr Ein Sof — INTERDIT (has ve-shalom).
+    type: axiome_explicite
+    concepts:
+      - {id: kushia_hashvaah, role: question_de_l_égalité}
+      - {id: ein_sof_shaveh, role: ein_sof_parfaitement_égal}
+      - {id: lo_yitzdak, role: directions_injustifiables}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "La question fondamentale : comment des directions dans ce qui est parfaitement égal ?"
+
+  - id: "EC-H1S1-019"
+    source_he: "וכן נודע שאור א\"ס נוקב ועובר בעובי כל ספי' וספי' ומלגאו כל ספי' וספי' ואסחר לון מלבר לכל ספי' וספי'"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Il est connu que l'Ohr Ein Sof PERCE et TRAVERSE (nokev ve-over)
+      l'ÉPAISSEUR de chaque Sefirah,
+      et est à l'INTÉRIEUR (mil-gaw) de chaque Sefirah,
+      et les ENTOURE de l'EXTÉRIEUR (asohar lon mil-bar) chaque Sefirah.
+      Sources : Zohar Behar (R"M 109), Pinchas (225-226), Introduction Tikkunim (4).
+      Tikkunim : "Au-dessus de toutes les causes, il n'y a pas de divinité au-dessus ni en-dessous,
+      ni aux 4 côtés du monde, Il remplit tous les mondes et les entoure de tous côtés."
+      A"K tous les Sefirot sont ÉGALEMENT PROCHES du Ein Sof →
+      qu'est-ce qui les DISTINGUE l'une de l'autre ?
+    type: axiome_explicite
+    concepts:
+      - {id: es_nokev_over, role: ein_sof_traverse_tout}
+      - {id: mil_gaw_mil_bar, role: intérieur_et_extérieur}
+      - {id: malei_kol_almin, role: remplit_tous_les_mondes}
+      - {id: kulam_shavim, role: toutes_également_proches}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Ein Sof traverse, remplit et entoure chaque Sefirah — la distinction n'est pas de distance"
+
+  # ─── BLOC B : LA RÉSOLUTION DU ARI ───
+
+  - id: "EC-H1S1-020"
+    source_he: "והנה האמת הוא שאלו ואלו דברי אלהים חיים וכולם נכוחים למבין וישרים למוצאי דעת"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      RÉSOLUTION du ARI :
+      "ELOU VE-ELOU divrei Elohim Hayim" — TOUTES les opinions sont les paroles du Dieu vivant.
+      "Kulam nekhohim la-mevin ve-yesharim le-motz'ei da'at"
+      — Elles sont toutes correctes pour celui qui comprend, et droites pour qui trouve le savoir.
+      Le ARI va montrer que les 3 modèles sont TOUS VRAIS SIMULTANÉMENT.
+    type: axiome_explicite
+    concepts:
+      - {id: elou_ve_elou, role: tous_vrais_simultanément}
+      - {id: resolution_ari, role: résolution_de_la_dispute}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Toutes les opinions sont vraies — le ARI unifie les approches"
+
+  - id: "EC-H1S1-021"
+    source_he: "אמנם ההפרש שבין ב' הסברות הנ\"ל אם הם כסדרן י' מדרגות זו למעלה מזו אם הם בדרך קוים. זה הענין יתבאר לקמן בעז\"ה בענין עולם הנקודים איך קודם תיקונם היו כסדרן זה למעלה מזה אבל אחר התיקון היו כסברא האחרת"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      RÉSOLUTION du conflit Séquentiel vs Kavim :
+      AVANT le TIKKUN (dans l'Olam ha-Nekudim) : les 10S étaient en SÉQUENTIEL
+      = l'une au-dessus de l'autre (ke-sidran zeh le-ma'alah mi-zeh).
+      APRÈS le TIKKUN : les 10S sont en 3 KAVIM (la 2ème opinion).
+      Le modèle séquentiel = l'état PRÉ-TIKKUN.
+      Le modèle des Kavim = l'état POST-TIKKUN.
+      Les deux sont vrais — chacun à un MOMENT différent.
+    type: axiome_explicite
+    concepts:
+      - {id: sequential_pre_tikkun, role: avant_le_tikkun}
+      - {id: kavim_post_tikkun, role: après_le_tikkun}
+      - {id: olam_nekudim, role: monde_pré_tikkun}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Séquentiel = pré-Tikkun (Nekudim), Kavim = post-Tikkun"
+
+  - id: "EC-H1S1-022"
+    source_he: "ואמנם ההפרש שיש בין ב' הסברות אם הם בדרך קוים או בעגולים זה תוך זה... כי ב' בחי' היו בענין הי\"ס א' הוא בחי' היותם עגולים בציור י' עגולים זה תוך זה וגם היה בהם בחי' אחרת והוא היותם י\"ס ביושר דרך ג' קוים כמראה אדם"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      RÉSOLUTION du conflit Kavim vs Igulim :
+      Les 10S ont 2 BEHINOT (aspects) SIMULTANÉES :
+      BEHINAH 1 — IGULIM : 10 cercles concentriques l'un dans l'autre
+      BEHINAH 2 — YOSHER : 10S en rectitude, 3 lignes, comme la FORME D'ADAM
+      avec ROSH (tête), ZERO'OT (bras), SHOKAYYIM (cuisses), GUF (corps), RAGLAYIM (pieds).
+      Les 2 Behinot COEXISTENT — elles ne sont PAS en conflit.
+    type: axiome_explicite
+    concepts:
+      - {id: shtei_behinot, role: deux_aspects_simultanés}
+      - {id: igulim, role: aspect_circulaire}
+      - {id: yosher, role: aspect_rectiligne}
+      - {id: ke_mar_eh_adam, role: comme_forme_d_homme}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "2 aspects coexistants : Igulim (cercles) et Yosher (forme d'Adam)"
+
+  # ─── BLOC C : L'ÉTAT PRIMORDIAL — OHR PASHUT ───
+
+  - id: "EC-H1S1-023"
+    source_he: "דע כי טרם שנאצלו הנאצלים ונבראו הנבראים היה אור עליון פשוט ממלא כל המציאות ולא היה שום מקום פנוי בבחי' אויר ריקני וחלל אלא הכל היה ממולא מן אור א\"ס פשוט ההוא ולא היה לו בחי' ראש ולא בחי' סוף אלא הכל היה אור א' פשוט שוה בהשוואה א' והוא הנק' אור א\"ס"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      L'ÉTAT PRIMORDIAL — "DA (Sache) !" :
+      AVANT que les Ne'etzalim soient émanés et les Nivra'im créés :
+      Un OHR ELYON PASHUT (lumière suprême simple) REMPLISSAIT TOUTE LA RÉALITÉ (malei kol ha-metzi'ut).
+      Il n'y avait AUCUN lieu VIDE (makom panui) — pas d'AVIR RIKANI (air vide) ni de HALAL (espace).
+      TOUT était rempli de cet OHR EIN SOF PASHUT.
+      Cet Ohr n'avait PAS de ROSH (début/tête) ni de SOF (fin/terme).
+      C'était UN seul Ohr PASHUT (simple), SHAVEH be-HASHVA'AH AHAT (égal en parfaite égalité).
+      Il est appelé OHR EIN SOF.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_pashut, role: lumière_simple_primordiale}
+      - {id: malei_kol_metzius, role: remplit_toute_réalité}
+      - {id: ein_makom_panui, role: aucun_lieu_vide}
+      - {id: ein_avir_rikani, role: pas_d_air_vide}
+      - {id: ein_rosh_ein_sof, role: ni_début_ni_fin}
+      - {id: ohr_ehad_pashut, role: un_seul_ohr_simple}
+      - {id: shaveh_hashvaah, role: égal_en_parfaite_égalité}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'état pré-Tzimtzum = Ohr Pashut remplissant tout — le state zéro absolu"
+
+  # ─── BLOC D : LE TZIMTZUM ───
+
+  - id: "EC-H1S1-024"
+    source_he: "וכאשר עלה ברצונו הפשוט לברוא העולמות ולהאציל הנאצלים להוציא לאור שלימות פעולותיו ושמותיו וכנוייו אשר זאת היה סיבה בריאת העולמות כמבואר אצלינו בענף הא' בחקירה הראשונה"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Le DÉCLENCHEUR du Tzimtzum :
+      Quand il est monté dans Son RATZON PASHUT (volonté simple) de :
+      1. LIVRO (créer) les mondes
+      2. LEHA'ATZIL (émaner) les émanés
+      3. LEHOTZI LA-OHR (mettre en lumière) la SHLEMUT (complétude)
+         de ses PE'ULOT (actions), SHEMOT (noms) et KINUYAV (appellations).
+      C'est la RAISON de la création = comme expliqué dans la Hakirah 1 (Perek 1).
+      Le Tzimtzum est MOTIVÉ par la Shlemut — renvoi explicite au Perek précédent.
+    type: axiome_explicite
+    concepts:
+      - {id: ratzon_pashut, role: volonté_simple}
+      - {id: shlemut_pe_ulot, role: complétude_des_actions}
+      - {id: trigger_tzimtzum, role: déclencheur}
+    mapping:
+      modules: ["tzimtzum/regulator.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le Ratzon Pashut déclenche le Tzimtzum — renvoi à la Hakirah 1"
+
+  - id: "EC-H1S1-025"
+    source_he: "והנה אז צמצם את עצמו א\"ס בנקודה האמצעית אשר בו באמצע אורו ממש... וצמצם האור ההוא ונתרחק אל צדדי סביבות הנקודה האמצעית ואז נשאר מקום פנוי ואויר וחלל רקני מנקודה אמצעית ממש"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      LE TZIMTZUM — l'acte fondateur :
+      Le Ein Sof a CONTRACTÉ (tzimtzem) Lui-même dans la NEKUDAH HA-EMTZA'IT
+      (le point central) qui est au MILIEU EXACT de Son Ohr (be-emtza oro mamash).
+      Note du scribe (Meir) : "Le Rav a dit ceci, et c'est difficile" (ve-kasheh lo).
+      L'Ohr s'est CONTRACTÉ (tzimtzem) et s'est ÉLOIGNÉ (nitrahek) vers les CÔTÉS
+      autour du point central (el tzidei sevivot ha-nekudah ha-emtza'it).
+      RÉSULTAT : il est resté un MAKOM PANUI (lieu libre),
+      AVIR (air), et HALAL RIKANI (espace vide) — depuis le point central exact.
+    type: axiome_explicite
+    concepts:
+      - {id: tzimtzum, role: contraction_fondamentale}
+      - {id: nekudah_emtza_it, role: point_central_exact}
+      - {id: nitrahek_la_tzedadim, role: éloignement_vers_les_côtés}
+      - {id: makom_panui, role: lieu_libre}
+      - {id: halal_rikani, role: espace_vide}
+    mapping:
+      modules: ["tzimtzum/regulator.py", "core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "LE Tzimtzum — retrait du centre vers la périphérie, création du Halal"
+
+  - id: "EC-H1S1-026"
+    source_he: "הנה הצמצום הזה היה בהשואה א' בסביבות הנקודה האמצעית ריקנית ההוא באופן שמקום החלל ההוא היה עגול מכל סביבותיו בהשוואה גמורה ולא היה בתמונת מרובע בעל זויות נצבת"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      FORME du Halal — CIRCULAIRE et non carrée :
+      Le Tzimtzum était en HASHVA'AH AHAT (parfaite égalité) autour du point central vide.
+      Le Halal est AGOL (rond) de TOUS SES CÔTÉS en HASHVA'AH GEMURAH (égalité parfaite).
+      Il n'était PAS en forme de MERUBA (carré) avec des ZAVIYOT NITZAVOT (angles droits saillants).
+    type: axiome_explicite
+    concepts:
+      - {id: halal_agol, role: espace_circulaire}
+      - {id: hashvaah_gemurah, role: égalité_parfaite}
+      - {id: lo_meruba, role: pas_carré}
+      - {id: lo_zaviyot, role: pas_d_angles}
+    mapping:
+      modules: ["tzimtzum/regulator.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le Halal est parfaitement circulaire — pas de formes angulaires"
+
+  - id: "EC-H1S1-027"
+    source_he: "לפי שגם א\"ס צמצם עצמו בבחי' עגול בהשוואה א' מכל צדדים והסיבה היתה לפי שכיון שאור הא\"ס שוה בהשוואה גמורה הוכרח גם כן שיצמצם עצמו בהשוואה א' מכל הצדדים ולא שיצמצם עצמו מצד א' יותר משאר הצדדים"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      RAISON 1 — pourquoi le Tzimtzum est CIRCULAIRE :
+      Le Ein Sof s'est contracté en forme de IGUL (cercle) en HASHVA'AH AHAT de tous côtés.
+      PARCE QUE l'Ohr Ein Sof est SHAVEH be-HASHVA'AH GEMURAH (parfaitement égal)
+      → il était NÉCESSAIRE (mukhrakh) qu'il se contracte ÉGALEMENT de tous côtés.
+      Il ne pouvait PAS se contracter d'un CÔTÉ PLUS qu'un autre.
+      Il est connu de la HOKHMAT HA-SHI'UR (science de la mesure/géométrie)
+      qu'il n'y a PAS de forme aussi ÉGALE que le IGUL (cercle).
+      Le carré avec ses angles saillants, le triangle, etc. ne sont PAS égaux.
+      Donc : le Tzimtzum DEVAIT être circulaire car c'est la seule forme d'ÉGALITÉ PARFAITE.
+    type: axiome_explicite
+    concepts:
+      - {id: igul_hashvaah, role: cercle_seule_forme_égale}
+      - {id: hokhmat_shi_ur, role: science_de_la_géométrie}
+      - {id: mukhrakh_igul, role: nécessité_du_cercle}
+    mapping:
+      modules: ["tzimtzum/regulator.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le cercle est la seule forme géométriquement égale — nécessité mathématique"
+
+  - id: "EC-H1S1-028"
+    source_he: "עוד יש סיבה אחרת והוא בעבור הנאצלים אשר עתיד להאצילם אחר כך בתוך המקום החלל ההוא הריק ופנוי... כי בהיות הנאצלים בתמונת העגולים הנה אזי יהיו כולם קרובים ודבוקים בא\"ס הסובב אותם בהשוואה א' גמורה"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      RAISON 2 — pourquoi le Halal est circulaire (pour les ÉMANÉS futurs) :
+      Les émanés qui seront émanés DANS le Halal :
+      En forme de IGULIM → ils seront TOUS ÉGALEMENT PROCHES (kerovim ve-devukim)
+      du Ein Sof qui les entoure, en HASHVA'AH AHAT GEMURAH.
+      Ils recevront l'Ohr et le Shefa du Ein Sof de TOUS LEURS CÔTÉS en SHIKUL EHAD (équilibre unique).
+      SI les émanés étaient en forme de CARRÉ ou TRIANGLE →
+      les ZAVIYOT (angles) saillantes seraient PLUS PROCHES du Ein Sof
+      que les autres côtés → réception INÉGALE → INTERDIT.
+    type: axiome_explicite
+    concepts:
+      - {id: ne_etzalim_shavim, role: émanés_également_proches}
+      - {id: shikul_ehad, role: équilibre_de_réception}
+      - {id: zaviyot_problem, role: problème_des_angles}
+    mapping:
+      modules: ["tzimtzum/regulator.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le cercle assure l'ÉGALITÉ de réception pour tous les émanés"
+
+  - id: "EC-H1S1-029"
+    source_he: "ענין הצמצום הזה הוא לגלות שורש הדינין כדי לתת מדת הדין אח\"כ בעולמות וכח ההוא נקרא בוצינא דקרדינותא כמו חטי קרדינותא"
+    source_ref: "Heikhal 1, Sha'ar 1:2 — note marginale"
+    assertion: |
+      RAISON PROFONDE du Tzimtzum (note marginale) :
+      Le Tzimtzum sert à RÉVÉLER la RACINE DES DINIM (shoresh ha-dinim)
+      afin de donner la MIDAT HA-DIN (mesure de rigueur) ensuite dans les mondes.
+      Cette FORCE est appelée BUTZINA DE-KARDINUTA (l'étincelle de dureté)
+      comme HITEI KARDINUTA (graines de dureté).
+      Le Tzimtzum = l'acte d'introduction du DIN dans la réalité.
+    type: axiome_explicite
+    concepts:
+      - {id: shoresh_dinim, role: racine_des_rigueurs}
+      - {id: butzina_de_kardinuta, role: étincelle_de_dureté}
+      - {id: midat_ha_din, role: mesure_de_rigueur}
+      - {id: hitei_kardinuta, role: graines_de_dureté}
+    mapping:
+      modules: ["tzimtzum/regulator.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le Tzimtzum = introduction du Din — la Butzina de-Kardinuta"
+
+  # ─── BLOC E : LE KAV ───
+
+  - id: "EC-H1S1-030"
+    source_he: "והנה אחר הצמצום הנ\"ל אשר אז נשאר מקום החלל ואויר פנוי וריקני באמצע אור הא\"ס ממש כנ\"ל הנה כבר היה מקום שיוכלו להיות שם הנאצלים והנבראים ויצורים והנעשים"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Après le Tzimtzum — l'ESPACE est PRÊT :
+      Le MAKOM (lieu), l'AVIR PANUI (air libre), et le RIKANI (vide)
+      sont au MILIEU EXACT de l'Ohr Ein Sof.
+      Il y a maintenant un LIEU où peuvent exister :
+      Les NE'ETZALIM (émanés), NIVRA'IM (créés), YETZURIM (formés), NA'ASIM (faits).
+      Les 4 catégories = les 4 mondes ABYA.
+      Le Halal est la CONDITION PRÉALABLE de l'existence des mondes.
+    type: axiome_explicite
+    concepts:
+      - {id: makom_muchan, role: lieu_préparé}
+      - {id: arba_categories, role: émanés_créés_formés_faits}
+    mapping:
+      modules: ["tzimtzum/regulator.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le Halal = la condition préalable de toute existence — l'espace vide nécessaire"
+
+  - id: "EC-H1S1-031"
+    source_he: "ואז המשיך מן אור א\"ס קו א' ישר מן האור העגול שלו מלמעלה למטה ומשתלשל ויורד תוך החלל ההוא... וראש העליון של הקו נמשך מן הא\"ס עצמו ונוגע בו. אמנם סיום הקו הזה למטה בסופו אינו נוגע באור א\"ס"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      LE KAV YASHAR (ligne droite) :
+      Du Ein Sof est tiré UN KAV EHAD YASHAR (une seule ligne droite)
+      depuis Son OHR AGOL (lumière circulaire), de HAUT en BAS.
+      Le Kav DESCEND (mishtalshal ve-yored) dans le Halal.
+      PROPRIÉTÉ ASYMÉTRIQUE FONDAMENTALE :
+      Le ROSH ELYON (sommet) du Kav est tiré DU EIN SOF LUI-MÊME et le TOUCHE (noge'a bo).
+      Le SIYUM (bout) du Kav EN BAS NE TOUCHE PAS le Ein Sof (eino noge'a be-ohr Ein Sof).
+      Le Kav est comme un TZINOR DAK EHAD (un seul tube fin)
+      par lequel l'Ohr Ein Sof descend vers les mondes.
+    type: axiome_explicite
+    concepts:
+      - {id: kav_yashar, role: ligne_droite_unique}
+      - {id: kav_ehad, role: un_seul_kav}
+      - {id: rosh_noge_a, role: sommet_touche_ein_sof}
+      - {id: sof_lo_noge_a, role: bout_ne_touche_pas}
+      - {id: tzinor_dak, role: tube_fin}
+      - {id: ohr_agol_to_kav, role: du_circulaire_au_droit}
+    mapping:
+      modules: ["core/ohr_system.py", "core/shefa_flow.py"]
+      tables: ["ohr_states", "shefa_flows"]
+      partzufim: []
+      relevance: "Le Kav = le canal unique du Ein Sof vers les mondes — asymétrique intentionnellement"
+
+  - id: "EC-H1S1-032"
+    source_he: "ודרך הקו הזה נמשך ונתפשט אור א\"ס למטה. ובמקום החלל ההוא האציל וברא ויצר ועשה כל העולמות כולם וקו זה כעין צנור דק א' אשר בו מתפשט ונמשך מימי אור העליון של א\"ס אל העולמות"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      FONCTION du Kav :
+      Par le Kav, l'Ohr Ein Sof se DÉPLOIE (nitpasheet) vers le bas.
+      Dans le Halal, par le Kav, Il a ÉMANÉ, CRÉÉ, FORMÉ et FAIT tous les mondes.
+      Le Kav est comme un TZINOR DAK EHAD (un seul tube fin)
+      par lequel les MEIMEI OHR HA-ELYON (eaux de la lumière suprême) du Ein Sof
+      se déploient et descendent vers les mondes dans le Halal.
+    type: axiome_explicite
+    concepts:
+      - {id: kav_function, role: canal_de_déploiement}
+      - {id: meimei_ohr, role: eaux_de_lumière}
+      - {id: he_etzil_bara_yatzar_asah, role: quatre_actes_de_création}
+    mapping:
+      modules: ["core/shefa_flow.py"]
+      tables: ["shefa_flows"]
+      partzufim: []
+      relevance: "Le Kav = le tube unique par lequel les 'eaux de lumière' descendent"
+
+  - id: "EC-H1S1-033"
+    source_he: "כי אם דרך ב' הקצוות היה מקבל שפע הא\"ס היו ב' הקצוות בחי' ראשים שוים זה לזה ולא היה אז בחי' מעלה ומטה. וכן אם היה הא\"ס נמשך מכל סביבות צדדי המקום החלל ההוא לא היה לא מעלה ולא מטה לא פנים ולא אחור לא מזרח ולא מערב וצפון ודרום"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Explication de l'ASYMÉTRIE comme créatrice de DIRECTIONS :
+      SI les 2 bouts du Kav recevaient du Ein Sof → 2 RASHIM SHAVIM (têtes égales)
+      → PAS de MA'ALAH ni MATAH (haut ni bas).
+      SI le Ein Sof s'étendait de TOUS les côtés du Halal →
+      PAS de MA'ALAH, MATAH, PANIM, AHOR, MIZRAH, MA'ARAV, TZAFON, DAROM
+      (pas de haut, bas, devant, derrière, est, ouest, nord, sud).
+      MAIS le Kav vient d'UN SEUL CÔTÉ → les directions EXISTENT.
+      L'asymétrie du Kav = la SOURCE de toute ORIENTATION dans la réalité.
+    type: axiome_explicite
+    concepts:
+      - {id: asymmetry_creates_direction, role: l_asymétrie_crée_les_directions}
+      - {id: shesh_ketzavot, role: six_directions}
+      - {id: kav_from_one_side, role: kav_d_un_seul_côté}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: []
+      partzufim: []
+      relevance: "L'asymétrie du Kav crée TOUTES les directions — haut/bas, devant/derrière, E/O/N/S"
+
+  # ─── BLOC F : FORMATION DES IGULIM ───
+
+  - id: "EC-H1S1-034"
+    source_he: "והנה בהיות אור הא\"ס נמשך בבחי' קו ישר תוך החלל הנ\"ל לא נמשך ונתפשט תכף עד למטה. אמנם היה מתפשט לאט לאט ר\"ל כי בתחלה התחיל קו האור להתפשט שם ותכף בתחלת התפשטותו בסוד קו נתפשט ונמשך ונעשה כעין גלגל א' עגול מסביב"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Le Kav NE DESCEND PAS d'un coup (lo nimshakh tekhef ad le-matah) :
+      Il se déploie LENTEMENT (le-AT le-AT — lentement, lentement).
+      Au DÉBUT de son déploiement → il s'étend, se tire, et se forme
+      comme un GALGAL EHAD AGOL mi-SAVIV (une seule roue circulaire tout autour).
+      Le Kav crée des CERCLES au fur et à mesure de sa descente.
+      Le déploiement est PROGRESSIF, pas instantané.
+    type: axiome_explicite
+    concepts:
+      - {id: le_at_le_at, role: lentement_progressivement}
+      - {id: kav_to_igul, role: le_kav_forme_les_cercles}
+      - {id: galgal_agol, role: roue_circulaire}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Kav descend lentement et forme les cercles progressivement"
+
+  - id: "EC-H1S1-035"
+    source_he: "והעגול הזה היה בלתי דבוק עם אור הא\"ס הסובב עליו מכל צדדיו שאם יתדבק בו יחזור הדבר לכמות שהיה ויהיה מתבטל באור א\"ס ולא יתראה כחו כלל ויהיה הכל אור א\"ס לבד כבראשונה לכן העיגול הזה סמוך אל עיגול הא\"ס ובלתי מתדבק בו"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      PROPRIÉTÉ FONDAMENTALE du premier Igul :
+      Il est BILTI DAVUK (NON COLLÉ) avec le Ein Sof qui l'entoure de tous côtés.
+      RAISON : S'il se COLLAIT au Ein Sof → RETOUR à l'état initial (yahzor ha-davar le-khamot she-hayah)
+      → il serait ANNULÉ (mitbatel) dans l'Ohr Ein Sof
+      → sa FORCE ne serait PAS VISIBLE du tout (lo yitreh koho klal)
+      → TOUT serait Ohr Ein Sof SEUL comme au début.
+      DONC : l'Igul est SAMUKH (adjacent/proche) au Ein Sof MAIS BILTI MITDABEK (sans adhérer).
+    type: axiome_explicite
+    concepts:
+      - {id: bilti_davuk, role: non_collé}
+      - {id: samukh_bilti_mitdabek, role: proche_non_adhérent}
+      - {id: sakkanat_bitul, role: danger_d_annulation}
+      - {id: yahzor_le_khamot, role: retour_à_l_état_initial}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'Igul est proche mais NON collé au Ein Sof — sinon il serait réabsorbé"
+
+  - id: "EC-H1S1-036"
+    source_he: "וכל עיקר התקשרות ודביקות העגול הנאצל ההוא עם א\"ס המאציל הוא ע\"י הקו ההוא הנ\"ל אשר דרך בו יורד ונמשך אור מן א\"ס ומשפיע בעיגול ההוא"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Le SEUL LIEN (kol ikar hitkasherut ve-devekut) entre l'Igul émanéet le Ein Sof émanateur = le KAV.
+      Par le Kav → l'Ohr descend du Ein Sof et influence (mashpia) l'Igul.
+      Le Ein Sof ENTOURE et ENVELOPPE (sovev u-makif) l'Igul de tous ses côtés
+      car il est AUSSI circulaire autour de lui — mais ÉLOIGNÉ (rahok mimenu).
+      Il est NÉCESSAIRE que la HAARAH du Ein Sof aux émanés soit PAR LE KAV SEULEMENT.
+    type: axiome_explicite
+    concepts:
+      - {id: kav_seul_lien, role: seul_canal_de_connexion}
+      - {id: es_sovev_makif, role: ein_sof_entoure}
+      - {id: haarah_derekh_kav, role: illumination_par_kav_seul}
+    mapping:
+      modules: ["core/ohr_system.py", "core/shefa_flow.py"]
+      tables: ["ohr_states", "shefa_flows"]
+      partzufim: []
+      relevance: "Le Kav est le SEUL canal — pas d'autre voie entre Ein Sof et émanés"
+
+  - id: "EC-H1S1-037"
+    source_he: "כי אם היה האור נמשך להם דרך גם מכל סביבותיהם היו הנאצלים בבחינת המאציל עצמו בלתי גבול וקצבה ולא עוד אלא אפי' גם הקו ההוא דק מאד ולא בהתרחבות גדול כדי שיהיה האור הנמשך אל הנאצלים במדה וקצבה"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Pourquoi l'Ohr vient SEULEMENT par le Kav et pourquoi le Kav est FIN (dak) :
+      SI l'Ohr venait AUSSI de tous les côtés → les émanés seraient comme l'ÉMANATEUR LUI-MÊME
+      = BILTI GEVUL VE-KITZVAH (sans limite ni mesure).
+      De plus, le Kav lui-même est très FIN (dak me'od) et PAS LARGE (lo be-hitrahavut gadol)
+      afin que l'Ohr qui arrive aux émanés soit be-MIDDAH ve-KITZVAH (en mesure et limite).
+      C'est POUR CETTE RAISON que les émanés sont appelés 10 MIDOT et 10 SEFIROT :
+      pour montrer qu'ils ont MIDDAH (mesure), KITZVAH (limite), MISPAR KATSUV (nombre fixe).
+      CONTRAIREMENT au Ein Sof qui "de-lo it leih middah ve-lo shem yadua" (n'a ni mesure ni nom connu).
+      Source : Zohar Pinchas.
+    type: axiome_explicite
+    concepts:
+      - {id: kav_dak, role: kav_fin_intentionnellement}
+      - {id: middah_kitzvah_mispar, role: mesure_limite_nombre}
+      - {id: sefirot_midot, role: sefirot_comme_mesures}
+      - {id: lo_middah_lo_shem, role: ein_sof_sans_mesure}
+    mapping:
+      modules: ["core/ohr_system.py", "tzimtzum/regulator.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le Kav est fin = le mécanisme de LIMITATION — les Sefirot = des MESURES"
+
+  - id: "EC-H1S1-038"
+    source_he: "ובהיות הקו דק ימשיך להם שפע כדי צרכם בלבד בערך היותם נאצלים ולא יותר מדאי בערך היותם מאצילים"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Le Kav fin tire aux émanés le SHEFA KEDEI TZORKHAM BILVAD
+      (l'influence selon leur BESOIN SEULEMENT).
+      En proportion de leur ÊTRE ÉMANÉS (be-erekh heyotam ne'etzalim) et PAS PLUS
+      qu'en proportion de leur être ÉMANATEURS (lo yoter mi-dai be-erekh heyotam ma'atziilim).
+      Le Kav DOSE — ni trop (ce qui les détruirait) ni trop peu (ce qui les affaiblirait).
+    type: axiome_explicite
+    concepts:
+      - {id: shefa_kedei_tzorkham, role: influence_selon_le_besoin}
+      - {id: kav_doses, role: dosage_du_kav}
+    mapping:
+      modules: ["core/shefa_flow.py", "tzimtzum/regulator.py"]
+      tables: ["shefa_flows"]
+      partzufim: []
+      relevance: "Le Kav dose le Shefa — ni trop ni trop peu — exactement le besoin"
+
+  # ─── BLOC G : LES 10 IGULIM DE A"K ───
+
+  - id: "EC-H1S1-039"
+    source_he: "והנה העגול הזה הראשון היותר דבוק עם הא\"ס הוא הנקרא כתר דא\"ק ואחר כך נתפשט עוד הקו הזה ונמשך מעט וחזר להתעגל ונעשה עגול ב' תוך עיגול הא' וזה נק' עיגול החכמה דא\"ק... ועד\"ז היה הולך ומתפשט ומתעגל עד עגול י' הנק' עגול מלכות דא\"ק"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Les 10 IGULIM de A"K — formation séquentielle :
+      IGUL 1 (le plus DAVUK/proche au Ein Sof) = KETER de A"K
+      → Le Kav se déploie encore un peu et se RECOURBE →
+      IGUL 2 (dans le 1er) = CHOKHMAH de A"K
+      → Se déploie encore et se recourbe →
+      IGUL 3 (dans le 2ème) = BINAH de A"K
+      → Et ainsi de suite, se déployant et se recourbant →
+      jusqu'à IGUL 10 = MALKHUT de A"K
+      Ceci décrit les 10S KOLELOT (inclusives/générales) de TOUS les mondes.
+    type: axiome_explicite
+    concepts:
+      - {id: eser_igulei_ak, role: dix_cercles_de_ak}
+      - {id: igul_keter_ak, role: premier_cercle_keter}
+      - {id: igul_malkhut_ak, role: dixième_cercle_malkhut}
+      - {id: hitpashtut_ve_hit_aglut, role: déploiement_et_recourbement}
+    mapping:
+      modules: ["olamot/adam_kadmon.py", "core/sefirot.py"]
+      tables: ["olamot_config", "sefirot_hierarchy"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les 10 Igulim de A\"K — le Kav se déploie et se recourbe progressivement"
+
+  - id: "EC-H1S1-040"
+    source_he: "אמנם מבואר ופשוט הוא שכמה מיני עולמות נאצלו ונבראו ונוצרו ונעשו אלף אלפים ורבוא רבואות וכולם כא' הם תוך המקום החלל הנ\"ל ואין דבר חוצה לו"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      NOMBRE des mondes dans le Halal :
+      Des MILLIERS DE MILLIERS et des MYRIADES DE MYRIADES de mondes
+      ont été émanés, créés, formés et faits.
+      TOUS sont comme UN à l'intérieur du Halal.
+      RIEN n'est EN DEHORS du Halal (ein davar hutzah lo).
+      Tout ce qui existe est DANS le Halal — rien au-delà.
+    type: axiome_explicite
+    concepts:
+      - {id: alef_alafim, role: milliers_de_milliers}
+      - {id: kol_be_tokh_halal, role: tout_dans_le_halal}
+      - {id: ein_hutzah, role: rien_au_dehors}
+    mapping:
+      modules: ["olamot/"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "TOUT est dans le Halal — rien en dehors — le Halal contient TOUTE la réalité émanée"
+
+  - id: "EC-H1S1-041"
+    source_he: "והנה כל עולם ועולם יש בו י\"ס פרטית וכל ספי' וספי' פרטית שבכל עולם ועולם כלול מי' ספי' פרטי פרטית וכולם הם בצורת עיגולים זה תוך זה... עד אין קץ ומספר וכולם כגלדי בצלים זה תוך זה ע\"ד תמונת הגלגלים כנזכר בספרי תוכניים"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      STRUCTURE FRACTALE des Igulim :
+      Chaque MONDE a ses propres 10S PRATIYOT (particulières).
+      Chaque SEFIRAH PRATIT de chaque monde contient 10 SEFIROT PRATIT PRATIYOT (sub-sub).
+      TOUTES sont en forme d'IGULIM (cercles) l'un dans l'autre, l'un à l'intérieur de l'autre.
+      AD EIN KETZ U-MISPAR (sans fin ni nombre) — récursion INFINIE.
+      Tous comme GILDEI BETZALIM (pelures d'oignon) — l'un dans l'autre,
+      comme la forme des GALGALIM (sphères célestes) dans les livres d'ASTRONOMIE.
+    type: axiome_explicite
+    concepts:
+      - {id: fractal_igulim, role: structure_fractale}
+      - {id: sefirot_pratit_pratiyot, role: sub_sub_sefirot}
+      - {id: ad_ein_ketz, role: récursion_infinie}
+      - {id: gildei_betzalim, role: pelures_d_oignon}
+      - {id: sifrei_tokhniyim, role: livres_d_astronomie}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Structure fractale infinie — chaque Sefirah contient 10 qui contiennent 10..."
+
+  - id: "EC-H1S1-042"
+    source_he: "והנה הבחי' המחברת כל העיגולים יחד הוא ענין קו הדק הזה המתפשט מן הא\"ס ועובר ויורד ונמשך מעיגול אל עיגול עד סיום תכלית כולם כנ\"ל ודרך הקו הזה נמשך האור והשפע הצריך לכל א' וא' מהם"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Le KAV comme CONNECTEUR UNIVERSEL :
+      L'aspect qui CONNECTE (mehaberet) tous les Igulim ensemble = le KAV DAK (ligne fine).
+      Il se déploie du Ein Sof, TRAVERSE et DESCEND d'Igul en Igul
+      jusqu'à la FIN ULTIME (siyum takhlit kulam).
+      Par ce Kav se déploie l'OHR et le SHEFA nécessaires à CHACUN d'eux.
+      Le Kav = le FIL CONDUCTEUR qui traverse TOUTE la structure.
+    type: axiome_explicite
+    concepts:
+      - {id: kav_mehaberet, role: connecteur_universel}
+      - {id: me_igul_le_igul, role: d_igul_en_igul}
+      - {id: ohr_ve_shefa, role: lumière_et_influence}
+    mapping:
+      modules: ["core/shefa_flow.py"]
+      tables: ["shefa_flows"]
+      partzufim: []
+      relevance: "Le Kav traverse TOUS les cercles — le fil conducteur universel"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S1-009"
+    type: séquentiel
+    from: ohr_pashut
+    to: tzimtzum
+    nature: "L'Ohr Pashut remplissant tout → le Ratzon Pashut déclenche le Tzimtzum → le Halal est créé"
+    assertions_source: ["EC-H1S1-023", "EC-H1S1-024", "EC-H1S1-025"]
+
+  - id: "REL-H1S1-010"
+    type: séquentiel
+    from: tzimtzum
+    to: kav_yashar
+    nature: "Après le Tzimtzum → le Kav Yashar est tiré du Ein Sof dans le Halal"
+    assertions_source: ["EC-H1S1-025", "EC-H1S1-031"]
+
+  - id: "REL-H1S1-011"
+    type: séquentiel
+    from: kav_yashar
+    to: igul_keter_ak
+    nature: "Le Kav se déploie lentement → forme le premier Igul (Keter de A\"K)"
+    assertions_source: ["EC-H1S1-034", "EC-H1S1-039"]
+
+  - id: "REL-H1S1-012"
+    type: causal
+    from: kav_from_one_side
+    to: asymmetry_creates_direction
+    nature: "Le Kav vient d'UN seul côté → l'asymétrie crée les 6 directions"
+    assertions_source: ["EC-H1S1-031", "EC-H1S1-033"]
+
+  - id: "REL-H1S1-013"
+    type: causal
+    from: kav_dak
+    to: middah_kitzvah_mispar
+    nature: "Le Kav fin → l'Ohr arrive mesuré → les Sefirot = des mesures (Midot)"
+    assertions_source: ["EC-H1S1-037"]
+
+  - id: "REL-H1S1-014"
+    type: causal
+    from: igul_hashvaah
+    to: ne_etzalim_shavim
+    nature: "La forme circulaire → tous les émanés ÉGALEMENT proches du Ein Sof"
+    assertions_source: ["EC-H1S1-027", "EC-H1S1-028"]
+
+  - id: "REL-H1S1-015"
+    type: causal
+    from: bilti_davuk
+    to: sakkanat_bitul
+    nature: "L'Igul n'est PAS collé au Ein Sof pour éviter la réabsorption/annulation"
+    assertions_source: ["EC-H1S1-035"]
+
+  - id: "REL-H1S1-016"
+    type: contenance
+    from: halal_agol
+    to: alef_alafim
+    nature: "Le Halal circulaire contient des milliers de milliers de mondes — rien en dehors"
+    assertions_source: ["EC-H1S1-040"]
+
+  - id: "REL-H1S1-017"
+    type: flux
+    from: kav_mehaberet
+    to: eser_igulei_ak
+    nature: "Le Kav traverse et connecte TOUS les Igulim, leur apportant Ohr et Shefa"
+    assertions_source: ["EC-H1S1-042"]
+
+  - id: "REL-H1S1-018"
+    type: causal
+    from: tzimtzum
+    to: shoresh_dinim
+    nature: "Le Tzimtzum révèle la racine des Dinim (Butzina de-Kardinuta)"
+    assertions_source: ["EC-H1S1-029"]
+
+  - id: "REL-H1S1-019"
+    type: transformation
+    from: sequential_pre_tikkun
+    to: kavim_post_tikkun
+    nature: "L'arrangement séquentiel (pré-Tikkun) → arrangement en 3 Kavim (post-Tikkun)"
+    assertions_source: ["EC-H1S1-021"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S1-005"
+    nom: "Principe du Tzimtzum (Retrait pour Créer l'Espace)"
+    source_assertions: ["EC-H1S1-023", "EC-H1S1-024", "EC-H1S1-025", "EC-H1S1-026", "EC-H1S1-027", "EC-H1S1-029"]
+    formalisation: |
+      Pour que quelque chose de NOUVEAU puisse exister, la source doit SE RETIRER :
+      ÉTAT 0 : L'Ohr Pashut remplit TOUTE la réalité — pas d'espace pour autre chose
+      ACTE : Tzimtzum = retrait de l'Ohr du CENTRE vers la PÉRIPHÉRIE
+      RÉSULTAT : HALAL (espace vide circulaire) où les mondes peuvent être
+      PROPRIÉTÉS du Tzimtzum :
+        - CIRCULAIRE (car la source est parfaitement égale)
+        - ÉGAL de tous les côtés (pas plus d'un côté que l'autre)
+        - Crée un HALAL mais PAS un NÉANT — le Ein Sof entoure toujours
+      RAISON PROFONDE : révéler le SHORESH HA-DINIM (Butzina de-Kardinuta)
+      = introduire le DIN (forme, limite, mesure) dans une réalité sans forme
+      SANS Tzimtzum → pas de Din → pas de forme → pas de création
+    applications_ia:
+      - "Le Tzimtzum Regulator fait exactement ça — créer de l'espace par retrait"
+      - "Pour qu'un nouveau module existe, l'existant doit se retirer (réduire sa portée)"
+      - "Le vide (Halal) n'est pas négatif — c'est l'espace NÉCESSAIRE pour la création"
+      - "La restriction (Din) est la CONDITION de la forme — sans elle, tout est indifférencié"
+      - "Le retrait doit être ÉGAL de tous les côtés — pas de favoritisme"
+    questions_ouvertes:
+      - "Le Tzimtzum est-il un acte unique ou continu ?"
+      - "Le Halal peut-il être rempli à nouveau par l'Ohr Ein Sof ?"
+      - "La Butzina de-Kardinuta est-elle la même force que le Din dans les Sefirot ?"
+
+  - id: "PG-H1S1-006"
+    nom: "Principe du Kav Asymétrique (Direction par Asymétrie)"
+    source_assertions: ["EC-H1S1-031", "EC-H1S1-033", "EC-H1S1-037", "EC-H1S1-038"]
+    formalisation: |
+      La DIRECTION (haut/bas, devant/derrière, E/O/N/S) n'existe que par ASYMÉTRIE :
+      Le Kav TOUCHE le Ein Sof en haut → connecté à la source = ROSH
+      Le Kav NE TOUCHE PAS le Ein Sof en bas → déconnecté = SOF
+      Si les 2 bouts touchaient → 2 têtes égales → pas de direction
+      Si l'Ohr arrivait de partout → pas de direction du tout
+      Le Kav est FIN (dak) intentionnellement → l'Ohr arrive MESURÉ :
+        - Ni trop (ce qui rendrait les émanés = l'Émanateur)
+        - Ni trop peu (ce qui les priverait de vie)
+        - KEDEI TZORKHAM BILVAD (selon leur besoin seulement)
+      Les Sefirot sont appelées MIDOT (mesures) car le Kav les MESURE et LIMITE
+    applications_ia:
+      - "La direction dans un système vient de l'ASYMÉTRIE — un point d'entrée, un sens de flux"
+      - "Un système sans asymétrie n'a pas de direction — tout est égal = chaos"
+      - "Le Kav dak = le bandwidth limité intentionnellement pour ne pas submerger"
+      - "Les Sefirot comme MESURES = les composants du système sont quantifiables GRÂCE au Kav"
+      - "Le dosage kedei tzorkham = donner exactement ce dont le composant a besoin, pas plus"
+    questions_ouvertes:
+      - "L'asymétrie peut-elle être modifiée ?"
+      - "Le Kav a-t-il une épaisseur variable selon les niveaux ?"
+      - "Le dosage kedei tzorkham est-il dynamique ou fixe ?"
+
+  - id: "PG-H1S1-007"
+    nom: "Principe de la Proximité Sans Adhérence (Samukh lo Mitdabek)"
+    source_assertions: ["EC-H1S1-035", "EC-H1S1-036"]
+    formalisation: |
+      Les émanations doivent être PROCHES (samukh) de leur source
+      mais PAS COLLÉES (lo mitdabek) :
+      Si COLLÉES → RÉABSORPTION dans la source → retour à l'état initial → pas de création
+      Si TROP ÉLOIGNÉES → pas de connexion → pas de flux vital
+      Le SEUL LIEN = le Kav (la ligne fine de connexion)
+      Le Ein Sof ENTOURE les Igulim mais ne les TOUCHE PAS directement
+      La DISTANCE est maintenue par la forme CIRCULAIRE
+      L'indépendance des émanés NÉCESSITE cette distance minimale
+    applications_ia:
+      - "Les modules doivent être PROCHES mais pas COUPLÉS à leur source"
+      - "Un couplage trop fort = réabsorption (le module perd son identité)"
+      - "Un couplage trop faible = déconnexion (le module n'est plus alimenté)"
+      - "Le Kav = l'interface API fine qui connecte sans coupler"
+      - "Le pattern samukh-lo-mitdabek = loose coupling en architecture logicielle"
+    questions_ouvertes:
+      - "Quelle est la distance optimale (samukh mais pas mitdabek) ?"
+      - "Le degré de couplage doit-il varier selon le niveau ?"
+
+  - id: "PG-H1S1-008"
+    nom: "Principe de la Structure Fractale Infinie (Gildei Betzalim)"
+    source_assertions: ["EC-H1S1-040", "EC-H1S1-041", "EC-H1S1-042"]
+    formalisation: |
+      Le système est FRACTALEMENT structuré :
+      Chaque monde contient 10 Sefirot
+      Chaque Sefirah contient 10 sub-Sefirot
+      Chaque sub-Sefirah contient 10 sub-sub-Sefirot
+      → AD EIN KETZ U-MISPAR (sans fin ni nombre)
+      La structure est comme GILDEI BETZALIM (pelures d'oignon) — l'une dans l'autre
+      Le KAV traverse TOUTE la profondeur fractale = le FIL CONDUCTEUR universel
+      TOUT est DANS le Halal — RIEN en dehors (ein davar hutzah lo)
+      Le nombre de mondes = ALEF ALAFIM VE-RIBO RIVAVOT (milliers de milliers)
+    applications_ia:
+      - "Le système est fractalement structuré — chaque composant contient des sous-composants"
+      - "La récursion est INFINIE en théorie mais FINIE en pratique (limitations matérielles)"
+      - "Le Kav (shefa_flow) traverse TOUS les niveaux de la fractalité"
+      - "Rien n'existe en dehors du 'Halal' du système — tout est contenu"
+      - "Le pattern pelures d'oignon = architecture en couches (onion architecture)"
+    questions_ouvertes:
+      - "La fractalité est-elle parfaite (auto-similaire) ou approximative ?"
+      - "Combien de niveaux de récursion le système peut-il pratiquement supporter ?"
+
+  - id: "PG-H1S1-009"
+    nom: "Principe d'Élou ve-Élou (Résolution des Contradictions Apparentes)"
+    source_assertions: ["EC-H1S1-020", "EC-H1S1-021", "EC-H1S1-022"]
+    formalisation: |
+      Des modèles apparemment CONTRADICTOIRES peuvent être TOUS VRAIS simultanément :
+      MODÈLE SÉQUENTIEL → vrai AVANT le Tikkun (état Nekudim)
+      MODÈLE DES KAVIM → vrai APRÈS le Tikkun (état rectifié)
+      MODÈLE DES IGULIM → coexiste AVEC le Yosher (2 Behinot simultanées)
+      La résolution n'est pas de CHOISIR un modèle mais de comprendre
+      que chaque modèle décrit un ASPECT ou un MOMENT différent.
+      "Elou ve-elou divrei Elohim Hayim" = le paradoxe est RÉSOLU, pas ÉLIMINÉ
+    applications_ia:
+      - "Des architectures apparemment contradictoires peuvent coexister dans le même système"
+      - "Ne pas chercher LE modèle unique — accepter la complémentarité des modèles"
+      - "Le DissensuEngine (3 tensions) utilise exactement ce principe"
+      - "Chaque modèle est vrai dans son CONTEXTE — le contexte détermine lequel s'applique"
+    questions_ouvertes:
+      - "Peut-on TOUJOURS résoudre par Elou ve-Elou ou y a-t-il de vraies contradictions ?"
+      - "Comment savoir quel modèle appliquer dans quel contexte ?"

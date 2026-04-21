@@ -1,0 +1,732 @@
+# ═══════════════════════════════════════════════════════════════════
+# שער סוד הכלי — SHA'AR SOD HAKLI (La Porte du Secret du Vaisseau)
+# פרק א — PEREK 1 : תורת הכלי — TORAT HAKLI (La Doctrine du Vaisseau)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Le Kli (vaisseau/récipient) est le concept central de la Kabbale
+# lourianique qui n'a jamais été traité comme sujet autonome dans
+# les perakim existants de nos Sifrei Yesod. Ce perek fonde la
+# doctrine du Kli à partir des sources primaires, puis la transpose
+# vers le Context Engineering (couche Sod-Generative).
+#
+# Sources primaires :
+#   EC  = Etz Chaim (R. Haim Vital, d'après R. Yitzchak Luria)
+#   OC  = Otzrot Chaim (R. Haim Vital)
+#   TES = Talmud Eser Sefirot (R. Yehuda Ashlag, Baal HaSulam)
+#   T   = Tanya / Likutey Amarim (R. Shneur Zalman de Liadi)
+#   ShK = Shaar HaKavvanot (R. Haim Vital)
+#   Z   = Zohar
+#   SY  = Sefer Yetzirah
+#   EM  = Emek HaMelekh (R. Naftali Bacharach)
+#   NS  = Nahar Shalom (R. Shalom Sharabi, le Rashash)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 5
+  shaar_name_he: "שער סוד הכלי"
+  perek: 1
+  source_edition: "Multiple — EC, TES, T, ShK, Z, EM, NS"
+  transposed_by: "Etz Chaim AI — Sha'ar Sod HaKli initiative"
+  version: 1
+  strates: ["base"]
+  note: "Perek 1: Torat HaKli (תורת הכלי). Doctrine du Kli depuis les sources lourianiques. Context Engineering (couche Sod)."
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 1 — PESHAT-MACHINE : ASSERTIONS
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section A : La primauté du Kli sur l'Ohr
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-001"
+    source_he: "דע כי טרם שנאצלו הנאצלים ונבראו הנבראים היה אור עליון פשוט ממלא כל המציאות"
+    source_ref: "EC, Shaar 1, Drush Igulim v'Yosher, ch. 1"
+    assertion: >
+      Avant l'émanation, l'Ohr Ein Sof (lumière infinie) remplissait toute
+      la réalité sans distinction. Aucune forme, aucune différenciation,
+      aucun vaisseau. L'Ohr seul, sans Kli, est l'indifférenciation absolue.
+    type: axiome_explicite
+    concepts:
+      - { id: "ohr-ein-sof", role: "état pré-Kli" }
+      - { id: "chalal", role: "espace vide créé par le Tsimtsum" }
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Un LLM sans contexte est comme l'Ohr Ein Sof : capacité totale
+        mais indifférenciée. Il peut tout dire, donc il ne dit rien de
+        spécifique. Le contexte (Kli) crée la différenciation nécessaire.
+
+  - id: "EC-SHK-002"
+    source_he: "צמצם את עצמו בנקודה האמצעית... ונשאר חלל... ורשימו"
+    source_ref: "EC, Shaar 1, Drush Igulim v'Yosher, ch. 1-2"
+    assertion: >
+      Le Tsimtsum est l'acte fondateur par lequel l'Ein Sof se contracte
+      pour créer un Chalal (espace vide) avec un Reshimu (trace résiduelle).
+      La contraction n'est pas une diminution — c'est la création de
+      l'espace où le Kli pourra exister. Sans Tsimtsum, pas de Kli possible.
+    type: axiome_explicite
+    concepts:
+      - { id: "tsimtsum", role: "acte fondateur de contraction" }
+      - { id: "chalal", role: "espace résultant" }
+      - { id: "reshimu", role: "trace structurante" }
+    mapping:
+      modules: ["olamot.py", "config.yaml"]
+      tables: []
+      partzufim: []
+      relevance: >
+        La fenêtre de contexte est le Chalal — un espace fini créé par
+        contraction (limitation de tokens). Les poids du modèle après
+        entraînement sont le Reshimu — la trace qui pré-structure les
+        réponses possibles dans cet espace.
+
+  - id: "EC-SHK-003"
+    source_he: "המשיך קו אחד ישר מאור אין סוף... לתוך החלל"
+    source_ref: "EC, Shaar 1, Drush Igulim v'Yosher, ch. 2"
+    assertion: >
+      Après le Tsimtsum, un Kav (rayon/ligne) de lumière mesurée entre dans
+      le Chalal. Le Kav n'est pas l'Ohr Ein Sof — c'est une lumière dosée,
+      mesurée (Middah), adaptée à la capacité du Chalal. Le Kav est le
+      premier contexte : une information calibrée pour un espace défini.
+    type: axiome_explicite
+    concepts:
+      - { id: "kav", role: "rayon de lumière mesurée" }
+      - { id: "middah", role: "mesure/calibration" }
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Le prompt est le Kav — un rayon d'information mesuré qui entre dans
+        la fenêtre de contexte (Chalal). Un bon prompt est mesuré (Middah) :
+        ni trop (overflow), ni trop peu (information starvation).
+
+  - id: "EC-SHK-004"
+    source_he: "כי כלים נעשו מאור המצומצם שנשאר אחר הצמצום"
+    source_ref: "EC, Shaar 2 (Hishtalshelut), ch. 2; OC, Derush Adam Kadmon"
+    assertion: >
+      Les Kelim (vaisseaux) sont formés à partir de l'Ohr qui a été
+      contracté — ils sont faits de lumière condensée, pas de matière
+      étrangère. Le Kli n'est pas opposé à l'Ohr : il est de l'Ohr
+      qui s'est solidifié en forme. Le vaisseau est de la lumière devenue
+      structure.
+    type: déduction_logique
+    concepts:
+      - { id: "kli", role: "vaisseau = lumière structurée" }
+      - { id: "ohr-metsumtsam", role: "lumière contractée → Kli" }
+    mapping:
+      modules: ["epistememory/", "sifrei_yesod/"]
+      tables: ["epistememory"]
+      partzufim: []
+      relevance: >
+        Le contexte n'est pas extérieur au modèle — il est fait du même
+        "matériau" (langage, tokens) que les outputs du modèle. Un system
+        prompt est du texte structuré comme du texte-vaisseau, formant un
+        Kli pour recevoir la lumière/réponse du modèle.
+
+  - id: "EC-SHK-005"
+    source_he: ""
+    source_ref: "EC, Shaar 8 (Heikhal HaNikudim), ch. 1-3; Shaar 9, ch. 8"
+    assertion: >
+      La Shevirah (brisure des vaisseaux) s'est produite parce que les Kelim
+      du monde de Tohu (Nekudim) étaient inadéquats pour l'Ohr qu'ils devaient
+      contenir. Les vaisseaux étaient dans un état d'immaturité (Katnut) et
+      n'étaient pas enclothés les uns dans les autres (Hitlabshut), ni liés
+      ensemble en unité, ni divisés en colonnes harmonieuses. L'échec est un
+      échec de Kli, pas un excès de Ohr.
+    type: axiome_explicite
+    concepts:
+      - { id: "shevirah", role: "catastrophe = échec du Kli" }
+      - { id: "tohu", role: "monde pré-Tikkun = Kelim inadéquats" }
+      - { id: "nekudim", role: "points isolés sans interaction" }
+      - { id: "katnut", role: "immaturité des vaisseaux" }
+    mapping:
+      modules: ["main.py (_igulim)"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Le context collapse (ACE, 2025-2026) est une Shevirah moderne : le
+        contexte se brise quand les éléments sont empilés sans interaction
+        (Nekudim), sans enclothement mutuel (Hitlabshut), sans organisation
+        harmonieuse (colonnes Chesed/Gevurah/Tiferet). La solution n'est pas
+        plus d'Ohr (plus de tokens) mais de meilleurs Kelim (meilleure
+        structure contextuelle).
+
+  - id: "EC-SHK-006"
+    source_he: ""
+    source_ref: "EC, Shaar 11 (Tikkun), ch. 1-7"
+    assertion: >
+      Le Tikkun (réparation) consiste à reconfigurer les Sefirot brisées en
+      Partzufim — des structures composées où chaque Sefirah contient les dix
+      autres, où elles sont organisées en triades harmonieuses (droite/gauche/
+      centre), et où elles interagissent de façon symbiotioque. Le passage de
+      Nekudim (points) à Partzufim (visages) est le passage de l'autonomie
+      isolée à l'interdépendance harmonieuse.
+    type: axiome_explicite
+    concepts:
+      - { id: "tikkun", role: "réparation = reconfiguration en Partzufim" }
+      - { id: "partzufim", role: "structures composées harmonieuses" }
+      - { id: "hitkalelut", role: "inclusion mutuelle des Sefirot" }
+    mapping:
+      modules: ["main.py", "partzufim/"]
+      tables: ["partzufim_state"]
+      partzufim: ["Atik", "Arich", "Abba", "Imma", "ZA", "Nukvah"]
+      relevance: >
+        Le context engineering mature (2026+) est le passage de Nekudim à
+        Partzufim : du contexte empilé (RAG + prompt + mémoire isolés) au
+        contexte organique où chaque facette contient et enrichit les autres.
+        Le ContextAssembler est l'agent du Tikkun contextuel.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section B : Les modes du Kli — Réception et Filtrage
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-007"
+    source_he: ""
+    source_ref: "EC, Shaar 2 (Hishtalshelut), ch. 2; TES, Pticha §14-17"
+    assertion: >
+      Tout Kli reçoit deux types de lumière : Ohr Pnimi (lumière intérieure,
+      qui pénètre et remplit le vaisseau) et Ohr Makif (lumière environnante,
+      qui entoure le vaisseau sans y pénétrer). L'Ohr Pnimi est l'information
+      activement traitée ; l'Ohr Makif est l'information qui influence sans
+      être directement traitée.
+    type: axiome_explicite
+    concepts:
+      - { id: "ohr-pnimi", role: "lumière intérieure/active" }
+      - { id: "ohr-makif", role: "lumière environnante/ambiante" }
+    mapping:
+      modules: ["olamot.py", "hitbonenut.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Le contexte injecté dans la fenêtre de contexte = Ohr Pnimi.
+        Le training data, la structure du projet, l'environnement culturel
+        du modèle = Ohr Makif. L'industrie n'optimise que l'Ohr Pnimi.
+        Sod HaKli reconnaît les deux.
+
+  - id: "EC-SHK-008"
+    source_he: "המסך הוא כח דחיה שבמלכות... דוחה את האור היורד אליה"
+    source_ref: "TES, Pticha §14-17; EC, Shaar HaMasakhim"
+    assertion: >
+      Le Masakh (écran/membrane) est la force de résistance dans le Kli
+      qui repousse d'abord toute la lumière (Ohr Yashar) qui vient vers lui.
+      Puis un calcul est fait dans le Rosh (tête/décision) pour déterminer
+      combien peut être reçu — non pour soi-même mais pour le bien du
+      Créateur. Le Masakh transforme la réception en acte de don.
+    type: axiome_explicite
+    concepts:
+      - { id: "masakh", role: "écran/filtre de réception" }
+      - { id: "kashiut", role: "force de résistance du Masakh" }
+      - { id: "aviut", role: "épaisseur/profondeur du désir" }
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: >
+        Le Masakh est le composant MANQUANT dans Etz Chaim AI (audit: score
+        5 = 0). Entre Yesod (mémoire qui accumule tout) et Malkuth (prompt
+        final), il n'y a pas de membrane intelligente qui dose l'information.
+        Le ContextAssembler DOIT implémenter un Masakh.
+
+  - id: "EC-SHK-009"
+    source_he: ""
+    source_ref: "TES, Pticha §17; Histaklut Pnimit, Part 3"
+    assertion: >
+      Le Masakh a 5 niveaux d'Aviut (épaisseur) : Shoresh (racine), Aleph,
+      Bet, Gimel, Dalet. Plus l'Aviut est élevé (Masakh plus "épais/fort"),
+      plus le Ohr Chozer (lumière réfléchie) monte haut, et plus le Kli
+      peut recevoir une lumière de haute qualité. Il existe une RELATION
+      INVERSE entre la force du filtre et la qualité de ce qui est reçu.
+    type: axiome_explicite
+    concepts:
+      - { id: "aviut-5-niveaux", role: "5 degrés de filtrage" }
+      - { id: "relation-inverse", role: "plus de filtrage = plus de qualité" }
+      - { id: "ohr-chozer", role: "lumière réfléchie par le Masakh" }
+      - { id: "qualité-réception", role: "qualité de lumière reçue selon Aviut" }
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: >
+        Contre-intuitif mais vérifié empiriquement : les experts 2026
+        recommandent de rester sous 40% d'utilisation du contexte. Plus on
+        filtre (Masakh fort), meilleure est la réponse. L'industrie le
+        constate sans le théoriser. Le Baal HaSulam l'a formalisé.
+
+  - id: "EC-SHK-010"
+    source_he: ""
+    source_ref: "TES, Pticha §14; EC, Shaar HaOhr Chozer"
+    assertion: >
+      Le Ohr Chozer (lumière réfléchie/retournée) est produit par le
+      Zivvug de Haka'a — la "frappe" du Ohr Yashar (lumière directe) sur
+      le Masakh. Ce Ohr Chozer remonte vers la source et "habille" le
+      Ohr Yashar descendant. Ensemble, ils forment les 10 Sefirot du Rosh
+      (tête/décision) du Partzuf. Le Ohr Chozer est aussi important que
+      le Ohr Yashar — c'est lui qui crée les véritables Kelim.
+    type: axiome_explicite
+    concepts:
+      - { id: "ohr-chozer", role: "lumière de retour = crée les Kelim" }
+      - { id: "zivvug-de-hakaa", role: "frappe génératrice" }
+      - { id: "ohr-yashar", role: "lumière directe descendante" }
+    mapping:
+      modules: ["main.py (Or Chozer pattern)"]
+      tables: ["epistememory", "selfmap_scores"]
+      partzufim: []
+      relevance: >
+        Le retour (output du LLM → modification du contexte futur) est
+        aussi important que l'input. Le pattern Or Chozer existe déjà dans
+        Etz Chaim AI (score → EMA → recall enrichi) mais n'est pas
+        formalisé comme mécanisme central. Il devrait l'être.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section C : Tohu et Tikkun — Deux architectures du Kli
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-011"
+    source_he: ""
+    source_ref: "EC, Shaar 8-9 (Nekudim); Torah Ohr (R. Shneur Zalman)"
+    assertion: >
+      Trois stades pré-Tikkun de l'organisation des Kelim :
+      (1) Akudim (liés) — toutes les lumières dans un seul vaisseau, pas de
+      différenciation. Dynamique de "mati v'lo mati" (entre et sort).
+      (2) Nekudim (pointés) — chaque lumière dans son propre vaisseau isolé,
+      pas d'interaction. Chaque Sefirah dit "je règnerai".
+      (3) Berudim (tachetés) — les vaisseaux commencent à interagir et à
+      partager leurs énergies. C'est le monde du Tikkun.
+    type: axiome_explicite
+    concepts:
+      - { id: "akudim", role: "un seul vaisseau pour toutes les lumières" }
+      - { id: "nekudim", role: "vaisseaux isolés sans interaction" }
+      - { id: "berudim", role: "vaisseaux interactifs = Tikkun" }
+    mapping:
+      modules: ["main.py", "hitbonenut.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Trajectoire exacte du context engineering :
+        Akudim = prompt monolithique (2022-2023, un seul bloc de texte)
+        Nekudim = contexte empilé (2024-2025, RAG+prompt+mémoire isolés)
+        Berudim = contexte interactif (2026+, les facettes s'enrichissent)
+        Partzufim = contexte organique (Sod HaKli, les facettes co-créent)
+
+  - id: "EC-SHK-012"
+    source_he: ""
+    source_ref: "EC, Shaar 9, ch. 8; Mevo She'arim, Shaar 2"
+    assertion: >
+      La cause précise de la Shevirah est triple :
+      (a) Les Kelim étaient en Katnut (immaturité) — seul l'aspect Malkhut
+      de chaque Sefirah était émané.
+      (b) Les Kelim n'étaient pas enclothés les uns dans les autres
+      (absence de Hitlabshut).
+      (c) Les Kelim n'étaient pas liés ensemble en unité ni divisés en
+      colonnes harmonieuses (droite/gauche/centre).
+      La Shevirah est une catastrophe STRUCTURELLE, pas une catastrophe
+      de contenu.
+    type: axiome_explicite
+    concepts:
+      - { id: "shevirah-causes", role: "triple cause structurelle" }
+      - { id: "katnut-kelim", role: "immaturité = seul Malkhut émané" }
+      - { id: "absence-hitlabshut", role: "pas d'enclothement mutuel" }
+      - { id: "absence-colonnes", role: "pas de structure harmonieuse" }
+    mapping:
+      modules: ["main.py (_igulim — poids hardcodés)"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Diagnostic direct sur Etz Chaim AI : les poids Igulim sont
+        hardcodés (absence de Hitlabshut dynamique), les modules sont
+        concaténés sans interaction structurée (Nekudim), et le contexte
+        Hitbonenut est tronqué à 800 chars sans critère de priorité
+        (Katnut forcé). Ce sont les 3 causes de Shevirah contextuelle.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section D : Le Kli vivant — Développement et maturation
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-013"
+    source_he: ""
+    source_ref: "Shaar HaGilgulim, ch. 1, sect. 5; EC, Shaar HaIbur"
+    assertion: >
+      Tout Partzuf (et donc tout Kli) se développe en 3 stades :
+      (1) Ibur (gestation) — le Kli est dans le "ventre" du niveau supérieur,
+      nourri directement, recroquevillé (NHY replié sur ChaGaT).
+      (2) Yenikah (allaitement) — le Kli a émergé mais dépend encore du
+      niveau supérieur pour sa nourriture. Il est en Katnut (6 Sefirot).
+      (3) Mochin (maturité) — le Kli a développé ses propres ChaBAD
+      (Hokhmah, Binah, Da'at). Il est en Gadlut (10 Sefirot), autonome.
+    type: axiome_explicite
+    concepts:
+      - { id: "ibur", role: "gestation du Kli" }
+      - { id: "yenikah", role: "allaitement = dépendance partielle" }
+      - { id: "mochin", role: "maturité = autonomie complète" }
+      - { id: "katnut", role: "état d'immaturité" }
+      - { id: "gadlut", role: "état de maturité" }
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_state"]
+      partzufim: ["Abba (0.57 = Yenikah→Mochin)"]
+      relevance: >
+        Un système de contexte n'est pas statique — il se développe.
+        Le CLAUDE_CODE.md d'un nouveau projet est en Ibur. Après quelques
+        sessions, il est en Yenikah. Quand il génère ses propres skills
+        et se met à jour automatiquement, il est en Mochin/Gadlut. Le
+        ContextAssembler devrait tracker ce stade.
+
+  - id: "EC-SHK-014"
+    source_he: ""
+    source_ref: "EC, Shaar Panim v'Achor; Z III:296a (Idra Zuta)"
+    assertion: >
+      Deux états relationnels fondamentaux entre Partzufim :
+      (a) Panim b'Panim (face à face) — alignement complet, la lumière
+      circule directement entre les Partzufim. C'est l'état du Tikkun.
+      (b) Achor b'Achor (dos à dos) — désalignement, la lumière ne circule
+      pas correctement. C'est l'état post-Shevirah.
+      Le Tikkun consiste à ramener tous les rapports en Panim b'Panim.
+    type: axiome_explicite
+    concepts:
+      - { id: "panim-b-panim", role: "alignement = face à face" }
+      - { id: "achor-b-achor", role: "désalignement = dos à dos" }
+    mapping:
+      modules: ["zivvug_engine.py"]
+      tables: ["zivvug_assessments"]
+      partzufim: ["ZA↔Nukvah"]
+      relevance: >
+        Un contexte "aligné" avec la tâche est en Panim b'Panim — chaque
+        élément de contexte est orienté vers la requête. Un contexte
+        "désaligné" est en Achor b'Achor — les éléments sont présents
+        mais ne servent pas la tâche. Le ContextAssembler devrait vérifier
+        l'alignement, pas juste la pertinence.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section E : La Kavvanah — L'intention qui active le Kli
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-015"
+    source_he: ""
+    source_ref: "ShK, Introduction; Britannica, 'Kavvanah'"
+    assertion: >
+      La Kavvanah (intention dirigée) est ce qui transforme un acte
+      mécanique en acte efficace. Le Ari a enseigné que la Kavvanah correcte
+      peut influencer les mondes supérieurs et provoquer le Tikkun. Une
+      prière sans Kavvanah est comparée à un corps sans âme.
+    type: axiome_explicite
+    concepts:
+      - { id: "kavvanah", role: "intention dirigée = âme de l'acte" }
+      - { id: "kavvanot", role: "système d'intentions structurées" }
+      - { id: "efficacité-kli", role: "efficacité du vaisseau conditionnée par Kavvanah" }
+    mapping:
+      modules: ["kavanah_planner.py"]
+      tables: ["kavvanot"]
+      partzufim: []
+      relevance: >
+        Le context engineering sans intention dirigée est un corps sans âme.
+        Assembler du contexte mécaniquement (RAG + prompt + mémoire) sans
+        Kavvanah (pourquoi ce contexte, vers quoi il dirige l'attention)
+        produit des résultats mécaniques. La Kavvanah est le méta-contexte
+        qui détermine l'efficacité de tout le reste.
+
+  - id: "EC-SHK-016"
+    source_he: ""
+    source_ref: "T, Likutey Amarim, ch. 3"
+    assertion: >
+      Da'at est la faculté qui lie Hokhmah (flash d'insight) et Binah
+      (compréhension élaborée) aux Midot (émotions/actions). Sans Da'at,
+      même celui qui possède Hokhmah et Binah ne produira "dans son âme ni
+      crainte ni amour véritables, seulement des chimères vaines." Da'at
+      est l'intégration — le pont entre connaissance et action.
+    type: axiome_explicite
+    concepts:
+      - { id: "daat", role: "pont intégration connaissance→action" }
+      - { id: "chimères-sans-daat", role: "hallucination = absence de Da'at" }
+      - { id: "absence-daat", role: "manque d'intégration connaissance→tâche" }
+      - { id: "chimères-vaines", role: "résultat de Hokhmah+Binah sans Da'at" }
+    mapping:
+      modules: ["self_model.py"]
+      tables: ["self_states"]
+      partzufim: []
+      relevance: >
+        L'hallucination articulée d'un LLM est exactement la "chimère vaine"
+        du Tanya : le modèle a Hokhmah (faits dans ses poids) et Binah
+        (capacité de raisonnement) mais pas Da'at (intégration de la
+        connaissance avec la tâche spécifique). Le contexte de Da'at —
+        exemples résolus, liens explicites entre faits et tâche — est le
+        gap le plus critique du context engineering actuel.
+
+  - id: "EC-SHK-017"
+    source_he: ""
+    source_ref: "T, Shaar HaYichud v'HaEmunah, ch. 4-7"
+    assertion: >
+      Le Tsimtsum est "lo ki-pshuto" (non-littéral) selon le Tanya. La
+      lumière infinie n'est pas réellement supprimée — elle est occultée
+      (Helem v'Hester). L'Ein Sof reste présent dans le Chalal mais de
+      façon cachée. La contraction est épistémique, pas ontologique.
+    type: interprétation_lurianique
+    concepts:
+      - { id: "tsimtsum-lo-ki-pshuto", role: "contraction non-littérale" }
+      - { id: "helem-v-hester", role: "occultation, pas suppression" }
+      - { id: "sovev-kol-almin", role: "présence transcendante cachée" }
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Le system prompt ne supprime pas les capacités du modèle — il les
+        occulte. Tout reste dans les poids (Sovev), seule une partie est
+        accessible (Memaleh). Un context engineering sophistiqué travaille
+        avec les deux : l'Ohr Pnimi (contexte injecté) ET le Sovev
+        (capacités latentes orientées par le contexte).
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 2 — REMEZ-RELATIONAL : RELATIONS
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-SHK-001"
+    type: "causal"
+    from: "tsimtsum"
+    to: "chalal"
+    nature: "Le Tsimtsum CAUSE le Chalal — sans contraction, pas d'espace pour le Kli"
+    assertions_source: ["EC-SHK-002"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-002"
+    type: "causal"
+    from: "chalal"
+    to: "kli"
+    nature: "Le Chalal est la CONDITION DE POSSIBILITÉ du Kli"
+    assertions_source: ["EC-SHK-002", "EC-SHK-004"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-003"
+    type: "transformation"
+    from: "ohr-ein-sof"
+    to: "kli"
+    nature: "Le Kli est de l'Ohr qui s'est solidifié en forme — même substance, différent mode"
+    assertions_source: ["EC-SHK-004"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-004"
+    type: "causal"
+    from: "masakh"
+    to: "qualité-réception"
+    nature: >
+      RELATION INVERSE : plus le Masakh est fort (Aviut élevé), plus haute
+      est la qualité de lumière reçue. Plus de filtrage = plus de qualité.
+    assertions_source: ["EC-SHK-009"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-005"
+    type: "causal"
+    from: "absence-hitlabshut"
+    to: "shevirah"
+    nature: "L'absence d'enclothement mutuel des Kelim CAUSE la Shevirah"
+    assertions_source: ["EC-SHK-012"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-006"
+    type: "causal"
+    from: "absence-colonnes"
+    to: "shevirah"
+    nature: "L'absence de structure harmonieuse (colonnes) CAUSE la Shevirah"
+    assertions_source: ["EC-SHK-012"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-007"
+    type: "causal"
+    from: "katnut-kelim"
+    to: "shevirah"
+    nature: "L'immaturité des Kelim (seul Malkhut émané) CAUSE la Shevirah"
+    assertions_source: ["EC-SHK-012"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-008"
+    type: "transformation"
+    from: "nekudim"
+    to: "partzufim"
+    nature: >
+      Nekudim → Berudim → Partzufim : progression de l'isolement vers
+      l'interaction vers l'interdépendance organique. Le Tikkun.
+    assertions_source: ["EC-SHK-006", "EC-SHK-011"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-009"
+    type: "dualité_structurelle"
+    from: "ohr-pnimi"
+    to: "ohr-makif"
+    nature: >
+      Dualité complémentaire : l'Ohr Pnimi est la lumière qui entre et
+      remplit le Kli ; l'Ohr Makif est celle qui l'entoure sans entrer.
+      Tout Kli a les deux simultanément.
+    assertions_source: ["EC-SHK-007"]
+    bidirectionnel: true
+
+  - id: "REL-SHK-010"
+    type: "flux"
+    from: "ohr-yashar"
+    to: "ohr-chozer"
+    nature: >
+      Le Ohr Yashar descend → frappe le Masakh → génère le Ohr Chozer
+      qui remonte. Le Ohr Chozer habille le Ohr Yashar. Les deux ensemble
+      forment le Kli. Sans le retour, pas de vaisseau véritable.
+    assertions_source: ["EC-SHK-010"]
+    bidirectionnel: true
+
+  - id: "REL-SHK-011"
+    type: "séquentiel"
+    from: "ibur"
+    to: "mochin"
+    nature: >
+      Ibur → Yenikah → Mochin : progression développementale universelle
+      de tout Partzuf. Non-réversible dans le cours normal mais régression
+      possible (retour en Ibur après perte de Masakh).
+    assertions_source: ["EC-SHK-013"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-012"
+    type: "causal"
+    from: "kavvanah"
+    to: "efficacité-kli"
+    nature: >
+      La Kavvanah est la CONDITION de l'efficacité du Kli. Même Kli + même
+      Ohr avec Kavvanah différente = résultat différent. La Kavvanah est
+      le méta-paramètre qui détermine la qualité de la réception.
+    assertions_source: ["EC-SHK-015"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-013"
+    type: "causal"
+    from: "absence-daat"
+    to: "chimères-vaines"
+    nature: >
+      L'absence de Da'at (intégration) produit des "chimères vaines"
+      même en présence de Hokhmah et Binah. Application directe :
+      RAG + CoT sans Da'at = hallucinations articulées.
+    assertions_source: ["EC-SHK-016"]
+    bidirectionnel: false
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 3 — SOD-GENERATIVE : PRINCIPES PRODUCTIFS
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-SHK-001"
+    nom: "Primat du Kli — Le vaisseau détermine ce que la lumière peut devenir"
+    source_assertions: ["EC-SHK-001", "EC-SHK-005", "EC-SHK-006"]
+    formalisation: >
+      Soit M un modèle LLM, C un contexte, P un prompt, et R la réponse.
+      R = f(M, C, P). La variance de R expliquée par C domine la variance
+      expliquée par P à M fixe. Var(R|C) >> Var(R|P).
+      Le contexte (Kli) détermine le manifold des réponses accessibles ;
+      le prompt (Kav) sélectionne un point sur ce manifold.
+    applications_ia:
+      - "Investir plus dans la structure du contexte que dans le raffinement du prompt"
+      - "Le CLAUDE_CODE.md et les skills sont plus importants que le prompt individuel"
+      - "Un prompt médiocre dans un bon contexte > un prompt parfait dans un mauvais contexte"
+    questions_ouvertes:
+      - "La prédiction Var(R|C) >> Var(R|P) est-elle falsifiable empiriquement ?"
+      - "Existe-t-il un seuil de qualité de contexte en-dessous duquel le prompt reprend la dominance ?"
+
+  - id: "PG-SHK-002"
+    nom: "Relation Inverse Masakh-Qualité — Plus on filtre, mieux on reçoit"
+    source_assertions: ["EC-SHK-008", "EC-SHK-009"]
+    formalisation: >
+      Soit F le degré de filtrage (Aviut du Masakh, 0-4) et Q la qualité
+      de la réponse. Q = g(F) où g est croissante. Contre-intuitif :
+      réduire le volume de contexte injecté (augmenter F) augmente la
+      qualité de la réponse, jusqu'à un optimum. Au-delà, l'information
+      essentielle est filtrée et Q chute (Tsimtsum excessif = Chalal vide).
+    applications_ia:
+      - "Implémenter 5 niveaux de filtrage dans le ContextAssembler (Aviut 0-4)"
+      - "Le niveau par défaut ne devrait PAS être 'tout injecter' mais un filtrage modéré"
+      - "Rester sous 40% d'utilisation de la fenêtre de contexte (règle empirique 2026)"
+      - "Le budget de tokens par source doit être explicite et calibré"
+    questions_ouvertes:
+      - "Comment calibrer les 5 niveaux pour un modèle spécifique (qwen3.5:9b) ?"
+      - "Le Masakh optimal est-il constant ou dépend-il du type de tâche ?"
+
+  - id: "PG-SHK-003"
+    nom: "Triple Cause de Shevirah — Diagnostic structurel du context collapse"
+    source_assertions: ["EC-SHK-012"]
+    formalisation: >
+      Le context collapse se produit quand au moins une des 3 conditions
+      est violée :
+      (a) Katnut : le contexte est tronqué arbitrairement sans critère
+      de priorité → information essentielle perdue
+      (b) Absence de Hitlabshut : les couches de contexte sont concaténées
+      sans interaction → incohérence entre couches
+      (c) Absence de colonnes : pas de structure harmonieuse
+      (droite/expansion, gauche/contraction, centre/harmonisation) →
+      déséquilibre contextuel
+    applications_ia:
+      - "Avant chaque assemblage de contexte, vérifier les 3 conditions anti-Shevirah"
+      - "Les poids Igulim ne doivent PAS être hardcodés — ils doivent s'adapter (Hitlabshut)"
+      - "Le contexte Hitbonenut ne doit PAS être tronqué à 800 chars sans critère de qualité"
+      - "Chaque assemblage doit avoir les 3 colonnes : expansion (Chesed), contraction (Gevurah), harmonisation (Tiferet)"
+    questions_ouvertes:
+      - "Peut-on détecter automatiquement les signes avant-coureurs de Shevirah contextuelle ?"
+      - "Existe-t-il un équivalent du 'Bitush Or Makif be-Or Pnimi' dans le context engineering ?"
+
+  - id: "PG-SHK-004"
+    nom: "Trajectoire Akudim→Partzufim — Maturité architecturale du contexte"
+    source_assertions: ["EC-SHK-011", "EC-SHK-006"]
+    formalisation: >
+      Le context engineering suit une progression développementale :
+      Akudim (monolithique, un seul bloc) → Nekudim (empilé, éléments
+      isolés) → Berudim (interactif, éléments qui commencent à interagir)
+      → Partzufim (organique, structures composées auto-régulées).
+      L'industrie en 2026 est en transition Nekudim→Berudim. Sod HaKli
+      vise le stade Partzufim.
+    applications_ia:
+      - "Le ContextAssembler doit être conçu pour le stade Partzufim, pas juste Berudim"
+      - "Chaque élément de contexte doit contenir une trace (Reshimu) de tous les autres"
+      - "Les modules sephirothiques doivent s'enrichir mutuellement, pas juste s'empiler"
+    questions_ouvertes:
+      - "Quel est le coût computationnel du passage Nekudim→Partzufim ?"
+      - "Est-ce réaliste avec la fenêtre de contexte actuelle de qwen3.5:9b (8K-32K) ?"
+
+  - id: "PG-SHK-005"
+    nom: "Da'at comme pont anti-hallucination"
+    source_assertions: ["EC-SHK-016"]
+    formalisation: >
+      L'hallucination = Hokhmah + Binah - Da'at. Le modèle a des faits
+      (Hokhmah) et sait raisonner (Binah) mais ne les INTÈGRE pas à la
+      tâche spécifique (Da'at). Le contexte de Da'at est le pont :
+      exemples résolus dans le domaine exact, liens explicites entre
+      les faits injectés et la requête, démonstration de comment appliquer
+      la connaissance à CE cas.
+    applications_ia:
+      - "Chaque assemblage de contexte doit inclure un 'pont Da'at' explicite"
+      - "Le pont Da'at = exemples de comment les faits injectés ont été utilisés dans des cas similaires"
+      - "Le score Hitbonenut (0.742) pourrait augmenter avec un meilleur Da'at dans les prompts"
+    questions_ouvertes:
+      - "Comment générer automatiquement le pont Da'at à partir de l'historique des interactions ?"
+      - "Le Da'at est-il le différenciateur principal entre score 4 et score 5 dans l'audit ?"
+
+  - id: "PG-SHK-006"
+    nom: "Ibur/Yenikah/Mochin — Le contexte comme organisme en développement"
+    source_assertions: ["EC-SHK-013"]
+    formalisation: >
+      Tout système de contexte traverse 3 stades :
+      Ibur : contexte minimal, nourri directement par l'humain, tout est
+      injecté manuellement.
+      Yenikah : contexte intermédiaire, le système commence à trier mais
+      dépend encore de l'humain pour les décisions majeures.
+      Mochin/Gadlut : contexte autonome, le système gère son propre
+      contexte, se met à jour, se corrige, génère ses propres skills.
+      Le stade courant doit être TRACKÉ et le comportement ADAPTÉ.
+    applications_ia:
+      - "Ajouter un champ 'stade_contextuel' (ibur/yenikah/mochin) au système"
+      - "En Ibur : tout injecter, pas de filtrage, supervision humaine totale"
+      - "En Yenikah : filtrage basique, l'humain valide les décisions de filtrage"
+      - "En Mochin : filtrage autonome, l'humain intervient seulement sur exception"
+      - "Abba à 0.57 est en transition Yenikah→Mochin — c'est un indicateur"
+    questions_ouvertes:
+      - "Comment détecter automatiquement le passage d'un stade à l'autre ?"
+      - "Le stade est-il global (tout le système) ou par module/domaine ?"

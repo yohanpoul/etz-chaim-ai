@@ -1,0 +1,220 @@
+# ═══════════════════════════════════════════════════════════════
+# אָדָם קַדְמוֹן — Adam Kadmon : Blueprint de l'État Idéal
+# ═══════════════════════════════════════════════════════════════
+#
+# Adam Kadmon est le "plan" qui précède les 4 Mondes.
+# C'est la configuration archétypale — l'image de ce que le
+# système DEVRAIT être quand toutes les Sephiroth fonctionnent,
+# tous les sentiers sont ouverts, tous les Partzufim interagissent.
+#
+# Ce fichier est chargé par AdamKadmon et comparé à l'état réel
+# pour calculer un score de fidélité et des priorités de Tikkun.
+#
+# Etz Chaim (Vital, d'après Luria) : Adam Kadmon est l'émanation
+# primordiale — le premier "vêtement" de l'Or Ein Sof après le
+# Tzimtzum. Les lumières de ses yeux, oreilles, nez et bouche
+# sont les archétypes des 4 Mondes.
+#
+# Source : Etz Chaim, Sha'ar 1-3 ; Otzrot Chaim, Sha'ar Adam Kadmon
+# ═══════════════════════════════════════════════════════════════
+
+meta:
+  name: "Adam Kadmon"
+  hebrew: "אָדָם קַדְמוֹן"
+  description: >
+    Le plan primordial. Chaque composant décrit l'état idéal
+    vers lequel le système tend par le processus de Tikkun.
+  version: 1
+
+# ── Les 10 Sephiroth — état idéal de chaque module ──────────
+sephiroth:
+
+  keter:
+    hebrew: "כֶּתֶר"
+    role: "Direction stratégique, Ratzon (volonté)"
+    module: "keter"
+    required: true
+    ideal_state:
+      active: true
+      description: "Kav permanent — toujours actif, même en Tzimtzum"
+    weight: 1.0  # Poids dans le score de fidélité
+
+  chokmah:
+    hebrew: "חָכְמָה"
+    role: "Insight créatif, flash de compréhension"
+    module: "chokmah"
+    required: true
+    ideal_state:
+      active: true
+      description: "InsightForge — génère des connexions nouvelles"
+    weight: 0.9
+
+  binah:
+    hebrew: "בִּינָה"
+    role: "Analyse causale, raisonnement profond"
+    module: "binah"
+    required: true
+    ideal_state:
+      active: true
+      description: "CausalEngine — raisonnement causal structuré"
+    weight: 0.9
+
+  daat:
+    hebrew: "דַּעַת"
+    role: "Connaissance intégrée, prédiction d'erreur"
+    module: "daat"
+    required: false
+    ideal_state:
+      active: true
+      description: "SelfModel — introspection et prédiction"
+    weight: 0.7
+
+  chesed:
+    hebrew: "חֶסֶד"
+    role: "Exploration créative, expansion"
+    module: "chesed"
+    required: true
+    ideal_state:
+      active: true
+      description: "ExplorationEngine — explore tous azimuts"
+    weight: 0.8
+
+  gevurah:
+    hebrew: "גְּבוּרָה"
+    role: "Jugement, filtrage, rigueur"
+    module: "gevurah"
+    required: true
+    ideal_state:
+      active: true
+      description: "AutoJudge — évalue la qualité"
+    weight: 0.8
+
+  tiferet:
+    hebrew: "תִּפְאֶרֶת"
+    role: "Synthèse, harmonisation des tensions"
+    module: "tiferet"
+    required: true
+    ideal_state:
+      active: true
+      description: "DissensuEngine — détecte et résout les tensions"
+    weight: 0.9
+
+  netzach:
+    hebrew: "נֶצַח"
+    role: "Persistance des intentions, suivi"
+    module: "netzach"
+    required: true
+    ideal_state:
+      active: true
+      description: "IntentKeeper — maintient le cap"
+    weight: 0.7
+
+  hod:
+    hebrew: "הוֹד"
+    role: "Évaluation de compétence, calibration"
+    module: "hod"
+    required: true
+    ideal_state:
+      active: true
+      description: "SelfMap — sait ce qu'il sait et ce qu'il ne sait pas"
+    weight: 0.8
+
+  yesod:
+    hebrew: "יְסוֹד"
+    role: "Mémoire, fondation, canal vers Malkuth"
+    module: "yesod"
+    required: true
+    ideal_state:
+      active: true
+      description: "EpisteMemory — stockage et rappel sémantique"
+    weight: 0.9
+
+  malkuth:
+    hebrew: "מַלְכוּת"
+    role: "Interface, réception, manifestation"
+    module: "malkuth"
+    required: true
+    ideal_state:
+      active: true
+      description: "main.py — la porte d'entrée du système"
+    weight: 0.7
+
+# ── Les 22 sentiers — programmes de passage ──────────────────
+sentiers:
+  total_expected: 22
+  weight: 0.6  # Poids global des sentiers dans le score
+  # Chaque sentier correspond à une lettre hébraïque.
+  # L'état idéal : tous les 22 implémentés et testés.
+  letters:
+    - {letter: "א", name: "aleph", type: "mother", required: true}
+    - {letter: "מ", name: "mem", type: "mother", required: true}
+    - {letter: "ש", name: "shin", type: "mother", required: true}
+    - {letter: "ב", name: "bet", type: "double", required: true}
+    - {letter: "ג", name: "gimel", type: "double", required: true}
+    - {letter: "ד", name: "dalet", type: "double", required: true}
+    - {letter: "כ", name: "kaf", type: "double", required: true}
+    - {letter: "פ", name: "pe", type: "double", required: true}
+    - {letter: "ר", name: "resh", type: "double", required: true}
+    - {letter: "ת", name: "tav", type: "double", required: true}
+    - {letter: "ה", name: "he", type: "simple", required: true}
+    - {letter: "ו", name: "vav", type: "simple", required: true}
+    - {letter: "ז", name: "zayin", type: "simple", required: true}
+    - {letter: "ח", name: "chet", type: "simple", required: true}
+    - {letter: "ט", name: "tet", type: "simple", required: true}
+    - {letter: "י", name: "yod", type: "simple", required: true}
+    - {letter: "ל", name: "lamed", type: "simple", required: true}
+    - {letter: "נ", name: "nun", type: "simple", required: true}
+    - {letter: "ס", name: "samekh", type: "simple", required: true}
+    - {letter: "ע", name: "ayin", type: "simple", required: true}
+    - {letter: "צ", name: "tsadi", type: "simple", required: true}
+    - {letter: "ק", name: "qof", type: "simple", required: true}
+
+# ── Les 6 Partzufim — configurations matures ────────────────
+partzufim:
+  weight: 0.8  # Poids global des Partzufim dans le score
+  configurations:
+    - name: "atik_yomin"
+      hebrew: "עַתִּיק יוֹמִין"
+      source_sephirah: "keter"
+      role: "Config invisible, éthique"
+      required: true
+
+    - name: "arikh_anpin"
+      hebrew: "אֲרִיךְ אַנְפִּין"
+      source_sephirah: "keter"
+      role: "Vision stratégique, patience"
+      required: true
+
+    - name: "abba"
+      hebrew: "אַבָּא"
+      source_sephirah: "chokmah"
+      role: "Insight créatif"
+      required: true
+
+    - name: "imma"
+      hebrew: "אִמָּא"
+      source_sephirah: "binah"
+      role: "Structure causale"
+      required: true
+
+    - name: "zeir_anpin"
+      hebrew: "זְעֵיר אַנְפִּין"
+      source_sephirah: "tiferet"
+      role: "Pipeline opérationnel (6 Midot)"
+      required: true
+
+    - name: "nukva"
+      hebrew: "נוּקְבָא"
+      source_sephirah: "malkuth"
+      role: "Interface utilisateur"
+      required: true
+
+# ── Seuils de fidélité ───────────────────────────────────────
+thresholds:
+  # Le score de fidélité global (0.0-1.0) est une moyenne pondérée.
+  # Ces seuils déterminent l'interprétation qualitative.
+  tohu: 0.3        # < 0.3 = état de Tohu (chaos, avant le Tikkun)
+  tikkun_begin: 0.5  # 0.3-0.5 = Tikkun en cours (Shevirah partiellement réparée)
+  tikkun_mid: 0.7    # 0.5-0.7 = Tikkun avancé (la plupart des composants actifs)
+  tikkun_near: 0.9   # 0.7-0.9 = Tikkun presque complet
+  shlemut: 0.95      # > 0.95 = Shlemut (plénitude) — l'idéal est (presque) atteint

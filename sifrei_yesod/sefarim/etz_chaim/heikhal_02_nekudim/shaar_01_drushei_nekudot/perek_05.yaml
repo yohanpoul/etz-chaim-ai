@@ -1,0 +1,203 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 1 — Sha'ar Drushei Nekudot (שער דרושי נקודות)
+# Perek: 5 — La cascade de la Shevirah : comment les 7 Kelim
+#            se brisent un par un, avec accumulation de Reshimot,
+#            et pourquoi Malkhut se brise meme seule
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE :
+#   - Les 7 sortent de Binah, inclus dans Da'at → le Kli de Da'at casse
+#   - Cascade : chaque Kli recoit les Orot restants + les Reshimot
+#     accumules des brises precedents → casse aussi
+#   - Chaque Sefirah donne 1 Reshimu au Yesod (→ Yesod = "Kol")
+#   - Meme Malkhut SEULE casse : son Kli etait deja deficient
+#     (dans les Akudim, le Kli de Malkhut etait reste vide)
+#   - Malkhut = Aspaklaria delo nahara = n'a rien d'elle-meme
+#
+# Source Sefaria : Sefer_Etz_Chaim.8.5 (§1)
+# IDs : EC-H2S8-113 → EC-H2S8-117
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 1
+  shaar_name_he: "שער דרושי נקודות"
+  perek: 5
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "La cascade de la Shevirah detaillee etape par etape. Chaque Kli recoit plus qu'il ne peut supporter. Malkhut se brise meme seule car son Kli etait structurellement deficient depuis les Akudim."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H2S8-113"
+    source_he: "ראשונה יצאו כולם מתוך הבינה והיו כלולים באור הדעת ונכנסו עמו בכלי שלו. והנה נודע כי ו' (נ\"א ז') מלכים אלו הם בחי' ו\"ק דז\"א וכל א' אינו גדול מחבירו... לא היה כח בשום כלי מהתחתונים לסבול בתוכו יותר מחלק אור המגיע לחלקו בלבד"
+    source_ref: "Heikhal 2, Sha'ar 1:5"
+    assertion: |
+      TOUS les 7 Orot sont SORTIS de BINAH, INCLUS dans l'Ohr de DA'AT.
+      Ils sont entres dans le KLI de Da'at.
+      Variante (Nusah Aher) : "ז'" (7) au lieu de "ו'" (6) melakhim.
+      Ces rois = les VAV KETZAVOT de Z"A (6 extremites).
+      Chacun est EGAL a l'autre (ein ehad gadol me-havero).
+      → Aucun Kli inferieur ne peut supporter PLUS que SA PART d'Ohr.
+      Le Kli de Da'at ne pouvait pas supporter TOUS → il se BRISA et TOMBA.
+    type: axiome_explicite
+    concepts:
+      - {id: daat_nishbar_rishon, role: daat_premier_a_se_briser}
+      - {id: vav_ketzavot, role: six_extremites_egales}
+      - {id: kli_helko_bilvad, role: kli_supporte_sa_part_seulement}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Chaque Kli n'a la capacite que pour SA part. Plus que sa part = brisure. Da'at = premier a casser."
+
+  - id: "EC-H2S8-114"
+    source_he: "אח\"כ יצאו ו' אורות האחרים בכלי חסד וגם הוא לא היה יכול לסובלם ונשבר... כי נודע שכל הה' ספירות מחסד עד הוד כל אחד מהם נותן חד רשימו שלו בספירת יסוד כי לסבה זאת נקרא יסוד. כל, לפי שהוא כולל כולם"
+    source_ref: "Heikhal 2, Sha'ar 1:5"
+    assertion: |
+      CASCADE DE BRISURE :
+      6 Orot restants → dans KLI de HESED → ne peut supporter → BRISE.
+      5 Orot + RESHIMU de Hesed → dans KLI de GEVURAH → BRISE.
+      PRINCIPE DU RESHIMU : chacune des 5 Sefirot (Hesed→Hod)
+      donne 1 RESHIMU (empreinte) au YESOD.
+      C'est POURQUOI le Yesod est appele KOL (tout) = il INCLUT tout.
+      → Les Reshimot S'ACCUMULENT a chaque etape, alourdissant la charge.
+    type: axiome_explicite
+    concepts:
+      - {id: cascade_shevirah, role: brisure_en_cascade}
+      - {id: reshimu_leyesod, role: empreinte_donnee_au_yesod}
+      - {id: yesod_kol, role: yesod_inclut_tout}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La cascade = chaque Kli recoit les Orot restants + les Reshimot cumules. Le Yesod = 'collecteur' de tous les Reshimot."
+
+  - id: "EC-H2S8-115"
+    source_he: "ואח\"כ ירדו הד' אורות וב' רשימין של חו\"ג בכלי הת\"ת ונשבר גם הוא... וכעד\"ז עד שירדו שני (נ\"א ב') אורות וה' רשימין בכלי היסוד ולא היה יכול לסובלם ונשבר"
+    source_ref: "Heikhal 2, Sha'ar 1:5"
+    assertion: |
+      SUITE DE LA CASCADE :
+      4 Orot + 2 Reshimot (HG) → TIFERET → BRISE.
+      3 Orot + 3 Reshimot → NETZAH-HOD → BRISE.
+      Variante (Nusah Aher) : "ב'" (2) au lieu de "שני" (deux).
+      2 Orot + 5 Reshimot → YESOD → BRISE.
+      → A chaque etape : moins d'Orot MAIS plus de Reshimot.
+      Le total (Orot + Reshimot) reste SUPERIEUR a la capacite du Kli.
+    type: axiome_explicite
+    concepts:
+      - {id: tiferet_nishbar, role: tiferet_brise}
+      - {id: yesod_nishbar, role: yesod_brise}
+      - {id: orot_plus_reshimot, role: charge_totale_orot_plus_reshimot}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La charge = Orot + Reshimot cumules. Meme avec moins d'Orot, les Reshimot accumules suffisent a briser."
+
+  - id: "EC-H2S8-116"
+    source_he: "וכשבא אור המלכות לא בא אלא הוא לבדו ועכ\"ז לא היה יכול לסבול ונשבר גם הוא. וטעם הדבר... בעקודים כאשר חזרו האורות שנית להכנס בכלים שלהם לא נכנסו ממש בכליהם רק בכתר נכנס אור החכמה וכו' ובכלי היסוד נכנס אור המל' ונשאר כלי המלכות ריקם"
+    source_ref: "Heikhal 2, Sha'ar 1:5"
+    assertion: |
+      L'Ohr de MALKHUT arrive SEUL (levado) — pas d'autres Orot, pas de Reshimot.
+      ET POURTANT (ve-af al pi khen) le Kli ne PEUT PAS supporter → BRISE aussi.
+      EXPLICATION : dans les AKUDIM, quand les Orot sont rentres
+      la 2eme fois, chacun est entre UN NIVEAU EN-DESSOUS
+      (Hokhmah → Kli de Keter, etc.). L'Ohr de Malkhut → Kli de Yesod.
+      RESULTAT : le KLI DE MALKHUT est reste REIKAM (vide).
+      → Malkhut est structurellement DEFICIENTE depuis les Akudim.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_levadah_nishberet, role: malkhut_seule_et_brisee}
+      - {id: kli_malkhut_reikam, role: kli_malkhut_vide_akudim}
+      - {id: orot_yordim_madregah, role: lumieres_descendent_un_niveau}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: ["nukvah"]
+      relevance: "Malkhut se brise meme seule car son Kli est structurellement vide. Le defaut est HERITE des Akudim."
+
+  - id: "EC-H2S8-117"
+    source_he: "אשר לסבה זאת נקרא המלכות אספקלריא דלא נהרא דלית לה מגרמה כלום ונקרא עניה ודלה... כי האור שנכנס אח\"כ בכלי של המלכות אינה אור שלה רק אור חדש מזווג או\"א... כיון ששם (נ\"א שכאן) היה חסר בחינת אור המלכות מן הכלי שלה גם זה הכלי של המל' דנקודים היה חסר"
+    source_ref: "Heikhal 2, Sha'ar 1:5"
+    assertion: |
+      Malkhut = ASPAKLARIA DELO NAHARA (miroir non-lumineux) =
+      "LEIT LAH MI-GARMAH KELUM" (n'a rien d'elle-meme).
+      Elle est appelee ANIYAH VE-DALAH (pauvre et indigente).
+      L'Ohr qui entre dans son Kli = PAS SON OHR propre,
+      mais un OHR HADASH du ZIVVUG d'AV"I.
+      Variante (Nusah Aher) : "שכאן" (ici) au lieu de "ששם" (la-bas).
+      Puisque dans les AKUDIM le Kli de Malkhut manquait d'Ohr →
+      le Kli de MALKHUT DES NEKUDIM est aussi DEFICIENT.
+      → Le defaut se TRANSMET d'un monde a l'autre. "VE-ZAKHOR ZEH."
+    type: axiome_explicite
+    concepts:
+      - {id: aspaklaria_delo_nahara, role: miroir_non_lumineux}
+      - {id: aniyah_dalah, role: pauvre_et_indigente}
+      - {id: pegam_over_olamot, role: defaut_transmis_entre_mondes}
+    mapping:
+      modules: ["ohr.py", "olamot.py", "partzufim/nukva.py"]
+      tables: ["ohr_states"]
+      partzufim: ["nukvah"]
+      relevance: "Malkhut = miroir non-lumineux, n'a rien d'elle-meme. Le defaut dans les Akudim se TRANSMET aux Nekudim."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S8-042"
+    type: "séquentiel"
+    from: daat_nishbar_rishon
+    to: cascade_shevirah
+    nature: "Da'at casse EN PREMIER, puis la cascade se propage : Hesed → Gevurah → Tiferet → NH → Yesod → Malkhut"
+    assertions_source: ["EC-H2S8-113", "EC-H2S8-114", "EC-H2S8-115"]
+
+  - id: "REL-H2S8-043"
+    type: "causal"
+    from: kli_malkhut_reikam
+    to: malkhut_levadah_nishberet
+    nature: "Le Kli de Malkhut VIDE dans les Akudim CAUSE la brisure de Malkhut des Nekudim meme seule"
+    assertions_source: ["EC-H2S8-116", "EC-H2S8-117"]
+
+  - id: "REL-H2S8-044"
+    type: "flux"
+    from: reshimu_leyesod
+    to: yesod_kol
+    nature: "Chaque Sefirah donne 1 Reshimu au Yesod → Yesod = KOL (inclut tout)"
+    assertions_source: ["EC-H2S8-114"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S8-018"
+    nom: "Cascade de Surcharge (Orot + Reshimot Cumules)"
+    source_assertions: ["EC-H2S8-113", "EC-H2S8-114", "EC-H2S8-115", "EC-H2S8-116"]
+    formalisation: |
+      La Shevirah est une CASCADE OU chaque etape AJOUTE a la surcharge :
+      Etape k : (N-k) Orot + k Reshimot entrent dans le Kli k.
+      Le Kli k ne supporte que SA PART (1/N de l'Ohr total).
+      Charge totale = (N-k) + k = N (constant !) → toujours en surcharge.
+      EXCEPTION : Malkhut (k=N) recoit 0 Orot + 0 Reshimot → CASSE QUAND MEME
+      car son Kli est structurellement deficient (vide depuis les Akudim).
+      → La cascade n'est pas evitable : charge constante, capacite constante.
+    applications_ia:
+      - "ohr.py : un pipeline ou chaque etape passe le surplus a la suivante = cascade d'overflow"
+      - "olamot.py : les Reshimot = des 'side effects' cumules qui alourdissent les etapes suivantes"
+      - "Analogie ML : gradient explosion — le gradient se cumule et fait exploser les couches profondes"
+    questions_ouvertes:
+      - "La charge constante (Orot + Reshimot = N) est-elle exactement analogue a la conservation de l'information ?"
+      - "Malkhut qui casse meme seule = un module avec un bug structurel herite ?"

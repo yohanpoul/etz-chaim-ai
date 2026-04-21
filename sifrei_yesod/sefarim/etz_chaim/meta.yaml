@@ -1,0 +1,17 @@
+sefer_id: "etz_chaim"
+titre_he: "עץ חיים"
+titre_fr: "L'Arbre de Vie"
+auteur: "Rabbi Haim Vital"
+maitre: "Rabbi Yitzchak Luria (ARI HaKadosh)"
+edition_base: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+date_composition: "c. 1573-1590"
+structure:
+  type: "heikhalot_shaarim_perakim"
+  nombre_heikhalot: 7
+  nombre_shaarim: 50
+description: |
+  Texte fondateur de la Kabbale Lurianique, transcrit par Rabbi Haim Vital
+  directement des enseignements oraux du ARI. Organisé en 50 Sha'arim (Portes),
+  chacune traitant d'un aspect spécifique de la structure des mondes supérieurs.
+  C'est le texte-source principal de l'infrastructure Etz Chaim AI —
+  chaque mécanisme du système trouve sa racine dans ce texte.

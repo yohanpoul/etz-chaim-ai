@@ -1,0 +1,479 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 3 — Seder Atzilut be-Kitzur Muflagh (סדר אצילות בקיצור מופלג)
+# Perek: 3 — Atzmut/Guf/Malbushim, Pnimiyut/Hitzoniut, Ibur-Yenikah-Mohin
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 3
+  shaar_name_he: "סדר אצילות בקיצור מופלג"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Synthèse du Kelal ha-Oleh : les 3 niveaux (Atzmut/Guf/Malbushim), Pnimiyut/Hitzoniut des Kelim, et Ibur-Yenikah-Mohin"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : KELAL HA-OLEH — LES 3 NIVEAUX (ATZMUT / GUF / MALBUSHIM) ───
+
+  - id: "EC-H1S3-021"
+    source_he: "כלל העולה כי הא\"ס הוא נשמה לנשמה והאציל ממנו אדם אחד הכולל כל העולמות כולם שבחי' עצמות שבו שהם בחי' נרנח\"י נקרא א\"ק. ובחי' הגוף שבו הוא עולם האצילות. ובחי' המלבושים הם ג' עולמות בי\"ע שאינם רק עולם א' לבדו והוא לבוש האצילות כולו שבין שלשתם אינם רק י\"ס דוגמת י\"ס דאצילות הנקרא גוף"
+    source_ref: "Heikhal 1, Sha'ar 3:3 — ouverture"
+    assertion: |
+      KELAL HA-OLEH (synthèse qui monte) — les 3 NIVEAUX de la réalité :
+      Le EIN SOF = NESHAMAH LA-NESHAMAH (âme de l'âme).
+      Il a ÉMANÉ un ADAM EHAD (homme unique) qui ENGLOBE tous les mondes.
+      Niveau 1 — ATZMUT (essence) : les NaRaNHaY (Nefesh, Ruah, Neshamah, Hayah, Yehidah)
+      de cet Adam = A"K (Adam Kadmon).
+      Niveau 2 — GUF (corps) : le OLAM HA-ATZILUT.
+      Niveau 3 — MALBUSHIM (vêtements) : les 3 mondes BYA (Beriah, Yetzirah, Asiyah)
+      qui ne sont en réalité qu'UN SEUL MONDE, le LEVUSH d'Atzilut tout entier.
+      Les 3 réunis = seulement 10S, à l'image des 10S d'Atzilut (le Guf).
+    type: axiome_explicite
+    concepts:
+      - {id: neshamah_la_neshamah, role: ein_sof_âme_de_l_âme}
+      - {id: adam_ehad, role: adam_unique_englobant}
+      - {id: atzmut_naranhay_ak, role: essence_est_ak}
+      - {id: guf_atzilut, role: corps_est_atzilut}
+      - {id: malbushim_bya, role: vêtements_sont_bya}
+      - {id: bya_olam_ehad, role: bya_un_seul_monde}
+    mapping:
+      modules: ["olamot/adam_kadmon.py", "olamot/atzilut.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La structure tripartite fondamentale : Atzmut(A\"K) / Guf(Atzilut) / Malbushim(BYA)"
+
+  # ─── BLOC B : TIKKUNIM ET RA'AYA MEHEIMNA — LES KELIM À ATZILUT ───
+
+  - id: "EC-H1S3-022"
+    source_he: "וכ\"מ בתיקונים די\"ח אימא בג\"ס עילאין מקננא בבריאה וכבר ידעת בר\"מ פ' בא דמ\"ב כי הי\"ס דאצילות נקרא מאנין ר\"ל אברי הגוף כי הגוף שהם הכלים שם נגלו באצילות ולא יותר למעלה כנודע"
+    source_ref: "Heikhal 1, Sha'ar 3:3"
+    assertion: |
+      Preuve des TIKKUNIM (Tikkun 18) : IMMA dans les G"S ILAYIN (3 Sefirot supérieures)
+      MEKANNENA be-BERIAH (niche dans la Beriah).
+      Preuve du RA'AYA MEHEIMNA (Parashat Bo, 42b) :
+      Les 10S d'ATZILUT sont appelées MA'ANIN (récipients/vases)
+      c'est-à-dire les EVREI HA-GUF (membres du corps).
+      Car le GUF = les KELIM (récipients) — et les Kelim sont RÉVÉLÉS (niglu) à Atzilut,
+      et PAS PLUS HAUT (ve-lo yoter le-ma'alah).
+      Au-dessus d'Atzilut = pas de Kelim révélés.
+    type: déduction_scripturaire
+    concepts:
+      - {id: imma_mekannena_beriah, role: imma_niche_dans_beriah}
+      - {id: ma_anin_atzilut, role: récipients_atzilut}
+      - {id: kelim_niglu_atzilut, role: kelim_révélés_à_atzilut}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les Kelim sont révélés uniquement à Atzilut — pas au-dessus"
+
+  # ─── BLOC C : LE MALBUSH ZAKH — L'INTERMÉDIAIRE NÉCESSAIRE ───
+
+  - id: "EC-H1S3-023"
+    source_he: "וכבר ידעת כי הנרנח\"י אינם מתלבשים בגוף זולת ע\"י אמצעית מלבוש זך לכ\"א מהם. והכל נקרא עצמות כי כן א\"ק שהוא בחי' כל העצמות יש לו גוף זך שבו מתלבש עצמותו כדי להתלבש אח\"כ בגוף האמיתי שהוא אצילות. לכן אפי' הכלים דא\"ק נקרא עצמות"
+    source_ref: "Heikhal 1, Sha'ar 3:3"
+    assertion: |
+      Les NaRaNHaY ne s'HABILLENT dans le GUF que par l'INTERMÉDIAIRE
+      d'un MALBUSH ZAKH (vêtement pur/subtil) pour CHACUN d'entre eux.
+      Et le TOUT est appelé ATZMUT (essence).
+      Ainsi A"K = l'ensemble de l'ATZMUT : il possède un GUF ZAKH (corps subtil)
+      dans lequel s'habille son ATZMUT afin de s'habiller ENSUITE
+      dans le GUF HA-AMITI (corps véritable) = ATZILUT.
+      C'est pourquoi MÊME les KELIM de A"K sont appelés ATZMUT :
+      par rapport à Atzilut, tout A"K (y compris ses Kelim) est de l'Atzmut.
+    type: axiome_explicite
+    concepts:
+      - {id: malbush_zakh, role: vêtement_pur_intermédiaire}
+      - {id: guf_zakh_ak, role: corps_subtil_de_ak}
+      - {id: guf_amiti_atzilut, role: corps_véritable_atzilut}
+      - {id: kelim_ak_atzmut, role: kelim_de_ak_sont_atzmut}
+    mapping:
+      modules: ["olamot/adam_kadmon.py", "core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Malbush Zakh : intermédiaire nécessaire entre NaRaNHaY et Guf — A\"K entier = Atzmut"
+
+  # ─── BLOC D : MÉTAPHORE DE L'OS — A"K ILLUMINE ATZILUT ───
+
+  - id: "EC-H1S3-024"
+    source_he: "וכמו שהעצמות מלבד היות עקריותו בפנימיות הגוף עכ\"ז משלח פארות מאורו בכל איברי הגוף מבית ומחוץ ובתוך עובים להמשיך בו חיות. כן א\"ק מאיר עצמותו בכל איברי הגוף דאצילות ואותו אור נקרא א\"ס בערך האצילות ונקרא עילת העילות של האצילות"
+    source_ref: "Heikhal 1, Sha'ar 3:3"
+    assertion: |
+      ANALOGIE de l'ETZEM (os) — même racine que ATZMUT (essence) :
+      L'os (etzem), outre son existence PRINCIPALE dans l'INTÉRIEUR du corps,
+      envoie des RAMIFICATIONS (pa'arot) de sa lumière dans TOUS les membres du corps :
+      MI-BAYIT (de l'intérieur), MI-HUTZ (de l'extérieur), et dans les parties ÉPAISSES (ovim)
+      pour y faire CIRCULER la HIYUT (vitalité).
+      AINSI A"K ILLUMINE (me'ir) son ATZMUT dans tous les membres du GUF d'ATZILUT.
+      Cette lumière est appelée EIN SOF BE-EREKH HA-ATZILUT (Ein Sof par rapport à Atzilut)
+      et ILLAT HA-ILLOT (Cause des Causes) d'Atzilut.
+    type: analogie_explicative
+    concepts:
+      - {id: etzem_pa_arot, role: os_ramifications}
+      - {id: ak_me_ir_atzilut, role: ak_illumine_atzilut}
+      - {id: es_erekh_atzilut, role: ein_sof_relatif_à_atzilut}
+      - {id: illat_ha_illot, role: cause_des_causes}
+    mapping:
+      modules: ["olamot/adam_kadmon.py", "core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "A\"K illumine Atzilut comme l'os irrigue le corps — appelé Illat ha-Illot d'Atzilut"
+
+  # ─── BLOC E : BYA — PAS ELOHUT, LUMIÈRE D'ATZMUT NON RÉVÉLÉE ───
+
+  - id: "EC-H1S3-025"
+    source_he: "אך במלבושים אין אור עצמות מתגלה לכן בי\"ע אינם מבחי' אלהות אלא נקרא נבראים נוצרים נעשים וכעד\"ז בא\"ק שנעשה בחי' גוף אל הא\"ס הזה העליון אור א\"ס מתגלה בו אך לא במלבוש (הא\"ס העליון) שהם י\"ס דאצילות כי הא\"ס הנגלה בי\"ס דאצילות הוא הנק' א\"ק כנ\"ל"
+    source_ref: "Heikhal 1, Sha'ar 3:3"
+    assertion: |
+      MAIS dans les MALBUSHIM (BYA) : le OHR ATZMUT ne se RÉVÈLE PAS (ein or atzmut mitgaleh).
+      C'est pourquoi BYA ne sont PAS de la BEHINAT ELOHUT (nature divine)
+      mais sont appelés NIVRA'IM, NOTZRIM, NA'ASIM (créés, formés, faits).
+      Le MÊME PATTERN s'applique au niveau supérieur :
+      A"K est devenu GUF par rapport au EIN SOF ELYON (Ein Sof supérieur) →
+      le Ohr Ein Sof se RÉVÈLE en A"K,
+      MAIS PAS dans le MALBUSH du Ein Sof Elyon = les 10S d'ATZILUT.
+      Car le Ein Sof qui est RÉVÉLÉ (nigleh) dans les 10S d'Atzilut = c'est ce qu'on APPELLE A"K.
+      PATTERN RÉCURSIF : Guf reçoit l'Atzmut, Malbush ne le reçoit pas.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_atzmut_lo_mitgaleh, role: lumière_atzmut_non_révélée}
+      - {id: nivra_im_notzrim_na_asim, role: créés_formés_faits}
+      - {id: lo_behinat_elohut, role: pas_nature_divine}
+      - {id: pattern_guf_malbush, role: pattern_récursif_guf_malbush}
+    mapping:
+      modules: ["core/ohr_system.py", "olamot/"]
+      tables: ["ohr_states", "olamot_config"]
+      partzufim: []
+      relevance: "BYA ne sont pas Elohut car l'Atzmut ne s'y révèle pas — pattern récursif Guf/Malbush"
+
+  # ─── BLOC F : KULAM BE-CHOKHMAH ASITA — LE CANAL PAR CHOKHMAH ET BINAH ───
+
+  - id: "EC-H1S3-026"
+    source_he: "אמנם אחרי התלבשות אין סוף עליון בא\"ק בחכמה שבו שאז מאיר על ידו בי\"ס דאצילות וזה אומרו כולם בחכמה עשית וזה אומרו עשית כי הי\"ס דאצילות הם בחי' עשיה אל הא\"ס העליון כי הם מלבושים כנ\"ל. וכעד\"ז א\"ק כדי להאיר במלבושיו שהם בי\"ע מתלבש בבינה דאצילות ועל ידה מאיר בבריאה כמ\"ש אימא מקננא בכרסייא. וכ\"ז שאמרנו תדע מהקדמה ב' של מרכבת יחזקאל"
+    source_ref: "Heikhal 1, Sha'ar 3:3"
+    assertion: |
+      Après l'HABILLAGE du Ein Sof Elyon dans A"K via la CHOKHMAH de A"K →
+      il ILLUMINE par ce canal les 10S d'ATZILUT.
+      "KULAM BE-CHOKHMAH ASITA" (Psaumes 104:24 — Tu as tout fait avec sagesse).
+      Le mot ASITA (tu as fait) = les 10S d'Atzilut sont l'ASIYAH (action/fabrication)
+      du Ein Sof Elyon — car elles sont ses MALBUSHIM.
+      De même : A"K, pour illuminer ses MALBUSHIM (= BYA),
+      s'HABILLE dans la BINAH d'Atzilut et par elle illumine dans BERIAH.
+      Secret : "IMMA MEKANNENA be-KHURSEYA" (Binah niche dans le Trône).
+      Tout cela est connu de la HAKDAMAH 2 de MERKAVAT YEHEZKEL (le Chariot d'Ézéchiel).
+      DEUX CANAUX d'illumination :
+      Ein Sof → Chokhmah de A"K → Atzilut
+      A"K → Binah d'Atzilut → Beriah
+    type: axiome_explicite
+    concepts:
+      - {id: kulam_be_chokhmah_asita, role: tout_avec_sagesse_fait}
+      - {id: atzilut_asiyah_ein_sof, role: atzilut_est_asiyah_du_ein_sof}
+      - {id: chokhmah_canal_atzilut, role: chokhmah_canal_vers_atzilut}
+      - {id: binah_canal_beriah, role: binah_canal_vers_beriah}
+      - {id: merkavat_yehezkel, role: source_merkavat_yehezkel}
+    mapping:
+      modules: ["core/ohr_system.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Deux canaux : Chokhmah→Atzilut et Binah→Beriah — Atzilut est l'Asiyah du Ein Sof"
+
+  # ─── BLOC G : LES KELIPOT — AU-DELÀ DES MALBUSHIM ───
+
+  - id: "EC-H1S3-027"
+    source_he: "וחוץ לאלו המלבושים שהם בי\"ע הם הקלי' ולכן תראה שאפילו הקליפות שכנגד האצילות אינם שם אלא בבריאה כנודע אצלינו"
+    source_ref: "Heikhal 1, Sha'ar 3:3"
+    assertion: |
+      AU-DELÀ (hutz) de ces MALBUSHIM (= BYA) se trouvent les KELIPOT (écorces/coquilles).
+      C'est pourquoi : même les KELIPOT SHEKENEGED HA-ATZILUT
+      (les Kelipot qui correspondent à Atzilut) ne sont PAS DANS Atzilut
+      mais dans BERIAH — c'est chose connue chez nous (kanod'a etzlenu).
+      Les Kelipot = l'extérieur des Malbushim = la couche la plus externe.
+    type: axiome_explicite
+    concepts:
+      - {id: kelipot_hutz_malbushim, role: kelipot_au_delà_des_vêtements}
+      - {id: kelipot_atzilut_be_beriah, role: kelipot_d_atzilut_dans_beriah}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Les Kelipot sont au-delà de BYA — même celles d'Atzilut résident dans Beriah"
+
+  # ─── BLOC H : NR"N D'ATZILUT — LE PATTERN RÉCURSIF COMPLET ───
+
+  - id: "EC-H1S3-028"
+    source_he: "נמצא כי אף שנאמר כי אצילות הוא גוף דא\"ק הנה האור שמאיר הא\"ק בגוף הזה נקרא נר\"ן של אצילות ובתוך כולם מתלבש האור עצמו דא\"ק וכן עד\"ז בא\"ק נגד א\"ס העליון וכן עד\"ז בבי\"ע נגד אצילות הנקרא גוף. וז\"ש בתיקונים ובס' הזוהר דכורסייא דאיהו אמא כגופא לגבי שכינתא דאצילות נמצא כי הקליפות יהיה לבושים באצילות בכללות עם היות שבפרטות יש גוף באצילות עצמו ובי\"ע הם לבושים אליו"
+    source_ref: "Heikhal 1, Sha'ar 3:3"
+    assertion: |
+      Bien qu'ATZILUT soit le GUF de A"K :
+      le OHR que A"K illumine dans ce Guf = NR"N (Nefesh-Ruah-Neshamah) d'ATZILUT,
+      et dans tout cela s'HABILLE le OHR ATZMO (la lumière elle-même) de A"K.
+      Le MÊME PATTERN se répète :
+      A"K par rapport au Ein Sof Elyon (A"K = Guf du Ein Sof)
+      BYA par rapport à Atzilut (BYA = Malbushim d'Atzilut = Guf).
+      TIKKUNIM et ZOHAR : "KHURSEYA (le Trône = Beriah) qui est IMMA,
+      est comme un GUFA (corps) par rapport à la SHEKHINAH d'Atzilut."
+      En KLAL (général) : les KELIPOT sont les LEVUSHIM d'Atzilut.
+      En PRAT (particulier) : Atzilut a son propre Guf, et BYA sont ses Levushim.
+      DISTINCTION KLAL/PRAT : ce qui est Levush en particulier
+      peut être Guf en général, et vice versa.
+    type: axiome_explicite
+    concepts:
+      - {id: nrn_atzilut, role: nefesh_ruah_neshamah_d_atzilut}
+      - {id: ohr_atzmo_ak, role: lumière_propre_ak}
+      - {id: khurseya_gufa, role: trône_comme_corps}
+      - {id: klal_prat, role: distinction_général_particulier}
+      - {id: kelipot_levushim_atzilut, role: kelipot_vêtements_atzilut}
+    mapping:
+      modules: ["core/ohr_system.py", "olamot/"]
+      tables: ["ohr_states", "olamot_config"]
+      partzufim: []
+      relevance: "Le pattern récursif Atzmut/Guf/Malbush se répète à chaque niveau — distinction Klal/Prat"
+
+  # ─── BLOC I : PNIMIYUT ET HITZONIUT DES KELIM ───
+
+  - id: "EC-H1S3-029"
+    source_he: "והנה כל בחי' הכלים של כל העולמות יש בהם חיצוניות ופנימיות. וכבר הודעתיך איך כל העולמות אלו זה נעשה גוף לזה וזה לזה ונמצא כי כל העולמות כולם כאחד אפילו א\"ק כל הכלים שלהם יש בהם בחי' פנימיות וחיצוניות"
+    source_ref: "Heikhal 1, Sha'ar 3:3"
+    assertion: |
+      TOUS les KELIM de TOUS les mondes possèdent HITZONIUT (extériorité) et PNIMIYUT (intériorité).
+      Comme déjà expliqué : tous les mondes, l'un devient GUF pour l'autre, et celui-ci pour celui-là.
+      Donc : TOUS les mondes ensemble, y compris A"K lui-même,
+      TOUS leurs Kelim possèdent les 2 aspects : PNIMIYUT et HITZONIUT.
+      C'est un PRINCIPE UNIVERSEL : il n'existe pas de Keli qui soit
+      uniquement Pnimiyut ou uniquement Hitzoniut.
+    type: axiome_explicite
+    concepts:
+      - {id: hitzoniut_pnimiyut_kelim, role: extériorité_intériorité_des_récipients}
+      - {id: guf_la_zeh, role: chaque_monde_corps_pour_l_autre}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Tous les Kelim ont Pnimiyut et Hitzoniut — universel jusqu'à A\"K"
+
+  # ─── BLOC J : ZUN = INCOMPLETS, BESOIN D'IBUR-YENIKAH-MOHIN ───
+
+  - id: "EC-H1S3-030"
+    source_he: "ודע כי כל בחי' זו\"ן שיש בעולמות כולם נקרא ז\"ק [נ\"א ו\"ק] של גוף של אותו עולם כי כן יצאו בעת אצילות הראשון שנאצלו חסרים ג\"ר לז\"א וט\"ר לנוק' ואלו הב' צריכים ג' זמנים שהם עיבור יניקה ומוחין להשלימם. נמצא כי כל עולם ועולם אינם צריכים עיבור יניקה ומוחין רק זו\"ן של אותו עולם בערך א\"א ואו\"א של אותו העולם שהם שלימים כפי אותו עולם. אמנם בבחי' הכלל יהיה כל הה\"פ שבאותו עולם נקרא זו\"ן אל עולם שלמעלה ממנו ויהיו חסרי מוחין בבחי' הכלל כנ\"ל והבן זה היטב"
+    source_ref: "Heikhal 1, Sha'ar 3:3"
+    assertion: |
+      Dans TOUS les mondes, ZUN (Ze'ir Anpin et Nukvah) = Z"K (7 Sefirot)
+      [variante : V"K (6 Sefirot)] du GUF de ce monde.
+      Car à la PREMIÈRE ÉMANATION (Atzilut ha-Rishon), ils sont sortis INCOMPLETS (hasrim) :
+      Z"A MANQUE des G"R (3 premières Sefirot)
+      NUKVAH MANQUE des T"R (9 premières Sefirot)
+      Ces DEUX ont besoin de 3 TEMPS (3 zemanim) pour être COMPLÉTÉS :
+      1. IBUR (gestation)
+      2. YENIKAH (allaitement)
+      3. MOHIN (cerveaux/intellects matures)
+      MAIS : seuls ZUN ont besoin d'IYM dans chaque monde —
+      A"A et AVI sont COMPLETS (shelemim) selon ce monde.
+      En KLAL (général) : les 5 PARTZUFIM d'un monde =
+      ZUN par rapport au monde AU-DESSUS → ils MANQUENT de MOHIN en Klal.
+      "VE-HAVEN ZEH HEITEIV" (et comprends bien cela).
+    type: axiome_explicite
+    concepts:
+      - {id: zun_haserim, role: zun_incomplets}
+      - {id: za_haser_gar, role: za_manque_3_premières}
+      - {id: nukvah_haser_tr, role: nukvah_manque_9_premières}
+      - {id: ibur_yenikah_mohin, role: gestation_allaitement_cerveaux}
+      - {id: aa_avi_shelemim, role: aa_avi_complets}
+      - {id: zun_klal_hasrei_mohin, role: zun_en_général_manquent_mohin}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "ZUN sont incomplets et nécessitent IYM — en Klal, tout monde est ZUN au monde supérieur"
+
+  # ─── BLOC K : IYM DANS LES KELIM EXTERNES ET INTERNES — AVERTISSEMENT AU LECTEUR ───
+
+  - id: "EC-H1S3-031"
+    source_he: "נמצא כיון שיש ב' בחי' בכל מיני כלים שהם חיצוניות ופנימיות א\"כ מוכרח הוא שיהיה עי\"מ בכלים חיצוניים ועי\"מ בכלים פנימיים. הנה בר\"ה בתחילה נעשה כלים פנימים אך בקבלת שבת ובתפלה של שאר ימי החול תחילה נתקן מוחין כלים חיצוניים (ואח\"כ) ומוחין פנימים ולכן כשתעיין בספרינו אל תתמה אם פעמים יראה שכבר יש מוחין ופעמים נראה שהם עדיין ביניקה וכיוצא בזה כי זה בפנימיות וזה בחיצוניות. ועיין לעיל איך כל פנימיות נקרא מוחא בערך חיצוניות הנקרא גופא"
+    source_ref: "Heikhal 1, Sha'ar 3:3 — conclusion"
+    assertion: |
+      Puisqu'il y a 2 BEHINOT dans les Kelim (Hitzoniut et Pnimiyut),
+      il est NÉCESSAIRE (mukhrakh) qu'il y ait IYM (Ibur-Yenikah-Mohin)
+      dans les KELIM HITZONIIM et IYM dans les KELIM PNIMIIM.
+      À ROSH HASHANAH : d'abord se forment les KELIM PNIMIIM.
+      À KABBALAT SHABBAT et dans la TEFILAH des jours de HOL :
+      d'abord se rectifient les MOHIN des KELIM HITZONIIM,
+      puis les MOHIN PNIMIIM.
+      AVERTISSEMENT AU LECTEUR : ne t'étonne PAS (al titameh)
+      si parfois il SEMBLE que les Mohin sont déjà présents,
+      et d'autres fois il semble qu'on est encore en YENIKAH —
+      car L'UN est en PNIMIYUT et L'AUTRE en HITZONIUT.
+      RÈGLE : toute PNIMIYUT est appelée MO'HA (cerveau)
+      par rapport à la HITZONIUT appelée GUFA (corps).
+    type: axiome_explicite
+    concepts:
+      - {id: iym_kelim_hitzoniim, role: iym_dans_kelim_externes}
+      - {id: iym_kelim_pnimiim, role: iym_dans_kelim_internes}
+      - {id: rosh_hashanah_pnimiim, role: rosh_hashanah_internes_d_abord}
+      - {id: shabbat_hol_hitzoniim, role: shabbat_hol_externes_d_abord}
+      - {id: pnimiyut_moha, role: intérieur_cerveau}
+      - {id: hitzoniut_gufa, role: extérieur_corps}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states", "partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "IYM double : dans les Kelim externes et internes — explique les contradictions apparentes dans les textes"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S3-011"
+    type: contenance
+    from: adam_ehad
+    to: atzmut_naranhay_ak
+    via: [guf_atzilut, malbushim_bya]
+    nature: "L'Adam Ehad contient 3 niveaux : Atzmut(A\"K) > Guf(Atzilut) > Malbushim(BYA)"
+    assertions_source: ["EC-H1S3-021"]
+
+  - id: "REL-H1S3-012"
+    type: causal
+    from: malbush_zakh
+    to: guf_amiti_atzilut
+    nature: "Le Malbush Zakh est nécessaire pour que l'Atzmut puisse s'habiller dans le Guf véritable"
+    assertions_source: ["EC-H1S3-023"]
+
+  - id: "REL-H1S3-013"
+    type: flux
+    from: ak_me_ir_atzilut
+    to: illat_ha_illot
+    nature: "A\"K illumine son Atzmut dans Atzilut — cette lumière = Ein Sof relatif = Illat ha-Illot"
+    assertions_source: ["EC-H1S3-024"]
+
+  - id: "REL-H1S3-014"
+    type: causal
+    from: ohr_atzmut_lo_mitgaleh
+    to: nivra_im_notzrim_na_asim
+    nature: "L'Atzmut ne se révèle pas dans les Malbushim → BYA sont créés/formés/faits, pas Elohut"
+    assertions_source: ["EC-H1S3-025"]
+
+  - id: "REL-H1S3-015"
+    type: flux
+    from: chokhmah_canal_atzilut
+    to: binah_canal_beriah
+    nature: "Deux canaux : Ein Sof→Chokhmah→Atzilut, puis A\"K→Binah→Beriah"
+    assertions_source: ["EC-H1S3-026"]
+
+  - id: "REL-H1S3-016"
+    type: hiérarchique
+    from: kelipot_hutz_malbushim
+    to: malbushim_bya
+    nature: "Les Kelipot sont au-delà (hutz) des Malbushim qui sont BYA"
+    assertions_source: ["EC-H1S3-027"]
+
+  - id: "REL-H1S3-017"
+    type: dualité_structurelle
+    paire: [hitzoniut_pnimiyut_kelim, guf_la_zeh]
+    nature: "Tous les Kelim de tous les mondes ont Pnimiyut et Hitzoniut — chaque monde est Guf à l'autre"
+    assertions_source: ["EC-H1S3-029"]
+
+  - id: "REL-H1S3-018"
+    type: séquentiel
+    from: zun_haserim
+    to: ibur_yenikah_mohin
+    nature: "ZUN sortent incomplets → doivent passer par 3 temps (Ibur, Yenikah, Mohin) pour être complétés"
+    assertions_source: ["EC-H1S3-030"]
+
+  - id: "REL-H1S3-019"
+    type: dualité_structurelle
+    paire: [iym_kelim_hitzoniim, iym_kelim_pnimiim]
+    nature: "IYM se déroule dans 2 registres parallèles : Kelim externes et Kelim internes"
+    assertions_source: ["EC-H1S3-031"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S3-005"
+    nom: "Principe des 3 Niveaux (Atzmut / Guf / Malbushim)"
+    source_assertions: ["EC-H1S3-021", "EC-H1S3-023", "EC-H1S3-025", "EC-H1S3-028"]
+    formalisation: |
+      Toute RÉALITÉ se structure en 3 NIVEAUX récursifs :
+      ATZMUT (essence/os) : la source vitale, qui ne se manifeste que par médiation
+      GUF (corps) : la première manifestation où les Kelim sont RÉVÉLÉS
+      MALBUSHIM (vêtements) : la couche externe où l'Atzmut ne se révèle PAS
+      Ce qui est ATZMUT à un niveau → peut être GUF au niveau supérieur.
+      Ce qui est GUF à un niveau → peut être MALBUSH au niveau supérieur.
+      Le MALBUSH ZAKH (vêtement pur) sert d'INTERMÉDIAIRE entre Atzmut et Guf.
+      APPLICATION :
+      Ein Sof = Neshamah la-Neshamah (Atzmut absolu)
+      A"K = Atzmut (NaRaNHaY) → Guf du Ein Sof
+      Atzilut = Guf (de A"K) → Malbush du Ein Sof
+      BYA = Malbushim (d'Atzilut) → les Kelipot sont au-delà
+    applications_ia:
+      - "Toute architecture a 3 couches : le cœur logique (Atzmut), l'interface (Guf), l'enveloppe (Malbush)"
+      - "L'Atzmut ne se révèle pas dans les Malbushim — l'implémentation interne est cachée"
+      - "Le pattern est récursif : chaque couche reproduit la même structure tripartite"
+      - "Le Malbush Zakh = la couche d'adaptation nécessaire entre le core et l'interface"
+    questions_ouvertes:
+      - "Le pattern Atzmut/Guf/Malbush est-il strictement tripartite ou peut-il avoir plus de niveaux ?"
+      - "Les Kelipot sont-elles une 4ème couche ou un accident du Malbush ?"
+
+  - id: "PG-H1S3-006"
+    nom: "Principe d'Ibur-Yenikah-Mohin (Maturation en 3 Temps)"
+    source_assertions: ["EC-H1S3-030", "EC-H1S3-031"]
+    formalisation: |
+      ZUN (Ze'ir Anpin et Nukvah) sortent INCOMPLETS à la première émanation :
+      Z"A manque des G"R (3 Sefirot supérieures = la dimension intellectuelle)
+      Nukvah manque des T"R (9 premières = presque tout)
+      3 TEMPS de MATURATION sont nécessaires :
+      IBUR (gestation) : formation initiale, dans l'intérieur, sans autonomie
+      YENIKAH (allaitement) : croissance par absorption, dépendance encore
+      MOHIN (cerveaux) : plénitude intellectuelle, autonomie, complétude
+      EN PRAT (particulier) : seuls ZUN ont besoin d'IYM — A"A et AVI sont complets
+      EN KLAL (général) : les 5 Partzufim d'un monde = ZUN au monde supérieur → incomplets
+      IYM se déroule DOUBLEMENT :
+      Dans les KELIM HITZONIIM (externes) et dans les KELIM PNIMIIM (internes)
+      L'ORDRE varie selon le temps liturgique (Rosh Hashanah vs Hol).
+    applications_ia:
+      - "Tout module du système passe par 3 phases : gestation, alimentation, maturation intellectuelle"
+      - "Z\"A et Nukvah sont les composants 'incomplets par design' qui doivent maturer"
+      - "En Klal, même les modules 'complets' sont incomplets par rapport au niveau supérieur"
+      - "Le double IYM (externe/interne) explique les contradictions apparentes d'état"
+    questions_ouvertes:
+      - "Pourquoi Z\"A et Nukvah sont-ils créés incomplets et non directement complets ?"
+      - "L'ordre IYM (interne d'abord vs externe d'abord) dépend-il du contexte opérationnel ?"
+      - "Peut-on accélérer la phase IYM ou est-elle incompressible ?"
+
+  - id: "PG-H1S3-007"
+    nom: "Principe de la Double Illumination (Chokhmah et Binah comme Canaux)"
+    source_assertions: ["EC-H1S3-026", "EC-H1S3-024"]
+    formalisation: |
+      L'illumination entre les niveaux utilise 2 CANAUX distincts :
+      CANAL 1 — CHOKHMAH : Ein Sof Elyon → Chokhmah de A"K → 10S d'Atzilut
+      "Kulam be-Chokhmah asita" — l'acte créateur passe par la Sagesse
+      CANAL 2 — BINAH : A"K → Binah d'Atzilut → Beriah
+      "Imma Mekannena be-Khurseya" — la Mère niche dans le Trône
+      La CHOKHMAH est le canal de l'Atzmut vers le Guf direct
+      La BINAH est le canal du Guf vers les Malbushim (mondes inférieurs)
+      Comme l'OS (etzem) envoie des ramifications dans tous les membres :
+      l'illumination atteint TOUS les niveaux — intérieur et extérieur.
+    applications_ia:
+      - "Deux canaux d'information : un direct (Chokhmah = insight) et un médié (Binah = compréhension)"
+      - "Le canal direct illumine le premier niveau en-dessous"
+      - "Le canal médié (Binah) traverse et atteint les niveaux plus bas"
+      - "L'architecture a besoin des deux : un accès direct et un accès médié"
+    questions_ouvertes:
+      - "Les deux canaux fonctionnent-ils simultanément ou alternativement ?"
+      - "La Binah comme canal vers les mondes inférieurs — est-ce le même pattern que le Masakh ?"

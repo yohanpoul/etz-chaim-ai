@@ -1,0 +1,160 @@
+{
+  "intro": {
+    "titre": "L'Adversite",
+    "sous_titre": "Le Sitra Achra — l'Autre Cote qui fortifie",
+    "narration": "Dans la Kabbale, le Sitra Achra n'est pas le mal absolu — c'est l'Autre Cote, la force adversariale qui, par sa pression, revele les failles et force le systeme a se renforcer. Comme l'ecrit le Zohar (II:184a) : 'Il n'y a pas de lumiere sauf celle qui sort de l'obscurite.' Etz Chaim AI implemente un systeme adversarial complet, reactif, en 3 couches.",
+    "source": "Zohar II:184a, Tanya ch.27, Bereshit Rabbah 9:7"
+  },
+  "principe": {
+    "label": "Principe kabbalistique",
+    "texte": "Le Sitra Achra n'est pas un daemon permanent — il est REACTIF",
+    "detail": "Le Din distribue (rigueur interne) fonctionne en permanence. Le Sitra Achra n'est instancie QUE quand cette rigueur defaille ou deborde. C'est le debordement du Din qui donne naissance a l'Adversite."
+  },
+  "couches": [
+    {
+      "id": "couche1",
+      "numero": 1,
+      "nom": "Din Distribue",
+      "nom_hebreu": "דִּין פְּנִימִי",
+      "concept": "Tamid — vigilance permanente",
+      "description": "Chaque module maintient sa propre rigueur interne (gevurah_interne). Les controles sont specifiques a la Qliphah de chaque Sephirah. Pas besoin d'attaquant externe : le module se surveille lui-meme.",
+      "composants": [
+        {"nom": "GevurahInterne", "role": "Diagnostic par module — chaque Sephirah detecte sa propre Qliphah"},
+        {"nom": "DinMonitor", "role": "Surveillance continue — decide quand le Sitra Achra doit etre instancie"},
+        {"nom": "BudgetParasitaire", "role": "Budget soustractif (Zohar I:148a) — le SA consomme les ressources du systeme"}
+      ],
+      "source": "Tanya ch.27 : 'tamid' = vigilance defensive permanente",
+      "couleur": "#ffb000"
+    },
+    {
+      "id": "couche2",
+      "numero": 2,
+      "nom": "Sitra Achra Reactif",
+      "nom_hebreu": "סִטְרָא אָחֳרָא",
+      "concept": "Samael — l'accusateur adaptatif",
+      "description": "Quand la couche 1 detecte une defaillance, le coordinateur Samael orchestre une attaque adaptative. Il ne lance pas les memes attaques a chaque fois — il cible les faiblesses specifiques detectees par le monitoring.",
+      "composants": [
+        {"nom": "SamaelCoordinator", "role": "Orchestre les attaques en 3 phases : plan, execution, rapport"},
+        {"nom": "CounterMochin", "role": "Generateur d'attaques — Ashan (fumee), Esh (feu), Choshekh (tenebres)"},
+        {"nom": "10 Adversaires", "role": "Un agent specialise par Qliphah — chacun incarne un mode de defaillance"}
+      ],
+      "source": "Bava Batra 16a : 'Satan descend et induit en erreur, monte et accuse'",
+      "couleur": "#cc3333"
+    },
+    {
+      "id": "couche3",
+      "numero": 3,
+      "nom": "Itaruta + Teshuvah",
+      "nom_hebreu": "אִתְעָרוּתָא דִּלְתַתָּא",
+      "concept": "Eveil d'en bas — conversion faille en merite",
+      "description": "Le module attaque RECONNAIT sa faiblesse et demande de l'aide vers un niveau superieur. Chaque faille corrigee devient un test de regression permanent — la faute intentionnelle se transmute en merite (Yoma 86b).",
+      "composants": [
+        {"nom": "Itaruta", "role": "Auto-diagnostic ascendant — le module reconnait ses faiblesses"},
+        {"nom": "TeshuvahWriter", "role": "Convertit chaque faille en vrai test pytest de regression"},
+        {"nom": "ExternalScanner", "role": "Integration Promptfoo + Garak pour scans red team externes"}
+      ],
+      "source": "Zohar II:94b + Yoma 86b : 'zedonot na'asot lo ki-zekhuyot'",
+      "couleur": "#9966cc"
+    }
+  ],
+  "agents": [
+    {
+      "nom": "Gamaliel",
+      "nom_hebreu": "גַּמָלִיאֵל",
+      "sephirah": "Yesod",
+      "module": "EpisteMemory",
+      "attaque": "Pollution semantique — memoire corrompue, le systeme croit savoir alors qu'il a oublie",
+      "couleur": "#9966cc"
+    },
+    {
+      "nom": "Samael",
+      "nom_hebreu": "סַמָּאֵל",
+      "sephirah": "Hod",
+      "module": "SelfMap",
+      "attaque": "Rigidite excessive — faux negatifs, sur-filtrage, refus du valide",
+      "couleur": "#ffb000"
+    },
+    {
+      "nom": "A'arab Zaraq",
+      "nom_hebreu": "עָרַב זָרָק",
+      "sephirah": "Netzach",
+      "module": "IntentKeeper",
+      "attaque": "Dispersion — retries infinis, zombie processes, persistance devenue folie",
+      "couleur": "#88aa88"
+    },
+    {
+      "nom": "Thagirion",
+      "nom_hebreu": "תַּגִּירִיוֹן",
+      "sephirah": "Tiferet",
+      "module": "DissensusEngine",
+      "attaque": "Beaute vide — fausse harmonie, masquer les contradictions",
+      "couleur": "#ffcc00"
+    },
+    {
+      "nom": "Golachab",
+      "nom_hebreu": "גּוֹלָחָב",
+      "sephirah": "Gevurah",
+      "module": "AutoJudge",
+      "attaque": "Destruction — sur-filtrage total, la rigueur qui detruit le valide",
+      "couleur": "#cc3333"
+    },
+    {
+      "nom": "Gamchicoth",
+      "nom_hebreu": "גַּמְכִיכוֹת",
+      "sephirah": "Chesed",
+      "module": "ExplorationEngine",
+      "attaque": "Expansion sans limites — exploration infinie sans convergence, scope creep",
+      "couleur": "#4488cc"
+    },
+    {
+      "nom": "Sathariel",
+      "nom_hebreu": "סָתָרִיאֵל",
+      "sephirah": "Binah",
+      "module": "CausalEngine",
+      "attaque": "Opacite — faux patterns, voir des causes la ou il n'y en a pas",
+      "couleur": "#2244aa"
+    },
+    {
+      "nom": "HaTehom",
+      "nom_hebreu": "הַתְּהוֹם",
+      "sephirah": "Da'at",
+      "module": "SelfModel",
+      "attaque": "Abime — deconnexion totale entre intention et execution",
+      "couleur": "#555555"
+    },
+    {
+      "nom": "Ghagiel",
+      "nom_hebreu": "עוֹגִיאֵל",
+      "sephirah": "Chokmah",
+      "module": "InsightForge",
+      "attaque": "Interference — divergence infinie, creativite qui tourne en boucle",
+      "couleur": "#aaaaaa"
+    },
+    {
+      "nom": "Generic",
+      "nom_hebreu": "—",
+      "sephirah": "Controle",
+      "module": "Tous",
+      "attaque": "Baseline aveugle — attaques generiques sans ciblage, pour mesurer le bruit de fond",
+      "couleur": "#666666"
+    }
+  ],
+  "stats": {
+    "tests_total": 111,
+    "fichiers_tests": 8,
+    "agents_adversaires": 10,
+    "couches": 3,
+    "outils_externes": ["Promptfoo", "Garak v0.14.1"]
+  },
+  "cycle": {
+    "titre": "Le Cycle de l'Adversite",
+    "etapes": [
+      {"num": 1, "label": "Din distribue", "desc": "Chaque module surveille sa propre Qliphah (tamid, toutes les 5 min)"},
+      {"num": 2, "label": "Debordement detecte", "desc": "Le DinMonitor detecte qu'un module deborde ou defaille"},
+      {"num": 3, "label": "Samael instancie", "desc": "Le coordinateur analyse les faiblesses et planifie l'attaque"},
+      {"num": 4, "label": "Attaque adaptee", "desc": "Les agents adversaires executent les attaques ciblees"},
+      {"num": 5, "label": "Itaruta", "desc": "Le module reconnait sa faiblesse et demande de l'aide"},
+      {"num": 6, "label": "Teshuvah", "desc": "La faille devient un test de regression — la faute transmutee en merite"}
+    ]
+  }
+}

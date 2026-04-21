@@ -1,0 +1,79 @@
+<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- Skin gradients -->
+  <radialGradient id="skin-light" cx="40%" cy="35%">
+    <stop offset="0%" stop-color="#e8c8a0"/>
+    <stop offset="60%" stop-color="#d4b088"/>
+    <stop offset="100%" stop-color="#b89068"/>
+  </radialGradient>
+  <radialGradient id="skin-med" cx="40%" cy="35%">
+    <stop offset="0%" stop-color="#d4b088"/>
+    <stop offset="60%" stop-color="#c8a27a"/>
+    <stop offset="100%" stop-color="#a88960"/>
+  </radialGradient>
+  <radialGradient id="skin-dark" cx="40%" cy="35%">
+    <stop offset="0%" stop-color="#c0a070"/>
+    <stop offset="60%" stop-color="#a88960"/>
+    <stop offset="100%" stop-color="#886840"/>
+  </radialGradient>
+  <!-- Rim light (amber from right) -->
+  <linearGradient id="rim-r" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="70%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#ffb000" stop-opacity="0.25"/>
+  </linearGradient>
+  <!-- Ambient glow -->
+  <radialGradient id="amb-glow" cx="55%" cy="35%">
+    <stop offset="0%" stop-color="#ffb000" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#ffb000" stop-opacity="0"/>
+  </radialGradient>
+  <!-- Shadow overlay (right side darker) -->
+  <linearGradient id="face-shadow" x1="0%" y1="0%" x2="100%" y2="20%">
+    <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+  </linearGradient>
+  <!-- Metallic gold gradient -->
+  <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffd700"/>
+    <stop offset="50%" stop-color="#ffb000"/>
+    <stop offset="100%" stop-color="#cc8800"/>
+  </linearGradient>
+  <!-- Metallic silver -->
+  <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ccc"/>
+    <stop offset="50%" stop-color="#aaa"/>
+    <stop offset="100%" stop-color="#888"/>
+  </linearGradient>
+  <!-- Filters -->
+  <filter id="glow-amb" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+  </filter>
+  <filter id="glow-sm" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+  </filter>
+  <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5"/>
+  </filter>
+</defs>
+
+<defs>
+  <radialGradient id="bg-g" cx="52%" cy="33%">
+    <stop offset="0%" stop-color="#1a1800"/>
+    <stop offset="100%" stop-color="#0a0a00"/>
+  </radialGradient>
+</defs>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="url(#bg-g)"/>
+<circle cx="105.0" cy="85.0" r="65.0" fill="#ffb000" opacity="0.04" filter="url(#glow-amb)"/>
+<path d="M20,250 Q20,190 55,178 Q100,166 145,178 Q180,190 180,250 Z" fill="#1a1500"/>
+<path d="M90,128 L90,168 Q100,174 110,168 L110,128 Z" fill="#1a1500"/>
+<path d="M67,82 Q65,55 100,48 Q135,55 133,82 Q130,105 115,118 Q100,125 85,118 Q70,105 67,82 Z" fill="#1a1500"/>
+<path d="M67,82 Q65,55 100,48 Q135,55 133,82 Q130,105 115,118 Q100,125 85,118 Q70,105 67,82" fill="none" stroke="#ddaa00" stroke-width="1.2" opacity="0.4"/>
+<path d="M55,178 Q100,166 145,178 Q180,190 180,250" fill="none" stroke="#ddaa00" stroke-width="0.8" opacity="0.25"/>
+<ellipse cx="88.0" cy="83.0" rx="4.0" ry="2.5" fill="#ddaa00" opacity="0.7"/>
+<ellipse cx="88.0" cy="83.0" rx="7.0" ry="4.0" fill="#ddaa00" opacity="0.12" filter="url(#glow-sm)"/>
+<ellipse cx="112.0" cy="83.0" rx="4.0" ry="2.5" fill="#ddaa00" opacity="0.7"/>
+<ellipse cx="112.0" cy="83.0" rx="7.0" ry="4.0" fill="#ddaa00" opacity="0.12" filter="url(#glow-sm)"/>
+<circle cx="100.0" cy="75.0" r="55.0" fill="#ddaa00" opacity="0.04" filter="url(#glow-amb)"/>
+<circle cx="100.0" cy="50.0" r="30.0" fill="#ffee88" opacity="0.03" filter="url(#glow-amb)"/>
+<path d="M128,55 Q135,70 133,85 Q130,100 118,118" fill="none" stroke="#ddaa00" stroke-width="1.5" opacity="0.18" stroke-linecap="round"/>
+</svg>

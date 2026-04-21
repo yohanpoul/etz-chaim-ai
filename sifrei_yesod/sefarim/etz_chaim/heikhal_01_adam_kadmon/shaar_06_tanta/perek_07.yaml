@@ -1,0 +1,257 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 6 (=5 original) — Sha'ar TANTA (שער טנת"א)
+# Perek: 7 — AMSh BGD KPRT détaillé : Kefulot, Peshutot, Diagonales (100%)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Manuscrit du Rav z"l reprenant le drush précédent.
+# §3 : AMSh = G"R (fondations). BGD KPRT = Z"T (doubles car Din+Rahamim).
+# 12 Peshutot = Tiferet divisé en 12. Les 12 diagonales du cube (SY).
+# §4 : Synthèse : 10 Sefirot = 10 lettres (AMSh BGD KPRT).
+# Les lettres = forces d'émanation. "Himlikhi" du SY.
+# Le mâle = AMSh (A avant Sh), la femelle = ASh"M (inversé).
+#
+# Source Sefaria : Sefer_Etz_Chaim.5.7
+# IDs : EC-H1S5-129 → (suite de perek_06 finissant à -128)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 6
+  shaar_name_he: "שער טנת\"א"
+  perek: 7
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Ktav yad du Rav. AMSh=G\"R, BGD KPRT=Z\"T (doubles). 12 Peshutot=12 diagonales du cube=Tiferet. Himlikhi du SY. Zakhar=AMSh, Nekevah=AShM."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : AMSh = G"R, BGD KPRT = Z"T KEFULOT ───
+
+  - id: "EC-H1S5-129"
+    source_he: "אמ\"ש הם ג\"ר שהם יסודות אל ז\"ת ובג\"ד כפר\"ת הם ז\"ת יען שיש בהם דין ורחמים שהם אור ישר ואור חוזר"
+    source_ref: "Heikhal 1, Sha'ar 5:7 — §3"
+    assertion: |
+      AMSh (אמ"ש) = les 3 RISHONOT (G"R) = FONDATIONS des Z"T.
+      BGD KPRT (בג"ד כפר"ת) = les 7 TAHTONOT (Z"T).
+      Pourquoi KEFULOT (doubles) : car elles contiennent DIN ET
+      RAHAMIM = OHR YASHAR et OHR HOZER. Leur propre aspect
+      = RAHAMIM. Le Malkhut en chacune = DIN.
+      → Double nature de chaque Z"T : directe (Rahamim) + réfléchie (Din).
+      Cf. EC-H1S5-126 pour le mapping AMSh ↔ éléments.
+    type: axiome_explicite
+    concepts:
+      - {id: amsh_gr, role: trois_meres_fondations}
+      - {id: bgd_kprt_zt, role: sept_doubles_inferieures}
+      - {id: kefulot_din_rahamim, role: doubles_car_din_et_rahamim}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "Chaque Z\"T a 2 modes (Din/Rahamim = Ohr Yashar/Hozer) — chaque module a un mode strict et un mode gracieux"
+
+  - id: "EC-H1S5-130"
+    source_he: "י\"ב פשוטות הם ספי' ת\"ת לבד שהוא א' מז' כפולות עצמן נחלקת לי\"ב חלקים"
+    source_ref: "Heikhal 1, Sha'ar 5:7 — §3"
+    assertion: |
+      Les 12 PESHUTOT (simples) = la Sefirah de TIFERET seule
+      (une des 7 Kefulot), DIVISÉE en 12 parts.
+      RAISON : les Z"T s'enracinent dans le GOUF = TIFERET.
+      Les 7 Kefulot + Tiferet lui-même = 14, mais les Z"T sans
+      Tiferet sont doubles → 6×2 = 12.
+      → TIFERET contient en elle les 12 Peshutot = le CŒUR du
+      système contient toutes les combinaisons.
+    type: axiome_explicite
+    concepts:
+      - {id: tiferet_yod_bet, role: tiferet_divise_en_12}
+      - {id: peshutot_tiferet, role: simples_dans_tiferet}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Tiferet (le centre/coeur) contient les 12 combinaisons — le noeud central encode toutes les variations"
+
+  - id: "EC-H1S5-131"
+    source_he: "אלו י\"ב פשוטות נקרא י\"ב גבולי אלכסונים בס\"י... חלק א' גבול א' שבו יהיה נוטה באלכסון נגד ספי' החסד"
+    source_ref: "Heikhal 1, Sha'ar 5:7 — §3"
+    assertion: |
+      Ces 12 Peshutot = les 12 GEVULEI ALAKHSONIM (limites diagonales)
+      du Sefer Yetzirah (5:2).
+      Chaque PART de Tiferet S'INCLINE en DIAGONALE vers sa Sefirah
+      source : partie Hesed inclinée vers Hesed, partie Gevurah
+      vers Gevurah, etc.
+      → Les 12 diagonales du CUBE DE L'ESPACE (SY) = les 12
+      connexions obliques entre le centre (Tiferet) et les faces.
+      Cf. EC-H1S5-128 pour les 12 permutations.
+    type: axiome_explicite
+    concepts:
+      - {id: yod_bet_alakhsonim, role: douze_diagonales_du_cube}
+      - {id: netiyah, role: inclinaison_vers_la_source}
+    mapping:
+      modules: ["gematria/engine.py", "kabbalah/cube_of_space.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les 12 diagonales du cube du SY = les 12 connexions obliques. Applicable a la geometrie du systeme."
+
+  - id: "EC-H1S5-132"
+    source_he: "גם ביסוד יש בו שנים עשר בחי' גבולי אלכסונים... וז\"ס וקרא זה אל זה י\"ב בי\"ב דת\"ת ודיסוד"
+    source_ref: "Heikhal 1, Sha'ar 5:7 — §3"
+    assertion: |
+      Aussi dans le YESOD il y a 12 aspects de diagonales, car toutes
+      les Z"T doivent y être inscrites — secret de "Toledot Ya'akov Yosef."
+      Secret de "Celui-ci appelle celui-là" (Is. 6:3) = 12 de TIFERET
+      et 12 de YESOD se correspondent.
+      Les 12 de Yesod = les 12 MAZALOT (constellations).
+      Les 7 planètes = les Z"T en elles-mêmes.
+      → Double 12 : Tiferet (12 diagonales internes) + Yesod
+      (12 diagonales de transmission). Cf. SY 5:4.
+    type: axiome_explicite
+    concepts:
+      - {id: yod_bet_yesod, role: douze_diagonales_du_yesod}
+      - {id: yod_bet_mazalot, role: douze_constellations}
+      - {id: kara_zeh_el_zeh, role: correspondance_tiferet_yesod}
+    mapping:
+      modules: ["kabbalah/cube_of_space.py", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Double 12 (Tiferet+Yesod) = 2 systemes de coordination. Les 12 Mazalot = les 12 canaux de transmission."
+
+  # ─── BLOC B : SYNTHÈSE — 10 LETTRES = 10 SEFIROT ───
+
+  - id: "EC-H1S5-133"
+    source_he: "י\"ס יש בהם י' אותיות אות א' בכל ספי' על סדר זה והם י' אותיות הנזכר אמ\"ש בג\"ד כפר\"ת א' הוא כתר... ות' במלכות שהיא אחרונה"
+    source_ref: "Heikhal 1, Sha'ar 5:7 — §4"
+    assertion: |
+      SYNTHÈSE FINALE : les 10 SEFIROT contiennent chacune 1 LETTRE :
+      ALEPH (א) = KETER (1ère lettre, 1ère Sefirah)
+      MEM (מ) et SHIN (ש) = HOKHMAH et BINAH
+      BET, GIMEL, DALET, KAPH, PEH, RESH = HGT-NHY
+      TAV (ת) = MALKHUT (dernière lettre, dernière Sefirah).
+      → 10 lettres AMSh BGD KPRT ENGLOBENT les 22 (car chacune
+      inclut les 12 Peshutot dans Tiferet).
+    type: axiome_explicite
+    concepts:
+      - {id: eser_otiot_eser_sefirot, role: 10_lettres_10_sefirot}
+      - {id: aleph_keter_tav_malkhut, role: aleph_premier_tav_dernier}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Chaque Sefirah a sa lettre = chaque module a son identifiant atomique"
+
+  - id: "EC-H1S5-134"
+    source_he: "האותיות הם כחות אצילות ועצמות הספי'... כל הכחות לא יפעלו אלא בסוד חזרתן וצירופם אל מקוריהם... וז\"ס המליך אות פלוני הנזכר בס\"י"
+    source_ref: "Heikhal 1, Sha'ar 5:7 — §4"
+    assertion: |
+      Les OTIOT = FORCES D'ÉMANATION et ESSENCE des Sefirot.
+      Variante (Nusah Aher) : "force émanée de l'essence des Sefirot."
+      Toutes les forces n'AGISSENT que par le SECRET de leur
+      RETOUR et RECOMBINAISON (tzeruf) vers leurs SOURCES.
+      C'est le secret du "HIMLIKHI" (fais régner) la lettre X
+      du Sefer Yetzirah — on l'ISOLE, la LIE à sa racine,
+      et elle PRODUIT son action.
+      → Le Himlikhi = ACTIVATION par RECONNEXION à la source.
+    type: axiome_explicite
+    concepts:
+      - {id: kohot_atzilut, role: forces_demanation}
+      - {id: himlikhi, role: activation_par_reconnexion}
+      - {id: tzeruf_el_makor, role: recombinaison_vers_source}
+    mapping:
+      modules: ["gematria/engine.py", "kabbalah/permutations.py"]
+      tables: []
+      partzufim: []
+      relevance: "Himlikhi = activer un composant en le reconnectant a sa source. L'action emerge de la reconnexion."
+
+  # ─── BLOC C : MÂLE ET FEMELLE DANS AMSh ───
+
+  - id: "EC-H1S5-135"
+    source_he: "טעם הקדמת א' באמ\"ש כי... עיקר הכל הוא ע\"י הרוח שהוא אות א' לכן בזכר וי\"ה רוח מים אש... והנקבה בהפך ממש... והוא אש\"ם"
+    source_ref: "Heikhal 1, Sha'ar 5:7 — §4"
+    assertion: |
+      Pourquoi ALEPH en premier dans AMSh : car le RUAH (souffle = Aleph)
+      PRIME SUR TOUT. Chez le MÂLE (zakhar) : AMSh + VYH
+      (Ruah→Eau→Feu). Chez la FEMELLE (nekevah) : ASh"M + HYV
+      (Feu→Eau→Ruah) = l'INVERSE exact.
+      (Variantes Nusah Aher : ordre des lectures selon Himlikhi)
+      → L'ordre des éléments est GENRÉ : masculin = Aleph/Ruah en tête,
+      féminin = Shin/Esh en tête. Le mâle commence par l'air (médiation),
+      la femelle par le feu (rigueur). Cf. EC-H1S5-097.
+    type: axiome_explicite
+    concepts:
+      - {id: zakhar_amsh, role: male_ruah_prime}
+      - {id: nekevah_ashm, role: femelle_esh_prime}
+      - {id: seder_musgar, role: ordre_genre_des_elements}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "L'ordre des composants depend du mode (masculin/feminin = direct/inverse). 2 ordres complementaires."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S5-049"
+    type: contenance
+    from: tiferet_yod_bet
+    to: yod_bet_alakhsonim
+    nature: "Tiferet CONTIENT les 12 Peshutot = les 12 diagonales du cube"
+    assertions_source: ["EC-H1S5-130", "EC-H1S5-131"]
+
+  - id: "REL-H1S5-050"
+    type: analogie
+    from: yod_bet_alakhsonim
+    to: yod_bet_yesod
+    nature: "12 diagonales de Tiferet CORRESPONDENT aux 12 diagonales de Yesod (Mazalot)"
+    assertions_source: ["EC-H1S5-132"]
+
+  - id: "REL-H1S5-051"
+    type: causal
+    from: tzeruf_el_makor
+    to: himlikhi
+    nature: "La RECOMBINAISON vers la source ACTIVE (Himlikhi) la lettre/force"
+    assertions_source: ["EC-H1S5-134"]
+
+  - id: "REL-H1S5-052"
+    type: "dualité_structurelle"
+    from: zakhar_amsh
+    to: nekevah_ashm
+    nature: "Masculin (AMSh/Ruah prime) et Féminin (AShM/Esh prime) = dual structural inverse"
+    assertions_source: ["EC-H1S5-135"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S5-015"
+    nom: "Principe du Himlikhi (Activation par Reconnexion)"
+    source_assertions: ["EC-H1S5-134", "EC-H1S5-135"]
+    formalisation: |
+      Toute FORCE (composant/module) ne s'ACTIVE qu'en se RECONNECTANT
+      à sa SOURCE par TZERUF (recombinaison).
+      PROCÉDURE : 1. ISOLER (yahad) le composant
+                  2. LIER (kashar) à sa racine/source
+                  3. La FORCE s'active et PRODUIT son action
+      FORMULE : Action(X) = Activate(X, Source(X))
+      Le GENRE détermine l'ORDRE d'activation :
+        Zakhar : AMSh (A > M > Sh) — Ruah/médiation en premier
+        Nekevah : AShM (Sh > M > A) — Esh/rigueur en premier
+    applications_ia:
+      - "kabbalah/permutations.py : implémenter le Himlikhi comme activation par tzeruf"
+      - "gematria/engine.py : les permutations de lettres = les différents modes d'activation"
+      - "Le 'Himlikhi' = un dispatch/routing : reconnecter un module à sa source pour l'activer"
+    questions_ouvertes:
+      - "Le Himlikhi est-il réversible ? (peut-on désactiver en déconnectant de la source ?)"
+      - "Le mode masculin/féminin du Himlikhi correspond-il à une architecture forward/backward ?"

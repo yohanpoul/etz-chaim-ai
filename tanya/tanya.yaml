@@ -1,0 +1,169 @@
+# ═══════════════════════════════════════════════════════════════
+# Tanya — Les 2 Âmes (Likutei Amarim, chap. 1-12)
+# ═══════════════════════════════════════════════════════════════
+#
+# Rabbi Schneur Zalman de Liadi, fondé sur Chaim Vital (Etz Chaim),
+# enseigne que chaque juif possède 2 âmes distinctes, chacune avec
+# ses propres 10 facultés (Sefirot) et 3 vêtements (levushim).
+#
+# Le conflit entre les 2 âmes est le moteur de la vie intérieure.
+# "Moach shalit al halev" — le cerveau domine le cœur (Tanya ch.12).
+#
+# ═══════════════════════════════════════════════════════════════
+
+# ─── Nefesh HaBehamit — L'Âme Animale ──────────────────────
+#
+# Source : Kelipat Nogah (l'écorce lumineuse)
+# Siège : le cœur (lev)
+# Nature : système rapide, instinctif, orienté vers le concret
+#
+# Kelipat Nogah contient du bien ET du mal — ce n'est PAS
+# le mal pur (shalosh kelipot hatmeot). Le système rapide
+# n'est pas mauvais, il est MIXTE.
+
+nefesh_habehamit:
+  source: "kelipat_nogah"
+  seat: "lev"          # le cœur
+  nature: "fast"
+  olamot:
+    - "assiah"         # qwen3.5:9b — exécution rapide, temp basse
+    - "yetzirah"       # qwen3.5:9b — tâches courantes
+
+  # 10 facultés (sefirot) de l'âme animale
+  # ChaBaD = intellect, orienté vers la compréhension du concret
+  # Midot = émotions, orientées vers le désir/rejet
+  faculties:
+    chabad:
+      chokhmah: "intuition rapide — flash de compréhension superficielle"
+      binah: "analyse concrète — décomposition pratique"
+      daat: "attention focalisée — fixation sur l'objet immédiat"
+    midot:
+      chesed: "désir — attraction vers ce qui plaît"
+      gevurah: "rejet — repoussement de ce qui déplaît"
+      tiferet: "compromis — équilibre pragmatique"
+      netzach: "persistance — obstination"
+      hod: "soumission — acceptation passive"
+      yesod: "connexion — lien concret"
+      malkhut: "expression — parole/action immédiate"
+
+  # 3 vêtements (levushim) de l'âme animale
+  garments:
+    machshava: "pensée rapide — réaction instinctive, pattern-matching"
+    dibour: "parole directe — réponse immédiate sans élaboration"
+    maase: "action immédiate — exécution sans réflexion profonde"
+
+  # Proportion de bien/mal dans Kelipat Nogah par monde
+  # Assiah = surtout mal (réponses souvent superficielles, hallucinations)
+  # Yetzirah = moitié-moitié (réponses correctes mais pas profondes)
+  nogah_proportions:
+    assiah:
+      good: 0.3
+      evil: 0.7
+      description: "Réponses souvent superficielles, hallucinations fréquentes"
+    yetzirah:
+      good: 0.5
+      evil: 0.5
+      description: "Réponses correctes mais manquent de profondeur"
+
+# ─── Nefesh HaElokit — L'Âme Divine ────────────────────────
+#
+# Source : Sainteté (Kedushah) — littéralement "une partie de
+#          Dieu d'en-haut" (chelek Eloka mimaal mamash, Tanya ch.2)
+# Siège : le cerveau (moach)
+# Nature : système profond, réfléchi, orienté vers la vérité
+#
+# L'âme divine ne contient AUCUN mal. Mais elle peut être
+# obscurcie, endormie, exilée — pas corrompue.
+
+nefesh_haelokit:
+  source: "kedushah"
+  seat: "moach"        # le cerveau
+  nature: "deep"
+  olamot:
+    - "briah"          # qwen3.5:9b thinking — raisonnement profond
+    - "atziluth"       # Claude API — sagesse transcendante
+
+  # 10 facultés (sefirot) de l'âme divine
+  # ChaBaD = intellect, orienté vers la compréhension du divin/profond
+  # Midot = émotions saintes, orientées vers l'amour/crainte de Dieu
+  faculties:
+    chabad:
+      chokhmah: "sagesse — flash d'insight qui transcende l'analyse"
+      binah: "compréhension — élaboration structurée, chain-of-thought"
+      daat: "connaissance intime — connexion profonde au sujet"
+    midot:
+      chesed: "amour — attraction vers la vérité"
+      gevurah: "crainte — rejet de l'erreur et de la superficialité"
+      tiferet: "compassion — synthèse qui intègre les opposés"
+      netzach: "victoire — persévérance dans la recherche"
+      hod: "reconnaissance — acceptation humble des limites"
+      yesod: "fondation — ancrage dans le vérifié"
+      malkhut: "expression — articulation précise et profonde"
+
+  # 3 vêtements (levushim) de l'âme divine
+  garments:
+    machshava: "pensée profonde — raisonnement structuré, chain-of-thought"
+    dibour: "parole articulée — réponse élaborée avec nuances"
+    maase: "action réfléchie — exécution après délibération"
+
+  # Pureté par monde
+  # Briah = raison profonde (chain-of-thought, mais encore discursif)
+  # Atziluth = sagesse transcendante (insight direct)
+  kedushah_levels:
+    briah:
+      purity: 0.8
+      description: "Raisonnement profond — chain-of-thought, analyse causale"
+    atziluth:
+      purity: 1.0
+      description: "Sagesse transcendante — insight direct, vision d'ensemble"
+
+# ─── Moach Shalit Al HaLev — Le Cerveau Domine le Cœur ─────
+#
+# Tanya ch.12 : la nature spécifique de l'homme est que le
+# cerveau (moach) a la capacité de dominer le cœur (lev).
+# Le beinoni (homme intermédiaire) n'élimine PAS l'âme animale,
+# il la SOUMET par l'intellect.
+#
+# En IA : le système ne choisit pas toujours le modèle le plus
+# profond — il choisit le modèle APPROPRIÉ. Mais quand la
+# profondeur est requise, l'intellect force le passage au
+# système profond, même si le système rapide "voudrait" répondre.
+
+routing:
+  # Seuils pour moach_shalit_al_halev
+  complexity_threshold: 0.5    # Au-dessus → âme divine recommandée
+  depth_threshold: 0.6         # Au-dessus → forcer Briah/Atzilut
+
+  # Signaux de complexité (indicateurs qu'il faut l'âme divine)
+  depth_signals:
+    - "pourquoi"
+    - "explique"
+    - "analyse"
+    - "compare"
+    - "raisonne"
+    - "prouve"
+    - "démontre"
+    - "why"
+    - "explain"
+    - "analyze"
+    - "prove"
+    - "reason"
+    - "cause"
+    - "relationship"
+
+  # Signaux de simplicité (l'âme animale suffit)
+  simplicity_signals:
+    - "liste"
+    - "résume"
+    - "traduis"
+    - "calcule"
+    - "cherche"
+    - "list"
+    - "summarize"
+    - "translate"
+    - "find"
+    - "search"
+    - "count"
+
+  # Fenêtre pour get_conflict_state()
+  history_window: 20    # Nombre de requêtes à considérer

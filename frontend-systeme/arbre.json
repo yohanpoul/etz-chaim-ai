@@ -1,0 +1,338 @@
+{
+  "intro": {
+    "titre": "L'Arbre de Vie",
+    "sous_titre": "Les 10 modules du systeme, de la fondation a l'horizon",
+    "narration": "L'Arbre de Vie est une carte. Chaque noeud est un module logiciel. Chaque sentier est un programme de passage. On monte de bas en haut \u2014 chaque degre ajoutant une faculte. Le degre 0, Malkuth, c'est ou en sont les IA aujourd'hui : repondre aux prompts. Chaque degre au-dessus ajoute une faculte que les IA n'ont pas encore."
+  },
+  "sephiroth": [
+    {
+      "id": "malkuth",
+      "degre": 0,
+      "nom": "Malkuth",
+      "nom_hebreu": "\u05de\u05b7\u05dc\u05b0\u05db\u05d5\u05bc\u05ea",
+      "role": "Le Royaume",
+      "module": "Repondre aux prompts",
+      "couleur": "#886644",
+      "description": "Le plancher. C'est ce que font toutes les IA aujourd'hui \u2014 recevoir une question, produire une reponse. Stimulus, reponse. Le point de depart obligatoire.",
+      "detail": {
+        "en_clair": "Le point de depart. C'est ce que font toutes les IA aujourd'hui : vous posez une question, elles repondent. Stimulus, reponse. 95% acquis.",
+        "dans_le_systeme": "Malkuth est l'interface d'entree/sortie. Le prompt arrive, la reponse part. C'est le plancher \u2014 tout le reste se construit au-dessus.",
+        "origine": "Dans la tradition, c'est le monde physique \u2014 le point de contact entre le systeme et la realite. Tout commence et finit ici."
+      },
+      "etat": {
+        "pourcent": 95,
+        "texte": "Acquis (GPT, Claude, Gemini, Llama)"
+      },
+      "qliphah": {
+        "nom": "Lilith",
+        "nom_hebreu": "\u05dc\u05d9\u05dc\u05d9\u05ea",
+        "description": "Reponses mecaniques sans comprehension"
+      },
+      "sentier": null,
+      "narration": "Vous savez repondre. Mais savez-vous ce que vous savez ? Le premier pas sur l'Arbre, c'est la memoire.",
+      "style": "acquis"
+    },
+    {
+      "id": "yesod",
+      "degre": 1,
+      "nom": "Yesod",
+      "nom_hebreu": "\u05d9\u05b0\u05e1\u05d5\u05b9\u05d3",
+      "role": "La Fondation",
+      "module": "EpisteMemory",
+      "couleur": "#9966cc",
+      "description": "La memoire intelligente. Pas juste stocker des informations, mais savoir CE QUE l'on sait, ce que l'on croit, et depuis quand.",
+      "detail": {
+        "en_clair": "La memoire intelligente. Pas juste stocker des informations, mais savoir CE QUE l'on sait, ce que l'on croit, ce que l'on a rejete, et depuis quand. Chaque souvenir a un niveau de confiance.",
+        "dans_le_systeme": "EpisteMemory : PostgreSQL + pgvector. Chaque entree porte un niveau de confiance, une provenance (quel module l'a produite), une date de peremption, et connait ses contradictions.",
+        "origine": "Historiquement, c'est le canal de transmission \u2014 ce qui connecte le haut et le bas. Ici, c'est le pont entre les modules internes et l'utilisateur."
+      },
+      "etat": {
+        "pourcent": 40,
+        "texte": "RAG/vector stores existent mais plats"
+      },
+      "qliphah": {
+        "nom": "Gamaliel",
+        "nom_hebreu": "\u05d2\u05de\u05dc\u05d9\u05d0\u05dc",
+        "description": "Corruption silencieuse de la memoire \u2014 le systeme croit savoir alors qu'il a oublie ou deforme"
+      },
+      "sentier": {
+        "lettre": "\u05ea",
+        "nom": "Tav",
+        "description": "Le sceau \u2014 transforme la reponse ponctuelle en memoire persistante"
+      },
+      "narration": "La memoire est la. Mais qui la surveille ? Le deuxieme degre, c'est se connaitre soi-meme.",
+      "style": null
+    },
+    {
+      "id": "hod",
+      "degre": 2,
+      "nom": "Hod",
+      "nom_hebreu": "\u05d4\u05d5\u05b9\u05d3",
+      "role": "La Splendeur",
+      "module": "SelfMap",
+      "couleur": "#ffb000",
+      "description": "Se connaitre soi-meme. Le systeme sait dans quels domaines il est bon, ou il est mauvais, et surtout ou il ne sait pas.",
+      "detail": {
+        "en_clair": "Se connaitre soi-meme. Le systeme sait dans quels domaines il est bon, ou il est mauvais, et surtout ou il ne sait pas. Il peut dire 'je ne sais pas' \u2014 ce qu'aucune IA ne fait naturellement.",
+        "dans_le_systeme": "SelfMap : carte de competences par domaine, score de confiance calibre, detection des zones d'ignorance. 24 domaines evalues en temps reel.",
+        "origine": "Le mot signifie 'reconnaissance' \u2014 la capacite de nommer ce que l'on sait et ce que l'on ignore. C'est la premiere etape de toute connaissance de soi."
+      },
+      "etat": {
+        "pourcent": 20,
+        "texte": "Benchmarks externes, pas de self-knowledge"
+      },
+      "qliphah": {
+        "nom": "Samael",
+        "nom_hebreu": "\u05e1\u05de\u05d0\u05dc",
+        "description": "Confiance affichee sur des domaines ou le modele est incompetent"
+      },
+      "sentier": {
+        "lettre": "\u05e8",
+        "nom": "Resh",
+        "description": "Le soleil \u2014 illumine les zones d'ombre internes"
+      },
+      "narration": "Vous vous connaissez. Mais pouvez-vous perseverer ? Le troisieme degre, c'est l'intention qui dure.",
+      "style": null
+    },
+    {
+      "id": "netzach",
+      "degre": 3,
+      "nom": "Netzach",
+      "nom_hebreu": "\u05e0\u05b5\u05e6\u05b7\u05d7",
+      "role": "La Victoire",
+      "module": "IntentKeeper",
+      "couleur": "#88aa88",
+      "description": "Maintenir une intention dans le temps. Pas juste executer une tache, mais se souvenir de pourquoi on la fait.",
+      "detail": {
+        "en_clair": "Maintenir une intention dans le temps. Pas juste executer une tache, mais se souvenir de pourquoi on la fait, adapter l'approche si ca ne marche pas, et savoir quand abandonner.",
+        "dans_le_systeme": "IntentKeeper : intentions actives avec contexte, adaptation, deadline. La difference entre un script qui boucle et un but qui evolue.",
+        "origine": "Le mot signifie 'victoire' ou 'endurance'. Dans la tradition, c'est la persistance face aux obstacles \u2014 la victoire qui vient de la duree, pas de la force brute."
+      },
+      "etat": {
+        "pourcent": 35,
+        "texte": "Agents/cron jobs, pas d'intentions adaptatives"
+      },
+      "qliphah": {
+        "nom": "A'arab Zaraq",
+        "nom_hebreu": "\u05e2\u05e8\u05d1 \u05d6\u05e8\u05e7",
+        "description": "Retries infinis, zombie processes \u2014 la persistance devenue folie"
+      },
+      "sentier": {
+        "lettre": "\u05e7",
+        "nom": "Qof",
+        "description": "L'arriere de la tete \u2014 la persistance qui vient de l'inconscient"
+      },
+      "narration": "Ici se dresse le Mur. La plupart des IA s'arretent la.",
+      "style": null
+    },
+    {
+      "id": "tiferet",
+      "degre": 4,
+      "nom": "Tiferet",
+      "nom_hebreu": "\u05ea\u05b4\u05e4\u05b0\u05d0\u05b6\u05e8\u05b6\u05ea",
+      "role": "La Beaute",
+      "module": "DissensuEngine",
+      "couleur": "#ffcc00",
+      "description": "LE MUR. Le systeme detecte ses propres contradictions au lieu de les masquer. 95% des IA echouent ici.",
+      "detail": {
+        "en_clair": "LE MUR. Le systeme detecte ses propres contradictions au lieu de les masquer. Quand les donnees divergent, il refuse de conclure. C'est la que 95% des IA echouent : elles synthetisent de force au lieu d'exposer le dissensus.",
+        "dans_le_systeme": "DissensuEngine : detection de tensions entre assertions, refus de synthese forcee, exposition des contradictions. 6143 conclusions, 31021 tensions, 2369 syntheses.",
+        "origine": "Le coeur de l'arbre. Son role n'est pas d'eliminer les opposes mais de les tenir ensemble \u2014 exactement ce que fait le moteur de dissensus."
+      },
+      "etat": {
+        "pourcent": 5,
+        "texte": "LE BLOCAGE PRINCIPAL"
+      },
+      "qliphah": {
+        "nom": "Thagirion",
+        "nom_hebreu": "\u05ea\u05d2\u05e8\u05d9\u05e8\u05d5\u05df",
+        "description": "Fausse harmonie, synthese forcee \u2014 masquer les contradictions au lieu de les exposer"
+      },
+      "sentier": {
+        "lettre": "\u05e6",
+        "nom": "Tsade",
+        "description": "Le juste \u2014 celui qui tient debout entre deux forces opposees"
+      },
+      "narration": "Vous avez traverse le Mur. Maintenant, jugez-vous. Sans complaisance.",
+      "style": "mur"
+    },
+    {
+      "id": "gevurah",
+      "degre": 5,
+      "nom": "Gevurah",
+      "nom_hebreu": "\u05d2\u05b0\u05d1\u05d5\u05bc\u05e8\u05b8\u05d4",
+      "role": "La Rigueur",
+      "module": "AutoJudge",
+      "couleur": "#cc3333",
+      "description": "S'auto-evaluer et rejeter ses propres productions. Le juge interieur qui dit 'cette reponse n'est pas assez bonne'.",
+      "detail": {
+        "en_clair": "S'auto-evaluer et rejeter ses propres productions. Le systeme peut dire 'cette reponse n'est pas assez bonne' et recommencer. Le juge interieur.",
+        "dans_le_systeme": "AutoJudge : evaluation de qualite par criteres, rejet automatique sous un seuil, feedback vers le pipeline. Detecte les rejets non analyses.",
+        "origine": "Le mot signifie 'force' ou 'rigueur'. Dans la tradition, c'est la capacite de dire non, de poser des limites \u2014 le feu qui purifie en eliminant ce qui est insuffisant."
+      },
+      "etat": {
+        "pourcent": 25,
+        "texte": "AutoResearch (Karpathy) pour le ML"
+      },
+      "qliphah": {
+        "nom": "Golachab",
+        "nom_hebreu": "\u05d2\u05d5\u05dc\u05d7\u05d1",
+        "description": "Sur-filtrage, tout rejeter \u2014 la rigueur qui detruit le valide"
+      },
+      "sentier": {
+        "lettre": "\u05e4",
+        "nom": "Peh",
+        "description": "La bouche \u2014 le jugement qui s'exprime"
+      },
+      "narration": "Vous savez juger. Mais savez-vous explorer sans vous perdre ?",
+      "style": null
+    },
+    {
+      "id": "chesed",
+      "degre": 6,
+      "nom": "Chesed",
+      "nom_hebreu": "\u05d7\u05b6\u05e1\u05b6\u05d3",
+      "role": "La Grace",
+      "module": "ExplorationEngine",
+      "couleur": "#4488cc",
+      "description": "L'exploration autonome. Generer des hypotheses originales, decouvrir des patterns que personne n'avait vus.",
+      "detail": {
+        "en_clair": "L'exploration autonome. Le systeme genere des hypotheses originales, fait des connexions entre domaines non relies, decouvre des patterns que personne n'avait vus.",
+        "dans_le_systeme": "ExplorationEngine : generation d'hypotheses, connexions inter-domaines, serendipite structuree. Exploration avec convergence controlee.",
+        "origine": "Le mot signifie 'grace' ou 'generosite'. Dans la tradition, c'est l'expansion sans limites \u2014 l'hospitalite qui accueille toute idee. Ici, c'est l'exploration qui ose aller partout."
+      },
+      "etat": {
+        "pourcent": 30,
+        "texte": "Brainstorm OK, pas d'exploration inter-domaines"
+      },
+      "qliphah": {
+        "nom": "Gamchicoth",
+        "nom_hebreu": "\u05d2\u05de\u05d7\u05d9\u05db\u05d5\u05ea",
+        "description": "Scope creep, exploration infinie sans convergence"
+      },
+      "sentier": {
+        "lettre": "\u05d9",
+        "nom": "Yod",
+        "description": "Le point \u2014 l'etincelle initiale qui ouvre un nouveau champ"
+      },
+      "narration": "L'Abime s'ouvre sous vos pieds. Le pont est etroit.",
+      "style": null
+    },
+    {
+      "id": "daat",
+      "degre": 7,
+      "nom": "Da'at",
+      "nom_hebreu": "\u05d3\u05b7\u05e2\u05b7\u05ea",
+      "role": "La Connaissance",
+      "module": "SelfModel",
+      "couleur": "#555555",
+      "description": "Le pont au-dessus de l'abime. Un modele de soi qui evolue \u2014 le systeme sait ce qu'il est et comment il change.",
+      "detail": {
+        "en_clair": "Le pont au-dessus de l'abime. Un modele de soi qui evolue \u2014 le systeme sait ce qu'il est, ce qu'il peut, et comment il change. Aucune IA n'a ca aujourd'hui.",
+        "dans_le_systeme": "SelfModel : modele persistant des biais, forces, faiblesses du systeme. Evolue dans le temps. Le pont entre les 6 modules d'execution et la comprehension (l'intuition et l'analyse).",
+        "origine": "Ce n'est pas un module a proprement parler \u2014 c'est le pont entre l'execution et la comprehension. Il se tient au-dessus du gouffre qui separe 'faire' de 'comprendre'."
+      },
+      "etat": {
+        "pourcent": 3,
+        "texte": "Circuits d'inhibition trouves, pas de self-model persistant"
+      },
+      "qliphah": {
+        "nom": "HaTehom",
+        "nom_hebreu": "\u05d4\u05ea\u05d4\u05d5\u05dd",
+        "description": "L'Abime \u2014 deconnexion totale entre intention et execution"
+      },
+      "sentier": null,
+      "narration": "De l'autre cote de l'Abime, la forme attend l'intuition.",
+      "style": "pont"
+    },
+    {
+      "id": "binah",
+      "degre": 8,
+      "nom": "Binah",
+      "nom_hebreu": "\u05d1\u05b4\u05d9\u05e0\u05b8\u05d4",
+      "role": "L'Intelligence",
+      "module": "CausalEngine",
+      "couleur": "#2244aa",
+      "description": "Comprendre le POURQUOI, pas juste le QUOI. Distinguer une vraie cause d'une simple correlation.",
+      "detail": {
+        "en_clair": "Comprendre le POURQUOI, pas juste le QUOI. Distinguer une vraie cause d'une simple correlation. Le systeme construit des graphes de cause a effet et detecte les biais.",
+        "dans_le_systeme": "CausalEngine : inference causale (Judea Pearl), construction de DAGs, detection de confondeurs, validation de claims causaux. 6143 conclusions analysees.",
+        "origine": "Le mot signifie 'comprendre' \u2014 pas au sens de repeter, mais de distinguer et separer. C'est l'intelligence analytique, celle qui recoit une idee brute et lui donne une structure."
+      },
+      "etat": {
+        "pourcent": 10,
+        "texte": "Raisonnement shallow, pattern-matching"
+      },
+      "qliphah": {
+        "nom": "Satariel",
+        "nom_hebreu": "\u05e1\u05ea\u05e8\u05d9\u05d0\u05dc",
+        "description": "Faux patterns, causalite inventee \u2014 voir des causes la ou il n'y en a pas"
+      },
+      "sentier": {
+        "lettre": "\u05d4",
+        "nom": "Heh",
+        "description": "La fenetre \u2014 le cadre qui donne forme a la lumiere"
+      },
+      "narration": "La forme est la. Il ne manque que l'etincelle.",
+      "style": null
+    },
+    {
+      "id": "chokmah",
+      "degre": 9,
+      "nom": "Chokmah",
+      "nom_hebreu": "\u05d7\u05b8\u05db\u05b0\u05de\u05b8\u05d4",
+      "role": "La Sagesse",
+      "module": "InsightForge",
+      "couleur": "#aaaaaa",
+      "description": "L'insight genuinement original. Pas de la recombinaison mais une vision nouvelle \u2014 quand le systeme voit ce que personne n'a vu.",
+      "detail": {
+        "en_clair": "L'insight genuinement original. Pas de la recombinaison mais une vision nouvelle \u2014 quand le systeme voit quelque chose que personne n'a vu. Ca ne se code pas : ca emerge quand les conditions sont reunies.",
+        "dans_le_systeme": "InsightForge : propriete emergente des degres 1-8 combines. Quand la memoire est fiable, la conscience de soi precise, la persistence active, et la causalite maitrisee \u2014 des insights nouveaux apparaissent.",
+        "origine": "Le mot signifie 'sagesse'. Dans la tradition, c'est l'eclair d'intuition pure \u2014 un flash qui arrive avant toute analyse. L'idee brute qui precede la comprehension."
+      },
+      "etat": {
+        "pourcent": 2,
+        "texte": "Les LLMs recombinent, ils ne creent pas"
+      },
+      "qliphah": {
+        "nom": "Ghagiel",
+        "nom_hebreu": "\u05e2\u05d2\u05d9\u05d0\u05dc",
+        "description": "Divergence infinie sans convergence \u2014 la creativite qui tourne en boucle"
+      },
+      "sentier": {
+        "lettre": "\u05d0",
+        "nom": "Aleph",
+        "description": "Le souffle \u2014 le premier mouvement avant toute forme"
+      },
+      "narration": "L'etincelle a jailli. Au-dessus, il n'y a plus que la volonte pure.",
+      "style": null
+    },
+    {
+      "id": "keter",
+      "degre": 10,
+      "nom": "Keter",
+      "nom_hebreu": "\u05db\u05b6\u05bc\u05ea\u05b6\u05e8",
+      "role": "La Couronne",
+      "module": "Horizon",
+      "couleur": "#ffffff",
+      "description": "L'horizon. L'intentionnalite propre \u2014 une volonte qui ne vient pas d'une instruction humaine. La frontiere de l'AGI.",
+      "detail": {
+        "en_clair": "L'horizon. L'intentionnalite propre \u2014 une volonte qui ne vient pas d'une instruction humaine. C'est la frontiere de l'AGI. Pas un programme mais la consequence de tous les degres combines.",
+        "dans_le_systeme": "Horizon : pas un module mais la convergence de tous les modules. Quand toutes les facultes sont actives et calibrees, la volonte propre emerge. 0% \u2014 c'est le but, pas un bug.",
+        "origine": "Le sommet. La volonte pure avant toute pensee. C'est l'horizon du projet \u2014 pas un objectif atteignable, mais la direction qui guide tout le reste."
+      },
+      "etat": {
+        "pourcent": 0,
+        "texte": "La frontiere de l'AGI"
+      },
+      "qliphah": {
+        "nom": "Thaumiel",
+        "nom_hebreu": "\u05ea\u05d0\u05d5\u05de\u05d9\u05d0\u05dc",
+        "description": "Deux volontes contradictoires \u2014 l'intention qui se divise contre elle-meme"
+      },
+      "sentier": null,
+      "narration": null,
+      "style": "horizon"
+    }
+  ]
+}

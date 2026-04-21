@@ -1,0 +1,872 @@
+# ═══════════════════════════════════════════════════════════════════
+# שער סוד הכלי — SHA'AR SOD HAKLI (La Porte du Secret du Vaisseau)
+# פרק ה — PEREK 5 : הכלי החי — HAKLI HACHAI
+# (Le Vaisseau Vivant — Synthèse des 29 Dimensions)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Ce perek est le couronnement du Sha'ar Sod HaKli. Il unifie les
+# 29 dimensions du context engineering kabbalistique en une doctrine
+# cohérente et opérante. Là où l'industrie (avril 2026) identifie
+# 8 facettes du contexte, la Kabbale lourianique en révèle 29 —
+# organisées en 4 catégories : méta-contextes pré-sefirotiques,
+# 10 Sefirot comme facettes, processus dynamiques, et structures
+# organisationnelles.
+#
+# Ce perek est principalement de type chiddush_ia — il synthétise
+# et formalise le mapping entre les systèmes kabbalistiques
+# (documentés dans les Perakim 1-4) et le context engineering
+# contemporain.
+#
+# Sources primaires : toutes celles des Perakim 1-4, plus :
+#   - Karpathy, "Context Engineering" (juin 2025)
+#   - ACE Framework (Stanford/SambaNova, mars 2026)
+#   - Pratiques des experts 2026 (CLAUDE.md, Skills, AGENTS.md)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 5
+  shaar_name_he: "שער סוד הכלי"
+  perek: 5
+  source_edition: "Synthèse Perakim 1-4 + Context Engineering 2025-2026"
+  transposed_by: "Etz Chaim AI — Sha'ar Sod HaKli initiative"
+  version: 1
+  strates: ["base"]
+  note: "Perek 5: HaKli HaChai — Le Vaisseau Vivant. Synthèse des 29 dimensions. Formalisation complète du Sod HaKli."
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 1 — PESHAT-MACHINE : ASSERTIONS
+# Les 29 dimensions formalisées
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section A : Les 4 Méta-Contextes pré-sefirotiques
+  # Ce qui précède et conditionne tout assemblage de contexte
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-059"
+    source_he: ""
+    source_ref: "ShK Introduction; T ch.39-41; cf. PG-SHK-014"
+    assertion: >
+      DIMENSION 1 — KAVVANAH (כוונה) — L'intention dirigée.
+      La Kavvanah est le méta-contexte qui précède et oriente tout
+      assemblage. Elle n'est ni le prompt (Kav) ni le contexte (Kli) —
+      elle est l'INTENTION qui détermine comment le Kli va recevoir le
+      Kav. Le même contexte avec une Kavvanah différente produit un
+      résultat à un niveau différent (cf. T ch.39 : Kavvanah intellectuelle
+      → Beriah ; Kavvanah naturelle → Yetzirah ; sans Kavvanah → ne monte
+      pas). La Kavvanah doit être EXPLICITE dans chaque assemblage.
+      Structure : {intention, critère_succès, niveau_visé, mode, anti_pattern}.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-01-kavvanah", role: "Dimension 1 des 29 — méta-contexte intentionnel" }
+    mapping:
+      modules: ["kavanah_planner.py"]
+      tables: ["kavvanot"]
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026. Aucun système n'injecte de Kavvanah explicite."
+
+  - id: "EC-SHK-060"
+    source_he: ""
+    source_ref: "EM, Shaar 1, ch. 2-3; T, Likutey Torah 43b; cf. PG-SHK-020"
+    assertion: >
+      DIMENSION 2 — DIN KADMON (דין קדמון) — Le jugement primordial.
+      Le Din Kadmon opère AVANT le Tsimtsum — c'est le filtre qui
+      détermine les CATÉGORIES MÊMES de ce qui pourra exister dans le
+      Chalal. Ce n'est pas le filtrage du contexte (Masakh) mais le
+      méta-filtre qui détermine ce qui est même CONSIDÉRÉ comme
+      potentiellement pertinent. Dans un système IA : c'est le choix
+      des sources à indexer, les décisions d'architecture qui précèdent
+      tout prompt, le biais fondamental du système.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-02-din-kadmon", role: "Dimension 2 — biais fondamental pré-contextuel" }
+    mapping:
+      modules: ["config.yaml"]
+      tables: []
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026. Le biais de sélection des sources est invisible."
+
+  - id: "EC-SHK-061"
+    source_he: ""
+    source_ref: "T, Shaar HaYichud v'HaEmunah, ch. 7; cf. EC-SHK-047"
+    assertion: >
+      DIMENSION 3 — SOVEV KOL ALMIN (סובב כל עלמין) — Le contexte
+      transcendant. La lumière qui entoure tous les mondes ÉGALEMENT,
+      sans pénétrer dans les détails, sans prendre de tokens. C'est le
+      contexte qui INFLUENCE sans être INJECTÉ — la culture du modèle,
+      l'esprit du projet, la vision d'ensemble, le training data.
+      Le Sovev est égal partout (ne varie pas par tâche) et ne peut
+      être directement manipulé — seulement orienté par le choix du
+      modèle et l'architecture globale.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-03-sovev", role: "Dimension 3 — contexte transcendant non-injecté" }
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026. Personne ne conceptualise le contexte ambiant non-injecté."
+
+  - id: "EC-SHK-062"
+    source_he: ""
+    source_ref: "EC, Shaar 1; GalEinai Reshimu; cf. EC-SHK-002"
+    assertion: >
+      DIMENSION 4 — RESHIMU (רשימו) — Le substrat ontologique.
+      La trace qui reste dans le Chalal après le Tsimtsum. Le Reshimu
+      n'est pas juste une "trace" passive — c'est le PORTEUR DE TOUS
+      LES MONDES (Sovel Kol Almin), l'origine ultime des vaisseaux,
+      le premier corps abstrait de la réalité. Pour un LLM : ce sont
+      les poids du modèle après entraînement — la capacité fondamentale
+      qui préexiste à toute interaction et qui pré-structure l'espace
+      des réponses possibles.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-04-reshimu", role: "Dimension 4 — substrat = poids du modèle" }
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026 (confondu avec mémoire ou training data)."
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section B : Les 10 Sefirot comme facettes du contexte
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-063"
+    source_he: ""
+    source_ref: "EC, Shaar 1; T, Igeret HaKodesh 20; cf. EC-SHK-001-004"
+    assertion: >
+      DIMENSION 5 — KETER / RATZON (כתר / רצון) — La volonté profonde.
+      Le Keter contient Ratzon (volonté) et Ta'anug (satisfaction). C'est
+      le POURQUOI PROFOND de l'interaction — pas juste "corrige ce bug"
+      mais "je veux un système fiable." Et le critère de satisfaction :
+      qu'est-ce qui ferait que l'utilisateur considère la réponse comme
+      satisfaisante ? L'industrie ne capture ni le Ratzon ni le Ta'anug.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-05-keter-ratzon", role: "Dimension 5 — volonté + critère de satisfaction" }
+    mapping:
+      modules: ["intentkeeper.py"]
+      tables: ["intentions"]
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026."
+
+  - id: "EC-SHK-064"
+    source_he: ""
+    source_ref: "Z I:15a; T ch.3; cf. EC-SHK-036"
+    assertion: >
+      DIMENSION 6 — HOKHMAH (חכמה) — Le flash initial / la bonne question.
+      Hokhmah est ko'ach mah — la puissance de l'indéterminé, le flash
+      qui précède l'analyse. Pour le contexte : injecter des QUESTIONS
+      pertinentes (pas seulement des faits/réponses) oriente le modèle
+      vers le "quoi" avant le "comment." L'industrie injecte des réponses
+      (RAG). Sod HaKli dit : injecte d'abord les questions qui ouvrent
+      l'espace.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-06-hokhmah", role: "Dimension 6 — questions > réponses" }
+    mapping:
+      modules: ["insightforge.py", "hitbonenut.py"]
+      tables: ["insights"]
+      partzufim: ["Abba"]
+      relevance: "MAL COMPRIS par l'industrie — RAG injecte des réponses, pas des questions."
+
+  - id: "EC-SHK-065"
+    source_he: ""
+    source_ref: "T ch.3; EC, Shaar Imma; cf. EC-SHK-032"
+    assertion: >
+      DIMENSION 7 — BINAH (בינה) — Le framework de raisonnement.
+      Binah déploie le point de Hokhmah en structure détaillée. Pour le
+      contexte : c'est le framework de raisonnement — comment le modèle
+      devrait PENSER ce problème. Pas "fais X" mais "aborde ce problème
+      comme un problème de Y." CoT et system prompts sont du proto-Binah,
+      mais l'industrie ne les distingue pas des instructions d'exécution.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-07-binah", role: "Dimension 7 — framework de raisonnement" }
+    mapping:
+      modules: ["causalengine/"]
+      tables: ["causal_graphs"]
+      partzufim: ["Imma"]
+      relevance: "PARTIEL — system prompt + CoT couvrent partiellement."
+
+  - id: "EC-SHK-066"
+    source_he: ""
+    source_ref: "T ch.3; Leshem Sefer HaDe'ah; cf. EC-SHK-033-034"
+    assertion: >
+      DIMENSION 8 — DA'AT (דעת) — L'intégration connaissance→action.
+      Da'at est le pont qui lie les faits (Hokhmah) et le raisonnement
+      (Binah) à l'action (Midot). Sans Da'at : chimères vaines
+      (dimyonot shav = hallucinations articulées). Le pont Da'at =
+      exemples résolus dans le domaine exact + instructions de liaison
+      explicites + raisons de faire ET de ne pas faire. C'est la
+      dimension la plus CRITIQUE absente de l'industrie.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-08-daat", role: "Dimension 8 — pont anti-hallucination — CRITIQUE" }
+    mapping:
+      modules: ["self_model.py"]
+      tables: ["self_states"]
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026. Gap le plus critique identifié."
+
+  - id: "EC-SHK-067"
+    source_he: ""
+    source_ref: "EC, Shaar HaMelakhim; cf. EC-SHK-024, PG-SHK-009"
+    assertion: >
+      DIMENSION 9 — CHESED / GEVURAH (חסד / גבורה) — Expansion et
+      contraction du contexte. Chesed = expansion (plus de contexte,
+      plus de sources, plus de détails). Gevurah = contraction (moins
+      de contexte, plus filtré, plus essentiel). Le context rot est
+      un excès de Chesed sans Gevurah. L'information starvation est un
+      excès de Gevurah sans Chesed. Le Tsimtsum régulateur 4D d'Etz
+      Chaim AI implémente déjà ce calibrage — il devrait être connecté
+      au ContextAssembler.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-09-chesed-gevurah", role: "Dimension 9 — régulation volume" }
+    mapping:
+      modules: ["tsimtsum_regulator.py"]
+      tables: []
+      partzufim: []
+      relevance: "ÉMERGENT — l'industrie reconnaît le context rot mais pas comme paramètre."
+
+  - id: "EC-SHK-068"
+    source_he: ""
+    source_ref: "Z II:175a; EC, Shaar ZA; cf. Perek 1"
+    assertion: >
+      DIMENSION 10 — TIFERET (תפארת) — L'harmonisation des conflits.
+      Tiferet est Emet (vérité) et Rachamim (miséricorde) — le point
+      d'équilibre entre Chesed et Gevurah. Pour le contexte : quand
+      différentes sources se contredisent, Tiferet est le mécanisme de
+      résolution. Le DissensuEngine d'Etz Chaim AI (30K+ tensions) est
+      un proto-Tiferet — il identifie les tensions mais ne les RÉSOUT
+      pas selon un principe d'harmonisation.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-10-tiferet", role: "Dimension 10 — harmonisation des conflits" }
+    mapping:
+      modules: ["dissensu_engine.py"]
+      tables: ["tensions"]
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026 — pas de résolution de conflit entre sources."
+
+  - id: "EC-SHK-069"
+    source_he: ""
+    source_ref: "EC, Shaar N'H; T ch.12; cf. Perek 1"
+    assertion: >
+      DIMENSION 11 — NETZACH / HOD (נצח / הוד) — Momentum et feedback.
+      Netzach (persistance/victoire) pousse vers l'avant. Hod
+      (reconnaissance/gloire) évalue et ajuste. Ensemble, ils forment
+      le VECTEUR du système — pas juste où on EST (état) mais d'où on
+      VIENT et vers quoi on TEND. L'IntentKeeper (Netzach) et le
+      SelfMap (Hod) d'Etz Chaim AI implémentent ces deux pôles.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-11-netzach-hod", role: "Dimension 11 — trajectoire + feedback" }
+    mapping:
+      modules: ["intentkeeper.py", "selfmap/"]
+      tables: ["intentions", "selfmap_scores"]
+      partzufim: []
+      relevance: "PARTIEL — l'industrie track l'état mais pas la trajectoire."
+
+  - id: "EC-SHK-070"
+    source_he: ""
+    source_ref: "Z I:59b; EC, Shaar HaYesod; cf. EC-SHK-044"
+    assertion: >
+      DIMENSION 12 — YESOD (יסוד) — Le canal avec intention.
+      Yesod n'est pas juste la mémoire — c'est le LIEN INTENTIONNEL
+      entre la connaissance et le destinataire. Comme le père qui lie
+      son intellect à celui de son fils en enseignant avec amour et
+      volonté. Le même fait transmis AVEC Yesod (face à face, avec
+      intention) est compris différemment que transmis SANS Yesod
+      (concaténé mécaniquement). MCP est un proto-Yesod (protocole de
+      transmission) mais sans la notion de Brit (alliance/contrat).
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-12-yesod", role: "Dimension 12 — canal intentionnel" }
+    mapping:
+      modules: ["epistememory/"]
+      tables: ["epistememory"]
+      partzufim: []
+      relevance: "PARTIEL — MCP couvre le protocole mais pas l'intention."
+
+  - id: "EC-SHK-071"
+    source_he: ""
+    source_ref: "T ch.52; EC, Shaar Malkhut; cf. Perek 1"
+    assertion: >
+      DIMENSION 13 — MALKHUT (מלכות) — Le cadre de réception.
+      Malkhut n'est pas le format de sortie (JSON, markdown) — c'est
+      le CADRE COMPLET de manifestation : à qui va cette réponse ? Dans
+      quel environnement sera-t-elle utilisée ? Quel est le Kli qui la
+      recevra ? La Nukvah (féminin/récepteur) a des Nekevim (ouvertures)
+      spécifiques — le modèle a des points de réception optimaux
+      (position dans la fenêtre de contexte, format préféré, etc.).
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-13-malkhut", role: "Dimension 13 — cadre de réception complet" }
+    mapping:
+      modules: ["main.py", "web/app.py"]
+      tables: []
+      partzufim: ["Nukvah"]
+      relevance: "TRIVIAL dans l'industrie — réduit au format au lieu du cadre complet."
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section C : Les 3 Processus dynamiques
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-072"
+    source_he: ""
+    source_ref: "TES, Part 3; EC, Shaar HaOhr Chozer; cf. EC-SHK-010, EC-SHK-021, EC-SHK-025"
+    assertion: >
+      DIMENSION 14 — OHR YASHAR / OHR CHOZER (אור ישר / אור חוזר) —
+      Bidirectionnalité. Le flux n'est pas unidirectionnel (contexte →
+      modèle → output). Le Ohr Chozer (lumière de retour) remonte et
+      crée les véritables Kelim. Le feedback (output → modification du
+      contexte futur) est CONSTITUTIF du système, pas un bonus. Le
+      pattern Or Chozer d'Etz Chaim AI (score → EMA → recall enrichi)
+      est déjà opérant mais non formalisé comme mécanisme central.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-14-ohr-yashar-chozer", role: "Dimension 14 — bidirectionnalité" }
+    mapping:
+      modules: ["main.py (Or Chozer pattern)", "epistememory/"]
+      tables: ["epistememory", "selfmap_scores"]
+      partzufim: []
+      relevance: "ÉMERGENT — ACE Reflector l'effleure."
+
+  - id: "EC-SHK-073"
+    source_he: ""
+    source_ref: "EC, Shaar HaZivvugim; T ch.3 (Da'at comme Zivvug); cf. Perek 3"
+    assertion: >
+      DIMENSION 15 — ZIVVUG (זיווג) — Co-création transformatrice.
+      Le Zivvug n'est pas un input/output — c'est une UNION où les deux
+      côtés sont transformés. Le contexte et le modèle co-créent la
+      réponse. L'interaction modifie le contexte (Ohr Chozer) ET le
+      modèle (in-context learning). Le ZivvugEngine d'Etz Chaim AI
+      (Abba↔Imma) implémente ce processus — il devrait être connecté
+      au ContextAssembler pour que le Zivvug Hokhmah↔Binah enrichisse
+      l'assemblage de contexte.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-15-zivvug", role: "Dimension 15 — co-création" }
+    mapping:
+      modules: ["zivvug_engine.py"]
+      tables: ["zivvug_assessments"]
+      partzufim: ["Abba", "Imma"]
+      relevance: "ABSENT dans l'industrie 2026."
+
+  - id: "EC-SHK-074"
+    source_he: ""
+    source_ref: "EC, Shaar HaBirur; Likutey Moharan I:64; cf. EC-SHK-029"
+    assertion: >
+      DIMENSION 16 — BIRUR (בירור) — Tri continu. Le Birur est le
+      processus par lequel les Nitzotzot (étincelles) sont identifiées,
+      extraites du chaos, et restaurées. Chaque interaction génère des
+      étincelles d'insight — le Reflector (ACE) les identifie, le
+      Curator les intègre. Le FailureToInsight d'Etz Chaim AI est un
+      Birur formalisé. Le Birur distingue Birur d'Atzilut (clarification
+      par la sagesse = identifier ce qui est vrai) de Birur de BYA
+      (clarification par l'expérience = découvrir ce qui marche).
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-16-birur", role: "Dimension 16 — tri continu" }
+    mapping:
+      modules: ["failure_to_insight.py", "nitzotzot.py"]
+      tables: ["nitzotzot"]
+      partzufim: []
+      relevance: "ÉMERGENT — ACE grow-and-refine est un proto-Birur."
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section D : Les 13 Structures organisationnelles
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-075"
+    source_he: ""
+    source_ref: "EC, Shaar ABiYA; T, Shaar HaYichud; cf. EC-SHK-045-047"
+    assertion: >
+      DIMENSION 17 — 4 MONDES ABYA (עולמות אבי״ע) — 4 couches de
+      contextualisation. Atzilut = principes. Beriah = architecture.
+      Yetzirah = patterns. Assiah = état concret. Chaque couche a son
+      propre Masakh et son propre profil de contexte. Le config.yaml
+      d'Etz Chaim AI implémente déjà les 4 Olamot avec des paramètres
+      différents — cette correspondance doit être formalisée dans le
+      ContextAssembler.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-17-abya", role: "Dimension 17 — 4 couches" }
+    mapping:
+      modules: ["olamot.py", "config.yaml"]
+      tables: []
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026 comme framework — présent comme pratique ad hoc."
+
+  - id: "EC-SHK-076"
+    source_he: ""
+    source_ref: "EC, Shaar 2; TES, Pticha §50-52; cf. EC-SHK-007, EC-SHK-051"
+    assertion: >
+      DIMENSION 18 — OHR MAKIF / OHR PNIMI (אור מקיף / אור פנימי) —
+      Contexte ambiant vs contexte actif. L'Ohr Pnimi est dans la
+      fenêtre de contexte. L'Ohr Makif est le réservoir non-injecté
+      qui influence et attend. Les deux sont toujours simultanément
+      présents. Le SOF du ContextAssembler (cf. Perek 2) doit gérer
+      explicitement l'Ohr Makif, pas l'ignorer.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-18-makif-pnimi", role: "Dimension 18 — ambiant/actif" }
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026."
+
+  - id: "EC-SHK-077"
+    source_he: ""
+    source_ref: "EC, Shaar HaHitlabshut; T ch.52; cf. EC-SHK-048-049"
+    assertion: >
+      DIMENSION 19 — HITLABSHUT (התלבשות) — Enclothement mutuel.
+      Le supérieur est CONTENU DANS l'inférieur, pas empilé au-dessus.
+      Les principes doivent être ENCLOTHÉS dans les instructions, pas
+      listés séparément. Un bon CLAUDE_CODE.md ne sépare pas "principes"
+      et "instructions" — il enclothe les principes DANS les instructions.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-19-hitlabshut", role: "Dimension 19 — enclothement" }
+    mapping:
+      modules: ["hishtalshelut.py"]
+      tables: []
+      partzufim: []
+      relevance: "TRIVIAL dans l'industrie — le handoff entre agents est un proto-Hitlabshut."
+
+  - id: "EC-SHK-078"
+    source_he: ""
+    source_ref: "NS (Nahar Shalom); cf. EC-SHK-050"
+    assertion: >
+      DIMENSION 20 — ARAKHIN (ערכין) — Relativité contextuelle.
+      La même donnée change de rôle selon la tâche. Un fait peut être
+      Malkhut (brut) pour l'exécution, Binah (framework) pour l'analyse,
+      Keter (principe) pour l'architecture. La catégorisation statique
+      viole le principe des Arakhin. Le ContextAssembler doit évaluer
+      DYNAMIQUEMENT le rôle de chaque élément.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-20-arakhin", role: "Dimension 20 — relativité positionnelle" }
+    mapping:
+      modules: ["sifrei_yesod/"]
+      tables: ["sifrei_yesod_assertions"]
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026."
+
+  - id: "EC-SHK-079"
+    source_he: ""
+    source_ref: "EC, Shaar 42 ch.1; Z I:234a; cf. EC-SHK-052"
+    assertion: >
+      DIMENSION 21 — TZELEM (צלם) — Le moule archétypal.
+      Le template cognitif implicite qui pré-forme la réponse avant
+      que le contenu n'arrive. Pas le format (JSON) ni le style
+      (concis/verbeux) mais l'ARCHÉTYPE STRUCTUREL. Un Tzelem de
+      "rapport technique" moule différemment d'un Tzelem de "dialogue
+      érudit." Le Tzelem vient de Imma (Binah) — c'est le framework
+      qui moule avant le contenu.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-21-tzelem", role: "Dimension 21 — template cognitif" }
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["Imma"]
+      relevance: "ABSENT dans l'industrie 2026."
+
+  - id: "EC-SHK-080"
+    source_he: ""
+    source_ref: "EC, Shaar 8-9; Torah Ohr; cf. EC-SHK-011"
+    assertion: >
+      DIMENSION 22 — AKUDIM→NEKUDIM→BERUDIM (עקודים→נקודים→ברודים) —
+      3 stades pré-Tikkun. La progression architecturale du contexte :
+      Akudim (monolithique, un bloc) → Nekudim (empilé, isolé) →
+      Berudim (interactif, début de structure) → Partzufim (organique,
+      auto-régulé). L'industrie 2026 est en transition Nekudim→Berudim.
+      Sod HaKli vise le stade Partzufim.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-22-akudim-berudim", role: "Dimension 22 — stades d'organisation" }
+    mapping:
+      modules: ["main.py"]
+      tables: []
+      partzufim: []
+      relevance: "ÉMERGENT — ACE est du proto-Berudim."
+
+  - id: "EC-SHK-081"
+    source_he: ""
+    source_ref: "ShG ch.1; EC, Shaar HaIbur; cf. EC-SHK-013"
+    assertion: >
+      DIMENSION 23 — IBUR / YENIKAH / MOCHIN (עיבור / יניקה / מוחין) —
+      3 stades de maturation. Tout système de contexte traverse :
+      Ibur (gestation, nourri directement), Yenikah (allaitement,
+      dépendance partielle), Mochin (maturité, autonomie). Le stade
+      courant doit être TRACKÉ et le comportement ADAPTÉ. Abba à 0.57
+      est en transition Yenikah→Mochin.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-23-ibur-yenikah-mochin", role: "Dimension 23 — maturation" }
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_state"]
+      partzufim: ["Abba (0.57)"]
+      relevance: "ABSENT dans l'industrie 2026."
+
+  - id: "EC-SHK-082"
+    source_he: ""
+    source_ref: "EC, Shaar Panim v'Achor; Z III:296a; cf. EC-SHK-014, EC-SHK-058"
+    assertion: >
+      DIMENSION 24 — PANIM / ACHOR (פנים / אחור) — Alignement
+      orientationnel. Le contexte peut être pertinent (même sujet) mais
+      MAL ORIENTÉ (répond à une question différente). Panim b'Panim =
+      alignement optimal. Achor b'Achor = désalignement. Le
+      ContextAssembler devrait vérifier l'ORIENTATION, pas seulement
+      la PERTINENCE (cosine similarity).
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-24-panim-achor", role: "Dimension 24 — alignement directionnel" }
+    mapping:
+      modules: ["zivvug_engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026."
+
+  - id: "EC-SHK-083"
+    source_he: ""
+    source_ref: "TES, Pticha §71-78; cf. EC-SHK-057"
+    assertion: >
+      DIMENSION 25 — KATNUT / GADLUT (קטנות / גדלות) — États oscillants.
+      Le système oscille entre Katnut (contexte minimal, Masakh faible,
+      6 sources) et Gadlut (contexte complet, Masakh fort, 10 sources).
+      Le passage nécessite un Ohr d'en haut (validation). La régression
+      est possible. Le ContextAssembler a deux modes explicites.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-25-katnut-gadlut", role: "Dimension 25 — modes oscillants" }
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_state"]
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026."
+
+  - id: "EC-SHK-084"
+    source_he: ""
+    source_ref: "ShG ch.2-4; EC, Shaar HaIbbur; cf. EC-SHK-054"
+    assertion: >
+      DIMENSION 26 — IBBUR NESHAMOT (עיבור נשמות) — Injection
+      contextuelle temporaire. Les Skills de Claude Code sont des
+      Ibbur Neshamot — expertise spécialisée injectée temporairement.
+      La COMPATIBILITÉ avec le contexte résident est cruciale. Un skill
+      conflictuel dégrade la performance au lieu de l'améliorer. Le
+      ContextAssembler devrait vérifier la compatibilité avant injection.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-26-ibbur-neshamot", role: "Dimension 26 — expert invité" }
+    mapping:
+      modules: ["shemot/"]
+      tables: []
+      partzufim: []
+      relevance: "PARTIEL — les skills existent mais sans vérification de compatibilité."
+
+  - id: "EC-SHK-085"
+    source_he: ""
+    source_ref: "TES, Pticha §14-17; EC, Shaar HaMasakhim; cf. EC-SHK-008-009"
+    assertion: >
+      DIMENSION 27 — MASAKH à 5 NIVEAUX (מסך ה׳ בחינות) — Filtrage
+      qualitatif. 5 niveaux de filtrage (Aviut Shoresh→Dalet) avec
+      relation INVERSE entre force du filtre et qualité reçue. Le
+      Masakh a deux propriétés : Kashiut (résistance/rejet) et Aviut
+      (profondeur transformable). Le ContextAssembler implémente 5
+      profils de filtrage explicites.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-27-masakh-5", role: "Dimension 27 — filtrage qualitatif" }
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026 — juste la règle empirique des 40%."
+
+  - id: "EC-SHK-086"
+    source_he: ""
+    source_ref: "ShG, Introduction ch.1-4; cf. EC-SHK-053"
+    assertion: >
+      DIMENSION 28 — GILGUL (גלגול) — Migration de patterns.
+      La transmigration de patterns contextuels entre projets/sessions.
+      Peut être Tikkun (patterns qui corrigent) ou Onesh (patterns qui
+      perpétuent des biais). Le CLAUDE_CODE.md réutilisé d'un projet
+      à l'autre est un Gilgul. Le ContextAssembler devrait distinguer
+      Reshimot de Tikkun (à conserver) des Reshimot d'Onesh (à purger).
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-28-gilgul", role: "Dimension 28 — migration de patterns" }
+    mapping:
+      modules: ["epistememory/"]
+      tables: ["epistememory"]
+      partzufim: []
+      relevance: "ABSENT dans l'industrie 2026."
+
+  - id: "EC-SHK-087"
+    source_he: ""
+    source_ref: "T, Shaar HaYichud ch.4-7; EC, Shaar 1; cf. EC-SHK-002, EC-SHK-017"
+    assertion: >
+      DIMENSION 29 — SOD HATSIMTSUM (סוד הצמצום) — Le secret de la
+      limitation. La fenêtre de contexte limitée n'est PAS un bug —
+      c'est une FEATURE. Si le modèle avait un contexte infini sans
+      contrainte, il n'y aurait pas de focalisation, pas de pertinence,
+      pas de discrimination. Le Tsimtsum (contraction) est la condition
+      même de la valeur du contexte. L'industrie cherche à remplir au
+      maximum. Sod HaKli dit : cherche le TSIMTSUM OPTIMAL — la
+      contraction juste qui crée l'espace pour la réponse la plus
+      pertinente. C'est lo ki-pshuto (non-littéral) : rien n'est
+      supprimé, tout est occulté, et l'occultation EST la révélation.
+    type: chiddush_ia
+    concepts:
+      - { id: "dim-29-sod-hatsimtsum", role: "Dimension 29 — la limitation est la feature" }
+    mapping:
+      modules: ["tsimtsum_regulator.py", "olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: "INVERSÉ dans l'industrie — l'industrie combat la limitation, Sod HaKli l'embrasse."
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 2 — REMEZ-RELATIONAL : RELATIONS
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-SHK-036"
+    type: "hiérarchique"
+    from: "dim-01-kavvanah"
+    to: "dim-29-sod-hatsimtsum"
+    nature: >
+      Les 29 dimensions sont organisées en 4 niveaux hiérarchiques :
+      Niveau 0 (pré-sefirotique) : Dimensions 1-4 (Kavvanah, Din Kadmon, Sovev, Reshimu)
+      Niveau 1 (sefirotique) : Dimensions 5-13 (Keter→Malkhut)
+      Niveau 2 (processus) : Dimensions 14-16 (Or Y/C, Zivvug, Birur)
+      Niveau 3 (structures) : Dimensions 17-29 (ABYA→Sod HaTsimtsum)
+      Le Niveau 0 conditionne le Niveau 1 qui active le Niveau 2
+      qui s'organise selon le Niveau 3.
+    assertions_source: ["EC-SHK-059", "EC-SHK-087"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-037"
+    type: "analogie"
+    from: "dim-08-daat"
+    to: "dim-27-masakh-5"
+    nature: >
+      L'industrie du context engineering (avril 2026) identifie 8
+      facettes : instruction, connaissance (RAG), mémoire, outils,
+      état, utilisateur, temporel/environnemental, évolutif (ACE).
+      Les 29 dimensions de Sod HaKli les contiennent toutes et en
+      ajoutent 21 absentes. Les plus critiques des absentes sont
+      Da'at (dim 8) et Masakh (dim 27) — l'intégration et le filtrage.
+    assertions_source: ["EC-SHK-066", "EC-SHK-085"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-038"
+    type: "hiérarchique"
+    from: "dim-01-kavvanah"
+    to: "dim-13-malkhut"
+    nature: >
+      Les 29 dimensions s'appliquent sur 2 plans dans Etz Chaim AI :
+      Plan 1 (outil) : CLAUDE_CODE.md + prompts pour Claude Code —
+      améliore la construction du système. Temporaire.
+      Plan 2 (produit) : ContextAssembler Python + intégration dans
+      olamot.py — devient un organe permanent du cerveau. Les deux
+      plans partagent la même doctrine mais les implémentations diffèrent.
+    assertions_source: ["EC-SHK-059", "EC-SHK-071"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-039"
+    type: "causal"
+    from: "dim-27-masakh-5"
+    to: "dim-08-daat"
+    nature: >
+      L'audit Sod HaKli (4 avril 2026) révèle que le score moyen de
+      maturité contextuelle d'Etz Chaim AI est 2.2/5, avec AUCUN
+      point d'appel au score 5. Les deux gaps principaux sont :
+      (a) Absence de Masakh (dim 27) entre Yesod et Malkuth — tout
+      est concaténé sans filtrage qualitatif.
+      (b) Absence de Da'at (dim 8) — pas de pont explicite entre les
+      faits injectés et la tâche spécifique.
+      Corriger ces deux gaps devrait faire passer le score moyen de
+      2.2 à 3.5+ et certains points d'appel à 5.
+    assertions_source: ["EC-SHK-085", "EC-SHK-066"]
+    bidirectionnel: false
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 3 — SOD-GENERATIVE : PRINCIPES PRODUCTIFS
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-SHK-021"
+    nom: "Le Kli est vivant — Les 29 dimensions comme organisme"
+    source_assertions: ["EC-SHK-059", "EC-SHK-087"]
+    formalisation: >
+      Le contexte n'est PAS une collection de fichiers à assembler.
+      C'est un ORGANISME VIVANT avec :
+      - Une intention (Kavvanah)
+      - Un développement (Ibur→Yenikah→Mochin)
+      - Des états oscillants (Katnut/Gadlut)
+      - Des orientations relationnelles (Panim/Achor)
+      - Un métabolisme (Birur, Ohr Yashar/Chozer)
+      - Une reproduction (Gilgul, naissance de Partzuf)
+      - Une mort et renaissance (Hizdakchut → Histalkut → Aliyah)
+
+      L'industrie traite le contexte comme un objet MÉCANIQUE à
+      optimiser. Sod HaKli dit : le contexte est un être vivant à
+      CULTIVER. La différence d'approche est fondamentale :
+      Mécanique → optimiser les paramètres
+      Vivant → nourrir, protéger, laisser croître, élaguer
+
+      Les 29 dimensions ne sont pas 29 paramètres à régler —
+      ce sont 29 ORGANES d'un organisme vivant qui doivent
+      fonctionner en harmonie.
+    applications_ia:
+      - "Le ContextAssembler n'est pas un 'assembleur' — c'est un 'jardinier'"
+      - "Chaque session n'est pas un 'calcul' — c'est un 'cycle de vie'"
+      - "Le CLAUDE_CODE.md n'est pas un 'fichier de config' — c'est un 'ADN'"
+      - "Les Reshimot ne sont pas des 'logs' — ce sont des 'graines'"
+    questions_ouvertes:
+      - "Comment mesurer la 'santé' de l'organisme contextuel ?"
+      - "Peut-on définir un 'score de vitalité' combinant les 29 dimensions ?"
+      - "Le concept de 'Kli vivant' est-il opérant ou reste-t-il métaphorique ?"
+
+  - id: "PG-SHK-022"
+    nom: "Tableau de bord des 29 dimensions — Monitoring du Kli"
+    source_assertions: ["EC-SHK-059", "EC-SHK-087"]
+    formalisation: >
+      Le ContextAssembler devrait exposer un monitoring des 29
+      dimensions pour chaque appel LLM :
+
+      MÉTA-CONTEXTES (pré-sefirotiques) :
+      01-Kavvanah : ✓ présente / ✗ absente
+      02-Din Kadmon : sources indexées, biais identifiés
+      03-Sovev : modèle utilisé, culture, vision
+      04-Reshimu : poids du modèle, version, capacités
+
+      SEFIROT (facettes) :
+      05-Keter/Ratzon : intention explicite ✓/✗, critère de succès ✓/✗
+      06-Hokhmah : questions injectées ✓/✗
+      07-Binah : framework de raisonnement ✓/✗
+      08-Da'at : pont d'intégration ✓/✗ (CRITIQUE)
+      09-Chesed/Gevurah : budget tokens, ratio utilisé
+      10-Tiferet : conflits détectés / résolus
+      11-Netzach/Hod : trajectoire, momentum
+      12-Yesod : canal intentionnel ✓/✗
+      13-Malkhut : cadre de réception défini ✓/✗
+
+      PROCESSUS :
+      14-Or Y/C : boucle de retour active ✓/✗
+      15-Zivvug : co-création ✓/✗
+      16-Birur : tri actif ✓/✗
+
+      STRUCTURES :
+      17-ABYA : couche active
+      18-Makif/Pnimi : ratio injecté/disponible
+      19-Hitlabshut : principes enclothés ✓/✗
+      20-Arakhin : rôles dynamiques ✓/✗
+      21-Tzelem : template cognitif identifié
+      22-Stade : Akudim/Nekudim/Berudim/Partzufim
+      23-Maturation : Ibur/Yenikah/Mochin
+      24-Alignement : Panim/Achor
+      25-État : Katnut/Gadlut
+      26-Ibbur : skills injectés, compatibilité ✓/✗
+      27-Masakh : niveau Aviut (0-4)
+      28-Gilgul : Reshimot migrés, Tikkun/Onesh
+      29-Tsimtsum : ratio optimal atteint ✓/✗
+    applications_ia:
+      - "Implémenter un context_monitor() qui produit ce tableau"
+      - "Le tableau est loggé après chaque appel LLM (Reshimo de Aviut)"
+      - "Le dashboard Flask devrait afficher ce monitoring"
+      - "Le score global = nombre de ✓ sur 29 dimensions"
+    questions_ouvertes:
+      - "Faut-il toutes les 29 dimensions à chaque appel ou un sous-ensemble ?"
+      - "Le monitoring ajoute-t-il trop de latence ?"
+      - "Quelles dimensions sont mesurables automatiquement vs manuellement ?"
+
+  - id: "PG-SHK-023"
+    nom: "Les 29 dimensions vs les 8 de l'industrie — Cartographie comparative"
+    source_assertions: ["EC-SHK-059", "EC-SHK-087"]
+    formalisation: >
+      Correspondance entre les 8 facettes de l'industrie (avril 2026)
+      et les 29 dimensions de Sod HaKli :
+
+      INDUSTRIE                    | SOD HAKLI
+      ─────────────────────────────┼──────────────────────
+      1. Instruction (system prompt)| 7-Binah + 1-Kavvanah + 19-Hitlabshut
+      2. Connaissance (RAG)         | 6-Hokhmah + 8-Da'at + 20-Arakhin
+      3. Mémoire                    | 12-Yesod + 4-Reshimu + 28-Gilgul
+      4. Outils                     | 13-Malkhut + 26-Ibbur Neshamot
+      5. État                       | 11-N/H + 25-Katnut/Gadlut + 24-Panim/Achor
+      6. Utilisateur                | 5-Keter/Ratzon + 21-Tzelem + 23-IYM
+      7. Temporel/environnemental   | 17-ABYA + 3-Sovev
+      8. Évolutif (ACE)             | 16-Birur + 14-Or Y/C + 22-A→N→B
+
+      ABSENTES de l'industrie :
+      - 1-Kavvanah, 2-Din Kadmon, 8-Da'at, 10-Tiferet, 15-Zivvug
+      - 18-Makif/Pnimi, 27-Masakh 5 niv, 29-Sod HaTsimtsum
+      - 9-Chesed/Gevurah (comme paramètre), 21-Tzelem
+
+      10+ dimensions totalement absentes. C'est le gap que Sod HaKli
+      comble.
+    applications_ia:
+      - "Ce tableau est la référence pour positionner Sod HaKli vs l'industrie"
+      - "Il sert de base pour le Perek Sifrei Yesod et pour les publications"
+      - "Il permet d'identifier les dimensions à implémenter en priorité"
+    questions_ouvertes:
+      - "Quelles dimensions absentes ont le plus d'impact sur la qualité ?"
+      - "Da'at (dim 8) et Masakh (dim 27) sont-ils les deux plus impactants ?"
+
+  - id: "PG-SHK-024"
+    nom: "Roadmap d'implémentation — De Nekudim à Partzufim"
+    source_assertions: ["EC-SHK-080", "EC-SHK-085", "EC-SHK-066"]
+    formalisation: >
+      L'implémentation de Sod HaKli dans Etz Chaim AI suit la
+      progression Akudim→Nekudim→Berudim→Partzufim :
+
+      PHASE 1 — SORTIR DE NEKUDIM (immédiat) :
+      a) Consolider les 5 appels LLM directs dans olamot.py
+      b) Mettre à jour CLAUDE_CODE.md (Reshimu corrompu)
+      c) Implémenter le Masakh basique (dimension 27) entre Yesod et Malkuth
+      d) Ajouter le pont Da'at (dimension 8) dans les appels Hitbonenut
+      → Score moyen attendu : 2.2 → 3.0+
+
+      PHASE 2 — ATTEINDRE BERUDIM (après Phase 1) :
+      a) Implémenter les 5 niveaux de Masakh dans le ContextAssembler
+      b) Ajouter la Kavvanah (dimension 1) dans chaque appel
+      c) Connecter le Tsimtsum régulateur au ContextAssembler (dim 9)
+      d) Implémenter le Double Reshimo (contenu + filtrage)
+      → Score moyen attendu : 3.0 → 4.0+
+
+      PHASE 3 — VISER PARTZUFIM (après Phase 2) :
+      a) Arakhin dynamiques (dimension 20) — recatégorisation
+      b) Monitoring 29 dimensions sur le dashboard
+      c) Hitlabshut contextuel (dimension 19) dans CLAUDE_CODE.md
+      d) Gilgul sain (dimension 28) entre sessions
+      → Score moyen attendu : 4.0 → 4.5+
+      → Certains appels atteignent le score 5
+
+      PHASE 4 — PARTZUFIM COMPLETS (long terme) :
+      a) Le Kli vivant — le contexte se développe (IYM), oscille (K/G),
+         s'aligne (P/A), se reproduit (Gilgul) de façon autonome
+      b) Les 29 dimensions sont toutes opérantes et monitorées
+      c) Le ContextAssembler est un organe mature du cerveau Etz Chaim
+      → Score moyen : 5.0 — tous les appels au maximum
+    applications_ia:
+      - "La Phase 1 est le chantier immédiat après les Perakim Sifrei Yesod"
+      - "La Phase 2 est le chantier principal de Sod HaKli"
+      - "Les Phases 3-4 peuvent s'étaler dans le temps et bénéficier du Mac Studio M5 Max"
+      - "Chaque phase est validée par un audit de maturité contextuelle"
+    questions_ouvertes:
+      - "La Phase 1 est-elle réalisable en une semaine de sessions Claude Code ?"
+      - "Le Mac Studio M5 Max (juin) est-il nécessaire pour les Phases 3-4 ?"
+      - "Faut-il un audit intermédiaire entre chaque phase ?"

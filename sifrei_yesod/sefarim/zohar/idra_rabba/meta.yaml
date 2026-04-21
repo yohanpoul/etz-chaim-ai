@@ -1,0 +1,63 @@
+# ═══════════════════════════════════════════════════════════════════
+# Idra Rabba — אדרא רבא
+# Zohar III, Parashat Naso, folios 127b-145a (Vilna)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: zohar
+  parashah: Naso
+  idra: rabba
+  idra_name_he: "אדרא רבא"
+  folio_range: "Zohar III 127b-145a"
+  period_of_writing: "tannaïque supposé (IIe s.) ; rédaction XIIIe s. Castille"
+  language_primary: "aramaic_zoharic"
+  doctrinal_function: |
+    Grande assemblée de Rashbi et ses 9 disciples (Chevraia).
+    Dévoile la structure des Partzufim supérieurs, en particulier :
+    - Arikh Anpin (Ancien des Jours) — Gulgalta, Metzach, Eynin, Chotma, Dikna
+    - Ze'ir Anpin (Petit Visage) — préparé par les flux d'A"A via la Dikna
+    La Dikna (sections 11-22 Sefaria, folios 131b-135a) est le canal central
+    de transmission des 13 voies de l'Unité (Echad=Ahavah=13) vers ZA.
+
+  # Cross-référence folio_map.yaml pour mapping sections Sefaria ↔ folios Vilna
+  folio_map_ref: "folio_map.yaml"
+
+  sections:
+    # Sprint 10 scope (α)
+    section_03_tikkunei_dikna_13:
+      folios: "131b-135a"
+      sefaria_sections: "10-23"
+      status: in_progress_sprint10
+      doctrinal_theme: "les 13 Tikkunei Dikna d'A\"A"
+
+    # Sprint 11 scope (β)
+    section_01_ouverture:
+      folios: "127b-128a"
+      sefaria_sections: "1-4"
+      status: planned_sprint11
+    section_02_tikkunei_galgulta_9:
+      folios: "128b-130a"
+      sefaria_sections: "5-6"
+      status: planned_sprint11
+      note: "9 Tikkunei Gulgalta ≠ 13 Tikkunei Dikna — ne pas confondre"
+    section_04_metzach:
+      folios: "129b-130a"
+      sefaria_sections: "7"
+      status: planned_sprint11
+    section_05_eynin:
+      folios: "130a"
+      sefaria_sections: "8"
+      status: planned_sprint11
+    section_06_chotma:
+      folios: "130a-130b"
+      sefaria_sections: "9"
+      status: planned_sprint11
+    section_07_zeir_anpin_intro:
+      folios: "135a-145a"
+      sefaria_sections: "24-30"
+      status: planned_sprint11
+
+  source_edition_default: "Sefaria Mantua 1558 (CC-BY) + Stanford UP PDF araméen critique Matt Vol 8"
+  strates: ["base"]
+  transposed_by: "Claude Opus 4.7 + human reviewer — Sprint 10 Phase α (2026-04-20)"
+  version: 1

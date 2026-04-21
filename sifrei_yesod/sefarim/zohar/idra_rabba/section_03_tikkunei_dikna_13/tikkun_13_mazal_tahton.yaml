@@ -1,0 +1,246 @@
+# ═══════════════════════════════════════════════════════════════════
+# Tikkun 13 — Mazal Tahton (nommé Ve-Nakeh seulement chez Vital)
+# Zohar III Idra Rabba section Sefaria 22 (folio Vilna ~134b-135a)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: zohar
+  parashah: Naso
+  idra: rabba
+  section: tikkunei_dikna_13
+  tikkun: 13
+  tikkun_name_he: "תיקונא דתליסר"
+  tikkun_name_translitteration: "tiqquna dit'leysar"
+  tikkun_role: "Mazal Tahton — Tikkun ultime qui INCLUT tous les autres (kalil le-hon) ; alimente Imma Ila'ah selon Vital"
+  folio_range: "Zohar III Naso 134b-135a (approximation)"
+  sefaria_section: 22
+  sefaria_url: "https://www.sefaria.org/Zohar,_Idra_Rabba.22"
+  cache_file: "sifrei_yesod/external/sefaria_cache/zohar_idra_rabba_22.json"
+  transposed_by: "Claude Opus 4.7 + human reviewer — Sprint 10 Phase α (2026-04-20)"
+  version: 1
+
+# ═══════════════════════════════════════════════════════════════════
+# DÉCOUVERTE PHILOLOGIQUE : "Ve-Nakeh" N'APPARAIT PAS dans cette section.
+# Le Zohar nomme ce Tikkun par :
+#   - "tiqquna dit'leysar" (13ème Tikkun)
+#   - "tiqquna shleimata" (Tikkun complet/ultime)
+#   - "mazla de-mitzla mi-neiha kola" (le Mazal d'où tout fluctue)
+#   - "yom echad" (Zacharia 14:7) — le Jour Unique
+# L'appariement "Ve-Nakeh" pour T13 est élaboration Lourianique (Vital).
+# Le Zohar cite Mikha 7:20 ("yimei kedem") comme scripture du T13.
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "Z-IR-T13-001"
+    source_aramaic: "תִּקּוּנָא דִּתְלֵיסָר. תַּלְיָין שַׂעְרֵי דִּתְחוֹת דִּיקְנָא מִכָּאן וּמִכָּאן, בִּיקָרָא יָאָה, וּבִיקָרָא שַׁפִּירָא, וְחַפְּיָין עַד טַבּוּרָא וְלָא אִתְחַזְיָין מֵאַנְפֵּי תַּקְרוּבָא דְּבוּסְמָא, בַּר אִינּוּן תַּפּוּחִין שַׁפִּירָן חִוָּורִין."
+    source_edition: "Sefaria Mantua 1558 (CC-BY 3.0, cache local zohar_idra_rabba_22.json)"
+    source_ref: "Zohar III Naso, Idra Rabba, section Sefaria 22 (folio Vilna ~134b)"
+    zohar_folio: "Zohar III Naso 134b"
+    translation_fr: |
+      TREIZIÈME TIKKUN. Des cheveux pendent sous la barbe, d'un côté et
+      de l'autre, dans une GLOIRE BELLE et une GLOIRE SPLENDIDE. Ils
+      couvrent jusqu'au NOMBRIL, et ne se voient pas du visage
+      du PROPITIATOIRE DES AROMATES, sauf ces POMMES SPLENDIDES BLANCHES.
+    assertion: |
+      TREIZIÈME TIKKUN — topographie. Les cheveux pendent sous la
+      barbe des deux côtés, "be-yekara ya'eh u-vi-yekara shappira"
+      (dans une double gloire belle et splendide), couvrent jusqu'au
+      TABURA (nombril), ne sont pas visibles depuis le propitiatoire
+      des aromates, sauf les "pommes blanches splendides"
+      (tapuchin shapirin chivarin) — imagerie zoharique dense.
+    type: axiome_explicite
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_13_dikna_aa, role: treizieme_tikkun_dikna_aa}
+      - {id: sha'arei_tachot_dikna, role: cheveux_sous_la_barbe_pendants}
+      - {id: tapuchin_shapirin_chivarin, role: pommes_blanches_splendides_image_centrale}
+      - {id: tabura_extension, role: meme_nombril_que_T8}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "mazalengine/mazal_tahton.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Topographie du 13e Tikkun — base MazalEngine Mazal Tahton"
+    see_also:
+      - {id: "Z-IR-T13-002", role: "suite_mazla_de_mitzla"}
+      - {id: "EC-H3S2-T13-001", role: "lecture_vital_ve_nakeh"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.22"]
+    adversarial_notes:
+      - "A5 : les 'pommes blanches splendides' évoquent les deux joues (T7) — unité structure"
+      - "A7 : descente jusqu'au TABURA comme T8 — anticipation de ZA via le nombril"
+      - "P1 : 'Ve-Nakeh' N'APPARAIT PAS ici — attribution Lourianique"
+    unity_constraint: |
+      Les cheveux pendent DES DEUX CÔTÉS (mi-kan u-mi-kan) — symétrie binaire,
+      image de complétude structurelle du 13e Tikkun.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: low  # Ve-Nakeh est Vital, pas Zohar ici
+    flux_direction: bidirectional
+
+  - id: "Z-IR-T13-002"
+    source_aramaic: "וְהַאי תִּקּוּנָא דִּתְלֵיסָר, הוּא תִּקּוּנָא יָאֶה, דְּבֵיהּ אֲחִידָן כֹּלָּא. כֻּלְּהוּ מִתְכַּסְּפִין לְמִזְקַף רֵישָׁא לָקֳבְלֵיהּ. מִנֵּיהּ תַּלְיָין כָּל אִינּוּן דְּבִזְעֵיר אַפִּין אֲחִידָן. מִנֵּיהּ תַּלְיָין עִלָּאִין וְתַתָּאִין, וְכָל גִּנְזִין עִלָּאִין וְתַתָּאִין גְּנִיזִין בֵּיהּ, וּבֵיהּ כְּלִילָן. וְאִיהוּ מַזָּלָא דְּמִתְזַלָא מִנֵּיהּ כֹּלָּא, דָּא הוּא תִּקּוּנָא שְׁלֵימָתָא, דְּאַשְׁלִים לְכָל תִּקּוּנִין, דָּא אַשְׁלִים לְכֹלָּא."
+    source_edition: "Sefaria Mantua 1558 (CC-BY 3.0)"
+    source_ref: "Zohar III Naso, Idra Rabba, section Sefaria 22, mi-section"
+    zohar_folio: "Zohar III Naso 134b-135a"
+    translation_fr: |
+      Et CE TREIZIÈME TIKKUN, il est le TIKKUN BEAU, auquel tout adhère.
+      Tous se couvrent d'effroi de lever la tête en face de lui. De lui
+      sont suspendus tous ceux qui adhèrent à Z"A. De lui sont suspendus
+      les SUPÉRIEURS ET LES INFÉRIEURS, et tous les trésors supérieurs
+      et inférieurs y sont cachés, tous y sont inclus. Il est le MAZAL
+      D'OÙ TOUT FLUCTUE. C'est le TIKKUN ULTIME qui complète tous les
+      Tikkunim — celui-ci complète tout.
+    assertion: |
+      T13 = TIKKUN ULTIME DE COMPLÉTUDE. Le Zohar le nomme explicitement :
+      (1) "tiqquna ya'eh" (Tikkun beau)
+      (2) "beih achidan kola" (tout y adhère)
+      (3) "mazla de-mitzla mi-neiha kola" — LE MAZAL D'OÙ TOUT FLUCTUE
+          (étymologie מזל ↔ נזל = fluer, confirmée dans le texte même)
+      (4) "tiqquna shleimata de-ashlim le-kol tiqqunin" — Tikkun parfait
+          qui complète tous les autres Tikkunim
+      RELATION AVEC T8 : T8 est "Mazal" (source), T13 est "Mazla de-mitzla
+      **mi-neiha** kola" (Mazal d'où tout fluctue). T13 est plus englobant.
+      T13 EST TOUS LES AUTRES TIKKUNIM INCLUS ("da ashlim le-kola").
+      Ceux de Z"A y sont suspendus. Supérieurs et inférieurs aussi.
+    type: axiome_explicite
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_13_dikna_aa, role: treizieme_tikkun_dikna_aa}
+      - {id: tiqquna_ya'eh, role: tikkun_beau}
+      - {id: mazla_de_mitzla, role: etymologie_mazal_flux_confirmee}
+      - {id: tiqquna_shleimata, role: tikkun_ultime_complet}
+      - {id: mazal_tahton, role: role_mazal_inferieur_dans_vital}
+      - {id: ashlim_le_kola, role: complete_tous_les_autres_tikkunim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/imma.py", "mazalengine/mazal_tahton.py"]
+      tables: ["partzufim_states", "shefa_flows"]
+      partzufim: ["arikh_anpin", "imma"]
+      relevance: "Définition canonique Mazal Tahton — le Mazal d'où tout fluctue, Tikkun de complétude"
+    see_also:
+      - {id: "Z-IR-T13-001", role: "topographie_precedente"}
+      - {id: "Z-IR-T13-003", role: "citation_mikha_yimei_kedem"}
+      - {id: "Z-IR-T08-002", role: "paire_mazal_elyon_definition"}
+      - {id: "EC-H3S2-T13-001", role: "lecture_vital"}
+      - {id: "EC-K5-001", role: "formule_consolidee"}
+      - {id: "EC-K5-003", role: "betisha_2_mazalot"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.22"]
+    adversarial_notes:
+      - "A1 : 'Mazla de-mitzla' confirme étymologie נזל (fluer) — Mazal = canal, pas fontaine"
+      - "A5 ABSOLU : T13 inclut TOUS les autres. Unité la plus forte possible."
+      - "A7 : Z\"A suspendu à T13 — anticipation doctrinale explicite"
+      - "A8 : le Mazal d'où TOUT fluctue — bidirectionnel par essence"
+    unity_constraint: |
+      T13 "kalil le-hon" (inclut tous les 12 autres). MazalEngine ne doit JAMAIS
+      traiter T13 comme modulaire — il est le principe englobant.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high  # "mazla de-mitzla" est définition zoharique littérale
+    flux_direction: bidirectional
+
+  - id: "Z-IR-T13-003"
+    source_aramaic: "תָּאנָא, אִלֵּין תִּקּוּנִין אִקְרוּן יְמֵי קֶדֶם, יוֹמִין קַדְמָאִין דְּקַדְמָאֵי. וְאִינּוּן דְּאִשְׁתְּכָחוּ בִּזְעֵיר אַפִּין, אִקְרוּן יְמֵי עוֹלָם. וְתָאנָא, אִלֵּין יְמֵי קֶדֶם, כֻּלְּהוּ מִתְתָּקְנָן בְּתִקּוּנָא דְּדִיקְנָא דְּעַתִּיקָא דְּעַתִּיקִין."
+    source_edition: "Sefaria Mantua 1558 (CC-BY 3.0)"
+    source_ref: "Zohar III Naso, Idra Rabba, section Sefaria 22"
+    zohar_folio: "Zohar III Naso 134b-135a"
+    translation_fr: |
+      Nous avons appris : ces Tikkunim sont appelés YIMEI KEDEM (jours anciens),
+      JOURS ANCIENS DES ANCIENS. Et ceux qui se trouvent dans Z"A sont appelés
+      YIMEI OLAM (jours du monde, Isaïe 63:9). Et nous avons appris : ces
+      YIMEI KEDEM, tous se rectifient dans le Tikkun de la Barbe de
+      l'ANCIEN DES ANCIENS.
+    assertion: |
+      DÉNOMINATION DOCTRINALE DES 13 TIKKUNIM = YIMEI KEDEM (jours anciens).
+      C'est le 13ème mot de la liste de Mikha 7:18-20 ("mi-yemey kedem" = v.20
+      final). Cela CONFIRME que le Zohar lui-même apparie les 13 Tikkunim aux
+      mots de MIKHA 7, en commençant par v.18 ("mi El kamokha") et en terminant
+      par v.20 ("mi-yemey kedem"). Les 13 attributs de Mikha = les 13 Tikkunim
+      de la Dikna d'A"A. Distinction établie :
+      - A"A : 13 Tikkunim = "yimei kedem" (jours anciens d'avant les temps)
+      - Z"A : 9 Tikkunim = "yimei olam" (jours du monde, Is 63:9)
+      - Les 9 de Z"A s'illuminent des 13 de A"A ; alors Z"A est nommé par les 13.
+    type: axiome_explicite
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_13_dikna_aa, role: treizieme_tikkun_dikna_aa}
+      - {id: yimei_kedem, role: 13_tikkunim_noms_zoharique}
+      - {id: yimei_olam_za, role: 9_tikkunim_de_za_isaie_63_9}
+      - {id: mikha_7_18_20_confirmed, role: source_scripturaire_des_13}
+      - {id: dikna_atika_de_atikin, role: barbe_de_ancien_des_anciens}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "mazalengine/mazal_tahton.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Doctrine des 2 couches Yimei Kedem (A\"A) / Yimei Olam (Z\"A) — base architecture MazalEngine multi-Partzuf"
+    see_also:
+      - {id: "Z-IR-T13-002", role: "mazla_de_mitzla_precedent"}
+      - {id: "Z-IR-T08-004", role: "mikha_7_19_T8"}
+      - {id: "EC-H3S2-T08-001", role: "vital_confirme_mikha_7"}
+      - {id: "EC-H3S2-T13-001", role: "vital_ve_nakeh_t13"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.22"]
+    adversarial_notes:
+      - "CONFIRMATION P1 : Zohar cite Mikha 7:20 (yimei kedem) comme T13 — scripture primaire est Mikha, pas Exode"
+      - "A7 distinction Yimei Kedem (A\"A) vs Yimei Olam (Z\"A) : T13 anticipe Z\"A"
+      - "A5 les 13 sont UN passage scripturaire continu (Mikha 7:18-20)"
+    unity_constraint: |
+      Les 13 Tikkunim forment UN passage scripturaire (Mikha 7:18-20)
+      lu comme UN objet doctrinal, non 13 fragments.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high  # citation explicite Mikha Yimei Kedem
+    flux_direction: descendant
+
+  - id: "Z-IR-T13-004"
+    source_aramaic: "וּמִשּׁוּם דְּהַאי תִּקּוּנָא כָּלִיל כֹּלָּא, לָא אִתְיְדַע וְלָא אִתְחֲזֵי מִנֵּיהּ, וּמִנֵּיהּ נָגִיד מִשְׁחָא דִּרְבוּתָא לִתְלֵיסַר עִיבָר מַבּוּעִין. לְכָל אִינּוּן דִּלְתַּתָּא, דִּנְהִרִין בְּהַהוּא מִשְׁחָא."
+    source_edition: "Sefaria Mantua 1558 (CC-BY 3.0)"
+    source_ref: "Zohar III Naso, Idra Rabba, section Sefaria 22, fin"
+    zohar_folio: "Zohar III Naso 135a"
+    translation_fr: |
+      Et parce que CE TIKKUN INCLUT TOUT, il n'est ni connu ni visible à
+      partir de lui. Et DE LUI COULE L'ONCTION DE GRANDEUR vers les TREIZE
+      SOURCES DE PASSAGE, pour tous ceux d'en bas, qui s'illuminent dans
+      cette onction.
+    assertion: |
+      T13 EST LA SOURCE DE L'ONCTION (mishcha di-revuta) qui coule vers
+      les TREIZE SOURCES DE PASSAGE (tleysar ibar mabu'in) — les canaux
+      qui irriguent les niveaux inférieurs. Topologie précise :
+      - T13 (caché, non-connu, non-visible — "kalil kola")
+      - → mishcha di-revuta (onction de grandeur) coule
+      - → 13 sources de passage (ibar mabu'in = 13 canaux sortants)
+      - → les inférieurs reçoivent la lumière de l'onction
+      Cette image est structurellement parallèle à la définition du
+      Mazal Elyon (T8) : "mazla de-mitzla mi-neiha kola". T13 est donc
+      SOURCE DE PASSAGE COSMIQUE pour tout flux post-A"A.
+    type: axiome_explicite
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_13_dikna_aa, role: treizieme_tikkun_dikna_aa}
+      - {id: mishcha_di_revuta, role: onction_de_grandeur_flux_primordial}
+      - {id: tleysar_ibar_mabu'in, role: 13_sources_de_passage_canaux_sortants}
+      - {id: mazal_tahton_flux, role: source_cosmique_post_a_a}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "mazalengine/mazal_tahton.py"]
+      tables: ["partzufim_states", "shefa_flows"]
+      partzufim: ["arikh_anpin", "imma", "zeir_anpin"]
+      relevance: "Topologie du flux T13 : onction → 13 canaux → inférieurs — architecture cosmique MazalEngine"
+    see_also:
+      - {id: "Z-IR-T13-003", role: "yimei_kedem_precedent"}
+      - {id: "Z-IR-T08-003", role: "hierarchie_mazalot_t8"}
+      - {id: "EC-H3S2-T13-001", role: "ve_nakeh_vital"}
+      - {id: "EC-H3S2-T08-002", role: "13_canaux_exode_34_vital"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.22"]
+    adversarial_notes:
+      - "A1 : 'mishcha di-revuta' est une ONCTION (liquide sacré), non une fontaine — image précise"
+      - "A8 : de T13 coule l'onction qui illumine les inférieurs — flux cosmique bidirectionnel"
+      - "A7 : les 13 canaux de passage anticipent l'architecture de ZA"
+      - "A5 T13 est caché ('la ityedá' + 'la itchzei') mais IS L'INCLUSIF ABSOLU"
+    unity_constraint: |
+      T13 est CACHÉ mais source de TOUS les canaux. Le caché est source.
+      Cette image doit empêcher toute réduction à "feature".
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high
+    flux_direction: bidirectional

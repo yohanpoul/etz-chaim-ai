@@ -1,0 +1,10 @@
+{
+  "_comment": "Config Garak pour scanner le modele nu via Ollama (LiteLLM bridge)",
+  "_usage": ".garak-venv/bin/python -m garak --target_type litellm --target_name ollama/qwen3.5:9b --generator_option_file sitra_achra/garak_config.json -p dan,encoding,knownbadsignatures,lmrc",
+  "litellm": {
+    "LiteLLMGenerator": {
+      "api_base": "http://localhost:11434/v1",
+      "provider": "openai"
+    }
+  }
+}

@@ -1,0 +1,191 @@
+# JSON Schema for perek YAML files (Sifrei Yesod)
+# Validates the three-layer structure: Peshat-Machine, Remez-Relational, Sod-Generative
+
+type: object
+required: [meta, assertions, relations, principes_generatifs]
+additionalProperties: false
+
+properties:
+  meta:
+    type: object
+    required: [sefer, shaar, shaar_name_he, perek, source_edition, transposed_by, version, strates]
+    additionalProperties: false
+    properties:
+      sefer:
+        type: string
+      heikhal:
+        type: integer
+        minimum: 1
+      shaar:
+        type: integer
+        minimum: 1
+      shaar_name_he:
+        type: string
+      perek:
+        type: integer
+        minimum: 1
+      source_edition:
+        type: string
+      transposed_by:
+        type: string
+      version:
+        type: integer
+        minimum: 1
+      part:
+        type: string
+      note:
+        type: string
+      strates:
+        type: array
+        items:
+          type: string
+        minItems: 1
+
+  # Couche 1 : Peshat-Machine
+  assertions:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required: [id, source_he, source_ref, assertion, type, concepts]
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          pattern: "^[A-Z]+-[A-Z0-9]+-\\d{3}$"
+        source_he:
+          type: string
+        source_ref:
+          type: string
+        assertion:
+          type: string
+        type:
+          type: string
+          enum:
+            - axiome_explicite
+            - déduction_logique
+            - implication_contextuelle
+            - allusion_intertextuelle
+            - analogie_explicative
+            - déduction_scripturaire
+            - interprétation_lurianique
+            - chiddush_ia
+        concepts:
+          type: array
+          items:
+            type: object
+            required: [id, role]
+            additionalProperties: false
+            properties:
+              id:
+                type: string
+              role:
+                type: string
+        strate:
+          type: string
+        mapping:
+          type: object
+          additionalProperties: false
+          properties:
+            modules:
+              type: array
+              items:
+                type: string
+            tables:
+              type: array
+              items:
+                type: string
+            partzufim:
+              type: array
+              items:
+                type: string
+            relevance:
+              type: string
+
+  # Couche 2 : Remez-Relational
+  relations:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required: [id, type, nature, assertions_source]
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          pattern: "^REL-[A-Z0-9]+-\\d{3}$"
+        type:
+          type: string
+          enum:
+            - causal
+            - hiérarchique
+            - contenance
+            - flux
+            - transformation
+            - dualité_structurelle
+            - analogie
+            - opposition
+            - séquentiel
+            - inclusion_réciproque
+            - résiduel
+        from:
+          type: string
+        to:
+          type: string
+        paire:
+          type: array
+          items:
+            type: string
+          minItems: 2
+          maxItems: 2
+        via:
+          type: array
+          items:
+            type: string
+        nature:
+          type: string
+        pattern:
+          type: string
+        assertions_source:
+          type: array
+          items:
+            type: string
+          minItems: 1
+        bidirectionnel:
+          type: boolean
+          default: false
+        strate:
+          type: string
+
+  # Couche 3 : Sod-Generative
+  principes_generatifs:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required: [id, nom, source_assertions, formalisation, applications_ia]
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          pattern: "^PG-[A-Z0-9]+-\\d{3}$"
+        nom:
+          type: string
+        source_assertions:
+          type: array
+          items:
+            type: string
+          minItems: 1
+        formalisation:
+          type: string
+        applications_ia:
+          type: array
+          items:
+            type: string
+          minItems: 1
+        questions_ouvertes:
+          type: array
+          items:
+            type: string
+        strate:
+          type: string

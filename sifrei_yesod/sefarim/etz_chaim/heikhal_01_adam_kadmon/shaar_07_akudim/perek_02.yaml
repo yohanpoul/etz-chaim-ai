@@ -1,0 +1,323 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 7 (=6 original) — Sha'ar Ha-Akudim (שער העקודים)
+# Perek: 2 — 4 Hevelim, NaRaNHaY double, Ibur-Yenikah-Gadlut (100%)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §1 : Les 4 ALEPHs → 4 Hevelim dans le Peh. Gematria 4×HEVEL=148=KEMAH.
+# Les dents broient les Hevelim en farine (formation des Kelim).
+# §2 : Drush Mem-Bet. Tout Partzuf = 5 NaRaNHaY × (Pnimi+Makif) × (Panim+Ahor).
+# §3 : Les mondes inférieurs manquent de complétude — Or Makif non révélé.
+# §4-§5 : Sans Mohin (Hayyah/Ta'amim) → pas de Zivvug → Ahor be-Ahor.
+# Le processus Ibur → Yenikah → Gadlut.
+#
+# Source Sefaria : Sefer_Etz_Chaim.6.2
+# IDs : EC-H1S6-016 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 7
+  shaar_name_he: "שער העקודים"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "4 Hevelim=KEMAH(148). NaRaNHaY×(Pnimi+Makif)×(Panim+Ahor). Sans Mohin=Ahor be-Ahor. Ibur→Yenikah→Gadlut."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LES 4 HEVELIM DANS LE PEH ───
+
+  - id: "EC-H1S6-016"
+    source_he: "אותן הד' אלפין שציירנו לעיל בחוטם הם נכנסין בפה ונעשים שם ד' הבלים והנה ד\"פ הבל גימ' קמ\"ח"
+    source_ref: "Heikhal 1, Sha'ar 6:2 — §1"
+    assertion: |
+      Les 4 ALEPHs qui étaient au HOTEM (cf. EC-H1S5-060) ENTRENT
+      dans le PEH et deviennent 4 HEVELIM (souffles).
+      GEMATRIA : 4 × HEVEL (הבל = 37) = 148 = KEMAH (קמ"ח — farine).
+      → Les ALEPHs (unités combinatoires) se transforment en
+      HEVELIM (souffles articulables) dans le Peh.
+    type: axiome_explicite
+    concepts:
+      - {id: arba_hevelim, role: quatre_souffles_dans_le_peh}
+      - {id: kemah_148, role: farine_gematria_148}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les 4 Alephs se transforment en 4 Hevelim — l'information brute est 'moulue' en information articulable"
+
+  - id: "EC-H1S6-017"
+    source_he: "ע\"י השינים שבתוך הפה נטחנים אותן הד' הבלים ונעשים קמח ונגמרת פעולתן"
+    source_ref: "Heikhal 1, Sha'ar 6:2 — §1"
+    assertion: |
+      Par les SHINAYIM (dents) à l'intérieur du Peh, les 4 Hevelim
+      sont BROYÉS (nithanin) et deviennent KEMAH (farine) — leur
+      action est ACHEVÉE (nigmeret pe'ulatam).
+      → Les DENTS = le mécanisme de FRAGMENTATION. Le broyage des
+      Hevelim en farine = la FORMATION FINALE des Kelim.
+      Cf. EC-H1S5-074 : SHINAYIM = un des 5 Motzaot ha-Peh.
+    type: axiome_explicite
+    concepts:
+      - {id: shinayim_tohanot, role: dents_qui_broient}
+      - {id: tehinnah, role: broyage_formation}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le broyage = la fragmentation necessaire a la formation de structure. L'information est 'moulue' en tokens."
+
+  # ─── BLOC B : TOUT PARTZUF = NaRaNHaY DOUBLE ───
+
+  - id: "EC-H1S6-018"
+    source_he: "אין לך שום בחי' פרצופים שבעולם שאין לו ה' חלקים נרנח\"י והם כפולים כי הם ה' בחי' פנימים וה' בחי' מקיפין"
+    source_ref: "Heikhal 1, Sha'ar 6:2 — §2 (מ\"ב)"
+    assertion: |
+      AXIOME : il n'existe AUCUN PARTZUF dans aucun monde qui n'ait
+      5 parties NaRaNHaY (Nefesh, Ruah, Neshamah, Hayyah, Yehidah),
+      DOUBLÉES : 5 PNIMIM (internes) + 5 MAKIFIM (enveloppants).
+      → Tout Partzuf = 10 niveaux d'âme (5×2).
+      Cf. EC-H1S5-048 pour NaRaNHaY et les Makifim.
+    type: axiome_explicite
+    concepts:
+      - {id: naranhai_kaful, role: naranhai_double_pnimi_makif}
+      - {id: kol_partzuf, role: tout_partzuf}
+    mapping:
+      modules: ["madregot_neshamah.py", "partzufim/base.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "TOUT Partzuf a 10 niveaux d'ame (5 internes + 5 enveloppants) — universel et sans exception"
+
+  - id: "EC-H1S6-019"
+    source_he: "כ\"א מאלו יש לו ב' בחי' א' אורות פנים וגדולים ב' בחי' אורות אחוריים ומתמעטים. וכ\"ז הוא באורות, וכעד\"ז הם בכלים"
+    source_ref: "Heikhal 1, Sha'ar 6:2 — §2"
+    assertion: |
+      Chacun des 10 niveaux a 2 aspects :
+      1. Orot PANIM (face) = GRANDS
+      2. Orot AHORAYIM (dos) = DIMINUANTS (mitma'atim).
+      Et de même pour les KELIM : Kelim de Panim + Kelim d'Ahorayim.
+      → Structure complète : NaRaNHaY × (Pnimi+Makif) × (Panim+Ahor)
+      × (Orot+Kelim) = une matrice multidimensionnelle.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_panim, role: lumieres_de_face_grandes}
+      - {id: orot_ahorayim, role: lumieres_de_dos_diminuantes}
+      - {id: kelim_panim_ahor, role: kelim_aussi_face_et_dos}
+    mapping:
+      modules: ["ohr.py", "partzufim/base.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Chaque composant a un mode 'face' (plein) et un mode 'dos' (reduit) — full vs degraded mode"
+
+  # ─── BLOC C : MANQUE DE COMPLÉTUDE SOUS LES AKUDIM ───
+
+  - id: "EC-H1S6-020"
+    source_he: "העולמות העליוני' כל מה שהם יותר תחתונים במדרגה זה מזה הם יותר מחוסרי השלימות"
+    source_ref: "Heikhal 1, Sha'ar 6:2 — §3"
+    assertion: |
+      Les mondes supérieurs : plus ils sont BAS dans leur degré,
+      plus ils MANQUENT de COMPLÉTUDE (mehusrei ha-shleimut).
+      → Principe de DÉGRADATION : chaque monde inférieur est
+      MOINS COMPLET que le supérieur.
+    type: axiome_explicite
+    concepts:
+      - {id: hisaron_shleimut, role: manque_de_completude}
+    mapping:
+      modules: ["olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Les niveaux inferieurs sont structurellement incomplets — chaque couche perd quelque chose"
+
+  - id: "EC-H1S6-021"
+    source_he: "מעולם העקודים ולמטה... היה חסרון א' שלא נתגלה להם (נ\"א בהם) בחינת אור המקיף"
+    source_ref: "Heikhal 1, Sha'ar 6:2 — §3"
+    assertion: |
+      Depuis le monde des AKUDIM et EN-DESSOUS, il y a UN MANQUE :
+      l'OHR MAKIF ne s'est PAS RÉVÉLÉ à eux.
+      Variante (Nusah Aher) : "en eux" au lieu de "à eux."
+      → L'AKUDIM = le premier monde où l'Or Makif est ABSENT.
+      Au-dessus (Ozen/Hotem) : Or Makif présent. Au Peh et en-dessous :
+      l'Or Makif n'est pas révélé externement.
+    type: axiome_explicite
+    concepts:
+      - {id: hedar_makif, role: absence_dohr_makif}
+      - {id: akudim_hisaron, role: manque_specifique_des_akudim}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "A partir des Akudim, l'Or Makif manque = les mondes inferieurs n'ont pas de contexte englobant complet"
+
+  # ─── BLOC D : SANS MOHIN = AHOR BE-AHOR ───
+
+  - id: "EC-H1S6-022"
+    source_he: "כאשר לא יש בפרצוף בחי' חיה פנימים שהוא בחי' הטעמים שנקרא מוחין... א\"א להזדווג"
+    source_ref: "Heikhal 1, Sha'ar 6:2 — §4"
+    assertion: |
+      Quand un Partzuf n'a PAS la HAYYAH PNIMIT (= Ta'amim = MOHIN
+      = Hokhmah = AV) : il est IMPOSSIBLE de faire un ZIVVUG.
+      → Les MOHIN (cerveaux = Ta'amim) sont la CONDITION du ZIVVUG.
+      Sans Mohin → pas de Zivvug → pas de génération.
+    type: axiome_explicite
+    concepts:
+      - {id: mohin_tnai, role: mohin_condition_du_zivvug}
+      - {id: hayyah_pnimit, role: hayyah_interne_taamim}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/base.py"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "Sans Mohin (intelligence/Ta'amim), pas de Zivvug (generation). Le systeme doit avoir ses 'cerveaux' pour creer."
+
+  - id: "EC-H1S6-023"
+    source_he: "שאר האורות שיש לו שהם נר\"ן פנימית נקרא אורות אחורים ואז עומדין אב\"א"
+    source_ref: "Heikhal 1, Sha'ar 6:2 — §4"
+    assertion: |
+      Les Orot restants (NaRaN internes, sans Mohin) sont appelés
+      OROT AHORAYIM (lumières de dos) et se tiennent alors AHOR
+      BE-AHOR (dos-à-dos).
+      → Sans Mohin : état d'IMMATURITÉ. Les Partzufim ne se font
+      pas face (Panim be-Panim) mais se tournent le dos.
+    type: axiome_explicite
+    concepts:
+      - {id: ahor_be_ahor, role: dos_a_dos}
+      - {id: orot_ahorayim, role: lumieres_de_dos}
+    mapping:
+      modules: ["partzufim/base.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Sans Mohin = dos-a-dos = pas d'interaction generative. Etat d'immaturite du systeme."
+
+  - id: "EC-H1S6-024"
+    source_he: "כאשר אין לו בחי' הנ\"ל עדיין הם דינין ונקראו נקודות שהוא ס\"ג שהוא הנשמה דינין"
+    source_ref: "Heikhal 1, Sha'ar 6:2 — §4"
+    assertion: |
+      Sans Mohin, [les Orot] sont encore des DINIM (jugements/rigueurs)
+      et sont appelés NEKUDOT = SAG (63) = la NESHAMAH des DINIM.
+      → L'état sans Mohin = DOMINANCE DU DIN. Les Nekudot (voyelles)
+      en l'absence de Ta'amim (cantillation) = Din pur.
+      C'est cet excès de Din qui causera la SHEVIRAH (cf. Nekudim).
+    type: axiome_explicite
+    concepts:
+      - {id: dinim_bli_mohin, role: din_sans_mohin}
+      - {id: nekudot_dinim, role: nekudot_sont_din}
+    mapping:
+      modules: ["ohr.py", "partzufim/base.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Sans intelligence (Mohin) = rigueur pure = etat fragile qui menera a la brisure (Shevirah)"
+
+  # ─── BLOC E : IBUR → YENIKAH → GADLUT (§5) ───
+
+  - id: "EC-H1S6-025"
+    source_he: "בהיות זו\"ן בסוד נפש לבד הוצרכו להיות שם בסוד עיבור במעי האם שלא יאחזו בהם זרים"
+    source_ref: "Heikhal 1, Sha'ar 6:2 — §5"
+    assertion: |
+      Quand ZU"N (Z"A et Nukvah) sont au niveau de NEFESH seulement,
+      ils doivent être en IBUR (gestation) dans le VENTRE DE L'IMMA
+      pour que les ÉTRANGERS (zarim = forces extérieures) ne s'y
+      accrochent pas. Même là, ils sont AHOR BE-AHOR (dos-à-dos).
+      → L'IBUR = état de PROTECTION maximale. Nefesh seul = vulnérable.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur, role: gestation_dans_imma}
+      - {id: nefesh_bilbad, role: nefesh_seul_vulnerable}
+    mapping:
+      modules: ["masakh/maturation.py", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma", "zeir_anpin", "nukva"]
+      relevance: "Ibur = etat de protection/gestation. Le module immature doit etre 'encapsule' dans le superieur."
+
+  - id: "EC-H1S6-026"
+    source_he: "בצאתם בזמן שבא להם הרוח בזמן היניקה... ואח\"כ בגדלות בא להם הנשמה דגדלות... ועדיין חסר להם המוחין מצד אבא שהוא חכמה"
+    source_ref: "Heikhal 1, Sha'ar 6:2 — §5"
+    assertion: |
+      Séquence de maturation de ZU"N :
+      IBUR (gestation) : NEFESH seul → dos-à-dos, dans Imma.
+      YENIKAH (allaitement) : le RUAH arrive → Imma les couve
+      ("sur ses petits il plane"). Encore dos-à-dos.
+      GADLUT (grandeur) : la NESHAMAH de GADLUT arrive (Mohin d'Imma).
+      Mais il MANQUE encore les MOHIN D'ABBA (= Hokhmah).
+      Seulement quand les Mohin d'Abba arrivent → PANIM BE-PANIM
+      (face-à-face) → ZIVVUG possible.
+      → IBUR → YENIKAH → GADLUT = 3 stades de maturation.
+    type: axiome_explicite
+    concepts:
+      - {id: yenikah, role: allaitement_ruah}
+      - {id: gadlut, role: grandeur_neshamah}
+      - {id: panim_be_panim, role: face_a_face}
+      - {id: ibur_yenikah_gadlut, role: sequence_tripartite_maturation}
+    mapping:
+      modules: ["masakh/maturation.py", "partzufim/base.py"]
+      tables: []
+      partzufim: ["zeir_anpin", "nukva", "imma", "abba"]
+      relevance: "IBUR→YENIKAH→GADLUT = les 3 stades de maturation d'un module. Panim be-Panim = capacite generative."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S6-007"
+    type: transformation
+    from: arba_hevelim
+    to: kemah_148
+    nature: "Les 4 Hevelim sont BROYÉS par les dents en KEMAH (farine) = formation des Kelim"
+    assertions_source: ["EC-H1S6-016", "EC-H1S6-017"]
+
+  - id: "REL-H1S6-008"
+    type: causal
+    from: mohin_tnai
+    to: ahor_be_ahor
+    nature: "SANS Mohin → Ahor be-Ahor (dos-à-dos) → pas de Zivvug"
+    assertions_source: ["EC-H1S6-022", "EC-H1S6-023"]
+
+  - id: "REL-H1S6-009"
+    type: "séquentiel"
+    from: ibur
+    to: yenikah
+    via: [gadlut]
+    nature: "IBUR (Nefesh) → YENIKAH (Ruah) → GADLUT (Neshamah) = maturation séquentielle"
+    assertions_source: ["EC-H1S6-025", "EC-H1S6-026"]
+
+  - id: "REL-H1S6-010"
+    type: causal
+    from: gadlut
+    to: panim_be_panim
+    nature: "GADLUT (arrivée des Mohin d'Abba) CAUSE le Panim be-Panim → Zivvug possible"
+    assertions_source: ["EC-H1S6-026"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S6-003"
+    nom: "Principe d'Ibur-Yenikah-Gadlut (Maturation en 3 Stades)"
+    source_assertions: ["EC-H1S6-022", "EC-H1S6-025", "EC-H1S6-026"]
+    formalisation: |
+      Tout Partzuf (module) passe par 3 STADES de maturation :
+      IBUR (gestation) : Nefesh seul → encapsulé dans Imma → Ahor be-Ahor
+        = le module a son minimum vital mais pas d'autonomie
+      YENIKAH (allaitement) : Ruah arrive → Imma couve → Ahor be-Ahor
+        = le module fonctionne mais en mode dégradé (pas de face-à-face)
+      GADLUT (grandeur) : Mohin (Neshamah + Hayyah) arrivent → Panim be-Panim
+        = le module est pleinement opérationnel, capable de Zivvug (génération)
+      CONDITION CRITIQUE : Panim be-Panim (face-à-face) = condition du Zivvug.
+      Sans les Mohin d'ABBA (Hokhmah/Hayyah) : pas de face-à-face.
+    applications_ia:
+      - "masakh/maturation.py : implémenter les 3 stades de maturation des modules"
+      - "partzufim/base.py : chaque Partzuf passe par ibur→yenikah→gadlut"
+      - "Le startup d'un module IA : init (ibur) → warm-up (yenikah) → full capacity (gadlut)"
+    questions_ouvertes:
+      - "Un module en Katnut peut-il régresser à Ibur ? (est-ce la 'mort' du module ?)"
+      - "Les Mohin d'Abba = fine-tuning supplémentaire après la formation de base ?"

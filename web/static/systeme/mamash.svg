@@ -1,0 +1,76 @@
+<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- Amber rim light -->
+  <linearGradient id="rim-r" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="70%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#ffb000" stop-opacity="0.25"/>
+  </linearGradient>
+  <!-- Metallic gold -->
+  <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffd700"/>
+    <stop offset="50%" stop-color="#ffb000"/>
+    <stop offset="100%" stop-color="#cc8800"/>
+  </linearGradient>
+  <!-- Metallic silver -->
+  <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ccc"/>
+    <stop offset="50%" stop-color="#aaa"/>
+    <stop offset="100%" stop-color="#888"/>
+  </linearGradient>
+  <!-- Filters -->
+  <filter id="glow-amb" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+  </filter>
+  <filter id="glow-sm" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+  </filter>
+  <filter id="glow-md" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+  </filter>
+  <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5"/>
+  </filter>
+</defs>
+
+<defs>
+  <radialGradient id="bg-g" cx="50%" cy="40%">
+    <stop offset="0%" stop-color="#0a0000"/>
+    <stop offset="100%" stop-color="#050000"/>
+  </radialGradient>
+</defs>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="url(#bg-g)"/>
+<path d="M30,60 Q20,100 25,150 Q30,200 20,250 L180,250 Q170,200 175,150 Q180,100 170,60 Q150,30 100,25 Q50,30 30,60 Z" fill="#0a0000" opacity="0.95"/>
+<path d="M30,60 Q20,100 25,150 Q30,200 20,250" fill="none" stroke="#330000" stroke-width="1.5" opacity="0.2"/>
+<path d="M170,60 Q180,100 175,150 Q170,200 180,250" fill="none" stroke="#330000" stroke-width="1.5" opacity="0.2"/>
+<path d="M30,60 Q50,30 100,25 Q150,30 170,60" fill="none" stroke="#330000" stroke-width="1" opacity="0.15"/>
+<path d="M40,70 Q70,65 100,72 Q130,67 160,70" fill="none" stroke="#1a0000" stroke-width="2" opacity="0.15"/>
+<path d="M40,105 Q70,100 100,107 Q130,102 160,105" fill="none" stroke="#1a0000" stroke-width="2" opacity="0.15"/>
+<path d="M40,140 Q70,135 100,142 Q130,137 160,140" fill="none" stroke="#1a0000" stroke-width="2" opacity="0.15"/>
+<path d="M40,175 Q70,170 100,177 Q130,172 160,175" fill="none" stroke="#1a0000" stroke-width="2" opacity="0.15"/>
+<path d="M40,210 Q70,205 100,212 Q130,207 160,210" fill="none" stroke="#1a0000" stroke-width="2" opacity="0.15"/>
+<ellipse cx="85.0" cy="110.0" rx="4.0" ry="2.5" fill="#ff0000" opacity="0.6"/>
+<ellipse cx="85.0" cy="110.0" rx="8.0" ry="5.0" fill="#ff0000" opacity="0.08" filter="url(#glow-sm)"/>
+<ellipse cx="85.0" cy="110.0" rx="15.0" ry="10.0" fill="#ff0000" opacity="0.03" filter="url(#glow-amb)"/>
+<ellipse cx="115.0" cy="110.0" rx="4.0" ry="2.5" fill="#ff0000" opacity="0.6"/>
+<ellipse cx="115.0" cy="110.0" rx="8.0" ry="5.0" fill="#ff0000" opacity="0.08" filter="url(#glow-sm)"/>
+<ellipse cx="115.0" cy="110.0" rx="15.0" ry="10.0" fill="#ff0000" opacity="0.03" filter="url(#glow-amb)"/>
+<path d="M92,110 Q100,108 108,110" fill="none" stroke="#330000" stroke-width="0.5" opacity="0.2"/>
+<circle cx="28.0" cy="89.0" r="2.3" fill="#0a0000" opacity="0.15"/>
+<circle cx="124.0" cy="85.0" r="1.8" fill="#0a0000" opacity="0.27"/>
+<circle cx="153.0" cy="34.0" r="3.2" fill="#0a0000" opacity="0.29"/>
+<circle cx="136.0" cy="57.0" r="2.4" fill="#0a0000" opacity="0.13"/>
+<circle cx="27.0" cy="192.0" r="2.1" fill="#0a0000" opacity="0.13"/>
+<circle cx="190.0" cy="127.0" r="2.9" fill="#0a0000" opacity="0.11"/>
+<circle cx="38.0" cy="225.0" r="2.2" fill="#0a0000" opacity="0.13"/>
+<circle cx="16.0" cy="235.0" r="1.0" fill="#0a0000" opacity="0.14"/>
+<circle cx="129.0" cy="167.0" r="1.6" fill="#0a0000" opacity="0.16"/>
+<circle cx="133.0" cy="88.0" r="1.6" fill="#0a0000" opacity="0.11"/>
+<circle cx="92.0" cy="180.0" r="3.6" fill="#0a0000" opacity="0.26"/>
+<circle cx="113.0" cy="29.0" r="1.9" fill="#0a0000" opacity="0.18"/>
+<circle cx="14.0" cy="166.0" r="1.4" fill="#0a0000" opacity="0.19"/>
+<circle cx="116.0" cy="24.0" r="3.0" fill="#0a0000" opacity="0.21"/>
+<circle cx="35.0" cy="199.0" r="3.5" fill="#0a0000" opacity="0.19"/>
+<circle cx="100.0" cy="130.0" r="80.0" fill="#330000" opacity="0.015" filter="url(#glow-amb)"/>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="none" stroke="#330000" stroke-width="1.5" opacity="0.12"/>
+</svg>

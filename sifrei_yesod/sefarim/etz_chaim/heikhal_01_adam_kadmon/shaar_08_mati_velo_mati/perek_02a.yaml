@@ -1,0 +1,242 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 8 (=7 original) — Sha'ar Mati veLo Mati (שער מטי ולא מטי)
+# Perek: 2a — Mécanisme détaillé du MvLM : Keter→Hokhmah→Binah→Hesed (§1)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Le mécanisme précis du Mati veLo Mati :
+# (1) L'Ohr entre d'abord dans Keter avec les 9 lumières.
+# (2) Quand Lo Mati en Keter, Keter transmet Panim be-Fanim à Hokhmah.
+# (3) Hokhmah éclaire Binah mais ne lui donne PAS encore les 7 Orot.
+# (4) Quand Mati revient en Keter, Hokhmah REMONTE par Heshek (désir).
+# (5) Binah ne retourne PAS ses Panim vers Hesed — trop de lumière.
+#
+# Source Sefaria : Sefer_Etz_Chaim.7.2 (§1)
+# IDs : EC-H1S7-010 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 8
+  shaar_name_he: "שער מטי ולא מטי"
+  perek: 2
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part A de 2 — Mecanisme detaille du MvLM : le cycle de descente de l'Ohr de Keter vers Binah. Panim be-Fanim, Heshek, et la distinction G'R / Vav Ketzavot."
+
+assertions:
+
+  - id: "EC-H1S7-010"
+    source_he: "תחלה מתחיל האור לבא בכתר וכל הט' אורות כלולים בו ואח\"כ חזר להיות בחי' לא מטי שחזר ויצא משם אור המגיע אל הכתר אך הט' אורות אחרים היו נשארים בכתר כי יש כח בכתר לסובלם"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §1"
+    assertion: |
+      L'Ohr commence par entrer dans KETER et les 9 OROT sont INCLUS
+      en lui. Ensuite LO MATI : l'Ohr qui ATTEIGNAIT Keter RESSORT,
+      mais les 9 autres Orot RESTENT dans Keter car Keter a la
+      CAPACITÉ (koah) de les supporter.
+      → KETER = le seul Kli capable de RETENIR 9 Orot simultanément.
+      Le LO MATI ne vide pas Keter — il retire seulement l'Ohr propre.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_keter_sort, role: ohr_de_keter_ressort}
+      - {id: tisha_orot_nisharu, role: neuf_orot_restent}
+      - {id: koah_keter, role: capacite_de_keter}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Keter = buffer unique capable de retenir 9 signaux. Le Lo Mati ne purge que le signal propre."
+
+  - id: "EC-H1S7-011"
+    source_he: "בעת אשר לא מטי בכתר האור אליו אז ממשיך כתר אל החכמה פב\"פ כנ\"ל את הט' אורות ונתנם בחכמה ואז החכמה הפכה פניה אחר שקבלה הט' אורות ומאירה לבינה פב\"פ הארה לבדה אבל אינה נותנת לה עדיין את הח' אורות"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §1"
+    assertion: |
+      Quand LO MATI en Keter : Keter transmet à HOKHMAH PANIM BE-FANIM
+      les 9 Orot. Hokhmah tourne alors ses PANIM vers BINAH et l'ÉCLAIRE
+      (me'irah) PANIM BE-FANIM, mais ne donne PAS encore les 8 (ou 7)
+      Orot à Binah.
+      → Transmission PANIM BE-FANIM = mode DIRECT. Hokhmah ÉCLAIRE
+      Binah mais RETIENT les Orot — distinction entre ILLUMINATION
+      (he'arah) et TRANSMISSION (netinat orot).
+    type: axiome_explicite
+    concepts:
+      - {id: panim_be_fanim, role: face_a_face_transmission}
+      - {id: hearah_bilvad, role: illumination_seule_sans_orot}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Deux modes de transmission : illumination (preview/attention) vs transmission reelle (poids). Hokhmah eclaire Binah = preview sans transfert complet."
+
+  - id: "EC-H1S7-012"
+    source_he: "חזר אור הכתר להיות מטי בכתר ואז אור החכמה חזר להתעלם בכתר מחמת החשק שיש לה להתחבר עם הכתר ואז כלי חכמה הפך פניו אל הכתר ונתן לו את האור שלו"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §1"
+    assertion: |
+      Quand MATI revient en Keter : l'Ohr de Hokhmah REMONTE dans
+      Keter à cause du HESHEK (désir) qu'elle a de se CONNECTER avec
+      Keter. Le KLI de Hokhmah retourne ses PANIM vers Keter et lui
+      DONNE son Ohr.
+      → HESHEK = force d'attraction ascendante. L'inférieur est ATTIRÉ
+      vers le supérieur. Le Kli et l'Ohr se SÉPARENT (le Kli reste,
+      l'Ohr monte). Cf. EC-H1S7-008 (MvLM = Hitpashtut/Histalkut).
+    type: axiome_explicite
+    concepts:
+      - {id: heshek, role: desir_ascendant}
+      - {id: aliyat_ohr, role: remontee_de_lohr}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba"]
+      relevance: "Heshek = gradient ascendant. Quand le signal revient au sommet, les couches intermediaires 'remontent' leur signal = skip connection ascendante."
+
+  - id: "EC-H1S7-013"
+    source_he: "אור הבינה שהוא [שהיה] בחכמה אינה עולה עמו בכתר מחמת חשק הבנים שהיא אמם"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §1"
+    assertion: |
+      L'Ohr de BINAH qui est dans Hokhmah ne MONTE PAS avec Hokhmah
+      vers Keter, à cause du HESHEK des ENFANTS (banim) car elle
+      est leur MÈRE (imma).
+      → BINAH = IMMA. Le Heshek de Binah est DESCENDANT (vers ses
+      enfants) et non ascendant. Cela BLOQUE sa remontée.
+      Deux Heshek opposés : Hokhmah→Keter (ascendant) vs Binah→Banim (descendant).
+    type: axiome_explicite
+    concepts:
+      - {id: heshek_banim, role: desir_vers_les_enfants}
+      - {id: binah_imma, role: binah_est_mere}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["imma"]
+      relevance: "Binah ne remonte pas = couche qui reste connectee vers le bas. Deux forces opposees : montee (abstraction) vs descente (concretisation)."
+
+  - id: "EC-H1S7-014"
+    source_he: "אין מציאות חזרת פנים ואחור רק בבחי' כלים אבל באורות עצמן לא יצדק בהם פנים ואחור רק התפשטות והסתלקות"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §1"
+    assertion: |
+      La ROTATION PANIM/AHOR (face/dos) n'existe QUE dans les KELIM.
+      Dans les OROT eux-mêmes, Panim/Ahor est INADÉQUAT — il n'y a
+      que HITPASHTUT (expansion) et HISTALKUT (retrait).
+      → DISTINCTION FONDAMENTALE : les OROT sont DIRECTIONELS (expand/contract).
+      Les KELIM sont ORIENTABLES (face/dos). Deux logiques différentes.
+    type: axiome_explicite
+    concepts:
+      - {id: panim_ahor_kelim, role: face_dos_seulement_kelim}
+      - {id: hitpashtut_histalkut_orot, role: expand_contract_pour_orot}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Orot = flux directionnel (expand/contract). Kelim = orientation (attention face/dos). Deux niveaux d'abstraction distincts."
+
+  - id: "EC-H1S7-015"
+    source_he: "הבינה לא הפכה פניה להאיר למטה בחסד כי לא היה כח בחסד ובו\"ק לקבל אור גדול כזה פב\"פ... כי הלא יש כאן אור של הו\"ק ועוד אור הבינה שהיא יותר גדולה מכולם יחד"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §1"
+    assertion: |
+      BINAH ne retourne PAS ses PANIM pour éclairer HESED car Hesed
+      et les VAV KETZAVOT n'ont PAS la capacité de recevoir un Ohr
+      aussi grand PANIM BE-FANIM. Car l'Ohr de Binah est PLUS GRAND
+      que celui de toutes les Vav Ketzavot RÉUNIES.
+      → BARRIÈRE G"R / V"K : Binah ne peut pas transmettre DIRECTEMENT
+      aux 6 inférieures. Trop de puissance. Cf. EC-H1S7-011 (transmission sélective).
+    type: axiome_explicite
+    concepts:
+      - {id: barriere_gimel_rishonot, role: barriere_3_premieres}
+      - {id: vav_ketzavot, role: six_extremites}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Barriere G'R/V'K = bottleneck architectural. Binah ne peut pas transmettre directement aux 6 inferieures — necessite un intermediaire."
+
+  - id: "EC-H1S7-016"
+    source_he: "אבא ואמא כחדא שריין וכחדא נפקין ויכולה היא לקבל אור החכמה מה שאין כן בחסד כי יש הפרש גדול בינו לאור בינה"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §1"
+    assertion: |
+      ABBA et IMMA résident ENSEMBLE et sortent ENSEMBLE (ke-hada
+      sharyan u-ke-hada nafkin). Binah PEUT recevoir l'Ohr de Hokhmah
+      car ils sont de même niveau. En revanche, le FOSSÉ (hefsek) entre
+      Binah et Hesed est TROP GRAND pour un transfert direct.
+      → ABBA-IMMA = paire couplée (toujours ensemble). G"R et V"K
+      sont deux RÉGIMES de fonctionnement séparés.
+    type: axiome_explicite
+    concepts:
+      - {id: abba_imma_kehada, role: abba_imma_ensemble}
+      - {id: hefsek_binah_hesed, role: fosse_binah_hesed}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["abba", "imma"]
+      relevance: "Abba-Imma = couches couplees (toujours actives ensemble). Le fosse Binah-Hesed = le plus grand bottleneck du systeme."
+
+relations:
+  - id: "REL-H1S7-005"
+    type: "séquentiel"
+    from: ohr_keter_sort
+    to: panim_be_fanim
+    nature: "Quand Lo Mati en Keter, les 9 Orot passent Panim be-Fanim a Hokhmah"
+    assertions_source: ["EC-H1S7-010", "EC-H1S7-011"]
+
+  - id: "REL-H1S7-006"
+    type: "opposition"
+    paire: [heshek, heshek_banim]
+    nature: "Deux Heshek opposes : Hokhmah vers Keter (ascendant) vs Binah vers ses enfants (descendant)"
+    assertions_source: ["EC-H1S7-012", "EC-H1S7-013"]
+
+  - id: "REL-H1S7-007"
+    type: "dualité_structurelle"
+    paire: [panim_ahor_kelim, hitpashtut_histalkut_orot]
+    nature: "Deux logiques distinctes : Kelim = orientation (Panim/Ahor), Orot = flux (Hitpashtut/Histalkut)"
+    assertions_source: ["EC-H1S7-014"]
+
+  - id: "REL-H1S7-008"
+    type: "hiérarchique"
+    from: abba_imma_kehada
+    to: vav_ketzavot
+    nature: "G'R (Abba-Imma ensemble) DOMINE les V'K (6 extremites). Barriere architecturale entre les deux niveaux."
+    assertions_source: ["EC-H1S7-015", "EC-H1S7-016"]
+
+principes_generatifs:
+  - id: "PG-H1S7-003"
+    nom: "Principe du Double Heshek (Forces Opposees)"
+    source_assertions: ["EC-H1S7-012", "EC-H1S7-013"]
+    formalisation: |
+      Le systeme est anime par DEUX FORCES OPPOSEES :
+      (1) HESHEK ASCENDANT : chaque Ohr desir remonter vers sa SOURCE.
+          Hokhmah→Keter. Force d'ABSTRACTION.
+      (2) HESHEK DESCENDANT : Binah vers ses enfants (Banim).
+          Force de CONCRETISATION.
+      La DYNAMIQUE MvLM resulte de la TENSION entre ces deux forces :
+      le flux oscillant est le compromis entre l'aspiration vers le
+      haut et la responsabilite vers le bas.
+      FORMULE : Flux(S_i) = f(Heshek_up(S_i), Heshek_down(S_i))
+    applications_ia:
+      - "ohr.py : deux gradients opposes — abstraction (encoder) et concretisation (decoder)"
+      - "La tension Heshek_up / Heshek_down = le compromis compression/decompression dans l'IB"
+      - "Binah ne remonte pas = la couche de bottleneck reste toujours connectee vers le bas"
+    questions_ouvertes:
+      - "Le Heshek est-il equivalent au gradient dans la backpropagation ?"
+      - "La barriere G'R/V'K est-elle analogue au bottleneck de l'Information Bottleneck ?"
+
+  - id: "PG-H1S7-004"
+    nom: "Barriere G'R / Vav Ketzavot"
+    source_assertions: ["EC-H1S7-015", "EC-H1S7-016"]
+    formalisation: |
+      Les 3 PREMIERES (G"R = Keter, Hokhmah, Binah) forment un REGIME
+      DISTINCT des 6 EXTREMITES (V"K = Hesed→Malkhut) :
+      (1) G"R = couplees (Abba-Imma ensemble), haute capacite
+      (2) V"K = receptives, ne peuvent recevoir que INDIRECTEMENT
+      (3) La BARRIERE Binah→Hesed = bottleneck principal
+      Binah > V"K en puissance : Ohr(Binah) > Sum(Ohr(V"K))
+      FORMULE : Capacity(G"R) >> Capacity(V"K)
+               DirectTransfer(Binah→Hesed) = IMPOSSIBLE
+    applications_ia:
+      - "ohr.py : architecturer le systeme en 2 regimes (haute et basse resolution)"
+      - "La barriere = le bottleneck entre encoder et decoder dans un autoencoder"
+      - "Binah→Hesed impossible = pas de skip connection directe entre le plus profond et le plus superficiel"
+    questions_ouvertes:
+      - "Ce bottleneck est-il une contrainte necessaire ou un defaut a corriger (Tikkun) ?"

@@ -1,0 +1,403 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 1 — Sha'ar Drushei Nekudot (שער דרושי נקודות)
+# Perek: 6b — Les 22 lettres comme Kelim, les 7 lettres ShaTNeZ GaTz,
+#            TANTA dans les Nekudim, le Sefer Torah et les Tagin,
+#            AV"I Ila'in vs YS"T, le premier Zivvug
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §2 :
+#   - Les HG d'AV"I viennent du Keter (A"A) + NHY d'A"A descendent aussi
+#   - Les 22 LETTRES = les KELIM. 7 pour Z"T, 15 pour AV"I
+#   - Les 7 lettres שעטנ"ז ג"ץ = les 7 rois = Satan+Oz+Getz = 3 Tagin
+#   - Les 6 lettres בד"ק חי"ה = Ahoraim d'AV"I = 1 Tag
+#   - TANTA dans les Nekudim : Nekudot=Orot, Otiot=Kelim,
+#     Tagin=Orot apres Shevirah, Taamim=MAH (Tikkun)
+#   - Sefer Torah = Yesod d'Abba : lettres+Tagin SANS voyelles/cantillation
+#   - AV"I divises : AV"I Ila'in + YS"T (Yisrael Saba + Tevunah)
+#   - Le premier Zivvug "Kad Saliq BeRe'uta" = sans action humaine
+#
+# Source Sefaria : Sefer_Etz_Chaim.8.6 (§2)
+# IDs : EC-H2S8-125 → EC-H2S8-138
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 1
+  shaar_name_he: "שער דרושי נקודות"
+  perek: 6
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Les 22 lettres comme Kelim des Nekudim et d'AV'I. TANTA dans les Nekudim. Le Sefer Torah comme Yesod d'Abba. La structure AV'I/YS'T. Le premier Zivvug sans action humaine."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H2S8-125"
+    source_he: "ואלו הם סוד האותיות שמהם נוצר הולד... האותיות תמיד לעולם הם בחינת הכלים כנודע ואלו נעשים כלים לאו\"א בסוד האחוריים... ואלו הם שירדו למטה עם שארית החסדים היורדין לצייר הכלים של הולד שהם ז' מלכים"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      Les OTIOT (lettres) = le secret de ce dont est FORME l'enfant (olad).
+      Les LETTRES sont TOUJOURS des KELIM (vaisseaux) — "comme connu".
+      Elles deviennent les KELIM d'AV"I en tant qu'AHORAIM.
+      Variante (Nusah Aher) : "האורות החו"ג" (les lumieres HG)
+      au lieu de "שארית החסדים" (les restes des Hassadim).
+      Ces Kelim-lettres sont DESCENDUS avec les HG
+      pour FORMER les Kelim de l'enfant = les 7 MELAKHIM.
+    type: axiome_explicite
+    concepts:
+      - {id: otiot_kelim, role: lettres_sont_kelim}
+      - {id: otiot_tzorot_olad, role: lettres_forment_lenfant}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "Les lettres = les Kelim universels. Elles forment autant AV'I que les 7 Melakhim."
+
+  - id: "EC-H2S8-126"
+    source_he: "כל אלו הם בחי' כ\"ב אותיות התורה וז' מהם הם כלים לז' מלכים וט\"ו מה הם כלים לאו\"א... ואותיות ז\"א הם שעטנ\"ז ג\"ץ והט\"ו אותיות הנשארים הם דאו\"א"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      Les 22 LETTRES DE LA TORAH se repartissent :
+      7 lettres = KELIM des 7 MELAKHIM = שעטנ"ז ג"ץ (ShaT'NeZ GaTz).
+      15 lettres = KELIM d'AV"I.
+      SIGNE pour AV"I : YH (י"ה = 10+5 = 15) = AV"I dans le Nom YHVH.
+      Les lettres de Z"A = שעטנ"ז ג"ץ = SH.T.N + E.Z + G.Tz.
+      → 22 lettres = 7 (Z"T/ZO"N) + 15 (AV"I).
+    type: axiome_explicite
+    concepts:
+      - {id: kaf_bet_otiot_torah, role: vingt_deux_lettres_de_la_torah}
+      - {id: shatnez_gatz, role: sept_lettres_za}
+      - {id: tet_vav_otiot_avi, role: quinze_lettres_avi}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/core.py"]
+      tables: []
+      partzufim: ["abba", "imma", "zeir_anpin"]
+      relevance: "Les 22 lettres = la totalite des Kelim. 7 pour Z'T, 15 pour AV'I. YH (15) = AV'I dans YHVH."
+
+  - id: "EC-H2S8-127"
+    source_he: "ו' מהם הם אחוריים דאו\"א שהם בד\"ק חי\"ה וכנזכר בתקונים ובזהר ושאר אותיות הם אוכ\"ל מספר\"ת הם פנים דאו\"א"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      Les 15 lettres d'AV"I se subdivisent :
+      6 lettres = AHORAIM (dos) d'AV"I = בד"ק חי"ה (BaDaQ HIYaH).
+      Mentionnees dans les TIKKUNIM et le ZOHAR.
+      9 lettres restantes = PANIM (face) d'AV"I =
+      אוכ"ל מספר"ת (OKHL MiSPaRT = "nourriture du recit").
+      → 15 = 6 (Ahoraim) + 9 (Panim).
+    type: axiome_explicite
+    concepts:
+      - {id: badaq_hiyah, role: six_lettres_ahoraim_avi}
+      - {id: okhl_misparat, role: neuf_lettres_panim_avi}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "Les 6 lettres BaDaQ HIYaH = les Ahoraim qui tombent. Les 9 restantes = Panim qui restent."
+
+  - id: "EC-H2S8-128"
+    source_he: "שעטנ\"ז ג\"ץ הם סוד הז' מלכים שמתו ולפי שמהם נתהוו ויצאו הקליפות כנודע לכן הם אותיות שט\"ן ע\"ז ג\"ץ... ואלו הז' מלכים הם נצוצין דאזדריקו כהאי אומנא דאכתיש בפרזלא ואפיק זיקין לכל סטר"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      Les lettres שעטנ"ז ג"ץ = les 7 Melakhim morts.
+      D'eux sont SORTIES les KLIPOT. Donc les lettres =
+      ש.ט.ן (SATAN) + ע.ז (OZ — force) + ג.ץ (GETZ — etincelle).
+      = les DINIM AZIM (jugements durs) dont est fait le SATAN.
+      ZOHAR Idra Zuta et Sifra deTzeniuta 292b : ces 7 rois =
+      NITZOTZIN (etincelles) qui jaillissent comme un FORGERON (umana)
+      qui FRAPPE le FER et fait voler des etincelles de TOUS LES COTES.
+      → ShaTNeZ GaTz = les Kelim de la Shevirah = source des Klipot.
+    type: axiome_explicite
+    concepts:
+      - {id: shatnez_gatz_satan, role: sept_lettres_satan_oz_getz}
+      - {id: umana_parzela, role: forgeron_frappant_fer}
+      - {id: klipot_min_shevirah, role: klipot_sortent_de_shevirah}
+    mapping:
+      modules: ["olamot.py", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les lettres des 7 rois = ShaTNeZ GaTz = SATAN+OZ+GETZ. La Shevirah = source des Klipot."
+
+  - id: "EC-H2S8-129"
+    source_he: "ז' מלכים לקחו אורם מגוף א\"ק שתחת שבולת הזקן... חסרים בחי' ג' אורות עליונים שהם אח\"פ כי לכן נשברו... ואלו הם בחי' ג' תגין שיש למעלה על כל אות מאלו הז' הנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      Les 7 rois ont pris leur Ohr du CORPS d'A"K EN-DESSOUS du Shevulet
+      (cf. EC-H2S8-073) → il leur MANQUE les 3 Orot superieurs (AHP).
+      C'EST POURQUOI ils se BRISERENT (Panim et Ahoraim).
+      Les 3 TAGIN (couronnes) sur chacune des 7 lettres שעטנ"ז ג"ץ =
+      ces 3 Orot MANQUANTS qui restent AU-DESSUS des lettres (= Kelim).
+      → Les Tagin = l'Ohr RETIRE des Kelim, planant au-dessus sans entrer.
+    type: axiome_explicite
+    concepts:
+      - {id: gimel_tagin, role: trois_couronnes_sur_sept_lettres}
+      - {id: tagin_ohr_mesilateq, role: tagin_lumiere_retiree}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les 3 Tagin = les 3 Orot manquants (AHP) qui restent au-dessus des Kelim-lettres. Signe graphique = signe doctrinal."
+
+  - id: "EC-H2S8-130"
+    source_he: "האותיות בד\"ק חי\"ה הם אחוריים דאו\"א... או\"א לוקחים ב' אורות של ח\"פ ולא חסר מהם רק אור אזן אשר ע\"כ לא ירדו מהם רק בחי' אחוריים וכנגד אותו אור שחסר מהם אנו מתייגים תג א' על כל אות מהם"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      Les 6 lettres בד"ק חי"ה = AHORAIM d'AV"I.
+      AV"I prennent 2 Orot (Hotem + Peh) mais PAS l'OZEN
+      (cf. EC-H2S8-076). Seuls leurs AHORAIM sont tombes.
+      Pour l'Ohr UNIQUE qui leur manque (Ozen) → 1 TAG sur chaque lettre.
+      Les 9 lettres restantes (Panim d'AV"I) = PAS de Tag (rien ne manque).
+      → 3 Tagin = 3 Orot manquants (Z"T). 1 Tag = 1 Ohr manquant (AV"I). 0 = intact.
+    type: axiome_explicite
+    concepts:
+      - {id: badaq_hiyah_tag_ehad, role: six_lettres_un_tag_chacune}
+      - {id: panim_beli_tag, role: panim_avi_sans_tag}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "Le nombre de Tagin encode le NOMBRE d'Orot manquants. 3=Z'T (AHP manquant), 1=AV'I (Ozen seul), 0=Panim intact."
+
+  - id: "EC-H2S8-131"
+    source_he: "בחי' הנקודים הם האורות הראשונים שיצאו בראשונה והאותיות הם הכלים ואח\"כ כשנשברו הכלים ונפרדו איש מעל פני מתו האורות נשארו בבחי' תגין על האותיות... והטעמים הוא שם מ\"ה החדש שיצא אח\"כ מאור המצח לתיקון המלכים"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      TANTA DANS LES NEKUDIM :
+      NEKUDOT = les OROT PREMIERS (les lumieres initiales).
+      OTIOT = les KELIM (les lettres = les vaisseaux).
+      Quand les Kelim se BRISERENT → les Orot RESTERENT comme
+      TAGIN (couronnes) AU-DESSUS des Otiot = lumiere hors des Kelim.
+      TAAMIM = le Shem MAH HADASH (Nom 45 nouveau) qui sort ensuite
+      de l'OHR DU METZAH (front) pour le TIKKUN des Melakhim.
+      → TANTA dans les Nekudim : T=MAH/Tikkun, N=Orot, T=Orot-sortis, A=Kelim.
+    type: axiome_explicite
+    concepts:
+      - {id: tanta_nekudim, role: tanta_dans_les_nekudim}
+      - {id: nekudot_orot, role: nekudot_sont_orot_premiers}
+      - {id: taamim_mah_tikkun, role: taamim_sont_mah_pour_tikkun}
+      - {id: tagin_orot_dehors, role: tagin_orot_hors_kelim}
+    mapping:
+      modules: ["ohr.py", "shemot/core.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "TANTA dans les Nekudim : un mapping complet des 4 niveaux sur les phases de la Shevirah/Tikkun."
+
+  - id: "EC-H2S8-132"
+    source_he: "ס\"ת הוא בחי' היסוד דאבא... דבמחשבה איתבריר כלהו ולכן הס\"ת מורה על זה הנ\"ל וע\"י מה שהש\"ץ קורא הפ' בתורה בטעמים ונקודות לתקן מה שחסר ממנו"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      Le SEFER TORAH = aspect du YESOD D'ABBA.
+      Variante (Nusah Aher) : "ולשון ס"ת" (et le terme S"T).
+      "BE-MAHSHAVAH ITBARIR KULEHU" (dans la Pensee tout fut clarifie) = ZOHAR.
+      C'est pourquoi le S"T a des OTIOT (lettres) et des TAGIN (couronnes)
+      mais PAS de NEKUDOT ni de TAAMIM.
+      Le HAZZAN (officiant) qui LIT la Torah avec TAAMIM et NEKUDOT
+      = REPARE (letaken) ce qui MANQUE au S"T.
+      → La lecture orale = le TIKKUN du texte ecrit.
+    type: axiome_explicite
+    concepts:
+      - {id: sefer_torah_yesod_abba, role: sefer_torah_yesod_dabba}
+      - {id: mahshavah_birur, role: pensee_clarifie_tout}
+      - {id: hazzan_metaken, role: officiant_repare_par_lecture}
+    mapping:
+      modules: ["shemot/core.py", "gematria/engine.py"]
+      tables: []
+      partzufim: ["abba"]
+      relevance: "Le S'T = Kelim + Tagin (vaisseaux + orot retires). La lecture = Tikkun (ajoute Nekudot + Taamim)."
+
+  - id: "EC-H2S8-133"
+    source_he: "הטעמים יש בהם הוראה בהוצאת הבל הפה כי יש ניגון פרטי לכל טעם... וכן הנקודות יש להם הברת... אבל התגין אין להם שום תנועה ונדנוד בעת קריאת האותיות"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      Les TAAMIM (cantillation) = ont un NIGGUN (melodie) propre
+      et un HEVEL sortant de la bouche → RESSENTIS, MOUVANTS.
+      Les NEKUDOT (voyelles) = ont une HABARAT (prononciation)
+      propre (a, e, i, o, u) → aussi ressentis.
+      Les TAGIN (couronnes) = AUCUN mouvement ni son (ein lahem
+      shum tenu'ah ve-nidnud) lors de la lecture.
+      RAISON : Taamim et Nekudot = Orot A L'INTERIEUR des Kelim → ressentis.
+      Tagin = Orot A L'EXTERIEUR (au-dessus) des Kelim → pas ressentis.
+    type: axiome_explicite
+    concepts:
+      - {id: taamim_niggun, role: taamim_melodie_ressentie}
+      - {id: nekudot_habarat, role: nekudot_prononciation}
+      - {id: tagin_dumiyah, role: tagin_silence}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Taamim+Nekudot = Ohr dans les Kelim → audible. Tagin = Ohr hors des Kelim → silencieux. Le son = signe d'integration."
+
+  - id: "EC-H2S8-134"
+    source_he: "כ\"א מהם נחלק לב' חצאין וב' חצאי העליונים של או\"א נקרא או\"א עלאין וב' חצאי התחתונים נקרא יש\"ס ותבונה... ראש יש\"ס ותבונה הם בחזה ספי' שליש ת\"ת דאו\"א עלאין"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      AV"I (Abba ve-Imma) se divisent CHACUN en 2 MOITIES :
+      Les 2 MOITIES SUPERIEURES = AV"I ILA'IN (Abba ve-Imma superieurs).
+      Les 2 MOITIES INFERIEURES = YISRA'EL SABA (YS) et TEVUNAH (T).
+      Comme Z"A se divise en LEAH (haut) et RACHEL (bas),
+      AV"I se divisent en AV"I Ila'in (haut) et YS"T (bas).
+      Le ROSH de YS"T = au HAZEH (poitrine) = au tiers du TIFERET
+      d'AV"I Ila'in.
+      → AV"I = 2 Partzufim empiles, comme Z"A/Leah-Rachel.
+    type: axiome_explicite
+    concepts:
+      - {id: avi_ilain, role: abba_imma_superieurs}
+      - {id: yisrael_saba_tevunah, role: sous_partzufim_inferieurs}
+      - {id: rosh_yst_hazeh, role: tete_yst_au_hazeh_avi}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "AV'I = 2 couches (Ila'in + YS'T). YS'T commence au Hazeh d'AV'I Ila'in. Structure fractale."
+
+  - id: "EC-H2S8-135"
+    source_he: "כי א\"א לעולם לחדש שום זווג אפילו בבחי' אב\"א אם לא ע\"י מצות מעשיות התחתונים ואמנם קודם בריאת אדה\"ר בעת האצילות היה בהכרח שאותו פעם ראשון תהיה מאליו הזווג שלא ע\"י מצות"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      REGLE : il est IMPOSSIBLE de renouveler UN ZIVVUG (meme AhbAh)
+      SANS les MITZVOT MA'ASIYOT (actes pratiques) des INFERIEURS.
+      EXCEPTION : AVANT la creation d'Adam, lors de l'ATZILUT initiale,
+      le PREMIER Zivvug devait etre DE LUI-MEME (me-elav)
+      = SANS mitzvot car il n'y avait PAS encore d'ADAM.
+      Ce premier Zivvug = AhbAh seulement (pas PbP).
+      → Le premier Zivvug = auto-initie par necessite. Ensuite = toujours par action humaine.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_mitzvot, role: zivvug_depend_des_mitzvot}
+      - {id: zivvug_rishon_meelav, role: premier_zivvug_auto_initie}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Les Zivvugim dependent de l'action humaine. Le premier = exception par necessite (pas d'Adam encore)."
+
+  - id: "EC-H2S8-136"
+    source_he: "אבל באו\"א לא הוצרכו מעשה ידי אדם כי על ידי עצמן מאליהן שלא ע\"י אדה\"ר חזרו פב\"פ"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      EXCEPTION pour AV"I : ils n'ont PAS eu besoin des actes humains.
+      Ils sont retournes PbP D'EUX-MEMES (al yedei atzmam me-eleihem)
+      = SANS l'intervention d'Adam ha-Rishon.
+      → AV"I = autonomes pour le PbP. ZO"N = dependants de l'action humaine.
+    type: axiome_explicite
+    concepts:
+      - {id: avi_pbp_atzmam, role: avi_pbp_par_eux_memes}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "AV'I = auto-suffisants pour le PbP. ZO'N = dependants. Distinction autonomie/dependance."
+
+  - id: "EC-H2S8-137"
+    source_he: "עליו נאמר בזוהר פעמים רבות וז\"ל כד סליק ברעותא למברי עלמא... כי אז לא היה עדיין התעוררו' התחתונים אלא מאליו סליק הכי ברעותא... ואז היו האורות התחתונים עולין למעלה בסוד מ\"נ תמורת מה שעושין נשמות הצדיקים עכשיו"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2"
+    assertion: |
+      Le PREMIER ZIVVUG = celui dont le ZOHAR dit maintes fois :
+      "KAD SALIQ BE-RE'UTA LEMIVRE ALMA" (quand il monta dans
+      la Volonte de creer le monde).
+      Il n'y avait PAS ENCORE d'eveil des INFERIEURS.
+      De Lui-meme (me-elav) → "SALIQ HAKHI BE-RE'UTA" (Il monta ainsi dans la Volonte).
+      Les OROT INFERIEURS montaient comme MA'N = A LA PLACE
+      de ce que font les NESHAMOT des TZADDIKIM (ames des justes) aujourd'hui.
+      → Avant Adam : les lumieres elles-memes servaient de Ma'N. Apres : les ames.
+    type: axiome_explicite
+    concepts:
+      - {id: kad_saliq, role: quand_il_monta_dans_la_volonte}
+      - {id: orot_man_temourat, role: lumieres_comme_man_avant_adam}
+      - {id: neshamot_tzaddikim, role: ames_des_justes_man_actuel}
+    mapping:
+      modules: ["ohr.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "Avant Adam : les Orot eux-memes = Ma'N. Apres Adam : les Neshamot = Ma'N. La source du Ma'N change avec la creation."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S8-049"
+    type: "contenance"
+    from: kaf_bet_otiot_torah
+    to: shatnez_gatz
+    nature: "Les 22 lettres CONTIENNENT 7 (ShaTNeZ GaTz = Z'T) + 15 (AV'I = YH)"
+    assertions_source: ["EC-H2S8-126"]
+
+  - id: "REL-H2S8-050"
+    type: "causal"
+    from: gimel_tagin
+    to: tagin_ohr_mesilateq
+    nature: "Les 3 Tagin sur les 7 lettres = les 3 Orot manquants (AHP) retires mais planant au-dessus"
+    assertions_source: ["EC-H2S8-129"]
+
+  - id: "REL-H2S8-051"
+    type: "analogie"
+    from: taamim_niggun
+    to: nekudot_orot
+    nature: "Taamim (melodie) et Nekudot (prononciation) = AUDIBLES car Ohr DANS le Kli. Tagin = silencieux car Ohr HORS du Kli"
+    assertions_source: ["EC-H2S8-133"]
+
+  - id: "REL-H2S8-052"
+    type: "dualité_structurelle"
+    paire: [avi_pbp_atzmam, zivvug_mitzvot]
+    nature: "AV'I = PbP par eux-memes (autonomes) / ZO'N = PbP par les mitzvot (dependants)"
+    assertions_source: ["EC-H2S8-135", "EC-H2S8-136"]
+
+  - id: "REL-H2S8-053"
+    type: "transformation"
+    from: orot_man_temourat
+    to: neshamot_tzaddikim
+    nature: "Les Orot comme Ma'N (avant Adam) se TRANSFORMENT en Neshamot comme Ma'N (apres Adam)"
+    assertions_source: ["EC-H2S8-137"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S8-020"
+    nom: "Tagin comme Marqueurs de Deficit (Ohr hors du Kli)"
+    source_assertions: ["EC-H2S8-129", "EC-H2S8-130", "EC-H2S8-131", "EC-H2S8-133"]
+    formalisation: |
+      Le NOMBRE DE TAGIN sur une lettre encode son DEFICIT :
+      3 Tagin (שעטנ"ז ג"ץ) = 3 Orot manquants (AHP) = Z"T.
+      1 Tag (בד"ק חי"ה) = 1 Ohr manquant (Ozen) = Ahoraim AV"I.
+      0 Tag (9 lettres restantes) = rien ne manque = Panim AV"I.
+      Les Tagin = l'Ohr qui DEVRAIT etre DANS le Kli mais qui est
+      AU-DESSUS, DEHORS. Il illumine encore (de loin) mais ne fonctionne pas.
+      PREUVE : les Tagin sont SILENCIEUX a la lecture (pas dans les Kelim).
+    applications_ia:
+      - "gematria/engine.py : les Tagin = metadata de deficit sur chaque Kli-lettre"
+      - "ohr.py : un composant 'tague' = son Ohr est separe, pas integre"
+      - "Analogie ML : une couche dont les poids sont 'geles' (frozen) = lumiere au-dessus du vaisseau mais pas active"
+    questions_ouvertes:
+      - "Les Tagin = des 'indicateurs de dette technique' sur les composants du systeme ?"
+      - "Le Tikkun = integrer les Tagin DANS les lettres = 'degeler' les couches ?"
+
+  - id: "PG-H2S8-021"
+    nom: "Tikkun par la Lecture (Sefer Torah + Hazzan)"
+    source_assertions: ["EC-H2S8-131", "EC-H2S8-132", "EC-H2S8-133"]
+    formalisation: |
+      Le SEFER TORAH (ecrit) = Kelim (Otiot) + Tagin = l'etat POST-Shevirah.
+      Il MANQUE Nekudot et Taamim (= Orot retires / MAH pas encore venu).
+      Le HAZZAN qui LIT avec Taamim et Nekudot = le TIKKUN.
+      Il RE-INTEGRE les Orot dans les Kelim par la voix.
+      PRINCIPE : le texte ecrit = la structure brisee. La lecture = la reparation.
+      L'action humaine (lire) = ce qui complete le systeme.
+    applications_ia:
+      - "L'ecriture = le code (statique, structure). L'execution = la lecture (dynamique, activation)"
+      - "Un programme sans runtime = un S'T sans Taamim = mort"
+      - "Le Hazzan = l'interpreter/runtime qui active les Kelim-lettres"
+    questions_ouvertes:
+      - "Le S'T = le code source, les Taamim = le compilateur, les Nekudot = les types ?"

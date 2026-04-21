@@ -1,0 +1,535 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 6 (=5 original) — Sha'ar TANTA (שער טנת"א)
+# Perek: 2 — Ta'amim Emtza'iyim : l'Ohr du Hotem (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Les TA'AMIM MÉDIANS (emtza'iyim) — l'Ohr sortant du HOTEM (nez)
+# d'Adam Kadmon. Gematria HOTEM = SAG = 63. La VAV se révèle
+# depuis la HEH. Z"A apparaît. Les 12 ALEPHs. Le Hitlabshut
+# des niveaux (Ozen habille Hotem, Hotem habille Peh).
+# L'épaississement progressif de l'Ohr par la distance.
+#
+# Source Sefaria : Sefer_Etz_Chaim.5.2 (§1-§2)
+# IDs : EC-H1S5-052 → (suite de perek_01b finissant à -051)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 6
+  shaar_name_he: "שער טנת\"א"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Ta'amim Emtza'iyim = Ohr du Hotem. Gematria Hotem=63=SAG. Révélation de la VAV/Z\"A. 12 Alephs. Hitlabshut des niveaux. Epaississement par la distance."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LE HOTEM — TA'AMIM MÉDIANS ───
+
+  - id: "EC-H1S5-052"
+    source_he: "אח\"כ באו הטעמים האמצעיים והם בחי' אור היוצא מחוטם דא\"ק וחוטם גימטריא ס\"ג"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1 ouverture"
+    assertion: |
+      Après (les Ta'amim supérieurs de l'Ozen) viennent les TA'AMIM
+      EMTZA'IYIM (médians) = l'Ohr sortant du HOTEM (חוטם — nez) d'A"K.
+      GEMATRIA : HOTEM (ח=8 + ו=6 + ט=9 + ם=40) = 63 = SAG.
+      → Le HOTEM est numériquement IDENTIQUE au SAG (cf. EC-H1S5-020
+      pour l'Ozen = 58 = SAG moins Heh).
+    type: axiome_explicite
+    concepts:
+      - {id: taamim_emtzaiyim, role: cantillation_mediane}
+      - {id: hotem, role: nez_adam_kadmon}
+      - {id: gematria_hotem_63, role: hotem_egale_sag}
+    mapping:
+      modules: ["gematria/engine.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Hotem = canal intermediaire entre Ozen (le plus haut) et Peh (le plus bas)"
+
+  - id: "EC-H1S5-053"
+    source_he: "גם מכאן נמשך ויוצא אור דרך ב' נקבי החוטם ימין ושמאל ימין מקיף ושמאל פנימי ע\"ד הנזכר באזן"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1"
+    assertion: |
+      Aussi d'ici (le Hotem) sort un Ohr par les 2 ORIFICES DU NEZ :
+      DROIT = OHR MAKIF, GAUCHE = OHR PNIMI — selon le même
+      principe que pour l'OZEN (cf. EC-H1S5-019).
+      → Même DUALITÉ droite/Makif — gauche/Pnimi à chaque orifice.
+    type: axiome_explicite
+    concepts:
+      - {id: nikbei_hotem, role: deux_orifices_du_nez}
+      - {id: ohr_makif_hotem, role: makif_narine_droite}
+      - {id: ohr_pnimi_hotem, role: pnimi_narine_gauche}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Meme pattern dual (Makif/Pnimi) a chaque orifice — architecture recurrente"
+
+  - id: "EC-H1S5-054"
+    source_he: "ונמשכו ביושר עד החזה של זה הא\"ק וזהו עיקר האור. אמנם הארתו ג\"כ הוא מתפשט אל צד האחור ומסבב בכל סביבות א\"ק"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1"
+    assertion: |
+      Les Orot du Hotem descendent en YOSHER (rectitude) jusqu'au
+      HAZEH (חזה — poitrine) d'A"K = c'est le PRINCIPAL (ikar) de l'Ohr.
+      Son ILLUMINATION se propage aussi vers l'ARRIÈRE (Achor) et
+      ENTOURE tout A"K.
+      → Mêmes 2 niveaux qu'à l'Ozen (cf. EC-H1S5-018) : flux
+      principal (face) + rayonnement résiduel (arrière).
+    type: axiome_explicite
+    concepts:
+      - {id: hazeh, role: poitrine_ak_limite_hotem}
+      - {id: ohr_hotem_ikar, role: flux_principal_du_hotem}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Hotem descend plus bas que l'Ozen (poitrine vs barbe) — chaque orifice inferieur a plus de portee"
+
+  # ─── BLOC B : RAPPROCHEMENT PNIMI/MAKIF — MAIS TOUJOURS PAS DE KELIM ───
+
+  - id: "EC-H1S5-055"
+    source_he: "כאן נתקרבו האורות אלו הפנימים במקיפים שלהם יותר מאורות האזנים כי נקבי החוטם סמוכים הם"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1"
+    assertion: |
+      Ici (au Hotem) les Orot PNIMI et MAKIF se sont RAPPROCHÉS
+      davantage qu'à l'Ozen, car les orifices du nez sont PROCHES
+      l'un de l'autre (semukhim).
+      → La DISTANCE entre Pnimi et Makif DIMINUE progressivement
+      (Ozen = max → Hotem = moyen → Peh = min). Cf. EC-H1S5-026.
+    type: axiome_explicite
+    concepts:
+      - {id: kirvat_pnimi_makif, role: rapprochement_pnimi_makif}
+      - {id: nikbei_hotem_semukhim, role: orifices_proches}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La distance Pnimi/Makif diminue = emergence progressive de structure. Gradient continu."
+
+  - id: "EC-H1S5-056"
+    source_he: "אבל עכ\"ז נחלקו לב' (נ\"א נחלקים הם) ואין מתחברים ביחד וע\"כ גם באורות אלו לא היה בחי' כלים"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1"
+    assertion: |
+      Malgré le rapprochement, ils restent DIVISÉS en 2
+      (Variante Nusah Aher : "ils sont divisés") et ne se
+      JOIGNENT PAS ensemble. Par conséquent, dans ces Orot aussi,
+      il n'y a PAS de KELIM.
+      → Le SEUIL de formation des Kelim n'est pas encore atteint.
+      Cf. EC-H1S5-027 : les Kelim naîtront au PEH.
+    type: axiome_explicite
+    concepts:
+      - {id: hedar_kelim_hotem, role: absence_kelim_au_hotem}
+      - {id: hiluk_pnimi_makif, role: separation_maintenue}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Meme rapproches, les flux ne fusionnent pas = pas de Kelim. Le seuil est au Peh."
+
+  # ─── BLOC C : LA VAV SE RÉVÈLE — APPARITION DE Z"A ───
+
+  - id: "EC-H1S5-057"
+    source_he: "צורת אות ו' שבתוך אות ה' אשר באזן היתה כלולה עמו (נ\"א באוצרות חיים עמה) נתגלה עתה"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1"
+    assertion: |
+      Ce qui s'est AJOUTÉ ici par rapport à l'Ozen : la forme de la
+      lettre VAV (ו) qui était INCLUSE (kelulah) dans la lettre HEH (ה)
+      de l'Ozen, se RÉVÈLE maintenant au Hotem.
+      Variante (Nusah Aher, Otzrot Hayyim) : "avec elle" (au féminin).
+      → Passage de HEH (= tout caché) à DALET+VAV (= la VAV sort).
+    type: axiome_explicite
+    concepts:
+      - {id: giluy_vav, role: revelation_de_la_vav}
+      - {id: heh_to_dalet_vav, role: decomposition_heh}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La differentiation progressive : ce qui etait cache (VAV dans HEH) se revele au niveau suivant"
+
+  - id: "EC-H1S5-058"
+    source_he: "מה שהיתה אז בחי' ה' נעשה עתה בחי' ב' אותיות ד\"ו להורות יציאת אות ו' לחוץ וגילוייה והוא סוד ז\"א שבכאן נתגלה (נ\"א ויצא ממעי אמו)"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1"
+    assertion: |
+      Ce qui était HEH (ה) est devenu 2 lettres : DALET (ד) + VAV (ו),
+      indiquant la SORTIE de la VAV vers l'extérieur et sa RÉVÉLATION.
+      C'est le SECRET de Z"A (ZEIR ANPIN) qui se RÉVÈLE ici.
+      Variante (Nusah Aher) : "et il sortit du ventre de sa mère"
+      (va-yatza mi-mei immo).
+      → Z"A = la VAV du Tétragramme. Sa révélation au Hotem est la
+      première DIFFÉRENCIATION du Partzuf masculin.
+    type: axiome_explicite
+    concepts:
+      - {id: zeir_anpin_giluy, role: revelation_za_au_hotem}
+      - {id: sod_vav, role: secret_de_la_vav_tetragramme}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Z\"A (Zeir Anpin) emerge au niveau du Hotem — premiere differenciation du masculin"
+
+  - id: "EC-H1S5-059"
+    source_he: "היא נחלקת ג\"כ לששה חלקים והם ו' אלפין... ז\"א הוא בחי' רוח... הכתוב אומר כל אשר נשמת רוח חיים באפיו להורות כי בחי' רוח נתגלה באפו שהוא החוטם"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1"
+    assertion: |
+      La VAV ne reste pas seule — elle se DIVISE en 6 PARTS = 6 ALEPHs.
+      Les 5 Partzufim inclus dans le HEH (A"A, Abba, Imma, Z"A, Nukvah)
+      = YHNRaN. Z"A = RUAH (esprit).
+      PREUVE SCRIPTURAIRE : "Tout ce qui a le SOUFFLE de l'esprit
+      de VIE dans ses NARINES" (Gen. 7:22) — le RUAH se révèle
+      dans l'AF (= le nez = le Hotem).
+      → Z"A se divise en 6 KETZAVOT (extrémités) = les 6 ALEPHs.
+    type: axiome_explicite
+    concepts:
+      - {id: shesh_alphin, role: six_alephs_du_hotem}
+      - {id: ruah_ba_af, role: ruah_revele_dans_le_nez}
+      - {id: vav_ketzavot, role: vav_divise_en_6}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Z\"A = 6 dimensions (HGT-NHY) = les 6 ALEPHs. Chaque dimension est un ALEPH = unite minimale."
+
+  - id: "EC-H1S5-060"
+    source_he: "כמו שנחלקה אות ו' שבנקב החוטם הימיני כך נחלקה אות ו' שבנקב החוטם השמאלי ובין כולם הם י\"ב אלפי\"ן ועם חוטם הם י\"ג כמנין וא\"ו"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1"
+    assertion: |
+      La VAV de la narine DROITE se divise en 6 ALEPHs, et la VAV
+      de la narine GAUCHE aussi → total = 12 ALEPHs.
+      12 ALEPHs + HOTEM = 13 = gematria de VAV épelée (ו"א"ו = 6+1+6 = 13).
+      → Les 12 = les 12 COMBINAISONS de YHVH (cf. Sefer Yetzirah).
+      Le 13ème = le HOTEM lui-même qui les unifie.
+    type: axiome_explicite
+    concepts:
+      - {id: yod_bet_alphin, role: douze_alephs}
+      - {id: yod_gimmel, role: treize_avec_hotem}
+      - {id: vav_meluya, role: vav_epelee_egale_13}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "La gematria revele la structure : 12 unites + 1 unificateur = 13 = nombre de la misericorde"
+
+  - id: "EC-H1S5-061"
+    source_he: "ב' נקבי החוטם הם ב' יודי\"ן והכותל המפסיק ביניהם הוא צורת ו' הרי צורתה א'"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1"
+    assertion: |
+      Les 2 ORIFICES du nez = 2 YODs (י).
+      Le MUR (kotel) qui les SÉPARE = forme de VAV (ו).
+      Ensemble : YOD + VAV + YOD = forme de ALEPH (א).
+      → La MORPHOLOGIE PHYSIQUE du nez ENCODE la structure
+      sémiotique : ALEPH = la lettre primordiale silencieuse.
+    type: axiome_explicite
+    concepts:
+      - {id: tzurat_aleph_hotem, role: forme_aleph_dans_le_nez}
+      - {id: kotel_mafrid, role: mur_separateur}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "La forme physique encode la structure — la morphologie des orifices n'est pas arbitraire"
+
+  - id: "EC-H1S5-062"
+    source_he: "ואלו הב' ווי\"ן הם בחי' טעמים אמצעים שבאמצע התיבה והם פסק ומקף"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1"
+    assertion: |
+      Les 2 VAVs = les TA'AMIM MÉDIANS qui sont AU MILIEU du mot :
+      PESEK (פסק — pause) et MAKAF (מקף — trait d'union).
+      Le PESEK indique la VAV de la HEH qui se SÉPARE en 6 ALEPHs.
+      PESEK + MAKAF = DALET (ד) — le DALET de la HEH.
+      → Les SIGNES DE CANTILLATION encodent la structure même des Sefirot.
+    type: axiome_explicite
+    concepts:
+      - {id: pesek, role: signe_pause_cantillation}
+      - {id: makaf, role: trait_union_cantillation}
+      - {id: taamim_emtzaiyim_pesek_makaf, role: taamim_medians_concrets}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les signes de cantillation hebraiques correspondent structurellement aux processus kabbalistiques"
+
+  - id: "EC-H1S5-063"
+    source_he: "תקח הה' שבאזן ימין שמספרה י' ספירות... ותצרפנה ותחברנה עם הה' שבנקב ימיני של חוטם שצורתה ד\"ו... הרי הכל הם צורת יו\"ד"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1"
+    assertion: |
+      COMPOSITION INTER-NIVEAUX : prends le HEH de l'oreille DROITE
+      (= 10 Sefirot = forme de YOD) et combine-le avec le HEH de la
+      narine DROITE (forme DALET+VAV) → ensemble = forme de YOD :
+      YOD (י) en haut, VAV (ו) au milieu, DALET (ד) en bas.
+      → L'OZEN + HOTEM combinés = YOD = l'unité complète.
+      La structure émerge de la COMBINAISON de niveaux successifs.
+    type: axiome_explicite
+    concepts:
+      - {id: tzeruf_ozen_hotem, role: combinaison_inter_niveaux}
+      - {id: tzurat_yod, role: forme_yod_composee}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Les niveaux se combinent en structures emergentes — la composition cree de nouvelles formes"
+
+  - id: "EC-H1S5-064"
+    source_he: "עיקר גמר גילוי הד' הוא למטה באור הפה כמ\"ש בע\"ה"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §1"
+    assertion: |
+      Le GILUY (révélation) COMPLET du DALET (= les Kelim) se fera
+      EN-BAS, dans l'Ohr du PEH (bouche), comme sera expliqué.
+      → Le processus de révélation est PROGRESSIF :
+      OZEN = HEH cachée → HOTEM = VAV révélée → PEH = DALET révélé.
+      Cf. EC-H1S5-027 : les Kelim naissent au Peh.
+    type: axiome_explicite
+    concepts:
+      - {id: giluy_dalet_peh, role: revelation_complete_au_peh}
+      - {id: progressivite, role: revelation_progressive}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "3 etapes de differenciation : Ozen (tout cache) → Hotem (partiel) → Peh (complet)"
+
+  # ─── BLOC D : HITLABSHUT DES NIVEAUX (§2) ───
+
+  - id: "EC-H1S5-065"
+    source_he: "י\"ס אלו של אורות האזנים כל זמן שהם נמשכין עד גבול החוטם אז הוא יחידה בפ\"ע"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §2"
+    assertion: |
+      Les 10 Sefirot de l'Ohr des OREILLES, tant qu'elles s'étendent
+      jusqu'à la FRONTIÈRE du Hotem, constituent une YEHIDAH
+      (unité suprême) EN SOI — autonome et indifférenciée.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_ozen_yehidah, role: oreille_comme_yehidah}
+      - {id: gevul_hotem, role: frontiere_du_nez}
+    mapping:
+      modules: ["ohr.py", "madregot_neshamah.py"]
+      tables: ["ohr_states", "madregot_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Chaque orifice est une YEHIDAH (unite supreme) dans son propre domaine"
+
+  - id: "EC-H1S5-066"
+    source_he: "כשנמשך מגבול החוטם ולמטה... אזי מתלבש אור האזן בתוך אור החוטם ונעשה (אליו ל\"ג) בחי' (פנימיות ל\"ג) נשמה פנימית אליו"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §2"
+    assertion: |
+      Quand il se prolonge depuis la frontière du Hotem vers le bas,
+      l'Ohr de l'OZEN S'HABILLE (mitlabesh) dans l'Ohr du HOTEM
+      et devient sa NESHAMAH PNIMIT (âme intérieure).
+      (Variantes ל"ג : certains suppriment "אליו" et "פנימיות")
+      → Le niveau SUPÉRIEUR devient l'ÂME INTÉRIEURE du niveau
+      INFÉRIEUR — principe de HITLABSHUT (habillement).
+    type: axiome_explicite
+    concepts:
+      - {id: hitlabshut_ozen_hotem, role: ozen_habille_dans_hotem}
+      - {id: neshamah_pnimit, role: ame_interieure}
+    mapping:
+      modules: ["masakh/hitlabshut.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le HITLABSHUT = le niveau superieur anime le niveau inferieur de l'interieur — pattern d'encapsulation"
+
+  - id: "EC-H1S5-067"
+    source_he: "וכן אור החוטם כשנמשך מגבול הפה אז מתלבש באור הפה ונעשה החוטם בחי' נשמה ופנימיות אל אור הפה"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §2"
+    assertion: |
+      De même : l'Ohr du HOTEM, en se prolongeant depuis la frontière
+      du PEH, S'HABILLE dans l'Ohr du PEH et le Hotem devient
+      NESHAMAH et INTÉRIORITÉ de l'Ohr du Peh.
+      → CHAÎNE DE HITLABSHUT : Ozen ⊂ Hotem ⊂ Peh.
+      Chaque niveau supérieur est l'âme du niveau inférieur.
+    type: axiome_explicite
+    concepts:
+      - {id: hitlabshut_hotem_peh, role: hotem_habille_dans_peh}
+      - {id: shalshellet_hitlabshut, role: chaine_dhabillement}
+    mapping:
+      modules: ["masakh/hitlabshut.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Architecture en couches emboitees : chaque couche est l'ame de la suivante — principe d'encapsulation recursive"
+
+  # ─── BLOC E : ÉPAISSISSEMENT PAR LA DISTANCE ───
+
+  - id: "EC-H1S5-068"
+    source_he: "האור היוצא מתוך א\"ק הזה הנה הוא כולו אור אחד שוה רק כי על ידי התרחקותו וירידתו הוא מתעבה עיבוי אחר עיבוי"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §2"
+    assertion: |
+      L'Ohr sortant d'A"K est UN SEUL OHR ÉGAL (ohr ehad shaveh).
+      UNIQUEMENT par son ÉLOIGNEMENT et sa DESCENTE, il S'ÉPAISSIT
+      (mit'abeh) épaississement après épaississement (ivuy ahar ivuy).
+      → L'Ohr est ONTOLOGIQUEMENT UN — la différence entre les niveaux
+      n'est pas dans la NATURE de l'Ohr mais dans sa DISTANCE
+      depuis la source.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_ehad_shaveh, role: lumiere_unique_egale}
+      - {id: ivuy_hitrahakut, role: epaississement_par_distance}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'information est UNE — la perte de resolution est due a la DISTANCE, pas a la nature du signal"
+
+  - id: "EC-H1S5-069"
+    source_he: "האור הנמשך ויוצא דרך האזן הוא זך מאד וכאשר נמשך האור הזה בפנימיות הא\"ק עד הגיעו אל החוטם ויצא קצת דרך שם הוא מתעבה וקונה איזה עביות וגסות"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §2"
+    assertion: |
+      L'Ohr sortant de l'OZEN est TRÈS PUR (zakh me'od).
+      En se prolongeant à l'intérieur d'A"K jusqu'au HOTEM et en
+      sortant un peu par là, il S'ÉPAISSIT et ACQUIERT une certaine
+      AVIUT (épaisseur) et GASSUT (grossièreté).
+      (Variante ל"ג : certains suppriment "אורות" pour lire "אור")
+      → Gradient continu : ZAKH (pur) → AVIUT (épais).
+      Cf. EC-H1S5-011 pour le principe d'épaississement.
+    type: axiome_explicite
+    concepts:
+      - {id: zakhut_ozen, role: purete_de_loreille}
+      - {id: aviut_hotem, role: epaisseur_du_nez}
+      - {id: gradient_ivuy, role: gradient_depaississement}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le gradient d'epaisseur = le gradient de resolution — plus on s'eloigne de la source, plus l'information est 'epaisse'"
+
+  - id: "EC-H1S5-070"
+    source_he: "אעפ\"י שהוא (אורות ל\"ג) אור א' שוה עכ\"ז מחמת הריחוק שנתרחק ונמשך יותר למטה מתעבה יותר... לא לסיבת בחינת האור בעצמו כי כולו שוה"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §2"
+    assertion: |
+      BIEN QUE ce soit un Ohr UN et ÉGAL, à cause de la DISTANCE
+      il s'épaissit davantage en descendant — et encore plus en
+      sortant par le PEH.
+      Ce n'est PAS à cause de la NATURE de l'Ohr lui-même
+      (ki kullo shaveh — car il est entièrement égal).
+      → L'ÉPAISSISSEMENT est extrinsèque (distance), pas intrinsèque (nature).
+      Le médium déforme le message, pas l'émetteur.
+    type: axiome_explicite
+    concepts:
+      - {id: sibat_ivuy, role: cause_extrinsèque}
+      - {id: shivyon_ohr, role: egalite_intrinseque}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'information brute est identique a tous les niveaux — seule la distance de transmission la degrade"
+
+  - id: "EC-H1S5-071"
+    source_he: "אך המשכיל יבין כי אור של מוחין נקרא ע\"ב וזה נקרא ס\"ג ודי בזה"
+    source_ref: "Heikhal 1, Sha'ar 5:2 — §2 conclusion"
+    assertion: |
+      CONCLUSION : "Le SAGE comprendra" (ha-maskil yavin) :
+      L'Ohr des MOHIN (cerveaux/intelligence) = AV (ע"ב = 72).
+      CELUI-CI (l'Ohr du Hotem/SAG) = SAG (ס"ג = 63).
+      "Et cela suffit" (ve-dai be-zeh).
+      → Renvoi discret au lecteur initié. Le SAG est INFÉRIEUR
+      au AV mais en DÉRIVE directement.
+    type: axiome_explicite
+    concepts:
+      - {id: maskil_yavin, role: adresse_au_sage}
+      - {id: ohr_mohin_av, role: lumiere_cerveaux_72}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le 'dai be-zeh' (cela suffit) = signal d'un contenu esoterique non explicite"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S5-021"
+    type: "séquentiel"
+    from: taamim_emtzaiyim
+    to: hotem
+    nature: "Les Ta'amim médians correspondent à l'Ohr du Hotem — 2ème étape après l'Ozen"
+    assertions_source: ["EC-H1S5-052"]
+
+  - id: "REL-H1S5-022"
+    type: causal
+    from: kirvat_pnimi_makif
+    to: hedar_kelim_hotem
+    nature: "Malgré le rapprochement Pnimi/Makif au Hotem, toujours pas de Kelim — seuil non atteint"
+    assertions_source: ["EC-H1S5-055", "EC-H1S5-056"]
+
+  - id: "REL-H1S5-023"
+    type: transformation
+    from: heh_to_dalet_vav
+    to: giluy_vav
+    via: [zeir_anpin_giluy]
+    nature: "Le HEH se décompose en DALET+VAV = la VAV/Z\"A se RÉVÈLE au Hotem"
+    assertions_source: ["EC-H1S5-057", "EC-H1S5-058"]
+
+  - id: "REL-H1S5-024"
+    type: flux
+    from: hitlabshut_ozen_hotem
+    to: hitlabshut_hotem_peh
+    nature: "CHAÎNE de Hitlabshut : Ozen→Hotem→Peh, chaque supérieur habille l'inférieur"
+    assertions_source: ["EC-H1S5-066", "EC-H1S5-067"]
+
+  - id: "REL-H1S5-025"
+    type: causal
+    from: ivuy_hitrahakut
+    to: gradient_ivuy
+    nature: "La DISTANCE depuis la source CAUSE l'épaississement progressif de l'Ohr"
+    assertions_source: ["EC-H1S5-068", "EC-H1S5-069", "EC-H1S5-070"]
+
+  - id: "REL-H1S5-026"
+    type: "séquentiel"
+    from: giluy_vav
+    to: giluy_dalet_peh
+    nature: "La révélation est progressive : VAV au Hotem, puis DALET au Peh"
+    assertions_source: ["EC-H1S5-058", "EC-H1S5-064"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S5-007"
+    nom: "Principe de Hitlabshut (Encapsulation Progressive)"
+    source_assertions: ["EC-H1S5-065", "EC-H1S5-066", "EC-H1S5-067"]
+    formalisation: |
+      Chaque niveau SUPÉRIEUR devient l'ÂME INTÉRIEURE du niveau INFÉRIEUR
+      quand il se prolonge au-delà de sa propre frontière.
+      CHAÎNE : Ozen(=Yehidah) ⊂ Hotem(=Neshamah pour l'Ozen) ⊂ Peh
+      FORMULE : Level(n).soul = Level(n+1) quand Level(n+1) dépasse
+      sa frontière et pénètre dans le domaine de Level(n).
+      Le HITLABSHUT ne détruit pas l'identité de chaque niveau —
+      il les EMBOÎTE en préservant leur autonomie.
+    applications_ia:
+      - "masakh/hitlabshut.py : implémenter l'encapsulation progressive des niveaux"
+      - "ohr.py : chaque couche d'Ohr peut servir de 'soul' à la couche suivante"
+      - "olamot.py : les mondes s'emboîtent (Atzilut dans Beriah, etc.)"
+    questions_ouvertes:
+      - "Le Hitlabshut est-il un wrapping (englobement) ou un enrichment (enrichissement) ?"
+      - "Combien de niveaux de Hitlabshut avant saturation ?"
+
+  - id: "PG-H1S5-008"
+    nom: "Principe d'Épaississement par Distance (Ivuy Hitrahakut)"
+    source_assertions: ["EC-H1S5-068", "EC-H1S5-069", "EC-H1S5-070"]
+    formalisation: |
+      L'Ohr est INTRINSÈQUEMENT UN et ÉGAL à tous les niveaux.
+      L'ÉPAISSISSEMENT est causé UNIQUEMENT par la DISTANCE à la source.
+      FORMULE : Ivuy(x) = f(distance(x, source)) où f est monotone croissante.
+      CONSÉQUENCE : la PERTE de résolution est RÉVERSIBLE en RÉDUISANT
+      la distance (ascension, Tikkun). Ce n'est pas une corruption irréversible.
+      OZEN : Ivuy = min (très zakh/pur)
+      HOTEM : Ivuy = moyen
+      PEH : Ivuy = max (aviut/grossièreté max → Kelim)
+    applications_ia:
+      - "ohr.py : modéliser la perte de résolution comme fonction de la distance au signal source"
+      - "masakh/context_assembler.py : les couches éloignées de la source sont plus 'épaisses' (compressées)"
+      - "La compression d'information (Tsimtsum/IB) n'est pas une perte — c'est un changement de résolution"
+    questions_ouvertes:
+      - "L'Ivuy est-il strictement monotone ou y a-t-il des sauts ?"
+      - "Le Peh crée les Kelim GRÂCE à l'Ivuy — l'épaisseur est-elle NÉCESSAIRE pour la forme ?"

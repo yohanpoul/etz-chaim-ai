@@ -1,0 +1,283 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 7 (=6 original) — Sha'ar Ha-Akudim (שער העקודים)
+# Perek: 3 — L'Ordre de Sortie et de Retour des 10 Sefirot (100%)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §1 : Les Akudim sortent INCOMPLETS intentionnellement — début de
+# la formation des Kelim. Nekudot/Tagin/Otiot inclus mais non révélés.
+# §2 : L'ordre de sortie : Malkhut d'abord → Keter en dernier.
+# Chaque Sefirah est incomplète à sa sortie.
+# §3 : Le retour : Keter remonte en premier → Malkhut en dernier.
+# §4 : Dans les Akudim, ZU"N > AV"I (Panim be-Panim vs Ahor be-Ahor).
+#
+# Source Sefaria : Sefer_Etz_Chaim.6.3
+# IDs : EC-H1S6-027 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 7
+  shaar_name_he: "שער העקודים"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Ordre de sortie (Malkhut→Keter) et de retour (Keter→Malkhut). Sortie incomplete = intentionnelle. ZU\"N > AV\"I dans les Akudim."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : SORTIE INCOMPLÈTE INTENTIONNELLE ───
+
+  - id: "EC-H1S6-027"
+    source_he: "גם ג' בחי' הנקודות ותגין ואותיות כלולים בהם אלא שאינם נגלים כלל כאן עד למטה באורות עינים"
+    source_ref: "Heikhal 1, Sha'ar 6:3 — §1"
+    assertion: |
+      Les 3 aspects NEKUDOT, TAGIN et OTIOT sont INCLUS dans les
+      [Ta'amim des Akudim] mais ne sont PAS RÉVÉLÉS ici — ils ne
+      le seront qu'en-dessous, dans les OROT DES YEUX (Einayim).
+      → Les Akudim contiennent TOUT en potentiel, mais seuls les
+      Ta'amim sont MANIFESTÉS. Le reste attend les stades suivants.
+    type: axiome_explicite
+    concepts:
+      - {id: nta_kelulim, role: nekudot_tagin_otiot_inclus}
+      - {id: orot_einayim, role: revelation_aux_yeux}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les Akudim = etat potentiel complet mais manifestation partielle. Tout est la mais pas encore revele."
+
+  - id: "EC-H1S6-028"
+    source_he: "בעת שיצאו לא יצאו שלימים... וטעם הדבר הוא כי כוונת המאציל היה לעשות עתה התחלת הויות הכלים (נ\"א בתחלה הויות הכלי)"
+    source_ref: "Heikhal 1, Sha'ar 6:3 — §1"
+    assertion: |
+      Au moment de leur SORTIE, les [10 Sefirot] NE SORTENT PAS
+      COMPLÈTES (lo yatz'u shelimim).
+      Variante (Nusah Aher) : "d'abord la formation du Kli" au lieu
+      de "maintenant la formation des Kelim."
+      RAISON : l'INTENTION du Ma'atzil (Émanateur) était de créer
+      le DÉBUT de la formation des Kelim.
+      → L'INCOMPLÉTUDE est INTENTIONNELLE — pas un défaut mais
+      un design. Les Kelim se forment PAR l'incomplétude.
+    type: axiome_explicite
+    concepts:
+      - {id: yetziah_haserah, role: sortie_incomplete}
+      - {id: kavvanat_maatzil, role: intention_de_lemanateur}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'incompletude est un DESIGN PATTERN — les Kelim se forment a travers le manque, pas malgre lui"
+
+  # ─── BLOC B : L'ORDRE DE SORTIE — MALKHUT D'ABORD ───
+
+  - id: "EC-H1S6-029"
+    source_he: "כולם יצאו בבחי' נפש לבד... ואפי' עולם עליון של העקודים אינו רק בבחי' נפש לבד"
+    source_ref: "Heikhal 1, Sha'ar 6:3 — §2"
+    assertion: |
+      TOUS les [Orot des Akudim] sortent au niveau de NEFESH SEULEMENT.
+      Même le monde SUPÉRIEUR des Akudim n'est qu'au niveau de Nefesh.
+      Secret de "L'Éternel a JURÉ par son NEFESH" (Amos 6:8).
+      → Le NEFESH = le minimum vital. Tout commence au niveau
+      le plus bas de l'âme, même pour les mondes les plus élevés.
+    type: axiome_explicite
+    concepts:
+      - {id: nefesh_bilbad_akudim, role: nefesh_seul_dans_akudim}
+      - {id: nishba_be_nafsho, role: jure_par_son_nefesh}
+    mapping:
+      modules: ["ohr.py", "madregot_neshamah.py"]
+      tables: ["ohr_states", "madregot_states"]
+      partzufim: []
+      relevance: "Tout commence au niveau minimal (Nefesh). Meme les systemes superieurs debutent au niveau de base."
+
+  - id: "EC-H1S6-030"
+    source_he: "כל הי\"ס יצאו אבל לא יצאו יחד כולם רק בזא\"ז. והראשון שיצא הוא הספי' אחרונה שבכולם שהוא בחי' המל'"
+    source_ref: "Heikhal 1, Sha'ar 6:3 — §2"
+    assertion: |
+      Les 10 Sefirot sont TOUTES sorties mais PAS ENSEMBLE — l'une
+      après l'autre (ze ahar ze). La PREMIÈRE à sortir est la DERNIÈRE
+      de toutes = MALKHUT.
+      → MALKHUT EN PREMIER : l'ordre de sortie est INVERSÉ par rapport
+      à la hiérarchie. Le plus BAS sort en PREMIER.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_rishonah, role: malkhut_sort_en_premier}
+      - {id: seder_yetziah, role: ordre_de_sortie_inverse}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "L'ordre de creation est INVERSE : le plus bas en premier. Build from the bottom up."
+
+  - id: "EC-H1S6-031"
+    source_he: "ואח\"כ יצא יסוד... ואח\"כ יצא הוד... ואח\"כ נצח... ואח\"כ ת\"ת... ג\"ח... ואח\"כ בינה... ואח\"כ חכמה... ובאחרונה יצא הכתר"
+    source_ref: "Heikhal 1, Sha'ar 6:3 — §2 (reconstitution de l'ordre)"
+    assertion: |
+      ORDRE DE SORTIE complet des 10 Sefirot des Akudim :
+      1. MALKHUT → 2. YESOD → 3. HOD → 4. NETZAH → 5. TIFERET
+      → 6. GEVURAH → 7. HESED → 8. BINAH → 9. HOKHMAH → 10. KETER
+      = du BAS vers le HAUT.
+      Chaque Sefirah sort INCOMPLÈTE : Malkhut avec seulement Nefesh,
+      puis en montant chaque nouvelle Sefirah complète les précédentes.
+    type: axiome_explicite
+    concepts:
+      - {id: seder_yetziah_shalem, role: ordre_complet_bas_en_haut}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Ordre de creation : Malkhut(1) → Keter(10). La fondation d'abord, le sommet en dernier."
+
+  # ─── BLOC C : COMPLÉTION PROGRESSIVE ET RETOUR ───
+
+  - id: "EC-H1S6-032"
+    source_he: "ובבוא כתר נמצא המל' שלימ' מכל ה' אורו' פנימי' שהם נרנח\"י"
+    source_ref: "Heikhal 1, Sha'ar 6:3 — §3"
+    assertion: |
+      Quand le KETER arrive (dernier à sortir), MALKHUT se trouve
+      COMPLÈTE de ses 5 Orot internes (NaRaNHaY).
+      → Malkhut est la PREMIÈRE complétée car elle reçoit un niveau
+      d'Ohr de CHAQUE Sefirah qui sort après elle. 10 sorties →
+      Malkhut reçoit cumulativement NaRaNHaY.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_shlemah, role: malkhut_completee_en_premier}
+      - {id: hashlamah_mitstaberet, role: completion_cumulative}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La premiere sortie est la premiere completee — la fondation recoit de TOUTES les couches suivantes"
+
+  - id: "EC-H1S6-033"
+    source_he: "הוצרכו לחזור ולעלות אל המאציל לקבל ממנו תשלומיהן... הכתר חוזר בתחלת כולם נמצא שיצא אחרון ונכנס ראשון"
+    source_ref: "Heikhal 1, Sha'ar 6:3 — §3"
+    assertion: |
+      Les Sefirot (encore incomplètes) doivent REMONTER au MA'ATZIL
+      (Émanateur) pour recevoir leur COMPLÉMENT (tashlumeihen).
+      Le KETER remonte EN PREMIER (dernier sorti = premier rentré).
+      La MALKHUT remonte EN DERNIER (première sortie = dernière rentrée).
+      → Principe LIFO (Last In, First Out) : l'ordre de retour est
+      l'INVERSE de l'ordre de sortie.
+    type: axiome_explicite
+    concepts:
+      - {id: aliyah_le_maatzil, role: remontee_a_lemanateur}
+      - {id: lifo, role: dernier_sorti_premier_rentre}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "LIFO = Last In First Out. L'architecture des Akudim fonctionne comme une PILE (stack)."
+
+  # ─── BLOC D : ZU"N > AV"I DANS LES AKUDIM ───
+
+  - id: "EC-H1S6-034"
+    source_he: "בעולם העקודים היו זו\"ן גדולים מאו\"א כי זו\"ן היו פב\"פ ואו\"א היו אב\"א"
+    source_ref: "Heikhal 1, Sha'ar 6:3 — §4"
+    assertion: |
+      INVERSION dans les AKUDIM : ZU"N (Zeir Anpin et Nukvah) étaient
+      plus GRANDS qu'AV"I (Abba ve-Imma) — car ZU"N étaient PANIM
+      BE-PANIM (face-à-face) tandis qu'AV"I étaient AHOR BE-AHOR
+      (dos-à-dos).
+      → RENVERSEMENT de la hiérarchie normale (où AV"I > ZU"N).
+      Dans les Akudim, l'INFÉRIEUR dépasse le SUPÉRIEUR.
+    type: axiome_explicite
+    concepts:
+      - {id: zun_gdolim, role: zun_plus_grands_dans_akudim}
+      - {id: hipukh_hierarchie, role: inversion_hierarchique}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["zeir_anpin", "nukva", "abba", "imma"]
+      relevance: "Dans l'etat Akudim (pre-structuration), la hierarchie est INVERSEE. Les inferieurs sont plus complets."
+
+  - id: "EC-H1S6-035"
+    source_he: "זו\"ן השלימו כל צרכם הצריך להם שהם ה' או\"פ וב' מקיפין קודם שחזרו לעלות במאצילם משא\"כ באו\"א"
+    source_ref: "Heikhal 1, Sha'ar 6:3 — §4"
+    assertion: |
+      ZU"N ont complété TOUT ce dont ils avaient besoin — 5 Orot
+      PNIMIM + 2 MAKIFIM — AVANT de remonter au Ma'atzil.
+      Par contre AV"I n'étaient PAS complets : ABBA n'avait que
+      3 Pnimim sans Makif, IMMA n'avait que 4 Pnimim sans Makif.
+      → Dans les Akudim : ZU"N = complets, AV"I = incomplets.
+      L'inverse de l'état normal en Atzilut.
+    type: axiome_explicite
+    concepts:
+      - {id: zun_shlemim, role: zun_complets_5_pnimim_2_makifim}
+      - {id: avi_haserim, role: avi_incomplets_dans_akudim}
+    mapping:
+      modules: ["partzufim/base.py"]
+      tables: []
+      partzufim: ["zeir_anpin", "nukva", "abba", "imma"]
+      relevance: "Dans le prototype (Akudim), le 'bas' est plus complet que le 'haut' — inversion typique d'un v1"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S6-011"
+    type: "séquentiel"
+    from: malkhut_rishonah
+    to: seder_yetziah_shalem
+    nature: "Malkhut sort PREMIÈRE, puis Yesod, Hod... jusqu'à Keter = ordre ascendant"
+    assertions_source: ["EC-H1S6-030", "EC-H1S6-031"]
+
+  - id: "REL-H1S6-012"
+    type: transformation
+    from: yetziah_haserah
+    to: malkhut_shlemah
+    nature: "La sortie INCOMPLÈTE mène à la COMPLÉTION cumulative de Malkhut"
+    assertions_source: ["EC-H1S6-028", "EC-H1S6-032"]
+
+  - id: "REL-H1S6-013"
+    type: causal
+    from: aliyah_le_maatzil
+    to: lifo
+    nature: "Le retour au Ma'atzil suit l'ordre LIFO : Keter remonte en premier"
+    assertions_source: ["EC-H1S6-033"]
+
+  - id: "REL-H1S6-014"
+    type: causal
+    from: zun_shlemim
+    to: zun_gdolim
+    nature: "ZU\"N complets (5P+2M) → plus grands qu'AV\"I incomplets = inversion"
+    assertions_source: ["EC-H1S6-034", "EC-H1S6-035"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S6-004"
+    nom: "Principe de Construction Bottom-Up avec LIFO"
+    source_assertions: ["EC-H1S6-028", "EC-H1S6-030", "EC-H1S6-033"]
+    formalisation: |
+      La CONSTRUCTION procède du BAS vers le HAUT :
+      Malkhut(1) → Yesod(2) → ... → Keter(10)
+      Chaque élément sort INCOMPLET et reçoit sa complétion des
+      éléments suivants.
+      Le RETOUR (pour complétion) suit l'ordre LIFO :
+      Keter remonte en premier → Malkhut en dernier.
+      L'INCOMPLÉTUDE est INTENTIONNELLE : c'est le mécanisme même
+      de formation des Kelim.
+      FORMULE : Build(System) = Stack(Malkhut → Keter) where each
+      level is initially incomplete and completed by subsequent levels.
+      Return(System) = Pop(Keter → Malkhut) = LIFO.
+    applications_ia:
+      - "ohr.py : la construction des modules suit un ordre bottom-up"
+      - "La stack des Akudim = une pile d'appels (call stack) — LIFO naturel"
+      - "Chaque module est deploye incomplet puis complete par les suivants"
+    questions_ouvertes:
+      - "Le LIFO des Akudim est-il analogue au backtracking dans un arbre de recherche ?"
+      - "L'incompletude intentionnelle = le 'lazy loading' architectural ?"

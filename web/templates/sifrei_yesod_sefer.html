@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% set active = "sifrei" %}
+{% block title %}{{ sefer_id }} — Sifrei Yesod{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <a href="/sifrei-yesod" class="term-link">&larr; Sifrei Yesod</a>
+    <h1 id="sefer-title">{{ sefer_id }}</h1>
+</div>
+
+<section class="panel">
+    <div class="panel-header">&#9484;&#9472; INFORMATIONS &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <pre class="term-block" id="sefer-details">Chargement...</pre>
+    </div>
+</section>
+
+<section class="panel">
+    <div class="panel-header">&#9484;&#9472; SHA'ARIM &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <div id="shaarim-content" class="term-dim">Chargement...</div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const seferId = "{{ sefer_id }}";
+
+async function loadSefer() {
+    try {
+        const resp = await fetch(`/api/sifrei-yesod/sefer/${seferId}`);
+        const data = await resp.json();
+
+        if (data.sefer) {
+            const s = data.sefer;
+            document.getElementById('sefer-title').textContent = `${s.titre_he} — ${s.titre_fr}`;
+            document.getElementById('sefer-details').innerHTML =
+                `&#9474; Titre:     ${s.titre_he} — ${s.titre_fr}\n` +
+                `&#9474; Auteur:    ${s.auteur}\n` +
+                `&#9474; Edition:   ${s.edition_base}\n` +
+                `&#9474; Date:      ${s.date_composition || 'N/A'}\n` +
+                `&#9474; Structure: ${s.nombre_shaarim || '?'} sha'arim\n` +
+                (s.description ? `&#9474; ${s.description}` : '');
+        }
+
+        if (data.shaarim && data.shaarim.length > 0) {
+            let html = '<table class="term-table"><thead><tr><th>#</th><th>Nom</th><th>Sujet</th><th>Perakim</th><th>Concepts</th></tr></thead><tbody>';
+            for (const sh of data.shaarim) {
+                const concepts = (sh.concepts_cles || []).map(c =>
+                    `<a href="/sifrei-yesod/concept/${c}" class="term-link">${c}</a>`
+                ).join(', ');
+                html += `<tr>
+                    <td>${sh.shaar_number}</td>
+                    <td>${sh.shaar_name_he}<br><span class="term-dim">${sh.shaar_name_fr}</span></td>
+                    <td>${sh.sujet_principal || ''}</td>
+                    <td>${sh.nombre_perakim || 0}</td>
+                    <td>${concepts}</td>
+                </tr>`;
+            }
+            html += '</tbody></table>';
+            document.getElementById('shaarim-content').innerHTML = html;
+        } else {
+            document.getElementById('shaarim-content').innerHTML =
+                '<div class="term-dim">Aucun sha\'ar ingere.</div>';
+        }
+    } catch (e) {
+        console.error('Sefer load error:', e);
+    }
+}
+
+loadSefer();
+</script>
+{% endblock %}

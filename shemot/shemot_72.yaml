@@ -1,0 +1,1092 @@
+# ══════════════════════════════════════════════════════════════
+# שֵׁם הַמְפֹרָשׁ — Les 72 Noms : Attributs Sacrés Traditionnels
+# ══════════════════════════════════════════════════════════════
+#
+# Sources croisées :
+#   - Reuchlin, De Arte Cabalistica (1517) — noms angéliques, suffixes
+#   - Lenain, La Science Cabalistique (1823) — dates, zodiaque, psaumes
+#   - Ambelain, La Kabbale Pratique (1951) — chœurs, éléments
+#   - Kircher, Oedipus Aegyptiacus (1652) — correspondances
+#
+# Système zodiacal : Bélier (0° = équinoxe, tradition Lenain/Ambelain)
+# Suffixes : tels que transmis par Reuchlin (pas la règle simplifiée 1-36=El, 37-72=Yah)
+#
+# Champs :
+#   number        — Position 1-72
+#   trigram       — 3 lettres hébraïques (racine d'Exode 14:19-21)
+#   transliteration — Translittération latine de la triade
+#   suffix        — "El" (אל) ou "Yah" (יה)
+#   angel_name    — Nom complet de l'ange
+#   choir         — Chœur angélique (9 chœurs × 8 anges)
+#   sephirah      — Sephirah d'appartenance (selon chœur)
+#   zodiac_sign   — Signe zodiacal
+#   zodiac_degrees — Quinaire (5°)
+#   element       — Feu / Terre / Air / Eau (selon signe)
+#   calendar_start — Début de la période calendaire (JJ mois)
+#   calendar_end   — Fin de la période calendaire (JJ mois)
+#   psalm_verse   — Verset de psaume associé
+
+shemot:
+  # ══════════════════════════════════════════════════════════
+  # SÉRAPHIM (Chœur 1) — Keter — Anges 1-8
+  # ══════════════════════════════════════════════════════════
+
+  - number: 1
+    trigram: "והו"
+    transliteration: "VHV"
+    suffix: "Yah"
+    angel_name: "Vehuiah"
+    choir: "Seraphim"
+    sephirah: "Keter"
+    zodiac_sign: "Bélier"
+    zodiac_degrees: "0-5"
+    element: "Feu"
+    calendar_start: "21 mars"
+    calendar_end: "25 mars"
+    psalm_verse: "Ps 3:3"
+
+  - number: 2
+    trigram: "ילי"
+    transliteration: "YLY"
+    suffix: "El"
+    angel_name: "Jeliel"
+    choir: "Seraphim"
+    sephirah: "Keter"
+    zodiac_sign: "Bélier"
+    zodiac_degrees: "5-10"
+    element: "Feu"
+    calendar_start: "26 mars"
+    calendar_end: "30 mars"
+    psalm_verse: "Ps 22:19"
+
+  - number: 3
+    trigram: "סיט"
+    transliteration: "SYT"
+    suffix: "El"
+    angel_name: "Sitael"
+    choir: "Seraphim"
+    sephirah: "Keter"
+    zodiac_sign: "Bélier"
+    zodiac_degrees: "10-15"
+    element: "Feu"
+    calendar_start: "31 mars"
+    calendar_end: "4 avril"
+    psalm_verse: "Ps 91:2"
+
+  - number: 4
+    trigram: "עלם"
+    transliteration: "OLM"
+    suffix: "Yah"
+    angel_name: "Elemiah"
+    choir: "Seraphim"
+    sephirah: "Keter"
+    zodiac_sign: "Bélier"
+    zodiac_degrees: "15-20"
+    element: "Feu"
+    calendar_start: "5 avril"
+    calendar_end: "9 avril"
+    psalm_verse: "Ps 6:4"
+
+  - number: 5
+    trigram: "מהש"
+    transliteration: "MHSh"
+    suffix: "Yah"
+    angel_name: "Mahasiah"
+    choir: "Seraphim"
+    sephirah: "Keter"
+    zodiac_sign: "Bélier"
+    zodiac_degrees: "20-25"
+    element: "Feu"
+    calendar_start: "10 avril"
+    calendar_end: "14 avril"
+    psalm_verse: "Ps 34:4"
+
+  - number: 6
+    trigram: "ללה"
+    transliteration: "LLH"
+    suffix: "El"
+    angel_name: "Lelahel"
+    choir: "Seraphim"
+    sephirah: "Keter"
+    zodiac_sign: "Bélier"
+    zodiac_degrees: "25-30"
+    element: "Feu"
+    calendar_start: "15 avril"
+    calendar_end: "20 avril"
+    psalm_verse: "Ps 9:11"
+
+  - number: 7
+    trigram: "אכא"
+    transliteration: "AKA"
+    suffix: "Yah"
+    angel_name: "Achaiah"
+    choir: "Seraphim"
+    sephirah: "Keter"
+    zodiac_sign: "Taureau"
+    zodiac_degrees: "0-5"
+    element: "Terre"
+    calendar_start: "21 avril"
+    calendar_end: "25 avril"
+    psalm_verse: "Ps 103:8"
+
+  - number: 8
+    trigram: "כהת"
+    transliteration: "KHTh"
+    suffix: "El"
+    angel_name: "Cahetel"
+    choir: "Seraphim"
+    sephirah: "Keter"
+    zodiac_sign: "Taureau"
+    zodiac_degrees: "5-10"
+    element: "Terre"
+    calendar_start: "26 avril"
+    calendar_end: "30 avril"
+    psalm_verse: "Ps 95:6"
+
+  # ══════════════════════════════════════════════════════════
+  # CHÉRUBIM (Chœur 2) — Hokhmah — Anges 9-16
+  # ══════════════════════════════════════════════════════════
+
+  - number: 9
+    trigram: "הזי"
+    transliteration: "HZY"
+    suffix: "El"
+    angel_name: "Haziel"
+    choir: "Cherubim"
+    sephirah: "Hokhmah"
+    zodiac_sign: "Taureau"
+    zodiac_degrees: "10-15"
+    element: "Terre"
+    calendar_start: "1 mai"
+    calendar_end: "5 mai"
+    psalm_verse: "Ps 25:6"
+
+  - number: 10
+    trigram: "אלד"
+    transliteration: "ALD"
+    suffix: "Yah"
+    angel_name: "Aladiah"
+    choir: "Cherubim"
+    sephirah: "Hokhmah"
+    zodiac_sign: "Taureau"
+    zodiac_degrees: "15-20"
+    element: "Terre"
+    calendar_start: "6 mai"
+    calendar_end: "10 mai"
+    psalm_verse: "Ps 33:22"
+
+  - number: 11
+    trigram: "לאו"
+    transliteration: "LAV"
+    suffix: "Yah"
+    angel_name: "Lauviah I"
+    choir: "Cherubim"
+    sephirah: "Hokhmah"
+    zodiac_sign: "Taureau"
+    zodiac_degrees: "20-25"
+    element: "Terre"
+    calendar_start: "11 mai"
+    calendar_end: "15 mai"
+    psalm_verse: "Ps 18:46"
+
+  - number: 12
+    trigram: "ההע"
+    transliteration: "HHO"
+    suffix: "Yah"
+    angel_name: "Hahaiah"
+    choir: "Cherubim"
+    sephirah: "Hokhmah"
+    zodiac_sign: "Taureau"
+    zodiac_degrees: "25-30"
+    element: "Terre"
+    calendar_start: "16 mai"
+    calendar_end: "20 mai"
+    psalm_verse: "Ps 10:1"
+
+  - number: 13
+    trigram: "יזל"
+    transliteration: "YZL"
+    suffix: "El"
+    angel_name: "Iezalel"
+    choir: "Cherubim"
+    sephirah: "Hokhmah"
+    zodiac_sign: "Gémeaux"
+    zodiac_degrees: "0-5"
+    element: "Air"
+    calendar_start: "21 mai"
+    calendar_end: "26 mai"
+    psalm_verse: "Ps 98:4"
+
+  - number: 14
+    trigram: "מבה"
+    transliteration: "MBH"
+    suffix: "El"
+    angel_name: "Mebahel"
+    choir: "Cherubim"
+    sephirah: "Hokhmah"
+    zodiac_sign: "Gémeaux"
+    zodiac_degrees: "5-10"
+    element: "Air"
+    calendar_start: "26 mai"
+    calendar_end: "31 mai"
+    psalm_verse: "Ps 9:9"
+
+  - number: 15
+    trigram: "הרי"
+    transliteration: "HRI"
+    suffix: "El"
+    angel_name: "Hariel"
+    choir: "Cherubim"
+    sephirah: "Hokhmah"
+    zodiac_sign: "Gémeaux"
+    zodiac_degrees: "10-15"
+    element: "Air"
+    calendar_start: "1 juin"
+    calendar_end: "5 juin"
+    psalm_verse: "Ps 94:22"
+
+  - number: 16
+    trigram: "הקם"
+    transliteration: "HQM"
+    suffix: "Yah"
+    angel_name: "Hakamiah"
+    choir: "Cherubim"
+    sephirah: "Hokhmah"
+    zodiac_sign: "Gémeaux"
+    zodiac_degrees: "15-20"
+    element: "Air"
+    calendar_start: "6 juin"
+    calendar_end: "10 juin"
+    psalm_verse: "Ps 88:1"
+
+  # ══════════════════════════════════════════════════════════
+  # TRÔNES (Chœur 3) — Binah — Anges 17-24
+  # ══════════════════════════════════════════════════════════
+
+  - number: 17
+    trigram: "לאו"
+    transliteration: "LAV"
+    suffix: "Yah"
+    angel_name: "Lauviah II"
+    choir: "Trones"
+    sephirah: "Binah"
+    zodiac_sign: "Gémeaux"
+    zodiac_degrees: "20-25"
+    element: "Air"
+    calendar_start: "11 juin"
+    calendar_end: "16 juin"
+    psalm_verse: "Ps 8:9"
+
+  - number: 18
+    trigram: "כלי"
+    transliteration: "KLY"
+    suffix: "El"
+    angel_name: "Caliel"
+    choir: "Trones"
+    sephirah: "Binah"
+    zodiac_sign: "Gémeaux"
+    zodiac_degrees: "25-30"
+    element: "Air"
+    calendar_start: "16 juin"
+    calendar_end: "21 juin"
+    psalm_verse: "Ps 35:24"
+
+  - number: 19
+    trigram: "לוו"
+    transliteration: "LVV"
+    suffix: "Yah"
+    angel_name: "Leuviah"
+    choir: "Trones"
+    sephirah: "Binah"
+    zodiac_sign: "Cancer"
+    zodiac_degrees: "0-5"
+    element: "Eau"
+    calendar_start: "22 juin"
+    calendar_end: "26 juin"
+    psalm_verse: "Ps 40:1"
+
+  - number: 20
+    trigram: "פהל"
+    transliteration: "PHL"
+    suffix: "Yah"
+    angel_name: "Pahaliah"
+    choir: "Trones"
+    sephirah: "Binah"
+    zodiac_sign: "Cancer"
+    zodiac_degrees: "5-10"
+    element: "Eau"
+    calendar_start: "27 juin"
+    calendar_end: "1 juillet"
+    psalm_verse: "Ps 120:1-2"
+
+  - number: 21
+    trigram: "נלך"
+    transliteration: "NLK"
+    suffix: "El"
+    angel_name: "Nelchael"
+    choir: "Trones"
+    sephirah: "Binah"
+    zodiac_sign: "Cancer"
+    zodiac_degrees: "10-15"
+    element: "Eau"
+    calendar_start: "2 juillet"
+    calendar_end: "6 juillet"
+    psalm_verse: "Ps 31:14"
+
+  - number: 22
+    trigram: "ייי"
+    transliteration: "YYY"
+    suffix: "El"
+    angel_name: "Yeiayel"
+    choir: "Trones"
+    sephirah: "Binah"
+    zodiac_sign: "Cancer"
+    zodiac_degrees: "15-20"
+    element: "Eau"
+    calendar_start: "7 juillet"
+    calendar_end: "11 juillet"
+    psalm_verse: "Ps 121:5"
+
+  - number: 23
+    trigram: "מלה"
+    transliteration: "MLH"
+    suffix: "El"
+    angel_name: "Melahel"
+    choir: "Trones"
+    sephirah: "Binah"
+    zodiac_sign: "Cancer"
+    zodiac_degrees: "20-25"
+    element: "Eau"
+    calendar_start: "12 juillet"
+    calendar_end: "16 juillet"
+    psalm_verse: "Ps 121:8"
+
+  - number: 24
+    trigram: "חהו"
+    transliteration: "ChHV"
+    suffix: "Yah"
+    angel_name: "Haheuiah"
+    choir: "Trones"
+    sephirah: "Binah"
+    zodiac_sign: "Cancer"
+    zodiac_degrees: "25-30"
+    element: "Eau"
+    calendar_start: "17 juillet"
+    calendar_end: "22 juillet"
+    psalm_verse: "Ps 33:18"
+
+  # ══════════════════════════════════════════════════════════
+  # DOMINATIONS (Chœur 4) — Hesed — Anges 25-32
+  # ══════════════════════════════════════════════════════════
+
+  - number: 25
+    trigram: "נתה"
+    transliteration: "NThH"
+    suffix: "Yah"
+    angel_name: "Nith-Haiah"
+    choir: "Dominations"
+    sephirah: "Hesed"
+    zodiac_sign: "Lion"
+    zodiac_degrees: "0-5"
+    element: "Feu"
+    calendar_start: "23 juillet"
+    calendar_end: "27 juillet"
+    psalm_verse: "Ps 9:1"
+
+  - number: 26
+    trigram: "האא"
+    transliteration: "HAA"
+    suffix: "Yah"
+    angel_name: "Haaiah"
+    choir: "Dominations"
+    sephirah: "Hesed"
+    zodiac_sign: "Lion"
+    zodiac_degrees: "5-10"
+    element: "Feu"
+    calendar_start: "28 juillet"
+    calendar_end: "1 août"
+    psalm_verse: "Ps 119:145"
+
+  - number: 27
+    trigram: "ירת"
+    transliteration: "YRTh"
+    suffix: "El"
+    angel_name: "Yerathel"
+    choir: "Dominations"
+    sephirah: "Hesed"
+    zodiac_sign: "Lion"
+    zodiac_degrees: "10-15"
+    element: "Feu"
+    calendar_start: "2 août"
+    calendar_end: "6 août"
+    psalm_verse: "Ps 140:1"
+
+  - number: 28
+    trigram: "שאה"
+    transliteration: "ShAH"
+    suffix: "Yah"
+    angel_name: "Seheiah"
+    choir: "Dominations"
+    sephirah: "Hesed"
+    zodiac_sign: "Lion"
+    zodiac_degrees: "15-20"
+    element: "Feu"
+    calendar_start: "7 août"
+    calendar_end: "12 août"
+    psalm_verse: "Ps 71:12"
+
+  - number: 29
+    trigram: "ריי"
+    transliteration: "RYY"
+    suffix: "El"
+    angel_name: "Reiyel"
+    choir: "Dominations"
+    sephirah: "Hesed"
+    zodiac_sign: "Lion"
+    zodiac_degrees: "20-25"
+    element: "Feu"
+    calendar_start: "13 août"
+    calendar_end: "17 août"
+    psalm_verse: "Ps 54:4"
+
+  - number: 30
+    trigram: "אום"
+    transliteration: "AVM"
+    suffix: "El"
+    angel_name: "Omael"
+    choir: "Dominations"
+    sephirah: "Hesed"
+    zodiac_sign: "Lion"
+    zodiac_degrees: "25-30"
+    element: "Feu"
+    calendar_start: "18 août"
+    calendar_end: "22 août"
+    psalm_verse: "Ps 71:5"
+
+  - number: 31
+    trigram: "לכב"
+    transliteration: "LKB"
+    suffix: "El"
+    angel_name: "Lecabel"
+    choir: "Dominations"
+    sephirah: "Hesed"
+    zodiac_sign: "Vierge"
+    zodiac_degrees: "0-5"
+    element: "Terre"
+    calendar_start: "23 août"
+    calendar_end: "28 août"
+    psalm_verse: "Ps 71:16"
+
+  - number: 32
+    trigram: "ושר"
+    transliteration: "VShR"
+    suffix: "Yah"
+    angel_name: "Vasariah"
+    choir: "Dominations"
+    sephirah: "Hesed"
+    zodiac_sign: "Vierge"
+    zodiac_degrees: "5-10"
+    element: "Terre"
+    calendar_start: "29 août"
+    calendar_end: "2 septembre"
+    psalm_verse: "Ps 33:4"
+
+  # ══════════════════════════════════════════════════════════
+  # PUISSANCES (Chœur 5) — Gevurah — Anges 33-40
+  # ══════════════════════════════════════════════════════════
+
+  - number: 33
+    trigram: "יחו"
+    transliteration: "YChV"
+    suffix: "Yah"
+    angel_name: "Yehuiah"
+    choir: "Puissances"
+    sephirah: "Gevurah"
+    zodiac_sign: "Vierge"
+    zodiac_degrees: "10-15"
+    element: "Terre"
+    calendar_start: "3 septembre"
+    calendar_end: "7 septembre"
+    psalm_verse: "Ps 94:11"
+
+  - number: 34
+    trigram: "להח"
+    transliteration: "LHCh"
+    suffix: "Yah"
+    angel_name: "Lehahiah"
+    choir: "Puissances"
+    sephirah: "Gevurah"
+    zodiac_sign: "Vierge"
+    zodiac_degrees: "15-20"
+    element: "Terre"
+    calendar_start: "8 septembre"
+    calendar_end: "12 septembre"
+    psalm_verse: "Ps 131:3"
+
+  - number: 35
+    trigram: "כוק"
+    transliteration: "KVQ"
+    suffix: "Yah"
+    angel_name: "Chavakiah"
+    choir: "Puissances"
+    sephirah: "Gevurah"
+    zodiac_sign: "Vierge"
+    zodiac_degrees: "20-25"
+    element: "Terre"
+    calendar_start: "13 septembre"
+    calendar_end: "17 septembre"
+    psalm_verse: "Ps 116:1"
+
+  - number: 36
+    trigram: "מנד"
+    transliteration: "MND"
+    suffix: "El"
+    angel_name: "Menadel"
+    choir: "Puissances"
+    sephirah: "Gevurah"
+    zodiac_sign: "Vierge"
+    zodiac_degrees: "25-30"
+    element: "Terre"
+    calendar_start: "18 septembre"
+    calendar_end: "23 septembre"
+    psalm_verse: "Ps 26:8"
+
+  - number: 37
+    trigram: "אני"
+    transliteration: "ANY"
+    suffix: "El"
+    angel_name: "Aniel"
+    choir: "Puissances"
+    sephirah: "Gevurah"
+    zodiac_sign: "Balance"
+    zodiac_degrees: "0-5"
+    element: "Air"
+    calendar_start: "24 septembre"
+    calendar_end: "28 septembre"
+    psalm_verse: "Ps 80:3"
+
+  - number: 38
+    trigram: "חעם"
+    transliteration: "ChOM"
+    suffix: "Yah"
+    angel_name: "Haamiah"
+    choir: "Puissances"
+    sephirah: "Gevurah"
+    zodiac_sign: "Balance"
+    zodiac_degrees: "5-10"
+    element: "Air"
+    calendar_start: "29 septembre"
+    calendar_end: "3 octobre"
+    psalm_verse: "Ps 91:9"
+
+  - number: 39
+    trigram: "רהע"
+    transliteration: "RHO"
+    suffix: "El"
+    angel_name: "Rehael"
+    choir: "Puissances"
+    sephirah: "Gevurah"
+    zodiac_sign: "Balance"
+    zodiac_degrees: "10-15"
+    element: "Air"
+    calendar_start: "4 octobre"
+    calendar_end: "8 octobre"
+    psalm_verse: "Ps 30:10"
+
+  - number: 40
+    trigram: "ייז"
+    transliteration: "YYZ"
+    suffix: "El"
+    angel_name: "Yeiazel"
+    choir: "Puissances"
+    sephirah: "Gevurah"
+    zodiac_sign: "Balance"
+    zodiac_degrees: "15-20"
+    element: "Air"
+    calendar_start: "9 octobre"
+    calendar_end: "13 octobre"
+    psalm_verse: "Ps 88:14"
+
+  # ══════════════════════════════════════════════════════════
+  # VERTUS (Chœur 6) — Tiferet — Anges 41-48
+  # ══════════════════════════════════════════════════════════
+
+  - number: 41
+    trigram: "ההה"
+    transliteration: "HHH"
+    suffix: "El"
+    angel_name: "Hahahel"
+    choir: "Vertus"
+    sephirah: "Tiferet"
+    zodiac_sign: "Balance"
+    zodiac_degrees: "20-25"
+    element: "Air"
+    calendar_start: "14 octobre"
+    calendar_end: "18 octobre"
+    psalm_verse: "Ps 120:2"
+
+  - number: 42
+    trigram: "מיכ"
+    transliteration: "MYK"
+    suffix: "El"
+    angel_name: "Mikael"
+    choir: "Vertus"
+    sephirah: "Tiferet"
+    zodiac_sign: "Balance"
+    zodiac_degrees: "25-30"
+    element: "Air"
+    calendar_start: "19 octobre"
+    calendar_end: "23 octobre"
+    psalm_verse: "Ps 121:7"
+
+  - number: 43
+    trigram: "וול"
+    transliteration: "VVL"
+    suffix: "Yah"
+    angel_name: "Veuliah"
+    choir: "Vertus"
+    sephirah: "Tiferet"
+    zodiac_sign: "Scorpion"
+    zodiac_degrees: "0-5"
+    element: "Eau"
+    calendar_start: "24 octobre"
+    calendar_end: "28 octobre"
+    psalm_verse: "Ps 88:13"
+
+  - number: 44
+    trigram: "ילה"
+    transliteration: "YLH"
+    suffix: "Yah"
+    angel_name: "Yelahiah"
+    choir: "Vertus"
+    sephirah: "Tiferet"
+    zodiac_sign: "Scorpion"
+    zodiac_degrees: "5-10"
+    element: "Eau"
+    calendar_start: "29 octobre"
+    calendar_end: "2 novembre"
+    psalm_verse: "Ps 119:108"
+
+  - number: 45
+    trigram: "סאל"
+    transliteration: "SAL"
+    suffix: "Yah"
+    angel_name: "Sealiah"
+    choir: "Vertus"
+    sephirah: "Tiferet"
+    zodiac_sign: "Scorpion"
+    zodiac_degrees: "10-15"
+    element: "Eau"
+    calendar_start: "3 novembre"
+    calendar_end: "7 novembre"
+    psalm_verse: "Ps 94:18"
+
+  - number: 46
+    trigram: "ערי"
+    transliteration: "ORY"
+    suffix: "El"
+    angel_name: "Ariel"
+    choir: "Vertus"
+    sephirah: "Tiferet"
+    zodiac_sign: "Scorpion"
+    zodiac_degrees: "15-20"
+    element: "Eau"
+    calendar_start: "8 novembre"
+    calendar_end: "12 novembre"
+    psalm_verse: "Ps 145:9"
+
+  - number: 47
+    trigram: "עשל"
+    transliteration: "OShL"
+    suffix: "Yah"
+    angel_name: "Asaliah"
+    choir: "Vertus"
+    sephirah: "Tiferet"
+    zodiac_sign: "Scorpion"
+    zodiac_degrees: "20-25"
+    element: "Eau"
+    calendar_start: "13 novembre"
+    calendar_end: "17 novembre"
+    psalm_verse: "Ps 92:5"
+
+  - number: 48
+    trigram: "מיה"
+    transliteration: "MYH"
+    suffix: "El"
+    angel_name: "Mihael"
+    choir: "Vertus"
+    sephirah: "Tiferet"
+    zodiac_sign: "Scorpion"
+    zodiac_degrees: "25-30"
+    element: "Eau"
+    calendar_start: "18 novembre"
+    calendar_end: "22 novembre"
+    psalm_verse: "Ps 98:2"
+
+  # ══════════════════════════════════════════════════════════
+  # PRINCIPAUTÉS (Chœur 7) — Netzah — Anges 49-56
+  # ══════════════════════════════════════════════════════════
+
+  - number: 49
+    trigram: "והו"
+    transliteration: "VHV"
+    suffix: "El"
+    angel_name: "Vehuel"
+    choir: "Principautes"
+    sephirah: "Netzah"
+    zodiac_sign: "Sagittaire"
+    zodiac_degrees: "0-5"
+    element: "Feu"
+    calendar_start: "23 novembre"
+    calendar_end: "27 novembre"
+    psalm_verse: "Ps 145:3"
+
+  - number: 50
+    trigram: "דני"
+    transliteration: "DNY"
+    suffix: "El"
+    angel_name: "Daniel"
+    choir: "Principautes"
+    sephirah: "Netzah"
+    zodiac_sign: "Sagittaire"
+    zodiac_degrees: "5-10"
+    element: "Feu"
+    calendar_start: "28 novembre"
+    calendar_end: "2 décembre"
+    psalm_verse: "Ps 145:8"
+
+  - number: 51
+    trigram: "החש"
+    transliteration: "HChSh"
+    suffix: "Yah"
+    angel_name: "Hahasiah"
+    choir: "Principautes"
+    sephirah: "Netzah"
+    zodiac_sign: "Sagittaire"
+    zodiac_degrees: "10-15"
+    element: "Feu"
+    calendar_start: "3 décembre"
+    calendar_end: "7 décembre"
+    psalm_verse: "Ps 104:31"
+
+  - number: 52
+    trigram: "עמם"
+    transliteration: "OMM"
+    suffix: "Yah"
+    angel_name: "Imamiah"
+    choir: "Principautes"
+    sephirah: "Netzah"
+    zodiac_sign: "Sagittaire"
+    zodiac_degrees: "15-20"
+    element: "Feu"
+    calendar_start: "8 décembre"
+    calendar_end: "12 décembre"
+    psalm_verse: "Ps 7:17"
+
+  - number: 53
+    trigram: "ננא"
+    transliteration: "NNA"
+    suffix: "El"
+    angel_name: "Nanael"
+    choir: "Principautes"
+    sephirah: "Netzah"
+    zodiac_sign: "Sagittaire"
+    zodiac_degrees: "20-25"
+    element: "Feu"
+    calendar_start: "13 décembre"
+    calendar_end: "16 décembre"
+    psalm_verse: "Ps 119:75"
+
+  - number: 54
+    trigram: "נית"
+    transliteration: "NYTh"
+    suffix: "El"
+    angel_name: "Nithael"
+    choir: "Principautes"
+    sephirah: "Netzah"
+    zodiac_sign: "Sagittaire"
+    zodiac_degrees: "25-30"
+    element: "Feu"
+    calendar_start: "17 décembre"
+    calendar_end: "21 décembre"
+    psalm_verse: "Ps 103:19"
+
+  - number: 55
+    trigram: "מבה"
+    transliteration: "MBH"
+    suffix: "Yah"
+    angel_name: "Mebahiah"
+    choir: "Principautes"
+    sephirah: "Netzah"
+    zodiac_sign: "Capricorne"
+    zodiac_degrees: "0-5"
+    element: "Terre"
+    calendar_start: "22 décembre"
+    calendar_end: "26 décembre"
+    psalm_verse: "Ps 102:12"
+
+  - number: 56
+    trigram: "פעי"
+    transliteration: "PVY"
+    suffix: "El"
+    angel_name: "Poyel"
+    choir: "Principautes"
+    sephirah: "Netzah"
+    zodiac_sign: "Capricorne"
+    zodiac_degrees: "5-10"
+    element: "Terre"
+    calendar_start: "27 décembre"
+    calendar_end: "31 décembre"
+    psalm_verse: "Ps 145:14"
+
+  # ══════════════════════════════════════════════════════════
+  # ARCHANGES (Chœur 8) — Hod — Anges 57-64
+  # ══════════════════════════════════════════════════════════
+
+  - number: 57
+    trigram: "נמם"
+    transliteration: "NMM"
+    suffix: "Yah"
+    angel_name: "Nemamiah"
+    choir: "Archanges"
+    sephirah: "Hod"
+    zodiac_sign: "Capricorne"
+    zodiac_degrees: "10-15"
+    element: "Terre"
+    calendar_start: "1 janvier"
+    calendar_end: "5 janvier"
+    psalm_verse: "Ps 115:11"
+
+  - number: 58
+    trigram: "ייל"
+    transliteration: "YYL"
+    suffix: "El"
+    angel_name: "Yeialel"
+    choir: "Archanges"
+    sephirah: "Hod"
+    zodiac_sign: "Capricorne"
+    zodiac_degrees: "15-20"
+    element: "Terre"
+    calendar_start: "6 janvier"
+    calendar_end: "10 janvier"
+    psalm_verse: "Ps 6:3"
+
+  - number: 59
+    trigram: "הרח"
+    transliteration: "HRCh"
+    suffix: "El"
+    angel_name: "Harahel"
+    choir: "Archanges"
+    sephirah: "Hod"
+    zodiac_sign: "Capricorne"
+    zodiac_degrees: "20-25"
+    element: "Terre"
+    calendar_start: "11 janvier"
+    calendar_end: "15 janvier"
+    psalm_verse: "Ps 113:3"
+
+  - number: 60
+    trigram: "מצר"
+    transliteration: "MTzR"
+    suffix: "El"
+    angel_name: "Mitzrael"
+    choir: "Archanges"
+    sephirah: "Hod"
+    zodiac_sign: "Capricorne"
+    zodiac_degrees: "25-30"
+    element: "Terre"
+    calendar_start: "16 janvier"
+    calendar_end: "20 janvier"
+    psalm_verse: "Ps 145:17"
+
+  - number: 61
+    trigram: "ומב"
+    transliteration: "VMB"
+    suffix: "El"
+    angel_name: "Umabel"
+    choir: "Archanges"
+    sephirah: "Hod"
+    zodiac_sign: "Verseau"
+    zodiac_degrees: "0-5"
+    element: "Air"
+    calendar_start: "21 janvier"
+    calendar_end: "25 janvier"
+    psalm_verse: "Ps 113:2"
+
+  - number: 62
+    trigram: "יהה"
+    transliteration: "YHH"
+    suffix: "El"
+    angel_name: "Iah-Hel"
+    choir: "Archanges"
+    sephirah: "Hod"
+    zodiac_sign: "Verseau"
+    zodiac_degrees: "5-10"
+    element: "Air"
+    calendar_start: "26 janvier"
+    calendar_end: "30 janvier"
+    psalm_verse: "Ps 119:159"
+
+  - number: 63
+    trigram: "ענו"
+    transliteration: "ONV"
+    suffix: "El"
+    angel_name: "Anauel"
+    choir: "Archanges"
+    sephirah: "Hod"
+    zodiac_sign: "Verseau"
+    zodiac_degrees: "10-15"
+    element: "Air"
+    calendar_start: "31 janvier"
+    calendar_end: "4 février"
+    psalm_verse: "Ps 100:2"
+
+  - number: 64
+    trigram: "מחי"
+    transliteration: "MChY"
+    suffix: "El"
+    angel_name: "Mehiel"
+    choir: "Archanges"
+    sephirah: "Hod"
+    zodiac_sign: "Verseau"
+    zodiac_degrees: "15-20"
+    element: "Air"
+    calendar_start: "5 février"
+    calendar_end: "9 février"
+    psalm_verse: "Ps 33:18"
+
+  # ══════════════════════════════════════════════════════════
+  # ANGES (Chœur 9) — Yesod — Anges 65-72
+  # ══════════════════════════════════════════════════════════
+
+  - number: 65
+    trigram: "דמב"
+    transliteration: "DMB"
+    suffix: "Yah"
+    angel_name: "Damabiah"
+    choir: "Anges"
+    sephirah: "Yesod"
+    zodiac_sign: "Verseau"
+    zodiac_degrees: "20-25"
+    element: "Air"
+    calendar_start: "10 février"
+    calendar_end: "14 février"
+    psalm_verse: "Ps 90:13"
+
+  - number: 66
+    trigram: "מנק"
+    transliteration: "MNQ"
+    suffix: "El"
+    angel_name: "Manakel"
+    choir: "Anges"
+    sephirah: "Yesod"
+    zodiac_sign: "Verseau"
+    zodiac_degrees: "25-30"
+    element: "Air"
+    calendar_start: "15 février"
+    calendar_end: "19 février"
+    psalm_verse: "Ps 38:21"
+
+  - number: 67
+    trigram: "איע"
+    transliteration: "AYA"
+    suffix: "El"
+    angel_name: "Eyael"
+    choir: "Anges"
+    sephirah: "Yesod"
+    zodiac_sign: "Poissons"
+    zodiac_degrees: "0-5"
+    element: "Eau"
+    calendar_start: "20 février"
+    calendar_end: "24 février"
+    psalm_verse: "Ps 37:4"
+
+  - number: 68
+    trigram: "חבו"
+    transliteration: "ChBV"
+    suffix: "Yah"
+    angel_name: "Habuhiah"
+    choir: "Anges"
+    sephirah: "Yesod"
+    zodiac_sign: "Poissons"
+    zodiac_degrees: "5-10"
+    element: "Eau"
+    calendar_start: "25 février"
+    calendar_end: "29 février"
+    psalm_verse: "Ps 106:1"
+
+  - number: 69
+    trigram: "ראה"
+    transliteration: "ROH"
+    suffix: "El"
+    angel_name: "Rochel"
+    choir: "Anges"
+    sephirah: "Yesod"
+    zodiac_sign: "Poissons"
+    zodiac_degrees: "10-15"
+    element: "Eau"
+    calendar_start: "1 mars"
+    calendar_end: "5 mars"
+    psalm_verse: "Ps 16:5"
+
+  - number: 70
+    trigram: "יבם"
+    transliteration: "YBM"
+    suffix: "Yah"
+    angel_name: "Yabamiah"
+    choir: "Anges"
+    sephirah: "Yesod"
+    zodiac_sign: "Poissons"
+    zodiac_degrees: "15-20"
+    element: "Eau"
+    calendar_start: "6 mars"
+    calendar_end: "10 mars"
+    psalm_verse: "Gen 1:1"
+
+  - number: 71
+    trigram: "היי"
+    transliteration: "HYY"
+    suffix: "El"
+    angel_name: "Haiaiel"
+    choir: "Anges"
+    sephirah: "Yesod"
+    zodiac_sign: "Poissons"
+    zodiac_degrees: "20-25"
+    element: "Eau"
+    calendar_start: "11 mars"
+    calendar_end: "15 mars"
+    psalm_verse: "Ps 109:30"
+
+  - number: 72
+    trigram: "מום"
+    transliteration: "MVM"
+    suffix: "Yah"
+    angel_name: "Mumiah"
+    choir: "Anges"
+    sephirah: "Yesod"
+    zodiac_sign: "Poissons"
+    zodiac_degrees: "25-30"
+    element: "Eau"
+    calendar_start: "16 mars"
+    calendar_end: "20 mars"
+    psalm_verse: "Ps 116:7"
+
+# ══════════════════════════════════════════════════════════
+# Notes méthodologiques
+# ══════════════════════════════════════════════════════════
+#
+# 1. SUFFIXES : La règle simplifiée "1-36=El, 37-72=Yah" (Lenain 1823) ne
+#    correspond PAS aux noms transmis par Reuchlin (1517). Les suffixes ici
+#    suivent l'analyse morphologique des noms tels que transmis.
+#
+# 2. SEPHIROT par chœur (9 chœurs × 8 anges = 72) :
+#    Séraphim→Keter, Chérubim→Hokhmah, Trônes→Binah,
+#    Dominations→Hesed, Puissances→Gevurah, Vertus→Tiferet,
+#    Principautés→Netzah, Archanges→Hod, Anges→Yesod
+#    (Malkuth n'a pas de chœur propre — elle est le réceptacle)
+#
+# 3. ZODIAQUE : Système Bélier (Lenain/Ambelain), 0°=équinoxe de printemps.
+#    Le système Golden Dawn (0°=Lion) n'est PAS utilisé ici.
+#
+# 4. Le 70e nom (Yabamiah) est associé à Genèse 1:1, pas à un psaume —
+#    cas unique dans les 72.

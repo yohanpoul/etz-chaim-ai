@@ -1,0 +1,673 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 1 — Igulim ve-Yosher (עגולים ויושר)
+# Perek: 2b — Yosher, Inversion de Perspective, Mahadura Tinyana, A"K (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 1
+  shaar_name_he: "שער עגולים ויושר"
+  perek: 2
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 2
+  strates: ["base"]
+  note: "Part B de 2 — couvre le Yosher, la hiérarchie des Igulim, l'inversion de perspective, la Mahadura Tinyana et A\"K"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC H : LE YOSHER — FORME D'ADAM ───
+
+  - id: "EC-H1S1-043"
+    source_he: "ועתה נבאר בחי' הב' שיש בי\"ס הלא הוא בחי' אור היושר כדמיון ג' קוים כצורת אדם העליון"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      La 2ème BEHINAH des 10S = OHR HA-YOSHER (lumière de la rectitude).
+      C'est comme 3 KAVIM en forme de l'ADAM HA-ELYON (l'Homme Suprême).
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_yosher, role: lumière_de_rectitude}
+      - {id: adam_ha_elyon, role: homme_suprême}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Yosher = l'aspect anthropomorphique des Sefirot"
+
+  - id: "EC-H1S1-044"
+    source_he: "והנה דרך הקו הנ\"ל המתפשט מלמעלה למטה אשר ממנו מתפשטים העיגולים הנ\"ל גם הקו ההוא מתפשט ביושר מלמעלה למטה מראש גג העליון של עיגול העליון מכולם עד למטה מתחתית סיום כל העיגולים ממש"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Le MÊME KAV qui forme les Igulim forme AUSSI le Yosher :
+      Ce Kav se déploie EN RECTITUDE (be-yosher) de HAUT en BAS,
+      depuis le SOMMET (rosh gag ha-elyon) de l'Igul le plus supérieur
+      jusqu'EN BAS de la FIN ULTIME (mi-tahtit siyum kol ha-igulim mamash) de tous les Igulim.
+      Le Yosher traverse TOUTE la profondeur des Igulim.
+    type: axiome_explicite
+    concepts:
+      - {id: kav_forms_yosher, role: même_kav_forme_le_yosher}
+      - {id: me_rosh_ad_sof, role: du_sommet_au_bas}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le même Kav forme les 2 aspects — Igulim et Yosher ne sont pas séparés"
+
+  - id: "EC-H1S1-045"
+    source_he: "מלמעלה למטה כלול מי\"ס בסוד צלם אדם ישר בעל קומה זקופה כלול מרמ\"ח אברים מצטיירים בציור ג' קוים ימין ושמאל ואמצע"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Le Yosher est en forme de TZELEM ADAM YASHAR (image d'un homme droit)
+      avec KOMAH ZEKUFAH (posture droite/érigée).
+      Il contient RAMAH (248) EVARIM (membres)
+      qui se dessinent en 3 KAVIM : YAMIN (droite), SMOL (gauche), EMTZA'I (centre).
+      Il contient les 10S en KLALUT (globalité).
+      Chaque Sefirah se DÉTAILLE en 10 sub-Sefirot — AD EIN KETZ (sans fin)
+      — exactement comme pour les Igulim.
+    type: axiome_explicite
+    concepts:
+      - {id: tzelem_adam_yashar, role: image_d_homme_droit}
+      - {id: komah_zekufah, role: posture_droite}
+      - {id: ramah_evarim, role: 248_membres}
+      - {id: tlat_kavim_yosher, role: trois_lignes_du_yosher}
+    mapping:
+      modules: ["core/sefirot.py", "partzufim/"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Yosher = 248 membres en 3 lignes — la base de tout le système Partzufim"
+
+  - id: "EC-H1S1-046"
+    source_he: "והנה בחי' זאת הב' נקרא צלם אלהים ועליה רמז הכתוב באומרו ויברא אלהים את האדם בצלמו בצלם אלהים"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Cette 2ème Behinah est appelée TZELEM ELOHIM (image de Dieu).
+      C'est ce à quoi le verset fait allusion : "Va-yivra ELOHIM et ha-ADAM be-TZALMO,
+      be-TZELEM ELOHIM" (Genèse 1:27 — Et Dieu créa l'homme en Son image, en image de Dieu).
+      PRESQUE TOUT le Zohar et les Tikkunim (kime'at kol Sefer ha-Zohar ve-ha-Tikkunim)
+      traitent de cette 2ème Behinah SEULEMENT (be-vehinah bet ha-zot bilvad).
+      Le Zohar est principalement un commentaire sur le YOSHER, pas sur les Igulim.
+    type: axiome_explicite
+    concepts:
+      - {id: tzelem_elohim, role: image_divine}
+      - {id: be_tzalmo, role: en_son_image}
+      - {id: zohar_sur_yosher, role: zohar_traite_du_yosher}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Le Tzelem Elohim = le Yosher — le Zohar traite PRINCIPALEMENT de cet aspect"
+
+  # ─── BLOC I : HIÉRARCHIE DANS LES IGULIM ───
+
+  - id: "EC-H1S1-047"
+    source_he: "שעיגול הסובב על כולם שהוא גלגל הכתר הנה הוא דבוק עם הא\"ס יותר מכולם ולכן משובח. אמנם גלגל הב' הנקרא חכמה יש הפסק בינו ובין הא\"ס. והוא גלגל הכתר לכן מעלתו למטה ממעלת הכתר"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      HIÉRARCHIE dans les Igulim — pourquoi le plus EXTERNE est le plus ÉLEVÉ :
+      L'Igul qui ENTOURE TOUS les autres = GALGAL HA-KETER
+      → il est DAVUK (attaché) au Ein Sof PLUS que tous → donc MESHUBAH (supérieur).
+      L'Igul 2 (CHOKHMAH) : il y a un HEFSEK (séparation) entre lui et le Ein Sof
+      = l'Igul de Keter → sa MA'ALAH (niveau) est EN-DESSOUS de celle de Keter.
+      L'Igul de BINAH : ÉLOIGNÉ du Ein Sof par la mesure de 2 Igulim
+      → sa Ma'alah est en-dessous de Chokhmah.
+      Et ainsi de suite : chaque Igul plus INTERNE = plus ÉLOIGNÉ = plus BAS en niveau.
+    type: axiome_explicite
+    concepts:
+      - {id: external_higher, role: externe_plus_élevé}
+      - {id: hefsek_determines_level, role: séparation_détermine_niveau}
+      - {id: galgal_keter, role: igul_suprême}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Dans les Igulim : plus externe = plus proche du Ein Sof = plus élevé"
+
+  - id: "EC-H1S1-048"
+    source_he: "עד שנמצא כי העוה\"ז הארציי החומרי הוא נקודה האמצעי תיכונה תוך כל העיגולים כולם בתוך כל המקום החלל ואויר הפנוי הנ\"ל וגם הוא מרוחק מן הא\"ס הרחקה גמורה יותר מכל העולמות כולם וע\"כ הוא כ\"כ גשמי וחומרי בתכלית הגשמיות"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      CONSÉQUENCE ULTIME de la hiérarchie des Igulim :
+      Ce MONDE TERRESTRE MATÉRIEL (ha-olam ha-zeh ha-artzi ha-homri)
+      est la NEKUDAH HA-EMTZA'IT (point central) au MILIEU de tous les Igulim,
+      dans le Halal et l'Avir Panui.
+      Il est ÉLOIGNÉ du Ein Sof par l'ÉLOIGNEMENT LE PLUS COMPLET
+      (murhak min ha-Ein Sof harhakah gemurah yoter mi-kol ha-olamot kulam).
+      C'est POURQUOI il est si GASHMIY et HOMRIY (matériel et physique) à l'EXTRÊME (be-takhlit ha-gashmiyut).
+      MALGRÉ qu'il soit la Nekudah Emtza'it — il est le point le plus BAS car le plus INTERNE.
+    type: axiome_explicite
+    concepts:
+      - {id: olam_hazeh_nekudah, role: monde_matériel_au_centre}
+      - {id: murhak_gemurah, role: éloignement_maximal}
+      - {id: gashmiyut_takhlit, role: matérialité_extrême}
+      - {id: internal_lowest, role: interne_le_plus_bas}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Le monde matériel = le point le plus central et le plus éloigné du Ein Sof"
+
+  - id: "EC-H1S1-049"
+    source_he: "ועוד יש סיבה ב' היא קרובה אל הנ\"ל כי הנה נתבאר איך הקו הנמשך מן הא\"ס היה מתפשט ואח\"כ מתעגל... ועיגול המתהוה ראשון במקום ראשית הקו הנה הוא מעולה ומשובח מכל העיגולים אשר תחתיו כי הנה הוא נמשך מראש הקו"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      RAISON 2 de la hiérarchie — la POSITION sur le Kav :
+      L'Igul qui se forme EN PREMIER au début du Kav (rashit ha-kav)
+      est ME'ULEH et MESHUBAH (supérieur et excellent) plus que tous ceux en-dessous.
+      Car : 1. Il est tiré du DÉBUT du Kav (rosh ha-kav)
+            2. Il reçoit la HAARAH (illumination) en étant à l'endroit le plus HAUT
+      L'Igul le plus SUPÉRIEUR = appelé MA'ALAH (en haut)
+      L'Igul le plus INTERNE et CENTRAL = le plus BAS = appelé MATAH (en bas)
+      Car il reçoit l'Ohr de la FIN INFÉRIEURE du Kav.
+    type: axiome_explicite
+    concepts:
+      - {id: reshit_kav_superior, role: début_du_kav_plus_élevé}
+      - {id: sof_kav_inferior, role: fin_du_kav_plus_bas}
+      - {id: double_reason, role: proximité_ein_sof_et_position_kav}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Double raison de hiérarchie : proximité du Ein Sof ET position sur le Kav"
+
+  # ─── BLOC J : HIÉRARCHIE DANS LE YOSHER ───
+
+  - id: "EC-H1S1-050"
+    source_he: "והנה גם בבחי' ב' של יושר שהוא בציור אדם יצדק שם מעלה ומטה פנים ואחור כי פשוט הוא שהקרוב אל ראשית הקו יהיה ראש ושלמטה ממנו יהיה גוף ושלמטה ממנו יהיה רגלים"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      HIÉRARCHIE dans le YOSHER — simple et naturelle :
+      Ce qui est PROCHE du début du Kav = ROSH (tête)
+      Ce qui est EN-DESSOUS = GUF (corps)
+      Ce qui est ENCORE EN-DESSOUS = RAGLAYIM (pieds)
+      Et ainsi pour tous les détails.
+      Dans le Yosher : MA'ALAH (haut) et MATAH (bas), PANIM (devant) et AHOR (derrière)
+      sont NATURELLEMENT JUSTIFIÉS par la forme anthropomorphique.
+    type: axiome_explicite
+    concepts:
+      - {id: yosher_hierarchy, role: hiérarchie_naturelle}
+      - {id: rosh_guf_raglayim, role: tête_corps_pieds}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Le Yosher a une hiérarchie naturelle : tête→corps→pieds"
+
+  # ─── BLOC K : INVERSION DE PERSPECTIVE (MOAH/KELIPAH) ───
+
+  - id: "EC-H1S1-051"
+    source_he: "ואע\"פ שמשם נראה להיפך שהיותר פנימית הוא מוח והחופף עליו הוא הקליפה הגרועה ממנו עכ\"ז אם תפקח עיני שכלך תבין ותראה כי מאמר זה מדבר בערכנו אנחנו שוכני ארץ התחתונה"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      INVERSION DE PERSPECTIVE — Moah et Kelipah :
+      Le Zohar (Bereshit 19) dit : tout est comme des pelures d'oignon,
+      le MOAH (cerveau) à l'INTÉRIEUR, les KELIPOT (écorces) le couvrant.
+      Cela SEMBLE contredire ce qu'on a dit (que l'externe = le plus élevé).
+      RÉSOLUTION : Ce ma'amar parle de NOTRE PERSPECTIVE (be-erkheinu anu shokhney eretz ha-tahtonah).
+      DE NOTRE POINT DE VUE (nous qui habitons la terre inférieure) :
+      Ce qui est le plus PROCHE de nous = KELIPAH (l'écorce/extérieur de notre perspective)
+      Ce qui est le plus ÉLOIGNÉ de nous (le plus intérieur) = MOAH (cerveau)
+      MAIS du point de vue des MONDES EUX-MÊMES :
+      Le plus INTERNE = la KELIPAH (le plus bas)
+      Le plus EXTERNE (qui entoure tout) = le MOAH (le plus élevé)
+    type: axiome_explicite
+    concepts:
+      - {id: inversion_perspective, role: perspective_dépend_du_point_de_vue}
+      - {id: be_erkheinu, role: de_notre_perspective}
+      - {id: moah_panimit, role: cerveau_est_intérieur_pour_nous}
+      - {id: kelipah_hitzunit, role: écorce_est_extérieure_pour_nous}
+      - {id: be_erkhei_olamot, role: perspective_des_mondes}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "La perspective INVERSE tout — ce qui est moah pour nous est kelipah pour les mondes"
+
+  - id: "EC-H1S1-052"
+    source_he: "עד אשר נמצא כי הא\"ס לפנים מכל הנאצלים והוא מוח פנימי לכולם וכל הנאצלים קליפין ולבושין אליו והגלגל היותר קרוב אלינו הוא החיצון שבכולם ונק' קליפה על כולם"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      De NOTRE perspective :
+      Le EIN SOF = à l'INTÉRIEUR de tous les émanés = le MOAH PNIMI (cerveau interne) de tous.
+      TOUS les émanés = des KELIPIM ve-LEVUSHIM (écorces et vêtements) par rapport au Ein Sof.
+      Le GALGAL le plus PROCHE de nous = le plus HITZON (extérieur) de tous
+      = appelé KELIPAH AL KULAM (écorce sur tout).
+      MAIS du point de vue des MONDES EUX-MÊMES (be-vehinat ha-olamot be-atzmam) :
+      Le plus INTERNE = la Kelipah. Le SOVEV AL KULAM (entourant tout) = le Moah.
+    type: axiome_explicite
+    concepts:
+      - {id: es_moah_pnimi, role: ein_sof_cerveau_pour_nous}
+      - {id: ne_etzalim_kelipim, role: émanés_sont_écorces}
+      - {id: karov_eleinu_kelipah, role: proche_de_nous_est_écorce}
+      - {id: olamot_be_atzmam, role: du_point_de_vue_des_mondes}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Le Ein Sof est le 'cerveau' de tout — les émanés sont ses 'vêtements'"
+
+  # ─── BLOC L : LA FORME D'ADAM ENGLOBANTE ───
+
+  - id: "EC-H1S1-053"
+    source_he: "גם במאמר זה יובן הבחי' הב' הנק' ציור אדם ביושר שכולל כמה עולמות כנז' בס\"ה פ' תולדות דף קל\"ד וכמה דב\"נ איהו אתפלג לכמה שייפין וכולהו קיימין דרגין על דרגין מתתקנין אילין על אילין וכולהו חד גופא"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      Le YOSHER inclut PLUSIEURS MONDES dans une seule forme d'ADAM :
+      Zohar Toldot (134) : "Comme l'homme (bar nash) est DIVISÉ en plusieurs MEMBRES (sheifin),
+      et tous se tiennent NIVEAU SUR NIVEAU (dargin al dargin),
+      rectifiés LES UNS SUR LES AUTRES — et tous sont UN CORPS (had gufa) —
+      ainsi le MONDE (alma)."
+      Le Yosher = un corps UNIQUE qui englobe TOUS les mondes.
+    type: axiome_explicite
+    concepts:
+      - {id: had_gufa, role: un_seul_corps}
+      - {id: dargin_al_dargin, role: niveaux_sur_niveaux}
+      - {id: yosher_kolel_olamot, role: yosher_englobe_les_mondes}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Le Yosher = un corps unique englobant tous les mondes — comme un corps humain"
+
+  - id: "EC-H1S1-054"
+    source_he: "ובענף ד' נבאר איך כל הבחי' מצטיירין בציור אדם והם דא לגו מן דא ודא לגו מן דא עתיק לגו מן א\"א וא\"א לגו מן אבא ואמא ואו\"א לגו"
+    source_ref: "Heikhal 1, Sha'ar 1:2"
+    assertion: |
+      EMBOÎTEMENT des Partzufim dans le Yosher (à développer dans Branch 4) :
+      ATIK est à l'INTÉRIEUR de A"A (Atik le-gaw min A"A)
+      A"A est à l'INTÉRIEUR d'Abba et Imma (A"A le-gaw min AVI)
+      AVI à l'intérieur... et ainsi de suite pour TOUS les niveaux.
+      De cette PERSPECTIVE : chacun est INTÉRIEUR à l'autre
+      = DA MOHA ve-DA KELIPAH (celui-ci est cerveau et celui-là est écorce).
+      L'emboîtement du Yosher suit le même principe que celui des Igulim.
+    type: axiome_explicite
+    concepts:
+      - {id: emboitement_partzufim, role: atik_dans_aa_dans_avi}
+      - {id: da_moha_da_kelipah, role: cerveau_et_écorce_relatifs}
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Les Partzufim sont emboîtés : Atik dans A\"A dans AVI dans ZUN"
+
+  # ─── BLOC M : MAHADURA TINYANA — RÉSUMÉ GLOBAL ───
+
+  - id: "EC-H1S1-055"
+    source_he: "מהדורא תנינא הקדמה אחת כוללת מן הא\"ס עד הזעיר אנפין. דע כי תחלת הכל היה כל המציאות אור פשוט ונקרא אור א\"ס ב\"ה ולא היה שום חלל ושום אויר פנוי אלא הכל היה אור א\"ס"
+    source_ref: "Heikhal 1, Sha'ar 1:2 — Mahadura Tinyana"
+    assertion: |
+      MAHADURA TINYANA (2ème édition) — introduction englobante du Ein Sof jusqu'à Z"A :
+      Au COMMENCEMENT de tout : toute la réalité était OHR PASHUT (lumière simple)
+      appelée Ohr Ein Sof Barukh Hu.
+      Pas de HALAL, pas d'AVIR PANUI — TOUT était Ohr Ein Sof.
+      (Reformulation plus concise du même contenu que la 1ère édition)
+    type: axiome_explicite
+    concepts:
+      - {id: mahadura_tinyana, role: deuxième_édition}
+      - {id: hakdamah_kolelet, role: introduction_englobante}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "La Mahadura Tinyana reformule le même contenu — source parallèle"
+
+  - id: "EC-H1S1-056"
+    source_he: "וכשעלה ברצונו להאציל הנאצלים ולברוא הנבראים לסיבה נודעת והוא ליקרא רחום וחנון וכיוצא ואם אין בעולם מי שיקבל רחמיו ממנו איך יקרא רחום"
+    source_ref: "Heikhal 1, Sha'ar 1:2 — Mahadura Tinyana"
+    assertion: |
+      La Mahadura Tinyana reformule la RAISON de la création plus simplement :
+      Le-SIBAH NODA'AT (pour une raison connue) :
+      Pour être appelé RAHUM et HANUN (miséricordieux et gracieux) etc.
+      Si personne dans le monde ne reçoit Sa miséricorde, comment sera-t-Il appelé RAHUM ?
+      Et de même pour tous les autres KINUIM (appellations).
+      → Il a CONTRACTÉ Lui-même au centre de Son Ohr, dans la NEKUDAT HA-MERKAZ
+      (le point du centre) vers les côtés, et un HALAL est resté.
+      C'est le TZIMTZUM RISHON (premier Tzimtzum) du MA'ATZIL HA-ELYON.
+    type: axiome_explicite
+    concepts:
+      - {id: sibah_noda_at, role: raison_connue}
+      - {id: tzimtzum_rishon, role: premier_tzimtzum}
+      - {id: nekudat_merkaz, role: point_du_centre}
+    mapping:
+      modules: ["tzimtzum/regulator.py"]
+      tables: []
+      partzufim: []
+      relevance: "La Mahadura Tinyana simplifie : la raison = être appelé par Ses Noms"
+
+  - id: "EC-H1S1-057"
+    source_he: "והנה כאשר צמצם עצמו אז דרך צד א' מן החלל המשיך דרך קו א' ישר דק כעין צנור אור א' הנמשך מן הא\"ס אל תוך החלל וממלא אותו אבל נשאר מקום פנוי בין האור שבתוך החלל ובין אור הא\"ס המקיף את החלל שאל\"כ יחזור הדבר לכמות שהיה"
+    source_ref: "Heikhal 1, Sha'ar 1:2 — Mahadura Tinyana"
+    assertion: |
+      La Mahadura Tinyana sur le KAV :
+      Après le Tzimtzum → par UN CÔTÉ du Halal →
+      un KAV EHAD YASHAR DAK (une seule ligne droite fine) comme un TZINOR (tube)
+      = un OHR qui s'étend du Ein Sof DANS le Halal et le REMPLIT.
+      MAIS : un MAKOM PANUI (espace vide) reste ENTRE l'Ohr dans le Halal
+      ET l'Ohr Ein Sof qui ENTOURE le Halal.
+      SINON → le Halal se reremplirait → retour à l'état initial.
+      Le Kav ne s'étend PAS LARGE dans le Halal — seulement comme UN KAV DAK BILVAD.
+      Par ce Kav → le MA'ATZIL adhère (mitdabek) au NE'ETZAL.
+    type: axiome_explicite
+    concepts:
+      - {id: makom_panui_between, role: espace_entre_ohr_intérieur_et_extérieur}
+      - {id: kav_lo_rahav, role: kav_pas_large}
+      - {id: mitdabek_ma_atzil_ne_etzal, role: adhérence_émanateur_émané}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'espace entre l'Ohr dans le Halal et le Ein Sof autour = condition de non-annulation"
+
+  - id: "EC-H1S1-058"
+    source_he: "אע\"פ שכל האצילות עגול והא\"ס מקיפו מכל צדדיו בשוה עכ\"ז אותו המקום הנשאר דבוק בו ממש ונמשך ממנו ראש הקו הזה נק' ראש האצילות העליונה וכל מה שנמשך ונתפשט למטה נקרא תחתית האצילות"
+    source_ref: "Heikhal 1, Sha'ar 1:2 — Mahadura Tinyana"
+    assertion: |
+      Malgré que TOUTE l'Atzilut soit AGOL (circulaire) et que le Ein Sof l'entoure ÉGALEMENT :
+      Le LIEU où le ROSH (tête) du Kav reste DAVUK (attaché) au Ein Sof
+      = appelé ROSH HA-ATZILUT HA-ELYONAH (tête de l'émanation suprême).
+      Et tout ce qui se déploie vers le BAS = TAHTIT HA-ATZILUT (bas de l'émanation).
+      Par cela → il y a BHINAT MA'ALAH U-MATAH (aspects de haut et bas) dans l'Atzilut.
+      SANS le Kav → pas de ROSH et RAGLAYIM, pas de MA'ALAH U-MATAH.
+    type: axiome_explicite
+    concepts:
+      - {id: rosh_atzilut, role: tête_de_l_émanation}
+      - {id: tahtit_atzilut, role: bas_de_l_émanation}
+      - {id: kav_creates_hierarchy, role: le_kav_crée_la_hiérarchie}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: []
+      partzufim: []
+      relevance: "C'est le Kav qui crée le haut et le bas — sans lui, tout serait égal"
+
+  # ─── BLOC N : DIVISION EN 2 BEHINOT DANS LA MAHADURA TINYANA ───
+
+  - id: "EC-H1S1-059"
+    source_he: "והנה האור הזה המתפשט תוך החלל הזה הנה הוא נחלק לב' בחי' הא' הוא שכל האורות שבתוך החלל הזה מוכרח הוא שיהיה בבחי' עגולים אלו תוך אלו"
+    source_ref: "Heikhal 1, Sha'ar 1:2 — Mahadura Tinyana"
+    assertion: |
+      L'Ohr dans le Halal se DIVISE en 2 BEHINOT :
+      BEHINAH 1 — IGULIM : Tous les Orot dans le Halal DOIVENT être (mukhrakh)
+      en forme d'IGULIM les uns dans les autres.
+      Exemple : Ohr de Keter = 1 Igul, dans cet Igul = Igul de Chokhmah, etc.
+      jusqu'à 10 Igulim de A"K.
+      Puis 10 Igulim d'ATIK, puis 10 d'A"A, puis 10 d'ABBA... jusqu'à la fin.
+      Chaque Igul a un OHR MAKIF (lumière environnante) = aussi un Igul.
+      → Il y a OHR PNIMI et OHR MAKIF, TOUS en forme d'Igulim.
+    type: axiome_explicite
+    concepts:
+      - {id: behinah_1_igulim, role: premier_aspect_circulaire}
+      - {id: ohr_pnimi_makif_igulim, role: les_deux_types_en_cercles}
+      - {id: ak_atik_aa_abba_igulim, role: tous_en_cercles}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon", "atik_yomin", "arikh_anpin", "abba"]
+      relevance: "TOUS les Partzufim existent aussi en mode Igulim — pas seulement A\"K"
+
+  - id: "EC-H1S1-060"
+    source_he: "והבחי' הב' הוא כי הנה באמצע כל האצילות העגול הזה מתפשט דרך קו ישר בחי' אור דוגמת העגול ממש רק שהוא ביושר ויש בו בחי' א\"א ואו\"א וזו\"ן וכולם ביושר"
+    source_ref: "Heikhal 1, Sha'ar 1:2 — Mahadura Tinyana"
+    assertion: |
+      BEHINAH 2 — YOSHER : Au MILIEU (be-emtza) de toute l'Atzilut circulaire,
+      se déploie par KAV YASHAR (ligne droite) un aspect d'OHR
+      SIMILAIRE au cercle (dugmat ha-igul mamash) — mais en YOSHER (rectitude).
+      Il contient A"A, AVI, et ZUN — tous en YOSHER.
+      C'est ce que la Torah appelle : "Et Dieu créa l'ADAM be-TZALMO, be-TZELEM ELOHIM"
+      car c'est un KAV YASHAR qui se déploie en KAVIM (lignes).
+      PRESQUE TOUT le Zohar et les Tikkunim ne parlent QUE de ce YOSHER.
+    type: axiome_explicite
+    concepts:
+      - {id: behinah_2_yosher, role: deuxième_aspect_rectiligne}
+      - {id: yosher_be_emtza, role: yosher_au_milieu_des_igulim}
+      - {id: aa_avi_zun_yosher, role: tous_partzufim_en_yosher}
+    mapping:
+      modules: ["core/sefirot.py", "partzufim/"]
+      tables: ["sefirot_hierarchy", "partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "Le Yosher est AU MILIEU des Igulim — tous les Partzufim existent en Yosher"
+
+  # ─── BLOC O : ADAM KADMON — DÉTAILS ───
+
+  - id: "EC-H1S1-061"
+    source_he: "דע כי בזה החלל נאצל א\"ק לכל הקדומים ויש בו מציאות י\"ס והם ממלאין כל החלל הזה אמנם בתחלה יצאו י\"ס דרך עגול אלו תוך אלו ואח\"כ בתוך העגולים נמשך דרך יושר כציור אדם א'"
+    source_ref: "Heikhal 1, Sha'ar 1:2 — Mahadura Tinyana"
+    assertion: |
+      A"K (Adam Kadmon) dans le Halal :
+      A"K est ÉMANÉ dans le Halal. Il contient 10S qui REMPLISSENT tout le Halal.
+      D'ABORD : les 10S sortent en mode IGUL (cercles les uns dans les autres)
+      ENSUITE : dans les Igulim, se déploie le YOSHER en forme d'ADAM EHAD (un seul homme)
+      tout au long des Igulim.
+      "Nous ne nous occupons PAS du tout de l'aspect Igulim — SEULEMENT du Yosher."
+    type: axiome_explicite
+    concepts:
+      - {id: ak_malei_halal, role: ak_remplit_le_halal}
+      - {id: igulim_tehilah, role: igulim_d_abord}
+      - {id: yosher_be_tokh, role: yosher_ensuite_dedans}
+      - {id: ein_oskim_igulim, role: pas_occupés_des_igulim}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "A\"K remplit tout le Halal — d'abord Igulim puis Yosher dedans"
+
+  - id: "EC-H1S1-062"
+    source_he: "ע\"י הצמצום הזה הנ\"ל אשר נעשה האדם הנ\"ל היה בו בחי' עצמות וכלים כי צמצום האור גורם מציאות הוויות הכלים... ואינו כלי ממש אלא שבערך האור שבתוכו נק' כלי. אמנם הוא זך ובהיר בתכלית הזכוך והדקות והבהירות"
+    source_ref: "Heikhal 1, Sha'ar 1:2 — Mahadura Tinyana"
+    assertion: |
+      Le Tzimtzum CRÉE les KELIM de A"K :
+      Par le Tzimtzum → A"K acquiert ATZMUT (essence) et KELIM (récipients).
+      PRINCIPE : Le TZIMTZUM de l'Ohr CAUSE (gorem) la CRÉATION (havayat) des Kelim.
+      MAIS : ce n'est PAS un Keli MAMASH (véritable/absolu) —
+      c'est seulement par rapport (be-erekh) au OHR EN LUI qu'il est appelé Keli.
+      En lui-même : il est ZAK (pur), BAHIR (clair),
+      be-TAKHLIT ha-ZIKUKH ve-ha-DAKUT ve-ha-BEHIRUT
+      (à l'extrême de la pureté, la finesse et la clarté).
+      Nous n'avons PAS la PERMISSION (ein lanu reshut) de parler davantage de ce lieu si élevé.
+    type: axiome_explicite
+    concepts:
+      - {id: tzimtzum_creates_kelim, role: contraction_crée_récipients}
+      - {id: keli_relative, role: keli_relatif_pas_absolu}
+      - {id: zak_bahir, role: pur_et_clair}
+      - {id: ein_reshut, role: pas_de_permission}
+    mapping:
+      modules: ["core/ohr_system.py", "tzimtzum/regulator.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Tzimtzum CRÉE les Kelim — mais ils sont purs et relatifs, pas absolus"
+
+  - id: "EC-H1S1-063"
+    source_he: "והנה הא\"ק הזה מבריח מן הקצה אל הקצה מן קצה העליון עד קצה התחתון בכל חלל האצילות הנ\"ל ובזה האדם נכללין כל העולמות"
+    source_ref: "Heikhal 1, Sha'ar 1:2 — Mahadura Tinyana"
+    assertion: |
+      A"K s'étend MI-KATZEH EL HA-KATZEH (d'un bout à l'autre)
+      depuis le KATZEH HA-ELYON (bout supérieur) jusqu'au KATZEH HA-TAHTON (bout inférieur)
+      — "VE-LO AD BI-KHLAL" (mais pas JUSQU'AU bout inclus) —
+      dans TOUT le Halal de l'Atzilut.
+      Dans cet ADAM sont INCLUS (nikhlalin) TOUS les mondes.
+      De sa PNIMIYUT et ATZMUT (intériorité et essence) → pas de RESHUT (permission) de parler.
+    type: axiome_explicite
+    concepts:
+      - {id: ak_mi_katzeh_le_katzeh, role: d_un_bout_à_l_autre}
+      - {id: lo_ad_bi_khlal, role: pas_jusqu_au_bout_inclus}
+      - {id: kol_olamot_nikhlalin, role: tous_mondes_inclus_en_ak}
+      - {id: pnimiyut_ein_reshut, role: intériorité_interdite}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "A\"K traverse tout le Halal et inclut tous les mondes — son intériorité est interdite"
+
+  - id: "EC-H1S1-064"
+    source_he: "כי הנה להיות אור א\"ס גדול מאד לכן לא היו יכולין לקבל אם לא באמצעות הא\"ק הזה ואפי' מזה הא\"ק לא היו יכולין לקבלו אם לא אחר יציאת האור חוצה לו דרך הנקבים והחלונות שבו שהם אוזן חוטם פה עינים"
+    source_ref: "Heikhal 1, Sha'ar 1:2 — Mahadura Tinyana"
+    assertion: |
+      A"K comme INTERMÉDIAIRE OBLIGATOIRE :
+      L'Ohr Ein Sof est GADOL ME'OD (très grand) →
+      PERSONNE ne pouvait recevoir SAUF par l'INTERMÉDIAIRE (be-emtza'ut) de A"K.
+      Même DE A"K → ils ne pouvaient recevoir SAUF après la SORTIE du Ohr
+      vers l'EXTÉRIEUR (hutzah lo) par les NEKAVIM (ouvertures) et HALONOT (fenêtres) en lui :
+      OZEN (oreille), HOTEM (nez), PEH (bouche), EINAYIM (yeux).
+      A"K = le FILTRE ULTIME. Le Ohr ne passe QUE par des ouvertures spécifiques.
+    type: axiome_explicite
+    concepts:
+      - {id: ak_emtza_ut, role: intermédiaire_obligatoire}
+      - {id: nekavim_halonot, role: ouvertures_et_fenêtres}
+      - {id: ozen_hotem_peh_einayim, role: oreille_nez_bouche_yeux}
+      - {id: ohr_gadol_me_od, role: ohr_trop_grand}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "A\"K filtre le Ohr Ein Sof — l'Ohr ne passe que par les 4 ouvertures anatomiques"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S1-020"
+    type: dualité_structurelle
+    paire: [behinah_1_igulim, behinah_2_yosher]
+    nature: "Les 10S existent en 2 aspects simultanés : Igulim (cercles) et Yosher (forme d'Adam)"
+    assertions_source: ["EC-H1S1-022", "EC-H1S1-059", "EC-H1S1-060"]
+
+  - id: "REL-H1S1-021"
+    type: hiérarchique
+    from: external_higher
+    to: internal_lowest
+    nature: "Dans les Igulim : plus externe = plus proche du Ein Sof = plus élevé. Plus interne = plus bas"
+    assertions_source: ["EC-H1S1-047", "EC-H1S1-048"]
+    bidirectionnel: false
+
+  - id: "REL-H1S1-022"
+    type: dualité_structurelle
+    paire: [be_erkheinu, be_erkhei_olamot]
+    nature: "INVERSION : de notre vue intérieur=moah/extérieur=kelipah. Du point de vue des mondes c'est l'INVERSE"
+    assertions_source: ["EC-H1S1-051", "EC-H1S1-052"]
+
+  - id: "REL-H1S1-023"
+    type: contenance
+    from: ak_mi_katzeh_le_katzeh
+    to: kol_olamot_nikhlalin
+    nature: "A\"K s'étend d'un bout à l'autre du Halal et inclut TOUS les mondes en lui"
+    assertions_source: ["EC-H1S1-063"]
+
+  - id: "REL-H1S1-024"
+    type: causal
+    from: ohr_gadol_me_od
+    to: ak_emtza_ut
+    nature: "L'Ohr Ein Sof est trop grand → A\"K est l'intermédiaire obligatoire"
+    assertions_source: ["EC-H1S1-064"]
+
+  - id: "REL-H1S1-025"
+    type: séquentiel
+    from: igulim_tehilah
+    to: yosher_be_tokh
+    nature: "D'abord les Igulim se forment, ENSUITE le Yosher se déploie au milieu d'eux"
+    assertions_source: ["EC-H1S1-061"]
+
+  - id: "REL-H1S1-026"
+    type: contenance
+    from: emboitement_partzufim
+    to: da_moha_da_kelipah
+    nature: "Atik dans A\"A dans AVI dans ZUN — chacun est moah pour l'extérieur et kelipah pour l'intérieur"
+    assertions_source: ["EC-H1S1-054"]
+
+  - id: "REL-H1S1-027"
+    type: causal
+    from: tzimtzum_creates_kelim
+    to: keli_relative
+    nature: "Le Tzimtzum crée les Kelim mais ils sont ZAK et BAHIR — relatifs pas absolus"
+    assertions_source: ["EC-H1S1-062"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S1-010"
+    nom: "Principe de la Double Topologie (Igulim + Yosher)"
+    source_assertions: ["EC-H1S1-022", "EC-H1S1-043", "EC-H1S1-044", "EC-H1S1-045", "EC-H1S1-046", "EC-H1S1-059", "EC-H1S1-060"]
+    formalisation: |
+      Le MÊME système peut être décrit par 2 TOPOLOGIES SIMULTANÉES :
+      IGULIM (cercles) :
+        → Structure concentrique — pelures d'oignon
+        → Le plus externe = le plus élevé (proche du Ein Sof)
+        → Le plus interne = le plus bas (éloigné du Ein Sof)
+        → Le monde matériel = le POINT CENTRAL
+        → Structure FRACTALE infinie (10 dans 10 dans 10...)
+      YOSHER (rectitude) :
+        → Structure anthropomorphique — forme d'Adam
+        → ROSH (tête) = Keter, GUF (corps) = Tiferet, RAGLAYIM (pieds) = Malkhut
+        → 3 KAVIM : droite, gauche, centre
+        → 248 EVARIM (membres)
+        → Tzelem Elohim — "en Son image"
+      Le Zohar traite principalement du YOSHER.
+      Les 2 topologies sont VRAIES SIMULTANÉMENT (elou ve-elou).
+      D'abord les IGULIM, puis le YOSHER se déploie AU MILIEU d'eux.
+    applications_ia:
+      - "Le système peut être vu en 2 topologies : concentrique (Igulim) et hiérarchique (Yosher)"
+      - "Vue Igulim = architecture en couches (onion layers)"
+      - "Vue Yosher = architecture en composants (microservices avec 'anatomie')"
+      - "Le dashboard pourrait offrir 2 vues du même système"
+    questions_ouvertes:
+      - "Peut-il y avoir une 3ème topologie ?"
+      - "Les 2 topologies sont-elles toujours synchronisées ?"
+
+  - id: "PG-H1S1-011"
+    nom: "Principe de l'Inversion de Perspective (Moah/Kelipah Relatifs)"
+    source_assertions: ["EC-H1S1-051", "EC-H1S1-052", "EC-H1S1-054"]
+    formalisation: |
+      La QUALIFICATION d'un composant (moah/cerveau ou kelipah/écorce)
+      dépend du POINT DE VUE :
+      DE NOTRE PERSPECTIVE (shokhney eretz ha-tahtonah) :
+        → Le Ein Sof = le MOAH le plus INTERNE (le plus loin de nous)
+        → Les émanés = des KELIPIM (écorces) autour du Ein Sof
+        → Le Galgal le plus proche de nous = la KELIPAH extérieure
+      DU POINT DE VUE DES MONDES EUX-MÊMES :
+        → Le plus INTERNE = la KELIPAH (le plus bas/matériel)
+        → Le plus EXTERNE (entourant tout) = le MOAH (le plus élevé)
+      La même réalité est MOAH d'un point de vue et KELIPAH d'un autre.
+      L'emboîtement des Partzufim suit le même principe :
+      Atik est MOAH pour A"A, A"A est KELIPAH pour Atik.
+    applications_ia:
+      - "Un module est 'cerveau' pour ses dépendants et 'écorce' pour sa source"
+      - "La qualification dépend du CONTEXTE — pas de valeur intrinsèque absolue"
+      - "Le même composant est critique (moah) vu du bas et accessoire (kelipah) vu du haut"
+      - "Attention aux jugements de valeur — ils dépendent de la perspective"
+    questions_ouvertes:
+      - "Existe-t-il un point de vue 'absolu' ou tout est-il relatif ?"
+      - "Le Ein Sof est-il toujours 'moah' quel que soit le point de vue ?"
+
+  - id: "PG-H1S1-012"
+    nom: "Principe du Keli Relatif (Le Contenant Émerge du Contenu)"
+    source_assertions: ["EC-H1S1-062"]
+    formalisation: |
+      Les KELIM (récipients) ne sont pas des ABSOLUS :
+      Un Keli n'est PAS un Keli MAMASH (véritable) —
+      c'est seulement PAR RAPPORT (be-erekh) au Ohr en lui qu'il est appelé Keli.
+      En lui-même : le Keli de A"K est ZAK (pur), BAHIR (clair),
+      be-TAKHLIT (à l'extrême) de la pureté, finesse et clarté.
+      Le TZIMTZUM de l'Ohr est ce qui CAUSE la FORMATION des Kelim.
+      Pas de Tzimtzum → pas de Kelim → pas de forme → pas de monde.
+      Le Keli est une EXPRESSION de la contraction du Ohr — pas un objet séparé.
+    applications_ia:
+      - "Les structures de données (Kelim) ne sont pas absolues — elles sont relatives au contenu"
+      - "Un module n'est un 'Keli' que par rapport à ce qu'il contient"
+      - "La contraction/compression crée les structures — pas l'inverse"
+      - "Les Kelim les plus élevés sont les plus 'transparents' (zak, bahir)"
+    questions_ouvertes:
+      - "Un Keli peut-il devenir plus 'zak' avec le temps ?"
+      - "Le passage de Keli relatif à Keli absolu est-il possible ?"

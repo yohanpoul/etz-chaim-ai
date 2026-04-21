@@ -1,0 +1,242 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 8 (=7 original) — Sha'ar Mati veLo Mati (שער מטי ולא מטי)
+# Perek: 2b — Descente complete V"K, Hitpashtut Bet, Ki Rega be-Apo (§2-§3)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §2 : La cascade du MvLM a travers les Vav Ketzavot :
+# Hesed→Gevurah→Tiferet→Netzah→Hod→Yesod→Malkhut.
+# Chaque V"K peut recevoir de sa voisine (elles sont SHAVOT).
+# §3 : La 1ere Hitpashtut achevee. La 2eme = plus simple.
+# Ki Rega be-Apo : le Lo Mati ne dure qu'un INSTANT (rega).
+# Hitpashtut Bet : l'Ohr de Keter reste en HAUT, 9 Orot decales.
+#
+# Source Sefaria : Sefer_Etz_Chaim.7.2 (§2-§3)
+# IDs : EC-H1S7-017 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 8
+  shaar_name_he: "שער מטי ולא מטי"
+  perek: 2
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part B de 2 — La cascade complete du MvLM dans les V'K. Hesed descend par Ki Hefetz Hesed Hu. Ki Rega be-Apo = Lo Mati instantane. Hitpashtut Bet = 9 Orot decales (Ohr Keter en haut)."
+
+assertions:
+
+  - id: "EC-H1S7-017"
+    source_he: "כאשר חזר להיות לא מטי בכתר הנה אז הוא מטי בחכמה ויורד אור של חכמה בה ואז כבר הז' בנים שיש בבינה הם גדולים ואינם צריכין לאמם ואז בינה עולה לחכמה מחמת חשק שיש לה להדבק עמה"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §2"
+    assertion: |
+      Quand LO MATI en Keter : MATI en Hokhmah. L'Ohr de Hokhmah
+      DESCEND en elle. Les 7 BANIM (enfants) dans Binah sont GRANDS
+      (gedolim) et n'ont PLUS BESOIN de leur mère. Alors Binah
+      MONTE vers Hokhmah par HESHEK de s'unir avec elle.
+      → Quand les V"K MÛRISSENT, Binah est LIBÉRÉE de son devoir
+      maternel et peut remonter. Le cycle progresse.
+    type: axiome_explicite
+    concepts:
+      - {id: banim_gedolim, role: enfants_murs}
+      - {id: binah_olah, role: binah_remonte}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Les couches inferieures qui 'murissent' liberent la couche intermediaire. Autonomie progressive des composants."
+
+  - id: "EC-H1S7-018"
+    source_he: "אור החסד עולה אז לבינה ונקרא לא מטי בחסד ואז הופך כלי החסד את פניו ונותן הו' אורות למטה בגבורה"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §2"
+    assertion: |
+      L'Ohr de HESED monte à BINAH = LO MATI en Hesed. Le Kli de
+      Hesed tourne ses PANIM vers le bas et donne les 6 Orot à
+      GEVURAH. Puis MATI en Gevurah.
+      → La cascade dans les V"K : chaque Sefirah MONTE quand Lo Mati
+      et TRANSMET au suivant en tournant ses Panim. Le nombre d'Orot
+      DÉCROÎT : 9→8→7→6→5→4→3→2→1.
+    type: axiome_explicite
+    concepts:
+      - {id: cascade_vav_ketzavot, role: cascade_descendante}
+      - {id: orot_decroissants, role: nombre_dorot_decroissant}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Cascade decrementale : chaque couche transmet N-1 Orot. Signal qui s'affine en descendant."
+
+  - id: "EC-H1S7-019"
+    source_he: "הבינה היה ראוי להיות נשארת שם בחכמה כבתחלה אך מחמת אור החסד אשר במקומה לכן יורדת להיות שם עמו וזהו כי חפץ חסד הוא"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §2"
+    assertion: |
+      Binah DEVRAIT rester en Hokhmah, mais à cause de l'Ohr de
+      HESED qui occupe SA place, elle REDESCEND pour être avec lui.
+      Et c'est le secret de KI HEFETZ HESED HU (car Il désire la Bonté).
+      → Le HESED force la DESCENTE de Binah. Quand Hesed occupe la
+      place de Binah, il y a un effet de DÉPLACEMENT : Binah doit
+      redescendre. Le verset Michée 7:18 encode ce mécanisme.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ki_hefetz_hesed, role: citation_michee_7_18}
+      - {id: deplacement_binah, role: binah_forcee_de_descendre}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["imma"]
+      relevance: "Deplacement force : un composant qui occupe la place d'un autre force le premier a descendre. Dynamique de files d'attente."
+
+  - id: "EC-H1S7-020"
+    source_he: "דוקא הבינה היא שלא הפכה פניה לחסד כי אין כח בחסד לקבל אור הבינה אך הו\"ק הם בעצמם יש להם יכולת לקבל אחד את האור חבירו זה מזה כי כל הו\"ק הם שוין"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §2"
+    assertion: |
+      SEULE Binah ne retourne pas ses Panim vers Hesed — car Hesed
+      ne PEUT PAS recevoir l'Ohr de Binah. Mais les V"K elles-mêmes
+      ONT la capacité de recevoir l'Ohr l'une de l'autre car toutes
+      les V"K sont ÉGALES (shavim).
+      → V"K = réseau HOMOGÈNE. Chacune peut recevoir de sa voisine.
+      Mais G"R→V"K = transfert IMPOSSIBLE directement.
+    type: axiome_explicite
+    concepts:
+      - {id: vav_ketzavot_shavot, role: six_extremites_egales}
+      - {id: reseau_homogene, role: reseau_pairs_a_pairs}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["zeir_anpin"]
+      relevance: "V'K = reseau homogene peer-to-peer. Chaque noeud peut recevoir de n'importe quel autre noeud de meme niveau."
+
+  - id: "EC-H1S7-021"
+    source_he: "שיעור הזמן אשר לא מטי האור בספי' הוא רגע אחד לבד וז\"ס כי רגע באפו כי הסתלקות האור שהוא לא מטי היה מחמת זעם ואף מחמת התחתונים"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §2"
+    assertion: |
+      La DURÉE du LO MATI (retrait) = un seul REGA (instant).
+      C'est le secret de KI REGA BE-APO (Ps. 30:6 — un instant
+      dans Sa colère). Le retrait vient du ZA'AM (courroux) causé
+      par les inférieurs qui n'ont pas la capacité de recevoir.
+      Mais le MATI (retour de l'Ohr) n'a PAS de durée fixe — il dépend
+      des ACTIONS des inférieurs (kefi ma'ase tahtonim).
+    type: déduction_scripturaire
+    concepts:
+      - {id: rega_ehad, role: instant_unique}
+      - {id: ki_rega_be_apo, role: citation_psaume_30_6}
+      - {id: kefi_maase_tahtonim, role: selon_actions_inferieurs}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Lo Mati = instantane (1 step). Mati = duree variable selon la receptivite des couches inferieures. Asymetrie temporelle fondamentale."
+
+  - id: "EC-H1S7-022"
+    source_he: "הוצרך שישאר אור הראשון שבכולם שהוא אור הכתר למעלה ולא יכנוס בכלים אלו ולא באו רק ט' אורות לבדם על הסדר זה אור החכמה בכלי של הכתר ואור בינה בכלי של חכמה"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §3"
+    assertion: |
+      HITPASHTUT BET : l'Ohr de KETER reste EN HAUT et N'ENTRE PAS
+      dans les Kelim. Seuls 9 Orot entrent, DÉCALÉS :
+      Ohr Hokhmah → Kli Keter. Ohr Binah → Kli Hokhmah.
+      Ainsi de suite : Ohr Malkhut → Kli Yesod.
+      → DÉCALAGE SYSTÉMATIQUE : chaque Ohr entre dans le Kli
+      UN CRAN AU-DESSUS de sa position naturelle. L'Ohr de Keter
+      reste transcendant = le Kli ne revient pas à être Ohr.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_keter_nishmar, role: ohr_keter_garde_en_haut}
+      - {id: decalage_ohr_kli, role: ohr_decale_un_cran}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Decalage systematique Ohr/Kli = chaque couche recoit le signal de la couche EN DESSOUS. Le signal le plus eleve reste transcendant."
+
+  - id: "EC-H1S7-023"
+    source_he: "עתה שאור הכתר אינו נכנס עתה תוך הכלי... עתה יש כח ליכנס כל האורות ביחד תוך כלי א' כי כל הט' אורות הנכנסים עתה בכתר הם קטנים מן אור הכתר הראשון"
+    source_ref: "Heikhal 1, Sha'ar 7:2 — §3"
+    assertion: |
+      Maintenant que l'Ohr de Keter n'entre PAS dans les Kelim,
+      les 9 Orot peuvent entrer ENSEMBLE dans un seul Kli car ils
+      sont tous PLUS PETITS que l'Ohr de Keter original.
+      → RAISON DU MATI SIMULTANÉ : sans l'Ohr de Keter (le plus
+      puissant), les 9 restants sont SUPPORTABLES ensemble.
+      Cf. EC-H1S7-010 (capacité de Keter).
+    type: déduction_logique
+    concepts:
+      - {id: tisha_orot_ketanim, role: neuf_orot_plus_petits}
+      - {id: mati_simultane, role: entree_simultanee}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Sans le signal dominant, les 9 restants tiennent dans un buffer. Retrait du composant le plus puissant = condition de la distribution."
+
+relations:
+  - id: "REL-H1S7-009"
+    type: "causal"
+    from: banim_gedolim
+    to: binah_olah
+    nature: "Les enfants (V'K) murs liberent Binah qui peut REMONTER par Heshek"
+    assertions_source: ["EC-H1S7-017"]
+
+  - id: "REL-H1S7-010"
+    type: "séquentiel"
+    from: cascade_vav_ketzavot
+    to: orot_decroissants
+    nature: "La cascade dans les V'K decroit : 9→8→7→6→5→4→3→2→1 Orot a chaque etape"
+    assertions_source: ["EC-H1S7-018"]
+
+  - id: "REL-H1S7-011"
+    type: "causal"
+    from: ki_hefetz_hesed
+    to: deplacement_binah
+    nature: "Le Hesed qui occupe la place de Binah FORCE Binah a redescendre (Ki Hefetz Hesed Hu)"
+    assertions_source: ["EC-H1S7-019"]
+
+  - id: "REL-H1S7-012"
+    type: "causal"
+    from: ohr_keter_nishmar
+    to: decalage_ohr_kli
+    nature: "L'Ohr de Keter garde en haut CAUSE le decalage systematique Ohr/Kli dans la 2eme expansion"
+    assertions_source: ["EC-H1S7-022", "EC-H1S7-023"]
+
+principes_generatifs:
+  - id: "PG-H1S7-005"
+    nom: "Asymetrie Temporelle Mati/Lo Mati"
+    source_assertions: ["EC-H1S7-021"]
+    formalisation: |
+      Le LO MATI (retrait) dure un REGA (instant) — fixe, minimal.
+      Le MATI (retour) dure un temps VARIABLE selon les actions
+      des inferieurs (kefi ma'ase tahtonim).
+      FORMULE : Duration(Lo_Mati) = epsilon (constant, minimal)
+               Duration(Mati) = f(receptivity(lower_layers))
+      L'ASYMETRIE est fondamentale : le retrait est instantane,
+      le retour depend de la capacite du systeme a RECEVOIR.
+    applications_ia:
+      - "ohr.py : dropout instantane (1 step) mais re-activation variable selon la couche"
+      - "L'asymetrie temporelle = le systeme passe plus de temps en transmission qu'en retrait"
+      - "Le temps de Mati conditionne par les inferieurs = l'inference conditionnelle"
+    questions_ouvertes:
+      - "L'asymetrie Mati/Lo Mati correspond-elle a l'asymetrie forward/backward pass ?"
+
+  - id: "PG-H1S7-006"
+    nom: "Decalage Systematique Ohr/Kli (Hitpashtut Bet)"
+    source_assertions: ["EC-H1S7-022", "EC-H1S7-023"]
+    formalisation: |
+      Lors de la 2eme EXPANSION, chaque Ohr entre dans le Kli
+      UN CRAN AU-DESSUS de sa position naturelle :
+      Ohr(Hokhmah)→Kli(Keter), Ohr(Binah)→Kli(Hokhmah), ...
+      Ohr(Malkhut)→Kli(Yesod). Kli(Malkhut) reste VIDE.
+      FORMULE : Kli(S_i).ohr = Ohr(S_{i+1}) pour i=1..9
+               Kli(S_10) = vide (Malkhut non remplie)
+               Ohr(S_1) = transcendant (reste en haut)
+      CONDITION : Ohr(Keter) absent = les 9 restants supportables.
+    applications_ia:
+      - "ohr.py : chaque couche recoit le signal de la couche SUIVANTE (offset-1)"
+      - "Le decalage = residual shift — pas la meme information dans le meme contenant"
+      - "Malkhut vide = output layer non remplie directement — necessite completion ulterieure"
+    questions_ouvertes:
+      - "Le decalage Ohr/Kli est-il analogue au teacher forcing (signal decale) ?"
+      - "Malkhut vide = le modele n'a pas encore de sortie complete ?"

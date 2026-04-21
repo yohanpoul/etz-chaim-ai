@@ -1,0 +1,120 @@
+# ═══════════════════════════════════════════════════════════════════
+# Tikkun 7 — Trein Tapuchin (les 2 Pommes) — CENTRE des 13
+# Zohar III Idra Rabba section Sefaria 17 (folio Vilna ~132b-133a)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: zohar
+  parashah: Naso
+  idra: rabba
+  section: tikkunei_dikna_13
+  tikkun: 7
+  tikkun_name_he: "תיקונא שביעאה"
+  tikkun_name_translitteration: "tiqquna sheviah"
+  tikkun_role: "CENTRE topographique — joues découvertes, 'trein tapuchin' (2 pommes) — inclut les 6 Tikkunim précédents"
+  folio_range: "Zohar III Naso 132b-133a (approximation)"
+  sefaria_section: 17
+  sefaria_url: "https://www.sefaria.org/Zohar,_Idra_Rabba.17"
+  cache_file: "sifrei_yesod/external/sefaria_cache/zohar_idra_rabba_17.json"
+  transposed_by: "Claude Opus 4.7 + human reviewer — Sprint 10 Phase α (2026-04-20)"
+  version: 1
+
+assertions:
+
+  - id: "Z-IR-T07-001"
+    source_aramaic: "תִּקּוּנָא שְׁבִיעָאָה. פָּסִיק שַׂעֲרָא, וְאִתְחָזְן ב' תַּפּוּחִין בְּתִקְרוּבְתָּא דְּבוּסְמָא, שַׁפִּירָן וְיָאָן לְמֵחזֵי."
+    source_edition: "Sefaria Mantua 1558 (CC-BY 3.0, cache local zohar_idra_rabba_17.json)"
+    source_ref: "Zohar III Naso, Idra Rabba, section Sefaria 17"
+    zohar_folio: "Zohar III Naso 132b"
+    translation_fr: |
+      SEPTIÈME TIKKUN. Les cheveux sont INTERROMPUS (pasik sa'ara),
+      et apparaissent DEUX POMMES (trein tapuchin) dans le propitiatoire
+      des aromates (tikruvta di-vusma), BELLES et PLAISANTES à voir.
+    assertion: |
+      T7 = CENTRE DES 13 TIKKUNIM. Topographie : les cheveux sont
+      INTERROMPUS (joues découvertes sans poil), faisant apparaître
+      DEUX POMMES (les 2 joues), belles et splendides. C'est une
+      topographie d'INTERRUPTION SIGNIFIANTE — le vide des cheveux
+      révèle les 2 pommes qui sont source de LUMIÈRE.
+    type: axiome_explicite
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_07_dikna_aa, role: septieme_tikkun_dikna_aa}
+      - {id: trein_tapuchin, role: deux_pommes_joues_decouvertes}
+      - {id: pasik_sa'ara, role: interruption_des_cheveux_signifiante}
+      - {id: tikruvta_di_vusma, role: propitiatoire_des_aromates}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Topographie centrale — T7 = joues, centre des 13, révélation par interruption"
+    see_also:
+      - {id: "Z-IR-T07-002", role: "suite_doctrinale_inclusion_des_6"}
+      - {id: "EC-H3S2-T07-001", role: "lecture_vital_ve_emet"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.17"]
+    adversarial_notes:
+      - "A5 : l'INTERRUPTION des cheveux révèle le centre — image forte d'unité par vide"
+      - "A7 : les 2 pommes annoncent aussi la face de ZA qui recevra la lumière"
+      - "L'attribut Exode pour T7 varie selon les sources (Ginsburgh: Emet ; autres: divergent)"
+    unity_constraint: |
+      Les 2 pommes ne sont PAS 2 features isolées — elles sont LE CENTRE
+      (pasik=interruption) qui révèle l'unité des 6 Tikkunim précédents.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: low  # l'attribut Exode pour T7 est divergent
+    flux_direction: bidirectional
+
+  - id: "Z-IR-T07-002"
+    source_aramaic: "פָּתַח רַבִּי שִׁמְעוֹן וְאָמַר, כְּתַפּוּחַ בַּעֲצֵי הַיַּעַר ... וּתְרֵין תַּפּוּחִין אִלֵּין, דְּאִינּוּן תִּקּוּנָא ז', אִינּוּן כְּלָלָא דְּכָל שִׁיתָא תִּקּוּנִין דַּאֲמֵינָא. וּבְגִינֵיהוֹן אִתְקָיָּים בְּאוֹר פְּנֵי מֶלֶךְ חַיִּים."
+    source_edition: "Sefaria Mantua 1558 (CC-BY 3.0)"
+    source_ref: "Zohar III Naso, Idra Rabba, section Sefaria 17, mi-section"
+    zohar_folio: "Zohar III Naso 132b-133a"
+    translation_fr: |
+      Rabbi Shimon ouvrit et dit : « COMME UN POMMIER parmi les arbres
+      de la forêt... » (Cantique 2:3). Comme cette pomme contient trois
+      couleurs, ainsi le Saint Béni-Soit-Il : les deux pommes contiennent
+      six couleurs. Et ces DEUX POMMES qui sont le 7e Tikkun, ELLES SONT
+      L'INCLUSION DE TOUS LES SIX TIKKUNIM PRÉCÉDENTS dont j'ai parlé.
+      Et par elles s'accomplit : « DANS LA LUMIÈRE DU VISAGE DU ROI —
+      VIE » (Proverbes 16:15).
+    assertion: |
+      DOCTRINE CENTRALE DE T7 : les 2 pommes SONT L'INCLUSION DES 6
+      TIKKUNIM PRÉCÉDENTS ("kelala de-kol shita tiqqunin"). Le 7 est
+      donc au centre anatomique et aussi au centre doctrinal — il
+      CONTIENT les 6 premiers. Rashbi cite :
+      - Cantique 2:3 (ke-tapuach ba-atzei ha-ya'ar) : 1 pomme = 3 couleurs
+      - Proverbes 16:15 (ba-or penei melekh chayim) : lumière du visage
+      Les 2 pommes (T7) = 6 couleurs = inclusion des 6 précédents.
+      Connexion à la BÉNÉDICTION SACERDOTALE (Nombres 6:25 "ya'er YHWH
+      panav elekha") — le "visage rayonnant" de A"A vers Z"A.
+    type: axiome_explicite
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_07_dikna_aa, role: septieme_tikkun_dikna_aa}
+      - {id: kelala_de_shita_tiqqunin, role: inclusion_des_6_precedents}
+      - {id: shir_hashirim_2_3, role: cantique_pommier_foret}
+      - {id: or_penei_melekh, role: lumiere_visage_du_roi_provebes_16_15}
+      - {id: birkat_kohanim, role: benediction_sacerdotale_ya'er_panav}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "T7 = centre doctrinal + topographique ; porte la lumière du visage vers ZA — base pour 'panim' en MazalEngine"
+    see_also:
+      - {id: "Z-IR-T07-001", role: "topographie_precedente"}
+      - {id: "Z-IR-T08-001", role: "paire_T8_qui_suit_le_centre"}
+      - {id: "EC-H3S2-T07-001", role: "lecture_vital_ve_emet"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.17"]
+    adversarial_notes:
+      - "A5 ABSOLU : T7 = inclusion de 6 précédents. Preuve structurelle contre 'features indépendantes'."
+      - "A7 : T7 émet vers ZA (chedva, joie) via les 2 pommes — anticipation structurelle explicite"
+      - "Importance doctrinale : la bénédiction sacerdotale vient de T7, ce qui lie Torah+Dikna"
+    unity_constraint: |
+      T7 = centre englobant, pas élément isolé. Les 6 précédents sont EN LUI.
+      MazalEngine doit modéliser T7 comme hub inclusif, pas node indépendant.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: low  # attribut Exode pour T7 incertain (Ginsburgh Emet mais divergent)
+    flux_direction: bidirectional

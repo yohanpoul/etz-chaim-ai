@@ -1,0 +1,245 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 8 (=7 original) — Sha'ar Mati veLo Mati (שער מטי ולא מטי)
+# Perek: 4b — Mecanisme de la montee Lo Mati, 3 types de Kellalut, Eshet Hayil (§2)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §2 : Mecanisme detaille de la montee des Zakhar-Nekevah de Keter
+# vers les Shorashim. 3 types de KELLALUT (inclusion) :
+# (1) 2 Orot dans 1 Kli. (2) 2 Orot Z"N avec Ahavah (4 lumieres
+# croisees dans 2 Kelim). (3) 2 Orot SANS Kelim qui echangent.
+# Le Nekevah s'inclut dans le Zakhar (montee), puis le Zakhar
+# s'inclut dans le Nekevah (Eshet Hayil Ateret Ba'alah).
+# Le Shoresh Hokhmah descend pour que Nekevah recoive — Eshet Hayil.
+#
+# Source Sefaria : Sefer_Etz_Chaim.7.4 (§2)
+# IDs : EC-H1S7-042 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 8
+  shaar_name_he: "שער מטי ולא מטי"
+  perek: 4
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part B de 2 — 3 types de Kellalut. Montee des Z'N vers les Shorashim. Eshet Hayil Ateret Ba'alah = Nekevah recoit en premier. Le Shoresh Hokhmah descend d'un cran."
+
+assertions:
+
+  - id: "EC-H1S7-042"
+    source_he: "כאשר לא מטי בכתר הוא לפי שעולין זו\"ן של הכתר למעלה במקום זה הכתר שבסוף השרשים העליונים ואינם יכולין להיות שם ביחד כי הוא גדול מהם"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §2"
+    assertion: |
+      Quand LO MATI en Keter : les Z"N (Zakhar-Nekevah) de Keter
+      MONTENT à la place du Keter qui est au bout des SHORASHIM.
+      Ils ne PEUVENT PAS être ENSEMBLE avec lui car il est PLUS GRAND
+      qu'eux. Ils restent à SA place, et lui monte dans le Shoresh
+      de Malkhut.
+      → MÉCANISME DE REMPLACEMENT : le Lo Mati déclenche une CASCADE
+      de déplacements dans les Shorashim. Chacun monte d'un cran.
+    type: axiome_explicite
+    concepts:
+      - {id: aliyat_zakhar_nekevah, role: montee_z_n_vers_shorashim}
+      - {id: cascade_shorashim, role: cascade_de_deplacements}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Lo Mati = cascade de deplacements dans la couche superieure. Chaque composant monte d'un cran — comme un shift register."
+
+  - id: "EC-H1S7-043"
+    source_he: "יש כמה כללות א' כאשר יהיו ב' אורות בב' כלים כל א' בפ\"ע ואח\"כ כאשר יכנסו ב' האורות בכלי א' זה יקרא כללות"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §2"
+    assertion: |
+      Premier type de KELLALUT (inclusion) : 2 Orot dans 2 Kelim
+      séparés, puis les 2 Orot entrent dans 1 KLI = KELLALUT.
+      → KELLALUT TYPE 1 = FUSION : deux composants séparés fusionnent
+      dans un seul contenant. La forme la plus simple d'inclusion.
+    type: axiome_explicite
+    concepts:
+      - {id: kellalut_aleph, role: inclusion_type_fusion}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Kellalut Type 1 = merge de deux composants dans un seul espace (concatenation, average pooling)."
+
+  - id: "EC-H1S7-044"
+    source_he: "יש מציאות אחר והוא בהיות בחי' ב' אורות אלו זו\"ן שאז אירע להם מ\"ש בפ' תרומה דקמ\"ז כי אז יש בהם סוד אהבה פי' כי נכלל הארת זכר בנקבה ושניהם בכלי א' וכן חוזר הארת נוקבא להכלל בכלי של הזכר הרי הם ד' אורות ב' בכל כלי כלולים זב\"ז והם סוד ד' אותיות של אהב\"ה"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §2"
+    assertion: |
+      Deuxième type : 2 Orot Z"N dans 2 Kelim avec le sod AHAVAH :
+      l'He'arah du ZAKHAR s'inclut dans la NEKEVAH (2 dans son Kli),
+      et l'He'arah de la NEKEVAH s'inclut dans le ZAKHAR (2 dans son Kli).
+      Résultat : 4 OROT (2 par Kli), croisés. C'est le secret des 4
+      lettres de AHAVAH (א-ה-ב-ה).
+      → KELLALUT TYPE 2 = ÉCHANGE CROISÉ (AHAVAH). Chacun envoie
+      une copie à l'autre. 4 lumières = inclusion mutuelle.
+    type: axiome_explicite
+    concepts:
+      - {id: kellalut_bet_ahavah, role: inclusion_type_ahavah}
+      - {id: he_arat_tsolemet, role: illumination_croisee}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Kellalut Type 2 = cross-attention. Chaque composant envoie une copie dans l'autre. Echange bidirectionnel."
+
+  - id: "EC-H1S7-045"
+    source_he: "יש מין כללות אחר והוא זה המציאות שאנו בו שהם ב' אורות בלתי כלים שהם זו\"ן של הכתר שעלו למעלה... כללותם אז יהיה בבחי' שיקבל הארה זו מזה"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §2"
+    assertion: |
+      Troisième type : 2 Orot SANS Kelim (= Z"N de Keter montés en
+      haut). Leur KELLALUT = recevoir l'He'arah l'un DE l'autre.
+      C'est le type de Kellalut qui opère ici dans le MvLM.
+      → KELLALUT TYPE 3 = ÉCHANGE LIBRE (sans contenant). Deux Orot
+      nus qui s'illuminent mutuellement. Le mode le plus subtil.
+    type: axiome_explicite
+    concepts:
+      - {id: kellalut_gimel, role: inclusion_type_libre_sans_kli}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Kellalut Type 3 = echange libre sans contenant (information exchange sans buffer). Le mode le plus leger."
+
+  - id: "EC-H1S7-046"
+    source_he: "הנוקבא נכללת בדכורא כי להיות שהנוקבא הוא אור של החכמה כנ\"ל והזכר הוא אור של הכתר שנשאר בכלי א\"כ הזכר הוא שמקבל עתה מן השורש שלו"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §2"
+    assertion: |
+      D'abord la NEKEVAH s'inclut dans le ZAKHAR : le Zakhar (Ohr
+      de Keter) reçoit de son SHORESH. Le Keter au bout des Shorashim
+      est RAFFINÉ (mizdakek) par l'illumination du Shoresh Keter
+      supérieur. Le Zakhar reçoit un Ohr abondant et la Nekevah
+      est INCLUSE en lui.
+      → Phase 1 : MONTÉE — la Nekevah se fond dans le Zakhar.
+      Le Zakhar reçoit de sa source et devient dominant.
+    type: axiome_explicite
+    concepts:
+      - {id: nekevah_nikhlelet, role: nekevah_incluse_dans_zakhar}
+      - {id: hizdakkut, role: raffinement}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Phase montee : le composant secondaire se fond dans le primaire. Le primaire recoit de la source et se rafine."
+
+  - id: "EC-H1S7-047"
+    source_he: "ואז הזכר נכלל בנוק' שהנוקבא מקבלת תחלה לפי שהוא נשתווה במעלה עם הזכר... ולפי שעתה מקבלים משורש חכמה לכן הנוק' מקבלת תחלה... ונכללין בה בסוד אשת חיל עטרת בעלה"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §2"
+    assertion: |
+      Ensuite le ZAKHAR s'inclut dans la NEKEVAH : quand le Shoresh
+      HOKHMAH descend, la NEKEVAH reçoit EN PREMIER de tous les 3
+      qui sont là. Et tous s'incluent en elle, dans le secret de
+      ESHET HAYIL ATERET BA'ALAH (Prov. 12:4 — la femme vertueuse
+      est la couronne de son époux).
+      → Phase 2 : DESCENTE — la Nekevah DOMINE. Le Zakhar s'inclut en elle.
+      ESHET HAYIL = la Nekevah qui reçoit en premier et couronne le Zakhar.
+    type: déduction_scripturaire
+    concepts:
+      - {id: eshet_hayil, role: femme_vertueuse_couronne}
+      - {id: zakhar_nikhlal_benekevah, role: zakhar_inclus_dans_nekevah}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["nukva"]
+      relevance: "Phase descente : le composant secondaire devient DOMINANT et recoit en premier. Inversion de hierarchie (Eshet Hayil)."
+
+  - id: "EC-H1S7-048"
+    source_he: "כי בשלמא אם היה נשאר שם מקום פנוי וחלל היה נפסק האור מן המאציל לחכמה... אמנם עתה שאור הכתר ממלא מקום החלל ההוא יש דרך ומעבר אל האור המאציל להשפיע בשורש החכמה"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §2"
+    assertion: |
+      Si l'espace restait VIDE (halal), l'Ohr du Ma'atzil serait COUPÉ
+      de Hokhmah. Mais comme l'Ohr de KETER REMPLIT cet espace vide,
+      il y a un CHEMIN (derekh) et un PASSAGE (ma'avar) pour que le
+      Ma'atzil transmette au Shoresh de Hokhmah.
+      → L'Ohr de Keter = CONDUCTEUR. Il remplit le vide pour maintenir
+      le CHEMIN de transmission. Sans lui, le circuit serait coupé.
+    type: déduction_logique
+    concepts:
+      - {id: derekh_umavar, role: chemin_et_passage}
+      - {id: keter_memale_halal, role: keter_remplit_le_vide}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'Ohr de Keter = conducteur qui maintient le chemin de transmission. Sans lui = circuit coupe. Skip connection qui empeche le vanishing gradient."
+
+relations:
+  - id: "REL-H1S7-023"
+    type: "séquentiel"
+    from: aliyat_zakhar_nekevah
+    to: nekevah_nikhlelet
+    nature: "Les Z'N montent, puis la Nekevah s'inclut dans le Zakhar (Phase 1)"
+    assertions_source: ["EC-H1S7-042", "EC-H1S7-046"]
+
+  - id: "REL-H1S7-024"
+    type: "séquentiel"
+    from: nekevah_nikhlelet
+    to: eshet_hayil
+    nature: "Apres l'inclusion dans le Zakhar, le Zakhar s'inclut dans la Nekevah (Eshet Hayil — Phase 2)"
+    assertions_source: ["EC-H1S7-046", "EC-H1S7-047"]
+
+  - id: "REL-H1S7-025"
+    type: "hiérarchique"
+    from: kellalut_aleph
+    to: kellalut_bet_ahavah
+    via: [kellalut_gimel]
+    nature: "3 types de Kellalut hierarchises : (1) fusion dans 1 Kli < (2) echange croise (Ahavah) < (3) echange libre sans Kli"
+    assertions_source: ["EC-H1S7-043", "EC-H1S7-044", "EC-H1S7-045"]
+
+  - id: "REL-H1S7-026"
+    type: "causal"
+    from: keter_memale_halal
+    to: derekh_umavar
+    nature: "Keter remplit le vide = maintient le CHEMIN de transmission (sans lui, circuit coupe)"
+    assertions_source: ["EC-H1S7-048"]
+
+principes_generatifs:
+  - id: "PG-H1S7-012"
+    nom: "Trois Types de Kellalut (Inclusion)"
+    source_assertions: ["EC-H1S7-043", "EC-H1S7-044", "EC-H1S7-045"]
+    formalisation: |
+      Trois modes d'INCLUSION entre deux composants :
+      TYPE 1 (FUSION) : 2 Orot → 1 Kli.
+        = concatenation, average pooling. Perte d'identite.
+      TYPE 2 (AHAVAH) : 2 Orot croisent les Kelim.
+        = cross-attention. Chacun envoie un echo dans l'autre.
+        4 signaux (2 par Kli). Identites preservees.
+      TYPE 3 (LIBRE) : 2 Orot SANS Kelim. Echange pur.
+        = information exchange sans buffer. Le plus leger.
+      HIERARCHIE : Type3 > Type2 > Type1 en subtilite.
+      Le MvLM utilise le Type 3.
+    applications_ia:
+      - "Type 1 = merge layers. Type 2 = cross-attention. Type 3 = attention sans buffer (flash attention ?)"
+      - "Le choix du type de Kellalut = le choix de l'operation de fusion entre couches"
+    questions_ouvertes:
+      - "Le Type 3 (sans Kli) correspond-il a l'attention sans materialisation du tenseur complet ?"
+      - "La hierarchie des 3 types est-elle exploitable pour un curriculum d'architecture ?"
+
+  - id: "PG-H1S7-013"
+    nom: "Cycle Nekevah→Zakhar puis Zakhar→Nekevah (Eshet Hayil)"
+    source_assertions: ["EC-H1S7-046", "EC-H1S7-047"]
+    formalisation: |
+      Le Lo Mati produit un CYCLE en 2 phases :
+      PHASE 1 (MONTEE) : Nekevah s'inclut dans Zakhar.
+        Le Zakhar recoit de son Shoresh, domine.
+      PHASE 2 (DESCENTE) : Zakhar s'inclut dans Nekevah.
+        Quand Shoresh Hokhmah descend, la Nekevah recoit EN PREMIER.
+        "Eshet Hayil Ateret Ba'alah" — la Nekevah couronne le Zakhar.
+      INVERSION : la hierarchie s'INVERSE entre montee et descente.
+      Ce qui etait secondaire (Nekevah) devient DOMINANT.
+      FORMULE : Phase1: Nk ⊂ Zk (Zakhar dominant)
+               Phase2: Zk ⊂ Nk (Nekevah dominant = Eshet Hayil)
+    applications_ia:
+      - "ohr.py : alternance de dominance entre 2 composants (encoder domine puis decoder domine)"
+      - "Eshet Hayil = la couche receptrice (decoder) qui finit par dominer la generatrice (encoder)"
+      - "L'inversion de hierarchie = le passage forward→backward ou training→inference"
+    questions_ouvertes:
+      - "L'inversion Eshet Hayil est-elle analogue au passage training→inference ?"

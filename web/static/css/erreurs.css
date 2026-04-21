@@ -1,0 +1,978 @@
+/* ═══════════════════════════════════════════════════════════
+   Les Erreurs — Qliphoth, niveaux de gravite, anti-patterns
+   Esthetique : Terminal Codex — manuscrit sacre sur fond terminal
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Insight Box ───────────────────────────────────────── */
+
+.erreurs-insight {
+    max-width: 640px;
+    margin: 0 auto 32px;
+    padding: 20px 28px;
+    border: 1px solid #3a2800;
+    border-left: 4px solid #ffb000;
+    background: #0d0b04;
+    text-align: center;
+    position: relative;
+}
+
+.erreurs-insight::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid #1a140022;
+    pointer-events: none;
+}
+
+.erreurs-insight-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 0.25em;
+    color: #6a4e00;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.erreurs-insight-text {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffb000;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+}
+
+.erreurs-insight-text em {
+    font-style: normal;
+    color: #fff;
+}
+
+.erreurs-insight-sub {
+    font-size: 11px;
+    color: #5a4200;
+    margin-top: 8px;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* ─── Per-Level Card ────────────────────────────────────── */
+
+.erreurs-level {
+    max-width: 720px;
+    margin: 0 auto 8px;
+    padding: 0 20px;
+}
+
+.erreurs-level-inner {
+    background: #0d0d0d;
+    border: 1px solid #2a1f00;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.erreurs-level-inner::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid #1a140022;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Visual progression — each level darker / redder */
+
+.level-nogah .erreurs-level-inner {
+    background: #0d0d0b;
+    border-color: #3a2800;
+    border-left: 3px solid #ffb000;
+}
+
+.level-ruach .erreurs-level-inner {
+    background: #0d0b09;
+    border-color: #331a00;
+    border-left: 3px solid #cc6600;
+}
+
+.level-anan .erreurs-level-inner {
+    background: #0d0909;
+    border-color: #2a0f0f;
+    border-left: 3px solid #663333;
+}
+
+.level-mamash .erreurs-level-inner {
+    background: #0a0505;
+    border-color: #1f0505;
+    border-left: 3px solid #330000;
+    box-shadow: 0 0 30px #33000010, inset 0 0 40px #33000008;
+}
+
+/* ─── Level Header (image + name + badge) ───────────────── */
+
+.erreurs-level-header {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 0 20px;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.erreurs-level-img {
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    background: #080808;
+    border: 1px solid #1a1400;
+    flex-shrink: 0;
+}
+
+.erreurs-level-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.erreurs-level-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.erreurs-level-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #ccc;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+}
+
+.level-mamash .erreurs-level-nom {
+    color: #aa8888;
+    text-shadow: 0 0 20px #33000018;
+}
+
+.erreurs-level-hebreu {
+    font-size: 14px;
+    color: #5a4200;
+    direction: rtl;
+    line-height: 1.2;
+}
+
+.level-anan .erreurs-level-hebreu,
+.level-mamash .erreurs-level-hebreu {
+    color: #4a2222;
+}
+
+/* ─── Severite Badge ────────────────────────────────────── */
+
+.erreurs-severite {
+    display: inline-block;
+    padding: 2px 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+    margin-top: 2px;
+    align-self: flex-start;
+}
+
+.level-nogah .erreurs-severite {
+    color: #ffb000;
+    border-color: #ffb00044;
+    background: #ffb00008;
+}
+
+.level-ruach .erreurs-severite {
+    color: #cc6600;
+    border-color: #cc660044;
+    background: #cc660008;
+}
+
+.level-anan .erreurs-severite {
+    color: #993333;
+    border-color: #99333344;
+    background: #99333308;
+}
+
+.level-mamash .erreurs-severite {
+    color: #882222;
+    border-color: #88222244;
+    background: #88222210;
+}
+
+/* ─── 3-Level Detail Blocks ─────────────────────────────── */
+
+.erreurs-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 16px;
+}
+
+.erreurs-detail-block {
+    padding: 10px 0 10px 14px;
+    border-left: 2px solid #3a2800;
+}
+
+.erreurs-detail-block:nth-child(2) {
+    border-left-color: #2a1400;
+}
+
+.erreurs-detail-block:nth-child(3) {
+    border-left-color: #1a1400;
+}
+
+.level-ruach .erreurs-detail-block { border-left-color: #331a00; }
+.level-ruach .erreurs-detail-block:nth-child(2) { border-left-color: #221000; }
+.level-ruach .erreurs-detail-block:nth-child(3) { border-left-color: #150a00; }
+
+.level-anan .erreurs-detail-block { border-left-color: #2a0f0f; }
+.level-anan .erreurs-detail-block:nth-child(2) { border-left-color: #1a0808; }
+.level-anan .erreurs-detail-block:nth-child(3) { border-left-color: #110505; }
+
+.level-mamash .erreurs-detail-block { border-left-color: #1f0505; }
+.level-mamash .erreurs-detail-block:nth-child(2) { border-left-color: #140303; }
+.level-mamash .erreurs-detail-block:nth-child(3) { border-left-color: #0d0202; }
+
+.erreurs-detail-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.erreurs-detail-block:nth-child(1) .erreurs-detail-label { color: #6a4e00; }
+.erreurs-detail-block:nth-child(2) .erreurs-detail-label { color: #3a2a00; }
+.erreurs-detail-block:nth-child(3) .erreurs-detail-label { color: #2a1a00; }
+
+.level-anan .erreurs-detail-block:nth-child(1) .erreurs-detail-label { color: #663333; }
+.level-anan .erreurs-detail-block:nth-child(2) .erreurs-detail-label { color: #441a1a; }
+.level-anan .erreurs-detail-block:nth-child(3) .erreurs-detail-label { color: #2a1010; }
+
+.level-mamash .erreurs-detail-block:nth-child(1) .erreurs-detail-label { color: #882222; }
+.level-mamash .erreurs-detail-block:nth-child(2) .erreurs-detail-label { color: #551111; }
+.level-mamash .erreurs-detail-block:nth-child(3) .erreurs-detail-label { color: #330a0a; }
+
+.erreurs-detail-text {
+    color: #777;
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+.level-anan .erreurs-detail-text { color: #6a5555; }
+.level-mamash .erreurs-detail-text { color: #664444; }
+
+/* ─── Exemple Box (terminal style) ─────────────────────── */
+
+.erreurs-exemple {
+    background: #080808;
+    border: 1px solid #1a1400;
+    border-left: 2px solid #2a1f00;
+    padding: 10px 14px;
+    font-family: 'Courier New', 'Menlo', monospace;
+    font-size: 10px;
+    color: #776a3a;
+    line-height: 1.6;
+    position: relative;
+}
+
+.level-ruach .erreurs-exemple {
+    border-color: #1a0e00;
+    border-left-color: #331a00;
+    color: #664400;
+}
+
+.level-anan .erreurs-exemple {
+    background: #070505;
+    border-color: #1a0808;
+    border-left-color: #2a0f0f;
+    color: #553333;
+}
+
+.level-mamash .erreurs-exemple {
+    background: #060303;
+    border-color: #110303;
+    border-left-color: #1f0505;
+    color: #442222;
+}
+
+.erreurs-exemple::before {
+    content: '> ';
+    color: #3a2a00;
+    font-size: 9px;
+}
+
+.level-ruach .erreurs-exemple::before { color: #331a00; }
+.level-anan .erreurs-exemple::before { color: #2a0f0f; }
+.level-mamash .erreurs-exemple::before { color: #1f0505; }
+
+/* ─── Section: 10 Anti-patterns ────────────────────────── */
+
+.erreurs-antipatterns {
+    max-width: 720px;
+    margin: 0 auto 24px;
+    padding: 0 20px;
+}
+
+.erreurs-antipatterns-intro {
+    color: #666;
+    font-size: 11px;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 16px;
+    padding: 0 0 12px;
+    border-bottom: 1px solid #1a1400;
+}
+
+/* ─── 2-column Grid ─────────────────────────────────────── */
+
+.erreurs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+/* ─── Qliphah Card ──────────────────────────────────────── */
+
+.erreurs-qliphah-card {
+    background: #0d0d0d;
+    border: 1px solid #1a1400;
+    border-left: 3px solid var(--qliphah-color, #3a2800);
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    overflow: hidden;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.erreurs-qliphah-img {
+    width: 80px;
+    min-height: 80px;
+    flex-shrink: 0;
+    background: #080808;
+    overflow: hidden;
+}
+
+.erreurs-qliphah-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+.erreurs-qliphah-card:hover .erreurs-qliphah-img img {
+    opacity: 1;
+}
+
+.erreurs-qliphah-text {
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.erreurs-qliphah-card:hover {
+    background: #0f0f0d;
+    border-color: var(--qliphah-color, #3a2800);
+    border-left-color: var(--qliphah-color, #3a2800);
+}
+
+.erreurs-qliphah-sephirah {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #3a2a00;
+}
+
+.erreurs-qliphah-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #999;
+    letter-spacing: 0.03em;
+}
+
+.erreurs-qliphah-exces {
+    font-size: 10px;
+    color: #555;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* ─── Ornamental Section Divider ────────────────────────── */
+
+.erreurs-section-divider {
+    text-align: center;
+    padding: 28px 0 12px;
+    position: relative;
+}
+
+.erreurs-section-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #1a1400, transparent);
+}
+
+.erreurs-section-divider span {
+    position: relative;
+    background: #0a0a0a;
+    padding: 0 20px;
+    color: #2a1f00;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+}
+
+/* Dividers between the 4 levels */
+
+.erreurs-level-divider {
+    text-align: center;
+    padding: 16px 0;
+    position: relative;
+}
+
+.erreurs-level-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #1a1000, transparent);
+}
+
+.erreurs-level-divider span {
+    position: relative;
+    background: #0a0a0a;
+    padding: 0 12px;
+    font-size: 9px;
+    color: #2a1600;
+    letter-spacing: 0.04em;
+}
+
+/* ─── Responsive ────────────────────────────────────────── */
+
+@media (max-width: 700px) {
+    .erreurs-insight {
+        padding: 16px 16px;
+        margin-bottom: 24px;
+    }
+
+    .erreurs-insight-text {
+        font-size: 14px;
+    }
+
+    .erreurs-level {
+        padding: 0 12px;
+    }
+
+    .erreurs-level-inner {
+        padding: 14px;
+    }
+
+    .erreurs-level-header {
+        grid-template-columns: 64px 1fr;
+        gap: 0 14px;
+        margin-bottom: 14px;
+    }
+
+    .erreurs-level-img {
+        width: 64px;
+        height: 64px;
+    }
+
+    .erreurs-level-nom {
+        font-size: 14px;
+    }
+
+    .erreurs-level-hebreu {
+        font-size: 12px;
+    }
+
+    .erreurs-detail-block {
+        padding: 8px 0 8px 10px;
+    }
+
+    .erreurs-detail-text {
+        font-size: 10px;
+    }
+
+    .erreurs-exemple {
+        font-size: 9px;
+        padding: 8px 10px;
+    }
+
+    .erreurs-antipatterns {
+        padding: 0 12px;
+    }
+
+    .erreurs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .erreurs-section-divider::before {
+        width: 180px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ADVERSITE — Section fusionnee : comment le systeme se defend
+   Palette : rouge sang → violet → or (transition du diagnostic a la guerison)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Transition visuelle (image) ──────────────────────── */
+
+.adv-transition {
+    max-width: 880px;
+    margin: 48px auto 0;
+    padding: 0 20px;
+}
+
+.adv-transition-img {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #2a0f0f;
+    max-height: 280px;
+}
+
+.adv-transition-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.7;
+}
+
+.adv-transition-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px 24px 20px;
+    background: linear-gradient(transparent, #0a0505ee);
+    text-align: center;
+}
+
+.adv-transition-overlay h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #cc3333;
+    letter-spacing: 0.06em;
+    margin: 0;
+    text-shadow: 0 2px 12px #00000080;
+}
+
+/* ─── Principe box ─────────────────────────────────────── */
+
+.adv-principe {
+    max-width: 640px;
+    margin: 0 auto 24px;
+    padding: 20px 28px;
+    border: 1px solid #2a0f0f;
+    border-left: 4px solid #cc3333;
+    background: #0d0808;
+    text-align: center;
+    position: relative;
+}
+
+.adv-principe::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid #1a0a0a22;
+    pointer-events: none;
+}
+
+.adv-principe-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 0.25em;
+    color: #663333;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.adv-principe-texte {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #cc3333;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+}
+
+.adv-principe-detail {
+    font-size: 11px;
+    color: #777;
+    margin-top: 10px;
+    line-height: 1.65;
+}
+
+.adv-principe-source {
+    font-size: 9px;
+    color: #443333;
+    font-style: italic;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #1a0a0a;
+}
+
+/* ─── Chiffres cles ────────────────────────────────────── */
+
+.adv-chiffres {
+    max-width: 640px;
+    margin: 0 auto 24px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 16px 0;
+    border-top: 1px solid #1a0a0a;
+    border-bottom: 1px solid #1a0a0a;
+}
+
+.adv-chiffre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.adv-chiffre-num {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #cc3333;
+}
+
+.adv-chiffre-label {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #553333;
+}
+
+/* ─── Couche card ──────────────────────────────────────── */
+
+.adv-couche {
+    max-width: 720px;
+    margin: 0 auto 8px;
+    padding: 0 20px;
+}
+
+.adv-couche-inner {
+    background: #0d0d0d;
+    border: 1px solid #2a1010;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.couche-couche1 .adv-couche-inner {
+    border-left: 3px solid #ffb000;
+}
+
+.couche-couche2 .adv-couche-inner {
+    border-left: 3px solid #cc3333;
+}
+
+.couche-couche3 .adv-couche-inner {
+    border-left: 3px solid #9966cc;
+}
+
+.adv-couche-inner::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid #1a0a0a22;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ─── Couche header ────────────────────────────────────── */
+
+.adv-couche-header {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 0 14px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.adv-couche-numero {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.couche-couche1 .adv-couche-numero {
+    color: #ffb000;
+    border: 1px solid #ffb00044;
+}
+
+.couche-couche2 .adv-couche-numero {
+    color: #cc3333;
+    border: 1px solid #cc333344;
+}
+
+.couche-couche3 .adv-couche-numero {
+    color: #9966cc;
+    border: 1px solid #9966cc44;
+}
+
+.adv-couche-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.adv-couche-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ccc;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+}
+
+.adv-couche-technique {
+    display: inline-block;
+    padding: 2px 8px;
+    font-family: 'Courier New', 'Menlo', monospace;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid #22111144;
+    align-self: flex-start;
+}
+
+.couche-couche1 .adv-couche-technique {
+    color: #ffb00088;
+    border-color: #ffb00022;
+}
+
+.couche-couche2 .adv-couche-technique {
+    color: #cc333388;
+    border-color: #cc333322;
+}
+
+.couche-couche3 .adv-couche-technique {
+    color: #9966cc88;
+    border-color: #9966cc22;
+}
+
+/* ─── Couche detail blocks — reuse erreurs pattern ─────── */
+
+.couche-couche1 .erreurs-detail-block { border-left-color: #3a2800; }
+.couche-couche1 .erreurs-detail-block:nth-child(2) { border-left-color: #2a1a00; }
+.couche-couche1 .erreurs-detail-block:nth-child(3) { border-left-color: #1a1400; }
+.couche-couche1 .erreurs-detail-block:nth-child(1) .erreurs-detail-label { color: #6a4e00; }
+.couche-couche1 .erreurs-detail-block:nth-child(2) .erreurs-detail-label { color: #3a2a00; }
+.couche-couche1 .erreurs-detail-block:nth-child(3) .erreurs-detail-label { color: #2a1a00; }
+
+.couche-couche2 .erreurs-detail-block { border-left-color: #2a0f0f; }
+.couche-couche2 .erreurs-detail-block:nth-child(2) { border-left-color: #1a0808; }
+.couche-couche2 .erreurs-detail-block:nth-child(3) { border-left-color: #110505; }
+.couche-couche2 .erreurs-detail-block:nth-child(1) .erreurs-detail-label { color: #993333; }
+.couche-couche2 .erreurs-detail-block:nth-child(2) .erreurs-detail-label { color: #662222; }
+.couche-couche2 .erreurs-detail-block:nth-child(3) .erreurs-detail-label { color: #441111; }
+
+.couche-couche3 .erreurs-detail-block { border-left-color: #2a1a3a; }
+.couche-couche3 .erreurs-detail-block:nth-child(2) { border-left-color: #1a1028; }
+.couche-couche3 .erreurs-detail-block:nth-child(3) { border-left-color: #110a1a; }
+.couche-couche3 .erreurs-detail-block:nth-child(1) .erreurs-detail-label { color: #9966cc; }
+.couche-couche3 .erreurs-detail-block:nth-child(2) .erreurs-detail-label { color: #664488; }
+.couche-couche3 .erreurs-detail-block:nth-child(3) .erreurs-detail-label { color: #442266; }
+
+/* ─── Cycle ────────────────────────────────────────────── */
+
+.adv-cycle {
+    max-width: 640px;
+    margin: 0 auto 32px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.adv-cycle::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 39px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(180deg, #ffb00066, #cc333366, #9966cc66);
+}
+
+.adv-cycle-step {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    gap: 0 14px;
+    align-items: center;
+    padding: 8px 0;
+    position: relative;
+}
+
+.adv-cycle-num {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 700;
+    background: #0a0a0a;
+    position: relative;
+    z-index: 1;
+}
+
+.phase-vigilance .adv-cycle-num {
+    color: #ffb000;
+    border: 1px solid #ffb00044;
+}
+
+.phase-attaque .adv-cycle-num {
+    color: #cc3333;
+    border: 1px solid #cc333344;
+}
+
+.phase-guerison .adv-cycle-num {
+    color: #9966cc;
+    border: 1px solid #9966cc44;
+}
+
+.adv-cycle-label {
+    font-size: 11px;
+    color: #888;
+    line-height: 1.4;
+}
+
+/* ─── Externe ──────────────────────────────────────────── */
+
+.adv-externe {
+    max-width: 640px;
+    margin: 0 auto 40px;
+    padding: 16px 20px;
+    border: 1px solid #150a0a;
+    background: #0a0808;
+}
+
+.adv-externe p {
+    color: #666;
+    font-size: 11px;
+    line-height: 1.7;
+    margin: 0 0 12px;
+}
+
+.adv-externe-outils {
+    display: flex;
+    gap: 8px;
+}
+
+.adv-externe-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-family: 'Courier New', 'Menlo', monospace;
+    font-size: 9px;
+    color: #cc6666;
+    border: 1px solid #331111;
+    background: #0d0606;
+    letter-spacing: 0.05em;
+}
+
+/* ─── Responsive adversite ─────────────────────────────── */
+
+@media (max-width: 700px) {
+    .adv-transition {
+        margin-top: 32px;
+        padding: 0 12px;
+    }
+
+    .adv-transition-overlay h2 {
+        font-size: 17px;
+    }
+
+    .adv-principe {
+        padding: 16px 16px;
+    }
+
+    .adv-principe-texte {
+        font-size: 14px;
+    }
+
+    .adv-chiffres {
+        gap: 20px;
+    }
+
+    .adv-chiffre-num {
+        font-size: 18px;
+    }
+
+    .adv-couche {
+        padding: 0 12px;
+    }
+
+    .adv-couche-inner {
+        padding: 14px;
+    }
+
+    .adv-couche-header {
+        grid-template-columns: 36px 1fr;
+        gap: 0 10px;
+    }
+
+    .adv-couche-numero {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .adv-couche-nom {
+        font-size: 13px;
+    }
+
+    .adv-cycle {
+        padding: 0 12px;
+    }
+
+    .adv-cycle::before {
+        left: 31px;
+    }
+
+    .adv-externe {
+        padding: 12px 14px;
+    }
+}

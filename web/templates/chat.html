@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% set active = "chat" %}
+{% block title %}Etz Chaim — Chat{% endblock %}
+{% block content %}
+
+<div class="chat-layout">
+    <!-- Sidebar : projets + conversations -->
+    <aside class="chat-sidebar" id="chat-sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-btn sidebar-btn-new" id="btn-new-chat" title="Nouvelle conversation">[+ CHAT]</button>
+            <button class="sidebar-btn" id="btn-new-project" title="Nouveau projet">[+ PROJET]</button>
+        </div>
+
+        <div class="sidebar-section" id="sidebar-projects">
+            <!-- Projets chargeés dynamiquement -->
+        </div>
+
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-section-title">CONVERSATIONS LIBRES</div>
+        <div class="sidebar-section" id="sidebar-orphans">
+            <!-- Conversations sans projet -->
+        </div>
+    </aside>
+
+    <!-- Zone principale de chat -->
+    <section class="chat-main">
+        <div class="panel chat-panel">
+            <div class="panel-header" id="chat-panel-header">&#9484;&#9472; CHAT &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+            <div class="panel-body chat-body">
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message system-message">
+                        <div class="message-content">[SYSTEM] L'Arbre ecoute. Parlez.</div>
+                    </div>
+                </div>
+
+                <div class="chat-meta" id="chat-meta" style="display:none;">
+                    <span id="meta-model" class="meta-badge"></span>
+                    <span id="meta-domain" class="meta-badge"></span>
+                    <span id="meta-memories" class="meta-badge"></span>
+                    <span id="meta-kli" class="meta-badge"></span>
+                </div>
+
+                <div class="chat-mode-bar">
+                    <div class="chat-mode-group">
+                        <label class="chat-mode-label">Mode</label>
+                        <select id="chat-mode" class="chat-mode-select">
+                            <option value="auto">Auto</option>
+                            <option value="yosher">Yosher (profond)</option>
+                            <option value="igulim">Igulim (parallele)</option>
+                        </select>
+                    </div>
+                    <div class="chat-mode-group">
+                        <label class="chat-mode-label">Monde</label>
+                        <select id="chat-world" class="chat-mode-select">
+                            <option value="auto">Auto</option>
+                            <option value="assiah">Assiah (rapide)</option>
+                            <option value="yetzirah">Yetzirah (standard)</option>
+                            <option value="briah">Briah (profond)</option>
+                            <option value="atziluth">Atziluth (maximum)</option>
+                        </select>
+                    </div>
+                    <div class="chat-mode-group" id="chat-conv-info" style="display:none;">
+                        <span class="chat-mode-label" id="chat-conv-label"></span>
+                        <button class="sidebar-btn-sm" id="btn-move-to-project" title="Deplacer dans un projet">[PROJET]</button>
+                    </div>
+                </div>
+
+                <form class="chat-input" id="chat-form">
+                    <span class="chat-prompt">etz&gt; </span>
+                    <input type="text" id="chat-input" placeholder="Posez votre question..." autocomplete="off" autofocus>
+                    <button type="submit" id="chat-send">[SEND]</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Modal : nouveau projet -->
+<div class="modal-overlay" id="modal-project" style="display:none;">
+    <div class="modal-box">
+        <div class="modal-title">NOUVEAU PROJET</div>
+        <input type="text" id="modal-project-name" placeholder="Nom du projet..." class="modal-input" autofocus>
+        <div class="modal-actions">
+            <button class="sidebar-btn" id="modal-project-ok">[CREER]</button>
+            <button class="sidebar-btn" id="modal-project-cancel">[ANNULER]</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal : deplacer conversation dans un projet -->
+<div class="modal-overlay" id="modal-move" style="display:none;">
+    <div class="modal-box">
+        <div class="modal-title">DEPLACER DANS UN PROJET</div>
+        <select id="modal-move-select" class="modal-input"></select>
+        <div class="modal-actions">
+            <button class="sidebar-btn" id="modal-move-ok">[DEPLACER]</button>
+            <button class="sidebar-btn" id="modal-move-cancel">[ANNULER]</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => { initChatV2(); });
+</script>
+{% endblock %}

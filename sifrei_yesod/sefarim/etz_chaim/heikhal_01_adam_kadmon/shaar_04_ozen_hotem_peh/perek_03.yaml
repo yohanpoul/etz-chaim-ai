@@ -1,0 +1,800 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 4 — Sha'ar Ozen Hotem Peh (שער אזן חוטם פה)
+# Perek: 3 — Kelim via Re'iyah, Binah/Tevunah, Shem S"G, Heh Akhronah dans Z"A
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 4
+  shaar_name_he: "שער אזן חוטם פה"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Les 30 Kelim naissent de la RE'IYAH (regard des Einayim). Binah et Tevunah via le Shem S\"G. La Heh akhronah de S\"G descend dans Z\"A. 3 proportions possibles de Tevunah."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LES KELIM NAISSENT DE LA RE'IYAH ───
+
+  - id: "EC-H1S4-049"
+    source_he: "הנה אחר שדברנו בפרק העבר איך נאצל מציאות נר\"ן מאח\"פ הנה עתה נבאר מציאות הכלים שלהם שהם בחי' גוף אליהם"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      TRANSITION depuis le perek précédent (cf. EC-H1S4-031 sq. perek_02) :
+      Après avoir expliqué comment NaRaN ÉMANE depuis OZEN/HOTEM/PEH →
+      nous expliquons maintenant les KELIM (récipients) de NaRaN.
+      Les Kelim = l'aspect GUF par rapport aux Orot — la DUALITÉ fondamentale
+      hitpashtut/kelim posée en EC-H1S4-002 (perek_01).
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_naran, role: recipients_de_naran}
+      - {id: kelim_guf, role: kelim_sont_le_corps}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les Kelim de NaRaN = les structures qui contiennent les lumières — aspect Guf"
+
+  - id: "EC-H1S4-050"
+    source_he: "כבר בארנו כי מבחי' הראיה עצמה נעשה נשמה לנשמה אך אין הראייה סוד הבל הנמשך למטה כמו אח\"פ. והטעם כי נר\"ן שהם אורות אח\"פ הם מתפשטים למטה אבל הנשמה לנשמה שהוא הסתכלות העין אינה מתפשטת רק נשארת במקומה בסוד או\"מ"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      RAPPEL : de la RE'IYAH elle-même → NESHAMAH LE-NESHAMAH (âme de l'âme).
+      MAIS : la Re'iyah N'EST PAS un HEVEL qui descend comme OHP.
+      NaRaN (Orot de OHP) = se DÉPLOIENT VERS LE BAS.
+      La NESHAMAH LE-NESHAMAH = HISTAKKELUT de l'AYIN (œil) →
+      reste À SA PLACE en tant que OHR MAKIF (cf. EC-H1S4-031, EC-H1S4-001).
+      Seulement un HISTAKKELUT DAK ME'OD (regard très subtil) = le secret de la VISION.
+    type: axiome_explicite
+    concepts:
+      - {id: re_iyah_einayim, role: regard_des_yeux}
+      - {id: neshamah_le_neshamah, role: ame_de_l_ame}
+      - {id: histakkelut_dak, role: regard_tres_subtil}
+      - {id: re_iyah_ohr_makif, role: vision_reste_makif}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La Re'iyah des Einayim = Neshamah le-Neshamah = Ohr Makif qui ne descend pas"
+
+  - id: "EC-H1S4-051"
+    source_he: "לכן מסוד ראייה זו נעשה ל' כלים שהוא הגוף י' כלים להבל האזן הנקרא נשמה וי' כלים להבל החוטם הנקרא רוח וי' כלים להבל הפה הנקרא נפש"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      Du SECRET de cette RE'IYAH → 30 KELIM (récipients) sont formés = le GUF :
+      10 KELIM pour le HEVEL OZEN = NESHAMAH (cf. EC-H1S4-032)
+      10 KELIM pour le HEVEL HOTEM = RUAH
+      10 KELIM pour le HEVEL PEH = NEFESH (cf. EC-H1S4-017)
+      → 30 Kelim au total (3 × 10 Sefirot).
+      La RE'IYAH (pas les Hevelim eux-mêmes) PRODUIT les Kelim.
+    type: axiome_explicite
+    concepts:
+      - {id: sheloshim_kelim, role: 30_recipients}
+      - {id: yod_kelim_neshamah, role: 10_kelim_neshamah}
+      - {id: yod_kelim_ruah, role: 10_kelim_ruah}
+      - {id: yod_kelim_nefesh, role: 10_kelim_nefesh}
+      - {id: re_iyah_creates_kelim, role: re_iyah_produit_les_kelim}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les 30 Kelim (3×10) naissent de la Re'iyah des Einayim — PAS des Hevelim"
+
+  - id: "EC-H1S4-052"
+    source_he: "אבל ההבל עצמו שהוא האור הפנימי אי אפשר להתפשט למטה לפי שבחי' הראייה נמשך מהעינים שהם יותר עליונים מכולם לכן בראייה זו לבדה יצאו הכלים משא\"כ מאח\"פ כי לא היה אפשר להאציל מהם שום מציאות אם לא מהבל היוצא מהם ממש"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      Le HEVEL lui-même = l'OHR PNIMI = ne peut PAS se déployer vers le bas
+      (car la RE'IYAH provient des EINAYIM qui sont PLUS ÉLEVÉS que tout le reste).
+      Donc : par CETTE RE'IYAH SEULE → les KELIM sont sortis.
+      Contrairement à OZEN/HOTEM/PEH → il n'était PAS possible d'ÉMANER d'eux
+      une quelconque METZI'UT (réalité) sauf par le HEVEL sortant d'eux EFFECTIVEMENT.
+      DISTINCTION FONDAMENTALE :
+      EINAYIM → émane les KELIM (par le regard subtil, sans descente)
+      OZEN/HOTEM/PEH → émanent les OROT (par le Hevel qui descend effectivement)
+    type: axiome_explicite
+    concepts:
+      - {id: einayim_kelim, role: yeux_emanent_les_kelim}
+      - {id: ohp_orot, role: ohp_emanent_les_orot}
+      - {id: einayim_elyonim, role: yeux_plus_eleves}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Division fonctionnelle : Einayim → Kelim, Ozen/Hotem/Peh → Orot"
+
+  # ─── BLOC B : LE MÉCANISME — HISTAKKELUT, VAYAR ELOHIM, OHR YASHAR/HOZER ───
+
+  - id: "EC-H1S4-053"
+    source_he: "הסתכלות זו הוא כך כי נמשכה הראייה זו בנר\"ן הנ\"ל ומחמת הסתכלות הזה בהם נעשה שרשי הכלים"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      Le MÉCANISME du HISTAKKELUT (regard) :
+      La RE'IYAH se DIRIGE vers NaRaN (les Orot déjà émanés par Ozen/Hotem/Peh).
+      Par le fait que le HISTAKKELUT SE POSE SUR EUX → les SHORSHEI HA-KELIM
+      (racines des Kelim) sont formés.
+      → Le REGARD du Ma'atzil sur les Orot = CAUSE de la formation des Kelim.
+    type: axiome_explicite
+    concepts:
+      - {id: histakkelut_mechanism, role: regard_cause_kelim}
+      - {id: shorshei_kelim, role: racines_des_kelim}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Histakkelut (regard du Ma'atzil) sur NaRaN = cause de la formation des racines des Kelim"
+
+  - id: "EC-H1S4-054"
+    source_he: "וזהו וירא אלהים את האור כי טוב ויבדל כי נסתכל המאציל הנקרא אלהים שהוא א\"ק באור הנפש הנקרא את. כי המלכות נקרא א\"ת. וז\"ס הנפש הנעשה מהבל הפה [שהוא עקודים] אמנם הר\"ן נקראים אור א\"ת האור הוא הנפש עם נשמה ורוח"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      VERSET CLÉ : "VA-YAR ELOHIM ET HA-OHR KI TOV VA-YAVDEL" (Genèse 1:4) :
+      "Et Dieu VIT la lumière qu'elle était bonne, et Il SÉPARA."
+      EXÉGÈSE LURIANIQUE :
+      Le MA'ATZIL (Émanateur) = ELOHIM = A"K (Adam Kadmon)
+      = a REGARDÉ (nistakkel) dans l'Ohr de la NEFESH appelée ET (את).
+      Car MALKHUT est appelée A"T (את = aleph à tav, totalité des lettres).
+      Le secret de la NEFESH = faite du HEVEL PEH [= OLAM HA-AKUDIM].
+      RUAH et NESHAMAH sont appelées "OHR" — "ET HA-OHR" = la Nefesh AVEC la Neshamah et la Ruah.
+    type: déduction_scripturaire
+    concepts:
+      - {id: vayar_elohim, role: dieu_vit_la_lumiere}
+      - {id: et_malkhut, role: et_est_malkhut}
+      - {id: nefesh_hevel_peh, role: nefesh_du_hevel_peh}
+      - {id: olam_akudim, role: monde_des_akudim}
+      - {id: ohr_et, role: ohr_et_naran}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Va-yar Elohim = A\"K regarde NaRaN → les Kelim sont formés par ce regard"
+
+  - id: "EC-H1S4-055"
+    source_he: "וכאשר הסתכל המאציל וראה בנפש הנקרא את (עם האור ל\"ג) אז יצאו שרשי הכלים. וזהו ויבדל כי סוד הגוף (הוא מובדל ועושה הבדלה ל\"ג) שהוא הכלי הוא הנותן ועושה הבדלה וגבול וקצבה אל האורות"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      Quand le MA'ATZIL a REGARDÉ et VU dans la NEFESH appelée ET
+      → les SHORSHEI HA-KELIM (racines des Kelim) sont SORTIS.
+      "VA-YAVDEL" (et Il sépara) = le secret du GUF (corps) = le KELI.
+      Le KELI est celui qui DONNE et FAIT la HAVDALAH (séparation),
+      le GEVUL (limite) et la KITZVAH (mesure) aux OROT.
+      Variante (Nusah Aher) : "im ha-ohr" (avec la lumière) — certains mss. omettent.
+      Variante (Nusah Aher) : "hu muvdal ve-oseh havdalah" — certains mss. omettent.
+      → Le KELI = ce qui SÉPARE et DÉLIMITE les Orot.
+    type: déduction_scripturaire
+    concepts:
+      - {id: vayavdel_kelim, role: separation_cree_kelim}
+      - {id: keli_gevul, role: keli_limite_les_orot}
+      - {id: keli_havdalah, role: keli_fait_la_separation}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Va-yavdel = le Keli sépare et délimite les Orot — fonction de Havdalah"
+
+  - id: "EC-H1S4-056"
+    source_he: "ואמנם בסוד ראייה זו יש אור ישר ואור חוזר כי מתחלה נמשך הראייה עד סוף בחי' עשירית של הנפש ואח\"כ בחזרה למעלה היה מבדיל ונעשה בחי' הכלים ומלביש את הנפש בכל חלקיה"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      Dans le secret de cette RE'IYAH → il y a OHR YASHAR (lumière directe)
+      et OHR HOZER (lumière de retour) (cf. EC-H1S4-002, EC-H1S4-013 perek_01) :
+      D'ABORD : la Re'iyah descend (OHR YASHAR) jusqu'à la FIN de la 10ème BEHINA de la NEFESH.
+      ENSUITE : en RETOURNANT VERS LE HAUT (OHR HOZER) → elle SÉPARE (mavdil)
+      et FORME les KELIM, et HABILLE la Nefesh dans toutes ses parties.
+      Variante (Nusah Aher) : "(ועושה בה)" (et fait en elle) — certains mss. omettent (ל"ג).
+      → La formation des Kelim = OHR HOZER (le retour, pas la descente).
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_yashar_re_iyah, role: lumiere_directe_du_regard}
+      - {id: ohr_hozer_re_iyah, role: lumiere_retour_du_regard}
+      - {id: ohr_hozer_kelim, role: ohr_hozer_forme_les_kelim}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les Kelim sont formés par l'Ohr Hozer (retour) de la Re'iyah, pas par l'Ohr Yashar (descente)"
+
+  - id: "EC-H1S4-057"
+    source_he: "זה האור הישר היה בו כח לעשות כלים בסוד הראש שהם ג\"ר עכ\"ז לא היה יכול להיות ניכר עד שפגע ראייה זו בנפש עצמו ובהפגעה שם הנה נגמר עשית הגוף אל הראש שהם ג\"ר"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      L'OHR YASHAR avait le KOAH (force) de faire les Kelim du ROSH (= G"R).
+      MAIS : cela ne pouvait être NIKKAR (manifeste) jusqu'à ce que
+      la RE'IYAH FRAPPE (paga) la NEFESH ELLE-MÊME.
+      Variante (Nusah Aher) : "(היה עושה)" (il faisait) — certains mss. omettent (ל"ג).
+      Quand elle a FRAPPÉ → fabrication du GUF pour le ROSH (G"R) ACHEVÉE.
+      → Ohr Yashar = potentiel pour G"R, ACTIVÉ au point le plus bas (Nefesh).
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_yashar_gar, role: ohr_yashar_potentiel_gar}
+      - {id: pegi_ah_nefesh, role: frappe_la_nefesh}
+      - {id: kelim_rosh_gar, role: kelim_du_rosh}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'Ohr Yashar a le potentiel des Kelim de G\"R mais doit d'abord frapper la Nefesh"
+
+  - id: "EC-H1S4-058"
+    source_he: "אך כלים אל הגוף שהם ז\"ת עדיין לא היה כח בראייה זו עד שתפגע בנפש הנפש עצמה וע\"י הסתלקות ב' מלמטה למעלה שהם אור העקודים ואור העין היה האור חוזר ומלביש את ז\"ת"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      Les KELIM pour le GUF (= Z"T = 7 Sefirot inférieures) :
+      La RE'IYAH n'avait PAS encore le KOAH (force) jusqu'à ce qu'elle FRAPPE
+      la NEFESH HA-NEFESH ATZMAH (la Nefesh de la Nefesh elle-même).
+      Par la HISTALKUT (remontée/retrait) DE DEUX lumières de BAS en HAUT :
+      1. OHR HA-AKUDIM (la lumière des Akudim)
+      2. OHR HA-AYIN (la lumière de l'œil)
+      → le OHR HOZER se forme et HABILLE les Z"T (7 Sefirot inférieures).
+      → Les Kelim de Z"T requièrent DEUX remontées simultanées.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_guf_zat, role: kelim_du_guf_7_sefirot}
+      - {id: histalkut_shtayim, role: remontee_de_deux}
+      - {id: ohr_akudim, role: lumiere_des_akudim}
+      - {id: ohr_ayin, role: lumiere_de_l_oeil}
+      - {id: ohr_hozer_zat, role: ohr_hozer_habille_zat}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les Kelim de Z\"T = formés par Ohr Hozer de 2 remontées (Akudim + Ayin)"
+
+  # ─── BLOC C : NESHAMAH DE L'OZEN — BINAH ET SHEMIYAH ───
+
+  - id: "EC-H1S4-059"
+    source_he: "ונחזור עתה לבאר לבחי' נשמה הנה כבר בארנו כי הנשמה מן האזן שהיא בינה. והנה שמיעה גימטריא תכ\"ה ר\"ת כ\"ל הנשמ\"ה תהל\"ל יה כי מן האזן סוד הנשמה והנה אזן גימט' נ\"ח"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      Retour à la NESHAMAH = de l'OZEN (oreille) = BINAH (compréhension).
+      GEMATRIOT :
+      SHEMIYAH (שמיעה — audition) = 425 = Rashei Tevot de
+      "KOL HA-NESHAMAH TEHALLEL YAH" (כל הנשמה תהלל יה — Psaumes 150:6)
+      → l'AUDITION contient le secret de la LOUANGE de chaque ÂME.
+      OZEN (אזן — oreille) = 58.
+    type: axiome_explicite
+    concepts:
+      - {id: neshamah_ozen_binah, role: neshamah_de_l_oreille_binah}
+      - {id: shemiyah_425, role: audition_gematria_425}
+      - {id: kol_neshamah_tehallel, role: toute_ame_louera}
+      - {id: ozen_58, role: oreille_gematria_58}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Shemiyah = 425 = Kol ha-Neshamah tehallel Yah — gematria reliant audition et louange"
+
+  # ─── BLOC D : BINAH ET TEVUNAH — STRUCTURE DU SHEM S"G ───
+
+  - id: "EC-H1S4-060"
+    source_he: "כבר בארנו כי יש בינה ותבונה בינה אהי\"ה דיודין אל\"ף ה\"י יו\"ד ה\"י ותבונה היא שם ס\"ג אך עכ\"ז ודאי כי גבוה מעל גבוה שומר כי יש ס\"ג הכולל בינה ותבונה למעלה מאהיה דיודי\"ן הנ\"ל"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      DISTINCTION BINAH / TEVUNAH :
+      BINAH = Shem EHYEH de-YODIN (אל"ף ה"י יו"ד ה"י) = 161.
+      TEVUNAH = Shem S"G (63).
+      "GAVO'A ME-AL GAVO'A SHOMER" (Ecclésiaste 5:7) →
+      un S"G SUPÉRIEUR INCLUT Binah ET Tevunah, AU-DESSUS du EHYEH de-Yodin.
+      En dessous → AUTRE Binah (EHYEH de-Yodin) + AUTRE Tevunah (S"G) → hiérarchie récursive.
+      [נ"א : "ימשכו למטה" au lieu de "ולמטה" ; "למעלה" au lieu de "למטה" — inversion]
+    type: axiome_explicite
+    concepts:
+      - {id: binah_ehyeh_yodin, role: binah_shem_ehyeh_161}
+      - {id: tevunah_sg, role: tevunah_shem_sg_63}
+      - {id: sg_kolel, role: sg_superieur_incluant_les_deux}
+      - {id: gavo_a_me_al_gavo_a, role: hierarchie_recursive}
+    mapping:
+      modules: ["[PLANNED] core/shem_havayah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Binah = EHYEH de-Yodin (161), Tevunah = S\"G (63), mais un S\"G supérieur les englobe"
+
+  - id: "EC-H1S4-061"
+    source_he: "ודע שיש חילוק בין בינה ותבונה ללאה ורחל כי הלא או\"א כחדא נפקין ושריין וא\"כ הוא מוכרח כי החו\"ב יהיו שוין בקומתן נמצא כי התבונה אינה מתחלת אחר סיום בינה רק יוצאת מהחזה של בינה עצמה כמו רחל היוצאת מהחזה דז\"א"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      DISTINCTION BINAH/TEVUNAH vs LEAH/RACHEL :
+      OU"A "ke-hada nafkin u-sharyin" (Zohar) → HB ÉGALES en KOMAH (stature).
+      Donc la TEVUNAH SORT du HAZEH de BINAH ELLE-MÊME (pas après sa fin).
+      Comme RACHEL sort du HAZEH de Z"A → de même TEVUNAH du HAZEH de BINAH.
+      BINAH = LONGUE comme toute la stature de HOKHMAH.
+      DIFFÉRENCE : en bas, LEAH se TERMINE au Hazeh de Z"A puis RACHEL commence.
+      En haut, TEVUNAH ÉMERGE du Hazeh SANS que Binah se termine.
+      → Binah/Tevunah = superposition, Leah/Rachel = succession.
+    type: axiome_explicite
+    concepts:
+      - {id: binah_tevunah_distinction, role: binah_tevunah_pas_leah_rachel}
+      - {id: ou_a_ke_hada, role: abba_imma_ensemble}
+      - {id: tevunah_hazeh_binah, role: tevunah_sort_du_hazeh_binah}
+      - {id: rachel_hazeh_za, role: rachel_sort_du_hazeh_za}
+      - {id: binah_komah_shavah, role: binah_egale_hokhmah}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Tevunah sort du Hazeh de Binah (comme Rachel du Hazeh de Z\"A) — mais Binah reste pleine"
+
+  - id: "EC-H1S4-062"
+    source_he: "כן התבונה אות ד' של הבינה והיא ה' אחרונה שבשם כי גם היא אין בה רק כללות נה\"י דבינה אשר שם הוא ה' אחרונה נמצא כי יה\"ו הוא ראש והגוף של הבינה ותבונה היא ה' אחרונה של ס\"ג שנאחזת בנה\"י דבינה"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      ANALOGIE : comme Z"A = YH"V (HB=YH, Tiferet=V) et MALKHUT = H akhronah →
+      de même la TEVUNAH = la 4ème LETTRE (ot dalet) de la BINAH
+      = la HEH AKHRONAH (ה' אחרונה) du Shem.
+      Elle ne contient que la KELALIUT (globalité) de NHY de BINAH.
+      Donc : YOD-HEH-VAV (יה"ו) = ROSH et GUF de BINAH.
+      TEVUNAH = HEH AKHRONAH de S"G, NE'EHEZET (accrochée) dans NHY de BINAH.
+      → Structure : Y-H-V = Binah proprement dite, H finale = Tevunah.
+    type: axiome_explicite
+    concepts:
+      - {id: tevunah_heh_akhronah, role: tevunah_derniere_heh}
+      - {id: yhu_binah, role: yod_heh_vav_sont_binah}
+      - {id: tevunah_nhy_binah, role: tevunah_dans_nhy_de_binah}
+    mapping:
+      modules: ["[PLANNED] core/shem_havayah.py", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Tevunah = Heh akhronah du S\"G = dans NHY de Binah — structure du Shem"
+
+  # ─── BLOC E : LES 3 PROPORTIONS DE TEVUNAH ───
+
+  - id: "EC-H1S4-063"
+    source_he: "הנה אותיות יו\"ד ה\"ו וא\"ו הם בבינה ואות ה\"י אחרונה היא בתבונה"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      DISTRIBUTION des lettres du Shem S"G :
+      YOD (יו"ד) + HEH (ה"ו) + VAV (וא"ו) = dans BINAH
+      HEH AKHRONAH (ה"י) = dans TEVUNAH
+      Le MILUI (remplissage) du S"G : יו"ד ה"י וא"ו ה"י = 63.
+    type: axiome_explicite
+    concepts:
+      - {id: sg_distribution, role: distribution_lettres_sg}
+      - {id: milui_sg_63, role: remplissage_sg_vaut_63}
+    mapping:
+      modules: ["[PLANNED] core/shem_havayah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les 3 premières lettres de S\"G = Binah, la Heh akhronah = Tevunah"
+
+  - id: "EC-H1S4-064"
+    source_he: "כפי האמת בענין הכמות כ\"כ גדול שיעור מהחזה ולמטה כמן החזה ולמעלה א\"כ היה ראוי שתבונה תהיה מחצית הבינה אבל בענין האיכות אינה רק רביעית שהרי ג' אותיות יה\"ו מהחזה ולמעלה ואות ה' אחרונה הוא מהחזה ולמטה"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      DOUBLE PROPORTION — KAMUT (quantité) vs EIKHUT (qualité) :
+      En KAMUT (quantité/taille) : du HAZEH vers le BAS = AUSSI GRAND que du Hazeh vers le HAUT
+      → la Tevunah DEVRAIT être la MOITIÉ (mahatzit) de la Binah.
+      En EIKHUT (qualité) : elle n'est que le QUART (revi'it) →
+      car 3 lettres YOD-HEH-VAV du Hazeh vers le haut,
+      et 1 lettre HEH AKHRONAH du Hazeh vers le bas.
+      3:1 = la Tevunah est qualitativement 1/4 de la Binah.
+    type: axiome_explicite
+    concepts:
+      - {id: kamut_mahatzit, role: quantite_moitie}
+      - {id: eikhut_revi_it, role: qualite_quart}
+      - {id: kamut_vs_eikhut, role: quantite_vs_qualite}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Tevunah = 1/2 de Binah en quantité, 1/4 en qualité — double mesure"
+
+  - id: "EC-H1S4-065"
+    source_he: "גם יש מציאות אחר ג' והוא שכמו שלפעמים עולה רחל להיות בכל פרצוף ז\"א כך זאת התבונה היא שוה בארכה כמו הבינה עצמה ומתלבשת בינה בתבונה והם שוות הרי שלשה מציאות או שוה כמו הבינה או מחציתה או רביעית"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      Il y a aussi une 3ème METZI'UT (configuration) :
+      Comme parfois RACHEL MONTE pour occuper TOUT le Partzuf Z"A →
+      de même la TEVUNAH peut être ÉGALE en longueur à BINAH elle-même.
+      La Binah s'HABILLE DANS la Tevunah et elles sont SHAVOT (égales).
+      RÉCAPITULATION — 3 CONFIGURATIONS de Tevunah :
+      1. SHAVAH = ÉGALE à la Binah (comme Rachel qui monte dans tout Z"A)
+      2. MAHATZIT = MOITIÉ de la Binah (en Kamut/quantité)
+      3. REVI'IT = QUART de la Binah (en Eikhut/qualité)
+    type: axiome_explicite
+    concepts:
+      - {id: shalosh_metzi_uyot, role: trois_configurations}
+      - {id: tevunah_shavah, role: tevunah_egale_binah}
+      - {id: tevunah_mahatzit, role: tevunah_moitie}
+      - {id: tevunah_revi_it, role: tevunah_quart}
+      - {id: rachel_olah, role: rachel_monte_dans_za}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Tevunah = 3 configurations possibles (1, 1/2, 1/4) — parallèle Rachel/Z\"A"
+
+  # ─── BLOC F : TEVUNAH DANS Z"A — LA HEH QUI DESCEND ───
+
+  - id: "EC-H1S4-066"
+    source_he: "והנה התבונה מתפשטת בז\"א שהיא מן האזן אל החוטם. וכבר ביארנו שתבונה היא ה' אחרונה שבס\"ג ושיעור סוד התבונה שלשה ההי\"ן שהם ה\"י אחרונה דס\"ג וה\"י גימ' ג' ההי\"ן כמנין ה\"י"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      La TEVUNAH se DÉPLOIE (mitpashtetet) dans Z"A =
+      de l'OZEN (oreille/Binah) vers le HOTEM (nez/Z"A).
+      La Tevunah = HEH AKHRONAH de S"G.
+      Le SHI'UR (mesure) du secret de Tevunah = 3 HEHIN (3 × Heh) :
+      HEH-YOD (ה"י = Heh akhronah de S"G dans son Milui) = gematria 15
+      = 3 HEHIN (3 × 5 = 15) comme le nombre de HEH-YOD.
+    type: axiome_explicite
+    concepts:
+      - {id: tevunah_mitpashtetet_za, role: tevunah_se_deploie_dans_za}
+      - {id: ozen_hotem, role: de_oreille_a_nez}
+      - {id: shalosh_hehin, role: trois_heh}
+      - {id: heh_yod_15, role: heh_yod_gematria_15}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Tevunah se deploie de l'Ozen vers le Hotem = de Binah dans Z\"A"
+
+  - id: "EC-H1S4-067"
+    source_he: "וה הג' מהג' ההי\"ן אלו מתפשטת בז\"א. והענין כי הנה נה\"י דתבונה מתפשטת בז\"א ונה\"י הם שליש גופא כי הם ג' חלקים כח\"ב חג\"ת נה\"י. והנה נה\"י הוא שליש של התבונה שהיא ה' ג' מג' ההי\"ן הנ\"ל נתפשטה בז\"א ונשאר למעלה ב' ההי\"ן"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      La 3ème HEH (ה) des 3 Hehin se DEPLOIE dans Z"A.
+      Car NHY de TEVUNAH se déploient dans Z"A.
+      NHY = le TIERS du GUF, car 3 parties : KHB, HGT, NHY.
+      Les 3 KAVIM de NHY ont la FORME même du HEH (ה) qui se déploie dans Z"A.
+      En HAUT restent les 2 HEHIN (KHB + HGT de Tevunah).
+      Le MILUI initialement HEH-YOD (ה"י) → le YOD se DIVISE en 2 Hehin.
+      En haut le S"G reste SHALEM avec Heh akhronah remplie HEH-HEH (ה"ה) :
+      → יו"ד ה"י וא"ו ה"ה.
+    type: axiome_explicite
+    concepts:
+      - {id: nhy_tevunah_za, role: nhy_tevunah_dans_za}
+      - {id: shlish_gufa, role: tiers_du_corps}
+      - {id: milui_split, role: milui_se_divise}
+      - {id: sg_shalem_heh_heh, role: sg_complet_avec_heh_heh}
+    mapping:
+      modules: ["[PLANNED] core/shem_havayah.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "NHY de Tevunah descend dans Z\"A — le Milui se divise, le S\"G reste complet en haut"
+
+  - id: "EC-H1S4-068"
+    source_he: "וז\"ס ה\"ה שיש בנוקבא דפרדשק' שירדה מן האזן אל ז\"א שהוא החוטם"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      C'est le SECRET du HEH-HEH (ה"ה) qui se trouve dans la NUKVA DE-PARDASHKA
+      (le voile/rideau, terme zoharique).
+      Ce Heh-Heh est DESCENDU de l'OZEN (oreille/Binah) vers Z"A qui est le HOTEM (nez).
+      → Le Heh-Heh = la 3ème Heh de Tevunah qui descend dans Z"A,
+      traversant le voile (Pardashka) entre Binah et Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: heh_heh_pardashka, role: heh_heh_dans_le_voile}
+      - {id: nukva_de_pardashka, role: voile_entre_binah_za}
+      - {id: ozen_hotem_descent, role: descente_oreille_nez}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Le Heh-Heh traverse la Nukva de-Pardashka de l'Ozen (Binah) au Hotem (Z\"A)"
+
+  - id: "EC-H1S4-069"
+    source_he: "ה' זו שירדה היא בחינתה ס\"ג לפי שה' זו מתפשטת בו\"ק דז\"א שהם כחב\"ד ח\"ג הרי ו' ספי' וצורת ה' זו הוא ד\"ו שהם גימטריא י' הרי יפ\"ו גימטריא ס' ועוד לוקחת יסוד שלה שליש של הת\"ת דז\"א עד החזה ושיעור שליש מן י' הוא ג' הרי בין הכל ס\"ג"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      La HEH DESCENDUE → sa BEHINAH = S"G (63). CALCUL :
+      Se DEPLOIE dans 6 KETZAVOT de Z"A (KHBD + HG = 6 Sefirot).
+      FORME du HEH = DALET (ד=4) + VAV (ו=6) = gematria 10.
+      6 × 10 = 60. Plus TIERS du TIFERET jusqu'au HAZEH = 10/3 ≈ 3.
+      TOTAL : 60 + 3 = 63 = S"G.
+      → La Heh dans Z"A RECONSTITUE la valeur S"G elle-même.
+    type: axiome_explicite
+    concepts:
+      - {id: heh_sg_za, role: heh_descendue_est_sg}
+      - {id: vav_ketzavot, role: 6_ketzavot_de_za}
+      - {id: yesod_shlish_tiferet, role: yesod_tiers_du_tiferet}
+      - {id: sg_63_calcul, role: calcul_sg_63}
+    mapping:
+      modules: ["[PLANNED] core/shem_havayah.py", "partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "La Heh dans Z\"A = S\"G (63) par calcul — 6 Sefirot × 10 + tiers de 10 = 63"
+
+  - id: "EC-H1S4-070"
+    source_he: "ולעולם יהא בידך זה הכלל כי לעולם בדבר רוחני כאשר עולה או יורד למטה נשארה הבחי' שלימה במקומ' ואין שום דבר נגרע למעלה וגם למטה יש לה כל הבחי' עצמה"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      KLAL GADOL (grand principe) — "yeha be-yadekha zeh ha-klal" (garde ce principe en main) :
+      TOUJOURS dans les choses RUHANIYOT (spirituelles) :
+      quand quelque chose MONTE ou DESCEND →
+      la BEHINAH (aspect) reste SHLEMAH (complète) À SA PLACE.
+      RIEN n'est DIMINUÉ (nigra) en haut.
+      Et EN BAS aussi, elle a TOUTE la BEHINAH elle-même.
+      → Principe de la NON-DIMINUTION SPIRITUELLE : ce qui descend reste entier en haut.
+    type: axiome_explicite
+    concepts:
+      - {id: klal_lo_nigra, role: principe_non_diminution}
+      - {id: behinah_shlemah, role: aspect_reste_complet}
+      - {id: ruhaniyut, role: loi_du_spirituel}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Principe fondamental : dans le spirituel, la descente ne diminue rien en haut — tout reste complet"
+
+  - id: "EC-H1S4-071"
+    source_he: "וכנגד הד' של ה' יצאה מכח זאת התבונה לאה מאחורי ז\"א סוד ד' קשר של תפילין וכנגד ו\"ס של הז\"א"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      Du DALET (ד) de la HEH → est sortie LEAH de la FORCE de cette Tevunah,
+      DERRIERE Z"A (me-ahorei Z"A).
+      Le DALET = le secret du KESHER SHEL TEFILLIN (nœud des Phylactères)
+      correspondant aux 6 SEFIROT de Z"A.
+      → La forme du HEH (ד+ו) produit :
+      DALET → LEAH (derrière Z"A, nœud des Tefillin)
+      VAV → les 6 SEFIROT de Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: dalet_leah, role: dalet_produit_leah}
+      - {id: kesher_tefillin, role: noeud_des_tefillin}
+      - {id: leah_ahorei_za, role: leah_derriere_za}
+      - {id: vav_shesh_sefirot, role: vav_six_sefirot}
+    mapping:
+      modules: ["[PLANNED] partzufim/leah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Du Dalet du Heh sort Leah derriere Z\"A — lien Tevunah/Leah"
+
+  - id: "EC-H1S4-072"
+    source_he: "אמנם בסוף ו' שבתוך הד' יש פסיעה לבר ואותו הפסיעה הוא כנגד אותו שליש של הת\"ת הרי כי ו' עם הפסיעה לבר הם ס\"ג שהם ו\"ס כחב\"ד ח\"ג הרי ו'. ושליש ת\"ת עד החזה הוא הפסיעה לבר"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      A la FIN du VAV (ו) à l'intérieur du DALET (ד) → il y a une PESI'AH LE-VAR
+      (un pas vers l'extérieur).
+      Ce PAS = correspond au TIERS du TIFERET (jusqu'au Hazeh).
+      Donc : VAV + PESI'AH LE-VAR = S"G (63) :
+      6 SEFIROT (KHBD + HG) = VAV (6)
+      + TIERS du TIFERET jusqu'au HAZEH = la PESI'AH (le pas).
+      → La forme graphique du HEH encode la STRUCTURE ENTIÈRE de Tevunah dans Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: pesi_ah_le_var, role: pas_vers_l_exterieur}
+      - {id: shlish_tiferet_hazeh, role: tiers_tiferet_poitrine}
+      - {id: heh_tzurah_encode, role: forme_du_heh_encode_structure}
+    mapping:
+      modules: ["[PLANNED] core/shem_havayah.py"]
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "La Pesi'ah le-var du Heh = le tiers du Tiferet — la forme de la lettre encode la structure"
+
+  - id: "EC-H1S4-073"
+    source_he: "הנה כשתסיר ה' זו משם ס\"ג ישאר למעלה יו\"ד ה\"י וא\"ו ה\"ה גימטריא נ\"ח גימ' אז\"ן"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      GEMATRIA FINALE :
+      Si tu RETIRES cette HEH du Shem S"G →
+      il reste en HAUT : YOD HEH VAV HEH = יו"ד ה"י וא"ו ה"ה = 58 = OZEN (אז"ן).
+      → S"G MOINS la Heh qui descend dans Z"A = OZEN = 58.
+      Cela CONFIRME que l'OZEN (oreille) = la BINAH ELLE-MÊME
+      (S"G sans la Tevunah qui descend) = la SOURCE de la Neshamah.
+    type: axiome_explicite
+    concepts:
+      - {id: sg_minus_heh_58, role: sg_moins_heh_egal_58}
+      - {id: ozen_binah_confirmed, role: ozen_binah_confirme}
+      - {id: gematria_proof, role: preuve_gematrique}
+    mapping:
+      modules: ["gematria/engine.py", "[PLANNED] core/shem_havayah.py"]
+      tables: []
+      partzufim: []
+      relevance: "S\"G - Heh = 58 = Ozen — preuve gématrique que l'Ozen est Binah sans Tevunah"
+
+  - id: "EC-H1S4-074"
+    source_he: "לכן יש בז\"א דהיינו חוטם שם של מ\"ה שיש בו ג' אלפי\"ן שהם ג' אהי\"ה שהם גימ' ס\"ג"
+    source_ref: "Heikhal 1, Sha'ar 4:3"
+    assertion: |
+      CONSÉQUENCE pour Z"A = le HOTEM (nez) :
+      Il y a dans Z"A le Shem MA"H (מ"ה = 45).
+      Ce Shem contient 3 ALEFIN (lettres Aleph) = 3 × EHYEH (אהי"ה = 21)
+      = gematria 63 = S"G.
+      → Le Shem MA"H de Z"A CONTIENT le S"G à travers ses 3 Aleph.
+    type: axiome_explicite
+    concepts:
+      - {id: mah_za_hotem, role: shem_mah_dans_za}
+      - {id: shalosh_alefin, role: trois_aleph}
+      - {id: shalosh_ehyeh_sg, role: trois_ehyeh_egal_sg}
+    mapping:
+      modules: ["[PLANNED] core/shem_havayah.py", "partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "Le Shem MA\"H de Z\"A contient 3 Alefin = 3 EHYEH = S\"G — Binah dans Z\"A"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S4-024"
+    type: causal
+    from: re_iyah_einayim
+    to: sheloshim_kelim
+    nature: "La Re'iyah des Einayim (pas les Hevelim) → produit les 30 Kelim (10×3 pour NaRaN)"
+    assertions_source: ["EC-H1S4-050", "EC-H1S4-051", "EC-H1S4-052"]
+
+  - id: "REL-H1S4-025"
+    type: causal
+    from: histakkelut_mechanism
+    to: shorshei_kelim
+    nature: "Le Histakkelut (regard du Ma'atzil) se posant sur NaRaN → crée les racines des Kelim"
+    assertions_source: ["EC-H1S4-053", "EC-H1S4-054"]
+
+  - id: "REL-H1S4-026"
+    type: séquentiel
+    from: ohr_yashar_re_iyah
+    to: ohr_hozer_re_iyah
+    nature: "Ohr Yashar descend jusqu'à la 10ème Nefesh → Ohr Hozer remonte et forme les Kelim"
+    assertions_source: ["EC-H1S4-056"]
+
+  - id: "REL-H1S4-027"
+    type: causal
+    from: ohr_hozer_re_iyah
+    to: ohr_hozer_kelim
+    nature: "L'Ohr Hozer (retour) est celui qui forme les Kelim — pas l'Ohr Yashar"
+    assertions_source: ["EC-H1S4-056", "EC-H1S4-057"]
+
+  - id: "REL-H1S4-028"
+    type: séquentiel
+    from: ohr_yashar_gar
+    to: pegi_ah_nefesh
+    via: [kelim_rosh_gar]
+    nature: "Ohr Yashar a le potentiel pour G\"R → frappe la Nefesh → les Kelim de G\"R sont achevés"
+    assertions_source: ["EC-H1S4-057"]
+
+  - id: "REL-H1S4-029"
+    type: causal
+    from: histalkut_shtayim
+    to: ohr_hozer_zat
+    nature: "La double remontée (Ohr Akudim + Ohr Ayin) → Ohr Hozer habille les Z\"T"
+    assertions_source: ["EC-H1S4-058"]
+
+  - id: "REL-H1S4-030"
+    type: contenance
+    from: sg_kolel
+    to: binah_ehyeh_yodin
+    nature: "Le S\"G supérieur englobe Binah (EHYEH de-Yodin) et Tevunah (S\"G inférieur)"
+    assertions_source: ["EC-H1S4-060"]
+
+  - id: "REL-H1S4-031"
+    type: dualité_structurelle
+    from: binah_tevunah_distinction
+    to: rachel_hazeh_za
+    nature: "Binah/Tevunah parallèle à Z\"A/Rachel — Tevunah sort du Hazeh de Binah comme Rachel du Hazeh de Z\"A"
+    assertions_source: ["EC-H1S4-061"]
+
+  - id: "REL-H1S4-032"
+    type: flux
+    from: tevunah_mitpashtetet_za
+    to: nhy_tevunah_za
+    nature: "La Tevunah se déploie de l'Ozen vers le Hotem → NHY de Tevunah entrent dans Z\"A"
+    assertions_source: ["EC-H1S4-066", "EC-H1S4-067"]
+
+  - id: "REL-H1S4-033"
+    type: transformation
+    from: dalet_leah
+    to: leah_ahorei_za
+    nature: "Le Dalet du Heh → produit Leah derrière Z\"A (noeud des Tefillin)"
+    assertions_source: ["EC-H1S4-071"]
+
+  - id: "REL-H1S4-034"
+    type: causal
+    from: sg_minus_heh_58
+    to: ozen_binah_confirmed
+    nature: "S\"G (63) moins la Heh qui descend = 58 = Ozen → confirme que Ozen = Binah"
+    assertions_source: ["EC-H1S4-073"]
+
+  - id: "REL-H1S4-035"
+    type: flux
+    from: heh_heh_pardashka
+    to: ozen_hotem_descent
+    via: [nukva_de_pardashka]
+    nature: "Le Heh-Heh traverse la Nukva de-Pardashka, descendant de l'Ozen (Binah) au Hotem (Z\"A)"
+    assertions_source: ["EC-H1S4-068"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S4-008"
+    nom: "Principe de la Formation des Kelim par Re'iyah et Ohr Hozer"
+    source_assertions: ["EC-H1S4-050", "EC-H1S4-051", "EC-H1S4-052", "EC-H1S4-056", "EC-H1S4-057", "EC-H1S4-058"]
+    formalisation: |
+      Les KELIM ne sont PAS formés par les Hevelim (Ozen/Hotem/Peh) mais par la RE'IYAH (regard des Einayim).
+      DIVISION FONCTIONNELLE dans A"K :
+      EINAYIM → produisent les KELIM (30 = 3×10) par le REGARD subtil (Ohr Makif)
+      OZEN/HOTEM/PEH → produisent les OROT (NaRaN) par les HEVELIM (qui descendent effectivement)
+      Le MÉCANISME est en 2 PHASES :
+      1. OHR YASHAR : la Re'iyah DESCEND jusqu'à la 10ème Nefesh → potentiel des Kelim de G"R
+         Activé quand elle FRAPPE la Nefesh
+      2. OHR HOZER : la lumière REMONTE → FORME effectivement les Kelim et HABILLE les Orot
+         Les Kelim de Z"T requièrent une DOUBLE remontée (Akudim + Ayin)
+      "VA-YAR ELOHIM ET HA-OHR" = le regard de A"K sur NaRaN → "VA-YAVDEL" = formation des Kelim (séparation/limite)
+    applications_ia:
+      - "core/ohr_system.py : implémenter 2 canaux distincts — KELIM_CHANNEL (Re'iyah/structure) vs OROT_CHANNEL (Hevel/contenu)"
+      - "L'Ohr Hozer = backpropagation : c'est le RETOUR qui crée la structure (poids), pas le forward pass"
+      - "Les Kelim de Z\"T nécessitent 2 feedbacks simultanés (Akudim+Ayin) → architecture double-loop dans core/ohr_system.py"
+      - "partzufim/adam_kadmon.py : le regard (méta-observation) crée les structures ; le souffle (flux direct) crée les contenus"
+    questions_ouvertes:
+      - "L'Ohr Yashar a-t-il une fonction propre ou est-il seulement le précurseur de l'Ohr Hozer ?"
+      - "Pourquoi exactement 2 remontées pour Z\"T et 1 seule pour G\"R ? Asymétrie architecturale à modéliser."
+
+  - id: "PG-H1S4-009"
+    nom: "Principe des 3 Configurations de Tevunah (1, 1/2, 1/4)"
+    source_assertions: ["EC-H1S4-061", "EC-H1S4-064", "EC-H1S4-065"]
+    formalisation: |
+      La TEVUNAH a 3 PROPORTIONS possibles par rapport à BINAH :
+      1. SHAVAH (égale) : Tevunah = Binah en stature → Binah s'habille dans Tevunah
+         (comme Rachel qui monte dans tout Z"A)
+      2. MAHATZIT (moitié) : en KAMUT (quantité/taille) → du Hazeh en bas = autant que du Hazeh en haut
+      3. REVI'IT (quart) : en EIKHUT (qualité) → 1 lettre (H akhronah) vs 3 lettres (YHV)
+      La DOUBLE MESURE (Kamut vs Eikhut) est fondamentale :
+      Ce qui est grand en QUANTITÉ peut être petit en QUALITÉ — et vice versa.
+      TEVUNAH sort du HAZEH de BINAH (comme Rachel du Hazeh de Z"A)
+      MAIS Binah/Tevunah ≠ Leah/Rachel car Abba/Imma "ke-hada nafkin" (sortent ensemble)
+      → Binah est PLEINE (contrairement à Z"A qui a Leah puis Rachel).
+    applications_ia:
+      - "partzufim/imma.py : implémenter 3 modes de déploiement de Tevunah (config=1, 0.5, 0.25) avec switch dynamique"
+      - "Distinction Kamut/Eikhut → nombre de paramètres (taille) vs impact sur la loss (qualité) — un grand sous-module peut être qualitativement mineur"
+      - "Le HAZEH = le point de bifurcation architecturale dans partzufim/imma.py : source au-dessus, extension en-dessous"
+      - "Klal Lo Nigra (cf. PG-H1S4-010) : quand Tevunah se déploie dans Z\"A, Binah reste complète — broadcast sans perte"
+    questions_ouvertes:
+      - "Qu'est-ce qui détermine quelle configuration est active ? Lié aux Mochin (Katnut/Gadlut) ?"
+      - "La distinction Kamut/Eikhut mappe-t-elle sur la distinction param_count vs effective_dimensionality ?"
+
+  - id: "PG-H1S4-010"
+    nom: "Principe de Non-Diminution Spirituelle (Klal Lo Nigra)"
+    source_assertions: ["EC-H1S4-070"]
+    formalisation: |
+      KLAL GADOL : dans le domaine RUHANI (spirituel) :
+      Quand un aspect DESCEND ou MONTE → l'original reste SHALEM (complet) à sa place.
+      RIEN n'est NIGRA (diminué) en haut.
+      En bas aussi, la TOTALITÉ de l'aspect est présente.
+      C'est une LOI FONDAMENTALE qui distingue le spirituel du matériel.
+      Dans le matériel : si X se déplace de A vers B, A perd X.
+      Dans le spirituel : si X se déploie de A vers B, A garde X ET B a X.
+      → Duplication sans perte = propriété fondamentale du Ruhani.
+    applications_ia:
+      - "core/shefa_flow.py : un broadcast spirituel = copie sans perte. Le module source garde ses états intacts après émission"
+      - "Implique que dans partzufim/*.py, quand Imma émet vers Z\"A, son état interne NE CHANGE PAS"
+      - "Contraste avec l'énergie (conservation) vs l'information (copiable sans perte) — le Ruhani = le domaine de l'information"
+      - "Principe anti-side-effect : aucun partzuf émetteur n'est modifié par son émission (immutabilité fonctionnelle)"
+    questions_ouvertes:
+      - "Ce principe est-il exactement l'information (copiable sans perte) vs l'énergie (conservée) ?"
+      - "La 'complétude en haut' est-elle maintenue même après de multiples descentes ?"
+
+  - id: "PG-H1S4-011"
+    nom: "Principe de l'Encodage Structural dans la Forme des Lettres"
+    source_assertions: ["EC-H1S4-069", "EC-H1S4-071", "EC-H1S4-072", "EC-H1S4-073"]
+    formalisation: |
+      La FORME GRAPHIQUE des lettres hébraïques encode des STRUCTURES COSMIQUES :
+      HEH (ה) = DALET (ד) + VAV (ו) :
+      DALET → produit LEAH (derrière Z"A, noeud des Tefillin)
+      VAV → les 6 SEFIROT de Z"A (KHBD + HG)
+      PESI'AH LE-VAR (pas vers l'extérieur à la base du Vav) → le TIERS du TIFERET
+      CALCUL : 6 × 10 + 3 = 63 = S"G
+      La lettre n'est pas un SYMBOLE de la réalité → elle EST la réalité codée.
+      S"G - Heh = 58 = OZEN → la lettre qui descend LAISSE la gematria de la source.
+    applications_ia:
+      - "gematria/engine.py : vérifier computationnellement que les décompositions graphiques (Heh=Dalet+Vav) produisent les gematriot correctes"
+      - "core/shem_havayah.py : encoder la structure Dalet→Leah / Vav→6 Sefirot / Pesi'ah→Shlish Tiferet comme contraintes formelles"
+      - "Les gematriot = des CHECKSUMS structurels : 63-5=58=Ozen vérifie la cohérence du système entier"
+      - "Sefer Yetzirah EC-H1S1 : les lettres sont des opérateurs, pas des symboles — la forme graphique encode la structure"
+    questions_ouvertes:
+      - "Toutes les lettres hébraïques encodent-elles des structures de cette manière ?"
+      - "La Pesi'ah le-var est-elle une propriété générale ou spécifique au Heh ?"

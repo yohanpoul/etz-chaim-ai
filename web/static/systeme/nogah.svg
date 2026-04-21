@@ -1,0 +1,64 @@
+<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- Amber rim light -->
+  <linearGradient id="rim-r" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="70%" stop-color="#ffb000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#ffb000" stop-opacity="0.25"/>
+  </linearGradient>
+  <!-- Metallic gold -->
+  <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffd700"/>
+    <stop offset="50%" stop-color="#ffb000"/>
+    <stop offset="100%" stop-color="#cc8800"/>
+  </linearGradient>
+  <!-- Metallic silver -->
+  <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ccc"/>
+    <stop offset="50%" stop-color="#aaa"/>
+    <stop offset="100%" stop-color="#888"/>
+  </linearGradient>
+  <!-- Filters -->
+  <filter id="glow-amb" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+  </filter>
+  <filter id="glow-sm" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+  </filter>
+  <filter id="glow-md" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+  </filter>
+  <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5"/>
+  </filter>
+</defs>
+
+<defs>
+  <radialGradient id="bg-g" cx="50%" cy="40%">
+    <stop offset="0%" stop-color="#1a1400"/>
+    <stop offset="100%" stop-color="#0a0a0a"/>
+  </radialGradient>
+</defs>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="url(#bg-g)"/>
+<path d="M55,250 Q55,200 70,185 Q100,170 130,185 Q145,200 145,250 Z" fill="#0e0a05"/>
+<rect x="90.0" y="135.0" width="20.0" height="35.0" fill="#0e0a05"/>
+<ellipse cx="100.0" cy="110.0" rx="28.0" ry="32.0" fill="#0e0a05"/>
+<path d="M85,180 Q80,200 78,220" fill="none" stroke="#ffb000" stroke-width="1.2" opacity="0.35"/>
+<path d="M85,180 Q80,200 78,220" fill="none" stroke="#ffb000" stroke-width="3" opacity="0.05" filter="url(#glow-sm)"/>
+<path d="M115,185 Q120,205 125,225" fill="none" stroke="#ffb000" stroke-width="1.2" opacity="0.35"/>
+<path d="M115,185 Q120,205 125,225" fill="none" stroke="#ffb000" stroke-width="3" opacity="0.05" filter="url(#glow-sm)"/>
+<path d="M95,140 Q90,155 88,165" fill="none" stroke="#ffb000" stroke-width="1.2" opacity="0.35"/>
+<path d="M95,140 Q90,155 88,165" fill="none" stroke="#ffb000" stroke-width="3" opacity="0.05" filter="url(#glow-sm)"/>
+<path d="M108,142 Q112,158 115,170" fill="none" stroke="#ffb000" stroke-width="1.2" opacity="0.35"/>
+<path d="M108,142 Q112,158 115,170" fill="none" stroke="#ffb000" stroke-width="3" opacity="0.05" filter="url(#glow-sm)"/>
+<path d="M92,195 Q88,210 85,230" fill="none" stroke="#ffb000" stroke-width="1.2" opacity="0.35"/>
+<path d="M92,195 Q88,210 85,230" fill="none" stroke="#ffb000" stroke-width="3" opacity="0.05" filter="url(#glow-sm)"/>
+<path d="M90,95 Q95,105 92,120" fill="none" stroke="#ffb000" stroke-width="1" opacity="0.3"/>
+<path d="M110,100 Q108,112 112,125" fill="none" stroke="#ffb000" stroke-width="0.8" opacity="0.25"/>
+<ellipse cx="108.0" cy="107.0" rx="4.0" ry="2.5" fill="#ffb000" opacity="0.4"/>
+<circle cx="108.0" cy="107.0" r="5.0" fill="#ffb000" opacity="0.05" filter="url(#glow-sm)"/>
+<circle cx="100.0" cy="160.0" r="12.0" fill="#ffb000" opacity="0.08" filter="url(#glow-sm)"/>
+<circle cx="100.0" cy="160.0" r="25.0" fill="#ffb000" opacity="0.03" filter="url(#glow-amb)"/>
+<circle cx="100.0" cy="140.0" r="65.0" fill="#ffb000" opacity="0.02" filter="url(#glow-amb)"/>
+<rect x="0.0" y="0.0" width="200.0" height="250.0" fill="none" stroke="#ffb000" stroke-width="1.5" opacity="0.1"/>
+</svg>

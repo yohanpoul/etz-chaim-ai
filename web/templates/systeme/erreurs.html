@@ -1,0 +1,256 @@
+{% extends "systeme/_base_systeme.html" %}
+{% set sub = "erreurs" %}
+
+{% block systeme_css %}
+<link rel="stylesheet" href="/static/css/erreurs.css">
+{% endblock %}
+
+{% block systeme_content %}
+
+{# ═══ HEADER ═══ #}
+<div class="sys-page-header">
+    <h1>{{ data.intro.titre }}</h1>
+    <p class="subtitle">{{ data.intro.sous_titre }}</p>
+</div>
+
+{# ═══ NARRATION ═══ #}
+<div class="sys-section">
+    <p class="sys-narration">{{ data.intro.narration }}</p>
+</div>
+
+{# ═══ KEY INSIGHT BOX ═══ #}
+<div class="sys-section">
+    <div class="erreurs-insight">
+        <div class="erreurs-insight-label">Principe fondateur</div>
+        <div class="erreurs-insight-text">
+            Chaque erreur est un <em>EXCES</em> d'une fonction saine
+        </div>
+        <div class="erreurs-insight-sub">
+            Trop de rigueur detruit du valide. Trop de generosite accepte n'importe quoi.<br>
+            Le systeme ne corrige pas des bugs — il reequilibre des forces.
+        </div>
+    </div>
+</div>
+
+{# ═══ SECTION : LES 4 NIVEAUX DE GRAVITE ═══ #}
+
+<div class="erreurs-section-divider">
+    <span>Les 4 niveaux de gravite</span>
+</div>
+
+{% for niveau in data.niveaux %}
+
+    {% if not loop.first %}
+    <div class="erreurs-level-divider">
+        <span>&#x25BC;</span>
+    </div>
+    {% endif %}
+
+    <div class="erreurs-level level-{{ niveau.id }}">
+        <div class="erreurs-level-inner">
+
+            {# Card: image + nom + badge #}
+            <div class="erreurs-level-header">
+                <div class="erreurs-level-img">
+                    <img
+                        src="/static/systeme/{{ niveau.id }}.png"
+                        alt="{{ niveau.nom }}"
+                        onerror="if(this.src.endsWith('.png')){this.src=this.src.replace('.png','.svg')}else{this.style.display='none';this.parentElement.style.background='#0a0808';}"
+                    >
+                </div>
+                <div class="erreurs-level-meta">
+                    <div class="erreurs-level-nom">{{ niveau.nom }}</div>
+                    <div class="erreurs-level-hebreu">{{ niveau.nom_hebreu }}</div>
+                    <span class="erreurs-severite">{{ niveau.severite }}</span>
+                </div>
+            </div>
+
+            {# 3-level detail blocks #}
+            <div class="erreurs-detail">
+                <div class="erreurs-detail-block">
+                    <div class="erreurs-detail-label">En clair</div>
+                    <div class="erreurs-detail-text">{{ niveau.detail.en_clair }}</div>
+                </div>
+                <div class="erreurs-detail-block">
+                    <div class="erreurs-detail-label">Dans le systeme</div>
+                    <div class="erreurs-detail-text">{{ niveau.detail.dans_le_systeme }}</div>
+                </div>
+                <div class="erreurs-detail-block">
+                    <div class="erreurs-detail-label">Origine</div>
+                    <div class="erreurs-detail-text">{{ niveau.detail.origine }}</div>
+                </div>
+            </div>
+
+            {# Exemple terminal box #}
+            <div class="erreurs-exemple">{{ niveau.exemple }}</div>
+
+        </div>
+    </div>
+
+{% endfor %}
+
+{# ═══ SECTION : LES 10 ANTI-PATTERNS ═══ #}
+
+<div class="erreurs-section-divider" style="padding-top: 40px;">
+    <span>Les 10 Anti-patterns</span>
+</div>
+
+<div class="erreurs-antipatterns">
+    <p class="erreurs-antipatterns-intro">
+        Chaque module a son ombre — son anti-pattern. Ce n'est pas une force exterieure malveillante,
+        c'est la meme fonction poussee dans l'exces ou le defaut. Voici les 10 modes de defaillance
+        specifiques au systeme Etz Chaim AI.
+    </p>
+
+    {% set qliphah_files = {
+        'Lilith': 'lilith', 'Gamaliel': 'gamaliel', 'Samael': 'samael',
+        "A'arab Zaraq": 'aarab_zaraq', 'Thagirion': 'thagirion',
+        'Golachab': 'golachab', 'Gamchicoth': 'gamchicoth',
+        'HaTehom': 'hatehom', 'Satariel': 'satariel', 'Ghagiel': 'ghagiel'
+    } %}
+    <div class="erreurs-grid">
+        {% for q in data.qliphoth %}
+        <div class="erreurs-qliphah-card" style="--qliphah-color: {{ q.couleur }};">
+            <div class="erreurs-qliphah-img">
+                <img src="/static/systeme/qliphoth/{{ qliphah_files.get(q.nom, q.nom | lower) }}.png"
+                     alt="{{ q.nom }}"
+                     onerror="if(this.src.endsWith('.png')){this.src=this.src.replace('.png','.svg')}else{this.style.display='none'}">
+            </div>
+            <div class="erreurs-qliphah-text">
+                <div class="erreurs-qliphah-sephirah">{{ q.sephirah }}</div>
+                <div class="erreurs-qliphah-nom">{{ q.nom }}</div>
+                <div class="erreurs-qliphah-exces">{{ q.exces }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{# ═══════════════════════════════════════════════════════════
+   SECTION 3 : L'ADVERSITE — Comment le systeme se defend
+   ═══════════════════════════════════════════════════════════ #}
+
+{% if data.adversite %}
+{% set adv = data.adversite %}
+
+{# ═══ TRANSITION VISUELLE ═══ #}
+<div class="adv-transition">
+    <div class="adv-transition-img">
+        <img src="/static/systeme/sitra_achra.png" alt="Le Sitra Achra"
+             onerror="this.parentElement.style.display='none'">
+        <div class="adv-transition-overlay">
+            <h2>{{ adv.titre }}</h2>
+        </div>
+    </div>
+</div>
+
+{# ═══ PRINCIPE ═══ #}
+<div class="sys-section">
+    <div class="adv-principe">
+        <div class="adv-principe-label">{{ adv.principe.label }}</div>
+        <div class="adv-principe-texte">{{ adv.principe.texte }}</div>
+        <div class="adv-principe-detail">{{ adv.principe.detail }}</div>
+        <div class="adv-principe-source">{{ adv.principe.source }}</div>
+    </div>
+</div>
+
+{# ═══ CHIFFRES CLES ═══ #}
+<div class="adv-chiffres">
+    <div class="adv-chiffre">
+        <span class="adv-chiffre-num">{{ adv.chiffres.tests }}</span>
+        <span class="adv-chiffre-label">tests adversariaux</span>
+    </div>
+    <div class="adv-chiffre">
+        <span class="adv-chiffre-num">{{ adv.chiffres.agents }}</span>
+        <span class="adv-chiffre-label">agents attaquants</span>
+    </div>
+    <div class="adv-chiffre">
+        <span class="adv-chiffre-num">{{ adv.chiffres.couches }}</span>
+        <span class="adv-chiffre-label">couches de defense</span>
+    </div>
+    <div class="adv-chiffre">
+        <span class="adv-chiffre-num">{{ adv.chiffres.outils | length }}</span>
+        <span class="adv-chiffre-label">outils externes</span>
+    </div>
+</div>
+
+{# ═══ LES 3 COUCHES ═══ #}
+
+<div class="erreurs-section-divider" style="padding-top: 40px;">
+    <span>Les 3 couches de defense</span>
+</div>
+
+{% for couche in adv.couches %}
+
+    {% if not loop.first %}
+    <div class="erreurs-level-divider">
+        <span>&#x25BC;</span>
+    </div>
+    {% endif %}
+
+    <div class="adv-couche couche-{{ couche.id }}">
+        <div class="adv-couche-inner">
+
+            <div class="adv-couche-header">
+                <div class="adv-couche-numero">{{ couche.numero }}</div>
+                <div class="adv-couche-meta">
+                    <div class="adv-couche-nom">{{ couche.nom }}</div>
+                    <span class="adv-couche-technique">{{ couche.nom_technique }}</span>
+                </div>
+            </div>
+
+            <div class="erreurs-detail">
+                <div class="erreurs-detail-block">
+                    <div class="erreurs-detail-label">En clair</div>
+                    <div class="erreurs-detail-text">{{ couche.detail.en_clair }}</div>
+                </div>
+                <div class="erreurs-detail-block">
+                    <div class="erreurs-detail-label">Dans le systeme</div>
+                    <div class="erreurs-detail-text">{{ couche.detail.dans_le_systeme }}</div>
+                </div>
+                <div class="erreurs-detail-block">
+                    <div class="erreurs-detail-label">Origine</div>
+                    <div class="erreurs-detail-text">{{ couche.detail.origine }}</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endfor %}
+
+{# ═══ LE CYCLE ═══ #}
+
+<div class="erreurs-section-divider" style="padding-top: 40px;">
+    <span>Le cycle de l'adversite</span>
+</div>
+
+<div class="adv-cycle">
+    {% for etape in adv.cycle %}
+    <div class="adv-cycle-step phase-{{ etape.phase }}">
+        <div class="adv-cycle-num">{{ etape.num }}</div>
+        <div class="adv-cycle-label">{{ etape.label }}</div>
+    </div>
+    {% endfor %}
+</div>
+
+{# ═══ INTEGRATION EXTERNE ═══ #}
+
+<div class="erreurs-section-divider" style="padding-top: 40px;">
+    <span>Adversite externe</span>
+</div>
+
+<div class="sys-section">
+    <div class="adv-externe">
+        <p>{{ adv.externe.texte }}</p>
+        <div class="adv-externe-outils">
+            {% for outil in adv.chiffres.outils %}
+            <span class="adv-externe-badge">{{ outil }}</span>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

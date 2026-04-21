@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-gamchicoth" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#4488cc" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="glow-gamchicoth" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg-gamchicoth)"/>
+  <rect x="1" y="1" width="510" height="510" fill="none"
+        stroke="#4488cc" stroke-opacity="0.10" stroke-width="2"/>
+  <g filter="url(#glow-gamchicoth)" opacity="0.40">
+    <!-- concentric waves -->
+    <circle cx="256" cy="256" r="30" fill="none" stroke="#4488cc" stroke-width="2.5" stroke-opacity="0.50"/>
+<circle cx="256" cy="256" r="58" fill="none" stroke="#4488cc" stroke-width="2.4" stroke-opacity="0.45"/>
+<circle cx="256" cy="256" r="86" fill="none" stroke="#4488cc" stroke-width="2.2" stroke-opacity="0.40"/>
+<circle cx="256" cy="256" r="114" fill="none" stroke="#4488cc" stroke-width="2.0" stroke-opacity="0.35"/>
+<circle cx="256" cy="256" r="142" fill="none" stroke="#4488cc" stroke-width="1.9" stroke-opacity="0.30"/>
+<circle cx="256" cy="256" r="170" fill="none" stroke="#4488cc" stroke-width="1.8" stroke-opacity="0.25"/>
+<circle cx="256" cy="256" r="198" fill="none" stroke="#4488cc" stroke-width="1.6" stroke-opacity="0.20"/>
+<circle cx="256" cy="256" r="226" fill="none" stroke="#4488cc" stroke-width="1.4" stroke-opacity="0.15"/>
+    <!-- wave distortion arcs (horizontal) -->
+    <path d="M40,240 Q90,225 140,240 Q190,255 240,240 Q290,225 340,240
+             Q390,255 440,240 Q470,230 500,240"
+          fill="none" stroke="#4488cc" stroke-width="1" stroke-opacity="0.2"/>
+    <path d="M30,270 Q80,285 130,270 Q180,255 230,270 Q280,285 330,270
+             Q380,255 430,270 Q480,285 510,270"
+          fill="none" stroke="#4488cc" stroke-width="1" stroke-opacity="0.2"/>
+    <!-- tiny lost boat at center -->
+    <path d="M250,256 L256,248 L262,256 Z" fill="none"
+          stroke="#4488cc" stroke-width="1" stroke-opacity="0.6"/>
+    <path d="M246,258 Q256,262 266,258" fill="none"
+          stroke="#4488cc" stroke-width="1.5" stroke-opacity="0.5"/>
+  </g>
+</svg>

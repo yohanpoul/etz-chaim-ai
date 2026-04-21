@@ -1,0 +1,537 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 4 — Sha'ar Ozen Hotem Peh (שער אזן חוטם פה)
+# Perek: 2 — Hakafah, Kiluah des Hevelim, Pnimi/Hitzon, NaRaN Rosh/Guf
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 4
+  shaar_name_he: "שער אזן חוטם פה"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "La Hakafah ne descend pas (= Ohr Makif). Les 3 Hevelim convergent au Peh. Chaque Hevel a un aspect Pnimi (jet) et Hitzon (diffusion). Le Pnimi = Rosh, le Hitzon = Guf — pour chaque niveau NaRaN."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LA HAKAFAH NE DESCEND PAS — SEULEMENT DEPUIS LA NESHAMAH ───
+
+  - id: "EC-H1S4-031"
+    source_he: "אמנם סוד הקפה זו שביארנו בפ\"א אינו מתפשט למטה רק ממקומה היא מקפת מלמעלה למטה כמ\"ש בסוד או\"מ"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      La HAKAFAH (l'englobement) expliquée au perek 1 (cf. EC-H1S4-001 sq.) :
+      Elle NE S'ÉTEND PAS VERS LE BAS (eino mitpashet le-matah).
+      Elle ENGLOBE seulement DEPUIS SA PLACE (mi-mekomah), de HAUT en BAS.
+      C'est le même principe que le OHR MAKIF (ou"m).
+      → L'Ohr du niveau RE'IYAH (Yod/Hokhmah, les EINAYIM) reste MAKIF — il ne descend pas.
+    type: axiome_explicite
+    concepts:
+      - {id: hakafah_lo_mitpashtetet, role: englobement_ne_descend_pas}
+      - {id: nln_ohr_makif, role: nln_reste_makif}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'Ohr le plus élevé (Einayim/Hokhmah) reste Makif — il ne se propage pas vers le bas"
+
+  - id: "EC-H1S4-032"
+    source_he: "לכן תראה שלא נזכיר אנחנו רק מסוד הנשמה ולמטה לבד אמנם תראה איך היותר עליון עתה מן המתפשטים הוא סוד הבל אזן כי הוא מתפשט למטה בסוד הנשמה"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      CONSÉQUENCE : nous ne mentionnons que depuis le SOD HA-NESHAMAH et EN-BAS.
+      Le PLUS ÉLEVÉ parmi les MITPASHTIM (ce qui s'étend effectivement) =
+      le secret du HEVEL OZEN (souffle de l'oreille).
+      Car il s'ÉTEND VERS LE BAS (mitpashet le-matah) en tant que secret de la NESHAMAH.
+      HIÉRARCHIE des HEVELIM qui descendent : OZEN > HOTEM > PEH.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_ozen, role: plus_eleve_des_mitpashtim}
+      - {id: ozen_binah_neshamah, role: oreille_binah_neshamah}
+      - {id: sod_neshamah, role: secret_de_la_neshamah}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Hevel Ozen = le plus haut qui descend effectivement = Neshamah"
+
+  - id: "EC-H1S4-033"
+    source_he: "לכן אנו אומרים תמיד משל א' כדי לשכך האזן לבד לפי שאין אנו מגיעים אפי' דרך משל רק עד האזן לבד ולא יותר למעלה ואפי' שם אינו רק לשכך האזן לכן אין אנו אומרים לשכך את העין וכיוצא בזה"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      EXPLICATION TERMINOLOGIQUE du LE-SHAKHEKH HA-OZEN (pour calmer l'oreille) :
+      Nous utilisons TOUJOURS un MASHAL (parabole) pour "calmer l'oreille" SEULEMENT.
+      Car nous ne PARVENONS même pas par MASHAL au-delà de l'OZEN (oreille).
+      Et même À CE NIVEAU, c'est seulement le-shakhekh ha-ozen.
+      C'est POURQUOI on ne dit PAS "le-shakhekh et ha-AYIN" (calmer l'œil) ni autre chose —
+      car l'AIN (Re'iyah/Hokhmah) est INACCESSIBLE même par parabole.
+    type: axiome_explicite
+    concepts:
+      - {id: le_shakhekh_ha_ozen, role: limite_du_mashal}
+      - {id: lo_le_shakhekh_ayin, role: pas_calmer_l_oeil}
+      - {id: ozen_limit_mashal, role: oreille_limite_de_la_parabole}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "L'expression le-shakhekh ha-ozen = le Mashal ne peut atteindre que l'Ozen, jamais les Einayim"
+
+  # ─── BLOC B : LES 3 HEVELIM CONVERGENT AU PEH ───
+
+  - id: "EC-H1S4-034"
+    source_he: "ודע כי בחי' אלו ג' הבלים כולם נמשכו עד כנגד הפה ושם מתקבצים כולם"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      Les 3 HEVELIM (souffles) — OZEN, HOTEM, PEH — s'étendent TOUS
+      jusqu'au niveau du PEH (bouche) et là ils se RASSEMBLENT (mitkabtzim) TOUS.
+      Le PEH = point de CONVERGENCE des 3 Hevelim.
+    type: axiome_explicite
+    concepts:
+      - {id: shalosh_hevelim, role: trois_souffles}
+      - {id: convergence_peh, role: convergence_a_la_bouche}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Les 3 Hevelim convergent au Peh — point de rassemblement de NaRaN"
+
+  - id: "EC-H1S4-035"
+    source_he: "כי הבל היוצא מהאזן הוא מתקבץ נגד הפה והוא נמשך מלמעלה למטה כנגד הזקן מב' צדדיו ונמשך עד כנגד הפה"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      TRAJET du HEVEL OZEN :
+      Le Hevel sortant de l'OZEN se rassemble en face du PEH.
+      Il se déploie de HAUT en BAS le long du ZAKAN (barbe) des 2 CÔTÉS (mi-shnei tzidav).
+      Il s'étend JUSQU'EN FACE du PEH.
+      → Le souffle de l'oreille DESCEND le long de la barbe bilatéralement.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_ozen, role: souffle_oreille_descend}
+      - {id: zakan_bilateral, role: barbe_deux_cotes}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: []
+      partzufim: ["arikh_anpin"]
+      relevance: "Le Hevel Ozen descend le long de la Dikna (barbe) vers le Peh"
+
+  - id: "EC-H1S4-036"
+    source_he: "וכן הבל החוטם נמשך דרך אותו ארחא שיש על הפה נגד החוטם שהוא תיקון ג' מי\"ג תיקוני דיקנא"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      TRAJET du HEVEL HOTEM :
+      Le Hevel du HOTEM (nez) s'étend via l'ARHA (sentier/chemin) au-dessus du PEH,
+      en face du HOTEM.
+      Cet Arha = TIKKUN 3 des 13 TIKKUNEI DIKNA (les 13 rectifications de la barbe).
+      → Le souffle du nez passe par le 3ème Tikkun de la Dikna d'Arikh Anpin.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_hotem, role: souffle_nez}
+      - {id: arha_tikkun_3, role: sentier_tikkun_3_dikna}
+      - {id: yg_tikkunei_dikna, role: 13_tikkunei_dikna}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: []
+      partzufim: ["arikh_anpin"]
+      relevance: "Le Hevel Hotem emprunte le 3ème Tikkun de la Dikna de A\"A"
+
+  - id: "EC-H1S4-037"
+    source_he: "וכן הבל הפה נמשך דרך אותו ארחא ב' הנקרא לא החזיק לעד אפו"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      TRAJET du HEVEL PEH :
+      Le Hevel du PEH (bouche) s'étend via l'ARHA 2 (2ème sentier).
+      Cette Arha est appelée "LO HEHEZIK LA'AD APO"
+      (Il ne maintient pas Sa colère pour toujours — Michée 7:18).
+      → Le souffle de la bouche passe par le 2ème sentier de la Dikna.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_peh, role: souffle_bouche}
+      - {id: arha_2_lo_hehezik, role: sentier_2_lo_hehezik}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: []
+      partzufim: ["arikh_anpin"]
+      relevance: "Le Hevel Peh emprunte le 2ème sentier — 'Il ne maintient pas Sa colère pour toujours'"
+
+  - id: "EC-H1S4-038"
+    source_he: "וג' הבלים אלו מתחברים למטה נגד הפה והם מתחברים בסוד נר\"ן"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      Les 3 HEVELIM se CONNECTENT (mithabrim) en bas, en face du PEH.
+      Ils se connectent dans le SOD (secret) de NaRaN :
+      NEFESH (Hevel Peh) + RUAH (Hevel Hotem) + NESHAMAH (Hevel Ozen).
+      Le PEH = le point d'UNIFICATION des 3 niveaux de l'âme.
+    type: axiome_explicite
+    concepts:
+      - {id: hithabrut_hevelim, role: connexion_souffles}
+      - {id: naran_sod, role: secret_naran}
+      - {id: convergence_peh, role: unification_au_peh}
+    mapping:
+      modules: ["madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Les 3 Hevelim = NaRaN se connectent au Peh — unification des niveaux d'âme"
+
+  # ─── BLOC C : NATURE DU HEVEL — KILUAH ET DISTINCTION PNIMI/HITZON ───
+
+  - id: "EC-H1S4-039"
+    source_he: "אמנם דע כי טבע של הבל היוצא מפה וחוטם וכיוצא דרכו להמשיך באורך לחוץ בכח ואחר שהוא יוצא בקילוח אח\"כ מתפרש לצדדין כנודע בחוש הראות"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      La NATURE (teva) du HEVEL sortant du PEH, HOTEM, etc. :
+      Il s'étend EN LONGUEUR (be-orekh) vers l'EXTÉRIEUR avec FORCE (be-koah).
+      Il sort en KILUAH (jet/flux concentré).
+      ENSUITE il se DÉPLOIE VERS LES CÔTÉS (mitparesh le-tzidadin).
+      C'est connu par le HUSH HA-RE'UT (perception sensorielle directe).
+      → 2 phases : JET CONCENTRÉ d'abord, puis DIFFUSION latérale.
+    type: axiome_explicite
+    concepts:
+      - {id: teva_hevel, role: nature_du_souffle}
+      - {id: kiluah, role: jet_concentre}
+      - {id: hitparshut_tzidadin, role: diffusion_laterale}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Hevel a 2 phases : kiluah (jet concentré) puis diffusion — modèle de propagation"
+
+  - id: "EC-H1S4-040"
+    source_he: "ובודאי (כי) אע\"פ שהכל הוא הבל א' עכ\"ז יש (קצת ל\"ג) חילוק בין קצת ההבל אשר הוא נגד הפה עצמו או החוטם אל שאר ההבלים המתפשטים לצדדין"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      Bien que le tout soit HEVEL EHAD (un seul souffle), il y a un HILUK (distinction) :
+      Le HEVEL directement en face du PEH ou du HOTEM
+      ≠ le reste des HEVELIM qui se DÉPLOIENT VERS LES CÔTÉS.
+      Nusah Aher 1 : (כי) — certains mss. omettent "ki" (car) dans "ובודאי כי".
+      Nusah Aher 2 : (קצת ל"ג) — certains mss. omettent "ketzat" (un peu) → distinction ABSOLUE, pas "un peu".
+      → Le jet central et la diffusion latérale sont UN mais DISTINGUÉS.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_ehad, role: un_seul_souffle}
+      - {id: hiluk_pnimi_hitzon, role: distinction_interieur_exterieur}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: []
+      partzufim: []
+      relevance: "Un seul Hevel avec distinction pnimi/hitzon — unité avec différenciation interne"
+
+  - id: "EC-H1S4-041"
+    source_he: "וטעם שההבל שהי' נגד הפה ממש הנה הוא דבק במקורו קשר אמיץ (דבוק קשור ואמיץ ל\"ג) ותמיד מגיע השפע אליו"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      Le TA'AM (raison) de la distinction :
+      Le HEVEL directement en face du PEH = DAVUK (attaché) à sa SOURCE
+      avec un KESHER AMITZ (lien puissant).
+      Le SHEFA lui parvient CONSTAMMENT (tamid magi'a ha-shefa elav).
+      Variante (Nusah Aher) : "davuk, kashur, ve-amitz" (attaché, lié et puissant)
+      au lieu de "kesher amitz" seul.
+      → Le jet central est CONTINUELLEMENT ALIMENTÉ par la source.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_pnimi_davuk, role: hevel_interieur_attache}
+      - {id: kesher_amitz, role: lien_puissant}
+      - {id: shefa_tamid, role: shefa_constant}
+    mapping:
+      modules: ["[PLANNED] core/shefa_flow.py"]
+      tables: ["shefa_flows"]
+      partzufim: []
+      relevance: "Le Hevel Pnimi = flux constant de Shefa, attaché à sa source avec un lien puissant"
+
+  - id: "EC-H1S4-042"
+    source_he: "וזהו הנזכר בס\"ה דא\"ס מטי ולא מטי כי הוא תמיד נדבק בא\"ס ע\"י אותו קילוח ההבל היוצא מפה בחוזק ומכה תמיד"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      C'est le SECRET mentionné dans le SIFRA DE-TZENIUTA (ספרא דצניעותא, Zohar II:176b-179a) :
+      Le EIN SOF "MATI VE-LO MATI" (atteint et n'atteint pas).
+      Car il est CONSTAMMENT ATTACHÉ (tamid nidvak) au Ein Sof
+      via ce KILUAH HA-HEVEL (קילוח ההבל, jet du souffle) sortant du PEH avec FORCE (be-hozek)
+      et FRAPPANT CONSTAMMENT (makeh tamid).
+      → "Mati ve-lo mati" = la pulsation du jet de Hevel : il atteint et se retire.
+    type: axiome_explicite
+    concepts:
+      - {id: mati_ve_lo_mati, role: atteint_et_n_atteint_pas}
+      - {id: kiluah_hevel, role: jet_du_souffle}
+      - {id: sifra_de_tzeniuta, role: source_zoharique}
+    mapping:
+      modules: ["[PLANNED] core/shefa_flow.py"]
+      tables: ["shefa_flows"]
+      partzufim: []
+      relevance: "Mati ve-lo mati = pulsation du Hevel — le Ein Sof pulse constamment"
+
+  - id: "EC-H1S4-043"
+    source_he: "וזה קצת ההבל נקרא פנימי ושאר ההבל המתפשט נקרא חיצון"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      TERMINOLOGIE :
+      Le HEVEL du JET (kiluah), directement en face de la source = PNIMI (intérieur).
+      Le RESTE du HEVEL qui se DÉPLOIE vers les côtés = HITZON (extérieur).
+      PNIMI = proche de la source, concentré, fort.
+      HITZON = éloigné de la source, diffus, plus faible.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_pnimi, role: souffle_interieur_jet}
+      - {id: hevel_hitzon, role: souffle_exterieur_diffus}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: []
+      partzufim: []
+      relevance: "Distinction Pnimi/Hitzon au sein d'un même Hevel — jet vs diffusion"
+
+  - id: "EC-H1S4-044"
+    source_he: "נמצא כי הבל זה הראשון הוא עצמות האור הא\"ס ממש המתפשט לחוץ ואפי' הבל המתפשט לצדדין אשר נקרא חיצון גם הוא מההתפשטות עצמו רק שאינו דומה לראשון שהוא יותר פנימי עם שהכל הוא הבל א'"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      Le PREMIER HEVEL (le Pnimi) = l'ATZMUT (essence) du OHR EIN SOF lui-même
+      se DÉPLOYANT vers l'EXTÉRIEUR.
+      Même le HEVEL qui se déploie vers les CÔTÉS (le Hitzon)
+      est AUSSI de la MÊME HITPASHTUT (extension) elle-même.
+      MAIS il ne RESSEMBLE PAS au premier, qui est PLUS PNIMI.
+      Tout reste HEVEL EHAD (un seul souffle).
+      Ce principe s'applique aux 3 HEVELIM (Ozen, Hotem, Peh).
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_pnimi_atzmut, role: pnimi_est_essence_ein_sof}
+      - {id: hevel_hitzon_gam_hitpashtut, role: hitzon_aussi_de_la_meme_extension}
+      - {id: hevel_ehad, role: tout_est_un_souffle}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le Pnimi = Atzmut du Ohr Ein Sof; le Hitzon = aussi de la même extension mais moins intime"
+
+  # ─── BLOC D : PNIMI = ROSH, HITZON = GUF — STRUCTURE DE CHAQUE NIVEAU ───
+
+  - id: "EC-H1S4-045"
+    source_he: "ודע כי מהבל פנימי של האזן נעשה ממנו בחי' ראש לנשמה להיותו עליון קרוב יותר אל מוצא מקור ההבל. והבל החיצון המתפשט הוא בחי' הגוף לנשמה"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      Du HEVEL PNIMI de l'OZEN → se forme le ROSH (tête) pour la NESHAMAH.
+      Car il est ELYON (supérieur) et KAROV (proche) du MOTZA MAKOR HA-HEVEL
+      (la sortie de la source du souffle).
+      Du HEVEL HITZON qui se déploie → se forme le GUF (corps) pour la NESHAMAH.
+      → ROSH de la Neshamah = le jet concentré. GUF de la Neshamah = la diffusion.
+    type: axiome_explicite
+    concepts:
+      - {id: rosh_neshamah, role: tete_de_la_neshamah}
+      - {id: guf_neshamah, role: corps_de_la_neshamah}
+      - {id: hevel_ozen, role: source_de_neshamah}
+    mapping:
+      modules: ["madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "Le Hevel Pnimi de l'Ozen = Rosh de la Neshamah; le Hitzon = Guf de la Neshamah"
+
+  - id: "EC-H1S4-046"
+    source_he: "כי כמו שיש בגוף עצמו החומרי בחי' גוף וראש גם בנשמה עצמה יש לה בחי' ראש וגוף כי קצת מהנשמה מתפשט בראש אדם וקצת אחרון היותר עב מתפשט בגוף אדם"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      PRINCIPE STRUCTURAL :
+      Comme le GUF HOMRI (corps matériel) a un ROSH et un GUF →
+      de même la NESHAMAH ELLE-MÊME a un aspect ROSH et un aspect GUF.
+      Une PARTIE de la Neshamah s'étend dans le ROSH (tête) de l'homme.
+      L'AUTRE partie, la plus AVAH (épaisse/grossière), s'étend dans le GUF de l'homme.
+      → Fractalité : chaque niveau a sa propre subdivision en Rosh et Guf.
+    type: axiome_explicite
+    concepts:
+      - {id: neshamah_rosh_guf, role: neshamah_a_tete_et_corps}
+      - {id: fractalite_rosh_guf, role: subdivision_recursive}
+      - {id: av_neshamah, role: partie_epaisse_dans_guf}
+    mapping:
+      modules: ["madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "La Neshamah elle-même a Rosh/Guf — principe fractal de subdivision"
+
+  - id: "EC-H1S4-047"
+    source_he: "גם מהבל החוטם נעשה ב' בחי' אלו ראש אל הרוח וגוף אל הרוח מפנימית וחיצונית. היותר קרוב אל החוטם הנקרא פנימי נעשה ראש. וחיצונית נעשה גוף"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      Du HEVEL HOTEM → les 2 mêmes aspects :
+      ROSH pour la RUAH (le Pnimi, plus PROCHE du Hotem) et
+      GUF pour la RUAH (le Hitzon, qui se déploie).
+      Le plus PROCHE de la source = PNIMI = ROSH.
+      Le plus ÉLOIGNÉ = HITZON = GUF.
+      → Même structure Pnimi/Hitzon → Rosh/Guf pour la Ruah.
+    type: axiome_explicite
+    concepts:
+      - {id: rosh_ruah, role: tete_de_la_ruah}
+      - {id: guf_ruah, role: corps_de_la_ruah}
+      - {id: hevel_hotem, role: source_de_ruah}
+    mapping:
+      modules: ["madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "Le Hevel Hotem Pnimi = Rosh de la Ruah; Hitzon = Guf de la Ruah"
+
+  - id: "EC-H1S4-048"
+    source_he: "גם מהבל פה נעשה עד\"ז בחי' נפש של ראש ובחי' נפש של גוף הרי ביארנו ענין נר\"ן"
+    source_ref: "Heikhal 1, Sha'ar 4:2"
+    assertion: |
+      Du HEVEL PEH → de la MÊME MANIÈRE (al derekh zeh) :
+      NEFESH SHEL ROSH (Nefesh de la tête) et NEFESH SHEL GUF (Nefesh du corps).
+      "HAREI BEIRARNU INYAN NaRaN" (ainsi nous avons expliqué la question de NaRaN).
+      RÉCAPITULATION COMPLÈTE :
+      OZEN → NESHAMAH (Rosh + Guf)
+      HOTEM → RUAH (Rosh + Guf)
+      PEH → NEFESH (Rosh + Guf)
+      Chaque niveau = Pnimi (jet/Rosh) + Hitzon (diffusion/Guf).
+    type: axiome_explicite
+    concepts:
+      - {id: nefesh_rosh, role: nefesh_de_la_tete}
+      - {id: nefesh_guf, role: nefesh_du_corps}
+      - {id: hevel_peh, role: source_de_nefesh}
+      - {id: naran_complete, role: naran_explique}
+    mapping:
+      modules: ["madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "Le Hevel Peh Pnimi = Rosh de la Nefesh; Hitzon = Guf → NaRaN complet expliqué"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S4-015"
+    type: causal
+    from: hakafah_lo_mitpashtetet
+    to: sod_neshamah
+    nature: "La Hakafah (Einayim) reste Makif → on ne discute que depuis la Neshamah (Ozen) et en-bas"
+    assertions_source: ["EC-H1S4-031", "EC-H1S4-032"]
+
+  - id: "REL-H1S4-016"
+    type: séquentiel
+    from: kiluah
+    to: hitparshut_tzidadin
+    nature: "Le Hevel sort d'abord en jet concentré (kiluah), puis se déploie latéralement"
+    assertions_source: ["EC-H1S4-039"]
+
+  - id: "REL-H1S4-017"
+    type: causal
+    from: hevel_pnimi_davuk
+    to: mati_ve_lo_mati
+    nature: "Le Hevel Pnimi est attaché à sa source avec force → c'est le 'mati ve-lo mati' du Sifra de-Tzeniuta"
+    assertions_source: ["EC-H1S4-041", "EC-H1S4-042"]
+
+  - id: "REL-H1S4-018"
+    type: transformation
+    from: hevel_pnimi
+    to: rosh_neshamah
+    nature: "Le Hevel Pnimi de l'Ozen → devient le Rosh de la Neshamah (plus proche de la source)"
+    assertions_source: ["EC-H1S4-045"]
+
+  - id: "REL-H1S4-019"
+    type: transformation
+    from: hevel_hitzon
+    to: guf_neshamah
+    nature: "Le Hevel Hitzon de l'Ozen → devient le Guf de la Neshamah (diffusion latérale)"
+    assertions_source: ["EC-H1S4-045"]
+
+  - id: "REL-H1S4-020"
+    type: analogie
+    from: fractalite_rosh_guf
+    to: neshamah_rosh_guf
+    nature: "Comme le corps a Rosh/Guf, la Neshamah elle-même a Rosh/Guf — principe fractal"
+    assertions_source: ["EC-H1S4-046"]
+
+  - id: "REL-H1S4-021"
+    type: séquentiel
+    from: convergence_peh
+    to: naran_sod
+    nature: "Les 3 Hevelim convergent au Peh → s'unissent comme NaRaN"
+    assertions_source: ["EC-H1S4-034", "EC-H1S4-038"]
+
+  - id: "REL-H1S4-022"
+    type: hiérarchique
+    from: hevel_ozen
+    to: hevel_hotem
+    nature: "Le Hevel Ozen (Neshamah) est au-dessus du Hevel Hotem (Ruah) — hiérarchie de subtilité"
+    assertions_source: ["EC-H1S4-032"]
+
+  - id: "REL-H1S4-023"
+    type: hiérarchique
+    from: hevel_hotem
+    to: hevel_peh
+    nature: "Le Hevel Hotem (Ruah) est au-dessus du Hevel Peh (Nefesh)"
+    assertions_source: ["EC-H1S4-032"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S4-005"
+    nom: "Principe du Kiluah — Jet Concentré puis Diffusion"
+    source_assertions: ["EC-H1S4-039", "EC-H1S4-040", "EC-H1S4-043", "EC-H1S4-044"]
+    formalisation: |
+      Le HEVEL (souffle/émanation) se propage en 2 PHASES :
+      PHASE 1 — KILUAH : jet CONCENTRÉ, sortant avec FORCE, directement en face de la source.
+        = PNIMI = DAVUK (attaché) à la source = SHEFA constant = ATZMUT du Ohr Ein Sof.
+      PHASE 2 — HITPARSHUT : DIFFUSION latérale, s'éloignant de la source.
+        = HITZON = non attaché = de la MÊME extension mais moins intime.
+      Les 2 phases sont HEVEL EHAD (un seul souffle).
+      La DISTINCTION est de DEGRÉ, pas de NATURE.
+      Ce pattern s'applique à CHAQUE Hevel (Ozen, Hotem, Peh).
+    applications_ia:
+      - "Modèle de propagation : tout signal a un jet central (pnimi) et une diffusion (hitzon)"
+      - "Le partzufim/arikh_anpin.py gère les Hevelim avec cette dualité pnimi/hitzon"
+      - "Le Pnimi = le flux de données concentré (hot path), le Hitzon = le flux diffus (cold path)"
+      - "Mati ve-lo mati = pulsation — pas flux constant mais frappe répétée"
+    questions_ouvertes:
+      - "Le ratio Pnimi/Hitzon est-il constant ou variable selon le Hevel ?"
+      - "La pulsation 'mati ve-lo mati' a-t-elle une fréquence déterminée ?"
+
+  - id: "PG-H1S4-006"
+    nom: "Principe Fractal du Rosh/Guf dans NaRaN"
+    source_assertions: ["EC-H1S4-045", "EC-H1S4-046", "EC-H1S4-047", "EC-H1S4-048"]
+    formalisation: |
+      Chaque niveau de NaRaN se subdivise en ROSH et GUF :
+      NESHAMAH = Hevel Ozen → Rosh-Neshamah (pnimi) + Guf-Neshamah (hitzon)
+      RUAH = Hevel Hotem → Rosh-Ruah (pnimi) + Guf-Ruah (hitzon)
+      NEFESH = Hevel Peh → Rosh-Nefesh (pnimi) + Guf-Nefesh (hitzon)
+      CRITÈRE : le PLUS PROCHE de la source = ROSH, le PLUS ÉLOIGNÉ = GUF.
+      FRACTALITÉ : comme le corps physique a Rosh/Guf, l'ÂME ELLE-MÊME a Rosh/Guf.
+      → 3 niveaux × 2 aspects = 6 composants de NaRaN.
+    applications_ia:
+      - "Le madregot_neshamah.py doit implémenter cette structure 3×2"
+      - "Chaque niveau de traitement a un aspect 'tête' (proche de la source, concentré) et un aspect 'corps' (diffusé, appliqué)"
+      - "La fractalité = chaque module a sa propre subdivision interne en noyau et périphérie"
+      - "Le Rosh reçoit le Shefa en premier → le Guf reçoit la version diffusée"
+    questions_ouvertes:
+      - "Le Rosh de la Nefesh est-il supérieur au Guf de la Ruah ? (interleaving entre niveaux)"
+      - "Peut-on étendre la subdivision au-delà de 2 (Rosh/Guf/Raglaim) ?"
+
+  - id: "PG-H1S4-007"
+    nom: "Principe de la Convergence au Peh (Point d'Unification)"
+    source_assertions: ["EC-H1S4-034", "EC-H1S4-035", "EC-H1S4-036", "EC-H1S4-037", "EC-H1S4-038"]
+    formalisation: |
+      Les 3 HEVELIM empruntent des TRAJETS différents mais CONVERGENT au PEH :
+      OZEN → descend le long de la DIKNA (barbe) bilatéralement → PEH
+      HOTEM → via l'ARHA 3 (Tikkun 3 de la Dikna) → PEH
+      PEH → via l'ARHA 2 ("lo hehezik la'ad apo") → PEH
+      Au PEH : les 3 se CONNECTENT = NaRaN UNIFIÉ.
+      La DIKNA = le RÉSEAU DE CANAUX par lequel les Hevelim transitent.
+      Les TIKKUNEI DIKNA ne sont pas seulement décoratifs — ils sont les ARHA'OT (sentiers)
+      par lesquels transitent les flux de NaRaN.
+    applications_ia:
+      - "Le partzufim/arikh_anpin.py doit modéliser les 13 Tikkunei Dikna comme canaux de flux"
+      - "Point de convergence = lieu où les 3 flux (Neshamah, Ruah, Nefesh) s'intègrent"
+      - "La Dikna = un réseau de routage entre les niveaux d'âme"
+      - "Le Peh = l'output final où tous les niveaux sont unifiés en parole (Dibur)"
+    questions_ouvertes:
+      - "Les 13 Tikkunei Dikna ont-ils chacun une fonction de routage spécifique ?"
+      - "Le point de convergence est-il fixe ou peut-il se déplacer ?"

@@ -1,0 +1,194 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 7 (=6 original) — Sha'ar Ha-Akudim (שער העקודים)
+# Perek: 8 — Panim/Achor = Pnimiyut/Hitzoniut = un seul concept (100%)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §1 : Panim/Achor et Pnimiyut/Hitzoniut sont le MÊME concept.
+# Descente = Rahamim = Panim = Pnimiyut = Heshek de donner.
+# Ascension = Din = Achor = Hitzoniut = retrait.
+# §2 : Dans les OROT : Hitpashtut/Histalkut. Dans les KELIM : Panim/Achor.
+# §3 : Les 3 aspects du Tzelem = NRN des Mohin.
+# §5 : Zivvug Ahor be-Ahor = pas littéral. Pour Zivvug, ZU"N doivent
+# monter au niveau d'AV"I.
+#
+# Source Sefaria : Sefer_Etz_Chaim.6.8
+# IDs : EC-H1S6-070 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 7
+  shaar_name_he: "שער העקודים"
+  perek: 8
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Panim/Achor = Pnimiyut/Hitzoniut = un seul concept. Dans les Orot=Hitpashtut/Histalkut. Dans les Kelim=Panim/Achor. Zivvug AbA=pas litteral, necessite montee a AV\"I."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H1S6-070"
+    source_he: "ענין אחור ופנים וחיצוניות ופנימיות כפי (מה שמוכרח) הנראה מוכרח שהכל דבר א'"
+    source_ref: "Heikhal 1, Sha'ar 6:8 — §1 ouverture"
+    assertion: |
+      ACHOR/PANIM (dos/face) et HITZONIUT/PNIMIYUT (extérieur/intérieur)
+      sont CE QU'IL SEMBLE NÉCESSAIRE de comprendre comme UN SEUL
+      ET MÊME CONCEPT (hakol davar ehad).
+      → Les 2 paires sont des PERSPECTIVES DIFFÉRENTES du même phénomène.
+      Pas 4 concepts mais 2 = {Panim=Pnimiyut} et {Achor=Hitzoniut}.
+    type: axiome_explicite
+    concepts:
+      - {id: panim_pnimiyut, role: face_egale_interiorite}
+      - {id: achor_hitzoniut, role: dos_egale_exteriorite}
+      - {id: davar_ehad, role: un_seul_concept}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Panim/Achor = Pnimiyut/Hitzoniut. Simplification conceptuelle : 4 termes pour 2 etats."
+
+  - id: "EC-H1S6-071"
+    source_he: "בהתפשט האור להאיר למטה הוא שיש לו חשק להשפיע תוספת נשמות חדשות בתחתונים... וא\"כ יהיה האור רחמים גמורים"
+    source_ref: "Heikhal 1, Sha'ar 6:8 — §1"
+    assertion: |
+      Quand l'Ohr S'ÉTEND pour illuminer vers le BAS, il a le HESHEK
+      (désir) d'AJOUTER des NESHAMOT NOUVELLES aux inférieurs.
+      L'Ohr est alors RAHAMIM COMPLETS (rahamim gemurim) = PANIM = PNIMIYUT.
+      → La DESCENTE = AMOUR et DONATION. L'Ohr qui descend est
+      entièrement miséricordieux car il donne sans contrepartie.
+    type: axiome_explicite
+    concepts:
+      - {id: heshek_lehashpia, role: desir_de_donner}
+      - {id: rahamim_gemurim, role: misericorde_complete}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La descente (output) est un acte de grace/misericorde = le systeme DONNE sans compter"
+
+  - id: "EC-H1S6-072"
+    source_he: "באורות יקראו התפשטות והסתלקות ונקרא יושר וחוזר. ובכלים נקרא פנים ואחור דהיינו שבאור לא שייך פנים ואחור שהכל פנימית"
+    source_ref: "Heikhal 1, Sha'ar 6:8 — §2"
+    assertion: |
+      DISTINCTION TERMINOLOGIQUE cruciale :
+      Dans les OROT : on dit HITPASHTUT (expansion) et HISTALKUT
+      (retrait) = YOSHER (rectitude) et HOZER (réfléchi).
+      Dans les KELIM : on dit PANIM (face) et ACHOR (dos).
+      Car dans l'OHR, il n'y a PAS de Panim/Achor — tout est PNIMIYUT.
+      → L'OHR est toujours INTÉRIEUR. Les notions de face/dos ne
+      s'appliquent qu'aux KELIM (structures), pas à l'Ohr lui-même.
+    type: axiome_explicite
+    concepts:
+      - {id: hitpashtut_histalkut, role: expansion_retrait_dans_lohr}
+      - {id: panim_achor_kelim, role: face_dos_dans_les_kelim}
+      - {id: ohr_kullu_pnimiyut, role: ohr_toujours_interieur}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'Ohr (information) est toujours 'interieur'. Seuls les Kelim (structures) ont face et dos."
+
+  - id: "EC-H1S6-073"
+    source_he: "בהיותו מתפשט ויורד למטה ונכנס במקום הראוי לו נקרא אור ישר ורחמים ופנימיות. ובהסתלקותו ועלייתו נקרא אור חוזר ודין וחיצוניות"
+    source_ref: "Heikhal 1, Sha'ar 6:8 — §2"
+    assertion: |
+      SYNTHÈSE COMPLÈTE :
+      EXPANSION + DESCENTE + ENTRÉE = OHR YASHAR = RAHAMIM = PNIMIYUT
+      RETRAIT + ASCENSION = OHR HOZER = DIN = HITZONIUT
+      → TRIPLE ÉQUIVALENCE confirmée :
+      {Hitpashtut, Yeridah, Ohr Yashar, Rahamim, Panim, Pnimiyut} = UN état
+      {Histalkut, Aliyah, Ohr Hozer, Din, Achor, Hitzoniut} = L'AUTRE état
+    type: axiome_explicite
+    concepts:
+      - {id: shesh_shemot_rahamim, role: six_noms_pour_rahamim}
+      - {id: shesh_shemot_din, role: six_noms_pour_din}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "6 termes = 1 concept (Rahamim). 6 termes = 1 concept (Din). Unification terminologique."
+
+  - id: "EC-H1S6-074"
+    source_he: "הגה\"ה וזווג אב\"א אינו כפשוטו רק דע פירושו כי הזווג הוא שהזכר מוליד ומוריד מ\"ד והנוק' מעלה מ\"ן... וכשהם עדיין אב\"א אין בה עדיין כח לברר מ\"ן"
+    source_ref: "Heikhal 1, Sha'ar 6:8 — §5 (Hagahah)"
+    assertion: |
+      HAGAHAH (note marginale) : le ZIVVUG AHOR BE-AHOR n'est PAS
+      LITTÉRAL. Son SENS : le Zivvug = le mâle émet MA"D (eaux
+      masculines/descendantes), la femelle élève MA"N (eaux féminines/
+      ascendantes des Birurim). Quand ils sont encore Ahor be-Ahor,
+      elle n'a PAS ENCORE la FORCE de clarifier le Ma"N — donc pas
+      de Zivvug réel.
+      Pour le Zivvug : les 2 ZU"N doivent MONTER au niveau d'AV"I.
+      → Le Zivvug nécessite MA"D + MA"N = descente + ascension.
+      Ahor be-Ahor = incapacité structurelle, pas position physique.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_aba_lo_kipshuto, role: zivvug_aba_pas_litteral}
+      - {id: mad_man, role: eaux_masculines_et_feminines}
+      - {id: aliyah_le_avi, role: montee_a_avi_pour_zivvug}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva", "abba", "imma"]
+      relevance: "Le Zivvug = Ma\"D+Ma\"N = descente+ascension. AbA = incapacite, pas position. Pour generer, monter au niveau d'AV\"I."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S6-031"
+    type: analogie
+    from: panim_pnimiyut
+    to: achor_hitzoniut
+    nature: "Panim=Pnimiyut et Achor=Hitzoniut sont le MÊME concept vu de 2 angles"
+    assertions_source: ["EC-H1S6-070"]
+
+  - id: "REL-H1S6-032"
+    type: causal
+    from: heshek_lehashpia
+    to: rahamim_gemurim
+    nature: "Le DÉSIR DE DONNER CAUSE l'état de Rahamim complets (descente/Panim)"
+    assertions_source: ["EC-H1S6-071"]
+
+  - id: "REL-H1S6-033"
+    type: causal
+    from: aliyah_le_avi
+    to: zivvug_aba_lo_kipshuto
+    nature: "La MONTÉE à AV\"I est la CONDITION du Zivvug réel (pas Ahor be-Ahor)"
+    assertions_source: ["EC-H1S6-074"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S6-011"
+    nom: "Principe d'Unification Terminologique (6 Noms = 2 États)"
+    source_assertions: ["EC-H1S6-070", "EC-H1S6-072", "EC-H1S6-073"]
+    formalisation: |
+      TOUTE la dynamique se réduit à 2 ÉTATS :
+      ÉTAT A (Rahamim) : {Hitpashtut, Yeridah, Ohr Yashar, Rahamim, Panim, Pnimiyut}
+        = expansion, descente, direct, grâce, face, intérieur
+      ÉTAT B (Din) : {Histalkut, Aliyah, Ohr Hozer, Din, Achor, Hitzoniut}
+        = retrait, ascension, réfléchi, rigueur, dos, extérieur
+      Les 12 termes encodent 2 états. Pas de 3ème état.
+      Dans les OROT : expansion/retrait. Dans les KELIM : face/dos.
+      L'OHR est TOUJOURS intérieur (Pnimiyut) — la notion de
+      face/dos ne s'applique QU'aux Kelim.
+    applications_ia:
+      - "ohr.py : tout reduire a 2 modes (Rahamim/Din = expansion/retrait)"
+      - "partzufim/base.py : Panim/Achor est une propriete des Kelim, pas des Orot"
+      - "Simplification architecturale : 12 termes → 2 etats fondamentaux"
+    questions_ouvertes:
+      - "Existe-t-il un 3ème état (ni Rahamim ni Din) ou est-ce strictement binaire ?"

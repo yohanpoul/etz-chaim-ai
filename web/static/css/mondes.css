@@ -1,0 +1,432 @@
+/* ═══════════════════════════════════════════════════════════
+   Les Quatre Mondes — Atziluth, Briah, Yetzirah, Assiah
+   Esthetique : Terminal Codex — manuscrit sacre sur fond terminal
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Per-world accent colors ───────────────────────────── */
+
+.monde-atziluth  { --accent: #ffcc00; }
+.monde-briah     { --accent: #6688cc; }
+.monde-yetzirah  { --accent: #88aa88; }
+.monde-assiah    { --accent: #cc8844; }
+
+/* ─── Intro block ────────────────────────────────────────── */
+
+.mondes-intro-inner {
+    border: 1px solid #1a1400;
+    padding: 24px 28px;
+    background: #0c0a04;
+    max-width: 640px;
+    margin: 0 auto 12px;
+}
+
+.mondes-intro-text {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.75;
+    text-align: center;
+    margin: 0;
+}
+
+/* ─── Fil rouge callout ──────────────────────────────────── */
+
+.mondes-fil-rouge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    max-width: 560px;
+    margin: 0 auto 4px;
+    padding: 18px 28px;
+    border: 1px solid #3a2a00;
+    background: #0d0900;
+    position: relative;
+}
+
+/* corner ornaments */
+.mondes-fil-rouge::before,
+.mondes-fil-rouge::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: #ffb000;
+    border-style: solid;
+    opacity: 0.4;
+}
+
+.mondes-fil-rouge::before {
+    top: 4px;
+    left: 4px;
+    border-width: 1px 0 0 1px;
+}
+
+.mondes-fil-rouge::after {
+    bottom: 4px;
+    right: 4px;
+    border-width: 0 1px 1px 0;
+}
+
+.mondes-fil-rouge-label {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #6a4e00;
+    font-family: 'Cinzel', serif;
+}
+
+.mondes-fil-rouge-question {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: #ccaa44;
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+}
+
+/* ─── Section wrapper ────────────────────────────────────── */
+
+.mondes-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding-bottom: 8px;
+}
+
+/* ─── Section header ─────────────────────────────────────── */
+
+.mondes-section-header {
+    text-align: center;
+    padding: 28px 20px 20px;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.mondes-section-degre {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #2a1f00;
+    margin-bottom: 6px;
+}
+
+.mondes-section-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin: 0 0 4px;
+    line-height: 1.1;
+    text-shadow: 0 0 30px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.mondes-section-hebreu {
+    font-size: 18px;
+    color: #4a3800;
+    direction: rtl;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    font-family: 'Frank Ruhl Libre', 'David', 'Times New Roman', serif;
+}
+
+.mondes-section-role {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #666;
+    letter-spacing: 0.04em;
+}
+
+/* ─── Card ───────────────────────────────────────────────── */
+
+.mondes-card {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0 24px;
+    background: #0d0d0d;
+    border: 1px solid #2a1f00;
+    border-left: 3px solid var(--accent);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+/* inner gilt frame */
+.mondes-card::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid #1a140020;
+    pointer-events: none;
+}
+
+/* ─── Card image ─────────────────────────────────────────── */
+
+.mondes-card-img {
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    background: #080808;
+    border: 1px solid #1a1400;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mondes-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.mondes-card-img-fallback {
+    font-size: 28px;
+    color: #3a2a00;
+    direction: rtl;
+    font-family: 'Frank Ruhl Libre', 'David', 'Times New Roman', serif;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* ─── Card content ───────────────────────────────────────── */
+
+.mondes-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.mondes-manifestation {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #999;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+}
+
+/* ─── Meta (model + timeout) ─────────────────────────────── */
+
+.mondes-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.mondes-meta-label {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #4a3800;
+    font-family: 'Cinzel', serif;
+}
+
+.mondes-meta-value {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    opacity: 0.85;
+    letter-spacing: 0.02em;
+}
+
+/* ─── Detail : 3-level blocks ────────────────────────────── */
+
+.mondes-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.mondes-detail-block {
+    padding: 10px 0 10px 16px;
+    border-left: 2px solid var(--accent);
+}
+
+.mondes-detail-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.mondes-detail-text {
+    color: #777;
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+/* Within-system level — slightly dimmer */
+.mondes-detail-systeme {
+    border-left-color: color-mix(in srgb, var(--accent) 50%, #1a1400);
+}
+
+.mondes-detail-systeme .mondes-detail-label {
+    color: color-mix(in srgb, var(--accent) 55%, #6a4e00);
+}
+
+/* Tradition level — most subdued */
+.mondes-detail-tradition {
+    border-left-color: #1a1400;
+}
+
+.mondes-detail-tradition .mondes-detail-label {
+    color: #3a2a00;
+}
+
+/* ─── Exemple (terminal-style block) ────────────────────── */
+
+.mondes-exemple {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #080808;
+    border: 1px solid #1a1400;
+    border-left: 3px solid var(--accent);
+    position: relative;
+}
+
+.mondes-exemple-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 8px 14px;
+    border-bottom: 1px solid #111;
+    background: #0a0a0a;
+}
+
+.mondes-exemple-tag {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 9px;
+    color: #4a3800;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mondes-exemple-monde {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.mondes-exemple-text {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 11px;
+    color: #888;
+    line-height: 1.6;
+    padding: 12px 14px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* terminal cursor blink on last exemple only */
+.mondes-section:last-of-type .mondes-exemple-text::after {
+    content: '_';
+    color: var(--accent);
+    animation: mondes-blink 1.2s step-end infinite;
+    opacity: 0.6;
+}
+
+@keyframes mondes-blink {
+    0%, 100% { opacity: 0.6; }
+    50%       { opacity: 0; }
+}
+
+/* ─── Narration (transition) ─────────────────────────────── */
+
+.mondes-narration {
+    color: #776a3a;
+    font-size: 11px;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 10px 16px;
+    border-left: 2px solid #1a1400;
+    font-style: italic;
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 700px) {
+    .mondes-fil-rouge {
+        padding: 14px 18px;
+    }
+
+    .mondes-fil-rouge-question {
+        font-size: 15px;
+    }
+
+    .mondes-section-nom {
+        font-size: 20px;
+    }
+
+    .mondes-section-hebreu {
+        font-size: 15px;
+    }
+
+    .mondes-card {
+        grid-template-columns: 90px 1fr;
+        gap: 0 14px;
+        padding: 14px;
+    }
+
+    .mondes-card-img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .mondes-manifestation {
+        font-size: 12px;
+    }
+
+    .mondes-meta-value {
+        font-size: 10px;
+    }
+
+    .mondes-detail-block {
+        padding: 8px 0 8px 12px;
+    }
+
+    .mondes-detail-text {
+        font-size: 10px;
+    }
+
+    .mondes-exemple-text {
+        font-size: 10px;
+        padding: 10px 12px;
+    }
+
+    .mondes-narration {
+        font-size: 10px;
+        padding: 8px 12px;
+    }
+
+    .mondes-intro-inner {
+        padding: 18px 16px;
+    }
+}

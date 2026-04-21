@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-thagirion" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#ffcc00" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="glow-thagirion" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg-thagirion)"/>
+  <rect x="1" y="1" width="510" height="510" fill="none"
+        stroke="#ffcc00" stroke-opacity="0.10" stroke-width="2"/>
+<g filter="url(#glow-thagirion)" opacity="0.40">
+  <!-- mask outline -->
+  <path d="M180,200 Q180,150 220,130 Q256,120 292,130 Q332,150 332,200
+           L332,300 Q332,350 292,370 Q256,380 220,370 Q180,350 180,300 Z"
+        fill="#ffcc00" fill-opacity="0.08" stroke="#ffcc00" stroke-width="2.5"/>
+  <!-- eye holes -->
+  <ellipse cx="220" cy="230" rx="22" ry="14" fill="#0a0a0a"
+           stroke="#ffcc00" stroke-width="1.5"/>
+  <ellipse cx="292" cy="230" rx="22" ry="14" fill="#0a0a0a"
+           stroke="#ffcc00" stroke-width="1.5"/>
+  <!-- serene smile -->
+  <path d="M228,310 Q256,330 284,310" fill="none"
+        stroke="#ffcc00" stroke-width="2"/>
+  <!-- nose line -->
+  <line x1="256" y1="250" x2="256" y2="290" stroke="#ffcc00"
+        stroke-width="1.5" stroke-opacity="0.5"/>
+  <!-- cracks revealing dark behind -->
+  <path d="M200,180 L210,240 L195,280" fill="none"
+        stroke="#222222" stroke-width="3" stroke-opacity="0.6"/>
+  <path d="M310,190 L305,250 L320,300" fill="none"
+        stroke="#222222" stroke-width="3" stroke-opacity="0.6"/>
+  <path d="M240,130 L250,170 L235,200" fill="none"
+        stroke="#222222" stroke-width="2" stroke-opacity="0.5"/>
+  <!-- chaos tendrils escaping from cracks -->
+  <path d="M195,280 Q170,320 140,360 Q120,390 130,420" fill="none"
+        stroke="#333333" stroke-width="1.5" stroke-opacity="0.4"/>
+  <path d="M320,300 Q340,330 370,350 Q390,380 380,420" fill="none"
+        stroke="#333333" stroke-width="1.5" stroke-opacity="0.4"/>
+</g>
+</svg>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Etz Chaim{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    {% block head_extra %}{% endblock %}
+</head>
+<body>
+    <nav class="tab-bar">
+        <a href="/" class="tab {% if active == 'home' %}tab-active{% endif %}">HOME</a>
+        <a href="/dashboard" class="tab {% if active == 'dashboard' %}tab-active{% endif %}">DASHBOARD</a>
+        <a href="/chat" class="tab {% if active == 'chat' %}tab-active{% endif %}">CHAT</a>
+        <a href="/explore" class="tab {% if active == 'explore' %}tab-active{% endif %}">EXPLORE</a>
+        <a href="/memory" class="tab {% if active == 'memory' %}tab-active{% endif %}">MEMORY</a>
+        <a href="/sifrei-yesod" class="tab {% if active == 'sifrei' %}tab-active{% endif %}">SIFREI</a>
+        <a href="/intentions" class="tab {% if active == 'intentions' %}tab-active{% endif %}">INTENTIONS</a>
+        <a href="/import" class="tab {% if active == 'import' %}tab-active{% endif %}">IMPORT</a>
+        <a href="/world" class="tab {% if active == 'world' %}tab-active{% endif %}">WORLD</a>
+        <a href="/systeme" class="tab {% if active == 'systeme' %}tab-active{% endif %}">SYSTEME</a>
+    </nav>
+    <div class="status-line" id="status-line">
+        ● Gardien │ -- │ Puissance:-- │ ✦--/288 │ Synergie:○ │ Questions:0 │ --:--
+    </div>
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+    <script>window.__ETZ_API_KEY = "{{ api_key }}";</script>
+    <script src="/static/app.js?v={{ cache_bust }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

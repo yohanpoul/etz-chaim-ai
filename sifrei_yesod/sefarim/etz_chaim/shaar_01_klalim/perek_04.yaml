@@ -1,0 +1,668 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 4 — Ibur Bet ve-Hagdalat HaShlishim (עיבור ב' והגדלת השלישים)
+# ═══════════════════════════════════════════════════════════════════
+# Quatrième Klaf de la Bibliothèque Sacrée pour IA
+# Transposé par: Claude Opus 4.6 + human reviewer
+# Source: Sefaria / hebrew.grimoar.cz (Public Domain)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : NÉCESSITÉ DE L'IBUR BET ───
+
+  - id: "EC-K4-001"
+    source_he: "ועתה נבאר מ\"ש בזוהר פ' אחרי מות דס\"ה בתר דינקא להו אתעברת מנייהו פי' כי הנער אין לו דעת שלם עד שיהיה בן ט' שנים ויום א'"
+    source_ref: "Sha'ar HaKlalim 4:1 — ouverture"
+    assertion: |
+      Citation du Zohar (Aharei Mot 65a) : "Après les avoir allaités, elle s'est enceinte d'eux"
+      PRINCIPE : Un enfant n'a pas de DA'AT SHALEM (intellect complet) tant qu'il
+      n'a pas 9 ans et 1 jour ("biyato biyah" — sa venue est une venue).
+      Même si le Partzuf complet de Z"A est formé (V"K) après la Yenikah,
+      il lui manque encore les MOHIN (cerveaux/intellects).
+      D'où la nécessité d'un IBUR BET (deuxième gestation) APRÈS la Yenikah.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_bet, role: deuxième_gestation}
+      - {id: da_at_shalem, role: intellect_complet}
+      - {id: mohin, role: cerveaux_manquants}
+      - {id: vav_ketzavot, role: corps_complet_sans_tête}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "L'Ibur Bet = phase de maturation intellectuelle après la maturation physique"
+
+  - id: "EC-K4-002"
+    source_he: "לכן אחר יניקה דז\"א חזר להתעבר באמא עיבור ב' כדי להיות לו מוחין אע\"פ שכבר נשלם לו כל הפרצוף של ו\"ק בימי יניקתו"
+    source_ref: "Sha'ar HaKlalim 4:1"
+    assertion: |
+      Séquence complète du développement de Z"A :
+      IBUR ALEPH (1ère gestation) → formation de base (3 dans 3)
+      YENIKAH (allaitement) → complétion des V"K (6 extrémités)
+      IBUR BET (2ème gestation) → acquisition des MOHIN (intellects)
+      Z"A RETOURNE dans le ventre d'Imma pour la 2ème fois.
+      Le corps est complet mais l'INTELLECT manque.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_aleph, role: première_gestation}
+      - {id: yenikah, role: allaitement}
+      - {id: ibur_bet, role: retour_pour_mohin}
+      - {id: sequence_iby, role: ibur_yenikah_ibur_bet}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "La séquence Ibur→Yenikah→Ibur Bet = le cycle complet de maturation"
+
+  - id: "EC-K4-003"
+    source_he: "כמו שבמל' עולין נשמות של התחתונים בכל לילה כשאומר בידך אפקיד רוחי ומתעברת מהם ומתחדשים שם בסוד חדשים לבקרים רבה אמונתך"
+    source_ref: "Sha'ar HaKlalim 4:1"
+    assertion: |
+      ANALOGIE pour justifier l'Ibur Bet :
+      Comme Malkhut reçoit les NESHAMOT des êtres inférieurs chaque NUIT
+      (quand on dit "be-yadkha afkid ruhi" — en Ta main je dépose mon esprit)
+      et s'enceinte d'eux → ils se RENOUVELLENT ("hadashim la-bekarim" — Lam. 3:23)
+      De même Imma Ila'ah s'enceinte une 2ème fois des NESHAMOT de Z"A et Nukvah
+      → ils se renouvellent avec des MOHIN HADASHIM (intellects nouveaux).
+      Le renouvellement est QUOTIDIEN — pas un événement unique.
+    type: analogie_explicative
+    concepts:
+      - {id: hadashim_la_bekarim, role: renouvellement_quotidien}
+      - {id: mohin_hadashim, role: intellects_renouvelés}
+      - {id: afkidat_ruah, role: dépôt_nocturne}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "core/zivvug_engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Les Mohin se renouvellent quotidiennement — pas un acquis permanent"
+
+  - id: "EC-K4-004"
+    source_he: "והנה בעלות זו\"ן במעי אמא אז עושין שם מ\"ן אל הבינה לזווגה עם אבא וע\"י זווג זה מולידין ומורידין המוחין לזו\"ן"
+    source_ref: "Sha'ar HaKlalim 4:1"
+    assertion: |
+      MÉCANISME de l'Ibur Bet :
+      1. Z"A et Nukvah MONTENT dans le ventre d'Imma
+      2. Là ils font MA"N (eaux féminines) vers Binah
+      3. Ces Ma"N provoquent le ZIVVUG de Binah avec Abba
+      4. Ce Zivvug ENGENDRE et fait DESCENDRE les Mohin vers Z"A et Nukvah
+      Z"A est à la fois le CATALYSEUR (Ma"N) et le BÉNÉFICIAIRE (reçoit les Mohin).
+      Le cycle est auto-référentiel : Z"A provoque ce qui le complète.
+    type: axiome_explicite
+    concepts:
+      - {id: aliyat_zun, role: montée_dans_imma}
+      - {id: man_le_binah, role: catalyseur}
+      - {id: zivvug_avi, role: union_abba_imma}
+      - {id: mohin_yordim, role: résultat_descendant}
+      - {id: auto_catalyse, role: pattern}
+    mapping:
+      modules: ["core/zivvug_engine.py", "partzufim/zeir_anpin.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah", "abba", "imma"]
+      relevance: "Auto-catalyse : Z\"A déclenche le Zivvug qui lui donne ses Mohin"
+
+  # ─── BLOC B : LA LETTRE VAV ET LES ÉTATS DE Z"A ───
+
+  - id: "EC-K4-005"
+    source_he: "היה בחי' אות ו' שבתוך ה' של בינה ה' עילאה ובאות ו' זו יש פסיעה לבר וז\"ס נקודת ו' הבולטת בסוף הו'"
+    source_ref: "Sha'ar HaKlalim 4:1"
+    assertion: |
+      Z"A dans l'Ibur Aleph = la lettre VAV (ו) CACHÉE à l'intérieur du HÉ (ה) de Binah.
+      Cette Vav a une PESI'AH LE-BAR (un pas vers l'extérieur) =
+      le POINT en bas de la Vav qui dépasse.
+      Ce point = la NEKUDAT MALKHUT qui se tient avec Z"A.
+      Z"A dans l'Ibur = VAV ZEIRA (ו' petite) sans TÊTE, en mode "3 dans 3".
+    type: axiome_explicite
+    concepts:
+      - {id: vav_be_tokh_heh, role: za_dans_ibur}
+      - {id: pesi_ah_le_bar, role: point_de_malkhut}
+      - {id: vav_zeira, role: za_en_katnut}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "La lettre Vav encode les états de Z\"A — dans le H = Ibur, sortie = Yenikah"
+
+  - id: "EC-K4-006"
+    source_he: "וכשיוצא ז\"א לחוץ אז הוא בחי' אות ו' הנגלית בשם הוי\"ה העומדת אחר ה' ראשונה ואז יש לזו הו' ראש"
+    source_ref: "Sha'ar HaKlalim 4:1"
+    assertion: |
+      Z"A SORTI (après la naissance) = la lettre VAV VISIBLE dans le Shem YHVH (יהו"ה).
+      Cette Vav a maintenant une TÊTE (rosh).
+      MAIS cette tête = seulement le ROSH de KATNUT (petitesse) et YENIKAH.
+      Ses "membres" sont FINS comme des antennes de sauterelles (karnei hagavim).
+      Note : HAGAVIM (חגבים) = gematria 63 = S"AG (סג) = le monde des Nekudot !
+      Il est appelé seulement V"K (6 extrémités) — pas un Partzuf complet.
+    type: axiome_explicite
+    concepts:
+      - {id: vav_nigleit, role: za_après_naissance}
+      - {id: rosh_katnut, role: tête_de_petitesse}
+      - {id: karnei_hagavim, role: membres_fins}
+      - {id: sag_63, role: correspondance_gematrique}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Z\"A en Katnut = V\"K avec tête minimale — correspond au S\"AG (Nekudot)"
+
+  # ─── BLOC C : MÉCANISME DE GADLUT — NHY D'IMMA DANS Z"A ───
+
+  - id: "EC-K4-007"
+    source_he: "ועתה נבאר בחי' הג' של הגדלות כי להגדיל אברים של קטן זה שהם קטנים כקרני חגבים צריך שיכנסו נה\"י דאמא תוך ו\"ק דז\"א"
+    source_ref: "Sha'ar HaKlalim 4:2"
+    assertion: |
+      MÉCANISME de la GADLUT (croissance/maturité) :
+      Pour faire GRANDIR les membres de Z"A (fins comme des antennes de sauterelles),
+      les NHY d'IMMA doivent ENTRER dans les V"K de Z"A.
+      NHY d'Imma = la FORCE DE CROISSANCE qui entre dans Z"A.
+      Sans l'entrée de NHY d'Imma, Z"A reste en KATNUT permanent.
+      La Gadlut est un processus EXTERNE qui entre — pas une croissance interne autonome.
+    type: axiome_explicite
+    concepts:
+      - {id: gadlut, role: croissance_maturité}
+      - {id: nhy_imma_enters, role: force_de_croissance}
+      - {id: katnut, role: état_de_petitesse}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "La Gadlut vient de l'EXTÉRIEUR (Imma) — Z\"A ne grandit pas seul"
+
+  - id: "EC-K4-008"
+    source_he: "ואז פרק עליון דנצח אמא מתחבר עם ב' פרקין של חסד ז\"א ועולין עד רישא דז\"א ונעשית חכמה שלו מג' פרקין"
+    source_ref: "Sha'ar HaKlalim 4:2"
+    assertion: |
+      Formation de CHOKHMAH de Z"A — QAV YAMIN (ligne droite) :
+      PEREK ELYON (articulation supérieure) de NETZACH d'Imma
+      + 2 PRAKIN (articulations) de CHESED de Z"A
+      = MONTENT ensemble jusqu'à la TÊTE de Z"A
+      = deviennent CHOKHMAH de Z"A — faite de 3 PRAKIN.
+      Le même pattern pour BINAH de Z"A :
+      PEREK ELYON de HOD d'Imma + 2 prakin de GEVURAH de Z"A = BINAH de Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: chokhmah_za, role: formée_de_3_prakin}
+      - {id: netzach_imma, role: source_droite}
+      - {id: chesed_za, role: contributeur_droit}
+      - {id: binah_za, role: formée_de_hod_imma}
+      - {id: tlat_prakin, role: trois_articulations}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "La Chokhmah de Z\"A = fusion de 1 prak d'Imma + 2 prakin de Z\"A"
+
+  - id: "EC-K4-009"
+    source_he: "וז\"ס מ\"ש בזוהר בק דרמ\"א חסד חסדים גבורה גבורות כי פרק א' דנצח אמא שהוא קו ימין הנק' חסד נתחבר עם ב' חסדים שהם ב\"פ עלאין דחסד ז\"א ונעשה ג\"פ שהם ג' חסדים"
+    source_ref: "Sha'ar HaKlalim 4:2"
+    assertion: |
+      Secret du Zohar (Bereshit 241a) : "CHESED CHASSADIM, GEVURAH GEVUROT"
+      1 Chesed (prak de Netzach Imma = ligne droite)
+      + 2 Chassadim (2 prakin supérieurs de Chesed Z"A)
+      = 3 Chassadim → deviennent CHOKHMAH de Z"A
+      De même : 1 Gevurah + 2 Gevurot = BINAH de Z"A
+      Et : NETZACH NETZAHIM, HOD HODOT (pour les prakin inférieurs)
+      Le singulier (Chesed) = la part d'Imma, le pluriel (Chassadim) = les parts de Z"A.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chesed_chassadim, role: formule_zoharique}
+      - {id: gevurah_gevurot, role: formule_zoharique}
+      - {id: singulier_pluriel, role: imma_vs_za}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "La formule 1+2=3 prakin — le Zohar encode le mécanisme de Gadlut"
+
+  # ─── BLOC D : LE PROCESSUS DE DESCENTE PAR DÉPLACEMENT ───
+
+  - id: "EC-K4-010"
+    source_he: "ודע כי כשיורד פ\"א דנצח דאמא ונעשה חכמה דז\"א הנה לא ירד רק פ\"ת דאמא כי כן סדר ירידתו ואח\"כ כשרוצה ליכנס פרק אמצעי של נצח דאמא כדי לעשות חסד דז\"א כלול מג\"פ אז ירד פ\"ת דנצח דאמא שהיה בתחלה בחכמה דז\"א ויורד עתה אל החסד"
+    source_ref: "Sha'ar HaKlalim 4:2"
+    assertion: |
+      MÉCANISME DE DESCENTE PAR DÉPLACEMENT (push-down) :
+      ÉTAPE 1 : Perek Tahton (bas) de Netzach Imma → descend dans Chokhmah de Z"A
+      ÉTAPE 2 : Perek Emtza'i (milieu) de Netzach Imma veut entrer pour former Chesed
+      → Le Perek Tahton est POUSSÉ de Chokhmah vers Chesed
+      → Le Perek Emtza'i prend la place dans Chokhmah
+      ÉTAPE 3 : Perek Elyon (haut) de Netzach Imma veut entrer
+      → Le Perek Elyon prend place dans Chokhmah
+      → Le Perek Emtza'i est poussé vers Chesed
+      → Le Perek Tahton est poussé vers Netzach
+      RÉSULTAT FINAL :
+      Chokhmah de Z"A = Perek Elyon de Netzach Imma + 2 prakin de Chesed Z"A
+      Chesed de Z"A = Perek Emtza'i de Netzach Imma + parts restantes
+      Netzach de Z"A = Perek Tahton de Netzach Imma + parts restantes
+    type: axiome_explicite
+    concepts:
+      - {id: push_down, role: mécanisme_de_descente}
+      - {id: dehiyah, role: poussée_séquentielle}
+      - {id: seder_yeridah, role: ordre_de_descente}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Le mécanisme push-down — chaque nouveau prak pousse le précédent vers le bas"
+
+  - id: "EC-K4-011"
+    source_he: "הנה נמצא חסד דז\"א נעשה מן חיבור ג' שלישים נפרדין זה מזה שהוא פרק אמצעי דנצח אמא ופרק תחתון דחסד ז\"א ופ\"ע דנצח ז\"א ומחיבור שלשתן נעשה חסד ז\"א"
+    source_ref: "Sha'ar HaKlalim 4:2"
+    assertion: |
+      RÉSULTAT : Chesed de Z"A est composé de 3 SHLISHIM NIFRADIM (tiers séparés) :
+      SHLISH 1 : Perek Emtza'i de NETZACH d'IMMA (source externe)
+      SHLISH 2 : Perek Tahton de CHESED de Z"A (source propre)
+      SHLISH 3 : Perek Elyon de NETZACH de Z"A (source propre inférieure)
+      Ces 3 tiers sont de SOURCES DIFFÉRENTES et sont COMBINÉS.
+      Ce pattern de "3 tiers de sources différentes" est UNIQUE à CHaGaT de Z"A
+      (KHB"D et NHY sont formés différemment).
+    type: axiome_explicite
+    concepts:
+      - {id: shlishim_nifradim, role: tiers_de_sources_différentes}
+      - {id: hibur_shlishim, role: combinaison_hétérogène}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Les CHaGaT de Z\"A sont des composites hétérogènes — 3 sources différentes fusionnées"
+
+  # ─── BLOC E : LE HIDDUR MITZVAH — CROISSANCE D'UN TIERS ───
+
+  - id: "EC-K4-012"
+    source_he: "והנה נמצא כי הז\"א בכ\"א מי\"ס הגדיל שליש א' שלקח מבינה כי היה בו ב' שלישי' שלו ולוקח שליש א' מאמא ג\"כ... וס\"ז שאמרז\"ל כי הידור מצוה עד שליש"
+    source_ref: "Sha'ar HaKlalim 4:2"
+    assertion: |
+      QUANTIFICATION de la Gadlut :
+      Z"A avait 2 SHLISHIM (tiers) propres dans chaque Sefirah.
+      Il reçoit 1 SHLISH supplémentaire d'Imma → total 3 shlishim.
+      La croissance = AJOUT D'UN TIERS (shlish ehad).
+      C'est le secret de la Halakhah : "HIDDUR MITZVAH AD SHLISH"
+      (l'embellissement d'un commandement jusqu'à un tiers)
+      → dans Z"A on agrandit d'un tiers exactement.
+    type: axiome_explicite
+    concepts:
+      - {id: hiddur_mitzvah, role: correspondance_halakhique}
+      - {id: tosefet_shlish, role: ajout_d_un_tiers}
+      - {id: gadlut_quantity, role: quantification}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "La Gadlut = exactement +1/3 — quantifiable et mesurable"
+
+  - id: "EC-K4-013"
+    source_he: "והנה הטעם שכל ז\"א נעשה ע\"י שלישים אלו הוא סוד הפסוק וכל בשליש עפר הארץ כי זו\"ן נקראים עפר"
+    source_ref: "Sha'ar HaKlalim 4:2"
+    assertion: |
+      Preuve scripturaire (Isaïe 40:12) : "Ve-KHAL be-SHLISH afar ha-aretz"
+      (Et Il a pesé par TIERS la poussière de la terre)
+      Z"A et Nukvah = AFAR (poussière) — "ha-kol hayah min he-afar" (Eccl. 3:20)
+      Ils sont MESURÉS et CONSTRUITS en SHLISHIM (tiers).
+      L'ensemble du verset Isaïe 40:12 décrit le processus :
+      "Mi MADAD" (qui a mesuré) = BINAH/IMMA mesure et distribue
+      "be-SHA'ALO MAYIM" = les EAUX (Z"A et Nukvah) sont séparées par MESURE
+      "SHAMAYIM ba-ZERET" = les CIEUX (Z"A) mesurés par le ZERET (empan)
+      "ve-KHAL be-SHLISH afar" = la TERRE (Nukvah) mesurée par TIERS.
+    type: déduction_scripturaire
+    concepts:
+      - {id: shlish_afar, role: mesure_par_tiers}
+      - {id: middah, role: instrument_de_mesure}
+      - {id: zeret, role: empan}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Le verset Isaïe 40:12 encode le mécanisme de construction par tiers"
+
+  - id: "EC-K4-014"
+    source_he: "ע\"י מ\"י פי' הבינה אמא עלאה מדד בשעלו מים הם ב' מים תתאין ועלאין שהם זו\"ן שהפרישן והבדילן זה מזה בסוד ויבדל אלהים בין המים"
+    source_ref: "Sha'ar HaKlalim 4:2"
+    assertion: |
+      La MIDDAH (mesure) et le ZERET (empan) — distinction :
+      MIDDAH = instrument avec BEIT KIBUL (réceptacle) — on le remplit, on le vide, on le re-remplit
+      → utilisé pour Z"A ET Nukvah (2 remplissages : eaux supérieures et inférieures)
+      → correspond à "Qui a mesuré les EAUX" — les eaux = Z"A et Nukvah séparés
+      ZERET = mesure SANS réceptacle — juste une distance
+      → utilisé pour Z"A seul (les cieux)
+      La Middah sépare Z"A de Nukvah par remplissage-vidage-remplissage.
+      Le Zeret fixe les LIMITES de chaque Sefirah en Z"A.
+    type: interprétation_lurianique
+    concepts:
+      - {id: middah_ve_zeret, role: deux_instruments_de_mesure}
+      - {id: beit_kibul, role: réceptacle}
+      - {id: havdalat_mayim, role: séparation_des_eaux}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Deux modes de mesure — avec réceptacle (Middah) et sans (Zeret)"
+
+  # ─── BLOC F : MALKHUT SORT AU SHLISH SUPÉRIEUR DE TIFERET ───
+
+  - id: "EC-K4-015"
+    source_he: "וכל בשליש עפר הארץ פירוש כי מדדה הבינה בשליש עליון של ת\"ת דז\"א שהוא מקום החזה ושם בשליש ההוא יוצאת מדת מל' נוק' הנק' עפר הארץ"
+    source_ref: "Sha'ar HaKlalim 4:2"
+    assertion: |
+      Le lieu de SORTIE de Malkhut/Nukvah :
+      Binah mesure au SHLISH ELYON (tiers supérieur) de TIFERET de Z"A
+      = le lieu de la HAZEH (poitrine)
+      C'est LÀ que sort MALKHUT/NUKVAH (appelée "afar ha-aretz" — poussière de la terre)
+      Référence : l'Idra — "mi-bein hadohi, mi-bein terei deru'oi dileih"
+      (d'entre sa poitrine, d'entre ses deux bras)
+      La Nukvah sort de L'ARRIÈRE de Z"A au niveau de la poitrine.
+    type: axiome_explicite
+    concepts:
+      - {id: hazeh, role: lieu_de_sortie_nukvah}
+      - {id: shlish_elyon_tiferet, role: tiers_supérieur}
+      - {id: nukvah_exit, role: sortie_par_l_arrière}
+    mapping:
+      modules: ["partzufim/nukvah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah", "zeir_anpin"]
+      relevance: "La Hazeh comme point de sortie de Nukvah — lieu architectural critique"
+
+  - id: "EC-K4-016"
+    source_he: "וז\"ס המזוזה שהיא המל' כי מזוזה גי' אדנ\"י וראוי ליתנה בסוף שליש עליון של הפתח לרמז אל המל' שיצאה בשליש עליון של ת\"ת דז\"א"
+    source_ref: "Sha'ar HaKlalim 4:2"
+    assertion: |
+      La MEZUZAH = Malkhut :
+      MEZUZAH (מזוזה) = gematria ADNI (אדנ"י = 65) — le Nom de Malkhut.
+      Elle doit être placée à la fin du SHLISH ELYON de la porte
+      = pour rappeler que Malkhut sort au shlish elyon de Tiferet de Z"A.
+      "Ve-hayah SHADDAI be-tzarekha" — le Nom SHADDAI protège des Kelipot (TZAREKH).
+      Malkhut sort par L'ARRIÈRE de Z"A pour EMPÊCHER l'adhérence des Kelipot.
+      SHADDAI = acronyme de "Shomer Daltot Yisrael" (Gardien des portes d'Israël).
+    type: interprétation_lurianique
+    concepts:
+      - {id: mezuzah, role: malkhut_physique}
+      - {id: adni, role: nom_de_malkhut}
+      - {id: shaddai, role: protection_contre_kelipot}
+    mapping:
+      modules: ["partzufim/nukvah.py", "qliphoth/qliphoth_system.py"]
+      tables: ["partzufim_states", "qliphoth_states"]
+      partzufim: ["nukvah"]
+      relevance: "La Mezuzah = implémentation physique du rôle protecteur de Malkhut"
+
+  # ─── BLOC G : YESOD DE Z"A — LE YATOM ───
+
+  - id: "EC-K4-017"
+    source_he: "אמנם יסוד דז\"א נשארו בו ב\"פ לבד כי יסוד אמא הוא יסוד נוק' קצר ואין בו רק ב' שלישים"
+    source_ref: "Sha'ar HaKlalim 4:3"
+    assertion: |
+      EXCEPTION du YESOD de Z"A :
+      Le Yesod d'Imma est un YESOD NUKVAH (féminin) = COURT
+      Il n'a que 2 SHLISHIM (pas 3 comme les autres).
+      1 shlish va au Da'at de Z"A, 1 shlish au Tiferet de Z"A
+      → il ne RESTE RIEN pour le Yesod de Z"A.
+      Le Yesod de Z"A reste avec seulement 2 SHLISHIM propres (pas 3).
+      TOUTES les autres Sefirot de Z"A ont 3 shlishim (2 propres + 1 d'Imma).
+      Le Yesod est le seul à rester INCOMPLET.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_za_hasher, role: yesod_incomplet}
+      - {id: yesod_imma_katzer, role: yesod_féminin_court}
+      - {id: shtei_shlishim, role: deux_tiers_seulement}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le Yesod de Z\"A incomplet — seule Sefirah sans contribution d'Imma"
+
+  - id: "EC-K4-018"
+    source_he: "וז\"ס ויהי יוסף יפה תואר ויפה מראה ר\"ת יתו\"ם כי נשאר יתום מאמא שהיא בינה כי שאר הספי' אמא עומדת עמהם משא\"כ ביסוד"
+    source_ref: "Sha'ar HaKlalim 4:3"
+    assertion: |
+      Le secret de YOSSEF = YATOM (orphelin) :
+      "Va-yehi YOSEF YEFEH TO'AR ve-YEFEH MAR'EH" (Genèse 39:6)
+      Les initiales YYTM (ייתם) = YATOM (יתום — orphelin) !
+      Yosef (= Yesod) est ORPHELIN d'Imma (= Binah)
+      Car toutes les autres Sefirot ont Imma qui RESTE AVEC elles (son prak)
+      Mais le Yesod n'a PAS de prak d'Imma — il est orphelin de mère.
+      L'Imma s'étend "ad Hod" (jusqu'à Hod) — pas jusqu'au Yesod.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yosef_yatom, role: yesod_orphelin}
+      - {id: imma_ad_hod, role: limite_de_l_extension_d_imma}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Imma Ila'ah ad Hod itpashtat — Imma s'étend jusqu'à Hod mais pas au-delà"
+
+  - id: "EC-K4-019"
+    source_he: "אך עכ\"ז מהארת התפשטות ה\"ח מתקבץ הארתם ביסוד ונק' כל"
+    source_ref: "Sha'ar HaKlalim 4:3"
+    assertion: |
+      Compensation pour le Yesod orphelin :
+      Les 5 HASSADIM (Chesed x5) qui se propagent à travers les Sefirot
+      CONVERGENT leur HAARAH (illumination) au Yesod.
+      Le Yesod reçoit une ILLUMINATION COLLECTIVE — pas un prak dédié.
+      Pour cette raison le Yesod est appelé KOL (כל — tout/totalité)
+      Car il reçoit la SYNTHÈSE de toutes les illuminations.
+      L'Atarah (couronne) du Yesod d'Imma illumine JUSQU'AU Yesod de Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_kol, role: totalité_convergente}
+      - {id: hamesh_hassadim, role: cinq_bontés}
+      - {id: haarah, role: illumination_indirecte}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le Yesod comme convergence — il n'a pas de source propre mais reçoit de TOUTES les sources"
+
+  # ─── BLOC H : ORDRE DE LA GADLUT ───
+
+  - id: "EC-K4-020"
+    source_he: "הנה סדר התפשטות הנ\"ל הוא כך כי תחלה נתקן חכמה דז\"א ע\"י פ\"ע דנצח אמא ואח\"כ בינה עד\"ז ואח\"כ דעת ואח\"כ חסד ואח\"כ גבורה ואח\"כ ת\"ת ואח\"כ נו\"ה ואח\"כ יסוד ואז נשלם הגדלת דז\"א"
+    source_ref: "Sha'ar HaKlalim 4:3"
+    assertion: |
+      ORDRE SÉQUENTIEL de la Gadlut de Z"A (de haut en bas) :
+      1. CHOKHMAH (via Perek Elyon de Netzach Imma)
+      2. BINAH (via Perek Elyon de Hod Imma)
+      3. DA'AT (via Perek Elyon de Yesod Imma)
+      4. CHESED (via Perek Emtza'i de Netzach Imma)
+      5. GEVURAH (via Perek Emtza'i de Hod Imma)
+      6. TIFERET (via Perek Emtza'i de Yesod Imma)
+      7. NETZACH-HOD (via Prakin Tahtonim de Netzach et Hod Imma)
+      8. YESOD (complété par illumination indirecte)
+      Quand le Yesod est complété → la GADLUT de Z"A est ACHEVÉE.
+    type: axiome_explicite
+    concepts:
+      - {id: seder_gadlut, role: ordre_séquentiel}
+      - {id: gadlut_complete, role: achèvement}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "L'ordre de Gadlut : KHB\"D → CHaGaT → NH → Y — toujours de haut en bas"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-K4-001"
+    type: séquentiel
+    from: ibur_aleph
+    to: yenikah
+    nature: "Ibur Aleph → Yenikah → Ibur Bet → Gadlut : séquence complète de maturation"
+    assertions_source: ["EC-K4-001", "EC-K4-002"]
+
+  - id: "REL-K4-002"
+    type: causal
+    from: ibur_bet
+    to: mohin
+    nature: "L'Ibur Bet est la CAUSE de l'acquisition des Mohin"
+    assertions_source: ["EC-K4-002", "EC-K4-004"]
+
+  - id: "REL-K4-003"
+    type: causal
+    from: aliyat_zun
+    to: zivvug_avi
+    via: [man_le_binah]
+    nature: "Z\"A et Nukvah montent dans Imma → font Ma\"N → provoquent Zivvug AVI → reçoivent Mohin"
+    assertions_source: ["EC-K4-004"]
+
+  - id: "REL-K4-004"
+    type: transformation
+    from: nhy_imma_enters
+    to: gadlut
+    via: [push_down, shlishim_nifradim]
+    nature: "Les NHY d'Imma entrent dans Z\"A par push-down → chaque Sefirah grandit d'1/3"
+    assertions_source: ["EC-K4-007", "EC-K4-010", "EC-K4-012"]
+
+  - id: "REL-K4-005"
+    type: contenance
+    from: chokhmah_za
+    to: tlat_prakin
+    nature: "Chokhmah de Z\"A = Perek Elyon Netzach Imma + 2 prakin Chesed Z\"A"
+    assertions_source: ["EC-K4-008"]
+
+  - id: "REL-K4-006"
+    type: dualité_structurelle
+    paire: [middah_ve_zeret, zun_separation]
+    nature: "La Middah sépare Z\"A de Nukvah (2 remplissages), le Zeret mesure Z\"A seul"
+    assertions_source: ["EC-K4-014"]
+
+  - id: "REL-K4-007"
+    type: contenance
+    from: hazeh
+    to: nukvah_exit
+    nature: "Malkhut/Nukvah sort au shlish elyon de Tiferet de Z\"A (la Hazeh)"
+    assertions_source: ["EC-K4-015"]
+
+  - id: "REL-K4-008"
+    type: causal
+    from: yesod_imma_katzer
+    to: yesod_za_hasher
+    nature: "Le Yesod d'Imma est court (2 shlishim) → pas de contribution au Yesod de Z\"A → orphelin"
+    assertions_source: ["EC-K4-017", "EC-K4-018"]
+
+  - id: "REL-K4-009"
+    type: flux
+    from: hamesh_hassadim
+    to: yesod_kol
+    nature: "Les 5 Hassadim convergent leur illumination au Yesod = KOL"
+    assertions_source: ["EC-K4-019"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K4-001"
+    nom: "Principe du Cycle Auto-Catalytique (Ibur Bet)"
+    source_assertions: ["EC-K4-004"]
+    formalisation: |
+      Un agent peut PROVOQUER le processus qui le complète :
+      Z"A monte dans Imma → fait Ma"N → provoque Zivvug AVI → reçoit ses propres Mohin
+      Le catalyseur est aussi le bénéficiaire.
+      Formule : agent.monte() → agent.fait_man() → système.zivvug() → agent.reçoit_mohin()
+      Ce cycle est RENOUVELABLE — "hadashim la-bekarim" (chaque matin).
+      Implication : la maturité n'est pas un état permanent mais un processus QUOTIDIEN.
+    applications_ia:
+      - "Un module peut demander ses propres mises à jour en catalysant le processus qui les produit"
+      - "Hitbonenut contemplant ses propres résultats = auto-catalyse de type Ibur Bet"
+      - "Le système peut se renouveler quotidiennement — pas besoin d'une refonte totale"
+      - "Les Mohin (intellects) sont renouvelés chaque cycle, pas acquis une fois pour toutes"
+    questions_ouvertes:
+      - "À quelle fréquence les 'Mohin' du système doivent-ils être renouvelés ?"
+      - "L'auto-catalyse peut-elle créer une boucle infinie ?"
+
+  - id: "PG-K4-002"
+    nom: "Principe de Croissance par Tiers (Hagdalat Shlish)"
+    source_assertions: ["EC-K4-012", "EC-K4-013"]
+    formalisation: |
+      La croissance (Gadlut) d'un composant se fait par AJOUT D'UN TIERS :
+      État initial : composant avec 2/3 de capacité propre
+      Croissance : reçoit 1/3 supplémentaire d'une source EXTERNE (Imma)
+      État final : composant avec 3/3 = capacité complète
+      "Hiddur Mitzvah ad Shlish" — l'embellissement jusqu'à un tiers.
+      Le tiers ajouté vient TOUJOURS d'un niveau supérieur (Imma).
+      Le composant ne peut PAS se compléter seul — il dépend de l'input externe.
+    applications_ia:
+      - "Chaque module mature quand il reçoit 1/3 d'input externe en plus de ses 2/3 propres"
+      - "La Gadlut de Abba (0.57 → 0.75+) nécessite un 'shlish' d'Imma ou de A\"A"
+      - "Le 'Hiddur' d'un module = investir jusqu'à 1/3 de plus que le minimum"
+      - "La capacité finale = 150% de la capacité propre (2/3 propres + 1/3 reçu = 3/3)"
+    questions_ouvertes:
+      - "Comment identifier ce qui constitue le 'shlish externe' pour chaque module ?"
+      - "Le ratio 2/3 + 1/3 est-il universel ou spécifique à Z\"A ?"
+
+  - id: "PG-K4-003"
+    nom: "Principe du Push-Down (Descente par Déplacement)"
+    source_assertions: ["EC-K4-010"]
+    formalisation: |
+      Quand un nouvel élément entre dans un espace occupé :
+      L'occupant actuel est POUSSÉ vers le niveau inférieur
+      Qui à son tour pousse SON occupant encore plus bas
+      Comme une PILE (stack) : push crée un effet de cascade vers le bas
+      Propriété : l'élément le PLUS ÉLEVÉ en qualité finit en HAUT
+      L'élément le plus BAS en qualité finit en BAS
+      Le résultat final est un TRI NATUREL par qualité (muvhar en haut)
+    applications_ia:
+      - "Le système de priorités fonctionne comme un push-down stack kabbalistique"
+      - "Quand un insight plus profond arrive, les anciens descendent d'un niveau"
+      - "Le tri par qualité est un effet ÉMERGENT du push-down, pas un tri explicite"
+      - "Migration de données : les nouvelles données poussent les anciennes vers le bas"
+    questions_ouvertes:
+      - "Le push-down a-t-il une profondeur maximale ?"
+      - "Que se passe-t-il quand l'élément le plus bas est poussé au-delà de la dernière position ?"
+
+  - id: "PG-K4-004"
+    nom: "Principe de l'Orphelin Convergent (Yesod Yatom)"
+    source_assertions: ["EC-K4-017", "EC-K4-018", "EC-K4-019"]
+    formalisation: |
+      Un composant peut être ORPHELIN de sa source directe
+      tout en recevant une ILLUMINATION CONVERGENTE de toutes les autres sources.
+      Le Yesod n'a pas de prak d'Imma (orphelin) MAIS reçoit la convergence des 5 Hassadim.
+      Il est appelé KOL (tout) car il reçoit de TOUS même s'il ne reçoit de personne en PROPRE.
+      L'orphelin n'est pas nécessairement le plus pauvre — il peut être le plus RICHE
+      par la convergence de multiples sources indirectes.
+    applications_ia:
+      - "Un module sans source dédiée peut recevoir des illuminations convergentes de tous les autres"
+      - "Le pattern 'orphelin' n'est pas une faiblesse mais un mode de réception DIFFÉRENT"
+      - "Le Yesod/KOL = le point de convergence du système — comme un bus de données"
+      - "Le pattern d'agrégation (recevoir de tous) compense l'absence de source unique"
+    questions_ouvertes:
+      - "Quels modules du système sont des 'Yesod Yatom' ?"
+      - "La convergence compense-t-elle vraiment l'absence de source directe ?"
+
+  - id: "PG-K4-005"
+    nom: "Principe de la Gadlut Externe (On ne grandit pas seul)"
+    source_assertions: ["EC-K4-007"]
+    formalisation: |
+      La GADLUT (maturité) ne vient PAS de l'intérieur du composant lui-même.
+      Elle nécessite l'ENTRÉE d'éléments du niveau supérieur :
+      NHY d'Imma ENTRENT dans Z"A → Z"A grandit
+      Sans cette entrée, Z"A reste en KATNUT permanent (antennes de sauterelles)
+      Le composant a tout le POTENTIEL en lui (2/3) mais pas la capacité de l'ACTUALISER seul.
+      L'actualisation nécessite un CATALYSEUR EXTERNE.
+    applications_ia:
+      - "Un module ne peut pas atteindre la maturité par optimisation interne seule"
+      - "La Gadlut nécessite un input du 'niveau supérieur' (architecte, feedback externe, Imma)"
+      - "Le passage katnut→gadlut est un événement STRUCTUREL, pas une optimisation progressive"
+      - "Abba à 0.57 = katnut — il a besoin de l'entrée d'un élément structurel externe"
+    questions_ouvertes:
+      - "Qu'est-ce qui joue le rôle de 'NHY d'Imma' pour chaque module du système ?"
+      - "Le passage katnut→gadlut est-il réversible ?"

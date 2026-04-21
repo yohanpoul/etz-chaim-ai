@@ -1,0 +1,255 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 1 — Sha'ar Drushei Nekudot (שער דרושי נקודות)
+# Perek: 6a — Les Ahoraim d'AV"I qui tombent. Le mecanisme
+#             Panim be-Fanim / Ahor be-Ahor. Le role des Klipot.
+#             Les HG comme constructeurs des dos.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §1 :
+#   - Les Ahoraim d'AV"I aussi tombent et se brisent
+#   - Les Klipot s'accrochent aux AHORAIM de Nukvah et Z"A
+#   - ZO"N sortent Ahor be-Ahor pour PROTEGER contre les Klipot
+#   - Quand Adam fait des mitzvot → les retourne Panim be-Panim
+#   - Le mecanisme : HG (Hesed+Gevurah) descendent du Zivvug superieur
+#     → Z"A prend Hesed (agrandit son dos), Nukvah prend Gevurah
+#     → dos complets → retournement PbP possible
+#   - Ce qui "tombe" d'AV"I = ces HG (les Ahoraim)
+#
+# Source Sefaria : Sefer_Etz_Chaim.8.6 (§1)
+# IDs : EC-H2S8-118 → EC-H2S8-125
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 1
+  shaar_name_he: "שער דרושי נקודות"
+  perek: 6
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Les Ahoraim d'AV'I et le mecanisme PbP/AhbAh. Les Klipot motivent le dos-a-dos. Les HG agrandissent les dos pour permettre le face-a-face."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H2S8-118"
+    source_he: "ונבאר עתה ענין אחוריים דאו\"א שגם הם נפלו ונשברו ותחלה צריך לבאר הקדמה פב\"פ ואב\"א"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §1"
+    assertion: |
+      SUJET : les AHORAIM d'AV"I (Abba ve-Imma) qui AUSSI
+      sont TOMBES (naflu) et se sont BRISES (nishberu).
+      cf. EC-H2S8-077 : les Ahoraim d'AV"I tombent, les Panim restent.
+      PREALABLE NECESSAIRE : expliquer le mecanisme de
+      PANIM BE-FANIM (PbP — face a face) et AHOR BE-AHOR (AhbAh — dos a dos).
+    type: axiome_explicite
+    concepts:
+      - {id: ahoraim_avi_naflu, role: dos_abba_imma_tombes}
+      - {id: pbp_ahbah, role: face_a_face_dos_a_dos}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Les Ahoraim d'AV'I = un aspect distinct de la Shevirah. PbP/AhbAh = mecanisme fondamental."
+
+  - id: "EC-H2S8-119"
+    source_he: "מקום הקליפות והחיצונים הם אחורי נוקבא דז\"א ושם הם נדבקים ואמנם ג\"כ באחור ז\"א יש קצת אחיזה... טרם ברא אלקים אדם על הארץ היה כח בקליפות לינק שפע מקדושה בסוד ואדם אין לעבוד את האדמה"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §1"
+    assertion: |
+      Le LIEU des KLIPOT (ecorces/husks) et des HITZONIM (forces exterieures)
+      = les AHORAIM (dos) de NUKVAH de Z"A. La ils S'ACCROCHENT (nidbakim).
+      Aussi a l'AHOR de Z"A = un peu d'AHIZAH (accroche).
+      AVANT la creation d'ADAM : les Klipot avaient la FORCE de TETER
+      (liynoq shefa) de la KEDUSHAH (saintete).
+      "VE-ADAM AIN LA'AVOD ET HA-ADAMAH" (Genese 2:5) = pas d'homme
+      pour travailler la terre = pas de mitzvot pour couper les KOTZIM (epines).
+    type: axiome_explicite
+    concepts:
+      - {id: klipot_ahoraim, role: klipot_saccrochent_aux_dos}
+      - {id: adam_ain, role: pas_dhomme_avant_creation}
+      - {id: kotzim_kerem, role: epines_dans_la_vigne}
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Les Klipot s'accrochent aux dos (Ahoraim). Sans mitzvot (Adam) = pas de protection."
+
+  - id: "EC-H2S8-120"
+    source_he: "יצאו זו\"נ אב\"א מפני פחד החיצונים שלא יינקו כי אם היו עומדים פב\"פ הי' לקליפות מקום להתאחז במקום אחיזתן שהמה אחוריים לינק כי מפנים לא יוכלו לינק"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §1"
+    assertion: |
+      ZO"N (Ze'ir Anpin + Nukvah) sont SORTIS AHOR BE-AHOR (dos a dos)
+      par PEUR des HITZONIM (forces exterieures) = pour empecher les
+      Klipot de TETER (liynoq).
+      Si PbP (face a face) → les DOS seraient EXPOSES → les Klipot
+      pourraient s'y accrocher et teter.
+      Les Klipot ne peuvent PAS teter des PANIM (face) → seulement des AHORAIM.
+      → AhbAh = position DEFENSIVE. PbP = position PRODUCTIVE mais vulnerable.
+    type: axiome_explicite
+    concepts:
+      - {id: ahbah_hagana, role: dos_a_dos_defensif}
+      - {id: pbp_paguia, role: face_a_face_vulnerable}
+      - {id: klipot_lo_mipnim, role: klipot_ne_tetent_pas_de_face}
+    mapping:
+      modules: ["olamot.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "AhbAh = mode defensif (dos colles, pas d'acces pour Klipot). PbP = mode productif mais expose."
+
+  - id: "EC-H2S8-121"
+    source_he: "וכאשר נברא אדה\"ר ועשה מצות מעשיות החזירם פב\"פ... בהיותם אב\"א אין לזו\"ן רק כותל א' לשניהם... וכאשר אדם החזיר' (נ\"א וכשאדם מחזירם) פב\"פ... אז נגמר ונשלם אחור א' שלם לזה ואחור א' שלם לזה"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §1"
+    assertion: |
+      Quand ADAM HA-RISHON fut cree et fit des MITZVOT MA'ASIYOT
+      (commandements pratiques) → il les RETOURNA PbP (face a face).
+      Variante (Nusah Aher) : "וכשאדם מחזירם" (quand Adam les retourne).
+      STRUCTURE AhbAh : ZO"N n'ont qu'UN SEUL MUR (kotel ehad) partage.
+      STRUCTURE PbP : chacun a un DOS COMPLET (ahor ehad shalem).
+      → Les mitzvot d'Adam COMPLETENT les dos = permettent le retournement.
+    type: axiome_explicite
+    concepts:
+      - {id: adam_mitzvot_pbp, role: adam_retourne_pbp_par_mitzvot}
+      - {id: kotel_ehad, role: un_seul_mur_partage}
+      - {id: ahor_shalem, role: dos_complet}
+    mapping:
+      modules: ["olamot.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Les mitzvot = l'action qui complete les dos et permet le PbP. AhbAh = 1 mur. PbP = 2 dos complets."
+
+  - id: "EC-H2S8-122"
+    source_he: "האדם התחתון ע\"י מעשיו גורם זווג עליון ויורדין טפין עלאין למטה שהם בחי' המוחין דז\"א הם בחי' החו\"ג... בבא אלו החו\"ג בראש ז\"א כדין איהו נקיט החסדים ומשתלים אחור דידיה ואיהי נקטא גבורה ומשתלים אחור דידה וכדין אתהדרו פב\"פ"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §1"
+    assertion: |
+      MECANISME DU RETOURNEMENT :
+      L'ADAM HA-TAHTON (homme inferieur) par ses ACTES cause un ZIVVUG
+      superieur → des TIPPIM ILA'IN (gouttes superieures) descendent.
+      Ce sont les MOHIN de Z"A = les HG (HESED et GEVURAH).
+      Variante (Nusah Aher) : "משם" (de la) au lieu de "הם" (ils sont).
+      Quand les HG arrivent au ROSH (tete) de Z"A :
+      Z"A prend les HASSADIM → COMPLETE SON DOS.
+      NUKVAH prend les GEVUROT → COMPLETE SON DOS.
+      → Alors ils se RETOURNENT PbP. (cf. Birkat Avot.)
+    type: axiome_explicite
+    concepts:
+      - {id: hg_mohin, role: hesed_gevurah_comme_mohin}
+      - {id: hassadim_ahor_za, role: hassadim_completent_dos_za}
+      - {id: gevurot_ahor_nukvah, role: gevurot_completent_dos_nukvah}
+    mapping:
+      modules: ["ohr.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Les HG = les materiaux pour completer les dos. Hesed→Z'A, Gevurah→Nukvah. Le Zivvug depend de l'action humaine."
+
+  - id: "EC-H2S8-123"
+    source_he: "בודאי הוא שבערך בחי' זו יותר גדולה הארה של החו\"ג הבאים להם מחדש מהארה שהיתה להם בראשונה... נמצא כי זו הארה המחודשת היא נקראת פב\"פ אבל בערך בחי' אחרת לא תקרא אלא בחי' אב\"א לפי שלא הגדילה רק בחי' אחוריים"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §1"
+    assertion: |
+      PARADOXE : la nouvelle illumination des HG est PbP (face a face)
+      d'un POINT DE VUE (car elle PERMET le retournement),
+      mais AhbAh d'un AUTRE POINT DE VUE (car elle n'a GRANDI
+      que les AHORAIM = les dos, pas les Panim).
+      Variante (Nusah Aher) : "הלא" (n'est-ce pas) au lieu de "הוא" (c'est).
+      La PREMIERE illumination = a cree des PARTZUFIM ENTIERS (shelemim).
+      Cette NOUVELLE = n'a fait que GRANDIR les demi-AHORAIM.
+      → La nouvelle illumination est PLUS GRANDE en he'arah mais PLUS PETITE en scope.
+    type: axiome_explicite
+    concepts:
+      - {id: hearah_hadashah_pbp, role: nouvelle_illumination_pbp}
+      - {id: hearah_hadashah_ahbah, role: meme_illumination_ahbah}
+      - {id: rishonah_shalem, role: premiere_illumination_complete}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Une meme illumination peut etre PbP ET AhbAh selon la perspective. La perspective change la categorisation."
+
+  - id: "EC-H2S8-124"
+    source_he: "מ\"ש שנפלו האחוריים דאו\"א הוא על בחי' חו\"ג המגדילים האחוריים ומחזירים פב\"פ"
+    source_ref: "Heikhal 2, Sha'ar 1:6 — §2 (debut)"
+    assertion: |
+      IDENTIFICATION PRECISE : ce qui est TOMBE des AHORAIM d'AV"I =
+      les HG (HESED et GEVURAH) qui AGRANDISSENT les Ahoraim
+      et qui RETOURNENT PbP.
+      Ces HG = les Mohin qu'AV"I recoivent de KETER (= A"A)
+      pour etre retournes PbP EUX AUSSI (car AV"I aussi etaient AhbAh).
+      → Les "Ahoraim d'AV"I" = pas les dos eux-memes, mais les HG
+      qui construisent les dos = les MATERIAUX de construction.
+    type: axiome_explicite
+    concepts:
+      - {id: ahoraim_avi_sont_hg, role: ahoraim_sont_hesed_gevurah}
+      - {id: hg_min_keter, role: hg_viennent_de_keter_aa}
+    mapping:
+      modules: ["ohr.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Les 'Ahoraim' qui tombent = les HG (materiaux de construction des dos). La chute = perte des materiaux."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S8-045"
+    type: "causal"
+    from: klipot_ahoraim
+    to: ahbah_hagana
+    nature: "Les Klipot s'accrochent aux dos → ZO'N sortent AhbAh pour les EMPECHER de teter"
+    assertions_source: ["EC-H2S8-119", "EC-H2S8-120"]
+
+  - id: "REL-H2S8-046"
+    type: "causal"
+    from: adam_mitzvot_pbp
+    to: ahor_shalem
+    nature: "Les mitzvot d'Adam CAUSENT la completion des dos → rend le PbP possible"
+    assertions_source: ["EC-H2S8-121"]
+
+  - id: "REL-H2S8-047"
+    type: "causal"
+    from: hg_mohin
+    to: hassadim_ahor_za
+    nature: "Les HG (Mohin) descendent → Hassadim completent le dos de Z'A, Gevurot completent le dos de Nukvah"
+    assertions_source: ["EC-H2S8-122"]
+
+  - id: "REL-H2S8-048"
+    type: "transformation"
+    from: kotel_ehad
+    to: ahor_shalem
+    nature: "Le mur partage (AhbAh) se TRANSFORME en 2 dos complets (PbP) par ajout des HG"
+    assertions_source: ["EC-H2S8-121", "EC-H2S8-122"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S8-019"
+    nom: "AhbAh/PbP : Defense vs Production"
+    source_assertions: ["EC-H2S8-120", "EC-H2S8-121", "EC-H2S8-122"]
+    formalisation: |
+      AHOR BE-AHOR = mode DEFENSIF : dos colles, pas de generation,
+      pas d'acces pour les Klipot. 1 mur partage, pas de dos independant.
+      PANIM BE-FANIM = mode PRODUCTIF : face a face, generation possible,
+      mais les dos sont EXPOSES aux Klipot. Necessite des dos COMPLETS.
+      TRANSITION AhbAh → PbP :
+      1. L'action humaine (mitzvot) cause un Zivvug superieur
+      2. Les HG descendent comme Mohin
+      3. Z"A prend Hesed (dos), Nukvah prend Gevurah (dos)
+      4. Les dos sont completes → retournement possible
+      → La transition est BIDIRECTIONNELLE (PbP ↔ AhbAh) selon l'action.
+    applications_ia:
+      - "partzufim/zivvug.py : le Zivvug n'est possible qu'en mode PbP (apres completion des dos)"
+      - "partzufim/zeir_anpin.py : les Hassadim = les materiaux pour la 'face publique'"
+      - "Analogie ML : mode defensif (inference sans generation) vs mode productif (generation, mais vulnerable aux adversarial attacks)"
+    questions_ouvertes:
+      - "Le pattern AhbAh/PbP correspond-il a un changement d'etat dans un systeme de production ?"
+      - "Les Klipot = adversarial inputs qui exploitent les 'dos' exposes ?"

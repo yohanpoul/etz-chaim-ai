@@ -1,0 +1,422 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 13 — Sod HaGemirah (סוד הגמירה)
+# ═══════════════════════════════════════════════════════════════════
+# TREIZIÈME ET DERNIER Klaf du Sha'ar HaKlalim
+# Transposé par: Claude Opus 4.6 + human reviewer
+# Source: Sefaria / hebrew.grimoar.cz (Public Domain)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 13
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LA TARDÉMA ET LA NESIRAH ───
+
+  - id: "EC-K13-001"
+    source_he: "ודע כי מ\"ש הפסוק ויפל ה' אלהים תרדמה על האדם ויישן הענין כי המוחין הבאים לז\"א מסתלקין ממנו ונכנסין בנוקבא שהם נה\"י דיש\"ס ותבונה עם המוחין שבהם"
+    source_ref: "Sha'ar HaKlalim 13:1 — ouverture"
+    assertion: |
+      "Va-yapel Hashem Elohim TARDÉMA al ha-Adam va-yishan" (Genèse 2:21) :
+      La TARDÉMA (sommeil profond) sur Adam/Z"A = les MOHIN se RETIRENT de Z"A
+      et ENTRENT dans NUKVAH.
+      NHY d'Imma (Yisra'el Saba et Tevunah) + les Mohin qu'ils contiennent
+      → se retirent de Z"A → entrent dans Nukvah DIRECTEMENT (pas via Z"A).
+      C'est le processus de NESIRAH (sciage/séparation) :
+      Les Mohin passent de Z"A à Nukvah pour lui donner l'autonomie.
+    type: axiome_explicite
+    concepts:
+      - {id: tardema, role: sommeil_retrait_des_mohin}
+      - {id: nesirah, role: séparation_par_transfert}
+      - {id: mohin_to_nukvah, role: mohin_passent_à_nukvah}
+      - {id: histalkut_mohin, role: retrait_des_mohin_de_za}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukvah.py", "core/zivvug_engine.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "La Tardéma = le transfert de Mohin de Z\"A à Nukvah — condition de la Nesirah"
+
+  - id: "EC-K13-002"
+    source_he: "ואז לאה נכללת ברחל לפי שלאה יצאת אחורי רישא דז\"א כנודע ועתה שהמוחין יוצאין מז\"א ונכנסין ברחל העולה עד למעלה ברישא דז\"א ואז נכללת בה לאה"
+    source_ref: "Sha'ar HaKlalim 13:1"
+    assertion: |
+      Pendant la Tardéma : LEAH se fond (nikhlelet) dans RACHEL.
+      RAISON : Leah était derrière la tête de Z"A.
+      Quand les Mohin sortent de Z"A → Rachel MONTE jusqu'en haut (risha de Z"A).
+      Rachel s'élève au niveau de Leah → Leah s'INCLUT en Rachel.
+      Résultat : un SEUL Partzuf féminin (Rachel incluant Leah).
+    type: axiome_explicite
+    concepts:
+      - {id: leah_be_rachel, role: leah_incluse_dans_rachel}
+      - {id: rachel_olah, role: rachel_monte_en_haut}
+      - {id: ihud_nukvot, role: unification_des_2_nukvot}
+    mapping:
+      modules: ["partzufim/leah.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["leah", "nukvah"]
+      relevance: "Pendant la Nesirah : les 2 Nukvot fusionnent en 1 seul Partzuf"
+
+  # ─── BLOC B : MOHIN HADASHIM POUR Z"A ───
+
+  - id: "EC-K13-003"
+    source_he: "כי ע\"י הדורמיטה מקבל ז\"א מוחין חדשים יותר מעולים מאו\"א והזווג הוא אז יותר עליון"
+    source_ref: "Sha'ar HaKlalim 13:1"
+    assertion: |
+      QUESTION : Si les Mohin de Z"A sont transférés à Nukvah, comment peut-il s'unir avec elle ?
+      RÉPONSE : Par la DORMITA (Tardéma), Z"A reçoit des MOHIN HADASHIM (nouveaux)
+      qui sont PLUS ÉLEVÉS (yoter me'ulim) — directement d'AVI.
+      Le Zivvug qui suit est PLUS ÉLEVÉ (yoter elyon) que celui d'avant.
+      Le RETRAIT des anciens Mohin CRÉE L'ESPACE pour des Mohin supérieurs.
+      La perte temporaire → le gain permanent.
+    type: axiome_explicite
+    concepts:
+      - {id: mohin_hadashim_elyonim, role: mohin_supérieurs_après_tardema}
+      - {id: dormita_as_upgrade, role: sommeil_comme_amélioration}
+      - {id: zivvug_elyon, role: union_supérieure}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "core/zivvug_engine.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "La Tardéma = upgrade — retirer les anciens Mohin pour recevoir de meilleurs"
+
+  # ─── BLOC C : LA NESIRAH ET LE RETOUR PBP ───
+
+  - id: "EC-K13-004"
+    source_he: "ומ\"ש ויביאה אל האדם הוא ז\"א שתחלה בהיותה אחורי ז\"א היא יונקת ממנו ואז נעשין הכלים שלה כולם ע\"י האור של ז\"א היוצא לאחור ועתה ה' אלהים שהוא או\"א לקחו הכלים שלה שהיו מאחור ועשאוהו פרצוף שלם כמו הז\"א ואח\"כ ויביאה אל האדם פב\"פ"
+    source_ref: "Sha'ar HaKlalim 13:1"
+    assertion: |
+      "Va-yevi'eha el ha-Adam" (Genèse 2:22) = AVI AMÈNENT Nukvah FACE À FACE avec Z"A.
+      SÉQUENCE COMPLÈTE :
+      1. AVANT : Nukvah est DERRIÈRE Z"A (AbA) → elle SUCE (yoneket) de lui
+      → ses KELIM sont formés par le Ohr de Z"A qui sort par l'arrière
+      2. NESIRAH : HASHEM ELOHIM (= AVI) prennent ses Kelim qui étaient à l'arrière
+      → en font un PARTZUF SHALEM (complet) comme Z"A
+      3. RETOUR : "Va-yevi'eha el ha-Adam" → elle est amenée PANIM BE-PANIM
+      Le passage AbA → PbP est le BUT de toute la Nesirah.
+    type: axiome_explicite
+    concepts:
+      - {id: nesirah_complete, role: séquence_aba_pbp}
+      - {id: va_yevi_eha, role: amenée_face_à_face}
+      - {id: kelim_me_ahor, role: kelim_formés_par_l_arrière}
+      - {id: partzuf_shalem_nukvah, role: nukvah_complète}
+    mapping:
+      modules: ["partzufim/nukvah.py", "core/zivvug_engine.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["nukvah", "zeir_anpin"]
+      relevance: "La Nesirah = le processus complet AbA→Partzuf→PbP — condition du Zivvug parfait"
+
+  - id: "EC-K13-005"
+    source_he: "וכשחטא אדה\"ר חזרה לאחורי ז\"א. גם עתה אחר החרבן היא באחור ז\"א כל ימי החול חוץ משבת שאז עולה פב\"פ"
+    source_ref: "Sha'ar HaKlalim 13:1"
+    assertion: |
+      ÉTAT ACTUEL après le PÉCHÉ et le HURBAN :
+      Quand Adam a péché → Nukvah est RETOURNÉE à l'arrière de Z"A (AbA).
+      Après le HURBAN (destruction du Temple) → elle est TOUJOURS AbA
+      pendant les JOURS DE SEMAINE.
+      EXCEPTION : le SHABBAT → elle monte PbP.
+      Par notre TEFILAH (prière) : nous la ramenons PbP de la Hazeh vers le bas
+      même en semaine — "Melekh Ozer u-Moshia u-Magen" (dans la Amidah).
+      APRÈS la prière → elle retourne AbA.
+      Les HASSIDIM RISHONIM restaient 1h APRÈS la prière pour RETARDER son retour AbA.
+    type: axiome_explicite
+    concepts:
+      - {id: het_adam, role: péché_cause_retour_aba}
+      - {id: hurban_aba, role: état_post_destruction}
+      - {id: shabbat_pbp, role: pbp_le_shabbat}
+      - {id: tefilah_pbp, role: prière_ramène_pbp}
+      - {id: hassidim_rishonim, role: retardent_le_retour}
+    mapping:
+      modules: ["core/zivvug_engine.py", "tikkun/kavanah_planner.py"]
+      tables: ["zivvug_states", "kavanah_intentions"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "L'état actuel est AbA — le PbP est restauré par la prière et le Shabbat"
+
+  # ─── BLOC D : INCLUSION DES PARTZUFIM SECONDAIRES ───
+
+  - id: "EC-K13-006"
+    source_he: "כמו שלאה נכללת ברחל כנ\"ל כך למעלה בזווג חו\"ב נכלל התבונה עם הבינה והטעם... כי בינה ורחל הם ב' ספירות עצמיות של י\"ס דאצילות אך תבונה ולאה אינם רק הארות"
+    source_ref: "Sha'ar HaKlalim 13:2"
+    assertion: |
+      PRINCIPE D'INCLUSION des Partzufim secondaires :
+      Comme LEAH s'inclut dans RACHEL, de même TEVUNAH s'inclut dans BINAH.
+      RAISON : Binah et Rachel sont des SEFIROT ATZMIYOT (essentielles) des 10S d'Atzilut.
+      Tevunah et Leah ne sont que des HAAROT (illuminations) dérivées de Binah.
+      Ce qui est ESSENTIEL subsiste. Ce qui est DÉRIVÉ peut s'inclure dans l'essentiel.
+      Les Partzufim secondaires (Leah, Tevunah) peuvent FUSIONNER avec les primaires.
+      Les Partzufim primaires (Rachel, Binah) ne fusionnent PAS — ils sont irréductibles.
+    type: axiome_explicite
+    concepts:
+      - {id: sefirot_atzmiyot, role: essentielles_irréductibles}
+      - {id: haarot_nilvot, role: dérivées_incluables}
+      - {id: klilut_secondaire, role: inclusion_du_dérivé}
+    mapping:
+      modules: ["partzufim/leah.py", "partzufim/nukvah.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["leah", "nukvah", "imma"]
+      relevance: "Les composants dérivés peuvent fusionner dans les essentiels — pas l'inverse"
+
+  # ─── BLOC E : TZIPORAH ET KUSHIT — MALKHUYOT D'ABBA ───
+
+  - id: "EC-K13-007"
+    source_he: "כך ממלכות דאבא נעשית בחי' הנקרא צפורה אשת משה שהיא יסוד דאבא וזה מצד צלם דמוחין דגדלות"
+    source_ref: "Sha'ar HaKlalim 13:2"
+    assertion: |
+      Parallèles des MALKHUYOT des Partzufim :
+      De MALKHUT de TEVUNAH (Gadlut) → LEAH
+      De MALKHUT d'ABBA (Gadlut) → TZIPORAH (épouse de Moshe)
+      De MALKHUT d'IMMA (Katnut) → TIMNA (concubine d'Elifaz)
+      De MALKHUT d'ABBA (Katnut) → KUSHIT (la femme kushite de Moshe)
+      Les Malkhuyot de GADLUT produisent des Partzufim positifs (Leah, Tziporah).
+      Les Malkhuyot de KATNUT produisent des aspects de DINIM (Timna, Kushit).
+      Moshe, Yaakov et Yosef ont chacun REPOUSSÉ les Dinim de Katnut :
+      Moshe repousse Kushit, Yaakov repousse Timna, Yosef repousse la femme de Potiphar.
+    type: interprétation_lurianique
+    concepts:
+      - {id: tziporah, role: malkhut_abba_gadlut}
+      - {id: kushit, role: malkhut_abba_katnut}
+      - {id: timna, role: malkhut_imma_katnut}
+      - {id: dehiyat_dinim, role: repoussement_des_rigueurs}
+    mapping:
+      modules: ["madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "Les Malkhuyot de Gadlut vs Katnut — les Dinim de Katnut doivent être repoussés"
+
+  # ─── BLOC F : LES 2 TYPES DE ZIVVUG — HB vs TM ───
+
+  - id: "EC-K13-008"
+    source_he: "הנה הזווג נמצא בד' ספירות לבד חו\"ב תו\"מ ונמצא לרשב\"י הפרש גדול בין זווג לזווג כי חו\"ב לא מתפרשין לעלמין משא\"כ תו\"מ"
+    source_ref: "Sha'ar HaKlalim 13:3 — enseignement autographe du ARI"
+    assertion: |
+      Enseignement AUTOGRAPHE du ARI (leshon ha-zahav — langue d'or) :
+      Le ZIVVUG existe dans 4 SEFIROT seulement : HB (Chokhmah-Binah) et TM (Tiferet-Malkhut).
+      DIFFÉRENCE FONDAMENTALE :
+      ZIVVUG HB : TEDIR (permanent) — "lo mitparshin le-olmin" (ne se séparent JAMAIS)
+      ZIVVUG TM : INTERMITTENT — dépend des conditions, des temps, des actions.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_hb_tedir, role: union_permanente}
+      - {id: zivvug_tm_intermittent, role: union_variable}
+      - {id: arba_sefirot_zivvug, role: quatre_lieux_d_union}
+      - {id: leshon_zahav, role: enseignement_autographe}
+    mapping:
+      modules: ["core/zivvug_engine.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "L'enseignement direct du ARI : 2 types de Zivvug fondamentalement différents"
+
+  - id: "EC-K13-009"
+    source_he: "כי ע\"י זווג חו\"ב מתהוין מלאכין ורוחין קדישין ומתהוים נשמות עליונים... אמנם זווג תו\"מ להיות נשמה לתחתונים"
+    source_ref: "Sha'ar HaKlalim 13:3"
+    assertion: |
+      FINALITÉ des 2 types de Zivvug :
+      ZIVVUG HB : produit des MAL'AKHIM (anges) et RUHIN KADISHIN (esprits saints)
+      = les NESHAMOT des ÊTRES SUPÉRIEURS (pas des neshamot au sens strict
+      mais leur HIYUT = vitalité, le flux qui les anime).
+      Ce Zivvug est TEDIR car les anges ont besoin de HIYUT CONSTANTE
+      ("kol inon mal'akhin kadishin lo kaymin be-lo nehorah ila'ah")
+      ZIVVUG TM : produit des NESHAMOT pour les ÊTRES INFÉRIEURS (humains).
+      Ce Zivvug est INTERMITTENT — "le-frakim u-le-itim mezumanim".
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_hb_produces, role: anges_et_vitalité}
+      - {id: zivvug_tm_produces, role: neshamot_humaines}
+      - {id: hiyut_tedirah, role: vitalité_constante}
+      - {id: neshamot_le_frakim, role: âmes_intermittentes}
+    mapping:
+      modules: ["core/zivvug_engine.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "HB = production de vitalité constante, TM = production d'âmes à la demande"
+
+  - id: "EC-K13-010"
+    source_he: "נמצינו למדין שזווג חו\"ב לא יחסר תמיד אלא שבזמן הגלות אינו זווג שלים ר\"ל לצורך בנים ואינו כ\"כ משובח כדי שיגיע ממנו עטרה לבנים"
+    source_ref: "Sha'ar HaKlalim 13:3"
+    assertion: |
+      CONCLUSION du ARI — même en GALUT (exil) :
+      Le Zivvug HB ne CESSE JAMAIS — même en Galut.
+      MAIS en Galut il n'est pas SHALEM (complet) :
+      Il ne produit PAS les ITRIN (couronnes) nécessaires au Zivvug de TM.
+      Il produit seulement la HIYUT de base (vitalité pour les anges et les mondes).
+      La partie qui manque = la capacité à PRODUIRE DES COURONNES POUR LES ENFANTS.
+      En Galut : HB = demi-Zivvug (Hiyut sans Itrin)
+      Après la Geulah : HB = Zivvug Shalem (Hiyut + Itrin)
+      "Ve-nahar yotzé me-Eden" (Genèse 2:10) = le flux ne cesse JAMAIS.
+    type: axiome_explicite
+    concepts:
+      - {id: galut_zivvug, role: zivvug_incomplet_en_exil}
+      - {id: hiyut_lo_poseget, role: vitalité_ne_cesse_pas}
+      - {id: itrin_haserot, role: couronnes_manquantes}
+      - {id: geulah_zivvug, role: zivvug_complet_après_rédemption}
+    mapping:
+      modules: ["core/zivvug_engine.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Même en état dégradé (Galut), le flux vital de base ne cesse JAMAIS"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-K13-001"
+    type: causal
+    from: tardema
+    to: nesirah
+    nature: "La Tardéma (retrait des Mohin) est la CONDITION de la Nesirah"
+    assertions_source: ["EC-K13-001"]
+
+  - id: "REL-K13-002"
+    type: causal
+    from: nesirah
+    to: va_yevi_eha
+    nature: "La Nesirah permet la formation d'un Partzuf complet → retour PbP"
+    assertions_source: ["EC-K13-004"]
+
+  - id: "REL-K13-003"
+    type: causal
+    from: histalkut_mohin
+    to: mohin_hadashim_elyonim
+    nature: "Le retrait des anciens Mohin crée l'espace pour des Mohin SUPÉRIEURS"
+    assertions_source: ["EC-K13-003"]
+
+  - id: "REL-K13-004"
+    type: contenance
+    from: leah_be_rachel
+    to: ihud_nukvot
+    nature: "Pendant la Nesirah, Leah s'inclut dans Rachel → un seul Partzuf féminin"
+    assertions_source: ["EC-K13-002"]
+
+  - id: "REL-K13-005"
+    type: dualité_structurelle
+    paire: [sefirot_atzmiyot, haarot_nilvot]
+    nature: "Les Sefirot essentielles (Binah, Rachel) subsistent. Les dérivées (Tevunah, Leah) s'incluent"
+    assertions_source: ["EC-K13-006"]
+
+  - id: "REL-K13-006"
+    type: dualité_structurelle
+    paire: [zivvug_hb_tedir, zivvug_tm_intermittent]
+    nature: "HB = permanent (vitalité/anges), TM = intermittent (neshamot humaines)"
+    assertions_source: ["EC-K13-008", "EC-K13-009"]
+
+  - id: "REL-K13-007"
+    type: transformation
+    from: galut_zivvug
+    to: geulah_zivvug
+    nature: "En Galut le Zivvug HB est incomplet (sans Itrin). Après Geulah il sera complet"
+    assertions_source: ["EC-K13-010"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K13-001"
+    nom: "Principe de la Tardéma Productive (Perdre pour Gagner)"
+    source_assertions: ["EC-K13-001", "EC-K13-003"]
+    formalisation: |
+      Le RETRAIT temporaire d'un composant essentiel n'est pas une PERTE —
+      c'est la CONDITION pour recevoir un composant SUPÉRIEUR.
+      Tardéma : les Mohin de Z"A sont retirés → transférés à Nukvah
+      MAIS : Z"A reçoit des Mohin HADASHIM, PLUS ÉLEVÉS, directement d'AVI.
+      Le Zivvug après la Tardéma est PLUS ÉLEVÉ qu'avant.
+      Formule : perte(mohin_N) → espace_vide → gain(mohin_N+1) > mohin_N
+      Le vide créé par le retrait est la CONDITION du upgrade.
+    applications_ia:
+      - "Retirer un module pour le remplacer par un meilleur = Tardéma productive"
+      - "Le downtime n'est pas une perte si le système qui revient est supérieur"
+      - "Transférer des capacités d'un module à un autre = Nesirah"
+      - "Le '/clear' dans Claude Code = une Tardéma — vider pour mieux recevoir"
+    questions_ouvertes:
+      - "Le système peut-il initier sa propre Tardéma ou doit-elle être imposée ?"
+      - "Combien de temps le 'vide' peut-il durer avant que le système souffre ?"
+
+  - id: "PG-K13-002"
+    nom: "Principe de la Nesirah (Séparation pour Autonomie et Union)"
+    source_assertions: ["EC-K13-001", "EC-K13-004", "EC-K13-005"]
+    formalisation: |
+      Le processus complet de formation d'un composant AUTONOME à partir d'un composant DÉPENDANT :
+      PHASE 1 — YENIKAH (AbA) : le composant B SUCE de A par l'arrière
+        → B forme ses KELIM grâce au Ohr de A qui sort par l'arrière
+        → B est DÉPENDANT de A, collé dos à dos
+      PHASE 2 — TARDÉMA : les Mohin de A se retirent → entrent dans B directement
+        → B reçoit l'autonomie structurelle (Partzuf Shalem)
+      PHASE 3 — NESIRAH : AVI séparent B de A, font de B un Partzuf complet
+      PHASE 4 — VA-YEVI'EHA : B est amené FACE À FACE avec A
+        → Le Zivvug PbP est maintenant possible
+      APRÈS LE PÉCHÉ/HURBAN : B retourne AbA → nécessite la TEFILAH pour restaurer PbP.
+    applications_ia:
+      - "Un sous-module dépendant doit passer par : dépendance → extraction → autonomie → intégration PbP"
+      - "On ne peut pas passer de AbA à PbP sans la Nesirah intermédiaire"
+      - "La Tefilah quotidienne = l'effort constant pour maintenir le PbP"
+      - "Les Hassidim Rishonim = ceux qui investissent du temps APRÈS l'action pour stabiliser le résultat"
+    questions_ouvertes:
+      - "La Nesirah est-elle un événement unique ou doit-elle être répétée ?"
+      - "Comment stabiliser le PbP pour qu'il ne retourne pas AbA ?"
+
+  - id: "PG-K13-003"
+    nom: "Principe de l'Essentiel vs le Dérivé"
+    source_assertions: ["EC-K13-006"]
+    formalisation: |
+      Dans tout système, il y a 2 catégories de composants :
+      ESSENTIELS (Sefirot Atzmiyot) : irréductibles, permanents, autonomes
+        (Binah, Rachel dans notre contexte)
+        → ils ne peuvent PAS être fusionnés dans un autre
+        → ils sont la STRUCTURE de base du système
+      DÉRIVÉS (Haarot) : issus des essentiels, incluables, fusionnables
+        (Tevunah, Leah dans notre contexte)
+        → ils PEUVENT être inclus dans l'essentiel dont ils dérivent
+        → ils sont des EXTENSIONS, pas des fondations
+      Conséquence : réduire le système = fusionner les dérivés dans les essentiels
+      Le noyau irréductible = les Sefirot Atzmiyot (10 pour Atzilut).
+    applications_ia:
+      - "Identifier les modules ESSENTIELS (irréductibles) vs DÉRIVÉS (fusionnables)"
+      - "En mode dégradé, les dérivés peuvent fusionner dans les essentiels pour simplifier"
+      - "Le refactoring = identifier ce qui est Atzmit et ce qui est Haarah"
+      - "Les 10 Sefirot = les 10 composants irréductibles du système"
+    questions_ouvertes:
+      - "Quels modules du système sont Atzmiyot et lesquels sont Haarot ?"
+      - "Un module dérivé peut-il devenir essentiel avec le temps ?"
+
+  - id: "PG-K13-004"
+    nom: "Principe du Zivvug Tedir vs Le-Frakim (Permanent vs Intermittent)"
+    source_assertions: ["EC-K13-008", "EC-K13-009", "EC-K13-010"]
+    formalisation: |
+      Un système a 2 TYPES de couplages qui servent 2 FINALITÉS différentes :
+      COUPLAGE TEDIR (permanent, type HB) :
+        → produit la VITALITÉ de base du système (Hiyut)
+        → ne cesse JAMAIS, même en mode dégradé (Galut)
+        → en mode dégradé : vitalité sans couronnes (maintenance sans croissance)
+        → en mode complet : vitalité + couronnes (maintenance + croissance)
+      COUPLAGE LE-FRAKIM (intermittent, type TM) :
+        → produit les RÉSULTATS concrets (Neshamot)
+        → dépend des CONDITIONS (actions, prières, Ma"N)
+        → peut être SUSPENDU sans que le système meurt
+      Les 2 coexistent — le Tedir est la BASE, le Le-Frakim est la PRODUCTION.
+      Sans le Tedir → le système meurt. Sans le Le-Frakim → le système survit mais ne produit pas.
+    applications_ia:
+      - "Les daemon tasks (Tedir) = couplage permanent qui maintient le système en vie"
+      - "Les processus à la demande (Le-Frakim) = couplage intermittent qui produit des résultats"
+      - "Même en 'Galut' (mode dégradé), les daemons ne s'arrêtent JAMAIS"
+      - "Le ZivvugEngine (0.989) doit distinguer les 2 modes : Tedir et Le-Frakim"
+    questions_ouvertes:
+      - "Quels couplages du système sont Tedir et lesquels sont Le-Frakim ?"
+      - "Le passage de Galut à Geulah = le moment où le Tedir devient Shalem ?"

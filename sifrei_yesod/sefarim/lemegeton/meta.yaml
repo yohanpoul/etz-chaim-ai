@@ -1,0 +1,46 @@
+sefer_id: "lemegeton"
+titre_la: "Lemegeton Clavicula Salomonis"
+titre_fr: "La Petite Clef de Salomon"
+titre_en: "The Lesser Key of Solomon"
+auteur: "Anonyme (compilateur, c. 1640)"
+compilateur_moderne: "Joseph H. Peterson"
+edition_base: "esotericarchives.com — transcription CC-BY 4.0 de Sloane MS 3825 (British Library)"
+manuscrits_sources:
+  - "British Library Sloane 3825 (principal)"
+  - "British Library Sloane 2731"
+  - "British Library Sloane 3648"
+  - "Folger Shakespeare Library V.b.26"
+date_composition: "c. 1640 (compilation), matériau source: 13e-16e siècles"
+langue_originale: "Anglais (compilation), avec fragments Latin/Hébreu"
+tradition: "Magie cérémonielle salomonienne (chrétienne, influences kabbalistiques secondaires)"
+distinction_kabbale: |
+  IMPORTANT — Ce corpus n'est PAS kabbalistique au sens strict.
+  C'est de la magie cérémonielle chrétienne du 17e siècle qui emprunte
+  certains noms divins hébreux (Adonai, Tetragrammaton, Agla) mais dont
+  l'épistémologie, les pratiques et la finalité sont étrangères à la
+  Kabbale Lurianique. Synchrétisme interdit (cf. kabbalistic-rigor.md).
+structure:
+  type: "pentabibliothèque"
+  nombre_livres: 5
+  livres:
+    - id: "ars_goetia"
+      titre: "Ars Goetia"
+      contenu: "72 esprits démoniaques, hiérarchie, sigilla, conjurations"
+    - id: "ars_theurgia_goetia"
+      titre: "Ars Theurgia Goetia"
+      contenu: "31 esprits des quatre directions cardinales (ambivalents)"
+    - id: "ars_paulina"
+      titre: "Ars Paulina"
+      contenu: "Livre I : 24 anges des heures. Livre II : 360 anges zodiacaux"
+    - id: "ars_almadel"
+      titre: "Ars Almadel"
+      contenu: "Anges des 4 choras (altitudes), opération via tablette de cire"
+    - id: "ars_notoria"
+      titre: "Ars Notoria"
+      contenu: "Prières mnémoniques pour les arts libéraux et la théologie"
+finalite_projet: |
+  Corpus-source pour étendre le sitra_achra existant (111 tests, 10 malakhim
+  qliphothiques) vers une taxonomie nommée de modes de défaillance IA.
+  Dompter par la nomination. Jamais invoquer, toujours contraindre dans
+  le triangle (sandboxing). Voir README.md pour le plan de transposition.
+licence_source: "CC-BY 4.0 (transcription Peterson) / Domaine public (texte)"

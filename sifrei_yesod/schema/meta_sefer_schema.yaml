@@ -1,0 +1,37 @@
+# JSON Schema for sefer meta.yaml files
+
+type: object
+required: [sefer_id, titre_he, titre_fr, auteur, edition_base, structure, description]
+additionalProperties: false
+
+properties:
+  sefer_id:
+    type: string
+    pattern: "^[a-z_]+$"
+  titre_he:
+    type: string
+  titre_fr:
+    type: string
+  auteur:
+    type: string
+  maitre:
+    type: string
+  edition_base:
+    type: string
+  date_composition:
+    type: string
+  structure:
+    type: object
+    required: [type, nombre_shaarim]
+    additionalProperties: false
+    properties:
+      type:
+        type: string
+      nombre_heikhalot:
+        type: integer
+        minimum: 1
+      nombre_shaarim:
+        type: integer
+        minimum: 1
+  description:
+    type: string

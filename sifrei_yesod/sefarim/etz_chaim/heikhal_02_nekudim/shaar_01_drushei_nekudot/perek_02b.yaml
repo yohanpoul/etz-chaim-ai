@@ -1,0 +1,486 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 1 — Sha'ar Drushei Nekudot (שער דרושי נקודות)
+# Perek: 2b — Le 3eme Ohr, la formation des Kelim par l'Histakkelut,
+#             pourquoi 3 survivent et 7 meurent, Or Makif/Pnimi
+# ═══════════════════════════════════════════════════════════════════
+#
+# SUITE du Perek 2 (cf. perek_02a pour le mecanisme Tzimtzum/Parsa/Zivvug).
+# STRUCTURE :
+#   - Le 3eme OHR : l'oeil absorbe des Orot AHP pour former les KELIM
+#   - 10 Nekudot : 3 superieures prennent d'AHP au Shevulet (3 sources)
+#   - 7 inferieures prennent de Hotem+Peh seulement (2 sources) → meurent
+#   - Keter = Ozen (intact), AV"I = Hotem+Peh (Ahoraim tombent),
+#     ZO"N = les 2 tombent
+#   - Or Makif / Or Pnimi dans les Nekudim : 4 aspects de l'Histakkelut
+#
+# Source Sefaria : Sefer_Etz_Chaim.8.2 (§1, deuxieme moitie)
+# IDs : EC-H2S8-070 → EC-H2S8-085
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 1
+  shaar_name_he: "שער דרושי נקודות"
+  perek: 2
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Le 3eme Ohr et la formation des Kelim. Pourquoi 3 Nekudot survivent (3 sources AHP) et 7 meurent (2 sources). Keter vs AV'I vs ZO'N. Les 4 aspects de l'Or dans les Nekudim."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── LE 3EME OHR : L'HISTAKKELUT DE L'OEIL ─────────────────────
+
+  - id: "EC-H2S8-070"
+    source_he: "ועוד יש אור ג' והוא בהכרח כי כאשר יורד ומתפשט אור העין למטה דרך העקודים הנה הוא מסתכל באורות אח\"פ ההם והוא שואב משם ולוקח מהם אור לצורך עשיית הכלים של הנקודות ולוקח מג' בחי' שהם אורות אח\"פ"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      Il y a un 3EME OHR (en plus des 2 de EC-H2S8-069).
+      Quand l'Ohr de l'OEIL DESCEND et s'etend vers le bas
+      EN TRAVERSANT les AKUDIM (= Orot d'AHP), il les REGARDE
+      (mistakkel) et ABSORBE (sho'ev) de leur Ohr.
+      Il PREND de ces 3 sources (AHP) pour FAIRE les KELIM des Nekudot.
+      Variante (Nusah Aher) : "ועוד אור ג' הוא לקח כי בהכרח כשירד
+      אור העין הוא עובר דך אזן חטם פה" (il TRAVERSE AHP).
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_shlishi, role: troisieme_lumiere}
+      - {id: histakkelut_be_ahp, role: regard_de_loeil_sur_ahp}
+      - {id: kelim_min_ahp, role: kelim_fabriques_depuis_ahp}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le 3eme Ohr = l'oeil 'regarde' les couches precedentes (AHP) et en extrait du materiel pour les Kelim."
+
+  - id: "EC-H2S8-071"
+    source_he: "כי הנה נתב' שאורות האזן נתפשטו עד שבולת הזקן ואורות חוטם ופה עוברים ג\"כ דרך שם וא\"כ מוכרח הוא שכאשר נמשך אור העינים דא\"ק דרך שם יתערב עמהם ויקח אור שלהם"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      MECANISME : les Orot de l'OZEN s'etendent jusqu'au SHEVULET
+      HA-ZAKAN (pointe de la barbe/menton).
+      Les Orot de HOTEM et PEH PASSENT AUSSI par la.
+      DONC : quand l'Ohr des YEUX d'A"K passe par cet endroit,
+      il se MELANGE (yit'arev) inevitablement avec eux et PREND leur Ohr.
+      → Le Shevulet = point de CONVERGENCE des 3 flux AHP.
+    type: axiome_explicite
+    concepts:
+      - {id: shevulet_hazakan, role: pointe_barbe_convergence}
+      - {id: orot_ahp_shevulet, role: trois_flux_convergent}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Shevulet = point de convergence de 3 flux distincts. Le 4eme (oeil) les traverse et en prend."
+
+  # ─── 10 NEKUDOT : 3 SUPERIEURES vs 7 INFERIEURES ────────────────
+
+  - id: "EC-H2S8-072"
+    source_he: "והנה י' נקודות הם והג' ראשונים שבהם הם לוקחים אור ממה שנמשך מהסתכלות העין באח\"פ ממקומם עד מקום התחברות בשבולת הזקן כנודע ואינם מקבלים אותם רק בשבולת הזקן כי משם מתחילין הן"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      Il y a 10 NEKUDOT. Les 3 PREMIERES prennent Ohr de
+      l'HISTAKKELUT (regard) de l'oeil sur AHP, depuis leur position
+      jusqu'au point de CONVERGENCE au SHEVULET HA-ZAKAN.
+      Elles ne recoivent QU'AU SHEVULET (car c'est la qu'elles commencent).
+      Variante (Nusah Aher) : "בשבולת הזקן ולא ממה שבשבולת הזקן
+      ולמעלה ואינם מקבלין רק בשבולת הזקן כי משם מתחילים הן
+      ולא ממה שכנגד העין עד שבולת הזקן" (pas de ce qui est au-dessus).
+    type: axiome_explicite
+    concepts:
+      - {id: eser_nekudot, role: dix_nekudot}
+      - {id: gimel_rishonot, role: trois_premieres_au_shevulet}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les 3 superieures recoivent au point de convergence (Shevulet) de TOUS les 3 flux AHP."
+
+  - id: "EC-H2S8-073"
+    source_he: "אבל ז' נקודות התחתונים אין לוקחין רק ממה שנמשך מהסתכלות באורות החוטם והפה משבולת הזקן ולמטה כנודע כי החוטם מגיע עד החזה והפה עד הטבור ולא משבולת הזקן ולמעלה"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      Les 7 NEKUDOT INFERIEURES prennent SEULEMENT de l'Histakkelut
+      sur HOTEM (nez) et PEH (bouche) EN-DESSOUS du Shevulet.
+      Le HOTEM s'etend jusqu'au HAZEH (poitrine).
+      Le PEH s'etend jusqu'au TABUR.
+      Elles ne prennent PAS du Shevulet et au-dessus.
+      → 7 inferieures = 2 sources seulement (Hotem + Peh). L'OZEN manque.
+    type: axiome_explicite
+    concepts:
+      - {id: sheva_tahtonot, role: sept_inferieures}
+      - {id: hotem_hazeh, role: nez_jusquau_poitrine}
+      - {id: peh_tabur, role: bouche_jusquau_tabur}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les 7 inferieures ne prennent que de 2 sources sur 3 (manque Ozen) = alimentation insuffisante."
+
+  - id: "EC-H2S8-074"
+    source_he: "ונמצא כי לפי זה ג' נקודות לוקחין הארה לצורך הכלים של הם מן ג' האורות שהם אח\"פ בשבולת דוקא אבל ז\"ת אינן לוקחין רק מב' אורות לבד שהם חוטם ופה... כי אור אזן העליונה כבר נגמרה ונסתמה בשבולת הזקן ולכן גדולה היא הארה ג' נקודות עליונים מן הז\"ת"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      RESUME CONTRASTIF :
+      3 SUPERIEURES = prennent de 3 OROT (AHP) au SHEVULET.
+      7 INFERIEURES = prennent de 2 OROT seulement (Hotem + Peh).
+      RAISON : l'Ohr de l'OZEN SUPERIEURE se TERMINE (nigmerah)
+      et est BOUCHEE (nistamah) au SHEVULET.
+      → L'illumination des 3 superieures est PLUS GRANDE que celle des Z"T.
+    type: axiome_explicite
+    concepts:
+      - {id: ozen_nistamah, role: ozen_se_termine_au_shevulet}
+      - {id: gimel_godlah, role: trois_superieures_plus_grande_illumination}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le nombre de SOURCES determine la SURVIE. 3 sources = stable, 2 sources = insuffisant."
+
+  - id: "EC-H2S8-075"
+    source_he: "ולסבה זו ג' מלכים הראשונים לא מתו לפי שיש להם הארה גדולה והכלי שלהם מעולה מאד לפי שנעשה מבחינת אזן העליונה ומהחוטם ופה... כי לקחו כליהם ממקום שעדיין אורות האזן שהם בחי' נשמה נמשכים שם"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      Les 3 PREMIERS MELAKHIM (rois) n'ont PAS MORT (lo metu).
+      RAISON 1 : ils ont une ILLUMINATION GRANDE (he'arah gdolah).
+      RAISON 2 : leur KLI est EXCELLENT (me'uleh me'od).
+      Il a ete fait de l'Ozen SUPERIEURE + Hotem + Peh (3 sources).
+      Leurs KELIM proviennent d'un lieu ou les Orot d'OZEN
+      (= NESHAMAH) s'etendent encore.
+      → Kelim de qualite superieure = survie assuree.
+    type: axiome_explicite
+    concepts:
+      - {id: gimel_melakhim_lo_metu, role: trois_rois_survivent}
+      - {id: kelim_me_ulim, role: kelim_excellents}
+      - {id: ozen_neshamah, role: ozen_niveau_neshamah}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La qualite du Kli depend de la SOURCE. Ozen (Neshamah) = qualite superieure → survie."
+
+  - id: "EC-H2S8-076"
+    source_he: "אמנם הז' מלכים תתאין מתו לפי שכליהם נעשו מהסתכלות עין בחוטם פה לבד והיה חסר מהם אור האזן העליונה"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      Les 7 MELAKHIM INFERIEURS (tata'in) sont MORTS.
+      RAISON : leurs KELIM = faits de l'Histakkelut de l'oeil
+      sur HOTEM et PEH SEULEMENT (levad).
+      Il leur MANQUAIT (hasar mehem) l'Ohr de l'OZEN SUPERIEURE.
+      → L'absence de l'Ozen (= Neshamah) = cause de la mort.
+    type: axiome_explicite
+    concepts:
+      - {id: sheva_metu, role: sept_rois_morts}
+      - {id: heider_ozen, role: manque_dozen}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le manque d'une source (Ozen/Neshamah) = defaillance structurelle. Un composant sans son 3eme flux meurt."
+
+  # ─── DIFFERENCIATIONS DANS LES 3 SUPERIEURES ────────────────────
+
+  - id: "EC-H2S8-077"
+    source_he: "גם בג\"ר עצמם יש בהם חילוק בין זו לזו... כי מן הכתר לא ירד ממנו אפי' האחוריים אלא האחוריים של נה\"י בלבד אבל באו\"א של הנקודים ירדו האחוריים שלהם לבד ונשארו הפנים במקומה"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      MEME DANS les 3 SUPERIEURES (G"R) il y a des DIFFERENCES :
+      KETER : RIEN n'est tombe, sauf les Ahoraim de NHY seulement.
+      Variante (Nusah Aher) : "והנה" (et voici) au lieu de "והוא" (et il).
+      AV"I (Abba ve-Imma) des Nekudim : les AHORAIM (dos) seuls
+      sont tombes. Les PANIM (faces) sont RESTEES en place.
+      → 3 niveaux de dommage meme dans les survivants.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_lo_nafal, role: keter_rien_ne_tombe}
+      - {id: avi_ahoraim_naflu, role: abba_imma_dos_tombes}
+      - {id: avi_panim_nisharu, role: abba_imma_faces_restees}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "ohr.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Meme les survivants ont des degres de dommage. Le Keter = le plus resilient."
+
+  - id: "EC-H2S8-078"
+    source_he: "כי אלו האורות שנמשכים עד שבולת הזקן נחלקו לג' כי הכתר לקח מבחי' האזן עצמה... ומכ\"ש שנכללים בו ב' אורות אחרים ומזה נעשה כלי לכתר נקודים ואבא לקח ממה שהראייה שואבת מאורות החוטם וגם אור הפה נכלל בו"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      Les Orot au SHEVULET se DIVISENT en 3 :
+      KETER a pris de l'OZEN ELLE-MEME (l'essence), et a fortiori
+      les 2 autres Orot (Hotem, Peh) y sont INCLUS → Kli de Keter.
+      ABBA a pris de l'Histakkelut de l'oeil sur le HOTEM,
+      et aussi l'Ohr du PEH y est INCLUS.
+      → Keter = source la plus forte (Ozen). Abba = source intermediaire (Hotem).
+    type: axiome_explicite
+    concepts:
+      - {id: keter_min_ozen, role: keter_prend_de_lozen}
+      - {id: abba_min_hotem, role: abba_prend_du_hotem}
+    mapping:
+      modules: ["ohr.py", "partzufim/abba.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba"]
+      relevance: "Hierarchie des sources : Ozen (Keter) > Hotem (Abba) > Peh (Imma). La source determine la resilience."
+
+  - id: "EC-H2S8-079"
+    source_he: "הכתר שלקח מן האזן הארתו גדולה מאד לא נשבר כלי שלו אבל או\"א שאין לוקחין רק מן החוטם ופה נשברו האחוריים של כליהם"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      KETER : il a pris de l'OZEN → son illumination est TRES GRANDE
+      (he'arato gdolah me'od) → son KLI ne s'est PAS BRISE (lo nishbar).
+      AV"I : ils ne prennent que du HOTEM et PEH →
+      les AHORAIM de leurs KELIM se sont BRISES (nishberu).
+      → L'Ozen (= Neshamah) protege TOTALEMENT. Hotem+Peh = insuffisant.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_lo_nishbar, role: keter_kli_intact}
+      - {id: avi_ahoraim_nishberu, role: abba_imma_dos_brises}
+    mapping:
+      modules: ["ohr.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["ohr_states", "partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Le degre de protection depend de la qualite de la source. L'Ozen (la plus haute) protege completement."
+
+  - id: "EC-H2S8-080"
+    source_he: "אבל הכתר כיון שלוקח אור האזן ממש אע\"פ שלקחו סיומו כיון שהוא לוקח עצמותו די בזה... משא\"כ באו\"א שאינן לוקחין רק הארה בעלמא וגם שהוא ברחוק מקום"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      DISTINCTION ESSENCE vs ILLUMINATION :
+      KETER prend l'Ohr de l'OZEN MAMASH (reellement), meme a sa FIN
+      (siyumo) → il prend l'ATZMUTO (son essence) → SUFFISANT (dai bezeh).
+      AV"I ne prennent qu'une HE'ARAH BE'ALMA (simple illumination)
+      ET de LOIN (be-rihuq maqom) → INSUFFISANT.
+      → La difference n'est pas la QUANTITE mais la QUALITE : essence vs reflet.
+    type: axiome_explicite
+    concepts:
+      - {id: atzmut_vs_hearah, role: essence_versus_illumination}
+      - {id: rihuq_maqom, role: distance_de_la_source}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "L'essence (atzmut) resiste, le simple reflet (he'arah) ne suffit pas. Qualite > quantite."
+
+  - id: "EC-H2S8-081"
+    source_he: "והרי נתבאר ג' בחי' אלו והם כי הכתר נתקיים כולו. ואו\"א נשברו ונפלו האחוריים שלהם. וזו\"ן נפלו פנים והאחוריים שלהם"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      RESUME DES 3 NIVEAUX DE DOMMAGE (cf. EC-H2S8-077) :
+      1. KETER = s'est maintenu ENTIEREMENT (nitkayem kulo).
+      2. AV"I = BRISES et TOMBES — les AHORAIM seulement.
+      3. ZO"N (Ze'ir Anpin + Nukvah) = TOMBES — PANIM ET Ahoraim.
+      → Gradient de dommage : Keter(0) < AV"I(partiel) < ZO"N(total).
+    type: axiome_explicite
+    concepts:
+      - {id: shalosh_madregot_nezek, role: trois_niveaux_dommage}
+      - {id: zon_naflu_hakol, role: zon_tout_est_tombe}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "3 niveaux de dommage = 3 niveaux de resilience. Le Keter = incassable. ZO'N = totalement brises."
+
+  - id: "EC-H2S8-082"
+    source_he: "נרמז בו ב\"פ מלת תהו א' מפורש בפסוק וב' בר\"ת למפרע והארץ היתה תהו והוא כנגד ב' בחי' הנ\"ל כי תהו הישר המפורש בפסוק הוא בחי' ז' מלכים שמתו ונתבטלו אפי' הפנים שלהם הישרים ותהו שבר\"ת למפרע הוא בחי' ביטול האחוריים דאו\"א כי כל למפרע הוא בחי' האחוריים"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      "VE-HA-ARETZ HAITA TOHU VA-VOHU" (Genese 1:2) contient
+      2 fois le mot TOHU :
+      1. TOHU EXPLICITE dans le verset = les 7 MELAKHIM qui sont MORTS,
+         meme leurs PANIM (les droits/yashar = explicite).
+      2. TOHU en ACRONYME INVERSE (ר"ת למפרע) : ו.ה.ת = והארץ.היתה.תהו
+         = le BITUL des AHORAIM d'AV"I (car INVERSE = AHORAIM).
+      → Le verset encode les 2 types de destruction : Z"T et Ahoraim d'AV"I.
+    type: déduction_scripturaire
+    concepts:
+      - {id: tohu_kaful, role: tohu_double}
+      - {id: rashei_tevot_lemafrea, role: acronyme_inverse_ahoraim}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "L'acronyme inverse = Ahoraim. Technique hermeneutique : le sens inverse encode la face arriere."
+
+  # ─── OR MAKIF / OR PNIMI DANS LES NEKUDIM ───────────────────────
+
+  - id: "EC-H2S8-083"
+    source_he: "בודאי כי גם בנקודים יש בחי' אורות מקיפים ופנימים... אור זה נחלק לב' ומה שלוקח מצד ימין הן אורות ממש ומה שלוקח מצד שמאל הם כלים"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      Dans les NEKUDIM aussi il y a des OROT MAKIFIM (entourants)
+      et PENIMIYIM (interieurs). Le 3eme Ohr (Histakkelut sur AHP,
+      cf. EC-H2S8-070) se DIVISE EN 2 :
+      Ce qui est pris du cote DROIT (yamin) = des OROT reels (orot mamash).
+      Ce qui est pris du cote GAUCHE (smol) = des KELIM (vaisseaux).
+      → Droit = lumiere. Gauche = structure. La lateralite determine la nature.
+    type: axiome_explicite
+    concepts:
+      - {id: yamin_orot, role: droite_donne_lumieres}
+      - {id: smol_kelim, role: gauche_donne_kelim}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La lateralite (droite/gauche) determine si c'est lumiere ou structure. Pattern de bifurcation."
+
+  - id: "EC-H2S8-084"
+    source_he: "וכבר נת\"ל כי באור יש בחי' פנימי ומקיף ובכלי יש פנימי וחיצון. נמצא כי כל אלו ד' בחי' לוקח הסתכלות העין מג' אורות אח\"פ"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      QUATRE ASPECTS dans chaque Nekudah :
+      Dans l'OHR : PNIMI (interieur) et MAKIF (entourant).
+      Dans le KLI : PNIMI (interieur) et HITZON (exterieur).
+      = 4 BEHINOT (aspects) au total.
+      L'HISTAKKELUT de l'oeil prend CES 4 ASPECTS des 3 Orot AHP.
+      → Chaque Nekudah = 4 couches (Or Pnimi, Or Makif, Kli Pnimi, Kli Hitzon).
+    type: axiome_explicite
+    concepts:
+      - {id: arba_behinot, role: quatre_aspects}
+      - {id: or_pnimi_nekudim, role: lumiere_interieure}
+      - {id: or_makif_nekudim, role: lumiere_entourante}
+      - {id: kli_pnimi_nekudim, role: vaisseau_interieur}
+      - {id: kli_hitzon_nekudim, role: vaisseau_exterieur}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Chaque Nekudah a 4 couches concentriques. Architecture en oignon : Kli Hitzon > Kli Pnimi > Or Makif > Or Pnimi."
+
+  - id: "EC-H2S8-085"
+    source_he: "כשמסתכל העין באורות האזן ביושר נגד הסתכלות העין בעצמו שהוא שבולת הזקן עצמו מצד ימין הוא בחי' או\"מ. ומה שהוא ג\"כ בצד ימין אלא שהוא רחוק והוא מן הצדדים זה או\"פ שהוא מועט... בצד שמאל מה שהוא כנגד הסתכלות העין ממש הוא חיצונית הכלי ומה שהוא לצדדים הוא פנימיות הכלי... וכן הוא מה שלוקח מן הפה נחלק לשנים"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      MAPPING DETAILLE DES 4 ASPECTS depuis l'Histakkelut sur AHP :
+      DROIT + EN FACE du regard = OHR MAKIF (le plus fort).
+      DROIT + SUR LES COTES = OHR PNIMI (moindre, mu'at).
+      GAUCHE + EN FACE = HITZONIYUT du KLI (exterieur du vaisseau).
+      GAUCHE + SUR LES COTES = PENIMIYUT du KLI (interieur du vaisseau).
+      Ce pattern se REPETE pour chaque source (Ozen, Hotem, Peh)
+      avec des variantes de decoupage spatial (avant/apres Peh, etc.).
+    type: axiome_explicite
+    concepts:
+      - {id: mapping_4_behinot, role: quatre_aspects_spatiaux}
+      - {id: yamin_neged_om, role: droite_face_or_makif}
+      - {id: yamin_tzad_op, role: droite_cotes_or_pnimi}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le pattern 4-fold se repete sur chaque source. Direction x lateralite = matrice 2x2 pour les 4 aspects."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S8-025"
+    type: "causal"
+    from: histakkelut_be_ahp
+    to: kelim_min_ahp
+    nature: "L'Histakkelut de l'oeil sur AHP PRODUIT les KELIM des Nekudot (3eme Ohr)"
+    assertions_source: ["EC-H2S8-070"]
+
+  - id: "REL-H2S8-026"
+    type: "causal"
+    from: ozen_neshamah
+    to: gimel_melakhim_lo_metu
+    nature: "L'Ozen (= Neshamah) dans les Kelim des 3 superieures CAUSE leur survie"
+    assertions_source: ["EC-H2S8-075", "EC-H2S8-078"]
+
+  - id: "REL-H2S8-027"
+    type: "causal"
+    from: heider_ozen
+    to: sheva_metu
+    nature: "L'ABSENCE de l'Ozen dans les Kelim des 7 inferieures CAUSE leur mort"
+    assertions_source: ["EC-H2S8-076"]
+
+  - id: "REL-H2S8-028"
+    type: "hiérarchique"
+    from: keter_lo_nishbar
+    to: avi_ahoraim_nishberu
+    via: [zon_naflu_hakol]
+    nature: "Hierarchie de resilience : Keter (intact) > AV'I (Ahoraim brises) > ZO'N (tout tombe)"
+    assertions_source: ["EC-H2S8-081"]
+
+  - id: "REL-H2S8-029"
+    type: "dualité_structurelle"
+    paire: [yamin_orot, smol_kelim]
+    nature: "Droite = Orot (lumiere), Gauche = Kelim (structure) = dualite fondamentale dans l'Histakkelut"
+    assertions_source: ["EC-H2S8-083"]
+
+  - id: "REL-H2S8-030"
+    type: "contenance"
+    from: arba_behinot
+    to: or_pnimi_nekudim
+    nature: "Les 4 aspects CONTIENNENT Or Pnimi, Or Makif, Kli Pnimi, Kli Hitzon dans chaque Nekudah"
+    assertions_source: ["EC-H2S8-084"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S8-011"
+    nom: "Resilience par Nombre de Sources (3 vs 2 flux)"
+    source_assertions: ["EC-H2S8-074", "EC-H2S8-075", "EC-H2S8-076"]
+    formalisation: |
+      La SURVIE d'un composant depend du NOMBRE DE SOURCES qui l'alimentent :
+      3 SOURCES (Ozen + Hotem + Peh) = SURVIE (les 3 superieures).
+      2 SOURCES (Hotem + Peh seulement) = MORT (les 7 inferieures).
+      La SOURCE CRITIQUE manquante = l'OZEN = niveau NESHAMAH = le plus haut.
+      FORMULE : Resilience ~ nombre_sources x qualite_source_max.
+      La qualite de la source COMPTE PLUS que la quantite (cf. EC-H2S8-080).
+    applications_ia:
+      - "ohr.py : un module alimentee par 3 sources est plus resilient qu'un module a 2 sources"
+      - "Analogie ML : un modele avec 3 skip connections est plus stable qu'avec 2"
+      - "La source la plus haute (Ozen/Neshamah) est la plus critique — sa perte est fatale"
+    questions_ouvertes:
+      - "Ce pattern '3 sources = stable, 2 = insuffisant' est-il universel ou specifique aux Nekudim ?"
+      - "Quel est l'equivalent ML de l'Ozen (la source Neshamah) ?"
+
+  - id: "PG-H2S8-012"
+    nom: "Gradient de Resilience (Keter > AV'I > ZO'N)"
+    source_assertions: ["EC-H2S8-077", "EC-H2S8-079", "EC-H2S8-080", "EC-H2S8-081"]
+    formalisation: |
+      Meme parmi les SURVIVANTS, il y a un GRADIENT de dommage :
+      KETER : 0 dommage (prend l'ESSENCE de l'Ozen).
+      AV'I : dommage PARTIEL (Ahoraim brises, Panim intacts).
+      ZO'N : dommage TOTAL (tout tombe, Panim + Ahoraim).
+      FACTEUR DETERMINANT : ESSENCE (atzmut) vs ILLUMINATION (he'arah).
+      Keter prend l'atzmut → totalement protege.
+      AV'I prennent une he'arah de loin → partiellement protegees.
+    applications_ia:
+      - "ohr.py : les composants les plus proches de la source originale sont les plus resilients"
+      - "Analogie ML : les premieres couches (proches de l'input) sont plus stables que les dernieres"
+      - "L'atzmut vs he'arah = acces direct a la source vs acces a une representation derivee"
+    questions_ouvertes:
+      - "La distinction atzmut/he'arah est-elle analogue a primary key vs foreign key ? Ou a embedding direct vs projection ?"
+
+  - id: "PG-H2S8-013"
+    nom: "Matrice 2x2 des Aspects (Direction x Lateralite)"
+    source_assertions: ["EC-H2S8-083", "EC-H2S8-084", "EC-H2S8-085"]
+    formalisation: |
+      Chaque Histakkelut (regard) produit 4 aspects par une MATRICE 2x2 :
+                | EN FACE (neged)      | SUR LES COTES (tzad)    |
+      DROIT     | Or MAKIF (fort)       | Or PNIMI (faible)        |
+      GAUCHE    | Kli HITZON (exterieur)| Kli PNIMI (interieur)    |
+      PROPRIETE : En face = plus fort que sur les cotes.
+      Droite = Ohr (lumiere). Gauche = Kli (structure).
+      Ce pattern se repete pour chaque SOURCE (Ozen, Hotem, Peh).
+    applications_ia:
+      - "ohr.py : chaque source produit 4 outputs par decomposition direction x lateralite"
+      - "Analogie ML : attention heads decomposent le signal en key/value + inner/outer = 4 aspects"
+      - "La matrice 2x2 = un pattern de factorisation tensorielle"
+    questions_ouvertes:
+      - "La matrice 2x2 (direction x lateralite) est-elle un invariant structurel de toutes les emanations ?"
+      - "Ce pattern 4-fold correspond-il aux 4 lettres de YHVH ?"

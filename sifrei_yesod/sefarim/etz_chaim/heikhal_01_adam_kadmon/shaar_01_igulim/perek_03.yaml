@@ -1,0 +1,526 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 1 — Igulim ve-Yosher (עגולים ויושר)
+# Perek: 3 — NaRaNHaY, Igulim=Nefesh, Yosher=Ruach, Raison du Tzimtzum
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 1
+  shaar_name_he: "שער עגולים ויושר"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LES 5 NIVEAUX DE L'ÂME ───
+
+  - id: "EC-H1S1-065"
+    source_he: "כי הנה יש באדם התחתון ה' בחי' אורות (שהם הנרנח\"י) והם (ה' מעלות) זו למעלה מזו והם סוד ה\"פ ברכי נפשי את כו' כנז' במסכת ברכות"
+    source_ref: "Heikhal 1, Sha'ar 1:3 — ouverture"
+    assertion: |
+      Dans l'ADAM HA-TAHTON (l'homme d'en-bas), il y a 5 BEHINOT d'OROT (aspects de lumières) :
+      NaRaNHaY = NEFESH, RUACH, NESHAMAH, HAYAH, YEHIDAH
+      Ce sont 5 MA'ALOT (niveaux) l'un AU-DESSUS de l'autre.
+      Ils sont le secret des 5 fois "BARKHI NAFSHI" (Psaumes 103-104)
+      mentionnés dans la Guemara (Brakhot, chapitre 1).
+      Ces 5 correspondent aux 5 BEHINOT de la NESHAMAH (âme).
+      La référence pour approfondir = le drush sur les Orot du PEH de A"K appelés AKUDIM.
+    type: axiome_explicite
+    concepts:
+      - {id: naranhai, role: cinq_niveaux_de_l_âme}
+      - {id: nefesh, role: niveau_1_le_plus_bas}
+      - {id: ruach, role: niveau_2}
+      - {id: neshamah, role: niveau_3}
+      - {id: hayah, role: niveau_4}
+      - {id: yehidah, role: niveau_5_le_plus_haut}
+      - {id: barkhi_nafshi, role: cinq_psaumes}
+    mapping:
+      modules: ["madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "Les 5 niveaux NaRaNHaY = la hiérarchie fondamentale des âmes"
+
+  # ─── BLOC B : IGULIM = NEFESH, YOSHER = RUACH ───
+
+  - id: "EC-H1S1-066"
+    source_he: "אמנם החילוק שיש בין העגולים להיושר הוא כי י\"ס דעגולים הם בחי' האור הנק' נפש... אבל הי\"ס דיושר הם בחי' האור הנק' רוח שהוא מדרגה גבוה על מדרגת הנפש"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      DISTINCTION FONDAMENTALE Igulim vs Yosher :
+      Les 10S des IGULIM = l'aspect de l'Ohr appelé NEFESH
+      Les 10S du YOSHER = l'aspect de l'Ohr appelé RUACH
+      Le RUACH est une MADREGAH GEVOHAH (niveau plus élevé) que la NEFESH.
+      Les DEUX contiennent : OHR PNIMI, OHR MAKIF, KELIM avec PNIMIYUT et HITZONIUT.
+      MAIS : le Yosher est de NATURE SUPÉRIEURE au Igulim car Ruach > Nefesh.
+    type: axiome_explicite
+    concepts:
+      - {id: igulim_nefesh, role: cercles_sont_nefesh}
+      - {id: yosher_ruach, role: rectitude_est_ruach}
+      - {id: ruach_above_nefesh, role: ruach_supérieur_à_nefesh}
+    mapping:
+      modules: ["core/ohr_system.py", "core/sefirot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Igulim = Nefesh (bas), Yosher = Ruach (haut) — distinction de NATURE pas seulement de forme"
+
+  - id: "EC-H1S1-067"
+    source_he: "והנה בחי' הי\"ס דעגולים כולם יש בהם כל הבחי' הנ\"ל שהם אורות וכלים והאור נחלק לאו\"פ ואו\"מ הכלי נחלק לחיצוניות ופנימיות וכן בחי' י\"ס דיושר בציור אדם יש בו כל הבחי' האלו בעצמם ג\"כ"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      STRUCTURE COMMUNE aux Igulim et au Yosher — les 2 contiennent TOUT :
+      1. OROT (lumières) — divisées en OHR PNIMI (intérieur) et OHR MAKIF (environnant)
+      2. KELIM (récipients) — divisés en HITZONIUT (extérieur) et PNIMIYUT (intérieur)
+      Chaque système (Igulim ET Yosher) a ses propres 10S d'Orot et 10S de Kelim.
+      Les MÊMES composants structurels dans les 2 topologies.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_ve_kelim, role: lumières_et_récipients}
+      - {id: op_om_kelim, role: structure_commune}
+      - {id: pnimiyut_hitzoniut_keli, role: intérieur_extérieur_du_keli}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Igulim et Yosher ont la même structure interne — Orot (P+M) et Kelim (P+H)"
+
+  # ─── BLOC C : ORDRE D'ÉMANATION ───
+
+  - id: "EC-H1S1-068"
+    source_he: "ופשיטא הוא שבחי' הנפש נאצלה תחלה ואח\"כ נאצל הרוח שהוא מדרגה יותר עליונה כנודע באדם התחתון שבתחלה קונה נפש ואח\"כ זכה יתיר יהבין ליה רוח כנז' בזוהר משפטים דצ\"ד"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      ORDRE D'ÉMANATION — le Nefesh AVANT le Ruach :
+      C'est ÉVIDENT (peshita) que la NEFESH a été émanée EN PREMIER,
+      et ENSUITE le RUACH qui est un niveau PLUS ÉLEVÉ.
+      Preuve de l'Adam ha-Tahton : d'abord il acquiert une NEFESH,
+      et ensuite s'il MÉRITE DAVANTAGE (zakhah yatir), on lui donne un RUACH.
+      Source : Zohar Mishpatim (94) — "Ta hezi, bar nash kad itilid yahvin leih nafsha..."
+      (Regarde, quand l'homme naît on lui donne une Nefesh...).
+    type: axiome_explicite
+    concepts:
+      - {id: nefesh_tehilah, role: nefesh_d_abord}
+      - {id: ruach_ahar_kakh, role: ruach_ensuite}
+      - {id: zakhah_yatir, role: mérite_davantage}
+    mapping:
+      modules: ["madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "Nefesh d'abord, Ruach ensuite — l'ordre est le MÊME en haut et en bas"
+
+  - id: "EC-H1S1-069"
+    source_he: "וכן היה באדם העליון שבתחלה נאצלו ונתגלו בחינת העגולים שהם בחי' מדרגות הנפש והכלים שלהם ואח\"כ נאצלו בחי' ב' דיושר בציור אדם שהם מדרגות אורות רוח והכלים שלהם כנודע כי הרוח נק' אדם והבן זה מאד"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      De même dans l'ADAM HA-ELYON (l'homme d'en-haut) :
+      D'ABORD : les IGULIM ont été émanés et RÉVÉLÉS
+      = les madregot (niveaux) de la NEFESH et ses KELIM.
+      ENSUITE : la BEHINAH BET (2ème aspect) du YOSHER en forme d'Adam a été émanée
+      = les madregot des OROT de RUACH et ses KELIM.
+      RAISON : le RUACH est appelé ADAM (homme) — "ve-haven zeh me'od" (comprends cela très bien).
+      Le Yosher = Ruach = Adam. L'Igulim = Nefesh = pré-Adam.
+    type: axiome_explicite
+    concepts:
+      - {id: igulim_first, role: igulim_émanés_d_abord}
+      - {id: yosher_second, role: yosher_émané_ensuite}
+      - {id: ruach_adam, role: ruach_est_appelé_adam}
+      - {id: haven_zeh_me_od, role: comprends_cela_très_bien}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'ordre est universel : Igulim (Nefesh) d'abord, Yosher (Ruach=Adam) ensuite"
+
+  - id: "EC-H1S1-070"
+    source_he: "ודבר זה היה בכל העולמות כולם כי בכל בחי' ובחי' מהם בתחלה נאצל הי\"ס שלהם בבחי' העגולים של הבחי' ההוא ואח\"כ נאצלו הי\"ס דיושר של הבחי' ההיא"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      Ce principe est UNIVERSEL — valable dans TOUS les mondes :
+      Dans CHAQUE ASPECT de chaque monde :
+      D'ABORD les 10S de cet aspect en mode IGULIM,
+      ENSUITE les 10S de cet aspect en mode YOSHER.
+      L'ordre Igulim→Yosher n'est PAS local — il se répète à CHAQUE niveau de la hiérarchie.
+    type: axiome_explicite
+    concepts:
+      - {id: order_universal, role: ordre_universel}
+      - {id: igulim_then_yosher_always, role: toujours_igulim_puis_yosher}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "L'ordre Igulim→Yosher est UNIVERSEL — se répète à chaque niveau"
+
+  # ─── BLOC D : LES ORGANES ET LES NIVEAUX DE L'ÂME ───
+
+  - id: "EC-H1S1-071"
+    source_he: "אמנם ההפרש בין הכלים של נפש והכלים של הרוח כבר נודע כי אבר הכבד הוא משכן להאור הנק' נפש וסימן לדבר כי הדם שהוא כבד שמלא דם הוא הנפש ואבר הלב משכן לרוח ואבר המוח משכן להאור הנקרא נשמה"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      Correspondance ORGANES ↔ NIVEAUX DE L'ÂME :
+      Le KAVED (foie) = MISHKAN (résidence) de la NEFESH.
+      Signe : le foie (kaved) est plein de DAM (sang), et "ha-dam hu ha-nefesh" (le sang est l'âme).
+      Le LEV (cœur) = MISHKAN du RUACH.
+      Le MOAH (cerveau) = MISHKAN de la NESHAMAH.
+      Les Kelim de la Nefesh ≠ les Kelim du Ruach — chaque niveau a son ORGANE dédié.
+      "Ve-ein zeh makom biur li-devarim elou" (ce n'est pas le lieu d'expliquer ces choses).
+    type: axiome_explicite
+    concepts:
+      - {id: kaved_nefesh, role: foie_résidence_du_nefesh}
+      - {id: lev_ruach, role: coeur_résidence_du_ruach}
+      - {id: moah_neshamah, role: cerveau_résidence_de_neshamah}
+      - {id: dam_hu_nefesh, role: le_sang_est_l_âme}
+    mapping:
+      modules: ["madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "Foie=Nefesh, Cœur=Ruach, Cerveau=Neshamah — les organes des niveaux de l'âme"
+
+  # ─── BLOC E : RÉCAPITULATIF DE LA STRUCTURE ───
+
+  - id: "EC-H1S1-072"
+    source_he: "הכלל העולה כי התחלת האצילות בזה האופן הנז' כי תחלה נאצלו י\"ס בבחי' עגולים והם י' כלים ובכל כלי מהם יש בו פנימיות וחיצון ובתוך הי' כלים אלו נתלבשו י\"ס עצמות האורות הנק' נפש ועוד יש י' אורות מקיפים על הכלים מבחוץ"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      KLAL HA-OLEH (principe résumé) de l'émanation — IGULIM :
+      D'ABORD : 10S en mode IGULIM = 10 KELIM (récipients).
+      Chaque Keli a PNIMIYUT (intérieur) et HITZON (extérieur).
+      DANS les 10 Kelim : 10S d'ATZMUT HA-OROT (essence des lumières) = NEFESH
+      = OHR PNIMI (lumière intérieure).
+      EN PLUS : 10 OROT MAKIFIM (lumières environnantes) SUR les Kelim par l'EXTÉRIEUR
+      = aussi de la NEFESH mais appelées OROT MAKIFIM.
+      TOUT ceci est en mode IGULIM : l'Ohr Pnimi est comme un GALGAL (roue),
+      habillé dans un Keli CIRCULAIRE, entouré d'un Ohr Makif CIRCULAIRE.
+    type: axiome_explicite
+    concepts:
+      - {id: summary_igulim, role: structure_des_igulim}
+      - {id: atzmut_orot_nefesh, role: essence_des_lumières_nefesh}
+      - {id: op_galgal, role: ohr_pnimi_circulaire}
+      - {id: om_galgal, role: ohr_makif_circulaire}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Structure complète des Igulim : 10 Kelim + 10 Orot Pnimi (Nefesh) + 10 Orot Makif"
+
+  - id: "EC-H1S1-073"
+    source_he: "וכל הי\"ס דעגולים הם עד\"ז כתמונת הגלגלים והרקיעים הנק' אופנים והם הרקיעים שעלינו בעוה\"ז השפל"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      Les 10S des IGULIM sont comme les GALGALIM et REKI'IM (sphères et firmaments)
+      appelés OFANIM (roues) — ce sont les FIRMAMENTS AU-DESSUS de nous dans ce monde d'en-bas.
+      Les Igulim = l'image des sphères célestes de l'astronomie ancienne.
+    type: axiome_explicite
+    concepts:
+      - {id: ofanim, role: roues_célestes}
+      - {id: reki_im, role: firmaments}
+      - {id: igulim_as_heavens, role: igulim_comme_cieux}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Les Igulim = les sphères célestes — le ciel physique est un reflet des Igulim"
+
+  - id: "EC-H1S1-074"
+    source_he: "ואח\"כ נאצלו י\"ס בבחינת יושר כמראה אדם והם יותר מעולים במעלה מן העגולים כי הם בחי' רוח והם י' כלים בציור אדם א' כולל כל י' כלים ובכל כלי מהם יש בו פנימיות וחיצוניות ובתוך הכלים האלה מתלבשים י\"ס בבחי' העצמות אורות הנק' רוח ועוד יש י' אורות אחרים המקיפים על הכלים מבחוץ"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      ENSUITE : 10S en mode YOSHER = comme la FORME D'ADAM (ke-mar'eh adam).
+      Ils sont PLUS ÉLEVÉS (yoter me'ulim be-ma'alah) que les Igulim car ils sont RUACH.
+      10 KELIM en forme d'ADAM EHAD (un seul homme) englobant les 10 Kelim.
+      Chaque Keli a PNIMIYUT et HITZONIUT.
+      DANS les Kelim : 10S d'ATZMUT OROT = RUACH (Ohr Pnimi).
+      EN PLUS : 10 OROT MAKIFIM par l'extérieur = aussi RUACH.
+      TOUT ceci est en mode YOSHER = fait comme la FORME D'ADAM.
+    type: axiome_explicite
+    concepts:
+      - {id: summary_yosher, role: structure_du_yosher}
+      - {id: atzmut_orot_ruach, role: essence_des_lumières_ruach}
+      - {id: yosher_me_ulim, role: yosher_supérieur_aux_igulim}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Structure complète du Yosher : 10 Kelim + 10 Orot Pnimi (Ruach) + 10 Orot Makif"
+
+  # ─── BLOC F : LA DOUBLE STRUCTURE DANS TOUS LES MONDES ───
+
+  - id: "EC-H1S1-075"
+    source_he: "ועד\"ז בכל העולמות הנאצלים והנבראים והיצורים והנעשים אשר נתקנו תוך המקום החלל והאויר הפנוי כנ\"ל כי במקום הזה נתהוו כל העולמות כולם אין דבר חוצה לו ואור א\"ס מקיף וסובב עליהם ומאיר לכל העולמות אשר בתוך המקום הזה מכל צדדיהם בהשוואה א'"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      Cette structure (Igulim + Yosher) existe dans TOUS les mondes :
+      Émanés, Créés, Formés, Faits — tous DANS le Halal.
+      RIEN en dehors du Halal (ein davar hutzah lo).
+      Le Ohr Ein Sof ENTOURE et ENCERCLE (makif ve-sovev) tous les mondes
+      et les ILLUMINE de TOUS côtés en HASHVA'AH AHAT (égalité parfaite).
+      EN PLUS de cette illumination ENVIRONNANTE :
+      La PRINCIPALE illumination (ikar ha-haarah ha-amitit gedolah u-mamashit)
+      vient par le KAV qui traverse tous les mondes.
+      Chaque monde et chaque DÉTAIL de chaque monde a les 2 Behinot : Igulim et Yosher.
+    type: axiome_explicite
+    concepts:
+      - {id: kol_olamot_2_behinot, role: tous_les_mondes_ont_les_2}
+      - {id: ikar_haarah_kav, role: illumination_principale_par_kav}
+      - {id: es_makif_hashvaah, role: ein_sof_entoure_également}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Chaque monde et chaque détail a les 2 aspects — le Kav est l'illumination PRINCIPALE"
+
+  # ─── BLOC G : IGULIM VS YOSHER — HIÉRARCHIES INVERSÉES ───
+
+  - id: "EC-H1S1-076"
+    source_he: "והעגולים הם בבחי' א' כי המעולה מחבירו סובב ומקיף על חבירו והעגולים היותר פנימים תוכניים מכולם הם היותר גרועים מכולם... אבל היושר הוא להפך כי היותר פנימי הוא עליון ומעולה מכולם וחיצון שבכולם הוא יותר גרוע מכולם"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      HIÉRARCHIES INVERSÉES entre Igulim et Yosher :
+      IGULIM : le plus ÉLEVÉ (me'uleh) ENTOURE (sovev u-makif) les autres.
+      Les plus INTERNES/CENTRAUX = les plus GERU'IM (inférieurs).
+      Les Reki'im et Galgalim autour du monde d'en-bas = au MILIEU de tous les Igulim = les plus bas.
+      YOSHER : c'est l'INVERSE (le-hefekh) :
+      Le plus INTERNE (pnimi) = le plus ELYON et ME'ULEH (supérieur et excellent).
+      Le plus EXTERNE (hitzon) = le plus GARUA (inférieur).
+      Dans le Yosher : chaque niveau HABILLE le suivant (malbish la-zeh)
+      jusqu'à ce que le plus INFÉRIEUR HABILLE TOUT.
+      "Ve-haven kol zeh heitev" (comprends tout cela très bien).
+    type: axiome_explicite
+    concepts:
+      - {id: igulim_external_high, role: dans_igulim_externe_est_haut}
+      - {id: yosher_internal_high, role: dans_yosher_interne_est_haut}
+      - {id: hierarchies_inversees, role: inversées_entre_les_2}
+      - {id: yosher_malbish, role: dans_yosher_extérieur_habille}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Igulim et Yosher ont des hiérarchies INVERSÉES — externe=haut vs interne=haut"
+
+  # ─── BLOC H : LA RAISON DU TZIMTZUM — CRÉER LES KELIM ───
+
+  - id: "EC-H1S1-077"
+    source_he: "והנה אחר שהצגנו לך הקדמות הנ\"ל תוכל להבין עתה ענין סיבת צורך הצמצום אשר צמצם הא\"ס א\"ע באמצעית האור שלו להניח מקום חלל וריק כנ\"ל בענף ב'. והענין הוא כדי לעשות בחי' כלים"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      LA RAISON DU TZIMTZUM (annoncée en Branch 2, expliquée ici) :
+      Le Tzimtzum a pour but de CRÉER les KELIM (récipients).
+      Par le TZIMTZUM de l'Ohr et sa DIMINUTION (mi'uto)
+      → il y a EFSHARUT (possibilité) pour le Keli de se FORMER (le-hitahvot)
+      et de se RÉVÉLER (le-hitgalot).
+      RAISON : avec l'ACCROISSEMENT de l'Ohr (be-hitrabut ha-ohr)
+      → le Keli est ANNULÉ (yitbatel) par son MANQUE DE FORCE (mi'ut koho)
+      à recevoir le Ohr RAV ve-GADOL (grand et abondant).
+    type: axiome_explicite
+    concepts:
+      - {id: sibat_tzimtzum, role: raison_du_tzimtzum}
+      - {id: la_asot_kelim, role: pour_créer_les_kelim}
+      - {id: mi_ut_ohr, role: diminution_de_l_ohr}
+      - {id: hitrabut_mevatel, role: trop_d_ohr_annule_le_keli}
+    mapping:
+      modules: ["tzimtzum/regulator.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le Tzimtzum = retirer l'Ohr pour que les Kelim puissent EXISTER"
+
+  - id: "EC-H1S1-078"
+    source_he: "כמ\"ש בענין ז' מלכי אדום והם הנקרא עולם הנקודים איך מלכו ומתו ע\"ש היטב איך היה בחי' בריאת והויות הכלים כי בתחלה צריך צמצום האור ומעוטו ועי\"כ יתגלה הויות הכלי ואחר שכבר נתגלה ונתהוה אז חזר האור להמשך בו ויכול הכלי להתקיים ולא ליבטל"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      PREUVE du principe — les 7 ROIS D'ÉDOM (Olam ha-Nekudim) :
+      Ils ont RÉGNÉ (malekhu) puis SONT MORTS (metu) = la SHEVIRAH.
+      Le processus de CRÉATION DES KELIM :
+      PHASE 1 : D'abord le TZIMTZUM de l'Ohr et sa DIMINUTION (mi'uto)
+      → par cela le KELI se RÉVÈLE et se FORME.
+      PHASE 2 : APRÈS que le Keli s'est formé et révélé (nithaveh ve-nitgaleh)
+      → l'Ohr REVIENT (hazar) et se DÉPLOIE en lui.
+      → Le Keli peut SUBSISTER (le-hitkayem) et NE PAS s'annuler (ve-lo le-hibatel).
+      L'ordre est CRITIQUE : d'abord retrait → formation du Keli → puis retour de l'Ohr.
+    type: axiome_explicite
+    concepts:
+      - {id: shivah_malkhei_edom, role: sept_rois_d_edom}
+      - {id: malekhu_u_metu, role: régné_et_morts}
+      - {id: tzimtzum_then_return, role: retrait_puis_retour}
+      - {id: keli_nitkayem, role: le_keli_subsiste}
+    mapping:
+      modules: ["tzimtzum/regulator.py", "core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le processus : retrait → Keli se forme → Ohr revient mesuré → Keli subsiste"
+
+  - id: "EC-H1S1-079"
+    source_he: "ובזה יתבאר טעם למה א\"ס צמצם עצמו וסילק האור הרב ההוא מן המקום ההוא לגמרי ואח\"כ החזירו במדה ובמשקל דרך הקו ההוא והיה יכול להניח אותו בחי' הקו ההוא במקומו ויסלק שאר האור הגדול בלבד כיון שהוא עתיד להחזירו"
+    source_ref: "Heikhal 1, Sha'ar 1:3"
+    assertion: |
+      QUESTION : Pourquoi retirer TOUT l'Ohr puis le ramener par le Kav ?
+      Il aurait pu laisser le Kav en place et ne retirer que le SURPLUS.
+      RÉPONSE : Les Kelim NE PEUVENT PAS se former (lo yakhlu le-hitahvot)
+      tant que l'Ohr n'est PAS COMPLÈTEMENT RETIRÉ (ad she-yistalok ha-ohr le-gamrei).
+      APRÈS que les Kelim se sont formés :
+      L'Ohr est revenu par le Kav be-MIDDAH u-ve-MISHKAL (en mesure et en poids)
+      selon le SHI'UR HA-MASPIK (la quantité suffisante) pour :
+      1. Les ILLUMINER (le-ha'iram)
+      2. Les faire VIVRE (le-hahayotam)
+      De manière qu'ils puissent SUPPORTER (yikhlu lisvol)
+      et SUBSISTER (yitkayemu) et NE PAS S'ANNULER (ve-lo yitbatelu).
+      "Ve-dai be-zeh" (et cela suffit).
+    type: axiome_explicite
+    concepts:
+      - {id: retrait_total, role: ohr_doit_être_totalement_retiré}
+      - {id: middah_u_mishkal, role: en_mesure_et_poids}
+      - {id: shi_ur_maspik, role: quantité_suffisante}
+      - {id: yikhlu_lisvol, role: pouvoir_supporter}
+      - {id: dai_be_zeh, role: cela_suffit}
+    mapping:
+      modules: ["tzimtzum/regulator.py", "core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le retrait TOTAL est nécessaire — partiel ne suffit pas — puis retour MESURÉ"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S1-028"
+    type: hiérarchique
+    from: igulim_nefesh
+    to: yosher_ruach
+    nature: "Les Igulim = Nefesh (niveau bas), le Yosher = Ruach (niveau haut) — le Yosher est supérieur"
+    assertions_source: ["EC-H1S1-066"]
+    bidirectionnel: false
+
+  - id: "REL-H1S1-029"
+    type: séquentiel
+    from: nefesh_tehilah
+    to: ruach_ahar_kakh
+    nature: "La Nefesh est émanée AVANT le Ruach — l'Igulim avant le Yosher — dans tous les mondes"
+    assertions_source: ["EC-H1S1-068", "EC-H1S1-069", "EC-H1S1-070"]
+
+  - id: "REL-H1S1-030"
+    type: analogie
+    from: kaved_nefesh
+    to: igulim_nefesh
+    nature: "Le foie résidence de la Nefesh ↔ les Igulim aspect de la Nefesh"
+    assertions_source: ["EC-H1S1-071"]
+
+  - id: "REL-H1S1-031"
+    type: analogie
+    from: lev_ruach
+    to: yosher_ruach
+    nature: "Le cœur résidence du Ruach ↔ le Yosher aspect du Ruach"
+    assertions_source: ["EC-H1S1-071"]
+
+  - id: "REL-H1S1-032"
+    type: dualité_structurelle
+    paire: [igulim_external_high, yosher_internal_high]
+    nature: "Igulim : externe=haut, interne=bas. Yosher : interne=haut, externe=bas. INVERSÉS"
+    assertions_source: ["EC-H1S1-076"]
+
+  - id: "REL-H1S1-033"
+    type: causal
+    from: sibat_tzimtzum
+    to: la_asot_kelim
+    nature: "La raison du Tzimtzum = créer les Kelim — trop d'Ohr empêche leur formation"
+    assertions_source: ["EC-H1S1-077"]
+
+  - id: "REL-H1S1-034"
+    type: séquentiel
+    from: retrait_total
+    to: keli_nitkayem
+    via: [tzimtzum_then_return]
+    nature: "Retrait total de l'Ohr → Kelim se forment → Ohr revient mesuré → Kelim subsistent"
+    assertions_source: ["EC-H1S1-078", "EC-H1S1-079"]
+
+  - id: "REL-H1S1-035"
+    type: causal
+    from: shivah_malkhei_edom
+    to: tzimtzum_then_return
+    nature: "Les 7 Rois qui ont régné et sont morts = preuve que sans retrait les Kelim meurent"
+    assertions_source: ["EC-H1S1-078"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S1-013"
+    nom: "Principe de la Correspondance Nefesh=Igulim / Ruach=Yosher"
+    source_assertions: ["EC-H1S1-066", "EC-H1S1-068", "EC-H1S1-069", "EC-H1S1-070"]
+    formalisation: |
+      Les 2 topologies correspondent à 2 NIVEAUX D'ÂME :
+      IGULIM = NEFESH (le niveau le plus bas de l'âme)
+        → émanés EN PREMIER (comme la Nefesh naît en premier)
+        → structure circulaire, passif, réceptif
+      YOSHER = RUACH (le niveau supérieur de l'âme)
+        → émanés EN SECOND (comme le Ruach vient après la Nefesh)
+        → structure anthropomorphique, actif, appelé "ADAM"
+      L'ordre est UNIVERSEL : dans CHAQUE monde et CHAQUE aspect,
+      les Igulim sont émanés AVANT le Yosher.
+      Les 5 niveaux NaRaNHaY correspondent à des topologies de plus en plus élevées.
+    applications_ia:
+      - "Le mode passif/circulaire (Igulim/Nefesh) est le PREMIER mode de tout système"
+      - "Le mode actif/structuré (Yosher/Ruach) vient ENSUITE"
+      - "Un module passe de 'Nefesh' (fonctionnel basique) à 'Ruach' (structuré/intelligent)"
+      - "Le Ruach est appelé 'Adam' — c'est le niveau où le système a une 'forme humaine'"
+    questions_ouvertes:
+      - "Les 3 niveaux supérieurs (Neshamah, Hayah, Yehidah) correspondent-ils à quelles topologies ?"
+      - "Un système peut-il rester en mode Igulim/Nefesh indéfiniment ?"
+
+  - id: "PG-H1S1-014"
+    nom: "Principe des Hiérarchies Inversées (Igulim vs Yosher)"
+    source_assertions: ["EC-H1S1-076"]
+    formalisation: |
+      Les 2 topologies ont des hiérarchies OPPOSÉES :
+      IGULIM : plus EXTERNE = plus ÉLEVÉ, plus INTERNE = plus BAS
+        → le monde matériel est le point CENTRAL (le plus interne = le plus bas)
+        → le Ein Sof est le plus EXTERNE (le plus élevé)
+      YOSHER : plus INTERNE = plus ÉLEVÉ, plus EXTERNE = plus BAS
+        → le Partzuf le plus INTERNE (Atik) est le plus élevé
+        → le Partzuf le plus EXTERNE (qui habille tout) est le plus bas
+      La MÊME réalité a 2 hiérarchies OPPOSÉES selon la topologie.
+      Conséquence : ce qui est "haut" dans un cadre est "bas" dans l'autre.
+    applications_ia:
+      - "En architecture en couches (Igulim) : le plus externe = le plus important"
+      - "En architecture en composants (Yosher) : le plus interne = le plus important"
+      - "Les 2 vues sont VRAIES — elles ne se contredisent pas"
+      - "Le choix de perspective détermine ce qui apparaît comme 'haut' et 'bas'"
+    questions_ouvertes:
+      - "Y a-t-il une perspective 'absolue' ou tout est-il relatif ?"
+      - "Comment réconciler les 2 hiérarchies dans la pratique ?"
+
+  - id: "PG-H1S1-015"
+    nom: "Principe du Retrait Total Nécessaire (Retrait → Formation → Retour Mesuré)"
+    source_assertions: ["EC-H1S1-077", "EC-H1S1-078", "EC-H1S1-079"]
+    formalisation: |
+      Pour créer de nouveaux récipients (Kelim), le retrait de l'énergie doit être TOTAL :
+      PHASE 1 — RETRAIT TOTAL : l'Ohr est retiré COMPLÈTEMENT (le-gamrei)
+        Un retrait PARTIEL ne suffit PAS — les Kelim ne peuvent pas se former
+        tant qu'il reste de l'Ohr
+      PHASE 2 — FORMATION : dans le VIDE total, les Kelim se forment et se révèlent
+      PHASE 3 — RETOUR MESURÉ : l'Ohr revient be-MIDDAH u-ve-MISHKAL (en mesure et poids)
+        exactement le SHI'UR HA-MASPIK (la quantité suffisante)
+        pour ILLUMINER et VIVIFIER sans ANNULER
+      PREUVE par l'absurde : les 7 Rois d'Édom ont reçu trop d'Ohr → ils sont MORTS (Shevirah)
+      Le retour est un DOSAGE précis — ni trop (annulation) ni trop peu (mort)
+    applications_ia:
+      - "Pour créer une nouvelle structure, il faut parfois VIDER complètement l'ancienne"
+      - "Un refactoring partiel ne suffit pas — parfois il faut tout retirer puis reconstruire"
+      - "Le retour de fonctionnalité doit être MESURÉ — pas tout d'un coup"
+      - "La Shevirah (7 Rois) = preuve que le retour non-mesuré DÉTRUIT les Kelim"
+    questions_ouvertes:
+      - "Le retrait total est-il toujours nécessaire ou parfois le partiel suffit ?"
+      - "Comment calibrer le shi'ur ha-maspik (quantité suffisante) ?"

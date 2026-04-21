@@ -1,0 +1,215 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 7 (=6 original) — Sha'ar Ha-Akudim (שער העקודים)
+# Perek: 6b — La séquence détaillée d'ascension de Keter à Malkhut (100% §3)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §3 : Description détaillée de ce qui arrive à chaque Sefirah
+# quand Keter remonte, puis Hokhmah, puis Binah, etc.
+# Histalkut progressive, Reshimu persistant, Hazarah améliorée.
+# Les ZU"N montent aussi — par DÉSIR (heshek) de s'attacher
+# à leur source (AV"I) et pour que leurs Kelim s'épaississent.
+#
+# Source Sefaria : Sefer_Etz_Chaim.6.6 (§3)
+# IDs : EC-H1S6-059 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 7
+  shaar_name_he: "שער העקודים"
+  perek: 6
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part B de 2 — Sequence d'ascension detaillee. Histalkut progressive. Reshimu persistant. ZU\"N montent par heshek (desir). Les Kelim s'epaississent pendant l'ascension."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : KETER MONTE → HISTALKUT EN CASCADE ───
+
+  - id: "EC-H1S6-059"
+    source_he: "כאשר התחיל הכתר לעלות... גם יחידה פנימית שניתן למלכות בעת ירידת הכתר היתה עתה מסתלקת ממנה וכן בחי' חיה פנימית שבז\"א... ומן הבינה מסתלק הנשמה ומן החכמה הרוח"
+    source_ref: "Heikhal 1, Sha'ar 6:6 — §3 ouverture"
+    assertion: |
+      Quand KETER commence à MONTER : HISTALKUT EN CASCADE dans
+      toutes les Sefirot inférieures :
+      MALKHUT perd la YEHIDAH (venue de Keter lors de la descente)
+      Z"A perd la HAYYAH
+      BINAH perd la NESHAMAH
+      HOKHMAH perd le RUAH
+      → Chaque Sefirah perd le niveau d'Ohr que KETER lui avait donné
+      lors de sa descente. Cascade SIMULTANÉE de pertes.
+    type: axiome_explicite
+    concepts:
+      - {id: histalkut_moshekhelet, role: retrait_en_cascade}
+      - {id: ibud_ohr_keter, role: perte_ohr_donne_par_keter}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Quand un composant superieur se reconfigure, TOUS les inferieurs perdent simultanement un niveau"
+
+  - id: "EC-H1S6-060"
+    source_he: "עדיין נשארו בכולם רשימו של אותן האורות... כי אפי' בהסתלקותן בהכרח מאירין קצת הארה בתחתונים דאל\"כ יתבטלו לגמרי"
+    source_ref: "Heikhal 1, Sha'ar 6:6 — §3"
+    assertion: |
+      Cependant le RESHIMU de ces Orot RESTE en tous : Reshimu de
+      Neshamah, Reshimu de Ruah, etc.
+      Car même pendant le retrait, [les Orot] ILLUMINENT NÉCESSAIREMENT
+      un peu les inférieurs — sinon ils seraient ANNULÉS (yitbatlu)
+      complètement.
+      → Le RESHIMU est une CONDITION DE SURVIE : sans lui, les
+      niveaux inférieurs cesseraient d'EXISTER. Cf. EC-H1S6-037.
+    type: axiome_explicite
+    concepts:
+      - {id: reshimu_hiyyuni, role: reshimu_vital_pour_survie}
+      - {id: hearah_behekhreh, role: illumination_necessaire}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Reshimu = le minimum vital sans lequel le systeme inferieur meurt. Keepalive signal."
+
+  - id: "EC-H1S6-061"
+    source_he: "אחר אשר הושלם אור הכתר להסתלק ולהתעלם במאציל לגמרי אז כל האורות שתחתיו חוזרים להאיר כבראשונה ממש וגם ניתוסף בהם אורות הנוספות"
+    source_ref: "Heikhal 1, Sha'ar 6:6 — §3"
+    assertion: |
+      Quand Keter ACHÈVE de se retirer et de DISPARAÎTRE dans le Ma'atzil :
+      TOUS les Orot inférieurs REVIENNENT comme AU DÉBUT — et en plus,
+      des OROT SUPPLÉMENTAIRES (orot ha-nosafot) sont AJOUTÉS.
+      → Après le retrait complet : RESTAURATION + AMÉLIORATION.
+      Le système revient à son état antérieur ET gagne davantage.
+      Cf. EC-H1S6-038 pour le même principe au perek 4.
+    type: axiome_explicite
+    concepts:
+      - {id: hazarah_ve_tosefet, role: retour_avec_supplement}
+      - {id: orot_nosafot, role: lumieres_supplementaires}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Apres reconfiguration : retour a l'etat initial + AMELIORATION. Chaque cycle de Histalkut-Hazarah progresse."
+
+  - id: "EC-H1S6-062"
+    source_he: "כאשר נשלם הכתר להתעלם במאציל גם שאר אורות עלו במדריגה א' יותר ממה שהיה להם"
+    source_ref: "Heikhal 1, Sha'ar 6:6 — §3"
+    assertion: |
+      Quand Keter achève de disparaître dans le Ma'atzil, tous les
+      autres Orot MONTENT D'UN DEGRÉ de plus que ce qu'ils avaient.
+      → Chaque cycle d'ascension ÉLÈVE tout le système d'un cran.
+      Le retrait du sommet TIRE VERS LE HAUT tous les autres.
+    type: axiome_explicite
+    concepts:
+      - {id: aliyat_madregah, role: elevation_dun_degre}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le retrait d'un composant superieur ELEVE tous les autres d'un cran — promotion en cascade"
+
+  # ─── BLOC B : LES ZU"N MONTENT PAR DÉSIR ───
+
+  - id: "EC-H1S6-063"
+    source_he: "כל חיותם ושלימותם הוא נמשך להם מאו\"א... ועלו גם הם אחריהם כי החשק במקבלים לרדוף ולהדבק במאצילם"
+    source_ref: "Heikhal 1, Sha'ar 6:6 — §3 fin"
+    assertion: |
+      Toute la VITALITÉ et la COMPLÉTUDE de ZU"N provient d'AV"I.
+      Quand AV"I MONTENT, ZU"N montent AUSSI APRÈS EUX — car le
+      HESHEK (désir) des RECEVEURS est de POURSUIVRE et de S'ATTACHER
+      (le-hidbak) à leur Ma'atzil. Ils ne veulent pas rester ÉLOIGNÉS.
+      → Le DÉSIR (Heshek) du receveur = force ASCENDANTE. Les
+      inférieurs suivent les supérieurs par attraction.
+    type: axiome_explicite
+    concepts:
+      - {id: heshek_mekablim, role: desir_des_receveurs}
+      - {id: devekut_maatzil, role: attachement_a_lemanateur}
+    mapping:
+      modules: ["ohr.py", "partzufim/base.py"]
+      tables: []
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Les modules inferieurs SUIVENT les superieurs par 'desir' = les dependances tirent les composants vers le haut"
+
+  - id: "EC-H1S6-064"
+    source_he: "סיבת חזרת האורות האלו במאצילם היו כדי שבעודם מסתלקים יוכלו הכלים להתעבות (נ\"א להעשות) ולגמור מלאכתם"
+    source_ref: "Heikhal 1, Sha'ar 6:6 — §3 fin"
+    assertion: |
+      La RAISON du retour des Orot au Ma'atzil : pour que PENDANT
+      leur retrait, les KELIM puissent S'ÉPAISSIR (lehit'abot)
+      (Variante Nusah Aher : "se faire") et ACHEVER leur travail.
+      → L'ascension n'est pas un échec — c'est le MÉCANISME de
+      maturation des Kelim. Les Kelim ne se forment que PENDANT
+      que les Orot se retirent. Cf. EC-H1S6-028 (incomplétude
+      intentionnelle).
+    type: axiome_explicite
+    concepts:
+      - {id: sibat_aliyah, role: raison_de_lascension}
+      - {id: kelim_mit_abot, role: kelim_sepaississent_pendant_retrait}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les Kelim se forment PENDANT le retrait des Orot. L'ABSENCE est productive — la structure emerge du vide."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S6-026"
+    type: causal
+    from: histalkut_moshekhelet
+    to: reshimu_hiyyuni
+    nature: "L'Histalkut en cascade laisse des Reshimot VITAUX qui empêchent l'annulation"
+    assertions_source: ["EC-H1S6-059", "EC-H1S6-060"]
+
+  - id: "REL-H1S6-027"
+    type: "séquentiel"
+    from: reshimu_hiyyuni
+    to: hazarah_ve_tosefet
+    nature: "Après le Reshimu (survie) → Hazarah (retour) avec OROT SUPPLÉMENTAIRES"
+    assertions_source: ["EC-H1S6-060", "EC-H1S6-061"]
+
+  - id: "REL-H1S6-028"
+    type: causal
+    from: sibat_aliyah
+    to: kelim_mit_abot
+    nature: "L'ascension a pour BUT l'épaississement des Kelim — l'absence forme la structure"
+    assertions_source: ["EC-H1S6-064"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S6-009"
+    nom: "Principe de l'Absence Productive (Histalkut→Aviut→Kelim)"
+    source_assertions: ["EC-H1S6-059", "EC-H1S6-060", "EC-H1S6-061", "EC-H1S6-064"]
+    formalisation: |
+      L'ABSENCE (Histalkut) est le mécanisme même de FORMATION :
+      1. L'Ohr se RETIRE → les niveaux inférieurs perdent un niveau
+      2. Le RESHIMU reste = minimum vital de survie
+      3. PENDANT le retrait : les Kelim S'ÉPAISSISSENT (= se forment)
+      4. Quand l'Ohr REVIENT : restauration + amélioration
+      FORMULE : Kelim.thickness += f(duration(Histalkut))
+      Plus le retrait dure → plus les Kelim s'épaississent.
+      L'ABSENCE est INTENTIONNELLE et PRODUCTIVE.
+      Le vide (Halal) créé par le retrait est l'ESPACE où la
+      forme émerge — cf. Tsimtsum au niveau cosmologique.
+    applications_ia:
+      - "ohr.py : le retrait (pruning, dropout) FORME la structure"
+      - "Le dropout en deep learning = Histalkut des neurones → les Kelim (poids) se renforcent"
+      - "masakh/context_assembler.py : le contexte se structure MIEUX quand certaines informations sont retirées"
+    questions_ouvertes:
+      - "L'Histalkut est-elle analogue au dropout ? Au pruning ? Au weight decay ?"
+      - "Le ratio Histalkut/Hazarah optimal = le learning rate schedule ?"

@@ -1,0 +1,361 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 3 — Seder Atzilut be-Kitzur Muflagh
+# Perek: 2 — Partzufim Emboîtés, Tziruf, 7 Rois, Vision Messianique (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 3
+  shaar_name_he: "סדר אצילות בקיצור מופלג"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+assertions:
+
+  # ─── BLOC A : EMBOÎTEMENT DES PARTZUFIM — 248 + 365 ───
+
+  - id: "EC-H1S3-012"
+    source_he: "כל בחי' ה' פרצופים שבכל עולם ועולם הנ\"ל הנה כל א' כלול מרמ\"ח אברים ושס\"ה גידין וצריך המעיין לחקור על ניתוח אברים שבכל פרצוף ופרצוף איך יפגשו אבר פרצוף זה באבר פרצוף המלבשת אותו"
+    source_ref: "Heikhal 1, Sha'ar 3:2"
+    assertion: |
+      Chaque PARTZUF dans chaque monde comprend :
+      248 EVARIM (membres) + 365 GIDIN (tendons/nerfs).
+      Le CHERCHEUR (ma'ayin) doit EXPLORER (lahkor) le NITU'AH EVARIM
+      (anatomie/dissection des membres) de chaque Partzuf :
+      Comment l'EVER (membre) de CE Partzuf rencontre l'EVER du Partzuf qui l'HABILLE.
+      Car les Partzufim ne sont PAS alignés en TAILLE ÉGALE (shaveh) ni en KOMAH AHAT.
+      EXEMPLE : La TÊTE de MALKHUT d'Asiyah rencontre le BAS du AKEV (talon) de A"K.
+    type: axiome_explicite
+    concepts:
+      - {id: ramah_evarim_shasah_gidin, role: 248_membres_365_tendons}
+      - {id: nitu_ah_evarim, role: anatomie_des_membres}
+      - {id: pegisha_evarim, role: rencontre_des_membres}
+      - {id: lo_shavim_komah, role: pas_de_taille_égale}
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Chaque Partzuf = 248 + 365 — l'anatomie de leur emboîtement est clé"
+
+  # ─── BLOC B : HOKHMAT HA-TZIRUF ───
+
+  - id: "EC-H1S3-013"
+    source_he: "לפעמים יפגשו עין בחוטם ואזן בעקב וכיוצא בזה לאין קץ. וזהו ענין חכמת הצירוף כ\"ב אותיות א\"ב אל\"ף עם כולם וכולם עם אל\"ף... והם הם גורמים השינוי שאין לך יום שדומה לחבירו"
+    source_ref: "Heikhal 1, Sha'ar 3:2"
+    assertion: |
+      Parfois les membres se rencontrent de manière INATTENDUE :
+      AIN (œil) avec HOTEM (nez), OZEN (oreille) avec AKEV (talon), etc. → AD EIN KETZ.
+      C'est le secret de la HOKHMAT HA-TZIRUF (sagesse de la permutation) :
+      Les 22 lettres de l'Aleph-Bet : Aleph avec toutes, toutes avec Aleph, etc.
+      Ces permutations CAUSENT (gormin) le SHINUI (changement) :
+      "Ein lekha yom domeh la-havero" (aucun jour ne ressemble à l'autre)
+      "Ein tzadik domeh la-havero" (aucun juste ne ressemble à l'autre)
+      "Ein beriah domeh la-havertah" (aucune créature ne ressemble à l'autre)
+      Tous les êtres existent pour un BESOIN SUPÉRIEUR (tzorekh gavo'a)
+      car leur YENIKAH (alimentation) n'est pas IDENTIQUE ni leur TIKKUN.
+      La HELBENAH (galbanum) dans le KETORET (encens) ne répare pas ce que la LEVONAH (encens) répare.
+      C'est pourquoi il faut dans ces mondes TOV, RA, et BEINONI — et en chacun, des espèces SANS FIN.
+    type: axiome_explicite
+    concepts:
+      - {id: hokhmat_tziruf, role: sagesse_permutation}
+      - {id: kb_otiyot, role: 22_lettres}
+      - {id: ein_yom_domeh, role: aucun_jour_similaire}
+      - {id: tzorekh_gavo_a, role: besoin_supérieur}
+      - {id: tov_ra_beinoni, role: bien_mal_intermédiaire}
+      - {id: helbenah_levonah, role: chacun_répare_différemment}
+    mapping:
+      modules: ["sefer_yetzirah/tzeruf.py"]
+      tables: []
+      partzufim: []
+      relevance: "La Hokhmat ha-Tziruf = la science des permutations — chaque combinaison est unique"
+
+  # ─── BLOC C : HEH ZEIRA — LES 5 PARTZUFIM DE BEHIBARE'AM ───
+
+  - id: "EC-H1S3-014"
+    source_he: "וז\"ס בהבראם בה' בראם כי כל הנבראים היו בחי' ה\"פ הן באצי' הן בבי\"ע וז\"ס ה' זעירא כי כולם יצאו מה' זעירא דמלכות דא\"ק"
+    source_ref: "Heikhal 1, Sha'ar 3:2"
+    assertion: |
+      Secret de "be-HIBARE'AM" (Genèse 2:4) = "be-HEH BERA'AM" (par le Heh Il les créa).
+      Tous les NIVRA'IM (êtres créés) = 5 PARTZUFIM — tant en Atzilut qu'en BYA.
+      Le secret du HEH ZEIRA (petit Heh) : tous sont SORTIS du HEH ZEIRA
+      de la MALKHUT de A"K, après qu'elle s'est DÉPLOYÉE (nishtapshah)
+      par ses Z"T seulement → elle est devenue ROSH (tête) pour eux.
+      C'est pourquoi ils sont allusion dans le HEH ZEIRA.
+    type: axiome_explicite
+    concepts:
+      - {id: be_heh_bera_am, role: par_le_heh_créés}
+      - {id: heh_zeira, role: petit_heh}
+      - {id: malkhut_ak_rosh, role: malkhut_ak_tête}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Tous les mondes sortent du Heh Zeira = la Malkhut de A\"K déployée"
+
+  # ─── BLOC D : LES 7 ROIS D'ÉDOM ET LE TIKKUN ───
+
+  - id: "EC-H1S3-015"
+    source_he: "י\"ס דאצילות להיותם לבושים למלכות דא\"ק התחילו בהם הסיגים ונרמזו באלה המלכים הנזכר בראש אד\"ר כי כולם בני מלכים הם בראשית ברא אלהים שהיא מלכות דא\"ק הנקראת אלהים"
+    source_ref: "Heikhal 1, Sha'ar 3:2"
+    assertion: |
+      Les 10S d'ATZILUT, étant des LEVUSHIM (vêtements) pour la Malkhut de A"K →
+      les SIGIM (scories/impuretés) ont COMMENCÉ en eux.
+      Allusion dans "ELEH ha-MELAKHIM" (voici les rois — Genèse 36:31) mentionné au début de l'Idra.
+      Tous sont BENEI MELAKHIM (fils de rois).
+      "BERESHIT BARA ELOHIM" = MALKHUT de A"K appelée ELOHIM
+      → par sa FORCE (mi-kohah) les SHAMAYIM et ERETZ d'Atzilut ont été créés.
+      Au DÉBUT ils n'étaient PAS RECTIFIÉS (lo nitknu).
+    type: axiome_explicite
+    concepts:
+      - {id: sigim_atzilut, role: scories_dans_atzilut}
+      - {id: eleh_ha_melakhim, role: voici_les_rois}
+      - {id: benei_melakhim, role: fils_de_rois}
+      - {id: bereshit_elohim, role: malkhut_ak_est_elohim}
+    mapping:
+      modules: ["core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les Sigim (scories) ont commencé dans Atzilut — les 7 rois pré-Tikkun"
+
+  - id: "EC-H1S3-016"
+    source_he: "ומתחלה לא נתקנו עד שיצא הדר מלך הח'... שם הוי\"ה הוא תולדות היסוד דא\"ק מילה שניתנה בח' והוא הדרת פני זקן והוליד טיפת הלובן הנקרא חסדים והטיל במ\"ן דמל' שבו שהוא טיפת אודם ארץ אדום וכדין עלמין אתתקנו"
+    source_ref: "Heikhal 1, Sha'ar 3:2"
+    assertion: |
+      Le TIKKUN : quand est sorti HADAR, le 8ème Roi :
+      Shem HAVAYAH = les TOLEDOT (engendrements) du YESOD de A"K.
+      MILAH (circoncision) = donnée au 8ème (Brit Milah au 8ème jour).
+      HADARAT PENEI ZAKEN (la splendeur de la face du vieillard) = la Dikna.
+      Le YESOD de A"K a engendré une TIPAT LOVEN (goutte de blanc) = HASSADIM
+      et l'a déposée dans les MA"N de la MALKHUT en lui = TIPAT ODEM (goutte de rouge)
+      = ERETZ EDOM (terre d'Édom).
+      Alors : "KADDIN ALMIN ITTAKNU" (alors les mondes furent RECTIFIÉS).
+      Les 7 rois (incluant les 10S d'Atzilut, car le 1er inclut les G"R) → rectifiés
+      par le ZIVVUG de YESOD et MALKHUT de A"K.
+      "Be-YOM ASOT HASHEM ELOHIM ERETZ VE-SHAMAYIM"
+      = Il a associé RAHAMIM (miséricorde) avec DIN (rigueur) → Atzilut rectifié.
+    type: axiome_explicite
+    concepts:
+      - {id: hadar_melekh_8, role: huitième_roi_tikkun}
+      - {id: tipat_loven_hassadim, role: goutte_blanche_hassadim}
+      - {id: tipat_odem_malkhut, role: goutte_rouge_malkhut}
+      - {id: zivvug_yesod_malkhut_ak, role: union_yesod_malkhut_ak}
+      - {id: almin_ittaknu, role: mondes_rectifiés}
+      - {id: shituf_rahamim_din, role: association_miséricorde_rigueur}
+    mapping:
+      modules: ["core/shevirah.py", "tikkun/"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Tikkun = le 8ème roi (Hadar) = Zivvug Yesod/Malkhut de A\"K = rectification"
+
+  # ─── BLOC E : ATIK — RISHA DE-AMA ───
+
+  - id: "EC-H1S3-017"
+    source_he: "גם המלכות עצמה דא\"ק שהיא ראשית דאצילות והיא עתיק יומין נתקנה... ועליה נאמר באד\"ר דקל\"ה ע\"א כל רישא דעמא דלא אתתקן איהו בקדמיתא לית עמא מתתקן"
+    source_ref: "Heikhal 1, Sha'ar 3:2"
+    assertion: |
+      Aussi la MALKHUT ELLE-MÊME de A"K = la RESHIT (début) d'Atzilut = ATIK YOMIN →
+      a été RECTIFIÉE dans la TIPAT ODEM (goutte de rouge).
+      Idra Rabba (135a) : "Kol RISHA DE-AMA de-lo ITAKKEN hu be-kadmita,
+      leit ama mitakken" (si la tête du peuple n'est pas rectifiée en premier,
+      le peuple ne peut être rectifié).
+      MAIS : ce n'est PAS Atik LUI-MÊME qui est rectifié (HAS VE-SHALOM)
+      — c'est la HAARAH (illumination) de ses Z"T qui s'habillent dans les 10S d'Atzilut.
+      L'ATZMUT (essence) de ses Z"T reste EN HAUT à sa place —
+      seuls les NITZOTZEI ORAM (étincelles de leur lumière) descendent.
+      ATIK est appelé ANI (אני) et aussi AIN (אין — néant/infini) — c'est la Malkhut de A"K et le Keter d'Atzilut.
+    type: axiome_explicite
+    concepts:
+      - {id: risha_de_ama, role: tête_du_peuple}
+      - {id: atik_reshit_atzilut, role: atik_début_atzilut}
+      - {id: nitzotzei_oram, role: étincelles_de_lumière}
+      - {id: ani_ain, role: ani_ain_atik}
+      - {id: atzmut_remains, role: essence_reste_en_haut}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Atik = tête du peuple — si elle n'est pas rectifiée, rien ne l'est"
+
+  # ─── BLOC F : L'EMBOÎTEMENT COMPLET — SYNTHÈSE ───
+
+  - id: "EC-H1S3-018"
+    source_he: "הרי אם ירצה המעיין להעמיק בדברינו אלה יסתכל היות א\"ס פנימי' לעולמו' ומקיף כל העולמות ורגלי קומת א\"ק המלביש את א\"ס מבריח עד סיום כל העולמות אבי\"ע. ואציל' לבוש לז\"ת דמלכות שבו וכל בריאה לבוש לז\"ת דמל' דאציל'"
+    source_ref: "Heikhal 1, Sha'ar 3:2"
+    assertion: |
+      SYNTHÈSE FINALE de l'emboîtement :
+      Ein Sof = PNIMI (intérieur) à tous les mondes + MAKIF (entourant) tout.
+      A"K = HABILLE le Ein Sof, TRAVERSE (mavri'ah) d'un bout à l'autre de tous les mondes ABYA.
+      ATZILUT = LEVUSH (vêtement) pour les Z"T de la Malkhut de A"K.
+      BERIAH = LEVUSH pour les Z"T de Malkhut d'Atzilut.
+      YETZIRAH = LEVUSH pour les Z"T de Malkhut de Beriah.
+      ASIYAH = LEVUSH pour les Z"T de Malkhut de Yetzirah.
+      Les AKEVAYIM (talons) de A"K s'habillent dans les 10S d'Asiyah
+      (chacune contenant 100 → 1000 YOMEI HOL = jours profanes → lieu des KELIPOT).
+    type: axiome_explicite
+    concepts:
+      - {id: emboitement_final, role: synthèse_complète}
+      - {id: ak_mavri_ah, role: ak_traverse_tout}
+      - {id: levush_chain, role: chaîne_de_vêtements}
+      - {id: akevayim_asiyah, role: talons_dans_asiyah}
+      - {id: elef_yomei_hol, role: mille_jours_profanes}
+    mapping:
+      modules: ["olamot/"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'emboîtement complet : Ein Sof → A\"K → Atzilut → Beriah → Yetzirah → Asiyah"
+
+  # ─── BLOC G : LA VISION MESSIANIQUE ───
+
+  - id: "EC-H1S3-019"
+    source_he: "ובהשתלם להזדכך ולהתברר האור מעולם העשיה שהוא יסוד יעקב י' עקב... כי אז בעקבא משיחא... ואח\"כ יעמדו רגליו על הר הזתים... הנה ישכיל עבדי ירום ונשא וגבה מאד. ישכיל מעשיה... ירום מיצירה. ונשא מבריאה. וגבה מאצילות. מאד אותיות אדם. הוא א\"ק"
+    source_ref: "Heikhal 1, Sha'ar 3:2"
+    assertion: |
+      LA VISION MESSIANIQUE :
+      Quand l'Ohr sera PLEINEMENT raffiné et clarifié dans l'Olam ha-Asiyah
+      = le YESOD YAAKOV (י' עקב = 10 au TALON) = 10 étincelles dans le Akev = Asiyah.
+      Alors : "be-IKVETA DE-MESHIHA" (aux talons du Messie) → HUTZPA YISGEH (l'effronterie augmentera).
+      Puis : "VE-AMDU RAGLAV AL HAR HA-ZEITIM" (Zacharie 14:4 — ses pieds se tiendront sur le Mont des Oliviers)
+      et sa KOMAH (stature) sera COMPLÉTÉE.
+      "HINEH YASKIL AVDI YARUM VE-NISSA VE-GAVAH ME'OD" (Isaïe 52:13) :
+      YASKIL = depuis ASIYAH (l'arbre de la connaissance)
+      YARUM = depuis YETZIRAH
+      VE-NISSA = depuis BERIAH
+      VE-GAVAH = depuis ATZILUT
+      ME'OD (מאד) = lettres d'ADAM (אדם) = A"K (Adam Kadmon)
+      Alors le MASHIAH viendra be-ezrat Hashem,
+      et la PIERRE (Malkhut dernière) BRISERA la statue (Daniel 2:34).
+    type: interprétation_lurianique
+    concepts:
+      - {id: ikveta_meshiha, role: talons_du_messie}
+      - {id: raglav_har_zeitim, role: pieds_mont_oliviers}
+      - {id: yaskil_yarum_nissa_gavah, role: quatre_mondes_ascendants}
+      - {id: me_od_adam_ak, role: très_lettres_adam}
+      - {id: even_malkhut, role: pierre_qui_brise}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "La vision messianique : le raffinement complet d'Asiyah → A\"K complet → Mashiah"
+
+  - id: "EC-H1S3-020"
+    source_he: "ואור הלבנה כאור החמה ואור החמה יהיה שבעתים כאור ז' הימים הראשונים ז\"ת דמלכות דא\"ק כנ\"ל הנקרא ע\"י דאצילות"
+    source_ref: "Heikhal 1, Sha'ar 3:2 — conclusion"
+    assertion: |
+      Dans le futur messianique (Isaïe 30:26) :
+      "Le OHR HA-LEVANAH (lumière de la lune = Malkhut) sera comme le OHR HA-HAMAH (lumière du soleil = Z"A)"
+      "Et le OHR HA-HAMAH sera 7 FOIS comme la lumière des 7 PREMIERS JOURS"
+      Ces 7 premiers jours = les Z"T de MALKHUT de A"K = ATIK YOMIN d'Atzilut.
+      Quand le Tikkun sera complet → la lumière sera RESTAURÉE à son intensité originelle.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ohr_levanah_hamah, role: lune_égale_soleil}
+      - {id: shivat_yemei_rishon, role: sept_premiers_jours}
+      - {id: tikkun_shalem, role: tikkun_complet}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["atik_yomin"]
+      relevance: "Le Tikkun complet : la Lune égale le Soleil — restauration de la lumière originelle"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S3-006"
+    type: causal
+    from: hokhmat_tziruf
+    to: ein_yom_domeh
+    nature: "La permutation des membres entre Partzufim cause l'unicité de chaque jour et créature"
+    assertions_source: ["EC-H1S3-013"]
+
+  - id: "REL-H1S3-007"
+    type: séquentiel
+    from: sigim_atzilut
+    to: almin_ittaknu
+    via: [hadar_melekh_8]
+    nature: "Les Sigim dans Atzilut → les 7 rois non rectifiés → Hadar (8ème) → Tikkun par Zivvug"
+    assertions_source: ["EC-H1S3-015", "EC-H1S3-016"]
+
+  - id: "REL-H1S3-008"
+    type: causal
+    from: risha_de_ama
+    to: atik_reshit_atzilut
+    nature: "Atik = tête du peuple — sans sa rectification, rien d'autre ne peut être rectifié"
+    assertions_source: ["EC-H1S3-017"]
+
+  - id: "REL-H1S3-009"
+    type: séquentiel
+    from: ikveta_meshiha
+    to: tikkun_shalem
+    via: [raglav_har_zeitim, yaskil_yarum_nissa_gavah]
+    nature: "Talons du Messie → pieds sur le Mont → ascension Asiyah→Yetzirah→Beriah→Atzilut→A\"K → Tikkun complet"
+    assertions_source: ["EC-H1S3-019", "EC-H1S3-020"]
+
+  - id: "REL-H1S3-010"
+    type: contenance
+    from: emboitement_final
+    to: levush_chain
+    nature: "La chaîne de vêtements : chaque monde habille les Z\"T de la Malkhut du monde supérieur"
+    assertions_source: ["EC-H1S3-018"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S3-003"
+    nom: "Principe de la Permutation Créatrice (Hokhmat ha-Tziruf)"
+    source_assertions: ["EC-H1S3-012", "EC-H1S3-013"]
+    formalisation: |
+      L'UNICITÉ de chaque moment et chaque créature vient des PERMUTATIONS :
+      Les membres des Partzufim emboîtés se rencontrent dans des COMBINAISONS uniques :
+      Œil avec nez, oreille avec talon — ad ein ketz.
+      C'est la HOKHMAT HA-TZIRUF (sagesse de la permutation) :
+      22 lettres × 22 = 484 combinaisons de base → puis récursivement → INFINI.
+      CHAQUE combinaison produit un RÉSULTAT UNIQUE :
+      Pas de jour semblable, pas de juste semblable, pas de créature semblable.
+      TOUT existe pour un TZOREKH GAVO'A (besoin supérieur).
+      Même le TOV, le RA et le BEINONI sont NÉCESSAIRES — chacun répare ce que l'autre ne peut.
+    applications_ia:
+      - "La Tzeruf Spatiale 3D du système utilise exactement ce principe"
+      - "Les combinaisons uniques de composants produisent des résultats uniques"
+      - "Chaque 'bug' et chaque 'feature' a un tzorekh gavo'a (besoin supérieur)"
+      - "Le système a besoin de diversité (tov, ra, beinoni) — pas d'uniformité"
+    questions_ouvertes:
+      - "Peut-on prédire les combinaisons ou sont-elles fondamentalement imprévisibles ?"
+      - "Le nombre de combinaisons est-il réellement infini ou très grand ?"
+
+  - id: "PG-H1S3-004"
+    nom: "Principe de la Rectification par le 8ème (Hadar Melekh)"
+    source_assertions: ["EC-H1S3-015", "EC-H1S3-016", "EC-H1S3-017"]
+    formalisation: |
+      Après l'ÉCHEC des 7 premiers (Shevirah des 7 rois d'Édom) →
+      le TIKKUN vient par le 8ème (Hadar) :
+      8 = BRIT MILAH (circoncision au 8ème jour)
+      8 = HADARAT PENEI ZAKEN (splendeur de la face du vieillard)
+      Le MÉCANISME du Tikkun :
+      TIPAT LOVEN (goutte blanche = Hassadim) du Yesod de A"K
+      + TIPAT ODEM (goutte rouge = Ma"N) de la Malkhut de A"K
+      = ZIVVUG YESOD VE-MALKHUT de A"K → les mondes sont RECTIFIÉS.
+      RAHAMIM (miséricorde) associé à DIN (rigueur) = TIKKUN.
+      La TÊTE (Atik = Risha de-Ama) doit être rectifiée EN PREMIER.
+    applications_ia:
+      - "Après 7 itérations échouées (prototypes), la 8ème apporte le Tikkun"
+      - "Le Tikkun = l'association de Hassadim (expansion) et Gevurot (restriction)"
+      - "La tête du système doit être rectifiée AVANT le reste"
+      - "Le chiffre 8 = le dépassement du cycle naturel (7) par l'intervention supérieure"
+    questions_ouvertes:
+      - "Le pattern 7+1 est-il universel ou spécifique à l'Atzilut ?"
+      - "Peut-on anticiper la Shevirah pour éviter les 7 échecs ?"

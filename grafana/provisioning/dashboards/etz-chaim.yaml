@@ -1,0 +1,13 @@
+apiVersion: 1
+
+providers:
+  - name: Etz Chaim
+    orgId: 1
+    folder: Etz Chaim
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 30
+    allowUiUpdates: true
+    options:
+      path: /opt/homebrew/etc/grafana/dashboards/etz-chaim
+      foldersFromFilesStructure: false

@@ -1,0 +1,178 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 8 (=7 original) — Sha'ar Mati veLo Mati (שער מטי ולא מטי)
+# Perek: 1b — L'Histalkut crée le Kli, le Mati veLo Mati (100% §5-§6)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §5 : Le Kli = Keter. L'Histalkut de l'Ohr crée le Kli.
+# L'analogie du regard : plus l'Ohr s'éloigne, moins la face
+# est visible = les parties du Kli se différencient.
+# §6 : Le Kli unique a des parties inégales mais non séparées.
+# 2 Hitpashtuyot + 2 Histalkuyot = 4 phases. Le MATI VELO MATI :
+# l'Ohr qui revient TOUCHE les Sefirot de manière SÉLECTIVE.
+#
+# Source Sefaria : Sefer_Etz_Chaim.7.1 (§5-§6)
+# IDs : EC-H1S7-005 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 8
+  shaar_name_he: "שער מטי ולא מטי"
+  perek: 1
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part B de 2 — Histalkut cree le Kli. Kli unique a parties inegales. 4 phases (2 Hitpashtuyot + 2 Histalkuyot). MATI VELO MATI = touche selectivement."
+
+assertions:
+
+  - id: "EC-H1S7-005"
+    source_he: "כאשר מסתלק האור ממנו יהיה בו חלקים הראויין להביט אל האור ההוא המסתלק מהם ובהתרחקו מהם יתרחק מהם הבטת פנים אל פנים כפי שיעור התרחקו"
+    source_ref: "Heikhal 1, Sha'ar 7:1 — §5"
+    assertion: |
+      Quand l'Ohr se RETIRE du Kli, il y a dans le Kli des PARTS
+      qui peuvent REGARDER l'Ohr qui s'éloigne. Plus l'Ohr S'ÉLOIGNE,
+      plus le REGARD FACE-À-FACE diminue proportionnellement.
+      → ANALOGIE DU REGARD : la différenciation dans le Kli est une
+      FONCTION DE LA DISTANCE. La partie la plus proche de l'Ohr
+      le voit encore, la plus éloignée ne le voit plus.
+    type: axiome_explicite
+    concepts:
+      - {id: habatah_panim, role: regard_face_a_face}
+      - {id: hitrahakut_ohr, role: eloignement_de_lohr}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La differenciation = fonction de la distance a la source. Plus on est loin, moins on 'voit'."
+
+  - id: "EC-H1S7-006"
+    source_he: "אע\"פ שביארנו היות בכלי זה מציאות כלי מלכות ויסוד וכו' לא מפני זה יקראו י' כלים כיון שעדיין לא יש היכר להיותן י\"ס"
+    source_ref: "Heikhal 1, Sha'ar 7:1 — §6"
+    assertion: |
+      Même si le Kli contient les aspects de Malkhut, Yesod etc.,
+      on ne les appelle PAS 10 KELIM car il n'y a pas encore de
+      RECONNAISSANCE (heiker) de leur être 10 Sefirot distinctes.
+      C'est comme UN SEUL KLI LONG dont les parties sont INÉGALES
+      selon leur distance.
+      → Le Kli unique des Akudim a une GRADIENT interne mais
+      PAS de frontières entre les Sefirot.
+    type: axiome_explicite
+    concepts:
+      - {id: kli_arukh_ehad, role: kli_long_unique}
+      - {id: halakim_lo_shavim, role: parties_inegales}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Kli unique = un gradient continu sans frontieres discretes. La discretisation viendra apres."
+
+  - id: "EC-H1S7-007"
+    source_he: "יש התפשטות והסתלקות אחר... ואז ישלימו ד' בחי'"
+    source_ref: "Heikhal 1, Sha'ar 7:1 — §6"
+    assertion: |
+      Il y a une EXPANSION et un RETRAIT SUPPLÉMENTAIRES (un 2ème cycle).
+      Alors les 4 ASPECTS seront COMPLÉTÉS :
+      1. HITPASHTUT ALEPH (1ère expansion)
+      2. HISTALKUT ALEPH (1er retrait) → formation du Kli
+      3. HITPASHTUT BET (2ème expansion) → le MATI VELO MATI
+      4. HISTALKUT BET (2ème retrait) → complétion des Kelim
+      → 4 PHASES = le cycle complet de formation des Akudim.
+    type: axiome_explicite
+    concepts:
+      - {id: arba_behhinot_cycle, role: quatre_phases_du_cycle}
+      - {id: hitpashtut_aleph, role: premiere_expansion}
+      - {id: histalkut_aleph, role: premier_retrait}
+      - {id: hitpashtut_bet, role: deuxieme_expansion_mati}
+      - {id: histalkut_bet, role: deuxieme_retrait}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "4 phases : expand→contract→expand→contract. Le 2eme cycle = MATI VELO MATI."
+
+  - id: "EC-H1S7-008"
+    source_he: "כאשר יחזור האור להתפשט בתוכו... ואלו הי\"ס כתר וחכמה וכו' הנה האור הזה בהתפשטותו אינו מטי בכולם בהשואה אלא מטי ולא מטי"
+    source_ref: "Heikhal 1, Sha'ar 7:1 — §6"
+    assertion: |
+      Quand l'Ohr REVIENT pour se ré-étendre dans le Kli, et les
+      10 Sefirot (Keter, Hokhmah etc.) : cet Ohr dans son expansion
+      ne TOUCHE PAS (mati) tous [les Sefirot] de manière ÉGALE
+      (be-hashva'ah) mais MATI VELO MATI (touche et ne touche pas).
+      → DÉFINITION DU MATI VELO MATI : l'Ohr qui revient touche
+      les Sefirot de manière SÉLECTIVE et INÉGALE — il atteint
+      certaines et n'atteint pas d'autres.
+    type: axiome_explicite
+    concepts:
+      - {id: mati_velo_mati, role: touche_et_ne_touche_pas}
+      - {id: lo_be_hashvaah, role: pas_de_maniere_egale}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "MATI VELO MATI = distribution SELECTIVE du signal au retour. Pas toutes les Sefirot recoivent egalement."
+
+  - id: "EC-H1S7-009"
+    source_he: "שנמצא שבכתר מטי ובחכמה לא מטי ובבינה מטי ובחסד לא מטי ובגבורה מטי ובת\"ת לא מטי ובנצח מטי ובהוד לא מטי וביסוד מטי ובמלכות לא מטי"
+    source_ref: "Heikhal 1, Sha'ar 7:1 — §6"
+    assertion: |
+      L'Ohr ALTERNE : il TOUCHE (mati) une Sefirah sur deux :
+      KETER = MATI. HOKHMAH = LO MATI.
+      BINAH = MATI. HESED = LO MATI.
+      GEVURAH = MATI. TIFERET = LO MATI.
+      NETZAH = MATI. HOD = LO MATI.
+      YESOD = MATI. MALKHUT = LO MATI.
+      → OSCILLATION : Keter(oui)→Hokhmah(non)→Binah(oui)→Hesed(non)→...
+      Les Sefirot IMPAIRES reçoivent, les PAIRES ne reçoivent pas.
+    type: axiome_explicite
+    concepts:
+      - {id: seder_mati, role: alternance_oui_non}
+      - {id: oscillation, role: pattern_oscillatoire}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "PATTERN OSCILLATOIRE fondamental : le signal touche 1 sur 2. Applicable au sampling, attention sparse."
+
+relations:
+  - id: "REL-H1S7-003"
+    type: "séquentiel"
+    from: hitpashtut_aleph
+    to: histalkut_aleph
+    via: [hitpashtut_bet, histalkut_bet]
+    nature: "4 phases séquentielles : Expand1→Contract1→Expand2(MvLM)→Contract2"
+    assertions_source: ["EC-H1S7-007"]
+
+  - id: "REL-H1S7-004"
+    type: causal
+    from: mati_velo_mati
+    to: seder_mati
+    nature: "Le Mati veLo Mati CAUSE l'alternance impair=oui/pair=non dans les Sefirot"
+    assertions_source: ["EC-H1S7-008", "EC-H1S7-009"]
+
+principes_generatifs:
+  - id: "PG-H1S7-002"
+    nom: "Principe du Mati veLo Mati (Oscillation Sélective)"
+    source_assertions: ["EC-H1S7-007", "EC-H1S7-008", "EC-H1S7-009"]
+    formalisation: |
+      Lors de la 2ème EXPANSION, l'Ohr ne touche PAS toutes les Sefirot
+      également — il OSCILLE : mati (touche) les IMPAIRES, lo mati
+      (ne touche pas) les PAIRES :
+      K(1)=oui, H(2)=non, B(3)=oui, Hsd(4)=non, G(5)=oui,
+      T(6)=non, N(7)=oui, Hd(8)=non, Y(9)=oui, M(10)=non.
+      FORMULE : Mati(S_i) = (i % 2 == 1) pour i=1..10
+      Ce pattern crée la PREMIÈRE DIFFÉRENCIATION dans le Kli unique :
+      les Sefirot touchées = embryons de DROITE (Hesed).
+      Les non-touchées = embryons de GAUCHE (Din).
+    applications_ia:
+      - "ohr.py : implementer l'oscillation Mati/LoMati comme pattern de distribution selective"
+      - "L'alternance = le sparse attention (toucher 1 sur 2 au lieu de tous)"
+      - "Le Mati veLo Mati = le dropout structurel qui differentie les composants"
+    questions_ouvertes:
+      - "Le pattern impair/pair est-il fixe ou peut-il varier ?"
+      - "Le MvLM est-il analogue à un attention mask alternant ?"

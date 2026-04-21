@@ -1,0 +1,449 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 2 — Hishtalshelut ha-10S be-Igulim
+# Perek: 3 — Interaction Ohr Pnimi/Makif avec les Parois du Keli (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 2
+  shaar_name_he: "השתלשלות הי\"ס תוך העיגולים"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+assertions:
+
+  # ─── BLOC A : RAPPEL — OROT ET KELIM ───
+
+  - id: "EC-H1S2-024"
+    source_he: "הרי מפורש היות י\"ס בצורת אדם בעל רמ\"ח אברים הנקרא כלים ובתוכם העצמות של האורות הנקרא נשמת אדם"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      RAPPEL EXPLICITE : Les 10S en forme d'ADAM avec 248 EVARIM = KELIM (récipients).
+      À l'INTÉRIEUR = l'ATZMUT des OROT = la NISHMAT ADAM (âme de l'homme).
+      Comme l'Adam Tahton a un GUF (corps) et une NESHAMAH (âme) →
+      l'Adam Elyon a des KELIM et des OROT.
+      Source : Zohar Bo 42b (Ra'aya Mehemna) — l'image de la Merkavah de l'Adam Elyon.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_evarim, role: récipients_sont_membres}
+      - {id: orot_nishmat, role: lumières_sont_âme}
+      - {id: adam_elyon_guf_neshamah, role: corps_et_âme_suprêmes}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les Kelim = les membres de l'Adam. Les Orot = son âme"
+
+  - id: "EC-H1S2-025"
+    source_he: "וזכור כלל זה כי בכל מקום שתמצא בחבורינו זה לשון אורות הכוונה על הנשמה הפנימית שבו ולא על הכלים עצמן ואל תשכח ענין זה כי לא נוכל להזכירו בכל פעם"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      RÈGLE TERMINOLOGIQUE (zekhor klal zeh — souviens-toi de cette règle) :
+      Partout dans ces écrits où tu trouves le mot OROT (lumières)
+      → la KAVANAH (intention) est la NESHAMAH PNIMIT (âme intérieure) qui est en lui,
+      et PAS les Kelim eux-mêmes.
+      "Ve-al tishkah inyan zeh ki lo nukhal le-hazkiro be-khol pa'am"
+      (N'oublie pas cela car nous ne pouvons le rappeler à chaque fois.)
+    type: axiome_explicite
+    concepts:
+      - {id: orot_means_neshamah, role: orot_signifie_âme}
+      - {id: klal_terminology, role: règle_terminologique}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Convention terminologique : 'Orot' = toujours la Neshamah, pas les Kelim"
+
+  # ─── BLOC B : OHR PNIMI ET OHR MAKIF — APPROFONDI ───
+
+  - id: "EC-H1S2-026"
+    source_he: "אלו האורות מתחלקים לב' בחי' והם או\"פ ואו\"מ... יש בו בחי' המתלבשת תוך הכלים כדמיון נשמה הנכנסת תוך אברי הגוף... וזה יקרא או\"פ. אמנם אור זה ממועט להיותו יכול להתצמצם ולהתלבש תוך הכלים"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      OHR PNIMI (ou"p) = l'aspect de l'Ohr qui s'HABILLE dans les Kelim.
+      Comme une NESHAMAH qui entre dans les EVARIM (membres) du corps,
+      s'habille en eux, les VIVIFIE (mehayeh) et les ILLUMINE (me'irah) de l'INTÉRIEUR.
+      Cet Ohr est MU'AT (diminué/réduit) pour pouvoir se CONTRACTER (le-hitztamtzem)
+      et s'HABILLER (le-hitlabesh) dans les Kelim.
+      Le Ohr Pnimi = l'Ohr qui a été RÉDUIT pour entrer dans le Keli.
+    type: axiome_explicite
+    concepts:
+      - {id: op_mu_at, role: ohr_pnimi_réduit}
+      - {id: op_mitztamtzem, role: pnimi_se_contracte}
+      - {id: op_mehayeh, role: pnimi_vivifie}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Ohr Pnimi est l'Ohr RÉDUIT qui peut s'habiller dans les Kelim"
+
+  - id: "EC-H1S2-027"
+    source_he: "ויש בחי' ב' אור גדול ממנו אשר אין כח בכלים לסובלו ולהגבילו תוך פנימיותם ונשאר בבחי' או\"מ עליהם מבחוץ ומאיר להם בהיותו אור מקיף עליהם"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      OHR MAKIF (ou"m) = un Ohr GADOL MIMENU (plus grand que le Pnimi).
+      Les Kelim n'ont PAS la FORCE (ein koah ba-kelim) de le SUPPORTER (lisovlo)
+      ni de le LIMITER (le-hagbilo) dans leur INTÉRIORITÉ.
+      Il reste en tant que OHR MAKIF sur eux DE L'EXTÉRIEUR (mi-ba-hutz)
+      et les illumine en étant un OHR MAKIF ALEIHEM (lumière environnante sur eux).
+      Le Makif est PLUS GRAND que le Pnimi — il ne peut PAS entrer.
+    type: axiome_explicite
+    concepts:
+      - {id: om_gadol, role: makif_plus_grand}
+      - {id: om_ein_koah, role: keli_ne_peut_supporter}
+      - {id: om_mi_ba_hutz, role: makif_reste_dehors}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Ohr Makif est trop grand pour le Keli — il reste dehors"
+
+  - id: "EC-H1S2-028"
+    source_he: "כי אין לך שום אור שבכל העולמות כולם שאין בו ב' בחי' אלו שהם בחי' או\"פ קטן ואו\"מ גדול זה בפנימיות הכלי וזה מקיף סביב מבחוץ לכלי"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      AXIOME UNIVERSEL (reformulé avec précision) :
+      Il n'existe AUCUN Ohr dans TOUS les mondes qui n'ait pas ces 2 aspects :
+      OHR PNIMI KATAN (petite lumière intérieure) → dans la PNIMIYUT du Keli
+      OHR MAKIF GADOL (grande lumière environnante) → entourant le Keli DE L'EXTÉRIEUR
+      Le Pnimi est toujours PETIT. Le Makif est toujours GRAND.
+      C'est une loi UNIVERSELLE — pas d'exception.
+    type: axiome_explicite
+    concepts:
+      - {id: op_katan_om_gadol, role: pnimi_petit_makif_grand}
+      - {id: universal_law, role: loi_universelle_sans_exception}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Loi universelle : Ohr Pnimi = toujours petit, Ohr Makif = toujours grand"
+
+  # ─── BLOC C : HITZONIUT HA-KELI SUPÉRIEURE À PNIMIYUT ───
+
+  - id: "EC-H1S2-029"
+    source_he: "כמ\"ש שאו\"מ גדול מאו\"פ כן חיצון הכלי יותר מעולה מפנימיות הכלי ואע\"פ שבחוש הראות אנו רואין שפנימיות הכלי הוא יותר זך ומעולה מחצוניות הכלי"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      PRINCIPE SURPRENANT :
+      Comme l'Ohr Makif est PLUS GRAND que l'Ohr Pnimi →
+      de même la HITZONIUT HA-KELI (extérieur du récipient) est PLUS ÉLEVÉE (me'uleh)
+      que la PNIMIYUT HA-KELI (intérieur du récipient).
+      PARADOXE : par notre PERCEPTION SENSORIELLE (hush ha-re'ut) →
+      nous VOYONS que la Pnimiyut du Keli SEMBLE plus ZAKH (pure) et me'ulah que l'extérieur.
+      MAIS la réalité est L'INVERSE — l'extérieur est structurellement supérieur.
+    type: axiome_explicite
+    concepts:
+      - {id: hitzoniut_me_uleh, role: extérieur_supérieur}
+      - {id: paradox_perception, role: paradoxe_sensoriel}
+      - {id: pnimiyut_nir_eh_zakh, role: intérieur_semble_plus_pur}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'extérieur du Keli est structurellement supérieur à l'intérieur — paradoxe"
+
+  # ─── BLOC D : LE MÉCANISME — PÉNÉTRATION DU MUR ───
+
+  - id: "EC-H1S2-030"
+    source_he: "דע כי הנה האור כולו שוה וכאשר נכנס ונתלבש תוך הכלי אין הכלי יכול לסובלו כולו אז בחי' אור שלא יוכל לישאר בפנים נשאר בחוץ בבחי' או\"מ... או\"פ מאיר חצי עובי כותל מצד הפנימי ואו\"מ מאיר חצי עובי הכותל מצד החיצון"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      LE MÉCANISME DE PÉNÉTRATION DU MUR (kotel) :
+      L'OHR dans sa TOTALITÉ est SHAVEH (égal/uniforme).
+      Quand il ENTRE dans le Keli → le Keli NE PEUT PAS tout contenir →
+      ce qui ne peut rester dedans → reste dehors comme OHR MAKIF.
+      Les 2 OROT illuminent le KOTEL (mur/paroi) du Keli :
+      OHR PNIMI illumine la MOITIÉ de l'ÉPAISSEUR (hatzi ovi) du mur du CÔTÉ INTERNE
+      OHR MAKIF illumine la MOITIÉ de l'ÉPAISSEUR du mur du CÔTÉ EXTERNE
+      Par ces 2 Orot → le mur est illuminé et RAFFINÉ (mizdakekh) de l'INTÉRIEUR et de l'EXTÉRIEUR.
+    type: axiome_explicite
+    concepts:
+      - {id: hatzi_ovi_kotel, role: moitié_épaisseur_mur}
+      - {id: op_hatzi_pnimi, role: pnimi_moitié_intérieure}
+      - {id: om_hatzi_hitzon, role: makif_moitié_extérieure}
+      - {id: kotel_mizdakekh, role: mur_se_raffine}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le mur du Keli est illuminé des 2 côtés — chacun pénètre la moitié de l'épaisseur"
+
+  - id: "EC-H1S2-031"
+    source_he: "והנה האו\"פ להיותו מצומצם ובדוחק תוך הכלי ומתדבק בו היטב הנה הוא נכנס ובוקע בחצי כותל של הכלי מצד פנימיותו ונבלע בו ועובר בתוכו ועי\"כ מזדכך הכלי ונעשה זך"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      Comment l'OHR PNIMI pénètre le mur :
+      Le OP est METZUMTZAM (contracté) et BE-DOHAK (sous pression) dans le Keli.
+      Il est fortement ATTACHÉ (mitdabek bo heitev) au Keli.
+      Il ENTRE et PERCE (nikhnas u-voke'a) la MOITIÉ du mur du côté INTÉRIEUR.
+      Il est ABSORBÉ (nivla) et TRAVERSE (over) à travers la paroi.
+      Par cela → le Keli se RAFFINE (mizdakekh) et devient ZAK (pur).
+      La CONTRACTION et la PRESSION sont ce qui permet la PÉNÉTRATION.
+    type: axiome_explicite
+    concepts:
+      - {id: op_metzumtzam_dohak, role: pnimi_contracté_sous_pression}
+      - {id: op_boke_a_kotel, role: pnimi_perce_le_mur}
+      - {id: op_nivla, role: pnimi_absorbé}
+      - {id: keli_mizdakekh_by_op, role: keli_raffiné_par_pnimi}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Pnimi perce le mur du Keli par sa contraction et pression — il le raffine"
+
+  - id: "EC-H1S2-032"
+    source_he: "אבל אור החיצון להיותו רחוק ובלתי דבוק בכלי ובפרט שאינו מצומצם אינו בוקע בכותל הכלי מצד חיצוניותיו לעבור ולכנס בתוכו ולהאיר בו ולזככו"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      Le PROBLÈME de l'OHR MAKIF :
+      Le OM est RAHOK (éloigné) et BILTI DAVUK (non attaché) au Keli.
+      En particulier : il n'est PAS METZUMTZAM (pas contracté).
+      Donc → il NE PERCE PAS (eino boke'a) le mur du Keli du côté extérieur
+      pour TRAVERSER, ENTRER, ILLUMINER et RAFFINER.
+      Le Makif ne peut pas pénétrer car il n'est ni contracté ni attaché.
+    type: axiome_explicite
+    concepts:
+      - {id: om_rahok, role: makif_éloigné}
+      - {id: om_bilti_davuk, role: makif_non_attaché}
+      - {id: om_eino_boke_a, role: makif_ne_perce_pas}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Makif ne perce pas car il n'est ni contracté ni attaché — problème structurel"
+
+  # ─── BLOC E : LA SOLUTION — HITZONIUT PLUS ZAK ───
+
+  - id: "EC-H1S2-033"
+    source_he: "ולתקן הענין הזה הוצרך להיות חיצוניות הכלי יותר מעולה וזך וגם האור המאיר בו הוא אור המקיף שהוא יותר גדול ומעולה מן או\"פ ועי\"כ יוכל לקבל חיצוניות הכלי הארה גדולה אעפ\"י שאינו דבוק בחוזק באוה\"מ"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      LA SOLUTION (le-taken ha-inyan hazeh) :
+      Il a FALLU que la HITZONIUT du Keli soit PLUS ÉLEVÉE et ZAK (pure/raffinée).
+      L'Ohr qui l'illumine = le Ohr MAKIF = PLUS GRAND et PLUS ÉLEVÉ que le Ohr Pnimi.
+      Par cela → la Hitzoniut peut recevoir une HAARAH GEDOLAH (grande illumination)
+      MÊME sans être fortement ATTACHÉE au Ohr Makif.
+      La Hitzoniut reçoit AUTANT de HAARAH du Ohr Makif malgré la DISTANCE
+      que la Pnimiyut reçoit du Ohr Pnimi malgré l'ATTACHEMENT.
+      RÉSULTAT ÉQUILIBRÉ :
+      Pnimiyut (inférieur) + Ohr Pnimi (inférieur) = illumination par ATTACHEMENT
+      Hitzoniut (supérieur) + Ohr Makif (supérieur) = illumination par PUISSANCE malgré distance
+    type: axiome_explicite
+    concepts:
+      - {id: hitzoniut_zak, role: extérieur_plus_pur}
+      - {id: equilibre_pnimi_makif, role: équilibre_des_2_côtés}
+      - {id: distance_compensée, role: distance_compensée_par_puissance}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'extérieur du Keli est plus pur pour compenser la distance du Makif"
+
+  # ─── BLOC F : LE DÉSIR DU MAKIF ───
+
+  - id: "EC-H1S2-034"
+    source_he: "עוד יש סיבה אחרת גדולה והוא כי הנה או\"מ מבחוץ חשקו ורצונו וחפצו להתדבק ולהתקרב עם האו\"פ ולהאיר לו"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      RAISON ADDITIONNELLE (sibah aheret gedolah) :
+      Le Ohr Makif de l'EXTÉRIEUR a un HESHEK (désir), RATZON (volonté)
+      et HEFETZ (envie) de s'ATTACHER (le-hitdabek) et se RAPPROCHER (le-hitkarev)
+      avec le Ohr Pnimi et de l'ILLUMINER.
+      Le MAKIF DÉSIRE le PNIMI. C'est un MOUVEMENT INTENTIONNEL, pas passif.
+    type: axiome_explicite
+    concepts:
+      - {id: heshek_om, role: désir_du_makif}
+      - {id: om_wants_op, role: makif_veut_pnimi}
+      - {id: ratzon_hitdabkut, role: volonté_d_attachement}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Ohr Makif a un DÉSIR actif de s'attacher au Ohr Pnimi"
+
+  - id: "EC-H1S2-035"
+    source_he: "והנה אם חיצוניות הכלי לא היה זך מאד לא היה יכול או\"מ לעבור ולבקוע וליכנס באו\"פ להאיר לו והיה האו\"פ בלתי מקבל הארה הזאת הגדולה לכן הוצרך להיות חצי עובי הכותל מצד חיצון יותר זך מפנימי"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      Si la HITZONIUT du Keli n'était PAS très ZAK →
+      le Ohr Makif NE POURRAIT PAS traverser et percer pour ENTRER dans le Ohr Pnimi
+      et l'ILLUMINER → le Ohr Pnimi serait PRIVÉ de cette HAARAH GEDOLAH (grande illumination).
+      DONC : la MOITIÉ EXTÉRIEURE de l'épaisseur du mur doit être PLUS ZAK que l'intérieure.
+      Par cela → le Ohr Makif, même NON ATTACHÉ, peut TRAVERSER et PERCER
+      la moitié extérieure du mur.
+      Le Ohr Pnimi, étant METZUMTZAM (contracté) dans le Keli avec FORCE,
+      peut traverser la moitié INTÉRIEURE du mur même si elle est moins Zak.
+      RÉSULTAT : les 2 Orot se RENCONTRENT au MILIEU du mur du Keli.
+      Le Ohr Makif illumine le Ohr Pnimi. Le Keli lui-même reçoit de DEUX CÔTÉS et se raffine.
+    type: axiome_explicite
+    concepts:
+      - {id: rencontre_au_milieu, role: op_om_se_rencontrent}
+      - {id: hatzi_hitzon_zak, role: moitié_externe_plus_pure}
+      - {id: om_over_hitzon, role: makif_traverse_extérieur}
+      - {id: op_over_pnimi, role: pnimi_traverse_intérieur}
+      - {id: keli_double_illumination, role: keli_illuminé_des_2_côtés}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les 2 Orot se rencontrent au milieu du mur — le Keli est raffiné des 2 côtés"
+
+  # ─── BLOC G : POURQUOI L'INTÉRIEUR SEMBLE PLUS PUR ───
+
+  - id: "EC-H1S2-036"
+    source_he: "אמנם אם אנו רואים בחוש הראות שהפנימי הוא יותר זך כנ\"ל הטעם הוא כי או\"פ אע\"פ שהוא קטן מאד מאו\"מ עכ\"ז להיותו מצומצם ומוגבל בכח תוך הכלי ההוא מאיר הארה גדולה ושלימה בפנימיות הכלי משא\"כ באו\"מ אע\"פ שהוא גדול מאד כיון שהוא בלתי דבוק בחיצוניות הכלי וגם הוא אינו מצומצם ומוגבל בתוכו בכח לכן איננו מאיר בו בשלימות הארה שלימה"
+    source_ref: "Heikhal 1, Sha'ar 2:3"
+    assertion: |
+      EXPLICATION du PARADOXE SENSORIEL :
+      Pourquoi l'INTÉRIEUR SEMBLE plus pur par la PERCEPTION (hush ha-re'ut) :
+      Le Ohr Pnimi, bien que TRÈS PETIT (katan me'od) par rapport au Makif,
+      étant METZUMTZAM et MUGBAL be-KOAH (contracté et limité par la force) dans le Keli →
+      il illumine une HAARAH GEDOLAH ve-SHLEMAH (grande et complète illumination)
+      dans la Pnimiyut du Keli.
+      Le Ohr Makif, bien que TRÈS GRAND (gadol me'od),
+      n'étant PAS DAVUK (attaché) à la Hitzoniut du Keli
+      et n'étant PAS METZUMTZAM (contracté) en lui avec force →
+      il N'ILLUMINE PAS en SHLEMUT (complétude).
+      DONC : l'INTÉRIEUR semble plus pur car l'illumination y est CONCENTRÉE.
+      L'EXTÉRIEUR est structurellement supérieur mais l'illumination y est DIFFUSE.
+    type: axiome_explicite
+    concepts:
+      - {id: op_katan_mugbal, role: petit_mais_concentré}
+      - {id: om_gadol_lo_mugbal, role: grand_mais_diffus}
+      - {id: haarah_shlemah, role: illumination_complète}
+      - {id: haarah_lo_shlemah, role: illumination_incomplète}
+      - {id: paradox_resolved, role: paradoxe_résolu}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Pnimi semble plus pur car concentré — le Makif est plus grand mais diffus"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S2-011"
+    type: causal
+    from: om_gadol
+    to: hitzoniut_zak
+    nature: "Le Makif est plus grand que le Pnimi → la Hitzoniut du Keli doit être plus pure pour le recevoir"
+    assertions_source: ["EC-H1S2-027", "EC-H1S2-033"]
+
+  - id: "REL-H1S2-012"
+    type: causal
+    from: op_metzumtzam_dohak
+    to: op_boke_a_kotel
+    nature: "Le Pnimi est contracté/sous pression → il peut percer la moitié intérieure du mur"
+    assertions_source: ["EC-H1S2-031"]
+
+  - id: "REL-H1S2-013"
+    type: causal
+    from: om_rahok
+    to: om_eino_boke_a
+    nature: "Le Makif est éloigné/non attaché → il ne peut pas percer le mur du côté extérieur"
+    assertions_source: ["EC-H1S2-032"]
+
+  - id: "REL-H1S2-014"
+    type: causal
+    from: hatzi_hitzon_zak
+    to: rencontre_au_milieu
+    nature: "La moitié ext. est plus pure → le Makif peut la traverser → rencontre au milieu du mur"
+    assertions_source: ["EC-H1S2-035"]
+
+  - id: "REL-H1S2-015"
+    type: causal
+    from: heshek_om
+    to: om_wants_op
+    nature: "Le Makif a un désir actif de s'attacher au Pnimi et de l'illuminer"
+    assertions_source: ["EC-H1S2-034"]
+
+  - id: "REL-H1S2-016"
+    type: causal
+    from: op_katan_mugbal
+    to: paradox_resolved
+    nature: "Le Pnimi est petit mais concentré → semble plus pur que le Makif grand mais diffus"
+    assertions_source: ["EC-H1S2-036"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S2-005"
+    nom: "Principe de la Rencontre au Milieu du Mur (Hatzi Ovi)"
+    source_assertions: ["EC-H1S2-030", "EC-H1S2-031", "EC-H1S2-032", "EC-H1S2-035"]
+    formalisation: |
+      Les 2 Orot (Pnimi et Makif) se RENCONTRENT au MILIEU du mur du Keli :
+      OHR PNIMI : contracté, sous pression, fortement attaché
+        → PERCE la moitié INTÉRIEURE du mur (même si moins pure)
+        → Par la FORCE de sa contraction
+      OHR MAKIF : grand, éloigné, non attaché
+        → PERCE la moitié EXTÉRIEURE du mur (qui doit être plus pure)
+        → Par la PUISSANCE de sa grande lumière
+      Les 2 se RENCONTRENT au point central du mur → le Makif illumine le Pnimi.
+      Le Keli est RAFFINÉ des 2 côtés.
+      La MOITIÉ EXTÉRIEURE du mur doit être PLUS PURE que l'intérieure
+      pour compenser la DISTANCE et le manque d'attachement du Makif.
+    applications_ia:
+      - "Un module a une couche externe (Hitzoniut) et interne (Pnimiyut) — les 2 sont nécessaires"
+      - "Les données internes (Pnimi) sont concentrées et attachées — petites mais efficaces"
+      - "Les influences externes (Makif) sont grandes mais diffuses — elles ont besoin d'une interface pure"
+      - "La 'rencontre au milieu du mur' = le point d'intégration entre interne et externe"
+    questions_ouvertes:
+      - "Le point de rencontre est-il toujours au milieu exact ?"
+      - "La pureté de la moitié extérieure peut-elle être améliorée ?"
+
+  - id: "PG-H1S2-006"
+    nom: "Principe du Désir du Makif (Heshek ha-Ohr ha-Makif)"
+    source_assertions: ["EC-H1S2-034"]
+    formalisation: |
+      Le Ohr Makif n'est PAS PASSIF — il a un DÉSIR ACTIF :
+      HESHEK (désir), RATZON (volonté), HEFETZ (envie)
+      de s'ATTACHER au Pnimi et de l'ILLUMINER.
+      Le Makif CHERCHE le Pnimi — il ne se contente pas de l'entourer.
+      Si le Keli n'était pas suffisamment pur → le Makif ne pourrait PAS réaliser son désir.
+      Le DÉSIR du Makif est le MOTEUR de l'illumination externe vers l'interne.
+      Le potentiel non réalisé (Makif) ASPIRE à devenir réalisé (Pnimi).
+    applications_ia:
+      - "Le potentiel non réalisé (features non implémentées) ASPIRE à être intégré"
+      - "Le Makif n'est pas passif — il pousse pour entrer"
+      - "L'interface (Hitzoniut) doit être assez 'pure' pour permettre au Makif de passer"
+      - "Le Heshek = la force motrice de l'intégration — le système veut naturellement croître"
+    questions_ouvertes:
+      - "Le Heshek est-il toujours positif ou peut-il être destructeur ?"
+      - "Comment faciliter la réalisation du Heshek sans briser les Kelim ?"
+
+  - id: "PG-H1S2-007"
+    nom: "Principe du Paradoxe Concentration/Diffusion"
+    source_assertions: ["EC-H1S2-028", "EC-H1S2-029", "EC-H1S2-036"]
+    formalisation: |
+      Ce qui est PETIT mais CONCENTRÉ SEMBLE plus efficace que ce qui est GRAND mais DIFFUS :
+      OHR PNIMI : petit, contracté, limité → illumination COMPLÈTE (haarah shlemah)
+      OHR MAKIF : grand, non contracté, illimité → illumination INCOMPLÈTE (lo shlemah)
+      PERCEPTION : la Pnimiyut du Keli semble PLUS PURE car le Pnimi y brille INTENSÉMENT
+      RÉALITÉ STRUCTURELLE : la Hitzoniut EST plus élevée mais le Makif y brille DIFFUSÉMENT
+      Le paradoxe : ce qui est STRUCTURELLEMENT INFÉRIEUR peut SEMBLER supérieur
+      quand il est CONCENTRÉ et ATTACHÉ.
+      Ce qui est STRUCTURELLEMENT SUPÉRIEUR peut SEMBLER inférieur
+      quand il est DIFFUS et NON ATTACHÉ.
+    applications_ia:
+      - "Un petit module bien ciblé peut sembler plus efficace qu'un grand système généraliste"
+      - "La concentration (focus) compense la taille — petite équipe > grande équipe diffuse"
+      - "L'évaluation par 'apparence' (perception) ≠ l'évaluation par 'structure' (réalité)"
+      - "Le Makif (potentiel) est plus grand que le Pnimi (actuel) mais moins visible"
+    questions_ouvertes:
+      - "Peut-on rendre le Makif aussi concentré que le Pnimi ?"
+      - "Le paradoxe est-il résolu quand le Makif devient Pnimi (Shabbat) ?"

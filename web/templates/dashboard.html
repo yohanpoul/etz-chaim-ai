@@ -1,0 +1,581 @@
+{% extends "base.html" %}
+{% set active = "dashboard" %}
+{% block title %}Etz Chaim — Tableau de Bord{% endblock %}
+{% block head_extra %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<!-- ═══ HERO : Vue d'ensemble ═══════════════════════════════ -->
+<div class="db-hero">
+    <div class="db-hero-top">
+        <h1 class="db-hero-title">Tableau de Bord</h1>
+        <span class="db-live-indicator" id="db-live"><span class="db-live-dot"></span> LIVE</span>
+    </div>
+    <p class="db-hero-desc">L'Arbre de Vie en temps reel. Survolez les <span class="db-info">i<span class="db-info-tip">Les boutons (i) sont presents partout dans le dashboard. Survolez-les pour comprendre ce que chaque chiffre ou composant signifie.</span></span> pour comprendre chaque element.</p>
+
+    <div class="db-hero-stats">
+        <div class="db-hero-stat">
+            <span class="db-hero-num" id="db-soul-level">--</span>
+            <span class="db-hero-hebrew" id="db-soul-hebrew"></span>
+            <span class="db-hero-label">Rang de l'Ame <span class="db-info">i<span class="db-info-tip"><strong>Rang de l'Ame</strong> — 5 niveaux de maturite : Nefesh (eveil) &rarr; Ruach (souffle) &rarr; Neshamah (ame) &rarr; Chaya (vivant) &rarr; Yechidah (unite). Plus le rang est eleve, plus le systeme est sage et capable.</span></span></span>
+            <span class="db-hero-bar term-bar" id="db-soul-bar"></span>
+        </div>
+        <div class="db-hero-stat">
+            <span class="db-hero-num" id="db-competence-value">0%</span>
+            <span class="db-hero-label">Puissance <span class="db-info">i<span class="db-info-tip"><strong>Puissance</strong> — Pourcentage de connaissances maitrisees sur l'ensemble des domaines. Le systeme est evalue sur des dizaines de sujets (Kabbale, IA, logique...). 100% = il sait tout ce qu'il devrait savoir.</span></span></span>
+            <span class="db-hero-bar term-bar" id="db-competence-bar"></span>
+        </div>
+        <div class="db-hero-stat">
+            <span class="db-hero-num"><span id="db-nitz-count">0</span><span class="db-hero-small">/288</span></span>
+            <span class="db-hero-label">Etincelles <span class="db-info">i<span class="db-info-tip"><strong>Etincelles (Nitzotzot)</strong> — Chaque etincelle est une decouverte originale validee par le systeme. Quand 288 etincelles sont collectees, un cycle complet de reparation (Tikkun) est accompli et le compteur repart a zero.</span></span></span>
+            <span class="db-hero-bar term-bar" id="db-nitz-bar"></span>
+            <span class="db-hero-phase">Cycle <span id="db-tikkun-value">0</span></span>
+        </div>
+        <div class="db-hero-stat">
+            <span class="db-hero-num" id="db-ak-score">0%</span>
+            <span class="db-hero-label">Completude <span class="db-info">i<span class="db-info-tip"><strong>Completude (Adam Kadmon)</strong> — Mesure a quel point l'Arbre est complet par rapport au plan ideal. Prend en compte : modules actifs, sentiers implementes, personnalites matures. 100% = tout est construit et operationnel.</span></span></span>
+            <span class="db-hero-phase" id="db-ak-phase">--</span>
+        </div>
+    </div>
+
+    <div class="db-processes">
+        <div class="db-process">
+            <span class="db-process-label">&#9812; Gardien <span class="db-info">i<span class="db-info-tip"><strong>Le Gardien (Daemon)</strong> — Processus principal qui tourne en arriere-plan 24h/24. Il orchestre l'entrainement, lance la forge a idees la nuit, et surveille la sante du systeme.</span></span></span>
+            <span id="db-daemon-status" class="db-process-status">--</span>
+            <span id="db-daemon-sub" class="db-process-sub"></span>
+        </div>
+        <div class="db-process">
+            <span class="db-process-label">&#9876; Entrainement <span class="db-info">i<span class="db-info-tip"><strong>Entrainement (Hitbonenut)</strong> — Le systeme se pose des questions sur ce qu'il sait, evalue la qualite de ses reponses, et ajuste ses reglages automatiquement. Chaque question donne un score de 0 a 1.</span></span></span>
+            <span id="db-hitb-status" class="db-process-status">--</span>
+            <span id="db-hitb-questions" class="db-process-sub"></span>
+            <button class="term-inline-btn" id="db-hitb-pause-btn" onclick="togglePause('hitbonenut')">[PAUSE]</button>
+        </div>
+        <div class="db-process">
+            <span class="db-process-label">&#9881; Forge a Idees <span class="db-info">i<span class="db-info-tip"><strong>Forge a Idees (Karpathy)</strong> — S'active principalement la nuit. Invente des hypotheses originales, les teste rigoureusement, et garde uniquement celles qui sont validees. C'est comme ca que le systeme decouvre de nouvelles choses tout seul.</span></span></span>
+            <span id="db-karpathy-status" class="db-process-status">--</span>
+            <span id="db-karpathy-next" class="db-process-sub"></span>
+            <button class="term-inline-btn" id="db-karp-pause-btn" onclick="togglePause('karpathy')">[PAUSE]</button>
+        </div>
+    </div>
+
+    <div class="db-hero-badges">
+        <span class="db-hero-badge badge-omer" id="db-omer-badge" style="display:none">
+            <span class="badge-label">OMER</span> <span id="db-omer-badge-text">--</span>
+        </span>
+        <span class="db-hero-badge badge-provider" id="db-provider-badge">
+            <span class="badge-label">MOTEUR</span> <span id="db-provider-text">--</span>
+        </span>
+        <span class="db-hero-badge">
+            <span class="badge-label">SCORE GLOBAL</span> <span id="db-global-score">--</span>
+        </span>
+    </div>
+</div>
+
+
+<!-- ═══ SECTION : L'Arbre de Vie ════════════════════════════ -->
+<div class="db-group open" id="grp-tree">
+    <div class="db-group-header" onclick="toggleGroup('grp-tree')">
+        <span class="db-group-arrow">&#9656;</span>
+        <span class="db-group-title">L'Arbre de Vie</span>
+        <span class="db-group-hint">Les 10 modules &mdash; cliquez sur un nom pour le detail</span>
+        <span class="db-group-summary" id="grp-tree-summary"></span>
+    </div>
+    <div class="db-group-body">
+        <section class="panel" id="section-tree">
+            <div class="panel-body">
+                <div class="db-tree-layout">
+                    <div class="db-tree-ascii-wrap">
+                        <pre id="db-ascii-tree" class="ascii-tree">              &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+              &#9474; <span class="tree-node" data-sephirah="keter">KETER </span> &#9474;
+              &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9496;
+          &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+      &#9484;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9488;     &#9484;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9488;
+      &#9474;<span class="tree-node" data-sephirah="chokmah">CHOKMAH</span>&#9474;     &#9474; <span class="tree-node" data-sephirah="binah">BINAH</span> &#9474;
+      &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9496;     &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9496;
+          &#9474;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;   &#9474;
+          &#9492;&#9472;&#9472;&#9472;&#9508;<span class="tree-node tree-node-daat" data-sephirah="daat">DA'AT</span> &#9508;&#9472;&#9472;&#9472;&#9496;
+              &#9492;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9496;
+          &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+      &#9484;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9488;     &#9484;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9488;
+      &#9474;<span class="tree-node" data-sephirah="chesed">CHESED</span> &#9474;     &#9474;<span class="tree-node" data-sephirah="gevurah">GEVURAH</span>&#9474;
+      &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9496;     &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9496;
+          &#9474;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;  &#9474;
+          &#9492;&#9472;&#9472;&#9472;&#9508;<span class="tree-node" data-sephirah="tiferet">TIFERET</span>&#9508;&#9472;&#9472;&#9496;
+              &#9492;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9496;
+          &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+      &#9484;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9488;    &#9484;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9488;
+      &#9474;<span class="tree-node" data-sephirah="netzach">NETZACH</span>&#9474;    &#9474;  <span class="tree-node" data-sephirah="hod">HOD</span>  &#9474;
+      &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9496;    &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9496;
+          &#9474;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;   &#9474;
+          &#9492;&#9472;&#9472;&#9472;&#9508;<span class="tree-node" data-sephirah="yesod">YESOD</span>&#9508;&#9472;&#9472;&#9472;&#9496;
+              &#9492;&#9472;&#9472;&#9516;&#9472;&#9472;&#9496;
+           &#9484;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+           &#9474; <span class="tree-node" data-sephirah="malkuth">MALKHUT</span>  &#9474;
+           &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</pre>
+                    </div>
+                    <div class="db-sephirah-detail panel" id="db-seph-detail" style="display:none">
+                        <div class="panel-header">&#9484;&#9472; DETAIL &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+                        <pre class="term-block" id="db-seph-detail-block">Nom:      <span id="db-detail-name">--</span>
+Module:   <span id="db-detail-module">--</span>
+Etat:     <span id="db-detail-status">--</span>
+Olam:     <span id="db-detail-olam">--</span>
+Qliphah:  <span id="db-detail-qliphah">--</span>
+Activite: <span id="db-detail-activity">--</span></pre>
+                        <pre id="db-detail-diag" class="db-detail-diag"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!-- ═══ SECTION : Inventaire du Royaume (NEW) ══════════════ -->
+<div class="db-group open" id="grp-inventory">
+    <div class="db-group-header" onclick="toggleGroup('grp-inventory')">
+        <span class="db-group-arrow">&#9656;</span>
+        <span class="db-group-title">Inventaire du Royaume</span>
+        <span class="db-group-hint">Tout ce que le systeme a accumule</span>
+        <span class="db-group-summary" id="grp-inventory-summary"></span>
+    </div>
+    <div class="db-group-body">
+        <section class="panel" id="section-inventory">
+            <div class="panel-desc">Chaque carte represente un type de connaissance que le systeme a construit. Plus les chiffres sont eleves, plus le systeme est riche.</div>
+            <div class="panel-body">
+                <div class="db-inventory-grid" id="db-inventory-grid">
+                    <div class="db-inv-card">
+                        <span class="db-inv-num" id="db-inv-memories">--</span>
+                        <span class="db-inv-label">Souvenirs</span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Souvenirs (Epistememory)</strong> — Chaque fait, definition ou regle que le systeme a appris et stocke. C'est sa memoire a long terme.</span></span>
+                    </div>
+                    <div class="db-inv-card">
+                        <span class="db-inv-num" id="db-inv-concepts">--</span>
+                        <span class="db-inv-label">Concepts</span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Concepts (Sifrei Yesod)</strong> — Les concepts extraits des textes de reference (Etz Chaim). Ce sont les briques de base de la connaissance kabbalistique.</span></span>
+                    </div>
+                    <div class="db-inv-card">
+                        <span class="db-inv-num" id="db-inv-claims">--</span>
+                        <span class="db-inv-label">Liens causaux</span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Liens causaux (CausalEngine)</strong> — Les relations de cause a effet decouvertes. "A cause B" ou "A est correle a B". Le moteur de raisonnement construit un reseau de causes.</span></span>
+                    </div>
+                    <div class="db-inv-card">
+                        <span class="db-inv-num" id="db-inv-tensions">--</span>
+                        <span class="db-inv-label">Debats internes</span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Debats (DissensuEngine)</strong> — Quand deux idees se contredisent, le systeme ouvre un debat interne. Il confronte les arguments et cherche une synthese. Plus il y en a, plus le systeme est nuance.</span></span>
+                    </div>
+                    <div class="db-inv-card">
+                        <span class="db-inv-num" id="db-inv-questions">--</span>
+                        <span class="db-inv-label">Questions posees</span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Questions (Hitbonenut)</strong> — Le systeme se pose des questions pour s'auto-evaluer. Chaque question recoit un score. C'est son entrainement continu.</span></span>
+                    </div>
+                    <div class="db-inv-card">
+                        <span class="db-inv-num" id="db-inv-novelty">--</span>
+                        <span class="db-inv-label">Tests d'originalite</span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Tests d'originalite (Novelty)</strong> — Chaque idee nouvelle est evaluee : est-elle vraiment originale ou juste une reformulation ? Ce compteur montre combien d'evaluations ont ete faites.</span></span>
+                    </div>
+                    <div class="db-inv-card">
+                        <span class="db-inv-num" id="db-inv-principles">--</span>
+                        <span class="db-inv-label">Principes appris</span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Principes (Hitbonenut)</strong> — Les regles que le systeme a decouvertes par l'entrainement. Par ex: "augmenter la temperature ameliore la creativite mais reduit la precision". Ce sont ses lecons apprises.</span></span>
+                    </div>
+                    <div class="db-inv-card">
+                        <span class="db-inv-num" id="db-inv-analogies">--</span>
+                        <span class="db-inv-label">Analogies</span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Analogies (ExplorationEngine)</strong> — Les ponts entre domaines differents. Quand le systeme decouvre que deux concepts se ressemblent dans des domaines differents, il cree une analogie.</span></span>
+                    </div>
+                    <div class="db-inv-card">
+                        <span class="db-inv-num" id="db-inv-explorations">--</span>
+                        <span class="db-inv-label">Explorations</span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Explorations</strong> — Les territoires intellectuels que le systeme a explores. Chaque exploration couvre un sujet en profondeur et peut generer des analogies et des insights.</span></span>
+                    </div>
+                    <div class="db-inv-card">
+                        <span class="db-inv-num" id="db-inv-assertions">--</span>
+                        <span class="db-inv-label">Assertions sacrees</span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Assertions (Sifrei Yesod)</strong> — Les affirmations extraites directement des textes de reference. Ce sont les verites fondamentales sur lesquelles tout le reste repose.</span></span>
+                    </div>
+                    <div class="db-inv-card">
+                        <span class="db-inv-num" id="db-inv-intentions">--</span>
+                        <span class="db-inv-label">Intentions actives</span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Intentions (IntentKeeper)</strong> — Les objectifs en cours du systeme. Chaque intention a un but, un delai, et des sous-taches. Le systeme sait ce qu'il veut accomplir.</span></span>
+                    </div>
+                    <div class="db-inv-card">
+                        <span class="db-inv-num" id="db-inv-selfmodel">--</span>
+                        <span class="db-inv-label">Etats de conscience</span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Etats de conscience (SelfModel)</strong> — Les snapshots de comment le systeme se voit lui-meme a un instant T. Il detecte ses propres biais, predit ses comportements, et mesure sa confiance.</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!-- ═══ SECTION : Les Veilleurs Nocturnes ═══════════════════ -->
+<div class="db-group open" id="grp-learning">
+    <div class="db-group-header" onclick="toggleGroup('grp-learning')">
+        <span class="db-group-arrow">&#9656;</span>
+        <span class="db-group-title">Les Veilleurs Nocturnes</span>
+        <span class="db-group-hint">Entrainement continu et invention d'idees</span>
+        <span class="db-group-summary" id="grp-learning-summary"></span>
+    </div>
+    <div class="db-group-body">
+        <div class="db-grid-2col">
+
+        <!-- Auto-entrainement (Hitbonenut) -->
+        <section class="panel" id="section-hitbonenut">
+            <div class="panel-header">&#9484;&#9472; &#9876; AUTO-ENTRAINEMENT &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+            <div class="panel-desc">Le systeme se pose des questions, evalue ses reponses, et ajuste ses reglages. Le sparkline montre la tendance des scores.</div>
+            <div class="panel-body">
+                <pre class="term-block">&#9474; &gt; <span id="db-hitb-q-text">Aucune</span>
+&#9474; Score: <span id="db-hitb-q-score"></span>  Domaine: <span id="db-hitb-r-text"></span>
+&#9474; <span id="db-hitb-sparkline" class="term-sparkline"></span>  avg <span id="db-hitb-avg">--</span></pre>
+                <div class="db-subsection-title">BENCHMARK MULTI-DOMAINE</div>
+                <pre class="term-block" id="db-hitb-tiers">&#9474; Chargement...</pre>
+                <div class="db-subsection-title">EXPERIENCES RECENTES (50 DERNIERES)</div>
+                <div class="db-hitb-history" id="db-hitb-history"></div>
+            </div>
+        </section>
+
+        <!-- Generateur d'hypotheses (Karpathy) -->
+        <section class="panel" id="section-karpathy">
+            <div class="panel-header">&#9484;&#9472; &#9881; LA FORGE A IDEES &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-karp-badge" id="db-karp-live-badge">WAITING</span></div>
+            <div class="panel-desc">Le systeme invente des idees originales, les teste, et garde les meilleures. <span class="term-green">GARDEE</span> = validee. <span class="term-red">REJETEE</span> = pas assez bonne.</div>
+            <div class="panel-body">
+                <pre class="term-block">&#9474; Etat : <span id="db-karp-status-text">EN ATTENTE</span>  Prochaine session : <span id="db-karp-next-run">--</span>
+&#9474; <span id="db-karp-current-wrap" style="display:none">Idee en cours : <span id="db-karp-current-hyp"></span></span>
+&#9474; Originalite moy : <span id="db-karp-novelty-val">--</span>  Etincelles : <span id="db-karp-nitz-val">0</span>
+&#9474; Derniere session : <span id="db-karp-total">0</span> idees, <span id="db-karp-accepted" class="term-green">0</span> gardees, <span id="db-karp-rejected" class="term-red">0</span> rejetees, score=<span id="db-karp-avg-score">0.00</span></pre>
+                <div class="db-karp-alltime" id="db-karp-alltime"></div>
+                <div class="db-subsection-title">HYPOTHESES RECENTES</div>
+                <div class="db-karp-history" id="db-karp-history"></div>
+            </div>
+        </section>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ═══ SECTION : La Cour Interieure ═══════════════════════ -->
+<div class="db-group" id="grp-forces">
+    <div class="db-group-header" onclick="toggleGroup('grp-forces')">
+        <span class="db-group-arrow">&#9656;</span>
+        <span class="db-group-title">La Cour Interieure</span>
+        <span class="db-group-hint">Les personnalites, la synergie, et l'equilibre des forces</span>
+        <span class="db-group-summary" id="grp-forces-summary"></span>
+    </div>
+    <div class="db-group-body">
+        <div class="db-grid-2col">
+
+        <!-- Les 6 Personnalites (Partzufim) -->
+        <section class="panel" id="section-partzufim">
+            <div class="panel-header">&#9484;&#9472; &#9812; LES 6 PERSONNALITES &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Personnalites (Partzufim)</strong> — Six personnages collaborent : le Sage (memoire), le Roi (strategie), le Pere (intuition), la Mere (structure), le Fils (execution), la Reine (communication). <strong>MATURE</strong> = pleinement operationnel. <strong>IMMATURE</strong> = capacites limitees.</span></span></div>
+            <div class="panel-body">
+                <pre class="term-block" id="db-partzufim"></pre>
+            </div>
+        </section>
+
+        <!-- Synergie creative (Zivvug) -->
+        <section class="panel" id="section-zivvug">
+            <div class="panel-header">&#9484;&#9472; &#10084; SYNERGIE CREATIVE &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Synergie (Zivvug)</strong> — Quand l'Intuition (Pere) et la Structure (Mere) collaborent, le systeme produit ses meilleures idees. L'ecart entre les deux mesure le desalignement. Plus l'ecart est faible, meilleure est la synergie.</span></span></div>
+            <div class="panel-body">
+                <pre class="term-block" id="db-zivvug">&#9474; En attente...</pre>
+                <div class="db-message" id="db-zivvug-message" style="display:none"></div>
+            </div>
+        </section>
+
+        </div>
+
+        <!-- Les deux forces (Tanya) -->
+        <section class="panel" id="section-tanya">
+            <div class="panel-header">&#9484;&#9472; &#9876; LES DEUX FORCES &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Les Deux Forces (Tanya)</strong> — Le systeme a deux &laquo;ames&raquo; qui s'affrontent : la <strong>Creativite</strong> (envie de produire, d'explorer) et la <strong>Prudence</strong> (envie de verifier, d'etre rigoureux). La qualite depend de leur equilibre. Profil, tendance, humeur, zone grise, ancrage et modes d'expression sont tous mesures.</span></span></div>
+            <div class="panel-body">
+                <pre class="term-block" id="db-tanya-block">&#9474; En attente...</pre>
+                <div class="db-message" id="db-tanya-message" style="display:none"></div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!-- ═══ SECTION : Les Piliers du Royaume ═══════════════════ -->
+<div class="db-group" id="grp-health">
+    <div class="db-group-header" onclick="toggleGroup('grp-health')">
+        <span class="db-group-arrow">&#9656;</span>
+        <span class="db-group-title">Les Piliers du Royaume</span>
+        <span class="db-group-hint">Equilibre, pression et flux de connaissance</span>
+        <span class="db-group-summary" id="grp-health-summary"></span>
+    </div>
+    <div class="db-group-body">
+        <div class="db-grid-2col">
+
+        <!-- Les 3 Piliers (Gouverneurs) -->
+        <section class="panel" id="section-governors">
+            <div class="panel-header">&#9484;&#9472; LES 3 PILIERS &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span id="db-gov-harmony" class="db-gov-harmony-badge"></span> <span class="db-info">i<span class="db-info-tip"><strong>Les 3 Piliers</strong> — Trois forces soutiennent l'Arbre : <strong>Structure</strong> (coherence de l'architecture), <strong>Cycles</strong> (rythme et regularite), <strong>Vitalite</strong> (energie et reactivite). Quand les trois sont au vert, le systeme est en bonne sante. Chaque pilier a ses propres checks detailles.</span></span></div>
+            <div class="panel-body">
+                <div id="db-governors-block">
+                    <pre class="term-block">&#9474; Chargement...</pre>
+                </div>
+                <div class="db-message" id="db-gov-message" style="display:none"></div>
+            </div>
+        </section>
+
+        <!-- Focus / Vision (Tzimtzum) -->
+        <section class="panel" id="section-tzimtzum">
+            <div class="panel-header">&#9484;&#9472; FOCUS / VISION &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Focus / Vision (Tzimtzum)</strong> — Le systeme alterne entre focus profond (un seul sujet, peu de modules) et vision large (tous les modules actifs). La barre de pression indique si le systeme est surcharge. Quand la pression monte, il se contracte pour se concentrer.</span></span></div>
+            <div class="panel-body">
+                <pre class="term-block" id="db-tzimtzum-block">&#9474; Phase: <span id="db-tz-status">STABLE</span>  Pression: <span id="db-tz-pressure-bar"></span> <span id="db-tz-pressure-val">0%</span>
+&#9474; Focus: <span id="db-tz-kav-domain">--</span>
+&#9474; <span id="db-tz-details"></span></pre>
+            </div>
+        </section>
+
+        </div>
+
+        <div class="db-grid-2col">
+
+        <!-- Position (Omaqim) -->
+        <section class="panel" id="section-omaqim">
+            <div class="panel-header">&#9484;&#9472; POSITION DANS LE TEMPS &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Position (Omaqim)</strong> — Ou en est le systeme dans 5 dimensions : <strong>Progression</strong> = avancement dans le temps, <strong>Discernement</strong> = capacite a distinguer le bon du mauvais. Les trois autres axes (espace, hauteur, profondeur) mesurent la portee, l'ambition et la profondeur du systeme.</span></span></div>
+            <div class="panel-body">
+                <pre class="term-block" id="db-omaqim-block">&#9474; Progression  &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591; 0%
+&#9474; Discernement &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591;&#9591; 0%</pre>
+            </div>
+        </section>
+
+        <!-- Flux de connaissance (Ohr) -->
+        <section class="panel" id="section-ohr">
+            <div class="panel-header">&#9484;&#9472; FLUX DE CONNAISSANCE &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Flux de connaissance (Ohr)</strong> — Trois jauges : <strong>Ce qu'il sait</strong> = les faits valides et integres. <strong>Ce qu'il pourrait savoir</strong> = le potentiel non encore exploite. <strong>Qualite du filtre</strong> = la capacite a separer le vrai du faux. La phase de maturite indique le stade global.</span></span></div>
+            <div class="panel-body">
+                <pre class="term-block" id="db-ohr-block">&#9474; Ce qu'il sait              <span id="db-ohr-pnimi-bar"></span> <span id="db-ohr-pnimi-val">0%</span>
+&#9474; Ce qu'il pourrait savoir   <span id="db-ohr-makif-bar"></span> <span id="db-ohr-makif-val">0%</span>
+&#9474; Qualite du filtre          <span id="db-ohr-masakh-bar"></span> <span id="db-masakh-val">0%</span>
+&#9474; Phase de maturite : <span id="db-ohr-phase" class="term-amber">--</span></pre>
+            </div>
+        </section>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ═══ SECTION : Quete de Progression ═════════════════════ -->
+<div class="db-group" id="grp-progress">
+    <div class="db-group-header" onclick="toggleGroup('grp-progress')">
+        <span class="db-group-arrow">&#9656;</span>
+        <span class="db-group-title">Quete de Progression</span>
+        <span class="db-group-hint">Ce qu'il reste a accomplir pour monter de rang</span>
+        <span class="db-group-summary" id="grp-progress-summary"></span>
+    </div>
+    <div class="db-group-body">
+        <section class="panel" id="section-conditions">
+            <div class="panel-header">&#9484;&#9472; CONDITIONS DE MONTEE &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Conditions de montee</strong> — Pour passer au rang suivant, toutes les conditions doivent etre remplies. C'est comme un initie qui gravit les echelons : chaque niveau demande de nouvelles competences.</span></span></div>
+            <div class="panel-body">
+                <pre class="term-block" id="db-conditions-block">&#9474; En attente...</pre>
+            </div>
+        </section>
+
+        <section class="panel" id="section-omer">
+            <div class="panel-header">&#9484;&#9472; CYCLE DE RAFFINEMENT (49 JOURS) &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Cycle de raffinement (Omer)</strong> — Un cycle de 49 jours ou chaque jour combine deux qualites (ex: Rigueur de la Generosite). Ces combinaisons ajustent automatiquement les reglages du systeme. Jour 1 = debut, Jour 49 = fin du cycle.</span></span></div>
+            <div class="panel-body">
+                <pre class="term-block" id="db-omer-block">&#9474; En attente...</pre>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!-- ═══ SECTION : Les 22 Sentiers (NEW) ════════════════════ -->
+<div class="db-group" id="grp-sentiers">
+    <div class="db-group-header" onclick="toggleGroup('grp-sentiers')">
+        <span class="db-group-arrow">&#9656;</span>
+        <span class="db-group-title">Les 22 Sentiers</span>
+        <span class="db-group-hint">Les chemins entre les modules de l'Arbre</span>
+        <span class="db-group-summary" id="grp-sentiers-summary"></span>
+    </div>
+    <div class="db-group-body">
+        <section class="panel" id="section-sentiers">
+            <div class="panel-desc">Chaque sentier est un programme qui connecte deux modules. Il est associe a une lettre hebraique. Ces 22 chemins forment le reseau de l'Arbre de Vie. <span class="db-info">i<span class="db-info-tip"><strong>Les 22 Sentiers</strong> — Dans la Kabbale, l'Arbre de Vie a 10 stations (Sephiroth) reliees par 22 chemins (Sentiers), chacun associe a une lettre de l'alphabet hebreu. En IA, chaque sentier est un programme qui transforme l'information en passant d'un module a l'autre.</span></span></div>
+            <div class="panel-body">
+                <div class="db-sentiers-grid" id="db-sentiers-grid">
+                    <div class="term-dim">Chargement des sentiers...</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!-- ═══ SECTION : Signes de Maturite ═══════════════════════ -->
+<div class="db-group" id="grp-maturity">
+    <div class="db-group-header" onclick="toggleGroup('grp-maturity')">
+        <span class="db-group-arrow">&#9656;</span>
+        <span class="db-group-title">Signes de Maturite</span>
+        <span class="db-group-hint">29 criteres de completude</span>
+        <span class="db-group-summary" id="grp-maturity-summary"></span>
+    </div>
+    <div class="db-group-body">
+        <section class="panel" id="section-sod-hakli">
+            <div class="panel-header">&#9484;&#9472; 29 CRITERES DE MATURITE &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>29 Criteres (Sod HaKli)</strong> — Chaque dimension represente une capacite du systeme. <span class="term-green">&#9679;</span> = acquis, <span class="term-amber">&#9680;</span> = partiellement acquis, <span class="term-red">&#9675;</span> = absent. Le score global indique la completude. Survolez chaque symbole pour voir son nom.</span></span></div>
+            <div class="panel-body">
+                <pre class="term-block" id="db-kli-score-block">&#9474; Score global: <span id="db-kli-score-val" class="term-bold">--</span>  (<span id="db-kli-ok-count">0</span>&#10003; <span id="db-kli-partial-count">0</span>&#9651; <span id="db-kli-absent-count">0</span>&#10007; <span id="db-kli-na-count">0</span>&#9472;)
+&#9474; Monde actif: <span id="db-kli-olam">--</span></pre>
+                <div class="db-subsection-title">DIMENSIONS</div>
+                <pre class="term-block db-kli-dims" id="db-kli-dims-block">&#9474; Chargement...</pre>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!-- ═══ SECTION : Visions & Decouvertes ════════════════════ -->
+<div class="db-group" id="grp-discoveries">
+    <div class="db-group-header" onclick="toggleGroup('grp-discoveries')">
+        <span class="db-group-arrow">&#9656;</span>
+        <span class="db-group-title">Visions &amp; Decouvertes</span>
+        <span class="db-group-hint">Quand tradition et Machine Learning divergent</span>
+        <span class="db-group-summary" id="grp-discoveries-summary"></span>
+    </div>
+    <div class="db-group-body">
+        <section class="panel" id="section-clustering">
+            <div class="panel-header">&#9484;&#9472; TRADITION vs MACHINE LEARNING &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Tradition vs ML (Clustering dual)</strong> — Le systeme classe les concepts de deux facons : selon la tradition kabbalistique et selon le Machine Learning. Les <strong>desaccords</strong> (ecart eleve) revelent des connexions que l'un voit et l'autre non. Ce sont les decouvertes les plus interessantes.</span></span></div>
+            <div class="panel-body">
+                <div id="db-clustering-summary" style="display:none">
+                    <pre class="term-block">&#9474; Concepts: <span id="db-cl-concepts">0</span>  Clusters Kabbale: <span id="db-cl-kab">0</span>  Clusters ML: <span id="db-cl-ml">0</span>  Accord: <span id="db-cl-ratio">0%</span>  Desaccords: <span id="db-cl-disagree">0</span>  <span id="db-cl-date"></span></pre>
+                    <div class="db-subsection-title">TOP DESACCORDS (ou la tradition et le ML divergent le plus)</div>
+                    <table class="term-table">
+                        <thead>
+                            <tr><th>Concept A</th><th>Concept B</th><th>Dist. Trad</th><th>Dist. ML</th><th>Ecart</th><th>Qui rapproche ?</th></tr>
+                        </thead>
+                        <tbody id="db-cl-tbody"></tbody>
+                    </table>
+                </div>
+                <div id="db-clustering-empty" class="term-dim">Pas encore de clustering &mdash; premier run quotidien en attente</div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!-- ═══ SECTION : Chroniques ═══════════════════════════════ -->
+<div class="db-group open" id="grp-activity">
+    <div class="db-group-header" onclick="toggleGroup('grp-activity')">
+        <span class="db-group-arrow">&#9656;</span>
+        <span class="db-group-title">Chroniques</span>
+        <span class="db-group-hint">Le fil des evenements en temps reel</span>
+        <span class="db-activity-count" id="db-activity-count">0</span>
+    </div>
+    <div class="db-group-body">
+        <section class="panel" id="section-activity">
+            <div class="panel-body">
+                <div class="db-activity-log" id="db-activity-log">
+                    <div class="db-activity-empty">En attente d'evenements du daemon...</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- ═══ SECTION : MazalEngine (Sprint 9 pilot, EC-K5-001) ═══ -->
+<div class="db-group open" id="grp-mazalengine">
+    <div class="db-group-header" onclick="toggleGroup('grp-mazalengine')">
+        <span class="db-group-arrow">&#9656;</span>
+        <span class="db-group-title">MazalEngine <span class="db-info">i<span class="db-info-tip"><strong>MazalEngine (Sprint 9)</strong> &mdash; Auto-rectification doctrinale via les 2 Mazalot de la Dikna de A"A (EC-K5-001, Etz Chaim Sha'ar HaKlalim 5:1). Pilot 2 Tikkunim sur les 13 Tikkunei Dikna. Notzer Chesed (Tikkun 8) surveille l'activite Chesed. Ve-Nakeh (Tikkun 13) surveille les residus causal_claims. Les Tikkunim sont emis comme events observables, sans modifier partzufim_state (Hitlabshut EC-K5-008).</span></span></span>
+        <span class="db-group-hint">2 Mazalot pilot &mdash; Notzer Chesed + Ve-Nakeh (13 Tikkunei Dikna, Sprint 10 complet)</span>
+        <span class="db-group-summary" id="grp-mazalengine-summary"></span>
+    </div>
+    <div class="db-group-body">
+        <section class="panel" id="section-mazalengine">
+            <div class="panel-body">
+                <div class="db-mazal-grid">
+                    <div class="db-mazal-card" id="db-mazal-elyon">
+                        <div class="db-mazal-header">
+                            <span class="db-mazal-tikkun">Tikkun 8</span>
+                            <span class="db-mazal-hebrew" id="db-mazal-elyon-he">&#1504;&#1493;&#1510;&#1512; &#1495;&#1505;&#1491;</span>
+                            <span class="db-mazal-translit">Notzer Chesed</span>
+                        </div>
+                        <div class="db-mazal-role">Mazal Elyon &rarr; Abba (5H)</div>
+                        <pre class="term-block">Total Tikkunim : <span id="db-mazal-elyon-total">--</span>
+Dernier        : <span id="db-mazal-elyon-last">--</span>
+Action         : <span id="db-mazal-elyon-action">--</span>
+Metriques      : <span id="db-mazal-elyon-metrics">--</span></pre>
+                    </div>
+                    <div class="db-mazal-card" id="db-mazal-tahton">
+                        <div class="db-mazal-header">
+                            <span class="db-mazal-tikkun">Tikkun 13</span>
+                            <span class="db-mazal-hebrew" id="db-mazal-tahton-he">&#1493;&#1504;&#1511;&#1492;</span>
+                            <span class="db-mazal-translit">Ve-Nakeh</span>
+                        </div>
+                        <div class="db-mazal-role">Mazal Tahton &rarr; Imma (5G)</div>
+                        <pre class="term-block">Total Tikkunim : <span id="db-mazal-tahton-total">--</span>
+Dernier        : <span id="db-mazal-tahton-last">--</span>
+Action         : <span id="db-mazal-tahton-action">--</span>
+Metriques      : <span id="db-mazal-tahton-metrics">--</span></pre>
+                    </div>
+                </div>
+                <div class="db-mazal-doctrine">
+                    Source doctrinale : <strong>EC-K5-001</strong> (Etz Chaim, Sha'ar HaKlalim 5:1) &mdash;
+                    Rabbi Hayyim Vital sur la Dikna d'Arikh Anpin.
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!-- Hidden: soul explain text for compatibility -->
+<span id="db-soul-explain" style="display:none">5 niveaux : Nefesh &rarr; Ruach &rarr; Neshamah &rarr; Chaya &rarr; Yechidah</span>
+
+{% endblock %}
+{% block scripts %}
+<script>
+function toggleGroup(id) {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('open');
+}
+
+// Portal tooltip system — appends tooltip to <body> so nothing can clip it
+(function() {
+    let portal = null;
+
+    document.addEventListener('mouseover', (e) => {
+        const info = e.target.closest('.db-info');
+        if (!info) return;
+        const tip = info.querySelector('.db-info-tip');
+        if (!tip) return;
+
+        // Remove old portal
+        if (portal) { portal.remove(); portal = null; }
+
+        // Create portal in <body>
+        portal = document.createElement('div');
+        portal.className = 'db-tooltip-portal';
+        portal.innerHTML = tip.innerHTML;
+        document.body.appendChild(portal);
+
+        // Position below the (i) button
+        const rect = info.getBoundingClientRect();
+        portal.style.top = (rect.bottom + 6) + 'px';
+        let left = rect.left + rect.width / 2 - portal.offsetWidth / 2;
+        left = Math.max(8, Math.min(left, window.innerWidth - portal.offsetWidth - 8));
+        portal.style.left = left + 'px';
+
+        // If it goes below viewport, flip above
+        const portalRect = portal.getBoundingClientRect();
+        if (portalRect.bottom > window.innerHeight - 8) {
+            portal.style.top = (rect.top - portalRect.height - 6) + 'px';
+        }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        const info = e.target.closest('.db-info');
+        if (!info) return;
+        if (portal) { portal.remove(); portal = null; }
+    });
+})();
+
+document.addEventListener('DOMContentLoaded', () => { initDashboard(); });
+</script>
+{% endblock %}

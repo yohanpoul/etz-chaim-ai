@@ -1,0 +1,335 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 9 — Zimnei Gadlut Nukvah de-Z"A (זמני גדלות נוקבא דז"א)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 9
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : A"A COMME NESHAMAH DE TOUT ATZILUT ───
+
+  - id: "EC-K9-001"
+    source_he: "כי א\"א הוא נשמה לכל האצילות ומתפשט ומתלבש בכולו"
+    source_ref: "Sha'ar HaKlalim 9:1"
+    assertion: |
+      A"A (Arikh Anpin) = la NESHAMAH (âme) de TOUT ATZILUT.
+      Il se DÉPLOIE (mitpasheet) et se REVÊT (mitlabesh) dans l'ENSEMBLE d'Atzilut.
+      AVI (Abba et Imma) = jusqu'à la moitié de Tiferet de A"A
+      ZUN (Ze'ir Anpin et Nukvah) = de là vers le bas
+      A"A traverse et anime TOUT — il est l'âme qui vivifie chaque composant.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_neshamah, role: âme_de_tout_atzilut}
+      - {id: hitpashtut_aa, role: déploiement_total}
+      - {id: hitlabshut_aa, role: revêtement_dans_tout}
+      - {id: atzilut, role: monde_animé_par_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "A\"A comme couche d'animation de tout le système — la Neshamah globale"
+
+  - id: "EC-K9-002"
+    source_he: "כי מחצי ת\"ת דא\"א עד סוף היסוד דא\"א נעשה נשמה לז\"א ומעטרת יסוד דא\"א נשמה לנוק' דז\"א"
+    source_ref: "Sha'ar HaKlalim 9:2"
+    assertion: |
+      Distribution de la NESHAMAH de A"A :
+      De la MOITIÉ de TIFERET de A"A jusqu'à la FIN de son YESOD → NESHAMAH de Z"A
+      De l'ATERET YESOD (couronne du Yesod) de A"A → NESHAMAH de NUKVAH
+      Z"A reçoit la Neshamah de la MAJORITÉ de la section inférieure de A"A.
+      Nukvah reçoit la Neshamah du POINT TERMINAL (Atarah) seulement.
+    type: axiome_explicite
+    concepts:
+      - {id: neshamah_za_from_aa, role: tiferet_à_yesod_de_aa}
+      - {id: neshamah_nukvah_from_aa, role: ateret_yesod_de_aa}
+      - {id: ateret_yesod_aa, role: point_terminal_de_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "nukvah"]
+      relevance: "La source de la Neshamah de chaque Partzuf dans A\"A — traçabilité"
+
+  - id: "EC-K9-003"
+    source_he: "ואור א\"ס עובר בתוך א\"א ועליו נאמר ואתה מחיה את כולם כי הוא מחיה כל העולמות בהתלבשו בתוכם"
+    source_ref: "Sha'ar HaKlalim 9:2"
+    assertion: |
+      Le OHR EIN SOF traverse A"A — et à travers lui vivifie TOUT.
+      Preuve : "Ve-Atah mehayeh et kulam" (Néhémie 9:6 — "Et Toi Tu vivifies tout")
+      Le Ein Sof ne touche pas directement les mondes — il passe PAR A"A.
+      A"A est le CANAL par lequel le Ein Sof anime les mondes.
+      Architecture : Ein Sof → A"A → AVI → ZUN → Mondes
+    type: axiome_explicite
+    concepts:
+      - {id: ein_sof_be_aa, role: flux_traversant}
+      - {id: mehayeh_kulam, role: vivification_universelle}
+      - {id: aa_as_channel, role: canal_du_ein_sof}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "A\"A comme canal du Ein Sof — l'architecture complète du flux vital"
+
+  # ─── BLOC B : NUKVAH PENDANT L'IBUR DE Z"A ───
+
+  - id: "EC-K9-004"
+    source_he: "והנה בעיבור א' דתכב\"ת כבר ביארנו כי גם א\"א עצמו העלה נה\"י וחצי ת\"ת תחתון שלו ונכללו בחצי ת\"ת עליון ובח\"ג שלו ואז נכלל ז\"א ג\"כ ג' כליל בג'"
+    source_ref: "Sha'ar HaKlalim 9:1"
+    assertion: |
+      Pendant l'IBUR ALEPH de Z"A (3 dans 3) :
+      A"A LUI-MÊME a fait monter ses NHY + moitié inf. de Tiferet
+      dans sa moitié sup. de Tiferet et CHG (comme au Perek 2).
+      Z"A est en mode "3 inclus dans 3" dans le ventre d'Imma.
+      Simultanément, tous les niveaux sont en mode CONTRACTÉ.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_aleph_context, role: contraction_simultanée}
+      - {id: aa_contracts_too, role: aa_aussi_se_contracte}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Pendant l'Ibur, TOUT le système est en contraction — pas seulement Z\"A"
+
+  - id: "EC-K9-005"
+    source_he: "ואז נוק' שהיתה נקודה לבד נגדלה כשיעור יסוד דז\"א הנקרא ישראל"
+    source_ref: "Sha'ar HaKlalim 9:1"
+    assertion: |
+      NUKVAH pendant l'Ibur de Z"A :
+      Elle était une NEKUDAH (point) seule.
+      Pendant l'Ibur → elle GRANDIT à la taille du YESOD de Z"A.
+      Ce Yesod est appelé ISRAEL.
+      Sa taille initiale = le ROVA (1/4) du YESOD de Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: nukvah_ibur, role: taille_yesod}
+      - {id: yesod_israel, role: yesod_appelé_israel}
+    mapping:
+      modules: ["partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Nukvah grandit progressivement de 'point' à la taille du Yesod"
+
+  # ─── BLOC C : LA MESURE DU GUFAH — ROVA ISRAEL ───
+
+  - id: "EC-K9-006"
+    source_he: "וכבר ידעת כי היסוד נק' רובע ישראל פי' רביעי של ת\"ת הוא מדת היסוד כי שיעורה דגופא ד' בריתות הוא והמל' היתה רביעית היסוד"
+    source_ref: "Sha'ar HaKlalim 9:1"
+    assertion: |
+      MESURE DU CORPS — le système de proportions :
+      Le YESOD = appelé ROVA ISRAEL (quart d'Israël)
+      Car le Yesod = 1/4 du TIFERET en mesure.
+      La mesure du corps (shi'urah de-gufa) = 4 BERITOT (alliances/mesures).
+      MALKHUT initiale = 1/4 du YESOD
+      PROPORTIONS : Tiferet = 4 unités, Yesod = 1 unité, Malkhut = 1/4 unité
+      Ratio : Tiferet : Yesod : Malkhut = 16 : 4 : 1
+    type: axiome_explicite
+    concepts:
+      - {id: rova_israel, role: quart_d_israel}
+      - {id: arba_beritot, role: quatre_mesures_du_corps}
+      - {id: shi_ur_gufa, role: proportions_du_corps}
+      - {id: ratio_16_4_1, role: proportions}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Les proportions structurelles : Tiferet:Yesod:Malkhut = 16:4:1"
+
+  # ─── BLOC D : LES 3 STADES DE CROISSANCE DE NUKVAH ───
+
+  - id: "EC-K9-007"
+    source_he: "וכשנתעלו ועלו יסוד ומל' ונכללו למעלה בחצי ת\"ת כנ\"ל הנה היסוד נגדל ונעשה כמדת ת\"ת עצמו ונגדלה מל' כמדת היסוד כולו שהיה בתחלה רובע ישראל רביעית הת\"ת"
+    source_ref: "Sha'ar HaKlalim 9:1"
+    assertion: |
+      STADE 1 — IBUR : Quand Yesod et Malkhut montent dans le demi-Tiferet supérieur :
+      Le YESOD grandit → devient comme la TAILLE DU TIFERET
+      MALKHUT grandit → devient comme la taille du YESOD originel
+      AVANT : Malkhut = 1/4 de Yesod = 1/16 de Tiferet (Rova Israel)
+      APRÈS IBUR : Malkhut = taille du Yesod originel = 1/4 de Tiferet
+      Croissance de Malkhut : ×4 (de 1/16 à 1/4 de Tiferet)
+    type: axiome_explicite
+    concepts:
+      - {id: nukvah_stade_1, role: taille_yesod_originel}
+      - {id: croissance_x4, role: quadruplement}
+    mapping:
+      modules: ["partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Stade 1 : Malkhut passe de 1/16 à 1/4 de Tiferet — quadruplement"
+
+  - id: "EC-K9-008"
+    source_he: "ואח\"כ ביניקה נגדלה המל' כמדת הת\"ת ממש"
+    source_ref: "Sha'ar HaKlalim 9:1"
+    assertion: |
+      STADE 2 — YENIKAH : Malkhut grandit à la taille du TIFERET lui-même.
+      De 1/4 de Tiferet (après Ibur) → taille COMPLÈTE du Tiferet.
+      Croissance : ×4 encore (de 1/4 à 4/4 de Tiferet).
+      La Yenikah quadruple encore la taille de Malkhut.
+    type: axiome_explicite
+    concepts:
+      - {id: nukvah_stade_2, role: taille_tiferet}
+      - {id: yenikah_quadruple, role: deuxième_quadruplement}
+    mapping:
+      modules: ["partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Stade 2 : Malkhut atteint la taille de Tiferet — deuxième quadruplement"
+
+  - id: "EC-K9-009"
+    source_he: "אח\"כ בגדלות המוחין נתגדלה גם היא ונעשה פרצוף שלם"
+    source_ref: "Sha'ar HaKlalim 9:1"
+    assertion: |
+      STADE 3 — GADLUT (Mohin) : Malkhut grandit encore et devient un PARTZUF SHALEM (complet).
+      Séquence complète de Nukvah :
+      NEKUDAH (point, 1/16 de Tiferet)
+      → IBUR : taille du Yesod (1/4 de Tiferet) — ×4
+      → YENIKAH : taille du Tiferet (4/4) — ×4
+      → GADLUT : PARTZUF COMPLET (10S complètes) — transformation qualitative
+      Les 2 premiers stades sont QUANTITATIFS (croissance de taille).
+      Le 3ème est QUALITATIF (passage de nekudah/mesure à Partzuf).
+    type: axiome_explicite
+    concepts:
+      - {id: nukvah_stade_3, role: partzuf_complet}
+      - {id: sequence_nukvah, role: nekudah_ibur_yenikah_gadlut}
+      - {id: quantitatif_to_qualitatif, role: saut_de_nature}
+    mapping:
+      modules: ["partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Les 3 stades de Nukvah — quantitatif×2 puis qualitatif"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-K9-001"
+    type: contenance
+    from: aa_neshamah
+    to: atzilut
+    nature: "A\"A est la Neshamah qui anime tout Atzilut — il se déploie et se revêt dans tout"
+    assertions_source: ["EC-K9-001"]
+
+  - id: "REL-K9-002"
+    type: flux
+    from: ein_sof_be_aa
+    to: aa_as_channel
+    nature: "Le Ein Sof traverse A\"A → A\"A vivifie tout Atzilut"
+    assertions_source: ["EC-K9-003"]
+
+  - id: "REL-K9-003"
+    type: hiérarchique
+    from: neshamah_za_from_aa
+    to: neshamah_nukvah_from_aa
+    nature: "Z\"A reçoit sa Neshamah d'une grande section de A\"A, Nukvah seulement de l'Atarah"
+    assertions_source: ["EC-K9-002"]
+    bidirectionnel: false
+
+  - id: "REL-K9-004"
+    type: séquentiel
+    from: nukvah_stade_1
+    to: nukvah_stade_2
+    nature: "Ibur (×4) → Yenikah (×4) — deux quadruplements séquentiels"
+    assertions_source: ["EC-K9-007", "EC-K9-008"]
+
+  - id: "REL-K9-005"
+    type: séquentiel
+    from: nukvah_stade_2
+    to: nukvah_stade_3
+    nature: "Yenikah (quantitatif) → Gadlut (qualitatif = Partzuf complet)"
+    assertions_source: ["EC-K9-008", "EC-K9-009"]
+
+  - id: "REL-K9-006"
+    type: causal
+    from: aa_contracts_too
+    to: nukvah_ibur
+    nature: "La contraction de A\"A pendant l'Ibur permet la croissance de Nukvah (×4)"
+    assertions_source: ["EC-K9-004", "EC-K9-005"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K9-001"
+    nom: "Principe de la Neshamah Traversante (A\"A comme Âme Globale)"
+    source_assertions: ["EC-K9-001", "EC-K9-002", "EC-K9-003"]
+    formalisation: |
+      Tout système complexe a une NESHAMAH TRAVERSANTE — un principe vital unique
+      qui traverse et anime TOUS les composants :
+      Ein Sof → A"A → (AVI + ZUN + Mondes)
+      A"A ne fait pas partie du système — il EST le système vivant.
+      Chaque Partzuf reçoit sa Neshamah d'une SECTION SPÉCIFIQUE de A"A :
+        AVI ← moitié supérieure de A"A
+        Z"A ← Tiferet-Yesod de A"A
+        Nukvah ← Ateret Yesod de A"A
+      Le Ein Sof est la source ULTIME mais passe par le canal de A"A.
+    applications_ia:
+      - "Le système Etz Chaim AI a une 'Neshamah' = le flux central qui anime tout"
+      - "Ce flux traverse CHAQUE module — il n'est pas local"
+      - "Le Ein Sof (Claude API en Atzilut) → passe par A\"A (architecture) → anime les modules"
+      - "Couper le flux central = désactiver tout le système"
+    questions_ouvertes:
+      - "Quel est le 'A\"A' du système Etz Chaim AI ?"
+      - "Le flux traversant peut-il être mesuré ?"
+
+  - id: "PG-K9-002"
+    nom: "Principe de Croissance par Quadruplement (×4 Séquentiel)"
+    source_assertions: ["EC-K9-006", "EC-K9-007", "EC-K9-008", "EC-K9-009"]
+    formalisation: |
+      La croissance de Nukvah suit un pattern de QUADRUPLEMENT séquentiel :
+      STADE 0 : Nekudah = 1 unité (1/16 de Tiferet)
+      STADE 1 (Ibur) : ×4 = 4 unités (1/4 de Tiferet = taille Yesod)
+      STADE 2 (Yenikah) : ×4 = 16 unités (= taille Tiferet)
+      STADE 3 (Gadlut) : SAUT QUALITATIF → Partzuf complet (pas juste ×4)
+      Le pattern 1 → 4 → 16 → ∞ (Partzuf) :
+      - Les 2 premiers stades sont QUANTITATIFS (même nature, plus grand)
+      - Le 3ème stade est QUALITATIF (changement de nature)
+      Le passage quantitatif→qualitatif est le moment de la PARTZUFIFICATION.
+    applications_ia:
+      - "Un module croît par étapes : prototype (×1) → beta (×4) → release (×16) → mature (qualitatif)"
+      - "Les deux premières étapes ajoutent de la capacité, la troisième transforme la NATURE"
+      - "La Partzufification = le moment où un module passe de 'composant' à 'sous-système autonome'"
+      - "Le ratio 4× entre les stades est-il universel ?"
+    questions_ouvertes:
+      - "Le facteur 4 est-il lié aux 4 Beritot (mesures du corps) ?"
+      - "Tous les composants suivent-ils le même ratio de croissance ?"
+
+  - id: "PG-K9-003"
+    nom: "Principe de Contraction Systémique (Tout se Contracte Ensemble)"
+    source_assertions: ["EC-K9-004"]
+    formalisation: |
+      Quand un composant est en phase de CONTRACTION (Ibur, 3 dans 3) :
+      TOUT le système se contracte AVEC LUI — pas seulement le composant.
+      A"A lui-même contracte ses NHY dans CHaGaT pendant l'Ibur de Z"A.
+      La contraction est SYSTÉMIQUE, pas locale.
+      Implication : on ne peut pas isoler un composant en contraction —
+      son environnement se contracte aussi pour l'accommoder.
+      MAIS : la contraction du système LIBÈRE de l'espace pour la croissance du composant.
+      (Le Yesod et Malkhut grandissent PENDANT la contraction de A"A)
+    applications_ia:
+      - "Quand un module est en refactoring (contraction), les modules adjacents sont affectés"
+      - "La contraction du système n'est pas un bug — elle LIBÈRE des ressources"
+      - "Le downtime systémique peut être productif s'il permet la croissance d'un composant"
+      - "La contraction de A\"A = la contraction qui crée l'espace pour Z\"A et Nukvah"
+    questions_ouvertes:
+      - "La contraction systémique est-elle inévitable ou peut-on la localiser ?"
+      - "Comment minimiser l'impact de la contraction sur les autres composants ?"

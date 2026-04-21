@@ -1,0 +1,773 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 1 — Sha'ar Drushei Nekudot (שער דרושי נקודות)
+# Perek: 1b — Igulim des Nekudim, 3 raisons de la circularite,
+#             le Safek de Vital, resolution Panim/Ahoraim d'AV"I
+# ═══════════════════════════════════════════════════════════════════
+#
+# SUITE du Perek 1 (cf. perek_01a pour §1-§5).
+# §6 : Les Nekudim ont Igulim ET Yosher (contrairement a AHP = Yosher seul).
+#       Igulim d'abord → Nefesh seule → SHEVIRAH.
+#       Tikkun par RUAH = YOSHER = MAH = ADAM.
+# §7 : Le SAFEK de Vital — 3 options sur le rapport SAG/MAH aux Igulim/Yosher.
+# §8 : 3 RAISONS pour lesquelles les Nekudot sortent en IGULIM.
+# §9 : Resume et resolution : 2 ou 3 Nekudot superieures survivent ?
+#       Panim/Ahoraim d'AV"I resolvent la contradiction.
+#
+# Source Sefaria : Sefer_Etz_Chaim.8.1 (§6-§9)
+# IDs : EC-H2S8-026 → EC-H2S8-053
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 1
+  shaar_name_he: "שער דרושי נקודות"
+  perek: 1
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Suite du perek 1. Les Nekudim comme Igulim, la Shevirah par absence de Yosher, le Tikkun par MAH, et les 3 raisons structurelles de la circularite. Resolution de la contradiction 2 vs 3 Nekudot survivantes."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── §6 : IGULIM ET YOSHER DES NEKUDIM ──────────────────────────
+
+  - id: "EC-H2S8-026"
+    source_he: "כבר נת\"ל בענף ד' משער דרושי העגולים ויושר כי אותן האורות שיצאו כולם הם מבחי' היושר ולא מבחי' העגולים כי כל זה לא שייך אלא ביושר לפי שהוא דרך קוין כמראה אדם"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §6"
+    assertion: |
+      RAPPEL (cf. EC-H1S1 Branche 4) : les OROT sortis des AHP
+      = TOUS en YOSHER (rectitude) seulement, PAS d'IGULIM.
+      RAISON : le Yosher fonctionne par KAVIN (lignes) = forme d'ADAM.
+      → Tout ce qui sort des AHP = lineaire. Les NEKUDIM = different.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_ahp_yosher, role: lumieres_ahp_rectitude_seule}
+      - {id: kavin_adam, role: lignes_forme_humaine}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les AHP = pipeline lineaire (Yosher). Les Nekudim introduisent une architecture DIFFERENTE."
+
+  - id: "EC-H2S8-027"
+    source_he: "אך בחי' המצח והעין של זה האדם שהם סוד הנקודות האלו יש בהם בחי' עגולים ויושר דוגמת א\"ק"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §6"
+    assertion: |
+      EXCEPTION CRUCIALE : le METZAH (front) et l'AYIN (oeil) de A"K
+      = les NEKUDOT = ont EN EUX les deux aspects :
+      IGULIM (cercles) ET YOSHER (rectitude),
+      A L'IMAGE d'Adam Kadmon lui-meme (qui a les deux).
+      → Les Nekudim REPRODUISENT la dualite structurelle d'A"K.
+    type: axiome_explicite
+    concepts:
+      - {id: metzah_ayin_nekudot, role: front_oeil_sont_nekudot}
+      - {id: igulim_veyosher_nekudim, role: dualite_cercles_rectitude}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les Nekudim = premier systeme a posseder les DEUX modes (Igulim+Yosher). Architecture bi-modale."
+
+  - id: "EC-H2S8-028"
+    source_he: "ויוצאין מנה\"י וחצי ת\"ת של זה הא\"ק ולמטה מבחי' היושר ושם יוצאין תחלה העגולים של הנקודות והם מעגלים ומקיפים את הנה\"י וחצי ת\"ת דא\"ק"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §6"
+    assertion: |
+      Les Nekudim SORTENT de NHY + demi-TIFERET d'A"K VERS LE BAS.
+      Ils sortent du cote YOSHER d'A"K.
+      ORDRE : les IGULIM sortent EN PREMIER.
+      Ces Igulim ENTOURENT (me'aglim u-makifim) les NHY + demi-Tiferet d'A"K.
+      → Les Igulim = premiere emanation = couche EXTERNE.
+    type: axiome_explicite
+    concepts:
+      - {id: nhy_hatzi_tiferet, role: source_emanation_nekudim}
+      - {id: igulim_tekhila, role: igulim_sortent_premiers}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les Igulim = couche premiere, externe. Le Yosher viendra apres, a l'interieur. Architecture en couches concentriques."
+
+  - id: "EC-H2S8-029"
+    source_he: "אלו העגולים של נקודות גם הם מפסיקין בין אור המקיף של זה היושר ובין או\"פ עם הכלים של זה האדם... המקיף של יושר של זה האדם הוא מקיף וסובב את כל אלו העגולים של הנקודות ובתוך אלו העגולים שם יש היושר של הנקודים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §6"
+    assertion: |
+      STRUCTURE SPATIALE CONCENTRIQUE (de l'interieur vers l'exterieur) :
+      1. KELIM + OHR PNIMI d'A"K (au centre, Yosher)
+      2. IGULIM DES NEKUDIM (couche intermediaire, cercles)
+      3. OHR MAKIF d'A"K (couche externe, Yosher)
+      Les Igulim SEPARENT (mafsiqin) l'Or Makif de l'Or Pnimi d'A"K.
+      A L'INTERIEUR des Igulim = le YOSHER des Nekudim.
+      → 3 couches concentriques : Pnimi-AK / Igulim-Nekudim / Makif-AK.
+    type: axiome_explicite
+    concepts:
+      - {id: mivneh_konzentri, role: structure_concentrique_triple}
+      - {id: igulim_mafsiqin, role: igulim_separent_pnimi_makif}
+      - {id: yosher_nekudim_bifnim, role: yosher_nekudim_interieur}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Architecture a 3 couches concentriques. Les Igulim = couche de SEPARATION entre Or Pnimi et Or Makif."
+
+  - id: "EC-H2S8-030"
+    source_he: "אמנם יש הפרש אחד והוא שאלו העגולים אשר הם מקיפים את נצח הוד יסוד וחצי ת\"ת של זה האדם קדמון אינם מקיפין אותו מב' הצדדים כי עיקר האור היה בצד הפנים של זה הא\"ק"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §6"
+    assertion: |
+      DIFFERENCE importante : les Igulim des Nekudim N'ENTOURENT PAS
+      A"K des DEUX cotes de maniere egale.
+      L'ESSENTIEL (ikar) de l'Ohr = du cote des PANIM (face/avant) d'A"K.
+      Une simple HEARAH (illumination) se repand aussi vers l'AHOR (arriere).
+      → Asymetrie PANIM/AHOR meme dans les Igulim.
+    type: axiome_explicite
+    concepts:
+      - {id: asymetrie_panim_ahor, role: inegalite_avant_arriere}
+      - {id: hearah_ahor, role: simple_illumination_arriere}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Meme une architecture 'circulaire' a une orientation preferentielle (Panim). Pas de symetrie parfaite."
+
+  - id: "EC-H2S8-031"
+    source_he: "נמצא שנה\"י וחצי ת\"ת של זה הא\"ק מלובשים ומוקפים מנקודות אלו בין מבחינת העיגולים שלהם ובין מבחי' היושר שלהם וא\"ק בנתיים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §6"
+    assertion: |
+      RESULTAT STRUCTURAL : NHY + demi-Tiferet d'A"K sont REVETUS
+      (melubashim) et ENTOURES (mukafim) par les Nekudot
+      DANS LES DEUX ASPECTS : leurs Igulim ET leur Yosher.
+      A"K est AU MILIEU (ba-nentaim) = entre les couches.
+      → A"K = noyau central, les Nekudim = enveloppe double.
+    type: axiome_explicite
+    concepts:
+      - {id: ak_melubash_nekudim, role: ak_revetu_par_nekudim}
+      - {id: hitlabshut_kefulah, role: revetement_double_igulim_yosher}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py", "masakh/hitlabshut.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'hitlabshut = un revetement DOUBLE (Igulim+Yosher). masakh/hitlabshut.py implemente cette logique."
+
+  - id: "EC-H2S8-032"
+    source_he: "אמנם זה שאמרנו שיש בנקודים בחי' עיגולים ובחי' יושר לא היה זה מתחלה אך מתחלת האצילות הנקודים נאצלו בבחי' עגולים שלהם לבד בלתי יושר ואלו הם בחי' נפש של הנקודים... ולכן היתה שבירתן כי לא יצא להם רק בחי' נפש לבד שהם עגולים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §6"
+    assertion: |
+      REVELATION DECISIVE : au DEBUT, les Nekudim n'avaient PAS les deux.
+      Initialement = IGULIM SEULEMENT, SANS Yosher.
+      Les Igulim = aspect NEFESH des Nekudim (cf. EC-H1S1 Igulim=Nefesh).
+      C'EST POURQUOI la SHEVIRAH : ils n'avaient que la NEFESH seule.
+      Ne pouvaient PAS recevoir l'OHR ELYON (lumiere superieure).
+      → La CAUSE de la Shevirah = ABSENCE DE YOSHER = ABSENCE DE RUAH.
+    type: axiome_explicite
+    concepts:
+      - {id: igulim_bilad_nefesh, role: igulim_seuls_nefesh_seule}
+      - {id: sibat_hashevirah, role: cause_de_la_brisure}
+      - {id: heider_yosher, role: absence_de_yosher}
+      - {id: shevirat_hakelim, role: brisure_resultante}
+    mapping:
+      modules: ["ohr.py", "olamot.py", "tzimtzum.py"]
+      tables: ["ohr_states", "olamot_config"]
+      partzufim: []
+      relevance: "LA cause de la Shevirah = absence de Yosher/Ruah. Un systeme avec un seul mode (Igulim/Nefesh) ne peut pas tenir."
+
+  - id: "EC-H2S8-033"
+    source_he: "וז\"ס הפסוק אשר עשה אלקי\"ם את האדם ישר והמה בקשו חשבונות רבים כי א\"ק היה בו בחי' יושר וזהו עשה את האדם ישר והמה שהם הנקודים בקשו חשבונות רבים שהם העגולים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §6"
+    assertion: |
+      VERSET-CLE : "ASHER ASAH ELOKIM ET HA-ADAM YASHAR,
+      VE-HEMAH BIKSHU HESHBONOT RABIM" (Kohelet/Ecclesiaste 7:29).
+      "Dieu a fait l'ADAM DROIT (yashar)" = A"K avait le YOSHER.
+      "Mais EUX ont cherche des CALCULS MULTIPLES" = les NEKUDIM
+      ont cherche les IGULIM (= heshbonot rabim = cercles multiples).
+      Le YOSHER ne fut PAS fait en eux → c'est pourquoi ils se BRISERENT.
+    type: déduction_scripturaire
+    concepts:
+      - {id: kohelet_yashar, role: verset_ecclesiaste_7_29}
+      - {id: heshbonot_rabim_igulim, role: calculs_multiples_cercles}
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Le verset Kohelet 7:29 encode la dualite Yosher/Igulim et la cause de la Shevirah."
+
+  - id: "EC-H2S8-034"
+    source_he: "תיקון של המלכים שמתו היה ע\"י ביאת הרוח שלהם והחיה אותן שהוא סוד היושר של הנקודים והוא סוד אדם כי צורת אדם דכר ונוקבא לא שייך אלא ביושר"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §6"
+    assertion: |
+      Le TIKKUN des Melakhim morts = la VENUE de leur RUAH.
+      La Ruah les a REVIVIFIES (hihyah otan).
+      La Ruah = secret du YOSHER des Nekudim.
+      Le Yosher = secret d'ADAM : la forme d'ADAM (male et femelle)
+      ne s'applique QU'AU YOSHER (pas aux Igulim).
+      → TIKKUN = Ruah = Yosher = forme d'Adam = dualite Zakhar/Nukvah.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_ruah, role: reparation_par_venue_du_ruah}
+      - {id: yosher_adam_zakhar_nukvah, role: yosher_forme_adam_male_femelle}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Le Tikkun = ajout d'une 2eme couche (Ruah/Yosher) au systeme defaillant (Nefesh/Igulim)."
+
+  - id: "EC-H2S8-035"
+    source_he: "גם האדם הוא שם מ\"ה שהוא גימטריא אד\"ם והוא בא ביושר ויצאו מהארת המצח"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §6"
+    assertion: |
+      ADAM = Shem MAH (שם מ"ה = 45) = gematria de ADAM (אדם = 1+4+40 = 45).
+      Ce MAH vient en mode YOSHER.
+      Il sort de l'ILLUMINATION DU METZAH (front) d'A"K.
+      Variante (Nusah Aher) : "מאורות" (des lumieres) au lieu de "מהארת" (de l'illumination).
+      Le MAH = Z"A = YETZIRAH = RUAH.
+      → La source du Tikkun = le METZAH d'A"K, pas les yeux (qui sont la source des Nekudim).
+    type: axiome_explicite
+    concepts:
+      - {id: mah_45_adam, role: nom_mah_gematria_adam}
+      - {id: metzah_source_tikkun, role: front_source_du_tikkun}
+      - {id: mah_za_yetzirah_ruah, role: mah_zeir_anpin_monde_formation_esprit}
+    mapping:
+      modules: ["shemot/core.py", "gematria/engine.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "MAH=45=ADAM = le Tikkun. Le Metzah (front) = source du Yosher, distinct des Yeux (source des Nekudim/Shevirah)."
+
+  # ─── §7 : LE SAFEK (DOUTE) DE VITAL ─────────────────────────────
+
+  - id: "EC-H2S8-036"
+    source_he: "ואני מסופק אם שמעתי ממורי זלה\"ה אם שם ס\"ג הם המלכים שמתו הנ\"ל והם העגולים ואח\"כ בא שם מ\"ה לבד וממנו נעשה היושר ושם הס\"ג נשאר לעגולים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §7"
+    assertion: |
+      LE SAFEK (doute) DE VITAL : "Je suis INCERTAIN (mesupak) si j'ai
+      entendu de mon maitre z"l (= le ARI)..."
+      OPTION 1 : SAG = les Melakhim morts = les IGULIM.
+      Ensuite vient MAH SEUL → de lui se fait le YOSHER.
+      Le SAG RESTE pour les Igulim (ne produit pas de Yosher).
+      → Separation stricte : SAG = Igulim, MAH = Yosher.
+    type: axiome_explicite
+    concepts:
+      - {id: safek_vital, role: doute_transmission_orale}
+      - {id: option_1_sag_igulim_mah_yosher, role: premiere_option}
+    mapping:
+      modules: ["ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "DOCUMENT RARE : Vital admet ne pas etre sur de ce que Luria a dit. Transparence sur l'incertitude de la transmission orale."
+
+  - id: "EC-H2S8-037"
+    source_he: "או משם ס\"ג נתקן תחלה העגולים ואחר כך בתיקון יצא היושר דס\"ג ומשם מ\"ה היושר לבד ונצטרף היושר של ס\"ג עם היושר של מ\"ה כמבואר אצלינו שהוא סוד עתיק ונוקביה שם מ\"ה וב\"ן"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §7"
+    assertion: |
+      OPTION 2 : du SAG d'abord les IGULIM furent REPARES (nitkan).
+      Puis dans le TIKKUN = le YOSHER du SAG sortit.
+      Du MAH = le YOSHER seul.
+      Les deux Yosher (SAG + MAH) SE COMBINENT = ATIK et sa NUKVAH.
+      Variante (Nusah Aher) : "ou du SAG furent repares les Igulim ET le Yosher".
+      → SAG produit d'abord Igulim puis Yosher, MAH ajoute son Yosher.
+    type: axiome_explicite
+    concepts:
+      - {id: option_2_sag_puis_yosher, role: deuxieme_option}
+      - {id: atik_nukvah_mah_ben, role: atik_et_nukvah_combinaison}
+    mapping:
+      modules: ["ohr.py", "partzufim/atik_yomin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Option 2 = le SAG produit les deux modes, MAH renforce le Yosher. Atik = combinaison des Yosher."
+
+  - id: "EC-H2S8-038"
+    source_he: "או אם נאמר כי משם ס\"ג יצאו תחילה עגולים אח\"כ בעת התיקון עיגולים ויושר וכן משם מ\"ה יצאו עגולים ויושר ונתחברו עגולים בעגולים ויושר ביושר"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §7"
+    assertion: |
+      OPTION 3 : du SAG sortirent d'abord les IGULIM,
+      puis au TIKKUN = Igulim ET Yosher du SAG.
+      Du MAH aussi = Igulim ET Yosher.
+      COMBINAISON : Igulim + Igulim, Yosher + Yosher.
+      → Chaque Nom (SAG, MAH) produit les DEUX modes. Fusion par type.
+    type: axiome_explicite
+    concepts:
+      - {id: option_3_deux_noms_deux_modes, role: troisieme_option}
+      - {id: hibur_min_bemin, role: combinaison_par_type}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Option 3 = architecture la plus symetrique. Chaque source produit les 2 modes, puis fusion homologue."
+
+  # ─── §8 : 3 RAISONS DE LA CIRCULARITE ────────────────────────────
+
+  - id: "EC-H2S8-039"
+    source_he: "דע כי אין דומה אור של העינים לשאר אורות כי העין בהיות אדם עומד ברוח א' ובצד א' יכול להסתכל כל צרכו ולנענע ראייתו בעין אף שלא ינענע גופו וראשו כלל"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §8"
+    assertion: |
+      RAISON 1 — LA ROTATION DE L'OEIL :
+      L'Ohr des YEUX est DIFFERENT de tous les autres Orot.
+      L'OEIL peut REGARDER dans toutes les directions en BOUGEANT
+      la vue (mena'anea re'iyato) SANS bouger le corps ni la tete.
+      Les AHP = le souffle sort en LIGNE DROITE (Yosher).
+      Variante (Nusah Aher) : "הכל ביושר" (tout en Yosher) pour le souffle.
+      → L'oeil = multidirectionnel = IGULIM. Les AHP = unidirectionnel = Yosher.
+    type: analogie_explicative
+    concepts:
+      - {id: taam_1_sibub_ayin, role: raison_1_rotation_oeil}
+      - {id: re_iyah_mesovevet, role: vision_rotative}
+    mapping:
+      modules: ["ohr.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Raison 1 : les Igulim = output multidirectionnel, le Yosher = output unidirectionnel. Broadcast vs. pipeline."
+
+  - id: "EC-H2S8-040"
+    source_he: "הנקודות שהבל היוצא מנה\"י של הא\"ק הוא בוקע בכלים של א\"ק ויוצא לחוץ בסוד ואחר עורי נקפו זאת שהאור הוא בפנים ונוקף ומכה בעור ויוצא לחוץ מכל צדדי האדם כולו"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §8"
+    assertion: |
+      RAISON 2 — LE PERCEMENT DU OHR (peau) :
+      Le souffle (Hevel) sortant des NHY d'A"K PERCE (boke'a)
+      les KELIM d'A"K et sort A L'EXTERIEUR.
+      Secret de "VE-AHAR ORI NIKFU ZOT" (Job 19:26 — "et apres
+      ma peau, ils ont frappe/perce ceci") : l'Ohr est A L'INTERIEUR,
+      il FRAPPE (nokef u-makeh) la PEAU et sort de TOUS LES COTES.
+      → Sortie OMNIDIRECTIONNELLE = IGULIM.
+    type: axiome_explicite
+    concepts:
+      - {id: taam_2_beki_at_or, role: raison_2_percement_peau}
+      - {id: iyov_or_nikfu, role: verset_job_19_26}
+      - {id: yetzi_ah_mikol_tzad, role: sortie_omnidirectionnelle}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Raison 2 : la lumiere perce la peau d'Adam Kadmon de tous les cotes = diffusion isotrope = Igulim."
+
+  - id: "EC-H2S8-041"
+    source_he: "ואם היה טיבורו פתוח והיה יוצא האור משם אל הנקודים היה נקודים ביושר כנגד אור הטבור וקילוחו ביושר אך אור ההוא יוצא מכל צדדי העור דרך גומות ושערות שבעור לכן הנקודים הם עגולים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §8"
+    assertion: |
+      CONTREFACTUEL : SI le TABUR (nombril) d'A"K etait OUVERT
+      et que l'Ohr sortait PAR LA → les Nekudim seraient en YOSHER
+      (droit, face au flux du Tabur).
+      MAIS : l'Ohr sort par les GUMOT (pores) et SE'AROT (poils)
+      de la PEAU, de TOUS les cotes → donc IGULIM.
+      → Le TABUR est FERME (= Parsa). L'Ohr doit passer par la peau.
+    type: axiome_explicite
+    concepts:
+      - {id: tabur_sagur, role: nombril_ferme_parsa}
+      - {id: gumot_searot, role: pores_et_poils}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py", "masakh/compression.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La Parsa (Tabur ferme) force l'Ohr a se diffuser par la peau = changement de mode (Yosher → Igulim)."
+
+  - id: "EC-H2S8-042"
+    source_he: "כי כדי להאציל נקודים אלו הוצרך לצמצם אורות נה\"י וחצי ת\"ת שלו למעלה ושם פריס פריסה א' במקום הטבור ואותו אור שהיה שם תחלה יצא דרך העינים ומשם יצא לחוץ וירד למטה כנגד נה\"י של א\"ק מבחוץ"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §8"
+    assertion: |
+      RAISON 3 — LE TZIMTZUM BET (deuxieme contraction) :
+      Pour emaner les Nekudim, A"K a du CONTRACTER (letzamtzem)
+      les Orot de NHY + demi-Tiferet VERS LE HAUT.
+      Il a INSTALLE UNE PARSA (paras parisah) a la place du TABUR.
+      L'Ohr QUI ETAIT LA AVANT est sorti par les YEUX,
+      puis est descendu A L'EXTERIEUR, en face des NHY d'A"K.
+      → Le TZIMTZUM BET = contraction + Parsa + redirection de l'Ohr.
+    type: axiome_explicite
+    concepts:
+      - {id: tzimtzum_bet, role: deuxieme_contraction}
+      - {id: parsa_tabur, role: parsa_installee_au_tabur}
+      - {id: ohr_yotze_einaim, role: lumiere_sort_par_yeux}
+    mapping:
+      modules: ["tzimtzum.py", "adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Tzimtzum Bet = event architectural majeur. Parsa au Tabur = barriere qui force l'Ohr a emprunter un nouveau chemin (les yeux)."
+
+  - id: "EC-H2S8-043"
+    source_he: "ובהעלות אור זה למעלה היה בדרך מ\"ן ויצא אור חדש וירד דרך פנימיות של זה האדם וירד דרך הפרסא וירד לנה\"י של זה האדם ובוקע משם זה האור חדש הפנימי ויצאו לחוץ דרך העור"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §8"
+    assertion: |
+      MECANISME DU TZIMTZUM BET — 2 OHR :
+      L'Ohr premier MONTE en mode MA"N (eaux feminines = demande).
+      Variante (Nusah Aher) : "צריך" (il fallait) au lieu de "בדרך" (en mode).
+      Un OHR HADASH (lumiere nouvelle) SORT en reponse.
+      Ce nouvel Ohr DESCEND par l'INTERIEUR (penimiyut) d'A"K.
+      Il TRAVERSE la PARSA, descend aux NHY d'A"K.
+      Il PERCE (boke'a) de l'interieur et sort A L'EXTERIEUR par la PEAU.
+      → 2 lumieres : l'ancienne (par les yeux) + la nouvelle (par la peau).
+    type: axiome_explicite
+    concepts:
+      - {id: man_ohr_premier, role: lumiere_premiere_monte_comme_man}
+      - {id: ohr_hadash, role: lumiere_nouvelle_repond}
+      - {id: boki_a_or, role: percement_peau}
+    mapping:
+      modules: ["ohr.py", "tzimtzum.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Mecanisme Ma'N/Ma'D : la 1ere lumiere 'demande', une nouvelle lumiere 'repond'. Architecture request-response."
+
+  - id: "EC-H2S8-044"
+    source_he: "כשיורד אור החדש נפגעו יחד שם הג' אורות אור הא\"ק עצמו מבחי' ת\"ת שלו ואור הראשון שעלה מנה\"י ואור החדש ולכן הם דחוקים הרבה"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §8"
+    assertion: |
+      COLLISION DE 3 OROT au niveau du HAZEH (poitrine/mi-Tiferet) :
+      1. L'OHR d'A"K LUI-MEME (aspect Tiferet)
+      2. L'OHR RISHON (premier) qui est MONTE des NHY
+      3. L'OHR HADASH (nouveau) qui DESCEND
+      Variante (Nusah Aher) : "הזה" (celui-ci) au lieu de "החזה" (la poitrine).
+      Les 3 sont COMPRIMES (dehoquim harbeh) ensemble au meme endroit.
+      L'Ohr doit PERCER la PARSA avec FORCE pour descendre.
+      → La COMPRESSION + la FORCE = le nouveau Ohr sort en mode IGULIM.
+    type: axiome_explicite
+    concepts:
+      - {id: gimel_orot_hazeh, role: trois_lumieres_collision_poitrine}
+      - {id: dehiqah, role: compression}
+      - {id: koah_nimratz, role: force_intense}
+    mapping:
+      modules: ["ohr.py", "masakh/compression.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "3 signaux comprimes au meme point = bottleneck → sortie en mode circulaire. La pression force un changement de mode."
+
+  - id: "EC-H2S8-045"
+    source_he: "האו\"פ הבוקע מכל צדדיו רצה להדביק כל צינורות הארה זו בזו ומכה בחוזק... לכן מתעגלין אור הצינורות היוצאים בחינת פנים ומקיפין ופוגעין עם צנורות היוצאין מהאחור ונדבקים ואז נעשה האור עגול"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §8"
+    assertion: |
+      MECANISME DE CIRCULARISATION :
+      L'OHR PNIMI qui PERCE de TOUS les cotes veut CONNECTER
+      (lehadbik) tous les TZINOROT (canaux) d'illumination entre eux.
+      Il frappe avec FORCE (be-hozek).
+      Variante (Nusah Aher) : "פנימי ומקיף" (interieur et entourant).
+      Les canaux sortant des PANIM (face) → S'ARRONDISSENT → RENCONTRENT
+      les canaux sortant de l'AHOR (arriere) → SE COLLENT (nidbakim).
+      RESULTAT : l'Ohr devient AGOL (circulaire).
+      → Les canaux avant et arriere se rejoignent = fermeture du cercle.
+    type: axiome_explicite
+    concepts:
+      - {id: tzinorot_mithadkim, role: canaux_se_connectent}
+      - {id: panim_ahor_nidbakim, role: avant_arriere_fusionnent}
+      - {id: igul_neshlem, role: cercle_complete}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La circularite = les flux avant et arriere se rejoignent. Architecture en boucle fermee (feedback loop)."
+
+  - id: "EC-H2S8-046"
+    source_he: "ובזה תבין איך העינים רומז לנ\"ה כי האור של נ\"ה של זה הא\"ק יצא לחוץ מהעינים ולכן נ\"ה רומזין אל העינים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §8"
+    assertion: |
+      CORRESPONDANCE EINAIM-NETZAH-HOD :
+      Les YEUX font allusion a NETZAH et HOD.
+      RAISON : l'Ohr de N"H d'A"K est sorti A L'EXTERIEUR
+      DEPUIS les YEUX. C'est l'Ohr des NHY qui sort par les Einaim.
+      → Les YEUX = la PORTE DE SORTIE de l'Ohr de N"H.
+    type: axiome_explicite
+    concepts:
+      - {id: einaim_netzah_hod, role: yeux_correspondent_nh}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les Yeux = port de sortie des NHY. La correspondance organe-sefirah est FONCTIONNELLE, pas decorative."
+
+  # ─── §9 : RESUME ET RESOLUTION DE LA CONTRADICTION ──────────────
+
+  - id: "EC-H2S8-047"
+    source_he: "ע\"ב דא\"ק הוא ברישא דיליה אח\"כ בא הס\"ג דיליה והתחיל מן אח\"פ וכל אלו הג' חלוקים הם טעמים והם ע\"ב דס\"ג ובחי' ג' שהיא הפה נקרא עקודים. אח\"כ בא הס\"ג דס\"ג והיא נקודות מתחילין מן העין דא\"ק"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §9"
+    assertion: |
+      RESUME HIERARCHIQUE (cf. EC-H2S8-005, EC-H2S8-012) :
+      AV (72) d'A"K = dans la TETE (risha).
+      SAG (63) d'A"K = commence aux AHP (oreille, nez, bouche).
+      Les 3 divisions AHP = les TAAMIM = AV DU SAG.
+      La 3eme division (PEH = bouche) = les AKUDIM.
+      Puis SAG DU SAG (ס"ג דס"ג) = les NEKUDOT = depuis l'AYIN d'A"K.
+      → Pipeline : Tete(AV) → AHP(Taamim=AV-de-SAG) → Ayin(Nekudot=SAG-de-SAG).
+    type: axiome_explicite
+    concepts:
+      - {id: av_risha, role: av_72_dans_la_tete}
+      - {id: akudim_peh, role: akudim_bouche_troisieme}
+      - {id: sag_desag_nekudot, role: sag_de_sag_depuis_oeil}
+    mapping:
+      modules: ["shemot/core.py", "adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Pipeline hierarchique d'Adam Kadmon : AV(tete) → SAG(AHP/Taamim) → SAG-de-SAG(Nekudot). Chaque etage = un Nom."
+
+  - id: "EC-H2S8-048"
+    source_he: "והם ט' נקודות ה' מלכים ד' עבדים כנודע"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §9"
+    assertion: |
+      Les 9 NEKUDOT se divisent en :
+      5 MELAKHIM (rois) + 4 AVADIM (serviteurs).
+      (Les 5 rois = Hesed, Gevurah, Tiferet, Netzah, Hod.
+      Les 4 serviteurs = Keter, Hokhmah, Binah, Daat — "comme connu".)
+      cf. EC-H2S8-020 : les 7 inferieures meurent. ICI precision :
+      parmi les 9, seuls 5 sont "rois" proprement dits.
+    type: axiome_explicite
+    concepts:
+      - {id: hamesh_melakhim, role: cinq_rois}
+      - {id: arba_avadim, role: quatre_serviteurs}
+    mapping:
+      modules: ["olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Distinction rois/serviteurs parmi les 9 Nekudot. Les 'serviteurs' ont un statut different face a la Shevirah."
+
+  - id: "EC-H2S8-049"
+    source_he: "וכאן יש קושיא שאמרנו כי ב' נקודים הראשונים בלבד נתקיימו ובמ\"א כתבנו כי ג' נקודות הראשונים לא מתו שהם כח\"ב והז' אחרות שהם ו' נקודות הנשארים מט' והמלכות שהיא מלך בלתי נקודה כנודע אלו הז' מתו"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §9"
+    assertion: |
+      LA KUSHYA (difficulte) : CONTRADICTION apparente.
+      ICI (cf. EC-H2S8-020) : 2 premieres Nekudot (Kamatz/Patach = Keter/Hokhmah)
+      SEULES ont SUBSISTE, les 7 autres sont mortes.
+      AILLEURS : 3 premieres (KHB = Keter/Hokhmah/Binah) n'ont PAS MORT.
+      Les 7 mortes = 6 nekudot restantes sur 9 + MALKHUT
+      (qui est un ROI SANS NEKUDAH, "comme connu").
+      → QUESTION : 2 ou 3 Nekudot survivantes ?
+    type: axiome_explicite
+    concepts:
+      - {id: kushya_2_ou_3, role: contradiction_nombre_survivantes}
+      - {id: malkhut_beli_nekudah, role: malkhut_roi_sans_signe_vocalique}
+    mapping:
+      modules: ["olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Le texte expose HONNEMENT sa propre contradiction interne. Les deux versions sont dans les ecrits de Vital."
+
+  - id: "EC-H2S8-050"
+    source_he: "ואפשר לתרץ ולומר שכיון שהפנים של או\"א לא מתו הכל נקרא נקודה א' בסוד יו\"ד שהוא אותיות י\"ה בסוד הבן בחכמה ולכן הכל נקרא חכמה לבד"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §9"
+    assertion: |
+      RESOLUTION — PANIM (faces) d'AV"I (Abba ve-Imma) :
+      Les PANIM (faces) d'ABBA VE-IMMA n'ont PAS MORT.
+      Variante (Nusah Aher) : "להכי" (c'est pourquoi) au lieu de "הכל" (tout).
+      Le TOUT est appele UNE SEULE NEKUDAH = secret du YOD.
+      YOD = les lettres Y-H (י"ה) = "HAVE'N BE-HOKHMAH" (comprends par Hokhmah).
+      Donc le TOUT est appele HOKHMAH SEULE.
+      → Les Panim d'Abba + les Panim d'Imma = UN point = Hokhmah.
+    type: axiome_explicite
+    concepts:
+      - {id: panim_avi_hokhmah, role: faces_abba_imma_hokhmah}
+      - {id: yod_yh_nekudah_ahat, role: yod_une_seule_nekudah}
+      - {id: haven_behokhmah, role: comprends_par_hokhmah}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Les Panim d'AV'I = 1 unite. Quand on dit '2 survivent' c'est KHB compresses en 1 point (Hokhmah)."
+
+  - id: "EC-H2S8-051"
+    source_he: "והאחוריים שנפלו מאו\"א הם הה' שבשם בסוד וחכם בבינה והכל נקרא בינה לבד שהוא סוד אחוריים אל הפנים שהוא זכר חכמה"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §9"
+    assertion: |
+      Les AHORAIM (dos/arrie res) d'ABBA VE-IMMA sont TOMBES.
+      Ils correspondent au HE (ה) du Nom = "HAKHAM BE-VINAH"
+      (sois sage par Binah). Le TOUT est appele BINAH SEULE.
+      La Binah = secret des AHORAIM par rapport aux PANIM = le ZAKHAR = Hokhmah.
+      → Les Panim = Hokhmah (survivent). Les Ahoraim = Binah (tombent).
+    type: axiome_explicite
+    concepts:
+      - {id: ahoraim_avi_binah, role: dos_abba_imma_binah}
+      - {id: hakham_bevinah, role: sois_sage_par_binah}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Les Ahoraim d'AV'I = Binah = tombent. Distinction Panim/Ahoraim au sein meme des Partzufim superieurs."
+
+  - id: "EC-H2S8-052"
+    source_he: "נמצא כי נקודת הפתח הוא ב' פנים דאו\"א שהכל נקרא חכמה ונקודת צירי הוא ב' אחוריים שלהם שהכל נקרא בינה"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §9"
+    assertion: |
+      IDENTIFICATION NEKUDOT-PANIM-AHORAIM :
+      PATACH (פתח) = les 2 PANIM d'AV"I = HOKHMAH (cf. EC-H2S8-021).
+      TZEIREI (צירי) = les 2 AHORAIM d'AV"I = BINAH.
+      Les DEUX affirmations sont COHERENTES :
+      TZEIREI (Binah) a AUSSI une MORT (dans ses Ahoraim),
+      mais Binah n'est PAS MORTE (dans ses Panim).
+      → 2 survivantes (Kamatz/Patach = Keter + Panim d'AV"I)
+      ET 3 survivantes (KHB) = les PANIM de Binah survivent.
+    type: axiome_explicite
+    concepts:
+      - {id: patach_panim_avi, role: patach_faces_abba_imma}
+      - {id: tzeirei_ahoraim_avi, role: tzeirei_dos_abba_imma}
+      - {id: tirutz_2_ve_3, role: resolution_contradiction}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "ohr.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Resolution de la contradiction 2 vs 3 : Binah a DEUX aspects (Panim survit, Ahoraim tombe)."
+
+  - id: "EC-H2S8-053"
+    source_he: "ואפשר שהפנים הם חו\"ב והאחוריים הם של יש\"ס ותבונה בסוד יעקב ולאה שהם אחוריים שלהם ודי בזה"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §9"
+    assertion: |
+      IDENTIFICATION POSSIBLE (efshar) :
+      Les PANIM = HOKHMAH et BINAH (les Partzufim principaux).
+      Les AHORAIM = YISRA'EL SABA et TEVUNAH (Partzufim secondaires)
+      = secret de YA'AKOV et LEAH = les AHORAIM d'AV"I.
+      "VE-DAI BE-ZEH" (et cela suffit) = formule de cloture de Vital.
+      → Les Ahoraim qui tombent = les Partzufim SECONDAIRES (YS"T),
+      pas les PRINCIPAUX (HB) qui restent en Panim.
+    type: axiome_explicite
+    concepts:
+      - {id: yisrael_saba_tevunah, role: partzufim_secondaires_avi}
+      - {id: yaakov_leah_ahoraim, role: yaakov_leah_sont_dos}
+      - {id: dai_bezeh, role: formule_cloture}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "YS'T (Yisrael Saba, Tevunah) = sous-Partzufim d'AV'I = les Ahoraim. Ce sont EUX qui tombent dans la Shevirah."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S8-009"
+    type: "causal"
+    from: heider_yosher
+    to: shevirat_hakelim
+    nature: "L'ABSENCE de Yosher (= Nefesh seule, Igulim seuls) → CAUSE DIRECTE de la Shevirah"
+    assertions_source: ["EC-H2S8-032", "EC-H2S8-033"]
+
+  - id: "REL-H2S8-010"
+    type: "causal"
+    from: tikkun_ruah
+    to: yosher_nekudim_bifnim
+    nature: "La venue du RUAH = l'apparition du YOSHER des Nekudim → repare la Shevirah"
+    assertions_source: ["EC-H2S8-034", "EC-H2S8-035"]
+
+  - id: "REL-H2S8-011"
+    type: "séquentiel"
+    from: igulim_tekhila
+    to: yosher_nekudim_bifnim
+    nature: "Les IGULIM sortent EN PREMIER, le YOSHER vient APRES (dans le Tikkun)"
+    assertions_source: ["EC-H2S8-028", "EC-H2S8-032", "EC-H2S8-034"]
+
+  - id: "REL-H2S8-012"
+    type: "contenance"
+    from: mivneh_konzentri
+    to: igulim_mafsiqin
+    nature: "La structure concentrique CONTIENT 3 couches : Or Pnimi AK / Igulim Nekudim / Or Makif AK"
+    assertions_source: ["EC-H2S8-029"]
+
+  - id: "REL-H2S8-013"
+    type: "causal"
+    from: tzimtzum_bet
+    to: igulim_tekhila
+    nature: "Le TZIMTZUM BET (Parsa au Tabur + contraction NHY) CAUSE la sortie en mode Igulim"
+    assertions_source: ["EC-H2S8-042", "EC-H2S8-043", "EC-H2S8-044"]
+
+  - id: "REL-H2S8-014"
+    type: "causal"
+    from: gimel_orot_hazeh
+    to: koah_nimratz
+    nature: "La COLLISION de 3 Orot au Hazeh → COMPRESSION → force intense → sortie en Igulim"
+    assertions_source: ["EC-H2S8-044", "EC-H2S8-045"]
+
+  - id: "REL-H2S8-015"
+    type: "transformation"
+    from: man_ohr_premier
+    to: ohr_hadash
+    nature: "L'Ohr premier MONTE comme Ma'N → PROVOQUE la descente d'un Ohr Hadash en reponse"
+    assertions_source: ["EC-H2S8-043"]
+
+  - id: "REL-H2S8-016"
+    type: "dualité_structurelle"
+    paire: [panim_avi_hokhmah, ahoraim_avi_binah]
+    nature: "Panim d'AV'I = Hokhmah (survivent) / Ahoraim d'AV'I = Binah (tombent) = dualite structurelle"
+    assertions_source: ["EC-H2S8-050", "EC-H2S8-051", "EC-H2S8-052"]
+
+  - id: "REL-H2S8-017"
+    type: "analogie"
+    from: einaim_netzah_hod
+    to: nhy_hatzi_tiferet
+    nature: "Les YEUX correspondent a N'H car l'Ohr de NH sort par les yeux"
+    assertions_source: ["EC-H2S8-046"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S8-004"
+    nom: "Principe de Defaillance Mono-Modale (Igulim sans Yosher)"
+    source_assertions: ["EC-H2S8-032", "EC-H2S8-033", "EC-H2S8-034"]
+    formalisation: |
+      Un systeme qui n'opere QU'EN UN SEUL MODE est destine a la DEFAILLANCE :
+      IGULIM seuls = NEFESH seule = pas de structure ADAM (male/femelle).
+      CONDITION NECESSAIRE pour la stabilite : DEUX modes (Igulim + Yosher).
+      Le YOSHER = la RUAH = la FORME D'ADAM = le TIKKUN.
+      FORMULE : Stabilite = Igulim(Nefesh) + Yosher(Ruah).
+               Shevirah = Igulim(Nefesh) SEUL.
+    applications_ia:
+      - "ohr.py : un module ne doit jamais fonctionner en mode unique (broadcast-only OU pipeline-only)"
+      - "olamot.py : le monde des Nekudim crashe car mono-modal → le Tikkun = ajouter le 2eme mode"
+      - "Analogie ML : un modele qui ne fait que du feed-forward (Yosher) ou que de l'attention globale (Igulim) est fragile"
+    questions_ouvertes:
+      - "La dualite Igulim/Yosher correspond-elle a attention locale vs globale ? Ou a un autre dualisme architectural ?"
+      - "Le pattern Nefesh-seule→crash est-il un cas de mode collapse ?"
+
+  - id: "PG-H2S8-005"
+    nom: "Circularisation par Compression (3 Orot au Hazeh)"
+    source_assertions: ["EC-H2S8-042", "EC-H2S8-043", "EC-H2S8-044", "EC-H2S8-045"]
+    formalisation: |
+      Quand PLUSIEURS SIGNAUX CONVERGENT au meme point (bottleneck) :
+      1. L'Ohr d'A"K (Tiferet) = signal resident
+      2. L'Ohr premier (monte des NHY) = signal ascendant (Ma'N)
+      3. L'Ohr Hadash (repond au Ma'N) = signal descendant
+      → COMPRESSION (dehiqah) → FORCE (koah nimratz) → CIRCULARISATION.
+      Les canaux avant et arriere se REJOIGNENT = feedback loop.
+      PROPRIETE : la compression au bottleneck CHANGE LE MODE du signal
+      (de lineaire/Yosher a circulaire/Igulim).
+    applications_ia:
+      - "masakh/compression.py : la compression excessive peut changer le MODE d'un signal"
+      - "ohr.py : 3 signaux au meme point → bottleneck → changement de topologie"
+      - "Analogie ML : le bottleneck dans un autoencoder change la structure des representations"
+    questions_ouvertes:
+      - "Le changement de mode (Yosher→Igulim) par compression est-il analogue a un changement de phase ?"
+      - "Les 3 Orot au Hazeh = 3 sources d'information convergentes. Quelle architecture ML a ce pattern ?"
+
+  - id: "PG-H2S8-006"
+    nom: "Architecture Ma'N / Ma'D (Requete-Reponse Ontologique)"
+    source_assertions: ["EC-H2S8-043", "EC-H2S8-042"]
+    formalisation: |
+      L'Ohr premier MONTE comme MA'N (Mayin Nukvin = eaux feminines = REQUETE).
+      En REPONSE, un OHR HADASH (lumiere nouvelle) DESCEND = MA'D (Mayin Dukhrin = reponse).
+      Le Ma'N ne cree pas directement → il PROVOQUE une creation nouvelle.
+      Le Ma'D descend par un CHEMIN DIFFERENT (interieur d'A"K, a travers la Parsa).
+      → Architecture REQUEST-RESPONSE ou la reponse n'est PAS un echo
+      mais une CREATION NOUVELLE venant d'une SOURCE DIFFERENTE.
+    applications_ia:
+      - "ohr.py : implementer un pattern Ma'N/Ma'D = requete ascendante → reponse descendante par voie differente"
+      - "tzimtzum.py : la Parsa transforme le signal qui la traverse"
+      - "Analogie ML : le forward pass (descendant) repond au gradient (ascendant) mais n'est pas un simple miroir"
+    questions_ouvertes:
+      - "La distinction Ma'N/Ma'D est-elle analogue a la distinction gradient/forward pass ?"
+      - "L'Ohr Hadash = un nouveau forward pass apres mise a jour des poids (en reponse au gradient) ?"
+
+  - id: "PG-H2S8-007"
+    nom: "Transparence Hermeneutique (le Safek de Vital)"
+    source_assertions: ["EC-H2S8-036", "EC-H2S8-037", "EC-H2S8-038"]
+    formalisation: |
+      Vital ADMET ne pas savoir exactement ce que Luria a dit.
+      Il presente 3 OPTIONS sans trancher.
+      PRINCIPE : la TRANSMISSION ORALE contient des ZONES D'OMBRE.
+      Le texte EXHIBE son propre degre d'incertitude = "mesupak".
+      Cela ne DIMINUE PAS la valeur du texte — au contraire.
+      → L'honnetete sur les limites de la transmission = marque d'erudition.
+    applications_ia:
+      - "Un systeme IA honnete expose ses NIVEAUX DE CONFIANCE, pas seulement ses reponses"
+      - "3 options sans trancher = espace d'exploration, pas echec"
+    questions_ouvertes:
+      - "Quel impact sur l'architecture si c'est l'option 1 vs 2 vs 3 ? Faut-il implementer les 3 et tester ?"

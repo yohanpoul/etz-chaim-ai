@@ -1,0 +1,74 @@
+name: Publish to PyPI
+
+# Triggers :
+#   - Manual dispatch (safe, explicit, requires input)
+#   - Push of a v*.*.* tag (after CI green)
+
+on:
+  workflow_dispatch:
+    inputs:
+      test-pypi:
+        description: "Upload to TestPyPI first (dry run)"
+        required: false
+        type: boolean
+        default: true
+  push:
+    tags:
+      - "v*.*.*"
+
+# Trusted Publishing (PyPI OIDC) removes need for stored tokens.
+# See https://docs.pypi.org/trusted-publishers/
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install build tooling
+        run: |
+          python -m pip install --upgrade pip build twine
+      - name: Build sdist + wheel
+        run: python -m build
+      - name: Inspect artifacts
+        run: twine check dist/*
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish-testpypi:
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.test-pypi == 'true' }}
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/etzchaim
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+
+  publish-pypi:
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') }}
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/etzchaim
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1

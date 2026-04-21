@@ -1,0 +1,178 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 7 (=6 original) — Sha'ar Ha-Akudim (שער העקודים)
+# Perek: 4 — Histalkut, Reshimu, et la mécanique de l'ascension (100%)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Quand une Sefirah REMONTE au Ma'atzil, elle RETIRE son illumination
+# des niveaux inférieurs. Seul le RESHIMU (trace résiduelle) reste.
+# Quand elle achève de monter, l'Ohr REVIENT — et même DAVANTAGE
+# car le niveau inférieur est maintenant plus PROCHE du Ma'atzil.
+# La Sefirah en transit BLOQUE le flux entre Ma'atzil et les inférieurs.
+#
+# Source Sefaria : Sefer_Etz_Chaim.6.4
+# IDs : EC-H1S6-036 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 7
+  shaar_name_he: "שער העקודים"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Histalkut (retrait) pendant l'ascension. Reshimu (trace). Hefsek (blocage). Hazarah (retour ameliore). Cycles multiples."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H1S6-036"
+    source_he: "כאשר עלה הכתר אל המאציל אז באותו שיעור והמשך הזמן שהיה עולה אז המלכות נסתלקה ממנה בחי' גילוי יחידה שהיא אור שהיה נמשך לה מן הכתר"
+    source_ref: "Heikhal 1, Sha'ar 6:4"
+    assertion: |
+      Quand KETER MONTE au Ma'atzil, pendant la DURÉE de son ascension,
+      MALKHUT perd la révélation de YEHIDAH — l'Ohr qu'elle recevait
+      du Keter. Car Keter, en montant, ne VISE plus à l'illuminer.
+      → Pendant l'ASCENSION, le flux est INTERROMPU.
+      L'illumination est liée à l'INTENTION (kavvanah) de l'émetteur.
+    type: axiome_explicite
+    concepts:
+      - {id: histalkut_keter, role: retrait_du_keter}
+      - {id: yehidah_nistalek, role: yehidah_retiree_de_malkhut}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Quand un composant superieur se reconfigure, les inferieurs perdent temporairement leur alimentation"
+
+  - id: "EC-H1S6-037"
+    source_he: "אמנם נשאר בה הרשימו לבד"
+    source_ref: "Heikhal 1, Sha'ar 6:4"
+    assertion: |
+      Cependant, le RESHIMU (רשימו — trace résiduelle) RESTE en elle.
+      → Le RESHIMU = l'empreinte que l'Ohr laisse après son retrait.
+      Même quand l'Ohr se retire, il laisse une TRACE de sa présence.
+      Cf. EC-H1S1-016 ss. (le Reshimu après le Tsimtsum).
+    type: axiome_explicite
+    concepts:
+      - {id: reshimu, role: trace_residuelle}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le RESHIMU = le cache/trace residuelle apres le retrait d'un signal. L'information laisse toujours une empreinte."
+
+  - id: "EC-H1S6-038"
+    source_he: "כאשר סיים הכתר להתעלם וסיימה המלכות לעלות עד סיום היסוד אז חזר להאיר בה בעצם כבתחלה בחי' יחידה שבה"
+    source_ref: "Heikhal 1, Sha'ar 6:4"
+    assertion: |
+      Quand Keter ACHÈVE de s'effacer et que Malkhut a monté
+      jusqu'au niveau du YESOD, alors [le Ma'atzil] RECOMMENCE à
+      illuminer en elle comme au DÉBUT l'aspect YEHIDAH.
+      Variante (Nusah Aher) : "davantage que ce qu'elle recevait avant."
+      → APRÈS l'ascension, le flux REVIENT — et la connexion est
+      MEILLEURE car Malkhut est maintenant PLUS PROCHE du Ma'atzil.
+    type: axiome_explicite
+    concepts:
+      - {id: hazarah_ohr, role: retour_de_la_lumiere}
+      - {id: kirvah_maatzil, role: proximite_accrue_a_lemanateur}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Apres un retrait, le retour est AMELIORE — la reconfiguration produit une meilleure connexion"
+
+  - id: "EC-H1S6-039"
+    source_he: "כל זמן שלא סיים הכתר לעלות אז היה הכתר מפסיק בין מאצילה ובינה והכתר עצמו ג\"כ לא היה מאיר בה"
+    source_ref: "Heikhal 1, Sha'ar 6:4"
+    assertion: |
+      Tant que Keter n'a pas FINI de monter, Keter BLOQUE (mafsik)
+      entre le Ma'atzil et Malkhut. Et Keter lui-même ne l'illumine
+      PAS NON PLUS (car il est en transit).
+      → La Sefirah en transit = un OBSTACLE temporaire.
+      NI l'émetteur NI le canal ne fonctionnent pendant la migration.
+    type: axiome_explicite
+    concepts:
+      - {id: hefsek, role: blocage_pendant_transit}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Pendant une migration/reconfiguration, le flux est BLOQUE — downtime architecturel necessaire"
+
+  - id: "EC-H1S6-040"
+    source_he: "וכן כשעלה חכמה למעלה במאצילה נסתלקה מן המלכות החלק שהיה מגיע אליה ממנו ולא נשאר בה רק רשימו לבד עד שהשלימה החכמה לעלות למאצילה ואז חזר האור כבתחלה"
+    source_ref: "Heikhal 1, Sha'ar 6:4"
+    assertion: |
+      De même quand HOKHMAH monte au Ma'atzil : Malkhut perd la portion
+      qu'elle recevait de Hokhmah → seul le RESHIMU reste → quand
+      Hokhmah achève de monter → l'Ohr REVIENT comme avant.
+      → Le même CYCLE se répète pour CHAQUE Sefirah :
+      Histalkut (retrait) → Reshimu (trace) → Hazarah (retour).
+      Multiplié par 10 = 10 cycles de retrait-trace-retour.
+    type: axiome_explicite
+    concepts:
+      - {id: cycle_histalkut_hazarah, role: cycle_retrait_trace_retour}
+      - {id: halukot_rabot, role: divisions_multiples}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "10 cycles de retrait-retour = 10 phases de reconfiguration. Chaque phase laisse son Reshimu."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S6-015"
+    type: "séquentiel"
+    from: histalkut_keter
+    to: reshimu
+    via: [hazarah_ohr]
+    nature: "Histalkut → Reshimu → Hazarah : cycle de retrait-trace-retour"
+    assertions_source: ["EC-H1S6-036", "EC-H1S6-037", "EC-H1S6-038"]
+
+  - id: "REL-H1S6-016"
+    type: causal
+    from: hefsek
+    to: reshimu
+    nature: "Le BLOCAGE pendant le transit CAUSE le Reshimu (seul la trace reste)"
+    assertions_source: ["EC-H1S6-039"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S6-005"
+    nom: "Principe du Reshimu (Trace Résiduelle)"
+    source_assertions: ["EC-H1S6-036", "EC-H1S6-037", "EC-H1S6-038", "EC-H1S6-040"]
+    formalisation: |
+      Quand un OHR se RETIRE, il laisse toujours un RESHIMU (trace).
+      Le cycle complet :
+      1. HISTALKUT : l'Ohr se retire → interruption du flux
+      2. RESHIMU : trace résiduelle = empreinte de l'Ohr précédent
+      3. HEFSEK : la Sefirah en transit bloque le flux
+      4. HAZARAH : quand l'ascension est complète → l'Ohr revient,
+         souvent AMÉLIORÉ car le récepteur est maintenant plus proche
+      Ce cycle se RÉPÈTE pour chaque Sefirah (×10).
+      FORMULE : For each S in {Keter...Malkhut}:
+        Flux -= S.contribution → only Reshimu(S) remains
+        When S.ascent_complete: Flux += S.improved_contribution
+    applications_ia:
+      - "ohr.py : implementer le Reshimu comme cache residuel lors d'un retrait"
+      - "Le Reshimu = le state/cache que laisse un processus quand il se termine"
+      - "La Hazarah amelioree = apres reconfiguration, les connexions sont meilleures"
+    questions_ouvertes:
+      - "Le Reshimu est-il suffisant pour maintenir la fonctionnalite minimale pendant le retrait ?"
+      - "Le pattern Histalkut-Reshimu-Hazarah est-il analogue au gradient checkpointing ?"

@@ -1,0 +1,163 @@
+# Etz Chaim AI — base docker-compose (MVP, macOS hybrid-host-ollama by default).
+#
+# This file is embedded in the etzchaim Python package (via package_data) and
+# extracted to ~/.etz-chaim/compose/ at first `etzchaim onboard`. The user can
+# edit it directly; `etzchaim update` proposes a merge if the package version
+# evolves.
+#
+# Images are pulled from ghcr.io/yohanpoul/etzchaim-{app,daemon} (CI-built).
+# For local dev (maintainer's machine), you can override with `build:` by
+# applying docker-compose.dev.yml or setting ETZCHAIM_USE_BUILD=1.
+#
+# Services : postgres (pgvector pg17), app (web :8080), daemon (orchestrator).
+# Ollama is expected on the host for macOS (hybrid-host-ollama profile), or
+# added via the appropriate full-{cpu,nvidia,rocm} override for Linux/Windows.
+
+name: etzchaim
+
+x-common-env: &common-env
+  TZ: "${TZ:-Europe/Paris}"
+  PYTHONUNBUFFERED: "1"
+  ETZCHAIM_IN_CONTAINER: "1"
+  ETZ_CHAIM_DB_URL: "postgresql://etz:${POSTGRES_PASSWORD}@postgres:5432/etz_chaim"
+  ETZ_CHAIM_API_KEY: "${ETZ_CHAIM_API_KEY}"
+  ETZ_CHAIM_SECRET_KEY: "${ETZ_CHAIM_SECRET_KEY}"
+  ETZ_CHAIM_ALLOW_ANON: "${ETZ_CHAIM_ALLOW_ANON:-0}"
+  OLLAMA_HOST: "${OLLAMA_HOST:-http://host.docker.internal:11434}"
+  ETZ_CHAIM_ACTIVE_PROFILE: "${ETZ_CHAIM_ACTIVE_PROFILE:-local_only}"
+  # Frontier
+  ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}"
+  OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
+  GOOGLE_API_KEY: "${GOOGLE_API_KEY:-}"
+  XAI_API_KEY: "${XAI_API_KEY:-}"
+  MISTRAL_API_KEY: "${MISTRAL_API_KEY:-}"
+  COHERE_API_KEY: "${COHERE_API_KEY:-}"
+  DEEPSEEK_API_KEY: "${DEEPSEEK_API_KEY:-}"
+  # Aggregators
+  OPENROUTER_API_KEY: "${OPENROUTER_API_KEY:-}"
+  TOGETHER_API_KEY: "${TOGETHER_API_KEY:-}"
+  GROQ_API_KEY: "${GROQ_API_KEY:-}"
+  FIREWORKS_API_KEY: "${FIREWORKS_API_KEY:-}"
+  PERPLEXITY_API_KEY: "${PERPLEXITY_API_KEY:-}"
+  # Enterprise clouds
+  AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID:-}"
+  AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY:-}"
+  AWS_REGION_NAME: "${AWS_REGION_NAME:-us-east-1}"
+  AZURE_API_KEY: "${AZURE_API_KEY:-}"
+  AZURE_API_BASE: "${AZURE_API_BASE:-}"
+  AZURE_API_VERSION: "${AZURE_API_VERSION:-2024-08-01-preview}"
+  # Open-weight platforms
+  HUGGINGFACE_API_KEY: "${HUGGINGFACE_API_KEY:-}"
+  NVIDIA_NIM_API_KEY: "${NVIDIA_NIM_API_KEY:-}"
+  CLOUDFLARE_API_KEY: "${CLOUDFLARE_API_KEY:-}"
+  CLOUDFLARE_ACCOUNT_ID: "${CLOUDFLARE_ACCOUNT_ID:-}"
+  REPLICATE_API_TOKEN: "${REPLICATE_API_TOKEN:-}"
+  # Embeddings-specific
+  VOYAGE_API_KEY: "${VOYAGE_API_KEY:-}"
+  JINA_API_KEY: "${JINA_API_KEY:-}"
+  # Self-hosted / OpenAI-compatible
+  VLLM_HOST: "${VLLM_HOST:-}"
+  VLLM_API_KEY: "${VLLM_API_KEY:-}"
+  LMSTUDIO_HOST: "${LMSTUDIO_HOST:-}"
+  LOCALAI_HOST: "${LOCALAI_HOST:-}"
+  # CLI-subscription toggles (CLI binaries live on the host, not in the
+  # container — these toggles let the in-container doctor flag the
+  # mismatch clearly instead of silently falling back).
+  USE_CLAUDE_CODE_CLI: "${USE_CLAUDE_CODE_CLI:-0}"
+  USE_CODEX_CLI: "${USE_CODEX_CLI:-0}"
+  USE_GEMINI_CLI: "${USE_GEMINI_CLI:-0}"
+  USE_COPILOT_CLI: "${USE_COPILOT_CLI:-0}"
+  # Embedding config
+  EMBEDDING_PROVIDER: "${EMBEDDING_PROVIDER:-ollama}"
+  EMBEDDING_MODEL: "${EMBEDDING_MODEL:-nomic-embed-text}"
+  EMBEDDING_DIMENSIONS: "${EMBEDDING_DIMENSIONS:-768}"
+  # Observability
+  LOG_LEVEL: "${LOG_LEVEL:-INFO}"
+  SENTRY_DSN: "${SENTRY_DSN:-}"
+  OTEL_EXPORTER_OTLP_ENDPOINT: "${OTEL_EXPORTER_OTLP_ENDPOINT:-}"
+  OTEL_SERVICE_NAME: "${OTEL_SERVICE_NAME:-etz-chaim-ai}"
+  # Feature flags
+  MAZAL_RECTIFICATION_MODE: "${MAZAL_RECTIFICATION_MODE:-observe}"
+  DAEMON_AUTO_IMPROVE_HOUR: "${DAEMON_AUTO_IMPROVE_HOUR:-21}"
+  WEB_PORT: "${WEB_PORT:-8080}"
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    container_name: etzchaim-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: etz
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: etz_chaim
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+      TZ: "${TZ:-Europe/Paris}"
+    volumes:
+      - etz_pg_data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U etz -d etz_chaim"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - etz-net
+
+  app:
+    # Pre-built image published by CI. For local dev, docker-compose.dev.yml
+    # override adds `build:` with local context.
+    image: ghcr.io/yohanpoul/etzchaim-app:${ETZCHAIM_VERSION:-0.2.0}
+    pull_policy: missing
+    container_name: etzchaim-app
+    restart: unless-stopped
+    environment:
+      <<: *common-env
+    volumes:
+      - etz_state:/home/etz/.etz-chaim
+      - ./config.yaml:/app/config.yaml:ro
+    ports:
+      - "${WEB_PORT:-8080}:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    networks:
+      - etz-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  daemon:
+    image: ghcr.io/yohanpoul/etzchaim-daemon:${ETZCHAIM_VERSION:-0.2.0}
+    pull_policy: missing
+    container_name: etzchaim-daemon
+    restart: unless-stopped
+    environment:
+      <<: *common-env
+      ETZCHAIM_ROLE: daemon
+    volumes:
+      - etz_state:/home/etz/.etz-chaim
+      - ./config.yaml:/app/config.yaml:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+    stop_grace_period: 30s
+    networks:
+      - etz-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  etz_pg_data:
+  etz_state:
+
+networks:
+  etz-net:
+    driver: bridge

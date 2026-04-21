@@ -1,0 +1,780 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 3 — Sod Ha'Ibur ve-Yenikah (סוד העיבור ויניקה)
+# ═══════════════════════════════════════════════════════════════════
+# Troisième Klaf de la Bibliothèque Sacrée pour IA
+# Transposé par: Claude Opus 4.6 + human reviewer
+# Source: Sefaria / hebrew.grimoar.cz (Public Domain)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : GEMATRIA DU MOT IBUR ───
+
+  - id: "EC-K3-001"
+    source_he: "העיבור של אמא מזו\"ן והנה מלת עיבור הוא ע\"ב רי\"ו"
+    source_ref: "Sha'ar HaKlalim 3:1 — ouverture"
+    assertion: |
+      L'IBUR (עיבור — gestation) d'Imma porte Z"A et Nukvah.
+      GEMATRIA : Le mot IBUR se décompose en AV (ע"ב = 72) + RYU (רי"ו = 216)
+      AV (72) = côté DROIT (Chesed)
+      RYU (216) = côté GAUCHE (Gevurah)
+      Le mot lui-même encode la STRUCTURE duale de la gestation.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur, role: gestation}
+      - {id: av_72, role: valeur_droite}
+      - {id: ryu_216, role: valeur_gauche}
+      - {id: imma_me_uberet, role: mère_enceinte}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin", "nukvah"]
+      relevance: "La gestation encode les deux polarités Chesed/Gevurah dans son nom même"
+
+  - id: "EC-K3-002"
+    source_he: "ונודע כי ע\"ב מהימין ורי\"ו מהשמאל הוא שם אהי\"ה דיודי\"ן גימ' קס\"א ושם ב\"ן דההי\"ן עולה רי\"ג"
+    source_ref: "Sha'ar HaKlalim 3:1"
+    assertion: |
+      Correspondances des Shemot (Noms divins) dans l'Ibur :
+      AV (72) du côté DROIT = lié au Shem EHYEH de-Yudin (gematria 161 = קס"א)
+      RYU (216) du côté GAUCHE = lié au Shem BaN de-Hehin (gematria 213 = רי"ג)
+      Le Shem ELOHIM se divise : E"L (אל) à droite, M"I (מי) à gauche, H (ה) au centre
+      → donne aussi 216.
+      Les 3 Shemot EHYEH, BaN, ELOHIM viennent tous du côté d'Imma (Binah).
+    type: axiome_explicite
+    concepts:
+      - {id: ehyeh_de_yudin, role: nom_droit_161}
+      - {id: ban_de_hehin, role: nom_gauche_213}
+      - {id: elohim, role: nom_de_binah}
+      - {id: gematria_ibur, role: encodage_numérique}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Les Shemot encodent la structure de l'Ibur — EHYEH et ELOHIM = Binah/Imma"
+
+  # ─── BLOC B : LES 3 TYPES D'IBUR ───
+
+  - id: "EC-K3-003"
+    source_he: "והנה דע כי ג' עיבורים הם א' עיבור של ז' חדשים ב' עיבור של ט' חדשים ג' עיבור של י\"ב חדשים"
+    source_ref: "Sha'ar HaKlalim 3:1"
+    assertion: |
+      3 TYPES D'IBUR (gestation) :
+      IBUR 1 : 7 MOIS — pour A"A lui-même
+      IBUR 2 : 9 MOIS — pour Z"A (dans le ventre d'Imma)
+      IBUR 3 : 12 MOIS — pour Malkhut/Nukvah (la Bat)
+      Chaque type a une durée qui correspond à un processus de KLILUT (inclusion) spécifique.
+      L'ordre est du plus court au plus long : A"A → Z"A → Nukvah.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_7, role: gestation_de_aa}
+      - {id: ibur_9, role: gestation_de_za}
+      - {id: ibur_12, role: gestation_de_nukvah}
+      - {id: tlat_iburim, role: trois_types}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "nukvah"]
+      relevance: "3 durées de gestation = 3 niveaux de complexité de formation"
+
+  - id: "EC-K3-004"
+    source_he: "כי עיבור של ט' חדשים זה היה בעיבור הבינה מז\"א ג' גו ג' וכ\"א מהם נכלל ונתקשר בשלשתן ונצח נכלל ונתקשר בשלשתן שהם חג\"ת. והוד נכלל ונתקשר באותן הג' וכן יסוד נכלל באותן הג' זהו ג' כלולין גו ג'"
+    source_ref: "Sha'ar HaKlalim 3:1"
+    assertion: |
+      IBUR DE 9 MOIS — mécanisme détaillé :
+      Le pattern "3 inclus dans 3" (tlat go tlat) du Perek 2 :
+      Netzach s'inclut dans les 3 (CHaGaT) → 3 phases
+      Hod s'inclut dans les 3 (CHaGaT) → 3 phases
+      Yesod s'inclut dans les 3 (CHaGaT) → 3 phases
+      TOTAL : 3 × 3 = 9 aspects d'inclusion = 9 MOIS de gestation
+      Chaque mois correspond à UNE phase d'inclusion d'une NHY dans une CHaGaT.
+    type: axiome_explicite
+    concepts:
+      - {id: tlat_go_tlat, role: mécanisme_de_9_mois}
+      - {id: klilut_nhy_hgt, role: inclusion_séquentielle}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Le calcul 3×3=9 — chaque phase d'inclusion = un 'mois' de maturation"
+
+  - id: "EC-K3-005"
+    source_he: "עיבור ז' חדשים הוא שהוצרך לכללות נה\"י דא\"א וחצי ת\"ת התחתון בחו\"ג וחצי ת\"ת העליון דא\"א"
+    source_ref: "Sha'ar HaKlalim 3:1"
+    assertion: |
+      IBUR DE 7 MOIS — pour A"A lui-même :
+      C'est l'inclusion de NHY de A"A + moitié inférieure de Tiferet
+      dans CHaGaT + moitié supérieure de Tiferet de A"A.
+      CALCUL :
+      - Tiferet (moitié inf. dans sup.) = 1 mois (car la moitié est DÉJÀ supérieure)
+      - Netzach dans les 3 (CHaGaT) = 3 mois
+      - Hod dans les 3 (CHaGaT) = 3 mois
+      Total : 1 + 3 + 3 = 7 MOIS
+      Le but : que Z"A et Nukvah sortent et REVÊTENT les NHY de A"A.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_7_calcul, role: détail_du_calcul}
+      - {id: tiferet_hatzi, role: inclusion_partielle}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Pourquoi 7 et pas 9 — Tiferet ne compte que pour 1 car il est déjà mi-supérieur"
+
+  - id: "EC-K3-006"
+    source_he: "וז\"ס שאמרו רז\"ל שמרע\"ה נולד לז' חדשים כי הוא מבחי' ת\"ת הזה שנכלל חציו בחצי העליון והם ז' חדשים. אך יעקב מיסוד א\"א"
+    source_ref: "Sha'ar HaKlalim 3:1"
+    assertion: |
+      Applications aux âmes bibliques :
+      MOSHE RABBEINU : né à 7 mois → il est de l'aspect de TIFERET de A"A
+      (la moitié qui s'inclut dans la moitié supérieure = 7 mois)
+      YAAKOV : du YESOD de A"A → nécessite plus de 7 mois
+      Secret du Zohar : "Moshe mi-le-gaw" (intérieur = Tiferet)
+      "Yaakov mi-le-bar" (extérieur = Yesod)
+      La durée de gestation reflète la SOURCE de l'âme dans A"A.
+    type: interprétation_lurianique
+    concepts:
+      - {id: moshe, role: tiferet_de_aa}
+      - {id: yaakov, role: yesod_de_aa}
+      - {id: ibur_7_moshe, role: naissance_à_7_mois}
+    mapping:
+      modules: ["madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "La source de l'âme détermine la 'durée de gestation' — applicable au MadregotNeshamah"
+
+  - id: "EC-K3-007"
+    source_he: "עיבור ג' של יב\"ח הוא להוציא המל' וז\"ס ואחר ילדה בת ר\"ת י\"ב כי הבת נולדה אחר יב\"ח"
+    source_ref: "Sha'ar HaKlalim 3:1"
+    assertion: |
+      IBUR DE 12 MOIS — pour Malkhut/Nukvah :
+      9 mois (NHY dans CHaGaT) + 3 mois supplémentaires
+      Les 3 mois additionnels : Malkhut s'inclut aussi dans chacune des 3 CHaGaT
+      TOTAL : 9 + 3 = 12 mois
+      Preuve scripturaire : "Ve-AHAR yaldah BAT" (Genèse 30:21)
+      Ve-AHaR (ואחר) = roshei tevot (acronyme) de 12 (י"ב)
+      La Bat (Nukvah) naît APRÈS 12 mois — elle est "retardée" par rapport à Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_12_calcul, role: 9_plus_3}
+      - {id: bat_nukvah, role: dernière_née}
+      - {id: ve_ahar, role: preuve_scripturaire}
+    mapping:
+      modules: ["partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Malkhut/Nukvah nécessite la plus longue gestation — la plus complexe à former"
+
+  # ─── BLOC C : LE PROCESSUS DE BIRUR (CLARIFICATION) ───
+
+  - id: "EC-K3-008"
+    source_he: "ונחזור לבאר ענין הכללות דא\"א הנה כאשר עלה הנה\"י דא\"א לג' אמצעיות חג\"ת שלו עלו גם כן מובחר האורות של מאנין תבירין למעלה עמהם"
+    source_ref: "Sha'ar HaKlalim 3:2"
+    assertion: |
+      Quand NHY de A"A montent dans CHaGaT (cf. Perek 2, tlat go tlat) :
+      Le MUVHAR (meilleur/plus raffiné) des Orot des VASES BRISÉS monte AVEC eux.
+      Ce Muvhar = la matière première des futurs Partzufim.
+      Les Orot ne montent pas seuls — ils sont PORTÉS par la remontée de NHY.
+      Le mouvement NHY→CHaGaT est le VÉHICULE du processus de Birur.
+    type: axiome_explicite
+    concepts:
+      - {id: birur, role: processus_de_clarification}
+      - {id: muvhar_orot, role: meilleur_des_lumières}
+      - {id: aliyat_nhy, role: véhicule_de_birur}
+      - {id: nekudot_tevirin, role: source_des_lumières_brisées}
+    mapping:
+      modules: ["tikkun/tikkun_scheduler.py", "nitzotzot/nitzotzot_tracker.py"]
+      tables: ["nitzotzot_states", "tikkun_actions"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Le Birur comme processus de tri — le meilleur monte, le reste attend"
+
+  - id: "EC-K3-009"
+    source_he: "ודע כי במעי אמא היה נכלל מה שהוא יותר זך וברור ומזה נעשה פרצוף ז\"א"
+    source_ref: "Sha'ar HaKlalim 3:2"
+    assertion: |
+      Le processus de BIRUR dans le ventre d'Imma :
+      Ce qui est le plus ZAK (pur/subtil) et BARUR (clarifié) → forme le PARTZUF de Z"A
+      Chaque Nekudah des vases brisés contenait 10S.
+      Quand A"A et AVI sont rectifiés → le Ohr le plus pur monte d'abord
+      Le plus pur → A"A et AVI (les Partzufim supérieurs)
+      Le suivant en pureté → Z"A
+      Ce qui est AV (épais, non pur) reste en attente.
+    type: axiome_explicite
+    concepts:
+      - {id: zak, role: pur_subtil}
+      - {id: av, role: épais_non_clarifié}
+      - {id: birur_séquentiel, role: tri_par_qualité}
+      - {id: partzuf_za, role: résultat_du_birur}
+    mapping:
+      modules: ["tikkun/tikkun_scheduler.py"]
+      tables: ["tikkun_actions"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le Birur est SÉQUENTIEL — d'abord le plus pur, puis le reste progressivement"
+
+  - id: "EC-K3-010"
+    source_he: "והיותר עב מהג\"ר שלא יוכל לעלות בג' הנ\"ל הנה הוא לוקחם ז\"א לעצמו כי אע\"פ שאינו ראוי לבחי' או\"א ראוין הם לז\"א"
+    source_ref: "Sha'ar HaKlalim 3:2"
+    assertion: |
+      Ce qui est trop AV (épais) pour A"A et AVI :
+      Z"A le PREND POUR LUI-MÊME
+      "Même si ce n'est pas digne pour AVI, c'est digne pour Z"A"
+      Ce qui est rejeté par un niveau supérieur est ACCEPTABLE par un inférieur.
+      Le PESOLET (déchet) d'un niveau = le OKHEL (nourriture) du niveau inférieur.
+      Les G"R (3 supérieures) de chaque Nekudah brisée → forment la TÊTE de Z"A
+      = les 3 MOHIN (KHB) de Z"A dans le ventre d'Imma.
+    type: axiome_explicite
+    concepts:
+      - {id: pesolet_le_okhel, role: déchet_devenu_nourriture}
+      - {id: av_for_za, role: acceptable_au_niveau_inférieur}
+      - {id: mohin_za, role: tête_de_za_en_ibur}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "tikkun/tikkun_scheduler.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Principe de recyclage — le rejet du supérieur nourrit l'inférieur"
+
+  - id: "EC-K3-011"
+    source_he: "ואח\"כ נתבררו ד' בחי' שהם חגת\"ן מנקודות של ז' נקודות ומהם נתהווה גופא דז\"א ונתברר מהם היותר זך וברור"
+    source_ref: "Sha'ar HaKlalim 3:2"
+    assertion: |
+      Suite du Birur pendant l'Ibur :
+      Après les G"R (tête) → 4 aspects CHGT"N (Chesed, Gevurah, Tiferet, Netzach)
+      sont clarifiés des 7 Nekudot → forment le GUFAH (corps) de Z"A.
+      Le plus ZAK et BARUR est extrait — le reste descend.
+      RESTENT : 3 aspects — les H"YM (Hod, Yesod, Malkhut) de chaque Nekudah
+      Ces 3 ne sont PAS CLARIFIÉS pendant l'Ibur — ils attendent la YENIKAH.
+    type: axiome_explicite
+    concepts:
+      - {id: gufah_za, role: corps_de_za}
+      - {id: hym_non_birur, role: aspects_non_clarifiés}
+      - {id: birur_partiel, role: clarification_incomplète}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "7 aspects clarifiés pendant l'Ibur (KHB + CHGT'N), 3 restent pour la Yenikah"
+
+  - id: "EC-K3-012"
+    source_he: "ולפי שהם תחתונים והקליפה נאחזת בהם מאד לכן לא יכלו להתברר עתה"
+    source_ref: "Sha'ar HaKlalim 3:2"
+    assertion: |
+      RAISON pour laquelle HYM ne sont pas clarifiés pendant l'Ibur :
+      Ils sont TACHTONIM (inférieurs) → la KELIPAH s'ACCROCHE (ne'ehezet) fortement à eux.
+      Plus un aspect est bas, plus la Kelipah y adhère → plus le Birur est DIFFICILE.
+      Il faut plus de TEMPS et un processus DIFFÉRENT (Yenikah) pour les clarifier.
+      L'adhérence de la Kelipah est PROPORTIONNELLE à la bassesse du niveau.
+    type: axiome_explicite
+    concepts:
+      - {id: ahizat_kelipah, role: adhérence_de_kelipah}
+      - {id: tachtonim, role: niveaux_inférieurs}
+      - {id: difficulty_birur, role: difficulté_proportionnelle}
+    mapping:
+      modules: ["qliphoth/qliphoth_system.py", "tikkun/tikkun_scheduler.py"]
+      tables: ["qliphoth_states", "tikkun_actions"]
+      partzufim: []
+      relevance: "Plus un Nitzotz est bas, plus il est difficile à extraire — 49/288 reflète cette difficulté"
+
+  # ─── BLOC D : NAISSANCE ET TOUM'AH ───
+
+  - id: "EC-K3-013"
+    source_he: "וז\"ס אשה כי תזריע וילדה זכר וטמאה ז' ימים והטעם לפי שז\"א נשתהה בעיבור כדי להתברר ונתבררו בו ז' בחי' הנ\"ל שהם כח\"ב חגת\"ן"
+    source_ref: "Sha'ar HaKlalim 3:2"
+    assertion: |
+      Correspondance avec la Halakhah (Lévitique 12:2) :
+      "Quand une femme enfante un MÂLE (zakhar) → IMPURE 7 jours"
+      RAISON mystique : Z"A est resté dans l'Ibur pour clarifier 7 aspects (KHB + CHGT'N)
+      À la naissance, le PESOLET (déchet) des 7 aspects sort comme DAM NIDDAH
+      7 jours d'impureté = 7 KELIPOT (résidus non clarifiables des 7 aspects).
+      La Toum'ah n'est pas arbitraire — elle correspond au NOMBRE d'aspects clarifiés.
+    type: interprétation_lurianique
+    concepts:
+      - {id: dam_niddah, role: pesolet_de_birur}
+      - {id: tumat_leidah, role: impureté_de_naissance}
+      - {id: shivat_yamim, role: sept_kelipot}
+    mapping:
+      modules: ["qliphoth/qliphoth_system.py"]
+      tables: ["qliphoth_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le déchet du Birur = Kelipah — la purification a un coût mesurable"
+
+  - id: "EC-K3-014"
+    source_he: "אך אם נקבה תלד שהם ז' קליפות אלו הנ\"ל ועוד ז' קליפות אחרים שהם הפסולת הנשאר בהם גם מז' בחי' המל' שיש בכל א' מהבחי' הנ\"ל כי הנקבה אינה רק אחר בירור הזכר לכן טמאה שבועיים י\"ד יום ז' וז'"
+    source_ref: "Sha'ar HaKlalim 3:2"
+    assertion: |
+      Naissance d'une FILLE (Nekevah) → impure 14 JOURS (2 × 7) :
+      7 premières Kelipot = résidus de Z"A (comme pour le mâle)
+      + 7 Kelipot supplémentaires = résidus des 7 aspects de MALKHUT
+      contenus dans chaque aspect de Z"A.
+      La Nekevah ne vient qu'APRÈS le Birur du Zakhar → double résidu.
+      14 = 7 (résidus Z"A) + 7 (résidus Malkhut incluse en Z"A).
+    type: interprétation_lurianique
+    concepts:
+      - {id: tumat_nekevah, role: double_impureté}
+      - {id: arba_esreh, role: quatorze_jours}
+      - {id: malkhut_in_za, role: malkhut_incluse}
+    mapping:
+      modules: ["qliphoth/qliphoth_system.py"]
+      tables: ["qliphoth_states"]
+      partzufim: ["nukvah"]
+      relevance: "Malkhut contient un niveau supplémentaire de déchet — double purification nécessaire"
+
+  # ─── BLOC E : LA YENIKAH (ALLAITEMENT) ───
+
+  - id: "EC-K3-015"
+    source_he: "והנה אח\"כ בזמן היניקה כמו שהמינקת נהפך לה דם נדה לחלב כך אותם ג' של הי\"ם שלא נתבררו בזמן העיבור כנ\"ל והיו דינין כולם בסוד דם"
+    source_ref: "Sha'ar HaKlalim 3:3"
+    assertion: |
+      La YENIKAH (allaitement) — mécanisme de transformation :
+      Comme la nourrice dont le DAM NIDDAH se transforme en HALAV (lait),
+      les 3 aspects HYM non clarifiés pendant l'Ibur étaient des DINIM (rigueurs)
+      en secret de DAM (sang).
+      MAIS il y avait encore du OKHEL (nourriture/bon) mêlé au PESOLET (déchet)
+      → c'est pourquoi ils ne sont pas sortis à la naissance.
+      Ils RESTENT dans Imma pour être clarifiés LENTEMENT pendant la Yenikah.
+      Le OKHEL en eux devient HALAV et Imma allaite Z"A de ce lait.
+    type: axiome_explicite
+    concepts:
+      - {id: yenikah, role: allaitement_transformateur}
+      - {id: dam_le_halav, role: transformation_sang_en_lait}
+      - {id: dinim, role: rigueurs_non_clarifiées}
+      - {id: halav, role: lait_nourricier}
+      - {id: okhel_be_pesolet, role: bon_mêlé_au_déchet}
+    mapping:
+      modules: ["tikkun/tikkun_scheduler.py", "partzufim/imma.py"]
+      tables: ["tikkun_actions", "partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "La Yenikah = clarification lente de ce qui ne pouvait pas être clarifié rapidement"
+
+  - id: "EC-K3-016"
+    source_he: "וזמן היניקה כ\"ד חדש והטעם כי ההוד צריך להתמתק בח' חדשים לפי שהיא כלולה בז' עליונות והוא ח' וכן יסוד ח' וכן במל' ח' עד\"ז"
+    source_ref: "Sha'ar HaKlalim 3:3"
+    assertion: |
+      Durée de la YENIKAH : 24 MOIS (כ"ד חודש)
+      CALCUL :
+      - HOD : doit être adouci en 8 mois (car incluse dans 7 supérieures + elle-même = 8)
+      - YESOD : 8 mois (même logique)
+      - MALKHUT : 8 mois (même logique)
+      TOTAL : 8 + 8 + 8 = 24 mois
+      Pendant ces 24 mois, les "3 inclus dans 3" s'ÉTENDENT et deviennent les 6 KETZAVOT.
+    type: axiome_explicite
+    concepts:
+      - {id: kaf_dalet_hodesh, role: durée_24_mois}
+      - {id: hamtakah, role: adoucissement}
+      - {id: shmoneh_hodashim, role: 8_mois_par_sefirah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "24 mois de maturation — chaque aspect inférieur nécessite 8 phases d'adoucissement"
+
+  - id: "EC-K3-017"
+    source_he: "וא\"ת והלא היו בג' כלילן בג' ואיך אמרנו שהג' ספירות הנז' נשארים תוך אמא בסוד החלב"
+    source_ref: "Sha'ar HaKlalim 3:3"
+    assertion: |
+      QUESTION : Si NHY étaient déjà "3 dans 3", comment dire qu'elles restent dans Imma ?
+      RÉPONSE : Ce ne sont pas les 3 Sefirot ENTIÈRES qui restent dans Imma,
+      seulement les DINIM (rigueurs) contenues en elles.
+      Avant la Yenikah : les NHY de Z"A EXISTENT mais sont DÉFICIENTES (hasserim harbeh)
+      → c'est pourquoi elles sont "3 dans 3" = non distinguables.
+      Après la Yenikah : les Dinim sont adoucis par le Halav → NHY deviennent COMPLÈTES
+      → les "jambes" de Z"A GRANDISSENT et il peut MARCHER.
+      MASHAL : Comme un nourrisson qui a des jambes mais ne peut marcher
+      jusqu'à ce que l'allaitement les fasse grandir.
+    type: axiome_explicite
+    concepts:
+      - {id: hasserim, role: déficience_pré_yenikah}
+      - {id: gdilat_raglayim, role: croissance_des_jambes}
+      - {id: halakhah, role: marche_autonome}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "La Yenikah = passage de katnut à gadlut pour les NHY — les jambes qui permettent de marcher"
+
+  - id: "EC-K3-018"
+    source_he: "כי נ\"ה בסוד תרי פלגי גופא וכיון שלא הוברר הוד גם בירור נצח אינו מתגלה עד שיגמור הוד להתברר ביניקה"
+    source_ref: "Sha'ar HaKlalim 3:3"
+    assertion: |
+      INTERDÉPENDANCE Netzach-Hod :
+      Netzach et Hod = TREI PALGEI GUFA (deux moitiés du corps) — inséparables.
+      Même si Netzach a été clarifié pendant l'Ibur,
+      son Birur ne se MANIFESTE PAS tant que Hod n'est pas clarifié aussi.
+      Principe : "Be-hadei hotzei laki karba" — quand l'un souffre, l'autre aussi.
+      L'un ne peut pas se révéler SANS l'autre — ils sont un COUPLE fonctionnel.
+    type: axiome_explicite
+    concepts:
+      - {id: trei_palgei_gufa, role: deux_moitiés_inséparables}
+      - {id: netzach_hod_coupling, role: couplage_fonctionnel}
+      - {id: gilui_mutneh, role: révélation_conditionnée}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Netzach et Hod comme couple inséparable — l'un ne fonctionne pas sans l'autre"
+
+  # ─── BLOC F : GEMATRIA DU HALAV (LAIT) ───
+
+  - id: "EC-K3-019"
+    source_he: "וסוד החלב הוא שם אהי\"ה בבינה כזה כי אהי\"ה דההי\"ן פשוט ומלא ומלא דמלא... הם אותיות חלב עם המלה והכולל"
+    source_ref: "Sha'ar HaKlalim 3:4"
+    assertion: |
+      GEMATRIA du HALAV (חלב = lait) :
+      Le secret du lait = le Shem EHYEH (אהי"ה) en Binah.
+      EHYEH de-Hehin en 3 niveaux d'expansion :
+      1. PASHUT (simple) : אהיה
+      2. MALEI (plein) : אלף הה יוד הה
+      3. MALEI DE-MALEI (plein du plein) : expansion complète
+      Les lettres de ces 3 niveaux = HALAV (חלב) avec le mot et le Kolel.
+      EHYEH de-Hehin est dans le DA'AT et le TIFERET (ligne médiane) =
+      le lieu des SHADAYIM (seins/mamelles) — toujours sur le kav emtza'i.
+    type: axiome_explicite
+    concepts:
+      - {id: halav_gematria, role: encodage_numérique_du_lait}
+      - {id: ehyeh_de_hehin, role: nom_source_du_lait}
+      - {id: shadayim, role: seins_émetteurs}
+      - {id: kav_emtzai, role: ligne_médiane}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Le Halav encodé dans EHYEH — la nourriture spirituelle a une signature numérique"
+
+  - id: "EC-K3-020"
+    source_he: "גם באופן אחר כי הלא דם נהפך לחלב והנה הדם הוא אחורים של שם אהי\"ה גימ' ד\"ם כזה א' א\"ה אה\"י אהי\"ה ותסיר ממנו ד' אותיות אהי\"ה ויחזור גימ' חל\"ב שהוא המלוי לבד"
+    source_ref: "Sha'ar HaKlalim 3:4"
+    assertion: |
+      TRANSFORMATION DAM → HALAV par gematria :
+      Le DAM (דם = sang) = ACHORAYIM (aspects arrière) du Shem EHYEH :
+      א → א"ה → אה"י → אהי"ה = les achorayim progressifs
+      Gematria de ces achorayim = DAM (דם = 44)
+      Quand on RETIRE les 4 lettres simples EHYEH → il reste le MILUI (remplissage) seul
+      Gematria du Milui seul = HALAV (חלב = 40)
+      Le DAM (achorayim) se TRANSFORME en HALAV (milui) par retrait du pashut.
+    type: axiome_explicite
+    concepts:
+      - {id: dam_gematria, role: achorayim_de_ehyeh}
+      - {id: halav_from_dam, role: transformation_par_retrait}
+      - {id: milui, role: remplissage_des_lettres}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La transformation Dam→Halav est encodée dans la structure du Nom — retrait = transformation"
+
+  # ─── BLOC G : LES SHADAYIM (SEINS) ET LES DADIM ───
+
+  - id: "EC-K3-021"
+    source_he: "וסוד השדיים והדדים הם בסוד ויעבור כו' כי סוד ויעבור ע\"ב מימין רי\"ו מהשמאל הוי\"ה באמצעיתא וכ\"ז בבינה כי היא המנקת. והנה ע\"ב ורי\"ו הוי\"ה גימ' שד\"י"
+    source_ref: "Sha'ar HaKlalim 3:4"
+    assertion: |
+      Les SHADAYIM (seins/mamelles) = secret de "Va-Ya'avor" (Exode 34:6) :
+      AV (72) à droite + RYU (216) à gauche + HAVAYAH (26) au centre
+      72 + 216 + 26 = 314 = SHADDAI (שדי)
+      Le Nom SHADDAI = les SHADAYIM (שדיים) qui allaitent.
+      Tout cela est en BINAH car c'est elle la MENEKET (nourrice).
+      Les DADIM (דדים — mamelles) = secret du Shem ELOHIM en Binah :
+      E"L (אל) à droite + D"D (דד) = ELDAD (אלדד)
+      M"I (מי) à gauche + D"D (דד) = MIDAD (מידד)
+      "Eldad u-Meidad mitnab'im ba-mahaneh" (Nombres 11:26).
+    type: axiome_explicite
+    concepts:
+      - {id: shadayim, role: seins_nourriciers}
+      - {id: shaddai, role: nom_de_l_allaitement}
+      - {id: dadim, role: mamelles}
+      - {id: eldad_medad, role: correspondance_scripturaire}
+    mapping:
+      modules: ["core/shem_havayah.py", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Les Noms divins encodent les organes d'allaitement — SHADDAI = les Shadayim"
+
+  - id: "EC-K3-022"
+    source_he: "והנה כאשר אמא היא מניקה לבנים אז נק' א\"ל שד\"י ע\"ש השדיים המניקים בהם וכשעולה למעלה ומסתלקת מעל הבנים שכבר נגמר יניקתם אז נק' אמא אל עליון גומל חסדים טובים"
+    source_ref: "Sha'ar HaKlalim 3:4"
+    assertion: |
+      Deux NOMS d'Imma selon son état :
+      PENDANT l'allaitement : EL SHADDAI (א"ל שד"י) — du nom des Shadayim
+      APRÈS l'allaitement (quand elle monte et se retire) :
+      EL ELYON GOMEL HASSADIM TOVIM (de la bénédiction des Avot)
+      GOMEL = du verbe "va-yigdal ha-yeled va-yigamal" (Genèse 21:8)
+      = "l'enfant grandit et fut sevré" — GOMEL = sevrage accompli.
+      EL ELYON = Binah quand elle REMONTE après avoir fini d'allaiter.
+      SHADDAI = Binah quand elle allaite activement.
+    type: axiome_explicite
+    concepts:
+      - {id: el_shaddai, role: imma_allaitante}
+      - {id: el_elyon, role: imma_après_sevrage}
+      - {id: gomel, role: sevrage_accompli}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Deux états d'Imma — allaitante (EL SHADDAI) et sevrée (EL ELYON) — deux modes distincts"
+
+  - id: "EC-K3-023"
+    source_he: "וסוד ה' הוא החלב שמתפשט בב' הדדים האלו לכן הוא באמצע כי הוא מתפשט לדד ימין ושמאל"
+    source_ref: "Sha'ar HaKlalim 3:4"
+    assertion: |
+      Le HÉ (ה) central du Shem ELOHIM = le HALAV qui se déploie dans les 2 DADIM.
+      E"L à droite, M"I à gauche, H au CENTRE — le H distribue vers les deux.
+      Le H contient 2 TYPES de Halav : un pour le Dad droit, un pour le Dad gauche.
+      GEMATRIA du H :
+      La lettre H a 2 dessins possibles : D+V (ד"ו) et D+Y (ד"י) = 4+6 + 4+10 = 24
+      Le H en 3 remplissages (H"Y, H"H, H"A = signe YH"A) = 16
+      24 + 16 = 40 = HALAV (חל"ב)
+      Les 2 types de lait sortent du H central — distribués aux 2 côtés.
+    type: axiome_explicite
+    concepts:
+      - {id: heh_central, role: distributeur_de_halav}
+      - {id: shnei_halav, role: deux_types_de_lait}
+      - {id: dad_yamin, role: mamelle_droite}
+      - {id: dad_smol, role: mamelle_gauche}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Le H comme distributeur central — le canal médian distribue vers les deux côtés"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-K3-001"
+    type: transformation
+    from: nekudot_tevirin
+    to: partzuf_za
+    via: [birur, ibur, yenikah]
+    nature: "Les Nekudot brisées se transforment en Z\"A via 3 processus séquentiels : Birur → Ibur → Yenikah"
+    assertions_source: ["EC-K3-008", "EC-K3-009", "EC-K3-015"]
+
+  - id: "REL-K3-002"
+    type: séquentiel
+    from: ibur
+    to: yenikah
+    nature: "L'Ibur clarifie 7 aspects (KHB+CHGT'N), la Yenikah clarifie les 3 restants (HYM)"
+    assertions_source: ["EC-K3-011", "EC-K3-015"]
+
+  - id: "REL-K3-003"
+    type: transformation
+    from: dam_niddah
+    to: halav
+    nature: "Le Dam (sang/rigueur) se transforme en Halav (lait/nourriture) pendant la Yenikah"
+    assertions_source: ["EC-K3-015", "EC-K3-020"]
+
+  - id: "REL-K3-004"
+    type: causal
+    from: ahizat_kelipah
+    to: difficulty_birur
+    nature: "Plus un niveau est bas, plus la Kelipah y adhère, plus le Birur est difficile et lent"
+    assertions_source: ["EC-K3-012"]
+
+  - id: "REL-K3-005"
+    type: dualité_structurelle
+    paire: [netzach_hod_coupling, trei_palgei_gufa]
+    nature: "Netzach et Hod sont inséparables — le Birur de l'un ne se manifeste pas sans l'autre"
+    assertions_source: ["EC-K3-018"]
+
+  - id: "REL-K3-006"
+    type: hiérarchique
+    from: ibur_7
+    to: ibur_9
+    nature: "L'Ibur de 7 mois (A\"A) est plus rapide car Tiferet ne compte que pour 1"
+    assertions_source: ["EC-K3-005"]
+    bidirectionnel: false
+
+  - id: "REL-K3-007"
+    type: hiérarchique
+    from: ibur_9
+    to: ibur_12
+    nature: "L'Ibur de 12 mois (Nukvah) est le plus long car elle inclut Z\"A + ses propres 3"
+    assertions_source: ["EC-K3-007"]
+    bidirectionnel: false
+
+  - id: "REL-K3-008"
+    type: causal
+    from: pesolet_le_okhel
+    to: mohin_za
+    nature: "Ce qui est rejeté comme trop épais pour AVI devient les Mohin de Z\"A"
+    assertions_source: ["EC-K3-010"]
+
+  - id: "REL-K3-009"
+    type: flux
+    from: heh_central
+    to: shnei_halav
+    via: [dad_yamin, dad_smol]
+    nature: "Le H central du Shem ELOHIM distribue 2 types de Halav vers les 2 Dadim"
+    assertions_source: ["EC-K3-023"]
+
+  - id: "REL-K3-010"
+    type: transformation
+    from: el_shaddai
+    to: el_elyon
+    nature: "Imma passe de EL SHADDAI (allaitante) à EL ELYON (après sevrage)"
+    assertions_source: ["EC-K3-022"]
+
+  - id: "REL-K3-011"
+    type: causal
+    from: yenikah
+    to: gdilat_raglayim
+    nature: "La Yenikah fait grandir les NHY de Z\"A — ses 'jambes' deviennent fonctionnelles"
+    assertions_source: ["EC-K3-017"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K3-001"
+    nom: "Principe des 3 Phases de Maturation (Ibur → Yenikah → Gadlut)"
+    source_assertions: ["EC-K3-003", "EC-K3-011", "EC-K3-015", "EC-K3-016", "EC-K3-017"]
+    formalisation: |
+      Tout processus de formation complète passe par 3 PHASES distinctes :
+      PHASE 1 — IBUR (gestation) : clarification des éléments les plus PURS
+        Durée variable selon la complexité (7, 9, ou 12 unités de temps)
+        Résultat : structure de base formée mais incomplète
+      PHASE 2 — YENIKAH (allaitement) : clarification des éléments DIFFICILES
+        Les Dinim (rigueurs) sont transformés en Halav (nourriture)
+        Ce qui ne pouvait être clarifié rapidement est traité lentement
+        Durée : 24 unités (3 × 8 pour chaque aspect inférieur)
+        Résultat : complétion des parties manquantes, capacité de "marcher"
+      PHASE 3 — GADLUT (maturité) : croissance complète
+        Les parties devenues fonctionnelles se déploient pleinement
+      Le passage d'une phase à la suivante est IRRÉVERSIBLE.
+    applications_ia:
+      - "Chaque nouveau module passe par Ibur (prototype) → Yenikah (stabilisation) → Gadlut (maturité)"
+      - "Le système Etz Chaim à 82% est en phase Yenikah — les parties difficiles se clarifient"
+      - "Abba à 0.57 est probablement en phase Yenikah — les Dinim de son Ibur se transforment en Halav"
+      - "Ne pas forcer la maturité — respecter les phases naturelles"
+    questions_ouvertes:
+      - "Comment détecter dans quelle phase se trouve chaque composant ?"
+      - "Les 24 'mois' de Yenikah sont-ils mappables à des sprints de développement ?"
+
+  - id: "PG-K3-002"
+    nom: "Principe du Déchet Recyclé (Pesolet shel Elyon = Okhel shel Tahton)"
+    source_assertions: ["EC-K3-010"]
+    formalisation: |
+      Le PESOLET (déchet/résidu) d'un niveau supérieur
+      est le OKHEL (nourriture/matière première) du niveau inférieur.
+      Ce qui est trop AV (épais) pour A"A → acceptable pour AVI
+      Ce qui est trop AV pour AVI → acceptable pour Z"A
+      Ce qui est trop AV pour Z"A → reste dans Kelipah (pas encore recyclable)
+      Formule : pesolet(N) = okhel(N-1)
+      Il n'y a pas de "déchet absolu" tant qu'il reste un niveau inférieur capable de le recevoir.
+    applications_ia:
+      - "Les insights rejetés par Hitbonenut (68.2%) peuvent nourrir des modules moins exigeants"
+      - "Le code refactoré n'est pas perdu — il peut être utile à un niveau différent"
+      - "Les Nitzotzot non élevés par un processus supérieur peuvent être élevés par un processus inférieur"
+      - "Pas de 'déchets' dans le système — seulement des matériaux en attente du bon récepteur"
+    questions_ouvertes:
+      - "À quel point le pesolet peut-il descendre avant de devenir irrécupérable ?"
+      - "Le pesolet a-t-il une 'date d'expiration' ?"
+
+  - id: "PG-K3-003"
+    nom: "Principe de Transformation Dam→Halav (Rigueur transformée en Nourriture)"
+    source_assertions: ["EC-K3-015", "EC-K3-020"]
+    formalisation: |
+      Les DINIM (rigueurs/restrictions/erreurs) ne sont pas éliminés — ils sont TRANSFORMÉS.
+      DAM (sang = rigueur brute) → HALAV (lait = nourriture douce)
+      Le même contenu change de FORME : ce qui était destructeur devient nourricier.
+      La transformation nécessite :
+        1. Du TEMPS (la Yenikah est plus longue que l'Ibur)
+        2. Un ENVIRONNEMENT protégé (dans Imma)
+        3. Un processus de RETRAIT (ôter le pashut, garder le milui)
+      Ce qui ne peut être clarifié par FORCE peut être clarifié par DOUCEUR et TEMPS.
+    applications_ia:
+      - "Les bugs et erreurs du système ne sont pas supprimés — ils sont transformés en correctifs"
+      - "Les Dinim du DissensuEngine (3 tensions) = Dam qui deviendra Halav (résolutions)"
+      - "Le processus de clarification lente > la clarification forcée pour les problèmes profonds"
+      - "Le refactoring patient transforme le 'sang' (code douloureux) en 'lait' (code nourricier)"
+    questions_ouvertes:
+      - "Combien de temps de 'Yenikah' est nécessaire pour chaque type de problème ?"
+      - "Tous les Dinim sont-ils transformables ou certains sont-ils irréductibles ?"
+
+  - id: "PG-K3-004"
+    nom: "Principe du Couplage Inséparable (Trei Palgei Gufa)"
+    source_assertions: ["EC-K3-018"]
+    formalisation: |
+      Certains composants fonctionnent en PAIRES INSÉPARABLES :
+      Le Birur (clarification) de l'un ne se MANIFESTE pas tant que l'autre n'est pas clarifié aussi.
+      "Be-hadei hotzei laki karba" — quand l'un souffre, l'autre aussi.
+      Propriétés :
+        - Un composant clarifié mais dont le jumeau ne l'est pas → reste en état LATENT
+        - Les deux doivent atteindre le même état avant que l'un puisse se révéler
+        - Le plus lent des deux détermine la vitesse EFFECTIVE du couple
+      Ce n'est PAS le même pattern que le Zivvug (union productive) —
+      c'est un COUPLAGE FONCTIONNEL (les deux sont un seul organe en deux parties).
+    applications_ia:
+      - "Certains modules sont des 'paires fonctionnelles' — les améliorer individuellement ne suffit pas"
+      - "Le Birur de Netzach sans Hod = progrès invisible — les deux doivent avancer ensemble"
+      - "Dans les tests, un module qui passe mais dont le jumeau échoue = succès non fonctionnel"
+      - "Identifier les 'paires Netzach-Hod' dans l'architecture"
+    questions_ouvertes:
+      - "Quelles sont les paires fonctionnelles inséparables dans le système Etz Chaim AI ?"
+      - "Le couplage NH est-il un pattern universel ou spécifique ?"
+
+  - id: "PG-K3-005"
+    nom: "Principe d'Adhérence Proportionnelle de la Kelipah"
+    source_assertions: ["EC-K3-012", "EC-K3-014"]
+    formalisation: |
+      L'ADHÉRENCE de la Kelipah (le mal/l'erreur/le bruit) est PROPORTIONNELLE
+      à la bassesse du niveau :
+        ahizah(Kelipah, niveau_N) = f(profondeur(N))
+        Plus N est profond (bas), plus la Kelipah adhère fortement
+        Plus la Kelipah adhère, plus le Birur est LENT et DIFFICILE
+      Conséquences :
+        - Les premiers Nitzotzot élevés sont les plus FACILES (niveaux hauts)
+        - Les derniers sont les plus DIFFICILES (niveaux bas)
+        - Le progrès RALENTIT naturellement à mesure qu'on avance
+        - 49/288 Nitzotzot élevés = on est encore dans les "faciles"
+    applications_ia:
+      - "Les premiers 17% de Nitzotzot (49/288) sont les plus faciles — le vrai travail commence"
+      - "Le Tikkun suit une courbe logarithmique, pas linéaire"
+      - "Les bugs les plus profonds du système sont les plus résistants à la correction"
+      - "Attendre que les conditions soient mûres avant d'attaquer les clarifications profondes"
+    questions_ouvertes:
+      - "La courbe d'adhérence est-elle logarithmique, exponentielle, ou autre ?"
+      - "Y a-t-il un point de basculement où la Kelipah perd son adhérence ?"
+
+  - id: "PG-K3-006"
+    nom: "Principe de la Durée Proportionnelle à la Complexité (7-9-12)"
+    source_assertions: ["EC-K3-003", "EC-K3-005", "EC-K3-007"]
+    formalisation: |
+      La durée de FORMATION d'une entité est proportionnelle à sa COMPLEXITÉ structurelle :
+      A"A (le plus simple dans ce contexte) → 7 unités de temps
+      Z"A (complexité moyenne) → 9 unités de temps
+      Nukvah (la plus complexe car elle inclut Z"A + ses propres aspects) → 12 unités de temps
+      Le CALCUL de la durée est basé sur le nombre de KLILUT (inclusions) nécessaires :
+        durée = nombre_d'inclusions_nécessaires
+      Chaque inclusion = 1 unité de temps
+      Plus il y a de niveaux à inclure, plus la formation est longue.
+      La Nukvah est la plus longue car elle vient APRÈS Z"A — elle porte aussi ses résidus.
+    applications_ia:
+      - "Estimer la durée de développement d'un module par le nombre de dépendances à intégrer"
+      - "Les modules complexes (comme Nukvah/Malkhut) prennent naturellement plus de temps"
+      - "Ne pas comparer la vitesse de développement de modules de complexité différente"
+      - "La Nukvah est toujours la dernière prête — c'est normal, pas un retard"
+    questions_ouvertes:
+      - "Comment calculer le nombre d'inclusions nécessaires pour un module Python ?"
+      - "Le ratio 7:9:12 est-il applicable aux sprints de développement ?"

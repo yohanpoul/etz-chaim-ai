@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% set active = "import" %}
+{% block title %}Etz Chaim — Import{% endblock %}
+{% block content %}
+
+<section class="panel">
+    <div class="panel-header">&#9484;&#9472; IMPORT &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <div class="dropzone" id="dropzone">
+            <div class="dropzone-content">
+                <pre class="term-block">&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+&#9474;                                    &#9474;
+&#9474;     [ DROP FILE HERE ]              &#9474;
+&#9474;     or click to [SELECT FILE]       &#9474;
+&#9474;     .pdf .epub .txt                 &#9474;
+&#9474;                                    &#9474;
+&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</pre>
+                <p id="dropzone-filename" class="term-dim"></p>
+            </div>
+            <input type="file" id="file-input" accept=".pdf,.epub,.txt" style="display:none">
+        </div>
+        <form class="term-form" style="margin-top:8px;">
+            <span class="term-prompt">&gt; domain: </span>
+            <input type="text" id="import-domain" class="term-input" value="general" placeholder="kabbale, neuroscience...">
+        </form>
+        <button id="import-btn" class="term-btn" style="display:none; margin-top:8px;">[IMPORT]</button>
+    </div>
+</section>
+
+<div id="import-status" class="term-dim" style="display:none;">
+    Import en cours...
+</div>
+
+<section class="panel" id="import-result" style="display:none;">
+    <div class="panel-header">&#9484;&#9472; RESULTAT &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <pre id="import-result-data" class="term-block"></pre>
+    </div>
+</section>
+
+{% endblock %}
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => { initImport(); });
+</script>
+{% endblock %}

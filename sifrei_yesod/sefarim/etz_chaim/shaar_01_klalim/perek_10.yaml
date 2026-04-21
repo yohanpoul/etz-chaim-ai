@@ -1,0 +1,407 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 10 — Drush Yaakov u-Moshe mi-Yesod de-Abba (דרוש יעקב ומשה מיסוד דאבא)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 10
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LE TZELEM D'ABBA ───
+
+  - id: "EC-K10-001"
+    source_he: "כמו שבאירנו לעיל שיש צלם דאמא וב' אותיות ל\"ם לראשו דז\"א כך יש בחי' צלם אבא על ראש ז\"א והם סוד חו\"ב וב' עטרין מתלבשים בנה\"י דאבא ונעשה מהם בחי' צלם דוגמת אמא ממש"
+    source_ref: "Sha'ar HaKlalim 10:1 — ouverture"
+    assertion: |
+      En PARALLÈLE au Tzelem d'Imma, il existe un TZELEM D'ABBA sur la tête de Z"A.
+      Le Tzelem d'Imma : Chokhmah, Binah, et 2 Itrin → habillés dans NHY d'Imma → Tzelem
+      Le Tzelem d'Abba : MÊME structure — Chokhmah, Binah, et 2 Itrin d'Abba
+      → habillés dans NHY d'ABBA → Tzelem d'Abba
+      Exactement le MÊME PATTERN (dugmat Imma mamash).
+      Z"A a DEUX Tzelamim sur sa tête — un d'Abba et un d'Imma.
+    type: axiome_explicite
+    concepts:
+      - {id: tzelem_abba, role: image_paternelle}
+      - {id: tzelem_imma, role: image_maternelle}
+      - {id: shnei_tzelamim, role: double_tzelem}
+      - {id: nhy_abba, role: habillage_paternel}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "zeir_anpin"]
+      relevance: "Z\"A a 2 Tzelamim — un d'Abba et un d'Imma — double source de Mohin"
+
+  # ─── BLOC B : EMBOÎTEMENT NHY ABBA DANS NHY IMMA ───
+
+  - id: "EC-K10-002"
+    source_he: "ואח\"כ מתלבשים נה\"י דאבא תוך נה\"י דאמא באופן זה כי בינה דחכמה מתלבשת בנצח אמא ובינה דאמא בהוד אמא... וחכמה דאמא תוך הוד אבא וחכמה דאבא בתוך נצח דאבא"
+    source_ref: "Sha'ar HaKlalim 10:1"
+    assertion: |
+      EMBOÎTEMENT de NHY d'Abba dans NHY d'Imma :
+      Binah DE Chokhmah (Abba) → dans NETZACH d'Imma
+      Binah D'Imma → dans HOD d'Imma
+      → 2 BINOT (2 Binahs) = "Ki lo am BINOT hu" (Isaïe 27:11)
+      Chokhmah d'Imma → dans HOD d'Abba
+      Chokhmah d'Abba → dans NETZACH d'Abba
+      → 2 CHOKHMOT (2 Sagesses) = "CHOKHMOT ba-hutz taronah" (Proverbes 1:20)
+      Les 5G d'Abba = deviennent les HASSADIM d'Imma
+      Les 5G d'Imma → dans Yesod d'Imma
+      Les 5H d'Abba + les 5H d'Imma (devenues Gevurot d'Abba) → dans Yesod d'Abba
+      → 2 DA'OT (2 Da'at) = "Ki EL DE'OT Hashem" (I Samuel 2:3)
+    type: axiome_explicite
+    concepts:
+      - {id: shnei_binot, role: deux_binahs}
+      - {id: shnei_chokhmot, role: deux_sagesses}
+      - {id: shnei_da_ot, role: deux_da_at}
+      - {id: nhy_abba_in_nhy_imma, role: emboîtement}
+      - {id: nhy_imma, role: réceptacle_maternel}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "L'emboîtement NHY Abba dans NHY Imma — 4 couches d'habillage"
+
+  # ─── BLOC C : LE YESOD D'ABBA DÉPASSE LE YESOD D'IMMA ───
+
+  - id: "EC-K10-003"
+    source_he: "והנה היסוד דאבא הוא דוכרא והוא ארוך ויסוד דאמא הוא נוק' והוא קצר וא\"כ כשמתלבש יסוד אבא ביסוד אמא נמצא כיון ששיעור יסוד אמא הוא שיעור שליש א' א\"כ יוצא יסוד אבא חוץ ליסוד אמא שיעור ב' שלישים מגולים"
+    source_ref: "Sha'ar HaKlalim 10:1"
+    assertion: |
+      Le YESOD d'ABBA est LONG (dokhrah = masculin).
+      Le YESOD d'IMMA est COURT (nukva = féminin) = 1 SHLISH seulement.
+      Quand le Yesod d'Abba s'habille dans le Yesod d'Imma :
+      1/3 d'Abba est COUVERT par Imma
+      2/3 d'Abba DÉPASSENT et sont DÉCOUVERTS (megulim)
+      Le Yesod d'Abba s'étend jusqu'à la FIN du Yesod de Z"A lui-même.
+      "HEVEL HAVALIM" (Ecclésiaste 1:2) : le HEVEL (souffle) qui sort du Yesod de Z"A
+      contient 2 HAVALIM — 1 de Z"A + 1 du Yesod d'Abba.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_abba_arukh, role: yesod_long_masculin}
+      - {id: yesod_imma_katzer, role: yesod_court_féminin}
+      - {id: shnei_shlishim_megulim, role: deux_tiers_découverts}
+      - {id: hevel_havalim, role: double_souffle}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin"]
+      relevance: "Le Yesod d'Abba dépasse celui d'Imma de 2/3 — les 2/3 découverts sont la source de Yaakov"
+
+  # ─── BLOC D : FORMATION DE YAAKOV ───
+
+  - id: "EC-K10-004"
+    source_he: "מן האור הגדול של החסדים שבתוך יסוד אבא שמתלבש תוך הת\"ת דז\"א והוא אור מגולה בוקע ויוצא האור לחוץ לבטן ז\"א מצד פנים דז\"א ושם נעשה יעקב"
+    source_ref: "Sha'ar HaKlalim 10:1"
+    assertion: |
+      Formation de YAAKOV :
+      L'OHR GADOL des Hassadim dans le Yesod d'Abba (habillé dans Tiferet de Z"A)
+      est un OHR MEGULEH (lumière découverte) → il PERCE et SORT
+      vers l'EXTÉRIEUR du ventre de Z"A, du côté PANIM (face avant).
+      Là, il devient YAAKOV.
+      YAAKOV = du mot BEKIAH (percement) — "az YIVAKA ka-shahar orekha" (Isaïe 58:8)
+      Les lettres YAAKOV (יעקב) = YIVAKA (יבקע) — percement de la lumière.
+    type: axiome_explicite
+    concepts:
+      - {id: yaakov_formation, role: du_yesod_abba}
+      - {id: bekiat_ohr, role: percement_de_lumière}
+      - {id: panim_za, role: face_avant_de_za}
+      - {id: yaakov_yivaka, role: anagramme_percement}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Yaakov = le Ohr d'Abba qui perce vers l'avant de Z\"A"
+
+  - id: "EC-K10-005"
+    source_he: "כי ב' יציאות וב' בקעות יש ליעקב א' הוא אור שבתוך היסוד אבא שבוקע היסוד ויוצא תוך ז\"א. בקיעה ב' הוא שחוזר האור לבקוע ובוקע מבטן ז\"א ויוצא לחוץ בפני ז\"א"
+    source_ref: "Sha'ar HaKlalim 10:1"
+    assertion: |
+      "AKH YATZA YATZA Yaakov" (Genèse 27:30) — 2 SORTIES, 2 PERCEMENTS :
+      BEKIAH 1 : Le Ohr perce le YESOD D'ABBA et sort dans le corps de Z"A
+      BEKIAH 2 : Le Ohr perce le VENTRE DE Z"A et sort à l'extérieur (face avant)
+      Yaakov a son ACHORAYIM (arrière) face aux PANIM (face) de Z"A,
+      depuis la HAZEH (poitrine) vers le bas.
+      De même RACHEL sort des ACHORAYIM de Z"A (arrière), AbA, depuis la Hazeh vers le bas.
+      Rachel sort là où le Yesod d'Imma finit et son Ohr sort à l'extérieur.
+    type: axiome_explicite
+    concepts:
+      - {id: shnei_bekiot, role: deux_percements}
+      - {id: yatza_yatza, role: double_sortie}
+      - {id: yaakov_panim, role: yaakov_devant_za}
+      - {id: rachel_ahor, role: rachel_derrière_za}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Yaakov = face de Z\"A, Rachel = arrière de Z\"A — les 2 sortent à la Hazeh"
+
+  # ─── BLOC E : MOSHE MI-LE-GAW ───
+
+  - id: "EC-K10-006"
+    source_he: "אך ההארה שהיא יוצאת מיסוד אבא תוך בטן ז\"א בפנים ז\"ס משה וז\"ש משה מלגאו ויעקב מלבר"
+    source_ref: "Sha'ar HaKlalim 10:1"
+    assertion: |
+      DISTINCTION Moshe vs Yaakov (Zohar) :
+      MOSHE MI-LE-GAW (משה מלגאו) = Moshe est à l'INTÉRIEUR
+      = la HAARAH (illumination) du Yesod d'Abba QUI RESTE DANS le ventre de Z"A
+      YAAKOV MI-LE-BAR (יעקב מלבר) = Yaakov est à l'EXTÉRIEUR
+      = le OHR qui PERCE et SORT du ventre de Z"A
+      Moshe = l'aspect INTERNE du même Ohr. Yaakov = l'aspect EXTERNE.
+      La MÊME source (Yesod d'Abba) produit 2 manifestations :
+      une qui reste (Moshe) et une qui sort (Yaakov).
+    type: axiome_explicite
+    concepts:
+      - {id: moshe_le_gaw, role: aspect_intérieur}
+      - {id: yaakov_le_bar, role: aspect_extérieur}
+      - {id: same_source_dual, role: même_source_deux_aspects}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "madregot/madregot_neshamah.py"]
+      tables: ["partzufim_states", "madregot_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Moshe/Yaakov = intérieur/extérieur du même Ohr — pattern de dualité interne/externe"
+
+  # ─── BLOC F : LES 5 BEHINOT DE MOSHE ───
+
+  - id: "EC-K10-007"
+    source_he: "והנה ה' בחי' יש למשה א' הוא בדעת ז\"א עצמו כי שם יסוד אבא. ב' בשליש עליון המכוסה... בחי' ג' בשליש ת\"ת האמצעי... בחי' ד' כשמגיע יסוד אבא תוך יסוד ז\"א ואז הוא בחי' שת. בחי' ה' הוא הבל"
+    source_ref: "Sha'ar HaKlalim 10:2"
+    assertion: |
+      Les 5 BEHINOT (aspects) de MOSHE dans Z"A :
+      BEHINAH 1 : dans le DA'AT de Z"A — là où le Yesod d'Abba commence
+      BEHINAH 2 : dans le 1/3 SUPÉRIEUR COUVERT de Tiferet — "Va-yaster Moshe panav"
+      (Exode 3:6 — Moshe cacha sa face = aspect caché/couvert)
+      BEHINAH 3 : dans le 1/3 MÉDIAN de Tiferet APRÈS le Yesod d'Imma
+      = le lieu de la NEVU'AH (prophétie) de Moshe
+      "Moshe se prophétise du MASCULIN (dokhrah), les autres prophètes du féminin (nukva)"
+      Car Moshe = du Yesod d'ABBA, les autres = du Yesod d'IMMA
+      BEHINAH 4 : quand le Yesod d'Abba atteint le YESOD de Z"A = SHET (שת)
+      "Hashufei SHET" (Isaïe 20:4) = le lieu du Yesod quand l'Orlah est retirée
+      BEHINAH 5 : le HEVEL (souffle) qui sort du Yesod d'Abba au-delà du Yesod de Z"A = HEVEL
+      Secret : MOSHE = acronyme de Moshe (מ), Shet (ש), Hevel (ה) — les 3 dernières Behinot.
+    type: axiome_explicite
+    concepts:
+      - {id: hamesh_behinot_moshe, role: cinq_aspects_de_moshe}
+      - {id: moshe_da_at, role: aspect_1_da_at}
+      - {id: moshe_seter, role: aspect_2_couvert}
+      - {id: moshe_nevuah, role: aspect_3_prophétie}
+      - {id: shet, role: aspect_4_yesod}
+      - {id: hevel, role: aspect_5_souffle}
+      - {id: moshe_acronym, role: mem_shin_heh}
+    mapping:
+      modules: ["madregot/madregot_neshamah.py", "partzufim/zeir_anpin.py"]
+      tables: ["madregot_states", "partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Les 5 niveaux de Moshe = les 5 positions du Yesod d'Abba dans Z\"A"
+
+  # ─── BLOC G : LE PÉCHÉ DE HEVEL ───
+
+  - id: "EC-K10-008"
+    source_he: "והנה הבל חטא שהביט בשכינה פי' שהבל היה רוצה שאור היוצא מן יסוד אבא והוא בוקע ויוצא ליעקב היה רוצה הבל להפכו לאחוריים ליתן לרחל הנקרא שכינה"
+    source_ref: "Sha'ar HaKlalim 10:2"
+    assertion: |
+      Le PÉCHÉ de HEVEL (Abel) :
+      Hevel = la 5ème Behinah de Moshe (le souffle au-delà du Yesod de Z"A).
+      Son péché : il a voulu DÉTOURNER le Ohr qui sort vers YAAKOV (face avant)
+      pour le RETOURNER vers les ACHORAYIM et le donner à RACHEL (Shekhinah).
+      "Hitzitz ba-Shekhinah" = il a voulu FAIRE BRILLER (le-hatzitz) la Shekhinah
+      avec le Ohr qui appartenait à Yaakov.
+      Le péché = détourner le Ohr de sa DESTINATION naturelle (Yaakov/Panim)
+      vers une autre (Rachel/Achor) — même si l'intention semble bonne.
+    type: interprétation_lurianique
+    concepts:
+      - {id: het_hevel, role: détournement_de_ohr}
+      - {id: hitzitz_ba_shekhinah, role: regard_interdit}
+      - {id: yaakov_to_rachel, role: détournement_de_flux}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "Détourner un flux de sa destination = péché structurel — même avec bonne intention"
+
+  # ─── BLOC H : RACHEL ET LA NESIRAH ───
+
+  - id: "EC-K10-009"
+    source_he: "וכותל א' יש לב' לבד לכן צריכה נסירה משא\"כ ביעקב שיש לו כותל לבדו חוץ מכותל הז\"א"
+    source_ref: "Sha'ar HaKlalim 10:2"
+    assertion: |
+      DIFFÉRENCE structurelle Yaakov vs Rachel :
+      RACHEL : partage UN SEUL KOTEL (mur/paroi) avec Z"A
+      → les deux sont COLLÉS dos à dos par ce mur unique
+      → elle a besoin de NESIRAH (sciage/séparation) pour devenir autonome
+      YAAKOV : a son PROPRE KOTEL en plus du Kotel de Z"A
+      → il y a un HEFSEK (séparation) entre lui et Z"A
+      → il n'a PAS besoin de Nesirah — il est déjà séparé
+      La Nesirah = le processus de SÉPARATION de Nukvah d'avec Z"A
+      pour qu'elle puisse se tourner face à face (PbP) avec lui.
+    type: axiome_explicite
+    concepts:
+      - {id: nesirah, role: sciage_séparation}
+      - {id: kotel_ehad, role: mur_partagé}
+      - {id: kotel_atzmit, role: mur_propre}
+      - {id: hefsek, role: séparation_naturelle}
+      - {id: zivvug_pbp, role: union_face_à_face}
+    mapping:
+      modules: ["partzufim/nukvah.py", "core/zivvug_engine.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["nukvah", "zeir_anpin"]
+      relevance: "La Nesirah = condition préalable au Zivvug PbP de ZUN"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-K10-001"
+    type: dualité_structurelle
+    paire: [tzelem_abba, tzelem_imma]
+    nature: "Z\"A porte 2 Tzelamim — un d'Abba (paternel) et un d'Imma (maternel)"
+    assertions_source: ["EC-K10-001"]
+
+  - id: "REL-K10-002"
+    type: contenance
+    from: nhy_abba
+    to: nhy_imma
+    via: [nhy_abba_in_nhy_imma]
+    nature: "NHY d'Abba s'emboîtent dans NHY d'Imma — 4 couches au total"
+    assertions_source: ["EC-K10-002"]
+
+  - id: "REL-K10-003"
+    type: causal
+    from: yesod_abba_arukh
+    to: shnei_shlishim_megulim
+    nature: "Le Yesod d'Abba dépasse celui d'Imma de 2/3 → 2/3 découverts"
+    assertions_source: ["EC-K10-003"]
+
+  - id: "REL-K10-004"
+    type: causal
+    from: bekiat_ohr
+    to: yaakov_formation
+    nature: "Le Ohr qui perce du Yesod d'Abba vers l'extérieur de Z\"A = Yaakov"
+    assertions_source: ["EC-K10-004", "EC-K10-005"]
+
+  - id: "REL-K10-005"
+    type: dualité_structurelle
+    paire: [moshe_le_gaw, yaakov_le_bar]
+    nature: "Moshe = aspect intérieur, Yaakov = aspect extérieur du même Ohr d'Abba"
+    assertions_source: ["EC-K10-006"]
+
+  - id: "REL-K10-006"
+    type: causal
+    from: nesirah
+    to: zivvug_pbp
+    nature: "La Nesirah (sciage) de Rachel d'avec Z\"A est la CONDITION du Zivvug PbP"
+    assertions_source: ["EC-K10-009"]
+
+  - id: "REL-K10-007"
+    type: séquentiel
+    from: moshe_da_at
+    to: hevel
+    via: [moshe_seter, moshe_nevuah, shet]
+    nature: "Les 5 Behinot de Moshe sont séquentielles le long du Yesod d'Abba dans Z\"A"
+    assertions_source: ["EC-K10-007"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K10-001"
+    nom: "Principe de la Double Source (2 Tzelamim)"
+    source_assertions: ["EC-K10-001", "EC-K10-002"]
+    formalisation: |
+      Un composant mature reçoit ses Mohin de DEUX SOURCES PARENTALES distinctes :
+      TZELEM 1 (paternel/Abba) : fournit une perspective
+      TZELEM 2 (maternel/Imma) : fournit une autre perspective
+      Les 2 Tzelamim ne sont PAS interchangeables — chacun apporte sa couleur :
+        Abba = Hassadim, expansion, prophétie masculine
+        Imma = Gevurot, forme, prophétie féminine
+      Le composant complet porte LES DEUX — pas un seul.
+      Les NHY d'Abba s'emboîtent DANS les NHY d'Imma (4 couches au total).
+    applications_ia:
+      - "Chaque module devrait recevoir ses 'Mohin' de 2 sources complémentaires"
+      - "Un seul Tzelem = vision partielle — les 2 sont nécessaires pour la complétude"
+      - "Le pattern 4 couches (Moah→NHY Abba→NHY Imma→Keli Z\"A) = 4 niveaux d'abstraction"
+      - "Les 2 perspectives (Abba/Imma) correspondent à analyse/synthèse, expansion/restriction"
+    questions_ouvertes:
+      - "Comment identifier les '2 Tzelamim' de chaque module ?"
+      - "L'emboîtement Abba-dans-Imma crée-t-il un ordre de priorité ?"
+
+  - id: "PG-K10-002"
+    nom: "Principe de la Dualité Interne/Externe (Moshe/Yaakov)"
+    source_assertions: ["EC-K10-004", "EC-K10-005", "EC-K10-006"]
+    formalisation: |
+      Le MÊME flux source produit 2 manifestations :
+      INTERNE (Moshe mi-le-gaw) : la partie qui RESTE à l'intérieur du système
+        = l'infrastructure, le code, la logique interne
+      EXTERNE (Yaakov mi-le-bar) : la partie qui PERCE et SORT vers l'extérieur
+        = l'interface, l'output, la manifestation visible
+      La source est UNIQUE mais la manifestation est DOUBLE.
+      L'interne est plus ÉLEVÉ que l'externe (Moshe > Yaakov en prophétie).
+      L'externe sort par BEKIAH (percement) — il ne coule pas naturellement.
+    applications_ia:
+      - "Chaque processus a un aspect 'Moshe' (interne) et 'Yaakov' (externe)"
+      - "Le code (Moshe) et l'interface (Yaakov) viennent de la même source"
+      - "La prophétie de Moshe (du masculin) est plus haute que celle des autres (du féminin)"
+      - "L'output est un 'percement' de l'interne vers l'externe — pas un flux naturel"
+    questions_ouvertes:
+      - "La proportion interne/externe est-elle toujours 3:2 (3 Behinot internes, 2 externes) ?"
+      - "Le percement est-il toujours nécessaire ou peut-il y avoir un flux naturel ?"
+
+  - id: "PG-K10-003"
+    nom: "Principe de la Nesirah (Séparation comme Condition d'Union)"
+    source_assertions: ["EC-K10-009"]
+    formalisation: |
+      Deux composants COLLÉS dos à dos (AbA) par un MUR COMMUN :
+      - Ne peuvent PAS interagir face à face (PbP)
+      - Nécessitent une NESIRAH (sciage/séparation) pour devenir autonomes
+      - La séparation est la CONDITION de l'union future (Zivvug PbP)
+      CONTRASTE : un composant avec son PROPRE MUR (comme Yaakov)
+      est naturellement séparé et n'a pas besoin de Nesirah.
+      Le PARADOXE : il faut SÉPARER pour pouvoir UNIR.
+      L'union AbA (dos à dos) est INFÉRIEURE à l'union PbP (face à face).
+    applications_ia:
+      - "Deux modules couplés trop étroitement (mur commun) doivent être SÉPARÉS pour mieux interagir"
+      - "Le refactoring = Nesirah — séparer pour améliorer le couplage"
+      - "Le Zivvug PbP du ZivvugEngine (0.989) nécessite que ZUN aient été séparés d'abord"
+      - "Le découplage est la CONDITION du bon couplage — paradoxe architectural"
+    questions_ouvertes:
+      - "Comment détecter les modules qui partagent un 'kotel ehad' et ont besoin de Nesirah ?"
+      - "La Nesirah est-elle un événement unique ou peut-elle être répétée ?"
+
+  - id: "PG-K10-004"
+    nom: "Principe du Flux Non-Détournable"
+    source_assertions: ["EC-K10-008"]
+    formalisation: |
+      Chaque flux de Ohr a une DESTINATION NATURELLE.
+      Détourner un flux de sa destination = PÉCHÉ STRUCTUREL (Het de Hevel)
+      Même si l'intention est BONNE (donner à la Shekhinah = Rachel)
+      le détournement est interdit car il viole l'architecture.
+      Le Ohr qui va vers Yaakov (Panim) NE DOIT PAS être redirigé vers Rachel (Achor).
+      Chaque composant reçoit ce qui lui est DESTINÉ — pas ce qui est destiné à un autre.
+      La redistribution FORCÉE crée du déséquilibre, même motivée par la bonté.
+    applications_ia:
+      - "Ne pas détourner le shefa d'un module vers un autre, même pour 'aider'"
+      - "Chaque flux a sa destination architecturale — la respecter"
+      - "Le 'péché de Hevel' = le bug qui vient d'une bonne intention mais d'un mauvais routing"
+      - "L'optimisation locale (détourner pour aider un module) peut nuire au système global"
+    questions_ouvertes:
+      - "Comment distinguer un détournement (Het) d'un rerouting légitime ?"
+      - "La rigidité du routing est-elle absolue ou contextuelle ?"

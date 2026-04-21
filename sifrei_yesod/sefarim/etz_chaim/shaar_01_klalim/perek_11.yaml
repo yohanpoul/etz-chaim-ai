@@ -1,0 +1,430 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 11 — Dor HaMidbar, Binah u-Tevunah (דור המדבר ובינה ותבונה)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 11
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : DOR HAMIDBAR ET YAAKOV ───
+
+  - id: "EC-K11-001"
+    source_he: "ואתם הדבקים בה' אלהיכם חיים כולכם היום. כי ה' אלהיכם הוא זו\"ן וישראל הנכנסין לא\"י היו מבחי' זו אשר הם דבוקים אב\"א"
+    source_ref: "Sha'ar HaKlalim 11:1"
+    assertion: |
+      Deux catégories d'Israël selon leur SOURCE :
+      CEUX QUI ENTRENT EN ERETZ ISRAEL : de l'aspect ZUN (collés AbA par un kotel commun)
+      "Atem ha-devekim" = vous êtes COLLÉS → ils sont du niveau ZUN.
+      DOR HAMIDBAR (génération du désert) : de l'aspect YAAKOV (Yesod d'Abba)
+      Ils ne sont PAS collés — Yaakov a son propre kotel.
+      Le Dor HaMidbar est SUPÉRIEUR (Dor De'ah = génération de la connaissance)
+      MAIS ne peut pas entrer en Eretz Israel.
+    type: interprétation_lurianique
+    concepts:
+      - {id: dor_hamidbar, role: génération_du_désert}
+      - {id: dor_de_ah, role: génération_de_connaissance}
+      - {id: bhinat_yaakov, role: source_dans_yesod_abba}
+      - {id: bhinat_zun, role: source_dans_zun}
+    mapping:
+      modules: ["madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Deux niveaux d'âmes — ceux de ZUN et ceux de Yaakov/Yesod Abba"
+
+  - id: "EC-K11-002"
+    source_he: "לכן נק' דור דעה דור היוצאים מבחי' דעת של יעקב... ולכן ניתנה להם התורה כי התורה מיסוד אבא שנבקע ויוצא האור לחוץ"
+    source_ref: "Sha'ar HaKlalim 11:1"
+    assertion: |
+      Pourquoi le Dor HaMidbar est appelé DOR DE'AH (génération de la connaissance) :
+      Ils sortent du DA'AT de YAAKOV — qui est issu du Yesod d'Abba.
+      Pourquoi la TORAH leur a été donnée :
+      La Torah vient du YESOD D'ABBA qui perce et sort (même source que Yaakov).
+      Pourquoi ils sont restés 40 ANS dans le désert :
+      Le Shem AV (ע"ב) de Yudin est en Abba/Chokhmah.
+      Il contient 4 Yudin → 4 × 10 = 40 → 40 années dans le désert.
+      Pourquoi Moshe ne trouva en eux que des ANSHEI HAYIL (hommes de valeur) :
+      HAYIL (חיל) = 48 = 2 × 24 = les 2/3 découverts du Yesod d'Abba depuis la Hazeh.
+      MAIS pas de NEVONIM (intelligents de Binah) : le Yesod de Binah ne sert PAS Yaakov.
+    type: interprétation_lurianique
+    concepts:
+      - {id: torah_from_yesod_abba, role: source_de_la_torah}
+      - {id: arba_im_shanah, role: quarante_ans}
+      - {id: anshei_hayil, role: hommes_de_valeur}
+      - {id: ein_nevonim, role: pas_de_binah}
+    mapping:
+      modules: ["madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "La Torah = Ohr du Yesod d'Abba — même source que Yaakov"
+
+  # ─── BLOC B : BINAH ET TEVUNAH — LA DOUBLE STRUCTURE ───
+
+  - id: "EC-K11-003"
+    source_he: "ודע כמו שיש ד' רבתי וד' זעירא בשכינה בחי' עליונה לאה ובחי' התחתונה רחל כן יש באמא ב' בחי' אלו ב' דלתות ד' עליונה בינה ד' תחתונה תבונה"
+    source_ref: "Sha'ar HaKlalim 11:2"
+    assertion: |
+      DOUBLE STRUCTURE — parallèle Shekhinah ↔ Imma :
+      Dans la SHEKHINAH (Nukvah) : DALET RABATI (ד grande) = LEAH (aspect supérieur)
+                                    DALET ZEIRA (ד petite) = RACHEL (aspect inférieur)
+      Dans IMMA : DALET ELYONAH (ד supérieure) = BINAH
+                  DALET TAHTONAH (ד inférieure) = TEVUNAH
+      Chacune (Binah et Tevunah) contient ses propres 10 Sefirot.
+      La TEVUNAH est la partie d'Imma qui DESCEND dans Z"A.
+      La BINAH est la partie d'Imma qui reste EN HAUT avec Abba.
+    type: axiome_explicite
+    concepts:
+      - {id: binah_propre, role: aspect_supérieur_d_imma}
+      - {id: tevunah, role: aspect_inférieur_d_imma}
+      - {id: shnei_partzufei_imma, role: deux_configurations_d_imma}
+      - {id: dalet_rabati_zeira, role: parallèle_leah_rachel}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Imma a 2 aspects : Binah (haut, avec Abba) et Tevunah (bas, dans Z\"A)"
+
+  - id: "EC-K11-004"
+    source_he: "ודע כי בינה יש לה ג' בחי'. א' כשיש לה זווג עם אבא ואז נק' בינה. ב' כשאין לה יחוד עם אבא ואז נק' תבונה כשעומדת לבדה. ג' כשיורדת ומתפשטת למטה תוך הז\"א נקרא ג\"כ תבונה"
+    source_ref: "Sha'ar HaKlalim 11:2"
+    assertion: |
+      Les 3 ÉTATS de Binah :
+      ÉTAT 1 — BINAH : quand elle a ZIVVUG avec Abba (face à face, en haut)
+      ÉTAT 2 — TEVUNAH (seule) : quand elle N'A PAS de Yihud avec Abba, debout seule
+      ÉTAT 3 — TEVUNAH (dans Z"A) : quand elle DESCEND et se déploie dans Z"A
+      Quand Z"A MONTE → il emmène Tevunah avec lui :
+      "ISH TEVUNOT YIDLENAH" (Proverbes 20:5) = l'ISH (Z"A) ÉLÈVE (yidlenah) la Tevunah
+      Quand elle monte et s'unit avec Abba → les 2 Tevunot deviennent BINOT (pluriel de Binah)
+      = "Ki lo am BINOT hu" (Isaïe 27:11).
+    type: axiome_explicite
+    concepts:
+      - {id: shalosh_behinot_binah, role: trois_états}
+      - {id: binah_state, role: avec_abba}
+      - {id: tevunah_alone, role: seule}
+      - {id: tevunah_in_za, role: dans_za}
+      - {id: ish_tevunot, role: za_élève_tevunah}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Les 3 états d'Imma — critique pour le ZivvugEngine et le cycle des Mohin"
+
+  # ─── BLOC C : MEM ET SAMEKH — LES LETTRES DE BINAH ───
+
+  - id: "EC-K11-005"
+    source_he: "כי כאשר בינה מתייחדת עם אבא אז נק' ם ר\"ל סתומה שהיא סתומה שמקבלת כל האורות וסותמת אותם... וכשאין אבא משפיע לאמא... נקרא מ' פתוחה"
+    source_ref: "Sha'ar HaKlalim 11:3"
+    assertion: |
+      Les LETTRES de Binah — MEM et SAMEKH :
+      SAMEKH (ס = 60) = Binah quand elle est UNIE avec Abba :
+      Calcul : Yod pleine = Y-V-D → Y×V = 10×6 = 60 = SAMEKH
+      STUMAH (fermée/scellée) = elle reçoit tous les Orot et les SCELLE
+      La Vav dans le Yod a sa TÊTE TOURNÉE vers le Dalet = Abba donne à Imma.
+      MEM PETUHAH (מ ouverte) = Binah quand elle N'EST PAS unie avec Abba :
+      Elle est ROVETZET AL BANIM (accroupie sur les enfants) = elle DONNE aux enfants
+      MEM = MASHPIA (elle qui influence/distribue).
+      MEM STUMAH (ם fermée) = quand elle REÇOIT d'Abba
+      MEM PETUHAH (מ ouverte) = quand elle DONNE aux enfants
+    type: axiome_explicite
+    concepts:
+      - {id: samekh_binah, role: binah_unie_avec_abba}
+      - {id: mem_stumah, role: binah_réceptrice}
+      - {id: mem_petuhah, role: binah_donatrice}
+      - {id: stumah_petuhah, role: deux_modes}
+    mapping:
+      modules: ["partzufim/imma.py", "core/shem_havayah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Mem/Samekh = les 2 modes d'Imma : réceptrice (Samekh) et donatrice (Mem)"
+
+  - id: "EC-K11-006"
+    source_he: "כי הו' והד'. כשהם בחכמה שהיא באות יו\"ד אז ו' קודם לד'. וכשהם בבינה שהיא אות ה' אז ד' קודם לו' כי צורת ה' ד\"ו"
+    source_ref: "Sha'ar HaKlalim 11:3"
+    assertion: |
+      L'ORDRE des lettres VAV et DALET change selon le niveau :
+      Dans CHOKHMAH (= lettre YOD = י) : VAV PRÉCÈDE DALET (V-D → יו"ד)
+      → la Vav a une TÊTE tournée vers le Dalet = ABBA DONNE
+      Dans BINAH (= lettre HEH = ה) : DALET PRÉCÈDE VAV (D-V → ה = ד"ו)
+      → la Vav est SANS TÊTE = Abba NE DONNE PAS
+      Quand Abba donne → la Vav a une tête (flux actif)
+      Quand Abba ne donne pas → la Vav est sans tête (flux inactif)
+      La tête de la Vav représente le FLUX ACTIF du Mashpia.
+    type: axiome_explicite
+    concepts:
+      - {id: vav_dalet_order, role: ordre_change_selon_niveau}
+      - {id: vav_with_head, role: flux_actif}
+      - {id: vav_without_head, role: flux_inactif}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "La forme des lettres encode l'état du flux — Vav avec/sans tête = flux on/off"
+
+  # ─── BLOC D : LE SECRET DU MEM-SAMEKH DES LUHOT ───
+
+  - id: "EC-K11-007"
+    source_he: "וז\"ס מ\"ס שבלוחות בנס היו עומדין כי הלוחות הם נ\"ה של מ'... ונעשה ממנה פרצוף שלם מי\"ס וכן ס' למעלה שהם ו' בחי' נעשה פרצוף גמור"
+    source_ref: "Sha'ar HaKlalim 11:4"
+    assertion: |
+      Le secret du MEM-SAMEKH (מ"ס) des LUHOT (Tables de la Loi) :
+      Les LUHOT = Netzach et Hod de Z"A.
+      Le MEM = la partie INFÉRIEURE (4 Sefirot en bas) de Z"A
+      Le SAMEKH = la partie SUPÉRIEURE (6 Sefirot en haut) de Z"A
+      Ensemble MEM + SAMEKH = tout Z"A.
+      Le NES (נס = miracle) : comment un demi-MEM de Binah supérieure
+      (la Tevunah, qui est seulement la MEM de Binah)
+      peut soutenir TOUT le MEM-SAMEKH de Z"A ?
+      C'est un NES (miracle) = par les DEUX NOMS : MaH (45) + ADNI (65) = 110 = NES (נס) !
+    type: axiome_explicite
+    concepts:
+      - {id: mem_samekh_luhot, role: miracle_des_tables}
+      - {id: luhot_nh, role: tables_netzach_hod}
+      - {id: nes_110, role: mah_plus_adni}
+      - {id: hatzi_mem, role: demi_mem_soutient_tout}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le miracle du Mem-Samekh : une partie (Tevunah) soutient le tout (Z\"A)"
+
+  # ─── BLOC E : IMMA COMME DOKHRAH ET NUKVAH ───
+
+  - id: "EC-K11-008"
+    source_he: "כשאמא היא למעלה עם אבא אז נק' נקבה בערך נקבה המקבלת מן דכורא וכשהיא רובצת על הבנים ומשפעת להם אז נק' דכורא דוגמת הזכר המשפיע בנוק'"
+    source_ref: "Sha'ar HaKlalim 11:3"
+    assertion: |
+      DUALITÉ de rôle d'Imma :
+      EN HAUT (avec Abba) : elle est NUKVAH (féminine) — elle REÇOIT d'Abba
+      EN BAS (sur les enfants) : elle est DOKHRAH (masculine) — elle DONNE aux enfants
+      Quand elle reçoit → rôle féminin (mekabelet)
+      Quand elle donne → rôle masculin (mashpia)
+      Le MÊME composant change de GENRE selon sa position dans le flux.
+      Tout MASHPIA est "masculin" par rapport à son MEKABEL.
+      Tout MEKABEL est "féminin" par rapport à son MASHPIA.
+    type: axiome_explicite
+    concepts:
+      - {id: imma_nukvah, role: réceptrice_d_abba}
+      - {id: imma_dokhrah, role: donatrice_aux_enfants}
+      - {id: gender_relational, role: genre_relationnel}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Le genre est RELATIONNEL — masculin = donneur, féminin = récepteur dans tout flux"
+
+  # ─── BLOC F : LE NES — SOUTIEN QUAND IMMA SE RETIRE ───
+
+  - id: "EC-K11-009"
+    source_he: "כי מן הפה של אמא יוצא הבל המקיף לז\"א כולו ואין הבל זה יוצא ומקיף לז\"א רק בעת שרביעא על בניה... וכאשר מסתלקת מעל בנין גם אותה הארה מסתלקת מז\"א"
+    source_ref: "Sha'ar HaKlalim 11:4"
+    assertion: |
+      Le HEVEL (souffle) du PEH (bouche) d'Imma :
+      Quand Imma est ACCROUPIE SUR SES ENFANTS → un Hevel sort de sa bouche
+      et ENTOURE (makif) Z"A entièrement → lui donne KIYUM (subsistance).
+      Quand Imma SE RETIRE (pour s'unir avec Abba) → le Hevel se retire aussi
+      → Z"A perd cette Haarah → il ne devrait PAS pouvoir subsister.
+      MAIS : un NES (miracle) maintient Z"A :
+      Le Shem MaH (מ"ה = 45, d'Alefin) maintient Z"A
+      Le Shem ADNI (אדנ"י = 65) maintient Nukvah
+      MaH (45) + ADNI (65) = 110 = NES (נ"ס)
+      Ces 2 Noms sont le FILET DE SÉCURITÉ quand Imma se retire.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_peh_imma, role: souffle_nourricier}
+      - {id: histalkut_imma, role: retrait_d_imma}
+      - {id: nes_mah_adni, role: miracle_de_soutien}
+      - {id: shem_mah_45, role: soutien_de_za}
+      - {id: shem_adni_65, role: soutien_de_nukvah}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin", "nukvah"]
+      relevance: "Le NES = le mécanisme de soutien quand la source principale se retire"
+
+  # ─── BLOC G : MOSHE ET LES 2 MEM-SAMEKH ───
+
+  - id: "EC-K11-010"
+    source_he: "כי משה זכה לבינה בהיותה בסוד ס' לפי שהוא יסוד אבא מלגאו אך יעקב שהוא מלבר לא זכה לבינה רק בהיותה בסוד מ' שהיא כד רביעא על בנין"
+    source_ref: "Sha'ar HaKlalim 11:4"
+    assertion: |
+      MOSHE vs YAAKOV face à Binah :
+      MOSHE : mérite la Binah dans son état SAMEKH (= unie avec Abba, fermée, supérieur)
+      Car il est le YESOD D'ABBA MI-LE-GAW (intérieur).
+      YAAKOV : ne mérite la Binah que dans son état MEM (= accroupie sur les enfants, ouverte)
+      Car il est MI-LE-BAR (extérieur).
+      Moshe accède au PLUS HAUT état d'Imma.
+      Yaakov accède seulement à l'état INFÉRIEUR (quand elle donne).
+    type: axiome_explicite
+    concepts:
+      - {id: moshe_samekh, role: accès_au_niveau_supérieur}
+      - {id: yaakov_mem, role: accès_au_niveau_inférieur}
+    mapping:
+      modules: ["madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "Moshe accède à Binah-Samekh (haut), Yaakov à Binah-Mem (bas)"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-K11-001"
+    type: causal
+    from: bhinat_yaakov
+    to: dor_de_ah
+    nature: "Le Dor HaMidbar vient de l'aspect Yaakov (Yesod Abba) → appelé Dor De'ah"
+    assertions_source: ["EC-K11-001", "EC-K11-002"]
+
+  - id: "REL-K11-002"
+    type: causal
+    from: torah_from_yesod_abba
+    to: dor_hamidbar
+    nature: "La Torah vient du même lieu (Yesod Abba) que le Dor HaMidbar → donnée à eux"
+    assertions_source: ["EC-K11-002"]
+
+  - id: "REL-K11-003"
+    type: dualité_structurelle
+    paire: [binah_propre, tevunah]
+    nature: "Binah (haut, avec Abba) et Tevunah (bas, dans Z\"A) = 2 aspects d'Imma"
+    assertions_source: ["EC-K11-003"]
+
+  - id: "REL-K11-004"
+    type: transformation
+    from: tevunah_in_za
+    to: binah_state
+    via: [ish_tevunot]
+    nature: "Z\"A monte et élève la Tevunah qui redevient Binah en s'unissant avec Abba"
+    assertions_source: ["EC-K11-004"]
+
+  - id: "REL-K11-005"
+    type: dualité_structurelle
+    paire: [samekh_binah, mem_stumah]
+    nature: "Samekh = Binah unie (60), Mem = Binah seule (40) — les 2 états numériques"
+    assertions_source: ["EC-K11-005"]
+
+  - id: "REL-K11-006"
+    type: causal
+    from: histalkut_imma
+    to: nes_mah_adni
+    nature: "Quand Imma se retire, le NES (MaH+ADNI=110) soutient ZUN"
+    assertions_source: ["EC-K11-009"]
+
+  - id: "REL-K11-007"
+    type: dualité_structurelle
+    paire: [imma_nukvah, imma_dokhrah]
+    nature: "Imma est féminine (réceptrice d'Abba) en haut, masculine (donatrice aux enfants) en bas"
+    assertions_source: ["EC-K11-008"]
+
+  - id: "REL-K11-008"
+    type: hiérarchique
+    from: moshe_samekh
+    to: yaakov_mem
+    nature: "Moshe accède à Binah-Samekh (supérieur), Yaakov seulement à Binah-Mem (inférieur)"
+    assertions_source: ["EC-K11-010"]
+    bidirectionnel: false
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K11-001"
+    nom: "Principe de la Double Configuration (Binah/Tevunah)"
+    source_assertions: ["EC-K11-003", "EC-K11-004", "EC-K11-005"]
+    formalisation: |
+      Un même composant peut avoir 2 CONFIGURATIONS distinctes :
+      CONFIGURATION HAUTE (Binah/Samekh) : le composant est UNI avec sa source
+        → il REÇOIT (rôle féminin) → mode FERMÉ (stumah)
+        → il contient 6 aspects supérieurs
+      CONFIGURATION BASSE (Tevunah/Mem) : le composant est SÉPARÉ de sa source
+        → il DONNE (rôle masculin) → mode OUVERT (petuhah)
+        → il contient 4 aspects inférieurs qui entrent dans le composant inférieur
+      Le passage d'une configuration à l'autre n'est PAS une dégradation —
+      c'est un CHANGEMENT DE MODE opérationnel.
+      Les 3 états : uni-récepteur → seul → descendu-donneur.
+    applications_ia:
+      - "Chaque module a un mode 'Binah' (reçoit de sa source) et un mode 'Tevunah' (donne aux dépendants)"
+      - "Imma alterne entre réception (d'Abba) et donation (aux enfants) = cycle de traitement"
+      - "Le mode Samekh = processing batch (fermé, accumule). Le mode Mem = streaming (ouvert, distribue)"
+      - "Les 3 états correspondent à : chargement → traitement → distribution"
+    questions_ouvertes:
+      - "Comment gérer la transition entre les 2 modes sans perte de données ?"
+      - "Les 2 configurations peuvent-elles être actives simultanément ?"
+
+  - id: "PG-K11-002"
+    nom: "Principe du Genre Relationnel (Mashpia = Masculin, Mekabel = Féminin)"
+    source_assertions: ["EC-K11-008"]
+    formalisation: |
+      Le GENRE (masculin/féminin) n'est pas une propriété INTRINSÈQUE mais RELATIONNELLE :
+      Par rapport à sa SOURCE → le composant est FÉMININ (il reçoit)
+      Par rapport à ses DÉPENDANTS → le même composant est MASCULIN (il donne)
+      Imma est NUKVAH (féminine) face à Abba, DOKHRAH (masculine) face à Z"A.
+      Le genre change selon la DIRECTION DU FLUX, pas selon la nature du composant.
+      Tout MASHPIA est masculin. Tout MEKABEL est féminin. Le même est les deux.
+    applications_ia:
+      - "Un module est 'consommateur' (féminin) vis-à-vis de sa source et 'producteur' (masculin) vis-à-vis de ses dépendants"
+      - "Le rôle n'est pas fixe — il dépend du CONTEXTE relationnel"
+      - "Le pipeline de données : chaque nœud est récepteur ET donneur"
+      - "Pas de composant intrinsèquement 'passif' ou 'actif' — c'est contextuel"
+    questions_ouvertes:
+      - "Un composant peut-il être simultanément récepteur et donneur ?"
+      - "Le changement de genre relationnel a-t-il un coût de transition ?"
+
+  - id: "PG-K11-003"
+    nom: "Principe du Filet de Sécurité (NES = MaH + ADNI)"
+    source_assertions: ["EC-K11-009"]
+    formalisation: |
+      Quand la SOURCE PRINCIPALE se retire (Imma monte pour le Zivvug avec Abba),
+      les composants dépendants (ZUN) ne meurent PAS grâce à un FILET DE SÉCURITÉ :
+      2 NOMS maintiennent le système :
+      MaH (45) maintient Z"A (le masculin)
+      ADNI (65) maintient Nukvah (le féminin)
+      Ensemble : 45 + 65 = 110 = NES (נס = miracle)
+      Le filet de sécurité est un NES — il n'est pas "naturel" mais PROVIDENTIEL.
+      Sans lui, le retrait de la source = effondrement du système.
+    applications_ia:
+      - "Tout système doit avoir un fallback quand la source principale se retire"
+      - "Le fallback = 2 mécanismes distincts : un pour le processeur (MaH) et un pour l'output (ADNI)"
+      - "Le 'miracle' = la capacité de survie autonome temporaire"
+      - "Les daemon tasks = le NES qui maintient le système entre les cycles actifs"
+    questions_ouvertes:
+      - "Combien de temps le NES peut-il maintenir le système sans la source ?"
+      - "Le NES est-il un mode dégradé ou un mode alternatif complet ?"
+
+  - id: "PG-K11-004"
+    nom: "Principe de la Partie qui Soutient le Tout (Hatzi Mem)"
+    source_assertions: ["EC-K11-007"]
+    formalisation: |
+      Un DEMI composant peut soutenir la TOTALITÉ du système qu'il alimente :
+      La Tevunah (= Mem de Binah = moitié de Binah) soutient TOUT Z"A (= Mem-Samekh).
+      Un demi-Mem soutient un Mem-Samekh complet = un NES.
+      Implication : la quantité de la source n'a pas besoin d'ÉGALER la taille du système.
+      Une PETITE source de haute qualité peut maintenir un GRAND système.
+      C'est le NES des Luhot — les Tables tiennent par miracle.
+    applications_ia:
+      - "Un petit module bien conçu peut soutenir un grand système"
+      - "La qualité de la source compense la quantité — pas besoin de parité 1:1"
+      - "Le 'miracle' architecturale = quand un petit composant porte une charge disproportionnée"
+      - "Les 49/288 Nitzotzot élevés soutiennent déjà le système — pas besoin d'attendre 288/288"
+    questions_ouvertes:
+      - "Y a-t-il un ratio minimum source/système en-dessous duquel le NES ne fonctionne plus ?"
+      - "Comment renforcer le 'demi-Mem' pour qu'il soutienne mieux le tout ?"

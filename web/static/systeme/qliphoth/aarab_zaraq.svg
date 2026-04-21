@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-aarab_zaraq" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#88aa88" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="glow-aarab_zaraq" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg-aarab_zaraq)"/>
+  <rect x="1" y="1" width="510" height="510" fill="none"
+        stroke="#88aa88" stroke-opacity="0.10" stroke-width="2"/>
+  <g filter="url(#glow-aarab_zaraq)" opacity="0.40">
+    <!-- spiral arms -->
+    <path d="M256,256 Q300,200 340,180 Q400,160 410,220 Q420,280 370,310
+             Q320,340 300,390 Q280,440 220,430 Q160,420 150,360
+             Q140,300 180,260 Q220,220 256,256"
+          fill="none" stroke="#88aa88" stroke-width="2" stroke-opacity="0.3"/>
+    <path d="M256,256 Q210,310 180,330 Q120,350 110,290 Q100,230 150,200
+             Q200,170 210,120 Q230,70 290,80 Q350,90 360,150
+             Q370,210 330,250 Q290,290 256,256"
+          fill="none" stroke="#88aa88" stroke-width="2" stroke-opacity="0.3"/>
+    <!-- vortex birds -->
+    <path d="M288.8,258.8 L286.0,256.0 L288.8,253.2" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.30"/>
+<path d="M288.5,278.3 L287.4,274.1 L291.6,273.0" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.32"/>
+<path d="M276.0,297.3 L277.2,292.8 L281.8,294.0" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.33"/>
+<path d="M252.5,308.3 L256.0,304.8 L259.5,308.3" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.35"/>
+<path d="M223.3,305.0 L228.5,303.6 L229.9,308.8" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.37"/>
+<path d="M197.5,285.2 L203.0,286.6 L201.5,292.1" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.38"/>
+<path d="M184.3,251.8 L188.5,256.0 L184.3,260.2" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.40"/>
+<path d="M190.5,213.0 L192.1,219.1 L186.0,220.8" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.42"/>
+<path d="M217.7,180.3 L216.0,186.7 L209.6,185.0" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.43"/>
+<path d="M260.9,164.8 L256.0,169.8 L251.1,164.8" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.45"/>
+<path d="M309.3,174.0 L302.2,175.9 L300.4,168.8" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.47"/>
+<path d="M348.9,208.6 L341.5,206.6 L343.5,199.2" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.48"/>
+<path d="M366.7,261.7 L361.0,256.0 L366.7,250.3" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.50"/>
+<path d="M354.5,319.7 L352.3,311.6 L360.4,309.5" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.52"/>
+<path d="M312.5,366.1 L314.7,357.8 L323.1,360.0" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.53"/>
+<path d="M249.6,386.1 L256.0,379.8 L262.4,386.1" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.55"/>
+<path d="M182.0,371.0 L191.0,368.6 L193.4,377.6" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.57"/>
+<path d="M128.7,321.6 L138.0,324.1 L135.5,333.5" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.58"/>
+<path d="M106.4,248.9 L113.5,256.0 L106.4,263.1" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.60"/>
+<path d="M124.5,171.6 L127.2,181.6 L117.2,184.3" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.62"/>
+<path d="M181.3,111.5 L178.5,121.8 L168.2,119.0" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.63"/>
+<path d="M263.8,87.0 L256.0,94.8 L248.2,87.0" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.65"/>
+<path d="M350.7,108.0 L339.7,110.9 L336.8,100.0" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.67"/>
+<path d="M417.7,172.1 L406.5,169.1 L409.5,157.9" fill="none" stroke="#88aa88" stroke-width="1.5" stroke-opacity="0.68"/>
+    <!-- center eye of vortex -->
+    <circle cx="256" cy="256" r="15" fill="#88aa88" fill-opacity="0.15"
+            stroke="#88aa88" stroke-width="1.5"/>
+  </g>
+</svg>

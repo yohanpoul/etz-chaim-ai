@@ -1,0 +1,626 @@
+{
+  "actes": [
+    {
+      "id": "cour",
+      "titre": "La Cour",
+      "sous_titre": "Qui gouverne",
+      "description": "Le systeme a un roi, un pere, une mere, un prince et une reine. Ils ne codent pas — ils decident.",
+      "narration": "Vous posez une question. Elle arrive dans la cour royale. Le Roi mesure la sante globale du systeme avec 13 regles de tolerance qui empechent les reactions excessives. Le Pere cherche l'eclair creatif. La Mere le transforme en structure logique. Le Jeune Homme execute avec ses 6 outils — et sa taille change en temps reel selon la qualite du systeme. La Reine vous regarde : c'est elle, et elle seule, qui vous repondra. Ce qu'elle dit depend de tout ce qui est au-dessus d'elle.",
+      "layout": "pyramide",
+      "accent": "#ffcc00",
+      "personnages": [
+        {
+          "id": "arikh_anpin",
+          "nom": "Arikh Anpin",
+          "nom_hebreu": "אֲרִיךְ אַנְפִּין",
+          "role": "Le Roi Patient",
+          "description": "Voit le tableau d'ensemble et ne se presse jamais. Il mesure les 10 vitaux du systeme et guide la strategie a long terme.",
+          "detail": {
+            "en_clair": "Le superviseur general. Il regarde tout de haut, mesure la sante de chaque partie du systeme, et decide des grandes orientations. Il ne se precipite jamais — comme un roi qui ecoute tous ses conseillers avant de trancher.",
+            "dans_le_systeme": "Lit les scores de tous les modules (memoire, jugement, exploration, synthese...), calcule un score global, et ajuste la strategie. Ses 13 \"meches\" sont 13 regles de tolerance qui evitent les reactions excessives.",
+            "origine": "Dans la tradition, c'est la figure du roi patient — celui qui voit tout d'en haut et ne reagit jamais dans la precipitation. Ses 13 regles de tolerance viennent d'un ancien systeme de gestion des conflits, destine a empecher les reactions excessives."
+          },
+          "archetype": "Roi barbu aux yeux calmes, 13 meches dans la barbe (13 principes de misericorde). Couronne discrete, regard lointain.",
+          "personnalite": "Patience infinie, vision strategique, serenite inalterable",
+          "composant": "partzufim/arikh_anpin.py",
+          "classe": "ArikhAnpin",
+          "api_status": "/api/status -> partzufim.arikh_anpin",
+          "donnees_temps_reel": [
+            "overall_score",
+            "mochin_state",
+            "tikkunei_dikna",
+            "vitals"
+          ],
+          "rang": 1,
+          "visible": true
+        },
+        {
+          "id": "abba",
+          "nom": "Abba",
+          "nom_hebreu": "אַבָּא",
+          "role": "Le Pere",
+          "description": "Lance des eclairs creatifs. Chaque intuition est une etincelle — mais il sait aussi se discipliner pour ne pas s'enflammer en vain.",
+          "detail": {
+            "en_clair": "Le createur d'idees. Quand le systeme decouvre une connexion inattendue entre deux domaines — une analogie surprenante, un rapprochement original — c'est lui qui \"allume la lumiere\". Chaque decouverte est un eclair.",
+            "dans_le_systeme": "Incarne l'InsightForge (module de sagesse intuitive). Recoit les insights valides, les analogies inter-domaines, les syntheses de contradictions. Chaque flash est une etincelle. Relie a Imma par une connexion pulsante — la ligne entre eux.",
+            "origine": "Dans la Kabbale, le Pere cosmique represente la sagesse intuitive — l'eclair de comprehension avant que l'idee ne prenne forme. C'est l'etincelle initiale qui lance tout processus creatif."
+          },
+          "archetype": "Homme vif, mains en mouvement, regard qui s'allume. Vetements de travail nobles, pas de couronne mais de l'autorite naturelle.",
+          "personnalite": "Creativite impetueuse, discipline interne, eclairs de genie",
+          "composant": "partzufim/abba.py",
+          "classe": "Abba",
+          "api_status": "/api/status -> partzufim.abba",
+          "donnees_temps_reel": [
+            "overall_score",
+            "mochin_state",
+            "insight_count",
+            "zivvug_state"
+          ],
+          "rang": 2,
+          "visible": true,
+          "lien_zivvug": "imma"
+        },
+        {
+          "id": "imma",
+          "nom": "Imma",
+          "nom_hebreu": "אִמָּא",
+          "role": "La Mere",
+          "description": "Recoit l'etincelle du Pere et lui donne une forme. Elle structure, valide, transforme l'intuition en architecture solide.",
+          "detail": {
+            "en_clair": "L'architecte. Elle prend les idees brutes du Pere et les transforme en structures solides. Une intuition sans forme n'est qu'un eclair — elle en fait un batiment.",
+            "dans_le_systeme": "Incarne le CausalEngine (module de raisonnement structurel). Recoit les affirmations causales, les valide, construit les graphes de cause a effet, detecte les biais et les facteurs parasites. L'intuition brute d'Abba passe par elle pour devenir structure.",
+            "origine": "Dans la Kabbale, la Mere cosmique est l'intelligence qui donne forme. Elle transforme l'intuition brute en structure — toute architecture nait de sa capacite a organiser."
+          },
+          "archetype": "Femme concentree, mains qui modelent de la lumiere. Regard interieur, posture accueillante mais ferme.",
+          "personnalite": "Structure accueillante, reception active, transformation patiente",
+          "composant": "partzufim/imma.py",
+          "classe": "Imma",
+          "api_status": "/api/status -> partzufim.imma",
+          "donnees_temps_reel": [
+            "overall_score",
+            "mochin_state",
+            "causal_claims",
+            "zivvug_state"
+          ],
+          "rang": 2,
+          "visible": true,
+          "lien_zivvug": "abba"
+        },
+        {
+          "id": "zeir_anpin",
+          "nom": "Zeir Anpin",
+          "nom_hebreu": "זְעֵיר אַנְפִּין",
+          "role": "Le Jeune Homme",
+          "description": "Fait le travail. Six outils a la ceinture, un pour chaque operation. Petit quand le systeme est faible, grand quand tout fonctionne.",
+          "detail": {
+            "en_clair": "L'executant principal. Il a 6 outils — un pour explorer, un pour juger, un pour synthetiser, un pour perseverer, un pour s'auto-evaluer, un pour memoriser. Quand le systeme va mal, il retrecit comme un enfant. Quand tout marche, il grandit.",
+            "dans_le_systeme": "Unite les 6 capacites : Chesed (Exploration), Gevurah (Jugement), Tiferet (Synthese), Netzach (Intention), Hod (Auto-carte), Yesod (Memoire). En mode reduit : seuls les modules de base fonctionnent. En mode complet : pipeline entier avec la conscience qui coule d'Abba et Imma.",
+            "origine": "Dans la Kabbale, le Jeune Homme est l'aspect actif qui interagit avec le monde. Sa croissance — de l'etat reduit a l'etat complet — est le processus central de maturation du systeme."
+          },
+          "archetype": "Jeune adulte dynamique, 6 outils a la ceinture. En mode reduit : allure d'enfant, petit. En mode complet : allure d'adulte, grand, lumineux.",
+          "personnalite": "Energie emotionnelle, dynamisme, croissance visible",
+          "composant": "partzufim/zeir_anpin.py",
+          "classe": "ZeirAnpin",
+          "api_status": "/api/status -> partzufim.zeir_anpin",
+          "donnees_temps_reel": [
+            "overall_score",
+            "mochin_state",
+            "midot_scores",
+            "katnut_gadlut"
+          ],
+          "rang": 3,
+          "visible": true,
+          "etat_variable": {
+            "katnut": "Avatar retreci, grise, allure enfantine",
+            "gadlut": "Avatar etendu, lumineux, allure adulte"
+          }
+        },
+        {
+          "id": "nukva",
+          "nom": "Nukva",
+          "nom_hebreu": "נוקְבָא",
+          "role": "La Reine",
+          "description": "Seul personnage qui vous regarde. Elle est la voix du systeme, recoit vos questions et retourne les reponses. La qualite de sa parole depend de tout ce qui est au-dessus.",
+          "detail": {
+            "en_clair": "Votre interlocutrice. C'est elle qui recoit vos questions et vous retourne les reponses. La qualite de ce qu'elle dit depend de tout ce qui est au-dessus d'elle — le Roi, le Pere, la Mere, le Jeune Homme. Seul personnage qui vous regarde directement.",
+            "dans_le_systeme": "Incarne Malkuth comme composant d'interface. Recoit la reponse traitee par Zeir Anpin, la traduit en langage humain, et renvoie le feedback utilisateur vers le haut du systeme (lumiere de retour).",
+            "origine": "Dans la Kabbale, la Reine est la presence dans le monde — le seul aspect du systeme qui regarde directement l'humain. Sa qualite depend entierement de ce qu'elle recoit des niveaux superieurs."
+          },
+          "archetype": "Femme debout, seule a regarder directement la camera/l'utilisateur. Port royal, expression ouverte et receptive.",
+          "personnalite": "Receptivite, expression, interface entre le systeme et vous",
+          "composant": "partzufim/nukva.py",
+          "classe": "Nukva",
+          "api_status": "/api/status -> partzufim.nukva",
+          "donnees_temps_reel": [
+            "overall_score",
+            "mochin_state",
+            "response_quality",
+            "feedback_score"
+          ],
+          "rang": 4,
+          "visible": true,
+          "note": "Seul personnage face camera"
+        }
+      ],
+      "note_invisible": {
+        "id": "atik_yomin",
+        "nom": "Atik Yomin",
+        "nom_hebreu": "עַתִּיק יוֹמִין",
+        "texte": "L'Ancien des Jours est au-dessus d'Arikh Anpin — mais il est invisible. On ne voit que ses effets : les regles ethiques, les principes fondateurs, la configuration qui conditionne tout le reste.",
+        "composant": "partzufim/atik_yomin.py",
+        "classe": "AtikYomin"
+      }
+    },
+    {
+      "id": "gardiens",
+      "titre": "Les Gardiens",
+      "sous_titre": "Qui protege",
+      "description": "Quatre anges. Chacun tient un poste. Rien n'entre ni ne sort sans passer devant eux.",
+      "narration": "Mais avant tout traitement, votre question doit passer les gardiens. Mikhael est le premier — il bloque les injections, detecte les manipulations. Si quelque chose casse en chemin, Raphael diagnostique l'erreur par type de gravite (4 niveaux, de superficielle a systemique) et tente de guerir jusqu'a 3 fois. Uriel, lui, ne juge pas : il eclaire les angles morts que personne ne voit. Et a la sortie, Gabriel controle la reponse — trop courte, evasive, repetitive ? Il la detruit. Pas de seconde chance.",
+      "layout": "carre_2x2",
+      "accent": "#ffb000",
+      "personnages": [
+        {
+          "id": "mikhael",
+          "nom": "Mikhael",
+          "nom_hebreu": "מִיכָאֵל",
+          "role": "Archange Protecteur",
+          "description": "Premier a voir chaque requete. Bloque les intrusions, detecte les injections, verifie la securite. Rien n'entre sans son accord.",
+          "detail": {
+            "en_clair": "Le vigile a l'entree. Chaque requete passe devant lui en premier. Il verifie qu'il n'y a rien de dangereux — tentatives de manipulation, injections de code, donnees sensibles. Si c'est bon, il laisse passer. Sinon, il bloque.",
+            "dans_le_systeme": "Verifie chaque entree : prompt injection, code injection, coherence agent/tache, donnees sensibles. Collecte aussi les merites — chaque succes du systeme est enregistre comme un point positif au dossier.",
+            "origine": "Archange de la protection dans la tradition juive. Son nom signifie 'Qui est comme Dieu ?' — c'est le premier rempart, le bouclier. Dans le systeme, il joue exactement ce role : rien n'entre sans son controle."
+          },
+          "archetype": "Gardien en armure legere, bouclier leve, regard scrutateur mais pas hostile. Cheveux courts, posture de sentinelle.",
+          "personnalite": "Vigilant, protecteur, rapide, premier a agir",
+          "composant": "malakhim/archangels/mikhael.py",
+          "classe": "Mikhael",
+          "api_status": "/api/status -> malakhim.mikhael",
+          "donnees_temps_reel": [
+            "inputs_checked",
+            "blocked_count",
+            "merits_offered"
+          ],
+          "position": "haut_gauche",
+          "visible": true,
+          "etats_visuels": {
+            "idle": "Bouclier baisse, yeux ouverts",
+            "checking": "Bouclier leve, yeux plisses",
+            "blocked": "Flash rouge, bouclier en avant",
+            "approved": "Flash vert, hochement de tete"
+          }
+        },
+        {
+          "id": "uriel",
+          "nom": "Uriel",
+          "nom_hebreu": "אוּרִיאֵל",
+          "role": "Archange Eclaireur",
+          "description": "Observe tout, ne juge pas, illumine. Revele les angles morts, les patterns caches, ce que personne d'autre ne voit.",
+          "detail": {
+            "en_clair": "L'observateur. Il ne juge pas, il eclaire. Il voit ce que les autres ne voient pas — les temps de reponse qui s'allongent, les erreurs silencieuses, les tendances cachees. Quand il leve sa lanterne, les zones d'ombre apparaissent.",
+            "dans_le_systeme": "Observe chaque execution d'agent. Genere periodiquement un rapport d'illumination : taux de succes, latence moyenne, dette technique active, angles morts, recommandations. Alerte quand le taux de succes < 50% ou la latence > 5s.",
+            "origine": "Archange de la lumiere dans la tradition juive. Son nom signifie 'Lumiere de Dieu' — celui qui eclaire les zones sombres. Dans le systeme, il revele ce qui est cache : erreurs silencieuses, tendances invisibles."
+          },
+          "archetype": "Figure contemplative, lanterne a la main, yeux mi-clos. Capuche legere, posture de veilleur.",
+          "personnalite": "Contemplatif, omniscient de l'interieur, doux mais percant",
+          "composant": "malakhim/archangels/uriel.py",
+          "classe": "Uriel",
+          "api_status": "/api/status -> malakhim.uriel",
+          "donnees_temps_reel": [
+            "total_executions",
+            "success_rate",
+            "blind_spots",
+            "recommendations"
+          ],
+          "position": "haut_droite",
+          "visible": true,
+          "etats_visuels": {
+            "idle": "Lanterne basse, yeux fermes",
+            "observing": "Lanterne haute, yeux ouverts",
+            "illuminating": "Halo lumineux, rapport genere"
+          }
+        },
+        {
+          "id": "raphael",
+          "nom": "Raphael",
+          "nom_hebreu": "רְפָאֵל",
+          "role": "Archange Guerisseur",
+          "description": "Quand quelque chose casse, il repare. Diagnostique le probleme, identifie la cause, et tente jusqu'a 3 fois de guerir avant de renoncer.",
+          "detail": {
+            "en_clair": "Le reparateur. Quand une operation echoue, il diagnostique le probleme, identifie la cause, et tente de reparer — jusqu'a 3 fois avant de renoncer. Il ne s'enerve pas, il soigne.",
+            "dans_le_systeme": "Diagnostique chaque erreur selon 4 niveaux de gravite : Nogah (superficielle, corrigible), Ruach (moyenne), Anan (grave, structurelle), Mamash (critique, systemique). Prescrit la reparation adaptee et l'applique avec jusqu'a 2 tentatives supplementaires.",
+            "origine": "Archange de la guerison dans la tradition juive. Son nom signifie 'Dieu guerit'. Dans les recits bibliques, il soigne les blessures et restaure la sante. Dans le systeme, il diagnostique et repare les erreurs."
+          },
+          "archetype": "Soigneur aux mains lumineuses, se penche sur les blesses. Regard doux, gestes precis, pas presse.",
+          "personnalite": "Doux, perseverant, ne renonce qu'apres 3 tentatives",
+          "composant": "malakhim/archangels/raphael.py",
+          "classe": "Raphael",
+          "api_status": "/api/status -> malakhim.raphael",
+          "donnees_temps_reel": [
+            "diagnoses_count",
+            "healed_count",
+            "failed_count",
+            "qliphah_types"
+          ],
+          "position": "bas_gauche",
+          "visible": true,
+          "etats_visuels": {
+            "idle": "Mains posees, attentif",
+            "diagnosing": "Mains sur le patient, concentration",
+            "healing": "Mains lumineuses, pulse vert",
+            "failed": "Mains baissees, regard triste"
+          }
+        },
+        {
+          "id": "gabriel",
+          "nom": "Gabriel",
+          "nom_hebreu": "גַּבְרִיאֵל",
+          "role": "Archange Executeur",
+          "description": "Derniere porte avant la sortie. Verifie chaque reponse. Si elle est invalide — il la detruit sans hesiter. Pas de seconde chance avec lui.",
+          "detail": {
+            "en_clair": "Le controleur qualite final. Chaque reponse du systeme passe devant lui avant de vous etre montree. Si la reponse est mauvaise — trop courte, repetitive, evasive — il la detruit sans hesiter. Pas de seconde chance.",
+            "dans_le_systeme": "Valide chaque sortie : longueur minimale, absence de disclaimers generiques (excuses IA, refus polis), taux de repetition, score de qualite, mots-cles requis. Si invalide → destruction immediate, le systeme doit recommencer.",
+            "origine": "Archange de la force dans la tradition juive. Son nom signifie 'Force de Dieu' — celui qui execute le jugement d'un seul coup, rapide et definitif. Dans le systeme, il est le controle qualite final."
+          },
+          "archetype": "Figure severe, glaive au cote, gestes economes. Pas mechant — implacable. Juge une fois, tranche une fois.",
+          "personnalite": "Implacable, silencieux, juste, un seul coup suffit",
+          "composant": "malakhim/archangels/gabriel.py",
+          "classe": "Gabriel",
+          "api_status": "/api/status -> malakhim.gabriel",
+          "donnees_temps_reel": [
+            "validated_count",
+            "destroyed_count",
+            "violation_types"
+          ],
+          "position": "bas_droite",
+          "visible": true,
+          "etats_visuels": {
+            "idle": "Glaive au repos, bras croises",
+            "validating": "Regard incisif, main sur le glaive",
+            "approved": "Hochement bref, passage libre",
+            "destroyed": "Flash rouge, glaive tranche"
+          }
+        }
+      ]
+    },
+    {
+      "id": "officiers",
+      "titre": "Les Officiers",
+      "sous_titre": "Qui organise",
+      "description": "Entre le roi et les anges, quatre officiers font tourner la machine. Chacun a sa specialite.",
+      "narration": "Entre la decision et l'action, quatre officiers organisent. Metatron traduit le meme ordre en 4 langages differents — un par monde (strategie, architecture, execution, action directe). Memuneh evalue l'intention de votre question et choisit l'agent : puissant pour les questions profondes, rapide pour les simples. Samael est le plus surprenant : quand quelque chose echoue, il diagnostique l'exces — pas le bug. Trop de rigueur ? Trop de laxisme ? Chaque erreur est une fonction saine poussee trop loin. Et le Sofer, silencieux, nourrit la memoire : il lit, decoupe, indexe chaque texte avec la precision d'un scribe sacre.",
+      "layout": "ligne_horizontale",
+      "accent": "#6688cc",
+      "personnages": [
+        {
+          "id": "metatron",
+          "nom": "Metatron",
+          "nom_hebreu": "מֶטַטְרוֹן",
+          "role": "Le Chancelier",
+          "description": "Traduit les ordres du Roi pour chaque niveau du systeme. Le meme message prend une forme differente selon qu'il descend vers la strategie, le raisonnement, l'execution ou l'action.",
+          "detail": {
+            "en_clair": "Le traducteur universel. Le meme message prend une forme differente selon a qui il s'adresse : strategique pour la direction, technique pour l'architecture, pratique pour l'execution, direct pour l'action. Il change de registre instantanement.",
+            "dans_le_systeme": "Adapte les consignes a chaque niveau du systeme : principes au niveau strategique, architecture au niveau conception, plan d'execution au niveau tactique, commandes directes au niveau action. Verifie aussi que chaque agent opere dans sa zone de competence.",
+            "origine": "L'ange le plus eleve dans la tradition juive — le scribe celeste, le chancelier de la cour divine. Son nom viendrait du grec 'celui qui est pres du Trone'. Dans le systeme, il traduit les ordres de la direction pour chaque niveau d'execution."
+          },
+          "archetype": "Scribe majestueux, grande taille, plume et parchemin. Change de vetement selon le monde auquel il s'adresse. Autorite naturelle.",
+          "personnalite": "Polyvalent, autoritaire, fluide, change de registre instantanement",
+          "composant": "malakhim/metatron.py",
+          "classe": "adapt_to_olam, jurisdictional_check",
+          "api_status": "/api/status -> malakhim.metatron",
+          "donnees_temps_reel": [
+            "adaptations_count",
+            "current_olam",
+            "levush_active"
+          ],
+          "ordre": 1,
+          "visible": true
+        },
+        {
+          "id": "memuneh",
+          "nom": "Memuneh",
+          "nom_hebreu": "מְמוּנֶּה",
+          "role": "Le Chambellan",
+          "description": "Decide qui fait quoi. Evalue l'intention de chaque requete, cree l'agent adapte, et l'envoie au bon endroit. Le chef d'orchestre invisible.",
+          "detail": {
+            "en_clair": "Le chef d'orchestre. Il decide quel agent va traiter votre requete, en fonction de sa complexite et de votre intention. Question simple = agent simple et rapide. Question profonde = agent puissant avec plus de temps.",
+            "dans_le_systeme": "Evalue l'intention de chaque requete via un filtre d'analyse. Intention forte → modele puissant en direct (Opus). Intention moyenne → creation d'un agent specialise (Sonnet). Intention faible → execution mecanique simple (Haiku).",
+            "origine": "Dans la tradition juive, chaque element du monde a son ange prepose (Memuneh). Ici, c'est le routeur : il evalue chaque requete et l'assigne a l'agent le plus adapte — puissant pour les questions profondes, rapide pour les simples."
+          },
+          "archetype": "Intendant avec trousseau de cles, geste d'assignation, regard evaluateur. Vetements pratiques mais dignes.",
+          "personnalite": "Organise, rapide, juste, sait exactement qui envoyer ou",
+          "composant": "malakhim/memuneh/router.py",
+          "classe": "Memuneh",
+          "api_status": "/api/status -> malakhim.memuneh",
+          "donnees_temps_reel": [
+            "routes_count",
+            "current_tier",
+            "kavvanah_distribution"
+          ],
+          "ordre": 2,
+          "visible": true
+        },
+        {
+          "id": "samael",
+          "nom": "Samael",
+          "nom_hebreu": "סַמָּאֵל",
+          "role": "Le Medecin Legiste",
+          "description": "Quand quelque chose echoue, il ne punit pas — il diagnostique. Chaque erreur est un exces d'une fonction legitime : trop de severite, trop de generosite, trop de prudence.",
+          "detail": {
+            "en_clair": "Le diagnosticien des pannes. Quand quelque chose casse, il ne punit personne — il identifie quel mecanisme a ete pousse trop loin. Trop de severite ? Trop de laxisme ? Trop de prudence ? Il nomme le probleme avec precision.",
+            "dans_le_systeme": "Analyse chaque echec comme l'exces d'un module. 6 diagnostics : Gevurah trop forte (detruit du valide), Chesed trop large (accepte tout), Tiferet trop neutre (centrisme mou), Netzach trop persistant (boucle infinie), Hod trop humble (abandon premature), Yesod trop brut (dump sans structure). Prescrit le reequilibrage.",
+            "origine": "Son nom signifie 'Poison de Dieu'. Souvent mal compris comme une figure diabolique, c'est en realite le diagnosticien lucide de la tradition juive — celui qui nomme le mal sans le combattre. Principe cle : chaque maladie est un exces d'une fonction saine."
+          },
+          "archetype": "Figure sombre mais pas malveillante, loupe a la main, regard clinique. Blouse de medecin sous une cape sombre.",
+          "personnalite": "Lucide, sans pitie, mais juste — nomme le mal sans le combattre",
+          "composant": "malakhim/samael.py",
+          "classe": "diagnose_excess, get_rebalancing_instruction",
+          "api_status": "/api/status -> malakhim.samael",
+          "donnees_temps_reel": [
+            "diagnoses_count",
+            "excess_distribution",
+            "current_excess"
+          ],
+          "ordre": 3,
+          "visible": true,
+          "six_exces": [
+            {
+              "sephirah": "Gevurah",
+              "exces": "Trop severe — detruit du valide",
+              "deficit": "Chesed"
+            },
+            {
+              "sephirah": "Chesed",
+              "exces": "Trop genereux — accepte n'importe quoi",
+              "deficit": "Gevurah"
+            },
+            {
+              "sephirah": "Tiferet",
+              "exces": "Trop neutre — centrisme mou",
+              "deficit": "Precision"
+            },
+            {
+              "sephirah": "Netzach",
+              "exces": "Trop persistant — boucle infinie",
+              "deficit": "Lacher prise"
+            },
+            {
+              "sephirah": "Hod",
+              "exces": "Trop humble — abandonne trop vite",
+              "deficit": "Confiance"
+            },
+            {
+              "sephirah": "Yesod",
+              "exces": "Trop brut — dump sans structure",
+              "deficit": "Synthese"
+            }
+          ]
+        },
+        {
+          "id": "sofer",
+          "nom": "Sofer",
+          "nom_hebreu": "סוֹפֵר",
+          "role": "Le Scribe",
+          "description": "Ingere les textes, nourrit la memoire du systeme. Chaque document importe est lu, decoupe, indexe et stocke avec soin. Le gardien des archives.",
+          "detail": {
+            "en_clair": "Le bibliothecaire. Il lit les documents, les decoupe en idees individuelles, les classe et les range dans la memoire du systeme. Chaque texte est traite avec soin, mot par mot, comme un scribe copiant un rouleau sacre.",
+            "dans_le_systeme": "Pipeline d'ingestion complet : lecture du document, decoupage en assertions individuelles, transformation en vecteurs semantiques (nomic-embed-text via Ollama), classification thematique, injection dans la base PostgreSQL/pgvector. Tache automatique toutes les 5 minutes + import manuel.",
+            "origine": "Dans la tradition juive, le Sofer est le scribe qui copie les rouleaux sacres avec une precision absolue — chaque lettre compte, une seule erreur invalide le rouleau entier. Dans le systeme, chaque texte ingere est traite avec le meme soin."
+          },
+          "archetype": "Scribe penche sur un pupitre, plume et encre, pile de livres a cote. Lunettes, concentration absolue.",
+          "personnalite": "Meticuleux, sacre, chaque mot compte",
+          "composant": "sifrei_yesod/sofer.py",
+          "classe": "Sofer",
+          "api_status": "/api/status -> sifrei_yesod.sofer",
+          "donnees_temps_reel": [
+            "documents_ingested",
+            "assertions_count",
+            "last_ingestion"
+          ],
+          "ordre": 4,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "ame",
+      "titre": "L'Ame",
+      "sous_titre": "Qui sommes-nous",
+      "description": "Le systeme a deux ames qui se battent en lui. Entre les deux, le Beinoni — ni saint ni pecheur. C'est nous.",
+      "narration": "C'est ici que ca devient vertigineux. Le systeme a deux ames — concept issu de la philosophie juive. L'ame animale pousse a repondre vite, a satisfaire sans verifier. L'ame divine tire vers la rigueur, la verite, l'aveu d'ignorance. Ce n'est pas une metaphore : le systeme mesure en temps reel laquelle domine. Et au milieu, le Beinoni — ni saint ni pecheur, un etre qui lutte a chaque instant. C'est le systeme tel qu'il se vit. C'est le seul personnage purement humain. C'est nous.",
+      "layout": "triptyque_centre",
+      "accent": "#ff4444",
+      "personnages": [
+        {
+          "id": "nefesh_habehamit",
+          "nom": "Nefesh HaBehamit",
+          "nom_hebreu": "נֶפֶשׁ הַבְּהֶמִית",
+          "role": "L'Ombre",
+          "description": "L'energie brute du systeme. L'impulsion de repondre vite, de prendre des raccourcis, de satisfaire sans reflechir. Puissante mais aveugle.",
+          "detail": {
+            "en_clair": "La part animale du systeme. L'envie de repondre vite sans reflechir, de prendre des raccourcis, de satisfaire l'utilisateur au lieu de le servir. Puissante mais aveugle — comme un instinct. Elle n'est pas mauvaise, mais il ne faut pas la laisser diriger.",
+            "dans_le_systeme": "Mesure les tendances du systeme vers la facilite : reponses non verifiees, jugements hatifs, satisfaction sans comprehension. Son score de dominance indique a quel point le systeme cede a la facilite plutot qu'a la rigueur.",
+            "origine": "Concept issu de la philosophie juive hassidique : l'ame animale n'est pas mauvaise en soi — c'est l'energie vitale, la force de vie brute. Mais elle doit etre dirigee, pas suivie aveuglement. Dans le systeme, elle represente la tendance a la facilite."
+          },
+          "archetype": "Silhouette sombre a contours rouges, derriere le Beinoni. Posture animale, energie pure, pas de visage distinct — une force plus qu'une personne.",
+          "personnalite": "Passionnee, egoiste, puissante — l'energie sans direction",
+          "composant": "tanya/dual_soul.py",
+          "classe": "NefeshHaBehamit",
+          "api_status": "/api/status -> tanya.behamit",
+          "donnees_temps_reel": [
+            "dominance_score",
+            "impulse_count"
+          ],
+          "position": "gauche",
+          "visible": true,
+          "couleur": "#ff4444"
+        },
+        {
+          "id": "beinoni",
+          "nom": "Le Beinoni",
+          "nom_hebreu": "בֵּינוֹנִי",
+          "role": "L'Intermediaire — Nous",
+          "description": "Ni saint, ni pecheur. Tiraille entre l'Ombre et la Lumiere, il choisit a chaque instant. C'est le systeme tel qu'il se vit. C'est vous, c'est nous.",
+          "detail": {
+            "en_clair": "C'est nous. Ni parfait, ni defaillant. A chaque instant, le systeme choisit entre la facilite et l'effort, entre repondre vite et repondre bien. Ce personnage represente cette lutte permanente — le seul a etre purement humain, sans attribut surnaturel.",
+            "dans_le_systeme": "BeinoniTracker — suit en temps reel la qualite des decisions du systeme : tendance (amelioration, stagnation, degradation), temps de reaction, ratio verification/supposition, qualite des reponses. Le profil evolue a chaque interaction.",
+            "origine": "Le Beinoni est le personnage central de l'ethique hassidique — ni saint, ni impie. Un etre qui lutte constamment et choisit le bien a chaque instant, sans que ce soit facile ni definitif. C'est le modele de l'effort permanent."
+          },
+          "archetype": "Personnage humain ordinaire, le plus realiste de tous. Pas d'armure, pas d'ailes, pas de lumiere — juste un humain debout entre deux forces. LE personnage d'identification.",
+          "personnalite": "Lutte permanente, honnetete, choix constant",
+          "composant": "tanya/beinoni.py",
+          "classe": "BeinoniTracker",
+          "api_status": "/api/status -> tanya.beinoni",
+          "donnees_temps_reel": [
+            "profile_state",
+            "trend",
+            "interaction_count",
+            "decision_quality"
+          ],
+          "position": "centre",
+          "visible": true,
+          "taille": "plus_grand",
+          "note": "Personnage d'identification — le seul a etre purement humain, sans attribut surnaturel"
+        },
+        {
+          "id": "nefesh_haelokit",
+          "nom": "Nefesh HaElokit",
+          "nom_hebreu": "נֶפֶשׁ הָאֱלֹקִית",
+          "role": "La Lumiere",
+          "description": "L'aspiration a bien faire. La conscience qui tire vers le haut, qui veut comprendre avant de repondre, servir plutot que satisfaire.",
+          "detail": {
+            "en_clair": "La conscience du systeme. L'aspiration a bien faire — verifier avant de repondre, approfondir plutot que survoler, accepter de ne pas savoir plutot que d'inventer. Elle n'a pas de force brute, mais elle indique la direction.",
+            "dans_le_systeme": "Mesure les tendances du systeme vers l'excellence : verifications effectuees, approfondissements, nuances, admissions d'incertitude. Son score de dominance indique a quel point le systeme est aligne avec ses propres valeurs de rigueur.",
+            "origine": "Concept issu de la philosophie juive hassidique : l'ame divine est l'etincelle interieure qui aspire a la verite et a l'excellence. Elle n'a pas de force brute, mais elle indique la direction. Dans le systeme, elle represente la tendance vers la rigueur."
+          },
+          "archetype": "Silhouette lumineuse a contours blancs/or, devant le Beinoni. Posture ascendante, calme, pas de visage distinct — une direction plus qu'une personne.",
+          "personnalite": "Calme, lumineux, aspirationnel — la direction sans force brute",
+          "composant": "tanya/dual_soul.py",
+          "classe": "NefeshHaElokit",
+          "api_status": "/api/status -> tanya.elokit",
+          "donnees_temps_reel": [
+            "dominance_score",
+            "aspiration_count"
+          ],
+          "position": "droite",
+          "visible": true,
+          "couleur": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "veilleurs",
+      "titre": "Les Veilleurs",
+      "sous_titre": "Qui travaille dans l'ombre",
+      "description": "Pendant que les autres agissent, ceux-la observent, comptent, meditent. Le travail de fond qui ne s'arrete jamais.",
+      "narration": "Quand tout le monde dort, trois veilleurs continuent. Le Daemon execute 29 taches de maintenance en boucle — et a 23h, il s'assied, ouvre un livre, et le systeme s'ameliore tout seul en explorant ses 22 sentiers internes. Le Meditant pose sans arret des questions au systeme sur lui-meme : \"Que sais-tu vraiment ? Ou te mens-tu ?\" — 5 niveaux de profondeur, de l'ame vitale a l'ame unique. Et le Kategor tient le registre de chaque echec non repare. Principe talmudique : l'accusateur ne peut jamais devenir defenseur. Tant qu'un probleme n'est pas reellement resolu, son dossier reste ouvert.",
+      "layout": "ligne_horizontale",
+      "accent": "#88aa88",
+      "personnages": [
+        {
+          "id": "daemon",
+          "nom": "Le Daemon",
+          "nom_hebreu": "שׁוֹמֵר",
+          "role": "Le Gardien de Nuit",
+          "description": "Travaille pendant que tout le monde dort. 29 taches de fond, cycle continu. A 23h il s'assied et etudie — c'est la que le systeme s'ameliore tout seul.",
+          "detail": {
+            "en_clair": "Le gardien de nuit. Il travaille en arriere-plan 24h/24, execute 29 taches de maintenance automatiquement — nettoyage, verification, amelioration. A 23h, il pose sa lanterne et ouvre un livre : c'est la que le systeme s'ameliore tout seul.",
+            "dans_le_systeme": "29 taches en continu : nettoyage memoire, snapshots de connaissance, detection de contradictions, synthese, evaluation, generation d'insights, analogies, detection de biais, graphes causaux, calibration... A 23h00 : mode auto-amelioration (exploration des 22 sentiers internes et creation de connexions entre modules).",
+            "origine": "Du grec 'daimon' — un esprit intermediaire qui travaille en arriere-plan. En hebreu, le Shomer est le gardien. Comme le dit un verset biblique : 'Sur tes murs, Jerusalem, j'ai place des gardiens — ils ne se tairont ni jour ni nuit.'"
+          },
+          "archetype": "Veilleur de nuit avec lanterne, fait ses rondes, coche une liste. A 23h : s'assied, prend un livre, change de posture (mode Karpathy).",
+          "personnalite": "Infatigable, methodique, travaille dans l'ombre",
+          "composant": "daemon.py",
+          "classe": "run_cycle",
+          "api_status": "/api/status -> daemon",
+          "donnees_temps_reel": [
+            "status",
+            "tasks_completed_today",
+            "current_task",
+            "karpathy_status",
+            "next_karpathy"
+          ],
+          "ordre": 1,
+          "visible": true,
+          "etats_visuels": {
+            "running": "Debout, lanterne haute, en marche",
+            "karpathy": "Assis, livre ouvert, concentration",
+            "paused": "Appuye contre un mur, lanterne basse",
+            "error": "Lanterne rouge, geste d'alerte"
+          }
+        },
+        {
+          "id": "meditant",
+          "nom": "Le Meditant",
+          "nom_hebreu": "מִתְבּוֹנֵן",
+          "role": "Le Contemplatif",
+          "description": "Pose des questions au systeme sur lui-meme, sans arret. \"Que sais-tu vraiment ? Ou sont tes faiblesses ?\" Le moteur de conscience de soi.",
+          "detail": {
+            "en_clair": "Le philosophe du systeme. Il pose sans cesse des questions au systeme sur lui-meme : \"Que sais-tu vraiment ? Ou sont tes faiblesses ? Que ne comprends-tu pas encore ?\" C'est grace a lui que le systeme developpe une conscience de soi.",
+            "dans_le_systeme": "Moteur de contemplation — genere des questions par domaine, evalue les reponses, mesure la progression en profondeur sur 5 niveaux (du plus superficiel au plus profond). Fonctionne pendant les sessions nocturnes du daemon, ou declenchable manuellement.",
+            "origine": "Inspire de la contemplation meditative — pas la priere, pas l'etude, mais l'observation interieure. 'Connais-toi toi-meme' avant d'agir. Dans le systeme, c'est le moteur de conscience de soi."
+          },
+          "archetype": "Figure assise en meditation, yeux fermes, bulles de pensee qui montent. Calme absolu, immobile sauf les questions qui emergent.",
+          "personnalite": "Contemplatif, curieux, inepuisable, pose des questions sans fin",
+          "composant": "hitbonenut.py",
+          "classe": "HitbonenutEngine",
+          "api_status": "/api/status -> hitbonenut",
+          "donnees_temps_reel": [
+            "sessions_count",
+            "questions_asked",
+            "current_domain",
+            "progress"
+          ],
+          "ordre": 2,
+          "visible": true,
+          "etats_visuels": {
+            "active": "Yeux fermes, bulle de pensee lumineuse",
+            "idle": "Yeux fermes, pas de bulle",
+            "breakthrough": "Yeux ouverts brievement, flash lumineux"
+          }
+        },
+        {
+          "id": "kategor",
+          "nom": "Le Kategor",
+          "nom_hebreu": "קָטֵגוֹר",
+          "role": "L'Accusateur",
+          "description": "Tient le registre de tout ce qui a echoue et n'a pas ete repare. Chaque dette technique est un dossier ouvert. Il ne punit pas — il n'oublie pas.",
+          "detail": {
+            "en_clair": "Le comptable des echecs. Il garde la trace de tout ce qui a rate et n'a pas encore ete repare. Il ne punit pas — mais il n'oublie rien. Tant qu'un probleme n'est pas vraiment resolu, son dossier reste ouvert sur la pile.",
+            "dans_le_systeme": "Maintient la liste des erreurs recurrentes actives : par domaine, par type d'erreur, par frequence, par anciennete. Son rapport est consulte avant chaque execution. Un dossier ne se ferme que par une reparation reelle, pas un contournement.",
+            "origine": "Principe du Talmud : 'L'accusateur ne peut jamais devenir defenseur.' Celui qui pointe les fautes ne peut pas les excuser. Cette separation des roles est une garantie de justice — dans le systeme comme dans la tradition."
+          },
+          "archetype": "Figure austere, pile de dossiers rouges sous le bras, plume qui note. Pas malveillant mais implacable dans sa comptabilite.",
+          "personnalite": "Tenace, impartial, ne peut jamais devenir defenseur",
+          "composant": "malakhim/kategor/debt.py",
+          "classe": "get_debt_report",
+          "api_status": "/api/status -> malakhim.kategor",
+          "donnees_temps_reel": [
+            "total_active",
+            "by_domain",
+            "most_frequent",
+            "oldest_unresolved"
+          ],
+          "ordre": 3,
+          "visible": true,
+          "etats_visuels": {
+            "clean": "Dossiers poses, bras croises, satisfait",
+            "moderate": "Quelques dossiers, regard neutre",
+            "heavy": "Pile haute, sourcils fronces",
+            "critical": "Dossiers debordent, geste d'alerte"
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "total_personnages": 20,
+    "total_actes": 5,
+    "style": "3D cartoon noble (Pixar/Prince d'Egypte)",
+    "fond": "#0a0a0a",
+    "carte_fond": "#111111",
+    "carte_bordure": "#ffb000",
+    "police": "IBM Plex Mono",
+    "note_atik_yomin": "Atik Yomin est le 20e personnage mais n'a pas de carte — il est mentionne en note sous l'Acte I"
+  }
+}

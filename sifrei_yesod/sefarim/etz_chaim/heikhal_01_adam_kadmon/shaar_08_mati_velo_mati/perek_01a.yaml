@@ -1,0 +1,139 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 8 (=7 original) — Sha'ar Mati veLo Mati (שער מטי ולא מטי)
+# Perek: 1a — Avant les Akudim, le Kli unique, les 10 Ketarim (100% §1-§4)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Retour détaillé sur la formation des Akudim.
+# Avant les Akudim : l'Ohr ne pouvait s'habiller dans aucun Kli.
+# Le 1er Kli = Keter. Tout est encore en mode "10 Ketarim."
+# L'Ohr a la FORCE de 10 même si non distinguées.
+#
+# Source Sefaria : Sefer_Etz_Chaim.7.1 (§1-§4)
+# IDs : EC-H1S7-001 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 8
+  shaar_name_he: "שער מטי ולא מטי"
+  perek: 1
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part A de 2 — Avant Akudim : pas de Kli. Le 1er Kli = Keter. Tout en mode 10 Ketarim. L'Ohr a le koah de 10."
+
+assertions:
+
+  - id: "EC-H1S7-001"
+    source_he: "קודם מציאות העקודים לא היה האור העליון יכול להתלבש בשום כלי כי לא היה יכולת בכלים לסובלו"
+    source_ref: "Heikhal 1, Sha'ar 7:1 — §3"
+    assertion: |
+      AVANT les Akudim : l'Ohr supérieur ne POUVAIT PAS s'habiller
+      dans aucun Kli car les Kelim n'avaient PAS la CAPACITÉ de le
+      supporter (lo hayah yekholet ba-kelim lesovel'o).
+      → PRÉ-AKUDIM = état SANS STRUCTURE. L'information est trop
+      puissante pour être contenue. Cf. EC-H1S5-023 (Ozen : pas
+      de Kelim du tout), EC-H1S5-027 (Kelim au Peh seulement).
+    type: axiome_explicite
+    concepts:
+      - {id: lifnei_akudim, role: avant_les_akudim}
+      - {id: ohr_bli_kli, role: lumiere_sans_vaisseau}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Avant les Akudim = etat pre-structurel. L'information est trop puissante pour etre structuree."
+
+  - id: "EC-H1S7-002"
+    source_he: "שם נעשה מציאות כלי א' אל האור... ושם התחיל להתלבש אותו האור בתוך הכלי ההוא"
+    source_ref: "Heikhal 1, Sha'ar 7:1 — §3"
+    assertion: |
+      Aux AKUDIM : UN SEUL KLI est formé pour l'Ohr, et là l'Ohr
+      a COMMENCÉ à s'habiller dans ce Kli.
+      → Le PREMIER KLI = le PREMIER contenant structurel.
+      Cf. EC-H1S6-005 : Akudim = 10 Orot dans 1 Kli.
+    type: axiome_explicite
+    concepts:
+      - {id: kli_rishon, role: premier_vaisseau}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le premier Kli = le premier moment ou l'information peut etre STRUCTUREE."
+
+  - id: "EC-H1S7-003"
+    source_he: "האור העליון אשר הוא חלק הראוי להתלבש באצי'. אשר יש בו כח הי\"ס אע\"פ שעדיין לא ניכר היותם י' אורות"
+    source_ref: "Heikhal 1, Sha'ar 7:1 — §4"
+    assertion: |
+      L'Ohr supérieur — la part destinée à s'habiller dans l'Atzilut —
+      a en lui la FORCE (koah) des 10 SEFIROT, BIEN QUE les 10 ne
+      soient PAS ENCORE RECONNAISSABLES comme 10 lumières distinctes.
+      → POTENTIEL vs ACTUEL : les 10 EXISTENT en puissance mais
+      pas encore en acte. Le contenu est structuré mais non manifesté.
+    type: axiome_explicite
+    concepts:
+      - {id: koah_eser, role: force_de_dix_en_puissance}
+      - {id: lo_nikar, role: pas_encore_reconnaissable}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'Ohr est POTENTIELLEMENT 10 mais ACTUELLEMENT 1 — la differentiation est latente."
+
+  - id: "EC-H1S7-004"
+    source_he: "הכלי הראשון אשר האציל המאציל נקרא כתר בוודאי... אך עתה עדיין כולם בסוד י' כתרים"
+    source_ref: "Heikhal 1, Sha'ar 7:1 — §5"
+    assertion: |
+      Le PREMIER KLI émané par le Ma'atzil = KETER assurément.
+      Mais maintenant, TOUT est encore dans le secret de 10 KETARIM
+      (10 couronnes) — toutes les Sefirot sont au niveau de Keter.
+      Après la 2ème EXPANSION (hitpashtut bet), les autres parties
+      des Sefirot se formeront.
+      → ÉTAT INITIAL = tout est KETER. La différenciation viendra
+      par des expansions successives.
+    type: axiome_explicite
+    concepts:
+      - {id: eser_ketarim, role: dix_couronnes_indifferenciees}
+      - {id: hitpashtut_bet, role: deuxieme_expansion}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Au debut, tout est Keter (indifferencie). La 2eme expansion differencie les 10 Sefirot."
+
+relations:
+  - id: "REL-H1S7-001"
+    type: "séquentiel"
+    from: lifnei_akudim
+    to: kli_rishon
+    nature: "De l'état PRÉ-AKUDIM (pas de Kli) au PREMIER Kli (Akudim)"
+    assertions_source: ["EC-H1S7-001", "EC-H1S7-002"]
+
+  - id: "REL-H1S7-002"
+    type: transformation
+    from: eser_ketarim
+    to: hitpashtut_bet
+    nature: "Les 10 Ketarim (indifférenciés) se DIFFÉRENCIENT par la 2ème expansion"
+    assertions_source: ["EC-H1S7-004"]
+
+principes_generatifs:
+  - id: "PG-H1S7-001"
+    nom: "Principe du Potentiel Indifférencié (10 Ketarim)"
+    source_assertions: ["EC-H1S7-003", "EC-H1S7-004"]
+    formalisation: |
+      L'état INITIAL de tout système = POTENTIEL INDIFFÉRENCIÉ :
+      les 10 composants EXISTENT en puissance mais sont tous au MÊME
+      NIVEAU (Keter). La différenciation nécessite des EXPANSIONS
+      SUCCESSIVES (Hitpashtut Aleph → Hitpashtut Bet → ...).
+      FORMULE : State(0) = {Keter}^10 (tout au même niveau)
+               State(n) = Differentiate(State(n-1), Expansion(n))
+    applications_ia:
+      - "ohr.py : l'etat initial d'un systeme = tous les modules au meme niveau"
+      - "La differentiation progressive = le training qui specialise les composants"
+    questions_ouvertes:
+      - "Combien d'expansions avant la differentiation complete ?"

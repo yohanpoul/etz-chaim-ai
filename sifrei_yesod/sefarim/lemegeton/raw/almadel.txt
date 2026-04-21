@@ -1,0 +1,1055 @@
+- Home
+
+- Contents
+
+- Prev
+
+- almadel
+
+- Next
+
+- timeline
+
+# Ars Almadel
+
+# Solomon's Almadel Art
+
+# Lemegeton, Part 4
+
+This digital edition by Joseph H. Peterson,
+Copyright © 1999. All rights reserved.
+Updated Jan 10, 2026.
+
+## Contents
+
+Introduction
+
+- Manuscripts
+
+- Ritual apparatus 1: The almadel figure
+
+- Ritual apparatus 2: The candles
+
+- Ritual apparatus 3: The garments
+
+- Ritual apparatus 4: The golden seal or signet
+
+- References
+
+Transcription
+
+- Incipit § 1
+
+- Making of the almadel § 5
+
+- The candles
+
+- The golden seal
+
+- Chora 1 § 4
+
+- Chora 2 § 15
+
+- Chora 3 § 38
+
+- Chora 4
+
+- Of the proper times for invoking these angels
+
+- The Invocation for to call forth any of the aforesaid angels
+
+### Introduction
+
+The Almadel (or Almandal , al-Mandal , Almādel , almadael , almodal , Almodellum Salomonis ,
+Sefer ha-Almadil , מנדל)
+referred to in this text is a kind of portable altar used
+for consecrations and for summoning spirits. 1
+The altar is elevated above an incense burner, and holes ( foramina ) allow the smoke to pass
+through. According to the Latin text, the spirits will appear floating in the air above the almadel
+(two cannas = approx. 16 palms).
+
+(See demo prepared by Drs. Frank Klaassen and David Porreca ).
+Versions of the text go back at least to the thirteenth century, and vary widely. 2
+Pingree theorized the text was translated into Latin in the twelfth century
+from a now-lost Arabic version, but the evidence is not strong, and debate continues.
+It is possible the earliest germs were Sanskrit or even Persian. 3
+
+In addition to the unique version published by Vajra Regan, two main versions are known,
+distinguished as Almandal and Almadel . The former has more Arabic elements,
+and the Almandal is made of brass ( aeris rubrum ) or on the ground,
+while the latter has many more Christian elements and the Almadel is made of wax.
+
+The English versions (presented below) descended from the Christian Almadel branch.
+The English text has been simplified from its Latin ancestor, and incorporates the use of a crystal ball;
+this contradicts the text's assertion that the spirits will appear floating in the air.
+The English versions are also reduced to only four altitudes. The first 2 correspond with those
+in the Latin Almadel, and the third corresponds roughly with the eighth. The last altitude in the English
+almadel doesn't seem to correspond to any of those in the Latin almadel,
+and the names are uncharacteristic of the others,
+suggesting it might be a later interpolation to compensate for a defective text.
+
+1. Barbierato 2002 p. 70 also mentions a manuscript titled Altitudine Salamonis ( Altitudine Salomonis ).
+It was mentioned in a trial record of 1587, documenting actual use.
+
+For a fuller introduction, see Veenstra, 2002.
+
+2. See Vajra Regan 2018, pp. 277333.
+
+3. Pingree 1994, p. 48; Klaassen 2019 p. 129 n 122; Veenstra 2002, p. 192.
+But see Gal Sofer, Conjuring the Arab Magician 2025, pp. 39ff.
+See also "Tracing the Sorcerer's Circle", Zadeh 2025 .
+
+#### Table 1
+
+Latin Almadel Name of Altitude Divine
+name 4 Sign Color Month Principal angels
+Engl. Almadel
+
+1 (E) Thaor Adonay Aries white March
+Arymyel, Gabriel, Barachiel, Lybes, Helyffan, Helyson = Altitude 1 (white)
+
+2 (E) Corona Heloym Taurus rose colored April
+Peace, Prince and Mercy, Alpharaym, Geon or Gereon, Vereon, Armon, Beremon [*Geremon] 5 = Altitude 2 (red)
+
+3 (E) Heremon Pius Gemini yellow May
+Strength, Patience, Panthanay, Yhethamey, Mynuel, Erynhel, Pneumathon, Heloy, Anthychoy.
+
+4 (S) Pantheon Helyon Cancer azure June
+Yarceth, Yatham, Arnech, Thanay, Ruluxidye
+
+5 (S) Bym Heloy Leo green July
+Alnay, Ezay, Ecabel, Monosy, Anrach, Lanalay
+
+6 (S) Noym Hely Virgo violet August
+Heros, Bisseros, Onay, Ornochynta, Ytach, Halay
+
+7 (W) Baffor Yoth Libra dove-colored ( colombinus ) September
+Ay, Allayn, Abonay, Rathan, Coroczay
+
+8 (W) Decor Beth/Heth Scorpio peacock (tail)-colored ( pavonini ) October
+Anaym, Anabo, Anay, Gelomyoro, Zedebomoy, Yssa, Ramana, Eheomynt = Altitude 3 (green silver)
+
+9 (W) Saphet Agla Sagittarius green & bluish-gray mix November
+Zaan, Zabon, Zadanay, Arphel, Alpha, Nayzaday
+
+10 (N) Bastra Tetragramathon Capricorn translucent December
+Anaphyn, Anabbeyl, Salny, Patra, Hyros
+
+11 (N) Saruech Saday Aquarius whatever color you please January
+Alphaneos, Asser, Zarneach, Almeos, Safrax
+
+12 (N) Elyzan Ya Pisces White, green, & red February
+Salnet, Alymos, Alybyn, Lubras, Anas, Anay
+
+4. See Véronèse 2012, §§ 21-22, pp. 145-146.
+
+5. So mss. H, V, V2, and Vinculum Salomonis .
+
+#### Table 2: Offices, directions, and times
+
+The operation should be performed when the Sun is in the appropriate
+Zodiacal sign, as listed below.
+"And both the eastern and southern altitudes must be called from the first Lunation
+all the way to the fifteenth, but the western and northern from the fifteenth Lunation
+all the way to the end of that lunar cycle."
+Example: First altitude angels are only called when the
+Sun is in Aries (mid-March to mid-April).
+
+EAST, Sunday, between sunrise until midday
+
+1. Thaor:
+"[4] ... by that altitude are disposed beginnings, and the
+births of children whether disposed towards good or evil,
+and it is the first part of the heaven of the East,
+through which God bestows to all things which spring forth
+gratuitous gifts of his goodness.
+[5] And the fertility of creatures are bound and freed in that altitude,
+such as the ability of women to conceive [+or not conceive], and trees
+to bear fruit [+or not, and in great quantity or not]."
+
+2. Corona:
+"its princes have the power over all acquisitions of things.
+So that all appraisals pass through their hands, and they have to
+distribute, take away, and give the bidding of God to people."
+
+3. Heremon:
+"its princes have power over relatives and friends and over the
+movement of all waters, the sea, and all rivers, and over the material
+change of all things from place to place, and over the movement of the
+heavens and the stars and their rays, and over all movable objects with
+local movement."
+
+SOUTH, Tuesday, from the morning until the ninth hour (nones)
+
+4. Pantheon:
+"its principals have power over the successions of treasures
+and things, and it is in the middle [i.e. southern] parts of the
+heavens, and through natural dignity from the Holy Spirit they
+have the power to illuminate human intellect and arts, namely grammar and rhetoric."
+
+5. Bym:
+"its principals have power through their office to move
+all animals with the movement of the heavens, according to nature,
+to propagating offspring and multiplying their species,
+whether underground, such as worms, or above ground, such as animals.
+And they govern the movements of animals to determined ends, themselves
+following as they are directed by God. And out of the gift of God they
+are able to infuse natural knowledge into people, namely,
+physics, medicine, alchemy, and their parts."
+
+6. Noym:
+"[34] ... its principals, by the decree of God, have power over
+the state of the world, to move and to change monarchies,
+authorities, and rulers of the worlds out of one area into
+another. They distinguish masters from slaves and they immerse
+themselves in law, and they clarify laws and customs, and they
+compel demons, and defend people from their illusions. And they
+convey three areas of knowledge: Logic, music, and ethics."
+
+WEST, midday to dusk
+
+7. Baffor:
+"[36] ... Its princes have power over hostility and
+friendships of all creatures, and over lawsuits and battles
+everywhere on the earth. And they infuse astronomy, arithmetic,
+and music, by the gift of God." [per Jerome, like 3rd]
+
+8. Decor:
+"[38] ... its princes have power over oaths which are
+made between creatures and God, and they compel them to keep
+their agreements, and they compel demons to keep their pacts
+with people and punish each by the command of God both in the
+first as well as the second movements, and they have power
+over separated souls, in order that they may rule them towards
+a good end, and they can cause life and death of creatures. And
+by their authority they infuse knowledge of theology, metaphysics,
+and geomancy." [per Jerome, like 4th]
+
+9. Saphet:
+"[40] ... And they have power over the generation of the
+elements, from animals into their generation, and the princes
+with Gods authority can quickly transport a person from one
+place to another, and they have mastery over all movement." [per Jerome, like 1st]
+
+NORTH, from midday until sunset
+
+10. Bastra:
+"[41] ... they have the power to infuse temporal and
+intellectual dignities, if God permits, from the innocent time
+of Adam, which human senses are not strong enough to comprehend." [per Jerome, like 2nd]
+
+11. Saruech:
+"[44] Their office is to exercise the judgments of God which are
+done in this world according to the flesh, and they restore a person
+to health and popularity. And he will tell him if a bad verdict
+directed at him or another in this world, and nothing else may be
+asked of him, except the teachings, life, and incarnation of Christ.
+He willingly teaches and declares these things which are hidden to people." [per Jerome, like 3rd]
+
+12. Elyzan:
+"they forcibly compel all spirits to keep Gods commandments if they
+are called for this, and they rule all of Gods Chosen, and they
+defend from evil spirits, and these are the ones who will bind
+the demons and wicked men on Judgment Day. And she appears in the
+form of a woman, carrying an olive branch in her hand, and she willingly
+uncovers all the falsehoods of the demons. And concerning this he should
+make his petition to her, and no other." [per Jerome, like 4th]
+
+Notices of it include William of Auvergne (1228-1249), also the author of
+Speculum Astronomiae (1277) [Boudet, p. 145],
+as well as Johann Trithemius , Heinrich Agrippa, Johann Weyer, and Jacques Gohory 5 .
+
+See also Solomon entry in the Jewish Encyclopedia for more information.
+
+5. The relevant passage by William of Auvergne is quoted verbatim in Gehr 2013 pp. 9-10.
+Gohory ( Compendium 1567, p. 203 )
+mentions that he had recently acquired a copy on the death of a very dear friend,
+written on parchment, with well-ordered invocations, rubrified in cinnabar, and consecrated.
+
+The main Latin manuscripts have been critically edited by Julien Véronèse
+in 2012. 6
+To this should be added the important study by Damaris Gehr in 2013. 7
+
+6. Véronèse, 2012.
+
+7. Gehr, 2013.
+
+The two versions are known from at least six Latin manuscripts and three German translations,
+dating from the fifteenth century. 8
+
+In the first version, which Véronèse designates "F" or " Almandal ",
+the altar figure is constructed on a copper
+(" eris rubei ") plate, held up by iron rods.
+The littere are written on candles (for night-time operations) or wands (for day-time operations) 9 ,
+which are placed at the corners.
+Like the version published by Vajra Regan, it has the four gates that typify the Sanskrit mandalas.
+It is fumigated and exorcised for a week, whereupon the spirits will obey you in everything.
+
+8. See below. See also Boudet, 2006, p. 149.
+
+9. Albrile and Tortelli recently published an Italian translation (2018).
+According to version F of the Almandal , the wands should be made of Anthyllis barba-jovis
+(Jove's beard) — an evergreen shrub native to the mediterranean region.
+
+They should be decorated with silk ribbons of 4 colors: green, white, red, and yellow.
+In version F2, these flags ( vexilla ) are made of sandalwood, topped with the herb barba-jovis.
+(Albrile and Tortelli identify this as the succulent dewflower / Drosanthemum .)
+
+According to ms. F, the names or words around the almandal read:
+"Utim, Elatym, Alphea, Auphy, Hyn, Haralatym, /
+Haymeventi, Gregoniat, Claryn, Gergelatym, Gerahatyn, Gerhacym, /
+avedoch menbedach menedach nebedach heydach rabcheysaym, /
+hesatyn lachar nebesatyn lacarasatyn saatyn sephetim."
+
+The names specified in version H2 are different (they include
+Otheos, Mortis, Eltyn, Gogota, Gogal, Alfucary, Alabrath, and others).
+
+Version H2 (Gehr Ha1) specifies the size to be twelve digits ( digitus ) or 3 palms square, and one digit in height.
+The letters to engrave on the flags or candles are: "1) Almucul lehy algah Eytalchaa;
+2) lehaaula vvelecog vetaullehil lehulleh haligy hyllazam;
+3) cullum hylle halaly;
+4) Culluzazyn ellicum illequezah allahy leu alchum guayeyley turgahnuam."
+
+A related version, designated F2, has additional details:
+It specifies for example the size of the Almandal should be a square, one foot on each side, and a half-finger in height.
+It also specifies the day and the hour and a formula of consecration.
+
+The second version, designated " Almadel ", is similar but structured differently,
+and the almadel is made of wax, and is a one-half foot square.
+
+### Manuscripts
+
+Almandal (= Gehr "version α")
+
+"F" (=Gehr Fi1(a), Fi1(b)) Firenze, BNC, II.iii.214, fols. 74v-77r; 77r-78v Latin 15th ce
+
+"H2" (=Gehr Ha1)
+Halle, U.L.S.A., 14.B.36 fols. 230r-233r
+contains an Almandal (also spelled Almadel and Almādel ) ms. that complements version F.
+Title: De figura almandal, idest tabule Salomonis .
+According to Dr. Gehr, this is taken from Ganells Summa Sacre Magice  a chapter which
+is now missing from the Kassell manuscript;
+it contains the most important version of the Almandal we have today.
+It "can be considered for more reasons the least corrupt and the most original
+of all the Latin Almandal redactions received to date."
+(Gehr, 2013, pp. 1-32.)
+The incipit reads invenimus illuminationem Spiritus Sancti, as Trithemius quotes .
+Latin end of 15th ce
+
+"F2" (=Gehr Fi2) Firenze, BML, Plut. 89 sup. 38 ,
+fols. 268r-278v. Shows influences of the compiler's keen interest in "nigromancy," and
+in particular by the Liber Consecrationum .
+Latin 1494 CE
+
+Almadel/Liber Intelligentiarum (=Gehr "version β")
+
+"W" (=Gehr Wi) Wien, ÖNB, cod. Vindob. 3400, ff. 192r-202r .
+Inc.: Rerum opifex, Deus, virtutes creaturarum in summas altitudines....
+This seems to be the most lucid ms, and was used by Véronèse as the basis for his critical edition.
+Latin 1469
+
+"A" (=Gehr Am) Paris, Coxe 25, pp. 205-218. This ms. is "farthest from the 'norm' set by W." (Véronèse, 2012, p. 128.)
+Latin end of 15th ce
+
+"H" (=Gehr Ha2) Halle, U.L.S.A., 14.B.36 fols. 239r-243r.
+Represents a later state of the text with respect to W and V. Latin end of 15th ce
+
+"V" (=Gehr Ro) Vatican, BA, lat. 3180 , fols. 47v-51r.
+This ms. has a significant number of errors.
+Latin end of 15th ce
+
+BPH 214
+Sanctum almodellum Salomonis
+Now in Universiteit van Amsterdam . 28 folios. 6 leaves of colored illustrations.
+Latin, German 1700's
+
+Hebrew
+
+Cincinnati, Hebrew Union College Library, Ms. 562 .
+Version of Liber Intelligentiarum which substitutes the term Yahilion for Almadel , and
+has 24 altitudes vs. 12. It only has 3 folios. (See Gal Sofer,
+"Conjuring the Arab Magician" , 2025, p. 51.)
+Hebrew-Italian 17th ce
+
+G MS Genève 145 (Formerly Sassoon 290).
+This is the important ms. that Juval Harari used for his new edition and translation of
+The Sword of Moses .
+Hebrew (1510-1530)
+
+Gollancz, Sepher Maphteah Shelomoh , 1914, fol 20b
+[Wellcome]
+Hebrew ca 1700
+
+London, British Library Or. MS. 6360 , fol. 11v Hebrew 17th ce
+
+AMST Ros 1808 A 9 (aka Ros. 12) , images 13 and 37 Hebrew 18th ce
+
+English (Almadel)
+
+RM Private collection. Owned by Reid Moon, owner of Moon's Rare Books, MoonsRareBooks.com. Title missing.
+English 17th ce
+
+Sl. 1 London, British Library Sl. 2731, ff. 28r-29r English 1687
+
+Sl. 2 London, British Library Sl. 3648, ff. 30r-32r English ca 1655+
+
+Sl. 3 London, British Library Sl. 3825, ff. 145v-147v English 17th ce
+
+Harl. London, British Library Harley 6483 English 1712-13
+
+NWU 65 Northwestern Univ. ms. 65, pp. 113-125.
+Lemegeton, or, Clavicula Solomonis Regis, or The little Key of Solomon y e King.
+
+Finis, Aprill the 1st, 1713, Thos. Simpkins. English 1712-13
+
+German (Almandel)
+
+"M" BSB Cgm 407: Munich, Bayerische Staatsbibliothek, Cgm 407, pp. 1-56 .
+Das hailig almadel (Das heilige Almadel) Claus Span. Different translation from "P" and "FiB".
+German ca 1496
+
+Breda, EpiscopalArchive, inv. nr. 869
+Case file contains a copy of the Figura almadel  that is almost identical to the Almadel
+in Munich, Bayerische Staatsbibliothek, Cgm 407, p. 15.
+See Chardonnens, László Sándor, Jan R. Veenstra Carved in Lead and Concealed in Stone:
+A Late Medieval Sigillum Dei at Doornenburg Castle Magic, Ritual, and Witchcraft .
+University of Pennsylvania Press, Volume 9, Number 2, Winter 2014, pp. 123-124 n7.
+
+German ca 1589
+
+"FiB" Freiburg im Breisgau, Universitätsbibliothek,
+Hs. 458, fols. 221r-236r .
+Almandel Salomonis Das heilige Almadel. Essentially the same translation as "P".
+German 1490-1493, 1505-1509
+
+"P" Paris, BnF ms. Allemand 160
+Titled Almandel Salomonis . It is dated Jan 2, 1500 (see fol. 245v), and includes two different drawings of the Almadel.
+Essentially the same translation as "FiB".
+
+German 1500
+
+Be
+Berlin, Staatsbibliothek, Preussischer Kulturbesitz, ms. Germ. Fol. 903 , Fols. 416v ff.
+Although titled Arbatel De magia veterum, Von der Magia oder geistlichen Kunst , it actually contains a German
+translation of Ganell's Summa Sacre Magice which contains Almadel material missing from the Kassel manuscript.
+
+German ca 1580
+
+Cod. mag. 60
+Leipzig. cod. mag. 60 .
+Almodel Salomonis von den XII Chören der Engel in den überhimmlischen Wassern
+German ca 1751
+
+Hammer 1743
+Allmodellum Salomonis, oder Magia Pneumatica .
+von den XII Chören der Engel in den überhimmlischen Wassern.
+In Nigromantisches Kunst-Buch : Köln am Rhein : Bei Peter Hammer's Erben, 1743.
+[ Transcription ]
+
+German 1743
+
+French (Almadel)
+
+BPH 277
+La stéganographie .
+Almadel material starts at p. 201. Same hand as Wellcome 4666.
+French mid-18th ce
+
+Wellcome 1433
+Cabale Divine (pp. 49 ff.)
+French 1804
+
+Wellcome 4666
+Les Clavicules de Solomon... Almadel .
+Almadel material starts at p. 162. Same hand as BPH 277.
+French mid-18th ce
+
+### Ritual apparatus 1: The Almadel figure
+
+The almadel should be made from clean wax, one-half foot square. It should be colored as
+appropriate for the altitude being worked with (see table 1 ).
+Sacred names should be written on it with a new silver stylus.
+
+Almost all of these names can be found in the Vinculum Salomonis , an early
+Solomonic magic text which figures largely in
+the Key of Solomon ,
+Lucidarium artis Nigromanticae § XVII,
+Heptameron , and other magic texts.
+These include:
+El, Yava (seems to appear in corrupted forms Yara and Yatha)
+Adonay, Eloy, Heloym, Saday, Agla, Yoth, Elyon, Primeumathon, Ya, Onoytheon, and Anabona.
+
+Honoytheon appears in various forms as (SSM, L.2.f.55): Onoytheon,
+as well as Onaypheon, Onayefeon, and Oneyteon.
+
+(Chave-Mahir and Véronèse 2015 p. 162 and p. 162 n 152.)
+
+"Yoth Beth" is probably a corruption of "Yoth Heth", as it appears in the Halle ms.
+This leaves only "Pius" unaccounted for.
+
+All of the early manuscripts vary somewhat in the details of the names and other design elements:
+
+Ms. W (based on description):
+(In the first quadrant): Adonay, Alyas, Thelyon, Eloy, Pius.
+(Second): Helyon, Heloim, Helym.
+(Third): Yoth, Beth, agla
+(Fourth): Thetagramathon, Saday, Ya .
+
+Note however, according to the description in the text, there should be only 12 divine names around the perimeter —
+one for each of the twelve altitudes (§§ 21-22; Véronèse 2012, pp. 145-146), thus showing that the
+list of names assigned to the East is defective here.
+
+In the corners should be the "sign of Solomon."
+According to Véronèse, these are six- angled stars, but the manuscript doesn't use the
+
+word sexangulus/exangulus here, but it does for the central figure,
+and other manuscripts variously show five or six-pointed stars.
+Between those signs should be written: Honoyteon, Pneumathon, Yatha, and Anabona .
+
+Ms. W2, based on description:
+
+In the first quadrant: Adonay, Eloy, Pius.
+In the second: Helyon, Heloym, Helym .
+In the third quadrant: Yoth, Beth, Agla .
+In the fourth: Thetragramaton, Zadai, Yaya .
+And it should be known that between one square and the next must be written the name [*sign] of Solomon ...
+between the signs of the first quadrant this name should be written: Honoytheon ,
+and between the signs of the second quadrant: Pneumathon ,
+and between the signs of the third quadrant: Yatha ,
+and between the signs of the fourth quadrant: Anabona .
+
+Ms. Hs. 458 fol. 221r, BnF Al 160 fol. 246r (cardinal directions added):
+
+Vat. lat. 3180 51r . Note: The drawing doesn't match the
+text, and appears to incorporate a number of variants. E.g. in drawing (1) "Adonay helon pius" and (2): "Adonay heloym pius";
+in text: "Adonay Helmon pius".
+In drawing (1) "Helyon Heloy Hely" and (2) "helyon heloy heth"; in text: "helyon helon hely".
+
+Ms. H, fol. 243r, showing candles (shown here as open circles) going through the almadel
+rather than having feet or protrusions which support the almadel. Although the drawing reads "Ioth Beth Agla", the
+text itself has the better reading "Ioth Heth Agla". Note the golden seal (or signet) in the middle.
+
+Coxe 25 p. 218. The name Pneumathon (or Primeumathon)
+seems to be missing from the diagram and the description.
+The text also says (like the others) that "between each of the angles (of the six-angled figure)
+should be written the name of God hel " which was not rendered in the original drawing.
+I have added them in here in red . It has also been rotated 180 degrees to
+better facilitate comparisons.
+Essentially identical is BSB Cgm 407 .
+
+Ad. 36674 fol. 152r (Mid- to late-16th century). This manuscript doesn't
+include any explanation of the diagram. Note the similarities with Coxe 25.
+
+Gollancz fol. 20b: ADNI ALHIM RChMN
+(the last word means "merciful"; equivalent of Latin "pius"/compassionate)
+/ Tetragrammaton ShDI IH / IVD BITh AGLA / OLIVN ALHI ALI ;
+(inner) HVMAITAN / ANBN / IIR / PRIAAMRAVN.
+
+### Ritual apparatus 2: The candles.
+
+According to the Latin text,
+"four candle holders should be made from the same wax,
+such that two parts should be above the almadel, and the third part below.
+Likewise there should be a lip on each candle holder on which the holy almadel can rest,
+and four candles should be made from the same wax, and in the top of each candle holder
+should be a hole, in which the candle should be placed." (Véronèse § 7 p. 137, my translation.)
+
+The English manuscripts seem to have confused this, and instead state that one third of the wax should be used for
+the almadel, and two thirds for the candles.
+
+### Ritual apparatus 3: The garments.
+
+According to the Latin text, the artiste should wear a garment that is the appropriate color
+for the altitude, namely, the same color as the almadel and candles. (Véronèse § 20 pp. 144-145)
+
+### Ritual apparatus 4: Incense and incense burner
+
+The English version mentions only mastic as the incense of choice.
+
+The Latin specifies mastic in most cases, but for the rest:
+
+- fourth: saffron and frankincense
+
+- sixth: mastic and frankincense
+
+- seventh: "incense" ( thimiamata = Exod. 30:34?; / Coxe 25: cinnamon) and frankincense ( thus )
+
+- eighth: frankincense, mastic, and musk
+
+- nineth: musk, saffron, and frankincense
+
+- tenth: lignum aloes and white pepper
+
+### Ritual apparatus 5: The signet or golden seal.
+
+ 
+
+According to the Latin text, a signet or seal should be made of gold or silver,
+and placed in the middle of the almadel.
+On it should be engraved sacred names, inverted .
+( verso modo or everso modo . See Véronèse § 13, pp. 140-141,
+and § L, p. 167.)
+The reason for this is explained later in the ritual: If the angel fails to appear,
+the conjurer should press the seal onto one of the candles, thus imprinting the sacred names
+in their proper form into the wax.
+
+Mss. W and W2 give the sacred names as " Helyon, Adonay ".
+The Halle ms. reads " Heloen Adonay " in text, but Heloem Adonay in drawing;
+the Vatican ms. " Eloem Adonay ";
+Coxe 25 reads "these three names: Heloym, Hel, Adonay ."
+BSB Cgm 407 similarly reads "dise drey nomen Heloym, Hel Adoney ."
+
+It isnt clear whether Heloym (Elohim) אלהים, God/god
+or Helyon עליון Most High was originally intended.
+
+Perhaps the extra name here — El/Hel — (also seen in the English mss.)
+was displaced from the hexagram in the earlier mss., and not originally part of the gold seal.
+
+As seen above, ms. H (fol. 243r) depicts the golden seal as "perfectly circular" (" totius rotundum "),
+both in the drawing and the text,
+whereas the English manuscripts show it as triangular.
+
+(reversed)
+
+(or in Hebrew characters)
+
+The early 16th century Hebrew ms. Genève 145 shows it in the shape of a pentagram,
+with the names "BR (?) / ShU (?) / AVN (?) / ADNI / ALHIM."
+
+NOTE: As with the other examples, the holes in the four corners are for the candles.
+There are six incense vents at the points of the hexagram. The star-shaped signet shown in the
+center is for stamping the candles, and is not part of the almadel table itself.
+
+According to ms. H2 (fol. 230r) the sigil ring should be wrapped in red muslim ( sindon rubea ) when not in use.
+
+### Proposed reconstruction.
+
+Taking all this into consideration, here is a proposed reconstruction, with 12 names around the perimeter
+per §§ 21-22, all taken from the Vinculum Salomonis :
+
+### References
+
+Albrile, Ezio, and Elisabetta Tortelli. Almandal: trattato ermetico di magia salomonica . Milano: Mimesis, 2018.
+
+Barbierato, Federico, Nella stanza dei circoli , Milano, 2002.
+
+Boudet, Jean-Patrice, Entre science et nigromancie , Publications de la Sorbonne, 2006.
+
+Chave-Mahir, Florence, and Julien Véronèse. Rituel d'exorcisme ou manuel de
+magie?: le manuscrit Clm 10085 de la Bayerische Staatsbibliothek de
+Munich (début du XVe siècle) . Firenze: Sismel edizioni del Galluzzo, 2015.
+
+Gehr, Damaris Aschera,
+
+«Gaudent brevitatem moderni»: Rielaborazioni della teoria magica nel tardo medioevo sull'esempio dell'Almandal di Salomone
+in Società e storia 2013.
+
+Gohory, Jacques, and Paracelsus, Theophrasti Paracelsi philosophiae et medicinae utriusque
+universae compendium: ... Cum scholiis in libros 4 eiusdem De vita longa , Paris, 1567.
+
+Gollancz, Hermann, Sepher Maphteah Shelomoh (Book of the Key of Solomon) An exact facsimile of
+an original book of magic in Hebrew , London, Oxford University Press, 1914.
+
+Klaassen, Frank, Making Magic in Elizabethan England: Two Early Modern Vernacular Books of Magic ,
+University Park, Pennsylvania: Pennsylvania State University Press, 2019.
+
+Pack, Roger A., "Almadel" auctor pseudonymus "De firmitate sex scientiarum"
+- In: Archives d'histoire doctrinale et littéraire du Moyen Âge vol. 42 (1975) pp. 147-181.
+
+Pingree, David, "Learned Magic in the Time of Frederick II," in Micrologus , 2, 1994, pp. 39-56.
+
+Shah, Idries, The Secret Lore of Magic , New York, NY: Citadel Press, Inc., 1970. (First published in 1957.)
+
+Regan, Vajra, The De consecratione lapidum : A Previously Unknown
+Thirteenth-Century Version of the Liber Almandal Salomonis ,
+Newly Introduced with a Critical Edition and Translation, Journal of Medieval Latin , vol. 28 (2018): 277333.
+
+Trithemius, Johann, Antipalus Maleficiorum 1605 (written in 1508).
+
+Veenstra, Jan R., "the Holy Almandal", in
+Bremmer, Jan N., and Jan R. Veenstra. The Metamorphosis of Magic from
+Late Antiquity to the Early Modern Period.
+Groningen studies in cultural change, v. 1. Leuven: Peeters, 2002, pp. 189 ff.
+
+Véronèse, Julien,
+
+L'Almandal et l'Almadel latins au Moyen Âge: introduction et éditions critiques .
+Firenze: SISMEL edizioni del Galluzzo, 2012.
+
+Waite, Arthur Edward, The Book of Ceremonial Magic. Including the Rites and Mysteries of Goëtic Theurgy,
+Sorcery and Infernal Necromancy ... [The Secret Tradition in Goëtia.] . London: Rider, 1911.
+
+Zadeh, Travis,
+Tracing the Sorcerer's Circle: Demons, Polysemy, and the Boundaries of Islamic Normativity. Micrologus XXXIII (2025), Power, Religion, and Wisdom. Orthodoxy and Heterodoxy in Al-Andalus , 2025 .
+
+### [Transcription from London, British Library manuscript Sloane 3825.]
+
+[145v]
+
+### Here beginneth the fourth part of this Booke which is called
+
+# Salomons Almadel Art
+
+By this Rule 1 Salomon obtained great wisdom from the cheefe Angells
+that governe the 4 Altitudes of the world for you must observe
+[that] there be 4 Altitudes, representing the 4 corners of
+the world, East, West, North and South. The which are divided
+into 12 parts, that is, every part or Altitude into 3, and the
+Angells of every of these altitudes have their particulars vertues
+and powers, as shall be shewed in this following matter &c c c.
+
+1. Sl. 3648, Sl. 2731, NWU, Harl. 6483: art.
+
+### [The Making of the Almadel]
+
+Make the Almadel of pure white wax, but [+the others must be] 2 colloured sutable to the
+altitude [as will be shown]; it is to be four squares [square], and six Inches
+[over] every way; and in every corner a hole and write betwixt
+every hole with a new pen, These words or names of god, following,
+but this is to be done in the day and hour of Sol.
+
+2. So Sl. 2731, Sl. 3648, NWU.
+
+Write upon the first part towards the East,
+
+Adonai, Helomi, Pine ,
+
+and upon the second towards the south,
+
+Helion, Heloi, Heli ,
+
+and upon the west part:
+
+Jod, Hod, Agla:
+
+and upon the fourth part which is the north write these names:
+
+Tetragrammaton, Shadai, Jah ,
+
+and betwixt the first and the other quarters make The Pentacle of Salomon
+thus , and betwixt
+the first and [the] other quarters write this
+word, Anabona and in the midle of the Almadel make a six angled
+figure and in the middest off it a Triangle wherin must be written
+these names of god,
+
+Hel, Helion, Adoni [*Adonai] , 3
+
+And this
+last name round in the 6 Angled figure, [as well,] 4 as you may see in this figure,
+here made it being ffor an example &c. 5
+
+3. Sl. 3648, Sl. 2731, NWU: Hell Helion Adonaÿ. Harl. 6483: Heli, Helion Adonai.
+
+4. Lat: El.
+
+5. The drawings given in Sl. 3825, Sl. 3648, Sl. 2731, NWU, and Harl. 6483 are essentially identical.
+The figure given by Waite in his Book of Ceremonial Magic is quite defective.
+The version in Idries Shah, Secret Lore of Magic , New York, 1970, p. 172, seems to be based
+on Waite, but with some attempted corrections not based on the original manuscripts.
+
+[146r]
+
+### [The candles]
+
+And of the same wax there must be made four Candles, and they
+must be of the same collour as the Almadel is of. you must divide
+the wax into three parts, one part for to make the Almadel of,
+and the other 2 parts for to make the candles of, 6 and let there
+come forth from every one of them a foot made of y e same wax,
+for to suporte y e Almadel with;
+
+6. Candles : See the introduction. This seems to be a corrruption of the Latin text,
+which specifies that one third of the candle should be below the almadel, and two thirds above.
+
+### [The golden seal]
+
+This being done: in the next place you are to make a seal of pure gold or silver, but Gold
+is best wherein must be engraven these three names: Helion, Hellujon, Adonai ; 7 &c c.
+
+7. Golden Seal : See the introduction.
+
+### [Of the First chora or Altitude (East)]
+
+Nota The first Altitude is called Chora Orientis or the East
+Altitude and to make any experiment in this Chora, it is to be
+done in the day and houre of the Sun: and the power and office of those
+Angells is to make all things fruitfull & encrease, both Animals
+& vegetables, in creation & generation; advancing the Birth
+of [the] children & makeing barren women fruitfull, &c. Their
+names are those. viz t , Alimiel, Gabriel, Borachiel,
+Lebes & Hellison ; 8
+
+8. Lat.: Arymyel, Gabriel, Barachiel, Lybes, Helyffan, Helyson.
+
+Note: you must not pray for any Angells but those that belong to
+the same Altitude, you have a desier to call forth. and when you
+operate, set the four candles upon 4 candle sticks, but be
+carefull you doe not light them before you begin to operate, then
+lay the Almadel between the four candles upon the waxen feet that
+cometh from the candles and lay the golden seal upon the Almadel, and
+<and> [Then] haveing the Invocation 9 redy written on virgins Parchment:
+Light the Candles and read the Invocation as is set down at the
+latter end of this part &c c. 10
+
+9. According to the Latin text, the petition is to be written down on virgin parchment.
+
+10. This phrase is not found in mss. Sl. 3648, Sl. 2731, NWU, or Harl. 6483.
+
+And when he appeareth, he appeareth in the form of an Angell carrying
+in his hand a fan or flagg, having the picture of a white cross
+upon it, his body is wrapped round about with a fair cloud, and
+his face very fair and bright, and a Crown of Rose flowers [is]
+upon his head: he descends 11 first upon the superscription of y e
+Almadel as if it were a Mist or Fogg.
+
+11. Sl. 3648, Sl. 2731, NWU: ascends. Lat.: apparebit super sanctum almadel in aere
+("it will appear in the air above the holy almadel").
+
+Then must the exorcist have in readyness a vessell of Earth
+of y e same collour of [that] the Almadel is of, and the other of his
+furniture, it being in the form of a Basin, and put therein a
+few hot ashes or coales but not too much lest it should melt
+the wax of y e Almadel, & put therein 3 little grains of
+Masticke in powder, so that it fumeth and the smell may goe upwards
+threw the holes of the Almadel when it is under it, and as
+soon as the angell smells it he beginneth to speake with a low voice
+asking what your desier is and why you have called the princes
+and governers of his Altitude.
+then you must Answer him, saying,
+
+I desire that all my requests may be granted, and what I pray
+for may be accomplished, for your office maketh appeare and declareth
+that such is to be fullfild by you if it pleases god, &c,
+
+adding further the particulars of your Requests praying with
+sincerity [and] ^ humility for what is lawfull
+and Just and that you shall indeed obtain from him:
+
+But if he doth not appear presently, you must then take the golden
+seal, And make with it three or four marks upon the candles, by
+which means the angell will presently appeare as aforesaide: and
+when the Angell departeth he will fill the whole place with a sweet
+and pleasant smell which will be smelt a long time.
+
+Nota. The golden seal will serve and is to be used in the operation
+of all the Altitudes. The Collour of the Almadel belonging to
+the first Chora is lilly [lily] white. To the second Chora a Perfect red
+Rose Collour; The 3 d Chora is to be a green mixt with [a] white
+silver collour. The Fourth Chora is to be a black mixt with a little
+green of a sadd collour &c c c c c. 12
+
+12. Sad: a deep, dark color. See table 1 .
+
+### Of the second Chora or Altitude:
+
+Note: all the other three Altitudes with their signes and
+princes have power over goods
+
+[146v]
+and riches, and can make any man Rich or poor, and as the first Chora
+giveth Encrease and maketh fruitfull, so these giveth decrease and Barrenness,
+&c c c c c.
+
+And if any have a desire to operate in any of the other 3
+Choras or Altitudes, they must doe it on Sundays in the manner
+as above is shewed; But doe not pray for anything that is contrary
+to the nature of their office, or against god and his laws, but
+what God giveth according to the course of nature, that you may
+desier and obtaine, and all the furniture that is to be used is to
+be of the same collour as the Almadel is of, and the princes of
+this second Chora are named as Followeth Viz t :
+Alphariza, Genon, Geron, Armon, Gereinon 13 &c.
+
+13. Latin: Alpharaym, Geon vel Gereon, Vereon, Armon, Beremon.
+
+NWU: Alphariza, Genon, Geron, Armon, Gereimon.
+Sl. 3648, Sl. 2731, H: Aphariza ... Gereimon.
+
+and when you operate kneel before the Almadel with cloathes of y e
+same collour in a closet hung with the same collours allso, for the
+holy apparation will be of the same collour: and when he is appeared,
+put the earthen Bason under the Almadel with fire and hott ashes
+and 3 graines of Mastic in poweder to fume as above written,
+and when the Angell smelleth the perfume, he turneth his face towards
+you, asking the Exorcist with a low voyace why he called the princes
+of this Chora or Altitude, then you must answer as before; saying:
+
+I desire that my Request may be granted, and the contents thereof
+may be accomplished, for your offices maketh appear and declareth
+that such is to be done by you if it pleases god, &c:
+
+you must not be fearfull but speak humbly saying &c:
+
+I recomend my
+<my> selfe wholy into your office, and I pray unto your princes of this
+Altitude that I may enjoy [+and obtain all things according to] 14 my
+wishes and desiers, &c:
+
+14. So Sl. 3648, Sl. 2731, NWU, and Harl. 6483.
+
+you may further express your mind
+in all particulars in your prayer &c. doe the like in the 2 other
+Choras that follow &amp.c ~ ~ ~ ~ ~ ~ ~ ~ ~.
+
+The Angell of this second Altitude appears in the form of a young
+childe with clothes of sattin and of a Red Rose collour, haveing a
+crown of Red gilly flowers upon his head, his face looking upwards
+to heaven, and is of a Red Collour and is compassed round about
+with a Bright splendour, as the Beams of the Sunn; and before he
+departeth he speaks to the Exorcist, saying I am your friend and
+brother , and [he] Illuminateth the ayre round above with splendour,
+and [he leaveth a] pleasant smell, which lasteth a long time, &c c c c c.
+
+### of the Third Chora or Altitude
+
+In this Chora you are to doe in all things as you are before directed
+in the other Two. The Angells of this Altitude are named as foll: viz t
+Eliphamasai, Gelomiros, Gedobonai, Saranana, & Elomnia; 15
+They appeare in the form of children or little women drest in green
+and silver collours, very delightfull to behold, and a crown of
+Bay leaves, beset with Flowers of white and green collours upon
+their heads and they seeme to look a little downwards with their
+faces, &c. They speak as the others doe to the Exorcist and
+leave a mighty, sweet perfume behind them, &c c c c c c.
+
+15. Sl. 3648: Eliphaniasai : Gelomiros: Gedobonai: Saranava , & Elomina ;
+
+Sl. 2731: Eliphaniasai Gelomiros Gedobonai Saranava & Elomina ;
+
+NWU: Eliphaniasai , Gelomiras , Gedobenai , Saranava , & Elomnia.
+
+These names seem to be taken from Turner's edition of
+Ars Notoria § 24 : "by thy archangels,
+eliphamasai gelonucoa. Gebeche banai Gerabcai, elomnit ."
+
+Version A (Véronèse p.42): "... per sacratissimos angelos tuos,
+Elypha, Masan, Gelomioos, Gedehantrai, Sasaramana, Elomuid .
+
+### Of the fourth Chora or Altitude
+
+In this Chora you must doe as in the other [others], and the Angells of
+this Chora are called Barchiel, Gediel, Gobiel, Deliel, & Captiel.
+&c. These appeare in the forme of little men or Boys with cloathes of
+a Black collour, mixt with a darke green and in their hands they
+hold a Bird which is naked & their heads are Beare, only it
+is compassed round &
+
+[147r]
+Besett with Ivy [and] Berries. The[y] are all
+very beautifull and comely and are compassed round with a Bright
+shineing of diveres [divers] colours. They leave a sweet smell behinde them
+allso; but [it] differeth from the others something [somewhat] &c c c c c.
+
+These names appear in Agrippa, OP3.24 and OP3.28 .
+
+### [Of the proper times for invoking these angells]
+
+Nota: There are 12 princes rulling besides those in the 4
+Altitudes, and they distribute their offices amongst themselves,
+every one rulling 30 dayes [or thereabouts,] every yeare, now
+it will be in vain to call any of those Angells unless it be those
+that then governeth, For every Chora or Altitude, hath its limited
+time according to the 12 signs of the Zodiack and in that [what]
+signe the Sunn is in. That Angell or those angells that belong to
+that signe have the government: as for Example; suppose I would
+call the 2 first of those 5 that belong to the first Chora,
+Then chuse the first Sunday on March: that is after the Sun
+is entred , and then I make
+my Experiment; and so doe the like if you will the next Sunday
+after againe; But if you will call the 2 second that belong to
+y e first Chora, 16 Then you must take the Sundays that
+are in Aprill, after the
+is entered .
+
+But if you call the last of the 5 th [five] Then you must take those
+Sundays that are in May after the
+is entered ; to make
+your Experiment in; doe the like in the other Altitudes, for they
+have all one way of working: But the Altitudes have a Name formed
+severally in the substance of heaven even as a Character, for
+when the Angells hear the names of god that are attributed to them
+they hear it by the vertue of that carecter [character]. Therefore it is
+in vain to call any angell or spirit unless you knew [know] what names
+of god to call them by; Therefore observe the forme of this Following
+conjuration, or Invocation &c c c c c.
+
+16. This wording makes it clear that the original text had three altitudes for each quadrant,
+for a total of twelve.
+See table 1 .
+
+### The Invocation [for to call forth any of the aforesaid angells]
+
+O thou great mighty and blessed angell of god, N , who ruleth as
+the cheefe & first governing angell in the first Chora or Altitude
+in the East, under the great prince of the East whom you obey,
+and [who] is sett over you as king by the divine power of god, Adonai,
+Helomi, Pine ; who is the distributter & disposer of all things,
+holly in heaven and Earth and hell; I the servant of that god Adonai,
+Helomi, Pine ; which you obey, doe Invocate, Conjure & entreat
+thee N. that thou forthwith appeareth, & by the vertue &
+power of the same god, [Adonai, Helomi, Pine] , I doe command thee
+forth
+[by him whom you do obey and who is set over you as king
+by the divine power of God, that you forthwith descend] ffrom thy
+order or please [place] of abode to come into me, and shew thy selfe plainly
+and visibly here before me in this Cristall stone, in thy owne [and]
+proper shape and glory speaking with a voice intelligible and to [unto]
+my understanding:
+
+O thou mighty and blessed angell N , who art by the power of god
+ordained to governe all vegetables and Animalls, and causeth them,
+and all other creatures of god to spring, encrease, and bring forth
+according to their kinds and natures; I the servant of the same
+your god I doe entreat and humbly beseech thee to come and shew
+unto me all things that I shall desiere of you, so farr as in office
+you can, or be capable to perform, if god permitt to the same;
+
+O thou servant of mercy N , I entreat thee, and humbly beseech thee,
+in and by these 3 names of your true god, Adonai, Helomi,
+Pine , And doe constraine you in and by this [powerful] name
+Anabona ,
+That thou forthwith appeareth vissibly and plainely in thy own proper
+shape and glory in and throwgh this Cristall stone; That I may
+visibly see Thee, and audibly hear you speake unto me, That I
+may have thy blessed and
+
+[147v]
+Glorious angellicall assistance; familiar,
+friendship, and constant society, communication and Instruction,
+both now and at all other times, to Informe and rightly Instruct
+me in my Ignorant and depraved Intellect Judgement and understanding;
+and to assist me both herein, and in all other truths, else what
+the Almighty Adonai , the King of Kings, The giver of all good
+gifts, shall in his Bountifull, and Fatherly Mercy be graceously
+pleased to bestow upon me; Therefore O thou blessed angell N.
+be friendly unto me, and doe for me, so farr as god hath given you
+power in office to performe, whereunto I move you in power and
+presence to appeare That I may sing with his holy Angells, O Mappa-la-man!
+Hallelujah amen. 17
+
+17. John Dee's records of his scrying sessions ( TFR ), Apr 14, 1584 , has this phrase.
+I haven't identified an earlier source.
+
+[Note this invocation is to be altered according to the Altitude
+and angell you wish to call forth.] 18
+
+18. This note is only found in Harley ms. 6483.
+
+When he is appeared, give him or them a kind entertainement, and
+then Aske what is Just and lawfull; and that which is proper and
+suetable to his office, and you shall Obtaine it.
+
+### So endeth the Booke Almadel of Solomon. &c.
+
+- Home
+
+- Contents
+
+- Prev
+
+- almadel
+
+- Next
+
+- timeline

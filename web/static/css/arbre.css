@@ -1,0 +1,710 @@
+/* ═══════════════════════════════════════════════════════════
+   L'Arbre de Vie — Les 10+1 Sephiroth
+   Esthetique : Terminal Codex — manuscrit sacre sur fond terminal
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Tree Overview (schematic at top) ─────────────────── */
+
+.arbre-tree-overview {
+    max-width: 400px;
+    margin: 0 auto 8px;
+    padding: 24px 20px;
+}
+
+.arbre-tree-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.arbre-tree-svg .tree-node {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.arbre-tree-svg .tree-node:hover {
+    opacity: 0.8;
+}
+
+.arbre-tree-svg .tree-node circle {
+    stroke-width: 1.5;
+    fill: #0a0a0a;
+    transition: fill 0.3s ease;
+}
+
+.arbre-tree-svg .tree-node:hover circle {
+    fill: #111;
+}
+
+.arbre-tree-svg .tree-node text {
+    font-family: 'Cinzel', serif;
+    font-size: 7px;
+    fill: #888;
+    text-anchor: middle;
+}
+
+.arbre-tree-svg .tree-path {
+    stroke: #1a1400;
+    stroke-width: 1;
+    fill: none;
+}
+
+.arbre-tree-svg .tree-path-abyss {
+    stroke: #1a1400;
+    stroke-width: 1;
+    stroke-dasharray: 4 3;
+    fill: none;
+}
+
+/* ─── Intro Box ────────────────────────────────────────── */
+
+.arbre-intro {
+    max-width: 640px;
+    margin: 0 auto 12px;
+    padding: 0 20px;
+}
+
+.arbre-intro-inner {
+    border: 1px solid #1a1400;
+    padding: 24px 28px;
+    background: #0c0a04;
+}
+
+.arbre-intro-text {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.75;
+    text-align: center;
+}
+
+/* ─── Section (per Sephirah) ───────────────────────────── */
+
+.arbre-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px 32px;
+}
+
+/* Accent color per section — set via inline style */
+.arbre-section {
+    --accent: #ffb000;
+}
+
+/* ─── Section Header ───────────────────────────────────── */
+
+.arbre-degre {
+    font-family: 'Cinzel', serif;
+    color: #2a1f00;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+/* ─── Sephirah Card ────────────────────────────────────── */
+
+.arbre-card {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0 20px;
+    background: #0d0d0d;
+    border: 1px solid #2a1f00;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Inner gilt frame */
+.arbre-card::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid #1a140033;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.arbre-card,
+.arbre-card *,
+.arbre-card::before {
+    transition: border-color 0.3s ease, opacity 0.3s ease;
+}
+
+.arbre-card-img {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    background: #080808;
+    border: 1px solid #1a1400;
+    flex-shrink: 0;
+}
+
+.arbre-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.arbre-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.arbre-card-label {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 2px;
+}
+
+.arbre-card-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ccc;
+    letter-spacing: 0.03em;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+.arbre-card-hebreu {
+    font-size: 14px;
+    color: #5a4200;
+    direction: rtl;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.arbre-card-module {
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 0.04em;
+    margin-bottom: 0;
+}
+
+.arbre-card-module strong {
+    color: var(--accent);
+}
+
+/* ─── Description ──────────────────────────────────────── */
+
+.arbre-description {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.7;
+    margin: 14px 0 0;
+    padding: 0;
+}
+
+/* ─── Detail — 3-level (En clair / Systeme / Origine) ── */
+
+.arbre-detail {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.arbre-detail-block {
+    padding: 10px 0 10px 14px;
+    border-left: 2px solid var(--accent);
+    margin-left: 0;
+}
+
+.arbre-detail-block + .arbre-detail-block {
+    margin-top: 2px;
+}
+
+.arbre-detail-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.arbre-detail-text {
+    color: #777;
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+.arbre-detail-block:nth-child(2) {
+    border-left-color: #3a2a00;
+}
+
+.arbre-detail-block:nth-child(3) {
+    border-left-color: #1a1400;
+}
+
+.arbre-detail-block:nth-child(2) .arbre-detail-label {
+    color: #6a4e00;
+}
+
+.arbre-detail-block:nth-child(3) .arbre-detail-label {
+    color: #3a2a00;
+}
+
+/* ─── Progress Bar ─────────────────────────────────────── */
+
+.arbre-progress {
+    margin-top: 16px;
+}
+
+.arbre-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.arbre-progress-label {
+    font-size: 9px;
+    color: #555;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.arbre-progress-pct {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.arbre-progress-bar {
+    height: 6px;
+    background: #111;
+    border: 1px solid #1a1400;
+    position: relative;
+    overflow: hidden;
+}
+
+.arbre-progress-fill {
+    height: 100%;
+    background: var(--accent);
+    opacity: 0.7;
+    transition: width 0.8s ease;
+}
+
+.arbre-progress-texte {
+    font-size: 10px;
+    color: #666;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+/* ─── Qliphah Warning ──────────────────────────────────── */
+
+.arbre-qliphah {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: #0d0606;
+    border: 1px solid #2a0a0a;
+    border-left: 3px solid #661111;
+    position: relative;
+}
+
+.arbre-qliphah-header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.arbre-qliphah-tag {
+    font-size: 8px;
+    color: #661111;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.arbre-qliphah-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #993333;
+}
+
+.arbre-qliphah-hebreu {
+    font-size: 11px;
+    color: #4a1111;
+    direction: rtl;
+}
+
+.arbre-qliphah-desc {
+    font-size: 11px;
+    color: #885555;
+    line-height: 1.55;
+}
+
+/* ─── Sentier Info ─────────────────────────────────────── */
+
+.arbre-sentier {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #0a0a06;
+    border: 1px solid #1a1400;
+    border-left: 3px solid #3a2a00;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.arbre-sentier-img {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid #1a1400;
+    background: #080808;
+}
+
+.arbre-sentier-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.arbre-sentier-lettre {
+    font-size: 28px;
+    color: #6a4e00;
+    direction: rtl;
+    line-height: 1;
+    flex-shrink: 0;
+    font-family: 'Frank Ruhl Libre', 'David', 'Times New Roman', serif;
+    opacity: 0.6;
+}
+
+.arbre-sentier-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.arbre-sentier-tag {
+    font-size: 8px;
+    color: #3a2a00;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.arbre-sentier-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #998a5a;
+    margin-bottom: 2px;
+}
+
+.arbre-sentier-desc {
+    font-size: 11px;
+    color: #776a3a;
+    line-height: 1.55;
+    font-style: italic;
+}
+
+/* ─── Narration (between sections) ─────────────────────── */
+
+.arbre-narration {
+    color: #776a3a;
+    font-size: 11px;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 10px auto 0;
+    padding: 10px 16px;
+    border-left: 2px solid #1a1400;
+    text-align: left;
+    font-style: italic;
+}
+
+/* ─── Divider (between sections) ───────────────────────── */
+
+.arbre-divider {
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+}
+
+.arbre-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #2a1f00, transparent);
+}
+
+.arbre-divider span {
+    position: relative;
+    background: var(--bg, #0a0a0a);
+    padding: 0 16px;
+    color: #3a2a00;
+    font-size: 10px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Special Styles per data-style
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Acquis (Malkuth) — muted, check feel ─────────────── */
+
+.arbre-section[data-style="acquis"] .arbre-card {
+    border-color: #1a1a14;
+    opacity: 0.75;
+}
+
+.arbre-section[data-style="acquis"] .arbre-card::before {
+    border-color: #12120e22;
+}
+
+.arbre-section[data-style="acquis"] .arbre-card-nom {
+    color: #999;
+}
+
+.arbre-section[data-style="acquis"] .arbre-progress-fill {
+    opacity: 0.4;
+    background: #886644;
+}
+
+.arbre-section[data-style="acquis"] .arbre-degre::after {
+    content: ' \2713';
+    color: #446633;
+}
+
+/* ─── Mur (Tiferet) — red border accents, emphasis ────── */
+
+.arbre-section[data-style="mur"] .arbre-card {
+    border-color: #4a1a00;
+    box-shadow: 0 0 20px #ff330008, inset 0 0 30px #ff330005;
+}
+
+.arbre-section[data-style="mur"] .arbre-card::before {
+    border-color: #4a1a0033;
+}
+
+.arbre-section[data-style="mur"] .arbre-degre {
+    color: #cc3333;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+}
+
+.arbre-section[data-style="mur"] .arbre-card-nom {
+    color: #ffcc00;
+    text-shadow: 0 0 20px #ffcc0015;
+}
+
+.arbre-section[data-style="mur"] .arbre-progress-bar {
+    border-color: #4a1a00;
+}
+
+.arbre-section[data-style="mur"] .arbre-description {
+    color: #aa8855;
+    font-weight: 500;
+}
+
+/* ─── Pont (Da'at) — dashed borders ────────────────────── */
+
+.arbre-section[data-style="pont"] .arbre-card {
+    border-style: dashed;
+    border-color: #333;
+    background: #0a0a0a;
+}
+
+.arbre-section[data-style="pont"] .arbre-card::before {
+    border-style: dashed;
+    border-color: #22222222;
+}
+
+.arbre-section[data-style="pont"] .arbre-degre {
+    color: #555;
+}
+
+.arbre-section[data-style="pont"] .arbre-card-label {
+    letter-spacing: 0.3em;
+}
+
+.arbre-section[data-style="pont"] .arbre-card-nom {
+    color: #888;
+}
+
+.arbre-section[data-style="pont"] .arbre-qliphah {
+    border-style: dashed;
+}
+
+/* Abyss indicator */
+.arbre-section[data-style="pont"]::before {
+    content: '---- L\2019ABIME ----';
+    display: block;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: #333;
+    padding: 12px 0;
+    margin-bottom: 8px;
+}
+
+/* ─── Horizon (Keter) — white/gold ethereal ────────────── */
+
+.arbre-section[data-style="horizon"] .arbre-card {
+    border-color: #2a2a1a;
+    background: linear-gradient(180deg, #0d0d0a, #0a0a0a);
+    box-shadow: 0 0 40px #ffffff04, 0 0 80px #ffcc0003;
+}
+
+.arbre-section[data-style="horizon"] .arbre-card::before {
+    border-color: #ffffff0a;
+}
+
+.arbre-section[data-style="horizon"] .arbre-degre {
+    color: #666;
+}
+
+.arbre-section[data-style="horizon"] .arbre-card-nom {
+    color: #eee;
+    text-shadow: 0 0 30px #ffffff10;
+}
+
+.arbre-section[data-style="horizon"] .arbre-card-label {
+    color: #999;
+}
+
+.arbre-section[data-style="horizon"] .arbre-card-hebreu {
+    color: #776a3a;
+}
+
+.arbre-section[data-style="horizon"] .arbre-progress-fill {
+    background: linear-gradient(90deg, #333, #666);
+    opacity: 0.3;
+}
+
+.arbre-section[data-style="horizon"] .arbre-progress-pct {
+    color: #666;
+}
+
+.arbre-section[data-style="horizon"] .arbre-description {
+    color: #777;
+    font-style: italic;
+}
+
+/* ─── Table of Contents ────────────────────────────────── */
+.arbre-toc {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+.arbre-toc-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: #0d0d0d;
+    border: 1px solid #1a1400;
+    text-decoration: none;
+    font-size: 11px;
+    transition: border-color 0.3s;
+}
+.arbre-toc-item:hover {
+    border-color: var(--accent, #ffb000);
+}
+.arbre-toc-degre {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    color: var(--accent, #ffb000);
+    font-size: 13px;
+}
+.arbre-toc-nom {
+    color: #999;
+    font-family: 'Cinzel', serif;
+}
+.arbre-toc-module {
+    color: #555;
+    font-size: 10px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 700px) {
+    .arbre-tree-overview {
+        max-width: 280px;
+        padding: 16px 12px;
+    }
+
+    .arbre-intro-inner {
+        padding: 18px 16px;
+    }
+
+    .arbre-section {
+        padding: 0 12px 24px;
+    }
+
+    .arbre-card {
+        grid-template-columns: 72px 1fr;
+        gap: 0 14px;
+        padding: 14px;
+    }
+
+    .arbre-card-img {
+        width: 72px;
+        height: 72px;
+    }
+
+    .arbre-card-nom {
+        font-size: 15px;
+    }
+
+    .arbre-card-hebreu {
+        font-size: 12px;
+    }
+
+    .arbre-detail-block {
+        padding: 8px 0 8px 10px;
+    }
+
+    .arbre-detail-text {
+        font-size: 10px;
+    }
+
+    .arbre-narration {
+        font-size: 10px;
+        padding: 8px 12px;
+    }
+
+    .arbre-qliphah,
+    .arbre-sentier {
+        padding: 10px 12px;
+    }
+
+    .arbre-sentier-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .arbre-sentier-lettre {
+        font-size: 22px;
+    }
+
+    .arbre-divider::before {
+        width: 140px;
+    }
+}

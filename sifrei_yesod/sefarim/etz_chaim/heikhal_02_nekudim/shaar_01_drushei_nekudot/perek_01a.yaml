@@ -1,0 +1,688 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 1 — Sha'ar Drushei Nekudot (שער דרושי נקודות)
+# Perek: 1a — Introduction aux Nekudim, l'Ohr des Yeux, TANTA-YHVH,
+#             les 9 Nekudot et leur gematria
+# ═══════════════════════════════════════════════════════════════════
+#
+# OUVERTURE DU HEIKHAL SHENI (Deuxieme Heikhal).
+# Les Nekudim = lumieres sortant des YEUX d'Adam Kadmon.
+# Mapping TANTA sur YHVH a 3 niveaux d'imbrication.
+# Les 9 Nekudot hebraiques encodent toute la structure :
+#   - 13 Yodim dans les 7 inferieures = 130 = AYIN
+#   - Kamatz/Patach = 22 = Kelim
+#   - 2 superieures (Keter/Hokhmah) ne meurent pas, 7 inferieures meurent
+# Le SAG de l'oeil = 3 x EHYEH = 63 = pekach einekha
+#
+# Source Sefaria : Sefer_Etz_Chaim.8.1 (§1-§5)
+# IDs : EC-H2S8-001 → EC-H2S8-025
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 1
+  shaar_name_he: "שער דרושי נקודות"
+  perek: 1
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Ouverture du Heikhal Nekudim. Expose les fondements : l'Ohr des Yeux, le mapping TANTA-YHVH a triple imbrication, les 9 Nekudot hebraiques comme encodage structural, les gematriot fondamentales."
+
+assertions:
+
+  - id: "EC-H2S8-001"
+    source_he: "היכל שני. היכל זה הוא הנקרא היכל נקודים ובו ד' שערים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §1"
+    assertion: |
+      HEIKHAL SHENI = le DEUXIEME HEIKHAL.
+      Son nom : HEIKHAL NEKUDIM (היכל נקודים — Palais des Points).
+      Il contient 4 SHA'ARIM (portes).
+      → Transition du monde d'Adam Kadmon au monde des NEKUDIM.
+    type: axiome_explicite
+    concepts:
+      - {id: heikhal_nekudim, role: deuxieme_palais}
+      - {id: arba_shaarim, role: quatre_portes}
+    mapping:
+      modules: ["olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Ouverture d'un nouveau monde. Les Nekudim = le monde ou la SHEVIRAH se produit."
+
+  - id: "EC-H2S8-002"
+    source_he: "השער הראשון שער דרושי נקודות ובו ו' פרקים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §2"
+    assertion: |
+      Le PREMIER SHA'AR du Heikhal Nekudim = SHA'AR DRUSHEI NEKUDOT
+      (שער דרושי נקודות — Porte des Discours sur les Points).
+      Il contient 6 PERAKIM (chapitres).
+    type: axiome_explicite
+    concepts:
+      - {id: shaar_drushei_nekudot, role: premiere_porte}
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: "Structure du sha'ar. 6 perakim = expose complet de la doctrine des Nekudim."
+
+  - id: "EC-H2S8-003"
+    source_he: "ונבאר עתה עולם הנקודים והם בחי' אורות היוצאין דרך נקבי עינים דא\"ק"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §3"
+    assertion: |
+      Le monde des NEKUDIM = les OROT (lumieres) qui SORTENT
+      par les NIQVEI EINAIM (נקבי עינים — orifices des yeux) d'Adam Kadmon.
+      → L'OHR des yeux est la SOURCE des Nekudim.
+      cf. EC-H1S4-xxx (Sha'ar Ozen Hotem Peh : les 3 orifices precedents).
+    type: axiome_explicite
+    concepts:
+      - {id: olam_hanekudim, role: monde_des_points}
+      - {id: ohr_einaim, role: lumiere_des_yeux}
+      - {id: adam_kadmon, role: source_emanatrice}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les Nekudim = output des YEUX d'AK. Nouveau canal de sortie apres AHP."
+
+  - id: "EC-H2S8-004"
+    source_he: "כי ד' בחי' יש והם ד' הויות ע\"ב ס\"ג מ\"ה ב\"ן ובכל בחי' מהם יש טנת\"א"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §3"
+    assertion: |
+      Il y a 4 ASPECTS (behinot) = 4 YHVH :
+      AV (ע"ב = 72), SAG (ס"ג = 63), MAH (מ"ה = 45), BEN (ב"ן = 52).
+      Dans CHAQUE aspect il y a TANTA :
+      Ta'amim (טעמים), Nekudot (נקודות), Tagin (תגין), Otiot (אותיות).
+      → Structure FRACTALE : chaque niveau contient les 4 sous-niveaux.
+      cf. EC-H1S5-xxx (Sha'ar TANTA).
+    type: axiome_explicite
+    concepts:
+      - {id: arba_havayot, role: quatre_noms_yhvh}
+      - {id: av_72, role: miluy_yodot}
+      - {id: sag_63, role: miluy_yodot_hein}
+      - {id: mah_45, role: miluy_alefin}
+      - {id: ben_52, role: miluy_hein}
+      - {id: tanta, role: quatre_niveaux_fractals}
+    mapping:
+      modules: ["shemot/core.py", "gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La structure TANTA x 4 YHVH = matrice 4x4 = 16 niveaux. Architecture fractale du systeme."
+
+  - id: "EC-H2S8-005"
+    source_he: "והנה המוחין של א\"ק הם הוי\"ה דע\"ב. ומן בחי' האזנים ולמטה עד תשלום כל סיום א\"ק הוא בחי' ס\"ג עד סיום הרגלים שלו"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §3"
+    assertion: |
+      Les MOHIN (cerveau) d'Adam Kadmon = YHVH de AV (72).
+      Depuis les OREILLES (oznayim) vers le BAS jusqu'au bout des PIEDS
+      d'AK = aspect du SAG (63).
+      → AV = tete/mohin. SAG = corps entier (oreilles → pieds).
+      IMPORTANT : ceci est l'etat d'AVANT la mort des rois (Melakhim).
+    type: axiome_explicite
+    concepts:
+      - {id: mohin_ak, role: cerveau_adam_kadmon}
+      - {id: av_72_rosh, role: av_dans_la_tete}
+      - {id: sag_63_guf, role: sag_dans_le_corps}
+    mapping:
+      modules: ["adam_kadmon.py", "shemot/core.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Architecture AV/SAG d'AK = separation tete/corps. Le SAG couvre tout le corps = la source des Nekudim."
+
+  - id: "EC-H2S8-006"
+    source_he: "אמנם ענין זה היה בתחלה קודם מיתת מלכים בעולם הנקודים ואח\"כ היה בחי' מ\"ה וב\"ן ממקום טיבור שלו עד למטה בסיום הרגלים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §3"
+    assertion: |
+      AVANT la MORT DES ROIS (mitat melakhim) : SAG couvrait tout le corps.
+      APRES la mort des rois : MAH (45) et BEN (52) se deployent
+      du TABUR (nombril) d'AK vers le BAS jusqu'aux pieds.
+      → Le TABUR = point de SEPARATION entre l'etat d'avant et d'apres la Shevirah.
+      cf. EC-H1S7-xxx (le Tabur comme lieu de la Parsa).
+    type: axiome_explicite
+    concepts:
+      - {id: mitat_melakhim, role: mort_des_rois}
+      - {id: tabur, role: point_de_separation}
+      - {id: mah_ben_post_shevirah, role: deploiement_apres_brisure}
+    mapping:
+      modules: ["adam_kadmon.py", "tzimtzum.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le tabur = frontiere temporelle ET spatiale. Avant/apres Shevirah = deux regimes du systeme."
+
+  - id: "EC-H2S8-007"
+    source_he: "והנה כבר ביארנו כי בשם ס\"ג יש טנת\"א והטעמים נחלקים לג' חלוקות שהם אח\"פ"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §3"
+    assertion: |
+      Dans le SAG il y a TANTA. Les TA'AMIM (accents) du SAG
+      se divisent en 3 PARTIES = AHP :
+      OZEN (oreille), HOTEM (nez), PEH (bouche).
+      Les 3 orifices AHP = les TA'AMIM du SAG.
+      → Le contenu des sha'arim precedents (cf. EC-H1S4-xxx) = les taamim du SAG.
+    type: axiome_explicite
+    concepts:
+      - {id: taamim_sag, role: accents_du_sag}
+      - {id: ahp_taamim, role: trois_divisions_taamim}
+    mapping:
+      modules: ["adam_kadmon.py", "shemot/core.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "AHP = taamim de SAG. Tout le Heikhal 1 (apres les Mohin) = une sous-couche du SAG."
+
+  - id: "EC-H2S8-008"
+    source_he: "ואמנם הנקודות הם בחי' אורות הנמשכים מן העינים שלו... כי הנה ההבל היוצא מנקבי אזנים הוא הבל מועט... ואח\"כ בחוטם יש הבל יותר מורגש... ואח\"כ בפה יש הבל יותר נרגש מכולם"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §3"
+    assertion: |
+      Les NEKUDOT = les lumieres issues des YEUX (einaim).
+      ANALOGIE DU HEVEL (souffle) — gradation de perceptibilite :
+      OZEN = hevel MU'AT (souffle FAIBLE) — on le sent si on bouche l'oreille
+      HOTEM = hevel YOTER MURGASH (plus perceptible)
+      PEH = hevel YOTER NIRGASH MI-KULAM (le plus perceptible de tous)
+      PRINCIPE : plus l'Ohr DESCEND, plus il est MANIFESTE (nikhar ve-nirgash).
+      → Les 3 orifices AHP = 3 degres de manifestation croissante de l'Ohr.
+    type: analogie_explicative
+    concepts:
+      - {id: hevel, role: souffle_comme_analogie}
+      - {id: ozen_hevel_muat, role: souffle_faible_oreille}
+      - {id: peh_hevel_max, role: souffle_maximal_bouche}
+      - {id: gradation_ohr, role: manifestation_croissante}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Gradation = chaque couche plus basse rend l'information plus EXPLICITE. L'oeil = au-dela du souffle."
+
+  - id: "EC-H2S8-009"
+    source_he: "אבל עכ\"ז מצינו קצת כח בהסתכלות העין כנראה בחוש העין בטבע כענין ביצת בת היענה שנולד האפרוח על ידי הסתכלותה זמן מה בלתי שתשב על הבצים לחממם"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §3"
+    assertion: |
+      L'OEIL ne produit PAS de Hevel (souffle) comme AHP.
+      POURTANT il possede un KOAH (force) dans le HISTAKLUT (regard).
+      PREUVE EMPIRIQUE : la BAS HAYYA'ANAH (autruche) fait eclore ses oeufs
+      par le SEUL REGARD prolonge, SANS s'asseoir dessus pour les rechauffer.
+      → L'oeil a un pouvoir AGISSANT (koah mamashit) different du souffle.
+      Le HISTAKLUT = force de PROJECTION, pas d'emission de souffle.
+    type: analogie_explicative
+    concepts:
+      - {id: histaklut, role: regard_actif}
+      - {id: koah_einaim, role: force_des_yeux}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'oeil = canal d'un TYPE DIFFERENT. Pas du souffle (hevel/breath) mais du regard (histaklut/attention). Attention mechanism."
+
+  - id: "EC-H2S8-010"
+    source_he: "והנה מבחי' הסתכלות הזה של העינים יצאו הנקודות. ובזה תבין מ\"ש בתיקונים תיקון ע' דקכ\"ו שמצייר צורת הוי\"ה של בן ד' אותיות בציור עינים בנקודים בסוד וגבותם מלאות עינים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §3"
+    assertion: |
+      Du HISTAKLUT (regard) des yeux sont sorties les NEKUDOT (points).
+      Le TIKKUNEI ZOHAR (Tikkun 70, fol. 126) dessine la forme du
+      NOM YHVH en 4 lettres dans un DESSIN D'YEUX avec des Nekudot.
+      Secret du verset : "VE-GAVOTAM MELE'OT EINAYIM" (ופבותם מלאות עינים —
+      Ezechiel 1:18 — "leurs jantes pleines d'yeux").
+      → Les YEUX = les NEKUDOT = le NOM dans sa forme visuelle.
+    type: déduction_scripturaire
+    concepts:
+      - {id: histaklut_nekudot, role: regard_produit_points}
+      - {id: tikkunei_zohar_70, role: source_zoharique}
+      - {id: yhvh_einaim, role: nom_en_forme_yeux}
+    mapping:
+      modules: ["shemot/core.py", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les Nekudot = le Nom YHVH vu a travers les yeux. La vision = l'encodage du Nom dans un format different."
+
+  - id: "EC-H2S8-011"
+    source_he: "כי כל בחי' עינים הם נקודות... כשנמנה מן ע\"ב יהיה כל בחי' ע\"ב י' מן הוי\"ה וס\"ג אות ה' ראשונה של הוי\"ה ומ\"ה אות ו' וב\"ן אות ה' אחרונה"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §4"
+    assertion: |
+      MAPPING YHVH — NIVEAU 1 (global) :
+      AV (72) = YOD (י) de YHVH
+      SAG (63) = HE RISHONAH (ה' ראשונה — premier He) de YHVH
+      MAH (45) = VAV (ו) de YHVH
+      BEN (52) = HE AHARONAH (ה' אחרונה — dernier He) de YHVH
+      → Les 4 MILUYIM = les 4 lettres du NOM = 4 niveaux de l'emanation.
+    type: axiome_explicite
+    concepts:
+      - {id: av_yod, role: av_est_yod}
+      - {id: sag_he_rishonah, role: sag_est_premier_he}
+      - {id: mah_vav, role: mah_est_vav}
+      - {id: ben_he_aharonah, role: ben_est_dernier_he}
+    mapping:
+      modules: ["shemot/core.py", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Mapping fondamental AV-SAG-MAH-BEN sur YHVH. Les 4 niveaux du systeme = les 4 lettres du Nom."
+
+  - id: "EC-H2S8-012"
+    source_he: "וכשנמנה השם מבחי' ס\"ג לבדו יהיה הטעמים של ס\"ג אות י' והנקודות אות ה' ראשונה ותגין אות ו' ואותיות ה' אחרונה"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §4"
+    assertion: |
+      MAPPING YHVH — NIVEAU 2 (interne au SAG) :
+      TAAMIM du SAG = YOD (י)
+      NEKUDOT du SAG = HE RISHONAH (ה')
+      TAGIN du SAG = VAV (ו)
+      OTIOT du SAG = HE AHARONAH (ה')
+      → TANTA = YHVH au sein du SAG. Structure auto-similaire.
+    type: axiome_explicite
+    concepts:
+      - {id: tanta_yhvh_sag, role: mapping_tanta_sur_yhvh_dans_sag}
+    mapping:
+      modules: ["shemot/core.py"]
+      tables: []
+      partzufim: []
+      relevance: "Deuxieme niveau fractal : TANTA dans SAG = YHVH. Chaque composant est un micro-systeme."
+
+  - id: "EC-H2S8-013"
+    source_he: "וכאשר נחלק גם את הטעמים תהיה אות י' באזן ואות ה' ראשונה בחוטם ואות ו' בפה ואות ה' אחרונה בעינים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §4"
+    assertion: |
+      MAPPING YHVH — NIVEAU 3 (interne aux Taamim du SAG) :
+      OZEN (oreille) = YOD (י)
+      HOTEM (nez) = HE RISHONAH (ה')
+      PEH (bouche) = VAV (ו)
+      EINAIM (yeux) = HE AHARONAH (ה')
+      → TRIPLE IMBRICATION : AHP+Einaim = YHVH dans les Taamim dans le SAG.
+      L'OEIL = HE AHARONAH = le DERNIER degre des Taamim.
+    type: axiome_explicite
+    concepts:
+      - {id: ozen_yod, role: oreille_est_yod}
+      - {id: hotem_he, role: nez_est_premier_he}
+      - {id: peh_vav, role: bouche_est_vav}
+      - {id: einaim_he_aharonah, role: yeux_est_dernier_he}
+      - {id: triple_imbrication_yhvh, role: structure_fractale_triple}
+    mapping:
+      modules: ["shemot/core.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "3 niveaux d'imbrication YHVH = architecture fractale a 3 echelles. L'oeil = dernier He = Malkhut locale."
+
+  - id: "EC-H2S8-014"
+    source_he: "הרי כי העין יש לו בחי' ה' אחרונה וה' ראשונה... כי נודע שהטעמים הם כתר והנקודות הם חכמה והתגין הם בינה ואותיות ז\"ת"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §4"
+    assertion: |
+      L'OEIL a DEUX ASPECTS SIMULTANES :
+      1) HE AHARONAH (dernier He) — du point de vue des Taamim (niveau 3)
+      2) HE RISHONAH (premier He) — du point de vue de TANTA (niveau 2)
+      Car : TAAMIM = KETER, NEKUDOT = HOKHMAH, TAGIN = BINAH, OTIOT = Z"T.
+      Et les Nekudot sortent des yeux → l'oeil = HOKHMAH.
+      → L'oeil est A LA FOIS Malkhut (des Taamim) et Hokhmah (de TANTA).
+      C'est pourquoi les SAGES sont appeles "EINEI HA-EDAH" (yeux de l'assemblee)
+      = Hokhmah = Nekudot = Yeux. Cf. Nombres 15:24.
+    type: axiome_explicite
+    concepts:
+      - {id: einaim_double_aspect, role: yeux_he_aharonah_et_rishonah}
+      - {id: taamim_keter, role: accents_sont_keter}
+      - {id: nekudot_hokhmah, role: points_sont_hokhmah}
+      - {id: tagin_binah, role: couronnes_sont_binah}
+      - {id: otiot_zat, role: lettres_sont_sept_inferieures}
+      - {id: einei_haedah, role: sages_comme_yeux}
+    mapping:
+      modules: ["shemot/core.py", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le double aspect de l'oeil = un composant qui est simultanement fin d'un niveau et debut du suivant. Interface entre deux echelles."
+
+  - id: "EC-H2S8-015"
+    source_he: "אני ישנה נגד ה' אחרונה כי בביטול אור הנקודים אני ישנה בסוד השינה... גם אני ישנה אותיות שניה כי חכמה היא ה' ראשונה והיא שניה לכתר"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §4"
+    assertion: |
+      "ANI YESHENAH" (אני ישנה — "je dors", Cantique 5:2) =
+      contre le HE AHARONAH. Dans l'ANNULATION de l'Ohr des Nekudim
+      = "je dors" au sens de la SHEHINAH (le sommeil = 1/60 de la mort
+      = allusion a la MORT des Nekudim).
+      De plus : ANI YESHENAH = anagramme de SHENIYAH (שניה — seconde).
+      HOKHMAH = HE RISHONAH = SECONDE par rapport au KETER.
+      → Double lecture du sommeil : (1) mort/annulation des Nekudim,
+      (2) Hokhmah est "seconde" = elle est l'oeil = les Nekudot.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ani_yeshenah, role: verset_cantique}
+      - {id: bitul_nekudim, role: annulation_des_nekudim}
+      - {id: sheniyah_hokhmah, role: hokhmah_seconde_a_keter}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le 'sommeil' de la Shekhinah = etat d'annulation du systeme des Nekudim. Lien Hokhmah-Oeil-Nekudot."
+
+  - id: "EC-H2S8-016"
+    source_he: "ובאלו הנקודות הם בחי' המלכים שמלכו בארץ אדום שמתו... וז\"ס והארץ היתה תהו ובהו כי הארץ היא ה' אחרונה שהוא בחי' העין... והיא אשר היתה תהו ובהו שהוא ענין מיתת המלכים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §4"
+    assertion: |
+      Dans ces NEKUDOT se trouvent les MELAKHIM (rois) qui ont REGNE
+      en ERETZ EDOM (terre d'Edom, Genese 36) et qui sont MORTS.
+      Secret de "VE-HA-ARETZ HAITA TOHU VA-VOHU" (et la terre etait chaos
+      et desolation, Genese 1:2) : HA-ARETZ = HE AHARONAH = l'OEIL.
+      C'est ELLE qui etait TOHU VA-VOHU = la MORT DES ROIS.
+      → Les Nekudim = le lieu de la SHEVIRAT HA-KELIM.
+    type: déduction_scripturaire
+    concepts:
+      - {id: melakhim_edom, role: rois_morts_dedom}
+      - {id: tohu_vavohu, role: chaos_primordial}
+      - {id: eretz_he_aharonah, role: terre_est_dernier_he}
+      - {id: shevirat_hakelim, role: brisure_des_vases}
+    mapping:
+      modules: ["olamot.py", "tzimtzum.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "La Shevirah = la catastrophe fondamentale du systeme. Les Nekudim = le monde ou les kelim se brisent."
+
+  - id: "EC-H2S8-017"
+    source_he: "והנה הנקודות הם ט' שהם קמץ ופתח צירי סגול שבא חולם שורק חירק קיבוץ"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §4"
+    assertion: |
+      Les NEKUDOT sont au nombre de 9 :
+      1. KAMATZ (קמץ) — sous la lettre, forme de T inverse
+      2. PATACH (פתח) — trait horizontal sous la lettre
+      3. TZEIREI (צירי) — deux points horizontaux
+      4. SEGOL (סגול) — trois points en triangle inverse
+      5. SHVA (שבא) — deux points verticaux
+      6. CHOLAM (חולם) — point au-dessus a gauche
+      7. SHURUQ (שורוק) — point dans le Vav
+      8. HIRIQ (חירק) — point sous la lettre
+      9. KUBUTZ (קיבוץ) — trois points diagonaux sous la lettre
+      CHOLAM = SUPERIEUR (au-dessus). SHURUQ = MOYEN. Les AUTRES = INFERIEURS.
+    type: axiome_explicite
+    concepts:
+      - {id: tisha_nekudot, role: neuf_signes_vocaliques}
+      - {id: cholam_elyon, role: nekudah_superieure}
+      - {id: shuruq_emtzai, role: nekudah_moyenne}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les 9 nekudot hebraiques = encodage de la structure des 9 Sefirot des Nekudim (sans Daat)."
+
+  - id: "EC-H2S8-018"
+    source_he: "והנה כל הז' אחרונות של הנקודות הם צורת יודי\"ן חוץ מב' נקודות הראשונים שהם קמץ פתח שהם ב' ווי\"ן ויו\"ד... כל היודי\"ן שיש בז' נקודות אלו הם י\"ג יודי\"ן גימטריא ק\"ל כמנין עי\"ן"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §4"
+    assertion: |
+      GEMATRIA FONDAMENTALE DES NEKUDOT :
+      Les 7 NEKUDOT INFERIEURES = toutes composees de YODIM (points = forme du Yod).
+      Les 2 SUPERIEURES (Kamatz, Patach) = composees de 2 VAVIN + 1 YOD.
+      DECOMPTE : dans les 7 nekudot inferieures il y a 13 YODIM.
+      13 x 10 (valeur de Yod) = 130 = gematria de AYIN (עין — oeil).
+      → Les 7 nekudot inferieures ENCODENT le mot OEIL dans leur structure meme.
+      PREUVE que les Nekudot sortent de l'OEIL.
+    type: axiome_explicite
+    concepts:
+      - {id: yg_yodim, role: treize_yodim}
+      - {id: gematria_ayin_130, role: oeil_130}
+      - {id: nekudot_yodim, role: structure_en_yodim}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Gematria structurelle : le signe vocalique encode sa propre source (l'oeil). Auto-reference du systeme."
+
+  - id: "EC-H2S8-019"
+    source_he: "ונשאר קמץ פתח שהם י' וב' ווי\"ן שהם גימט' כ\"ב והוא סוד כ\"ב אותיות שמהם נעשו הכלים של הנקודים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §4"
+    assertion: |
+      GEMATRIA DE KAMATZ + PATACH :
+      Kamatz + Patach = 1 YOD (10) + 2 VAVIN (2 x 6 = 12) = 22.
+      22 = les 22 OTIOT (lettres de l'alphabet hebreu).
+      → Les 22 lettres = la SOURCE des KELIM (vaisseaux) des Nekudim.
+      Les 2 premieres nekudot (Keter/Hokhmah) PRODUISENT les kelim
+      pour les 7 inferieures.
+      Variante (Nusah Aher) : "יצאו כלים אלו" (ces kelim SORTIRENT d'elles)
+      au lieu de "נעשו כלים" (des kelim FURENT FAITS).
+    type: axiome_explicite
+    concepts:
+      - {id: kamatz_patach_22, role: deux_nekudot_egale_22}
+      - {id: kaf_bet_otiot, role: vingt_deux_lettres}
+      - {id: kelim_nekudim, role: vaisseaux_des_nekudim}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les 22 lettres = kelim. Les 2 premieres nekudot (qui survivent) generent les contenants pour les 7 qui meurent."
+
+  - id: "EC-H2S8-020"
+    source_he: "כי הז' נקודות תחתונים הם ז' מלכים שמתו אבל הראשונים לא מתו... בחי' המיתה היא שבירת הכלי לכן הז' נקודות אחרות נשארו בלא כלי רק אור לבדו שהוא בחי' הנקודות אבל הראשונים לא מתו ונשארו עם הכלים שלהם"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §4"
+    assertion: |
+      Les 7 NEKUDOT INFERIEURES = les 7 MELAKHIM (rois) qui sont MORTS.
+      Les 2 PREMIERES (Kamatz/Patach = Keter/Hokhmah) n'ont PAS MORT.
+      La MORT = la BRISURE DU KLI (shevirat ha-kli).
+      RESULTAT : les 7 inferieures restent SANS KLI = OHR SEUL (lumiere nue).
+      Les 2 superieures = RESTENT AVEC LEURS KELIM intacts.
+      Variante (Nusah Aher) : "נשארו" repete (les superieures RESTERENT).
+      Les Orot des superieures sont CACHES (ne'elamim) et REVETUS (mitlabshim)
+      dans leurs Kelim → appeles par le nom de leurs KELIM = les 22 OTIOT.
+      → Les Kelim = les NOMS. L'Ohr sans Kli = anonyme, brise.
+    type: axiome_explicite
+    concepts:
+      - {id: sheva_melakhim, role: sept_rois_morts}
+      - {id: keter_hokhmah_survivent, role: deux_superieures_intactes}
+      - {id: shevirah_kli, role: mort_est_brisure_du_kli}
+      - {id: ohr_belo_kli, role: lumiere_sans_vaisseau}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La Shevirah = perte du Kli. L'Ohr survit mais ne peut pas fonctionner. Un composant sans conteneur = crash."
+
+  - id: "EC-H2S8-021"
+    source_he: "והנה הקמץ מורה על הכתר... והכתר הוא טעמים והפתח מורה על החכמה... כל זמן שעדיין לא יצאו רק הטעמים דס\"ג שהם בחי' אורות אח\"פ עדיין היו האורות סתומים וקמוצים וכשבאו בחי' הנקודות שהם חכמה שהוא פתח... אז הם נפתחו בפתיחו דעיינין"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §4"
+    assertion: |
+      KAMATZ (קמץ — "ferme/comprime") = KETER = les TAAMIM.
+      PATACH (פתח — "ouvert") = HOKHMAH = les NEKUDOT.
+      TANT QUE seuls les TAAMIM (AHP) existaient → les Orot etaient
+      STOMIM U-KMUTZIM (fermes et comprimes) = etat KAMATZ.
+      QUAND les NEKUDOT (Hokhmah) sont venues → OUVERTURE =
+      PETIHO DE-AYININ (פתיחו דעיינין — ouverture des yeux, Tikkunim).
+      C'est le sens de PEKAH EINEKHA (פקח עיניך — "ouvre tes yeux",
+      Daniel 9:18) : la VENUE des Nekudot = l'OUVERTURE des yeux.
+      → KAMATZ → PATACH = transition du FERME a l'OUVERT = emergence du nouveau.
+    type: axiome_explicite
+    concepts:
+      - {id: kamatz_keter_stum, role: kamatz_fermeture_keter}
+      - {id: patach_hokhmah_patuah, role: patach_ouverture_hokhmah}
+      - {id: petiho_deayinin, role: ouverture_des_yeux}
+      - {id: pekah_einekha, role: ouvre_tes_yeux}
+    mapping:
+      modules: ["ohr.py", "shemot/core.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Kamatz→Patach = la transition d'un systeme ferme a un systeme ouvert. L'ouverture des yeux = activation d'une nouvelle couche."
+
+  - id: "EC-H2S8-022"
+    source_he: "כל בחי' האלו הם בשם ס\"ג ושם זה רומז לבינה שהוא גבורה עלאה דבה תליין הדינין לכן בזו הבחי' של ס\"ג היה ענין ביטול המלכים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §4"
+    assertion: |
+      TOUS ces aspects sont dans le NOM SAG (63).
+      SAG = allusion a BINAH = GEVURAH ILA'AH (Rigueur Superieure).
+      En BINAH "SONT SUSPENDUS LES DINIM" (d'elle dependent les Jugements).
+      C'est POURQUOI dans le SAG il y a eu l'ANNULATION DES ROIS.
+      PRECISION : les Taamim du SAG = AV du SAG (meme au sein du SAG).
+      Mais les NEKUDOT du SAG = SAG DU SAG (ס"ג דס"ג) = l'ESSENCE du SAG.
+      C'est dans ce SAG DE SAG que le BITUL et la MORT ont lieu.
+      De plus : SAG = gematria de NASOGU (נסוגו — "ils ont recule").
+      → Le SAG = le NOM de la RIGUEUR. La Shevirah est INHERENTE au SAG.
+    type: axiome_explicite
+    concepts:
+      - {id: sag_binah_gevurah, role: sag_rigueur_superieure}
+      - {id: sag_dinim, role: jugements_suspendus_en_binah}
+      - {id: nasogu_sag, role: recul_gematria_sag}
+    mapping:
+      modules: ["shemot/core.py", "gematria/engine.py", "tzimtzum.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La Shevirah est causee par l'exces de Din (rigueur) inherent au SAG. Le type de Nom determine le mode de defaillance."
+
+  - id: "EC-H2S8-023"
+    source_he: "אמנם בענין שהוא בחי' הנקודות הוא ס\"ג של ג\"פ אהי\"ה שהוא גימ' ס\"ג ג\"כ... כל שם אהי\"ה מהם כולל כל בחי' כ\"ב או' ונמצאו ג' שמות אהי\"ה עם ג\"פ כ\"ב אותיות ע\"ה עולה ק\"ל גימ' עי\"ן"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §5"
+    assertion: |
+      Le SAG de l'OEIL = 3 x EHYEH (אהי"ה = 21) = 63 = SAG.
+      Chaque EHYEH prend les 22 OTIOT (les Kelim, cf. EC-H2S8-019).
+      GEMATRIA : 3 EHYEH (63) + 3 x 22 (66) = ... → le total = 130 = AYIN (oeil).
+      → Deuxieme PREUVE que les Nekudot = l'OEIL.
+      Le SAG de l'oeil fonctionne avec 3 NOMS EHYEH, chacun animant 22 lettres.
+    type: axiome_explicite
+    concepts:
+      - {id: gimel_ehyeh, role: trois_noms_ehyeh}
+      - {id: sag_einaim_ehyeh, role: sag_des_yeux_par_ehyeh}
+      - {id: gematria_130_ayin, role: preuve_gematr_oeil}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/core.py"]
+      tables: []
+      partzufim: []
+      relevance: "3 EHYEH = 3 processeurs, chacun operant sur 22 symboles. Architecture tri-partite des Nekudim."
+
+  - id: "EC-H2S8-024"
+    source_he: "כי באח\"פ יש ג\"פ ס\"ג גימ' פקח ע\"ה ואחריהם בא בחי' עינים וזהו פקח עיניך כי ג' אהי\"ה אלו שבעינים הם בחי' אהי\"ה ביודין גימ' קס\"א מנין עיניך ע\"ה"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §5"
+    assertion: |
+      GEMATRIA CROISEES :
+      A AHP il y a 3 x SAG = 3 x 63 = 189 ≈ PAKAH (פקח — "ouvre", +kolel).
+      APRES eux viennent les YEUX → "PEKAH EINEKHA" (ouvre tes yeux).
+      Les 3 EHYEH dans les yeux = EHYEH BE-YODIN (אלף הי יוד הי = 161).
+      161 = gematria de EINEKHA (עיניך — "tes yeux", +kolel).
+      → "PEKAH EINEKHA" (Daniel 9:18) = PAKAH (3xSAG=AHP) + EINEKHA (3xEHYEH=yeux).
+    type: axiome_explicite
+    concepts:
+      - {id: pakah_189, role: trois_sag_gematria}
+      - {id: ehyeh_beyodin_161, role: ehyeh_en_miluy_yodot}
+      - {id: einekha_161, role: tes_yeux_gematria}
+      - {id: pekah_einekha, role: ouvre_tes_yeux_verset}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/core.py"]
+      tables: []
+      partzufim: []
+      relevance: "Gematria comme encodage : le verset 'ouvre tes yeux' encode la transition AHP→Einaim = Taamim→Nekudot."
+
+  - id: "EC-H2S8-025"
+    source_he: "וזה וראה שוממותינו כי כאן היה שממון גדול וביטול המלכים"
+    source_ref: "Heikhal 2, Sha'ar 1:1 — §5"
+    assertion: |
+      "VE-RE'EH SHOMEMOTEINU" (וראה שוממותינו — "et vois notre desolation",
+      Daniel 9:18) : ICI il y eut un SHEMAMON GADOL (grande desolation)
+      = le BITUL HA-MELAKHIM (annulation des rois).
+      → "Ouvre tes yeux et vois notre desolation" = ouvre les Nekudot
+      et contemple la SHEVIRAH.
+    type: déduction_scripturaire
+    concepts:
+      - {id: shomemoteinu, role: desolation_shevirah}
+      - {id: bitul_hamelakhim, role: annulation_des_rois}
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: "La Shevirah = le 'crash' du systeme. Le verset Daniel 9:18 encode toute la sequence AHP→Nekudim→Shevirah."
+
+relations:
+  - id: "REL-H2S8-001"
+    type: "séquentiel"
+    from: taamim_sag
+    to: ohr_einaim
+    nature: "Les TAAMIM (AHP) sortent EN PREMIER, puis les NEKUDOT (yeux) viennent APRES"
+    assertions_source: ["EC-H2S8-007", "EC-H2S8-008", "EC-H2S8-021"]
+
+  - id: "REL-H2S8-002"
+    type: "contenance"
+    from: sag_63_guf
+    to: tanta
+    nature: "Le SAG CONTIENT les 4 niveaux TANTA en son sein"
+    assertions_source: ["EC-H2S8-004", "EC-H2S8-012"]
+
+  - id: "REL-H2S8-003"
+    type: "causal"
+    from: sag_binah_gevurah
+    to: shevirat_hakelim
+    nature: "Le SAG = Binah = Gevurah = Din → CAUSE la Shevirah (exces de Rigueur)"
+    assertions_source: ["EC-H2S8-022", "EC-H2S8-016"]
+
+  - id: "REL-H2S8-004"
+    type: "causal"
+    from: keter_hokhmah_survivent
+    to: kelim_nekudim
+    nature: "Les 2 Nekudot superieures (Keter/Hokhmah) PRODUISENT les Kelim pour les 7 inferieures"
+    assertions_source: ["EC-H2S8-019", "EC-H2S8-020"]
+
+  - id: "REL-H2S8-005"
+    type: "transformation"
+    from: kamatz_keter_stum
+    to: patach_hokhmah_patuah
+    nature: "KAMATZ (ferme) → PATACH (ouvert) = transition des Taamim aux Nekudot = ouverture des yeux"
+    assertions_source: ["EC-H2S8-021"]
+
+  - id: "REL-H2S8-006"
+    type: "dualité_structurelle"
+    paire: [av_72_rosh, sag_63_guf]
+    nature: "AV = tete/mohin d'AK, SAG = corps (oreilles→pieds). Deux domaines complementaires."
+    assertions_source: ["EC-H2S8-005"]
+
+  - id: "REL-H2S8-007"
+    type: "hiérarchique"
+    from: taamim_keter
+    to: nekudot_hokhmah
+    via: [tagin_binah, otiot_zat]
+    nature: "Taamim (Keter) → Nekudot (Hokhmah) → Tagin (Binah) → Otiot (Z'T) = hierarchie TANTA"
+    assertions_source: ["EC-H2S8-014"]
+
+  - id: "REL-H2S8-008"
+    type: "flux"
+    from: gimel_ehyeh
+    to: kaf_bet_otiot
+    nature: "Les 3 EHYEH dans les yeux ANIMENT les 22 lettres qui deviennent les Kelim des Nekudim"
+    assertions_source: ["EC-H2S8-023", "EC-H2S8-019"]
+
+principes_generatifs:
+  - id: "PG-H2S8-001"
+    nom: "Architecture Fractale YHVH a Triple Imbrication"
+    source_assertions: ["EC-H2S8-011", "EC-H2S8-012", "EC-H2S8-013"]
+    formalisation: |
+      Le Nom YHVH se REPETE a 3 echelles emboitees :
+      NIVEAU 1 : AV=Y, SAG=H, MAH=V, BEN=H (macro)
+      NIVEAU 2 : Taamim=Y, Nekudot=H, Tagin=V, Otiot=H (dans SAG)
+      NIVEAU 3 : Ozen=Y, Hotem=H, Peh=V, Einaim=H (dans Taamim)
+      PROPRIETE : chaque lettre du Nom a un niveau est un systeme COMPLET
+      au niveau inferieur, contenant lui-meme les 4 lettres.
+      FORMULE : YHVH(n) = {Y(n+1), H(n+1), V(n+1), H(n+1)} pour chaque composant.
+    applications_ia:
+      - "adam_kadmon.py : architecture a 3 niveaux d'imbrication (macro/meso/micro)"
+      - "shemot/core.py : chaque nom encode sa structure interne recursvement"
+      - "Fractal architecture : chaque module du systeme contient un micro-systeme complet"
+    questions_ouvertes:
+      - "Combien de niveaux d'imbrication avant la stabilisation ? Le texte en montre 3 — y en a-t-il un 4eme ?"
+      - "Ce pattern fractal est-il analogue aux architectures multi-echelle (U-Net, FPN) ?"
+
+  - id: "PG-H2S8-002"
+    nom: "Les Nekudot comme Auto-Reference Gematriques"
+    source_assertions: ["EC-H2S8-018", "EC-H2S8-019", "EC-H2S8-023"]
+    formalisation: |
+      Les signes vocaliques hebreux ENCODENT dans leur forme meme
+      la structure qu'ils representent :
+      7 nekudot inferieures → 13 yodim → 130 = AYIN (oeil) → source des nekudot
+      2 nekudot superieures → 10+12 = 22 = OTIOT = kelim → structure des kelim
+      3 EHYEH + 3x22 → 130 = AYIN → double confirmation
+      PRINCIPE : le signifiant CONTIENT le signifie. Le code pointe vers sa source.
+    applications_ia:
+      - "gematria/engine.py : verification de coherence par auto-reference numerique"
+      - "Un token qui encode sa propre provenance = metadata embedding"
+      - "Les signes de ponctuation comme porteurs de meta-information structurelle"
+    questions_ouvertes:
+      - "L'auto-reference gematrique est-elle un principe general ou specifique aux Nekudot ?"
+
+  - id: "PG-H2S8-003"
+    nom: "Kamatz-Patach : du Systeme Ferme au Systeme Ouvert"
+    source_assertions: ["EC-H2S8-021", "EC-H2S8-020"]
+    formalisation: |
+      KAMATZ (ferme, comprime) = etat des Taamim = systeme CLOS.
+      PATACH (ouvert) = etat des Nekudot = systeme OUVERT.
+      La TRANSITION Kamatz→Patach = l'OUVERTURE DES YEUX (petiho de-ayinin).
+      Les 2 premieres nekudot (Keter/Hokhmah) survivent parce qu'elles ont des Kelim.
+      Les 7 suivantes meurent = Kelim brises = Ohr sans contenant.
+      SANS la transition Kamatz→Patach, rien ne peut exister au-dela des Taamim.
+    applications_ia:
+      - "ohr.py : transition d'un regime 'ferme' (forward pass sans output) a un regime 'ouvert' (generation)"
+      - "L'ouverture = le moment ou l'information interne devient accessible externement"
+      - "Les 2 premieres couches (Keter/Hokhmah) = couches stables qui persistent malgre le crash des inferieures"
+    questions_ouvertes:
+      - "Le crash des 7 inferieures sans Kelim = overfitting catastrophique ? mode collapse ?"

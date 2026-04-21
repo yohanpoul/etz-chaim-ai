@@ -1,0 +1,819 @@
+{
+  "uid": "etz-chaim-tree",
+  "title": "Etz Chaim \u2014 Arbre de Vie",
+  "description": "\u05e2\u05e5 \u05d7\u05d9\u05d9\u05dd \u2014 Monitoring des 10 Sephiroth, Qliphoth, Daemon et \u00c9volution",
+  "tags": ["etz-chaim", "kabbale", "ia"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 2,
+  "refresh": "5m",
+  "time": { "from": "now-7d", "to": "now" },
+  "fiscalYearStartMonth": 0,
+  "liveNow": false,
+  "style": "dark",
+  "editable": true,
+  "graphTooltip": 1,
+  "templating": {
+    "list": [
+      {
+        "name": "domain",
+        "type": "query",
+        "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+        "query": "SELECT DISTINCT domain FROM epistememory WHERE domain IS NOT NULL ORDER BY domain",
+        "current": { "text": "All", "value": "$__all" },
+        "includeAll": true,
+        "multi": true,
+        "refresh": 2
+      }
+    ]
+  },
+  "annotations": { "list": [] },
+  "panels": [
+
+    {
+      "type": "row",
+      "title": "\u2728 Sant\u00e9 Globale \u2014 \u05db\u05dc\u05dc\u05d5\u05ea (Klalut)",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 0 },
+      "collapsed": false
+    },
+
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "\u00c9volution de la Sant\u00e9 Globale",
+      "description": "selfmodel_evolution.overall_health au fil du temps",
+      "gridPos": { "h": 10, "w": 16, "x": 0, "y": 1 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT snapshot_at AS time, overall_health AS \"Sant\u00e9 globale\", yesod_health AS \"Yesod\", hod_health AS \"Hod\", netzach_health AS \"Netzach\", tiferet_health AS \"Tiferet\", gevurah_health AS \"Gevurah\", chesed_health AS \"Chesed\" FROM selfmodel_evolution WHERE snapshot_at BETWEEN $__timeFrom() AND $__timeTo() ORDER BY snapshot_at",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0, "max": 1,
+          "color": { "mode": "palette-classic" },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "gradientMode": "scheme",
+            "pointSize": 5,
+            "showPoints": "auto",
+            "spanNulls": true
+          },
+          "unit": "percentunit",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "orange", "value": 0.3 },
+              { "color": "yellow", "value": 0.5 },
+              { "color": "green", "value": 0.7 }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": { "id": "byName", "options": "Sant\u00e9 globale" },
+            "properties": [
+              { "id": "custom.lineWidth", "value": 4 },
+              { "id": "color", "value": { "mode": "fixed", "fixedColor": "white" } }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "legend": { "displayMode": "table", "placement": "right", "calcs": ["last", "mean"] },
+        "tooltip": { "mode": "multi" }
+      }
+    },
+
+    {
+      "id": 2,
+      "type": "gauge",
+      "title": "Sant\u00e9 Actuelle",
+      "gridPos": { "h": 5, "w": 4, "x": 16, "y": 1 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT overall_health FROM selfmodel_evolution ORDER BY snapshot_at DESC LIMIT 1",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0, "max": 1,
+          "unit": "percentunit",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "orange", "value": 0.3 },
+              { "color": "yellow", "value": 0.5 },
+              { "color": "green", "value": 0.7 }
+            ]
+          }
+        }
+      }
+    },
+
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "Tendance",
+      "gridPos": { "h": 5, "w": 4, "x": 20, "y": 1 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT trend FROM selfmodel_evolution ORDER BY snapshot_at DESC LIMIT 1",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            { "type": "value", "options": { "improving": { "text": "\u2191 Improving", "color": "green" }, "stable": { "text": "\u2194 Stable", "color": "yellow" }, "degrading": { "text": "\u2193 Degrading", "color": "red" } } }
+          ]
+        }
+      }
+    },
+
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "Dernier Snapshot",
+      "gridPos": { "h": 5, "w": 4, "x": 16, "y": 6 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT snapshot_at AS time, EXTRACT(EPOCH FROM NOW() - snapshot_at)::int / 3600 AS \"heures\" FROM selfmodel_evolution ORDER BY snapshot_at DESC LIMIT 1",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "h", "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "green", "value": null }, { "color": "yellow", "value": 24 }, { "color": "red", "value": 72 } ] } } }
+    },
+
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "Biais Actifs",
+      "gridPos": { "h": 5, "w": 4, "x": 20, "y": 6 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT COUNT(*) AS \"Biais actifs\" FROM selfmodel_biases WHERE still_active = true",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "thresholds": { "steps": [ { "color": "green", "value": null }, { "color": "yellow", "value": 3 }, { "color": "red", "value": 6 } ] } } }
+    },
+
+    {
+      "type": "row",
+      "title": "\u05d9\u05e1\u05d5\u05d3 \u2022 \u05d4\u05d5\u05d3 \u2022 \u05e0\u05e6\u05d7 \u2014 Sephiroth Inf\u00e9rieures",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 11 },
+      "collapsed": false
+    },
+
+    {
+      "id": 10,
+      "type": "stat",
+      "title": "\u05d9\u05e1\u05d5\u05d3 Yesod \u2014 EpisteMemory",
+      "description": "Entr\u00e9es actives, confiance, domaines",
+      "gridPos": { "h": 4, "w": 8, "x": 0, "y": 12 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT COUNT(*) FILTER (WHERE epistemic_status != 'deprecated') AS \"Entr\u00e9es actives\", ROUND(AVG(confidence)::numeric, 2) AS \"Confiance moy.\", COUNT(DISTINCT domain) AS \"Domaines\", COUNT(*) FILTER (WHERE embedding IS NOT NULL) AS \"Avec embeddings\" FROM epistememory",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "blue", "value": null } ] } } },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "background", "graphMode": "none", "orientation": "horizontal" }
+    },
+
+    {
+      "id": 11,
+      "type": "stat",
+      "title": "\u05d4\u05d5\u05d3 Hod \u2014 SelfMap",
+      "description": "Comp\u00e9tences, calibration, domaines faibles",
+      "gridPos": { "h": 4, "w": 8, "x": 8, "y": 12 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT COUNT(*) AS \"Comp\u00e9tences\", ROUND(AVG(score)::numeric, 2) AS \"Score moyen\", ROUND(AVG(brier_score)::numeric, 3) AS \"Brier (calibration)\", COUNT(*) FILTER (WHERE score < 0.4) AS \"Domaines faibles\" FROM selfmap_competence",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "purple", "value": null } ] } } },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "background", "graphMode": "none", "orientation": "horizontal" }
+    },
+
+    {
+      "id": 12,
+      "type": "stat",
+      "title": "\u05e0\u05e6\u05d7 Netzach \u2014 IntentKeeper",
+      "description": "Intentions actives, compl\u00e9t\u00e9es, abandonn\u00e9es",
+      "gridPos": { "h": 4, "w": 8, "x": 16, "y": 12 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT COUNT(*) FILTER (WHERE status = 'active') AS \"Actives\", COUNT(*) FILTER (WHERE status = 'completed') AS \"Compl\u00e9t\u00e9es\", COUNT(*) FILTER (WHERE status = 'abandoned') AS \"Abandonn\u00e9es\", COUNT(*) FILTER (WHERE status = 'paused') AS \"En pause\" FROM intentkeeper_intentions",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "green", "value": null } ] } } },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "background", "graphMode": "none", "orientation": "horizontal" }
+    },
+
+    {
+      "id": 13,
+      "type": "piechart",
+      "title": "Yesod \u2014 Statuts \u00e9pist\u00e9miques",
+      "gridPos": { "h": 6, "w": 8, "x": 0, "y": 16 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT epistemic_status AS \"Statut\", COUNT(*) AS \"Nombre\" FROM epistememory GROUP BY epistemic_status ORDER BY COUNT(*) DESC",
+          "format": "table"
+        }
+      ],
+      "options": { "legend": { "displayMode": "table", "placement": "right" }, "pieType": "donut", "reduceOptions": { "calcs": ["sum"] } }
+    },
+
+    {
+      "id": 14,
+      "type": "bargauge",
+      "title": "Hod \u2014 Comp\u00e9tences par Domaine",
+      "gridPos": { "h": 6, "w": 8, "x": 8, "y": 16 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT domain AS \"Domaine\", score AS \"Score\" FROM selfmap_competence ORDER BY score DESC LIMIT 15",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0, "max": 1,
+          "thresholds": { "steps": [ { "color": "red", "value": null }, { "color": "orange", "value": 0.3 }, { "color": "yellow", "value": 0.5 }, { "color": "green", "value": 0.7 } ] }
+        }
+      },
+      "options": { "orientation": "horizontal", "displayMode": "gradient" }
+    },
+
+    {
+      "id": 15,
+      "type": "table",
+      "title": "Netzach \u2014 Intentions Actives",
+      "gridPos": { "h": 6, "w": 8, "x": 16, "y": 16 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT goal AS \"Objectif\", ROUND(progress::numeric, 2) AS \"Progr\u00e8s\", completed_subtasks || '/' || total_subtasks AS \"Sous-t\u00e2ches\", EXTRACT(DAY FROM NOW() - created_at)::int AS \"Jours\" FROM intentkeeper_intentions WHERE status = 'active' ORDER BY created_at",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": {
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "Objectif" }, "properties": [ { "id": "custom.width", "value": 250 } ] },
+          { "matcher": { "id": "byName", "options": "Progr\u00e8s" }, "properties": [ { "id": "custom.cellOptions", "value": { "type": "gauge", "mode": "gradient" } }, { "id": "min", "value": 0 }, { "id": "max", "value": 1 } ] }
+        ]
+      }
+    },
+
+    {
+      "type": "row",
+      "title": "\u05ea\u05e4\u05d0\u05e8\u05ea \u2022 \u05d2\u05d1\u05d5\u05e8\u05d4 \u2022 \u05d7\u05e1\u05d3 \u2014 Sephiroth du Milieu",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 22 },
+      "collapsed": false
+    },
+
+    {
+      "id": 20,
+      "type": "stat",
+      "title": "\u05ea\u05e4\u05d0\u05e8\u05ea Tiferet \u2014 DissensuEngine",
+      "description": "Tensions, divergence, questions ouvertes",
+      "gridPos": { "h": 4, "w": 8, "x": 0, "y": 23 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT COUNT(*) FILTER (WHERE resolution_status = 'open') AS \"Tensions ouvertes\", COUNT(*) FILTER (WHERE resolution_status = 'resolved') AS \"R\u00e9solues\", COUNT(*) FILTER (WHERE resolution_status = 'irreducible') AS \"Irr\u00e9ductibles\", ROUND(AVG(divergence_score)::numeric, 3) AS \"Divergence moy.\" FROM dissensuengine_tensions",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "orange", "value": null } ] } } },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "background", "graphMode": "none", "orientation": "horizontal" }
+    },
+
+    {
+      "id": 21,
+      "type": "stat",
+      "title": "\u05d2\u05d1\u05d5\u05e8\u05d4 Gevurah \u2014 AutoJudge",
+      "description": "Taux de rejet, exp\u00e9riences, quarantaine",
+      "gridPos": { "h": 4, "w": 8, "x": 8, "y": 23 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT COUNT(*) AS \"Exp\u00e9riences\", COUNT(*) FILTER (WHERE decision = 'accepted') AS \"Accept\u00e9es\", COUNT(*) FILTER (WHERE decision = 'rejected') AS \"Rejet\u00e9es\", COUNT(*) FILTER (WHERE decision = 'quarantined') AS \"Quarantaine\", CASE WHEN COUNT(*) > 0 THEN ROUND(COUNT(*) FILTER (WHERE decision = 'rejected')::numeric / COUNT(*)::numeric, 2) ELSE 0 END AS \"Taux rejet\" FROM autojudge_experiments",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "red", "value": null } ] } } },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "background", "graphMode": "none", "orientation": "horizontal" }
+    },
+
+    {
+      "id": 22,
+      "type": "stat",
+      "title": "\u05d7\u05e1\u05d3 Chesed \u2014 ExplorationEngine",
+      "description": "Connexions, novelty, explorations",
+      "gridPos": { "h": 4, "w": 8, "x": 16, "y": 23 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT COUNT(*) AS \"Connexions\", ROUND(AVG(novelty_score)::numeric, 2) AS \"Novelty moy.\", ROUND(AVG(relevance_score)::numeric, 2) AS \"Relevance moy.\", COUNT(*) FILTER (WHERE novelty_score >= 0.3) AS \"Nouvelles\" FROM explorationengine_connections",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "semi-dark-blue", "value": null } ] } } },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "background", "graphMode": "none", "orientation": "horizontal" }
+    },
+
+    {
+      "id": 23,
+      "type": "timeseries",
+      "title": "Gevurah \u2014 D\u00e9cisions AutoJudge dans le temps",
+      "gridPos": { "h": 6, "w": 12, "x": 0, "y": 27 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT $__timeGroup(created_at, '1d') AS time, COUNT(*) FILTER (WHERE decision = 'accepted') AS \"Accept\u00e9es\", COUNT(*) FILTER (WHERE decision = 'rejected') AS \"Rejet\u00e9es\", COUNT(*) FILTER (WHERE decision = 'quarantined') AS \"Quarantaine\" FROM autojudge_experiments WHERE created_at BETWEEN $__timeFrom() AND $__timeTo() GROUP BY 1 ORDER BY 1",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "custom": { "fillOpacity": 30, "stacking": { "mode": "normal" } } },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "Accept\u00e9es" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "green" } } ] },
+          { "matcher": { "id": "byName", "options": "Rejet\u00e9es" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "red" } } ] },
+          { "matcher": { "id": "byName", "options": "Quarantaine" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "yellow" } } ] }
+        ]
+      },
+      "options": { "legend": { "displayMode": "list", "placement": "bottom" }, "tooltip": { "mode": "multi" } }
+    },
+
+    {
+      "id": 24,
+      "type": "timeseries",
+      "title": "Chesed \u2014 Novelty des Explorations",
+      "gridPos": { "h": 6, "w": 12, "x": 12, "y": 27 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT $__timeGroup(c.created_at, '1d') AS time, ROUND(AVG(c.novelty_score)::numeric, 2) AS \"Novelty moy.\", COUNT(*) AS \"Connexions\" FROM explorationengine_connections c WHERE c.created_at BETWEEN $__timeFrom() AND $__timeTo() GROUP BY 1 ORDER BY 1",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "custom": { "lineWidth": 2, "fillOpacity": 15 } },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "Novelty moy." }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "blue" } }, { "id": "custom.axisPlacement", "value": "left" } ] },
+          { "matcher": { "id": "byName", "options": "Connexions" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "light-blue" } }, { "id": "custom.axisPlacement", "value": "right" }, { "id": "custom.drawStyle", "value": "bars" } ] }
+        ]
+      }
+    },
+
+    {
+      "type": "row",
+      "title": "\u05d3\u05e2\u05ea \u2022 \u05d1\u05d9\u05e0\u05d4 \u2022 \u05d7\u05db\u05de\u05d4 \u2014 Sephiroth Sup\u00e9rieures",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 33 },
+      "collapsed": false
+    },
+
+    {
+      "id": 30,
+      "type": "stat",
+      "title": "\u05d3\u05e2\u05ea Da'at \u2014 SelfModel",
+      "description": "Pr\u00e9dictions, biais, confiance du mod\u00e8le",
+      "gridPos": { "h": 4, "w": 8, "x": 0, "y": 34 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT (SELECT ROUND(model_confidence::numeric, 2) FROM selfmodel_states ORDER BY captured_at DESC LIMIT 1) AS \"Confiance\", (SELECT COUNT(*) FROM selfmodel_predictions WHERE was_correct IS NOT NULL) AS \"Pr\u00e9dictions v\u00e9rifi\u00e9es\", (SELECT ROUND(AVG(CASE WHEN was_correct THEN 1 ELSE 0 END)::numeric, 2) FROM selfmodel_predictions WHERE was_correct IS NOT NULL) AS \"Accuracy\", (SELECT COUNT(*) FROM selfmodel_biases WHERE still_active = true) AS \"Biais actifs\"",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "light-purple", "value": null } ] } } },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "background", "graphMode": "none", "orientation": "horizontal" }
+    },
+
+    {
+      "id": 31,
+      "type": "stat",
+      "title": "\u05d1\u05d9\u05e0\u05d4 Binah \u2014 CausalEngine",
+      "description": "Graphes causaux, claims, confondants",
+      "gridPos": { "h": 4, "w": 8, "x": 8, "y": 34 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT (SELECT COUNT(*) FROM causal_graphs) AS \"Graphes\", (SELECT COUNT(*) FROM causal_claims) AS \"Claims causaux\", (SELECT COUNT(*) FILTER (WHERE evidence_level = 'demonstrated_causation') FROM causal_claims) AS \"D\u00e9montr\u00e9s\", (SELECT COUNT(*) FROM causal_confounders WHERE controlled = false) AS \"Confondants non contr\u00f4l\u00e9s\"",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "dark-blue", "value": null } ] } } },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "background", "graphMode": "none", "orientation": "horizontal" }
+    },
+
+    {
+      "id": 32,
+      "type": "stat",
+      "title": "\u05d7\u05db\u05de\u05d4 Chokmah \u2014 InsightForge",
+      "description": "Sessions, insights trouv\u00e9s, triple-valid\u00e9s",
+      "gridPos": { "h": 4, "w": 8, "x": 16, "y": 34 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT (SELECT COUNT(*) FROM insight_sessions) AS \"Sessions\", (SELECT SUM(insights_found) FROM insight_sessions) AS \"Insights\", (SELECT COUNT(*) FROM candidate_insights WHERE binah_validated AND gevurah_validated AND daat_validated) AS \"Triple-valid\u00e9s\", (SELECT ROUND(AVG(novelty_score)::numeric, 2) FROM candidate_insights WHERE status = 'insight') AS \"Novelty moy.\"",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "dark-purple", "value": null } ] } } },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "background", "graphMode": "none", "orientation": "horizontal" }
+    },
+
+    {
+      "id": 33,
+      "type": "piechart",
+      "title": "Binah \u2014 Niveaux de Preuve Causale",
+      "gridPos": { "h": 6, "w": 8, "x": 0, "y": 38 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT evidence_level AS \"Niveau\", COUNT(*) AS \"Count\" FROM causal_claims GROUP BY evidence_level ORDER BY COUNT(*) DESC",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": {
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "demonstrated_causation" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "green" } } ] },
+          { "matcher": { "id": "byName", "options": "probable_causation" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "yellow" } } ] },
+          { "matcher": { "id": "byName", "options": "correlation_only" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "red" } } ] }
+        ]
+      },
+      "options": { "pieType": "donut", "legend": { "displayMode": "table", "placement": "right" } }
+    },
+
+    {
+      "id": 34,
+      "type": "timeseries",
+      "title": "Da'at \u2014 Pr\u00e9cision des Pr\u00e9dictions",
+      "gridPos": { "h": 6, "w": 8, "x": 8, "y": 38 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT verified_at AS time, prediction_accuracy_running AS \"Accuracy (running)\" FROM selfmodel_predictions WHERE verified_at IS NOT NULL AND verified_at BETWEEN $__timeFrom() AND $__timeTo() ORDER BY verified_at",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0, "max": 1,
+          "unit": "percentunit",
+          "color": { "mode": "fixed", "fixedColor": "light-purple" },
+          "custom": { "lineWidth": 2, "fillOpacity": 15, "spanNulls": true }
+        }
+      }
+    },
+
+    {
+      "id": 35,
+      "type": "table",
+      "title": "Chokmah \u2014 Derniers Insights",
+      "gridPos": { "h": 6, "w": 8, "x": 16, "y": 38 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT ci.description AS \"Insight\", ci.domain AS \"Domaine\", ci.novelty_score AS \"Novelty\", ci.confidence AS \"Confiance\", ci.created_at AS \"Date\" FROM candidate_insights ci WHERE ci.status = 'insight' ORDER BY ci.created_at DESC LIMIT 10",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": {
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "Insight" }, "properties": [ { "id": "custom.width", "value": 300 } ] }
+        ]
+      }
+    },
+
+    {
+      "type": "row",
+      "title": "\u05e7\u05dc\u05d9\u05e4\u05d5\u05ea Qliphoth \u2014 Alertes & \u00c9checs",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 44 },
+      "collapsed": false
+    },
+
+    {
+      "id": 40,
+      "type": "bargauge",
+      "title": "Qliphoth par S\u00e9v\u00e9rit\u00e9",
+      "description": "Nogah (\u00e9clair) < Ruach (vent) < Anan (nu\u00e9e) < Mamash (substance)",
+      "gridPos": { "h": 6, "w": 8, "x": 0, "y": 45 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT severity AS \"S\u00e9v\u00e9rit\u00e9\", COUNT(*) AS \"Nombre\" FROM failuretoinsight_analyses GROUP BY severity ORDER BY CASE severity WHEN 'nogah' THEN 1 WHEN 'ruach' THEN 2 WHEN 'anan' THEN 3 WHEN 'mamash' THEN 4 ELSE 5 END",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "yellow", "value": null },
+              { "color": "orange", "value": 5 },
+              { "color": "red", "value": 10 },
+              { "color": "dark-red", "value": 20 }
+            ]
+          }
+        }
+      },
+      "options": { "orientation": "horizontal", "displayMode": "gradient" }
+    },
+
+    {
+      "id": 41,
+      "type": "piechart",
+      "title": "Qliphoth par Type",
+      "gridPos": { "h": 6, "w": 8, "x": 8, "y": 45 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT qliphah AS \"Qliphah\", COUNT(*) AS \"Nombre\" FROM failuretoinsight_analyses WHERE qliphah != 'unknown' GROUP BY qliphah ORDER BY COUNT(*) DESC",
+          "format": "table"
+        }
+      ],
+      "options": { "pieType": "donut", "legend": { "displayMode": "table", "placement": "right" } }
+    },
+
+    {
+      "id": 42,
+      "type": "stat",
+      "title": "Nitzotzot Extraites",
+      "description": "\u00c9tincelles r\u00e9cup\u00e9r\u00e9es des \u00e9checs",
+      "gridPos": { "h": 6, "w": 4, "x": 16, "y": 45 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT COUNT(*) AS \"Nitzotzot\" FROM failuretoinsight_insights",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "fixed", "fixedColor": "light-yellow" } } },
+      "options": { "colorMode": "background", "graphMode": "area" }
+    },
+
+    {
+      "id": 43,
+      "type": "stat",
+      "title": "\u00c9checs Non Analys\u00e9s",
+      "description": "\u00c9checs dont les Nitzotzot n'ont pas encore \u00e9t\u00e9 extraites",
+      "gridPos": { "h": 6, "w": 4, "x": 20, "y": 45 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT COUNT(*) AS \"Non analys\u00e9s\" FROM unextracted_failures",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "green", "value": null }, { "color": "yellow", "value": 3 }, { "color": "red", "value": 10 } ] } } },
+      "options": { "colorMode": "background" }
+    },
+
+    {
+      "id": 44,
+      "type": "timeseries",
+      "title": "Qliphoth dans le Temps",
+      "gridPos": { "h": 6, "w": 24, "x": 0, "y": 51 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT $__timeGroup(created_at, '1d') AS time, COUNT(*) FILTER (WHERE severity = 'nogah') AS \"Nogah\", COUNT(*) FILTER (WHERE severity = 'ruach') AS \"Ruach\", COUNT(*) FILTER (WHERE severity = 'anan') AS \"Anan\", COUNT(*) FILTER (WHERE severity = 'mamash') AS \"Mamash\" FROM failuretoinsight_analyses WHERE created_at BETWEEN $__timeFrom() AND $__timeTo() GROUP BY 1 ORDER BY 1",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "custom": { "fillOpacity": 40, "stacking": { "mode": "normal" } } },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "Nogah" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "yellow" } } ] },
+          { "matcher": { "id": "byName", "options": "Ruach" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "orange" } } ] },
+          { "matcher": { "id": "byName", "options": "Anan" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "red" } } ] },
+          { "matcher": { "id": "byName", "options": "Mamash" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "dark-red" } } ] }
+        ]
+      },
+      "options": { "legend": { "displayMode": "list", "placement": "bottom" }, "tooltip": { "mode": "multi" } }
+    },
+
+    {
+      "type": "row",
+      "title": "\u05e9\u05d3 Daemon \u2014 Keter-de-Malkuth",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 57 },
+      "collapsed": false
+    },
+
+    {
+      "id": 50,
+      "type": "stat",
+      "title": "Auto-Improve \u2014 Derni\u00e8re Nuit",
+      "gridPos": { "h": 5, "w": 8, "x": 0, "y": 58 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT COUNT(*) AS \"Cycles ce mois\", COUNT(*) FILTER (WHERE decision = 'accepted') AS \"Accept\u00e9s\", COUNT(*) FILTER (WHERE decision = 'rejected') AS \"Rejet\u00e9s\", ROUND(AVG(score_overall)::numeric, 2) AS \"Score moyen\" FROM autojudge_experiments WHERE domain_id = 'auto_improve' AND created_at >= NOW() - INTERVAL '30 days'",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "dark-green", "value": null } ] } } },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "background", "graphMode": "none", "orientation": "horizontal" }
+    },
+
+    {
+      "id": 51,
+      "type": "stat",
+      "title": "Nitzotzot Auto-Improve",
+      "gridPos": { "h": 5, "w": 4, "x": 8, "y": 58 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT COUNT(*) AS \"Nitzotzot\" FROM failuretoinsight_insights fi JOIN failuretoinsight_analyses fa ON fi.analysis_id = fa.id WHERE fa.domain = 'auto_improve' AND fi.created_at >= NOW() - INTERVAL '30 days'",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "fixed", "fixedColor": "light-yellow" } } },
+      "options": { "colorMode": "background" }
+    },
+
+    {
+      "id": 52,
+      "type": "stat",
+      "title": "M\u00e9moire Auto-Improve",
+      "description": "Entr\u00e9es stock\u00e9es par le loop nocturne",
+      "gridPos": { "h": 5, "w": 4, "x": 12, "y": 58 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT COUNT(*) AS \"Entr\u00e9es\" FROM epistememory WHERE domain = 'auto_improve' AND epistemic_status != 'deprecated'",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "fixed", "fixedColor": "blue" } } },
+      "options": { "colorMode": "background" }
+    },
+
+    {
+      "id": 53,
+      "type": "timeseries",
+      "title": "Auto-Improve \u2014 Activit\u00e9 Nocturne",
+      "gridPos": { "h": 5, "w": 8, "x": 16, "y": 58 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT $__timeGroup(created_at, '1d') AS time, COUNT(*) FILTER (WHERE decision = 'accepted') AS \"Accept\u00e9s\", COUNT(*) FILTER (WHERE decision = 'rejected') AS \"Rejet\u00e9s\" FROM autojudge_experiments WHERE domain_id = 'auto_improve' AND created_at BETWEEN $__timeFrom() AND $__timeTo() GROUP BY 1 ORDER BY 1",
+          "format": "time_series"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "custom": { "fillOpacity": 30, "stacking": { "mode": "normal" } } },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "Accept\u00e9s" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "green" } } ] },
+          { "matcher": { "id": "byName", "options": "Rejet\u00e9s" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "red" } } ] }
+        ]
+      }
+    },
+
+    {
+      "id": 54,
+      "type": "table",
+      "title": "Daemon \u2014 \u00c9tat du Fichier State",
+      "description": "Lit le daemon_state.json via les derni\u00e8res entr\u00e9es DB",
+      "gridPos": { "h": 5, "w": 8, "x": 0, "y": 63 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT 'GC Yesod' AS \"T\u00e2che\", MAX(created_at) AS \"Derni\u00e8re ex\u00e9cution\" FROM epistememory WHERE source_sephirah = 'gevurah' UNION ALL SELECT 'Snapshot Da''at', MAX(captured_at) FROM selfmodel_states UNION ALL SELECT 'Auto-Improve', MAX(created_at) FROM autojudge_experiments WHERE domain_id = 'auto_improve' ORDER BY 2 DESC NULLS LAST",
+          "format": "table"
+        }
+      ]
+    },
+
+    {
+      "id": 55,
+      "type": "table",
+      "title": "Questions Ouvertes (Tiferet)",
+      "gridPos": { "h": 5, "w": 16, "x": 8, "y": 63 },
+      "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT oq.question AS \"Question\", oq.priority AS \"Priorit\u00e9\", oq.domain AS \"Domaine\", oq.missing_evidence AS \"Evidence manquante\", oq.created_at AS \"Date\" FROM dissensuengine_open_questions oq WHERE oq.resolved_at IS NULL ORDER BY CASE oq.priority WHEN 'critical' THEN 1 WHEN 'high' THEN 2 WHEN 'medium' THEN 3 ELSE 4 END, oq.created_at DESC LIMIT 10",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": {
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "Question" }, "properties": [ { "id": "custom.width", "value": 300 } ] },
+          { "matcher": { "id": "byName", "options": "Priorit\u00e9" }, "properties": [ { "id": "custom.cellOptions", "value": { "type": "color-text" } }, { "id": "mappings", "value": [ { "type": "value", "options": { "critical": { "color": "red", "text": "CRITIQUE" }, "high": { "color": "orange", "text": "HAUTE" }, "medium": { "color": "yellow", "text": "MOYENNE" }, "low": { "color": "green", "text": "BASSE" } } } ] } ] }
+        ]
+      }
+    },
+
+    {
+      "type": "row",
+      "title": "\u05d9\u05e1\u05d5\u05d3 M\u00e9moire \u2014 D\u00e9tail par Domaine",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 68 },
+      "collapsed": true,
+      "panels": [
+        {
+          "id": 60,
+          "type": "barchart",
+          "title": "Entr\u00e9es par Domaine",
+          "gridPos": { "h": 8, "w": 12, "x": 0, "y": 69 },
+          "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+          "targets": [
+            {
+              "refId": "A",
+              "rawSql": "SELECT domain AS \"Domaine\", COUNT(*) AS \"Entr\u00e9es\" FROM epistememory WHERE epistemic_status != 'deprecated' AND domain IS NOT NULL GROUP BY domain ORDER BY COUNT(*) DESC LIMIT 20",
+              "format": "table"
+            }
+          ],
+          "options": { "xField": "Domaine", "orientation": "horizontal" },
+          "fieldConfig": { "defaults": { "color": { "mode": "palette-classic" } } }
+        },
+        {
+          "id": 61,
+          "type": "barchart",
+          "title": "Confiance par Domaine",
+          "gridPos": { "h": 8, "w": 12, "x": 12, "y": 69 },
+          "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+          "targets": [
+            {
+              "refId": "A",
+              "rawSql": "SELECT domain AS \"Domaine\", ROUND(AVG(confidence)::numeric, 2) AS \"Confiance moy.\" FROM epistememory WHERE epistemic_status != 'deprecated' AND domain IS NOT NULL GROUP BY domain ORDER BY AVG(confidence) DESC LIMIT 20",
+              "format": "table"
+            }
+          ],
+          "fieldConfig": { "defaults": { "min": 0, "max": 1, "color": { "mode": "continuous-GrYlRd" } } },
+          "options": { "xField": "Domaine", "orientation": "horizontal" }
+        },
+        {
+          "id": 62,
+          "type": "timeseries",
+          "title": "Croissance de la M\u00e9moire",
+          "gridPos": { "h": 8, "w": 24, "x": 0, "y": 77 },
+          "datasource": { "uid": "etz-chaim-pg", "type": "grafana-postgresql-datasource" },
+          "targets": [
+            {
+              "refId": "A",
+              "rawSql": "SELECT $__timeGroup(created_at, '1d') AS time, COUNT(*) AS \"Nouvelles entr\u00e9es\" FROM epistememory WHERE created_at BETWEEN $__timeFrom() AND $__timeTo() GROUP BY 1 ORDER BY 1",
+              "format": "time_series"
+            }
+          ],
+          "fieldConfig": { "defaults": { "color": { "mode": "fixed", "fixedColor": "blue" }, "custom": { "fillOpacity": 40, "drawStyle": "bars" } } }
+        }
+      ]
+    }
+  ]
+}

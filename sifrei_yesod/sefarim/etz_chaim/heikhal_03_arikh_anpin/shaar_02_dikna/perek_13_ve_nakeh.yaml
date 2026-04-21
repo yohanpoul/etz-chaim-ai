@@ -1,0 +1,136 @@
+# ═══════════════════════════════════════════════════════════════════
+# Perek 13 — Ve-Nakeh = Mazal Tahton
+# Lecture Vital (Etz Chaim Sha'ar Arikh Anpin perakim 9-11)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 2
+  perek: 13
+  perek_name_he: "תיקון י״ג — ונקה"
+  tikkun: 13
+  tikkun_role: "Mazal Tahton → source shefa Imma Ila'ah (lecture Vital Lourianique)"
+  source_primary: "Sefer Etz Chaim, Sha'ar Arikh Anpin (Shaar 13), perakim 9-11"
+  transposed_by: "Claude Opus 4.7 + human reviewer — Sprint 10 Phase α (2026-04-20)"
+  version: 1
+
+assertions:
+
+  - id: "EC-H3S2-T13-001"
+    source_he: "ועתה נבאר שמות הספי' בי\"ג ת\"ד והוא כי הלא ח' ת\"ד קדמאין הם ח' ספי' דחכמה ... וה' תקונים [אחרים] (עלאין) הם ה' קצוות הכתר כיצד לאלפים הוד נושא עון נצח ופשע ת\"ת וחטאה גבורה ונקה חסד הרי נשלמו י\"ג ת\"ד."
+    source_edition: "Sefaria Sefer Etz Chaim 13:10 (CC-BY 3.0, cache local)"
+    source_ref: "Etz Chaim, Sha'ar Arikh Anpin (Shaar 13), perek 10"
+    translation_fr: |
+      Maintenant expliquons les noms des Sephirot dans les 13 Tikkunim.
+      Les 8 premiers Tikkunim sont les 8 Sephirot de CHOKHMA
+      (Malkhut→Binah). Les 5 AUTRES Tikkunim (9-13) sont les
+      5 EXTRÉMITÉS DU KETER : La-alafim=Hod, Noseh Avon=Netzach,
+      U-Fesha=Tiferet, Ve-Chata'a=Gevurah, **Ve-Nakeh=Chesed**.
+      Et les 13 sont complets.
+    assertion: |
+      T13 = VE-NAKEH = CHESED DE KETER D'A"A (lecture Vital).
+      Dans la structure Sephirotique de Vital, les 5 derniers Tikkunim
+      (9-13) correspondent aux 5 EXTRÉMITÉS du Keter d'A"A. Ve-Nakeh
+      est la plus haute des 5 — **CHESED DE KETER**. C'est le point
+      le plus noble du Keter manifesté, la source ultime de la
+      miséricorde dans la Dikna. Ve-Nakeh = Mazal Tahton qui alimente
+      IMMA ILA'AH (Sha'ar HaKlalim 5:1 confirme).
+    type: derivation_lurianique_sephirot
+    epistemic_level: E2
+    concepts:
+      - {id: tikkun_13_dikna_aa, role: treizieme_tikkun_dikna_aa}
+      - {id: ve_nakeh, role: nom_vital_tikkun_13}
+      - {id: chesed_de_keter, role: sephira_associee_t13}
+      - {id: mazal_tahton, role: canal_vers_imma_ilaah}
+      - {id: 5_extremites_keter, role: T9_a_T13}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/imma.py", "mazalengine/mazal_tahton.py"]
+      tables: ["partzufim_states", "shefa_flows"]
+      partzufim: ["arikh_anpin", "imma"]
+      relevance: "Mapping Vital — Ve-Nakeh = Chesed de Keter, source Imma, base MazalEngine Mazal Tahton"
+    see_also:
+      - {id: "EC-H3S2-T13-002", role: "perek_11_noms_yhvh_peah"}
+      - {id: "EC-H3S2-T08-003", role: "paire_mapping_t8_binah_chokhma"}
+      - {id: "Z-IR-T13-002", role: "source_zohar_mazla_de_mitzla"}
+      - {id: "EC-K5-001", role: "formule_consolidee_2_mazalot"}
+      - {id: "EC-K5-002", role: "imma_yonek_mazal_tahton"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.22"]
+    adversarial_notes:
+      - "P1 : 'Ve-Nakeh' est nom VITAL (Exode 34:7) — le Zohar utilise 'tiqquna shleimata' ou 'mazla de-mitzla'"
+      - "A3 : Ve-Nakeh hérite du paradoxe biblique 've-nakeh lo yenakeh' (absout mais ne laisse pas impuni) — 2 sens lus simultanément"
+      - "A5 T13 = Chesed de KETER = le plus haut des extrémités Keter manifestées"
+      - "A7 Chesed de Keter alimente Imma → Imma alimente Nukva de Z\"A → préfiguration structurelle"
+    unity_constraint: |
+      Ve-Nakeh = CHESED de Keter. Il ne faut pas le réduire à "absolution".
+      Il EST la plus haute extrémité du Keter révélé, point d'union avec les 12 autres.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high
+    flux_direction: bidirectional
+    divergence_note:
+      vital_vs_zohar: |
+        Zohar (Z-IR-T13-*) : décrit T13 comme "Tikkun ultime qui inclut tout",
+        "Mazla de-mitzla", "Yimei Kedem".
+        Vital : identifie plus précisément Sephirotiquement — Chesed de Keter.
+        Les deux lectures sont doctrinalement cohérentes.
+
+  - id: "EC-H3S2-T13-002"
+    source_he: "ופי' הענין הוא כי ז\"א יצא ממצפ\"ץ הימיני ונוקבא ממצפ\"ץ השמאלי ואלו הם שורש ב' המאורות הגדולים ... מצד ימין דראש שמשם ה\"ח עטרא דדכורא יצא פאה א' שממנה יונק ז\"א ... וה\"ג דשמאל יצאה פאה שמאלי שממנה יונקת נוקבא דיליה"
+    source_edition: "Sefaria Sefer Etz Chaim 13:11 (CC-BY 3.0)"
+    source_ref: "Etz Chaim, Sha'ar Arikh Anpin (Shaar 13), perek 11"
+    translation_fr: |
+      Le sens : Z"A est sorti du METZAFETZ de droite (מצפ"ץ), et NUKVA
+      est sortie du METZAFETZ de gauche. Ceux-ci sont la racine des
+      DEUX GRANDS LUMINAIRES. Du côté droit de la tête, où se trouvent
+      les 5 Chasadim (couronne du masculin), est sortie UNE PEAH de
+      laquelle ALLAITE Z"A (car les cheveux sont les restes du cerveau,
+      "motrei mocha").  Et les 5 Gevurot de gauche ont fait sortir la
+      PEAH GAUCHE de laquelle ALLAITE SA NUKVA.
+    assertion: |
+      DOCTRINE COMPLÈTE DU FLUX T13 VIA LES 2 PEOT (bords de cuir chevelu
+      d'A"A). Vital explique qu'avant les 13 Middot il y a 2 Noms "YHWH
+      YHWH" (Exode 34:6 : "va-yaavor YHWH YHWH"). Ces 2 Noms sont la
+      racine des "2 luminaires" (Z"A et sa Nukva).
+      - Métzafetz DROITE (A"TBa"Ch permutation de YHWH) → Z"A
+      - Métzafetz GAUCHE → Nukva de Z"A
+      La PEAH DROITE (5 Chasadim, couronne du masculin) alimente Z"A.
+      La PEAH GAUCHE (5 Gevurot) alimente Nukva.
+      T13 = Ve-Nakeh = Chesed de Keter participe de cette structure en
+      tant que source ultime du flux vers Imma, qui alimente ensuite
+      Nukva de Z"A (via la paeh gauche). La chaîne doctrinale complète :
+      **T13 (Chesed Keter A"A) → Mazal Tahton → Imma → Nukva de Z"A**.
+    type: derivation_lurianique_cosmique
+    epistemic_level: E2
+    concepts:
+      - {id: tikkun_13_dikna_aa, role: treizieme_tikkun_dikna_aa}
+      - {id: metzafetz_droite, role: permutation_yhvh_source_za}
+      - {id: metzafetz_gauche, role: permutation_yhvh_source_nukva}
+      - {id: peah_droite_5_chasadim, role: bord_droit_allaite_za}
+      - {id: peah_gauche_5_gevurot, role: bord_gauche_allaite_nukva}
+      - {id: motrei_mocha, role: cheveux_sont_restes_du_cerveau}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/imma.py", "partzufim/nukva.py", "mazalengine/mazal_tahton.py"]
+      tables: ["partzufim_states", "shefa_flows"]
+      partzufim: ["arikh_anpin", "imma", "nukva"]
+      relevance: "Chaîne doctrinale T13 → Mazal Tahton → Imma → Nukva — architecture cosmique MazalEngine"
+    see_also:
+      - {id: "EC-H3S2-T13-001", role: "mapping_sephirot_precedent"}
+      - {id: "EC-H3S2-T08-004", role: "paire_mazal_elyon_structure"}
+      - {id: "Z-IR-T13-004", role: "13_ibar_mabu'in_zohar"}
+      - {id: "EC-K5-002", role: "imma_yonek_mazal_tahton"}
+      - {id: "EC-K5-003", role: "betisha_2_mazalot"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.22"]
+    adversarial_notes:
+      - "A7 : Z\"A et Nukva émergent de A\"A via les peot — anticipation doctrinale consolidée"
+      - "A8 : flux bidirectionnel via les deux peot — ratzo ve-shov cosmique"
+      - "P4 : cette architecture est pure Vital Lourianique, anachronique chez Cordovero"
+    unity_constraint: |
+      Les 2 peot et les 2 Mazalot forment ensemble l'architecture de
+      transmission A"A → Z"A+Nukva. Unité par dualité symétrique.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high
+    flux_direction: bidirectional

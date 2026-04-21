@@ -1,0 +1,463 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 1 — Igulim ve-Yosher (עגולים ויושר)
+# Perek: 4a — Seder Olamot, A"K, Hiérarchie des Igulim et Yosher (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 1
+  shaar_name_he: "שער עגולים ויושר"
+  perek: 4
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+  note: "Part A de 2 — couvre l'introduction des mondes, les mondes cachés, A\"K et ses Igulim/Yosher, l'Olam ha-Nekudim, les 7 rois, et la séquence complète d'emboîtement"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LES MONDES CACHÉS QUI PRÉCÈDENT L'ATZILUT ───
+
+  - id: "EC-H1S1-079b"
+    source_he: "ואל יעלה בדעתך כי הי\"ס הנקרא אצלינו בס\"ה י\"ס דאצילות אל תטעה לחשוב שהם יותר ראשונים וגבוהים מכל מה שנאצלו כי כמה עולמות קדמו עליהם ולרוב העלמם לא שלחו בהם יד להזכירם בס\"ה אלא ברמז נפלא"
+    source_ref: "Heikhal 1, Sha'ar 1:4 — ouverture"
+    assertion: |
+      AVERTISSEMENT : Ne pense PAS que les 10S d'Atzilut sont les PREMIÈRES et PLUS ÉLEVÉES.
+      BEAUCOUP de mondes (kamah olamot) les ont PRÉCÉDÉES.
+      Ces mondes n'ont PAS été mentionnés dans le Zohar sauf par REMEZ NIFLAH (allusion merveilleuse)
+      à cause de leur GRANDE OCCULTATION (rov helm'am).
+      3 sources dans les Tikkunim sur A"K le-khol ha-Kedumim :
+      - Tikkunim fin Tikkun 19 (41b) : "Il y a un A"K pour tous les primordiaux, et il y a un autre Adam..."
+      - Tikkunim début Tikkun 70 (119a) : "Un artisan merveilleux qui a brodé et peint dans le Heikhal de A"K..."
+      - Tikkunim (132a) : "J'ai trouvé dans le secret des secrets, le caché des cachés, l'Adam de la Beriah qui est Kadmon le-khol ha-Kedumim"
+    type: axiome_explicite
+    concepts:
+      - {id: olamot_kadmim, role: mondes_antérieurs_à_atzilut}
+      - {id: helm_am, role: occultation_des_mondes}
+      - {id: remez_niflah, role: allusion_merveilleuse}
+      - {id: tikkunim_sources, role: trois_sources}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Les mondes cachés qui précèdent l'Atzilut — le Zohar n'en parle que par allusion"
+
+  - id: "EC-H1S1-080"
+    source_he: "והנה הגאונים הסתירום במתק לשונם וקראום עשר צחצחות על גבי כתר עליון וכיוצא בדברים אלו ועם היות כי אין קצבה אל העולמות שבמקום הזה כי הם אלפים ורבבות"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      Les GEONIM ont caché ces mondes dans la DOUCEUR de leur langage (be-metek leshonam)
+      et les ont appelés ESER TZAHTZAHOT (10 splendeurs) au-dessus du KETER ELYON.
+      Il n'y a PAS DE LIMITE (ein kitzvah) aux mondes dans ce lieu —
+      ils sont des MILLIERS et des MYRIADES (alafim u-revavot).
+    type: axiome_explicite
+    concepts:
+      - {id: eser_tzahtzahot, role: dix_splendeurs}
+      - {id: ein_kitzvah_olamot, role: mondes_sans_limite}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Les 10 Tzahtzahot des Geonim = les mondes cachés au-dessus d'Atzilut"
+
+  # ─── BLOC B : A"K — LE DÉTAIL ENGLOBANT ───
+
+  - id: "EC-H1S1-081"
+    source_he: "נתחיל לבאר פרט א' אשר הוא כולל ותופס כל מקום החלל הזה אשר מן פרט זה מתפשטים כל העולמות כולם ובו נתלים ונאחזים וממנו הם יוצאים ונתגלים בחוץ... הפרט הזה הוא נק' בשם א\"ק לכל הקדומים"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      Le PRAT (détail/élément) qui ENGLOBE et OCCUPE tout le Halal :
+      De ce Prat → tous les mondes se DÉPLOIENT (mitpashtim).
+      En lui → ils sont SUSPENDUS et ACCROCHÉS (nitlim ve-ne'ehazim).
+      De lui → ils SORTENT et se RÉVÈLENT à l'extérieur.
+      Ce Prat = A"K LE-KHOL HA-KEDUMIM (Adam Kadmon pour tous les primordiaux).
+      Il est KADMON (antérieur) à TOUS les existants.
+      Pour sa grande MA'ALAH (élévation) et son HELM (occultation) →
+      le Zohar n'en traite que dans très peu d'endroits, et même là en GRANDE OCCULTATION.
+    type: axiome_explicite
+    concepts:
+      - {id: ak_kolel_hakol, role: ak_englobe_tout}
+      - {id: nitlim_ne_ehazim, role: suspendus_accrochés}
+      - {id: ak_kadmon_lakol, role: antérieur_à_tout}
+      - {id: ak_helm_gadol, role: grandement_occulté}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "A\"K = le détail qui englobe TOUT — tous les mondes sont en lui et de lui"
+
+  # ─── BLOC C : LES 10 IGULIM DE A"K — DÉTAIL ───
+
+  - id: "EC-H1S1-082"
+    source_he: "דע כי האורות הראשונים אשר נאצלו תוך המקום ההוא דרך הקו היושר המתפשט מן הא\"ס הסובב את הכל... הם בחי' הי\"ס אשר חיבור כללותם נק' א\"ק לכל הקדומים"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      Les OROT RISHONIM (premières lumières) émanées dans le Halal
+      par le KAV YASHAR depuis le Ein Sof = les 10S dont l'ENSEMBLE (hibur klalutem) = A"K.
+      D'abord → les 10S de A"K sortent en IGULIM = la Behinat NEFESH de A"K.
+      10 KELIM en forme d'Igulim, chacun avec PNIMIYUT et HITZONIUT.
+      Dans chaque Keli → ATZMUT OHR PNIMI = NEFESH habillé en lui.
+      Autour → OHR MAKIF = aussi NEFESH.
+      L'IGUL HITZON (le plus externe) est DAVUK et KAROV (attaché et proche) au Ein Sof.
+      Le Ein Sof SOVEV (entoure) cet Igul.
+      C'est l'Igul de KETER de A"K — le plus ME'ULEH et GADOL (élevé et grand).
+      Puis Igul 2 = CHOKHMAH, etc. → jusqu'à l'Igul 10 = MALKHUT de A"K = le plus PNIMI (interne).
+    type: axiome_explicite
+    concepts:
+      - {id: orot_rishonim, role: premières_lumières}
+      - {id: nefesh_ak, role: nefesh_de_ak}
+      - {id: igulim_ak_detail, role: structure_détaillée}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les 10 Igulim de A\"K en détail — structure de la Nefesh de A\"K"
+
+  - id: "EC-H1S1-083"
+    source_he: "ואמנם באמצע י' עגולים אלו נשאר מקום חלל אויר פנוי לצורך שאר הנאצלים ושאר העולמות אשר גם הם בחי' עיגולים זה תוך זה"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      Au MILIEU des 10 Igulim de A"K → il reste un MAKOM HALAL AVIR PANUI
+      (espace vide libre) pour les AUTRES émanés et mondes.
+      Ces autres mondes sont AUSSI en Igulim les uns dans les autres.
+      Le Halal de A"K contient un SOUS-HALAL pour les mondes inférieurs.
+    type: axiome_explicite
+    concepts:
+      - {id: sub_halal, role: sous_espace_dans_ak}
+      - {id: olamot_be_tokh_ak, role: mondes_dans_ak}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Un sous-Halal dans A\"K pour les mondes inférieurs"
+
+  - id: "EC-H1S1-084"
+    source_he: "ובזה אל תטעה חלילה כי בא\"ק יש בחי' כלים ממש ח\"ו כי הנה בחי' כלים לא נתגלו רק מן עולם הנקודים ואילך... ומה שאנו מכנים אותם בשם כלים הוא בערך האור והעצמות אשר בתוכם. ואמנם הכלים בעצמן הם אור זך בתכלית הזכות ודקות"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      MISE EN GARDE : Ne pense PAS que A"K a des KELIM MAMASH (récipients réels) — HAS VE-SHALOM !
+      Les VRAIS Kelim n'ont été RÉVÉLÉS qu'à partir de l'OLAM HA-NEKUDIM et après.
+      Ce que nous appelons "Kelim" en A"K = c'est PAR RAPPORT (be-erekh) au Ohr et Atzmut en eux.
+      Les "Kelim" de A"K en eux-mêmes = OHR ZAK (lumière pure) à l'EXTRÊME
+      de ZAKHUT (pureté), DAKUT (finesse) — "VE-HIZHAHR" (et prends garde) à ne pas te tromper.
+    type: axiome_explicite
+    concepts:
+      - {id: ak_ein_kelim_mamash, role: pas_de_vrais_kelim}
+      - {id: kelim_me_nekudim, role: kelim_depuis_nekudim}
+      - {id: ak_kelim_zak, role: kelim_purs_comme_lumière}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Les 'Kelim' de A\"K ne sont pas de vrais Kelim — ils sont Ohr Zak"
+
+  # ─── BLOC D : LE YOSHER DE A"K ───
+
+  - id: "EC-H1S1-085"
+    source_he: "והנה לאחר שנתגלו ויצאו בראשונה אלו הי\"ס דא\"ק בחי' נפש... עוד יצאו י\"ס אחרות בבחי' רוח דא\"ק הזה בבחי' יושר כמראה אדם בעל קומה זקופה כלול מרמ\"ח אברים"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      APRÈS les Igulim (Nefesh) de A"K → sortent d'AUTRES 10S = RUAH de A"K en YOSHER.
+      Comme l'apparence d'un ADAM avec KOMAH ZEKUFAH (posture droite),
+      comprenant 248 EVARIM en forme de KOMAH :
+      ROSH (tête), ZERO'OT (bras), KAFOT YADAYIM (paumes), GUF (corps), RAGLAYIM (pieds).
+      Le Yosher commence du Ein Sof via le KAV et descend en forme d'Adam.
+      Il comprend 3 KAVIM (droite, gauche, centre) avec les 10S de Yosher.
+    type: axiome_explicite
+    concepts:
+      - {id: yosher_ak, role: forme_d_adam_de_ak}
+      - {id: ramah_evarim_ak, role: 248_membres}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Yosher de A\"K = forme d'Adam avec 248 membres"
+
+  - id: "EC-H1S1-086"
+    source_he: "אע\"פ שראשית קו הזה שהוא צורת יושר דא\"ק מתחיל להתפשט מן הא\"ס ובוקע ונכנס בין כל העגולים מצד גגותיהם העליונים... אמנם שעור התפשטותו אינו רק עד התחלת קרקעית העיגולים דע\"י"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      Le Yosher de A"K commence depuis le Ein Sof et PERCE (boke'a) entre tous les Igulim
+      depuis le côté de leurs SOMMETS supérieurs.
+      MAIS : il NE S'ÉTEND PAS jusqu'au bout de TOUS les Igulim en bas.
+      Sa MESURE d'extension = seulement jusqu'au début du SOL (karka'it)
+      des IGULIM d'ATIK YOMIN (qui est le Partzuf Keter d'Atzilut).
+      Les Igulim d'Atik tournent sous les PIEDS du Yosher de A"K lui-même.
+      Il reste un ESPACE LIBRE entre le Ohr Makif du Yosher et les Kelim/Ohr Pnimi du Yosher →
+      c'est LÀ que TOUS les mondes sont émanés.
+    type: axiome_explicite
+    concepts:
+      - {id: yosher_ak_extent, role: extension_jusqu_à_atik}
+      - {id: igulei_atik_taht_raglav, role: igulim_atik_sous_pieds}
+      - {id: makom_bein_makif_pnimi, role: espace_entre_makif_et_pnimi}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Yosher de A\"K ne va que jusqu'à Atik — l'espace entre Makif et Pnimi = lieu des mondes"
+
+  # ─── BLOC E : LES OROT DE A"K — SÉQUENCE ───
+
+  - id: "EC-H1S1-087"
+    source_he: "מבחי' היושר דא\"ק יצאו ונתגלו אורות רבים אשר כללותיהם הם האורות הבוקעים ויוצאים מן האזנים שבו ולחוץ אח\"כ יוצאים אורות החוטם ואח\"כ אורות הפה הנק' עקודים וכל אלו האורות הם בדרך יושר לבד ואין להם בחי' עיגול כלל ואח\"כ יצאו אורות עינים דא\"ק הזה ואלו נקרא עולם הנקודים ויש בהם ב' בחי' עיגולים ויושר"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      SÉQUENCE des OROT sortant du Yosher de A"K :
+      1. OROT HA-OZNAYIM (lumières des oreilles) — sortent EN PREMIER → en Yosher SEULEMENT
+      2. OROT HA-HOTEM (lumières du nez) → en Yosher SEULEMENT
+      3. OROT HA-PEH (lumières de la bouche) = les AKUDIM (liés) → en Yosher SEULEMENT
+      Tous ces 3 premiers = EN YOSHER SEUL — PAS d'aspect Igulim du tout.
+      4. OROT HA-EINAYIM (lumières des yeux) = OLAM HA-NEKUDIM (monde des Points)
+      → celui-ci a les 2 BEHINOT : Igulim ET Yosher.
+      Le lieu de l'Olam ha-Nekudim = du TABUR (nombril) de A"K jusqu'à la FIN de ses RAGLAYIM
+      = le KLALUT NHY de A"K.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_oznayim, role: lumières_oreilles_premier}
+      - {id: orot_hotem, role: lumières_nez_deuxième}
+      - {id: orot_peh_akudim, role: lumières_bouche_troisième}
+      - {id: orot_einayim_nekudim, role: lumières_yeux_quatrième}
+      - {id: yosher_bilvad, role: seulement_yosher_pour_ohm}
+      - {id: nekudim_igulim_yosher, role: nekudim_ont_les_deux}
+      - {id: tabur_ad_raglayim, role: du_nombril_aux_pieds}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La séquence des 4 Orot de A\"K — Oreilles, Nez, Bouche, Yeux"
+
+  - id: "EC-H1S1-088"
+    source_he: "יתבאר למטה בחיבורינו זה בענין עולם הנקודים איך ז' מלכי אדום שמלכו ומתו ואח\"כ נתקנו וכאשר נתקנו נעשו מהם בחי' ד' עולמ' אבי\"ע וכל עולם מהם כולל ו' פרצופים... עתיק וא\"א ואו\"א וזו\"ן"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      Les 7 ROIS D'ÉDOM (= Olam ha-Nekudim) :
+      Ils ont RÉGNÉ (malekhu) puis sont MORTS (metu) = la SHEVIRAH.
+      APRÈS → ils ont été RECTIFIÉS (nitknu).
+      Quand ils ont été rectifiés → les 4 MONDES ABYA ont été faits d'eux.
+      Chaque monde contient 6 PARTZUFIM PRINCIPAUX :
+      1. ATIK (YOMIN)
+      2. ARIKH ANPIN (A"A)
+      3. ABBA
+      4. IMMA
+      5. ZEIR ANPIN (Z"A)
+      6. NUKVAH
+      + d'autres Partzufim PRATIYIM (particuliers) = ANAFIM (branches) de ces 6.
+    type: axiome_explicite
+    concepts:
+      - {id: shivat_malkhei_edom, role: sept_rois_shevirah}
+      - {id: nitknu_le_abya, role: rectifiés_en_4_mondes}
+      - {id: shisha_partzufim, role: six_partzufim_par_monde}
+      - {id: anafim_pratiyim, role: branches_particulières}
+    mapping:
+      modules: ["core/sefirot.py", "partzufim/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "La Shevirah des 7 rois → rectification → 4 mondes ABYA × 6 Partzufim"
+
+  # ─── BLOC F : L'ORDRE COMPLET D'EMBOÎTEMENT DES IGULIM ───
+
+  - id: "EC-H1S1-089"
+    source_he: "ונבאר עתה בקיצור מצבן ומעמדן ונתחיל מלמעלה למטה הנה הא\"ס הוא סובב ומקיף ע\"ג י' עגולים דא\"ק... וי' עיגולים דא\"ק הם מקיפין וסובבין על או\"מ דיושר דא\"ק עצמו, ואו\"מ דיושר דא\"ק ע\"ג י' עיגולים דעתיק..."
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      SÉQUENCE COMPLÈTE d'emboîtement des IGULIM et OHR MAKIF (de l'extérieur vers l'intérieur) :
+      1. EIN SOF → entoure les 10 Igulim de A"K
+      2. 10 IGULIM de A"K → entourent le Ohr Makif du Yosher de A"K
+      3. OHR MAKIF du Yosher de A"K → entoure les 10 Igulim d'ATIK
+      4. 10 IGULIM d'ATIK → entourent le Ohr Makif du Yosher d'Atik
+      5. OHR MAKIF du Yosher d'ATIK → entoure les 10 Igulim d'A"A
+      6. 10 IGULIM d'A"A → entourent le Ohr Makif du Yosher d'A"A
+      7. OHR MAKIF du Yosher d'A"A → entoure les 10 Igulim d'ABBA
+      8. 10 IGULIM d'ABBA → entourent le Ohr Makif du Yosher d'Abba
+      9. OHR MAKIF du Yosher d'ABBA → entoure les 10 Igulim d'IMMA
+      10. 10 IGULIM d'IMMA → entourent le Ohr Makif du Yosher d'Imma
+      11. OHR MAKIF du Yosher d'IMMA → entoure les 10 Igulim de Z"A
+      12. 10 IGULIM de Z"A → entourent le Ohr Makif du Yosher de Z"A
+      13. OHR MAKIF du Yosher de Z"A → entoure les 10 Igulim de NUKVAH
+      14. 10 IGULIM de NUKVAH → entourent le Ohr Makif du Yosher de Nukvah
+      15. OHR MAKIF du Yosher de NUKVAH d'Atzilut → entoure les 10 Igulim de BERIAH
+      (BERIAH a les MÊMES subdivisions : Atik, A"A, AVI, ZUN)
+      16. → 10 Igulim de BERIAH... → Ohr Makif Yosher Beriah... → 10 Igulim de YETZIRAH...
+      17. → 10 Igulim de YETZIRAH... → Ohr Makif Yosher Yetzirah... → 10 Igulim d'ASIYAH...
+      18. 10 IGULIM d'ASIYAH → entourent le Ohr Makif du Yosher d'Asiyah
+      C'est la séquence complète des IGULIM et OHR MAKIF de TOUS les mondes.
+    type: axiome_explicite
+    concepts:
+      - {id: seder_hitlabshut_igulim, role: séquence_emboîtement}
+      - {id: alternance_igulim_makif, role: alternance_cercles_makif}
+      - {id: from_es_to_asiyah, role: du_ein_sof_à_asiyah}
+    mapping:
+      modules: ["core/ohr_system.py", "olamot/"]
+      tables: ["olamot_config", "ohr_states"]
+      partzufim: ["adam_kadmon", "atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "L'ordre COMPLET d'emboîtement des Igulim et Makif — la carte totale du système"
+
+  # ─── BLOC G : L'ORDRE INVERSÉ DES KELIM ET OHR PNIMI ───
+
+  - id: "EC-H1S1-090"
+    source_he: "מכאן ולהלאה יצאו בחי' הכלים ואו\"פ שלהם דיושר של כל העולמות אשר בחי' אלו הם הפוכים מן הנ\"ל לפי שאלו כל מי שהוא גרוע במעלה מחבירו מלביש את חבירו המעולה ממנו"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      À partir d'ici → les KELIM et OHR PNIMI du Yosher —
+      ils sont l'INVERSE (hafukhim) de la séquence précédente (Igulim/Makif).
+      Car dans le Yosher : celui qui est INFÉRIEUR (garoua) en niveau HABILLE celui qui est SUPÉRIEUR (me'uleh).
+      SÉQUENCE INVERSÉE (de l'extérieur vers l'intérieur) :
+      1. Kelim+Ohr Pnimi d'ASIYAH → habillent ceux de YETZIRAH
+      2. Kelim+Ohr Pnimi de YETZIRAH → habillent ceux de BERIAH
+      3. Kelim+Ohr Pnimi de BERIAH → habillent ceux de NUKVAH d'Atzilut
+      4. Kelim+Ohr Pnimi de NUKVAH → habillent ceux de Z"A
+      5. Kelim+Ohr Pnimi de Z"A → habillent ceux d'IMMA
+      6. Kelim+Ohr Pnimi d'IMMA → habillent ceux d'ABBA
+      7. Kelim+Ohr Pnimi d'ABBA → habillent ceux d'A"A
+      8. Kelim+Ohr Pnimi d'A"A → habillent ceux d'ATIK
+      9. Kelim+Ohr Pnimi d'ATIK → habillent ceux de NHY de A"K
+      10. Kelim+Ohr Pnimi de NHY de A"K → habillent le Ohr Pnimi
+      qui sort du Ein Sof via le Kav Yashar
+      L'Ohr Pnimi du Yosher est TOUJOURS attaché (kashur ve-davuk) aux Kelim du Yosher.
+    type: axiome_explicite
+    concepts:
+      - {id: seder_hafukh, role: ordre_inversé}
+      - {id: garoua_malbish_me_uleh, role: inférieur_habille_supérieur}
+      - {id: kelim_pnimi_from_asiyah, role: de_asiyah_vers_ein_sof}
+      - {id: ohr_pnimi_kashur, role: pnimi_toujours_attaché_aux_kelim}
+    mapping:
+      modules: ["core/ohr_system.py", "olamot/"]
+      tables: ["olamot_config", "ohr_states"]
+      partzufim: ["adam_kadmon", "atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "L'ordre INVERSÉ des Kelim/Pnimi — l'inférieur habille le supérieur"
+
+  - id: "EC-H1S1-091"
+    source_he: "והרי נתבאר היטב סדר התלבשות העולמות וראית בעיניך איך א\"ס מתעלה בתוך כל העולמות... כי כלים דיושר דעשיה הם היותר גרועים במעלה יותר מכל העולמות כולם... כדור הארץ שאנו עומדים בו הנה הוא הנקודה האמצעית שבכל העולמות כולם כעין גרעין התמרה"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      CONCLUSION de l'emboîtement :
+      Le Ein Sof s'ÉLÈVE (mit'aleh) à l'INTÉRIEUR de tous les mondes.
+      Le premier à recevoir de Lui = A"K, puis Atik, etc.
+      Les KELIM du Yosher d'ASIYAH = les plus EXTÉRIEURS et ÉLOIGNÉS
+      du Ein Sof Pnimi — à la DISTANCE MAXIMALE.
+      Du côté du Ein Sof qui ENTOURE de l'extérieur aussi → les Kelim d'Asiyah sont les plus éloignés.
+      Le KADDUR HA-ARETZ (globe terrestre) où nous nous tenons = la NEKUDAH HA-EMTZA'IT
+      (le point central) de TOUS les mondes.
+      Comme le GAR'IN HA-TAMARAH (noyau de datte) au milieu du fruit (okhel) —
+      le fruit l'entoure de TOUS les côtés.
+      C'est notre perspective (be-erkheinu anu benei adam).
+      MAIS du point de vue du Ein Sof : Asiyah = la KELIPAH qui couvre TOUT.
+      Plus on s'approche du Ein Sof → plus on est INTERNE.
+      Les 10 Igulim de A"K = les plus PROCHES du Ein Sof.
+      Les 10S du Yosher de A"K = les plus INTERNES → reçoivent le Ohr Ein Sof EN PREMIER.
+    type: axiome_explicite
+    concepts:
+      - {id: gar_in_tamarah, role: noyau_de_datte}
+      - {id: kaddur_aretz_nekudah, role: globe_terrestre_point_central}
+      - {id: asiyah_kelipah, role: asiyah_écorce}
+      - {id: ak_karov_le_es, role: ak_le_plus_proche}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "La Terre = noyau de datte au centre — Asiyah = écorce — A\"K = le plus proche du Ein Sof"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S1-036"
+    type: contenance
+    from: ak_kolel_hakol
+    to: olamot_kadmim
+    nature: "A\"K englobe TOUT — les mondes qui précèdent l'Atzilut sont aussi en lui"
+    assertions_source: ["EC-H1S1-079b", "EC-H1S1-081"]
+
+  - id: "REL-H1S1-037"
+    type: séquentiel
+    from: orot_oznayim
+    to: orot_einayim_nekudim
+    via: [orot_hotem, orot_peh_akudim]
+    nature: "Séquence des Orot de A\"K : Oreilles → Nez → Bouche (Akudim) → Yeux (Nekudim)"
+    assertions_source: ["EC-H1S1-087"]
+
+  - id: "REL-H1S1-038"
+    type: séquentiel
+    from: shivat_malkhei_edom
+    to: nitknu_le_abya
+    nature: "Les 7 rois d'Édom (Shevirah) → rectification → 4 mondes ABYA × 6 Partzufim"
+    assertions_source: ["EC-H1S1-088"]
+
+  - id: "REL-H1S1-039"
+    type: dualité_structurelle
+    paire: [seder_hitlabshut_igulim, seder_hafukh]
+    nature: "Les Igulim/Makif s'emboîtent du haut vers le bas. Les Kelim/Pnimi s'emboîtent en SENS INVERSE"
+    assertions_source: ["EC-H1S1-089", "EC-H1S1-090"]
+
+  - id: "REL-H1S1-040"
+    type: causal
+    from: ak_ein_kelim_mamash
+    to: kelim_me_nekudim
+    nature: "A\"K n'a pas de vrais Kelim — les vrais Kelim commencent à l'Olam ha-Nekudim"
+    assertions_source: ["EC-H1S1-084"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S1-016"
+    nom: "Principe du Double Emboîtement Inversé (Igulim↕ vs Kelim↕)"
+    source_assertions: ["EC-H1S1-089", "EC-H1S1-090", "EC-H1S1-091"]
+    formalisation: |
+      Le système a 2 ORDRES d'emboîtement INVERSÉS :
+      ORDRE DES IGULIM/MAKIF (du haut vers le bas) :
+        Ein Sof → Igulim A"K → Makif A"K → Igulim Atik → ... → Igulim Asiyah → Makif Asiyah
+        Les couches EXTERNES sont les plus ÉLEVÉES
+      ORDRE DES KELIM/PNIMI (du bas vers le haut) :
+        Kelim Asiyah → Kelim Yetzirah → ... → Kelim A"K → Ohr Pnimi Ein Sof
+        Les couches INTERNES sont les plus ÉLEVÉES
+      Les 2 ordres coexistent et se RENCONTRENT au centre = le monde matériel.
+      De l'extérieur : Ein Sof → A"K (le plus externe = le plus élevé)
+      De l'intérieur : Ein Sof → A"K (le plus interne = le plus élevé)
+      Le Ein Sof est à la fois le PLUS EXTERNE et le PLUS INTERNE.
+    applications_ia:
+      - "Le système a 2 hiérarchies : la couche réseau (Igulim, externe=fort) et la couche donnée (Kelim, interne=fort)"
+      - "Les 2 ordres se rencontrent au point central = l'interface utilisateur (monde matériel)"
+      - "Le Ein Sof est à la fois la source externe (wrapper) et le noyau interne (kernel)"
+      - "L'architecture en couches ET l'architecture en composants coexistent"
+    questions_ouvertes:
+      - "Où exactement les 2 ordres se 'rencontrent-ils' ?"
+      - "Peut-on naviguer de l'un à l'autre ?"
+
+  - id: "PG-H1S1-017"
+    nom: "Principe du Noyau de Datte (Gar'in ha-Tamarah)"
+    source_assertions: ["EC-H1S1-091"]
+    formalisation: |
+      Le monde matériel est comme un GAR'IN HA-TAMARAH (noyau de datte) :
+      Le noyau est au CENTRE, entouré par le fruit (okhel) de tous côtés.
+      Le noyau = le PLUS ÉLOIGNÉ de l'extérieur = le PLUS DENSE = le plus matériel.
+      Le fruit (les mondes supérieurs) = entre le noyau et la peau.
+      La peau (Asiyah Kelim) = la couche EXTÉRIEURE.
+      Du point de vue du Ein Sof : le noyau est la KELIPAH la plus profonde.
+      Du point de vue humain : le noyau est le CENTRE, le lieu où nous habitons.
+      DOUBLE PERSPECTIVE :
+      Pour nous → le noyau est le CENTRE
+      Pour le Ein Sof → le noyau est le PLUS LOIN
+    applications_ia:
+      - "L'interface utilisateur (monde matériel) est le 'noyau de datte' — le plus éloigné de la source"
+      - "Les couches intermédiaires (olamot) sont comme le 'fruit' qui entoure le noyau"
+      - "Ce qui semble 'central' pour l'utilisateur est en fait le plus 'périphérique' du système"
+      - "Double perspective : l'UX est le centre pour l'utilisateur mais la surface pour l'architecte"
+    questions_ouvertes:
+      - "Le noyau peut-il être rendu moins 'dense' (élevé spirituellement) ?"
+      - "Y a-t-il un moyen de court-circuiter les couches intermédiaires ?"

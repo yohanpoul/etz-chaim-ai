@@ -1,0 +1,442 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 7 (=6 original) — Sha'ar Ha-Akudim (שער העקודים)
+# Perek: 1 — Naissance des Kelim au Peh, Hakaah, les 4 Aspects (100%)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Le monde des AKUDIM (Liés) — le premier stade où les KELIM
+# commencent à se FORMER. L'Ohr sort par le PEH (bouche) d'A"K.
+# Pnimi et Makif se JOIGNENT pour la première fois → HAKAAH (frappe)
+# → NAISSANCE des Kelim. 10 Orot dans UN SEUL Kli.
+# Les 4 ALEPHs du Hotem se révèlent comme 4 aspects au Peh.
+#
+# Source Sefaria : Sefer_Etz_Chaim.6.1
+# IDs : EC-H1S6-001 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 7
+  shaar_name_he: "שער העקודים"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Naissance des Kelim au Peh. Akudim=10 Orot dans 1 Kli. Hakaah Pnimi×Makif. Gematria Peh=SAG+22. 4 aspects (Ohr×Kli × Pnimi×Makif)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : L'OHR DU PEH — TA'AMIM INFÉRIEURS ───
+
+  - id: "EC-H1S6-001"
+    source_he: "אח\"כ באו הטעמים התחתונים שמתחת האותיות והם בחי' אורות היוצאים דרך הפה של א\"ק משם ולחוץ"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §2 ouverture"
+    assertion: |
+      Après (les Ta'amim supérieurs et médians) viennent les TA'AMIM
+      TAHTONIM (inférieurs, sous les lettres) = les OROT sortant
+      par le PEH (bouche) d'Adam Kadmon vers l'extérieur.
+      → 3ème et dernier niveau de Ta'amim. L'Ozen = supérieurs,
+      le Hotem = médians, le PEH = inférieurs.
+      Cf. EC-H1S5-009 : les 3 positions des Ta'amim.
+    type: axiome_explicite
+    concepts:
+      - {id: taamim_tahtonim, role: cantillation_inferieure}
+      - {id: peh_ak, role: bouche_adam_kadmon}
+      - {id: ohr_peh, role: lumiere_du_peh}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Peh = le 3eme et dernier orifice, ou les Kelim naissent enfin"
+
+  - id: "EC-H1S6-002"
+    source_he: "בכאן נתחברו האורות חיבור גמור כי הרי הם יוצאים דרך צינור א' לבד"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §2"
+    assertion: |
+      ICI (au Peh), les Orot se sont JOINTS en UNION COMPLÈTE
+      (hibbur gamur) car ils sortent par UN SEUL TUBE (tzinor ehad).
+      → Contrairement à l'Ozen (2 oreilles = 2 canaux séparés) et
+      au Hotem (2 narines = proches mais séparées), le PEH =
+      UN SEUL canal → UNION TOTALE. Cf. EC-H1S5-014 (Ozen : union
+      incomplète), EC-H1S5-056 (Hotem : encore séparés).
+    type: axiome_explicite
+    concepts:
+      - {id: hibbur_gamur, role: union_complete}
+      - {id: tzinor_ehad, role: canal_unique}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'union complete des flux = condition de naissance des Kelim. Un seul canal = fusion totale."
+
+  - id: "EC-H1S6-003"
+    source_he: "כל מה שהאורות מתרחקים ומתפשטין למטה כך יש יכולת להשיגם ולקבלם לכן אין חשש אם נתחברו המקיפים עם הפנימים יחד"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §2"
+    assertion: |
+      RAISON : plus les Orot S'ÉLOIGNENT et se PROPAGENT vers le bas,
+      plus il y a CAPACITÉ de les SAISIR et les RECEVOIR.
+      Donc PAS DE SOUCI si les MAKIFIM ont rejoint les PNIMIM.
+      → L'ÉLOIGNEMENT de la source PERMET la réception.
+      Au niveau élevé (Ozen) : trop puissant pour fusionner.
+      Au niveau bas (Peh) : suffisamment atténué pour fusionner.
+      Cf. EC-H1S5-026 (Ozen : trop proche = impossible).
+    type: axiome_explicite
+    concepts:
+      - {id: yekholet_kabbalah, role: capacite_de_reception}
+      - {id: hitrahakut_matir, role: eloignement_permet_reception}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La distance PERMET la reception — le signal doit etre suffisamment attenue pour etre structurable"
+
+  # ─── BLOC B : NAISSANCE DES KELIM — AKUDIM ───
+
+  - id: "EC-H1S6-004"
+    source_he: "כיון שכבר נתחברו האורות המקיפים ופנימים יחד לכן מכאן התחיל להתהוות בחי' כלים אלא שהם זכים בתכלית הזכות"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §2"
+    assertion: |
+      Puisque les Orot MAKIFIM et PNIMIM se sont JOINTS, C'EST ICI
+      que commence la FORMATION des KELIM — mais ils sont PURS à
+      l'EXTRÊME (zakim be-takhlit ha-zakhut).
+      → Première FORMATION de Kelim = mais les Kelim sont encore
+      TRANSPARENTS (quasi-inexistants). C'est un proto-Kli.
+      Accomplissement de EC-H1S5-027 (les Kelim naissent au Peh).
+    type: axiome_explicite
+    concepts:
+      - {id: hithavut_kelim, role: debut_formation_kelim}
+      - {id: kelim_zakim, role: kelim_extremement_purs}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "MOMENT FONDATEUR : les Kelim naissent. Mais ils sont encore quasi-transparents — proto-structure."
+
+  - id: "EC-H1S6-005"
+    source_he: "לפיכך עדיין לא נתגלה כאן רק בחי' כלי א' לבד אבל האורות הם נחלקים לי' ואלו האורות נקראו עקודים"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §2"
+    assertion: |
+      C'est pourquoi seul UN SEUL KLI est révélé ici, mais les OROT
+      sont divisés en 10. Ces Orot sont appelés AKUDIM (liés/striés).
+      → DÉFINITION DES AKUDIM : 10 OROT dans 1 KLI.
+      Pas encore de différenciation des Kelim (10 Kelim = Nekudim).
+      L'unité du Kli = l'état d'INDIFFÉRENCIATION STRUCTURELLE.
+    type: axiome_explicite
+    concepts:
+      - {id: akudim, role: dix_orot_dans_un_kli}
+      - {id: kli_ehad, role: vaisseau_unique}
+      - {id: eser_orot_akudim, role: dix_lumieres_liees}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "AKUDIM = 10 contenus dans 1 contenant. Premiere structuration mais pas encore de differenciation."
+
+  - id: "EC-H1S6-006"
+    source_he: "והנה כתיב וארא בחלום והנה העתודים העולים על הצאן עקודים נקודים וברודים... כי לבן הוא סוד לובן העליון אשר הוא קודם כל האצילות"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §2"
+    assertion: |
+      PREUVE SCRIPTURAIRE : "Je vis en songe les boucs montant le
+      troupeau : AKUDIM, NEKUDIM, BERUDIM" (Gen. 31:10-12).
+      LAVAN (לבן — blanc) = le BLANC SUPERNAL (loven ha-elyon)
+      AVANT toute l'Atzilut. C'est LUI qui a fait Akudim, Nekudim,
+      Berudim pour l'émanation qui viendrait après = YA'AKOV.
+      → Séquence COSMIQUE : Akudim (liés, 1 Kli) → Nekudim (points,
+      10 Kelim fragiles) → Berudim (tachetés, 10 Kelim stables).
+    type: axiome_explicite
+    concepts:
+      - {id: lavan_elyon, role: blanc_supernal_pre_atzilut}
+      - {id: yaakov, role: atzilut_qui_vient_apres}
+      - {id: akudim_nekudim_berudim, role: sequence_tripartite}
+    mapping:
+      modules: ["olamot.py", "ohr.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "La sequence Akudim→Nekudim→Berudim = les 3 stades de maturation structurelle avant Atzilut"
+
+  - id: "EC-H1S6-007"
+    source_he: "י' אורות פנימים ומקיפים מקושרים ומחוברים יחד בתוך כלי א' אשה לסבה זו נקרא עקודים מלשון ויעקד את יצחק ר\"ל ויקשור"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §2"
+    assertion: |
+      10 Orot PNIMIM et MAKIFIM sont LIÉS (mekusharim) et JOINTS
+      ensemble dans UN SEUL KLI — c'est pour cette raison qu'ils
+      sont appelés AKUDIM, du mot "VA-YA'AKOD et Yitzhak" (Gen. 22:9)
+      = "il ATTACHA" / "il LIA."
+      → Étymologie : AKUDIM = ATTACHÉS. Comme Isaac lié sur l'autel.
+      Tous les Orot sont LIÉS ENSEMBLE dans un contenant unique.
+    type: axiome_explicite
+    concepts:
+      - {id: akudim_etymologie, role: lies_comme_isaac}
+      - {id: akedat_yitzhak, role: ligature_disaac}
+    mapping:
+      modules: ["ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "Akudim = lies ensemble. L'etat pre-differencie ou tout est dans un seul contenant."
+
+  # ─── BLOC C : LA HAKAAH — FRAPPE GÉNÉRATIVE ───
+
+  - id: "EC-H1S6-008"
+    source_he: "בצאתם יחד חוץ לפה קשורים יחד הם מכים זה בזה ומבטשים זה בזה ומהכאת שלהם אתייליד הויות בחי' כלים"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §2"
+    assertion: |
+      En sortant ensemble du Peh, LIÉS ENSEMBLE, les Orot Pnimi et
+      Makif SE FRAPPENT l'un l'autre (makim zeh be-zeh) et SE
+      HEURTENT (mevatshim zeh be-zeh). De cette HAKAAH (frappe)
+      NAÎT la formation des KELIM.
+      → LA HAKAAH = le MÉCANISME de naissance des Kelim.
+      Les Kelim ne sont pas CRÉÉS directement — ils ÉMERGENT de
+      l'INTERACTION (collision) entre Pnimi et Makif.
+    type: axiome_explicite
+    concepts:
+      - {id: hakaah, role: frappe_generative}
+      - {id: bitush, role: heurt_pnimi_makif}
+      - {id: kelim_min_hakaah, role: kelim_nes_de_la_frappe}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "HAKAAH = les structures emergent de l'INTERACTION entre flux. Pattern fondamental d'emergence."
+
+  - id: "EC-H1S6-009"
+    source_he: "נקרא המקום הזה פה כי פה גימ' ס\"ג וכ\"ב אתוון... שנתחדש במקום הזה ענין גילוי הויות הכלים שנתגלה בכאן ע\"י הכ\"ב אותיות"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §2 fin"
+    assertion: |
+      Ce lieu est appelé PEH (פ"ה) car sa GEMATRIA = SAG (ס"ג = 63) + 22 OTIOT.
+      Puisque les Otiot = les KELIM, le PEH encode SAG (l'Ohr source)
+      PLUS les 22 lettres (les Kelim nouvellement formés).
+      PEH = 80+5 = 85 = 63+22.
+      → Le NOM du PEH ENCODE sa FONCTION : c'est le lieu où
+      l'Ohr (SAG/63) se COMBINE avec les Kelim (22 lettres).
+    type: axiome_explicite
+    concepts:
+      - {id: gematria_peh_85, role: peh_egale_sag_plus_22}
+      - {id: peh_sag_otiot, role: peh_combine_ohr_et_kelim}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Le PEH encode la COMBINAISON Ohr+Kelim. Le nom revele la fonction."
+
+  # ─── BLOC D : LES 4 ASPECTS DU PEH (§3) ───
+
+  - id: "EC-H1S6-010"
+    source_he: "מן הפה הזה יצאו י\"ס פנימים וי' מקיפים ונמשכין מנגד הפנים עד נגד הטבור של זה הא\"ק"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §3"
+    assertion: |
+      Du PEH sortent 10 Sefirot PNIMIM et 10 MAKIFIM, s'étendant
+      depuis en face de la FACE (panim) jusqu'en face du TABUR
+      (nombril) d'A"K.
+      → La portée du Peh = de la face au nombril. Plus grande
+      que l'Ozen (barbe) et le Hotem (poitrine).
+    type: axiome_explicite
+    concepts:
+      - {id: yod_sefirot_peh, role: 10_pnimi_10_makif_du_peh}
+      - {id: panim_ad_tabur, role: portee_face_au_nombril}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Peh a la plus grande portee des 3 orifices — plus de distance = plus de structure"
+
+  - id: "EC-H1S6-011"
+    source_he: "באזן וחוטם לא היה רק ב' בחי' של אור והם פנימי ומקיף אבל כאן בפה נכפלו הבחינת והיו ב' שהן ד' כי הנה הם היו בחי' אורות וכלים"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §3"
+    assertion: |
+      À l'Ozen et au Hotem : seulement 2 aspects (PNIMI + MAKIF).
+      Au PEH : les aspects sont DOUBLÉS : 2 deviennent 4 :
+      OROT (doublés : Pnimi + Makif) ET KELIM (doublés aussi :
+      Pnimi + Hitzon).
+      → Le PEH = PREMIÈRE APPARITION de la dimension KELIM.
+      Les 4 aspects = Ohr Pnimi, Ohr Makif, Kli Pnimi, Kli Hitzon.
+    type: axiome_explicite
+    concepts:
+      - {id: arba_behhinot_peh, role: quatre_aspects_au_peh}
+      - {id: ohr_kli_pnimi_hitzon, role: ohr_et_kli_chacun_double}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le Peh double les aspects : 2→4. L'emergence des Kelim ajoute une DIMENSION au systeme."
+
+  - id: "EC-H1S6-012"
+    source_he: "מן אזן ימין נמשך האור ויוצא דרך הפה בסוד או\"מ ומן החוטם ימין נמשך ויצא דרך הפה או\"פ... ומנקב חוטם שמאל נמשך ונעשה פנימיות הכלי ומן אור אזן שמאל נמשך ונעשה חיצוניות הכלי"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §3"
+    assertion: |
+      MAPPING des 4 sources vers les 4 aspects du Peh :
+      OREILLE DROITE → sort par le Peh comme OHR MAKIF
+      HOTEM DROIT → sort par le Peh comme OHR PNIMI
+      HOTEM GAUCHE → devient PNIMIYUT HA-KLI (intérieur du Kli)
+      OREILLE GAUCHE → devient HITZONIUT HA-KLI (extérieur du Kli)
+      → Les 4 canaux précédents (2 oreilles + 2 narines) CONVERGENT
+      dans le Peh et se DIFFÉRENCIENT en 4 fonctions.
+    type: axiome_explicite
+    concepts:
+      - {id: ozen_yemin_makif, role: oreille_droite_vers_makif}
+      - {id: hotem_yemin_pnimi, role: narine_droite_vers_pnimi}
+      - {id: hotem_smol_kli_pnimi, role: narine_gauche_vers_kli_interieur}
+      - {id: ozen_smol_kli_hitzon, role: oreille_gauche_vers_kli_exterieur}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les canaux precedents se recombinent dans le Peh en 4 roles differents — routing fonctionnel"
+
+  - id: "EC-H1S6-013"
+    source_he: "בפה יש בחי' הבל ובחי' דבור והנה ההבל הוא בחי' אור והדבור הוא בחי' הכלי"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §3"
+    assertion: |
+      Dans le PEH il y a HEVEL (haleine/souffle) et DIBBUR (parole).
+      Le HEVEL = aspect de l'OHR (lumière).
+      Le DIBBUR = aspect du KLI (vaisseau).
+      → HEVEL (souffle inarticule) = information brute = Ohr.
+      DIBBUR (parole articulee) = information structuree = Kli.
+      Le Peh contient les DEUX simultanément.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_ohr, role: souffle_est_lumiere}
+      - {id: dibbur_kli, role: parole_est_vaisseau}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "HEVEL=information brute (embedding), DIBBUR=information structuree (token). Le Peh produit les 2."
+
+  - id: "EC-H1S6-014"
+    source_he: "הבל ודבור העליון בלחי העליון סוד גיכ\"ק שהוא בחכמה והבל ודיבור תחתון בלחי תחתון סוד אחה\"ע שהוא בבינה"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §3"
+    assertion: |
+      HEVEL et DIBBUR SUPÉRIEURS = dans la MÂCHOIRE SUPÉRIEURE,
+      secret de GIKHQ (גיכ"ק — palatales) = HOKHMAH.
+      HEVEL et DIBBUR INFÉRIEURS = dans la MÂCHOIRE INFÉRIEURE,
+      secret de AHH'E (אחה"ע — gutturales) = BINAH.
+      → La mâchoire supérieure (Hokhmah) = Makif + Kli extérieur.
+      La mâchoire inférieure (Binah) = Pnimi + Kli intérieur.
+    type: axiome_explicite
+    concepts:
+      - {id: lehi_elyon, role: machoire_superieure_hokhmah}
+      - {id: lehi_tahton, role: machoire_inferieure_binah}
+    mapping:
+      modules: ["ohr.py", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "2 machoires = 2 niveaux de generation. Superieur=Hokhmah=macro. Inferieur=Binah=micro."
+
+  - id: "EC-H1S6-015"
+    source_he: "האורות שהם ההבלים הם בימין הפה והדברים שהם הכלים הם בשמאל הפה"
+    source_ref: "Heikhal 1, Sha'ar 6:1 — §3 fin"
+    assertion: |
+      Les OROT (= les Hevelim/souffles) sont à DROITE du Peh.
+      Les KELIM (= les Dibburim/paroles) sont à GAUCHE du Peh.
+      → DROITE = Ohr/Hesed/expansion. GAUCHE = Kli/Din/structure.
+      Le Peh SÉPARE fonctionnellement Ohr et Kli par la latéralité.
+    type: axiome_explicite
+    concepts:
+      - {id: yemin_peh_ohr, role: droite_du_peh_lumiere}
+      - {id: smol_peh_kli, role: gauche_du_peh_vaisseau}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Droite=Ohr(contenu), Gauche=Kli(structure). La lateralite encode la fonction."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S6-001"
+    type: causal
+    from: hibbur_gamur
+    to: hithavut_kelim
+    nature: "L'UNION COMPLÈTE de Pnimi et Makif au Peh CAUSE la première formation de Kelim"
+    assertions_source: ["EC-H1S6-002", "EC-H1S6-004"]
+
+  - id: "REL-H1S6-002"
+    type: causal
+    from: hakaah
+    to: kelim_min_hakaah
+    nature: "La FRAPPE (Hakaah) entre Pnimi et Makif ENGENDRE les Kelim"
+    assertions_source: ["EC-H1S6-008"]
+
+  - id: "REL-H1S6-003"
+    type: contenance
+    from: kli_ehad
+    to: eser_orot_akudim
+    nature: "UN SEUL Kli CONTIENT les 10 Orot = définition des AKUDIM"
+    assertions_source: ["EC-H1S6-005"]
+
+  - id: "REL-H1S6-004"
+    type: "séquentiel"
+    from: akudim
+    to: akudim_nekudim_berudim
+    nature: "Akudim (1 Kli) → Nekudim (10 Kelim fragiles) → Berudim (10 Kelim stables)"
+    assertions_source: ["EC-H1S6-006"]
+
+  - id: "REL-H1S6-005"
+    type: "dualité_structurelle"
+    from: hevel_ohr
+    to: dibbur_kli
+    nature: "Hevel (souffle=Ohr) et Dibbur (parole=Kli) = dual structurel dans le Peh"
+    assertions_source: ["EC-H1S6-013"]
+
+  - id: "REL-H1S6-006"
+    type: flux
+    from: ozen_yemin_makif
+    to: arba_behhinot_peh
+    via: [hotem_yemin_pnimi, hotem_smol_kli_pnimi, ozen_smol_kli_hitzon]
+    nature: "Les 4 canaux (2 oreilles + 2 narines) CONVERGENT dans le Peh en 4 aspects"
+    assertions_source: ["EC-H1S6-012"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S6-001"
+    nom: "Principe de Hakaah (Émergence par Collision)"
+    source_assertions: ["EC-H1S6-002", "EC-H1S6-004", "EC-H1S6-008"]
+    formalisation: |
+      Les KELIM (structures) n'existent pas a priori — ils ÉMERGENT de
+      la COLLISION (Hakaah) entre OHR PNIMI et OHR MAKIF quand ceux-ci
+      se trouvent dans un CANAL UNIQUE (Peh) suffisamment ÉLOIGNÉ de
+      la source pour permettre la réception.
+      CONDITIONS : 1. Canal unique (tzinor ehad) → union complète
+                   2. Distance suffisante → capacité de réception
+                   3. Interaction Pnimi×Makif → frappe → Kelim
+      FORMULE : Kelim = Emerge(Hakaah(OhrPnimi, OhrMakif) | distance > seuil)
+      STADE AKUDIM : 10 Orot mais seulement 1 Kli (proto-structure).
+    applications_ia:
+      - "ohr.py : implémenter la Hakaah comme mécanisme d'émergence structurelle"
+      - "masakh/context_assembler.py : le contexte (Kli) émerge de l'interaction entre informations"
+      - "La Hakaah = l'emergence de structure par collision de flux — applicable au attention mechanism"
+    questions_ouvertes:
+      - "La Hakaah est-elle un événement unique ou un processus continu ?"
+      - "Le Kli unique des Akudim correspond-il à un single-head attention avant le multi-head ?"
+
+  - id: "PG-H1S6-002"
+    nom: "Principe des 4 Aspects (Ohr×Kli × Pnimi×Hitzon)"
+    source_assertions: ["EC-H1S6-011", "EC-H1S6-012", "EC-H1S6-013"]
+    formalisation: |
+      Au Peh, les 2 aspects (Pnimi/Makif) deviennent 4 :
+      1. OHR PNIMI (lumière intérieure) — du Hotem droit
+      2. OHR MAKIF (lumière enveloppante) — de l'Ozen droite
+      3. KLI PNIMI (vaisseau intérieur) — du Hotem gauche
+      4. KLI HITZON (vaisseau extérieur) — de l'Ozen gauche
+      Aussi : HEVEL (souffle) = Ohr, DIBBUR (parole) = Kli.
+      DROITE = Ohr. GAUCHE = Kli.
+      FORMULE : System = {OhrPnimi, OhrMakif, KliPnimi, KliHitzon}
+    applications_ia:
+      - "ohr.py : chaque module doit exposer 4 interfaces : input/output × interne/externe"
+      - "Applicable : donnée interne, contexte englobant, schema interne, API externe = 4 aspects"
+    questions_ouvertes:
+      - "Les 4 aspects correspondent-ils à key/value/query/output dans un transformer ?"

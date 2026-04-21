@@ -1,0 +1,13 @@
+# macOS override : Ollama runs natively on the host (Metal GPU access).
+# Containers reach it via http://host.docker.internal:11434.
+#
+# Usage (the CLI wraps this automatically for macOS) :
+#   docker compose -f docker-compose.yml -f docker-compose.hybrid-host-ollama.yml up -d
+
+services:
+  app:
+    environment:
+      OLLAMA_HOST: "http://host.docker.internal:11434"
+  daemon:
+    environment:
+      OLLAMA_HOST: "http://host.docker.internal:11434"

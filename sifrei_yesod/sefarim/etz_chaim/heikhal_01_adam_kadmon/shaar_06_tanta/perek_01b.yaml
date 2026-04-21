@@ -1,0 +1,664 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 6 (=5 original) — Sha'ar TANTA (שער טנת"א)
+# Perek: 1b — Le Drush Mem-Bet, NaRaNHaY, Havayah interne (100% coverage §3-§5)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §3 : Le Drush portant le sigle מ"ב (= 42). Vision panoramique :
+#   comment les 4 TANTA/Miluyim s'articulent dans la pnimiyut d'A"K,
+#   comment naissent Nekudim (femelle d'abord) puis Atzilut (mâle ensuite),
+#   et comment les Partzufim d'Atzilut se répartissent les TANTA de MAH et BEN.
+# §4 : NaRaNHaY et les 2 Makifim englobants (Hayyah/Yehidah).
+# §5 : La Havayah interne d'A"K et le secret de BEN avant MAH.
+#
+# Source Sefaria : Sefer_Etz_Chaim.5.1 (§3-§5)
+# IDs : EC-H1S5-028 → (suite de perek_01a qui finit à -027)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 6
+  shaar_name_he: "שער טנת\"א"
+  perek: 1
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part B de 2 — Drush Mem-Bet (TANTA interne d'A\"K, naissance de Nekudim et Atzilut), NaRaNHaY/Makifim, Havayah interne"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LE DRUSH MEM-BET — TANTA DANS LES 4 MONDES ───
+
+  - id: "EC-H1S5-028"
+    source_he: "ד' בחי' כוללים כל ד' עולמות והם ע\"ב ס\"ג מ\"ה ב\"ן והם עצמם נקראו טנת\"א וכל אחד כולל ארבעתן"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3 (מ\"ב)"
+    assertion: |
+      Les 4 ASPECTS englobent les 4 MONDES :
+      AV (72) = SAG (63) = MAH (45) = BEN (52) = TANTA.
+      Chaque aspect CONTIENT les 4.
+      → Réaffirmation du HITKALELUT (cf. EC-H1S5-004) dans le
+      contexte spécifique des OLAMOT.
+    type: axiome_explicite
+    concepts:
+      - {id: arba_olamot, role: quatre_mondes_abya}
+      - {id: tanta, role: cadre_englobant}
+    mapping:
+      modules: ["olamot.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les 4 mondes (ABYA) = 4 niveaux TANTA — chaque monde a sa propre hierachie quadripartite"
+
+  - id: "EC-H1S5-029"
+    source_he: "ע\"ב הוא כתר וטעמים. ס\"ג הוא חכמה ונקודות. מ\"ה הוא בינה ותגין. וב\"ן ז\"ת ואותיות"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      MAPPING TANTA ↔ SEFIROT :
+      AV (72) = KETER = TA'AMIM
+      SAG (63) = HOKHMAH = NEKUDOT
+      MAH (45) = BINAH = TAGIN
+      BEN (52) = 7 TAHTONOT (Z"T) = OTIOT
+      → Triple identification : Miluy ↔ Sefirah ↔ niveau TANTA.
+      Cf. EC-H1S5-003 pour la correspondance Miluy ↔ TANTA seule.
+    type: axiome_explicite
+    concepts:
+      - {id: av_keter_taamim, role: triple_identite_keter}
+      - {id: sag_hokhmah_nekudot, role: triple_identite_hokhmah}
+      - {id: mah_binah_tagin, role: triple_identite_binah}
+      - {id: ben_zt_otiot, role: triple_identite_sept_inferieures}
+    mapping:
+      modules: ["ohr.py", "gematria/engine.py"]
+      tables: ["sefirot_hierarchy", "ohr_states"]
+      partzufim: []
+      relevance: "Chaque Sefirah a une correspondance Miluy/TANTA — le systeme doit encoder cette triple identite"
+
+  # ─── BLOC B : STRUCTURE INTERNE D'ADAM KADMON ───
+
+  - id: "EC-H1S5-030"
+    source_he: "מתחלה היה בא\"ק כך, ג\"ר שבו שהם ע\"ב כתר. ס\"ג חו\"ב. וזה הס\"ג היה מחציו ולמטה שהם הנקודות שבו. מלובש מטיבור ולמטה דא\"ק תוך מ\"ה וב\"ן דא\"ק"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      STRUCTURE INTERNE initiale d'A"K :
+      Les 3 PREMIÈRES (Gimmel Rishonot) = AV = KETER.
+      SAG = HOKHMAH et BINAH. Le SAG depuis sa MOITIÉ INFÉRIEURE
+      (= ses NEKUDOT) est HABILLÉ (melubash) depuis le TABUR
+      (nombril) et en-dessous d'A"K, À L'INTÉRIEUR de MAH et BEN d'A"K.
+      → Tout ceci est la PNIMIYUT (intériorité) d'A"K — Orot ET Kelim.
+    type: axiome_explicite
+    concepts:
+      - {id: pnimiyut_ak, role: structure_interne_adam_kadmon}
+      - {id: tabur, role: nombril_point_de_separation}
+      - {id: hitlabshut_sag, role: habillement_du_sag_dans_mah_ben}
+    mapping:
+      modules: ["adam_kadmon.py", "masakh/hitlabshut.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Architecture interne d'A\"K : les couches superieures s'habillent dans les inferieures — modele de nesting"
+
+  - id: "EC-H1S5-031"
+    source_he: "ואח\"כ הוציא בחי' החיצוניות להלבישו ותחלה הוציא אורות מן ע\"ב הכולל הפנימי שהוא השערות של הכתר מקיפים ראשו מבחוץ עד המצח ועד האזנים"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      Puis A"K a fait SORTIR la HITZONIUT (extériorité) pour l'HABILLER.
+      D'ABORD : les Orot du AV ENGLOBANT INTERNE = les SE'AROT
+      (cheveux) du KETER, entourant la tête de l'extérieur jusqu'au
+      FRONT (Metzah) et aux OREILLES.
+      → Le premier Ohr externalisé est au niveau AV = cheveux du Keter.
+    type: axiome_explicite
+    concepts:
+      - {id: hitzoniut_ak, role: exteriorite_adam_kadmon}
+      - {id: searot_keter, role: cheveux_du_keter_premier_ohr}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'externalisation procede du plus haut (AV/Keter) vers le bas — ordre descendant"
+
+  - id: "EC-H1S5-032"
+    source_he: "ואח\"כ הוציא שערו' הזקן הנמשכין מן ס\"ג הכולל הנקרא נקודים שמהם נעשו כללות ג' מוחין שבו ונמשכין תחלה סוד הטעמים דס\"ג שהוא אח\"פ עד טיבורו"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      Ensuite : les CHEVEUX DE LA BARBE, issus du SAG ENGLOBANT
+      (= NEKUDIM), dont sont faits les 3 MOHIN (cerveaux).
+      Le secret des TA'AMIM DE SAG = OZEN, HOTEM, PEH (AHP)
+      descendant jusqu'au TABUR (nombril).
+      → Le SAG externe = la barbe = AHP = les 3 organes sensoriels
+      qui produisent les Mohin (cf. EC-H1S4-001 ss.).
+    type: axiome_explicite
+    concepts:
+      - {id: searot_zakan, role: cheveux_barbe_sag}
+      - {id: shalosh_mohin, role: trois_cerveaux}
+      - {id: taamim_sag_ahp, role: taamim_du_sag_ozen_hotem_peh}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les Mohin (cerveaux) = outputs du SAG. AHP = les 3 canaux de sortie (cf. Sha'ar 4 en entier)."
+
+  # ─── BLOC C : NAISSANCE DU FÉMININ (BEN) PUIS DU MASCULIN (MAH) ───
+
+  - id: "EC-H1S5-033"
+    source_he: "רצה להוציא גם מן מ\"ה וב\"ן שלו הפנימים חיצוניותם לחוץ ואז עלו כל בחי' ס\"ג הפנימים הטמונים תוך מ\"ה וב\"ן הפנימים ועלו עמהם מ\"ה וב\"ן הפנימי'"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      A"K voulut faire SORTIR aussi l'extériorité de MAH et BEN internes.
+      Alors TOUS les aspects de SAG internes (CACHÉS dans MAH+BEN)
+      MONTÈRENT, et MAH+BEN internes montèrent AVEC eux.
+      → ASCENSION collective : SAG-interne + MAH + BEN remontent
+      ensemble vers les Ta'amim de SAG pour le ZIVVUG.
+    type: axiome_explicite
+    concepts:
+      - {id: aliyat_mah_ben, role: ascension_mah_ben_internes}
+      - {id: sag_pnimi_tamun, role: sag_interne_cache}
+    mapping:
+      modules: ["ohr.py", "partzufim/zivvug.py"]
+      tables: ["ohr_states", "zivvug_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'ascension pour le Zivvug = le processus de rassemblement des composants avant une generation"
+
+  - id: "EC-H1S5-034"
+    source_he: "ואז אלו מ\"ה וב\"ן הם מ\"ן שלהם אל הטעמים עצמן דס\"ג... כן הכא הטעמים דס\"ג מזדווגים עם כל ע\"ב"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      MAH et BEN deviennent les MAYIN NUKBIN (eaux féminines = Ma"N)
+      vis-à-vis des TA'AMIM de SAG. Le ZIVVUG se fait entre les
+      Ta'amim de SAG et TOUT le AV — comme le Zivvug d'AV"I
+      (Abba ve-Imma) supérieurs vis-à-vis de YiShSU"T
+      (Yisrael Saba u-Tevunah).
+      → L'engendrement exige toujours un Ma"N (stimulus ascendant)
+      et un Ma"D (réponse descendante).
+    type: axiome_explicite
+    concepts:
+      - {id: mayin_nukbin, role: eaux_feminines_stimulus}
+      - {id: zivvug_av_sag, role: union_av_avec_taamim_sag}
+    mapping:
+      modules: ["partzufim/zivvug.py", "ohr.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Zivvug = le processus generatif. Le Ma\"N = le stimulus (query). Le Ma\"D = la reponse (generation)."
+
+  - id: "EC-H1S5-035"
+    source_he: "ואז מולידין בחי' ב\"ן דחיצוני' ולבושם לחוץ הרי נולדה הנקבה עתה תחלה"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      Le Zivvug ENGENDRE le BEN (ב"ן) de l'extériorité = le vêtement
+      vers l'extérieur. LA FEMELLE (Nukvah) EST NÉE EN PREMIER.
+      → Le BEN = le niveau le plus MANIFESTE (Otiot) naît AVANT
+      le MAH (Tagin). Le contenant précède le contenu. La structure
+      réceptive est créée AVANT la lumière qui la remplit.
+    type: axiome_explicite
+    concepts:
+      - {id: nekevah_tehillah, role: femelle_nee_en_premier}
+      - {id: ben_hitzoniyut, role: ben_exterieur_ne}
+    mapping:
+      modules: ["ohr.py", "partzufim/nukva.py"]
+      tables: ["ohr_states"]
+      partzufim: ["nukva"]
+      relevance: "Le Kli (BEN/feminin) nait AVANT l'Ohr (MAH/masculin) — creer le receptacle avant le contenu"
+
+  - id: "EC-H1S5-036"
+    source_he: "מ\"ה וב\"ן הפנימית של א\"ק חזרו לירד ולהתפשט בתוכו למטה מהטיבור. אחר שנתגלה שם ההוא פרסה באמצע מבפנים"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      MAH et BEN internes REDESCENDENT et se ré-étendent à l'intérieur
+      d'A"K, EN-DESSOUS DU TABUR. Là se RÉVÈLE un PARSA (rideau/cloison)
+      au milieu, de l'intérieur.
+      → Le PARSA = barrière interne qui SÉPARE les niveaux. BEN interne
+      illumine BEN externe (Nekudim) à travers ce Parsa.
+    type: axiome_explicite
+    concepts:
+      - {id: parsa, role: rideau_separateur_interne}
+      - {id: yeridah_mah_ben, role: redescente_sous_le_tabur}
+    mapping:
+      modules: ["masakh/context_assembler.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le PARSA = un filtre intermediaire qui transmet l'information entre niveaux"
+
+  - id: "EC-H1S5-037"
+    source_he: "ומשם היתה מאירה בחי' ב\"ן פנימית לב\"ן שיצא לחוץ הנקרא עולם הנקודות"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      De là, le BEN INTERNE illuminait le BEN EXTERNE qui est sorti
+      = le OLAM HA-NEKUDOT (Monde des Points/Nekudim).
+      → Le Olam ha-Nekudot = le monde qui précède la Shevirah.
+      Il est ILLUMINÉ par le BEN interne à travers le Parsa.
+      C'est un monde INCOMPLET — ses Kelim ne tiennent pas encore.
+    type: axiome_explicite
+    concepts:
+      - {id: olam_ha_nekudot, role: monde_des_points}
+      - {id: ben_pnimi_meir, role: ben_interne_illuminant}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states", "olamot_config"]
+      partzufim: []
+      relevance: "Le monde des Nekudim = le prototype qui echoue avant le Tikkun — pertinent pour l'architecture iterative"
+
+  # ─── BLOC D : LES 2 TYPES D'OHR DANS LES NEKUDIM ───
+
+  - id: "EC-H1S5-038"
+    source_he: "י\"ס של עולם הנקודות היושב בחוץ מסבב לא\"ק מטיבורו ולמטה ויש לו ב' מיני אורות אחד מלמטה למעלה בפנימיות מן הטיבור עד העינים"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      Les 10 Sefirot du OLAM HA-NEKUDOT se tiennent à l'EXTÉRIEUR,
+      entourant A"K depuis le TABUR vers le bas.
+      Elles reçoivent 2 TYPES D'OROT :
+      1. OHR HOZER (lumière ascendante) : de l'INTÉRIEUR, du Tabur
+         jusqu'aux EINAYIM (yeux) — c'est l'Ohr principal pour les Nekudim.
+    type: axiome_explicite
+    concepts:
+      - {id: nekudim_mitsbibot, role: nekudim_entourant_ak}
+      - {id: ohr_hozer, role: lumiere_ascendante_interieure}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les Nekudim recoivent un Ohr Hozer (ascendant, reflechi) — feedback loop architecturale"
+
+  - id: "EC-H1S5-039"
+    source_he: "וגם יש לו אור ישר שהוא נוקב ועובר דרך העור מן הטיבור ולמטה ומאיר בנקודים דרך נקבי העור ודרך פי היסוד ודרך טבור ודרך נקב האחור"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      2. OHR YASHAR (lumière directe) : PERCE et TRAVERSE la peau
+         (or) depuis le Tabur vers le bas, illuminant les Nekudim
+         par les ORIFICES DE LA PEAU, la BOUCHE DU YESOD,
+         le TABUR, et l'ORIFICE POSTÉRIEUR.
+      → 2 flux simultanés : ascendant-interne (Hozer) +
+      descendant-externe (Yashar). Architecture BIDIRECTIONNELLE.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_yashar, role: lumiere_directe_descendante}
+      - {id: pi_yesod, role: orifice_du_yesod}
+      - {id: bidirectionalite, role: flux_simultanes_yashar_hozer}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Architecture bidirectionnelle : Ohr Yashar (forward pass) + Ohr Hozer (backward pass/feedback)"
+
+  # ─── BLOC E : SOURCES DES NEKUDIM ───
+
+  - id: "EC-H1S5-040"
+    source_he: "עיקר הנקודים הם מאורות עינים, וכתר שבהם לוקח האורות והכלים מבחי' אזן... וחו\"ב לוקחים מחוטם ופה ושיעור מועט מאזן, אך ז\"ת לוקחים מעט מחוטם ופה ואינם לוקחים כלל מאזן"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      L'ESSENTIEL (ikar) des NEKUDIM vient des OROT DES YEUX (Einayim).
+      KETER des Nekudim : prend Orot ET Kelim de l'OZEN (+ Einayim).
+      HOKHMAH + BINAH : prennent du HOTEM et du PEH + un peu de l'OZEN.
+      7 TAHTONOT (Z"T) : prennent un peu du HOTEM et du PEH,
+      RIEN de l'OZEN, + Tabur et Amah (Yesod).
+      → HIÉRARCHIE : plus on est haut, plus on reçoit de SOURCES.
+      Les Z"T sont les plus PAUVRES en sources — et c'est là
+      que la SHEVIRAH (brisure) se produira (cf. EC-H1S3-001 ss.).
+    type: axiome_explicite
+    concepts:
+      - {id: orot_einayim, role: source_principale_nekudim}
+      - {id: keter_nekudim, role: keter_recevant_de_ozen}
+      - {id: zt_nekudim, role: sept_inferieures_pauvres}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Les Z\"T (7 inferieures) sont vulnerables car peu alimentees — c'est la racine de la Shevirah"
+
+  - id: "EC-H1S5-041"
+    source_he: "מהטבור לקח כתר. ומהיסוד לוקחים או\"א. וז\"ת עם ד' אחורים דאו\"א וישסו\"ת לוקחים מי' אצבעות הרגלים בסוד נעץ צפורניו בקרקע"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      DISTRIBUTION depuis les parties inférieures d'A"K :
+      Du TABUR → KETER (des Nekudim).
+      Du YESOD → ABBA ve-IMMA.
+      Les Z"T + les 4 AHORAIM (dos) d'AV"I et de YiShSU"T →
+      des 10 DOIGTS DES PIEDS, secret de "Il planta ses ongles
+      dans le sol" (na'atz tzipornav ba-karka).
+      → Les niveaux les plus bas d'A"K alimentent les Nekudim.
+    type: axiome_explicite
+    concepts:
+      - {id: etzbaot_raglayim, role: dix_doigts_des_pieds}
+      - {id: naatz_tzipornav, role: ongles_plantes_dans_le_sol}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Meme les parties les plus basses de la source contribuent au processus generatif"
+
+  # ─── BLOC F : NAISSANCE DU MASCULIN (MAH) → ATZILUT ───
+
+  - id: "EC-H1S5-042"
+    source_he: "ואח\"כ חזרו להזדווג ע\"ב הכולל עם טעמי' דס\"ג הכולל בסוד פנימיות... ואז הולידין הזכר והוא שם מ\"ה"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      Puis AV ENGLOBANT et TA'AMIM DE SAG englobant se ré-unissent
+      en ZIVVUG secret de l'INTÉRIORITÉ. Tous les autres aspects
+      sont SUBORDONNÉS à eux (tefelim).
+      Ils ENGENDRENT le MÂLE = MAH (מ"ה = 45).
+      → Le féminin (BEN) naît PREMIER, le masculin (MAH) naît SECOND.
+      Ensemble ils forment le OLAM HA-ATZILUT.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_sheni, role: deuxieme_zivvug}
+      - {id: mah_zakhar, role: male_ne_en_second}
+      - {id: olam_atzilut, role: monde_atzilut_de_mah_ben}
+    mapping:
+      modules: ["partzufim/zivvug.py", "olamot.py"]
+      tables: ["zivvug_states", "olamot_config"]
+      partzufim: []
+      relevance: "Atzilut = union de MAH (male) et BEN (femelle) — architecture complete = dual system"
+
+  - id: "EC-H1S5-043"
+    source_he: "ואז נתחברו מ\"ה וב\"ן ונעשה משניהן עולם אצילות"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      MAH et BEN se sont JOINTS et des deux est né le OLAM HA-ATZILUT.
+      → Atzilut = SYNTHÈSE de MAH (masculin, 45) et BEN (féminin, 52).
+      Ni l'un ni l'autre seul ne constitue le monde — c'est leur
+      UNION qui le produit.
+    type: axiome_explicite
+    concepts:
+      - {id: hibbur_mah_ben, role: union_male_femelle}
+      - {id: olam_atzilut, role: monde_produit_par_lunion}
+    mapping:
+      modules: ["olamot.py", "partzufim/zivvug.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Atzilut = resultat d'un Zivvug complet — applicable a toute creation de module fonctionnel"
+
+  # ─── BLOC G : RÉPARTITION DES TANTA DE BEN DANS LES PARTZUFIM ───
+
+  - id: "EC-H1S5-044"
+    source_he: "עתיק לוקח ה' ראשונות מטעמים דב\"ן. וג\"ר מנקודות דב\"ן. וד\"ר מתגין דב\"ן. וכתרים של אותיות דב\"ן"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      DISTRIBUTION du BEN dans les Partzufim d'ATZILUT :
+      ATIK YOMIN reçoit :
+      — 5 PREMIÈRES des Ta'amim de BEN
+      — 3 PREMIÈRES (G"R) des Nekudot de BEN
+      — 4 INFÉRIEURES (D"R) des Tagin de BEN
+      — Les KETERIM (couronnes) des Otiot de BEN.
+      → Atik = le Partzuf le plus ÉLEVÉ, il prend la CRÈME de chaque couche.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_yomin, role: partzuf_supreme_atzilut}
+      - {id: halukah_ben, role: repartition_ben}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Atik Yomin = la couche la plus profonde d'Atzilut, prend les meilleurs elements de chaque niveau"
+
+  - id: "EC-H1S5-045"
+    source_he: "וא\"א לקח ה' אחרונות דטעמים דב\"ן. ואבא לקח ז\"ת דנקודות דב\"ן. ואמא ו\"ת דתגין דב\"ן"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      A"A (Arikh Anpin) : 5 DERNIÈRES des Ta'amim de BEN.
+      ABBA : 7 TAHTONOT (Z"T) des Nekudot de BEN.
+      IMMA : 6 TAHTONOT (V"T) des Tagin de BEN.
+      → Chaque Partzuf reçoit un sous-ensemble SPÉCIFIQUE
+      d'une couche TANTA spécifique de BEN.
+    type: axiome_explicite
+    concepts:
+      - {id: arikh_anpin_taamim, role: aa_recoit_taamim_bas}
+      - {id: abba_nekudot, role: abba_recoit_nekudot_zt}
+      - {id: imma_tagin, role: imma_recoit_tagin_vt}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["ohr_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "La repartition est PRECISE — chaque Partzuf a une nourriture specifique"
+
+  - id: "EC-H1S5-046"
+    source_he: "וז\"א ו\"ת (ו\"ת שהם אותיות דב\"ן) (נ\"א ז\"ת) דאותיות דב\"ן. ונוקבא עשירית אותיות דב\"ן (נ\"א העשירי דאותיות)"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      Z"A (Zeir Anpin) : 6 TAHTONOT (V"T) des Otiot de BEN.
+      Variante (NUSAH AHER) : 7 TAHTONOT (Z"T) des Otiot de BEN.
+      NUKVAH : la 10ème des Otiot de BEN.
+      Variante (NUSAH AHER) : la 10ème d'Otiot [sans précision].
+      → Z"A et Nukvah se partagent la couche la plus BASSE (Otiot).
+      Le Nusah Aher diverge sur 6 vs 7 pour Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: za_otiot, role: zeir_anpin_recoit_otiot}
+      - {id: nukva_asirit, role: nukvah_recoit_dixieme}
+      - {id: nusah_aher_zt_vt, role: variante_6_vs_7}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Z\"A et Nukvah = les Partzufim les plus bas, ils recoivent la couche la plus manifeste (Otiot)"
+
+  # ─── BLOC H : RÉPARTITION DE MAH DANS LES PARTZUFIM ───
+
+  - id: "EC-H1S5-047"
+    source_he: "ואמנם משם מ\"ה לקח עתיק טעמים דמ\"ה. וא\"א נקודות דמ\"ה. ואו\"א לקחו תגין דמ\"ה. וז\"א ו\"ת אותיות דמ\"ה. ונוקבא עשירית אותיות דמ\"ה"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §3"
+    assertion: |
+      DISTRIBUTION du MAH dans les Partzufim d'ATZILUT :
+      ATIK : Ta'amim de MAH.
+      A"A : Nekudot de MAH.
+      AV"I (Abba ve-Imma) : Tagin de MAH.
+      Z"A : 6 Tahtonot (V"T) des Otiot de MAH.
+      NUKVAH : 10ème des Otiot de MAH.
+      → Distribution plus SIMPLE que celle de BEN : chaque Partzuf
+      reçoit UNE couche TANTA complète (pas des sous-parties).
+    type: axiome_explicite
+    concepts:
+      - {id: halukah_mah, role: repartition_mah}
+      - {id: atik_taamim_mah, role: atik_recoit_taamim_mah}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "MAH distribue ses TANTA en couches entieres — architecture plus propre que BEN"
+
+  # ─── BLOC I : NaRaNHaY ET MAKIFIM (§4) ───
+
+  - id: "EC-H1S5-048"
+    source_he: "ענין ה' בחי' נרנח\"י פנימי' והמקיפים הם ב' חיה ויחידה צריך לדעת כי גם בה' בחי' פנימית יש מקיף בכל א'"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §4"
+    assertion: |
+      Les 5 niveaux de NaRaNHaY (Nefesh, Ruah, Neshamah, Hayyah, Yehidah) :
+      Les 3 INTÉRIEURS (NaRaN) + les 2 MAKIFIM (Hayyah, Yehidah).
+      MAIS : même dans les 5 niveaux INTÉRIEURS, chacun a son
+      propre MAKIF — comme Nefesh de Nadav, Avihu et Elyahu z"l.
+      → Chaque niveau d'âme a ses propres sous-couches Pnimi/Makif.
+    type: axiome_explicite
+    concepts:
+      - {id: naranhai, role: cinq_niveaux_de_lame}
+      - {id: makif_pnimi, role: makif_interne_a_chaque_niveau}
+    mapping:
+      modules: ["madregot_neshamah.py", "ohr.py"]
+      tables: ["madregot_states", "ohr_states"]
+      partzufim: []
+      relevance: "Chaque couche d'ame a son Makif propre — les niveaux de conscience sont fractals"
+
+  - id: "EC-H1S5-049"
+    source_he: "אבל אלו הב' מקיפים הם אחרים כוללים זולת ה' מקיפים שבפנימיות ואות לזה שבאלו המקיפים הפנימים יש יותר מה' שהוא מקיף ומקיף למקיף ומקיף לב' המקיפים"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §4"
+    assertion: |
+      Les 2 MAKIFIM ENGLOBANTS (Hayyah et Yehidah) sont DIFFÉRENTS
+      et UNIVERSELS — distincts des makifim internes de chaque niveau.
+      PREUVE : les makifim internes ont PLUS de 5 niveaux :
+      Makif, Makif-du-Makif, Makif-des-2-Makifim (cf. Idra Rabba,
+      Birkat Kohanim).
+      → Hiérarchie de Makifim RÉCURSIVE : Makif₁ < Makif₂ < Makif₃...
+    type: axiome_explicite
+    concepts:
+      - {id: makifim_kollelim, role: deux_makifim_universels}
+      - {id: makif_lemakif, role: makif_du_makif_recursif}
+    mapping:
+      modules: ["ohr.py", "madregot_neshamah.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les Makifim s'emboitent recursivement — applicable aux couches d'abstraction du systeme"
+
+  # ─── BLOC J : HAVAYAH INTERNE D'A"K (§5) ───
+
+  - id: "EC-H1S5-050"
+    source_he: "בפנימיות א\"ק יש הויה אחת אשר א\"ק הוא לבוש אליה ומד' אותיותה יוצאים ד' הויות ונגלים לחוץ של א\"ק והם הוי\"ה דע\"ב ס\"ג ב\"ן מ\"ה"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §5"
+    assertion: |
+      À l'INTÉRIEUR d'A"K il y a UNE SEULE HAVAYAH dont A"K est
+      le VÊTEMENT (levush). De ses 4 LETTRES sortent les 4 HAVAYOT
+      qui se RÉVÈLENT à l'EXTÉRIEUR : AV (72), SAG (63), BEN (52), MAH (45).
+      → La source UNIQUE génère les 4 niveaux par différenciation.
+      A"K = le contenant de la Havayah primordiale.
+    type: axiome_explicite
+    concepts:
+      - {id: havayah_pnimit, role: havayah_unique_interieure}
+      - {id: ak_levush, role: ak_comme_vetement}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Source unique → 4 manifestations. Le systeme entier derive d'un seul principe generateur."
+
+  - id: "EC-H1S5-051"
+    source_he: "והם במצח אח\"פ ומה שקדם הוי\"ה דב\"ן, להוי\"ה דמ\"ה הוא סוד תפילין דר\"ת והוא סוד נקבה תסובב גבר"
+    source_ref: "Heikhal 1, Sha'ar 5:1 — §5"
+    assertion: |
+      Les 4 Havayot se révèlent au METZAH (front), OZEN, HOTEM, PEH.
+      Le fait que BEN (52) PRÉCÈDE MAH (45) est le SECRET des
+      TEFILLIN DE RABBENU TAM et le secret du verset :
+      "NEKEVAH TESOVEV GAVER" (la femelle entourera le mâle, Jér. 31:21).
+      → Le FÉMININ (BEN) précède et ENTOURE le MASCULIN (MAH).
+      L'ordre n'est PAS MAH puis BEN mais BEN puis MAH.
+    type: axiome_explicite
+    concepts:
+      - {id: ben_kodem_mah, role: ben_precede_mah}
+      - {id: tefillin_rabbenu_tam, role: secret_des_tefillin}
+      - {id: nekevah_tesovev, role: femelle_entoure_le_male}
+    mapping:
+      modules: ["ohr.py", "gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le receptacle (BEN) precede le contenu (MAH) — le Kli avant l'Ohr, la structure avant la donnee"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S5-013"
+    type: causal
+    from: zivvug_av_sag
+    to: ben_hitzoniyut
+    nature: "Le Zivvug AV×SAG ENGENDRE le BEN externe = la femelle est née en premier"
+    assertions_source: ["EC-H1S5-034", "EC-H1S5-035"]
+
+  - id: "REL-H1S5-014"
+    type: "séquentiel"
+    from: ben_hitzoniyut
+    to: mah_zakhar
+    nature: "Le BEN (femelle) naît AVANT le MAH (mâle) — nekevah tehillah"
+    assertions_source: ["EC-H1S5-035", "EC-H1S5-042"]
+
+  - id: "REL-H1S5-015"
+    type: causal
+    from: hibbur_mah_ben
+    to: olam_atzilut
+    nature: "L'UNION de MAH et BEN PRODUIT le Olam ha-Atzilut"
+    assertions_source: ["EC-H1S5-042", "EC-H1S5-043"]
+
+  - id: "REL-H1S5-016"
+    type: flux
+    from: halukah_ben
+    to: atik_yomin
+    via: [arikh_anpin_taamim, abba_nekudot, imma_tagin, za_otiot, nukva_asirit]
+    nature: "Le BEN distribue ses TANTA en cascade à chaque Partzuf d'Atzilut"
+    assertions_source: ["EC-H1S5-044", "EC-H1S5-045", "EC-H1S5-046"]
+
+  - id: "REL-H1S5-017"
+    type: flux
+    from: halukah_mah
+    to: atik_taamim_mah
+    nature: "Le MAH distribue ses couches TANTA entières à chaque Partzuf"
+    assertions_source: ["EC-H1S5-047"]
+
+  - id: "REL-H1S5-018"
+    type: "hiérarchique"
+    from: makifim_kollelim
+    to: makif_pnimi
+    nature: "Les 2 Makifim universels (Hayyah/Yehidah) sont AU-DESSUS des makifim internes de chaque niveau"
+    assertions_source: ["EC-H1S5-048", "EC-H1S5-049"]
+
+  - id: "REL-H1S5-019"
+    type: contenance
+    from: havayah_pnimit
+    to: ak_levush
+    nature: "La Havayah unique intérieure est CONTENUE par A\"K qui est son vêtement, et GÉNÈRE les 4 Havayot extérieures"
+    assertions_source: ["EC-H1S5-050"]
+
+  - id: "REL-H1S5-020"
+    type: causal
+    from: ben_pnimi_meir
+    to: olam_ha_nekudot
+    via: [parsa]
+    nature: "Le BEN interne ILLUMINE le BEN externe (Nekudim) à travers le Parsa"
+    assertions_source: ["EC-H1S5-036", "EC-H1S5-037"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S5-004"
+    nom: "Principe de Priorité du Féminin (Nekevah Tehillah)"
+    source_assertions: ["EC-H1S5-035", "EC-H1S5-042", "EC-H1S5-051"]
+    formalisation: |
+      Le RÉCEPTACLE (BEN/féminin) est TOUJOURS créé AVANT le CONTENU
+      (MAH/masculin). La séquence de création est :
+      1. ZIVVUG → BEN (Kli/structure réceptive)
+      2. ZIVVUG → MAH (Ohr/contenu lumineux)
+      3. UNION MAH+BEN → OLAM complet (Atzilut)
+      Le BEN ENTOURE le MAH (nekevah tesovev gaver).
+      FORMULE : Create(system) = Create(container) → Create(content) → Bind(container, content)
+    applications_ia:
+      - "Toujours creer l'infrastructure (DB, schemas, APIs) AVANT les modules fonctionnels"
+      - "partzufim/nukva.py : Nukvah comme receptacle qui precede Z\"A"
+      - "masakh/context_assembler.py : le contexte (Kli) doit etre assemble AVANT le prompt (Ohr)"
+    questions_ouvertes:
+      - "Le BEN peut-il fonctionner sans MAH (structure vide) ? Les Nekudim le font mais ils echouent (Shevirah)."
+
+  - id: "PG-H1S5-005"
+    nom: "Principe de Distribution TANTA dans les Partzufim"
+    source_assertions: ["EC-H1S5-044", "EC-H1S5-045", "EC-H1S5-046", "EC-H1S5-047"]
+    formalisation: |
+      Chaque Partzuf d'Atzilut reçoit un SOUS-ENSEMBLE spécifique des TANTA :
+      BEN : distribution FRAGMENTÉE (sous-parties de chaque couche)
+      MAH : distribution ENTIÈRE (une couche complète par Partzuf)
+      ATIK reçoit le plus haut de chaque couche → Partzuf RACINE.
+      NUKVAH reçoit le 10ème de la couche la plus basse → Partzuf TERMINAL.
+      FORMULE : Resource(Partzuf_i) = TANTA_layer(rank_i) ∩ level(BEN ou MAH)
+    applications_ia:
+      - "partzufim/base.py : chaque Partzuf doit declarer quelles couches TANTA il consomme"
+      - "ohr.py : implementer la distribution TANTA comme un allocateur de ressources"
+      - "olamot.py : Atzilut = le monde ou la distribution est complete et precise"
+    questions_ouvertes:
+      - "La distribution de BEN (fragmentee) est-elle plus robuste ou plus fragile que celle de MAH (entiere) ?"
+
+  - id: "PG-H1S5-006"
+    nom: "Principe de Bidirectionnalité Yashar/Hozer"
+    source_assertions: ["EC-H1S5-038", "EC-H1S5-039"]
+    formalisation: |
+      Tout système reçoit 2 types de flux SIMULTANÉS :
+      OHR YASHAR = flux DESCENDANT, DIRECT (forward pass)
+      OHR HOZER = flux ASCENDANT, RÉFLÉCHI (backward pass / feedback)
+      Le Ohr HOZER est l'ikar (principal) pour les Nekudim.
+      FORMULE : Output(x) = f(OhrYashar(x)) + g(OhrHozer(x))
+      où OhrHozer > OhrYashar en importance pour les niveaux pré-Tikkun.
+    applications_ia:
+      - "ohr.py : implementer les 2 flux simultanes dans chaque module"
+      - "masakh/context_assembler.py : le feedback (Ohr Hozer) enrichit le contexte autant que l'input direct"
+      - "dissensuengine/core.py : la reflexion (Hozer) est le mecanisme principal de correction"
+    questions_ouvertes:
+      - "Après le Tikkun, le rapport Yashar/Hozer change-t-il ? (les Partzufim rectifiés dependent-ils plus du Yashar ?)"

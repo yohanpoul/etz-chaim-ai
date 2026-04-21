@@ -1,0 +1,44 @@
+# ═══════════════════════════════════════════════════════════════════
+# Section 03 : 13 Tikkunei Dikna (תליסר תיקוני דיקנא)
+# Idra Rabba, Zohar III ~131b-135a (sections Sefaria 10-23)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  section: tikkunei_dikna_13
+  section_name_he: "תליסר תיקוני דיקנא"
+  section_name_fr: "les 13 Rectifications de la Barbe"
+  folio_range: "Zohar III 131b-135a"
+  sefaria_sections_range: "10-23"
+  tikkunim_count: 13
+
+  doctrinal_function: |
+    Canal ontologique ET anticipation structurelle de Ze'ir Anpin.
+    Les 13 Tikkunim = 13 voies de l'Unité/Amour (13 = Echad = Ahavah) depuis A"A.
+    Mazal Elyon (T8 = Notzer Chesed) alimente Abba Ila'ah.
+    Mazal Tahton (T13 = Ve-Nakeh) alimente Imma Ila'ah.
+    Les 11 autres Tikkunim articulent le flux entre ces deux Mazalot.
+    Betisha (frappe) entre Mazal Elyon et Mazal Tahton → production 5H + 5G (EC-K5-003).
+
+  philological_warning: |
+    Le Zohar NOMME les Tikkunim seulement par leur ordre anatomique
+    (tikkuna kadma'ah ... tikkuna telisar). L'appariement avec Exode 34:6-7
+    est élaboration Lourianique ultérieure (Vital, s'appuyant sur Cordovero).
+    Trois découpages concurrents : Rabbenu Tam / Abudraham / Arizal.
+
+    DIVERGENCE EMPIRIQUE DOCUMENTÉE (Sprint 10, 2026-04-20) :
+    Sefaria Mantua SAUTE le Tikkun 11 — section Sefaria 21 passe directement
+    de T10 (section 20) à T12 (section 21, "tiqquna dit'reysar"). T11 peut
+    être fusionné avec T10 ou T12 dans cette édition, ou absent.
+    → Résolution : verification Pritzker Matt Vol 8 p. 318+ requise.
+    → T11 YAML aura philological_confidence.topography=low tant que non résolu.
+
+  tikkun_refs:
+    # Collective references by Tikkun number — for see_also at meta level.
+    # Populated as Tikkun YAMLs are added (batches 1, 2, 3 progressively).
+    # Initial: empty.
+
+  source_primary: "Zohar III Naso, Idra Rabba, sections Sefaria 10-23 (folios Vilna 131b-135a)"
+  source_edition_default: "Sefaria Mantua 1558 (CC-BY, cache local) + Stanford UP PDF araméen Matt Vol 8 (open access)"
+  ashlag_sulam_segmentation: per_section  # audit §12.0.b : Sulam est découpé par section ~220, pas par Tikkun
+  transposed_by: "Claude Opus 4.7 + human reviewer — Sprint 10 Phase α (2026-04-20)"
+  version: 1

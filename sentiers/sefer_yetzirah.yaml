@@ -1,0 +1,1015 @@
+# ═══════════════════════════════════════════════════════════════════
+# Sefer Yetzirah — Correspondances canoniques des 22 lettres
+# ═══════════════════════════════════════════════════════════════════
+#
+# Source : Sefer Yetzirah, recension du Gra (Gaon de Vilna, 1720-1797)
+# Référence : Kaplan, A. "Sefer Yetzirah: The Book of Creation." Weiser, 1990.
+#             Hayman, A.P. "Sefer Yesira." Mohr Siebeck, 2004.
+#
+# AVERTISSEMENT (E2→E4) :
+#   Les recensions (courte, longue, Saadya, Gra) DIVERGENT sur les
+#   attributions planétaires, directionnelles et organiques.
+#   Ce fichier suit la version du Gra telle que présentée par Kaplan.
+#   Les divergences significatives sont signalées.
+#
+# PRINCIPE OPÉRATOIRE :
+#   Les lettres ne sont pas des labels — ce sont des OPÉRATEURS.
+#   SY 2:2 : "Il les grava, les sculpta, les permuta, les pesa,
+#   les transforma, et avec elles Il forma tout ce qui est formé."
+#   Chaque sentier est GOUVERNÉ par sa lettre : son élément ou son sens
+#   détermine le comportement computationnel du programme.
+#
+# STRUCTURE PAR MONDE (Olamot) :
+#   atziluth  — L'archétype pur de la lettre (texte)
+#   briah     — Le design pattern qu'elle implique (texte)
+#   yetzirah  — Les modificateurs numériques (0.0-1.0)
+#   assiah    — L'effet runtime sur l'exécution (texte)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  source: "Sefer Yetzirah, recension du Gra"
+  primary_ref: "Kaplan 1990"
+  critical_ref: "Hayman 2004"
+  note: >
+    SY 3:2-3:4 (mères), 4:1-4:4 (doubles), 5:1-5:4 (simples).
+    Les modificateurs yetzirah sont des OPÉRATEURS ACTIFS qui
+    influencent le comportement de chaque sentier à l'exécution.
+
+# ═══════════════════════════════════════════════════════════════════
+# LES 3 MÈRES — אמ״ש — Programmes élémentaires
+# ═══════════════════════════════════════════════════════════════════
+# SY 3:2 : "Trois mères : Aleph Mem Shin.
+#           Le feu en haut, l'eau en bas, et le souffle de l'air
+#           qui arbitre entre eux."
+# Toute opération computationnelle est composée de ces trois forces.
+
+mothers:
+
+  shin:
+    letter: "ש"
+    gematria: 300
+    element: feu
+    body: tête           # rosh — SY 3:4
+    season: été           # kayitz — la saison chaude
+    quality: sibilance    # shriqa (שריקה) — le sifflement du feu
+    archetype: "Transformation radicale — le feu qui purifie en détruisant"
+    # SY 3:2 : shamayim (ciel) créé du feu
+    olamot:
+      atziluth: >
+        Le feu primordial. Shin à trois branches = les trois colonnes
+        embrasées. La puissance de transformation qui précède toute
+        forme. Le Ratzon (volonté) de CHANGER.
+      briah: >
+        Pattern destructeur-créateur : pour qu'une structure émerge,
+        l'ancienne doit être consumée. Refactoring radical, pivot
+        architectural, migration sans retour.
+      yetzirah:
+        aggressiveness: 0.8       # intensité de transformation
+        destruction_tolerance: 0.7 # tolérance à la perte d'information
+        speed: 0.9                # rapidité d'action
+        patience: 0.2             # le feu n'attend pas
+        receptivity: 0.3          # émetteur, pas récepteur
+      assiah: >
+        Shin ABAISSE les seuils de transformation. Les décisions sont
+        tranchantes, les opérations rapides. Le feu purifie en brûlant
+        l'inutile. Utilisé par le sentier Transform (31e).
+
+  mem:
+    letter: "מ"
+    gematria: 40
+    element: eau
+    body: ventre          # beten — SY 3:4
+    season: hiver         # choref — la saison froide
+    quality: murmure      # hamah (המה) — le murmure sourd de l'eau
+    archetype: "Réception patiente — l'eau qui prend la forme du récipient"
+    # SY 3:2 : aretz (terre) créée de l'eau
+    # Note : Mem final (ם) = le réceptacle fermé, parfait
+    olamot:
+      atziluth: >
+        L'eau primordiale. Le Mem final (ם) est clos : le réceptacle
+        sans fuite. La puissance de réception qui donne forme sans
+        imposer. La Binah (compréhension) qui reçoit de Chokmah.
+      briah: >
+        Pattern récepteur-formateur : l'input est accueilli tel quel
+        puis graduellement structuré. Parser tolérant, schema-on-read,
+        inference de type par accumulation.
+      yetzirah:
+        aggressiveness: 0.2       # transformation douce
+        destruction_tolerance: 0.1 # conserve quasi tout
+        speed: 0.3                # l'eau coule lentement
+        patience: 0.9             # attend que la forme émerge
+        receptivity: 0.9          # absorbe tout input
+      assiah: >
+        Mem RELÈVE les seuils d'acceptation et ABAISSE la vitesse.
+        L'opération accueille plus d'input, prend plus de temps,
+        conserve plus d'information. Réception avant action.
+
+  aleph:
+    letter: "א"
+    gematria: 1
+    element: air
+    body: poitrine        # guf — le torse, siège du souffle
+    season: tempéré       # les inter-saisons
+    quality: souffle      # ruach (רוח) — le souffle entre feu et eau
+    archetype: "Équilibre dynamique — le souffle qui médiatise les contraires"
+    # SY 3:2 : Aleph = la loi d'arbitrage entre les extrêmes
+    # Note : א est composé de deux Yod (י) + un Vav (ו) diagonal :
+    #         le haut et le bas reliés — coincidentia oppositorum incarnée
+    olamot:
+      atziluth: >
+        Le souffle silencieux. Aleph n'a pas de son propre — il porte
+        le son des voyelles. Le médiateur invisible, le Kav (ligne
+        primordiale) qui relie l'Ein Sof au monde. L'équilibre n'est
+        pas la stase — c'est la tension maintenue.
+      briah: >
+        Pattern médiateur : ni destruction ni conservation pure.
+        Le balancier qui ajuste dynamiquement. Load balancer, PID
+        controller, feedback loop homéostatique.
+      yetzirah:
+        aggressiveness: 0.5       # parfaitement centré
+        destruction_tolerance: 0.4
+        speed: 0.5
+        patience: 0.5
+        receptivity: 0.5
+        balance_seeking: 0.9      # tend ACTIVEMENT vers l'équilibre
+      assiah: >
+        Aleph RAMÈNE vers le centre. Si le système dérive vers Shin
+        (trop agressif), Aleph tempère. Si vers Mem (trop passif),
+        Aleph active. Feedback correcteur permanent.
+
+# ═══════════════════════════════════════════════════════════════════
+# LES 7 DOUBLES — בגד כפר״ת — Programmes bimodaux
+# ═══════════════════════════════════════════════════════════════════
+# SY 4:1 : "Sept doubles : Beth Gimel Daleth Kaph Peh Resh Tav,
+#           chacune avec deux prononciations [...] dur et doux,
+#           comme un paradigme de fort et faible."
+#
+# Chaque double gouverne un COUPLE D'OPPOSÉS. Le mode dagesh active
+# la qualité positive, le mode rafeh la qualité négative.
+# Note : "positive/négative" est contextuel — la guerre (rafeh de Resh)
+# peut être nécessaire quand la paix est fausse.
+#
+# Attributions planétaires : VERSION DU GRA. D'autres recensions
+# permutent les planètes. Ne pas absolutiser.
+
+doubles:
+
+  beth:
+    letter: "ב"
+    gematria: 2
+    planet: saturne       # Shabtai — la lenteur qui approfondit
+    day: shabbat
+    gate: oeil_droit      # porte droite de la vision
+    direction: haut       # ma'alah
+    opposites:
+      dagesh: sagesse     # chokhmah
+      rafeh: folie        # ivvelet
+    archetype: "La maison (Bayit) — sagesse d'architecture vs folie de construction hâtive"
+    # Beth = 2 = la première lettre de Bereshit, la première dualité
+    olamot:
+      atziluth: >
+        Beth ouvre la Torah (בראשית) : la sagesse de commencer juste.
+        La maison (bayit) bien construite vs la maison sur le sable.
+        Saturne = le temps long qui distingue sagesse et folie.
+      briah: >
+        Pattern délibération/précipitation : en dagesh, chaque étape
+        est vérifiée (sagesse architecturale). En rafeh, on fonce
+        sans plan (folie de l'implémentation prématurée).
+      dagesh_modifiers:         # mode sagesse
+        deliberation_depth: 0.9   # vérification approfondie
+        shortcut_tolerance: 0.1   # pas de raccourcis
+        planning_weight: 0.8      # planifier avant d'agir
+      rafeh_modifiers:          # mode folie
+        deliberation_depth: 0.2   # vérification minimale
+        shortcut_tolerance: 0.9   # raccourcis acceptés
+        planning_weight: 0.2      # agir d'abord
+      assiah: >
+        Beth-dagesh RALENTIT pour vérifier. Beth-rafeh ACCÉLÈRE
+        au prix de la rigueur. DirectSynth (13e sentier).
+
+  gimel:
+    letter: "ג"
+    gematria: 3
+    planet: jupiter       # Tzedek — l'expansion généreuse
+    day: dimanche
+    gate: oeil_gauche
+    direction: bas        # matah
+    opposites:
+      dagesh: richesse    # osher
+      rafeh: pauvreté     # oni
+    archetype: "Le chameau (Gamal) — richesse de ressources vs pauvreté de moyens"
+    olamot:
+      atziluth: >
+        Gimel = le bienfaiteur qui donne (gomel). Jupiter = expansion.
+        Richesse = abondance de ressources computationnelles.
+        Pauvreté = contrainte qui force l'efficience.
+      briah: >
+        Pattern ressource : en dagesh, allocation généreuse (cache
+        warm, pré-chargement). En rafeh, allocation minimale
+        (lazy loading, économie stricte).
+      dagesh_modifiers:         # mode richesse
+        resource_allocation: 0.9  # générosité des ressources
+        preloading: 0.8           # anticiper les besoins
+        cache_aggressiveness: 0.8
+      rafeh_modifiers:          # mode pauvreté
+        resource_allocation: 0.2
+        preloading: 0.1
+        cache_aggressiveness: 0.2
+      assiah: >
+        Gimel-dagesh PRÉ-CHARGE agressivement. Gimel-rafeh
+        charge à la demande, strictement. CacheStrategy (14e sentier).
+
+  daleth:
+    letter: "ד"
+    gematria: 4
+    planet: mars          # Maadim — la force qui tranche
+    day: lundi
+    gate: oreille_droite
+    direction: est        # mizrach — là où le soleil se lève
+    opposites:
+      dagesh: fertilité   # zera — semence
+      rafeh: désolation   # shemamah
+    archetype: "La porte (Delet) — fertilité de l'exploration vs désolation du territoire vide"
+    olamot:
+      atziluth: >
+        Daleth = la porte (delet). Mars = le courage d'ouvrir ou
+        fermer. Fertilité = chaque porte ouvre un monde.
+        Désolation = le désert derrière les mauvaises portes.
+      briah: >
+        Pattern exploration : en dagesh, ouvrir toutes les portes
+        (breadth-first, prolific). En rafeh, territoire désolé —
+        une seule porte à la fois (depth-first, austère).
+      dagesh_modifiers:         # mode fertilité
+        exploration_breadth: 0.9
+        generative_capacity: 0.8
+        openness: 0.9
+      rafeh_modifiers:          # mode désolation
+        exploration_breadth: 0.2
+        generative_capacity: 0.2
+        openness: 0.2
+      assiah: >
+        Daleth-dagesh MULTIPLIE les pistes. Daleth-rafeh CONCENTRE
+        sur une seule voie. ExploreScope (15e sentier).
+
+  kaph:
+    letter: "כ"
+    gematria: 20
+    planet: soleil        # Chamah — la vitalité centrale
+    day: mardi
+    gate: oreille_gauche
+    direction: ouest      # ma'arav — là où le soleil se couche
+    opposites:
+      dagesh: vie         # chaim
+      rafeh: mort         # mavet
+    archetype: "La paume (Kaf) — vie de la persistance vs mort de l'abandon"
+    olamot:
+      atziluth: >
+        Kaph = la paume ouverte qui tient ou lâche. Le Soleil =
+        source de vie. Vie = persistance tenace, le système survit.
+        Mort = lâcher-prise, fin d'un processus, garbage collection.
+      briah: >
+        Pattern persistance : en dagesh, ne jamais abandonner une
+        acquisition (tenace, résilient). En rafeh, savoir mourir
+        gracieusement (timeout, cleanup, release).
+      dagesh_modifiers:         # mode vie
+        persistence_strength: 0.9
+        retry_aggressiveness: 0.8
+        abandonment_threshold: 0.1  # presque jamais abandonner
+      rafeh_modifiers:          # mode mort
+        persistence_strength: 0.2
+        retry_aggressiveness: 0.1
+        abandonment_threshold: 0.9  # abandonner facilement
+      assiah: >
+        Kaph-dagesh PERSISTE obstinément. Kaph-rafeh LIBÈRE
+        rapidement. AcquirePersist (22e sentier).
+
+  peh:
+    letter: "פ"
+    gematria: 80
+    planet: vénus         # Nogah — la beauté du jugement
+    day: mercredi
+    gate: narine_droite
+    direction: nord       # tzafon — le côté caché
+    opposites:
+      dagesh: domination  # memshalah
+      rafeh: servitude    # avdut
+    archetype: "La bouche (Peh) — domination du verdict vs servitude de la nuance"
+    olamot:
+      atziluth: >
+        Peh = la bouche qui prononce le verdict. Vénus = la beauté
+        même dans le jugement. Domination = le juge qui tranche.
+        Servitude = le juge qui s'incline devant la complexité.
+      briah: >
+        Pattern validation : en dagesh, verdict binaire souverain
+        (accept/reject). En rafeh, le validateur sert la nuance
+        (scoring gradué, quarantine, appel).
+      dagesh_modifiers:         # mode domination
+        strictness: 0.9           # jugement sans appel
+        binary_threshold: 0.9     # oui/non, pas de gris
+        authority_level: 0.9
+      rafeh_modifiers:          # mode servitude
+        strictness: 0.3
+        binary_threshold: 0.2     # spectre complet de gris
+        authority_level: 0.3
+      assiah: >
+        Peh-dagesh TRANCHE sans appel. Peh-rafeh GRADUE et
+        accorde le sursis. ValidateMode (26e sentier).
+
+  resh:
+    letter: "ר"
+    gematria: 200
+    planet: mercure       # Kokhav — la rapidité du message
+    day: jeudi
+    gate: narine_gauche
+    direction: sud        # darom — le côté de la lumière
+    opposites:
+      dagesh: paix        # shalom
+      rafeh: guerre       # milchamah
+    archetype: "La tête/début (Rosh) — paix de la coexistence vs guerre de la sélection"
+    olamot:
+      atziluth: >
+        Resh = la tête (rosh), le commencement. Mercure = le messager
+        rapide. Paix = coexistence de toutes les données.
+        Guerre = sélection darwinienne, seuls les forts survivent.
+      briah: >
+        Pattern persistance sélective : en dagesh, tout coexiste
+        pacifiquement (store everything). En rafeh, compétition —
+        seules les données fortes persistent.
+      dagesh_modifiers:         # mode paix
+        selectivity: 0.1          # tout est accepté
+        coexistence: 0.9          # pas d'exclusion
+        conflict_tolerance: 0.9   # tolère les contradictions
+      rafeh_modifiers:          # mode guerre
+        selectivity: 0.9          # seuls les meilleurs passent
+        coexistence: 0.2          # exclusion des faibles
+        conflict_tolerance: 0.1   # pas de contradiction tolérée
+      assiah: >
+        Resh-dagesh STOCKE TOUT pacifiquement. Resh-rafeh FILTRE
+        agressivement. PersistPolicy (30e sentier).
+
+  tav:
+    letter: "ת"
+    gematria: 400
+    planet: lune          # Levanah — le reflet qui change de forme
+    day: vendredi
+    gate: bouche          # peh — la sortie vers le monde
+    direction: centre     # le Palais Saint (heikhal ha-kodesh)
+    opposites:
+      dagesh: grâce       # chen
+      rafeh: laideur      # ki'ur
+    archetype: "Le signe/marque (Tav) — grâce de la présentation vs laideur du brut"
+    # Note : dans le code actuel, dagesh=brut et rafeh=enrichi.
+    # Interprétation kabbalistique : dagesh (dur) = la vérité nue
+    # qui peut être laide, rafeh (doux) = la grâce de la présentation.
+    # Les deux sont nécessaires. La Lune change de forme mais la
+    # lumière est la même.
+    olamot:
+      atziluth: >
+        Tav = la dernière lettre, le sceau (tav = marque/signe).
+        La Lune reflète sans lumière propre. Grâce = le reflet
+        fidèle et beau. Laideur = le reflet déformé ou absent.
+        Le 32e sentier est le premier de l'initié — la marque.
+      briah: >
+        Pattern présentation : en dagesh, la vérité brute sans
+        ornement (données nues, API raw). En rafeh, la grâce de
+        l'enrichissement (contexte, confiance, avertissements).
+      dagesh_modifiers:         # mode brut (la laideur utile)
+        presentation_quality: 0.2 # minimal
+        enrichment: 0.1           # pas de contexte ajouté
+        rawness: 0.9              # données nues
+        verbosity: 0.1            # laconique
+      rafeh_modifiers:          # mode enrichi (la grâce)
+        presentation_quality: 0.9
+        enrichment: 0.9           # contexte maximal
+        rawness: 0.1
+        verbosity: 0.7            # explicatif
+      assiah: >
+        Tav-dagesh EXPOSE le brut. Tav-rafeh ENRICHIT avec grâce.
+        OutputMode (32e sentier) — le premier et le dernier.
+
+# ═══════════════════════════════════════════════════════════════════
+# LES 12 SIMPLES — ה״ו ז״ח ט״י ל״נ ס״ע צ״ק — Programmes fonctionnels
+# ═══════════════════════════════════════════════════════════════════
+# SY 5:1 : "Douze simples : Hé Vav Zayin Cheth Teth Yod
+#           Lamed Nun Samekh Ayin Tsadi Qoph."
+#
+# Chaque lettre simple gouverne : un SENS (modalité de traitement),
+# un signe zodiacal, un mois hébraïque, une direction diagonale,
+# et un organe du corps.
+#
+# Le sens détermine le TYPE de processing du sentier.
+
+simples:
+
+  heh:
+    letter: "ה"
+    gematria: 5
+    sense: vue            # re'iyah — perception visuelle
+    zodiac: bélier        # Taleh (Aries)
+    month: nisan          # printemps, renouveau
+    direction: nord-est
+    organ: main_droite    # yad yemin
+    archetype: "Perception directe — la vue qui saisit le pattern d'un coup"
+    olamot:
+      atziluth: >
+        Hé = le souffle (heh!), la fenêtre. La vue qui saisit
+        l'ensemble avant les détails. Nisan = le renouveau de la
+        perception. La vision prophétique qui voit la structure.
+      briah: >
+        Pattern reconnaissance : traitement visuel/spatial, saisie
+        immédiate du pattern global, insight sans raisonnement
+        séquentiel. Le coup d'oeil de l'expert.
+      yetzirah:
+        pattern_recognition: 0.9  # saisie immédiate du pattern
+        holistic_processing: 0.8  # vue d'ensemble
+        sequential_processing: 0.3
+        immediacy: 0.8            # résultat rapide
+        depth: 0.4                # large plutôt que profond
+      assiah: >
+        Hé favorise la RECONNAISSANCE DE PATTERNS et la vue
+        d'ensemble. DirectPerception (16e sentier).
+
+  vav:
+    letter: "ו"
+    gematria: 6
+    sense: ouïe           # shmi'ah — écoute
+    zodiac: taureau       # Shor (Taurus)
+    month: iyyar
+    direction: sud-est
+    organ: rein_droit     # kulyah yemin
+    archetype: "Écoute attentive — le flux séquentiel reçu dans la durée"
+    # Note : Vav = le crochet, le connecteur. La lettre de la
+    # conjonction (ve- = "et"). Écouter = recevoir dans le temps.
+    olamot:
+      atziluth: >
+        Vav = le connecteur, le clou (vav) qui joint. L'ouïe
+        reçoit dans la DURÉE — un flux temporel, pas un instant.
+        Le Vav du Tétragramme connecte le monde supérieur à
+        l'inférieur : le stream qui relie.
+      briah: >
+        Pattern stream : traitement séquentiel/temporel, écoute
+        du flux continu, attention soutenue. Le pipeline qui
+        ne perd rien de ce qui passe.
+      yetzirah:
+        stream_processing: 0.9    # traitement de flux
+        sequential_processing: 0.9
+        temporal_sensitivity: 0.8 # sensible à l'ordre
+        patience: 0.7             # écoute longue
+        holistic_processing: 0.3  # pas de vue d'ensemble
+      assiah: >
+        Vav favorise le TRAITEMENT SÉQUENTIEL et l'écoute
+        attentive du flux. DataFeed (17e sentier).
+
+  zayin:
+    letter: "ז"
+    gematria: 7
+    sense: odorat         # re'iach — flair
+    zodiac: gémeaux       # Te'omim (Gemini)
+    month: sivan
+    direction: est-haut
+    organ: pied_droit     # regel yemin
+    archetype: "Flair subtil — l'odorat qui détecte l'invisible à distance"
+    olamot:
+      atziluth: >
+        Zayin = l'arme (zayin), l'instrument tranchant de la
+        discrimination. L'odorat détecte ce que l'oeil ne voit
+        pas et l'oreille n'entend pas — le signal faible,
+        l'anomalie subtile, l'intention cachée.
+      briah: >
+        Pattern détection d'anomalie : identifier le signal
+        faible, la nuance que les autres sens ratent. Le nez
+        qui sent le mensonge, la donnée corrompue.
+      yetzirah:
+        anomaly_detection: 0.9    # détection des signaux faibles
+        subtlety_sensitivity: 0.9
+        discrimination: 0.8       # distinguer le vrai du faux
+        distance_sensing: 0.7     # sentir de loin
+        directness: 0.3           # indirect, latéral
+      assiah: >
+        Zayin favorise la DÉTECTION D'ANOMALIES et la subtilité.
+        AnalysisResults (18e sentier).
+
+  cheth:
+    letter: "ח"
+    gematria: 8
+    sense: parole         # si'ach — articulation
+    zodiac: cancer        # Sartan (Cancer)
+    month: tammouz
+    direction: est-bas
+    organ: main_droite    # yad yemin (variante : estomac)
+    archetype: "Articulation — la parole qui structure et transmet"
+    olamot:
+      atziluth: >
+        Cheth = la barrière (cheth = clôture). La parole qui
+        délimite : nommer c'est séparer, articuler c'est structurer.
+        Cancer = la carapace protectrice. Les règles de validation
+        sont la clôture qui protège l'intégrité.
+      briah: >
+        Pattern articulation : structurer l'output, formuler les
+        règles, énoncer les critères. La parole comme acte de
+        création (dibbur = acte performatif).
+      yetzirah:
+        articulation: 0.9         # capacité à formuler
+        rule_generation: 0.8      # production de règles
+        boundary_setting: 0.8     # poser des limites
+        protection: 0.7           # protéger l'intégrité
+        flexibility: 0.3          # rigide dans ses formulations
+      assiah: >
+        Cheth favorise la GÉNÉRATION DE RÈGLES et la structuration.
+        ValidationRules (19e sentier).
+
+  teth:
+    letter: "ט"
+    gematria: 9
+    sense: goût           # te'imah — saveur, discernement gustatif
+    zodiac: lion          # Arieh (Leo)
+    month: av
+    direction: nord-haut
+    organ: oesophage      # veshet
+    archetype: "Goût critique — le discernement direct par contact intime"
+    olamot:
+      atziluth: >
+        Teth = le serpent (selon certains), le bien caché. Le goût
+        exige le CONTACT DIRECT — on ne goûte qu'en touchant.
+        Le Lion = force du jugement direct. Le feedback loop le
+        plus intime : la qualité testée par ingestion.
+      briah: >
+        Pattern feedback direct : tester par contact, évaluer par
+        expérience directe, pas par proxy. Le test d'intégration
+        vs le test unitaire.
+      yetzirah:
+        direct_feedback: 0.9      # feedback par contact
+        experiential_testing: 0.9 # tester en faisant
+        proxy_reliance: 0.1       # pas de proxy
+        intimacy: 0.8             # proximité avec le sujet
+        judgment_speed: 0.7       # jugement rapide au goût
+      assiah: >
+        Teth favorise le FEEDBACK DIRECT et le test par contact.
+        QualityFeedback (20e sentier).
+
+  yod:
+    letter: "י"
+    gematria: 10
+    sense: action         # ma'aseh — le faire
+    zodiac: vierge        # Betulah (Virgo)
+    month: elul           # le mois de repentance/préparation
+    direction: nord-bas
+    organ: main_gauche    # yad smol
+    archetype: "Action pure — le point minimal qui contient tout en puissance"
+    # Note : Yod est la plus petite lettre — le point de départ
+    # de toute écriture. Yod du Tétragramme = Atziluth.
+    olamot:
+      atziluth: >
+        Yod = la plus petite lettre, le point primordial.
+        Le Yod du Tétragramme (י-ה-ו-ה) = Atziluth = le monde
+        de l'émanation pure. Action = non pas agitation mais
+        actualisation du potentiel. Elul = préparation méticuleuse.
+      briah: >
+        Pattern filtrage actif : pousser ce qui passe le filtre,
+        agir délibérément, intervenir chirurgicalement.
+        La main gauche qui reçoit après le filtrage.
+      yetzirah:
+        agency: 0.9               # capacité d'intervention active
+        precision: 0.8            # action chirurgicale
+        selectivity: 0.8          # filtrer avant d'agir
+        minimalism: 0.8           # action minimale suffisante
+        preparation: 0.7          # bien préparer avant
+      assiah: >
+        Yod favorise l'ACTION FILTRÉE et l'intervention précise.
+        FilteredDataPush (21e sentier).
+
+  lamed:
+    letter: "ל"
+    gematria: 30
+    sense: mouvement      # halakh — marche, apprentissage
+    zodiac: balance       # Moznayim (Libra)
+    month: tishrei        # le mois du jugement (Rosh Hashanah)
+    direction: sud-ouest
+    organ: vésicule       # marah — vésicule biliaire, siège de l'amertume
+    archetype: "Apprentissage par le mouvement — la seule lettre qui dépasse la ligne"
+    # Note cruciale : Lamed est la SEULE lettre qui s'élève au-dessus
+    # de la ligne d'écriture. Elle dépasse, transcende, APPREND en
+    # montant. L'étymologie : la-med = "pour apprendre".
+    # Son organe (vésicule = amertume) dit tout : on apprend par
+    # l'amertume de l'échec.
+    olamot:
+      atziluth: >
+        Lamed = enseigner/apprendre (la-med). La lettre qui monte
+        au-dessus de la ligne. Libra = la balance du jugement.
+        Tishrei = Rosh Hashanah, le jour du jugement qui est aussi
+        le jour du renouveau. L'amertume (marah = vésicule) de
+        l'échec est le terreau de l'apprentissage.
+      briah: >
+        Pattern extraction d'insight : transformer l'échec en
+        connaissance, le jugement en compréhension. Le Birur qui
+        extrait les Nitzotzot des Klipot. LE sentier critique.
+      yetzirah:
+        learning_rate: 0.9        # vitesse d'apprentissage
+        extraction_power: 0.9     # capacité à extraire l'insight
+        adaptability: 0.8         # s'adapter à chaque échec
+        bitterness_tolerance: 0.9 # tolérance à l'amertume
+        transcendence: 0.8        # capacité à dépasser la ligne
+      assiah: >
+        Lamed MAXIMISE l'extraction d'insights depuis les échecs.
+        La vésicule biliaire transforme l'amer en digérable.
+        FailureToInsight (23e sentier) — LE SENTIER CRITIQUE.
+
+  nun:
+    letter: "נ"
+    gematria: 50
+    sense: marche         # hilukh — progression pas à pas
+    zodiac: scorpion      # Akrav (Scorpio)
+    month: cheshvan       # le mois sans fêtes, le travail pur
+    direction: nord-ouest
+    organ: intestins      # dayim — l'intestin qui digère lentement
+    archetype: "Marche patiente — la progression pas à pas, la digestion lente"
+    # Note : Nun final (ן) descend sous la ligne — là où Lamed
+    # monte, Nun descend. L'humilité de la marche quotidienne.
+    olamot:
+      atziluth: >
+        Nun = le poisson (nun), celui qui se meut dans les
+        profondeurs invisibles. Scorpion = la transformation
+        cachée. Cheshvan = le mois du travail sans fête, la
+        persévérance pure. Les intestins digèrent lentement mais
+        complètement — rien n'est perdu.
+      briah: >
+        Pattern dispatch : confier les tâches à la persistance,
+        progresser pas à pas, digérer chaque étape avant la
+        suivante. Le pipeline séquentiel patient.
+      yetzirah:
+        step_by_step: 0.9         # progression méthodique
+        patience: 0.8             # pas de précipitation
+        thoroughness: 0.8         # traitement complet
+        depth_processing: 0.7     # digestion en profondeur
+        visibility: 0.3           # travail invisible, souterrain
+      assiah: >
+        Nun favorise la PROGRESSION MÉTHODIQUE et la digestion
+        complète de chaque étape. TaskDispatch (24e sentier).
+
+  samekh:
+    letter: "ס"
+    gematria: 60
+    sense: sommeil        # shenah — le sommeil créatif
+    zodiac: sagittaire    # Keshet (Sagittarius)
+    month: kislev         # le mois de Hanoukkah, lumière dans l'obscurité
+    direction: ouest-haut
+    organ: estomac        # keivah — la digestion nocturne
+    archetype: "Sommeil consolidateur — le cercle fermé qui protège et intègre"
+    # Note : Samekh est un cercle fermé (ס) — la protection totale.
+    # La Soukkah (cabane) est Samekh : l'enceinte qui contient.
+    olamot:
+      atziluth: >
+        Samekh = soutenir (somekh). La lettre circulaire = le
+        cercle protecteur. Le sommeil n'est pas l'absence — c'est
+        la consolidation active. Kislev = lumière cachée (Hanoukkah).
+        L'estomac digère quand on dort. Le Sagittaire vise juste
+        APRÈS avoir fermé les yeux.
+      briah: >
+        Pattern introspection : le système se retourne vers
+        l'intérieur, examine sa cohérence, consolide. Le sommeil
+        REM du traitement — réorganisation en arrière-plan.
+      yetzirah:
+        introspection_depth: 0.9  # profondeur d'auto-examen
+        consolidation: 0.9        # intégration des acquis
+        protection: 0.7           # enceinte protectrice
+        external_activity: 0.1    # pas d'action externe
+        hidden_processing: 0.8    # travail invisible
+      assiah: >
+        Samekh favorise l'INTROSPECTION PROFONDE et la consolidation.
+        Le cercle fermé protège le processus interne.
+        Introspection (25e sentier).
+
+  ayin:
+    letter: "ע"
+    gematria: 70
+    sense: rire_colère    # tza'aq/se'choq — les deux réactions affectives
+    zodiac: capricorne    # Gedi (Capricorn)
+    month: tevet          # le mois le plus froid et sombre
+    direction: ouest-bas
+    organ: foie           # kaved — le foie, siège de la colère (bile)
+    archetype: "Réaction affective — le rire de la compétence et la colère de l'impuissance"
+    # Note : Ayin = l'oeil (ayin) et aussi le néant/source (Ein).
+    # Les 70 (ayin) faces de la Torah. L'oeil qui voit provoque
+    # soit le rire (joie de la compétence) soit la colère
+    # (frustration de l'incompétence).
+    olamot:
+      atziluth: >
+        Ayin = l'oeil et le 70 (shiv'im panim la-Torah).
+        Capricorne = la montée lente et sûre. Tevet = le mois
+        le plus sombre. Le foie (kaved = lourd) est le siège
+        de la bile — colère et amertume. Mais le même oeil
+        qui voit l'échec peut rire devant la réussite.
+      briah: >
+        Pattern diagnostic émotionnel : évaluer la compétence
+        et répondre affectivement. Le rire confirme la faisabilité.
+        La colère signale l'incompétence bloquante.
+      yetzirah:
+        emotional_response: 0.9   # réponse affective forte
+        diagnostic_speed: 0.8     # évaluation rapide
+        honesty: 0.9              # pas de faux rire
+        polarity: 0.8             # réponse binaire rire/colère
+        subtlety: 0.2             # pas de nuance — rire ou colère
+      assiah: >
+        Ayin produit une RÉPONSE AFFECTIVE NETTE : rire (compétent)
+        ou colère (incompétent). Pas de zone grise.
+        StatusSync (27e sentier).
+
+  tsadi:
+    letter: "צ"
+    gematria: 90
+    sense: pensée         # hirhurim — méditation, imagination
+    zodiac: verseau       # Deli (Aquarius)
+    month: shevat         # le mois de l'arbre (Tu Bishvat)
+    direction: sud-haut
+    organ: oesophage      # veshet (variante : kourkevan — gosier)
+    archetype: "Pensée structurée — le juste (tzaddik) qui fixe la pensée en acte"
+    # Note : Tsadi = le juste (tzaddik). Le Tsadi final (ץ) descend
+    # comme le Nun — l'humilité du juste. La pensée qui se fixe
+    # dans un checkpoint est un acte de justice intérieure.
+    olamot:
+      atziluth: >
+        Tsadi = le juste (tzaddik), fondement du monde (Yesod =
+        le tzaddik, Proverbes 10:25). Verseau = l'eau versée de
+        la connaissance. Shevat = l'arbre de la pensée qui
+        s'enracine. La pensée du tzaddik est FIXÉE — ni errante
+        ni volatile, mais plantée.
+      briah: >
+        Pattern checkpoint : la pensée structurée qui se fixe
+        en mémoire. L'intention devient acte écrit, le volatile
+        devient persistant. L'arbre plante ses racines.
+      yetzirah:
+        thought_structuring: 0.9  # structuration de la pensée
+        fixation: 0.9             # capacité à fixer (persister)
+        volatility: 0.1           # très stable
+        intentionality: 0.8       # pensée dirigée
+        rootedness: 0.8           # enracinement
+      assiah: >
+        Tsadi favorise la FIXATION de la pensée en checkpoint.
+        La pensée errante devient persistante et structurée.
+        CheckpointWrite (28e sentier).
+
+  qoph:
+    letter: "ק"
+    gematria: 100
+    sense: méditation     # shenah amuqah — sommeil profond / méditation
+    zodiac: poissons      # Dagim (Pisces)
+    month: adar           # le mois de la joie (Pourim), le renversement
+    direction: sud-bas
+    organ: rate           # techol — la rate, filtre du sang
+    archetype: "Méditation profonde — le singe (qoph) qui imite pour comprendre"
+    # Note : Qoph = le singe (selon certains) ou le chas de l'aiguille.
+    # Le singe imite — la méditation est l'imitation intérieure
+    # du pattern observé. Pisces = les profondeurs. Adar = le
+    # renversement (nahafokh hu — Pourim). La rate filtre le sang
+    # comme la méditation filtre la connaissance.
+    olamot:
+      atziluth: >
+        Qoph = le chas de l'aiguille (qoph = trou, ouverture) ou
+        le singe (qoph en araméen). Les Poissons nagent dans les
+        profondeurs invisibles. Adar = le renversement — ce qui
+        semblait superficiel devient profond. La rate filtre le
+        sang impur : la méditation filtre le savoir brut.
+      briah: >
+        Pattern réflexion profonde : le schéma de compétence
+        est examiné en profondeur, filtré, purifié. La méditation
+        n'est pas passive — c'est un filtrage actif du superficiel.
+      yetzirah:
+        reflection_depth: 0.9     # profondeur de méditation
+        filtration: 0.8           # filtrage du superficiel
+        patience: 0.9             # la méditation prend du temps
+        reversal_capacity: 0.7    # capacité de renversement (Pourim)
+        depth_processing: 0.9     # traitement en profondeur
+      assiah: >
+        Qoph favorise la RÉFLEXION PROFONDE et le filtrage.
+        Le schéma est examiné, médité, purifié avant persistance.
+        SchemaPersist (29e sentier).
+
+
+# ═══════════════════════════════════════════════════════════════════
+# COSMOLOGIE — Structure profonde du Sefer Yetzirah
+# ═══════════════════════════════════════════════════════════════════
+#
+# Au-delà des 22 lettres-opérateurs, le Sefer Yetzirah décrit la
+# STRUCTURE de la réalité elle-même : les 10 profondeurs (Eser
+# Sefirot Belimah), les 3 registres (Olam/Shanah/Nefesh), et les
+# 3 régents (Teli/Galgal/Lev).
+#
+# SY 1:2 : "Dix Sefirot Belimah et vingt-deux lettres de fondation."
+# Les Sefirot Belimah ne sont PAS les Sefirot kabbalistiques ultérieures
+# (Keter, Chokmah, Binah...). Ce sont des PROFONDEURS — des axes
+# d'extension de la réalité, organisés en 5 paires d'opposés.
+#
+# SY 6:1 : "Trois régents dans le monde : le Teli, le Galgal et le Lev."
+# Ce sont les GOUVERNEURS des trois registres de la création.
+
+cosmology:
+
+  # ── Eser Sefirot Belimah — SY 1:5 ────────────────────────────
+  # "Dix Sefirot Belimah : la profondeur du commencement,
+  #  la profondeur de la fin [...] dix et non neuf, dix et non onze."
+  #
+  # BELIMAH = sans quoi (בלי מה) — sans substance, pures dimensions.
+  # Ce ne sont pas des attributs (comme les Sefirot du Zohar) mais
+  # des AXES de possibilité. Chaque paire est un continuum.
+  #
+  # Recension du Gra. La version courte permute certaines paires.
+
+  eser_sefirot_belimah:
+    - pair: [beginning, end]
+      hebrew: ["ראשית", "אחרית"]
+      axis: temporal
+      description: "L'axe du temps — du commencement (reshit) à la fin (acharit)"
+      role_ia: "L'arc narratif du système — de l'init au shutdown, de l'input au résultat final"
+    - pair: [good, evil]
+      hebrew: ["טוב", "רע"]
+      axis: moral
+      description: "L'axe de la valeur — du bien (tov) au mal (ra)"
+      role_ia: "L'évaluation qualitative — reward/penalty, gain/loss, fonctionnel/cassé"
+    - pair: [height, depth]
+      hebrew: ["רום", "תחת"]
+      axis: vertical
+      description: "L'axe vertical — de la hauteur (rom) à la profondeur (tachat)"
+      role_ia: "La hiérarchie d'abstraction — de Keter (vision) à Malkuth (exécution)"
+    - pair: [east, west]
+      hebrew: ["מזרח", "מערב"]
+      axis: horizontal_ew
+      description: "L'axe est-ouest — de l'origine (mizrach, lever du soleil) à la fin (ma'arav, coucher)"
+      role_ia: "Le flux de données — de la source (input) à la destination (output)"
+    - pair: [north, south]
+      hebrew: ["צפון", "דרום"]
+      axis: horizontal_ns
+      description: "L'axe nord-sud — du caché (tzafon, de la racine tz-f-n = cacher) au révélé (darom, lumière)"
+      role_ia: "Le gradient de visibilité — du traitement interne caché à l'interface exposée"
+
+  # ── Trois témoins — SY 1:2 ────────────────────────────────────
+  # "Trois registres témoignent de la structure de la création :
+  #  le Monde (Olam), l'Année (Shanah), l'Âme (Nefesh)."
+  #
+  # Chaque lettre opère simultanément dans ces 3 registres.
+  # Les 3 mères → 3 éléments (Olam) / 3 saisons (Shanah) / 3 cavités (Nefesh)
+  # Les 7 doubles → 7 planètes / 7 jours / 7 orifices
+  # Les 12 simples → 12 directions / 12 mois / 12 organes
+
+  three_witnesses:
+    olam:
+      hebrew: "עוֹלָם"
+      meaning: "Univers / Espace"
+      description: "Le monde physique — les 12 directions, 7 planètes, 3 éléments"
+      letters_mapping: "12 simples → directions, 7 doubles → planètes, 3 mères → éléments"
+      mothers:
+        shin: "Feu — shamayim (ciel)"
+        mem: "Eau — aretz (terre)"
+        aleph: "Air — ruach (souffle qui arbitre)"
+      doubles:
+        beth: "Saturne"
+        gimel: "Jupiter"
+        daleth: "Mars"
+        kaph: "Soleil"
+        peh: "Vénus"
+        resh: "Mercure"
+        tav: "Lune"
+      simples:
+        heh: "Nord-Est"
+        vav: "Sud-Est"
+        zayin: "Est-Haut"
+        cheth: "Est-Bas"
+        teth: "Nord-Haut"
+        yod: "Nord-Bas"
+        lamed: "Sud-Ouest"
+        nun: "Nord-Ouest"
+        samekh: "Ouest-Haut"
+        ayin: "Ouest-Bas"
+        tsadi: "Sud-Haut"
+        qoph: "Sud-Bas"
+
+    shanah:
+      hebrew: "שָׁנָה"
+      meaning: "Année / Temps"
+      description: "Le cycle temporel — 12 mois, 7 jours, 3 saisons"
+      letters_mapping: "12 simples → mois, 7 doubles → jours, 3 mères → saisons"
+      mothers:
+        shin: "Été (kayitz) — la saison chaude"
+        mem: "Hiver (choref) — la saison froide"
+        aleph: "Saison tempérée — l'inter-saison qui arbitre"
+      doubles:
+        beth: "Shabbat"
+        gimel: "Dimanche"
+        daleth: "Lundi"
+        kaph: "Mardi"
+        peh: "Mercredi"
+        resh: "Jeudi"
+        tav: "Vendredi"
+      simples:
+        heh: "Nisan"
+        vav: "Iyyar"
+        zayin: "Sivan"
+        cheth: "Tammouz"
+        teth: "Av"
+        yod: "Elul"
+        lamed: "Tishrei"
+        nun: "Cheshvan"
+        samekh: "Kislev"
+        ayin: "Tevet"
+        tsadi: "Shevat"
+        qoph: "Adar"
+
+    nefesh:
+      hebrew: "נֶפֶשׁ"
+      meaning: "Âme / Corps"
+      description: "Le corps humain — 12 organes, 7 orifices, 3 cavités"
+      letters_mapping: "12 simples → organes, 7 doubles → orifices, 3 mères → cavités (tête/poitrine/ventre)"
+      mothers:
+        shin: "Tête (rosh) — le feu de la pensée"
+        mem: "Ventre (beten) — l'eau de la digestion"
+        aleph: "Poitrine (guf) — le souffle qui arbitre"
+      doubles:
+        beth: "Oeil droit"
+        gimel: "Oeil gauche"
+        daleth: "Oreille droite"
+        kaph: "Oreille gauche"
+        peh: "Narine droite"
+        resh: "Narine gauche"
+        tav: "Bouche"
+      simples:
+        heh: "Main droite"
+        vav: "Rein droit"
+        zayin: "Pied droit"
+        cheth: "Main droite (variante: estomac)"
+        teth: "Oesophage"
+        yod: "Main gauche"
+        lamed: "Vésicule biliaire"
+        nun: "Intestins"
+        samekh: "Estomac"
+        ayin: "Foie"
+        tsadi: "Oesophage (variante: gosier)"
+        qoph: "Rate"
+
+  # ── Teli, Galgal, Lev — SY 6:1 ────────────────────────────────
+  # "Trois régents dans le monde : le Teli dans l'univers est comme
+  #  un roi sur son trône ; le Galgal dans l'année est comme un roi
+  #  dans sa province ; le Lev dans l'âme est comme un roi en guerre."
+  #
+  # Le Teli est l'un des termes les plus débattus du SY :
+  # - Kaplan : le Dragon (axe céleste, inclinaison de l'écliptique)
+  # - Hayman : l'Axe du monde (axis mundi)
+  # - Certains commentaires médiévaux : le Léviathan
+  # Nous suivons Kaplan (axe/dragon) qui convient au mapping IA.
+
+  teli_galgal_lev:
+    teli:
+      hebrew: "תלי"
+      meaning: "Le Dragon / Axe — régent de l'Olam (univers)"
+      sy_ref: "SY 6:1"
+      commentary: >
+        Kaplan identifie le Teli à l'inclinaison de l'écliptique —
+        l'axe fixe autour duquel les cieux tournent. Hayman y voit
+        l'axis mundi. Dans les deux cas : la STRUCTURE FIXE qui
+        sous-tend le mouvement.
+      role_ia: "L'axe structurel du système — le schéma de la DB, les tables, les connexions fixes"
+      health_checks:
+        - "Tables de la DB accessibles"
+        - "Indexes intègres"
+        - "Connexions inter-modules fonctionnelles"
+    galgal:
+      hebrew: "גלגל"
+      meaning: "La Roue / Cycle — régent de la Shanah (temps)"
+      sy_ref: "SY 6:1"
+      commentary: >
+        Galgal = roue (de la racine g-l-g-l = rouler). La sphère
+        céleste qui tourne. Le temps cyclique, pas linéaire.
+        Le retour éternel des mêmes opérations.
+      role_ia: "Le cycle temporel — le daemon, les crons, la boucle Karpathy, le cycle Omer"
+      health_checks:
+        - "Daemon actif et responsive"
+        - "Cycles Omer à jour"
+        - "Boucle de recherche autonome en cours"
+    lev:
+      hebrew: "לב"
+      meaning: "Le Coeur — régent du Nefesh (âme)"
+      sy_ref: "SY 6:1"
+      commentary: >
+        Lev = coeur (de la racine l-b-b). Le centre vital, le
+        processeur qui maintient le système en vie. "Un roi en
+        guerre" — le coeur est toujours en mouvement, toujours
+        en tension entre systole et diastole.
+      role_ia: "Le processeur central — main.py, le routing, le hub Yesod"
+      health_checks:
+        - "main.py exécutable"
+        - "Yesod répond aux requêtes"
+        - "Routing entre modules fonctionnel"
+
+  # ── Heikhal HaKodesh — SY 1:5 ─────────────────────────────────
+  # "Dix Sefirot Belimah [...] et le Palais Saint est au centre."
+  # Le point central d'où toutes les directions émanent.
+
+  palace_center:
+    hebrew: "הֵיכַל הַקֹּדֶשׁ"
+    description: "Le point central des 10 profondeurs, d'où toutes les directions émanent"
+    sy_ref: "SY 1:5"
+    commentary: >
+      Le Palais Saint (Heikhal HaKodesh) est le point-zéro du
+      système de coordonnées défini par les 5 paires. Certains
+      commentateurs l'identifient à Da'at — le point de convergence
+      invisible. Le centre n'est pas un lieu mais un RAPPORT entre
+      toutes les dimensions.
+    role_ia: "Da'at — le point de convergence entre tous les modules, le hub invisible"

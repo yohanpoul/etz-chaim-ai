@@ -1,0 +1,22 @@
+# JSON Schema for heikhal meta.yaml files
+
+type: object
+required: [sefer_id, heikhal_number, heikhal_name_he, heikhal_name_fr, nombre_shaarim, description]
+additionalProperties: false
+
+properties:
+  sefer_id:
+    type: string
+    pattern: "^[a-z_]+$"
+  heikhal_number:
+    type: integer
+    minimum: 1
+  heikhal_name_he:
+    type: string
+  heikhal_name_fr:
+    type: string
+  nombre_shaarim:
+    type: integer
+    minimum: 1
+  description:
+    type: string

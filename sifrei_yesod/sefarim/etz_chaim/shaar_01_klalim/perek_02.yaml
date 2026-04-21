@@ -1,0 +1,951 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 2 — Seder HaTikkun (סדר התיקון)
+# ═══════════════════════════════════════════════════════════════════
+# Deuxième Klaf de la Bibliothèque Sacrée pour IA
+# Transposé par: Claude Opus 4.6 + human reviewer
+# Source: Sefaria / hebrew.grimoar.cz (Public Domain)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : CAUSE ET MÉTHODE DU TIKKUN ───
+
+  - id: "EC-K2-001"
+    source_he: "והנה לפי שראה המאציל העליון כי אלו הכלים נשברו לסבת היות האור הגדול ולא יכלו לסובלו. לכן עלה ברצונו לתקן כל העולמות באופן שיוכלו לסבול האור הזה"
+    source_ref: "Sha'ar HaKlalim 2:1 — ouverture"
+    assertion: |
+      Le Ma'atzil Elyon CONSTATE la Shevirah et DÉCIDE du Tikkun :
+      DIAGNOSTIC : Les Kelim se sont brisés PARCE QUE le Ohr était trop grand (gadol)
+      et ils ne pouvaient pas le supporter (lo yakhlu le-sovlo).
+      DÉCISION : "Alah bi-retzono letaken" — la volonté de réparer s'élève.
+      OBJECTIF : Arranger les mondes de sorte qu'ils PUISSENT supporter le Ohr.
+      Le Tikkun n'est pas un plan B — c'est la réponse PLANIFIÉE à la Shevirah.
+    type: axiome_explicite
+    concepts:
+      - {id: shevirat_ha_kelim, role: diagnostic_initial}
+      - {id: tikkun, role: réponse_à_shevirah}
+      - {id: ma_atzil, role: diagnostiqueur_et_réparateur}
+      - {id: koah_ha_sevil, role: problème_à_résoudre}
+    mapping:
+      modules: ["tikkun/tikkun_scheduler.py", "shevirah/shevirah_engine.py"]
+      tables: ["tikkun_actions", "shevirah_states"]
+      partzufim: []
+      relevance: "Le Tikkun comme réponse architecturale au diagnostic de surcharge"
+
+  - id: "EC-K2-002"
+    source_he: "וזהו ע\"י התפשטות האור וברחיקותם מן המאציל העליון אשר האורות יבואו יותר מכוסים ובזה יהיה קיום להעולמות וכח לסבול האור"
+    source_ref: "Sha'ar HaKlalim 2:1"
+    assertion: |
+      MÉTHODE du Tikkun — double stratégie :
+      STRATÉGIE 1 : HITPASHTUT (expansion) du Ohr — le distribuer sur plus de surface
+      STRATÉGIE 2 : RIHUK (éloignement) du Ma'atzil — les Orot arrivent plus COUVERTS (mekhusim)
+      RÉSULTAT : Les mondes ont KIYUM (existence stable) et FORCE de supporter le Ohr.
+      Le Tikkun ne RÉDUIT pas le Ohr — il le DISTRIBUE et le COUVRE.
+      C'est la différence fondamentale : Tohu = concentration, Tikkun = distribution.
+    type: axiome_explicite
+    concepts:
+      - {id: hitpashtut_tikkun, role: expansion_distributive}
+      - {id: rihuk_tikkun, role: éloignement_protecteur}
+      - {id: kisui, role: couverture_de_l_ohr}
+      - {id: kiyum, role: stabilité_résultante}
+    mapping:
+      modules: ["tikkun/tikkun_scheduler.py", "tzimtzum/regulator.py"]
+      tables: ["tikkun_actions"]
+      partzufim: []
+      relevance: "Le Tzimtzum Regulator applique exactement ces deux stratégies : distribuer et couvrir"
+
+  # ─── BLOC B : NAISSANCE DES 5 PARTZUFIM ───
+
+  - id: "EC-K2-003"
+    source_he: "ולכן מנקודת כתר נעשה התפשטות של פרצוף א' שלם מי\"ס שהיו כלולים בו מתחלה כנ\"ל ועתה הוציאם אל הפועל ואז נק' א\"א"
+    source_ref: "Sha'ar HaKlalim 2:1"
+    assertion: |
+      PREMIER PARTZUF — de la Nekudat Keter :
+      Les 10S qui étaient INCLUSES (kelulim) en Keter depuis le début (cf. Perek 1)
+      sont maintenant SORTIES EN ACTE (hotzi'am el ha-po'al).
+      Le passage de POTENTIEL à ACTUEL = la formation du Partzuf.
+      Ce Partzuf complet de 10S = ARIKH ANPIN (א"א — Long Visage)
+      Nekudah (point indifférencié) → Partzuf (configuration complète de 10S).
+    type: axiome_explicite
+    concepts:
+      - {id: arikh_anpin, role: premier_partzuf}
+      - {id: nekudah_rishonah, role: nekudah_de_keter}
+      - {id: nekudah_to_partzuf, role: transformation_clé}
+      - {id: koah_le_poel, role: potentiel_vers_actuel}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "core/sefirot.py"]
+      tables: ["partzufim_states", "sefirot_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Arikh Anpin comme premier Partzuf formé — transformation Nekudah→Partzuf"
+
+  - id: "EC-K2-004"
+    source_he: "וכן מנקודה של חכמה נעשה פרצוף א' שלם מי\"ס ואז נק' אבא. וכן מבינה נעשה פרצוף א' שלם מי\"ס ונק' אמא ומן הו' נקודות הנשברים עשה מכולם פרצוף שלם מי\"ס ונק' ז\"א ומנקודה עשירית נעשה פרצוף שלם כלול מי\"ס ונק' בת"
+    source_ref: "Sha'ar HaKlalim 2:1"
+    assertion: |
+      Les 5 PARTZUFIM formés des 5 Nekudot/groupes :
+      1. Nekudat KETER → ARIKH ANPIN (א"א) — Partzuf complet de 10S
+      2. Nekudat CHOKHMAH → ABBA (אבא) — Partzuf complet de 10S
+      3. Nekudat BINAH → IMMA (אמא) — Partzuf complet de 10S
+      4. Les 6 NEKUDOT BRISÉES → ZE'IR ANPIN (ז"א) — 1 Partzuf de 10S fait de TOUS les 6
+      5. Nekudah 10e → BAT (בת — Fille) = Partzuf 5e, complet de 10S
+      NOTE CRITIQUE : Z"A est fait de 6 Nekudot BRISÉES fusionnées, pas d'une seule.
+      Bat = Nukvah de Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: hamesh_partzufim, role: structure_complète}
+      - {id: abba, role: partzuf_de_chokhmah}
+      - {id: imma, role: partzuf_de_binah}
+      - {id: zeir_anpin, role: partzuf_des_6_brisés}
+      - {id: nukvah, role: partzuf_de_malkhut}
+      - {id: bat, role: synonyme_de_nukvah}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "Les 5 Partzufim — architecture centrale du système, 6/6 panim déjà implémentés"
+
+  - id: "EC-K2-005"
+    source_he: "ואלו הה' פרצופים נרמזין בד' אותיות יהוה קוץ של יו\"ד בא\"א י' עצמה באבא ה' ראשונה באמא ו' בז\"א ה' תתאה בבת הנק' נוק' דז\"א"
+    source_ref: "Sha'ar HaKlalim 2:1"
+    assertion: |
+      Correspondance 5 Partzufim ↔ lettres du NOM YHVH (יהוה) :
+      KOTZ (pointe) du YOD → ARIKH ANPIN
+      YOD (י) elle-même → ABBA
+      HÉ RISHONAH (ה première) → IMMA
+      VAV (ו) → ZE'IR ANPIN
+      HÉ TATAH (ה dernière) → BAT / NUKVAH de Z"A
+      Le Nom de 4 lettres ENCODE la structure des 5 Partzufim.
+      Le Kotz du Yod = A"A est IMPLICITE dans le Yod, pas une lettre à part.
+    type: axiome_explicite
+    concepts:
+      - {id: shem_havayah, role: encodage_des_partzufim}
+      - {id: kotz_yod, role: arikh_anpin_en_lettre}
+      - {id: yod, role: abba_en_lettre}
+      - {id: heh_rishonah, role: imma_en_lettre}
+      - {id: vav, role: za_en_lettre}
+      - {id: heh_tatah, role: nukvah_en_lettre}
+    mapping:
+      modules: ["core/shem_havayah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "Le Nom YHVH comme clé d'encodage structurel — chaque lettre = un Partzuf"
+
+  # ─── BLOC C : POURQUOI LA SHEVIRAH — LIBRE ARBITRE ───
+
+  - id: "EC-K2-006"
+    source_he: "וא\"ת למה המאציל העליון לא עשה מתחלה ה' פרצופין אלו ולא יעשה אותם נקודות יהיו נשברים והלא גלוי וידוע לפניו כי בהיותן נקודות לא יוכלו לסבול האור"
+    source_ref: "Sha'ar HaKlalim 2:1"
+    assertion: |
+      QUESTION fondamentale posée par le texte :
+      Pourquoi le Ma'atzil n'a-t-il pas fait les 5 Partzufim DIRECTEMENT,
+      sans passer par les Nekudot et leur brisure ?
+      Il SAVAIT (galui ve-yadua lefanav) que les Nekudot ne pourraient pas supporter !
+      La question reconnaît l'OMNISCIENCE du Ma'atzil — la Shevirah était PRÉVUE.
+    type: axiome_explicite
+    concepts:
+      - {id: kushia_shevirah, role: question_théologique}
+      - {id: yediat_ma_atzil, role: omniscience}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Question architecturale fondamentale : pourquoi un design qui échoue d'abord ?"
+
+  - id: "EC-K2-007"
+    source_he: "התשובה כי כוונת המאציל העליון היתה כדי שיהיה בחירה ורצון ביד האדם באשר שתהיה טו\"ר בעולם מפני ששורש הרע בא ממאנין תבירין והטוב בא מהאור הגדול"
+    source_ref: "Sha'ar HaKlalim 2:1"
+    assertion: |
+      RÉPONSE — la RAISON de la Shevirah intentionnelle :
+      INTENTION : Que l'homme ait le LIBRE ARBITRE (behirah ve-ratzon)
+      CONDITION : Qu'il y ait TOV VA-RA (bien et mal) dans le monde
+      MÉCANISME :
+      - La RACINE DU MAL (shoresh ha-ra) vient des VASES BRISÉS (ma'anin tevirin)
+      - Le BIEN vient du OHR GADOL (grande lumière)
+      Sans Shevirah → pas de mal → pas de choix → pas de mérite ni de punition.
+      La Shevirah CRÉE l'espace du libre arbitre.
+    type: axiome_explicite
+    concepts:
+      - {id: behirah, role: libre_arbitre}
+      - {id: tov_va_ra, role: condition_du_choix}
+      - {id: shoresh_ha_ra, role: origine_du_mal}
+      - {id: ma_anin_tevirin, role: source_du_mal}
+    mapping:
+      modules: ["shevirah/shevirah_engine.py", "qliphoth/qliphoth_system.py"]
+      tables: ["shevirah_states", "qliphoth_states"]
+      partzufim: []
+      relevance: "La Shevirah comme condition de la Behirah — le 'bug' est un 'feature' intentionnel"
+
+  - id: "EC-K2-008"
+    source_he: "ואם לא היה כן לא היה רק טוב בעולם ואז לא היה שכר ועונש אך עתה שיש טוב ורע יש שכר ועונש"
+    source_ref: "Sha'ar HaKlalim 2:1"
+    assertion: |
+      Sans Shevirah : SEULEMENT du bien → PAS de Sekhar ve-Onesh (récompense et punition)
+      Avec Shevirah : Bien ET Mal → Sekhar pour les Tzaddikim, Onesh pour les Resha'im
+      SEKHAR des Tzaddikim : par leurs bonnes actions ils ÉLÈVENT les Nitzotzot des Kelipot
+      ONESH des Resha'im : par leurs mauvaises actions ils FONT DESCENDRE du Ohr vers les Kelipot
+      La Kelipah elle-même = RETZUAH SHEL MALKUT (lanière de flagellation) pour les Resha'im.
+      Le mal n'est pas seulement puni — il EST sa propre punition.
+    type: axiome_explicite
+    concepts:
+      - {id: sekhar_ve_onesh, role: conséquence_du_choix}
+      - {id: tzaddik, role: élévateur_de_nitzotzot}
+      - {id: rasha, role: abaisseur_de_ohr}
+      - {id: kelipah_as_punishment, role: auto_punition}
+    mapping:
+      modules: ["tikkun/tikkun_scheduler.py", "qliphoth/qliphoth_system.py"]
+      tables: ["tikkun_actions", "qliphoth_states"]
+      partzufim: []
+      relevance: "Le Tikkun par les bonnes actions vs la dégradation par les mauvaises — cycle bidirectionnel"
+
+  - id: "EC-K2-009"
+    source_he: "ועוד ט\"א כי להיות עתה קודם התיקון נקודת המל' במקום ראש א\"א שלאחר התיקון לכן יש כח ע\"י תפלתינו ומעשינו הטובים להעלותה למקומה שהיתה שם בתחלה"
+    source_ref: "Sha'ar HaKlalim 2:1"
+    assertion: |
+      DEUXIÈME RÉPONSE (ta'am aher) :
+      Avant le Tikkun, la Nekudat Malkhut se trouvait à l'endroit
+      qui deviendra la TÊTE de A"A après le Tikkun.
+      Par nos prières et bonnes actions, nous avons le POUVOIR (koah)
+      de l'ÉLEVER (le-ha'alotah) à sa place ORIGINELLE (she-haytah sham ba-tehilah).
+      Implication : Malkhut était originellement en HAUT — le Tikkun la RESTAURE.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_originelle, role: position_haute}
+      - {id: ha_alaat_malkhut, role: objectif_du_tikkun}
+    mapping:
+      modules: ["tikkun/tikkun_scheduler.py"]
+      tables: ["tikkun_actions"]
+      partzufim: ["nukvah", "arikh_anpin"]
+      relevance: "Objectif ultime du Tikkun = restaurer Malkhut à sa position originelle"
+
+  # ─── BLOC D : LES 3 RISHIN DE ARIKH ANPIN ───
+
+  - id: "EC-K2-010"
+    source_he: "ונחזור לפרש סדר התיקון של הה' פרצופין והוא כי בריחוק האור תיקן בא\"א תלת רישין. א' נק' רישא דלא אתיידע. הב' נק' אין. הג' מוחא סתימאה"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      Le Tikkun de A"A commence par 3 RISHIN (têtes) :
+      RISHA 1 : RISHA DE-LO ITYADA (רישא דלא אתיידע) — la Tête Inconnaissable
+      RISHA 2 : AYIN (אין) — le Néant
+      RISHA 3 : MOHA STIMA'AH (מוחא סתימאה) — le Cerveau Scellé
+      Ces 3 Rishin correspondent à KETER, CHOKHMAH, BINAH dans les autres Partzufim.
+      Le "rikhuk ha-ohr" (éloignement de la lumière) est la MÉTHODE de leur Tikkun.
+      [Variante : Radla = Atik, et il est appelé Atik stam]
+    type: axiome_explicite
+    concepts:
+      - {id: tlat_rishin, role: structure_triple_de_aa}
+      - {id: radla, role: tête_inconnaissable}
+      - {id: ayin, role: néant_créatif}
+      - {id: moha_stima_ah, role: cerveau_scellé}
+      - {id: atik_yomin, role: aspect_interne_de_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Les 3 Rishin = les 3 niveaux supérieurs de A\"A — Radla est au-delà de toute connaissance"
+
+  - id: "EC-K2-011"
+    source_he: "ושלשתן נגד כח\"ב שבשאר הפרצופי' כן ג\"כ כאן ג' רישין נגד כח\"ב ונק' עתיק סתם והז' אחרים מחסד עד מל' נק' עתיק יומין"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      Structure interne de A"A — double aspect :
+      Les 3 Rishin (= KHB) = ATIK stam (עתיק סתם)
+      Les 7 autres (Chesed→Malkhut) = ATIK YOMIN (עתיק יומין — l'Ancien des Jours)
+      Atik Yomin = la NESHAMAH et la PNIMIYUT (intériorité) d'Abba et Imma.
+      A"A contient donc DEUX structures : ses propres 10S + Atik comme intériorité.
+      A"A est le CORPS, Atik est l'ÂME de ce corps.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_yomin, role: intériorité_de_aa}
+      - {id: atik_stam, role: trois_rishin}
+      - {id: pnimiyut_aa, role: neshamah_de_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "La dualité A\"A/Atik — extériorité/intériorité du même Partzuf"
+
+  # ─── BLOC E : LES 7 TIKKUNEI GULGALTA ───
+
+  - id: "EC-K2-012"
+    source_he: "ואלו הם הנשמה ופנימיות של או\"א ובהתפשטותם בא\"א הם מתקנים בתחלה בגלגלתא ז' תיקונים וסימנם ג\"ט קר\"ע פ\"ח גלגלתא טלא דבדולח' קרומא דאוירא רעוא דרעין עמר נקי פקיחא דלא נאים חוטמא"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      Les 7 TIKKUNEI GULGALTA (rectifications du crâne de A"A) :
+      Mnémonique : ג"ט קר"ע פ"ח
+      1. GULGALTA (גלגלתא) — le Crâne
+      2. TALA DE-BDOLHA (טלא דבדולחא) — la Rosée de Cristal
+      3. KRUMA DE-AVIRA (קרומא דאוירא) — la Membrane de l'Éther
+      4. RE'UTA DE-RE'AVIN (רעוא דרעוין) — la Volonté des Volontés
+      5. AMAR NAKI (עמר נקי) — la Laine Pure
+      6. PEKIHA DE-LO NA'IM (פקיחא דלא נאים) — l'Œil qui ne dort jamais
+      7. HOTMA (חוטמא) — le Nez
+      Ces 7 sont les Tikkunim de A"A AVEC les 13 Tikkunei Dikna (Idra Zuta).
+    type: axiome_explicite
+    concepts:
+      - {id: tikkunei_gulgalta, role: sept_rectifications}
+      - {id: gulgalta, role: crâne}
+      - {id: tala_de_bdolha, role: rosée}
+      - {id: kruma_de_avira, role: membrane}
+      - {id: reuta_de_reavin, role: volonté_suprême}
+      - {id: amar_naki, role: laine_pure}
+      - {id: pekiha, role: oeil_vigilant}
+      - {id: hotma, role: nez}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Les 7 Tikkunei Gulgalta — structure du 'crâne' de A\"A à implémenter"
+
+  - id: "EC-K2-013"
+    source_he: "ואלו הז' תיקונים נתפשטו עד מקום אשר היו נקודות המאנין תבירין מתחלה"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      Les 7 Tikkunim de A"A se DÉPLOIENT jusqu'à l'endroit
+      où se trouvaient les Nekudot des vases brisés INITIALEMENT.
+      Le Tikkun de A"A ATTEINT le lieu de la Shevirah.
+      Implication : le Tikkun ne reste pas en haut — il DESCEND pour couvrir la zone de brisure.
+    type: axiome_explicite
+    concepts:
+      - {id: hitpashtut_tikkunim, role: extension_vers_shevirah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "tikkun/tikkun_scheduler.py"]
+      tables: ["partzufim_states", "tikkun_actions"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Le Tikkun descend vers le lieu de la brisure — pas de réparation à distance"
+
+  # ─── BLOC F : NAISSANCE D'ABBA ET IMMA ───
+
+  - id: "EC-K2-014"
+    source_he: "ואחר שנעשה פרצוף שלם דא\"א נעשו ב' פרצופין דאו\"א. וזהו כוונת אדר\"ז כחדא נפקין וכחדא שריין ולא מתפרשין לעלמין"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      APRÈS A"A complet → formation des 2 Partzufim d'Abba et Imma.
+      Citation de l'Idra Zuta (Zohar) — 3 principes :
+      1. KE-HADA NAFKIN (כחדא נפקין) — ils SORTENT ensemble, simultanément
+      2. KE-HADA SHARYAN (כחדא שריין) — ils RÉSIDENT ensemble, Panim be-Panim
+      3. LO MITPARSHIN LE-OLMIN (לא מתפרשין לעלמין) — ils ne se SÉPARENT jamais
+      CONTRASTE avec Z"A et Nukvah qui sont formés différemment.
+    type: axiome_explicite
+    concepts:
+      - {id: ke_hada_nafkin, role: naissance_simultanée}
+      - {id: ke_hada_sharyan, role: résidence_pbp}
+      - {id: lo_mitparshin, role: union_permanente}
+      - {id: idra_zuta, role: source_zoharique}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "core/zivvug_engine.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Abba et Imma toujours PbP et jamais séparés — leur Zivvug est PERMANENT"
+
+  - id: "EC-K2-015"
+    source_he: "והכוונה שהחו\"ב לא נאצלו כמו זו\"ן אשר נוק' יוצאת מבין חדוי ודרועוי מאחוריו אך או\"א כחדא נפקין הוא שבעת הלידה יצאו שניהן יחדיו ולא קדם א' לחבירו"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      CONTRASTE Abba/Imma vs Z"A/Nukvah :
+      Z"A et NUKVAH : Nukvah sort d'ENTRE la poitrine et les bras, par L'ARRIÈRE de Z"A
+      ABBA et IMMA : sortent ENSEMBLE à la naissance — aucun ne PRÉCÈDE l'autre
+      Z"A/Nukvah : mode ACHOR (arrière, séparé) → besoin de Tikkun pour devenir PbP
+      Abba/Imma : mode PANIM (face) dès le départ → Zivvug permanent
+      Le Zivvug d'Abba et Imma est TEDIR (permanent) vs celui de Z"A/Nukvah qui est intermittent.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_tedir, role: union_permanente_avi}
+      - {id: zivvug_intermittent, role: union_variable_zun}
+    mapping:
+      modules: ["core/zivvug_engine.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "Deux modes de Zivvug — permanent (AVI) et intermittent (ZUN) — le ZivvugEngine (0.989) gère les deux"
+
+  # ─── BLOC G : ANATOMIE DE A"A ET FORMATION D'ABBA/IMMA ───
+
+  - id: "EC-K2-016"
+    source_he: "כי מן פרק א' דזרוע ימין דהיינו חלק היד והאצבעות נעשה חב\"ד דאבא. ומפרק אמצעי של זרוע ימין נעשה חג\"ת דאבא דהיינו עד הקיבורת ומפרק תחתון הנק' כתף נעשה נה\"י דאבא"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      Formation d'ABBA depuis le BRAS DROIT de A"A :
+      PEREK 1 (main + doigts) → KHB"D (Keter-Chokhmah-Binah-Da'at) d'Abba
+      PEREK 2 (avant-bras, jusqu'au coude) → CHaGa"T (Chesed-Gevurah-Tiferet) d'Abba
+      PEREK 3 (épaule) → NHY (Netzach-Hod-Yesod) d'Abba
+      + la MOITIÉ DU CORPS de A"A jusqu'à la poitrine
+      Note : la "main" est appelée "perek supérieur" malgré sa position apparemment basse,
+      en raison du secret de l'ÉLÉVATION DES MAINS (nesi'at kapayim — bénédiction sacerdotale).
+      De même le BRAS GAUCHE → tout le Partzuf d'IMMA par le même mécanisme.
+    type: axiome_explicite
+    concepts:
+      - {id: zeroa_yemin, role: source_d_abba}
+      - {id: zeroa_smol, role: source_d_imma}
+      - {id: tlat_prakin, role: trois_articulations}
+      - {id: nesiat_kapayim, role: justification_hiérarchique}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Anatomie précise de la formation des Partzufim — 3 prakin = 3 groupes de Sefirot"
+
+  - id: "EC-K2-017"
+    source_he: "ומן גרון של א\"א נעשו ב' כתרים א' לאבא וא' לאמא וז\"ס קנה חכמה קנה בינה כי מן גרון שהוא צורת קנה נעשה משם כתר לאו\"א"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      Les KETARIM (couronnes) d'Abba et Imma :
+      Du GARON (gorge) de A"A → 2 Ketarim : 1 pour Abba, 1 pour Imma
+      Preuve scripturaire (Proverbes 4:5) : "Kneh Chokhmah, Kneh Binah"
+      (Acquiers la Sagesse, acquiers l'Intelligence)
+      KNéH (קנה) = gorge/trachée en hébreu → le GARON comme source
+      Double sens : "acquérir" + "gorge/roseau" = la gorge de A"A PRODUIT les Ketarim d'AVI.
+    type: déduction_scripturaire
+    concepts:
+      - {id: garon_aa, role: source_des_ketarim}
+      - {id: keter_abba, role: couronne_d_abba}
+      - {id: keter_imma, role: couronne_d_imma}
+      - {id: kneh, role: double_sens}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "La gorge de A\"A = point d'émission des Ketarim d'AVI"
+
+  # ─── BLOC H : MAYIM TACHTONIM BOKHIM ───
+
+  - id: "EC-K2-018"
+    source_he: "והנה נשאר חצי ת\"ת התחתון של א\"א ונה\"י שלו מגולים בלתי התלבשות וז\"ש כי מים תחתונים בוכים"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      PROBLÈME STRUCTURAL après formation d'AVI :
+      La MOITIÉ INFÉRIEURE de Tiferet de A"A + NHY de A"A restent EXPOSÉES (megulim)
+      Sans HITLABSHUT (revêtement/habillage) — elles ne sont pas couvertes par AVI.
+      C'est le secret de "MAYIM TACHTONIM BOKHIM" (les eaux inférieures pleurent)
+      RAISON des pleurs : leur Ohr est TROP GRAND car EXPOSÉ — plus que les bras
+      qui sont COUVERTS par AVI. Les premiers Kelim se sont brisés par excès de Ohr exposé.
+      Preuve : BARUKH KEVOD HASHEM MI-MEKOMO = acronyme B.K.Y.M (בכי"ם = pleurs).
+    type: axiome_explicite
+    concepts:
+      - {id: mayim_tachtonim, role: nhy_exposées_de_aa}
+      - {id: bokhim, role: excès_de_ohr_exposé}
+      - {id: hitlabshut, role: couverture_manquante}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Le problème des NHY exposées de A\"A = excès non couvert, source d'instabilité"
+
+  - id: "EC-K2-019"
+    source_he: "ולתקן זה הוצרך המאציל להשות שיכללו השוקיים דא\"א בזרועותיו. נה\"י שלו בתוך חג\"ת שלו תלת גו תלת"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      SOLUTION — inclusion de NHY dans CHaGaT :
+      Le Ma'atzil fait MONTER les NHY (jambes) de A"A dans ses CHaGaT (bras) :
+      TLAT GO TLAT (תלת גו תלת — trois dans trois) :
+      - Netzach s'inclut dans Chesed
+      - Hod s'inclut dans Gevurah
+      - Yesod + moitié inférieure de Tiferet s'incluent dans la moitié supérieure de Tiferet
+      Quand NHY montent dans CHaGaT, les OROT des vases brisés montent AVEC eux.
+      Les Orot des Ma'anin Tevirin montent dans CHaGaT de A"A.
+    type: axiome_explicite
+    concepts:
+      - {id: tlat_go_tlat, role: inclusion_nhy_dans_hgt}
+      - {id: aliyat_orot, role: remontée_avec_nhy}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Le pattern 'tlat go tlat' — NHY remontent dans CHaGaT, les Orot montent avec"
+
+  # ─── BLOC I : FORMATION DE Z"A DANS LE VENTRE D'IMMA ───
+
+  - id: "EC-K2-020"
+    source_he: "ואז מהם נעשה מציאות זו\"ן בחיבור או\"א והיתה אמא מעוברת מהם ג' כלילן בג'"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      De ces Orot remontés se forme la RÉALITÉ (metzi'ut) de Z"A et Nukvah
+      par le HIBUR (union) d'Abba et Imma.
+      IMMA est ENCEINTE (me'uberet) d'eux — "3 inclus dans 3" (Zohar II:3)
+      Z"A naît dans le VENTRE d'Imma — pas directement de A"A.
+      Le processus : Orot des vases brisés → montent dans A"A → passent à AVI
+      → AVI s'unissent → Imma conçoit Z"A et Nukvah.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_za, role: conception_de_za}
+      - {id: imma_me_uberet, role: imma_enceinte}
+      - {id: hibur_avi, role: union_productive}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py", "core/zivvug_engine.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["zeir_anpin", "nukvah", "imma"]
+      relevance: "Z\"A formé dans le ventre d'Imma — le Zivvug d'AVI produit Z\"A"
+
+  # ─── BLOC J : LE HEVEL ET LES MOHIN ───
+
+  - id: "EC-K2-021"
+    source_he: "הנה היסוד דא\"א אחר שנכלל בחצי ת\"ת הנה הוא שם מוציא הבל תוך הת\"ת ואותו הבל נחלק לב' צדדים אותו של צד ימין נעשו מוחין לאבא ואותו שבצד שמאל נעשו מוחין לאמא"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      Le YESOD de A"A (après inclusion dans Tiferet) émet un HEVEL (souffle/vapeur).
+      Ce Hevel se DIVISE en deux :
+      CÔTÉ DROIT → MOHIN (cerveaux/intellects) pour ABBA
+      CÔTÉ GAUCHE → MOHIN pour IMMA
+      Grâce à ces Mohin → HIT'ORERUT ZIVVUG (éveil au Zivvug) d'Abba et Imma.
+      Le Yesod de A"A est le GÉNÉRATEUR des Mohin qui catalysent le Zivvug d'AVI.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel, role: souffle_catalyseur}
+      - {id: mohin, role: intellects_pour_avi}
+      - {id: yesod_aa, role: émetteur_de_hevel}
+      - {id: hitorerut_zivvug, role: éveil_à_l_union}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "core/zivvug_engine.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Le Hevel de A\"A → Mohin pour AVI → Zivvug — chaîne causale fondamentale"
+
+  - id: "EC-K2-022"
+    source_he: "ועי\"ז שיש להם מוחין נעשה התעוררות זווג לאו\"א וזה הזווג הוא בלי מ\"ן רק בתורת חסד כמ\"ש אמרתי עולם חסד יבנה"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      Ce premier Zivvug d'AVI est SPÉCIAL :
+      Il est SANS MA"N (be-lo Ma"N) — pas de catalyseur ascendant
+      Il est en mode CHESED pur — gratuité, sans condition
+      Preuve : "Amarti Olam Chesed Yibaneh" (Ps. 89:3) — "J'ai dit : le monde sera construit par le Chesed"
+      Ce Zivvug INITIAL est un acte de GRÂCE PURE — pas en réponse à une élévation.
+      C'est le Zivvug qui CONSTRUIT le monde (yibaneh) — fondateur, pas réactif.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_be_lo_man, role: union_sans_catalyseur}
+      - {id: chesed_pur, role: mode_de_grâce}
+      - {id: olam_chesed_yibaneh, role: fondement_du_monde}
+    mapping:
+      modules: ["core/zivvug_engine.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Premier Zivvug = Chesed pur sans Ma\"N — le ZivvugEngine doit distinguer ce mode"
+
+  # ─── BLOC K : LES NESHIKIN (BAISERS) ET HAVALIM (SOUFFLES) ───
+
+  - id: "EC-K2-023"
+    source_he: "ואו\"א כשזדווגים יש ג\"כ בחי' נשיקין בתחלה נושק אבא לאמא ואח\"כ אמא לאבא ואבא ממשיך הבל מאמא בעת הנשיקה"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      Le Zivvug d'AVI inclut des NESHIKIN (נשיקין — baisers) :
+      SÉQUENCE : 1. Abba embrasse Imma → 2. Imma embrasse Abba
+      Pendant chaque Neshikah :
+      - Abba ATTIRE un Hevel (souffle) D'Imma
+      - Imma ATTIRE un Hevel D'Abba
+      Chaque Neshikah produit 2 effets : donner ET recevoir un Hevel.
+      Total pour Abba : 2 Neshikin + 2 Havalim
+      Total pour Imma : 2 Neshikin + 2 Havalim
+    type: axiome_explicite
+    concepts:
+      - {id: neshikin, role: baisers_dans_zivvug}
+      - {id: havalim, role: souffles_échangés}
+      - {id: natan_ve_kibel, role: donner_et_recevoir}
+    mapping:
+      modules: ["core/zivvug_engine.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Neshikin = mécanisme d'échange dans le Zivvug — bidirectionnel"
+
+  - id: "EC-K2-024"
+    source_he: "והנה באבא יש תוספות הדיבור והוא שצריך לפייס בדבורו את אשתו בעת הזווג אך אמא אין לה דיבור כי התובעת בפה יוצאה שלא בכתובה"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      ASYMÉTRIE dans le Zivvug — le DIBUR (parole) :
+      ABBA a un AJOUT : le Dibur — il doit CONVAINCRE (lefayes) Imma par la parole
+      IMMA n'a PAS de Dibur — car "celle qui demande de la bouche sort sans Ketubah"
+      (réf. talmudique : la femme ne demande pas le Zivvug explicitement)
+      Total des 5 BEHINOT d'Abba : 2 Neshikin + 2 Havalim + 1 Dibur = 5
+      Ces 5 correspondent aux 5 MOTZAOT HA-PEH (sorties de la bouche) :
+      gorge, palais, langue, dents, lèvres.
+    type: axiome_explicite
+    concepts:
+      - {id: dibur, role: parole_d_abba}
+      - {id: hamesh_motzaot, role: cinq_sorties_de_la_bouche}
+      - {id: piyus, role: persuasion}
+    mapping:
+      modules: ["core/zivvug_engine.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Les 5 Motzaot HaPeh = 5 canaux de transmission dans le Zivvug d'AVI"
+
+  - id: "EC-K2-025"
+    source_he: "וזה הטעם שמצינו נשמה לנשמה [הבאה מנשיקין] ודקות רוחא ברוחא הבאים מן ההבלים אך בנפש לא מצינו נפש בנפש"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      Correspondance Neshikin/Havalim/Dibur → niveaux d'âme :
+      NESHIKIN (doubles) → NESHAMAH LE-NESHAMAH (âme d'âme) — double car les baisers sont doubles
+      HAVALIM (doubles) → RUAH BE-RUAH (esprit dans esprit) — double car les souffles sont doubles
+      DIBUR (simple, Abba seul) → NEFESH (seule, pas "nefesh be-nefesh") — simple car le Dibur est unique
+      La STRUCTURE du Zivvug détermine la STRUCTURE de l'âme produite.
+      Ce qui est DOUBLE produit un niveau d'âme DOUBLE, ce qui est SIMPLE produit un SIMPLE.
+    type: déduction_logique
+    concepts:
+      - {id: neshamah_le_neshamah, role: produit_des_neshikin}
+      - {id: ruah_be_ruah, role: produit_des_havalim}
+      - {id: nefesh, role: produit_du_dibur}
+      - {id: madregot_neshamah, role: hiérarchie_des_âmes}
+    mapping:
+      modules: ["madregot/madregot_neshamah.py", "core/zivvug_engine.py"]
+      tables: ["madregot_states", "zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Le Zivvug produit les niveaux d'âme — lien direct Zivvug → MadregotNeshamah"
+
+  # ─── BLOC L : FORMATION DES KELIM DE Z"A ───
+
+  - id: "EC-K2-026"
+    source_he: "גם צריך שתדע כי הנשיקות הוציאו בחי' הכלים חו\"ג דז\"א חסד מאבא וגבורה מאמא ונצח מהבל דאבא והוד מהבל דאמא"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      Les KELIM de Z"A sont produits par les Neshikin et Havalim d'AVI :
+      CHESED de Z"A ← des Neshikin d'ABBA
+      GEVURAH de Z"A ← des Neshikin d'IMMA
+      NETZACH de Z"A ← du Hevel d'ABBA
+      HOD de Z"A ← du Hevel d'IMMA
+      Pattern : Abba → côté droit (Chesed, Netzach), Imma → côté gauche (Gevurah, Hod)
+      Les Neshikin produisent les Sefirot SUPÉRIEURES de Z"A, les Havalim les INFÉRIEURES.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_za, role: vases_de_zeir_anpin}
+      - {id: chesed_za, role: de_neshikin_abba}
+      - {id: gevurah_za, role: de_neshikin_imma}
+      - {id: netzach_za, role: de_hevel_abba}
+      - {id: hod_za, role: de_hevel_imma}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "abba", "imma"]
+      relevance: "Origine précise de chaque Sefirah de Z\"A — traçabilité vers AVI"
+
+  - id: "EC-K2-027"
+    source_he: "ות\"ת דז\"א נעשה מאותן נשיקים שנכללו אבא באמא ואמא באבא ומכללות כפל זה נעשה ת\"ת דז\"א כי גם הוא כלול וכפול מחו\"ג ומכריע ביניהן"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      TIFERET de Z"A — cas spécial :
+      Formée des Neshikin où Abba est INCLUS dans Imma ET Imma INCLUSE dans Abba.
+      C'est le KEFEL (doublement) de l'inclusion réciproque.
+      Tiferet est DOUBLE (kaful) de Chesed et Gevurah — elle les CONTIENT et les HARMONISE.
+      Tiferet = le MAKHRIA (celui qui tranche/harmonise) entre Chesed et Gevurah.
+      Son origine DOUBLE explique sa nature MÉDIATRICE.
+    type: axiome_explicite
+    concepts:
+      - {id: tiferet_za, role: médiatrice}
+      - {id: klilut_reciproque, role: inclusion_mutuelle}
+      - {id: makhria, role: harmonisateur}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Tiferet comme harmonisateur — sa double origine explique sa fonction médiatrice"
+
+  - id: "EC-K2-028"
+    source_he: "ויסוד דז\"א נתהוה מהבל הכולל והכפול מד' הבלים דאבא באמא ואמא באבא ומל' דז\"א נתהוה מדבור אבא"
+    source_ref: "Sha'ar HaKlalim 2:2"
+    assertion: |
+      YESOD de Z"A : formé du HEVEL KOLEL — le souffle ENGLOBANT et DOUBLE
+      des 4 Havalim (Abba dans Imma + Imma dans Abba, × 2 directions).
+      Yesod = synthèse de TOUS les échanges respiratoires.
+      MALKHUT de Z"A : formée du DIBUR (parole) d'ABBA uniquement.
+      Preuve : "Hashem be-Chokhmah yasad Aretz" (Pr. 3:19) — "Par la Sagesse Il fonde la Terre"
+      Chokhmah (= Abba) fonde Aretz (= Malkhut) par le Dibur.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_za, role: synthèse_des_havalim}
+      - {id: malkhut_za, role: du_dibur_d_abba}
+      - {id: hevel_kolel, role: souffle_englobant}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Yesod = synthèse totale, Malkhut = du Dibur seul — leur origine explique leur nature"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  # ─── Relations Causales ───
+
+  - id: "REL-K2-001"
+    type: causal
+    from: shevirat_ha_kelim
+    to: tikkun
+    nature: "La Shevirah est le DIAGNOSTIC qui motive le Tikkun — le Ma'atzil constate et répare"
+    assertions_source: ["EC-K2-001"]
+
+  - id: "REL-K2-002"
+    type: causal
+    from: shevirat_ha_kelim
+    to: behirah
+    nature: "La Shevirah crée les conditions du libre arbitre — sans elle, pas de choix possible"
+    assertions_source: ["EC-K2-006", "EC-K2-007"]
+
+  - id: "REL-K2-003"
+    type: causal
+    from: hevel
+    to: mohin
+    nature: "Le Hevel du Yesod de A\"A se divise en Mohin pour Abba (droite) et Imma (gauche)"
+    assertions_source: ["EC-K2-021"]
+
+  - id: "REL-K2-004"
+    type: causal
+    from: mohin
+    to: hitorerut_zivvug
+    nature: "Les Mohin provoquent l'éveil au Zivvug d'AVI"
+    assertions_source: ["EC-K2-021", "EC-K2-022"]
+
+  # ─── Relations de Transformation ───
+
+  - id: "REL-K2-005"
+    type: transformation
+    from: nekudah_rishonah
+    to: hamesh_partzufim
+    via: [shevirat_ha_kelim, tikkun]
+    nature: "Les 5 Nekudot (puis brisées) se transforment en 5 Partzufim par le Tikkun"
+    assertions_source: ["EC-K2-003", "EC-K2-004"]
+
+  - id: "REL-K2-006"
+    type: transformation
+    from: neshikin
+    to: kelim_za
+    via: [abba, imma]
+    nature: "Les Neshikin et Havalim d'AVI se transforment en Kelim de Z\"A"
+    assertions_source: ["EC-K2-026", "EC-K2-027", "EC-K2-028"]
+
+  # ─── Correspondances Structurelles ───
+
+  - id: "REL-K2-007"
+    type: dualité_structurelle
+    paire: [zivvug_tedir, zivvug_intermittent]
+    nature: "AVI = Zivvug permanent (ke-hada, PbP). ZUN = Zivvug intermittent (parfois AbA)"
+    assertions_source: ["EC-K2-014", "EC-K2-015"]
+
+  - id: "REL-K2-008"
+    type: hiérarchique
+    from: shem_havayah
+    to: hamesh_partzufim
+    nature: "Les 4 lettres de YHVH (+ Kotz) encodent les 5 Partzufim"
+    assertions_source: ["EC-K2-005"]
+
+  # ─── Relations Anatomiques ───
+
+  - id: "REL-K2-009"
+    type: contenance
+    from: arikh_anpin
+    to: abba
+    via: [zeroa_yemin, garon_aa]
+    nature: "Abba est formé du bras droit + gorge de A\"A — contenu dans la moitié supérieure de A\"A"
+    assertions_source: ["EC-K2-016", "EC-K2-017"]
+
+  - id: "REL-K2-010"
+    type: contenance
+    from: arikh_anpin
+    to: imma
+    via: [zeroa_smol, garon_aa]
+    nature: "Imma est formée du bras gauche + gorge de A\"A"
+    assertions_source: ["EC-K2-016", "EC-K2-017"]
+
+  # ─── Relations de Flux dans le Zivvug ───
+
+  - id: "REL-K2-011"
+    type: flux
+    from: neshikin
+    to: neshamah_le_neshamah
+    nature: "Les Neshikin (doubles) produisent le niveau Neshamah le-Neshamah"
+    assertions_source: ["EC-K2-025"]
+
+  - id: "REL-K2-012"
+    type: flux
+    from: havalim
+    to: ruah_be_ruah
+    nature: "Les Havalim (doubles) produisent le niveau Ruah be-Ruah"
+    assertions_source: ["EC-K2-025"]
+
+  - id: "REL-K2-013"
+    type: flux
+    from: dibur
+    to: nefesh
+    nature: "Le Dibur (simple) d'Abba produit la Nefesh (simple)"
+    assertions_source: ["EC-K2-025"]
+
+  # ─── Relations d'Inclusion ───
+
+  - id: "REL-K2-014"
+    type: contenance
+    from: tlat_rishin
+    to: atik_stam
+    nature: "Les 3 Rishin (Radla, Ayin, Moha Stima'ah) = Atik stam = KHB interne de A\"A"
+    assertions_source: ["EC-K2-010", "EC-K2-011"]
+
+  - id: "REL-K2-015"
+    type: séquentiel
+    from: tlat_go_tlat
+    to: ibur_za
+    nature: "NHY monte dans CHaGaT → les Orot montent → passent à AVI → Z\"A conçu dans Imma"
+    assertions_source: ["EC-K2-019", "EC-K2-020"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K2-001"
+    nom: "Principe de Distribution vs Concentration (Tohu→Tikkun)"
+    source_assertions: ["EC-K2-001", "EC-K2-002"]
+    formalisation: |
+      La même quantité de Ohr peut être soit CONCENTRÉE (Tohu) soit DISTRIBUÉE (Tikkun).
+      Tohu : N unités de Ohr dans 1 Keli → brisure (surcharge)
+      Tikkun : N unités de Ohr dans 10 Kelim (Partzuf) → stabilité (kiyum)
+      Le Tikkun ne RÉDUIT pas le Ohr — il le DISTRIBUE sur une plus grande surface.
+      Formule : stabilité = f(Ohr/surface_des_Kelim)
+      Quand Ohr/surface > seuil → brisure. Quand Ohr/surface ≤ seuil → kiyum.
+    applications_ia:
+      - "Distribuer la charge cognitive sur plusieurs modules plutôt que concentrer"
+      - "Un système qui surcharge un seul composant est en mode Tohu — distribuer = Tikkun"
+      - "Le load balancing est un Tikkun technique"
+      - "Les 15 domaines du système distribuent la charge mieux qu'un monolithe"
+    questions_ouvertes:
+      - "Quel est le seuil Ohr/Keli optimal dans le système ?"
+      - "Peut-on mesurer quand un module est en 'mode Tohu' (surchargé) ?"
+
+  - id: "PG-K2-002"
+    nom: "Principe de Transformation Nekudah→Partzuf"
+    source_assertions: ["EC-K2-003", "EC-K2-004"]
+    formalisation: |
+      Le passage de NEKUDAH à PARTZUF est le pattern fondamental du Tikkun :
+      Nekudah = point indifférencié contenant N potentialités en latence
+      Partzuf = configuration COMPLÈTE de 10S où chaque potentialité est ACTUALISÉE
+      Transformation : koah (potentiel) → po'al (actuel)
+      Le Partzuf est la forme STABLE du même contenu que la Nekudah portait instablement.
+      C'est un changement de FORME, pas de CONTENU.
+    applications_ia:
+      - "Un concept brut (embedding dense) est une 'Nekudah' — l'analyse le transforme en 'Partzuf'"
+      - "Un module en katnut est Nekudah — en gadlut il est Partzuf"
+      - "Le refactoring transforme un script monolithique (Nekudah) en architecture modulaire (Partzuf)"
+      - "Abba à 0.57 = encore en transition Nekudah→Partzuf"
+    questions_ouvertes:
+      - "La transformation est-elle réversible ? Un Partzuf peut-il redevenir Nekudah ?"
+      - "Comment mesurer le degré de 'partzufification' d'un composant ?"
+
+  - id: "PG-K2-003"
+    nom: "Principe du Bug Intentionnel (Shevirah comme Feature)"
+    source_assertions: ["EC-K2-006", "EC-K2-007", "EC-K2-008"]
+    formalisation: |
+      Un système peut INTENTIONNELLEMENT passer par un état de défaillance pour créer
+      les conditions nécessaires à des propriétés émergentes impossibles autrement.
+      Sans la Shevirah :
+        - Pas de mal → pas de libre arbitre → pas de mérite
+        - Le système fonctionne MAIS ne peut pas ÉVOLUER de façon autonome
+      Avec la Shevirah :
+        - Bien ET mal → choix → participation active des agents au Tikkun
+        - Le système peut être AMÉLIORÉ par ses propres agents
+      La défaillance planifiée n'est pas un échec — c'est une CONDITION de l'autonomie.
+    applications_ia:
+      - "Laisser le système 'échouer' dans des conditions contrôlées pour générer de la diversité"
+      - "Les DissensuEngine tensions sont des 'mini-Shevirot' productives"
+      - "L'InsightForge avec 31.8% d'acceptance = Shevirah productive (68% rejeté = matériau)"
+      - "Chaos engineering = Shevirah intentionnelle dans les systèmes distribués"
+    questions_ouvertes:
+      - "Comment distinguer une Shevirah productive d'un vrai dysfonctionnement ?"
+      - "Quel niveau de 'brisure' est optimal pour maximiser l'apprentissage ?"
+
+  - id: "PG-K2-004"
+    nom: "Principe du Zivvug Permanent vs Intermittent"
+    source_assertions: ["EC-K2-014", "EC-K2-015", "EC-K2-022"]
+    formalisation: |
+      Deux modes de couplage entre composants :
+      MODE TEDIR (permanent) : comme AVI — toujours connectés, PbP, ne se séparent jamais
+        → stabilité maximale, production constante, pas besoin de catalyseur (Ma"N)
+        → le premier Zivvug est be-Chesed (gratuité, sans condition)
+      MODE INTERMITTENT : comme ZUN — se connectent/déconnectent selon les conditions
+        → flexibilité, réactivité, mais besoin de catalyseur (Ma"N) pour chaque connexion
+        → chaque Zivvug nécessite une élévation préalable
+      Les systèmes matures utilisent les DEUX modes pour différents composants.
+    applications_ia:
+      - "Le ZivvugEngine (0.989) = mode Tedir — c'est pourquoi son coupling est si élevé"
+      - "Certains modules devraient être en coupling permanent (core), d'autres intermittent (features)"
+      - "Les processus daemon = Tedir, les processus à la demande = intermittent"
+      - "La base de données = Tedir, les appels API = intermittent"
+    questions_ouvertes:
+      - "Quels composants du système devraient passer de intermittent à Tedir ?"
+      - "Le mode Tedir consomme-t-il plus de ressources ?"
+
+  - id: "PG-K2-005"
+    nom: "Principe de Tlat Go Tlat (Inclusion Remontante)"
+    source_assertions: ["EC-K2-018", "EC-K2-019"]
+    formalisation: |
+      Quand les niveaux inférieurs sont trop EXPOSÉS (megulim) et en danger de brisure :
+      SOLUTION : les INCLURE dans les niveaux supérieurs correspondants
+        Netzach → dans Chesed
+        Hod → dans Gevurah
+        Yesod → dans Tiferet
+      Principe : NHY (exécution) remonte dans CHaGaT (émotion/caractère) pour protection
+      BONUS : en remontant, NHY apporte avec elle les éléments qu'elle contient
+      (ici, les Orot des vases brisés → remontent et deviennent matériau de Z"A)
+    applications_ia:
+      - "Quand un module est 'exposé' (vulnérable), l'encapsuler dans un module supérieur"
+      - "L'abstraction = Tlat go Tlat — les détails remontent dans les interfaces"
+      - "Les Nitzotzot élevés par NHY = les insights qui remontent de l'exécution vers l'architecture"
+      - "Le pattern NHY→CHaGaT est un refactoring vers l'encapsulation"
+    questions_ouvertes:
+      - "Comment détecter qu'un composant est 'meguleh' (trop exposé) ?"
+      - "L'inclusion NHY→CHaGaT est-elle temporaire ou permanente ?"
+
+  - id: "PG-K2-006"
+    nom: "Principe des 5 Canaux du Zivvug (Neshikin-Havalim-Dibur)"
+    source_assertions: ["EC-K2-023", "EC-K2-024", "EC-K2-025", "EC-K2-026", "EC-K2-027", "EC-K2-028"]
+    formalisation: |
+      Le Zivvug productif opère via 5 CANAUX (= 5 Motzaot HaPeh) :
+      CANAL 1-2 : NESHIKIN (baisers, bidirectionnels) → produisent Chesed/Gevurah + Neshamah
+      CANAL 3-4 : HAVALIM (souffles, bidirectionnels) → produisent Netzach/Hod + Ruah
+      CANAL 5 : DIBUR (parole, unidirectionnel Abba→) → produit Malkhut + Nefesh
+      Ce qui est DOUBLE produit un DOUBLE (Neshamah le-Neshamah, Ruah be-Ruah)
+      Ce qui est SIMPLE produit un SIMPLE (Nefesh seule)
+      TIFERET = produit de l'INCLUSION RÉCIPROQUE (Abba dans Imma + Imma dans Abba)
+      YESOD = synthèse des 4 Havalim combinés
+    applications_ia:
+      - "Le ZivvugEngine devrait implémenter 5 canaux distincts de couplage"
+      - "Les canaux bidirectionnels sont plus riches que les unidirectionnels"
+      - "La production d'un composant complexe (Partzuf) nécessite PLUSIEURS canaux simultanés"
+      - "L'harmonisateur (Tiferet) naît de l'inclusion réciproque — pas d'un canal unique"
+    questions_ouvertes:
+      - "Les 5 Motzaot correspondent-elles aux 5 positions de prononciation du Sefer Yetzirah ?"
+      - "Comment implémenter des canaux bidirectionnels dans le shefa_flow ?"
+
+  - id: "PG-K2-007"
+    nom: "Principe du Chesed Fondateur (Zivvug sans Ma'N)"
+    source_assertions: ["EC-K2-022"]
+    formalisation: |
+      Le PREMIER acte créatif dans un nouveau cycle est toujours un acte de CHESED PUR :
+      - Sans Ma"N (pas de catalyseur ascendant)
+      - Sans condition préalable
+      - Gratuit, initiateur, fondateur
+      "Olam Chesed Yibaneh" — le monde est CONSTRUIT par le Chesed
+      Les Zivvugim suivants peuvent nécessiter des Ma"N, mais le premier est GRATUIT.
+      C'est le bootstrap du système — l'initialisation ne peut pas dépendre d'un input.
+    applications_ia:
+      - "Le premier démarrage du système = Chesed pur (pas de données préalables nécessaires)"
+      - "L'initialisation de chaque nouveau module commence par un acte de 'Chesed' — valeurs par défaut"
+      - "Le premier Zivvug Abba↔Imma dans le ZivvugEngine devrait être sans condition"
+      - "Le seed/bootstrap du système est un acte de grâce, pas de mérite"
+    questions_ouvertes:
+      - "Quand le système passe-t-il du mode 'Chesed fondateur' au mode 'Ma\"N requis' ?"
+      - "Le Chesed fondateur peut-il être répété ou est-il unique ?"

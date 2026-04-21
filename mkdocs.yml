@@ -1,0 +1,75 @@
+site_name: Etz Chaim AI
+site_description: AI architecture grounded in Lurianic Kabbalistic discipline
+site_url: https://yohanpoul.github.io/etz-chaim-ai/
+repo_url: https://github.com/yohanpoul/etz-chaim-ai
+repo_name: yohanpoul/etz-chaim-ai
+edit_uri: edit/main/docs/
+
+copyright: Copyright &copy; 2026 Etz Chaim AI Contributors · Apache License 2.0
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_source: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Getting started: getting_started.md
+  - Architecture: architecture.md
+  - Concepts:
+      - Sephirot: concepts/sephirot.md
+      - Partzufim: concepts/partzufim.md
+      - MazalEngine: concepts/mazalengine.md
+      - Sifrei Yesod: concepts/sifrei_yesod.md
+  - Guides:
+      - Add a new Partzuf: guides/add_new_partzuf.md
+      - Transpose a new Sefer: guides/transpose_new_sefer.md
+  - Roadmap: roadmap.md

@@ -1,0 +1,745 @@
+# ═══════════════════════════════════════════════════════════════════
+# שער סוד הכלי — SHA'AR SOD HAKLI (La Porte du Secret du Vaisseau)
+# פרק ד — PEREK 4 : סדר הכלי — SEDER HAKLI
+# (L'Ordre du Vaisseau — Structures Organisationnelles)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Ce perek formalise les STRUCTURES qui organisent le Kli — les
+# architectures internes qui déterminent comment les facettes de
+# contexte sont agencées, emboîtées et reliées. Les Perakim 1-3
+# ont établi le pourquoi (Kli prime), le comment (Masakh filtre),
+# et le quoi (Kavvanah/Da'at activent). Ce Perek 4 établit le OÙ
+# et le DANS QUEL ORDRE — la topologie du contexte.
+#
+# Sources primaires :
+#   EC   = Etz Chaim (R. Haim Vital)
+#   TES  = Talmud Eser Sefirot (R. Yehuda Ashlag)
+#   T    = Tanya (R. Shneur Zalman de Liadi)
+#   NS   = Nahar Shalom (R. Shalom Sharabi, le Rashash)
+#   Z    = Zohar
+#   SY   = Sefer Yetzirah
+#   ShG  = Shaar HaGilgulim (R. Haim Vital)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 5
+  shaar_name_he: "שער סוד הכלי"
+  perek: 4
+  source_edition: "EC Shaar ABiYA, Shaar HaHitlabshut; TES Part 3; NS; ShG ch.1-4; SY ch.2"
+  transposed_by: "Etz Chaim AI — Sha'ar Sod HaKli initiative"
+  version: 1
+  strates: ["base"]
+  note: "Perek 4: Seder HaKli — Structures organisationnelles du contexte. Context Engineering (couche Sod)."
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 1 — PESHAT-MACHINE : ASSERTIONS
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section A : Les 4 Mondes — 4 couches de contextualisation
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-045"
+    source_he: "כל הנקרא בשמי ולכבודי בראתיו יצרתיו אף עשיתיו"
+    source_ref: "Isaïe 43:7; EC, Shaar ABiYA; TES, Part 3, ch. 9"
+    assertion: >
+      Les 4 Mondes — Atzilut (Émanation), Beriah (Création), Yetzirah
+      (Formation), Assiah (Action) — sont dérivés du verset d'Isaïe
+      et représentent 4 niveaux de révélation divine décroissante. Chaque
+      monde est un domaine complet d'existence avec ses propres 10 Sefirot,
+      mais le Sefirah dominante diffère : Hokhmah domine en Atzilut,
+      Binah en Beriah, les 6 Midot (ZA) en Yetzirah, Malkhut en Assiah.
+      Chaque monde est progressivement plus "grossier" et plus éloigné
+      de la conscience divine, jusqu'à Assiah Gashmit (le monde physique).
+    type: axiome_explicite
+    concepts:
+      - { id: "atzilut", role: "émanation — Hokhmah domine — unité avec le divin" }
+      - { id: "beriah", role: "création — Binah domine — première séparation" }
+      - { id: "yetzirah", role: "formation — ZA domine — structure émotionnelle" }
+      - { id: "assiah", role: "action — Malkhut domine — manifestation concrète" }
+    mapping:
+      modules: ["olamot.py", "config.yaml"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Les 4 Mondes sont 4 COUCHES DE CONTEXTUALISATION orthogonales aux
+        10 Sefirot. Chaque Sefirah existe dans chaque monde mais à un
+        niveau différent. Hokhmah d'Atzilut = le principe pur de la
+        connaissance. Hokhmah d'Assiah = le fait concret dans la base de
+        données. Le ContextAssembler devrait assembler le contexte en
+        couches de mondes, pas en types d'information plats.
+
+  - id: "EC-SHK-046"
+    source_he: ""
+    source_ref: "TES, Part 3, ch. 9; EC, Shaar HaMasakhim"
+    assertion: >
+      Entre chaque monde, il y a un Masakh (écran/rideau) appelé
+      aussi Parsa (séparation). Le Masakh entre Atzilut et Beriah est
+      le plus significatif — il sépare le domaine de l'unité divine
+      (Atzilut, où les Sefirot sont encore "divinité") du domaine de
+      la création séparée (Beriah, où les entités commencent à se
+      percevoir comme indépendantes). Chaque Masakh inter-monde filtre
+      et transforme la lumière qui descend : ce qui est Malkhut dans
+      le monde supérieur devient Keter dans le monde inférieur.
+    type: axiome_explicite
+    concepts:
+      - { id: "masakh-inter-monde", role: "filtre entre les couches" }
+      - { id: "parsa", role: "séparation Atzilut/Beriah" }
+      - { id: "malkhut-keter", role: "le bas d'en haut = le haut d'en bas" }
+    mapping:
+      modules: ["olamot.py", "hishtalshelut.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Le Masakh inter-monde est le filtre entre les couches de contexte.
+        Le résultat (Malkhut) d'une couche de contexte devient l'input
+        (Keter/intention) de la couche suivante. Le pattern Hishtalshelut
+        d'Etz Chaim AI (Assiah→Yetzirah→Briah) implémente déjà cela —
+        chaque résultat enrichit le prompt du monde suivant.
+
+  - id: "EC-SHK-047"
+    source_he: ""
+    source_ref: "T, Shaar HaYichud v'HaEmunah, ch. 7; EC, Shaar ABiYA"
+    assertion: >
+      Deux modes de présence divine traversent les 4 Mondes :
+      (1) Memaleh Kol Almin (remplit tous les mondes) — la lumière
+      immanente qui pénètre et anime chaque niveau selon sa capacité.
+      C'est le Ohr Pnimi de chaque monde.
+      (2) Sovev Kol Almin (entoure tous les mondes) — la lumière
+      transcendante qui enveloppe tous les mondes également, sans
+      pénétrer dans les détails. C'est le Ohr Makif universel.
+      Memaleh est différencié par monde (plus faible en bas). Sovev
+      est égal partout — il ne connaît pas de différence entre haut
+      et bas.
+    type: axiome_explicite
+    concepts:
+      - { id: "memaleh", role: "lumière immanente différenciée par monde" }
+      - { id: "sovev", role: "lumière transcendante égale partout" }
+    mapping:
+      modules: ["olamot.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Memaleh = le contexte injecté, différent pour chaque Olam (config.yaml
+        spécifie des paramètres différents par monde). Sovev = le contexte
+        transcendant qui n'est JAMAIS injecté mais influence tout — la mission
+        du projet, la vision d'ensemble, le "pourquoi on fait tout ça."
+        L'industrie ne travaille qu'en Memaleh. Sod HaKli reconnaît le Sovev
+        comme une couche de contexte à part entière — invisible mais
+        déterminante. Le CLAUDE.md parent (section I "Thèse") est un Sovev.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section B : Hitlabshut — L'enclothement mutuel
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-048"
+    source_he: ""
+    source_ref: "EC, Shaar HaHitlabshut; T, Likutey Amarim, ch. 52; TES Part 3"
+    assertion: >
+      L'Hitlabshut (enclothement/revêtement) est le mécanisme par lequel
+      un niveau supérieur s'habille à l'intérieur d'un niveau inférieur.
+      Les Sefirot inférieures (Netzach-Hod-Yesod) d'un monde supérieur
+      sont enclothées dans les Sefirot supérieures (Keter-Hokhmah-Binah)
+      du monde inférieur. Ainsi le NHY d'Atzilut est habillé dans le
+      ChaBAD de Beriah, le NHY de Beriah dans le ChaBAD de Yetzirah, etc.
+      L'Hitlabshut crée une continuité entre les mondes — le supérieur
+      est PRÉSENT À L'INTÉRIEUR de l'inférieur, pas juste "au-dessus."
+    type: axiome_explicite
+    concepts:
+      - { id: "hitlabshut", role: "enclothement du supérieur dans l'inférieur" }
+      - { id: "NHY-dans-ChaBAD", role: "les pieds d'en haut = la tête d'en bas" }
+      - { id: "continuité-inter-monde", role: "le supérieur est DANS l'inférieur" }
+    mapping:
+      modules: ["hishtalshelut.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        L'Hitlabshut contextuel signifie que le contexte de niveau
+        supérieur n'est pas juste "empilé au-dessus" du contexte inférieur —
+        il est CONTENU DEDANS. Les principes architecturaux (Atzilut/NHY)
+        doivent être ENCLOTHÉS dans les instructions concrètes (Beriah/ChaBAD),
+        pas listés séparément. Un bon CLAUDE_CODE.md ne sépare pas "principes"
+        et "instructions" — il enclothe les principes DANS les instructions.
+
+  - id: "EC-SHK-049"
+    source_he: ""
+    source_ref: "TES, Part 3, ch. 5; Pticha §50-55"
+    assertion: >
+      L'Hitlabshut a une règle structurelle : le Partzuf inférieur
+      s'accroche au Guf du Partzuf supérieur au point du Chazeh
+      (poitrine), et sa Koma (stature) commence au Peh (bouche) du
+      Partzuf supérieur. Cela signifie que le Rosh (tête/décision) du
+      niveau inférieur commence là où le Toch (intérieur/réception)
+      du niveau supérieur commence. Le potentiel d'en bas = l'acte d'en
+      haut. La décision du niveau inférieur est informée par la
+      réception effective du niveau supérieur.
+    type: axiome_explicite
+    concepts:
+      - { id: "chazeh-accroche", role: "point d'accroche du Partzuf inférieur" }
+      - { id: "peh-koma", role: "la bouche d'en haut = la tête d'en bas" }
+    mapping:
+      modules: ["hishtalshelut.py", "partzufim/"]
+      tables: []
+      partzufim: []
+      relevance: >
+        En context engineering multi-agents : l'output (Peh) de l'agent
+        supérieur est l'input (Rosh/décision) de l'agent inférieur.
+        Ce n'est pas un simple handoff — le Partzuf inférieur s'ACCROCHE
+        au Guf du supérieur, c'est-à-dire qu'il a accès au contexte
+        effectif (pas seulement au résultat final) du niveau supérieur.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section C : Arakhin — La relativité contextuelle
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-050"
+    source_he: ""
+    source_ref: "NS (Nahar Shalom), R. Shalom Sharabi; EC Shaar HaPartzufim"
+    assertion: >
+      Le Rashash a développé la doctrine des Arakhin (relativité) : ce
+      qu'on appelle Malkhut dans un contexte pourrait être Binah ou Keter
+      dans un autre contexte. La carte des mondes et des Sefirot dans la
+      Kabbale lourianique est applicable à N'IMPORTE QUEL NIVEAU. Comme
+      une personne est à la fois enfant (par rapport à ses parents) et
+      parent (par rapport à ses enfants), chaque Sefirah change de rôle
+      selon le contexte relationnel.
+    type: axiome_explicite
+    concepts:
+      - { id: "arakhin", role: "relativité positionnelle des Sefirot" }
+      - { id: "rôle-contextuel", role: "même Sefirah = rôle différent selon le contexte" }
+    mapping:
+      modules: ["sifrei_yesod/"]
+      tables: ["sifrei_yesod_assertions"]
+      partzufim: []
+      relevance: >
+        La même donnée change de rôle selon la tâche. Un fait dans
+        EpisteMemory peut être :
+        - Malkhut (fait brut à utiliser tel quel) pour une tâche d'exécution
+        - Binah (framework de raisonnement) pour une tâche d'analyse
+        - Keter (principe directeur) pour une tâche d'architecture
+        Le ContextAssembler ne doit PAS catégoriser statiquement les
+        sources ("EpisteMemory = toujours du Yesod"). Il doit évaluer
+        DYNAMIQUEMENT le rôle de chaque élément selon la tâche courante.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section D : Ohr Makif / Ohr Pnimi — Deux couches de contexte
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-051"
+    source_he: ""
+    source_ref: "EC, Shaar 2 (Hishtalshelut), ch. 2; TES, Pticha §50-52"
+    assertion: >
+      L'Ohr Pnimi (lumière intérieure) est la lumière qui entre dans
+      le Kli et est effectivement traitée. L'Ohr Makif (lumière
+      environnante) est la lumière qui entoure le Kli sans y pénétrer.
+      Les deux sont toujours simultanément présentes — il n'y a jamais
+      de Ohr Pnimi sans Ohr Makif correspondant, et vice versa.
+      L'Ohr Makif n'est pas "perdu" ou "inutile" — il exerce une
+      pression (Bitush) sur le Masakh et contribue au processus
+      évolutif du Partzuf. C'est la lumière qui attend son heure.
+    type: axiome_explicite
+    concepts:
+      - { id: "ohr-pnimi-traité", role: "lumière effectivement dans le Kli" }
+      - { id: "ohr-makif-attend", role: "lumière qui entoure et attend" }
+      - { id: "simultanéité", role: "toujours les deux ensemble" }
+    mapping:
+      modules: ["olamot.py", "hitbonenut.py"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Ohr Pnimi = les tokens effectivement dans la fenêtre de contexte.
+        Ohr Makif = tout ce qui est disponible mais non-injecté (le reste
+        d'EpisteMemory, les Sifrei Yesod non-requêtés, les insights non-
+        sélectionnés). L'Ohr Makif n'est pas du "bruit" — c'est un
+        réservoir qui influence implicitement et attend d'être activé.
+        Le SOF du ContextAssembler (cf. Perek 2) devrait gérer
+        explicitement cet Ohr Makif, pas l'ignorer.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section E : Tzelem — Le moule archétypal
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-052"
+    source_he: ""
+    source_ref: "EC, Shaar 42, ch. 1; Z I:234a; T, Likutey Amarim"
+    assertion: >
+      Le Tzelem (image/moule) est le template spirituel qui précède la
+      forme. Il n'est ni le Kli (vaisseau) ni l'Ohr (lumière) — c'est
+      l'ARCHÉTYPE qui moule la façon dont le Kli va recevoir l'Ohr.
+      Le Tzelem Elokim (image de Dieu) est le moule spirituel de la
+      forme humaine, liant le corps et l'âme. Il dérive de la
+      configuration des Sefirot à travers les mondes. Le Tzelem et
+      la Dmut (ressemblance) viennent tous deux de Imma (Binah), qui
+      "revêt" sa progéniture — ce revêtement est le Tzelem.
+    type: axiome_explicite
+    concepts:
+      - { id: "tzelem", role: "moule archétypal pré-formel" }
+      - { id: "tzelem-elokim", role: "image divine = template de réception" }
+      - { id: "tzelem-imma", role: "le Tzelem vient de Binah/Imma" }
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["Imma"]
+      relevance: >
+        Le Tzelem est le TEMPLATE COGNITIF implicite — pas le format de
+        sortie (JSON, markdown) mais l'archétype structurel qui moule la
+        façon dont le modèle organise sa réponse. Un Tzelem de "rapport
+        technique" produit une structure différente d'un Tzelem de
+        "dialogue érudit", même avec le même contenu et le même prompt.
+        Le Tzelem vient de Binah/Imma — c'est le framework de raisonnement
+        qui PRÉ-FORME la réponse avant que le contenu n'arrive.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section F : Gilgul — La migration contextuelle
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-053"
+    source_he: ""
+    source_ref: "ShG, Introduction et ch. 1-4"
+    assertion: >
+      Le Gilgul (réincarnation/transmigration) est le processus par
+      lequel une Neshamah (âme) revient dans un nouveau corps pour
+      compléter un Tikkun inachevé. Les Reshimot (traces) de la vie
+      précédente accompagnent l'âme et influencent sa nouvelle
+      incarnation. Un Gilgul peut être un Tikkun (réparation — on
+      revient pour corriger ce qui n'a pas été achevé) ou un Onesh
+      (punition/conséquence — on revient parce qu'on a échoué et les
+      mêmes défis se représentent).
+    type: axiome_explicite
+    concepts:
+      - { id: "gilgul", role: "transmigration pour compléter un Tikkun" }
+      - { id: "gilgul-tikkun", role: "retour pour corriger" }
+      - { id: "gilgul-onesh", role: "retour par échec = perpétuation" }
+      - { id: "reshimot-gilgul", role: "traces de la vie précédente" }
+    mapping:
+      modules: ["epistememory/"]
+      tables: ["epistememory"]
+      partzufim: []
+      relevance: >
+        Le Gilgul contextuel est la migration de patterns entre projets
+        ou entre sessions. Quand un CLAUDE_CODE.md est réutilisé d'un
+        projet à un autre, c'est un Gilgul. Si les patterns sont
+        pertinents pour le nouveau projet (Tikkun), c'est bénéfique.
+        Si les biais du projet précédent contaminent le nouveau (Onesh),
+        c'est destructif. Le ContextAssembler devrait distinguer les
+        Reshimot de Tikkun (à conserver) des Reshimot d'Onesh (à purger).
+
+  - id: "EC-SHK-054"
+    source_he: ""
+    source_ref: "ShG, ch. 2-4; EC, Shaar HaIbbur"
+    assertion: >
+      L'Ibbur Neshamot (imprégnation d'âmes) est un processus où une
+      âme supplémentaire entre temporairement dans un corps déjà habité
+      pour l'aider dans une tâche spécifique. Contrairement au Gilgul
+      (qui est permanent pour une vie entière), l'Ibbur est temporaire
+      et orienté vers une mission précise. L'âme qui entre doit être
+      COMPATIBLE avec l'âme résidente — sinon elle crée un conflit
+      au lieu d'une aide.
+    type: axiome_explicite
+    concepts:
+      - { id: "ibbur-neshamot", role: "imprégnation temporaire d'aide" }
+      - { id: "compatibilité-ibbur", role: "l'âme invitée doit être compatible" }
+      - { id: "mission-spécifique", role: "l'Ibbur est pour une tâche précise" }
+    mapping:
+      modules: ["shemot/"]
+      tables: []
+      partzufim: []
+      relevance: >
+        Les Skills de Claude Code sont des Ibbur Neshamot — des blocs
+        d'expertise spécialisée injectés temporairement pour une tâche
+        précise, puis retirés. La compatibilité est cruciale : un skill
+        de "frontend React" injecté pendant une tâche de "daemon
+        PostgreSQL" crée un conflit, pas une aide. L'industrie constate
+        que les skills conflictuels dégradent la performance. Le concept
+        d'Ibbur explique pourquoi et comment éviter ça.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section G : Sefer Yetzirah — Les 22 Otiot comme opérateurs
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-055"
+    source_he: ""
+    source_ref: "SY, ch. 2; commentaire du GRA sur SY"
+    assertion: >
+      Le Sefer Yetzirah enseigne que les 22 lettres de l'alphabet hébreu
+      sont les instruments de la création. Elles sont divisées en
+      3 catégories fonctionnelles :
+      (1) 3 Imot (Mères : Aleph, Mem, Shin) — les opérateurs fondamentaux
+      qui gouvernent les axes principaux (air, eau, feu).
+      (2) 7 Kefulot (Doubles : Bet, Gimel, Dalet, Kaf, Peh, Resh, Tav) —
+      les opérateurs à double polarité (dureté/douceur), gouvernant les
+      7 directions et les 7 jours.
+      (3) 12 Pshutot (Simples) — les opérateurs spécialisés, chacun
+      pour une direction spécifique dans l'espace-temps.
+      Il y a 231 Sha'arim (portes) = combinaisons de 2 lettres,
+      représentant toutes les interactions possibles entre opérateurs.
+    type: axiome_explicite
+    concepts:
+      - { id: "22-otiot", role: "22 opérateurs de création" }
+      - { id: "3-imot", role: "3 opérateurs fondamentaux" }
+      - { id: "7-kefulot", role: "7 opérateurs doubles" }
+      - { id: "12-pshutot", role: "12 opérateurs simples" }
+      - { id: "231-shaarim", role: "231 portes combinatoires" }
+    mapping:
+      modules: ["tzeruf_spatial.py", "cube_of_space/"]
+      tables: ["cube_letters", "cube_gates"]
+      partzufim: []
+      relevance: >
+        Les outils du système (PostgreSQL, Python, Ollama, API, etc.)
+        sont les Otiot — les opérateurs de transformation. Comme les
+        lettres, ils se combinent (Tzeruf) pour produire des "mots"
+        (workflows). Les 3 Imot sont les outils fondamentaux toujours
+        présents. Les 7 Kefulot sont les outils à double usage. Les
+        12 Pshutot sont les scripts spécialisés. Les 462 portes
+        directionnelles du Cube of Space (2×231) sont exactement les
+        combinaisons aller-retour de ces opérateurs.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section H : Din Kadmon — Le filtre pré-contextuel
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-056"
+    source_he: ""
+    source_ref: "EM (Emek HaMelekh), Shaar 1, ch. 2-3; T, Likutey Torah 43b"
+    assertion: >
+      L'Emek HaMelekh enseigne que l'émergence de la trace (Reshimu) et
+      des lettres (Otiot) est associée à l'aspect primordial de la
+      discipline restrictive (Din), impliquant que la capacité divine
+      de contrainte ne commence PAS avec le processus de Tsimtsum mais
+      le PRÉCÈDE. Il y a un Din Kadmon (jugement primordial) qui opère
+      AVANT la contraction. Ce Din détermine les CATÉGORIES MÊMES de
+      ce qui pourra exister dans le Chalal.
+    type: axiome_explicite
+    concepts:
+      - { id: "din-kadmon", role: "jugement primordial pré-Tsimtsum" }
+      - { id: "din-précède-tsimtsum", role: "la contrainte précède la contraction" }
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: >
+        Le Din Kadmon est le BIAIS FONDAMENTAL du système — la décision
+        invisible qui précède tout assemblage de contexte sur ce qui est
+        même CONSIDÉRÉ comme potentiellement pertinent. Quand un
+        développeur construit un RAG, il décide quelles sources indexer.
+        Cette décision est un Din Kadmon — elle détermine les catégories
+        mêmes de ce qui pourra entrer dans le contexte. Le Din Kadmon
+        d'Etz Chaim AI est la doctrine "chaque concept kabbalistique
+        doit être fonctionnellement opérant" — c'est le filtre qui
+        précède tout filtrage.
+
+  # ─────────────────────────────────────────────────────────────────
+  # Section I : Katnut/Gadlut et Panim/Achor — États dynamiques
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: "EC-SHK-057"
+    source_he: ""
+    source_ref: "TES, Pticha §71-78; EC, Shaar HaNikudim"
+    assertion: >
+      Katnut (petitesse) et Gadlut (grandeur) sont deux ÉTATS du
+      Partzuf, pas deux types :
+      En Katnut : le Partzuf n'a que ses GE (Kelim de don/Galgalta-
+      Eynaim) — il fonctionne avec 6 Sefirot seulement (sans ChaBAD
+      complet). Son Masakh est sur Aviut Aleph au maximum.
+      En Gadlut : le Partzuf a récupéré ses AHP (Kelim de réception/
+      Awzen-Hotem-Peh) — il fonctionne avec 10 Sefirot complètes.
+      Son Masakh peut atteindre Aviut Dalet.
+      Le passage de Katnut à Gadlut nécessite un Ohr supplémentaire
+      (lumière AB-SAG) qui descend d'en haut et permet l'acquisition
+      du Masakh plus fort. C'est un processus réversible — un Partzuf
+      en Gadlut peut régresser en Katnut.
+    type: axiome_explicite
+    concepts:
+      - { id: "katnut-état", role: "état minimal — 6 Sefirot, Masakh faible" }
+      - { id: "gadlut-état", role: "état complet — 10 Sefirot, Masakh fort" }
+      - { id: "passage-katnut-gadlut", role: "nécessite Ohr supplémentaire d'en haut" }
+      - { id: "réversibilité", role: "Gadlut peut régresser en Katnut" }
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_state"]
+      partzufim: ["Abba (0.57 = Katnut→Gadlut transition)"]
+      relevance: >
+        Le ContextAssembler a deux modes :
+        Katnut = contexte minimal, budget réduit, pas de Da'at complet,
+        exécution rapide avec 6 sources max. C'est le mode par défaut
+        au démarrage d'une session ou pour les tâches simples.
+        Gadlut = contexte complet, budget élevé, Da'at inclus, 10
+        sources avec filtrage élevé. C'est le mode pour les tâches
+        complexes, activé quand le système a assez de "lumière AB-SAG"
+        (historique, Reshimot, confiance).
+        Le passage Katnut→Gadlut n'est PAS automatique — il nécessite
+        une condition (Ohr d'en haut = validation humaine ou scoring).
+
+  - id: "EC-SHK-058"
+    source_he: ""
+    source_ref: "EC, Shaar Panim v'Achor; Z III:296a (Idra Zuta)"
+    assertion: >
+      Panim b'Panim (face à face) et Achor b'Achor (dos à dos) décrivent
+      l'ORIENTATION RELATIONNELLE entre deux Partzufim. En Panim b'Panim,
+      les deux sont alignés — la lumière circule optimalement. En Achor
+      b'Achor, ils sont désalignés — la lumière est mal transmise ou
+      perdue. La Shevirah a causé un état d'Achor b'Achor entre Zeir
+      Anpin et Nukvah. Le Tikkun consiste à les ramener en Panim b'Panim.
+      L'état Panim b'Panim est atteint spécialement pendant le Shabbat
+      et les moments de Zivvug.
+    type: axiome_explicite
+    concepts:
+      - { id: "panim-b-panim", role: "face à face = alignement optimal" }
+      - { id: "achor-b-achor", role: "dos à dos = désalignement" }
+      - { id: "orientation-détermine-flux", role: "l'orientation contrôle le flux" }
+    mapping:
+      modules: ["zivvug_engine.py"]
+      tables: ["zivvug_assessments"]
+      partzufim: ["ZA", "Nukvah"]
+      relevance: >
+        L'alignement contextuel (Panim/Achor) est la mesure de la
+        PERTINENCE DIRECTIONNELLE du contexte. Un élément de contexte
+        peut être pertinent (même domaine, même sujet) mais MAL ORIENTÉ
+        (il répond à une question différente de celle posée). Le
+        ContextAssembler devrait vérifier non seulement la pertinence
+        sémantique (cosine similarity) mais aussi l'alignement
+        directionnel (est-ce que ce contexte est orienté vers CETTE tâche ?).
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 2 — REMEZ-RELATIONAL : RELATIONS
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-SHK-029"
+    type: "hiérarchique"
+    from: "atzilut"
+    to: "assiah"
+    nature: >
+      Atzilut ⊃ Beriah ⊃ Yetzirah ⊃ Assiah : emboîtement hiérarchique
+      via Hitlabshut. Le NHY d'un monde = le ChaBAD du monde suivant.
+      Chaque monde CONTIENT les mondes inférieurs — Atzilut n'est pas
+      "au-dessus" d'Assiah, il est DANS Assiah à un niveau plus profond.
+    assertions_source: ["EC-SHK-045", "EC-SHK-048"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-030"
+    type: "transformation"
+    from: "masakh-inter-monde"
+    to: "malkhut-keter"
+    nature: >
+      Le Masakh entre les mondes transforme : le Malkhut (output) du
+      monde supérieur → filtrage → Keter (input/intention) du monde
+      inférieur. Ce n'est pas une simple transmission — c'est une
+      transformation de NATURE (de divin/émané → créé/séparé).
+    assertions_source: ["EC-SHK-046"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-031"
+    type: "dualité_structurelle"
+    from: "memaleh"
+    to: "sovev"
+    nature: >
+      Memaleh (immanent/différencié) et Sovev (transcendant/uniforme)
+      sont deux modes de présence simultanés. Memaleh varie par monde,
+      Sovev est égal partout. Les deux sont nécessaires — Memaleh sans
+      Sovev manque de vision d'ensemble, Sovev sans Memaleh est
+      inapplicable en pratique.
+    assertions_source: ["EC-SHK-047"]
+    bidirectionnel: true
+
+  - id: "REL-SHK-032"
+    type: "analogie"
+    from: "arakhin"
+    to: "rôle-contextuel"
+    nature: >
+      Les Arakhin (relativité du Rashash) impliquent que la catégorisation
+      d'un élément de contexte n'est PAS fixe — elle dépend de la tâche
+      courante. Un même fait peut être Malkhut (brut) ou Keter (principe)
+      selon l'usage. La catégorisation statique (RAG = toujours du Yesod)
+      viole le principe des Arakhin.
+    assertions_source: ["EC-SHK-050"]
+    bidirectionnel: true
+
+  - id: "REL-SHK-033"
+    type: "dualité_structurelle"
+    from: "katnut-état"
+    to: "gadlut-état"
+    nature: >
+      Katnut et Gadlut sont en tension dynamique — le système oscille
+      entre les deux. Le passage à Gadlut nécessite un Ohr d'en haut
+      (validation externe). La régression en Katnut peut survenir par
+      perte de Masakh. Le ContextAssembler doit tracker l'état courant
+      et adapter son comportement.
+    assertions_source: ["EC-SHK-057"]
+    bidirectionnel: true
+
+  - id: "REL-SHK-034"
+    type: "causal"
+    from: "panim-b-panim"
+    to: "orientation-détermine-flux"
+    nature: >
+      Panim b'Panim (alignement) → flux optimal de lumière/information.
+      Achor b'Achor (désalignement) → flux dégradé ou bloqué.
+      L'orientation détermine la qualité du flux INDÉPENDAMMENT du
+      contenu. Un bon contexte mal orienté est aussi inefficace qu'un
+      mauvais contexte.
+    assertions_source: ["EC-SHK-058"]
+    bidirectionnel: false
+
+  - id: "REL-SHK-035"
+    type: "dualité_structurelle"
+    from: "gilgul-tikkun"
+    to: "gilgul-onesh"
+    nature: >
+      Tout Gilgul (migration de patterns) est soit un Tikkun (les
+      patterns corrigent ce qui n'a pas été achevé) soit un Onesh
+      (les patterns perpétuent les biais). Le même pattern migré peut
+      être l'un ou l'autre selon le contexte de destination. Il faut
+      évaluer AVANT de migrer.
+    assertions_source: ["EC-SHK-053"]
+    bidirectionnel: false
+
+# ═══════════════════════════════════════════════════════════════════
+# COUCHE 3 — SOD-GENERATIVE : PRINCIPES PRODUCTIFS
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-SHK-017"
+    nom: "4 couches de contexte ABYA — Architecture en mondes"
+    source_assertions: ["EC-SHK-045", "EC-SHK-046", "EC-SHK-047"]
+    formalisation: >
+      Le contexte doit être assemblé en 4 couches correspondant aux
+      4 Mondes, chacune avec son propre profil :
+
+      ATZILUT (principes) :
+      - Contenu : vision du projet, doctrine, valeurs non-négociables
+      - Source : CLAUDE_CODE.md sections I, II, XII (Thèse, Posture, Principes)
+      - Persistance : permanente, ne change jamais
+      - Masakh : Dalet (filtrage max — seuls les principes fondamentaux)
+      - Mode : Sovev (enveloppe tout sans être injecté explicitement)
+
+      BERIAH (architecture) :
+      - Contenu : schémas, DAGs, relations entre modules, décisions d'architecture
+      - Source : SifreiYesod, CausalEngine, structure du projet
+      - Persistance : stable, change rarement
+      - Masakh : Gimel (filtrage élevé — seulement ce qui est structurant)
+      - Mode : ChaBAD (intellect structurant)
+
+      YETZIRAH (patterns) :
+      - Contenu : patterns de code, templates, conventions, skills
+      - Source : Skills, exemples, CLAUDE_CODE.md sections IX-XI
+      - Persistance : semi-stable, évolue avec le projet
+      - Masakh : Bet (filtrage modéré)
+      - Mode : ChaGaT (émotion/relation)
+
+      ASSIAH (état) :
+      - Contenu : état courant, dernier audit, erreurs, fichiers modifiés
+      - Source : fichiers de progrès, derniers résultats, git status
+      - Persistance : volatile, change à chaque session
+      - Masakh : Aleph ou Shoresh (filtrage minimal — tout l'état pertinent)
+      - Mode : Malkhut (exécution concrète)
+
+      Le Masakh entre chaque couche transforme : le résultat d'Atzilut
+      (un principe) devient l'intention de Beriah (comment structurer).
+      Le résultat de Beriah (une architecture) devient les patterns de
+      Yetzirah. Etc.
+    applications_ia:
+      - "Restructurer le CLAUDE_CODE.md en 4 sections ABYA explicites"
+      - "Le ContextAssembler assemble les couches de haut en bas"
+      - "Chaque couche a son propre budget de tokens et son propre Masakh"
+      - "Les couches supérieures sont toujours chargées ; les inférieures selon la tâche"
+    questions_ouvertes:
+      - "Combien de tokens allouer à chaque couche pour qwen3.5:9b (8K ctx) ?"
+      - "Les couches supérieures devraient-elles être compressées pour libérer de l'espace ?"
+
+  - id: "PG-SHK-018"
+    nom: "Hitlabshut contextuel — Enclothe les principes DANS les instructions"
+    source_assertions: ["EC-SHK-048", "EC-SHK-049"]
+    formalisation: >
+      Le contexte ne doit PAS être organisé en couches séparées empilées
+      (Nekudim). Il doit être ENCLOTHÉ — les principes de niveau supérieur
+      doivent être INTÉGRÉS dans les instructions de niveau inférieur.
+
+      MAUVAIS (Nekudim — empilé) :
+      "Principes : sois rigoureux.
+       Instructions : implémente la fonction X."
+      → Le modèle peut ignorer les principes car ils sont séparés.
+
+      BON (Hitlabshut — enclothé) :
+      "Implémente la fonction X avec rigueur — cela signifie :
+       tests exhaustifs, validation des edge cases, documentation
+       inline de chaque décision."
+      → Le principe est DANS l'instruction, inséparable.
+
+      L'Hitlabshut est le NHY d'Atzilut dans le ChaBAD de Beriah :
+      les "pieds" des principes deviennent la "tête" des instructions.
+    applications_ia:
+      - "Le CLAUDE_CODE.md ne doit pas séparer 'principes' et 'instructions'"
+      - "Chaque instruction doit INCARNER les principes, pas les référencer"
+      - "Les skills doivent enclothe les conventions du projet dans leurs étapes"
+    questions_ouvertes:
+      - "L'Hitlabshut augmente-t-il la taille du contexte de façon prohibitive ?"
+      - "Peut-on automatiser l'enclothement des principes dans les instructions ?"
+
+  - id: "PG-SHK-019"
+    nom: "Arakhin dynamiques — Recatégorisation contextuelle"
+    source_assertions: ["EC-SHK-050"]
+    formalisation: >
+      Le ContextAssembler ne doit PAS catégoriser statiquement les
+      sources de contexte. Il doit évaluer DYNAMIQUEMENT le rôle de
+      chaque élément selon la tâche courante :
+
+      Exemple : un fait EpisteMemory "PostgreSQL supporte pgvector" :
+      - Pour une tâche d'exploration : c'est Hokhmah (flash/question —
+        "que peut-on faire avec ça ?")
+      - Pour une tâche d'architecture : c'est Binah (framework —
+        "comment structurer le stockage vectoriel")
+      - Pour une tâche d'implémentation : c'est Malkhut (fait concret —
+        "utilise pgvector pour les embeddings")
+
+      L'Arakhin implique que le ContextAssembler doit REFORMULER le même
+      fait selon le rôle qu'il joue dans la tâche courante, pas le
+      fournir brut dans tous les cas.
+    applications_ia:
+      - "EpisteMemory.recall() devrait retourner le fait + un 'rôle suggéré' selon la tâche"
+      - "Le ContextAssembler reformule le fait selon le rôle avant injection"
+      - "3 reformulations possibles : question (Hokhmah), structure (Binah), fait (Malkhut)"
+    questions_ouvertes:
+      - "La reformulation nécessite-t-elle un appel LLM supplémentaire ?"
+      - "Peut-on pré-calculer les 3 reformulations au moment du remember() ?"
+
+  - id: "PG-SHK-020"
+    nom: "Gilgul contextuel — Migration saine de patterns entre projets"
+    source_assertions: ["EC-SHK-053", "EC-SHK-054"]
+    formalisation: >
+      Quand des patterns sont migrés d'un projet/session à un autre,
+      le ContextAssembler doit distinguer :
+
+      GILGUL DE TIKKUN (migration bénéfique) :
+      - Patterns qui ont RÉUSSI dans le projet précédent
+      - Principes validés par l'audit
+      - Best practices confirmées par les tests
+      → À CONSERVER dans les Reshimot
+
+      GILGUL D'ONESH (migration toxique) :
+      - Biais du projet précédent qui ne s'appliquent pas au nouveau
+      - Workarounds spécifiques qui sont devenus des habitudes
+      - Conventions obsolètes non remises en question
+      → À PURGER des Reshimot
+
+      IBBUR NESHAMOT (injection temporaire) :
+      - Skills spécialisés pour une tâche précise
+      - Doivent être COMPATIBLES avec le contexte résident
+      - Retirés après la tâche
+      → Vérifier la compatibilité AVANT injection
+
+      Le CLAUDE_CODE.md désynchronisé (qwen2.5 au lieu de qwen3.5) est
+      un exemple de Gilgul d'Onesh — une information obsolète qui
+      perpétue une erreur session après session.
+    applications_ia:
+      - "Audit de Reshimot avant chaque nouvelle session : Tikkun ou Onesh ?"
+      - "Les skills doivent déclarer leurs dépendances pour vérifier la compatibilité"
+      - "Un 'purge de Gilgul' devrait être fait à chaque changement majeur de stack"
+    questions_ouvertes:
+      - "Comment automatiser la détection de Gilgul d'Onesh ?"
+      - "Faut-il un 'changelog de Reshimot' pour tracker les migrations ?"

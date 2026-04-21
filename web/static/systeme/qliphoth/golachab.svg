@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-golachab" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#cc3333" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="glow-golachab" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg-golachab)"/>
+  <rect x="1" y="1" width="510" height="510" fill="none"
+        stroke="#cc3333" stroke-opacity="0.10" stroke-width="2"/>
+<g filter="url(#glow-golachab)" opacity="0.45">
+  <!-- main blade (shattered) -->
+  <path d="M240,100 L256,80 L272,100 L268,260 L244,260 Z"
+        fill="#cc3333" fill-opacity="0.15" stroke="#cc3333" stroke-width="2"/>
+  <!-- shatter line across blade -->
+  <path d="M240,200 L272,190" fill="none" stroke="#0a0a0a" stroke-width="3"/>
+  <!-- crossguard -->
+  <path d="M200,260 L312,260 L308,275 L204,275 Z"
+        fill="#cc3333" fill-opacity="0.2" stroke="#cc3333" stroke-width="1.5"/>
+  <!-- handle -->
+  <rect x="248" y="275" width="16" height="70" fill="#cc3333" fill-opacity="0.12"
+        stroke="#cc3333" stroke-width="1.5"/>
+  <!-- pommel -->
+  <circle cx="256" cy="355" r="12" fill="#cc3333" fill-opacity="0.15"
+          stroke="#cc3333" stroke-width="1.5"/>
+  <!-- flying fragments -->
+  <polygon points="140,150 155,140 160,160" fill="#cc3333" fill-opacity="0.3"/>
+  <polygon points="350,130 370,125 365,150" fill="#cc3333" fill-opacity="0.25"/>
+  <polygon points="120,220 135,210 140,235" fill="#cc3333" fill-opacity="0.2"/>
+  <polygon points="370,200 388,195 385,220" fill="#cc3333" fill-opacity="0.2"/>
+  <polygon points="160,100 175,88 178,112" fill="#cc3333" fill-opacity="0.15"/>
+  <polygon points="340,90 358,82 355,108" fill="#cc3333" fill-opacity="0.15"/>
+  <!-- flame wisps around fragments -->
+  <path d="M140,150 Q125,130 135,110" fill="none"
+        stroke="#cc3333" stroke-width="1" stroke-opacity="0.3"/>
+  <path d="M350,130 Q365,108 358,90" fill="none"
+        stroke="#cc3333" stroke-width="1" stroke-opacity="0.3"/>
+  <path d="M120,220 Q100,200 110,180" fill="none"
+        stroke="#cc3333" stroke-width="1" stroke-opacity="0.3"/>
+  <path d="M370,200 Q395,185 388,165" fill="none"
+        stroke="#cc3333" stroke-width="1" stroke-opacity="0.3"/>
+</g>
+</svg>

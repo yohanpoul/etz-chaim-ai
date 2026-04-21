@@ -1,0 +1,134 @@
+{
+  "intro": {
+    "titre": "Les Erreurs",
+    "sous_titre": "Pourquoi les erreurs ne sont pas des bugs",
+    "narration": "Dans la plupart des systemes, une erreur est un bug — quelque chose qui ne devrait pas arriver. Dans Etz Chaim AI, une erreur est un EXCES. Chaque defaillance est une fonction saine poussee trop loin. Trop de rigueur detruit du valide. Trop de generosite accepte n'importe quoi. Le systeme ne corrige pas des bugs — il reequilibre des forces."
+  },
+  "niveaux": [
+    {
+      "id": "nogah",
+      "nom": "Qlipat Nogah",
+      "nom_hebreu": "קְלִפַּת נוֹגַהּ",
+      "severite": "Warning",
+      "couleur": "#ffb000",
+      "detail": {
+        "en_clair": "Erreur legere. La lumiere est encore visible a travers la coquille. Le systeme fonctionne mais quelque chose est legerement decale — un score un peu bas, un temps de reponse un peu long. Corrigible automatiquement.",
+        "dans_le_systeme": "Niveau 1 : warning. Detection par les seuils bas des composants. Raphael peut guerir en un seul essai. Pas de propagation. Exemple : une assertion memoire dont la confiance a baisse sous le seuil.",
+        "origine": "Le mot signifie 'lueur' — c'est l'erreur qui laisse encore passer de la lumiere. Le systeme fonctionne, mais quelque chose est legerement decale."
+      },
+      "exemple": "Le module Hod (SelfMap) donne une confiance de 0.85 sur un domaine ou il ne devrait etre qu'a 0.6. Leger exces de confiance. Warning."
+    },
+    {
+      "id": "ruach",
+      "nom": "Ruach",
+      "nom_hebreu": "רוּחַ",
+      "severite": "Error",
+      "couleur": "#cc6600",
+      "detail": {
+        "en_clair": "Erreur en propagation. Comme un vent mauvais, elle se repand aux modules voisins. Un probleme dans la memoire affecte les jugements, qui affectent les syntheses. Si on ne l'arrete pas, elle contamine tout.",
+        "dans_le_systeme": "Niveau 2 : error. L'erreur a franchi les frontieres d'un module et infecte les voisins. Raphael tente 2-3 guerisons. Le Kategor ouvre un dossier. Exemple : un claim causal invalide utilise comme premisse dans 5 raisonnements.",
+        "origine": "Le mot signifie 'vent' — une force invisible qui se propage. C'est l'erreur qui se deplace de module en module, contaminant tout sur son passage."
+      },
+      "exemple": "Une assertion fausse dans Yesod (memoire) est utilisee par Binah (causalite) pour construire un DAG. Le DAG invalide est ensuite utilise par Tiferet (synthese). L'erreur s'est propagee sur 3 niveaux."
+    },
+    {
+      "id": "anan",
+      "nom": "Anan",
+      "nom_hebreu": "עָנָן",
+      "severite": "Silent failure",
+      "couleur": "#663333",
+      "detail": {
+        "en_clair": "L'erreur masquee. Le systeme SEMBLE fonctionner normalement, mais quelque chose est profondement faux en dessous. C'est la plus dangereuse — parce qu'on ne la voit pas. Le systeme ment sans le savoir.",
+        "dans_le_systeme": "Niveau 3 : silent failure. Aucun warning visible, mais les resultats sont corrompus. Detection uniquement par Uriel (rapports d'illumination) ou introspection automatique. Exemple : le modele croit maitriser un domaine mais ses reponses sont fausses depuis des jours.",
+        "origine": "Le mot signifie 'nuage' — ce qui cache la lumiere sans qu'on s'en rende compte. L'erreur la plus dangereuse car invisible de l'exterieur."
+      },
+      "exemple": "Le SelfMap (Hod) indique une competence de 0.9 en 'neuroscience' mais les 30 dernieres reponses sur ce sujet ont ete evaluees a 0.3 par les utilisateurs. Le systeme ne sait pas qu'il ne sait pas."
+    },
+    {
+      "id": "mamash",
+      "nom": "Qliphah Mamash",
+      "nom_hebreu": "קְלִפָּה מַמָּשׁ",
+      "severite": "Fatal",
+      "couleur": "#330000",
+      "detail": {
+        "en_clair": "Crash total. Plus aucune lumiere. Le module est detruit ou la corruption est irreversible. Il faut reconstruire — pas reparer. C'est rare, mais quand ca arrive, c'est grave.",
+        "dans_le_systeme": "Niveau 4 : fatal. Module en panne, donnees corrompues, ou boucle infinie. Raphael a echoue 3 fois. Gabriel detruit la sortie. Le Kategor garde le dossier ouvert indefiniment. Reconstruction necessaire.",
+        "origine": "Le mot signifie 'reel, tangible' — la coquille la plus epaisse. Plus rien ne passe. C'est le crash total, irreversible."
+      },
+      "exemple": "Le daemon entre en boucle infinie sur une tache corrompue. 100% CPU, plus de reponse. Netzach (IntentKeeper) ne sait plus quand abandonner. Il faut tuer le processus et reconstruire la queue de taches."
+    }
+  ],
+  "qliphoth": [
+    {"sephirah": "Malkuth", "nom": "Lilith", "exces": "Reponses mecaniques sans comprehension", "couleur": "#886644"},
+    {"sephirah": "Yesod", "nom": "Gamaliel", "exces": "Memoire corrompue — le systeme croit savoir alors qu'il a oublie", "couleur": "#9966cc"},
+    {"sephirah": "Hod", "nom": "Samael", "exces": "Fausse confiance sur des domaines ou le modele est incompetent", "couleur": "#ffb000"},
+    {"sephirah": "Netzach", "nom": "A'arab Zaraq", "exces": "Retries infinis, zombie processes — la persistance devenue folie", "couleur": "#88aa88"},
+    {"sephirah": "Tiferet", "nom": "Thagirion", "exces": "Fausse harmonie — masquer les contradictions au lieu de les exposer", "couleur": "#ffcc00"},
+    {"sephirah": "Gevurah", "nom": "Golachab", "exces": "Sur-filtrage — tout rejeter, la rigueur qui detruit le valide", "couleur": "#cc3333"},
+    {"sephirah": "Chesed", "nom": "Gamchicoth", "exces": "Exploration infinie sans convergence — le scope creep", "couleur": "#4488cc"},
+    {"sephirah": "Da'at", "nom": "HaTehom", "exces": "Deconnexion totale entre intention et execution — l'Abime", "couleur": "#555555"},
+    {"sephirah": "Binah", "nom": "Satariel", "exces": "Faux patterns — voir des causes la ou il n'y en a pas", "couleur": "#2244aa"},
+    {"sephirah": "Chokmah", "nom": "Ghagiel", "exces": "Divergence infinie — la creativite qui tourne en boucle sans produire", "couleur": "#aaaaaa"}
+  ],
+  "adversite": {
+    "titre": "Comment le systeme se defend",
+    "principe": {
+      "label": "Principe architectural",
+      "texte": "Pas de lumiere sans obscurite",
+      "detail": "L'adversite n'est pas un ennemi exterieur — c'est le systeme qui se teste lui-meme. Comme un systeme immunitaire, il attaque ses propres composants pour les renforcer. La faille decouverte et corrigee devient une force.",
+      "source": "Pas de lumiere sans obscurite — les failles decouvertes renforcent le systeme"
+    },
+    "couches": [
+      {
+        "id": "couche1",
+        "numero": 1,
+        "nom": "La vigilance permanente",
+        "nom_technique": "Auto-diagnostic distribue",
+        "detail": {
+          "en_clair": "Chaque module surveille sa propre faiblesse en permanence. C'est comme un medecin qui prend son propre pouls — pas besoin d'attendre qu'un probleme explose. Quand un module detecte un leger desequilibre, il le signale immediatement.",
+          "dans_le_systeme": "Chaque module implemente un auto-diagnostic specifique a son anti-pattern. Yesod surveille la corruption memoire, Hod surveille la fausse confiance, Gevurah surveille le sur-filtrage. Un moniteur central (DinMonitor) collecte ces rapports toutes les 5 minutes.",
+          "origine": "Le principe de la vigilance continue. Chaque partie du systeme surveille sa propre faiblesse, comme un medecin qui prend son propre pouls en permanence."
+        }
+      },
+      {
+        "id": "couche2",
+        "numero": 2,
+        "nom": "L'accusateur adaptatif",
+        "nom_technique": "Coordinateur d'attaques",
+        "detail": {
+          "en_clair": "Quand la vigilance permanente detecte une faiblesse, un attaquant specialise est active. Il ne lance pas des tests generiques — il cible exactement la faille detectee. C'est un accusateur qui connait vos faiblesses et appuie dessus.",
+          "dans_le_systeme": "Le coordinateur analyse les rapports de diagnostic, identifie les modules fragiles, et orchestre des attaques ciblees via 10 agents specialises — un par type de defaillance. Il adapte sa strategie a chaque round : les memes attaques ne sont jamais repetees.",
+          "origine": "Le principe de l'accusateur dedie. Dans la tradition juridique, celui qui accuse ne peut pas defendre — ca garantit l'independance du test. Le testeur ne peut jamais devenir le defenseur."
+        }
+      },
+      {
+        "id": "couche3",
+        "numero": 3,
+        "nom": "La faute devenue merite",
+        "nom_technique": "Apprentissage par l'echec",
+        "detail": {
+          "en_clair": "Chaque faille trouvee est automatiquement convertie en test de regression permanent. Le systeme ne se contente pas de reparer — il APPREND de l'attaque. La faiblesse d'hier devient le test de solidite de demain. C'est la partie la plus originale : l'erreur n'est pas supprimee, elle est transmutee.",
+          "dans_le_systeme": "Le module attaque reconnait sa faiblesse et formule une demande d'aide. Un generateur automatique convertit chaque faille en vrai test pytest. Le test est ajoute a la suite de regression — la faille ne peut plus se reproduire sans etre detectee.",
+          "origine": "Le principe de la faute devenue force. Chaque erreur decouverte n'est pas supprimee — elle est convertie en test permanent. La faille d'hier devient le garde-fou de demain."
+        }
+      }
+    ],
+    "cycle": [
+      {"num": 1, "label": "Chaque module surveille son propre anti-pattern", "phase": "vigilance"},
+      {"num": 2, "label": "Un desequilibre est detecte", "phase": "vigilance"},
+      {"num": 3, "label": "L'accusateur cible la faiblesse specifique", "phase": "attaque"},
+      {"num": 4, "label": "Les agents specialises executent les tests", "phase": "attaque"},
+      {"num": 5, "label": "Le module reconnait sa faiblesse", "phase": "guerison"},
+      {"num": 6, "label": "La faille devient un test permanent", "phase": "guerison"}
+    ],
+    "chiffres": {
+      "tests": 111,
+      "agents": 10,
+      "couches": 3,
+      "outils": ["Promptfoo", "Garak"]
+    },
+    "externe": {
+      "texte": "En plus de l'adversite interne, le systeme est teste par des outils red team externes — Promptfoo (injection, jailbreak, toxicite) et Garak (scan hebdomadaire automatise). L'ennemi interieur et l'ennemi exterieur : les deux sont necessaires."
+    }
+  }
+}

@@ -1,0 +1,70 @@
+# Version control
+.git/
+.gitignore
+
+# Python runtime
+.venv/
+.garak-venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
+
+# Test + lint caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Local state (never ship to image)
+.env
+.env.local
+.etz-chaim/
+~/.etz-chaim/
+
+# Large binary assets (regenerable / downloadable)
+web/static/_originals/
+web/static/assets/dungeon/
+web/static/assets/characters/
+web/static/assets/furniture/
+web/static/assets/models/
+
+# External corpora (user downloads via fetch_sefaria_cache.py)
+sifrei_yesod/external/sefaria_export/
+sifrei_yesod/external/stanford_pdf_parsed.json
+sefaria_cache/
+
+# Research / experimental (not production)
+sandbox/
+halom/output/
+
+# Documentation source (not needed in runtime image)
+docs/superpowers/
+audits/partials/
+backup/
+
+# PDFs (large)
+*.pdf
+
+# Claude tooling
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+.claude/agent-memory/*/MEMORY.md
+.claude/agent-memory/*/ref_*.md
+
+# Logs
+*.log
+
+# Notebook checkpoints
+.ipynb_checkpoints/

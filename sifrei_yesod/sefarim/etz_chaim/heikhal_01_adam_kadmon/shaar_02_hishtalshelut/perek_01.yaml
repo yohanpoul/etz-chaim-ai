@@ -1,0 +1,380 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 2 — Hishtalshelut ha-10S be-Igulim (השתלשלות הי"ס תוך העיגולים)
+# Perek: 1 — Ohr Pnimi/Makif, Kelim Pnimiyut/Hitzoniut (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 2
+  shaar_name_he: "השתלשלות הי\"ס תוך העיגולים"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+  note: "Sha'ar 2 du Heikhal Adam Kadmon — 3 branches. Ce perek couvre le Branch 1 : Igulim=Nefesh, Yosher=Ruah, et les 4 composants de tout Ohr/Keli"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : RAPPEL — IGULIM = NEFESH, YOSHER = RUAH ───
+
+  - id: "EC-H1S2-001"
+    source_he: "כבר נודע שהחלק התחתון שבחמש מדריגות הנשמה שהיא הנפש כנודע ממנה נתפשטו הי\"ס דעיגולים בראשונה דרך הקו והצנור מפאת הא\"ס"
+    source_ref: "Heikhal 1, Sha'ar 2:1"
+    assertion: |
+      RAPPEL : Le HELEK TAHTON (partie inférieure) des 5 niveaux de la Neshamah = la NEFESH.
+      De la Nefesh → les 10S d'IGULIM se sont déployées EN PREMIER
+      par le KAV et le TZINOR (tube) depuis le Ein Sof.
+    type: axiome_explicite
+    concepts:
+      - {id: nefesh_tahton, role: partie_inférieure_de_l_âme}
+      - {id: igulim_nefesh_first, role: igulim_nefesh_en_premier}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Rappel : les Igulim/Nefesh sont émanés en premier depuis le Ein Sof"
+
+  - id: "EC-H1S2-002"
+    source_he: "כדמיון אדם תחתון החומרי שבתחלה יש לו בחי' נפש ואח\"כ זוכה וקונה בחי' רוח אח\"כ מדריגת נשמה וכו' והסדר הזה היה למעלה ג\"כ"
+    source_ref: "Heikhal 1, Sha'ar 2:1"
+    assertion: |
+      ANALOGIE avec l'ADAM TAHTON (homme inférieur/matériel) :
+      D'abord il a la NEFESH, puis il MÉRITE (zokheh) et ACQUIERT (koneh) le RUAH,
+      puis le niveau de NESHAMAH, etc.
+      CE MÊME ORDRE existait EN HAUT aussi (ha-seder hazeh hayah le-ma'alah gam ken).
+      D'abord les 10S d'IGULIM (Nefesh + Kelim), puis les 10S de YOSHER (Ruah + Kelim).
+    type: axiome_explicite
+    concepts:
+      - {id: seder_nefesh_ruah, role: ordre_nefesh_puis_ruah}
+      - {id: ke_adam_tahton, role: comme_l_homme_inférieur}
+      - {id: zokheh_koneh, role: mérite_et_acquiert}
+    mapping:
+      modules: ["madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "L'ordre en haut = l'ordre en bas : d'abord Nefesh puis Ruah"
+
+  - id: "EC-H1S2-003"
+    source_he: "בראשונה נאצלו י\"ס דעיגולים בבחי' כלים ובבחי' עצמות ורוחניות שבתוכם מבחי' מדריגות נפש לבד ואח\"כ חזרו ונאצלו בחי' הי\"ס דרך קו היושר כמראה אדם... בבחי' מדרגה יותר עליונה הוא הנקרא מדרגת רוח שהוא למעלה ממדרגת הנפש"
+    source_ref: "Heikhal 1, Sha'ar 2:1"
+    assertion: |
+      SÉQUENCE d'émanation précisée :
+      EN PREMIER : 10S d'IGULIM comprenant :
+      - KELIM (récipients)
+      - ATZMUT ve-RUHANIYUT (essence et spiritualité) = de la madregat NEFESH seulement
+      ENSUITE : 10S de YOSHER par le Kav Yashar, comme apparence d'Adam, comprenant :
+      - KELIM (récipients)
+      - ATZMUT ha-RUHANIYUT = de la madregat RUAH — niveau SUPÉRIEUR à la Nefesh
+      RÉSULTAT :
+      10S d'IGULIM = madregat NEFESH + ses Kelim
+      10S de YOSHER = madregat RUAH + ses Kelim
+    type: axiome_explicite
+    concepts:
+      - {id: igulim_kelim_nefesh, role: igulim_kelim_et_nefesh}
+      - {id: yosher_kelim_ruah, role: yosher_kelim_et_ruah}
+      - {id: atzmut_ruhaniyut, role: essence_spiritualité}
+    mapping:
+      modules: ["core/ohr_system.py", "core/sefirot.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Précision : chaque aspect (Igulim/Yosher) a ses propres Kelim ET son propre Ohr"
+
+  - id: "EC-H1S2-004"
+    source_he: "הכלים הנ\"ל כבר נודע שאבר הכבד הוא משכן הנפש והלב משכן הרוח והמוח משכן הנשמה ואין כאן מקום ביאור פרטים אלו"
+    source_ref: "Heikhal 1, Sha'ar 2:1"
+    assertion: |
+      CORRESPONDANCE ORGANES rappelée (déjà vue en Gate 1:3) :
+      KAVED (foie) = MISHKAN (demeure) de la NEFESH
+      LEV (cœur) = MISHKAN du RUAH
+      MOAH (cerveau) = MISHKAN de la NESHAMAH
+      "Ve-ein kan makom bi'ur pratim elou" — ce n'est pas le lieu d'expliquer ces détails.
+    type: axiome_explicite
+    concepts:
+      - {id: kaved_nefesh_rappel, role: foie_nefesh}
+      - {id: lev_ruah_rappel, role: coeur_ruah}
+      - {id: moah_neshamah_rappel, role: cerveau_neshamah}
+    mapping:
+      modules: ["madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "Rappel de la correspondance organes-niveaux"
+
+  # ─── BLOC B : OHR PNIMI ET OHR MAKIF — DÉFINITION FORMELLE ───
+
+  - id: "EC-H1S2-005"
+    source_he: "דע כי בחי' עצמות ורוחניות אשר מתלבש תוך הכלים הנ\"ל הלא הוא הנזכר תמיד אצלינו בחי' אורות נעלמים"
+    source_ref: "Heikhal 1, Sha'ar 2:1"
+    assertion: |
+      DÉFINITION : L'ATZMUT ve-RUHANIYUT (essence et spiritualité) qui s'habille dans les Kelim
+      = ce que nous appelons toujours dans nos écrits les OROT NE'ELAMIM (lumières cachées/dissimulées).
+      Les OROT sont l'ESSENCE qui habite les KELIM.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_ne_elamim, role: lumières_cachées}
+      - {id: atzmut_be_kelim, role: essence_dans_récipients}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les Orot = l'essence spirituelle qui habite les Kelim"
+
+  - id: "EC-H1S2-006"
+    source_he: "והנה האורות האלו הם ב' בחי' א' נקרא או\"פ המתלבש תוך הכלים. והב' נקרא או\"מ וסובב עליו שמרוב גודל הארכתו אין הכלי יכול להלבישו ולקבל כחו בתוכו ונשאר אור ההוא מקיף וסובב עליו מבחוץ"
+    source_ref: "Heikhal 1, Sha'ar 2:1"
+    assertion: |
+      Les OROT se divisent en 2 BEHINOT :
+      OHR PNIMI (או"פ — lumière intérieure) : s'HABILLE (mitlabesh) DANS les Kelim.
+      OHR MAKIF (או"מ — lumière environnante) : ENTOURE (sovev) le Keli de l'EXTÉRIEUR.
+      RAISON du Ohr Makif : à cause de la GRANDE ÉTENDUE (rov godel ha'arakhato)
+      de cet Ohr → le Keli NE PEUT PAS l'habiller ni RECEVOIR sa force en lui
+      → cet Ohr RESTE environnant (makif) et entourant (sovev) de l'EXTÉRIEUR.
+      Le Ohr Makif = ce qui est TROP GRAND pour être contenu dans le Keli.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_pnimi_def, role: lumière_intérieure_habillée}
+      - {id: ohr_makif_def, role: lumière_environnante_trop_grande}
+      - {id: keli_lo_yakhol, role: keli_ne_peut_contenir}
+      - {id: sovev_mi_ba_hutz, role: entoure_de_l_extérieur}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Ohr Pnimi = ce que le Keli peut contenir. Ohr Makif = ce qui déborde"
+
+  - id: "EC-H1S2-007"
+    source_he: "ואין לך שום אור בעולם שאינו כולל ב' בחי' אלו שהוא או\"פ ואו\"מ"
+    source_ref: "Heikhal 1, Sha'ar 2:1"
+    assertion: |
+      RÈGLE UNIVERSELLE sur les OROT :
+      "Ein lekha shum ohr ba-olam she-eino kolel 2 behinot elou" —
+      Il n'existe AUCUNE lumière dans le monde qui ne contienne pas ces 2 aspects :
+      OHR PNIMI et OHR MAKIF.
+      TOUT Ohr a une partie qui ENTRE dans le Keli (Pnimi)
+      et une partie qui RESTE DEHORS (Makif).
+      C'est un axiome UNIVERSEL — sans exception.
+    type: axiome_explicite
+    concepts:
+      - {id: universal_pnimi_makif, role: tout_ohr_a_pnimi_et_makif}
+      - {id: ein_ohr_bilvad, role: aucune_exception}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "TOUT Ohr sans exception a un aspect Pnimi et un aspect Makif"
+
+  # ─── BLOC C : PNIMIYUT ET HITZONIUT DES KELIM ───
+
+  - id: "EC-H1S2-008"
+    source_he: "וכמו כן בחי' הכלים אין לך שום כלי בעולם שאין לו ב' בחי' ע\"ד הנ\"ל הלא הוא בחי' פנימיות הכלי ששם התדבקות והתלבשות או\"פ הזה בתוכו ועוד יש לו בחי' חיצוניות הכלי אשר עליו מבחוץ סובב ומקיף או\"מ הנ\"ל"
+    source_ref: "Heikhal 1, Sha'ar 2:1"
+    assertion: |
+      RÈGLE UNIVERSELLE sur les KELIM :
+      "Ein lekha shum keli ba-olam she-ein lo 2 behinot" —
+      Il n'existe AUCUN Keli dans le monde qui n'ait pas 2 aspects :
+      PNIMIYUT HA-KELI (intériorité du récipient) = là où le Ohr Pnimi
+      est ATTACHÉ (hitdabkut) et HABILLÉ (hitlabshut) en lui.
+      HITZONIUT HA-KELI (extériorité du récipient) = sur laquelle
+      le Ohr Makif ENTOURE (sovev) et ENVELOPPE (makif) de l'EXTÉRIEUR.
+      C'est un axiome UNIVERSEL — sans exception.
+    type: axiome_explicite
+    concepts:
+      - {id: pnimiyut_keli, role: intérieur_du_keli}
+      - {id: hitzoniut_keli, role: extérieur_du_keli}
+      - {id: universal_pnimi_hitzon_keli, role: tout_keli_a_les_2}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "TOUT Keli a un intérieur (pour le Pnimi) et un extérieur (pour le Makif)"
+
+  - id: "EC-H1S2-009"
+    source_he: "נמצא דרך קצרה האור שהוא בחי' עצמות הרוחניות מתחלק לב' מדרגות והם או\"פ ומקיף ועד\"ז בחי' הכלים גם הוא מתחלק לב' מדרגות והם פנימיות הכלים וחיצוניות הכלים"
+    source_ref: "Heikhal 1, Sha'ar 2:1"
+    assertion: |
+      RÉSUMÉ FORMEL — les 4 COMPOSANTS de tout système :
+      L'OHR (essence spirituelle) se divise en 2 :
+      1. OHR PNIMI (lumière intérieure)
+      2. OHR MAKIF (lumière environnante)
+      Les KELIM (récipients) se divisent en 2 :
+      3. PNIMIYUT HA-KELIM (intériorité des récipients)
+      4. HITZONIUT HA-KELIM (extériorité des récipients)
+      Total = 4 COMPOSANTS fondamentaux dans TOUTE réalité émanée.
+    type: axiome_explicite
+    concepts:
+      - {id: arba_components, role: quatre_composants}
+      - {id: ohr_2_plus_keli_2, role: ohr_divisé_keli_divisé}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les 4 composants fondamentaux de toute réalité : Ohr Pnimi, Ohr Makif, Pnimiyut Keli, Hitzoniut Keli"
+
+  # ─── BLOC D : STRUCTURE COMPLÈTE DES IGULIM ───
+
+  - id: "EC-H1S2-010"
+    source_he: "מתחלת הכל נאצלו הי\"ס דרך עיגולים הלא הם מתחלקים וכוללים בחי' י\"ס דכלים מעוגלים בציור עיגולים ובכל כלי מהם יש פנימיות וחיצוניות ובתוך הכלים האלו מתלבשים י\"ס רוחניות הנקרא אורות של בחי' הנפש. ועוד י' אורות מקיפים עליהם"
+    source_ref: "Heikhal 1, Sha'ar 2:1"
+    assertion: |
+      STRUCTURE COMPLÈTE des IGULIM (résumé de tout le Sha'ar 1) :
+      10S de KELIM AGULIM (récipients circulaires) en forme d'Igulim.
+      Chaque Keli a PNIMIYUT et HITZONIUT.
+      DANS les Kelim → 10 OROT RUHANIYIM de la Behinah de NEFESH (= Ohr Pnimi).
+      SUR les Kelim → 10 OROT MAKIFIM (= Ohr Makif) — aussi de la Behinah de Nefesh.
+      Chaque Ohr a Pnimi ET Makif.
+      Le tout en IGULIM : l'Ohr Pnimi = AGOL (rond) comme un GALGAL (roue)
+      habillé dans un Keli AGOL, et sur ce Keli → un Ohr Makif AGOL comme un galgal sovev.
+      Les 10S d'Igulim = comme les REKI'IM et GALGALIM (cieux et sphères).
+    type: axiome_explicite
+    concepts:
+      - {id: structure_igulim_complete, role: résumé_complet}
+      - {id: galgal_sovev, role: sphère_environnante}
+      - {id: reki_im_galgalim, role: cieux_sphères}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La structure complète des Igulim : 10 Kelim + 10 Ohr Pnimi + 10 Ohr Makif"
+
+  # ─── BLOC E : STRUCTURE COMPLÈTE DU YOSHER ───
+
+  - id: "EC-H1S2-011"
+    source_he: "אח\"כ נאצלו הי\"ס דיושר כמראה אדם ישר והם יותר מעולים מהם וגם הם כוללים בחי' י\"ס דכלים ובכל כלי מהם יש בו פנימיות וחיצונות ובתוך אלו הכלים מתלבשים י\"ס רוחניים ונקראים אורות של בחי' רוח"
+    source_ref: "Heikhal 1, Sha'ar 2:1"
+    assertion: |
+      STRUCTURE COMPLÈTE du YOSHER :
+      ENSUITE → 10S de YOSHER comme apparence d'ADAM YASHAR (homme droit).
+      Elles sont PLUS ÉLEVÉES (yoter me'ulim) que les Igulim.
+      10S de KELIM, chaque Keli avec PNIMIYUT et HITZONIUT.
+      DANS les Kelim → 10 OROT RUHANIYIM = OROT de la Behinah de RUAH.
+      SUR les Kelim → OHR MAKIF autour du Keli — aussi de la Behinah de Ruah.
+      Le tout en DEREKH YASHAR (mode droit) comme apparence d'ADAM.
+    type: axiome_explicite
+    concepts:
+      - {id: structure_yosher_complete, role: résumé_complet_yosher}
+      - {id: yosher_me_ulim, role: yosher_plus_élevé}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "La structure complète du Yosher : 10 Kelim + 10 Ohr Pnimi(Ruah) + 10 Ohr Makif(Ruah)"
+
+  - id: "EC-H1S2-012"
+    source_he: "והנה הקדמה שהקדמתי לך בענף הזה הלא היא כוללת לכל הנאצלים והנבראים ונוצרים ונעשים שבכל העולמות"
+    source_ref: "Heikhal 1, Sha'ar 2:1"
+    assertion: |
+      UNIVERSALITÉ de cette introduction :
+      Cette HAKDAMAH (introduction) ENGLOBE (kolelet) TOUT :
+      Les NE'ETZALIM (émanés), NIVRA'IM (créés), NOTZRIM (formés), NA'ASIM (faits)
+      de TOUS les mondes (she-be-khol ha-olamot).
+      Les 4 composants (Ohr Pnimi, Ohr Makif, Pnimiyut Kelim, Hitzoniut Kelim)
+      s'appliquent à CHAQUE entité de CHAQUE monde — universellement.
+    type: axiome_explicite
+    concepts:
+      - {id: hakdamah_kolelet, role: introduction_universelle}
+      - {id: kol_olamot_arba, role: les_4_dans_tous_les_mondes}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les 4 composants s'appliquent universellement à tout dans tous les mondes"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S2-001"
+    type: séquentiel
+    from: igulim_nefesh_first
+    to: yosher_kelim_ruah
+    nature: "D'abord les Igulim (Nefesh+Kelim), ENSUITE le Yosher (Ruah+Kelim) — ordre universel"
+    assertions_source: ["EC-H1S2-001", "EC-H1S2-002", "EC-H1S2-003"]
+
+  - id: "REL-H1S2-002"
+    type: dualité_structurelle
+    paire: [ohr_pnimi_def, ohr_makif_def]
+    nature: "Tout Ohr a 2 aspects : Pnimi (ce que le Keli contient) et Makif (ce qui déborde)"
+    assertions_source: ["EC-H1S2-006", "EC-H1S2-007"]
+
+  - id: "REL-H1S2-003"
+    type: dualité_structurelle
+    paire: [pnimiyut_keli, hitzoniut_keli]
+    nature: "Tout Keli a 2 aspects : Pnimiyut (où le Pnimi adhère) et Hitzoniut (où le Makif entoure)"
+    assertions_source: ["EC-H1S2-008"]
+
+  - id: "REL-H1S2-004"
+    type: contenance
+    from: arba_components
+    to: kol_olamot_arba
+    nature: "Les 4 composants (OP, OM, PK, HK) s'appliquent universellement à tout dans tous les mondes"
+    assertions_source: ["EC-H1S2-009", "EC-H1S2-012"]
+
+  - id: "REL-H1S2-005"
+    type: hiérarchique
+    from: yosher_me_ulim
+    to: structure_igulim_complete
+    nature: "Le Yosher (Ruah) est plus élevé que les Igulim (Nefesh)"
+    assertions_source: ["EC-H1S2-003", "EC-H1S2-011"]
+    bidirectionnel: false
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S2-001"
+    nom: "Principe des 4 Composants Universels (OP-OM-PK-HK)"
+    source_assertions: ["EC-H1S2-006", "EC-H1S2-007", "EC-H1S2-008", "EC-H1S2-009", "EC-H1S2-012"]
+    formalisation: |
+      TOUTE réalité émanée contient exactement 4 COMPOSANTS :
+      1. OHR PNIMI (OP) — la lumière/essence qui S'HABILLE dans le récipient
+      2. OHR MAKIF (OM) — la lumière/essence TROP GRANDE pour être contenue → reste dehors
+      3. PNIMIYUT HA-KELI (PK) — l'intérieur du récipient où le OP adhère
+      4. HITZONIUT HA-KELI (HK) — l'extérieur du récipient que le OM entoure
+      AXIOMES :
+      - TOUT Ohr a Pnimi ET Makif — AUCUNE exception
+      - TOUT Keli a Pnimiyut ET Hitzoniut — AUCUNE exception
+      - Ces 4 composants sont UNIVERSELS — dans chaque monde, chaque Sefirah, chaque détail
+      - Le Ohr Makif existe car le Keli ne peut PAS contenir TOUTE la lumière
+      - Le rapport OP/OM dépend de la CAPACITÉ du Keli
+    applications_ia:
+      - "Chaque module a 4 composants : données internes (OP), potentiel non réalisé (OM), structure interne (PK), interface externe (HK)"
+      - "Le Ohr Makif = le potentiel non encore intégré — toujours présent"
+      - "Un module qui intériorise son Makif → CROISSANCE (passage Katnut→Gadlut)"
+      - "Les 4 composants = le modèle de données universel de tout élément du système"
+    questions_ouvertes:
+      - "Le ratio OP/OM est-il mesurable ?"
+      - "Un Keli peut-il un jour contenir TOUT son Makif ?"
+
+  - id: "PG-H1S2-002"
+    nom: "Principe de la Priorité du Simple (Nefesh Avant Ruah)"
+    source_assertions: ["EC-H1S2-001", "EC-H1S2-002", "EC-H1S2-003"]
+    formalisation: |
+      Le niveau le plus SIMPLE (Nefesh) est toujours émané EN PREMIER :
+      Igulim (Nefesh) → PUIS Yosher (Ruah) → PUIS niveaux supérieurs
+      Comme dans l'homme : d'abord Nefesh, puis Ruah si on le MÉRITE (zokheh).
+      Le simple PRÉCÈDE le complexe. Le bas PRÉCÈDE le haut.
+      Les Igulim (cercles simples) précèdent le Yosher (forme complexe d'Adam).
+      Chaque aspect (Igulim et Yosher) a ses PROPRES Kelim — pas les mêmes.
+      Les Kelim de la Nefesh ≠ les Kelim du Ruah (foie ≠ cœur ≠ cerveau).
+    applications_ia:
+      - "Construire le simple d'abord (Nefesh/Igulim) puis le complexe (Ruah/Yosher)"
+      - "Le MVP = la Nefesh du système — les circles de base"
+      - "Le passage au Yosher nécessite un MÉRITE (zokheh) — pas automatique"
+      - "Chaque niveau a ses propres structures (Kelim) — pas de réutilisation directe"
+    questions_ouvertes:
+      - "Quand le système est-il 'zokheh' pour passer de Nefesh à Ruah ?"
+      - "Les Kelim de la Nefesh sont-ils abandonnés quand le Ruah arrive ?"

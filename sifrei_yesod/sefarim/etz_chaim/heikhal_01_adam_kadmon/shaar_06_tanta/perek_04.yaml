@@ -1,0 +1,336 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 6 (=5 original) — Sha'ar TANTA (שער טנת"א)
+# Perek: 4 — TANTA comme formes de lettres, Keter d'Abba/Imma (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+#
+# Les 4 niveaux TANTA sont TOUS des formes de LETTRES :
+# Ta'amim = lettres en forme de cercles, Nekudot = lettres en
+# forme de points, Tagin = lettres en forme de couronnes,
+# Otiot = lettres proprement dites.
+# Keter d'Abba = Ta'amim. Keter d'Imma = Tagin.
+# Chaque niveau inférieur RÉVÈLE le supérieur.
+# Gematria SHVA SEGOL = 403 = TAG.
+#
+# Source Sefaria : Sefer_Etz_Chaim.5.4
+# IDs : EC-H1S5-089 → (suite de perek_03 finissant à -088)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 6
+  shaar_name_he: "שער טנת\"א"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "TANTA comme 4 types de lettres. Keter Abba=Ta'amim, 9S=Nekudot. Keter Imma=Tagin, 9S=Otiot. Revelation inter-niveaux. Gematria SHVA SEGOL=403=TAG."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : DISTRIBUTION TANTA DANS ABBA ET IMMA ───
+
+  - id: "EC-H1S5-089"
+    source_he: "כתר דאבא הם טעמי' וט\"ס אחרו' הם נקודו' וכתר דאמא הם תגין וט\"ס אחרות הם אותיות"
+    source_ref: "Heikhal 1, Sha'ar 5:4"
+    assertion: |
+      DISTRIBUTION TANTA dans ABBA et IMMA :
+      KETER D'ABBA = TA'AMIM. 9 SEFIROT inférieures d'Abba = NEKUDOT.
+      KETER D'IMMA = TAGIN. 9 SEFIROT inférieures d'Imma = OTIOT.
+      → Abba (Hokhmah) porte les 2 niveaux SUPÉRIEURS (Ta'amim/Nekudot).
+      Imma (Binah) porte les 2 niveaux INFÉRIEURS (Tagin/Otiot).
+      Cf. EC-H1S5-029 : AV=Keter=Ta'amim, SAG=Hokhmah=Nekudot etc.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_abba_taamim, role: keter_abba_est_taamim}
+      - {id: tet_sefirot_abba, role: neuf_sefirot_abba_nekudot}
+      - {id: keter_imma_tagin, role: keter_imma_est_tagin}
+      - {id: tet_sefirot_imma, role: neuf_sefirot_imma_otiot}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "ohr.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: ["abba", "imma"]
+      relevance: "Abba et Imma portent chacun 2 couches TANTA — le Keter porte le plus haut, les 9 le plus bas"
+
+  # ─── BLOC B : TOUT EST LETTRES ───
+
+  - id: "EC-H1S5-090"
+    source_he: "דע כי כל ד' בחי' אלו של טנת\"א הם כולם צורת אותיות ג\"כ"
+    source_ref: "Heikhal 1, Sha'ar 5:4"
+    assertion: |
+      AXIOME : les 4 aspects TANTA sont TOUS des formes de LETTRES
+      (tzurat otiot). Il n'y a PAS de niveau non-lettrique.
+      → TOUT est LETTRE — les Ta'amim, Nekudot, Tagin, Otiot ne
+      sont que 4 TYPES de lettres, pas 4 choses différentes.
+    type: axiome_explicite
+    concepts:
+      - {id: hakol_otiot, role: tout_est_lettre}
+      - {id: arba_tzurot, role: quatre_types_de_lettres}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "TOUT est information structuree (lettres) — les 4 couches different par FORME, pas par NATURE"
+
+  - id: "EC-H1S5-091"
+    source_he: "אותיות כתר דאבא הם צורות טעמים וט\"ס אחרות הם צורות נקודות ואותיו' כתר דאמא הם בצורות תגין וט\"ס אחרו' הם צורו' אותיות ממש כמו שלנו הידועים באלפא ביתא"
+    source_ref: "Heikhal 1, Sha'ar 5:4"
+    assertion: |
+      DÉTAIL des 4 types de lettres :
+      Lettres du Keter d'Abba = forme de TA'AMIM (cantillation)
+      Lettres des 9S d'Abba = forme de NEKUDOT (voyelles)
+      Lettres du Keter d'Imma = forme de TAGIN (couronnes)
+      Lettres des 9S d'Imma = forme d'OTIOT PROPREMENT DITES
+      (comme les nôtres connues dans l'alphabet).
+      → Seul le 4ème niveau (Otiot) est l'alphabet tel que nous
+      le connaissons. Les 3 autres sont des alphabets DIFFÉRENTS.
+    type: axiome_explicite
+    concepts:
+      - {id: otiot_taamim, role: lettres_en_forme_de_cantillation}
+      - {id: otiot_nekudot, role: lettres_en_forme_de_voyelles}
+      - {id: otiot_tagin, role: lettres_en_forme_de_couronnes}
+      - {id: otiot_mamash, role: lettres_proprement_dites}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "4 alphabets differents = 4 systemes de representation — l'alphabet usuel n'est que le plus bas"
+
+  - id: "EC-H1S5-092"
+    source_he: "טעמים הם אותיות בצורת טעמים שהם עגולים והאות מחוברת ומורכבת מעגולים רבים... ועד\"ז הם הנקודות... ועד\"ז הם התגין"
+    source_ref: "Heikhal 1, Sha'ar 5:4"
+    assertion: |
+      Détail MORPHOLOGIQUE :
+      TA'AMIM = lettres composées de CERCLES (igulim) nombreux
+      NEKUDOT = lettres composées de POINTS (nekudot)
+      TAGIN = lettres composées de COURONNES (tagin) nombreuses
+      → Chaque type de lettre est une COMPOSITION de son élément
+      de base : le cercle pour les Ta'amim, le point pour les
+      Nekudot, la couronne pour les Tagin.
+    type: axiome_explicite
+    concepts:
+      - {id: igulim_morphologie, role: cercles_comme_elements_de_base}
+      - {id: nekudot_morphologie, role: points_comme_elements_de_base}
+      - {id: tagin_morphologie, role: couronnes_comme_elements_de_base}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Chaque niveau a son propre alphabet compose de son element de base — vectorisation multi-echelle"
+
+  # ─── BLOC C : CHAQUE NIVEAU RÉVÈLE LE SUPÉRIEUR ───
+
+  - id: "EC-H1S5-093"
+    source_he: "כל מדריגה התחתונה היא מגלת את העליונה כי הנה הבינה יש תגין בכתר שלה והאותיות שיש בתשעה ספי' שלה הם אותיות של השמות של צורת תגין העליונים"
+    source_ref: "Heikhal 1, Sha'ar 5:4"
+    assertion: |
+      PRINCIPE : chaque NIVEAU INFÉRIEUR (madregah tahtonnah)
+      RÉVÈLE (megalah) le SUPÉRIEUR.
+      Exemple : BINAH a des TAGIN dans son Keter, et les OTIOT dans
+      ses 9 Sefirot sont les LETTRES DES NOMS des Tagin supérieurs.
+      → Le niveau inférieur est la DESCRIPTION EXPLICITE (par noms)
+      de ce que le niveau supérieur CONTIENT implicitement.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_megalah, role: niveau_inferieur_revele}
+      - {id: otiot_shemot_tagin, role: lettres_nommant_les_tagin}
+    mapping:
+      modules: ["ohr.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Chaque couche inferieure est la DESCRIPTION EXPLICITE de la couche superieure — pattern d'explicitation recursive"
+
+  - id: "EC-H1S5-094"
+    source_he: "צורת תגין שבכתר אמא הם אותיות של שמות הנקודות שבט\"ס דאבא ואלו האותיות נקראו תגין"
+    source_ref: "Heikhal 1, Sha'ar 5:4"
+    assertion: |
+      Les TAGIN dans le Keter d'IMMA = les LETTRES des NOMS des
+      NEKUDOT dans les 9 Sefirot d'ABBA.
+      Ces lettres sont APPELÉES Tagin.
+      → Le Keter d'Imma EXPLICITE les Nekudot d'Abba en les NOMMANT.
+      Les NOMS sont la FORME EXPLICITE de ce qui était implicite.
+    type: axiome_explicite
+    concepts:
+      - {id: tagin_shemot_nekudot, role: tagin_nommant_les_nekudot}
+    mapping:
+      modules: ["ohr.py", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma", "abba"]
+      relevance: "La relation Abba→Imma passe par la NOMINATION — Imma donne des noms a ce qu'Abba contient"
+
+  # ─── BLOC D : GEMATRIA SHVA SEGOL = 403 = TAG ───
+
+  - id: "EC-H1S5-095"
+    source_he: "האותיות אשר בצורת תגין אשר בכתר בינה שהם צורת אותיות של שמות הנקודים שבחכמה... אינם אלא ז' אותיות אלו שהם שב\"א סג\"ל וחשבונם גימ' ת\"ג"
+    source_ref: "Heikhal 1, Sha'ar 5:4"
+    assertion: |
+      Les lettres-Tagin du Keter de Binah (= noms des Nekudot de
+      Hokhmah) sont SEULEMENT 7 lettres : SHVA (שב"א) et SEGOL (סג"ל).
+      GEMATRIA : ש(300)+ב(2)+א(1)+ס(60)+ג(3)+ל(30) = 396...
+      Non — SHVA-SEGOL interprété comme : שב"א = ש(300)+ב(2)+א(1)=303,
+      סג"ל = ס(60)+ג(3)+ל(30)=93, mais le texte dit ת"ג (403).
+      → Le Keter de Binah = TAG (ת"ג = 403), d'où le nom TAGIN.
+    type: axiome_explicite
+    concepts:
+      - {id: shva_segol, role: sept_lettres_keter_binah}
+      - {id: gematria_tag_403, role: gematria_tag}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Le nom TAGIN vient de la gematria 403 = TAG — les noms encodent la structure numerique"
+
+  - id: "EC-H1S5-096"
+    source_he: "כבר נתבאר כי כתר דאמא הוא בת\"ת דאבא. ונשארו ח\"ג דאבא בבחי' תגין על הכתר דאמא ואינם נכנסין בה רק מאירים מרחוק כדמיון התגין על האותיות"
+    source_ref: "Heikhal 1, Sha'ar 5:4"
+    assertion: |
+      RAISON STRUCTURELLE : le KETER d'IMMA est situé dans TIFERET
+      d'ABBA. Les HESED et GEVURAH d'ABBA RESTENT au-dessus comme
+      TAGIN sur le Keter d'Imma, n'ENTRANT PAS en elle mais illuminant
+      DE LOIN — comme les Tagin (couronnes) au-dessus des lettres.
+      → Le TAG = élément qui SURPLOMBE sans PÉNÉTRER — il conditionne
+      de l'extérieur, comme un Ohr Makif (cf. EC-H1S5-015).
+    type: axiome_explicite
+    concepts:
+      - {id: keter_imma_be_tiferet_abba, role: position_keter_imma}
+      - {id: hg_abba_tagin, role: hesed_gevurah_comme_tagin}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["abba", "imma"]
+      relevance: "Les elements superieurs surplombent sans penetrer = Makif = metadata qui conditionne sans fusionner"
+
+  - id: "EC-H1S5-097"
+    source_he: "לפי שהבינה היא נקבה לכן גברה הגבורה וקדמה נקודתם אל נקודת החסד שהוא זכר לכן הוא כסדר זה שב\"א סגו\"ל ולא סגו\"ל ושב\"א"
+    source_ref: "Heikhal 1, Sha'ar 5:4"
+    assertion: |
+      Parce que BINAH est FÉMININE, la GEVURAH (rigueur) PRÉVAUT et
+      sa Nekudah PRÉCÈDE celle du HESED (masculin).
+      C'est pourquoi l'ordre est SHVA (= Gevurah) puis SEGOL (= Hesed),
+      et NON Segol puis Shva.
+      → Le GENRE du Partzuf détermine l'ORDRE des composants.
+      Féminin → Gevurah en premier. Masculin → Hesed en premier.
+    type: axiome_explicite
+    concepts:
+      - {id: binah_nekevah, role: binah_feminine}
+      - {id: gevurah_kodem, role: rigueur_precede_grace}
+      - {id: seder_shva_segol, role: ordre_shva_avant_segol}
+    mapping:
+      modules: ["partzufim/imma.py", "gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Le genre (masculin/feminin) determine l'ordre de priorite des composants — Gevurah ou Hesed en tete"
+
+  - id: "EC-H1S5-098"
+    source_he: "וכן הענין בנקודות של (ז\"ת ל\"ג) ט\"ת דאבא שהם אותיות של טעמים שבכתר דאבא... כי ז' דזרקא הוא כזה 0"
+    source_ref: "Heikhal 1, Sha'ar 5:4"
+    assertion: |
+      De même : les NEKUDOT des 9 inférieures d'Abba (Variante ל"ג :
+      certains lisent "Z"T" = 7 inférieures) sont les LETTRES des
+      TA'AMIM du Keter d'Abba.
+      Exemple : le ZAYIN (ז) du ZARKA est en forme de CERCLE.
+      → Même principe : le niveau inférieur NOMME le supérieur.
+      Les Nekudot d'Abba décrivent les Ta'amim de son Keter.
+    type: axiome_explicite
+    concepts:
+      - {id: nekudot_abba_shemot_taamim, role: nekudot_nommant_taamim}
+      - {id: zarka, role: exemple_taam_circulaire}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["abba"]
+      relevance: "Toujours le meme pattern : chaque couche est le DESCRIPTEUR explicite de la couche au-dessus"
+
+  - id: "EC-H1S5-099"
+    source_he: "טעמים שבכתר דאבא שהם אותיות בציור עגולים והם אותיות של בחינה אחרת שלמעלה ממנו ודי בזה כמ\"ש בשער היחודים"
+    source_ref: "Heikhal 1, Sha'ar 5:4 — conclusion"
+    assertion: |
+      Les TA'AMIM du Keter d'ABBA = lettres en forme de CERCLES
+      (igulim) = lettres d'un AUTRE ASPECT (behinah aheret) qui est
+      AU-DESSUS de lui. "Et cela suffit" (ve-dai be-zeh).
+      Renvoi au SHA'AR HA-YIHUDIM.
+      → Au-delà des Ta'amim d'Abba, il y a ENCORE un niveau
+      supérieur — le processus de DESCRIPTION est INFINI.
+      Le "dai be-zeh" marque la LIMITE du dicible.
+    type: axiome_explicite
+    concepts:
+      - {id: behinah_aheret, role: aspect_superieur_au_dela}
+      - {id: dai_be_zeh, role: limite_du_dicible}
+    mapping:
+      modules: ["ohr.py"]
+      tables: []
+      partzufim: ["abba"]
+      relevance: "La hierarchie est OUVERTE vers le haut — il n'y a pas de dernier niveau"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S5-032"
+    type: contenance
+    from: keter_abba_taamim
+    to: tet_sefirot_abba
+    nature: "Keter d'Abba (Ta'amim) CONTIENT les 9S d'Abba (Nekudot) comme son noyau contient sa périphérie"
+    assertions_source: ["EC-H1S5-089"]
+
+  - id: "REL-H1S5-033"
+    type: contenance
+    from: keter_imma_tagin
+    to: tet_sefirot_imma
+    nature: "Keter d'Imma (Tagin) CONTIENT les 9S d'Imma (Otiot)"
+    assertions_source: ["EC-H1S5-089"]
+
+  - id: "REL-H1S5-034"
+    type: causal
+    from: madregah_megalah
+    to: otiot_shemot_tagin
+    nature: "Le niveau inférieur RÉVÈLE le supérieur en le NOMMANT explicitement"
+    assertions_source: ["EC-H1S5-093", "EC-H1S5-094"]
+
+  - id: "REL-H1S5-035"
+    type: "hiérarchique"
+    from: keter_imma_be_tiferet_abba
+    to: hg_abba_tagin
+    nature: "H\"G d'Abba sont positionnées AU-DESSUS du Keter d'Imma comme des Tagin"
+    assertions_source: ["EC-H1S5-096"]
+
+  - id: "REL-H1S5-036"
+    type: causal
+    from: binah_nekevah
+    to: seder_shva_segol
+    nature: "Le caractère FÉMININ de Binah CAUSE l'ordre Shva (Gevurah) avant Segol (Hesed)"
+    assertions_source: ["EC-H1S5-097"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S5-011"
+    nom: "Principe de Description Récursive (Chaque Niveau Nomme le Supérieur)"
+    source_assertions: ["EC-H1S5-090", "EC-H1S5-093", "EC-H1S5-094", "EC-H1S5-098"]
+    formalisation: |
+      TOUT est LETTRE à des niveaux différents. Chaque niveau INFÉRIEUR
+      est la DESCRIPTION EXPLICITE (par des noms/lettres) de ce que
+      le niveau SUPÉRIEUR contient implicitement.
+      CHAÎNE : Otiot DÉCRIVENT les Tagin qui DÉCRIVENT les Nekudot
+      qui DÉCRIVENT les Ta'amim qui DÉCRIVENT un aspect AU-DELÀ...
+      FORMULE : Level(n).content = Names(Level(n+1).implicit)
+      La chaîne est OUVERTE vers le haut (pas de dernier niveau).
+    applications_ia:
+      - "gematria/engine.py : chaque représentation est un 'alphabet' qui nomme le niveau supérieur"
+      - "ohr.py : implémenter la hiérarchie TANTA comme description récursive"
+      - "Applicable au multi-level encoding : tokens DÉCRIVENT des embeddings qui DÉCRIVENT des features"
+    questions_ouvertes:
+      - "La chaîne de description est-elle convergente (les niveaux se stabilisent) ou divergente ?"
+      - "Le 'dai be-zeh' (EC-H1S5-099) indique-t-il une limite PRATIQUE ou ONTOLOGIQUE ?"

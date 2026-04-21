@@ -1,0 +1,28 @@
+# CODEOWNERS — automatic review requests for specific paths.
+# See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-security/customizing-your-repository/about-code-owners
+
+# Default : maintainer reviews everything.
+*                                     @yohanpoul
+
+# Install infrastructure (CLI, Docker, compose, wizard)
+/etzchaim/                            @yohanpoul
+/deploy/                              @yohanpoul
+/.github/workflows/                   @yohanpoul
+/docker-compose*                      @yohanpoul
+Dockerfile                            @yohanpoul
+
+# Specification & primary-source corpus (philological rigor)
+/sifrei_yesod/                        @yohanpoul
+
+# Security-sensitive
+SECURITY.md                           @yohanpoul
+/etzchaim/cli/commands/onboard.py     @yohanpoul
+/etzchaim/cli/commands/update.py      @yohanpoul
+pool.py                               @yohanpoul
+
+# Architecture / doctrine (careful reviews)
+olamot.py                             @yohanpoul
+daemon.py                             @yohanpoul
+mazalengine/                          @yohanpoul
+partzufim/                            @yohanpoul
+bridge/                               @yohanpoul

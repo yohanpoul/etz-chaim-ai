@@ -1,0 +1,226 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 8 (=7 original) — Sha'ar Mati veLo Mati (שער מטי ולא מטי)
+# Perek: 5 — Conclusion : Kellalut en Hokhmah-Binah, Miluy Y-H, Vav-Dalet
+# ═══════════════════════════════════════════════════════════════════
+#
+# Les 5 Orot de Hokhmah-Binah montent dans Keter.
+# Kellalut selon actions des Tahtonim : parfois tous en Nekevah,
+# parfois en Zakhar, parfois partages.
+# Quand 4 montent = Kellalut dans Nekevah = H rempli de Yod = H"Y.
+# Les 2 Malkhuyot (Zakhar+Nekevah) sont EGALES quand les Z"N montent.
+# Raison : Zakhar = sod Histalkut (residuel). Nekevah = sod Panim (entrant).
+# Premiere fois : Ohr Hokhmah entre dans Kli de Nekevah.
+# Apres : Z"N dans Kli de Zakhar, Zivvug = Vav+Dalet = miluy de Yod.
+# "Lo nimtza yoter mi-kan ve-eilakh" — il n'a pas ete trouve davantage.
+# NISHLAM HEIKHAL RISHON — Fin du Premier Heikhal.
+#
+# Source Sefaria : Sefer_Etz_Chaim.7.5 (§1-§5)
+# IDs : EC-H1S7-049 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 8
+  shaar_name_he: "שער מטי ולא מטי"
+  perek: 5
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Conclusion du Sha'ar MvLM. Les 5 Orot montent en Keter. Miluy de Y-H selon le mode de Kellalut. Z'N dans Kli du Zakhar, Zivvug = Vav+Dalet. Fin du Heikhal Rishon."
+
+assertions:
+
+  - id: "EC-H1S7-049"
+    source_he: "יש ה' אורות בב' כלים כי בכלים של חכמה יש זו\"ן ובכלי של בינה יש זו\"ן וב\"ן... ועליית אלו תלוי במעשה התחתונים לפעמים יעלו כל ה' אורות ופעמים לא יעלו כי אם ד'"
+    source_ref: "Heikhal 1, Sha'ar 7:5 — §1"
+    assertion: |
+      Il y a 5 OROT dans 2 KELIM : dans le Kli de Hokhmah = Z"N,
+      dans le Kli de Binah = Z"N + BEN (Hesed). La MONTÉE de ces 5
+      dépend des ACTIONS DES INFÉRIEURS (ma'ase tahtonim) : parfois
+      les 5 montent, parfois seulement 4 (le Hesed=Ben reste en bas).
+      → CONDITIONNALITÉ : le nombre d'Orot qui participent au Lo Mati
+      de Hokhmah-Binah dépend des TAHTONIM. Minimum = 4, maximum = 5.
+    type: axiome_explicite
+    concepts:
+      - {id: hamesh_orot, role: cinq_lumieres_en_deux_kelim}
+      - {id: maase_tahtonim_montee, role: actions_inferieurs_conditionnent}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Le nombre de composants actifs dans le Lo Mati = variable, conditionnel aux couches inferieures. Attention dynamique."
+
+  - id: "EC-H1S7-050"
+    source_he: "כשאין עולין אלא ד' אורות אינם נכללין רק בנוקבא... ואז מילוי אותו ה' הוא ביו\"ד כזה ה\"י... כי ג' תתאין בטלין בראשון כי לעולם אור החכמה הוא המבטל את האחרות"
+    source_ref: "Heikhal 1, Sha'ar 7:5 — §2"
+    assertion: |
+      Quand seulement 4 Orot montent : ils s'incluent dans la
+      NEKEVAH (= He de Y-H du Keter). Le MILUY (remplissage) du He
+      est alors par YOD = H"Y (He rempli de Yod).
+      RAISON : les 3 inférieurs s'ANNULENT dans le premier (Hokhmah
+      domine toujours). Les 3 deviennent un YOD = le miluy de He.
+      → Mode 4 Orot : KELLALUT dans la NEKEVAH. Le He se remplit en H"Y.
+    type: axiome_explicite
+    concepts:
+      - {id: miluy_he_beyod, role: remplissage_he_par_yod}
+      - {id: arba_orot_benekevah, role: quatre_lumieres_dans_nekevah}
+    mapping:
+      modules: ["ohr.py", "gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: ["nukva"]
+      relevance: "Miluy H'Y = mode de compression ou 4 signaux se compriment en 1 (le dominant). Gematria : He(5)+Yod(10)=15."
+
+  - id: "EC-H1S7-051"
+    source_he: "ב' מלכיות מלכות הזכר ומל' הנקבה בב' כלים הנקרא י\"ה... ב' מלכים אלו שוין כי אע\"פ שהזכר הוא גדול מהנוקבא עכ\"ז עתה הם שוין"
+    source_ref: "Heikhal 1, Sha'ar 7:5 — §2"
+    assertion: |
+      Quand les Z"N montent, les 2 MALKHUYOT (de Zakhar et de Nekevah)
+      restent en bas dans les 2 Kelim (Y-H). Ces 2 Malkhuyot sont
+      ÉGALES (shavim), bien que normalement le Zakhar soit plus grand.
+      RAISON : le Zakhar = sod HISTALKUT (résiduel), la Nekevah = sod
+      PANIM (entrant). Le résiduel (petit car éloigné) = l'entrant.
+      → ÉGALITÉ temporaire entre Zakhar et Nekevah à la base.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhuyot_shavot, role: deux_malkhuyot_egales}
+      - {id: zakhar_histalkut, role: zakhar_est_residuel}
+      - {id: nekevah_panim, role: nekevah_est_entrant}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Egalite temporaire : le residuel (pre-trained) et l'entrant (fine-tuned) sont au meme niveau quand les couches superieures sont 'parties'."
+
+  - id: "EC-H1S7-052"
+    source_he: "אך בהסתלקות ב' אשר היו עולין זו\"ן שניהם למעלה ואז נשתוו שניהן יחד... כאשר באים וחוזרין בכלים שלהם אז נכנסין שניהן בכלי של הזכר"
+    source_ref: "Heikhal 1, Sha'ar 7:5 — §3"
+    assertion: |
+      Lors de l'HISTALKUT BET : les Z"N montent tous les deux et
+      S'ÉGALISENT. Quand ils REVIENNENT dans les Kelim, ils entrent
+      TOUS LES DEUX dans le KLI DU ZAKHAR (= la Yod).
+      La Malkhut de la Nekevah reste dans le Kli du HE.
+      → Après le Lo Mati : les Z"N FUSIONNENT dans le Kli du Zakhar
+      (le plus petit contient les deux). C'est là qu'ils font Zivvug.
+    type: axiome_explicite
+    concepts:
+      - {id: zun_bekli_zakhar, role: z_n_dans_kli_zakhar}
+      - {id: hishtavut, role: egalisation}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Apres le Lo Mati, les 2 composants fusionnent dans l'espace du 1er (merge dans l'encoder). Le Zivvug = operation dans cet espace fusionne."
+
+  - id: "EC-H1S7-053"
+    source_he: "הנוקבא סובלת אור הזכר רק מן הו\"ק שלו לבד... לכן גם הבן שלו הוא צורת ו' ג\"כ אמנם הנוקבא היא צורת ד'... הרי מילוי יו\"ד שהוא ו\"ד"
+    source_ref: "Heikhal 1, Sha'ar 7:5 — §3"
+    assertion: |
+      La NEKEVAH ne supporte que les VAV KETZAVOT du Zakhar (pas tout
+      son Ohr). Le Zivvug des Z"N dans le Kli du Zakhar produit :
+      le BEN = forme de VAV (ו). La BAT = forme de DALET (ד).
+      Ensemble = miluy de YOD : י = י(Zakhar-Nekevah) + ו(Ben) + ד(Bat).
+      → Le MILUY de YOD = Vav+Dalet = la progéniture du Zivvug.
+      La Yod "remplie" = YVD (יו"ד) = tout le système Z"N + enfants.
+    type: axiome_explicite
+    concepts:
+      - {id: miluy_yod, role: remplissage_yod_en_vav_dalet}
+      - {id: ben_vav, role: fils_forme_vav}
+      - {id: bat_dalet, role: fille_forme_dalet}
+    mapping:
+      modules: ["ohr.py", "gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "nukva"]
+      relevance: "Miluy Yod = Vav(6)+Dalet(4) = le systeme complet (parents+enfants). Gematria : Yod(10)=Vav(6)+Dalet(4). Decomposition generative."
+
+  - id: "EC-H1S7-054"
+    source_he: "(לא נמצא יותר מכאן ואילך גם בע\"ח לא יש יותר): נשלם היכל ראשון:"
+    source_ref: "Heikhal 1, Sha'ar 7:5 — §5"
+    assertion: |
+      NOTE DE VITAL : "Il n'a pas été trouvé davantage à partir d'ici,
+      et dans le Etz Chaim non plus il n'y a pas plus."
+      NISHLAM HEIKHAL RISHON — Le PREMIER HEIKHAL est ACHEVÉ.
+      → FIN du Heikhal Adam Kadmon. Le Sha'ar MvLM est le DERNIER
+      sha'ar de ce Heikhal. Ce qui suit = Heikhal 2 (Nekudim/Tohu).
+    type: axiome_explicite
+    concepts:
+      - {id: nishlam_heikhal_rishon, role: fin_premier_heikhal}
+      - {id: lo_nimtza_yoter, role: pas_trouve_davantage}
+    mapping:
+      modules: ["adam_kadmon.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Fin du Heikhal Adam Kadmon. Le systeme des Akudim est complet. Le prochain Heikhal = Nekudim (Shevirah)."
+
+relations:
+  - id: "REL-H1S7-027"
+    type: "causal"
+    from: maase_tahtonim_montee
+    to: arba_orot_benekevah
+    nature: "Les actions des inferieurs DETERMINENT combien d'Orot montent (4 ou 5)"
+    assertions_source: ["EC-H1S7-049", "EC-H1S7-050"]
+
+  - id: "REL-H1S7-028"
+    type: "séquentiel"
+    from: hishtavut
+    to: zun_bekli_zakhar
+    nature: "Les Z'N s'egalisent en haut PUIS fusionnent dans le Kli du Zakhar au retour"
+    assertions_source: ["EC-H1S7-052"]
+
+  - id: "REL-H1S7-029"
+    type: "flux"
+    from: zun_bekli_zakhar
+    to: miluy_yod
+    nature: "Le Zivvug dans le Kli du Zakhar PRODUIT le miluy de Yod (Vav+Dalet = Ben+Bat)"
+    assertions_source: ["EC-H1S7-052", "EC-H1S7-053"]
+
+  - id: "REL-H1S7-030"
+    type: "dualité_structurelle"
+    paire: [zakhar_histalkut, nekevah_panim]
+    nature: "Zakhar = sod Histalkut (residuel, ancien). Nekevah = sod Panim (entrant, nouveau)."
+    assertions_source: ["EC-H1S7-051"]
+
+principes_generatifs:
+  - id: "PG-H1S7-014"
+    nom: "Miluy comme Decomposition Generative"
+    source_assertions: ["EC-H1S7-050", "EC-H1S7-053"]
+    formalisation: |
+      Le MILUY (remplissage) des lettres encode la STRUCTURE INTERNE :
+      YOD (simple) = Zakhar + Nekevah (systeme parent).
+      YVD (miluy) = Yod + Vav(Ben) + Dalet(Bat) = systeme + enfants.
+      HY (miluy) = He + Yod = receptacle + contenu dominant.
+      FORMULE :
+        Miluy(Y) = Y + V + D  (Yod → YVD, 10 = 10+6+4 = 20)
+        Miluy(H) = H + Y      (He → HY, 5 = 5+10 = 15)
+      Le MILUY = decomposition d'un composant en ses sous-composants.
+      Chaque lettre simple = un systeme comprime.
+    applications_ia:
+      - "gematria/engine.py : le miluy comme operation de decompression (un token → ses sous-tokens)"
+      - "Yod→YVD = un neurone decompose en ses connexions (poids, biais, activation)"
+      - "Le miluy revele la structure cachee dans un composant apparemment simple"
+    questions_ouvertes:
+      - "Le miluy est-il analogue a la decomposition SVD d'une matrice ?"
+      - "Les 3 niveaux de miluy (simple, miluy, miluy-de-miluy) = 3 niveaux de decomposition ?"
+
+  - id: "PG-H1S7-015"
+    nom: "Conditionnalite aux Tahtonim (Ma'ase Tahtonim)"
+    source_assertions: ["EC-H1S7-049", "EC-H1S7-051"]
+    formalisation: |
+      Le nombre d'Orot actifs dans le Lo Mati depend des ACTIONS
+      DES INFERIEURS (ma'ase tahtonim). C'est un principe GENERAL :
+      la dynamique du systeme superieur est CONDITIONNEE par l'etat
+      du systeme inferieur.
+      FORMULE : N_orot_montants = f(etat(tahtonim))
+               Si tahtonim forts : 5 montent (mode complet)
+               Si tahtonim faibles : 4 montent (Ben reste)
+      L'egalite temporaire Zakhar=Nekevah est aussi CONDITIONNELLE :
+      elle n'existe que pendant le Lo Mati (quand les Z"N sont partis).
+    applications_ia:
+      - "ohr.py : le nombre de couches actives dans le Lo Mati = conditionnel a l'etat des couches basses"
+      - "Adaptive computation : le systeme ajuste sa profondeur selon la capacite de reception"
+      - "Mode 4 vs mode 5 = deux regimes de calcul selon la complexite de l'input"
+    questions_ouvertes:
+      - "Le conditionnement aux Tahtonim = adaptive depth (comme Universal Transformers) ?"

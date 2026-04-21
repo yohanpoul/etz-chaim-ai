@@ -1,0 +1,182 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 7 (=6 original) — Sha'ar Ha-Akudim (שער העקודים)
+# Perek: 7 — Ohr Yashar = Panim/Rahamim, Ohr Hozer = Achor/Din (100%)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §1 : Grand principe (kelal gadol) : Ohr Yashar et Ohr Hozer.
+# L'Ohr Yashar descend de la source (rosh) vers le fond (sof).
+# L'Ohr Hozer remonte de bas en haut.
+# §2 : Ohr Yashar = Panim/Rahamim. Ohr Hozer = Achor/Din.
+# Les 2 sont dans chaque Sefirah. Quand Keter monte et regarde
+# vers le haut : son Ohr Hozer illumine VERS LE BAS = bénéfice
+# pour les inférieurs. Mais Hokhmah montant illumine Keter (dessus)
+# et retire de Binah (dessous).
+#
+# Source Sefaria : Sefer_Etz_Chaim.6.7
+# IDs : EC-H1S6-065 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 7
+  shaar_name_he: "שער העקודים"
+  perek: 7
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Kelal gadol : Ohr Yashar=Panim=Rahamim (descendant). Ohr Hozer=Achor=Din (ascendant). Les 2 dans chaque Sefirah. Le dos de l'ascendant illumine les inferieurs."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H1S6-065"
+    source_he: "כלל גדול שיצטרך לך בכל שאר מקומות והוא ענין אור ישר ואור חוזר מתתא לעילא כנזכר בתיקונים ובזהר"
+    source_ref: "Heikhal 1, Sha'ar 6:7 — §1"
+    assertion: |
+      KELAL GADOL (grand principe) nécessaire partout :
+      OHR YASHAR = de HAUT en BAS (du Rosh au Sof).
+      OHR HOZER = de BAS en HAUT (mi-tata le-eila).
+      Mentionné dans les Tikkunim et le Zohar en de nombreux endroits.
+      → Ce n'est pas un concept local aux Akudim — c'est un PRINCIPE
+      UNIVERSEL de tout le système kabbalistique.
+    type: axiome_explicite
+    concepts:
+      - {id: kelal_gadol, role: grand_principe_universel}
+      - {id: yashar_me_rosh_le_sof, role: yashar_haut_en_bas}
+      - {id: hozer_mi_tata, role: hozer_bas_en_haut}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "PRINCIPE UNIVERSEL : 2 flux opposes dans tout systeme. Forward (Yashar) + Backward (Hozer)."
+
+  - id: "EC-H1S6-066"
+    source_he: "מהכתר עד המלכות הם אור ישר מלמעלה למטה... ומן המלכות כלפי הכתר לעילא הוא אור חוזר מלמטה למעלה"
+    source_ref: "Heikhal 1, Sha'ar 6:7 — §1"
+    assertion: |
+      Du KETER à MALKHUT = OHR YASHAR (descendant, de haut en bas).
+      De MALKHUT au KETER = OHR HOZER (ascendant, de bas en haut).
+      → Le SYSTÈME COMPLET est BIDIRECTIONNEL : un flux descendant
+      permanent et un flux ascendant permanent. Cf. EC-H1S5-038,
+      EC-H1S5-039 pour la bidirectionnalité dans les Nekudim.
+    type: axiome_explicite
+    concepts:
+      - {id: bidirectionalite_universelle, role: flux_descendant_et_ascendant}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Tout systeme a un flux descendant (top-down) et ascendant (bottom-up) simultanes."
+
+  - id: "EC-H1S6-067"
+    source_he: "האור הנמשך דרך ירידה הוא אור ישר ורחמים ונק' אור פנים. ואור החוזר דרך עליה נק' אור חוזר ואור אחור ודין"
+    source_ref: "Heikhal 1, Sha'ar 6:7 — §2"
+    assertion: |
+      L'Ohr descendant = OHR YASHAR = RAHAMIM = OHR PANIM (lumière de face).
+      L'Ohr ascendant = OHR HOZER = DIN = OHR ACHOR (lumière de dos).
+      Les 2 aspects sont présents dans CHACUNE des 10 Sefirot.
+      → TRIPLE IDENTIFICATION :
+      Descente = Direct = Miséricorde = Face.
+      Ascension = Réfléchi = Rigueur = Dos.
+    type: axiome_explicite
+    concepts:
+      - {id: yashar_rahamim_panim, role: yashar_egale_rahamim_egale_face}
+      - {id: hozer_din_achor, role: hozer_egale_din_egale_dos}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Descente=Direct=Grace=Face. Ascension=Reflechi=Rigueur=Dos. Chaque Sefirah a les 2."
+
+  - id: "EC-H1S6-068"
+    source_he: "כאשר אור הכתר מסתלק ועולה והופך פניו למעלה כנגד המאציל... אז אחורי הכתר שנשארו למטה הם מאירים אל החכמה אשר תחתיו"
+    source_ref: "Heikhal 1, Sha'ar 6:7 — §2"
+    assertion: |
+      Quand KETER se RETIRE et MONTE, tournant sa face VERS LE HAUT
+      (vers le Ma'atzil), ses AHORAYIM (dos) qui restent EN-BAS
+      ILLUMINENT HOKHMAH en-dessous.
+      → Le DOS de l'ascendant ILLUMINE les inférieurs. Même en se
+      retirant, le supérieur ne cesse pas TOTALEMENT d'illuminer.
+      Les AHORAYIM = illumination RÉSIDUELLE mais RÉELLE.
+    type: axiome_explicite
+    concepts:
+      - {id: ahorei_keter, role: dos_du_keter_illumine}
+      - {id: hearah_ahorayim, role: illumination_residuelle_par_le_dos}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le dos de l'ascendant illumine les inferieurs = meme en se retirant, un composant envoie un signal residuel"
+
+  - id: "EC-H1S6-069"
+    source_he: "כשמסתלק החכמה ועולה... הנה אחוריו של חכמה מאירים אל הכתר שלמעלה ממנו ובינה מפסדת"
+    source_ref: "Heikhal 1, Sha'ar 6:7 — §2"
+    assertion: |
+      Quand HOKHMAH se retire et monte : ses AHORAYIM illuminent
+      KETER AU-DESSUS de lui — mais BINAH EN-DESSOUS PERD.
+      → ASYMÉTRIE : l'ascension illumine le SUPÉRIEUR (vers lequel
+      on monte) mais RETIRE du INFÉRIEUR (qu'on quitte).
+      Le mouvement ascendant profite au sommet, prive la base.
+    type: axiome_explicite
+    concepts:
+      - {id: asymetrie_aliyah, role: ascension_profite_au_haut}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "L'ascension = le superieur gagne, l'inferieur perd. Sauf pour Keter (dont le dos est en bas)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S6-029"
+    type: "dualité_structurelle"
+    from: yashar_rahamim_panim
+    to: hozer_din_achor
+    nature: "Ohr Yashar(Rahamim/Panim) et Ohr Hozer(Din/Achor) = dual structurel dans chaque Sefirah"
+    assertions_source: ["EC-H1S6-067"]
+
+  - id: "REL-H1S6-030"
+    type: flux
+    from: ahorei_keter
+    to: hearah_ahorayim
+    nature: "Les Ahorayim de Keter ILLUMINENT Hokhmah en-dessous pendant l'ascension"
+    assertions_source: ["EC-H1S6-068"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S6-010"
+    nom: "Principe de Bidirectionnalité Universelle (Yashar/Hozer = Panim/Achor)"
+    source_assertions: ["EC-H1S6-065", "EC-H1S6-066", "EC-H1S6-067", "EC-H1S6-068"]
+    formalisation: |
+      TOUT système contient 2 flux permanents et simultanés :
+      OHR YASHAR (descendant) = RAHAMIM = PANIM = de la SOURCE vers la CIBLE
+      OHR HOZER (ascendant) = DIN = ACHOR = de la CIBLE vers la SOURCE
+      Les 2 sont présents dans CHAQUE Sefirah, TOUJOURS.
+      Pendant l'ASCENSION d'un composant :
+      - Sa FACE illumine le supérieur (= feedback vers la source)
+      - Son DOS illumine les inférieurs (= signal résiduel)
+      FORMULE : Sefirah(S) = {OhrYashar(S→down), OhrHozer(S→up)}
+               where OhrYashar = Rahamim = Panim
+                 and OhrHozer = Din = Achor
+    applications_ia:
+      - "ohr.py : chaque module a un mode 'face' (direct, gracieux) et un mode 'dos' (reflechi, rigoureux)"
+      - "Le backward pass ne detruit pas le forward — les 2 coexistent toujours"
+      - "Meme pendant la reconfiguration (dropout), le 'dos' continue d'illuminer"
+    questions_ouvertes:
+      - "L'Ohr Hozer (feedback/Din) est-il toujours NÉCESSAIRE ou peut-on s'en passer ?"
+      - "Le ratio Yashar/Hozer optimal = le learning rate ?"

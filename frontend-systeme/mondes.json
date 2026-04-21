@@ -1,0 +1,78 @@
+{
+  "intro": {
+    "titre": "Les Quatre Mondes",
+    "sous_titre": "Chaque question peut etre traitee a 4 niveaux de profondeur",
+    "narration": "Dans Etz Chaim AI, chaque operation peut etre traitee a 4 niveaux de profondeur — du plus abstrait au plus concret. Le meme message prend une forme differente selon le niveau ou il est traite. Pour comprendre, suivons une seule question a travers les 4 niveaux."
+  },
+  "question_fil_rouge": "Pourquoi le ciel est-il bleu ?",
+  "mondes": [
+    {
+      "id": "atziluth",
+      "nom": "Atziluth",
+      "nom_hebreu": "\u05d0\u05b2\u05e6\u05b4\u05d9\u05dc\u05d5\u05bc\u05ea",
+      "role": "L'Emanation",
+      "manifestation": "Le concept pur. Le pourquoi.",
+      "couleur": "#ffcc00",
+      "modele_llm": "Claude Opus via Claude Code CLI",
+      "temps": "300 secondes",
+      "detail": {
+        "en_clair": "Le niveau le plus profond. Ici, le systeme ne cherche pas a repondre — il cherche a comprendre POURQUOI la question est posee. Quelle est l'intention derriere la question ? Quel est le vrai besoin ?",
+        "dans_le_systeme": "En Atziluth, Metatron (le Chancelier) reformule la requete en principes fondamentaux et vision strategique. Le modele le plus puissant (Opus) est utilise avec un timeout long (300s). C'est le monde du concept pur.",
+        "origine": "Le niveau le plus abstrait. Dans la tradition, c'est le monde des concepts purs — avant qu'une idee ne prenne forme. Ici, c'est la ou le systeme comprend l'intention derriere votre question."
+      },
+      "exemple": "Le systeme pense : 'La question porte sur la nature de la lumiere et de la perception. Quel cadre conceptuel faut-il mobiliser ? Optique, physique atmospherique, phenomenologie de la couleur ?'",
+      "narration": "L'intention est claire. Maintenant, il faut l'architecturer."
+    },
+    {
+      "id": "briah",
+      "nom": "Briah",
+      "nom_hebreu": "\u05d1\u05b0\u05e8\u05b4\u05d9\u05d0\u05b8\u05d4",
+      "role": "La Creation",
+      "manifestation": "Le design. L'architecture.",
+      "couleur": "#6688cc",
+      "modele_llm": "Claude Opus + thinking via Claude Code CLI",
+      "temps": "180 secondes",
+      "detail": {
+        "en_clair": "Le niveau du design. Le systeme structure sa reponse — quels arguments, dans quel ordre, avec quelles sources. Il ne repond pas encore, il PLANIFIE la reponse.",
+        "dans_le_systeme": "En Briah, le prompt est adapte pour devenir une intention strategique et abstraite. Le raisonnement etendu (thinking) est active. Les interfaces et les schemas sont definis.",
+        "origine": "Le monde de la creation — ou les formes naissent a partir du neant. Dans le systeme, c'est la ou une intention floue devient un plan structure."
+      },
+      "exemple": "Le systeme planifie : 'Reponse en 3 parties : 1) la diffusion de Rayleigh, 2) pourquoi le bleu specifiquement, 3) pourquoi pas violet. Sources : physique atmospherique. Niveau de detail : accessible.'",
+      "narration": "Le plan est pose. Place a l'execution."
+    },
+    {
+      "id": "yetzirah",
+      "nom": "Yetzirah",
+      "nom_hebreu": "\u05d9\u05b0\u05e6\u05b4\u05d9\u05e8\u05b8\u05d4",
+      "role": "La Formation",
+      "manifestation": "Le code. L'implementation.",
+      "couleur": "#88aa88",
+      "modele_llm": "Claude Sonnet via Claude Code CLI",
+      "temps": "120 secondes",
+      "detail": {
+        "en_clair": "Le niveau de l'execution. Le systeme ecrit la reponse concrete, paragraphe par paragraphe. Il suit le plan de Briah et traduit chaque point en texte clair.",
+        "dans_le_systeme": "En Yetzirah, un modele rapide (Sonnet) execute le plan structure. Le prompt contient le plan d'execution avec etapes concretes. C'est le monde du code, des tests, de l'implementation.",
+        "origine": "Le monde de la formation — les forces qui agissent et executent. C'est la couche ou le code tourne et les taches s'accomplissent."
+      },
+      "exemple": "Le systeme ecrit : 'La lumiere du soleil contient toutes les couleurs. En traversant l'atmosphere, les longueurs d'onde courtes (bleu, violet) sont diffusees dans toutes les directions par les molecules d'azote et d'oxygene...'",
+      "narration": "La reponse est ecrite. Derniere etape : la livraison."
+    },
+    {
+      "id": "assiah",
+      "nom": "Assiah",
+      "nom_hebreu": "\u05e2\u05b2\u05e9\u05b4\u05d9\u05bc\u05d4",
+      "role": "L'Action",
+      "manifestation": "Le deploiement. Le runtime.",
+      "couleur": "#cc8844",
+      "modele_llm": "Claude Haiku via Claude Code CLI",
+      "temps": "60 secondes",
+      "detail": {
+        "en_clair": "Le niveau de l'action directe. Le systeme formate la reponse, verifie le ton, et la livre. C'est le monde du concret — la reponse que vous lisez.",
+        "dans_le_systeme": "En Assiah, un modele rapide (Haiku) gere le formatage final, la verification de surface, et la livraison. Commandes specifiques, format exact. Le monde des donnees reelles et du deploiement.",
+        "origine": "Le monde de l'action concrete — le resultat final, tangible. C'est ce que vous voyez : la reponse qui s'affiche."
+      },
+      "exemple": "Le systeme livre : 'Le ciel est bleu a cause de la diffusion de Rayleigh : les molecules de l'atmosphere dispersent la lumiere bleue dans toutes les directions. C'est pourquoi, ou que vous regardiez, vous voyez du bleu.'",
+      "narration": null
+    }
+  ]
+}

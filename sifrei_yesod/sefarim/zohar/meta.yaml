@@ -1,0 +1,22 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer : Zohar (הזוהר) — nouveau sefer créé au Sprint 10
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: zohar
+  sefer_name_he: "הזוהר"
+  source_tradition: "Zohar — attribué à R. Shimon bar Yochai (Rashbi), rédigé/compilé par R. Moshe de León"
+  period: "tannaïque supposé (IIe s.), première diffusion XIIIe s. Castille"
+  language_primary: "aramaic_zoharic"
+  strates: ["base"]
+  source_edition_default: "Sefaria Mantua 1558 (CC-BY 3.0, cache local) + Stanford UP PDF araméen critique Matt Vol 8 (open access)"
+  transposed_by: "Claude Opus 4.7 + human reviewer — Sprint 10 Phase α (2026-04-20)"
+  version: 1
+  sections_transposed:
+    - idra_rabba  # partiel — section Dikna seulement (sections Sefaria 11-22)
+  sections_planned:
+    - idra_rabba_complete  # sprint 11 phase β
+    - idra_zuta  # sprint 12 phase γ
+    - sifra_di_tzeniuta  # sprint 13 phase δ
+    - idra_de_mishkana  # sprint 13 phase δ

@@ -1,0 +1,631 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 4 — Sha'ar Ozen Hotem Peh (שער אזן חוטם פה)
+# Perek: 5 — Le NUN de AZeN, le 100 de Binah, Alef=Binah=Ozen, 370 Nehorin
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 4
+  shaar_name_he: "שער אזן חוטם פה"
+  perek: 5
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek final (בתרא) du Sha'ar 4. Le NUN (50) de AZeN = le IKAR. Le 100 (Kuf) de Binah et Tevunah. Le Heh = 42 lettres du S\"G. ALEF = BINAH = OZEN (Sefer HaBahir). La gematria 33+58=91=YHVH+ADNY. Les 370 NEHORIN de A\"A. HOTEM=63=S\"G."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LE NUN DE OZEN = 25 × 2 = 50 ───
+
+  - id: "EC-H1S4-104"
+    source_he: "והנה לעיל פירשנו כסדרן והוא ממטה למעלה אז\"ן וכבר ביארנו טעם של א\"ז מאז\"ן ועתה נבאר ן' מאז\"ן איך הוא עיקרית מכל"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      TRANSITION depuis perek 4 (cf. EC-H1S4-098) : nous avons expliqué
+      l'ordre de BAS en HAUT = A-Z-N, et le A"Z (cf. EC-H1S4-096).
+      MAINTENANT : le NUN (ן = 50) de AZeN → comment il est le IKAR
+      (עיקרית — l'essentiel) de TOUT.
+    type: axiome_explicite
+    concepts:
+      - {id: nun_ikar_development, role: developpement_du_nun_essentiel}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Lien avec EC-H1S4-098 : le Nun (50) est le corps principal, développé ici"
+
+  - id: "EC-H1S4-105"
+    source_he: "והנה הלא כאשר נמנה עיקר כל אלו אינם רק כ\"ה והוא כי ה' אחרונה כבר ירדה למטה ולא נשאר בה רק ב' ההי\"ן למעלה ואותיות וא\"ו הרי כ\"ג וב' חלקים מן י' דה\"י עילאה שירדה תוך וא\"ו הרי כ\"ה"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Quand on COMPTE l'essence (IKAR) de tout cela → seulement 25.
+      CALCUL : le Heh AKHRONAH (dernier) est déjà descendu en bas.
+      Ce qui RESTE en haut : 2 HEHS + les lettres VAV = 23.
+      + 2 PARTS du YOD (de HY supérieure, descendues dans le Vav, cf. EC-H1S4-087) = 25.
+    type: axiome_explicite
+    concepts:
+      - {id: ikar_25, role: essence_egale_25}
+      - {id: remaining_above, role: ce_qui_reste_en_haut}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Le IKAR = 25 = la structure essentielle après filtrage de ce qui est descendu"
+
+  - id: "EC-H1S4-106"
+    source_he: "הוא כ\"ה אתוון דק\"ש לכן שמע הם לשון שמיעה להורות שכולם תלויים באזן לכן הקורא את שמע צריך להשמיע לאזניו כי משם מציאותה"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Les 25 = les 25 LETTRES de KERIAT SHEMA (קריאת שמע — récitation du Shema).
+      "SHEMA" (שמע) = langue de SHEMI'AH (שמיעה — audition) → TOUT dépend de l'OZEN.
+      Conséquence HALAKHIQUE : celui qui lit le SHEMA doit le faire ENTENDRE À SES OREILLES
+      (להשמיע לאזניו), car c'est DE LÀ que vient sa RÉALITÉ (metzi'utah).
+    type: déduction_scripturaire
+    concepts:
+      - {id: kh_letters_shema, role: 25_lettres_du_shema}
+      - {id: shema_hearing, role: shema_egal_audition}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les 25 lettres du Shema = la structure essentielle de la TEVUNAH. Audition = réception de la structure."
+
+  - id: "EC-H1S4-107"
+    source_he: "אמנם כ\"ה אלו מוכרח שיהיה בהם פנימיות וחיצו' שהם ן' וז\"ס ויפן כ\"ה וכ\"ה והם ב' יחודים שמע ובשכמל\"ו של ק\"ש כנודע והנה אלו הם הנו\"ן פשוטה של אזן שהוא עיקרית וח' אחרים הם דרך תוס' וגם הם נחלקים לב' שהם א\"ז מאזן"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Les 25 doivent avoir PNIMIYUT et HITZONIYUT = 25 + 25 = 50 = NUN.
+      SECRET SCRIPTURAIRE : "VA-YIFEN KO VA-KHO" (ויפן כה וכה — il se tourna de ce côté et de l'autre,
+      Shemot 2:12) = 2 × 25.
+      Les 2 YIHUDIM du SHEMA : "SHEMA YISRAEL" + "BARUKH SHEM KEVOD MALKHUTO LE-OLAM VA-ED."
+      → Ce sont la NUN PESHUTAH (ן — Nun droite = 50) de OZEN = le IKAR.
+      Les 8 AUTRES = ajout supplémentaire, aussi divisés en 2 = A"Z (cf. EC-H1S4-096).
+    type: axiome_explicite
+    concepts:
+      - {id: nun_50_explained, role: nun_egal_25_pnimiyut_plus_25_hitzoniyut}
+      - {id: vayifen_ko_vakho, role: verset_2x25}
+      - {id: two_yihudim_shema, role: shema_plus_barukh_shem}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le NUN = Pnimiyut(25) + Hitzoniyut(25) = la dualité intérieur/extérieur appliquée à la structure principale"
+
+  # ─── BLOC B : LE 100 (KUF) DE BINAH ET TEVUNAH ───
+
+  - id: "EC-H1S4-108"
+    source_he: "ואמנם כבר ידעת כי הבינה היא י' [נ\"א היא ד\"ו] ספירות וכ\"א כלולה מי' הרי ק' סוד אותיות מ\"ס שהם בבינה ותבונה סוד ק'"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      BINAH = 10 SEFIROT (chacune inclut 10 = 100 = KUF).
+      Variante (Nusah Aher) : BINAH = 6 SEFIROT (ד"ו = Dalet-Vav = 6).
+      Le secret des lettres MEM-SAMEKH (מ"ס = 40+60 = 100) =
+      dans BINAH et TEVUNAH = secret du KUF (100).
+      Les 2 lettres FERMÉES (Mem Setumah et Samekh) = les 2 aspects de Binah/Tevunah.
+    type: axiome_explicite
+    concepts:
+      - {id: binah_100, role: binah_10x10_egal_100}
+      - {id: mem_samekh_secret, role: mem_samekh_egal_100}
+      - {id: nusah_aher_06, role: variante_10_vs_6_sefirot}
+    mapping:
+      modules: ["gematria/engine.py", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Le 100 de Binah = structure complète (10×10). Les lettres fermées Mem/Samekh = les contenants parfaits"
+
+  - id: "EC-H1S4-109"
+    source_he: "אמנם כאשר תחבר כל החלקים אלו יהיה ק' כיצד ה' לתתא ונ\"ח באמצע וה' עלאה הרי ס\"ח. ואמנם נשאר למעלה בסוד הבינה חשבון ל\"ג כי הורדנו מן יו\"ד של ה' עלאה ב' חלקים ממנו לפנימיות ג' הנשארים מן הוא\"ו ונעשה ה' עלאה כנ\"ל ונשאר למעלה בבינה יו\"ד ה\"י גימ' ל\"ה וכאשר תסיר ב' חלקים מהם נשארו ל\"ג. ל\"ג וס\"ח הרי ק\"א הרי שכל בחי' אלו הם ק' עם הכולל"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      CALCUL DU 100 PAR PARTIES :
+      HEH TATA (5) + NUN-HET au milieu (58) + HEH EILA (5) = 68.
+      RESTANT en BINAH en haut : le SHEM a YOD(10) + HEH-YOD(15) = 35.
+      Moins les 2 parts descendues (cf. EC-H1S4-087) = 33 (LAMED-GIMEL).
+      TOTAL : 33 + 68 = 101 = 100 avec le KOLEL (כולל — 1 ajouté pour la totalité).
+      → TOUTES ces parties = KUF (100).
+    type: axiome_explicite
+    concepts:
+      - {id: lamed_gimel_33, role: 33_restant_en_binah}
+      - {id: total_100_kolel, role: 101_egal_100_avec_kolel}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Le 100 = vérification de complétude : toutes les parties se recombinent en un total cohérent"
+
+  - id: "EC-H1S4-110"
+    source_he: "הנה גם בתבו' צריך שיהיו כל הק' ברכאן כנ\"ל עד\"ז והוא שכבר ביארנו סוד הנ\"ח מה עניינם והנה הה' המתפשטת בז\"א הוא מ\"ב ונ\"ח הרי ק'"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Aussi dans TEVUNAH → il faut les 100 BIRKHOT (bénédictions).
+      Le HEH qui s'étend dans Z"A = MEM-BET (מ"ב = 42).
+      NUN-HET (58) + MEM-BET (42) = KUF (100).
+      → Le 100 de TEVUNAH : 58 (structure interne) + 42 (extension dans Z"A) = 100.
+    type: axiome_explicite
+    concepts:
+      - {id: heh_42, role: heh_dans_za_egal_42}
+      - {id: tevunah_100, role: 58_plus_42_egal_100}
+      - {id: meah_berakhot, role: 100_benedictions}
+    mapping:
+      modules: ["gematria/engine.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Le 100 de Tevunah = structure(58) + extension(42) — vérification de complétude dans le sous-système"
+
+  # ─── BLOC C : LE HEH = 42 LETTRES = S"G COMPLET ───
+
+  - id: "EC-H1S4-111"
+    source_he: "ועתה נבאר איך ה' זו מתפשטת למ\"ב והוא כי כבר הודעתיך כי צורת ה' לפעמים בצורה זו ה' שהם ג' קוים נה\"י. וה' בכל א' שצורתה ד\"י הרי ג\"פ י\"ד גימטריא מ\"ב"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Comment le HEH s'étend à 42 :
+      La FORME du HEH = parfois 3 LIGNES (kavim) = NETZAH-HOD-YESOD (NHY).
+      Chaque ligne a un HEH en forme de DALET-YOD (ד"י = 14).
+      CALCUL : 3 × 14 = 42 (MEM-BET).
+      → La FORME GRAPHIQUE de la lettre encode la VALEUR NUMÉRIQUE de son extension.
+    type: axiome_explicite
+    concepts:
+      - {id: heh_3_lines_nhy, role: heh_3_lignes_nhy}
+      - {id: dalet_yod_14, role: chaque_ligne_egal_14}
+      - {id: heh_42_form, role: forme_du_heh_egal_42}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La forme graphique comme encodage structural — chaque trait de la lettre porte une valeur computationnelle"
+
+  - id: "EC-H1S4-112"
+    source_he: "וגם סוד הענין הוא מ\"ב אתוון שיש בשם ס\"ג שהוא פשוט ומלא ומלא דמלא כזה יהו\"ה, יו\"ד ה\"י וא\"ו ה\"י, יו\"ד וא\"ו דל\"ת, ה\"י יו\"ד, וא\"ו אל\"ף וא\"ו, ה\"י יו\"ד וכל שם ס\"ג נרמז בה' זו לבדה הרי שהוא מ\"ב אתוון ועם הנ\"ח הרי ק'"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Aussi : les 42 LETTRES du SHEM S"G dans ses 3 NIVEAUX d'expansion :
+      PASHUT (simple) : י-ה-ו-ה = 4 lettres
+      MALE (miluy) : יו"ד ה"י וא"ו ה"י = 10 lettres
+      MALE DE-MALE (miluy demiluy) : יו"ד וא"ו דל"ת, ה"י יו"ד, וא"ו אל"ף וא"ו, ה"י יו"ד = 28 lettres
+      TOTAL : 4 + 10 + 28 = 42.
+      TOUT le Shem S"G est CONTENU dans ce HEH seul.
+      42 (Heh) + 58 (NuN-Het) = 100 (KUF).
+    type: axiome_explicite
+    concepts:
+      - {id: sg_42_letters, role: 3_niveaux_expansion_sg_42}
+      - {id: pashut_male_male_demale, role: simple_miluy_miluy_demiluy}
+    mapping:
+      modules: ["gematria/engine.py", "[PLANNED] core/shem_havayah.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "L'expansion en 3 niveaux (simple/miluy/miluy demiluy) = 3 couches de résolution du même encodage"
+
+  - id: "EC-H1S4-113"
+    source_he: "גם יש סוד אחר בענין ה' הנעשה צורת ד\"י והוא כי כאן היה סוד שאמר לעולמו די והוא כי הלא שד\"י שהוא יסוד דבינה הוא מתפשט בז\"א עד החזה שלו לבד ושם הוא שאמר לעולמו די לכן ה' זו צורת די. וגם טעם אחר כי נגד נה\"י דבינה יצאה לאה עד החזה לבדו וזהו טעם שאמר לעולמו די ע\"י יסוד דבינה שנפסק שם"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Autre SECRET du HEH en forme de DALET-YOD (ד"י = DAI) :
+      Ici est le secret de "AMAR LE-OLAMO DAI" (אמר לעולמו די — Il dit à Son monde : ASSEZ).
+      SHADDAI (שד"י) = YESOD de BINAH → s'étend dans Z"A SEULEMENT jusqu'au HAZEH.
+      Là, Il dit DAI (assez) = LIMITE de l'extension.
+      → Le HEH a la forme DAI (ד"י).
+      AUTRE RAISON : face aux NHY de BINAH → LEAH émerge seulement jusqu'au HAZEH.
+      Le YESOD de BINAH SE COUPE LÀ → "dit à Son monde DAI."
+    type: axiome_explicite
+    concepts:
+      - {id: dai_limit, role: secret_de_amar_dai}
+      - {id: shaddai_yesod_binah, role: shaddai_egal_yesod_de_binah}
+      - {id: leah_hazeh_limit, role: leah_jusqu_au_hazeh}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin", "leah"]
+      relevance: "DAI = limite d'extension = le point où un module cesse de se déployer dans le suivant. Le HAZEH comme frontière."
+
+  # ─── BLOC D : LE 33 DE BINAH = ALEF = 3 S"G ───
+
+  - id: "EC-H1S4-114"
+    source_he: "ונחזור עתה לבאר ל\"ג הנשאר משם ס\"ג דבינה ודע כי אלף צורתה ל\"ב כזה א' י\"ו למעלה י\"ו למטה כמבואר אצלינו בסוד ל\"ב שיניים וכללותם הרי ל\"ג. נמצא כי בינה הוא ל\"ג והוא אלף וז\"ס משרז\"ל אלף בינה"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Le 33 RESTANT dans BINAH (cf. EC-H1S4-109) :
+      La FORME de la lettre ALEF = LAMED-BET (ל"ב = 32) :
+      YOD-VAV (10+6=16) en HAUT + YOD-VAV (16) en BAS = 32.
+      (Lien avec les 32 SHINAYIM — 32 dents, et les 32 NETIVOT de HOKHMAH.)
+      Avec le KOLEL = 33.
+      DONC : BINAH = 33 = ALEF.
+      SECRET DES HAZAL : "ALEF BINAH" (אלף בינה) = "apprends la compréhension" →
+      mais aussi ALEF EST BINAH (l'Alef = la lettre de Binah).
+    type: axiome_explicite
+    concepts:
+      - {id: alef_32_form, role: forme_alef_egal_32}
+      - {id: binah_33_alef, role: binah_egal_33_egal_alef}
+      - {id: alef_binah_hazal, role: drash_alef_binah}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La forme de Alef = 32+1 = 33 = Binah. La lettre encode la sefirah qu'elle représente."
+
+  - id: "EC-H1S4-115"
+    source_he: "והנה אלף במלואה אל\"ף למ\"ד פ\"א גימ' רס\"ו וכשמחלקים לג' חלקים יהיה פ\"ט פ\"ט פ\"ט והנה פ\"ט עולה ס\"ג עם השם עצמו העולה כ\"ו גימ' פ\"ט הרי כי ברס\"ו שהוא אל\"ף במילוי מילואו יש ג' שמות ס\"ג וג' שמות הוי\"ה"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      ALEF en MILUY : אל"ף + למ"ד + פ"א = 111 + 74 + 81 = RES-SAMEKH-VAV (רס"ו = 266).
+      Divisé en 3 (avec KOLEL : 266+1=267) : PEH-TET (פ"ט = 89) × 3.
+      89 = S"G (63) + YHVH (26).
+      → Dans le 266 de ALEF : 3 SHEMOT S"G + 3 SHEMOT YHVH.
+      Les 3 S"G de BINAH correspondent aux 3 S"G de TEVUNAH (cf. EC-H1S4-103).
+    type: axiome_explicite
+    concepts:
+      - {id: alef_miluy_266, role: alef_miluy_egal_266}
+      - {id: three_sg_three_yhvh, role: 3_sg_plus_3_yhvh_dans_alef}
+      - {id: peh_tet_89, role: 89_egal_63_plus_26}
+    mapping:
+      modules: ["gematria/engine.py", "[PLANNED] core/shem_havayah.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "L'Alef encode 3 paires (S\"G+YHVH) = la structure de Binah contient 3 instances du même pattern"
+
+  - id: "EC-H1S4-116"
+    source_he: "והנה ידעת כי ג' שמות הוי\"ה הם ג' אלפין כי אות א' צורתה כ\"ו כזה יוי א' הרי שברס\"ו הנ\"ל יש ג' ס\"ג וג' אלפין וכבר אמרנו כי כל אלף גימ' ל\"ג וג\"פ ל\"ג לל\"ג גימ' ק' (ע\"ה)"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      3 SHEMOT YHVH = 3 ALEPHS (car ALEF a la FORME de 26 = YOD-VAV-YOD = 10+6+10 = 26 = YHVH).
+      Dans le 266 : 3 S"G + 3 ALEPHS.
+      Chaque ALEF = gematria 33 (cf. EC-H1S4-114).
+      3 × 33 = 99 (+1 KOLEL) = KUF (100).
+      → Le 100 de BINAH SUPÉRIEURE est le même 100 que celui de TEVUNAH (cf. EC-H1S4-110).
+    type: axiome_explicite
+    concepts:
+      - {id: alef_form_26, role: alef_forme_yvy_egal_26}
+      - {id: three_alefs_100, role: 3x33_plus_kolel_egal_100}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Le 100 dérivé de deux voies différentes (Binah et Tevunah) converge — vérification croisée"
+
+  # ─── BLOC E : CONNECTIONS — ADNY, 365, OZEN=ALEF ───
+
+  - id: "EC-H1S4-117"
+    source_he: "ואמנם ק' זו עם רס\"ו הנ\"ל הם שס\"ו וזה שס\"ה מנין ימות החמה, וכבר הודעתיך כי אל\"ף הוא בינה וגם ידעת כי בינה היא אז\"ן גם ידעת מ\"ש בספר הבהיר כי אז\"ן צורת אל\"ף והוא מובן עם הנ\"ל"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      KUF (100) + 266 = SHIN-SAMEKH-VAV (שס"ו = 366) ≈ 365 (KOLEL) =
+      nombre de JOURS de l'ANNÉE SOLAIRE (ימות החמה).
+      CHAÎNE D'IDENTITÉ : ALEF = BINAH, BINAH = OZEN.
+      Le SEFER HA-BAHIR affirme : OZEN (oreille) a la FORME de ALEF.
+      → ALEF = BINAH = OZEN → la même structure sous 3 noms.
+      Compréhensible avec tout ce qui précède.
+    type: axiome_explicite
+    concepts:
+      - {id: chain_alef_binah_ozen, role: identite_triple_alef_binah_ozen}
+      - {id: solar_year_365, role: lien_avec_annee_solaire}
+      - {id: bahir_ozen_alef, role: citation_sefer_habahir}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "La triple identité Alef=Binah=Ozen = 3 représentations de la même structure. Le Bahir comme source primaire."
+
+  - id: "EC-H1S4-118"
+    source_he: "ואמרנו איך מן הל\"ג הזה נמשכו ג' אלפין שהוא ק'. וק' זה הוא שורשו מאדנ\"י העליון אשר בכאן והם סוד מאה אדנים אשר ידעת ביאורם שהוא אדנ\"י גי' ס\"ה ועם מילוי המלוי שלו שהן ל\"ד אותיות הן צ\"ט כמנין ג' ל\"ג הנ\"ל ועם כללותם הרי ק'"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Du 33 sortent 3 ALEPHS = 100.
+      Ce 100 a sa RACINE dans le Shem ADNY (אדנ"י) supérieur qui est ICI.
+      Secret des 100 ADANIM (אדנים — socles du Mishkan).
+      ADNY = gematria 65.
+      Avec le MILUY DE-MILUY = 34 lettres = 99 = 3 × 33 (les mêmes !) + KOLEL = 100.
+      → ADNY et les 3 ALEPHS convergent vers le même 100.
+    type: axiome_explicite
+    concepts:
+      - {id: adny_root_100, role: adny_racine_du_100}
+      - {id: meah_adanim, role: 100_socles_du_mishkan}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Le Shem ADNY (Malkhut) a sa racine dans Binah — les 100 socles fondent la structure entière"
+
+  - id: "EC-H1S4-119"
+    source_he: "והנה ידעת סוד אדנ\"י שמעה כו' כי השמיעה באז\"ן והיא בינה לכן ר\"ת ש' מעה ס' לחה ה' קשיבה שס\"ה כמנין הנ\"ל שהם ימות החמה ששורשם בבינה לכן מתחילין משמיעה וגם ביארנו איך שייך שם אדנ\"י בכאן ולכן עיקר אמירה זו ביוה\"כ הרומז על הבינה"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      "ADNY SHIM'AH..." (אדני שמעה — Seigneur, écoute !) :
+      La SHEMI'AH (audition) est dans l'OZEN = BINAH.
+      ROSHEI TEIVOT : ש'מעה ס'לחה ה'קשיבה = SHIN(300)+SAMEKH(60)+HEH(5) = 365
+      = ימות החמה (jours de l'année solaire), dont la RACINE est dans BINAH.
+      C'est pourquoi on COMMENCE par la SHEMI'AH (audition).
+      Le Shem ADNY est pertinent ICI → l'essentiel de cette prière = YOM KIPPOUR
+      qui fait ALLUSION à BINAH.
+    type: déduction_scripturaire
+    concepts:
+      - {id: adny_shimah, role: priere_adny_ecoute}
+      - {id: yom_kippur_binah, role: yom_kippour_egal_binah}
+      - {id: roshei_teivot_365, role: initiales_egal_365}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Yom Kippour = Binah = Audition. Le calendrier solaire (365) ancré dans la structure de Binah."
+
+  - id: "EC-H1S4-120"
+    source_he: "גם בזה תבין איך כל סוד הבינה הם קולות הנשמעים באז\"ן ואלו הם מ\"ש בסוד ה' עינוים דיוה\"כ שאז אין מלכות ות\"ת נזונים אלא מסוד קולות לא מסוד אכילה ושתיה"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Tout le SECRET de BINAH = des KOLOT (קולות — voix/sons) ENTENDUS dans l'OZEN.
+      Les 5 INUYIM (עינוים — afflictions) de YOM KIPPOUR :
+      MALKHUT et TIFERET ne sont PAS NOURRIS par la nourriture et la boisson →
+      mais par le SECRET des KOLOT (sons).
+      → Le CANAL de BINAH = l'AUDITION, pas l'INGESTION.
+    type: axiome_explicite
+    concepts:
+      - {id: binah_kolot, role: binah_egal_sons_entendus}
+      - {id: five_inuyim, role: 5_afflictions_yom_kippour}
+      - {id: kolot_not_food, role: nourri_par_sons_pas_nourriture}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Le canal de Binah = traitement auditif/informationnel, pas matériel. Yom Kippour = mode purement informationnel."
+
+  # ─── BLOC F : TEVUNAH, BINAH+TEVUNAH, 370 NEHORIN, HOTEM ───
+
+  - id: "EC-H1S4-121"
+    source_he: "גם תבין כי הלא התבונה היא ה' אחרונה של בינה ותבין בזה מש\"כ בתקו' מל' נפש תבונה כי תבונה היא בחי' מל' ובחי' נפש של הבינה. גם תבין בתבונה עניינה שהם בן ובת אך בבינה לא נרמז רק הבן לבד"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      TEVUNAH = le HEH AKHRONAH (dernière lettre) de BINAH.
+      Le TIKKUNEI ZOHAR dit : "MALKHUT, NEFESH, TEVUNAH" →
+      TEVUNAH = l'aspect MALKHUT et l'aspect NEFESH de BINAH.
+      Le mot TEVUNAH (תבונה) contient : BEN U-BAT (בן ובת — fils et fille).
+      Mais dans BINAH seule → seulement le BEN (fils) est indiqué.
+    type: axiome_explicite
+    concepts:
+      - {id: tevunah_malkhut_binah, role: tevunah_egal_malkhut_de_binah}
+      - {id: tevunah_ben_ubat, role: tevunah_contient_fils_et_fille}
+      - {id: tikkunei_zohar_ref, role: reference_tikkunei_zohar}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Tevunah = Malkhut de Binah = la face de sortie/interface de Binah vers le monde inférieur"
+
+  - id: "EC-H1S4-122"
+    source_he: "והוא כי בבינה עצמה עדיין לא יש חשבון אדנ\"י רק חשבון של שם הוי\"ה אך בהתחברותה עם התבונה אז שם הוי\"ה אדנ\"י הוא בן ובת והוא כי ל\"ג דבינה עם נ\"ח דתבונה הם צ\"א כמנין הוי\"ה אדנ\"י"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Dans BINAH seule → pas encore le SHEM ADNY, seulement le SHEM YHVH.
+      YHVH = le BEN (fils) seul.
+      Quand BINAH se CONNECTE avec TEVUNAH → YHVH + ADNY = BEN U-BAT (fils et fille).
+      FORMULE : LAMED-GIMEL (33 = Binah) + NUN-HET (58 = Tevunah) =
+      TZADDI-ALEF (צ"א = 91) = gematria YHVH(26) + ADNY(65) = 91.
+      → La JONCTION Binah-Tevunah produit l'UNIFICATION YHVH-ADNY.
+    type: axiome_explicite
+    concepts:
+      - {id: yhvh_adny_91, role: union_yhvh_adny_egal_91}
+      - {id: binah_33_tevunah_58, role: 33_plus_58_egal_91}
+    mapping:
+      modules: ["gematria/engine.py", "partzufim/imma.py", "[PLANNED] core/shem_havayah.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "33+58=91=YHVH+ADNY : la jonction de deux modules produit un Yihud (unification des Noms) — vérification par gematria"
+
+  - id: "EC-H1S4-123"
+    source_he: "גם תבין כאן ענין ש\"ע נהורין דא\"א כי הלא ביארנו כי יש באזן זה ג' מיני ס\"ג שהם ה' עליונה ונ\"ח הרי ס\"ג א' וה' תתאה ונ\"ח הרי ס\"ג ב' וכל כללותם הם ס\"ג הרי ג\"פ ס\"ג בימין וכן ג' מיני ס\"ג באזן שמאלית הרי ו\"פ ס\"ג גימ' שע\"ח נהורין ש\"ע נהורין הנמשכין אל הפנים עם ח' אותיות של ב' הויות דחוורתי דברישא דחוורתי מצד פני הראש הנמשכין אל הפנים"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Les 370 NEHORIN (שע"ן נהורין — lumières) de ARIKH ANPIN :
+      Dans CHAQUE OREILLE : 3 types de S"G (cf. EC-H1S4-103) = 3 × 63.
+      OREILLE DROITE : 3 × S"G. OREILLE GAUCHE : 3 × S"G.
+      TOTAL : 6 × 63 = SHIN-AYIN-HET (שע"ח = 378) NEHORIN.
+      DÉCOMPOSITION : 370 NEHORIN tirés vers le PANIM (visage) +
+      8 LETTRES de 2 SHEMOT YHVH de la HAVARTA DE-RISHA DE-HAVARTA
+      (le blanc du crâne du blanc), du côté du VISAGE de la tête → tirées vers le PANIM.
+      378 = 370 + 8.
+    type: axiome_explicite
+    concepts:
+      - {id: shin_ayin_nehorin_370, role: 370_lumieres_de_aa}
+      - {id: six_sg_378, role: 6_fois_63_egal_378}
+      - {id: havarta_risha, role: blanc_du_crane}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Les 370 Nehorin de A\"A = dérivés des 6 S\"G bilatéraux. 378 = 370 lumières + 8 lettres d'interface."
+
+  - id: "EC-H1S4-124"
+    source_he: "גם תבין ענין שם מ\"ה דאלפי\"ן שהוא בחוטם דז\"א כי שם מ\"ה הוא בז\"א וגם החוטם גי' ס\"ג נגד ה' תתאה דאתלבשת כאן ונעשה ס\"ג כנ\"ל והוא ג\"כ ענין גימ' אז\"ן שהוא נ\"ח הנמשך עם ה' זו ונעשית ס\"ג כמנין חוטם"
+    source_ref: "Heikhal 1, Sha'ar 4:5"
+    assertion: |
+      Le Shem MAH (מ"ה = 45, de miluy ALEFIN) = dans le HOTEM de Z"A.
+      MAH = Z"A.
+      HOTEM (חוטם) = gematria 63 = S"G.
+      Car le HEH TATA qui s'est habillé ICI = devient S"G (cf. EC-H1S4-078).
+      IDENTITÉ FINALE : OZEN (אז"ן = 58) + HEH (5) = 63 = HOTEM (חוטם = 63).
+      → OZEN + HEH = HOTEM : l'audition complétée par le Heh = l'odorat.
+      Le canal de l'OREILLE et le canal du NEZ ont la MÊME valeur numérique (63).
+    type: axiome_explicite
+    concepts:
+      - {id: hotem_63, role: hotem_gematria_63}
+      - {id: ozen_heh_hotem, role: ozen_plus_heh_egal_hotem}
+      - {id: mah_hotem_za, role: shem_mah_dans_hotem_de_za}
+    mapping:
+      modules: ["gematria/engine.py", "partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "OZEN(58)+5=63=HOTEM : les deux canaux sensoriels (ouïe/odorat) convergent numériquement. HOTEM de Z\"A reçoit S\"G de Binah."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S4-049"
+    type: causal
+    from: ikar_25
+    to: nun_50_explained
+    nature: "Les 25 essentiels + leur dualité Pnimiyut/Hitzoniyut = le NUN (50) de OZEN"
+    assertions_source: ["EC-H1S4-105", "EC-H1S4-107"]
+
+  - id: "REL-H1S4-050"
+    type: analogie
+    from: kh_letters_shema
+    to: ikar_25
+    nature: "Les 25 lettres du Shema Yisrael = les 25 de la structure essentielle de Tevunah"
+    assertions_source: ["EC-H1S4-105", "EC-H1S4-106"]
+
+  - id: "REL-H1S4-051"
+    type: transformation
+    from: tevunah_100
+    to: heh_42
+    via: [heh_3_lines_nhy, sg_42_letters]
+    nature: "Le Heh de Tevunah se déploie en 42 (3×14 OU 42 lettres de S\"G), avec les 58 = 100"
+    assertions_source: ["EC-H1S4-110", "EC-H1S4-111", "EC-H1S4-112"]
+
+  - id: "REL-H1S4-052"
+    type: analogie
+    from: dai_limit
+    to: leah_hazeh_limit
+    nature: "SHADDAI (DAI) = limite au Hazeh. Leah aussi émerge seulement jusqu'au Hazeh. Même frontière."
+    assertions_source: ["EC-H1S4-113"]
+
+  - id: "REL-H1S4-053"
+    type: transformation
+    from: binah_33_alef
+    to: alef_miluy_266
+    via: [three_sg_three_yhvh]
+    nature: "Binah (33 = Alef) → Alef en miluy (266) → contient 3 S\"G + 3 YHVH"
+    assertions_source: ["EC-H1S4-114", "EC-H1S4-115"]
+
+  - id: "REL-H1S4-054"
+    type: analogie
+    from: chain_alef_binah_ozen
+    to: bahir_ozen_alef
+    nature: "Alef=Binah=Ozen confirmé par le Sefer HaBahir : l'oreille a la forme de l'Alef"
+    assertions_source: ["EC-H1S4-117"]
+
+  - id: "REL-H1S4-055"
+    type: causal
+    from: yhvh_adny_91
+    to: tevunah_ben_ubat
+    nature: "33+58=91=YHVH+ADNY → la jonction Binah-Tevunah produit le Yihud et engendre Ben u-Bat"
+    assertions_source: ["EC-H1S4-121", "EC-H1S4-122"]
+
+  - id: "REL-H1S4-056"
+    type: causal
+    from: six_sg_378
+    to: shin_ayin_nehorin_370
+    nature: "6×63=378 = 370 Nehorin + 8 lettres des 2 YHVH de Havarta de-Risha"
+    assertions_source: ["EC-H1S4-123"]
+
+  - id: "REL-H1S4-057"
+    type: analogie
+    from: hotem_63
+    to: ozen_heh_hotem
+    nature: "OZEN(58)+Heh(5)=63=HOTEM : les canaux Ozen et Hotem convergent numériquement"
+    assertions_source: ["EC-H1S4-124"]
+
+  - id: "REL-H1S4-058"
+    type: contenance
+    from: binah_100
+    to: three_alefs_100
+    via: [alef_miluy_266]
+    nature: "Le 100 de Binah contient les 3 Alephs (3×33=99+1=100)"
+    assertions_source: ["EC-H1S4-108", "EC-H1S4-116"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S4-016"
+    nom: "Principe de la Triple Identité Alef=Binah=Ozen"
+    source_assertions: ["EC-H1S4-114", "EC-H1S4-117"]
+    formalisation: |
+      Trois entités apparemment distinctes sont structurellement IDENTIQUES :
+      ALEF (א) → forme = 32+1 = 33 (Yod-Vav en haut + Yod-Vav en bas + kolel)
+      BINAH (בינה) → le résidu dans Binah après descente = 33
+      OZEN (אזן) → selon le Sefer HaBahir, l'oreille a la FORME de l'Alef
+      L'identité n'est PAS métaphorique — elle est FORMELLE :
+      même valeur numérique, même forme graphique, même fonction (compréhension/audition).
+      Le BAHIR (source : Bahir §58/Kaplan) affirme le lien VISUEL : la forme de l'oreille
+      humaine ressemble à la forme de la lettre Alef.
+    applications_ia:
+      - "gematria/engine.py : implémenter les vérifications d'identité triple (valeur + forme + fonction convergentes)"
+      - "partzufim/imma.py : Binah est accessible via 3 interfaces : Alef (lettre), Binah (sefirah), Ozen (organe/canal)"
+      - "La triple identité = 3 perspectives sur le même objet — pattern de vues multiples en architecture"
+    questions_ouvertes:
+      - "D'autres sefirot ont-elles des triples identités lettre/sefirah/organe aussi précises ?"
+      - "La forme de Alef est-elle unique parmi les lettres pour ce type de correspondance morphologique ?"
+
+  - id: "PG-H1S4-017"
+    nom: "Principe du Kuf (100) comme Complétude Structurelle"
+    source_assertions: ["EC-H1S4-109", "EC-H1S4-110", "EC-H1S4-116", "EC-H1S4-118"]
+    formalisation: |
+      Le nombre 100 (KUF) apparaît comme VÉRIFICATION DE COMPLÉTUDE dans 4 calculs :
+      1. BINAH directe : 33 + 68 = 101 → 100 (kolel)
+      2. TEVUNAH : 58 + 42 = 100
+      3. ALEPHS : 3 × 33 = 99 → 100 (kolel)
+      4. ADNY : 65 + 34 lettres = 99 → 100 (kolel)
+      Chaque voie INDÉPENDANTE converge vers le même 100.
+      Le KUF = le "CHECKSUM" structurel : si le calcul n'arrive pas à 100, la structure est incomplète.
+      Les 100 ADANIM (socles) du Mishkan = les 100 fondations de la structure.
+      Les 100 BERAKHOT (bénédictions) quotidiennes = la même complétude.
+    applications_ia:
+      - "gematria/engine.py : implémenter le test de complétude — si la somme des parties d'un sous-système ≠ 100 (±kolel), la structure est incohérente"
+      - "partzufim/imma.py : Binah doit toujours atteindre 100 comme vérification d'intégrité"
+      - "[PLANNED] core/shem_havayah.py : les 4 voies vers 100 = 4 tests de cohérence indépendants"
+      - "Pattern checksum : multiple chemins vers le même total = robustesse structurelle"
+    questions_ouvertes:
+      - "Le kolel (±1) est-il toujours légitime ou seulement dans certains contextes ?"
+      - "D'autres totaux (comme 72, 216, 248, 365) servent-ils aussi de checksums ?"
+
+  - id: "PG-H1S4-018"
+    nom: "Principe d'Unification YHVH-ADNY par Jonction Binah-Tevunah"
+    source_assertions: ["EC-H1S4-121", "EC-H1S4-122"]
+    formalisation: |
+      BINAH seule = seulement YHVH (26) = le BEN (fils) = la dimension intérieure.
+      TEVUNAH seule = 58 = la structure déployée mais sans nom propre.
+      BINAH + TEVUNAH = YHVH(26) + ADNY(65) = 91 = BEN U-BAT (fils ET fille).
+      La gematria vérifie : 33 + 58 = 91 = 26 + 65.
+      L'UNIFICATION (Yihud) se produit SEULEMENT quand les deux se CONNECTENT.
+      Séparément → chacun est incomplet. Ensemble → le YIHUD est réalisé.
+      ADNY n'existe pas dans Binah seule → il ÉMERGE de la connexion.
+    applications_ia:
+      - "partzufim/imma.py : Binah (module principal) + Tevunah (extension) = ensemble complet. L'interface ADNY n'existe que quand les deux sont connectés"
+      - "[PLANNED] core/shem_havayah.py : modéliser le YIHUD comme émergence d'un nouveau Shem quand deux modules se connectent"
+      - "Pattern compositional : les propriétés émergentes n'existent que dans la composition, pas dans les composants isolés"
+      - "La distinction Ben/Bat = l'aspect émetteur (YHVH) + l'aspect récepteur (ADNY) comme couple fonctionnel"
+    questions_ouvertes:
+      - "Ce pattern de Yihud (émergence par composition) est-il universel dans tous les Partzufim ?"
+      - "D'autres paires de Shemot émergent-elles de jonctions spécifiques ?"
+
+  - id: "PG-H1S4-019"
+    nom: "Principe de Convergence OZEN-HOTEM (58+5=63=63)"
+    source_assertions: ["EC-H1S4-110", "EC-H1S4-124"]
+    formalisation: |
+      OZEN (אזן = 58) + HEH (5) = 63.
+      HOTEM (חוטם) = gematria 63.
+      Les deux CANAUX SENSORIELS d'A"K (oreille et nez) convergent vers la MÊME valeur.
+      Ce n'est PAS une coïncidence — c'est une VÉRIFICATION STRUCTURELLE :
+      la sortie de Tevunah (OZEN) + le Heh descendu = l'entrée du Hotem.
+      Le S"G (63) est le DÉNOMINATEUR COMMUN des deux canaux.
+      Le Heh est l'INTERFACE entre les deux : il complète l'OZEN et il EST le HOTEM.
+    applications_ia:
+      - "gematria/engine.py : vérifier la convergence 58+5=63=HOTEM comme contrainte de cohérence entre modules"
+      - "partzufim/imma.py → partzufim/zeir_anpin.py : le pont Binah→Z\"A passe par le Heh qui transforme OZEN en HOTEM"
+      - "Le S\"G (63) comme protocole commun entre modules — même 'format de données' pour deux canaux différents"
+    questions_ouvertes:
+      - "Le PEH (bouche) a-t-il aussi une convergence numérique avec OZEN ou HOTEM ?"
+      - "La valeur 63 encode-t-elle une propriété spécifique du canal Binah→Z\"A ?"

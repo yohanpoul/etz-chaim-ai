@@ -1,0 +1,168 @@
+{% extends "systeme/_base_systeme.html" %}
+{% set sub = "overview" %}
+
+{% block systeme_css %}
+<link rel="stylesheet" href="/static/css/avatars.css">
+{% endblock %}
+
+{% block systeme_content %}
+<div class="sys-page-header">
+    <h1>Comprendre Etz Chaim AI</h1>
+</div>
+
+<div class="av-intro">
+    <div class="av-intro-inner">
+        <h2 class="av-intro-title">Comment fonctionne Etz Chaim AI ?</h2>
+        <p class="av-intro-text">
+            Etz Chaim AI est une intelligence artificielle organisee comme une <strong>cour royale</strong>.
+            Un roi supervise, un pere cree les idees, une mere les structure, un jeune homme execute,
+            une reine vous repond. Des anges gardiens verifient chaque entree et chaque sortie.
+            Des officiers organisent le travail. Et des veilleurs travaillent dans l'ombre, sans jamais s'arreter.
+        </p>
+        <p class="av-intro-text av-intro-edge">
+            Ce n'est pas une metaphore decorative. Chaque personnage est un <strong>composant logiciel reel</strong>,
+            et l'architecture vient du Etz Chaim &mdash; l'Arbre de Vie de la Kabbale lourianique,
+            un systeme vieux de 500 ans qui decrit comment l'information descend, se transforme, et remonte.
+            Ca se trouve que ca decrit aussi, avec une precision troublante,
+            comment une IA devrait fonctionner.
+        </p>
+        <div class="av-intro-innovations">
+            <h3>Ce qui change tout</h3>
+            <ul>
+                <li><strong>Les erreurs ne sont pas des bugs &mdash; ce sont des exces.</strong>
+                    Trop de rigueur detruit du valide. Trop de generosite accepte n'importe quoi.
+                    Le systeme diagnostique le desequilibre, pas le symptome.</li>
+                <li><strong>Le systeme a deux ames qui se battent en temps reel.</strong>
+                    L'une pousse a satisfaire vite. L'autre tire vers la rigueur.
+                    La qualite de chaque reponse depend de qui gagne &mdash; et c'est mesure.</li>
+                <li><strong>A 23h, il ouvre un livre et s'ameliore tout seul.</strong>
+                    Un daemon nocturne explore les faiblesses du systeme,
+                    genere des questions, et apprend sans aucune intervention humaine.</li>
+                <li><strong>L'accusateur ne peut jamais devenir defenseur.</strong>
+                    Principe applique a l'architecture logicielle :
+                    celui qui traque les echecs ne peut pas les excuser. Jamais.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="sys-hub-cards">
+    <a href="/systeme/personnages" class="sys-hub-card">
+        <div class="sys-hub-card-img">
+            <img src="/static/avatars/nukva.png" alt="Personnages"
+                 onerror="if(this.src.endsWith('.png')){this.src=this.src.replace('.png','.svg')}else{this.style.display='none';this.nextElementSibling.style.display='flex'}">
+            <span class="sys-hub-glyph" style="display:none">&#x2605;</span>
+        </div>
+        <div class="sys-hub-card-body">
+            <div class="sys-hub-card-title" style="color:#ffb000">PERSONNAGES</div>
+            <div class="sys-hub-card-sub">Qui fait quoi &mdash; les 20 entites</div>
+        </div>
+    </a>
+    <a href="/systeme/arbre" class="sys-hub-card">
+        <div class="sys-hub-card-img">
+            <img src="/static/systeme/yesod.png" alt="L'Arbre"
+                 onerror="if(this.src.endsWith('.png')){this.src=this.src.replace('.png','.svg')}else{this.style.display='none';this.nextElementSibling.style.display='flex'}">
+            <span class="sys-hub-glyph" style="display:none">&#x2736;</span>
+        </div>
+        <div class="sys-hub-card-body">
+            <div class="sys-hub-card-title" style="color:#ffcc00">L'ARBRE</div>
+            <div class="sys-hub-card-sub">Les 10 modules &mdash; de la memoire a l'horizon</div>
+        </div>
+    </a>
+    <a href="/systeme/mondes" class="sys-hub-card">
+        <div class="sys-hub-card-img">
+            <img src="/static/systeme/atziluth.png" alt="Les Mondes"
+                 onerror="if(this.src.endsWith('.png')){this.src=this.src.replace('.png','.svg')}else{this.style.display='none';this.nextElementSibling.style.display='flex'}">
+            <span class="sys-hub-glyph" style="display:none">&#x25C6;</span>
+        </div>
+        <div class="sys-hub-card-body">
+            <div class="sys-hub-card-title" style="color:#6688cc">LES MONDES</div>
+            <div class="sys-hub-card-sub">Les 4 niveaux de profondeur</div>
+        </div>
+    </a>
+    <a href="/systeme/erreurs" class="sys-hub-card">
+        <div class="sys-hub-card-img">
+            <img src="/static/systeme/nogah.png" alt="Les Erreurs"
+                 onerror="if(this.src.endsWith('.png')){this.src=this.src.replace('.png','.svg')}else{this.style.display='none';this.nextElementSibling.style.display='flex'}">
+            <span class="sys-hub-glyph" style="display:none">&#x26A0;</span>
+        </div>
+        <div class="sys-hub-card-body">
+            <div class="sys-hub-card-title" style="color:#cc3333">ERREURS & ADVERSITE</div>
+            <div class="sys-hub-card-sub">Diagnostic, defense, et adversite &mdash; comment le systeme se teste lui-meme</div>
+        </div>
+    </a>
+</div>
+
+<div class="av-intro">
+    <div class="av-intro-inner">
+        <div class="av-intro-flow">
+            <span>Vous posez une question</span>
+            <span class="av-intro-arrow">&darr;</span>
+            <span>La Cour decide</span>
+            <span class="av-intro-arrow">&darr;</span>
+            <span>Les Gardiens verifient</span>
+            <span class="av-intro-arrow">&darr;</span>
+            <span>Les Officiers organisent</span>
+            <span class="av-intro-arrow">&darr;</span>
+            <span>Vous recevez la reponse</span>
+        </div>
+    </div>
+</div>
+
+<div class="av-epilogue">
+    <div class="av-epilogue-inner">
+        <h2 class="av-epilogue-title">Pourquoi ca marche</h2>
+        <p class="av-epilogue-text">
+            Le Etz Chaim (Arbre de Vie) a ete ecrit par Rabbi Isaac Louria au XVI<sup>e</sup> siecle
+            pour decrire comment l'information divine descend a travers des niveaux de transformation,
+            se brise, se repare, et remonte. 500 ans plus tard, on decouvre que ce schema
+            decrit aussi comment une intelligence artificielle devrait etre organisee.
+        </p>
+        <p class="av-epilogue-text">
+            Pas par coincidence. Parce que les deux problemes sont le meme :
+            <strong>comment faire descendre quelque chose d'infini dans un contenant fini
+            sans le detruire, et comment faire remonter un signal du fini vers l'infini
+            sans le corrompre.</strong>
+        </p>
+        <p class="av-epilogue-text">
+            La plupart des IA sont des boites noires. Etz Chaim AI est une boite de verre
+            &mdash; chaque decision est visible, chaque erreur est diagnostiquee par exces,
+            chaque reponse est jugee avant de sortir, et le systeme sait quand il ne sait pas.
+        </p>
+        <div class="av-epilogue-counts">
+            <div class="av-epilogue-count">
+                <span class="av-epilogue-num">20</span>
+                <span class="av-epilogue-label">personnages</span>
+            </div>
+            <div class="av-epilogue-count">
+                <span class="av-epilogue-num">10</span>
+                <span class="av-epilogue-label">modules</span>
+            </div>
+            <div class="av-epilogue-count">
+                <span class="av-epilogue-num">4</span>
+                <span class="av-epilogue-label">mondes</span>
+            </div>
+            <div class="av-epilogue-count">
+                <span class="av-epilogue-num">22</span>
+                <span class="av-epilogue-label">sentiers</span>
+            </div>
+            <div class="av-epilogue-count">
+                <span class="av-epilogue-num">32</span>
+                <span class="av-epilogue-label">programmes</span>
+            </div>
+            <div class="av-epilogue-count">
+                <span class="av-epilogue-num">1</span>
+                <span class="av-epilogue-label">arbre</span>
+            </div>
+        </div>
+        <div class="av-epilogue-next">
+            <p>Pour voir le systeme en action :</p>
+            <div class="av-epilogue-links">
+                <a href="/dashboard">Dashboard</a><span class="av-epilogue-sep">&mdash; l'etat en temps reel</span>
+                <a href="/world">World</a><span class="av-epilogue-sep">&mdash; l'Arbre complet, les 10 modules et les 22 sentiers</span>
+                <a href="/chat">Chat</a><span class="av-epilogue-sep">&mdash; posez une question et regardez qui travaille</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

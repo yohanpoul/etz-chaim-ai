@@ -1,0 +1,216 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 8 (=7 original) — Sha'ar Mati veLo Mati (שער מטי ולא מטי)
+# Perek: 4a — V"K sans Zakhar/Nekevah, Binah produit He, Dalet-Vav (§1)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §1 : Les V"K (de Hesed a Hod) n'ont PAS de Zakhar/Nekevah —
+# elles sont TOUTES Zakhar, Kelim complets sans Ohr residuel.
+# Seul YESOD et MALKHUT ont Zakhar/Nekevah car le Zivvug de
+# Binah produit un HE qui se divise en DALET (Malkhut) et VAV (Yesod).
+# 4 Sefirot avec Zakhar/Nekevah : Keter, Hokhmah, Binah, Yesod.
+# Les SHORASHIM et leur dynamique avec les Akudim.
+#
+# Source Sefaria : Sefer_Etz_Chaim.7.4 (§1)
+# IDs : EC-H1S7-036 →
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 8
+  shaar_name_he: "שער מטי ולא מטי"
+  perek: 4
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part A de 2 — V'K sans Z'N (toutes Zakhar, Kelim complets). Seulement Yesod+Malkhut ont Z'N via le Zivvug de Binah (He→Dalet+Vav). Le Heshek vers les Shorashim."
+
+assertions:
+
+  - id: "EC-H1S7-036"
+    source_he: "בשאר ספי' לא היה בהם שום מציאות זו\"ן כי כולם זכרים וגם שהם כלים גמורים ואין בהם אור רק אותו שנכנס מחדש"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §1"
+    assertion: |
+      Dans les V"K restantes (Hesed a Hod), il n'y a AUCUNE réalité
+      de ZAKHAR-NEKEVAH — elles sont TOUTES ZAKHAR. Ce sont des
+      KELIM COMPLETS (gemourim) sans Ohr résiduel : seul l'Ohr
+      NOUVEAU (qui entre de l'extérieur) est présent.
+      → V"K (sauf Yesod) = composants PURS, sans dualité interne.
+      Kelim complets = séparation nette Ohr/Kli (pas de résidu).
+      Contraste avec les G"R qui ont Zakhar/Nekevah. Cf. EC-H1S7-030.
+    type: axiome_explicite
+    concepts:
+      - {id: vav_ketzavot_zakhar, role: vk_toutes_masculines}
+      - {id: kelim_gemurim, role: kelim_complets_sans_residuel}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: ["zeir_anpin"]
+      relevance: "V'K = composants simples (pas de dualite interne). G'R = composants complexes (dualite interne). Deux classes architecturales."
+
+  - id: "EC-H1S7-037"
+    source_he: "הוצרכו זו\"ן שבבינה להזדווג להוציא ה' אחד דוגמתה ונחלק לב' שהם ד\"ו ואות ו' נכנסה בכלי יסוד בסוד זכר של מל' אשר שם"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §1"
+    assertion: |
+      Les Zakhar-Nekevah de BINAH s'accouplent (ZIVVUG) et produisent
+      un HE (ה) qui se DIVISE en deux : DALET (ד) et VAV (ו).
+      Le VAV entre dans le Kli de YESOD comme ZAKHAR de Malkhut.
+      Le DALET descend dans MALKHUT et la complète.
+      → Le Zivvug de Binah produit une LETTRE (He) qui se scinde.
+      Vav = Zakhar de Yesod. Dalet = Nekevah de Malkhut.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_binah, role: accouplement_dans_binah}
+      - {id: he_se_divise, role: he_en_dalet_et_vav}
+      - {id: vav_yesod, role: vav_zakhar_de_yesod}
+      - {id: dalet_malkhut, role: dalet_complete_malkhut}
+    mapping:
+      modules: ["ohr.py", "gematria/engine.py"]
+      tables: ["ohr_states"]
+      partzufim: ["imma", "zeir_anpin", "nukva"]
+      relevance: "Le Zivvug de Binah genere un signal (He) qui se scinde en 2 composants complementaires (Vav=6, Dalet=4). Division generative."
+
+  - id: "EC-H1S7-038"
+    source_he: "בד' בחי' יש בהם זו\"ן והם כח\"ב יסוד והוא לטעם קושיא הנ\"ל שיש באלו הד' משא\"כ בשאר"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §1"
+    assertion: |
+      Quatre Sefirot contiennent ZAKHAR-NEKEVAH : KETER, HOKHMAH,
+      BINAH, et YESOD. Les autres (Hesed→Hod) n'en ont PAS.
+      → ASYMÉTRIE STRUCTURELLE : 4 Sefirot polaires + 5 non-polaires
+      (+ Malkhut complétée par le Dalet). Les extremités (haut + bas)
+      ont la dualité, le milieu est homogène.
+    type: axiome_explicite
+    concepts:
+      - {id: arba_zuguniyyot, role: quatre_sefirot_a_paires}
+      - {id: asimetria_structurelle, role: asymetrie_haut_bas}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["abba", "imma", "zeir_anpin"]
+      relevance: "Asymetrie : les extremites ont une dualite interne, le milieu est homogene. Architecture non uniforme."
+
+  - id: "EC-H1S7-039"
+    source_he: "חשק הזה שיש להם ליקח אור מן השורש שלהם הוא הגורם להם לעלות שהרי כל הי' שרשים כולם פניהם למטה להאיר בעקודים הללו"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §1"
+    assertion: |
+      Le HESHEK (désir) des Orot de prendre l'Ohr de leur SHORESH
+      est ce qui les CAUSE à MONTER. Les 10 SHORASHIM ont tous
+      leurs PANIM vers le BAS pour éclairer les Akudim.
+      → Les SHORASHIM sont ORIENTÉS vers le bas (donneurs). Les
+      Orot des Akudim sont ATTIRÉS vers le haut (récepteurs).
+      Le HESHEK = le moteur du cycle MvLM.
+    type: axiome_explicite
+    concepts:
+      - {id: heshek_shoresh, role: desir_vers_la_racine}
+      - {id: shorashim_panim_lemata, role: racines_face_en_bas}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Les Shorashim face en bas = les pre-parametres orientés vers l'inference. Le Heshek = gradient qui attire les couches vers leurs sources."
+
+  - id: "EC-H1S7-040"
+    source_he: "כאשר הכתר אינו משפיע למטה אז גם השורש של כתר עליון אוסף חלקו ולא ברצונו כי רצונו להשפיע רק בשביל חסרון התחתונים שאינן יכולין לקבל"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §1"
+    assertion: |
+      Quand Keter ne transmet PAS vers le bas, le SHORESH du Keter
+      supérieur RETIRE son Ohr — PAS par VOLONTÉ mais parce que les
+      inférieurs n'ont PAS LA CAPACITÉ de recevoir. Le Shoresh VEUT
+      transmettre (ratzon lehashpi'a) mais ne peut pas.
+      → Le retrait n'est PAS un refus mais une INCAPACITÉ de réception.
+      Le système VEUT couler mais les récepteurs saturent.
+    type: axiome_explicite
+    concepts:
+      - {id: hesron_tahtonim, role: deficience_des_inferieurs}
+      - {id: ratzon_lehashpia, role: volonte_de_transmettre}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le retrait = deficience de reception, pas refus de transmission. Le systeme veut transmettre mais la capacite des couches inferieures sature."
+
+  - id: "EC-H1S7-041"
+    source_he: "אם ימשך האור ההוא תמיד הנה יחזרו הכלים אל בחי' אורות כבתחלה ויתבטלו כבתחלה"
+    source_ref: "Heikhal 1, Sha'ar 7:4 — §1"
+    assertion: |
+      Si l'Ohr coulait CONTINUELLEMENT, les Kelim reviendraient à
+      l'état d'OROT comme au début et seraient ANNULÉS (yitbatlu).
+      → RAISON PROFONDE du MvLM : le retrait INTERMITTENT est
+      NÉCESSAIRE pour que les Kelim SURVIVENT comme Kelim. Un flux
+      continu les RÉABSORBERAIT dans l'Ohr.
+    type: déduction_logique
+    concepts:
+      - {id: bitul_kelim, role: annulation_des_kelim}
+      - {id: hekhreh_hafsakah, role: necessite_interruption}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Le MvLM est NECESSAIRE : sans interruption, les composants se dissolvent dans le signal. L'oscillation PRESERVE la structure."
+
+relations:
+  - id: "REL-H1S7-020"
+    type: "opposition"
+    paire: [vav_ketzavot_zakhar, arba_zuguniyyot]
+    nature: "V'K (Hesed→Hod) = TOUTES Zakhar (sans paire). 4 Sefirot (K,H,B,Y) = Zakhar+Nekevah."
+    assertions_source: ["EC-H1S7-036", "EC-H1S7-038"]
+
+  - id: "REL-H1S7-021"
+    type: "flux"
+    from: zivvug_binah
+    to: he_se_divise
+    nature: "Le Zivvug de Binah PRODUIT un He qui se divise en Vav (Yesod) et Dalet (Malkhut)"
+    assertions_source: ["EC-H1S7-037"]
+
+  - id: "REL-H1S7-022"
+    type: "causal"
+    from: hesron_tahtonim
+    to: hekhreh_hafsakah
+    nature: "La DEFICIENCE des inferieurs CAUSE la necessite du retrait intermittent (MvLM)"
+    assertions_source: ["EC-H1S7-040", "EC-H1S7-041"]
+
+principes_generatifs:
+  - id: "PG-H1S7-010"
+    nom: "Necessite du MvLM (Preservation des Kelim)"
+    source_assertions: ["EC-H1S7-040", "EC-H1S7-041"]
+    formalisation: |
+      Le MvLM (oscillation) est NECESSAIRE — pas optionnel.
+      RAISON : un flux CONTINU d'Ohr ANNULERAIT les Kelim
+      (les reabsorberait en Ohr). L'interruption periodique
+      PRESERVE l'existence discrete des Kelim.
+      FORMULE : Si Ohr(t) = constant > 0 pour tout t,
+               alors Kli(S_i) → Ohr(S_i) (annulation).
+               L'oscillation MvLM = condition d'existence des Kelim.
+      ANALOGIE : le dropout en deep learning PRESERVE la specialisation
+      des neurones. Sans dropout, les neurones co-adaptent et
+      perdent leur individualite.
+    applications_ia:
+      - "ohr.py : l'oscillation MvLM est un DROPOUT STRUCTUREL necessaire a la specialisation"
+      - "Sans MvLM (flux continu) = collapse : les composants perdent leur identite"
+      - "Le timing du MvLM = le schedule du dropout rate pendant le training"
+    questions_ouvertes:
+      - "Le MvLM est-il un analogue du dropout ou du learning rate scheduling ?"
+      - "Y a-t-il un point ou les Kelim sont assez forts pour supporter le flux continu (Gadlut) ?"
+
+  - id: "PG-H1S7-011"
+    nom: "Division Generative He→Dalet+Vav"
+    source_assertions: ["EC-H1S7-037", "EC-H1S7-038"]
+    formalisation: |
+      Le Zivvug de Binah produit un HE (ה, valeur 5) qui se DIVISE :
+      VAV (ו, valeur 6) = ZAKHAR → Yesod
+      DALET (ד, valeur 4) = NEKEVAH → Malkhut
+      Relation gematriale : He(5) ≠ Vav(6)+Dalet(4)=10.
+      Mais graphiquement : ה = ד + ו (la lettre He est composee
+      de Dalet + Vav).
+      STRUCTURE : 4 Sefirot polaires aux EXTREMITES (K,H,B,Y)
+      + 5 non-polaires au CENTRE (Hesed→Hod) + 1 completee (Malkhut).
+    applications_ia:
+      - "ohr.py : certains composants ont une dualite interne (G'R+Yesod), d'autres non (Hesed→Hod)"
+      - "La division He→Dalet+Vav = le split d'un signal en deux branches complementaires"
+      - "L'asymetrie structurelle = architecture non-uniforme (composants complexes aux bords, simples au centre)"
+    questions_ouvertes:
+      - "L'asymetrie 4-polaires/5-non-polaires est-elle exploitable architecturalement ?"

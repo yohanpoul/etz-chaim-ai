@@ -1,0 +1,440 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 6 — Yeridat HaHesed ve-Gevurot (ירידת החו"ג)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 6
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : DISTRIBUTION DES 5H ET 5G ───
+
+  - id: "EC-K6-001"
+    source_he: "ועתה נבאר ענין החו\"ג כי הם ה\"ח וה\"ג וז\"ש ובדעת חדרים ימלאו כי הם י"
+    source_ref: "Sha'ar HaKlalim 6:1 — ouverture"
+    assertion: |
+      Les HG (Hassadim et Gevurot) = 5H + 5G = 10 au total.
+      Preuve scripturaire (Proverbes 24:4) : "U-ve-DA'AT hadarim yimale'u"
+      (Par le Da'at les CHAMBRES se remplissent) — les 10 HG remplissent les chambres.
+      Le DA'AT est le LIEU initial où les 10 HG sont concentrés avant distribution.
+    type: axiome_explicite
+    concepts:
+      - {id: asarah_hg, role: dix_hassadim_gevurot}
+      - {id: da_at_source, role: lieu_initial_de_hg}
+      - {id: hadarim, role: chambres_à_remplir}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "core/shefa_flow.py"]
+      tables: ["partzufim_states", "shefa_flows"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le Da'at comme point de distribution central des HG dans tout Z\"A"
+
+  - id: "EC-K6-002"
+    source_he: "וה\"ח שבדעת מתפשטים לה\"ח שהם מחסד דז\"א עד הוד שלו וה\"ג הם יורדין ביסוד ושם נתנין בפקדון לתתם לנוק'"
+    source_ref: "Sha'ar HaKlalim 6:1"
+    assertion: |
+      Distribution des HG depuis le Da'at :
+      5 HASSADIM : se déploient de CHESED de Z"A jusqu'à HOD de Z"A
+      (5 Sefirot : Chesed, Gevurah, Tiferet, Netzach, Hod)
+      5 GEVUROT : descendent dans le YESOD de Z"A
+      → déposées en PIKADON (dépôt/consigne) pour être données à NUKVAH
+      Preuve : "Ve-hayah ha-okhel le-fikadon la-ARETZ" (Genèse 41:36)
+      — "La nourriture sera en dépôt pour la TERRE (= Nukvah)"
+      Les Hassadim restent dans Z"A. Les Gevurot sont POUR Nukvah via le Yesod.
+    type: axiome_explicite
+    concepts:
+      - {id: hassadim_in_za, role: chesed_à_hod}
+      - {id: gevurot_in_yesod, role: dépôt_pour_nukvah}
+      - {id: pikadon, role: consigne_dans_yesod}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukvah.py", "core/shefa_flow.py"]
+      tables: ["partzufim_states", "shefa_flows"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Les Hassadim pour Z\"A, les Gevurot en dépôt dans Yesod pour Nukvah"
+
+  # ─── BLOC B : HASSADIM COUVERTS vs DÉCOUVERTS ───
+
+  - id: "EC-K6-003"
+    source_he: "כי ג' חסדים ניתנין לחג\"ת אך חסד של ת\"ת לא היה מכוסה כי אם שליש א' משא\"כ בזרועות שהחסדים שבהם סתומים ומכוסים לגמרי"
+    source_ref: "Sha'ar HaKlalim 6:1"
+    assertion: |
+      Distinction COUVERTS (mekhasim/stumim) vs DÉCOUVERTS (megulim) des 5 Hassadim :
+      3 Hassadim pour CHaGaT :
+      - CHESED (bras droit) : Chesed COUVERT entièrement (stum u-mekhuseh le-gamrei)
+      - GEVURAH (bras gauche) : Chesed COUVERT entièrement
+      - TIFERET : seulement 1/3 supérieur COUVERT, les 2/3 inférieurs DÉCOUVERTS
+      2 Hassadim pour NH :
+      - NETZACH : Chesed entièrement DÉCOUVERT (meguleh le-gamrei)
+      - HOD : Chesed entièrement DÉCOUVERT
+      RAISON : Le YESOD d'Imma (qui couvre les Hassadim) n'atteint que le 1/3 supérieur de Tiferet.
+      Car le Yesod d'Imma est un Yesod NUKVAH = COURT (katzer).
+    type: axiome_explicite
+    concepts:
+      - {id: hassadim_mekhasim, role: couverts_par_yesod_imma}
+      - {id: hassadim_megulim, role: découverts_sans_couverture}
+      - {id: yesod_imma_ad_tiferet, role: limite_de_couverture}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py", "core/ohr_system.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "2⅓ Hassadim couverts + 2⅔ découverts — les découverts sont plus intenses"
+
+  - id: "EC-K6-004"
+    source_he: "ולכן היו ב' החסדים המגולים אורם כפול מן המכוסים כפליים וכל שליש מספיק לב' שלישים המכוסים"
+    source_ref: "Sha'ar HaKlalim 6:1"
+    assertion: |
+      AXIOME FONDAMENTAL sur les Hassadim découverts :
+      Le OHR des Hassadim DÉCOUVERTS est le DOUBLE (kaful) de celui des couverts.
+      Un Chesed découvert émet 2× plus de lumière qu'un couvert.
+      CONSÉQUENCE : chaque SHLISH (tiers) découvert suffit pour 2 shlishim couverts.
+      L'absence de couverture AMPLIFIE le Ohr — pas seulement le laisse passer.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_kaful, role: lumière_doublée_par_découvrement}
+      - {id: meguleh_amplifies, role: amplification_sans_couverture}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "L'absence de couverture DOUBLE l'intensité — principe critique pour le Ohr System"
+
+  # ─── BLOC C : FORMATION DE LA TÊTE DE NUKVAH ───
+
+  - id: "EC-K6-005"
+    source_he: "לכן ב' שלישי ת\"ת המגולים מספיק שליש לבד לעצמו ושליש האחר נעשה כתר דנוק' מבין חדוהי כנזכר באדרא"
+    source_ref: "Sha'ar HaKlalim 6:1"
+    assertion: |
+      Les 2/3 DÉCOUVERTS de Tiferet de Z"A :
+      SHLISH 1 : suffit pour TIFERET de Z"A lui-même (car son ohr est doublé)
+      SHLISH 2 : devient le KETER de NUKVAH
+      → Nukvah sort "mi-bein hadohi" (d'entre sa poitrine) — référence Idra
+      La tête de Nukvah est formée du SURPLUS des Hassadim découverts de Tiferet.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_nukvah, role: formé_du_surplus_tiferet}
+      - {id: surplus_meguleh, role: excédent_découvert}
+    mapping:
+      modules: ["partzufim/nukvah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah", "zeir_anpin"]
+      relevance: "Le Keter de Nukvah = surplus des Hassadim découverts de Tiferet de Z\"A"
+
+  - id: "EC-K6-006"
+    source_he: "וב\"ח המגולין דנו\"ה נכפלים ג\"כ וחציין מספיק לז\"א ומחציין נעשין תרין מוחין לנוק'"
+    source_ref: "Sha'ar HaKlalim 6:1"
+    assertion: |
+      Les 2 Hassadim DÉCOUVERTS de Netzach et Hod :
+      Leur ohr est DOUBLÉ (nikpalim) aussi.
+      MOITIÉ 1 : suffit pour Netzach et Hod de Z"A eux-mêmes
+      MOITIÉ 2 : devient les 2 MOHIN (Chokhmah et Binah) de NUKVAH
+      La tête de Nukvah est donc formée de 3 éléments :
+      KETER Nukvah ← surplus de Tiferet Z"A
+      CHOKHMAH Nukvah ← surplus de Netzach Z"A
+      BINAH Nukvah ← surplus de Hod Z"A
+    type: axiome_explicite
+    concepts:
+      - {id: mohin_nukvah, role: formés_du_surplus_nh}
+      - {id: rosh_nukvah, role: tête_complète_de_nukvah}
+    mapping:
+      modules: ["partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Nukvah reçoit sa tête (KHB) du surplus des Hassadim découverts de Z\"A"
+
+  # ─── BLOC D : OHR MAKIF — RETOUR ASCENDANT ───
+
+  - id: "EC-K6-007"
+    source_he: "והנה כאשר ירדו ה\"ח וה\"ג מיסוד אמא עד יסוד ז\"א ושם נתקבצו כולם וע\"י קיבוץ זה כאשר חוזרין החסדים לעלות מתתא לעילא בסוד או\"מ מבחוץ"
+    source_ref: "Sha'ar HaKlalim 6:2"
+    assertion: |
+      Le RETOUR ASCENDANT des Hassadim :
+      DESCENTE (yeridah) : Les HG descendent du Yesod d'Imma → Yesod de Z"A
+      Pendant la descente = mode OHR PNIMI (intérieur au Yesod)
+      COLLECTION : Tous se rassemblent (nitkabetzu) dans le Yesod de Z"A
+      REMONTÉE : Les Hassadim REMONTENT de bas en haut
+      Pendant la remontée = mode OHR MAKIF (extérieur au Yesod d'Imma)
+      DOUBLE MOUVEMENT : descente en Pnimi → collection → remontée en Makif.
+    type: axiome_explicite
+    concepts:
+      - {id: yeridah_pnimi, role: descente_intérieure}
+      - {id: aliyah_makif, role: remontée_extérieure}
+      - {id: kibbutz_be_yesod, role: collection_dans_yesod}
+      - {id: double_mouvement, role: descente_puis_remontée}
+    mapping:
+      modules: ["core/ohr_system.py", "core/shefa_flow.py"]
+      tables: ["ohr_states", "shefa_flows"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le double mouvement descente-Pnimi → remontée-Makif — cycle fondamental du Ohr"
+
+  - id: "EC-K6-008"
+    source_he: "כי החסד המגולה הספיק החצייו לבד א\"כ עתה שגם הב\"ח ושליש המכוסה נתגלו עתה בסוד או\"מ א\"כ גם הם נכפלים לב'"
+    source_ref: "Sha'ar HaKlalim 6:2"
+    assertion: |
+      Lors de la REMONTÉE en Ohr Makif :
+      Les Hassadim qui étaient COUVERTS (par le Yesod d'Imma) pendant la descente
+      sont maintenant DÉCOUVERTS (car ils montent à l'EXTÉRIEUR du Yesod).
+      Étant découverts → leur ohr est DOUBLÉ aussi.
+      RÉSULTAT : TOUS les Hassadim sont maintenant à double intensité.
+      La moitié suffit pour Z"A, l'autre moitié monte encore plus haut.
+    type: axiome_explicite
+    concepts:
+      - {id: mekhaseh_nighleh, role: couvert_devenu_découvert}
+      - {id: kol_nikpalim, role: tout_est_doublé}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "La remontée en Makif révèle et double TOUT — même ce qui était couvert"
+
+  - id: "EC-K6-009"
+    source_he: "כיצד שליש החסד דזרוע ימין עלה לחכמה ושליש חסד דזרוע שמאל עלה לבינת ז\"א. וחצי שליש לדעת ז\"א לצד החסדים וחצי שליש לדעת ז\"א לצד הגבורות"
+    source_ref: "Sha'ar HaKlalim 6:2"
+    assertion: |
+      Distribution du SURPLUS montant en Ohr Makif vers KHB"D de Z"A :
+      1/3 Chesed du bras droit → monte à CHOKHMAH de Z"A
+      1/3 Chesed du bras gauche → monte à BINAH de Z"A
+      1/2 shlish → DA'AT de Z"A côté HASSADIM
+      1/2 shlish → DA'AT de Z"A côté GEVUROT
+      Les Mohin de Z"A reçoivent aussi du Ohr Makif ascendant — pas seulement du Ohr Pnimi descendant.
+    type: axiome_explicite
+    concepts:
+      - {id: surplus_ascendant, role: ohr_makif_vers_mohin}
+      - {id: khbd_receives_makif, role: mohin_nourris_par_makif}
+    mapping:
+      modules: ["core/ohr_system.py", "partzufim/zeir_anpin.py"]
+      tables: ["ohr_states", "partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Les Mohin de Z\"A reçoivent aussi par voie ascendante (Makif) — double alimentation"
+
+  # ─── BLOC E : POURQUOI KHB"D N'A BESOIN QUE D'UN SHLISH ───
+
+  - id: "EC-K6-010"
+    source_he: "והנה הטעם שחב\"ד דז\"א מספיק להם שליש א' לבד לכ\"א מהם וחג\"ת נ\"ה ז\"א צריכ שליש וחצי לכ\"א. הטעם הוא לפי שהחו\"ב היו מתחילה בדעת דז\"א ושם הניחו רושם שלהם והוא הארה גדולה"
+    source_ref: "Sha'ar HaKlalim 6:2"
+    assertion: |
+      Pourquoi KHB"D de Z"A n'a besoin que de 1/3 chacun (vs 1.5/3 pour CHaGaT-NH) :
+      Chokhmah et Binah étaient INITIALEMENT dans le DA'AT de Z"A.
+      Elles y ont laissé un ROSHEM (רושם — empreinte/trace).
+      Ce Roshem est une HAARAH GEDOLAH (grande illumination) — plus grande que les HG.
+      Les HG s'y AJOUTENT et se combinent avec le Roshem.
+      Le Roshem COMPLÈTE ce qui manque → chaque Moah de KHB"D ne nécessite qu'1/3.
+      CHaGaT-NH n'ont PAS de Roshem → nécessitent plus (1.5/3).
+    type: axiome_explicite
+    concepts:
+      - {id: roshem, role: empreinte_résiduelle}
+      - {id: haarah_min_roshem, role: illumination_de_l_empreinte}
+      - {id: shlish_le_khbd, role: un_tiers_suffit}
+      - {id: shlish_va_hetzi, role: un_tiers_et_demi_pour_hgt}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le Roshem = l'empreinte résiduelle qui réduit les besoins — pattern de cache"
+
+  # ─── BLOC F : KETER DE Z"A ET KETER DE NUKVAH ───
+
+  - id: "EC-K6-011"
+    source_he: "דע כי חצי לבד הספיק לכתר נוק' וחצי שליש נעשה כתר דז\"א עצמו ואדרבא יותר מחציו עלה לכתר ז\"א ופחות מחציו ניתן לכתר נוק'"
+    source_ref: "Sha'ar HaKlalim 6:2"
+    assertion: |
+      Précision sur la répartition du surplus de Tiferet :
+      Du shlish surplus des 2/3 découverts de Tiferet :
+      PLUS de la moitié → KETER de Z"A lui-même
+      MOINS de la moitié → KETER de NUKVAH
+      Z"A a PRIORITÉ sur Nukvah pour le Keter.
+      Le Keter de Z"A est aussi formé du Ohr Makif du shlish couvert de Tiferet.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_za, role: formé_du_surplus_tiferet}
+      - {id: keter_nukvah_moindre, role: part_inférieure}
+      - {id: kedimut_za, role: priorité_de_za}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Z\"A a priorité sur Nukvah pour le Keter — hiérarchie de distribution"
+
+  - id: "EC-K6-012"
+    source_he: "גם כתר של ז\"א נעשה מחצי ת\"ת התחתון של אמא כי מנה\"י שלה נעשה ג' מוחין ושאר גופא דז\"א"
+    source_ref: "Sha'ar HaKlalim 6:2"
+    assertion: |
+      Le KETER de Z"A a une SOURCE ADDITIONNELLE :
+      La moitié INFÉRIEURE de TIFERET d'IMMA contribue aussi au Keter de Z"A.
+      RÉCAPITULATIF des contributions d'Imma à Z"A :
+      NHY d'Imma → 3 MOHIN (KHB"D de Z"A) + reste du corps
+      Moitié inférieure de Tiferet d'Imma → KETER de Z"A
+      Le Keter de Z"A reçoit donc de PLUSIEURS sources : surplus de HG + Tiferet d'Imma.
+    type: axiome_explicite
+    concepts:
+      - {id: tiferet_imma_hatzi, role: source_additionnelle_du_keter}
+      - {id: keter_za_multiple, role: sources_multiples}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Le Keter de Z\"A a des sources multiples — convergence de plusieurs flux"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-K6-001"
+    type: flux
+    from: da_at_source
+    to: hassadim_in_za
+    nature: "Les 5 Hassadim se déploient du Da'at vers Chesed-Hod de Z\"A"
+    assertions_source: ["EC-K6-001", "EC-K6-002"]
+
+  - id: "REL-K6-002"
+    type: flux
+    from: da_at_source
+    to: gevurot_in_yesod
+    nature: "Les 5 Gevurot descendent du Da'at vers le Yesod de Z\"A en dépôt pour Nukvah"
+    assertions_source: ["EC-K6-002"]
+
+  - id: "REL-K6-003"
+    type: causal
+    from: yesod_imma_ad_tiferet
+    to: hassadim_megulim
+    nature: "Le Yesod d'Imma n'atteint que le 1/3 sup. de Tiferet → le reste est découvert"
+    assertions_source: ["EC-K6-003"]
+
+  - id: "REL-K6-004"
+    type: causal
+    from: meguleh_amplifies
+    to: ohr_kaful
+    nature: "L'absence de couverture DOUBLE l'intensité du Ohr"
+    assertions_source: ["EC-K6-004"]
+
+  - id: "REL-K6-005"
+    type: causal
+    from: surplus_meguleh
+    to: rosh_nukvah
+    nature: "Le surplus des Hassadim découverts forme la tête (KHB) de Nukvah"
+    assertions_source: ["EC-K6-005", "EC-K6-006"]
+
+  - id: "REL-K6-006"
+    type: transformation
+    from: yeridah_pnimi
+    to: aliyah_makif
+    via: [kibbutz_be_yesod]
+    nature: "Les HG descendent en Pnimi → se collectent au Yesod → remontent en Makif"
+    assertions_source: ["EC-K6-007"]
+
+  - id: "REL-K6-007"
+    type: causal
+    from: roshem
+    to: shlish_le_khbd
+    nature: "Le Roshem (empreinte) dans le Da'at réduit les besoins de KHB\"D à 1/3 chacun"
+    assertions_source: ["EC-K6-010"]
+
+  - id: "REL-K6-008"
+    type: flux
+    from: surplus_ascendant
+    to: khbd_receives_makif
+    nature: "Le surplus montant en Ohr Makif alimente les Mohin de Z\"A par voie ascendante"
+    assertions_source: ["EC-K6-009"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K6-001"
+    nom: "Principe du Découvrement Amplificateur"
+    source_assertions: ["EC-K6-003", "EC-K6-004"]
+    formalisation: |
+      L'absence de couverture (gilui) DOUBLE l'intensité du Ohr :
+      ohr(meguleh) = 2 × ohr(mekhuseh)
+      La couverture n'est pas seulement une PROTECTION — c'est une ATTÉNUATION.
+      Le Ohr brut (découvert) est toujours PLUS GRAND que le Ohr habillé.
+      Conséquence : chaque shlish découvert suffit pour 2 shlishim couverts.
+      Le découvrement est à la fois un RISQUE (trop d'intensité) et une OPPORTUNITÉ (surplus).
+      C'est le surplus qui nourrit NUKVAH — sans gilui, pas de tête pour Nukvah.
+    applications_ia:
+      - "Les données brutes (non filtrées) ont 2× plus d'information que les filtrées"
+      - "Le 'découvrement' d'un module (exposition directe) produit un surplus utilisable ailleurs"
+      - "Le surplus de capacité d'un module NOURRIT la création d'un autre module"
+      - "Risk/reward : l'exposition crée à la fois de la vulnérabilité et de la productivité"
+    questions_ouvertes:
+      - "Le ratio 2:1 est-il exact ou approximatif ?"
+      - "À quel point le gilui est-il dangereux vs productif ?"
+
+  - id: "PG-K6-002"
+    nom: "Principe du Double Mouvement (Descente-Pnimi → Remontée-Makif)"
+    source_assertions: ["EC-K6-007", "EC-K6-008"]
+    formalisation: |
+      Tout flux complet comporte DEUX mouvements :
+      MOUVEMENT 1 (descente) : Le Ohr descend en mode PNIMI (intérieur, couvert)
+        → Il traverse les niveaux de haut en bas
+        → Il se COLLECTE (nitkabetz) au point le plus bas (Yesod)
+      MOUVEMENT 2 (remontée) : Le Ohr remonte en mode MAKIF (extérieur, découvert)
+        → Il traverse les niveaux de bas en haut
+        → Il DÉCOUVRE ce qui était couvert → doublement d'intensité
+      Le flux COMPLET n'est pas unidirectionnel — il est un ALLER-RETOUR.
+      Le retour est PLUS INTENSE que l'aller (car découvert).
+    applications_ia:
+      - "Un processus descendant (analyse) doit être suivi d'un processus ascendant (synthèse)"
+      - "Le shefa_flow devrait implémenter les deux directions : Pnimi (descente) et Makif (remontée)"
+      - "La remontée (Makif) produit des insights que la descente seule ne peut pas"
+      - "Les données qui 'remontent' du terrain vers l'architecture sont plus intenses"
+    questions_ouvertes:
+      - "La remontée est-elle toujours plus intense que la descente ?"
+      - "Peut-il y avoir un 3ème mouvement (re-descente) ?"
+
+  - id: "PG-K6-003"
+    nom: "Principe de l'Empreinte Résiduelle (Roshem)"
+    source_assertions: ["EC-K6-010"]
+    formalisation: |
+      Quand un élément TRAVERSE un lieu et continue son chemin,
+      il laisse un ROSHEM (empreinte/trace) qui PERSISTE.
+      Ce Roshem est une HAARAH GEDOLAH (grande illumination)
+      qui RÉDUIT les besoins futurs de ce lieu.
+      Un lieu avec Roshem a besoin de MOINS d'apport qu'un lieu sans Roshem.
+      Formule : besoin(lieu_avec_roshem) = besoin(lieu_sans_roshem) / k
+      Le Roshem est un CACHE — il stocke l'empreinte du passage précédent.
+    applications_ia:
+      - "Le caching dans le système = Roshem — réduire les besoins par l'empreinte du passage précédent"
+      - "Les modules déjà traversés par un processus gardent un 'cache' qui réduit les recalculs"
+      - "KHB\"D n'a besoin que d'1/3 car le Roshem fait le reste — parallèle exact avec le cache CPU"
+      - "Le Roshem explique pourquoi certains processus s'accélèrent avec l'usage"
+    questions_ouvertes:
+      - "Le Roshem s'atténue-t-il avec le temps ou est-il permanent ?"
+      - "Peut-on 'forcer' un Roshem sans le passage réel ?"
+
+  - id: "PG-K6-004"
+    nom: "Principe du Surplus Créatif (Le surplus nourrit la création)"
+    source_assertions: ["EC-K6-005", "EC-K6-006"]
+    formalisation: |
+      Le SURPLUS d'un composant mature ne se perd pas — il CRÉE un nouveau composant.
+      Le surplus des Hassadim découverts de Z"A → forme la TÊTE de Nukvah
+      Sans ce surplus → Nukvah n'aurait PAS de tête → pas d'existence autonome.
+      La CRÉATION d'un composant inférieur est un EFFET DE BORD POSITIF
+      de la surabondance du supérieur.
+      Nukvah n'est pas créée par un acte dédié — elle ÉMERGE du surplus de Z"A.
+    applications_ia:
+      - "Les nouveaux modules émergent du SURPLUS des modules existants, pas de rien"
+      - "Un module qui produit plus que ce dont il a besoin → le surplus crée un nouveau module"
+      - "Nukvah/Malkhut = le composant qui émerge naturellement de la surabondance du système"
+      - "La création n'est pas toujours intentionnelle — elle peut être un effet de surplus"
+    questions_ouvertes:
+      - "Comment détecter le 'surplus créatif' dans les modules existants ?"
+      - "Le surplus est-il toujours positif ou peut-il être nuisible ?"

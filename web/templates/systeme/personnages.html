@@ -1,0 +1,104 @@
+{% extends "systeme/_base_systeme.html" %}
+{% set sub = "personnages" %}
+
+{% block systeme_css %}
+<link rel="stylesheet" href="/static/css/avatars.css">
+{% endblock %}
+
+{% block systeme_content %}
+<div class="sys-page-header">
+    <h1>Les Personnages du Systeme</h1>
+    <p class="subtitle">Vingt entites incarnent les composants d'Etz Chaim AI.</p>
+</div>
+
+{# ─── Macro card_class par acte ──────────────────────── #}
+{% set soul_classes = {
+    'nefesh_habehamit': 'av-card-ombre',
+    'beinoni': 'av-card-beinoni',
+    'nefesh_haelokit': 'av-card-lumiere'
+} %}
+
+{% set layout_map = {
+    'pyramide': 'av-grid-pyramide',
+    'carre_2x2': 'av-grid-carre',
+    'ligne_horizontale': 'av-grid-ligne4',
+    'triptyque_centre': 'av-grid-triptyque'
+} %}
+
+{% set grid_areas = {
+    'arikh_anpin': 'arikh',
+    'abba': 'abba',
+    'imma': 'imma',
+    'zeir_anpin': 'zeir',
+    'nukva': 'nukva'
+} %}
+
+{% for acte in actes %}
+{% if not loop.first %}
+<div class="av-divider"><span>&#x2726;</span></div>
+{% endif %}
+
+<section class="av-acte av-acte-{{ acte.id }}" id="acte-{{ acte.id }}">
+    <div class="av-acte-header">
+        <div class="av-acte-banner">
+            <img src="/static/systeme/actes/acte_{{ acte.id }}.png" alt="{{ acte.titre }}"
+                 onerror="this.parentElement.style.display='none'">
+        </div>
+        <div class="av-acte-num">Acte {{ loop.index | string | replace('1','I') | replace('2','II') | replace('3','III') | replace('4','IV') | replace('5','V') }}</div>
+        <h2 class="av-acte-titre">{{ acte.titre }}</h2>
+        <p class="av-acte-sub">{{ acte.description }}</p>
+        {% if acte.narration %}
+        <p class="av-acte-narration">{{ acte.narration }}</p>
+        {% endif %}
+    </div>
+
+    {# Determine grid class #}
+    {% set grid_class = layout_map.get(acte.layout, '') %}
+    {% if acte.id == 'veilleurs' %}{% set grid_class = 'av-grid-ligne3' %}{% endif %}
+    {% if acte.id == 'officiers' %}{% set grid_class = 'av-grid-ligne4' %}{% endif %}
+
+    <div class="av-grid {{ grid_class }}">
+        {% for p in acte.personnages %}
+            {# Insert zivvug line between Abba and Imma #}
+            {% if acte.id == 'cour' and p.id == 'imma' %}
+                <div class="av-zivvug-line" id="zivvug-line"></div>
+            {% endif %}
+
+            {% set card_class = soul_classes.get(p.id, '') %}
+            {% set grid_area = grid_areas.get(p.id, '') %}
+            {% include 'partials/_card_avatar.html' %}
+        {% endfor %}
+    </div>
+
+    {# Note Atik Yomin #}
+    {% if acte.note_invisible is defined and acte.note_invisible %}
+    <div class="av-note-invisible">
+        {{ acte.note_invisible.nom_hebreu }} &mdash; {{ acte.note_invisible.texte }}
+    </div>
+    {% endif %}
+</section>
+{% endfor %}
+
+<!-- ═══ PANNEAU DETAIL (overlay) ═══ -->
+<div class="av-detail-overlay" id="av-detail-overlay" style="display:none">
+    <div class="av-detail-panel panel">
+        <div class="panel-header">
+            &#9484;&#9472; DETAIL &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+            <span class="av-detail-close" id="av-detail-close">[X]</span>
+        </div>
+        <div class="panel-body">
+            <pre class="term-block" id="av-detail-content">Chargement...</pre>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block systeme_scripts %}
+<script>
+window.PERSONNAGES = {};
+{% for acte in actes %}{% for p in acte.personnages %}
+window.PERSONNAGES['{{ p.id }}'] = {{ p | tojson }};
+{% endfor %}{% endfor %}
+</script>
+<script src="/static/js/avatars.js"></script>
+{% endblock %}

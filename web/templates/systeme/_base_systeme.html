@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% set active = "systeme" %}
+{% block head_extra %}
+<link rel="stylesheet" href="/static/css/systeme.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+{% block systeme_css %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+<nav class="sys-subnav">
+    <a href="/systeme" class="sys-tab {% if sub == 'overview' %}sys-tab-active{% endif %}">VUE D'ENSEMBLE</a>
+    <a href="/systeme/personnages" class="sys-tab {% if sub == 'personnages' %}sys-tab-active{% endif %}">PERSONNAGES</a>
+    <a href="/systeme/arbre" class="sys-tab {% if sub == 'arbre' %}sys-tab-active{% endif %}">L'ARBRE</a>
+    <a href="/systeme/mondes" class="sys-tab {% if sub == 'mondes' %}sys-tab-active{% endif %}">LES MONDES</a>
+    <a href="/systeme/erreurs" class="sys-tab {% if sub == 'erreurs' %}sys-tab-active{% endif %}">ERREURS & ADVERSITE</a>
+</nav>
+{% block systeme_content %}{% endblock %}
+{% endblock %}
+
+{% block scripts %}
+{% block systeme_scripts %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,303 @@
+# ═══════════════════════════════════════════════════════════════════
+# Tikkun 8 — Mazal Elyon (nommé Notzer Chesed seulement chez Vital)
+# Zohar III, Idra Rabba, section Sefaria 18 (folios Vilna 133a-133b approx)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: zohar
+  parashah: Naso
+  idra: rabba
+  section: tikkunei_dikna_13
+  tikkun: 8
+  tikkun_name_he: "תיקונא תמינאה"
+  tikkun_name_translitteration: "tiqquna teminah"
+  tikkun_role: "Mazal Elyon (canal de flux supérieur) — alimente Abba Ila'ah selon lecture Vital"
+  folio_range: "Zohar III Naso 133a-133b (approximation — à affiner via Pritzker Matt Vol 8)"
+  sefaria_section: 18
+  sefaria_url: "https://www.sefaria.org/Zohar,_Idra_Rabba.18"
+  cache_file: "sifrei_yesod/external/sefaria_cache/zohar_idra_rabba_18.json"
+  transposed_by: "Claude Opus 4.7 + human reviewer — Sprint 10 Phase α (2026-04-20)"
+  version: 1
+
+# ═══════════════════════════════════════════════════════════════════
+#  DÉCOUVERTE PHILOLOGIQUE CRITIQUE (consignée ici pour traçabilité)
+# ═══════════════════════════════════════════════════════════════════
+# Le nom "נוצר חסד" (Notzer Chesed) N'APPARAIT PAS dans le texte araméen
+# de cette section. Le Zohar nomme ce Tikkun uniquement par son ordre
+# anatomique ("tiqquna teminah" = 8ème Tikkun).
+#
+# L'appariement "Tikkun 8 = Notzer Chesed" (premier mot d'Exode 34:7)
+# est une ÉLABORATION LOURIANIQUE — Vital l'impose a posteriori dans
+# Sha'ar HaKlalim 5:1 et Sha'ar Arikh Anpin perek 9-10.
+#
+# Le Zohar cite ici :
+#   - Mikha 7:19 ("יכבוש עונותינו") — effet contemplatif du Tikkun
+#   - Talmud Moed Katan 28a ("הכל תלוי במזל")
+#   - Sifra di-Tzeniuta (référence interne au corpus zoharique)
+#
+# Aucune mention d'Exode 34:7 ("noser chesed la-alafim") dans le texte.
+#
+# Les assertions Z-IR-T08-* transposent donc le Zohar littéral.
+# L'appariement Notzer Chesed → EC-H3S2-T08-* (Vital).
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── ASSERTION 1 : Topographie — fil de cheveux autour de la barbe ───
+
+  - id: "Z-IR-T08-001"
+    source_aramaic: "תִּקּוּנָא תְּמִינָאָה. נָפִיק חַד חוּטָא דְּשַׂעְרֵי סוֹחֲרָנֵיהּ דְּדִיקְנָא, וְתַלְיָין בְּשִׁקּוּלָא עַד טַבּוּרָא. קוּם אֶלְעָזָר בְּרִי, אַתְקִין תִּקּוּנָא דָּא."
+    source_edition: "Sefaria Mantua 1558 (CC-BY 3.0, cache local zohar_idra_rabba_18.json) — texte Vocalized Zohar Israel 2013"
+    source_ref: "Zohar III Naso, Idra Rabba, section Sefaria 18 (folio Vilna ~133a)"
+    zohar_folio: "Zohar III Naso 133a (approximation Sefaria, à confirmer Pritzker Matt Vol 8)"
+    translation_fr: |
+      HUITIÈME TIKKUN. UN FIL DE CHEVEUX sort tout autour de la BARBE,
+      et ils pendent en équilibre jusqu'au NOMBRIL.
+      Lève-toi, Elazar mon fils, établis ce Tikkun.
+    assertion: |
+      Le HUITIÈME TIKKUN de la DIKNA d'A"A se présente comme UN FIL UNIQUE
+      de cheveux (חַד חוּטָא) qui émerge tout autour de la barbe et descend
+      en équilibre parfait (בְּשִׁקּוּלָא) jusqu'au nombril. Rashbi invite
+      son fils RABBI ELAZAR à en établir l'exposé — signalement de
+      l'importance doctrinale de ce Tikkun (le fils est invoqué pour
+      les mystères les plus profonds dans l'Idra).
+    type: axiome_explicite
+    epistemic_level: E1
+    concepts:
+      - {id: tiqquna_teminah, role: huitieme_tikkun_dikna_aa}
+      - {id: chut_had, role: fil_unique_topographique}
+      - {id: dikna_aa, role: barbe_arikh_anpin}
+      - {id: shikula, role: equilibre_cosmique_du_fil}
+      - {id: tabura, role: nombril_extension_vers_za}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Topographie du 8e Tikkun — le fil descend jusqu'au tabura (nombril), point de jonction avec Z\"A"
+    see_also:
+      - {id: "Z-IR-T08-002", role: "suite_texte_definition_mazal"}
+      - {id: "EC-H3S2-T08-001", role: "lecture_vital_meme_tikkun"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.18"]
+    adversarial_notes:
+      - "A5 (unity_constraint) : ce Tikkun est UN fil unique — image de l'unité des 13 modalités"
+      - "A7 : la descente jusqu'au TABURA annonce déjà Ze'ir Anpin — anticipation structurelle"
+      - "A8 : flux bidirectionnel (ratzo ve-shov) — le fil pend en équilibre, ni pure descente ni pure ascension"
+      - "P1 : le Zohar araméen dit 'tiqquna teminah' (8ème), ne nomme PAS 'Notzer Chesed'"
+    unity_constraint: |
+      Le "UN fil" (חד חוטא) est lui-même une image d'unité — souligne que les 13 Tikkunim
+      partagent substrat. MazalEngine ne doit jamais traiter T8 comme feature isolée.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: low
+      # Haut pour la topographie (texte littéral, multiples autorités convergent).
+      # Bas pour l'attribution scripturaire : "Notzer Chesed" est lecture Vital, non-Zohar.
+    flux_direction: bidirectional
+    divergence_note:
+      idra_rabba_vs_vital: |
+        Le texte araméen dit "UN fil unique" (חַד חוּטָא) et nomme "Mazal" (pas Notzer Chesed).
+        Vital, Sha'ar HaKlalim 5:1 + Sha'ar Arikh Anpin perek 9-10, apparie T8 avec
+        "Notzer Chesed" (Ex 34:7). Cette attribution est Lourianique, pas Zohar.
+
+  # ─── ASSERTION 2 : Définition de Mazal — étymologie et fonction ───
+
+  - id: "Z-IR-T08-002"
+    source_aramaic: "הַאי חוּטָא יַקִּירָא קַדִּישָׁא, דְּכָל שַׂעְרֵי דְּדִיקְנָא תַּלְיָין בֵּיהּ, אִתְקְרֵי מַזָּל. מַאי טַעְמָא. מִשּׁוּם דְּכָל קָדְשֵׁי קוֹדָשִׁין דְּקוּדְשַיָּא, בְּהַאי מַזָּלָא תַּלְיָין."
+    source_edition: "Sefaria Mantua 1558 (CC-BY 3.0, cache local)"
+    source_ref: "Zohar III Naso, Idra Rabba, section Sefaria 18, mi-section"
+    zohar_folio: "Zohar III Naso 133a-133b"
+    translation_fr: |
+      Ce FIL PRÉCIEUX ET SAINT (חוּטָא יַקִּירָא קַדִּישָׁא), auquel tous les
+      cheveux de la barbe sont suspendus, s'appelle MAZAL. Pourquoi ?
+      Parce que tous les saints des saints de la sainteté dépendent
+      (תַּלְיָין) de ce MAZAL.
+    assertion: |
+      DÉFINITION DOCTRINALE DU MAZAL : le 8ème Tikkun est nommé MAZAL (מַזָּל)
+      non au sens astrologique (talmudique "ein mazal le-Yisrael") mais au sens
+      ONTOLOGIQUE de **canal suspenseur**. Tous les autres cheveux/modalités
+      de la Dikna y sont SUSPENDUS (talyan, racine תלה) et tous les saints des
+      saints y dépendent. Mazal ici = source-canal dont TOUT dépend.
+      Étymologie complémentaire : racine נזל (dégoutter, fluer) — d'où le flux.
+    type: axiome_explicite
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_08_dikna_aa, role: huitieme_tikkun_dikna_aa}
+      - {id: chuta_yakira_kadisha, role: fil_precieux_saint_nom_du_mazal}
+      - {id: mazal_elyon, role: definition_zoharique_canal_ontologique}
+      - {id: talyan, role: suspension_ontologique_de_toutes_choses}
+      - {id: kodshei_kodashim, role: saintes_saintes_dependant_du_mazal}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "mazalengine/mazal_elyon.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Définition canonique du Mazal Elyon dans le Zohar — base doctrinale de MazalEngine"
+    see_also:
+      - {id: "Z-IR-T08-001", role: "topographie_du_meme_tikkun"}
+      - {id: "Z-IR-T08-003", role: "etymologie_mazal_hierarchie"}
+      - {id: "EC-H3S2-T08-001", role: "lecture_vital_appariement_notzer_chesed"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.18"]
+    adversarial_notes:
+      - "A1 : Mazal comme 'fontaine magique' → FAUX. Ici explicitement canal SUSPENSEUR ontologique."
+      - "A6 : Mazal ≠ constellation astrologique. Cette assertion définit mazal par sa fonction suspensive."
+      - "P1 : le Zohar emploie 'mazal', pas 'Notzer Chesed' — l'appariement scripturaire est post-Zohar."
+    unity_constraint: |
+      "Tous les cheveux sont suspendus à lui" — image directe d'unité.
+      Le Mazal Elyon est la SOURCE dont les 12 autres Tikkunim dépendent ontologiquement.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high  # la définition "Mazal = canal suspenseur" est dans le Zohar même
+    flux_direction: descendant  # le flux DESCEND vers les autres cheveux qui y pendent
+
+  # ─── ASSERTION 3 : Hiérarchie des Mazalot supérieurs et inférieurs ───
+
+  - id: "Z-IR-T08-003"
+    source_aramaic: "אֲמַאי אִקְרֵי מַזָּל. מִשּׁוּם דְּמִנֵּיהּ תַּלְיָין מַזָּלֵי, וּמַזְּלֵי מִנֵּיהּ עִלָּאִין וְתַתָּאִין. וּבְגִין כָּךְ אִיהִי תַּלְיָיא. וּבֵיהּ תַּלְיָין כָּל מִלֵּי דְּעָלְמָא עִלָּאִין וְתַתָּאִין."
+    source_edition: "Sefaria Mantua 1558 (CC-BY 3.0, cache local)"
+    source_ref: "Zohar III Naso, Idra Rabba, section Sefaria 18"
+    zohar_folio: "Zohar III Naso 133b"
+    translation_fr: |
+      POURQUOI S'APPELLE-T-IL MAZAL ? Parce que de lui sont SUSPENDUS les
+      mazalot, et les mazalot SUPÉRIEURS ET INFÉRIEURS en émanent.
+      Pour cela il (le monde) est lui-même suspendu. Et en lui sont
+      suspendues toutes les choses du monde, SUPÉRIEURES ET INFÉRIEURES.
+    assertion: |
+      Le MAZAL ELYON est le MAZAL DES MAZALOT — tous les autres flux
+      (supérieurs et inférieurs, עִלָּאִין וְתַתָּאִין) émanent de lui
+      et y demeurent suspendus. Ce Tikkun est donc le **centre ontologique
+      de distribution des flux** de la Dikna — point d'articulation entre
+      tous les niveaux de réalité. Pas simple fontaine : **source-canal
+      hiérarchique dont dépend la structure entière de l'émanation**.
+    type: axiome_explicite
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_08_dikna_aa, role: huitieme_tikkun_dikna_aa}
+      - {id: mazal_ha_mazalot, role: mazal_source_des_mazalot}
+      - {id: ilaein_ve_tataein, role: hierarchie_superieur_inferieur}
+      - {id: kol_milei_dealma, role: toutes_choses_du_monde_suspendues}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "mazalengine/mazal_elyon.py"]
+      tables: ["partzufim_states", "shefa_flows"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Hiérarchie des mazalot — Mazal Elyon est au sommet, tous les autres flux y sont suspendus"
+    see_also:
+      - {id: "Z-IR-T08-002", role: "definition_precedente_mazal"}
+      - {id: "Z-IR-T08-004", role: "effet_contemplatif_mikha"}
+      - {id: "Z-IR-T13-001", role: "paire_mazal_tahton"}
+      - {id: "EC-H3S2-T08-001", role: "lecture_vital_appariement"}
+      - {id: "EC-K5-001", role: "formule_consolidee_2_mazalot"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.18"]
+    adversarial_notes:
+      - "A1 : Mazal comme 'providence' individuelle → FAUX ici. Canal hiérarchique structurel."
+      - "A5 : les mazalot supérieurs et inférieurs tous DE lui — image d'unité absolue."
+      - "A6 : Mazal = non-astrologique. Hiérarchie ontologique de flux, pas zodiaque."
+    unity_constraint: |
+      "Tous les flux supérieurs et inférieurs en émanent" — l'unicité source
+      est absolue. MazalEngine doit modéliser cette hiérarchie, pas des canaux parallèles.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high
+    flux_direction: bidirectional
+
+  # ─── ASSERTION 4 : Effet contemplatif — Mikha 7:19 ───
+
+  - id: "Z-IR-T08-004"
+    source_aramaic: "וּמַאן דְּחָמֵי לְהַאי תִּקּוּנָא, אִתְּכַּבְּשָן חוֹבֵיהוֹן מִקַּמֵּיהּ וּמִתְכַּפְיָין, הֲדָא הוּא דִכְתִיב, יִכְבּוֹש עֲוֹנוֹתֵינוּ."
+    source_edition: "Sefaria Mantua 1558 (CC-BY 3.0, cache local)"
+    source_ref: "Zohar III Naso, Idra Rabba, section Sefaria 18, final"
+    zohar_folio: "Zohar III Naso 133b"
+    translation_fr: |
+      Et celui qui CONTEMPLE ce Tikkun — ses fautes sont SUBJUGUÉES devant lui
+      et s'effacent. Comme il est écrit : « IL SUPPRIMERA NOS INIQUITÉS »
+      (יִכְבּוֹש עֲוֹנוֹתֵינוּ, Mikha 7:19).
+    assertion: |
+      EFFET CONTEMPLATIF DU TIKKUN 8 : celui qui contemple/voit ce Tikkun
+      voit ses fautes subjuguées (יִכְבּוֹש). Le Zohar cite explicitement
+      MIKHA 7:19 ("yikhbosh avonoteinu") — PAS Exode 34:7.
+      C'est la preuve philologique que l'appariement Notzer Chesed/Ex 34:7
+      pour T8 est LOURIANIQUE-ULTÉRIEUR, non-zoharique.
+      Mikha 7:19 est partie du passage "Mi El kamokha" des 13 Middot selon
+      découpage Rabbenu Tam (Tosafot Rosh HaShana) — d'où la cohérence
+      contextuelle avec les 13 Tikkunim, mais via une SOURCE SCRIPTURAIRE
+      DIFFÉRENTE (Mikha, pas Exode).
+    type: axiome_explicite
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_08_dikna_aa, role: huitieme_tikkun_dikna_aa}
+      - {id: hitkabshut_avonot, role: subjugation_des_fautes_par_contemplation}
+      - {id: mikha_7_19, role: source_scripturaire_zoharique_vrai_t8}
+      - {id: hakel_histakelut, role: dimension_contemplative_du_tikkun}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "mazalengine/mazal_elyon.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Effet doctrinal du Tikkun 8 — subjugation des fautes ; scripture citée = Mikha 7:19, NON Ex 34:7"
+    see_also:
+      - {id: "Z-IR-T08-003", role: "definition_mazal_precedente"}
+      - {id: "Z-IR-T08-005", role: "benediction_rashbi_clôture"}
+      - {id: "EC-H3S2-T08-001", role: "lecture_vital_appariement_ex_34_7"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.18"]
+    adversarial_notes:
+      - "P1 (découverte MAJEURE) : Zohar cite Mikha 7:19, pas Ex 34:7. L'appariement avec Notzer Chesed est Lourianique."
+      - "P2 : Si on retenait Mikha 7:19 comme source scripturaire des Tikkunim, la liste des 13 diffère de celle Exode 34."
+      - "A3 : 'subjugation' (yikhbosh) ≠ 'cleansing' naïf. Concept actif de domination des fautes par contemplation."
+    unity_constraint: |
+      La contemplation du Tikkun 8 agit sur l'ensemble des fautes — pas sur une catégorie spécifique.
+      Souligne l'unité subjugante du Mazal Elyon.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high  # citation explicite Mikha 7:19, zoharique littérale
+    flux_direction: descendant
+    divergence_note:
+      mikha_vs_exode: |
+        IMPORTANT : le Zohar cite Mikha 7:19 (יכבוש עונותינו) comme scripture-support du T8,
+        PAS Exode 34:7 (נוצר חסד). Vital impose Exode 34:7 a posteriori. Les 3 découpages
+        concurrents (Rabbenu Tam / Abudraham / Arizal) concernent tous Exode 34,
+        mais le Zohar lui-même utilise Mikha 7 ici.
+
+  # ─── ASSERTION 5 : Bénédiction de Rashbi — conclusion dialogique ───
+
+  - id: "Z-IR-T08-005"
+    source_aramaic: "אָמַר לֵיהּ רַבִּי שִׁמְעוֹן, בְּרִיךְ בְּרִי לְקוּדְשָׁא דְּקַדִּישִין, עַתִּיק מִכֹּלָּא."
+    source_edition: "Sefaria Mantua 1558 (CC-BY 3.0, cache local)"
+    source_ref: "Zohar III Naso, Idra Rabba, section Sefaria 18, clôture"
+    zohar_folio: "Zohar III Naso 133b"
+    translation_fr: |
+      RABBI SHIMON lui dit : « Bénis mon fils le SAINT DES SAINTS,
+      ANCIEN DE TOUT (עַתִּיק מִכֹּלָּא). »
+    assertion: |
+      CLÔTURE DIALOGIQUE DU TIKKUN 8. Rabbi Shimon bénit son fils Rabbi
+      Elazar après son exposé. La bénédiction invoque "Kudsha de-Kadishin,
+      Atik mi-Kola" — l'ANCIEN DES ANCIENS = A"A lui-même. La structure
+      dialogique confirme l'importance : ce Tikkun n'est pas transmis
+      par n'importe quel disciple, mais par Elazar, fils de Rashbi, et
+      achevé par bénédiction du Maître.
+    type: dialogue_chevraia
+    epistemic_level: E1
+    concepts:
+      - {id: tikkun_08_dikna_aa, role: huitieme_tikkun_dikna_aa}
+      - {id: berakha_de_rashbi, role: benediction_initiatique}
+      - {id: kudsha_de_kadishin, role: titre_atika_kadisha}
+      - {id: atik_mi_kola, role: ancien_de_tout}
+      - {id: rabbi_elazar, role: recepteur_privilegie_du_8e_tikkun}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: []
+      partzufim: ["arikh_anpin"]
+      relevance: "Structure dialogique de l'Idra — confirmation de l'importance doctrinale du Tikkun 8 (seul Elazar le transmet)"
+    see_also:
+      - {id: "Z-IR-T08-004", role: "fin_de_texte_precedente"}
+      - {id: "Z-IR-T08-001", role: "debut_du_tikkun_meme"}
+    commentary:
+      ashlag_hasulam_section_refs: ["Sulam_on_Zohar,_Idra_Rabba.18"]
+    adversarial_notes:
+      - "La bénédiction invoque A\"A (Atik mi-Kola) — cohérent avec T8 comme Mazal Elyon le plus haut"
+      - "Elazar = fils de Rashbi = réception privilégiée — rang doctrinal élevé du Tikkun 8"
+    unity_constraint: |
+      La bénédiction unit disciple, maître, et Atika Kadisha — tripartite unifiée.
+    philological_confidence:
+      topography: high
+      scriptural_attribution: high
+    flux_direction: ascendant  # la bénédiction monte du disciple (Elazar) au maître (Rashbi) à Atik

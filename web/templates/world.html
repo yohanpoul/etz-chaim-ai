@@ -1,0 +1,3358 @@
+{% extends "base.html" %}
+{% set active = "world" %}
+{% block title %}Etz Chaim — Temple{% endblock %}
+{% block content %}
+<div id="world-container"></div>
+<div id="world-hud">
+    <div id="hud-nitzotzot">&#10022; <span id="nitz-count">0</span>/288</div>
+    <div id="hud-status"></div>
+    <div id="hud-time"></div>
+</div>
+<style>
+#world-container { width:100%; height:100vh; display:block; overflow:hidden; }
+.content { padding:0 !important; overflow:hidden; max-width:none !important; }
+#world-hud {
+    position:fixed; top:12px; right:24px;
+    display:flex; gap:16px; align-items:center;
+    font:bold 14px monospace; color:#c9a84c;
+    pointer-events:none; z-index:10;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    background: rgba(10,8,16,0.75); padding:6px 14px;
+    border-radius:8px; backdrop-filter:blur(4px);
+    border:1px solid rgba(201,168,76,0.25);
+}
+#hud-status {
+    color:#a09070; font-size:12px; max-width:300px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+#hud-time { font-size:16px; letter-spacing:2px; }
+#world-controls {
+    position:fixed; bottom:12px; left:24px;
+    font:11px monospace; color:#706050; pointer-events:none; z-index:10;
+    background: rgba(10,8,16,0.65); padding:4px 10px;
+    border-radius:6px; backdrop-filter:blur(4px);
+    border:1px solid rgba(201,168,76,0.15);
+}
+#daemon-toast {
+    position:fixed; bottom:60px; left:50%; transform:translateX(-50%);
+    font:bold 13px monospace; color:#8a8; padding:8px 20px;
+    background:rgba(10,8,16,0.88); border:1px solid rgba(136,170,136,0.3);
+    border-radius:8px; backdrop-filter:blur(4px);
+    pointer-events:none; z-index:10; opacity:0;
+    transition:opacity 0.4s ease;
+    text-shadow:0 1px 3px rgba(0,0,0,0.8);
+}
+#daemon-toast.show { opacity:1; }
+#info-panel {
+    position:fixed; top:50%; left:50%;
+    width:260px; font:12px monospace; color:#c9a84c;
+    background:rgba(10,8,16,0.92); border:1px solid rgba(201,168,76,0.35);
+    border-radius:10px; backdrop-filter:blur(6px); padding:14px;
+    z-index:200; display:none; pointer-events:auto;
+}
+#info-panel h3 { margin:0 0 6px; font-size:15px; }
+#info-panel .hebrew { font-size:28px; text-align:center; display:block; margin:2px 0 6px; color:#ffd700; }
+#info-panel .field { color:#a09070; margin:3px 0; font-size:11px; }
+#info-panel .field span { color:#c9a84c; }
+#info-panel .close-btn {
+    position:absolute; top:6px; right:10px; cursor:pointer;
+    color:#706050; font-size:16px; pointer-events:auto;
+}
+#info-panel .close-btn:hover { color:#c9a84c; }
+.status-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:4px; vertical-align:middle; }
+.status-dot.online { background:#60ff90; box-shadow:0 0 4px #60ff90; }
+.status-dot.offline { background:#ff4040; box-shadow:0 0 4px #ff4040; }
+.status-dot.warning { background:#ffc020; box-shadow:0 0 4px #ffc020; }
+#mute-btn {
+    position:fixed; bottom:12px; right:24px;
+    font:14px monospace; color:#706050; cursor:pointer;
+    background:rgba(10,8,16,0.65); padding:4px 10px;
+    border-radius:6px; border:1px solid rgba(201,168,76,0.15);
+    z-index:10; pointer-events:auto;
+}
+#mute-btn:hover { color:#c9a84c; border-color:rgba(201,168,76,0.4); }
+</style>
+<div id="world-controls">LMB: pan &middot; RMB: rotate &middot; Wheel: zoom</div>
+<div id="daemon-toast"></div>
+<div id="info-panel">
+    <span class="close-btn">&times;</span>
+    <div id="info-content"></div>
+</div>
+<div id="mute-btn">&#128263;</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="/static/js/procedural-models.js"></script>
+<script>
+(function(){
+'use strict';
+
+// ═══════════════════════════════════════════════════════════════
+//   DATA — Rooms, edges, adjacency
+// ═══════════════════════════════════════════════════════════════
+
+const ROOMS = [
+    { id:'keter',   name:'Keter',   x:0,   z:-39, w:9,  d:7.5, col:0xffffff, acts:['sit','sleep'],
+      floorTile:'floor_tile_small_decorated', wallType:'wall_arched' },
+    { id:'chokmah', name:'Chokmah', x:18,  z:-28.5, w:7.5,d:6, col:0x4060ff, acts:['type','read'],
+      floorTile:'floor_tile_small', wallType:'wall' },
+    { id:'binah',   name:'Binah',   x:-18, z:-28.5, w:7.5,d:6, col:0xff3040, acts:['read','type'],
+      floorTile:'floor_wood_small', wallType:'wall_shelves' },
+    { id:'daat',    name:"Da'at",   x:0,   z:-18, w:6.75,d:5.25, col:0x888888, acts:['sit','talk'],
+      dashed:true, floorTile:'floor_tile_small', wallType:'wall_broken' },
+    { id:'chesed',  name:'Chesed',  x:18,  z:-6,  w:8.25,d:6, col:0x3090ff, acts:['read','celebrate'],
+      floorTile:'floor_tile_small', wallType:'wall_shelves' },
+    { id:'gevurah', name:'Gevurah', x:-18, z:-6,  w:7.5,d:6, col:0xff2030, acts:['sit','type'],
+      floorTile:'floor_tile_small_broken_A', wallType:'wall' },
+    { id:'tiferet', name:'Tiferet', x:0,   z:6,   w:10.5,d:8.25, col:0xffc020, acts:['sit','talk'],
+      floorTile:'floor_tile_small_decorated', wallType:'wall_arched' },
+    { id:'netzach', name:'Netzach', x:18,  z:18,  w:7.5,d:6, col:0x20ff60, acts:['type','read'],
+      floorTile:'floor_tile_small', wallType:'wall' },
+    { id:'hod',     name:'Hod',     x:-18, z:18,  w:7.5,d:6, col:0xff8020, acts:['read','type'],
+      floorTile:'floor_wood_small', wallType:'wall' },
+    { id:'yesod',   name:'Yesod',   x:0,   z:30,  w:7.5,d:6, col:0x8030ff, acts:['read','type'],
+      floorTile:'floor_tile_small', wallType:'wall_arched' },
+    { id:'malkuth', name:'Malkuth', x:0,   z:42,  w:9,  d:7.5, col:0xc08040, acts:['sit','talk'],
+      floorTile:'floor_tile_small_broken_B', wallType:'wall' },
+];
+
+const ROOM_IDX = {};
+ROOMS.forEach((r,i) => ROOM_IDX[r.id] = i);
+
+const SEPHIRAH_INFO = {
+    keter:   { hebrew:'כֶּתֶר', meaning:"Couronne — Volonté primordiale", role:'Superviseur', module:'—' },
+    chokmah: { hebrew:'חָכְמָה', meaning:"Sagesse — Flash d'insight", role:'Chercheur', module:'InsightForge' },
+    binah:   { hebrew:'בִּינָה', meaning:"Intelligence — Analyse causale", role:'Analyste', module:'CausalEngine' },
+    daat:    { hebrew:'דַּעַת', meaning:"Connaissance — Modèle de soi", role:'Observateur', module:'SelfModel' },
+    chesed:  { hebrew:'חֶסֶד', meaning:"Bonté — Exploration", role:'Explorateur', module:'ExplorationEngine' },
+    gevurah: { hebrew:'גְּבוּרָה', meaning:"Rigueur — Auto-jugement", role:'Juge', module:'AutoJudge' },
+    tiferet: { hebrew:'תִּפְאֶרֶת', meaning:"Beauté — Moteur de dissensus", role:'Médiateur', module:'DissensuEngine' },
+    netzach: { hebrew:'נֵצַח', meaning:"Victoire — Intentions", role:'Stratège', module:'IntentKeeper' },
+    hod:     { hebrew:'הוֹד', meaning:"Splendeur — Cartographie", role:'Cartographe', module:'SelfMap' },
+    yesod:   { hebrew:'יְסוֹד', meaning:"Fondement — Mémoire épistémique", role:'Archiviste', module:'EpisteMemory' },
+    malkuth: { hebrew:'מַלְכוּת', meaning:"Royauté — Interface monde", role:'Gardien', module:'—' }
+};
+
+// ── 22 Sentiers de l'Etz Chaim (GRA paths 1-18, Ari variant paths 19-22) ──
+const PATHS = [
+    { idx:1,  letter:'א', name:'Aleph',  from:'keter',   to:'chokmah'  },
+    { idx:2,  letter:'ב', name:'Bet',    from:'keter',   to:'binah'    },
+    { idx:3,  letter:'ג', name:'Gimel',  from:'keter',   to:'tiferet'  },
+    { idx:4,  letter:'ד', name:'Dalet',  from:'chokmah', to:'binah'    },
+    { idx:5,  letter:'ה', name:'Hé',     from:'chokmah', to:'tiferet'  },
+    { idx:6,  letter:'ו', name:'Vav',    from:'chokmah', to:'chesed'   },
+    { idx:7,  letter:'ז', name:'Zayin',  from:'binah',   to:'tiferet'  },
+    { idx:8,  letter:'ח', name:'Chet',   from:'binah',   to:'gevurah'  },
+    { idx:9,  letter:'ט', name:'Tet',    from:'chesed',  to:'gevurah'  },
+    { idx:10, letter:'י', name:'Yod',    from:'chesed',  to:'tiferet'  },
+    { idx:11, letter:'כ', name:'Kaf',    from:'chesed',  to:'netzach'  },
+    { idx:12, letter:'ל', name:'Lamed',  from:'gevurah', to:'tiferet'  },
+    { idx:13, letter:'מ', name:'Mem',    from:'gevurah', to:'hod'      },
+    { idx:14, letter:'נ', name:'Nun',    from:'tiferet', to:'netzach'  },
+    { idx:15, letter:'ס', name:'Samekh', from:'tiferet', to:'yesod'    },
+    { idx:16, letter:'ע', name:'Ayin',   from:'tiferet', to:'hod'      },
+    { idx:17, letter:'פ', name:'Pé',     from:'netzach', to:'hod'      },
+    { idx:18, letter:'צ', name:'Tsadé',  from:'netzach', to:'yesod'    },
+    { idx:19, letter:'ק', name:'Qof',    from:'hod',     to:'yesod'    },
+    { idx:20, letter:'ר', name:'Resh',   from:'hod',     to:'malkuth'  },
+    { idx:21, letter:'ש', name:'Shin',   from:'netzach', to:'malkuth'  },
+    { idx:22, letter:'ת', name:'Tav',    from:'yesod',   to:'malkuth'  },
+];
+const EDGES = PATHS.map(p => [ROOM_IDX[p.from], ROOM_IDX[p.to]]);
+
+const adj = ROOMS.map(()=>[]);
+for(const[a,b]of EDGES){adj[a].push(b);adj[b].push(a);}
+
+function bfs(from,to){
+    if(from===to)return[];
+    const vis=new Set([from]),q=[[from]];
+    while(q.length){
+        const p=q.shift(),n=p[p.length-1];
+        for(const nb of adj[n]){
+            if(nb===to)return p.slice(1).concat(to);
+            if(!vis.has(nb)){vis.add(nb);q.push(p.concat(nb));}
+        }
+    }
+    return[];
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   THREE.JS SCENE SETUP — Dungeon atmosphere
+// ═══════════════════════════════════════════════════════════════
+
+const container = document.getElementById('world-container');
+const hudStatus = document.getElementById('hud-status');
+const nitzCountEl = document.getElementById('nitz-count');
+const hudTime = document.getElementById('hud-time');
+
+const renderer = new THREE.WebGLRenderer({ antialias:true });
+// Use container bounds, not window (sidebar offsets .content)
+const _initRect = container.getBoundingClientRect();
+const _initW = _initRect.width || window.innerWidth;
+const _initH = _initRect.height || window.innerHeight;
+renderer.setSize(_initW, _initH);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.setClearColor(0x0a0810);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.2;
+container.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x0a0810, 0.003);
+
+// ── Camera (orthographic isometric) ──
+const frustumSize = 90;
+let aspect = _initW / _initH;
+const camera = new THREE.OrthographicCamera(
+    frustumSize*aspect/-2, frustumSize*aspect/2,
+    frustumSize/2, frustumSize/-2,
+    0.1, 500
+);
+camera.position.set(50, 65, 50);
+camera.lookAt(0, 0, 3);
+
+// ── OrbitControls ──
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.screenSpacePanning = true;
+controls.target.set(0, 0, 3);
+controls.mouseButtons = {
+    LEFT: THREE.MOUSE.PAN,
+    MIDDLE: THREE.MOUSE.DOLLY,
+    RIGHT: THREE.MOUSE.ROTATE
+};
+controls.minZoom = 0.3;
+controls.maxZoom = 4;
+controls.maxPolarAngle = Math.PI / 2.3;
+controls.minPolarAngle = Math.PI / 8;
+
+// ── Dungeon Lighting ──
+const ambientLight = new THREE.AmbientLight(0x1a1520, 0.8);
+scene.add(ambientLight);
+
+const hemiLight = new THREE.HemisphereLight(0xFFE4B5, 0x080820, 0.6);
+scene.add(hemiLight);
+
+const dirLight = new THREE.DirectionalLight(0xffe0b0, 0.5);
+dirLight.position.set(25, 35, 15);
+dirLight.castShadow = true;
+dirLight.shadow.mapSize.width = 2048;
+dirLight.shadow.mapSize.height = 2048;
+dirLight.shadow.camera.near = 0.5;
+dirLight.shadow.camera.far = 120;
+dirLight.shadow.camera.left = -65;
+dirLight.shadow.camera.right = 65;
+dirLight.shadow.camera.top = 65;
+dirLight.shadow.camera.bottom = -65;
+dirLight.shadow.bias = -0.001;
+scene.add(dirLight);
+
+// Room lights array (populated during room creation)
+const roomLights = [];
+
+// ── Ground — dark stone cavern floor ──
+const groundGeo = new THREE.PlaneGeometry(300, 300);
+const groundMat = new THREE.MeshStandardMaterial({
+    color:0x15120e, roughness:0.95, metalness:0.02
+});
+const ground = new THREE.Mesh(groundGeo, groundMat);
+ground.rotation.x = -Math.PI/2;
+ground.position.y = -0.05;
+ground.receiveShadow = true;
+scene.add(ground);
+
+// ═══════════════════════════════════════════════════════════════
+//   DUNGEON ASSET SYSTEM — KayKit loader
+// ═══════════════════════════════════════════════════════════════
+
+const ASSET_BASE = '/static/assets/dungeon/addons/kaykit_dungeon_remastered/Assets/gltf/';
+const BARE_GLB = new Set(['chest','chest_gold','floor_tile_big_spikes','wall_doorway','wall_doorway_scaffold']);
+const WALL_W = 2;
+
+const gltfLoader = new THREE.GLTFLoader();
+const modelCache = {};
+
+function dungeonPath(name){
+    return ASSET_BASE + name + (BARE_GLB.has(name) ? '.glb' : '.gltf.glb');
+}
+
+function placeDungeon(parent, name, x, y, z, scale, rotY, opts){
+    const path = dungeonPath(name);
+    const doPlace = function(srcScene){
+        const model = srcScene.clone();
+        model.position.set(x, y, z);
+        model.scale.setScalar(scale || 1);
+        if(rotY) model.rotation.y = rotY;
+        model.traverse(function(ch){
+            if(ch.isMesh){
+                ch.castShadow = true;
+                ch.receiveShadow = true;
+                if(opts && opts.color){
+                    ch.material = ch.material.clone();
+                    ch.material.color.set(opts.color);
+                }
+                if(opts && opts.emissive){
+                    ch.material = ch.material.clone();
+                    ch.material.emissive = new THREE.Color(opts.emissive);
+                    ch.material.emissiveIntensity = opts.emissiveIntensity || 0.3;
+                }
+            }
+        });
+        parent.add(model);
+    };
+    if(modelCache[path]){
+        doPlace(modelCache[path]);
+    } else {
+        gltfLoader.load(path, function(gltf){
+            modelCache[path] = gltf.scene;
+            doPlace(gltf.scene);
+        }, undefined, function(err){
+            console.warn('Dungeon GLB load failed:', name, err);
+        });
+    }
+}
+
+function placeProcedural(parent, factoryName, x, y, z, scale, rotY){
+    const factory = window.ProceduralModels && window.ProceduralModels[factoryName];
+    if(!factory){ console.warn('Procedural model not found:', factoryName); return; }
+    const model = factory();
+    model.position.set(x, y, z);
+    model.scale.setScalar(scale || 2.2);
+    if(rotY) model.rotation.y = rotY;
+    parent.add(model);
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   UTILITY
+// ═══════════════════════════════════════════════════════════════
+
+function makeLabel(text, color){
+    const c = document.createElement('canvas');
+    c.width = 256; c.height = 64;
+    const x = c.getContext('2d');
+    x.font = 'bold 28px monospace';
+    x.textAlign = 'center';
+    x.textBaseline = 'middle';
+    x.shadowColor = '#000';
+    x.shadowBlur = 8;
+    x.fillStyle = color;
+    x.fillText(text, 128, 32);
+    const tex = new THREE.CanvasTexture(c);
+    tex.minFilter = THREE.LinearFilter;
+    const mat = new THREE.SpriteMaterial({ map:tex, transparent:true, depthTest:false });
+    const sprite = new THREE.Sprite(mat);
+    sprite.scale.set(3.5, 0.88, 1);
+    return sprite;
+}
+
+function colStr(hex){
+    return '#' + hex.toString(16).padStart(6,'0');
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   ROOM CONSTRUCTION — KayKit walls + floors, Sims cutaway
+// ═══════════════════════════════════════════════════════════════
+
+const WALL_H = 2.5;
+
+function buildRoom(def, idx){
+    const group = new THREE.Group();
+    group.position.set(def.x, 0, def.z);
+
+    const hw = def.w/2, hd = def.d/2;
+    const segX = Math.max(1, Math.round(def.w / WALL_W));
+    const segZ = Math.max(1, Math.round(def.d / WALL_W));
+
+    // ── Floor tiles ──
+    const floorName = def.floorTile || 'floor_tile_small';
+    for(let ix=0; ix<segX; ix++){
+        for(let iz=0; iz<segZ; iz++){
+            const fx = -hw + WALL_W*0.5 + ix*WALL_W;
+            const fz = -hd + WALL_W*0.5 + iz*WALL_W;
+            placeDungeon(group, floorName, fx, 0, fz, 1, 0);
+        }
+    }
+
+    // ── Floor overlay for glow system ──
+    const floorOverlay = new THREE.MeshStandardMaterial({
+        color:def.col, roughness:0.5, metalness:0,
+        emissive:0x000000, emissiveIntensity:0,
+        transparent:true, opacity:0.08
+    });
+    const overlayMesh = new THREE.Mesh(
+        new THREE.PlaneGeometry(def.w, def.d),
+        floorOverlay
+    );
+    overlayMesh.rotation.x = -Math.PI/2;
+    overlayMesh.position.y = 0.12;
+    group.add(overlayMesh);
+    def._floorMat = floorOverlay;
+
+    // ── Glow plane (additive) ──
+    const glowMat = new THREE.MeshBasicMaterial({
+        color:def.col, transparent:true, opacity:0,
+        blending:THREE.AdditiveBlending, depthWrite:false,
+        side:THREE.DoubleSide
+    });
+    const glowPlane = new THREE.Mesh(
+        new THREE.PlaneGeometry(def.w*0.9, def.d*0.9),
+        glowMat
+    );
+    glowPlane.rotation.x = -Math.PI/2;
+    glowPlane.position.y = 0.14;
+    group.add(glowPlane);
+    def._glowMat = glowMat;
+    def._glowIntensity = 0;
+    def._glowColor = null;
+
+    // ── Walls: 3 sides (back, left, right — no front for Sims cutaway) ──
+    const wallName = def.wallType || 'wall';
+    const wallAlpha = def.dashed ? 0.4 : 1.0;
+
+    // Back wall (far side, -Z)
+    for(let i=0; i<segX; i++){
+        const wx = -hw + WALL_W*0.5 + i*WALL_W;
+        placeDungeon(group, wallName, wx, 0, -hd, 1, 0);
+    }
+    // Left wall (-X side)
+    for(let i=0; i<segZ; i++){
+        const wz = -hd + WALL_W*0.5 + i*WALL_W;
+        placeDungeon(group, wallName, -hw, 0, wz, 1, Math.PI/2);
+    }
+    // Right wall (+X side)
+    for(let i=0; i<segZ; i++){
+        const wz = -hd + WALL_W*0.5 + i*WALL_W;
+        placeDungeon(group, wallName, hw, 0, wz, 1, -Math.PI/2);
+    }
+
+    // ── Room point light (warm torch glow) ──
+    const roomLight = new THREE.PointLight(0xff9944, 3, 15, 1.5);
+    roomLight.position.set(0, WALL_H-0.3, 0);
+    roomLight.castShadow = false;
+    group.add(roomLight);
+    roomLights.push(roomLight);
+
+    // ── Golden glow plane under room ──
+    const baseGlowMat = new THREE.MeshBasicMaterial({
+        color:0xc9a84c, transparent:true, opacity:0.12,
+        blending:THREE.AdditiveBlending, depthWrite:false,
+        side:THREE.DoubleSide
+    });
+    const baseGlow = new THREE.Mesh(
+        new THREE.PlaneGeometry(def.w*1.15, def.d*1.15),
+        baseGlowMat
+    );
+    baseGlow.rotation.x = -Math.PI/2;
+    baseGlow.position.y = 0.02;
+    group.add(baseGlow);
+
+    return group;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   ROOM FURNISHING — 11 sephirotic rooms
+// ═══════════════════════════════════════════════════════════════
+
+function furnishRoom(group, idx){
+    switch(idx){
+
+    // ── KETER: Golden sanctuary, throne, candles ──
+    case 0: {
+        placeProcedural(group, 'createThrone', 0, 0, -1.2, 2.5, 0);
+        placeDungeon(group, 'candle_triple', -1.5, 0, -1.5, 1.2, 0);
+        placeDungeon(group, 'candle_triple', 1.5, 0, -1.5, 1.2, 0);
+        placeDungeon(group, 'candle_lit', -0.8, 0, 0.8, 1.2, 0);
+        placeDungeon(group, 'candle_lit', 0.8, 0, 0.8, 1.2, 0);
+        placeDungeon(group, 'column', -2.2, 0, -1.8, 1, 0);
+        placeDungeon(group, 'column', 2.2, 0, -1.8, 1, 0);
+        placeDungeon(group, 'banner_patternA_yellow', 0, 0, -2.1, 1, 0);
+        break;
+    }
+
+    // ── CHOKMAH: Laboratory — telescope, crystal orb, desk, bottles ──
+    case 1: {
+        placeDungeon(group, 'table_small_decorated_A', -0.5, 0, -0.8, 1, 0);
+        placeProcedural(group, 'createTelescope', 1.2, 0, -1, 2.0, -0.4);
+        placeProcedural(group, 'createCrystalOrb', -1.2, 0.55, -0.8, 2.2, 0);
+        placeDungeon(group, 'bottle_A_brown', 0.5, 0, 0.5, 1.2, 0);
+        placeDungeon(group, 'bottle_B_green', -0.8, 0, 0.8, 1.2, 1.2);
+        placeDungeon(group, 'candle_thin_lit', 1.5, 0, 1, 1.2, 0);
+        placeDungeon(group, 'shelf_small', -1.8, 0, -1.2, 1, Math.PI/2);
+        placeDungeon(group, 'stool', 0, 0, 0, 1, 0);
+        break;
+    }
+
+    // ── BINAH: Observatory — books, scrolls, wall_shelves ──
+    case 2: {
+        placeProcedural(group, 'createBookStack', -0.5, 0, -0.5, 2.2, 0);
+        placeProcedural(group, 'createBookStack', 0.8, 0, -1, 2.0, 0.8);
+        placeProcedural(group, 'createScrollRack', 1.2, 0, 0, 2.2, -Math.PI/4);
+        placeProcedural(group, 'createOpenBook', 0, 0.55, 0, 2.5, 0);
+        placeDungeon(group, 'table_small', 0, 0, 0, 1, 0);
+        placeDungeon(group, 'chair', -0.6, 0, 0.5, 1, Math.PI);
+        placeDungeon(group, 'candle_lit', -1.5, 0, -1.2, 1.2, 0);
+        placeDungeon(group, 'candle_lit', 1.5, 0, -1.2, 1.2, 0);
+        break;
+    }
+
+    // ── DA'AT: Hall of mirrors — mirror, mist, sparse ──
+    case 3: {
+        placeProcedural(group, 'createMirror', 0, 0, -1, 2.5, 0);
+        placeDungeon(group, 'candle_thin_lit', -1.2, 0, 0, 1.2, 0);
+        placeDungeon(group, 'candle_thin_lit', 1.2, 0, 0, 1.2, 0);
+        placeDungeon(group, 'rubble_half', 0.8, 0, 0.8, 1, 0);
+        // Fog effect: translucent plane
+        const fogMat = new THREE.MeshBasicMaterial({
+            color:0x8888aa, transparent:true, opacity:0.06,
+            blending:THREE.AdditiveBlending, depthWrite:false,
+            side:THREE.DoubleSide
+        });
+        const fogPlane = new THREE.Mesh(new THREE.PlaneGeometry(4, 3), fogMat);
+        fogPlane.position.set(0, 1.2, 0);
+        fogPlane.rotation.y = Math.PI/4;
+        group.add(fogPlane);
+        const fogPlane2 = new THREE.Mesh(new THREE.PlaneGeometry(4, 3), fogMat.clone());
+        fogPlane2.position.set(0, 1.2, 0);
+        fogPlane2.rotation.y = -Math.PI/4;
+        group.add(fogPlane2);
+        break;
+    }
+
+    // ── CHESED: Grand library — wall_shelves, books, chair ──
+    case 4: {
+        placeDungeon(group, 'shelves', -2, 0, -1.5, 1, 0);
+        placeDungeon(group, 'shelves', -0.5, 0, -1.5, 1, 0);
+        placeDungeon(group, 'shelves', 1, 0, -1.5, 1, 0);
+        placeDungeon(group, 'shelf_large', 2, 0, 0, 1, -Math.PI/2);
+        placeDungeon(group, 'shelf_large', -2.2, 0, 0, 1, Math.PI/2);
+        placeProcedural(group, 'createBookStack', -0.8, 0, 0.5, 2.2, 0);
+        placeProcedural(group, 'createBookStack', 0.5, 0, 0.3, 2.0, 1.2);
+        placeProcedural(group, 'createBookStack', 1.5, 0, 0.8, 1.8, 0.5);
+        placeDungeon(group, 'chair', 0, 0, 1, 1, 0);
+        placeDungeon(group, 'candle_triple', 0, 0, -0.5, 1.2, 0);
+        placeDungeon(group, 'table_small', 0, 0, 0, 1, 0);
+        break;
+    }
+
+    // ── GEVURAH: Forge / tribunal — anvil, balance, torches, red light ──
+    case 5: {
+        placeProcedural(group, 'createAnvil', -0.8, 0, -0.5, 2.5, 0);
+        placeProcedural(group, 'createBalance', 0.8, 0, -0.8, 2.2, 0);
+        placeDungeon(group, 'torch_lit', -1.8, 0, -1.2, 1.2, 0);
+        placeDungeon(group, 'torch_lit', 1.8, 0, -1.2, 1.2, 0);
+        placeDungeon(group, 'torch_lit', -1.8, 0, 1.2, 1.2, 0);
+        placeDungeon(group, 'torch_lit', 1.8, 0, 1.2, 1.2, 0);
+        placeDungeon(group, 'sword_shield', 0, 0, -1.5, 1, 0);
+        placeDungeon(group, 'barrel_small', 1.5, 0, 0.8, 1, 0);
+        // Red-tinted point light
+        const redLight = new THREE.PointLight(0xff3020, 2, 12, 1.5);
+        redLight.position.set(0, 2, 0);
+        group.add(redLight);
+        break;
+    }
+
+    // ── TIFERET: Central hall — altar, menorah, columns, the greatest room ──
+    case 6: {
+        placeProcedural(group, 'createAltar', 0, 0, 0, 2.5, 0);
+        placeProcedural(group, 'createMenorah', -1.5, 0, -1.5, 2.2, 0);
+        placeProcedural(group, 'createMenorah', 1.5, 0, -1.5, 2.2, 0);
+        placeDungeon(group, 'column', -2.8, 0, -2, 1, 0);
+        placeDungeon(group, 'column', 2.8, 0, -2, 1, 0);
+        placeDungeon(group, 'column', -2.8, 0, 2, 1, 0);
+        placeDungeon(group, 'column', 2.8, 0, 2, 1, 0);
+        placeDungeon(group, 'pillar_decorated', -1.5, 0, 2, 1, 0);
+        placeDungeon(group, 'pillar_decorated', 1.5, 0, 2, 1, 0);
+        placeDungeon(group, 'candle_triple', -2.5, 0, 0, 1.2, 0);
+        placeDungeon(group, 'candle_triple', 2.5, 0, 0, 1.2, 0);
+        placeDungeon(group, 'banner_patternA_yellow', -3, 0, -1, 1, Math.PI/2);
+        placeDungeon(group, 'banner_patternA_yellow', 3, 0, -1, 1, -Math.PI/2);
+        // Warm golden light
+        const goldLight = new THREE.PointLight(0xffc020, 2.5, 18, 1.2);
+        goldLight.position.set(0, 2.2, 0);
+        group.add(goldLight);
+        break;
+    }
+
+    // ── NETZACH: Workshop — desk, banners, plants-like, creativity ──
+    case 7: {
+        placeDungeon(group, 'table_medium_decorated_A', 0, 0, -0.5, 1, 0);
+        placeDungeon(group, 'stool', -0.8, 0, 0.3, 1, 0);
+        placeDungeon(group, 'stool', 0.8, 0, 0.3, 1, 0);
+        placeDungeon(group, 'banner_patternB_green', -1.8, 0, -1.5, 1, Math.PI/2);
+        placeDungeon(group, 'banner_patternC_green', 1.8, 0, -1.5, 1, -Math.PI/2);
+        placeDungeon(group, 'banner_green', 0, 0, -1.7, 1, 0);
+        placeDungeon(group, 'bottle_C_brown', -1.2, 0, 0.8, 1.2, 0);
+        placeDungeon(group, 'candle_lit', 1.2, 0, 1, 1.2, 0);
+        placeDungeon(group, 'box_small_decorated', -1.5, 0, 1.2, 1, 0);
+        placeProcedural(group, 'createIncenseBurner', 1.5, 0, -0.5, 2.0, 0);
+        break;
+    }
+
+    // ── HOD: Scriptorium — desk, torah scroll, incense, candles ──
+    case 8: {
+        placeDungeon(group, 'table_medium', -0.3, 0, -0.5, 1, 0);
+        placeProcedural(group, 'createTorahScroll', 0, 0.65, -0.5, 2.2, 0);
+        placeProcedural(group, 'createIncenseBurner', 1.5, 0, -1, 2.0, 0);
+        placeDungeon(group, 'candle_lit', -1.5, 0, -1.2, 1.2, 0);
+        placeDungeon(group, 'candle_lit', 1.5, 0, 0.8, 1.2, 0);
+        placeDungeon(group, 'candle_triple', -0.3, 0, 0.8, 1.2, 0);
+        placeDungeon(group, 'chair', -1, 0, 0, 1, Math.PI*0.7);
+        placeDungeon(group, 'shelf_small_candles', -1.8, 0, -1, 1, Math.PI/2);
+        placeProcedural(group, 'createOpenBook', 1, 0, 0.5, 2.0, 0.5);
+        break;
+    }
+
+    // ── YESOD: Vaulted crypt — chests, shelves, barrels, crystal orb ──
+    case 9: {
+        placeDungeon(group, 'chest', -1.2, 0, -1, 1, 0.3);
+        placeDungeon(group, 'chest', 0, 0, -1.2, 1, 0);
+        placeDungeon(group, 'chest_gold', 1.2, 0, -1, 1, -0.3);
+        placeDungeon(group, 'shelves', -1.8, 0, 0, 1, Math.PI/2);
+        placeDungeon(group, 'barrel_large', 1.5, 0, 0.5, 1, 0);
+        placeDungeon(group, 'barrel_small', 1.8, 0, 1.2, 1, 0);
+        placeDungeon(group, 'keg', -1.5, 0, 1, 1, 0);
+        placeProcedural(group, 'createCrystalOrb', 0, 0.4, 0.5, 2.5, 0);
+        placeDungeon(group, 'table_small', 0, 0, 0.5, 1, 0);
+        placeDungeon(group, 'candle_melted', 0.5, 0, 0.8, 1.2, 0);
+        // Purple ambient
+        const purpleLight = new THREE.PointLight(0x8040c0, 2, 12, 1.5);
+        purpleLight.position.set(0, 2, 0);
+        group.add(purpleLight);
+        break;
+    }
+
+    // ── MALKUTH: Gatehouse / parvis — doorway, torches, stools, entry ──
+    case 10: {
+        placeDungeon(group, 'wall_doorway', 0, 0, 1.8, 1, Math.PI);
+        placeDungeon(group, 'torch_lit', -2, 0, 1.5, 1.2, 0);
+        placeDungeon(group, 'torch_lit', 2, 0, 1.5, 1.2, 0);
+        placeDungeon(group, 'torch_lit', -2, 0, -1.5, 1.2, 0);
+        placeDungeon(group, 'torch_lit', 2, 0, -1.5, 1.2, 0);
+        placeDungeon(group, 'stool', -1, 0, 0, 1, 0);
+        placeDungeon(group, 'stool', 1, 0, 0, 1, 0);
+        placeDungeon(group, 'barrel_small_stack', -2.2, 0, 0, 1, 0);
+        placeDungeon(group, 'box_stacked', 2.2, 0, 0, 1, 0);
+        placeDungeon(group, 'banner_patternA_brown', -1, 0, -2, 1, 0);
+        placeDungeon(group, 'banner_patternA_brown', 1, 0, -2, 1, 0);
+        break;
+    }
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   BRIDGES — 22 Sentiers: InstancedMesh stone walkways
+// ═══════════════════════════════════════════════════════════════
+
+// Shared geometries & materials (reused across all 22 bridges)
+const BRIDGE_TILE_W = 1.8, BRIDGE_TILE_D = 1.8, BRIDGE_TILE_H = 0.15;
+const BRIDGE_DECK_GEO = new THREE.BoxGeometry(BRIDGE_TILE_W, BRIDGE_TILE_H, BRIDGE_TILE_D);
+const BRIDGE_DECK_MAT = new THREE.MeshStandardMaterial({color:0x6b5b4f, roughness:0.85, metalness:0.05});
+const BRIDGE_RAIL_GEO = new THREE.BoxGeometry(0.15, 0.45, 0.15);
+const BRIDGE_RAIL_MAT = new THREE.MeshStandardMaterial({color:0x5a4e42, roughness:0.9, metalness:0.1});
+const BRIDGE_PILLAR_GEO = new THREE.BoxGeometry(0.3, 1.0, 0.3);
+const BRIDGE_PILLAR_MAT = new THREE.MeshStandardMaterial({color:0x4a3e32, roughness:0.95, metalness:0.05});
+
+// Module-scope: populated by buildAllBridges(), used for click detection & NPC pathfinding
+let bridgeDeckMesh = null;
+const bridgeDeckToPath = []; // instanceId → PATHS index
+// bridgeCurves["fromIdx-toIdx"] = { curve: CatmullRomCurve3, surfaceY: number }
+// Used by NPCs to walk along bridges
+const bridgeCurves = {};
+
+// Compute exit point from a room AABB in direction of target
+function roomEdgePoint(room, targetX, targetZ){
+    const hw = room.w/2, hd = room.d/2;
+    const dx = targetX - room.x, dz = targetZ - room.z;
+    if(Math.abs(dx) < 0.001 && Math.abs(dz) < 0.001) return {x:room.x, z:room.z};
+    // Ray from room center toward target; intersect with AABB boundary
+    const tRight = hw / Math.abs(dx || 1e-9);
+    const tLeft  = hw / Math.abs(dx || 1e-9);
+    const tTop   = hd / Math.abs(dz || 1e-9);
+    const tBot   = hd / Math.abs(dz || 1e-9);
+    const tMin = Math.min(
+        dx > 0 ? tRight : tLeft,
+        dz > 0 ? tBot : tTop
+    );
+    return { x: room.x + dx * tMin, z: room.z + dz * tMin };
+}
+
+// Waypoints for paths that must route around Da'at (room idx 3)
+function getPathWaypoints(pathDef){
+    const ra = ROOMS[ROOM_IDX[pathDef.from]], rb = ROOMS[ROOM_IDX[pathDef.to]];
+    const start = roomEdgePoint(ra, rb.x, rb.z);
+    const end   = roomEdgePoint(rb, ra.x, ra.z);
+
+    // Gimel (Keter→Tiferet) must curve WELL CLEAR of Da'at
+    // Da'at is at (0, -18) w=6.75 — we route far to the right
+    if(pathDef.idx === 3){
+        const daatR = ROOMS[3];
+        const clearance = daatR.w/2 + 5.0; // ~8.4 units from Da'at center
+        // Two waypoints: one above Da'at, one below — forces a wide arc
+        return [
+            start,
+            {x: clearance, z: daatR.z - daatR.d/2 - 2},  // above Da'at
+            {x: clearance, z: daatR.z + daatR.d/2 + 2},  // below Da'at
+            end
+        ];
+    }
+    // Samekh (Tiferet→Yesod) is straight vertical — no obstacle
+    return [start, end];
+}
+
+// Build smooth curve from waypoints
+function computeBridgePoints(waypoints, segmentsPerUnit){
+    if(waypoints.length === 2){
+        // Straight path: just lerp
+        const [a, b] = waypoints;
+        const dx = b.x-a.x, dz = b.z-a.z;
+        const dist = Math.sqrt(dx*dx + dz*dz);
+        const n = Math.max(2, Math.round(dist / BRIDGE_TILE_W));
+        const pts = [];
+        for(let i=0; i<=n; i++){
+            const t = i/n;
+            pts.push({x: a.x+dx*t, z: a.z+dz*t});
+        }
+        return pts;
+    }
+    // Curved path via CatmullRomCurve3
+    const v3pts = waypoints.map(w => new THREE.Vector3(w.x, 0, w.z));
+    const curve = new THREE.CatmullRomCurve3(v3pts, false, 'centripetal', 0.25);
+    const totalLen = curve.getLength();
+    const n = Math.max(3, Math.round(totalLen / BRIDGE_TILE_W));
+    const pts = [];
+    for(let i=0; i<=n; i++){
+        const p = curve.getPointAt(i/n);
+        pts.push({x: p.x, z: p.z});
+    }
+    return pts;
+}
+
+// Direction vector at point index along bridge
+function bridgeDirAt(pts, i){
+    const a = (i > 0) ? pts[i-1] : pts[0];
+    const b = (i < pts.length-1) ? pts[i+1] : pts[pts.length-1];
+    const dx = b.x-a.x, dz = b.z-a.z;
+    const len = Math.sqrt(dx*dx+dz*dz) || 1;
+    return {x:dx/len, z:dz/len};
+}
+
+// Normal (perpendicular) at point
+function bridgeNormAt(pts, i){
+    const d = bridgeDirAt(pts, i);
+    return {x: -d.z, z: d.x};
+}
+
+// Hebrew letter stele (Sprite) at bridge midpoint
+function makePathStele(pathDef){
+    const c = document.createElement('canvas');
+    c.width = 128; c.height = 192;
+    const ctx = c.getContext('2d');
+    ctx.clearRect(0,0,128,192);
+    // Stone slab background
+    ctx.fillStyle = 'rgba(60,50,40,0.7)';
+    ctx.beginPath();
+    if(ctx.roundRect) ctx.roundRect(10,10,108,172,8);
+    else ctx.rect(10,10,108,172);
+    ctx.fill();
+    // Hebrew letter
+    ctx.font = 'bold 80px "Arial","Noto Sans Hebrew",sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.shadowColor = 'rgba(201,168,76,0.6)'; ctx.shadowBlur = 12;
+    ctx.fillStyle = '#c9a84c';
+    ctx.fillText(pathDef.letter, 64, 80);
+    // Index number
+    ctx.shadowBlur = 0;
+    ctx.font = '24px sans-serif';
+    ctx.fillStyle = 'rgba(201,168,76,0.7)';
+    ctx.fillText(pathDef.idx.toString(), 64, 155);
+    const tex = new THREE.CanvasTexture(c);
+    tex.minFilter = THREE.LinearFilter;
+    const mat = new THREE.SpriteMaterial({map:tex, transparent:true, depthWrite:false});
+    const sprite = new THREE.Sprite(mat);
+    sprite.scale.set(1.0, 1.5, 1);
+    sprite.userData = {
+        type:'sentier', letter:pathDef.letter, name:pathDef.name,
+        from:pathDef.from, to:pathDef.to, index:pathDef.idx
+    };
+    return sprite;
+}
+
+// ── Main builder: creates all 22 bridges with InstancedMesh ──
+function buildAllBridges(){
+    // Phase 1: compute all bridge point arrays, count total tiles/rails/pillars
+    const allBridgeData = [];
+    let totalTiles = 0, totalRails = 0, totalPillars = 0;
+
+    PATHS.forEach((p, pi) => {
+        const waypoints = getPathWaypoints(p);
+        const pts = computeBridgePoints(waypoints);
+        const nTiles = pts.length;
+        const nRails = nTiles * 2;          // left + right rail per tile
+        const nPillars = 2 * 2;             // 2 pillars at each end (4 total)
+        allBridgeData.push({pathDef:p, pts, nTiles, nRails, nPillars, pathIdx:pi});
+        totalTiles += nTiles;
+        totalRails += nRails;
+        totalPillars += nPillars;
+    });
+
+    // Phase 2: create InstancedMeshes
+    bridgeDeckMesh = new THREE.InstancedMesh(BRIDGE_DECK_GEO, BRIDGE_DECK_MAT, totalTiles);
+    bridgeDeckMesh.name = 'bridgeDeck';
+    const railMesh = new THREE.InstancedMesh(BRIDGE_RAIL_GEO, BRIDGE_RAIL_MAT, totalRails);
+    railMesh.name = 'bridgeRails';
+    const pillarMesh = new THREE.InstancedMesh(BRIDGE_PILLAR_GEO, BRIDGE_PILLAR_MAT, totalPillars);
+    pillarMesh.name = 'bridgePillars';
+
+    let tileIdx = 0, railIdx = 0, pillarIdx = 0;
+    const dummy = new THREE.Object3D();
+    const torchPositions = [];
+    const bridgeSteles = [];
+
+    allBridgeData.forEach(({pathDef, pts, nTiles, pathIdx}) => {
+        // Build navigation curve for NPC pathfinding
+        const fromIdx = ROOM_IDX[pathDef.from], toIdx = ROOM_IDX[pathDef.to];
+        const navPts = pts.map(p => new THREE.Vector3(p.x, BRIDGE_TILE_H, p.z));
+        const navCurve = new THREE.CatmullRomCurve3(navPts, false, 'centripetal', 0.3);
+        bridgeCurves[fromIdx+'-'+toIdx] = { curve: navCurve, surfaceY: BRIDGE_TILE_H };
+        bridgeCurves[toIdx+'-'+fromIdx] = { curve: navCurve, surfaceY: BRIDGE_TILE_H, reversed: true };
+
+        const railOffset = 0.85; // distance from center to rail
+
+        // Deck tiles
+        for(let i=0; i<pts.length; i++){
+            const pt = pts[i];
+            const dir = bridgeDirAt(pts, i);
+            const angle = Math.atan2(dir.x, dir.z);
+            dummy.position.set(pt.x, BRIDGE_TILE_H/2, pt.z);
+            dummy.rotation.set(0, angle, 0);
+            dummy.scale.set(1,1,1);
+            dummy.updateMatrix();
+            bridgeDeckMesh.setMatrixAt(tileIdx, dummy.matrix);
+            bridgeDeckToPath.push(pathIdx);
+            tileIdx++;
+
+            // Rails (left + right)
+            const norm = bridgeNormAt(pts, i);
+            for(const side of [-1, 1]){
+                dummy.position.set(
+                    pt.x + norm.x * railOffset * side,
+                    BRIDGE_TILE_H + 0.225,
+                    pt.z + norm.z * railOffset * side
+                );
+                dummy.rotation.set(0, angle, 0);
+                dummy.updateMatrix();
+                railMesh.setMatrixAt(railIdx++, dummy.matrix);
+            }
+        }
+
+        // Pillars at start and end (2 per end, left+right)
+        const ends = [pts[0], pts[pts.length-1]];
+        ends.forEach((pt, ei) => {
+            const dir = bridgeDirAt(pts, ei === 0 ? 0 : pts.length-1);
+            const norm = bridgeNormAt(pts, ei === 0 ? 0 : pts.length-1);
+            for(const side of [-1, 1]){
+                dummy.position.set(
+                    pt.x + norm.x * railOffset * side,
+                    0.5,
+                    pt.z + norm.z * railOffset * side
+                );
+                dummy.rotation.set(0, 0, 0);
+                dummy.scale.set(1,1,1);
+                dummy.updateMatrix();
+                pillarMesh.setMatrixAt(pillarIdx++, dummy.matrix);
+            }
+        });
+
+        // Torch positions at each end of bridge
+        ends.forEach((pt, ei) => {
+            const norm = bridgeNormAt(pts, ei === 0 ? 0 : pts.length-1);
+            torchPositions.push({x: pt.x + norm.x * 1.2, z: pt.z + norm.z * 1.2});
+        });
+
+        // Hebrew stele at midpoint
+        const mid = pts[Math.floor(pts.length/2)];
+        const stele = makePathStele(pathDef);
+        stele.position.set(mid.x, 2.2, mid.z);
+        bridgeSteles.push(stele);
+
+        // Hebrew floor glyph at midpoint
+        const floorGlyph = makeHebrewFloorMesh(pathDef.letter);
+        const dir = bridgeDirAt(pts, Math.floor(pts.length/2));
+        floorGlyph.position.set(mid.x, BRIDGE_TILE_H + 0.02, mid.z);
+        floorGlyph.rotation.z = -Math.atan2(dir.x, dir.z);
+        scene.add(floorGlyph);
+
+        // Warm light at midpoint
+        const bLight = new THREE.PointLight(0xff8833, 1.2, 8, 1.5);
+        bLight.position.set(mid.x, 1.5, mid.z);
+        scene.add(bLight);
+    });
+
+    // Finalize InstancedMeshes
+    bridgeDeckMesh.instanceMatrix.needsUpdate = true;
+    railMesh.instanceMatrix.needsUpdate = true;
+    pillarMesh.instanceMatrix.needsUpdate = true;
+    scene.add(bridgeDeckMesh);
+    scene.add(railMesh);
+    scene.add(pillarMesh);
+    bridgeSteles.forEach(s => scene.add(s));
+
+    // Console verification
+    console.log(`[BRIDGES] 22 sentiers built: ${totalTiles} tiles, ${totalRails} rails, ${totalPillars} pillars (3 draw calls)`);
+    PATHS.forEach(p => {
+        console.log(`  [SENTIER ${p.idx}] ${p.letter} ${p.name}: ${p.from} → ${p.to}`);
+    });
+
+    return { torchPositions };
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   CHARACTERS — Humanoid low-poly (head, torso, arms, legs)
+// ═══════════════════════════════════════════════════════════════
+
+function createCharacter(col){
+    const group = new THREE.Group();
+
+    // ── Torso ──
+    const bodyMat = new THREE.MeshStandardMaterial({ color:col, roughness:0.6, metalness:0.05 });
+    const torso = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.28, 0.14), bodyMat);
+    torso.position.y = 0.50;
+    torso.castShadow = true;
+    group.add(torso);
+
+    // ── Head ──
+    const skinTone = new THREE.Color(0xf5deb3);
+    const headCol = new THREE.Color(col).lerp(skinTone, 0.35);
+    const headMat = new THREE.MeshStandardMaterial({ color:headCol, roughness:0.5, metalness:0.02 });
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.13, 10, 10), headMat);
+    head.position.y = 0.76;
+    head.castShadow = true;
+    group.add(head);
+
+    // ── Hair (small cap) ──
+    const hairMat = new THREE.MeshStandardMaterial({ color:new THREE.Color(col).multiplyScalar(0.4), roughness:0.8 });
+    const hair = new THREE.Mesh(new THREE.SphereGeometry(0.11, 8, 4, 0, Math.PI*2, 0, Math.PI/2), hairMat);
+    hair.position.y = 0.80;
+    hair.rotation.x = -0.1;
+    group.add(hair);
+
+    // ── Arms (with pivots at shoulder) ──
+    const armMat = new THREE.MeshStandardMaterial({ color:col, roughness:0.6 });
+
+    const leftArmPivot = new THREE.Group();
+    leftArmPivot.position.set(-0.17, 0.58, 0);
+    const leftArm = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.03, 0.24, 6), armMat);
+    leftArm.position.y = -0.12;
+    leftArm.castShadow = true;
+    leftArmPivot.add(leftArm);
+    const handMat = new THREE.MeshStandardMaterial({ color:skinTone, roughness:0.5 });
+    const leftHand = new THREE.Mesh(new THREE.SphereGeometry(0.025, 6, 6), handMat);
+    leftHand.position.y = -0.25;
+    leftArmPivot.add(leftHand);
+    group.add(leftArmPivot);
+
+    const rightArmPivot = new THREE.Group();
+    rightArmPivot.position.set(0.17, 0.58, 0);
+    const rightArm = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.03, 0.24, 6), armMat.clone());
+    rightArm.position.y = -0.12;
+    rightArm.castShadow = true;
+    rightArmPivot.add(rightArm);
+    const rightHand = new THREE.Mesh(new THREE.SphereGeometry(0.025, 6, 6), handMat.clone());
+    rightHand.position.y = -0.25;
+    rightArmPivot.add(rightHand);
+    group.add(rightArmPivot);
+
+    // ── Legs (with pivots at hip) ──
+    const legCol = new THREE.Color(col).multiplyScalar(0.6);
+    const legMat = new THREE.MeshStandardMaterial({ color:legCol, roughness:0.7 });
+
+    const leftLegPivot = new THREE.Group();
+    leftLegPivot.position.set(-0.065, 0.36, 0);
+    const leftLeg = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.035, 0.26, 6), legMat);
+    leftLeg.position.y = -0.13;
+    leftLeg.castShadow = true;
+    leftLegPivot.add(leftLeg);
+    const footMat = new THREE.MeshStandardMaterial({ color:legCol.clone().multiplyScalar(0.7), roughness:0.8 });
+    const leftFoot = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.025, 0.08), footMat);
+    leftFoot.position.set(0, -0.27, 0.015);
+    leftLegPivot.add(leftFoot);
+    group.add(leftLegPivot);
+
+    const rightLegPivot = new THREE.Group();
+    rightLegPivot.position.set(0.065, 0.36, 0);
+    const rightLeg = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.035, 0.26, 6), legMat.clone());
+    rightLeg.position.y = -0.13;
+    rightLeg.castShadow = true;
+    rightLegPivot.add(rightLeg);
+    const rightFoot = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.025, 0.08), footMat.clone());
+    rightFoot.position.set(0, -0.27, 0.015);
+    rightLegPivot.add(rightFoot);
+    group.add(rightLegPivot);
+
+    // ── Ground shadow disc ──
+    const shadowMat = new THREE.MeshBasicMaterial({
+        color:0x000000, transparent:true, opacity:0.25, depthWrite:false
+    });
+    const shadow = new THREE.Mesh(new THREE.CircleGeometry(0.22, 10), shadowMat);
+    shadow.rotation.x = -Math.PI/2;
+    shadow.position.y = 0.11;
+    group.add(shadow);
+
+    // ── Speech bubble ──
+    const bubCanvas = document.createElement('canvas');
+    bubCanvas.width = 64; bubCanvas.height = 32;
+    const bctx = bubCanvas.getContext('2d');
+    bctx.fillStyle = '#ffffff';
+    bctx.beginPath();
+    bctx.roundRect(4, 2, 56, 22, 6);
+    bctx.fill();
+    bctx.fillStyle = '#222';
+    bctx.font = 'bold 14px monospace';
+    bctx.textAlign = 'center';
+    bctx.fillText('...', 32, 18);
+    const bubTex = new THREE.CanvasTexture(bubCanvas);
+    const bubSprite = new THREE.Sprite(new THREE.SpriteMaterial({
+        map:bubTex, transparent:true, depthTest:false
+    }));
+    bubSprite.scale.set(0.8, 0.4, 1);
+    bubSprite.position.y = 1.05;
+    bubSprite.visible = false;
+    group.add(bubSprite);
+
+    group.userData = {
+        bodyMat, headMat,
+        leftArm:leftArmPivot, rightArm:rightArmPivot,
+        leftLeg:leftLegPivot, rightLeg:rightLegPivot,
+        bubble:bubSprite
+    };
+    return group;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   BUILD SCENE
+// ═══════════════════════════════════════════════════════════════
+
+ROOMS.forEach((r, i) => {
+    const group = buildRoom(r, i);
+    furnishRoom(group, i);
+    group.userData.roomIdx = i;
+    group.userData.sephirah = r.id;
+    group.userData.type = 'room';
+    if(r.id === 'daat') group.userData.hidden = true;
+    scene.add(group);
+    r._group = group;
+    console.log('[ROOM]', r.id, 'idx='+i, 'pos='+r.x+','+r.z, 'children='+group.children.length, 'userData=', group.userData);
+});
+
+const bridgeResult = buildAllBridges();
+
+// ═══════════════════════════════════════════════════════════════
+//   DA'AT — La Connaissance Cachée (quasi-Sephirah, traitement spectral)
+// ═══════════════════════════════════════════════════════════════
+
+const daatRoom = ROOMS[3];
+const daatGroup = daatRoom._group;
+
+// ── Da'at Inner Light (blue-white, pulses inversely with wall opacity) ──
+const daatLight = new THREE.PointLight(0x8888ff, 0.8, 12, 1.5);
+daatLight.position.set(daatRoom.x, 1.5, daatRoom.z);
+scene.add(daatLight);
+
+// ── Mist Sprites (4 large rotating fog veils) ──
+const daatMistSprites = [];
+for(let mi = 0; mi < 4; mi++){
+    const mc = document.createElement('canvas');
+    mc.width = 256; mc.height = 256;
+    const mctx = mc.getContext('2d');
+    const grad = mctx.createRadialGradient(128, 128, 0, 128, 128, 128);
+    grad.addColorStop(0, 'rgba(140,130,220,0.22)');
+    grad.addColorStop(0.4, 'rgba(100,80,180,0.10)');
+    grad.addColorStop(1, 'rgba(80,60,140,0)');
+    mctx.fillStyle = grad;
+    mctx.fillRect(0, 0, 256, 256);
+    const mTex = new THREE.CanvasTexture(mc);
+    const mMat = new THREE.SpriteMaterial({
+        map: mTex, transparent: true, opacity: 0.5,
+        blending: THREE.AdditiveBlending, depthWrite: false
+    });
+    const mSprite = new THREE.Sprite(mMat);
+    const mAngle = (mi / 4) * Math.PI * 2;
+    mSprite.position.set(
+        daatRoom.x + Math.cos(mAngle) * 2.5,
+        1.2,
+        daatRoom.z + Math.sin(mAngle) * 2.5
+    );
+    mSprite.scale.set(daatRoom.w * 1.5, daatRoom.d * 1.5, 1);
+    scene.add(mSprite);
+    daatMistSprites.push({ sprite: mSprite, mat: mMat, baseAngle: mAngle });
+}
+
+// ── Floating Particles (white luminous points, brownian motion) ──
+const DAAT_PARTICLE_COUNT = 25;
+const daatPArr = new Float32Array(DAAT_PARTICLE_COUNT * 3);
+for(let pi = 0; pi < DAAT_PARTICLE_COUNT; pi++){
+    daatPArr[pi*3]   = daatRoom.x + (Math.random()-0.5) * daatRoom.w * 0.6;
+    daatPArr[pi*3+1] = 0.3 + Math.random() * 2.0;
+    daatPArr[pi*3+2] = daatRoom.z + (Math.random()-0.5) * daatRoom.d * 0.6;
+}
+const daatPGeo = new THREE.BufferGeometry();
+daatPGeo.setAttribute('position', new THREE.BufferAttribute(daatPArr, 3));
+const daatPMat = new THREE.PointsMaterial({
+    color: 0xffffff, size: 2.5, transparent: true, opacity: 0.7,
+    blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: false
+});
+const daatParticles = new THREE.Points(daatPGeo, daatPMat);
+scene.add(daatParticles);
+
+// ── Wireframe Icosahedron (floating sacred geometry, gold) ──
+const icoGeo = new THREE.IcosahedronGeometry(0.45, 0);
+const icoEdges = new THREE.EdgesGeometry(icoGeo);
+const icoMat = new THREE.LineBasicMaterial({
+    color: 0xffd700, transparent: true, opacity: 0.75
+});
+const daatIco = new THREE.LineSegments(icoEdges, icoMat);
+daatIco.position.set(daatRoom.x, 1.8, daatRoom.z);
+scene.add(daatIco);
+
+// ── Da'at material transparency tracker ──
+let daatMatsReady = false;
+const daatWallMats = [];
+
+function updateDaatEffects(dt, t){
+    const el = t / 1000;
+
+    // Process Da'at GLTF materials once loaded (async)
+    if(!daatMatsReady){
+        let mc = 0;
+        daatGroup.traverse(function(ch){
+            if(ch.isMesh){
+                mc++;
+                if(!ch.material._daatDone){
+                    ch.material = ch.material.clone();
+                    ch.material.transparent = true;
+                    ch.material.opacity = 0.4;
+                    ch.material.color.lerp(new THREE.Color(0x6644aa), 0.3);
+                    ch.material._daatDone = true;
+                    daatWallMats.push(ch.material);
+                }
+            }
+        });
+        if(mc > 5) daatMatsReady = true;
+    }
+
+    // Pulse wall opacity: 6s cycle, range [0.25, 0.55]
+    const pulse = Math.sin(el * Math.PI * 2 / 6);
+    const wallOp = 0.40 + pulse * 0.15;
+    for(const m of daatWallMats) m.opacity = wallOp;
+
+    // Light pulses inversely (bright when walls fade)
+    daatLight.intensity = 0.8 - pulse * 0.5;
+
+    // Rotate mist sprites slowly
+    for(const mist of daatMistSprites){
+        const a = mist.baseAngle + el * 0.1;
+        const r = 2.5 + Math.sin(el * 0.3 + mist.baseAngle) * 0.5;
+        mist.sprite.position.x = daatRoom.x + Math.cos(a) * r;
+        mist.sprite.position.z = daatRoom.z + Math.sin(a) * r;
+        mist.sprite.position.y = 1.2 + Math.sin(el * 0.2 + mist.baseAngle * 2) * 0.3;
+        mist.mat.opacity = 0.35 + Math.sin(el * 0.5 + mist.baseAngle) * 0.15;
+    }
+
+    // Brownian motion for floating particles
+    const pp = daatParticles.geometry.attributes.position.array;
+    const hw = daatRoom.w * 0.35, hd = daatRoom.d * 0.35;
+    for(let i = 0; i < DAAT_PARTICLE_COUNT; i++){
+        pp[i*3]   += (Math.random()-0.5) * dt * 0.4;
+        pp[i*3+1] += (Math.random()-0.5) * dt * 0.3;
+        pp[i*3+2] += (Math.random()-0.5) * dt * 0.4;
+        // Clamp within room bounds
+        pp[i*3]   = Math.max(daatRoom.x - hw, Math.min(daatRoom.x + hw, pp[i*3]));
+        pp[i*3+1] = Math.max(0.3, Math.min(2.3, pp[i*3+1]));
+        pp[i*3+2] = Math.max(daatRoom.z - hd, Math.min(daatRoom.z + hd, pp[i*3+2]));
+    }
+    daatParticles.geometry.attributes.position.needsUpdate = true;
+    daatPMat.opacity = 0.5 + Math.sin(el * 2) * 0.25;
+
+    // Rotate icosahedron on all 3 axes + float
+    daatIco.rotation.x += 0.005;
+    daatIco.rotation.y += 0.005;
+    daatIco.rotation.z += 0.005;
+    daatIco.position.y = 1.8 + Math.sin(el * 0.7) * 0.15;
+    icoMat.opacity = 0.6 + Math.sin(el * 1.5) * 0.2;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   OLAMOT — Les Quatre Mondes (ambiance lumineuse par zone)
+// ═══════════════════════════════════════════════════════════════
+
+const OLAMOT = [
+    { name:'Atzilut', hebrew:'אֲצִילוּת', sub:'Émanation',
+      rgb:[255,248,224], light:0xffd060, li:0.4,
+      zMin:-46, zMax:-17, pCol:0xffd700, pN:30, pType:'descend' },
+    { name:'Briah', hebrew:'בְּרִיאָה', sub:'Création',
+      rgb:[26,51,102], light:0x4488cc, li:0.3,
+      zMin:-17, zMax:12.5, pCol:0x4488ff, pN:20, pType:'drift' },
+    { name:'Yetzirah', hebrew:'יְצִירָה', sub:'Formation',
+      rgb:[45,90,61], light:0x40aa60, li:0.3,
+      zMin:12.5, zMax:35.5, pCol:0x40ff80, pN:20, pType:'firefly' },
+    { name:'Assiah', hebrew:'עֲשִׂיָּה', sub:'Action',
+      rgb:[90,58,26], light:0xcc8840, li:0.25,
+      zMin:35.5, zMax:49, pCol:0, pN:0, pType:null }
+];
+
+const OLAM_W = 54;
+const olamotParticleSys = [];
+
+OLAMOT.forEach(function(o){
+    var depth = o.zMax - o.zMin;
+    var cZ = (o.zMin + o.zMax) / 2;
+    var r = o.rgb[0], g = o.rgb[1], b = o.rgb[2];
+
+    // ── Ground zone plane (radial gradient, semi-transparent) ──
+    var gc = document.createElement('canvas');
+    gc.width = 256; gc.height = 256;
+    var gx = gc.getContext('2d');
+    var gg = gx.createRadialGradient(128, 128, 0, 128, 128, 128);
+    gg.addColorStop(0,   'rgba('+r+','+g+','+b+',0.22)');
+    gg.addColorStop(0.5, 'rgba('+r+','+g+','+b+',0.12)');
+    gg.addColorStop(1,   'rgba('+r+','+g+','+b+',0)');
+    gx.fillStyle = gg;
+    gx.fillRect(0, 0, 256, 256);
+    var gTex = new THREE.CanvasTexture(gc);
+    var gMat = new THREE.MeshBasicMaterial({
+        map: gTex, transparent: true, depthWrite: false, side: THREE.DoubleSide
+    });
+    var gMesh = new THREE.Mesh(new THREE.PlaneGeometry(OLAM_W, depth), gMat);
+    gMesh.rotation.x = -Math.PI / 2;
+    gMesh.position.set(0, 0.03, cZ);
+    scene.add(gMesh);
+
+    // ── Zone PointLight ──
+    var radius = Math.max(depth, OLAM_W) * 0.6;
+    var zL = new THREE.PointLight(o.light, o.li, radius, 1.5);
+    zL.position.set(0, 4, cZ);
+    scene.add(zL);
+
+    // ── Atmospheric particles (3 worlds, not Assiah) ──
+    if(o.pN > 0){
+        var pArr = new Float32Array(o.pN * 3);
+        for(var pi = 0; pi < o.pN; pi++){
+            pArr[pi*3]   = (Math.random() - 0.5) * OLAM_W * 0.7;
+            pArr[pi*3+1] = 0.5 + Math.random() * 3.5;
+            pArr[pi*3+2] = o.zMin + Math.random() * depth;
+        }
+        var pGeo = new THREE.BufferGeometry();
+        pGeo.setAttribute('position', new THREE.BufferAttribute(pArr, 3));
+        var pMat = new THREE.PointsMaterial({
+            color: o.pCol, size: 2, transparent: true, opacity: 0.6,
+            blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: false
+        });
+        var pts = new THREE.Points(pGeo, pMat);
+        scene.add(pts);
+        olamotParticleSys.push({ points: pts, mat: pMat, type: o.pType, olam: o, n: o.pN });
+    }
+
+    // ── World label (right side of scene) ──
+    var lc = document.createElement('canvas');
+    lc.width = 256; lc.height = 128;
+    var lx = lc.getContext('2d');
+    lx.clearRect(0, 0, 256, 128);
+    var lCol = '#' + new THREE.Color(o.light).getHexString();
+    // Hebrew name
+    lx.font = 'bold 36px "Arial", "Noto Sans Hebrew", serif';
+    lx.textAlign = 'center'; lx.textBaseline = 'middle';
+    lx.shadowColor = 'rgba(0,0,0,0.8)'; lx.shadowBlur = 6;
+    lx.fillStyle = lCol;
+    lx.fillText(o.hebrew, 128, 38);
+    // French subtitle
+    lx.font = '17px monospace';
+    lx.fillStyle = 'rgba(160,144,112,0.65)';
+    lx.shadowBlur = 3;
+    lx.fillText(o.name, 128, 78);
+    var lTex = new THREE.CanvasTexture(lc);
+    lTex.minFilter = THREE.LinearFilter;
+    var lMat = new THREE.SpriteMaterial({ map: lTex, transparent: true, depthTest: false, opacity: 0.75 });
+    var lSp = new THREE.Sprite(lMat);
+    lSp.scale.set(6, 3, 1);
+    lSp.position.set(30, 3, cZ);
+    scene.add(lSp);
+});
+
+// ── Separators between worlds (thin luminous lines) ──
+[
+    { z: -17,   rgb: [200, 180, 255] },  // Atzilut ↔ Briah (lavande)
+    { z: 12.5,  rgb: [100, 180, 200] },  // Briah ↔ Yetzirah (cyan)
+    { z: 35.5,  rgb: [180, 140, 80]  }   // Yetzirah ↔ Assiah (ambre)
+].forEach(function(sep){
+    var sc = document.createElement('canvas');
+    sc.width = 256; sc.height = 32;
+    var sx = sc.getContext('2d');
+    var sR = sep.rgb[0], sG = sep.rgb[1], sB = sep.rgb[2];
+    var sg = sx.createLinearGradient(0, 0, 0, 32);
+    sg.addColorStop(0,    'rgba('+sR+','+sG+','+sB+',0)');
+    sg.addColorStop(0.42, 'rgba('+sR+','+sG+','+sB+',0.30)');
+    sg.addColorStop(0.58, 'rgba('+sR+','+sG+','+sB+',0.30)');
+    sg.addColorStop(1,    'rgba('+sR+','+sG+','+sB+',0)');
+    sx.fillStyle = sg;
+    sx.fillRect(0, 0, 256, 32);
+    var sTex = new THREE.CanvasTexture(sc);
+    var sMat = new THREE.MeshBasicMaterial({
+        map: sTex, transparent: true, depthWrite: false,
+        blending: THREE.AdditiveBlending, side: THREE.DoubleSide
+    });
+    var sMesh = new THREE.Mesh(new THREE.PlaneGeometry(OLAM_W, 1.5), sMat);
+    sMesh.rotation.x = -Math.PI / 2;
+    sMesh.position.set(0, 0.05, sep.z);
+    scene.add(sMesh);
+});
+
+// ── Olamot particle animation ──
+function updateOlamotParticles(dt, t){
+    var el = t / 1000;
+    for(var si = 0; si < olamotParticleSys.length; si++){
+        var sys = olamotParticleSys[si];
+        var pp = sys.points.geometry.attributes.position.array;
+        var depth = sys.olam.zMax - sys.olam.zMin;
+        var hw = OLAM_W * 0.35;
+        for(var i = 0; i < sys.n; i++){
+            var i3 = i * 3;
+            if(sys.type === 'descend'){
+                // Golden dust descending slowly
+                pp[i3]   += (Math.random() - 0.5) * dt * 0.3;
+                pp[i3+1] -= dt * 0.15;
+                pp[i3+2] += (Math.random() - 0.5) * dt * 0.3;
+                if(pp[i3+1] < 0.3){
+                    pp[i3+1] = 3.5 + Math.random();
+                    pp[i3]   = (Math.random() - 0.5) * OLAM_W * 0.7;
+                    pp[i3+2] = sys.olam.zMin + Math.random() * depth;
+                }
+            } else if(sys.type === 'drift'){
+                // Blue particles drifting horizontally
+                pp[i3]   += dt * 0.2;
+                pp[i3+1] += (Math.random() - 0.5) * dt * 0.1;
+                pp[i3+2] += (Math.random() - 0.5) * dt * 0.15;
+                if(pp[i3] > hw){
+                    pp[i3] = -hw;
+                    pp[i3+2] = sys.olam.zMin + Math.random() * depth;
+                }
+                pp[i3+1] = Math.max(0.5, Math.min(4.0, pp[i3+1]));
+            } else if(sys.type === 'firefly'){
+                // Green fireflies bobbing up and down
+                pp[i3]   += (Math.random() - 0.5) * dt * 0.25;
+                pp[i3+1] += Math.sin(el * 2 + i * 0.7) * dt * 0.3;
+                pp[i3+2] += (Math.random() - 0.5) * dt * 0.25;
+                pp[i3]   = Math.max(-hw, Math.min(hw, pp[i3]));
+                pp[i3+1] = Math.max(0.5, Math.min(3.5, pp[i3+1]));
+                pp[i3+2] = Math.max(sys.olam.zMin, Math.min(sys.olam.zMax, pp[i3+2]));
+            }
+        }
+        sys.points.geometry.attributes.position.needsUpdate = true;
+        sys.mat.opacity = 0.5 + Math.sin(el * 1.5 + si * 2.1) * 0.2;
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   PILIERS — Les Trois Colonnes de l'Arbre
+// ═══════════════════════════════════════════════════════════════
+
+var PILIERS = [
+    { hebrew:'עמוד הדין',    sub:'Rigueur',      x:-18,
+      zTop:-28.5, zBot:18, color:0x881122, opacity:0.08 },
+    { hebrew:'עמוד האמצעי',  sub:'Équilibre',    x:0,
+      zTop:-39,   zBot:42, color:0xffeecc, opacity:0.06 },
+    { hebrew:'עמוד החסד',    sub:'Miséricorde',  x:18,
+      zTop:-28.5, zBot:18, color:0x2244aa, opacity:0.08 }
+];
+
+PILIERS.forEach(function(p){
+    var len = p.zBot - p.zTop + 4;
+    var cZ  = (p.zTop + p.zBot) / 2;
+
+    // ── Luminous column (thin cylinder along Z axis) ──
+    var cylGeo = new THREE.CylinderGeometry(0.3, 0.3, len, 8, 1, true);
+    var cylMat = new THREE.MeshBasicMaterial({
+        color: p.color, transparent: true, opacity: p.opacity,
+        blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide
+    });
+    var cyl = new THREE.Mesh(cylGeo, cylMat);
+    cyl.rotation.x = Math.PI / 2;
+    cyl.position.set(p.x, 0.5, cZ);
+    scene.add(cyl);
+
+    // ── Pillar label at base (Sprite at Hod/Malkut/Netzach level) ──
+    var pc = document.createElement('canvas');
+    pc.width = 320; pc.height = 96;
+    var px = pc.getContext('2d');
+    px.clearRect(0, 0, 320, 96);
+    var pCol = '#' + new THREE.Color(p.color).getHexString();
+    px.font = 'bold 28px "Arial", "Noto Sans Hebrew", serif';
+    px.textAlign = 'center'; px.textBaseline = 'middle';
+    px.shadowColor = 'rgba(0,0,0,0.9)'; px.shadowBlur = 6;
+    px.fillStyle = pCol;
+    px.fillText(p.hebrew, 160, 30);
+    px.font = '16px monospace';
+    px.fillStyle = 'rgba(160,144,112,0.55)';
+    px.shadowBlur = 3;
+    px.fillText('Pilier de ' + (p.sub === 'Équilibre' ? "l'" : 'la ') + p.sub, 160, 66);
+    var pTex = new THREE.CanvasTexture(pc);
+    pTex.minFilter = THREE.LinearFilter;
+    var pSMat = new THREE.SpriteMaterial({
+        map: pTex, transparent: true, depthTest: false, opacity: 0.7
+    });
+    var pSp = new THREE.Sprite(pSMat);
+    pSp.scale.set(7, 2.1, 1);
+    pSp.position.set(p.x, -0.3, p.zBot + 3);
+    scene.add(pSp);
+});
+
+// ═══════════════════════════════════════════════════════════════
+//   SHEFA — שֶׁפַע — Flux divin le long des 22 Sentiers
+//   Ohr Yashar (lumière directe ↓) + Ohr Chozer (lumière réfléchie ↑)
+// ═══════════════════════════════════════════════════════════════
+
+var shefaEnabled = true;
+var SHEFA_PER_PATH = 4;
+var SHEFA_TRAIL = 3;
+var SHEFA_TOTAL = PATHS.length * SHEFA_PER_PATH * SHEFA_TRAIL;
+
+var SEPH_OLAM = {
+    keter:'atzilut', chokmah:'atzilut', binah:'atzilut',
+    daat:'briah', chesed:'briah', gevurah:'briah', tiferet:'briah',
+    netzach:'yetzirah', hod:'yetzirah', yesod:'yetzirah',
+    malkuth:'assiah'
+};
+var OLAM_PSIZE = { atzilut:7.5, briah:6.0, yetzirah:5.0, assiah:4.0 };
+
+var COL_YASHAR = new THREE.Color(0xffddaa);
+var COL_CHOZER = new THREE.Color(0xaaccff);
+
+var shefaParticles = [];
+var shefaPositions = new Float32Array(SHEFA_TOTAL * 3);
+var shefaAColors   = new Float32Array(SHEFA_TOTAL * 3);
+var shefaASizes    = new Float32Array(SHEFA_TOTAL);
+var shefaBoosts    = {};
+
+PATHS.forEach(function(p, pi){
+    var fromIdx = ROOM_IDX[p.from], toIdx = ROOM_IDX[p.to];
+    var ck = fromIdx + '-' + toIdx;
+    if(!bridgeCurves[ck]) return;
+    var baseSize = OLAM_PSIZE[SEPH_OLAM[p.to] || 'yetzirah'];
+    for(var j = 0; j < SHEFA_PER_PATH; j++){
+        var desc = j < Math.ceil(SHEFA_PER_PATH * 0.6);
+        var bi   = (pi * SHEFA_PER_PATH + j) * SHEFA_TRAIL;
+        shefaParticles.push({
+            pi: pi, ck: ck,
+            t: (j / SHEFA_PER_PATH + Math.random() * 0.15) % 1,
+            spd: 4 + Math.random() * 2,
+            desc: desc, bi: bi
+        });
+        var col = desc ? COL_YASHAR : COL_CHOZER;
+        var tM = [1.0, 0.5, 0.25];
+        var sM = [1.0, 0.7, 0.4];
+        for(var k = 0; k < SHEFA_TRAIL; k++){
+            var ci = (bi + k) * 3;
+            shefaAColors[ci]   = col.r * tM[k];
+            shefaAColors[ci+1] = col.g * tM[k];
+            shefaAColors[ci+2] = col.b * tM[k];
+            shefaASizes[bi + k] = baseSize * sM[k];
+        }
+    }
+});
+
+var _shC = document.createElement('canvas');
+_shC.width = 32; _shC.height = 32;
+var _shX = _shC.getContext('2d');
+var _shG = _shX.createRadialGradient(16,16,0, 16,16,16);
+_shG.addColorStop(0, 'rgba(255,255,255,1)');
+_shG.addColorStop(0.4, 'rgba(255,255,255,0.5)');
+_shG.addColorStop(1, 'rgba(255,255,255,0)');
+_shX.fillStyle = _shG;
+_shX.fillRect(0,0,32,32);
+var shefaTex = new THREE.CanvasTexture(_shC);
+
+var shefaGeo = new THREE.BufferGeometry();
+shefaGeo.setAttribute('position', new THREE.BufferAttribute(shefaPositions, 3));
+shefaGeo.setAttribute('aColor',   new THREE.BufferAttribute(shefaAColors, 3));
+shefaGeo.setAttribute('aSize',    new THREE.BufferAttribute(shefaASizes, 1));
+
+var shefaMat = new THREE.ShaderMaterial({
+    uniforms: { uTex: {value: shefaTex} },
+    vertexShader: [
+        'attribute float aSize;',
+        'attribute vec3 aColor;',
+        'varying vec3 vCol;',
+        'void main(){',
+        '    vCol = aColor;',
+        '    gl_PointSize = aSize;',
+        '    gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);',
+        '}'
+    ].join('\n'),
+    fragmentShader: [
+        'uniform sampler2D uTex;',
+        'varying vec3 vCol;',
+        'void main(){',
+        '    vec4 tx = texture2D(uTex, gl_PointCoord);',
+        '    gl_FragColor = vec4(vCol, tx.a);',
+        '}'
+    ].join('\n'),
+    transparent: true,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+});
+
+var shefaPoints = new THREE.Points(shefaGeo, shefaMat);
+scene.add(shefaPoints);
+
+function shefaBoostSeph(sephId, ts){
+    for(var i = 0; i < PATHS.length; i++){
+        if(PATHS[i].from === sephId || PATHS[i].to === sephId)
+            shefaBoosts[i] = ts + 2000;
+    }
+}
+
+var _shGap = 0.04;
+
+function updateShefa(dt, t){
+    if(!shefaEnabled) return;
+    for(var i = 0; i < shefaParticles.length; i++){
+        var sp = shefaParticles[i];
+        var cd = bridgeCurves[sp.ck];
+        if(!cd) continue;
+        var boost = (shefaBoosts[sp.pi] && shefaBoosts[sp.pi] > t) ? 3.0 : 1.0;
+        sp.t += (dt / sp.spd) * boost;
+        if(sp.t >= 1) sp.t -= 1;
+        var curve = cd.curve;
+        for(var k = 0; k < SHEFA_TRAIL; k++){
+            var ct = sp.t - k * _shGap;
+            if(ct < 0) ct = sp.t;
+            var cT = sp.desc ? ct : (1 - ct);
+            cT = Math.max(0.001, Math.min(0.999, cT));
+            var pos = curve.getPointAt(cT);
+            var i3 = (sp.bi + k) * 3;
+            shefaPositions[i3]   = pos.x;
+            shefaPositions[i3+1] = pos.y + 0.35;
+            shefaPositions[i3+2] = pos.z;
+        }
+    }
+    shefaGeo.attributes.position.needsUpdate = true;
+}
+
+window.toggleShefa = function(){
+    shefaEnabled = !shefaEnabled;
+    shefaPoints.visible = shefaEnabled;
+    console.log('[SHEFA] ' + (shefaEnabled ? 'Ohr Yashar \u2193 & Ohr Chozer \u2191 \u2014 ON' : 'OFF'));
+};
+
+console.log('[SHEFA] ' + shefaParticles.length + ' particles, ' + SHEFA_TOTAL + ' vertices, 1 draw call');
+
+// ═══════════════════════════════════════════════════════════════
+//   SHEMOT HAMEPHORASH — שמות המפורש — 72 Noms Divins
+// ═══════════════════════════════════════════════════════════════
+
+var SHEMOT_72 = [
+    'והו','ילי','סיט','עלם','מהש','ללה','אכא','כהת','הזי',
+    'אלד','לאו','ההע','יזל','מבה','הרי','הקם','לאו','כלי',
+    'לוו','פהל','נלך','ייי','מלה','חהו','נתה','האא','ירת',
+    'שאה','ריי','אום','לכב','ושר','יחו','להח','כוק','מנד',
+    'אני','חעם','רהע','ייז','ההה','מיכ','ולו','ילה','סאל',
+    'ערי','עשל','מיה','והו','דני','החש','עמם','ננא','נית',
+    'מבה','פוי','נמם','ייל','הרח','מצר','ומב','יהה','ענו',
+    'מחי','דמב','מנק','איע','חבו','ראה','יבם','היי','מום'
+];
+
+var SHEMOT_MAP = {
+    chokmah:{s:0,n:9},  binah:{s:9,n:9},
+    chesed:{s:18,n:9},   gevurah:{s:27,n:9},
+    tiferet:{s:36,n:9},  netzach:{s:45,n:9},
+    hod:{s:54,n:9},      yesod:{s:63,n:9}
+};
+
+function makeShemTex(text, fontSize, bgAlpha){
+    var c = document.createElement('canvas');
+    c.width = 96; c.height = 48;
+    var ctx = c.getContext('2d');
+    ctx.clearRect(0,0,96,48);
+    ctx.fillStyle = 'rgba(10,8,16,' + (bgAlpha||0.6) + ')';
+    if(ctx.roundRect){ ctx.beginPath(); ctx.roundRect(2,2,92,44,6); ctx.fill(); }
+    else ctx.fillRect(2,2,92,44);
+    ctx.font = 'bold ' + (fontSize||28) + 'px "Arial","Noto Sans Hebrew",serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.shadowColor = 'rgba(218,165,32,0.5)'; ctx.shadowBlur = 6;
+    ctx.fillStyle = '#daa520';
+    ctx.fillText(text, 48, 24);
+    var tex = new THREE.CanvasTexture(c);
+    tex.minFilter = THREE.LinearFilter;
+    return tex;
+}
+
+var allShemSprites = [];
+
+// ── 8 Sephiroth × 9 Shemot en grille 3×3 ──
+Object.keys(SHEMOT_MAP).forEach(function(sephId){
+    var info = SHEMOT_MAP[sephId];
+    var ri = ROOM_IDX[sephId];
+    var room = ROOMS[ri];
+    var spX = room.w * 0.25;
+    var spZ = room.d * 0.25;
+    var group = new THREE.Group();
+    group.userData = { type:'shemot_group', sephirah:sephId };
+    for(var j = 0; j < info.n; j++){
+        var gi = info.s + j;
+        var name = SHEMOT_72[gi];
+        var col = j % 3, row = Math.floor(j / 3);
+        var tex = makeShemTex(name);
+        var mat = new THREE.SpriteMaterial({
+            map:tex, transparent:true, opacity:0.7, depthTest:false
+        });
+        var sp = new THREE.Sprite(mat);
+        sp.scale.set(0.6, 0.3, 1);
+        sp.position.set(
+            room.x + (col - 1) * spX,
+            2.0,
+            room.z + (row - 1) * spZ
+        );
+        sp.userData = { type:'shem', index:gi+1, name:name, sephirah:sephId };
+        group.add(sp);
+        allShemSprites.push(sp);
+    }
+    scene.add(group);
+});
+
+// ── Keter — Tétragramme יהוה flottant au-dessus ──
+var keterShemTex = makeShemTex('\u05D9\u05D4\u05D5\u05D4', 36, 0.35);
+var keterShem = new THREE.Sprite(new THREE.SpriteMaterial({
+    map:keterShemTex, transparent:true, opacity:0.9, depthTest:false
+}));
+keterShem.scale.set(1.6, 0.8, 1);
+keterShem.position.set(0, 5, -39);
+keterShem.userData = {
+    type:'shem_special', name:'\u05D9\u05D4\u05D5\u05D4',
+    desc:'Le Nom Ineffable — Source de toute \u00e9manation'
+};
+scene.add(keterShem);
+allShemSprites.push(keterShem);
+
+// ── Malkut — אדני au sol ──
+var malkShemTex = makeShemTex('\u05D0\u05D3\u05E0\u05D9', 28, 0.5);
+var malkShem = new THREE.Sprite(new THREE.SpriteMaterial({
+    map:malkShemTex, transparent:true, opacity:0.7, depthTest:false
+}));
+malkShem.scale.set(1.0, 0.5, 1);
+malkShem.position.set(0, 0.3, 42);
+malkShem.userData = {
+    type:'shem_special', name:'\u05D0\u05D3\u05E0\u05D9',
+    desc:'Adona\u00ef — Le Nom prononc\u00e9 dans le monde manifest\u00e9'
+};
+scene.add(malkShem);
+allShemSprites.push(malkShem);
+
+function updateShemot(dt, t){
+    for(var i = 0; i < allShemSprites.length; i++){
+        allShemSprites[i].material.rotation += dt * 0.12;
+    }
+    keterShem.material.opacity = 0.75 + Math.sin(t/1000 * 0.8) * 0.15;
+}
+
+console.log('[SHEMOT] 72 Noms + T\u00e9tragramme + Adona\u00ef = ' + allShemSprites.length + ' sprites');
+
+ROOMS.forEach(r => {
+    const label = makeLabel(r.name, colStr(r.col));
+    label.position.set(r.x, WALL_H + 1.5, r.z);
+    scene.add(label);
+});
+
+// ── Hebrew letters engraved on corridor floors (22 paths) ──
+function makeHebrewFloorMesh(letter){
+    const c = document.createElement('canvas');
+    c.width = 128; c.height = 128;
+    const ctx = c.getContext('2d');
+    ctx.clearRect(0,0,128,128);
+    // Outer glow (engraved look)
+    ctx.font = 'bold 72px "Arial", "Helvetica", "Noto Sans Hebrew", sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.shadowColor = 'rgba(201,168,76,0.4)';
+    ctx.shadowBlur = 8;
+    ctx.fillStyle = 'rgba(201,168,76,0.50)';
+    ctx.fillText(letter, 64, 64);
+    // Sharper inner stroke
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = 'rgba(201,168,76,0.35)';
+    ctx.fillText(letter, 64, 64);
+    const tex = new THREE.CanvasTexture(c);
+    tex.minFilter = THREE.LinearFilter;
+    tex.magFilter = THREE.LinearFilter;
+    const mat = new THREE.MeshBasicMaterial({
+        map:tex, transparent:true, depthWrite:false,
+        side:THREE.DoubleSide, blending:THREE.AdditiveBlending
+    });
+    const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 1.8), mat);
+    mesh.rotation.x = -Math.PI/2;
+    return mesh;
+}
+// Hebrew floor glyphs are now placed by buildAllBridges()
+
+// ── Torch flame particles (from bridge endpoints) ──
+const torchPositions = bridgeResult.torchPositions;
+const PARTICLES_PER_TORCH = 6;
+const TOTAL_PARTICLES = torchPositions.length * PARTICLES_PER_TORCH;
+const tpPosArr = new Float32Array(TOTAL_PARTICLES * 3);
+const tpAge = new Float32Array(TOTAL_PARTICLES);
+for(let i=0; i<TOTAL_PARTICLES; i++){
+    const ti = Math.floor(i/PARTICLES_PER_TORCH);
+    const tp = torchPositions[ti];
+    tpPosArr[i*3]   = tp.x + (Math.random()-0.5)*0.12;
+    tpPosArr[i*3+1] = 1.6 + Math.random()*0.5;
+    tpPosArr[i*3+2] = tp.z + (Math.random()-0.5)*0.12;
+    tpAge[i] = Math.random()*1.2;
+}
+const tpGeo = new THREE.BufferGeometry();
+tpGeo.setAttribute('position', new THREE.BufferAttribute(tpPosArr, 3));
+const tpMat = new THREE.PointsMaterial({
+    color:0xff6622, size:4, transparent:true, opacity:0.55,
+    blending:THREE.AdditiveBlending, depthWrite:false, sizeAttenuation:false
+});
+const torchPoints = new THREE.Points(tpGeo, tpMat);
+scene.add(torchPoints);
+
+function updateTorchParticles(dt){
+    const pos = torchPoints.geometry.attributes.position.array;
+    for(let i=0; i<TOTAL_PARTICLES; i++){
+        tpAge[i] += dt;
+        if(tpAge[i] > 1.0){
+            const ti = Math.floor(i/PARTICLES_PER_TORCH);
+            const tp = torchPositions[ti];
+            pos[i*3]   = tp.x + (Math.random()-0.5)*0.1;
+            pos[i*3+1] = 1.6;
+            pos[i*3+2] = tp.z + (Math.random()-0.5)*0.1;
+            tpAge[i] = 0;
+        } else {
+            pos[i*3]   += (Math.random()-0.5)*dt*0.3;
+            pos[i*3+1] += dt*(0.8+Math.random()*0.5);
+            pos[i*3+2] += (Math.random()-0.5)*dt*0.3;
+        }
+    }
+    torchPoints.geometry.attributes.position.needsUpdate = true;
+}
+
+// ── Kanban panel in Netzach (3D canvas texture on back wall) ──
+const kanbanCanvas = document.createElement('canvas');
+kanbanCanvas.width = 256; kanbanCanvas.height = 256;
+const kanbanTex = new THREE.CanvasTexture(kanbanCanvas);
+kanbanTex.minFilter = THREE.LinearFilter;
+const kanbanPlane = new THREE.Mesh(
+    new THREE.PlaneGeometry(2.8, 2.8),
+    new THREE.MeshBasicMaterial({ map:kanbanTex, transparent:true, opacity:0.85 })
+);
+const netzR = ROOMS[ROOM_IDX.netzach];
+kanbanPlane.position.set(netzR.x, 1.6, netzR.z - netzR.d/2 + 0.15);
+scene.add(kanbanPlane);
+
+function updateKanban(items){
+    const ctx = kanbanCanvas.getContext('2d');
+    ctx.clearRect(0,0,256,256);
+    ctx.fillStyle = 'rgba(15,12,20,0.88)';
+    ctx.fillRect(0,0,256,256);
+    ctx.fillStyle = '#20ff60';
+    ctx.font = 'bold 13px monospace';
+    ctx.fillText('INTENTIONS', 12, 20);
+    ctx.strokeStyle = 'rgba(32,255,96,0.3)';
+    ctx.beginPath(); ctx.moveTo(12,26); ctx.lineTo(244,26); ctx.stroke();
+    ctx.font = '10px monospace';
+    (items||[]).slice(0,8).forEach(function(item, i){
+        const y = 40 + i*26;
+        const pct = Math.round((item.progress||0)*100);
+        ctx.fillStyle = 'rgba(32,255,96,0.08)';
+        ctx.fillRect(12,y-2,232,18);
+        ctx.fillStyle = 'rgba(32,255,96,0.22)';
+        ctx.fillRect(12,y-2,232*(item.progress||0),18);
+        ctx.fillStyle = '#c9a84c';
+        ctx.fillText((item.goal||'?').substring(0,26), 14, y+10);
+        ctx.fillStyle = '#20ff60';
+        ctx.fillText(pct+'%', 212, y+10);
+    });
+    if(!items || items.length===0){
+        ctx.fillStyle = '#706050';
+        ctx.fillText('aucune intention active', 12, 46);
+    }
+    kanbanTex.needsUpdate = true;
+}
+updateKanban([]);
+
+// ── Contradiction sprites in Tiferet ──
+const contradictionSprites = [];
+function updateContradictions(items){
+    contradictionSprites.forEach(function(s){ scene.remove(s); });
+    contradictionSprites.length = 0;
+    const tR = ROOMS[ROOM_IDX.tiferet];
+    (items||[]).slice(0,6).forEach(function(item, i){
+        const cv = document.createElement('canvas');
+        cv.width = 64; cv.height = 64;
+        const ctx = cv.getContext('2d');
+        ctx.font = 'bold 32px sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#ff4040';
+        ctx.shadowColor = '#ff0000'; ctx.shadowBlur = 8;
+        ctx.fillText('\u26A0', 32, 32);
+        const tex = new THREE.CanvasTexture(cv);
+        const mat = new THREE.SpriteMaterial({ map:tex, transparent:true, depthTest:false, opacity:0.8 });
+        const sp = new THREE.Sprite(mat);
+        sp.scale.set(1.0, 1.0, 1);
+        const angle = (i / Math.max(1, items.length)) * Math.PI * 2;
+        sp.position.set(
+            tR.x + Math.cos(angle)*2.5,
+            1.8,
+            tR.z + Math.sin(angle)*2.5
+        );
+        sp.userData.bobOffset = Math.random()*Math.PI*2;
+        scene.add(sp);
+        contradictionSprites.push(sp);
+    });
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   CHARACTER STATE
+// ═══════════════════════════════════════════════════════════════
+
+const chars = ROOMS.map((r,i) => {
+    const mesh = createCharacter(r.col);
+    mesh.scale.setScalar(1.5);
+    mesh.userData.charIdx = i;
+    mesh.userData.type = 'character';
+    const cx = r.x + (Math.random()-0.5)*2;
+    const cz = r.z + (Math.random()-0.5)*1.5;
+    mesh.position.set(cx, 0.15, cz);
+    scene.add(mesh);
+    console.log('[CHAR]', r.id, 'idx='+i, 'meshChildren='+mesh.children.length, 'userData=', mesh.userData);
+    return {
+        home:i, room:i,
+        x:cx, z:cz,
+        state:'idle', frame:0, ft:Math.random()*2,
+        path:[], pi:0,
+        timer:1+Math.random()*5,
+        glow:0, glowColor:null,
+        carrying:null,
+        mesh
+    };
+});
+
+let nitzuzotCount = 0;
+
+// ── Carry meshes (golden parcel floating above character) ──
+chars.forEach(c => {
+    const carryGeo = new THREE.BoxGeometry(0.35, 0.25, 0.3);
+    const carryMat = new THREE.MeshStandardMaterial({
+        color:0xc9a84c, roughness:0.35, metalness:0.4,
+        emissive:0xc9a84c, emissiveIntensity:0.25
+    });
+    const carryMesh = new THREE.Mesh(carryGeo, carryMat);
+    carryMesh.castShadow = true;
+    carryMesh.visible = false;
+    scene.add(carryMesh);
+    c._carryMesh = carryMesh;
+});
+
+// ═══════════════════════════════════════════════════════════════
+//   CLICK SYSTEM — pointerdown/pointerup to bypass OrbitControls
+//   (OrbitControls calls preventDefault on pointerdown, killing click events)
+// ═══════════════════════════════════════════════════════════════
+
+let worldStatus = {}, memoryStats = {};
+
+const raycaster = new THREE.Raycaster();
+const clickMouse = new THREE.Vector2();
+let _ptrDownPos = new THREE.Vector2();
+let _ptrDownTime = 0;
+let lastClickPos = {x:0, y:0};
+
+// Walk parent chain to find an ancestor with given userData key
+function findAncestorData(obj, key){
+    let cur = obj;
+    while(cur){
+        if(cur.userData && cur.userData[key] !== undefined) return cur;
+        cur = cur.parent;
+    }
+    return null;
+}
+
+renderer.domElement.addEventListener('pointerdown', function(e){
+    _ptrDownPos.set(e.clientX, e.clientY);
+    _ptrDownTime = performance.now();
+}, true);  // capture phase — fires BEFORE OrbitControls
+
+renderer.domElement.addEventListener('pointerup', function(e){
+    const dx = e.clientX - _ptrDownPos.x;
+    const dy = e.clientY - _ptrDownPos.y;
+    const dt = performance.now() - _ptrDownTime;
+
+    // Drag or long press → not a click
+    if(Math.abs(dx) > 4 || Math.abs(dy) > 4 || dt > 500) return;
+
+    console.log('[CLICK DETECTED]', e.clientX, e.clientY, 'dt='+dt.toFixed(0)+'ms');
+
+    // NDC coords relative to canvas bounds (sidebar offsets the canvas)
+    const rect = renderer.domElement.getBoundingClientRect();
+    clickMouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    clickMouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(clickMouse, camera);
+
+    lastClickPos = {x:e.clientX, y:e.clientY};
+
+    // Raycast ALL scene children recursively
+    const allHits = raycaster.intersectObjects(scene.children, true);
+
+    // Debug log
+    const firstHit = allHits[0];
+    console.log('[RAYCAST]', {
+        ndc: {x: clickMouse.x.toFixed(3), y: clickMouse.y.toFixed(3)},
+        hits: allHits.length,
+        firstObj: firstHit ? (firstHit.object.name || firstHit.object.type) : 'none',
+        firstUserData: firstHit ? firstHit.object.userData : {},
+        firstParentData: firstHit ? (firstHit.object.parent?.userData || {}) : {}
+    });
+
+    // Walk through hits: check sentier bridges, then characters, then rooms
+    for(const hit of allHits){
+        // Check bridge sentier (InstancedMesh click)
+        if(hit.object === bridgeDeckMesh && hit.instanceId !== undefined){
+            const pathIdx = bridgeDeckToPath[hit.instanceId];
+            if(pathIdx !== undefined){
+                console.log('[HIT] Sentier:', PATHS[pathIdx]);
+                showInfoPanel('sentier', pathIdx, e);
+                return;
+            }
+        }
+        // Check stele sprites
+        if(hit.object.userData && hit.object.userData.type === 'sentier'){
+            const idx = hit.object.userData.index - 1;
+            console.log('[HIT] Stele:', PATHS[idx]);
+            showInfoPanel('sentier', idx, e);
+            return;
+        }
+        // Check Shem HaMephorash
+        if(hit.object.userData && (hit.object.userData.type === 'shem' || hit.object.userData.type === 'shem_special')){
+            console.log('[HIT] Shem:', hit.object.userData);
+            showInfoPanel(hit.object.userData.type, hit.object.userData, e);
+            return;
+        }
+        // Check character first (more specific)
+        const charAncestor = findAncestorData(hit.object, 'charIdx');
+        if(charAncestor){
+            console.log('[HIT] Character:', charAncestor.userData);
+            showInfoPanel('char', charAncestor.userData.charIdx, e);
+            return;
+        }
+        // Check room
+        const roomAncestor = findAncestorData(hit.object, 'roomIdx');
+        if(roomAncestor){
+            console.log('[HIT] Room:', roomAncestor.userData);
+            showInfoPanel('room', roomAncestor.userData.roomIdx, e);
+            return;
+        }
+    }
+
+    // Click elsewhere: close panel
+    document.getElementById('info-panel').style.display = 'none';
+}, true);  // capture phase
+
+document.querySelector('#info-panel .close-btn').addEventListener('click', () => {
+    document.getElementById('info-panel').style.display = 'none';
+});
+
+const STATE_LABELS = {
+    idle:'En attente', walk:'En marche', wander:'Déambule',
+    type:'Travaille', read:'Lit', celebrate:'Célèbre',
+    talk:'Dialogue', sleep:'Dort', sit:'Assis'
+};
+
+function showInfoPanel(type, idx, evt){
+    const panel = document.getElementById('info-panel');
+    const content = document.getElementById('info-content');
+    if(type === 'room'){
+        const r = ROOMS[idx];
+        const info = SEPHIRAH_INFO[r.id] || {};
+        const mod = (worldStatus.modules || {})[r.id] || {};
+        const st = mod.status || 'offline';
+        const dotCls = st === 'online' ? 'online' : st === 'warning' ? 'warning' : 'offline';
+        const memDomains = (memoryStats.domains || []);
+        const domEntry = memDomains.find(d => d.domain === r.id);
+        const memCount = domEntry ? domEntry.count : 0;
+        if(r.id === 'daat'){
+            content.innerHTML = `
+                <span class="hebrew" style="font-size:2.2em; color:#8888ff; text-shadow:0 0 12px rgba(136,136,255,0.6)">${info.hebrew || ''}</span>
+                <h3 style="color:#8888ff">Da'at — La Connaissance Cachée</h3>
+                <div class="field" style="font-style:italic; color:#a090c0">La quasi-Sephirah — le pont invisible entre Atzilut et Briah</div>
+                <div class="field">Module : <span>${info.module || '—'}</span></div>
+                <div class="field">État : <span class="status-dot ${dotCls}"></span><span>${st}</span></div>
+                <div class="field">Mémoire : <span>${memCount} entrée${memCount>1?'s':''}</span></div>
+                <div class="field">Rôle : <span>${info.role || '—'}</span></div>
+                <div class="field" style="color:#706080; font-size:10px; margin-top:6px">Aucun sentier ne traverse l'abîme</div>
+            `;
+        } else {
+            content.innerHTML = `
+                <span class="hebrew">${info.hebrew || ''}</span>
+                <h3>${r.name}</h3>
+                <div class="field">${info.meaning || ''}</div>
+                <div class="field">Module : <span>${info.module || '—'}</span></div>
+                <div class="field">État : <span class="status-dot ${dotCls}"></span><span>${st}</span></div>
+                <div class="field">Mémoire : <span>${memCount} entrée${memCount>1?'s':''}</span></div>
+                <div class="field">Rôle : <span>${info.role || '—'}</span></div>
+            `;
+        }
+    } else if(type === 'sentier'){
+        const p = PATHS[idx];
+        const fromInfo = SEPHIRAH_INFO[p.from] || {};
+        const toInfo   = SEPHIRAH_INFO[p.to] || {};
+        content.innerHTML = `
+            <span class="hebrew" style="font-size:2.8em">${p.letter}</span>
+            <h3>Sentier ${p.idx} — ${p.name}</h3>
+            <div class="field">Lettre : <span>${p.letter} (${p.name})</span></div>
+            <div class="field">De : <span>${fromInfo.hebrew||''} ${p.from}</span></div>
+            <div class="field">Vers : <span>${toInfo.hebrew||''} ${p.to}</span></div>
+            <div class="field">Tradition : <span>${p.idx <= 18 ? 'GRA (Vilna Gaon)' : 'Ari (Luria)'}</span></div>
+        `;
+    } else if(type === 'shem'){
+        const ud = idx;
+        const si = SEPHIRAH_INFO[ud.sephirah] || {};
+        content.innerHTML = `
+            <span class="hebrew" style="font-size:3em; color:#daa520; text-shadow:0 0 12px rgba(218,165,32,0.6)">${ud.name}</span>
+            <h3>Shem ${ud.index} / 72</h3>
+            <div class="field">Trigramme : <span>${ud.name}</span></div>
+            <div class="field">Sephirah : <span>${si.hebrew||''} ${ud.sephirah}</span></div>
+            <div class="field" style="color:#706050; font-size:10px; margin-top:6px">Shemot HaMephorash — Les 72 Noms de Puissance</div>
+        `;
+    } else if(type === 'shem_special'){
+        const ud = idx;
+        content.innerHTML = `
+            <span class="hebrew" style="font-size:3em; color:#ffd700; text-shadow:0 0 16px rgba(255,215,0,0.7)">${ud.name}</span>
+            <h3>${ud.name === '\u05D9\u05D4\u05D5\u05D4' ? 'Le T\u00e9tragramme' : 'Adona\u00ef'}</h3>
+            <div class="field">${ud.desc}</div>
+        `;
+    } else {
+        const c = chars[idx];
+        const r = ROOMS[c.room];
+        const info = SEPHIRAH_INFO[r.id] || {};
+        content.innerHTML = `
+            <span class="hebrew">${info.hebrew || ''}</span>
+            <h3>${r.name}</h3>
+            <div class="field">Rôle : <span>${info.role || '—'}</span></div>
+            <div class="field">État : <span>${STATE_LABELS[c.state] || c.state}</span></div>
+            <div class="field">Salle : <span>${ROOMS[c.room].name}</span></div>
+        `;
+    }
+    // Position panel near click cursor
+    if(evt){
+        const pw = 260, ph = panel.offsetHeight || 200;
+        let px = evt.clientX + 16;
+        let py = evt.clientY - ph/2;
+        // Keep panel within viewport
+        if(px + pw > window.innerWidth) px = evt.clientX - pw - 16;
+        if(py < 8) py = 8;
+        if(py + ph > window.innerHeight - 8) py = window.innerHeight - ph - 8;
+        panel.style.top = py + 'px';
+        panel.style.left = px + 'px';
+        panel.style.right = 'auto';
+        panel.style.transform = 'none';
+    }
+    panel.style.display = 'block';
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   AUDIO AMBIANCE — wind + fire crackle via Web Audio API
+// ═══════════════════════════════════════════════════════════════
+
+let audioCtx = null, audioMuted = true, masterGain = null;
+
+function initAudio(){
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = 0;
+    masterGain.connect(audioCtx.destination);
+
+    // Brown noise → lowpass → wind
+    const bufSize = 2 * audioCtx.sampleRate;
+    const noiseBuf = audioCtx.createBuffer(1, bufSize, audioCtx.sampleRate);
+    const d = noiseBuf.getChannelData(0);
+    let last = 0;
+    for(let i=0; i<bufSize; i++){
+        const white = Math.random()*2-1;
+        last = (last + 0.02*white) / 1.02;
+        d[i] = last * 3.5;
+    }
+    const noiseSrc = audioCtx.createBufferSource();
+    noiseSrc.buffer = noiseBuf;
+    noiseSrc.loop = true;
+    const lp = audioCtx.createBiquadFilter();
+    lp.type = 'lowpass';
+    lp.frequency.value = 180;
+    noiseSrc.connect(lp);
+    lp.connect(masterGain);
+    noiseSrc.start();
+
+    // Fire crackle — sparse random clicks via bandpass
+    const crackBuf = audioCtx.createBuffer(1, audioCtx.sampleRate, audioCtx.sampleRate);
+    const cd = crackBuf.getChannelData(0);
+    for(let i=0; i<cd.length; i++){
+        cd[i] = Math.random() < 0.003 ? (Math.random()*2-1) : 0;
+    }
+    const crackSrc = audioCtx.createBufferSource();
+    crackSrc.buffer = crackBuf;
+    crackSrc.loop = true;
+    const bp = audioCtx.createBiquadFilter();
+    bp.type = 'bandpass';
+    bp.frequency.value = 2500;
+    bp.Q.value = 0.5;
+    const crackGain = audioCtx.createGain();
+    crackGain.gain.value = 2.5;
+    crackSrc.connect(bp);
+    bp.connect(crackGain);
+    crackGain.connect(masterGain);
+    crackSrc.start();
+}
+
+document.getElementById('mute-btn').addEventListener('click', () => {
+    if(!audioCtx) initAudio();
+    audioMuted = !audioMuted;
+    masterGain.gain.setTargetAtTime(audioMuted ? 0 : 0.06, audioCtx.currentTime, 0.3);
+    document.getElementById('mute-btn').innerHTML = audioMuted ? '&#128263;' : '&#128266;';
+});
+
+// ═══════════════════════════════════════════════════════════════
+//   KATNUT — darken offline rooms, character sleeps
+// ═══════════════════════════════════════════════════════════════
+
+const katnutRooms = new Set();
+
+function applyKatnut(sephId){
+    const idx = ROOM_IDX[sephId];
+    if(idx === undefined) return;
+    katnutRooms.add(idx);
+    const r = ROOMS[idx];
+    r._glowMat.color.set(0x222233);
+    r._glowMat.opacity = 0.15;
+    r._glowIntensity = 0; // prevent updateChars from overwriting
+    r._floorMat.emissive.set(0x222233);
+    r._floorMat.emissiveIntensity = 0.03;
+    if(roomLights[idx]) roomLights[idx].intensity = 0.5;
+    const c = chars[idx];
+    if(c && c.state !== 'sleep'){
+        c.state = 'sleep';
+        c.timer = 9999;
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   WORLD DECORATIONS UPDATE (called each frame)
+// ═══════════════════════════════════════════════════════════════
+
+function updateWorldDecorations(dt, t){
+    updateTorchParticles(dt);
+    updateDaatEffects(dt, t);
+    updateOlamotParticles(dt, t);
+    updateShefa(dt, t);
+    updateShemot(dt, t);
+    // Bob contradiction sprites
+    for(const sp of contradictionSprites){
+        const bob = sp.userData.bobOffset || 0;
+        sp.position.y = 1.8 + Math.sin(t/1000*1.5 + bob)*0.25;
+        sp.material.opacity = 0.5 + Math.sin(t/1000*2 + bob)*0.3;
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   INITIAL STATE — fetch APIs at startup
+// ═══════════════════════════════════════════════════════════════
+
+Promise.all([
+    apiFetch('/api/status').then(r=>r.ok?r.json():null).catch(()=>null),
+    apiFetch('/api/memory/stats').then(r=>r.ok?r.json():null).catch(()=>null),
+    apiFetch('/api/intentions').then(r=>r.ok?r.json():null).catch(()=>null),
+    apiFetch('/api/memory/contradictions').then(r=>r.ok?r.json():null).catch(()=>null),
+    apiFetch('/api/world/recent').then(r=>r.ok?r.json():null).catch(()=>null)
+]).then(([status, mem, intents, contras, recent]) => {
+    if(status){
+        worldStatus = status;
+        const mods = status.modules || {};
+        for(const sid in mods){
+            if(mods[sid].status === 'offline') applyKatnut(sid);
+        }
+    }
+    if(mem) memoryStats = mem;
+    if(intents && intents.intentions) updateKanban(intents.intentions);
+    if(contras && contras.contradictions) updateContradictions(contras.contradictions);
+    if(recent && recent.events){
+        let nc = 0;
+        for(const ev of recent.events){
+            if(ev.type === 'nitzutz') nc++;
+        }
+        if(nc > 0){
+            nitzuzotCount = nc;
+            document.getElementById('nitz-count').textContent = nc;
+        }
+    }
+    const hud = document.getElementById('hud-status');
+    if(hud) hud.textContent = 'système initialisé';
+    setTimeout(() => { if(hud) hud.textContent = ''; }, 3000);
+});
+
+// ═══════════════════════════════════════════════════════════════
+//   CHARACTER UPDATE — with limb animations
+// ═══════════════════════════════════════════════════════════════
+
+function updateChars(dt, t){
+    for(let _ci=0; _ci<chars.length; _ci++){
+    const c = chars[_ci];
+        c.ft += dt;
+
+        // Decay glow
+        if(c.glow>0) c.glow = Math.max(0, c.glow-dt*0.3);
+
+        // Decay room glow (skip katnut rooms — they stay dimmed)
+        const rr = ROOMS[c.home];
+        if(rr._glowIntensity>0 && !katnutRooms.has(c.home)){
+            rr._glowIntensity = Math.max(0, rr._glowIntensity-dt*0.25);
+            rr._glowMat.opacity = rr._glowIntensity * 0.4;
+        }
+
+        switch(c.state){
+        case 'idle':
+            c.timer -= dt;
+            if(c.timer<=0){
+                const roll = Math.random();
+                if(roll < 0.3){
+                    // Walk to a neighboring room via bridge (30%)
+                    const neighbors = adj[c.room];
+                    if(neighbors.length > 0){
+                        let target;
+                        if(Math.random()<0.4 && c.room!==c.home && neighbors.includes(c.home)){
+                            target = c.home; // prefer going home
+                        } else {
+                            target = neighbors[Math.floor(Math.random()*neighbors.length)];
+                        }
+                        // Find bridge curve for this edge
+                        const curveKey = c.room+'-'+target;
+                        const bridge = bridgeCurves[curveKey];
+                        if(bridge){
+                            c._bridgeCurve = bridge.curve;
+                            c._bridgeReversed = !!bridge.reversed;
+                            c._bridgeSurfaceY = bridge.surfaceY;
+                            c._bridgeT = 0;
+                            c._bridgeTarget = target;
+                            c._bridgeDuration = 6 + Math.random()*4; // 6-10 seconds
+                            c.state='walk'; c.frame=0;
+                            break;
+                        }
+                        // Fallback: multi-hop via BFS, walk hop by hop
+                        const path = bfs(c.room, target);
+                        if(path.length){
+                            c.path=path; c.pi=0;
+                            // Start first hop
+                            const firstHop = path[0];
+                            const ck = c.room+'-'+firstHop;
+                            const br = bridgeCurves[ck];
+                            if(br){
+                                c._bridgeCurve = br.curve;
+                                c._bridgeReversed = !!br.reversed;
+                                c._bridgeSurfaceY = br.surfaceY;
+                                c._bridgeT = 0;
+                                c._bridgeTarget = firstHop;
+                                c._bridgeDuration = 6 + Math.random()*4;
+                                c.state='walk'; c.frame=0;
+                                break;
+                            }
+                        }
+                    }
+                } else if(roll < 0.5){
+                    // Wander within room (20%)
+                    const rm = ROOMS[c.room];
+                    c._wanderTarget = {
+                        x: rm.x + (Math.random()-0.5)*(rm.w*0.55),
+                        z: rm.z + (Math.random()-0.5)*(rm.d*0.55)
+                    };
+                    c.state='wander'; c.timer=3+Math.random()*3;
+                    c.frame=0;
+                    break;
+                }
+                const acts = ROOMS[c.room].acts;
+                c.state = acts[Math.floor(Math.random()*acts.length)];
+                c.timer = 3+Math.random()*6;
+                c.frame = 0;
+                const rm = ROOMS[c.room];
+                c.x = rm.x + (Math.random()-0.5)*(rm.w*0.4);
+                c.z = rm.z + (Math.random()-0.5)*(rm.d*0.4);
+            }
+            break;
+        case 'wander': {
+            const wt = c._wanderTarget;
+            if(wt){
+                const dx = wt.x-c.x, dz = wt.z-c.z;
+                const d = Math.sqrt(dx*dx+dz*dz);
+                const spd = 2.5; // slower than corridor
+                if(d < spd*dt+0.1){
+                    c.x=wt.x; c.z=wt.z;
+                    c.state='idle'; c.timer=2+Math.random()*4;
+                    c._wanderTarget=null;
+                } else {
+                    c.x += (dx/d)*spd*dt;
+                    c.z += (dz/d)*spd*dt;
+                    c.mesh.rotation.y = Math.atan2(dx, dz);
+                }
+            } else {
+                c.state='idle'; c.timer=1;
+            }
+            if(c.ft>0.2){c.frame=(c.frame+1)%4;c.ft=0;}
+            break;
+        }
+        case 'walk': {
+            if(c._bridgeCurve){
+                // ── Follow bridge curve ──
+                c._bridgeT += dt / c._bridgeDuration;
+                if(c._bridgeT >= 1.0){
+                    // Arrived at destination room
+                    c._bridgeT = 1.0;
+                    c.room = c._bridgeTarget;
+                    const destR = ROOMS[c.room];
+                    c.x = destR.x; c.z = destR.z;
+                    // Parcel delivery
+                    if(c.carrying==='parcel'){
+                        placeProcedural(destR._group, 'createBookStack',
+                            (Math.random()-0.5)*2, 0, (Math.random()-0.5)*1.5,
+                            2.0, Math.random()*3);
+                        addEffect('activation_ring', {
+                            x:destR.x, z:destR.z, color:0x60ff90, duration:1.5
+                        });
+                        c.carrying=null;
+                    }
+                    // Check if multi-hop path continues
+                    if(c.path && c.path.length && c.pi < c.path.length-1){
+                        c.pi++;
+                        const nextHop = c.path[c.pi];
+                        const ck = c.room+'-'+nextHop;
+                        const br = bridgeCurves[ck];
+                        if(br){
+                            c._bridgeCurve = br.curve;
+                            c._bridgeReversed = !!br.reversed;
+                            c._bridgeSurfaceY = br.surfaceY;
+                            c._bridgeT = 0;
+                            c._bridgeTarget = nextHop;
+                            c._bridgeDuration = 6 + Math.random()*4;
+                        } else {
+                            c._bridgeCurve = null;
+                            c.state='idle'; c.timer=15+Math.random()*10;
+                        }
+                    } else {
+                        c._bridgeCurve = null;
+                        c.path=[]; c.pi=0;
+                        c.state='idle'; c.timer=15+Math.random()*10;
+                    }
+                } else {
+                    // Interpolate along curve
+                    const tEval = c._bridgeReversed ? (1.0 - c._bridgeT) : c._bridgeT;
+                    const pos = c._bridgeCurve.getPointAt(Math.max(0, Math.min(1, tEval)));
+                    c.x = pos.x;
+                    c.z = pos.z;
+                    // Face direction of travel
+                    const tLook = Math.max(0, Math.min(1, tEval + (c._bridgeReversed ? -0.02 : 0.02)));
+                    const lookPos = c._bridgeCurve.getPointAt(tLook);
+                    const faceDx = lookPos.x - pos.x, faceDz = lookPos.z - pos.z;
+                    if(Math.abs(faceDx)>0.001 || Math.abs(faceDz)>0.001){
+                        c.mesh.rotation.y = Math.atan2(faceDx, faceDz);
+                    }
+                }
+            } else {
+                // Fallback: linear walk (legacy / API-driven walks)
+                const tr = ROOMS[c.path[c.pi] !== undefined ? c.path[c.pi] : c.room];
+                const dx = tr.x-c.x, dz = tr.z-c.z;
+                const d = Math.sqrt(dx*dx+dz*dz);
+                const spd = 6;
+                if(d<spd*dt+0.15){
+                    c.x=tr.x; c.z=tr.z; c.room=c.path[c.pi];
+                    if(++c.pi>=c.path.length){
+                        c.state='idle'; c.timer=15+Math.random()*10;
+                        if(c.carrying==='parcel'){
+                            const destR = ROOMS[c.room];
+                            placeProcedural(destR._group, 'createBookStack',
+                                (Math.random()-0.5)*2, 0, (Math.random()-0.5)*1.5,
+                                2.0, Math.random()*3);
+                            addEffect('activation_ring', {
+                                x:destR.x, z:destR.z, color:0x60ff90, duration:1.5
+                            });
+                        }
+                        c.carrying=null;
+                    }
+                }else{
+                    c.x += (dx/d)*spd*dt;
+                    c.z += (dz/d)*spd*dt;
+                    c.mesh.rotation.y = Math.atan2(dx, dz);
+                }
+            }
+            if(c.ft>0.15){c.frame=(c.frame+1)%4;c.ft=0;}
+            break;
+        }
+        default:
+            // Katnut rooms: character stays asleep indefinitely
+            if(katnutRooms.has(c.home) && c.state==='sleep'){
+                c.timer = 9999;
+            } else {
+                c.timer -= dt;
+                if(c.timer<=0){c.state='idle';c.timer=2+Math.random()*4;}
+            }
+            if(c.ft>0.35){c.frame=(c.frame+1)%2;c.ft=0;}
+            break;
+        }
+
+        // ── Update mesh position ──
+        c.mesh.position.x = c.x;
+        c.mesh.position.z = c.z;
+
+        // ── Carry mesh follows character ──
+        if(c._carryMesh){
+            c._carryMesh.visible = !!c.carrying;
+            if(c.carrying){
+                c._carryMesh.position.set(c.x, 1.15, c.z);
+                c._carryMesh.rotation.y += dt*2;
+            }
+        }
+
+        const el = t/1000;
+        const ud = c.mesh.userData;
+
+        // ── Limb animations per state ──
+        switch(c.state){
+        case 'idle':
+            c.mesh.position.y = 0.15 + Math.sin(el*1.5+c.home)*0.02;
+            c.mesh.rotation.x = 0;
+            c.mesh.rotation.z = Math.sin(el*0.7+c.home*2)*0.025;
+            // Gentle look-around via body rotation
+            c.mesh.rotation.y += Math.sin(el*0.5+c.home*3)*0.004;
+            ud.leftArm.rotation.x = Math.sin(el*0.8+c.home)*0.1;
+            ud.rightArm.rotation.x = Math.sin(el*0.8+c.home+1)*0.1;
+            ud.leftArm.rotation.z = 0.06 + Math.sin(el*0.6+c.home)*0.04;
+            ud.rightArm.rotation.z = -0.06 - Math.sin(el*0.6+c.home+2)*0.04;
+            ud.leftLeg.rotation.x = 0;
+            ud.rightLeg.rotation.x = 0;
+            break;
+
+        case 'wander': {
+            const wc = el * 5;
+            c.mesh.position.y = 0.15 + Math.abs(Math.sin(wc))*0.02;
+            c.mesh.rotation.x = -0.02; c.mesh.rotation.z = 0;
+            const ls = Math.sin(wc)*0.35;
+            ud.leftLeg.rotation.x = ls;
+            ud.rightLeg.rotation.x = -ls;
+            ud.leftArm.rotation.x = -ls*0.3;
+            ud.rightArm.rotation.x = ls*0.3;
+            ud.leftArm.rotation.z = 0.06;
+            ud.rightArm.rotation.z = -0.06;
+            break;
+        }
+
+        case 'walk': {
+            const walkCycle = el * 8;
+            // Y position: on bridge surface if following a curve, else ground
+            const baseY = c._bridgeCurve ? (c._bridgeSurfaceY + 0.1) : 0.1;
+            c.mesh.position.y = baseY + Math.abs(Math.sin(walkCycle))*0.04;
+            c.mesh.rotation.x = -0.03; c.mesh.rotation.z = 0;
+            const legSwing = Math.sin(walkCycle) * 0.55;
+            ud.leftLeg.rotation.x = legSwing;
+            ud.rightLeg.rotation.x = -legSwing;
+            ud.leftArm.rotation.x = -legSwing * 0.4;
+            ud.rightArm.rotation.x = legSwing * 0.4;
+            ud.leftArm.rotation.z = 0.08;
+            ud.rightArm.rotation.z = -0.08;
+            break;
+        }
+
+        case 'type':
+            c.mesh.position.y = 0.1;
+            c.mesh.rotation.x = -0.08; c.mesh.rotation.z = 0;
+            ud.leftArm.rotation.x = -0.5 + Math.sin(el*12)*0.15;
+            ud.rightArm.rotation.x = -0.5 + Math.sin(el*12+1.5)*0.15;
+            ud.leftArm.rotation.z = 0.2;
+            ud.rightArm.rotation.z = -0.2;
+            ud.leftLeg.rotation.x = 0;
+            ud.rightLeg.rotation.x = 0;
+            break;
+
+        case 'read':
+            c.mesh.position.y = 0.1;
+            c.mesh.rotation.x = -0.12; c.mesh.rotation.z = 0;
+            ud.leftArm.rotation.x = -0.7;
+            ud.rightArm.rotation.x = -0.7;
+            ud.leftArm.rotation.z = 0.15;
+            ud.rightArm.rotation.z = -0.15;
+            ud.leftLeg.rotation.x = 0;
+            ud.rightLeg.rotation.x = 0;
+            break;
+
+        case 'celebrate': {
+            const bounce = Math.abs(Math.sin(el*5));
+            c.mesh.position.y = 0.1 + bounce*0.3;
+            c.mesh.rotation.z = Math.sin(el*3)*0.1;
+            c.mesh.rotation.x = 0;
+            ud.leftArm.rotation.x = -2.5 + Math.sin(el*6)*0.3;
+            ud.rightArm.rotation.x = -2.5 + Math.sin(el*6+1)*0.3;
+            ud.leftArm.rotation.z = 0.3;
+            ud.rightArm.rotation.z = -0.3;
+            ud.leftLeg.rotation.x = Math.sin(el*6)*0.4;
+            ud.rightLeg.rotation.x = Math.sin(el*6+1.5)*0.4;
+            break;
+        }
+
+        case 'talk':
+            c.mesh.position.y = 0.1;
+            c.mesh.rotation.y += Math.sin(el*2)*0.006;
+            c.mesh.rotation.x = 0; c.mesh.rotation.z = 0;
+            ud.leftArm.rotation.x = -0.3 + Math.sin(el*3)*0.25;
+            ud.rightArm.rotation.x = -0.3 + Math.sin(el*3+2)*0.25;
+            ud.leftArm.rotation.z = 0.3 + Math.sin(el*2)*0.1;
+            ud.rightArm.rotation.z = -0.3 - Math.sin(el*2+1)*0.1;
+            ud.leftLeg.rotation.x = 0;
+            ud.rightLeg.rotation.x = 0;
+            break;
+
+        case 'sleep':
+            c.mesh.position.y = 0.06;
+            c.mesh.rotation.z = 0.3;
+            c.mesh.rotation.x = 0;
+            ud.leftArm.rotation.x = -0.3;
+            ud.rightArm.rotation.x = -0.3;
+            ud.leftArm.rotation.z = 0.4;
+            ud.rightArm.rotation.z = -0.1;
+            ud.leftLeg.rotation.x = 0.2;
+            ud.rightLeg.rotation.x = 0.15;
+            break;
+
+        case 'sit':
+            c.mesh.position.y = 0.04;
+            c.mesh.rotation.x = 0; c.mesh.rotation.z = 0;
+            ud.leftArm.rotation.x = -0.4;
+            ud.rightArm.rotation.x = -0.4;
+            ud.leftArm.rotation.z = 0.15;
+            ud.rightArm.rotation.z = -0.15;
+            ud.leftLeg.rotation.x = -0.8;
+            ud.rightLeg.rotation.x = -0.8;
+            break;
+
+        default:
+            c.mesh.position.y = 0.1;
+            ud.leftArm.rotation.x = 0; ud.rightArm.rotation.x = 0;
+            ud.leftArm.rotation.z = 0.05; ud.rightArm.rotation.z = -0.05;
+            ud.leftLeg.rotation.x = 0; ud.rightLeg.rotation.x = 0;
+        }
+
+        // Speech bubble
+        ud.bubble.visible = (c.state==='talk');
+
+        // Emissive glow
+        if(c.glow > 0.01){
+            const gc = c.glowColor || new THREE.Color(ROOMS[c.home].col);
+            ud.bodyMat.emissive.copy(gc);
+            ud.bodyMat.emissiveIntensity = c.glow*0.6;
+            ud.headMat.emissive.copy(gc);
+            ud.headMat.emissiveIntensity = c.glow*0.5;
+        } else {
+            ud.bodyMat.emissiveIntensity = 0;
+            ud.headMat.emissiveIntensity = 0;
+        }
+
+        // Room floor glow (skip katnut rooms)
+        const rm = ROOMS[c.home];
+        if(!katnutRooms.has(c.home)){
+            if(rm._glowIntensity > 0.01){
+                rm._floorMat.emissive.copy(rm._glowColor || new THREE.Color(rm.col));
+                rm._floorMat.emissiveIntensity = rm._glowIntensity * 0.4;
+            } else {
+                rm._floorMat.emissiveIntensity = 0;
+            }
+        }
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   3D EFFECTS — Rich animated visual effects
+// ═══════════════════════════════════════════════════════════════
+
+const effects = [];
+
+function addEffect(type, data){
+    const eff = { type, startT:performance.now(), ...data };
+
+    switch(type){
+
+    // ── Expanding ring on room activation ──
+    case 'activation_ring': {
+        const geo = new THREE.RingGeometry(0.8, 1.0, 32);
+        const mat = new THREE.MeshBasicMaterial({
+            color:data.color||0xffffff, transparent:true, opacity:0.6,
+            side:THREE.DoubleSide, blending:THREE.AdditiveBlending, depthWrite:false
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.rotation.x = -Math.PI/2;
+        mesh.position.set(data.x, 0.15, data.z);
+        scene.add(mesh);
+        eff.mesh=mesh; eff.mat=mat; eff.duration=data.duration||1.2;
+        break;
+    }
+
+    // ── Vertical light ray — Or Yashar (descending) / Or Chozer (ascending) ──
+    case 'ohr_ray': {
+        const h = 10;
+        const geo = new THREE.CylinderGeometry(0.1, 0.3, h, 8);
+        const mat = new THREE.MeshBasicMaterial({
+            color:data.color||0xffd700, transparent:true, opacity:0,
+            blending:THREE.AdditiveBlending, depthWrite:false
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.position.set(data.x, data.up ? -2 : 14, data.z);
+        scene.add(mesh);
+        // Inner bright core
+        const coreGeo = new THREE.CylinderGeometry(0.04, 0.12, h*0.9, 6);
+        const coreMat = new THREE.MeshBasicMaterial({
+            color:0xffffff, transparent:true, opacity:0,
+            blending:THREE.AdditiveBlending, depthWrite:false
+        });
+        const core = new THREE.Mesh(coreGeo, coreMat);
+        mesh.add(core);
+        eff.mesh=mesh; eff.mat=mat; eff.coreMat=coreMat;
+        eff.duration=data.duration||2.5;
+        eff.ascending=!!data.up;
+        break;
+    }
+
+    // ── Nitzutz star with sparkle particles ──
+    case 'nitzutz_star': {
+        const group = new THREE.Group();
+        // Main golden star
+        const starGeo = new THREE.OctahedronGeometry(0.22, 0);
+        const starMat = new THREE.MeshBasicMaterial({
+            color:0xffd700, transparent:true, opacity:1,
+            blending:THREE.AdditiveBlending
+        });
+        const star = new THREE.Mesh(starGeo, starMat);
+        group.add(star);
+        // 6 orbiting sparkle particles
+        const sparkles = [];
+        for(let s=0; s<6; s++){
+            const spGeo = new THREE.OctahedronGeometry(0.06, 0);
+            const spMat = new THREE.MeshBasicMaterial({
+                color:0xffffff, transparent:true, opacity:0.8,
+                blending:THREE.AdditiveBlending
+            });
+            const sp = new THREE.Mesh(spGeo, spMat);
+            sparkles.push({mesh:sp, mat:spMat, angle:(s/6)*Math.PI*2});
+            group.add(sp);
+        }
+        // Glow halo
+        const haloGeo = new THREE.RingGeometry(0.15, 0.45, 16);
+        const haloMat = new THREE.MeshBasicMaterial({
+            color:0xffd700, transparent:true, opacity:0.4,
+            side:THREE.DoubleSide, blending:THREE.AdditiveBlending, depthWrite:false
+        });
+        const halo = new THREE.Mesh(haloGeo, haloMat);
+        group.add(halo);
+        group.position.set(data.x, 0.8, data.z);
+        scene.add(group);
+        eff.group=group; eff.star=star; eff.starMat=starMat;
+        eff.haloMat=haloMat; eff.sparkles=sparkles;
+        eff.duration=3.5; eff.baseX=data.x; eff.baseZ=data.z;
+        break;
+    }
+
+    // ── Beam between two sephirotic rooms ──
+    case 'zivug_beam': {
+        const start = new THREE.Vector3(data.x, 1.2, data.z);
+        const end = new THREE.Vector3(data.x2, 1.2, data.z2);
+        const dir = new THREE.Vector3().subVectors(end, start);
+        const len = dir.length();
+        const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
+        const geo = new THREE.CylinderGeometry(0.08, 0.08, len, 8);
+        const mat = new THREE.MeshBasicMaterial({
+            color:data.color||0xffd700, transparent:true, opacity:0.6,
+            blending:THREE.AdditiveBlending, depthWrite:false
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.position.copy(mid);
+        dir.normalize();
+        mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), dir);
+        scene.add(mesh);
+        eff.mesh=mesh; eff.mat=mat; eff.duration=data.duration||3;
+        break;
+    }
+
+    // ── Glowing halo at zivug meeting point ──
+    case 'zivug_halo': {
+        const geo = new THREE.TorusGeometry(1.8, 0.1, 8, 32);
+        const mat = new THREE.MeshBasicMaterial({
+            color:data.color||0xffd700, transparent:true, opacity:0.5,
+            blending:THREE.AdditiveBlending, depthWrite:false
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.rotation.x = -Math.PI/2;
+        mesh.position.set(data.x, 0.3, data.z);
+        scene.add(mesh);
+        eff.mesh=mesh; eff.mat=mat; eff.duration=data.duration||4;
+        break;
+    }
+
+    // ── Particle traveling along a beam (zivug) ──
+    case 'beam_particle': {
+        const bpGeo = new THREE.SphereGeometry(0.12, 6, 6);
+        const bpMat = new THREE.MeshBasicMaterial({
+            color:data.color||0xffd700, transparent:true, opacity:0.9,
+            blending:THREE.AdditiveBlending, depthWrite:false
+        });
+        const bpMesh = new THREE.Mesh(bpGeo, bpMat);
+        bpMesh.position.set(data.x, 1.2, data.z);
+        scene.add(bpMesh);
+        eff.mesh=bpMesh; eff.mat=bpMat;
+        eff.duration=data.duration||2;
+        eff.sx=data.x; eff.sz=data.z; eff.ex=data.x2; eff.ez=data.z2;
+        break;
+    }
+
+    // ── Golden particle radiating outward from nitzutz ──
+    case 'golden_particle': {
+        const gpGeo = new THREE.OctahedronGeometry(0.08, 0);
+        const gpMat = new THREE.MeshBasicMaterial({
+            color:0xffd700, transparent:true, opacity:0.9,
+            blending:THREE.AdditiveBlending, depthWrite:false
+        });
+        const gpMesh = new THREE.Mesh(gpGeo, gpMat);
+        gpMesh.position.set(data.x, 0.8, data.z);
+        scene.add(gpMesh);
+        eff.mesh=gpMesh; eff.mat=gpMat;
+        eff.duration=data.duration||1.5;
+        eff.originX=data.x; eff.originZ=data.z;
+        eff.angle=data.angle||0; eff.speed=data.speed||3;
+        break;
+    }
+
+    // ── Nitzutz Points particle system (50 particles, fall + explode) ──
+    case 'nitzutz_points': {
+        const npCount = 50;
+        const npPos = new Float32Array(npCount * 3);
+        const npVels = [];
+        for(let i=0; i<npCount; i++){
+            npPos[i*3]   = data.x;
+            npPos[i*3+1] = 12;
+            npPos[i*3+2] = data.z;
+            const a = Math.random()*Math.PI*2;
+            const sp = 1.5+Math.random()*3;
+            npVels.push({vx:Math.cos(a)*sp, vy:1+Math.random()*3, vz:Math.sin(a)*sp});
+        }
+        const npGeo = new THREE.BufferGeometry();
+        npGeo.setAttribute('position', new THREE.BufferAttribute(npPos, 3));
+        const npMat = new THREE.PointsMaterial({
+            color:0xffd700, size:0.35, transparent:true, opacity:1,
+            blending:THREE.AdditiveBlending, depthWrite:false, sizeAttenuation:true
+        });
+        const pts = new THREE.Points(npGeo, npMat);
+        scene.add(pts);
+        eff.points=pts; eff.geo=npGeo; eff.mat=npMat;
+        eff.vels=npVels; eff.count=npCount;
+        eff.tx=data.x; eff.tz=data.z;
+        eff.phase='fall'; eff.duration=data.duration||2.5;
+        break;
+    }
+
+    // ── Ask: expanding white-gold circular wave ──
+    case 'ask_wave': {
+        const awGeo = new THREE.RingGeometry(0.3, 0.6, 48);
+        const awMat = new THREE.MeshBasicMaterial({
+            color:data.color||0xffeedd, transparent:true, opacity:0.7,
+            side:THREE.DoubleSide, blending:THREE.AdditiveBlending, depthWrite:false
+        });
+        const awMesh = new THREE.Mesh(awGeo, awMat);
+        awMesh.rotation.x = -Math.PI/2;
+        awMesh.position.set(data.x, 0.2, data.z);
+        scene.add(awMesh);
+        eff.mesh=awMesh; eff.mat=awMat; eff.duration=data.duration||2;
+        break;
+    }
+
+    // ── Golden parcel falling from sky at Malkuth gate ──
+    case 'import_parcel': {
+        const geo = new THREE.BoxGeometry(0.5, 0.35, 0.4);
+        const mat = new THREE.MeshStandardMaterial({
+            color:0xc9a84c, roughness:0.35, metalness:0.4,
+            emissive:0xc9a84c, emissiveIntensity:0.3
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.position.set(data.x, 5, data.z);
+        mesh.castShadow = true;
+        scene.add(mesh);
+        // Glow ring under parcel
+        const ringGeo = new THREE.RingGeometry(0.2, 0.5, 16);
+        const ringMat = new THREE.MeshBasicMaterial({
+            color:0xffd700, transparent:true, opacity:0.4,
+            side:THREE.DoubleSide, blending:THREE.AdditiveBlending, depthWrite:false
+        });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.x = -Math.PI/2;
+        ring.position.set(data.x, 0.1, data.z);
+        scene.add(ring);
+        eff.mesh=mesh; eff.mat=mat; eff.ring=ring; eff.ringMat=ringMat;
+        eff.duration=data.duration||3;
+        break;
+    }
+    }
+
+    effects.push(eff);
+}
+
+function cleanupEffect(e){
+    if(e.points){
+        scene.remove(e.points);
+        if(e.geo) e.geo.dispose();
+        if(e.mat) e.mat.dispose();
+    } else if(e.group){
+        scene.remove(e.group);
+        e.group.traverse(function(ch){
+            if(ch.geometry) ch.geometry.dispose();
+            if(ch.material) ch.material.dispose();
+        });
+    } else {
+        scene.remove(e.mesh);
+        if(e.mesh && e.mesh.geometry) e.mesh.geometry.dispose();
+        if(e.mat) e.mat.dispose();
+    }
+    if(e.ring){
+        scene.remove(e.ring);
+        e.ring.geometry.dispose();
+        e.ringMat.dispose();
+    }
+    if(e.coreMat) e.coreMat.dispose();
+}
+
+function updateEffects(t){
+    for(let i=effects.length-1;i>=0;i--){
+        const e = effects[i];
+        const age = (t-e.startT)/1000;
+        if(age > e.duration){
+            cleanupEffect(e);
+            effects.splice(i,1);
+            continue;
+        }
+        const p = age/e.duration;
+
+        switch(e.type){
+
+        case 'activation_ring':
+            e.mesh.scale.set(1+p*5, 1+p*5, 1);
+            e.mat.opacity = (1-p)*0.5;
+            break;
+
+        case 'ohr_ray': {
+            // Descend or ascend
+            if(e.ascending) e.mesh.position.y = -2 + p*8;
+            else             e.mesh.position.y = 14 - p*10;
+            // Fade in → hold → fade out
+            const oFade = p<0.2 ? p/0.2 : p>0.75 ? (1-p)/0.25 : 1;
+            e.mat.opacity = oFade*0.65;
+            e.coreMat.opacity = oFade*0.5;
+            // Pulse width
+            const oPulse = 1+Math.sin(p*25)*0.2;
+            e.mesh.scale.x = oPulse;
+            e.mesh.scale.z = oPulse;
+            break;
+        }
+
+        case 'nitzutz_star': {
+            const rise = p<0.6 ? p/0.6 : 1;
+            const fade = p>0.5 ? (p-0.5)/0.5 : 0;
+            // Rise and arc slightly right
+            e.group.position.y = 0.8 + rise*7;
+            e.group.position.x = e.baseX + Math.sin(p*8)*0.6;
+            e.group.position.z = e.baseZ + Math.cos(p*6)*0.35;
+            // Spin main star
+            e.star.rotation.y = p*16;
+            e.star.rotation.x = p*11;
+            const sc = Math.max(0.05, 1+Math.sin(p*14)*0.3-fade*0.9);
+            e.star.scale.setScalar(sc);
+            e.starMat.opacity = Math.max(0,1-fade);
+            e.haloMat.opacity = Math.max(0,(1-fade)*0.4);
+            // Sparkles orbit
+            for(const sp of e.sparkles){
+                const a = sp.angle + p*14;
+                const r = 0.45+Math.sin(p*10)*0.15;
+                sp.mesh.position.set(Math.cos(a)*r, Math.sin(a*1.5)*0.3, Math.sin(a)*r);
+                sp.mesh.rotation.y = p*22;
+                sp.mat.opacity = Math.max(0,(1-fade)*0.8);
+                sp.mesh.scale.setScalar(Math.max(0.05,0.8-fade*0.7));
+            }
+            break;
+        }
+
+        case 'zivug_beam': {
+            e.mat.opacity = Math.sin(p*Math.PI)*0.7;
+            const bPulse = 1+Math.sin(p*14)*0.3;
+            e.mesh.scale.x = bPulse;
+            e.mesh.scale.z = bPulse;
+            if(e.rainbow) e.mat.color.setHSL((p*2)%1, 1, 0.6);
+            break;
+        }
+
+        case 'zivug_halo':
+            e.mat.opacity = Math.sin(p*Math.PI)*0.5;
+            e.mesh.scale.set(1+Math.sin(p*7)*0.15, 1+Math.sin(p*7)*0.15, 1);
+            e.mesh.rotation.z = p*2;
+            break;
+
+        case 'beam_particle': {
+            const bp = Math.min(1, age/e.duration * 1.2); // arrive early, linger
+            e.mesh.position.x = e.sx + (e.ex-e.sx)*bp;
+            e.mesh.position.z = e.sz + (e.ez-e.sz)*bp;
+            e.mesh.position.y = 1.2 + Math.sin(bp*Math.PI)*1.5; // arc upward
+            e.mat.opacity = Math.sin(Math.min(1,p)*Math.PI)*0.9;
+            const bps = 0.6+Math.sin(age*10)*0.3;
+            e.mesh.scale.setScalar(bps);
+            break;
+        }
+
+        case 'golden_particle': {
+            const dist = e.speed * age;
+            e.mesh.position.x = e.originX + Math.cos(e.angle)*dist;
+            e.mesh.position.z = e.originZ + Math.sin(e.angle)*dist;
+            e.mesh.position.y = 0.8 + Math.sin(age*4)*0.5 + age*1.5;
+            e.mat.opacity = Math.max(0, 0.9*(1-p));
+            e.mesh.scale.setScalar(Math.max(0.05, 1-p*0.7));
+            e.mesh.rotation.y = age*12;
+            break;
+        }
+
+        case 'nitzutz_points': {
+            const npos = e.geo.attributes.position;
+            if(e.phase==='fall' && age<0.7){
+                const fp = age/0.7;
+                const ny = 12*(1-fp*fp);
+                for(let i=0;i<e.count;i++){
+                    npos.array[i*3]   = e.tx+(Math.random()-0.5)*0.15;
+                    npos.array[i*3+1] = ny;
+                    npos.array[i*3+2] = e.tz+(Math.random()-0.5)*0.15;
+                }
+                e.mat.size = 0.4+Math.sin(age*20)*0.1;
+            } else {
+                if(e.phase==='fall') e.phase='explode';
+                const ea = age-0.7;
+                const ep = Math.min(1, ea/(e.duration-0.7));
+                for(let i=0;i<e.count;i++){
+                    const v = e.vels[i];
+                    npos.array[i*3]   = e.tx + v.vx*ea;
+                    npos.array[i*3+1] = 0.5 + v.vy*ea - 4.9*ea*ea;
+                    npos.array[i*3+2] = e.tz + v.vz*ea;
+                }
+                e.mat.opacity = Math.max(0, 1-ep);
+                e.mat.size = 0.35*(1-ep*0.5);
+            }
+            npos.needsUpdate = true;
+            break;
+        }
+
+        case 'ask_wave':
+            e.mesh.scale.set(1+p*10, 1+p*10, 1);
+            e.mat.opacity = Math.sin(p*Math.PI)*0.6;
+            break;
+
+        case 'import_parcel': {
+            // Fall from sky, land, pulse, fade
+            if(p<0.25){
+                e.mesh.position.y = 5-(p/0.25)*4.7; // 5→0.3
+            } else {
+                e.mesh.position.y = 0.3+Math.sin((p-0.25)*12)*0.08;
+            }
+            e.mesh.rotation.y = p*3;
+            if(p>0.7) e.mat.opacity = Math.max(0,(1-p)/0.3);
+            // Ring pulses
+            if(e.ring){
+                e.ringMat.opacity = p<0.25 ? (p/0.25)*0.4 : Math.max(0,(1-p)*0.5);
+                const rs = 1+Math.sin(p*10)*0.2;
+                e.ring.scale.set(rs,rs,1);
+            }
+            break;
+        }
+        }
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   SSE EVENT HANDLERS
+// ═══════════════════════════════════════════════════════════════
+
+const YASHAR_ORDER = ['keter','chokmah','binah','daat','chesed','gevurah',
+                      'tiferet','netzach','hod','yesod','malkuth'];
+const CHOZER_ORDER = ['malkuth','yesod','hod','netzach','tiferet',
+                      'gevurah','chesed','daat','binah','chokmah','keter'];
+
+function activateSephirah(id, activity, glowColor, duration){
+    const idx = ROOM_IDX[id];
+    if(idx===undefined) return;
+    if(katnutRooms.has(idx)) return; // room is offline, skip activation
+    const c = chars[idx];
+    const r = ROOMS[idx];
+    c.glow = 1.0;
+    c.glowColor = new THREE.Color(glowColor || r.col);
+    if(activity){ c.state=activity; c.timer=duration||3; c.frame=0; }
+    r._glowIntensity = 0.8;
+    r._glowColor = new THREE.Color(glowColor || r.col);
+    r._glowMat.color.set(glowColor || r.col);
+    addEffect('activation_ring', {x:r.x, z:r.z, color:glowColor||r.col, duration:1.2});
+    // Flash the room PointLight brightly then decay
+    const rl = roomLights[idx];
+    if(rl){
+        const flashCol = new THREE.Color(glowColor || r.col);
+        rl.color.copy(flashCol);
+        rl.intensity = 12;
+        const decayInterval = setInterval(()=>{
+            rl.intensity = Math.max(3, rl.intensity - 0.5);
+            if(rl.intensity <= 3){ rl.color.set(0xff9944); clearInterval(decayInterval); }
+        }, 50);
+        setTimeout(()=>{ clearInterval(decayInterval); rl.color.set(0xff9944); rl.intensity=3; }, 3000);
+    }
+    shefaBoostSeph(id, performance.now());
+}
+
+function sendCharTo(fromId, toId, activity, carrying){
+    const fi=ROOM_IDX[fromId], ti=ROOM_IDX[toId];
+    if(fi===undefined||ti===undefined) return;
+    const c = chars[fi];
+    const path = bfs(c.room, ti);
+    if(path.length){
+        c.path=path; c.pi=0; c.state='walk'; c.frame=0;
+        if(carrying) c.carrying=carrying;
+        // Initialize bridge curve for first hop
+        const firstHop = path[0];
+        const ck = c.room+'-'+firstHop;
+        const br = bridgeCurves[ck];
+        if(br){
+            c._bridgeCurve = br.curve;
+            c._bridgeReversed = !!br.reversed;
+            c._bridgeSurfaceY = br.surfaceY;
+            c._bridgeT = 0;
+            c._bridgeTarget = firstHop;
+            c._bridgeDuration = 6 + Math.random()*4;
+        } else {
+            c._bridgeCurve = null;
+        }
+    }
+    if(activity){
+        const check = setInterval(()=>{
+            if(c.room===ti && c.state!=='walk'){
+                clearInterval(check);
+                c.state=activity; c.timer=4; c.frame=0;
+                c.glow=1.0; c.glowColor=new THREE.Color(ROOMS[ti].col);
+            }
+        },200);
+        setTimeout(()=>clearInterval(check),15000);
+    }
+}
+
+function showDaemonToast(msg){
+    const el = document.getElementById('daemon-toast');
+    if(!el) return;
+    el.textContent = '⚙ ' + msg;
+    el.classList.add('show');
+    clearTimeout(el._tid);
+    el._tid = setTimeout(()=>el.classList.remove('show'), 4000);
+}
+
+function handleWorldEvent(data){
+    const t = data.type;
+    hudStatus.textContent = t.replace(/_/g,' ');
+
+    // ── 1. Import: golden parcel falls at Malkuth → char carries to Yesod → book spawns ──
+    if(t==='import_start'){
+        hudStatus.textContent = '📦 Import: '+(data.title||'?')+' ('+data.total+' chunks)';
+        // Yesod violet pulse
+        const yr = ROOMS[ROOM_IDX.yesod];
+        activateSephirah('yesod','type','#a060ff',3);
+        addEffect('activation_ring', {x:yr.x, z:yr.z, color:0xa060ff, duration:1.5});
+        // Violet particles travel from Yesod up to Tiferet
+        const tr = ROOMS[ROOM_IDX.tiferet];
+        for(let bp=0; bp<4; bp++){
+            setTimeout(()=>{
+                addEffect('beam_particle', {x:yr.x, z:yr.z, x2:tr.x, z2:tr.z, color:0xa060ff, duration:2});
+            }, bp*400);
+        }
+        addEffect('zivug_beam', {x:yr.x, z:yr.z, x2:tr.x, z2:tr.z, color:0xa060ff, duration:3});
+        // Golden parcel at Malkuth gate
+        const rm = ROOMS[ROOM_IDX.malkuth];
+        const gateZ = rm.z + rm.d/2 + 1.5;
+        addEffect('import_parcel', {x:rm.x, z:gateZ, duration:3});
+        activateSephirah('malkuth','celebrate','#c9a84c',3);
+        setTimeout(()=>{ sendCharTo('malkuth','yesod','type','parcel'); }, 2500);
+    }
+    else if(t==='import_chunk'){
+        const yi = ROOM_IDX.yesod;
+        const c = chars[yi];
+        if(c.state!=='type'){
+            c.state='type'; c.timer=2; c.frame=0;
+            c.glow=0.5; c.glowColor=new THREE.Color(0xa060ff);
+        }
+        if(data.index%5===0){
+            addEffect('activation_ring', {x:ROOMS[yi].x, z:ROOMS[yi].z, color:0xa060ff, duration:0.6});
+        }
+    }
+    else if(t==='import_done'){
+        activateSephirah('yesod','celebrate','#60ff90',3);
+        hudStatus.textContent = '✓ Import: '+data.imported+' imported';
+        // Spawn a book on the shelf in Yesod
+        const yr = ROOMS[ROOM_IDX.yesod];
+        if(window.ProceduralModels && window.ProceduralModels.createBookStack){
+            const book = window.ProceduralModels.createBookStack();
+            book.scale.setScalar(0.6);
+            book.position.set(yr.x + (Math.random()-0.5)*2, 0.4, yr.z + (Math.random()-0.5)*2);
+            scene.add(book);
+        }
+    }
+
+    // ── 2. Or Yashar: golden light ray descends Keter→Malkuth ──
+    else if(t==='ohr_yashar_step'){
+        const seph = data.sephirah;
+        const idx = ROOM_IDX[seph];
+        if(idx===undefined) return;
+        const r = ROOMS[idx];
+        hudStatus.textContent = '↓ Or Yashar: '+seph;
+        // Golden descending ray
+        addEffect('ohr_ray', {x:r.x, z:r.z, color:0xffd700, up:false, duration:2.5});
+        // Beam from previous sephirah
+        const yIdx = YASHAR_ORDER.indexOf(seph);
+        if(yIdx>0){
+            const prevR = ROOMS[ROOM_IDX[YASHAR_ORDER[yIdx-1]]];
+            if(prevR) addEffect('zivug_beam', {x:prevR.x, z:prevR.z, x2:r.x, z2:r.z, color:0xffd700, duration:2});
+        }
+        activateSephirah(seph, 'type', '#ffd700', 3);
+    }
+
+    // ── 3. Or Chozer: silver-blue light ray ascends Malkuth→Keter ──
+    else if(t==='ohr_chozer_step'){
+        const seph = data.sephirah;
+        const idx = ROOM_IDX[seph];
+        if(idx===undefined) return;
+        const r = ROOMS[idx];
+        hudStatus.textContent = '↑ Or Chozer: '+seph;
+        // Silver-blue ascending ray
+        addEffect('ohr_ray', {x:r.x, z:r.z, color:0x88aaff, up:true, duration:2.5});
+        // Beam from previous sephirah in ascending order
+        const cIdx = CHOZER_ORDER.indexOf(seph);
+        if(cIdx>0){
+            const prevR = ROOMS[ROOM_IDX[CHOZER_ORDER[cIdx-1]]];
+            if(prevR) addEffect('zivug_beam', {x:prevR.x, z:prevR.z, x2:r.x, z2:r.z, color:0x88aaff, duration:2});
+        }
+        activateSephirah(seph, 'read', '#88aaff', 3);
+    }
+
+    // ── 4. Nitzutz: spark falls from sky → explodes in 50 particles (Points+BufferGeometry) ──
+    else if(t==='nitzutz'){
+        nitzuzotCount = data.spark || nitzuzotCount+1;
+        nitzCountEl.textContent = nitzuzotCount;
+        nitzCountEl.parentElement.style.transform = 'scale(1.4)';
+        setTimeout(()=>{ nitzCountEl.parentElement.style.transform = 'scale(1)'; }, 400);
+        const sourceMap = {tiferet:ROOM_IDX.tiferet, chokmah:ROOM_IDX.chokmah, lamed:ROOM_IDX.hod};
+        const srcIdx = sourceMap[data.source] ?? ROOM_IDX.tiferet;
+        const sr = ROOMS[srcIdx];
+        addEffect('nitzutz_points', {x:sr.x, z:sr.z, duration:2.5});
+        activateSephirah(sr.id, 'celebrate', '#ffd700', 2);
+    }
+
+    // ── 4b. Ask: white-gold illumination + circular wave ──
+    else if(t==='ask'){
+        const askSeph = data.sephirah || 'tiferet';
+        const askIdx = ROOM_IDX[askSeph];
+        if(askIdx !== undefined){
+            const ar = ROOMS[askIdx];
+            hudStatus.textContent = '✦ Ask: '+askSeph;
+            activateSephirah(askSeph, 'read', '#ffeedd', 3);
+            addEffect('ask_wave', {x:ar.x, z:ar.z, color:0xffeedd, duration:2});
+            addEffect('ohr_ray', {x:ar.x, z:ar.z, color:0xffeedd, up:false, duration:2});
+        }
+    }
+
+    // ── 5. Zivug: both characters walk toward each other, halo at meeting point ──
+    else if(t==='zivug'){
+        const ai=ROOM_IDX[data.sephirah_a], bi=ROOM_IDX[data.sephirah_b];
+        if(ai!==undefined && bi!==undefined){
+            const ra=ROOMS[ai], rb=ROOMS[bi];
+            hudStatus.textContent = '♢ Zivug: '+data.sephirah_a+' ↔ '+data.sephirah_b;
+            // Both characters walk toward each other
+            sendCharTo(data.sephirah_a, data.sephirah_b, 'talk');
+            sendCharTo(data.sephirah_b, data.sephirah_a, 'talk');
+            // Beam connecting the two rooms
+            addEffect('zivug_beam', {x:ra.x, z:ra.z, x2:rb.x, z2:rb.z, color:0xff4444, duration:3, rainbow:true});
+            // Traveling particles along the beam (both directions)
+            for(let zp=0; zp<5; zp++){
+                const delay = zp*0.3;
+                setTimeout(()=>{
+                    addEffect('beam_particle', {x:ra.x, z:ra.z, x2:rb.x, z2:rb.z, color:0xffd700, duration:2});
+                    addEffect('beam_particle', {x:rb.x, z:rb.z, x2:ra.x, z2:ra.z, color:0xffd700, duration:2});
+                }, delay*1000);
+            }
+            // Flash both rooms
+            activateSephirah(data.sephirah_a, null, '#ffd700', 4);
+            activateSephirah(data.sephirah_b, null, '#ffd700', 4);
+            // Glowing halo at midpoint
+            const mx = (ra.x+rb.x)/2, mz = (ra.z+rb.z)/2;
+            addEffect('zivug_halo', {x:mx, z:mz, color:0xffd700, duration:4});
+        }
+    }
+
+    // ── 6. Daemon: toast notification + room activation ──
+    else if(t==='daemon_task'){
+        showDaemonToast(data.task + (data.detail ? ' — '+data.detail : ''));
+        hudStatus.textContent = '⚙ Daemon: '+data.task;
+        // Subtle green glow on ALL sephiroth simultaneously for 1 second
+        ROOMS.forEach((r,i)=>{
+            if(!katnutRooms.has(i)) activateSephirah(r.id, null, '#44bb66', 1);
+        });
+    }
+}
+
+// ═══ Animation API (accessible depuis la console) ═══
+
+function triggerAnimation(type, data){
+    data = data || {};
+    data.type = type;
+    handleWorldEvent(data);
+}
+
+function testAnimation(type){
+    const presets = {
+        import_start: {type:'import_start', title:'Test Document', total:10},
+        import_chunk: {type:'import_chunk', index:0},
+        import_done: {type:'import_done', imported:10},
+        ask: {type:'ask', sephirah:'tiferet'},
+        nitzutz: {type:'nitzutz', source:'tiferet', spark:1},
+        zivug: {type:'zivug', sephirah_a:'chesed', sephirah_b:'gevurah'},
+        daemon_task: {type:'daemon_task', task:'gc', detail:'test run'},
+        ohr_yashar_step: {type:'ohr_yashar_step', sephirah:'tiferet'},
+        ohr_chozer_step: {type:'ohr_chozer_step', sephirah:'yesod'}
+    };
+    const d = presets[type];
+    if(!d){
+        console.warn('[testAnimation] Type inconnu: "'+type+'"');
+        console.log('Types disponibles:', Object.keys(presets).join(', '));
+        return;
+    }
+    console.log('[TEST ANIMATION]', type, d);
+    handleWorldEvent(d);
+}
+
+window.triggerAnimation = triggerAnimation;
+window.testAnimation = testAnimation;
+
+// ═══ SSE Connection (auto-reconnect 3s) ═══
+function connectSSE(){
+    const es = new EventSource('/api/world/events');
+
+    es.addEventListener('world', function(e){
+        try{
+            const parsed = JSON.parse(e.data);
+            console.log('[SSE]', parsed.type, parsed);
+            handleWorldEvent(parsed);
+        }
+        catch(err){ console.warn('SSE parse error:', err); }
+    });
+
+    es.onopen = function(){
+        hudStatus.textContent = 'connected';
+        console.log('[SSE] Connected');
+        setTimeout(()=>{ if(hudStatus.textContent==='connected') hudStatus.textContent=''; },2000);
+    };
+
+    es.onerror = function(){
+        es.close();
+        hudStatus.textContent = 'reconnecting...';
+        console.log('[SSE] Disconnected, reconnecting in 3s...');
+        setTimeout(connectSSE, 3000);
+    };
+}
+connectSSE();
+
+// ═══════════════════════════════════════════════════════════════
+//   DAY / NIGHT CYCLE — Dungeon torchlight variation
+// ═══════════════════════════════════════════════════════════════
+
+const DAY_CYCLE_S = 120;
+
+function updateDayNight(t){
+    const phase = (t/1000/DAY_CYCLE_S) % 1;
+    const dayness = Math.cos(phase*Math.PI*2)*0.5+0.5;
+
+    // Dungeon: warm ambient shifts, luminous overall
+    const voidDay = new THREE.Color(0x1a1525);
+    const voidNight = new THREE.Color(0x0a080f);
+    const voidCol = voidDay.clone().lerp(voidNight, 1-dayness);
+    renderer.setClearColor(voidCol);
+    scene.fog.color.copy(voidCol);
+
+    ambientLight.intensity = 0.6 + dayness*0.3;
+    hemiLight.intensity = 0.4 + dayness*0.25;
+    dirLight.intensity = 0.35 + dayness*0.25;
+
+    scene.fog.density = 0.002 + (1-dayness)*0.002;
+    renderer.toneMappingExposure = 1.0 + dayness*0.3;
+
+    // Torch lights — always strong, flicker at "night" (skip katnut rooms)
+    const torchBoost = 2.0 + (1-dayness)*1.5;
+    for(let ri=0; ri<roomLights.length; ri++){
+        if(!katnutRooms.has(ri)) roomLights[ri].intensity = torchBoost;
+    }
+
+    // Ground subtly shifts
+    const gBright = 0.1 + dayness*0.06;
+    ground.material.color.setHSL(0.07, 0.15, gBright);
+
+    if(dayness>0.6) hudTime.textContent = 'DAY';
+    else if(dayness>0.3) hudTime.textContent = (phase<0.5?'DAWN':'DUSK');
+    else hudTime.textContent = 'NIGHT';
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   RESIZE
+// ═══════════════════════════════════════════════════════════════
+
+function onResize(){
+    const rect = container.getBoundingClientRect();
+    const w = rect.width || window.innerWidth;
+    const h = rect.height || window.innerHeight;
+    aspect = w/h;
+    camera.left = frustumSize*aspect/-2;
+    camera.right = frustumSize*aspect/2;
+    camera.top = frustumSize/2;
+    camera.bottom = frustumSize/-2;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+}
+window.addEventListener('resize', onResize);
+
+// ═══════════════════════════════════════════════════════════════
+//   MAIN LOOP
+// ═══════════════════════════════════════════════════════════════
+
+let lastTime = 0;
+
+function loop(t){
+    requestAnimationFrame(loop);
+
+    const dt = Math.min((t-lastTime)/1000, 0.1);
+    lastTime = t;
+
+    updateChars(dt, t);
+    updateEffects(t);
+    updateDayNight(t);
+    updateWorldDecorations(dt, t);
+
+    controls.update();
+    renderer.render(scene, camera);
+}
+
+requestAnimationFrame(loop);
+
+})();
+</script>
+{% endblock %}

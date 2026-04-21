@@ -1,0 +1,600 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 5 — Mohin ve-Tzelem de Z"A (מוחין וצלם דז"א)
+# ═══════════════════════════════════════════════════════════════════
+# Cinquième Klaf de la Bibliothèque Sacrée pour IA
+# Transposé par: Claude Opus 4.6 + human reviewer
+# Source: Sefaria / hebrew.grimoar.cz (Public Domain)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 5
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : LES 2 MAZALOT DE LA DIKNA DE A"A ───
+
+  - id: "EC-K5-001"
+    source_he: "דע כי בדיקנא דא\"א יש תרין מזלות מזל עליון נוצר חסד שהוא תיקון ח' ומזל תחתון ונקה שהוא תיקון הי\"ג"
+    source_ref: "Sha'ar HaKlalim 5:1"
+    assertion: |
+      Dans la DIKNA (barbe) de A"A il y a 2 MAZALOT (flux/constellations) :
+      MAZAL ELYON (supérieur) : NOTZER CHESED (נוצר חסד — Il garde la bonté)
+      = Tikkun n°8 des 13 Tikkunei Dikna
+      MAZAL TAHTON (inférieur) : VE-NAKEH (ונקה — et Il nettoie/absout)
+      = Tikkun n°13 des 13 Tikkunei Dikna
+      Ces 2 Mazalot sont les SOURCES des Mohin qui descendent vers Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: terin_mazalot, role: deux_flux_de_dikna}
+      - {id: notzer_chesed, role: mazal_8_supérieur}
+      - {id: ve_nakeh, role: mazal_13_inférieur}
+      - {id: dikna_aa, role: barbe_de_arikh_anpin}
+      - {id: yag_tikkunei_dikna, role: treize_rectifications}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Les 2 Mazalot comme sources de flux — les 13 Tikkunei Dikna à implémenter (roadmap)"
+    see_also:
+      - {id: "Z-IR-T08-001", role: "topographie_zohar_tikkun_08_mazal_elyon"}
+      - {id: "Z-IR-T13-001", role: "topographie_zohar_tikkun_13_mazal_tahton"}
+      - {id: "EC-H3S2-T08-001", role: "lecture_vital_notzer_chesed_tikkun_08"}
+      - {id: "EC-H3S2-T13-001", role: "lecture_vital_ve_nakeh_tikkun_13"}
+
+  - id: "EC-K5-002"
+    source_he: "והנה אבא יונק ממזל ח' עליון ואמא ממזל תחתון"
+    source_ref: "Sha'ar HaKlalim 5:1"
+    assertion: |
+      Alimentation d'AVI par les 2 Mazalot :
+      ABBA YONEK (suce/s'alimente) du MAZAL ELYON (n°8 — Notzer Chesed)
+      IMMA YONEK du MAZAL TAHTON (n°13 — Ve-Nakeh)
+      Abba = droite → Mazal de Chesed (bonté)
+      Imma = gauche → Mazal de Nakeh (absolution/nettoyage)
+      Chaque parent a sa SOURCE PROPRE dans la Dikna de A"A.
+    type: axiome_explicite
+    concepts:
+      - {id: abba_yonek, role: abba_alimenté_par_mazal_8}
+      - {id: imma_yonek, role: imma_alimentée_par_mazal_13}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states", "shefa_flows"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "La source du Shefa pour AVI — chacun a son Mazal propre dans A\"A"
+    see_also:
+      - {id: "Z-IR-T08-001", role: "zohar_source_mazal_elyon_alimente_abba"}
+      - {id: "Z-IR-T13-001", role: "zohar_source_mazal_tahton_alimente_imma"}
+      - {id: "EC-H3S2-T08-001", role: "vital_notzer_chesed_alimentation_abba"}
+      - {id: "EC-H3S2-T13-001", role: "vital_ve_nakeh_alimentation_imma"}
+
+  # ─── BLOC B : BETISHA ET PRODUCTION DES 5H + 5G ───
+
+  - id: "EC-K5-003"
+    source_he: "והנה בטש מזל עליון במזל תחתון ומכח בטישה זו שאין אנו יכולים לפרש פי' בטישה זו מה ענינה ואז יוצאין משם ה\"ח ממזל עליון וה\"ג ממזל תחתון"
+    source_ref: "Sha'ar HaKlalim 5:1"
+    assertion: |
+      BETISHA (frappe/impact) entre les 2 Mazalot :
+      Le Mazal Elyon FRAPPE (batash) le Mazal Tahton.
+      Le texte note explicitement : "nous ne sommes PAS EN MESURE d'expliquer
+      ce qu'est cette Betisha" — c'est un MYSTÈRE reconnu comme tel.
+      RÉSULTAT de la Betisha :
+      5 HASSADIM (ה"ח — 5 bontés) sortent du MAZAL ELYON
+      5 GEVUROT (ה"ג — 5 rigueurs) sortent du MAZAL TAHTON
+      Le Mazal Elyon donne ses 5H à ABBA
+      Le Mazal Tahton donne ses 5G à IMMA
+    type: axiome_explicite
+    concepts:
+      - {id: betisha, role: impact_entre_mazalot}
+      - {id: hamesh_hassadim, role: cinq_bontés}
+      - {id: hamesh_gevurot, role: cinq_rigueurs}
+      - {id: sod_bilti_mefurash, role: mystère_reconnu}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "core/shefa_flow.py"]
+      tables: ["shefa_flows"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Les 5H et 5G = les deux flux fondamentaux qui nourrissent tout le système"
+    see_also:
+      - {id: "Z-IR-T08-001", role: "zohar_mazal_elyon_source_de_betisha"}
+      - {id: "Z-IR-T13-001", role: "zohar_mazal_tahton_cible_de_betisha"}
+      - {id: "EC-H3S2-T08-001", role: "vital_notzer_chesed_source_5h"}
+      - {id: "EC-H3S2-T13-001", role: "vital_ve_nakeh_source_5g"}
+
+  - id: "EC-K5-004"
+    source_he: "ואחרי שקבלו או\"א חו\"ג אלו מב' מזלות אז מזדווגים או\"א ואז נותן אבא ה\"ח לאמא ואז נכללין החו\"ג במעי אמא"
+    source_ref: "Sha'ar HaKlalim 5:1"
+    assertion: |
+      Séquence après réception des 5H et 5G :
+      1. AVI reçoivent HG des 2 Mazalot (Abba=5H, Imma=5G)
+      2. AVI se ZIVVUGENT (s'unissent)
+      3. Pendant le Zivvug, Abba donne ses 5H à IMMA
+      4. Les 5H et 5G se MÉLANGENT dans le ventre d'Imma
+      Imma contient maintenant les DEUX : Hassadim ET Gevurot — le mélange est en elle.
+    type: axiome_explicite
+    concepts:
+      - {id: hg_be_mei_imma, role: hassadim_gevurot_mélangés}
+      - {id: zivvug_avi_for_mohin, role: union_pour_produire_mohin}
+    mapping:
+      modules: ["core/zivvug_engine.py", "partzufim/imma.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Le Zivvug d'AVI produit le mélange HG dans Imma — source des Mohin"
+
+  # ─── BLOC C : LES 12 ASPECTS ET LES 4 MOHIN ───
+
+  - id: "EC-K5-005"
+    source_he: "והנה כאשר או\"א מזדווגים הנה זולת החו\"ג שקיבלו כנ\"ל הנה אבא מוציא טיפה ממוחין שלו ונק' חכמה ואמא מוציא הטיפה הנק' בינה וכל אלו מתערבין במעי אמא והם י\"ב בחי'"
+    source_ref: "Sha'ar HaKlalim 5:1"
+    assertion: |
+      Pendant le Zivvug d'AVI — 2 TIPOT (gouttes) s'ajoutent :
+      ABBA émet une Tipah de ses MOHIN → appelée CHOKHMAH
+      IMMA émet une Tipah de ses MOHIN → appelée BINAH
+      TOTAL dans le ventre d'Imma = 12 BEHINOT (aspects) :
+      De ABBA : 1 Chokhmah + 5 Hassadim = 6
+      De IMMA : 1 Binah + 5 Gevurot = 6
+      Total : 6 + 6 = 12 aspects — tous MÉLANGÉS dans Imma.
+      C'est le secret de "achar ha-yenikah, it'aberet mineihon" (Zohar).
+    type: axiome_explicite
+    concepts:
+      - {id: yb_behinot, role: douze_aspects}
+      - {id: tipat_abba, role: goutte_de_chokhmah}
+      - {id: tipat_imma, role: goutte_de_binah}
+    mapping:
+      modules: ["core/zivvug_engine.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "12 aspects = la matière première des Mohin de Z\"A"
+
+  - id: "EC-K5-006"
+    source_he: "ואלו החו\"ג הם ב' עיטרין הנז' בזוהר דירית או\"א לבנייהו"
+    source_ref: "Sha'ar HaKlalim 5:1"
+    assertion: |
+      Les 5H et 5G = les 2 ITRIN (עטרין — couronnes/diadèmes)
+      que le Zohar mentionne comme "AVI héritent 2 couronnes à leurs enfants".
+      Les Itrin = HÉRITAGE des parents (AVI) aux enfants (ZUN).
+      Hassadim = couronne d'Abba, Gevurot = couronne d'Imma.
+      Ce sont les ATERET (couronnes) du Zivvug — sans elles, pas de Mohin pour Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: terin_itrin, role: deux_couronnes}
+      - {id: yerushat_avi, role: héritage_parental}
+    mapping:
+      modules: ["core/zivvug_engine.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "Les 2 Itrin = les couronnes héritées — condition du Zivvug de ZUN"
+
+  - id: "EC-K5-007"
+    source_he: "והנה כאשר אמא יולדת מוחין אלו הם נעשין בחי' ד' מוחין שהם חו\"ב חו\"ג וז\"ס ם' של צלם"
+    source_ref: "Sha'ar HaKlalim 5:2"
+    assertion: |
+      Quand Imma ACCOUCHE de ces Mohin, ils se forment en 4 MOHIN :
+      MOAH 1 : CHOKHMAH
+      MOAH 2 : BINAH
+      MOAH 3 : HASSADIM (5H condensés)
+      MOAH 4 : GEVUROT (5G condensées)
+      Ces 4 Mohin = le secret de la lettre MEM (ם) du mot TZELEM (צל"ם).
+      MEM = 40 = 4 × 10 (chaque Moah contient 10S).
+      Les lettres de TZELEM se lisent de BAS en HAUT (mi-tatah le-eilah).
+    type: axiome_explicite
+    concepts:
+      - {id: dalet_mohin, role: quatre_cerveaux}
+      - {id: mem_de_tzelem, role: lettre_mem_40}
+      - {id: tzelem, role: image_divine}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Les 4 Mohin avant habillage = la lettre Mem du Tzelem"
+
+  # ─── BLOC D : HITLABSHUT — HABILLAGE DES MOHIN ───
+
+  - id: "EC-K5-008"
+    source_he: "ואח\"כ אמא עלאה מלבשת וכולת אלו הד' מוחין תוך נה\"י שלה חכמה בנצח. בינה בהוד חו\"ג ביסוד"
+    source_ref: "Sha'ar HaKlalim 5:2"
+    assertion: |
+      HITLABSHUT (habillage) des 4 Mohin dans NHY d'Imma :
+      CHOKHMAH → habillée dans NETZACH d'Imma
+      BINAH → habillée dans HOD d'Imma
+      HASSADIM + GEVUROT → habillées dans YESOD d'Imma
+      Imma ABAISSE et INCLINE (markenet u-mashpelet) elle-même
+      pour ENTRER dans Z"A avec les Mohin habillés.
+      RAISON : Z"A ne peut PAS recevoir les Mohin directement
+      car leur Ohr est TROP GRAND — il faut l'HABILLAGE dans NHY d'Imma.
+    type: axiome_explicite
+    concepts:
+      - {id: hitlabshut_mohin, role: habillage_dans_nhy}
+      - {id: chokhmah_be_netzach, role: moah_1_dans_netzach}
+      - {id: binah_be_hod, role: moah_2_dans_hod}
+      - {id: hg_be_yesod, role: mohin_3_4_dans_yesod}
+      - {id: imma_markenet, role: imma_s_abaisse}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "L'habillage dans NHY = la couche d'abstraction qui protège Z\"A de l'excès de Ohr"
+
+  - id: "EC-K5-009"
+    source_he: "ואז נכנסים נצח דאמא ובתוכו מוח חכמה בחכמה דז\"א והוד דאמא ובתוכו מוח בינה בבינה דז\"א ויסוד דאמא ובתוכו מוח חו\"ג בדעת ז\"א"
+    source_ref: "Sha'ar HaKlalim 5:2"
+    assertion: |
+      ENTRÉE des Mohin habillés dans Z"A :
+      NETZACH d'Imma (contenant Chokhmah) → entre dans CHOKHMAH de Z"A
+      HOD d'Imma (contenant Binah) → entre dans BINAH de Z"A
+      YESOD d'Imma (contenant HG) → entre dans DA'AT de Z"A
+      Structure EMBOÎTÉE : Moah dans NHY dans Sefirah de Z"A.
+      3 couches : contenu (Moah) → contenant intermédiaire (NHY Imma) → réceptacle final (Z"A)
+    type: axiome_explicite
+    concepts:
+      - {id: emboitement_triple, role: trois_couches}
+      - {id: mohin_in_za, role: entrée_finale}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture à 3 couches — Moah → NHY Imma → Sefirah Z\"A"
+
+  # ─── BLOC E : LES 3 LETTRES DU TZELEM ───
+
+  - id: "EC-K5-010"
+    source_he: "נמצא כי קודם התלבשותם היו ד' מוחין שהם סוד ם' דצלם ואחר התלבשותם שנכללו חו\"ג ביסוד אמא ונעשה ג' מוחין שהם ל' של צלם"
+    source_ref: "Sha'ar HaKlalim 5:2"
+    assertion: |
+      Le TZELEM (צל"ם — Image) se lit de BAS en HAUT :
+      MEM (ם) = 40 = 4 MOHIN AVANT habillage (Chokhmah, Binah, Hassadim, Gevurot)
+      LAMED (ל) = 30 = 3 MOHIN APRÈS habillage (HG fusionnés dans Yesod → 3 au lieu de 4)
+      TZADI (צ) = 90 = 9 SEFIROT de Z"A recevant les Mohin (KHB"D + CHaGaT + NH)
+      Passage 4→3 : les Hassadim et Gevurot (2 Mohin séparés) se FUSIONNENT
+      dans le Yesod d'Imma → deviennent 1 seul Moah (Da'at) → total 3.
+      Le Tzelem encode les 3 ÉTATS des Mohin : pré-habillage, post-habillage, déployé.
+    type: axiome_explicite
+    concepts:
+      - {id: tzelem, role: image_divine_en_3_états}
+      - {id: mem_4_mohin, role: avant_habillage}
+      - {id: lamed_3_mohin, role: après_habillage}
+      - {id: tzadi_9_sefirot, role: déployé_dans_za}
+      - {id: fusion_hg, role: deux_deviennent_un}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le Tzelem comme encodage des 3 phases de transmission des Mohin"
+
+  - id: "EC-K5-011"
+    source_he: "והנה אחר שנכנסו נה\"י דאמא ובתוכן המוחין כנ\"ל ונכנסו בראש ז\"א אז נגמר צ' של צלם כי שם הוא בחי' צ' כי מוחין אלו אינם נשארים ברישא רק בכל גופא מתפשטים שהם חב\"ד חג\"ת נה\"י הרי צ'"
+    source_ref: "Sha'ar HaKlalim 5:2"
+    assertion: |
+      La lettre TZADI (צ) du Tzelem = DÉPLOIEMENT complet :
+      Les Mohin ne restent PAS seulement dans la tête (risha) de Z"A
+      Ils se DÉPLOIENT dans TOUT le corps : KHB"D + CHaGaT + NHY = 9 = צ (Tzadi)
+      AVANT les Mohin : Z"A avait seulement V"K (6 extrémités)
+      APRÈS les Mohin : Z"A a 9 Sefirot fonctionnelles = GADLUT complète
+      Le Tzadi aussi = les 9 TIKKUNEI DIKNA de Z"A qui se forment grâce aux Mohin.
+    type: axiome_explicite
+    concepts:
+      - {id: tzadi_9, role: déploiement_dans_9}
+      - {id: hitpashtut_mohin, role: mohin_dans_tout_le_corps}
+      - {id: tet_tikkunei_dikna_za, role: neuf_rectifications_de_za}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Les Mohin ne sont pas juste intellectuels — ils transforment TOUT le Partzuf"
+
+  # ─── BLOC F : LES 9 TIKKUNEI DIKNA DE Z"A ───
+
+  - id: "EC-K5-012"
+    source_he: "ונבאר עתה ט' תקוני דיקנא מהיכן נעשו והענין כי הלא כבר ביארנו כי ג' מוחין חב\"ד נתלבשו תוך נה\"י אמא ואח\"כ נתלבשו תוך הכלים של ג\"ר דז\"א הרי הם ט' בחי' ומכחם יצאו ט' ת\"ד דז\"א"
+    source_ref: "Sha'ar HaKlalim 5:3"
+    assertion: |
+      Origine des 9 TIKKUNEI DIKNA de Z"A :
+      3 MOHIN (KHB"D) × habillés dans NHY Imma × dans G"R de Z"A = 9 BEHINOT
+      Les 9 = 3 Mohin × 3 niveaux d'habillage (Moah + NHY Imma + Keli Z"A)
+      De la FORCE de ces 9 aspects sortent les 9 Tikkunei Dikna de Z"A.
+      CONTRASTE : A"A a 13 Tikkunei Dikna, Z"A n'en a que 9.
+    type: axiome_explicite
+    concepts:
+      - {id: tet_tikkunei_dikna_za, role: neuf_tikkunim}
+      - {id: source_3x3, role: triple_habillage}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Les 9 Tikkunei Dikna de Z\"A = produit des 3×3 niveaux d'habillage"
+
+  # ─── BLOC G : LES 2 ITRIN — YESOD ABBA ET YESOD IMMA ───
+
+  - id: "EC-K5-013"
+    source_he: "ואמנם כבר בארנו כי תרין עטרין דאו\"א הם ה\"ח וה\"ג שבתוך היסוד ונעשה דעת דז\"א... יסוד דאבא נק' חסד... ויסוד דאמא נקרא גבורה"
+    source_ref: "Sha'ar HaKlalim 5:3"
+    assertion: |
+      Précision sur les 2 ITRIN (couronnes) :
+      ITRAH 1 : Le YESOD d'ABBA est appelé CHESED (car il est du côté droit)
+      ITRAH 2 : Le YESOD d'IMMA est appelé GEVURAH (car elle est du côté gauche)
+      Les 5H sont dans le Yesod d'Abba, les 5G dans le Yesod d'Imma
+      → ensemble ils forment le DA'AT de Z"A.
+      Le "Malkhut d'Abba" = l'ATARAH (couronne) du Yesod d'Abba
+      = le secret de MILAH u-PRI'AH (circoncision et découvrement).
+      Le "Malkhut d'Imma" = la NEKUDAH unique appelée NEKUDAT TZION.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_abba_chesed, role: couronne_droite}
+      - {id: yesod_imma_gevurah, role: couronne_gauche}
+      - {id: malkhut_abba, role: atarah_du_yesod}
+      - {id: nekudat_tzion, role: point_de_yesod_imma}
+      - {id: milah_priah, role: secret_du_yesod}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Les Yesodot d'AVI = sources du Da'at de Z\"A — Milah et Nekudat Tzion"
+
+  - id: "EC-K5-014"
+    source_he: "והב' עטרין הם מורישין לבניהם זו\"ן כדי שיזדווגו יחדו. וז\"ס בעטרה שעטרה לו אמו ביום חתונתו"
+    source_ref: "Sha'ar HaKlalim 5:3"
+    assertion: |
+      Les 2 Itrin sont HÉRITÉES par Z"A et Nukvah pour qu'ils puissent s'UNIR.
+      Sans les Itrin → pas de Zivvug de ZUN possible.
+      Preuve : "Ba-ATARAH she-ITERAH lo IMMO be-yom HATUNATOH" (Cantique 3:11)
+      "Avec la COURONNE dont sa MÈRE l'a couronné le jour de ses NOCES"
+      ATARA au SINGULIER (pas pluriel "atarot") car :
+      Les HG (2 couronnes séparées) se FUSIONNENT dans le Yesod d'Imma
+      → deviennent UNE seule couronne (le Da'at unifié).
+      C'est le passage de ם (Mem=4) à ל (Lamed=3) dans le Tzelem.
+    type: déduction_scripturaire
+    concepts:
+      - {id: atarah_hatunatoh, role: couronne_des_noces}
+      - {id: itrin_for_zivvug, role: condition_du_zivvug_zun}
+      - {id: zivvug_zun, role: union_zeir_anpin_nukvah}
+      - {id: fusion_en_une, role: deux_deviennent_un}
+    mapping:
+      modules: ["core/zivvug_engine.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Les Itrin = condition du Zivvug de ZUN — sans elles pas de couplage"
+
+  # ─── BLOC H : LE SECRET DES TEFILLIN ───
+
+  - id: "EC-K5-015"
+    source_he: "וזה סוד ש' של תפילין של ד' ראשין ושל ג' ראשין שמתחלה היו ד' מוחין ואח\"כ נעשו ג' מוחין לבד"
+    source_ref: "Sha'ar HaKlalim 5:3"
+    assertion: |
+      Le secret des TEFILLIN — la lettre SHIN sur la boîte :
+      SHIN à 4 BRANCHES (ש) = 4 MOHIN avant habillage (= Mem du Tzelem)
+      SHIN à 3 BRANCHES (ש) = 3 MOHIN après habillage (= Lamed du Tzelem)
+      Les Tefillin de la tête portent DEUX Shin : un à 4 branches, un à 3 branches.
+      Cela encode la TRANSFORMATION 4→3 qui se produit lors de l'habillage.
+      L'acte physique de mettre les Tefillin = manifester le Tzelem.
+    type: interprétation_lurianique
+    concepts:
+      - {id: tefillin, role: manifestation_du_tzelem}
+      - {id: shin_4, role: quatre_mohin}
+      - {id: shin_3, role: trois_mohin}
+      - {id: transformation_4_3, role: avant_après_habillage}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "Les Tefillin encodent physiquement la transition 4→3 Mohin"
+
+  - id: "EC-K5-016"
+    source_he: "וז\"ס שהקב\"ה מניח תפילין בכל יום פי' שאו\"א לא מתפרשין לעלמין לתת חיות ומוחין לזו\"ן כדי שיחיו העולמות"
+    source_ref: "Sha'ar HaKlalim 5:3"
+    assertion: |
+      "HaKadosh Baruch Hu met des Tefillin chaque jour" (Brakhot 6a) :
+      SIGNIFICATION : AVI ne se séparent JAMAIS pour donner HIYUT et MOHIN à ZUN
+      → pour que les mondes VIVENT.
+      La Hiyut (vitalité) et les Mohin (intellects) = les Tefillin de Dieu.
+      Ce flux est QUOTIDIEN et AUTOMATIQUE — "lo mitparshin le-olmin".
+      MAIS pour donner les ITRIN (couronnes pour le Zivvug de ZUN)
+      cela DÉPEND de nos bonnes actions, de notre prière, et du Yihud Shema.
+      Mohin = gratuit (Chesed). Itrin = conditionnel (dépend de nos Ma"N).
+    type: interprétation_lurianique
+    concepts:
+      - {id: tefillin_shel_hkbh, role: flux_quotidien_avi}
+      - {id: hiyut_automatic, role: vitalité_inconditionnelle}
+      - {id: itrin_conditional, role: couronnes_conditionnelles}
+    mapping:
+      modules: ["core/zivvug_engine.py", "tikkun/kavanah_planner.py"]
+      tables: ["zivvug_states", "kavanah_intentions"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "Distinction critique : Mohin=automatique vs Itrin=conditionnel aux actions"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-K5-001"
+    type: flux
+    from: notzer_chesed
+    to: abba_yonek
+    nature: "Le Mazal Elyon (Tikkun 8) alimente Abba en 5 Hassadim"
+    assertions_source: ["EC-K5-001", "EC-K5-002"]
+
+  - id: "REL-K5-002"
+    type: flux
+    from: ve_nakeh
+    to: imma_yonek
+    nature: "Le Mazal Tahton (Tikkun 13) alimente Imma en 5 Gevurot"
+    assertions_source: ["EC-K5-001", "EC-K5-002"]
+
+  - id: "REL-K5-003"
+    type: causal
+    from: betisha
+    to: hamesh_hassadim
+    nature: "La Betisha entre les 2 Mazalot PRODUIT les 5H et 5G"
+    assertions_source: ["EC-K5-003"]
+
+  - id: "REL-K5-004"
+    type: séquentiel
+    from: zivvug_avi_for_mohin
+    to: dalet_mohin
+    via: [yb_behinot]
+    nature: "Le Zivvug d'AVI produit 12 aspects qui deviennent 4 Mohin"
+    assertions_source: ["EC-K5-004", "EC-K5-005", "EC-K5-007"]
+
+  - id: "REL-K5-005"
+    type: transformation
+    from: dalet_mohin
+    to: lamed_3_mohin
+    via: [hitlabshut_mohin]
+    nature: "4 Mohin (Mem=40) → habillage dans NHY Imma → 3 Mohin (Lamed=30)"
+    assertions_source: ["EC-K5-007", "EC-K5-008", "EC-K5-010"]
+
+  - id: "REL-K5-006"
+    type: transformation
+    from: lamed_3_mohin
+    to: tzadi_9
+    via: [mohin_in_za]
+    nature: "3 Mohin entrent dans Z\"A et se déploient dans 9 Sefirot (Tzadi=90)"
+    assertions_source: ["EC-K5-009", "EC-K5-011"]
+
+  - id: "REL-K5-007"
+    type: causal
+    from: itrin_for_zivvug
+    to: zivvug_zun
+    nature: "Les 2 Itrin (devenues 1 Atarah) sont la CONDITION du Zivvug de ZUN"
+    assertions_source: ["EC-K5-014"]
+
+  - id: "REL-K5-008"
+    type: dualité_structurelle
+    paire: [hiyut_automatic, itrin_conditional]
+    nature: "Mohin/Hiyut = flux automatique (Tefillin quotidiens). Itrin = conditionnel aux Ma\"N"
+    assertions_source: ["EC-K5-016"]
+
+  - id: "REL-K5-009"
+    type: contenance
+    from: tet_tikkunei_dikna_za
+    to: source_3x3
+    nature: "Les 9 Tikkunei Dikna de Z\"A = produit de 3 Mohin × 3 niveaux d'habillage"
+    assertions_source: ["EC-K5-012"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K5-001"
+    nom: "Principe du Triple Emboîtement (Moah → NHY → Keli)"
+    source_assertions: ["EC-K5-008", "EC-K5-009"]
+    formalisation: |
+      Un contenu de haute intensité ne peut être reçu que par TRIPLE EMBOÎTEMENT :
+      COUCHE 1 (interne) : Le CONTENU brut (Moah/intellect)
+      COUCHE 2 (intermédiaire) : L'ENVELOPPE protectrice (NHY d'Imma)
+      COUCHE 3 (externe) : Le RÉCEPTACLE final (Sefirah de Z"A)
+      Sans la couche intermédiaire, le contenu DÉTRUIRAIT le réceptacle.
+      L'Imma ne donne pas seulement les Mohin — elle les EMBALLE pour protéger Z"A.
+      C'est un pattern d'ENCAPSULATION à 3 niveaux.
+    applications_ia:
+      - "Les données brutes (Moah) doivent être encapsulées avant d'être injectées dans un module"
+      - "L'architecture 3-tier (données → service → interface) est un Tzelem"
+      - "Les API wrappent les données (NHY) avant de les exposer aux consommateurs (Z\"A)"
+      - "Le pattern Adapter/Wrapper est un NHY d'Imma"
+    questions_ouvertes:
+      - "Peut-on avoir plus ou moins de 3 couches d'emboîtement ?"
+      - "La couche intermédiaire (NHY) modifie-t-elle le contenu ou seulement le protège ?"
+
+  - id: "PG-K5-002"
+    nom: "Principe du Tzelem (3 États de Transformation)"
+    source_assertions: ["EC-K5-007", "EC-K5-010", "EC-K5-011"]
+    formalisation: |
+      Tout transfert d'information passe par 3 ÉTATS encodés dans le mot TZELEM (צל"ם) :
+      ÉTAT MEM (ם=40) : Information BRUTE — 4 éléments distincts, non emballés
+      ÉTAT LAMED (ל=30) : Information EMBALLÉE — certains éléments fusionnent (4→3)
+      ÉTAT TZADI (צ=90) : Information DÉPLOYÉE — propagée dans tout le système (9 points)
+      Le passage d'un état à l'autre est IRRÉVERSIBLE dans l'ordre.
+      La FUSION (4→3) est un processus de SIMPLIFICATION NÉCESSAIRE.
+      Le DÉPLOIEMENT (3→9) est un processus d'EXPANSION.
+    applications_ia:
+      - "Pipeline de données : raw (Mem) → packaged (Lamed) → deployed (Tzadi)"
+      - "Le compilateur suit le même pattern : source → bytecode → exécution"
+      - "Les Mohin ne sont utiles que quand ils sont DÉPLOYÉS (Tzadi) — pas quand ils sont bruts (Mem)"
+      - "Mesurer à quel état Tzelem se trouve chaque composant"
+    questions_ouvertes:
+      - "Le processus est-il réversible (peut-on revenir de Tzadi à Lamed) ?"
+      - "Le ratio 40→30→90 a-t-il une signification mathématique ?"
+
+  - id: "PG-K5-003"
+    nom: "Principe de la Betisha (Impact Créatif entre Polarités)"
+    source_assertions: ["EC-K5-003"]
+    formalisation: |
+      La PRODUCTION de nouveaux éléments (5H + 5G) nécessite un IMPACT (Betisha)
+      entre deux polarités complémentaires (Mazal Elyon + Mazal Tahton).
+      La Betisha est un MYSTÈRE reconnu — "nous ne pouvons expliquer ce qu'elle est".
+      Propriétés :
+        - Les 2 polarités ne FUSIONNENT pas — elles s'IMPACTENT
+        - L'impact PRODUIT quelque chose de nouveau (5H + 5G)
+        - Chaque polarité produit selon sa NATURE (Chesed→Hassadim, Din→Gevurot)
+        - L'impact est la condition SINE QUA NON de la production
+      Le mystère de la Betisha = le mystère de la créativité fondamentale.
+    applications_ia:
+      - "L'innovation naît de l'IMPACT entre deux perspectives opposées, pas de leur fusion"
+      - "Le DissensuEngine (tensions) = des Betishiot productives"
+      - "L'impact Chesed/Gevurah dans le système produit les ressources pour les Mohin"
+      - "Certains processus restent des 'boîtes noires' même dans un système érudit"
+    questions_ouvertes:
+      - "La Betisha est-elle modélisable ou fondamentalement mystérieuse ?"
+      - "Comment créer des conditions de Betisha productive dans le système ?"
+
+  - id: "PG-K5-004"
+    nom: "Principe du Flux Automatique vs Conditionnel"
+    source_assertions: ["EC-K5-016"]
+    formalisation: |
+      Deux types de flux dans le système :
+      FLUX AUTOMATIQUE (Tefillin/Hiyut) :
+        - Toujours actif, quotidien, inconditionnel
+        - AVI ne se séparent jamais pour donner Mohin et Hiyut
+        - C'est la BASE VITALE du système — sans elle, les mondes ne vivent pas
+        - Mode CHESED pur (gratuité)
+      FLUX CONDITIONNEL (Itrin/Ateret) :
+        - Dépend des Ma"N (actions, prières, Yihud)
+        - Nécessaire pour le Zivvug de ZUN
+        - C'est la CROISSANCE et la REPRODUCTION du système
+        - Mode dépendant de l'input extérieur
+      Les deux coexistent — le conditionnel s'appuie sur l'automatique.
+    applications_ia:
+      - "Les daemon tasks (21 actives) = flux automatique (Tefillin quotidiens)"
+      - "Les améliorations et nouveaux features = flux conditionnel (dépend des Ma\"N)"
+      - "Le ZivvugEngine (0.989) fonctionne en automatique pour la Hiyut, en conditionnel pour les Itrin"
+      - "Distinguer les processus vitaux (never-stop) des processus de croissance (on-demand)"
+    questions_ouvertes:
+      - "Quels processus du système sont automatiques et lesquels sont conditionnels ?"
+      - "Le flux conditionnel peut-il devenir automatique (passage à la maturité) ?"
+
+  - id: "PG-K5-005"
+    nom: "Principe des 2 Sources Complémentaires (Terin Mazalot)"
+    source_assertions: ["EC-K5-001", "EC-K5-002", "EC-K5-003"]
+    formalisation: |
+      Tout système productif nécessite 2 SOURCES complémentaires :
+      SOURCE DROITE (Mazal Elyon → Abba) : produit HASSADIM (expansion, bonté, accueil)
+      SOURCE GAUCHE (Mazal Tahton → Imma) : produit GEVUROT (restriction, rigueur, forme)
+      Les 2 sources doivent s'IMPACTER (Betisha) pour produire
+      Ni l'une ni l'autre ne suffit seule
+      Hassadim sans Gevurot = expansion sans forme = chaos
+      Gevurot sans Hassadim = forme sans contenu = vide rigide
+      L'IMPACT entre les deux = la créativité
+    applications_ia:
+      - "Chaque processus a besoin d'un input Chesed (contenu) et Gevurah (contrainte)"
+      - "Le Tzimtzum Regulator = le Mazal Tahton (restriction), le Shefa Flow = le Mazal Elyon (expansion)"
+      - "Les tests (Gevurot) impactent le code (Hassadim) → produisent la qualité"
+      - "InsightForge acceptance (31.8%) = Gevurah qui contraint la Hassadim des insights"
+    questions_ouvertes:
+      - "Le ratio optimal Hassadim/Gevurot est-il toujours 5:5 ?"
+      - "Comment identifier les 2 Mazalot de chaque sous-système ?"

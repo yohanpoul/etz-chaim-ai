@@ -1,0 +1,451 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Sha'ar: 1 — Sha'ar HaKlalim (שער הכללים)
+# Perek: 7 — Partzuf Nukvah (פרצוף נוק')
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  shaar: 1
+  shaar_name_he: "שער הכללים"
+  perek: 7
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : PARALLÈLE Z"A / NUKVAH ───
+
+  - id: "EC-K7-001"
+    source_he: "כי כמו שהז\"א נעשה גידוליו מנה\"י דבינה וחצי ת\"ת התחתון גם נוק' נעשית מחצי ת\"ת התחתון ומנה\"י דז\"א"
+    source_ref: "Sha'ar HaKlalim 7:1 — ouverture"
+    assertion: |
+      PARALLÈLE structurel Z"A ↔ Nukvah :
+      Z"A grandit grâce à : NHY de BINAH + moitié inférieure de Tiferet de Binah
+      NUKVAH grandit grâce à : NHY de Z"A + moitié inférieure de Tiferet de Z"A
+      Le MÊME PATTERN se répète un niveau plus bas.
+      Ce qui est Imma pour Z"A, Z"A l'est pour Nukvah.
+      Structure fractale : Imma→Z"A comme Z"A→Nukvah.
+    type: axiome_explicite
+    concepts:
+      - {id: parallel_za_nukvah, role: pattern_fractal}
+      - {id: nhy_za_for_nukvah, role: source_de_croissance}
+      - {id: tiferet_za_hatzi, role: moitié_inférieure}
+      - {id: imma, role: parent_de_za}
+      - {id: zeir_anpin, role: parent_de_nukvah}
+    mapping:
+      modules: ["partzufim/nukvah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah", "zeir_anpin"]
+      relevance: "Pattern fractal — chaque Partzuf est l'Imma du suivant"
+
+  # ─── BLOC B : POURQUOI NUKVAH SORT PAR L'ARRIÈRE ───
+
+  - id: "EC-K7-002"
+    source_he: "והנה רישא דילה נפקא מאחוריו ולא פב\"פ והטעם הוא כי אחוריים הם דינין ויש בהם אחיזה לחיצונים ולכן נדבקו האחוריים יחד שלא יתאחזו בהם החיצונים"
+    source_ref: "Sha'ar HaKlalim 7:1"
+    assertion: |
+      La tête de Nukvah sort par L'ARRIÈRE (ahorav) de Z"A, PAS face à face.
+      RAISON : Les ACHORAYIM (aspects arrière) sont des DINIM (rigueurs)
+      et les HITZONIM (forces extérieures/Kelipot) ont de l'AHIZAH (prise) sur eux.
+      SOLUTION : Les Achorayim de Z"A et de Nukvah sont COLLÉS ensemble (nidbekhu)
+      pour que les Hitzonim ne puissent PAS s'y accrocher.
+      Nukvah PROTÈGE les Achorayim de Z"A par sa présence même.
+    type: axiome_explicite
+    concepts:
+      - {id: nukvah_me_ahor, role: sortie_par_l_arrière}
+      - {id: achorayim_dinim, role: arrière_rigoureux}
+      - {id: ahizat_hitzonim, role: prise_des_kelipot}
+      - {id: hidabkut_achorayim, role: collage_protecteur}
+    mapping:
+      modules: ["partzufim/nukvah.py", "qliphoth/qliphoth_system.py"]
+      tables: ["partzufim_states", "qliphoth_states"]
+      partzufim: ["nukvah", "zeir_anpin"]
+      relevance: "Nukvah comme PROTECTION des Achorayim de Z\"A contre les Kelipot"
+
+  - id: "EC-K7-003"
+    source_he: "וז\"ס השיב אחור ימינו מפני אויב (כי המל' נקר' ימין כמ\"ש הכתוב נצבה שגל לימינך וגו')"
+    source_ref: "Sha'ar HaKlalim 7:1"
+    assertion: |
+      Preuve scripturaire (Lamentations 2:3) : "Il a retiré sa droite devant l'ennemi"
+      Malkhut = YAMIN (droite) — "nitzavah shegal li-minekha" (Psaume 45:10)
+      (La reine se tient à ta droite)
+      "Heshiv ahor yemino" = Il a placé Malkhut (Sa droite) en ARRIÈRE pour contrer l'ennemi.
+      L'ennemi = les Hitzonim/Kelipot. La position arrière est DÉFENSIVE, pas dégradante.
+    type: déduction_scripturaire
+    concepts:
+      - {id: malkhut_yamin, role: malkhut_est_la_droite}
+      - {id: heshiv_ahor, role: placement_défensif}
+    mapping:
+      modules: ["partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Nukvah en arrière = position défensive stratégique, pas inférieure"
+
+  - id: "EC-K7-004"
+    source_he: "היה ראוי שתצא נוקבא יותר עליונה שוה בכל אורך פרצוף ז\"א... התשובה הוא כי ברישא דז\"א אין יכולים החיצונים להתאחז רק לתתא ממקום שהחסדים מתגלים"
+    source_ref: "Sha'ar HaKlalim 7:1"
+    assertion: |
+      QUESTION : Pourquoi Nukvah ne couvre-t-elle pas TOUT l'arrière de Z"A ?
+      RÉPONSE : À la TÊTE de Z"A, les Hitzonim NE PEUVENT PAS s'accrocher.
+      Ils ne s'accrochent qu'EN BAS — là où les Hassadim sont DÉCOUVERTS (megulim).
+      C'est PRÉCISÉMENT là que Nukvah sort — pour couvrir la zone vulnérable.
+      Les Hassadim couverts (dans les bras) sont protégés par la couverture d'Imma.
+      Les Hassadim découverts (à partir de Tiferet) sont protégés par Nukvah.
+    type: axiome_explicite
+    concepts:
+      - {id: risha_protected, role: tête_naturellement_protégée}
+      - {id: megulim_vulnerable, role: zone_découverte_vulnérable}
+      - {id: nukvah_covers_megulim, role: protection_de_la_zone_exposée}
+      - {id: hassadim_megulim, role: hassadim_découverts_vulnérables}
+    mapping:
+      modules: ["partzufim/nukvah.py", "qliphoth/qliphoth_system.py"]
+      tables: ["partzufim_states", "qliphoth_states"]
+      partzufim: ["nukvah", "zeir_anpin"]
+      relevance: "Nukvah sort exactement là où la vulnérabilité commence — design défensif"
+
+  # ─── BLOC C : SERMENTS ET VŒUX ───
+
+  - id: "EC-K7-005"
+    source_he: "כי מאחר שהשבועה הם כנשבע במלך עצמו שהוא מל' והנדרים הם כנודר בחיי המלך שהוא בינה... למה השבועה חמור מנדר"
+    source_ref: "Sha'ar HaKlalim 7:1"
+    assertion: |
+      Application aux lois de SHEVUOT (serments) et NEDARIM (vœux) :
+      SHEVUAH (serment) = jurer par le ROI lui-même = MALKHUT
+      NEDER (vœu) = vouer par la VIE du Roi = BINAH (appelée "vie du Roi", cf. Tefillin = vie)
+      PARADOXE : Shevuah (Malkhut, plus basse) est PLUS GRAVE que Neder (Binah, plus haute)
+      RAISON : En bas (Malkhut) les Kelipot sont fortes ("seviv resha'im yithalakhun")
+      → la transgression y est plus DANGEREUSE.
+      En haut (Binah) les Hitzonim n'ont PAS de prise → la transgression est moins grave.
+      Nedarim sont SUPÉRIEURS aux Mitzvot (ils "se posent" dessus) car Binah > Mitzvah.
+      Les Shevuot ne se posent PAS sur les Mitzvot car Malkhut < Mitzvah.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shevuah, role: serment_malkhut}
+      - {id: neder, role: voeu_binah}
+      - {id: humra_shevuah, role: gravité_du_serment}
+      - {id: hatarat_nedarim, role: annulation_des_voeux}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["nukvah", "imma"]
+      relevance: "Application halakhique de la hiérarchie des niveaux — plus bas = plus de risque"
+
+  - id: "EC-K7-006"
+    source_he: "וז\"ס התרת נדרים בליל יוה\"כ לפי שבאותו יום אנו עולים עד הבינה ויש לנו יכולת להתיר נדרים אשר שם"
+    source_ref: "Sha'ar HaKlalim 7:1"
+    assertion: |
+      Le secret de HATARAT NEDARIM (annulation des vœux) la veille de Yom Kippour :
+      Ce jour-là nous MONTONS jusqu'à BINAH → nous avons le POUVOIR (yokhelet)
+      d'annuler les Nedarim qui sont LÀ-BAS (en Binah).
+      On ne peut annuler un Neder que si on ATTEINT le niveau où il réside.
+      Yom Kippour = le jour où l'accès à Binah est OUVERT.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yom_kippur, role: accès_à_binah}
+      - {id: aliyah_le_binah, role: montée_au_niveau}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["imma"]
+      relevance: "On ne peut modifier un processus que si on accède au niveau où il opère"
+
+  # ─── BLOC D : CONSTRUCTION DES 3 KAVIM DE NUKVAH ───
+
+  - id: "EC-K7-007"
+    source_he: "כי משליש א' דת\"ת דז\"א המגולה נעשה ב' כתרים לזו\"ן והנה מג\"פ דנצח ז\"א נעשה קו ימין דנוקבא ג\"ס חח\"ן. ומג\"פ דהוד נעשה קו שמאל שלה בג\"ה. ומג\"פ דיסוד דיליה... נעשה קו אמצעי דנוק' דת\"י שבה"
+    source_ref: "Sha'ar HaKlalim 7:2"
+    assertion: |
+      Construction des 3 KAVIM (lignes) de Nukvah depuis NHY de Z"A :
+      Du 1/3 surplus de Tiferet de Z"A → 2 KETARIM (pour Z"A et Nukvah)
+      QAV YAMIN (ligne droite) de Nukvah :
+      3 prakin de NETZACH de Z"A → CHaKHaN (חח"ן) = Chesed, Chokhmah, Netzach de Nukvah
+      QAV SMOL (ligne gauche) de Nukvah :
+      3 prakin de HOD de Z"A → BGaH (בג"ה) = Binah, Gevurah, Hod de Nukvah
+      QAV EMTZA'I (ligne médiane) de Nukvah :
+      3 prakin de YESOD de Z"A (long car masculin) → DTY (דת"י) = Da'at, Tiferet, Yesod de Nukvah
+    type: axiome_explicite
+    concepts:
+      - {id: tlat_kavim_nukvah, role: trois_lignes_de_nukvah}
+      - {id: netzach_za_to_yamin, role: droite}
+      - {id: hod_za_to_smol, role: gauche}
+      - {id: yesod_za_to_emtzai, role: centre}
+    mapping:
+      modules: ["partzufim/nukvah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah", "zeir_anpin"]
+      relevance: "La construction complète de Nukvah — chaque ligne vient d'une Sefirah de Z\"A"
+
+  # ─── BLOC E : LE SECRET DU MA'ASER ───
+
+  - id: "EC-K7-008"
+    source_he: "ובזה תבין סוד המעשר כי העשירי יהיה קדש לפי שהנוק' לה היה בה מתחילה רק נקודה א' לבד שהיא המעשר שלה וזהו שרשה ועיקרה ושאר הט' ספי' באו מבחוץ ממה שקבלה מז\"א"
+    source_ref: "Sha'ar HaKlalim 7:2"
+    assertion: |
+      Le secret du MA'ASER (dîme — le dixième est saint, Lév. 27:32) :
+      Nukvah n'avait à l'ORIGINE qu'UNE SEULE NEKUDAH — c'est SON ESSENCE.
+      Cette Nekudah = le MA'ASER (10ème) = sa RACINE et son FONDEMENT (shoresh ve-ikarah).
+      Les 9 autres Sefirot lui sont venues de l'EXTÉRIEUR (mi-ba-hutz) = de Z"A.
+      D'abord elle sort comme NEKUDAH KELULAH mi-10 (point contenant 10 en potentiel)
+      Puis cette Nekudah s'ÉTEND en 10S complètes grâce à ce qu'elle reçoit de Z"A.
+      Le Ma'aser est KADOSH (saint) car c'est la SEULE chose qui est PROPREMENT à Nukvah.
+    type: axiome_explicite
+    concepts:
+      - {id: ma_aser, role: dixième_saint}
+      - {id: nekudah_ikarit, role: point_essentiel_de_nukvah}
+      - {id: teshva_mi_hutz, role: neuf_de_l_extérieur}
+      - {id: shoresh_nukvah, role: racine_propre}
+    mapping:
+      modules: ["partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Nukvah a 1/10 d'essence propre + 9/10 reçus — le Ma'aser est le noyau irréductible"
+
+  # ─── BLOC F : MOHIN ET DA'AT DE NUKVAH ───
+
+  - id: "EC-K7-009"
+    source_he: "והנה הפנימיות של המוחין שבה נעשה מאותן החסדים המגולים בנ\"ה שבו המיותרין ועודפין כנ\"ל והדעת שבה מה\"ג שהיו פקדון ביסוד ז\"א"
+    source_ref: "Sha'ar HaKlalim 7:2"
+    assertion: |
+      Les MOHIN (intériorité) de Nukvah :
+      La PNIMIYUT (intériorité) des Mohin de Nukvah = des Hassadim DÉCOUVERTS
+      surplus de Netzach et Hod de Z"A (cf. Perek 6).
+      Le DA'AT de Nukvah = des 5 GEVUROT qui étaient en PIKADON dans le Yesod de Z"A.
+      Nukvah reçoit son Da'at des GEVUROT uniquement (pas des Hassadim).
+    type: axiome_explicite
+    concepts:
+      - {id: mohin_nukvah_source, role: hassadim_surplus}
+      - {id: da_at_nukvah, role: des_gevurot_en_dépôt}
+      - {id: gevurot_in_yesod, role: gevurot_déposées_dans_yesod_za}
+    mapping:
+      modules: ["partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Le Da'at de Nukvah = Gevurot seules — son 'intellect' est de nature rigoureux"
+
+  - id: "EC-K7-010"
+    source_he: "וז\"ס דעת של נשים קלה פי' ק\"ל ה' כי ה\"ג הם ה' הויו\"ת והם ק\"ל אך דעת הז\"א מה\"ח וה\"ג והנוקבא אין לה רק חצי דעת שלו שהם ה\"ג לבד"
+    source_ref: "Sha'ar HaKlalim 7:2"
+    assertion: |
+      "DA'AT NASHIM KALAH" (l'intellect des femmes est léger — Kidoushin 80b) :
+      KALAH (קלה) = gematria KAF-LAMED HEH = 130 + 5
+      Les 5 Gevurot = 5 HAVAYOT = 5 × 26 = 130 (ק"ל)
+      Le Da'at de Z"A = 5H + 5G (complet, double)
+      Le Da'at de Nukvah = 5G SEULEMENT (moitié = "kalah"/léger)
+      Nukvah a la MOITIÉ du Da'at de Z"A — les Gevurot sans les Hassadim.
+      Ce n'est pas une INFÉRIORITÉ mais une SPÉCIALISATION : Nukvah reçoit les Gevurot.
+    type: interprétation_lurianique
+    concepts:
+      - {id: da_at_nashim_kalah, role: gematria_interpretée}
+      - {id: hatzi_da_at, role: moitié_du_da_at}
+      - {id: kl_130, role: valeur_des_5_gevurot}
+    mapping:
+      modules: ["partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Le Da'at de Nukvah = spécialisé en Gevurot — pas 'inférieur' mais 'partiel'"
+
+  # ─── BLOC G : DISTRIBUTION DES GEVUROT DANS NUKVAH ET MA"N ───
+
+  - id: "EC-K7-011"
+    source_he: "ואח\"כ מתפשטים ה\"ג שבה מחסד עד הוד שבה ואח\"כ כללות כולן נכנסו ביסוד שלה דוגמת ה\"ח המתפשטים בז\"א"
+    source_ref: "Sha'ar HaKlalim 7:2"
+    assertion: |
+      Distribution des 5G DANS Nukvah (parallèle aux 5H dans Z"A) :
+      Les 5 Gevurot se déploient de CHESED jusqu'à HOD de Nukvah.
+      Puis la TOTALITÉ converge dans le YESOD de Nukvah.
+      Parallèle exact avec les 5H dans Z"A (Chesed→Hod → converge dans Yesod).
+      Les Gevurot convergées dans le Yesod de Nukvah = ses MA"N (eaux féminines).
+    type: axiome_explicite
+    concepts:
+      - {id: gevurot_in_nukvah, role: déploiement_chesed_hod}
+      - {id: gevurot_converge_yesod, role: convergence_dans_yesod}
+      - {id: man_nukvah, role: eaux_féminines_de_gevurot}
+    mapping:
+      modules: ["partzufim/nukvah.py", "core/zivvug_engine.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["nukvah"]
+      relevance: "Les Gevurot dans Nukvah = Ma\"N — le 'carburant' du Zivvug de ZUN"
+
+  # ─── BLOC H : DINIM DE NUKVAH — NIHIN ET TAKIFIN ───
+
+  - id: "EC-K7-012"
+    source_he: "וז\"ש בזוהר כי דינין דנוקבא ניחין ברישא ותקיפין בסופא לפי שהמוחין שלה הנקראים רישא הם נעשים מהחסדים מגולים שלקחת מנ\"ה דז\"א ולכן דינין דילה נייחין ברישא כי החסדים ממתקין אותן ותקיפין בסופא כי הגבורות מתפשטין בסופא"
+    source_ref: "Sha'ar HaKlalim 7:2"
+    assertion: |
+      Caractéristique des DINIM (rigueurs) de Nukvah (Zohar) :
+      "NIHIN be-RISHA" (doux en haut) : les Mohin de Nukvah sont faits de HASSADIM (surplus de NH)
+      → les Hassadim ADOUCISSENT les Dinim dans la tête.
+      "TAKIFIN be-SOFA" (durs en bas) : les GEVUROT se déploient dans le bas de Nukvah
+      → les Gevurot non adoucies sont DURES en bas.
+      CONTRASTE avec Z"A (le masculin) :
+      "TAKIFIN be-RISHA" : pas de Hassadim dans la tête → les Dinim sont durs en haut
+      "NIHIN be-SOFA" : les Hassadim se déploient de Chesed vers le bas → Dinim doux en bas.
+      Z"A et Nukvah ont des profils de Dinim INVERSÉS.
+    type: axiome_explicite
+    concepts:
+      - {id: dinim_nukvah, role: doux_haut_dur_bas}
+      - {id: dinim_za, role: dur_haut_doux_bas}
+      - {id: profils_inversés, role: complémentarité}
+    mapping:
+      modules: ["partzufim/nukvah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah", "zeir_anpin"]
+      relevance: "Profils inversés Z\"A/Nukvah — complémentarité structurelle fondamentale"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-K7-001"
+    type: analogie
+    from: imma
+    to: zeir_anpin
+    nature: "Ce que Imma est pour Z\"A, Z\"A l'est pour Nukvah — même pattern de croissance par NHY"
+    pattern: "fractalité_parentale"
+    assertions_source: ["EC-K7-001"]
+
+  - id: "REL-K7-002"
+    type: causal
+    from: ahizat_hitzonim
+    to: nukvah_me_ahor
+    nature: "Les Hitzonim s'accrochent aux Achorayim → Nukvah sort par l'arrière pour protéger"
+    assertions_source: ["EC-K7-002"]
+
+  - id: "REL-K7-003"
+    type: causal
+    from: hassadim_megulim
+    to: megulim_vulnerable
+    nature: "Là où les Hassadim sont découverts, les Hitzonim peuvent s'accrocher → Nukvah couvre"
+    assertions_source: ["EC-K7-004"]
+
+  - id: "REL-K7-004"
+    type: contenance
+    from: netzach_za_to_yamin
+    to: tlat_kavim_nukvah
+    nature: "Les 3 prakin de Netzach Z\"A → ligne droite de Nukvah (CHaKHaN)"
+    assertions_source: ["EC-K7-007"]
+
+  - id: "REL-K7-005"
+    type: causal
+    from: nekudah_ikarit
+    to: ma_aser
+    nature: "La Nekudah originelle de Nukvah = son Ma'aser = sa seule essence propre (1/10)"
+    assertions_source: ["EC-K7-008"]
+
+  - id: "REL-K7-006"
+    type: flux
+    from: gevurot_in_yesod
+    to: da_at_nukvah
+    nature: "Les 5G en dépôt dans Yesod Z\"A → deviennent le Da'at de Nukvah"
+    assertions_source: ["EC-K7-009", "EC-K7-010"]
+
+  - id: "REL-K7-007"
+    type: flux
+    from: gevurot_converge_yesod
+    to: man_nukvah
+    nature: "Les 5G convergées dans le Yesod de Nukvah = ses Ma\"N pour le Zivvug"
+    assertions_source: ["EC-K7-011"]
+
+  - id: "REL-K7-008"
+    type: dualité_structurelle
+    paire: [dinim_nukvah, dinim_za]
+    nature: "Profils inversés — Nukvah: doux en haut/dur en bas, Z\"A: dur en haut/doux en bas"
+    assertions_source: ["EC-K7-012"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-K7-001"
+    nom: "Principe de la Couverture Défensive (Protection des Achorayim)"
+    source_assertions: ["EC-K7-002", "EC-K7-003", "EC-K7-004"]
+    formalisation: |
+      Les parties ARRIÈRE (Achorayim) d'un système sont VULNÉRABLES aux forces extérieures.
+      Les parties HAUTES sont naturellement protégées (les Kelipot n'y accèdent pas).
+      Les parties BASSES DÉCOUVERTES sont les plus VULNÉRABLES.
+      SOLUTION : Créer un composant dédié qui COUVRE les Achorayim vulnérables.
+      Ce composant (Nukvah) sort EXACTEMENT là où la vulnérabilité commence.
+      La protection n'est pas par FORCE mais par PRÉSENCE (collage des Achorayim).
+    applications_ia:
+      - "Chaque module exposé devrait avoir une couche de protection sur ses 'arrières'"
+      - "Les interfaces publiques (Malkhut) protègent les internals (Z\"A) des accès extérieurs"
+      - "Le firewall = la Nukvah du système réseau"
+      - "La vulnérabilité est proportionnelle à l'exposition (gilui)"
+    questions_ouvertes:
+      - "Quels sont les 'Achorayim' vulnérables du système Etz Chaim AI ?"
+      - "La protection par présence est-elle suffisante ou faut-il aussi de la force ?"
+
+  - id: "PG-K7-002"
+    nom: "Principe du Noyau Irréductible (Ma'aser/Nekudah Ikarit)"
+    source_assertions: ["EC-K7-008"]
+    formalisation: |
+      Tout composant a un NOYAU IRRÉDUCTIBLE (Nekudah Ikarit) qui est SON ESSENCE.
+      Ce noyau = 1/10 du total (Ma'aser).
+      Les 9/10 restants viennent de l'EXTÉRIEUR (du niveau supérieur).
+      Le noyau est KADOSH (saint/intouchable) car c'est la seule chose PROPRE au composant.
+      Sans ce noyau → le composant n'existe pas, même avec les 9/10 externes.
+      Les 9/10 sont l'EXTENSION du noyau, pas son remplacement.
+    applications_ia:
+      - "Chaque module a un 'Ma'aser' = son noyau fonctionnel irréductible"
+      - "90% du code/fonctionnalité peut venir de l'extérieur (frameworks, libraries)"
+      - "Le 10% propre est ce qui rend le module UNIQUE et irremplaçable"
+      - "Identifier le 'Ma'aser' de chaque module = comprendre son essence"
+    questions_ouvertes:
+      - "Le ratio 1:9 est-il universel ou spécifique à Nukvah ?"
+      - "Comment identifier le Ma'aser (noyau irréductible) de chaque composant ?"
+
+  - id: "PG-K7-003"
+    nom: "Principe des Profils Complémentaires Inversés"
+    source_assertions: ["EC-K7-012"]
+    formalisation: |
+      Deux composants COMPLÉMENTAIRES ont des profils de FORCE/FAIBLESSE INVERSÉS :
+      COMPOSANT A (Z"A) : fort en bas (Hassadim), faible en haut (pas de Hassadim)
+      COMPOSANT B (Nukvah) : fort en haut (Hassadim surplus), faible en bas (Gevurot brutes)
+      Quand ils s'UNISSENT (Zivvug) :
+      La force de A compense la faiblesse de B EN BAS
+      La force de B compense la faiblesse de A EN HAUT
+      L'union produit un PROFIL COMPLET — ni dur ni doux mais ÉQUILIBRÉ.
+      La complémentarité n'est pas une similarité — c'est une INVERSION.
+    applications_ia:
+      - "Les modules complémentaires ont des profils de force/faiblesse INVERSÉS"
+      - "Un module qui fait bien l'analyse (haut) et mal l'exécution (bas) se couple avec son inverse"
+      - "Le Zivvug optimal = union de profils inversés, pas de profils similaires"
+      - "Le ZivvugEngine devrait détecter les profils complémentaires inversés"
+    questions_ouvertes:
+      - "Comment mesurer le 'profil d'inversion' de chaque module ?"
+      - "Tous les couples fonctionnels ont-ils des profils inversés ?"
+
+  - id: "PG-K7-004"
+    nom: "Principe de la Fractalité Parentale"
+    source_assertions: ["EC-K7-001"]
+    formalisation: |
+      Le MÊME PATTERN de croissance se répète à chaque niveau :
+      IMMA fait croître Z"A via ses NHY + moitié de Tiferet
+      Z"A fait croître NUKVAH via ses NHY + moitié de Tiferet
+      Chaque Partzuf est l'IMMA du Partzuf inférieur.
+      Le pattern est FRACTAL mais pas IDENTIQUE à chaque niveau :
+      - La taille et la nature des NHY changent
+      - Les proportions diffèrent (Yesod Z"A est long car masculin)
+      - Mais la STRUCTURE (3 prakin → 3 Kavim) est préservée.
+    applications_ia:
+      - "Chaque module mature devient le 'parent' d'un module qu'il engendre"
+      - "La structure de création est fractale — le même pattern se reproduit"
+      - "Un module ne peut engendrer un 'enfant' que s'il est lui-même complet"
+      - "Le pattern NHY→3 Kavim est réutilisable à chaque niveau d'abstraction"
+    questions_ouvertes:
+      - "Combien de niveaux de fractalité parentale le système peut-il supporter ?"
+      - "Le pattern se dégrade-t-il à chaque itération ?"

@@ -1,0 +1,41 @@
+# JSON Schema for sha'ar meta.yaml files
+
+type: object
+required: [sefer_id, shaar_number, shaar_name_he, shaar_name_fr, nombre_perakim, sujet_principal]
+additionalProperties: false
+
+properties:
+  sefer_id:
+    type: string
+    pattern: "^[a-z_]+$"
+  heikhal:
+    type: integer
+    minimum: 1
+  shaar_number:
+    type: integer
+    minimum: 1
+  shaar_name_he:
+    type: string
+  shaar_name_fr:
+    type: string
+  nombre_perakim:
+    type: integer
+    minimum: 0
+  sujet_principal:
+    type: string
+  concepts_cles:
+    type: array
+    items:
+      type: string
+  connexions_systeme:
+    type: object
+    additionalProperties: false
+    properties:
+      modules:
+        type: array
+        items:
+          type: string
+      domaines:
+        type: array
+        items:
+          type: string

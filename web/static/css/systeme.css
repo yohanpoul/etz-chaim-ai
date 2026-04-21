@@ -1,0 +1,450 @@
+/* ═══════════════════════════════════════════════════════════
+   Systeme — Navigation et layouts partagés
+   Esthetique : Terminal Codex — manuscrit sacre sur fond terminal
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Sub-Navigation ────────────────────────────────────── */
+
+.sys-subnav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #1a1400;
+    padding: 0 20px;
+    gap: 0;
+    flex-wrap: nowrap;
+}
+
+.sys-tab {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 9px;
+    color: #555;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+.sys-tab:hover {
+    color: #888;
+}
+
+.sys-tab-active {
+    color: #ffb000;
+    border-bottom-color: #ffb000;
+}
+
+/* ─── Hero Banner ──────────────────────────────────────── */
+
+.sys-hero-banner {
+    position: relative;
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.sys-hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.5);
+}
+
+.sys-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        180deg,
+        rgba(10, 10, 10, 0.3) 0%,
+        rgba(10, 10, 10, 0.15) 40%,
+        rgba(10, 10, 10, 0.5) 100%
+    );
+}
+
+.sys-hero-overlay h1 {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #ffb000;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+    margin: 0 0 6px;
+}
+
+.sys-hero-overlay .subtitle {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 15px;
+    color: #ccc;
+    font-style: italic;
+    letter-spacing: 0.03em;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+}
+
+.sys-hero-banner-sm {
+    max-height: 400px;
+}
+
+/* ─── Page Header (text-only, no banner) ───────────────── */
+
+.sys-page-header {
+    text-align: center;
+    padding: 36px 20px 20px;
+    border-bottom: 1px solid #1a1400;
+}
+
+.sys-page-header h1 {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #ffb000;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+}
+
+.sys-page-header .subtitle {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 15px;
+    color: #999;
+    font-style: italic;
+    letter-spacing: 0.03em;
+}
+
+/* ─── Page Header (legacy) ─────────────────────────────── */
+
+.sys-header {
+    text-align: center;
+    padding: 32px 20px 16px;
+}
+
+.sys-header h1 {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #ffb000;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+}
+
+.sys-header .subtitle {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 15px;
+    color: #555;
+    font-style: italic;
+    letter-spacing: 0.03em;
+}
+
+/* ─── Section ───────────────────────────────────────────── */
+
+.sys-section {
+    max-width: 880px;
+    margin: 0 auto 24px;
+    padding: 0 20px;
+}
+
+.sys-section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffb000;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #1a1400;
+}
+
+/* ─── Narration Block ───────────────────────────────────── */
+
+.sys-narration {
+    color: #776a3a;
+    font-size: 11px;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 10px auto 0;
+    padding: 10px 16px;
+    border-left: 2px solid #1a1400;
+    text-align: left;
+    font-style: italic;
+}
+
+/* ─── Ornamental Divider ────────────────────────────────── */
+
+.sys-divider {
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+}
+
+.sys-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #2a1f00, transparent);
+}
+
+.sys-divider span {
+    position: relative;
+    background: var(--bg, #0a0a0a);
+    padding: 0 16px;
+    color: #3a2a00;
+    font-size: 10px;
+}
+
+/* ─── Card ──────────────────────────────────────────────── */
+
+.sys-card {
+    background: #0d0d0d;
+    border: 1px solid #2a1f00;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Inner gilt frame */
+.sys-card::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid #1a140033;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.sys-card,
+.sys-card *,
+.sys-card::before {
+    transition: border-color 0.3s ease, opacity 0.3s ease, color 0.3s ease !important;
+}
+
+.sys-card:hover {
+    border-color: #ffb000 !important;
+}
+
+.sys-card:hover::before {
+    border-color: #ffb00022;
+}
+
+/* ─── Card Image Area ───────────────────────────────────── */
+
+.sys-card-img {
+    width: calc(100% - 20px);
+    aspect-ratio: 4 / 5;
+    margin: 10px auto 0;
+    overflow: hidden;
+    background: #080808;
+    position: relative;
+    border: 1px solid #1a1400;
+}
+
+.sys-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ─── Card Body ─────────────────────────────────────────── */
+
+.sys-card-body {
+    padding: 10px 12px 14px;
+}
+
+.sys-card-label {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #ffb000;
+    margin-bottom: 3px;
+}
+
+.sys-card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ccc;
+    margin-bottom: 1px;
+    letter-spacing: 0.03em;
+}
+
+.sys-card-sub {
+    font-size: 10px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.sys-card-link {
+    font-size: 9px;
+    color: #6a4e00;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+}
+
+.sys-card:hover .sys-card-link {
+    color: #ffb000;
+}
+
+/* ─── Info Box (shared across sub-pages) ────────────────── */
+
+.sys-infobox {
+    border: 1px solid #1a1400;
+    padding: 24px 28px;
+    background: #0c0a04;
+    max-width: 640px;
+    margin: 0 auto 12px;
+}
+
+.sys-infobox-title {
+    font-family: 'Cinzel', serif;
+    color: #ffb000;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+}
+
+.sys-infobox-text {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.75;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.sys-infobox-text strong {
+    color: #bbb;
+}
+
+/* ─── Placeholder (coming soon) ─────────────────────────── */
+
+.sys-placeholder {
+    text-align: center;
+    color: #333;
+    font-size: 11px;
+    font-style: italic;
+    padding: 48px 20px;
+    letter-spacing: 0.04em;
+}
+
+/* ─── Responsive ────────────────────────────────────────── */
+
+@media (max-width: 700px) {
+    .sys-subnav {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding: 4px 12px 0;
+    }
+
+    .sys-tab {
+        font-size: 8px;
+        padding: 6px 10px;
+    }
+
+    .sys-header h1 {
+        font-size: 18px;
+        letter-spacing: 0.08em;
+    }
+
+    .sys-hero-banner {
+        max-height: 250px;
+    }
+
+    .sys-hero-banner-sm {
+        max-height: 200px;
+    }
+
+    .sys-hero-overlay h1 {
+        font-size: 18px;
+        letter-spacing: 0.08em;
+    }
+
+    .sys-hero-overlay .subtitle {
+        font-size: 12px;
+    }
+
+    .sys-section {
+        padding: 0 12px;
+    }
+
+    .sys-infobox {
+        padding: 18px 16px;
+    }
+}
+
+/* ─── Hub Cards (systeme/index) ─────────────────────────── */
+
+.sys-hub-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 640px;
+    margin: 24px auto;
+    padding: 0 20px;
+}
+
+.sys-hub-card {
+    background: #0d0d0d;
+    border: 1px solid #2a1f00;
+    text-decoration: none;
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+
+.sys-hub-card:hover { border-color: #ffb000; }
+
+.sys-hub-card-img {
+    width: calc(100% - 20px);
+    aspect-ratio: 3 / 4;
+    margin: 10px auto 0;
+    overflow: hidden;
+    background: #080808;
+    border: 1px solid #1a1400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sys-hub-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+.sys-hub-glyph { font-size: 36px; opacity: 0.3; }
+
+.sys-hub-card-body { padding: 10px 12px 14px; }
+
+.sys-hub-card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-bottom: 4px;
+}
+
+.sys-hub-card-sub { font-size: 10px; color: #666; line-height: 1.5; }
+
+@media (max-width: 700px) {
+    .sys-hub-cards { grid-template-columns: 1fr; max-width: 300px; }
+}

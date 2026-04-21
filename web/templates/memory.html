@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% set active = "memory" %}
+{% block title %}Etz Chaim — Memoire{% endblock %}
+{% block content %}
+
+<section class="panel">
+    <div class="panel-header">&#9484;&#9472; MEMOIRE &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <form class="term-form" id="memory-search-form">
+            <span class="term-prompt">&gt; query: </span>
+            <input type="text" id="memory-query" class="term-input" placeholder="rechercher..." autocomplete="off">
+            <select id="memory-domain" class="term-select">
+                <option value="">tous</option>
+            </select>
+            <button type="submit" class="term-btn">[SEARCH]</button>
+        </form>
+        <div class="memory-tabs">
+            <button class="tab active" data-tab="search">[RECHERCHE]</button>
+            <button class="tab" data-tab="stats">[STATS]</button>
+            <button class="tab" data-tab="contradictions">[CONTRADICTIONS]</button>
+        </div>
+    </div>
+</section>
+
+<section class="panel" id="memory-tab-search">
+    <div class="panel-body">
+        <div class="memory-results" id="memory-results">
+            <div class="term-dim">Entrez une requete pour chercher dans EpisteMemory.</div>
+        </div>
+    </div>
+</section>
+
+<section class="panel" id="memory-tab-stats" class="tab-content" style="display:none;">
+    <div class="panel-header">&#9484;&#9472; STATISTIQUES &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <div id="memory-stats" class="term-dim">Chargement...</div>
+    </div>
+</section>
+
+<section class="panel" id="memory-tab-contradictions" class="tab-content" style="display:none;">
+    <div class="panel-header">&#9484;&#9472; CONTRADICTIONS &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <div id="contradictions-list" class="term-dim">Chargement...</div>
+    </div>
+</section>
+
+{% endblock %}
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => { initMemory(); });
+</script>
+{% endblock %}

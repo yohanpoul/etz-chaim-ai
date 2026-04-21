@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% set active = "explore" %}
+{% block title %}Etz Chaim — Explorer{% endblock %}
+{% block content %}
+
+<section class="panel">
+    <div class="panel-header">&#9484;&#9472; EXPLORER &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <form class="term-form" id="explore-form">
+            <span class="term-prompt">&gt; search: </span>
+            <input type="text" id="explore-query" class="term-input" placeholder="connexions entre..." autocomplete="off">
+            <button type="submit" id="explore-btn" class="term-btn">[GO]</button>
+        </form>
+    </div>
+</section>
+
+<div id="explore-status" class="term-dim" style="display:none;">
+    Exploration en cours...
+</div>
+
+<section class="panel" id="explore-results" style="display:none;">
+    <div class="panel-header">&#9484;&#9472; RESULTATS &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <div class="explore-summary" id="explore-summary"></div>
+        <div class="connections-list" id="connections-list"></div>
+    </div>
+</section>
+
+{% endblock %}
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => { initExplore(); });
+</script>
+{% endblock %}

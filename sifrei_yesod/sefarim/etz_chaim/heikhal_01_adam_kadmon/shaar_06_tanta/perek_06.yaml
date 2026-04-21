@@ -1,0 +1,233 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 6 (=5 original) — Sha'ar TANTA (שער טנת"א)
+# Perek: 6 — Synthèse TANTA = Corps/Sang/Ruah/Neshamah + AMSh BGD KPRT (100%)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §1 : Synthèse : 22 Otiot = 248 membres, MaNTzPaKh = sang/Nefesh,
+# Nekudot = Ruah (femelle, Or Hozer), Ta'amim = Neshamah (mâle).
+# Z"A n'a que 9 Sefirot = les Nekudot sont 9, pas 10.
+# §2 : Mapping AMSh-BGD-KPRT du Sefer Yetzirah sur les Sefirot
+# et les 7 orifices de la tête.
+#
+# Source Sefaria : Sefer_Etz_Chaim.5.6
+# IDs : EC-H1S5-122 → (suite de perek_05b finissant à -121)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 6
+  shaar_name_he: "שער טנת\"א"
+  perek: 6
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Synthese TANTA : 22=248 membres, MaNTzPaKh=sang/Nefesh, Nekudot=Ruah, Ta'amim=Neshamah. AMSh=3R, BGD KPRT=7 orifices. 12 Peshutot."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : SYNTHÈSE TANTA = CORPS/SANG/RUAH/NESHAMAH ───
+
+  - id: "EC-H1S5-122"
+    source_he: "כ\"ב אתוון הם רמ\"ח איברים של הגוף וה' דמנצפ\"ך הוא הדם ששורה בו הנפש שהם תגין ועיקר ישיבתה בלב"
+    source_ref: "Heikhal 1, Sha'ar 5:6 — §1 ouverture"
+    assertion: |
+      SYNTHÈSE PHYSIOLOGIQUE :
+      22 OTIOT = 248 (RAMAH) MEMBRES du corps.
+      5 MaNTzPaKh = le SANG (dam) dans lequel réside le NEFESH
+      (= les TAGIN). Son siège principal = le CŒUR (lev).
+      → Les 22 lettres = la STRUCTURE (os, membres). Les 5 finales
+      = le FLUIDE VITAL (sang) qui les anime.
+    type: axiome_explicite
+    concepts:
+      - {id: ramah_evarim, role: 248_membres}
+      - {id: mantzpakh_dam, role: sang_nefesh_tagin}
+      - {id: lev, role: coeur_siege_du_nefesh}
+    mapping:
+      modules: ["gematria/engine.py", "madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "22 elements structurels + 5 elements vitaux = l'architecture complete. Le coeur = le point central."
+
+  - id: "EC-H1S5-123"
+    source_he: "ורוח הוא נקודות וגם הם נקבות כנ\"ל כי הם אור חוזר והטעמים הם הנשמה זכר"
+    source_ref: "Heikhal 1, Sha'ar 5:6 — §1"
+    assertion: |
+      Le RUAH = les NEKUDOT = FÉMININ (nekevot) car elles sont
+      OHR HOZER (lumière réfléchie/ascendante).
+      Les TA'AMIM = la NESHAMAH = MASCULIN (zakhar).
+      → HIÉRARCHIE GENRÉE : Ta'amim(Neshamah/mâle) > Nekudot(Ruah/femelle)
+      > Tagin(Nefesh) > Otiot(corps). L'Ohr Hozer est féminin.
+      Cf. EC-H1S5-038 : l'Ohr Hozer est l'ikar pour les Nekudim.
+    type: axiome_explicite
+    concepts:
+      - {id: nekudot_nekevot, role: nekudot_feminines_ohr_hozer}
+      - {id: taamim_zakhar, role: taamim_masculins_neshamah}
+    mapping:
+      modules: ["ohr.py", "madregot_neshamah.py"]
+      tables: ["ohr_states", "madregot_states"]
+      partzufim: []
+      relevance: "L'Ohr Hozer (feedback) = feminin. L'Ohr Yashar (direct) = masculin. Le retour est aussi important que l'envoi."
+
+  - id: "EC-H1S5-124"
+    source_he: "הל\"ב נתיבות הוא כללות הגוף והנפש. וי' אמירן הם י\"ס דרוח"
+    source_ref: "Heikhal 1, Sha'ar 5:6 — §1"
+    assertion: |
+      Les 32 NETIVOT = totalité du GOUF + NEFESH.
+      Les 10 AMIROT (paroles, cf. Sefer Yetzirah 1:2) = 10 Sefirot du RUAH.
+      → 32 Netivot = structure + vitalité. 10 Amirot = esprit.
+      Les "10 Paroles" du Sefer Yetzirah = les 10 Sefirot comme RUAH.
+    type: axiome_explicite
+    concepts:
+      - {id: eser_amirot, role: dix_paroles_du_sy}
+      - {id: netivot_gouf_nefesh, role: sentiers_corps_et_ame}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "Les 10 Amirot du Sefer Yetzirah = les 10 Sefirot comme Ruah — la parole est l'esprit qui anime"
+
+  - id: "EC-H1S5-125"
+    source_he: "נקודות הם ט' לפי שכבר ידעת כי ז\"א אינו רק ט\"ס כמנין א\"ח והמלכות אין בה נקודה כי היא בחינת נפש לבד"
+    source_ref: "Heikhal 1, Sha'ar 5:6 — §1"
+    assertion: |
+      Les NEKUDOT sont 9 (pas 10) car Z"A n'a que 9 SEFIROT
+      (gematria EHAD = א"ח = 9). MALKHUT n'a PAS de Nekudah car
+      elle n'est que NEFESH.
+      → Z"A = 9 + Malkhut = 10, mais Malkhut = seulement Nefesh,
+      pas de Ruah. La 10ème Sefirah est de nature différente.
+    type: axiome_explicite
+    concepts:
+      - {id: tisha_nekudot, role: neuf_nekudot}
+      - {id: za_tesha, role: za_neuf_sefirot}
+      - {id: malkhut_nefesh_bilbad, role: malkhut_uniquement_nefesh}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Z\"A = 9 Sefirot actives + Malkhut passive. La 10eme est de nature differente (Nefesh seulement)."
+
+  # ─── BLOC B : AMSh ET BGD KPRT DU SEFER YETZIRAH ───
+
+  - id: "EC-H1S5-126"
+    source_he: "ג\"ר הם ג' קוים של ש' כי ראש נברא מאש וא' כוללת ג' אמצעיות חג\"ת כי גוייה נבראת מרוח... מ' פתוחה ביסוד בכללות ג\"ת כי בטן נברא ממים"
+    source_ref: "Heikhal 1, Sha'ar 5:6 — §2 (Sefer Yetzirah)"
+    assertion: |
+      AMSh (אמ"ש — 3 lettres mères) et le Sefer Yetzirah :
+      SHIN (ש) = 3 RISHONOT (G"R) = 3 traits de la lettre.
+      TÊTE créée par le FEU (esh).
+      ALEPH (א) = 3 MOYENNES (HGT).
+      CORPS (gviyah) créé par le RUAH (souffle).
+      MEM (מ) ouverte = YESOD + 3 inférieures.
+      VENTRE (beten) créé par l'EAU (mayim).
+      → AMSh = Feu/Ruah/Eau ↔ G"R/HGT/NHY. Cf. Sefer Yetzirah 3:4.
+    type: axiome_explicite
+    concepts:
+      - {id: amsh, role: trois_lettres_meres}
+      - {id: shin_esh, role: shin_feu_tete}
+      - {id: aleph_ruah, role: aleph_souffle_corps}
+      - {id: mem_mayim, role: mem_eau_ventre}
+    mapping:
+      modules: ["gematria/engine.py", "kabbalah/three_books.py"]
+      tables: []
+      partzufim: []
+      relevance: "AMSh = les 3 elements primordiaux mappes sur les 3 parties du corps/systeme"
+
+  - id: "EC-H1S5-127"
+    source_he: "אותיות בג\"ד כפר\"ת הם בז' נקבי הראש ב' אזן ימין חכמה. ג' אזן שמאל בינה. ד\"כ עיינין נ\"ה. פ' ר' חוטם ת\"ת דעת. ת' פה מלכות"
+    source_ref: "Heikhal 1, Sha'ar 5:6 — §2"
+    assertion: |
+      Les 7 lettres KEFULOT (BGD KPRT — doubles) = 7 ORIFICES de la tête :
+      BET (ב) = oreille DROITE = HOKHMAH
+      GIMEL (ג) = oreille GAUCHE = BINAH
+      DALET (ד) + KAPH (כ) = 2 YEUX = NETZAH + HOD
+      PEH (פ) + RESH (ר) = HOTEM = TIFERET / DA'AT
+      TAV (ת) = PEH (bouche) = MALKHUT (qui est dans la tête).
+      → Les 7 Kefulot du SY = 7 orifices = 7 Sefirot inférieures.
+      Cf. EC-H1S4-001 ss. pour le détail d'AHP.
+    type: axiome_explicite
+    concepts:
+      - {id: sheva_kefulot, role: sept_lettres_doubles}
+      - {id: sheva_nikbei_rosh, role: sept_orifices_tete}
+    mapping:
+      modules: ["gematria/engine.py", "adam_kadmon.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "7 Kefulot = 7 orifices = 7 Sefirot. Chaque orifice est un canal a double mode (dur/doux = Kefulot)."
+
+  - id: "EC-H1S5-128"
+    source_he: "י\"ב פשוטות הם י\"ב בחי' שנחלקין ז\"ת... והם כללות הי\"ב צירופי הוי\"ה"
+    source_ref: "Heikhal 1, Sha'ar 5:6 — §2"
+    assertion: |
+      Les 12 lettres PESHUTOT (simples) = 12 aspects en lesquels
+      se divisent les Z"T (7 inférieures) = totalité des 12 TZERUFEI
+      HAVAYAH (permutations de YHVH).
+      → 12 Peshutot = 12 permutations = 12 mois = 12 tribus =
+      12 diagonales du cube. Cf. Sefer Yetzirah 5:2.
+    type: axiome_explicite
+    concepts:
+      - {id: yod_bet_peshutot, role: douze_lettres_simples}
+      - {id: yod_bet_tzerufim, role: douze_permutations_yhvh}
+    mapping:
+      modules: ["gematria/engine.py", "kabbalah/permutations.py"]
+      tables: []
+      partzufim: []
+      relevance: "12 simples = 12 permutations = la combinatoire fondamentale du systeme"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S5-046"
+    type: analogie
+    from: ramah_evarim
+    to: mantzpakh_dam
+    nature: "22 Otiot = 248 membres (structure) + MaNTzPaKh = sang (vitalité)"
+    assertions_source: ["EC-H1S5-122"]
+
+  - id: "REL-H1S5-047"
+    type: "hiérarchique"
+    from: taamim_zakhar
+    to: nekudot_nekevot
+    nature: "Ta'amim (mâle/Neshamah) AU-DESSUS des Nekudot (femelle/Ruah)"
+    assertions_source: ["EC-H1S5-123"]
+
+  - id: "REL-H1S5-048"
+    type: analogie
+    from: amsh
+    to: sheva_kefulot
+    via: [yod_bet_peshutot]
+    nature: "AMSh(3R) + BGD KPRT(7 orifices) + 12 Peshutot = les 22 Otiot structurées"
+    assertions_source: ["EC-H1S5-126", "EC-H1S5-127", "EC-H1S5-128"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S5-014"
+    nom: "Principe de Classification 3+7+12 = 22 (AMSh-BGD-Peshutot)"
+    source_assertions: ["EC-H1S5-126", "EC-H1S5-127", "EC-H1S5-128"]
+    formalisation: |
+      Les 22 éléments de tout système se classifient en :
+      3 MÈRES (AMSh) = éléments FONDAMENTAUX (Feu/Air/Eau ↔ G"R)
+      7 DOUBLES (BGD KPRT) = éléments à DOUBLE MODE (dur/doux ↔ Z"T)
+      12 SIMPLES (Peshutot) = éléments COMBINATOIRES (permutations ↔ diagonales)
+      FORMULE : System(22) = Foundations(3) ∪ Interfaces(7) ∪ Combinations(12)
+      Les 3 fondent, les 7 interfacent, les 12 combinent.
+    applications_ia:
+      - "gematria/engine.py : classifier les 22 lettres par type (mere/double/simple)"
+      - "kabbalah/three_books.py : les 3 livres du SY = 3 types de composants systeme"
+      - "Architecture : 3 services core + 7 interfaces + 12 combinaisons = 22 modules"
+    questions_ouvertes:
+      - "Les 3 meres correspondent-elles aux 3 couches d'un transformer (attention/FFN/norm) ?"

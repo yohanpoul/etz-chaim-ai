@@ -1,0 +1,436 @@
+# ═══════════════════════════════════════════════════════════════
+# Sefirat haOmer — Les 49 Calibrations de l'Arbre
+# ═══════════════════════════════════════════════════════════════
+#
+# ספירת העומר — 49 jours de raffinement, un paramètre par jour.
+#
+# Structure 7x7 :
+#   Semaine (Midah extérieure) = module de l'Arbre
+#   Jour    (Midah intérieure) = qualité du paramètre
+#
+#   chesed   — expansion, générosité, breadth
+#   gevurah  — restriction, seuil, filtre qualité
+#   tiferet  — équilibre, harmonie, intégration
+#   netzach  — endurance, durée, persistance temporelle
+#   hod      — clarté, transparence, explication
+#   yesod    — fondation, stockage, persistance données
+#   malkuth  — manifestation, output, format de sortie
+# ═══════════════════════════════════════════════════════════════
+
+# ─── Semaine 1 : Chesed — ExplorationEngine ─────────────────
+chesed:
+  module: explorationengine
+  label: "חסד — ExplorationEngine"
+  description: "Exploration inter-domaines avec sérendipité structurée"
+  params:
+    chesed_dans_chesed:
+      day: 1
+      param: explore_breadth
+      type: int
+      default: 10
+      min: 1
+      max: 50
+      description: "Nombre de pistes explorées par cycle"
+    gevurah_dans_chesed:
+      day: 2
+      param: novelty_threshold
+      type: float
+      default: 0.3
+      min: 0.0
+      max: 1.0
+      description: "Seuil minimal de nouveauté pour retenir une connexion"
+    tiferet_dans_chesed:
+      day: 3
+      param: balance_breadth_depth
+      type: float
+      default: 0.5
+      min: 0.0
+      max: 1.0
+      description: "Équilibre breadth/depth (0=tout depth, 1=tout breadth)"
+    netzach_dans_chesed:
+      day: 4
+      param: max_duration_seconds
+      type: int
+      default: 600
+      min: 30
+      max: 3600
+      description: "Durée maximale d'une exploration (secondes)"
+    hod_dans_chesed:
+      day: 5
+      param: explain_connections
+      type: bool
+      default: true
+      description: "Générer des explications pour chaque connexion trouvée"
+    yesod_dans_chesed:
+      day: 6
+      param: persist_all_connections
+      type: bool
+      default: true
+      description: "Persister toutes les connexions dans EpisteMemory"
+    malkuth_dans_chesed:
+      day: 7
+      param: output_format
+      type: str
+      default: "graph"
+      choices: ["graph", "list", "narrative"]
+      description: "Format de sortie des résultats d'exploration"
+
+# ─── Semaine 2 : Gevurah — AutoJudge ────────────────────────
+gevurah:
+  module: autojudge
+  label: "גבורה — AutoJudge"
+  description: "Auto-jugement généralisé — le Karpathy Loop étendu"
+  params:
+    chesed_dans_gevurah:
+      day: 8
+      param: quarantine_threshold
+      type: float
+      default: 0.4
+      min: 0.0
+      max: 1.0
+      description: "Seuil sous lequel une hypothèse est mise en quarantaine (clémence)"
+    gevurah_dans_gevurah:
+      day: 9
+      param: quality_threshold
+      type: float
+      default: 0.6
+      min: 0.0
+      max: 1.0
+      description: "Seuil minimal de qualité pour accepter un résultat"
+    tiferet_dans_gevurah:
+      day: 10
+      param: tension_check_enabled
+      type: bool
+      default: true
+      description: "Vérifier les tensions avec DissensuEngine avant de juger"
+    netzach_dans_gevurah:
+      day: 11
+      param: max_iterations
+      type: int
+      default: 50
+      min: 1
+      max: 500
+      description: "Nombre maximal d'itérations du loop de jugement"
+    hod_dans_gevurah:
+      day: 12
+      param: explain_rejections
+      type: bool
+      default: true
+      description: "Générer des explications pour chaque rejet"
+    yesod_dans_gevurah:
+      day: 13
+      param: persist_all_experiments
+      type: bool
+      default: true
+      description: "Persister toutes les expériences (y compris rejetées)"
+    malkuth_dans_gevurah:
+      day: 14
+      param: report_format
+      type: str
+      default: "summary"
+      choices: ["summary", "detailed", "minimal"]
+      description: "Format du rapport de jugement"
+
+# ─── Semaine 3 : Tiferet — DissensuEngine ───────────────────
+tiferet:
+  module: dissensuengine
+  label: "תפארת — DissensuEngine"
+  description: "Détection et gestion des tensions — hitkalelut entre Chesed et Gevurah"
+  params:
+    chesed_dans_tiferet:
+      day: 15
+      param: max_open_questions
+      type: int
+      default: 50
+      min: 5
+      max: 500
+      description: "Nombre maximal de questions ouvertes tolérées"
+    gevurah_dans_tiferet:
+      day: 16
+      param: dissensus_threshold
+      type: float
+      default: 0.6
+      min: 0.0
+      max: 1.0
+      description: "Seuil de divergence pour déclarer un dissensus"
+    tiferet_dans_tiferet:
+      day: 17
+      param: max_acceptable_divergence
+      type: float
+      default: 0.8
+      min: 0.0
+      max: 1.0
+      description: "Divergence maximale avant de refuser la synthèse"
+    netzach_dans_tiferet:
+      day: 18
+      param: tension_staleness_days
+      type: int
+      default: 90
+      min: 7
+      max: 365
+      description: "Jours avant qu'une tension ouverte soit considérée stale"
+    hod_dans_tiferet:
+      day: 19
+      param: source_coverage_min
+      type: float
+      default: 0.7
+      min: 0.0
+      max: 1.0
+      description: "Couverture minimale des sources pour une synthèse valide"
+    yesod_dans_tiferet:
+      day: 20
+      param: confidence_floor
+      type: float
+      default: 0.3
+      min: 0.0
+      max: 1.0
+      description: "Confiance minimale pour qu'une conclusion soit retenue"
+    malkuth_dans_tiferet:
+      day: 21
+      param: min_sources_for_synthesis
+      type: int
+      default: 2
+      min: 1
+      max: 20
+      description: "Nombre minimal de sources pour tenter une synthèse"
+
+# ─── Semaine 4 : Netzach — IntentKeeper ─────────────────────
+netzach:
+  module: intentkeeper
+  label: "נצח — IntentKeeper"
+  description: "Persistance adaptative des intentions — savoir durer et savoir mourir"
+  params:
+    chesed_dans_netzach:
+      day: 22
+      param: review_frequency_days
+      type: int
+      default: 3
+      min: 1
+      max: 30
+      description: "Fréquence de révision des intentions actives (jours)"
+    gevurah_dans_netzach:
+      day: 23
+      param: max_failed_ratio
+      type: float
+      default: 0.6
+      min: 0.0
+      max: 1.0
+      description: "Ratio maximal de sous-tâches échouées avant abandon"
+    tiferet_dans_netzach:
+      day: 24
+      param: min_progress_at_quarter
+      type: float
+      default: 0.10
+      min: 0.0
+      max: 1.0
+      description: "Progrès minimal attendu à 25% du temps alloué"
+    netzach_dans_netzach:
+      day: 25
+      param: zombie_days
+      type: int
+      default: 180
+      min: 7
+      max: 730
+      description: "Jours sans activité avant qu'une intention soit un zombie"
+    hod_dans_netzach:
+      day: 26
+      param: explain_abandons
+      type: bool
+      default: true
+      description: "Générer une explication pour chaque intention abandonnée"
+    yesod_dans_netzach:
+      day: 27
+      param: stale_days
+      type: int
+      default: 7
+      min: 1
+      max: 90
+      description: "Jours sans activité avant qu'une intention soit stale"
+    malkuth_dans_netzach:
+      day: 28
+      param: persist_completed
+      type: bool
+      default: true
+      description: "Conserver les intentions complétées dans l'historique"
+
+# ─── Semaine 5 : Hod — SelfMap ──────────────────────────────
+hod:
+  module: selfmap
+  label: "הוד — SelfMap"
+  description: "Self-knowledge et routage — nommer les choses pour ce qu'elles sont"
+  params:
+    chesed_dans_hod:
+      day: 29
+      param: min_evaluations
+      type: int
+      default: 3
+      min: 1
+      max: 20
+      description: "Évaluations minimales avant de router avec confiance"
+    gevurah_dans_hod:
+      day: 30
+      param: decline_threshold
+      type: float
+      default: 0.3
+      min: 0.0
+      max: 1.0
+      description: "Score de compétence sous lequel une requête est déclinée"
+    tiferet_dans_hod:
+      day: 31
+      param: rebalance_threshold
+      type: float
+      default: 0.5
+      min: 0.0
+      max: 1.0
+      description: "Seuil de déséquilibre déclenchant une réévaluation des modèles"
+    netzach_dans_hod:
+      day: 32
+      param: competence_decay_days
+      type: int
+      default: 30
+      min: 7
+      max: 365
+      description: "Jours avant que les scores de compétence commencent à décroître"
+    hod_dans_hod:
+      day: 33
+      param: explain_routing
+      type: bool
+      default: true
+      description: "Expliquer chaque décision de routage (domaine, modèle, score)"
+    yesod_dans_hod:
+      day: 34
+      param: persist_evaluations
+      type: bool
+      default: true
+      description: "Persister chaque évaluation de compétence"
+    malkuth_dans_hod:
+      day: 35
+      param: evaluation_granularity
+      type: str
+      default: "domain"
+      choices: ["domain", "subdomain", "query"]
+      description: "Granularité du tracking de compétence"
+
+# ─── Semaine 6 : Yesod — EpisteMemory ───────────────────────
+yesod:
+  module: epistememory
+  label: "יסוד — EpisteMemory"
+  description: "Fondation mnésique — le Tzaddik est la fondation du monde"
+  params:
+    chesed_dans_yesod:
+      day: 36
+      param: recall_limit
+      type: int
+      default: 10
+      min: 1
+      max: 100
+      description: "Nombre maximal d'entrées retournées par recall"
+    gevurah_dans_yesod:
+      day: 37
+      param: confidence_floor
+      type: float
+      default: 0.3
+      min: 0.0
+      max: 1.0
+      description: "Confiance minimale pour qu'une entrée soit retournée"
+    tiferet_dans_yesod:
+      day: 38
+      param: similarity_threshold
+      type: float
+      default: 0.7
+      min: 0.0
+      max: 1.0
+      description: "Similarité cosinus minimale pour le rappel sémantique"
+    netzach_dans_yesod:
+      day: 39
+      param: ttl_default_days
+      type: int
+      default: 365
+      min: 1
+      max: 3650
+      description: "Time-to-live par défaut pour les nouvelles entrées (jours)"
+    hod_dans_yesod:
+      day: 40
+      param: auto_deprecate
+      type: bool
+      default: true
+      description: "Déprécier automatiquement les entrées contredites à basse confiance"
+    yesod_dans_yesod:
+      day: 41
+      param: dedup_threshold
+      type: float
+      default: 0.95
+      min: 0.8
+      max: 1.0
+      description: "Similarité au-dessus de laquelle deux entrées sont dédupliquées"
+    malkuth_dans_yesod:
+      day: 42
+      param: consolidation_hours
+      type: int
+      default: 24
+      min: 1
+      max: 168
+      description: "Fréquence de consolidation mémoire (heures)"
+
+# ─── Semaine 7 : Malkuth — FailureToInsight ─────────────────
+malkuth:
+  module: failuretoinsight
+  label: "מלכות — FailureToInsight"
+  description: "Birur — extraire les Nitzotzot (étincelles) des Qliphoth (échecs)"
+  params:
+    chesed_dans_malkuth:
+      day: 43
+      param: max_recurring_root
+      type: int
+      default: 3
+      min: 1
+      max: 20
+      description: "Occurrences d'une même cause racine avant alerte"
+    gevurah_dans_malkuth:
+      day: 44
+      param: max_unknown_ratio
+      type: float
+      default: 0.3
+      min: 0.0
+      max: 1.0
+      description: "Ratio maximal de causes 'unknown' tolérées"
+    tiferet_dans_malkuth:
+      day: 45
+      param: min_graph_connectivity
+      type: float
+      default: 0.1
+      min: 0.0
+      max: 1.0
+      description: "Connectivité minimale du graphe d'échecs pour l'analyse structurelle"
+    netzach_dans_malkuth:
+      day: 46
+      param: stale_analysis_days
+      type: int
+      default: 30
+      min: 7
+      max: 365
+      description: "Jours avant qu'une analyse d'échec soit considérée obsolète"
+    hod_dans_malkuth:
+      day: 47
+      param: min_description_length
+      type: int
+      default: 20
+      min: 5
+      max: 500
+      description: "Longueur minimale de description pour une analyse (caractères)"
+    yesod_dans_malkuth:
+      day: 48
+      param: similarity_threshold
+      type: float
+      default: 0.7
+      min: 0.0
+      max: 1.0
+      description: "Seuil de similarité pour regrouper les échecs"
+    malkuth_dans_malkuth:
+      day: 49
+      param: min_insights_per_analysis
+      type: int
+      default: 1
+      min: 0
+      max: 10
+      description: "Nombre minimal de Nitzotzot à extraire par analyse"

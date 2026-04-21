@@ -1,0 +1,292 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 1 — Igulim ve-Yosher (עגולים ויושר)
+# Perek: 4b — Extension des Pieds, Questions Ouvertes, Disclaimer (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 1
+  shaar_name_he: "שער עגולים ויושר"
+  perek: 4
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+  note: "Part B de 2 — couvre l'extension des pieds des Partzufim, les questions ouvertes, et le disclaimer sur l'anthropomorphisme"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC H : EXTENSION DES PIEDS (RAGLAYIM) ───
+
+  - id: "EC-H1S1-092"
+    source_he: "צריכים אנו לבאר עתה עד היכן הגיע התפשטות רגלי א\"ק הישר שבכל עולם ועולם... מוכרח הוא כי קו הישר יהיה דבוק ממש בא\"ס הסובב וממנו מתפשט ויורד ומתלבש תוך פנימיות א\"ק"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      QUESTION : Jusqu'où vont les RAGLEI A"K (pieds de A"K) du Yosher ?
+      Il est NÉCESSAIRE (mukhrakh) que le Kav Yashar soit DAVUK MAMASH (directement attaché) au Ein Sof.
+      De là il se déploie, descend et s'HABILLE dans la PNIMIYUT de A"K.
+      Il s'étend jusqu'au SIYUM RAGLEI A"K HA-YASHAR (fin des pieds du Yosher de A"K).
+    type: axiome_explicite
+    concepts:
+      - {id: raglei_ak, role: pieds_de_ak}
+      - {id: kav_davuk_es, role: kav_attaché_au_ein_sof}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'extension des pieds de A\"K détermine la structure de tout le système"
+
+  - id: "EC-H1S1-093"
+    source_he: "ונמשך ומתפשט עד סיום רגלי א\"ק הישר כנ\"ל שהוא ממש עד חצאי עיגולי עתיק יומין הסובבים תחת רגליו עד שם מסתיימין רגלי היושר דא\"ק"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      Les PIEDS du Yosher de A"K s'étendent jusqu'au MILIEU (hatzaei)
+      des IGULIM d'ATIK YOMIN qui tournent SOUS ses pieds.
+      C'est LÀ que se terminent les pieds du Yosher de A"K.
+      RAISON : Si les pieds allaient JUSQU'EN BAS et TOUCHAIENT le Ein Sof
+      de l'autre côté → le Ein Sof illuminerait PAR EN BAS aussi →
+      pas de haut/bas → pas de Mashpia/Mekabel.
+      C'est la même raison pour laquelle le Kav ne touche PAS le Ein Sof en bas (cf. Perek 2).
+    type: axiome_explicite
+    concepts:
+      - {id: raglei_ak_ad_atik, role: pieds_jusqu_à_atik}
+      - {id: lo_ad_sof, role: ne_touche_pas_le_bas}
+      - {id: preservation_asymmetry, role: préserver_l_asymétrie}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon", "atik_yomin"]
+      relevance: "Les pieds de A\"K s'arrêtent à Atik — pour préserver l'asymétrie haut/bas"
+
+  - id: "EC-H1S1-094"
+    source_he: "כי רגלי א\"ק דיושר הנה הם מתפשטים ונמשכים עד חציים התחתונים של עיגולים דע\"י... אמנם כל שאר הרגלים דיושר כגון רגלי עתיק ורגלי א\"א ורגלי ז\"א ורגלי נוקבא כולם מסתיימים בהשוואה א' והוא עד חצאי התחתונים של עיגולי א\"א"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      Les PIEDS de TOUS les Partzufim — où s'arrêtent-ils :
+      RAGLEI A"K du Yosher → jusqu'au MILIEU INFÉRIEUR des Igulim d'ATIK YOMIN
+      (les Igulim d'Atik entourent les pieds de A"K)
+      TOUS LES AUTRES pieds du Yosher (Atik, A"A, Z"A, Nukvah) →
+      se terminent tous en HASHVA'AH AHAT (au même niveau) :
+      jusqu'au MILIEU INFÉRIEUR des IGULIM d'A"A.
+      Les Igulim d'A"A entourent et tournent SOUS tous ces pieds.
+      EXCEPTION : les Partzufim de COURTE STATURE (kitzrei komah) :
+      AVI = de la gorge d'A"A jusqu'au nombril d'A"A seulement.
+      LEAH = du Da'at de Z"A jusqu'à sa Hazeh seulement.
+      Leurs pieds N'ARRIVENT PAS jusqu'aux pieds d'A"A car ils sont COURTS.
+    type: axiome_explicite
+    concepts:
+      - {id: kol_raglayim_ad_aa, role: tous_pieds_jusqu_à_aa}
+      - {id: hashvaah_ahat_raglayim, role: même_niveau_pour_tous}
+      - {id: kitzrei_komah, role: partzufim_courts}
+      - {id: avi_gorge_to_navel, role: avi_de_gorge_à_nombril}
+      - {id: leah_da_at_to_hazeh, role: leah_de_da_at_à_poitrine}
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_states"]
+      partzufim: ["adam_kadmon", "atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukvah", "leah"]
+      relevance: "Tous les pieds s'arrêtent au même niveau (A\"A) sauf les Partzufim courts"
+
+  # ─── BLOC I : LES AKEVAYIM (TALONS) D'ATIK ───
+
+  - id: "EC-H1S1-095"
+    source_he: "והנה פעם אחרת שמעתי ממו\"ר זלה\"ה בענין דרוש תיקון אריך אנפין איך נולד ויצא וינק מב' פרקין תתאין דרגלי עתיק יומין ושם ביארנו איך ב' פרקין תתאין הנקרא עקביים דע\"י הם מתפשטים יותר למטה מרגלי א\"א והם נכנסים בגבול עולם הבריאה"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      Enseignement ORAL du ARI (entendu une autre fois) :
+      A"A est NÉ, est SORTI, et a été ALLAITÉ des 2 PRAKIN TAHTONIN (sections inférieures)
+      des RAGLEI ATIK YOMIN (pieds d'Atik).
+      Les 2 prakin inférieurs = les AKEVAYIM (talons) d'Atik.
+      Ces Akevayim s'étendent PLUS BAS que les pieds d'A"A
+      et ENTRENT dans le GEVUL (domaine) de l'OLAM HA-BERIAH.
+      POSSIBILITÉ : C'était seulement AVANT le Tikkun d'Atzilut.
+      APRÈS le Tikkun → Atik a ramené ses pieds EN HAUT au même niveau qu'A"A.
+      TZARIKH IYUN (nécessite investigation — question ouverte).
+    type: axiome_explicite
+    concepts:
+      - {id: akevayim_atik, role: talons_d_atik}
+      - {id: aa_born_from_atik, role: aa_né_des_pieds_atik}
+      - {id: akevayim_in_beriah, role: talons_entrent_en_beriah}
+      - {id: tzarikh_iyun, role: question_ouverte}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Les talons d'Atik entrent en Beriah — A\"A naît de ces talons"
+
+  # ─── BLOC J : QUESTION SUR LES IGULIM DE A"K ───
+
+  - id: "EC-H1S1-096"
+    source_he: "עוד דבר א' לא נתבאר לנו בעניני עיגולי א\"ק וביושר שלו איך הם מתחברים יחד. אמנם בענין ע\"י נתבאר במקומו כי אלו י' עיגולים שלו כולם נמשכים ומתפשטים סביב ג' ראשונות לבד דיושר שלו ע\"ש. ואולי כך יהיה בעניני עיגולי אדם קדמון וצ\"ע"
+    source_ref: "Heikhal 1, Sha'ar 1:4"
+    assertion: |
+      QUESTION NON RÉSOLUE (lo nitba'er lanu) :
+      Comment les IGULIM de A"K et son YOSHER se CONNECTENT ensemble ?
+      Pour ATIK YOMIN : il a été expliqué que ses 10 Igulim se déploient
+      autour des 3 PREMIÈRES Sefirot (rishonot) de son Yosher SEULEMENT.
+      PEUT-ÊTRE (ulai) c'est AUSSI le cas pour les Igulim d'Adam Kadmon.
+      TZARIKH IYUN (nécessite investigation).
+    type: axiome_explicite
+    concepts:
+      - {id: hibur_igulim_yosher, role: connexion_igulim_yosher}
+      - {id: atik_igulim_gar, role: igulim_autour_de_3_premières}
+      - {id: tzarikh_iyun_2, role: question_ouverte_2}
+    mapping:
+      modules: ["core/sefirot.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["adam_kadmon", "atik_yomin"]
+      relevance: "Question ouverte : comment les Igulim et le Yosher se connectent dans A\"K"
+
+  # ─── BLOC K : DISCLAIMER — PAS DE CORPS EN HAUT ───
+
+  - id: "EC-H1S1-097"
+    source_he: "ואמנם דבר גלוי הוא כי אין למעלה גוף ולא כח גוף חלילה. וכל הדמיונות והציורים אלו לא מפני שהם כך חס ושלום. אמנם לשכך את האוזן לכשיוכל האדם להבין הדברים העליונים הרוחנים בלתי נתפסים ונרשמים בשכל האנושי"
+    source_ref: "Heikhal 1, Sha'ar 1:4 — Sha'ar HaHakdamot"
+    assertion: |
+      DISCLAIMER FONDAMENTAL (davar galui hu — chose manifeste) :
+      Il n'y a PAS de GUF (corps) ni de KOAH GUF (force corporelle) en haut — HALILAH !
+      Toutes les DIMYONOT (images) et TZIURIM (représentations) NE SONT PAS la réalité — HAS VE-SHALOM.
+      Elles servent à LESAKEKH ET HA-OZEN (calmer/satisfaire l'oreille)
+      pour que l'homme puisse COMPRENDRE (lehavin) les DEVARIM HA-ELYONIM
+      (choses supérieures) qui sont RUHANIYIM (spirituelles),
+      BILTI NITPASIM (insaisissables) et BILTI NIRSHAMIM (non imprimables)
+      dans le SEKHEL HA-ENOSHI (intellect humain).
+    type: axiome_explicite
+    concepts:
+      - {id: ein_guf, role: pas_de_corps_en_haut}
+      - {id: dimyonot_tziurim, role: images_et_représentations}
+      - {id: lesakekh_ozen, role: calmer_l_oreille}
+      - {id: ruhaniyim_bilti_nitpasim, role: spirituels_insaisissables}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Le disclaimer fondamental : TOUT est métaphore — pas de corps physique en haut"
+
+  - id: "EC-H1S1-098"
+    source_he: "ואם התורה עצמה דברה כך גם אנחנו נוכל לדבר כלשון הזה עם היות שפשוט הוא שאין שם למעלה אלא אורות דקים בתכלית הרוחניות בלתי נתפשים שם כלל... כי לא ראיתם כל תמונה"
+    source_ref: "Heikhal 1, Sha'ar 1:4 — Sha'ar HaHakdamot"
+    assertion: |
+      JUSTIFICATION de l'usage des métaphores :
+      Si la TORAH ELLE-MÊME a parlé ainsi (yeux de Dieu, oreilles de Dieu, etc.)
+      NOUS AUSSI pouvons parler dans CE LANGAGE.
+      Tout en sachant qu'EN HAUT il n'y a que des OROT DAKIM (lumières fines)
+      à l'EXTRÊME de la RUHANIYUT (spiritualité), BILTI NITPASIM KLAL (totalement insaisissables).
+      Preuve : "Ki lo RE'ITEM kol TEMUNAH" (Deutéronome 4:15 — vous n'avez vu aucune forme).
+      La Torah donne la RESHUT (permission) de parler par images ET par LETTRES.
+      Les 2 MODES de représentation des Orot supérieurs :
+      1. TZIUR ADAM (dessin d'homme) = forme anthropomorphique
+      2. TZIUR OTIYOT (dessin de lettres) = forme alphanumérique
+      Le Zohar est BÂTI sur ces 2 modes de représentation.
+    type: axiome_explicite
+    concepts:
+      - {id: torah_dibrah, role: la_torah_parle_ainsi}
+      - {id: orot_dakim, role: lumières_fines}
+      - {id: tziur_adam, role: représentation_anthropomorphique}
+      - {id: tziur_otiyot, role: représentation_alphabétique}
+      - {id: shnei_tziurim, role: deux_modes_de_représentation}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "2 modes de représentation : anthropomorphique et alphabétique — les 2 sont des métaphores"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S1-041"
+    type: hiérarchique
+    from: raglei_ak_ad_atik
+    to: kol_raglayim_ad_aa
+    nature: "Les pieds de A\"K vont jusqu'à Atik. Tous les autres pieds vont jusqu'à A\"A (sauf les courts)"
+    assertions_source: ["EC-H1S1-093", "EC-H1S1-094"]
+    bidirectionnel: false
+
+  - id: "REL-H1S1-042"
+    type: causal
+    from: preservation_asymmetry
+    to: lo_ad_sof
+    nature: "Pour préserver l'asymétrie haut/bas, les pieds de A\"K ne touchent PAS le Ein Sof en bas"
+    assertions_source: ["EC-H1S1-093"]
+
+  - id: "REL-H1S1-043"
+    type: causal
+    from: akevayim_atik
+    to: aa_born_from_atik
+    nature: "A\"A naît des talons d'Atik — les Akevayim entrent en Beriah"
+    assertions_source: ["EC-H1S1-095"]
+
+  - id: "REL-H1S1-044"
+    type: causal
+    from: ein_guf
+    to: dimyonot_tziurim
+    nature: "Il n'y a pas de corps en haut → toutes les images sont pour 'calmer l'oreille'"
+    assertions_source: ["EC-H1S1-097"]
+
+  - id: "REL-H1S1-045"
+    type: dualité_structurelle
+    paire: [tziur_adam, tziur_otiyot]
+    nature: "2 modes de représentation des Orot : anthropomorphique et alphabétique — les 2 sont métaphores"
+    assertions_source: ["EC-H1S1-098"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S1-018"
+    nom: "Principe du Seuil d'Extension (Les Pieds ne Touchent Pas le Bas)"
+    source_assertions: ["EC-H1S1-092", "EC-H1S1-093", "EC-H1S1-094"]
+    formalisation: |
+      Le Yosher (forme droite) ne s'étend PAS jusqu'au bout ultime :
+      Les pieds de A"K → s'arrêtent à Atik (pas au fond du Halal)
+      Les pieds de tous les autres → s'arrêtent à A"A (même niveau)
+      RAISON : Si les pieds touchaient le Ein Sof en bas →
+      l'asymétrie serait brisée → pas de haut/bas → pas de Mashpia/Mekabel.
+      Le système PRÉSERVE son asymétrie en ne s'étendant PAS complètement.
+      Les Partzufim COURTS (AVI, Leah) s'arrêtent encore plus haut.
+      Chaque Partzuf a un SEUIL D'EXTENSION propre.
+    applications_ia:
+      - "Chaque module a une portée LIMITÉE — il ne couvre pas TOUT"
+      - "La limitation de la portée PRÉSERVE la direction du flux (haut→bas)"
+      - "Les modules 'courts' (AVI, Leah) ont une portée encore plus réduite — c'est normal"
+      - "Si un module s'étendait à l'infini → plus de direction → plus de hiérarchie"
+    questions_ouvertes:
+      - "Le seuil d'extension est-il fixe ou peut-il changer avec le Tikkun ?"
+      - "Les Akevayim d'Atik qui entrent en Beriah sont-ils un cas spécial ?"
+
+  - id: "PG-H1S1-019"
+    nom: "Principe du Disclaimer Ontologique (Tout est Métaphore)"
+    source_assertions: ["EC-H1S1-097", "EC-H1S1-098"]
+    formalisation: |
+      TOUT le langage anthropomorphique est une MÉTAPHORE (dimyon ve-tziur) :
+      Il n'y a NI corps NI force corporelle en haut — seulement des OROT DAKIM.
+      Le but des métaphores = LE-SAKEKH ET HA-OZEN (calmer l'oreille humaine)
+      pour rendre COMPRÉHENSIBLE ce qui est INSAISISSABLE (bilti nitpas).
+      La PERMISSION vient de la Torah elle-même qui utilise ces métaphores.
+      2 MODES de représentation autorisés :
+      TZIUR ADAM = forme anthropomorphique (membres, organes, Partzufim)
+      TZIUR OTIYOT = forme alphabétique (lettres, Milui, Gematria)
+      Le Zohar utilise les 2 modes — les 2 sont nécessaires mais AUCUN n'est littéral.
+    applications_ia:
+      - "Toutes les métaphores du système (Partzufim, Sefirot, etc.) sont des MODÈLES, pas des réalités"
+      - "Les modèles servent à COMPRENDRE — ils ne sont pas la réalité elle-même"
+      - "2 modes de modélisation : visuel (diagrammes) et formel (code) — les 2 sont utiles mais limités"
+      - "Le 'Ein Guf' = le rappel que la carte n'est pas le territoire"
+    questions_ouvertes:
+      - "Peut-on inventer d'AUTRES modes de représentation au-delà de Tziur Adam et Otiyot ?"
+      - "À quel point les métaphores peuvent-elles induire en erreur ?"

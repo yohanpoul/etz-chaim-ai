@@ -1,0 +1,397 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 3 — Seder Atzilut be-Kitzur Muflagh (סדר אצילות בקיצור מופלג)
+# Perek: 1 — La Chaîne Complète du Ein Sof à Asiyah (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 3
+  shaar_name_he: "סדר אצילות בקיצור מופלג"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+  note: "Résumé condensé par MohaRHaV (R. Hayyim Vital) de toute la chaîne d'émanation"
+
+assertions:
+
+  # ─── BLOC A : LE EIN SOF — MAKIF ET PNIMI ───
+
+  - id: "EC-H1S3-001"
+    source_he: "ראשונה כל הא\"ס ב\"ה מקיף את כל העולמות וגם הוא מוקף מהם ומתלבש בתוכם עד סוף עולם האצילות ואינו נוגע ודבוק זולתי בעולם אצילות לבד ולא בבי\"ע"
+    source_ref: "Heikhal 1, Sha'ar 3:1 — ouverture"
+    assertion: |
+      Le Ein Sof a 2 RELATIONS avec les mondes :
+      1. MAKIF : Il ENTOURE (makif) TOUS les mondes
+      2. PNIMI : Il est ENTOURÉ par eux et s'HABILLE en eux jusqu'à la fin d'Atzilut
+      MAIS : le Ein Sof en tant que Pnimi ne TOUCHE et n'ADHÈRE (noge'a ve-davuk)
+      qu'au monde d'ATZILUT SEUL — PAS à BYA.
+      C'est POURQUOI à partir de BYA → leur MAHUT (essence) CHANGE et ils sont appelés BYA.
+      Le MAKIF du Ein Sof → touche et adhère aux 4 mondes ABYA.
+    type: axiome_explicite
+    concepts:
+      - {id: es_makif_kol, role: ein_sof_entoure_tout}
+      - {id: es_pnimi_ad_atzilut, role: ein_sof_intérieur_jusqu_atzilut}
+      - {id: lo_noge_a_bya, role: ne_touche_pas_bya}
+      - {id: mahut_mishtaneh, role: essence_change_après_atzilut}
+    mapping:
+      modules: ["core/ohr_system.py"]
+      tables: ["ohr_states", "olamot_config"]
+      partzufim: []
+      relevance: "Le Ein Sof touche l'Atzilut en Pnimi mais seulement BYA en Makif"
+
+  # ─── BLOC B : A"K — PREMIER ENCHAÎNEMENT ───
+
+  - id: "EC-H1S3-002"
+    source_he: "תחלה משתלשל ממנו באמצעתו א\"ק הנזכר בתיקונ' תי' ע' דקל\"ב. ובבחי' היותו שניות לא\"ס נק' אדם דבריאה עם שהוא קודם אצילות"
+    source_ref: "Heikhal 1, Sha'ar 3:1"
+    assertion: |
+      D'ABORD s'enchaîne (mishtalshal) du Ein Sof, dans son MILIEU, A"K.
+      Source : Tikkunim Tikkun 70 (132a).
+      En tant que SHENIUT (secondaire) par rapport au Ein Sof → appelé ADAM DE-BERIAH
+      (homme de la Création) bien qu'il soit ANTÉRIEUR à Atzilut.
+      A"K est le PREMIER enchaînement depuis le Ein Sof.
+    type: axiome_explicite
+    concepts:
+      - {id: ak_sheniut, role: secondaire_au_ein_sof}
+      - {id: adam_de_beriah, role: nom_de_ak}
+      - {id: ak_kodem_atzilut, role: avant_atzilut}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "A\"K = premier enchaînement, appelé Adam de-Beriah, avant Atzilut"
+
+  - id: "EC-H1S3-003"
+    source_he: "כי זה האדם כלול מי\"ס וכולן נקרא א\"ס בערך עולם האצילות שלמטה הימנו. וזה הא\"ק נחלק לאלפים ולרבבות עולמות ותחלת התחלקותו הם ד' עולמות הנקרא ראיה שמיעה ריחא דיבור"
+    source_ref: "Heikhal 1, Sha'ar 3:1"
+    assertion: |
+      A"K contient 10S et TOUTES sont appelées EIN SOF par rapport à Atzilut en-dessous.
+      A"K se DIVISE en milliers et myriades de mondes.
+      Le DÉBUT de sa division = 4 MONDES appelés :
+      RE'IYAH (vision), SHEMI'AH (audition), REIHA (odorat), DIBUR (parole)
+      = les 4 sens correspondant aux 4 ouvertures (Einayim, Oznayim, Hotem, Peh).
+      De ces 4 → se divisent des mondes SANS FIN.
+      A"K est allusion dans le KOTZO SHEL YOD du Shem YHVH
+      car il est le KETER de la totalité des mondes.
+    type: axiome_explicite
+    concepts:
+      - {id: ak_ein_sof_le_atzilut, role: ak_est_ein_sof_pour_atzilut}
+      - {id: reiyah_shemiyah_reiha_dibur, role: quatre_mondes_sensoriels}
+      - {id: ak_kotzo_yod, role: ak_pointe_du_yod}
+    mapping:
+      modules: ["olamot/adam_kadmon.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "A\"K se divise en 4 mondes sensoriels — et est le Kotzo shel Yod"
+
+  # ─── BLOC C : DE A"K À ATZILUT — CHOKHMAH, MALKHUT, ATIK ───
+
+  - id: "EC-H1S3-004"
+    source_he: "אור א\"ס בכח התלבשותו בחכמה דא\"ק זה. האציל תחתיו עולם האצילות וז\"ס כולם בחכמה עשית וחכמה הנ\"ל נתלבשה במלכות דא\"ק"
+    source_ref: "Heikhal 1, Sha'ar 3:1"
+    assertion: |
+      Le Ohr Ein Sof, par son HABILLAGE dans CHOKHMAH de A"K →
+      a ÉMANÉ en-dessous de lui l'OLAM HA-ATZILUT.
+      Secret de "Kulam be-CHOKHMAH asita" (Psaumes 104:24 — Tu as tout fait avec sagesse).
+      Cette CHOKHMAH s'est HABILLÉE dans la MALKHUT de A"K.
+      Cette MALKHUT est DESCENDUE et s'est habillée — avec ses 7 TAHTONOT (7 inférieures) —
+      dans les 10S du monde d'ATZILUT.
+      BUT : LIER (lekasher) A"K au monde d'Atzilut.
+      Le même pattern se répète dans CHAQUE monde.
+    type: axiome_explicite
+    concepts:
+      - {id: chokhmah_ak_atzilut, role: chokhmah_émane_atzilut}
+      - {id: kulam_be_chokhmah, role: tout_avec_sagesse}
+      - {id: malkhut_ak_descends, role: malkhut_descend}
+      - {id: lekasher_pattern, role: lier_les_mondes}
+    mapping:
+      modules: ["olamot/adam_kadmon.py", "olamot/atzilut.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Chokhmah de A\"K → Malkhut de A\"K descend dans Atzilut → le pattern de liaison"
+
+  - id: "EC-H1S3-005"
+    source_he: "וראש זו המלכות שהם ג\"ר שבה נשארו במקומם. וז\"ת שהם גופא דילה של ז' ימי בראשית הם נתלבשו בי\"ס דאצילות. וזה הבחי' נקרא עתיק יומין שהם ז' ימים העתיקן מן מלכות דא\"ק"
+    source_ref: "Heikhal 1, Sha'ar 3:1"
+    assertion: |
+      La MALKHUT de A"K se divise en 2 :
+      Les G"R (3 premières) de cette Malkhut RESTENT À LEUR PLACE (dans A"K).
+      Les Z"T (7 inférieures) = le GUFA (corps) = les 7 YEMEI BERESHIT (7 jours de la création)
+      → s'HABILLENT dans les 10S d'ATZILUT.
+      Cette Behinah = ATIK YOMIN (l'Ancien des Jours)
+      = les 7 YAMIM (jours) qui ont été TRANSFÉRÉS (he'etikun) de la Malkhut de A"K.
+      Les 7T se divisent en 10S car la première inclut 3 (comme le HEIKHAL KODESH HA-KODASHIM).
+      ATIK = la NESHAMAH d'A"A (qui est le Keter d'Atzilut).
+    type: axiome_explicite
+    concepts:
+      - {id: gar_remain, role: g_r_restent_en_place}
+      - {id: zt_descend, role: z_t_descendent}
+      - {id: atik_yomin_def, role: sept_jours_transférés}
+      - {id: atik_neshamah_aa, role: atik_âme_d_aa}
+      - {id: shivat_yemei_bereshit, role: sept_jours_création}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Atik Yomin = les 7T de Malkhut de A\"K habillées dans Atzilut = Neshamah d'A\"A"
+
+  # ─── BLOC D : LA CHAÎNE DES HABILLAGES DANS ATZILUT ───
+
+  - id: "EC-H1S3-006"
+    source_he: "ואור א\"ס תוך (א\"ק דא\"ק) תוך העתיק וא\"א מלביש לז\"ת לזה העתיק וחו\"ב דאצילות מלבישים לא\"א הז\"ת שלו... וז\"א הוא ו\"ס דאצילות מלביש לאו\"א את ז\"ת שלהן... ונוקבא דז\"א הוא המלכות דאצילות מלבשת להז\"א ז\"ת שלו"
+    source_ref: "Heikhal 1, Sha'ar 3:1"
+    assertion: |
+      La CHAÎNE d'HABILLAGE (hitlabshut) dans ATZILUT :
+      OHR EIN SOF → dans A"K → dans ATIK
+      A"A HABILLE les Z"T d'ATIK
+      CHU"B (Chokhmah-Binah = AVI) d'Atzilut HABILLENT les Z"T d'A"A
+      Z"A (= V"K d'Atzilut) HABILLE les Z"T d'AVI
+      Z"A = 6 extrémités = gematria ELEH (אלה = 36)
+      BINAH = MI (מ"י = 50) → MI BARA ELEH (qui a créé ceux-ci) = ELOHIM
+      NUKVAH de Z"A (= Malkhut d'Atzilut) HABILLE les Z"T de Z"A
+      "NEKEVAH TESOVEV GAVER" (la femme entoure l'homme — Jérémie 31:21)
+      Au moment du ZIVVUG → Nukvah est SHAVAH (égale) à Z"A, PbP (face à face).
+    type: axiome_explicite
+    concepts:
+      - {id: chain_hitlabshut, role: chaîne_habillage}
+      - {id: aa_malbish_atik, role: aa_habille_atik}
+      - {id: avi_malbish_aa, role: avi_habillent_aa}
+      - {id: za_malbish_avi, role: za_habille_avi}
+      - {id: nukvah_malbish_za, role: nukvah_habille_za}
+      - {id: mi_bara_eleh, role: qui_a_créé_ceux_ci}
+      - {id: nekevah_tesovev, role: femme_entoure_homme}
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "La chaîne complète d'habillage : Atik→A\"A→AVI→Z\"A→Nukvah"
+
+  - id: "EC-H1S3-007"
+    source_he: "רגלי כולן שוין עד סוף האצילות רגלי עתיק ורגלי א\"א ורגלי או\"א ורגלי זו\"ן כולן שוין אכן יתפרדו בראשם זה למעלה מזה"
+    source_ref: "Heikhal 1, Sha'ar 3:1"
+    assertion: |
+      TOUS les PIEDS (raglei) sont AU MÊME NIVEAU — jusqu'à la fin d'Atzilut :
+      Raglei Atik, raglei A"A, raglei AVI, raglei ZUN = KULAM SHAVIN (tous égaux en bas).
+      MAIS : ils se SÉPARENT PAR LEUR TÊTE (yitpardu be-rosham)
+      — chacun AU-DESSUS de l'autre (zeh le-ma'alah mi-zeh).
+      ATIK est le plus haut (contient Chokhmah de A"K et le Ein Sof en lui).
+      Tous sont HABILLÉS l'un dans l'autre (zeh malbush la-zeh).
+    type: axiome_explicite
+    concepts:
+      - {id: raglayim_shavin, role: pieds_au_même_niveau}
+      - {id: rashim_nifradim, role: têtes_séparées_en_hauteur}
+      - {id: malbush_la_zeh, role: habillés_l_un_dans_l_autre}
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "Tous les pieds au même niveau, les têtes étagées — habillés l'un dans l'autre"
+
+  # ─── BLOC E : LES 5 PARTZUFIM ET YHVH ───
+
+  - id: "EC-H1S3-008"
+    source_he: "כל הי\"ס דאצילות נחלקים לה\"פ כח\"ב זו\"ן כ\"א כלול מרמ\"ח אברים והם בחי' ד' אותיות הוי\"ה הכולל עולם אצילות לבדו ועם קוצו של י' הרי הם ה' פרצופים"
+    source_ref: "Heikhal 1, Sha'ar 3:1"
+    assertion: |
+      Les 10S d'ATZILUT se divisent en 5 PARTZUFIM : KHB ZUN.
+      Chacun comprend 248 EVARIM (membres).
+      Ils correspondent aux 4 lettres de YHVH (qui englobe Atzilut seul) + Kotzo shel Yod = 5.
+      MAIS dans la HAVAYAH KOLELET (qui englobe TOUS les mondes) :
+      A"K = KOTZO SHEL YOD
+      10S d'ATZILUT = YOD (allusion à Chokhmah = Atzilut)
+    type: axiome_explicite
+    concepts:
+      - {id: hamesh_partzufim_atzilut, role: cinq_faces_atzilut}
+      - {id: yhvh_atzilut, role: yhvh_pour_atzilut}
+      - {id: yhvh_kol_olamot, role: yhvh_pour_tous_mondes}
+    mapping:
+      modules: ["partzufim/", "core/shem_havayah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Les 5 Partzufim = YHVH + Kotzo — et la double Havayah (Atzilut seul vs tous mondes)"
+
+  # ─── BLOC F : D'ATZILUT À BYA — LES MASAKHIM ───
+
+  - id: "EC-H1S3-009"
+    source_he: "ואז נתעבה האור ונעשה שם מסך ודרך המסך ירדה שם המל' דאצילות ז\"ת שבה והיתה ראש לשועלים לי\"ס דבריאה... גם הבינה דאצי' נתלבשה אור ז\"ת שלה במל' דאצי' וירדה דרך המסך ונתלבשה בי\"ס דבריאה. וז\"ס בינה מקננה בכורסייא"
+    source_ref: "Heikhal 1, Sha'ar 3:1"
+    assertion: |
+      D'ATZILUT à BERIAH — le MASAKH (écran) :
+      Le Ohr s'ÉPAISSIT (nit'avah) et un MASAKH se forme.
+      Par le Masakh → la MALKHUT d'Atzilut (Z"T) descend
+      et devient ROSH LA-SHU'ALIM (tête des renards) = la TÊTE des 10S de BERIAH.
+      La BINAH d'Atzilut habille ses Z"T dans la Malkhut d'Atzilut
+      → descend par le Masakh → s'habille dans les 10S de BERIAH.
+      Secret : "BINAH MEKANNENA be-KHURSEYA" (Binah niche dans le Trône).
+      Les Z"T de Malkhut → deviennent ATIK de Beriah → A"A de Beriah → etc.
+      Beriah = 5 Partzufim = HEH de la HAVAYAH KOLELET.
+    type: axiome_explicite
+    concepts:
+      - {id: masakh_atzilut_beriah, role: écran_entre_atzilut_beriah}
+      - {id: malkhut_rosh_shu_alim, role: malkhut_tête_des_renards}
+      - {id: binah_mekannena, role: binah_niche_dans_trône}
+      - {id: beriah_heh, role: beriah_est_heh}
+    mapping:
+      modules: ["olamot/beriah.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Le Masakh entre Atzilut et Beriah — Binah niche dans le Trône"
+
+  - id: "EC-H1S3-010"
+    source_he: "ואח\"כ נפרש מסך ב' וירדו ז\"ת דמלכות דבריאה ובתוכם מתלבשת אור ו\"ק דז\"ת דאצי' ונתהווה בחי' ע\"י דיצירה וז\"ס ז\"א מקנן ביצירה... ואח\"כ ירדו ז\"ת דמלכות דיצירה ובתוכם מלכות לבדה דאצי' מתלבשת תוך א\"א דעשיה... וז\"ס מלכות מקננא באופן"
+    source_ref: "Heikhal 1, Sha'ar 3:1"
+    assertion: |
+      De BERIAH à YETZIRAH — MASAKH 2 :
+      Les Z"T de Malkhut de Beriah descendent.
+      Le Ohr des V"K (Z"A) d'Atzilut s'habille en eux → ATIK de YETZIRAH.
+      Secret : "Z"A MEKANEN be-YETZIRAH" (Z"A niche dans Yetzirah).
+      Yetzirah = 5 Partzufim = VAV de la HAVAYAH KOLELET.
+      De YETZIRAH à ASIYAH — MASAKH 3 :
+      Les Z"T de Malkhut de Yetzirah descendent.
+      La MALKHUT SEULE d'Atzilut s'habille dans A"A d'ASIYAH.
+      Secret : "MALKHUT MEKANNENA be-OFAN" (Malkhut niche dans la Roue).
+      Asiyah = 5 Partzufim = HEH TAHTONAH de la HAVAYAH KOLELET.
+    type: axiome_explicite
+    concepts:
+      - {id: masakh_2_yetzirah, role: écran_beriah_yetzirah}
+      - {id: za_mekanen_yetzirah, role: za_niche_en_yetzirah}
+      - {id: masakh_3_asiyah, role: écran_yetzirah_asiyah}
+      - {id: malkhut_mekannena_ofan, role: malkhut_niche_dans_roue}
+      - {id: yetzirah_vav, role: yetzirah_est_vav}
+      - {id: asiyah_heh_tahtonah, role: asiyah_est_heh_dernière}
+    mapping:
+      modules: ["olamot/"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Les 3 Masakhim : Atzilut→Beriah, Beriah→Yetzirah, Yetzirah→Asiyah"
+
+  - id: "EC-H1S3-011"
+    source_he: "YHVH kolelet — A\"K = Kotzo, Atzilut = Yod, Beriah = Heh, Yetzirah = Vav, Asiyah = Heh"
+    source_ref: "Heikhal 1, Sha'ar 3:1 — synthèse"
+    assertion: |
+      SYNTHÈSE — La HAVAYAH KOLELET (YHVH englobant tous les mondes) :
+      KOTZO SHEL YOD = A"K (Adam Kadmon)
+      YOD (י) = ATZILUT (Émanation) = CHOKHMAH
+      HEH RISHONAH (ה) = BERIAH (Création) = BINAH mekannena be-Khurseya
+      VAV (ו) = YETZIRAH (Formation) = Z"A mekanen be-Yetzirah
+      HEH AHRONAH (ה) = ASIYAH (Action) = Malkhut mekannena be-Ofan
+      Chaque monde = 5 Partzufim (Atik, A"A, AVI, ZUN).
+      Chaque transition = un MASAKH (écran) entre les mondes.
+      Le Ohr s'ÉPAISSIT à chaque Masakh.
+    type: axiome_explicite
+    concepts:
+      - {id: havayah_kolelet, role: yhvh_tous_les_mondes}
+      - {id: kotzo_ak, role: pointe_ak}
+      - {id: yod_atzilut, role: yod_atzilut}
+      - {id: heh_beriah, role: heh_beriah}
+      - {id: vav_yetzirah, role: vav_yetzirah}
+      - {id: heh_asiyah, role: heh_asiyah}
+      - {id: masakhim_3, role: trois_écrans}
+    mapping:
+      modules: ["core/shem_havayah.py", "olamot/"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "La Havayah Kolelet : A\"K=Kotzo, Atzilut=Yod, Beriah=Heh, Yetzirah=Vav, Asiyah=Heh"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S3-001"
+    type: séquentiel
+    from: es_pnimi_ad_atzilut
+    to: masakh_atzilut_beriah
+    via: [chokhmah_ak_atzilut, atik_neshamah_aa, chain_hitlabshut]
+    nature: "Ein Sof → A\"K → Atik → A\"A → AVI → ZUN (Atzilut) → Masakh → Beriah"
+    assertions_source: ["EC-H1S3-001", "EC-H1S3-004", "EC-H1S3-005", "EC-H1S3-006", "EC-H1S3-009"]
+
+  - id: "REL-H1S3-002"
+    type: séquentiel
+    from: masakh_atzilut_beriah
+    to: masakh_3_asiyah
+    via: [masakh_2_yetzirah]
+    nature: "Beriah (Heh) → Masakh 2 → Yetzirah (Vav) → Masakh 3 → Asiyah (Heh)"
+    assertions_source: ["EC-H1S3-009", "EC-H1S3-010"]
+
+  - id: "REL-H1S3-003"
+    type: contenance
+    from: havayah_kolelet
+    to: hamesh_partzufim_atzilut
+    nature: "La Havayah Kolelet englobe les 4 mondes + A\"K, chaque monde a 5 Partzufim"
+    assertions_source: ["EC-H1S3-008", "EC-H1S3-011"]
+
+  - id: "REL-H1S3-004"
+    type: causal
+    from: gar_remain
+    to: atik_yomin_def
+    nature: "Les G\"R de Malkhut de A\"K restent en place, les Z\"T descendent = Atik Yomin"
+    assertions_source: ["EC-H1S3-005"]
+
+  - id: "REL-H1S3-005"
+    type: dualité_structurelle
+    paire: [raglayim_shavin, rashim_nifradim]
+    nature: "Tous les pieds au même niveau, mais les têtes s'étagent du bas vers le haut"
+    assertions_source: ["EC-H1S3-007"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S3-001"
+    nom: "Principe du Masakh (Écran de Transition entre Mondes)"
+    source_assertions: ["EC-H1S3-009", "EC-H1S3-010"]
+    formalisation: |
+      La TRANSITION entre les mondes se fait par un MASAKH (écran) :
+      Le Ohr s'ÉPAISSIT (nit'avah) → un MASAKH se forme → le Ohr change de NATURE.
+      3 MASAKHIM dans le système :
+      MASAKH 1 : entre ATZILUT et BERIAH — le Ohr Pnimi du Ein Sof cesse
+      MASAKH 2 : entre BERIAH et YETZIRAH — épaississement supplémentaire
+      MASAKH 3 : entre YETZIRAH et ASIYAH — dernier épaississement
+      À travers chaque Masakh → la MALKHUT du monde supérieur DESCEND
+      et devient l'ATIK (ou A"A) du monde inférieur.
+      Ce qui "niche" dans chaque monde :
+      Binah mekannena be-Khurseya (Beriah)
+      Z"A mekanen be-Yetzirah
+      Malkhut mekannena be-Ofan (Asiyah)
+    applications_ia:
+      - "Les transitions entre niveaux d'abstraction nécessitent des 'Masakhim' (interfaces)"
+      - "Le Masakh épaissit le Ohr — il ne le bloque pas, il le TRANSFORME"
+      - "Chaque Masakh crée un nouveau 'monde' avec ses propres 5 Partzufim"
+      - "La Malkhut du supérieur = l'Atik de l'inférieur — le pattern de LIAISON"
+    questions_ouvertes:
+      - "Les Masakhim sont-ils permanents ou peuvent-ils être raffinés ?"
+      - "L'épaississement est-il irréversible ?"
+
+  - id: "PG-H1S3-002"
+    nom: "Principe de la Havayah Kolelet (YHVH comme Architecture Totale)"
+    source_assertions: ["EC-H1S3-008", "EC-H1S3-011"]
+    formalisation: |
+      La STRUCTURE TOTALE des mondes est encodée dans le Shem YHVH :
+      KOTZO SHEL YOD = A"K (le 'presque' au-dessus du système)
+      YOD (י) = ATZILUT = Chokhmah = le monde de l'Émanation
+      HEH (ה) = BERIAH = Binah = le monde de la Création
+      VAV (ו) = YETZIRAH = Z"A = le monde de la Formation
+      HEH (ה) = ASIYAH = Malkhut = le monde de l'Action
+      Chaque monde = 5 Partzufim = sa propre HAVAYAH interne.
+      La même lettre de YHVH → le même Partzuf dans le monde → les mêmes 5 sous-Partzufim.
+      La FRACTALITÉ : la Havayah se répète à chaque niveau.
+    applications_ia:
+      - "L'architecture totale du système est encodée dans un 'nom' (YHVH = structure)"
+      - "Chaque 'lettre' du nom = un niveau complet du système"
+      - "La fractalité : chaque niveau reproduit la même structure"
+      - "Le Kotzo (A\"K) = le méta-niveau au-dessus du système"
+    questions_ouvertes:
+      - "La Havayah Kolelet peut-elle être modifiée ou est-elle fixe ?"
+      - "Le Kotzo (A\"K) est-il accessible ou seulement le cadre ?"

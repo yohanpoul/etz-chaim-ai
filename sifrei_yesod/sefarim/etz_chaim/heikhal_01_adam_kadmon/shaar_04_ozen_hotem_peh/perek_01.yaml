@@ -1,0 +1,889 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 4 — Sha'ar Ozen Hotem Peh (שער אזן חוטם פה)
+# Perek: 1 — Les 4 Yesodot (Re'iyah/Shemi'ah/Reihah/Dibur), Hevelim, Formation des Kelim
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 4
+  shaar_name_he: "שער אזן חוטם פה"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Les 4 sens = 4 lettres de YHVH = racines de l'Atzilut. 3 Hevelim (OHP) + Histakkelut (Einayim). Drush de R. Gedalyah HaLevi sur la formation des Kelim par Ohr Yashar/Chozer."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : AVERTISSEMENT — PAS DE TZIYUR AVANT ATZILUT ───
+
+  - id: "EC-H1S4-001"
+    source_he: "כבר ידעת כי אין בנו כח לעסוק קודם אצילות י\"ס ולא לדמות שום דמיון וצורה כלל ח\"ו אך לשכך האזן אנו צריכים לדבר דרך משל ודמיון"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      AVERTISSEMENT FONDAMENTAL :
+      Nous n'avons AUCUNE FORCE (ein banu koah) de traiter de ce qui PRÉCÈDE
+      l'émanation des 10S, ni d'attribuer quelque DIMYON (image) ou TZURAH (forme).
+      C'est uniquement LE-SHAKHEKH HA-OZEN (pour apaiser l'oreille)
+      que nous parlons par MASHAL (parabole) et DIMYON (métaphore).
+      Même quand nous évoquons un TZIYUR (image) en haut → c'est SEULEMENT le-shakhekh ha-ozen.
+    type: axiome_explicite
+    concepts:
+      - {id: ein_koah_lifnei_atzilut, role: pas_de_force_avant_atzilut}
+      - {id: le_shakhekh_ha_ozen, role: pour_apaiser_l_oreille}
+      - {id: mashal_dimyon, role: parabole_et_metaphore}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Garde-fou herméneutique : tout ce qui suit est MASHAL, pas description littérale"
+
+  # ─── BLOC B : LES 10S = 2 CHOSES (HITPASHTUT + KELIM) ───
+
+  - id: "EC-H1S4-002"
+    source_he: "אמנם דע כי י\"ס דאצילות הם ב' עניינים הא' הוא התפשטות הרוחניות והב' הוא כלים ואברים אשר העצמות מתפשט בהם"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      Les 10S d'ATZILUT = 2 INYANIM (choses/aspects) :
+      1. HITPASHTUT HA-RUHANIYUT (expansion de la spiritualité) = les OROT
+      2. KELIM VE-EVARIM (récipients et membres) dans lesquels l'ATZMUT s'ÉTEND
+      Ces 2 aspects ont besoin d'un SHORESH (racine) EN HAUT.
+      C'est pourquoi nous devons parler du SEDER HA-MADREGOT (ordre des niveaux)
+      du ROSH (tête) jusqu'au SOF (fin).
+    type: axiome_explicite
+    concepts:
+      - {id: hitpashtut_ruhaniyut, role: expansion_spirituelle_orot}
+      - {id: kelim_evarim, role: recipients_et_membres}
+      - {id: shoresh_le_ma_alah, role: racine_en_haut}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Dualité fondamentale : les Orot (expansion) et les Kelim (réceptacles) ont chacun un SHORESH distinct"
+
+  - id: "EC-H1S4-003"
+    source_he: "הלא הא\"ס ב\"ה אין בו שום ציור כלל ח\"ו כמבואר. ואמנם כשעלה במחשבה לברוא העולמות לי' מדרגות האציל והמשיך ממנו התפשטות אורות רבים להיותם שורשי האצילות להתאצל האצילות אח\"כ"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      Le EIN SOF Barukh Hu n'a AUCUN TZIYUR (image) du tout.
+      Quand est MONTÉE dans la MAHSHAVAH (pensée) l'intention de CRÉER les mondes
+      en 10 MADREGOT (niveaux) →
+      Il a ÉMANÉ (he'etzil) et ATTIRÉ (himshikh) de Lui une HITPASHTUT OROT RABBIM
+      (expansion de lumières NOMBREUSES).
+      But : être les SHORSHEI HA-ATZILUT (racines de l'émanation)
+      pour que l'Atzilut soit ÉMANÉE ensuite.
+      Ces lumières = les RACINES d'avant l'Atzilut.
+    type: axiome_explicite
+    concepts:
+      - {id: ein_sof_ein_tziyur, role: ein_sof_sans_image}
+      - {id: alah_be_mahshavah, role: montee_dans_la_pensee}
+      - {id: hitpashtut_orot_rabbim, role: expansion_lumieres_nombreuses}
+      - {id: shorshei_atzilut, role: racines_de_l_emanation}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Avant l'Atzilut : des lumières NOMBREUSES émanées comme RACINES — ce sont les sens d'A\"K"
+
+  # ─── BLOC C : LES 4 YESODOT = YHVH = NLN + NRN ───
+
+  - id: "EC-H1S4-004"
+    source_he: "כבר ידעת היות ד' יסודות לכל והם ראיה שמיעה ריחא דבור. והם ד' אותיות הוי\"ה. והם סוד נשמה לנשמה ונר\"ן"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      Les 4 YESODOT (fondements) de TOUT :
+      RE'IYAH (vue) — SHEMI'AH (ouïe) — REIHAH (odorat) — DIBUR (parole).
+      = les 4 OTIOT de YHVH (יהו"ה).
+      = le secret de NESHAMAH LA-NESHAMAH (âme de l'âme) + NRN (Nefesh-Ruah-Neshamah).
+      MAPPING PRÉCIS :
+      YOD (י) = RE'IYAH = CHOKHMAH = HAYAH
+      HEH (ה) = SHEMI'AH = BINAH = NESHAMAH
+      VAV (ו) = REIHAH = TIFERET/Z"A = RUAH
+      HEH (ה) = DIBUR = MALKHUT = NEFESH
+    type: axiome_explicite
+    concepts:
+      - {id: arba_yesodot, role: quatre_fondements}
+      - {id: re_iyah_yod, role: vue_yod_chokhmah}
+      - {id: shemi_ah_heh, role: ouie_heh_binah}
+      - {id: reihah_vav, role: odorat_vav_tiferet}
+      - {id: dibur_heh, role: parole_heh_malkhut}
+      - {id: yhvh_sensory, role: yhvh_sensoriel}
+    mapping:
+      modules: ["[PLANNED] core/shem_havayah.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Architecture sensorielle de A\"K = structure de YHVH = NaRaNHaY"
+
+  # ─── BLOC D : LES 3 HEVELIM — HIÉRARCHIE DE SUBTILITÉ ───
+
+  - id: "EC-H1S4-005"
+    source_he: "נמשיל ונצייר האזנים כי יש בהם רוח דק בתוכם והנסיון לזה כאשר יסתום האדם אזניו ישמע בתוכו קול הברה מחמת הרוח הנצרר בתוכו"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      Les OZNAYIM (oreilles) : contiennent un RUAH DAK (esprit subtil) à l'intérieur.
+      PREUVE EMPIRIQUE : quand l'homme BOUCHE ses oreilles,
+      il entend un KOL HABARAH (son de résonance) à cause du RUAH emprisonné dedans.
+      Ce HEVEL (souffle) de l'oreille = le plus SUBTIL (dak) de tous.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_ozen, role: souffle_oreille}
+      - {id: ruah_dak, role: esprit_subtil}
+      - {id: kol_habarah, role: son_resonance}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Preuve expérientielle du Hevel dans les oreilles — Ruah Dak = plus subtil"
+
+  - id: "EC-H1S4-006"
+    source_he: "אח\"כ מחוטם יוצא מתוכו הבל יותר נרגש מאזן. ואח\"כ מן הפה יוצא הבל יותר נרגש מכולם"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      HIÉRARCHIE des 3 HEVELIM par NIVEAU DE PERCEPTION (nirgash) :
+      OZEN (oreille) → HEVEL le plus DAK (subtil) = le MOINS perceptible
+      HOTEM (nez) → HEVEL YOTER NIRGASH (plus perceptible que l'oreille)
+      PEH (bouche) → HEVEL YOTER NIRGASH MI-KULAM (le plus perceptible de tous)
+      RÈGLE : plus le niveau est ÉLEVÉ → plus le Hevel est SUBTIL.
+      Plus le niveau est BAS → plus le Hevel est GROSSIER et perceptible.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_hotem, role: souffle_nez}
+      - {id: hevel_peh, role: souffle_bouche}
+      - {id: hierarchy_subtlety, role: hierarchie_subtilite}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Plus le Hevel est haut, plus il est subtil — hiérarchie sensorielle = hiérarchie ontologique"
+
+  - id: "EC-H1S4-007"
+    source_he: "כי אוזן להיותו סוד בינה ההבל היוצא ממנו הוא יותר דק מהבל היוצא מחוטם. וכן הבל החוטם הוא יותר דק מהבל הפה שהוא למטה ממנו במעלה"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      MAPPING des 3 HEVELIM sur les MADREGOT HA-NESHAMAH :
+      OZEN = secret de BINAH → son Hevel = NESHAMAH (le plus dak)
+      HOTEM = son Hevel = RUAH (intermédiaire)
+      PEH = en bas dans la ma'alah (rang) → son Hevel = NEFESH (le moins dak)
+      Chaque sens ÉMANE un HEVEL qui est la RACINE du niveau d'âme correspondant.
+    type: axiome_explicite
+    concepts:
+      - {id: ozen_binah_neshamah, role: oreille_binah_neshamah}
+      - {id: hotem_ruah, role: nez_ruah}
+      - {id: peh_nefesh, role: bouche_nefesh}
+    mapping:
+      modules: ["[PLANNED] madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Mapping direct : Ozen=Neshamah, Hotem=Ruah, Peh=Nefesh — architecture des niveaux d'âme"
+
+  # ─── BLOC E : DIVISION DES SENS EN PAIRES ───
+
+  - id: "EC-H1S4-008"
+    source_he: "הבל האוזן נחלק לב' אזנים. והענין הוא כי הלא יש בינה ותבונה כנודע לכן אזן ימנית הבל שלו הוא שורש נשמת בינה והבל אזן שמאלית שורש נשמת תבונה"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      Le HEVEL de l'OZEN se DIVISE en 2 OREILLES :
+      OZEN YEMANIT (oreille droite) → SHORESH NISHMAT BINAH (racine de l'âme de Binah)
+      OZEN SEMALIT (oreille gauche) → SHORESH NISHMAT TEVUNAH (racine de l'âme de Tevunah)
+      Car il y a BINAH et TEVUNAH — 2 Partzufim distincts.
+    type: axiome_explicite
+    concepts:
+      - {id: ozen_yemanit_binah, role: oreille_droite_binah}
+      - {id: ozen_semalit_tevunah, role: oreille_gauche_tevunah}
+      - {id: binah_tevunah_pair, role: paire_binah_tevunah}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "2 oreilles = Binah (droite) et Tevunah (gauche) — 2 Partzufim d'Imma"
+
+  - id: "EC-H1S4-009"
+    source_he: "גם הבל החוטם נחלק לב' בחי' בסוד שורש יעקב וישראל הימין ישראל והשמאל יעקב"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      Le HEVEL du HOTEM se DIVISE aussi en 2 :
+      NARINE DROITE = secret de SHORESH YISRAEL
+      NARINE GAUCHE = secret de SHORESH YAAKOV
+      YISRAEL (droite) et YAAKOV (gauche) = 2 aspects de Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: hotem_yamin_yisrael, role: narine_droite_yisrael}
+      - {id: hotem_smol_yaakov, role: narine_gauche_yaakov}
+      - {id: yisrael_yaakov_pair, role: paire_yisrael_yaakov}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "2 narines = Yisrael (droite) et Yaakov (gauche) — 2 aspects de Z\"A"
+
+  - id: "EC-H1S4-010"
+    source_he: "אך הבל הפה הוא א' כי הוא נגד הנוק' דז\"א ואע\"פ שיש לאה ורחל עכ\"ז עיקר לאה מבחי' מל' דתבונה המתלבשת תוך ז\"א כנודע. ולכן אינו נחשב רק לא'"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      Le HEVEL du PEH est UN (ehad) car il correspond à la NUKVAH de Z"A.
+      Même s'il y a LEAH et RACHEL, l'IKAR (essentiel) de LEAH
+      vient de la MALKHUT DE-TEVUNAH qui s'habille dans Z"A.
+      NUSAH AHER : Leah = les V"Q (6 Ketzavot) de BEN (ב"ן = 52) de Z"A depuis Malkhut de-Tevunah.
+      Donc : compté comme UN seul Hevel, PAS COMME DEUX.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_peh_ehad, role: souffle_bouche_un}
+      - {id: nukvah_za, role: nukvah_de_za}
+      - {id: leah_malkhut_tevunah, role: leah_de_malkhut_tevunah}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Le Peh = un seul Hevel car Leah vient de Malkhut de-Tevunah à l'INTÉRIEUR de Z\"A"
+
+  - id: "EC-H1S4-011"
+    source_he: "אך עכ\"ז כיון שהם ב' בחי' גם הבל הפה נחלק לב' עם שההבל הוא מקור א' שלא כדמיון האזנים והחוטם. והוא כי בהיות הבל זה בגרון הוא סוד קול וכשיוצא מחוץ לפה הוא סוד דבור בחיתוך אותיות. הקול נגד שורש לאה והדבור נגד שורש רחל"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      Malgré tout, puisqu'il y a 2 BEHINOT, le Hevel du Peh se DIVISE aussi en 2.
+      MAIS d'une SOURCE UNIQUE (makor ehad) — PAS comme les Oznayim et le Hotem.
+      Le Hevel DANS le GARON (gorge) = secret du KOL (voix)
+      Le Hevel HORS du PEH (bouche) = secret du DIBUR (parole) en HITUKH OTIOT (articulation des lettres)
+      KOL = en face du SHORESH de LEAH
+      DIBUR = en face du SHORESH de RACHEL
+    type: axiome_explicite
+    concepts:
+      - {id: kol_garon, role: voix_dans_gorge}
+      - {id: dibur_peh, role: parole_hors_bouche}
+      - {id: kol_leah, role: voix_racine_leah}
+      - {id: dibur_rachel, role: parole_racine_rachel}
+      - {id: hitukh_otiot, role: articulation_lettres}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Kol/Dibur = Leah/Rachel — la division du Peh en voix (intérieure) et parole (extérieure)"
+
+  - id: "EC-H1S4-012"
+    source_he: "אע\"פ שקול הוא בת\"ת שהוא הז\"א עכ\"ז שורש של שניהם הוא במל' דתבונה רק שקול נעשה נשמה לז\"א והדיבור נעשה נשמה למל' שהיא רחל ושניהן מצד הפה שהוא סוד המלכות דתבונה"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      Bien que le KOL soit dans TIFERET (= Z"A),
+      le SHORESH des DEUX (Kol et Dibur) est dans MALKHUT DE-TEVUNAH.
+      NUSAH AHER : le shoresh est dans MALKHUT de BINAH (et non Tevunah).
+      KOL devient NESHAMAH pour Z"A (NUSAH AHER : pour les V"Q de BEN de Z"A).
+      DIBUR devient NESHAMAH pour MALKHUT (= RACHEL).
+      Les DEUX viennent du côté du PEH = secret de MALKHUT DE-TEVUNAH.
+      La SOURCE est UNE, les DESTINATIONS sont DEUX.
+    type: axiome_explicite
+    concepts:
+      - {id: kol_neshamah_za, role: voix_ame_de_za}
+      - {id: dibur_neshamah_malkhut, role: parole_ame_de_malkhut}
+      - {id: malkhut_tevunah_source, role: malkhut_tevunah_source_commune}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Kol = Neshamah de Z\"A, Dibur = Neshamah de Malkhut — source commune dans Malkhut de-Tevunah"
+
+  # ─── BLOC F : LES YEUX = RE'IYAH = NLN = OHR MAKIF ───
+
+  - id: "EC-H1S4-013"
+    source_he: "והנה העינים שהם סוד ראיה שהיא החכמה הוא סוד נשמה לנשמה בסוד חכמה"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      Les EINAYIM (yeux) = secret de RE'IYAH (vue) = CHOKHMAH.
+      C'est le secret de NESHAMAH LA-NESHAMAH (âme de l'âme) dans le secret de CHOKHMAH.
+      La VUE est le niveau le PLUS ÉLEVÉ des 4 Yesodot.
+      CHOKHMAH = HAYAH = YOD de YHVH.
+    type: axiome_explicite
+    concepts:
+      - {id: einayim_re_iyah, role: yeux_vue}
+      - {id: re_iyah_chokhmah, role: vue_chokhmah}
+      - {id: neshamah_la_neshamah, role: ame_de_l_ame}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Les Yeux = Chokhmah = Neshamah la-Neshamah = le niveau le plus élevé"
+
+  # ─── BLOC G : NRN DEDANS, NLN DEHORS COMME MAKIF ───
+
+  - id: "EC-H1S4-014"
+    source_he: "ודע כי נר\"ן מתלבשים תוך פנימיות הכלים שהוא הגוף. אך הנשמה לנשמה אין יכולת בגוף האדם לסובלה ונשארת מבחוץ בסוד או\"מ"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      AXIOME DE L'HABILLAGE :
+      NRN (Nefesh, Ruah, Neshamah) s'HABILLENT dans la PNIMIYUT des Kelim = le GUF (corps).
+      La NESHAMAH LA-NESHAMAH → le Guf n'a PAS la YEKHOLET (capacité) de la SUPPORTER.
+      Elle reste MI-BA-HUTZ (à l'extérieur) dans le secret de OHR MAKIF.
+      La NLN est TROP ÉLEVÉE pour les Kelim → elle ENTOURE au lieu d'entrer.
+    type: axiome_explicite
+    concepts:
+      - {id: nrn_pnimiyut_kelim, role: nrn_dans_interiorite_kelim}
+      - {id: nln_ein_yekholet, role: nln_pas_de_capacite}
+      - {id: nln_ohr_makif, role: nln_reste_makif}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "NRN = Ohr Pnimi, NLN = Ohr Makif — le Guf ne peut pas supporter la NLN"
+
+  - id: "EC-H1S4-015"
+    source_he: "וכשהוא מקיף את המוח מדור הנשמה אז הוא בחי' מקיף אל הנשמה וכשהיא מקפת את הלב שהיא מדור הרוח אז הוא בחי' מקיף אל הרוח וכשהיא מקפת לכבד מדור הנפש אז הוא מקיף לנפש"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      La NLN comme OHR MAKIF entoure les 3 MADORIM (demeures) :
+      Quand elle entoure le MO'AH (cerveau) = MADOR de la NESHAMAH → MAKIF la-NESHAMAH
+      Quand elle entoure le LEV (coeur) = MADOR du RUAH → MAKIF la-RUAH
+      Quand elle entoure le KAVED (foie) = MADOR de la NEFESH → MAKIF la-NEFESH
+      La NLN ELLE-MÊME contient 3 BEHINOT correspondant aux 3 NRN → toutes en OHR MAKIF.
+    type: axiome_explicite
+    concepts:
+      - {id: mo_ah_mador_neshamah, role: cerveau_demeure_neshamah}
+      - {id: lev_mador_ruah, role: coeur_demeure_ruah}
+      - {id: kaved_mador_nefesh, role: foie_demeure_nefesh}
+      - {id: nln_3_behinot_makif, role: nln_3_aspects_makif}
+    mapping:
+      modules: ["[PLANNED] madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: []
+      relevance: "NLN entoure Mo'ah/Lev/Kaved = 3 niveaux de Makif correspondant aux 3 NRN"
+
+  # ─── BLOC H : GULGOLTA = KETER = YEHIDAH ───
+
+  - id: "EC-H1S4-016"
+    source_he: "אמנם הגלגולת שהוא סוד הכתר משם שורש לנשמה עליונה הנקרא יחידה. וטעם קריאתה יחידה לפי שהיא מקפת כל העולמות בבחי' נשמה לנשמה לבדה ולא בחי' נר\"ן"
+    source_ref: "Heikhal 1, Sha'ar 4:1"
+    assertion: |
+      La GULGOLTA (crâne) = secret du KETER.
+      De là → SHORESH de la NESHAMAH ELYONAH (âme supérieure) appelée YEHIDAH.
+      Raison du nom YEHIDAH (singulière/unique) :
+      Elle entoure TOUS les mondes en NESHAMAH LA-NESHAMAH SEULE (levadah),
+      et PAS en NRN comme les niveaux inférieurs.
+      Pour NRN il existe 3 aspects correspondants dans la NLN.
+      Mais pour la YEHIDAH → il n'y a PAS de DOGUMAT RN (contrepartie de Ruah/Nefesh) en bas.
+      Elle est UNE SEULE METZI'UT (réalité unique) → YEHIDAH.
+    type: axiome_explicite
+    concepts:
+      - {id: gulgolta_keter, role: crane_keter}
+      - {id: yehidah, role: ame_unique_singuliere}
+      - {id: yehidah_ein_dugmah, role: yehidah_sans_contrepartie}
+    mapping:
+      modules: ["[PLANNED] madregot/madregot_neshamah.py"]
+      tables: ["madregot_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Yehidah = Keter = la réalité unique qui entoure tout sans contrepartie inférieure"
+
+  # ─── BLOC I : DRUSH DE R. GEDALYAH — RENCONTRE DES HEVELIM AU PEH ───
+
+  - id: "EC-H1S4-017"
+    source_he: "כאשר האורות נתפשטו מאוזן וחוטם עד נגד הפה ששם התחברות כל ההבלים ואז במקום שמתחברים יש לכולם בחינת נפש"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah HaLevi"
+    assertion: |
+      DRUSH de R. GEDALYAH HALEVI :
+      Quand les OROT se sont ÉTENDUS de l'OZEN et du HOTEM
+      jusqu'en face du PEH → là se trouve la HITHABRUT (connexion) de TOUS les Hevelim.
+      Au LIEU de CONNEXION → tous ont l'aspect de NEFESH.
+      Le Hevel de l'OZEN ne peut se connecter au Hevel du PEH qu'à DISTANCE (rihuq makom).
+      Le Hevel du HOTEM a besoin de MOINS de distance.
+    type: axiome_explicite
+    concepts:
+      - {id: hithabrut_hevelim, role: connexion_souffles}
+      - {id: makom_hithabrut, role: lieu_connexion}
+      - {id: kulam_nefesh, role: tous_deviennent_nefesh}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Au point de connexion des Hevelim (Peh) → tout devient Nefesh — le niveau le plus bas"
+
+  # ─── BLOC J : HISTAKKELUT DES YEUX → FAIT LES KELIM ───
+
+  - id: "EC-H1S4-018"
+    source_he: "ועל ידי הסתכלות העינים ובהכאה שהכה בהבל הזה נעשה הכלים ובהסתכלות זה יש פנימי וחיצון כי יש בכל איברים פנימיות וחיצוניות ונעשה כללות כליהם"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah"
+    assertion: |
+      Par le HISTAKKELUT (regard) des EINAYIM (yeux) et la HAKA'AH (frappe)
+      qu'il a frappée dans ce HEVEL → les KELIM ont été FAITS (na'aseh).
+      Dans cette HISTAKKELUT il y a PNIMI (intérieur) et HITZON (extérieur)
+      car chaque EVER (membre) a PNIMIYUT et HITZONIUT.
+      Ainsi fut fait le KLALUT KELEIHEM (totalité de leurs récipients).
+      La HISTAKKELUT = le CATALYSEUR de la formation des Kelim.
+    type: axiome_explicite
+    concepts:
+      - {id: histakkelut_einayim, role: regard_des_yeux}
+      - {id: haka_ah_hevel, role: frappe_dans_souffle}
+      - {id: kelim_na_aseh, role: recipients_sont_faits}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La Histakkelut des Yeux + Haka'ah dans le Hevel = mécanisme de FORMATION des Kelim"
+
+  - id: "EC-H1S4-019"
+    source_he: "ולפי שאין בראית עינים הבל היוצא אלא הסתכלות לבד אינו נעשה אלא הכלים והסתכלות ההוא גדול מכל הג' הבלים הנ\"ל"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah"
+    assertion: |
+      Puisqu'il n'y a PAS de HEVEL sortant de la RE'IYAT EINAYIM (vue des yeux)
+      mais SEULEMENT de la HISTAKKELUT (regard/contemplation) →
+      elle ne fait QUE les KELIM (pas les Orot).
+      Et cette HISTAKKELUT est PLUS GRANDE (gadol) que les 3 HEVELIM.
+      La VUE est SUPÉRIEURE à tous les autres sens car elle est pure HISTAKKELUT.
+    type: axiome_explicite
+    concepts:
+      - {id: ein_hevel_einayim, role: pas_de_souffle_des_yeux}
+      - {id: histakkelut_gadol, role: regard_plus_grand}
+      - {id: histakkelut_fait_kelim, role: regard_fait_kelim_seulement}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "La Histakkelut est pure contemplation sans matière (Hevel) — elle ne produit que la FORME (Kelim)"
+
+  - id: "EC-H1S4-020"
+    source_he: "כי חכמה עליונה מאירה דרך עינים אלא שאם היה יוצא הבל ממש דרך העינים לא היה אפשר למטה לקבלה. לכן לא נמשך ממנו אלא הסתכלות לבד"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah"
+    assertion: |
+      CHOKHMAH ELYONAH (sagesse supérieure) brille à travers les EINAYIM.
+      Mais si un HEVEL MAMASH (souffle réel) sortait des yeux →
+      il serait IMPOSSIBLE (lo hayah efshar) pour le BAS de le RECEVOIR.
+      C'est pourquoi SEULE la HISTAKKELUT (et pas le Hevel) en est issue.
+      La CHOKHMAH doit être ATTÉNUÉE en Histakkelut pour être supportable.
+    type: axiome_explicite
+    concepts:
+      - {id: chokhmah_derekh_einayim, role: chokhmah_par_yeux}
+      - {id: hevel_einayim_impossible, role: souffle_yeux_impossible}
+      - {id: histakkelut_attenuee, role: regard_attenuation_necessaire}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "La Chokhmah est trop forte pour sortir en Hevel → seulement en Histakkelut = Masakh nécessaire"
+
+  # ─── BLOC K : VA-YAR ELOHIM — FORMATION DES KELIM PAR OHR YASHAR/CHOZER ───
+
+  - id: "EC-H1S4-021"
+    source_he: "וירא אלהים את האו\"ר כי האו\"ר הוא בחי' הבל אזן וחוטם. שהוא בחי' נשמה ורוח. את הוא בחי' הפה שהוא נפש. ואז כשראה את הנפש אז ויבדל אלהים שהוא עשיית שרשי הכלים"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah"
+    assertion: |
+      "VA-YAR ELOHIM ET HA-OR" (Et Dieu VIT la lumière — Genèse 1:4) :
+      HA-OR (la lumière) = le HEVEL de l'OZEN et du HOTEM = NESHAMAH et RUAH
+      ET (את) = le PEH = NEFESH
+      Quand Il a VU (ra'ah) le NEFESH → "VA-YAVDEL ELOHIM" (Et Dieu SÉPARA)
+      = la FABRICATION des SHORSHEI HA-KELIM (racines des récipients).
+      La VISION (Re'iyah) qui se pose sur le NEFESH → crée la SÉPARATION → crée les KELIM.
+    type: déduction_scripturaire
+    concepts:
+      - {id: va_yar_elohim, role: dieu_vit}
+      - {id: ha_or_neshamah_ruah, role: lumiere_neshamah_ruah}
+      - {id: et_peh_nefesh, role: et_bouche_nefesh}
+      - {id: va_yavdel_kelim, role: separation_fait_kelim}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Genèse 1:4 = la Histakkelut (Re'iyah) qui frappe le Nefesh (Peh) = formation des Kelim"
+
+  - id: "EC-H1S4-022"
+    source_he: "והסתכלות זה בדרך ישר עשה רושם בכל בחינה ובחי' כי פגע בכל בחי' ובחי' מן ההסתכלות לבחי' הבל כתר בכתר"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah"
+    assertion: |
+      La HISTAKKELUT en DEREKH YASHAR (voie directe = Ohr Yashar) :
+      A fait un ROSHEM (empreinte/impression) dans CHAQUE BEHINAH (aspect).
+      Elle a FRAPPÉ (paga) chaque aspect de la Histakkelut contre le Hevel correspondant :
+      KETER contre KETER, et ainsi pour chaque niveau.
+      L'OHR YASHAR descend et laisse un ROSHEM = les RACINES des Kelim.
+      Les KELIM HITZONIIM (externes) dans les EVARIM HITZONIIM (membres externes),
+      les KELIM PNIMIIM dans les EVARIM PNIMIIM.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_yashar_roshem, role: lumiere_directe_empreinte}
+      - {id: pegi_ah_keter_keter, role: frappe_keter_contre_keter}
+      - {id: kelim_hitzoniim_pnimiim, role: kelim_externes_internes}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'Ohr Yashar descend et laisse un Roshem dans chaque niveau = racines des Kelim"
+
+  - id: "EC-H1S4-023"
+    source_he: "ולא נגמר זה עד שהכה הסתכלות במקום שמתחברים ההבלים... ומהכאת אור ההבל אל אור הסתכלות חזר אור הסתכלות בדרך אור חוזר ונעשה כלי בכל בחינה ובחינה"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah"
+    assertion: |
+      La formation des Kelim ne s'est PAS ACHEVÉE (lo nigmar)
+      jusqu'à ce que la HISTAKKELUT ait FRAPPÉ (hikah) au lieu de CONNEXION des Hevelim
+      (= HITPASHTUT/extérieur des Hevelim).
+      De la HAKA'AT OHR HA-HEVEL (frappe de la lumière du souffle)
+      sur le OHR HA-HISTAKKELUT (lumière du regard) →
+      le OHR HA-HISTAKKELUT est REVENU (hazar) en OHR CHOZER (lumière de retour).
+      Et un KELI fut fait dans CHAQUE BEHINAH.
+      L'OHR CHOZER forme les Kelim en REMONTANT vers la source.
+    type: axiome_explicite
+    concepts:
+      - {id: haka_at_hevel_histakkelut, role: frappe_souffle_sur_regard}
+      - {id: ohr_chozer, role: lumiere_de_retour}
+      - {id: kelim_by_ohr_chozer, role: kelim_par_lumiere_retour}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "OHR YASHAR descend → frappe les Hevelim → rebondit en OHR CHOZER → forme les Kelim"
+
+  # ─── BLOC L : ÉGALITÉ DES KELIM DANS LE CHOZER ───
+
+  - id: "EC-H1S4-024"
+    source_he: "כל הדבוק יותר אל שורשו הוא יותר עליון כי כתר סמוך לעין יצאה אחרונה והמל' יצאה ראשונה"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah"
+    assertion: |
+      DANS la HISTAKKELUT (Ohr Yashar) :
+      Ce qui est PLUS PROCHE (davuk) de sa SOURCE = PLUS ÉLEVÉ.
+      KETER = le plus SAMUKH (proche) de l'EINAYIM → sort en DERNIER.
+      MALKHUT → sort en PREMIER (la plus éloignée de la source).
+    type: axiome_explicite
+    concepts:
+      - {id: keter_yotze_aharon, role: keter_sort_dernier}
+      - {id: malkhut_yotze_rishon, role: malkhut_sort_premier}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Dans l'Ohr Yashar : Keter (proche de l'oeil) sort dernier, Malkhut sort premier"
+
+  - id: "EC-H1S4-025"
+    source_he: "וכשמכה וחוזר אז כל בחינת הכלים שוין שאם היסוד היה מתפשט לפנים יותר מן המל' היה שוה אל המל'... אבל בבחי' הכלים עצמן הם שוים"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah"
+    assertion: |
+      Quand l'Ohr FRAPPE et REVIENT (Ohr Chozer) →
+      TOUTES les BEHINOT des KELIM sont SHAVOT (ÉGALES).
+      Même si le YESOD s'ÉTEND plus que la MALKHUT → il est ÉGAL (shaveh) à elle.
+      Car cette expansion est en OHR CHOZER qui RETOURNE vers sa source.
+      L'EXTENSION (hitpashtut) ne confère PAS de SUPÉRIORITÉ (ma'alah).
+      Dans les KELIM EUX-MÊMES (be-behinat ha-kelim atzman) → ils sont ÉGAUX.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_shavim_be_chozer, role: kelim_egaux_dans_chozer}
+      - {id: hitpashtut_lo_ma_alah, role: extension_pas_superiorite}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Dans l'Ohr Chozer : TOUS les Kelim sont ÉGAUX — l'extension ne confère pas de supériorité"
+
+  - id: "EC-H1S4-026"
+    source_he: "וכשחוזר האור ומלביש ההבל נמצא כשהוא סמוך לפה גדול הבל הפה מהבל האזן כי הבל הפה הוא עתה סמוך לפה בבחי' ראש והבל האזן עדיין הוא בבחי' שאר הגוף עד שיעלה נגד האזן"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah"
+    assertion: |
+      Quand l'OHR revient et HABILLE le HEVEL →
+      PRÈS du PEH : le HEVEL du PEH est GADOL (grand) par rapport au HEVEL de l'OZEN.
+      Car le Hevel du PEH est maintenant SAMUKH (proche) du PEH en aspect de ROSH (tête).
+      Le Hevel de l'OZEN est encore en aspect de SHE'AR HA-GUF (reste du corps)
+      jusqu'à ce qu'il MONTE en face de l'OZEN.
+      La PROXIMITÉ à la source ACTUELLE détermine la GRANDEUR relative.
+    type: axiome_explicite
+    concepts:
+      - {id: proximity_source, role: proximite_determine_grandeur}
+      - {id: hevel_peh_rosh, role: souffle_bouche_tete}
+      - {id: hevel_ozen_guf, role: souffle_oreille_corps}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "La proximité au point d'émission actuel détermine la grandeur relative du Hevel"
+
+  # ─── BLOC M : DÉTAILS MANQUANTS DU DRUSH — GEMATRIA, MASAKH, MAKIF ───
+
+  - id: "EC-H1S4-027"
+    source_he: "כי הראיי' היא י' שמיעה ה' ריחא ו' דיבור ה' הרי ד' אותיות הוי\"ה שהם חבת\"ם שהם נר\"ן [נ\"א נרנ\"ח]"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah"
+    assertion: |
+      MAPPING YHVH SENSORIEL — détail du Drush :
+      RE'IYAH = YOD, SHEMI'AH = HEH, REIHAH = VAV, DIBUR = HEH
+      = 4 OTIOT HAVAYAH = CHBTM (חבת"ם — Chokhmah, Binah, Tiferet, Malkhut) = NRN.
+      NUSAH AHER : NRNH (נרנ"ח — Nefesh, Ruah, Neshamah, Hayah).
+      La RE'IYAH est HAYAH = YOD du Shem = CHOKHMAH.
+    type: axiome_explicite
+    concepts:
+      - {id: chbtm, role: chokhmah_binah_tiferet_malkhut}
+      - {id: nusah_aher_nrnh, role: variante_nrnh}
+    mapping:
+      modules: ["[PLANNED] core/shem_havayah.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "CHBTM = l'acronyme exact du mapping YHVH sensoriel, avec variante textuelle NRNH"
+
+  - id: "EC-H1S4-028"
+    source_he: "והיה בו כח לעשות כלים לג' בחינת אלו. י' דנשמה בהבל אזן. י' דרוח בהבל חוטם י' דנפש בהבל הפה וז\"ס מרחוק ה' נראה לי"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah"
+    assertion: |
+      La HISTAKKELUT a le KOAH (force) de faire les KELIM pour les 3 BEHINOT :
+      YOD de NESHAMAH → dans le HEVEL de l'OZEN
+      YOD de RUAH → dans le HEVEL du HOTEM
+      YOD de NEFESH → dans le HEVEL du PEH
+      Chaque Hevel reçoit un YOD (étincelle de Chokhmah) pour former ses Kelim.
+      C'est le secret de "ME-RAHOK HASHEM NIR'AH LI" (Jérémie 31:3 —
+      de LOIN, Hashem m'est APPARU) : la Re'iyah agit de LOIN.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yod_neshamah_ozen, role: yod_neshamah_dans_oreille}
+      - {id: yod_ruah_hotem, role: yod_ruah_dans_nez}
+      - {id: yod_nefesh_peh, role: yod_nefesh_dans_bouche}
+      - {id: me_rahok_nir_ah, role: de_loin_apparu}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Chaque Hevel reçoit un YOD de la Histakkelut pour former ses Kelim — la vue agit à distance"
+
+  - id: "EC-H1S4-029"
+    source_he: "ומשאר הבלים אם היה יוצא מהם הסתכלות לבד דרך מסך כמו העינים לא היה כח בהם לעשות כלים. וכ\"ז הוא דין... וראי' זו גימ' גבור\"ה ודבו\"ר גימ' רי\"ו עם ד' אותיות"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah"
+    assertion: |
+      Si les AUTRES HEVELIM ne produisaient que de la HISTAKKELUT
+      à travers un MASAKH (écran) comme les EINAYIM →
+      ils n'auraient PAS la FORCE (koah) de faire les KELIM.
+      Les Hevelim DOIVENT émettre du Hevel RÉEL (pas seulement du regard).
+      Tout ceci est DIN (rigueur/jugement).
+      GEMATRIA : RE'IYAH (ראי"ה) = GEVURAH (גבור"ה) = 216.
+      DIBUR (דבו"ר) = 216 avec les 4 lettres = aussi GEVURAH.
+      La FORMATION des Kelim est un acte de DIN.
+    type: axiome_explicite
+    concepts:
+      - {id: masakh_einayim, role: ecran_des_yeux}
+      - {id: hevelim_need_substance, role: hevelim_doivent_emettre}
+      - {id: din_formation_kelim, role: rigueur_dans_formation}
+      - {id: re_iyah_gevurah_216, role: gematria_re_iyah_gevurah}
+      - {id: dibur_216, role: gematria_dibur_216}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "RE'IYAH = GEVURAH = 216 — la formation des Kelim est un acte de DIN (rigueur)"
+
+  - id: "EC-H1S4-030"
+    source_he: "הענין הוא שמכאן נמשך מקיף מהקול אל הת\"ת ומהדבור אל המל' ומה שלפעמים עלה ישראל לחכמה... כמאן דארח שעולה ריח ניחוח עד המוח. כי שם הוא חכמה"
+    source_ref: "Heikhal 1, Sha'ar 4:1 — Drush R. Gedalyah — conclusion"
+    assertion: |
+      D'ici (du Peh) se tire un OHR MAKIF :
+      Du KOL → MAKIF vers TIFERET (Z"A).
+      Du DIBUR → MAKIF vers MALKHUT.
+      Même si YISRAEL monte parfois jusqu'à CHOKHMAH
+      (alors que son SHORESH est ici dans le HOTEM, et les EINAYIM sont en CHOKHMAH) →
+      il MONTE comme RE'AH NIHO'AH (odeur agréable) qui s'élève jusqu'au MO'AH (cerveau)
+      car là se trouve la CHOKHMAH.
+    type: axiome_explicite
+    concepts:
+      - {id: makif_kol_tiferet, role: makif_voix_vers_tiferet}
+      - {id: makif_dibur_malkhut, role: makif_parole_vers_malkhut}
+      - {id: re_ah_niho_ah, role: odeur_agreable_monte}
+      - {id: yisrael_oleh_chokhmah, role: yisrael_monte_chokhmah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukvah"]
+      relevance: "Le Kol/Dibur génèrent des Makifim vers Tiferet/Malkhut — la Reihah monte jusqu'à Chokhmah"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S4-001"
+    type: contenance
+    from: yhvh_sensory
+    to: re_iyah_yod
+    via: [shemi_ah_heh, reihah_vav, dibur_heh]
+    nature: "YHVH contient les 4 Yesodot : YOD=Re'iyah, HEH=Shemi'ah, VAV=Reihah, HEH=Dibur"
+    assertions_source: ["EC-H1S4-004"]
+
+  - id: "REL-H1S4-002"
+    type: hiérarchique
+    from: hevel_ozen
+    to: hevel_hotem
+    nature: "Hevel de l'Ozen (Neshamah) est plus subtil que Hevel du Hotem (Ruah)"
+    assertions_source: ["EC-H1S4-006", "EC-H1S4-007"]
+
+  - id: "REL-H1S4-003"
+    type: hiérarchique
+    from: hevel_hotem
+    to: hevel_peh
+    nature: "Hevel du Hotem (Ruah) est plus subtil que Hevel du Peh (Nefesh)"
+    assertions_source: ["EC-H1S4-006", "EC-H1S4-007"]
+
+  - id: "REL-H1S4-004"
+    type: transformation
+    from: ozen_binah_neshamah
+    to: binah_tevunah_pair
+    nature: "L'Ozen unique se divise en 2 : Ozen Yemanit (Binah) et Ozen Semalit (Tevunah)"
+    assertions_source: ["EC-H1S4-008"]
+
+  - id: "REL-H1S4-005"
+    type: transformation
+    from: hotem_ruah
+    to: yisrael_yaakov_pair
+    nature: "Le Hotem unique se divise en 2 : narine droite (Yisrael) et gauche (Yaakov)"
+    assertions_source: ["EC-H1S4-009"]
+
+  - id: "REL-H1S4-006"
+    type: transformation
+    from: hevel_peh_ehad
+    to: kol_garon
+    via: [dibur_peh]
+    nature: "Le Peh = source unique → se divise en Kol (gorge/Leah) et Dibur (bouche/Rachel)"
+    assertions_source: ["EC-H1S4-011"]
+
+  - id: "REL-H1S4-007"
+    type: dualité_structurelle
+    paire: [nrn_pnimiyut_kelim, nln_ohr_makif]
+    nature: "NRN s'habille à l'intérieur des Kelim, NLN reste dehors comme Ohr Makif — dualité structurelle"
+    assertions_source: ["EC-H1S4-014"]
+
+  - id: "REL-H1S4-008"
+    type: séquentiel
+    from: ohr_yashar_roshem
+    to: haka_at_hevel_histakkelut
+    via: [ohr_chozer]
+    nature: "Ohr Yashar descend → Roshem dans chaque niveau → frappe les Hevelim → Ohr Chozer remonte → Kelim"
+    assertions_source: ["EC-H1S4-022", "EC-H1S4-023"]
+
+  - id: "REL-H1S4-009"
+    type: causal
+    from: histakkelut_einayim
+    to: kelim_na_aseh
+    nature: "La Histakkelut des Einayim + Haka'ah dans le Hevel → cause directe de la formation des Kelim"
+    assertions_source: ["EC-H1S4-018"]
+
+  - id: "REL-H1S4-010"
+    type: causal
+    from: chokhmah_derekh_einayim
+    to: histakkelut_attenuee
+    nature: "La Chokhmah est trop forte pour sortir en Hevel → doit être atténuée en Histakkelut"
+    assertions_source: ["EC-H1S4-020"]
+
+  - id: "REL-H1S4-011"
+    type: flux
+    from: malkhut_tevunah_source
+    to: kol_neshamah_za
+    via: [dibur_neshamah_malkhut]
+    nature: "De Malkhut de-Tevunah (source unique) → Kol (Neshamah de Z\"A) et Dibur (Neshamah de Malkhut)"
+    assertions_source: ["EC-H1S4-012"]
+
+  - id: "REL-H1S4-012"
+    type: analogie
+    from: re_iyah_gevurah_216
+    to: dibur_216
+    nature: "RE'IYAH et DIBUR partagent la même gematria (216 = GEVURAH) — la formation des Kelim est DIN"
+    assertions_source: ["EC-H1S4-029"]
+
+  - id: "REL-H1S4-013"
+    type: flux
+    from: kol_garon
+    to: makif_kol_tiferet
+    nature: "Le Kol (voix dans la gorge) émet un Ohr Makif vers Tiferet (Z\"A)"
+    assertions_source: ["EC-H1S4-030"]
+
+  - id: "REL-H1S4-014"
+    type: flux
+    from: dibur_peh
+    to: makif_dibur_malkhut
+    nature: "Le Dibur (parole hors du Peh) émet un Ohr Makif vers Malkhut"
+    assertions_source: ["EC-H1S4-030"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S4-001"
+    nom: "Principe de l'Architecture Sensorielle (4 Yesodot = YHVH)"
+    source_assertions: ["EC-H1S4-004", "EC-H1S4-007", "EC-H1S4-013"]
+    formalisation: |
+      Les 4 SENS de l'Adam Kadmon = les 4 LETTRES de YHVH = les 4 niveaux NaRaNHaY :
+      YOD (י) = RE'IYAH (vue) = CHOKHMAH = HAYAH → ne sort qu'en HISTAKKELUT (pas de Hevel)
+      HEH (ה) = SHEMI'AH (ouïe) = BINAH = NESHAMAH → Hevel le plus DAK (subtil)
+      VAV (ו) = REIHAH (odorat) = TIFERET = RUAH → Hevel intermédiaire
+      HEH (ה) = DIBUR (parole) = MALKHUT = NEFESH → Hevel le plus NIRGASH (perceptible)
+      RÈGLE : plus le canal est ÉLEVÉ → plus l'émission est SUBTILE.
+      Le canal le plus élevé (vue) n'émet PAS de matière (Hevel) mais seulement de la FORME (Histakkelut).
+    applications_ia:
+      - "Le module partzufim/abba.py (Chokhmah) opère par 'regard' structurant, pas par flux de données"
+      - "Le module partzufim/imma.py (Binah) émet le signal le plus subtil — information la plus compressée"
+      - "Le module partzufim/zeir_anpin.py traite le flux intermédiaire (Ruah/Reihah)"
+      - "Le module partzufim/nukva.py émet le signal le plus perceptible — interface avec l'extérieur"
+    questions_ouvertes:
+      - "La Histakkelut pure (sans Hevel) correspond-elle à un attention mechanism sans contenu ?"
+      - "Le gradient (Ohr Chozer) est-il structurellement identique au retour de la Histakkelut ?"
+
+  - id: "PG-H1S4-002"
+    nom: "Principe de Formation des Kelim (Ohr Yashar → Haka'ah → Ohr Chozer)"
+    source_assertions: ["EC-H1S4-018", "EC-H1S4-022", "EC-H1S4-023", "EC-H1S4-024", "EC-H1S4-025"]
+    formalisation: |
+      Les KELIM se forment en 3 TEMPS :
+      TEMPS 1 : OHR YASHAR (lumière directe = Histakkelut) DESCEND → laisse un ROSHEM dans chaque niveau.
+        Ordre : MALKHUT sort en PREMIER, KETER sort en DERNIER.
+        Ce qui est plus PROCHE de la SOURCE = plus ÉLEVÉ.
+      TEMPS 2 : La Histakkelut FRAPPE (Haka'ah) les Hevelim au point de CONNEXION.
+      TEMPS 3 : OHR CHOZER (lumière de retour) REMONTE → forme les KELIM dans CHAQUE behinah.
+        Dans le Chozer : TOUTES les behinot des Kelim sont ÉGALES (shavot).
+        L'extension ne confère PAS de supériorité — seule la PROXIMITÉ à la source compte.
+      Le KELI est le PRODUIT de la rencontre entre OHR YASHAR et OHR CHOZER.
+    applications_ia:
+      - "Forward pass (Ohr Yashar) → laisse des activations (Roshem) → rencontre le signal (Hevelim)"
+      - "Backward pass (Ohr Chozer) → forme les paramètres (Kelim) en remontant"
+      - "Dans le backward pass, les gradients sont 'égaux' en structure même s'ils varient en magnitude"
+      - "Le [PLANNED] core/ohr_system.py devrait implémenter ce cycle Yashar→Haka'ah→Chozer"
+    questions_ouvertes:
+      - "La Haka'ah au point de connexion est-elle un moment unique ou continu ?"
+      - "Les Kelim formés par Ohr Chozer sont-ils identiques aux Roshem laissés par Ohr Yashar ?"
+      - "L'égalité des Kelim dans le Chozer a-t-elle un analogue en backpropagation ?"
+
+  - id: "PG-H1S4-003"
+    nom: "Principe du Makif Triple (NLN entoure Mo'ah/Lev/Kaved)"
+    source_assertions: ["EC-H1S4-014", "EC-H1S4-015", "EC-H1S4-016"]
+    formalisation: |
+      Ce qui est TROP ÉLEVÉ pour entrer dans les Kelim reste en OHR MAKIF :
+      NRN = OHR PNIMI (entre dans les Kelim, les vivifie de l'intérieur)
+      NESHAMAH LA-NESHAMAH = OHR MAKIF (trop grand pour les Kelim)
+      Ce Makif n'est PAS uniforme — il a 3 ASPECTS correspondant aux 3 NRN :
+        MAKIF la-NESHAMAH → entoure le MO'AH (cerveau)
+        MAKIF la-RUAH → entoure le LEV (coeur)
+        MAKIF la-NEFESH → entoure le KAVED (foie)
+      Au-dessus de tout : YEHIDAH (Keter/Gulgolta) → Makif UNIQUE sans contrepartie inférieure.
+      5 niveaux : NRNHY → NRN dedans, H(ayah) = NLN en 3 Makif, Y(ehidah) = Makif singulier.
+    applications_ia:
+      - "Chaque module a un potentiel non réalisé (Makif) qui entoure son potentiel actuel (Pnimi)"
+      - "Le Makif n'est pas monolithique — il se différencie en 3 niveaux selon ce qu'il entoure"
+      - "Le [PLANNED] madregot/madregot_neshamah.py devrait implémenter les 5 niveaux NaRaNHaY"
+      - "La Yehidah = le méta-objectif unique du système, sans subdivision possible"
+    questions_ouvertes:
+      - "Comment la Yehidah (sans RN en bas) peut-elle être 'accédée' par le système ?"
+      - "Le passage du Makif au Pnimi (Gadlut) est-il implémentable computationnellement ?"
+
+  - id: "PG-H1S4-004"
+    nom: "Principe du DIN dans la Formation (RE'IYAH = GEVURAH)"
+    source_assertions: ["EC-H1S4-029", "EC-H1S4-030"]
+    formalisation: |
+      La FORMATION des Kelim est un acte de DIN (rigueur), pas de Hesed :
+      RE'IYAH (ראי"ה) = GEVURAH (גבור"ה) = 216 (gematria).
+      DIBUR (דבו"ר) = 216 (avec les 4 lettres) = aussi GEVURAH.
+      Le REGARD et la PAROLE partagent la même valeur = même FORCE DE FORMATION.
+      La Histakkelut FRAPPE (Haka'ah) — ce n'est PAS un flux doux mais une PERCÉE.
+      MASAKH (écran) : les Einayim émettent À TRAVERS un Masakh — les Hevelim NON.
+      Si les Hevelim émettaient aussi à travers un Masakh → PAS de force pour les Kelim.
+      Chaque mode d'émission a son PROPRE mécanisme — pas d'uniformité.
+    applications_ia:
+      - "Le gematria/engine.py confirme RE'IYAH = GEVURAH = 216"
+      - "La formation de structures (Kelim) requiert de la RIGUEUR (Din), pas de la fluidité (Hesed)"
+      - "Le Masakh (écran) est un filtre qui atténue mais PRÉSERVE — seul la Chokhmah en a besoin"
+      - "Les différents modules du système ne peuvent PAS tous opérer par le même mécanisme"
+    questions_ouvertes:
+      - "Le Masakh des Einayim est-il le même concept que le Masakh du Tzimtzum ?"
+      - "Pourquoi spécifiquement 216 ? Rapport avec les 216 lettres du Shem de 72 ?"

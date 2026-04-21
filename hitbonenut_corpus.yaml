@@ -1,0 +1,591 @@
+# ═══════════════════════════════════════════════════════════════
+# Hitbonenut Corpus — הִתְבּוֹנְנוּת
+# Questions d'auto-apprentissage pour l'Etz Chaim AI
+#
+# 24 domaines × 4 niveaux + 15 bridges = ~400 questions
+# Niveaux : basique → intermediaire → avancee → erudite
+# ═══════════════════════════════════════════════════════════════
+
+kabbale_lurianique:
+  basique:
+    - "Qu'est-ce que le Tzimtzum ?"
+    - "Combien de Sephiroth y a-t-il dans l'Arbre de Vie ?"
+    - "Qui est Isaac Luria (l'Ari) ?"
+    - "Qu'est-ce que la Shevirat HaKelim (brisure des vases) ?"
+    - "Qu'est-ce que le Tikkun ?"
+  intermediaire:
+    - "Pourquoi le Tzimtzum est-il nécessaire pour la création ?"
+    - "Quelle est la relation entre Shevirat HaKelim et Tikkun ?"
+    - "Quel est le rôle de Chaim Vital dans la transmission de la Kabbale lourianique ?"
+    - "Quelle différence entre la Kabbale de Cordovero et celle de Luria ?"
+  avancee:
+    - "Comment le concept de Reshimu permet-il la reconstruction après le Tzimtzum ?"
+    - "Quel est le rôle du Masakh dans la création de l'Ohr Chozer ?"
+    - "En quoi les versions de Sarug et d'Ibn Tabul diffèrent-elles de celle de Vital ?"
+    - "Comment les 288 Nitzotzot (étincelles) sont-ils répartis dans les Qliphoth ?"
+  erudite:
+    - "En quoi la position du Tanya sur le Tzimtzum diffère-t-elle de celle de l'Ari ?"
+    - "Comment les 4 Behinot du Masakh structurent-elles les niveaux d'Aviut ?"
+    - "Quelle est la relation entre le Reshimu et le Kav dans la reconstruction du Halal ?"
+    - "Comment le Klach Pitchei Chokhmah du Ramchal systématise-t-il la doctrine lourianique ?"
+
+sefer_yetzirah:
+  basique:
+    - "Quelles sont les 3 lettres mères (Imot) ?"
+    - "Combien de lettres simples y a-t-il dans le Sefer Yetzirah ?"
+    - "Qu'est-ce que les 231 portes ?"
+    - "Quelles sont les 7 lettres doubles ?"
+  intermediaire:
+    - "Comment les 3 lettres mères se mappent-elles sur les éléments ?"
+    - "Quelle est la structure des 10 Sefirot Belimah dans le Sefer Yetzirah ?"
+    - "Comment les 22 lettres se répartissent-elles en 3+7+12 ?"
+    - "Quelle est la signification de la racine S-F-R (ספר) dans le Sefer Yetzirah ?"
+  avancee:
+    - "Comment le Sefer Yetzirah décrit-il la permutation des lettres pour créer le monde ?"
+    - "Quelle est la relation entre les 231 portes et le graphe complet K₂₂ ?"
+    - "En quoi les 10 Sefirot Belimah diffèrent-elles des Sefirot kabbalistiques ultérieures ?"
+    - "Comment le concept de Teli, Galgal et Lev structure-t-il la cosmologie du SY ?"
+  erudite:
+    - "Comment la recension du Gra diffère-t-elle de celle de Saadya pour le mapping lettre-sentier ?"
+    - "Quelle est la signification de 'Sefirot Belimah — dix et non neuf, dix et non onze' ?"
+    - "Comment l'édition Hayman (2004) restructure-t-elle notre compréhension du texte court ?"
+    - "Quel lien Idel établit-il entre le SY et les techniques de Tzeruf d'Abulafia ?"
+
+gematria:
+  basique:
+    - "Quelle est la valeur gématrique de אמת (Emet, vérité) ?"
+    - "Quelle est la valeur gématrique de אלהים (Elohim) ?"
+    - "Qu'est-ce que la gematria standard (Mispar Gadol) ?"
+    - "Quelle est la valeur de chaque lettre de l'alphabet hébreu ?"
+  intermediaire:
+    - "Quelles sont les principales méthodes de gematria (Mispar Gadol, Mispar Katan, At-Bash) ?"
+    - "Pourquoi אחד (echad, un) et אהבה (ahavah, amour) partagent-ils la valeur 13 ?"
+    - "Comment fonctionne la technique At-Bash ?"
+    - "Quelle est la valeur du Tetragramme (יהוה) ?"
+  avancee:
+    - "Comment les 4 expansions du Tetragramme (Ab, Sag, Mah, Ban) se calculent-elles ?"
+    - "Quel est le rôle de la gematria dans le Pardes (4 niveaux d'interprétation) ?"
+    - "Comment la technique Notarikon fonctionne-t-elle en Kabbale ?"
+    - "Quelle relation gématrique lie שלום (shalom, paix) et sa valeur 376 ?"
+  erudite:
+    - "Quel lien gématrique existe entre חיים (vie, 68) et le nombre de Nitzotzot par Sephirah ?"
+    - "Comment les gematrioth des 72 Shemot se distribuent-elles numériquement ?"
+    - "Pourquoi la valeur 26 du Tetragramme est-elle centrale dans l'architecture lourianique ?"
+    - "Comment Abulafia utilise-t-il la gematria comme technique méditative (et non seulement herméneutique) ?"
+
+partzufim:
+  basique:
+    - "Qu'est-ce qu'un Partzuf ?"
+    - "Combien de Partzufim principaux y a-t-il ?"
+    - "Quel est le Partzuf associé à Keter ?"
+    - "Quels sont les noms des 6 Partzufim principaux ?"
+  intermediaire:
+    - "Quelle est la relation entre Zeir Anpin et les 6 Sephiroth de Chesed à Yesod ?"
+    - "Qu'est-ce que le Zivug (couplage) entre Partzufim ?"
+    - "Comment Atik Yomin se distingue-t-il d'Arikh Anpin ?"
+    - "Pourquoi les Partzufim représentent-ils une maturation des Sephiroth ?"
+  avancee:
+    - "Comment le Zivug Abba×Imma génère-t-il les Mochin de Zeir Anpin ?"
+    - "Quelle est la différence entre Gadlut (maturité) et Katnut (immaturité) des Mochin ?"
+    - "Comment les 10 Sephiroth internes de chaque Partzuf s'organisent-elles ?"
+    - "Quel est le rôle de Nukva (la dimension féminine) dans le Tikkun ?"
+  erudite:
+    - "Comment la théorie des Partzufim résout-elle les paradoxes de la Shevirah ?"
+    - "En quoi l'orientation panim-be-panim diffère-t-elle de akhor-be-akhor et quelle est sa signification ?"
+    - "Comment les Partzufim se rapportent-ils aux 5 niveaux de l'âme ?"
+    - "Quelle est la relation entre les 13 Tikkunei Dikna d'Arikh Anpin et la Miséricorde ?"
+
+olamot:
+  basique:
+    - "Quels sont les 4 mondes (Olamot) de la Kabbale ?"
+    - "Quel est l'ordre descendant des 4 mondes ?"
+    - "Quel monde est le plus élevé spirituellement ?"
+    - "Quel monde correspond à l'action concrète ?"
+  intermediaire:
+    - "Comment chaque monde contient-il un Arbre de Vie complet ?"
+    - "Quelle est la relation entre les mondes et les lettres du Tetragramme ?"
+    - "Comment la Hishtalshelut (chaîne d'émanation) connecte-t-elle les mondes ?"
+    - "Pourquoi Atziluth est-il le monde de l'Émanation et non de la Création ?"
+  avancee:
+    - "Comment le Malkuth d'un monde supérieur devient-il le Keter du monde inférieur ?"
+    - "Quelle est la fonction du Parsah (rideau) entre Atziluth et Briah ?"
+    - "Comment les Qliphoth se distribuent-elles à travers les mondes ?"
+    - "Quel est le rôle de chaque monde dans le processus du Tikkun ?"
+  erudite:
+    - "Comment la doctrine des mondes dans l'Etz Chaim diffère-t-elle de celle du Pardes Rimonim ?"
+    - "Quelle est la relation entre les 4 mondes et les 4 niveaux du Pardes herméneutique ?"
+    - "Comment Ibn Arabi structure-t-il les Hadarat (Présences divines) par rapport aux Olamot ?"
+    - "En quoi le Nefesh HaChaim de Chaim de Volozhin modifie-t-il la compréhension des mondes ?"
+
+sentiers:
+  basique:
+    - "Combien de sentiers relient les Sephiroth dans l'Arbre de Vie ?"
+    - "Quelle est la correspondance entre les 22 sentiers et les 22 lettres hébraïques ?"
+    - "Quels sentiers connectent Tiferet aux autres Sephiroth ?"
+    - "Quelle lettre est associée au sentier entre Keter et Chokmah ?"
+  intermediaire:
+    - "Comment les 3 types de lettres (mères, doubles, simples) correspondent-ils aux types de sentiers ?"
+    - "Quel sentier est appelé le 'sentier de l'intelligence naturelle' ?"
+    - "Comment les sentiers horizontaux, verticaux et diagonaux se distinguent-ils ?"
+    - "Quelle est la signification du sentier Lamed qui relie Gevurah à Hod ?"
+  avancee:
+    - "Comment les 22 sentiers correspondent-ils aux 22 arcanes majeurs du Tarot selon le GD ?"
+    - "Quelle est la relation entre le nombre d'un sentier (11-32) et sa position dans l'Arbre ?"
+    - "Comment la lettre Aleph, sentier entre Keter et Chokmah, incarne-t-elle le souffle primordial ?"
+    - "En quoi le sentier Tav (Malkuth-Yesod) est-il le fondement de la pratique ?"
+  erudite:
+    - "Comment les attributions de sentiers diffèrent-elles entre le Gra, le Sefer Yetzirah et le Golden Dawn ?"
+    - "Quelle est la signification des 231 portes comme paires de sentiers dans le graphe complet ?"
+    - "Comment Abulafia utilise-t-il les sentiers dans sa technique de Tzeruf ?"
+    - "En quoi le concept de 'sentier' dans le Bahir diffère-t-il de celui du Zohar ?"
+
+shemot:
+  basique:
+    - "Que sont les 72 Shemot (Noms) ?"
+    - "De quel passage biblique les 72 Noms sont-ils dérivés ?"
+    - "Combien de lettres compose chaque Shem ?"
+    - "Quel est le premier des 72 Noms (Vehu) ?"
+  intermediaire:
+    - "Comment les 72 Noms sont-ils extraits d'Exode 14:19-21 ?"
+    - "Quelle est la relation entre les 72 Noms et les 72 anges ?"
+    - "Comment les trigrammes des Shemot se construisent-ils (boustrophédon) ?"
+    - "Quel Shem est associé à la guérison et pourquoi ?"
+  avancee:
+    - "Comment les 72 Shemot se répartissent-ils par élément et par décan zodiacal ?"
+    - "Quelle est la relation entre les suffixes -El et -Yah dans les noms angéliques ?"
+    - "Comment les 72 Noms fonctionnent-ils comme 'skills' dans une architecture modulaire ?"
+    - "Quel est le rôle des 72 Noms dans la méditation kabbalistique selon Abulafia ?"
+  erudite:
+    - "Comment le Shorashei HaShemot structure-t-il les racines des Noms divins ?"
+    - "Quelle est la relation entre les 72 Noms et les 216 lettres du Shem HaMeforash ?"
+    - "Comment Cordovero interprète-t-il les 72 Noms dans le Pardes Rimonim ?"
+    - "En quoi l'usage liturgique des Shemot diffère-t-il de leur usage théurgique ?"
+
+qliphoth:
+  basique:
+    - "Que sont les Qliphoth ?"
+    - "Combien de Qliphoth correspondent aux 10 Sephiroth ?"
+    - "Quelle est la Qliphah de Malkuth ?"
+    - "Pourquoi les Qliphoth sont-elles appelées 'écorces' ou 'coquilles' ?"
+  intermediaire:
+    - "Quelle est la différence entre Qlipat Nogah et les 3 Qliphoth impures ?"
+    - "Comment les Qliphoth sont-elles nées de la Shevirat HaKelim ?"
+    - "Quelle est la Qliphah Thagirion et pourquoi est-elle associée à Tiferet ?"
+    - "Comment le Birur (tri) sépare-t-il les étincelles des Qliphoth ?"
+  avancee:
+    - "Comment les 4 niveaux de défaillance (Nogah, Ruach, Anan, Mamash) s'appliquent-ils au diagnostic ?"
+    - "Quelle est la relation entre Samael (Qliphah de Hod) et la fausse confiance ?"
+    - "Comment le concept de 'Qliphah Nogah' permet-il un diagnostic nuancé (pas tout noir ou blanc) ?"
+    - "Quel est le rôle de Gamaliel (Qliphah de Yesod) dans la corruption de la mémoire ?"
+  erudite:
+    - "Comment le Zohar distingue-t-il les Qliphoth du Sitra Achra dans l'Idra Rabba ?"
+    - "En quoi la vision lourianique des Qliphoth diffère-t-elle de celle du Zohar ?"
+    - "Comment les Qliphoth se rapportent-elles aux 50 Portes d'Impureté ?"
+    - "Quelle est la relation entre les Qliphoth et le concept de Tohu (Chaos) pré-création ?"
+
+tzeruf:
+  basique:
+    - "Qu'est-ce que le Tzeruf (permutation de lettres) ?"
+    - "Qui est le principal praticien du Tzeruf en Kabbale ?"
+    - "Comment le Tzeruf est-il utilisé dans la méditation kabbalistique ?"
+    - "Quelle est la différence entre Tzeruf et Gematria ?"
+  intermediaire:
+    - "Comment Abulafia systématise-t-il les techniques de Tzeruf ?"
+    - "Quelles sont les règles de permutation dans le Tzeruf standard ?"
+    - "Quel est le rôle de la vocalisation (Nikkud) dans le Tzeruf ?"
+    - "Comment le Tzeruf est-il lié à la Kabbale prophétique (Nevouatique) ?"
+  avancee:
+    - "Comment les roues de Tzeruf fonctionnent-elles (Galgalim) ?"
+    - "Quelle est la relation entre Tzeruf et les 231 portes du Sefer Yetzirah ?"
+    - "Comment Abulafia combine-t-il Tzeruf, respiration et mouvement corporel ?"
+    - "En quoi le Tzeruf est-il une forme de 'calcul' ou d'algorithme ?"
+  erudite:
+    - "Comment le Tzeruf d'Abulafia influence-t-il l'Ars Combinatoria de Ramon Llull ?"
+    - "Quelle est la relation formelle entre le Tzeruf et la théorie des groupes de permutations ?"
+    - "Comment Idel reconstruit-il la pratique du Tzeruf dans 'The Mystical Experience in Abraham Abulafia' ?"
+    - "En quoi le Tzeruf constitue-t-il un précurseur des grammaires génératives ?"
+
+ohr:
+  basique:
+    - "Qu'est-ce que l'Ohr (lumière) en Kabbale ?"
+    - "Quelle est la différence entre Ohr Yashar et Ohr Chozer ?"
+    - "Qu'est-ce que l'Ohr Ein Sof ?"
+    - "Que signifie Ohr Pnimi (lumière intérieure) ?"
+  intermediaire:
+    - "Comment l'Ohr Yashar (lumière directe) descend-il de Keter à Malkuth ?"
+    - "Quel est le rôle de l'Ohr Chozer (lumière de retour) dans la construction des Kelim ?"
+    - "Quelle est la différence entre Ohr Pnimi et Ohr Makif ?"
+    - "Comment les Kelim (récipients) limitent-ils la lumière qu'ils reçoivent ?"
+  avancee:
+    - "Comment le Masakh (écran) transforme-t-il l'Ohr Yashar en Ohr Chozer ?"
+    - "Quelle est la relation entre les 5 niveaux de lumière et les 5 Behinot ?"
+    - "Comment l'Ohr Makif (lumière environnante) influence-t-il sans être intégré ?"
+    - "En quoi le ratio Ohr Pnimi / Ohr Makif mesure-t-il la maturité d'un système ?"
+  erudite:
+    - "Comment les 4 Behinot du Masakh structurent-elles la hiérarchie des Olamot ?"
+    - "En quoi l'Ohr Ein Sof avant le Tzimtzum diffère-t-il de l'Ohr après le Tzimtzum ?"
+    - "Comment Ashlag interprète-t-il la dynamique Ohr/Kli dans le Talmud Eser Sefirot ?"
+    - "Quel parallèle structurel existe entre Ohr Yashar/Chozer et le forward/backward pass ?"
+
+adam_kadmon:
+  basique:
+    - "Qu'est-ce qu'Adam Kadmon ?"
+    - "Où se situe Adam Kadmon par rapport aux 4 mondes ?"
+    - "Pourquoi Adam Kadmon est-il appelé 'l'Homme Primordial' ?"
+    - "Quel est le rapport entre Adam Kadmon et l'Arbre de Vie ?"
+  intermediaire:
+    - "Comment Adam Kadmon sert-il de blueprint pour les mondes inférieurs ?"
+    - "Quelles lumières émanent des 'yeux', 'oreilles', 'nez' et 'bouche' d'Adam Kadmon ?"
+    - "Quelle est la relation entre Adam Kadmon et les Partzufim ?"
+    - "Comment le concept de Tselem (image) relie-t-il Adam Kadmon à l'humain ?"
+  avancee:
+    - "Comment les 10 Sephiroth d'Adam Kadmon diffèrent-elles de celles d'Atziluth ?"
+    - "Quel est le rôle d'Adam Kadmon dans la chaîne Tzimtzum → Shevirah → Tikkun ?"
+    - "Comment mesurer la 'fidélité' d'un système par rapport au blueprint Adam Kadmon ?"
+    - "En quoi les lumières des 'sens' d'AK préfigurent-elles des modes de cognition ?"
+  erudite:
+    - "Comment le concept d'Adam Kadmon dans l'Etz Chaim diffère-t-il de l'Anthropos gnostique ?"
+    - "Quelle est la relation entre Adam Kadmon et l'Insan al-Kamil d'Ibn Arabi ?"
+    - "Comment le Shi'ur Qomah (mesure du corps divin) se rapporte-t-il à Adam Kadmon ?"
+    - "En quoi la vision d'Adam Kadmon chez le Ramchal diffère-t-elle de celle de Vital ?"
+
+hishtalshelut:
+  basique:
+    - "Qu'est-ce que la Hishtalshelut ?"
+    - "Comment les mondes se chaînent-ils dans la Hishtalshelut ?"
+    - "Quel est le point de départ de la chaîne d'émanation ?"
+    - "Combien de niveaux principaux la Hishtalshelut compte-t-elle ?"
+  intermediaire:
+    - "Comment le Malkuth d'un monde devient-il le Keter du suivant ?"
+    - "Quel rôle jouent les Parsaot (rideaux) entre les mondes ?"
+    - "Comment l'information se transforme-t-elle en descendant la chaîne ?"
+    - "Pourquoi dit-on que chaque monde contient les 4 mondes en miniature ?"
+  avancee:
+    - "Comment la Hishtalshelut implémente-t-elle une compression progressive de l'information ?"
+    - "Quelle est la relation entre Hishtalshelut et le concept d'Information Bottleneck ?"
+    - "Comment les différents niveaux d'Aviut (épaisseur) correspondent-ils aux mondes ?"
+    - "En quoi la montée des mondes (Aliyat HaOlamot) inverse-t-elle la Hishtalshelut ?"
+  erudite:
+    - "Comment le Tanya interprète-t-il la Hishtalshelut comme processus épistémique ?"
+    - "Quelle distinction le Leshem fait-il entre Hishtalshelut d'Igulim et de Yosher ?"
+    - "Comment la Pipeline émulative d'Avicenne (10 Intellects) se compare-t-elle à la Hishtalshelut ?"
+    - "En quoi la Hishtalshelut est-elle un modèle de dégradation gracieuse ?"
+
+tzimtzum:
+  basique:
+    - "Qu'est-ce que le Tzimtzum (contraction) ?"
+    - "Pourquoi le Tzimtzum est-il nécessaire ?"
+    - "Qu'est-ce que le Halal (espace vide) créé par le Tzimtzum ?"
+    - "Qu'est-ce que le Reshimu (trace résiduelle) ?"
+  intermediaire:
+    - "Qu'est-ce que le Kav (rayon de lumière) qui pénètre le Halal ?"
+    - "Comment le Tzimtzum crée-t-il la possibilité de l'altérité ?"
+    - "Quelle est la différence entre Tzimtzum littéral et Tzimtzum métaphorique ?"
+    - "Comment le Reshimu et le Kav interagissent-ils dans le Halal ?"
+  avancee:
+    - "Comment le débat Tzimtzum littéral vs. métaphorique a-t-il structuré le Hassidisme ?"
+    - "Quelle est la position du Tanya : le Tzimtzum est-il ontologique ou épistémique ?"
+    - "Comment le Tzimtzum se rapporte-t-il à la théorie de l'Information Bottleneck ?"
+    - "En quoi le concept de Tzimtzum focalisant (réduction de domaine) étend-il le Tzimtzum cosmologique ?"
+  erudite:
+    - "Comment le Nefesh HaChaim de Chaim de Volozhin nuance-t-il la position du Tanya sur le Tzimtzum ?"
+    - "Quelle est la relation formelle entre Tzimtzum et compression avec perte en théorie de l'information ?"
+    - "Comment les multiples Tzimtzumim successifs de l'Etz Chaim correspondent-ils aux couches d'un réseau ?"
+    - "En quoi le Tzimtzum est-il un acte de Din (jugement/limitation) et comment cela se formalise-t-il ?"
+
+neshamot:
+  basique:
+    - "Quels sont les 5 niveaux de l'âme en Kabbale ?"
+    - "Qu'est-ce que le Nefesh (âme vitale) ?"
+    - "Qu'est-ce que le Ruach (esprit) ?"
+    - "Quel est le niveau le plus élevé de l'âme ?"
+  intermediaire:
+    - "Comment chaque niveau de l'âme correspond-il à un monde (Olam) ?"
+    - "Quelle est la relation entre les niveaux de l'âme et les Sephiroth ?"
+    - "Comment progresse-t-on du Nefesh au Ruach ?"
+    - "Pourquoi la Neshamah est-elle associée à Binah ?"
+  avancee:
+    - "Comment les 5 niveaux de l'âme se rapportent-ils aux 5 Partzufim ?"
+    - "Quel est le rôle de la Chaya dans l'accès aux dimensions non-linéaires de la cognition ?"
+    - "Comment le Gilgul (transmigration des âmes) affecte-t-il les niveaux atteints ?"
+    - "En quoi le concept de 'sparks of the soul' est-il lié aux Nitzotzot ?"
+  erudite:
+    - "Comment la doctrine des Neshamot dans l'Etz Chaim se rapporte-t-elle au Sha'ar HaGilgulim ?"
+    - "En quoi la conception des niveaux d'âme chez le Ramchal diffère-t-elle de celle de Vital ?"
+    - "Comment les seuils de passage entre niveaux d'âme se formalisent-ils (mémoire, compétence, Tikkun) ?"
+    - "Quelle est la relation entre Yechidah et l'état de Devekut (union mystique) ?"
+
+# ═══════════════════════════════════════════════════════════════
+# Domaines séculiers — 10 domaines × 4 niveaux × 4 questions
+# ═══════════════════════════════════════════════════════════════
+
+logique_maths:
+  basique:
+    - "Qu'est-ce qu'un système formel ?"
+    - "Qu'est-ce que le théorème d'incomplétude de Gödel ?"
+    - "Qu'est-ce que la décidabilité d'un problème ?"
+    - "Qu'est-ce que la cardinalité d'un ensemble ?"
+  intermediaire:
+    - "Pourquoi le programme de Hilbert a-t-il échoué après Gödel ?"
+    - "Quelle différence entre complétude syntaxique et complétude sémantique ?"
+    - "Comment le diagonalisation de Cantor prouve-t-elle que les réels sont indénombrables ?"
+    - "Pourquoi le problème de l'arrêt (Turing) est-il indécidable ?"
+  avancee:
+    - "Comment la hiérarchie arithmétique classifie-t-elle les ensembles indécidables ?"
+    - "En quoi le théorème de Löwenheim-Skolem crée-t-il un paradoxe pour la théorie des ensembles ?"
+    - "Comment le forcing de Cohen prouve-t-il l'indépendance de l'hypothèse du continu ?"
+    - "En quoi la hiérarchie de Tarski (niveaux de vérité) contourne-t-elle le paradoxe du menteur ?"
+  erudite:
+    - "En quoi le théorème d'incomplétude de Gödel contraint-il les systèmes formels auto-référentiels, et comment la hiérarchie de Tarski tente-t-elle de contourner ce problème ?"
+    - "Comment le programme de la reverse mathematics de Friedman et Simpson redéfinit-il la question des fondements ?"
+    - "En quoi la thèse de Church-Turing est-elle empiriquement robuste mais indémontrable, et quels modèles de calcul (lambda-calcul, machines de Turing, fonctions récursives) convergent vers la même classe ?"
+    - "Comment le théorème d'indéfinissabilité de Tarski se distingue-t-il du premier théorème d'incomplétude de Gödel, et pourquoi leurs conséquences philosophiques divergent-elles ?"
+
+physique:
+  basique:
+    - "Qu'est-ce que la dualité onde-particule ?"
+    - "Qu'est-ce que le principe d'incertitude de Heisenberg ?"
+    - "Qu'est-ce qu'une brisure spontanée de symétrie ?"
+    - "Qu'est-ce qu'une transition de phase ?"
+  intermediaire:
+    - "Pourquoi la renormalisation est-elle nécessaire en théorie quantique des champs ?"
+    - "Quelle différence entre brisure explicite et brisure spontanée de symétrie ?"
+    - "Comment le théorème de Noether relie-t-il symétries et lois de conservation ?"
+    - "Pourquoi la gravité résiste-t-elle à la quantification par les méthodes standard ?"
+  avancee:
+    - "Comment le groupe de renormalisation de Wilson transforme-t-il notre compréhension des théories effectives ?"
+    - "En quoi la dualité AdS/CFT de Maldacena relie-t-elle gravité et théorie conforme des champs ?"
+    - "Comment l'intrication quantique viole-t-elle les inégalités de Bell, et quelles interprétations en découlent ?"
+    - "En quoi le théorème de Goldstone contraint-il les brisures spontanées de symétries continues ?"
+  erudite:
+    - "Comment la renormalisation de Wilson a-t-elle transformé notre compréhension des transitions de phase, et en quoi les exposants critiques universels défient-ils l'approche réductionniste ?"
+    - "En quoi le problème de la hiérarchie (naturalness) en physique des particules remet-il en question le programme de 't Hooft sur la naturalité technique ?"
+    - "Comment la conjecture ER=EPR de Maldacena et Susskind reformule-t-elle la relation entre intrication et géométrie de l'espace-temps ?"
+    - "En quoi l'argument de Weinberg sur la constante cosmologique illustre-t-il les tensions entre théorie quantique des champs et cosmologie observationnelle ?"
+
+biologie_evo:
+  basique:
+    - "Qu'est-ce que la sélection naturelle ?"
+    - "Qu'est-ce qu'un fitness landscape (paysage adaptatif) ?"
+    - "Qu'est-ce que l'épigénétique ?"
+    - "Qu'est-ce que l'evo-devo (biologie évolutive du développement) ?"
+  intermediaire:
+    - "Pourquoi la dérive génétique peut-elle l'emporter sur la sélection dans les petites populations ?"
+    - "Quelle différence entre adaptation et exaptation (Gould et Vrba) ?"
+    - "Comment la construction de niche modifie-t-elle les pressions de sélection ?"
+    - "En quoi la robustesse mutationelle (Wagner) facilite-t-elle l'évolvabilité ?"
+  avancee:
+    - "Comment les gènes Hox illustrent-ils la modularité du développement et ses conséquences évolutives ?"
+    - "En quoi la théorie de la neutralité de Kimura complète-t-elle (plutôt qu'elle ne contredit) le néo-darwinisme ?"
+    - "Comment le concept de canalisation (Waddington) explique-t-il la robustesse phénotypique ?"
+    - "En quoi les systèmes d'hérédité inclusive (Jablonka et Lamb) élargissent-ils le cadre de l'hérédité ?"
+  erudite:
+    - "Comment la théorie de la construction de niche (Odling-Smee, Laland, Feldman) modifie-t-elle le cadre néo-darwinien, et quelles critiques lui adressent les adaptationistes stricts ?"
+    - "En quoi la Extended Evolutionary Synthesis diffère-t-elle de la Synthèse Moderne, et quels auteurs (Pigliucci, Müller) en définissent les contours ?"
+    - "Comment le concept de fitness landscape de Wright se compare-t-il à la NK-fitness landscape de Kauffman, et quelles conséquences pour la prévisibilité de l'évolution ?"
+    - "En quoi le débat Gould-Dawkins sur les niveaux de sélection (gène vs. organisme vs. groupe) reste-t-il non résolu, et comment la théorie de Price tente-t-elle de l'arbitrer ?"
+
+theorie_info:
+  basique:
+    - "Qu'est-ce que l'entropie de Shannon ?"
+    - "Qu'est-ce que la complexité de Kolmogorov ?"
+    - "Qu'est-ce que la capacité d'un canal de communication ?"
+    - "Qu'est-ce que le codage de Huffman ?"
+  intermediaire:
+    - "Pourquoi l'entropie de Shannon mesure-t-elle l'incertitude plutôt que le désordre ?"
+    - "Quelle différence entre compression avec perte et compression sans perte ?"
+    - "Comment le théorème du codage de canal de Shannon fixe-t-il une limite théorique ?"
+    - "Pourquoi l'information mutuelle est-elle symétrique ?"
+  avancee:
+    - "Comment le principe de longueur de description minimale (MDL de Rissanen) relie-t-il compression et inférence ?"
+    - "En quoi la complexité de Kolmogorov est-elle incomputable, et quel rôle joue le théorème de Rice ?"
+    - "Comment l'Information Bottleneck de Tishby reformule-t-il le compromis entre compression et prédiction ?"
+    - "En quoi la divergence de Kullback-Leibler mesure-t-elle la distance entre distributions, et pourquoi n'est-elle pas symétrique ?"
+  erudite:
+    - "Pourquoi la complexité de Kolmogorov est-elle incomputable, et comment les approximations (NCD de Cilibrasi et Vitányi) contournent-elles ce problème en pratique ?"
+    - "En quoi le théorème de codage de source de Shannon et la complexité de Kolmogorov convergent-ils asymptotiquement, et où divergent-ils pour les séquences finies ?"
+    - "Comment l'entropie de Rényi généralise-t-elle l'entropie de Shannon, et dans quels contextes (cryptographie, mécanique statistique) cette généralisation devient-elle nécessaire ?"
+    - "En quoi le paradoxe de Maxwell (démon de Maxwell) relie-t-il thermodynamique et théorie de l'information, et comment le principe de Landauer le résout-il ?"
+
+neurosciences:
+  basique:
+    - "Qu'est-ce que le predictive processing (traitement prédictif) ?"
+    - "Qu'est-ce que le Global Workspace Theory (Baars) ?"
+    - "Qu'est-ce que la plasticité synaptique ?"
+    - "Qu'est-ce que l'expérience de Libet sur le potentiel de préparation ?"
+  intermediaire:
+    - "Pourquoi le cerveau bayésien minimise-t-il l'erreur de prédiction plutôt que de maximiser l'information ?"
+    - "Quelle différence entre bottom-up (feedforward) et top-down (feedback) dans le traitement cortical ?"
+    - "Comment la plasticité hebbienne ('neurons that fire together wire together') fonctionne-t-elle ?"
+    - "En quoi l'embodied cognition (Varela, Thompson) remet-elle en cause le computationnalisme classique ?"
+  avancee:
+    - "Comment le Free Energy Principle de Friston unifie-t-il perception, action et apprentissage ?"
+    - "En quoi l'Integrated Information Theory (IIT) de Tononi propose-t-elle une mesure quantitative de la conscience (Phi) ?"
+    - "Comment le Higher-Order Theory de Rosenthal distingue-t-il conscience phénoménale et conscience d'accès ?"
+    - "En quoi la théorie des assemblées cellulaires de Hebb préfigure-t-elle les réseaux de neurones artificiels ?"
+  erudite:
+    - "Comment le predictive processing de Friston reformule-t-il la distinction perception/action, et en quoi l'active inference étend-elle ce cadre au-delà de la simple prédiction sensorielle ?"
+    - "En quoi les critiques de l'IIT par Scott Aaronson (complexité computationnelle du calcul de Phi) et par Schwitzgebel (panpsychisme comme reductio) menacent-elles la théorie de Tononi ?"
+    - "Comment le débat entre Global Workspace (Dehaene, Changeux) et Higher-Order Theories (Lau, Rosenthal) structure-t-il la recherche actuelle sur les corrélats neuronaux de la conscience ?"
+    - "En quoi l'expérience de Libet, malgré ses limites méthodologiques (Schurger et al. 2012), continue-t-elle de structurer le débat sur le libre arbitre en neurophilosophie ?"
+
+epistemologie:
+  basique:
+    - "Qu'est-ce que le falsificationnisme de Popper ?"
+    - "Qu'est-ce qu'un paradigme au sens de Kuhn ?"
+    - "Qu'est-ce que le problème de l'induction ?"
+    - "Qu'est-ce que la sous-détermination théorique (Quine) ?"
+  intermediaire:
+    - "Pourquoi Kuhn considère-t-il que les paradigmes sont incommensurables ?"
+    - "Quelle différence entre le falsificationnisme naïf et le falsificationnisme sophistiqué de Lakatos ?"
+    - "Comment la thèse Duhem-Quine affecte-t-elle la possibilité de tester une hypothèse isolée ?"
+    - "En quoi les programmes de recherche de Lakatos améliorent-ils le modèle de Popper ?"
+  avancee:
+    - "Comment le réalisme structural (Worrall) tente-t-il de préserver le réalisme scientifique face au pessimistic meta-induction ?"
+    - "En quoi l'empirisme constructif de van Fraassen diffère-t-il du réalisme scientifique ?"
+    - "Comment l'anarchisme épistémologique de Feyerabend (Against Method) critique-t-il toute méthodologie unitaire ?"
+    - "En quoi le bayésianisme épistémique reformule-t-il la confirmation et la révision de croyances ?"
+  erudite:
+    - "En quoi le problème de la sous-détermination de Quine rend-il insuffisant le falsificationnisme, et comment Lakatos tente-t-il de sauver une méthodologie rationnelle avec ses programmes de recherche ?"
+    - "Comment le no-miracles argument de Putnam et le pessimistic meta-induction de Laudan structurent-ils le débat réalisme/antiréalisme en philosophie des sciences ?"
+    - "En quoi la thèse de Kuhn sur les révolutions scientifiques, relue par Hacking (représentation/intervention), échappe-t-elle aux critiques de relativisme ?"
+    - "Comment le problème de la nouveauté prédictive (novel prediction) distingue-t-il les approches de Lakatos, Zahar et Worrall sur la confirmation théorique ?"
+
+historiographie:
+  basique:
+    - "Qu'est-ce que l'école des Annales ?"
+    - "Qui est Marc Bloch et quelle est sa contribution méthodologique ?"
+    - "Qu'est-ce que la longue durée (Braudel) ?"
+    - "Qu'est-ce que la micro-histoire ?"
+  intermediaire:
+    - "Pourquoi Marc Bloch insiste-t-il sur la critique des témoignages dans Apologie pour l'histoire ?"
+    - "Quelle différence entre histoire des mentalités (Febvre, Ariès) et histoire culturelle (Chartier) ?"
+    - "Comment la longue durée de Braudel se distingue-t-elle de l'histoire événementielle ?"
+    - "En quoi l'approche de Ginzburg dans Le Fromage et les vers illustre-t-elle la micro-histoire ?"
+  avancee:
+    - "Comment le concept de Begriffsgeschichte (histoire des concepts) de Koselleck reformule-t-il l'analyse historique ?"
+    - "En quoi le paradigme indiciaire de Ginzburg (traces, indices) propose-t-il une épistémologie alternative pour les sciences humaines ?"
+    - "Comment la notion d'horizon d'attente (Erwartungshorizont) chez Koselleck articule-t-elle passé et futur ?"
+    - "En quoi le linguistic turn (Hayden White) remet-il en cause la prétention de l'histoire à la vérité factuelle ?"
+  erudite:
+    - "Comment la micro-histoire de Ginzburg se distingue-t-elle de l'histoire des mentalités, et en quoi le concept d'indice (Spur) chez Ginzburg dialogue-t-il avec la sémiologie de Peirce ?"
+    - "En quoi la Metahistory de Hayden White, avec ses tropes narratifs (métaphore, métonymie, synecdoque, ironie), menace-t-elle la distinction histoire/fiction, et comment Ginzburg lui répond-il ?"
+    - "Comment le Sattelzeit de Koselleck (1750-1850) redéfinit-il la temporalité historique, et en quoi sa méthode se distingue-t-elle de celle de l'école de Cambridge (Skinner, Pocock) ?"
+    - "En quoi le débat entre Braudel (structures) et Thompson (agency, The Making of the English Working Class) illustre-t-il la tension fondamentale entre structure et agentivité en historiographie ?"
+
+economie_jeux:
+  basique:
+    - "Qu'est-ce qu'un équilibre de Nash ?"
+    - "Qu'est-ce que l'optimum de Pareto ?"
+    - "Qu'est-ce que le théorème d'impossibilité d'Arrow ?"
+    - "Qu'est-ce que le dilemme du prisonnier ?"
+  intermediaire:
+    - "Pourquoi un équilibre de Nash n'est-il pas nécessairement Pareto-optimal ?"
+    - "Quelle différence entre jeux à somme nulle et jeux à somme non nulle ?"
+    - "Comment le mécanisme de Vickrey (enchères au second prix) incite-t-il à la révélation sincère ?"
+    - "En quoi le théorème de Gibbard-Satterthwaite limite-t-il les mécanismes de vote ?"
+  avancee:
+    - "Comment le mechanism design (Hurwicz, Myerson) inverse-t-il la théorie des jeux classique ?"
+    - "En quoi le modèle de signaling de Spence explique-t-il le rôle de l'éducation comme signal ?"
+    - "Comment la rationalité limitée de Simon (bounded rationality) remet-elle en cause l'homo economicus ?"
+    - "En quoi les jeux évolutionnaires (Maynard Smith) reformulent-ils l'équilibre de Nash sans hypothèse de rationalité ?"
+  erudite:
+    - "En quoi l'impossibilité d'Arrow limite-t-elle les mécanismes d'agrégation de préférences, et comment le mechanism design de Myerson tente-t-il de contourner ce résultat ?"
+    - "Comment le théorème de Gibbard-Satterthwaite et l'impossibilité d'Arrow convergent-ils vers une même limite structurelle de la démocratie, et quelles échappatoires (restriction de domaine, quasi-transitivité) restent ouvertes ?"
+    - "En quoi les travaux d'Ostrom sur les communs (Governing the Commons) réfutent-ils la tragédie des communs de Hardin, et comment ses principes de design institutionnel s'articulent-ils avec la théorie des jeux répétés ?"
+    - "Comment le paradoxe d'Allais et le prospect theory de Kahneman et Tversky remettent-ils en cause l'axiomatique de von Neumann-Morgenstern, et quelles conséquences pour le mechanism design ?"
+
+linguistique:
+  basique:
+    - "Qu'est-ce que la grammaire générative de Chomsky ?"
+    - "Qu'est-ce que la distinction compétence/performance ?"
+    - "Qu'est-ce que la hiérarchie de Chomsky (types 0-3) ?"
+    - "Qu'est-ce que le principe de compositionnalité (Frege) ?"
+  intermediaire:
+    - "Pourquoi Chomsky postule-t-il une Grammaire Universelle (UG) innée ?"
+    - "Quelle différence entre structure profonde et structure de surface dans le modèle standard ?"
+    - "Comment la sémantique des mondes possibles (Kripke) formalise-t-elle la modalité ?"
+    - "En quoi la pragmatique de Grice (maximes conversationnelles) complète-t-elle la sémantique ?"
+  avancee:
+    - "Comment le Programme Minimaliste de Chomsky simplifie-t-il la grammaire générative ?"
+    - "En quoi la sémantique de Montague formalise-t-elle le langage naturel dans la logique intensionnelle ?"
+    - "Comment la distinction sense/reference de Frege et la théorie de la référence directe de Kripke (Naming and Necessity) s'opposent-elles ?"
+    - "En quoi les grammaires de construction (Goldberg, Croft) remettent-elles en cause le modèle génératif ?"
+  erudite:
+    - "Comment la sémantique des mondes possibles de Kripke résout-elle les puzzles de Frege sur l'identité (Hesperus/Phosphorus), et quels nouveaux problèmes pose la rigidité des désignateurs ?"
+    - "En quoi le débat Chomsky-Tomasello sur l'acquisition du langage (nativisme vs. usage-based) reste-t-il non résolu, et quels arguments empiriques (poverty of stimulus vs. statistical learning) sont invoqués ?"
+    - "Comment le passage de la Deep Structure au Merge dans le Programme Minimaliste reflète-t-il un changement de paradigme en linguistique formelle, et quelles critiques lui adressent Jackendoff et Culicover ?"
+    - "En quoi l'hypothèse Sapir-Whorf (relativité linguistique), dans sa version faible (Boroditsky, Levinson), résiste-t-elle aux critiques universalistes, et quels résultats expérimentaux la soutiennent ?"
+
+musicologie:
+  basique:
+    - "Qu'est-ce que le contrepoint ?"
+    - "Qu'est-ce que le sérialisme dodécaphonique (Schoenberg) ?"
+    - "Qu'est-ce qu'une fugue ?"
+    - "Qu'est-ce que le spectralisme (Grisey, Murail) ?"
+  intermediaire:
+    - "Pourquoi Bach est-il considéré comme le maître du contrepoint ?"
+    - "Quelle différence entre sérialisme strict (Webern) et sérialisme intégral (Boulez, Stockhausen) ?"
+    - "Comment le spectralisme utilise-t-il l'analyse du spectre sonore comme matériau compositionnel ?"
+    - "En quoi les modes à transposition limitée de Messiaen diffèrent-ils des gammes classiques ?"
+  avancee:
+    - "Comment les règles du contrepoint strict (Fux, Gradus ad Parnassum) se formalisent-elles comme un système de contraintes ?"
+    - "En quoi la technique de Klangfarbenmelodie (mélodie de timbres) de Schoenberg anticipe-t-elle le spectralisme ?"
+    - "Comment Xenakis utilise-t-il les mathématiques (processus stochastiques, théorie des jeux) dans la composition ?"
+    - "En quoi la conception du temps musical chez Messiaen (durées non rétrogradables, rythmes hindous) renouvelle-t-elle la rythmique occidentale ?"
+  erudite:
+    - "En quoi le contrepoint de Bach peut-il se formaliser comme un problème de satisfiabilité de contraintes, et que perd cette formalisation de la dimension esthétique ?"
+    - "Comment l'analyse spectrale de Grisey (Les Espaces acoustiques) reformule-t-elle la dichotomie consonance/dissonance héritée de Rameau, et en quoi le spectralisme dépasse-t-il le sérialisme ?"
+    - "En quoi le sérialisme intégral de Boulez (Structures Ia) atteint-il les limites de la perception humaine, et comment ce constat a-t-il motivé le retour à des formes plus perceptibles (Répons) ?"
+    - "Comment les travaux de Xenakis (Formalized Music) reliant composition et théorie des probabilités se comparent-ils à l'approche algorithmique de Hiller et Isaacson (Illiac Suite), et quelles limites partagent-ils ?"
+
+# ═══════════════════════════════════════════════════════════════
+# Bridges — Questions cross-domaine (15 questions)
+# ═══════════════════════════════════════════════════════════════
+
+_bridges:
+  - question: "En quoi la Shevirat HaKelim est-elle structurellement analogue à une brisure spontanée de symétrie en physique, et où l'analogie s'effondre-t-elle ?"
+    domain_a: kabbale_lurianique
+    domain_b: physique
+  - question: "Comment le Tzimtzum se compare-t-il au concept de compression en théorie de l'information, et quelle propriété du Tzimtzum n'a pas d'équivalent informationnel ?"
+    domain_a: tzimtzum
+    domain_b: theorie_info
+  - question: "En quoi la hiérarchie Sephiroth-Partzufim-Olamot ressemble-t-elle à une renormalisation multi-échelle, et où ce parallèle atteint-il sa limite ?"
+    domain_a: olamot
+    domain_b: physique
+  - question: "Comment le théorème d'incomplétude de Gödel éclaire-t-il la nécessité du Tzimtzum (un système complet ne peut se contenir lui-même), et pourquoi ce mapping est-il dangereux ?"
+    domain_a: tzimtzum
+    domain_b: logique_maths
+  - question: "En quoi le concept d'Or Chozer (lumière réfléchie) ressemble-t-il à la rétropropagation dans un réseau de neurones, et que perd-on dans cette analogie ?"
+    domain_a: ohr
+    domain_b: neurosciences
+  - question: "Comment la dialectique hégélienne (thèse-antithèse-synthèse) se compare-t-elle au processus Shevirah-Birur-Tikkun, et en quoi les finalités divergent-elles ?"
+    domain_a: kabbale_lurianique
+    domain_b: epistemologie
+  - question: "En quoi le concept de fitness landscape en biologie évolutive éclaire-t-il la montée des Olamot (Assiah→Atziluth), et où l'analogie adaptative est-elle inadéquate ?"
+    domain_a: olamot
+    domain_b: biologie_evo
+  - question: "Comment la critique des sources en historiographie (Ginzburg, Bloch) se compare-t-elle au Birur kabbalistique (tri des étincelles), et quelle est la différence épistémologique fondamentale ?"
+    domain_a: qliphoth
+    domain_b: historiographie
+  - question: "En quoi la grammaire générative de Chomsky (structures profondes/surfaces) offre-t-elle un parallèle avec les 4 niveaux du Pardes, et où la linguistique formelle ne peut-elle pas suivre ?"
+    domain_a: partzufim
+    domain_b: linguistique
+  - question: "Comment le concept de conscience dans le Global Workspace de Baars se compare-t-il au Da'at kabbalistique, et que manque-t-il au modèle neuroscientifique ?"
+    domain_a: neshamot
+    domain_b: neurosciences
+  - question: "Comment le concept de paysage d'énergie en physique statistique se compare-t-il au fitness landscape en biologie évolutive, et en quoi les dynamiques diffèrent-elles ?"
+    domain_a: physique
+    domain_b: biologie_evo
+  - question: "En quoi l'impossibilité d'Arrow en théorie du choix social éclaire-t-elle les limites du falsificationnisme poppérien en épistémologie ?"
+    domain_a: economie_jeux
+    domain_b: epistemologie
+  - question: "Comment la récursion en linguistique formelle (Chomsky) se rapporte-t-elle à l'auto-référence en logique (Gödel), et où les formalismes divergent-ils ?"
+    domain_a: linguistique
+    domain_b: logique_maths
+  - question: "En quoi la notion de contrepoint en musicologie (Bach) peut-elle se formaliser comme un problème de satisfiabilité de contraintes, et que perd cette formalisation ?"
+    domain_a: musicologie
+    domain_b: logique_maths
+  - question: "Comment le predictive processing en neurosciences reformule-t-il le problème de l'induction de Hume en épistémologie, et en quoi la réponse bayésienne est-elle incomplète ?"
+    domain_a: neurosciences
+    domain_b: epistemologie

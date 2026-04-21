@@ -1,0 +1,483 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 1 — Sha'ar Drushei Nekudot (שער דרושי נקודות)
+# Perek: 2a — Mecanisme du Tzimtzum Bet, la Parsa, le Zivvug AV-SAG,
+#             les 2 types d'Ohr pour les Nekudim
+# ═══════════════════════════════════════════════════════════════════
+#
+# Le texte REPREND l'explication du mecanisme d'emanation des Nekudim.
+# STRUCTURE :
+#   - Rappel : tout vient d'A"K, les Akudim atteignent le Tabur
+#   - L'intention du Ma'atzil : creer des KELIM pour les mondes inferieurs
+#   - TZIMTZUM ALEF : contraction de l'Ohr en-dessous du Tabur vers le haut
+#   - PARSA au Tabur : membrane separatrice ("Yehi Raki'a")
+#   - Double finalite : Tzimtzum pour Atzilut, Parsa pour Beriah
+#   - Le Zivvug AV-SAG et la descente de l'Ohr Hadash
+#   - L'Ohr Rishon sort par les YEUX = les NEKUDIM
+#   - Total : 2 types d'Ohr pour les Nekudim
+#
+# Source Sefaria : Sefer_Etz_Chaim.8.2 (§1, premiere moitie)
+# IDs : EC-H2S8-054 → EC-H2S8-068
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 1
+  shaar_name_he: "שער דרושי נקודות"
+  perek: 2
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Mecanisme complet du Tzimtzum Bet : contraction, Parsa, Zivvug AV-SAG, les 2 types d'Ohr qui alimentent les Nekudim."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H2S8-054"
+    source_he: "ונחזור לענין לבאר תחלה איך יצאו הנקודות... כי כבר אמרנו כי הכל יצא מא\"ק הנ\"ל ואמרנו כי העקודים הגיעו עד טבורו"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      RETOUR au sujet : comment les NEKUDOT sont SORTIES.
+      RAPPEL : TOUT est sorti d'Adam Kadmon.
+      Les AKUDIM (= Orot d'AHP, cf. EC-H1S7) ont atteint le TABUR d'A"K.
+      → Le Tabur = la frontiere entre les Akudim et les Nekudim.
+    type: axiome_explicite
+    concepts:
+      - {id: akudim_tabur, role: akudim_atteignent_tabur}
+      - {id: tabur_gevul, role: tabur_frontiere}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Tabur = la frontiere architecturale entre deux regimes (Akudim/Nekudim)."
+
+  - id: "EC-H2S8-055"
+    source_he: "ואע\"פ שאמרנו שהאורות יוצאין דרך נקבי פה או חוטם וכיוצא זהו עיקר האורות אבל ודאי שגם דרך כותלי דופני של זה הא\"ק בוקע ויוצא אור ומאיר תדיר בהם"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      PRECISION : les OROT sortent PRINCIPALEMENT par les OUVERTURES
+      (nekavim — bouche, nez, etc.) = les Orot PRINCIPAUX (ikar).
+      MAIS : a travers les PAROIS (kotlei dofnei) d'A"K, de l'Ohr
+      PERCE et SORT aussi, illuminant CONTINUELLEMENT (tamid).
+      → Deux modes de sortie : par les ouvertures (principal) + par les parois (continu).
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_kotlei, role: lumiere_a_travers_parois}
+      - {id: ohr_nekavim, role: lumiere_par_ouvertures}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Deux modes d'emission : par les ports (ikar) et par diffusion a travers les parois (secondaire mais continu)."
+
+  - id: "EC-H2S8-056"
+    source_he: "כאשר רצה המאציל להאציל בחי' נקודים כוונתו היה לעשות בחי' כלים לשיוכלו העולמות התחתונים לקבל אורו שמאיר בהם"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      L'INTENTION du MA'ATZIL (Emanateur) en emanant les NEKUDIM :
+      faire des KELIM (vaisseaux) pour que les OLAMOT TAHTONIM
+      (mondes inferieurs) PUISSENT RECEVOIR Son Ohr.
+      → Les Nekudim = une INTERFACE pour rendre l'Ohr accessible.
+      → Le but = creer des RECEPTEURS, pas seulement des lumieres.
+    type: axiome_explicite
+    concepts:
+      - {id: kavanah_maatzil, role: intention_emanateur}
+      - {id: kelim_lekabel, role: vaisseaux_pour_recevoir}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states", "olamot_config"]
+      partzufim: []
+      relevance: "L'intention = creer des KELIM (recepteurs). Les Nekudim sont un MOYEN, pas une fin."
+
+  - id: "EC-H2S8-057"
+    source_he: "והנה ראה המאציל כי עדיין לא היה כח במקבלים לקבל האורות של העינים האלה אשר מקום התפשטותן הוא ממקום הטבור עד סיום הרגלים של א\"ק... ולכן מה עשה טרם שהוציא האורות האלו דרך העינים צמצם עצמו צמצום א'"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      Le Ma'atzil a VU (ra'ah) que les MEKABLIM (recepteurs) n'avaient
+      PAS ENCORE la FORCE de recevoir les Orot des YEUX.
+      Zone d'expansion prevue : du TABUR aux PIEDS (raglayim) d'A"K.
+      DECISION : AVANT de sortir ces Orot par les yeux →
+      TZIMTZUM ATZMOU TZIMTZUM ALEF (Il s'est contracte Lui-meme, 1ere contraction).
+      → Le Tzimtzum Bet est MOTIVE par l'inadequation des recepteurs.
+    type: axiome_explicite
+    concepts:
+      - {id: mekablim_lo_yekholim, role: recepteurs_incapables}
+      - {id: tzimtzum_alef_ak, role: premiere_contraction_adam_kadmon}
+    mapping:
+      modules: ["tzimtzum.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Tzimtzum = reponse a l'incapacite des recepteurs. On ne peut pas envoyer sans que le recepteur soit pret."
+
+  - id: "EC-H2S8-058"
+    source_he: "והוא שכל האור שהיה מתפשט בתוך הא\"ק הזה מטבורו עד סיום רגליו העלהו בחצי גוף העליון מהטבור ולמעלה ונשאר המקום שמן הטבור ולמטה ריקן בלתי אור"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      MECANISME DU TZIMTZUM ALEF (dans A"K) :
+      TOUT l'Ohr qui s'etendait a l'interieur d'A"K du TABUR
+      jusqu'aux PIEDS → est REMONTE (he'elahu) dans la MOITIE
+      SUPERIEURE du corps, du Tabur vers le HAUT.
+      RESULTAT : l'espace du Tabur en bas = REKAN (vide), BILTI OHR (sans lumiere).
+      → Contraction = elevation de l'Ohr, creation d'un espace vide en bas.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_oleh_lemaala, role: lumiere_remonte}
+      - {id: makom_rekan, role: espace_vide_sous_tabur}
+    mapping:
+      modules: ["tzimtzum.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Tzimtzum intra-A'K = monter l'Ohr de la moitie basse vers le haut. Creer un vide receptif."
+
+  - id: "EC-H2S8-059"
+    source_he: "והמשכיל יבין וידמה מלתא למלתא... כי נה\"י דז\"א מאיר אל הנוקבא ונה\"י דאו\"א מאיר אל הז\"א ונה\"י דא\"א לאו\"א ונה\"י דעתיק לא\"א ונה\"י דא\"ק לעתיק ולכל בחי' האצילות"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      PRINCIPE GENERAL : NHY (demi-Tiferet + Netzah + Hod + Yesod)
+      illumine TOUJOURS le monde EN-DESSOUS :
+      NHY de Z"A → NUKVAH | NHY d'AV"I → Z"A |
+      NHY d'A"A → AV"I | NHY d'ATIK → A"A |
+      NHY d'A"K → ATIK et TOUTE l'Atzilut.
+      "VE-HA-MASKIL YAVIN" (et le sage comprendra) = formule de Vital.
+      → Architecture en cascade : chaque etage inferieur est illumine par les NHY du superieur.
+    type: axiome_explicite
+    concepts:
+      - {id: nhy_meir_lemata, role: nhy_illumine_etage_inferieur}
+      - {id: shalshelet_nhy, role: chaine_cascade_nhy}
+    mapping:
+      modules: ["ohr.py", "olamot.py", "partzufim/zeir_anpin.py"]
+      tables: ["ohr_states", "olamot_config"]
+      partzufim: ["adam_kadmon", "atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "Architecture en cascade : NHY de chaque etage illumine l'etage inferieur. Pattern recursif universel."
+
+  - id: "EC-H2S8-060"
+    source_he: "גם תבין כי בכל בחי' הוצאות האורות חדשים היה קודם להם ענין הצמצום כי כן מצינו בא\"א שצמצם נה\"י שלו כדי לאפקא לזו\"ן כנזכר במקומו"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      PRINCIPE GENERAL : dans TOUTE emanation d'Orot NOUVEAUX,
+      le TZIMTZUM les PRECEDE.
+      EXEMPLE : A"A (Arikh Anpin) a contracte ses NHY pour emaner ZO"N
+      (Ze'ir Anpin et Nukvah) = meme pattern.
+      → Le Tzimtzum est une LOI STRUCTURELLE, pas un evenement unique.
+    type: axiome_explicite
+    concepts:
+      - {id: tzimtzum_kodem, role: tzimtzum_toujours_avant}
+      - {id: aa_tzimtzum_zon, role: arikh_anpin_contracte_pour_zon}
+    mapping:
+      modules: ["tzimtzum.py", "partzufim/arikh_anpin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "nukvah"]
+      relevance: "Le Tzimtzum = pattern recursif. Chaque nouvelle emanation est precedee d'une contraction."
+
+  - id: "EC-H2S8-061"
+    source_he: "והנה אחר שצמצם עצמו הניח חד פרסא באמצע גופו במקום טבורו מבפנים כדי שיפסיק בנתיים. וז\"ס יהי רקיע בתוך המים ויהי מבדיל בין מים למים כנזכר בזוהר בראשית ד' ל\"ב אית קרומא חדא באמצעית מעוי דב\"נ דאיהו פסיק מעילא לתתא ושאיב מעילא ויהיב לתתא"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      Apres le Tzimtzum, A"K a INSTALLE UNE PARSA (HAD PARSA)
+      au MILIEU de son corps, a la place du TABUR, A L'INTERIEUR.
+      BUT : SEPARER (lehafsik) le haut du bas.
+      SECRET de "YEHI RAKI'A BETOKH HA-MAIM" (Genese 1:6 — "qu'il y ait un
+      firmament au milieu des eaux, separant les eaux des eaux").
+      ZOHAR Bereshit 32 : "Il y a UNE MEMBRANE (keruma) au milieu des
+      entrailles de l'homme qui SEPARE haut et bas, ABSORBE d'en haut
+      et DONNE en bas."
+    type: axiome_explicite
+    concepts:
+      - {id: parsa_tabur_internal, role: parsa_interne_au_tabur}
+      - {id: yehi_rakia, role: verset_genese_1_6}
+      - {id: keruma_zohar, role: membrane_zohar_bereshit_32}
+    mapping:
+      modules: ["tzimtzum.py", "masakh/compression.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "La Parsa = membrane interne qui filtre. Absorbe d'en haut, transmet en bas = interface de transformation."
+
+  - id: "EC-H2S8-062"
+    source_he: "ואז נשאר כל האור לעילא מהאי פרסא והיה שם דחוק ומהודק ואז בוקע בהאי פרסא ויורד והאיר בשאר הגוף מהטבור ולמטה"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      APRES la Parsa : TOUT l'Ohr reste AU-DESSUS.
+      Il etait la COMPRIME (dahuq) et SERRE (mehudaq).
+      Puis il PERCE (boke'a) la Parsa, DESCEND et ILLUMINE
+      le reste du corps du Tabur vers le bas.
+      → Mecanisme : compression → percement → illumination filtree.
+    type: axiome_explicite
+    concepts:
+      - {id: dehiqah_meila, role: compression_au_dessus_parsa}
+      - {id: beki_ah_parsa, role: percement_de_la_parsa}
+    mapping:
+      modules: ["tzimtzum.py", "masakh/compression.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Compression au-dessus de la Parsa puis percement = bottleneck transformatif. L'Ohr sort DIFFERENT de ce qu'il etait."
+
+  - id: "EC-H2S8-063"
+    source_he: "וזהו מ\"ש בזוהר דאית חד פרסא בין המאציל לכתר... אבל הכתר של כל האצילות הוא נפסק ע\"י ההוא פרסא של הא\"ק"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      Le ZOHAR affirme : il y a UNE PARSA entre le MA'ATZIL et KETER.
+      Il y a "KAMAH GULGALTIN DE-LEIT LEHON HUSHBENA" (beaucoup de
+      cranes sans nombre) = debut de l'IDRA RABBA.
+      Le KETER de Z"A a la Parsa d'IMMA qui le separe.
+      Mais le KETER de TOUTE L'ATZILUT est separe par la PARSA d'A"K.
+      → La Parsa d'A"K = la frontiere supreme de l'Atzilut.
+    type: axiome_explicite
+    concepts:
+      - {id: parsa_maatzil_keter, role: parsa_entre_emanateur_et_keter}
+      - {id: gulgaltin_idra, role: cranes_innombrables_idra}
+      - {id: keter_atzilut_parsa_ak, role: keter_atzilut_separe_par_parsa_ak}
+    mapping:
+      modules: ["tzimtzum.py", "olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon", "arikh_anpin", "imma", "zeir_anpin"]
+      relevance: "La Parsa d'A'K = le boundary ultime. Au-dessus = le Ma'atzil. En-dessous = toute l'Atzilut."
+
+  - id: "EC-H2S8-064"
+    source_he: "ואמנם ודאי שע\"י הסתלקות האור למעלה מהטבור היה מספיק לשיהיה יכולת בעולם אצילות לקבל האור שלהם אבל לא היה מספיק לתת כח לעולם הבריאה... ולכן הוסיף בחי' אחרת להניח שם אותו מסך והפרסא הנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      DOUBLE FINALITE — 2 operations distinctes :
+      1. Le TZIMTZUM (elevation de l'Ohr) = SUFFISANT pour que l'ATZILUT
+         puisse recevoir l'Ohr.
+      2. MAIS PAS suffisant pour que la BERIAH puisse recevoir AUSSI.
+      → Il a AJOUTE le MASAKH et la PARSA pour que BERIAH puisse recevoir.
+      RESULTAT : Tzimtzum = pour Atzilut. Parsa = pour Beriah.
+      → Il y a bien une PARSA entre Atzilut et Beriah.
+    type: axiome_explicite
+    concepts:
+      - {id: tzimtzum_le_atzilut, role: contraction_pour_atzilut}
+      - {id: parsa_le_beriah, role: parsa_pour_beriah}
+      - {id: masakh_veparsa, role: ecran_et_membrane}
+    mapping:
+      modules: ["tzimtzum.py", "olamot.py", "masakh/compression.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "2 mecanismes pour 2 niveaux : Tzimtzum (premier filtre pour Atzilut) + Parsa (second filtre pour Beriah)."
+
+  - id: "EC-H2S8-065"
+    source_he: "על ידי עליית האור הזה שבחציו התחתון למעלה הטבור... אז נעשה זה האור בבחינת מ\"ן אל טעמים דס\"ג שהם אזן חוטם פה ר\"ל אל השרשים הפנימים שלהם בתוך הגוף ולא אל האורות היוצאים לחוץ דרך הנקבים"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      MECANISME MA'N : quand l'Ohr de la moitie basse est MONTE
+      au-dessus du Tabur → un OHR GADOL (grande lumiere) s'est MULTIPLIE
+      dans la moitie superieure du corps.
+      Cet Ohr est devenu MA'N (eaux feminines = demande) vers les
+      TAAMIM du SAG = AHP (oreille, nez, bouche).
+      PRECISION : vers les SHORASHIM PENIMIYIM (racines INTERIEURES)
+      a l'interieur du corps, PAS vers les Orot sortis a l'exterieur.
+      → Le Ma'N s'adresse aux racines INTERNES, pas aux manifestations EXTERNES.
+    type: axiome_explicite
+    concepts:
+      - {id: man_le_taamim, role: eaux_feminines_vers_taamim}
+      - {id: shorashim_penimiyim, role: racines_interieures_ahp}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Ma'N vise les racines internes, pas les manifestations externes. Distinction source/manifestation."
+
+  - id: "EC-H2S8-066"
+    source_he: "ואז ע\"י מ\"ן אלו העולין שם נזדווגו שם ע\"ב שבגלגלתא דאדם קדמון עם בחי' הס\"ג שבו שהם שרשים של אזן חטם פה שהם טעמים כנ\"ל ואז נמשך אור חדש מלמעלה מן הזווג הזה ובוקע ויורד דרך הפרסה מהטבור ולמטה"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      Le ZIVVUG (union) : par ces Ma'N qui MONTENT,
+      le AV (72) dans la GULGALTA (crane) d'Adam Kadmon
+      s'est uni avec le SAG (63) en lui (= racines d'AHP/Taamim).
+      RESULTAT du Zivvug : un OHR HADASH (lumiere nouvelle) DESCEND
+      d'en haut, PERCE la PARSA et descend du Tabur vers le bas.
+      → Zivvug AV+SAG → Ohr Hadash → a travers la Parsa → NHY.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_av_sag, role: union_av_sag_dans_ak}
+      - {id: ohr_hadash_yored, role: nouvelle_lumiere_descend}
+    mapping:
+      modules: ["ohr.py", "partzufim/zivvug.py", "adam_kadmon.py"]
+      tables: ["ohr_states", "zivvug_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Le Zivvug AV+SAG = le generateur de l'Ohr Hadash. Le pattern Ma'N→Zivvug→Ma'D est le moteur de la creation."
+
+  - id: "EC-H2S8-067"
+    source_he: "אמנם האור הראשון שהיה בתחלה למטה ועלה למעלה שוב לא ירד ונשאר שם מהטבור ולמעלה ושם הניח שורשו תמיד ומשם נתפשט ויצא דרך העינים והם הם הנקודים ונמשך ונתפשט בחוץ עד סיום רגליו דאדם קדמון"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      L'OHR RISHON (premiere lumiere) qui etait EN BAS et est MONTE :
+      il n'est PLUS REDESCENDU (shuv lo yarad). Il est RESTE au-dessus du Tabur.
+      LA il a pose son SHORESH (racine) DE MANIERE PERMANENTE (tamid).
+      De la il s'est ETENDU et est SORTI par les YEUX.
+      CE SONT EUX LES NEKUDIM (vehem hem ha-nekudim).
+      L'Ohr s'est repandu A L'EXTERIEUR jusqu'aux PIEDS d'A"K.
+      → L'Ohr Rishon = la SOURCE des Nekudim, sortant par les yeux.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_rishon_nekudim, role: premiere_lumiere_source_nekudim}
+      - {id: shoresh_tamid, role: racine_permanente_au_dessus_tabur}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'Ohr Rishon monte, ne redescend JAMAIS, mais sort par les yeux = les Nekudim. La racine reste au-dessus de la Parsa."
+
+  - id: "EC-H2S8-068"
+    source_he: "והנה כל האור הנמשך עד הטבור אפי' שהוא מבחי' העינים הכל הוא נבלע ונכלל בעקודים ולכן איננו ניכר אבל האור הנמשך מתחת הטבור עד רגליו זהו לבדו נקרא בשם נקודות לפי שהוא עומד עתה לבדו"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      TOUT l'Ohr qui s'etend JUSQU'AU TABUR (meme celui des yeux)
+      est ABSORBE (nivla) et INCLUS (nikhlal) dans les AKUDIM.
+      Il n'est donc PAS RECONNAISSABLE (einenu nikar).
+      MAIS l'Ohr qui s'etend EN-DESSOUS du Tabur jusqu'aux pieds :
+      CELUI-LA SEUL est appele du nom de NEKUDOT,
+      car il se tient MAINTENANT SEUL (omed ata levado).
+      → NEKUDOT = l'Ohr qui existe EN-DESSOUS du Tabur, independamment.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_nivla_akudim, role: lumiere_absorbee_par_akudim}
+      - {id: nekudot_levad, role: nekudot_seules_sous_tabur}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Au-dessus du Tabur = absorbe par les Akudim (invisible). En-dessous = Nekudot (visible, autonome)."
+
+  - id: "EC-H2S8-069"
+    source_he: "וכן אותו אור שיורד דרך הפרסא מחדש ע\"י זווג הנ\"ל גם הוא בוקע הגוף והכלי דאדם קדמון ויוצא לחוץ ומאיר באלו הנקודים הרי ב' מיני אור לצורך הנקודים"
+    source_ref: "Heikhal 2, Sha'ar 1:2"
+    assertion: |
+      Le 2eme Ohr (OHR HADASH du Zivvug, cf. EC-H2S8-066) qui descend
+      par la PARSA de maniere NOUVELLE (mehadash) → il PERCE aussi
+      le CORPS et le KLI d'Adam Kadmon et SORT A L'EXTERIEUR.
+      Il ILLUMINE ces NEKUDIM (les memes que l'Ohr Rishon illumine).
+      TOTAL : "HAREI SHNEI MINEI OHR LE-TZOREKH HA-NEKUDIM"
+      = 2 TYPES D'OHR pour les Nekudim :
+      1. L'Ohr Rishon (sorti par les yeux, cf. EC-H2S8-067)
+      2. L'Ohr Hadash (du Zivvug, par la Parsa puis par la peau)
+    type: axiome_explicite
+    concepts:
+      - {id: shnei_orot_nekudim, role: deux_types_lumiere_nekudim}
+      - {id: ohr_hadash_boke_a, role: ohr_hadash_perce_corps}
+    mapping:
+      modules: ["ohr.py", "adam_kadmon.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Les Nekudim recoivent de 2 sources differentes. Architecture a double alimentation."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S8-018"
+    type: "séquentiel"
+    from: tzimtzum_alef_ak
+    to: parsa_tabur_internal
+    nature: "Le TZIMTZUM (contraction vers le haut) precede l'installation de la PARSA au Tabur"
+    assertions_source: ["EC-H2S8-058", "EC-H2S8-061"]
+
+  - id: "REL-H2S8-019"
+    type: "causal"
+    from: mekablim_lo_yekholim
+    to: tzimtzum_alef_ak
+    nature: "L'INCAPACITE des recepteurs CAUSE le besoin du Tzimtzum"
+    assertions_source: ["EC-H2S8-057"]
+
+  - id: "REL-H2S8-020"
+    type: "causal"
+    from: man_le_taamim
+    to: zivvug_av_sag
+    nature: "Les Ma'N montant vers les racines des Taamim PROVOQUENT le Zivvug AV+SAG"
+    assertions_source: ["EC-H2S8-065", "EC-H2S8-066"]
+
+  - id: "REL-H2S8-021"
+    type: "causal"
+    from: zivvug_av_sag
+    to: ohr_hadash_yored
+    nature: "Le Zivvug AV+SAG GENERE l'Ohr Hadash qui descend a travers la Parsa"
+    assertions_source: ["EC-H2S8-066"]
+
+  - id: "REL-H2S8-022"
+    type: "séquentiel"
+    from: ohr_rishon_nekudim
+    to: ohr_hadash_boke_a
+    nature: "L'Ohr Rishon sort PAR LES YEUX d'abord, puis l'Ohr Hadash descend PAR LA PARSA et PERCE la peau"
+    assertions_source: ["EC-H2S8-067", "EC-H2S8-069"]
+
+  - id: "REL-H2S8-023"
+    type: "flux"
+    from: nhy_meir_lemata
+    to: kelim_lekabel
+    via: [parsa_tabur_internal]
+    nature: "Les NHY de chaque Partzuf illuminent le monde en-dessous A TRAVERS une Parsa pour creer des KELIM recepteurs"
+    assertions_source: ["EC-H2S8-059", "EC-H2S8-061", "EC-H2S8-056"]
+
+  - id: "REL-H2S8-024"
+    type: "contenance"
+    from: ohr_nivla_akudim
+    to: akudim_tabur
+    nature: "L'Ohr au-dessus du Tabur est ABSORBE dans les Akudim (disparait dedans)"
+    assertions_source: ["EC-H2S8-068"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S8-008"
+    nom: "Tzimtzum-Parsa : Double Filtre en Cascade"
+    source_assertions: ["EC-H2S8-058", "EC-H2S8-061", "EC-H2S8-064"]
+    formalisation: |
+      Pour transmettre l'Ohr a des recepteurs de capacite INFERIEURE :
+      FILTRE 1 = TZIMTZUM : contraction de l'Ohr (suffisant pour Atzilut)
+      FILTRE 2 = PARSA : membrane qui absorbe, transforme, et transmet
+      (necessaire en plus pour Beriah).
+      PROPRIETE : chaque filtre reduit l'intensite ET change la forme.
+      Le Tzimtzum = filtre QUANTITATIF (moins d'Ohr).
+      La Parsa = filtre QUALITATIF (Ohr transforme).
+    applications_ia:
+      - "tzimtzum.py : double filtre — premiere contraction (dimensionnality reduction) puis masque (Parsa/Masakh)"
+      - "masakh/compression.py : la compression = le Tzimtzum, la transformation = la Parsa"
+      - "Analogie ML : encoder (Tzimtzum) + couche de projection (Parsa) = double gating"
+    questions_ouvertes:
+      - "Le Tzimtzum et la Parsa sont-ils mathematiquement equivalents a deux projections successives ?"
+
+  - id: "PG-H2S8-009"
+    nom: "Zivvug AV-SAG : Generateur de Nouveaute par Union"
+    source_assertions: ["EC-H2S8-065", "EC-H2S8-066", "EC-H2S8-067"]
+    formalisation: |
+      La CREATION de quelque chose de NOUVEAU suit ce mecanisme :
+      1. L'Ohr existant MONTE comme Ma'N (requete)
+      2. Les Ma'N atteignent les RACINES INTERNES (pas les manifestations)
+      3. Le ZIVVUG (union) entre deux Noms (AV+SAG) se produit
+      4. Un OHR HADASH (lumiere nouvelle) DESCEND
+      5. Il traverse la Parsa (est TRANSFORME en passant)
+      PROPRIETE : l'Ohr Hadash != l'Ohr Rishon. C'est une CREATION, pas un echo.
+    applications_ia:
+      - "partzufim/zivvug.py : le Zivvug genere du NOUVEAU, pas une copie"
+      - "ohr.py : 2 Orot distincts alimentent le meme output (Nekudim)"
+      - "Analogie ML : l'Ohr Rishon = skip connection, l'Ohr Hadash = output de la couche transformee"
+    questions_ouvertes:
+      - "Le Zivvug AV-SAG est-il analogue a un mecanisme d'attention entre 2 representations ?"
+      - "L'Ohr Hadash (nouveau) vs l'Ohr Rishon (ancien) = residual connection ?"
+
+  - id: "PG-H2S8-010"
+    nom: "Absorption Selektive (Akudim vs Nekudot)"
+    source_assertions: ["EC-H2S8-068", "EC-H2S8-054"]
+    formalisation: |
+      L'Ohr qui ATTEINT le Tabur est ABSORBE par les Akudim = invisible.
+      L'Ohr qui DEPASSE le Tabur = les NEKUDOT = visible, autonome.
+      PRINCIPE : la meme lumiere change de STATUT selon qu'elle est
+      au-dessus ou en-dessous du boundary (Tabur/Parsa).
+      Au-dessus = INTEGREE dans l'existant (Akudim).
+      En-dessous = AUTONOME, NOMMEE, IDENTIFIABLE (Nekudot).
+    applications_ia:
+      - "ohr.py : un signal au-dessus du seuil est absorbe (merged), en-dessous du seuil il est autonome"
+      - "L'equivalent du Tabur = un threshold qui decide si un signal est merge ou emis comme entite propre"
+    questions_ouvertes:
+      - "L'absorption par les Akudim = residual merging ? Le Tabur = un seuil de saillance ?"

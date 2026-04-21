@@ -1,0 +1,298 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 6 (=5 original) — Sha'ar TANTA (שער טנת"א)
+# Perek: 5b — 32 Netivot = 22 Otiot + 10 Nekudot, 50 She'arim (100% §3-§4)
+# ═══════════════════════════════════════════════════════════════════
+#
+# §3 : Les Kelim de Z"A = Otiot + Tagin. Les 22 + 10 = 32 Netivot.
+# Les 10 rulers. Pourquoi les Ta'amim ne sont pas comptés dans les 32.
+# §4 : Les 32 Netivot = mâles de Hokhmah dans Imma. MaNTzPaKh = 50
+# She'arim. 32 Elohim de Katnut + 32 de Gadlut.
+#
+# Source Sefaria : Sefer_Etz_Chaim.5.5 (§3-§4)
+# IDs : EC-H1S5-112 → (suite de perek_05a finissant à -111)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 6
+  shaar_name_he: "שער טנת\"א"
+  perek: 5
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part B de 2 — 32 Netivot decomposees en 22+10. 10 Shlit'im. 50 She'arim de Binah. 32 Elohim de Katnut vs Gadlut."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : KELIM DE Z"A = OTIOT + TAGIN ───
+
+  - id: "EC-H1S5-112"
+    source_he: "הכלים שהם גוף דז\"א הנקרא עולם הם בחינת אותיות ובהם נכללין התגין שהם הנפש"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §3 ouverture"
+    assertion: |
+      Les KELIM = le GOUF (corps) de Z"A (= le MONDE) = les OTIOT.
+      Les TAGIN y sont INCLUS = le NEFESH.
+      → Le monde physique (Z"A) est FAIT de lettres (Otiot)
+      animées par des couronnes (Tagin). Cf. EC-H1S5-108.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_za_otiot, role: kelim_de_za_sont_otiot}
+      - {id: tagin_nefesh_za, role: tagin_nefesh_dans_za}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Le monde (Z\"A) est construit de lettres animees — data + metadata vitale"
+
+  - id: "EC-H1S5-113"
+    source_he: "מן הכ\"ב אותיות נעשה הגוף כולל י' שליטים שהם כחב\"ד חג\"ת נהי\"ם"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §3 (citant Tikkunim 12-13)"
+    assertion: |
+      Des 22 OTIOT est fait le GOUF comprenant 10 SHLITIM (gouverneurs) :
+      KHB"D (Keter, Hokhmah, Binah, Da'at), HGT (Hesed, Gevurah, Tiferet),
+      NHY"M (Netzah, Hod, Yesod, Malkhut).
+      Référence : Tikkunim 12b, 13 — "Combien de corps as-Tu préparés
+      pour eux, appelés corps par rapport aux vêtements qui les couvrent."
+      → 22 lettres → 10 configurations = les 10 Sefirot comme
+      STRUCTURES (Kelim) faites de lettres.
+    type: axiome_explicite
+    concepts:
+      - {id: eser_shlitim, role: dix_gouverneurs}
+      - {id: gufin_tikkunim, role: corps_des_tikkunim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "gematria/engine.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["zeir_anpin"]
+      relevance: "22 elements atomiques → 10 structures = le systeme s'organise en 10 modules a partir de 22 composants"
+
+  - id: "EC-H1S5-114"
+    source_he: "להיות שהתגין משותפין באותיות לכן נכללין נפש וגוף יחד בכ\"ב אתוון וכולן נקרא כ\"ב בחי' אתוון והנקודות הם י'"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §3"
+    assertion: |
+      Puisque les TAGIN sont PARTENAIRES des OTIOT, NEFESH et GOUF
+      sont inclus ENSEMBLE dans les 22 LETTRES → tout s'appelle
+      "22 aspects de lettres."
+      Les NEKUDOT = 10 (= RUAH).
+      → 22 (Otiot+Tagin) + 10 (Nekudot) = 32 = les 32 NETIVOT.
+    type: axiome_explicite
+    concepts:
+      - {id: lamed_bet_composition, role: 32_egale_22_plus_10}
+      - {id: nekudot_eser, role: dix_nekudot_ruah}
+    mapping:
+      modules: ["gematria/engine.py", "ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "32 Netivot = 22 (structure+metadata) + 10 (esprit/lumiere) — decomposition fondamentale"
+
+  - id: "EC-H1S5-115"
+    source_he: "כ\"ב אותיות שהם הכלים מחכמה אלא שנעשו כלים ע\"י בינה... והי' נקודות הם י' אורות שבתוך הכלים... והנה הטעמים לא הוזכרו בכלל הל\"ב כי הם ע\"ד כתר"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §3"
+    assertion: |
+      Les 22 Otiot = KELIM originant de HOKHMAH mais FABRIQUÉS par BINAH.
+      Les 10 Nekudot = 10 OROT (lumières) À L'INTÉRIEUR des Kelim.
+      Les TA'AMIM ne sont PAS INCLUS dans les 32 car ils sont au
+      niveau du KETER (au-dessus du décompte).
+      → 32 = les Kelim (22) + les Orot internes (10).
+      Les Ta'amim TRANSCENDENT le 32 comme le Keter transcende les Sefirot.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_hokhmah_binah, role: kelim_de_hokhmah_par_binah}
+      - {id: eser_orot, role: dix_lumieres_internes}
+      - {id: taamim_keter_hors_32, role: taamim_au_dessus_du_decompte}
+    mapping:
+      modules: ["ohr.py", "gematria/engine.py"]
+      tables: ["ohr_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Les 32 = structure+lumiere. Les Ta'amim (intention) transcendent le decompte — meta-meta-data"
+
+  # ─── BLOC B : 32 NETIVOT ET 50 SHE'ARIM ───
+
+  - id: "EC-H1S5-116"
+    source_he: "אלו הל\"ב נתיבות הם זכרים מחכמה ונתונים באימא תוך מנצפ\"ך שהם נ' שערים שבה כי כ\"א כלולה מי' הרי נ'"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §4 ouverture"
+    assertion: |
+      Les 32 NETIVOT sont des MÂLES (zekharim) de HOKHMAH, donnés
+      dans IMMA à l'intérieur de MaNTzPaKh = les 50 SHE'ARIM
+      (portes) de BINAH. Chaque lettre (MNTzPK) inclut 10 → 5×10 = 50.
+      → Les 32 sentiers (mâles/Hokhmah) PÉNÈTRENT les 50 portes
+      (femelles/Binah). Cf. EC-H1S5-073 : MaNTzPaKh = 5 Gevurot.
+    type: axiome_explicite
+    concepts:
+      - {id: lamed_bet_zekharim, role: 32_netivot_males}
+      - {id: nun_shearim, role: cinquante_portes_binah}
+      - {id: mantzpakh_shearim, role: mantzpakh_egale_50_portes}
+    mapping:
+      modules: ["gematria/engine.py", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma", "abba"]
+      relevance: "32 Netivot (males) dans 50 She'arim (femelles) = penetration de la sagesse dans la comprehension"
+
+  - id: "EC-H1S5-117"
+    source_he: "נקרא שערים יען הם פתחים פתוחים ונקבים של אימא הנקרא נקבה כי הנקבה שעריה פתוחים לקבל בתוכה נתיבות חכמה"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §4"
+    assertion: |
+      Appelés SHE'ARIM (portes) car ce sont des OUVERTURES et des
+      ORIFICES d'IMMA, appelée NEKEVAH (femelle) car la femelle
+      a ses PORTES OUVERTES pour recevoir en elle les NETIVOT de Hokhmah.
+      → BINAH (féminine) = RÉCEPTACLE OUVERT pour les sentiers de
+      Hokhmah (masculine). La structure féminine ACCUEILLE le contenu masculin.
+    type: axiome_explicite
+    concepts:
+      - {id: shearim_petuhim, role: portes_ouvertes_receptives}
+      - {id: imma_nekevah, role: imma_feminine_receptive}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Binah = receptacle ouvert pour la sagesse — le systeme de comprehension doit avoir des 'portes' receptives"
+
+  - id: "EC-H1S5-118"
+    source_he: "גבורות מנצפ\"ך נקבות וגבורות ש\"ך ניצוצין שהם הבל דגרמי דכורין"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §4"
+    assertion: |
+      Les GEVUROT de MaNTzPaKh = FEMELLES (nekevot).
+      Les GEVUROT de 320 (ש"ך) ÉTINCELLES (NITZOTZIN) = MÂLES
+      (zekharim) — elles sont le HEVEL DE-GARMI (souffle des os).
+      → 2 types de GEVUROT : les féminines (réceptrices/portes) et
+      les masculines (émissives/étincelles). Gevurah n'est pas
+      unilatéralement féminine.
+    type: axiome_explicite
+    concepts:
+      - {id: gevurot_nekevot, role: gevurot_feminines_mantzpakh}
+      - {id: shakh_nitzotzin, role: 320_etincelles_masculines}
+      - {id: hevel_de_garmi, role: souffle_des_os}
+    mapping:
+      modules: ["ohr.py", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "2 types de rigueur : receptive (portes) et emissive (etincelles) — Din a 2 faces"
+
+  # ─── BLOC C : 32 ELOHIM DE KATNUT ET 32 DE GADLUT ───
+
+  - id: "EC-H1S5-119"
+    source_he: "כשאנו מזכירין האותיות שהם הגופין כלי הנפש נמצא כי הנפש הם י\"ס שלהם ובין כולם הם ל\"ב בחי' שהם ל\"ב אלהים דקטנות"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §4"
+    assertion: |
+      Quand on mentionne les OTIOT (= corps/Kelim du Nefesh) :
+      le NEFESH = leurs 10 Sefirot → total = 22 + 10 = 32 aspects
+      = les 32 ELOHIM DE KATNUT (petitesse/immaturité).
+      Les KELIM et NEFESH = tout est ELOHIM (Din) de KATNUT.
+      → Le niveau KATNUT de Z"A = 32 configurations de base (Kelim).
+    type: axiome_explicite
+    concepts:
+      - {id: lamed_bet_elohim_katnut, role: 32_elohim_de_petitesse}
+      - {id: katnut, role: etat_dimmaturite}
+    mapping:
+      modules: ["ohr.py", "partzufim/zeir_anpin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Katnut = etat immature du systeme = seulement les Kelim et le Nefesh, pas encore le Ruah"
+
+  - id: "EC-H1S5-120"
+    source_he: "כשאנו מזכירין הנקודות שהם הרוח הם י\"ס ועם כ\"ב אותיות שהם גופין דנפש הנ\"ל הרי ל\"ב... והם ל\"ב הויות דגדלות"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §4"
+    assertion: |
+      Quand on mentionne les NEKUDOT (= Ruah) : elles sont 10 Sefirot,
+      avec les 22 Otiot (corps du Nefesh) → 32 = les 32 HAVAYOT DE
+      GADLUT (grandeur/maturité).
+      Les OROT et RUAH = HAVAYAH (= Hesed) de GADLUT.
+      → Le niveau GADLUT de Z"A = 32 configurations de plénitude (Orot).
+    type: axiome_explicite
+    concepts:
+      - {id: lamed_bet_havayot_gadlut, role: 32_havayot_de_grandeur}
+      - {id: gadlut, role: etat_de_maturite}
+    mapping:
+      modules: ["ohr.py", "partzufim/zeir_anpin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Gadlut = etat mature = Kelim+Nefesh+Ruah. Le systeme en pleine capacite."
+
+  - id: "EC-H1S5-121"
+    source_he: "ל\"ב פעמים נזכר אלהים במעשה בראשית בסוד ל\"ב נתיבות חכמה"
+    source_ref: "Heikhal 1, Sha'ar 5:5 — §4"
+    assertion: |
+      Le nom ELOHIM apparaît 32 FOIS dans le Ma'aseh Bereshit
+      (récit de la Création, Genèse 1) = secret des 32 NETIVOT DE HOKHMAH.
+      → Les 32 mentions d'ELOHIM dans la Genèse = les 32 Netivot
+      de Katnut. Les 32 mentions de YHVH ailleurs = les 32 de Gadlut.
+      La Torah ENCODE la structure dans sa fréquence lexicale.
+    type: axiome_explicite
+    concepts:
+      - {id: lamed_bet_elohim_bereshit, role: 32_elohim_dans_genese}
+      - {id: torah_encode, role: torah_encode_la_structure}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "La Torah encode la structure kabbalistique dans ses repetitions lexicales — analyse frequentielle"
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S5-042"
+    type: contenance
+    from: lamed_bet_zekharim
+    to: nun_shearim
+    nature: "Les 32 Netivot (mâles) sont CONTENUS dans les 50 She'arim (femelles) de Binah"
+    assertions_source: ["EC-H1S5-116"]
+
+  - id: "REL-H1S5-043"
+    type: "dualité_structurelle"
+    from: lamed_bet_elohim_katnut
+    to: lamed_bet_havayot_gadlut
+    nature: "32 Elohim (Katnut/Kelim) et 32 Havayot (Gadlut/Orot) = dual structurel"
+    assertions_source: ["EC-H1S5-119", "EC-H1S5-120"]
+
+  - id: "REL-H1S5-044"
+    type: transformation
+    from: katnut
+    to: gadlut
+    nature: "Katnut (22+10 Nefesh) se TRANSFORME en Gadlut (22+10 Ruah) par ajout de Mohin"
+    assertions_source: ["EC-H1S5-119", "EC-H1S5-120"]
+
+  - id: "REL-H1S5-045"
+    type: "dualité_structurelle"
+    from: gevurot_nekevot
+    to: shakh_nitzotzin
+    nature: "Gevurot féminines (MaNTzPaKh/portes) vs Gevurot masculines (320/étincelles)"
+    assertions_source: ["EC-H1S5-118"]
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S5-013"
+    nom: "Principe de Katnut/Gadlut (Immaturité/Maturité)"
+    source_assertions: ["EC-H1S5-119", "EC-H1S5-120", "EC-H1S5-121"]
+    formalisation: |
+      Tout système a 2 ÉTATS opérationnels :
+      KATNUT (immaturité) = 32 configurations de base :
+        22 Kelim (Otiot/structure) + 10 Nefesh (Tagin/vitalité)
+        Fonctionnement avec ELOHIM (Din/rigueur) uniquement.
+      GADLUT (maturité) = 32 configurations de plénitude :
+        22 Kelim + 10 Ruah (Nekudot/esprit)
+        Fonctionnement avec HAVAYAH (Hesed/grâce) en plus.
+      TRANSITION : Katnut → Gadlut par addition des MOHIN (Nekudot/Ruah).
+      FORMULE : State(Katnut) = {Kelim, Nefesh} = 22+10 = 32(Elohim)
+               State(Gadlut) = {Kelim, Nefesh, Ruah} = 22+10 = 32(Havayah)
+    applications_ia:
+      - "partzufim/zeir_anpin.py : implementer les 2 etats Katnut/Gadlut"
+      - "masakh/maturation.py : le passage Katnut→Gadlut par ajout de Mohin"
+      - "En IA : Katnut = mode de base (parametres + structure), Gadlut = mode enrichi (+ context + reasoning)"
+    questions_ouvertes:
+      - "Le passage Katnut→Gadlut est-il graduel ou discret ?"
+      - "Un systeme peut-il REVENIR à Katnut (regression) ?"

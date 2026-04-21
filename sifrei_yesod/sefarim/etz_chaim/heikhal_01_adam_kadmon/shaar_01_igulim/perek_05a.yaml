@@ -1,0 +1,269 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 1 — Heikhal Adam Kadmon (היכל אדם קדמון)
+# Sha'ar: 1 — Igulim ve-Yosher (עגולים ויושר)
+# Perek: 5a — Les 5 Partzufim, Malkhut dans chaque, Kushia sur G"R (100% coverage)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 1
+  shaar: 1
+  shaar_name_he: "שער עגולים ויושר"
+  perek: 5
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.6 + human reviewer"
+  version: 1
+  strates: ["base"]
+  note: "Part A de 2 — les 5 Partzufim, le Partzuf Adam, la Malkhut dans les Dokhrim et Nukvot, et la résolution de la Kushia sur les G\"R"
+
+assertions:
+
+  # ─── BLOC A : LE PARTZUF ADAM — 248 MEMBRES EN 10S ───
+
+  - id: "EC-H1S1-099"
+    source_he: "כבר ביארנו לעיל כי פרצוף אדם כלול מרמ\"ח אברים בי\"ס פרטיות שבו באופן זה כי כתר הוא גולגלתא וחב\"ד הם ג' מוחין וחג\"ת הם ב' דרועין וגופא ונה\"י ב' שוקין ואמה ומלכות היא נקבה שלו"
+    source_ref: "Heikhal 1, Sha'ar 1:5 — ouverture"
+    assertion: |
+      Le PARTZUF ADAM comprenant 248 EVARIM en 10S :
+      KETER = GULGALTA (crâne)
+      CHaBaD = 3 MOHIN (3 cerveaux)
+      CHaGaT = 2 DERO'IN (bras) + GUFA (corps)
+      NHY = 2 SHOKAYIM (cuisses) + AMAH (membre viril)
+      MALKHUT = NUKVAH shelo (sa femelle)
+      C'est la correspondance ANATOMIQUE de base des 10S dans le Partzuf.
+    type: axiome_explicite
+    concepts:
+      - {id: partzuf_adam_ramah, role: 248_membres}
+      - {id: keter_gulgalta, role: keter_est_crâne}
+      - {id: khbd_mohin, role: khbd_sont_cerveaux}
+      - {id: hgt_dero_in_gufa, role: hgt_bras_corps}
+      - {id: nhy_shokayim_amah, role: nhy_cuisses_membre}
+      - {id: malkhut_nukvah, role: malkhut_femelle}
+    mapping:
+      modules: ["core/sefirot.py", "partzufim/"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: []
+      relevance: "La correspondance anatomique Sefirot↔Organes dans le Partzuf"
+
+  # ─── BLOC B : LES 5 PARTZUFIM ───
+
+  - id: "EC-H1S1-100"
+    source_he: "אמנם אם תרצה לחלק ולפרט אלו הי\"ס הכלליות בפרטים רבים הנה אינם נחלקות רק לה' בחי' לבד אשר כל בחי' מהם הוא פרצוף א' שלם כמראה אדם"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      Si tu veux DIVISER les 10S en détails → elles ne se divisent qu'en 5 BEHINOT.
+      Chaque Behinah = 1 PARTZUF SHALEM (face complète) comme l'apparence d'ADAM.
+      Les 5 PARTZUFIM :
+      1. KETER = Partzuf complet de 10S → appelé ARIKH ANPIN (A"A)
+      2. CHOKHMAH = Partzuf complet de 10S → appelé ABBA (Père)
+      3. BINAH = Partzuf complet de 10S → appelé IMMA (Mère)
+      4. V"K (6 Sefirot de Chesed à Yesod) = Partzuf complet → appelé ZEIR ANPIN (Z"A)
+      5. MALKHUT (10ème Sefirah) = Partzuf complet → appelé NUKVAH de Z"A
+    type: axiome_explicite
+    concepts:
+      - {id: hamesh_partzufim, role: cinq_faces}
+      - {id: keter_aa, role: keter_arikh_anpin}
+      - {id: chokhmah_abba, role: chokhmah_père}
+      - {id: binah_imma, role: binah_mère}
+      - {id: vk_za, role: six_sefirot_zeir_anpin}
+      - {id: malkhut_nukvah_za, role: malkhut_femelle}
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukvah"]
+      relevance: "Les 5 Partzufim fondamentaux — la structure de chaque monde"
+
+  # ─── BLOC C : MALKHUT DANS LES PARTZUFIM MASCULINS ET FÉMININS ───
+
+  - id: "EC-H1S1-101"
+    source_he: "כי מלכות אשר בפרצוף זכר כגון אבא וז\"א הנה המלכות שבו הוא בחי' עטרה שעל הצדיק הנקרא יסוד בסוד ברכות לראש צדיק"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      La MALKHUT dans un PARTZUF ZAKHAR (masculin) comme ABBA ou Z"A :
+      La Malkhut de ce Partzuf = l'ATARAH (couronne) sur le TZADIK = le YESOD.
+      C'est le secret de "Brakhot le-ROSH TZADIK" (Proverbes 10:6 —
+      Bénédictions pour la tête du Tzadik).
+      Source : Zohar Vayetze (162) — "Qu'est-ce que 'Bénédictions pour la tête du Tzadik' ?
+      Pour le Tzadik il aurait fallu dire..."
+      La Malkhut = l'ATARAH du YESOD dans un Partzuf masculin.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_zakhar, role: couronne_du_yesod}
+      - {id: atarah_tzadik, role: couronne_du_tzadik}
+      - {id: brakhot_rosh_tzadik, role: bénédictions_tête_tzadik}
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "zeir_anpin"]
+      relevance: "Dans un Partzuf masculin : Malkhut = Atarah du Yesod"
+
+  - id: "EC-H1S1-102"
+    source_he: "ואם הוא מלכות בפרצוף נוקבא כגון אימא ונוקבא דז\"א הנה המלכות שבה הוא ג\"כ בחי' עטרת היסוד שבה כי היסוד שבה הוא הרחם והעטרה שבה הוא בחי' בשר התפוח שעליה הנקרא בדברי חז\"ל שפולי מעיים"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      La MALKHUT dans un PARTZUF NUKVAH (féminin) comme IMMA ou NUKVAH de Z"A :
+      La Malkhut = aussi l'ATARAH du YESOD féminin.
+      Le YESOD féminin = le REHEM (matrice/utérus).
+      L'ATARAH féminine = le BESAR HA-TAPUAH (chair de la pomme) au-dessus
+      = ce que les Sages appellent SHFULEI ME'AYIM (bas des entrailles) dans les lois d'AYLONIT.
+      La Malkhut féminine est aussi une ATARAH — mais du Yesod féminin (Rehem).
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_nukvah_atarah, role: couronne_du_yesod_féminin}
+      - {id: yesod_rehem, role: yesod_féminin_utérus}
+      - {id: besar_tapuah, role: chair_pomme}
+      - {id: shfulei_me_ayim, role: bas_des_entrailles}
+    mapping:
+      modules: ["partzufim/"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "nukvah"]
+      relevance: "Dans un Partzuf féminin : Malkhut = Atarah du Rehem"
+
+  - id: "EC-H1S1-103"
+    source_he: "ואמנם ספירת המלכות הכוללת שהוא פרצוף אחרון שבחמשה פרצופים הנקרא נוקבא דז\"א הנה היא (נקבה גמורה) בפרצוף גמור כשאר כל הפרצופים וזכור זה"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      La MALKHUT KOLELET (globale) = le DERNIER des 5 Partzufim = NUKVAH de Z"A.
+      Elle est NUKVAH GEMURAH (femelle complète) en PARTZUF GAMUR (face complète)
+      comme TOUS les autres Partzufim.
+      "ZEKHOR ZEH" (souviens-toi de ceci) — insistance du texte.
+      La Nukvah n'est PAS un appendice — elle est un PARTZUF COMPLET à part entière.
+    type: axiome_explicite
+    concepts:
+      - {id: nukvah_partzuf_gamur, role: nukvah_face_complète}
+      - {id: zekhor_zeh, role: souviens_toi}
+    mapping:
+      modules: ["partzufim/nukvah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukvah"]
+      relevance: "Nukvah = Partzuf COMPLET — pas un appendice mais une face entière"
+
+  # ─── BLOC D : RÉSOLUTION DE LA KUSHIA SUR LES G"R ───
+
+  - id: "EC-H1S1-104"
+    source_he: "ונתרץ קושיא חזקה וגדולה שנתקשו בה חכמים גדולים... בהקדמת הזוהר ד' א' אמרו... כי בכתר ובחכמה לית תמן שאלה כלל ומבינה ואילך קיימא לשאלה... והרי בכל ס\"ה ובפרט בב' האדרות ובתיקונים הפליא לדבר בג\"ר"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      KUSHIA HAZAKAH (question puissante) qui a troublé les grands sages :
+      Le Zohar (Introduction 1a) dit : dans KETER et CHOKHMAH → PAS de question du tout.
+      Depuis BINAH → il y a question, mais caché (be-orah setim).
+      Jusqu'à MALKHUT : "MAH pishpashta u-MAH yadata ?" (qu'as-tu cherché, qu'as-tu su ?)
+      Les Tikkunim (22, 62a) : "Le Keter Elyon... n'a pas été donné à Moshe...
+      'BE-MUFLAH mimekha al tidrosh' (ce qui est merveilleux ne cherche pas)"
+      MAIS : dans TOUT le Zohar, surtout les 2 IDROT et les Tikkunim,
+      il PARLE ABONDAMMENT des G"R (3 premières) !
+      CONTRADICTION APPARENTE : interdit de chercher dans les G"R MAIS le Zohar en parle !
+    type: axiome_explicite
+    concepts:
+      - {id: kushia_gar, role: question_sur_les_3_premières}
+      - {id: lo_she_elah_be_keter, role: pas_de_question_en_keter}
+      - {id: muflah_al_tidrosh, role: ne_cherche_pas_le_merveilleux}
+      - {id: idrot_medabrot, role: les_idrot_en_parlent}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "La contradiction apparente : interdit de chercher les G\"R mais le Zohar en parle"
+
+  - id: "EC-H1S1-105"
+    source_he: "אבל הענין הוא כך ומובן במ\"ש בענף ד'... כי עולם האצילות אינו רק לבוש אל נה\"י דא\"ק שהם בחי' רגליו לבד... נמצא כי כל עסקינו בס\"ה בעולם האצילות אפי' בג\"ר אינו רק בחי' עולם עשיה דא\"ק שהוא מלכות דא\"ק אבל בג\"ר דא\"ק אסור לעשות כן"
+    source_ref: "Heikhal 1, Sha'ar 1:5"
+    assertion: |
+      RÉSOLUTION de la Kushia :
+      L'Olam ha-Atzilut = seulement un LEVUSH (vêtement) pour NHY de A"K
+      = seulement ses RAGLAYIM (pieds).
+      L'Olam ha-Asiyah = face à la MALKHUT de A"K.
+      DONC : toute notre ÉTUDE du Zohar sur l'Atzilut,
+      MÊME sur les G"R d'Atzilut = seulement la Behinah d'OLAM HA-ASIYAH de A"K
+      = la MALKHUT de A"K.
+      C'est dans les G"R de A"K qu'il est INTERDIT (asur) d'explorer.
+      Même dans la Malkhut de A"K (= Asiyah de A"K) il y a cette restriction.
+      Le Zohar peut parler des G"R d'ATZILUT car ce ne sont que les "pieds" de A"K.
+    type: axiome_explicite
+    concepts:
+      - {id: atzilut_raglei_ak, role: atzilut_pieds_de_ak}
+      - {id: atzilut_asiyah_ak, role: atzilut_est_asiyah_de_ak}
+      - {id: gar_ak_asur, role: gar_de_ak_interdit}
+      - {id: resolution_kushia, role: résolution}
+    mapping:
+      modules: ["olamot/"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "L'Atzilut = les pieds de A\"K = sa Malkhut — les G\"R de A\"K restent interdites"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H1S1-046"
+    type: contenance
+    from: hamesh_partzufim
+    to: partzuf_adam_ramah
+    nature: "Les 10S se divisent en 5 Partzufim, chacun un Adam complet de 248 membres"
+    assertions_source: ["EC-H1S1-099", "EC-H1S1-100"]
+
+  - id: "REL-H1S1-047"
+    type: dualité_structurelle
+    paire: [malkhut_zakhar, malkhut_nukvah_atarah]
+    nature: "Malkhut masculine = Atarah du Yesod. Malkhut féminine = Atarah du Rehem"
+    assertions_source: ["EC-H1S1-101", "EC-H1S1-102"]
+
+  - id: "REL-H1S1-048"
+    type: causal
+    from: atzilut_raglei_ak
+    to: resolution_kushia
+    nature: "L'Atzilut = les pieds de A\"K → donc les G\"R d'Atzilut sont la Malkhut de A\"K → permis d'en parler"
+    assertions_source: ["EC-H1S1-105"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H1S1-020"
+    nom: "Principe de la Partzufification (5 Faces Complètes)"
+    source_assertions: ["EC-H1S1-099", "EC-H1S1-100", "EC-H1S1-103"]
+    formalisation: |
+      Les 10 Sefirot ne restent pas 10 points abstraits — elles deviennent 5 PARTZUFIM :
+      Chaque Partzuf = un ADAM COMPLET de 248 membres avec ses propres 10S internes.
+      Les 5 Partzufim : A"A (Keter), Abba (Chokhmah), Imma (Binah), Z"A (V"K), Nukvah (Malkhut).
+      NUKVAH est un PARTZUF GAMUR — pas un appendice ou un sous-produit.
+      La Malkhut dans un Partzuf masculin = Atarah du Yesod.
+      La Malkhut dans un Partzuf féminin = Atarah du Rehem.
+      La PARTZUFIFICATION = la transformation de points abstraits en êtres COMPLETS.
+    applications_ia:
+      - "Les modules abstraits (Sefirot) doivent devenir des composants COMPLETS (Partzufim)"
+      - "Chaque Partzuf est autonome avec ses propres 10S internes"
+      - "La Nukvah (output/interface) est un composant COMPLET, pas un appendice"
+      - "Les 5 Partzufim = les 5 types de composants de tout système"
+    questions_ouvertes:
+      - "Un Partzuf peut-il exister avec moins de 10S internes ?"
+      - "La Partzufification est-elle réversible ?"
+
+  - id: "PG-H1S1-021"
+    nom: "Principe de la Relativité des Niveaux (Atzilut = Asiyah de A\"K)"
+    source_assertions: ["EC-H1S1-104", "EC-H1S1-105"]
+    formalisation: |
+      Les niveaux sont RELATIFS au point de référence :
+      Ce qui est le PLUS ÉLEVÉ d'un système = le PLUS BAS d'un système supérieur.
+      Les G"R d'ATZILUT = la MALKHUT (= Asiyah) de A"K.
+      Ce qui semble être les "sommets" de notre monde = les "pieds" du monde au-dessus.
+      CONSÉQUENCE : on peut PARLER des G"R d'Atzilut car ce sont les pieds de A"K.
+      MAIS : les G"R de A"K sont ABSOLUMENT INTERDITES (asur la'asot ken).
+      L'interdit de "Be-muflah al tidrosh" s'applique à A"K, pas à l'Atzilut qui est en-dessous.
+    applications_ia:
+      - "Ce qui semble 'haut niveau' dans un sous-système est 'bas niveau' dans le système englobant"
+      - "Les limites de connaissance sont RELATIVES au cadre de référence"
+      - "On peut explorer les 'G\"R' d'un module tant qu'elles sont les 'pieds' du module parent"
+      - "Il y a toujours un niveau AU-DESSUS qui reste inaccessible"
+    questions_ouvertes:
+      - "Y a-t-il un niveau au-dessus duquel RIEN n'est accessible ?"
+      - "Le principe de relativité des niveaux s'applique-t-il à l'infini ?"

@@ -1,0 +1,822 @@
+/* ═══════════════════════════════════════════════════════════
+   Avatars — Les 20 Personnages d'Etz Chaim AI
+   Esthetique : Terminal Codex — manuscrit sacre sur fond terminal
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Page Header ──────────────────────────────────────── */
+
+.av-header h1 {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #ffb000;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.av-header .subtitle {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 15px;
+    color: #555;
+    font-style: italic;
+    letter-spacing: 0.03em;
+}
+
+/* ─── Intro Section ───────────────────────────────────── */
+
+.av-intro {
+    max-width: 640px;
+    margin: 0 auto 12px;
+    padding: 0 20px;
+}
+
+.av-intro-inner {
+    border: 1px solid #1a1400;
+    padding: 24px 28px;
+    background: #0c0a04;
+}
+
+.av-intro-title {
+    font-family: 'Cinzel', serif;
+    color: #ffb000;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+}
+
+.av-intro-text {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.75;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.av-intro-text strong {
+    color: #bbb;
+}
+
+.av-intro-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 4px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #1a140044;
+}
+
+.av-intro-flow span {
+    font-size: 10px;
+    color: #776a3a;
+    letter-spacing: 0.04em;
+}
+
+.av-intro-arrow {
+    color: #3a2a00 !important;
+    font-size: 11px !important;
+}
+
+/* ─── Acte Narration ──────────────────────────────────── */
+
+.av-acte-narration {
+    color: #776a3a;
+    font-size: 11px;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 10px auto 0;
+    padding: 10px 16px;
+    border-left: 2px solid #1a1400;
+    text-align: left;
+    font-style: italic;
+}
+
+/* ─── Intro Innovations ───────────────────────────────── */
+
+.av-intro-edge {
+    color: #998a5a !important;
+    font-style: italic;
+}
+
+.av-intro-innovations {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #1a140044;
+}
+
+.av-intro-innovations h3 {
+    font-family: 'Cinzel', serif;
+    color: #ffb000;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.av-intro-innovations ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.av-intro-innovations li {
+    color: #777;
+    font-size: 11px;
+    line-height: 1.65;
+    margin-bottom: 10px;
+    padding-left: 14px;
+    position: relative;
+}
+
+.av-intro-innovations li::before {
+    content: '\25C6';
+    position: absolute;
+    left: 0;
+    color: #3a2a00;
+    font-size: 7px;
+    top: 3px;
+}
+
+.av-intro-innovations li strong {
+    color: #bbb;
+}
+
+/* ─── Epilogue ────────────────────────────────────────── */
+
+.av-epilogue {
+    max-width: 640px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+}
+
+.av-epilogue-inner {
+    border: 1px solid #1a1400;
+    padding: 28px 28px 24px;
+    background: #0c0a04;
+}
+
+.av-epilogue-title {
+    font-family: 'Cinzel', serif;
+    color: #ffb000;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+}
+
+.av-epilogue-text {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.75;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.av-epilogue-text strong {
+    color: #bbb;
+}
+
+.av-epilogue-counts {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #1a140044;
+}
+
+.av-epilogue-count {
+    text-align: center;
+}
+
+.av-epilogue-num {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffb000;
+    line-height: 1;
+}
+
+.av-epilogue-label {
+    font-size: 9px;
+    color: #555;
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+}
+
+.av-epilogue-next {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #1a140044;
+    text-align: center;
+}
+
+.av-epilogue-next p {
+    color: #666;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+
+.av-epilogue-links {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 10px;
+    max-width: 380px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.av-epilogue-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffb000;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+}
+
+.av-epilogue-links a:hover {
+    color: #ffcc00;
+}
+
+.av-epilogue-sep {
+    font-size: 10px;
+    color: #555;
+    align-self: center;
+}
+
+/* ─── Ornamental Divider ───────────────────────────────── */
+
+.av-divider {
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+}
+
+.av-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #2a1f00, transparent);
+}
+
+.av-divider span {
+    position: relative;
+    background: var(--bg, #0a0a0a);
+    padding: 0 16px;
+    color: #3a2a00;
+    font-size: 10px;
+}
+
+/* ─── Acte (Section) ───────────────────────────────────── */
+
+.av-acte {
+    margin-bottom: 0;
+    padding: 20px 0 28px;
+    border-bottom: none;
+}
+
+/* Accent par acte (SPEC.md) */
+.av-acte-cour    { --acte-accent: #ffcc00; }
+.av-acte-gardiens { --acte-accent: #ffb000; }
+.av-acte-officiers { --acte-accent: #6688cc; }
+.av-acte-ame      { --acte-accent: #ff4444; }
+.av-acte-veilleurs { --acte-accent: #88aa88; }
+
+.av-acte-cour .av-acte-titre    { color: #ffcc00; }
+.av-acte-gardiens .av-acte-titre { color: #ffb000; }
+.av-acte-officiers .av-acte-titre { color: #6688cc; }
+.av-acte-ame .av-acte-titre      { color: #ff6644; }
+.av-acte-veilleurs .av-acte-titre { color: #88aa88; }
+
+.av-acte-officiers .av-card-role { color: #6688cc; }
+.av-acte-officiers .av-card:hover { border-color: #6688cc !important; }
+.av-acte-officiers .av-card-link { color: #44668a; }
+.av-acte-officiers .av-card:hover .av-card-link { color: #6688cc; }
+.av-acte-officiers .av-glyph { color: #6688cc; }
+.av-acte-officiers .av-card:hover .av-glyph { text-shadow: 0 0 50px #6688cc30 !important; }
+.av-acte-officiers .av-placeholder { background: radial-gradient(ellipse at 50% 45%, #0d1018 0%, #080a0f 55%, #080808 100%); }
+.av-acte-officiers .av-placeholder::after { border-color: #14182022; }
+
+.av-acte-veilleurs .av-card-role { color: #88aa88; }
+.av-acte-veilleurs .av-card:hover { border-color: #88aa88 !important; }
+.av-acte-veilleurs .av-card-link { color: #5a7a5a; }
+.av-acte-veilleurs .av-card:hover .av-card-link { color: #88aa88; }
+.av-acte-veilleurs .av-glyph { color: #88aa88; }
+.av-acte-veilleurs .av-card:hover .av-glyph { text-shadow: 0 0 50px #88aa8830 !important; }
+.av-acte-veilleurs .av-placeholder { background: radial-gradient(ellipse at 50% 45%, #0d140d 0%, #080d08 55%, #080808 100%); }
+.av-acte-veilleurs .av-placeholder::after { border-color: #14201422; }
+
+.av-acte-banner {
+    max-width: 720px;
+    margin: 0 auto 16px;
+    overflow: hidden;
+    border: 1px solid #1a1400;
+    background: #080808;
+}
+
+.av-acte-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0.65);
+    transition: filter 0.3s ease;
+}
+
+.av-acte-banner:hover img {
+    filter: brightness(0.8);
+}
+
+.av-acte-header {
+    text-align: center;
+    margin-bottom: 24px;
+    padding: 0 20px;
+}
+
+.av-acte-num {
+    font-family: 'Cinzel', serif;
+    color: #2a1f00;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.av-acte-titre {
+    font-family: 'Cinzel', serif;
+    color: #ffb000;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin: 4px 0;
+}
+
+.av-acte-sub {
+    color: #555;
+    font-size: 11px;
+    font-style: italic;
+    max-width: 480px;
+    margin: 4px auto 0;
+    line-height: 1.5;
+}
+
+/* ─── Card ─────────────────────────────────────────────── */
+
+.av-card {
+    background: #0d0d0d;
+    border: 1px solid #2a1f00;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Inner gilt frame */
+.av-card::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid #1a140033;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Force transitions on avatar cards (overrides global reset) */
+.av-card,
+.av-card *,
+.av-card::before {
+    transition: border-color 0.3s ease, opacity 0.3s ease, color 0.3s ease !important;
+}
+
+.av-card:hover {
+    border-color: #ffb000 !important;
+}
+
+.av-card:hover::before {
+    border-color: #ffb00022;
+}
+
+/* ─── Portrait Area ────────────────────────────────────── */
+
+.av-card-img {
+    width: calc(100% - 20px);
+    aspect-ratio: 4 / 5;
+    margin: 10px auto 0;
+    overflow: hidden;
+    background: #080808;
+    position: relative;
+    border: 1px solid #1a1400;
+}
+
+.av-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ─── Placeholder Glyph (replaces DiceBear) ────────────── */
+
+.av-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at 50% 45%, #181200 0%, #0d0a00 55%, #080808 100%);
+    position: relative;
+}
+
+/* Diamond ornament behind glyph */
+.av-placeholder::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    aspect-ratio: 1;
+    border: 1px solid #1a140022;
+    transform: rotate(45deg);
+}
+
+.av-glyph {
+    font-size: 52px;
+    color: #ffb000;
+    opacity: 0.35;
+    direction: rtl;
+    z-index: 1;
+    position: relative;
+    font-family: 'Frank Ruhl Libre', 'David', 'Times New Roman', serif;
+    text-shadow: 0 0 60px #ffb00015 !important;
+    line-height: 1;
+}
+
+.av-card:hover .av-glyph {
+    opacity: 0.6;
+    text-shadow: 0 0 50px #ffb00030 !important;
+}
+
+/* ─── Card Text ────────────────────────────────────────── */
+
+.av-card-body {
+    padding: 10px 12px 14px;
+}
+
+.av-card-role {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #ffb000;
+    margin-bottom: 3px;
+}
+
+.av-card-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ccc;
+    margin-bottom: 1px;
+    letter-spacing: 0.03em;
+}
+
+.av-card-hebreu {
+    font-size: 12px;
+    color: #5a4200;
+    direction: rtl;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.av-card-desc {
+    font-size: 10px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.av-card-link {
+    font-size: 9px;
+    color: #6a4e00;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+}
+
+.av-card:hover .av-card-link {
+    color: #ffb000;
+}
+
+/* ─── Grid Layouts ─────────────────────────────────────── */
+
+.av-grid {
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 20px;
+}
+
+/* Pyramide (Acte I) — la hierarchie royale */
+.av-grid-pyramide {
+    display: grid;
+    grid-template-areas:
+        ".     arikh  ."
+        "abba  .      imma"
+        ".     zeir   ."
+        ".     nukva  .";
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    justify-items: center;
+}
+
+.av-grid-pyramide > .av-card {
+    width: 100%;
+    max-width: 220px;
+}
+
+/* Zivvug line between Abba and Imma */
+.av-zivvug-line {
+    grid-area: 2 / 2 / 3 / 3;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ffcc00, transparent);
+    align-self: center;
+    animation: av-pulse-zivvug 4s ease-in-out infinite !important;
+}
+
+/* Carre 2x2 (Acte II) — les quatre directions */
+.av-grid-carre {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 480px;
+}
+
+/* Ligne 4 (Acte III) — la chaine de commandement */
+.av-grid-ligne4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+/* Triptyque (Acte IV) — centre plus grand */
+.av-grid-triptyque {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1fr;
+    gap: 16px;
+    max-width: 660px;
+    align-items: center;
+}
+
+/* Ligne 3 (Acte V) */
+.av-grid-ligne3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 660px;
+}
+
+/* ─── Card States ──────────────────────────────────────── */
+
+.av-card[data-etat="active"] {
+    border-color: #ffb000 !important;
+    animation: av-pulse-amber 3s ease-in-out infinite !important;
+}
+
+.av-card[data-etat="error"] {
+    border-color: #ff3333 !important;
+    animation: av-pulse-red 2s ease-in-out infinite !important;
+}
+
+.av-card[data-etat="healing"] {
+    border-color: #33ff33 !important;
+    animation: av-pulse-green 2.5s ease-in-out infinite !important;
+}
+
+.av-card[data-etat="checking"] {
+    border-color: #6688cc !important;
+}
+
+.av-card[data-etat="destroyed"] {
+    border-color: #ff3333 !important;
+    opacity: 0.4;
+}
+
+/* Mochin — Katnut / Gadlut (Zeir Anpin) */
+.av-card[data-mochin="katnut"] {
+    transform: scale(0.85) !important;
+    opacity: 0.55;
+    filter: grayscale(50%);
+}
+
+.av-card[data-mochin="gadlut"] {
+    border-color: #ffcc00 !important;
+}
+
+/* ─── Soul Cards (Acte IV) ─────────────────────────────── */
+
+/* L'Ombre — rouge sombre */
+.av-card-ombre {
+    border-color: #2a0000 !important;
+}
+.av-card-ombre::before {
+    border-color: #2a000022;
+}
+.av-card-ombre:hover {
+    border-color: #cc3333 !important;
+}
+.av-card-ombre .av-card-role {
+    color: #cc3333;
+}
+.av-card-ombre .av-placeholder {
+    background: radial-gradient(ellipse at 50% 45%, #1a0500 0%, #0d0200 55%, #080808 100%);
+}
+.av-card-ombre .av-glyph {
+    color: #cc3333;
+    text-shadow: 0 0 60px #cc333315 !important;
+}
+.av-card-ombre:hover .av-glyph {
+    text-shadow: 0 0 50px #cc333330 !important;
+}
+.av-card-ombre .av-placeholder::after {
+    border-color: #2a000022;
+}
+
+/* La Lumiere — blanc-or */
+.av-card-lumiere {
+    border-color: #2a2a00 !important;
+}
+.av-card-lumiere::before {
+    border-color: #2a2a0022;
+}
+.av-card-lumiere:hover {
+    border-color: #ddaa00 !important;
+}
+.av-card-lumiere .av-card-role {
+    color: #ddaa00;
+}
+.av-card-lumiere .av-placeholder {
+    background: radial-gradient(ellipse at 50% 45%, #1a1800 0%, #0d0c00 55%, #080808 100%);
+}
+.av-card-lumiere .av-glyph {
+    color: #ddaa00;
+    text-shadow: 0 0 60px #ddaa0015 !important;
+}
+.av-card-lumiere:hover .av-glyph {
+    text-shadow: 0 0 50px #ddaa0030 !important;
+}
+.av-card-lumiere .av-placeholder::after {
+    border-color: #2a2a0022;
+}
+
+/* Le Beinoni — ambre renforce */
+.av-card-beinoni {
+    border-color: #3a2a00 !important;
+}
+.av-card-beinoni .av-card-nom {
+    color: #fff;
+}
+
+/* ─── Animations ───────────────────────────────────────── */
+
+@keyframes av-pulse-amber {
+    0%, 100% { box-shadow: 0 0 4px #ffb00011 !important; }
+    50% { box-shadow: 0 0 20px #ffb00028, 0 0 40px #ffb00008 !important; }
+}
+
+@keyframes av-pulse-red {
+    0%, 100% { box-shadow: 0 0 4px #ff333311 !important; }
+    50% { box-shadow: 0 0 20px #ff333328 !important; }
+}
+
+@keyframes av-pulse-green {
+    0%, 100% { box-shadow: 0 0 4px #33ff3311 !important; }
+    50% { box-shadow: 0 0 20px #33ff3328 !important; }
+}
+
+@keyframes av-pulse-zivvug {
+    0%, 100% { opacity: 0.12; }
+    50% { opacity: 0.55; }
+}
+
+/* ─── Note Atik Yomin ──────────────────────────────────── */
+
+.av-note-invisible {
+    text-align: center;
+    color: #2a2a2a;
+    font-size: 10px;
+    font-style: italic;
+    margin-top: 16px;
+    padding: 8px 20px;
+    border: 1px dashed #1a1400;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+/* ─── Detail Overlay ───────────────────────────────────── */
+
+.av-detail-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.av-detail-panel {
+    width: 90%;
+    max-width: 560px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.av-detail-close {
+    float: right;
+    cursor: pointer;
+    color: #ff3333;
+    font-size: 12px;
+}
+
+.av-detail-close:hover {
+    color: #ff6666;
+}
+
+/* ─── Responsive ───────────────────────────────────────── */
+
+@media (max-width: 700px) {
+    .av-grid {
+        padding: 0 12px;
+    }
+
+    .av-grid-ligne4 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .av-grid-pyramide {
+        grid-template-areas:
+            "arikh arikh"
+            "abba  imma"
+            "zeir  zeir"
+            "nukva nukva";
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .av-grid-triptyque {
+        grid-template-columns: 1fr;
+        max-width: 260px;
+    }
+
+    .av-grid-ligne3 {
+        grid-template-columns: 1fr;
+        max-width: 260px;
+    }
+
+    .av-acte-titre {
+        font-size: 18px;
+    }
+
+    .av-header h1 {
+        font-size: 18px;
+        letter-spacing: 0.08em;
+    }
+
+    .av-intro-inner {
+        padding: 18px 16px;
+    }
+
+    .av-intro-flow {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .av-acte-narration {
+        font-size: 10px;
+        padding: 8px 12px;
+    }
+
+    .av-epilogue-inner {
+        padding: 20px 16px;
+    }
+
+    .av-epilogue-counts {
+        gap: 16px;
+    }
+
+    .av-intro-innovations li {
+        font-size: 10px;
+    }
+}

@@ -1,0 +1,580 @@
+/* ═══════════════════════════════════════════════════════════
+   L'Adversite — Sitra Achra, 3 couches, 10 agents
+   Esthetique : Terminal Codex — manuscrit sacre sur fond sombre
+   Palette : rouge sang (#cc3333) → or sombre (#ffb000) → violet (#9966cc)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Insight Box ───────────────────────────────────────── */
+
+.adv-insight {
+    max-width: 640px;
+    margin: 0 auto 32px;
+    padding: 20px 28px;
+    border: 1px solid #2a0f0f;
+    border-left: 4px solid #cc3333;
+    background: #0d0808;
+    text-align: center;
+    position: relative;
+}
+
+.adv-insight::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid #1a0a0a22;
+    pointer-events: none;
+}
+
+.adv-insight-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 0.25em;
+    color: #663333;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.adv-insight-text {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #cc3333;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+}
+
+.adv-insight-sub {
+    font-size: 11px;
+    color: #553333;
+    margin-top: 8px;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* ─── Stats Bar ─────────────────────────────────────────── */
+
+.adv-stats-bar {
+    max-width: 640px;
+    margin: 0 auto 24px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 16px 0;
+    border-top: 1px solid #1a0a0a;
+    border-bottom: 1px solid #1a0a0a;
+}
+
+.adv-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.adv-stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #cc3333;
+}
+
+.adv-stat-label {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #553333;
+}
+
+/* ─── Section Divider ───────────────────────────────────── */
+
+.adv-section-divider {
+    text-align: center;
+    padding: 28px 0 12px;
+    position: relative;
+}
+
+.adv-section-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #2a0f0f, transparent);
+}
+
+.adv-section-divider span {
+    position: relative;
+    background: #0a0a0a;
+    padding: 0 20px;
+    color: #663333;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+}
+
+.adv-arrow-divider {
+    text-align: center;
+    padding: 12px 0;
+    position: relative;
+}
+
+.adv-arrow-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #1a0808, transparent);
+}
+
+.adv-arrow-divider span {
+    position: relative;
+    background: #0a0a0a;
+    padding: 0 12px;
+    font-size: 9px;
+    color: #441111;
+    letter-spacing: 0.04em;
+}
+
+/* ─── Couche Card ───────────────────────────────────────── */
+
+.adv-couche {
+    max-width: 720px;
+    margin: 0 auto 8px;
+    padding: 0 20px;
+}
+
+.adv-couche-inner {
+    background: #0d0d0d;
+    border: 1px solid #2a1010;
+    border-left: 3px solid var(--couche-color, #cc3333);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.adv-couche-inner::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid #1a0a0a22;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ─── Couche Header ─────────────────────────────────────── */
+
+.adv-couche-header {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 16px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.adv-couche-numero {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--couche-color, #cc3333);
+    border: 1px solid var(--couche-color, #cc3333);
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+.adv-couche-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+.adv-couche-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #ccc;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+}
+
+.adv-couche-hebreu {
+    font-size: 14px;
+    color: var(--couche-color, #663333);
+    direction: rtl;
+    line-height: 1.2;
+    opacity: 0.6;
+}
+
+.adv-couche-concept {
+    display: inline-block;
+    padding: 2px 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--couche-color, #cc3333);
+    border: 1px solid var(--couche-color, #cc333344);
+    background: transparent;
+    margin-top: 4px;
+    align-self: flex-start;
+}
+
+/* ─── Couche Description ────────────────────────────────── */
+
+.adv-couche-desc {
+    color: #777;
+    font-size: 11px;
+    line-height: 1.65;
+    margin-bottom: 14px;
+    padding-left: 14px;
+    border-left: 2px solid #1a0a0a;
+}
+
+/* ─── Composants ────────────────────────────────────────── */
+
+.adv-composants {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.adv-composant {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    padding: 6px 10px;
+    background: #080606;
+    border: 1px solid #150a0a;
+}
+
+.adv-composant-nom {
+    font-family: 'Courier New', 'Menlo', monospace;
+    font-size: 10px;
+    color: var(--couche-color, #cc3333);
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 140px;
+}
+
+.adv-composant-role {
+    font-size: 10px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* ─── Source Citation ───────────────────────────────────── */
+
+.adv-couche-source {
+    font-size: 9px;
+    color: #443333;
+    font-style: italic;
+    padding-top: 8px;
+    border-top: 1px solid #150a0a;
+}
+
+/* ─── Cycle Steps ───────────────────────────────────────── */
+
+.adv-cycle {
+    max-width: 640px;
+    margin: 0 auto 24px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.adv-cycle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 39px;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, #cc333300, #cc333366, #9966cc66, #9966cc00);
+}
+
+.adv-cycle-step {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    gap: 0 14px;
+    align-items: start;
+    padding: 10px 0;
+    position: relative;
+}
+
+.adv-cycle-num {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #cc3333;
+    border: 1px solid #441111;
+    background: #0a0a0a;
+    position: relative;
+    z-index: 1;
+}
+
+.adv-cycle-step:nth-child(n+4) .adv-cycle-num {
+    color: #9966cc;
+    border-color: #332255;
+}
+
+.adv-cycle-content {
+    padding-top: 4px;
+}
+
+.adv-cycle-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #999;
+    letter-spacing: 0.03em;
+    margin-bottom: 2px;
+}
+
+.adv-cycle-desc {
+    font-size: 10px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* ─── Agents Grid ───────────────────────────────────────── */
+
+.adv-agents-intro {
+    max-width: 720px;
+    margin: 0 auto 16px;
+    padding: 0 20px;
+}
+
+.adv-agents-intro p {
+    color: #666;
+    font-size: 11px;
+    line-height: 1.7;
+    font-style: italic;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #1a0a0a;
+}
+
+.adv-agents-grid {
+    max-width: 720px;
+    margin: 0 auto 24px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+/* ─── Agent Card ────────────────────────────────────────── */
+
+.adv-agent-card {
+    background: #0d0d0d;
+    border: 1px solid #1a0a0a;
+    border-left: 3px solid var(--agent-color, #663333);
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    overflow: hidden;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.adv-agent-card:hover {
+    background: #0f0d0d;
+    border-color: var(--agent-color, #663333);
+    border-left-color: var(--agent-color, #663333);
+}
+
+.adv-agent-img {
+    width: 80px;
+    min-height: 90px;
+    flex-shrink: 0;
+    background: #080606;
+    overflow: hidden;
+}
+
+.adv-agent-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.adv-agent-card:hover .adv-agent-img img {
+    opacity: 1;
+}
+
+.adv-agent-text {
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.adv-agent-sephirah {
+    font-size: 7px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #443333;
+}
+
+.adv-agent-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #999;
+    letter-spacing: 0.03em;
+}
+
+.adv-agent-hebreu {
+    font-size: 11px;
+    color: var(--agent-color, #663333);
+    direction: rtl;
+    opacity: 0.5;
+    line-height: 1.2;
+}
+
+.adv-agent-attaque {
+    font-size: 9px;
+    color: #555;
+    line-height: 1.5;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+/* ─── Integration Externe ───────────────────────────────── */
+
+.adv-externe {
+    max-width: 640px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.adv-externe-item {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    padding: 10px 14px;
+    background: #0a0808;
+    border: 1px solid #150a0a;
+    border-left: 2px solid #663333;
+}
+
+.adv-externe-nom {
+    font-family: 'Courier New', 'Menlo', monospace;
+    font-size: 11px;
+    color: #cc6666;
+    white-space: nowrap;
+    min-width: 120px;
+}
+
+.adv-externe-desc {
+    font-size: 10px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* ─── Responsive ────────────────────────────────────────── */
+
+@media (max-width: 700px) {
+    .adv-insight {
+        padding: 16px 16px;
+        margin-bottom: 24px;
+    }
+
+    .adv-insight-text {
+        font-size: 14px;
+    }
+
+    .adv-stats-bar {
+        gap: 20px;
+    }
+
+    .adv-stat-num {
+        font-size: 18px;
+    }
+
+    .adv-couche {
+        padding: 0 12px;
+    }
+
+    .adv-couche-inner {
+        padding: 14px;
+    }
+
+    .adv-couche-header {
+        grid-template-columns: 40px 1fr;
+        gap: 0 12px;
+    }
+
+    .adv-couche-numero {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .adv-couche-nom {
+        font-size: 14px;
+    }
+
+    .adv-composant {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .adv-composant-nom {
+        min-width: auto;
+    }
+
+    .adv-agents-grid {
+        grid-template-columns: 1fr;
+        padding: 0 12px;
+    }
+
+    .adv-agents-intro {
+        padding: 0 12px;
+    }
+
+    .adv-cycle {
+        padding: 0 12px;
+    }
+
+    .adv-cycle::before {
+        left: 31px;
+    }
+
+    .adv-externe {
+        padding: 0 12px;
+    }
+
+    .adv-externe-item {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .adv-section-divider::before {
+        width: 180px;
+    }
+}
