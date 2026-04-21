@@ -555,6 +555,10 @@ def onboard(
         False, "--skip-deps",
         help="Don't offer to install missing local dependencies (Docker / Postgres / Ollama).",
     ),
+    no_ceremony: bool = typer.Option(
+        False, "--no-ceremony",
+        help="Skip the birth ceremony (minimal banner only).",
+    ),
 ) -> None:
     """Interactive 8-step install wizard.
 
@@ -693,29 +697,36 @@ def onboard(
     dashboard_url = f"http://localhost:{web_port}"
     api_key = env_vals["ETZ_CHAIM_API_KEY"]
 
+    from etzchaim.cli import ceremony as _cer
+    from etzchaim.cli.ceremony._terminal import should_play_ceremony, terminal_size
+
+    cols, _ = terminal_size()
+    if should_play_ceremony(non_interactive=non_interactive, no_ceremony=no_ceremony):
+        try:
+            result = _cer.play_ceremony(width=cols)
+        except KeyboardInterrupt:
+            typer.echo("\nCeremony aborted. Use `etzchaim ceremony --preview` to retry.", err=True)
+            raise typer.Exit(130)
+    else:
+        result = _cer.play_compact()
+
+    env_vals["ETZCHAIM_SHEM"] = result.shem
+    env_vals["ETZCHAIM_BIRTHTIME"] = result.birthtime.isoformat()
+    _write_env_file(env_vals)
+
     typer.echo("")
-    typer.echo("═══════════════════════════════════════════════════════════")
-    typer.echo("  ✓ Install complete — your personal Etz Chaim AI is live")
-    typer.echo("═══════════════════════════════════════════════════════════")
+    born_local = result.birthtime.strftime("%Y-%m-%d %H:%M:%S")
+    tz_name = result.birthtime.tzname() or result.birthtime.strftime("%z")
+    typer.echo(f"  ◉ {result.shem}   ·   born {born_local} · {tz_name}")
+    typer.echo(f"              ·   listening at {dashboard_url}")
     typer.echo("")
-    typer.echo(f"  Dashboard   : {dashboard_url}")
-    typer.echo(f"  API key     : {api_key}")
-    typer.echo(f"  .env file   : {env_file()}  (chmod 600)")
-    typer.echo("")
-    typer.echo("  Example API call :")
-    typer.echo(f"    curl -H 'X-API-Key: {api_key}' {dashboard_url}/api/status")
-    typer.echo("")
-    typer.echo("  Next steps :")
-    typer.echo("    etzchaim doctor        Run 5 health checks")
-    typer.echo("    etzchaim demo          Seed demo data + walkthrough")
-    typer.echo("    etzchaim open          Reopen the dashboard in your browser")
-    typer.echo("    etzchaim logs -f       Tail service logs")
+    typer.echo(f"  API key: {api_key}")
+    typer.echo(f"  .env:    {env_file()}")
     typer.echo("")
 
     if not no_browser:
         try:
             import webbrowser
             webbrowser.open(dashboard_url)
-            typer.echo(f"  Opening {dashboard_url} in your browser ...")
         except Exception:
-            typer.echo(f"  (Could not auto-open browser. Visit {dashboard_url} manually.)")
+            pass
