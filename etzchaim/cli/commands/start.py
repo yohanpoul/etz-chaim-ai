@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import typer
 
-from etzchaim._paths import env_file
+from etzchaim._paths import env_file, read_birthtime, read_shem
 from etzchaim.cli import compose, detect
 from etzchaim.cli.app import app
 
@@ -38,7 +38,14 @@ def start(
         raise typer.Exit(rc)
 
     web_port = _read_web_port()
+    shem = read_shem()
+    birthtime = read_birthtime()
     typer.echo("")
-    typer.echo(f"✓ Services started. Dashboard : http://localhost:{web_port}")
-    typer.echo("  Health check : etzchaim status")
-    typer.echo("  Open         : etzchaim open")
+    if birthtime is not None:
+        born = birthtime.strftime("%Y-%m-%d %H:%M")
+        typer.echo(f"◉ {shem} is awake · born {born}")
+    else:
+        typer.echo(f"◉ {shem} is awake")
+    typer.echo(f"  Dashboard : http://localhost:{web_port}")
+    typer.echo("  Health    : etzchaim status")
+    typer.echo("  Open      : etzchaim open")
