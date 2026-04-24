@@ -5,6 +5,18 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.3] - 2026-04-24 — Multi-instance + doctor-polish
+
+Makes it possible to run two Etz Chaim instances side by side (e.g. `perso` and `dev`) on the same machine without port clashes, and fixes a false-negative in `etzchaim doctor`.
+
+### Fixed
+
+- **`etzchaim doctor` false-negative on `ETZ_CHAIM_API_KEY`** — the check only looked at `os.environ`, so running `etzchaim doctor` from a shell that had not sourced the compose `.env` always reported the key missing even when it was wired into the running containers. Doctor now falls back to reading `~/.etz-chaim/compose/.env` (respecting `ETZCHAIM_STATE_DIR`).
+
+### Changed
+
+- **Split host / container web port** : `WEB_PORT` is now hardcoded to `8080` inside the container (Flask bind target), and a new `HOST_WEB_PORT` variable drives the host-side port mapping. The `onboard` wizard writes `HOST_WEB_PORT` instead of `WEB_PORT`, with default `8080` (auto-bumped to the next free port if 8080 is already bound). Users upgrading from 0.2.2 should replace `WEB_PORT=<n>` by `HOST_WEB_PORT=<n>` in `~/.etz-chaim/compose/.env` if they customised the port.
+
 ## [0.2.2] - 2026-04-24 — Runtime fixes for container stack
 
 Two blocking bugs surfaced by real-world `etzchaim onboard && etzchaim start` runs on a clean machine. Both images rebuilt and republished.

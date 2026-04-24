@@ -79,7 +79,9 @@ x-common-env: &common-env
   # Feature flags
   MAZAL_RECTIFICATION_MODE: "${MAZAL_RECTIFICATION_MODE:-observe}"
   DAEMON_AUTO_IMPROVE_HOUR: "${DAEMON_AUTO_IMPROVE_HOUR:-21}"
-  WEB_PORT: "${WEB_PORT:-8080}"
+  # Internal port Flask binds inside the container. Always 8080 — the host-facing
+  # port is handled by the `ports:` mapping below (HOST_WEB_PORT).
+  WEB_PORT: "8080"
 
 services:
   postgres:
@@ -109,7 +111,7 @@ services:
   app:
     # Pre-built image published by CI. For local dev, docker-compose.dev.yml
     # override adds `build:` with local context.
-    image: ghcr.io/yohanpoul/etzchaim-app:${ETZCHAIM_VERSION:-0.2.2}
+    image: ghcr.io/yohanpoul/etzchaim-app:${ETZCHAIM_VERSION:-0.2.3}
     pull_policy: missing
     container_name: etzchaim-app
     restart: unless-stopped
@@ -119,7 +121,9 @@ services:
       - etz_state:/home/etz/.etz-chaim
       - ./config.yaml:/app/config.yaml:ro
     ports:
-      - "${WEB_PORT:-8080}:8080"
+      # HOST_WEB_PORT lets users run multiple Etz Chaim instances on the same
+      # machine (e.g. perso + dev) without clashing on port 8080.
+      - "${HOST_WEB_PORT:-8080}:8080"
     depends_on:
       postgres:
         condition: service_healthy
@@ -135,7 +139,7 @@ services:
       - "host.docker.internal:host-gateway"
 
   daemon:
-    image: ghcr.io/yohanpoul/etzchaim-daemon:${ETZCHAIM_VERSION:-0.2.2}
+    image: ghcr.io/yohanpoul/etzchaim-daemon:${ETZCHAIM_VERSION:-0.2.3}
     pull_policy: missing
     container_name: etzchaim-daemon
     restart: unless-stopped

@@ -483,14 +483,14 @@ def _auto_pick_profile(envs: set[str]) -> str:
 def _configure_web_auth(non_interactive: bool, env_vals: dict[str, str]) -> int:
     typer.echo("")
     typer.echo("[6/8] Web & auth")
-    web_port = _pick_free_port(8080, 8099)
+    host_web_port = _pick_free_port(8080, 8099)
     api_key = _secrets.token_urlsafe(24)
     secret_key = _secrets.token_urlsafe(24)
     allow_anon = "0"
     if not non_interactive:
-        web_port_in = typer.prompt("  WEB_PORT", default=str(web_port))
+        port_in = typer.prompt("  Host dashboard port (HOST_WEB_PORT)", default=str(host_web_port))
         try:
-            web_port = int(web_port_in)
+            host_web_port = int(port_in)
         except ValueError:
             pass
         allow_anon = "1" if typer.confirm(
@@ -498,13 +498,15 @@ def _configure_web_auth(non_interactive: bool, env_vals: dict[str, str]) -> int:
             default=False,
         ) else "0"
     env_vals.update({
-        "WEB_PORT": str(web_port),
+        # Host-side port (what the user hits with a browser). Flask always binds
+        # 8080 inside the container — see docker-compose.yml common-env WEB_PORT.
+        "HOST_WEB_PORT": str(host_web_port),
         "ETZ_CHAIM_API_KEY": api_key,
         "ETZ_CHAIM_SECRET_KEY": secret_key,
         "ETZ_CHAIM_ALLOW_ANON": allow_anon,
     })
-    typer.echo(f"  ✓ Web port {web_port} · allow_anon={allow_anon}")
-    return web_port
+    typer.echo(f"  ✓ Host port {host_web_port} → container :8080 · allow_anon={allow_anon}")
+    return host_web_port
 
 
 def _configure_observability(non_interactive: bool, env_vals: dict[str, str]) -> None:
@@ -604,7 +606,7 @@ def onboard(
     typer.echo("  ✓ System OK")
     typer.echo("")
 
-    env_vals: dict[str, str] = {"TZ": os.environ.get("TZ", "UTC"), "ETZCHAIM_VERSION": "0.2.2"}
+    env_vals: dict[str, str] = {"TZ": os.environ.get("TZ", "UTC"), "ETZCHAIM_VERSION": "0.2.3"}
 
     # ── Steps 2-5 ──────────────────────────────────────────────────
     _configure_database(non_interactive, env_vals, skip_deps=skip_deps, yes=yes)

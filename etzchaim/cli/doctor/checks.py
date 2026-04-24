@@ -63,9 +63,33 @@ def check_ollama_reachable() -> tuple[bool, str]:
     return (False, f"Ollama at {host} returned unexpected status")
 
 
+def _load_compose_env_var(name: str) -> str | None:
+    """Read a variable from ~/.etz-chaim/compose/.env (fallback when shell env is empty).
+
+    The CLI is often invoked from a shell that never sourced the compose .env,
+    so a check that only looks at os.environ gives false negatives even when the
+    variable is correctly wired into the running containers.
+    """
+    env_file = compose.compose_dir() / ".env"
+    if not env_file.exists():
+        return None
+    prefix = f"{name}="
+    try:
+        for raw in env_file.read_text().splitlines():
+            line = raw.strip()
+            if line.startswith(prefix):
+                value = line[len(prefix):].strip().strip('"').strip("'")
+                return value or None
+    except OSError:
+        return None
+    return None
+
+
 def check_api_key_present() -> tuple[bool, str]:
     if os.environ.get("ETZ_CHAIM_API_KEY"):
-        return (True, "ETZ_CHAIM_API_KEY set")
+        return (True, "ETZ_CHAIM_API_KEY set (shell env)")
+    if _load_compose_env_var("ETZ_CHAIM_API_KEY"):
+        return (True, f"ETZ_CHAIM_API_KEY set (in {compose.compose_dir()}/.env)")
     return (False, "ETZ_CHAIM_API_KEY not set — regenerate via `etzchaim onboard`")
 
 
