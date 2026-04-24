@@ -5,6 +5,16 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-04-24 — Install-readiness patch
+
+Fixes three gaps that prevented external users from completing `pip install etzchaim && etzchaim onboard` out of the box. No API or schema changes ; safe to `etzchaim update` from 0.2.0.
+
+### Fixed
+
+- **`config.yaml` missing from wheel** — `docker compose up` failed with `bind mount source does not exist` because the template was not shipped. `config.yaml` is now in `etzchaim/deploy/`, listed in `[tool.setuptools.package-data]`, and extracted by `extract_compose_files()` alongside the docker-compose templates.
+- **Broken legacy alias `etz-chaim`** — entry point pointed to `main:main` which has no `main()` function. Now redirects to the canonical `etzchaim.cli.app:app` (same behaviour as `etzchaim`, still removed in v0.3.0).
+- **Python version mismatch README ↔ pyproject** — README and `docs/installation.md` advertised 3.12+, but `pyproject.toml` declares `>=3.10`. Docs now reflect the real floor : Python 3.10+ (tested on 3.10 / 3.11 / 3.12 / 3.13).
+
 ## [0.2.0] - 2026-04-XX — Container-first install (OpenClaw pattern)
 
 Packages the entire stack behind a single `pip install etzchaim && etzchaim onboard`. Docker Compose replaces native `launchctl` / `systemd` for cross-OS parity.

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "etzchaim"
-version = "0.2.0"
+version = "0.2.1"
 description = "AI architecture grounded in Lurianic Kabbalistic discipline — 10 Sephirot, 4 Partzufim, 13 Tikkunei Dikna, 1696 doctrinal assertions. One-command install via Docker Compose."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -79,8 +79,8 @@ Changelog = "https://github.com/yohanpoul/etz-chaim-ai/blob/main/CHANGELOG.md"
 [project.scripts]
 # v0.2.0 canonical (no hyphen, faster to type)
 etzchaim = "etzchaim.cli.app:app"
-# v0.1 legacy alias — removed in v0.3.0
-etz-chaim = "main:main"
+# v0.1 legacy alias — removed in v0.3.0, redirects to canonical CLI
+etz-chaim = "etzchaim.cli.app:app"
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -104,6 +104,7 @@ exclude = [
 "etzchaim" = [
     "deploy/Dockerfile",
     "deploy/*.yml",
+    "deploy/config.yaml",
     "deploy/init-db/*.sql",
     "i18n/*.yaml",
     "demo_data/*.sql",

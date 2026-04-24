@@ -13,7 +13,7 @@ Three installation paths are supported :
 
 ### Mandatory
 
-- **Python 3.12+** (tested on 3.13)
+- **Python 3.10+** (tested on 3.10 / 3.11 / 3.12 / 3.13)
 - **PostgreSQL 16+** with the `pgvector` extension enabled
 - **Docker** runtime, *if* you want the bundled compose stack
   ([OrbStack](https://orbstack.dev), Docker Desktop, or Colima)

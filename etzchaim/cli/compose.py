@@ -19,6 +19,7 @@ _COMPOSE_FILES = [
     "docker-compose.hybrid-host-ollama.yml",
     "docker-compose.dev.yml",
     "Dockerfile",
+    "config.yaml",
 ]
 
 

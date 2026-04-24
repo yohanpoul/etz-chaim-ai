@@ -180,7 +180,7 @@ Seven consequences of wrapping your LLM in a cognitive architecture :
 
 ## Requirements
 
-- **Python 3.12+**
+- **Python 3.10+** (tested on 3.10 / 3.11 / 3.12 / 3.13)
 - **PostgreSQL 16+** with the [`pgvector`](https://github.com/pgvector/pgvector) extension
 - **[TimescaleDB](https://docs.timescale.com/self-hosted/latest/install/) extension** (recommended, optional — hypertable logs fall back to plain tables when absent)
 - **Docker** runtime (optional, for the bundled compose stack) — OrbStack, Docker Desktop, Colima, or podman
