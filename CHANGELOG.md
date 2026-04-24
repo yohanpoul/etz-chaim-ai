@@ -5,6 +5,15 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2026-04-24 — Runtime fixes for container stack
+
+Two blocking bugs surfaced by real-world `etzchaim onboard && etzchaim start` runs on a clean machine. Both images rebuilt and republished.
+
+### Fixed
+
+- **`web/app.py` ignored `ETZ_CHAIM_DB_URL`** — `create_app()` read only the deprecated `ETZ_CHAIM_DB` variable and fell back to `postgresql://localhost/etz_chaim`, so the app container tried to reach Postgres on `localhost:5432` instead of the `postgres:5432` service name. Now delegates to `pool._resolve_db_url()` (priority : `ETZ_CHAIM_DB_URL` → `ETZ_CHAIM_DB` with DeprecationWarning → default).
+- **Daemon container missing `jsonschema` dependency** — `sifrei_yesod.pipeline.validator` imports `jsonschema`, which was not declared in `pyproject.toml`. Added `jsonschema>=4.0` to the core dependency list.
+
 ## [0.2.1] - 2026-04-24 — Install-readiness patch
 
 Fixes three gaps that prevented external users from completing `pip install etzchaim && etzchaim onboard` out of the box. No API or schema changes ; safe to `etzchaim update` from 0.2.0.

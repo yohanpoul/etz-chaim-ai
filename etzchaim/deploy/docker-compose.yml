@@ -109,7 +109,7 @@ services:
   app:
     # Pre-built image published by CI. For local dev, docker-compose.dev.yml
     # override adds `build:` with local context.
-    image: ghcr.io/yohanpoul/etzchaim-app:${ETZCHAIM_VERSION:-0.2.1}
+    image: ghcr.io/yohanpoul/etzchaim-app:${ETZCHAIM_VERSION:-0.2.2}
     pull_policy: missing
     container_name: etzchaim-app
     restart: unless-stopped
@@ -135,7 +135,7 @@ services:
       - "host.docker.internal:host-gateway"
 
   daemon:
-    image: ghcr.io/yohanpoul/etzchaim-daemon:${ETZCHAIM_VERSION:-0.2.1}
+    image: ghcr.io/yohanpoul/etzchaim-daemon:${ETZCHAIM_VERSION:-0.2.2}
     pull_policy: missing
     container_name: etzchaim-daemon
     restart: unless-stopped

@@ -93,12 +93,10 @@ def _json_response(data: Any, status: int = 200) -> Response:
 
 def create_app(db_url: str | None = None) -> Flask:
     global _db_url
-    _db_url = db_url or os.environ.get(
-        "ETZ_CHAIM_DB", "postgresql://localhost/etz_chaim"
-    )
-
-    # Init connection pool
-    from pool import init_pool
+    # v0.2.2 : use pool._resolve_db_url() so ETZ_CHAIM_DB_URL is read first
+    # (prior code only read deprecated ETZ_CHAIM_DB, making compose stack fail).
+    from pool import _resolve_db_url, init_pool
+    _db_url = db_url or _resolve_db_url()
     init_pool(_db_url)
 
     app = Flask(
