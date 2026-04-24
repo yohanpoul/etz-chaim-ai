@@ -5,6 +5,13 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.4] - 2026-04-24 — Healthcheck fixes
+
+### Fixed
+
+- **App container stuck at `unhealthy`** — docker-compose healthcheck probed `/api/health` which requires Bearer auth, so every unauthenticated probe returned 401 and the container flipped to unhealthy even though it served traffic fine. Switched to `/health` (pages blueprint, public, already intended as the liveness probe).
+- **Daemon container stuck at `unhealthy`** — Dockerfile HEALTHCHECK inspected `daemon_state.json` for a `last_heartbeat` key that `daemon.py` never writes (the daemon writes per-task keys like `_last_save`, `last_netzach`, etc.). Replaced the check with a robust max over all numeric `last_*` / `_last_*` / `*heartbeat*` keys.
+
 ## [0.2.3] - 2026-04-24 — Multi-instance + doctor-polish
 
 Makes it possible to run two Etz Chaim instances side by side (e.g. `perso` and `dev`) on the same machine without port clashes, and fixes a false-negative in `etzchaim doctor`.

@@ -111,7 +111,7 @@ services:
   app:
     # Pre-built image published by CI. For local dev, docker-compose.dev.yml
     # override adds `build:` with local context.
-    image: ghcr.io/yohanpoul/etzchaim-app:${ETZCHAIM_VERSION:-0.2.3}
+    image: ghcr.io/yohanpoul/etzchaim-app:${ETZCHAIM_VERSION:-0.2.4}
     pull_policy: missing
     container_name: etzchaim-app
     restart: unless-stopped
@@ -128,7 +128,10 @@ services:
       postgres:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-fsS", "http://localhost:8080/api/health"]
+      # /health (pages blueprint, no /api prefix) is the public probe —
+      # /api/* requires Bearer auth so an unauthenticated healthcheck
+      # always got 401 and flipped the container to "unhealthy".
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/health"]
       interval: 30s
       timeout: 5s
       retries: 3
@@ -139,7 +142,7 @@ services:
       - "host.docker.internal:host-gateway"
 
   daemon:
-    image: ghcr.io/yohanpoul/etzchaim-daemon:${ETZCHAIM_VERSION:-0.2.3}
+    image: ghcr.io/yohanpoul/etzchaim-daemon:${ETZCHAIM_VERSION:-0.2.4}
     pull_policy: missing
     container_name: etzchaim-daemon
     restart: unless-stopped

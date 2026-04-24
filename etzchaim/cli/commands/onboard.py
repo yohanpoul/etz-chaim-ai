@@ -606,7 +606,7 @@ def onboard(
     typer.echo("  ✓ System OK")
     typer.echo("")
 
-    env_vals: dict[str, str] = {"TZ": os.environ.get("TZ", "UTC"), "ETZCHAIM_VERSION": "0.2.3"}
+    env_vals: dict[str, str] = {"TZ": os.environ.get("TZ", "UTC"), "ETZCHAIM_VERSION": "0.2.4"}
 
     # ── Steps 2-5 ──────────────────────────────────────────────────
     _configure_database(non_interactive, env_vals, skip_deps=skip_deps, yes=yes)

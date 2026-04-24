@@ -80,4 +80,4 @@ ENTRYPOINT ["tini", "--"]
 CMD ["python", "daemon.py"]
 
 HEALTHCHECK --interval=60s --timeout=5s --start-period=90s --retries=3 \
-    CMD python -c "import json, time; s = json.load(open('/home/etz/.etz-chaim/daemon_state.json')); exit(0 if time.time() - s.get('last_heartbeat', 0) < 300 else 1)" || exit 1
+    CMD python -c "import json, time; s = json.load(open('/home/etz/.etz-chaim/daemon_state.json')); ts = max((v for k, v in s.items() if isinstance(v, (int, float)) and ('last' in k.lower() or 'heartbeat' in k.lower())), default=0); exit(0 if time.time() - ts < 300 else 1)" || exit 1
