@@ -35,6 +35,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import re
 import subprocess
 import time
 import urllib.request
@@ -183,12 +184,30 @@ def _get_db_conn():
 _CONFIG_PATH = Path(__file__).parent / "config.yaml"
 _config: dict | None = None
 
+# Bash-style ${VAR} and ${VAR:-default} expansion, applied to all string
+# values in config.yaml so templates like `host: ${OLLAMA_HOST:-http://...}`
+# resolve at load time instead of being passed literally to urllib.
+_ENV_VAR_RE = re.compile(r"\$\{([A-Za-z_][A-Za-z0-9_]*)(?::-([^}]*))?\}")
+
+
+def _expand_env(value: Any) -> Any:
+    if isinstance(value, str):
+        def _sub(m: re.Match) -> str:
+            name, default = m.group(1), m.group(2)
+            return os.environ.get(name) or (default if default is not None else "")
+        return _ENV_VAR_RE.sub(_sub, value)
+    if isinstance(value, dict):
+        return {k: _expand_env(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_expand_env(v) for v in value]
+    return value
+
 
 def _load_config() -> dict:
     global _config
     if _config is None:
         with open(_CONFIG_PATH) as f:
-            _config = yaml.safe_load(f)
+            _config = _expand_env(yaml.safe_load(f))
     return _config
 
 
