@@ -64,7 +64,13 @@ def check_ollama_reachable() -> tuple[bool, str]:
         # everything (incl. embeddings) through their cloud SDK.
         if not _active_profile_uses_ollama():
             return (True, f"Ollama not running but active profile doesn't need it")
-        return (False, f"Ollama not reachable at {host} ({type(e).__name__}) — run `brew services start ollama` (macOS)")
+        from pathlib import Path as _P
+        hint = (
+            "open -a Ollama"
+            if _P("/Applications/Ollama.app").exists()
+            else "brew services start ollama"
+        )
+        return (False, f"Ollama not reachable at {host} ({type(e).__name__}) — run `{hint}`")
     return (False, f"Ollama at {host} returned unexpected status")
 
 

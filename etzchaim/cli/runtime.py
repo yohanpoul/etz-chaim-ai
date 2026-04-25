@@ -111,31 +111,45 @@ def ollama_is_reachable(host: str = OLLAMA_DEFAULT_HOST) -> bool:
 def ensure_ollama_running(timeout: float = 30.0) -> bool:
     """Make sure Ollama is reachable, auto-starting it if needed.
 
-    Strategy on macOS : `brew services start ollama` (persistent), falling
-    back to spawning `ollama serve` in the background if Homebrew is absent.
-    On Linux : `systemctl --user start ollama` if installed via systemd,
-    else background `ollama serve`.
+    Strategy, in priority order :
+      1. macOS Ollama.app (most common — `Ollama.dmg` from ollama.com
+         installs an .app, not a Homebrew formula). `open -a Ollama`
+         launches the app and starts the menu-bar daemon.
+      2. Homebrew service (`brew services start ollama`) — persistent
+         across reboots, used when Ollama was installed via brew.
+      3. Background `ollama serve` — fallback for any case the above
+         can't handle (Linux / podman / SSH-only sessions).
     """
     if ollama_is_reachable():
         return True
 
-    if not shutil.which("ollama"):
-        typer.echo("✗ Ollama not installed (`brew install ollama` on macOS).")
-        return False
-
     os_ = detect.detect_os()
     started = False
 
-    if os_ == "macos" and shutil.which("brew"):
-        typer.echo("→ Starting Ollama via brew services...")
-        r = subprocess.run(
-            ["brew", "services", "start", "ollama"],
-            capture_output=True, text=True,
-        )
+    # 1. macOS .app — check before brew because the .app is the default
+    # install path on ollama.com and brew may also have a stale formula.
+    from pathlib import Path
+    if os_ == "macos" and Path("/Applications/Ollama.app").exists():
+        typer.echo("→ Starting Ollama.app...")
+        r = subprocess.run(["open", "-a", "Ollama"], capture_output=True)
         started = r.returncode == 0
 
-    if not started:
-        # Fallback : spawn in background, detached from this process.
+    # 2. Homebrew service
+    if not started and os_ == "macos" and shutil.which("brew"):
+        # Quick check : does brew know about ollama ?
+        r = subprocess.run(
+            ["brew", "services", "list"], capture_output=True, text=True,
+        )
+        if r.returncode == 0 and "ollama" in r.stdout:
+            typer.echo("→ Starting Ollama via brew services...")
+            r = subprocess.run(
+                ["brew", "services", "start", "ollama"],
+                capture_output=True, text=True,
+            )
+            started = r.returncode == 0
+
+    # 3. Background `ollama serve`
+    if not started and shutil.which("ollama"):
         typer.echo("→ Starting `ollama serve` in background...")
         try:
             subprocess.Popen(
@@ -149,7 +163,10 @@ def ensure_ollama_running(timeout: float = 30.0) -> bool:
             started = False
 
     if not started:
-        typer.echo("⚠ Could not auto-start Ollama. Run `ollama serve` manually.")
+        typer.echo(
+            "⚠ Could not auto-start Ollama. Install it from https://ollama.com\n"
+            "  or run `brew install ollama`, then re-run `etzchaim onboard`."
+        )
         return False
 
     return _wait_for(ollama_is_reachable, timeout=timeout, label="Ollama")
