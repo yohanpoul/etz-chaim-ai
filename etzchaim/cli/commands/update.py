@@ -1,7 +1,7 @@
 """etzchaim update — one-command upgrade path for future releases.
 
 Sequence :
-  1. pip install --upgrade etzchaim       (new package, new CLI, new schemas bundled)
+  1. pipx upgrade etzchaim (or pip install --upgrade etzchaim if not pipx)
   2. docker compose pull                   (new images from ghcr.io)
   3. re-extract compose templates (force)  (preserves user edits with .bak)
   4. idempotent schema migrations          (re-run init-db/*.sql)
@@ -9,10 +9,11 @@ Sequence :
   6. run doctor                            (verify post-update health)
 
 User data (PG volume, ~/.etz-chaim/state) never touched. Rollback :
-`pip install etzchaim==<old>` then `etzchaim update` to match.
+`pipx install etzchaim==<old>` (or `pip install ...`) then `etzchaim update`.
 """
 from __future__ import annotations
 
+import shutil
 import subprocess
 import sys
 
@@ -21,6 +22,16 @@ import typer
 from etzchaim import __version__
 from etzchaim.cli import compose, detect
 from etzchaim.cli.app import app
+
+
+def _installed_via_pipx() -> bool:
+    """True when the running interpreter lives inside a pipx-managed venv.
+
+    pipx places venvs under ~/.local/pipx/venvs/<pkg>/ on POSIX or
+    %LOCALAPPDATA%\\pipx\\pipx\\venvs\\<pkg>\\ on Windows. Detecting by
+    path keeps us from having to import pipx itself.
+    """
+    return "pipx" in sys.executable.replace("\\", "/").split("/")
 
 
 @app.command()
@@ -35,14 +46,18 @@ def update(
         typer.echo("Aborted.")
         raise typer.Exit(0)
 
-    # 1. pip upgrade
-    typer.echo("→ [1/5] Upgrading Python package...")
-    rc = subprocess.run(
-        [sys.executable, "-m", "pip", "install", "--upgrade", "etzchaim"],
-        check=False,
-    ).returncode
+    # 1. Package upgrade — pipx if installed via pipx, else pip
+    if _installed_via_pipx() and shutil.which("pipx"):
+        typer.echo("→ [1/5] Upgrading Python package via pipx...")
+        rc = subprocess.run(["pipx", "upgrade", "etzchaim"], check=False).returncode
+    else:
+        typer.echo("→ [1/5] Upgrading Python package via pip...")
+        rc = subprocess.run(
+            [sys.executable, "-m", "pip", "install", "--upgrade", "etzchaim"],
+            check=False,
+        ).returncode
     if rc != 0:
-        typer.echo("✗ pip upgrade failed. See output above.", err=True)
+        typer.echo("✗ Package upgrade failed. See output above.", err=True)
         raise typer.Exit(rc)
 
     # 2. Re-extract compose templates

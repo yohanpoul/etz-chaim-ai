@@ -34,9 +34,10 @@ exploration_starvation on 24 h window
 One specific module. One specific pattern. One concrete metric. One tunable fix. Every time.
 
 ```bash
-pip install etzchaim
-etzchaim onboard
-# → http://localhost:8080, works on macOS · Linux (v0.3) · WSL2 (v0.3)
+pipx install etzchaim       # global CLI on PATH, no venv to activate
+etzchaim onboard            # interactive setup → http://localhost:8080
+etzchaim update             # one-liner upgrade, anytime
+# Works on macOS · Linux (v0.3) · WSL2 (v0.3)
 ```
 
 ---
@@ -200,27 +201,46 @@ Etz Chaim routes four reasoning tiers (Atziluth / Briah / Yetzirah / Assiah) to 
 
 ## Quick start
 
+**Install (recommended : pipx — global CLI, no venv to manage)**
+
 ```bash
-pip install etzchaim
-etzchaim onboard      # interactive 8-step wizard
-# → http://localhost:8080
+brew install pipx        # macOS — or `apt install pipx` on Debian/Ubuntu
+pipx ensurepath          # adds ~/.local/bin to your PATH (run once)
+
+pipx install etzchaim    # `etzchaim` is now on PATH from any terminal
+etzchaim onboard         # interactive 8-step wizard → http://localhost:8080
 ```
 
-The wizard walks you through : system detection, Postgres configuration,
-LLM provider selection (multi-select), profile composition, web + auth,
-observability, feature flags, and review.
+> Why pipx ? It installs Python CLIs into isolated venvs but exposes the binary globally on PATH — no `source .venv/bin/activate` dance, no system-Python pollution. This is the standard for distributing Python applications.
+> Plain `pip install etzchaim` still works inside a venv, but you'll have to activate it every session.
 
-Non-interactive install with a preset :
+The wizard walks you through : system detection, Postgres configuration, LLM provider selection (multi-select), profile composition, web + auth, observability, feature flags, and review.
+
+**Non-interactive install with a preset**
 
 ```bash
 etzchaim onboard --non-interactive --preset local-only
 etzchaim onboard --non-interactive --preset anthropic-full
 ```
 
-Already running your own Postgres or Ollama ? Skip Docker entirely with
-the [manual install path](docs/installation.md#path-3-bring-your-own-infrastructure).
+Already running your own Postgres or Ollama ? Skip Docker entirely with the [manual install path](docs/installation.md#path-3-bring-your-own-infrastructure).
 
-Upgrade later with `etzchaim update` — one command : `pip install --upgrade` → `docker compose pull` → re-extract templates → idempotent schema migrations → restart → `doctor`.
+## Updating
+
+```bash
+etzchaim update          # one command, everywhere
+```
+
+What it does, in order :
+
+1. `pipx upgrade etzchaim` (or `pip install --upgrade etzchaim` if not on pipx)
+2. `docker compose pull` — fetches the new container images from `ghcr.io`
+3. Re-extracts compose templates to `~/.etz-chaim/compose/` (preserves your `.env` + `config.yaml`)
+4. Runs idempotent schema migrations
+5. Restarts services
+6. `etzchaim doctor` — confirms the upgraded stack is healthy
+
+Pin a specific version with `pipx install etzchaim==0.2.6` (or `pip install ...`). Roll back with `pipx install etzchaim==<previous>` then `etzchaim update --skip-images`.
 
 Full documentation : [docs/installation.md](docs/installation.md).
 
@@ -315,7 +335,7 @@ Extended presets (OpenAI, Google Gemini, xAI Grok, DeepSeek, Mistral, Cohere, Gr
 - Watcher with 2 active rectifiers, 11 more specified (act-mode activation awaits 2-4 week observation per doctrine).
 - Persistent learning trace with plateau and decay.
 - Static safety checks, bidirectional spec ↔ code audit, automatic docs, circuit breakers.
-- **Installable via `pip install etzchaim` + Docker Compose on macOS.**
+- **Installable via `pipx install etzchaim` + Docker Compose on macOS.**
 - Cross-platform code (no hardcoded paths), ghcr.io pre-built images, GitHub Actions for PyPI release.
 
 **Planned** :

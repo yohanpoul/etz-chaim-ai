@@ -6,4 +6,9 @@ logs, doctor, demo) and the docker-compose templates extracted to
 """
 from __future__ import annotations
 
-__version__ = "0.2.4"
+from importlib.metadata import PackageNotFoundError, version as _pkg_version
+
+try:
+    __version__ = _pkg_version("etzchaim")
+except PackageNotFoundError:
+    __version__ = "0.0.0+dev"

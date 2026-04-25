@@ -10,6 +10,8 @@ from __future__ import annotations
 
 import typer
 
+from etzchaim import __version__
+
 app = typer.Typer(
     name="etzchaim",
     help="Etz Chaim AI — install and operate. Run `etzchaim onboard` to start.",
@@ -17,6 +19,27 @@ app = typer.Typer(
     add_completion=True,
     context_settings={"help_option_names": ["-h", "--help"]},
 )
+
+
+def _version_callback(value: bool) -> None:
+    if value:
+        typer.echo(f"etzchaim {__version__}")
+        raise typer.Exit()
+
+
+@app.callback()
+def _root(
+    version: bool = typer.Option(
+        False,
+        "--version",
+        "-V",
+        callback=_version_callback,
+        is_eager=True,
+        help="Show etzchaim version and exit.",
+    ),
+) -> None:
+    """Root callback — only here to register --version."""
+    return None
 
 
 # Lazy registration — each import runs @app.command() decorators.
