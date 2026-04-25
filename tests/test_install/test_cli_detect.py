@@ -41,6 +41,9 @@ def test_docker_is_running_false_when_not_installed(monkeypatch):
 
 def test_detect_docker_runtime_none_when_missing(monkeypatch):
     monkeypatch.setattr("shutil.which", lambda c: None)
+    # Also stub the macOS /Applications/ fallback so the test is hermetic
+    # regardless of what's installed on the host running pytest.
+    monkeypatch.setattr("etzchaim.cli.detect.platform.system", lambda: "Linux")
     from etzchaim.cli.detect import detect_docker_runtime
     assert detect_docker_runtime() is None
 

@@ -602,22 +602,33 @@ def onboard(
             runtime = detect.detect_docker_runtime() or "installed"
         if not detect.docker_is_running():
             typer.echo("")
-            typer.echo(f"⚠ {runtime} is installed but not running. Start it then retry.")
-            raise typer.Exit(1)
+            from etzchaim.cli import runtime as _rt
+            if not _rt.ensure_docker_running(timeout=60.0):
+                typer.echo("")
+                typer.echo(f"✗ Could not bring {runtime} online. Aborting.")
+                raise typer.Exit(1)
     typer.echo("  ✓ System OK")
     typer.echo("")
 
-    env_vals: dict[str, str] = {"TZ": os.environ.get("TZ", "UTC"), "ETZCHAIM_VERSION": "0.2.4"}
+    from etzchaim import __version__ as _etzchaim_version
+    env_vals: dict[str, str] = {
+        "TZ": os.environ.get("TZ", "UTC"),
+        "ETZCHAIM_VERSION": _etzchaim_version,
+    }
 
     # ── Steps 2-5 ──────────────────────────────────────────────────
     _configure_database(non_interactive, env_vals, skip_deps=skip_deps, yes=yes)
     profile_name, _picked = _configure_providers(non_interactive, preset, env_vals)
 
-    # If Ollama ended up selected, offer to auto-install it + pull models.
+    # If Ollama ended up selected, offer to auto-install it + pull models,
+    # then make sure the daemon is actually running.
     if not skip_deps and "OLLAMA_HOST" in env_vals and env_vals.get("OLLAMA_HOST"):
         typer.echo("")
         typer.echo("Ollama check ...")
         installers.install_ollama(non_interactive=non_interactive, yes=yes, pull_models=True)
+        from etzchaim.cli import runtime as _rt
+        if not _rt.ollama_is_reachable():
+            _rt.ensure_ollama_running(timeout=30.0)
 
     # CLI subscription tools : install the binary (npm / gh extension).
     if not skip_deps:

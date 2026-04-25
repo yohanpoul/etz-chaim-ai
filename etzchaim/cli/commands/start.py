@@ -30,6 +30,12 @@ def start(
         typer.echo("✗ Compose not configured. Run `etzchaim onboard` first.", err=True)
         raise typer.Exit(1)
 
+    if not detect.docker_is_running():
+        from etzchaim.cli import runtime as _rt
+        if not _rt.ensure_docker_running(timeout=60.0):
+            typer.echo("✗ Docker unavailable. Aborting start.", err=True)
+            raise typer.Exit(1)
+
     p = profile or detect.detect_compose_profile()
     typer.echo(f"Starting etzchaim (profile: {p})...")
     rc = compose.compose_up(profile=p)

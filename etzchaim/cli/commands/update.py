@@ -64,10 +64,14 @@ def update(
     typer.echo("→ [2/5] Extracting new compose templates...")
     compose.extract_compose_files(force=True)
 
-    # 3-5 require Docker. If Docker isn't available, skip them with a
-    # clear message so the package upgrade still succeeds — the user
-    # can re-run `etzchaim update` once Docker is up.
+    # 3-5 require Docker. If Docker isn't running, try to start it
+    # automatically. If we can't (not installed, sandbox refuses, etc.)
+    # skip them with a clear message — the package upgrade in steps 1-2
+    # still succeeds and the user can re-run after starting Docker.
     docker_available = detect.docker_is_running()
+    if not docker_available:
+        from etzchaim.cli import runtime as _rt
+        docker_available = _rt.ensure_docker_running(timeout=60.0)
     if not docker_available:
         typer.echo(
             "⚠ Docker not running — skipping image pull, migrations, and restart.\n"
