@@ -59,8 +59,36 @@ def check_ollama_reachable() -> tuple[bool, str]:
             if r.status == 200:
                 return (True, f"Ollama reachable at {host}")
     except Exception as e:
-        return (False, f"Ollama not reachable at {host} ({type(e).__name__}) — run `ollama serve` or verify OLLAMA_HOST")
+        # Don't surface a red ✗ for a profile that doesn't actually need
+        # Ollama — anthropic_full / openai_full / bedrock_full route
+        # everything (incl. embeddings) through their cloud SDK.
+        if not _active_profile_uses_ollama():
+            return (True, f"Ollama not running but active profile doesn't need it")
+        return (False, f"Ollama not reachable at {host} ({type(e).__name__}) — run `brew services start ollama` (macOS)")
     return (False, f"Ollama at {host} returned unexpected status")
+
+
+def _active_profile_uses_ollama() -> bool:
+    """Inspect ~/.etz-chaim/compose/config.yaml for ollama usage in the
+    active profile (either generation or embeddings). Conservative : on
+    any read error, assume Ollama IS needed (we'd rather show a noisy
+    check than silently hide a real configuration problem)."""
+    try:
+        import yaml as _yaml
+        cfg_path = compose.compose_dir() / "config.yaml"
+        if not cfg_path.exists():
+            return True
+        cfg = _yaml.safe_load(cfg_path.read_text()) or {}
+        active = cfg.get("active_profile")
+        prof = (cfg.get("profiles") or {}).get(active) or {}
+        if (prof.get("embedding") or {}).get("provider") == "ollama":
+            return True
+        for tier in (prof.get("olamot") or {}).values():
+            if (tier or {}).get("provider") == "ollama":
+                return True
+        return False
+    except Exception:
+        return True
 
 
 def _load_compose_env_var(name: str) -> str | None:

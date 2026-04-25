@@ -430,6 +430,40 @@ def _profile_needs_cli(profile_name: str) -> str | None:
     return _PROFILE_TO_CLI_TOGGLE.get(profile_name)
 
 
+def _profile_uses_ollama(profile_name: str) -> bool:
+    """True iff the profile's olamot OR embedding section uses ollama.
+
+    Several profiles (claude_max, local_only, hybrid) route generation
+    through one provider but rely on ollama's `nomic-embed-text` for
+    embeddings — Claude / OpenAI's embeddings APIs aren't accessible
+    via OAuth subscriptions. Without this check, a user picking
+    `claude_max` would never have ollama installed/started by the
+    wizard, then hit a silent embeddings failure at runtime.
+    """
+    try:
+        import yaml as _yaml
+        from etzchaim.cli.compose import compose_dir as _cdir
+        cfg_paths = [
+            _cdir() / "config.yaml",
+            Path(__file__).resolve().parents[2] / "deploy" / "config.yaml",
+        ]
+        for p in cfg_paths:
+            if not p.exists():
+                continue
+            cfg = _yaml.safe_load(p.read_text())
+            prof = (cfg.get("profiles") or {}).get(profile_name) or {}
+            if (prof.get("embedding") or {}).get("provider") == "ollama":
+                return True
+            for tier in (prof.get("olamot") or {}).values():
+                if (tier or {}).get("provider") == "ollama":
+                    return True
+            return False
+    except (ImportError, OSError):
+        pass
+    # Fallback : profiles known to default to ollama embeddings.
+    return profile_name in {"local_only", "claude_max", "hybrid"}
+
+
 def _auto_pick_profile(envs: set[str]) -> str:
     """Return the best-fit profile name from config.yaml given picked env vars.
 
@@ -620,15 +654,24 @@ def onboard(
     _configure_database(non_interactive, env_vals, skip_deps=skip_deps, yes=yes)
     profile_name, _picked = _configure_providers(non_interactive, preset, env_vals)
 
-    # If Ollama ended up selected, offer to auto-install it + pull models,
-    # then make sure the daemon is actually running.
-    if not skip_deps and "OLLAMA_HOST" in env_vals and env_vals.get("OLLAMA_HOST"):
+    # Ollama is needed whenever the chosen profile uses it for *generation*
+    # (OLLAMA_HOST in env_vals) or for *embeddings* (most subscription
+    # profiles still depend on `nomic-embed-text` because Claude / OpenAI
+    # OAuth tiers don't expose embeddings APIs). Install + start in both
+    # cases so the user never has to run `brew services start ollama`
+    # by hand after onboard.
+    needs_ollama = (
+        bool(env_vals.get("OLLAMA_HOST"))
+        or _profile_uses_ollama(profile_name)
+    )
+    if not skip_deps and needs_ollama:
         typer.echo("")
-        typer.echo("Ollama check ...")
+        typer.echo("Ollama check (needed for embeddings) ...")
         installers.install_ollama(non_interactive=non_interactive, yes=yes, pull_models=True)
         from etzchaim.cli import runtime as _rt
         if not _rt.ollama_is_reachable():
             _rt.ensure_ollama_running(timeout=30.0)
+        env_vals.setdefault("OLLAMA_HOST", "http://localhost:11434")
 
     # CLI subscription tools : install the binary (npm / gh extension).
     if not skip_deps:
