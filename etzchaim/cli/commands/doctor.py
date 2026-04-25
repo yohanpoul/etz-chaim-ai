@@ -1,4 +1,4 @@
-"""etzchaim doctor — run 5 MVP diagnostic checks."""
+"""etzchaim doctor — run MVP diagnostic checks."""
 from __future__ import annotations
 
 import json as _json
@@ -13,7 +13,7 @@ from etzchaim.cli.doctor.checks import CHECKS
 def doctor(
     json: bool = typer.Option(False, "--json", help="Structured JSON output."),
 ) -> None:
-    """Run 5 diagnostic checks. Exits 1 if any fail."""
+    """Run diagnostic checks. Exits 1 if any fail."""
     results = []
     n_fail = 0
     for name, fn in CHECKS:
@@ -35,7 +35,7 @@ def doctor(
             typer.echo(f"  {mark} {r['name']} — {r['message']}")
         typer.echo("")
         if n_fail == 0:
-            typer.echo("✓ All 5 checks passed.")
+            typer.echo(f"✓ All {len(results)} checks passed.")
         else:
             typer.echo(f"✗ {n_fail}/{len(results)} checks failed. See messages above.")
 

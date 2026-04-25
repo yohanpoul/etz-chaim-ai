@@ -9,13 +9,23 @@ from etzchaim.cli.app import app
 
 
 def _read_web_port() -> str:
+    """Return the host-facing port the user opens in their browser.
+
+    Priority: HOST_WEB_PORT (set by onboard) > WEB_PORT (legacy) > 8080.
+    The bare `WEB_PORT` is the container-internal bind and is NOT what the
+    user should hit on the host — reading it as a fallback only.
+    """
     path = env_file()
     if not path.exists():
         return "8080"
+    host_port: str | None = None
+    legacy_port: str | None = None
     for line in path.read_text().splitlines():
-        if line.startswith("WEB_PORT="):
-            return line.split("=", 1)[1].strip() or "8080"
-    return "8080"
+        if line.startswith("HOST_WEB_PORT="):
+            host_port = line.split("=", 1)[1].strip() or None
+        elif line.startswith("WEB_PORT="):
+            legacy_port = line.split("=", 1)[1].strip() or None
+    return host_port or legacy_port or "8080"
 
 
 @app.command()
@@ -46,5 +56,22 @@ def start(
     web_port = _read_web_port()
     typer.echo("")
     typer.echo(f"✓ Services started. Dashboard : http://localhost:{web_port}")
+
+    # Warn if a foreign (non-Docker) process is sitting on the canonical 8080
+    # port while we listen elsewhere. Without this, users open :8080 by reflex
+    # and stare at someone else's dashboard, wondering why everything is empty.
+    try:
+        from etzchaim.cli.port_helpers import is_etzchaim_container_port, who_listens_on
+        if str(web_port) != "8080":
+            holder = who_listens_on(8080)
+            if holder and not is_etzchaim_container_port(8080):
+                typer.echo(
+                    f"  ⚠ Heads-up   : PID {holder.pid} ({holder.command}) "
+                    f"is holding :8080. Use :{web_port} for your dashboard, "
+                    f"NOT :8080.",
+                )
+    except Exception:
+        pass
+
     typer.echo("  Health check : etzchaim status")
     typer.echo("  Open         : etzchaim open")

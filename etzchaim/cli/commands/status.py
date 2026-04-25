@@ -57,3 +57,24 @@ def status(
             marker = "✗"
         health_str = f" · {health}" if health else ""
         typer.echo(f"  {marker} {name} ({state}{health_str})")
+
+    # Dashboard URL + port-conflict warning. Reading the .env directly so
+    # `status` works even when the CLI shell never sourced compose vars.
+    try:
+        from etzchaim.cli.doctor.checks import _load_compose_env_var
+        from etzchaim.cli.port_helpers import (
+            is_etzchaim_container_port,
+            who_listens_on,
+        )
+        host_port = _load_compose_env_var("HOST_WEB_PORT") or "8080"
+        typer.echo("")
+        typer.echo(f"Dashboard : http://localhost:{host_port}")
+        if host_port != "8080":
+            holder = who_listens_on(8080)
+            if holder and not is_etzchaim_container_port(8080):
+                typer.echo(
+                    f"  ⚠ :8080 is held by PID {holder.pid} ({holder.command}) — "
+                    f"NOT your etzchaim. Always use :{host_port}.",
+                )
+    except Exception:
+        pass  # status must never fail because of the URL hint

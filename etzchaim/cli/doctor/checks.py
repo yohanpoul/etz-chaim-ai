@@ -1,4 +1,4 @@
-"""5 MVP diagnostic checks. Each returns (ok: bool, message: str).
+"""MVP diagnostic checks. Each returns (ok: bool, message: str).
 
 Phase FULL will extend to 20 checks + --fix auto-repair.
 """
@@ -127,10 +127,37 @@ def check_api_key_present() -> tuple[bool, str]:
     return (False, "ETZ_CHAIM_API_KEY not set — regenerate via `etzchaim onboard`")
 
 
+def check_dashboard_port() -> tuple[bool, str]:
+    """Detect dashboard-port confusion: a foreign process on :8080 while the
+    Etz Chaim install is mapped elsewhere. Symptom: user opens :8080 by
+    reflex, lands on a stranger's app, sees an empty dashboard, files a bug.
+    """
+    from etzchaim.cli.port_helpers import is_etzchaim_container_port, who_listens_on
+    host_port = _load_compose_env_var("HOST_WEB_PORT") or "8080"
+    if host_port == "8080":
+        return (True, "Dashboard on canonical :8080")
+    holder = who_listens_on(8080)
+    if holder is None:
+        return (
+            True,
+            f"Dashboard on :{host_port} (port 8080 free — you could migrate)",
+        )
+    if is_etzchaim_container_port(8080):
+        return (True, f"Dashboard on :{host_port} (:8080 also Docker-owned, OK)")
+    return (
+        False,
+        f"Dashboard on :{host_port}, but :8080 is squatted by PID "
+        f"{holder.pid} ({holder.command}). Opening localhost:8080 will hit "
+        f"the foreign process, not your etzchaim install. Stop it, or always "
+        f"use :{host_port}.",
+    )
+
+
 CHECKS: list[tuple[str, Callable[[], tuple[bool, str]]]] = [
     ("docker_running", check_docker_running),
     ("compose_services_up", check_compose_services_up),
     ("postgres_healthy", check_postgres_healthy),
     ("ollama_reachable", check_ollama_reachable),
     ("etz_chaim_api_key_present", check_api_key_present),
+    ("dashboard_port", check_dashboard_port),
 ]

@@ -48,7 +48,10 @@ def open(  # noqa: A001 — CLI subcommand, shadowing built-in is fine
         )
         raise typer.Exit(1)
 
-    web_port = env.get("WEB_PORT", "8080")
+    # HOST_WEB_PORT is the host-facing mapping (what the browser hits).
+    # WEB_PORT is the container-internal bind (always 8080), kept as fallback
+    # only for legacy installs that pre-date the HOST_WEB_PORT split.
+    web_port = env.get("HOST_WEB_PORT") or env.get("WEB_PORT", "8080")
     api_key = env.get("ETZ_CHAIM_API_KEY", "")
     allow_anon = env.get("ETZ_CHAIM_ALLOW_ANON", "0") == "1"
 
@@ -63,6 +66,22 @@ def open(  # noqa: A001 — CLI subcommand, shadowing built-in is fine
         typer.echo("  API key     : (hidden — rerun with --show-key)")
     typer.echo(f"  .env        : {env_file()}")
     typer.echo("")
+
+    # Warn if a foreign (non-Docker) process is currently squatting the
+    # canonical 8080 port — common pitfall when a `python main.py web` or a
+    # launchd-managed dev instance is running alongside the Docker stack.
+    try:
+        from etzchaim.cli.port_helpers import is_etzchaim_container_port, who_listens_on
+        if str(web_port) != "8080":
+            holder_8080 = who_listens_on(8080)
+            if holder_8080 and not is_etzchaim_container_port(8080):
+                typer.echo(
+                    f"  ⚠ Note      : :8080 is held by PID {holder_8080.pid} "
+                    f"({holder_8080.command}). That is NOT your etzchaim "
+                    f"dashboard — yours is on :{web_port}.",
+                )
+    except Exception:
+        pass  # Diagnostics must never break `etzchaim open`.
 
     if no_browser:
         return

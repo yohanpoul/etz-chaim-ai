@@ -517,6 +517,23 @@ def _auto_pick_profile(envs: set[str]) -> str:
 def _configure_web_auth(non_interactive: bool, env_vals: dict[str, str]) -> int:
     typer.echo("")
     typer.echo("[6/8] Web & auth")
+
+    # Pre-flight: if 8080 is already taken, identify WHO is holding it so the
+    # user can decide consciously, instead of being silently bumped to 8081
+    # and later confused by `localhost:8080` showing a stranger's dashboard.
+    from etzchaim.cli.port_helpers import who_listens_on as _who
+    holder_8080 = _who(8080)
+    if holder_8080 is not None:
+        typer.echo(
+            f"  ⚠ Port 8080 is taken by PID {holder_8080.pid} "
+            f"({holder_8080.command}).",
+        )
+        typer.echo(
+            "    If that's an old `python main.py web` or a launchd-managed "
+            "dev instance, stop it first to keep :8080 as your canonical "
+            "dashboard. Otherwise we'll pick the next free port.",
+        )
+
     host_web_port = _pick_free_port(8080, 8099)
     api_key = _secrets.token_urlsafe(24)
     secret_key = _secrets.token_urlsafe(24)
@@ -540,6 +557,10 @@ def _configure_web_auth(non_interactive: bool, env_vals: dict[str, str]) -> int:
         "ETZ_CHAIM_ALLOW_ANON": allow_anon,
     })
     typer.echo(f"  ✓ Host port {host_web_port} → container :8080 · allow_anon={allow_anon}")
+    if host_web_port != 8080 and holder_8080 is not None:
+        typer.echo(
+            f"    ⚠ Reminder: open http://localhost:{host_web_port} (NOT :8080)",
+        )
     return host_web_port
 
 
