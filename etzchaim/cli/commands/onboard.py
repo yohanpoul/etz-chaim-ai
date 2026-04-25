@@ -1,4 +1,4 @@
-"""etzchaim onboard — comprehensive install wizard (v0.2.1).
+"""etzchaim onboard — comprehensive install wizard.
 
 Eight steps :
     1. System detection (Docker, Postgres, Ollama on host)
@@ -566,9 +566,10 @@ def onboard(
     Use --non-interactive --preset <name> for CI / scripted setups.
     Use --no-compose to skip Docker entirely (requires BYO Postgres).
     """
+    from etzchaim import __version__ as _v
     typer.echo("")
     typer.echo("═══════════════════════════════════════════════════════════")
-    typer.echo("  Etz Chaim AI — onboard wizard (v0.2.1)")
+    typer.echo(f"  Etz Chaim AI — onboard wizard (v{_v})")
     typer.echo("═══════════════════════════════════════════════════════════")
     typer.echo("")
 
