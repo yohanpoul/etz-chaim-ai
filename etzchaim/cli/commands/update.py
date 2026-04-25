@@ -64,23 +64,33 @@ def update(
     typer.echo("→ [2/5] Extracting new compose templates...")
     compose.extract_compose_files(force=True)
 
-    # 3. Pull images
-    profile = detect.detect_compose_profile()
-    if not skip_images:
-        typer.echo("→ [3/5] Pulling new Docker images...")
-        rc = compose.compose_pull(profile=profile)
-        if rc != 0:
-            typer.echo("⚠ docker compose pull failed — restart may use cached images.", err=True)
+    # 3-5 require Docker. If Docker isn't available, skip them with a
+    # clear message so the package upgrade still succeeds — the user
+    # can re-run `etzchaim update` once Docker is up.
+    docker_available = detect.docker_is_running()
+    if not docker_available:
+        typer.echo(
+            "⚠ Docker not running — skipping image pull, migrations, and restart.\n"
+            "  Start Docker (OrbStack / Docker Desktop / Colima), then re-run `etzchaim update`."
+        )
+    else:
+        # 3. Pull images
+        profile = detect.detect_compose_profile()
+        if not skip_images:
+            typer.echo("→ [3/5] Pulling new Docker images...")
+            rc = compose.compose_pull(profile=profile)
+            if rc != 0:
+                typer.echo("⚠ docker compose pull failed — restart may use cached images.", err=True)
 
-    # 4. Schema migrations (MVP : re-run idempotent init-db SQL)
-    typer.echo("→ [4/5] Applying schema migrations (idempotent)...")
-    _apply_migrations()
+        # 4. Schema migrations (MVP : re-run idempotent init-db SQL)
+        typer.echo("→ [4/5] Applying schema migrations (idempotent)...")
+        _apply_migrations()
 
-    # 5. Restart
-    if not skip_restart:
-        typer.echo("→ [5/5] Restarting services...")
-        compose.compose_down(profile=profile)
-        compose.compose_up(profile=profile)
+        # 5. Restart
+        if not skip_restart:
+            typer.echo("→ [5/5] Restarting services...")
+            compose.compose_down(profile=profile)
+            compose.compose_up(profile=profile)
 
     typer.echo("")
     typer.echo("✓ Update complete. Running doctor...")
