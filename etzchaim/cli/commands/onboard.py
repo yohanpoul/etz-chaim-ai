@@ -697,6 +697,36 @@ def onboard(
             typer.echo("  Start services when ready : etzchaim start")
         return
 
+    # If a previous install left a Postgres data volume around, the new
+    # random POSTGRES_PASSWORD we just wrote to `.env` won't match the
+    # password baked into that volume's pg_hba — the app + daemon will
+    # crash-loop on `password authentication failed`. Detect and offer
+    # to wipe before starting, so this never reaches the user as a bug.
+    stale_volumes = compose.list_etzchaim_volumes()
+    if stale_volumes:
+        typer.echo("")
+        typer.echo("⚠ Existing etzchaim Docker volumes detected from a previous install :")
+        for v in stale_volumes:
+            typer.echo(f"    - {v}")
+        typer.echo(
+            "  These volumes were initialized with an older Postgres password\n"
+            "  that this wizard cannot recover. Continuing without wiping them\n"
+            "  will make the app + daemon containers crash-loop on auth failure."
+        )
+        do_wipe = yes or non_interactive or typer.confirm(
+            "Wipe these volumes and start fresh ?", default=True,
+        )
+        if do_wipe:
+            typer.echo("→ Wiping volumes (docker compose down -v)...")
+            compose.wipe_volumes(profile=compose_profile)
+        else:
+            typer.echo(
+                "  Keeping volumes. If you have the old `.env`, restore its\n"
+                "  POSTGRES_PASSWORD into ~/.etz-chaim/compose/.env before starting.\n"
+                "  Otherwise re-run `etzchaim onboard` and accept the wipe."
+            )
+            raise typer.Exit(1)
+
     typer.echo("")
     typer.echo("Starting services (docker compose up -d) ...")
     rc = compose.compose_up(profile=compose_profile)

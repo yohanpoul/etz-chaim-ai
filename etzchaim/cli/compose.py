@@ -110,3 +110,33 @@ def compose_pull(profile: str = "hybrid-host-ollama") -> int:
     """Run `docker compose pull` to refresh images."""
     cmd = compose_command(profile) + ["pull"]
     return subprocess.call(cmd, cwd=str(compose_dir()))
+
+
+def list_etzchaim_volumes() -> list[str]:
+    """Return docker volume names that belong to a previous etzchaim install.
+
+    Compose names volumes `<project>_<volume>`. Our project is "etzchaim"
+    so the postgres data volume is `etzchaim_etz_pg_data`. If the user
+    re-onboards after deleting their .env (and therefore loses the old
+    Postgres password), the new wizard generates a new random password
+    that no longer matches the old volume's stored hash, and the app
+    container will crash-loop on auth failure. Detecting these volumes
+    up front lets us offer a clean wipe before bringing the stack up.
+    """
+    r = subprocess.run(
+        ["docker", "volume", "ls", "--filter", "name=^etzchaim_", "--format", "{{.Name}}"],
+        capture_output=True, text=True,
+    )
+    if r.returncode != 0:
+        return []
+    return [v for v in r.stdout.splitlines() if v.strip()]
+
+
+def wipe_volumes(profile: str = "hybrid-host-ollama") -> int:
+    """`docker compose down -v` — drop containers + named volumes.
+
+    Used when the user opts to start fresh after a previous install
+    leaves volumes whose Postgres password no longer matches `.env`.
+    """
+    cmd = compose_command(profile) + ["down", "-v"]
+    return subprocess.call(cmd, cwd=str(compose_dir()))
