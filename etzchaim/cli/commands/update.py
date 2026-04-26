@@ -2,17 +2,22 @@
 
 Sequence :
   1. pipx upgrade etzchaim (or pip install --upgrade etzchaim if not pipx)
-  2. docker compose pull                   (new images from ghcr.io)
-  3. re-extract compose templates (force)  (preserves user edits with .bak)
-  4. idempotent schema migrations          (re-run init-db/*.sql)
-  5. restart services                      (compose down + up)
-  6. run doctor                            (verify post-update health)
+  2. **re-exec ourselves** so the rest of the upgrade runs with the
+     freshly-installed code (Python doesn't reload imported modules in
+     place — without re-exec, steps 2-5 use the OLD code that was loaded
+     before pip install, defeating any fix shipped in the new version)
+  3. docker compose pull                   (new images from ghcr.io)
+  4. re-extract compose templates (force)  (preserves user-owned files like config.yaml)
+  5. idempotent schema migrations          (re-run init-db/*.sql)
+  6. restart services                      (compose down + up)
+  7. run doctor                            (verify post-update health)
 
 User data (PG volume, ~/.etz-chaim/state) never touched. Rollback :
 `pipx install etzchaim==<old>` (or `pip install ...`) then `etzchaim update`.
 """
 from __future__ import annotations
 
+import os
 import shutil
 import subprocess
 import sys
@@ -22,6 +27,9 @@ import typer
 from etzchaim import __version__
 from etzchaim.cli import compose, detect
 from etzchaim.cli.app import app
+
+# Set on the re-exec'd process so it knows step 1 (pip upgrade) is already done.
+_REEXEC_ENV = "_ETZCHAIM_UPDATE_REEXEC"
 
 
 def _installed_via_pipx() -> bool:
@@ -41,27 +49,49 @@ def update(
     skip_restart: bool = typer.Option(False, "--skip-restart", help="No service restart after update."),
 ) -> None:
     """Upgrade etzchaim package + images + schemas in one command."""
-    typer.echo(f"Current version : {__version__}")
-    if not yes and not typer.confirm("Upgrade etzchaim ?"):
-        typer.echo("Aborted.")
-        raise typer.Exit(0)
+    is_reexec = bool(os.environ.get(_REEXEC_ENV))
 
-    # 1. Package upgrade — pipx if installed via pipx, else pip
-    if _installed_via_pipx() and shutil.which("pipx"):
-        typer.echo("→ [1/5] Upgrading Python package via pipx...")
-        rc = subprocess.run(["pipx", "upgrade", "etzchaim"], check=False).returncode
-    else:
-        typer.echo("→ [1/5] Upgrading Python package via pip...")
-        rc = subprocess.run(
-            [sys.executable, "-m", "pip", "install", "--upgrade", "etzchaim"],
-            check=False,
-        ).returncode
-    if rc != 0:
-        typer.echo("✗ Package upgrade failed. See output above.", err=True)
-        raise typer.Exit(rc)
+    if not is_reexec:
+        typer.echo(f"Current version : {__version__}")
+        if not yes and not typer.confirm("Upgrade etzchaim ?"):
+            typer.echo("Aborted.")
+            raise typer.Exit(0)
 
-    # 2. Re-extract compose templates
-    typer.echo("→ [2/5] Extracting new compose templates...")
+        # 1. Package upgrade — pipx if installed via pipx, else pip
+        if _installed_via_pipx() and shutil.which("pipx"):
+            typer.echo("→ [1/6] Upgrading Python package via pipx...")
+            rc = subprocess.run(["pipx", "upgrade", "etzchaim"], check=False).returncode
+        else:
+            typer.echo("→ [1/6] Upgrading Python package via pip...")
+            rc = subprocess.run(
+                [sys.executable, "-m", "pip", "install", "--upgrade", "etzchaim"],
+                check=False,
+            ).returncode
+        if rc != 0:
+            typer.echo("✗ Package upgrade failed. See output above.", err=True)
+            raise typer.Exit(rc)
+
+        # 2. Re-exec so the rest of the upgrade uses the new code on disk.
+        # Python caches imported modules; without re-exec we'd run the OLD
+        # extract_compose_files / migrations and any fix shipped in the new
+        # version would silently never run during this update.
+        typer.echo("→ [2/6] Reloading with new code...")
+        new_env = dict(os.environ)
+        new_env[_REEXEC_ENV] = "1"
+        new_argv = [sys.executable, "-m", "etzchaim.cli.app", "update", "--yes"]
+        if skip_images:
+            new_argv.append("--skip-images")
+        if skip_restart:
+            new_argv.append("--skip-restart")
+        os.execvpe(new_argv[0], new_argv, new_env)
+        # os.execvpe replaces the current process; lines below are unreachable.
+        return  # pragma: no cover
+
+    # ── Resumed in fresh process with the new code loaded ────────────────
+    typer.echo(f"  (now running v{__version__})")
+
+    # 3. Re-extract compose templates (using the NEW extract_compose_files)
+    typer.echo("→ [3/6] Extracting new compose templates...")
     compose.extract_compose_files(force=True)
 
     # 3-5 require Docker. If Docker isn't running, try to start it
@@ -78,21 +108,21 @@ def update(
             "  Start Docker (OrbStack / Docker Desktop / Colima), then re-run `etzchaim update`."
         )
     else:
-        # 3. Pull images
+        # 4. Pull images
         profile = detect.detect_compose_profile()
         if not skip_images:
-            typer.echo("→ [3/5] Pulling new Docker images...")
+            typer.echo("→ [4/6] Pulling new Docker images...")
             rc = compose.compose_pull(profile=profile)
             if rc != 0:
                 typer.echo("⚠ docker compose pull failed — restart may use cached images.", err=True)
 
-        # 4. Schema migrations (MVP : re-run idempotent init-db SQL)
-        typer.echo("→ [4/5] Applying schema migrations (idempotent)...")
+        # 5. Schema migrations (MVP : re-run idempotent init-db SQL)
+        typer.echo("→ [5/6] Applying schema migrations (idempotent)...")
         _apply_migrations()
 
-        # 5. Restart
+        # 6. Restart
         if not skip_restart:
-            typer.echo("→ [5/5] Restarting services...")
+            typer.echo("→ [6/6] Restarting services...")
             compose.compose_down(profile=profile)
             compose.compose_up(profile=profile)
 
