@@ -25,11 +25,19 @@ _COMPOSE_FILES = [
 ]
 
 
+# Files that contain user choices (active_profile, machine settings, secrets
+# templates) — never force-overwrite during `etzchaim update`. The user's
+# customizations would silently disappear.
+_USER_OWNED = frozenset({"config.yaml"})
+
+
 def extract_compose_files(force: bool = False) -> Path:
     """Copy compose templates from package into ~/.etz-chaim/compose/.
 
     - force=False (default) : only copies missing files (idempotent, preserves user edits).
-    - force=True : overwrites everything (for `etzchaim update`).
+    - force=True : overwrites everything EXCEPT files listed in ``_USER_OWNED``
+      (config.yaml — user picked active_profile etc.). The user can re-run
+      ``etzchaim onboard`` if they want to regenerate these from scratch.
 
     Returns the destination directory.
     """
@@ -42,7 +50,7 @@ def extract_compose_files(force: bool = False) -> Path:
     for fname in _COMPOSE_FILES:
         src = pkg / fname
         tgt = dest / fname
-        if tgt.exists() and not force:
+        if tgt.exists() and (not force or fname in _USER_OWNED):
             continue
         with resources.as_file(src) as src_path:
             shutil.copyfile(src_path, tgt)
