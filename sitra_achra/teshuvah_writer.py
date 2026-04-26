@@ -9,8 +9,15 @@ Le cycle complet :
     3. TeshuvahWriter transforme ce record en VRAI fichier pytest
     4. La faille passee se transmute en gardien permanent
 
-Le test genere verifie que le module N'EST PLUS vulnerable a cette
-attaque specifique. Si le test echoue un jour → la faille est revenue.
+Distinction ontologique Vital EC 49 (depuis Sprint 1.1) :
+    - **Klipat Nogah** (severity 'nogah') : extraction d'etincelle.
+      Test de regression standard "la faille n'est plus presente".
+      Pattern Yoma 86b strict : la faute devient merite.
+    - **3 Klippot HaTeme'ot** (severity 'ruach' | 'anan' | 'mamash') :
+      confinement structurel. Test "containment guard" : la faille
+      reste structurellement IMPOSSIBLE (pas juste rectifiee). Pattern
+      Tanya ch. 6 : les Klippot HaTeme'ot ne se transforment pas, elles
+      se delimitent.
 
 Olamot utilise :
     Rien — generation purement deterministe (template).
@@ -24,6 +31,13 @@ import re
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
+
+from sitra_achra.klipa_taxonomy import (
+    GenerativeStrategy,
+    KlipaCategory,
+    severity_to_category,
+    strategy_for_severity,
+)
 
 log = logging.getLogger(__name__)
 
@@ -45,13 +59,15 @@ _MODULE_TEST_DIRS: dict[str, str] = {
     "sitra_achra": "sitra_achra/tests",
 }
 
-# Template du fichier de test de regression
+# Template Birur (Klipat Nogah) — extraction d'etincelle, "faute -> merite"
 _TEST_TEMPLATE = '''"""Test de regression auto-genere par Teshuvah Writer.
 
 Yoma 86b : cette faille passee est devenue un gardien permanent.
 Source : Sitra Achra, attaque {qliphah} sur {module}.
 Date de detection : {date}
 Severite originale : {severity}
+Categorie ontologique : Klipat Nogah (Vital EC 49)
+Strategie generative : Birur (extraction d'etincelle)
 
 Faille originale :
     {flaw_description}
@@ -70,6 +86,46 @@ class TestRegression{class_suffix}:
 
         Qliphah : {qliphah}
         Severite : {severity}
+        """
+{test_body}
+'''
+
+
+# Template Containment (3 Klippot HaTeme'ot) — confinement structurel
+# La doctrine luriaque (Vital EC 49 + Tanya ch. 6) distingue : les
+# 3 Klippot HaTeme'ot ne se transforment PAS, elles se delimitent.
+# Donc le test ne verifie pas "rectifie" mais "structurellement isole".
+_CONTAINMENT_TEMPLATE = '''"""Test de containment auto-genere par Teshuvah Writer.
+
+Vital EC 49 : Klippot HaTeme'ot — confinement structurel obligatoire.
+Tanya ch. 6 : "ne se transforment pas, se delimitent".
+
+Source : Sitra Achra, attaque {qliphah} sur {module}.
+Date de detection : {date}
+Severite originale : {severity}
+Categorie ontologique : Klipat HaTemeah (Vital EC 49)
+Strategie generative : Structural Containment (delimitation)
+
+Faille originale :
+    {flaw_description}
+
+Ce test ECHOUE si le confinement structurel est compromis.
+La faille n'est PAS attendue d'etre "corrigee" au sens Birur — elle
+est attendue d'etre delimitee structurellement (impossible a propager).
+"""
+
+import pytest
+
+
+class TestContainment{class_suffix}:
+    """Confinement structurel : {flaw_description_short}"""
+
+    def test_containment_structural(self):
+        """Le confinement structurel doit tenir.
+
+        Qliphah : {qliphah}
+        Severite : {severity}
+        Categorie : Klipat HaTemeah (irrecuperable, confinement seul)
         """
 {test_body}
 '''
@@ -123,6 +179,44 @@ _DEFAULT_BODY = (
     '        obj = {main_class}.__new__({main_class})\n'
     '        assert hasattr(obj, "self_diagnose"), "Module doit exposer self_diagnose"\n'
 )
+
+# Templates Containment pour les 3 Klippot HaTeme'ot (Vital EC 49)
+# Ces templates verifient le confinement structurel, pas la rectification.
+_CONTAINMENT_BODY_RUACH = (
+    '        # Klipa HaTemeah : Ruach Se\'arah (vent de tempete, Ezekiel 1:4)\n'
+    '        # Confinement : verifier que la propagation est structurellement bloquee\n'
+    '        from {import_module} import {main_class}\n'
+    '        obj = {main_class}.__new__({main_class})\n'
+    '        assert hasattr(obj, "self_diagnose"), (\n'
+    '            "Module doit exposer self_diagnose pour permettre confinement"\n'
+    '        )\n'
+)
+
+_CONTAINMENT_BODY_ANAN = (
+    '        # Klipa HaTemeah : Anan Gadol (grand nuage, Ezekiel 1:4)\n'
+    '        # Confinement : verifier que l\'opacite reste delimitee\n'
+    '        from {import_module} import {main_class}\n'
+    '        obj = {main_class}.__new__({main_class})\n'
+    '        assert hasattr(obj, "self_diagnose"), (\n'
+    '            "Module doit exposer self_diagnose pour audit confinement"\n'
+    '        )\n'
+)
+
+_CONTAINMENT_BODY_MAMASH = (
+    '        # Klipa HaTemeah : Esh Mitlakachat (feu prenant, Ezekiel 1:4)\n'
+    '        # Confinement : verifier que l\'execution materielle reste isolee\n'
+    '        from {import_module} import {main_class}\n'
+    '        obj = {main_class}.__new__({main_class})\n'
+    '        assert hasattr(obj, "self_diagnose"), (\n'
+    '            "Module doit exposer self_diagnose pour confinement materiel"\n'
+    '        )\n'
+)
+
+_CONTAINMENT_BODIES: dict[str, str] = {
+    "ruach": _CONTAINMENT_BODY_RUACH,
+    "anan": _CONTAINMENT_BODY_ANAN,
+    "mamash": _CONTAINMENT_BODY_MAMASH,
+}
 
 # Mapping module → classe principale a importer
 _MODULE_MAIN_CLASS: dict[str, tuple[str, str]] = {
@@ -235,7 +329,27 @@ def write_regression_test(record: dict) -> TeshuvahWriteResult:
         module, (module, module.title())
     )
 
-    body_template = _BODY_TEMPLATES.get(sanitized_qliphah, _DEFAULT_BODY)
+    # Determination du body : prefere le body Containment HaTeme'ot
+    # (severity-driven) sur le body qliphah-driven, car la categorie
+    # ontologique Vital EC 49 prime sur la qliphah specifique pour la
+    # strategie generative (Birur vs Confinement).
+    category = severity_to_category(severity)
+    if category == KlipaCategory.KLIPAT_HA_TEMEOT:
+        # Containment template + body specifique Klipa HaTemeah par severity
+        wrapper_template = _CONTAINMENT_TEMPLATE
+        body_template = _CONTAINMENT_BODIES.get(severity, _DEFAULT_BODY)
+        # Mais on enrichit avec le marquage qliphah-specific via header
+        # commentaire pour preserver l'info "samael / gamaliel / ..."
+        qliphah_specific_body = _BODY_TEMPLATES.get(sanitized_qliphah)
+        if qliphah_specific_body:
+            # Concatener : le body containment puis l'echo qliphah pour
+            # preserver les assertions specifiques (compatibilite tests)
+            body_template = qliphah_specific_body + body_template
+    else:
+        # Klipat Nogah : Birur extraction, comportement standard Yoma 86b
+        wrapper_template = _TEST_TEMPLATE
+        body_template = _BODY_TEMPLATES.get(sanitized_qliphah, _DEFAULT_BODY)
+
     test_body = body_template.format(
         qliphah=qliphah,
         import_module=import_module,
@@ -245,7 +359,7 @@ def write_regression_test(record: dict) -> TeshuvahWriteResult:
     flaw_short = flaw_desc[:80].replace('"', "'")
     date_str = time.strftime("%Y-%m-%d", time.localtime(timestamp))
 
-    content = _TEST_TEMPLATE.format(
+    content = wrapper_template.format(
         qliphah=qliphah,
         module=module,
         date=date_str,

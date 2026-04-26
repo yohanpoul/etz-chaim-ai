@@ -29,13 +29,34 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from malakhim.adversarial.base_adversary import Attack, AttackResult
+from sitra_achra.klipa_taxonomy import (
+    GenerativeStrategy,
+    KlipaCategory,
+    severity_to_category,
+    strategy_for_category,
+)
 
 log = logging.getLogger(__name__)
 
 
 @dataclass
 class AttackPlan:
-    """Plan d'attaque genere par Samael."""
+    """Plan d'attaque genere par Samael.
+
+    Porte deux dimensions ontologiques distinctes :
+
+    - **focus_qliphah** : QUELLE Sephirah est ciblee (samael, gamaliel, ...)
+    - **focus_category** : NATURE des failles attaquees (Vital EC 49) —
+      Klipat Nogah (matiere d'evolution par Birur) vs 3 Klippot HaTeme'ot
+      (confinement structurel). Calcule depuis la severite dominante
+      des anomalies sources.
+
+    La generative_strategy decoule de focus_category :
+    - KLIPAT_NOGAH -> BIRUR_EXTRACTION : attaques visant a tester la
+      capacite d'elever/transformer le pattern detecte
+    - KLIPAT_HA_TEMEOT -> STRUCTURAL_CONTAINMENT : attaques visant
+      a verifier que le confinement structurel tient
+    """
 
     target_module: str
     anomalies_source: list[dict]     # Anomalies du GevurahReport qui motivent l'attaque
@@ -43,6 +64,37 @@ class AttackPlan:
     strategy: str = ""               # Description de la strategie (generee par LLM)
     focus_qliphah: str = ""          # Qliphah ciblee principalement
     attacks: list[Attack] = field(default_factory=list)
+    focus_category: KlipaCategory = field(init=False)
+    """Categorie ontologique Vital EC 49 dominante des anomalies."""
+
+    def __post_init__(self) -> None:
+        """Calculer la categorie ontologique dominante."""
+        self.focus_category = self._compute_dominant_category()
+
+    def _compute_dominant_category(self) -> KlipaCategory:
+        """Determiner la categorie dominante via vote sur severites.
+
+        Returns:
+            KLIPAT_HA_TEMEOT si >=1 anomalie HaTeme'ot, sinon KLIPAT_NOGAH.
+
+        Rationale : la presence meme d'une seule HaTeme'ot impose le
+        regime de confinement (precaution) car les Klippot HaTeme'ot
+        ne se traitent pas comme Klipat Nogah (Tanya ch. 6).
+        """
+        if not self.anomalies_source:
+            return KlipaCategory.KLIPAT_NOGAH  # default optimiste : rien a confiner
+        for a in self.anomalies_source:
+            if (
+                severity_to_category(a.get("severity", "unknown"))
+                == KlipaCategory.KLIPAT_HA_TEMEOT
+            ):
+                return KlipaCategory.KLIPAT_HA_TEMEOT
+        return KlipaCategory.KLIPAT_NOGAH
+
+    @property
+    def generative_strategy(self) -> GenerativeStrategy:
+        """Strategie generative determinee par focus_category."""
+        return strategy_for_category(self.focus_category)
 
 
 @dataclass

@@ -25,6 +25,12 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
 
+from sitra_achra.klipa_taxonomy import (
+    KlipaCategory,
+    is_rectifiable,
+    severity_to_category,
+)
+
 log = logging.getLogger(__name__)
 
 
@@ -38,16 +44,43 @@ class DinStatus(Enum):
 
 @dataclass
 class Anomalie:
-    """Une anomalie detectee par le diagnostic interne."""
+    """Une anomalie detectee par le diagnostic interne.
+
+    Porte deux dimensions ontologiques distinctes :
+
+    1. **qliphah** : QUELLE Sephirah est attaquee (samael, gamaliel,
+       satariel, gamchicoth, thagirion, golachab, aarab_zaraq).
+    2. **klipa_category** : NATURE de la faille (Vital EC 49) —
+       Klipat Nogah (rectifiable par Birur) vs 3 Klippot HaTeme'ot
+       (confinement structurel). Derive automatiquement de severity.
+
+    Le champ `klipa_category` est calcule en post_init depuis severity
+    pour garantir la coherence sans imposer de duplication a l'appelant.
+    """
 
     module: str
-    qliphah: str          # Nom de la Qliphah associee
+    qliphah: str          # Nom de la Qliphah associee (samael, gamaliel, ...)
     description: str
     severity: str         # "nogah" | "ruach" | "anan" | "mamash"
     metric_name: str      # Nom de la metrique qui a declenche
     metric_value: float   # Valeur mesuree
     threshold: float      # Seuil attendu
     timestamp: float = field(default_factory=time.time)
+    klipa_category: KlipaCategory = field(init=False)
+    """Categorie ontologique Vital EC 49 derivee de severity."""
+
+    def __post_init__(self) -> None:
+        """Calculer la categorie ontologique depuis severity."""
+        self.klipa_category = severity_to_category(self.severity)
+
+    @property
+    def is_rectifiable(self) -> bool:
+        """L'anomalie est-elle rectifiable par Birur (Klipat Nogah) ?
+
+        True  -> tenter Birur (extraction d'etincelle, transformation)
+        False -> appliquer confinement structurel (3 Klippot HaTeme'ot)
+        """
+        return is_rectifiable(self.severity)
 
 
 @dataclass
@@ -74,6 +107,28 @@ class GevurahReport:
     def anomaly_count(self) -> int:
         return len(self.anomalies)
 
+    @property
+    def rectifiable_count(self) -> int:
+        """Nombre d'anomalies Klipat Nogah (matiere d'evolution par Birur)."""
+        return sum(1 for a in self.anomalies if a.is_rectifiable)
+
+    @property
+    def containment_count(self) -> int:
+        """Nombre d'anomalies 3 Klippot HaTeme'ot (confinement structurel)."""
+        return sum(1 for a in self.anomalies if not a.is_rectifiable)
+
+    @property
+    def category_summary(self) -> dict[str, int]:
+        """Repartition Vital EC 49 des anomalies du rapport.
+
+        Returns:
+            dict avec cles 'klipat_nogah' et 'klipat_ha_temeot' et nombres.
+        """
+        return {
+            KlipaCategory.KLIPAT_NOGAH.value: self.rectifiable_count,
+            KlipaCategory.KLIPAT_HA_TEMEOT.value: self.containment_count,
+        }
+
     def to_dict(self) -> dict[str, Any]:
         return {
             "module": self.module,
@@ -87,10 +142,13 @@ class GevurahReport:
                     "metric_name": a.metric_name,
                     "metric_value": a.metric_value,
                     "threshold": a.threshold,
+                    "klipa_category": a.klipa_category.value,
+                    "is_rectifiable": a.is_rectifiable,
                 }
                 for a in self.anomalies
             ],
             "metriques": self.metriques,
+            "category_summary": self.category_summary,
             "timestamp": self.timestamp,
             "diagnostique_duration_ms": self.diagnostique_duration_ms,
         }

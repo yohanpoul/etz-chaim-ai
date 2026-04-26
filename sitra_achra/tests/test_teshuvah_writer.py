@@ -189,19 +189,43 @@ class TestWriteRegressionTest:
         assert result.written is True
 
     def test_generated_test_has_docstrings(self, tmp_path):
-        """Le test genere contient la documentation de la faille."""
+        """Le test genere contient la documentation de la faille.
+
+        Note Sprint 1.1 : la source citee differe selon la categorie
+        ontologique Vital EC 49 (Yoma 86b pour Klipat Nogah / Birur,
+        Vital EC 49 + Tanya ch. 6 pour Klippot HaTeme'ot / Confinement).
+        Ce test verifie que la source doctrinale appropriee est presente.
+        """
         flaw = "injection SQL via le champ content de epistememory"
-        record = _make_record(module="epistememory", flaw=flaw)
+        # severity='nogah' = Klipat Nogah = template Birur (Yoma 86b)
+        record_nogah = _make_record(module="epistememory", flaw=flaw, severity="nogah")
 
         with patch("sitra_achra.teshuvah_writer._PROJECT_ROOT", tmp_path):
             test_dir = tmp_path / "epistememory" / "tests"
             test_dir.mkdir(parents=True)
+            result_nogah = write_regression_test(record_nogah)
 
+        content_nogah = (tmp_path / result_nogah.file_path).read_text()
+        assert "injection SQL" in content_nogah
+        assert "Yoma 86b" in content_nogah  # Birur source
+        assert "Sitra Achra" in content_nogah
+
+    def test_containment_test_has_haTeme_ot_sources(self, tmp_path):
+        """Pour HaTeme'ot, le test cite Vital EC 49 + Tanya ch. 6."""
+        flaw = "injection SQL via le champ content de epistememory"
+        # severity='anan' = Klipa HaTemeah = template Containment
+        record = _make_record(module="epistememory", flaw=flaw, severity="anan")
+
+        with patch("sitra_achra.teshuvah_writer._PROJECT_ROOT", tmp_path):
+            test_dir = tmp_path / "epistememory" / "tests"
+            test_dir.mkdir(parents=True)
             result = write_regression_test(record)
 
         content = (tmp_path / result.file_path).read_text()
         assert "injection SQL" in content
-        assert "Yoma 86b" in content
+        assert "Vital EC 49" in content
+        assert "Tanya ch. 6" in content
+        assert "containment" in content.lower() or "confinement" in content.lower()
         assert "Sitra Achra" in content
 
 

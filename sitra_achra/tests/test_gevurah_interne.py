@@ -224,3 +224,101 @@ class TestGevurahInterne:
         malades = gi.modules_en_defaillance()
         modules_malades = [r.module for r in malades if r.module == "bad"]
         assert "bad" in modules_malades
+
+
+# ---------------------------------------------------------------------------
+# Klipa Taxonomy integration (Vital EC 49) — additif Sprint 1.1
+# ---------------------------------------------------------------------------
+
+class TestAnomalieKlipaCategory:
+    """L'Anomalie porte automatiquement sa categorie ontologique Vital EC 49."""
+
+    def test_nogah_anomaly_is_rectifiable(self):
+        """Severite 'nogah' -> Klipat Nogah, rectifiable par Birur."""
+        from sitra_achra.klipa_taxonomy import KlipaCategory
+
+        a = Anomalie(
+            module="x", qliphah="samael", description="warning",
+            severity="nogah", metric_name="m", metric_value=1.0, threshold=0.5,
+        )
+        assert a.klipa_category == KlipaCategory.KLIPAT_NOGAH
+        assert a.is_rectifiable is True
+
+    @pytest.mark.parametrize("severity", ["ruach", "anan", "mamash"])
+    def test_temeot_anomaly_not_rectifiable(self, severity):
+        """Severites Ezekiel 1:4 -> 3 Klippot HaTeme'ot, confinement."""
+        from sitra_achra.klipa_taxonomy import KlipaCategory
+
+        a = Anomalie(
+            module="x", qliphah="samael", description="critical",
+            severity=severity, metric_name="m", metric_value=1.0, threshold=0.5,
+        )
+        assert a.klipa_category == KlipaCategory.KLIPAT_HA_TEMEOT
+        assert a.is_rectifiable is False
+
+
+class TestGevurahReportCategorySummary:
+    """Le rapport agrege les anomalies par categorie ontologique."""
+
+    def test_empty_report_summary(self):
+        """Rapport sans anomalie -> 0 partout."""
+        r = GevurahReport(module="x", status=DinStatus.SAIN)
+        assert r.rectifiable_count == 0
+        assert r.containment_count == 0
+        assert r.category_summary == {
+            "klipat_nogah": 0,
+            "klipat_ha_temeot": 0,
+        }
+
+    def test_mixed_report_summary(self):
+        """Rapport melange Nogah + HaTeme'ot."""
+        r = GevurahReport(
+            module="x",
+            status=DinStatus.DEFAILLANCE,
+            anomalies=[
+                Anomalie(
+                    module="x", qliphah="samael", description="w1",
+                    severity="nogah", metric_name="m", metric_value=1, threshold=0,
+                ),
+                Anomalie(
+                    module="x", qliphah="samael", description="w2",
+                    severity="nogah", metric_name="m", metric_value=1, threshold=0,
+                ),
+                Anomalie(
+                    module="x", qliphah="gamaliel", description="critical",
+                    severity="anan", metric_name="m", metric_value=1, threshold=0,
+                ),
+            ],
+        )
+        assert r.rectifiable_count == 2
+        assert r.containment_count == 1
+        assert r.category_summary == {
+            "klipat_nogah": 2,
+            "klipat_ha_temeot": 1,
+        }
+
+    def test_to_dict_includes_categories(self):
+        """to_dict() expose la dimension ontologique pour serialisation."""
+        r = GevurahReport(
+            module="x",
+            status=DinStatus.DEFAILLANCE,
+            anomalies=[
+                Anomalie(
+                    module="x", qliphah="samael", description="w",
+                    severity="nogah", metric_name="m", metric_value=1, threshold=0,
+                ),
+                Anomalie(
+                    module="x", qliphah="samael", description="c",
+                    severity="mamash", metric_name="m", metric_value=1, threshold=0,
+                ),
+            ],
+        )
+        d = r.to_dict()
+        # Categorie au niveau anomalie
+        assert d["anomalies"][0]["klipa_category"] == "klipat_nogah"
+        assert d["anomalies"][0]["is_rectifiable"] is True
+        assert d["anomalies"][1]["klipa_category"] == "klipat_ha_temeot"
+        assert d["anomalies"][1]["is_rectifiable"] is False
+        # Resume au niveau rapport
+        assert d["category_summary"]["klipat_nogah"] == 1
+        assert d["category_summary"]["klipat_ha_temeot"] == 1

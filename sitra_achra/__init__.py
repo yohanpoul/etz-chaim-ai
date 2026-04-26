@@ -34,6 +34,17 @@ from sitra_achra.teshuvah_writer import (
     process_teshuvah_records,
     write_regression_test,
 )
+from sitra_achra.klipa_taxonomy import (
+    GenerativeStrategy,
+    KlipaCategory,
+    KlipaSeverity,
+    TemeahIdentity,
+    is_rectifiable,
+    severity_to_category,
+    strategy_for_category,
+    strategy_for_severity,
+    temeah_identity,
+)
 
 __all__ = [
     "GevurahInterne",
@@ -51,4 +62,14 @@ __all__ = [
     "TeshuvahWriteResult",
     "process_teshuvah_records",
     "write_regression_test",
+    # Klipa Taxonomy (Vital EC 49)
+    "GenerativeStrategy",
+    "KlipaCategory",
+    "KlipaSeverity",
+    "TemeahIdentity",
+    "is_rectifiable",
+    "severity_to_category",
+    "strategy_for_category",
+    "strategy_for_severity",
+    "temeah_identity",
 ]
