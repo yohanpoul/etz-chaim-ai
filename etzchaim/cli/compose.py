@@ -18,6 +18,8 @@ _COMPOSE_FILES = [
     "docker-compose.yml",
     "docker-compose.hybrid-host-ollama.yml",
     "docker-compose.dev.yml",
+    "docker-compose.claude-bridge.yml",
+    "claude-stub.sh",
     "Dockerfile",
     "config.yaml",
 ]
@@ -61,12 +63,30 @@ def extract_compose_files(force: bool = False) -> Path:
 
 
 def compose_command(profile: str = "hybrid-host-ollama") -> list[str]:
-    """Return `docker compose -f ... -f <override>` base command."""
+    """Return `docker compose -f ... -f <override>` base command.
+
+    Loads, in order :
+      1. ``docker-compose.yml`` (base)
+      2. ``docker-compose.{profile}.yml`` (OS/hardware override)
+      3. Any other ``docker-compose.*.yml`` present in the compose dir,
+         alphabetically — lets the user drop additional overrides
+         (e.g. ``docker-compose.claude-bridge.yml``) without patching
+         the CLI. The dev override is excluded — it's opt-in via
+         ETZCHAIM_USE_BUILD=1.
+    """
     d = compose_dir()
     cmd = ["docker", "compose", "-f", str(d / "docker-compose.yml")]
-    override = d / f"docker-compose.{profile}.yml"
-    if override.exists():
-        cmd += ["-f", str(override)]
+    profile_override = d / f"docker-compose.{profile}.yml"
+    loaded: set[str] = {"docker-compose.yml"}
+    if profile_override.exists():
+        cmd += ["-f", str(profile_override)]
+        loaded.add(profile_override.name)
+    skip = {"docker-compose.dev.yml"}
+    for extra in sorted(d.glob("docker-compose.*.yml")):
+        if extra.name in loaded or extra.name in skip:
+            continue
+        cmd += ["-f", str(extra)]
+        loaded.add(extra.name)
     return cmd
 
 

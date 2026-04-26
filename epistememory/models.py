@@ -22,6 +22,7 @@ class SourceSephirah(str, Enum):
     MALKUTH = "malkuth"
     DAAT = "daat"
     EXTERNAL = "external"
+    SIFREI_YESOD = "sifrei_yesod"
     UNKNOWN = "unknown"
 
 

@@ -44,6 +44,7 @@ def _root(
 
 # Lazy registration — each import runs @app.command() decorators.
 # Order doesn't matter functionally, kept alphabetical for readability.
+from etzchaim.cli.commands import claude_bridge as _claude_bridge_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import demo as _demo_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import doctor as _doctor_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import info as _info_cmd  # noqa: E402, F401

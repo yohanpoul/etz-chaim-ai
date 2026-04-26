@@ -1,0 +1,29 @@
+# Etz Chaim — Claude Max bridge override (perso install).
+#
+# Mounts a stub `claude` binary inside the app + daemon containers that
+# forwards subprocess invocations over HTTP to a host-side bridge
+# (server.py running on the Mac). The host bridge re-executes the real
+# `claude` CLI with OAuth Max auth and returns stdout/stderr/exit_code.
+#
+# Apply by appending `-f docker-compose.claude-bridge.yml` to docker compose,
+# OR by leaving in this folder — the etzchaim CLI auto-loads
+# docker-compose.<profile>.yml when present, but this file is loaded
+# by the bridge wrapper command, not by profile selection.
+#
+# Requires the host bridge listening on http://127.0.0.1:11435
+# (managed by ~/Library/LaunchAgents/com.etz-chaim.claude-bridge.plist).
+
+services:
+  app:
+    environment:
+      USE_CLAUDE_CODE_CLI: "1"
+      ETZ_CHAIM_CLAUDE_BRIDGE_URL: "http://host.docker.internal:11435/exec"
+    volumes:
+      - ./claude-stub.sh:/usr/local/bin/claude:ro
+
+  daemon:
+    environment:
+      USE_CLAUDE_CODE_CLI: "1"
+      ETZ_CHAIM_CLAUDE_BRIDGE_URL: "http://host.docker.internal:11435/exec"
+    volumes:
+      - ./claude-stub.sh:/usr/local/bin/claude:ro
