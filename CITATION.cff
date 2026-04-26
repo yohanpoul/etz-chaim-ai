@@ -2,37 +2,37 @@ cff-version: 1.2.0
 message: "If you use Etz Chaim AI in academic work, please cite it as follows."
 type: software
 title: "Etz Chaim AI"
-version: 0.1.0
-date-released: 2026-04-20
+version: 0.2.17
+date-released: 2026-04-26
 authors:
   - name: "Etz Chaim AI Contributors"
 abstract: >
-  Etz Chaim AI is an AI architecture grounded in Lurianic Kabbalistic
-  discipline. The system transposes primary sources from the Zohar and
-  Rabbi Hayyim Vital's Etz Chaim into machine-readable doctrinal assertions
-  (1696 items), organized around 10 Sephirot, 4 Partzufim, 13 Tikkunei Dikna
-  and integrated adversarial validation. Distinctive contributions include
-  MazalEngine (first operational AI self-rectification based on the two
-  Mazalot of the Idra Rabba) and a persistent Reshimu trace protocol for
-  cumulative learning across cycles.
+  Etz Chaim AI is a kabbalah-inspired cognitive architecture wrapper for
+  large language models, providing a structured iterative refinement
+  framework with a 4-category input ontology derived from Vital's Etz Chaim
+  Sha'ar 49 (Klipat Nogah / 3 Klippot HaTeme'ot). Source citations are
+  auto-grounded via Sefaria MCP integration. The architecture distinguishes
+  rectifiable patterns (Birur extraction strategy) from those requiring
+  structural containment, and includes a persistent residual-trace
+  mechanism for cumulative learning across cycles. Implementation spans
+  10 cognitive modules, 6 composition layers, 22 typed pathways, and an
+  adversarial self-critique sub-system with 151 module-level tests.
 keywords:
   - artificial intelligence
-  - kabbalah
-  - lurianic
-  - partzufim
-  - sephirot
-  - adversarial validation
-  - doctrinal ai
-  - idra rabba
-  - tikkunei dikna
+  - cognitive architecture
+  - kabbalah-inspired
+  - structured refinement
+  - adversarial self-critique
+  - sefaria-grounded
+  - klipa-taxonomy
 license: Apache-2.0
 repository-code: "https://github.com/yohanpoul/etz-chaim-ai"
 url: "https://yohanpoul.github.io/etz-chaim-ai/"
 preferred-citation:
   type: software
-  title: "Etz Chaim AI: Lurianic Kabbalistic Architecture for Artificial Intelligence"
+  title: "Etz Chaim AI: Kabbalah-Inspired Cognitive Architecture for Language Models"
   authors:
     - name: "Etz Chaim AI Contributors"
   year: 2026
-  version: 0.1.0
+  version: 0.2.17
   url: "https://github.com/yohanpoul/etz-chaim-ai"
