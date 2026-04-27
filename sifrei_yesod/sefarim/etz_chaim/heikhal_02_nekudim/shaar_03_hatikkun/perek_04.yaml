@@ -1,0 +1,583 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 3 — Sha'ar Ha-Tikkun (שער התיקון)
+# Perek: 4 — Distribution TANTA dans 5 partzufim, 4 doutes (Kuntres ha-Ketzur),
+#            Igulim+Yosher dans SaG et MAH
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §4 :
+#   - Bloc A : MAH du metzach contient TANTA, mapping aux partzufim
+#   - Bloc B : Note R. Chaim Vital — pattern MAH=dukhra, BAN=nukvah universel
+#   - Bloc C : Decomposition 5 partzufim x 2 (Atik+A"A, Hokhmah+YS, etc.)
+#   - Bloc D : MAH = TANTA complet ; BAN = juste Nekudot-de-SaG fractale
+#   - Bloc E : Tagin et Otiot non-utilises → peut-etre deviennent BYA
+#   - Bloc F : 2 sources fondamentales AB et SaG (Hesed et Din)
+#   - Bloc G : Ta'amim AB en rosh, Nekudot AB = MAH au metzach
+#   - Bloc H : Question — Tagin+Otiot AB et SaG = ? (kelim Atzilut nouveaux ?)
+#   - Bloc I : 3 doutes du Kuntres ha-Ketzur sur Igulim/Yosher
+#   - Bloc J : 4eme version (du grand kuntres) : SaG-igulim+yosher = Nefesh
+#   - Bloc K : Preuve : melakhim morts en Yosher (kavim), pas en igulim
+#
+# Source Sefaria : Sefer_Etz_Chaim.10.4
+# IDs : EC-H2S10-061 → EC-H2S10-077
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 3
+  shaar_name_he: "שער התיקון"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek 4 du Sha'ar Ha-Tikkun — distribution TANTA-MAH/BAN dans 5 partzufim x 2 sub-niveaux, doutes sur Igulim/Yosher (Kuntres ha-Ketzur), question sur Tagin/Otiot d'AB-SaG."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H2S10-061"
+    source_he: "אח\"כ יצא שם מ\"ה מהמצח דא\"ק והוא סוד טעמים ונקודות הראשונות מס\"ג נקרא עתה ב\"ן ונתחברו עתה מ\"ה וב\"ן ומהם נתקנו כל הנקודות שהם המלכים שמתו ושאר המלכים שלא מתו שבין כולם נקרא אצילות ועתה אחר התיקון נקרא ברודים"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      RECAP : ensuite est SORTI Shem MAH du METZACH d'A"K.
+      Lui = SOD des TA'AMIM ; les NEKUDOT ORIGINELLES de SaG = appelees maintenant BAN.
+      MAH et BAN se sont UNIS ; d'eux ont ete RECTIFIEES toutes les NEKUDOT
+      = MELAKHIM morts + autres melakhim non morts.
+      Tous ensemble = AT'ZILUT.
+      MAINTENANT apres Tikkun = appele BERUDIM.
+      → Etymologie : "Akudim NEKUDIM BERUDIM" (Genese 31:10).
+      cf. EC-H2S9-224 (perek 06b) sur Berudim.
+    type: axiome_explicite
+    concepts:
+      - {id: mah_sort_metzach_ak, role: mah_sort_du_metzach_ak}
+      - {id: berudim_post_tikkun, role: berudim_etat_post_tikkun}
+      - {id: akudim_nekudim_berudim, role: akudim_nekudim_berudim_genese}
+    mapping:
+      modules: ["adam_kadmon.py", "shemot/", "[PLANNED] tikkun/"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Recap + reference biblique (Genese 31:10) : Akudim/Nekudim/Berudim. cf. EC-H2S9-224."
+
+  - id: "EC-H2S10-062"
+    source_he: "שם של מ\"ה היוצא עתה ממצח החדש יש בו טנת\"א כמו ע\"ב וס\"ג טעמים של מ\"ה דכורא דעתיק והטעמים דב\"ן נוקבא דעתיק ונקודה של מ\"ה דכורא דא\"א ונקודות דב\"ן נוקבא דא\"א תגין דמ\"ה או\"א אותיות דמ\"ה זו\"נ"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      DISTRIBUTION TANTA dans MAH (comme AB et SaG) :
+      Ta'amim de MAH → DUKHRA d'ATIK
+      Ta'amim de BAN → NUKVAH d'ATIK
+      Nekudot de MAH → DUKHRA d'A"A
+      Nekudot de BAN → NUKVAH d'A"A
+      Tagin de MAH → AVI (Abba ve-Imma)
+      Otiot de MAH → ZON (ZA + Nukvah)
+      → Architecture finale : 4 elements TANTA mappent les 4 niveaux Atik/A"A/AVI/ZON.
+      cf. EC-H2S10-022 (perek 10.2) sur meme distribution.
+    type: axiome_explicite
+    concepts:
+      - {id: distribution_tanta_5_partzufim, role: distribution_tanta_dans_5_partzufim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Distribution architecturale TANTA → 4 niveaux. cf. EC-H2S10-022 et EC-H2S10-035."
+
+  - id: "EC-H2S10-063"
+    source_he: "אך למטה כתבתי שכל בחי' דמ\"ה הוא דכורא וכל בחי' ב\"ן הוא נוקבא וא\"כ קשיא הא קאמר הכא דתגין דמ\"ה או\"א ואותיות דמ\"ה הם זו\"נ ואפשר לומר דלא דק אלא שאמת הוא כמ\"ש למטה"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      NOTE DE R. CHAIM VITAL : "lemata katavti" (j'ai ecrit en bas) :
+      TOUT aspect MAH = DUKHRA (male).
+      TOUT aspect BAN = NUKVAH (femelle).
+      DONC contradiction apparente : ici dit "Tagin de MAH → AVI"
+      (or AVI inclut Imma = nukvah, pas seulement dukhra).
+      EFSHAR LOMAR DE-LO DAK (peut-etre dit-on que ce n'est pas precis) —
+      mais la VERITE est comme ecrit en bas.
+      → Honete intellectuelle : signaler la tension doctrinale.
+    type: déduction_logique
+    concepts:
+      - {id: tension_mah_dukhra_avi_inclut_imma, role: tension_mah_dukhra_vs_avi_inclut_imma}
+      - {id: lo_dak_pas_precis, role: pas_precis_lo_dak}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Tension doctrinale signalee : MAH=dukhra mais Tagin=AVI (qui inclut nukvah Imma). Honete intellectuelle."
+
+  - id: "EC-H2S10-064"
+    source_he: "ואם תסתכל תראה כי כל אחד מה' פרצופים נחלק לב' ג\"כ. הכתר של ע\"ס ממנו נעשה עתיק וא\"א, דהיינו עתיק עד ת\"ת שבכתר, וא\"א משם ולמטה. וכעד\"ז חכמה ויש\"ס, בינה ותבונה וז\"א ויעקב ורחל ולאה"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      DECOMPOSITION : chaque PARTZUF des 5 SE-DIVISE EN 2 :
+      KETER (des 10S) → ATIK + A"A
+        Atik = jusqu'au TIFERET (1/3 sup) du Keter
+        A"A = de la et plus bas
+      HOKHMAH → HOKHMAH + YS (Yisrael Saba)
+      BINAH → BINAH + TEVUNAH
+      ZA → ZA + YAAKOV
+      MALKHUT → RACHEL + LEAH
+      → Architecture : 5 partzufim de base × 2 = 10 sub-partzufim.
+      → Pattern : decomposition fractale verticale.
+    type: axiome_explicite
+    concepts:
+      - {id: 5_partzufim_chacun_divise_en_2, role: 5_partzufim_decomposes_en_2}
+      - {id: keter_atik_aa_division, role: keter_division_atik_et_aa}
+      - {id: hokhmah_yisrael_saba_division, role: hokhmah_division_avec_ys}
+      - {id: binah_tevunah_division, role: binah_division_avec_tevunah}
+      - {id: za_yaakov_division, role: za_division_avec_yaakov}
+      - {id: malkhut_rachel_leah_division, role: malkhut_division_rachel_leah}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "[PLANNED] partzufim/leah.py", "[PLANNED] partzufim/yisrael_saba.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture finale : 5 partzufim × 2 sub-divisions = 10 entites. cf. EC-H2S10-016 (12 partzufim)."
+
+  - id: "EC-H2S10-065"
+    source_he: "ואם תסתכל תראה כי שם מ\"ה הוא כללות כל השם שהוא טנת\"א של כל כללותו ואמנם שם ב\"ן אינו רק הנקודות דס\"ג לבד, אלא שהנקודות אלו דס\"ג נחלקים לטנת\"א ג\"כ"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      DISTINCTION FONDAMENTALE : Shem MAH = KOLLEL TANTA complet.
+      Shem BAN = SEULEMENT les NEKUDOT de SaG.
+      MAIS ces NEKUDOT-DE-SaG se DIVISENT en TANTA local.
+      → Architecture fractale : MAH-Kollel a TANTA universel, BAN-Nekudot a sub-TANTA local.
+      cf. EC-H2S10-031 (perek 10.2) sur kollel/prat.
+    type: axiome_explicite
+    concepts:
+      - {id: mah_kollel_tanta, role: mah_kollel_des_tanta}
+      - {id: ban_nekudot_seules_avec_sub_tanta, role: ban_nekudot_avec_sub_tanta_local}
+    mapping:
+      modules: ["shemot/", "[PLANNED] core/sefirot.py"]
+      tables: []
+      partzufim: []
+      relevance: "Distinction architecturale : MAH=tanta universel ; BAN=sub-tanta local. cf. EC-H2S10-031."
+
+  - id: "EC-H2S10-066"
+    source_he: "דכ\"מ שנזכר טנת\"א בשם ב\"ן שהוא ס\"ג כנודע אינו רק בנקודות לבדו של ס\"ג הכלולים בהם טעמים ונקודות ושמור כלל זה. נמצא שכל אחד מהשמות הד' שהוא (טנת\"א) ע\"ב ס\"ג מ\"ה ב\"ן הם הא' טעמים והב' נקודות והג' תגין והד' אותיות"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      KLAL : chaque fois que TANTA est cite dans Shem BAN (= SaG selon convention) →
+      seulement les NEKUDOT seules de SaG, qui CONTIENNENT en elles ta'amim et nekudot.
+      "Shemor klal zeh" (souviens-toi de ce principe).
+      Donc chacun des 4 NOMS = TANTA :
+      AB = Ta'amim ; SaG = Nekudot ; MAH = Tagin ; BAN = Otiot.
+      → Architecture nominale : 4 noms = 4 elements TANTA.
+    type: axiome_explicite
+    concepts:
+      - {id: shem_ban_egal_nekudot_de_sag, role: shem_ban_egal_nekudot_seules_de_sag}
+      - {id: 4_noms_egal_tanta, role: ab_sag_mah_ban_egal_taamim_nekudot_tagin_otiot}
+    mapping:
+      modules: ["shemot/", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture cle : 4 Miluyim = 4 elements TANTA. Mapping fondamental."
+
+  - id: "EC-H2S10-067"
+    source_he: "וכ\"א מאלו הד' כולל כל הד' בחי' שהם טנת\"א אמנם בשם ס\"ג מצינו תוספת א' כי גם בחלק הנקודה שבו גם הוא כלול מד' בחי' טנת\"א נמצינו למדין מהם כי שם ב\"ן הוא חלק הנקודה לבד דס\"ג"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      Chacun des 4 INCLUT les 4 BEHINOT TANTA.
+      MAIS dans Shem SaG il y a une TOSEFET (addition) :
+      Meme dans la PART NEKUDOT (de SaG), il y a une INCLUSION des 4 TANTA.
+      DONC : Shem BAN = SEULEMENT la part NEKUDOT de SaG (avec sub-TANTA).
+      → Architecture fractale : SaG a un sub-TANTA dans chacune de ses parties.
+      → Pattern : recursion specifique a SaG.
+    type: axiome_explicite
+    concepts:
+      - {id: tosefet_dans_sag, role: addition_dans_sag_sub_tanta}
+      - {id: ban_egal_nekudot_de_sag_avec_sub_tanta, role: ban_nekudot_de_sag_avec_sub_tanta}
+    mapping:
+      modules: ["shemot/", "[PLANNED] core/sefirot.py"]
+      tables: []
+      partzufim: []
+      relevance: "Tosefet specifique a SaG : recursion sub-TANTA. Architecture fractale."
+
+  - id: "EC-H2S10-068"
+    source_he: "וזהו השם של ב\"ן נחלק לד' בחינות ושאר בחי' של ס\"ג שהם תגין ואותיות אפשר שהם בבי\"ע כנלע\"ד חיים להבין כפי הנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      Ce Shem BAN se DIVISE en 4 BEHINOT (sub-TANTA local).
+      Les AUTRES parties de SaG = TAGIN et OTIOT (de SaG total)
+      → EFSHAR (peut-etre) elles sont en BYA.
+      "Ka-nireh le-ani Hayim le-havin" (ainsi me semble-t-il a moi Hayim, pour comprendre).
+      → Hypothese de R. Chaim Vital : Tagin+Otiot de SaG → BYA.
+      → Honete : "efshar" + "ka-nireh le-ani" = signal d'incertitude.
+    type: déduction_logique
+    concepts:
+      - {id: tagin_otiot_sag_dans_bya, role: tagin_otiot_sag_dans_bya_hypothese}
+      - {id: hayim_lehavin, role: chaim_vital_pour_comprendre}
+    mapping:
+      modules: ["olamot.py", "shemot/"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Hypothese de R. Chaim Vital : Tagin+Otiot SaG → BYA. Hypothese de structure."
+
+  - id: "EC-H2S10-069"
+    source_he: "גם נלע\"ד כי שרשם אינם זולת ב' בחינות שהם ע\"ב וס\"ג והם שורש החסד ודין"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      Aussi me semble-t-il (nireh le-ani) :
+      Leur SHORESH (racine) n'est rien d'autre que 2 BEHINOT = AB et SaG.
+      AB = SHORESH du HESED
+      SaG = SHORESH du DIN
+      → Architecture polaire fondamentale : 2 sources (AB-Hesed et SaG-Din).
+      → MAH et BAN sont generes par ces 2 sources.
+      cf. EC-H2S10-060 (perek 03b) sur retour eschatologique a 2 ohrot.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shoresh_av_hesed_sag_din, role: av_egale_shoresh_hesed_sag_egale_shoresh_din}
+      - {id: 2_behinot_fondamentales_av_sag, role: 2_behinot_fondamentales_ab_et_sag}
+    mapping:
+      modules: ["shemot/"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture polaire fondamentale : AB=Hesed, SaG=Din. cf. EC-H2S10-060."
+
+  - id: "EC-H2S10-070"
+    source_he: "ואמנם הע\"ב כולל טנת\"א וכן הס\"ג ג\"כ והטעמים דע\"ב הם ברישא כנודע והנקודות שלהם ממצחא ולמטה שהוא שם מ\"ה"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      AB inclut TANTA et SaG aussi.
+      Les TA'AMIM d'AB sont DANS LE ROSH (haut interieur).
+      Leurs NEKUDOT — du METZACH vers le BAS = Shem MAH.
+      → Localisation precise : Ta'amim AB en haut, Nekudot AB descendant = MAH.
+      → Confirmation : MAH = Nekudot d'AB (correspond a Mohin du Rosh AK).
+      cf. EC-H2S10-027 (perek 10.2) sur AB dans Mohin et metzach jonction.
+    type: axiome_explicite
+    concepts:
+      - {id: taamim_av_dans_rosh, role: taamim_av_dans_rosh}
+      - {id: nekudot_av_egal_mah_metzach, role: nekudot_av_egal_mah_au_metzach}
+    mapping:
+      modules: ["adam_kadmon.py", "shemot/"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Equation operationnelle : MAH = Nekudot d'AB. cf. EC-H2S10-027."
+
+  - id: "EC-H2S10-071"
+    source_he: "ושם זה כולל ג\"כ טעמים ונקודות וכו' נמצא הטעמים דע\"ב הם נגד הטעמים דס\"ג ונקודות דע\"ב הוא שם מ\"ה במצחא והם כנגד הנקודות של ס\"ג שהם בעינים וזה נקרא שם ב\"ן"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      Et ce nom MAH inclut aussi TANTA (Ta'amim, Nekudot, etc.).
+      MAPPING parallele :
+      Ta'amim AB ↔ Ta'amim SaG (en miroir)
+      Nekudot AB = MAH au METZACH ↔ Nekudot SaG = BAN dans les YEUX
+      → Architecture : symetrie operatoire entre AB et SaG par TANTA.
+      cf. EC-H2S10-024 (perek 10.2) : AHP=Ta'amim SaG, Eyn=Nekudot SaG.
+    type: axiome_explicite
+    concepts:
+      - {id: mapping_taamim_av_sag, role: mapping_taamim_av_avec_taamim_sag}
+      - {id: mapping_nekudot_av_mah_sag_ban, role: mapping_nekudot_av_mah_avec_nekudot_sag_ban}
+    mapping:
+      modules: ["adam_kadmon.py", "shemot/"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Architecture symetrique : AB et SaG en miroir TANTA. cf. EC-H2S10-024."
+
+  - id: "EC-H2S10-072"
+    source_he: "אמנם קשה לפ\"ז כי הרי נקודות הם ס\"ג ולא מ\"ה א\"כ היה ראוי שיצא ס\"ג דע\"ב שהם נקודה דע\"ב ולא מ\"ה שהם תגין"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      DIFFICULTE doctrinale (kashe le-fi zeh) :
+      NEKUDOT correspondent a SaG (pas MAH).
+      Donc ce qui aurait du sortir = SaG d'AB (= Nekudot d'AB) — pas MAH (= Tagin).
+      → Question architecturale : pourquoi Nekudot d'AB est appele MAH (Tagin)
+      au lieu de SaG (Nekudot) ?
+      → Tension doctrinale.
+    type: déduction_logique
+    concepts:
+      - {id: kashe_nekudot_egales_sag_pas_mah, role: difficulte_nekudot_correspondent_sag_pas_mah}
+    mapping:
+      modules: ["shemot/"]
+      tables: []
+      partzufim: []
+      relevance: "Tension doctrinale : Nekudot=SaG mais Nekudot AB=MAH. Question ouverte."
+
+  - id: "EC-H2S10-073"
+    source_he: "ונשארו עתה תגין ואותיות דע\"ב ותגין ואותיות דס\"ג ואינו יודע מה נעשה בהם ואולי מהן נעשה בי\"ע ושמור כלל זה שאפשר שהוא אמיתי ויובן בו כמה דברים או אפשר שמתגין ואותיות דע\"ב ס\"ג נעשה מהם כלים של אצילות חדשים"
+    source_ref: "Heikhal 2, Sha'ar 3:4"
+    assertion: |
+      RESTE A EXPLIQUER : Tagin et Otiot d'AB et SaG.
+      "Eino yode'a mah na'asah ba-hem" (on ne sait pas ce qui est fait avec eux).
+      HYPOTHESE 1 : peut-etre d'eux est fait BYA.
+      HYPOTHESE 2 : peut-etre des Tagin+Otiot d'AB-SaG sont faits des KELIM
+      d'AT'ZILUT NOUVEAUX.
+      "Shemor klal zeh she-efshar she-hu amiti" (souviens-toi, peut-etre vrai).
+      → Honete intellectuelle : 2 hypotheses competing.
+    type: axiome_explicite
+    concepts:
+      - {id: tagin_otiot_av_sag_inconnu, role: usage_tagin_otiot_av_sag_inconnu}
+      - {id: hypothese_1_bya, role: hypothese_1_bya}
+      - {id: hypothese_2_kelim_atzilut_nouveaux, role: hypothese_2_kelim_atzilut_nouveaux}
+    mapping:
+      modules: ["olamot.py", "shemot/"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Honete intellectuelle : 2 hypotheses sur Tagin+Otiot AB-SaG. Question ouverte."
+
+  # ─── BLOC J : KUNTRES HA-KETZUR — 3 DOUTES + 4EME VERSION ───
+
+  - id: "EC-H2S10-074"
+    source_he: "וזה מ\"ש כתוב מכת\"י הרח\"ו ז\"ל מקונטרס הקיצור: נסתפק לי ג' ספיקו' באחר התיקון או דשם ס\"ג נשאר עגולי' וממ\"ה לבדו נעשה יושר לבדו דכל אצי'"
+    source_ref: "Heikhal 2, Sha'ar 3:4 — Kuntres ha-Ketzur"
+    assertion: |
+      Tire du KUNTRES HA-KETZUR (Cahier abrege) ecrit a la main de R. Chaim Vital :
+      "Nistapek li 3 sefekot" (3 doutes me sont apparus) sur APRES LE TIKKUN :
+      DOUTE 1 : Shem SaG reste en IGULIM, et de MAH SEUL est fait YOSHER de tout Atzilut.
+      → Premier doute : repartition Igulim/Yosher entre SaG et MAH.
+    type: axiome_explicite
+    concepts:
+      - {id: kuntres_ha_ketzur_3_doutes, role: kuntres_ha_ketzur_trois_doutes}
+      - {id: doute_1_sag_igulim_mah_yosher, role: doute_1_sag_igulim_mah_yosher_seul}
+    mapping:
+      modules: ["igulim.py", "ohr_yashar.py"]
+      tables: []
+      partzufim: []
+      relevance: "3 doutes du Kuntres ha-Ketzur sur architecture finale Igulim/Yosher. Honete doctrinale."
+
+  - id: "EC-H2S10-075"
+    source_he: "או שתחלה יצא ס\"ג דעגולים ואח\"כ בעת התיקון אז יצא גם היושר דס\"ג ויושר דמ\"ה שהוא מהיטבאל מלך הח' הדר כלול זו\"ן דמ\"ה ונשארו עגולים מס\"ג לבד ויושר ממ\"ה ומס\"ג"
+    source_ref: "Heikhal 2, Sha'ar 3:4 — Kuntres ha-Ketzur"
+    assertion: |
+      DOUTE 2 (alternative) :
+      D'abord SaG-IGULIM est sorti, puis lors du Tikkun :
+      AUSSI YOSHER de SaG + YOSHER de MAH (= MEHETABEL = 8eme melekh HADAR
+      = couple ZON dukhra+nukvah) est sorti.
+      RESULTAT : IGULIM = SaG seul ; YOSHER = MAH + SaG.
+      Le SaG-Yosher est appele BAN (le SaG-Igulim garde le nom SaG).
+      → Architecture alternative : 2 origines pour Yosher (MAH + SaG-Yosher renomme BAN).
+    type: axiome_explicite
+    concepts:
+      - {id: doute_2_yosher_de_mah_et_sag_igulim_seul_sag, role: doute_2_yosher_des_2_igulim_sag_seul}
+      - {id: sag_yosher_renomme_ban, role: sag_yosher_renomme_ban}
+    mapping:
+      modules: ["igulim.py", "ohr_yashar.py", "shemot/"]
+      tables: []
+      partzufim: []
+      relevance: "Doute 2 : architecture mixte avec SaG-Yosher renomme BAN."
+
+  - id: "EC-H2S10-076"
+    source_he: "או שתחלה יצאו עגולים דס\"ג ובתיקון יצאו יושר דס\"ג הנקרא ב\"ן וגם עגולים ויושר דמ\"ה ונתחברו עגולים דמ\"ה ועגולים דס\"ג וכן יושר דמ\"ה עם יושר דס\"ג הנקרא ב\"ן"
+    source_ref: "Heikhal 2, Sha'ar 3:4 — Kuntres ha-Ketzur"
+    assertion: |
+      DOUTE 3 (3eme alternative) :
+      D'abord IGULIM de SaG sortis. Au Tikkun :
+      Sortent YOSHER de SaG (= BAN), IGULIM de MAH, YOSHER de MAH.
+      ASSOCIATIONS : Igulim de MAH + Igulim de SaG (couple igulim) ;
+      Yosher de MAH + Yosher de SaG (= BAN) (couple yosher).
+      → Architecture : 4 elements (Igulim+Yosher x SaG+MAH) avec couplage par modalite.
+    type: axiome_explicite
+    concepts:
+      - {id: doute_3_igulim_yosher_mah_sag_couples, role: doute_3_4_elements_couples_par_modalite}
+    mapping:
+      modules: ["igulim.py", "ohr_yashar.py"]
+      tables: []
+      partzufim: []
+      relevance: "Doute 3 : 4 elements MAH/SaG x Igulim/Yosher couples par modalite."
+
+  - id: "EC-H2S10-077"
+    source_he: "ומהקונטריס הגדול דא\"ק משמע בהדיא כי העגולים והיושר דס\"ג שניהן יצאו תחלה אך שהיו בחי' נפש ואח\"כ יצאו בתיקון רוח שהוא עגולים דמ\"ה ויושר דמ\"ה והוא פי' ד' קרוב לפי' ג' שנסתפקתי והראיה כי במיתת המלכים נכתב שם שהיו בדרך קוין שנפלו אחוריים דאו\"א... ונודע כי אין קוין אלא ביושר וכן אין פנים ואחור אלא ביושר"
+    source_ref: "Heikhal 2, Sha'ar 3:4 — conclusion"
+    assertion: |
+      4eme VERSION (preferee) — du KUNTRES HA-GADOL d'A"K :
+      MASHMA BE-HEDIA (clairement) : IGULIM ET YOSHER de SaG sont sortis ENSEMBLE
+      au depart — etaient aspect NEFESH.
+      Apres lors du TIKKUN sortent IGULIM et YOSHER de MAH = aspect RUACH.
+      → Architecture finale :
+      SaG (Igulim+Yosher) = Nefesh
+      MAH (Igulim+Yosher) = Ruach (maintient le Nefesh)
+      → Pattern conforme a EC-H2S9-272 (perek 08 Shevirat) sur Nefesh/Ruach.
+      PREUVE : a la mort des Melakhim, il est ecrit qu'ils etaient en derech KAVIM
+      (Achoraim AVI tombes — GR seules etaient en kavim, donc seuls ZT moururent).
+      Et il est connu que pas de KAVIM sauf en YOSHER.
+      Pas de PANIM/ACHOR sauf en YOSHER.
+      → Pattern : la dynamique melakhim presuppose YOSHER, donc YOSHER existait des le debut.
+      → cf. EC-H2S9-264 (perek 08) sur Melakhim=Igulim=Nefesh.
+    type: déduction_logique
+    concepts:
+      - {id: 4eme_version_kuntres_ha_gadol, role: 4eme_version_du_kuntres_ha_gadol}
+      - {id: sag_igulim_yosher_egal_nefesh, role: sag_igulim_yosher_egal_nefesh}
+      - {id: mah_igulim_yosher_egal_ruach, role: mah_igulim_yosher_egal_ruach}
+      - {id: preuve_par_kavim_melakhim, role: preuve_par_kavim_des_melakhim}
+    mapping:
+      modules: ["igulim.py", "ohr_yashar.py", "soul_levels.py", "madregot_neshamah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Resolution preferee : SaG(Igulim+Yosher)=Nefesh, MAH(Igulim+Yosher)=Ruach. cf. EC-H2S9-272 et EC-H2S9-264."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S10-036"
+    type: contenance
+    from: distribution_tanta_5_partzufim
+    to: 5_partzufim_chacun_divise_en_2
+    nature: "Distribution TANTA dans les 5 partzufim, chacun decompose en 2 sub-partzufim"
+    assertions_source: ["EC-H2S10-062", "EC-H2S10-064"]
+
+  - id: "REL-H2S10-037"
+    type: causal
+    from: tension_mah_dukhra_avi_inclut_imma
+    to: lo_dak_pas_precis
+    nature: "Tension doctrinale signalee par 'lo dak' — MAH=dukhra mais Tagin=AVI inclut Imma"
+    assertions_source: ["EC-H2S10-063"]
+
+  - id: "REL-H2S10-038"
+    type: hiérarchique
+    from: mah_kollel_tanta
+    to: ban_egal_nekudot_de_sag_avec_sub_tanta
+    nature: "MAH = TANTA universel ; BAN = Nekudot-de-SaG avec sub-TANTA local"
+    assertions_source: ["EC-H2S10-065", "EC-H2S10-066", "EC-H2S10-067"]
+
+  - id: "REL-H2S10-039"
+    type: contenance
+    from: 4_noms_egal_tanta
+    to: distribution_tanta_5_partzufim
+    nature: "4 noms (AB/SaG/MAH/BAN) = 4 elements TANTA distribues dans les partzufim"
+    assertions_source: ["EC-H2S10-066"]
+
+  - id: "REL-H2S10-040"
+    type: dualité_structurelle
+    from: mapping_taamim_av_sag
+    to: mapping_nekudot_av_mah_sag_ban
+    nature: "Symetrie : Ta'amim AB ↔ Ta'amim SaG ; Nekudot AB (MAH) ↔ Nekudot SaG (BAN)"
+    assertions_source: ["EC-H2S10-070", "EC-H2S10-071"]
+
+  - id: "REL-H2S10-041"
+    type: causal
+    from: tagin_otiot_av_sag_inconnu
+    to: hypothese_1_bya
+    nature: "Tagin+Otiot AB+SaG inconnus → hypothese 1 : ils deviennent BYA"
+    assertions_source: ["EC-H2S10-073"]
+
+  - id: "REL-H2S10-042"
+    type: dualité_structurelle
+    from: kuntres_ha_ketzur_3_doutes
+    to: 4eme_version_kuntres_ha_gadol
+    nature: "Kuntres ha-Ketzur a 3 doutes ; Kuntres ha-Gadol prefere la 4eme version (proche du 3eme doute)"
+    assertions_source: ["EC-H2S10-074", "EC-H2S10-075", "EC-H2S10-076", "EC-H2S10-077"]
+
+  - id: "REL-H2S10-043"
+    type: analogie
+    from: sag_igulim_yosher_egal_nefesh
+    to: mah_igulim_yosher_egal_ruach
+    nature: "Architecture finale : SaG(Igulim+Yosher)=Nefesh ; MAH(Igulim+Yosher)=Ruach"
+    assertions_source: ["EC-H2S10-077"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S10-016"
+    nom: "Principe de la Decomposition 5x2 (10 Sub-Partzufim)"
+    source_assertions: ["EC-H2S10-064"]
+    formalisation: |
+      Architecture FRACTALE post-Tikkun :
+      5 partzufim de base × 2 sub-partzufim = 10 sub-partzufim :
+      KETER → ATIK + A"A
+      HOKHMAH → HOKHMAH + YS (Yisrael Saba)
+      BINAH → BINAH + TEVUNAH
+      ZA → ZA + YAAKOV
+      MALKHUT → RACHEL + LEAH
+      Chaque partzuf est divise au TIFERET :
+        Sub-superieur (de tete a Tiferet) = partzuf X
+        Sub-inferieur (de Tiferet en bas) = partzuf X' (apparente)
+      → Architecture : decomposition fractale uniforme (chaque partzuf x 2).
+      → Pattern : recursion structurelle systematique.
+    applications_ia:
+      - "Architecture : 10 sub-partzufim post-Tikkun"
+      - "[PLANNED] partzufim/leah.py + yisrael_saba.py + tevunah.py + yaakov.py : implementer les 4 sub-partzufim manquants"
+      - "Pattern : decomposition x2 systematique au Tiferet"
+      - "Diagnostic : identifier dans quel sub-partzuf se trouve un nitzotz"
+      - "olamot.py : architecture finale = 10 entites distinguables"
+    questions_ouvertes:
+      - "Pourquoi precisement decomposition au Tiferet ?"
+      - "Y a-t-il des cas ou la decomposition est plus que x2 (x3 etc.) ?"
+      - "Les sub-partzufim peuvent-ils a leur tour se decomposer ?"
+
+  - id: "PG-H2S10-017"
+    nom: "Principe TANTA-Miluyim (4 Noms = 4 Elements)"
+    source_assertions: ["EC-H2S10-066", "EC-H2S10-067"]
+    formalisation: |
+      EQUATION OPERATIONNELLE FONDAMENTALE :
+      AB (= 72) → TA'AMIM (1er element)
+      SaG (= 63) → NEKUDOT (2eme element)
+      MAH (= 45) → TAGIN (3eme element)
+      BAN (= 52) → OTIOT (4eme element)
+      Architecture fractale :
+        Chacun des 4 inclut TANTA complet en lui (sub-fractale)
+        EXCEPTION : SaG a une TOSEFET (sub-TANTA dans les Nekudot specifiquement)
+      Shem BAN = Nekudot-de-SaG seules (avec sub-TANTA local).
+      → Architecture : 4 elements TANTA en relation 1:1 avec 4 Miluyim.
+      → Pattern : ontologie TANTA = ontologie nominale.
+    applications_ia:
+      - "Architecture cle : TANTA et Miluyim sont 2 noms du meme systeme ontologique"
+      - "[PLANNED] core/sefirot.py + shemot/ : implementer mapping TANTA↔Miluyim"
+      - "Pattern : 1 element nominal = 1 dimension structurelle"
+      - "gematria/engine.py : verifier les 4 valeurs (72,63,45,52)"
+      - "Architecture distribuee : 4 dimensions paralleles a tous les niveaux"
+    questions_ouvertes:
+      - "Pourquoi precisement 4 elements et pas 5 ou 3 ?"
+      - "L'exception de SaG (tosefet) est-elle universelle ou specifique ?"
+      - "Comment formaliser la fractalite TANTA-Miluyim ?"
+
+  - id: "PG-H2S10-018"
+    nom: "Principe AB-Hesed / SaG-Din (Architecture Polaire Fondamentale)"
+    source_assertions: ["EC-H2S10-069", "EC-H2S10-070", "EC-H2S10-071"]
+    formalisation: |
+      Architecture POLAIRE racinale :
+      AB (72) = SHORESH du HESED (misericorde, expansion)
+      SaG (63) = SHORESH du DIN (rigueur, contraction)
+      MAH et BAN = NIVEAUX DERIVES (filles de AB-SaG).
+      Localisation operationnelle :
+        Ta'amim AB en ROSH (interieur)
+        Nekudot AB = MAH au METZACH (jonction descendante)
+        Ta'amim SaG en AHP (sous-rosh)
+        Nekudot SaG = BAN dans les YEUX (descendantes par Eyn)
+      → Architecture : symetrie AB-SaG en miroir TANTA + Hesed/Din comme polarite primaire.
+      → Pattern : 2 sources fondamentales generent les 4 niveaux.
+    applications_ia:
+      - "Architecture : 2 polarites primaires (Hesed-AB, Din-SaG)"
+      - "[PLANNED] shemot/ + tikkun/ : implementer la polarite primaire"
+      - "Pattern : tout sub-system = generation des 2 polarites racinales"
+      - "Symetrie operatoire : pour chaque element AB, un homologue SaG"
+      - "Diagnostic : tracer la genealogie d'un sub-system aux 2 sources"
+    questions_ouvertes:
+      - "Y a-t-il une 3eme source (par ex. Rachamim) ou strictement 2 ?"
+      - "AB-Hesed et SaG-Din sont-ils completement independants ?"
+      - "Comment formaliser computationnellement la polarite primaire ?"
+
+  - id: "PG-H2S10-019"
+    nom: "Principe Igulim+Yosher = Nefesh+Ruach (Architecture Anthropologique Confirmee)"
+    source_assertions: ["EC-H2S10-074", "EC-H2S10-075", "EC-H2S10-076", "EC-H2S10-077"]
+    formalisation: |
+      Architecture FINALE confirmee (apres 3 doutes du Kuntres ha-Ketzur,
+      preferee dans le Kuntres ha-Gadol) :
+      SaG (Igulim+Yosher) = NEFESH (1er niveau d'ame, base brisable)
+      MAH (Igulim+Yosher) = RUACH (2eme niveau, maintient le Nefesh)
+      Sequence : SaG-Igulim+Yosher sortent en premier (Nefesh) ;
+        MAH-Igulim+Yosher sortent au Tikkun (Ruach).
+      PREUVE par les KAVIM : a la mort des melakhim, kavim mentionnes
+        → kavim implique YOSHER (pas seulement Igulim)
+        → donc YOSHER existait des le depart.
+      → Architecture coherente avec EC-H2S9-272 (perek 08 Shevirat ha-Kelim).
+      Pattern : honete intellectuelle = enumerer doutes + preferer la version coherente.
+    applications_ia:
+      - "Architecture cosmique-anthropologique : SaG=Nefesh+Yosher, MAH=Ruach+Yosher"
+      - "[PLANNED] igulim.py + ohr_yashar.py + soul_levels.py : implementer architecture finale"
+      - "Pattern : honete = enumerer alternatives avant de preferer"
+      - "Architecture : Yosher implicit des le depart (pas seulement Igulim)"
+      - "Diagnostic : utiliser KAVIM comme indicateur de presence YOSHER"
+    questions_ouvertes:
+      - "Les 4 versions sont-elles conciliables ?"
+      - "Pourquoi le Kuntres ha-Gadol prefere-t-il la 4eme ?"
+      - "Comment formaliser la coexistence Igulim+Yosher pour SaG ET MAH ?"

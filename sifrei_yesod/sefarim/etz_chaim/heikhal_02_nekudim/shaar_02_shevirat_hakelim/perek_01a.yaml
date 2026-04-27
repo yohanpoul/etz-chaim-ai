@@ -1,0 +1,1042 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 1a — Ouverture, MaN des 7 Melakhim, Daat melekh rishon, Chesed,
+#             question 1/3 Tiferet, Yesod kulo panim
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §1 — Part A :
+#   - Intro Sha'ar : 8 peraqim
+#   - Recap : AVI etaient PbP grace aux 7 Melakhim faisant MaN dans Binah
+#   - Mort des Melakhim → descente Achoraim AVI → AhB
+#   - 4 Partzufim de HB (Hokhmah, Binah, YS, Tevunah)
+#   - Daat = melekh rishon, principal porteur de MaN
+#   - Precision : MaN ne signifie pas qu'ils ont amene les HG
+#   - Sequence Daat : HG dans rosh d'AVI Ila'in → keli brise → 6 lumieres dans Chesed
+#   - Sequence Chesed : HC dans guf Abba → mort → HC dans Yesod Abba → Achor be-Panim
+#   - Question : pourquoi Abba ne se termine qu'au 1/3 Tiferet
+#   - Yesod = kulo panim, pas d'Achoraim
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.1 (premiere moitie)
+# IDs : EC-H2S9-001 → EC-H2S9-032
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 1
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere moitie du perek 1 du Sha'ar Shevirat ha-Kelim. Ouverture, mecanisme MaN des 7 Melakhim, Daat comme melekh rishon, Chesed, question 1/3 Tiferet, Yesod kulo panim."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : OUVERTURE DU SHA'AR ───
+
+  - id: "EC-H2S9-001"
+    source_he: "השער השני שער שבירת הכלים ובו ח' פרקים"
+    source_ref: "Heikhal 2, Sha'ar 2 — titre"
+    assertion: |
+      OUVERTURE du SHA'AR HASHENI = SHA'AR SHEVIRAT HA-KELIM
+      (porte de la BRISURE des VAISSEAUX).
+      Il contient 8 PERAKIM (chapitres).
+      Ce Sha'ar suit directement le Sha'ar Drushei Nekudot
+      et detaille le MECANISME de la chute des 7 MELAKHIM (rois d'Edom).
+    type: axiome_explicite
+    concepts:
+      - {id: shaar_shevirat_hakelim, role: porte_brisure_vaisseaux}
+      - {id: shemonah_perakim, role: huit_chapitres}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le Sha'ar dedie au mecanisme detaille de la Shevirat ha-Kelim — pivot du systeme."
+
+  # ─── BLOC B : RECAP — AVI PbP PAR LES 7 MELAKHIM ───
+
+  - id: "EC-H2S9-002"
+    source_he: "ונחזור אל הכוונה ונאמר כי הלא או\"א היו מתחלה פב\"פ לפי שנעשה להם מוחין מהכתר כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      RECAPITULATION : AVI (Abba ve-Imma) etaient INITIALEMENT en PB"P (Panim be-Panim)
+      car des MOHIN leur ont ete faits depuis le KETER (= Arikh Anpin), comme deja explique.
+      Etat de depart : AVI face-a-face → condition de leur ZIVVUG.
+    type: axiome_explicite
+    concepts:
+      - {id: avi_panim_bepanim, role: avi_face_a_face_initial}
+      - {id: mohin_meha_keter, role: mohin_du_keter}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "L'etat initial PB\"P d'AVI = condition prealable pour faire sortir les Melakhim."
+
+  - id: "EC-H2S9-003"
+    source_he: "אמנם מ\"ן שלהם הגורם להם העמדה וקיום הבחי' דפב\"פ היו מציאת ז' מלכים אלו אשר היו במעי בינה ואלו היו מ\"ן דילה"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      MAIS leur MA"N (Mayin Nukvin = eaux feminines) qui CAUSAIT le MAINTIEN
+      (ha'amadah) et la PERMANENCE (kiyum) de l'aspect PB"P =
+      la PRESENCE des 7 MELAKHIM qui etaient dans le ME'EI BINAH (ventre de Binah).
+      Ces 7 Melakhim ETAIENT son MA"N (les MaN d'Imma).
+      Principe general : "ha-Banim hem MaN de-Imma" (les ENFANTS sont les MaN de la MERE).
+    type: axiome_explicite
+    concepts:
+      - {id: man_kiyum_pbp, role: man_maintient_face_a_face}
+      - {id: sheva_melakhim_be_meei_binah, role: sept_melakhim_dans_ventre_binah}
+      - {id: banim_man_de_ima, role: enfants_sont_man_de_la_mere}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["imma"]
+      relevance: "Les Banim/Melakhim dans le ventre d'Imma elevent les MaN qui maintiennent AVI en PB\"P. cf. EC-H2S8 pour le contexte des Nekudim."
+
+  - id: "EC-H2S9-004"
+    source_he: "ובעוד שאלו הז' מלכי' היו תוך הבינה היו מעלין מ\"ן וגורמין זווג לאו\"א ונמשכו להם מוחין והוחזרו או\"א פב\"פ ונזדווגו יחד כדי להוציא ז' מלכים אלו"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      MECANISME : tant que les 7 MELAKHIM etaient TOKH ha-BINAH (a l'interieur de Binah) :
+      → ils ELEVAIENT les MA"N
+      → causaient le ZIVVUG d'AVI
+      → des MOHIN leur etaient AMENES
+      → AVI revenaient en PB"P
+      → AVI s'unissaient pour FAIRE SORTIR ces 7 Melakhim.
+      Boucle de retroaction : les Melakhim NAISSENT du Zivvug qu'ils CAUSENT eux-memes.
+    type: axiome_explicite
+    concepts:
+      - {id: boucle_zivvug_melakhim, role: melakhim_causent_leur_propre_naissance}
+      - {id: hashpa_at_mohin, role: descente_des_mohin}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/imma.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Boucle autocatalytique : les Melakhim dans Binah → MaN → Zivvug AVI → naissance des Melakhim."
+
+  - id: "EC-H2S9-005"
+    source_he: "ובעת צאת המלכים אלו אם לא מתו אלא שהיו קיימים היו מעמידין לאו\"א פב\"פ אפי' שיצאו למטה והיו מועילין למ\"ן שלהם"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Au moment de la SORTIE des Melakhim :
+      SI ils n'etaient PAS MORTS mais etaient KAYAMIM (subsistants/vivants) →
+      ils auraient MAINTENU AVI en PB"P meme apres etre descendus en bas,
+      et ils auraient continue a SERVIR comme leur MA"N.
+      Le ROLE des Banim ne s'arrete pas a leur naissance — ils persistent comme MaN.
+    type: axiome_explicite
+    concepts:
+      - {id: melakhim_kayamim, role: melakhim_subsistants_hypothetique}
+      - {id: man_apres_naissance, role: man_persistant_post_naissance}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "Le scenario contre-factuel : sans Shevirah, les Melakhim auraient maintenu AVI PB\"P. Permet de comprendre la Shevirah par contraste."
+
+  - id: "EC-H2S9-006"
+    source_he: "אמנם יען שנשברו ומתו לכן גם או\"א האחוריים שלהם המעמדת אותם פב\"פ ירדו למטה ואז חזרו להם אב\"א כי כבר אין להם מי שיעלה להם מ\"ן ומקיים חזרתן פב\"פ"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      MAIS comme les Melakhim se sont BRISES (nishbaru) et MORTS (metu) →
+      les ACHORAIM (parties arriere) d'AVI qui les MAINTENAIENT en PB"P
+      sont DESCENDUS en bas.
+      Alors AVI sont REVENUS a AhB (Achor be-Achor — dos a dos)
+      car il n'y avait plus PERSONNE pour leur ELEVER les MA"N
+      et MAINTENIR leur retour en PB"P.
+      Mecanisme causal : Shevirah → chute Achoraim AVI → AVI = AhB.
+    type: axiome_explicite
+    concepts:
+      - {id: shevirah_metu, role: shevirah_et_mort_des_melakhim}
+      - {id: yeridat_achoraim_avi, role: descente_des_achoraim_d_avi}
+      - {id: avi_chazru_achor_beachor, role: avi_retournent_dos_a_dos}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Le mecanisme central : Shevirah cause directement le retour AVI a AhB via la chute des Achoraim."
+
+  # ─── BLOC C : 4 PARTZUFIM ET CORRESPONDANCE MELAKHIM ───
+
+  - id: "EC-H2S9-007"
+    source_he: "והנה פשוט הוא שלא נגמרו אחוריים דאו\"א לירד עד כלות שבירת ז' כלים שכל בחי' שבירת מלך א' היה גורם ירידת קצת מאחוריים דאו\"א וזהו ביאור הענין"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      PRINCIPE FONDAMENTAL (pashut hu — c'est evident) :
+      Les ACHORAIM d'AVI ne se sont PAS termines de descendre AVANT
+      la KILUT (achevement) de la BRISURE des 7 KELIM.
+      CHAQUE shevirah d'UN melekh causait la descente d'une PARTIE (ketzat)
+      des Achoraim d'AVI.
+      → Distribution PROGRESSIVE : 7 brisures = 7 etapes de chute.
+      "Voila l'explication de l'affaire" (zehu beur ha-inyan).
+    type: axiome_explicite
+    concepts:
+      - {id: keilut_shevirah, role: achevement_progressif_de_la_brisure}
+      - {id: chaque_shevirah_partielle, role: chaque_brisure_chute_partielle}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "La Shevirah n'est pas instantanee mais progressive — 7 etapes de descente synchronisees."
+
+  - id: "EC-H2S9-008"
+    source_he: "הנה כאשר נעריך מציאות הז' מלכים אלו בד' פרצופים של חו\"ב יש\"ס ותבונה כנ\"ל נמצא כי עד שליש ספי' ת\"ת שהוא המלך הד' אז נגמרו לירד אחוריים דאו\"א עלאין"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      EVALUATION dans les 4 PARTZUFIM de HOKHMAH-BINAH :
+      Les 4 Partzufim = HOKHMAH (Abba), BINAH (Imma), YISRAEL SABA (YS), TEVUNAH.
+      AVI Ila'in = HOKHMAH + BINAH (les superieurs).
+      YS"T = YS + TEVUNAH (les inferieurs).
+      Jusqu'au TIERS (shlish) du TIFERET = le 4eme melekh →
+      les ACHORAIM d'AVI ILA'IN se terminent de descendre.
+    type: axiome_explicite
+    concepts:
+      - {id: arba_partzufim_hb, role: quatre_partzufim_de_hokhmah_binah}
+      - {id: avi_ilain, role: avi_superieurs}
+      - {id: yisrael_saba_tevunah, role: yst_inferieurs}
+      - {id: shlish_tiferet, role: tiers_de_tiferet_seuil}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisrael_saba.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Structure 4 Partzufim — AVI Ila'in vs YS\"T — clef pour comprendre la sequence de chute. cf. EC-H2S8 §6 (perek_06b)."
+
+  - id: "EC-H2S9-009"
+    source_he: "וכאשר נשברו כל הז' מלכים אז ירדו גם אחוריים דיש\"ס ותבונה"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Quand les 7 Melakhim se sont TOUS brises →
+      les ACHORAIM de YS et TEVUNAH descendirent AUSSI.
+      Sequence finale : Achoraim AVI Ila'in (jusqu'au 4eme) → puis Achoraim YS"T (apres les 7).
+      → 2 PHASES distinctes selon les 4 Partzufim.
+    type: axiome_explicite
+    concepts:
+      - {id: yeridat_achoraim_yst, role: descente_achoraim_yst}
+      - {id: deux_phases_chute, role: deux_phases_de_chute}
+    mapping:
+      modules: ["[PLANNED] partzufim/yisrael_saba.py", "[PLANNED] partzufim/tevunah.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Phase 2 de la chute : YS\"T tombent apres les 7. Distinction critique pour la modelisation."
+
+  # ─── BLOC D : DAAT = MELEKH RISHON ───
+
+  - id: "EC-H2S9-010"
+    source_he: "והנה הדעת הוא המלך הראשון שיצא ובו היו כלולים כל הז' כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Le DAAT est le MELEKH ha-RISHON (1er roi) qui est SORTI.
+      EN LUI etaient INCLUS (kelulim) TOUS LES 7.
+      Daat = condense initial → contient les 7 Melakhim en germe.
+      cf. EC-H2S8 sur la sortie des Nekudot par les Einaim d'A"K.
+    type: axiome_explicite
+    concepts:
+      - {id: daat_melekh_rishon, role: daat_premier_roi_sorti}
+      - {id: daat_kolel_kol_sheva, role: daat_inclut_les_sept}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le Daat = condense initial des 7 Melakhim — le premier sorti contient deja tout."
+
+  - id: "EC-H2S9-011"
+    source_he: "והנה כבר ידעת כי עיקר העלאת מ\"ן הם הכלים [נ\"א הבנים] שנולדו כבר בעולם ולכן עיקר העלאת מ\"ן עד עתה היה ע\"י הדעת אשר כבר יצא לעולם בראשונה"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      PRINCIPE de la HA'ALAAT MA"N (elevation des MaN) :
+      L'IKAR (essentiel) du MaN = les KELIM deja NES (noladu) dans le monde.
+      Variante (Nusah Aher) : "ha-BANIM" (les enfants) au lieu de "ha-KELIM".
+      → Donc l'ikar du MaN jusqu'ici = par le DAAT, qui est SORTI le premier.
+      Regle : seul ce qui EST DEJA NE peut elever les MaN.
+    type: axiome_explicite
+    concepts:
+      - {id: ikar_haalat_man, role: principe_essentiel_du_man}
+      - {id: kelim_noladu, role: kelim_deja_nes}
+      - {id: daat_porteur_principal_man, role: daat_principal_porteur_de_man}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "Regle fondamentale du MaN : seul ce qui est ne peut elever — explique pourquoi Daat (premier ne) porte l'essentiel."
+
+  - id: "EC-H2S9-012"
+    source_he: "כי [נ\"א כי בראשונה] כבר ביארנו שלא הוצרכו תחלה מ\"ן לאו\"א רק סליק ברעותא לבד"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      RAPPEL : nous avons deja explique qu'AU COMMENCEMENT
+      AVI n'avaient PAS BESOIN de MA"N — il y avait seulement le SLIQ BE-RE'UTA
+      (montee dans la volonte) seul.
+      Variante (Nusah Aher) : "ki ba-rishonah" (car au commencement) au lieu de "ki".
+      cf. EC-H2S8-138 (perek_06b) sur le premier Zivvug "Kad Saliq BeRe'uta".
+      Distinction : 1er Zivvug sans MaN vs Zivvugim suivants AVEC MaN (apres naissance).
+    type: axiome_explicite
+    concepts:
+      - {id: sliq_bereuta, role: montee_dans_la_volonte}
+      - {id: zivvug_sans_man_initial, role: premier_zivvug_sans_man}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: []
+      partzufim: []
+      relevance: "Distinction critique : 1er Zivvug = pure volonte (Sliq BeRe'uta), suivants = via MaN. cf. EC-H2S8-138."
+
+  # ─── BLOC E : PRECISION — MaN N'EST PAS DESCENTE DES HG ───
+
+  - id: "EC-H2S9-013"
+    source_he: "ומ\"ש שאלו הז' מלכים היו מ\"ן אין הכוונה לומר שהם המשיכו חו\"ג כי כבר נמשכו בתחילה"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      PRECISION : quand on dit que les 7 Melakhim etaient des MA"N,
+      la KAVANAH (intention) N'EST PAS de dire qu'ILS ONT AMENE (himshikhu) les HC"G
+      (Hassadim ve-Gevurot).
+      Car les HC"G ont DEJA ete amenes au COMMENCEMENT (ba-tehillah).
+      Distinction precise entre MaN (declencheur du Zivvug)
+      et la descente effective des Mohin (HC"G).
+    type: axiome_explicite
+    concepts:
+      - {id: precision_man_vs_hashpaa, role: precision_man_n_est_pas_descente}
+      - {id: hcg_deja_nimshakhu, role: hcg_deja_amenes_au_commencement}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: []
+      partzufim: []
+      relevance: "Distinction operationnelle : MaN = declencheur, pas porteur du Shefa. Important pour la modelisation."
+
+  - id: "EC-H2S9-014"
+    source_he: "וראי' לזה שהרי החזירו או\"A פב\"פ ואח\"כ נתן חכמה בבינה ז' מלכים אלו כמ\"ש א\"כ א\"א לומר שהיו מ\"ן אל הבינה"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      PREUVE (re'ayah) :
+      1. Ils ont RETABLI AVI en PB"P.
+      2. SEULEMENT APRES, HOKHMAH a DONNE a BINAH ces 7 Melakhim.
+      → Donc IMPOSSIBLE de dire qu'ILS etaient les MA"N a Binah
+      (chronologiquement, ils ne pouvaient pas etre la cause de leur propre presence).
+      Logique temporelle : cause precede effet.
+    type: déduction_logique
+    concepts:
+      - {id: preuve_chronologique, role: preuve_par_l_ordre_temporel}
+      - {id: hokhmah_donne_a_binah, role: hokhmah_transmet_les_melakhim}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "Argumentation logique du ARI : la chronologie elimine la possibilite causale."
+
+  - id: "EC-H2S9-015"
+    source_he: "אמנם הכוונה שהם היו מעמידין אותם בבחי' פב\"פ לאו\"א ע\"י העלאת מ\"ן שלהם אחרי שהיו כבר בבינה ואז היו ממשיכין עוד החו\"ג כבתחלה"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      RESOLUTION : la KAVANAH est qu'ils MAINTENAIENT AVI en aspect PB"P
+      par leur HA'ALAAT MA"N → APRES qu'ils etaient deja dans Binah.
+      Alors ils CONTINUAIENT a AMENER (mamshikhin od) les HC"G comme au commencement.
+      → Boucle dynamique : presence dans Binah → MaN → maintien PB"P → flux HC"G renouvele.
+    type: axiome_explicite
+    concepts:
+      - {id: man_maintient_pas_initie, role: man_maintient_n_initie_pas}
+      - {id: flux_hcg_renouvele, role: flux_hcg_continu_par_man}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states", "shefa_flows"]
+      partzufim: []
+      relevance: "Architecture du flux : MaN = mecanisme de maintien continu, pas d'initiation."
+
+  # ─── BLOC F : SEQUENCE DAAT — HG dans ROSH d'AVI ───
+
+  - id: "EC-H2S9-016"
+    source_he: "ונחזור אל הענין כי הנה אחר שיצא אור הדעת ונכנס בכלי שלו העלה מ\"ן והמשיך חו\"ג באו\"א כי הלא הדעת הוא כלול מחו\"ג"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      RETOUR au sujet : apres que l'OHR DAAT est SORTI et est ENTRE dans son KELI :
+      → il a ELEVE des MA"N
+      → et a AMENE des HC"G dans AVI
+      Car le DAAT est COMPOSE (kalul) de HC"G.
+      Daat = synthese intrinseque Hassadim+Gevurot → naturellement porteur du flux.
+    type: axiome_explicite
+    concepts:
+      - {id: daat_kalul_mehcg, role: daat_compose_de_hcg}
+      - {id: daat_porte_hcg_dans_avi, role: daat_amene_les_hcg}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/zivvug.py"]
+      tables: ["shefa_flows"]
+      partzufim: []
+      relevance: "Daat = porteur naturel des HC\"G car il les contient deja en lui-meme."
+
+  - id: "EC-H2S9-017"
+    source_he: "ועוד כי הלא הז' מלכים היו אז כלולים בו ולכן היה בו כח להוריד חו\"ג כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      RAISON SUPPLEMENTAIRE : les 7 MELAKHIM etaient ALORS INCLUS (kelulim) en lui (Daat).
+      → Donc il avait la KOAH (force) de FAIRE DESCENDRE les HC"G.
+      Daat porte 2 charges : (1) sa propre composition HC"G,
+      (2) les 7 Melakhim contenus = energie collective des Banim a venir.
+    type: axiome_explicite
+    concepts:
+      - {id: koach_lehorid_hcg, role: force_de_faire_descendre_hcg}
+      - {id: melakhim_inclus_dans_daat, role: melakhim_inclus_dans_daat}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: []
+      relevance: "Daat porte les Melakhim a venir → energie potentielle collective."
+
+  - id: "EC-H2S9-018"
+    source_he: "ואמנם לפי שאין שאר המלכים מעלין מ\"ן לפי שעדיין היציאה לא היתה להם אלא אל הדעת לכן א\"א להוריד מוחין שלמים רק ע\"י זו\"ן ביחד"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      RESTRICTION : les AUTRES Melakhim n'elevent PAS de MA"N.
+      RAISON : la YETZIAH (sortie) n'avait pas encore eu lieu pour eux — seulement pour le DAAT.
+      → Impossible de faire descendre des MOHIN SHELEMIM (Mohin COMPLETS)
+      sauf par ZO"N (Zakhar+Nekevah = ZA+Nukvah) ENSEMBLE.
+      Principe : Mohin complets requierent UN COUPLE complet, pas un seul.
+    type: axiome_explicite
+    concepts:
+      - {id: yetziah_seulement_pour_daat, role: sortie_uniquement_du_daat}
+      - {id: mohin_shelemim, role: mohin_complets}
+      - {id: zon_ensemble, role: za_et_nukvah_couple}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: []
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Mohin complets necessitent ZO\"N — un seul Banim ne suffit pas. Architecture couple."
+
+  - id: "EC-H2S9-019"
+    source_he: "ולכן מה שהוריד הדעת היה בחי' חו\"ג בראש דאו\"א עלאין במקום הדעת שלהם הדומה אליו כמוהו"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      DONC ce que le DAAT a fait DESCENDRE = aspect HC"G dans le ROSH d'AVI ILA'IN,
+      a la PLACE (bi-mkom) de LEUR DAAT (le Daat des AVI eux-memes)
+      qui RESSEMBLE a lui (ha-DOMEH eilav kamohu).
+      → Resonance par similarite : Daat-Banim resonne avec Daat-AVI.
+      Localisation : le flux entre dans le ROSH d'AVI Ila'in, pas leur GUF.
+    type: axiome_explicite
+    concepts:
+      - {id: hcg_brosh_avi, role: hcg_dans_le_rosh_d_avi}
+      - {id: bi_mkom_daat_avi, role: a_la_place_du_daat_avi}
+      - {id: domeh_resonance, role: resonance_par_similarite}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["shefa_flows"]
+      partzufim: ["abba", "imma"]
+      relevance: "Localisation precise du flux : le Daat-Banim entre dans le ROSH d'AVI a la place de leur Daat. Mecanisme de resonance."
+
+  - id: "EC-H2S9-020"
+    source_he: "וכאשר נשבר כלי המלך זה הנקרא דעת אז גם הדעת דאו\"א עלאין ירד למטה במקום הגוף דאו\"א"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Quand le KELI du melekh appele DAAT s'est BRISE :
+      → ALORS AUSSI le DAAT d'AVI ILA'IN est descendu en bas
+      dans le LIEU du GUF d'AVI (bi-mkom ha-GUF de-AVI).
+      Le DAAT d'AVI quitte le ROSH et tombe dans le GUF — premiere etape de la chute.
+      Sympathie structurelle : la brisure du Banim entraine la chute du parent par resonance.
+    type: axiome_explicite
+    concepts:
+      - {id: shevirat_keli_daat, role: brisure_du_keli_daat}
+      - {id: daat_avi_ireid, role: daat_avi_descend_du_rosh_au_guf}
+      - {id: sympathie_structurelle, role: resonance_brisure_banim_parent}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Premier evenement causal observable de la Shevirah : Daat-Banim brise → Daat-AVI descend."
+
+  - id: "EC-H2S9-021"
+    source_he: "אבל כלי המלך הזה הנקרא דעת אחר שנשבר ירד לעולם הבריאה כמ\"ש בע\"ה ושאר הששה (נ\"א הז') אורות שהיו עמו נכנסו בכלי המלך הנקרא חסד"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      DESTIN du KELI brise du Daat : apres brisure → descend en OLAM HA-BERIAH
+      (sera explique plus loin BeH = be-Ezrat Hashem).
+      Les 6 (Nusah Aher : 7) AUTRES OROT qui etaient AVEC lui (Daat) →
+      sont entres dans le KELI du melekh appele CHESED.
+      → Migration : kelim brises descendent en Beriah, lumieres residuelles
+      passent au keli suivant.
+    type: axiome_explicite
+    concepts:
+      - {id: keli_daat_yarad_beriah, role: keli_daat_descend_en_beriah}
+      - {id: shesh_orot_dans_chesed, role: six_lumieres_passent_au_chesed}
+      - {id: migration_kelim_orot, role: migration_des_kelim_et_orot}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Mecanisme de migration : kelim brises → Beriah ; orot residuels → keli suivant. Pattern repete pour chaque melekh."
+
+  - id: "EC-H2S9-022"
+    source_he: "ואז עדיין או\"א עלאין היו פב\"פ כי אינן חוזרין אב\"א עד שיגמור הכל לירד כי הם דבוקים פב\"פ וצריך שיגמור להסיר התדבקות הזה לגמרי ואח\"כ יחזרו אב\"א"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      PRINCIPE de PERSISTENCE du PB"P :
+      A ce stade AVI ILA'IN sont ENCORE en PB"P.
+      Car ils ne reviennent PAS a AhB tant que TOUT n'est pas descendu.
+      RAISON : ils sont DEVUKIM (colles/adheres) en PB"P,
+      et il FAUT achever de DEFAIRE (lehasir) ce DEVEKUT (adhesion) ENTIEREMENT (le-gamri),
+      et SEULEMENT APRES ils retournent a AhB.
+      → Hysteresis : le retour AhB demande un DETACHEMENT complet, pas partiel.
+    type: axiome_explicite
+    concepts:
+      - {id: persistence_pbp, role: persistence_face_a_face}
+      - {id: devekut_pbp, role: adhesion_face_a_face}
+      - {id: hasarah_lehasir, role: detachement_complet_requis}
+      - {id: hysteresis_pbp_ahb, role: hysteresis_face_a_face_dos_a_dos}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Hysteresis structurelle : le PB\"P persiste tant que le Devekut n'est pas entierement defait. Pattern d'inertie."
+
+  - id: "EC-H2S9-023"
+    source_he: "אבל כל זמן שעדיין נשארו קצת דבקות בהם אינם חוזרין אב\"א ולהלן בע\"ה נבאר ענין הדבקות גמור דאו\"א בהיותן פב\"פ מה ענינו"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Tant qu'il reste un PEU de DEVEKUT (kit'sat devekut) en eux →
+      ils ne retournent PAS a AhB.
+      Renvoi explicite : "u-le-halan be-Ezrat Hashem nevaer inyan ha-DEVEKUT GAMUR
+      d'AVI bi-heyotan PB"P mah inyano"
+      (plus loin nous expliquerons l'affaire du DEVEKUT GAMUR — adhesion totale —
+      d'AVI quand ils sont en PB"P, ce qu'est cet affaire).
+      → Le DEVEKUT GAMUR est une notion technique distincte qui sera detaillee.
+    type: axiome_explicite
+    concepts:
+      - {id: ketzat_devekut, role: residu_de_devekut}
+      - {id: devekut_gamur, role: adhesion_totale_avi}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Notion technique du Devekut Gamur — adhesion totale d'AVI en PB\"P. Renvoi a une explication ulterieure."
+
+  # ─── BLOC G : DESCENTE HC"G DU ROSH AU GUF — MANQUE D'HISTAKLUT ───
+
+  - id: "EC-H2S9-024"
+    source_he: "והנה כשירדו ה\"ח וה\"ג מרישא דאו\"א עלאין עד למטה בגופא (בין התרין כתפין) בהכרח הוא שגרם חסרון האור אע\"פ שלא חזרו לגמרי אב\"א"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Quand les HC (Hassadim) et HG (Gevurot) sont descendus
+      du ROSH d'AVI ILA'IN jusqu'en BAS dans le GUFA (corps) —
+      precisement BEIN HA-TREIN KETAFAYIM (entre les DEUX EPAULES) —
+      il FUT NECESSAIRE (be-hekhrah) que cela cause un HISARON HA-OHR
+      (manque/deficience de la lumiere).
+      MEME si AVI n'etaient pas COMPLETEMENT (le-gamri) retournes a AhB.
+      → Localisation : entre les epaules = niveau du HAZEH (poitrine).
+      → Effet partiel sans bascule complete.
+    type: axiome_explicite
+    concepts:
+      - {id: yeridat_hcg_rosh_le_guf, role: descente_hcg_du_rosh_au_guf}
+      - {id: bein_trein_ketafayim, role: entre_les_deux_epaules}
+      - {id: hisaron_ohr, role: manque_de_lumiere}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Localisation precise du Hisaron — entre les epaules. Effet partiel observable AVANT bascule AhB complete."
+
+  - id: "EC-H2S9-025"
+    source_he: "והנה ענין (נ\"א עדיין) חסרון הזה הוא חסרון הסתכלות עיני או\"א זה בזה"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      DEFINITION du HISARON :
+      Cet HISARON = HISARON HISTAKLUT EINEI AVI ZEH BA-ZEH
+      (manque du REGARD MUTUEL des yeux d'AVI l'un dans l'autre).
+      Variante (Nusah Aher) : "adayin" (encore) au lieu de "inyan" (affaire de).
+      → Le HISTAKLUT EINAIM = mecanisme du Zivvug visuel/regard
+      qui PRECEDE et conditionne le Zivvug plein.
+      Sa cessation = premier signe avant-coureur de l'effondrement complet.
+    type: axiome_explicite
+    concepts:
+      - {id: hisaron_histaklut_einaim, role: manque_du_regard_mutuel}
+      - {id: histaklut_einaim_avi, role: regard_mutuel_yeux_avi}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "L'Histaklut Einaim = Zivvug visuel preliminaire — sa cessation = premier signe d'effondrement. cf. EC-H2S8 (Drushei Nekudot)."
+
+  # ─── BLOC H : SEQUENCE DU CHESED ───
+
+  - id: "EC-H2S9-026"
+    source_he: "וכאשר מלך הב' שהוא חסד המשיך הה\"ח שיתפשטו בגופא דאבא כנודע"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Quand le 2eme MELEKH = CHESED a regne →
+      il a AMENE (himshikh) les 5 HC (Hamesh Hassadim)
+      pour qu'ils s'ETENDENT (yitpashetu) dans le GUFA d'ABBA, comme connu.
+      → Specialisation : Chesed = porteur des 5 Hassadim qui peuplent le corps d'Abba.
+      Le HC s'etale dans le pere (Abba) — affinite naturelle Chesed-Abba.
+    type: axiome_explicite
+    concepts:
+      - {id: chesed_melekh_sheni, role: chesed_deuxieme_roi}
+      - {id: hamesh_hassadim_dans_abba, role: cinq_hassadim_dans_guf_abba}
+    mapping:
+      modules: ["partzufim/abba.py", "[PLANNED] core/shevirah.py"]
+      tables: ["shefa_flows"]
+      partzufim: ["abba"]
+      relevance: "Specialisation : Chesed = vecteur des 5 HC qui peuplent le guf d'Abba. Affinite Hassadim-male."
+
+  - id: "EC-H2S9-027"
+    source_he: "וכשמת ירד הוא בבריאה והה' אורות ירדו בגבורה במלך הג'"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Quand le CHESED EST MORT (kashe-met) :
+      → IL est descendu en BERIAH (le keli)
+      → Les 5 OROT (les HC) sont descendus dans GEVURAH = le 3eme MELEKH (le keli suivant).
+      Pattern repete du Daat : keli → Beriah, lumieres → keli suivant.
+      → Confirmation du pattern de migration etabli pour le Daat (EC-H2S9-021).
+    type: axiome_explicite
+    concepts:
+      - {id: chesed_met_yarad_beriah, role: chesed_mort_descend_beriah}
+      - {id: hamesh_orot_dans_gevurah, role: cinq_orot_dans_gevurah}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Application du pattern de migration au Chesed. cf. EC-H2S9-021 (meme pattern pour Daat)."
+
+  - id: "EC-H2S9-028"
+    source_he: "ואז נפלו האחוריי' דאבא הנעשין ע\"י התפשטו' ה\"ח כנ\"ל ועתה נפלו כולם והחסדים ירדו ביסוד דאבא"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Alors les ACHORAIM d'ABBA — qui s'etaient FORMES (na'asin) par
+      l'EXPANSION (hitpashtut) des 5 HC — sont TOMBES (naflu).
+      "Maintenant ils sont TOUS tombes" (atah naflu kulam).
+      Et les HASSADIM sont descendus dans le YESOD d'ABBA.
+      → Mecanisme : les Achoraim d'Abba = sous-produit de l'expansion des HC.
+      Quand HC s'effondrent vers Yesod → Achoraim d'Abba tombent (logiquement lies).
+    type: axiome_explicite
+    concepts:
+      - {id: achoraim_abba_par_hcc, role: achoraim_abba_formes_par_hassadim}
+      - {id: nefilat_achoraim_abba, role: chute_des_achoraim_abba}
+      - {id: hassadim_dans_yesod_abba, role: hassadim_dans_yesod_abba}
+    mapping:
+      modules: ["partzufim/abba.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Lien causal : Achoraim d'Abba = sous-produit des HC etendus. Leur chute est synchrone."
+
+  - id: "EC-H2S9-029"
+    source_he: "ואז אבא החזיר אחוריו אל פני הבינה אשר בחי' זו נקרא אחור בפנים כי פני הבינה נוכח אחורי החכמה עומדין"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      ABBA a alors RETOURNE ses ACHORAIM vers la FACE de BINAH.
+      Cet aspect est appele ACHOR BE-PANIM (dos contre face).
+      Car les PANIM de BINAH se tiennent (omdin) NOKHAH (en face) des ACHORAIM d'Hokhmah.
+      → Configuration intermediaire : pas encore AhB complet, mais Abba retourne deja partiellement.
+      Asymetrie : Imma face → Abba dos. Imma encore "regarde" Abba qui s'est detourne.
+    type: axiome_explicite
+    concepts:
+      - {id: achor_be_panim, role: configuration_dos_contre_face}
+      - {id: abba_retourne_achoraim, role: abba_retourne_son_dos}
+      - {id: asymetrie_intermediaire_avi, role: asymetrie_face_dos}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Etat ACHOR BE-PANIM = configuration intermediaire AVANT AhB complet. Importante pour modeliser les transitions."
+
+  # ─── BLOC I : QUESTION 1/3 TIFERET ───
+
+  - id: "EC-H2S9-030"
+    source_he: "וא\"ת הרי פרצוף אבא אינו נגמר (לירד) עד שליש הת\"ת כנ\"ל וי\"ל כי אותו שליש של ת\"ת הוא אל אבא בערך היסוד והוא דוגמת ז\"א עם המוח' שלו שמצד הבינה וכל דרוש זה צריך שתבינהו ע\"ד הדרוש ההוא והכל בציור א' ואז תבינהו"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      QUESTION (ve-im tomar) : le PARTZUF d'ABBA ne se termine pas (de descendre)
+      jusqu'au SHLISH ha-TIFERET (1/3 du Tiferet), comme dit plus haut.
+      Note : le mot "(lered)" (de descendre) est un ajout marginal du scribe.
+      REPONSE (ve-yesh lomar) : ce SHLISH du Tiferet est a Abba en aspect du YESOD.
+      Et c'est dugma (analogue) de Z"A avec ses MOHIN du cote de Binah.
+      → Tout ce drush doit etre compris selon ce drush, et le tout en UN seul TZIYUR
+      (representation unifiee), alors tu comprendras.
+      Topologie : le 1/3 superieur du Tiferet = le YESOD-fonctionnel d'Abba.
+    type: axiome_explicite
+    concepts:
+      - {id: partzuf_abba_jusqu_au_tiers_tiferet, role: abba_se_termine_au_tiers_tiferet}
+      - {id: shlish_tiferet_yesod_d_abba, role: tiers_tiferet_est_yesod_abba}
+      - {id: dugmat_za_avec_mohin, role: analogue_za_avec_mohin}
+      - {id: tziyur_ehad, role: representation_unifiee}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "zeir_anpin"]
+      relevance: "Topologie cruciale : 1/3 superieur du Tiferet = Yesod-fonctionnel d'Abba. Analogue ZA-Mohin."
+
+  # ─── BLOC J : YESOD = KULO PANIM ───
+
+  - id: "EC-H2S9-031"
+    source_he: "והנה היסוד כולו הוא בחי' פנים ואין לו אחוריים שירדו ממנו לפי שכל היסוד של זכר נכנס תוך היסוד של נקבה וכולו הוא בחי' פנים"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      PROPRIETE DU YESOD : il est ENTIEREMENT (kulo) aspect PANIM.
+      Il n'a PAS d'ACHORAIM qui pourraient descendre de lui.
+      RAISON : tout le YESOD du ZAKHAR (male) ENTRE TOKH (a l'interieur de)
+      le YESOD de la NEKEVAH (femelle) — et tout est aspect PANIM.
+      → Le Yesod est invariant pendant la Shevirah : pas de surface arriere a perdre.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_kulo_panim, role: yesod_entierement_face}
+      - {id: yesod_male_dans_femelle, role: yesod_male_entre_dans_femelle}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Le Yesod = INVARIANT pendant la Shevirah — pas d'Achoraim a perdre. cf. EC-H2S8 sur Yesod=Kol."
+
+  - id: "EC-H2S9-032"
+    source_he: "משא\"כ בשאר הגוף שיש בו בחי' אחוריים החוזרים (נ\"א פנים הנחזרי') נגד פני הנקבה אבל אחוריו אינם דבוקים עמה ולכן סיום האחוריי' דאבא הם נגמרים לירד טרם היות פגם וגרעון ביסוד דאבא"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      DIFFERENCE avec le reste du GUF : il a des ACHORAIM tournes
+      (variante Nusah Aher : "panim ha-nehazerim" — panim retournes)
+      contre la face de la femelle, MAIS ces achoraim ne sont PAS DEVUKIM (colles) avec elle.
+      → CONCLUSION : la FIN des ACHORAIM d'ABBA se termine de descendre
+      AVANT (terem) qu'il y ait PEGAM ou GIRA'ON (faille / manque) dans le YESOD d'ABBA.
+      → Architecture : la chute est circonscrite avant d'atteindre la zone protegee.
+    type: axiome_explicite
+    concepts:
+      - {id: panim_ha_nehazerim, role: panim_retournes_du_guf}
+      - {id: terem_pegam_yesod, role: avant_faille_dans_yesod}
+      - {id: yesod_kulo_panim, role: yesod_entierement_face}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "La cascade s'arrete avant d'atteindre le Yesod d'Abba — zone protegee. Architecture de containment."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-001"
+    type: causal
+    from: sheva_melakhim_be_meei_binah
+    to: avi_panim_bepanim
+    nature: "Les 7 Melakhim dans Binah elevent les MaN qui maintiennent AVI en PB\"P"
+    assertions_source: ["EC-H2S9-002", "EC-H2S9-003", "EC-H2S9-004"]
+
+  - id: "REL-H2S9-002"
+    type: causal
+    from: shevirah_metu
+    to: avi_chazru_achor_beachor
+    via: [yeridat_achoraim_avi]
+    nature: "La Shevirah des Melakhim → chute des Achoraim d'AVI → AVI retournent AhB"
+    assertions_source: ["EC-H2S9-005", "EC-H2S9-006"]
+
+  - id: "REL-H2S9-003"
+    type: séquentiel
+    from: chaque_shevirah_partielle
+    to: keilut_shevirah
+    nature: "Chaque shevirah individuelle cause une chute partielle ; l'ensemble des 7 acheve la chute"
+    assertions_source: ["EC-H2S9-007"]
+
+  - id: "REL-H2S9-004"
+    type: hiérarchique
+    from: avi_ilain
+    to: yisrael_saba_tevunah
+    nature: "AVI Ila'in (Hokhmah, Binah) au-dessus de YS\"T (Yisrael Saba, Tevunah) — 4 Partzufim emboites"
+    assertions_source: ["EC-H2S9-008"]
+
+  - id: "REL-H2S9-005"
+    type: contenance
+    from: daat_melekh_rishon
+    to: daat_kolel_kol_sheva
+    nature: "Le Daat (1er Melekh sorti) contient les 7 Melakhim en germe"
+    assertions_source: ["EC-H2S9-010"]
+
+  - id: "REL-H2S9-006"
+    type: causal
+    from: kelim_noladu
+    to: ikar_haalat_man
+    nature: "Seuls les Kelim/Banim deja nes peuvent elever des MaN — regle de priorite"
+    assertions_source: ["EC-H2S9-011"]
+
+  - id: "REL-H2S9-007"
+    type: dualité_structurelle
+    from: zivvug_sans_man_initial
+    to: man_maintient_pas_initie
+    nature: "1er Zivvug (Sliq BeRe'uta) sans MaN ; Zivvugim suivants avec MaN qui MAINTIENT"
+    assertions_source: ["EC-H2S9-012", "EC-H2S9-015"]
+
+  - id: "REL-H2S9-008"
+    type: causal
+    from: daat_kalul_mehcg
+    to: daat_porte_hcg_dans_avi
+    nature: "Daat compose de HC\"G → naturellement porteur du flux des HC\"G dans le ROSH d'AVI"
+    assertions_source: ["EC-H2S9-016", "EC-H2S9-019"]
+
+  - id: "REL-H2S9-009"
+    type: causal
+    from: shevirat_keli_daat
+    to: daat_avi_ireid
+    nature: "La brisure du Daat-Banim cause la descente du Daat d'AVI Ila'in du ROSH au GUF"
+    assertions_source: ["EC-H2S9-020"]
+
+  - id: "REL-H2S9-010"
+    type: séquentiel
+    from: keli_daat_yarad_beriah
+    to: shesh_orot_dans_chesed
+    nature: "Pattern : keli brise descend en Beriah, orot residuels migrent vers keli suivant (Chesed)"
+    assertions_source: ["EC-H2S9-021"]
+
+  - id: "REL-H2S9-011"
+    type: causal
+    from: devekut_pbp
+    to: persistence_pbp
+    nature: "Le Devekut PB\"P doit etre ENTIEREMENT defait avant retour a AhB — hysteresis"
+    assertions_source: ["EC-H2S9-022"]
+
+  - id: "REL-H2S9-012"
+    type: causal
+    from: yeridat_hcg_rosh_le_guf
+    to: hisaron_ohr
+    nature: "La descente HC\"G du rosh vers le guf cause un manque de lumiere observable"
+    assertions_source: ["EC-H2S9-024"]
+
+  - id: "REL-H2S9-013"
+    type: analogie
+    from: hisaron_ohr
+    to: hisaron_histaklut_einaim
+    nature: "Le manque de lumiere = manque du regard mutuel — definition operationnelle"
+    assertions_source: ["EC-H2S9-024", "EC-H2S9-025"]
+
+  - id: "REL-H2S9-014"
+    type: flux
+    from: chesed_melekh_sheni
+    to: hamesh_hassadim_dans_abba
+    nature: "Chesed = porteur des 5 HC qui s'etendent dans le guf d'Abba"
+    assertions_source: ["EC-H2S9-026"]
+
+  - id: "REL-H2S9-015"
+    type: causal
+    from: chesed_met_yarad_beriah
+    to: hamesh_orot_dans_gevurah
+    nature: "Mort du Chesed → keli en Beriah, lumieres migrent vers Gevurah"
+    assertions_source: ["EC-H2S9-027"]
+
+  - id: "REL-H2S9-016"
+    type: causal
+    from: hassadim_dans_yesod_abba
+    to: nefilat_achoraim_abba
+    nature: "Les HC tombent dans le Yesod d'Abba → les Achoraim d'Abba (formes par les HC) tombent"
+    assertions_source: ["EC-H2S9-028"]
+
+  - id: "REL-H2S9-017"
+    type: transformation
+    from: nefilat_achoraim_abba
+    to: achor_be_panim
+    nature: "Apres chute des Achoraim Abba → configuration Achor be-Panim (intermediaire entre PB\"P et AhB)"
+    assertions_source: ["EC-H2S9-028", "EC-H2S9-029"]
+
+  - id: "REL-H2S9-018"
+    type: analogie
+    from: shlish_tiferet_yesod_d_abba
+    to: dugmat_za_avec_mohin
+    nature: "Le 1/3 superieur du Tiferet est a Abba comme le Yesod ; analogue de ZA avec ses Mohin"
+    assertions_source: ["EC-H2S9-030"]
+
+  - id: "REL-H2S9-019"
+    type: causal
+    from: yesod_male_dans_femelle
+    to: yesod_kulo_panim
+    nature: "Le Yesod male entre entierement dans la femelle → tout est aspect Panim, pas d'Achoraim"
+    assertions_source: ["EC-H2S9-031"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-001"
+    nom: "Principe de la Boucle Auto-Catalytique des Banim (MaN)"
+    source_assertions: ["EC-H2S9-002", "EC-H2S9-003", "EC-H2S9-004", "EC-H2S9-015"]
+    formalisation: |
+      Les BANIM (enfants/Melakhim) qui sont DANS le ventre de BINAH
+      causent le ZIVVUG d'AVI qui les fait NAITRE.
+      ETAPE 0 : Zivvug initial (Sliq BeRe'uta) → AVI face-a-face
+      ETAPE 1 : Banim entrent dans Binah
+      ETAPE 2 : Banim elevent MaN
+      ETAPE 3 : MaN maintient AVI en PB"P
+      ETAPE 4 : Mohin descendent → HC"G renouveles
+      ETAPE 5 : Banim continuent a SORTIR
+      → Boucle de retroaction POSITIVE — autocatalyse.
+      INVARIANT : tant que les Banim sont vivants dans Binah → boucle stable.
+      RUPTURE : si les Banim meurent (Shevirah) → boucle s'effondre → AVI retournent AhB.
+    applications_ia:
+      - "Les modules ENFANTS (sous-systemes) qui maintiennent leur PARENT actif via feedback"
+      - "Pattern : producteur-maintenu-par-consommateur (autocatalyse)"
+      - "partzufim/zivvug.py + partzufim/imma.py implementent cette boucle"
+      - "Le CausalEngine doit detecter et tracer ces boucles auto-catalytiques"
+      - "Diagnostic : si la boucle s'effondre, identifier QUEL Banim a 'meurt'"
+    questions_ouvertes:
+      - "Comment detecter une boucle auto-catalytique imminente d'effondrement ?"
+      - "Le 1er Zivvug (Sliq BeRe'uta) est-il modelisable ou doit-il etre hardcode ?"
+      - "Quel mecanisme remplace la boucle quand elle s'effondre (Tikkun) ?"
+
+  - id: "PG-H2S9-002"
+    nom: "Principe de la Brisure Progressive (Sept Phases)"
+    source_assertions: ["EC-H2S9-006", "EC-H2S9-007", "EC-H2S9-008", "EC-H2S9-009"]
+    formalisation: |
+      La SHEVIRAH n'est PAS un evenement instantane mais un PROCESSUS PROGRESSIF :
+      PHASE 1 (jusqu'au Tiferet 1/3) : Achoraim AVI Ila'in tombent par etapes
+      PHASE 2 (apres les 7) : Achoraim YS"T tombent
+      Chaque shevirah individuelle d'un melekh = chute PARTIELLE des Achoraim.
+      L'ensemble des 7 brisures = chute COMPLETE.
+      Topologie : 4 Partzufim emboites (HOKHMAH, BINAH, YS, TEVUNAH) →
+      la brisure se PROPAGE de l'interieur vers l'exterieur.
+    applications_ia:
+      - "La defaillance d'un systeme se propage par phases discretes"
+      - "Distinguer 'panne partielle' de 'panne totale' = 7 etapes possibles"
+      - "Architecture en 4 Partzufim (couches emboitees) — pattern oignon"
+      - "La detection precoce de Shevirah = surveiller les Achoraim AVI Ila'in (couche interne)"
+      - "[PLANNED] core/shevirah.py doit modeliser ces 7 phases distinctes"
+    questions_ouvertes:
+      - "La progression est-elle deterministe ou stochastique ?"
+      - "Peut-on intervenir entre 2 phases pour stopper la cascade ?"
+      - "Comment representer formellement le seuil 'jusqu'au 1/3 du Tiferet' ?"
+
+  - id: "PG-H2S9-003"
+    nom: "Principe du Daat comme Premier-Ne Universel (Condense Initial)"
+    source_assertions: ["EC-H2S9-010", "EC-H2S9-011", "EC-H2S9-016", "EC-H2S9-017", "EC-H2S9-018", "EC-H2S9-019"]
+    formalisation: |
+      Le DAAT est le PREMIER ELEMENT sorti et il CONTIENT tous les autres en germe :
+      Daat = HC"G en synthese (composition naturelle)
+      Daat = 7 Melakhim inclus (potentiel collectif)
+      → Daat porte 2 charges simultanees : compositionelle + collective.
+      ROLE STRUCTUREL :
+      Le Daat-Banim entre dans le ROSH d'AVI Ila'in
+      a la PLACE du Daat-AVI, qui lui RESSEMBLE (resonance par similarite).
+      RESTRICTION : seul le Daat eleve les MaN car il est SEUL deja sorti.
+      Les autres Melakhim ne peuvent pas elever de MaN (pas encore sortis).
+      MOHIN COMPLETS demandent ZO"N ensemble.
+    applications_ia:
+      - "Premier-ne = condense de tout le potentiel — patron 'seed' en architecture"
+      - "Resonance par similarite : un module se loge a la place d'un homologue"
+      - "partzufim/zeir_anpin.py implemente le Daat (synthese HC\"G)"
+      - "Pour declencher un comportement : il faut que ZA et Nukvah soient COUPLES"
+      - "Le 'Daat' du systeme = le module integrateur initial qui contient les graines"
+    questions_ouvertes:
+      - "Le Daat-Banim peut-il exister sans le Daat-AVI ?"
+      - "La 'similarite' (domeh) est-elle quantifiable ?"
+      - "Pourquoi le couple ZO\"N est-il necessaire pour les Mohin complets et pas un seul ?"
+
+  - id: "PG-H2S9-004"
+    nom: "Principe d'Hysteresis du Detachement (PB\"P → AhB)"
+    source_assertions: ["EC-H2S9-022"]
+    formalisation: |
+      Le retour de PB"P a AhB demande un DETACHEMENT COMPLET du Devekut :
+      Etat A : PB"P (face-a-face, devukim/colles)
+      Etat B : AhB (dos-a-dos)
+      TRANSITION A → B : ne se fait PAS progressivement
+      Tant que reste un peu de Devekut → reste en PB"P
+      Quand Devekut = 0 → bascule en AhB
+      → Hysteresis structurelle : pas de mi-chemin stable.
+      Implication : la chute des Achoraim doit etre PRESQUE complete
+      avant qu'AVI bascule en AhB.
+    applications_ia:
+      - "Pattern hysteresis : un etat persiste tant que sa cause complete n'est pas defaite"
+      - "La transition d'etat n'est pas lineaire — il y a un SEUIL"
+      - "partzufim/abba.py + imma.py : modeliser PB\"P/AhB comme etats discrets avec seuil"
+      - "Detection : surveiller le 'devekut residuel' pour anticiper la bascule"
+      - "Pattern d'inertie : le systeme RESISTE au changement jusqu'au seuil critique"
+    questions_ouvertes:
+      - "Le seuil de bascule PB\"P → AhB est-il un parametre ou universel ?"
+      - "Y a-t-il un etat intermediaire stable (mi-chemin) ou strictement bistable ?"
+      - "Comment quantifier 'le devekut residuel' ?"
+
+  - id: "PG-H2S9-005"
+    nom: "Principe de la Migration Kelim/Orot (Brise → Beriah, Residuel → Suivant)"
+    source_assertions: ["EC-H2S9-021", "EC-H2S9-027"]
+    formalisation: |
+      Pattern de MIGRATION lors de la Shevirah (repete pour chaque melekh) :
+      KELI BRISE → descend en BERIAH (sortie definitive du systeme Atzilut)
+      OROT RESIDUELS (qui etaient dans le keli brise) → entrent dans le KELI SUIVANT
+      Daat : keli en Beriah, 6 (NA: 7) orot dans le Chesed
+      Chesed : keli en Beriah, 5 orot dans la Gevurah
+      → Pattern repete pour chaque etape de la cascade.
+      Conservation des lumieres (continues), perte des vaisseaux (discrets).
+    applications_ia:
+      - "Pattern : quand un module 'casse', son contenu migre, sa structure descend"
+      - "Distinction structure vs contenu lors d'une defaillance"
+      - "olamot.py + [PLANNED] core/shevirah.py : tracer ce pattern de migration"
+      - "Architecture de resilience : sauver les 'orot' (donnees) meme si 'keli' (structure) casse"
+      - "Cascade : la migration vers le keli suivant pose le piege pour la prochaine brisure"
+    questions_ouvertes:
+      - "Pourquoi le Nusah Aher hesite entre 6 et 7 lumieres ?"
+      - "La descente en Beriah est-elle un debug (keli reparable) ou definitive ?"
+      - "Le Tikkun ramene-t-il les kelim de Beriah, ou reconstruit-il dans Atzilut ?"
+
+  - id: "PG-H2S9-006"
+    nom: "Principe du Hisaron Histaklut Einaim (Premier Signe d'Effondrement)"
+    source_assertions: ["EC-H2S9-024", "EC-H2S9-025"]
+    formalisation: |
+      Avant la bascule complete PB"P → AhB, il existe un ETAT INTERMEDIAIRE detectable :
+      LE HISARON HISTAKLUT EINAIM (manque du regard mutuel d'AVI).
+      Mecanisme physique : HC"G descendent du ROSH (yeux) vers le GUF (entre les epaules)
+      → privation de la matiere premiere du regard
+      → cessation du HISTAKLUT EINAIM = Zivvug visuel preliminaire.
+      Topologie : ROSH = lieu des yeux, GUF = lieu du corps.
+      Quand la lumiere quitte le ROSH → les yeux ne se rencontrent plus.
+      → Indicateur AVANT-COUREUR : surveiller le flux ROSH vs GUF.
+    applications_ia:
+      - "Pre-indicateur de defaillance : detection du regard mutuel avant la rupture complete"
+      - "partzufim/zivvug.py doit modeliser deux niveaux : zivvug visuel + zivvug plein"
+      - "Le Histaklut Einaim = le 'handshake' avant la communication complete"
+      - "Architecture de monitoring : observer la migration ROSH vs GUF des HC\"G"
+      - "Pattern : un systeme defaillant signale d'abord par perte de coordination visuelle (handshake)"
+    questions_ouvertes:
+      - "Le Histaklut Einaim peut-il etre restaure sans annuler la chute des HC\"G ?"
+      - "Y a-t-il d'autres pre-indicateurs avant le Hisaron Histaklut ?"
+      - "La distinction ROSH/GUF est-elle fonctionnelle ou litterale ?"
+
+  - id: "PG-H2S9-007"
+    nom: "Principe de l'Etat Intermediaire ACHOR BE-PANIM"
+    source_assertions: ["EC-H2S9-028", "EC-H2S9-029"]
+    formalisation: |
+      Entre PB"P (face-a-face) et AhB (dos-a-dos), il existe un ETAT INTERMEDIAIRE STABLE :
+      ACHOR BE-PANIM (dos contre face).
+      Configuration : Abba retourne ses Achoraim, Imma garde sa face.
+      ASYMETRIE : un partenaire bascule, l'autre pas encore.
+      Geometrie : "panim de Binah se tiennent NOKHAH (en face) des achoraim d'Hokhmah".
+      → Modele a 3 etats au moins : PB"P, ACHOR BE-PANIM, AhB.
+      Causalement : chute des Achoraim d'Abba (par chute des HC) → Achor be-Panim partiel.
+    applications_ia:
+      - "Modele a 3+ etats pour la relation AVI (pas binaire PB\"P/AhB)"
+      - "Pattern : transition asymetrique — un partenaire avance, l'autre suit"
+      - "partzufim/abba.py + imma.py : 3 etats discrets (face_face, dos_face, dos_dos)"
+      - "Architecture distribuee : un noeud peut etre dans un etat de retraite partielle"
+      - "Diagnostic : detecter l'asymetrie comme signe de rupture imminente"
+    questions_ouvertes:
+      - "Existe-t-il un etat symetrique 'PANIM BE-ACHOR' (rare) ?"
+      - "Le passage Achor-be-Panim → AhB est-il reversible sans Tikkun ?"
+      - "Combien d'etats discrets faut-il au total pour modeliser correctement ?"
+
+  - id: "PG-H2S9-008"
+    nom: "Principe d'Invariance du Yesod (Architecture Protegee)"
+    source_assertions: ["EC-H2S9-030", "EC-H2S9-031", "EC-H2S9-032"]
+    formalisation: |
+      Le YESOD est STRUCTURELLEMENT INVARIANT pendant la Shevirah :
+      Raison topologique : le YESOD du male ENTRE entierement dans le YESOD femelle
+      → tout est aspect PANIM (face)
+      → pas d'ACHORAIM a perdre.
+      Le RESTE du GUF a des Achoraim qui se TOURNENT vers la femelle
+      mais NE SONT PAS DEVUKIM avec elle → vulnerable a la chute.
+      Le YESOD est le SEUL composant DEVUK (totalement uni) qui RESTE protege.
+      ANALOGIE : 1/3 superieur du TIFERET = YESOD-fonctionnel d'Abba (avant le 1/3 inferieur).
+      → Topologie : la zone d'union COMPLETE est INVIOLABLE.
+    applications_ia:
+      - "Architecture : la zone d'integration complete (union totale) est protegee des cascades"
+      - "Pattern : les composants TOTALEMENT couples sont invariants face aux pannes partielles"
+      - "partzufim/zivvug.py : modeliser le Yesod comme zone privilegiee"
+      - "Distinction : couplage complet (Yesod) vs couplage partiel (reste du guf)"
+      - "Strategie de resilience : amener les composants critiques a un couplage Yesod-like"
+    questions_ouvertes:
+      - "Le Yesod peut-il etre brise par d'autres mecanismes que la Shevirah des Melakhim ?"
+      - "L'invariance du Yesod est-elle absolue ou relative au type de defaillance ?"
+      - "Comment identifier formellement les zones 'Yesod-like' dans un systeme arbitraire ?"

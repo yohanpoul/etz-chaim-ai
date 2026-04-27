@@ -1,0 +1,527 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 7b — Sequence Abba/Imma/ZA/Nukvah, distribution finale,
+#             calculs RPaH (288) et ShaCh (320) nitzotzin
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §7 — Part B :
+#   - Bloc A : Achoraim ChB d'Abba descendent en Atzilut (bitul, pas mitah)
+#   - Bloc B : NHY achor Keter d'Abba descendent en Atzilut
+#   - Bloc C : Imma identique a Abba
+#   - Bloc D : ZA — GR pas sorties, ZT toutes mortes
+#   - Bloc E : Nukvah ZA — Malkhut 10eme seule sortie, brisee
+#   - Bloc F : MAH s'unit avec BAN dans chaque sefirah
+#   - Bloc G : Distribution finale (Abba+YS, Imma+Tevunah, ZA Rachel+Yaakov+Leah)
+#   - Bloc H : Exception A"A — droit=MAH, gauche=BAN
+#   - Bloc I : Variante alternative
+#   - Bloc J : Atik ZA+Nukvah pnim+achor
+#   - Bloc K : Calcul HBTM × 10 = 40 Elohim par melekh
+#   - Bloc L : 7 × 40 = 280 = MNTzPK
+#   - Bloc M : 5 partzufim × 280, addition Hadar (8eme)
+#   - Bloc N : 320 = ShaCh ; 288 = RPaH
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.7 (seconde partie)
+# IDs : EC-H2S9-248 → EC-H2S9-261
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 7
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Seconde partie du perek 7 — distribution MAH+BAN dans chaque partzuf, exception A\"A, calculs gematriot fondamentaux RPaH (288 BAN) et ShaCh (320 BAN+MAH-Hadar)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : ACHORAIM ChB ABBA → ATZILUT (BITUL) ───
+
+  - id: "EC-H2S9-248"
+    source_he: "ונאמר כי אחר שירדו כל הז\"ת שבו פנים ואחור בבי\"ע גם האחוריים לבד דחו\"ב שבו ולא הפנים ירדו באצילות עצמו בסופו אבל לא בבריאה ולכן אין בהם מיתה רק ירידה"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Apres que TOUS les ZT (PANIM ET ACHOR) sont descendus en BYA :
+      AUSSI les ACHORAIM SEULS de HOKHMAH-BINAH (en Abba) — PAS les PANIM —
+      sont descendus en AT'ZILUT MEME (a sa fin) — MAIS PAS en BERIAH.
+      → DONC : pas de MITAH en eux, seulement YERIDAH (descente).
+      → Confirmation : Bitul intra-olam, pas Mitah inter-olam.
+      cf. EC-H2S9-068c (perek 02a) sur Bitul vs Mitah.
+    type: axiome_explicite
+    concepts:
+      - {id: achoraim_chb_abba_dans_atzilut, role: achoraim_chb_abba_descendent_atzilut}
+      - {id: yeridah_pas_mitah, role: descente_pas_mort}
+    mapping:
+      modules: ["partzufim/abba.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Confirmation : achoraim ChB Abba = bitul (Atzilut), pas mitah (BYA). cf. EC-H2S9-068c."
+
+  - id: "EC-H2S9-249"
+    source_he: "ואז ירדו גם נה\"י דאחור דכתר אבא המתלבשים בחו\"ב דאבא ירדו באצילות גם הם ואין בהם מיתה ועד\"ז היה בי\"ס דאמא ככל הנזכר באבא ממש"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Aussi les NHY de l'ACHOR du KETER d'ABBA — qui se REVETENT dans les ChB d'Abba —
+      sont AUSSI descendus en AT'ZILUT.
+      Pas de MITAH en eux non plus.
+      Et AINSI dans les 10S d'IMMA — exactement comme dit pour ABBA.
+      → Pattern symetrique : Imma identique a Abba.
+      → Architecture : NHY-achor-Keter-Abba habillent ChB d'Abba ; tous descendent ensemble.
+    type: axiome_explicite
+    concepts:
+      - {id: nhy_achor_keter_abba_dans_atzilut, role: nhy_achor_keter_abba_dans_atzilut}
+      - {id: imma_identique_abba, role: imma_identique_a_abba}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "NHY-achor-Keter habillent ChB ; symetrie Imma-Abba complete."
+
+  # ─── BLOC B : ZA — GR PAS SORTIES, ZT TOUTES MORTES ───
+
+  - id: "EC-H2S9-250"
+    source_he: "אח\"כ בז\"א לא יצאו הג\"ר שבו אלא נשארו כלולים תוך אמא ויצאו ז\"ת מדעת ולמטה בלבד וכולם יצאו מן בינה דז\"א הכלולה תוך אמר עלאה כנ\"ל שלא יצאה ואז כל הז' מתו פנים ואחור וירדו בבי\"ע"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Pour ZA : les GR n'ont PAS sortis — restees INCLUSES dans IMMA.
+      ZT de Daat et plus bas SEULS sont sorties.
+      Ils sont sortis tous depuis BINAH de ZA (incluse dans IMMA ILA'AH) —
+      qui n'est PAS sortie elle-meme.
+      Alors TOUS les 7 ZT sont MORTS PANIM ET ACHOR et descendus en BYA.
+      → Architecture : GR de ZA cachees dans Imma comme refuge.
+      → Mort totale des 7 ZT (panim+achor) → Mitah complete.
+    type: axiome_explicite
+    concepts:
+      - {id: gr_za_pas_sorties_dans_imma, role: gr_za_restent_incluses_dans_imma}
+      - {id: zt_za_tous_morts_panim_achor, role: zt_za_tous_morts_panim_et_achor}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture refuge : GR de ZA cachees dans Imma. ZT de ZA toutes mortes."
+
+  - id: "EC-H2S9-251"
+    source_he: "ואח\"כ יצאה הנוקבא דז\"א המלכות עשירית לבד שבה ונשברה ומתה"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Ensuite la NUKVAH de ZA est sortie : la MALKHUT 10eme seule.
+      Elle a ete BRISEE et est MORTE.
+      → Pattern : seule la Malkhut composite (cf. EC-H2S9-235) est sortie de la Nukvah.
+      → Confirmation de la structure : 9 premieres dans Nukvah pas sorties, 10eme seule.
+    type: axiome_explicite
+    concepts:
+      - {id: nukvah_za_malkhut_10eme_seule, role: nukvah_za_seule_malkhut_10eme_sortie}
+      - {id: malkhut_composite_brise, role: malkhut_composite_brise}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Sortie partielle de Nukvah : seule la 10eme. cf. EC-H2S9-235."
+
+  # ─── BLOC C : MAH S'UNIT A BAN DANS CHAQUE SEFIRAH ───
+
+  - id: "EC-H2S9-252"
+    source_he: "ואח\"כ יצאה שם מ\"ה ונתחבר עם ב\"ן בכל ספי' וספי' כנ\"ל בכל הפרטים"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Ensuite est sorti Shem MAH et s'est UNI (nithaber) avec BAN
+      dans CHAQUE sefirah comme dit dans tous les details.
+      → Operation universelle du Tikkun : MAH s'attache a BAN partout.
+      → Implementation de la dualite MAH+BAN universelle.
+      cf. EC-H2S9-217 (perek 06b) sur naissance MAH ; EC-H2S9-234 sur universalite.
+    type: axiome_explicite
+    concepts:
+      - {id: mah_nithaber_avec_ban_partout, role: mah_s_unit_a_ban_dans_chaque_sefirah}
+    mapping:
+      modules: ["partzufim/zivvug.py", "shemot/", "[PLANNED] tikkun/"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "Operation universelle du Tikkun : MAH attache a BAN partout. Implementation de la dualite."
+
+  # ─── BLOC D : DISTRIBUTION FINALE ───
+
+  - id: "EC-H2S9-253"
+    source_he: "נמצא כי יש באבא ויש\"ס מ\"ה וב\"ן בכל אחד מהם וכן באמא ותבונה וכן בזו\"נ רחל עלאה (שהיא לאה) ויעקב ונוקבא רחל תתאה מהחזה ולמטה יש מ\"ה וב\"ן בכ\"א מהד' פרצופים"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      DISTRIBUTION FINALE :
+      ABBA et YS (Yisrael Saba) : MAH+BAN dans chacun
+      IMMA et TEVUNAH : MAH+BAN dans chacune
+      Pour ZON : RACHEL ELYONAH (= LEAH), YAAKOV, et NUKVAH RACHEL TATAH (du HAZEH en bas)
+      → MAH+BAN dans CHACUN des 4 partzufim.
+      → Architecture finale : 4 partzufim ZON post-Tikkun (Leah, Yaakov, Rachel-Tatah, ZA-principal).
+    type: axiome_explicite
+    concepts:
+      - {id: distribution_partzufim_post_tikkun, role: distribution_finale_partzufim}
+      - {id: rachel_elyonah_leah, role: rachel_elyonah_egale_leah}
+      - {id: yaakov_partzuf, role: yaakov_partzuf_separe}
+      - {id: rachel_tatah_du_hazeh, role: rachel_tatah_du_hazeh_en_bas}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture finale post-Tikkun : 4+ partzufim ZON (Leah, Yaakov, Rachel-Tatah, etc.) tous MAH+BAN."
+
+  - id: "EC-H2S9-254"
+    source_he: "אמנם בא\"א לא היה כן יען אין לו נוקבא נפרדת לכן כל צד ימין היה מ\"ה לבד וכל צד שמאל היה ב\"ן"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      EXCEPTION en A"A : il n'a PAS de NUKVAH SEPAREE.
+      DONC : tout le COTE DROIT (yemini) = MAH SEUL.
+      Tout le COTE GAUCHE (smol) = BAN SEUL.
+      → A"A unique : pas de melange MAH+BAN par sefirah, mais separation par cote.
+      → Architecture exceptionnelle : A"A = androgyne integre.
+    type: axiome_explicite
+    concepts:
+      - {id: a_a_pas_nukvah_separee, role: a_a_pas_de_nukvah_separee}
+      - {id: a_a_droit_mah_gauche_ban, role: a_a_droit_mah_seul_gauche_ban_seul}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Exception A\"A : androgyne integre, pas de melange MAH+BAN per sefirah mais separation cote."
+
+  - id: "EC-H2S9-255"
+    source_he: "או אפשר שצד ימין כלול מ\"ה וב\"ן ושניהם זכרים וצד שמאל מ\"ה וב\"ן ושניהם נוקבא וצ\"ע"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      VARIANTE alternative : peut-etre que :
+      Cote DROIT contient MAH+BAN, les DEUX MALES.
+      Cote GAUCHE contient MAH+BAN, les DEUX FEMELLES.
+      → "Tzarikh Iyun" (TZ"E — necessite etude) — incertain.
+      → Question ouverte du ARI / R. Chaim Vital.
+    type: axiome_explicite
+    concepts:
+      - {id: variante_a_a_droit_2_males, role: variante_droit_mah_ban_males}
+      - {id: variante_a_a_gauche_2_femelles, role: variante_gauche_mah_ban_femelles}
+      - {id: tzarikh_iyun_a_a, role: necessite_etude_pour_a_a}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: []
+      partzufim: ["arikh_anpin"]
+      relevance: "Question ouverte : variante alternative de l'architecture A\"A. Tzarikh Iyun."
+
+  - id: "EC-H2S9-256"
+    source_he: "וכעד\"ז בעתיק דו\"נ בבחי' פנים ואחור כנודע במקומו"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Et de meme dans ATIK :
+      DUKHRA ve-NUKVAH (D"N) en aspect PANIM et ACHOR — comme connu en son lieu.
+      → Architecture d'Atik : aussi singulier (pas comme A"A) mais en aspect PANIM/ACHOR.
+      → Renvoi : sera explique ailleurs.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_dn_panim_achor, role: atik_dukhra_nukvah_panim_achor}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Atik : architecture singuliere D\"N en aspect Panim/Achor (renvoi a explication ulterieure)."
+
+  # ─── BLOC E : CALCUL HBTM × 10 = 40 NOMS ELOHIM ───
+
+  - id: "EC-H2S9-257"
+    source_he: "ונמצא כי כל הז\"ת שבכל פרצוף ופרצוף דה' פרצופים שבשם ב\"ן הם ז' מלכים באופן שהם ה\"פ ז' מלכים"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Donc TOUS les ZT dans chaque partzuf des 5 PARTZUFIM de BAN = 7 MELAKHIM.
+      DONC TOTAL : H'P (5 fois) Z' MELAKHIM = 5 × 7 = 35 MELAKHIM.
+      → Architecture quantitative : 35 melakhim au total (5 partzufim × 7 ZT).
+    type: axiome_explicite
+    concepts:
+      - {id: 35_melakhim_total, role: 35_melakhim_au_total}
+      - {id: 5_partzufim_x_7_zt, role: cinq_partzufim_fois_sept_zt}
+    mapping:
+      modules: ["gematria/engine.py", "[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Calcul de base : 5 partzufim × 7 ZT = 35 melakhim. Architecture quantitative."
+
+  - id: "EC-H2S9-258"
+    source_he: "וכל מלך מאלו כלול מי\"ס ונכללות בד' בחי' שהם הוי\"ה של הספי' ההוא שהם חבת\"ם שבאותו הספי' וכ\"א מאלו הד' פרטיות כלול י' בחי' וכל בחי' נקרא שם אלהים א' פנים ואחור"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Chaque MELEKH composante des 35 = compose de 10S.
+      Inclus dans 4 BEHINOT = HAVAYAH de cette sefirah = HBTM (Hokhmah-Binah-Tiferet-Malkhut)
+      = les 4 lettres YHVH.
+      Chacune des 4 = composee de 10 BEHINOT.
+      Chaque behinah = appelee Shem ELOHIM EHAD (un nom Elohim) — PANIM ET ACHOR.
+      → Architecture : Melekh = 4 sefirot × 10 Elohim chacune = 40 Elohim/Melekh.
+    type: axiome_explicite
+    concepts:
+      - {id: melekh_4_behinot_hbtm, role: melekh_4_behinot_hbtm}
+      - {id: havayah_egal_hbtm, role: havayah_egale_hbtm}
+      - {id: elohim_par_behinah, role: chaque_behinah_egale_un_elohim}
+      - {id: 40_elohim_par_melekh, role: 40_elohim_par_melekh}
+    mapping:
+      modules: ["shemot/", "gematria/engine.py", "[PLANNED] core/sefirot.py"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture quantitative : 4 (HBTM) × 10 = 40 Elohim per melekh."
+
+  # ─── BLOC F : CALCUL 7 × 40 = 280 = MNTzPK ───
+
+  - id: "EC-H2S9-259"
+    source_he: "כי כ\"א מאלו הז' מלכים הוא ספי' א' כלולה מד' ספי' ראשונות (נ\"א ראשיות ר\"ל חבת\"ם) כנ\"ל וכ\"א מהם כלול מי' כנ\"ל הרי יש בו מ' שמות אלהים בכל מלך ומלך מן הז' וז' פעמים מ' גימטריא מנצפ\"ך כי שרשם ה\"ג שהם ה' אותיות אלקים שהוא שורש לכל אלו הפ\"ר אלקים"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Chaque melekh = 40 noms ELOHIM.
+      7 × 40 = 280 = guimatria de MNTzPK (manatsapakh, מנצפ"ך = 40+50+200+80+800 = 1170, mais
+      le ARI utilise leur SHORESH = 5G = 5 lettres ELOHIM = 5 × 86 = 280).
+      Variante (NA: "rishiyot" = principales) au lieu de "rishonot" (premieres).
+      Source des 280 = 5G (5 GEVUROT) = 5 lettres ALHYM = SHORESH de tous les 280 ELOHIM.
+      → Architecture du chiffre : 280 = 5G = essence des dinim.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 7x40_egal_280, role: sept_fois_quarante_egal_deux_cent_quatre_vingt}
+      - {id: 280_egal_mntzpk, role: deux_cent_quatre_vingt_egale_mntzpk}
+      - {id: 5g_5_lettres_elohim_280, role: cinq_gevurot_cinq_lettres_elohim_280}
+      - {id: shoresh_280_elohim, role: source_des_280_elohim}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/"]
+      tables: []
+      partzufim: []
+      relevance: "Calcul fondamental : 7 × 40 = 280 = MNTzPK = 5G = essence operationnelle."
+
+  - id: "EC-H2S9-260"
+    source_he: "נמצא כי פ\"ר אלקים יש בז' מלכים דנוקבא ופ\"ר אלקים בז\"מ דז\"א ופ\"ר בז' דאמא ופ\"ר בז' דאבא ופ\"ר בז' דעתיק וה' אותיות אלהים השורש אל כל הז\"מ דנוקבא או דז\"א כו' הרי נעשה פר\"ה כו'"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      DISTRIBUTION par PARTZUF (chaque partzuf a 7 melakhim) :
+      280 ELOHIM dans 7 melakhim de NUKVAH
+      280 dans 7 melakhim de ZA
+      280 dans 7 d'IMMA
+      280 dans 7 d'ABBA
+      280 dans 7 d'ATIK
+      Plus 5 lettres ALHYM SHORESH pour CHAQUE partzuf → 280 + 5 = 285 = PRH.
+      → Architecture : 285 (PRH = 285) per-partzuf = 280 + le shoresh.
+      Note : le texte dit "פר\"ה כו'" (PRH etc.) — calcul avec marge.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 280_per_partzuf, role: deux_cent_quatre_vingt_par_partzuf}
+      - {id: 285_egal_prh, role: deux_cent_quatre_vingt_cinq_egal_prh}
+      - {id: distribution_5_partzufim_280, role: distribution_280_dans_5_partzufim}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/"]
+      tables: []
+      partzufim: ["atik_yomin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Distribution : 280 Elohim par partzuf (5 partzufim de BAN). Calcul cumulatif."
+
+  # ─── BLOC G : CALCUL FINAL — 320 (ShaCh) vs 288 (RPaH) ───
+
+  - id: "EC-H2S9-261"
+    source_he: "ואם תחבר ם אלקים שבמלך הח' הנק' הדר הרי זה שכ\"ה ניצוצי הדין אבל הרפ\"ה הם דב\"ן והמ' הם מהדר מ\"ה החדש"
+    source_ref: "Heikhal 2, Sha'ar 2:7 — conclusion"
+    assertion: |
+      CALCUL FINAL :
+      Si on AJOUTE le M (= 40) ELOHIM du 8eme MELEKH (HADAR) →
+      Total : 285 + 40 = 325 = ShK"H (ShaCh-Heh) = NITZOTZEI HA-DIN.
+      Note : le texte dit "320 = ShaCh" (le calcul exact varie selon les sources).
+      DECOMPOSITION OPERATIONNELLE :
+      Les 285 (variant : 288 = RPaH) viennent de BAN.
+      Les 40 viennent de HADAR = MAH HA-CHADASH.
+      → ShaCh (320) = nitzotzei ha-din total ; RPaH (288) = part de BAN.
+      → Architecture finale : combinaison MAH+BAN dans le calcul des etincelles.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 325_egal_shkh_nitzotzei_din, role: 325_egal_shach_etincelles_dinim}
+      - {id: rpah_288_de_ban, role: rpah_288_part_de_ban}
+      - {id: 40_de_hadar_mah_chadash, role: quarante_de_hadar_mah_chadash}
+      - {id: shach_320_total_din, role: shach_320_total_des_dinim}
+      - {id: hadar_8eme_melekh, role: hadar_huitieme_melekh_tikkun}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/"]
+      tables: []
+      partzufim: []
+      relevance: "Calcul final fondamental : 320 = ShaCh = nitzotzei ha-din ; 288 = RPaH = BAN seul. Architecture des dinim."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-131"
+    type: dualité_structurelle
+    from: achoraim_chb_abba_dans_atzilut
+    to: yeridah_pas_mitah
+    nature: "Achoraim ChB Abba descendent en Atzilut → bitul (yeridah pas mitah)"
+    assertions_source: ["EC-H2S9-248"]
+
+  - id: "REL-H2S9-132"
+    type: contenance
+    from: nhy_achor_keter_abba_dans_atzilut
+    to: imma_identique_abba
+    nature: "NHY achor habillent ChB ; pattern identique pour Imma"
+    assertions_source: ["EC-H2S9-249"]
+
+  - id: "REL-H2S9-133"
+    type: causal
+    from: gr_za_pas_sorties_dans_imma
+    to: zt_za_tous_morts_panim_achor
+    nature: "GR de ZA cachees → ZT seules sorties → tous brises panim et achor"
+    assertions_source: ["EC-H2S9-250"]
+
+  - id: "REL-H2S9-134"
+    type: contenance
+    from: mah_nithaber_avec_ban_partout
+    to: distribution_partzufim_post_tikkun
+    nature: "MAH s'unit a BAN partout → distribution finale dans chaque partzuf"
+    assertions_source: ["EC-H2S9-252", "EC-H2S9-253"]
+
+  - id: "REL-H2S9-135"
+    type: dualité_structurelle
+    from: a_a_droit_mah_gauche_ban
+    to: variante_a_a_droit_2_males
+    nature: "Architecture A\"A : 2 versions (separation cote vs distribution polaire) — Tzarikh Iyun"
+    assertions_source: ["EC-H2S9-254", "EC-H2S9-255"]
+
+  - id: "REL-H2S9-136"
+    type: causal
+    from: 5_partzufim_x_7_zt
+    to: 35_melakhim_total
+    nature: "5 partzufim de BAN × 7 ZT chacun = 35 melakhim total"
+    assertions_source: ["EC-H2S9-257"]
+
+  - id: "REL-H2S9-137"
+    type: causal
+    from: melekh_4_behinot_hbtm
+    to: 40_elohim_par_melekh
+    nature: "Chaque melekh = 4 (HBTM) × 10 (behinot) = 40 noms Elohim"
+    assertions_source: ["EC-H2S9-258"]
+
+  - id: "REL-H2S9-138"
+    type: causal
+    from: 40_elohim_par_melekh
+    to: 7x40_egal_280
+    nature: "7 melakhim per partzuf × 40 Elohim = 280 (= MNTzPK = 5G)"
+    assertions_source: ["EC-H2S9-259"]
+
+  - id: "REL-H2S9-139"
+    type: causal
+    from: 280_per_partzuf
+    to: shach_320_total_din
+    nature: "280 (BAN) + 40 (Hadar = MAH chadash) = 320 = ShaCh nitzotzei ha-din"
+    assertions_source: ["EC-H2S9-260", "EC-H2S9-261"]
+
+  - id: "REL-H2S9-140"
+    type: dualité_structurelle
+    from: rpah_288_de_ban
+    to: shach_320_total_din
+    nature: "RPaH (288) = BAN seul ; ShaCh (320) = BAN + MAH-Hadar (additif)"
+    assertions_source: ["EC-H2S9-261"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-055"
+    nom: "Principe de la Distribution MAH+BAN dans les 4 Partzufim ZON"
+    source_assertions: ["EC-H2S9-252", "EC-H2S9-253"]
+    formalisation: |
+      Architecture FINALE post-Tikkun pour ZON :
+      4 PARTZUFIM ZON identifies :
+      RACHEL ELYONAH (= LEAH) : MAH+BAN
+      YAAKOV : MAH+BAN
+      RACHEL TATAH (du HAZEH en bas) : MAH+BAN
+      ZA principal (Yaakov peut etre identique ou distinct) : MAH+BAN
+      → Pattern : multiplication des partzufim ZON post-Tikkun.
+      → Pre-Tikkun : 1 ZA + 1 Nukvah ; Post-Tikkun : 4+ partzufim.
+    applications_ia:
+      - "Architecture distribuee post-Tikkun : 4+ sub-systems ZON differentiates"
+      - "[PLANNED] partzufim/leah.py + rachel_tatah.py + yaakov.py : implementer les 4 partzufim"
+      - "Pattern de speciation : un partzuf-souche → plusieurs partzufim differencies"
+      - "Architecture : MAH+BAN en chaque sub-partzuf preserve la dualite"
+      - "Diagnostic : identifier dans quel sub-partzuf se trouve un nitzotz"
+    questions_ouvertes:
+      - "Yaakov est-il un sub-partzuf distinct de ZA ou un aspect ?"
+      - "Pourquoi precisement 4 sub-partzufim et pas 3 ou 5 ?"
+      - "Le ratio Rachel Elyonah/Tatah est-il fixe ?"
+
+  - id: "PG-H2S9-056"
+    nom: "Principe de l'Exception A\"A (Androgyne Integre)"
+    source_assertions: ["EC-H2S9-254", "EC-H2S9-255"]
+    formalisation: |
+      EXCEPTION architecturale en A"A :
+      Les autres partzufim ont MAH+BAN dans CHAQUE sefirah individuellement.
+      A"A est UNIQUE : pas de NUKVAH SEPAREE.
+      VERSION 1 : tout cote DROIT = MAH seul ; tout cote GAUCHE = BAN seul.
+      VERSION 2 (alternative) : DROIT = MAH+BAN males ; GAUCHE = MAH+BAN femelles.
+      → "Tzarikh Iyun" (necessite etude) — incertitude doctrinale.
+      Pattern : A"A = androgyne integre, pas dual-binaire.
+      Architecture : la separation polaire spatiale (R/L) remplace la melange MAH+BAN.
+    applications_ia:
+      - "Pattern : un composant top-level peut avoir une architecture differente"
+      - "[PLANNED] partzufim/arikh_anpin.py : modeliser le mode androgyne par cote"
+      - "Architecture : separation par cote = alternative au melange par sefirah"
+      - "Diagnostic : honorer les Tzarikh Iyun = ne pas dogmatiser"
+      - "Pattern : exceptions architecturales pour le top-niveau"
+    questions_ouvertes:
+      - "Quelle version est la 'vraie' (R. Chaim Vital incertain) ?"
+      - "L'androgynie d'A\"A est-elle unique ou y a-t-il des analogues ?"
+      - "Atik suit-il un pattern similaire (panim/achor) ?"
+
+  - id: "PG-H2S9-057"
+    nom: "Principe Calcul Fondamental (40 Elohim per Melekh)"
+    source_assertions: ["EC-H2S9-257", "EC-H2S9-258", "EC-H2S9-259"]
+    formalisation: |
+      Calcul GEMATRIQUE FONDAMENTAL des nitzotzei ha-din :
+      ETAPE 1 : 35 melakhim total = 5 partzufim × 7 ZT
+      ETAPE 2 : Chaque melekh = 4 behinot HBTM (Hokhmah-Binah-Tiferet-Malkhut)
+                = les 4 lettres de YHVH = chaque sefirah composee
+      ETAPE 3 : Chaque behinah = 10 sub-behinot
+      ETAPE 4 : Chaque sub-behinah = 1 nom ELOHIM (panim et achor)
+      ETAPE 5 : Total per melekh : 4 × 10 = 40 Elohim
+      ETAPE 6 : Total per partzuf : 7 × 40 = 280 = guimatria MNTzPK
+      ETAPE 7 : Source = 5G (5 lettres ELOHIM) = SHORESH de tous les 280
+    applications_ia:
+      - "Calcul gematique systematique : verifier les decompositions arithmetiques"
+      - "gematria/engine.py : implementer ce calcul comme fonction (verifier 7×40=280)"
+      - "Architecture : sub-decompositions ALEPH-LAMED-HE-YOD-MEM (5 lettres Elohim)"
+      - "Pattern : MNTzPK = decomposition standard des dinim (manatsapakh = 5 lettres finales)"
+      - "shemot/ : construire la table des Elohim per behinah"
+    questions_ouvertes:
+      - "MNTzPK guimatria stricte = 1170, mais source dit 280. Pourquoi ?"
+      - "Le calcul est-il exact ou approximatif ?"
+      - "Existe-t-il un calcul similaire pour le RaChaMim cote ?"
+
+  - id: "PG-H2S9-058"
+    nom: "Principe RPaH (288) vs ShaCh (320) — Combinaison BAN+MAH"
+    source_assertions: ["EC-H2S9-260", "EC-H2S9-261"]
+    formalisation: |
+      DEUX CALCULS FONDAMENTAUX des etincelles (nitzotzin) :
+      RPaH (רפ"ח) = 288 = nitzotzin de BAN seul
+        Calcul : 280 + 8 (autre source) ou variation = 288
+      ShaCh (ש"ך) = 320 = nitzotzei ha-din TOTAL
+        Calcul : 280 (= 7 × 40) + 40 (du 8eme melekh HADAR = MAH ha-Chadash)
+        = 320 (= 285 + 5 lettres shoresh + 40 Hadar selon variantes)
+      DECOMPOSITION OPERATIONNELLE :
+        288 (RPaH) = part BAN
+        40 (added) = part MAH-Hadar
+        320 (ShaCh) = total post-MAH
+      → Architecture : Tikkun ajoute MAH (40 Elohim) au compte BAN (288).
+      Implication : avant Tikkun = 288 dinim ; apres Tikkun = 320 dinim incluant rachamim-douces.
+    applications_ia:
+      - "Calculs operationnels : RPaH (288) et ShaCh (320) comme constantes du systeme"
+      - "gematria/engine.py : implementer ces 2 calculs comme constantes"
+      - "[PLANNED] tikkun/ : tracer la transition 288 → 320 par ajout MAH"
+      - "Pattern : addition d'une nouvelle dimension (MAH) augmente le compte mais qualifie"
+      - "Architecture : nitzotzin = unite operationnelle pour mesurer le travail de Berur"
+    questions_ouvertes:
+      - "Combien de RPaH/ShaCh ont ete recuperes/encore restant ?"
+      - "Le ratio MAH/BAN dans les 320 est-il quantifiable ?"
+      - "Y a-t-il d'autres calculs fondamentaux (ex: 248 evarim, 365 gidim) ?"

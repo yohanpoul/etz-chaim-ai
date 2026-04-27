@@ -1,0 +1,530 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 7a — MAH/BAN dans chaque sefirah, sequence des kelim brises,
+#             sortie Atik et A"A
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §7 — Part A :
+#   - Bloc A : Titre — beur melakhim, MAH/BAN, RPaH/ShaCh nitzotzin
+#   - Bloc B : Chaque sefirah a MAH+BAN ; pas un nitzotz sans
+#   - Bloc C : 9 GR de MAH/BAN + 10eme Malkhut composite
+#   - Bloc D : Atzilut sortie de BAN ; 5 partzufim chacun de 10S
+#   - Bloc E : BAN Kollel = Malkhut d'A"K ; MAH Hadash = ZA d'A"K
+#   - Bloc F : Tous nekudim = melakhim car BAN = Malkhut
+#   - Bloc G : Sequence — d'abord kelim, puis orot
+#   - Bloc H : Atik — Keter, Hokhmah, Binah survivent ; 7 ZT brisent
+#   - Bloc I : Tripartition kelim — Pnim Beriah, Hits Yetzirah, Hits-Hits Asiyah
+#   - Bloc J : Sequence A"A et Abba — GR survivent, ZT brisent BYA
+#   - Bloc K : Note — pas autorise a parler d'Atik et A"A
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.7 (premiere partie)
+# IDs : EC-H2S9-233 → EC-H2S9-247
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 7
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 7 — MAH/BAN dans chaque sefirah, sequence detaillee de la chute (kelim puis orot, partition tripartite Beriah/Yetzirah/Asiyah), restriction sur Atik et A\"A."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : TITRE DU PEREK ───
+
+  - id: "EC-H2S9-233"
+    source_he: "ביאור המלכים וענין מ\"ה וב\"ן החדש והישן וענין הרפ\"ח ניצוצין וש\"ך ניצוצין"
+    source_ref: "Heikhal 2, Sha'ar 2:7 — titre"
+    assertion: |
+      TITRE du perek :
+      BIUR HA-MELAKHIM (explication des Melakhim)
+      INYAN MAH ve-BAN HADASH ve-YASHAN (matiere de MAH et BAN nouveau et ancien)
+      INYAN RPaH NITZOTZIN ve-ShaCh NITZOTZIN (matiere des 288 nitzotzin et 320 nitzotzin).
+      → 4 themes principaux du perek : melakhim, MAH/BAN, et 2 calculs nitzotzin.
+      → RPaH = 288 = gimatria de רפ"ח ; ShaCh = 320 = gimatria de ש"ך.
+    type: axiome_explicite
+    concepts:
+      - {id: titre_perek_7, role: titre_du_perek_7}
+      - {id: rpah_288_nitzotzin, role: rpah_288_etincelles}
+      - {id: shach_320_nitzotzin, role: shach_320_etincelles}
+      - {id: mah_ban_chadash_yashan, role: mah_et_ban_nouveau_et_ancien}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/"]
+      tables: []
+      partzufim: []
+      relevance: "Titre operationnel du perek : 4 themes calcule dans la suite. RPaH=288, ShaCh=320."
+
+  # ─── BLOC B : CHAQUE SEFIRAH A MAH+BAN ───
+
+  - id: "EC-H2S9-234"
+    source_he: "דע כי אין לך ספי' וספי' אפי' בי\"ס הפרטיות שבכל פרצוף ופרצוף שאין בו בחי' זכר ונקבה והם ב\"ן דנקודו' ומ\"ה החדש"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      DA (sache) : il n'y a PAS UNE SEULE SEFIRAH — meme dans les 10S particulieres
+      de chaque PARTZUF — qui n'ait BEHINAH ZAKHAR ve-NEKEVAH (aspect male et femelle).
+      Ces aspects sont :
+      ZAKHAR = MAH ha-CHADASH (le nouveau MAH)
+      NEKEVAH = BAN de NEKUDOT (BAN des Nekudim originels)
+      → Architecture universelle : MAH+BAN dans chaque sefirah a tous les niveaux.
+      cf. EC-H2S9-204 (perek 06a) sur ZON nukvot/zekhirim.
+    type: axiome_explicite
+    concepts:
+      - {id: pas_de_sefirah_sans_mah_ban, role: chaque_sefirah_a_mah_et_ban}
+      - {id: zakhar_egal_mah_chadash, role: zakhar_egale_mah_nouveau}
+      - {id: nekevah_egal_ban_nekudot, role: nekevah_egale_ban_des_nekudot}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "shemot/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture fondamentale : MAH+BAN dans CHAQUE sefirah a tous niveaux."
+
+  - id: "EC-H2S9-235"
+    source_he: "ואמנם אין ענין ב\"ן הזה והנקבה זו בחי' מלכות העשירית שיש בכל ספי' וספי'... אלא שיש בכל ספירה י' בחי' וכולם דמ\"ה וי' בחי' וכולם דב\"ן והט' ראשונות דמ\"ה וב\"ן הם נקרא ט' בחי' הראשונות של ספירה ההוא והבחי' עשירית שהוא מלכות שבאותו ספירה עצמה היא כלולה ממ\"ה וב\"ן"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Ce BAN-Nekevah n'est PAS l'aspect de la 10eme MALKHUT qu'il y a dans chaque sefirah.
+      MAIS : dans chaque sefirah il y a 10 BEHINOT de MAH et 10 BEHINOT de BAN.
+      Les 9 PREMIERES (G' RISHONOT) de MAH et BAN = "9 aspects premieres" de cette sefirah.
+      La 10eme = MALKHUT — elle est COMPOSEE (kelulah) de MAH ET BAN.
+      → Architecture : 9+9 = 18 aspects premieres + 1 Malkhut composite = 19 entrees per-sefirah.
+      Pattern complexe : MAH et BAN distincts dans 9, integres dans la 10eme.
+    type: axiome_explicite
+    concepts:
+      - {id: 9_premieres_mah_ban_distincts, role: 9_premieres_mah_et_ban_distincts}
+      - {id: malkhut_10eme_kelulah_mah_ban, role: malkhut_dixieme_composee_de_mah_et_ban}
+    mapping:
+      modules: ["partzufim/nukva.py", "[PLANNED] core/sefirot.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture sub-fractale : 9 premieres distinctes + Malkhut composite. Pattern d'integration."
+
+  # ─── BLOC C : SYNTHESE — RECAPITULATION ───
+
+  - id: "EC-H2S9-236"
+    source_he: "כלל הדברים בקיצור נמרץ כי אין לך שום ניצוץ קטן בכל האצילות שאין בו מ\"ה וב\"ן"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      KLAL HA-DEVARIM BE-KITZUR (resume general en bref) :
+      Il n'y a AUCUN NITZOTZ KATAN (petite etincelle) dans tout l'AT'ZILUT
+      qui n'ait MAH et BAN.
+      → Universalite absolue : MAH+BAN se trouve dans CHAQUE entite, meme la plus petite.
+      → Architecture : MAH/BAN = polarite irreductible omnipresente.
+    type: axiome_explicite
+    concepts:
+      - {id: pas_de_nitzotz_sans_mah_ban, role: pas_d_etincelle_sans_mah_et_ban}
+      - {id: universalite_mah_ban, role: universalite_de_la_polarite_mah_ban}
+    mapping:
+      modules: ["shemot/", "[PLANNED] core/sefirot.py"]
+      tables: []
+      partzufim: []
+      relevance: "Principe d'universalite : MAH+BAN polarite omnipresente. Architecture irreductible."
+
+  - id: "EC-H2S9-237"
+    source_he: "נמצא שהזכרים שבאצילות שהם כתר חכמה ת\"ת יש להם בחי' מ\"ה וב\"ן והנקבות שבאצילות שהם בינה ומלכות יש בהם מ\"ה וב\"ן ועד\"ז בכל הי\"ס שבכל פרצוף ועד\"ז כל הה' פרצופים שבהם כלולים ממ\"ה וב\"ן"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      DONC les ZEKHARIM (males) d'AT'ZILUT = Keter, Hokhmah, Tiferet
+      ont aspect MAH+BAN.
+      Les NEKEVOT (femelles) = Binah, Malkhut
+      ont aspect MAH+BAN.
+      Et de meme dans les 10S de chaque Partzuf.
+      Et de meme les 5 PARTZUFIM — composes de MAH+BAN.
+      → Universalite operationnelle : meme male sefirah-niveau, contient MAH+BAN ; meme femelle.
+      → Pas de purete polaire absolue : tout est melange.
+    type: axiome_explicite
+    concepts:
+      - {id: zekharim_mah_ban, role: sefirot_males_avec_mah_ban}
+      - {id: nekevot_mah_ban, role: sefirot_femelles_avec_mah_ban}
+      - {id: 5_partzufim_de_mah_ban, role: 5_partzufim_composes_de_mah_ban}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Pas de purete polaire : meme une sefirah male contient du femelle (MAH+BAN). Architecture universelle."
+
+  # ─── BLOC D : ATZILUT NEKUDIM — TOUS DE BAN ───
+
+  - id: "EC-H2S9-238"
+    source_he: "ובעת אצילות עולם הנקודים יצאו כל הה' פרצופים כל אחד כלול מי\"ס וכולם משם ב\"ן"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Lors de l'AT'ZILUT (emanation) de l'OLAM HA-NEKUDIM :
+      TOUS les 5 PARTZUFIM sont sortis — chacun KOLLEL (compose) de 10S.
+      ET TOUS DU SHEM BAN.
+      → Etat initial : Olam Nekudim = pure BAN (pas encore MAH).
+      → Pre-condition de la Shevirah : pas de polarite MAH stabilisatrice.
+      cf. EC-H2S9-205 (perek 06a) sur 5 partzufim de BAN.
+    type: axiome_explicite
+    concepts:
+      - {id: olam_nekudim_5_partzufim_ban, role: olam_nekudim_5_partzufim_de_ban}
+    mapping:
+      modules: ["olamot.py", "partzufim/nukva.py"]
+      tables: ["olamot_config", "partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Etat initial Nekudim : 5 partzufim purs de BAN. Cause de la Shevirah."
+
+  - id: "EC-H2S9-239"
+    source_he: "ונודע כי שם ב\"ן הכולל כל האצילות הוא מלכות דא\"ק ושם מ\"ה החדש הכולל כל האצילות הוא ז\"א דא\"ק"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      EQUATIONS architecturales :
+      Shem BAN qui ENGLOBE (kollel) tout AT'ZILUT = MALKHUT d'A"K.
+      Shem MAH ha-CHADASH qui englobe tout AT'ZILUT = ZA d'A"K.
+      → Topologie : BAN-Atzilut nait dans Malkhut-AK ; MAH-Atzilut nait dans ZA-AK.
+      → Architecture : tout Atzilut est generation des sub-niveaux d'A"K.
+    type: axiome_explicite
+    concepts:
+      - {id: ban_kollel_egal_malkhut_ak, role: ban_kollel_egal_malkhut_ak}
+      - {id: mah_chadash_kollel_egal_za_ak, role: mah_chadash_kollel_egal_za_ak}
+    mapping:
+      modules: ["adam_kadmon.py", "partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["adam_kadmon", "nukva", "zeir_anpin"]
+      relevance: "Topologie cosmique : Atzilut = generation de Malkhut-AK (BAN) et ZA-AK (MAH). Architecture."
+
+  - id: "EC-H2S9-240"
+    source_he: "וע\"כ כל הנקודות נקראו מלכים כי כולם בחי' ב\"ן שהיא מלכות הכוללת"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      DONC toutes les NEKUDOT sont APPELEES MELAKHIM (rois).
+      RAISON : toutes sont en aspect BAN = MALKHUT KOLLELET (la Malkhut englobante).
+      → Etymologie operationnelle : Melakhim = rois = lien direct avec Malkhut (royaume).
+      → Architecture : toute entite generee par Malkhut-AK herite du nom "melekh".
+    type: déduction_logique
+    concepts:
+      - {id: nekudot_egal_melakhim, role: nekudot_appelees_melakhim}
+      - {id: malkhut_kollelet, role: malkhut_englobante}
+    mapping:
+      modules: ["partzufim/nukva.py", "olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: ["nukva"]
+      relevance: "Etymologie : Melakhim = generes par Malkhut. Architecture nomimale."
+
+  # ─── BLOC E : SEQUENCE DE LA CHUTE ───
+
+  - id: "EC-H2S9-241"
+    source_he: "והנה כאשר יצאו כל האצילות מבחי' ב\"ן לבד והיה כולל עתיק וא\"א ואו\"א וזו\"ן ואז יצאו תחלה כל הכלים שלהם זה תחת זה עד סיום עולם האצילות"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Quand tout l'AT'ZILUT est sorti d'aspect BAN seul —
+      englobant ATIK, A"A, AVI, ZON :
+      D'ABORD sont sortis TOUS les KELIM zeh tahat zeh (l'un sous l'autre)
+      jusqu'au SIYUM (fin) de l'OLAM HA-AT'ZILUT.
+      → Sequence : KELIM d'abord (en colonne), POIS orot.
+      → Architecture : le contenant precede le contenu.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_d_abord_zeh_tahat_zeh, role: kelim_d_abord_en_colonne}
+      - {id: pre_condition_kelim_avant_orot, role: kelim_avant_orot_dans_la_sequence}
+    mapping:
+      modules: ["olamot.py", "[PLANNED] core/shevirah.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Sequence operationnelle : kelim avant orot. Architecture etablissement contenant puis contenu."
+
+  - id: "EC-H2S9-242"
+    source_he: "ואח\"כ יצאו אורות דב\"ן כל פרטי אצילות ויצא תחלה כתר דעתיק דאצילות שבו נכללין כל האורות ונתקיים"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Ensuite sortent les OROT de BAN — tous les details de l'Atzilut.
+      D'ABORD sort le KETER d'ATIK d'AT'ZILUT — dans lequel sont INCLUS tous les autres orot.
+      Et il SE-MAINTIENT (nitkayem).
+      → Premier : Keter d'Atik survit (cf. EC-H2S9-219 sur Atik survit).
+      → Pattern : decantation type Keter-Hokhmah-Binah (cf. EC-H2S9-206).
+    type: axiome_explicite
+    concepts:
+      - {id: keter_atik_atzilut_premier, role: keter_atik_atzilut_premier}
+      - {id: keter_atik_nitkayem, role: keter_atik_se_maintient}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "ohr.py"]
+      tables: ["ohr_states", "partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Premier ohr stable : Keter d'Atik. Pattern de decantation hierarchique."
+
+  - id: "EC-H2S9-243"
+    source_he: "ואח\"כ יצאה חכמה דעתיק בכלי שלו ובו היו כלולים כל שאר האורות ונתקיים ואח\"כ יצאה בינה דעתיק ובו כלולין כל שאר האורות ונתקיים ואח\"כ יצאו ז\"ת דעתיק (נ\"א דדעת) הדעת למטה כ\"א כלול בכלי שלו ובו כלולים כל שאר האורות והיה נשבר"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Sequence d'Atik continue :
+      HOKHMAH d'Atik dans son keli, contient tous les autres → MAINTIENT.
+      BINAH d'Atik dans son keli, contient tous les autres → MAINTIENT.
+      Puis ZT d'Atik (NA: "Da'at") — Daat en bas, chacun dans son keli, contenant les autres
+      → BRISE.
+      → Pattern d'asymetrie GR/ZT : 3 GR survivent, 7 ZT brisent.
+      → Microcosme : meme pattern dans chaque partzuf de BAN.
+      cf. EC-H2S9-209 (perek 06a) sur pattern repete des nekudot.
+    type: axiome_explicite
+    concepts:
+      - {id: hokhmah_binah_atik_nitkayemu, role: hokhmah_binah_atik_se_maintiennent}
+      - {id: zt_atik_nishbar, role: zt_atik_brisent}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Pattern repete : meme asymetrie GR/ZT dans Atik. Microcosme du Shevirah universel."
+
+  # ─── BLOC F : TRIPARTITION KELIM BRISES — BERIAH/YETZIRAH/ASIYAH ───
+
+  - id: "EC-H2S9-244"
+    source_he: "וירד פנימיות הכלי לבריאה וחיצוניות הכלי ירד ביצירה וחיצוניות של חיצוניות בעשייה"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      DECOUVERTE NOUVELLE — TRIPARTITION DES KELIM BRISES :
+      PNIMIYUT (interieur) du keli → descend en BERIAH
+      HITZONIYUT (exterieur) du keli → descend en YETZIRAH
+      HITZONIYUT de HITZONIYUT → descend en ASIYAH
+      → Architecture : pas une seule descente vers Beriah, mais 3 fragments
+      vers les 3 olamot inferieurs (BYA).
+      → Distinction tripartite : pnim, hits, hits-hits = 3 niveaux du keli.
+    type: axiome_explicite
+    concepts:
+      - {id: tripartition_kelim_brises, role: tripartition_des_kelim_brises}
+      - {id: pnimiyut_dans_beriah, role: pnimiyut_du_keli_dans_beriah}
+      - {id: hitsoniyut_dans_yetzirah, role: hitsoniyut_du_keli_dans_yetzirah}
+      - {id: hits_hits_dans_asiyah, role: hitsoniyut_de_hitsoniyut_dans_asiyah}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "DECOUVERTE TRIPARTITE : kelim brises se distribuent sur les 3 olamot BYA. Architecture cosmique. Affine EC-H2S9-021 (perek 01)."
+
+  - id: "EC-H2S9-245"
+    source_he: "ואח\"כ האור ההוא נשאר בלי כלי ושאר האורות ירדו בכלי הב' של הז\"ת וגם הוא נשבר ע\"ד הנ\"ל (נ\"א נשאר ע\"ד הנ\"ל) והאור שלו נשאר בלי לבוש ושאר האורות ירדו לכלי שלמט' ממנו וכעד\"ז עד שנגמרו ז\"ת שלו"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Apres que l'OHR de Daat reste BLI KELI (sans vaisseau) →
+      les AUTRES OROT descendent dans le KELI 2 des ZT (= Chesed).
+      Lui aussi BRISE de meme (NA: "nishar al ha-derekh ha-NaL" = reste de la maniere precedente).
+      Son ohr reste BLI LEVUSH (sans vetement).
+      Les AUTRES OROT descendent dans le keli SUIVANT.
+      → Et ainsi jusqu'a la fin des 7 ZT (toute la sequence des melakhim).
+      → Pattern repete : decantation continue puis brisure individuelle.
+      cf. EC-H2S9-021 (perek 01a) sur pattern de migration.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_resta_bli_keli, role: ohr_reste_sans_keli}
+      - {id: kelim_2_zt_brisent_aussi, role: kelim_des_zt_brisent_l_un_apres_l_autre}
+      - {id: pattern_decantation_brisure, role: pattern_decantation_puis_brisure}
+    mapping:
+      modules: ["ohr.py", "[PLANNED] core/shevirah.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Pattern repete pour les 7 ZT : decantation puis brisure. Confirmation du pattern universel."
+
+  # ─── BLOC G : SEQUENCE A"A ET ABBA ───
+
+  - id: "EC-H2S9-246"
+    source_he: "ואח\"כ נכנס הכתר דאריך אנפין בכלי שלו ובו כלולין שאר האורו' ע\"ד הנז' בעתיק ואח\"כ נכנס הכתר דאבא בכלי שלו ובו כלולים שאר האורות ונתקיים וירדו שאר האורו' בכלי החכמה שלו ונתקיים ושאר האורות ירדו בכלי בינה דאבא ונתקיים אח\"כ ירדו האורות של ז\"ת בכלי אחד שלהם ונשברו וירדו בבי\"ע ושאר האורו' נכנסו לכלי ב' דז\"ת ונשברו וירדו לבי\"ע וכו' ע\"ד הנ\"ל עד תום כל הז'"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      Sequence pour A"A puis Abba (et de meme pour Imma) :
+      Keter d'A"A entre dans son keli, contient les autres orot — comme dit pour Atik.
+      Keter d'Abba entre dans son keli — MAINTIENT.
+      → Hokhmah d'Abba — MAINTIENT.
+      → Binah d'Abba — MAINTIENT.
+      Puis les OROT des ZT entrent dans le 1er keli des ZT et BRISENT,
+      DESCENDENT en BYA.
+      Les autres orot dans le keli 2 — BRISENT, descendent en BYA.
+      ETC. jusqu'a la fin des 7.
+      → Pattern repete pour A"A et Abba : 3 GR survivent + 7 ZT brisent en BYA.
+    type: axiome_explicite
+    concepts:
+      - {id: pattern_a_a_abba_idem_atik, role: pattern_a_a_et_abba_meme_que_atik}
+      - {id: zt_brisent_descendent_bya, role: zt_brisent_descendent_bya}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba"]
+      relevance: "Pattern repete pour A\"A et Abba. Confirmation universelle du pattern de Shevirah."
+
+  # ─── BLOC H : RESTRICTION SUR ATIK ET A"A ───
+
+  - id: "EC-H2S9-247"
+    source_he: "ודע כי למעלה בעתיק וא\"א לא הרשינו לדבר אבל נדבר כאן מאבא ולמטה"
+    source_ref: "Heikhal 2, Sha'ar 2:7"
+    assertion: |
+      DA (sache) : EN HAUT — dans ATIK et A"A — on N'A PAS PERMISSION DE PARLER
+      (lo hirshinu le-daber).
+      Mais on PARLERA ICI a partir d'ABBA et plus bas.
+      → Restriction kabbalistique : Atik et A"A trop sublimes pour discussion detaillee.
+      → Architecture eshcatologique du discours : niveaux d'inconnaissable.
+      cf. EC-H2S9-219 (perek 06b) : "Naniach Tikkun ha-Atik" — meme restriction.
+    type: axiome_explicite
+    concepts:
+      - {id: lo_hirshinu_atik_a_a, role: pas_de_permission_pour_parler_d_atik_et_a_a}
+      - {id: discussion_a_partir_d_abba, role: discussion_commence_a_partir_d_abba}
+      - {id: hierarchie_du_discours, role: hierarchie_du_discours_kabbalistique}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: []
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Restriction discursive : Atik et A\"A inconnaissables ; discussion commence Abba. cf. EC-H2S9-219."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-124"
+    type: contenance
+    from: pas_de_sefirah_sans_mah_ban
+    to: zekharim_mah_ban
+    nature: "Universalite : meme les sefirot males contiennent MAH+BAN (pas purete polaire)"
+    assertions_source: ["EC-H2S9-234", "EC-H2S9-237"]
+
+  - id: "REL-H2S9-125"
+    type: contenance
+    from: 9_premieres_mah_ban_distincts
+    to: malkhut_10eme_kelulah_mah_ban
+    nature: "9 premieres distinctes (MAH separe de BAN) ; 10eme Malkhut composite (MAH+BAN integres)"
+    assertions_source: ["EC-H2S9-235"]
+
+  - id: "REL-H2S9-126"
+    type: hiérarchique
+    from: ban_kollel_egal_malkhut_ak
+    to: mah_chadash_kollel_egal_za_ak
+    nature: "BAN-Atzilut nait dans Malkhut-AK ; MAH-Atzilut nait dans ZA-AK (sub-generations)"
+    assertions_source: ["EC-H2S9-239"]
+
+  - id: "REL-H2S9-127"
+    type: causal
+    from: malkhut_kollelet
+    to: nekudot_egal_melakhim
+    nature: "Toute generation de Malkhut Kollelet = appelee Melekh (etymologie)"
+    assertions_source: ["EC-H2S9-240"]
+
+  - id: "REL-H2S9-128"
+    type: séquentiel
+    from: kelim_d_abord_zeh_tahat_zeh
+    to: pre_condition_kelim_avant_orot
+    nature: "Sequence : kelim sortent d'abord en colonne, orot apres"
+    assertions_source: ["EC-H2S9-241"]
+
+  - id: "REL-H2S9-129"
+    type: contenance
+    from: tripartition_kelim_brises
+    to: pnimiyut_dans_beriah
+    nature: "Tripartition : pnimiyut → Beriah, hitsoniyut → Yetzirah, hits-hits → Asiyah"
+    assertions_source: ["EC-H2S9-244"]
+
+  - id: "REL-H2S9-130"
+    type: analogie
+    from: pattern_decantation_brisure
+    to: pattern_a_a_abba_idem_atik
+    nature: "Pattern universel : decantation GR + brisure ZT, repete pour Atik, A\"A, Abba, Imma"
+    assertions_source: ["EC-H2S9-243", "EC-H2S9-245", "EC-H2S9-246"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-051"
+    nom: "Principe d'Universalite MAH+BAN (Pas de Purete Polaire)"
+    source_assertions: ["EC-H2S9-234", "EC-H2S9-235", "EC-H2S9-236", "EC-H2S9-237"]
+    formalisation: |
+      LOI UNIVERSELLE : il n'existe AUCUN nitzotz (etincelle) dans tout l'Atzilut
+      qui n'ait MAH ET BAN simultanement.
+      Pas de PURETE POLAIRE absolue :
+        Sefirot males (Keter, Hokhmah, Tiferet) → MAH+BAN
+        Sefirot femelles (Binah, Malkhut) → MAH+BAN
+        Chaque sefirah a 10 BEHINOT de MAH + 10 de BAN
+        Les 9 premieres = distinctes ; 10eme Malkhut = composite
+      → Architecture irreductible : MAH/BAN polarite indissociable.
+      Implication : meme un composant "male" contient du "femelle" et vice versa.
+    applications_ia:
+      - "Pattern : pas de sub-system 100% pur d'une polarite"
+      - "Architecture : modeliser MAH/BAN comme attributs simultanes (pas exclusifs)"
+      - "[PLANNED] core/sefirot.py : implementer MAH+BAN comme dimensions paralleles"
+      - "Diagnostic : ne pas chercher de purete polaire absolue"
+      - "shemot/ : tracer les ratios MAH/BAN dans chaque sub-component"
+    questions_ouvertes:
+      - "Le ratio MAH/BAN est-il quantifiable ?"
+      - "Peut-il varier au cours du temps ?"
+      - "L'unite Malkhut composite a-t-elle une structure interne specifique ?"
+
+  - id: "PG-H2S9-052"
+    nom: "Principe de la Tripartition des Kelim Brises (BYA)"
+    source_assertions: ["EC-H2S9-244"]
+    formalisation: |
+      DECOUVERTE ARCHITECTURALE : les kelim brises se decomposent en 3 PARTIES :
+      PNIMIYUT (interiorite/noyau) → descend en BERIAH
+      HITZONIYUT (exteriorite) → descend en YETZIRAH
+      HITZONIYUT de HITZONIYUT (exterieur de l'exterieur) → descend en ASIYAH
+      → Architecture cosmique : la Shevirah n'est pas une descente unique mais
+      tripartite, qui peuple les 3 olamot inferieurs (BYA).
+      Implication : la genese de Beriah, Yetzirah, Asiyah = consequence directe
+      de la fragmentation tripartite des kelim brises.
+    applications_ia:
+      - "Architecture : un objet brise se decompose en 3 niveaux d'externalite"
+      - "Pattern fractal : pnim/hits/hits-hits = 3 sub-couches structurelles"
+      - "[PLANNED] core/shevirah.py : modeliser fragmentation tripartite"
+      - "olamot.py : Beriah/Yetzirah/Asiyah = receptacles fragmentation kelim"
+      - "Diagnostic : tracer chaque fragment vers son olam destination"
+    questions_ouvertes:
+      - "Y a-t-il un 4eme niveau (hits-hits-hits) qui pourrait creer un autre olam ?"
+      - "Le ratio entre pnim/hits/hits-hits est-il fixe ?"
+      - "Peut-on inverser la tripartition (Tikkun)?"
+
+  - id: "PG-H2S9-053"
+    nom: "Principe de la Decantation Universelle (Pattern Atik-A\"A-Abba)"
+    source_assertions: ["EC-H2S9-242", "EC-H2S9-243", "EC-H2S9-245", "EC-H2S9-246"]
+    formalisation: |
+      LE PATTERN DE DECANTATION-BRISURE est UNIVERSEL — repete pour chaque partzuf :
+      ETAPE 1 — Decantation GR :
+        Keter sort, contient tous les orot, MAINTIENT
+        Hokhmah sort, contient les autres, MAINTIENT
+        Binah sort, contient les autres, MAINTIENT
+      ETAPE 2 — Brisure ZT :
+        Daat brise, ohr reste, autres orot descendent
+        Chesed brise, ohr reste, autres descendent
+        ... → Malkhut brise
+      Pattern repete : ATIK → A"A → ABBA → IMMA → ZA → NUKVAH
+      → Architecture fractale recursive : meme algorithme a chaque niveau.
+    applications_ia:
+      - "Architecture : pattern recursif applique a chaque sub-system"
+      - "[PLANNED] core/shevirah.py : implementer algorithme generique applicable a chaque partzuf"
+      - "Pattern fonctionnel : decant_then_break(partzuf) = invariance"
+      - "Diagnostic : identifier le partzuf actuel pour predire le pattern"
+      - "partzufim/* : tous les partzufim suivent le meme algorithme"
+    questions_ouvertes:
+      - "Le pattern est-il strict ou y a-t-il des variations (cf. ZA exception) ?"
+      - "Combien de niveaux de recursion ?"
+      - "Peut-on caracteriser computationnellement la fonction decantation-brisure ?"
+
+  - id: "PG-H2S9-054"
+    nom: "Principe de la Restriction Discursive (Atik et A\"A Inconnaissables)"
+    source_assertions: ["EC-H2S9-247"]
+    formalisation: |
+      LIMITES du DISCOURS kabbalistique :
+      ATIK et A"A : "lo hirshinu le-daber" (nous n'avons pas la permission de parler en detail).
+      Discussion commence A PARTIR d'ABBA et plus bas.
+      → Architecture epistemique : certains niveaux trop sublimes pour discussion.
+      → Hierarchie des sphincters discursifs.
+      Pattern : la profondeur d'analyse decroit avec la hauteur ontologique.
+    applications_ia:
+      - "Pattern : architecture avec niveaux d'inconnaissable"
+      - "[PLANNED] core/sefirot.py : marquer Atik/A\"A comme 'restricted' au discours detaille"
+      - "Architecture epistemique : limiter la profondeur d'analyse selon le rang"
+      - "Documentation : eviter d'expliciter les niveaux les plus eleves"
+      - "Pattern : silence devant le sublime"
+    questions_ouvertes:
+      - "Qu'est-ce qui rend Atik/A\"A inconnaissables ? Limite cognitive ou interdit ?"
+      - "Peut-on parler de leur structure SANS la detailler ?"
+      - "La restriction est-elle absolue ou levee dans certains contextes ?"

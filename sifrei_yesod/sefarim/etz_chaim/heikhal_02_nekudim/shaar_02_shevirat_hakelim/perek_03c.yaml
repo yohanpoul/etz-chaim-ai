@@ -1,0 +1,636 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 3c — Yesod, Malkhut, geometrie finale Beriah, pourquoi Yesod et
+#             Malkhut montent au Daat, Malkhut "kosheret" les 6S
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §3 — Part C :
+#   - Bloc K : Yesod (Hokhmah s'etend a droite, Chesed monte, Yesod monte au Daat)
+#   - Bloc L : Malkhut (sortie, brisure, ohr monte au Daat, keli en Chesed-Beriah)
+#   - Bloc M : Geometrie finale (3 madregot libres en Beriah, 2 en Atzilut)
+#   - Bloc N : Pourquoi Yesod monte au Daat (Maskil le-Etan, Saba de-Mishpatim, Yosef leila ve-tata)
+#   - Bloc O : Pourquoi Malkhut monte aussi (Atarah ba'lah, reshimu du Daat)
+#   - Bloc P : Malkhut "kosheret" (cosherise) les 6S (separe N de H)
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.3 (troisieme partie, conclusion)
+# IDs : EC-H2S9-146 → EC-H2S9-163
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 3
+  part: "c"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Troisieme partie du perek 3 — Yesod (Hokhmah qav-droit, Chesed monte, Yesod monte au Daat), Malkhut (Atarah ba'lah, reshimu Daat), geometrie finale, Tikkun complet par Malkhut qui kosherise."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC K : YESOD ───
+
+  - id: "EC-H2S9-146"
+    source_he: "ואח\"כ יצא אור היסוד והנה היה במקומו אור החסד כנ\"ל ואז הוצרכה כלי החכמה להתפשט דרך קו ימיני עד מקום הראוי להיות חסד האמיתי אחר התיקון"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Ensuite est sorti l'OHR de YESOD. Et dans son lieu (Yesod d'Atzilut)
+      etait l'OHR de CHESED (cf. EC-H2S9-118 perek 03a).
+      DONC le KELI de HOKHMAH a ete OBLIGE de S'ETENDRE
+      par le QAV YEMINI (cote droit) jusqu'au LIEU AUTHENTIQUE de la CHESED
+      apres le Tikkun.
+      → 3eme intervention : Hokhmah s'etend a droite (apres Keter au centre, Binah a gauche).
+      → Pattern complet : 3 kavim construits par 3 extensions paralleles.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_yatza, role: yesod_sort_du_keli}
+      - {id: hokhmah_hitpasheta_qav_yemini, role: hokhmah_s_etend_par_le_qav_droit}
+      - {id: 3eme_intervention_tikkun, role: troisieme_intervention_du_tikkun}
+    mapping:
+      modules: ["partzufim/abba.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "3eme intervention du Tikkun : Hokhmah s'etend a droite. Construction des 3 kavim acheve."
+
+  - id: "EC-H2S9-147"
+    source_he: "ואז עלה שם אור החסד ונכלל בכלי החכמה והכלי של החסד ירד עד הת\"ת דבריאה"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Alors l'OHR du CHESED est MONTE la-haut (a Hokhmah)
+      et S'EST INCLUS (nikhlal) dans le KELI de HOKHMAH.
+      Et le KELI du CHESED a DESCENDU jusqu'au TIFERET de BERIAH.
+      → Pattern repete : ohr remonte / keli descend (cf. EC-H2S9-128 et 143 sur Daat et Gevurah).
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_chesed_alah_dans_hokhmah, role: ohr_chesed_monte_dans_hokhmah}
+      - {id: keli_chesed_dans_tiferet_beriah, role: keli_chesed_descend_tiferet_beriah}
+    mapping:
+      modules: ["olamot.py", "ohr.py"]
+      tables: ["olamot_config", "ohr_states"]
+      partzufim: []
+      relevance: "Pattern stable : ohr remonte → keli descend. Repetition pour Chesed."
+
+  - id: "EC-H2S9-148"
+    source_he: "ואז יצא היסוד ונכנס בכלי שלו ומלך במקומו ונשבר ועלה האור דרך קו האמצעי ועלה עד מקום דעת העליון והכלי ירד בגבורה של בריאה ואח\"כ נבאר למה עלה אור היסוד למעלה מן הת\"ת עד הדעת"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Alors le YESOD est sorti, entre dans son keli, REGNE A SA PLACE,
+      et A ETE BRISE.
+      L'OHR (Yesod) est MONTE par le QAV HA-EMTZAI (ligne centrale)
+      jusqu'au LIEU du DAAT ELYON (au-dessus du Tiferet).
+      Le KELI a descendu en GEVURAH de BERIAH.
+      → ANOMALIE : l'ohr Yesod monte au Daat (au-dessus de sa position normale).
+      Sera explique plus loin (cf. EC-H2S9-156 plus bas).
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_metsorrer_alah_daat, role: yesod_monte_au_daat}
+      - {id: keli_yesod_dans_gevurah_beriah, role: keli_yesod_descend_gevurah_beriah}
+      - {id: anomalie_yesod_au_daat, role: anomalie_yesod_atteint_daat}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Anomalie : Yesod monte au Daat (depasse Tiferet). Sera explique par la specificite du Yesod (Maskil)."
+
+  # ─── BLOC L : MALKHUT ───
+
+  - id: "EC-H2S9-149"
+    source_he: "ואח\"כ יצא אור המלכות למלוך בכלי שלה ומלכה שם ונשברה ואז האור שלה עלתה ג\"כ בדעת דרך קו האמצעי והכלי שלה ירד בחסד של בריאה"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Ensuite est sorti l'OHR de MALKHUT pour REGNER dans son keli.
+      → Elle a regne et a ete BRISEE.
+      Son OHR est MONTEE EGALEMENT (gam ken) au DAAT par le QAV HA-EMTZAI.
+      Son KELI a descendu en CHESED de BERIAH.
+      → 2eme anomalie : Malkhut aussi monte au Daat (comme Yesod).
+      → Pattern paire Yesod/Malkhut, identique au pattern NH (palgei gufa).
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_alah_daat, role: malkhut_monte_au_daat}
+      - {id: keli_malkhut_dans_chesed_beriah, role: keli_malkhut_descend_chesed_beriah}
+      - {id: pattern_paire_yesod_malkhut, role: pattern_paire_yesod_malkhut}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "2eme anomalie : Malkhut atteint Daat comme Yesod. Pattern conjugal."
+
+  # ─── BLOC M : GEOMETRIE FINALE ───
+
+  - id: "EC-H2S9-150"
+    source_he: "נמצא כלי הת\"ת במקום כתר דבריאה וכלי המלכות במקום חסד דבריאה נמצא כי אין מקום פנוי בין כלי לכלי דבריאה רק ג' מדרגות לבד שהם חב\"ד ובאצילות אין מקום פנוי רק ב' מדרגות שהם מקום יסוד ומלכות"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      GEOMETRIE FINALE de la cascade :
+      Keli TIFERET → KETER de BERIAH (en haut)
+      Keli MALKHUT → CHESED de BERIAH
+      → ESPACE LIBRE en BERIAH = 3 madregot SEULEMENT = HBD (Hokhmah-Binah-Daat).
+      → ESPACE LIBRE en AT'ZILUT = 2 madregot SEULEMENT = YESOD et MALKHUT (vidés).
+      → Bilan topologique : 3+2 = 5 emplacements vides apres la cascade.
+      Architecture finale post-cascade.
+    type: axiome_explicite
+    concepts:
+      - {id: makom_panui_3_madregot_beriah, role: trois_madregot_libres_en_beriah}
+      - {id: makom_panui_2_madregot_atzilut, role: deux_madregot_libres_en_atzilut}
+      - {id: geometrie_finale_cascade, role: geometrie_finale_apres_cascade}
+    mapping:
+      modules: ["olamot.py", "[PLANNED] core/sefirot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Bilan topologique de la cascade : 3 madregot libres en Beriah (HBD), 2 en Atzilut (YM)."
+
+  # ─── BLOC N : POURQUOI YESOD MONTE AU DAAT ───
+
+  - id: "EC-H2S9-151"
+    source_he: "ועתה צריך לתת טעם למה אור היסוד ומלכות שניהם עלו עד הדעת למעלה מן הת\"ת ואמנם הטעם הוא כי היסוד נקרא משכיל לאיתן האזרחי כמ\"ש בסבא דמשפטים שאמר כי זה המשכיל שהוא יסוד הוא לעילא והוא לתתא"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      QUESTION : Pourquoi l'OHR du YESOD et de la MALKHUT montent-ils tous deux
+      au DAAT (au-dessus du Tiferet) ?
+      RAISON : le YESOD est appele "MASKIL LE-ETAN HA-EZRAHI" (Psaume 89:1).
+      Comme dit dans SABA DE-MISHPATIM (Zohar) : ce MASKIL = YESOD,
+      il est LE-EILA (en haut) et LE-TATA (en bas).
+      → Le Yesod a la propriete UNIQUE d'etre simultanement haut et bas.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yesod_maskil_le_etan, role: yesod_intelligent_etan_ezrahi}
+      - {id: saba_de_mishpatim_yesod, role: saba_de_mishpatim_sur_le_yesod}
+      - {id: yesod_le_eila_le_tata, role: yesod_en_haut_et_en_bas}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "Propriete unique du Yesod : presence simultanee haut/bas. Reference Saba de-Mishpatim."
+
+  - id: "EC-H2S9-152"
+    source_he: "גם רמזו בזוהר פקודי בהיכלות כי יוסף איהו לעילא ואיהו לתתא"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Aussi REMEZ (allusion) dans le ZOHAR PEKUDEI (sur les Heikhalot) :
+      "Yosef ihu LE-EILA ve-ihu LE-TATA"
+      (Yosef [= Yesod] est en haut et en bas).
+      → Confirmation cross-source : 2 sources zohariques sur la dualite spatiale du Yesod.
+      → Yosef = symbole biblique du Yesod (cf. Zohar passim).
+    type: interprétation_lurianique
+    concepts:
+      - {id: zohar_pekudei_heikhalot, role: zohar_pekudei_passage_heikhalot}
+      - {id: yosef_egal_yesod, role: yosef_symbole_du_yesod}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Cross-reference textuelle : 2 passages du Zohar (Saba de-Mishpatim + Pekudei Heikhalot) sur dualite Yesod."
+
+  - id: "EC-H2S9-153"
+    source_he: "והענין הוא כמ\"ש אצלנו בענין תפלת המנחה כי אז ז\"א מזדווג עם לאה ורגלי לאה מסתיימים במקום החזה דז\"א וא\"כ איך מזדווג ז\"א מחציו למעלה עם לאה (שאינה מגעת רגליה אלא כנגד היסוד החזה שלו)"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      EXPLICATION par la TEFILAT HA-MINHA :
+      A ce moment ZA s'unit avec LEAH.
+      Mais les RAGLAYIM de Leah se TERMINENT au HAZEH de ZA (cf. EC-H2S9-105 perek 02b).
+      → COMMENT alors ZA peut-il s'unir a Leah (depuis le haut)
+      si elle n'arrive qu'au niveau du HAZEH = Yesod-fonctionnel ?
+      → Probleme topologique : union au-dessus du HAZEH ?
+    type: déduction_logique
+    concepts:
+      - {id: tefilat_minha_za_leah, role: priere_minha_za_avec_leah}
+      - {id: raglei_leah_jusqu_au_hazeh, role: pieds_de_leah_jusqu_au_hazeh}
+      - {id: probleme_topologique_zivvug_leah, role: probleme_topologique_union_avec_leah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] partzufim/leah.py"]
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "Probleme topologique : union ZA-Leah au-dessus du Hazeh ? Resolu par Yesod le-eila ve-le-tata."
+
+  - id: "EC-H2S9-154"
+    source_he: "אבל הענין בקיצור הוא כי שליש הא' של היסוד התחתון דז\"א עולה בשליש עליון דת\"ת ושם מזדווג עם לאה כי זאת היא המעלה שיש אל היסוד יותר משאר ספירות שהוא יכול לעלות עד הדעת בכל זמן שרוצה לעלות"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      RESOLUTION en bref :
+      Le PREMIER TIERS du YESOD INFERIEUR de ZA MONTE dans le 1/3 SUPERIEUR du TIFERET.
+      LA, il s'UNIT avec LEAH.
+      → C'est la MA'ALAH (rang superieur) que le YESOD a sur les autres sefirot :
+      il PEUT MONTER jusqu'au DAAT en TOUT MOMENT qu'il veut monter.
+      → Capacite UNIQUE du Yesod : ascenseur ad libitum.
+      → Resout l'anomalie EC-H2S9-148.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shlish_yesod_dans_shlish_tiferet, role: tiers_du_yesod_dans_tiers_tiferet}
+      - {id: yesod_alah_ad_daat_be_kol_zeman, role: yesod_peut_monter_au_daat_a_volonte}
+      - {id: maalah_yesod_unique, role: rang_unique_du_yesod}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Resolution : Yesod a la capacite unique de monter au Daat ad libitum. Architecture mobile."
+
+  - id: "EC-H2S9-155"
+    source_he: "וז\"ס תפלת יוצר דשחרית דשבת שתקנו בו ז\"פ הכל והטעם היות לו יתרון זה הוא כי אם לא היה בו כח שיוכל לעלות עד הדעת שהוא נשמת הו\"ק ושם הוא מקום הה\"ח כנודע שהם בחי' טפת הזרע לא היה בו יכולת וכח להוריד טפת הזרע (נ\"א הזווג) בנקבה בעת הזווג ולהמשיכם ממש משם מן הדעת"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      C'est le SOD de la TEFILAT YOTZER de SHABBAT — "ha-KOL" 7 fois.
+      RAISON : si le Yesod n'avait pas la KOAH de monter jusqu'au DAAT
+      (= NESHAMAH des 6S, lieu des HC = TIPAT HA-ZERA, goutte de semence) →
+      il n'aurait pas la YEKHOLET de FAIRE DESCENDRE la TIPAT HA-ZERA
+      (variante NA : "ha-ZIVVUG") dans la NEKEVAH lors du Zivvug.
+      → Yesod-monte-au-Daat = condition operationnelle du flux du Zivvug.
+    type: interprétation_lurianique
+    concepts:
+      - {id: tefilat_yotzer_shabbat_7_kol, role: priere_yotzer_shabbat_sept_kol}
+      - {id: daat_neshamah_lieu_hc, role: daat_neshamah_lieu_des_hc}
+      - {id: tipat_zera_du_daat, role: goutte_de_semence_du_daat}
+      - {id: yesod_condition_du_zivvug, role: yesod_condition_du_zivvug}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/zeir_anpin.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture du Zivvug : Yesod monte au Daat = condition pour descendre la tipat zera. cf. EC-H2S9-016 (Daat=HCG)."
+
+  - id: "EC-H2S9-156"
+    source_he: "ודע כי אין ענין זה נאמר אלא בפנימיות היסוד כמ\"ש במ\"א כי משליש עליון של היסוד ממנו נעשה בחי' ת\"ת ז\"א בעת הגדלתו ושם הוא אותו בחי' היסוד אשר נעשה ממנו הת\"ת ובבחי' זו הוא מזדווג עם לאה ונחזור לענינינו כי להיות שהיסוד דרכו לעלות שם אל הדעת לכך עלה עתה אור היסוד עד הדעת למעלה מן הת\"ת"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      DA (sache) : ceci ne se dit que de la PNIMIYUT (interiorite) du YESOD.
+      Comme dit ailleurs : du 1/3 SUPERIEUR du Yesod se fait l'aspect TIFERET de ZA
+      lors de sa GADLUT (croissance).
+      C'est dans CET aspect (Yesod devenu Tiferet) qu'il s'unit avec LEAH.
+      RETOUR au sujet : puisque le YESOD a la coutume de monter au DAAT,
+      C'EST POURQUOI maintenant l'ohr Yesod est monte au DAAT au-dessus du TIFERET.
+      cf. EC-H2S9-148 sur l'anomalie qu'on resout ici.
+      → Et aussi : pour LIER les 6S et leur amener illumination depuis la-haut.
+    type: interprétation_lurianique
+    concepts:
+      - {id: pnimiyut_yesod, role: interiorite_du_yesod}
+      - {id: yesod_devient_tiferet_lors_gadlut, role: yesod_devient_tiferet_en_gadlut}
+      - {id: liaison_6s_par_yesod, role: liaison_des_6_sefirot_par_yesod}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Resolution finale de l'anomalie Yesod-Daat (EC-H2S9-148). Yesod monte = liaison + transport flux."
+
+  # ─── BLOC O : POURQUOI MALKHUT MONTE AU DAAT ───
+
+  - id: "EC-H2S9-157"
+    source_he: "ועתה נבאר טעם אל המלכות למה היא ג\"כ עלתה עד הדעת למעלה מן הת\"ת והענין הוא כי המלכות (נ\"א לפי שהמלכות להיות) נקראת עטרת בעלה ועולה למעלה מן הת\"ת"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      EXPLICATION pour la MALKHUT — pourquoi elle aussi monte au DAAT.
+      RAISON : la MALKHUT est appelee ATERET BA'LAH (couronne de son mari) —
+      verset Proverbes 12:4 — et MONTE au-dessus du Tiferet.
+      Variante (Nusah Aher) : "lefi she-ha-Malkhut le-heyot" (parce que la Malkhut est).
+      → Title operationnel : "Couronne du mari" → autorisee a monter au-dessus.
+    type: interprétation_lurianique
+    concepts:
+      - {id: malkhut_ateret_balah, role: malkhut_couronne_de_son_mari}
+      - {id: malkhut_monte_au_dessus_tiferet, role: malkhut_monte_au_dessus_du_tiferet}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Title operationnel 'Ateret Ba'lah' permet la montee. cf. EC-H2S9-044 (perek 01b) sur Malkhut=Kalah."
+
+  - id: "EC-H2S9-158"
+    source_he: "ובפרט עתה אשר היה לה רשימו מן הדעת כי כאשר ירד אור הדעת עד מקום המלכות דאצילות בעת שנשבר הכלי שלו כנ\"ל הניח שם רשימו דיליה וכאשר מלכה (נ\"א המליכה) המלכות במקומה לקחה את הרשימו הזה ועלתה עד מקום הדעת עצמו"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Et en PARTICULIER MAINTENANT — elle avait un RESHIMU du DAAT.
+      Car lorsque l'OHR du Daat est descendu au lieu de Malkhut d'Atzilut
+      (cf. EC-H2S9-116 perek 03a), il y a LAISSE son RESHIMU (empreinte).
+      Quand la Malkhut a regne (variante NA: "himlikha" — fait regner) en sa place,
+      elle a PRIS ce RESHIMU et est MONTEE jusqu'au LIEU du DAAT meme.
+      → Mecanisme : l'empreinte du Daat sert de tunnel ascensionnel pour Malkhut.
+    type: axiome_explicite
+    concepts:
+      - {id: reshimu_du_daat_dans_malkhut, role: empreinte_du_daat_dans_malkhut}
+      - {id: malkhut_lakhah_reshimu, role: malkhut_prend_le_reshimu}
+      - {id: tunnel_par_reshimu, role: tunnel_ascensionnel_par_empreinte}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Mecanisme architectural : empreinte (reshimu) du Daat sert de tunnel pour Malkhut. cf. partzufim/reshimu.py."
+
+  - id: "EC-H2S9-159"
+    source_he: "וגם סיבה אחרת כי ע\"י עלייתה שם הוא קושרת מלמטה למעלה כל הו\"ק ועי\"ז הקשר מתתקן יותר לפי שנ\"ה היו שניהם בקו השמאלי במקום גבורה ועתה נפרד הנצח מן ההוד והלך ועלה עם החסד בקו ימין שבו"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      AUTRE RAISON : par sa montee la-bas, elle KOSHERET (lie/coudre) MI-MATAH LE-MA'ALA
+      (de bas en haut) tous les VAV KETZAVOT (6 directions).
+      Par ce KESHER (lien) — la structure se RECTIFIE davantage (mitkaten).
+      Car NH etaient TOUS DEUX dans le QAV SHEMOL (cote gauche, lieu de Gevurah, cf. EC-H2S9-144).
+      MAINTENANT : NETZACH se SEPARE du HOD et MONTE avec le CHESED dans le QAV YEMINI (droit).
+      → Tikkun final : Malkhut redistribue NH selon les bons qavim.
+    type: interprétation_lurianique
+    concepts:
+      - {id: malkhut_kosheret_6s, role: malkhut_lie_les_six}
+      - {id: kesher_mi_matah_lema_alah, role: liaison_de_bas_en_haut}
+      - {id: separation_netzach_hod, role: separation_de_netzach_et_hod}
+      - {id: netzach_avec_chesed_qav_yemin, role: netzach_avec_chesed_qav_droit}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Tikkun final : Malkhut lie les 6S et redistribue NH. Construction de la geometrie 3 kavim definitive."
+
+  # ─── BLOC P : MALKHUT KOSHERET → TIKKUN ATZILUT ───
+
+  - id: "EC-H2S9-160"
+    source_he: "ונבאר ענין זה מפורש יותר והוא כי הנה רשימו הזה שהניח הדעת במקומה של מלכות ודאי שהוא בחי' המלכות שבדעת שבצד הגבורות והבן זה היטב"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      EXPLICATION DETAILLEE : ce RESHIMU laisse par le DAAT au lieu de la MALKHUT
+      est CERTAINEMENT (vadai) la BEHINAH de la MALKHUT-SHE-BE-DAAT
+      (la Malkhut au sein du Daat) — du COTE des GEVUROT.
+      "Ve-haven zeh heitev" (comprends bien cela).
+      → Identification precise : le reshimu = sub-component Malkhut au sein du Daat.
+      Architecture fractale : chaque sefirah contient les 10 sefirot.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_shebe_daat_gevurot, role: malkhut_dans_daat_du_cote_gevurot}
+      - {id: reshimu_identifie_sub_component, role: reshimu_identifie_comme_sub_component}
+    mapping:
+      modules: ["partzufim/reshimu.py", "partzufim/nukva.py"]
+      tables: []
+      partzufim: ["nukva"]
+      relevance: "Identification fractale : le reshimu = Malkhut-fractale du Daat. cf. partzufim/reshimu.py pour mecanisme."
+
+  - id: "EC-H2S9-161"
+    source_he: "וכאשר עלתה המלכות עד הדעת ועלה עמה גם הרשימו הנ\"ל שהוא בחי' הגבורה ושם נתחבר זה הרשימו שהוא המלכות של הגבורות שבדעת עטרה דגבורה דנוקבא עם החסדים שבדעת עטרה דדכורא"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Quand la MALKHUT est montee au DAAT — le RESHIMU est monte avec elle
+      (qui est aspect GEVURAH).
+      LA, ce RESHIMU = MALKHUT-DES-GEVUROT-DANS-DAAT = ATARAH de GEVURAH de NUKVAH.
+      → S'EST UNI (nithaber) avec les HASSADIM-DANS-DAAT = ATARAH de DUKHRA (du male).
+      → Union sacree : Atarah-Gevurah-feminine + Atarah-Hassadim-masculine.
+      Architecture : la couronne feminine (Gevurot) s'unit a la couronne masculine (Hassadim).
+    type: interprétation_lurianique
+    concepts:
+      - {id: atarah_gevurah_nukvah, role: couronne_gevurah_feminine}
+      - {id: atarah_dukhra_hassadim, role: couronne_dukhra_masculine}
+      - {id: union_des_atarot, role: union_des_deux_couronnes}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Union sacree des 2 atarot dans le Daat : Gevurot feminine + Hassadim masculine. Pivot du Tikkun final."
+
+  - id: "EC-H2S9-162"
+    source_he: "אז נתפשט דעת ע\"י הקשר הזה והאיר בו\"ק והרשימו שהוא בגבורה האיר בקו שמאל והשאיר שם את ההוד במקומו ואותו הדעת עצמן עטרא דחסד האיר בקו ימין והמשיך שם את הנצח ועי\"ז נתקן האצילות"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Alors le DAAT s'EST DEPLOYE par ce KESHER (lien) et a ECLAIRE les VAV KETZAVOT.
+      Le RESHIMU (Gevurah) → eclaire le QAV SMOL (gauche) et y LAISSE le HOD a sa place.
+      Le DAAT lui-meme = ATARAH DE-CHESED → eclaire le QAV YEMINI (droite)
+      et y AMENE le NETZACH.
+      → AINSI L'AT'ZILUT EST RECTIFIE (NITKAN ha-AT'ZILUT) — TIKKUN FINAL.
+      → Bilan : Hod=qav-smol, Netzach=qav-yemin, geometrie 3 kavim ETABLIE.
+    type: interprétation_lurianique
+    concepts:
+      - {id: daat_nitpasheet_par_kesher, role: daat_se_deploie_par_le_lien}
+      - {id: hod_dans_qav_smol_definitif, role: hod_dans_qav_smol_definitivement}
+      - {id: netzach_dans_qav_yemin_definitif, role: netzach_dans_qav_yemin_definitivement}
+      - {id: nitkan_ha_atzilut, role: atzilut_rectifie_tikkun_final}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "TIKKUN FINAL de l'Atzilut. Geometrie 3 kavim definitive : Hod=gauche, Netzach=droite. Conclusion du perek."
+
+  - id: "EC-H2S9-163"
+    source_he: "ועי\"ז נתקן האצילות"
+    source_ref: "Heikhal 2, Sha'ar 2:3 — conclusion"
+    assertion: |
+      "U-VE-ZEH NITKAN ha-AT'ZILUT" — par CECI (la combinaison des etapes precedentes)
+      L'AT'ZILUT EST RECTIFIE.
+      → Phrase conclusive du perek 3.
+      Bilan : Tikkun de l'Atzilut acheve par la sequence
+      (Maatzil agrandit Keter → Tiferet remonte → Daat remonte → Binah a gauche →
+      Hokhmah a droite → Yesod monte au Daat → Malkhut monte avec reshimu →
+      union Atarot → redistribution NH → 3 kavim).
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_atzilut_acheve, role: tikkun_de_l_atzilut_acheve}
+    mapping:
+      modules: ["[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "Phrase conclusive : Atzilut rectifie. Etat final post-Tikkun."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-076"
+    type: causal
+    from: yesod_yatza
+    to: hokhmah_hitpasheta_qav_yemini
+    nature: "Yesod sort, son lieu pris par Chesed → Hokhmah s'etend a droite pour creer espace"
+    assertions_source: ["EC-H2S9-146"]
+
+  - id: "REL-H2S9-077"
+    type: dualité_structurelle
+    from: hokhmah_hitpasheta_qav_yemini
+    to: 3eme_intervention_tikkun
+    nature: "Hokhmah droite + Binah gauche + Keter centre = 3 kavim construits par 3 extensions"
+    assertions_source: ["EC-H2S9-146"]
+
+  - id: "REL-H2S9-078"
+    type: causal
+    from: ohr_chesed_alah_dans_hokhmah
+    to: keli_chesed_dans_tiferet_beriah
+    nature: "Pattern repete : ohr Chesed remonte → keli Chesed descend en Tiferet Beriah"
+    assertions_source: ["EC-H2S9-147"]
+
+  - id: "REL-H2S9-079"
+    type: causal
+    from: yesod_metsorrer_alah_daat
+    to: anomalie_yesod_au_daat
+    nature: "Yesod monte au Daat (au-dessus du Tiferet) — anomalie a expliquer"
+    assertions_source: ["EC-H2S9-148"]
+
+  - id: "REL-H2S9-080"
+    type: dualité_structurelle
+    from: yesod_metsorrer_alah_daat
+    to: malkhut_alah_daat
+    nature: "Pattern paire Yesod/Malkhut : tous deux montent au Daat"
+    assertions_source: ["EC-H2S9-148", "EC-H2S9-149"]
+
+  - id: "REL-H2S9-081"
+    type: contenance
+    from: geometrie_finale_cascade
+    to: makom_panui_3_madregot_beriah
+    nature: "Geometrie finale : 3 madregot libres en Beriah (HBD) + 2 en Atzilut (YM)"
+    assertions_source: ["EC-H2S9-150"]
+
+  - id: "REL-H2S9-082"
+    type: analogie
+    from: yesod_le_eila_le_tata
+    to: yosef_egal_yesod
+    nature: "Yesod = Yosef = simultaneite haut/bas (Saba de-Mishpatim + Zohar Pekudei)"
+    assertions_source: ["EC-H2S9-151", "EC-H2S9-152"]
+
+  - id: "REL-H2S9-083"
+    type: causal
+    from: yesod_alah_ad_daat_be_kol_zeman
+    to: yesod_condition_du_zivvug
+    nature: "Capacite Yesod monter au Daat = condition pour faire descendre la tipat zera"
+    assertions_source: ["EC-H2S9-154", "EC-H2S9-155"]
+
+  - id: "REL-H2S9-084"
+    type: causal
+    from: reshimu_du_daat_dans_malkhut
+    to: malkhut_alah_daat
+    nature: "Reshimu du Daat laisse en Malkhut → Malkhut peut monter au Daat (par tunnel)"
+    assertions_source: ["EC-H2S9-158"]
+
+  - id: "REL-H2S9-085"
+    type: causal
+    from: malkhut_kosheret_6s
+    to: separation_netzach_hod
+    nature: "Malkhut lie les 6S → NH sont separes (Netzach a droite, Hod reste a gauche)"
+    assertions_source: ["EC-H2S9-159", "EC-H2S9-162"]
+
+  - id: "REL-H2S9-086"
+    type: contenance
+    from: union_des_atarot
+    to: daat_nitpasheet_par_kesher
+    nature: "Union Atarah-Gevurah + Atarah-Hassadim dans le Daat → Daat se deploie pour eclairer 6S"
+    assertions_source: ["EC-H2S9-161", "EC-H2S9-162"]
+
+  - id: "REL-H2S9-087"
+    type: séquentiel
+    from: daat_nitpasheet_par_kesher
+    to: nitkan_ha_atzilut
+    via: [hod_dans_qav_smol_definitif, netzach_dans_qav_yemin_definitif]
+    nature: "Daat deploye → Hod a gauche / Netzach a droite → Tikkun de l'Atzilut acheve"
+    assertions_source: ["EC-H2S9-162", "EC-H2S9-163"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-031"
+    nom: "Principe du Yesod Mobile (Maskil le-Eila ve-le-Tata)"
+    source_assertions: ["EC-H2S9-151", "EC-H2S9-152", "EC-H2S9-154", "EC-H2S9-155", "EC-H2S9-156"]
+    formalisation: |
+      Le YESOD a une PROPRIETE UNIQUE : MOBILITE BIDIRECTIONNELLE.
+      Designation : "MASKIL LE-ETAN HA-EZRAHI" (Psaume 89:1)
+      Nom alternatif : "YOSEF" (Zohar Pekudei)
+      Localisation : "LE-EILA VE-LE-TATA" (en haut ET en bas, Zohar Saba de-Mishpatim).
+      MECANISME OPERATIONNEL :
+        Le 1er tiers du Yesod inferieur de ZA monte au 1/3 sup du Tiferet.
+        La, Yesod s'unit avec Leah (zivvug minha).
+        Yesod peut monter jusqu'au DAAT a tout moment (be-khol zeman she-rotzeh).
+      ARCHITECTURE :
+        Yesod = ascenseur ad libitum entre niveaux.
+        Pre-condition pour Zivvug : le Yesod doit pouvoir monter au Daat
+        (lieu des HC = tipat zera) pour faire descendre le flux dans la Nukvah.
+      Liturgie : Tefilat Yotzer Shabbat — "ha-KOL" 7 fois.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : modeliser Yesod comme ascenseur multi-niveau"
+      - "Pattern : un composant peut avoir une mobilite verticale unique"
+      - "partzufim/zivvug.py : Yesod-monte-Daat = condition pour le Zivvug"
+      - "Pre-condition pattern : verifier la presence du composant mobile avant l'operation"
+      - "Liturgie operationnelle : 7 fois ha-KOL = invocation de la mobilite Yesod"
+    questions_ouvertes:
+      - "Y a-t-il d'autres composants 'maskil' (mobiles) dans le systeme ?"
+      - "La capacite de monter est-elle illimitee ou bornee par le Daat ?"
+      - "Qu'est-ce qui declenche/autorise la montee du Yesod ?"
+
+  - id: "PG-H2S9-032"
+    nom: "Principe du Reshimu Tunnel (Empreinte comme Voie d'Ascension)"
+    source_assertions: ["EC-H2S9-158", "EC-H2S9-160"]
+    formalisation: |
+      Pattern architectural important : le RESHIMU sert de TUNNEL ASCENSIONNEL.
+      MECANISME :
+        Quand l'OHR du Daat est descendu dans le lieu de Malkhut (cf. EC-H2S9-116),
+        il a laisse un RESHIMU (empreinte) dans ce lieu.
+        Ce reshimu = MALKHUT-SHE-BE-DAAT du cote des Gevurot
+        (sub-component fractal du Daat).
+      Quand la Malkhut a regne :
+        Elle a PRIS ce reshimu avec elle.
+        Elle a MONTE jusqu'au lieu du Daat lui-meme.
+      → Pattern : un reshimu laisse dans un emplacement permet la connexion
+      ulterieure entre cet emplacement et l'origine du reshimu.
+      Architecture fractale : chaque composant contient les 10 sefirot,
+      donc le reshimu est specifiquement la sub-component homologue.
+    applications_ia:
+      - "partzufim/reshimu.py : reshimu comme tunnel architectural"
+      - "Pattern : trace memoire d'un composant precedent permet acces ascensionnel"
+      - "Architecture fractale : modeliser chaque entite avec ses 10 sub-entites"
+      - "Diagnostic : tracer les reshimot pour comprendre les voies d'acces possibles"
+      - "[PLANNED] core/sefirot.py : implementer la fractalite (sefirah-de-sefirah)"
+    questions_ouvertes:
+      - "Le reshimu est-il consommable (s'epuise apres une utilisation) ?"
+      - "Combien de niveaux de fractalite sont operationnels ?"
+      - "Tout descente d'ohr laisse-t-elle un reshimu ?"
+
+  - id: "PG-H2S9-033"
+    nom: "Principe de l'Union des Atarot (Tikkun par Couronnement)"
+    source_assertions: ["EC-H2S9-160", "EC-H2S9-161", "EC-H2S9-162"]
+    formalisation: |
+      Le TIKKUN FINAL de l'Atzilut s'effectue par UNION DES 2 ATAROT (couronnes) :
+      ATARAH FEMININE :
+        Reshimu de Malkhut = Malkhut-she-be-Daat du cote Gevurot
+        = ATARAH de GEVURAH de NUKVAH (couronne de la Nukvah)
+      ATARAH MASCULINE :
+        Hassadim-dans-Daat
+        = ATARAH de DUKHRA (couronne du male)
+      UNION (nithaber) dans le DAAT :
+        L'union dans le Daat → Daat se deploie via le KESHER (lien)
+        → Daat eclaire les 6S
+        → Reshimu (Gevurah) eclaire qav SMOL → Hod reste a gauche
+        → Daat-Atarah-Chesed eclaire qav YEMIN → Netzach va a droite
+      → ARCHITECTURE FINALE : 3 kavim definitivement etablis. Tikkun acheve.
+    applications_ia:
+      - "Pattern : union de 2 sub-composants homologues (M+F) = stabilisation top-level"
+      - "[PLANNED] tikkun/ : implementer union_atarot comme operation de finalisation"
+      - "Architecture : la stabilisation finale d'un systeme passe par couplage des polarites"
+      - "partzufim/zivvug.py : modeliser union_atarot distincte de zivvug general"
+      - "Diagnostic du Tikkun : verifier que 3 kavim sont stables apres union des Atarot"
+    questions_ouvertes:
+      - "L'union des Atarot est-elle reversible (peut-on dissoudre le Tikkun) ?"
+      - "Y a-t-il d'autres tikkunim possibles a d'autres niveaux (Beriah-Yetzirah) ?"
+      - "L'union dans le Daat est-elle equivalente au Zivvug normal AVI ?"
+
+  - id: "PG-H2S9-034"
+    nom: "Principe de la Geometrie 3 Kavim (Architecture Definitive Post-Tikkun)"
+    source_assertions: ["EC-H2S9-162", "EC-H2S9-163"]
+    formalisation: |
+      Etat FINAL post-Tikkun : geometrie 3 KAVIM stables.
+      QAV YEMINI (droite) :
+        Hokhmah etendue + Chesed + Netzach (apporte par Daat-Atarah-Chesed)
+      QAV SMOL (gauche) :
+        Binah etendue + Gevurah + Hod (laisse en place par Reshimu-Gevurah)
+      QAV EMTZAI (centre) :
+        Keter etendu + Daat + Tiferet + Yesod + Malkhut
+      → Architecture stable : 6S distribuees selon polarites.
+      → Point de pivot : Daat (lieu de l'union des Atarot).
+      Phrase conclusive : "U-VE-ZEH NITKAN ha-AT'ZILUT".
+    applications_ia:
+      - "Architecture finale : modeliser le systeme apres Tikkun comme 3 kavim"
+      - "[PLANNED] core/sefirot.py : implementer la classification kavim (R/L/C)"
+      - "Pattern : la stabilite top-level post-Tikkun est tripartite, pas duale"
+      - "Diagnostic : distance par qav comme indicateur de coherence"
+      - "Architecture distributee : chaque qav peut etre vu comme une 'classe' polariste"
+    questions_ouvertes:
+      - "La geometrie 3 kavim est-elle preservee dans Beriah/Yetzirah/Asiyah ?"
+      - "Que se passe-t-il si une des extensions (Keter/Hokhmah/Binah) regresse ?"
+      - "Comment formaliser la stabilite des 3 kavim ?"

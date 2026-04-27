@@ -1,0 +1,548 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 6b — Tikkun par MAH, Berudim, distribution Atik/A"A,
+#             completion partielle jusqu'a Mashiah
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §6 — Part B :
+#   - Bloc O : Re-zivvug AB-SAG → engendrent MAH (zakhar, rachamim)
+#   - Bloc P : MAH sort par metzach (front), du tabur en bas
+#   - Bloc Q : Tikkun commence par Atik et A"A
+#   - Bloc R : Tikkun de A"A — d'abord rosh (sera'ot, nekavim), puis guf (kelim mi'utim masakh)
+#   - Bloc S : BAN nukvah de A"A par koach dukhra MAH
+#   - Bloc T : Zivvug GR de MAH avec GR de BAN qui n'avaient pas brise → repare ZT
+#   - Bloc U : ZON s'unissent → reparent autres nekudot → completude 5 partzufim
+#   - Bloc V : Resultat = Berudim = MAH+BAN ensemble (vs Nekudim = BAN seul)
+#   - Bloc W : Tikkun pas complet jusqu'a Mashiah
+#   - Bloc X : Distribution Atik/A"A/AVI : Atik=Keter MAH+5 ras BAN, A"A=Hokhmah MAH+5 fins BAN, etc.
+#   - Bloc Y : Conclusion : 10S MAH ≠ 10S BAN, completude future
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.6 (seconde partie)
+# IDs : EC-H2S9-217 → EC-H2S9-232
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 6
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Seconde partie du perek 6 — naissance MAH, Tikkun de A\"A puis cascade, Berudim (MAH+BAN), incomplet jusqu'a Mashiah, distribution Atik/A\"A/AVI."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC O : RE-ZIVVUG AB-SAG → MAH ───
+
+  - id: "EC-H2S9-217"
+    source_he: "אח\"כ חזרו להזדווג ע\"ב ס\"ג דא\"ק שהם חו\"ב שבו והולידו הבן זכר שהוא שם מ\"ה בפנים ממש"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Ensuite AB et SAG d'A"K (= HOKHMAH et BINAH en lui) sont REVENUS s'UNIR.
+      Ils ont ENGENDRE le BEN ZAKHAR (fils male) = Shem MAH BE-PNIM MAMASH
+      (dans l'interieur effectivement).
+      → 2eme zivvug : engendre le MAH (rachamim) apres l'echec maintien de BAN.
+      cf. EC-H2S9-203 (perek 06a) sur necessite re-zivvug pour maintien.
+    type: axiome_explicite
+    concepts:
+      - {id: re_zivvug_av_sag_engendrent_mah, role: re_zivvug_av_sag_engendrent_mah}
+      - {id: mah_be_pnim_mamash, role: mah_dans_interieur_effectif}
+    mapping:
+      modules: ["partzufim/zivvug.py", "shemot/", "adam_kadmon.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Re-zivvug AB-SAG → naissance du MAH (male, rachamim). Pattern Bat→Ben."
+
+  - id: "EC-H2S9-218"
+    source_he: "ואז יצאו ענפי המ\"ה דרך המצח חוץ [נ\"א ולחוץ] טבור דא\"ק ולמטה ועתה נשלמו ד' בחי' ע\"ב ס\"ג מ\"ה ב\"ן דא\"ק השרשים שבפנים ובחוץ שהם הענפים הנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Alors les ANAFEI MAH (branches de MAH) sortent DEREKH HA-METZACH (par le front)
+      vers l'EXTERIEUR — variante (NA: "ve-le-hutz") = "et vers l'exterieur" —
+      du TABUR d'A"K vers le BAS.
+      MAINTENANT les 4 BEHINOT AB SAG MAH BAN d'A"K sont COMPLETES (nishlemu) :
+      les SHORASHIM (racines) DANS l'interieur ET les ENAFIM (branches) DANS l'exterieur.
+      → Architecture finale : 4 Miluyim complets en interieur + branches externes.
+    type: axiome_explicite
+    concepts:
+      - {id: anafei_mah_par_metzach, role: branches_mah_par_le_front}
+      - {id: 4_behinot_av_sag_mah_ban_completes, role: les_4_behinot_completes}
+      - {id: shorashim_anafim, role: racines_dedans_branches_dehors}
+    mapping:
+      modules: ["adam_kadmon.py", "shemot/"]
+      tables: ["partzufim_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Architecture complete : 4 Miluyim avec racines (interieur) et branches (exterieur). Topologie finale."
+
+  # ─── BLOC P : TIKKUN COMMENCE PAR ATIK ET A"A ───
+
+  - id: "EC-H2S9-219"
+    source_he: "ואז התחיל התיקון מעתיק וא\"א ונניח תיקון העתיק ונדבר בא\"א כי הנה מהז\"ת שבו התחיל השבירה"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Alors a COMMENCE le TIKKUN — par ATIK et A"A.
+      Mettons de cote (naniach) le Tikkun d'ATIK — parlons de A"A.
+      Car des ZT en lui (A"A) a commence la SHEVIRAH.
+      → Logique : commencer par la cause de la chute (A"A) pour reparer.
+      cf. EC-H2S9-208 (perek 06a) sur Shevirah dans Keter de BAN = ZT du Keter.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_commence_atik_a_a, role: tikkun_commence_par_atik_et_a_a}
+      - {id: a_a_origine_de_la_shevirah, role: a_a_origine_de_la_shevirah}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Strategie du Tikkun : reparer d'abord la source de la chute (A\"A)."
+
+  # ─── BLOC Q : TIKKUN A"A — ROSH PUIS GUF ───
+
+  - id: "EC-H2S9-220"
+    source_he: "והנה כיון שג\"ר שבו נשארו שם התחיל להתתקן שהוא בחי' רישא ושערות ונקבים ואז נתמעט האור היוצא מהם"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Comme les GR en A"A sont RESTEES la (intactes, cf. EC-H2S9-212) →
+      a COMMENCE LE TIKKUN — qui est l'aspect ROSH (tete) :
+      SE'AROT (cheveux) et NEKAVIM (orifices).
+      Et alors l'OHR sortant d'eux a ETE DIMINUE (nitma'et).
+      → Architecture : Tikkun de A"A commence par la tete et reduit l'ohr.
+      → Reduction de l'ohr = principe central du Tikkun (cf. EC-H2S9-184 perek 04).
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_a_a_par_rosh, role: tikkun_a_a_commence_par_rosh}
+      - {id: searot_nekavim_tikkun, role: searot_et_nekavim_du_tikkun}
+      - {id: ohr_nitmaet, role: ohr_diminue_par_tikkun}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Premiere etape du Tikkun A\"A : rosh (sera'ot, nekavim) et reduction de l'ohr. cf. EC-H2S9-184."
+
+  - id: "EC-H2S9-221"
+    source_he: "ואז היה יכולת בז\"ת לתקן בבחי' כלים דגופא ומיעוטים ומסכים ג\"כ דומיא דרישא ונעשה כ\"ז בחי' ב\"ן נוקבא דא\"א וזה היה בכח דכורא דא\"א שהוא מ\"ה החדש"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Alors les ZT ont eu la YEKHOLET (capacite) de SE-RECTIFIER —
+      en aspect KELIM DE-GUFA (vaisseaux du corps) avec MI'UTIM (reductions) et
+      MASAKHIM (ecrans), DOMIA DE-RISHA (similaires a la tete).
+      Tout cela = BAN NUKVAH d'A"A.
+      Et c'est par la KOACH DUKHRA (puissance du male) d'A"A = MAH HADASH (le nouveau MAH).
+      → Pattern : reparation ZT = ohr reduit par mi'utim et masakhim, comme la tete.
+      → Architecture : BAN-Nukvah d'A"A faite par koach MAH (dukhra).
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_de_gufa_miutim_masakhim, role: kelim_du_corps_avec_reductions_et_ecrans}
+      - {id: ban_nukvah_a_a, role: ban_nukvah_d_a_a}
+      - {id: koach_dukhra_mah_chadash, role: koach_dukhra_mah_nouveau}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "tzimtzum.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Tikkun ZT par mi'utim et masakhim (similar a rosh). MAH chadash = puissance reparatrice."
+
+  # ─── BLOC R : ZIVVUG GR-MAH AVEC GR-BAN ───
+
+  - id: "EC-H2S9-222"
+    source_he: "כי תחלה נזדווגו ג' ראשונות דמ\"ה דאריך אנפין עם ג\"ר דב\"ן דא\"א שלא נשברו והעלו ז\"ת דב\"ן דנוקבא דא\"א שנשברו ונתחברו עמהם ז\"ת דמ\"ה דדכורא דא\"א ונתקן הכל"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Au DEBUT : les G' RISHONOT de MAH d'A"A se sont UNIES avec les GR de BAN
+      d'A"A (qui n'avaient pas brise).
+      Ils ont ELEVE les ZT de BAN-Nukvah d'A"A (qui avaient brise) →
+      avec eux se sont UNIS (nithaberu) les ZT de MAH-DUKHRA d'A"A.
+      Et TOUT a ete RECTIFIE.
+      → Architecture du Tikkun : couple GR + ZT cross-genres pour reparer.
+      → 2 zivvugim simultanes : GR-MAH+GR-BAN (rachamim+rachamim) et ZT-MAH+ZT-BAN (mahot+nuk).
+    type: axiome_explicite
+    concepts:
+      - {id: gr_mah_zivvug_gr_ban, role: gr_mah_zivvug_avec_gr_ban}
+      - {id: gr_ban_qui_n_avait_pas_brise, role: gr_ban_intactes_apres_shevirah}
+      - {id: zt_ban_eleves, role: zt_ban_eleves_pour_reparation}
+      - {id: zt_mah_zt_ban_unis, role: zt_mah_et_zt_ban_s_unissent}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zivvug.py", "[PLANNED] tikkun/"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Mecanisme du Tikkun : zivvug cross-MAH/BAN pour reparer ZT. Architecture par couplage."
+
+  # ─── BLOC S : ZON ZIVVUG → REPARENT NEKUDOT ───
+
+  - id: "EC-H2S9-223"
+    source_he: "אח\"כ נזדווגו זו\"ן שהם ז\"ת דא\"א המ\"ה וב\"ן ותיקנו ג\"ר דחכמה דב\"ן עם מ\"ה אז הג\"ר תקנו הז\"ת שלהם דמ\"ה וב\"ן וכעד\"ז עד תשלום הי\"ס שהם ה' פרצופים דאצילות"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Ensuite les ZON (= ZT d'A"A) — MAH et BAN — se sont UNIS.
+      Ils ont REPARE les GR de HOKHMAH de BAN avec MAH.
+      Alors les GR (de Hokhmah) ont REPARE leurs ZT (Hokhmah-MAH et Hokhmah-BAN).
+      Et AINSI jusqu'a la COMPLETUDE des 10S = 5 PARTZUFIM d'AT'ZILUT.
+      → Architecture en cascade : ZON-A"A → Hokhmah → Binah → ZON → Malkhut.
+      → Tikkun par fractale : meme pattern repete a chaque niveau.
+    type: axiome_explicite
+    concepts:
+      - {id: zon_a_a_zivvug_mah_ban, role: zon_a_a_zivvug_mah_et_ban}
+      - {id: gr_repare_zt_par_recursion, role: gr_repare_zt_par_recursion}
+      - {id: 5_partzufim_atzilut_completes, role: cinq_partzufim_atzilut_complets}
+    mapping:
+      modules: ["partzufim/zivvug.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Cascade du Tikkun : ZON-A\"A → toutes les nekudot reparees. Architecture par fractale."
+
+  # ─── BLOC T : RESULTAT = BERUDIM ───
+
+  - id: "EC-H2S9-224"
+    source_he: "ואז נקרא ברודים כי נקודים הוא ב\"ן וברודים הוא מ\"ה וב\"ן יחד"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Alors APPELE BERUDIM.
+      Distinction terminologique :
+      NEKUDIM (points) = BAN seul (pre-Tikkun)
+      BERUDIM (mouchete) = MAH + BAN ENSEMBLE (post-Tikkun)
+      → Vocabulaire technique : Berudim = etat post-Tikkun avec 2 polarites unies.
+      Reference : Genese 31:10-12 (les troupeaux de Yaakov : nekudim akudim u-berudim).
+    type: interprétation_lurianique
+    concepts:
+      - {id: berudim_egal_mah_plus_ban, role: berudim_egal_mah_et_ban_ensemble}
+      - {id: nekudim_egal_ban_seul, role: nekudim_egal_ban_seul}
+      - {id: terminologie_post_tikkun, role: terminologie_post_tikkun}
+    mapping:
+      modules: ["olamot.py", "shemot/"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Distinction terminologique cle : Nekudim (pre) vs Berudim (post). cf. Genese 31."
+
+  # ─── BLOC U : TIKKUN PAS COMPLET JUSQU'A MASHIAH ───
+
+  - id: "EC-H2S9-225"
+    source_he: "ואמנם לא יכלו להתתקן לגמרי עד ביאת המשיח"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      MAIS ils n'ont PAS PU se RECTIFIER LE-GAMRI (entierement) JUSQU'A
+      la BIAT HA-MASHIAH (venue du Mashiah).
+      → Tikkun PARTIEL en l'etat actuel.
+      → Architecture eschatologique : completion seulement a la fin des temps.
+      cf. EC-H2S9-019 (perek 03 Seder Atzilut) sur vision messianique.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_partiel_actuel, role: tikkun_partiel_jusqu_a_mashiah}
+      - {id: biat_ha_mashiah_completion, role: venue_du_mashiah_completion}
+    mapping:
+      modules: ["[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture eschatologique : Tikkun partiel actuel, completion future. cf. visions messianiques."
+
+  - id: "EC-H2S9-226"
+    source_he: "כי אלו נתקנין לגמרי היו מתתקנים י\"ס דמ\"ה עם י\"ס דב\"ן ואמנם לא הי' [כן] כ\"א ע\"ד האמור בקונטריס זה"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Si rectifies entierement → les 10S de MAH se RECTIFIERAIENT
+      avec les 10S de BAN.
+      MAIS CE N'EST PAS le cas — seulement selon ce qui est dit dans ce KUNTRES (cahier).
+      → Limitation de l'etat actuel : pas d'union complete 10S-MAH avec 10S-BAN.
+      Nuance "[ken]" = mot incertain dans le manuscrit.
+    type: axiome_explicite
+    concepts:
+      - {id: 10s_mah_avec_10s_ban_ideal, role: 10s_mah_avec_10s_ban_etat_ideal}
+      - {id: kuntres_zeh_reference, role: cahier_present_etat_partiel}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Description de l'etat ideal (post-Mashiah) vs etat actuel (partiel). Reference au texte present."
+
+  # ─── BLOC V : DISTRIBUTION ATIK/A"A/AVI ───
+
+  - id: "EC-H2S9-227"
+    source_he: "כי עתיק לקח כל הכתר דמ\"ה וה' ראשונות לבד מכתר דב\"ן"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      ATIK a PRIS :
+      → TOUT le KETER de MAH
+      → 5 PREMIERES (ras) du KETER de BAN seulement (pas les 5 dernieres).
+      → Distribution asymetrique : tout-MAH + moitie-BAN.
+      Atik = niveau le plus eleve, prend l'integralite du Keter MAH.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_keter_mah_complet, role: atik_prend_keter_mah_complet}
+      - {id: atik_5_ras_keter_ban, role: atik_prend_5_premieres_du_keter_ban}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Distribution Atik : Keter MAH integral + 5 ras Keter BAN. Pattern de partage hierarchique."
+
+  - id: "EC-H2S9-228"
+    source_he: "וא\"א לקח כל החכמה דמ\"ה וה' אחרונות דכתר דב\"ן"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      A"A a PRIS :
+      → TOUTE la HOKHMAH de MAH
+      → 5 DERNIERES (fins) du KETER de BAN.
+      → Pattern complementaire : A"A prend ce que Atik n'a pas (5 fins du Keter BAN).
+      → Architecture distributee : chaque niveau recupere une part precise.
+    type: axiome_explicite
+    concepts:
+      - {id: a_a_hokhmah_mah_complet, role: a_a_prend_hokhmah_mah_complet}
+      - {id: a_a_5_fins_keter_ban, role: a_a_prend_5_dernieres_du_keter_ban}
+      - {id: distribution_complementaire_atik_a_a, role: distribution_complementaire}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Distribution complementaire : A\"A prend ce qu'Atik n'a pas. Architecture sans recouvrement."
+
+  - id: "EC-H2S9-229"
+    source_he: "וכן אבא לקח חכמה דב\"ן וחצי בינה דמ\"ה וכעד\"ז כולם"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Et AINSI ABBA a PRIS :
+      → HOKHMAH de BAN
+      → DEMI BINAH de MAH
+      Et de MEME pour les autres (KULAM).
+      → Pattern de melange : chaque partzuf prend une combinaison MAH+BAN partielle.
+      → Architecture : pas de symetrie complete entre MAH et BAN.
+    type: axiome_explicite
+    concepts:
+      - {id: abba_hokhmah_ban_demi_binah_mah, role: abba_hokhmah_ban_et_demi_binah_mah}
+      - {id: pattern_melange_partiel, role: pattern_de_melange_partiel}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Distribution Abba : Hokhmah BAN + demi Binah MAH. Pattern de melange asymetrique."
+
+  - id: "EC-H2S9-230"
+    source_he: "כי לא יכלו בחי' ב\"ן להתברר לגמרי כל חלוקותיהן שבכל בחי' ובחי' מהם"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      RAISON de la distribution incomplete :
+      Les BEHINOT de BAN n'ont PAS PU se BERAR (clarifier) ENTIEREMENT —
+      toutes les divisions (haluzoteihen) en chaque behinah.
+      → Le Berur de BAN est partiel ; donc la distribution est partielle.
+      → Architecture : ce qui n'est pas berar ne peut etre distribue.
+    type: axiome_explicite
+    concepts:
+      - {id: ban_lo_yakhol_lehitberer_le_gamri, role: ban_pas_pu_berar_completement}
+      - {id: berur_partiel_distribution_partielle, role: berur_partiel_distribution_partielle}
+    mapping:
+      modules: ["partzufim/nukva.py", "[PLANNED] tikkun/", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Cause de l'incompletude : BAN pas entierement berar. Limite operationnelle du Tikkun actuel."
+
+  - id: "EC-H2S9-231"
+    source_he: "ע\"כ לא נשתוו י\"ס דב\"ן עם י\"ס דמ\"ה כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      DONC les 10S de BAN ne sont pas EQUIVALENTES (lo nishtavu) aux 10S de MAH
+      (comme dit precedemment).
+      → Etat partiel actuel : asymetrie persistante MAH/BAN.
+      → Pattern de l'incomplet : les 2 polarites ne sont pas en equilibre exact.
+    type: axiome_explicite
+    concepts:
+      - {id: 10s_mah_lo_nishtavu_ban, role: 10s_mah_pas_equivalentes_a_10s_ban}
+      - {id: asymetrie_persistante_mah_ban, role: asymetrie_persistante_polaire}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Constat : asymetrie MAH/BAN persiste. Pattern d'incompletude actuelle."
+
+  - id: "EC-H2S9-232"
+    source_he: "וזה יושלם לעתיד לבא בב\"א"
+    source_ref: "Heikhal 2, Sha'ar 2:6 — conclusion"
+    assertion: |
+      Et CECI sera ACHEVE (yushlam) le-ATID LAVO (au temps a venir),
+      bi-MEHERAH ve-yameinu AMEN (rapidement de nos jours, amen).
+      → Phrase conclusive eschatologique : completion future.
+      → Architecture eschatologique definitive du systeme.
+    type: axiome_explicite
+    concepts:
+      - {id: yushlam_le_atid_lavo, role: completion_au_temps_a_venir}
+    mapping:
+      modules: ["[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "Phrase conclusive eschatologique : completion finale a venir. Closure du perek."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-116"
+    type: causal
+    from: re_zivvug_av_sag_engendrent_mah
+    to: 4_behinot_av_sag_mah_ban_completes
+    nature: "Re-zivvug AB-SAG → MAH engendre → completude des 4 Miluyim d'A\"K"
+    assertions_source: ["EC-H2S9-217", "EC-H2S9-218"]
+
+  - id: "REL-H2S9-117"
+    type: séquentiel
+    from: tikkun_a_a_par_rosh
+    to: kelim_de_gufa_miutim_masakhim
+    via: [ohr_nitmaet]
+    nature: "Tikkun A\"A : rosh → ohr nitmaet → ZT peuvent rectifier le guf"
+    assertions_source: ["EC-H2S9-220", "EC-H2S9-221"]
+
+  - id: "REL-H2S9-118"
+    type: causal
+    from: gr_mah_zivvug_gr_ban
+    to: zt_mah_zt_ban_unis
+    nature: "Zivvug GR-MAH avec GR-BAN → ZT-MAH s'unissent aux ZT-BAN brisees → reparation"
+    assertions_source: ["EC-H2S9-222"]
+
+  - id: "REL-H2S9-119"
+    type: contenance
+    from: zon_a_a_zivvug_mah_ban
+    to: 5_partzufim_atzilut_completes
+    nature: "Cascade des zivvugim ZON → reparation jusqu'aux 5 Partzufim complets"
+    assertions_source: ["EC-H2S9-223"]
+
+  - id: "REL-H2S9-120"
+    type: dualité_structurelle
+    from: nekudim_egal_ban_seul
+    to: berudim_egal_mah_plus_ban
+    nature: "Distinction terminologique : Nekudim (BAN seul, pre) vs Berudim (MAH+BAN, post)"
+    assertions_source: ["EC-H2S9-224"]
+
+  - id: "REL-H2S9-121"
+    type: causal
+    from: ban_lo_yakhol_lehitberer_le_gamri
+    to: 10s_mah_lo_nishtavu_ban
+    nature: "BAN pas entierement berar → asymetrie 10S-MAH vs 10S-BAN persiste"
+    assertions_source: ["EC-H2S9-230", "EC-H2S9-231"]
+
+  - id: "REL-H2S9-122"
+    type: hiérarchique
+    from: atik_keter_mah_complet
+    to: a_a_hokhmah_mah_complet
+    nature: "Distribution hierarchique : Atik=Keter MAH, A\"A=Hokhmah MAH (descente du rang)"
+    assertions_source: ["EC-H2S9-227", "EC-H2S9-228"]
+
+  - id: "REL-H2S9-123"
+    type: séquentiel
+    from: tikkun_partiel_actuel
+    to: yushlam_le_atid_lavo
+    via: [biat_ha_mashiah_completion]
+    nature: "Etat partiel actuel → venue Mashiah → completion future"
+    assertions_source: ["EC-H2S9-225", "EC-H2S9-232"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-047"
+    nom: "Principe du Re-Zivvug Reparateur (MAH apres BAN)"
+    source_assertions: ["EC-H2S9-217", "EC-H2S9-218"]
+    formalisation: |
+      Pattern de RE-ZIVVUG REPARATEUR :
+      ETAPE 1 : Zivvug AB-SAG → BAT (BAN, dinim) → echec maintien
+      ETAPE 2 : RE-ZIVVUG AB-SAG → BEN (MAH, rachamim) → maintien
+      → Architecture : echec → tentative repetee avec une polarite differente.
+      Resultat : 4 Behinot completes (AB-SAG-MAH-BAN d'A"K).
+      → Pattern : il faut PARFOIS plusieurs tentatives avec polarites variees.
+      Topologie : MAH sort par le METZACH (front), BAN par l'AYIN (oeil).
+    applications_ia:
+      - "Pattern : essayer des polarites alternatives apres echec"
+      - "Architecture : sequence Bat→Ben non parallele mais sequentielle"
+      - "[PLANNED] tikkun/ : implementer re-zivvug comme retry-with-alternative"
+      - "shemot/ : modeliser AB SAG MAH BAN comme polarites distinctes"
+      - "Pattern : sortie par voies differentes (oeil vs front)"
+    questions_ouvertes:
+      - "Combien de re-zivvugim sont possibles avant abandon definitif ?"
+      - "L'echec de BAN-seul est-il previsible ou imprevisible ?"
+      - "Le pattern Bat→Ben est-il universel ou specifique a la creation primordiale ?"
+
+  - id: "PG-H2S9-048"
+    nom: "Principe de la Cascade du Tikkun (Top-Down par Zivvugim)"
+    source_assertions: ["EC-H2S9-219", "EC-H2S9-220", "EC-H2S9-221", "EC-H2S9-222", "EC-H2S9-223"]
+    formalisation: |
+      Le TIKKUN se deroule TOP-DOWN par CASCADES de ZIVVUGIM :
+      ETAPE 1 — A"A : Tikkun ROSH (sera'ot, nekavim) → reduction de l'ohr
+      ETAPE 2 — A"A : Tikkun GUF (kelim, mi'utim, masakhim) — par koach MAH
+      ETAPE 3 — GR DE A"A : zivvug GR-MAH avec GR-BAN qui n'avaient pas brise
+        → ELEVENT les ZT-BAN brisees + zivvug avec ZT-MAH
+        → RECTIFICATION
+      ETAPE 4 — ZON DE A"A : zivvug MAH+BAN au niveau ZT
+        → REPARENT GR de Hokhmah de BAN
+      ETAPE 5 — RECURSION : a chaque niveau, GR reparent leurs ZT
+      ETAPE 6 — COMPLETION : 5 Partzufim d'Atzilut complets
+      → Architecture iterative : reparation par cascades successives.
+    applications_ia:
+      - "Pattern Top-Down : reparer le superieur, le superieur repare l'inferieur"
+      - "[PLANNED] tikkun/cascade.py : implementer Tikkun en cascade par zivvug"
+      - "Architecture : zivvug = operation atomique de reparation"
+      - "Pattern de recursion : meme operation a chaque niveau"
+      - "partzufim/zivvug.py + tikkun/ : architecture de reparation par couplage"
+    questions_ouvertes:
+      - "L'ordre top-down est-il strict ou peut-on parallelliser ?"
+      - "Y a-t-il un nombre fixe d'etapes ou variable ?"
+      - "Les zivvugim de Tikkun sont-ils equivalents aux zivvugim normaux ?"
+
+  - id: "PG-H2S9-049"
+    nom: "Principe Berudim (MAH+BAN comme Dualite Stable)"
+    source_assertions: ["EC-H2S9-224", "EC-H2S9-225", "EC-H2S9-226", "EC-H2S9-231", "EC-H2S9-232"]
+    formalisation: |
+      DUALITE OPERATIONNELLE post-Tikkun : BERUDIM = MAH + BAN ENSEMBLE.
+      Distinction terminologique :
+        NEKUDIM (points) = BAN seul = etat pre-Tikkun
+        BERUDIM (mouchete) = MAH + BAN = etat post-Tikkun
+      Etat IDEAL (eschatologique) :
+        10S de MAH = 10S de BAN (equivalence parfaite)
+      Etat ACTUEL :
+        10S de MAH ≠ 10S de BAN (asymetrie persistante)
+        Distribution Atik/A"A/AVI/ZON par melange asymetrique
+      Cause : BAN n'a pas pu etre BERAR LE-GAMRI.
+      Resolution : YUSHLAM LE-ATID LAVO (au temps a venir).
+      → Architecture eschatologique : completion future planifiee.
+    applications_ia:
+      - "Pattern dualite : MAH+BAN ensemble = stabilite (vs BAN seul = instabilite)"
+      - "Architecture : etat ideal (post-Mashiah) vs etat actuel (incomplet)"
+      - "[PLANNED] tikkun/berudim.py : modeliser etat post-Tikkun avec asymetrie"
+      - "shemot/ : tracer les melanges MAH/BAN dans chaque partzuf"
+      - "Pattern : architecture eschatologique avec roadmap vers completion"
+    questions_ouvertes:
+      - "Quelle est la mesure quantitative de l'asymetrie MAH/BAN actuelle ?"
+      - "Le Berur de BAN peut-il etre accelere ou est-il fixe ?"
+      - "Comment formaliser la transition partiel → complet ?"
+
+  - id: "PG-H2S9-050"
+    nom: "Principe de la Distribution Asymetrique (Atik/A\"A/AVI/ZON)"
+    source_assertions: ["EC-H2S9-227", "EC-H2S9-228", "EC-H2S9-229", "EC-H2S9-230"]
+    formalisation: |
+      DISTRIBUTION du MAH+BAN entre les 5 Partzufim :
+      ATIK : Keter MAH complet + 5 ras Keter BAN
+      A"A : Hokhmah MAH complet + 5 fins Keter BAN
+      ABBA : Hokhmah BAN + demi Binah MAH
+      ... (pattern continue de melange asymetrique)
+      → Pattern : chaque partzuf prend des fragments MAH et BAN selon son rang.
+      → Architecture sans recouvrement : ce qu'un prend, l'autre n'a pas.
+      Cause architecturale : BAN pas entierement berar → distribution partielle.
+      Limite : asymetrie persistante 10S-MAH ≠ 10S-BAN.
+    applications_ia:
+      - "Pattern : distribution sans recouvrement entre composants hierarchiques"
+      - "Architecture : chaque partzuf = sub-system avec part precise des resources"
+      - "[PLANNED] tikkun/distribution.py : implementer allocation asymetrique"
+      - "Diagnostic : verifier que la distribution couvre tout sans recouvrement"
+      - "Pattern : composants superieurs prennent les ras (premieres) ; inferieurs prennent les fins"
+    questions_ouvertes:
+      - "La regle 'ras vs fins' est-elle universelle ou specifique au Keter ?"
+      - "Le pourcentage de BAN distribue est-il quantifiable ?"
+      - "Les composants peuvent-ils echanger leur part au cours du temps ?"

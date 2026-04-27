@@ -1,0 +1,659 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 4 — Mecanisme de l'extension HB, raison Tabur, etapes du Tikkun
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §4 :
+#   - Bloc A : Extension HB par achoraim AVI tombes ; raison de l'arret au CG
+#   - Bloc B : Avant Keter, HB s'eclairaient sans hefsek ; apres, hefsed
+#   - Bloc C : Pourquoi Keter etendu jusqu'au Tabur (mi-Tiferet)
+#   - Bloc D : Architecture A"K et siyum de l'Atzilut
+#   - Bloc E : 7 etapes progressives du Tikkun (Akudim, Nekudim, ZON Ibur, Yenikah, Mohin)
+#   - Bloc F : But du Tikkun = ohr mitsumtsam dans keli agrandi (reduction)
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.4
+# IDs : EC-H2S9-164 → EC-H2S9-185
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek 4 — mecanisme detaille de l'extension HB par les achoraim AVI tombes ; raison de l'arret au Tabur ; 7 etapes progressives du Tikkun ; but final = reduction de l'ohr par agrandissement du keli."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : EXTENSION HB PAR ACHORAIM AVI ───
+
+  - id: "EC-H2S9-164"
+    source_he: "ועתה צריך שנבאר מה היה ענין התפשטות הנ\"ל שנתפשט חו\"ב דרך ב' קוין ימין ושמאל עד מקום החו\"ג כנ\"ל והענין הוא כי היה ע\"י (אותן) כח האחוריים דאו\"א שנפלו עד מקום חו\"ג"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      EXPLICATION du MECANISME : comment HOKHMAH-BINAH (HB) se sont ETENDUES
+      par les 2 KAVIM (droit et gauche) jusqu'au LIEU de CHESED-GEVURAH (CG) ?
+      → C'est PAR LA KOAH (force) des ACHORAIM d'AVI qui sont TOMBES jusqu'au lieu CG.
+      Ces achoraim TOMBES sont les BEHINOT qui s'etendent par les kavim et HABILLENT
+      les Chesed, Gevurah, et Netzach-Hod.
+      → Re-utilisation des debris : achoraim AVI tombes = matiere de l'extension HB.
+      cf. EC-H2S9-098b (perek 02b) : orot ZA habilles dans achoraim AVI.
+    type: axiome_explicite
+    concepts:
+      - {id: extension_hb_par_achoraim_avi, role: extension_hb_via_achoraim_avi_tombes}
+      - {id: achoraim_lekhasher_chesed_gevurah_nh, role: achoraim_habillent_chesed_gevurah_nh}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Mecanisme architectural : recyclage des achoraim tombes comme materiel d'extension. Pattern de re-use."
+
+  - id: "EC-H2S9-165"
+    source_he: "ואמנם הטעם למה נתפשטו עד מקום החו\"ג ולא נתפשטו עד מקום נ\"ה"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      QUESTION : pourquoi se sont-elles etendues seulement jusqu'au LIEU de CG
+      et PAS jusqu'au LIEU de NH ?
+      → Probleme de portee de l'extension a expliquer.
+    type: déduction_logique
+    concepts:
+      - {id: question_extension_jusqu_a_cg_seul, role: question_pourquoi_seulement_jusqu_a_cg}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "Question structurelle a resoudre : limite de portee."
+
+  # ─── BLOC B : HB AVANT/APRES EXTENSION DU KETER ───
+
+  - id: "EC-H2S9-166"
+    source_he: "הענין הוא כי הנה קודם שנתפשט הכתר דרך קו האמצעי היו החו\"ב מאירין זה בזה שלא ע\"י הפסק ביניהן כלל עם היות שהיו בבחינת אב\"א"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      ETAT INITIAL (avant extension du KETER par le qav central) :
+      HOKHMAH-BINAH s'ECLAIRAIENT (me'irin) MUTUELLEMENT zeh ba-zeh —
+      SHE-LO PAR HEFSEK (sans coupure) entre eux DU TOUT.
+      MEME ETANT en aspect AhB (apres la chute des achoraim, cf. EC-H2S9-006).
+      → Coexistence : meme en AhB, HB pouvaient s'illuminer.
+      Architecture de communication : pas de barriere physique en AhB initial.
+    type: axiome_explicite
+    concepts:
+      - {id: hb_meirin_zeh_ba_zeh, role: hb_s_eclairent_mutuellement}
+      - {id: lo_hefsek_initial, role: pas_de_coupure_initiale}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Etat initial : AhB sans hefsek. Communication HB toujours possible."
+
+  - id: "EC-H2S9-167"
+    source_he: "אבל אחר שנתפשט כלי הכתר עד ת\"ת כנ\"ל אז הפסיק ביניהן ואז פשוט הוא שבא קצת הפסד אל או\"א שהיו מתחלה מאירין זה בזה משא\"כ עתה"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      MAIS apres l'extension du KELI du KETER jusqu'au TIFERET (cf. EC-H2S9-138 perek 03b) →
+      le Keter etendu HIFSIK BEINEHEN (a coupe entre eux).
+      DONC PASHUT (evident) : un peu de HEFSED (perte/dommage) est venu pour AVI
+      qui s'eclairaient initialement et plus maintenant.
+      → Effet collateral : le Tikkun structurel (extension Keter) cree un hefsek
+      qui prive AVI de la communication directe.
+      → Pattern : chaque Tikkun a un cout local.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_etendu_hifsik, role: keter_etendu_coupe_hb}
+      - {id: hefsed_le_avi, role: perte_pour_avi}
+      - {id: cout_local_du_tikkun, role: cout_local_du_tikkun}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Cout collateral du Tikkun : extension du Keter coupe HB. Trade-off architectural."
+
+  - id: "EC-H2S9-168"
+    source_he: "ולכן לא היה בהם כח להתפשט בכל אורך הקוין עד נ\"ה אבל עכ\"ז היו מקבלים קצת אור מן הכתר שנתפשט ביניהן באופן שבבחי' אחד נמשך להם תועלת בהתפשטות הכתר ובבחי' אחרת נמשך להם הפסד"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      DONC AVI n'avaient pas la KOAH de s'etendre jusqu'a NH.
+      MAIS recevaient un PEU d'OHR du KETER ETENDU entre eux.
+      → Bilan : Behinah 1 = TO'ELET (utilite) ; Behinah 2 = HEFSED (perte).
+      Force d'extension PARTIELLE → portee jusqu'a CG seulement.
+      → Architecture : trade-off positive/negative determine la portee.
+    type: axiome_explicite
+    concepts:
+      - {id: koah_extension_partiel, role: force_extension_partielle}
+      - {id: bilan_ambivalent_keter_etendu, role: bilan_ambivalent_keter_etendu}
+      - {id: trade_off_to_elet_hefsed, role: trade_off_utilite_perte}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : la portee d'extension est determinee par un bilan trade-off entre to'elet et hefsed."
+
+  # ─── BLOC C : POURQUOI KETER ETENDU JUSQU'AU TABUR ───
+
+  - id: "EC-H2S9-169"
+    source_he: "והטעם למה נתפשט הכתר עד הטבור אמצע הת\"ת ולא יותר הנה זה צריך ביאור רחב אמנם בקיצור נמרץ הענין הוא כי הנה מקום כל התפשטות הלא הוא כנגד רגלי הא\"ק הנ\"ל מטבורו עד רגליו"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      RAISON pourquoi le KETER s'est etendu jusqu'au TABUR (nombril = mi-Tiferet) et pas plus.
+      → Ce sujet exige BIUR RAHAV (explication large) ; en BREF :
+      Le LIEU de toute l'extension (= toute l'Atzilut) =
+      en face des REGALIM (jambes) d'A"K (Adam Kadmon) — du Tabur d'AK jusqu'a ses raglayim.
+      → Topologie : Atzilut tout entier occupe l'espace des jambes d'AK.
+    type: axiome_explicite
+    concepts:
+      - {id: makom_atzilut_keneged_raglei_ak, role: lieu_atzilut_face_aux_jambes_ak}
+      - {id: tabur_ak_jusqu_au_raglayim, role: du_tabur_ak_jusqu_aux_pieds}
+    mapping:
+      modules: ["adam_kadmon.py", "olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Topologie cosmique : Atzilut = espace en face des jambes d'AK (Tabur AK → raglayim AK)."
+
+  - id: "EC-H2S9-170"
+    source_he: "והנה כאשר יבא אח\"כ התיקון האמיתי של האצילות הנה הכל הוא עומד במקום הזה כנודע ושם הוא מקום האצילות בלבד ומשם ולמטה הוא עולם הבריאה"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      Quand viendra le TIKKUN EMITI (authentique) de l'Atzilut →
+      TOUT (kol) est dans CE LIEU (face aux jambes d'A"K).
+      LA est le LIEU d'AT'ZILUT SEUL ; et MISHAM ULEMATA (de la et plus bas) =
+      OLAM HA-BERIAH.
+      → Frontiere topologique : raglayim d'A"K = limite Atzilut/Beriah.
+    type: axiome_explicite
+    concepts:
+      - {id: lieu_atzilut_seul, role: lieu_d_atzilut_seul}
+      - {id: misham_ulemata_beriah, role: en_dessous_olam_ha_beriah}
+      - {id: frontiere_atzilut_beriah, role: frontiere_topologique_atzilut_beriah}
+    mapping:
+      modules: ["adam_kadmon.py", "olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Frontiere cosmique : raglayim AK = limite entre Atzilut et Beriah."
+
+  - id: "EC-H2S9-171"
+    source_he: "והנה כאשר נעריך כל אלו הפרצופים מתלבשים זה תוך זה עד שנמצא הכל פרצוף א' לבד ופרצוף א' דא\"א שהוא כתר הוא הכולל כל האצילות מלמטה למעלה"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      Quand on EVALUE tous les Partzufim MITLABESHIM (s'habillant) l'un dans l'autre →
+      TOUT devient UN SEUL Partzuf.
+      Et le Partzuf UNIQUE d'A"A (Arikh Anpin = KETER) est le KOLEL (englobant)
+      de toute l'Atzilut DE BAS EN HAUT.
+      → Architecture d'emboitement : tous les Partzufim tiennent dans le Keter.
+      → Le Keter (A"A) = le contenant univers de l'Atzilut.
+      cf. EC-H2S9-018 (perek 01a) sur emboitement complet AK→Atzilut→BYA.
+    type: axiome_explicite
+    concepts:
+      - {id: partzufim_mitlabeshim_zeh_be_zeh, role: partzufim_emboites_l_un_dans_l_autre}
+      - {id: arikh_anpin_kolel_atzilut, role: arikh_anpin_englobe_atzilut}
+      - {id: keter_kolel_universel, role: keter_contenant_universel}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "olamot.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "A\"A (Keter) = englobe TOUTE l'Atzilut. Architecture d'emboitement universel."
+
+  - id: "EC-H2S9-172"
+    source_he: "והנה כאשר הוא עתה מתפשט עד הת\"ת הוא בעצמו מה שיהי' אח\"כ בעת התיקון מקום הת\"ת שלו ממש"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      Quand maintenant le KETER s'etend jusqu'au TIFERET →
+      C'est exactement le MEME LIEU qui sera APRES le Tikkun
+      le LIEU du TIFERET du Keter (A"A) lui-meme.
+      → Identite topologique pre/post-Tikkun : le Keter etendu actuel
+      = le Tiferet du Keter post-Tikkun.
+      → Pattern : l'extension provisoire prefigure la structure finale.
+    type: axiome_explicite
+    concepts:
+      - {id: extension_provisoire_prefigure_finale, role: extension_provisoire_prefigure_structure_finale}
+      - {id: keter_etendu_egal_tiferet_keter_final, role: keter_etendu_egal_tiferet_post_tikkun}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Pattern teleologique : l'etat provisoire correspond a une structure de l'etat final."
+
+  - id: "EC-H2S9-173"
+    source_he: "והנה או\"א היו מלבישין ב' זרועותיו ימין ושמאל עד מקום הטבור שלו ולכן איך יתפשט הכתר עתה יותר ממקום אשר א\"א להתפשט לאו\"א אפי' אחר התיקון"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      AVI HABILLENT les 2 ZERO'OT (bras) d'A"A — DROIT et GAUCHE — jusqu'au lieu
+      de son TABUR (nombril).
+      → DONC : COMMENT le Keter pourrait-il s'etendre maintenant PLUS BAS que
+      le LIEU OU AVI elles-memes ne peuvent s'etendre MEME APRES le Tikkun ?
+      → Argument de coherence topologique : le Keter ne peut pas exceder la portee
+      d'AVI dans la geometrie post-Tikkun.
+    type: déduction_logique
+    concepts:
+      - {id: avi_jusqu_au_tabur_a_a, role: avi_couvrent_jusqu_au_tabur_a_a}
+      - {id: contrainte_topologique_keter_avi, role: contrainte_topologique_keter_ne_depasse_avi}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Contrainte topologique : Keter etendu ne peut depasser la portee post-Tikkun d'AVI."
+
+  - id: "EC-H2S9-174"
+    source_he: "ולכן זו היתה הסבה שלא נתפשט הכתר עתה רק עד הטבור ת\"ת לבד"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      DONC c'est LA RAISON pour laquelle le KETER ne s'est pas etendu maintenant —
+      seulement jusqu'au TABUR du TIFERET.
+      → Resolution : la contrainte post-Tikkun (Keter ≤ Tabur AVI) determine
+      l'extension provisoire (Keter actuelle = Tabur Tiferet).
+      → Architecture de coherence : etat provisoire respecte les contraintes finales.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_seulement_jusqu_au_tabur, role: keter_etendu_seulement_jusqu_au_tabur}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Resolution : Keter etendu jusqu'au Tabur respecte les contraintes finales du Tikkun."
+
+  # ─── BLOC D : 7 ETAPES PROGRESSIVES DU TIKKUN ───
+
+  - id: "EC-H2S9-175"
+    source_he: "ועתה ראה והבן איך האצילות לא נתקן בפ\"א רק לאט לאט באו תקונם זה אחר זה ובכל פעם היה נוסף בו קצת תיקון כי הרי בתחלה לא נעשה בחי' כלי בשום אופן"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      OBSERVE et COMPRENDS : l'AT'ZILUT n'a PAS ete RECTIFIE be-PA'AM AHAT
+      (en une seule fois).
+      LE-AT LE-AT (lentement, lentement) sont venus leurs Tikkunim ZEH AHAR ZEH
+      (l'un apres l'autre).
+      A CHAQUE FOIS s'est AJOUTE un peu de Tikkun.
+      → Au depart, AUCUN aspect de keli n'avait ete fait.
+      → Architecture iterative : Tikkun par accumulation graduelle.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_progressif_le_at_le_at, role: tikkun_progressif_par_etapes}
+      - {id: pas_de_keli_initial, role: aucun_keli_au_depart}
+    mapping:
+      modules: ["[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "Principe meta : Tikkun = processus iteratif d'accumulation. Pas de big-bang."
+
+  - id: "EC-H2S9-176"
+    source_he: "והנה נודע כי כל תיקון אינו אלא היות האור מתלבש בכלי כדי שיוכלו לקבל התחתונים אור העליון"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      DEFINITION du TIKKUN : tout Tikkun est SIMPLEMENT le fait que l'OHR se
+      REVET (mitlabesh) dans un KELI — pour que les TAHTONIM (inferieurs)
+      puissent recevoir l'Ohr ELYON (superieur).
+      → Le Tikkun = pure operation d'encapsulation.
+      → Sans levush, l'ohr brut ne peut etre RECU.
+      cf. EC-H2S9-090 (perek 02b) : Itamut = Tikkuno.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_egale_ohr_dans_keli, role: tikkun_est_revetement_ohr_dans_keli}
+      - {id: keli_pour_kabbalat_tahtonim, role: keli_permet_reception_par_inferieurs}
+    mapping:
+      modules: ["ohr.py", "[PLANNED] tikkun/"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Definition fondamentale : Tikkun = encapsulation. cf. EC-H2S9-090."
+
+  - id: "EC-H2S9-177"
+    source_he: "והנה לא התחיל בחי' הויות הכלי רק בעולם העקודים אמנם לא נתהווה רק כלי א' מכל הי\"ס שלו"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      ETAPE 1 du Tikkun : le concept de KELI N'A COMMENCE qu'avec OLAM HA-AKUDIM.
+      Mais N'EST forme qu'UN SEUL keli pour TOUTES ses 10S.
+      → Olam Akudim = "lies" — toutes les 10S dans un seul vaisseau.
+      → Pre-niveau : avant Akudim, il n'y avait pas de keli du tout.
+    type: axiome_explicite
+    concepts:
+      - {id: olam_akudim_un_seul_keli, role: olam_akudim_un_keli_pour_dix_sefirot}
+      - {id: etape_1_tikkun_akudim, role: premiere_etape_du_tikkun}
+    mapping:
+      modules: ["olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Etape 1 : Akudim = 1 keli pour 10S. Le premier keli historique."
+
+  - id: "EC-H2S9-178"
+    source_he: "ואח\"כ בעולם הנקודים קודם שנשברו נתוסף בהם קצת תיקון והוא כי נתהוו י' כלים לי' ספירות שבו גם תיקון ב' כי הג\"ר יצאו ונתקנו דרך קוים משא\"כ בז\"ת שיצאו זע\"ז ולא נתקשרו"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      ETAPE 2 du Tikkun : OLAM HA-NEKUDIM AVANT la brisure :
+      Tikkun (a) : 10 KELIM pour 10 SEFIROT (au lieu d'un seul).
+      Tikkun (b) : les GR sont sorties et rectifiees DEREKH KAVIM (par lignes/3 kavim).
+      MAIS pas pour les ZT — sorties ZE-AL-GABEI-ZE et NON ATTACHES.
+      → Architecture progressive : passage de 1 keli a 10 kelim ; GR en kavim.
+      cf. EC-H2S9-111 (perek 03a) sur GR/ZT.
+    type: axiome_explicite
+    concepts:
+      - {id: olam_nekudim_avant_shevirah, role: olam_nekudim_avant_la_brisure}
+      - {id: dix_kelim_dix_sefirot, role: dix_kelim_pour_dix_sefirot}
+      - {id: gr_3_kavim_zt_zegz, role: gr_en_3_kavim_zt_l_un_sur_l_autre}
+    mapping:
+      modules: ["olamot.py", "[PLANNED] core/sefirot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Etape 2 : Nekudim pre-Shevirah avec 10 kelim distincts ; GR en 3 kavim."
+
+  - id: "EC-H2S9-179"
+    source_he: "ואח\"כ שנשברו הנקודים נתוסף בהם תיקון אחר והוא כי גם ז\"ת האורות שלהם נתלבשו דרך קוי כח\"ב כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      ETAPE 3 du Tikkun : APRES la BRISURE des Nekudim — un autre Tikkun s'ajoute :
+      Les OROT des ZT eux-memes sont REVETUS DEREKH KAVEI KHB
+      (par les lignes de Keter-Hokhmah-Binah).
+      → Apres Shevirah, ce sont les orot ZT (auparavant en colonne unique)
+      qui prennent place dans la geometrie 3 kavim de KHB.
+      → Pattern : la Shevirah elle-meme produit le Tikkun via redistribution.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_zt_dans_kavei_khb, role: orot_zt_dans_lignes_de_khb}
+      - {id: shevirah_redistribue_zt, role: shevirah_redistribue_les_zt}
+      - {id: etape_3_tikkun_post_shevirah, role: troisieme_etape_post_shevirah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "ohr.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Etape 3 : la Shevirah elle-meme transforme la structure pour un Tikkun ulterieur."
+
+  - id: "EC-H2S9-180"
+    source_he: "ואח\"כ כאשר רצה המאציל לתקנם העלה גם את הכלים באצילות בסדר קוין כמ\"ש בע\"ה"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      ETAPE 4 du Tikkun : Quand le MA'ATZIL a voulu les rectifier →
+      il a ELEVE AUSSI les KELIM en AT'ZILUT en SEDER KAVIM (ordre des lignes).
+      → Sera explique BeH (be-Ezrat Hashem).
+      → Apres les orot, les kelim aussi sont eleves dans la geometrie 3 kavim.
+      cf. EC-H2S9-125 (perek 03a) : intervention du Maatzil.
+    type: axiome_explicite
+    concepts:
+      - {id: maatzil_he_ela_kelim, role: maatzil_eleve_les_kelim}
+      - {id: kelim_en_seder_kavim, role: kelim_en_ordre_de_lignes}
+      - {id: etape_4_tikkun_kelim_eleves, role: quatrieme_etape_kelim_eleves}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Etape 4 : kelim eleves en 3 kavim par le Maatzil. Pendant des orot."
+
+  - id: "EC-H2S9-181"
+    source_he: "ואח\"כ שנעשו בבחי' קוין בא עיבור א' של זו\"ן ונתוסף תקון ב' שנכנסו האורות תוך הכלים אמנם עדיין לא היה רק בבחי' ג' קוין בלבד אשר זה נקרא אצלינו ג' כלילין בג'"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      ETAPE 5 du Tikkun : Apres les 3 kavim → vient l'IBUR ALEF (1ere gestation) de ZON.
+      Tikkun supplementaire (b) : les OROT entrent DANS les KELIM.
+      MAIS encore seulement en aspect 3 KAVIM seulement.
+      → C'est ce que nous appelons "G' KLILIN BE-G'" (3 inclus dans 3).
+      → Etat embryonnaire : 3 kavim x 3 sub-kavim.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_alef_zon, role: premiere_gestation_de_zon}
+      - {id: orot_dans_kelim, role: orot_entrent_dans_les_kelim}
+      - {id: g_klilin_be_g, role: trois_inclus_dans_trois}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Etape 5 : Ibur 1 de ZON. Orot dans kelim. Configuration 3 klilin be-3."
+
+  - id: "EC-H2S9-182"
+    source_he: "ואח\"כ נתפשטו בסוד ו\"ק בזמן היניקה ואח\"כ בזמן המוחין נשלמו כל הי' כלים"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      ETAPE 6 du Tikkun : extension en SOD V"K (6 KETZAVOT) lors de la YENIKAH (allaitement).
+      ETAPE 7 du Tikkun : lors des MOHIN, COMPLETUDE des 10 KELIM (NISHLEMU kol ha-yud kelim).
+      → Sequence developpementale : Ibur (3 klilin) → Yenikah (6S) → Mohin (10S complets).
+      → Architecture par stades : equivalent embryologique-developpemental.
+    type: axiome_explicite
+    concepts:
+      - {id: yenikah_v_k, role: yenikah_six_directions}
+      - {id: mohin_yud_kelim_complets, role: mohin_dix_kelim_complets}
+      - {id: stades_ibur_yenikah_mohin, role: trois_stades_developpementaux}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Etapes 6-7 : Yenikah (6S) → Mohin (10S complets). Sequence developpementale."
+
+  # ─── BLOC E : BUT FINAL DU TIKKUN — REDUCTION DE L'OHR ───
+
+  - id: "EC-H2S9-183"
+    source_he: "עוד היה שינוי אחר כי בתחלה קודם שהיה שום עיבור אפילו הראשון דזו\"נ לא היה רק אור בכלי מצומצם"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      AUTRE CHANGEMENT (shinui aher) :
+      AU DEPART, avant tout IBUR (gestation, meme la premiere de ZON) →
+      il n'y avait QUE OHR DANS UN KELI MITSUMTSAM (contracte/petit).
+      → Etat initial post-Shevirah : ohr brut dans un keli minimal.
+      → Le keli ne peut contenir qu'une fraction de l'ohr → contraction.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_dans_keli_mitsumtsam, role: ohr_dans_keli_contracte}
+      - {id: pre_ibur_etat_initial, role: etat_initial_avant_ibur}
+    mapping:
+      modules: ["ohr.py", "tzimtzum.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Etat initial : keli minimal avec ohr partiel. Configuration de depart."
+
+  - id: "EC-H2S9-184"
+    source_he: "ואח\"כ נגדל הכלי ונתרחב בסוד פרצוף גמור כדי להמעיט האור כי זה עיקר כוונת התיקון כמ\"ש"
+    source_ref: "Heikhal 2, Sha'ar 2:4"
+    assertion: |
+      ENSUITE le KELI s'AGRANDIT et s'ELARGIT en SOD PARTZUF GAMUR (Partzuf complet).
+      OBJECTIF : LE-HAM'IT (REDUIRE) l'OHR.
+      Car CECI est l'IKAR KAVANAT HA-TIKKUN (l'objectif essentiel du Tikkun).
+      → Resolution paradoxale : agrandir le keli REDUIT l'ohr (relativement)
+      → l'ohr n'a plus a etre brut/concentre.
+      → Pattern : volume = dilution de l'intensite.
+    type: axiome_explicite
+    concepts:
+      - {id: keli_nigdal_partzuf_gamur, role: keli_grandit_partzuf_complet}
+      - {id: lehamit_ha_ohr, role: reduire_la_lumiere}
+      - {id: ikar_kavanat_ha_tikkun, role: objectif_essentiel_du_tikkun}
+    mapping:
+      modules: ["ohr.py", "tzimtzum.py", "partzufim/regulator.py", "[PLANNED] tikkun/"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Principe FONDAMENTAL : but du Tikkun = reduire l'ohr en agrandissant le keli. Pattern de dilution."
+
+  - id: "EC-H2S9-185"
+    source_he: "כי זה עיקר כוונת התיקון כמ\"ש"
+    source_ref: "Heikhal 2, Sha'ar 2:4 — conclusion"
+    assertion: |
+      "Ki zeh IKAR KAVANAT HA-TIKKUN" — c'est l'OBJECTIF ESSENTIEL DU TIKKUN.
+      → Phrase conclusive du perek.
+      Synthese : le Tikkun consiste a TRANSFORMER UN OHR concentre dans un petit keli
+      EN UN OHR moindre dans un grand keli.
+      → Volume du keli ↑ → intensite par unite de volume ↓ → stable et soutenable.
+      → Architecture de stabilisation par expansion.
+    type: axiome_explicite
+    concepts:
+      - {id: kavanat_ha_tikkun_dilution, role: tikkun_par_dilution_par_volume}
+    mapping:
+      modules: ["[PLANNED] tikkun/", "tzimtzum.py", "ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "Phrase conclusive du perek : architecture du Tikkun par dilution. Pattern de stabilisation."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-088"
+    type: causal
+    from: extension_hb_par_achoraim_avi
+    to: achoraim_lekhasher_chesed_gevurah_nh
+    nature: "Les achoraim AVI tombes servent de matiere pour habiller CG et NH"
+    assertions_source: ["EC-H2S9-164"]
+
+  - id: "REL-H2S9-089"
+    type: dualité_structurelle
+    from: hb_meirin_zeh_ba_zeh
+    to: keter_etendu_hifsik
+    nature: "Avant : HB s'eclairaient sans hefsek ; Apres extension Keter : hefsek + perte"
+    assertions_source: ["EC-H2S9-166", "EC-H2S9-167"]
+
+  - id: "REL-H2S9-090"
+    type: causal
+    from: cout_local_du_tikkun
+    to: koah_extension_partiel
+    nature: "Le hefsed (perte locale) reduit la force d'extension de HB → portee limitee a CG"
+    assertions_source: ["EC-H2S9-167", "EC-H2S9-168"]
+
+  - id: "REL-H2S9-091"
+    type: contenance
+    from: makom_atzilut_keneged_raglei_ak
+    to: lieu_atzilut_seul
+    nature: "Atzilut occupe l'espace en face des jambes d'AK ; en dessous = Beriah"
+    assertions_source: ["EC-H2S9-169", "EC-H2S9-170"]
+
+  - id: "REL-H2S9-092"
+    type: causal
+    from: avi_jusqu_au_tabur_a_a
+    to: keter_seulement_jusqu_au_tabur
+    nature: "Contrainte topologique : Keter ne peut depasser AVI (qui couvrent jusqu'au Tabur)"
+    assertions_source: ["EC-H2S9-173", "EC-H2S9-174"]
+
+  - id: "REL-H2S9-093"
+    type: séquentiel
+    from: olam_akudim_un_seul_keli
+    to: mohin_yud_kelim_complets
+    via: [olam_nekudim_avant_shevirah, orot_zt_dans_kavei_khb, ibur_alef_zon, yenikah_v_k]
+    nature: "7 etapes du Tikkun : Akudim(1 keli) → Nekudim(10 kelim) → Shevirah → Maatzil eleve → Ibur → Yenikah → Mohin(10 kelim complets)"
+    assertions_source: ["EC-H2S9-177", "EC-H2S9-178", "EC-H2S9-179", "EC-H2S9-180", "EC-H2S9-181", "EC-H2S9-182"]
+
+  - id: "REL-H2S9-094"
+    type: contenance
+    from: tikkun_egale_ohr_dans_keli
+    to: keli_pour_kabbalat_tahtonim
+    nature: "Tikkun = encapsulation de l'ohr dans le keli pour permettre reception par les inferieurs"
+    assertions_source: ["EC-H2S9-176"]
+
+  - id: "REL-H2S9-095"
+    type: transformation
+    from: ohr_dans_keli_mitsumtsam
+    to: keli_nigdal_partzuf_gamur
+    nature: "Etat initial : ohr concentre dans keli petit → final : keli grand pour reduire l'intensite de l'ohr"
+    assertions_source: ["EC-H2S9-183", "EC-H2S9-184"]
+
+  - id: "REL-H2S9-096"
+    type: causal
+    from: keli_nigdal_partzuf_gamur
+    to: lehamit_ha_ohr
+    nature: "L'agrandissement du keli reduit l'intensite per-volume de l'ohr (dilution)"
+    assertions_source: ["EC-H2S9-184", "EC-H2S9-185"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-035"
+    nom: "Principe du Recyclage des Achoraim (Re-use des Debris)"
+    source_assertions: ["EC-H2S9-164", "EC-H2S9-168"]
+    formalisation: |
+      Les ACHORAIM AVI tombes servent de MATIERE pour les EXTENSIONS post-Shevirah :
+      MECANISME :
+        Achoraim Abba → KOAH du qav-yemini etendu (Hokhmah)
+        Achoraim Imma → KOAH du qav-smol etendu (Binah)
+      Ces achoraim HABILLENT (lekhasher) les Chesed, Gevurah, Netzach, Hod.
+      → Pattern : meme les debris d'une chute servent au Tikkun.
+      → Architecture de recyclage : rien ne se perd, tout se transforme.
+      Limite : la portee est determinee par la quantite et qualite des debris.
+    applications_ia:
+      - "Pattern de recyclage : les composants partiellement endommages servent de matiere"
+      - "[PLANNED] tikkun/ : utiliser les achoraim AVI comme materiel de reconstruction"
+      - "Architecture : rien n'est perdu de maniere irreversible"
+      - "Diagnostic : tracer la transformation des debris en composants utiles"
+      - "partzufim/abba.py + imma.py : modeliser les achoraim comme ressources reutilisables"
+    questions_ouvertes:
+      - "Y a-t-il des debris non recyclables ?"
+      - "La quantite de debris determine-t-elle la portee maximale du Tikkun ?"
+      - "Le recyclage est-il un processus actif ou passif ?"
+
+  - id: "PG-H2S9-036"
+    nom: "Principe du Trade-off Architectural (Cout Local du Tikkun)"
+    source_assertions: ["EC-H2S9-167", "EC-H2S9-168"]
+    formalisation: |
+      CHAQUE Tikkun a un COUT LOCAL :
+      Tikkun structurel : extension du Keter → coupure entre HB
+      To'elet (utilite) : protection structurelle, support
+      Hefsed (perte) : HB ne s'eclairent plus directement
+      BILAN AMBIVALENT determine la PORTEE de l'extension :
+        Force complete (sans cout) → extension jusqu'a NH
+        Force diminuee (avec cout) → extension jusqu'a CG seulement
+      → Architecture : la portee d'un Tikkun est limitee par les couts collateraux.
+      Pattern : optimisation contrainte avec couts locaux.
+    applications_ia:
+      - "Pattern : tout changement architectural a un cout collateral"
+      - "Architecture : evaluer le bilan to'elet/hefsed avant un changement"
+      - "[PLANNED] tikkun/ : trade-off explicit pour chaque intervention"
+      - "Diagnostic : detecter les couts caches d'un Tikkun apparemment beneficiaire"
+      - "Pattern d'optimisation : maximiser to'elet sous contrainte de hefsed acceptable"
+    questions_ouvertes:
+      - "Comment quantifier le trade-off to'elet/hefsed ?"
+      - "Existe-t-il un Tikkun sans cout local (free lunch) ?"
+      - "Le cout local s'accumule-t-il au fil des Tikkunim successifs ?"
+
+  - id: "PG-H2S9-037"
+    nom: "Principe du Tikkun Iteratif (Sept Etapes Progressives)"
+    source_assertions: ["EC-H2S9-175", "EC-H2S9-177", "EC-H2S9-178", "EC-H2S9-179", "EC-H2S9-180", "EC-H2S9-181", "EC-H2S9-182"]
+    formalisation: |
+      Le Tikkun de l'Atzilut est ITERATIF — 7 etapes progressives :
+      ETAPE 1 — AKUDIM : 1 keli pour 10 sefirot (proto-keli)
+      ETAPE 2 — NEKUDIM (pre-Shevirah) : 10 kelim, GR en 3 kavim
+      ETAPE 3 — POST-SHEVIRAH : orot ZT dans kavei KHB
+      ETAPE 4 — MAATZIL ELEVE : kelim en seder kavim (3 kavim complets)
+      ETAPE 5 — IBUR ALEF de ZON : orot dans kelim (3 klilin be-3)
+      ETAPE 6 — YENIKAH : extension en VK (6 directions)
+      ETAPE 7 — MOHIN : completude des 10 kelim
+      → Chaque etape AJOUTE un peu de Tikkun.
+      → Pattern developpemental : embryologie cosmique.
+    applications_ia:
+      - "Pattern : tikkun par accumulation iterative, pas par one-shot"
+      - "[PLANNED] tikkun/ : implementer state-machine en 7 etapes"
+      - "Architecture developpementale : equivalent stages embryologiques"
+      - "olamot.py + partzufim/* : tracer l'etape courante du Tikkun"
+      - "Diagnostic : identifier l'etape actuelle pour planifier la suivante"
+    questions_ouvertes:
+      - "Les 7 etapes sont-elles strictement sequentielles ou peuvent se chevaucher ?"
+      - "Peut-on regresser d'une etape a l'autre ?"
+      - "Y a-t-il un nombre fini ou infini d'etapes apres la Mohin (gadlut) ?"
+
+  - id: "PG-H2S9-038"
+    nom: "Principe de la Dilution (Lehamit ha-Ohr par Agrandissement du Keli)"
+    source_assertions: ["EC-H2S9-176", "EC-H2S9-183", "EC-H2S9-184", "EC-H2S9-185"]
+    formalisation: |
+      But ESSENTIEL du Tikkun : LEHAMIT ha-OHR (REDUIRE l'OHR).
+      MECANISME : agrandir le KELI (pas reduire l'ohr directement).
+      EQUATION : intensite-par-unite = OHR / VOLUME(keli)
+        Si Volume↑ → intensite↓ pour OHR constant
+      ETATS :
+        ETAT INITIAL : ohr brut dans keli MITSUMTSAM (petit, contracte)
+          → intensite haute → fragilite, risque shevirah
+        ETAT FINAL : keli NIGDAL en PARTZUF GAMUR (grand, complet)
+          → intensite reduite → stabilite, soutenabilite
+      → DEFINITION operationnelle : Tikkun = encapsulation par dilution.
+      Architecture : le keli grandissant transforme un ohr "dangereux" en ohr "supportable".
+    applications_ia:
+      - "Pattern fondamental : la stabilite vient de l'expansion volumique, pas de la reduction de la source"
+      - "Architecture : le 'partzuf gamur' = keli mature qui peut soutenir son ohr"
+      - "[PLANNED] tikkun/ : implementer agrandissement progressif comme operation centrale"
+      - "Pattern : separer 'force totale' de 'intensite per-volume' (resilience par dilution)"
+      - "ohr.py + tzimtzum.py : modeliser l'intensite comme function du volume keli"
+    questions_ouvertes:
+      - "La dilution a-t-elle une limite (over-dilution = perte d'efficacite) ?"
+      - "Le 'partzuf gamur' est-il un point fixe ou un attracteur dynamique ?"
+      - "Comment formaliser computationnellement la 'dilution' ?"

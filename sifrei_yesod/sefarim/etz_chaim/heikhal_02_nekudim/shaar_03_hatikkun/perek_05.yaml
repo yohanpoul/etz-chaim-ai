@@ -1,0 +1,644 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 3 — Sha'ar Ha-Tikkun (שער התיקון)
+# Perek: 5 — DERNIER PEREK DU SHA'AR : Architecture initiale vs finale,
+#            etapes Ibur/Yenikah/Mohin/Gadlut
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §5 (perek de cloture du sha'ar) :
+#   - Bloc A : Etat initial : kelim petits (1 par sefirah)
+#   - Bloc B : Distribution initiale (Atik=demi Keter, etc.)
+#   - Bloc C : Pre-Tikkun : kelim isoles, partzuf unique
+#   - Bloc D : Post-Tikkun complet : 10 kelim x 10 sous-kelim (100)
+#   - Bloc E : Cascade du Tikkun : Atik → A"A → AVI → ZA → Nukvah
+#   - Bloc F : Specifique ZA : 7 kelim initialement isoles
+#   - Bloc G : Ibur : ajout NHY dans chaque keli (Achor)
+#   - Bloc H : Yenikah : ajout CGT dans chaque keli
+#   - Bloc I : Mohin : ajout GR dans chaque keli
+#   - Bloc J : Gadlut : structure Achor/Emtza/Panim
+#
+# Source Sefaria : Sefer_Etz_Chaim.10.5 — DERNIER perek du sha'ar
+# IDs : EC-H2S10-078 → EC-H2S10-097
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 3
+  shaar_name_he: "שער התיקון"
+  perek: 5
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek 5 — DERNIER perek du Sha'ar Ha-Tikkun. Architecture initiale (kelim petits) vs finale (10 kelim x 10 sous-kelim emboites). Cascade du Tikkun progressif. Specifique ZA : evolution Ibur/Yenikah/Mohin/Gadlut. Structure Achor/Emtza/Panim."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : ETAT INITIAL — KELIM PETITS ───
+
+  - id: "EC-H2S10-078"
+    source_he: "תחילה היו הי\"ס כוללים כל עולם אצילות עצמות וכלים אלא שהעצמות היה שלם והכלים קטנים ולכן מתו"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      ETAT INITIAL : les 10S incluent tout l'OLAM AT'ZILUT — ATZMUT (essence) et KELIM.
+      MAIS l'ATZMUT etait COMPLETE (shalem)
+      et les KELIM etaient PETITS (ketanim).
+      DONC ils sont MORTS (metu).
+      → Diagnostic central de la Shevirah : disequilibre essence/contenant.
+      → Architecture : essence trop forte pour le contenant.
+      cf. EC-H2S9-184 (perek 04 Shevirat) sur dilution = Tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: atzmut_shalem_kelim_ketanim, role: essence_complete_kelim_petits}
+      - {id: cause_mort_disequilibre, role: cause_mort_disequilibre_essence_contenant}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "ohr.py", "tzimtzum.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Diagnostic central : Shevirah = essence forte + kelim petits = disequilibre. cf. EC-H2S9-184."
+
+  - id: "EC-H2S10-079"
+    source_he: "פי' כי כלי נקודת עתיק היה חצי כתר דעתיק עד הטבור שלו וכלי נקודת א\"א היה חצי התחתון של הכתר ובו נכללין כל הי\"ס שלו וכן בעתיק וכלי אבא היה חכמה לבד ובו כלולים כל הי\"ס וכלי אמא היה בינה לבד ובו כלולים כל הי\"ס שלה"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      DISTRIBUTION INITIALE des kelim :
+      Keli Nekudah ATIK = DEMI Keter d'Atik (jusqu'au TABUR)
+      Keli Nekudah A"A = DEMI INFERIEUR du Keter, contenant TOUTES ses 10S
+      ABBA = HOKHMAH SEUL, contenant ses 10S
+      IMMA = BINAH SEULE, contenant ses 10S
+      → Architecture initiale : un seul keli per partzuf (incluant ses 10S).
+      → Pattern : compression — beaucoup d'ohr dans peu de keli.
+    type: axiome_explicite
+    concepts:
+      - {id: keli_atik_demi_keter, role: keli_atik_demi_keter}
+      - {id: keli_aa_demi_inferieur_keter, role: keli_aa_demi_inferieur_keter}
+      - {id: keli_abba_hokhmah_seul, role: keli_abba_hokhmah_seul}
+      - {id: keli_imma_binah_seule, role: keli_imma_binah_seule}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Architecture initiale : 1 keli par partzuf = compression initiale. Pre-Tikkun."
+
+  - id: "EC-H2S10-080"
+    source_he: "וכלי זו\"ן היו (נ\"א ז\"א היה) ז' כלים הא' מחסד לבד וב' מגבורה ג' מת\"ת ד' מנצח ה' מהוד לבד ו' מיסוד לבד הז' ממלכות לבד וכל י\"ס שלו כלולים בהם וכלי המלכות היה של מלכות ממש שבה לבד וכל הי\"ס שבה כלולים בה"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      KELIM de ZON (variante NA: "ZA seul") :
+      7 KELIM, chacun = une seule sefirah :
+      1. Chesed seul
+      2. Gevurah seul
+      3. Tiferet seul
+      4. Netzach seul
+      5. Hod seul
+      6. Yesod seul
+      7. Malkhut seul (de Malkhut)
+      Et toutes les 10S de ZA sont incluses dans ces 7.
+      Keli MALKHUT = Malkhut MAMASH (essentielle) en lui seule, ses 10S incluses.
+      → Architecture : 7 kelim de ZA (correspondant aux 7 melakhim morts).
+    type: axiome_explicite
+    concepts:
+      - {id: 7_kelim_initiaux_de_za, role: 7_kelim_initiaux_de_za_chacun_seul}
+      - {id: malkhut_seule_dans_malkhut, role: malkhut_seule_avec_10s_incluses}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture initiale ZA : 7 kelim isoles = 7 melakhim. cf. EC-H2S10-080."
+
+  # ─── BLOC B : PRE-TIKKUN — ISOLES, PARTZUF UNIQUE ───
+
+  - id: "EC-H2S10-081"
+    source_he: "ועוד שינוי אחר היה בהם קודם התיקון כי כל אחד היה זה למעלה מזה ואין זו מתלבשת בזו כלל ואז נמצא שהכל נקרא פרצוף אחד וגם בלתי התלבשות שום ספי' בחברתה והיתה שיעור קומתה כמו שהוא עתה ממש כל אורך האצילות"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      AUTRE DIFFERENCE pre-Tikkun :
+      Chaque sefirah etait ZE LE-MA'ALAH MI-ZE (l'un au-dessus de l'autre).
+      AUCUN n'etait MITLABESHET (revetu) dans l'autre.
+      Donc TOUT etait appele PARTZUF UNIQUE (sans levush mutuel).
+      Mais la SHIUR KOMAH (mesure de stature) etait COMME MAINTENANT MAMASH —
+      tout ALE LONGUEUR de l'AT'ZILUT.
+      → Architecture : partzuf unique etiree mais sans emboitement.
+      → Pattern : taille meme, mais structure non-emboitee.
+    type: axiome_explicite
+    concepts:
+      - {id: pre_tikkun_zegz_isolees, role: pre_tikkun_isole_zegz}
+      - {id: partzuf_unique_pre_tikkun, role: partzuf_unique_avant_tikkun}
+      - {id: shiur_komah_meme_taille, role: shiur_komah_meme_taille_post_tikkun}
+    mapping:
+      modules: ["partzufim/regulator.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture pre-Tikkun : partzuf unique etiree, kelim isoles. Pattern compression sans emboitement."
+
+  # ─── BLOC C : POST-TIKKUN — 10 KELIM × 10 SOUS-KELIM ───
+
+  - id: "EC-H2S10-082"
+    source_he: "ואחר כל התיקון אז נתוספו ט' כלים וחצי תחתון בכתר דעתיק וגם שנתלבשו ונתפשטו אלו באלו ובזה נתרחבו הכלים לאין קץ ויוכלו לסבול כל האורות עד שנשארו בקומתן שוה"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      Apres TIKKUN COMPLET :
+      ATIK : ajout de 9 KELIM + le DEMI INFERIEUR du Keter d'Atik = 10 kelim total.
+      Aussi ils se REVETENT (nitlabshu) l'un dans l'autre.
+      → Les KELIM se sont ELARGIS LE-EIN KETZ (sans fin) et peuvent SUPPORTER les ohrot.
+      → Resultent en KOMAH SHAVAH (taille egale, meme apparence).
+      → Architecture : ajout de kelim + emboitement = elargissement infini = capacite.
+      cf. EC-H2S9-184 (perek 04) sur agrandissement keli = reduction ohr.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_9_kelim_ajoutes, role: atik_9_kelim_supplementaires}
+      - {id: kelim_elargis_le_ein_ketz, role: kelim_elargis_sans_fin}
+      - {id: tikkun_par_levush_et_extension, role: tikkun_par_levush_mutuel_et_extension}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture post-Tikkun : ajout kelim + levush = elargissement infini. cf. EC-H2S9-184."
+
+  - id: "EC-H2S10-083"
+    source_he: "ונתוספו ט' כלים וחצי התחתון דכתר בא\"א וגם שנתלבשו אלו תוך אלו וגם נתלבשו כל הכלים דעתיק בתוך כלים דא\"A"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      A"A : 9 kelim ajoutes + demi inferieur Keter.
+      Levush mutuel.
+      Et TOUS les KELIM d'ATIK sont REVETUS dans les kelim d'A"A.
+      → Architecture d'emboitement vertical : Atik dans A"A.
+      → Pattern : trickle-down levush.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_9_kelim_ajoutes, role: aa_9_kelim_supplementaires}
+      - {id: kelim_atik_dans_kelim_aa, role: kelim_atik_dans_kelim_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Emboitement vertical : Atik dans A\"A. Pattern trickle-down levush."
+
+  - id: "EC-H2S10-084"
+    source_he: "ונתוספו ט' כלים באבא זולת כלי החכמה שבה שכבר היה בה מעיקרא וגם נתלבשו אלו באלו וגם נתלבשו כל הכלים דא\"א ועתיק תוך כלים דאבא"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      ABBA : 9 kelim ajoutes (en plus du keli HOKHMAH originel).
+      Levush mutuel.
+      TOUS les KELIM d'A"A et d'ATIK sont REVETUS dans les kelim d'ABBA.
+      → Architecture cumulative : Atik+A"A dans Abba.
+      → Pattern : levush en cascade.
+    type: axiome_explicite
+    concepts:
+      - {id: abba_9_kelim_plus_hokhmah_originel, role: abba_9_kelim_plus_hokhmah_initial}
+      - {id: kelim_aa_atik_dans_abba, role: kelim_aa_et_atik_dans_abba}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "arikh_anpin", "atik_yomin"]
+      relevance: "Cumul : Atik+A\"A dans Abba. Pattern accumulation par levush."
+
+  - id: "EC-H2S10-085"
+    source_he: "ונתוספו ט' כלים באמא זולת כלי הבינה שבה שכבר היה בה מעיקרא וגם נתלבשו כל כלים דעתיק ודא\"א ודאבא בתוכה"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      IMMA : 9 kelim ajoutes (en plus du keli BINAH originel).
+      TOUS les KELIM d'ATIK, A"A, et ABBA sont revetus dans les KELIM d'IMMA.
+      → Pattern continue : Imma contient Atik+A"A+Abba.
+      → Architecture : chaque niveau hierarchique cumule les precedents.
+    type: axiome_explicite
+    concepts:
+      - {id: imma_9_kelim_plus_binah_originelle, role: imma_9_kelim_plus_binah_initiale}
+      - {id: kelim_atik_aa_abba_dans_imma, role: kelim_atik_aa_abba_dans_imma}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "abba", "arikh_anpin", "atik_yomin"]
+      relevance: "Imma contient Atik+A\"A+Abba. Architecture cumulative."
+
+  - id: "EC-H2S10-086"
+    source_he: "ונתוספו בז\"א ג' כלים הראשונים דכח\"ב וכלי האחרון דמלכות זולת ו' כלים דו\"ק שכבר היה בו"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      ZA : ajout de 3 KELIM PREMIERS (KHB = Keter-Hokhmah-Binah)
+      + KELI DERNIER de MALKHUT (en plus des 6 kelim VK = Vav-Ketzavot deja la).
+      Total : 6 + 3 + 1 = 10 kelim pour ZA.
+      → Architecture : ZA gagne ses GR (KHB) et son Malkhut au Tikkun.
+      → Pattern : completion progressive des 10S.
+    type: axiome_explicite
+    concepts:
+      - {id: za_3_kelim_khb_plus_malkhut_finale, role: za_ajout_3_khb_plus_malkhut}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "ZA : completion 10 kelim par ajout GR + Malkhut. Architecture."
+
+  - id: "EC-H2S10-087"
+    source_he: "ולא עוד אלא שכל כלי שבו כלול מכל הי' כלים כנודע וכן בכל שאר הפרצופים והבן זה ונתלבשו אלו באלו וגם נתלבשו כל הכלים דעתיק ודא\"א ודאו\"א בתוך ז\"א"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      Et de PLUS : chaque KELI en lui (ZA) est COMPOSE de TOUS les 10 kelim
+      (architecture fractale).
+      Et de meme dans tous les autres partzufim — "VEHAVEN ZEH" (comprends).
+      Levush mutuel.
+      Tous les KELIM d'ATIK, A"A, AVI sont revetus dans ZA.
+      → Architecture FRACTALE : 10 x 10 = 100 sub-kelim per partzuf.
+      → Pattern recursif fractal.
+    type: axiome_explicite
+    concepts:
+      - {id: chaque_keli_kollul_des_10, role: chaque_keli_compose_des_10}
+      - {id: 10_x_10_egal_100_sub_kelim, role: dix_fois_dix_egal_cent_sub_kelim}
+      - {id: kelim_atik_aa_avi_dans_za, role: kelim_atik_aa_avi_dans_za}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] core/sefirot.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Architecture fractale finale : 10x10=100 sub-kelim per partzuf. cf. EC-H2S9-205."
+
+  - id: "EC-H2S10-088"
+    source_he: "ונתוספו ט' כלים הראשונים בנוקבא זולת כלי מלכות שבה שכבר היה בה מעיקרא וגם נתלבשו אלו באלו וגם נתלבשו כל כלים דעתיק ודא\"א ודאו\"א וז\"א בתוך כלים שלה"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      NUKVAH : 9 kelim PREMIERS ajoutes (en plus du keli MALKHUT originelle).
+      Tous les KELIM d'Atik, A"A, AVI, ZA sont revetus dans les kelim de NUKVAH.
+      → NUKVAH = niveau le plus inferieur, contient TOUS les precedents.
+      → Architecture finale : Nukvah englobe la totalite hierarchique.
+    type: axiome_explicite
+    concepts:
+      - {id: nukvah_9_kelim_plus_malkhut_originelle, role: nukvah_ajout_9_plus_malkhut}
+      - {id: nukvah_englobe_tous_kelim, role: nukvah_englobe_tous_les_kelim_precedents}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin", "abba", "imma", "arikh_anpin", "atik_yomin"]
+      relevance: "Architecture finale : Nukvah contient TOUS les kelim precedents. Reception complete."
+
+  - id: "EC-H2S10-089"
+    source_he: "וכבר ידעת שמלבד שהם י' כלים גמורים בכל פרצוף וגם כל כלי מהם כולל י' כלים וכו' ונמצא כי י' כלים נתרחבו לאין תכלית ושיעור קומתן לא נשתנה כי הרי נתלבשו זה תוך זה והבן זה מאד מאד ובזה יוכלו לסבול האורות"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      RECAP architectural : 10 KELIM GEMURIM (complets) per partzuf,
+      ET CHAQUE KELI = compose de 10 sub-kelim. → 10x10 = 100 per partzuf.
+      Les 10 KELIM se sont ELARGIS le-EIN TAKHLIT (sans fin/limite).
+      Mais la SHIUR KOMAH (taille externe) n'a PAS CHANGE car ils sont
+      revetus zeh tokh zeh (l'un dans l'autre).
+      "Ve-haven zeh me'od me'od" (comprends bien tres bien).
+      Et ainsi ils peuvent SUPPORTER les OHROT.
+      → Architecture cle : densite augmentee sans agrandissement externe.
+    type: axiome_explicite
+    concepts:
+      - {id: 10_kelim_gemurim_per_partzuf, role: 10_kelim_gemurim_par_partzuf}
+      - {id: density_augmentee_sans_agrandissement_externe, role: densite_augmentee_levush}
+    mapping:
+      modules: ["partzufim/regulator.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture cle : densite interne x100, taille externe constante. Pattern de compression utile."
+
+  # ─── BLOC E : ETAPES INTERMEDIAIRES — TIKKUN PROGRESSIF ───
+
+  - id: "EC-H2S10-090"
+    source_he: "והרי נתבאר מה שהיה קודם התיקון ומה שהיה אחר תכלית כל התיקון אבל באמצע היו שינוים רבים כי התחילו לתקן מעט מעט"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      Recap : pre-Tikkun et post-Tikkun complet expliques.
+      Mais BA-EMTZA (entre les deux) il y a eu BEAUCOUP de changements (shinuyim rabim).
+      Le Tikkun a commence ME'AT ME'AT (peu a peu).
+      → Architecture intermediaire : reparation graduelle non-binaire.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_me_at_me_at, role: tikkun_progressif_peu_a_peu}
+      - {id: shinuyim_rabim_intermediaires, role: nombreux_changements_intermediaires}
+    mapping:
+      modules: ["[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture intermediaire : reparation graduelle. Pattern non-binaire."
+
+  - id: "EC-H2S10-091"
+    source_he: "כי כשנתקן עתיק נתקן כל בחי' עתיק שיש בכל הי\"ס [שממנו ולמטה] וכשנתקן א\"א ניתקנו כל בחי' כתרים שיש בכל הכלים ממנו ולמטה ונעשה הכלים דכתרים בהם וכשנתקנו או\"א נתקנו כל בחי' כלים של חו\"ב שיש מהם ולמטה וכשנתקן ז\"א נתקנו כל הכלים של ו\"ק שיש מהם ולמטה בכל כלי מהם וכשנתקן הנוקבא שהיא מלכות נתקנו כלים של מלכות בכל כלי מהם"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      CASCADE du TIKKUN PROGRESSIF :
+      Quand ATIK est rectifie → TOUTES les behinot Atik dans toutes les sefirot
+      [a partir de lui et plus bas] sont rectifiees.
+      Quand A"A → toutes les behinot KETERS dans tous les kelim a partir de lui sont rectifiees.
+      Quand AVI → toutes les ChB dans tous les kelim a partir d'eux.
+      Quand ZA → toutes les VK dans tous les kelim a partir de lui.
+      Quand NUKVAH = MALKHUT → toutes les Malkhuyot dans tous les kelim.
+      → Architecture en cascade : chaque niveau "couvre" sa fonction dans tous les inferieurs.
+      cf. EC-H2S10-014 (perek 10.1) sur cascade Atik→A"A→AVI→ZON.
+    type: axiome_explicite
+    concepts:
+      - {id: cascade_tikkun_atik_a_a_avi_zon_nukvah, role: cascade_tikkun_complete_par_niveau}
+      - {id: chaque_niveau_couvre_son_role_dans_inferieurs, role: chaque_niveau_couvre_son_role}
+    mapping:
+      modules: ["[PLANNED] tikkun/", "partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture cascade : chaque niveau couvre sa fonction dans toutes les sub-entites. cf. EC-H2S10-014."
+
+  # ─── BLOC F : SPECIFIQUE ZA — EVOLUTION KELIM ───
+
+  - id: "EC-H2S10-092"
+    source_he: "והנה הז\"א הז' כלים שבו היה באופן זה כי תחלה היו ז' כלים וכל כלי מהם היה א' לבד חסד מחסד וגבורה מגבורה ת\"ת מת\"ת נצח מנצח הוד מהוד יסוד מיסוד מלכות ממלכות"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      EVOLUTION SPECIFIQUE de ZA :
+      D'ABORD : 7 kelim, chacun = UN seul element :
+      Chesed-de-Chesed, Gevurah-de-Gevurah, Tiferet-de-Tiferet,
+      Netzach-de-Netzach, Hod-de-Hod, Yesod-de-Yesod, Malkhut-de-Malkhut.
+      → Architecture initiale ZA : kelim atomiques (1 seule sub-component).
+      → Pattern : etat initial = composants discrets.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_kelim_atomiques_initiaux_za, role: 7_kelim_atomiques_initiaux_de_za}
+      - {id: chesed_de_chesed_etc, role: chaque_keli_un_seul_element_homogene}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture initiale ZA : 7 kelim atomiques. Etat de depart de l'evolution."
+
+  - id: "EC-H2S10-093"
+    source_he: "ובעיבור נתוספו נה\"י בכל א' שבכל כלי וכלי שבהם שבז' כלים אח\"כ ביניקה נתוספו חג\"ת בכל כלי מהם מן הז' כלים הראשונים ואח\"כ במוחין נתוספו ג\"ר בכל א' מז\"ת"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      EVOLUTION par STADES :
+      IBUR (gestation) : ajout NHY (Netzach-Hod-Yesod) dans CHAQUE keli des 7.
+      YENIKAH (allaitement) : ajout CGT (Chesed-Gevurah-Tiferet) dans chaque keli.
+      MOHIN (intelligence) : ajout GR (G' Rishonot = KHB) dans chacun des ZT (7 sefirot).
+      → Architecture developpementale embryologique.
+      cf. EC-H2S10-181-182 (perek 04 Shevirat) sur stages developpementaux.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_ajout_nhy, role: ibur_ajout_nhy_chaque_keli}
+      - {id: yenikah_ajout_cgt, role: yenikah_ajout_cgt_chaque_keli}
+      - {id: mohin_ajout_gr_dans_zt, role: mohin_ajout_gr_dans_zt}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture developpementale en 3 stades. cf. EC-H2S9-181 (perek 04 Shevirat)."
+
+  - id: "EC-H2S10-094"
+    source_he: "ועוד נתוסף גידול אחר והם ג' כלים ראשונים כל א' כלול מי' וכל זה נעשה בגדלות האמיתי"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      GADLUT (croissance vraie) : ajout de 3 KELIM PREMIERS (KHB),
+      chacun INCLUS de 10 sub-kelim.
+      "Tout cela se fait dans le GADLUT EMITI (croissance veritable)".
+      → Architecture finale : 10 kelim x 10 = 100 sub-kelim post-Gadlut.
+      → Pattern : developpement final = ajout des 3 GR completement structures.
+    type: axiome_explicite
+    concepts:
+      - {id: gadlut_emiti_ajout_3_gr, role: gadlut_emiti_ajout_3_kelim_gr}
+      - {id: 3_gr_chacun_kollul_de_10, role: 3_gr_chacun_compose_de_10}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Stade final : Gadlut emiti = 100 sub-kelim. Architecture aboutie."
+
+  # ─── BLOC G : STRUCTURE ACHOR/EMTZA/PANIM DES KELIM ───
+
+  - id: "EC-H2S10-095"
+    source_he: "והנה ג' כלים הראשונים יש בהם אחור ואמצע ופנים ובג' כלים האצעים ג\"כ ג' לבושים וכן ג' כלים התחתונים ג\"כ ג' לבושים"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      Structure interne TRIPARTITE des kelim :
+      3 KELIM PREMIERS (KHB) ont chacun 3 LEVUSHIM : ACHOR, EMTZA, PANIM.
+      3 KELIM MEDIANS (CGT) ont chacun 3 LEVUSHIM idem.
+      3 KELIM INFERIEURS (NHY) ont chacun 3 LEVUSHIM idem.
+      → Architecture sub-fractale : chaque keli a 3 couches (Achor/Emtza/Panim).
+      → Pattern fractal : 9 kelim x 3 levushim = 27 sub-couches per partzuf.
+    type: axiome_explicite
+    concepts:
+      - {id: achor_emtza_panim_per_keli, role: achor_emtza_panim_per_keli}
+      - {id: 9_kelim_x_3_levushim, role: 9_kelim_3_levushim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] core/sefirot.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture interne tripartite : Achor/Emtza/Panim per keli. Pattern fractal."
+
+  - id: "EC-H2S10-096"
+    source_he: "ונמצא כי בעיבור נעשה כלים דאחוריים לבד בג' תחתונים דנה\"י כל כלי כלול מנה\"י ומלכות שבו כי קודם העיבור לא היו רק ג' כלים דאחור זה מנצח לבד וזה מהוד לבד וזה מיסוד לבד"
+    source_ref: "Heikhal 2, Sha'ar 3:5"
+    assertion: |
+      Pendant l'IBUR : se font seulement les KELIM d'ACHORAIM dans les 3 inferieurs (NHY).
+      Chaque keli COMPOSE de NHY + Malkhut en lui.
+      AVANT l'IBUR : il n'y avait que 3 KELIM d'ACHOR (Netzach seul, Hod seul, Yesod seul).
+      → Architecture progressive : pendant Ibur, on ajoute NHY+M dans les achoraim.
+      → Pattern : composition progressive des kelim par addition d'elements.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_kelim_achoraim_nhy, role: ibur_kelim_achoraim_dans_nhy}
+      - {id: 3_kelim_achor_initiaux, role: 3_kelim_achor_initiaux_isoles}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Detail Ibur : ajout NHY+M dans achoraim. Architecture progressive."
+
+  - id: "EC-H2S10-097"
+    source_he: "וביניקה נתוסף כלי דגבורה ות\"ת בכלי חסד וכלי גבורה נתוספו כלי חסד ות\"ת ובכלי ת\"ת נתוספו כלי ח\"ג ובכלי הנה\"י חג\"ת בכל א' מהם הרי הם ו' כלים כל א' כלול מז\"ת ובגדלות נתוספו ג\"ר בכל כלי וכלי מז' כלים תחתונים ונתוספו לגמרי עוד ג' כלים ראשונים כל אחד כלול מי' כלים גמורים"
+    source_ref: "Heikhal 2, Sha'ar 3:5 — conclusion du sha'ar"
+    assertion: |
+      Pendant la YENIKAH :
+      Keli Chesed → ajout Gevurah + Tiferet (= Chesed-Gevurah-Tiferet).
+      Keli Gevurah → ajout Chesed + Tiferet.
+      Keli Tiferet → ajout Chesed + Gevurah (= ChG dans Tiferet).
+      Kelim NHY → ajout CGT dans chacun.
+      RESULTAT : 6 KELIM (CGT+NHY), chacun KOLLEL de Z"T (7 sefirot).
+      Pendant le GADLUT : ajout GR dans chaque keli des 7 inferieurs.
+      Plus 3 KELIM PREMIERS supplementaires, chacun KOLLEL de 10 KELIM GEMURIM.
+      → Architecture finale : developpement complet par accretion graduelle.
+      → CONCLUSION du Sha'ar Ha-Tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: yenikah_cgt_dans_chaque_keli, role: yenikah_ajout_cgt_dans_chaque_keli}
+      - {id: 6_kelim_kolulim_zt, role: 6_kelim_chacun_compose_de_zt}
+      - {id: gadlut_ajout_gr_dans_zt, role: gadlut_ajout_gr_dans_chaque_zt}
+      - {id: 3_kelim_gr_complets_finaux, role: 3_kelim_gr_complets_finaux}
+      - {id: cloture_sha_ar_ha_tikkun, role: cloture_du_sha_ar_ha_tikkun}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Phrase conclusive : developpement complet. Architecture finale = 10 kelim x 10 sub-kelim. Cloture du sha'ar."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S10-044"
+    type: causal
+    from: atzmut_shalem_kelim_ketanim
+    to: cause_mort_disequilibre
+    nature: "Essence forte + kelim petits = disequilibre → cause des morts (shevirah)"
+    assertions_source: ["EC-H2S10-078"]
+
+  - id: "REL-H2S10-045"
+    type: dualité_structurelle
+    from: pre_tikkun_zegz_isolees
+    to: tikkun_par_levush_et_extension
+    nature: "Pre-Tikkun : kelim isoles ; Post-Tikkun : levush + extension = elargissement infini"
+    assertions_source: ["EC-H2S10-081", "EC-H2S10-082"]
+
+  - id: "REL-H2S10-046"
+    type: contenance
+    from: kelim_atik_dans_kelim_aa
+    to: nukvah_englobe_tous_kelim
+    nature: "Cascade levush : Atik dans A\"A dans Abba dans Imma dans ZA dans Nukvah"
+    assertions_source: ["EC-H2S10-083", "EC-H2S10-084", "EC-H2S10-085", "EC-H2S10-087", "EC-H2S10-088"]
+
+  - id: "REL-H2S10-047"
+    type: contenance
+    from: 10_kelim_gemurim_per_partzuf
+    to: density_augmentee_sans_agrandissement_externe
+    nature: "10 x 10 = 100 sub-kelim per partzuf, taille externe inchangee"
+    assertions_source: ["EC-H2S10-087", "EC-H2S10-089"]
+
+  - id: "REL-H2S10-048"
+    type: séquentiel
+    from: cascade_tikkun_atik_a_a_avi_zon_nukvah
+    to: chaque_niveau_couvre_son_role_dans_inferieurs
+    nature: "Cascade hierarchique : chaque niveau couvre sa fonction dans tous les sub-entites"
+    assertions_source: ["EC-H2S10-091"]
+
+  - id: "REL-H2S10-049"
+    type: séquentiel
+    from: 7_kelim_atomiques_initiaux_za
+    to: 3_kelim_gr_complets_finaux
+    via: [ibur_ajout_nhy, yenikah_ajout_cgt, mohin_ajout_gr_dans_zt, gadlut_emiti_ajout_3_gr]
+    nature: "Sequence ZA : 7 atomiques → +NHY (Ibur) → +CGT (Yenikah) → +GR (Mohin) → +3 GR complets (Gadlut)"
+    assertions_source: ["EC-H2S10-092", "EC-H2S10-093", "EC-H2S10-094", "EC-H2S10-097"]
+
+  - id: "REL-H2S10-050"
+    type: contenance
+    from: achor_emtza_panim_per_keli
+    to: 9_kelim_x_3_levushim
+    nature: "Architecture sub-fractale : chaque keli a 3 levushim Achor/Emtza/Panim"
+    assertions_source: ["EC-H2S10-095"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S10-020"
+    nom: "Principe du Disequilibre Initial (Cause Operationnelle de la Shevirah)"
+    source_assertions: ["EC-H2S10-078", "EC-H2S10-079", "EC-H2S10-080"]
+    formalisation: |
+      DIAGNOSTIC central de la Shevirah :
+      Etat initial : ATZMUT SHALEM (essence complete) + KELIM KETANIM (vaisseaux petits)
+      Disequilibre : essence trop forte pour le contenant.
+      Donc kelim MEURENT (cassent).
+      Architecture initiale concrete :
+        Atik : 1 keli (demi Keter d'Atik)
+        A"A : 1 keli (demi inferieur Keter)
+        Abba : 1 keli (Hokhmah seule)
+        Imma : 1 keli (Binah seule)
+        ZA : 7 kelim (chacun = 1 sefirah seule)
+        Nukvah : 1 keli (Malkhut)
+      → Pattern : architecture compressee = fragile.
+      Resolution : agrandir kelim (Tikkun par dilution).
+    applications_ia:
+      - "Diagnostic : disequilibre essence/contenant = cause operationnelle de panne"
+      - "[PLANNED] core/shevirah.py : modeliser disequilibre comme metric"
+      - "Architecture : eviter compression initiale ; preferer extension graduelle"
+      - "Pattern : 1 keli per sefirah = configuration fragile"
+      - "Diagnostic : tracer ratio essence/contenant per partzuf"
+    questions_ouvertes:
+      - "Le disequilibre initial etait-il intentionnel (pour le Tikkun) ou accidentel ?"
+      - "Quelle est la mesure du 'ratio fragile' ?"
+      - "Tout systeme initial est-il en disequilibre ?"
+
+  - id: "PG-H2S10-021"
+    nom: "Principe de l'Architecture Finale 100x (10 Kelim x 10 Sub-Kelim)"
+    source_assertions: ["EC-H2S10-082", "EC-H2S10-087", "EC-H2S10-089"]
+    formalisation: |
+      ARCHITECTURE FINALE post-Tikkun :
+      Chaque PARTZUF = 10 KELIM GEMURIM.
+      Chaque KELI = compose de 10 sub-KELIM.
+      → 10 x 10 = 100 sub-kelim per partzuf.
+      EXTENSION PAR LEVUSH : tous les partzufim sont REVETUS l'un dans l'autre.
+        Atik dans A"A dans Abba dans Imma dans ZA dans Nukvah.
+      RESULTAT EXTERIEUR :
+        SHIUR KOMAH (taille externe) = INCHANGEE
+        DENSITE INTERNE = AGRANDIE LE-EIN KETZ (sans fin)
+      → Architecture cle : densite interne ≠ taille externe.
+      → Pattern : compression utile par emboitement.
+    applications_ia:
+      - "Architecture cle : densite vs taille externe (pas equivalents)"
+      - "[PLANNED] core/sefirot.py : 10x10 sub-kelim per partzuf"
+      - "Pattern : levush = mecanisme de compression utile"
+      - "Diagnostic : tracer la densite interne sans focusser sur la taille"
+      - "olamot.py + partzufim/* : architecture finale 100x per partzuf"
+    questions_ouvertes:
+      - "La fractalite continue-t-elle au-dela de 10x10 (1000 sub-sub-kelim) ?"
+      - "Pourquoi 10 et pas 9 ou 11 ?"
+      - "Comment formaliser computationnellement l'extension le-ein ketz ?"
+
+  - id: "PG-H2S10-022"
+    nom: "Principe de l'Evolution Embryologique (Ibur-Yenikah-Mohin-Gadlut)"
+    source_assertions: ["EC-H2S10-092", "EC-H2S10-093", "EC-H2S10-094", "EC-H2S10-097"]
+    formalisation: |
+      Architecture DEVELOPPEMENTALE de ZA :
+      ETAT INITIAL : 7 kelim atomiques (chesed-de-chesed, etc.)
+      IBUR (gestation) : ajout NHY + Malkhut dans chaque keli des 3 inferieurs
+        = kelim achoraim dans NHY
+      YENIKAH (allaitement) : ajout CGT dans chaque keli
+        Keli Chesed += Gevurah, Tiferet
+        Keli Gevurah += Chesed, Tiferet
+        Keli Tiferet += ChG
+        Kelim NHY += CGT chacun
+        → 6 kelim, chacun kollel de Z"T
+      MOHIN (intelligence) : ajout GR (KHB) dans chacun des 7 inferieurs
+      GADLUT (croissance vraie) : ajout 3 KELIM PREMIERS, chacun kollel de 10
+      → Architecture cumulative : composants ajoutes par stade.
+      → Pattern embryologique : evolution par accretion graduelle.
+    applications_ia:
+      - "Pattern de developpement : 4 stades successifs (Ibur/Yenikah/Mohin/Gadlut)"
+      - "[PLANNED] tikkun/development.py : implementer les 4 stades"
+      - "Architecture : un sub-system passe par stages embryologiques avant maturite"
+      - "Diagnostic : identifier le stade developpemental courant"
+      - "Pattern : capacites des kelim augmentent par addition graduelle"
+    questions_ouvertes:
+      - "Les 4 stades sont-ils universels ou specifiques a ZA ?"
+      - "Peut-on accelerer ou ralentir le developpement ?"
+      - "Que se passe-t-il si un stade est avorte ?"
+
+  - id: "PG-H2S10-023"
+    nom: "Principe Achor/Emtza/Panim (Architecture Tripartite Per Keli)"
+    source_assertions: ["EC-H2S10-095", "EC-H2S10-096"]
+    formalisation: |
+      Architecture TRIPARTITE INTERNE de chaque keli :
+      ACHOR (dos, exterieur)
+      EMTZA (centre, intermediaire)
+      PANIM (face, interieur)
+      9 kelim (KHB-CGT-NHY) × 3 levushim = 27 sub-couches per partzuf.
+      Sequence developpementale :
+        IBUR : seulement les LEVUSHIM ACHORAIM se forment
+        YENIKAH : ajout des LEVUSHIM EMTZA
+        MOHIN/GADLUT : ajout des LEVUSHIM PANIM
+      → Architecture cle : profondeur developpementale = couches successives Achor→Panim.
+      → Pattern : interiorite atteinte par couches externes d'abord.
+    applications_ia:
+      - "Architecture : 3 couches interiorisantes (Achor/Emtza/Panim)"
+      - "[PLANNED] core/sefirot.py + tikkun/ : 9 kelim x 3 levushim"
+      - "Pattern : developpement par couches du dehors vers le dedans"
+      - "Diagnostic : tracer la couche actuelle (Achor/Emtza/Panim) developpee"
+      - "Architecture : l'interiorite est l'aboutissement, pas le point de depart"
+    questions_ouvertes:
+      - "Y a-t-il des couches au-dela de Panim (sub-Panim) ?"
+      - "Le developpement est-il toujours sequentiel Achor→Panim ?"
+      - "Peut-on regresser de Panim a Achor (deconstruction) ?"

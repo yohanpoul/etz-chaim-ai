@@ -1,0 +1,690 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 1b — Sequence Gevurah → Malkhut, Yesod=Kol, Malkhut=Kalah,
+#             question Malkhut AVI Ila'in vs Tevunah
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §1 — Part B :
+#   - Bloc K : Gevurah (HG dans guf Imma, mort, Achoraim Imma tombent, Imma retourne)
+#   - Bloc L : Tiferet (1/3 sup → Yesod AVI, Yesod=Kol, tziyur, 2/3 inf → fin Achoraim AVI Ila'in,
+#                       Mort Tiferet → 3 melakhim dans Netzach, HC"G du rosh YS"T au guf)
+#   - Bloc M : Netzach (HC dans guf YS, mort, Achoraim YS, retournement)
+#   - Bloc N : Hod (HG dans guf Tevunah, mort, Kelim NH en Beriah, NH=palgei gufa, YS"T AhB)
+#   - Bloc O : Yesod (kallut HG dans Yesod Tevunah, HC dans Yesod YS)
+#   - Bloc P : Malkhut (seule, kallut HC/HG dans Malkhut YS et Tevunah, Malkhut=Kalah)
+#   - Bloc Q : Question pourquoi Malkhut d'AVI Ila'in pas inclue
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.1 (seconde moitie)
+# IDs : EC-H2S9-033 → EC-H2S9-051
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 1
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Seconde moitie du perek 1. Sequence detaillee de la Shevirah des 5 melakhim restants (Gevurah, Tiferet, Netzach, Hod, Yesod, Malkhut). Les 4 Partzufim AVI/YST emboites. Yesod=Kol, Malkhut=Kalah."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC K : SEQUENCE GEVURAH ───
+
+  - id: "EC-H2S9-033"
+    source_he: "ואח\"כ מלך מלך הג' שהוא גבורה והמשיך התפשטות הה\"ג באמא עלאה (בגופא) וכשמת ירד לבריאה והד' מלכים (אורות) ירדו בכלי הד' שהוא הת\"ת"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Ensuite a regne le 3eme MELEKH = GEVURAH.
+      → il a AMENE l'EXPANSION (hitpashtut) des 5 HG dans IMMA ILA'AH (BA-GUFA = dans le corps).
+      Quand il EST MORT → il est descendu en BERIAH.
+      Et les 4 MELAKHIM (variante Nusah Aher : "OROT" = lumieres)
+      sont descendus dans le KELI 4 = TIFERET.
+      → Pattern : 4 lumieres residuelles migrent vers le keli suivant (cf. EC-H2S9-027).
+      → Specialisation symetrique : Gevurah → guf Imma (comme Chesed → guf Abba).
+    type: axiome_explicite
+    concepts:
+      - {id: gevurah_melekh_shlishi, role: gevurah_troisieme_roi}
+      - {id: hg_dans_guf_imma, role: hg_dans_guf_imma}
+      - {id: gevurah_met_yarad_beriah, role: gevurah_mort_descend_beriah}
+      - {id: arbaa_orot_dans_tiferet, role: quatre_lumieres_dans_tiferet}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] core/shevirah.py", "olamot.py"]
+      tables: ["shefa_flows", "olamot_config"]
+      partzufim: ["imma"]
+      relevance: "Symetrie : Gevurah → guf Imma comme Chesed → guf Abba. Pattern de migration repete."
+
+  - id: "EC-H2S9-034"
+    source_he: "ואז נפל התפשטות הגבורות ביסוד דאמא (נ\"א ה\"ג דאמא עלאה שהיו בגופה) ונפלו גם האחוריים שלה למטה ואז ג\"כ אמא החזירה אחוריה והיה אחור דאמא באחור דאבא"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Alors l'EXPANSION des GEVUROT est tombee dans le YESOD d'IMMA.
+      Variante (Nusah Aher) : "ha-HG d'IMMA ILA'AH she-hayu BE-GUFAH"
+      (les HG d'Imma Ila'ah qui etaient dans son corps).
+      → Ses ACHORAIM sont AUSSI tombes en bas.
+      Alors AUSSI Imma a RETOURNE ses Achoraim →
+      ACHOR d'IMMA sur ACHOR d'ABBA.
+      → Bascule symetrique completee : maintenant les DEUX (Abba ET Imma) sont AhB.
+      Etat final de la phase Gevurah : AVI Ila'in en AhB authentique.
+    type: axiome_explicite
+    concepts:
+      - {id: gevurot_dans_yesod_imma, role: gevurot_dans_yesod_imma}
+      - {id: nefilat_achoraim_imma, role: chute_des_achoraim_imma}
+      - {id: imma_retourne_achoraim, role: imma_retourne_son_dos}
+      - {id: achor_imma_be_achor_abba, role: achor_imma_sur_achor_abba}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Bascule complete d'AVI Ila'in en AhB authentique. Apres la phase Gevurah, AVI Ila'in entierement dos-a-dos."
+
+  # ─── BLOC L : SEQUENCE TIFERET ───
+
+  - id: "EC-H2S9-035"
+    source_he: "ואח\"כ מלך המלך הד' והוא ת\"ת ובהגיע אור אל שליש עליון שלו שהוא עד החזה אז המשיך בחי' כללות ה\"ח ביסוד אבא וה\"ג ביסוד אמא"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Ensuite a regne le 4eme MELEKH = TIFERET.
+      Quand l'OHR (lumiere) est arrive au SHLISH ELYON SHELO (1/3 superieur)
+      = jusqu'au HAZEH (poitrine) →
+      il a AMENE l'aspect KLALUT (synthese collective) :
+      KALLUT HC dans le YESOD d'ABBA
+      KALLUT HG dans le YESOD d'IMMA.
+      → KLALUT = forme collective/inclusive (par opposition aux 5 individuels).
+      → Localisation : 1/3 superieur du Tiferet jusqu'au HAZEH (poitrine).
+    type: axiome_explicite
+    concepts:
+      - {id: tiferet_melekh_revii, role: tiferet_quatrieme_roi}
+      - {id: shlish_elyon_tiferet, role: tiers_superieur_du_tiferet}
+      - {id: ad_ha_chazeh, role: jusqu_au_hazeh}
+      - {id: kallut_hc_yesod_abba, role: synthese_hc_dans_yesod_abba}
+      - {id: kallut_hg_yesod_imma, role: synthese_hg_dans_yesod_imma}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["shefa_flows"]
+      partzufim: ["abba", "imma"]
+      relevance: "Topologie : 1/3 superieur Tiferet = jusqu'au HAZEH = niveau du Yesod-fonctionnel d'AVI."
+
+  - id: "EC-H2S9-036"
+    source_he: "כנודע כי לכן היסוד נקרא כל שכולל ה\"ח וה\"ג"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Comme connu : c'est POURQUOI le YESOD est appele KOL (tout/totalite).
+      RAISON : il INCLUT (kolel) les HC et HG.
+      → Le YESOD = synthese unificatrice des 2 polarites masculines (HC) et feminines (HG).
+      → Etymologie operationnelle : KOL = somme des composants.
+      cf. EC-H2S8 sur Yesod=Kulo Panim et Yesod=Kol.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_nikra_kol, role: yesod_appele_tout}
+      - {id: yesod_kolel_hcg, role: yesod_inclut_hc_et_hg}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: []
+      partzufim: []
+      relevance: "Definition operationnelle du Yesod = KOL = synthese HC+HG. cf. EC-H2S8 (Yesod kulo panim et kol)."
+
+  - id: "EC-H2S9-037"
+    source_he: "וכבר בארנו זה הציור כי דעת כולל רישא דאו\"א והחסד הוא גופא דאבא וגבורה הוא גופא דאמא ושליש ת\"ת עליון הוא היסוד דאו\"א"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      RECAPITULATION du TZIYUR (representation) :
+      DAAT (1er melekh) → inclut le ROSH d'AVI
+      CHESED (2eme) → est le GUFA d'ABBA
+      GEVURAH (3eme) → est le GUFA d'IMMA
+      SHLISH TIFERET ELYON (1/3 superieur du 4eme) → est le YESOD d'AVI
+      → Mapping precis : chaque melekh (en couches) correspond a une partie de la
+      structure d'AVI.
+      → Topologie 4-en-1 : les 4 premiers melakhim couvrent ROSH + 2 GUF + YESOD d'AVI.
+    type: axiome_explicite
+    concepts:
+      - {id: tziyur_melakhim_avi, role: representation_melakhim_avi}
+      - {id: daat_rosh_avi, role: daat_est_rosh_d_avi}
+      - {id: chesed_gufa_abba, role: chesed_est_guf_abba}
+      - {id: gevurah_gufa_imma, role: gevurah_est_guf_imma}
+      - {id: shlish_tiferet_yesod_avi, role: tiers_tiferet_yesod_avi}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Cartographie precise melakhim → topologie d'AVI. Structure operationnelle pour modeliser la cascade."
+
+  - id: "EC-H2S9-038"
+    source_he: "והנה כאשר הגיע האור לב\"ש תחתונים דת\"ת אז (נגמרו כל אחורי או\"א עילאין לירד והמשיך החו\"ג ברישייהו דיש\"ס ותבונה כי שם הוא מקום ראשם יחד וכשמת ירדו ג' מלכים בכלי הה' שהוא נצח)"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Quand l'OHR est arrive aux 2/3 INFERIEURS du Tiferet (B"SH TAHTONIM = 2 tiers inferieurs) :
+      Note : tout ce passage est entre parentheses dans le texte original (gloss du scribe ou du Rav Chaim).
+      → TOUS les ACHORAIM d'AVI ILA'IN se sont termines de descendre.
+      → Il a AMENE les HC"G dans les ROSHEI (tetes) de YS et TEVUNAH,
+      car LA est leur LIEU DE TETE COMMUN (mekom rosham yahad).
+      Quand le Tiferet EST MORT → 3 MELAKHIM (les restes) sont descendus
+      dans le KELI HE (5eme) = NETZACH.
+      → Transition Phase 1 (AVI Ila'in) → Phase 2 (YS"T).
+    type: axiome_explicite
+    concepts:
+      - {id: bsh_tachtonim_tiferet, role: deux_tiers_inferieurs_tiferet}
+      - {id: keilut_achoraim_avi_ilain, role: fin_complete_des_achoraim_avi_ilain}
+      - {id: hcg_dans_rosh_yst, role: hcg_dans_rosh_yst}
+      - {id: mekom_rosh_yst_yahad, role: lieu_de_tete_yst_commun}
+      - {id: shlosha_melakhim_dans_netzach, role: trois_melakhim_dans_netzach}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisrael_saba.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["shefa_flows", "partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Pivot crucial : 2/3 inf Tiferet → fin Phase 1 (AVI Ila'in complets en AhB) + debut Phase 2 (YS\"T affecte). cf. EC-H2S9-008."
+
+  - id: "EC-H2S9-039"
+    source_he: "ואז ירדו החסדים מרישא דיש\"ס וגבורות מרישא דתבונה עד למטה בגופא דילהון וגם ישסו\"ת נגרע מהם הבחי' דהסתכלות עיניהן זה בזה ע\"ד הנ\"ל באו\"א עלאין"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Alors les HC sont descendus du ROSH de YS,
+      et les HG du ROSH de TEVUNAH,
+      jusqu'en BAS dans LEUR GUFA (corps).
+      Et aussi YS"T (YISRAEL SABA et TEVUNAH) ont PERDU (nigra mehem)
+      l'aspect HISTAKLUT EINAIM ZEH BA-ZEH (regard mutuel l'un dans l'autre)
+      sur le mode (al derekh) deja explique pour AVI ILA'IN.
+      → Pattern repete : meme mecanisme que pour AVI (cf. EC-H2S9-024-025).
+      Phase 2 reproduit Phase 1 a l'echelle inferieure.
+    type: axiome_explicite
+    concepts:
+      - {id: hc_du_rosh_ys, role: hc_descendent_du_rosh_ys}
+      - {id: hg_du_rosh_tevunah, role: hg_descendent_du_rosh_tevunah}
+      - {id: yst_perdent_histaklut, role: yst_perdent_le_regard_mutuel}
+    mapping:
+      modules: ["[PLANNED] partzufim/yisrael_saba.py", "[PLANNED] partzufim/tevunah.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "Phase 2 = mecanisme isomorphe a Phase 1 mais sur YS\"T. cf. EC-H2S9-024-025 pour le pattern Histaklut Einaim."
+
+  # ─── BLOC M : SEQUENCE NETZACH ───
+
+  - id: "EC-H2S9-040"
+    source_he: "ואח\"כ מלך הנצח והמשיך ה\"ח בגופא דיש\"ס וכשמת ירדו שאר מלכים בהוד וירדו האחוריים דיש\"ס והחזיר אחוריו נגד פני תבונה"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Ensuite a regne le NETZACH (5eme melekh) :
+      → il a AMENE les HC dans le GUFA de YS.
+      Quand il EST MORT :
+      → les autres MELAKHIM sont descendus dans le HOD.
+      → les ACHORAIM de YS sont descendus.
+      → YS a retourne ses ACHORAIM contre la FACE de TEVUNAH.
+      → Pattern Achor be-Panim repete pour YS-Tevunah.
+      → Symetrie avec Chesed/Abba (EC-H2S9-029).
+    type: axiome_explicite
+    concepts:
+      - {id: netzach_melekh_chamishi, role: netzach_cinquieme_roi}
+      - {id: hc_dans_guf_ys, role: hc_dans_guf_ys}
+      - {id: nefilat_achoraim_ys, role: chute_des_achoraim_ys}
+      - {id: ys_retourne_contre_tevunah, role: ys_retourne_son_dos_contre_tevunah}
+    mapping:
+      modules: ["[PLANNED] partzufim/yisrael_saba.py", "[PLANNED] partzufim/tevunah.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Phase 2 reproduit le pattern : Netzach pour YS comme Chesed pour Abba. cf. EC-H2S9-029 (Achor be-Panim)."
+
+  # ─── BLOC N : SEQUENCE HOD ───
+
+  - id: "EC-H2S9-041"
+    source_he: "אח\"כ מלך ההוד והמשיך הה\"ג בגופא דתבונה וכשמת ירדו ב' מלכים ביסוד"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Ensuite a regne le HOD (6eme melekh).
+      → il a AMENE les HG dans le GUFA de TEVUNAH.
+      Quand il EST MORT → les 2 melakhim restants sont descendus dans le YESOD.
+      → Pattern symetrique a Netzach (HC dans guf YS) → Hod (HG dans guf Tevunah).
+    type: axiome_explicite
+    concepts:
+      - {id: hod_melekh_shishi, role: hod_sixieme_roi}
+      - {id: hg_dans_guf_tevunah, role: hg_dans_guf_tevunah}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Phase 2 reproduit Netzach/Hod en miroir : HC pour le guf male YS, HG pour le guf femelle Tevunah."
+
+  - id: "EC-H2S9-042"
+    source_he: "ואז הכלים דנ\"ה ירדו אל הבריאה כי שניהן מלך א' בלבד כנ\"ל דתרוייהו אינן רק פלגי דגופא ואע\"פ שמלכו זה אחר זה עכ\"ז שניהן מלך א' בלבד נקרא"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Alors les KELIM de NETZACH-HOD sont descendus en BERIAH ENSEMBLE.
+      RAISON : les deux ne sont qu'UN SEUL MELEKH (melekh ehad bilvad).
+      Citation arameenne : "TROUYHU INAN RAQ PALGEI DE-GUFA"
+      (ils ne sont que MOITIES du corps — jambes paires).
+      Bien qu'ils aient regne L'UN APRES L'AUTRE → les deux ne sont
+      appeles qu'UN SEUL MELEKH.
+      → Distinction critique : NH = palgei gufa, descendent ensemble.
+    type: axiome_explicite
+    concepts:
+      - {id: nh_palgei_gufa, role: netzach_hod_moities_du_corps}
+      - {id: nh_melekh_ehad, role: nh_un_seul_melekh}
+      - {id: kelim_nh_dans_beriah_ensemble, role: kelim_nh_descendent_ensemble}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Exception au pattern individuel : NH = un seul melekh structurellement paire."
+
+  - id: "EC-H2S9-043"
+    source_he: "ואז ירדו גם אחוריים דתבונה וחזרו יש\"ס ותבונה אב\"א"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Alors les ACHORAIM de TEVUNAH sont AUSSI descendus.
+      → YS et TEVUNAH retournent en AhB.
+      → Bascule complete pour YS"T (analogue a la bascule AVI Ila'in apres Gevurah, EC-H2S9-034).
+      → Apres la phase Hod, YS"T sont entierement dos-a-dos.
+    type: axiome_explicite
+    concepts:
+      - {id: nefilat_achoraim_tevunah, role: chute_achoraim_tevunah}
+      - {id: yst_chazru_achor_beachor, role: yst_retournent_dos_a_dos}
+    mapping:
+      modules: ["[PLANNED] partzufim/yisrael_saba.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Bascule YS\"T → AhB complete. Symetrie avec EC-H2S9-034 (AVI Ila'in apres Gevurah)."
+
+  # ─── BLOC O : SEQUENCE YESOD ───
+
+  - id: "EC-H2S9-044"
+    source_he: "אח\"כ מלך המלך ו' שהוא יסוד והמשיך כללות ה\"ג ביסוד תבונה וכללות ה\"ח ביסוד יש\"ס וכשמת ירדו גם בחי' אלו"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Ensuite a regne le 6eme MELEKH = YESOD.
+      Note de numerotation : le texte dit "le 6eme" car NH compte comme un seul (cf. EC-H2S9-041).
+      → il a AMENE le KALLUT HG dans le YESOD de TEVUNAH
+      → et le KALLUT HC dans le YESOD de YS.
+      Quand il EST MORT → ces aspects sont AUSSI descendus.
+      → Pattern parallel a Tiferet (EC-H2S9-035) mais a l'echelle YS"T.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_melekh_shishi_renumere, role: yesod_sixieme_par_renumerotation}
+      - {id: kallut_hg_yesod_tevunah, role: kallut_hg_dans_yesod_tevunah}
+      - {id: kallut_hc_yesod_ys, role: kallut_hc_dans_yesod_ys}
+    mapping:
+      modules: ["partzufim/zivvug.py", "[PLANNED] partzufim/yisrael_saba.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["shefa_flows"]
+      partzufim: []
+      relevance: "Phase 2 reproduit la structure 1/3 sup Tiferet (EC-H2S9-035) mais a l'echelle YS\"T."
+
+  # ─── BLOC P : SEQUENCE MALKHUT ───
+
+  - id: "EC-H2S9-045"
+    source_he: "אח\"כ מלך מלך הז' שהיא המלכות בכלי שלה היא לבדה"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Ensuite a regne le 7eme MELEKH = MALKHUT.
+      Dans son KELI, ELLE SEULE (hi le-vadah) — sans aucun melekh restant en elle.
+      → Difference : les melakhim precedents contenaient les "restes" des autres ;
+      Malkhut est SEULE car aucun n'est apres elle.
+      → Configuration de fin de cascade.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_melekh_shevii, role: malkhut_septieme_roi}
+      - {id: malkhut_le_vadah, role: malkhut_seule_dans_son_keli}
+    mapping:
+      modules: ["partzufim/nukva.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Configuration finale : Malkhut seule, derniere de la cascade. Pas de melekh suivant."
+
+  - id: "EC-H2S9-046"
+    source_he: "ואז המשיכה כללות ה\"ח במלכות דישראל סבא וכללות ה\"ג במלכות תבונה כי גם המלכות יש לה כללות על דרך הנ\"ל ביסוד כי (לכן) גם היא נקרא כלה כמו שהיסוד נקרא כל"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Alors elle (Malkhut) a AMENE :
+      → KALLUT HC dans la MALKHUT de YS
+      → KALLUT HG dans la MALKHUT de TEVUNAH.
+      Car la Malkhut a un KALLUT comme le Yesod.
+      Variante : "lakhen" (c'est pourquoi) — elle est appelee KALAH (epouse)
+      comme le YESOD est appele KOL (tout).
+      → Equation : MALKHUT=KALAH (receptive) / YESOD=KOL (inclusif). Paire conjugale.
+    type: axiome_explicite
+    concepts:
+      - {id: kallut_hc_malkhut_ys, role: kallut_hc_dans_malkhut_ys}
+      - {id: kallut_hg_malkhut_tevunah, role: kallut_hg_dans_malkhut_tevunah}
+      - {id: malkhut_nikra_kalah, role: malkhut_appelee_epouse}
+      - {id: kol_kalah_paire, role: yesod_kol_malkhut_kalah_paire}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["nukva"]
+      relevance: "Equation KOL/KALAH : Yesod inclusif vs Malkhut receptive. cf. EC-H2S8 (Malkhut Kalah)."
+
+  - id: "EC-H2S9-047"
+    source_he: "וכשמתה היא אז ירדו כללות ה\"ח וה\"ג ממלכות דיש\"ס וממלכות דתבונה והכלי דמלכות ירד לבריאה גם עתה נגמרו כל אחוריים של ד' פרצופי' דאו\"א ויש\"ס ותבונה ליפול לגמרי"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      Quand ELLE EST MORTE :
+      → les KALLUT HC et HG sont descendus
+      des MALKHUT de YS et de la MALKHUT de TEVUNAH.
+      → le KELI de MALKHUT est descendu en BERIAH.
+      → AUSSI MAINTENANT (gam atah) : tous les ACHORAIM des 4 PARTZUFIM
+      d'AVI et YS"T sont termines de TOMBER COMPLETEMENT (li-pol le-gamri).
+      → Etat final : les 4 Partzufim entierement en AhB, tous Achoraim disparus.
+      → Bilan complet de la Shevirah des 7 Melakhim.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_metah, role: malkhut_morte}
+      - {id: keli_malkhut_dans_beriah, role: keli_malkhut_descend_beriah}
+      - {id: nigmaru_kol_achoraim, role: tous_les_achoraim_termines}
+      - {id: arba_partzufim_kullam_ahb, role: quatre_partzufim_tous_en_ahb}
+    mapping:
+      modules: ["partzufim/nukva.py", "[PLANNED] core/shevirah.py", "olamot.py"]
+      tables: ["olamot_config", "partzufim_states"]
+      partzufim: ["abba", "imma", "nukva"]
+      relevance: "Etat final de la cascade : tous les 4 Partzufim AVI/YS\"T en AhB complet. Point de depart pour le Tikkun."
+
+  # ─── BLOC Q : QUESTION MALKHUT D'AVI ILA'IN ───
+
+  - id: "EC-H2S9-048"
+    source_he: "וא\"ת למה באו\"א לא נכנס בחשבון כללות החו\"ג במלכות דאו\"א עלאין ע\"ד שנכנסו בחשבון המלכות דיש\"ס ותבונה"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      QUESTION (ve-im tomar) :
+      Pourquoi en AVI ILA'IN n'a-t-on PAS COMPTE le KALLUT HC"G
+      dans la MALKHUT d'AVI ILA'IN, comme on l'a fait dans la MALKHUT de YS"T ?
+      → Asymetrie apparente : Phase 2 (YS"T) inclut une etape Malkhut explicite,
+      Phase 1 (AVI Ila'in) ne l'inclut pas.
+      → Question critique pour la coherence du modele.
+    type: axiome_explicite
+    concepts:
+      - {id: question_malkhut_avi_absente, role: question_pourquoi_pas_malkhut_avi}
+      - {id: asymetrie_phase_1_phase_2, role: asymetrie_apparente_avi_yst}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Question soulevant une asymetrie dans le modele : AVI Ila'in n'a pas d'etape Malkhut comparable."
+
+  - id: "EC-H2S9-049"
+    source_he: "וי\"ל כי נודע כי בשליש עליון דת\"ת שם הוא בחי' העטרה שהוא בחי' המלכות והרי היה נכללת ביסוד"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      REPONSE (ve-yesh lomar) : il est CONNU (noda) que dans le SHLISH ELYON
+      du TIFERET = la BEHINAH d'ATARAH (couronne) = la BEHINAH de MALKHUT.
+      → La Malkhut ETAIT DEJA INCLUSE (nikhlelet) dans le YESOD.
+      → Resolution : la Malkhut d'AVI Ila'in n'est pas absente —
+      elle est INCLUSE dans le Yesod (EC-H2S9-035). Pas d'asymetrie reelle.
+      → Topologie : ATARAH (couronne du Yesod) = aspect Malkhut au sommet.
+    type: axiome_explicite
+    concepts:
+      - {id: shlish_elyon_tiferet_atarah, role: tiers_superieur_tiferet_atarah}
+      - {id: atarah_behinat_malkhut, role: atarah_aspect_malkhut}
+      - {id: malkhut_avi_dans_yesod, role: malkhut_avi_incluse_dans_yesod}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Resolution de la question : Malkhut AVI Ila'in incluse dans le Yesod (Atarah = couronne du Yesod). Pas de vraie asymetrie."
+
+  - id: "EC-H2S9-050"
+    source_he: "אבל כאן היא יותר נגלית המלכות דתבונה ממלכות דבינה כי מלכות דתבונה היא ממש מלכות בערך כללות בינה ותבונה יחד בפרצוף א'"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      MAIS ICI, la MALKHUT de TEVUNAH est PLUS REVELEE (yoter niglet)
+      que la MALKHUT de BINAH.
+      RAISON : la MALKHUT de TEVUNAH est VRAIMENT (mamash) une Malkhut
+      par rapport au KALLUT (Binah + Tevunah) ENSEMBLE en UN SEUL PARTZUF.
+      → Distinction : Tevunah = aspect inferieur, sa Malkhut est nettement basse →
+      revelee comme Malkhut authentique.
+      Binah-Tevunah ensemble = un Partzuf, donc sa propre Malkhut est position-relative.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_tevunah_niglet, role: malkhut_tevunah_plus_revelee}
+      - {id: malkhut_tevunah_mamash, role: malkhut_tevunah_authentique}
+      - {id: kallut_binah_tevunah, role: kallut_binah_et_tevunah_ensemble}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Distinction subtile : Malkhut de Tevunah authentique car Tevunah est niveau inferieur du Partzuf compose Binah+Tevunah."
+
+  - id: "EC-H2S9-051"
+    source_he: "אבל המלכות דבינה עלאה היא בחי' גופא של כללות והוא מקום החזה של ת\"ת של כללות הפרצוף יחד דבינה ותבונה כנודע ואינה מלכות ממש"
+    source_ref: "Heikhal 2, Sha'ar 2:1"
+    assertion: |
+      MAIS la MALKHUT de BINAH ILA'AH = aspect du GUFA du KLALUT (composition globale)
+      et c'est le LIEU du HAZEH (poitrine) du TIFERET du KLALUT du PARTZUF
+      Binah-Tevunah ENSEMBLE.
+      → Et elle n'est PAS UNE VRAIE MALKHUT (eino malkhut mamash).
+      → Conclusion : Malkhut Binah Ila'ah = position au HAZEH (= 1/3 sup Tiferet du composite),
+      donc fonctionnellement = Yesod-niveau, donc INCLUSE dans le Yesod (cf. EC-H2S9-049).
+      Resolution complete : pas d'asymetrie, juste positionnement different.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_binah_ilaah_gufa, role: malkhut_binah_ilaah_aspect_guf}
+      - {id: makom_chazeh_tiferet_klalut, role: lieu_du_chazeh_du_tiferet_du_kallut}
+      - {id: einah_malkhut_mamash, role: pas_une_vraie_malkhut}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Topologie : Malkhut de Binah Ila'ah = HAZEH du Tiferet composite = niveau Yesod-fonctionnel. Resolution finale de l'asymetrie apparente."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-020"
+    type: séquentiel
+    from: gevurah_melekh_shlishi
+    to: imma_retourne_achoraim
+    via: [hg_dans_guf_imma, gevurot_dans_yesod_imma, nefilat_achoraim_imma]
+    nature: "Gevurah → HG dans guf Imma → mort → HG dans Yesod Imma → chute Achoraim Imma → retournement"
+    assertions_source: ["EC-H2S9-033", "EC-H2S9-034"]
+
+  - id: "REL-H2S9-021"
+    type: dualité_structurelle
+    from: chesed_gufa_abba
+    to: gevurah_gufa_imma
+    nature: "Symetrie : Chesed = guf Abba (HC) ↔ Gevurah = guf Imma (HG). Polarites complementaires."
+    assertions_source: ["EC-H2S9-026", "EC-H2S9-033", "EC-H2S9-037"]
+
+  - id: "REL-H2S9-022"
+    type: contenance
+    from: yesod_kolel_hcg
+    to: yesod_nikra_kol
+    nature: "Le Yesod est appele KOL parce qu'il INCLUT les HC et HG"
+    assertions_source: ["EC-H2S9-036"]
+
+  - id: "REL-H2S9-023"
+    type: causal
+    from: bsh_tachtonim_tiferet
+    to: keilut_achoraim_avi_ilain
+    nature: "L'arrivee de la lumiere aux 2/3 inferieurs du Tiferet acheve la chute des Achoraim AVI Ila'in"
+    assertions_source: ["EC-H2S9-038"]
+
+  - id: "REL-H2S9-024"
+    type: séquentiel
+    from: keilut_achoraim_avi_ilain
+    to: hcg_dans_rosh_yst
+    nature: "Phase 1 finie (AVI Ila'in) → Phase 2 commence : HCG dans rosh YS\"T"
+    assertions_source: ["EC-H2S9-038"]
+
+  - id: "REL-H2S9-025"
+    type: analogie
+    from: yst_perdent_histaklut
+    to: hc_du_rosh_ys
+    nature: "YS\"T perdent le Histaklut Einaim par le meme mecanisme qu'AVI Ila'in : descente HC\"G du rosh au guf (cf. EC-H2S9-024-025 dans 01a)"
+    assertions_source: ["EC-H2S9-039"]
+
+  - id: "REL-H2S9-026"
+    type: dualité_structurelle
+    from: nh_palgei_gufa
+    to: nh_melekh_ehad
+    nature: "Netzach et Hod = moities du corps (jambes paires) → comptes comme un seul Melekh"
+    assertions_source: ["EC-H2S9-041"]
+
+  - id: "REL-H2S9-027"
+    type: causal
+    from: malkhut_metah
+    to: nigmaru_kol_achoraim
+    nature: "La mort de Malkhut acheve la chute complete des 4 Partzufim AVI/YS\"T en AhB"
+    assertions_source: ["EC-H2S9-047"]
+
+  - id: "REL-H2S9-028"
+    type: dualité_structurelle
+    from: yesod_nikra_kol
+    to: malkhut_nikra_kalah
+    nature: "Paire conjugale : Yesod = KOL (inclusif/synthetiseur) ↔ Malkhut = KALAH (incluse/receptrice)"
+    assertions_source: ["EC-H2S9-036", "EC-H2S9-046"]
+
+  - id: "REL-H2S9-029"
+    type: contenance
+    from: atarah_behinat_malkhut
+    to: malkhut_avi_dans_yesod
+    nature: "L'Atarah du Yesod (1/3 sup Tiferet) = Malkhut d'AVI INCLUSE dans le Yesod"
+    assertions_source: ["EC-H2S9-049"]
+
+  - id: "REL-H2S9-030"
+    type: hiérarchique
+    from: malkhut_tevunah_mamash
+    to: einah_malkhut_mamash
+    nature: "Malkhut Tevunah = vraie Malkhut (relativement basse) ; Malkhut Binah Ila'ah = pas vraie Malkhut (position-Yesod)"
+    assertions_source: ["EC-H2S9-050", "EC-H2S9-051"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-009"
+    nom: "Principe de Symetrie Polaire (Chesed/Gevurah, Abba/Imma)"
+    source_assertions: ["EC-H2S9-026", "EC-H2S9-033", "EC-H2S9-037"]
+    formalisation: |
+      Le systeme presente une SYMETRIE POLAIRE FONDAMENTALE :
+      CHESED (HC) → s'etend dans le GUFA d'ABBA (male)
+      GEVURAH (HG) → s'etend dans le GUFA d'IMMA (femelle)
+      Polarites :
+        Hassadim ↔ Gevurot (lumieres)
+        Abba ↔ Imma (Partzufim)
+        Male ↔ Femelle
+      Le SYSTEME est BIPOLAIRE : chaque polarite a son partenaire.
+      Lors de la Shevirah, les deux polarites tombent EN MIROIR.
+      → La cascade preserve la symetrie : ce qui se brise d'un cote a son
+      equivalent de l'autre cote.
+    applications_ia:
+      - "Architecture bipolaire : chaque module HC a un module HG miroir"
+      - "Pattern : les pannes se propagent symetriquement entre polarites"
+      - "partzufim/abba.py + imma.py : modeliser comme paires conjugales"
+      - "Diagnostic : si une polarite tombe, surveiller l'autre comme symptome miroir"
+      - "Le DissensuEngine peut utiliser cette polarite (HC=expansion, HG=contraction)"
+    questions_ouvertes:
+      - "La symetrie est-elle parfaite ou y a-t-il des asymetries residuelles ?"
+      - "Peut-on avoir une cascade asymetrique (un cote tombe, l'autre pas) ?"
+      - "Comment representer la 'paire conjugale' dans une architecture distribuee ?"
+
+  - id: "PG-H2S9-010"
+    nom: "Principe des Deux Phases (Topologie 4 Partzufim)"
+    source_assertions: ["EC-H2S9-038", "EC-H2S9-039", "EC-H2S9-043", "EC-H2S9-047"]
+    formalisation: |
+      La cascade de Shevirah se decompose en DEUX PHASES distinctes :
+      PHASE 1 (Daat → 1/3 Tiferet) : les Achoraim d'AVI ILA'IN tombent
+        Sequence : Daat → Chesed → Gevurah → Tiferet 1/3 sup
+        Aboutissement : AVI Ila'in en AhB complet (apres Gevurah)
+      PHASE 2 (2/3 Tiferet → Malkhut) : les Achoraim de YS"T tombent
+        Sequence : Tiferet 2/3 inf → Netzach → Hod → Yesod → Malkhut
+        Aboutissement : YS"T en AhB complet (apres Hod), puis chute complete
+      → Topologie 4 Partzufim emboites : les 2 superieurs tombent d'abord, puis les 2 inferieurs.
+      Pivot : 2/3 inferieurs du Tiferet = transition Phase 1 → Phase 2.
+    applications_ia:
+      - "Architecture en 4 couches : 2 superieures et 2 inferieures, cascade en 2 phases"
+      - "Pattern : la propagation top-down se fait par paires de couches"
+      - "partzufim/* : modeliser les 4 niveaux AVI Ila'in / YS\"T"
+      - "Detection : la Phase 1 et la Phase 2 sont des etats observables distincts"
+      - "Strategie de mitigation : intervenir entre Phase 1 et Phase 2 (au pivot Tiferet)"
+    questions_ouvertes:
+      - "Le pivot 2/3 Tiferet est-il un parametre ajustable ?"
+      - "Peut-on stopper la cascade au pivot pour eviter la Phase 2 ?"
+      - "Pourquoi 4 Partzufim et pas 3 ou 5 ? Topologie minimale ?"
+
+  - id: "PG-H2S9-011"
+    nom: "Principe de l'Asymetrie Netzach-Hod (Palgei Gufa)"
+    source_assertions: ["EC-H2S9-041"]
+    formalisation: |
+      Exception au pattern individuel : NETZACH et HOD = un SEUL MELEKH.
+      RAISON : ils sont PALGEI DE-GUFA (moities du corps) — comme les jambes paires.
+      Pattern individuel (Daat, Chesed, Gevurah, Tiferet, Yesod, Malkhut) :
+        Chacun regne, meurt, son keli descend en Beriah individuellement
+      Pattern paire (NH) :
+        Regnent l'un apres l'autre MAIS leurs kelim descendent ENSEMBLE en Beriah
+        Comptes comme UN melekh
+      → Topologie : les composants paires (jambes) ont une dynamique conjointe,
+      pas individuelle.
+    applications_ia:
+      - "Pattern : certains composants existent en paires fonctionnellement liees"
+      - "partzufim/zeir_anpin.py : modeliser Netzach et Hod comme un sous-module unique a deux cotes"
+      - "[PLANNED] core/shevirah.py : encoder NH comme palgei (event-pair) vs melakhim individuels"
+      - "olamot.py : la migration Beriah doit traiter NH comme une seule transaction atomique"
+      - "Pattern d'identite : 2 entites = 1 melekh = couplage structural fort"
+    questions_ouvertes:
+      - "Y a-t-il d'autres palgei dans le systeme (yeux, bras) ?"
+      - "Le couplage NH est-il toujours actif ou seulement pendant la Shevirah ?"
+      - "Pourquoi NH et pas NHY (Yesod aussi inferieur) ?"
+
+  - id: "PG-H2S9-012"
+    nom: "Principe Yesod=KOL / Malkhut=KALAH (Paire Conjugale Lexicale)"
+    source_assertions: ["EC-H2S9-036", "EC-H2S9-046"]
+    formalisation: |
+      Equation linguistique-fonctionnelle :
+      YESOD = KOL (kaf-lamed = tout, inclusif)
+      MALKHUT = KALAH (kaf-lamed-heh = epouse, incluse)
+      → Meme RACINE (KL) — les deux mots sont conjugaux par etymologie.
+      FONCTIONNEMENT :
+        YESOD inclut HC + HG (synthese masculine)
+        MALKHUT incluse comme epouse (reception feminine)
+      Lors de la Shevirah :
+        Yesod amene les KALLUT HC/HG dans les Yesod-de-YS et Yesod-de-Tevunah
+        Malkhut amene les KALLUT dans les Malkhut-de-YS et Malkhut-de-Tevunah
+      → Symetrie operationnelle : Yesod travaille les Yesod, Malkhut travaille les Malkhut.
+      Architecture : level-of-detail correspondance.
+    applications_ia:
+      - "Pattern : les composants de meme niveau interagissent (Yesod-Yesod, Malkhut-Malkhut)"
+      - "Etymologie operationnelle : la racine KL = inclusion (Kol active, Kalah passive)"
+      - "partzufim/zivvug.py : modeliser Yesod et Malkhut comme paire conjugale"
+      - "Pattern level-correspondence : echanges au meme niveau hierarchique"
+      - "Architecture API : un endpoint 'kol' (synthese) et un endpoint 'kalah' (reception)"
+    questions_ouvertes:
+      - "L'etymologie KL est-elle universelle ou specifique a l'hebreu ?"
+      - "La distinction Kol/Kalah est-elle binaire ou continue ?"
+      - "Peut-on avoir une 'inversion conjugale' (Yesod-Kalah, Malkhut-Kol) ?"
+
+  - id: "PG-H2S9-013"
+    nom: "Principe de l'Atarah Cachee (Malkhut comme Couronne du Yesod)"
+    source_assertions: ["EC-H2S9-048", "EC-H2S9-049", "EC-H2S9-050", "EC-H2S9-051"]
+    formalisation: |
+      Resolution d'asymetrie apparente entre Phase 1 (AVI Ila'in) et Phase 2 (YS"T) :
+      Phase 1 ne mentionne pas une etape Malkhut explicite.
+      Phase 2 (Malkhut comme 7eme melekh) inclut Malkhut explicite.
+      RESOLUTION : la Malkhut d'AVI Ila'in EST LA, mais INCLUSE dans le Yesod.
+        BEHINAT ATARAH (couronne) du Yesod = aspect Malkhut.
+        Atarah = sommet du Yesod = 1/3 superieur du Tiferet.
+      DISTINCTION :
+        Malkhut de Tevunah = vraie Malkhut (mamash) car Tevunah = niveau inferieur du composite Binah-Tevunah
+        Malkhut de Binah Ila'ah = pas vraie Malkhut, est aspect-Yesod-fonctionnel (au HAZEH du composite)
+      → Le meme COMPOSANT (Malkhut) prend des FORMES differentes selon le niveau.
+    applications_ia:
+      - "Pattern : un meme concept fonctionnel se manifeste differemment selon le niveau"
+      - "Granularite : ce qui est 'Yesod' a un niveau peut etre 'Malkhut' a un autre"
+      - "partzufim/nukva.py : modeliser Malkhut comme entite ABSTRAITE pouvant etre 'cachee' dans le Yesod"
+      - "Pattern de level-relativity : la classification depend du niveau d'observation"
+      - "Diagnostic : chercher la Malkhut 'cachee' (Atarah) avant de conclure a une asymetrie"
+    questions_ouvertes:
+      - "Y a-t-il d'autres composants 'caches' similaires (Yesod cache dans le Tiferet) ?"
+      - "Le Atarah-cache est-il toujours dans le Yesod ou peut-il etre ailleurs ?"
+      - "Comment formaliser le concept de level-relativity ?"

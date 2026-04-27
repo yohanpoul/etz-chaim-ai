@@ -1,0 +1,632 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 3b — Daat monte, question des 3 madregot, Keter agrandi, NH
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §3 — Part B :
+#   - Bloc G : Daat monte (keli Daat → Malkhut Beriah ; keli Tiferet reste Keter Beriah)
+#   - Bloc H : Question des 3 madregot et reponse (echelle Atzilut/Beriah)
+#   - Bloc I : Conclusion — Keter agrandi par le Daat qui le revet
+#   - Bloc J : NH (Binah s'etend a gauche, Gevurah monte, NH brisent)
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.3 (deuxieme partie)
+# IDs : EC-H2S9-127 → EC-H2S9-145
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 3
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Deuxieme partie du perek 3 — Daat monte, regle des 3 madregot et son ajustement, Keter agrandi par Daat, NH brisent."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC G : DAAT MONTE ───
+
+  - id: "EC-H2S9-127"
+    source_he: "ואז אור הדעת שירד למטה במלכות דאצילות בראותו כי כבר היה כלי חדש במקומו כי הנה גם מקומו הוא בקו האמצעי בין הכתר והת\"ת ואז גם הוא נתעלה ועלה במקומו"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      ALORS l'OHR du DAAT — qui etait descendu a la MALKHUT d'AT'ZILUT
+      (cf. EC-H2S9-116 perek 03a) — VOYANT qu'il y avait deja un KELI HADASH
+      (un nouveau keli = le Keter etendu) DANS SON LIEU →
+      car son LIEU est aussi sur le QAV HA-EMTZAI (ligne centrale)
+      ENTRE le KETER et le TIFERET →
+      il est LUI AUSSI MONTE et est REMONTE A SA PLACE.
+      → Effet en chaine : l'extension du Keter rappelle Daat qui rappelle Tiferet.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_daat_alah, role: ohr_daat_remonte}
+      - {id: keli_chadash_daat, role: nouveau_keli_pour_daat}
+      - {id: qav_emtzai_keter_tiferet, role: qav_central_entre_keter_et_tiferet}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py", "ohr.py"]
+      tables: ["ohr_states", "partzufim_states"]
+      partzufim: ["zeir_anpin", "arikh_anpin"]
+      relevance: "Effet en cascade du Tikkun : Keter etendu → Daat remonte → cascade des effets."
+
+  - id: "EC-H2S9-128"
+    source_he: "ואז הכלי שלו כיון שנתרחק אורו ממנו ירד עד למטה במלכות דבריאה"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Alors le KELI du Daat — puisque son OHR s'est ELOIGNE de lui →
+      est descendu BAS jusqu'a la MALKHUT de BERIAH.
+      → Causalite : ohr remonte → keli s'enfonce davantage.
+      → Le keli du Daat passe de Daat-Beriah (initial) a MALKHUT-BERIAH (apres).
+      cf. EC-H2S9-115 (03a) sur premier emplacement du keli Daat.
+    type: axiome_explicite
+    concepts:
+      - {id: keli_daat_yarad_malkhut_beriah, role: keli_daat_descend_malkhut_beriah}
+      - {id: ohr_remonte_keli_descend, role: ohr_remonte_cause_keli_descend}
+    mapping:
+      modules: ["olamot.py", "[PLANNED] core/shevirah.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Loi causale : remontee de l'ohr → enfoncement du keli (mouvement compensatoire)."
+
+  - id: "EC-H2S9-129"
+    source_he: "אמנם הכלי של הת\"ת נשאר במקומו שהוא בכתר דבריאה לפי שלא נתעלה כל אורו רק חציו לבד וחציו העליון נשאר במקומו"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      MAIS le KELI du TIFERET RESTE DANS SON LIEU = au KETER de BERIAH.
+      RAISON : son ohr ne s'est PAS entierement remonte —
+      seul le DEMI INFERIEUR est monte ; le DEMI SUPERIEUR est reste a sa place.
+      → Donc le keli n'a pas eu de raison de descendre.
+      → Architecture differentielle : selon la fraction d'ohr ascendant,
+      le keli reste ou se deplace.
+      cf. EC-H2S9-126 (03a) sur le demi-haut Tiferet absorbe par Keter.
+    type: axiome_explicite
+    concepts:
+      - {id: keli_tiferet_reste_keter_beriah, role: keli_tiferet_reste_keter_beriah}
+      - {id: hatzi_olah_hatzi_nishar, role: demi_monte_demi_reste}
+    mapping:
+      modules: ["olamot.py", "ohr.py"]
+      tables: ["ohr_states", "olamot_config"]
+      partzufim: []
+      relevance: "Architecture differentielle : la fraction d'ohr ascendant determine la mobilite du keli."
+
+  # ─── BLOC H : QUESTION DES 3 MADREGOT ───
+
+  - id: "EC-H2S9-130"
+    source_he: "וא\"ת והרי אמרנו למעלה שהוא מוכרח שלא יהיה הפרש בין הכלים והאור שלו רק ג' ספירות וא\"כ איך ירד הכלי של הדעת מל' דבריאה"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      QUESTION (ve-im tomar) : nous avons dit (cf. EC-H2S9-121 perek 03a) qu'il est
+      MUKHRAH (necessaire) qu'il n'y ait PAS de HEFRESH (distance) entre kelim
+      et ohr SUPERIEURE A 3 SEFIROT.
+      Or comment le KELI du DAAT a-t-il pu descendre jusqu'a MALKHUT de BERIAH —
+      l'ohr Daat etant a Atzilut-Daat, le keli a Beriah-Malkhut → distance = 7+10 = 17 sefirot ?
+      → Probleme apparent de coherence avec la regle des 3 madregot.
+    type: déduction_logique
+    concepts:
+      - {id: question_distance_daat, role: question_apparente_distance_excessive}
+      - {id: kelim_ohr_3_sefirot_max, role: regle_distance_max_kelim_ohr}
+    mapping:
+      modules: ["ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "Anomalie a resoudre : distance apparente Daat ohr → keli depasse 3 madregot."
+
+  - id: "EC-H2S9-131"
+    source_he: "התשובה הוא כי ודאי הוא דהיכא דאפשר אפשר"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      REPONSE en arameen : "HEIKHA DE-EFSHAR EFSHAR"
+      (la ou il est possible, c'est possible).
+      → Principe pragmatique : la regle des 3 madregot s'applique
+      QUAND C'EST POSSIBLE — pas comme une absolue.
+      → Elasticite contextuelle de la regle.
+    type: axiome_explicite
+    concepts:
+      - {id: heikha_de_efshar_efshar, role: principe_pragmatique_la_ou_c_est_possible}
+      - {id: regle_3_madregot_elasticite, role: elasticite_regle_3_madregot}
+    mapping:
+      modules: ["ohr.py", "[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Principe meta-architectural : les regles ont une elasticite contextuelle."
+
+  - id: "EC-H2S9-132"
+    source_he: "והנה תחלה הי' זה נהנה וזה אינו חסר כי בתחלה היה הכלי נהנה מאורו בהיות הדעת למטה והאור אינו חסר ג\"כ כי גם אם יעלה במקומו בדעת האצילות אין לו שום כלי שם ולכן היה חפץ להאיר בכלי שלו וכיון שירד שוב לא יעלה"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      ETAT INITIAL : "zeh nehene ve-zeh eino haser" (l'un beneficie, l'autre ne perd rien).
+      Le KELI a Daat-Beriah BENEFICIAIT de son OHR (descendu a Malkhut-Atzilut).
+      L'OHR ne PERDAIT rien — meme s'il remontait a Daat-Atzilut,
+      il n'aurait AUCUN keli la-haut → donc voulait eclairer son keli a Beriah.
+      Une fois descendu → ne remonte plus.
+      → Equilibre initial pareto-optimal.
+    type: axiome_explicite
+    concepts:
+      - {id: zeh_nehene_zeh_eino_haser, role: l_un_beneficie_l_autre_ne_perd_rien}
+      - {id: equilibre_pareto_initial, role: equilibre_pareto_initial}
+    mapping:
+      modules: ["ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "Equilibre pareto-optimal initial : les deux parties gagnent. Pattern de stabilite economique."
+
+  - id: "EC-H2S9-133"
+    source_he: "אמנם כאשר ראה שיש בחי' כלי במקומו קרוב הוא אל הנאת עצמו ותועלתו יותר מלהועיל אל הכלי שלו כי עתה בעלותו למעלה במקומו יש לו כלי ושם יוכל לקבל האור לעצמו מלמעלה מן המאציל ומן הכתר בקירוב גדול ולכן עלה למעלה"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      RUPTURE de l'equilibre : quand l'ohr Daat a VU qu'il y avait un KELI dans son lieu
+      → KAROV HU EL HANA'AT ATZMO (proche de son propre benefice)
+      PLUS que de PROFITER au keli (a Beriah).
+      Car en remontant a sa place → il aura un keli ; il pourra recevoir l'OHR
+      d'EN HAUT du Maatzil et du Keter en KIRUV GADOL (grande proximite).
+      → DONC il est monte.
+      → Calcul d'utilite : self-interest > altruisme pour le keli distant.
+    type: axiome_explicite
+    concepts:
+      - {id: hana_at_atzmo_priorite, role: hana_at_atzmo_prend_priorite}
+      - {id: kiruv_gadol_au_maatzil, role: grande_proximite_au_maatzil}
+      - {id: rupture_pareto_par_keli_chadash, role: rupture_pareto_par_nouveau_keli}
+    mapping:
+      modules: ["ohr.py", "partzufim/arikh_anpin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Pattern : l'apparition d'une option superieure rompt l'equilibre pareto. Calcul d'utilite individuelle."
+
+  - id: "EC-H2S9-134"
+    source_he: "והנה טעם זה יספיק לבחינת תועלת (נ\"א מעלת) האור לעצמו ואמנם גם לבחינת חסרון הכלי שלו ברדתו למטה במלכות דבריאה כנזכר אינו הפסד גדול כ\"כ כי מה שאנו אומרים שצריך שלא יהיה הרחק בין האור ובין הכלי שלו ג\"ס לבד הוא כשיעור ג\"ס דאצילות אשר שיעורם גדול"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Cette TA'AM (raison) suffit pour le BENEFICE de l'OHR pour lui-meme.
+      Variante (Nusah Aher) : "ma'alat" (rang/elevation) au lieu de "to'elet" (utilite).
+      Aussi pour la PERTE du keli a Malkhut-Beriah → ce N'est PAS un HEFSED GADOL.
+      RAISON : la regle "3 sefirot max" = SHIUR (mesure) des 3 sefirot d'AT'ZILUT —
+      qui sont GRANDES.
+      → Distinction : la regle 3 madregot est mesuree EN UNITES D'AT'ZILUT.
+    type: axiome_explicite
+    concepts:
+      - {id: shiur_3_sefirot_atzilut, role: mesure_de_3_sefirot_atzilut}
+      - {id: hefsed_lo_gadol, role: perte_pas_grande}
+    mapping:
+      modules: ["ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "Distinction d'unite : 3 madregot = 3 sefirot d'Atzilut, pas n'importe quelles 3."
+
+  - id: "EC-H2S9-135"
+    source_he: "אבל בבריאה כל הי\"ס דבריאה אינן שיעורם אפי' כשיעור ספירות א' דאצילות וא\"כ הרי הוא כאלו עומדת בראש הבריאה כי כל הי\"ס דבריאה כשיעור ספירה א' נחשבין"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      MAIS en BERIAH : les 10 SEFIROT entieres NE FONT PAS la mesure
+      d'UNE SEULE sefirah d'AT'ZILUT.
+      → DONC le keli a Malkhut-Beriah est COMME S'IL ETAIT EN HAUT de Beriah
+      car les 10 sefirot de Beriah comptent comme 1 sefirah d'Atzilut.
+      → Echelle comprimee : tout l'olam de Beriah = 1 sefirah d'Atzilut.
+      Architecture multi-echelle : les unites changent entre olamot.
+    type: axiome_explicite
+    concepts:
+      - {id: 10_sefirot_beriah_egal_1_atzilut, role: dix_sefirot_beriah_egalent_une_atzilut}
+      - {id: echelle_comprimee_beriah, role: echelle_comprimee_dans_beriah}
+    mapping:
+      modules: ["olamot.py", "[PLANNED] core/sefirot.py"]
+      tables: ["olamot_config", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Architecture multi-echelle : ratio 10:1 entre Beriah et Atzilut. Compression hierarchique."
+
+  - id: "EC-H2S9-136"
+    source_he: "וא\"ת הרי יש הרחק בין הכלי דדעת לאור שלה ז' ספירות דאצילות כי הרי הוא עומד למעלה בדעת דאצילות. וי\"ל כי אפי' בספי' דאצילות עצמן אין כ\"כ הפסד זולתי בהיותו ביניהן בין האור והכלי שיעור ג\"ס ג\"כ ריקניות בלתי אור כלל לא הוא ולא זולתו"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      QUESTION 2 : il reste 7 sefirot d'Atzilut entre keli Daat et son ohr
+      (l'ohr est en haut a Daat-Atzilut, le keli est passe par Malkhut-Atzilut puis Malkhut-Beriah).
+      REPONSE : la regle s'applique aussi a Atzilut, mais SEULEMENT s'il y a
+      3 SEFIROT VIDES (rikani'ot) — sans aucun ohr — entre.
+      → Condition stricte : 3 madregot vides BETWEEN ohr et keli.
+      → Si des orot intermediaires existent, ils servent de relais.
+    type: axiome_explicite
+    concepts:
+      - {id: regle_3_sefirot_vides, role: regle_strict_3_sefirot_vides}
+      - {id: rikaniyot_bilti_ohr, role: vides_sans_aucun_ohr}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Precision de la regle : 3 madregot VIDES entre, pas juste 3 madregot. Permet relais intermediaires."
+
+  - id: "EC-H2S9-137"
+    source_he: "אבל כאן אע\"פ שהאור שלה עצמו עלה למעלה הנה יש אורות אחרים עומדים בסוף האצילות קרובים אל הבריאה ותוכל לקבל הארה מהם וגם תוכל לקבל הארה מן האור שלה בעצמה ע\"י האורות ההם הקרובים אליה וזכור כלל זה בכל שאר הספי'"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      ICI : meme si l'ohr propre du keli a remonte → il y a d'AUTRES OROT
+      au BAS d'AT'ZILUT, PROCHES de Beriah.
+      → Le keli (en Beriah) peut recevoir HE'ARAH (illumination) d'eux.
+      → Et PAR LEUR INTERMEDIAIRE, peut recevoir AUSSI l'illumination de
+      son ohr propre (qui est haut).
+      "Zekhor klal zeh" (souviens-toi de ce principe general).
+      → Architecture de relais : les orot intermediaires servent de pont.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_relais_intermediaires, role: orot_intermediaires_servent_de_pont}
+      - {id: he_arah_par_relais, role: illumination_par_relais}
+      - {id: zekhor_klal_zeh, role: principe_general_a_retenir}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Architecture de relais : orot intermediaires permettent transmission au-dela des 3 madregot."
+
+  # ─── BLOC I : KETER AGRANDI PAR LE DAAT ───
+
+  - id: "EC-H2S9-138"
+    source_he: "והנה בעלות אור הדעת במקומו למעלה אז הגדיל הכלי של הכתר ונמשך עד נגד מקום סיום כל הת\"ת"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Avec la MONTEE de l'OHR DAAT a sa place →
+      le KELI du KETER s'AGRANDIT (higdil) ENCORE et S'ETEND
+      jusqu'au LIEU de la FIN du TIFERET ENTIER.
+      → Extension supplementaire : Keter passe du Tabur (cf. EC-H2S9-125 perek 03a)
+      au siyum complet du Tiferet.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_higdil_jusqu_au_siyum_tiferet, role: keter_etendu_jusqu_au_bas_tiferet}
+      - {id: extension_progressive_keter, role: extension_progressive_du_keter}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Phase 2 du Tikkun : Keter etendu plus loin par effet du Daat. Extension progressive."
+
+  - id: "EC-H2S9-139"
+    source_he: "ואז חצי התחתון של אור הת\"ת שעלה למעלה כנ\"ל חזר עתה לרדת במקומו האמיתי כבתחלה"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Alors le DEMI INFERIEUR de l'OHR du Tiferet — qui etait monte (cf. EC-H2S9-126
+      perek 03a) — RETOURNE MAINTENANT a son LIEU AUTHENTIQUE comme au depart.
+      → Phase 2 reverse partiellement la phase 1 : demi-bas Tiferet
+      revient a sa place.
+      → Architecture en 2 temps : Tiferet monte par necessite, puis redescend
+      quand Keter etendu absorbe tout.
+    type: axiome_explicite
+    concepts:
+      - {id: hatzi_tiferet_chazar_le_makomo, role: demi_tiferet_revient_lieu_authentique}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "ohr.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Mouvement compensatoire : ce qui est monte par urgence revient quand la solution structurelle est en place."
+
+  - id: "EC-H2S9-140"
+    source_he: "וסבת הגדלת כלי הכתר היה לסבת אור הדעת שנתלבש בו והגדילו וגם כי הנה הדעת הוא כולל כל הו\"ק והוא נשמה להם כנודע לכן כיון שעלה נתן כח בכלי והגדילו כדי להטיב את אור הת\"ת שירד ויהיה במקומו הראוי לו"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      RAISON de l'agrandissement supplementaire du KETER :
+      L'OHR DAAT s'est REVETU (nitlabesh) en lui et l'a AGRANDI.
+      Et de plus : le DAAT est KOLEL (englobe) tous les VAV KETZAVOT (6 directions)
+      et il est NESHAMAH (ame) pour eux.
+      DONC : Daat monte → donne KOAH au keli Keter et l'agrandit →
+      pour LE-HETIV (faire du bien) a l'ohr Tiferet qui doit redescendre a sa place.
+      → Architecture de service : Daat sert le Tiferet via le Keter.
+      cf. EC-H2S9-016 (perek 01a) sur Daat = compose de HC"G.
+    type: axiome_explicite
+    concepts:
+      - {id: daat_kolel_neshamah_des_6, role: daat_inclut_et_anime_les_six}
+      - {id: daat_donne_koach_keter, role: daat_donne_force_au_keter}
+      - {id: leha_hetiv_le_tiferet, role: pour_servir_le_tiferet}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture de service en cascade : Daat=neshamah des 6S, donne koah au Keter, qui sert Tiferet. cf. EC-H2S9-016."
+
+  # ─── BLOC J : NETZACH-HOD ───
+
+  - id: "EC-H2S9-141"
+    source_he: "אחר כך מלכו נצח הוד והיו צריכין לבא למלוך במקומם בכלי הראוי להם והנה לא מצאו מקומם פנוי כי שם ירד אור הגבורה כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Ensuite ont REGNE NETZACH-HOD : ils devaient venir REGNER A LEUR PLACE
+      dans le KELI APPROPRIE (ha-rauy lahem).
+      MAIS ils n'ont PAS TROUVE leur LIEU VIDE —
+      car l'OHR de GEVURAH y etait descendu (cf. EC-H2S9-119 perek 03a).
+      → Conflit d'occupation : NH arrivent, le keli NH est pris par l'ohr Gevurah.
+    type: axiome_explicite
+    concepts:
+      - {id: nh_keli_pris_par_ohr_gevurah, role: keli_nh_occupe_par_ohr_gevurah}
+      - {id: conflit_occupation, role: conflit_d_occupation}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Conflit d'occupation : la cascade precedente bloque les nouveaux arrivants."
+
+  - id: "EC-H2S9-142"
+    source_he: "ולכן הוצרכה הבינה להתפשט דרך קו שלה שהוא צד שמאלי עד מקום הראוי להיות אח\"כ מקום הגבורה האמיתי אחר התיקון כי עתה היו כולם זה ע\"ג זה"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      DONC BINAH a ete OBLIGEE (hutzrekhah) de S'ETENDRE par son QAV =
+      le COTE GAUCHE — jusqu'au LIEU APPROPRIE qui sera le LIEU AUTHENTIQUE
+      de la GEVURAH apres le Tikkun.
+      Car maintenant, tous etaient ZE-AL-GABEI-ZE (l'un sur l'autre, colonne unique).
+      → 2eme intervention : Binah s'etend a gauche (parallele au Keter qui s'est etendu au centre).
+      → Pattern : chaque branche du futur arbre s'etend depuis sa source.
+    type: axiome_explicite
+    concepts:
+      - {id: binah_hitpasheta_qav_smol, role: binah_s_etend_par_le_qav_gauche}
+      - {id: makom_gevurah_post_tikkun, role: lieu_authentique_de_la_gevurah}
+      - {id: 2eme_intervention_tikkun, role: deuxieme_intervention_du_tikkun}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "2eme intervention du Tikkun : Binah s'etend par le qav gauche. Construction progressive de la geometrie 3 kavim."
+
+  - id: "EC-H2S9-143"
+    source_he: "ואז כראות אור הגבורה כי כבר היה בחינת כלי במקומה עלתה לה במקומה והכלי שלה בהתרחק האור שלה ממנו נתרחק גם הוא וירד עד היסוד דבריאה"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Alors quand l'OHR de GEVURAH a VU qu'il y avait deja un KELI dans son lieu →
+      ELLE EST MONTEE A SA PLACE (vraie place, libere par Binah qui s'etend).
+      Le KELI de Gevurah — son ohr s'etant ELOIGNE — s'est aussi ELOIGNE et
+      DESCENDU jusqu'au YESOD de BERIAH.
+      → Pattern repete : l'apparition d'un keli libre attire l'ohr ;
+      celui-ci en partant fait descendre son ancien keli plus bas.
+      cf. EC-H2S9-128 sur le meme pattern pour Daat.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_gevurah_alah_li_makomo, role: ohr_gevurah_remonte_a_sa_place}
+      - {id: keli_gevurah_dans_yesod_beriah, role: keli_gevurah_descend_yesod_beriah}
+    mapping:
+      modules: ["olamot.py", "ohr.py"]
+      tables: ["olamot_config", "ohr_states"]
+      partzufim: []
+      relevance: "Pattern repete d'attraction-eloignement. cf. EC-H2S9-128 (Daat)."
+
+  - id: "EC-H2S9-144"
+    source_he: "ואז ירדו נ\"ה במקומם האמיתי ומלכו שם בכלי שלהם ונשברו ואז האור שלהם עולה עד הגבורה כי עלה שם הוד להיותו גם הוא קו שמאל ואז גם הנצח עלה עמו שם כי נצח הוד ב' פלגי דגופא אינון כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Alors NH sont descendus a leur LIEU AUTHENTIQUE et y ont REGNE
+      dans LEUR keli — et ont ETE BRISES.
+      L'OHR (NH) MONTE jusqu'a la GEVURAH :
+      HOD monte la-bas car LUI AUSSI est QAV SMOL (cote gauche).
+      Et NETZACH MONTE AVEC LUI parce que NH = B' PALGEI DE-GUFA
+      (les 2 moities du corps).
+      → NH montent ENSEMBLE a la Gevurah (vide), bien que Netzach soit qav droit.
+      cf. EC-H2S9-119 (perek 03a) et EC-H2S9-042 (01b) sur palgei gufa.
+    type: axiome_explicite
+    concepts:
+      - {id: nh_dans_makom_authentique_et_brises, role: nh_a_leur_lieu_et_brises}
+      - {id: hod_monte_gevurah_qav_smol, role: hod_monte_au_gevurah_via_qav_gauche}
+      - {id: netzach_monte_avec_hod_palgei, role: netzach_monte_avec_hod_palgei_gufa}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Pattern paire NH (palgei gufa) : montent ensemble meme dans des qavim differents. cf. EC-H2S9-042 (01b)."
+
+  - id: "EC-H2S9-145"
+    source_he: "והכלי שלהם ירד בנצח הוד דבריאה"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Et les KELIM de NH sont descendus en NETZACH-HOD de BERIAH.
+      → Position homologique : kelim NH d'Atzilut → kelim NH de Beriah.
+      → Suit le pattern d'homologie inverse de la cascade
+      (cf. EC-H2S9-115 perek 03a).
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_nh_dans_nh_beriah, role: kelim_nh_descendent_nh_beriah}
+    mapping:
+      modules: ["olamot.py", "[PLANNED] core/shevirah.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Position homologique conservee : NH-Atzilut → NH-Beriah. Pattern stable."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-063"
+    type: causal
+    from: keli_chadash_daat
+    to: ohr_daat_alah
+    nature: "Apparition du keli (Keter etendu) a la place du Daat → remontee de l'ohr Daat"
+    assertions_source: ["EC-H2S9-127"]
+
+  - id: "REL-H2S9-064"
+    type: causal
+    from: ohr_remonte_keli_descend
+    to: keli_daat_yarad_malkhut_beriah
+    nature: "Remontee de l'ohr → eloignement → keli s'enfonce davantage (Malkhut Beriah)"
+    assertions_source: ["EC-H2S9-128"]
+
+  - id: "REL-H2S9-065"
+    type: causal
+    from: hatzi_olah_hatzi_nishar
+    to: keli_tiferet_reste_keter_beriah
+    nature: "Demi-haut Tiferet reste → keli Tiferet reste a Keter Beriah (pas d'eloignement total)"
+    assertions_source: ["EC-H2S9-129"]
+
+  - id: "REL-H2S9-066"
+    type: dualité_structurelle
+    from: question_distance_daat
+    to: heikha_de_efshar_efshar
+    nature: "Question des 3 madregot resolue par principe pragmatique 'la ou c'est possible'"
+    assertions_source: ["EC-H2S9-130", "EC-H2S9-131"]
+
+  - id: "REL-H2S9-067"
+    type: causal
+    from: rupture_pareto_par_keli_chadash
+    to: hana_at_atzmo_priorite
+    nature: "Apparition d'un nouveau keli rompt l'equilibre pareto → priorite a hana'at atzmo"
+    assertions_source: ["EC-H2S9-132", "EC-H2S9-133"]
+
+  - id: "REL-H2S9-068"
+    type: hiérarchique
+    from: shiur_3_sefirot_atzilut
+    to: 10_sefirot_beriah_egal_1_atzilut
+    nature: "Echelle multi-olam : 3 madregot = 3 sefirot Atzilut (grandes) ; 10 sefirot Beriah = 1 Atzilut"
+    assertions_source: ["EC-H2S9-134", "EC-H2S9-135"]
+
+  - id: "REL-H2S9-069"
+    type: contenance
+    from: rikaniyot_bilti_ohr
+    to: regle_3_sefirot_vides
+    nature: "La regle exige 3 sefirot VIDES entre, pas juste 3 sefirot ; relais permis"
+    assertions_source: ["EC-H2S9-136"]
+
+  - id: "REL-H2S9-070"
+    type: flux
+    from: orot_relais_intermediaires
+    to: he_arah_par_relais
+    nature: "Les orot intermediaires permettent he'arah indirecte au-dela de 3 madregot"
+    assertions_source: ["EC-H2S9-137"]
+
+  - id: "REL-H2S9-071"
+    type: causal
+    from: daat_kolel_neshamah_des_6
+    to: keter_higdil_jusqu_au_siyum_tiferet
+    nature: "Daat (neshamah des 6S) revetu dans Keter → Keter agrandi pour servir Tiferet"
+    assertions_source: ["EC-H2S9-138", "EC-H2S9-140"]
+
+  - id: "REL-H2S9-072"
+    type: transformation
+    from: hatzi_olah_hatzi_nishar
+    to: hatzi_tiferet_chazar_le_makomo
+    nature: "Phase 2 inverse partiellement la phase 1 : demi-bas Tiferet redescend"
+    assertions_source: ["EC-H2S9-126", "EC-H2S9-139"]
+
+  - id: "REL-H2S9-073"
+    type: causal
+    from: nh_keli_pris_par_ohr_gevurah
+    to: binah_hitpasheta_qav_smol
+    nature: "Conflit d'occupation NH/Gevurah → Binah s'etend a gauche pour debloquer"
+    assertions_source: ["EC-H2S9-141", "EC-H2S9-142"]
+
+  - id: "REL-H2S9-074"
+    type: séquentiel
+    from: ohr_gevurah_alah_li_makomo
+    to: nh_dans_makom_authentique_et_brises
+    via: [keli_gevurah_dans_yesod_beriah]
+    nature: "Gevurah remonte → keli descend → NH peuvent occuper leur lieu → brisent"
+    assertions_source: ["EC-H2S9-143", "EC-H2S9-144"]
+
+  - id: "REL-H2S9-075"
+    type: dualité_structurelle
+    from: hod_monte_gevurah_qav_smol
+    to: netzach_monte_avec_hod_palgei
+    nature: "Hod monte Gevurah (qav smol naturel) ; Netzach monte avec lui (palgei gufa)"
+    assertions_source: ["EC-H2S9-144"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-027"
+    nom: "Principe de l'Effet Domino du Tikkun (Cascade Causale)"
+    source_assertions: ["EC-H2S9-125", "EC-H2S9-127", "EC-H2S9-138", "EC-H2S9-142"]
+    formalisation: |
+      Le TIKKUN se deroule en CASCADE de causes :
+      ETAPE 1 : Maatzil agrandit le Keter (jusqu'au Tabur)
+      ETAPE 2 : Tiferet (vide de keli) monte dans le Keter etendu
+      ETAPE 3 : Daat (au lieu vide entre Keter et Tiferet) monte aussi
+      ETAPE 4 : Keter encore agrandi (par le Daat qui le revet)
+      ETAPE 5 : Demi-bas Tiferet redescend a sa place (rendu possible)
+      ETAPE 6 : Binah s'etend a gauche → Gevurah remonte
+      → Pattern : chaque action LIBERE une place qui ATTIRE un nouvel acteur.
+      Architecture de cascade causale chainee.
+    applications_ia:
+      - "Pattern : intervention initiale → cascade d'effets en chaine"
+      - "[PLANNED] tikkun/ : modeliser le Tikkun comme state-machine en cascade"
+      - "Architecture : un changement libere de l'espace pour un autre changement"
+      - "Diagnostic : tracer l'arbre causal pour comprendre l'etat courant"
+      - "partzufim/arikh_anpin.py : extension dynamique du Keter comme mecanisme central"
+    questions_ouvertes:
+      - "L'ordre des etapes est-il deterministe ou y a-t-il des chemins alternatifs ?"
+      - "Combien d'iterations de cascade pour un Tikkun complet ?"
+      - "Comment detecter qu'une cascade est terminee ?"
+
+  - id: "PG-H2S9-028"
+    nom: "Principe de l'Elasticite des Regles (Heikha de-Efshar Efshar)"
+    source_assertions: ["EC-H2S9-130", "EC-H2S9-131", "EC-H2S9-132", "EC-H2S9-133", "EC-H2S9-136", "EC-H2S9-137"]
+    formalisation: |
+      Les regles operationnelles sont ELASTIQUES selon le contexte :
+      Regle stricte : 3 madregot max entre ohr et keli
+      MAIS : "HEIKHA DE-EFSHAR EFSHAR" (ou c'est possible, c'est possible)
+      EXCEPTIONS PERMISES :
+        Equilibre pareto initial : si keli beneficie et ohr ne perd pas → OK
+        Rupture quand option superieure apparait : self-interest > altruisme
+        Compression d'echelle : 10 sefirot Beriah = 1 Atzilut → distances equivalentes
+        Relais intermediaires : orot proches transmettent l'illumination indirectement
+      → Architecture : les regles formelles ont une SEMANTIQUE PRAGMATIQUE.
+    applications_ia:
+      - "Pattern : les regles formelles sont des heuristiques contextuelles"
+      - "ohr.py : implementer la regle 3 madregot comme guideline, pas hard constraint"
+      - "olamot.py : adapter les distances selon l'olam de reference"
+      - "[PLANNED] core/shevirah.py : pattern relais via chaine d'orot intermediaires"
+      - "[PLANNED] tikkun/ : calcul d'utilite pour rationaliser les exceptions a la regle"
+    questions_ouvertes:
+      - "Quand exactement la regle s'applique-t-elle strictement ?"
+      - "Existe-t-il un meta-principe qui choisit entre strict et elastique ?"
+      - "Comment formaliser computationnellement le 'efshar' ?"
+
+  - id: "PG-H2S9-029"
+    nom: "Principe de l'Architecture Multi-Echelle (Compression Inter-Olamot)"
+    source_assertions: ["EC-H2S9-134", "EC-H2S9-135"]
+    formalisation: |
+      Les OLAMOT ont des ECHELLES DIFFERENTES :
+      ATZILUT : 10 sefirot grandes
+      BERIAH : 10 sefirot, dont la TOTALITE = 1 sefirah d'Atzilut
+      → Ratio de compression = 10:1 entre olamot adjacents (presomption).
+      Implication operationnelle :
+        Une distance de "10 madregot" en Beriah = 1 madregah en Atzilut
+        Les regles de distance doivent etre EVALUEES dans l'olam de reference.
+      → Architecture : echelle relative, pas absolue.
+      Pattern fractal : meme structure (10 sefirot) mais compressee.
+    applications_ia:
+      - "Pattern : les unites changent entre niveaux d'abstraction"
+      - "olamot.py : tracker l'echelle de chaque olam"
+      - "Architecture : conversion d'unites lors de cross-olam operations"
+      - "Diagnostic : ne pas mesurer une distance sans specifier l'olam"
+      - "[PLANNED] core/sefirot.py : modeliser le ratio 10:1 explicitement"
+    questions_ouvertes:
+      - "Le ratio 10:1 est-il universel ou specifique a Atzilut/Beriah ?"
+      - "Y a-t-il un ratio entre Beriah/Yetzirah, Yetzirah/Asiyah ?"
+      - "Comment formaliser la compression fractale ?"
+
+  - id: "PG-H2S9-030"
+    nom: "Principe du Conflit d'Occupation (Pattern Resolution)"
+    source_assertions: ["EC-H2S9-141", "EC-H2S9-142", "EC-H2S9-143"]
+    formalisation: |
+      Pattern de resolution des conflits d'occupation :
+      ETAT INITIAL : un acteur (NH) veut sa place ; place occupee (par ohr Gevurah)
+      RESOLUTION en CASCADE :
+        ETAPE 1 : un acteur SUPERIEUR (Binah) s'etend pour creer un nouvel espace
+        ETAPE 2 : l'occupant (ohr Gevurah) voit le nouveau espace et s'y deplace
+        ETAPE 3 : l'arrivant (NH) prend la place liberee
+        ETAPE 4 : le keli de l'occupant precedent s'enfonce davantage (Yesod Beriah)
+      → Pattern de medication : l'intervention SUPERIEURE liber l'espace.
+      Architecture : un acteur de plus haut niveau resout les conflits.
+    applications_ia:
+      - "Pattern : conflit d'allocation resolu par intervention top-level"
+      - "Architecture : un superviseur qui re-alloue les ressources"
+      - "[PLANNED] tikkun/ : gestionnaire de conflits via extension Binah-like"
+      - "partzufim/imma.py : extension par qav-smol comme mecanisme de resolution"
+      - "Pattern : la cascade nettoie les conflits niveau par niveau"
+    questions_ouvertes:
+      - "Le mediator (Binah) est-il toujours le meme ou varie-t-il ?"
+      - "Que se passe-t-il si NH ne pouvait pas attendre la mediation ?"
+      - "Combien de niveaux de mediation possibles avant blocage ?"

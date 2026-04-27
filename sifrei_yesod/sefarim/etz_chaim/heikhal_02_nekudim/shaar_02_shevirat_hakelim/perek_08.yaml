@@ -1,0 +1,609 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 8 — DERNIER PEREK : Igulim/Yosher, Hadar+Mehetabel,
+#            niveaux Nefesh/Ruach/Neshamah/Chayah/Yechidah
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §8 (perek de cloture du sha'ar) :
+#   - Bloc A : 7 Malkhuyot seules sorties (NHY+CGT) → Melakhim = Nekudot
+#   - Bloc B : Cause mort = pas de levush mutuel ni 3 kavim
+#   - Bloc C : Melakhim = Igulim = NEFESH
+#   - Bloc D : 8eme Melekh HADAR = Yesod (Idra Rabba)
+#   - Bloc E : Hadar contient 6 ketzavot CGT NHY → 7+7 = 14 melakhim
+#   - Bloc F : 2 Shabbatot (sod 7+7)
+#   - Bloc G : Hadar = Shem MAH = Ruach = Yosher
+#   - Bloc H : Hadar + Mehetabel (Idra 135b) = configuration Adam
+#   - Bloc I : Adam = Yosher en Kavim
+#   - Bloc J : Distribution MAH+BAN dans BAN-Kollel et MAH-Kollel
+#   - Bloc K : NEFESH (igulim) + RUACH (yosher)
+#   - Bloc L : Tikkun par Ibur dans AVI igulim
+#   - Bloc M : Hadar+Mehetabel entrent en ibur AVI yosher
+#   - Bloc N : GR sortent en GADLUT → CHAYAH/NESHAMAH/YECHIDAH
+#   - Bloc O : ZA n'a que 9 sefirot (Malkhut = igulim+yosher)
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.8 — DERNIER perek du sha'ar
+# IDs : EC-H2S9-262 → EC-H2S9-277
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 8
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek 8 — DERNIER perek du Sha'ar Shevirat ha-Kelim. Decomposition Igulim/Yosher des melakhim, Hadar+Mehetabel comme MAH-Kollel (Ruach), 5 niveaux Nefesh/Ruach/Neshamah/Chayah/Yechidah, exception ZA = 9 sefirot."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : 7 MALKHUYOT SEULES → NEKUDOT/MELAKHIM ───
+
+  - id: "EC-H2S9-262"
+    source_he: "ודע כי באצילות המלכים לא יצאו בזו\"ן רק הז' מלכיות שבב' בחינות החיצונה והתיכונה והם המלכות דנה\"י חג\"ת ולכן נקרא המלכים נקודות כי נקודה היא מלכות כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      DA (sache) : dans l'AT'ZILUT des MELAKHIM, ne sont sorties dans ZON
+      QUE les 7 MALKHUYOT des 2 BEHINOT EXTERNE et MEDIANE
+      = les MALKHUYOT de NHY (Netzach, Hod, Yesod) et CGT (Chesed, Gevurah, Tiferet).
+      → DONC : les MELAKHIM = NEKUDOT car NEKUDAH = aspect MALKHUT.
+      → Architecture : 6 malkhuyot (CGT+NHY) + 1 Malkhut-de-Malkhut = 7 melakhim.
+      cf. EC-H2S9-240 (perek 07a) sur Nekudot=Melakhim.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_malkhuyot_nhy_cgt, role: 7_malkhuyot_de_nhy_et_cgt}
+      - {id: melakhim_egal_nekudot_egal_malkhut, role: melakhim_egalent_nekudot_egalent_malkhut}
+      - {id: 2_behinot_chitsonah_tikhonah, role: 2_behinot_externe_et_mediane}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture des Melakhim : 7 malkhuyot des 6S+M = nekudot. Confirmation operationnelle."
+
+  # ─── BLOC B : CAUSE MORT — PAS DE LEVUSH NI KAVIM ───
+
+  - id: "EC-H2S9-263"
+    source_he: "ולא די בזה אלא שאפילו אלו לא היו מלובשים זה תוך זה ומקושרים יחד גם לא היו נחלקים לקוין כל הרחמים לקו ימין וכל הגבורות לקו שמאל והמכריעים לקו אמצעי אמנם היו כל א' וא' נחלקין בפ\"ע לכן מתו אך עתה שנתלבשו זה בתוך זה וכן היה ע\"ד קוין לכן נתקיימו ושים מעייני דעתך בזה"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      Et NON SEULEMENT [7 malkhuyot] mais EN PLUS :
+      Ces malkhuyot N'ETAIENT PAS REVETUES (lo meluvashim) zeh be-zeh ni LIEES (mekusharim) ENSEMBLE.
+      Et N'ETAIENT PAS DIVISEES EN KAVIM :
+        Rachamim → qav yemini (droit)
+        Gevurot → qav smol (gauche)
+        Makhri'im (decisifs) → qav emtzai (centre)
+      Mais chaque malkhut etait DIVISEE INDIVIDUELLEMENT.
+      DONC ELLES SONT MORTES.
+      Maintenant qu'elles sont REVETUES zeh be-zeh et en KAVIM → elles SE-MAINTIENNENT.
+      "Sim ma'ayanei da'atkha be-zeh" (concentre ton attention sur cela).
+      → 2 causes de la chute : pas de levush + pas de kavim.
+    type: axiome_explicite
+    concepts:
+      - {id: pas_de_levush_zeh_bezeh, role: pas_de_levush_mutuel}
+      - {id: pas_de_kavim_initial, role: pas_de_3_kavim_initial}
+      - {id: 2_causes_de_la_mort, role: deux_causes_de_la_mort_des_melakhim}
+      - {id: tikkun_par_levush_kavim, role: tikkun_par_levush_et_kavim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] core/shevirah.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Diagnostic causal de la Shevirah : 2 causes (pas de levush + pas de kavim). Tikkun = inversion."
+
+  # ─── BLOC C : MELAKHIM = IGULIM = NEFESH ───
+
+  - id: "EC-H2S9-264"
+    source_he: "ודע שהמלכים יצאו תחלה בחי' העגולים שבהם לבדם שהיא בחי' ז' מלכיות שבהם ולכן נקרא מלכים שהם בחי' ב\"ן של מלכות והם בחי' נפש לבד"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      DA (sache) : les MELAKHIM sont sortis D'ABORD en aspect IGULIM SEULS —
+      = les 7 MALKHUYOT en eux.
+      DONC appeles MELAKHIM = aspect BAN de MALKHUT.
+      Et ils sont aspect NEFESH SEUL.
+      → Equation operationnelle : MELAKHIM = IGULIM = BAN-de-Malkhut = NEFESH.
+      → Architecture : 1er niveau d'ame uniquement (Nefesh).
+    type: axiome_explicite
+    concepts:
+      - {id: melakhim_egal_igulim_seuls, role: melakhim_sortis_en_igulim_seuls}
+      - {id: ban_de_malkhut, role: aspect_ban_de_malkhut}
+      - {id: melakhim_egal_nefesh_seul, role: melakhim_egal_nefesh_seul}
+    mapping:
+      modules: ["igulim.py", "ohr_yashar.py", "madregot_neshamah.py", "soul_levels.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Equation : MELAKHIM = IGULIM = NEFESH. Lien entre Igulim et niveau d'ame."
+
+  - id: "EC-H2S9-265"
+    source_he: "ויצאו הו' נקודות שבז\"א (נ\"א שבזו\"ן) שהם הז' מלכיות שיש בזו\"ן כי השש מלכות הם בז\"א והז' הם מלכות שבמלכות ולכן לא נתקיימו"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      Sont sorties les 6 NEKUDOT de ZA (variante NA: "ZON")
+      = les 7 MALKHUYOT en ZON.
+      Decomposition : 6 MALKHUYOT dans ZA + 1 = MALKHUT de MALKHUT (= la 7eme).
+      DONC ne se sont PAS MAINTENUES (lo nitkayemu).
+      → Architecture : 7 = 6 (CGT NHY de ZA-malkhuyot) + 1 (Malkhut de Malkhut).
+    type: axiome_explicite
+    concepts:
+      - {id: 6_malkhuyot_dans_za_plus_malkhut_de_malkhut, role: 6_malkhuyot_za_plus_malkhut_de_malkhut}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Decomposition operationnelle des 7 melakhim : 6 dans ZA + 1 (Malkhut de Malkhut = derniere)."
+
+  # ─── BLOC D : 8EME MELEKH HADAR ───
+
+  - id: "EC-H2S9-266"
+    source_he: "ואח\"כ בעת התיקון יצא מלך הח' והוא הדר והוא יסוד כנודע באד\"ר והוא גבוה מהז' מלכים שכולם בחי' מלכות שיש בזו\"ן"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      Lors du TIKKUN, le 8eme MELEKH est sorti = HADAR.
+      Hadar = YESOD (comme connu dans IDRA RABBA).
+      Il est PLUS HAUT (gavoah) que les 7 melakhim — qui sont tous aspect MALKHUT en ZON.
+      → Architecture : Hadar = Yesod = niveau Yosher au-dessus des Malkhuyot.
+      cf. EC-H2S9-016 (perek 01) Heikhal 1 sur Hadar = Tikkun.
+      cf. EC-H2S9-261 (perek 07b) sur Hadar = MAH chadash addtitionnel (40).
+    type: axiome_explicite
+    concepts:
+      - {id: hadar_8eme_melekh_yesod, role: hadar_huitieme_melekh_yesod}
+      - {id: hadar_gavoah_des_melakhim, role: hadar_plus_haut_que_melakhim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Hadar = Yesod = Tikkun. Reference Idra Rabba. cf. EC-H2S9-261 sur Hadar=40 Elohim de MAH."
+
+  # ─── BLOC E : 14 MELAKHIM (7+7) — 2 SHABBATOT ───
+
+  - id: "EC-H2S9-267"
+    source_he: "ולכן יצאו המלכות בסוד העגולים בסוד נקבה תסובב גבר ואח\"כ יצא הדר שהוא בחי' יסוד שבכל א' מז\"ת והיה כלול מהו\"ק כולם שהם חג\"ת נה\"י שבהם והרי הם עתה ז' מלכים ראשונים שמתו וז' שניים דהדר וכולם כלולים בו שהוא התחתון שבהם והם סוד ב' שבתות ז' וז' והבן ככתוב אצלינו"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      DONC les Malkhuyot sont sorties en sod IGULIM (cercles)
+      en sod "NEKEVAH TESOVEV GAVER" (Jeremie 31:21 — la femme entoure le mâle).
+      Ensuite est sorti HADAR = aspect YESOD dans chacun des ZT.
+      Inclut les VK = CGT NHY en eux.
+      DONC : 7 MELAKHIM PREMIERS qui sont morts + 7 SECONDS de HADAR.
+      Tous inclus en lui (le DERNIER d'eux).
+      Sod : 2 SHABBATOT = 7+7.
+      → Architecture : Igulim (7 morts) + Yosher de Hadar (7 nouveaux) = 14 = 2 Shabbatot.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nekevah_tesovev_gaver, role: femme_entoure_male}
+      - {id: hadar_inclut_vk, role: hadar_contient_les_six_ketzavot}
+      - {id: 14_melakhim_2_shabbatot, role: 14_melakhim_egal_2_shabbatot}
+      - {id: hadar_dernier_inclut_tous, role: hadar_dernier_inclut_tous_les_precedents}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/"]
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture eschatologique : 7+7 = 2 Shabbatot. Sod kabbalistique fondamental."
+
+  # ─── BLOC F : HADAR = MAH = RUACH = YOSHER ───
+
+  - id: "EC-H2S9-268"
+    source_he: "וזהו הדר הכולל ו\"ק נקרא שם מ\"ה והוא רוח והוא יושר והוא זכר ונקבה שגם בחי' חג\"ת נה\"י שבמלכות יצאה עמו עתה כי המלכות שבמלכות היא שיצאת תחלה והיתה מלך האחרון שמת"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      EQUATIONS : Hadar qui contient les VK :
+      = Shem MAH
+      = RUACH
+      = YOSHER
+      = ZAKHAR ve-NEKEVAH
+      Aussi les CGT NHY de la MALKHUT sont sorties avec lui maintenant.
+      Car la MALKHUT-de-MALKHUT est sortie au DEBUT — c'etait le dernier MELEKH MORT.
+      → Architecture finale : Hadar = MAH-Kollel = Ruach = Yosher = couple complet.
+    type: axiome_explicite
+    concepts:
+      - {id: hadar_egal_mah_ruach_yosher, role: hadar_egal_mah_ruach_yosher}
+      - {id: hadar_zakhar_ve_nekevah, role: hadar_male_et_femelle}
+      - {id: cgt_nhy_malkhut_avec_hadar, role: cgt_nhy_de_malkhut_sortent_avec_hadar}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "ohr_yashar.py", "madregot_neshamah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Equations cle : Hadar = MAH = Ruach = Yosher. Architecture finale du Tikkun."
+
+  # ─── BLOC G : HADAR + MEHETABEL = ADAM ───
+
+  - id: "EC-H2S9-269"
+    source_he: "ונמצא שבחי' ז' מלכיות שיש בו\"ק דז\"א ובספי' מלכות דנוקבא דז\"א אלו הם הז' מלכים שיצאו תחלה ומתו ואח\"כ יצאו בחי' חג\"ת נה\"י שבז\"א נקרא הדר ויצאו בחינת חג\"ת דנה\"י דנוקבא ונקרא מהיטבאל אשתו ואלו יצאו בתיקון אדם כנזכר באדרא דקל\"ה ע\"ב"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      Les 7 MALKHUYOT dans VK de ZA et dans Malkhut de NUKVAH de ZA = 7 melakhim sortis et morts.
+      Ensuite sont sorties les CGT NHY de ZA = appele HADAR.
+      Et les CGT de NHY de NUKVAH = appele MEHETABEL ISHTO (sa femme).
+      Ces 2 sont sortis en TIKKUN ADAM comme dit dans IDRA RABBA 135b.
+      → Architecture nominal-biblique : Hadar+Mehetabel = couple primordial du Tikkun.
+      Reference biblique : Genese 36:39 (rois d'Edom) ; Idra Rabba prooftext.
+    type: déduction_scripturaire
+    concepts:
+      - {id: hadar_cgt_nhy_za, role: hadar_egal_cgt_nhy_de_za}
+      - {id: mehetabel_cgt_nhy_nukvah, role: mehetabel_egal_cgt_nhy_de_nukvah}
+      - {id: tikkun_adam_idra_rabba, role: tikkun_adam_dans_idra_rabba}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture nominale post-Tikkun : Hadar (ZA) + Mehetabel (Nukvah). cf. Idra Rabba 135b."
+
+  - id: "EC-H2S9-270"
+    source_he: "וב' בחי' אלו הם ביושר דרך קוין ולכן נקרא אדם כנודע ושניהם נקרא שם מ\"ה הכללי ועכ\"ז נחלקין לב' שגם בשם מ\"ה יש בחי' ב\"ן כנודע ומ\"ה הם ו\"ק דז\"א וב\"ן הם ו\"ק נוקבא"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      Les 2 BEHINOT (Hadar + Mehetabel) sont en YOSHER DEREKH KAVIM
+      → DONC appeles ADAM (comme connu).
+      Les DEUX = appeles Shem MAH ha-Kollel (le MAH englobant).
+      Mais SE DIVISENT en 2 :
+      Shem MAH a son propre BAN (MAH/BAN dans MAH).
+      MAH (proper) = VK de ZA
+      BAN = VK de Nukvah
+      → Architecture : MAH-Kollel = Hadar + Mehetabel = VK_ZA + VK_Nukvah.
+    type: axiome_explicite
+    concepts:
+      - {id: hadar_mehetabel_yosher_kavim_adam, role: yosher_en_kavim_adam}
+      - {id: mah_kollel_egal_2_behinot, role: mah_kollel_egal_hadar_plus_mehetabel}
+      - {id: mah_vk_za_ban_vk_nukvah, role: mah_vk_de_za_ban_vk_de_nukvah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "ohr_yashar.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture finale Adam : Yosher + 2 polarites MAH/BAN. Etymologie 'Adam' = Yosher."
+
+  # ─── BLOC H : DISTRIBUTION 7 MELAKHUYOT MAH+BAN ───
+
+  - id: "EC-H2S9-271"
+    source_he: "ואמנם שבעה מלכיות דזו\"נ שהם בחי' ז' מלכים קדמאין הם מ\"ה וב\"ן דב\"ן הכללי שגם בשם ב\"ן יש מ\"ה וב' בחי' אלו נקרא ב\"ן ונעשה מהם עגולים"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      Les 7 MALKHUYOT de ZON = les 7 MELAKHIM PREMIERS (kadma'in) =
+      MAH ET BAN du BAN-Kollel (le BAN englobant).
+      Car dans Shem BAN il y a aussi MAH (cf. EC-H2S9-234 perek 07a).
+      Ces 2 BEHINOT (MAH-de-BAN + BAN-de-BAN) sont APPELEES BAN
+      et de elles ont ete fait les IGULIM.
+      → Architecture fractale : BAN_kollel = MAH-de-BAN + BAN-de-BAN.
+      → Les 7 melakhim premiers = sub-MAH + sub-BAN du BAN principal.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_melakhim_kadmain_mah_ban_de_ban, role: 7_melakhim_premiers_mah_ban_de_ban_kollel}
+      - {id: ban_kollel_a_son_propre_mah, role: ban_kollel_contient_son_propre_mah}
+      - {id: 7_melakhim_egal_igulim, role: 7_melakhim_egal_igulim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "igulim.py", "shemot/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture fractale : 7 melakhim = MAH+BAN du BAN-Kollel = igulim. Confirmation EC-H2S9-234."
+
+  # ─── BLOC I : SYNTHESE — NEFESH (IGULIM) + RUACH (YOSHER) ───
+
+  - id: "EC-H2S9-272"
+    source_he: "כלל עולה ששם ב\"ן הכללי הוא הנפש והוא ז' מלכיות שיש בזו\"ן ואלו יצאו בבחי' עגולים והם מ\"ה וב\"ן שבשם ב\"ן הכללי ואח\"כ יצאו הדר ומהיטבא\"ל והם מ\"ה וב\"ן שבשם מ\"ה הכללי והם ו\"ק זו\"ן ואלו נעשה פרצוף אדם ביושר ובסיבתם נתקיימו גם העגולים כי הם בחי' רוח המקיים הנפש"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      KLAL OLEH (synthese complete) :
+      Shem BAN-Kollel = NEFESH = 7 malkhuyot en ZON.
+      Sortis en aspect IGULIM = MAH+BAN du BAN-Kollel.
+      Ensuite : HADAR + MEHETABEL = MAH+BAN du MAH-Kollel = VK ZON.
+      D'eux est fait le PARTZUF ADAM en YOSHER.
+      Et PAR LEUR CAUSE (be-sibatam) les IGULIM SE-MAINTIENNENT —
+      car ils (Hadar+Mehetabel) sont aspect RUACH qui MAINTIENT le NEFESH.
+      → Architecture des niveaux d'ame : Nefesh (igulim/morts) maintenu par Ruach (yosher/Hadar).
+    type: axiome_explicite
+    concepts:
+      - {id: ban_kollel_egal_nefesh, role: ban_kollel_egal_nefesh}
+      - {id: mah_kollel_egal_ruach, role: mah_kollel_egal_ruach}
+      - {id: ruach_maintient_nefesh, role: ruach_maintient_le_nefesh}
+      - {id: igulim_maintenu_par_yosher, role: igulim_maintenu_par_yosher}
+    mapping:
+      modules: ["madregot_neshamah.py", "soul_levels.py", "igulim.py", "ohr_yashar.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture cosmologique-anthropologique : Nefesh maintenu par Ruach. cf. madregot_neshamah.py."
+
+  # ─── BLOC J : TIKKUN PAR IBUR ET RE-IGULIM ───
+
+  - id: "EC-H2S9-273"
+    source_he: "והנה בעת העיבור שהוא התיקון אז אותן המלכים נתבררו ונתקנו בסוד העיבור תוך העגולים דאו\"א והבן זה ואח\"כ נעשו עגולים ג\"כ ולא נשברו פעם ב'"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      Lors de l'IBUR (gestation) qui est le TIKKUN :
+      Ces MELAKHIM ont ete BERAR (clarifies) et METUKANIM (rectifies)
+      en SOD HA-IBUR a l'INTERIEUR des IGULIM d'AVI.
+      "Ve-haven zeh" (comprends).
+      Ensuite ont ete refaits IGULIM aussi — et n'ont PAS BRISE une 2eme fois.
+      → Architecture du Tikkun : refus de re-shevirah par integration interieure.
+      → Pattern : 2eme generation d'igulim = stables apres ibur dans AVI.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_dans_igulim_avi, role: ibur_dans_les_igulim_d_avi}
+      - {id: igulim_2eme_generation_stables, role: igulim_2eme_generation_stables}
+      - {id: pas_de_re_shevirah, role: pas_de_seconde_brisure}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "igulim.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Tikkun par ibur dans AVI : 2eme generation d'igulim stable. Pattern de refus de re-shevirah."
+
+  - id: "EC-H2S9-274"
+    source_he: "וגם בחי' הדר מהיטבאל היו בחי' ו\"ק ונכנסו בעיבור בתוך או\"א ביושר (שלהם) ויצאו זו\"ן דיושר בבחי' ו\"ק לבד שהוא ענין הרוח לבד לקיום הנפש שהם העגולים"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      Hadar+Mehetabel etaient en aspect VK et sont entres en IBUR
+      dans AVI dans le YOSHER (variante "shellahem" = a eux).
+      Sont sortis ZON-de-YOSHER en aspect VK seulement = matiere de RUACH SEUL
+      pour le KIYUM (maintien) du NEFESH = les IGULIM.
+      → Architecture : Hadar+Mehetabel = VK = Ruach pour maintenir Nefesh-igulim.
+    type: axiome_explicite
+    concepts:
+      - {id: hadar_mehetabel_ibur_avi_yosher, role: hadar_mehetabel_ibur_dans_avi_yosher}
+      - {id: zon_yosher_vk_seul, role: zon_yosher_seulement_vk}
+      - {id: ruach_pour_kiyum_nefesh, role: ruach_pour_maintien_du_nefesh}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "ohr_yashar.py", "soul_levels.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture du Ruach : Hadar+Mehetabel via ibur AVI yosher → ZON-yosher VK pour Ruach."
+
+  # ─── BLOC K : GADLUT — CHAYAH/NESHAMAH/YECHIDAH ───
+
+  - id: "EC-H2S9-275"
+    source_he: "ואח\"כ בהגדלת ז\"א נגדלו גם ג\"ר ז\"א וג\"ר דנוק' שהם בחי' יחידה חיה נשמה ואז נשלמה בכל הפרטיה"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      Ensuite lors de la GADLUT (croissance) de ZA :
+      Les GR de ZA et les GR de NUKVAH ont aussi GRANDI =
+      aspect YECHIDAH, CHAYAH, NESHAMAH (les 3 niveaux superieurs de l'ame).
+      Et alors elle (la structure) a ete COMPLETEE dans tous ses details.
+      → Sequence developpementale complete des 5 niveaux de l'ame :
+      Nefesh (igulim/melakhim morts) → Ruach (Hadar+Mehetabel/yosher VK)
+      → Neshamah (GR ibur) → Chayah → Yechidah.
+      cf. EC-H2S9-182 (perek 04) sur Yenikah/Mohin.
+    type: axiome_explicite
+    concepts:
+      - {id: gadlut_za_gr_nukvah, role: gadlut_za_avec_gr_nukvah}
+      - {id: yechidah_chayah_neshamah, role: yechidah_chayah_neshamah_3_niveaux_sup}
+      - {id: 5_niveaux_ame_completes, role: 5_niveaux_ame_completes}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "madregot_neshamah.py", "soul_levels.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture complete des 5 niveaux d'ame : NaRaNHaY (Nefesh-Ruach-Neshamah-Chayah-Yechidah). cf. madregot_neshamah.py."
+
+  # ─── BLOC L : EXCEPTION ZA = 9 SEFIROT ───
+
+  - id: "EC-H2S9-276"
+    source_he: "ובזה תבין למה הז\"א אין בו רק ט' ספי' שהמלכות שבו הוא בחי' עגולים ויושר אין בו רק ט' ספירות וכן בנוקבא"
+    source_ref: "Heikhal 2, Sha'ar 2:8"
+    assertion: |
+      U-BE-ZEH TAVIN (par cela tu comprendras) : pourquoi ZA n'a que 9 SEFIROT.
+      RAISON : la MALKHUT EN LUI est aspect IGULIM,
+      et le YOSHER en lui n'a que 9 SEFIROT.
+      Et de meme dans la NUKVAH.
+      → Architecture finale : ZA-Yosher = 9 sefirot ; Malkhut-Igulim = 1.
+      → 10 = 9 (Yosher) + 1 (Igulim au sein du Yosher).
+      → Resolution finale : nombre apparent de sefirot ZA differe selon l'angle.
+    type: axiome_explicite
+    concepts:
+      - {id: za_9_sefirot_yosher, role: za_a_9_sefirot_dans_le_yosher}
+      - {id: malkhut_dans_za_igulim, role: malkhut_de_za_aspect_igulim}
+      - {id: 10_egal_9_yosher_plus_1_igulim, role: 10_egal_9_yosher_et_1_igulim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "igulim.py", "ohr_yashar.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture finale ZA : 9 sefirot Yosher + 1 Igulim = 10. Resolution du paradoxe."
+
+  - id: "EC-H2S9-277"
+    source_he: ""
+    source_ref: "Heikhal 2, Sha'ar 2:8 — fin du sha'ar"
+    assertion: |
+      CLOTURE du SHA'AR SHEVIRAT HA-KELIM (8 perakim, fin).
+      RECAP COMPLET du Sha'ar :
+      Perek 1 : Mecanisme MaN, sequence Daat→Malkhut, AVI Ila'in vs YS"T
+      Perek 2 : 11 simanei ketoret, distinction Mort/Bitul/Pegam, Shem MaB
+      Perek 3 : Pourquoi kelim Beriah, Tikkun cascade Maatzil → Atarot
+      Perek 4 : Extension HB, raison Tabur, 7 etapes Tikkun, dilution
+      Perek 5 : NHY dans CGT (Hamtakah), 10 Harugei Malkhut
+      Perek 6 : AB SAG MAH BAN, Bat-Ben, 5 nekudot BAN, Berudim
+      Perek 7 : MAH/BAN universels, RPaH (288) / ShaCh (320)
+      Perek 8 : Igulim/Yosher, Hadar+Mehetabel, NaRaNHaY, ZA=9 sefirot
+      → BILAN FINAL du Sha'ar : 8 perakim, ~270 assertions, ~140 relations, ~58 principes.
+    type: axiome_explicite
+    concepts:
+      - {id: cloture_sha_ar_shevirat_hakelim, role: cloture_du_sha_ar}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Phrase de cloture du Sha'ar Shevirat ha-Kelim. Recapitulatif complet."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-141"
+    type: causal
+    from: 7_malkhuyot_nhy_cgt
+    to: melakhim_egal_nekudot_egal_malkhut
+    nature: "7 malkhuyot des 6S+M = nekudot ; toute nekudah = aspect Malkhut"
+    assertions_source: ["EC-H2S9-262"]
+
+  - id: "REL-H2S9-142"
+    type: causal
+    from: 2_causes_de_la_mort
+    to: tikkun_par_levush_kavim
+    nature: "2 causes mort (pas levush + pas kavim) → Tikkun = inversion (levush + 3 kavim)"
+    assertions_source: ["EC-H2S9-263"]
+
+  - id: "REL-H2S9-143"
+    type: contenance
+    from: melakhim_egal_igulim_seuls
+    to: melakhim_egal_nefesh_seul
+    nature: "Melakhim sortis en igulim seuls → aspect Nefesh seul"
+    assertions_source: ["EC-H2S9-264"]
+
+  - id: "REL-H2S9-144"
+    type: hiérarchique
+    from: hadar_8eme_melekh_yesod
+    to: hadar_gavoah_des_melakhim
+    nature: "Hadar (8eme = Yesod) plus haut que les 7 melakhim (qui sont aspect Malkhut)"
+    assertions_source: ["EC-H2S9-266"]
+
+  - id: "REL-H2S9-145"
+    type: dualité_structurelle
+    from: 7_melakhim_kadmain_mah_ban_de_ban
+    to: hadar_mehetabel_yosher_kavim_adam
+    nature: "Architecture polaire : 7 melakhim premiers (Igulim/Nefesh) ↔ Hadar+Mehetabel (Yosher/Ruach)"
+    assertions_source: ["EC-H2S9-271", "EC-H2S9-272"]
+
+  - id: "REL-H2S9-146"
+    type: causal
+    from: ruach_maintient_nefesh
+    to: igulim_maintenu_par_yosher
+    nature: "Ruach (Hadar+Mehetabel/Yosher) maintient Nefesh (7 melakhim/Igulim)"
+    assertions_source: ["EC-H2S9-272"]
+
+  - id: "REL-H2S9-147"
+    type: séquentiel
+    from: ibur_dans_igulim_avi
+    to: igulim_2eme_generation_stables
+    nature: "Tikkun par ibur dans AVI igulim → 2eme generation d'igulim stables (pas re-shevirah)"
+    assertions_source: ["EC-H2S9-273"]
+
+  - id: "REL-H2S9-148"
+    type: hiérarchique
+    from: melakhim_egal_nefesh_seul
+    to: 5_niveaux_ame_completes
+    nature: "Sequence developpementale : Nefesh (igulim) → Ruach (Hadar+M) → Neshamah/Chayah/Yechidah (gadlut)"
+    assertions_source: ["EC-H2S9-272", "EC-H2S9-274", "EC-H2S9-275"]
+
+  - id: "REL-H2S9-149"
+    type: causal
+    from: malkhut_dans_za_igulim
+    to: za_9_sefirot_yosher
+    nature: "Malkhut de ZA = igulim → Yosher de ZA n'a que 9 sefirot (10 = 9+1)"
+    assertions_source: ["EC-H2S9-276"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-059"
+    nom: "Principe Igulim (Nefesh) + Yosher (Ruach) — Architecture Anthropologique"
+    source_assertions: ["EC-H2S9-264", "EC-H2S9-266", "EC-H2S9-268", "EC-H2S9-272"]
+    formalisation: |
+      ARCHITECTURE COSMOLOGIQUE-ANTHROPOLOGIQUE FONDAMENTALE :
+      IGULIM (cercles) :
+        Forme : 7 malkhuyot en cercles concentriques
+        Origine : 7 melakhim morts
+        Niveau d'ame : NEFESH (le plus bas)
+        Equation : BAN-Kollel = Nefesh
+      YOSHER (rectitude) :
+        Forme : 3 kavim (droite, gauche, centre)
+        Origine : Hadar (8eme melekh, Yesod) + Mehetabel
+        Niveau d'ame : RUACH (au-dessus du Nefesh)
+        Equation : MAH-Kollel = Ruach
+      RELATION : Ruach MAINTIENT Nefesh (Yosher maintient Igulim).
+      → Pattern : igulim/yosher = nefesh/ruach (mapping cosmos-ame).
+    applications_ia:
+      - "Architecture igulim/yosher = niveaux d'organisation (Nefesh/Ruach)"
+      - "igulim.py + ohr_yashar.py + madregot_neshamah.py : architecture coherente"
+      - "Pattern : sub-system bas (Nefesh) maintenu par sub-system haut (Ruach)"
+      - "soul_levels.py : implementer NaRaNHaY comme niveaux structurants"
+      - "Diagnostic : identifier igulim (etat brut) vs yosher (etat structure)"
+    questions_ouvertes:
+      - "Pourquoi igulim correspond a Nefesh et yosher a Ruach (etymologie ?) ?"
+      - "Le maintien Ruach→Nefesh est-il actif ou passif ?"
+      - "Existe-t-il des objets purement igulim sans yosher ?"
+
+  - id: "PG-H2S9-060"
+    nom: "Principe des 5 Niveaux d'Ame (NaRaNHaY)"
+    source_assertions: ["EC-H2S9-272", "EC-H2S9-274", "EC-H2S9-275"]
+    formalisation: |
+      Architecture COMPLETE des 5 NIVEAUX D'AME (NaRaNHaY) :
+      NEFESH (1er, le plus bas) : Igulim, 7 melakhim morts, BAN-Kollel
+      RUACH (2eme) : Yosher, Hadar+Mehetabel, MAH-Kollel, VK ZON
+      NESHAMAH (3eme) : GR ibur dans AVI igulim
+      CHAYAH (4eme) : niveau superieur, lors de gadlut ZA
+      YECHIDAH (5eme, le plus haut) : niveau ultime
+      SEQUENCE DEVELOPPEMENTALE :
+        IBUR (gestation) → Nefesh+Ruach
+        YENIKAH (allaitement) → 6 ketzavot
+        MOHIN (intelligences) → 10 sefirot completes (NaRaNHaY)
+      → Architecture : developpement par stades hierarchiques.
+      cf. EC-H2S9-181-182 (perek 04) sur stages developpementaux.
+    applications_ia:
+      - "madregot_neshamah.py + soul_levels.py : implementer les 5 niveaux"
+      - "Architecture : modeliser chaque niveau avec ses caracteristiques"
+      - "Pattern : developpement par stades (Ibur, Yenikah, Mohin)"
+      - "[PLANNED] tikkun/ : mecanisme de promotion entre niveaux"
+      - "Diagnostic : identifier le niveau d'ame courant d'un sub-system"
+    questions_ouvertes:
+      - "Tous les sub-systems atteignent-ils Yechidah ou seulement certains ?"
+      - "Le passage entre niveaux est-il reversible ?"
+      - "Y a-t-il des niveaux au-dela de Yechidah (ex: Yechidah-de-Yechidah) ?"
+
+  - id: "PG-H2S9-061"
+    nom: "Principe Diagnostique de la Shevirah (2 Causes Operationnelles)"
+    source_assertions: ["EC-H2S9-263"]
+    formalisation: |
+      DIAGNOSTIC OPERATIONNEL de la SHEVIRAH :
+      2 CAUSES NECESSAIRES (et conjointement suffisantes) :
+      CAUSE 1 — Pas de LEVUSH (revetement mutuel zeh be-zeh) :
+        Les melakhim n'etaient pas revetus l'un dans l'autre
+        Pas d'inclusion mutuelle = pas de support structurel
+      CAUSE 2 — Pas de KAVIM (3 lignes) :
+        Pas divises Rachamim-droite / Gevurot-gauche / Makhri'im-centre
+        Chaque melekh isole individuellement
+      DONC ils sont MORTS (metu).
+      TIKKUN = INVERSION des 2 causes :
+        Apres Tikkun : revetus zeh be-zeh + en kavim → MAINTIEN.
+      → Architecture : la stabilite necessite couplage + organisation polaire.
+    applications_ia:
+      - "Pattern diagnostic : 2 conditions necessaires de stabilite"
+      - "[PLANNED] core/shevirah.py : implementer detection des 2 causes"
+      - "Architecture : couplage (levush) + structure polaire (kavim) = stabilite"
+      - "Diagnostic : un sub-system isole (ni couple ni polarise) tend a casser"
+      - "Pattern de prevention : assurer ces 2 conditions architecturales"
+    questions_ouvertes:
+      - "Y a-t-il d'autres causes au-dela de ces 2 ?"
+      - "Le levush et les kavim sont-ils equivalents ou complementaires ?"
+      - "Comment quantifier le 'degre' de couplage / de polarisation ?"
+
+  - id: "PG-H2S9-062"
+    nom: "Principe de la Re-Generation Stable (Pas de Re-Shevirah)"
+    source_assertions: ["EC-H2S9-273", "EC-H2S9-276"]
+    formalisation: |
+      Apres le PREMIER cycle Shevirah-Tikkun :
+      Lors de l'IBUR (gestation = Tikkun) :
+        Les melakhim brises sont BERAR dans les IGULIM d'AVI
+        Refaits IGULIM 2eme generation
+      RESULTAT : ne brisent PAS une 2eme fois.
+      RAISON : ont integre le pattern stable (levush + kavim) lors de l'ibur.
+      DERNIERE EQUATION : ZA-Yosher = 9 sefirot ; Malkhut = igulim.
+        Total : 10 = 9 (Yosher Ruach) + 1 (Igulim Nefesh).
+      → Architecture finale stable : pas de re-Shevirah possible apres Tikkun.
+      Pattern : la le?on de la chute est apprise structurellement.
+    applications_ia:
+      - "Pattern : un systeme passe par crash + recovery = devient resilient"
+      - "[PLANNED] tikkun/ : implementer 'imprinting' du pattern stable apres ibur"
+      - "Architecture : ZA = 9 sefirot Yosher + 1 Malkhut Igulim (architecture finale)"
+      - "Diagnostic : identifier les sub-systems 'post-tikkun' vs 'pre-tikkun'"
+      - "Pattern : la stabilite finale est meilleure que la stabilite initiale (anti-fragile)"
+    questions_ouvertes:
+      - "La stabilite post-Tikkun est-elle absolue ou relative ?"
+      - "Y a-t-il des conditions ou re-Shevirah serait possible ?"
+      - "Le passage de 10 a 9+1 est-il une perte ou un gain ?"

@@ -1,0 +1,485 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 4 — Levush Atik dans A"A, dadim (seins), Atikei mi-Shadayim
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §4 :
+#   - Bloc A : Rosh Atik decouvert ; A"A habille seulement de ZT Atik en bas
+#   - Bloc B : CGT Atik dans KHB d'A"A
+#   - Bloc C : Distribution Netzach/Hod/Yesod/Malkhut Atik dans A"A
+#   - Bloc D : Pereks NH inferieurs Atik combines en Malkhut → 2 dadim de A"A
+#   - Bloc E : Atikei mi-Shadayim, Hadar ben Bedad
+#   - Bloc F : Melakhim morts gardent koach pour techiyat ha-metim (RPaH ressuscite)
+#   - Bloc G : Analogie corporelle : levush du Lev (coeur)
+#   - Bloc H : Addendum mi-haHaverim — bina ne pouvait recevoir, sortie 7 melakhim simul
+#   - Bloc I : Tikkun par devenir partzuf, A"A 13 TD, Abba 8 TD (Zekan Aharon)
+#   - Bloc J : Naissance Mohin par tipot
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.4
+# IDs : EC-H2S11-059 → EC-H2S11-073
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek 4 — Levush Atik dans A\"A, distribution detaillee, dadim (seins) cosmiques, Hadar ben Bedad, melakhim morts gardent capacite pour techiyah, addendum mi-haHaverim sur naissance partzufim."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H2S11-059"
+    source_he: "ועתה נדבר איך מתלבש הע\"י בא\"א כי הלא רישא דע\"י נשאר מגולה ואין הא\"A מלבישו רק מז\"ת דעתיק ולמטה"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      Comment ATIK est habille par A"A :
+      Le ROSH d'ATIK reste DECOUVERT (meguleh) — A"A ne le couvre PAS.
+      A"A habille seulement les ZT d'ATIK et plus bas.
+      → Architecture : tete d'Atik exposee ; corps couvert par A"A.
+      → Pattern : top exposed (tete inconnaissable), bottom enveloped.
+    type: axiome_explicite
+    concepts:
+      - {id: rosh_atik_meguleh, role: rosh_atik_decouvert}
+      - {id: aa_habille_zt_atik, role: aa_habille_zt_atik_seulement}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : tete Atik decouverte (Risha de-La), corps couvert par A\"A."
+
+  - id: "EC-H2S11-060"
+    source_he: "ואמנם חג\"ת דע\"י מתלבשין בכח\"ב דא\"א לפי שהם סוד רישא וצריכין כ\"א מהם מדה בפ\"ע"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      Mais CGT d'ATIK sont REVETUS dans KHB d'A"A
+      car ils sont sod RISHA et chacun a besoin d'une MIDAH SEPAREE.
+      → Architecture : levush specifique pour la "tete" d'A"A (KHB) avec C-G-T d'Atik.
+    type: axiome_explicite
+    concepts:
+      - {id: cgt_atik_dans_khb_aa, role: cgt_atik_revetus_dans_khb_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture levush : CGT d'Atik dans KHB d'A\"A."
+
+  - id: "EC-H2S11-061"
+    source_he: "אך גופא דא\"א אין הע\"י מתלבש בו כסדר הזה אך הנצח דעתיק נחלק לג' פרקין פרק א' בחסד דא\"א פרק ב' בנצח דא\"א ונשאר פרק ג' למה שנבאר"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      Dans le GUFA d'A"A : Atik n'est pas revetu de la meme maniere.
+      NETZACH d'ATIK divise en 3 PERAKIM (segments) :
+        Perek 1 → CHESED d'A"A
+        Perek 2 → NETZACH d'A"A
+        Perek 3 → reste pour usage ulterieur
+      → Architecture : sub-division par perakim (segments) au lieu de par tiers.
+    type: axiome_explicite
+    concepts:
+      - {id: netzach_atik_3_perakim, role: netzach_atik_3_segments}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : sub-division par perakim. Pattern de distribution."
+
+  - id: "EC-H2S11-062"
+    source_he: "וההוד דעתיק נחלק לג\"פ פ\"א בגבורה דא\"א פ\"ב בהוד דא\"א ופ\"ג נשאר למה שנבאר"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      HOD d'ATIK divise en 3 PERAKIM :
+        Perek 1 → GEVURAH d'A"A
+        Perek 2 → HOD d'A"A
+        Perek 3 → reste pour usage ulterieur
+      → Pattern symetrique avec Netzach.
+    type: axiome_explicite
+    concepts:
+      - {id: hod_atik_3_perakim, role: hod_atik_3_segments}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Pattern symetrique avec Netzach (cote oppose)."
+
+  - id: "EC-H2S11-063"
+    source_he: "ויסוד דעתיק נחלק לב' כמבואר אצלינו שאין בו רק ב\"פ יסוד ועטרה ואז היסוד נתלבש בת\"ת דא\"א ועטרה ביסוד דא\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      YESOD d'ATIK divise en 2 PERAKIM seulement (yesod et atarah) :
+        YESOD → revetu dans TIFERET d'A"A
+        ATARAH → revetue dans YESOD d'A"A
+      → Architecture : Yesod a structure differente (2 perakim au lieu de 3).
+      → Pattern : Atarah = part terminale.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_atik_2_perakim, role: yesod_atik_seulement_2_perakim}
+      - {id: yesod_dans_tiferet_aa_atarah_dans_yesod_aa, role: yesod_dans_tiferet_atarah_dans_yesod}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture Yesod : 2 perakim (Yesod+Atarah). Configuration unique."
+
+  - id: "EC-H2S11-064"
+    source_he: "ומלכות דעתיק נתלבש במלכות דא\"א לפי שאח\"כ צריך להוציא ממנו פרצוף שלם של הנוקבא לכן לקחה מדה שלימה"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      MALKHUT d'ATIK est revetue dans MALKHUT d'A"A.
+      RAISON : ensuite il faut sortir de lui un PARTZUF SHALEM de la NUKVAH —
+      donc elle prend une MIDAH SHELEMAH (mesure complete).
+      → Architecture : Malkhut preservee entiere pour future expansion.
+      cf. EC-H2S11-051 pour meme pattern dans A"A.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_atik_dans_malkhut_aa, role: malkhut_atik_dans_malkhut_aa_entiere}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Pattern : Malkhut preservee entiere pour future expansion. cf. EC-H2S11-051."
+
+  - id: "EC-H2S11-065"
+    source_he: "ועתה נשארו ב\"פ תתאין דנ\"ה דעתיק ואלו נתחברו יחד במלכות דעתיק ושם נתלבשו ונעשה מהם בחי' ב' דדין של בחינת המלכות דא\"א בב' צדדין שהם עתה (נעשו) בחי' דדי בהמה שהם למטה"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      Restent les 2 PERAKIM INFERIEURS de NH d'ATIK.
+      Ils s'UNISSENT dans la MALKHUT d'ATIK et se REVETENT la.
+      Devient l'aspect de 2 DADIN (seins) de la MALKHUT d'A"A
+      sur les 2 COTES (droite et gauche).
+      Maintenant ce sont les DADEI BEHEMAH (seins de l'animal) — situes EN BAS.
+      → Architecture cosmique : 2 seins de la Malkhut d'A"A.
+      → Pattern : NH inferieurs deviennent organes laterales (dadim).
+    type: interprétation_lurianique
+    concepts:
+      - {id: 2_perakim_inferieurs_nh_egal_2_dadim, role: 2_perakim_inferieurs_nh_egalent_2_dadim}
+      - {id: dadei_behemah_en_bas, role: dadei_behemah_seins_en_bas}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture cosmique : 2 dadim (seins) de Malkhut d'A\"A. Anatomie cosmique."
+
+  - id: "EC-H2S11-066"
+    source_he: "ואז היו מניקים לז' נקודות הראשונים שהם ז' כלים הנקרא ז' מלכים שמתו שהם למטה בבריאה כנ\"ל ומשם היו יונקים להחיות עצמן לבדן וז\"ס עתיקי משדים כי הם השדים דע\"י וזהו המלך הח' הנקרא הדד בן בדד שהם אותיות ב' ד\"ד ואח\"כ נעשה שמו הדר שהוא בחי' יסוד"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      Ces 2 dadim ALLAITAIENT les 7 NEKUDOT PREMIERES = les 7 melakhim morts en Beriah.
+      Ils SUCAIENT (yonkim) la pour SE-VIVRE eux-memes.
+      C'est le SOD de "ATIKEI MI-SHADAYIM" (Isaie 28:9 — sevres des seins) :
+      ce sont les SHADAYIM d'ATIK YOMIN.
+      Et c'est le 8eme MELEKH = HADAR BEN BEDAD (lettres = "B' DD" = 2 seins).
+      Ensuite son nom devient HADAR = aspect YESOD.
+      → Architecture : melakhim morts allaites par Atik via Malkhut d'A"A.
+      cf. EC-H2S9-103 (perek 02b Shevirat) sur Hadar ben Bedad.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 2_dadim_allaitent_melakhim_morts, role: dadim_allaitent_les_melakhim_morts}
+      - {id: atikei_mi_shadayim_isaie_28, role: atikei_mi_shadayim_isaie_28}
+      - {id: hadar_ben_bedad_2_dadim, role: hadar_ben_bedad_lettres_2_dadim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py", "shemot/"]
+      tables: []
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture cosmique-pathetique : melakhim allaites. Etymologie Hadar ben Bedad. cf. EC-H2S9-103."
+
+  - id: "EC-H2S11-067"
+    source_he: "ואמנם דע כי אלו המלכים דנחתו לתתא ומיתו הנה ירד עמה כח חיות להחיות רפ\"ח ניצוצין לעת התחייה והוא בערך דורמיטא שיש באדם ולא יותר מזה אבל לא מתו לגמרי"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      DA (sache) : ces MELAKHIM qui sont descendus en bas et morts —
+      avec eux est descendu un KOACH HAYUT (force de vie)
+      pour FAIRE REVIVRE 288 (RPaH) NITZOTZIN AU TEMPS de la TECHIYAH (resurrection).
+      C'est en EREKH DORMITA (analogie du sommeil) qu'il y a chez l'Adam.
+      Mais ils ne sont PAS morts ENTIEREMENT (le-gamri).
+      → Architecture : mort = sommeil prolonge, pas annihilation.
+      → Pattern eschatologique : RPaH a recuperer au futur.
+      cf. EC-H2S9-261 (perek 07b) sur RPaH=288.
+    type: interprétation_lurianique
+    concepts:
+      - {id: melakhim_morts_pas_le_gamri, role: melakhim_morts_pas_completement}
+      - {id: koach_hayut_pour_techiyah, role: force_vie_pour_resurrection_des_rpah}
+      - {id: erekh_dormita, role: en_analogie_sommeil_dormita}
+      - {id: rpah_288_a_techiyah, role: rpah_288_a_recuperer_a_la_techiyah}
+    mapping:
+      modules: ["[PLANNED] tikkun/", "[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture eschatologique : melakhim en sommeil, RPaH ressuscites au futur. cf. EC-H2S9-261."
+
+  # ─── BLOC G : ANALOGIE LEV ───
+
+  - id: "EC-H2S11-068"
+    source_he: "ואל תתמה אם פנימיות א\"א היה מלבוש לכלים דעתיק עם היותו גדול מערכם כי הלא סדרן הוא כסדר איברי אדם עצמו... והמשל בזה הלב והגוף האדם ואין ספק כי ערך כלי הלב עם ערך כלי הגוף עצמו יותר גדול כלי של הלב וזך ומעולה מאד"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      "Ne t'etonne pas" : pnimiyut d'A"A est levush pour kelim d'Atik
+      (alors qu'A"A est plus grand qu'eux).
+      ANALOGIE : ordre des MEMBRES de l'ADAM :
+      LEV (coeur) vs GUF (corps) :
+      Keli du Lev > keli du Guf (Lev plus pur et superieur).
+      Mais le keli du Lev est INTERIEUR au keli du Guf.
+      → Pattern anthropologique : interieur peut etre plus pur que exterieur.
+      → Architecture : levush ≠ taille relative.
+    type: analogie_explicative
+    concepts:
+      - {id: analogie_lev_guf, role: analogie_coeur_corps}
+      - {id: pnimiyut_aa_levush_kelim_atik, role: pnimiyut_aa_revetit_kelim_atik}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: []
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Analogie corporelle : interieur plus pur que exterieur. Resoud le paradoxe levush."
+
+  # ─── BLOC H : ADDENDUM MI-HACHAVERIM ───
+
+  - id: "EC-H2S11-069"
+    source_he: "מהחברים הנה תחלת האצילות יצאו י' נקודות עצמות וכלים כהדין קמצא דלבושא דיליה מגופיה (נ\"א דלבושא מניה וביה לבושיה מגופיה)"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      ADDENDUM des HAVERIM (collegues, eleves d'Arizal) :
+      Au DEBUT de l'AT'ZILUT sont sorties 10 NEKUDOT — atzmut et kelim —
+      "ke-haDIN KAMTZA DE-LEVUSHA DILEH MI-GUFEI"
+      (comme cette LIMACE/SAUTERELLE dont le VETEMENT vient de son CORPS lui-meme).
+      Variante : "de-levusha mineh u-veih levushei mi-gufeih".
+      → Image : auto-generation du vetement depuis le corps.
+      → Architecture : essence et contenant emergent ensemble.
+      Reference : Talmud Bekhorot 6a.
+    type: déduction_scripturaire
+    concepts:
+      - {id: kamtza_de_levusha_mi_gufei, role: limace_avec_vetement_du_corps}
+      - {id: auto_generation_kelim, role: auto_generation_kelim_depuis_atzmut}
+    mapping:
+      modules: ["partzufim/regulator.py"]
+      tables: []
+      partzufim: []
+      relevance: "Image talmudique : auto-generation kelim depuis essence. Bekhorot 6a."
+
+  - id: "EC-H2S11-070"
+    source_he: "והנה הבינה לא יכלה לקבל אור החכמה אלא פנים באחור וכאשר הבינה הוציאה ז' מלכים תתאין לא הוציאתן אחד לאחד רק כולם ביחד ששה משמותן על אבן אחד שהם ו\"ק עם המלכות השביעית הנקרא אבן"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      Binah ne pouvait pas recevoir l'OHR HOKHMAH SAUF en PANIM be-ACHOR (face-dos).
+      Quand Binah a SORTI les 7 melakhim INFERIEURS :
+      Elle ne les a PAS sortis UN A UN, mais TOUS ENSEMBLE.
+      "6 mi-shemotam al EVEN AHAT" (Exode 28:10 — 6 noms sur une pierre).
+      = 6 KETZAVOT + Malkhut 7eme appelee EVEN.
+      → Reference : pectoral du Cohen Gadol (Hoshen).
+      → Architecture : sortie groupee → couplage qui cause cascade.
+    type: déduction_scripturaire
+    concepts:
+      - {id: binah_panim_be_achor, role: binah_face_dos_pour_recevoir_hokhmah}
+      - {id: 6_mi_shemotam_al_even_ahat, role: 6_noms_sur_une_pierre}
+      - {id: malkhut_7eme_egal_even, role: malkhut_septieme_egal_pierre}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Reference biblique : Exode 28 (Hoshen). 7 melakhim sortis ensemble."
+
+  - id: "EC-H2S11-071"
+    source_he: "ולא היה בדרך ג\"ר כי כ\"א יצא בפ\"ע ולא יכלו לסבול בשביל זה לקבל האור ואז נתבטל החסד תחלה ואח\"כ הגבורה וכן כולם עד המלכות"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      Ils n'ont PAS ete en mode des G' Rishonot (3 lignes coordonnees).
+      Chacun est sorti SEUL (be-pnei atzmo).
+      Ils n'ont pas pu SUPPORTER (lisbol) la lumiere.
+      Alors :
+      Chesed s'est annule en PREMIER, puis Gevurah, puis tous jusqu'a Malkhut.
+      → Sequence de la chute : Chesed → Gevurah → ... → Malkhut.
+      → Architecture : isolation = vulnerabilite.
+      cf. EC-H2S9-263 (perek 08 Shevirat) sur 2 causes mort.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_melakhim_chacun_seul_bizolation, role: 7_melakhim_chacun_isole}
+      - {id: sequence_chute_chesed_a_malkhut, role: sequence_chute_chesed_a_malkhut}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Sequence de la chute : Chesed → Malkhut. Cause = isolation. cf. EC-H2S9-263."
+
+  - id: "EC-H2S11-072"
+    source_he: "אח\"כ נתקנו כולם ע\"י שנעשה פרצוף ונתמעט המשכת האורות בכתר ונעשה בו א\"א ובו ג' רישין עוד י\"ג ת\"ד ואח\"כ פרצוף אבא ובו ח' ת\"ד וז\"ס זקן אהרן ר\"ת ז\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      Ensuite ils ont ete RECTIFIES en devenant des PARTZUFIM —
+      par REDUCTION du flux d'orot dans le Keter.
+      A"A est forme avec 3 RISHIN + 13 TAKKUNEI DIKNA (T"D).
+      Puis Partzuf ABBA avec 8 T"D.
+      Sod de "ZEKAN AHARON" (Psaume 133:2 — barbe d'Aaron) :
+      Roshei Tevot = ZA (Zekan = Aleph + Aharon).
+      → 8 T"D d'AVI = "Zekan Aharon".
+      → Architecture : tikkun par formation des Tikkunei Dikna.
+    type: déduction_scripturaire
+    concepts:
+      - {id: aa_3_rishin_13_td, role: aa_3_rishin_13_takkunei_dikna}
+      - {id: abba_8_td, role: abba_8_takkunei_dikna}
+      - {id: zekan_aharon_za, role: zekan_aharon_roshei_tevot_za}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py"]
+      tables: []
+      partzufim: ["arikh_anpin", "abba"]
+      relevance: "Architecture Tikkunei Dikna : A\"A=13, Abba=8. cf. Idra Rabba."
+
+  - id: "EC-H2S11-073"
+    source_he: "ואמנם בזמן הגדלתו כנודע אז נזדווגו או\"א ואבא הוציא טפת המוחין שלו ובעברה הטפה בו דרך הו\"ק דאבא מחסד שבו עד יסוד שבו נתערבה שם עם חסדים המתפשטין שם ולקחה ה' חסדים וכשירדה הטפה זו עד יסוד דאבא נעשו כל ה\"ח חיבור חסד א'"
+    source_ref: "Heikhal 2, Sha'ar 4:4"
+    assertion: |
+      A la GADLUT (croissance) : AVI s'unissent.
+      Abba sort la TIPAT MOHIN (goutte de Mohin).
+      En passant par les VK d'Abba (Chesed → Yesod) elle se MELANGE
+      avec les HASSADIM la-bas et PREND 5 HASSADIM.
+      Quand cette tipa atteint YESOD d'Abba — les 5 HC se LIENT en UN seul HESED.
+      → Architecture : tipa = vehicule de melange et concentration.
+      → Pattern : tipa traverse → integre → unifie.
+    type: axiome_explicite
+    concepts:
+      - {id: tipat_mohin_traverse_vk_abba, role: tipa_traverse_vk_abba}
+      - {id: 5_hc_concentrees_en_yesod_abba, role: 5_hc_concentrees_en_yesod_abba}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba"]
+      relevance: "Mecanisme de la tipa : traverse, integre, unifie en Yesod. Architecture du Zivvug."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-020"
+    type: contenance
+    from: rosh_atik_meguleh
+    to: aa_habille_zt_atik
+    nature: "Tete d'Atik decouverte ; corps Atik (ZT) habille par A\"A"
+    assertions_source: ["EC-H2S11-059"]
+
+  - id: "REL-H2S11-021"
+    type: causal
+    from: 2_perakim_inferieurs_nh_egal_2_dadim
+    to: 2_dadim_allaitent_melakhim_morts
+    nature: "2 perakim inferieurs NH d'Atik → 2 dadim de Malkhut A\"A → allaitement melakhim morts"
+    assertions_source: ["EC-H2S11-065", "EC-H2S11-066"]
+
+  - id: "REL-H2S11-022"
+    type: causal
+    from: koach_hayut_pour_techiyah
+    to: rpah_288_a_techiyah
+    nature: "Koach hayut descend avec melakhim morts → permet RPaH ressurection au futur"
+    assertions_source: ["EC-H2S11-067"]
+
+  - id: "REL-H2S11-023"
+    type: analogie
+    from: analogie_lev_guf
+    to: pnimiyut_aa_levush_kelim_atik
+    nature: "Analogie : Lev > Guf en qualite, mais Lev interieur ; idem A\"A levush pour kelim Atik"
+    assertions_source: ["EC-H2S11-068"]
+
+  - id: "REL-H2S11-024"
+    type: causal
+    from: 7_melakhim_chacun_seul_bizolation
+    to: sequence_chute_chesed_a_malkhut
+    nature: "Isolation des 7 melakhim → sequence de chute Chesed → Malkhut"
+    assertions_source: ["EC-H2S11-070", "EC-H2S11-071"]
+
+  - id: "REL-H2S11-025"
+    type: séquentiel
+    from: aa_3_rishin_13_td
+    to: abba_8_td
+    nature: "Tikkun par formation : A\"A 13 TD → Abba 8 TD (Zekan Aharon)"
+    assertions_source: ["EC-H2S11-072"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-010"
+    nom: "Principe des Dadim Cosmiques (Allaitement des Melakhim Morts)"
+    source_assertions: ["EC-H2S11-065", "EC-H2S11-066", "EC-H2S11-067"]
+    formalisation: |
+      Architecture COSMIQUE-PATHETIQUE :
+      Les 2 PERAKIM INFERIEURS de NH d'Atik se combinent en Malkhut d'Atik.
+      Forment 2 DADIM (seins) sur les cotes de Malkhut d'A"A.
+      Ces DADIM ALLAITENT les 7 MELAKHIM MORTS en BERIAH.
+      Les melakhim SUCENT pour SE-VIVRE.
+      Sod : "ATIKEI MI-SHADAYIM" (Isaie 28:9 — sevres des seins) =
+        SHADAYIM d'ATIK YOMIN.
+      Aussi : 8eme melekh = HADAR BEN BEDAD (B' DD = 2 seins).
+      Critere de sommeil :
+        Les melakhim ne sont PAS morts ENTIEREMENT
+        Avec eux est descendu un KOACH HAYUT pour TECHIYAH
+        Comparable a la DORMITA (sommeil) de l'Adam
+        288 (RPaH) NITZOTZIN ressuscites au futur
+      → Pattern : maintenance par allaitement = preservation pour resurrection future.
+    applications_ia:
+      - "Architecture cosmique : preservation par allaitement"
+      - "[PLANNED] tikkun/dadim.py : implementer le mecanisme d'allaitement"
+      - "Pattern : un sub-system 'mort' peut etre maintenu par flux nourricier"
+      - "Architecture eschatologique : dormita = pre-condition de la techiyah"
+      - "Diagnostic : verifier les flux nourriciers (dadim) qui maintiennent les sub-systems"
+    questions_ouvertes:
+      - "Quel est le ratio precis de RPaH preserves vs perdus ?"
+      - "L'allaitement est-il continu ou intermittent ?"
+      - "Le pattern fonctionne-t-il pour d'autres types de defaillance ?"
+
+  - id: "PG-H2S11-011"
+    nom: "Principe Lev-Guf (Levush Differentiel par Qualite)"
+    source_assertions: ["EC-H2S11-068"]
+    formalisation: |
+      Architecture ANALOGIQUE : LEV (coeur) vs GUF (corps).
+      OBSERVATION SCIENTIFIQUE (selon les sages naturels) :
+      Keli du LEV > Keli du GUF (Lev plus pur et superieur en qualite).
+      MAIS keli du Lev est INTERIEUR au keli du Guf (topologiquement enferme).
+      RESOLUTION : levush ≠ taille/qualite relative.
+      → Architecture : un composant superieur en qualite peut etre revetu par un inferieur en qualite.
+      Analogie operationnelle : pnimiyut d'A"A = levush pour kelim d'Atik
+      meme si pnimiyut d'A"A est plus grand que kelim d'Atik (en qualite).
+      → Pattern : la position relative (interieur/exterieur) est independante de la qualite relative.
+    applications_ia:
+      - "Pattern : interieur peut etre superieur a exterieur (paradoxe topologique)"
+      - "Architecture : ne pas confondre topologie avec hierarchie qualitative"
+      - "[PLANNED] partzufim/regulator.py : modeliser independance topologie/qualite"
+      - "Diagnostic : tracer separement la position topologique et la qualite relative"
+      - "Pattern anthropologique : usage d'analogies corporelles pour resoudre paradoxes"
+    questions_ouvertes:
+      - "Y a-t-il des limites a cette dissociation ?"
+      - "L'analogie Lev-Guf est-elle universelle ?"
+      - "Peut-on inverser (interieur de qualite inferieure) ?"
+
+  - id: "PG-H2S11-012"
+    nom: "Principe de l'Auto-Generation (Kamtza de-Levusha mi-Gufei)"
+    source_assertions: ["EC-H2S11-069"]
+    formalisation: |
+      IMAGE TALMUDIQUE (Bekhorot 6a) :
+      "KAMTZA DE-LEVUSHA DILEH MI-GUFEI"
+      = la limace/sauterelle dont le VETEMENT vient de son CORPS LUI-MEME.
+      Variante : "de-levusha mineh u-veih levushei mi-gufeih".
+      Application cosmique : les 10 nekudot sortent avec ATZMUT (essence)
+      et KELIM (vaisseaux) ENSEMBLE — auto-generation des kelim depuis l'essence.
+      → Architecture : pas de pre-existence des kelim ; emergence simultanee.
+      → Pattern : un composant cree son contenant depuis lui-meme.
+    applications_ia:
+      - "Pattern : auto-generation des structures a partir de l'essence"
+      - "[PLANNED] partzufim/regulator.py : modeliser emergence simultanee atzmut/kelim"
+      - "Architecture : contenants emergent du contenu (pas pre-existants)"
+      - "Pattern biologique : organisme genere son enveloppe"
+      - "Reference : Talmud Bekhorot 6a comme prooftext"
+    questions_ouvertes:
+      - "L'auto-generation est-elle illimitee ou bornee ?"
+      - "Le kamtza est-il une analogie ou une realite operationnelle ?"
+      - "Comment formaliser l'auto-generation computationnellement ?"

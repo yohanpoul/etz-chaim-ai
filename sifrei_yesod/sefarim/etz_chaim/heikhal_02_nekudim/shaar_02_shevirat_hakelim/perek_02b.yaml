@@ -1,0 +1,895 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 2b — Shem MaB detaille, gematriot AVI, sequence orot meluvashim,
+#             Tikkun ZA, mecanisme Mohin ZA/Nukvah, parashat Vayishlach
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §2 — Part B :
+#   - Bloc H : ABG = 16 = 7 melakhim, ITZ = brisure, RH"R 16 amah
+#   - Bloc I : Variantes Aruch (ABGA = Satan), Shatnez Gatz
+#   - Bloc J : Shem 2 KR"A SHT"N = Gevurah, KR"A = dechirure (pas mort)
+#   - Bloc K : Gematria AVI PbP=ZAKHOR / AhB=TASHKACH, KRA SHTN gimatria
+#   - Bloc L : Avant/apres mort 1/3 sup Tiferet, orot meluvashim, HM"N ZON
+#   - Bloc M : Mecanisme Itamut = Tikkun, kelim mehazeh inf moindre shevirah
+#   - Bloc N : Tikkun ZA inverse (mibsh dvtava ulemata megulim)
+#   - Bloc O : Achoraim AVI/YST pris par ZA/Malkhut
+#   - Bloc P : ZON PbP shavim = NHY AVI/YST mohin, 2 Yaakov
+#   - Bloc Q : Achoraim Abba=Hassadim ZA, Imma=Gevurot ZA
+#   - Bloc R : Vayishlach 4 melakhim avec pere, pere seulement pendant regne
+#   - Bloc S : Question Husham, reponse fils nomme du pere
+#   - Bloc T : Hadad ben Bedad = 1/3 sup Tiferet = Dadim de Binah
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.2 (seconde partie)
+# IDs : EC-H2S9-078 → EC-H2S9-105
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 2
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Seconde partie du perek 2 — Shem MaB detaille, gematriot AVI PbP/AhB, mecanisme orot meluvashim, Tikkun ZA inverse, Mohin ZA/Nukvah, parashat Vayishlach (4 melakhim ben), Hadad ben Bedad = Dadim de Binah."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC H : ABG = 16 = 7 MELAKHIM ───
+
+  - id: "EC-H2S9-078"
+    source_he: "ונבאר עתה שם מ\"ב הנ\"ל והוא כי שם אבגית\"ץ הוא בספי' חסד כנודע לפי שממנו מתחיל (ביטול) מיתת המלכים כנ\"ל לכן בשם זה נרמז מיתת שבעה מלכים"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      Explication detaillee du SHEM MAB :
+      Le 1er shem AB"G IT"TZ est dans la SEFIRAH de CHESED, comme connu.
+      RAISON : c'est de la (Chesed) que COMMENCE la MITAH des MELAKHIM
+      (variante avec "bitul").
+      → Donc dans ce 1er shem est ENCODE (nirmaz) la MORT des 7 MELAKHIM.
+      cf. EC-H2S9-058 sur la MITAH commencant a Daat (selon une autre lecture).
+    type: interprétation_lurianique
+    concepts:
+      - {id: shem_abg_itz_chesed, role: shem_1_dans_chesed}
+      - {id: chesed_debut_mitah, role: chesed_debut_de_la_mort}
+    mapping:
+      modules: ["shemot/", "[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le 1er shem encode la mort des 7 melakhim, localise dans Chesed (point de depart de la mort effective)."
+
+  - id: "EC-H2S9-079"
+    source_he: "וזהו פי' אבגית\"ץ כמו אבג\"י ת\"ץ כי אבג\"י גימ' י\"ו והם סוד ז' מלכים כי י' הוא במלכות שהיא נקודה א' לבד והוא י' של אבג\"י ואותיות אב\"ג הם ו' בגימ' והם ו\"ק דז\"א והרי הם ז' מלכים"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      ANALYSE GIMATRIA du shem AB"G IT"TZ :
+      Decomposition : AB"GI / T"TZ.
+      AB"GI = guimatria 16 (1+2+3+10 = 16) = sod des 7 melakhim.
+      → Le YOD (10) = MALKHUT (qui est NEKUDAH AHAT — un seul point).
+      → Les lettres AB"G (1+2+3 = 6) = les VAV KETZAVOT (6 directions) = ZA.
+      → ZA (6) + Malkhut (1 dans le yod) = 7 MELAKHIM.
+      → Operation : decomposition de la valeur encodee.
+    type: interprétation_lurianique
+    concepts:
+      - {id: abgi_gimatria_16, role: abgi_egale_seize}
+      - {id: vav_ketzavot_za, role: six_directions_de_za}
+      - {id: malkhut_nekudah_ahat, role: malkhut_un_seul_point}
+    mapping:
+      modules: ["gematria/engine.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: []
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Operation gematria explicite : AB\"GI = 16 = ZA(6) + Malkhut(1*yod). Encodage numerique des 7 melakhim."
+
+  - id: "EC-H2S9-080"
+    source_he: "וז\"ס שארז\"ל כי רה\"ר רחבו י\"ו אמה כי הרי אלו הז' מלכים הם הנקראים רה\"ר בהיותן קודם התיקון ואמנם אחר התיקון נקרא רה\"י. והנה הז' מלכים הנקרא אבג\"י הלא הם נתצו ונשברו ומתו וז\"ס ת\"ץ של אבגית\"ץ"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      REFERENCE HALAKHIQUE : "Reshut ha-Rabbim ROHBO YOD-VAV (16) AMOT" (Mishna).
+      → Les 7 melakhim = RESHUT HA-RABBIM (domaine public) AVANT Tikkun.
+      → Apres Tikkun → RESHUT HA-YAHID (domaine prive).
+      Les 7 melakhim AB"GI ont ete NITTU (brises), NISHBARU, et METU.
+      → C'est le SOD de "T"TZ" dans AB"G IT"TZ (T"TZ = nittutz/shevirah).
+      cf. EC-H2S9-052 sur le bilan de la chute.
+    type: interprétation_lurianique
+    concepts:
+      - {id: reshut_harabim_avant_tikkun, role: rh_r_avant_tikkun}
+      - {id: reshut_hayahid_apres_tikkun, role: rh_y_apres_tikkun}
+      - {id: ttz_nittutz_shevirah, role: ttz_brisure}
+    mapping:
+      modules: ["shemot/", "[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Liaison halakha-kabbalah : RH\"R = 7 melakhim avant Tikkun. Encodage du verbe 'briser' dans T\"TZ."
+
+  # ─── BLOC I : VARIANTES ABAGITZ ───
+
+  - id: "EC-H2S9-081"
+    source_he: "ויש מפרשים אבגית\"ץ מלשון הגמ' ההיא אבגא דבי רב פי' השטן שהיה נמצא בבה\"מ ההוא ונמצא כי אב\"ג (נ\"א אבגית\"ץ) הוא ממש ע\"ד מ\"ש לעיל באותיות שעטנ\"ז ג\"ץ שצירופי שט\"ן ע\"ז ג\"ץ"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      VARIANTE EXEGETIQUE (yesh mefarshim) :
+      AB"G IT"TZ vient de la GUEMARA (Aruch s.v. ABaGa) :
+      "ABGA de-Bei Rav" = SATAN (l'adversaire) qui se trouvait dans cette beit midrash.
+      → Donc AB"G (variante Nusah Aher : "AB"GIT"TZ" entier) est exactement
+      sur le mode du SHATNEZ GATZ (cf. EC-H2S8-126 du perek_06b precedent
+      qui detaille les 7 lettres SH.T.N + AZ + GATZ comme kelim des 7 melakhim).
+      → Equivalence : SHATNEZ GATZ = SHET"N AZ GA"TZ = encodage des 7 rois d'Edom.
+    type: interprétation_lurianique
+    concepts:
+      - {id: abga_satan_aruch, role: abga_satan_dans_aruch}
+      - {id: shatnez_gatz_equivalence, role: equivalence_avec_shatnez_gatz}
+    mapping:
+      modules: ["shemot/", "sitra_achra"]
+      tables: []
+      partzufim: []
+      relevance: "Liaison talmudique-kabbalistique : ABGA = Satan = adversaire. cf. EC-H2S8-126 (Shatnez Gatz)."
+
+  # ─── BLOC J : SHEM 2 = KR"A SHT"N = GEVURAH ───
+
+  - id: "EC-H2S9-082"
+    source_he: "והנה השם ב' הוא קר\"ע שט\"ן הוא בגבורה שהוא המלך הב' אשר במיתתו נפלו אחורי דאמא גם כן ולכן נרמז ביטול אחורי או\"א בשם זה"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      Le 2eme SHEM = KR"A SHT"N est dans la GEVURAH = le 2eme melekh.
+      Note : ici Gevurah est compte comme 2eme (Daat ne compte pas comme melekh apparent).
+      A sa MORT → tombent AUSSI les ACHORAIM d'IMMA.
+      → Donc dans ce 2eme shem est ENCODE le BITUL des Achoraim d'AVI.
+      cf. EC-H2S9-054 (perek 02a) sur la chute Achoraim Imma a Gevurah.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shem_kra_shtn_gevurah, role: shem_2_dans_gevurah}
+      - {id: gevurah_chute_achoraim_imma, role: gevurah_cause_chute_achoraim_imma}
+    mapping:
+      modules: ["shemot/", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "2eme shem KRA SHTN encode le bitul des Achoraim AVI a la mort de Gevurah."
+
+  - id: "EC-H2S9-083"
+    source_he: "וזהו ביאורו קר\"ע ר\"ל כי כאן לא היתה מיתה ונתיצה ממש כמו ז' מלכים רק קריעה ושבירה בעלמא ונשאר במקומה אבל בנתיצה היא הפלת אבן בכח ממקומה למקום אחר כנ\"ל וע\"י קריעה זו יצאה הקליפה הנקרא שטן וזהו קר\"ע שט\"ן"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      EXPLICATION de KR"A SHT"N :
+      KR"A (kri'ah = dechirure) signifie que ICI il n'y avait PAS de mitah ni de
+      nittutz mamash comme les 7 melakhim.
+      Seulement KRI'AH (dechirure) et SHEVIRAH BE-ALMA (brisure generique).
+      → Reste a sa place (ne descend pas en Beriah).
+      Tandis que NITTUTZ = chute violente d'une pierre de sa place vers un autre lieu.
+      Par cette KRI'AH est sortie la KELIPAH appelee SATAN. D'ou KR"A SHT"N.
+      cf. EC-H2S9-068c (perek 02a) sur Bitul intra-olam.
+    type: interprétation_lurianique
+    concepts:
+      - {id: kria_pas_nittutz, role: dechirure_pas_demolition}
+      - {id: kelipah_satan_par_kria, role: satan_kelipah_sortie_par_kria}
+    mapping:
+      modules: ["sitra_achra", "[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Distinction operationnelle : Kri'ah (Bitul intra-olam) vs Nittutz (Mitah inter-olam). Origine de la kelipah Satan."
+
+  # ─── BLOC K : GEMATRIA AVI PbP=ZAKHOR / AhB=TASHKACH ───
+
+  - id: "EC-H2S9-084"
+    source_he: "והנה או\"א בחי' פב\"פ הוא הוי\"ה דיודין באבא ואהי\"ה דיודין באמא ושניהן גימ' רג\"ל והוא גימ' זכור כי הזכירה בה מצד פנים"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      GEMATRIOT AVI en PB"P :
+      ABBA = HAVAYAH de YODIN (YHVH avec MILUI YOD : י-ו-ד ה-י ו-י-ו ה-י = 72)
+      IMMA = AHYH de YODIN (AHYH avec MILUI YOD : א-ל-ף ה-י י-ו-ד ה-י = ?)
+      Les DEUX ensemble = guimatria RAGEL (regel).
+      Et c'est aussi guimatria ZAKHOR (souviens-toi).
+      → Car la ZEKHIRAH (memoire) vient du COTE PANIM (face).
+      cf. EC-H2S8 sur les Miluyim de YHVH.
+    type: interprétation_lurianique
+    concepts:
+      - {id: havayah_yodin_abba, role: havayah_milui_yod_dans_abba}
+      - {id: ahyh_yodin_imma, role: ahyh_milui_yod_dans_imma}
+      - {id: avi_pbp_egal_zakhor, role: avi_pbp_gematria_zakhor}
+      - {id: zekhirah_mi_panim, role: memoire_du_cote_panim}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "Encodage : AVI en PB\"P = guimatria ZAKHOR = memoire active (face)."
+
+  - id: "EC-H2S9-085"
+    source_he: "ובחי' אב\"א הם אחוריים של ב' שמות הנ\"ל שהם אחוריים דהוי\"ה כזה יו\"ד יו\"ד ה\"י יו\"ד ה\"י וי\"ו יו\"ד ה\"י וי\"ו ה\"י באבא ואחורי אמא כזה אל\"ף אל\"ף ה\"י אל\"ף ה\"י יו\"ד אל\"ף ה\"י יו\"ד ה\"י אשר שניהן גי' תשכ\"ח כי השכחה מצד אחוריים"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      GEMATRIOT AVI en AhB :
+      Achoraim de HAVAYAH = יוד יוד הי יוד הי ויו יוד הי ויו הי (Abba)
+      Achoraim de AHYH = אלף אלף הי אלף הי יוד אלף הי יוד הי (Imma)
+      Les DEUX ensemble = guimatria TASHKACH (oubli).
+      → Car la SHIKHAH (oubli) vient du COTE ACHORAIM (dos).
+      → Equation operationnelle : AVI PB"P = ZAKHOR ; AVI AhB = TASHKACH.
+      cf. EC-H2S9-084 pour PB"P.
+    type: interprétation_lurianique
+    concepts:
+      - {id: achoraim_havayah_abba, role: achoraim_havayah_dans_abba}
+      - {id: achoraim_ahyh_imma, role: achoraim_ahyh_dans_imma}
+      - {id: avi_ahb_egal_tashkach, role: avi_ahb_gematria_tashkach}
+      - {id: shikhah_mi_achoraim, role: oubli_du_cote_dos}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: []
+      partzufim: ["abba", "imma"]
+      relevance: "Encodage : AVI en AhB = guimatria TASHKACH = oubli (dos). Symetrie ZAKHOR/TASHKACH."
+
+  - id: "EC-H2S9-086"
+    source_he: "ואמנם קר\"ע שט\"ן גי' תשכח עם הכולל כמנין האחוריים לרמז על נפילת אחורי אבא ואמא"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      Et VRAIMENT KR"A SHT"N = guimatria TASHKACH AVEC LE KOLEL (le total +1).
+      → Comme le compte des Achoraim AVI.
+      Pour ALLUDER (le-ramez) a la chute des Achoraim d'Abba et Imma.
+      → KR"A SHT"N (encodage du shem 2) = TASHKACH (etat AhB) avec kolel.
+      Architecture liturgique : la priere encode arithmetiquement l'etat de la chute.
+    type: interprétation_lurianique
+    concepts:
+      - {id: kra_shtn_egal_tashkach_kolel, role: kra_shtn_gematria_tashkach_plus_kolel}
+      - {id: encodage_chute_achoraim, role: encodage_arithmetique_de_la_chute}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/"]
+      tables: []
+      partzufim: []
+      relevance: "Encodage liturgique-arithmetique : KRA SHTN (priere) = TASHKACH (etat AhB) + 1. Coherence numerique."
+
+  # ─── BLOC L : SEQUENCE OROT MEGULIN → MELUVASHIM ───
+
+  - id: "EC-H2S9-087"
+    source_he: "ונחזור לענין ראשון כי הנה כאשר עדיין לא מת שליש ת\"ת עדיין לא נגמר ירידת ונפילת אחורי דאבא ואמא לגמרי וכאשר היו המלכים האלו נכנסים בכלי שלהם היו מגולין באור גדול"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      RETOUR au sujet : tant que le SHLISH TIFERET n'est pas mort →
+      la chute des Achoraim AVI n'est pas LE-GAMRI.
+      Quand ces MELAKHIM entrent dans leur KELI →
+      ils sont MEGULIN BE-OHR GADOL (decouverts dans une grande lumiere).
+      → Etat 1 : kelim recoivent l'OHR DIRECT, sans ecran. Vulnerables.
+      cf. EC-H2S9-054 (02a) sur fin chute AVI a Gevurah.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_megulin_avant, role: orot_decouverts_avant_chute_complete}
+      - {id: ohr_gadol_direct, role: lumiere_grande_directe}
+    mapping:
+      modules: ["ohr.py", "[PLANNED] core/shevirah.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Etat 1 (vulnerable) : orot decouverts, recus sans ecran. Cause de la fragilite avant Tikkun."
+
+  - id: "EC-H2S9-088"
+    source_he: "אבל אחר שמת שליש עליון דת\"ת אשר אז נפלו שם האחוריים דאו\"א הנה כאשר יצאו שם שאר האורות הנשארים כדי לכנוס בכלי שלהם היו מלובשים באלו האחוריים שנפלו ונשארו באצילות כנ\"ל והיו יוצאין המלכים האחרונים מלובשים באחורי או\"א וזה נשאר להם (נ\"א ועד\"ז נעשים) תמיד עד שיכלו כל הברורים לצאת עד לע\"ל ב\"ב"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      MAIS APRES la mort du SHLISH ELYON TIFERET (la ou les achoraim AVI sont tombes) :
+      Les autres OROT restants sortent en etant MELUVASHIM (habilles)
+      dans ces ACHORAIM tombes restes en AT'ZILUT.
+      Les melakhim ULTERIEURS sortent HABILLES dans les Achoraim AVI.
+      Variante (Nusah Aher) : "ve-al derekh zeh na'asim" (et ainsi se font).
+      → Etat 2 (resilient) : kelim recoivent l'OHR FILTRE par les Achoraim AVI.
+      Cela LEUR RESTE TAMID (toujours) jusqu'a achevement de tous les berurim a l-AT-LAVO.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_meluvashim_apres, role: orot_habilles_apres_chute_complete}
+      - {id: levush_par_achoraim_avi, role: vetement_par_les_achoraim_avi}
+      - {id: kullam_berurim_yatzu, role: tous_les_berurim_acheves}
+    mapping:
+      modules: ["ohr.py", "partzufim/abba.py", "partzufim/imma.py", "[PLANNED] core/shevirah.py"]
+      tables: ["ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Etat 2 (resilient) : orot meluvashim. Mecanisme ARCHITECTURAL de Tikkun par habillage. Pattern persiste jusqu'au l-At-Lavo."
+
+  # ─── BLOC M : MECANISME ITAMUT = TIKKUN ───
+
+  - id: "EC-H2S9-089"
+    source_he: "וז\"ס העלאת מ\"ן אשר מעלין זו\"נ אל אבא ואמא והוא מסוד אלו האחוריים דאו\"א שירדו שם למטה באצילות עצמו כנ\"ל אשר לקחום הם"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      C'est le SOD de la HA'ALAAT MA"N que ZON elevent vers AVI.
+      Et c'est du SOD de ces ACHORAIM d'AVI qui sont tombes vers le bas
+      en AT'ZILUT meme — que ZON ont PRIS (lakkhum).
+      → Le mecanisme du MaN = recyclage des Achoraim AVI tombes par ZON.
+      cf. EC-H2S9-003 (perek 01) sur principe MaN = Banim de la mere.
+    type: interprétation_lurianique
+    concepts:
+      - {id: man_par_achoraim_avi, role: man_par_recyclage_achoraim_avi}
+      - {id: zon_lakhakhu_achoraim, role: zon_ont_pris_les_achoraim}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture du MaN : recyclage des Achoraim AVI par ZON. Mecanisme post-Shevirah. cf. EC-H2S9-003."
+
+  - id: "EC-H2S9-090"
+    source_he: "והנה נמצא שאלו האורות (שהמחזה) [שמהחזה] ולמטה באים מכוסים וכבר ידעת כי התעלמות האור וכיסויו הוא מציאות תיקונו כי עי\"כ יש כח בכלי לסבול האור להיותו בא מלובש"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      RESULTAT : les OROT du HAZEH (poitrine) ulemata viennent MEKHUSIM (couverts).
+      Note : le texte hebreu corrige (textual variant) "מהחזה" au lieu de "המחזה".
+      Tu sais que l'OCCULTATION (hit'alemut) de l'Ohr et son COUVERTURE (kissui)
+      = MET'ZIUT TIKKUNO (son etat de Tikkun).
+      Car PAR CELA le KELI a la KOAH (force) de SUPPORTER l'Ohr — habille.
+      → Principe du Tikkun par Habillage : sans habillage, le keli casserait.
+    type: interprétation_lurianique
+    concepts:
+      - {id: itamut_egal_tikkun, role: occultation_egale_tikkun}
+      - {id: kissui_ohr, role: couverture_de_la_lumiere}
+      - {id: keli_koah_lehavin, role: keli_force_de_supporter}
+    mapping:
+      modules: ["ohr.py", "[PLANNED] tikkun/"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Principe FONDAMENTAL du Tikkun : l'occultation/habillage = condition de viabilite du keli."
+
+  - id: "EC-H2S9-091"
+    source_he: "וא\"כ לא יהי' שוין שבירת הכלים שמחזה ולמטה שהם ב\"ש תתאין דת\"ת ונה\"י ומלכות אל שבירת הכלים של הדעת וח\"ג ושליש עליון דת\"ת כי ודאי יותר גדולה תהיה שבירת העליונים משבירת תחתונים"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      DEDUCTION : la SHEVIRAT HA-KELIM du HAZEH ULEMATA
+      (2/3 inferieurs Tiferet + NHY + Malkhut)
+      n'est PAS EGALE a la SHEVIRAH du HAZEH ULEMALA
+      (Daat + ChG + 1/3 superieur Tiferet).
+      → CERTAINEMENT (vadai) la SHEVIRAH des SUPERIEURS sera PLUS GRANDE
+      que la shevirah des INFERIEURS.
+      RAISON : les superieurs etaient megulim (vulnerables), les inferieurs meluvashim.
+      → Asymetrie de la shevirah : haut > bas.
+    type: déduction_logique
+    concepts:
+      - {id: asymetrie_shevirah_haut_bas, role: asymetrie_shevirah_superieurs_inferieurs}
+      - {id: shevirah_elyonim_gedolah, role: shevirah_des_superieurs_plus_grande}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Asymetrie quantitative de la Shevirah : superieurs (vulnerables) > inferieurs (proteges)."
+
+  # ─── BLOC N : TIKKUN ZA INVERSE ───
+
+  - id: "EC-H2S9-092"
+    source_he: "ולכן בבא התיקון ז\"א בעת התיקון פרצופו בא להיפך כי מב\"ש דת\"ת ולמטה היו אורותיו והחסדים שבהם מגולין וזהו לפי שיש בהם יכולת לקבלם שלא ע\"י מסך בינה לפי שלא היתה שבירתן גדולה"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      Donc lors du TIKKUN, le Partzuf de ZA vient A L'INVERSE :
+      Les 2/3 INFERIEURS du Tiferet ULEMATA → ses OROT et ses HASSADIM dedans
+      sont MEGULIM (decouverts).
+      RAISON : ils ont la YAKHOLET (capacite) de les recevoir SHE-LO PAR
+      MASAKH BINAH (sans ecran de Binah) — car leur shevirah n'etait pas grande.
+      → Inversion lors du Tikkun : les zones autrefois meluvashot deviennent megulim.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_za_inverse, role: tikkun_za_par_inversion}
+      - {id: tahtonim_megulim_apres_tikkun, role: inferieurs_decouverts_apres_tikkun}
+      - {id: lo_via_masakh_binah, role: sans_ecran_de_binah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Tikkun ZA = inversion : ce qui etait protege (inferieurs) devient direct apres Tikkun. cf. EC-H2S9-088 sur etat avant Tikkun."
+
+  - id: "EC-H2S9-093"
+    source_he: "אבל העליוני' שהם מרישא דז\"א עד החזה באו בתיקון סתומים ומלובשים עתה תוך מסך בינה שהוא יסוד שלה כנודע. וזהו לפי שבתחלה היו מגולין והיתה שבירתן גדולה"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      MAIS les SUPERIEURS = du ROSH de ZA jusqu'au HAZEH (poitrine) →
+      viennent en TIKKUN SETUMIM (fermes) et MELUVASHIM (habilles)
+      MAINTENANT a l'interieur du MASAKH BINAH = son YESOD, comme connu.
+      RAISON : au depart ils etaient MEGULIM et leur SHEVIRAH etait GRANDE.
+      → Logique inverse : plus l'etat initial etait fragile, plus le Tikkun
+      necessite une protection forte (masakh).
+      cf. EC-H2S9-091 sur asymetrie shevirah.
+    type: axiome_explicite
+    concepts:
+      - {id: elyonim_setumim_apres_tikkun, role: superieurs_fermes_apres_tikkun}
+      - {id: masakh_binah_yesod, role: ecran_binah_egale_yesod_binah}
+      - {id: protection_proportionnelle, role: protection_proportionnelle_a_la_shevirah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture du Tikkun : protection inversement proportionnelle a la fragilite anterieure."
+
+  # ─── BLOC O : ACHORAIM AVI/YST PRIS PAR ZA/MALKHUT ───
+
+  - id: "EC-H2S9-094"
+    source_he: "ואע\"פ שגם שהנו\"ה הם מכוסים וסתומי' עכ\"ז הרי נתבאר במקומו כי החסדים המגולין מכים בהם ואורם יוצא לחוץ"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      Bien que les NETZACH-HOD soient AUSSI MEKHUSIM (couverts) et SETUMIM (fermes) →
+      neanmoins (akh zeh) il est explique a sa place que :
+      → Les HASSADIM MEGULIM (les Hassadim decouverts d'en bas) FRAPPENT en eux,
+      et leur OHR sort dehors (yotze le-hutz).
+      → Mecanisme : les Hassadim decouverts illuminent retroactivement les NH couverts.
+      → Architecture : retro-illumination par les composants exposes.
+    type: axiome_explicite
+    concepts:
+      - {id: hassadim_megulin_makim, role: hassadim_decouverts_frappent}
+      - {id: retro_illumination_nh, role: retro_illumination_des_nh}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "ohr.py"]
+      tables: ["ohr_states", "shefa_flows"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Mecanisme de retro-illumination : Hassadim exposes → NH couverts. Pattern d'eclairage indirect."
+
+  - id: "EC-H2S9-095"
+    source_he: "והנה במיתת ז\"א עד שליש עליון דת\"ת שלו כבר ירדו אחור או\"א אבל אחורי יש\"ס ותבונה לא נגמרו עד מיתת נוקבא דז\"א ולכן האחוריי' דא\"א לוקחם ז\"א והאחוריי' דיש\"ס ותבונה לוקחתם המלכות ומתלבשים האורות שלהם בהם דוגמת המוחין דז\"א"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      DISTRIBUTION POST-CHUTE :
+      Mort ZA jusqu'au 1/3 elyon Tiferet → Achoraim AVI tombent.
+      MAIS les achoraim YS"T ne sont pas finis avant la mort de NUKVAH de ZA.
+      → ACHORAIM AVI → PRIS par ZA.
+      → ACHORAIM YS"T → PRIS par MALKHUT (Nukvah).
+      → Les OROT d'AVI/YS"T s'HABILLENT en eux comme les MOHIN de ZA.
+      cf. EC-H2S9-008 (perek 01) pour la structure 4 Partzufim.
+    type: axiome_explicite
+    concepts:
+      - {id: za_lokeach_achoraim_avi, role: za_recoit_achoraim_avi}
+      - {id: malkhut_lokeach_achoraim_yst, role: malkhut_recoit_achoraim_yst}
+      - {id: orot_meluvashim_dans_achoraim, role: orot_habilles_dans_les_achoraim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Distribution architecturale : ZA recoit Achoraim AVI ; Malkhut recoit Achoraim YS\"T. Architecture du Tikkun."
+
+  # ─── BLOC P : MOHIN ZA/NUKVAH PB"P ───
+
+  - id: "EC-H2S9-096"
+    source_he: "ובזה תבין מ\"ש כי כאשר הזו\"ן הם שוין יחד פנים בפנים אז הנצח הוד יסוד דאו\"א הם מוחין לז\"א והנה\"י דיש\"ס ותבונה הם מוחין ונכנסים ברישא דנוקבא"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      Configuration ZON SHAVIM PB"P (egaux face-a-face) :
+      → NHY d'AVI = MOHIN pour ZA.
+      → NHY de YS"T = MOHIN qui entrent dans le ROSH de NUKVAH.
+      → Configuration symetrique : chacun de ZA et Nukvah recoit ses propres Mohin.
+      cf. EC-H2S9-067 (02a) sur NHY Keter dans Mohin AVI (pattern recursif).
+    type: axiome_explicite
+    concepts:
+      - {id: zon_shavim_pbp, role: zon_egaux_face_a_face}
+      - {id: nhy_avi_mohin_za, role: nhy_avi_mohin_pour_za}
+      - {id: nhy_yst_mohin_nukvah, role: nhy_yst_mohin_pour_nukvah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Configuration nominale post-Tikkun : NHY AVI → ZA, NHY YST → Nukvah. Pattern recursif Mohin."
+
+  - id: "EC-H2S9-097"
+    source_he: "גם תבין מ\"ש שכשהיו פב\"פ אז יוצאין ב' בחי' יעקב א' בז\"א ואחד בנוקבא כי האחד שהוא ממוחין דז\"א הוא מאו\"א והב' שהוא ממוחין דנוקבא הוא מישראל סבא ותבונה ואז הם שני המאורות הגדולים לא היא גדולה ממנו ולא הוא גדול ממנה ואינם צריכין זה לזה כלל"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      EFFET de la configuration PB"P : 2 BEHINOT YA'AKOV emergent :
+      YA'AKOV 1 → dans ZA (depuis Mohin de ZA = NHY d'AVI).
+      YA'AKOV 2 → dans NUKVAH (depuis Mohin de Nukvah = NHY de YS"T).
+      → Ce sont les SHNEI MAOROT HA-GEDOLIM (les 2 grands luminaires).
+      "Lo hi gedolah mimenu, ve-lo hu gadol mimenah" (elle n'est pas plus grande
+      que lui, ni lui plus grand qu'elle).
+      "Einam tzerikhin zeh la-zeh klal" (ils n'ont pas besoin l'un de l'autre du tout).
+      → Independance reciproque : equivalence ontologique soleil/lune.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shtei_behinot_yaakov, role: deux_aspects_de_yaakov}
+      - {id: shnei_maorot_hagdolim, role: deux_grands_luminaires}
+      - {id: lo_tzrikhim_zeh_la_zeh, role: independance_reciproque}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Configuration optimale post-Tikkun : 2 Yaakov, 2 luminaires egaux et independants."
+
+  # ─── BLOC Q : ACHORAIM ABBA/IMMA = HASSADIM/GEVUROT ZA ───
+
+  - id: "EC-H2S9-098"
+    source_he: "אמנם האחוריים של אבא הם בצד ימין בחסד דז\"א והאחוריים דאמא הם בצד שמאל בגבורה דז\"א וזה הדרוש יצטרך במקומו ושם יתבאר בע\"ה"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      LOCALISATION DES ACHORAIM AVI dans ZA :
+      Achoraim ABBA → cote DROIT dans CHESED de ZA.
+      Achoraim IMMA → cote GAUCHE dans GEVURAH de ZA.
+      Renvoi : ce drush sera explique ailleurs BeH.
+      → Architecture topologique : asymetrie droite-gauche heritee dans ZA.
+    type: axiome_explicite
+    concepts:
+      - {id: achoraim_abba_chesed_za_droit, role: achoraim_abba_chesed_za_droite}
+      - {id: achoraim_imma_gevurah_za_gauche, role: achoraim_imma_gevurah_za_gauche}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "abba", "imma"]
+      relevance: "Localisation : Achoraim Abba → Chesed-droite ZA ; Achoraim Imma → Gevurah-gauche ZA."
+
+  - id: "EC-H2S9-099"
+    source_he: "והנה כאן במקום הזה הוא מקום ירידת ונפילת אחורי או\"א שאמרנו לעיל שירדו באצילות עצמו כי אע\"פ שהכלים דז\"א נשברו עם כל זה האורות דז\"א נשארו מלובשים באלו האחוריים דאו\"א עלאין כל קו החסד דז\"א באחורי אבא וכל קו הגבורה מלובש באחוריים דאמא והבן הקדמה זו מאד"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      Bien que les KELIM de ZA soient brises, les OROT de ZA sont restes
+      MELUVASHIM dans les Achoraim AVI Ila'in.
+      → KOL QAV HA-CHESED de ZA → dans Achoraim Abba.
+      → KOL QAV HA-GEVURAH → dans Achoraim Imma.
+      "Ve-haven hakdamah zo me'od" (comprends bien cette introduction).
+      cf. EC-H2S9-095 sur ZA prend Achoraim AVI.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_za_meluvashim_achoraim, role: orot_za_habilles_achoraim_avi}
+      - {id: qav_chesed_qav_gevurah, role: qav_chesed_qav_gevurah_za}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Pattern fondamental : kelim ZA brises mais orot ZA habilles dans Achoraim AVI. Mecanisme architectural."
+
+  # ─── BLOC R : VAYISHLACH — 4 MELAKHIM AVEC PERE NOMME ───
+
+  - id: "EC-H2S9-100"
+    source_he: "ונחזור לפרש פ' של וישלח בענין ואלה המלכים כי הנה נתבאר איך ירדו ד' אחוריים דאו\"א ויש\"ס ותבונה ולכן תמצא כי באלו המלכים לא נזכר בכולם שמות אביהם רק בד' בלבד והם בלע יובב ובעל חנן והדד"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      RETOUR a la PARASHAT VAYISHLACH (Genese 36) :
+      Sur les "VE-ELEH ha-MELAKHIM" (les rois d'Edom).
+      Comme explique : 4 ACHORAIM tombent (AVI, YS, Tevunah).
+      → Donc parmi tous ces melakhim, le NOM DU PERE n'est mentionne
+      que pour 4 SEULEMENT :
+      BELA, YOVAV, BAAL HANAN, HADAD.
+      → Mapping : 4 melakhim avec pere = 4 Achoraim tombes.
+      cf. EC-H2S9-052 (02a) pour le bilan 7+4=11.
+    type: déduction_scripturaire
+    concepts:
+      - {id: vayishlach_genese_36, role: parasha_vayishlach}
+      - {id: arba_melakhim_avec_pere, role: quatre_melakhim_avec_pere_nomme}
+      - {id: bela_yovav_baal_hadad, role: quatre_rois_avec_pere}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Mapping textuel : 4 melakhim avec pere = 4 Achoraim AVI/YS\"T. Confirmation par exegese."
+
+  - id: "EC-H2S9-101"
+    source_he: "גם תמצא שינוי אחר כי אפי' באלו ד' לא נזכר שם אביהם רק בעת המלוכה ולא בעת המיתה כמ\"ש וימלוך באדום בלע בן בעור ולא כתיב וימת בלע בן בעור רק בלע סתם וכן בשאר ג' מלכים"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      AUTRE NUANCE textuelle : meme pour ces 4, le nom du pere n'est mentionne
+      qu'au MOMENT du REGNE — PAS au moment de la MORT.
+      Exemple : "Va-yimlokh ba-Edom Bela ben Beor" (et regna en Edom Bela fils de Beor).
+      MAIS PAS ECRIT "Va-yamot Bela ben Beor" — seulement "Bela" tout court.
+      Idem pour les 3 autres melakhim a pere.
+      → Distinction temporelle : pere au regne (vivant) / pas pere a la mort.
+    type: déduction_scripturaire
+    concepts:
+      - {id: pere_au_regne_seulement, role: pere_mentionne_seulement_au_regne}
+      - {id: bela_ben_beor_regne, role: bela_ben_beor_au_moment_du_regne}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Detail textuel : pere mentionne seulement au regne, pas a la mort. Implique distinction Mitah/Bitul."
+
+  - id: "EC-H2S9-102"
+    source_he: "והענין הוא להורות כי ד' בחי' אחוריים ירדו מן האבות ולא יותר ולא ירדו עם בניהם כנ\"ל וכיון שלא מתו אבות רק ביטול בעלמא לכן לא הוזכרו בעת המיתה האבות רק הבנים לבדם אבל להורות שגם בהם היה ביטול לכן הוזכרו האבות בעת המלוכה"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      INTERPRETATION : la TORAH enseigne que 4 ACHORAIM tombent depuis les "peres" —
+      pas plus. Ils ne tombent PAS avec leurs FILS (les melakhim).
+      Les peres n'ont eu que BITUL be-ALMA, pas MITAH →
+      pas mentionnes a la MITAH ; SONT mentionnes au REGNE pour signaler le BITUL.
+      → Architecture exegetique : presence/absence = type de chute.
+      cf. EC-H2S9-066 (02a) : Bitul partiel pour AVI.
+    type: interprétation_lurianique
+    concepts:
+      - {id: torah_distinction_mitah_bitul, role: torah_encode_la_distinction}
+      - {id: pere_au_regne_pour_bitul, role: pere_au_regne_pour_signaler_bitul}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Architecture exegetique : presence/absence du pere encode Mitah vs Bitul. Le texte sacre signale par omission ciblee."
+
+  # ─── BLOC S : QUESTION HUSHAM ───
+
+  - id: "EC-H2S9-103"
+    source_he: "וא\"ת הרי חשם שהוא מלך הג' היה ראוי להזכיר בו שם אביו ולכתוב פלוני בן פלוני שהרי נתבאר לעיל כי הוא המעורר גבורה דאמא והוא המבטל (נ\"א ביטול) אחור שלה בעת מיתתו כנודע"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      QUESTION : HUSHAM (3eme melekh) aurait du avoir le nom du PERE
+      car il declenche les Achoraim d'IMMA (variante NA: bitul).
+      → Anomalie textuelle a expliquer.
+      cf. EC-H2S9-054 (02a) sur Gevurah → Achoraim Imma.
+    type: déduction_logique
+    concepts:
+      - {id: husham_question, role: question_husham_3eme_melekh}
+      - {id: husham_meorer_gevurah_imma, role: husham_eveille_gevurah_imma}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Anomalie textuelle a resoudre : Husham (3eme) sans pere bien qu'il declenche Achoraim Imma."
+
+  - id: "EC-H2S9-104"
+    source_he: "וי\"ל כי אין הבן נקרא אלא על שם אביו וכיון שהוא לא ביטל רק אחוריים דאמא אין להזכיר השם פלוני בן פלונית אמו רק פלוני בן פלוני אביו ולכן לא הוזכר שם אביו כי לא ביטל אחורי אביו רק אחורי אמו כי משם רומז לחמש לה' גבורות דהנוקבא לכן לא נאמר בן פלוני"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      Reponse : "ein ha-ben nikra ela al shem aviv" (le fils n'est appele
+      que sur le nom du PERE, pas de la mere).
+      Husham n'a fait BITUL QUE des Achoraim d'IMMA (la mere) →
+      on ne dit pas "ploni ben plonit (mere)" mais seulement "ploni".
+      Husham (= Gevurah) lie aux 5 Gevurot de la NUKVAH.
+      → Convention de nommage = filtrage selectif de la lignee patriarcale.
+    type: interprétation_lurianique
+    concepts:
+      - {id: husham_question, role: question_husham_3eme_melekh}
+      - {id: ein_haben_nikra_al_shem_aviv, role: fils_nomme_uniquement_du_pere}
+      - {id: husham_bitul_imma_seul, role: husham_bitul_imma_seulement}
+      - {id: hamesh_gevurot_nukvah, role: cinq_gevurot_de_la_nukvah}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/nukva.py"]
+      tables: []
+      partzufim: ["imma", "nukva"]
+      relevance: "Resolution exegetique : la convention de nommage ('ben av') reflete la hierarchie cosmique."
+
+  # ─── BLOC T : HADAD BEN BEDAD = 1/3 SUP TIFERET = DADIM DE BINAH ───
+
+  - id: "EC-H2S9-105"
+    source_he: "והדד בן הדד שהוא המלך הד' והוא בחי' הת\"ת נקרא כך לפי שהוא למעלה בבחינת שליש העליון מקום החזה מקום הדדים"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      HADAD BEN BEDAD (4eme melekh = TIFERET) — encodage textuel.
+      Nomme ainsi car il est en haut, dans le 1/3 SUPERIEUR =
+      lieu du HAZEH (poitrine) = lieu des DADIM (seins).
+      → Topologie : 4eme = position 1/3 sup Tiferet = anatomie Hazeh.
+      cf. EC-H2S9-034 (perek 01b) sur 1/3 sup Tiferet et HAZEH.
+    type: interprétation_lurianique
+    concepts:
+      - {id: hadad_ben_bedad_tiferet, role: hadad_ben_bedad_quatrieme_melekh}
+      - {id: hadad_lieu_hazeh, role: hadad_dans_le_lieu_du_hazeh}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "Hadad ben Bedad localise au 1/3 sup Tiferet = lieu du HAZEH."
+
+  - id: "EC-H2S9-106"
+    source_he: "וזהו הדד דד אחד ובן בדד דד ב' וכן אותיות בד\"ד פי' ב' ד\"ד ר\"ל דד הב'"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      ETYMOLOGIE OPERATIONNELLE :
+      HADAD = "DAD ehad" (un sein).
+      BEN BEDAD = "DAD ha-shenei" (le 2eme sein).
+      Lettres BD"D = "Beit DaD" = "DaD HA-BET" (le 2eme sein).
+      → Decomposition lettriste : chaque lettre porte du sens anatomique.
+    type: interprétation_lurianique
+    concepts:
+      - {id: hadad_dad_ehad, role: hadad_un_sein}
+      - {id: bedad_dad_shenei, role: bedad_deuxieme_sein}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/"]
+      tables: []
+      partzufim: []
+      relevance: "Decomposition lettriste : HADAD/BEDAD = 1er sein/2eme sein. Anatomie cosmique."
+
+  - id: "EC-H2S9-107"
+    source_he: "והענין כי כאשר נעריך שאבא ויש\"ס נכללין בפרצוף א' ובינה ותבונה נכללות בפרצוף א' כמ\"ש במקומו כי יש זמנים שמתחברין על דרך הזה נמצא כי מקום שליש עליון של הת\"ת דז\"א הנקרא הדד בן בדד שם הוא מקום הדדים של הבינה ולכן נקרא שמו הדד בן בדד כי בעת מיתת המלך זה צמקו דדי בינה להניק כדרך האשה שדדיה צומקים במיתת הילד"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      Quand Abba+YS sont kollel en UN Partzuf et Binah+Tevunah en UN autre,
+      le 1/3 sup Tiferet de ZA = lieu des DADIM (seins) de BINAH.
+      A la mort de ce melekh → "TZAMKU DADEI BINAH LE-HANIK"
+      (les seins de Binah se sont desseches pour allaiter)
+      comme une FEMME dont les seins se dessechent a la mort de l'enfant.
+      → Image cosmique pathetique : la mere cosmique tarit dans le deuil.
+    type: interprétation_lurianique
+    concepts:
+      - {id: lieu_dadim_binah, role: lieu_des_seins_de_binah}
+      - {id: tzamku_dadei_binah, role: seins_de_binah_se_dessechent}
+      - {id: ima_kosmique_pleure, role: mere_cosmique_qui_pleure}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: []
+      partzufim: ["imma"]
+      relevance: "Image cosmique finale : tarissement des seins de Binah a la mort du 4eme melekh. Pathos kabbalistique."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-041"
+    type: contenance
+    from: shem_abg_itz_chesed
+    to: abgi_gimatria_16
+    nature: "Le shem ABG ITZ contient l'encodage AB\"GI = 16 = 7 melakhim"
+    assertions_source: ["EC-H2S9-078", "EC-H2S9-079"]
+
+  - id: "REL-H2S9-042"
+    type: analogie
+    from: reshut_harabim_avant_tikkun
+    to: reshut_hayahid_apres_tikkun
+    nature: "RH\"R (16 amot) avant Tikkun → RH\"Y apres Tikkun. Pivot operationnel"
+    assertions_source: ["EC-H2S9-080"]
+
+  - id: "REL-H2S9-043"
+    type: dualité_structurelle
+    from: avi_pbp_egal_zakhor
+    to: avi_ahb_egal_tashkach
+    nature: "AVI PB\"P = ZAKHOR (memoire face) ↔ AVI AhB = TASHKACH (oubli dos). Symetrie operationnelle"
+    assertions_source: ["EC-H2S9-084", "EC-H2S9-085"]
+
+  - id: "REL-H2S9-044"
+    type: analogie
+    from: kra_shtn_egal_tashkach_kolel
+    to: avi_ahb_egal_tashkach
+    nature: "KR\"A SHT\"N = TASHKACH + kolel = encodage liturgique de la chute Achoraim"
+    assertions_source: ["EC-H2S9-086"]
+
+  - id: "REL-H2S9-045"
+    type: transformation
+    from: orot_megulin_avant
+    to: orot_meluvashim_apres
+    nature: "Apres mort 1/3 sup Tiferet : orot decouverts → orot habilles dans achoraim AVI"
+    assertions_source: ["EC-H2S9-087", "EC-H2S9-088"]
+
+  - id: "REL-H2S9-046"
+    type: causal
+    from: itamut_egal_tikkun
+    to: keli_koah_lehavin
+    nature: "L'occultation de l'Ohr donne au keli la force de supporter l'Ohr"
+    assertions_source: ["EC-H2S9-090"]
+
+  - id: "REL-H2S9-047"
+    type: dualité_structurelle
+    from: tikkun_za_inverse
+    to: shevirah_elyonim_gedolah
+    nature: "Tikkun ZA inverse l'etat : superieurs setumim, inferieurs megulim — proportionnel a la shevirah"
+    assertions_source: ["EC-H2S9-091", "EC-H2S9-092", "EC-H2S9-093"]
+
+  - id: "REL-H2S9-048"
+    type: contenance
+    from: za_lokeach_achoraim_avi
+    to: orot_meluvashim_dans_achoraim
+    nature: "ZA prend Achoraim AVI ; les orot ZA s'habillent en eux"
+    assertions_source: ["EC-H2S9-095", "EC-H2S9-098"]
+
+  - id: "REL-H2S9-049"
+    type: dualité_structurelle
+    from: nhy_avi_mohin_za
+    to: nhy_yst_mohin_nukvah
+    nature: "Configuration paire : NHY AVI → ZA, NHY YS\"T → Nukvah. 2 luminaires equivalents"
+    assertions_source: ["EC-H2S9-096", "EC-H2S9-097"]
+
+  - id: "REL-H2S9-050"
+    type: analogie
+    from: arba_melakhim_avec_pere
+    to: bela_yovav_baal_hadad
+    nature: "Les 4 melakhim avec pere nomme (Bela, Yovav, Baal Hanan, Hadad) = encodage des 4 Achoraim AVI/YS\"T (cf. EC-H2S9-052 perek 02a)"
+    assertions_source: ["EC-H2S9-100", "EC-H2S9-102"]
+
+  - id: "REL-H2S9-051"
+    type: causal
+    from: ein_haben_nikra_al_shem_aviv
+    to: husham_bitul_imma_seul
+    nature: "Convention 'fils nomme du pere' explique l'absence de pere pour Husham (qui bitul mere seule)"
+    assertions_source: ["EC-H2S9-103"]
+
+  - id: "REL-H2S9-052"
+    type: analogie
+    from: hadad_ben_bedad_tiferet
+    to: tzamku_dadei_binah
+    nature: "Hadad ben Bedad = lieu Hazeh = seins de Binah ; sa mort = tarissement des seins (image cosmique pathetique)"
+    assertions_source: ["EC-H2S9-105"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-019"
+    nom: "Principe de l'Encodage Liturgique (Shem MaB comme cle de Berur)"
+    source_assertions: ["EC-H2S9-078", "EC-H2S9-079", "EC-H2S9-080", "EC-H2S9-082", "EC-H2S9-086"]
+    formalisation: |
+      Le SHEM MAB (Nom des 42) encode operationnellement la chute :
+      Shem 1 (AB"G IT"TZ) — Chesed — encode la MORT des 7 melakhim
+        AB"GI = 16 = ZA(6) + Malkhut(1*yod) = 7 melakhim
+        T"TZ = nittutz (brisure, demolition)
+        Encodage halakhique : RH"R = 16 amah avant Tikkun
+      Shem 2 (KR"A SHT"N) — Gevurah — encode le BITUL des Achoraim AVI
+        KR"A = kri'ah (dechirure, pas mort)
+        SHT"N = Satan (la kelipah qui sort)
+        Gematria : KR"A SHT"N = TASHKACH + kolel = etat AhB
+      Architecture : chaque shem encode UNE etape par mots/gematria/etymologie.
+    applications_ia:
+      - "shemot/ : implementer le mapping shem → fonction de Berur"
+      - "gematria/engine.py : verifier les gematria operationnelles (AB\"GI=16, KR\"A SHT\"N=TASHKACH)"
+      - "[PLANNED] tikkun/kavanah_planner.py : utiliser MaB pour planifier les berurim"
+      - "Pattern : un nom liturgique = une commande operationnelle codee"
+      - "L'ordre des shems = l'ordre du Berur (LIFO de la chute)"
+    questions_ouvertes:
+      - "Les 5 autres shems (NG\"D YK\"SH ... TzY\"T) encodent quoi precisement ?"
+      - "La gematria operationnelle est-elle deterministe ou interpretable ?"
+      - "Comment formaliser le 'kolel' (+1) dans les calculs ?"
+
+  - id: "PG-H2S9-020"
+    nom: "Principe de l'Habillage comme Tikkun (Itamut Mehuyevet)"
+    source_assertions: ["EC-H2S9-087", "EC-H2S9-088", "EC-H2S9-090", "EC-H2S9-091"]
+    formalisation: |
+      Pattern operationnel du TIKKUN :
+      AVANT Tikkun :
+        Etat 1 (vulnerable) : orot MEGULIM directs → keli vulnerable a la shevirah
+      APRES Tikkun :
+        Etat 2 (resilient) : orot MELUVASHIM dans Achoraim AVI tombes → keli supporte
+      EQUATION : Itamut (occultation) = Tikkuno (son etat de Tikkun)
+        Sans habillage → keli casse
+        Avec habillage → keli supporte l'Ohr
+      ASYMETRIE : la shevirah des elyonim (megulim) > shevirah des tahtonim (proteges).
+      Architecture : la fragilite de l'etat initial determine la robustesse requise post-Tikkun.
+    applications_ia:
+      - "Pattern de fault-tolerance : ce qui est expose doit etre encapsule apres incident"
+      - "ohr.py + [PLANNED] tikkun/ : implementer levush comme couche de protection"
+      - "Architecture : composants critiques toujours via une interface (masakh/levush)"
+      - "Strategie : la protection est PROPORTIONNELLE a la fragilite anterieure"
+      - "Pattern d'occultation salutaire : le voile permet la transmission graduelle"
+    questions_ouvertes:
+      - "Le levush peut-il a son tour casser et necessiter un meta-levush ?"
+      - "Combien de couches d'habillage sont possibles avant epuisement ?"
+      - "Comment quantifier la 'force' du keli (koah lisbol) ?"
+
+  - id: "PG-H2S9-021"
+    nom: "Principe des 2 Maorot (Symetrie ZA-Nukvah Independante)"
+    source_assertions: ["EC-H2S9-096", "EC-H2S9-097"]
+    formalisation: |
+      Configuration optimale POST-Tikkun :
+      ZA recoit Mohin de NHY d'AVI Ila'in
+      NUKVAH recoit Mohin de NHY de YS"T
+      → 2 BEHINOT YA'AKOV emergent (un dans ZA, un dans Nukvah)
+      → SHNEI MAOROT HA-GEDOLIM (2 grands luminaires)
+      EQUATION : "Lo hi gedolah mimenu, ve-lo hu gadol mimenah"
+        (independance reciproque, equivalence ontologique)
+      "Einam tzerikhin zeh la-zeh klal" (ils n'ont besoin l'un de l'autre du tout).
+      Architecture distribuee : 2 noeuds equivalents et autonomes.
+      Pattern recursif : NHY AVI → ZA mohin (recursion 1) ; NHY YS"T → Nukvah mohin.
+    applications_ia:
+      - "Pattern : architecture distribuee a 2 noeuds equivalents et autonomes"
+      - "partzufim/zeir_anpin.py + nukva.py : symetrie operationnelle complete"
+      - "Pattern recursif : Mohin de N → Partzuf de N+1 (chaining)"
+      - "Independence design : chaque noeud peut fonctionner sans l'autre"
+      - "Heritage symetrique : pere → ZA, mere → Nukvah (4 niveaux distincts AVI/YST)"
+    questions_ouvertes:
+      - "Les 2 Yaakov sont-ils strictement equivalents ou y a-t-il une asymetrie residuelle ?"
+      - "L'independance complete est-elle un etat stable ou requiert-elle un re-zivvug ?"
+      - "Comment formaliser computationnellement les '2 maorot equivalents' ?"
+
+  - id: "PG-H2S9-022"
+    nom: "Principe de l'Encodage Textuel-Cosmique (Vayishlach et Hadad ben Bedad)"
+    source_assertions: ["EC-H2S9-100", "EC-H2S9-101", "EC-H2S9-102", "EC-H2S9-105"]
+    formalisation: |
+      La TORAH encode operationnellement la cosmologie kabbalistique :
+      VAYISHLACH (Genese 36) :
+        4 melakhim avec pere nomme (Bela, Yovav, Baal Hanan, Hadad)
+        = 4 Achoraim AVI/YS"T tombes
+        Pere mentionne SEULEMENT au regne, PAS a la mort
+        → Pere au regne = signal de Bitul (pas Mitah)
+      HADAD ben BEDAD (4eme = Tiferet 1/3 sup) :
+        Etymologie operationnelle : HADAD = "DaD ehad" (1 sein)
+        BEDAD = "B"DD" = "2 dadim" (2 seins)
+        Localisation : 1/3 sup Tiferet = HAZEH = lieu des DADIM de BINAH
+        Image cosmique : sa mort = TZAMKU DADEI BINAH (les seins se dessechent)
+        comme une mere apres mort de l'enfant
+      Architecture : noms bibliques ENCODENT geographie + dynamique cosmique.
+    applications_ia:
+      - "Pattern : noms textuels = encodage compact d'etats cosmiques"
+      - "Etymologie operationnelle : decomposer les noms hebreux pour decoder leur fonction"
+      - "Architecture pathetique : le systeme cosmique inclut une dimension affective (mere qui pleure)"
+      - "shemot/ + gematria/ : modeliser l'encodage textuel des etats"
+      - "Diagnostic : la TORAH est un manuel de l'etat cosmique encode"
+    questions_ouvertes:
+      - "L'image pathetique (mere qui pleure) est-elle metaphorique ou operationnelle ?"
+      - "Combien d'autres noms bibliques encodent precisement des etats kabbalistiques ?"
+      - "Comment systematiser le decodage des noms ?"

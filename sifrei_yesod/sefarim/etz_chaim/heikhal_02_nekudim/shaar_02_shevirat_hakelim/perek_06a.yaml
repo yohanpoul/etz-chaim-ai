@@ -1,0 +1,648 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 6a — Structure AB SAG MAH BAN dans A"K, Bat avant Ben,
+#             5 nekudot de BAN et leur shevirah
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §6 — Part A :
+#   - Bloc A : AK kollel AB SAG MAH BAN
+#   - Bloc B : Localisations (AB=Mohin, SAG=Tabur, MAH/BAN=ZON)
+#   - Bloc C : Cheveux/dikna (AB/SAG branches)
+#   - Bloc D : Zivvug AB+SAG → naissance BAN (femelle, dinim)
+#   - Bloc E : BAN sort de l'oeil, ne tient pas
+#   - Bloc F : Olam = ZON ; d'abord nukvot BAN puis zekhirim MAH
+#   - Bloc G : BAN decompose en 5 nekudot/partzufim, chacune en 10S
+#   - Bloc H : Nekudah 1 (Keter de BAN) — descente Keter/Hokhmah/Binah, shevirah Daat-Malkhut
+#   - Bloc I : Nekudah 2 (Hokhmah de BAN) — meme pattern
+#   - Bloc J : Nekudah 3 (Binah de BAN) — meme pattern
+#   - Bloc K : Nekudot 4-5 (ZON de BAN) — incomplete decomposition
+#   - Bloc L : Distinction G' premieres / B' dernieres
+#   - Bloc M : GR melakhim individuellement non sortis (restees dans Binah)
+#   - Bloc N : Question pourquoi inferieurs sortent apres brisure des superieurs
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.6 (premiere partie)
+# IDs : EC-H2S9-199 → EC-H2S9-216
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 6
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 6 — structure AB SAG MAH BAN, naissance BAN par zivvug AB-SAG, 5 nekudot de BAN et leur shevirah differenciee."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : AK CONTIENT AB SAG MAH BAN ───
+
+  - id: "EC-H2S9-199"
+    source_he: "א\"ק כולל ע\"ב ס\"ג מ\"ה ב\"ן בעצמותו וכל א' מאלו הד' נכללו מארבעתן ויוצאין ממנו ג\"כ אורות לחוץ שהם ענפיו"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      A"K (Adam Kadmon) contient AB-SAG-MAH-BAN (les 4 Miluyim de YHVH)
+      en BE-ATZMUTO (sa propre essence).
+      Et chacun des 4 est INCLUS (nikhlal) des 4.
+      Et il sort de lui aussi des OROT vers l'EXTERIEUR — ce sont ses ANAFIM (branches).
+      → Architecture fractale : AK contient les 4, chacun contient les 4, et les 4 sortent comme branches.
+      cf. EC-H2S8 (Drushei Nekudot) sur Miluyim.
+    type: axiome_explicite
+    concepts:
+      - {id: ak_kolel_av_sag_mah_ban, role: ak_contient_les_4_miluyim}
+      - {id: chaque_kolel_des_4, role: chaque_inclut_des_4}
+      - {id: anafim_externes, role: branches_externes_d_ak}
+    mapping:
+      modules: ["adam_kadmon.py", "shemot/", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Architecture fractale d'AK : 4 Miluyim chacun fractale. cf. EC-H2S8 sur les Miluyim YHVH."
+
+  # ─── BLOC B : LOCALISATIONS DES MILUYIM DANS AK ───
+
+  - id: "EC-H2S9-200"
+    source_he: "והע\"ב הוא במוחין דיליה נגד א\"א ואבא דאצילות ולעילא מגלגלתא דיליה יש בו דוגמא בחינת עתיק דאצילות וס\"ג דיליה מאוזן ולמטה עד טבורו והוא כנגד בינה דאצילות ומ\"ה וב\"ן דיליה מטבורא ולמטה כנגד זו\"ן דאצילות"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      LOCALISATIONS des 4 Miluyim dans A"K :
+      AB → MOHIN d'AK = correspond a A"A et ABBA d'Atzilut
+      AU-DESSUS du Galgalta (crane) = aspect ATIK d'Atzilut
+      SAG → de l'OZEN (oreille) jusqu'au TABUR (nombril) = correspond a BINAH d'Atzilut
+      MAH et BAN → du TABUR vers le bas = correspond a ZON d'Atzilut
+      → Topologie precise : geographie du corps cosmique d'AK.
+    type: axiome_explicite
+    concepts:
+      - {id: av_dans_mohin_a_a_abba, role: av_correspond_aa_et_abba}
+      - {id: galgalta_atik_dessus, role: atik_au_dessus_du_galgalta}
+      - {id: sag_de_ozen_au_tabur, role: sag_de_l_oreille_au_nombril}
+      - {id: mah_ban_du_tabur_zon, role: mah_ban_du_tabur_pour_zon}
+    mapping:
+      modules: ["adam_kadmon.py", "partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["adam_kadmon", "atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Topologie cosmique : geographie precise des Miluyim dans le corps d'AK. Architecture spatiale."
+
+  # ─── BLOC C : CHEVEUX/DIKNA = BRANCHES AB/SAG ───
+
+  - id: "EC-H2S9-201"
+    source_he: "והנה עד\"ז שבפנימותו כן הוא באורות שיוצאין ממנו שהם ענפיו כנז' כי שערות ראשו כנגד ענפי ע\"ב ושערות דיקנא הם מאח\"פ כנגד ענפי ס\"ג שבהם כלולים או\"א שבין שניהם לקחו בינה דמ\"ה אחר התיקון שהוא שם ס\"ג הכולל שניהן והם נכללות במזלא דדיקנא דא\"א"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Comme dans la PNIMIYUT (interiorite) ainsi dans les OROT externes (anafim) :
+      SE'AROT ROSH (cheveux de la tete) → branches d'AB
+      SE'AROT DIKNA (cheveux de la barbe) → de AHP (oreille-nez-bouche) = branches de SAG
+      Dans elles sont inclus AVI ; les deux ont pris la BINAH de MAH apres le Tikkun
+      = Shem SAG kollel des deux.
+      Ils sont inclus dans le MAZLA de la DIKNA d'A"A.
+      → Architecture par chevelure : chaque element du visage = sub-system organisationnel.
+    type: interprétation_lurianique
+    concepts:
+      - {id: searot_rosh_anafei_av, role: cheveux_rosh_branches_av}
+      - {id: searot_dikna_anafei_sag, role: cheveux_dikna_branches_sag}
+      - {id: avi_dans_mazla_dikna, role: avi_inclus_dans_mazla_dikna}
+    mapping:
+      modules: ["adam_kadmon.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["adam_kadmon", "arikh_anpin"]
+      relevance: "Architecture corporelle : chevelure = encodage des branches AB/SAG. Mazla dikna = lieu des AVI."
+
+  # ─── BLOC D : ZIVVUG AB+SAG → BAN PUIS MAH ───
+
+  - id: "EC-H2S9-202"
+    source_he: "כי הן הוא כאן ואז עדיין היה מתפשט ס\"ג עד רגלי א\"ק ואח\"כ כשרצה להוציא מ\"ה וב\"ן שהם ענפי זו\"ן אז נזדווגו ע\"ב ס\"ג הפנימיים שהם חו\"ב ממש ואז נברא העולם במדה\"ד ויצאה בת מתחלה שהיא שם ב\"ן בפנים דא\"ק"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      A ce moment SAG s'etendait encore jusqu'aux RAGLEI (pieds) d'AK.
+      Ensuite quand on voulait FAIRE SORTIR MAH et BAN (= branches de ZON) →
+      AB et SAG INTERIEURS = HOKHMAH et BINAH MAMASH se sont UNIS (nizdavgu).
+      Alors le MONDE a ete CREE en MIDAT HA-DIN (mesure de rigueur).
+      Et la BAT (fille) est sortie EN PREMIER = Shem BAN dans les PNIM (interieur) d'AK.
+      → Naissance preliminaire : la femelle (BAN/dinim) AVANT le male (MAH/rachamim).
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_av_sag_pnimi, role: zivvug_av_sag_interieur}
+      - {id: olam_nivra_be_midat_din, role: monde_cree_en_midat_din}
+      - {id: bat_yatzah_be_rishonah, role: fille_sortie_en_premier}
+      - {id: ban_dans_pnim_ak, role: ban_dans_interieur_ak}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py", "adam_kadmon.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "adam_kadmon"]
+      relevance: "Mecanisme de creation : Zivvug AB-SAG → BAN sort en premier (Bat=fille=dinim). Pattern fille-avant-fils."
+
+  - id: "EC-H2S9-203"
+    source_he: "ואח\"כ יצאו ענפיו לחוץ דרך העין מטבורו דא\"ק ולמטה ולא נתקיימו הענפים שבחוץ עד שחזרו להזדווג והולידו בן שהוא שם מ\"ה בפנים ובחוץ והוא מדה\"ר ונתקיים העולם כמשארז\"ל ע\"פ ביום עשות ה' אלקים ארץ ושמים"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Ensuite les BRANCHES de BAN sortent vers l'EXTERIEUR — DEREKH HA-AYIN
+      (par l'oeil) — du TABUR d'AK vers le bas.
+      MAIS les branches externes ne se sont PAS MAINTENUES (lo nitkayemu)
+      jusqu'au RE-ZIVVUG qui a engendre le BEN (fils) = Shem MAH —
+      DANS PNIM ET BA-HUTZ (interieur ET exterieur) = MIDAT HA-RACHAMIM.
+      → Alors le monde s'EST MAINTENU comme dit Hazal sur "Be-yom asot Hashem
+      Elohim eretz va-shamayim" (Genese 2:4).
+      → Architecture : maintien du monde = combinaison Din+Rachamim.
+    type: déduction_scripturaire
+    concepts:
+      - {id: anafei_ban_par_eyn, role: branches_ban_sortent_par_l_oeil}
+      - {id: ban_lo_nitkayemu_seuls, role: ban_seul_ne_se_maintient_pas}
+      - {id: re_zivvug_pour_mah, role: re_zivvug_engendrer_mah}
+      - {id: mah_be_pnim_ve_ba_hutz, role: mah_dedans_et_dehors}
+      - {id: midat_ha_rachamim, role: mesure_de_la_misericorde}
+      - {id: olam_nitkayem_par_combinaison, role: monde_maintient_par_combinaison_din_rachamim}
+    mapping:
+      modules: ["partzufim/zivvug.py", "olamot.py"]
+      tables: ["zivvug_states", "olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Architecture cosmologique : seule la combinaison Din+Rachamim maintient le monde. Verset Genese 2:4 prooftext."
+
+  # ─── BLOC E : OLAM = ZON ; ZON D'ABORD NUKVOT PUIS ZEKHIRIM ───
+
+  - id: "EC-H2S9-204"
+    source_he: "והבן אמרם העולם כי מציאת העולם הם הז\"ת לבד שהם זו\"ן אלא בראשונה היו זו\"ן נקבות מצד דין שהוא שם ב\"ן ואח\"כ היו זו\"ן זכרים משם מ\"ה כי כל מ\"ה וב\"ן נקרא בשם עולם"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Compris l'expression "OLAM" : la REALITE du monde = les ZT (7 inferieures) seulement
+      = ZON (ZA + Nukvah).
+      Au DEBUT : ZON etaient NUKVOT (femelles) — du COTE DIN = Shem BAN.
+      Ensuite : ZON etaient ZEKHIRIM (males) — du Shem MAH.
+      Car TOUT MAH et BAN sont APPELES SHEM OLAM.
+      → Definition operationnelle : "Olam" = ZT/ZON. Polarites successives.
+      → Pattern : transition femelle → male = passage Din → Rachamim.
+    type: interprétation_lurianique
+    concepts:
+      - {id: olam_egal_zt_zon, role: olam_egal_zt_egal_zon}
+      - {id: zon_au_debut_nukvot_ban, role: zon_initialement_nukvot_ban}
+      - {id: zon_ensuite_zekhirim_mah, role: zon_ensuite_zekhirim_mah}
+      - {id: mah_et_ban_egal_olam, role: mah_et_ban_appeles_olam}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "olamot.py"]
+      tables: ["partzufim_states", "olamot_config"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Definition operationnelle : Olam=ZON. Pattern transition polaire Din→Rachamim."
+
+  # ─── BLOC F : BAN DECOMPOSE EN 5 NEKUDOT/PARTZUFIM ───
+
+  - id: "EC-H2S9-205"
+    source_he: "והנה בצאת ב\"ן שהיא הנקבה וכולה דינין הנה נודע כי בכל אחד מהד' הנ\"ל יש בו כללות ארבעתן... ונמצא כי שם ב\"ן נחלק לי' נקודות ולד' בחי' אמנם כפי האמת הם ה' בחי' כי הכתר למעלה מהד' הוא ועמו הם ה' פרצופים הכוללים י\"ס"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      A la sortie de BAN (la femelle, toute en DININ) :
+      Il est connu que chacun des 4 Miluyim contient les 4 = TANTA (Ta'amim, Nekudot, Tagin, Otiot).
+      Donc Shem BAN se DIVISE en 10 NEKUDOT et en 4 BEHINOT.
+      MAIS en VERITE = 5 BEHINOT car le KETER est AU-DESSUS des 4.
+      Avec lui = 5 PARTZUFIM, KOLLELIM (englobant) les 10S.
+      → Architecture : BAN = 5 partzufim (Keter + 4 Miluyim), chacun contient 10S.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ban_5_partzufim_kollelim, role: ban_5_partzufim_englobant_10s}
+      - {id: keter_au_dessus_des_4, role: keter_au_dessus_des_quatre_miluyim}
+      - {id: tanta_dans_chaque_milui, role: tanta_dans_chaque_milui}
+    mapping:
+      modules: ["partzufim/nukva.py", "shemot/", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture de BAN : 5 partzufim = Keter + AB + SAG + MAH + BAN. Chaque contient 10S complets."
+
+  # ─── BLOC G : NEKUDAH 1 (KETER DE BAN) — DESCENTE PROGRESSIVE ───
+
+  - id: "EC-H2S9-206"
+    source_he: "והנה בראשונה יצאה נקודה ראשונה דב\"ן והוא הכתר דב\"ן והיא כלולה מי\"ס ויצאו כל הי\"ס שבה כלולים בכלי הכתר שבה שהיא הכתר דכתר ונשאר שם אור הכתר וחזרו וירדו הט' אורות בכלי חכמה דכתר ונשאר שם אור החכמה וחזרו וירדו ח' אור' בכלי הבינ' דכתר ונשאר שם אור הבינ'"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      DESCENTE de la NEKUDAH 1 = KETER de BAN :
+      Toutes les 10S sortent INCLUSES dans le KELI du KETER (de Keter) → ohr Keter reste.
+      9 OROT redescendent dans le KELI HOKHMAH (de Keter) → ohr Hokhmah reste.
+      8 OROT redescendent dans le KELI BINAH (de Keter) → ohr Binah reste.
+      → Pattern par decantation : a chaque keli, l'ohr correspondant reste,
+      les autres descendent dans le suivant.
+      → Architecture : 3 GR survivent par decantation successive.
+    type: axiome_explicite
+    concepts:
+      - {id: descente_keter_de_ban_decantation, role: descente_keter_ban_par_decantation}
+      - {id: ohr_keter_reste_dans_keli_keter, role: ohr_keter_reste_dans_keli_keter}
+      - {id: ohr_hokhmah_reste_dans_keli_hokhmah, role: ohr_hokhmah_reste_dans_keli_hokhmah}
+    mapping:
+      modules: ["partzufim/nukva.py", "ohr.py", "[PLANNED] core/shevirah.py"]
+      tables: ["ohr_states"]
+      partzufim: ["nukva"]
+      relevance: "Mecanisme de decantation : a chaque etape, ohr matching reste, le reste continue. Architecture filtre."
+
+  - id: "EC-H2S9-207"
+    source_he: "ואח\"כ יצא אור הדעת בכלי הדעת ונשבר והאור שלו עלה למעלה והכלי נפל למטה. ואח\"כ יצא אור החסד ובו כלולין ז' אורות (נ\"א ששה) ונשבר והאור עלה למעלה והכלי נפל למטה ואח\"כ יצא אור הגבורה בכלי הגבורה ובה כלולים ה' אורות"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Ensuite OHR DAAT sort dans son keli → BRISE → ohr monte / keli tombe.
+      OHR CHESED sort avec 7 orot inclus (NA: 6) → brise → ohr monte / keli tombe.
+      OHR GEVURAH dans son keli avec 5 orot inclus → idem.
+      → Et ainsi jusqu'a la TAHTONAH (derniere) = MALKHUT du KETER de BAN.
+      → Pattern de la Shevirah des 7 melakhim DANS le Keter de BAN seul.
+      Microcosme : meme pattern de Shevirah a chaque niveau fractale.
+    type: axiome_explicite
+    concepts:
+      - {id: shevirah_dans_keter_ban, role: shevirah_des_7_dans_keter_de_ban}
+      - {id: pattern_microcosme_shevirah, role: pattern_microcosme_shevirah_fractale}
+    mapping:
+      modules: ["partzufim/nukva.py", "[PLANNED] core/shevirah.py", "ohr.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["nukva"]
+      relevance: "Microcosme : 7 melakhim brisent DANS le Keter de BAN. Architecture fractale de la Shevirah."
+
+  - id: "EC-H2S9-208"
+    source_he: "וכיוצא בזה עד התחתונה שהיא מלכות כתר דב\"ן גם היא נשברה ואירע בה כנ\"ל הרי כי אירע מיתת ז' המלכים בכתר דב\"ן שהם הז\"ת שבכתר זה"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Jusqu'a la TAHTONAH (derniere) = MALKHUT du KETER de BAN — elle aussi BRISEE.
+      → Donc se passe la MITAH des 7 MELAKHIM dans le KETER de BAN
+      = les 7 ZT (inferieurs) du KETER lui-meme.
+      → Pattern : 7 melakhim brises pour CHAQUE nekudah ; celle-ci pour Keter.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_melakhim_dans_keter_ban, role: sept_melakhim_dans_le_keter_de_ban}
+    mapping:
+      modules: ["partzufim/nukva.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "7 melakhim brisent DANS le Keter de BAN seul. Premier niveau de la fractalite."
+
+  # ─── BLOC H : NEKUDOT 2 ET 3 (HOKHMAH ET BINAH DE BAN) ───
+
+  - id: "EC-H2S9-209"
+    source_he: "אח\"כ יצאה הנקודה הב' שהיא חכמה דב\"ן וגם היא כלולה מי\"ס ואירע לה כמקרה כתר כי ג\"ר שבה יצאו ולא נשברו ובצאת הדעת התחילו להשבר (נ\"א לשבור) עד תשלום הז\"ת שהם ז' מלכים שבה"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Ensuite la NEKUDAH 2 = HOKHMAH de BAN — egalement composee de 10S.
+      Meme pattern que le Keter :
+      GR sortent et ne brisent pas.
+      A la sortie du DAAT → COMMENCE la SHEVIRAH (NA: "lishbor" = pour briser)
+      jusqu'a la fin des 7 ZT = 7 melakhim de cette nekudah.
+      → Reproduction du pattern : chaque nekudah a son propre cycle 7-melakhim.
+    type: axiome_explicite
+    concepts:
+      - {id: nekudah_2_hokhmah_ban, role: nekudah_2_hokhmah_de_ban}
+      - {id: meme_pattern_que_keter, role: meme_pattern_que_keter}
+    mapping:
+      modules: ["partzufim/nukva.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Pattern fractal : meme cycle dans Hokhmah que dans Keter. Recursion identique."
+
+  - id: "EC-H2S9-210"
+    source_he: "אח\"כ יצאה נקודה שלישית שהיא בינה דב\"ן וגם היא כלולה מי\"ס ואירע לה כמקרה ראשונה כי ג\"ר שבה נשארו שלימות והז\"ת המתחילין מן הדעת שבה כולם נשברו"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Ensuite la NEKUDAH 3 = BINAH de BAN — egalement composee de 10S.
+      Meme MIKREH (cas) que la premiere :
+      GR restent INTACTES.
+      ZT a partir du Daat — TOUS BRISES.
+      → Pattern repete : 3 nekudot premieres (Keter, Hokhmah, Binah de BAN)
+      ont chacune leur cycle 7-melakhim brises mais avec GR intactes.
+    type: axiome_explicite
+    concepts:
+      - {id: nekudah_3_binah_ban, role: nekudah_3_binah_de_ban}
+      - {id: pattern_3_premieres_nekudot, role: pattern_3_premieres_nekudot_avec_gr_intactes}
+    mapping:
+      modules: ["partzufim/nukva.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Confirmation du pattern : 3 premieres nekudot avec GR intactes. Architecture stable des superieures."
+
+  # ─── BLOC I : NEKUDOT 4-5 (ZON DE BAN) — INCOMPLETUDE ───
+
+  - id: "EC-H2S9-211"
+    source_he: "ואח\"כ יצאו ז' נקודות דב\"ן שהם כללות ב' נקודות לבד כנודע שהם זו\"ן דב\"ן אשר כל נקודה מב' בחי' האלו לבד כלולה מי\"ס וכל אלו נשברו ע\"ד הנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Ensuite sortent les 7 NEKUDOT de BAN qui sont en REALITE 2 NEKUDOT seulement
+      (KOLLELUT) — comme connu : ZON de BAN.
+      Chaque nekudah des 2 est composee de 10S.
+      Toutes ces nekudot ont ETE BRISEES selon le mode precedent.
+      → Reduction structurelle : 7 nekudot au niveau collective = 2 (ZA et Malkhut).
+    type: axiome_explicite
+    concepts:
+      - {id: 7_nekudot_de_ban_egal_2, role: sept_nekudot_de_ban_collectif_2}
+      - {id: zon_de_ban, role: zon_de_ban}
+      - {id: nekudot_4_5_brisees, role: nekudot_4_5_toutes_brisees}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Reduction collective : 7 nekudot = 2 (ZA et Malkhut). Brisure complete pour ces 2."
+
+  # ─── BLOC J : DISTINCTION G' PREMIERES / B' DERNIERES ───
+
+  - id: "EC-H2S9-212"
+    source_he: "ואמנם יש הפרש א' ביניהן והוא כי ג' נקודות הראשונים כולם כל נקודה מהם יצאה בבחי' י' נקודות אלא שהג\"ר של כל י' וי' הנ\"ל נשארו שלימות וז\"ת שבכל י' וי' נשברו"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      DISTINCTION (hefresh) entre les nekudot :
+      G' NEKUDOT PREMIERES (Keter, Hokhmah, Binah de BAN) :
+      Chaque nekudah est sortie en aspect 10 NEKUDOT (10S complets).
+      Les GR de chaque 10 sont restees INTACTES.
+      Les ZT de chaque 10 ont ete brisees.
+      → Pattern complete : 10S × 3 = 30 sub-nekudot, dont 3*3=9 GR intactes et 3*7=21 brisees.
+    type: axiome_explicite
+    concepts:
+      - {id: g_nekudot_premieres_10s_complets, role: trois_nekudot_premieres_avec_10s_complets}
+      - {id: gr_de_chaque_dix_intactes, role: gr_de_chaque_dix_intactes}
+    mapping:
+      modules: ["partzufim/nukva.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Pattern fractale specifique aux 3 premieres : 10S complets, GR intactes pour chacune."
+
+  - id: "EC-H2S9-213"
+    source_he: "אמנם ב' נקודות תחתונים. שהם כללות ז\"ת דב\"ן כנודע לא יצאו כל אחד בבחי' י\"ס כמו הג' נקודות ראשונים אמנם הנקודה הד' שהוא כנגד ז\"א דב\"ן נשארו ג\"ר שבו וכן העשירי' שבו בנקודה שלישית דב\"ן... ומנקודה הה' שהיא מלכות דב\"ן נשארו כל הט' אחרונות שבה למעלה כדרך ז\"א ולא יצאתה רק כתר שבה לבד"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      Mais les 2 NEKUDOT INFERIEURES (collectif des ZT de BAN) NE SONT PAS sorties
+      chacune en aspect 10S comme les 3 premieres.
+      NEKUDAH 4 (= ZA de BAN) : seulement les GR sont restees,
+      ainsi que la 10eme dans la nekudah 3 (= Imma de kollel = source des fils).
+      NEKUDAH 5 (= MALKHUT de BAN) : les 9 dernieres restent EN HAUT (en mode ZA),
+      et SEUL le KETER d'elle est sorti.
+      → Asymetrie structurelle : nekudot 4-5 = sortie partielle, distincte des 3 premieres.
+    type: axiome_explicite
+    concepts:
+      - {id: nekudot_inferieures_partielles, role: nekudot_inferieures_sortie_partielle}
+      - {id: nekudah_4_za_de_ban_gr_seules, role: nekudah_4_za_de_ban_gr_seules_emergent}
+      - {id: nekudah_5_malkhut_de_ban_keter_seul, role: nekudah_5_malkhut_de_ban_keter_seul_emerge}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Asymetrie : ZA-BAN sort GR seules, Malkhut-BAN sort Keter seul. Pattern d'emergence partielle."
+
+  # ─── BLOC K : GR DES 7 MELAKHIM INDIVIDUELLEMENT NON SORTIES ───
+
+  - id: "EC-H2S9-214"
+    source_he: "ודע כי ע\"ד שביארנו בכללות הב\"ן כי ב' נקודות התחתונים שהם כללות ז' מלכים לא יצאו ג\"ר שבהם כן בכל ז' מלכים דכל אחד מהג' נקודות הראשונות דב\"ן דכללות לא יצאו הג\"ר דז' מלכים עצמו בפרטות ונשארו בבינה שלהם שבאותו הנקודה עצמה"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      DA (sache) : comme dans le COLLECTIF de BAN, les 2 nekudot inferieures
+      (= 7 melakhim collectifs) n'ont pas eu leurs GR emerger →
+      AINSI dans CHAQUE des 7 MELAKHIM des 3 PREMIERES nekudot (en detail) :
+      les GR des 7 melakhim eux-memes NE SONT PAS sorties en pratique
+      (be-pratut) — sont restees DANS leur BINAH, dans cette nekudah meme.
+      → Recursion fractal : meme pattern a tous les niveaux.
+      Les GR de chaque sub-melekh restent dans leur Binah parent.
+    type: axiome_explicite
+    concepts:
+      - {id: gr_des_7_melakhim_pas_sorties, role: gr_des_sept_melakhim_pas_sorties}
+      - {id: gr_restent_dans_binah_parent, role: gr_restent_dans_binah_de_la_nekudah}
+      - {id: recursion_fractale_pattern, role: recursion_fractale_du_pattern}
+    mapping:
+      modules: ["partzufim/nukva.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Recursion fractale : pattern d'asymetrie GR/ZT applique a tous les niveaux."
+
+  # ─── BLOC L : QUESTION POURQUOI INFERIEURS SORTENT APRES BRISURE ───
+
+  - id: "EC-H2S9-215"
+    source_he: "ואל תתמה איך יצאו התחתונים אחר שבירת העליונים וגם איך כל הג\"ר שבכל נקודה ונקודה של הה' נקודות לא נשברו והז\"ת דנקודים ראשונים נשברו"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      ETONNEMENT a anticiper :
+      "Al titmahh" (ne t'etonne pas) :
+      1. Comment les INFERIEURS sortent APRES la SHEVIRAH des SUPERIEURS ?
+      2. Comment les GR de chaque nekudah des 5 nekudot ne brisent pas,
+         alors que les ZT des Nekudim premiers ont brise ?
+      → Question structurelle a resoudre.
+    type: déduction_logique
+    concepts:
+      - {id: question_inferieurs_apres_shevirah, role: question_inferieurs_sortent_apres}
+      - {id: question_gr_intactes_zt_brisees, role: question_gr_intactes_zt_brisees}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Question structurelle : asymetrie GR/ZT et ordre temporel apparemment paradoxal."
+
+  - id: "EC-H2S9-216"
+    source_he: "התשובה הוא כי בכל נקודה ונקודה יש מין אור א' שוה לערך הנקודה ההוא ואז האור ההוא שלהם הג\"ר יכולים לקבלו והז\"ת שבו לא יכלו לקבלו וכעד\"ז בכל נקודה ונקודה מהה' נקודות אירע כך"
+    source_ref: "Heikhal 2, Sha'ar 2:6"
+    assertion: |
+      REPONSE : dans CHAQUE nekudah, il y a un MIN OHR EHAD SHAVEH (un seul
+      type d'ohr, EGAL) au RANG (erekh) de cette nekudah.
+      Cet ohr — les GR PEUVENT le recevoir, les ZT NE PEUVENT PAS.
+      Et ainsi pour chaque nekudah des 5.
+      → Resolution : la receptivite GR/ZT depend de la capacite a recevoir
+      l'ohr propre de la nekudah.
+      cf. EC-H2S9-186 (perek 05) sur GR receptivite vs ZT.
+    type: interprétation_lurianique
+    concepts:
+      - {id: min_ohr_ehad_par_nekudah, role: ohr_unique_par_nekudah}
+      - {id: gr_recoivent_zt_pas_universel, role: gr_recoivent_zt_pas_pattern_universel}
+    mapping:
+      modules: ["ohr.py", "partzufim/nukva.py"]
+      tables: ["ohr_states"]
+      partzufim: ["nukva"]
+      relevance: "Resolution : chaque nekudah a son ohr propre ; GR le recoivent, ZT non. Pattern universel. cf. EC-H2S9-186."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-105"
+    type: contenance
+    from: ak_kolel_av_sag_mah_ban
+    to: chaque_kolel_des_4
+    nature: "AK contient 4 Miluyim ; chacun des 4 contient les 4 (architecture fractale)"
+    assertions_source: ["EC-H2S9-199"]
+
+  - id: "REL-H2S9-106"
+    type: hiérarchique
+    from: galgalta_atik_dessus
+    to: mah_ban_du_tabur_zon
+    nature: "Hierarchie spatiale : Atik (au-dessus galgalta) → AB (mohin) → SAG (oreille-tabur) → MAH/BAN (tabur en bas)"
+    assertions_source: ["EC-H2S9-200"]
+
+  - id: "REL-H2S9-107"
+    type: causal
+    from: zivvug_av_sag_pnimi
+    to: bat_yatzah_be_rishonah
+    nature: "Zivvug AB-SAG interieurs (HB) → naissance de la fille (BAN) en premier"
+    assertions_source: ["EC-H2S9-202"]
+
+  - id: "REL-H2S9-108"
+    type: séquentiel
+    from: ban_lo_nitkayemu_seuls
+    to: olam_nitkayem_par_combinaison
+    via: [re_zivvug_pour_mah, mah_be_pnim_ve_ba_hutz]
+    nature: "BAN seul ne maintient pas → re-zivvug → MAH (rachamim) → maintien du monde"
+    assertions_source: ["EC-H2S9-203"]
+
+  - id: "REL-H2S9-109"
+    type: dualité_structurelle
+    from: zon_au_debut_nukvot_ban
+    to: zon_ensuite_zekhirim_mah
+    nature: "Transition polaire : ZON nukvot (BAN/dinim) → ZON zekhirim (MAH/rachamim)"
+    assertions_source: ["EC-H2S9-204"]
+
+  - id: "REL-H2S9-110"
+    type: contenance
+    from: ban_5_partzufim_kollelim
+    to: tanta_dans_chaque_milui
+    nature: "BAN = 5 partzufim (Keter+4 Miluyim), chacun avec TANTA fractal"
+    assertions_source: ["EC-H2S9-205"]
+
+  - id: "REL-H2S9-111"
+    type: séquentiel
+    from: descente_keter_de_ban_decantation
+    to: shevirah_dans_keter_ban
+    via: [ohr_keter_reste_dans_keli_keter]
+    nature: "Decantation Keter → Hokhmah → Binah → puis shevirah des 7 ZT du Keter de BAN"
+    assertions_source: ["EC-H2S9-206", "EC-H2S9-207", "EC-H2S9-208"]
+
+  - id: "REL-H2S9-112"
+    type: analogie
+    from: meme_pattern_que_keter
+    to: pattern_3_premieres_nekudot
+    nature: "Pattern repete : Hokhmah-BAN et Binah-BAN suivent le pattern du Keter-BAN"
+    assertions_source: ["EC-H2S9-209", "EC-H2S9-210"]
+
+  - id: "REL-H2S9-113"
+    type: dualité_structurelle
+    from: g_nekudot_premieres_10s_complets
+    to: nekudot_inferieures_partielles
+    nature: "G' nekudot = 10S complets ; B' nekudot = sortie partielle (ZA gr seules, Malkhut Keter seul)"
+    assertions_source: ["EC-H2S9-212", "EC-H2S9-213"]
+
+  - id: "REL-H2S9-114"
+    type: contenance
+    from: gr_des_7_melakhim_pas_sorties
+    to: recursion_fractale_pattern
+    nature: "Pattern asymetrique GR/ZT applique recursivement a tous les niveaux"
+    assertions_source: ["EC-H2S9-214"]
+
+  - id: "REL-H2S9-115"
+    type: causal
+    from: min_ohr_ehad_par_nekudah
+    to: gr_recoivent_zt_pas_universel
+    nature: "Chaque nekudah a son ohr propre → GR (en partzuf) recoivent, ZT (pas en partzuf) ne peuvent"
+    assertions_source: ["EC-H2S9-216"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-043"
+    nom: "Principe de l'Architecture Fractale (4 Miluyim x 4 Miluyim)"
+    source_assertions: ["EC-H2S9-199", "EC-H2S9-205", "EC-H2S9-214"]
+    formalisation: |
+      A"K presente une ARCHITECTURE FRACTALE :
+      A"K contient les 4 MILUYIM : AB, SAG, MAH, BAN
+      Chacun des 4 contient les 4 → 4 x 4 = 16 sub-niveaux
+      Chaque sub-niveau contient lui-meme les 4 → recursion
+      Pattern operationnel : TANTA (Ta'amim, Nekudot, Tagin, Otiot) x niveau
+      RECUSRSION SHEVIRAH : meme pattern d'asymetrie GR/ZT applique a tous les niveaux
+      → BAN se decompose en 5 partzufim (Keter+4 Miluyim), chacun avec 10S
+      → Chaque nekudah a son cycle 7-melakhim brises avec GR intactes
+      → A chaque sub-niveau : meme dynamique
+    applications_ia:
+      - "Pattern fractal : modeliser le systeme avec recursion 4x4 (TANTA)"
+      - "[PLANNED] core/sefirot.py : implementer la fractalite (sefirah-de-sefirah)"
+      - "shemot/ : tracer les 4 Miluyim a chaque niveau"
+      - "gematria/engine.py : verifier les decompositions arithmetiques recursives"
+      - "Architecture : un meme pattern (Shevirah) se reproduit a tous les niveaux"
+    questions_ouvertes:
+      - "Combien de niveaux de fractalite sont operationnels ?"
+      - "La recursion est-elle ad infinitum ou bornee ?"
+      - "Comment formaliser computationnellement la fractalite TANTA ?"
+
+  - id: "PG-H2S9-044"
+    nom: "Principe Bat-avant-Ben (Naissance Polaire en 2 Temps)"
+    source_assertions: ["EC-H2S9-202", "EC-H2S9-203", "EC-H2S9-204"]
+    formalisation: |
+      Pattern de naissance en 2 TEMPS :
+      TEMPS 1 — BAT (fille) :
+        Zivvug AB-SAG interieurs (HB)
+        BAN sort en premier (femelle, dinim)
+        BAN seul ne maintient pas
+      TEMPS 2 — BEN (fils) :
+        Re-zivvug → engendre MAH
+        MAH = male, rachamim
+        Combinaison BAN+MAH = monde maintenu
+      EQUATION OPERATIONNELLE : Olam = ZON = ZA + Nukvah
+        Initialement ZON nukvot (= BAN, dinim)
+        Ensuite ZON zekhirim (= MAH, rachamim)
+      → Pattern : la stabilite finale necessite les 2 polarites successivement.
+      Verset : "Be-yom asot Hashem Elohim eretz va-shamayim" (Genese 2:4).
+    applications_ia:
+      - "Pattern : initialisation en 2 temps (femelle puis male, Din puis Rachamim)"
+      - "Architecture : un systeme stable necessite les 2 polarites"
+      - "[PLANNED] tikkun/ : modeliser sequence Bat→Ben"
+      - "Pattern : la 1ere version (Bat) prepare la 2eme (Ben) ; la 2eme stabilise"
+      - "partzufim/nukva.py + zeir_anpin.py : sequences de polarites successives"
+    questions_ouvertes:
+      - "Pourquoi precisement Bat avant Ben et pas l'inverse ?"
+      - "Le re-zivvug est-il automatique ou requiert une condition ?"
+      - "Y a-t-il des systemes stables avec une seule polarite ?"
+
+  - id: "PG-H2S9-045"
+    nom: "Principe de la Decantation (Filtre Hierarchique)"
+    source_assertions: ["EC-H2S9-206", "EC-H2S9-207", "EC-H2S9-208"]
+    formalisation: |
+      Pattern de DECANTATION pour la sortie des nekudot :
+      Toutes les 10S sortent INCLUSES dans le Keli du Keter (premier keli)
+      A chaque keli : l'OHR matching reste, les autres descendent
+        Keli Keter → ohr Keter reste (9 descendent)
+        Keli Hokhmah → ohr Hokhmah reste (8 descendent)
+        Keli Binah → ohr Binah reste (7 descendent)
+        Keli Daat → BRISURE (ohr monte, keli tombe)
+        Keli Chesed → BRISURE
+        ... → Keli Malkhut → BRISURE
+      → 3 GR survivent par DECANTATION ; 7 ZT BRISENT.
+      → Architecture filtre : capacite de receptivite decroissante.
+    applications_ia:
+      - "Pattern : filtre hierarchique avec capacite decroissante"
+      - "[PLANNED] core/shevirah.py : modeliser la decantation comme algorithme"
+      - "Architecture : chaque etape du pipeline filtre une fraction de l'input"
+      - "Pattern : seuil de capacite par niveau"
+      - "ohr.py : implementer la decantation comme sequence d'operations"
+    questions_ouvertes:
+      - "Quel est le ratio precis de capacite entre niveaux ?"
+      - "Existe-t-il un mecanisme de retour-arriere (anti-decantation) ?"
+      - "La capacite est-elle fixe ou peut-elle etre augmentee par Tikkun ?"
+
+  - id: "PG-H2S9-046"
+    nom: "Principe de la Receptivite par Ohr Propre (Loi des Capacites)"
+    source_assertions: ["EC-H2S9-215", "EC-H2S9-216"]
+    formalisation: |
+      LOI universelle : chaque nekudah a un OHR PROPRE (min ohr ehad shaveh).
+      RECEPTIVITE = COMPATIBILITE entre l'ohr et le receptionneur.
+        GR (en partzuf) → peuvent recevoir l'ohr propre de leur nekudah
+        ZT (sans partzuf) → NE peuvent PAS le recevoir
+      → Pattern UNIVERSEL : applique a chaque nekudah des 5.
+      Resolution du paradoxe ordre temporel :
+        Inferieurs ne peuvent pas attendre la fin des superieurs
+        Chacun a son propre ohr → sa propre dynamique
+        La sequence apparente n'est pas causale mais simultanee per-nekudah
+      cf. EC-H2S9-186 (perek 05) sur GR/ZT receptivite.
+    applications_ia:
+      - "Loi : la receptivite depend de la compatibilite structurelle"
+      - "Pattern : chaque sub-system a sa propre 'frequence' / 'rang'"
+      - "[PLANNED] tikkun/ : verifier la compatibilite avant transmission"
+      - "Architecture : eviter de penser sequentiel quand le pattern est per-nekudah"
+      - "ohr.py : implementer la classification par 'rang' de chaque ohr"
+    questions_ouvertes:
+      - "Le 'rang' d'une nekudah est-il quantifiable ?"
+      - "Y a-t-il un mecanisme pour adapter l'ohr au receptionneur ?"
+      - "Le pattern universel s'applique-t-il aussi a Beriah/Yetzirah/Asiyah ?"

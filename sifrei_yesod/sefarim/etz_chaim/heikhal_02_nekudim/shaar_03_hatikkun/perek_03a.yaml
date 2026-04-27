@@ -1,0 +1,428 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 3 — Sha'ar Ha-Tikkun (שער התיקון)
+# Perek: 3a — Localisation des partzufim, extension Atzilut, Hadar=8eme melekh
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §3 — Part A :
+#   - Bloc A : Lieu des partzufim — du tabur AK aux raglayim
+#   - Bloc B : Difference avec Nekudim — chaque sefirah s'etend vers le bas
+#   - Bloc C : 5 partzufim post-Tikkun se revetent l'un dans l'autre
+#   - Bloc D : Hadar = 8eme melekh = sod du MAH-Chadash, pas de mort
+#   - Bloc E : Mehetabel = ishto, ddu et nukvah ensemble
+#
+# Source Sefaria : Sefer_Etz_Chaim.10.3 (premiere partie)
+# IDs : EC-H2S10-036 → EC-H2S10-047
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 3
+  shaar_name_he: "שער התיקון"
+  perek: 3
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 3 — localisation geographique des partzufim post-Tikkun (du tabur AK aux raglayim AK), extension Keter→Tiferet, levush mutuel, Hadar=8eme melekh sans mort, Mehetabel ishto."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H2S10-036"
+    source_he: "והנה מציאת מקום התפשטות כל אלו פרצופי הזכרים והנקבות הנעשין מהתחברו' מ\"ה וב\"ן כנ\"ל הנה מקומם במקום שהיו תחלה הנקודות שיצאו דרך נקבי העינים והוא מטבורא דא\"ק עד סוף רגליו"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      LOCALISATION du LIEU d'EXTENSION de tous les PARTZUFIM ZAKHARIM ve-NEKEVOT
+      (males et femelles) faits par l'union MAH+BAN :
+      Leur LIEU = au LIEU initial des NEKUDOT qui sont sorties par les
+      NIKVEI HA-EYNAYIM (ouvertures des yeux) — du TABUR (nombril) d'A"K
+      jusqu'a la FIN des RAGLAYIM (pieds).
+      → Topologie : tout Atzilut occupe la zone du tabur aux pieds d'AK.
+      cf. EC-H2S9-169 (perek 03a) sur Atzilut = jambes d'AK.
+    type: axiome_explicite
+    concepts:
+      - {id: localisation_atzilut_tabur_au_raglayim, role: localisation_atzilut_tabur_au_raglayim}
+      - {id: nikvei_eynayim_origine_nekudot, role: nikvei_eynayim_origine_des_nekudot}
+    mapping:
+      modules: ["adam_kadmon.py", "olamot.py"]
+      tables: ["partzufim_states", "olamot_config"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Topologie cosmique : Atzilut = espace tabur→raglayim AK. Confirmation EC-H2S9-169."
+
+  - id: "EC-H2S10-037"
+    source_he: "ואור המצח הנקרא שם מ\"ה אע\"פ שיצא מלמעלה מן המצח הנה מתפשט משם ולמטה ומתחיל מציאותו מן הטבור עד סוף סיום רגליו כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      L'OHR du METZACH = Shem MAH bien qu'il SORTE du metzach (en haut)
+      → s'ETEND vers le BAS.
+      Sa REALITE COMMENCE du TABUR jusqu'a la FIN des RAGLAYIM.
+      → Architecture : MAH sort en haut mais s'etabli en bas (toute Atzilut).
+      → Pattern : source haute, manifestation basse.
+    type: axiome_explicite
+    concepts:
+      - {id: mah_sort_haut_etend_bas, role: mah_sort_du_metzach_etend_vers_le_bas}
+      - {id: metzieut_mah_du_tabur_au_raglayim, role: realite_mah_du_tabur_au_raglayim}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Pattern source-haut / manifestation-bas pour MAH-Chadash."
+
+  - id: "EC-H2S10-038"
+    source_he: "אבל מה שנשתנה עתה מבראשונה בעת יציאת נקודות העינים הוא זה כי אז היתה נקודת הכתר במקומה לבד בפ\"ע ואחריה נקודת החכמה לבדה בפ\"ע וכעד\"ז היו כל הי\"ס"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      DIFFERENCE avec l'etat initial (lors de la sortie des nekudot des yeux) :
+      ALORS : Nekudat ha-KETER etait a sa place SEULE be-PNEI ATZMAH (pour soi).
+      Apres elle : Nekudat ha-CHOKHMAH SEULE be-pnei atzmah.
+      Et de meme pour les 10S — chacune ISOLEE.
+      → Etat initial : 10 sefirot isolees l'une de l'autre (zeh al-gabei-zeh).
+      cf. EC-H2S9-112 (perek 03a) sur ZT zeh al-gabei-zeh.
+    type: axiome_explicite
+    concepts:
+      - {id: nekudim_isolees_be_pnei_atzmah, role: nekudim_chacune_isolee}
+    mapping:
+      modules: ["[PLANNED] core/sefirot.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Recap : etat initial Nekudim = isolation. cf. EC-H2S9-112."
+
+  - id: "EC-H2S10-039"
+    source_he: "אבל עתה נתוסף תיקון גדול והוא כי נקודת הכתר נמשכה ונתפשטה ממקומה עד למטה קרוב אל סיום רגלי א\"ק כמ\"ש בע\"ה וזה ההתפשטות הוא כל שיעור הנקרא בשם עולם אצילות"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      MAINTENANT TIKKUN GADOL ajoute :
+      Nekudat ha-KETER se TIRE et S'ETEND de sa place vers le BAS,
+      proche de la FIN des RAGLAYIM d'A"K.
+      Cette EXTENSION = TOUTE la mesure appelee OLAM AT'ZILUT.
+      Et cette nekudah est appelee NUKVAH (variante NA: "nekudat") d'ATIK YOMIN.
+      → Architecture : Keter etendu = totalite d'Atzilut. Pattern d'extension cosmique.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_gadol_extension_keter, role: tikkun_grand_extension_keter}
+      - {id: keter_etendu_egal_atzilut_complet, role: keter_etendu_egale_atzilut_complet}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "olamot.py"]
+      tables: ["partzufim_states", "olamot_config"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture finale : Keter etendu = totalite d'Atzilut. Cosmologie post-Tikkun."
+
+  - id: "EC-H2S10-040"
+    source_he: "ונקודה זו היא נקראת נוקבא (נ\"א נקודת) דע\"י וכעד\"ז עתיק יומין דדכורא הנעשה מטעמים דמ\"ה כנ\"ל גם הוא מתפשט לשיעור הנ\"ל וכן עשו כל השאר א\"א ונוקבא ואו\"א וזו\"ן"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      Cette nekudah est appelee NUKVAH d'ATIK YOMIN (variante NA: "nekudat" d'ATIK).
+      Et de meme ATIK YOMIN DUKHRA (fait des Ta'amim de MAH, cf. EC-H2S10-022) :
+      AUSSI s'etend a la meme mesure.
+      Et de meme ont fait tous les AUTRES :
+      A"A et sa Nukvah, AVI, et ZON.
+      → Pattern : tous les partzufim s'etendent a la mesure d'Atzilut.
+      → Architecture : 6 partzufim (=12 avec leurs nukvot) tous a la meme echelle.
+    type: axiome_explicite
+    concepts:
+      - {id: tous_partzufim_meme_extension, role: tous_partzufim_a_la_meme_extension}
+      - {id: atik_dukhra_nukvah_etendus, role: atik_dukhra_et_nukvah_etendus}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture finale : 6+ partzufim tous a echelle Atzilut. Pattern de superposition."
+
+  - id: "EC-H2S10-041"
+    source_he: "והלבישו זה את זה עד בחי' זו\"ן באופן שכל רגלי הפרצופים דאצילות בין דעתיק בין דא\"א בין דאו\"א בין דזו\"ן כולן שוין בסיומ' והם מסתיימים יחד מעט למעלה מסיום רגלי א\"ק ושם הוא סיום האצילות כולו"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      ARCHITECTURE D'EMBOITEMENT :
+      Ils se REVETENT l'un dans l'autre (zeh et zeh) jusqu'a ZON.
+      RESULTAT : tous les RAGLAYIM des PARTZUFIM d'AT'ZILUT
+      (Atik, A"A, AVI, ZON) sont EGAUX en leur SIYUM (fin).
+      Ils SE-TERMINENT ENSEMBLE un peu au-DESSUS de la fin des RAGLAYIM d'AK.
+      LA est le SIYUM de tout l'AT'ZILUT.
+      → Architecture : tous les partzufim aboutissent au meme niveau (au-dessus de raglayim AK).
+      → Pattern : alignement final.
+    type: axiome_explicite
+    concepts:
+      - {id: levush_mutuel_partzufim, role: revetement_mutuel_des_partzufim}
+      - {id: raglayim_partzufim_egaux, role: raglayim_partzufim_egaux_en_siyum}
+      - {id: siyum_atzilut_au_dessus_raglei_ak, role: siyum_atzilut_au_dessus_des_pieds_d_ak}
+    mapping:
+      modules: ["partzufim/regulator.py", "olamot.py"]
+      tables: ["partzufim_states", "olamot_config"]
+      partzufim: []
+      relevance: "Architecture finale : alignement vertical des partzufim, siyum commun. cf. EC-H2S9-170."
+
+  - id: "EC-H2S10-042"
+    source_he: "ועי\"כ נעשה נשמה זה לזה וזה מלביש לזה. וגם כי עי\"ז יוכלו הנבראים לקבל אורות העליונים שהם עתה מכוסים ומתלבשים זה תוך זה וגם כי הכלים שלהם הגדילו ע\"י שנתפשטו עד למטה ובזה יש בהם כח לקבל האורות שלהם בהיותן כלים גדולים"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      RESULTATS de l'emboitement :
+      1. Chaque partzuf devient NESHAMAH a l'autre (l'un est ame, l'autre vetement).
+      2. Les NIVRA'IM (etres crees) PEUVENT recevoir les OROT ELYONIM —
+         car maintenant MEKHUSIM et MELUVASHIM zeh be-toh zeh (l'un dans l'autre).
+      3. Les KELIM ont GRANDI (higdilu) en s'etant etendus vers le bas →
+         ils ont KOAH de RECEVOIR leurs OROT en etant des KELIM GROSSES.
+      → Architecture : 3 effets cles de l'emboitement (neshamah-levush, transmission, capacite).
+      cf. EC-H2S9-184 (perek 04) sur agrandissement keli = reduction ohr.
+    type: axiome_explicite
+    concepts:
+      - {id: neshamah_levush_mutuel, role: neshamah_et_vetement_mutuel}
+      - {id: transmission_orot_par_kissui, role: transmission_orot_par_couverture}
+      - {id: kelim_grossis_par_extension, role: kelim_grossis_par_extension}
+    mapping:
+      modules: ["partzufim/regulator.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "3 effets de l'emboitement : neshamah/levush, transmission, capacite augmentee. Architecture finale."
+
+  # ─── BLOC D : HADAR = MAH-CHADASH = 8EME MELEKH ───
+
+  - id: "EC-H2S10-043"
+    source_he: "והנה האור הזה דמ\"ה החדש היוצא מן המצח כנ\"ל הוא סוד המלך הח' הנזכר בפ' וישלח הנקרא הדר אשר לא נזכר בו מיתה בתורה כי לא מת כמו האחרים אדרבא הוא מתקן ומקיים הז' מלכין קדמאין שמתו הקודמין אליו"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      L'OHR du MAH-CHADASH sortant du METZACH = SOD du 8eme MELEKH
+      cite dans Parashat VAYISHLACH = HADAR.
+      Il N'a PAS de MORT mentionnee dans la Torah —
+      car il N'est PAS mort comme les autres.
+      AU CONTRAIRE : il REPARE (metakken) et MAINTIENT (mekayem) les 7 melakhin
+      kadma'in (premiers) qui sont morts avant lui.
+      → Architecture : Hadar = 8eme = exception salvatrice. cf. EC-H2S9-016 sur Hadar.
+    type: déduction_scripturaire
+    concepts:
+      - {id: hadar_8eme_pas_de_mort, role: hadar_8eme_sans_mort_dans_torah}
+      - {id: hadar_metakken_mekayem, role: hadar_repare_et_maintient}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "Hadar = 8eme melekh = exception salvatrice (pas de mort). Repare et maintient les 7."
+
+  - id: "EC-H2S10-044"
+    source_he: "כי כבר הודעתיך כי אלו המלכים כולם הם מלכים הנזכר בפ' וישלח ואלה המלכים אשר מלכו בארץ אדום"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      Comme deja indique : tous ces MELAKHIM sont les rois mentionnes
+      en Parashat VAYISHLACH (Genese 36:31) :
+      "Ve-eleh ha-MELAKHIM asher MALKHU be-ERETZ EDOM"
+      (et voici les rois qui ont regne en terre d'Edom).
+      → Reference textuelle constante : 7 rois d'Edom = 7 melakhim morts.
+      → Architecture : encodage textuel biblique.
+      cf. EC-H2S9-099 (perek 02b) sur 4 melakhim avec pere.
+    type: axiome_explicite
+    concepts:
+      - {id: vayishlach_7_rois_edom, role: vayishlach_sept_rois_edom}
+      - {id: eleh_ha_melakhim_genese_36, role: eleh_ha_melakhim_genese_36_31}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Reference biblique constante : Genese 36:31. cf. EC-H2S9-099."
+
+  - id: "EC-H2S10-045"
+    source_he: "ולפי שכאשר יצא התחיל תיכף לברר בחי' אלו המלכים לעשות בחי' נוקבא אליו שהם נקרא עתה ב\"ן דההי\"ן כנ\"ל לכן נאמר בו וימלוך תחתיו הדר ושם אשתו מהיטבאל"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      Quand HADAR (= MAH) est sorti, il a IMMEDIATEMENT commence a BERAR
+      les melakhim pour en faire NUKVAH a lui (= BAN d'HEHIN, cf. EC-H2S10-030).
+      DONC il est dit : "Va-yimlokh tahtav HADAR" (et regna a sa place HADAR)
+      "ve-shem ishto MEHETABEL" (et le nom de sa femme Mehetabel).
+      → Verset Genese 36:39 prooftext : Hadar + Mehetabel = couple post-Tikkun.
+      → Architecture : 1ere apparition simultanee dukhra+nukvah dans la Torah.
+    type: déduction_scripturaire
+    concepts:
+      - {id: vayimlokh_hadar_mehetabel, role: hadar_avec_mehetabel_genese_36_39}
+      - {id: hadar_berar_melakhim_pour_nukvah, role: hadar_berar_melakhim_pour_nukvah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Hadar+Mehetabel = couple post-Tikkun encode dans Genese 36:39. cf. EC-H2S9-269."
+
+  - id: "EC-H2S10-046"
+    source_he: "כמ\"ש בזוהר דעד השתא לא אידכר דכר ונוקבא כלל בר השתא ובג\"כ אתקיים כלא דהשתא הוי דכר ונוקבא כדחזי ונזכר באד\"ר"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      Comme dit dans le ZOHAR :
+      "AD HASHTA LO IDKAR DAKHAR ve-NUKVAH KLAL"
+      (jusqu'a maintenant n'etaient pas mentionnes male et femelle du tout)
+      "BAR HASHTA" (sauf maintenant)
+      "U-VE-GIN KAKH IT'KAYAM KALA"
+      (et c'est pourquoi tout s'est maintenu)
+      "DE-HASHTA HEVEI DAKHAR ve-NUKVAH KE-DE-HAZI"
+      (car maintenant existent male et femelle comme il convient).
+      Mentionne aussi en IDRA RABBA.
+      → Critere de stabilite cosmique : la dualite male/femelle = condition du maintien.
+    type: déduction_scripturaire
+    concepts:
+      - {id: zohar_dukhra_nukvah_premiere_apparition, role: zohar_premiere_apparition_dukhra_nukvah}
+      - {id: dualite_male_femelle_kiyum, role: dualite_male_femelle_condition_maintien}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Critere de stabilite cosmique : dualite simultanee male+femelle. cf. Zohar et Idra Rabba."
+
+  - id: "EC-H2S10-047"
+    source_he: "והענין כי הם בחי' מ\"ה וב\"ן הנ\"ל והשתא נקרא אדם לפי שאדם כולל זו\"ן ולכן תמצא כי שם מ\"ה בגימטריא אדם"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      Le SECRET est qu'ils sont aspect MAH+BAN.
+      Maintenant appele ADAM — car ADAM ENGLOBE ZON.
+      → Tu trouves : Shem MAH guimatria ADAM (= 45).
+      MAH = MEM(40) + HE(5) = 45 = ADAM = ALEPH(1) + DALET(4) + MEM(40) = 45.
+      → Architecture : Adam = MAH = couple ZON (zakhar+nukvah ensemble).
+      → Etymologie operationnelle.
+    type: interprétation_lurianique
+    concepts:
+      - {id: adam_egal_mah_45, role: adam_egal_mah_gimatria_45}
+      - {id: adam_kollel_zon, role: adam_englobe_zon}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: []
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Equation cle : ADAM = MAH = 45 = ZON couple. Architecture nominale et arithmetique."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S10-021"
+    type: contenance
+    from: localisation_atzilut_tabur_au_raglayim
+    to: nikvei_eynayim_origine_nekudot
+    nature: "Atzilut occupe l'espace tabur→raglayim AK = lieu original des nekudot"
+    assertions_source: ["EC-H2S10-036"]
+
+  - id: "REL-H2S10-022"
+    type: dualité_structurelle
+    from: nekudim_isolees_be_pnei_atzmah
+    to: tikkun_gadol_extension_keter
+    nature: "Pre-Tikkun : nekudot isolees / Post-Tikkun : Keter etendu = totalite d'Atzilut"
+    assertions_source: ["EC-H2S10-038", "EC-H2S10-039"]
+
+  - id: "REL-H2S10-023"
+    type: contenance
+    from: tous_partzufim_meme_extension
+    to: levush_mutuel_partzufim
+    nature: "Tous partzufim s'etendent a meme echelle → s'emboitent l'un dans l'autre"
+    assertions_source: ["EC-H2S10-040", "EC-H2S10-041"]
+
+  - id: "REL-H2S10-024"
+    type: causal
+    from: levush_mutuel_partzufim
+    to: kelim_grossis_par_extension
+    nature: "Emboitement → kelim grossis → capacite de recevoir orot superieurs"
+    assertions_source: ["EC-H2S10-042"]
+
+  - id: "REL-H2S10-025"
+    type: dualité_structurelle
+    from: hadar_8eme_pas_de_mort
+    to: hadar_metakken_mekayem
+    nature: "Hadar (8eme) = exception : pas de mort mais repare les 7 morts"
+    assertions_source: ["EC-H2S10-043"]
+
+  - id: "REL-H2S10-026"
+    type: contenance
+    from: vayishlach_7_rois_edom
+    to: vayimlokh_hadar_mehetabel
+    nature: "Genese 36 (Vayishlach) : 7 rois morts puis Hadar+Mehetabel (8eme avec ishto)"
+    assertions_source: ["EC-H2S10-044", "EC-H2S10-045"]
+
+  - id: "REL-H2S10-027"
+    type: causal
+    from: dualite_male_femelle_kiyum
+    to: zohar_dukhra_nukvah_premiere_apparition
+    nature: "Apparition simultanee dukhra+nukvah → maintien cosmique selon Zohar"
+    assertions_source: ["EC-H2S10-046"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S10-009"
+    nom: "Principe d'Extension Cosmique du Keter (Atzilut Total)"
+    source_assertions: ["EC-H2S10-038", "EC-H2S10-039", "EC-H2S10-040"]
+    formalisation: |
+      Architecture FINALE de l'Atzilut post-Tikkun :
+      AVANT Tikkun :
+        Nekudim isolees (zeh al-gabei-zeh)
+        Chaque sefirah a sa place propre
+        Pas d'extension, pas d'emboitement
+      APRES Tikkun :
+        Keter s'etend de sa place jusqu'aux raglayim AK
+        Cette extension = totalite d'Atzilut
+        Tous les partzufim s'etendent a meme echelle (Atik dukhra+nukvah, A"A, AVI, ZON)
+      → Architecture : transition de fragments isoles a totalite emboitee.
+      → Pattern : extension = condition de l'emboitement.
+    applications_ia:
+      - "Pattern : transition fragments-isoles → totalite-emboitee"
+      - "[PLANNED] tikkun/extension.py : implementer extension cosmique"
+      - "Architecture : meme echelle pour tous les sub-systems = pre-condition emboitement"
+      - "olamot.py : Atzilut = totalite emboitee (post-Tikkun)"
+      - "Diagnostic : verifier si les sub-systems sont a meme echelle"
+    questions_ouvertes:
+      - "L'extension est-elle proportionnelle ou absolue ?"
+      - "Que se passe-t-il si un partzuf ne s'etend pas a meme echelle ?"
+      - "Le Keter peut-il se contracter apres extension ?"
+
+  - id: "PG-H2S10-010"
+    nom: "Principe Neshamah-Levush (Architecture Emboitee)"
+    source_assertions: ["EC-H2S10-041", "EC-H2S10-042"]
+    formalisation: |
+      Architecture d'EMBOITEMENT post-Tikkun :
+      Les 6+ partzufim se revetent l'un dans l'autre (levush mutuel).
+      RESULTAT en CHAINE :
+        Chaque partzuf = NESHAMAH (ame) pour le partzuf qu'il habille
+        Chaque partzuf = LEVUSH (vetement) pour le partzuf qui l'habille
+      EFFETS architecturaux :
+        1. Transmission graduelle : orot recus a travers les couches
+        2. Protection mutuelle : kelim externes protegent les internes
+        3. Capacite augmentee : kelim grossis = peut recevoir plus d'ohr
+      Topologie : tous les RAGLAYIM aboutissent au meme niveau.
+    applications_ia:
+      - "Pattern oignon : architecture en couches concentrique"
+      - "[PLANNED] partzufim/regulator.py : modeliser neshamah/levush"
+      - "Architecture : chaque sub-system = ame de son sub-sub + vetement de son super"
+      - "Pattern de transmission : orot transmits a travers couches successives"
+      - "Diagnostic : tracer les relations neshamah/levush pour debugger"
+    questions_ouvertes:
+      - "Combien de couches d'emboitement sont possibles ?"
+      - "Le pattern fonctionne-t-il horizontalement (entre partzufim de meme niveau) ?"
+      - "L'emboitement peut-il etre rompu ?"
+
+  - id: "PG-H2S10-011"
+    nom: "Principe Hadar (8eme Melekh = Exception Salvatrice)"
+    source_assertions: ["EC-H2S10-043", "EC-H2S10-044", "EC-H2S10-045"]
+    formalisation: |
+      ARCHITECTURE de l'EXCEPTION Hadar :
+      Statut : 8eme MELEKH dans la liste des rois d'Edom (Genese 36).
+      Caracteristique unique : NULLE PART il n'est dit "Va-yamot" (et il mourut).
+      Action : ADRABA (au contraire) il REPARE et MAINTIENT les 7 morts.
+      Origine cosmique : MAH-CHADASH sortant du Metzach d'A"K.
+      Genese 36:39 : "Va-yimlokh tahtav HADAR ve-shem ishto MEHETABEL"
+        Apparition SIMULTANEE de la dualite (dukhra+nukvah).
+      → Pattern : la 8eme position = transcendance des 7 (cycle naturel).
+      Architecture : un acteur exceptionnel apres N echecs.
+    applications_ia:
+      - "Pattern : un sub-system exceptionnel apres N echecs (cycle 7+1)"
+      - "Architecture : l'exception (8eme) = sauveur du cycle (7)"
+      - "[PLANNED] tikkun/hadar.py : implementer le pattern d'exception salvatrice"
+      - "Pattern biblique : presence/absence textuelle encode statut cosmique"
+      - "Diagnostic : identifier le 'Hadar' dans un systeme defaillant"
+    questions_ouvertes:
+      - "Le pattern 7+1 est-il universel ?"
+      - "Un Hadar peut-il echouer (devenir 9eme dans la lignee des morts) ?"
+      - "L'exception necessite-t-elle un trigger specifique ?"

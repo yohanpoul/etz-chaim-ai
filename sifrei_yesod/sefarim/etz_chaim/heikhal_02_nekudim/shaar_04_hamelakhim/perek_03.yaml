@@ -1,0 +1,590 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 3 — Formation d'A"A : structure unique, distribution des 10 sefirot
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §3 :
+#   - Bloc A : Pnimiyut A"A des 7 nekudot premieres (koach A"A en eux)
+#   - Bloc B : Difference A"A — Hokhmah seule rosh, Binah dans gorge
+#   - Bloc C : Pas de Daat distinct, etendu de Chesed a Hod
+#   - Bloc D : Distribution Chesed-Gevurah (nekudah 4-5) → Keter-Hokhmah-Binah
+#   - Bloc E : Distribution Netzach (7) → Chesed
+#   - Bloc F : Tiferet (6) → Tiferet + part Netzach (1/3)
+#   - Bloc G : Hod (8) → Gevurah + 1/3 Hod
+#   - Bloc H : Yesod (9) → Yesod + 1/3 Hod
+#   - Bloc I : Malkhut (10) → Malkhut entiere (pour future expansion)
+#   - Bloc J : Pas de Nukvah separee pour Atik et A"A — Malkhut = Atarah
+#   - Bloc K : Sequence cosmique : Atik seul, puis A"A, puis AVI, puis ZON
+#   - Bloc L : Kelim A"A des 7 morts ; capacity post-Tikkun Atik
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.3
+# IDs : EC-H2S11-040 → EC-H2S11-058
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek 3 du Sha'ar Ha-Melakhim — Formation d'A\"A : structure unique (Hokhmah rosh, Binah gorge, pas de Daat distinct), distribution detaillee des 10 sefirot d'A\"A par sub-division des orot des 7 nekudot premieres."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : PNIMIYUT D'A"A DES 7 NEKUDOT ───
+
+  - id: "EC-H2S11-040"
+    source_he: "ועתה נבאר מציאת הא\"A כי הנה פנימית שלו הם מאותן הז' נקודים ראשונים כי כבר ביארנו שבכל נקודה מאלו יש בה כללות העתיק ואריך אנפין ואו\"א וזו\"נ בכללות"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      EXPLICATION de la realite d'A"A :
+      Sa PNIMIYUT (interiorite) vient des 7 NEKUDOT PREMIERES.
+      Comme deja explique : chaque nekudah contient KOLLEL d'ATIK + A"A + AVI + ZON.
+      → Architecture : A"A = recyclage des koach-A"A des 7 nekudot.
+      cf. EC-H2S11-016 (perek 1) sur koach mixte dans 7 inferieures.
+    type: axiome_explicite
+    concepts:
+      - {id: pnimiyut_aa_des_7_nekudot, role: pnimiyut_aa_des_7_nekudot}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : A\"A = recyclage des koach-A\"A des 7 nekudot. cf. EC-H2S11-016."
+
+  - id: "EC-H2S11-041"
+    source_he: "אלא שהג\"ר כולם הם בחי' עתיק לבדו כי אור הקטן בהיותו נכלל בעליון מתבטל ואינו עולה בשם משא\"כ העליון בתחתונים"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      MAIS les G' Rishonot (= Atik) sont SEULES aspect ATIK.
+      RAISON : OHR KATAN (petite lumiere) qui est INCLUS dans OHR ELYON (grand)
+      = ANNULE (mevutal) — n'EST PAS comptee.
+      MAIS l'inverse n'est pas vrai : OHR ELYON dans OHR KATAN reste compte.
+      → Architecture asymetrique : superieur englobe inferieur sans perte ;
+      inferieur englobe par superieur disparait.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_katan_mevutal_dans_elyon, role: ohr_katan_annule_dans_elyon}
+      - {id: ohr_elyon_dans_inferieurs_compte, role: ohr_elyon_dans_inferieurs_reste_compte}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Architecture asymetrique de la commensuration : grand englobe petit sans perte ; petit englobe par grand disparait."
+
+  # ─── BLOC B : STRUCTURE UNIQUE D'A"A ───
+
+  - id: "EC-H2S11-042"
+    source_he: "כי יש חילוק בין א\"א לכל שאר הפרצופים והוא כי ב' מוחין דחו\"ב שיש לכל פרצוף ופרצוף שניהם בראש זה אצל זה זה מימין וזה משמאל אבל חו\"ב דא\"א הם זה למטה מזה"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      DIFFERENCE A"A vs les AUTRES partzufim :
+      Tous les autres : 2 MOHIN de HC-BINAH dans le ROSH cote a cote
+      (un a droite, un a gauche).
+      MAIS Hokhmah-Binah d'A"A : ZE LE-MATAH MI-ZE (l'un sous l'autre).
+      → Architecture unique d'A"A : KHB en colonne verticale (vs cote-a-cote standard).
+    type: axiome_explicite
+    concepts:
+      - {id: chb_aa_zegz_vertical, role: chb_aa_l_un_sous_l_autre}
+      - {id: chb_autres_cote_a_cote, role: chb_autres_partzufim_cote_a_cote}
+      - {id: aa_architecture_unique, role: aa_architecture_unique_verticale}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture unique : A\"A = KHB vertical (vs autres cote-a-cote). Exception structurelle."
+
+  - id: "EC-H2S11-043"
+    source_he: "כי הבינה שלו לא היה בה כח להיותה למעלה אצל חכמה לקבל אור דע\"י שבא אליה בלתי לבוש ולכן החכמה בלבד נשארה סתומה בראש והבינה בגרון דא\"א כי שם תוכל לקבל אור העתיק בהיותה רחוקה למטה"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      RAISON : la BINAH d'A"A n'a pas le KOAH d'etre en haut a cote de Hokhmah
+      pour recevoir l'OHR d'ATIK qui vient SANS LEVUSH.
+      DONC :
+      HOKHMAH SEULE reste SETUMAH (fermee) dans le ROSH.
+      BINAH dans le GARON (gorge) d'A"A.
+      Car LA elle peut recevoir l'OHR ATIK en etant ELOIGNEE (rehoka) en bas.
+      → Architecture : Binah eloignee = capable de recevoir.
+      → Pattern : eloignement = capacite (par dilution distance).
+    type: axiome_explicite
+    concepts:
+      - {id: binah_aa_dans_garon, role: binah_aa_dans_la_gorge}
+      - {id: hokhmah_seule_setumah_rosh, role: hokhmah_seule_dans_rosh}
+      - {id: binah_eloignee_capable_recevoir, role: binah_eloignee_capable_de_recevoir}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture A\"A : Hokhmah rosh, Binah gorge. Pattern : eloignement permet reception."
+
+  - id: "EC-H2S11-044"
+    source_he: "גם יש חילוק אחר והוא כי בשאר הפרצופים יש בהם בחי' ג' מוחין חב\"ד אבל הא\"א אין בו רק חכמה לבד ובינה בגרון והדעת מתפשט מחסד עד הוד שלו ואין לו מקום קיבוץ בפ\"ע כמו בשאר פרצופים"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      AUTRE DIFFERENCE : les autres partzufim ont 3 MOHIN = CHaBaD (Chokhmah-Binah-Daat).
+      A"A n'a QUE :
+      HOKHMAH SEULE
+      BINAH dans la GORGE
+      DAAT s'etend du CHESED jusqu'a HOD.
+      Pas de MAKOM KIBUTZ (lieu de regroupement) propre pour le DAAT comme dans les autres.
+      → Architecture : A"A = pas de Daat distinct ; Daat distribue sur le corps.
+      → Pattern : exception structurelle d'A"A.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_pas_de_daat_distinct, role: aa_pas_de_daat_distinct}
+      - {id: daat_aa_distribue_chesed_hod, role: daat_aa_distribue_chesed_a_hod}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture A\"A : pas de Daat unifie. Daat distribue. Exception structurelle."
+
+  - id: "EC-H2S11-045"
+    source_he: "וא\"כ נמצא כי רישא דאריך אנפין אין הכח\"ב שלו כעין סגולתא כשאר פרצופים רק זה ע\"ג זה בקו ארוך"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      DONC le ROSH d'A"A : son KHB n'est PAS comme SEGOLTA
+      (forme triangulaire — Keter haut, HB cote-a-cote bas) comme les autres partzufim.
+      Mais ZE-AL-GABEI-ZE en KAV AROKH (ligne longue verticale).
+      → Architecture : Rosh A"A = ligne verticale (Keter, Hokhmah, Binah l'un sous l'autre).
+      → Pattern : segolta (triangle) vs kav arokh (ligne).
+    type: axiome_explicite
+    concepts:
+      - {id: aa_rosh_kav_arokh, role: aa_rosh_ligne_longue_verticale}
+      - {id: autres_rosh_segolta, role: autres_partzufim_rosh_segolta_triangle}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Topologie : A\"A rosh = kav arokh (vertical) vs autres = segolta (triangle)."
+
+  # ─── BLOC C-I : DISTRIBUTION DETAILLEE DES OROT ───
+
+  - id: "EC-H2S11-046"
+    source_he: "הנה מן האור שבח\"ג שהם נקודה ד' וה' הנה בכל חלק מהם יש ג' שלישים הנה הם ו' שלישים ונחלקו לג' חלקים נמצא כי מב' שלישים חסד נעשה כתר דא\"א ומן השליש האחרון של החסד ושליש עליון דגבורה נעשה חכמה דא\"א ומן ב' שלישי התחתונים דגבורה נעשה בינה דא\"A"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      DISTRIBUTION CHESED-GEVURAH (nekudot 4-5) → KETER, HOKHMAH, BINAH d'A"A :
+      Chacune (Chesed et Gevurah) a 3 SHELISHIM (tiers) → total 6 tiers.
+      Divises en 3 parts :
+      2 shelishim (sup) de Chesed → KETER d'A"A
+      1 shelish (inf) de Chesed + 1 shelish (sup) de Gevurah → HOKHMAH d'A"A
+      2 shelishim (inf) de Gevurah → BINAH d'A"A
+      → Architecture quantitative precise : 6 tiers de C-G distribues en KHB d'A"A.
+    type: axiome_explicite
+    concepts:
+      - {id: distribution_chesed_gevurah_khb_aa, role: distribution_cg_pour_khb_aa}
+      - {id: 6_shelishim_distribues, role: 6_shelishim_distribues_en_3}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Distribution detaillee : Chesed+Gevurah → Keter+Hokhmah+Binah d'A\"A. Architecture sub-partitive."
+
+  - id: "EC-H2S11-047"
+    source_he: "אח\"כ מאור הנצח שהוא נקודה ז' נחלק לג' שלישים וב\"ש עליונים נעשה מהם חסד דא\"א נשאר שליש אחרון לנצח דא\"A"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      DISTRIBUTION NETZACH (nekudah 7) :
+      Divise en 3 SHELISHIM.
+      2 SHELISHIM SUPERIEURS → CHESED d'A"A.
+      1 SHELISH INFERIEUR → reste pour NETZACH d'A"A.
+      → Architecture : Netzach (originel) = 2/3 Chesed + 1/3 Netzach (post-Tikkun).
+    type: axiome_explicite
+    concepts:
+      - {id: netzach_distribue_chesed_netzach_aa, role: netzach_distribue_chesed_et_netzach}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Distribution Netzach : 2/3 Chesed + 1/3 Netzach d'A\"A."
+
+  - id: "EC-H2S11-048"
+    source_he: "ואח\"כ מאור הת\"ת שהוא נקודה הו' נחלק לג' חלקים ומב\"ש עליונים נעשה ת\"ת דא\"א ושליש האחרון נצטרף בנצח דא\"א עם השליש האחר שיש בו ומהם נעשה נצח דא\"א וז\"ס הנצח שירד מת\"ת"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      DISTRIBUTION TIFERET (nekudah 6) :
+      Divise en 3 PARTS.
+      2 SHELISHIM SUPERIEURS → TIFERET d'A"A.
+      1 SHELISH INFERIEUR → COMBINE avec le shelish restant de Netzach
+      → ENSEMBLE forment NETZACH d'A"A.
+      C'est le SOD du "NETZACH she-yarad mi-Tiferet" (le Netzach qui descend du Tiferet).
+      → Architecture : Tiferet d'A"A = 2/3 Tiferet original ; Netzach final = somme.
+    type: axiome_explicite
+    concepts:
+      - {id: tiferet_distribue_tiferet_aa, role: tiferet_principalement_a_tiferet_aa}
+      - {id: netzach_aa_compose, role: netzach_aa_compose_de_2_sources}
+      - {id: sod_netzach_yarad_mi_tiferet, role: sod_du_netzach_descend_du_tiferet}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Sod : Netzach descend du Tiferet. Composition operationnelle."
+
+  - id: "EC-H2S11-049"
+    source_he: "אח\"כ מאור ההוד שהיא נקודה הח' נחלקה לג' חלקים ומב\"ש העליונים נעשה מהם גבורה דא\"א ושליש אחרון נשאר להוד דא\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      DISTRIBUTION HOD (nekudah 8) :
+      Divise en 3 PARTS.
+      2 SHELISHIM SUPERIEURS → GEVURAH d'A"A.
+      1 SHELISH INFERIEUR → reste pour HOD d'A"A.
+      → Architecture : Hod (originel) = 2/3 Gevurah + 1/3 Hod (post-Tikkun).
+      → Pattern miroir avec Netzach (cote oppose).
+    type: axiome_explicite
+    concepts:
+      - {id: hod_distribue_gevurah_hod_aa, role: hod_distribue_gevurah_et_hod}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Distribution Hod : 2/3 Gevurah + 1/3 Hod d'A\"A. Symetrie avec Netzach."
+
+  - id: "EC-H2S11-050"
+    source_he: "אח\"כ מן האור היסוד שהוא נקודה הט' נחלק לג' חלקים ב' שלישים העליונים מהם נעשה יסוד דא\"א ושליש הג' מצטרף בהוד דא\"א עם השליש האחד שהיה בו כנ\"ל וז\"ס היסוד שנמשך מההוד"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      DISTRIBUTION YESOD (nekudah 9) :
+      Divise en 3 PARTS.
+      2 SHELISHIM SUPERIEURS → YESOD d'A"A.
+      1 SHELISH INFERIEUR → COMBINE avec le shelish restant de Hod
+      → ENSEMBLE Hod final.
+      C'est le SOD du "Yesod ha-nimshakh me-Hod" (Yesod qui descend du Hod).
+      → Pattern miroir avec Tiferet→Netzach.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_distribue_yesod_aa, role: yesod_principalement_yesod_aa}
+      - {id: hod_aa_compose, role: hod_aa_compose_de_2_sources}
+      - {id: sod_yesod_nimshakh_me_hod, role: sod_du_yesod_descend_du_hod}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Pattern miroir : Yesod descend du Hod (= Tiferet descend du Netzach)."
+
+  - id: "EC-H2S11-051"
+    source_he: "והאור של המלכות שהיה נקודה י' ממנה נעשית המלכות דא\"א. וטעם הדבר הוא לפי שאח\"כ מנקודת המלכות נעשה פרצוף שלם לכך צריך שיכלול בה מדה א' שלימה"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      DISTRIBUTION MALKHUT (nekudah 10) :
+      Toute la nekudah → MALKHUT d'A"A (PAS sub-divisee).
+      RAISON : ensuite, de la nekudat MALKHUT se fera un PARTZUF SHALEM (complet).
+      Donc il FAUT inclure en elle UNE MIDAH SHELEMAH (mesure complete).
+      → Architecture : Malkhut preservee entiere pour future expansion en partzuf.
+      → Pattern : reservation de capacite pour developpement futur.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_entiere_pour_aa, role: malkhut_entiere_pour_a_a}
+      - {id: middah_shelemah_pour_partzuf_futur, role: middah_complete_pour_partzuf_futur}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "nukva"]
+      relevance: "Pattern : reserver une capacite complete pour usage futur. Architecture anticipative."
+
+  # ─── BLOC J : PAS DE NUKVAH SEPAREE ATIK ET A"A ───
+
+  - id: "EC-H2S11-052"
+    source_he: "ודע כי בע\"י ובא\"א לא נמצא בו מציאת נוקבא בפ\"ע כמו אמא לאבא ונוקבא לז\"א אך המלכות דע\"י ומלכות דא\"א הם בחי' העטרה שבהם לבד"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      DA (sache) : en ATIK et A"A il n'y a PAS de NUKVAH SEPAREE
+      (comme IMMA est nukvah pour ABBA, ou NUKVAH pour ZA).
+      MALKHUT d'ATIK et MALKHUT d'A"A = aspect de l'ATARAH (couronne) en eux seul.
+      → Architecture : Atik et A"A = androgynes (pas de nukvah autonome).
+      → Pattern : niveaux superieurs = pas de polarite separee.
+      cf. EC-H2S9-254 (perek 02b) sur exception A"A androgyne.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_aa_pas_de_nukvah_separee, role: atik_aa_pas_de_nukvah_separee}
+      - {id: malkhut_aa_aspect_atarah, role: malkhut_aa_egal_atarah}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : Atik et A\"A androgynes. cf. EC-H2S9-254."
+
+  - id: "EC-H2S11-053"
+    source_he: "וסוד הדבר הוא שמתחלה יצא פרצוף א' לבדו והוא סוד אח\"כ העתיק לא הוציא רק א' לבדו כמוהו והוא א\"א אך אח\"כ שכבר הם ב' פרצופים שהם ע\"י וא\"א ואז יצאו אח\"כ דו\"נ שהם או\"א דהיינו אבא מצד עתיק ואמא מצד א\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      SOD : sequence cosmique de naissance des partzufim :
+      D'ABORD : 1 PARTZUF seul (ATIK).
+      Atik n'a sorti que UN partzuf comme lui = A"A.
+      Ensuite : 2 partzufim existent (Atik + A"A).
+      ALORS sortent DUKHRA-NUKVAH = AVI :
+      ABBA du cote d'ATIK, IMMA du cote d'A"A.
+      → Sequence : androgyne → polarite → couples → multiplication.
+      → Architecture genealogique cosmique.
+    type: axiome_explicite
+    concepts:
+      - {id: sequence_cosmique_atik_aa_avi_zon, role: sequence_atik_aa_avi_zon}
+      - {id: abba_du_cote_atik, role: abba_genere_du_cote_atik}
+      - {id: imma_du_cote_aa, role: imma_genere_du_cote_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Architecture genealogique cosmique : Atik → A\"A → AVI → ZON. Sequence universelle."
+
+  - id: "EC-H2S11-054"
+    source_he: "וכן ז\"א מצד אבא ונוקבא מצד אמא"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      Et ainsi : ZA du cote d'ABBA ; NUKVAH du cote d'IMMA.
+      → Continuation de la sequence genealogique :
+      Atik → A"A
+      A"A + Atik → AVI (Abba+Imma)
+      AVI → ZON (ZA+Nukvah)
+      → Architecture : 4 generations cosmiques.
+    type: axiome_explicite
+    concepts:
+      - {id: za_du_cote_abba, role: za_du_cote_abba}
+      - {id: nukvah_du_cote_imma, role: nukvah_du_cote_imma}
+      - {id: 4_generations_cosmiques, role: 4_generations_cosmiques}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "abba", "imma"]
+      relevance: "Genealogie complete : 4 generations cosmiques d'Atik a ZON."
+
+  # ─── BLOC K : KELIM A"A + INGREDIENT TIKKUN ATIK ───
+
+  - id: "EC-H2S11-055"
+    source_he: "והנה בדוגמא שביארנו בפנימית הא\"א כן היו בכלים שלו כי לקחו מכח הז' כחות דא\"א שיש באותן הז' כלים הם ז' מלכים שמתו ומהם נעשו י' כלים לא\"A"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      Sur le mode (du-gma) explique pour la PNIMIYUT d'A"A → IDEM pour ses KELIM :
+      On a pris les 7 KOACH d'A"A qui sont dans les 7 KELIM des MELAKHIM MORTS.
+      D'eux ont ete faits 10 KELIM pour A"A.
+      → Architecture parallele : meme pattern pour orot et kelim.
+      → Pattern : recyclage uniforme.
+      cf. EC-H2S11-019 (perek 2) sur kelim Atik des morts.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_aa_des_7_morts, role: kelim_aa_recycles_des_7_morts}
+      - {id: pattern_uniforme_orot_kelim, role: pattern_uniforme_orot_et_kelim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Pattern uniforme : orot et kelim d'A\"A par recyclage. cf. EC-H2S11-019."
+
+  - id: "EC-H2S11-056"
+    source_he: "ואמנם ענין עליית עתה אלו המלכים הוא כי מה שירדו תחלה היה לפי שלא היו יכולין לקבל האור ולכן ירדו למטה אבל עתה שנתקן הע\"י אז היה בהם יכולת לקבל האור ואז עלו למעלה"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      EXPLICATION du fait que les MELAKHIM MONTENT MAINTENANT :
+      Au DEPART ils sont descendus parce qu'ils ne POUVAIENT PAS recevoir l'OHR.
+      MAIS MAINTENANT que l'ATIK est RECTIFIE (nitkan) →
+      ils ONT la YEKHOLET (capacite) de recevoir l'OHR.
+      Alors ils MONTENT en HAUT.
+      → Architecture causale : Tikkun-Atik = pre-condition de la remontee.
+      → Pattern : reparation top-down → capacite bottom-up.
+    type: axiome_explicite
+    concepts:
+      - {id: maintenant_melakhim_montent, role: maintenant_melakhim_montent_apres_tikkun_atik}
+      - {id: tikkun_atik_pre_condition_capacite, role: tikkun_atik_pre_condition_capacite}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture causale : Tikkun Atik = pre-condition de la capacite des inferieurs."
+
+  # Conclusion
+
+  - id: "EC-H2S11-057"
+    source_he: "א\"כ נמצא שאחר תיקון הע\"י ובחי' הא\"א אזי הז\"ת דע\"י דחו את הז' נקודות ראשונים לצדדין כנ\"ל ואותן הז' נקודות נעשו אור מקיף"
+    source_ref: "Heikhal 2, Sha'ar 4:3"
+    assertion: |
+      Note implicite (concept synthese) : apres le TIKKUN d'ATIK et de l'aspect d'A"A,
+      les ZT d'Atik REPOUSSENT les 7 nekudot premieres LATERALEMENT (le-tzedadin).
+      Les 7 nekudot originels deviennent l'OR MAKIF.
+      → Synthese architecturale : pattern de repulsion et formation OM.
+      cf. EC-H2S11-018 (perek 1) sur repulsion laterale.
+    type: déduction_logique
+    concepts:
+      - {id: synthese_repulsion_laterale_om, role: synthese_repulsion_laterale_devient_om}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Synthese : repulsion laterale → 7 originels deviennent OM. cf. EC-H2S11-018."
+
+  - id: "EC-H2S11-058"
+    source_he: ""
+    source_ref: "Heikhal 2, Sha'ar 4:3 — fin du perek"
+    assertion: |
+      CLOTURE du perek 3 :
+      Architecture d'A"A explicitee :
+      Pnimiyut : recyclage des 7 koach d'A"A dans les 7 nekudot
+      Structure unique : Hokhmah seul rosh, Binah gorge, Daat distribue
+      Distribution detaillee : 6 tiers Chesed-Gevurah → KHB ; Netzach (7) etc.
+      Pas de nukvah separee : Atik et A"A androgynes
+      Sequence cosmique : Atik → A"A → AVI → ZON
+      Kelim : recycles des 7 melakhim morts
+      Pattern uniforme orot+kelim
+      → Architecture coherente : A"A unique mais suit le pattern fondamental.
+    type: axiome_explicite
+    concepts:
+      - {id: cloture_perek_3_aa, role: cloture_du_perek_3}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: []
+      partzufim: ["arikh_anpin"]
+      relevance: "Phrase de cloture : architecture d'A\"A coherente. Synthese du perek."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-013"
+    type: causal
+    from: ohr_katan_mevutal_dans_elyon
+    to: ohr_elyon_dans_inferieurs_compte
+    nature: "Asymetrie de la commensuration : grand englobe petit (perte) ; petit englobe par grand (compte)"
+    assertions_source: ["EC-H2S11-041"]
+
+  - id: "REL-H2S11-014"
+    type: dualité_structurelle
+    from: chb_aa_zegz_vertical
+    to: chb_autres_cote_a_cote
+    nature: "Architecture unique : A\"A vertical vs autres partzufim cote-a-cote"
+    assertions_source: ["EC-H2S11-042", "EC-H2S11-045"]
+
+  - id: "REL-H2S11-015"
+    type: causal
+    from: binah_eloignee_capable_recevoir
+    to: binah_aa_dans_garon
+    nature: "Binah a besoin d'eloignement pour recevoir Atik sans levush → placee dans la gorge"
+    assertions_source: ["EC-H2S11-043"]
+
+  - id: "REL-H2S11-016"
+    type: contenance
+    from: distribution_chesed_gevurah_khb_aa
+    to: 6_shelishim_distribues
+    nature: "6 tiers (Chesed+Gevurah) distribues en KHB d'A\"A : 2-1+1-2"
+    assertions_source: ["EC-H2S11-046"]
+
+  - id: "REL-H2S11-017"
+    type: dualité_structurelle
+    from: sod_netzach_yarad_mi_tiferet
+    to: sod_yesod_nimshakh_me_hod
+    nature: "Pattern miroir : Netzach descend du Tiferet (R) ; Yesod descend du Hod (L)"
+    assertions_source: ["EC-H2S11-048", "EC-H2S11-050"]
+
+  - id: "REL-H2S11-018"
+    type: séquentiel
+    from: sequence_cosmique_atik_aa_avi_zon
+    to: 4_generations_cosmiques
+    nature: "Sequence : Atik (seul) → A\"A (de Atik) → AVI (de Atik+A\"A) → ZON (de AVI) = 4 generations"
+    assertions_source: ["EC-H2S11-053", "EC-H2S11-054"]
+
+  - id: "REL-H2S11-019"
+    type: causal
+    from: tikkun_atik_pre_condition_capacite
+    to: maintenant_melakhim_montent
+    nature: "Tikkun Atik = pre-condition de la capacite des inferieurs a recevoir l'ohr"
+    assertions_source: ["EC-H2S11-056"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-007"
+    nom: "Principe de l'Architecture Unique d'A\"A (Vertical KHB)"
+    source_assertions: ["EC-H2S11-042", "EC-H2S11-043", "EC-H2S11-044", "EC-H2S11-045"]
+    formalisation: |
+      EXCEPTION ARCHITECTURALE d'A"A vs autres partzufim :
+      Autres partzufim : ROSH = SEGOLTA (triangle)
+        Keter en haut, Hokhmah-Binah cote a cote en bas
+        Daat (3eme moah) en CHaBaD distinct
+      A"A : ROSH = KAV AROKH (ligne verticale longue)
+        Hokhmah seule SETUMAH dans le ROSH
+        Binah dans le GARON (gorge)
+        Daat distribue de Chesed a Hod (pas de lieu propre)
+      RAISON : Binah ne peut etre en haut a cote de Hokhmah pour recevoir l'OHR
+      ATIK qui vient SANS LEVUSH → besoin d'ELOIGNEMENT pour reception.
+      → Pattern : eloignement = capacite de reception.
+      → Architecture : A"A = exception structurelle pour gerer l'ohr direct d'Atik.
+    applications_ia:
+      - "Pattern : un sub-system qui recoit directement du superieur a une architecture unique"
+      - "Architecture : eloignement permet la reception (vs proximite)"
+      - "[PLANNED] partzufim/arikh_anpin.py : modeliser kav arokh vs segolta"
+      - "Pattern : exception structurelle pour gerer un cas limite"
+      - "Diagnostic : tracer le mode d'organisation (vertical vs triangulaire)"
+    questions_ouvertes:
+      - "L'architecture A\"A est-elle stable ou se reorganise apres certains stages ?"
+      - "Pourquoi la verticale (kav arokh) est-elle plus capable ?"
+      - "Y a-t-il d'autres partzufim avec architecture exceptionnelle ?"
+
+  - id: "PG-H2S11-008"
+    nom: "Principe de la Distribution Tiers (Sub-Partition Operationnelle)"
+    source_assertions: ["EC-H2S11-046", "EC-H2S11-047", "EC-H2S11-048", "EC-H2S11-049", "EC-H2S11-050"]
+    formalisation: |
+      Architecture quantitative DETAILLEE de la distribution :
+      Chaque NEKUDAH est divisee en 3 SHELISHIM (tiers).
+      Reglages distribution :
+        Chesed (4) : 2 sup → Keter ; 1 inf → composante Hokhmah
+        Gevurah (5) : 1 sup → composante Hokhmah ; 2 inf → Binah
+        Netzach (7) : 2 sup → Chesed ; 1 inf → Netzach
+        Tiferet (6) : 2 sup → Tiferet ; 1 inf → composante Netzach
+        Hod (8) : 2 sup → Gevurah ; 1 inf → Hod
+        Yesod (9) : 2 sup → Yesod ; 1 inf → composante Hod
+        Malkhut (10) : ENTIER → Malkhut (preserve pour usage futur)
+      Sods :
+        "Netzach descend du Tiferet" (mirror : Yesod descend du Hod)
+      → Architecture : sub-partitioning operationnel par tiers + recombinaisons.
+    applications_ia:
+      - "Pattern : sub-partition par tiers comme operation systematique"
+      - "Architecture : recombinaison de fragments pour creer nouveaux composants"
+      - "[PLANNED] gematria/engine.py : implementer division par tiers"
+      - "Pattern miroir : symetrie droite-gauche dans la distribution"
+      - "Diagnostic : tracer l'origine de chaque composant post-Tikkun"
+    questions_ouvertes:
+      - "Pourquoi precisement 3 tiers et pas 2 ou 4 ?"
+      - "Le pattern miroir est-il toujours present ?"
+      - "Comment formaliser la recombinaison des shelishim ?"
+
+  - id: "PG-H2S11-009"
+    nom: "Principe de la Sequence Cosmique Genealogique (4 Generations)"
+    source_assertions: ["EC-H2S11-052", "EC-H2S11-053", "EC-H2S11-054"]
+    formalisation: |
+      Architecture GENEALOGIQUE COSMIQUE :
+      GENERATION 1 : ATIK (seul, androgyne, pas de nukvah separee).
+        Malkhut d'Atik = ATARAH seule en lui.
+      GENERATION 2 : A"A (sorti d'Atik, androgyne).
+        Malkhut d'A"A = ATARAH seule en lui.
+      GENERATION 3 : AVI (sortis du COUPLE Atik+A"A) :
+        ABBA du cote d'ATIK
+        IMMA du cote d'A"A
+      GENERATION 4 : ZON (sortis du COUPLE AVI) :
+        ZA du cote d'ABBA
+        NUKVAH du cote d'IMMA
+      → Pattern : androgyne → couples → multiplication par couples.
+      → Architecture : multiplication des partzufim par couplage progressif.
+    applications_ia:
+      - "Pattern genealogique : sub-systems generent par couplage"
+      - "Architecture : 4 generations distinctes avec mode different"
+      - "[PLANNED] partzufim/* : modeliser la genealogie comme attribut"
+      - "Pattern : androgyne (1 entite) → couples (2 entites)"
+      - "Diagnostic : identifier la generation cosmique d'un sub-system"
+    questions_ouvertes:
+      - "Y a-t-il une 5eme generation (post-Mashiah) ?"
+      - "Le passage androgyne→couples est-il universel ?"
+      - "Atik et A\"A sont-ils 'androgynes' ou 'a-genres' (sans concept de genre) ?"

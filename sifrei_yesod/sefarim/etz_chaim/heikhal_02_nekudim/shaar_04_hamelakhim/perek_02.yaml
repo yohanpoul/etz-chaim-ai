@@ -1,0 +1,624 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 2 — Kelim et orot d'Atik, Risha de-La (3 hypotheses),
+#            Or Pnimi vs Or Makif inverse
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §2 :
+#   - Bloc A : Kelim Atik — 3 GR intacts en haut, 7 ZT d'Atik faits par les keli morts
+#   - Bloc B : Pourquoi capacity maintenant — 7 orot → 3 orot etendus en 10
+#   - Bloc C : Etat des 3 GR : kelim et orot distincts
+#   - Bloc D : 3 hypotheses sur structure Risha-Atik
+#   - Bloc E : Idra Zuta — "Risha de-La" = doute interne sur orot
+#   - Bloc F : Justification : sera'ot des A"A/ZA = melakhim morts
+#   - Bloc G : Question Atik — pourquoi 7 ZT = expansion 3 GR (et pas Atik des 7 originels)
+#   - Bloc H : Reponse : 7 koach Atik dans originels = Or Makif d'Atzilut
+#   - Bloc I : Or Pnimi > Or Makif (sauf Atik), inversion architecturale
+#   - Bloc J : Atik = interieur+exterieur, perce tous les niveaux
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.2
+# IDs : EC-H2S11-019 → EC-H2S11-039
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek 2 — Mecanisme detaille des kelim et orot d'Atik, 3 hypotheses sur structure Risha de-La (Idra Zuta 288), Or Pnimi vs Or Makif (architecture inverse), Atik perce tous les niveaux."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : KELIM D'ATIK ───
+
+  - id: "EC-H2S11-019"
+    source_he: "ועתה נבאר הכלים שלהם כי הנה הג' כלים הראשונים שלא מתו נשארין בסוד רישא אך כלים של הז\"ת דע\"י היו מצד אותה בחי' דע\"י שיש בז' כלים תתאין שמתו"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      Maintenant explication des KELIM d'ATIK :
+      Les 3 KELIM PREMIERS (qui ne sont pas morts) restent en SOD RISHA.
+      Mais les KELIM des 7 ZT d'Atik viennent de l'aspect d'Atik
+      qui est dans les 7 KELIM INFERIEURS (qui SONT morts).
+      → Architecture : Atik n'a pas seulement les 3 GR, mais aussi 7 ZT
+      construits a partir de la part-Atik des 7 melakhim morts.
+      cf. EC-H2S11-016 sur koah Atik dans inferieurs.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_kelim_gr_intacts_risha, role: 3_kelim_gr_intacts_dans_risha}
+      - {id: 7_zt_atik_des_kelim_morts, role: 7_zt_atik_construits_des_kelim_morts}
+      - {id: kelim_atik_recyclage, role: kelim_atik_par_recyclage}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture cle : kelim Atik = recyclage des keli morts (part-Atik en eux)."
+
+  - id: "EC-H2S11-020"
+    source_he: "ואז אותן הז' כחות דעתיק שיש באותן הז' כלים עלו למעלה ונתחברו עם תוספת אור שהוסיפו ג' כלים עליונים שנשארו שלא מתו וכולן נתחברו יחד ונעשין כלים אל ז\"ת של ע\"י"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      Alors les 7 KOACH d'ATIK qui sont dans ces 7 KELIM (morts)
+      sont MONTES en haut.
+      Ils s'UNISSENT avec la TOSEFET OHR (lumiere supplementaire) ajoutee
+      aux 3 KELIM SUPERIEURS qui sont restes (non morts).
+      Tous ENSEMBLE deviennent les KELIM des 7 ZT d'ATIK.
+      → Architecture : 7 koach (recuperes) + tosefet ohr → 7 kelim ZT d'Atik.
+      → Pattern : composition de la tosefet par recyclage + addition.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_koach_atik_montes, role: 7_koach_atik_remontes}
+      - {id: tosefet_ohr_3_gr, role: tosefet_ohr_des_3_gr}
+      - {id: 7_kelim_zt_atik_par_composition, role: 7_kelim_zt_atik_par_composition}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Mecanisme : recyclage 7 koach + addition tosefet → kelim ZT d'Atik. Pattern compositionnel."
+
+  - id: "EC-H2S11-021"
+    source_he: "והטעם שהיה עתה בהם כח לעלות הוא מפני שבתחלה היו כלים אל הז' אורות ולא היו יכולים לסבול גודל האור אבל עתה אינן כלים רק אל ג' אורות לבד"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      RAISON pourquoi maintenant ils peuvent monter :
+      Au DEBUT, ils etaient kelim pour 7 OROT et ne pouvaient pas SUPPORTER
+      la grandeur de l'ohr.
+      Mais MAINTENANT, ils ne sont kelim que pour 3 OROT seulement.
+      → Architecture : passage de "kelim pour 7 orot" a "kelim pour 3 orot".
+      → Reduction du nombre d'orot per keli = capacite augmentee.
+    type: axiome_explicite
+    concepts:
+      - {id: tehillah_kelim_pour_7_orot, role: au_debut_kelim_pour_7_orot}
+      - {id: maintenant_kelim_pour_3_orot, role: maintenant_kelim_pour_3_orot}
+      - {id: capacite_par_reduction_orot, role: capacite_augmentee_par_reduction_des_orot}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Pattern : capacite vient de la reduction du nombre d'orot per keli."
+
+  - id: "EC-H2S11-022"
+    source_he: "כי הג' אורות עליונים נתפשטו והיו י' אורות וא\"כ עתה יש בהם כח לסבול ולקבל אותו אור ואז עלו למעלה ונתהוו שם בסוד כלים"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      Car les 3 OROT SUPERIEURS se sont DEPLOYES (nitpasht) et sont devenus 10 OROT.
+      Donc maintenant les kelim ont la KOAH de SUPPORTER cet ohr.
+      Ils MONTENT en haut et SE-FORMENT la en sod KELIM.
+      → Mecanisme : 3 orot expanded en 10 → 1/10 d'ohr par sub-element → tolerable.
+      → Architecture : extension = dilution = capacite.
+      cf. EC-H2S9-184 (perek 04) sur principe dilution.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_orot_etendus_en_10, role: 3_orot_etendus_en_10_orot}
+      - {id: koah_sovel_ha_ohr, role: koah_pour_supporter_l_ohr}
+    mapping:
+      modules: ["ohr.py", "tzimtzum.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Architecture : 3 orot → 10 orot (extension) → dilution → tolerable. cf. EC-H2S9-184."
+
+  - id: "EC-H2S11-023"
+    source_he: "וביאור מה שאמר למעלה כי הג' אורות נתפשטו ונעשו י' אורות וכן בכל מקום שנזכר מציאת התפשטות אין הכוונה שנמשך להם אור עליון מא\"ס ואז נתפשט דא\"כ הקושיא [נ\"א הקדושה] במקומה עומדת שהרי גם עתה היו י' אורות"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      EXPLICATION du HITPASHTUT (deploiement) :
+      Quand on dit que les 3 orot s'etendent et deviennent 10 →
+      la KAVANAH n'est PAS qu'un OHR ELYON est tire d'EIN SOF.
+      Si c'etait le cas, la KOSHIA (variante NA: "kedushah") resterait :
+      car maintenant aussi il y aurait 10 orot complets — pas de difference.
+      → Distinction operationnelle : extension ≠ ajout d'ohr supplementaire.
+    type: axiome_explicite
+    concepts:
+      - {id: hitpashtut_pas_ajout_d_ein_sof, role: hitpashtut_n_est_pas_ajout_d_ohr_d_ein_sof}
+    mapping:
+      modules: ["ohr.py"]
+      tables: []
+      partzufim: []
+      relevance: "Distinction operationnelle : extension par sub-division, pas par ajout."
+
+  - id: "EC-H2S11-024"
+    source_he: "אך הכוונה כי מה שהיה תחלה ג' אורות נתחלק אורם כל א' לג' חלקים ונעשו י' ואז נתפשטו עד סוף האצילות כנ\"ל ובזה היה כח בכלים לקבל אותו אור"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      KAVANAH PRECISE : ce qui etait initialement 3 OROT —
+      LEUR ohr S'EST DIVISE — chacun en 3 PARTIES → 9 + un coeur = 10.
+      Alors ils se sont DEPLOYES jusqu'a la FIN de l'AT'ZILUT.
+      Et ainsi les KELIM ont eu la KOAH de RECEVOIR cet ohr.
+      → Mecanisme precis : sub-division (3→3×3+1=10) ; meme quantite, plus distribuee.
+      → Pattern : extension par discretisation.
+    type: axiome_explicite
+    concepts:
+      - {id: division_3_en_10, role: division_3_orot_en_10_parts}
+      - {id: extension_par_discretisation, role: extension_par_discretisation}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Mecanisme operationnel : extension = sub-division. Pattern de discretisation."
+
+  # ─── BLOC C : 3 HYPOTHESES SUR STRUCTURE RISHA-ATIK ───
+
+  - id: "EC-H2S11-025"
+    source_he: "ואמנם יש חילוק א' בג' נקודות העליונים בין האורות עצמן ובין הכלים שלהם והוא כי סוד כלים שלהם פשיטא הוא שנשארו כל הג' כלים למעלה בסוד רישא דעתיק"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      DIFFERENCE entre les 3 GR : entre OROT eux-memes et leurs KELIM.
+      KELIM : pashita (evident) — les 3 kelim restent EN HAUT en sod RISHA d'ATIK.
+      OROT : il y a SAFEK (doute) — voir hypotheses suivantes.
+      → Architecture : kelim certains, orot incertains.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_kelim_certains_dans_risha, role: 3_kelim_certains_dans_risha}
+      - {id: 3_orot_incertains_safek, role: 3_orot_incertains_safek}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : kelim certain (Risha) ; orot incertain. Honete cognitive."
+
+  - id: "EC-H2S11-026"
+    source_he: "אבל בג' אורות שבג' כלים הראשונים יש ספק בהם אם נאמר שג' אורות אלו נעשו כח\"ב דע\"י ואח\"כ מנקודת כתר נתפשט קו אמצעי ומנקודת חכמה נתפשט קו ימין ומנקודת בינה נתפשט קו השמאלי אך שורש שלשתם הוא למעלה בראש עצמו"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      HYPOTHESE 1 : les 3 OROT deviennent KHB (Keter-Hokhmah-Binah) d'ATIK.
+      Ensuite :
+      Nekudat KETER → s'etend en QAV EMTZAI (centre).
+      Nekudat HOKHMAH → s'etend en QAV YEMINI (droite).
+      Nekudat BINAH → s'etend en QAV SHEMOLI (gauche).
+      MAIS le SHORESH des 3 reste EN HAUT, dans la TETE elle-meme.
+      → Architecture : 3 nekudot dans la tete + 3 kavim qui en sortent.
+      cf. EC-H2S10-039 (perek 10.1) sur extension Keter.
+    type: axiome_explicite
+    concepts:
+      - {id: hypothese_1_3_orot_khb_atik, role: hypothese_1_3_orot_egalent_khb}
+      - {id: keter_qav_emtzai, role: keter_genere_qav_central}
+      - {id: hokhmah_qav_yemini, role: hokhmah_genere_qav_droit}
+      - {id: binah_qav_shemoli, role: binah_genere_qav_gauche}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Hypothese 1 : 3 nekudot en tete + 3 kavim emergent. Architecture coherente."
+
+  - id: "EC-H2S11-027"
+    source_he: "או אם נאמר כי מנקודה א' מהם נעשה ג\"ר ומנקודה הב' ג' אמצעית ומנקודה ג' ג\"ת. באופן כי הנקודה הראשונה היא לבדה בתוך רישא עלאה דעתיק וב' נקודות האחרות הם גוף אל העתיק"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      HYPOTHESE 2 : d'UNE NEKUDAH se font les G' RISHONOT.
+      De la 2eme : les G' EMTZA'IYOT (3 medianes).
+      De la 3eme : les G' TAHTONOT (3 inferieures).
+      → 1ere nekudah : SEULE dans la TETE SUPREME d'Atik.
+      → 2eme et 3eme nekudot : dans le GUF d'Atik.
+      → Architecture : 1 dans la tete, 2 dans le corps. Pattern asymetrique.
+    type: axiome_explicite
+    concepts:
+      - {id: hypothese_2_division_par_nekudah, role: hypothese_2_chaque_nekudah_genere_3}
+      - {id: 1_nekudah_seule_rosh, role: 1_seule_nekudah_dans_la_tete}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Hypothese 2 : asymetrie 1/2 entre tete/corps. Architecture alternative."
+
+  - id: "EC-H2S11-028"
+    source_he: "או אם נאמר כי שלשתן הם ברישא דעתיק ואח\"כ נתפשטו אל הגוף בסוד ג' קוין"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      HYPOTHESE 3 : les 3 sont TOUTES dans le RISHA d'ATIK.
+      Ensuite elles s'ETENDENT dans le GUF en sod 3 KAVIM.
+      → Architecture : 3 dans la tete, 3 kavim emergent vers le corps.
+      → Pattern symetrique : tout en tete, propagation par lignes.
+    type: axiome_explicite
+    concepts:
+      - {id: hypothese_3_3_dans_rosh_3_kavim_guf, role: hypothese_3_3_dans_rosh_3_kavim_guf}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Hypothese 3 : architecture symetrique tete-corps."
+
+  # ─── BLOC E : RISHA DE-LA — IDRA ZUTA ───
+
+  - id: "EC-H2S11-029"
+    source_he: "וז\"ס מ\"ש באדר\"ז רפ\"ח דהאי רישא אקרי רישא דל\"א מה דאית בהאי רישא כי הספק מה דלא אתיידע הוא בפנימית האור שבתוך האי רישא"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      C'est le SOD de IDRA ZUTA p.288 :
+      "Hai Risha ikari RISHA DE-LA — mah de-it be-hai risha"
+      (cette tete est appelee "tete inconnue" — ce qui est en cette tete).
+      Le SAFEK (doute) "MAH DE-LO ITYADA" (ce qui n'est pas connu) =
+      la PNIMIYUT de l'OHR a l'INTERIEUR de cette tete.
+      → Identification : "Risha de-La" = doute sur la structure interne.
+      → Architecture : transparence externe (kelim) ; opacite interne (orot).
+    type: déduction_scripturaire
+    concepts:
+      - {id: idra_zuta_288_risha_de_la, role: idra_zuta_288_risha_de_la}
+      - {id: pnimiyut_inconnue, role: pnimiyut_de_l_ohr_inconnue}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: []
+      partzufim: ["atik_yomin"]
+      relevance: "Reference Idra Zuta 288 : Risha de-La = doute sur pnimiyut interne. Architecture epistemique."
+
+  - id: "EC-H2S11-030"
+    source_he: "כי אין אנו יודעין אם יש שם כל הג' נקודות עליונים רק שאחר כך נתפשטו בשאר הגוף או אם נאמר שאין שם רק נקודה א' הנחלקת (נ\"א אור אחד הנחלקים) לג'"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      Le DOUTE PRECIS (Mah de-Lo Itya'da) :
+      Y a-t-il TOUS les 3 nekudot superieures dans la tete ?
+      Et ensuite elles se deploient dans le reste du guf ?
+      OU : il n'y a qu'UNE NEKUDAH qui se DIVISE (variante NA: "ohr ehad ha-nehlakim") en 3 ?
+      Et les 2 autres s'etendent en bas dans le guf ?
+      → Doute precis : 3-nekudot-en-tete OU 1-nekudah-divisee.
+    type: axiome_explicite
+    concepts:
+      - {id: doute_3_nekudot_ou_1_divisee, role: doute_3_nekudot_ou_1_divisee}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: []
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture du doute : 3 nekudot vs 1 divisee dans la tete d'Atik."
+
+  - id: "EC-H2S11-031"
+    source_he: "וזהו הספק לכן נקרא רישא דלא אתיידע מה דאית בגו האי רישא אבל ברישא עצמה כבר אנו יודעין מציאותו שנעשה מג' הכלים של הג' נקודות כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      C'EST CE DOUTE qui fait que cela s'appelle RISHA DE-LA ITYA'DA
+      (tete dont on ne sait pas) MAH DE-IT BE-GO HAI RISHA (ce qui est dans cette tete).
+      MAIS dans la RISHA ELLE-MEME, nous SAVONS MAINTENANT — qu'elle est faite
+      des 3 KELIM des 3 nekudot, comme dit.
+      → Architecture epistemique : externe connue, interne inconnue.
+      → Pattern : limites de la connaissance kabbalistique.
+    type: axiome_explicite
+    concepts:
+      - {id: structure_externe_connue_interne_inconnue, role: connaissance_externe_inconnaissance_interne}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: []
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture epistemique : externe connue, interne inconnue. Limites de la connaissance."
+
+  # ─── BLOC F : SERA'OT D'A"A/ZA = MELAKHIM MORTS ───
+
+  - id: "EC-H2S11-032"
+    source_he: "וטעם הדבר למה הוא יותר פשוט לנו בכלים עצמן ששלשתן הם למעלה ברישא ואין ספק אצלינו אם הכלי א' תועיל לג' ראשונות וב' כלים האחרים נשארו למטה בסוד (נ\"א בסוף) הגוף דע\"י הטעם הוא מפני שיש לנו הקדמה ושורש"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      RAISON pourquoi c'est plus PASHUT (clair) pour les KELIM eux-memes
+      (que les 3 sont en haut dans la Risha) :
+      Pas de doute si UN keli suffit pour les G' Rishonot ou si 2 kelim sont
+      en bas dans le SOF (variante NA: "be-sof") du GUF d'Atik.
+      Car il y a une HAKDAMAH (premisse) et un SHORESH (racine).
+      → Architecture : la connaissance des kelim a une base externe deductible.
+    type: axiome_explicite
+    concepts:
+      - {id: hakdamah_shoresh_kelim, role: premisse_et_racine_pour_kelim}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Architecture epistemique : kelim deductibles par premisses externes."
+
+  - id: "EC-H2S11-033"
+    source_he: "כי סוד השערות בין דאריך אנפין בין דזעיר אנפין כולם הם מן סוד אותן מלכים שמתו ולכן צריך שימשך אור אליהן דרך השערות כדי שיוכלו לקבלו גם כי השערות עצמן בסוד המלכים דמתו בסוד הן עשו אחי איש שעיר"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      SOD des SE'AROT (cheveux) — d'A"A et de Z"A — TOUS sont du SOD des MELAKHIM
+      MORTS.
+      DONC il faut que l'OHR soit AMENE a eux PAR LES CHEVEUX —
+      pour qu'ils puissent RECEVOIR.
+      Aussi les SE'AROT eux-memes sont en SOD des MELAKHIM MORTS (Esau et son
+      frere SE'IR — "homme de cheveux" — Genese 27:11).
+      → Architecture : cheveux = "filtre" pour les melakhim morts.
+      → Reference biblique : Esav = se'ir (cheveux) = melakhim d'Edom.
+    type: déduction_scripturaire
+    concepts:
+      - {id: searot_aa_za_egal_melakhim_morts, role: cheveux_a_a_et_za_egalent_melakhim_morts}
+      - {id: ohr_aux_cheveux_pour_kabbalah, role: ohr_aux_cheveux_pour_recevoir}
+      - {id: esav_ish_seir, role: esav_homme_de_cheveux}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : cheveux = melakhim morts. Reference Genese 27:11. cf. EC-H2S9-201."
+
+  - id: "EC-H2S11-034"
+    source_he: "והנה שערות אלו ישנם בראש דאריך אנפין ורישא דאריך אנפין הוא בחסד גבורה דעתיק יומין כמ\"ש בע\"ה"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      Ces SE'AROT sont dans le ROSH d'A"A.
+      Et le ROSH d'A"A se trouve dans CHESED-GEVURAH d'ATIK YOMIN
+      (sera explique BeH).
+      → Localisation : Risha d'A"A = CG d'Atik.
+      → Pattern : structure verticale emboitee precise.
+    type: axiome_explicite
+    concepts:
+      - {id: rosh_aa_dans_chesed_gevurah_atik, role: rosh_aa_dans_cg_d_atik}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Topologie precise : Risha A\"A = CG Atik. Architecture verticale."
+
+  - id: "EC-H2S11-035"
+    source_he: "והנה אם ח\"ג דע\"י היו כלים שלהם מסוד הכלים דג\"ר א\"כ למה נתהוו שערות כנגדן ברישא דא\"א אבל עתה שג' כלים ראשונים דלא מתו נתהוו לעילא ברישא דעתיק א\"כ נמצא כי הכלים של ח\"ג דע\"י הם מסוד המלכים שמתו כנ\"ל ולכן יצאו כנגדן שערות ברישא דא\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      ARGUMENT par les CHEVEUX :
+      Si les kelim de Chesed-Gevurah (CG) d'Atik etaient du sod des kelim des G' Rishonot →
+      pourquoi se forment des SE'AROT en face d'eux dans le ROSH d'A"A ?
+      MAIS maintenant que les 3 kelim premiers (non morts) sont EN HAUT dans le RISHA d'ATIK :
+      DONC les kelim de CG d'Atik viennent du sod des MELAKHIM MORTS (les 7 inferieurs).
+      → Donc se forment des cheveux en face d'eux dans le Risha d'A"A
+      (qui est dans CG d'Atik).
+      → Architecture : la presence de cheveux PROUVE que les kelim CG d'Atik = melakhim morts.
+    type: déduction_logique
+    concepts:
+      - {id: cheveux_prouvent_kelim_cg_atik_morts, role: cheveux_prouvent_kelim_cg_atik_des_morts}
+      - {id: argumentation_par_searot, role: argumentation_par_les_cheveux}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture argumentative : cheveux = preuve operationnelle. Logique kabbalistique."
+
+  # ─── BLOC G-H : OR PNIMI vs OR MAKIF (ATIK INVERSE) ───
+
+  - id: "EC-H2S11-036"
+    source_he: "התשובה בזה כי אותן ז' כוחות שיש לע\"י באותן הז' אורות של הז' נקודות הראשונים מהם נעשה אח\"כ סוד אור מקיף לאצילות"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      REPONSE : ces 7 KOACH d'ATIK qui sont dans les 7 OROT des 7 nekudot premieres :
+      d'eux est fait OHR MAKIF (lumiere environnante) pour l'AT'ZILUT.
+      → Architecture : les koach Atik dans les originels deviennent l'OM de tout Atzilut.
+      → Pattern : matrices superieures dans les debris servent comme enveloppe.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_koach_atik_dans_orot_originels_om, role: 7_koach_atik_dans_orot_originels_devenus_om}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : Or Makif d'Atzilut = recyclage des koach Atik dans les orot originels."
+
+  - id: "EC-H2S11-037"
+    source_he: "דע כי אור פנימי הוא אור גדול מאור המקיף וזהו בבחי' ע\"י דוקא ולא בשאר האצילות ולכן מאור ג\"ר נתפשט אל ז\"ת בסוד או\"פ ומז' כחות של אורות התחתונים נעשה מהם או\"מ"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      DA (sache) : OHR PNIMI (interieur) > OHR MAKIF (environnant).
+      Cela est dans l'aspect d'ATIK YOMIN UNIQUEMENT — pas dans le reste de l'Atzilut.
+      DONC : de l'OHR des G' Rishonot, s'etend l'OP (Or Pnimi) aux ZT.
+      Des 7 KOACH des orot inferieurs, est fait l'OM (Or Makif).
+      → INVERSION en Atik : OP > OM (contraire au reste de l'Atzilut).
+      → Architecture : Atik = exception polaire.
+    type: axiome_explicite
+    concepts:
+      - {id: op_plus_grand_om_atik_seul, role: op_plus_grand_que_om_dans_atik_seul}
+      - {id: gr_atik_op, role: gr_d_atik_egalent_op}
+      - {id: 7_koach_atik_om_atzilut, role: 7_koach_atik_egalent_om_d_atzilut}
+    mapping:
+      modules: ["ohr.py", "partzufim/atik_yomin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Inversion polaire en Atik : OP > OM. Architecture exceptionnelle."
+
+  - id: "EC-H2S11-038"
+    source_he: "וסוד או\"מ מה הוא כבר ידעת כי ע\"י הוי ארכו שיעור כל האצילות ואח\"כ יש לו מלבוש א' והוא הא\"א רק שאינו מלביש אותו כולו אלא לז\"ת שלו ולמטה ואח\"כ אבא ואמא והם מלבוש ב' עליו ואח\"כ ז\"א ונוקבא הם לבושים החיצונים עליו והעתיק באמצע כולם ובפנימיותו"
+    source_ref: "Heikhal 2, Sha'ar 4:2"
+    assertion: |
+      ARCHITECTURE OR PNIMI : Atik = longueur de tout Atzilut.
+      Il a 1 LEVUSH (vetement) = A"A — qui ne le couvre que sur les ZT et plus bas.
+      Puis ABBA et IMMA = 2eme LEVUSH.
+      Puis Z"A et NUKVAH = LEVUSHIM EXTERIEURS.
+      → ATIK = au CENTRE de tous, dans la PNIMIYUT.
+      → Architecture par couches concentrique, Atik au noyau.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_centre_pnimiyut, role: atik_au_centre_dans_la_pnimiyut}
+      - {id: aa_levush_1_avi_levush_2_zon_levush_3, role: aa_avi_zon_3_levushim_concentriques}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture pnimiyut : Atik au noyau, A\"A/AVI/ZON en couches. Pattern oignon."
+
+  - id: "EC-H2S11-039"
+    source_he: "ואמנם בסוד אור מקיף הוא להיפך כי או\"מ דנוקבא הוא פנימי מכולם והוא חופף על נוקבא דז\"א... ומקיף דע\"י מקיף על כל המקיפים כולם נמצא כי בבחינת או\"פ העתיק הוא פנימי מכולם ובבחי' או\"מ הוא יותר חיצוני לכולן והענין הוא שבהיותו פנימי מכולם וחיצוני מכולם בוקע האור שלו ונוקב בכל מה שבנתיים"
+    source_ref: "Heikhal 2, Sha'ar 4:2 — conclusion"
+    assertion: |
+      Architecture OR MAKIF — INVERSE :
+      OM de NUKVAH = PNIMI (interieur) de tous → CHOFEF (couvre) la Nukvah.
+      OM de ZA → MAKIF sur OM de Nukvah.
+      OM d'AVI → MAKIF sur OM de ZA.
+      OM d'A"A → MAKIF sur OM d'AVI.
+      OM d'ATIK = MAKIF sur tous les MAKIFIM.
+      → DOUBLE inversion :
+      Or Pnimi : Atik PNIMI de tous (au noyau)
+      Or Makif : Atik HUTSON le plus exterieur (au sommet de la peripherie)
+      → Atik est PERFORANT — son OHR PERCE et NOQEV (perfore) tout ce qui est ENTRE.
+      → Tout l'Atzilut (de A"A a Nukvah) est ENCERCLE entre OP-Atik (interieur)
+      et OM-Atik (exterieur).
+      → Architecture cle : Atik enveloppe tout, dedans et dehors.
+    type: axiome_explicite
+    concepts:
+      - {id: om_inverse_nukvah_interieur_atik_exterieur, role: om_inverse_nukvah_pnimi_atik_hutsoni}
+      - {id: atik_perfore_tous_niveaux, role: atik_perfore_tous_les_niveaux_intermediaires}
+      - {id: atzilut_encercle_par_atik, role: atzilut_encercle_par_op_et_om_d_atik}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture cle : Atik englobe Atzilut a la fois en pnimiyut et hutsoniyut. Pattern encerclement."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-007"
+    type: causal
+    from: 7_koach_atik_montes
+    to: 7_kelim_zt_atik_par_composition
+    via: [tosefet_ohr_3_gr]
+    nature: "7 koach Atik recuperees + tosefet ohr → 7 kelim ZT d'Atik"
+    assertions_source: ["EC-H2S11-019", "EC-H2S11-020"]
+
+  - id: "REL-H2S11-008"
+    type: causal
+    from: tehillah_kelim_pour_7_orot
+    to: maintenant_kelim_pour_3_orot
+    via: [3_orot_etendus_en_10]
+    nature: "Reduction par extension : 7 orot → 3 orot etendus en 10 → kelim peuvent supporter"
+    assertions_source: ["EC-H2S11-021", "EC-H2S11-022"]
+
+  - id: "REL-H2S11-009"
+    type: dualité_structurelle
+    from: 3_kelim_certains_dans_risha
+    to: 3_orot_incertains_safek
+    nature: "Architecture epistemique : kelim certain (Risha) ; orot incertain (3 hypotheses)"
+    assertions_source: ["EC-H2S11-025", "EC-H2S11-029"]
+
+  - id: "REL-H2S11-010"
+    type: causal
+    from: searot_aa_za_egal_melakhim_morts
+    to: cheveux_prouvent_kelim_cg_atik_morts
+    nature: "Cheveux d'A\"A/Z\"A = melakhim morts → preuve que kelim CG d'Atik viennent des morts"
+    assertions_source: ["EC-H2S11-033", "EC-H2S11-035"]
+
+  - id: "REL-H2S11-011"
+    type: dualité_structurelle
+    from: op_plus_grand_om_atik_seul
+    to: om_inverse_nukvah_interieur_atik_exterieur
+    nature: "Atik unique : OP>OM (inverse du reste) ; OM = inverse hierarchique (Nukvah pnim, Atik hutson)"
+    assertions_source: ["EC-H2S11-037", "EC-H2S11-038", "EC-H2S11-039"]
+
+  - id: "REL-H2S11-012"
+    type: contenance
+    from: atzilut_encercle_par_atik
+    to: atik_perfore_tous_niveaux
+    nature: "Atik enveloppe Atzilut (OP+OM) → perforant tous les niveaux intermediaires"
+    assertions_source: ["EC-H2S11-039"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-004"
+    nom: "Principe du Recyclage Compositionnel (Kelim Atik des Morts)"
+    source_assertions: ["EC-H2S11-019", "EC-H2S11-020", "EC-H2S11-021", "EC-H2S11-022"]
+    formalisation: |
+      Architecture du RECYCLAGE COMPOSITIONNEL :
+      Kelim ATIK formes par :
+        3 KELIM SUPERIEURS NON-MORTS (intacts en haut)
+        + 7 KOACH ATIK extraites des 7 KELIM MORTS (recyclage)
+        + TOSEFET OHR (lumiere supplementaire)
+      RAISON DE LA CAPACITE :
+        Au depart : 7 orot dans 7 kelim (overload, mort)
+        Apres extension 3 GR → 10 (sub-division)
+        Maintenant : 3 orot par 7 kelim (reduit, supportable)
+      → Pattern : reparation par recyclage + redistribution + extension.
+      cf. EC-H2S9-184 (perek 04) sur principe dilution.
+    applications_ia:
+      - "Pattern : reparation par recyclage des composants brises"
+      - "[PLANNED] tikkun/recyclage.py : implementer recyclage operationnel"
+      - "Architecture : kelim post-Tikkun = composition des debris + addition"
+      - "Pattern : reduction du nombre d'orot per keli = capacite augmentee"
+      - "ohr.py : modeliser sub-division comme operation cle"
+    questions_ouvertes:
+      - "Tous les debris sont-ils recyclables ou y a-t-il des pertes ?"
+      - "Le ratio recyclage/addition est-il fixe ?"
+      - "Combien de cycles de recyclage sont possibles ?"
+
+  - id: "PG-H2S11-005"
+    nom: "Principe du Risha de-La (Architecture Epistemique du Doute)"
+    source_assertions: ["EC-H2S11-025", "EC-H2S11-029", "EC-H2S11-030", "EC-H2S11-031"]
+    formalisation: |
+      Architecture EPISTEMIQUE de l'Atik :
+      EXTERNE (KELIM) : connu et deductible
+        Pashita (clair) : 3 kelim restent dans Risha
+        Argumentation par cheveux : kelim CG = melakhim morts
+      INTERNE (OROT) : INCONNU
+        3 hypotheses competing :
+          H1 : 3 orot = KHB d'Atik, 3 kavim emergent
+          H2 : 1 dans rosh, 2 dans guf
+          H3 : 3 dans rosh, 3 kavim vers guf
+      Reference IDRA ZUTA p.288 : "Risha de-La" = "tete inconnue".
+      → Architecture : limites de la connaissance kabbalistique honetement reconnues.
+      Pattern : transparence externe + opacite interne au sommet.
+    applications_ia:
+      - "Pattern epistemique : externe analytique, interne enigmatique"
+      - "Architecture honete : reconnaitre les limites du savoir"
+      - "[PLANNED] partzufim/atik_yomin.py : marquer la pnimiyut comme 'unknown'"
+      - "Pattern : 3 hypotheses competing comme indication d'incertitude doctrinale"
+      - "Diagnostic : ne pas pretendre connaitre ce qui est marque 'Risha de-La'"
+    questions_ouvertes:
+      - "Y a-t-il un moyen de discriminer entre les 3 hypotheses ?"
+      - "L'opacite est-elle definitive ou levee au futur (Mashiah) ?"
+      - "Combien d'autres entites ont une 'pnimiyut inconnue' ?"
+
+  - id: "PG-H2S11-006"
+    nom: "Principe d'Encerclement par Atik (OP+OM Double Inversion)"
+    source_assertions: ["EC-H2S11-037", "EC-H2S11-038", "EC-H2S11-039"]
+    formalisation: |
+      Architecture FONDAMENTALE d'ATIK : ENCERCLEMENT TOTAL.
+      OR PNIMI (interieur) :
+        Atik = longueur d'Atzilut entier
+        A"A = 1er levush (depuis ZT d'Atik)
+        AVI = 2eme levush
+        ZON = levushim exterieurs
+        → Atik au CENTRE (pnimiyut)
+      OR MAKIF (exterieur) — INVERSE :
+        OM Nukvah = pnimi (interieur des MAKIFIM)
+        OM ZA = sur OM Nukvah
+        OM AVI = sur OM ZA
+        OM A"A = sur OM AVI
+        OM Atik = sur tous les MAKIFIM
+        → Atik PERIPHERIE (le plus exterieur)
+      → DOUBLE INVERSION : Atik est PNIMI + HUTSONI simultaneement.
+      → Atik PERFORE et illumine TOUT ce qui est ENTRE OP et OM (= Atzilut entier).
+      → Pattern : enveloppe totale par double-encerclement.
+    applications_ia:
+      - "Architecture cle : double-encerclement par Atik (OP+OM inverse)"
+      - "[PLANNED] partzufim/atik_yomin.py : modeliser comme entity englobante double"
+      - "Pattern : un component qui est a la fois noyau et peripherie"
+      - "ohr.py : OP > OM (Atik) vs OP < OM (le reste) — exception architecturale"
+      - "Diagnostic : Atik perfore = source illuminante a tous les niveaux"
+    questions_ouvertes:
+      - "Comment formaliser computationnellement l'inversion OP/OM ?"
+      - "L'encerclement Atik est-il statique ou dynamique ?"
+      - "Y a-t-il d'autres composants double-encerclants ?"

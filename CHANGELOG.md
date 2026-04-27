@@ -5,6 +5,18 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.23] - 2026-04-27 — Sifrei Yesod corpus seeded via init-db/99
+
+### Added
+
+- **`etzchaim/deploy/init-db/99-sifrei_yesod-data.sql`** — auto-generated dump of the entire transposed Etz Chaim corpus (1454 assertions, 700 relations, 302 principes, 3862 concepts, 78 perakim, 13 shaarim, 2216 cross_refs). Idempotent (`INSERT … ON CONFLICT DO UPDATE/NOTHING`), so `etzchaim update` re-applies the file via `_apply_migrations()` and ships every newly transposed perek to all Docker users without any extra command.
+- **`scripts/dump_sifrei_yesod.py`** — regenerates the SQL dump from the dev `etz_chaim` postgres DB. Mirrors the ON CONFLICT keys used by `sifrei_yesod/pipeline/sofer.py` so the dump is semantically identical to a fresh sofer re-run. Resolves `perek_id` foreign keys with sub-SELECTs on `(sefer_id, heikhal_number, shaar_number, perek_number)` so SERIAL ids never leak across DBs.
+- **`/sefergo` skill** — passe 4 (DUMP DISTRIBUTION) added: after each successful auto_ingest the dump is regenerated, so the auto-bump+commit+push captures the latest corpus.
+
+### Notes for upgraders
+
+After `etzchaim update`, the assertions/principes `embedding` columns are NULL'd by the dump on each upsert. The daemon will lazily re-embed them on first semantic search.
+
 ## [0.2.4] - 2026-04-24 — Healthcheck fixes
 
 ### Fixed

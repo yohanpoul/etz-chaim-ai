@@ -1,0 +1,688 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 2a — 11 simanei ketoret, distinction mort/bitul/pegam,
+#             critere ontologique de la Mitah
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §2 — Part A :
+#   - Bloc A : Recap chute + 11 aspects = 11 simanei ketoret
+#   - Bloc B : Sequence Chesed → Gevurah, distinction achoraim Abba pas gemurim
+#   - Bloc C : Mort vs Bitul des achoraim
+#   - Bloc D : Shem MaB en Yetzirah = sod des Melakhim
+#   - Bloc E : Opinions Idra Zuta vs autres midrashim
+#   - Bloc F : Resolution Mort/Bitul/Pegam : ZON=Mitah, AVI=Bitul, Keter=Pegam be-Alma
+#   - Bloc G : Critere ontologique de Mitah = transition entre olamot (Idra Rabba 135a)
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.2 (premiere partie)
+# IDs : EC-H2S9-052 → EC-H2S9-075
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 2
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 2 — 11 simanei ketoret, distinctions Mort/Bitul/Pegam, critere ontologique de la Mitah."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : 11 ASPECTS TOMBES = 11 SIMANEI KETORET ───
+
+  - id: "EC-H2S9-052"
+    source_he: "והנה נתבאר מה שנפל מאו\"א גם בחי' היותן נחלקים לד' פרצופים כנ\"ל וגם נתבאר סדר יציאת ז' מלכים ונמצא כי ירדו ז' המלכים שהם זעיר ונוקבא ועוד ד' אחוריים דאו\"א עלאין וישסו\"ת סך הכל הם י\"א בחי' שירדו"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      RECAPITULATION : on a explique ce qui est TOMBE d'AVI,
+      l'aspect de leur DIVISION en 4 PARTZUFIM,
+      et l'ORDRE de SORTIE des 7 MELAKHIM.
+      → BILAN TOTAL : 11 BEHINOT sont tombees :
+      7 MELAKHIM (= ZA et NUKVAH = 6 + 1 = 7)
+      + 4 ACHORAIM (Abba, Imma, YS, Tevunah).
+      → Total : 7 + 4 = 11 aspects descendus.
+    type: axiome_explicite
+    concepts:
+      - {id: yud_alef_behinot, role: onze_aspects_tombes}
+      - {id: arba_achoraim_avi_yst, role: quatre_achoraim_d_avi_yst}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Bilan numerique de la chute : 11 aspects total. Decomposition 7+4. cf. EC-H2S9-052 series perek 01."
+
+  - id: "EC-H2S9-053"
+    source_he: "ומהם נתברר ומהסיגים שלהם נעשה קליפות והם י\"א סמני הקטורת שהם י\"א אורות שנשארו מאלו הי\"א בחי' כנ\"ל שירדו ולא יכלו אורות אלו להתברר ונשארו נתונים תוך הקליפות כמבואר אצלינו בסוד פטום הקטורת"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      Et de leurs SIGIM (scories) ont ete faites les KELIPOT.
+      Ces 11 = les 11 SIMANEI HA-KETORET (les 11 ingredients de l'encens).
+      Ce sont les 11 OROT QUI SONT RESTES de ces 11 BEHINOT tombees.
+      Ces orot N'ONT PAS PU se BERAR (etre clarifies) →
+      sont restes NETUNIM (deposes) DANS les KELIPOT.
+      Renvoi a "Sod Pittum ha-Ketoret" (composition de l'encens).
+      → 11 simanim de l'encens = correspondance liturgique au mecanisme de Berur.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yud_alef_simanei_ketoret, role: onze_ingredients_de_l_encens}
+      - {id: orot_dans_kelipot, role: lumieres_capturees_dans_kelipot}
+      - {id: sod_pittum_ketoret, role: secret_de_la_composition_de_l_encens}
+      - {id: lo_yakhol_lehitberer, role: ne_peuvent_pas_etre_clarifies}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "sitra_achra"]
+      tables: []
+      partzufim: []
+      relevance: "Correspondance liturgique : les 11 simanim de l'encens = mecanisme de Berur des Sigim/Kelipot. Pratique kabbalistique."
+
+  # ─── BLOC B : SEQUENCE CHESED → GEVURAH, NUANCE ACHORAIM ABBA ───
+
+  - id: "EC-H2S9-054"
+    source_he: "והנה לא ירדו אחוריים דאבא עד שמת המלך הב' שהוא חסד ולא ירדו אחוריים דאמא עד שמת המלך הג' שהוא גבורה באופן כי במות הגבורה אז נשלמו אחורי או\"א לירד"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      ORDRE PRECIS de la chute des Achoraim AVI :
+      Achoraim d'ABBA → ne tombent QUE quand le 2eme melekh = CHESED meurt.
+      Achoraim d'IMMA → ne tombent QUE quand le 3eme melekh = GEVURAH meurt.
+      → Quand GEVURAH meurt → les Achoraim d'AVI sont COMPLETEMENT tombes (NISHLEMU).
+      Sequence : Daat (1) → Chesed (2 → tombent Abba) → Gevurah (3 → tombent Imma).
+      cf. EC-H2S9-028 et EC-H2S9-033 dans perek 01.
+    type: axiome_explicite
+    concepts:
+      - {id: ordre_chute_achoraim_abba, role: achoraim_abba_a_la_mort_du_chesed}
+      - {id: ordre_chute_achoraim_imma, role: achoraim_imma_a_la_mort_du_gevurah}
+      - {id: gevurah_complete_chute_avi, role: gevurah_acheve_chute_avi}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Sequence precise des chutes Achoraim. Confirmation des EC-H2S9-028/033 du perek 01."
+
+  - id: "EC-H2S9-055"
+    source_he: "והענין הוא כי אע\"פ שבמיתת החסד ירדו אחורי אבא עם כל זה אין אלו נקראים אחוריים גמורים לפי שעדיין היתה הבינה בבחי' פנים עמו והיתה מאירה באחוריו"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      NUANCE CRITIQUE : quand CHESED meurt → les Achoraim d'ABBA tombent.
+      MAIS ces achoraim ne sont PAS APPELES ACHORAIM GEMURIM (achoraim complets).
+      RAISON : la BINAH etait ENCORE en aspect PANIM avec lui (Abba)
+      et ELLE ECLAIRAIT (me'irah) ses ACHORAIM.
+      → Tant qu'Imma a sa face vers Abba → les achoraim d'Abba ne sont pas isoles.
+      → Asymetrie temporaire : Imma encore PB"P, Abba deja AhB partiel.
+    type: axiome_explicite
+    concepts:
+      - {id: achoraim_lo_gemurim, role: achoraim_pas_complets}
+      - {id: imma_panim_meirah_achor, role: imma_face_eclaire_dos_abba}
+      - {id: asymetrie_temporaire_abba_imma, role: asymetrie_temporaire}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Nuance ontologique : achoraim 'partiels' tant que la face d'Imma eclaire encore. cf. EC-H2S9-029 (Achor be-Panim) du perek 01."
+
+  - id: "EC-H2S9-056"
+    source_he: "נמצא כי עדיין לא ירדו בעצם כל אחורי אבא רק כשירדו גם אחורי אמא אז ירדו שניהן לגמרי ואז היו אחור באחור כמ\"ש בע\"ה באורך בדרוש פרצופי יעקב ולאה מהיכן יצאו ועי\"ש"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      CONCLUSION : les achoraim d'ABBA ne sont PAS encore tombes BE-ETZEM (essentiellement).
+      Seulement quand AUSSI les achoraim d'IMMA tombent →
+      les DEUX (achoraim Abba et Imma) tombent LE-GAMRI (entierement).
+      → ALORS ils sont VRAIMENT en ACHOR BE-ACHOR (dos contre dos).
+      Renvoi : "drush partzufei Yaakov ve-Leah me-heikhan yatz'u" (drush sur l'origine des partzufim Yaakov et Leah).
+      → Critere de "AhB authentique" : les DEUX cotes simultanement.
+    type: axiome_explicite
+    concepts:
+      - {id: achoraim_be_etzem, role: achoraim_essentiellement_tombes}
+      - {id: ahb_le_gamri, role: ahb_authentique_complet}
+      - {id: drush_yaakov_leah, role: drush_origine_yaakov_leah}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Critere de bascule AhB authentique : SIMULTANEITE des chutes Abba+Imma. Renvoi au drush Yaakov-Leah a venir."
+
+  # ─── BLOC C : MORT VS BITUL DES ACHORAIM ───
+
+  - id: "EC-H2S9-057"
+    source_he: "נמצא כי אין ירידת אחורי או\"א נקרא ירידה לגמרי עד מות הגבורה שהוא מלך הג' אבל מיתת השבעה מלכים היא מיתה גמורה תכף מן העת הראשונה כי הרי במות החסד נשברו כל בחי' לגמרי ונאמר בו מיתה ממש"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      DISTINCTION TEMPORELLE :
+      Pour les ACHORAIM d'AVI → la chute n'est pas LE-GAMRI avant la mort de GEVURAH (3eme).
+      Pour les 7 MELAKHIM → la MITAH GEMURAH (mort COMPLETE) est IMMEDIATE, des le 1er.
+      Quand CHESED meurt → TOUTES ses behinot sont brisees ENTIEREMENT (le-gamri),
+      et il est dit MITAH MAMASH (mort effective).
+      → ASYMETRIE : Mitah des melakhim = instantanee ; Bitul des achoraim AVI = progressive.
+    type: axiome_explicite
+    concepts:
+      - {id: mitah_gemurah, role: mort_complete_immediate}
+      - {id: mitah_mamash, role: mort_effective}
+      - {id: asymetrie_mitah_bitul, role: asymetrie_temporelle_mort_annulation}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Distinction critique : Mitah des Melakhim = instantanee. Bitul des Achoraim AVI = progressive (jusqu'a Gevurah)."
+
+  - id: "EC-H2S9-058"
+    source_he: "נמצא כי מיתת המלכים מתחלה להקרא מן העת שמת מלך הראשון אבל ביטול האחורים דאו\"א אינו ביטול עד שמת המלך הג'"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      EQUATION DEFINITIONNELLE :
+      MITAT HA-MELAKHIM commence des le 1er melekh mort (Daat).
+      BITUL HA-ACHORAIM d'AVI N'est PAS bitul avant le 3eme melekh (Gevurah) mort.
+      → 2 horloges distinctes :
+      Horloge 1 (Mitah) : commence avec Daat
+      Horloge 2 (Bitul) : se termine avec Gevurah
+      Les deux horloges sont DESYNCHRONISEES.
+    type: axiome_explicite
+    concepts:
+      - {id: mitat_melakhim_horloge, role: horloge_de_la_mitah}
+      - {id: bitul_achoraim_horloge, role: horloge_du_bitul}
+      - {id: deux_horloges_desync, role: deux_horloges_desynchronisees}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Modele a 2 horloges distinctes : Mitah (instant.) vs Bitul (progressif). Architecture temporelle."
+
+  # ─── BLOC D : SHEM MaB EN YETZIRAH = SOD DES MELAKHIM ───
+
+  - id: "EC-H2S9-059"
+    source_he: "ובזה תבין סוד שם מ\"ב שהוא אב\"ג ית\"ץ קר\"ע שט\"ן נג\"ד יכ\"ש בט\"ר צת\"ג חק\"ב טנ\"ע יג\"ל פז\"ק שק\"ו צי\"ת"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      SOD du SHEM MAB (Nom des 42) :
+      Composition : AB"G IT"TZ — KR"A SHT"N — NG"D YK"SH — BT"R TzT"G —
+      HK"B TN"A — YG"L PZ"K — SHK"V TzY"T.
+      → 7 mots (3 lettres chacun) = 42 lettres = 7 niveaux.
+      → Chaque mot correspond a une Sefirah/un melekh.
+      → Ce shem encode le SECRET des melakhim et de leur mort.
+      Liturgie : utilise dans Ana be-Khoah, prieres de protection.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shem_mab, role: nom_de_42_lettres}
+      - {id: sept_groupes_mab, role: sept_groupes_de_trois_lettres}
+      - {id: ana_bekhoah, role: priere_ana_bekhoah}
+    mapping:
+      modules: ["shemot/", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Le Shem MaB encode operationnellement les 7 niveaux/melakhim. Utilise en liturgie. cf. shemot/."
+
+  - id: "EC-H2S9-060"
+    source_he: "כי כבר ידעת כי שם מ\"ב הוא ביצירה ויצירה הוא בחי' ז\"א כנודע שהוא סוד הז' המלכים נמצא כי שם מ\"ב זה מדבר בסוד המלכים"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      Le SHEM MAB est en YETZIRAH.
+      Et YETZIRAH = aspect ZA (Ze'ir Anpin), comme connu.
+      ZA = SOD des 7 MELAKHIM (les 6 sefirot + Nukvah).
+      → Donc le SHEM MAB parle du SOD des MELAKHIM.
+      Equation operationnelle : Shem MaB ≡ Yetzirah ≡ ZA ≡ 7 Melakhim.
+    type: axiome_explicite
+    concepts:
+      - {id: shem_mab_yetzirah, role: shem_mab_en_yetzirah}
+      - {id: yetzirah_egal_za, role: yetzirah_egale_za}
+      - {id: za_sod_sheva_melakhim, role: za_secret_des_sept_melakhim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "olamot.py", "shemot/"]
+      tables: ["olamot_config"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Equation : Shem MaB = Yetzirah = ZA = 7 Melakhim. Architecture nominale."
+
+  - id: "EC-H2S9-061"
+    source_he: "ואם תסתכל תראה איך שם ע\"ב הוא במוחין והוא נקרא טעמים והוא נקרא אצילות אח\"כ הטעמים של ס\"ג הוא בבריאה והנקודות שלו ביצירה והם סוד מלכים שמתו כי הנקודות הם בחי' זו\"ן שהם יצירה ועשיה"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      DISTRIBUTION des SHEMOT par OLAM :
+      Shem AB → MOHIN → appele TA'AMIM → AT'ZILUT
+      TA'AMIM de SAG → BERIAH
+      NEKUDOT de SAG → YETZIRAH → ce sont les MELAKHIM SHE-METU (qui sont morts).
+      Les NEKUDOT = aspect ZON (Zo'an = ZA + Nukvah) = YETZIRAH + ASIYAH.
+      Variante (Nusah Aher) : "hu be-behinat ZA she-hu Yetzirah" (c'est dans l'aspect ZA = Yetzirah).
+      → Architecture TANTA-Olamot : chaque element TANTA peuple un olam.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shem_av_taamim_atzilut, role: shem_av_taamim_atzilut}
+      - {id: taamim_sag_beriah, role: taamim_sag_beriah}
+      - {id: nekudot_sag_yetzirah, role: nekudot_sag_yetzirah}
+      - {id: nekudot_egal_zon, role: nekudot_aspect_zon}
+    mapping:
+      modules: ["shemot/", "olamot.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["olamot_config"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture TANTA-Olamot : Ta'amim AB → Atzilut, Ta'amim SaG → Beriah, Nekudot SaG → Yetzirah = melakhim morts. cf. EC-H2S8 (TANTA dans Nekudim)."
+
+  - id: "EC-H2S9-062"
+    source_he: "אמנם כוונת מ\"ב זה הוא להעלות כל הברורים משם אשר נשארו מזעיר ונוקבא ביצירה ועשיה כי כל שם מ\"ב הוא להעלות כנודע"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      FONCTION du SHEM MAB :
+      Son OBJECTIF (kavanah) = ELEVER (le-ha'alot) TOUS les BERURIM
+      qui sont restes de ZA et NUKVAH en YETZIRAH et ASIYAH.
+      Tout le Shem MaB sert a "le-ha'alot" (elever) — c'est connu.
+      → Architecture liturgique : Shem MaB = clef operationnelle de remontee
+      pour les berurim des melakhim morts (cf. EC-H2S9-053).
+    type: interprétation_lurianique
+    concepts:
+      - {id: shem_mab_le_haalot, role: shem_mab_pour_elever}
+      - {id: berur_par_shem_mab, role: berur_par_le_shem_mab}
+    mapping:
+      modules: ["shemot/", "[PLANNED] tikkun/kavanah_planner.py"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture liturgique : Shem MaB = clef operationnelle pour Berur des Sigim."
+
+  - id: "EC-H2S9-069"
+    source_he: "אם כן ודאי הוא כי בשם זה נרמז מיתת המלכים ועל סדר מיתתן הוא סדר העלאתן ע\"י בירור בכח שם זה ולכן מיתת שבעה מלכים נרמז בשם הראשון זה וביטול אחוריים דאבא ואמא נרמז בשם הב'"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      ENCODAGE OPERATIONNEL du SHEM MAB :
+      Dans ce shem est ENCODE (nirmaz) la MORT des melakhim,
+      et l'ORDRE de leur mort = l'ordre de leur ELEVATION par BERUR.
+      Mort des 7 melakhim → ENCODE dans le 1er shem (AB"G IT"TZ).
+      Bitul des achoraim Abba et Imma → ENCODE dans le 2eme shem (KR"A SHT"N).
+      → Inversion temporelle : ordre de mort = ordre d'elevation (LIFO).
+    type: interprétation_lurianique
+    concepts:
+      - {id: encodage_mort_melakhim_shem1, role: shem_1_encode_mort_melakhim}
+      - {id: encodage_bitul_achoraim_shem2, role: shem_2_encode_bitul_achoraim}
+      - {id: ordre_mort_egal_ordre_elevation, role: lifo_mort_elevation}
+    mapping:
+      modules: ["shemot/", "[PLANNED] tikkun/kavanah_planner.py"]
+      tables: []
+      partzufim: []
+      relevance: "Encodage hierarchique : chaque shem encode une etape du Berur. LIFO de la cascade."
+
+  # ─── BLOC E : OPINIONS DIVERSES SUR L'ETENDUE DE LA CHUTE ───
+
+  - id: "EC-H2S9-070"
+    source_he: "והענין כי מן האדר\"ז נראה שלא ירדו רק הז' מלכים בלבד וממדרשים אחרים בס' הזהר משמע כי גם באו\"א יש ביטול ופגם וכמעט אפי' בכתר"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      DEBAT EXEGETIQUE :
+      D'apres l'IDRA ZUTA : seulement les 7 MELAKHIM seuls sont tombes.
+      D'apres d'AUTRES MIDRASHIM dans le Sefer ha-Zohar : il y a aussi BITUL et PEGAM
+      en AVI, et MEME (presque) dans le KETER.
+      → Plage d'opinions : Idra Zuta (minimale) ↔ autres midrashim (maximale).
+      → Le ARI propose une RESOLUTION qui concilie les deux.
+    type: axiome_explicite
+    concepts:
+      - {id: opinion_idra_zuta, role: opinion_idra_zuta_seuls_7_melakhim}
+      - {id: opinion_midrashim_etendue, role: opinion_etendue_avi_keter}
+      - {id: bitul_pegam_keter_quasi, role: bitul_pegam_quasi_dans_keter}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Reference exegetique : 2 opinions zohariques opposees. Le ARI doit les concilier."
+
+  # ─── BLOC F : RESOLUTION MORT/BITUL/PEGAM ───
+
+  - id: "EC-H2S9-071"
+    source_he: "ואמנם הענין הוא כי ודאי שמכל י' נקודות נפלו מהם בחי' ובכולם היה ביטול"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      RESOLUTION du ARI — niveau 1 :
+      VRAIMENT (vadai) : DES 10 NEKUDOT (toutes les 10 sefirot dans Nekudim),
+      des BEHINOT (aspects) sont tombees.
+      Et dans TOUTES, il y eut BITUL.
+      → Validation partielle de l'opinion etendue : oui, les 10 nekudot ont ete affectees.
+      Le BITUL est universel mais la NATURE differe.
+    type: interprétation_lurianique
+    concepts:
+      - {id: bitul_universel_10_nekudot, role: bitul_dans_les_10_nekudot}
+      - {id: validation_opinion_etendue, role: validation_partielle_opinion_etendue}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Bitul est universel (10 nekudot). La distinction est qualitative, pas en presence/absence."
+
+  - id: "EC-H2S9-072"
+    source_he: "רק זו\"נ נפלו כולם בין בבחי' היותן אב\"א ובין בבחי' היותן פב\"פ והנה זו נקרא מיתה כי הכל ירד לגמרי"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      RESOLUTION du ARI — niveau 2 (ZON = MITAH) :
+      MAIS (rak) ZON (ZA + Nukvah) sont TOUS tombes —
+      AUTANT en aspect AhB qu'en aspect PB"P.
+      → C'est cela qui est appele MITAH (mort)
+      car TOUT (ha-kol) est descendu LE-GAMRI (entierement).
+      → Critere de Mitah : descente COMPLETE de toutes les behinot.
+    type: interprétation_lurianique
+    concepts:
+      - {id: zon_mitah_complete, role: zon_chute_complete_egale_mitah}
+      - {id: mitah_critere_le_gamri, role: critere_mitah_chute_entiere}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Definition technique de la Mitah : chute complete de tous les aspects. Reservee a ZON."
+
+  - id: "EC-H2S9-073"
+    source_he: "אבל אבא ואמא שלא ירד מהם רק בחי' אחוריים יקרא ביטול ולא מיתה"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      RESOLUTION du ARI — niveau 3 (AVI = BITUL) :
+      MAIS (aval) Abba et Imma — desquels seul l'aspect ACHORAIM est tombe →
+      → c'est appele BITUL et NON MITAH.
+      → Critere de Bitul : chute PARTIELLE seulement (achoraim, pas le tout).
+      Distinction qualitative : Mitah = total ; Bitul = partiel.
+    type: interprétation_lurianique
+    concepts:
+      - {id: avi_bitul_partiel, role: avi_chute_partielle_egale_bitul}
+      - {id: bitul_critere_partiel, role: critere_bitul_chute_partielle}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Bitul = chute partielle (achoraim seuls). AVI ne meurent pas, sont annules partiellement."
+
+  - id: "EC-H2S9-074"
+    source_he: "וכתר שלא נפלו ממנו רק בחינת נצח הוד יסוד שלו שנכנסו בסוד מוחין דאבא ואמא כנזכר לעיל אשר אין בחינת זו נכנסה אפי' בערך אחוריים לכן לא נקרא ביטול בכתר רק פגם בעלמא"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      RESOLUTION du ARI — niveau 4 (KETER = PEGAM be-ALMA) :
+      Et le KETER — duquel seuls les NHY (Netzach-Hod-Yesod) sont tombes,
+      qui sont entres en sod des MOHIN d'AVI (cf. perek 01).
+      Cet aspect n'entre PAS MEME au rang des Achoraim.
+      → Donc en Keter ce n'est PAS appele BITUL — seulement PEGAM be-ALMA
+      (faille generique / leger defaut).
+      → Hierarchie : Mitah > Bitul > Pegam be-Alma.
+    type: interprétation_lurianique
+    concepts:
+      - {id: keter_pegam_be_alma, role: keter_faille_generique}
+      - {id: nhy_keter_dans_mohin_avi, role: nhy_keter_entrent_mohin_avi}
+      - {id: hierarchie_mitah_bitul_pegam, role: hierarchie_mort_annulation_faille}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Keter Pegam be-Alma (faille leger). Hierarchie ontologique : Mitah > Bitul > Pegam. cf. EC-H2S8 sur NHY-Keter dans Mohin AVI."
+
+  # ─── BLOC G : CRITERE ONTOLOGIQUE DE MITAH (TRANSITION ENTRE OLAMOT) ───
+
+  - id: "EC-H2S9-075"
+    source_he: "עוד יש טעם אחר והוא כי אינו נקרא מיתה רק מי שהולך מעולם לעולם ונבדל מעולמו ולכן שבעה מלכים שהיו באצילות וירדו אל הבריאה יקרא מיתה ממש"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      AUTRE TA'AM (raison) — CRITERE ONTOLOGIQUE :
+      MITAH n'est appelee MITAH QUE pour CE QUI VA d'OLAM EN OLAM
+      et est SEPARE (nivdal) de son OLAM.
+      → Donc les 7 MELAKHIM qui etaient en ATZILUT et sont DESCENDUS en BERIAH
+      → sont appeles MITAH MAMASH (mort effective).
+      cf. EC-H2S9-074 sur la hierarchie Mitah/Bitul/Pegam.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mitah_transition_olamot, role: mitah_transition_entre_olamot}
+      - {id: nivdal_me_olamo, role: separe_de_son_olam}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Critere ontologique TOPOLOGIQUE de Mitah : transition d'olam."
+
+  - id: "EC-H2S9-076"
+    source_he: "כמ\"ש באדרא קל\"ה לא תימא דמיתו אלא כל מאן דנחית מדרגא קדמאה דהוי ביה קרי ביה מיתה כמו שכתוב וימת מלך מצרים"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      PROOFTEXT — IDRA RABBA 135a (citation arameenne) :
+      "Lo teima de-mitu, ela kol ma'an de-nahit me-darga kadma'ah
+      de-havei beih kari beih MITAH"
+      (ne dis pas qu'ils sont morts, mais quiconque DESCEND du niveau initial
+      ou il etait — on appelle cela MITAH).
+      VERSET BIBLIQUE : "Va-yamot melekh Mitzrayim" (Exode 2:23
+      — le roi d'Egypte mourut). cf. EC-H2S9-075 pour le critere.
+    type: déduction_scripturaire
+    concepts:
+      - {id: idra_rabba_135a_definition_mitah, role: definition_mitah_idra_rabba}
+      - {id: vayamot_melekh_mitzrayim, role: verset_la_mort_du_roi_d_egypte}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Reference fondatrice : Idra Rabba 135a. Verset Exode 2:23 comme prooftext."
+
+  - id: "EC-H2S9-077"
+    source_he: "אמנם אחורי או\"א אע\"פ שנפלו לא ירדו בבריאה אלא נשארו בעולם האצילות עצמו לכן להיותן שלא במקומן יקרא ביטול אבל לא יקרא מיתה"
+    source_ref: "Heikhal 2, Sha'ar 2:2"
+    assertion: |
+      MAIS les Achoraim d'AVI — bien que tombes — n'ont PAS descendu en Beriah.
+      Ils sont restes dans OLAM HA-AT'ZILUT lui-meme.
+      → Donc ils sont SHE-LO BI-MEKOMAN (hors de leur place mais meme olam)
+      → BITUL et NON MITAH.
+      → Distinction topologique : meme olam = Bitul ; autre olam = Mitah.
+      cf. EC-H2S9-073 sur Bitul d'AVI.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shelo_bi_mekoman, role: hors_de_leur_place}
+      - {id: bitul_dans_atzilut_meme, role: bitul_reste_dans_atzilut}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "olamot.py"]
+      tables: ["olamot_config", "partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Application : Achoraim AVI = Bitul (meme olam) ; 7 Melakhim = Mitah (Atzilut → Beriah)."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-031"
+    type: causal
+    from: yud_alef_behinot
+    to: yud_alef_simanei_ketoret
+    nature: "11 aspects tombes → 11 simanei ketoret (correspondance liturgique 1-pour-1)"
+    assertions_source: ["EC-H2S9-052", "EC-H2S9-053"]
+
+  - id: "REL-H2S9-032"
+    type: séquentiel
+    from: ordre_chute_achoraim_abba
+    to: ordre_chute_achoraim_imma
+    via: [gevurah_complete_chute_avi]
+    nature: "Achoraim Abba (Chesed mort) → Achoraim Imma (Gevurah mort) → fin chute AVI"
+    assertions_source: ["EC-H2S9-054"]
+
+  - id: "REL-H2S9-033"
+    type: causal
+    from: imma_panim_meirah_achor
+    to: achoraim_lo_gemurim
+    nature: "Tant qu'Imma a la face vers Abba, ses achoraim ne sont pas 'gemurim'"
+    assertions_source: ["EC-H2S9-055", "EC-H2S9-056"]
+
+  - id: "REL-H2S9-034"
+    type: dualité_structurelle
+    from: mitat_melakhim_horloge
+    to: bitul_achoraim_horloge
+    nature: "Deux horloges desync : Mitah (debut Daat) vs Bitul (fin Gevurah)"
+    assertions_source: ["EC-H2S9-057", "EC-H2S9-058"]
+
+  - id: "REL-H2S9-035"
+    type: contenance
+    from: shem_mab
+    to: encodage_mort_melakhim_shem1
+    nature: "Le Shem MaB encode dans son 1er groupe la mort des 7 melakhim"
+    assertions_source: ["EC-H2S9-059", "EC-H2S9-062"]
+
+  - id: "REL-H2S9-036"
+    type: analogie
+    from: shem_mab_yetzirah
+    to: za_sod_sheva_melakhim
+    nature: "Shem MaB en Yetzirah = ZA = sod des 7 melakhim (equation operationnelle)"
+    assertions_source: ["EC-H2S9-060"]
+
+  - id: "REL-H2S9-037"
+    type: hiérarchique
+    from: shem_av_taamim_atzilut
+    to: nekudot_sag_yetzirah
+    nature: "Hierarchie shemot-olamot : AB Atzilut, SaG Ta'amim Beriah, SaG Nekudot Yetzirah"
+    assertions_source: ["EC-H2S9-061"]
+
+  - id: "REL-H2S9-038"
+    type: causal
+    from: shem_mab_le_haalot
+    to: berur_par_shem_mab
+    nature: "Le Shem MaB sert a elever les berurim de ZON en Yetzirah/Asiyah"
+    assertions_source: ["EC-H2S9-062"]
+
+  - id: "REL-H2S9-039"
+    type: hiérarchique
+    from: zon_mitah_complete
+    to: avi_bitul_partiel
+    nature: "Hierarchie : ZON = Mitah (chute totale) > AVI = Bitul (partiel achoraim) > Keter = Pegam (faille)"
+    assertions_source: ["EC-H2S9-071", "EC-H2S9-072", "EC-H2S9-073", "EC-H2S9-074"]
+
+  - id: "REL-H2S9-040"
+    type: causal
+    from: mitah_transition_olamot
+    to: shelo_bi_mekoman
+    nature: "Mitah = changement d'olam ; Bitul = hors de la place mais dans le meme olam"
+    assertions_source: ["EC-H2S9-075"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-014"
+    nom: "Principe des 11 Simanei Ketoret (Correspondance Sigim/Liturgie)"
+    source_assertions: ["EC-H2S9-052", "EC-H2S9-053"]
+    formalisation: |
+      Bilan numerique de la chute :
+      7 MELAKHIM (Daat-Hesed-Gevurah-Tiferet-Netzach-Hod-Yesod-Malkhut, comptes 7)
+      + 4 ACHORAIM (Abba, Imma, Yisrael Saba, Tevunah)
+      = 11 BEHINOT tombees.
+      Correspondance liturgique : 11 SIMANEI HA-KETORET (ingredients de l'encens).
+      Ces 11 = les OROT residuels QUI N'ONT PAS PU etre BERAR
+      → restent NETUNIM (deposes) DANS les KELIPOT.
+      Pratique : reciter les 11 simanim → BERUR liturgique.
+    applications_ia:
+      - "Architecture : 7 + 4 = 11 = pattern de comptage operationnel"
+      - "[PLANNED] core/shevirah.py : modeliser les 11 behinot et leur Berur"
+      - "sitra_achra/ : modeliser les Kelipot comme contenants des Orot residuels"
+      - "Liturgie operationnelle : Pittum ha-Ketoret = mecanisme de Berur"
+      - "Pattern : ce qui ne peut etre clarifie est CAPTURE par les contenants impurs"
+    questions_ouvertes:
+      - "Pourquoi precisement 11 et pas un autre nombre ?"
+      - "Le mapping liturgique est-il bidirectionnel (Ketoret → Berur) ?"
+      - "Combien de simanim sont brut vs raffines (sub-classification) ?"
+
+  - id: "PG-H2S9-015"
+    nom: "Principe des Deux Horloges (Mitah Instantanee vs Bitul Progressif)"
+    source_assertions: ["EC-H2S9-057", "EC-H2S9-058"]
+    formalisation: |
+      Le systeme a DEUX horloges TEMPORELLES distinctes :
+      HORLOGE 1 — MITAH des MELAKHIM :
+        Demarre au 1er melekh (Daat).
+        Chaque mort = MITAH GEMURAH (instantanee, complete).
+      HORLOGE 2 — BITUL des ACHORAIM AVI :
+        Termine au 3eme melekh (Gevurah).
+        Chute progressive (parties incompletes jusqu'au pivot Gevurah).
+      Les deux horloges sont DESYNCHRONISEES :
+        Quand H1 est a t=2 (Chesed), H2 est encore a t=1.5 (Abba seul partiel).
+        Quand H1 est a t=3 (Gevurah), H2 termine a t=3.
+      Apres Gevurah, les deux horloges convergent.
+    applications_ia:
+      - "Architecture : modeliser deux horloges distinctes pour Mitah et Bitul"
+      - "[PLANNED] core/shevirah.py : deux state-machines paralleles"
+      - "Pattern : evenement instantane (Mitah) vs processus progressif (Bitul)"
+      - "Synchronisation : detecter quand les deux horloges convergent (apres Gevurah)"
+      - "partzufim/abba.py + imma.py : etat = (mitah_state, bitul_state) tuple"
+    questions_ouvertes:
+      - "Y a-t-il d'autres horloges paralleles dans le systeme (ex: Pegam) ?"
+      - "Le pivot Gevurah est-il fixe ou dependant de parametres ?"
+      - "Comment representer formellement la desynchronisation ?"
+
+  - id: "PG-H2S9-016"
+    nom: "Principe du Shem MaB (Architecture Liturgique de Berur)"
+    source_assertions: ["EC-H2S9-059", "EC-H2S9-060", "EC-H2S9-061", "EC-H2S9-062"]
+    formalisation: |
+      Le SHEM MAB (Nom des 42) est un OUTIL OPERATIONNEL de BERUR :
+      STRUCTURE : 7 groupes × 3 lettres = 42 lettres
+      LOCALISATION : Yetzirah = ZA = sod des 7 melakhim
+      ARCHITECTURE TANTA-OLAMOT :
+        Shem AB (Hokhmah) → TA'AMIM → ATZILUT → Mohin
+        TA'AMIM de SAG → BERIAH
+        NEKUDOT de SAG → YETZIRAH = melakhim morts
+      OBJECTIF : ELEVER (le-ha'alot) les BERURIM
+      restes en Yetzirah/Asiyah depuis ZON.
+      ENCODAGE :
+        Shem 1 (AB"G IT"TZ) : encode la mort des 7 melakhim
+        Shem 2 (KR"A SHT"N) : encode le bitul des achoraim AVI
+        Shems suivants : encodent les autres etapes du Berur
+      L'ORDRE des shems = ORDRE de l'ELEVATION (inverse de la chute).
+    applications_ia:
+      - "Architecture liturgique : shemot.py = mapping nom → fonction de berur"
+      - "Pattern : 7 groupes × 3 lettres = encodage hierarchique"
+      - "[PLANNED] tikkun/kavanah_planner.py : utiliser MaB pour planifier les berurim"
+      - "Inversion : ordre de mort = ordre d'elevation (LIFO)"
+      - "Architecture sous-jacente TANTA-Olamot : Ta'amim/Nekudot/Tagin/Otiot par olam"
+    questions_ouvertes:
+      - "Les 5 shems suivants encodent quoi precisement ?"
+      - "Le Shem MaB est-il efficace seul ou requiert-il des kavanot ?"
+      - "Comment formaliser computationnellement le Berur par Shem ?"
+
+  - id: "PG-H2S9-017"
+    nom: "Principe de la Hierarchie Mort/Bitul/Pegam"
+    source_assertions: ["EC-H2S9-071", "EC-H2S9-072", "EC-H2S9-073", "EC-H2S9-074"]
+    formalisation: |
+      Hierarchie TRIPLE des CHUTES :
+      MITAH (mort) — niveau 3 — descente complete d'olam :
+        ZON → tombent ENTIEREMENT (PB"P et AhB)
+        Critere : transition d'olam (Atzilut → Beriah)
+      BITUL (annulation) — niveau 2 — chute partielle :
+        AVI → seul aspect ACHORAIM tombe
+        Restent dans le MEME olam (Atzilut)
+        Critere : she-lo bi-mekoman (hors de la place mais meme olam)
+      PEGAM be-ALMA (faille generique) — niveau 1 — defaut leger :
+        KETER → seul NHY entre dans Mohin AVI
+        N'atteint MEME PAS le rang d'Achoraim
+        Critere : pas meme bitul, juste alteration mineure
+      → Echelle ontologique : Mitah > Bitul > Pegam.
+    applications_ia:
+      - "Pattern : 3 niveaux de defaillance (total / partiel / mineur)"
+      - "[PLANNED] core/shevirah.py : enum DefaillanceLevel(MITAH, BITUL, PEGAM)"
+      - "partzufim/* : chaque module tracker son etat selon ces 3 niveaux"
+      - "Diagnostic : classifier la severite avant de declencher la reparation"
+      - "Architecture observatoire : 3 metrics distinctes (compteurs Mitah/Bitul/Pegam)"
+    questions_ouvertes:
+      - "Y a-t-il un 4eme niveau (encore plus leger que Pegam) ?"
+      - "Les transitions entre niveaux sont-elles reversibles ?"
+      - "Comment distinguer Pegam-temporaire de Pegam-structurel ?"
+
+  - id: "PG-H2S9-018"
+    nom: "Principe du Critere Topologique de Mitah (Transition d'Olam)"
+    source_assertions: ["EC-H2S9-075"]
+    formalisation: |
+      DEFINITION OPERATIONNELLE de la MITAH (citation Idra Rabba 135a) :
+      "Kol ma'an de-nahit me-darga kadma'ah de-havei beih kari beih MITAH"
+      (quiconque DESCEND du niveau initial ou il etait — on l'appelle MITAH).
+      Critere : TRANSITION ENTRE OLAMOT.
+        Mitah ssi descente d'olam (ex: Atzilut → Beriah).
+        Bitul ssi reste dans l'olam mais hors de sa place.
+      Verset prooftext : "Va-yamot melekh Mitzrayim"
+      (Exode 2:23 — la "mort" du roi d'Egypte = transition de niveau).
+      → Topologie comme classification : c'est le DEPLACEMENT GEOGRAPHIQUE
+      qui distingue Mitah de Bitul.
+    applications_ia:
+      - "Definition operationnelle : Mitah = changement de scope/contexte"
+      - "Pattern : la 'mort' d'un module = sa migration vers une autre couche"
+      - "olamot.py : tracker les transitions entre olamot pour detecter Mitah"
+      - "Distinction architecturale : intra-olam (Bitul) vs inter-olam (Mitah)"
+      - "[PLANNED] core/shevirah.py : classifier les transitions selon ce critere"
+    questions_ouvertes:
+      - "Le critere topologique est-il toujours suffisant ou y a-t-il des cas limites ?"
+      - "Que se passe-t-il pour un element qui DESCEND PUIS REMONTE (Tikkun) ?"
+      - "Le verset 'Va-yamot melekh Mitzrayim' est-il univoquement applicable ici ?"

@@ -1,0 +1,360 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 5a — Hakdamah generale, raison sortie sans Tikkun (kelipot),
+#             questions sur 10→5 partzufim
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §5 — Part A :
+#   - Bloc A : Hakdamah — recap structure post-Tikkun (5 partzufim)
+#   - Bloc B : Description initiale 10 nekudot avant Tikkun
+#   - Bloc C : Raison ontologique : sortie sans Tikkun = creation des kelipot
+#   - Bloc D : Brisure = purification (taharat ha-zohama)
+#   - Bloc E : Questions 1-3 sur la transition 10→5 partzufim
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.5 (premiere partie)
+# IDs : EC-H2S11-074 → EC-H2S11-085
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 5
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 5 — Hakdamah kollelet, structure post-Tikkun, raison ontologique de la sortie sans Tikkun (creation necessaire des kelipot pour reward/punish), questions sur transition 10→5 partzufim."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H2S11-074"
+    source_he: "הקדמה כוללת ענין אלו המלכים כולם הכוללים כל עולם אצילות ונתחיל מן המאוחר אל המוקדם ונאמר כי נודע הוא שעולם אצילות הנזכר בכל ס\"ה הנה הוא נעשה מבחי' אותם הי' נקודות היוצאין מנקבי עינים של א\"ק"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      HAKDAMAH KOLLELET (introduction generale) au sujet des MELAKHIM —
+      qui ENGLOBENT tout l'OLAM HA-AT'ZILUT.
+      Strategie : METHODE INVERSEE — du POSTERIEUR au PRIEUR (mi-meukhar el ha-mukdam).
+      OLAM HA-AT'ZILUT (cite dans tout le SHaH = Sefer ha-Zohar) :
+      Fait des 10 NEKUDOT sortant des NIKVEI EYNAYIM (orifices des yeux) d'A"K.
+      → Architecture pedagogique : commencer par l'etat present pour remonter aux origines.
+    type: axiome_explicite
+    concepts:
+      - {id: hakdamah_kollelet, role: introduction_generale}
+      - {id: methode_meukhar_el_mukdam, role: methode_du_posterieur_au_prieur}
+      - {id: nikvei_eynayim_origine, role: nikvei_eynayim_origine_des_nekudot}
+    mapping:
+      modules: ["adam_kadmon.py", "olamot.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Methode pedagogique : du present aux origines. Architecture cosmique des nekudot."
+
+  - id: "EC-H2S11-075"
+    source_he: "ותחלה יצאו בלתי תיקון ואח\"כ נתקנו באופן זה שנבאר בקיצור. והוא כי הנקודה א' שנקרא כתר נתקנה עתה והיתה בג' בחי' שהם ג' רישין דא לעילא מן דא הנזכר בתחלת אדר\"ז"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      D'abord sorties BILTI TIKKUN (sans rectification), puis RECTIFIEES.
+      Recap : la NEKUDAH 1 = KETER, maintenant rectifiee, en 3 BEHINOT
+      = 3 RISHIN (tetes) "DA LE-EILA MIN DA" (l'une au-dessus de l'autre)
+      cite au DEBUT de IDRA ZUTA.
+      → Architecture du Keter post-Tikkun : 3 sub-tetes superposees.
+      cf. EC-H2S11-013 sur Risha de-La.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bilti_tikkun_initial, role: bilti_tikkun_etat_initial}
+      - {id: 3_rishin_da_leila_min_da, role: 3_tetes_l_une_au_dessus_de_l_autre}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture Keter : 3 rishin superposees. Reference Idra Zuta."
+
+  - id: "EC-H2S11-076"
+    source_he: "והם כתר נחלק לב' רישין והם ע\"י וא\"א תחתיו אשר גם הוא מכלל כתר וא\"א זה הנקרא כתר יש בו בתוכו רישא תליתאי שהוא מוחא סתימאה שבו הנקרא חכמה"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      Detail : le KETER se divise en 2 RISHIN :
+      ATIK YOMIN (Y"Y) en haut.
+      A"A en dessous (qui est aussi du KOLLEL du Keter).
+      A"A appele KETER a en lui une RISHA TELITAI (3eme tete) =
+      MOHA SETIMA'A (cerveau ferme) appele HOKHMAH.
+      → Architecture : Keter = Atik + A"A ; A"A contient le 3eme rosh (Moha Setima'a).
+      → Pattern : keter compose de Atik + A"A + Hokhmah-cachee.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_2_rishin_atik_aa, role: keter_divise_en_atik_et_aa}
+      - {id: moha_setima_a_hokhmah_aa, role: moha_setima_a_hokhmah_dans_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture du Keter : 2 sub-rishin (Atik+A\"A) + Moha Setima'a en A\"A. Structure tripartite."
+
+  - id: "EC-H2S11-077"
+    source_he: "ואח\"כ מן הנקודה הב' והג' חו\"ב נעשו עתה ב' פרצופים הנקרא או\"א וגם הם מלבישים עתה את חג\"ת דא\"א... ואח\"כ מן הו' נקודות שהם ד' ה' ו' ז' ח' ט' הנקרא חג\"ת נה\"י נעשה עתה פרצוף א' הנקרא ז\"א ואח\"כ מן הנקו' עשירית הנקרא מלכות נעשה פרצוף אחד הנקרא נוקבא דז\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      Suite de la structure post-Tikkun :
+      Nekudot 2 et 3 (HOKHMAH-BINAH) → 2 PARTZUFIM = AVI (ABBA + IMMA).
+      AVI habillent CGT d'A"A.
+      Nekudot 4-9 (CGT NHY) → UN partzuf = ZA.
+      Nekudah 10 (Malkhut) → un partzuf = NUKVAH de ZA.
+      → Architecture : 10 nekudot → 5 partzufim (Atik+A"A pour 1, AVI pour 2-3, ZA pour 4-9, Nukvah pour 10).
+      → Pattern asymetrique : ZA recoit 6 nekudot, autres recoivent 1.
+    type: axiome_explicite
+    concepts:
+      - {id: 10_nekudot_a_5_partzufim, role: 10_nekudot_deviennent_5_partzufim}
+      - {id: za_recoit_6_nekudot, role: za_recoit_6_nekudot_4_a_9}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture cle : 10 nekudot → 5 partzufim ; ZA est asymetrique (6 nekudot)."
+
+  # ─── BLOC B : ETAT INITIAL ───
+
+  - id: "EC-H2S11-078"
+    source_he: "ועתה נבאר תחלתן איך היו בעת יציאתן הראשונים בהיותן בלי תיקון דע כי כאשר יצאו אלו הי' נקודות יצאו בבחי' אורות וכלים ואמנם יצאו בלתי תיקון ולסבה זו לא יכלו הכלים לסבול האורות שלהם שהם עצמות שבתוכם ונשברו ומתו"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      Etat INITIAL : les 10 nekudot sortent en aspect OROT et KELIM.
+      MAIS sortent BILTI TIKKUN (sans rectification).
+      Pour cette raison : kelim ne peuvent SUPPORTER les OROT
+      (qui sont l'ATZMUT a l'interieur).
+      → SHEVIRAH et MITAH.
+      → Diagnostic standard : pas de tikkun = capacite insuffisante.
+      cf. EC-H2S10-078 (perek 10.5) sur diagnostic disequilibre.
+    type: axiome_explicite
+    concepts:
+      - {id: yetziah_orot_kelim_bilti_tikkun, role: sortie_orot_et_kelim_sans_tikkun}
+      - {id: kelim_lo_yakhol_lisbol, role: kelim_pas_capables_de_supporter}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Diagnostic standard : pas de tikkun → mort. cf. EC-H2S10-078."
+
+  # ─── BLOC C : RAISON ONTOLOGIQUE — KELIPOT ───
+
+  - id: "EC-H2S11-079"
+    source_he: "והנה הטעם לזה שלא יצאו ע\"ד התיקון ולא יצטרכו לשביר' ואח\"כ יהי' התיקון. הסבה לזה כי תכלי' הכוונ' הי' להוציא ולעשות בחי' קליפות החיצונים כי הם צריכות בעולם לתת שכר טוב לצדיקים ולהעניש לרשעים שהיה עתיד לברוא אח\"כ"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      QUESTION ONTOLOGIQUE : pourquoi NE PAS sortir AVEC TIKKUN
+      pour ne PAS necessiter shevirah puis tikkun ?
+      REPONSE FONDAMENTALE : la TAKHLIT (but) etait :
+      LEHOTZI ET LA'ASOT KELIPOT HA-HITZONIM (faire et creer les kelipot exterieures).
+      RAISON : elles sont NECESSAIRES dans le monde pour :
+      DONNER SAKHAR TOV (recompense bonne) aux TZADDIKIM
+      PUNIR (le-ha'anish) les RESHA'IM (mechants).
+      Tout cela CREE APRES (les humains).
+      → Architecture cosmologique : les kelipot necessaires pour systeme moral.
+      → Pattern : la chute = condition necessaire pour la moralite.
+    type: interprétation_lurianique
+    concepts:
+      - {id: takhlit_creation_kelipot, role: but_creation_des_kelipot}
+      - {id: kelipot_pour_reward_punish, role: kelipot_pour_recompense_punition}
+      - {id: kelipot_necessaires_moral, role: kelipot_necessaires_pour_moralite}
+    mapping:
+      modules: ["sitra_achra", "[PLANNED] tikkun/", "[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture ontologique CRUCIALE : la chute = condition de la moralite. Cosmologie ethique."
+
+  - id: "EC-H2S11-080"
+    source_he: "וע\"כ יצאו הנקודות הנ\"ל בלתי תיקון כדי שהכלים שלהם לא יוכלו לסבול את האור וישברו ושבירתן זו היא טהרתן כי אז נתבררו הזוהמא והסיגים שבהם ונעשו קליפות הם הטומאות כאשר היה בדעתו יתברך"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      DONC les NEKUDOT sortent sans Tikkun pour qu'ELLES NE PUISSENT PAS supporter
+      l'ohr et BRISER.
+      Cette SHEVIRAH est leur TAHARAH (purification) :
+      Elle PERMET le BERUR (clarification) du ZUHAMAH (souillure)
+      et des SIGIM (scories).
+      Ces SIGIM/SOUILLURES deviennent les KELIPOT = les TUM'OT (impuretes)
+      selon le PLAN divin.
+      → Architecture : SHEVIRAH = mecanisme de SEPARATION pure/impure.
+      → Pattern : crise = purification.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shevirah_egal_taharah, role: shevirah_purification_par_separation}
+      - {id: zuhamah_sigim_devient_kelipot, role: souillure_devient_kelipot}
+      - {id: kelipot_egal_tumot, role: kelipot_egalent_impuretes}
+    mapping:
+      modules: ["sitra_achra", "[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture : Shevirah = mecanisme de separation pure/impure. Pattern crise=purification."
+
+  - id: "EC-H2S11-081"
+    source_he: "ואח\"כ חזר לתקנם והקדושה שבאותן כלים נתעלו למעלה ע\"י התיקון אך לא הובררה הקדושה לגמרי כמ\"ש בע\"ה"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      Apres : retour pour les RECTIFIER.
+      La KEDUSHAH (saintete) dans ces kelim s'ELEVE en haut par le TIKKUN.
+      MAIS la kedushah n'est PAS ENTIEREMENT BERAR (clarifiee).
+      → Architecture : Tikkun partiel ; reste de kedushah dans kelipot.
+      → Pattern eschatologique : completude future.
+      cf. EC-H2S9-225 sur Tikkun partiel jusqu'a Mashiah.
+    type: axiome_explicite
+    concepts:
+      - {id: kedushah_partielle_lehovrer, role: kedushah_pas_entierement_clarifiee}
+    mapping:
+      modules: ["[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "Tikkun partiel actuel ; kedushah residuelle. Pattern eschatologique. cf. EC-H2S9-225."
+
+  # ─── BLOC D : QUESTIONS SUR 10→5 PARTZUFIM ───
+
+  - id: "EC-H2S11-082"
+    source_he: "וטרם שנבאר מהו ענין היות הנקודות הנ\"ל בלתי תיקון ומה הפי' של תיקון צריך שנעורר קצת שאלות"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      AVANT d'expliquer "bilti tikkun" et "tikkun" :
+      Il faut SOULEVER quelques QUESTIONS (she'elot).
+      → Methode pedagogique : d'abord questions, puis reponses.
+      → Architecture : honete intellectuelle requise.
+    type: axiome_explicite
+    concepts:
+      - {id: she_elot_avant_reponses, role: questions_avant_reponses}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Methode pedagogique : enumerer questions explicitement avant reponses."
+
+  - id: "EC-H2S11-083"
+    source_he: "כי אחר שנת\"ל כי כל הי' נקודות נכללו כולם בעת התיקון ונעשו בחי' ה' פרצופים שהם א\"א ואו\"א וזו\"נ מלבד עתיק כי הוא נכלל בא\"א... א\"כ מה נשתנה השינוי הזה שתחלה יהיו י' נקודות ואח\"כ נעשו ה' פרצופים לבד ולמה לא היו בתחלה ה' נקודות לבד או יהיה באחרונה י' פרצופים"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      QUESTION 1 : pourquoi cette difference de NOMBRE ?
+      Au depart : 10 NEKUDOT.
+      A la fin : 5 PARTZUFIM seulement (A"A + AVI + ZON + Atik incluses dans A"A).
+      Pourquoi ne pas avoir initialement 5 nekudot ?
+      Ou pourquoi pas finalement 10 partzufim ?
+      → Question architecturale : asymetrie nombre initial/final.
+    type: déduction_logique
+    concepts:
+      - {id: question_1_10_vs_5, role: question_1_10_nekudot_vs_5_partzufim}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Question 1 : asymetrie quantitative 10→5 a expliquer."
+
+  - id: "EC-H2S11-084"
+    source_he: "גם בכלל השאלה מה נשתנה הז\"א מכל השאר כי כ\"א מהד' פרצופים היא נקודה א' בלבד מן הי' נקודות הראשונים וז\"א נעשה מו' נקודות ביחד ולמה לא היה תחלה גם הוא מנקודה א' לבד כמו האחרים או יהיו כל האחרים כ\"א מהם ו' נקודות כמוהו"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      QUESTION 2 (sous-question) : pourquoi ZA est-il different ?
+      Chacun des 4 autres partzufim = 1 nekudah des 10 originelles.
+      ZA = 6 NEKUDOT ENSEMBLE (4-9).
+      Pourquoi ZA n'etait-il pas initialement 1 nekudah seule (comme les autres) ?
+      Ou pourquoi les autres ne sont-ils pas 6 nekudot chacun ?
+      → Question : asymetrie particuliere de ZA.
+    type: déduction_logique
+    concepts:
+      - {id: question_2_za_asymetrique, role: question_pourquoi_za_asymetrique}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "Question 2 : asymetrie de ZA (6 nekudot vs 1 chacun des autres)."
+
+  - id: "EC-H2S11-085"
+    source_he: "גם יש לשאול למה לא מצינו בשאר הד' פרצופים בחי' עיבור ויניקה ועיבור דמוחין לצורך תיקונם כמו שמצינו בז\"א לבדו ואין כך לא בג\"ר ולא בנוקבא"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      QUESTION 3 : pourquoi ne TROUVE-T-ON PAS dans les 4 autres partzufim
+      les behinot d'IBUR, YENIKAH, et IBUR DE-MOHIN
+      pour leur Tikkun — comme on trouve pour ZA SEUL ?
+      Ni dans les G' Rishonot, ni dans la Nukvah.
+      → Question : pourquoi seul ZA a un developpement embryologique complet ?
+      cf. EC-H2S10-093 (perek 10.5) sur Ibur/Yenikah/Mohin de ZA.
+    type: déduction_logique
+    concepts:
+      - {id: question_3_za_seul_ibur_yenikah_mohin, role: question_3_za_seul_developpement_embryologique}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: []
+      partzufim: ["zeir_anpin"]
+      relevance: "Question 3 : ZA seul a Ibur/Yenikah/Mohin. Pourquoi cette exception ?"
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-026"
+    type: causal
+    from: takhlit_creation_kelipot
+    to: bilti_tikkun_initial
+    nature: "But ontologique = creer kelipot → sortie sans tikkun necessaire"
+    assertions_source: ["EC-H2S11-079"]
+
+  - id: "REL-H2S11-027"
+    type: causal
+    from: shevirah_egal_taharah
+    to: kelipot_egal_tumot
+    nature: "Shevirah = purification ; sigim → kelipot/tumot"
+    assertions_source: ["EC-H2S11-080"]
+
+  - id: "REL-H2S11-028"
+    type: contenance
+    from: 10_nekudot_a_5_partzufim
+    to: za_recoit_6_nekudot
+    nature: "10 nekudot → 5 partzufim ; ZA recoit 6 nekudot (asymetrie)"
+    assertions_source: ["EC-H2S11-077"]
+
+  - id: "REL-H2S11-029"
+    type: dualité_structurelle
+    from: question_1_10_vs_5
+    to: question_2_za_asymetrique
+    nature: "3 questions liees : asymetrie nombre + asymetrie ZA + ibur seul ZA"
+    assertions_source: ["EC-H2S11-083", "EC-H2S11-084", "EC-H2S11-085"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-013"
+    nom: "Principe Ontologique de la Chute (Kelipot Necessaires pour Moralite)"
+    source_assertions: ["EC-H2S11-079", "EC-H2S11-080", "EC-H2S11-081"]
+    formalisation: |
+      ARCHITECTURE ONTOLOGIQUE FONDAMENTALE :
+      Question : pourquoi les 10 nekudot ne sortent-elles pas DEJA en TIKKUN ?
+      Reponse : la TAKHLIT (but final) etait de CREER les KELIPOT.
+      KELIPOT necessaires pour :
+        SAKHAR TOV aux TZADDIKIM (recompense des justes)
+        ONESH aux RESHA'IM (punition des mechants)
+        Tout le SYSTEME MORAL en aval (creation de l'humanite).
+      MECANISME :
+        Sortie BILTI TIKKUN → Shevirah → kelim brisent
+        Shevirah = TAHARAH (purification)
+        ZUHAMAH/SIGIM separes du saint → deviennent KELIPOT/TUMOT
+        Kedushah residuelle elevee par Tikkun
+      → Pattern : la CHUTE est ONTOLOGIQUEMENT NECESSAIRE pour la MORALITE.
+      → Architecture : crise = purification + creation des polarites.
+    applications_ia:
+      - "Architecture cosmologique : chute necessaire pour systeme moral"
+      - "[PLANNED] sitra_achra/ + tikkun/ : implementer le mecanisme cause/effet"
+      - "Pattern : creation de polarites (saint/profane) requiert separation par crise"
+      - "Diagnostic ontologique : la chute n'est PAS un accident — elle est planifiee"
+      - "Pattern : reward/punishment system requires existence of evil"
+    questions_ouvertes:
+      - "Y a-t-il un systeme moral possible sans kelipot ?"
+      - "Le 'plan' divin est-il deterministe ou probabiliste ?"
+      - "Comment concilier liberte humaine avec necessite ontologique de la chute ?"

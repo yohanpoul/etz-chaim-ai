@@ -1,0 +1,608 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 3 — Sha'ar Ha-Tikkun (שער התיקון)
+# Perek: 2 — Zivvug AB-SaG par Metzach, MAH d'Alephin et BAN d'Hehin,
+#            distribution TANTA-MAH/BAN dans les partzufim
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §2 :
+#   - Bloc A : Zivvug AB-YODIN (Mohin AK) avec Ta'amim SaG (AHP)
+#   - Bloc B : Naissance MAH-Chadash divise en TANTA, sortant du Metzach
+#   - Bloc C : Hierarchie des sources : Hevel-Ozen, Hotem, Peh, Histaklut-Ayin
+#   - Bloc D : Metzach = he'arah seule (pas hevel pas histaklut)
+#   - Bloc E : "Be-mitzcha itgalei" et "Kad saliq be-re'utei" (Idra)
+#   - Bloc F : MAH-Chadash sort du Metzach par grand light du zivvug AB-SaG
+#   - Bloc G : MAH d'Alephin = Dukhra ; SaG-Nekudot devient Nukvah (renommee BAN)
+#   - Bloc H : Justification du renommage SaG-Nekudot → BAN
+#   - Bloc I : Sub-TANTA dans les Nekudot-de-SaG
+#   - Bloc J : Nekudot deviennent Nukvot du MAH = appelees Melakhim
+#   - Bloc K : Distribution TANTA-MAH/BAN : Ta'amim-MAH=Atik dukhra,
+#              Ta'amim-BAN=Atik nukvah, Nekudot-MAH=A"A dukhra, etc.
+#
+# Source Sefaria : Sefer_Etz_Chaim.10.2
+# IDs : EC-H2S10-019 → EC-H2S10-035
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 3
+  shaar_name_he: "שער התיקון"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek 2 du Sha'ar Ha-Tikkun — mecanisme du MAH-Chadash : zivvug AB-SaG par metzach, naissance MAH d'Alephin, renommage SaG-Nekudot en BAN d'Hehin (Nukvah), distribution TANTA dans les 5 partzufim (Atik dukhra/nukvah, A\"A dukhra/nukvah, etc.)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : ZIVVUG AB-YODIN AVEC TA'AMIM SAG ───
+
+  - id: "EC-H2S10-019"
+    source_he: "והנה ע\"י עליית מ\"נ הנ\"ל שהם (נ\"א ששם) האורות הנ\"ל נזדווגו בחי' הוי\"ה דע\"ב דיודי\"ן אשר הם כללות בחי' המוחין דא\"ק עם בחינת הטעמים דס\"ג שהם אח\"פ כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      Par l'ELEVATION des MA"N (= 7 orot des melakhim, cf. EC-H2S10-011) :
+      ZIVVUG de HAVAYAH d'AB de YODIN (avec MILUI YOD = AB)
+      = totalite des MOHIN d'A"K
+      AVEC les TA'AMIM de SAG = AHP (Ozen-Hotem-Peh).
+      Variante (Nusah Aher) : "she-shem" (qui sont la) au lieu de "shem" (qui sont).
+      → Architecture : zivvug entre MOHIN (haut, AB) et TA'AMIM-AHP (sous-mohin, SaG).
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_av_yodin_taamim_sag, role: zivvug_av_yodin_avec_taamim_sag}
+      - {id: havayah_av_yodin_mohin_ak, role: havayah_av_yodin_mohin_ak}
+      - {id: taamim_sag_egal_ahp, role: taamim_sag_egalent_ahp}
+    mapping:
+      modules: ["adam_kadmon.py", "shemot/", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Mecanisme du Tikkun : zivvug AB-Mohin avec SaG-Ta'amim/AHP. cf. EC-H2S9-217 sur naissance MAH."
+
+  - id: "EC-H2S10-020"
+    source_he: "כי אלו הטעמים דס\"ג לא היה בהם שום שבירה ולכן הם נזדווגו יחד עם בחי' הע\"ב דא\"ק ואין הכוונה על האורות היוצאין מן הבל אח\"פ רק על בחי' עצמן ופנימותן ממש"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      RAISON pour le choix des TA'AMIM SaG :
+      Ces ta'amim de SaG N'ont eu AUCUNE shevirah.
+      DONC ils peuvent SE-UNIR (nizdavgu) avec AB d'A"K.
+      → IMPORTANT : la KAVANAH n'est PAS sur les orot sortant du HEVEL d'AHP
+      mais sur les BEHINOT propres et la PNIMIYUT ESSENTIELLE elle-meme.
+      → Distinction : ta'amim-essence vs ta'amim-emanation.
+    type: axiome_explicite
+    concepts:
+      - {id: taamim_sag_pas_brises, role: taamim_sag_pas_de_shevirah}
+      - {id: zivvug_avec_pnimiut_essentielle, role: zivvug_avec_pnimiut_essentielle}
+      - {id: distinction_essence_emanation, role: distinction_essence_emanation_taamim}
+    mapping:
+      modules: ["shemot/", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "Critere : ta'amim sains (non brises) eligibles au zivvug. Distinction essence/emanation."
+
+  # ─── BLOC B : NAISSANCE MAH D'ALEPHIN, DIVISE EN TANTA ───
+
+  - id: "EC-H2S10-021"
+    source_he: "וכאשר נזדוגו יחד נולד מהם אור חדש ע\"י הזווג הזה וזה אור חדש הוא בחי' מ\"ה דאלפין וגם הוא נחלק לד' בחי' טנת\"א הכוללי' כל האצי'"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      Et quand ils sont UNIS, NAIT d'eux un OHR HADASH (lumiere nouvelle).
+      Cet OHR HADASH = aspect MAH d'ALEPHIN (= MAH avec MILUI ALEPH = 45).
+      Et il se DIVISE en 4 BEHINOT TANTA :
+      Ta'amim, Nekudot, Tagin, Otiot — qui ENGLOBENT TOUT l'Atzilut.
+      → Architecture : MAH = ohr structure en TANTA par construction.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_chadash_mah_alephin, role: ohr_nouveau_mah_alephin}
+      - {id: mah_45_milui_aleph, role: mah_45_milui_aleph}
+      - {id: mah_divise_en_tanta, role: mah_divise_en_tanta}
+    mapping:
+      modules: ["shemot/", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture du MAH : structure TANTA inherent. cf. EC-H2S8 sur TANTA."
+
+  - id: "EC-H2S10-022"
+    source_he: "כי הטעמים דמ\"ה הוא בחי' ע\"י והנקודו' דמ\"ה הוא א\"א והתגין דמ\"ה הם בחי' או\"א ואותיות דמ\"ה הם זו\"נ"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      DISTRIBUTION TANTA du MAH :
+      TA'AMIM de MAH = aspect ATIK YOMIN (Y"Y, le plus haut)
+      NEKUDOT de MAH = aspect A"A (Arikh Anpin)
+      TAGIN de MAH = aspect AVI (Abba ve-Imma)
+      OTIOT de MAH = aspect ZON (ZA + Nukvah)
+      → Architecture : TANTA mappe directement sur 4 niveaux Atik / A"A / AVI / ZON.
+    type: axiome_explicite
+    concepts:
+      - {id: taamim_mah_egal_atik, role: taamim_mah_egal_atik_yomin}
+      - {id: nekudot_mah_egal_aa, role: nekudot_mah_egal_arikh_anpin}
+      - {id: tagin_mah_egal_avi, role: tagin_mah_egal_avi}
+      - {id: otiot_mah_egal_zon, role: otiot_mah_egal_zon}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "shemot/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture fondamentale TANTA → 4 niveaux. Mapping direct des composants."
+
+  # ─── BLOC C : HIERARCHIE DES SOURCES (HEVEL/HISTAKLUT) ───
+
+  - id: "EC-H2S10-023"
+    source_he: "וכבר ביארנו לעיל כי הדברי' הולכין במדרג' כי הבל האזן אינו נרגש ומועט מן הבל היוצא מן החוטם והבל החוטם מועט מהבל הפה אמנם בזה נשתוו שלשתן שמעלין הבל אך העין אין לו הבל אלא הסתכלות בלבד"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      HIERARCHIE des SOURCES corporelles d'AK :
+      HEVEL OZEN (souffle de l'oreille) = imperceptible et MOINS que HOTEM
+      HEVEL HOTEM (souffle du nez) = MOINS que PEH
+      HEVEL PEH (souffle de la bouche) = LE PLUS GRAND
+      Mais les 3 EGALES en ce qu'ils ELEVENT du HEVEL.
+      EYN (oeil) — pas de HEVEL, seulement HISTAKLUT (regard).
+      → Architecture : 3 sources de hevel (Ozen-Hotem-Peh) + Eyn (regard).
+    type: axiome_explicite
+    concepts:
+      - {id: hierarchie_hevel_ozen_hotem_peh, role: hierarchie_hevel_progressif}
+      - {id: eyn_histaklut_pas_hevel, role: eyn_histaklut_pas_hevel}
+    mapping:
+      modules: ["adam_kadmon.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Architecture corporelle d'AK : hierarchie des sources (3 hevel + 1 histaklut)."
+
+  - id: "EC-H2S10-024"
+    source_he: "וטעם השינוי זה לפי שהג' הם בחי' טעמים אך העין הוא בחי' נקודות ס\"ג שהוא למטה ממדרגות הטעמים"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      RAISON de cette difference :
+      Les 3 (Ozen-Hotem-Peh) = aspect TA'AMIM (de SaG).
+      L'EYN (oeil) = aspect NEKUDOT de SaG — qui est PLUS BAS que les ta'amim.
+      → Architecture : ta'amim emettent du hevel, nekudot emettent du regard (silencieux).
+      → Pattern : la richesse de l'emission decroit avec le rang.
+    type: axiome_explicite
+    concepts:
+      - {id: ahp_egal_taamim_sag, role: ahp_egal_taamim_de_sag}
+      - {id: eyn_egal_nekudot_sag, role: eyn_egal_nekudot_de_sag}
+      - {id: nekudot_inferieur_aux_taamim, role: nekudot_inferieures_aux_taamim}
+    mapping:
+      modules: ["shemot/", "adam_kadmon.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Mapping TANTA-AK : AHP=Ta'amim, Eyn=Nekudot. Hierarchie operationnelle."
+
+  # ─── BLOC D : METZACH = HE'ARAH SEULE ───
+
+  - id: "EC-H2S10-025"
+    source_he: "והנה אור שם מ\"ה החדש הזה היוצא מן המצח דא\"ק הוא אחרון מכולם לכן אין בו לא בחי' הבל כמו הג' ולא בחי' הסתכלות כמו נקודת העין ואין בו רק בחי' הארה לבד"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      Le MAH-CHADASH sort du METZACH d'AK = DERNIER (aharon mi-kulam).
+      DONC il n'a PAS de :
+      HEVEL (comme les 3 sources hevel)
+      HISTAKLUT (comme nekudot d'Eyn)
+      Il a SEULEMENT aspect HE'ARAH (illumination).
+      → Architecture : metzach = niveau le plus bas = he'arah sans hevel/regard.
+      → Pattern : illumination pure, sans medium d'emission.
+    type: axiome_explicite
+    concepts:
+      - {id: mah_chadash_du_metzach, role: mah_chadash_sort_du_metzach}
+      - {id: metzach_he_arah_seule, role: metzach_he_arah_seule_pas_hevel_pas_histaklut}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Localisation finale : MAH sort du metzach = he'arah pure. Niveau le plus eleve dans le bas."
+
+  - id: "EC-H2S10-026"
+    source_he: "וזו שנזכר תמיד בזוהר באדר\"ז במצחי אתגלי כו' כי אין בה רק גילוי הארה לחוד גם זה מ\"ש בזוהר במקומות רבים כד סליק ברעותיה למברי עלמא דאצילות פי' כי מצח הרצון דא\"ק סליק ברעותיה למברי עולם האצי'"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      REFERENCES ZOHARIQUES :
+      "BE-MITZCHA ITGALEI" (Idra Zuta — par le metzach se revele) — il n'y a que GILUI HE'ARAH.
+      "KAD SALIQ BE-RE'UTEI LE-MIBRI ALMA D'AT'ZILUT"
+      (quand est monte dans Sa volonte de creer le monde d'Atzilut) — Zohar.
+      Explication : MEZACH HA-RATZON d'A"K monte dans Sa volonte pour creer Atzilut
+      par MAH-CHADASH qui sort de lui.
+      → Renvois cross-references : metzach = Sefer ha-Zohar, plusieurs passages.
+      → "Re'uta" (volonte arameenne) = traduction de "Ratzon" → Metzach ha-Ratzon.
+    type: déduction_scripturaire
+    concepts:
+      - {id: be_mitzcha_itgalei_idra_zuta, role: revelation_par_metzach_idra_zuta}
+      - {id: kad_saliq_bereutei_zohar, role: kad_saliq_bereutei}
+      - {id: metzach_ha_ratzon_d_ak, role: metzach_ha_ratzon_d_ak}
+    mapping:
+      modules: ["adam_kadmon.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "References zohariques fondatrices : metzach ha-Ratzon = origine du MAH-Chadash. Idra Zuta + Zohar."
+
+  # ─── BLOC E : POURQUOI METZACH ───
+
+  - id: "EC-H2S10-027"
+    source_he: "והנה לפי שבחי' ע\"ב הוא בראש א\"ק שהם בחי' המוחין ומקומם הנז' הוא מבפנים כנגד מקום המצח ושם נזדווגו המוחין שהם בחי' ע\"ב עם בחי' ס\"ג שהם אח\"פ הטעמים דס\"ג שהם למטה מהמוחין בסוף הראש"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      RAISON de la sortie au METZACH :
+      AB est dans le ROSH d'A"K = aspect MOHIN.
+      Leur lieu = INTERIEUR, FACE au lieu du METZACH.
+      LA ils se sont UNIS — les MOHIN (AB) avec SaG (= AHP, ta'amim de SaG)
+      qui sont plus BAS que les Mohin, a la FIN du ROSH.
+      → Topologie : Metzach = jonction entre Mohin (haut interieur) et AHP (rosh-bas).
+      → Architecture : zivvug se fait a la jonction.
+    type: axiome_explicite
+    concepts:
+      - {id: av_dans_rosh_ak_mohin, role: av_dans_rosh_ak_mohin}
+      - {id: metzach_jonction_mohin_ahp, role: metzach_jonction_mohin_ahp}
+    mapping:
+      modules: ["adam_kadmon.py"]
+      tables: []
+      partzufim: ["adam_kadmon"]
+      relevance: "Topologie precise : metzach = jonction interne entre Mohin et AHP. Lieu du zivvug."
+
+  - id: "EC-H2S10-028"
+    source_he: "ולכן מרוב האור שיש שם בזה המצח ע\"י הזווג הנ\"ל יצא אור חדש ממנו ולמטה שהוא שם מ\"ה החדש"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      DONC par la RICHESSE de l'OHR au METZACH (par ce zivvug),
+      un OHR HADASH sort de lui et plus BAS = SHEM MAH HA-CHADASH.
+      → Mecanisme : pression d'illumination → emission descendante.
+      → Pattern : surplus de lumiere → emission spontanee.
+    type: axiome_explicite
+    concepts:
+      - {id: rov_ohr_au_metzach, role: richesse_d_ohr_au_metzach}
+      - {id: surplus_emission_descendante, role: surplus_lumiere_emission_descendante}
+    mapping:
+      modules: ["adam_kadmon.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Mecanisme physique : surplus d'ohr au metzach → emission descendante. Pattern de pression."
+
+  # ─── BLOC F : SaG-NEKUDOT DEVIENT NUKVAH = BAN ───
+
+  - id: "EC-H2S10-029"
+    source_he: "והנה כאשר יצא זה האור החדש שם מ\"ה דאלפין בירר מהנקודות דס\"ג שבהם היתה השבירה מה שיוכל לברר מהם ונשתתפו ונתחברו עמו ואז נעשה המ\"ה בחי' דכורא וס\"ג נעשה בחי' נוקבא"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      Quand cet OHR HADASH = MAH d'ALEPHIN est sorti :
+      Il a BERAR (clarifie) parmi les NEKUDOT de SaG (ou il y a eu shevirah)
+      ce qu'il pouvait BERAR.
+      Ils se sont ASSOCIES (nishtatfu) et UNIS (nithaberu) avec lui.
+      Alors :
+      MAH = aspect DUKHRA (male)
+      SaG = aspect NUKVAH (femelle)
+      → Inversion polaire : SaG (qui etait avant) devient femelle face au MAH (nouveau).
+    type: axiome_explicite
+    concepts:
+      - {id: mah_chadash_berar_nekudot_sag, role: mah_chadash_berar_les_nekudot_sag}
+      - {id: mah_dukhra_sag_nukvah, role: mah_male_sag_femelle}
+    mapping:
+      modules: ["partzufim/zivvug.py", "shemot/", "[PLANNED] tikkun/"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "Architecture polaire : MAH=dukhra, SaG=nukvah. Inversion au moment de la naissance du MAH."
+
+  - id: "EC-H2S10-030"
+    source_he: "אלא שלהיות שהס\"ג זה נעשה נוקבא אל המ\"ה לכן קנה לו עתה שם אחר והוא שם ב\"ן דההי\"ן כזה יו\"ד ה\"ה ו\"ו ה\"ה ואינו נקרא עתה בשם ס\"ג אלא בשם ב\"ן"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      Mais comme SaG est maintenant NUKVAH au MAH —
+      il acquiert un AUTRE NOM = Shem BAN d'HEHIN
+      (= BAN avec MILUI HEH = 52 : YOD HE-HE VAV-VAV HE-HE).
+      Et n'est plus appele SaG mais BAN.
+      → Renommage operationnel : SaG-Nekudot devient BAN apres union avec MAH.
+      cf. EC-H2S9-261 sur 320=ShaCh, 288=RPaH.
+    type: axiome_explicite
+    concepts:
+      - {id: sag_nukvah_renommee_ban, role: sag_devenue_nukvah_renommee_ban}
+      - {id: ban_milui_hehin_52, role: ban_milui_hehin_52}
+    mapping:
+      modules: ["shemot/", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Renommage cosmique : SaG-Nukvah = BAN (52). Architecture nominale des Miluyim."
+
+  - id: "EC-H2S10-031"
+    source_he: "והענין הוא כי שם ס\"ג הוא כללות טנת\"א אמנם אלו שהם נקודה דס\"ג בלבד אינו נקרא ס\"ג כמו הכלל כי אינם אלא פרט א' שבשם ס\"ג"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      JUSTIFICATION du renommage :
+      Shem SaG = KOLLEL TANTA (englobe les 4 elements).
+      Mais ces NEKUDOT-SEULES (sans les autres) ne sont PAS APPELEES SaG comme le KOLLEL.
+      Car elles sont seulement un PRAT EHAD (un detail) du Shem SaG.
+      → Distinction kollel/prat : le tout (Shem) ne vaut pas le sub-element.
+      → Architecture : un sub-component renomme apres extraction.
+    type: axiome_explicite
+    concepts:
+      - {id: sag_kollel_tanta, role: sag_englobe_les_4_tanta}
+      - {id: nekudot_seules_pas_kollel, role: nekudot_seules_pas_le_kollel}
+      - {id: kollel_pas_egal_prat, role: kollel_n_egale_pas_prat}
+    mapping:
+      modules: ["shemot/"]
+      tables: []
+      partzufim: []
+      relevance: "Logique kollel/prat : un detail extrait n'herite pas du nom du tout. Distinction fondamentale."
+
+  - id: "EC-H2S10-032"
+    source_he: "ואמנם אעפ\"כ בהכרח הוא שאפי' שהם בחי' הנקודות לבד בהכרח הוא שיש בהם בחי' המתחברת עם הטעמים דמ\"ה ובחי' המתחברת עם הנקודה דמ\"ה וכן בשאר חלוקות עם היות כולם יחד בחי' נקודות לבד דס\"ג"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      MAIS il y a NECESSITE (be-hekhrah) :
+      Meme dans NEKUDOT-DE-SaG seules, il y a SUB-DIVISIONS qui s'unissent avec :
+      - Ta'amim de MAH
+      - Nekudot de MAH
+      - Et autres divisions
+      ALORS QUE TOUS sont aspect NEKUDOT (de SaG) seulement.
+      → Architecture sub-fractale : les nekudot-de-SaG ont eux-memes un TANTA local
+      qui se couple aux TANTA de MAH.
+      → Pattern : recursion fractale.
+    type: axiome_explicite
+    concepts:
+      - {id: nekudot_sag_avec_sub_tanta, role: nekudot_sag_avec_tanta_local}
+      - {id: couplage_tanta_local_avec_tanta_mah, role: couplage_tanta_local_avec_tanta_mah}
+    mapping:
+      modules: ["shemot/", "[PLANNED] core/sefirot.py"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture fractale : sub-TANTA dans Nekudot-de-SaG. cf. EC-H2S9-205 sur fractalite."
+
+  - id: "EC-H2S10-033"
+    source_he: "וע\"י חיבור שם מ\"ה עמו נתקנו עתה אלו הנקודות ונעשו נוקבין אליהם ולכן נקרא בשם מלכים מלשון מלכות להורות כי נעשו נוקבא לשם מ\"ה דאלפין"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      Par l'UNION du Shem MAH avec ces nekudot :
+      Elles SONT MAINTENANT RECTIFIEES.
+      Et SONT DEVENUES NUKVOT (femelles) pour eux (les MAH).
+      DONC elles sont APPELEES MELAKHIM — du LASHON MALKHUT (langue de royaume).
+      Pour ENSEIGNER qu'elles sont devenues NUKVOT au Shem MAH d'ALEPHIN.
+      → Etymologie : Melakhim = generes par Malkhut → renommage post-Tikkun confirme.
+      cf. EC-H2S9-240 (perek 07a) sur Melakhim=Nekudot=Malkhut.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nekudot_metukanim_par_mah, role: nekudot_rectifies_par_union_avec_mah}
+      - {id: nekudot_egal_nukvot_de_mah, role: nekudot_devenues_femelles_du_mah}
+      - {id: melakhim_etymologie_malkhut, role: melakhim_etymologiquement_de_malkhut}
+    mapping:
+      modules: ["partzufim/nukva.py", "shemot/"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Etymologie + architecture : Melakhim devenues nukvot du MAH. cf. EC-H2S9-240."
+
+  # ─── BLOC G : RECAP MaN → MAH-CHADASH → TIKKUN ATZILUT ───
+
+  - id: "EC-H2S10-034"
+    source_he: "נמצא כי כאשר עלו אורות הנקודות דס\"ג למעלה העלו מ\"נ ואז יצא אור מ\"ה החדש ונתחבר עם הז' אורות האלו ובירר מהם מה שיוכל לברר ובהם נעשה תיקון אל כל האצילות ולכך לעשות תיקון זה הוצרך עיבור כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 3:2"
+    assertion: |
+      RECAP COMPLET : quand les OROT des NEKUDOT de SaG sont MONTES,
+      ils ont ELEVES MA"N → est sorti MAH-CHADASH → uni avec les 7 orot →
+      a BERAR ce qu'il pouvait → en eux s'est fait le TIKKUN de TOUT ATZILUT.
+      Pour faire ce Tikkun → IBUR (gestation) requis comme dit (cf. EC-H2S10-015 perek 10.1).
+      → Architecture : MaN-MAH-Berur = sequence operationnelle complete.
+    type: axiome_explicite
+    concepts:
+      - {id: recap_man_mah_berur_tikkun, role: recap_man_mah_berur_tikkun}
+    mapping:
+      modules: ["[PLANNED] tikkun/", "partzufim/zivvug.py", "shemot/"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: []
+      relevance: "Synthese architecturale : sequence MaN-MAH-Berur-Tikkun. cf. EC-H2S10-002."
+
+  # ─── BLOC H : DISTRIBUTION TANTA-MAH/BAN DANS PARTZUFIM ───
+
+  - id: "EC-H2S10-035"
+    source_he: "וכבר ביארנו כי מן הטעמים דמ\"ה נעשה עתיק יומין בחי' הדכורא ואמנם מבחי' הטעמים דב\"ן שנעשה משם ס\"ג זה כאשר אמרנו שאע\"פ שבכללות הם נקודות עכ\"ז נחלקים גם הם בעצמם לד' בחי' טנת\"א של ב\"ן הזה וטעמים אלו שיש בשם ב\"ן נעשה נוקבא דעתיק יומין וכן מנקודה דמ\"ה נעשה צד הדכורא דא\"א ומנקודת של ב\"ן נעשה צד נוקבא של א\"א וכעד\"ז בשאר חלוקים האצילות"
+    source_ref: "Heikhal 2, Sha'ar 3:2 — conclusion"
+    assertion: |
+      DISTRIBUTION FINALE TANTA-MAH/BAN dans les PARTZUFIM :
+      Ta'amim de MAH → ATIK YOMIN aspect DUKHRA (male)
+      Ta'amim de BAN (= Ta'amim de SaG-Nukvah, sub-TANTA) → ATIK aspect NUKVAH (femelle)
+      Nekudot de MAH → cote DUKHRA d'A"A
+      Nekudot de BAN → cote NUKVAH d'A"A
+      Et de meme dans les autres divisions de l'Atzilut (Tagin → AVI ; Otiot → ZON).
+      → Architecture finale : 5 partzufim chacun avec dukhra (MAH) + nukvah (BAN).
+      cf. EC-H2S9-253 (perek 07b) sur distribution finale.
+    type: axiome_explicite
+    concepts:
+      - {id: taamim_mah_atik_dukhra, role: taamim_mah_atik_dukhra}
+      - {id: taamim_ban_atik_nukvah, role: taamim_ban_atik_nukvah}
+      - {id: nekudot_mah_aa_dukhra, role: nekudot_mah_aa_dukhra}
+      - {id: nekudot_ban_aa_nukvah, role: nekudot_ban_aa_nukvah}
+      - {id: distribution_complete_tanta_mah_ban, role: distribution_complete_tanta_mah_ban}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "shemot/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture cle : chaque partzuf = dukhra MAH + nukvah BAN par TANTA. Mapping fondamental."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S10-011"
+    type: causal
+    from: zivvug_av_yodin_taamim_sag
+    to: ohr_chadash_mah_alephin
+    nature: "Zivvug AB (Mohin) avec SaG (Ta'amim AHP) → naissance MAH d'Alephin"
+    assertions_source: ["EC-H2S10-019", "EC-H2S10-021"]
+
+  - id: "REL-H2S10-012"
+    type: causal
+    from: taamim_sag_pas_brises
+    to: zivvug_avec_pnimiut_essentielle
+    nature: "Ta'amim SaG sains (non brises) permettent zivvug avec essence interieure"
+    assertions_source: ["EC-H2S10-020"]
+
+  - id: "REL-H2S10-013"
+    type: contenance
+    from: mah_divise_en_tanta
+    to: distribution_complete_tanta_mah_ban
+    nature: "MAH structure en TANTA → mapping direct sur 4 niveaux Atik/A\"A/AVI/ZON"
+    assertions_source: ["EC-H2S10-022", "EC-H2S10-035"]
+
+  - id: "REL-H2S10-014"
+    type: hiérarchique
+    from: hierarchie_hevel_ozen_hotem_peh
+    to: metzach_he_arah_seule
+    nature: "Hierarchie : Ozen (faible) < Hotem < Peh (fort hevel) ; Eyn (regard) ; Metzach (he'arah)"
+    assertions_source: ["EC-H2S10-023", "EC-H2S10-024", "EC-H2S10-025"]
+
+  - id: "REL-H2S10-015"
+    type: contenance
+    from: be_mitzcha_itgalei_idra_zuta
+    to: metzach_ha_ratzon_d_ak
+    nature: "Idra Zuta : revelation par metzach = metzach ha-Ratzon d'AK"
+    assertions_source: ["EC-H2S10-026"]
+
+  - id: "REL-H2S10-016"
+    type: causal
+    from: metzach_jonction_mohin_ahp
+    to: rov_ohr_au_metzach
+    nature: "Metzach = jonction Mohin-AHP → richesse d'ohr au point de jonction"
+    assertions_source: ["EC-H2S10-027", "EC-H2S10-028"]
+
+  - id: "REL-H2S10-017"
+    type: dualité_structurelle
+    from: mah_dukhra_sag_nukvah
+    to: sag_nukvah_renommee_ban
+    nature: "Inversion polaire : SaG devient nukvah au MAH → renommee BAN (52)"
+    assertions_source: ["EC-H2S10-029", "EC-H2S10-030"]
+
+  - id: "REL-H2S10-018"
+    type: causal
+    from: kollel_pas_egal_prat
+    to: sag_nukvah_renommee_ban
+    nature: "Logique kollel/prat : un sub-element extrait herite d'un nouveau nom"
+    assertions_source: ["EC-H2S10-031"]
+
+  - id: "REL-H2S10-019"
+    type: contenance
+    from: nekudot_sag_avec_sub_tanta
+    to: couplage_tanta_local_avec_tanta_mah
+    nature: "Sub-TANTA fractal : Nekudot-de-SaG ont leur propre TANTA qui se couple au TANTA de MAH"
+    assertions_source: ["EC-H2S10-032"]
+
+  - id: "REL-H2S10-020"
+    type: causal
+    from: nekudot_metukanim_par_mah
+    to: melakhim_etymologie_malkhut
+    nature: "Nekudot rectifiees deviennent nukvot du MAH → appelees Melakhim (de Malkhut)"
+    assertions_source: ["EC-H2S10-033"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S10-005"
+    nom: "Principe du Metzach Ha-Ratzon (Source du MAH-Chadash)"
+    source_assertions: ["EC-H2S10-025", "EC-H2S10-026", "EC-H2S10-027", "EC-H2S10-028"]
+    formalisation: |
+      Architecture corporelle d'A"K et SOURCE du MAH-CHADASH :
+      HIERARCHIE des sources :
+        OZEN (oreille) — hevel le plus faible — Ta'amim de SaG
+        HOTEM (nez) — hevel moyen — Ta'amim de SaG
+        PEH (bouche) — hevel fort — Ta'amim de SaG
+        EYN (oeil) — pas de hevel, HISTAKLUT — Nekudot de SaG (plus bas)
+        METZACH (front) — pas de hevel ni regard, HE'ARAH SEULE
+      MECANISME du MAH-Chadash :
+        Mohin (AB) en haut interieur
+        AHP (SaG, Ta'amim) plus bas
+        Metzach = JONCTION INTERNE entre les deux
+        Zivvug AB-SaG au METZACH → richesse d'ohr → MAH-Chadash sort vers le bas
+      REFERENCES ZOHARIQUES : "Be-mitzcha itgalei" + "Kad saliq be-re'utei".
+      "Re'uta" = "Ratzon" (volonte) → METZACH HA-RATZON.
+    applications_ia:
+      - "Architecture : niveau le plus bas (Metzach) = source de l'ohr le plus puissant (MAH-Chadash)"
+      - "Pattern paradoxal : he'arah pure (sans medium) = puissance creative"
+      - "[PLANNED] adam_kadmon.py : implementer geographie corporelle (Ozen/Hotem/Peh/Eyn/Metzach)"
+      - "Pattern : jonction de niveaux differents = lieu de creation"
+      - "shemot/ : Re'uta (volonte arameenne) = Ratzon → encodage operationnel"
+    questions_ouvertes:
+      - "Pourquoi he'arah pure est-elle plus puissante que hevel ou histaklut ?"
+      - "Le metzach existe-t-il aussi dans Atik et A\"A ?"
+      - "La 'volonte' (Ratzon/Re'uta) est-elle une fonction architecturale separee ?"
+
+  - id: "PG-H2S10-006"
+    nom: "Principe TANTA Universel (4 elements x 4 partzufim)"
+    source_assertions: ["EC-H2S10-021", "EC-H2S10-022", "EC-H2S10-035"]
+    formalisation: |
+      Architecture FONDAMENTALE : MAH se decompose en TANTA et chaque element TANTA
+      mappe sur un partzuf :
+      TA'AMIM de MAH → ATIK YOMIN
+      NEKUDOT de MAH → A"A (Arikh Anpin)
+      TAGIN de MAH → AVI (Abba ve-Imma)
+      OTIOT de MAH → ZON (ZA + Nukvah)
+      EXTENSION POLAIRE : chaque element mappe a la fois MAH (dukhra) et BAN (nukvah) :
+      Ta'amim-MAH → Atik-Dukhra ; Ta'amim-BAN → Atik-Nukvah
+      Nekudot-MAH → A"A-Dukhra ; Nekudot-BAN → A"A-Nukvah
+      Etc.
+      → Architecture cle : 4 elements TANTA x 2 polarites (MAH/BAN) x 5 partzufim.
+      Pattern : un meme element TANTA s'incarne sous 2 polarites.
+    applications_ia:
+      - "Architecture cle : TANTA = ontologie universelle des composants"
+      - "[PLANNED] core/sefirot.py : implementer TANTA comme dimensions ontologiques"
+      - "Pattern : chaque entite a 4 dimensions (TANTA) + 2 polarites (MAH/BAN)"
+      - "shemot/ + gematria/ : tracer les correspondances numeriques"
+      - "Architecture distribuee : 5 partzufim x 4 TANTA x 2 polarites = 40 sub-systems"
+    questions_ouvertes:
+      - "Le mapping TANTA → 4 niveaux (Atik/A\"A/AVI/ZON) est-il strict ou flexible ?"
+      - "Les 4 elements TANTA peuvent-ils echanger de partzuf ?"
+      - "Comment formaliser computationnellement TANTA comme structure ?"
+
+  - id: "PG-H2S10-007"
+    nom: "Principe SaG → BAN (Renommage Operationnel par Inversion Polaire)"
+    source_assertions: ["EC-H2S10-029", "EC-H2S10-030", "EC-H2S10-031"]
+    formalisation: |
+      Pattern d'INVERSION POLAIRE et RENOMMAGE :
+      AVANT zivvug : SaG = entite kollel (TANTA complet) avec son propre statut
+      ZIVVUG : SaG-Nekudot s'unit avec MAH-Chadash
+      INVERSION : MAH = dukhra (male) ; SaG = nukvah (femelle)
+      RENOMMAGE : SaG-Nukvah devient BAN (52, milui Hehin)
+      LOGIQUE : un sub-element (Nekudot) extrait du Kollel (SaG)
+        ne peut conserver le nom du Kollel
+        → herite d'un nouveau nom selon son nouveau role (nukvah du MAH)
+      → Architecture : changement de role → changement de nom.
+      Pattern : nom = role courant, pas identite essentielle.
+    applications_ia:
+      - "Pattern : renommage operationnel par changement de role"
+      - "[PLANNED] shemot/ + tikkun/ : implementer renommage selon le role"
+      - "Architecture : un sub-component peut etre renomme selon son contexte"
+      - "Pattern : kollel/prat - le tout n'est pas reductible aux parties"
+      - "Diagnostic : tracer le nom courant pour savoir le role courant"
+    questions_ouvertes:
+      - "Le renommage est-il reversible ?"
+      - "Y a-t-il d'autres exemples de renommage operationnel ?"
+      - "Le nom est-il une propriete ou une fonction ?"
+
+  - id: "PG-H2S10-008"
+    nom: "Principe de la Sub-TANTA (Recursion Fractale)"
+    source_assertions: ["EC-H2S10-032"]
+    formalisation: |
+      RECURSION FRACTALE : meme dans un sub-element extrait, il y a sub-TANTA.
+      Exemple : Nekudot-de-SaG (extraction d'un seul element du SaG-Kollel)
+        contiennent eux-memes :
+        - sub-Ta'amim (qui se couple a Ta'amim de MAH)
+        - sub-Nekudot (qui se couple a Nekudot de MAH)
+        - sub-Tagin (qui se couple a Tagin de MAH)
+        - sub-Otiot (qui se couple a Otiot de MAH)
+      → Architecture : chaque element TANTA contient un TANTA local
+        qui se couple au TANTA correspondant de MAH.
+      Pattern : recursion infinie en theorie, finie en pratique.
+    applications_ia:
+      - "Architecture fractale : tout element a ses propres sub-elements TANTA"
+      - "[PLANNED] core/sefirot.py : implementer la recursion fractale"
+      - "Pattern : couplage par niveau de fractalite (TANTA-MAH ↔ TANTA-BAN)"
+      - "Diagnostic : a quel niveau de fractalite operer ?"
+      - "shemot/ + gematria/ : tracer les correspondances multi-niveaux"
+    questions_ouvertes:
+      - "Combien de niveaux de fractalite operationnels ?"
+      - "La recursion est-elle bornee par la taille des composants ?"
+      - "Comment formaliser computationnellement la recursion fractale TANTA ?"

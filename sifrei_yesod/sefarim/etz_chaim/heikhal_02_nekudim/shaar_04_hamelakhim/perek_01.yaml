@@ -1,0 +1,568 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 1 — Akudim/Nekudim/Berudim, 7 Kelim morts en Beriah,
+#            Atik = Risha de-La fait des 3 GR
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §1 :
+#   - Bloc A : Titre — sha'ar 4 = Ha-Melakhim, 11 peraqim
+#   - Bloc B : Sequence Akudim/Nekudim/Berudim
+#   - Bloc C : Localisation des 10 nekudot pre-Tikkun
+#   - Bloc D : 325 (ShKH) nitzotzin = kelim des 7 inferieurs
+#   - Bloc E : Mort = descente en Beriah, seuls les 7 inferieurs morts
+#   - Bloc F : Idra Rabba — "ke-hanei zikim" (etincelles qui s'eteignent immediatement)
+#   - Bloc G : Atik = Risha de-La, fait des 3 GR
+#   - Bloc H : Distribution finale 10 nekudot — 3 GR=Atik, 7=A"A+AVI+ZON melange
+#   - Bloc I : Mecanisme apres Tikkun — descente des 7 nouveaux et expulsion lateral des 7 originaux
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.1
+# IDs : EC-H2S11-001 → EC-H2S11-018
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premier perek du Sha'ar Ha-Melakhim. Sequence Akudim/Nekudim/Berudim, 325 nitzotzin = kelim des 7 melakhim morts, Atik = Risha de-La compose des 3 GR, mecanisme d'expulsion lateral des 7 nekudot originelles."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : TITRE DU SHA'AR ───
+
+  - id: "EC-H2S11-001"
+    source_he: "השער הרביעי שער המלכים ויתחלק לאחד עשר פרקים"
+    source_ref: "Heikhal 2, Sha'ar 4 — titre"
+    assertion: |
+      OUVERTURE du SHA'AR HA-RAVI'I = SHA'AR HA-MELAKHIM (porte des Rois).
+      Il se DIVISE en 11 PERAKIM.
+      → Suit Sha'ar Ha-Tikkun (5 peraqim, H2S10).
+      → Theme : approfondissement des 7 melakhim morts.
+      cf. EC-H2S9-099 (perek 02b Shevirat) sur 4 melakhim avec pere.
+    type: axiome_explicite
+    concepts:
+      - {id: shaar_ha_melakhim, role: porte_des_rois}
+      - {id: 11_perakim_melakhim, role: onze_chapitres_des_melakhim}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Sha'ar dedie aux 7 Melakhim morts. cf. EC-H2S9 series."
+
+  - id: "EC-H2S11-002"
+    source_he: "ביאור מציאת המלכים שמתו מה ענינם וגם מציאות נקודות הראשונים שהיו קודם האצילות"
+    source_ref: "Heikhal 2, Sha'ar 4:1 — sous-titre"
+    assertion: |
+      OBJET du sha'ar : explication de la realite des MELAKHIM morts —
+      ce qu'ils sont — et la realite des NEKUDOT PREMIERES qui etaient AVANT l'Atzilut.
+      → 2 themes : (1) qui sont les melakhim morts ; (2) etat pre-Atzilut.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_themes_melakhim_nekudot_premieres, role: themes_melakhim_morts_et_nekudot_initiales}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Programme du sha'ar : 2 themes a explorer."
+
+  # ─── BLOC B : AKUDIM / NEKUDIM / BERUDIM ───
+
+  - id: "EC-H2S11-003"
+    source_he: "דע כי הלא קודם מציאת התיקון של האצילות יצאו י' נקודות וכולם כלולים בכח נקודה א' והוא מציאת הכתר באופן שכל י' היו בסוד הכתר נכללין בה"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      DA (sache) : avant la realite du TIKKUN d'AT'ZILUT,
+      sont sorties 10 NEKUDOT — TOUTES INCLUSES dans la KOACH d'UNE NEKUDAH.
+      C'est la realite du KETER : toutes les 10 etaient en SOD du KETER, NIKHLALIN BAH (incluses en lui).
+      → Etat 1 (AKUDIM) : 10 dans 1 = compression maximale dans le Keter.
+      → Architecture initiale : unite primordiale.
+    type: axiome_explicite
+    concepts:
+      - {id: 10_nekudot_dans_keter, role: 10_nekudot_dans_un_keter}
+      - {id: akudim_etat_initial, role: akudim_etat_unite_primordiale}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "olamot.py"]
+      tables: []
+      partzufim: ["arikh_anpin"]
+      relevance: "Etat initial pre-Tikkun : Akudim = 10 dans 1. Compression."
+
+  - id: "EC-H2S11-004"
+    source_he: "וז\"ס עקודים נקודים וברודים כי תחילת הכל היו עקודים מקושרים זב\"ז והכל בסוד הכתר אח\"כ יצאו כולם יחד מהנקודה ראשונה ואז נתהוו י' נקודות כל א' נקודה בפ\"ע וז\"ס נקודים"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      Sod de "AKUDIM, NEKUDIM, BERUDIM" (Genese 31) :
+      AKUDIM : tout INITIALEMENT — tous LIES (mekusharim) zeh be-zeh, TOUS dans le KETER.
+      Ensuite : tous SORTENT de la 1ere nekudah → 10 NEKUDOT chacune SEULE
+      = SOD NEKUDIM.
+      Donc Nekudim = 10 nekudot SEPAREES (pas connectees comme Akudim).
+      → Sequence : Akudim (lies) → Nekudim (separes) → Berudim (couples post-Tikkun).
+      cf. EC-H2S10-061 (perek 10.4 Tikkun) sur Berudim post-Tikkun.
+    type: déduction_scripturaire
+    concepts:
+      - {id: akudim_lies_dans_keter, role: akudim_lies_zeh_bezeh_dans_keter}
+      - {id: nekudim_10_separes, role: nekudim_dix_nekudot_separees}
+      - {id: berudim_post_tikkun_couples, role: berudim_couples_post_tikkun}
+    mapping:
+      modules: ["olamot.py", "shemot/"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Sequence cosmique : Akudim → Nekudim → Berudim. Reference Genese 31. cf. EC-H2S10-061."
+
+  - id: "EC-H2S11-005"
+    source_he: "באופן שלא היו מחוברים הי' נקודות רק בהיותן בכתר אך אח\"כ יצאו כולם כא' ונתהוו אלו י' נקודות כל א' בפ\"ע וכאשר נתקן רישא דעתיק אז נקרא ברודים"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      DETAIL : les 10 nekudot ne sont CONNECTEES (mehubarim) que dans le KETER.
+      Apres : sortent ENSEMBLE → 10 nekudot chacune POUR SOI (be-pnei atzmah).
+      Quand RISHA d'ATIK est rectifie → appele BERUDIM.
+      → Pivot : la rectification du Risha-d'Atik = transition Nekudim → Berudim.
+      → Architecture : Atik comme cle de la transition cosmique.
+    type: axiome_explicite
+    concepts:
+      - {id: risha_atik_pivot_berudim, role: risha_atik_pivot_du_berudim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Transition cosmique : Nekudim → Berudim par rectification Risha-Atik. Pivot architectural."
+
+  # ─── BLOC C : LOCALISATION ET TAILLE PRE-TIKKUN ───
+
+  - id: "EC-H2S11-006"
+    source_he: "ואמנם י' נקודות אלו היו זעג\"ז ואורך שיעור קומתן היה כמו עתה אורך אצילות ושיעור קומתו כי עד מקום אשר הגיעו אותן הנקודות עד שם היה בחי' [נ\"א הוא עתה] עולם האצילות ומשם ולמטה עולם הבריאה"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      Les 10 NEKUDOT etaient ZE-AL-GABEI-ZE (zegz, l'une sur l'autre).
+      Leur SHIUR KOMAH (mesure de stature) = comme MAINTENANT
+      = la longueur d'AT'ZILUT actuel (variante NA: "il est maintenant").
+      Jusqu'au lieu ou les nekudot atteignaient = OLAM HA-AT'ZILUT.
+      Plus bas = OLAM HA-BERIAH.
+      → Architecture : la frontiere Atzilut/Beriah est definie par les nekudot pre-Tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: 10_nekudot_zegz_taille_atzilut, role: 10_nekudot_zegz_taille_egale_atzilut}
+      - {id: frontiere_atzilut_beriah_par_nekudot, role: frontiere_atzilut_beriah_par_nekudot}
+    mapping:
+      modules: ["olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Architecture topologique : nekudot pre-Tikkun definissent la frontiere Atzilut/Beriah."
+
+  # ─── BLOC D : 325 (ShKH) NITZOTZIN ───
+
+  - id: "EC-H2S11-007"
+    source_he: "ודע כי י' נקודות אלו יצאו בסוד עצמות וכלים וסוד הכלי שלהם הם סוד שכ\"ה ניצוצין כנזכר פ' פנחס רנ\"ח שהם שרשי הדינין"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      Les 10 NEKUDOT sortent en aspect ATZMUT (essence) et KELIM (vaisseaux).
+      Les KELIM = SOD des 325 NITZOTZIN (= ShKH).
+      Reference ZOHAR PINHAS p.258 : "shoreshei ha-dinin" (racines des dinim).
+      → Architecture quantitative : 325 etincelles = kelim des nekudot.
+      cf. EC-H2S9-261 (perek 07b Shevirat) sur ShaCh = 320 et RPaH = 288.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 325_nitzotzin_egal_kelim, role: 325_etincelles_egal_kelim}
+      - {id: shoreshei_dinin, role: racines_des_dinim}
+      - {id: zohar_pinhas_258, role: zohar_pinhas_p258}
+    mapping:
+      modules: ["gematria/engine.py", "[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Equation : 325 nitzotzin = kelim des 10 nekudot = shoreshei dinim. cf. EC-H2S9-261."
+
+  - id: "EC-H2S11-008"
+    source_he: "ואמנם אין שכ\"ה ניצוצין אלו כלים רק אל ז' נקודות האחרונים והם סוד ז\"פ אדם שהם גימטריא שט\"ו ועם ה\"ג הרי ש\"ך ונודע שה\"ג הם כפולים לכן הם שכ\"ה אך הג' כלים הראשונים אינם מאלו הש\"ך ניצוצין"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      DETAIL : les 325 NITZOTZIN ne sont les kelim que des 7 NEKUDOT INFERIEURES.
+      Calcul gematria :
+      7 × ADAM (= 45) = 315 (ShTaW = ש"טו).
+      + 5 GEVUROT (5G = 5 lettres ELOHIM) = 320 (ShK).
+      Mais les 5G sont KEFULIM (doubles) → 325.
+      Les 3 KELIM PREMIERS (GR) ne sont PAS de ces 325 nitzotzin.
+      → Architecture quantitative : 325 = 7×45 + 5G doubles.
+      cf. EC-H2S9-258 (perek 07b) pour calcul HBTM.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 325_pour_7_inferieurs_seuls, role: 325_pour_7_inferieurs_seuls}
+      - {id: 7_x_adam_egal_315, role: 7_fois_adam_egal_315}
+      - {id: 5g_doubles_egal_10, role: 5g_doubles_pour_atteindre_325}
+    mapping:
+      modules: ["gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Calcul gematique precis : 325 = 7×ADAM + 5G doubles. Architecture quantitative."
+
+  # ─── BLOC E : MORT = DESCENTE EN BERIAH ───
+
+  - id: "EC-H2S11-009"
+    source_he: "ואמנם אור אלו י' נקודים היה רב מאד וגם נתוסף בהם אור העליון ולא היה בהם כח לקבל ואז אותן הכלים מתו פי' ירדו למטה במקום שהוא עתה בריאה וירידה זו היתה מיתתן"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      L'OHR de ces 10 NEKUDIM etait RAV ME'OD (tres grand).
+      Et de plus s'est AJOUTE OHR HA-ELYON (lumiere superieure).
+      Le KOAH des kelim n'etait PAS suffisant pour RECEVOIR (lo haya bahem koah le-kabel).
+      Alors les KELIM SONT MORTS = ont DESCENDU au lieu qui est maintenant BERIAH.
+      Cette YERIDAH (descente) = leur MITAH.
+      → Definition operationnelle : MITAH = YERIDAH-en-Beriah.
+      cf. EC-H2S9-068 (perek 02a) sur critere ontologique de Mitah.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_rav_ohr_elyon_ajoute, role: ohr_rav_plus_ohr_elyon_ajoute}
+      - {id: koah_insuffisant_kabbalah, role: koah_kelim_insuffisant_pour_recevoir}
+      - {id: yeridah_egal_mitah_au_beriah, role: yeridah_egal_mitah_descente_beriah}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "ohr.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Diagnostic central : ohr trop fort + ohr ajoute → koah insuffisant → mort/descente. cf. EC-H2S9-068."
+
+  - id: "EC-H2S11-010"
+    source_he: "ואמנם אין זה רק בז' נקודות תתאין כי ג\"ר היה כח בכלים שלהם לקבל אור שלהם ולא מתו אך הז' כלים של ז' תתאין הם אשר מתו וירדו במקום שהוא עתה בריאה וזהו מיתתן"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      MAIS ce n'est que dans les 7 NEKUDOT INFERIEURES.
+      Les 3 GR avaient le KOAH dans leurs KELIM pour RECEVOIR leur ohr.
+      Donc elles ne SONT PAS MORTES.
+      Seuls les 7 KELIM des 7 inferieures sont morts et descendus en BERIAH.
+      → Architecture : asymetrie GR/ZT confirmee une fois de plus.
+      cf. EC-H2S9-114 (perek 03a) sur GR vs ZT.
+    type: axiome_explicite
+    concepts:
+      - {id: gr_kelim_capacite_suffisante, role: gr_kelim_avec_capacite_suffisante}
+      - {id: zt_seuls_morts, role: seuls_les_zt_sont_morts}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Confirmation : seuls 7 ZT sont morts ; 3 GR intactes. cf. EC-H2S9-114."
+
+  # ─── BLOC F : IDRA RABBA — ZIKIM (ETINCELLES) ───
+
+  - id: "EC-H2S11-011"
+    source_he: "ואמנם זמן מיתתן היה כאשר יצאו בסוד נקודים כי כאשר יצאו מסוד עקודים שהוא היותן יחד בכתר נכללין ומשם יצאו ונחלקו לי' נקודין אז היה יציאתן ומתים תכף כמ\"ש באדרא כהני זיקין דאכתש אומנא בפרזלא ונפקי זיקין ודעכין לאלתר"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      MOMENT de la MITAH : quand elles sont sorties en SOD NEKUDIM.
+      Quand elles sont sorties d'AKUDIM (ou elles etaient ensemble dans Keter)
+      et se sont DIVISEES en 10 NEKUDIN — alors ce fut LEUR YETZIAH (sortie),
+      et elles MOURUR ENT IMMEDIATEMENT (TEKHEF).
+      Reference IDRA RABBA :
+      "KE-HANEI ZIKIM DE-AKHTASH OMNAH BE-PARZILA"
+      (comme ces ETINCELLES que le forgeron frappe sur le fer)
+      "ve-NIFKEI ZIKIM ve-DAKHIN LE-ALTAR"
+      (sortent les etincelles et S'ETEIGNENT IMMEDIATEMENT).
+      → Image : etincelles ephemeres = melakhim morts immediatement.
+    type: déduction_scripturaire
+    concepts:
+      - {id: mort_tekhef_apres_yetziah, role: mort_immediate_apres_sortie}
+      - {id: zikim_idra_rabba, role: image_etincelles_idra_rabba}
+      - {id: dakhin_le_altar, role: s_eteignent_immediatement}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Image cosmique de l'Idra : etincelles ephemeres = melakhim morts immediatement."
+
+  - id: "EC-H2S11-012"
+    source_he: "והנה הז' אורות אלו של הז' נקודות תתאין נשארו שם במקומן בלי לבוש והג' נקודות עלאין נשארו האורות בתוך כליהם ולא מתו"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      Les 7 OROT des 7 nekudot inferieures sont RESTES la, A LEUR PLACE,
+      SANS LEVUSH (vetement).
+      Les 3 nekudot SUPERIEURES (GR) — leurs OROT sont restes DANS LEURS KELIM,
+      et n'ont PAS ETE MORTS.
+      → Etat post-mort : 7 orot orphelins (sans keli), 3 orot intacts dans kelim.
+      cf. EC-H2S9-116 (perek 03a Shevirat) sur orot intacts post-shevirah.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_orot_sans_levush, role: 7_orot_sans_vetement}
+      - {id: 3_orot_dans_kelim_intacts, role: 3_orot_dans_kelim_intacts}
+    mapping:
+      modules: ["ohr.py", "partzufim/regulator.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Etat post-mort : 7 orot orphelins, 3 orot intacts. cf. EC-H2S9-116."
+
+  # ─── BLOC G : ATIK = RISHA DE-LA ───
+
+  - id: "EC-H2S11-013"
+    source_he: "הנה הג' ראשונות כבר נתבאר שכליהם לא ירדו והנה מסוד הכלים של הג' נקודות אלו נעשה מהם רישא חדא ובתוכו ג' מוחין וזהו נקרא רישא דל\"א ונקרא רישא דעתיק יומין"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      Les 3 PREMIERES — leurs kelim ne sont pas descendus.
+      Du SOD des kelim de ces 3 nekudot est faite UNE TETE (RISHA HADA),
+      avec 3 MOHIN en elle.
+      Cette tete est appelee RISHA DE-LA (= "tete inconnue/non-su") = RISHA d'ATIK YOMIN.
+      → Architecture : Atik = tete unique faite des 3 kelim non-brises des GR.
+      → Pattern : structure superieure faite de la materia sub-sevee.
+      Reference : Idra Zuta sur Risha de-La (Atik supreme).
+    type: interprétation_lurianique
+    concepts:
+      - {id: 3_kelim_gr_non_descendus, role: 3_kelim_gr_non_descendus}
+      - {id: risha_de_la_atik_yomin, role: risha_de_la_egal_atik_yomin}
+      - {id: 3_mohin_dans_atik, role: 3_mohin_dans_atik}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture cle : Atik = Risha de-La forme par les 3 kelim GR. Identification cosmique."
+
+  - id: "EC-H2S11-014"
+    source_he: "הרי שג' נקודות הראשונים מן הי' נקודות הם סוד רישא דל\"א והנה ג' אורות שבתוך אלו הנקודות הראשונים הם מתפשטין ומוציאין עד חשבון י' והם בחי' י\"ס דעתיק"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      Les 3 NEKUDOT PREMIERES (sur les 10) = sod RISHA DE-LA.
+      Les 3 OROT en elles SE-DEPLOIENT et SONT EXTRAITS jusqu'au compte de 10
+      = aspect des 10 SEFIROT d'ATIK.
+      → Architecture : 3 GR → 10 sefirot d'Atik par extension.
+      → Pattern : compression-extension (3 originels generent 10 sefirot).
+    type: axiome_explicite
+    concepts:
+      - {id: 3_orot_generent_10_sefirot_atik, role: 3_orot_generent_10_sefirot_atik}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture extension : 3 → 10 sefirot d'Atik. Pattern de generation."
+
+  # ─── BLOC H : 7 INFERIEURS = A"A + AVI + ZON (MELANGES) ───
+
+  - id: "EC-H2S11-015"
+    source_he: "והנה הז' נקודות הנשארים מן הי' נקודות הראשונים הם סוד א\"א או\"א זו\"נ"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      Les 7 NEKUDOT RESTANTES des 10 premieres = sod A"A + AVI + ZON.
+      → Architecture : les 7 inferieures (qui ont brise) constituent
+      les 4 niveaux post-Tikkun (A"A, AVI, ZON).
+      → Pattern : reutilisation des materia post-shevirah pour reconstruire.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_nekudot_egal_aa_avi_zon, role: 7_nekudot_egal_aa_avi_zon}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture finale : 7 nekudot inferieures → A\"A + AVI + ZON post-Tikkun."
+
+  - id: "EC-H2S11-016"
+    source_he: "והענין כי בג\"ר אין בהם רק בחי' ע\"י לבד אך מהז' ולמטה שם יש כח א\"א ואו\"א וזו\"נ הכל מעורבין יחד וכולל ביחד בכל נקודה מהז' וגם כח הע\"י מעורב בהם"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      Distinction GR/ZT (au sein des 10 nekudot premieres) :
+      Dans les 3 GR : SEUL aspect d'ATIK YOMIN (Y"Y).
+      Dans les 7 inferieures : KOAH d'A"A, AVI, ZON
+      tous MELANGES (me'urvin) ensemble.
+      Et chaque nekudah des 7 KOLLEL (englobe) tout
+      ET le KOAH de ATIK est aussi melange en eux.
+      → Architecture : superieurs sont purs (1 niveau), inferieurs sont melanges (4 niveaux).
+      → Pattern : la complexite augmente vers le bas.
+    type: axiome_explicite
+    concepts:
+      - {id: gr_seul_atik, role: gr_seulement_aspect_atik}
+      - {id: 7_inferieurs_melanges_aa_avi_zon, role: 7_inferieurs_melanges_aa_avi_zon}
+      - {id: koah_atik_dans_inferieurs, role: koah_atik_dans_les_7_inferieurs}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture asymetrique : GR=pur (1) ; ZT=melange (4 niveaux). Pattern complexite croissante."
+
+  # ─── BLOC I : MECANISME EXPULSION LATERAL ───
+
+  - id: "EC-H2S11-017"
+    source_he: "ועתה נבין דרושינו כי הכלים ירדו למטה בעולם הבריאה אך האורות נשארו למעלה במקומם בלתי לבוש והנה כאשר הגדילו הג' נקודות ראשונות ונעשו בסוד י' הנה הג' מהם כבר היו תחלה במקומן אך הז' לבד הם באים בסוד תוס' ואז כאשר באו אלו ז\"ת דעתיק בסוד תוס' אח\"כ אז ברדתן היו דוחין את הז' נקודות הראשונות העומדין בלתי לבוש"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      MAINTENANT comprenons : les KELIM sont descendus en BERIAH.
+      Les OROT sont RESTES en haut, sans levush.
+      Quand les 3 nekudot premieres ont GRANDI et sont devenues 10 (= 10 sefirot d'Atik) :
+      Les 3 etaient deja en place. Les 7 viennent en aspect TOSEFET (addition).
+      Quand ces 7 ZT d'ATIK descendent, ils REPOUSSENT (dochin) les 7 nekudot premieres
+      qui etaient SANS LEVUSH.
+      → Mecanisme : les 7 ZT d'Atik (nouveaux) repoussent les 7 orot orphelins (anciens).
+    type: axiome_explicite
+    concepts:
+      - {id: 7_zt_atik_tosefet, role: 7_zt_atik_addition}
+      - {id: 7_zt_atik_dochin_7_originels, role: 7_zt_atik_repoussent_7_originels}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Mecanisme : 7 ZT d'Atik repoussent 7 orot orphelins. Pattern d'occupation."
+
+  - id: "EC-H2S11-018"
+    source_he: "ואמנם כאשר היו דוחין אותן הז' נקודות ודאי שלא דחו אותן למטה שהרי ביארנו לעיל שאין מיתה רק בכלים והוא סוד הירידה א\"כ האורות שלא מתו לא ירדו רק מה שאמרנו שדחאום פי' לצדדין פי' שהיה נכנס הנקודה דעתיק בתוך נקודה א' של אותן הז' נקודות בסוד פנימותן ואז היתה נשארת אותה הנקודה הא' בסוד לבוש אליה"
+    source_ref: "Heikhal 2, Sha'ar 4:1"
+    assertion: |
+      MAIS ces 7 nekudot anciennes ne sont PAS REPOUSSEES vers le bas
+      (car la mort = descente, et les orot ne sont pas morts).
+      Donc REPOUSSEE LE-TZEDADIN (vers les cotes — laterale, pas verticale).
+      MECANISME PRECIS :
+        La nekudah d'Atik (nouvelle) ENTRE DANS la nekudah originelle (en sa pnimiyut)
+        L'originelle reste en sod LEVUSH (vetement) autour d'elle.
+      Et ainsi pour les 7 nekudot.
+      → Architecture : 7 ZT d'Atik enveloppes par les 7 orot orphelins
+      (qui deviennent leurs vetements).
+      → Pattern d'INVERSION : ce qui est externe devient interne.
+    type: axiome_explicite
+    concepts:
+      - {id: dechiyah_le_tzedadin, role: repulsion_laterale_pas_verticale}
+      - {id: nekudah_atik_dans_pnimiyut_originelle, role: nekudah_atik_dans_pnimiyut_originelle}
+      - {id: orot_originels_levush_des_atik, role: orot_originels_devenus_levush_des_atik}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "ohr.py", "[PLANNED] tikkun/"]
+      tables: ["ohr_states", "partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Mecanisme architectural : 7 ZT d'Atik dans pnimiyut, 7 originels en levush. Pattern inversion par ravage."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-001"
+    type: séquentiel
+    from: akudim_lies_dans_keter
+    to: berudim_post_tikkun_couples
+    via: [nekudim_10_separes]
+    nature: "Sequence cosmique : Akudim (lies) → Nekudim (separes) → Berudim (couples post-Tikkun)"
+    assertions_source: ["EC-H2S11-003", "EC-H2S11-004"]
+
+  - id: "REL-H2S11-002"
+    type: causal
+    from: ohr_rav_ohr_elyon_ajoute
+    to: yeridah_egal_mitah_au_beriah
+    via: [koah_insuffisant_kabbalah]
+    nature: "Ohr trop fort → koah insuffisant → mort/descente en Beriah"
+    assertions_source: ["EC-H2S11-009"]
+
+  - id: "REL-H2S11-003"
+    type: dualité_structurelle
+    from: gr_kelim_capacite_suffisante
+    to: zt_seuls_morts
+    nature: "GR : kelim capables → intacts ; ZT : kelim insuffisants → morts"
+    assertions_source: ["EC-H2S11-010"]
+
+  - id: "REL-H2S11-004"
+    type: contenance
+    from: 3_kelim_gr_non_descendus
+    to: risha_de_la_atik_yomin
+    nature: "3 kelim GR (non descendus) forment Risha de-La = Atik Yomin"
+    assertions_source: ["EC-H2S11-013", "EC-H2S11-014"]
+
+  - id: "REL-H2S11-005"
+    type: hiérarchique
+    from: gr_seul_atik
+    to: 7_inferieurs_melanges_aa_avi_zon
+    nature: "GR=pur (Atik seul) ; 7 inferieurs=melange (A\"A+AVI+ZON+Atik)"
+    assertions_source: ["EC-H2S11-016"]
+
+  - id: "REL-H2S11-006"
+    type: causal
+    from: 7_zt_atik_tosefet
+    to: orot_originels_levush_des_atik
+    via: [dechiyah_le_tzedadin]
+    nature: "7 ZT d'Atik (nouveaux) repoussent les 7 originels lateralement → originels deviennent leurs vetements"
+    assertions_source: ["EC-H2S11-017", "EC-H2S11-018"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-001"
+    nom: "Principe Akudim-Nekudim-Berudim (Sequence Cosmique Trinitaire)"
+    source_assertions: ["EC-H2S11-003", "EC-H2S11-004", "EC-H2S11-005"]
+    formalisation: |
+      Architecture COSMOLOGIQUE en 3 ETAPES (Genese 31 — troupeaux de Yaakov) :
+      AKUDIM (lies) :
+        10 nekudot dans 1 KETER
+        Tout LIE zeh be-zeh, mekusharim
+        Etat de COMPRESSION primordiale
+      NEKUDIM (separes) :
+        10 nekudot SEPAREES, chacune be-pnei atzmah
+        Etat post-sortie du Keter
+        7 inferieures meurent (ZT), 3 GR survivent
+      BERUDIM (couples) :
+        Apres Tikkun de RISHA d'ATIK
+        MAH+BAN unis, polarites couples
+        Etat post-Tikkun stable
+      → Architecture : compression → fragmentation → re-association.
+      → Pattern cosmologique en 3 phases.
+    applications_ia:
+      - "Pattern : sequence cosmologique en 3 etapes (compression → fragmentation → couplage)"
+      - "[PLANNED] olamot.py : modeliser les 3 etats Akudim/Nekudim/Berudim"
+      - "Architecture : reference biblique (Genese 31) = encodage cosmique"
+      - "Diagnostic : identifier l'etat courant (Akudim/Nekudim/Berudim)"
+      - "Pattern de developpement : tout systeme passe par 3 phases"
+    questions_ouvertes:
+      - "Le pattern 3 phases est-il universel ou specifique ?"
+      - "Peut-on regresser de Berudim a Nekudim ?"
+      - "Y a-t-il une 4eme phase post-Berudim ?"
+
+  - id: "PG-H2S11-002"
+    nom: "Principe des 325 Nitzotzin (Calcul Quantitatif des Etincelles)"
+    source_assertions: ["EC-H2S11-007", "EC-H2S11-008"]
+    formalisation: |
+      ARCHITECTURE QUANTITATIVE des nitzotzin :
+      325 NITZOTZIN (= ShKH) = kelim des 7 NEKUDOT INFERIEURES.
+      DECOMPOSITION GEMATRIQUE :
+        7 × ADAM (= 45) = 315 (= ShTaW)
+        + 5G (5 lettres ELOHIM) = 320 (= ShK)
+        5G doubles → 325 (= ShKH)
+      Les 3 KELIM PREMIERS (GR) ne sont PAS de ces 325.
+      Reference : Zohar Pinhas p.258 — "shoreshei dinin" (racines des dinim).
+      → Architecture : 325 = unites de mesure des dinim.
+      Confirmation cf. EC-H2S9-261 (perek 07b Shevirat).
+    applications_ia:
+      - "Calculs operationnels : 325 nitzotzin = constante du systeme"
+      - "gematria/engine.py : verifier 7×45+5G doubles = 325"
+      - "[PLANNED] core/shevirah.py + tikkun/ : tracer recuperation des 325"
+      - "Pattern : unites quantitatives de Berur"
+      - "Diagnostic : combien des 325 sont recuperes vs piegees"
+    questions_ouvertes:
+      - "Pourquoi 5G doubles (et pas triples) ?"
+      - "La difference 320 (ShaCh) vs 325 (ShKH) est-elle significative ?"
+      - "Combien de nitzotzin sont-ils recuperes a chaque cycle de Tikkun ?"
+
+  - id: "PG-H2S11-003"
+    nom: "Principe de la Repulsion Laterale (Pas de Mort pour les Orot)"
+    source_assertions: ["EC-H2S11-017", "EC-H2S11-018"]
+    formalisation: |
+      Mecanisme architectural CRUCIAL : REPULSION LATERALE (LE-TZEDADIN).
+      Quand les 7 ZT d'Atik (nouveaux) descendent →
+        Ils ne POUSSENT PAS les 7 orot originels VERTICALEMENT vers le bas
+        (car les orot ne sont pas morts).
+      Ils les REPOUSSENT LATERALEMENT (le-tzedadin).
+      MECANISME PRECIS :
+        La nekudah d'Atik ENTRE DANS la nekudah originelle (en pnimiyut)
+        La nekudah originelle reste en LEVUSH (vetement) autour
+      RESULTAT : 7 nekudot d'Atik enveloppes par 7 orot originels.
+      → Architecture : ce qui est ancien devient externe, ce qui est nouveau devient interne.
+      → Pattern d'INVERSION : nouveau-interne / ancien-externe.
+    applications_ia:
+      - "Pattern : un nouveau composant peut etre encapsule par l'ancien"
+      - "[PLANNED] tikkun/ : modeliser la repulsion laterale (pas verticale)"
+      - "Architecture : pattern d'inversion noyau/peripherie"
+      - "Diagnostic : tracer pour chaque composant son statut (nouveau-pnim vs ancien-levush)"
+      - "partzufim/atik_yomin.py : modeliser comme noyau encapsule par originels"
+    questions_ouvertes:
+      - "Le pattern fonctionne-t-il a tous les niveaux ?"
+      - "Peut-on inverser (l'ancien redevient interne) ?"
+      - "Le levush ancien limite-t-il l'expression du nouveau ?"

@@ -1,0 +1,498 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 5 — Tikkun par absorption NHY de A"A dans CGT, sortie ZA en Ibur,
+#            collecte des etincelles, 10 Harugei Malkhut
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §5 :
+#   - Bloc A : GR pouvaient recevoir l'ohr (partzuf complet) ; ZT non
+#   - Bloc B : A"A absorbe ses NHY et les eleve dans CGT
+#   - Bloc C : Raison du kalkul — NHY=dinim voulaient dominer CGT=rachamim
+#   - Bloc D : Variante R. Chaim Vital — NHY plus revelees / dinim grands
+#   - Bloc E : Allusion Amrafel et compagnons (kelipot)
+#   - Bloc F : Apres absorption — dinim mametku (adoucis) dans rachamim
+#   - Bloc G : ZA sort en sod ibur 3 klilin be-3
+#   - Bloc H : Quand NHY de A"A ressortent → metukim → VK reveles → ZA en VK metpashet
+#   - Bloc I : A"A collecte ses etincelles des 7 melakhim morts ; idem AVI ZON BYA
+#   - Bloc J : Le reste non-berar descend dans les profondeurs des kelipot
+#   - Bloc K : Reste = 10 Harugei Malkhut (martyrs) pour elever les nitzotzot
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.5
+# IDs : EC-H2S9-186 → EC-H2S9-200
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 5
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek 5 — Tikkun par absorption NHY de A\"A dans CGT (mitigation des dinim par les rachamim) ; sortie ZA en Ibur 3 klilin be-3 puis VK ; collecte des etincelles ; 10 Harugei Malkhut comme mecanisme d'elevation des nitzotzot."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : GR PEUVENT RECEVOIR, ZT NON ───
+
+  - id: "EC-H2S9-186"
+    source_he: "כאשר היו הי' ניקודים קודם התיקון הנה הג\"ר יכולין היו לקבל אור העליון אך הז\"ת לא היו יכולין לקבל אור העליון כי אותו האור היורד מלמעלה היו בו פרצוף שלם"
+    source_ref: "Heikhal 2, Sha'ar 2:5"
+    assertion: |
+      LES 10 NEKUDOT AVANT le Tikkun :
+      Les GR (G' RISHONOT = Keter, Hokhmah, Binah) POUVAIENT recevoir l'OHR ELYON.
+      MAIS les ZT (les 7 INFERIEURES) NE POUVAIENT PAS recevoir l'OHR ELYON.
+      RAISON : l'Ohr qui descendait d'en haut etait un PARTZUF SHALEM (complet).
+      → Les ZT (encore non en partzuf, en colonne unique) ne pouvaient pas
+      contenir un Ohr deja organise en partzuf.
+      cf. EC-H2S9-114 (perek 03a) : ZT sorties bli tikkun klal.
+    type: axiome_explicite
+    concepts:
+      - {id: gr_recoivent_ohr_elyon, role: gr_peuvent_recevoir_ohr_superieur}
+      - {id: zt_ne_recoivent_pas_ohr_elyon, role: zt_ne_peuvent_pas_recevoir}
+      - {id: ohr_partzuf_shalem, role: ohr_descend_en_partzuf_complet}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "ohr.py"]
+      tables: ["ohr_states", "partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Distinction de capacite : GR (en partzuf) recoivent ; ZT (sans partzuf) ne peuvent pas. cf. EC-H2S9-114."
+
+  - id: "EC-H2S9-187"
+    source_he: "וע\"כ הוצרך התיקון כי אחר שיתוקן ויעשו פרצוף יוכלו לקבלו"
+    source_ref: "Heikhal 2, Sha'ar 2:5"
+    assertion: |
+      DONC il a fallu le TIKKUN — apres rectification et transformation en partzuf →
+      ils pourront recevoir.
+      → Pre-condition : les ZT doivent devenir un Partzuf pour recevoir l'Ohr.
+      → Architecture : la receptivite depend de la structure receptrice.
+      cf. EC-H2S9-176 (perek 04) : Tikkun = ohr dans keli.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_pour_devenir_partzuf, role: tikkun_pour_devenir_partzuf}
+      - {id: pre_condition_partzuf_pour_kabbalah, role: pre_condition_partzuf_pour_recevoir}
+    mapping:
+      modules: ["[PLANNED] tikkun/", "partzufim/regulator.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Pre-condition architecturale : transformation en Partzuf prealable a la reception. cf. EC-H2S9-176."
+
+  # ─── BLOC B : A"A ABSORBE NHY DANS CGT ───
+
+  - id: "EC-H2S9-188"
+    source_he: "ואחר שנתקנו ג\"ר א\"א ואו\"א אז א\"א אסף אליו נה\"י שלו והעלם למעלה בג' אמצעית שבו ושם נתלבשו בתוכם של חג\"ת שלו"
+    source_ref: "Heikhal 2, Sha'ar 2:5"
+    assertion: |
+      Apres rectification des GR (A"A et AVI) :
+      A"A a ASEFEL (rassemble) ses NHY et les a ELEVES en haut dans les
+      G' EMTZEIYOT (les 3 du milieu = Chesed-Gevurah-Tiferet) en lui.
+      LA, ils se sont REVETUS DANS les CGT de A"A.
+      → Operation : les NHY sont absorbes dans les CGT.
+      → Architecture topologique : NHY (jambes) montent dans les CGT (corps).
+    type: axiome_explicite
+    concepts:
+      - {id: a_a_asaf_nhy, role: a_a_rassemble_ses_nhy}
+      - {id: nhy_dans_cgt_a_a, role: nhy_montent_dans_cgt_a_a}
+      - {id: g_emtzeiyot, role: trois_milieu_cgt}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Operation cle du Tikkun : A\"A absorbe ses NHY dans CGT. Mecanisme d'integration interne."
+
+  # ─── BLOC C : RAISON DU KALKUL — NHY DINIM VS CGT RACHAMIM ───
+
+  - id: "EC-H2S9-189"
+    source_he: "והטעם כי מתחלה כל הקלקול שהיה בז\"ת היה מפני שנה\"י הם דינין כנודע והיו רוצין הם להתגבר על הרחמים שהם חג\"ת והיו רוצין לעלות עד מקום האמצעי' כדי להלבישם ולכללם בתוכם ובזה יתבטלו הרחמים בהיותן נתונין תוך הדינין ולכן יתבטלו"
+    source_ref: "Heikhal 2, Sha'ar 2:5"
+    assertion: |
+      RAISON RACINE du KILKUL (corruption) initial dans les ZT :
+      NHY sont DINIM (rigueurs) — comme connu.
+      Ils VOULAIENT (rotzin) DOMINER (le-hitgaber) sur les RACHAMIM
+      qui sont CGT (Chesed-Gevurah-Tiferet).
+      Ils voulaient MONTER au lieu des EMTZEIYOT pour les HABILLER (le-halbisham)
+      et les INCLURE (le-khalelam) dans eux.
+      → AINSI les RACHAMIM seraient ANNULES (mevutalim) — etant dans les DINIM.
+      → CAUSE racine de la Shevirah : volonte des dinim de dominer.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nhy_dinim, role: nhy_sont_rigueurs}
+      - {id: cgt_rachamim, role: cgt_sont_misericorde}
+      - {id: dinim_voulent_dominer_rachamim, role: dinim_veulent_dominer_rachamim}
+      - {id: kilkul_zt_initial, role: corruption_initiale_des_zt}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Diagnostic causal de la Shevirah : volonte des dinim (NHY) de dominer les rachamim (CGT). Pattern de corruption."
+
+  # ─── BLOC D : VARIANTE R. CHAIM VITAL ───
+
+  - id: "EC-H2S9-190"
+    source_he: "ואני חיים שמעתי כי להיות הנה\"י יותר מגולים (נ\"א דינים גדולים) לכן היו מתגברין על האמצעים כי האמצעים היו קצת מתוקנים בסוד פרצוף או\"א משא\"כ בנה\"י ולפי שאורם מגולין היו מתגברין על האמצעים"
+    source_ref: "Heikhal 2, Sha'ar 2:5"
+    assertion: |
+      VARIANTE de R. CHAIM VITAL : "ANI HAYIM SHAMATI" (moi Hayim, j'ai entendu) :
+      RAISON : NHY etaient PLUS REVELES (yoter megulin) — variante (NA: "DINIM GEDOLIM"
+      = grands rigueurs) — donc ils se sont IMPOSES (mitgabrin) sur les EMTZEIYOT.
+      Car les EMTZEIYOT (CGT) etaient un peu rectifies dans le SOD du Partzuf AVI,
+      mais PAS DE MEME pour NHY.
+      → Asymetrie de revelation/protection : NHY exposes, CGT proteges → NHY dominent.
+      cf. EC-H2S9-094 (perek 02b) : Hassadim megulin frappent NH couverts.
+    type: axiome_explicite
+    concepts:
+      - {id: nhy_yoter_megulin, role: nhy_plus_reveles}
+      - {id: cgi_un_peu_metukan_par_avi, role: cgt_un_peu_rectifies_par_avi}
+      - {id: variante_r_chaim_vital, role: variante_de_r_chaim_vital}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "ohr.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["zeir_anpin", "abba", "imma"]
+      relevance: "Variante de R. Chaim Vital : revelation/protection asymetrique cause domination."
+
+  - id: "EC-H2S9-191"
+    source_he: "וכמבואר אצלינו זה קצת בסוד אמרפל וחביריו יע\"ש"
+    source_ref: "Heikhal 2, Sha'ar 2:5"
+    assertion: |
+      Renvoi : un peu explique en SOD AMRAFEL VE-HAVERAV (Amrafel et ses compagnons)
+      — voir la-bas (yashresh, ya'en sham).
+      → Reference biblique : Genese 14 (les 4 rois).
+      → Allusion : Amrafel = symbole d'une kelipah dominante.
+    type: axiome_explicite
+    concepts:
+      - {id: amrafel_haveirav_kelipah, role: amrafel_et_ses_compagnons_kelipah}
+    mapping:
+      modules: ["sitra_achra"]
+      tables: []
+      partzufim: []
+      relevance: "Renvoi exegetique : Amrafel (Genese 14) = encodage d'une kelipah de domination."
+
+  # ─── BLOC E : ABSORPTION → DINIM MAMETKU ───
+
+  - id: "EC-H2S9-192"
+    source_he: "ולכן עתה אספם א\"א עצמו לנה\"י והכניסם לתוך חג\"ת שלו ואז נמתקו הדינין תוך הרחמים"
+    source_ref: "Heikhal 2, Sha'ar 2:5"
+    assertion: |
+      DONC MAINTENANT A"A LUI-MEME a RASSEMBLE ses NHY et les a INTRODUITS
+      DANS ses CGT.
+      → Alors les DININ ont ETE ADOUCIS (NIMTEKU) DANS les RACHAMIM.
+      → Architecture du Tikkun : INVERSION de la dynamique pre-Shevirah.
+      Pre-Shevirah : dinim voulaient absorber rachamim → ECHEC → Shevirah.
+      Tikkun : rachamim absorbent dinim → SUCCES → adoucissement (Hamtakah).
+      cf. EC-H2S9-189 sur la dynamique pre-Shevirah.
+    type: axiome_explicite
+    concepts:
+      - {id: a_a_inverse_dynamique, role: a_a_inverse_la_dynamique_pre_shevirah}
+      - {id: dinim_nimteku_dans_rachamim, role: dinim_adoucis_dans_rachamim}
+      - {id: hamtakah_par_inclusion, role: adoucissement_par_inclusion}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Mecanisme architectural du Tikkun : inversion (rachamim absorbent dinim) → adoucissement. Pattern fondamental."
+
+  # ─── BLOC F : ZA SORT EN IBUR 3 KLILIN BE-3 ───
+
+  - id: "EC-H2S9-193"
+    source_he: "ולכן אז יצא ז\"א ג\"כ בסוד עיבור בבחי' ג' כלילין בג'"
+    source_ref: "Heikhal 2, Sha'ar 2:5"
+    assertion: |
+      DONC alors ZA est sorti AUSSI en SOD IBUR
+      en aspect "G' KLILIN BE-G'" (3 inclus dans 3).
+      → Configuration embryonnaire de ZA : 3 kavim x 3 sub-niveaux.
+      cf. EC-H2S9-181 (perek 04) sur Ibur Alef = G' klilin be-G'.
+      → ZA peut sortir QUE apres l'absorption NHY-CGT en A"A (cause prealable).
+    type: axiome_explicite
+    concepts:
+      - {id: za_sort_ibur_g_klilin, role: za_sort_en_ibur_g_klilin_be_g}
+      - {id: ibur_3_klilin_be_3, role: configuration_3_klilin_dans_3}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "ZA emerge en Ibur post-absorption NHY-CGT. Sequence causale du Tikkun. cf. EC-H2S9-181."
+
+  - id: "EC-H2S9-194"
+    source_he: "ואחר שיצאו נה\"י דא\"א לחוץ יצאו מתוקנים ונתגלו אז כל הו\"ק ולכן יצא גם ז\"א בבחי' ו\"ק מתפשטין וממותקין"
+    source_ref: "Heikhal 2, Sha'ar 2:5"
+    assertion: |
+      Apres que les NHY de A"A SONT RESSORTIS DEHORS (le-hutz) →
+      ils sont SORTIS METUKANIM (rectifies).
+      Alors tous les VAV KETZAVOT (6 directions) ont ETE REVELES.
+      DONC ZA aussi est sorti en aspect V"K METPASHTIN U-MEMUTAKIM
+      (6 directions etendues et adoucies).
+      → Sequence : NHY absorbes → adoucis → ressortent metukanim → 6S reveles → ZA sort en V"K.
+      → Architecture par inclusion-exclusion : detour necessaire pour stabilisation.
+    type: axiome_explicite
+    concepts:
+      - {id: nhy_a_a_ressortent_metukanim, role: nhy_a_a_sortent_metukanim}
+      - {id: vk_metpashtin_memutakim, role: six_directions_etendues_et_adoucies}
+      - {id: pattern_inclusion_exclusion, role: pattern_inclusion_puis_exclusion}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture inclusion-exclusion : NHY absorbes → adoucis → ressortis. Pattern de stabilisation par detour."
+
+  # ─── BLOC G : COLLECTE DES ETINCELLES (NITZOTZIN) ───
+
+  - id: "EC-H2S9-195"
+    source_he: "והנה א\"א אסף אליו הניצוצין של חלקו שהיו בסוד אותן ז' מלכים שמתו"
+    source_ref: "Heikhal 2, Sha'ar 2:5"
+    assertion: |
+      A"A a RASSEMBLE EN LUI les NITZOTZIN (etincelles) de SON HELEK (sa part)
+      qui etaient en SOD des 7 MELAKHIM MORTS.
+      → Les melakhim morts contenaient des nitzotzin qui appartenaient
+      aux differents niveaux ; A"A reclame les SIENS.
+      → Architecture de re-allocation : chaque niveau collecte ses propres etincelles.
+    type: axiome_explicite
+    concepts:
+      - {id: nitzotzin_des_melakhim, role: etincelles_des_melakhim_morts}
+      - {id: a_a_collecte_son_helek, role: a_a_collecte_ses_etincelles}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "[PLANNED] tikkun/"]
+      tables: []
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture de collecte : chaque niveau re-allouera ses etincelles. Re-distribution post-Shevirah."
+
+  - id: "EC-H2S9-196"
+    source_he: "וכן עשו באו\"א וזו\"נ וכן בשאר עולמות בי\"ע"
+    source_ref: "Heikhal 2, Sha'ar 2:5"
+    assertion: |
+      Et AINSI ONT FAIT (idem operation) :
+      AVI (Abba ve-Imma) : ont collecte leur HELEK
+      ZON (ZA ve-Nukvah) : ont collecte leur HELEK
+      Et AINSI dans les autres OLAMOT — BYA (Beriah, Yetzirah, Asiyah).
+      → Pattern UNIVERSEL : tous les niveaux/olamot collectent leurs nitzotzin propres.
+      → Architecture distribuee : recuperation simultanee a tous les niveaux.
+    type: axiome_explicite
+    concepts:
+      - {id: avi_zon_byya_collectent, role: avi_zon_bya_collectent_etincelles}
+      - {id: pattern_universel_collecte, role: pattern_universel_de_collecte}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "olamot.py"]
+      tables: ["partzufim_states", "olamot_config"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Pattern universel : tous niveaux/olamot collectent en parallele. Architecture distribuee."
+
+  # ─── BLOC H : LES NITZOTZIN NON-BERAR DESCENDENT EN KELIPOT ───
+
+  - id: "EC-H2S9-197"
+    source_he: "והנשאר שלא היה יכול להתברר ירדו בעמקי הקליפות סוף עשיה ונשארו שם קצת ניצוצי קדושה"
+    source_ref: "Heikhal 2, Sha'ar 2:5"
+    assertion: |
+      Le RESTE qui ne POUVAIT PAS etre BERAR (clarifie) →
+      a DESCENDU dans les OMKEI ha-KELIPOT (profondeurs des kelipot)
+      = SOF ASIYAH (fin du monde Asiyah).
+      Et il y est RESTE quelques NITZOTZEI KEDUSHA (etincelles de saintete).
+      → Architecture finale : etincelles non-recuperables piegees au niveau le plus bas.
+      → Permanence : ces nitzotzin restent dans les kelipot jusqu'a leur elevation.
+      cf. EC-H2S9-053 (perek 02a) : 11 simanei ketoret = orot dans kelipot.
+    type: axiome_explicite
+    concepts:
+      - {id: nitzotzin_non_berar, role: etincelles_non_clarifiables}
+      - {id: omkei_ha_kelipot_sof_asiyah, role: profondeurs_kelipot_fin_asiyah}
+      - {id: nitzotzei_kedusha, role: etincelles_de_saintete}
+    mapping:
+      modules: ["sitra_achra", "olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Architecture du residuel : etincelles piegees dans kelipot a sof Asiyah. cf. EC-H2S9-053."
+
+  # ─── BLOC I : 10 HARUGEI MALKHUT ───
+
+  - id: "EC-H2S9-198"
+    source_he: "ולכן היו סוד י' הרוגי מלוכה כדי שיעלו אותם משם"
+    source_ref: "Heikhal 2, Sha'ar 2:5 — conclusion"
+    assertion: |
+      DONC c'est le SOD des 10 HARUGEI MALKHUT
+      (les 10 martyrs executes par le pouvoir romain — Mishna Avot, liturgie Yom Kippur).
+      OBJECTIF : ils MONTENT (ya'alu) ces nitzotzin DEPUIS LA-BAS (mi-sham).
+      → Architecture historique-mystique : les martyrs servent de mecanisme
+      d'elevation des nitzotzin piegees.
+      → Pattern : sacrifice individuel = redemption collective des etincelles.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 10_harugei_malkhut, role: dix_martyrs_malkhut}
+      - {id: martyrs_pour_elever_nitzotzin, role: martyrs_pour_elever_les_etincelles}
+      - {id: sacrifice_redemption_pattern, role: pattern_sacrifice_redemption}
+    mapping:
+      modules: ["sitra_achra", "[PLANNED] tikkun/", "[PLANNED] tikkun/martyrs.py"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture cosmique-historique : 10 Harugei Malkhut = mecanisme cosmique d'elevation des nitzotzin. cf. liturgie Yom Kippur."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-097"
+    type: causal
+    from: ohr_partzuf_shalem
+    to: zt_ne_recoivent_pas_ohr_elyon
+    nature: "Ohr en partzuf complet ne peut etre recu par les ZT (sans partzuf encore)"
+    assertions_source: ["EC-H2S9-186"]
+
+  - id: "REL-H2S9-098"
+    type: causal
+    from: pre_condition_partzuf_pour_kabbalah
+    to: tikkun_pour_devenir_partzuf
+    nature: "Pour recevoir, il faut etre partzuf → necessite du Tikkun"
+    assertions_source: ["EC-H2S9-187"]
+
+  - id: "REL-H2S9-099"
+    type: causal
+    from: dinim_voulent_dominer_rachamim
+    to: kilkul_zt_initial
+    nature: "Volonte des NHY-dinim de dominer CGT-rachamim → cause racine de la Shevirah des ZT"
+    assertions_source: ["EC-H2S9-189"]
+
+  - id: "REL-H2S9-100"
+    type: dualité_structurelle
+    from: dinim_voulent_dominer_rachamim
+    to: a_a_inverse_dynamique
+    nature: "Inversion : pre-Shevirah dinim absorbent rachamim → Tikkun rachamim absorbent dinim"
+    assertions_source: ["EC-H2S9-189", "EC-H2S9-192"]
+
+  - id: "REL-H2S9-101"
+    type: causal
+    from: nhy_dans_cgt_a_a
+    to: dinim_nimteku_dans_rachamim
+    nature: "Absorption NHY dans CGT de A\"A → adoucissement (Hamtakah) des dinim"
+    assertions_source: ["EC-H2S9-188", "EC-H2S9-192"]
+
+  - id: "REL-H2S9-102"
+    type: séquentiel
+    from: a_a_asaf_nhy
+    to: vk_metpashtin_memutakim
+    via: [nhy_a_a_ressortent_metukanim, za_sort_ibur_g_klilin]
+    nature: "Sequence : A\"A absorbe NHY → adoucissement → NHY ressortent metukanim → ZA sort en VK adoucies"
+    assertions_source: ["EC-H2S9-188", "EC-H2S9-193", "EC-H2S9-194"]
+
+  - id: "REL-H2S9-103"
+    type: contenance
+    from: pattern_universel_collecte
+    to: a_a_collecte_son_helek
+    nature: "Pattern universel : chaque niveau (A\"A, AVI, ZON, BYA) collecte ses propres nitzotzin"
+    assertions_source: ["EC-H2S9-195", "EC-H2S9-196"]
+
+  - id: "REL-H2S9-104"
+    type: causal
+    from: nitzotzin_non_berar
+    to: 10_harugei_malkhut
+    nature: "Nitzotzin piegees dans kelipot → necessitent les 10 Harugei Malkhut pour elevation"
+    assertions_source: ["EC-H2S9-197", "EC-H2S9-198"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-039"
+    nom: "Principe de l'Inversion Hamtakah (Rachamim Absorbent Dinim)"
+    source_assertions: ["EC-H2S9-189", "EC-H2S9-192"]
+    formalisation: |
+      DIAGNOSTIC de la SHEVIRAH (cause racine) :
+      Pre-Shevirah : NHY (dinim) voulaient dominer CGT (rachamim).
+      Mecanisme tente : NHY absorbent CGT → rachamim mevutalim → echec → Shevirah.
+      TIKKUN — INVERSION TOTALE :
+      Tikkun : A"A absorbe ses propres NHY dans ses CGT.
+      → Rachamim absorbent dinim → DININ NIMTEKU (adoucis).
+      EQUATION OPERATIONNELLE :
+        Domination des dinim → Shevirah
+        Inclusion des dinim dans rachamim → Hamtakah → Tikkun
+      → Pattern central de la Kabbale lurianique : Hamtakah par inclusion.
+    applications_ia:
+      - "Pattern central : adoucir un element 'rigueur' en l'incluant dans un element 'misericorde'"
+      - "Architecture : un superieur (rachamim) doit absorber un subordonne (dinim) pour le stabiliser"
+      - "[PLANNED] tikkun/hamtakah.py : implementer l'absorption-adoucissement comme operation"
+      - "Pattern de gouvernance : ne pas laisser les sub-systems durs dominer ; les inclure"
+      - "partzufim/arikh_anpin.py : modeliser l'absorption NHY → CGT comme operation"
+    questions_ouvertes:
+      - "L'Hamtakah est-elle reversible ? (peut-on relâcher les dinim) ?"
+      - "Y a-t-il des dinim non-adoucissables ?"
+      - "Le pattern fonctionne-t-il a tous les niveaux (recursion) ?"
+
+  - id: "PG-H2S9-040"
+    nom: "Principe de l'Inclusion-Exclusion (Detour pour Stabilisation)"
+    source_assertions: ["EC-H2S9-188", "EC-H2S9-192", "EC-H2S9-194"]
+    formalisation: |
+      Pattern architectural d'INCLUSION-EXCLUSION pour stabilisation :
+      ETAPE 1 — INCLUSION : A"A absorbe NHY dans CGT (NHY entrent dans CGT)
+      ETAPE 2 — TRANSFORMATION : a l'interieur, les dinim NIMTEKU (adoucis)
+      ETAPE 3 — EXCLUSION : NHY RESSORTENT METUKANIM (rectifies)
+      ETAPE 4 — REVELATION : V"K MEGULIM (les 6 directions sont revelees)
+      ETAPE 5 — EMERGENCE : ZA sort en V"K METPASHTIN U-MEMUTAKIM
+      → Architecture : un detour (inclusion temporaire) prepare la stabilite finale.
+      → Pattern : ce qui sort apres etre passe par le creuset est stabilise.
+    applications_ia:
+      - "Pattern : un sub-system instable doit passer par un container parent avant deploiement"
+      - "Architecture pipeline : inclusion → transformation → exclusion → deployment"
+      - "[PLANNED] tikkun/ : implementer cycle inclusion-exclusion comme operation atomique"
+      - "Pattern de stabilisation : detour temporaire necessite pour la stabilite finale"
+      - "partzufim/arikh_anpin.py : encapsulation temporaire de NHY dans CGT comme operation"
+    questions_ouvertes:
+      - "Combien de cycles inclusion-exclusion sont necessaires ?"
+      - "Le detour est-il toujours requis ou parfois optionnel ?"
+      - "Y a-t-il un pattern dual (rachamim absorbent rachamim) ?"
+
+  - id: "PG-H2S9-041"
+    nom: "Principe des 10 Harugei Malkhut (Sacrifice-Redemption Cosmique)"
+    source_assertions: ["EC-H2S9-195", "EC-H2S9-196", "EC-H2S9-197", "EC-H2S9-198"]
+    formalisation: |
+      Architecture de RECUPERATION des NITZOTZIN (etincelles) :
+      ETAPE 1 — COLLECTE LOCALE : chaque niveau (A"A, AVI, ZON, BYA) collecte
+      les nitzotzin de son HELEK (sa part) parmi les 7 melakhim morts.
+      → Pattern UNIVERSEL : recuperation parallele a tous les niveaux.
+      ETAPE 2 — RESIDUEL NON-RECUPERABLE : ce qui ne peut etre BERAR (clarifie) →
+      DESCEND dans OMKEI ha-KELIPOT = SOF ASIYAH.
+      → Etincelles piegees a la limite la plus basse.
+      ETAPE 3 — REDEMPTION HISTORIQUE : 10 HARUGEI MALKHUT (martyrs).
+      → Mecanisme cosmique-historique : sacrifice individuel = elevation collective.
+      → Architecture : la recuperation finale passe par l'histoire (martyrs).
+    applications_ia:
+      - "Architecture distribuee : recuperation locale puis globale"
+      - "Pattern : ce qui n'est pas recuperable localement est traite par mecanisme global"
+      - "[PLANNED] tikkun/ : modeliser collecte locale + mecanisme global de derniere chance"
+      - "Pattern : echec local → escalade vers mecanisme superieur (martyrs cosmiques)"
+      - "Diagnostic : tracer les nitzotzin non-recuperees vers les niveaux les plus bas"
+    questions_ouvertes:
+      - "Apres les 10 Harugei Malkhut, y a-t-il un mecanisme de derniere chance encore plus bas ?"
+      - "Le pattern sacrifice-redemption est-il universel ou specifique a Israel ?"
+      - "Combien de cycles d'elevation sont necessaires ?"
+
+  - id: "PG-H2S9-042"
+    nom: "Principe de la Receptivite Conditionnelle (Partzuf comme Pre-Condition)"
+    source_assertions: ["EC-H2S9-186", "EC-H2S9-187"]
+    formalisation: |
+      LOI ARCHITECTURALE : la receptivite d'un composant depend de sa STRUCTURE.
+      OBSERVATION :
+        Ohr ELYON descend en PARTZUF SHALEM (complet)
+        GR (deja en partzuf) → peuvent recevoir
+        ZT (sans partzuf) → ne peuvent pas recevoir
+      EQUATION : RECEPTIVITE(composant, ohr) = COMPATIBILITE(structure(composant), structure(ohr))
+      → Pre-condition : la structure receptrice doit MATCHER la structure de l'ohr.
+      Tikkun : transformer ZT en partzuf → puis ils peuvent recevoir.
+      → Architecture : le Tikkun est une PREPARATION STRUCTURELLE.
+    applications_ia:
+      - "Pattern : la communication necessite une compatibilite structurelle"
+      - "Architecture : avant d'envoyer un message, verifier la structure receptrice"
+      - "Pattern de protocole : adapter le format au receptionneur ou former le receptionneur"
+      - "[PLANNED] tikkun/ : transformer les composants non-receptifs en composants receptifs"
+      - "partzufim/regulator.py : matcher l'ohr au partzuf-recipient"
+    questions_ouvertes:
+      - "La compatibilite est-elle binaire ou continue ?"
+      - "Existe-t-il un protocole de degradation gracieuse pour les composants non-prets ?"
+      - "Le partzuf complet est-il toujours requis ou parfois suffisant un partiel ?"

@@ -1,0 +1,641 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 2 — Sha'ar Shevirat ha-Kelim (שער שבירת הכלים)
+# Perek: 3a — Pourquoi kelim descendent en Beriah, GR/ZT et 3 kavim,
+#             Sequence Daat-Chesed-Gevurah-Tiferet, regle 3 madregot
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §3 — Part A :
+#   - Bloc A : Distinction kelim 7 melakhim (descendent Beriah) vs achoraim AVI (Atzilut)
+#   - Bloc B : Difference GR (Keter-Hokhmah-Binah) vs ZT, 3 kavim avant tikkun
+#   - Bloc C : Sequence Daat → Chesed → Gevurah → Tiferet (kelim et orot)
+#   - Bloc D : Regle des 3 madregot maximum entre ohr et keli
+#   - Bloc E : Tiferet veut remonter vers Binah (sans keli)
+#
+# Source Sefaria : Sefer_Etz_Chaim.9.3 (premiere partie)
+# IDs : EC-H2S9-108 → EC-H2S9-126
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 2
+  shaar_name_he: "שער שבירת הכלים"
+  perek: 3
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 3 — distinction kelim/achoraim, GR/ZT et 3 kavim, sequence des 4 premiers melakhim, regle 3 madregot."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : KELIM EN BERIAH VS ACHORAIM EN ATZILUT ───
+
+  - id: "EC-H2S9-108"
+    source_he: "ונבאר עתה איך בעת מיתת המלכים אלו ירדו הכלים שלהם לעולם הבריאה כנ\"ל משא\"כ בד' אחוריים דאו\"א"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      EXPLICATION : lors de la MITAH des MELAKHIM,
+      leurs KELIM sont descendus en OLAM HA-BERIAH (comme dit).
+      MAIS PAS de meme pour les 4 ACHORAIM d'AVI (qui restent en Atzilut).
+      → Reprise du critere ontologique de la Mitah (cf. EC-H2S9-075 perek 02a).
+      → Asymetrie ontologique : 7 melakhim transitent d'olam ;
+      4 achoraim restent intra-olam.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_melakhim_dans_beriah, role: kelim_des_melakhim_descendent_beriah}
+      - {id: achoraim_avi_dans_atzilut, role: achoraim_avi_restent_atzilut}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py", "olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Confirmation du critere ontologique. cf. EC-H2S9-075 (02a) : Mitah = transition olam."
+
+  - id: "EC-H2S9-109"
+    source_he: "כי הנה נתבאר החילוק שהיה בין או\"א לז' המלכים שהם זו\"נ ואמרנו כי הז' מלכים שהם זו\"נ מתו ממש וירדו אל עולם הבריאה הכלים שלהם ואחוריים של או\"א נתבטלו ולא מתו אלא שירדו למטה בעולם אצילות עצמו"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      RECAP du HILUK (distinction) :
+      Les 7 MELAKHIM = ZON → MITAH MAMASH → leurs KELIM en BERIAH.
+      Les ACHORAIM d'AVI → BITUL (pas mort) → restes en AT'ZILUT meme.
+      → Distinction terminologique : melakhim "metu" (sont morts), AVI "nitbatlu" (sont annules).
+      cf. EC-H2S9-068c (02a) sur Bitul intra-olam.
+    type: axiome_explicite
+    concepts:
+      - {id: hiluk_melakhim_avi, role: distinction_melakhim_avi}
+      - {id: melakhim_metu_mamash, role: melakhim_morts_effectivement}
+      - {id: achoraim_nitbatlu, role: achoraim_annules}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Recapitulation : distinction terminologique Mitah/Bitul reprise du perek 2."
+
+  - id: "EC-H2S9-110"
+    source_he: "ושם ביארנו טעם לזה ואמרנו שהיה לסיבה שהז' מלכים לא קבלו אורות אח\"פ דא\"ק רק מגופא דיליה ואילך"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      RAISON RACINE de cette distinction (deja expliquee) :
+      Les 7 MELAKHIM n'ont PAS recu les OROT de AHaP (AZAN-HOTEM-PEH = oreille-nez-bouche)
+      d'A"K (Adam Kadmon) → seulement du GUFA (corps) de A"K et plus bas.
+      → Sans la lumiere des sources superieures (AHaP), ils etaient
+      structurellement plus fragiles → vulnerables a la Mitah complete.
+      cf. EC-H2S8 sur les Nekudim sortant des Einaim (yeux) d'A"K.
+    type: axiome_explicite
+    concepts:
+      - {id: ahp_de_ak, role: oreille_nez_bouche_d_ak}
+      - {id: melakhim_seulement_de_gufa, role: melakhim_recus_seulement_du_corps}
+      - {id: fragilite_structurelle_melakhim, role: fragilite_origine_des_melakhim}
+    mapping:
+      modules: ["adam_kadmon.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Cause racine : les 7 melakhim privees de la lumiere AHP d'AK. cf. EC-H2S8 (Drushei Nekudot) sur les sources des Nekudim."
+
+  # ─── BLOC B : GR (Keter-Hokhmah-Binah) VS ZT, 3 KAVIM AVANT TIKKUN ───
+
+  - id: "EC-H2S9-111"
+    source_he: "והנה לטעם זה עצמו היה ג\"כ שינוי אחר בין ג\"ר שהם כח\"ב אל הז' מלכים התחתונים כי הג\"ר יצאו בקצת תיקון בראשונה והוא כי כאשר יצאו בראשונה נתפשטו כסדר ג' קוין"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      DIFFERENCE STRUCTURELLE entre GR et ZT :
+      GR = G' RISHONOT = les 3 PREMIERES = Keter, Hokhmah, Binah (KHB).
+      ZT = les 7 INFERIEURS (les 7 melakhim).
+      Les GR sont sorties be-KETZAT TIKKUN BA-RISHONAH (avec un certain Tikkun au depart).
+      Quand sorties initialement, elles se sont DEPLOYEES en SEDER 3 KAVIM
+      (ordre des 3 lignes : droite, gauche, centre).
+      → GR = configuration 3 lignes deja a la naissance.
+    type: axiome_explicite
+    concepts:
+      - {id: gr_keter_hokhmah_binah, role: trois_premieres_keter_hokhmah_binah}
+      - {id: gr_ketzat_tikkun, role: gr_avec_tikkun_initial}
+      - {id: gr_seder_3_kavim, role: gr_en_trois_lignes}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Distinction GR/ZT : les 3 superieures sont sorties pre-Tikkun (3 kavim). Les 7 inferieures non."
+
+  - id: "EC-H2S9-112"
+    source_he: "משא\"כ ז\"ת שיצאו זו למטה זו וז\"ש באד\"ר עד אימת ניתב בקיימא דחד סמכא ר\"ל נתקן התיקון שהוא דרך קוין אבל קודם שהיו זעג\"ז הוי קיומא דחד סמכא"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Mais PAS DE MEME (mash"k) pour ZT — sorties l'une SOUS l'autre (zo le-matah zo).
+      Citation IDRA RABBA en arameen :
+      "AD EIMAT NEITIV BE-KAYMA DE-HAD SAMKHA"
+      (jusqu'a quand serons-nous etablis sur UN SEUL APPUI).
+      → Signification : le Tikkun = configuration 3 KAVIM ;
+      AVANT le Tikkun = ZE-AL-GABEI-ZE (zeh al-gabei-zeh = l'un sur l'autre)
+      = "kayma de-had samkha" (etablissement sur un seul appui — ligne unique).
+      → Architecture pre-Tikkun : ligne unique, vulnerable.
+    type: déduction_scripturaire
+    concepts:
+      - {id: zt_zo_lematah_zo, role: zt_lune_sous_lautre}
+      - {id: idra_rabba_kayma_chad_samkha, role: citation_idra_un_appui_unique}
+      - {id: zegz_ze_al_gabei_ze, role: configuration_zegz}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: []
+      partzufim: []
+      relevance: "Distinction structurelle : ZT en colonne unique pre-Tikkun. Citation Idra Rabba comme prooftext."
+
+  - id: "EC-H2S9-113"
+    source_he: "וכבר ביארנו כי התיקון האצילות הוא בהיות ו\"ק עשוי בבחי' ג' קוים קשורים זה בזה בסוד הג' המכריע ביניהן ואז נקרא רה\"י אבל בהיותן זעג\"ז והם נפרדין אחת מחברתה אז נקרא רה\"ר"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      LE TIKKUN d'AT'ZILUT consiste en : 6 KETZAVOT (6 directions) en 3 KAVIM
+      LIES (kshurim zeh ba-zeh) en SOD du SHELISHI HA-MAKHRIA' BEINEHEN
+      (le 3eme qui DECIDE/EQUILIBRE entre les 2 — la ligne centrale).
+      → Etat post-Tikkun = appele RESHUT HA-YAHID (RH"Y, domaine prive).
+      MAIS quand ils sont ZE-AL-GABEI-ZE et NIFRADIN (separes l'un de l'autre)
+      → appele RESHUT HA-RABBIM (RH"R, domaine public).
+      cf. EC-H2S9-080 (02b) sur RH"R = 16 amah avant Tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_3_kavim_kshurim, role: tikkun_trois_lignes_liees}
+      - {id: shelishi_makhria, role: troisieme_qui_equilibre}
+      - {id: rh_y_post_tikkun, role: rh_y_apres_tikkun}
+      - {id: rh_r_pre_tikkun_separes, role: rh_r_pre_tikkun_separes}
+    mapping:
+      modules: ["[PLANNED] core/sefirot.py", "partzufim/zeir_anpin.py"]
+      tables: ["sefirot_hierarchy"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture du Tikkun : 3 kavim lies par le decisif central. cf. EC-H2S9-080 (02b)."
+
+  - id: "EC-H2S9-114"
+    source_he: "ולכן הג\"ר נתבטלו אחוריהם ולא מתו וז' מלכים מתו פנים ואחור כי יצאו בלי תיקון כלל"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      CONCLUSION du HILUK :
+      GR → seuls leurs ACHORAIM nitbatlu (annules) ; ils ne sont PAS morts.
+      Z' MELAKHIM → MORTS PANIM ET ACHOR (face ET dos)
+      car ils sont sortis BLI TIKKUN KLAL (sans aucun tikkun initial).
+      → Architecture causale : presence/absence de Tikkun initial = vulnerabilite differentielle.
+      cf. EC-H2S9-066 (02a) : AVI Bitul, ZON Mitah.
+    type: déduction_logique
+    concepts:
+      - {id: gr_achoraim_seuls_nitbatlu, role: gr_seuls_achoraim_annules}
+      - {id: melakhim_metu_panim_achor, role: melakhim_morts_face_et_dos}
+      - {id: bli_tikkun_klal, role: sans_aucun_tikkun_initial}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Synthese : tikkun initial = protection ; sans tikkun = chute totale. Architecture preventive."
+
+  # ─── BLOC C : SEQUENCE DETAILLEE — DAAT, CHESED, GEVURAH, TIFERET ───
+
+  - id: "EC-H2S9-115"
+    source_he: "ונבאר סדר יציאת ז' מלכים ונתחיל מן הראשון שהוא הדעת אשר זה יצא ראשונה וכאשר לא היה יכול הכלי לסבול כנ\"ל נשבר הכלי וירד למטה בעולם הבריאה ר\"ל במקום שהיה עתיד להיות עולם הבריאה אח\"כ כי הרי עדיין לא נברא עולם הבריאה ונפל הכלי הזה במקום הדעת דבריאה להיותו מתייחס אליו כמוהו"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      SEQUENCE detaillee — 1er melekh = DAAT :
+      Le keli n'a pas pu SUPPORTER → keli BRISE → descendu BAS dans OLAM HA-BERIAH.
+      Note : "be-makom she-hayah atid li-hyot olam ha-Beriah" — dans le LIEU
+      qui sera FUTUR Olam ha-Beriah, car Beriah n'etait pas encore creee.
+      Le keli est tombe au LIEU du DAAT de BERIAH —
+      car ils sont MITYAHES (apparentes) l'un a l'autre = "kamoho" (semblable).
+      → Principe : keli brise descend au lieu HOMOLOGUE de l'olam inferieur.
+    type: axiome_explicite
+    concepts:
+      - {id: daat_keli_dans_daat_de_beriah, role: keli_daat_au_daat_de_beriah}
+      - {id: makom_atid_beriah, role: lieu_futur_de_beriah}
+      - {id: mityachasim_homologue, role: kelim_apparentes_par_homologie}
+    mapping:
+      modules: ["olamot.py", "[PLANNED] core/shevirah.py"]
+      tables: ["olamot_config"]
+      partzufim: []
+      relevance: "Principe homologique : keli brise → lieu apparente dans olam inferieur. Pattern de chute structuree."
+
+  - id: "EC-H2S9-116"
+    source_he: "ואמנם אור של הדעת ירד גם הוא אלא שנשאר באצילות עצמו במקום כלי המלכות של האצילות ואמנם לא ירד שם לסיבת פגם אשר בו כי הרי נת\"ל כי השבירה היתה בכלים לא באורות"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      L'OHR du Daat est descendu AUSSI — mais reste dans AT'ZILUT meme,
+      au LIEU du KELI de la MALKHUT d'AT'ZILUT.
+      → IMPORTANT : sa descente N'est PAS pour cause de PEGAM.
+      Car la SHEVIRAH etait dans les KELIM, PAS dans les OROT (cf. EC-H2S9-090 perek 02b).
+      → Distinction operationnelle : kelim brises (Beriah) vs orot intacts (Atzilut).
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_daat_dans_malkhut_atzilut, role: ohr_daat_dans_malkhut_atzilut}
+      - {id: orot_lo_pegam, role: orot_pas_endommages}
+      - {id: shevirah_kelim_pas_orot, role: shevirah_concerne_kelim_pas_orot}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states", "olamot_config"]
+      partzufim: []
+      relevance: "Distinction critique : kelim brises (descente Beriah) vs orot intacts (restent en Atzilut). Architecture topologique."
+
+  - id: "EC-H2S9-117"
+    source_he: "ואמנם ירידתן היתה כדי להאיר מרחוק בכלי שלו העומד בבריאה שלא ימות לגמרי וישאר בלתי תקוה לכן מאיר בו מרחוק בהיותו עומד הוא באצילות והוא בבחי' תגין על האותיות כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      RAISON de la descente des OROT (kavanah) :
+      ECLAIRER de LOIN (le-ha'ir mi-rahok) le KELI qui est en BERIAH —
+      pour qu'il NE MEURE PAS LE-GAMRI (entierement)
+      et ne reste pas BILTI TIKVAH (sans espoir).
+      L'ohr eclaire le keli MI-RAHOK (de loin) en restant en Atzilut.
+      → C'est dans la BEHINAH des TAGIN sur les OTIOT (signes au-dessus des lettres).
+      cf. EC-H2S8-126 (perek 06b) sur Tagin = orot apres Shevirah.
+    type: axiome_explicite
+    concepts:
+      - {id: leha_ir_me_rahok, role: eclairer_de_loin}
+      - {id: keli_bilti_tikvah, role: keli_sans_espoir}
+      - {id: tagin_orot_distance, role: tagin_orot_a_distance}
+    mapping:
+      modules: ["ohr.py", "olamot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Mecanisme architectural : eclairage a distance pour preserver le keli. cf. EC-H2S8-126 (Tagin)."
+
+  - id: "EC-H2S9-118"
+    source_he: "ואח\"כ יצא החסד ונשבר הכלי וירד בבינה דבריאה והאור ירד במקום כלי היסוד דאצילות כי כבר אור הדעת הקדים לקחת מקום של המלכות"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Ensuite est sorti CHESED → keli brise → descendu en BINAH de BERIAH.
+      L'OHR de Chesed est descendu au LIEU du KELI de YESOD d'AT'ZILUT.
+      → POURQUOI Yesod et pas Malkhut ? Car l'OHR du DAAT a deja PRIS la place
+      de la MALKHUT (cf. EC-H2S9-116).
+      → Logique de l'occupation : les orot prennent les kelim libres, dans l'ordre.
+    type: axiome_explicite
+    concepts:
+      - {id: chesed_keli_dans_binah_beriah, role: keli_chesed_au_binah_de_beriah}
+      - {id: ohr_chesed_dans_yesod_atzilut, role: ohr_chesed_au_yesod_atzilut}
+      - {id: occupation_kelim_libres, role: orot_prennent_kelim_libres}
+    mapping:
+      modules: ["olamot.py", "ohr.py"]
+      tables: ["ohr_states", "olamot_config"]
+      partzufim: []
+      relevance: "Logique d'occupation : les orot remplissent les kelim libres en sequence."
+
+  - id: "EC-H2S9-119"
+    source_he: "ואח\"כ יצאה גבורה ונשברה וירד הכלי בחכמה דבריאה והאור ירד בכלי דנצח הוד דאצילות שהם ב' פלגי דגופא"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Ensuite est sortie GEVURAH → brisee → KELI en HOKHMAH de BERIAH.
+      L'OHR est descendu dans le KELI de NETZACH-HOD d'AT'ZILUT —
+      car NH = "B' PALGEI DE-GUFA" (les 2 moities du corps).
+      → Pattern : un seul ohr peut occuper 2 kelim qui sont structurellement
+      apparies (NH = pair).
+      cf. EC-H2S9-042 (perek 01b) sur NH = melekh ehad / palgei gufa.
+    type: axiome_explicite
+    concepts:
+      - {id: gevurah_keli_dans_hokhmah_beriah, role: keli_gevurah_au_hokhmah_beriah}
+      - {id: ohr_gevurah_dans_nh_atzilut, role: ohr_gevurah_dans_netzach_hod}
+      - {id: nh_palgei_gufa_ensemble, role: nh_palgei_gufa_recevant_ensemble}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Pattern d'occupation paire : NH (palgei gufa) recoivent un seul ohr ensemble. cf. EC-H2S9-042."
+
+  - id: "EC-H2S9-120"
+    source_he: "ואח\"כ יצאה הת\"ת ונשבר והכלי ירד בכתר דבריאה והאור נשאר במקומו שהוא בת\"ת דאצילות"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Ensuite est sortie TIFERET → brisee → KELI en KETER de BERIAH.
+      MAIS l'OHR est RESTE DANS SON LIEU = TIFERET d'AT'ZILUT.
+      → EXCEPTION : Tiferet ne descend pas, son ohr reste en place.
+      Geometrie : le keli Tiferet est au sommet de Beriah ; son ohr reste a Atzilut-Tiferet.
+      → Premier exception au pattern de descente.
+    type: axiome_explicite
+    concepts:
+      - {id: tiferet_keli_dans_keter_beriah, role: keli_tiferet_au_keter_beriah}
+      - {id: ohr_tiferet_nishar_be_makomo, role: ohr_tiferet_reste_dans_son_lieu}
+      - {id: exception_tiferet, role: exception_au_pattern_de_descente}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Premier ohr a rester en place (Tiferet d'Atzilut). Exception qui prepare la suite (montee vers Binah)."
+
+  # ─── BLOC D : REGLE DES 3 MADREGOT MAXIMUM ───
+
+  - id: "EC-H2S9-121"
+    source_he: "והנה עתה לא יש הרחק בין שום אור מן האורות הנ\"ל אל הכלים שלו יותר מג' מדרגות כי יותר מג' מדרגות הוא הרחק גמור ואינו יכול להאיר בו"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      REGLE FONDAMENTALE : a present, il n'y a PAS de RAHAQ (distance)
+      entre AUCUN ohr et son keli SUPERIEURE A 3 MADREGOT.
+      RAISON : plus de 3 madregot = RAHAQ GAMUR (distance complete) →
+      l'ohr ne peut plus eclairer (eino yakhol leha'ir bo).
+      → Limite d'eclairage : 3 madregot max entre ohr et keli.
+      → Architecture des distances : seuil critique d'eclairage.
+    type: axiome_explicite
+    concepts:
+      - {id: regle_3_madregot_max, role: regle_distance_maximum_de_3}
+      - {id: rahaq_gamur, role: distance_complete_seuil}
+      - {id: seuil_eclairage_3_madregot, role: seuil_critique_d_eclairage}
+    mapping:
+      modules: ["ohr.py", "[PLANNED] core/shevirah.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Loi physique du systeme : 3 madregot = seuil maximum de transmission lumiere → keli. Architecture de portee."
+
+  - id: "EC-H2S9-122"
+    source_he: "ואמנם שאר האורות גם הם ירדו ממקומם חוץ מת\"ת שנשאר במקומו כנ\"ל ולא ירד ונמצא כי בלי ספק שאורות האחרים שירדו ממקומם אע\"פ שביארנו שהיתה ירידתם לצורך הכלים להאיר להם עכ\"ז בהיותם למטה ממקומם נחלש כוחם מעט ולכן אין להם כח לעלות למעלה"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      Les AUTRES OROT sont aussi descendus de leur place, SAUF TIFERET qui est reste.
+      Bien que la descente etait LE-TZOREKH ha-KELIM (pour le besoin des kelim),
+      etant DESCENDUS de leur place → leur KOAH (force) s'est AFFAIBLI UN PEU
+      (nehlash kohem me'at).
+      → DONC ils n'ont PAS la KOAH de remonter.
+      Architecture : la descente (meme volontaire) affaiblit la force ascendante.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_yardu_mi_makom, role: orot_descendus_de_leur_place}
+      - {id: nehlash_koach_me_at, role: force_legerement_affaiblie}
+      - {id: lo_koah_la_alot, role: pas_force_pour_remonter}
+    mapping:
+      modules: ["ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Loi de la fatigue par descente : meme service volontaire reduit la capacite ascendante."
+
+  # ─── BLOC E : TIFERET REMONTE VERS BINAH ───
+
+  - id: "EC-H2S9-123"
+    source_he: "אבל אור הת\"ת אשר עמד במקומו ולא נשתנה טעמו וכחו בו חזק וע\"כ בראותו עצמו בלתי כלי אפשר לו שיעלה למקום אשר יצא משם"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      MAIS l'OHR du TIFERET — qui est reste dans son lieu et n'a pas change —
+      son TA'AM (gout) et sa KOAH sont TANIM (forts).
+      Donc en se voyant SANS KELI (bilti keli) → il PEUT (efshar lo) MONTER
+      au LIEU d'OU IL EST SORTI (= Binah, le 3eme niveau au-dessus).
+      → Conservation de la force : ce qui ne descend pas garde toute sa puissance.
+    type: axiome_explicite
+    concepts:
+      - {id: tiferet_kohach_chazak, role: tiferet_force_intacte}
+      - {id: tiferet_lo_nishtanah, role: tiferet_inchange}
+      - {id: tiferet_efshar_la_alot, role: tiferet_peut_remonter}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Tiferet conserve ses capacites par non-descente. Architecture de preservation."
+
+  - id: "EC-H2S9-124"
+    source_he: "כי לא יחפוץ להשאר ערום מגולה בלי לבוש ויחזור אל הבינה אל המקום אשר עמד שם בראשונה ואם ככה יעשה נמצא שיהיה מרוחק מאד מכלי שלו וימות לגמרי"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      MOTIVATION PSYCHIQUE de Tiferet : il ne veut pas RESTER AROM MEGULEH
+      (nu et decouvert) BLI LEVUSH (sans vetement).
+      → Il veut RETOURNER A BINAH (lieu d'origine).
+      MAIS si il fait cela → il sera MERUHAQ ME'OD (tres eloigne) de son keli
+      → mort COMPLETE (yamut le-gamri) — depasse les 3 madregot.
+      → Dilemme : retour a Binah = mort du keli en Beriah.
+      cf. EC-H2S9-117 sur la necessite d'eclairer pour preserver le keli.
+    type: axiome_explicite
+    concepts:
+      - {id: tiferet_arom_meguleh, role: tiferet_nu_et_decouvert}
+      - {id: tiferet_veut_retourner_binah, role: tiferet_aspire_au_retour}
+      - {id: dilemma_tiferet, role: dilemme_retour_vs_keli_mort}
+    mapping:
+      modules: ["ohr.py", "partzufim/zeir_anpin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Dilemme psychique-architectural : preservation propre vs preservation du keli. Pose le probleme du Tikkun."
+
+  - id: "EC-H2S9-125"
+    source_he: "ולכן רצה המאציל העליון המשיך והגדיל את כלי הכתר אשר לא נשבר כנודע ונמשך דרך קו האמצעי כמ\"ש כי הג\"ר כבר היו מתחלה בציור ג' קוין ונמשך דרך קו האמצעי עד מקום הת\"ת עד אמצעיתו לבד שהוא עד הטיבור לבד"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      DONC le MA'ATZIL ELYON (l'Emanateur supreme) a VOULU :
+      → MASHIKH (etirer/amener) et HIGDIL (agrandir) le KELI du KETER —
+      qui n'etait PAS BRISE (cf. EC-H2S9-067 perek 02a, Keter pegam be-alma seul).
+      → Il a etire le Keter par le QAV HA-EMTZAI (ligne centrale)
+      car les GR etaient deja en 3 kavim (cf. EC-H2S9-111).
+      → Etire jusqu'au MAKOM ha-TIFERET, jusqu'a son MILIEU SEULEMENT
+      = jusqu'au TABUR (nombril) seulement.
+      → Mecanisme : l'Emanateur intervient en agrandissant le Keter intact.
+    type: axiome_explicite
+    concepts:
+      - {id: maatzil_higdil_keter, role: emanateur_agrandit_keter}
+      - {id: keter_lo_nishbar, role: keter_pas_brise}
+      - {id: qav_emtzai_jusqu_au_tabur, role: qav_central_jusqu_au_nombril}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Premiere intervention du Maatzil dans le Tikkun : agrandit le Keter (intact) jusqu'au Tabur. cf. EC-H2S9-067 sur Keter pegam be-alma."
+
+  - id: "EC-H2S9-126"
+    source_he: "ואז עלה אור הת\"ת ונעלם תוך כלי הנ\"ל של הכתר שנתפשט עד מקומו ונמצא כי לא נתעלה רק חצי אור הת\"ת התחתון כי חצי העליון עומד במקומו שכבר נתפשט דרך בו כלי הכתר"
+    source_ref: "Heikhal 2, Sha'ar 2:3"
+    assertion: |
+      ALORS l'OHR du Tiferet est MONTE et s'est CACHE dans le KELI du KETER
+      qui s'est etendu jusqu'a Tiferet.
+      MAIS seul le DEMI INFERIEUR est monte —
+      car le DEMI SUPERIEUR EST DEJA dans le keli Keter etendu.
+      → Architecture en couches : Keter absorbe demi-haut, demi-bas remonte.
+      cf. EC-H2S9-125 sur Keter etendu jusqu'au Tabur.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_tiferet_monte_dans_keter_etendu, role: ohr_tiferet_monte_dans_keter_etendu}
+      - {id: hatzi_tachton_tiferet_alah, role: demi_inferieur_tiferet_monte}
+      - {id: hatzi_elyon_dans_keli_keter, role: demi_superieur_dans_keli_keter}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "ohr.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Geometrie precise du Tikkun par couches : Keter etendu absorbe demi-haut, demi-bas remonte. Architecture verticale."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S9-053"
+    type: causal
+    from: ahp_de_ak
+    to: melakhim_seulement_de_gufa
+    nature: "Privation des AHP d'AK → fragilite structurelle des 7 melakhim → Mitah complete"
+    assertions_source: ["EC-H2S9-110"]
+
+  - id: "REL-H2S9-054"
+    type: dualité_structurelle
+    from: gr_seder_3_kavim
+    to: zt_zo_lematah_zo
+    nature: "GR pre-Tikkun en 3 kavim ↔ ZT en colonne unique (kayma de-had samkha)"
+    assertions_source: ["EC-H2S9-111", "EC-H2S9-112"]
+
+  - id: "REL-H2S9-055"
+    type: causal
+    from: bli_tikkun_klal
+    to: melakhim_metu_panim_achor
+    nature: "L'absence de tikkun initial cause la mort complete (panim et achor) des melakhim"
+    assertions_source: ["EC-H2S9-114"]
+
+  - id: "REL-H2S9-056"
+    type: séquentiel
+    from: daat_keli_dans_daat_de_beriah
+    to: tiferet_keli_dans_keter_beriah
+    via: [chesed_keli_dans_binah_beriah, gevurah_keli_dans_hokhmah_beriah]
+    nature: "Sequence : Daat→Daat-Beriah, Chesed→Binah-Beriah, Gevurah→Hokhmah-Beriah, Tiferet→Keter-Beriah (inversion)"
+    assertions_source: ["EC-H2S9-115", "EC-H2S9-118", "EC-H2S9-119", "EC-H2S9-120"]
+
+  - id: "REL-H2S9-057"
+    type: causal
+    from: shevirah_kelim_pas_orot
+    to: orot_lo_pegam
+    nature: "La shevirah affecte les kelim seulement → les orot restent intacts"
+    assertions_source: ["EC-H2S9-116"]
+
+  - id: "REL-H2S9-058"
+    type: causal
+    from: leha_ir_me_rahok
+    to: keli_bilti_tikvah
+    nature: "L'eclairage a distance preserve les kelim brises de la mort definitive"
+    assertions_source: ["EC-H2S9-117"]
+
+  - id: "REL-H2S9-059"
+    type: causal
+    from: regle_3_madregot_max
+    to: rahaq_gamur
+    nature: "Au-dela de 3 madregot = distance gamur → ohr ne peut plus eclairer"
+    assertions_source: ["EC-H2S9-121"]
+
+  - id: "REL-H2S9-060"
+    type: causal
+    from: orot_yardu_mi_makom
+    to: lo_koah_la_alot
+    nature: "Les orot descendus s'affaiblissent → ne peuvent plus remonter (sauf Tiferet reste)"
+    assertions_source: ["EC-H2S9-122", "EC-H2S9-123"]
+
+  - id: "REL-H2S9-061"
+    type: causal
+    from: dilemma_tiferet
+    to: maatzil_higdil_keter
+    nature: "Le dilemme de Tiferet → intervention du Maatzil qui agrandit le Keter pour creer le pont"
+    assertions_source: ["EC-H2S9-124", "EC-H2S9-125"]
+
+  - id: "REL-H2S9-062"
+    type: contenance
+    from: maatzil_higdil_keter
+    to: ohr_tiferet_monte_dans_keter_etendu
+    nature: "Le Keter etendu sert de contenant pour l'ohr Tiferet qui monte"
+    assertions_source: ["EC-H2S9-125", "EC-H2S9-126"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S9-023"
+    nom: "Principe de la Distinction GR/ZT (Tikkun Initial vs Vulnerabilite)"
+    source_assertions: ["EC-H2S9-110", "EC-H2S9-111", "EC-H2S9-112", "EC-H2S9-114"]
+    formalisation: |
+      Le systeme distingue 2 classes de composants selon leur etat initial :
+      GR (Keter, Hokhmah, Binah) :
+        Sortis BE-KETZAT TIKKUN — avec un certain Tikkun initial
+        Configuration : 3 KAVIM des la naissance
+        Recoivent les OROT depuis AHaP de A"K (les sources superieures)
+        → Robustes : seuls leurs Achoraim tombent (Bitul, pas Mitah)
+      ZT (les 7 melakhim) :
+        Sortis BLI TIKKUN KLAL — sans tikkun initial
+        Configuration : ZE-AL-GABEI-ZE (colonne unique)
+        Reçoivent seulement du GUFA d'A"K (sources inferieures)
+        → Fragiles : Mitah complete (panim et achor)
+      → Pattern : la VULNERABILITE est INVERSEMENT proportionnelle a la richesse
+      des sources et a la diversite topologique des liens.
+    applications_ia:
+      - "Architecture en classes : composants critiques (GR-like) vs composants risques (ZT-like)"
+      - "[PLANNED] core/shevirah.py : modeliser la classe initiale comme attribut"
+      - "Pattern : redondance de sources (3 kavim) = resilience"
+      - "Diagnostic : un composant mono-source est plus fragile qu'un multi-sources"
+      - "partzufim/arikh_anpin.py + abba.py + imma.py : implementer GR robustesse"
+    questions_ouvertes:
+      - "Combien de sources differentes sont necessaires pour passer GR ?"
+      - "Le 'tikkun initial' est-il quantifiable ou binaire ?"
+      - "Peut-on transformer un ZT en GR par retro-tikkun ?"
+
+  - id: "PG-H2S9-024"
+    nom: "Principe de la Cascade Topologique (Pattern d'Occupation)"
+    source_assertions: ["EC-H2S9-115", "EC-H2S9-116", "EC-H2S9-118", "EC-H2S9-119", "EC-H2S9-120"]
+    formalisation: |
+      Pattern de chute structuree des 7 melakhim :
+      KELIM brises → descendent vers leurs HOMOLOGUES en BERIAH
+        Daat → Daat de Beriah (homologie directe)
+        Chesed → Binah de Beriah (homologie inverse — RECONFIGURATION)
+        Gevurah → Hokhmah de Beriah
+        Tiferet → Keter de Beriah
+      → INVERSION TOPOLOGIQUE : ce qui etait bas en Atzilut devient haut en Beriah.
+      OROT → restent en AT'ZILUT mais migrent vers le keli LIBRE le plus proche
+        Daat ohr → Malkhut d'Atzilut (libre)
+        Chesed ohr → Yesod d'Atzilut (Malkhut prise)
+        Gevurah ohr → NH d'Atzilut (palgei gufa, paire)
+        Tiferet ohr → reste en Tiferet (exception)
+      → Loi : kelim cascade en homologie inverse ; orot occupent libres.
+    applications_ia:
+      - "Pattern d'occupation : ressources libres prises en sequence par les arrivants"
+      - "Inversion topologique : un crash dans la couche N peut creer le sommet de la couche N+1"
+      - "[PLANNED] core/shevirah.py : modeliser l'algorithme de relocation kelim/orot"
+      - "Diagnostic : tracer ou est passe chaque ohr/keli pour reconstruire la cascade"
+      - "Pattern paire : NH = palgei gufa ne sont pas independants dans la chute"
+    questions_ouvertes:
+      - "L'inversion topologique est-elle universelle ou specifique a Atzilut→Beriah ?"
+      - "Que se passe-t-il si TOUS les kelim sont occupes ?"
+      - "Le pattern d'occupation est-il deterministe ?"
+
+  - id: "PG-H2S9-025"
+    nom: "Principe de la Distance Maximale (3 Madregot Limit)"
+    source_assertions: ["EC-H2S9-121", "EC-H2S9-122"]
+    formalisation: |
+      LOI PHYSIQUE du systeme : la distance maximale entre un OHR et son KELI = 3 MADREGOT.
+      Au-dela : RAHAQ GAMUR (distance complete) → l'ohr ne peut plus eclairer.
+      Conservation de la force :
+        Un ohr qui DESCEND s'AFFAIBLIT (nehlash kohem me'at)
+        → ne peut plus REMONTER
+        EXCEPTION : Tiferet qui ne descend pas → conserve sa force et peut remonter
+      → Architecture : la portee d'eclairage est BORNEE.
+      Implication : chaque kelim doit avoir une source dans un rayon de 3 madregot.
+    applications_ia:
+      - "ohr.py : implementer la limite des 3 madregot comme constante operationnelle"
+      - "Architecture : chaque composant doit avoir une source proche (< 3 niveaux)"
+      - "Diagnostic : detecter les composants trop eloignes de leur source"
+      - "Pattern : la fatigue par descente reduit la capacite d'action"
+      - "[PLANNED] core/shevirah.py : modeliser la portee comme attribut quantitatif"
+    questions_ouvertes:
+      - "Pourquoi precisement 3 madregot et pas 2 ou 4 ?"
+      - "La limite est-elle universelle ou differente entre olamot ?"
+      - "Existe-t-il un mecanisme pour etendre la portee (proxy, relay) ?"
+
+  - id: "PG-H2S9-026"
+    nom: "Principe du Maatzil-Intervenant (Tikkun par Extension du Keter)"
+    source_assertions: ["EC-H2S9-124", "EC-H2S9-125", "EC-H2S9-126"]
+    formalisation: |
+      Lorsque le systeme se trouve dans un DILEMME :
+      Tiferet sans keli → veut remonter a Binah → mais cela depasserait 3 madregot
+      → SI rien ne se passe, le keli Tiferet en Beriah meurt definitivement.
+      INTERVENTION du MAATZIL ELYON :
+      → ETIRE le Keter (qui n'a pas ete brise — Pegam be-Alma seulement)
+      → DESCEND par le QAV HA-EMTZAI (ligne centrale, deja en 3 kavim)
+      → JUSQU'AU TABUR (mi-Tiferet, milieu)
+      → Cree un NOUVEAU keli pour le Tiferet remontant.
+      Mecanisme :
+        Demi-haut Tiferet → absorbe par le Keter etendu
+        Demi-bas Tiferet → monte dans le keli Keter etendu
+      → L'Emanateur intervient SEULEMENT pour resoudre les dilemmes structurels.
+    applications_ia:
+      - "Pattern : intervention top-level seulement pour resoudre les dilemmes critiques"
+      - "Architecture : un composant superieur intact (Keter) sert de bouee de sauvetage"
+      - "[PLANNED] tikkun/ : implementer le 'maatzil_intervention' comme handler global"
+      - "Pattern d'extension : un composant intact peut etre stretche pour couvrir un manque"
+      - "partzufim/arikh_anpin.py : modeliser la capacite d'extension du Keter"
+    questions_ouvertes:
+      - "Le Maatzil intervient-il automatiquement ou requiert une condition ?"
+      - "L'extension du Keter est-elle reversible ?"
+      - "Y a-t-il d'autres mecanismes d'intervention possibles ?"

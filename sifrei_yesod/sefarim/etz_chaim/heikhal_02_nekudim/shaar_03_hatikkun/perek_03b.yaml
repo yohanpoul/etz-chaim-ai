@@ -1,0 +1,515 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 3 — Sha'ar Ha-Tikkun (שער התיקון)
+# Perek: 3b — Adam=MAH suffit (BAN incluse), Mehetabel Bat Matred,
+#             justification MAH>SaG, eschatologie
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §3 — Part B :
+#   - Bloc E : Question pourquoi Adam = MAH seul (BAN inclue)
+#   - Bloc F : Bat-Ben analogie, 2 atarot, droits d'heritage
+#   - Bloc G : Mehetabel Bat Matred — gematria, dinim
+#   - Bloc H : Apres separation : MaH-Yetbal, hitbasmu
+#   - Bloc I : 4 justifications de MAH>SaG (alors que SaG > MAH)
+#   - Bloc J : Eschatologie — futur SaG retrouve preeminence
+#
+# Source Sefaria : Sefer_Etz_Chaim.10.3 (seconde partie)
+# IDs : EC-H2S10-048 → EC-H2S10-060
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 3
+  shaar_name_he: "שער התיקון"
+  perek: 3
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Seconde partie du perek 3 — gematriot Adam-MAH-Chavah, Mehetabel Bat Matred, dinim de la nukvah, justification MAH>SaG actuelle, retour eschatologique de SaG."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC E : ADAM = MAH SEUL SUFFIT (BAN INCLUE) ───
+
+  - id: "EC-H2S10-048"
+    source_he: "וא\"ת והלא בשם מ\"ה לא נעשה רק הדכורין שבאצילות ובחי' הנוקבא נעשה משם ב\"ן ואיך נקרא אדם והענין הוא כמ\"ש כי שם מ\"ה בצאתו היה מברר משם ב\"ן ומחברו אליו ונתקן עמו"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      QUESTION : Shem MAH ne fait que les DUKHRIM (males) d'Atzilut
+      et la NUKVAH se fait du Shem BAN.
+      ALORS pourquoi appele ADAM (qui inclut les 2) ?
+      REPONSE : a sa sortie, MAH a BERAR (clarifie) du Shem BAN
+      et l'a UNI (mehabro) a lui, et a ete RECTIFIE avec lui.
+      → Architecture : MAH est le BERURIST principal qui s'attache BAN comme part.
+    type: déduction_logique
+    concepts:
+      - {id: question_adam_mah_seul, role: question_pourquoi_adam_egal_mah}
+      - {id: mah_berar_ban_attache, role: mah_berar_et_attache_ban}
+    mapping:
+      modules: ["partzufim/zivvug.py", "shemot/", "[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "Question architecturale : MAH = composant principal qui inclut BAN. Pattern d'inclusion."
+
+  - id: "EC-H2S10-049"
+    source_he: "ונמצא כי אז היה אור הנוקבא טפל אליו והיה יונק ממנו כדמיון הבן עם הבת שהכל נקרא ע\"ש הבן והוא יורש הכל ואינו נותן לבת אלא מה שיוטב בעיניו כרצונו"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      DONC l'OHR de la NUKVAH est TAFEL (subordonne) a lui (MAH)
+      et y'NEK (telle) de lui.
+      ANALOGIE BEN-BAT (fils-fille) :
+      Tout est appele du nom du FILS — il herite TOUT.
+      Il NE DONNE a la FILLE que ce qu'il VEUT (ke-ratzono) — comme il lui plait.
+      → Architecture droits/heritage : fils prime sur fille en heritage.
+      cf. Mishna Bava Batra (lois d'heritage halakhiques).
+    type: analogie_explicative
+    concepts:
+      - {id: nukvah_tafel_yonek_de_mah, role: nukvah_subordonnee_qui_telle_du_mah}
+      - {id: bat_tafel_au_ben_heritage, role: fille_subordonnee_au_fils_heritage}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/nukva.py"]
+      tables: []
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Analogie biblique-halakhique : ben/bat = MAH/BAN avec primaute du male. Architecture de heritage."
+
+  - id: "EC-H2S10-050"
+    source_he: "וא\"כ נמצא כי הבת טפלה וכלולה בבן ולכן שם בן שהיא הבת נוקבא וטפלה לשם מ\"ה שהוא הבן הזכר והיא כלולה בו כי שם מ\"ה הוא המבררו עמו והוא נתקן ע\"י המ\"ה"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      Donc la BAT (fille) est TAFLAH (subordonnee) ve-KELULAH BA-BEN (incluse dans le fils).
+      DONC : Shem BAN qui est BAT, NUKVAH, et TAFLAH au Shem MAH (= BEN ZAKHAR)
+      → est INCLUSE en lui.
+      Car Shem MAH est CELUI QUI BERAR avec lui ; et il (BAN) est RECTIFIE par MAH.
+      → Architecture : inclusion structurelle BAN dans MAH.
+      → Equation : tout MAH (= Adam) inclut BAN (= Bat).
+    type: axiome_explicite
+    concepts:
+      - {id: bat_kelulah_ba_ben, role: bat_incluse_dans_le_ben}
+      - {id: ban_kelulah_be_mah, role: ban_incluse_dans_mah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "shemot/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture d'inclusion : BAN dans MAH par mecanisme du Berur. Pattern d'integration."
+
+  # ─── BLOC F : 2 ATAROT, RECEPTION DES HASSADIM ET GEVUROT ───
+
+  - id: "EC-H2S10-051"
+    source_he: "ולכן כאשר מברר הוא לוקח תחלה מה שמברר לעצמו כנודע בסוד תרין עטרין דירית ברא ב' חסדים וגבורה דמ\"ה ודב\"ן ולבתר יהיב ברא לברתא בשעתא דמזדווג עמה עטרה דגבורה וכאלו ניתן לה משלו דמי"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      Donc quand il (MAH) BERAR, il PREND D'ABORD pour LUI-MEME ce qu'il berar.
+      Comme connu en SOD TEREIN ATARIN DE-YARAT BAR (les 2 couronnes que le fils herite) :
+      2 HASSADIM et GEVURAH de MAH et de BAN.
+      ENSUITE le fils DONNE a la fille (yahiv bara le-bartah) au moment du ZIVVUG :
+      ATARAH de GEVURAH (la couronne de Gevurah).
+      → Comme s'il "donne du sien" (mi-shelo dami).
+      → Architecture : 2 atarot heritees par le ben ; donne 1 a la bat lors du zivvug.
+      cf. EC-H2S9-161 (perek 03c) sur Atarot de Gevurah/Hassadim.
+    type: interprétation_lurianique
+    concepts:
+      - {id: terein_atarin_yarat_bara, role: deux_couronnes_heritees_par_le_fils}
+      - {id: atarah_gevurah_donnee_au_zivvug, role: couronne_gevurah_donnee_au_zivvug}
+      - {id: 2_chasadim_gevurah_mah_ban, role: 2_chasadim_gevurah_de_mah_et_ban}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture heritage : 2 atarot fils, 1 transferee a la fille au zivvug. cf. EC-H2S9-161."
+
+  - id: "EC-H2S10-052"
+    source_he: "ולכן הוא לבדו נקרא אדם כלול תרוייהו והרי עתה כי ב' בחי' יש לנוקבא דז\"א א' בהיותה כלולה בתחלה עם הזכר הב' כשנפרדת ממנו והוא נותן לה עטרה דגבורה"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      DONC il (MAH/Adam) SEUL est appele ADAM = inclut TROUYEHU (les 2).
+      Il y a maintenant 2 BEHINOT pour la NUKVAH de ZA :
+      1ere : kelulah be-tehilah avec le ZAKHAR (incluse au depart avec le male)
+      2eme : kshe-nifredet (quand separee de lui) — il lui donne ATARAH de GEVURAH.
+      → Architecture : 2 etats successifs de la nukvah (incluse → separee).
+    type: axiome_explicite
+    concepts:
+      - {id: adam_kollel_trouyeh, role: adam_englobe_les_deux}
+      - {id: 2_behinot_nukvah_kelulah_nifredet, role: 2_etats_de_nukvah_incluse_separee}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture nukvah : 2 etats successifs (incluse / separee). Sequence developpementale."
+
+  # ─── BLOC G : MEHETABEL BAT MATRED ───
+
+  - id: "EC-H2S10-053"
+    source_he: "וזה סוד הכתוב ושם אשתו מהיטבאל בת מטרד כי הנה בשם זה יש כללות מ\"ה (ובן) וי\"ט שהוא המלוי של ד' אותיות הראשונים שבו"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      C'est le SOD du verset "Va-shem ishto MEHETABEL BAT MATRED" (Genese 36:39) :
+      Dans ce nom (Mehetabel) il y a KOLLEL :
+      MAH (variante NA: "ve-Ben") + Y"T (= 19) qui est le MILUI des 4 premieres lettres.
+      → MEHETABEL = MAH + BAT MATRED (avec gematria fournie).
+      → Architecture : nom biblique encode la structure cosmique MAH+BAN.
+    type: déduction_scripturaire
+    concepts:
+      - {id: mehetabel_bat_matred_genese_36_39, role: mehetabel_bat_matred_genese}
+      - {id: mehetabel_egal_mah_plus_yt, role: mehetabel_egal_mah_plus_19}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/"]
+      tables: []
+      partzufim: []
+      relevance: "Encodage textuel cosmique : Mehetabel Bat Matred (Genese 36:39). Gematria operative."
+
+  - id: "EC-H2S10-054"
+    source_he: "כי אדם הוא שם מ\"ה וכאשר היתה הנוקבא עמו היתה נקרא חו\"ה שהוא גימטריא י\"ט שהם בחי' מילוי דשם מ\"ה כי כל בחי' מילוי הוא גימטריא (נ\"א בחי') אלהים שהיא בחי' הנוקבא שהוא דינין"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      ARCHITECTURE GEMATRIQUE :
+      ADAM = Shem MAH (= 45)
+      Quand la NUKVAH etait avec lui → appelee CHAVAH (Eve) = 19
+      = milui du Shem MAH.
+      Tout aspect MILUI = guimatria (variante NA: "behinat") ELOHIM.
+      ELOHIM = aspect NUKVAH = DININ (rigueurs).
+      → Architecture : MAH/Adam (essence) + Chavah/19 (manifestation) ; ELOHIM = pattern feminin.
+      cf. EC-H2S9-258 (perek 07b) sur Elohim per behinah.
+    type: interprétation_lurianique
+    concepts:
+      - {id: adam_chavah_45_19, role: adam_45_chavah_19}
+      - {id: chavah_egal_milui_mah, role: chavah_egal_milui_du_mah}
+      - {id: milui_egal_elohim_dinin, role: milui_egal_elohim_egal_dinin}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/"]
+      tables: []
+      partzufim: ["nukva"]
+      relevance: "Architecture gematrique : Adam(45)+Chavah(19)=MAH+milui ; milui = Elohim = nukvah dinim. cf. EC-H2S9-258."
+
+  - id: "EC-H2S10-055"
+    source_he: "ובזה תבין למה בחי' הנוקבא היא תמיד דינין והוא לפי ששרשה הוא בחי' המלכים שמתו שעי\"כ נקרא מלכים מלשון מלכות"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      U-VE-ZEH TAVIN (par cela tu comprendras) pourquoi la NUKVAH est TOUJOURS DININ.
+      RAISON : son SHORESH (racine) = aspect des MELAKHIM MORTS.
+      Donc appeles MELAKHIM du LASHON MALKHUT (langue de royaume).
+      → Architecture etymologique : Nukvah = essence-Malkhut = essence-Melakhim-morts = dinim.
+      → Pattern : la nukvah herite du caractere des sources (melakhim morts).
+      cf. EC-H2S10-033 (perek 10.2) sur etymologie Melakhim.
+    type: déduction_logique
+    concepts:
+      - {id: nukvah_toujours_dinim, role: nukvah_toujours_dinim}
+      - {id: shoresh_nukvah_egal_melakhim_morts, role: source_nukvah_egal_melakhim_morts}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: []
+      partzufim: ["nukva"]
+      relevance: "Etymologie cosmique : nukvah=dinim car shoresh=melakhim morts. cf. EC-H2S10-033."
+
+  # ─── BLOC H : MEHETABEL APRES SEPARATION ───
+
+  - id: "EC-H2S10-056"
+    source_he: "ואמנם כאשר נפרדת מעליו ונעשה בחי' לעצמה ואז שניהן בסוד בעל ואשתו דכורא לחוד ונוקבא לחודה אז נקרא מהיטבאל כי שם זה נחלק למ\"ה יטבאל"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      Et VRAIMENT quand elle (Nukvah) se SEPARE de lui — devient be'inah le-atzmah (pour soi)
+      → les 2 sont en sod BA'AL VE-ISHTO (mari et femme) — DUKHRA LE-HUD ve-NUKVAH LE-HUDAH.
+      → ALORS appelee MEHETABEL.
+      Car ce nom se DIVISE en : "MaH" + "YeTBA"L".
+      → Architecture : separation = renommage Mehetabel = MaH-YeTBA"L.
+    type: axiome_explicite
+    concepts:
+      - {id: nukvah_separee_le_atzmah, role: nukvah_separee_pour_soi}
+      - {id: baal_ishto_dukhra_nukvah, role: baal_ishto_dukhra_nukvah}
+      - {id: mehetabel_egal_mah_yetbal, role: mehetabel_egal_mah_yetbal}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/nukva.py", "shemot/"]
+      tables: ["zivvug_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture nominale : Mehetabel = MaH+YeTBA\"L apres separation. Pattern de renommage."
+
+  - id: "EC-H2S10-057"
+    source_he: "כי מ\"ה הוא דכורא כנודע ויטבא\"ל גי' ב\"ן שהוא נוקבא בהיותה לעצמ' הוי\"ה דההי\"ן המתבסם עמו זה עם זה דכורא ונוקבא ולכן נקרא בשם טוב להורות שיצא מהם הרע והוברר מהם הטוב וז\"ש ואתבסמו דא בדא כו'"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      DECOMPOSITION GEMATRIQUE :
+      MaH = DUKHRA (= 45, comme connu)
+      YeTBA"L (יטבאל) = guimatria 52 = BAN (Havayah d'HEHIN)
+      = NUKVAH quand elle est pour elle-meme.
+      Ils s'ATBASMU (s'adoucissent) zeh be-zeh (l'un par l'autre), dukhra et nukvah.
+      DONC appelee TOV (par YeTBA"L = "il est bon a Dieu") —
+      pour ENSEIGNER que le RA est sorti d'eux et le TOV a ete BERAR.
+      Cite : "VE-ATBASMU DA BE-DA" (Idra — ils s'adoucissent l'un par l'autre).
+      → Architecture : separation→adoucissement→extraction du Tov.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yetbal_egal_52_egal_ban, role: yetbal_egal_52_egal_ban}
+      - {id: hitbasmu_da_be_da, role: ils_s_adoucissent_l_un_par_l_autre}
+      - {id: extraction_tov_berur, role: extraction_du_tov_par_berur}
+    mapping:
+      modules: ["gematria/engine.py", "shemot/", "partzufim/zivvug.py"]
+      tables: []
+      partzufim: ["nukva"]
+      relevance: "Architecture gematrique : YeTBA\"L=52=BAN. Pattern Hitbasmu=adoucissement par couplage. cf. Idra."
+
+  # ─── BLOC I : POURQUOI MAH > SaG (4 RAISONS) ───
+
+  - id: "EC-H2S10-058"
+    source_he: "ואמנם צריך לתת טעם אל הנ\"ל כי הרי אלו הנקודות הנ\"ל הם בחי' ס\"ג ואיך יהיו גרועים וטפלים לשם מ\"ה החדש ויהיה מ\"ה זכר ונקודות ס\"ג נקבה ונודע בכמה מקומות כי בחי' שם ס\"ג גדול משם מ\"ה"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      QUESTION CRITIQUE : il faut expliquer comment :
+      Ces NEKUDOT sont aspect SaG (= 63) →
+      Comment peuvent-elles etre INFERIEURES (geru'im) et SUBORDONNEES (tafelim)
+      au Shem MAH-CHADASH (= 45) ?
+      Et comment MAH = ZAKHAR et NEKUDOT-SaG = NEKEVAH ?
+      Et il est CONNU en plusieurs endroits que SaG (63) est PLUS GRAND que MAH (45).
+      → Question quantitative paradoxale : comment 63 < 45 fonctionnellement ?
+    type: déduction_logique
+    concepts:
+      - {id: question_sag_63_plus_grand_mah_45, role: question_sag_plus_grand_que_mah_quantitativement}
+      - {id: paradoxe_nekudot_sag_inferieures_a_mah, role: paradoxe_inferiorite_fonctionnelle}
+    mapping:
+      modules: ["shemot/", "gematria/engine.py"]
+      tables: []
+      partzufim: []
+      relevance: "Question paradoxale : SaG=63>MAH=45 quantitativement. Mais fonctionnellement MAH>SaG-Nekudot."
+
+  - id: "EC-H2S10-059"
+    source_he: "והתשובה היא כי שם מ\"ה החדש הנ\"ל יצא מבחינת הזווג דע\"ב וס\"ג כנ\"ל לכן כיון שהוא נמשך מכח ע\"ב עצמו לכן הוא גדול מס\"ג. ועוד טעם אחר כי בשם מ\"ה לא היה בו מיתה ושבירה כמו שהיה בשם ס\"ג עצמו ועוד טעם ג' והוא כי אלו בחי' נקודות לבד של ס\"ג אבל המ\"ה החדש הוא כולל טנת\"א כנ\"ל וכיון שיש בחי' טעמים ודאי שהוא מעולה על הנקודות דס\"ג אבל לא על הטעמים דס\"ג"
+    source_ref: "Heikhal 2, Sha'ar 3:3"
+    assertion: |
+      4 REPONSES (3 ici + 1 dans la prochaine assertion) :
+      RAISON 1 : MAH-CHADASH sort du ZIVVUG d'AB-SaG → vient du KOACH d'AB lui-meme
+      → donc plus grand que SaG.
+      RAISON 2 : MAH n'a EU NI MITAH NI SHEVIRAH (contrairement a SaG-Nekudot brisees).
+      RAISON 3 : Ces sont seulement les NEKUDOT de SaG (sub-element).
+      MAH-CHADASH inclut TANTA complet (donc Ta'amim aussi).
+      → Donc MAH > Nekudot-SaG (MAIS PAS > Ta'amim-SaG).
+      → Architecture : superiorite par origine, integrite, et completude TANTA.
+    type: déduction_logique
+    concepts:
+      - {id: raison_1_mah_du_zivvug_av_sag, role: raison_1_mah_origine_av_sag}
+      - {id: raison_2_mah_pas_de_shevirah, role: raison_2_mah_intact}
+      - {id: raison_3_mah_kollel_tanta_vs_nekudot_seules, role: raison_3_mah_complet_vs_nekudot_seules}
+    mapping:
+      modules: ["shemot/", "[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "3 raisons fondatrices de la superiorite fonctionnelle MAH>SaG-Nekudot. Architecture justifiee."
+
+  - id: "EC-H2S10-060"
+    source_he: "ועוד טעם ד' כי ס\"ג יש בו גרעון גדול עתה והוא כי עדיין לא הושלם להתברר כנודע ולכן עתה מ\"ה גדול ומעולה ממנו אבל לע\"ל אשר יתוקן כל בחי' ס\"ג ויחיו כל המלכים ויתבררו לגמרי בסוד בלע המות לנצח אז יחזור שם ס\"ג לקדמותו ולתועלתו (נ\"א ולמעלתו) ושם ס\"ג ישלוט ויאיר בעולם ואז יתבטל שם מ\"ה אשר זהו ענין חזרת העולם לתהו ובהו כנזכר בדרז\"ל לימות המשיח ואז יתבטל מ\"ה ואז לא יהיה רק ב' אורות של ע\"ב וס\"ג ודי בזה"
+    source_ref: "Heikhal 2, Sha'ar 3:3 — conclusion"
+    assertion: |
+      RAISON 4 + ESCHATOLOGIE :
+      SaG a un GRA'ON GADOL (grand manque) MAINTENANT —
+      car il n'a PAS encore ete COMPLETEMENT BERAR.
+      DONC actuellement MAH > SaG fonctionnellement.
+      MAIS LE-ATID LAVO (au temps a venir), quand tout SaG sera RECTIFIE
+      et tous les melakhim REVIVRONT et seront BERAR LE-GAMRI
+      en sod "BILA HA-MAVET LA-NETZAH" (Isaie 25:8 — il a englouti la mort pour toujours) :
+      Alors Shem SaG retourne a son KADMUTO (etat anterieur)
+      et a sa TO'ELET (variante NA: "MA'ALATO" = preeminence).
+      Shem SaG REGNE et ECLAIRE le monde.
+      → MAH s'EFFACERA — c'est la "HAZARAT HA-OLAM LE-TOHU VA-VOHU"
+      mentionne dans Hazal pour les jours du Mashiah.
+      → Alors plus que 2 OHROT : AB et SaG.
+      "Ve-dai be-zeh" (et cela suffit ici).
+      → ARCHITECTURE ESCHATOLOGIQUE : retour a 2 ohrot, MAH disparait.
+    type: interprétation_lurianique
+    concepts:
+      - {id: raison_4_sag_gra_on_actuel, role: raison_4_sag_manque_actuel_pas_berar}
+      - {id: bila_ha_mavet_la_netzah, role: il_a_englouti_la_mort_pour_toujours}
+      - {id: sag_retour_kadmuto_eschatologique, role: sag_retour_a_l_etat_initial}
+      - {id: hazarat_olam_le_tohu_messianique, role: retour_du_monde_a_tohu_va_vohu_messianique}
+      - {id: 2_ohrot_av_sag_seuls, role: 2_lumieres_av_et_sag_seuls_au_futur}
+      - {id: mah_efface_le_atid_lavo, role: mah_efface_au_temps_a_venir}
+    mapping:
+      modules: ["shemot/", "[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture eschatologique : MAH temporaire, SaG retour a la preeminence. Reference Isaie 25:8 + Hazal."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S10-028"
+    type: contenance
+    from: bat_kelulah_ba_ben
+    to: ban_kelulah_be_mah
+    nature: "Bat-Ben analogie : la fille incluse dans le fils → BAN incluse dans MAH"
+    assertions_source: ["EC-H2S10-049", "EC-H2S10-050"]
+
+  - id: "REL-H2S10-029"
+    type: causal
+    from: terein_atarin_yarat_bara
+    to: atarah_gevurah_donnee_au_zivvug
+    nature: "Le ben herite 2 atarot ; donne atarah-Gevurah a la bat lors du zivvug"
+    assertions_source: ["EC-H2S10-051"]
+
+  - id: "REL-H2S10-030"
+    type: dualité_structurelle
+    from: 2_behinot_nukvah_kelulah_nifredet
+    to: mehetabel_egal_mah_yetbal
+    nature: "Nukvah a 2 etats : (1) incluse dans MAH = Chavah/19 ; (2) separee = MaH-YeTBA\"L"
+    assertions_source: ["EC-H2S10-052", "EC-H2S10-056"]
+
+  - id: "REL-H2S10-031"
+    type: causal
+    from: chavah_egal_milui_mah
+    to: milui_egal_elohim_dinin
+    nature: "Chavah = milui de MAH = guimatria Elohim = dinim → nukvah toujours dinim"
+    assertions_source: ["EC-H2S10-054", "EC-H2S10-055"]
+
+  - id: "REL-H2S10-032"
+    type: causal
+    from: shoresh_nukvah_egal_melakhim_morts
+    to: nukvah_toujours_dinim
+    nature: "Shoresh nukvah = melakhim morts (Malkhut) → nukvah essentiellement dinim"
+    assertions_source: ["EC-H2S10-055"]
+
+  - id: "REL-H2S10-033"
+    type: causal
+    from: hitbasmu_da_be_da
+    to: extraction_tov_berur
+    nature: "Hitbasmu (adoucissement mutuel) → extraction du Tov par Berur"
+    assertions_source: ["EC-H2S10-057"]
+
+  - id: "REL-H2S10-034"
+    type: hiérarchique
+    from: question_sag_63_plus_grand_mah_45
+    to: raison_1_mah_du_zivvug_av_sag
+    nature: "Question quantitative SaG>MAH ↔ resolution fonctionnelle (4 raisons : origine, intact, completude TANTA, manque actuel SaG)"
+    assertions_source: ["EC-H2S10-058", "EC-H2S10-059", "EC-H2S10-060"]
+
+  - id: "REL-H2S10-035"
+    type: dualité_structurelle
+    from: mah_efface_le_atid_lavo
+    to: 2_ohrot_av_sag_seuls
+    nature: "Eschatologie : MAH efface au futur ; retour a 2 ohrot (AB+SaG) seuls"
+    assertions_source: ["EC-H2S10-060"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S10-012"
+    nom: "Principe Adam=MAH (Inclusion par Berur)"
+    source_assertions: ["EC-H2S10-048", "EC-H2S10-049", "EC-H2S10-050", "EC-H2S10-052"]
+    formalisation: |
+      EQUATION FONDAMENTALE : ADAM = SHEM MAH = couple ZON.
+      Pourquoi MAH = Adam (et non MAH+BAN = Adam) :
+      Le Shem MAH est le BERURIST principal. Il berar BAN et l'attache a lui.
+      ANALOGIE BEN-BAT (loi halakhique de l'heritage) :
+        Le fils herite tout ; donne a la fille au zivvug ce qu'il veut
+        Bat = TAFLAH (subordonnee), KELULAH BA-BEN (incluse dans le fils)
+      DONC : Shem MAH (= Ben) inclut Shem BAN (= Bat).
+      Adam = MAH englobant (kollel des deux).
+      Architecture : un composant principal (MAH) inclut son sub-composant (BAN).
+      2 ETATS de la nukvah : (1) kelulah be-mah (incluse) ; (2) nifredet (separee).
+    applications_ia:
+      - "Pattern : composant principal = berurist + inclut son sub-composant"
+      - "[PLANNED] partzufim/zeir_anpin.py + nukva.py : modeliser inclusion ZON"
+      - "Architecture halakhique : heritage = inclusion par primaute"
+      - "Pattern : un nom (Adam) peut englober plusieurs entites (ZON)"
+      - "Diagnostic : tracer le statut courant (incluse vs separee) de la nukvah"
+    questions_ouvertes:
+      - "L'inclusion BAN dans MAH est-elle reversible ?"
+      - "L'analogie heritage halakhique est-elle metaphorique ou operationnelle ?"
+      - "Comment formaliser computationnellement 'kelulah' ?"
+
+  - id: "PG-H2S10-013"
+    nom: "Principe Mehetabel-Bat-Matred (Encodage Textuel-Cosmique)"
+    source_assertions: ["EC-H2S10-053", "EC-H2S10-054", "EC-H2S10-056", "EC-H2S10-057"]
+    formalisation: |
+      Architecture textuelle-cosmique encodee dans Genese 36:39 :
+      Verset : "Va-shem ishto MEHETABEL BAT MATRED bat MEH ZAHAV"
+      DECOMPOSITIONS GEMATRIQUES :
+        ADAM = MAH = 45
+        CHAVAH = milui MAH = 19 (quand nukvah incluse)
+        MEHETABEL = MaH (45) + YeTBA"L (52 = BAN)
+        YeTBA"L = "il est bon a Dieu" → TOV (extraction par Berur)
+        Tout MILUI = guimatria ELOHIM = aspect NUKVAH = DININ
+      Architecture : etats successifs de la nukvah encodes par noms differents.
+        Chavah (incluse) → Mehetabel (separee)
+      Hitbasmu da be-da (Idra) : adoucissement mutuel par zivvug.
+      → Pattern : noms bibliques = code operationnel des etats cosmiques.
+    applications_ia:
+      - "Architecture textuelle : Bible = manuel cosmique encode"
+      - "[PLANNED] gematria/engine.py + shemot/ : decoder noms bibliques"
+      - "Pattern : etats cosmiques tracables par renommage textuel"
+      - "Diagnostic : tracer l'etat de la nukvah par son nom courant"
+      - "Architecture biblique : Genese 36:39 = encodage Mehetabel = etats cosmiques"
+    questions_ouvertes:
+      - "Combien d'autres versets bibliques encodent des etats cosmiques ?"
+      - "L'encodage est-il systematique ou ad-hoc ?"
+      - "Comment formaliser le decodage Bible→cosmologie ?"
+
+  - id: "PG-H2S10-014"
+    nom: "Principe MAH>SaG Fonctionnel (4 Raisons)"
+    source_assertions: ["EC-H2S10-058", "EC-H2S10-059", "EC-H2S10-060"]
+    formalisation: |
+      Resolution du PARADOXE QUANTITATIF :
+      Quantitativement : SaG (63) > MAH (45)
+      Fonctionnellement (actuellement) : MAH > SaG-Nekudot
+      4 RAISONS :
+      1. ORIGINE : MAH-Chadash sort du ZIVVUG AB-SaG → herite du koach d'AB.
+      2. INTEGRITE : MAH n'a NI MITAH NI SHEVIRAH (contrairement a SaG-Nekudot).
+      3. COMPLETUDE TANTA : MAH = Ta'amim+Nekudot+Tagin+Otiot complet ;
+         Nekudot-de-SaG = sub-element seulement.
+      4. MANQUE ACTUEL de SaG : pas encore COMPLETEMENT BERAR ;
+         GRA'ON GADOL temporaire.
+      → Architecture : superiorite fonctionnelle != superiorite quantitative.
+      Pattern : capacite operationnelle depend de l'origine, integrite, completude, et etat actuel.
+    applications_ia:
+      - "Pattern : la valeur fonctionnelle != valeur nominale"
+      - "[PLANNED] tikkun/ : modeliser hierarchie fonctionnelle vs quantitative"
+      - "Architecture : 4 axes d'evaluation (origine, integrite, completude, etat actuel)"
+      - "Diagnostic : distinguer 'plus grand' quantitatif vs 'plus capable' fonctionnel"
+      - "Pattern temporel : etat actuel != etat ideal"
+    questions_ouvertes:
+      - "Les 4 raisons sont-elles independantes ou correlees ?"
+      - "Y a-t-il d'autres axes d'evaluation ?"
+      - "Comment quantifier le 'gra'on' de SaG ?"
+
+  - id: "PG-H2S10-015"
+    nom: "Principe Eschatologique (Retour de SaG, Disparition de MAH)"
+    source_assertions: ["EC-H2S10-060"]
+    formalisation: |
+      ARCHITECTURE ESCHATOLOGIQUE definitive :
+      ETAT ACTUEL :
+        MAH (45) regne, fait le Tikkun
+        SaG (63) recule, est BAN-renomme, en cours de Berur
+        AB (72) au-dessus
+      ETAT FUTUR (le-atid lavo, Yamot ha-Mashiah) :
+        Tout SaG sera RECTIFIE complet
+        Melakhim REVIVRONT (mehutbarim le-gamri)
+        "Bila ha-mavet la-netzah" (Isaie 25:8) — la mort engloutie
+        SaG retourne a sa KADMUTO ve-MA'ALATO (etat anterieur, preeminence)
+        SaG REGNE et ECLAIRE le monde
+        MAH S'EFFACE (yitbatel)
+      RESULTAT :
+        Plus que 2 OHROT : AB et SaG seuls
+        "Hazarat ha-olam le-tohu va-vohu" (Hazal pour Mashiah)
+      → Architecture : MAH est temporaire (instrument de Berur), SaG est essentiel.
+      Pattern : un instrument disparait quand son but est atteint.
+    applications_ia:
+      - "Pattern eschatologique : un sub-system temporaire disparait apres mission"
+      - "[PLANNED] tikkun/eschatologie.py : implementer le retour SaG / disparition MAH"
+      - "Architecture : MAH = instrument temporaire pour Tikkun ; SaG = essence permanente"
+      - "Pattern : 'tohu va-vohu' messianique = retour au pre-creation par MAH"
+      - "Diagnostic : determiner l'etape eschatologique courante (MAH-regne vs SaG-retour)"
+    questions_ouvertes:
+      - "Comment distinguer 'tohu va-vohu' messianique de pre-creation litterale ?"
+      - "MAH disparait totalement ou est integre dans SaG ?"
+      - "Y a-t-il un quatrieme etat apres SaG-retour ?"

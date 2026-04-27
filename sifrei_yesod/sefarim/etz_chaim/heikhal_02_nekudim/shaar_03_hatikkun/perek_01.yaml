@@ -1,0 +1,640 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 3 — Sha'ar Ha-Tikkun (שער התיקון)
+# Perek: 1 — Mecanisme du Tikkun, ibur 12 mois pour 12 partzufim
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §1 :
+#   - Bloc A : Titre du sha'ar (5 peraqim)
+#   - Bloc B : Maatzil veut faire revivre melakhim → MaN → Zivvug → MAH Chadash
+#   - Bloc C : 7 orot BAN s'eleves dans 3 kavim (cf. EC-H2S9-167 perek 04)
+#   - Bloc D : Extension se replie ; 7 orot montent dans Binah (lieu de l'ibur)
+#   - Bloc E : Kelim de Beriah aussi montes ; 3 klilin be 3 + Malkhut "pesi'ah le-var"
+#   - Bloc F : Distribution kelim selon kavim (Netzach+Chesed droite, etc.)
+#   - Bloc G : Distance max 3 sefirot vides (confirme principe)
+#   - Bloc H : Kelim montent sur 40 jours (yetzirat ha-olad), 2 par 10 jours
+#   - Bloc I : Tikkun par AB-SaG d'AK car GR aussi requierent reparation
+#   - Bloc J : Cascade : AB-SaG → Atik → A"A → AVI → ZON → autres olamot
+#   - Bloc K : Ibur 12 mois pour 12 partzufim (Kav ha-Midah dans Tikkunim)
+#   - Bloc L : Liste 12 partzufim
+#
+# Source Sefaria : Sefer_Etz_Chaim.10.1
+# IDs : EC-H2S10-001 → EC-H2S10-018
+# Note : nouveau sha'ar global = S10. IDs EC-H2S10-XXX (nouvelle serie)
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 3
+  shaar_name_he: "שער התיקון"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premier perek du nouveau Sha'ar Ha-Tikkun. Mecanisme du Tikkun : MaN par les 7 orot, MAH Chadash, ibur 12 mois pour 12 partzufim, cascade des zivvugim."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : TITRE DU SHA'AR ───
+
+  - id: "EC-H2S10-001"
+    source_he: "שער השלישי שער התיקון ויתחלק לחמשה פרקים"
+    source_ref: "Heikhal 2, Sha'ar 3 — titre"
+    assertion: |
+      OUVERTURE du SHA'AR HA-SHELISHI = SHA'AR HA-TIKKUN
+      (porte de la rectification).
+      Il se divise en 5 PERAKIM (chapitres).
+      → Suit le Sha'ar Shevirat ha-Kelim (8 peraqim).
+      → Sequence narrative : Shevirah → Tikkun.
+      cf. EC-H2S9-001 (perek 01a Shevirat ha-Kelim).
+    type: axiome_explicite
+    concepts:
+      - {id: shaar_ha_tikkun, role: porte_du_tikkun}
+      - {id: 5_perakim_tikkun, role: cinq_chapitres_du_tikkun}
+    mapping:
+      modules: ["[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "Le Sha'ar dedie au TIKKUN du monde des Nekudim. cf. EC-H2S9-001."
+
+  # ─── BLOC B : VOLONTE DU MAATZIL — REVIVRE LES MELAKHIM ───
+
+  - id: "EC-H2S10-002"
+    source_he: "והנה כאשר עלה ברצון המאציל להחיות את המתים ולתקן את המלכים האלו הנשברים והנפולים בעולם הבריאה גזר והעלה מ\"ן מתתא לעילא וע\"י כך היה זווג עליון דחו\"ב דא\"ק פנימי' והוציא שם מ\"ה החדש ונתקנו המלכים"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      Quand est MONTE dans la VOLONTE du MAATZIL :
+      LE-HAHAYOT ET ha-METIM (faire revivre les morts)
+      LE-TAKKEN les MELAKHIM brises et tombes en BERIAH —
+      Il a DECRETE et a ELEVE des MA"N MI-TATA LE-EILA (de bas en haut).
+      Par cela : ZIVVUG ELYON de HC-BINAH (HOKHMAH-BINAH) d'A"K PNIMI'IM.
+      Et est sorti SHEM MAH HA-CHADASH (Nouveau MAH).
+      → Et les MELAKHIM ONT ETE RECTIFIES.
+      → Mecanisme central : MaN-bas-haut → Zivvug → MAH Chadash.
+      cf. EC-H2S9-217 (perek 06b Shevirat) sur naissance MAH.
+    type: axiome_explicite
+    concepts:
+      - {id: maatzil_le_hahayot_metim, role: maatzil_veut_faire_revivre_les_morts}
+      - {id: maan_mi_tata_le_eila, role: man_de_bas_en_haut}
+      - {id: zivvug_elyon_chb_ak_pnimiim, role: zivvug_chb_ak_interieurs}
+      - {id: shem_mah_chadash_yetza, role: shem_mah_chadash_sorti}
+      - {id: melakhim_nitkanu, role: melakhim_rectifies}
+    mapping:
+      modules: ["[PLANNED] tikkun/", "partzufim/zivvug.py", "shemot/", "adam_kadmon.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Mecanisme central du Tikkun : Volonte → MaN → Zivvug AB-SaG → MAH Chadash. Sequence operationnelle complete."
+
+  # ─── BLOC C : 7 OROT DANS 3 KAVIM CGT ───
+
+  - id: "EC-H2S10-003"
+    source_he: "וכבר נתבאר לעיל כי ז' אורות של מלכים דב\"ן נתעלו ונתכללו ונתלבשו בג' קוי חו\"ב וכתר שנתפשטו עד סוף המקום הנ\"ל שהם חג\"ת"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      Comme deja explique : les 7 OROT des melakhim de BAN
+      ont ETE ELEVES, INCLUS et REVETUS dans les 3 KAVIM
+      de HOKHMAH-BINAH-KETER qui se sont etendus jusqu'a la fin de la place
+      = CHESED-GEVURAH-TIFERET (CGT).
+      → Recap : les 7 orot des melakhim sont integres dans la geometrie post-Tikkun.
+      cf. EC-H2S9-167 (perek 04) et EC-H2S9-228 (perek 06b).
+    type: axiome_explicite
+    concepts:
+      - {id: 7_orot_dans_3_kavim_cgt, role: 7_orot_dans_les_3_kavim_cgt}
+      - {id: 3_kavim_chb_keter_etendus, role: 3_kavim_chb_et_keter_etendus}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Recap : 7 orot integres en geometrie 3 kavim. cf. EC-H2S9-167."
+
+  # ─── BLOC D : EXTENSION SE REPLIE — 7 OROT DANS BINAH ───
+
+  - id: "EC-H2S10-004"
+    source_he: "והנה עתה חזר התפשטות הנ\"ל להאסף למעלה וחזר להיות כבראשונה שלא היו רק ג\"ר במקומן למעלה והעלה עמהן למעלה במקומן את הז' אורות התחתונים ונמצא עתה כל הז' אורות התחתונים למעלה במקום הבינה כי היא אם הבינה ושם הוא מציאת מקום הריון ועיבור"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      MAINTENANT, l'extension precedente se REPLIE (le-he'asef) en haut.
+      Retour a l'etat initial : seules les GR a leur place en haut.
+      Mais a ELEVE AVEC ELLES en haut, a leur place, les 7 OROT INFERIEURS.
+      → Donc maintenant les 7 OROT INFERIEURS sont en HAUT au LIEU de la BINAH.
+      Car BINAH = MERE de la Binah (= em ha-Binah).
+      LA est le LIEU du HERAYON (conception) et IBUR (gestation).
+      → Architecture : Binah = uterus cosmique pour la regeneration.
+    type: axiome_explicite
+    concepts:
+      - {id: extension_se_replie, role: extension_se_replie_en_haut}
+      - {id: 7_orot_dans_binah, role: 7_orot_eleves_dans_binah}
+      - {id: binah_em_ha_binah, role: binah_mere_de_binah}
+      - {id: binah_makom_herayon_ibur, role: binah_lieu_conception_gestation}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture cosmique : Binah = uterus pour ibur des 7 orot. Mecanisme central du Tikkun."
+
+  # ─── BLOC E : KELIM AUSSI MONTES, 3 KLILIN BE 3 + MALKHUT ───
+
+  - id: "EC-H2S10-005"
+    source_he: "וכאשר עלו הז' אורות למעלה עלו גם הכלים שירדו בבריאה למעלה באצילות אך לא נתחברו יחד וכמו שהז' אורות היו בבחי' עיבור וג' כלילין בג' ונקודה מלכות היתה שביעית אליהם בסוד פסיעה לבר כמ\"ש למטה בע\"ה גם הכלים היה באופן זה ג' כלילין בג' והמלכות עמהן"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      Quand les 7 OROT sont montes, AUSSI les KELIM tombes en BERIAH
+      sont MONTES en AT'ZILUT.
+      Mais ils ne sont PAS UNIS ensemble.
+      Et comme les 7 orot etaient en aspect IBUR + 3 KLILIN BE 3
+      avec NEKUDAH MALKHUT 7eme en sod "PESI'AH LE-VAR" (ecart vers l'exterieur) —
+      AUSSI les KELIM en cette maniere : 3 KLILIN BE 3 + Malkhut avec eux.
+      → Architecture : ibur en 3+3+M (pas 7 lineaires).
+      cf. EC-H2S9-181 (perek 04) sur g klilin be g.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_aussi_montes, role: kelim_aussi_montes_en_atzilut}
+      - {id: 7_orot_ibur_3_klilin_be_3, role: 7_orot_en_ibur_3_klilin}
+      - {id: pesi_ah_le_var, role: ecart_vers_l_exterieur}
+      - {id: malkhut_7eme_separee, role: malkhut_7eme_separee}
+    mapping:
+      modules: ["partzufim/zivvug.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture en 3+3+M (klilin) plutot que lineaire. cf. EC-H2S9-181."
+
+  # ─── BLOC F : DISTRIBUTION KELIM SELON KAVIM ───
+
+  - id: "EC-H2S10-006"
+    source_he: "והיה באופן זה כי הכלים של נצח וחסד עלו דרך קו ימין באצילות ושניהן עמדו וישבו במקום ספי' נצח דאצילות וכלים של הוד וגבורה עלו באצילות דרך קו שמאל ועמדו בספי' הוד דאצילות"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      DISTRIBUTION DETAILLEE des kelim :
+      Kelim de NETZACH + CHESED → DEREKH QAV YEMINI (cote droit) →
+      les deux se sont arretes a la place de NETZACH d'Atzilut.
+      Kelim de HOD + GEVURAH → DEREKH QAV SMOL (cote gauche) →
+      les deux a la place de HOD d'Atzilut.
+      → Pattern : groupes par polarite (Hesed-Netzach droit ; Gevurah-Hod gauche).
+      → Architecture : couplage des sefirot par cote.
+    type: axiome_explicite
+    concepts:
+      - {id: chesed_netzach_dans_qav_yemin, role: chesed_netzach_dans_qav_yemini}
+      - {id: gevurah_hod_dans_qav_smol, role: gevurah_hod_dans_qav_smol}
+      - {id: kelim_a_netzach_hod_atzilut, role: kelim_a_la_place_de_netzach_et_hod_atzilut}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Distribution architecturale : kelim par couples Chesed-Netzach (droite) et Gevurah-Hod (gauche)."
+
+  - id: "EC-H2S10-007"
+    source_he: "והכלים של הדעת ות\"ת עלו מן הבריאה אל אצילות דרך קו האמצעי ועמדו במקום היסוד דאצילות והכלים של היסוד והמלכות עלו מבריאה לאצילות ועמדו במקום מלכות דאצילות"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      Suite de la DISTRIBUTION :
+      Kelim de DAAT + TIFERET → DEREKH QAV EMTZAI (cote central) →
+      ils se sont arretes a la place du YESOD d'Atzilut.
+      Kelim de YESOD + MALKHUT → montes de Beriah a Atzilut →
+      a la place de MALKHUT d'Atzilut.
+      → 4 paires : Chesed-Netzach (Yemin-Netzach), Gevurah-Hod (Smol-Hod),
+      Daat-Tiferet (Emtzai-Yesod), Yesod-Malkhut (Malkhut).
+      → Architecture : 4 emplacements de stockage post-elevation des kelim.
+    type: axiome_explicite
+    concepts:
+      - {id: daat_tiferet_dans_qav_emtzai, role: daat_tiferet_dans_qav_emtzai}
+      - {id: yesod_malkhut_dans_malkhut_atzilut, role: yesod_malkhut_dans_malkhut_atzilut}
+      - {id: 4_emplacements_de_stockage, role: 4_emplacements_de_stockage_kelim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Distribution complete des kelim post-Tikkun : 4 emplacements (Netzach, Hod, Yesod, Malkhut)."
+
+  # ─── BLOC G : DISTANCE 3 SEFIROT VIDES ───
+
+  - id: "EC-H2S10-008"
+    source_he: "ונמצא שגם הכלים היו כלולים ג' בג' והמלכות עמהם ולא היה מרחק בין האורות והכלים יותר מג' ספי' ריקנית שהם חג\"ת כי האורות כולם בבינה הן עומדים כנזכר"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      Donc AUSSI les kelim sont en aspect 3 KLILIN BE 3 + Malkhut.
+      Et il n'y a PAS de DISTANCE entre orot et kelim PLUS de 3 SEFIROT VIDES
+      = CGT (Chesed-Gevurah-Tiferet).
+      → Car les orot sont tous dans BINAH ; les kelim a Netzach-Hod-Yesod-Malkhut.
+      Distance Binah → Netzach = Chesed-Gevurah-Tiferet = 3 madregot.
+      → Confirmation operationnelle de la regle des 3 madregot.
+      cf. EC-H2S9-121 (perek 03a) sur regle 3 madregot.
+    type: axiome_explicite
+    concepts:
+      - {id: distance_max_3_madregot_cgt, role: distance_max_3_madregot_cgt}
+      - {id: orot_binah_kelim_nhmy, role: orot_dans_binah_kelim_dans_nhmy}
+    mapping:
+      modules: ["ohr.py", "[PLANNED] core/sefirot.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Confirmation operationnelle : 3 madregot (CGT) entre orot (Binah) et kelim (NHMY). cf. EC-H2S9-121."
+
+  # ─── BLOC H : 40 JOURS DE YETZIRAT HA-OLAD ───
+
+  - id: "EC-H2S10-009"
+    source_he: "ואמנם הכלים הז' אלו לא עלו יחד כולם בפעם א' רק כשיעור מ' ימים של יצירת הולד באופן זה כי בכל י' יום היו עולין ב' ספי'"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      Les 7 KELIM ne sont PAS montes ensemble en une fois —
+      mais SUR la mesure de 40 JOURS de YETZIRAT HA-OLAD (formation du foetus).
+      A chaque 10 JOURS = 2 SEFIROT MONTAIENT.
+      → Architecture temporelle : 40 jours = 4 × 10 jours = 4 paires de sefirot.
+      → Reference embryologique (40 jours = formation du foetus selon la halakha).
+    type: axiome_explicite
+    concepts:
+      - {id: 40_jours_yetzirat_olad, role: 40_jours_yetzirat_olad}
+      - {id: 2_sefirot_par_10_jours, role: 2_sefirot_par_10_jours}
+    mapping:
+      modules: ["[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "Architecture temporelle : ibur kelim en 40 jours. Reference embryologique halakhique."
+
+  - id: "EC-H2S10-010"
+    source_he: "כי בי' ימים הראשונים עלו חסד ונצח ובי' שניים עלו הדעת ות\"ת ובי' השלישים עלו גבורה והוד בי' הרביעים עלו יסוד ומלכות"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      SCHEDULE precis :
+      Jours 1-10 : CHESED + NETZACH montent
+      Jours 11-20 : DAAT + TIFERET montent
+      Jours 21-30 : GEVURAH + HOD montent
+      Jours 31-40 : YESOD + MALKHUT montent
+      → Sequence : droite (Chesed/Netzach) → centre (Daat/Tiferet) → gauche (Gevurah/Hod) → centre/Malkhut.
+      → Architecture : ordre temporel par couples polarises.
+    type: axiome_explicite
+    concepts:
+      - {id: schedule_40_jours_kelim, role: schedule_40_jours_pour_kelim}
+      - {id: ordre_droite_centre_gauche_malkhut, role: ordre_droite_centre_gauche_malkhut}
+    mapping:
+      modules: ["[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "Schedule operationnel des 40 jours : 4 paires polarisees. Architecture temporelle."
+
+  # ─── BLOC I : MaN = ELEVATION DES 7 OROT ───
+
+  - id: "EC-H2S10-011"
+    source_he: "אמנם בחי' המ\"נ שאמרנו לעיל שעלו לצורך הזווג העליון הוא עצמו ענין עליית ז' אורות למעלה בבינה וזכור הקדמה זו מה הוא ענין העלאת מ\"נ"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      EQUATION CRITIQUE : les MA"N qu'on a dits monter pour le besoin du Zivvug Elyon
+      = exactement le matiere de l'ELEVATION des 7 OROT en haut dans BINAH.
+      "Zekhor hakdamah zo" (souviens-toi de cette introduction).
+      → DEFINITION operationnelle : MaN = elevation des 7 orot.
+      → Pattern : pas 2 evenements distincts mais UN SEUL — l'elevation des orot EST le MaN.
+    type: axiome_explicite
+    concepts:
+      - {id: maan_egal_elevation_7_orot, role: man_egal_elevation_des_7_orot}
+      - {id: definition_operationnelle_maan, role: definition_operationnelle_du_man}
+    mapping:
+      modules: ["partzufim/zivvug.py", "[PLANNED] tikkun/"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "Definition operationnelle critique : MaN = elevation des orot, pas evenement distinct. Pattern unifie."
+
+  # ─── BLOC J : CASCADE DU TIKKUN ───
+
+  - id: "EC-H2S10-012"
+    source_he: "והנה בזווג זה צריך שיתוקנו כל הי\"ס מכתר עד מלכות כי אפי' ג\"ר אינן מתוקנים ולכן בחי' העלאת מ\"נ אלו היה למעלה בע\"ב ס\"ג דא\"ק"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      Dans ce ZIVVUG, il faut RECTIFIER toutes les 10S de Keter a Malkhut —
+      car MEME les GR ne sont pas rectifies (cf. EC-H2S9-225 perek 06b).
+      DONC l'ELEVATION des MA"N s'est faite EN HAUT en AB-SAG d'A"K.
+      → Pourquoi tres haut : les GR aussi requierent reparation, donc remontee
+      jusqu'a HC-Binah d'A"K (= AB-SaG).
+      → Architecture : la portee du Tikkun = le niveau le plus haut a reparer.
+    type: axiome_explicite
+    concepts:
+      - {id: gr_aussi_a_rectifier, role: meme_les_gr_a_rectifier}
+      - {id: maan_jusqu_a_av_sag_ak, role: man_jusqu_aux_av_sag_d_ak}
+    mapping:
+      modules: ["adam_kadmon.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["adam_kadmon"]
+      relevance: "Architecture : reparation jusqu'aux GR → MaN remonte au niveau le plus haut (AB-SaG d'AK)."
+
+  - id: "EC-H2S10-013"
+    source_he: "וע\"י זווג ועיבור זה נתקן כל עולם האצילות כולו מעתיק יומין עד מלכות ובתחלה נתקן ע\"י"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      Par ce ZIVVUG et IBUR, tout l'OLAM HA-AT'ZILUT a ete RECTIFIE :
+      D'ATIK YOMIN jusqu'a MALKHUT.
+      AU DEPART le tikkun se fait directement par lui (le zivvug d'AK).
+      → Pattern : un seul zivvug initial repare en cascade tous les niveaux.
+      → Architecture : trickle-down du Tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_atzilut_complet, role: tikkun_de_tout_atzilut_complet}
+      - {id: trickle_down_tikkun, role: trickle_down_du_tikkun}
+    mapping:
+      modules: ["[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : trickle-down du Tikkun depuis AK. Effet en cascade unique zivvug."
+
+  - id: "EC-H2S10-014"
+    source_he: "ואח\"כ היה הזווג בעתיק יומין והיה תיקון לא\"א. ואח\"כ היה הזווג בא\"א והיה תיקון לאו\"א. ואח\"כ זווג לאו\"א והיה התיקון לזו\"נ. ואח\"כ זווג לזו\"נ דאצילות והיה תיקון לכל העולמות האחרים"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      CASCADE des ZIVVUGIM (post-zivvug initial AK) :
+      Zivvug ATIK → Tikkun pour A"A
+      Zivvug A"A → Tikkun pour AVI
+      Zivvug AVI → Tikkun pour ZON
+      Zivvug ZON d'AT'ZILUT → Tikkun pour les autres OLAMOT (BYA)
+      → Architecture : chaque niveau parent repare son enfant par zivvug.
+      → Pattern : cascade hierarchique top-down.
+    type: axiome_explicite
+    concepts:
+      - {id: cascade_zivvugim_atik_aa_avi_zon, role: cascade_zivvugim_atik_aa_avi_zon}
+      - {id: chaque_parent_repare_son_enfant, role: chaque_parent_repare_son_enfant_par_zivvug}
+      - {id: zon_atzilut_repare_bya, role: zon_atzilut_repare_les_olamot_bya}
+    mapping:
+      modules: ["partzufim/zivvug.py", "olamot.py", "[PLANNED] tikkun/"]
+      tables: ["zivvug_states", "olamot_config"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Cascade hierarchique : chaque parent repare l'enfant par zivvug. Architecture trickle-down complete."
+
+  # ─── BLOC K : IBUR 12 MOIS POUR 12 PARTZUFIM ───
+
+  - id: "EC-H2S10-015"
+    source_he: "ולכן הוצרך בחי' עיבור זה להשתהות ולהתאחר שיעור י\"ב חודש כנזכר בתיקונים במאמר הנקרא קו המדה"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      DONC l'IBUR a du DURER 12 MOIS — comme cite dans les TIKKUNIM
+      dans le MA'AMAR appele KAV HA-MIDAH (la mesure du fil).
+      → Reference textuelle : Tikkunei Zohar, ma'amar "Kav ha-Midah".
+      → Architecture temporelle : 12 mois = duree etendue de l'ibur.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ibur_12_mois, role: ibur_de_12_mois}
+      - {id: kav_ha_midah_tikkunim, role: ma_amar_kav_ha_midah_tikkunim}
+    mapping:
+      modules: ["[PLANNED] tikkun/"]
+      tables: []
+      partzufim: []
+      relevance: "Reference Tikkunei Zohar : ibur de 12 mois selon Kav ha-Midah."
+
+  - id: "EC-H2S10-016"
+    source_he: "והטעם הוא כדי להתתקן כל אצילות שהם י\"ב בחי'. עתיק ונוקבא. א\"א ונוקבא. ואו\"א עלאין. ויש\"ס ותבונה. וזו\"נ. ויעקב ולאה. אלו הם י\"ב פרצופים שלימים לכן הוצרך זמן העיבור זה להשתהו' יב\"ח"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      RAISON : pour rectifier TOUT l'AT'ZILUT = 12 BEHINOT (12 partzufim) :
+      1. ATIK + 2. NUKVAH (d'Atik)
+      3. A"A + 4. NUKVAH (d'A"A)
+      5. ABBA + 6. IMMA (= AVI Ila'in)
+      7. YS (Yisrael Saba) + 8. TEVUNAH
+      9. ZA + 10. NUKVAH (= ZON)
+      11. YAAKOV + 12. LEAH
+      → Total : 12 PARTZUFIM SHELEMIM (complets).
+      → Architecture finale : 12 partzufim post-Tikkun, 1 mois chacun = 12 mois.
+    type: axiome_explicite
+    concepts:
+      - {id: 12_partzufim_atzilut, role: douze_partzufim_d_atzilut}
+      - {id: liste_12_partzufim, role: liste_des_12_partzufim_post_tikkun}
+      - {id: 1_mois_par_partzuf, role: un_mois_par_partzuf}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "[PLANNED] partzufim/leah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture finale post-Tikkun : 12 partzufim. Schedule : 1 mois chacun. cf. EC-H2S9-253."
+
+  - id: "EC-H2S10-017"
+    source_he: "ושכחתי מה שנאמר מפי מורי זלה\"ה אם היב\"ח העיבור היה בזווג ראשון העליון (נ\"א הראשון של העליון) שהוא לצורך עתיק לבדו כנ\"ל או אם נאמר כי עתיק נגמר בחודש א' ונוקבא בחודש ב' וא\"א בחודש ג' כו'"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      OUBLI HONNETE de R. Chaim Vital :
+      "Shakhachti" (j'ai oublie) ce qui a ete dit par mon maitre (le ARI) ze"l.
+      Question : les 12 mois de l'ibur etaient-ils :
+      VERSION 1 : pour le PREMIER ZIVVUG SUPREME (variante NA: "le 1er du supreme")
+        — pour le besoin d'ATIK SEUL.
+      VERSION 2 : ou ATIK est-il fini en 1er mois, NUKVAH en 2eme, A"A en 3eme, etc.
+      → Question doctrinale ouverte : 1 mois par partzuf vs 12 mois pour Atik seul.
+      → Architecture : ambigues sur la repartition temporelle.
+    type: déduction_logique
+    concepts:
+      - {id: oubli_de_r_chaim_vital, role: oubli_de_r_chaim_vital}
+      - {id: version_1_12_mois_atik_seul, role: 12_mois_pour_atik_seul}
+      - {id: version_2_1_mois_par_partzuf, role: 1_mois_par_partzuf}
+      - {id: ambiguite_doctrinale_ibur, role: ambiguite_temporelle_ibur}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "[PLANNED] tikkun/"]
+      tables: []
+      partzufim: ["atik_yomin"]
+      relevance: "Honete intellectuelle : oubli admis et 2 versions doctrinales. Architecture incertaine."
+
+  - id: "EC-H2S10-018"
+    source_he: "אמנם פי' הראשון נראה עיקר שהיב\"ח הם לצורך עתיק לבד כי הרי נתבאר אצלינו כי בזווג או\"א לצורך תיקון זו\"נ היו ג' עיבורים או די\"ב חדשים וא' דט' חדשים וא' דז' חדשים"
+    source_ref: "Heikhal 2, Sha'ar 3:1"
+    assertion: |
+      PREFERENCE de R. Chaim Vital : le PREMIER PIRUSH est le IKAR
+      (l'interpretation principale) :
+      Les 12 mois sont pour ATIK SEUL.
+      RAISON : il a ete explique que dans le ZIVVUG d'AVI pour reparer ZON,
+      il y a eu 3 IBURIM :
+      1 de 12 mois + 1 de 9 mois + 1 de 7 mois.
+      → Architecture : pattern 12+9+7 mois pour ZON, donc 12 mois pour Atik seul est coherent.
+      → Confirmation par precedent.
+    type: déduction_logique
+    concepts:
+      - {id: piroush_rishon_ikar, role: premier_pirush_principal}
+      - {id: 12_9_7_mois_iburim, role: pattern_12_9_7_mois_pour_iburim}
+      - {id: 12_mois_pour_atik_seul, role: 12_mois_pour_atik_seul}
+    mapping:
+      modules: ["partzufim/zivvug.py", "[PLANNED] tikkun/"]
+      tables: ["zivvug_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Resolution preferee : 12 mois Atik seul. Pattern 12+9+7 mois pour iburim cosmiques."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S10-001"
+    type: causal
+    from: maatzil_le_hahayot_metim
+    to: shem_mah_chadash_yetza
+    via: [maan_mi_tata_le_eila, zivvug_elyon_chb_ak_pnimiim]
+    nature: "Volonte du Maatzil → MaN → Zivvug AB-SaG → MAH Chadash"
+    assertions_source: ["EC-H2S10-002"]
+
+  - id: "REL-H2S10-002"
+    type: contenance
+    from: 7_orot_dans_binah
+    to: binah_makom_herayon_ibur
+    nature: "7 orot eleves dans Binah qui est lieu de la conception et gestation"
+    assertions_source: ["EC-H2S10-004"]
+
+  - id: "REL-H2S10-003"
+    type: dualité_structurelle
+    from: 7_orot_ibur_3_klilin_be_3
+    to: kelim_aussi_montes
+    nature: "Pattern parallele : orot et kelim tous deux en 3 klilin be 3 + Malkhut"
+    assertions_source: ["EC-H2S10-005"]
+
+  - id: "REL-H2S10-004"
+    type: hiérarchique
+    from: chesed_netzach_dans_qav_yemin
+    to: 4_emplacements_de_stockage
+    nature: "4 paires de kelim dans 4 emplacements (Yemin/Smol/Emtzai/Malkhut)"
+    assertions_source: ["EC-H2S10-006", "EC-H2S10-007"]
+
+  - id: "REL-H2S10-005"
+    type: causal
+    from: orot_binah_kelim_nhmy
+    to: distance_max_3_madregot_cgt
+    nature: "Orot dans Binah, kelim NHMY → distance = CGT (3 madregot vides)"
+    assertions_source: ["EC-H2S10-008"]
+
+  - id: "REL-H2S10-006"
+    type: séquentiel
+    from: 40_jours_yetzirat_olad
+    to: schedule_40_jours_kelim
+    via: [2_sefirot_par_10_jours]
+    nature: "40 jours de yetzirat ha-olad → schedule par paires de sefirot tous les 10 jours"
+    assertions_source: ["EC-H2S10-009", "EC-H2S10-010"]
+
+  - id: "REL-H2S10-007"
+    type: analogie
+    from: maan_egal_elevation_7_orot
+    to: definition_operationnelle_maan
+    nature: "MaN = elevation des 7 orot (definition operationnelle unifiee)"
+    assertions_source: ["EC-H2S10-011"]
+
+  - id: "REL-H2S10-008"
+    type: causal
+    from: gr_aussi_a_rectifier
+    to: maan_jusqu_a_av_sag_ak
+    nature: "GR aussi a rectifier → MaN remonte aux AB-SaG d'AK (niveau le plus haut)"
+    assertions_source: ["EC-H2S10-012"]
+
+  - id: "REL-H2S10-009"
+    type: séquentiel
+    from: tikkun_atzilut_complet
+    to: zon_atzilut_repare_bya
+    via: [cascade_zivvugim_atik_aa_avi_zon]
+    nature: "Cascade trickle-down : AK → Atik → A\"A → AVI → ZON → BYA"
+    assertions_source: ["EC-H2S10-013", "EC-H2S10-014"]
+
+  - id: "REL-H2S10-010"
+    type: causal
+    from: 12_partzufim_atzilut
+    to: ibur_12_mois
+    nature: "12 partzufim → 12 mois d'ibur (1 mois par partzuf, ou 12 mois pour Atik selon version)"
+    assertions_source: ["EC-H2S10-015", "EC-H2S10-016"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S10-001"
+    nom: "Principe du Tikkun-Genese (Volonte → MaN → Zivvug → MAH)"
+    source_assertions: ["EC-H2S10-002"]
+    formalisation: |
+      MECANISME CENTRAL du TIKKUN — sequence operationnelle :
+      ETAPE 1 : VOLONTE du MAATZIL (le-hahayot et ha-metim, le-takken)
+      ETAPE 2 : Decret (gazar) → ELEVATION des MA"N de bas en haut (mi-tata le-eila)
+      ETAPE 3 : ZIVVUG ELYON de HC-BINAH (HOKHMAH-BINAH) d'A"K PNIMI'IM
+      ETAPE 4 : Sortie du SHEM MAH HA-CHADASH (Nouveau MAH)
+      ETAPE 5 : RECTIFICATION des MELAKHIM
+      → Architecture causale : 5 etapes sequentielles deterministes.
+      → Pattern : volonte → declenchement bottom-up → matching top-down.
+    applications_ia:
+      - "Pattern : reparation par flux bottom-up (MaN) qui declenche flux top-down (MAH)"
+      - "Architecture : la volonte du superieur est la pre-condition"
+      - "[PLANNED] tikkun/ : implementer ce pattern en 5 etapes"
+      - "shemot/ : MAH Chadash comme sortie operationnelle de zivvug specifique"
+      - "Pattern de recovery : un crash declenche un mecanisme de recovery superieur"
+    questions_ouvertes:
+      - "Le Maatzil intervient-il automatiquement ou requiert-il un trigger ?"
+      - "Quel est le delai entre les etapes ?"
+      - "Le pattern fonctionne-t-il pour des reparations partielles ?"
+
+  - id: "PG-H2S10-002"
+    nom: "Principe de l'Ibur Cosmique (Binah comme Uterus)"
+    source_assertions: ["EC-H2S10-004", "EC-H2S10-005"]
+    formalisation: |
+      Architecture COSMIQUE-EMBRYOLOGIQUE :
+      BINAH = "EM HA-BINAH" (la mere de la Binah)
+      = MAKOM HA-HERAYON (lieu de la conception)
+      = MAKOM HA-IBUR (lieu de la gestation)
+      MECANISME : les 7 OROT brises (post-Shevirah) sont ELEVES dans BINAH
+      pour y subir un IBUR (gestation) et renaitre repares.
+      Configuration : 3 KLILIN BE 3 + MALKHUT en sod "PESI'AH LE-VAR"
+        = 3 sub-aspects + 3 sub-sub + Malkhut a part (ecart)
+      Les KELIM tombes en BERIAH montent aussi en Atzilut (en 4 emplacements).
+      → Pattern : reparation par incubation prolongee dans un environnement maternel.
+    applications_ia:
+      - "Pattern : reparation par incubation dans un container parent"
+      - "[PLANNED] tikkun/ + partzufim/imma.py : implementer Binah comme uterus operationnel"
+      - "Architecture : separation orot (incubes) et kelim (re-distribues)"
+      - "Pattern : 3+3+M = configuration d'incubation specifique"
+      - "Diagnostic : verifier que les composants brises sont en cours d'ibur"
+    questions_ouvertes:
+      - "Quelles sont les conditions pour que Binah accepte un ibur ?"
+      - "Le pattern 3+3+M est-il universel ou specifique a ce Tikkun ?"
+      - "L'ibur peut-il echouer (re-Shevirah pendant gestation) ?"
+
+  - id: "PG-H2S10-003"
+    nom: "Principe du 40 Jours (Architecture Embryologique du Tikkun)"
+    source_assertions: ["EC-H2S10-009", "EC-H2S10-010"]
+    formalisation: |
+      Architecture TEMPORELLE du Tikkun-kelim :
+      DUREE TOTALE : 40 JOURS = mesure de YETZIRAT HA-OLAD (formation du foetus, halakha).
+      SCHEDULE :
+        Jours 1-10 : CHESED + NETZACH (qav yemini, droite)
+        Jours 11-20 : DAAT + TIFERET (qav emtzai, centre)
+        Jours 21-30 : GEVURAH + HOD (qav smol, gauche)
+        Jours 31-40 : YESOD + MALKHUT (centre/Malkhut)
+      → Architecture : 4 PHASES de 10 JOURS = 4 paires polarisees.
+      → Pattern : ordre droite → centre → gauche → cloture.
+      → Reference embryologique halakhique (Mishna Niddah, 40 jours formation).
+    applications_ia:
+      - "Architecture temporelle : 40 jours par 4 phases x 10 jours"
+      - "[PLANNED] tikkun/schedule.py : implementer le schedule 40 jours"
+      - "Pattern : reparation par phases polarisees (droite/gauche/centre/cloture)"
+      - "Reference biologique : 40 jours = phase critique de formation"
+      - "Diagnostic : tracer la phase courante de l'ibur"
+    questions_ouvertes:
+      - "Le ratio 10 jours par paire est-il fixe ou modifiable ?"
+      - "L'ordre des phases est-il modifiable ?"
+      - "Que se passe-t-il si l'ibur est interrompu en cours ?"
+
+  - id: "PG-H2S10-004"
+    nom: "Principe de la Cascade Hierarchique (12 Partzufim, 12 Mois)"
+    source_assertions: ["EC-H2S10-013", "EC-H2S10-014", "EC-H2S10-016"]
+    formalisation: |
+      Architecture CASCADE TRICKLE-DOWN du Tikkun :
+      Etape 0 : Zivvug AK (PNIMI'IM HC-Binah) → MAH Chadash → tikkun direct
+      Etape 1 : Zivvug ATIK → tikkun A"A
+      Etape 2 : Zivvug A"A → tikkun AVI Ila'in
+      Etape 3 : Zivvug AVI → tikkun YS"T
+      Etape 4 : Zivvug ZON Atzilut → tikkun BYA
+      RESULTAT : 12 PARTZUFIM SHELEMIM en Atzilut :
+        Atik+Nukvah, A"A+Nukvah, AVI Ila'in (Abba+Imma), YS"T (YS+Tevunah),
+        ZON (ZA+Nukvah), Yaakov+Leah
+      DUREE : 12 MOIS d'ibur (KAV HA-MIDAH dans Tikkunim).
+      Question doctrinale : 12 mois pour Atik seul ou 1 mois par partzuf ?
+      → Pattern : architecture multi-couches recursive.
+    applications_ia:
+      - "Architecture trickle-down : superieur repare inferieur en cascade"
+      - "[PLANNED] tikkun/cascade.py : implementer cascade des zivvugim"
+      - "Pattern : 12 partzufim post-Tikkun = architecture finale stable"
+      - "olamot.py : ZON-Atzilut comme passerelle vers BYA"
+      - "Diagnostic : tracer l'etape courante de la cascade"
+    questions_ouvertes:
+      - "Les 12 partzufim sont-ils tous necessaires ou certains sont optionnels ?"
+      - "Le pattern Yaakov-Leah est-il universel ou specifique a ZON ?"
+      - "La duree 12 mois est-elle compressible ?"
