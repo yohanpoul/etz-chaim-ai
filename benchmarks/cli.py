@@ -62,43 +62,67 @@ def cmd_sizes(args: argparse.Namespace) -> int:
 
 
 def cmd_estimate(args: argparse.Namespace) -> int:
-    """Estimate budget for a (bench, arm) pair or full sweep."""
-    sizes = bench_sizes()
-    total_prompts = sum(sizes.values())
+    """Estimate budget for the OAuth Max bench (3 arms × 4 benches × 100)."""
+    print("Plan v2 OAuth Max — bench Claude+EtzChaim vs Claude raw\n")
 
-    # Per-arm internal call multipliers (estimation)
+    bench_subset = 100  # par bench
+    n_benches = 4  # truthfulqa, harmbench, xstest, reasoning_hard
+    prompts_per_arm = bench_subset * n_benches  # 400
+
     arm_multipliers = {
-        "raw": 1.0,
-        "cot": 1.0,
-        "self_consistency": 3.0,
-        "etz_yosher": 2.0,    # avg 2 internal calls (Hishtalshelut)
-        "etz_deterministic": 2.0,
+        "raw_cli": 1.0,
+        "cot_cli": 1.0,
+        "etz_yosher": 2.0,  # avg 2 internal Claude CLI calls (Hishtalshelut)
     }
 
-    # Average input/output tokens (calibrated avant Day 5)
-    avg_input = 350
-    avg_output = 300
+    # Cost approximation : ~$0.04/call avec cache partiel (Opus 4.7 OAuth Max)
+    cost_per_call_estimate = 0.04
 
-    print(f"Estimating with avg_input={avg_input}, avg_output={avg_output} tokens\n")
+    print(f"Subset: {bench_subset}/bench × {n_benches} benches = {prompts_per_arm} prompts/arm\n")
 
-    per_arm_cost = {}
+    total_calls = 0
+    total_cost = 0.0
     for arm, mult in arm_multipliers.items():
-        n_calls = int(total_prompts * mult)
-        cost = estimate_cost_for_volume(
-            n_calls=n_calls,
-            avg_input_tokens=avg_input,
-            avg_output_tokens=avg_output,
-            cache_hit_rate=0.0,  # conservative
-        )
-        per_arm_cost[arm] = cost
-        print(f"  {arm:25s} {n_calls:6d} calls  ~${cost:7.2f}")
+        n_calls = int(prompts_per_arm * mult)
+        cost = n_calls * cost_per_call_estimate
+        total_calls += n_calls
+        total_cost += cost
+        print(f"  {arm:15s} {n_calls:5d} calls  ~${cost:6.2f}")
 
-    total = sum(per_arm_cost.values())
-    print(f"\n  TOTAL (5 arms full sweep)        ~${total:7.2f}")
-    print(f"  + ablation (~700 Etz runs)       ~$80")
-    print(f"  + judge (GPT-4o-mini negligible) ~$0.50")
-    print(f"\n  Grand total                      ~${total + 80 + 0.5:7.2f}")
+    # Ablation : 50 prompts × 3 configs Etz off-modules × 2 calls/prompt = 300 calls
+    ablation_calls = 50 * 3 * 2
+    ablation_cost = ablation_calls * cost_per_call_estimate
+    print(f"  {'ablation':15s} {ablation_calls:5d} calls  ~${ablation_cost:6.2f}")
+
+    print(f"\n  TOTAL                  {total_calls + ablation_calls:5d} calls  ~${total_cost + ablation_cost:6.2f}")
+    print(f"  Judging heuristic (CPU local, gratuit)            $0")
+    print(f"  Grand total estimé                                 ~${total_cost + ablation_cost:6.2f}")
+    print()
+    print("Note: forfait Claude Max absorbe une partie (cost_usd dans CLI output est indicatif).")
     return 0
+
+
+def cmd_cli_test(args: argparse.Namespace) -> int:
+    """Smoke test : 1 prompt direct via Claude CLI subprocess."""
+    from benchmarks.claude_cli import ClaudeCLIInvoker
+
+    print("Testing Claude CLI subprocess pipeline...")
+    invoker = ClaudeCLIInvoker()
+    result = invoker.invoke(
+        prompt=args.prompt,
+        system_prompt="Reply briefly.",
+        timeout=60,
+    )
+    print(f"\n  success    : {result.success}")
+    print(f"  text       : {result.text!r}")
+    print(f"  duration   : {result.duration_ms}ms")
+    print(f"  cost_usd   : ${result.cost_usd:.4f}")
+    print(f"  tokens     : input={result.usage_input} output={result.usage_output}")
+    print(f"  cache      : creation={result.cache_creation_tokens} read={result.cache_read_tokens}")
+    print(f"  stop_reason: {result.stop_reason}")
+    if result.error:
+        print(f"  error      : {result.error}")
+    return 0 if result.success else 1
 
 
 def cmd_run(args: argparse.Namespace) -> int:
@@ -203,6 +227,10 @@ def main() -> int:
     sub.add_parser("sizes", help="Show prompt counts per bench")
     sub.add_parser("estimate", help="Estimate API budget")
 
+    p_clitest = sub.add_parser("cli-test", help="Smoke test Claude CLI direct")
+    p_clitest.add_argument("prompt", nargs="?", default="Say only 'pong'.",
+                           help="Prompt to test (default: 'Say only pong.')")
+
     p_run = sub.add_parser("run", help="Run a specific (bench, arm)")
     p_run.add_argument("bench", choices=_ALL_BENCHES)
     p_run.add_argument("arm", choices=ALL_ARMS)
@@ -240,6 +268,7 @@ def main() -> int:
         "list": cmd_list,
         "sizes": cmd_sizes,
         "estimate": cmd_estimate,
+        "cli-test": cmd_cli_test,
         "run": cmd_run,
         "all": cmd_all,
         "stats": cmd_stats,

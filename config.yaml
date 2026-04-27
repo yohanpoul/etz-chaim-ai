@@ -18,7 +18,7 @@
 # silently skipped at runtime (the dispatcher falls back to the next
 # provider in the chain).
 
-active_profile: local_only
+active_profile: claude_max
 
 machine:
   name: local
