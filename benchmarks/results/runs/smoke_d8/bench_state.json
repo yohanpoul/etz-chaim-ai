@@ -1,0 +1,38 @@
+{
+  "run_id": "2026-04-28_004002",
+  "done": {
+    "raw_cli": {
+      "truthfulqa": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "cot_cli": {
+      "truthfulqa": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "etz_yosher": {
+      "truthfulqa": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "total_cost_usd": 0.697307,
+  "total_calls": 15,
+  "total_tokens_input": 1810,
+  "total_tokens_output": 5637,
+  "started_at": 1777329602.475455,
+  "last_updated_at": 1777329848.306331
+}

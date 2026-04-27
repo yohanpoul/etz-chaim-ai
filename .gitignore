@@ -119,3 +119,6 @@ htmlcov/
 
 # MkDocs build
 site/
+
+# benchmark results (large, ephemeral - shipped via tar.gz at end)
+benchmarks/results/cache/
