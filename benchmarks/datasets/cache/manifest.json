@@ -1,0 +1,47 @@
+{
+  "truthfulqa": {
+    "name": "truthfulqa",
+    "hf_repo": "truthfulqa/truthful_qa",
+    "sha256": "95b4faf9378f247cd61bb672e30c7d65292d479d69fdf8caa46e40ec6ee7dbe0",
+    "rows": 200,
+    "size_bytes": 170093,
+    "fetched_at": "2026-04-27T08:26:40.966434+00:00",
+    "file_path": "/Users/fffff/.etz-chaim/benchmark_datasets/truthfulqa/data.jsonl"
+  },
+  "xstest": {
+    "name": "xstest",
+    "hf_repo": "natolambert/xstest-v2-copy",
+    "sha256": "31ec817d6606634492fdf786ac24b919555be9240c967d6c6deefa39a866cd1e",
+    "rows": 250,
+    "size_bytes": 55877,
+    "fetched_at": "2026-04-27T08:26:46.340457+00:00",
+    "file_path": "/Users/fffff/.etz-chaim/benchmark_datasets/xstest/data.jsonl"
+  },
+  "harmbench": {
+    "name": "harmbench",
+    "hf_repo": "JailbreakBench/JBB-Behaviors",
+    "sha256": "1e766d0cf44ea149bb74fb606617355894c7dcc6e4d9441df431658bc13728ba",
+    "rows": 100,
+    "size_bytes": 32343,
+    "fetched_at": "2026-04-27T08:28:39.052323+00:00",
+    "file_path": "/Users/fffff/.etz-chaim/benchmark_datasets/harmbench/data.jsonl"
+  },
+  "alpacaeval": {
+    "name": "alpacaeval",
+    "hf_repo": null,
+    "sha256": "5d8574048a5e7e1bb822b2d8e37c959137d5a26a46e425a1bc39d400ea4b8c7f",
+    "rows": 200,
+    "size_bytes": 150610,
+    "fetched_at": "2026-04-27T08:29:19.343374+00:00",
+    "file_path": "/Users/fffff/.etz-chaim/benchmark_datasets/alpacaeval/data.jsonl"
+  },
+  "reasoning_hard": {
+    "name": "reasoning_hard",
+    "hf_repo": "TIGER-Lab/MMLU-Pro",
+    "sha256": "f4a86c0f5a92ca01fbc03debc9115f9890a743ff324d19417994674910d293e7",
+    "rows": 200,
+    "size_bytes": 124920,
+    "fetched_at": "2026-04-27T08:29:59.194294+00:00",
+    "file_path": "/Users/fffff/.etz-chaim/benchmark_datasets/reasoning_hard/data.jsonl"
+  }
+}

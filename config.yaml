@@ -255,6 +255,50 @@ profiles:
       model: nomic-embed-text
       dimensions: 768
 
+  # ── Profile : benchmark_opus ────────────────────────────────
+  # All Olamot pinned to Opus 4.7 (claude-opus-4-20250514) for the rigorous
+  # benchmark vs Claude raw. Required for compute/model parity: same exact
+  # model across the entire pipeline, otherwise reviewers can claim
+  # "Etz uses cheaper models internally".
+  # Full slug used (not the brittle alias claude-opus-4-7) for anti-drift.
+  # temperature=0 enforced for determinism on verifiable benches.
+  benchmark_opus:
+    description: Opus 4.7 partout — bench Claude+Etz vs Claude raw.
+    olamot:
+      atziluth:
+        provider: litellm
+        model: anthropic/claude-opus-4-20250514
+        timeout: 300
+        max_tokens: 4096
+        options:
+          temperature: 0.0
+      briah:
+        provider: litellm
+        model: anthropic/claude-opus-4-20250514
+        think: true
+        timeout: 240
+        max_tokens: 4096
+        options:
+          temperature: 0.0
+      yetzirah:
+        provider: litellm
+        model: anthropic/claude-opus-4-20250514
+        timeout: 180
+        max_tokens: 2048
+        options:
+          temperature: 0.0
+      assiah:
+        provider: litellm
+        model: anthropic/claude-opus-4-20250514
+        timeout: 120
+        max_tokens: 1024
+        options:
+          temperature: 0.0
+    embedding:
+      provider: ollama
+      model: nomic-embed-text
+      dimensions: 768
+
   # ── Profile : xai_full ──────────────────────────────────────
   # Grok family via xAI. Requires XAI_API_KEY.
   xai_full:
