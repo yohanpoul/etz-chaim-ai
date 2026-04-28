@@ -338,6 +338,26 @@ def main() -> int:
             f"{cmp.cohen_d:.3f} | {cmp.bonferroni_p_value:.4f} | {sig} |"
         )
 
+    # Generate plots
+    if main_arms and main_benches:
+        try:
+            from benchmarks.reports.plots import plot_ablation, plot_headline
+            headline_png = run_dir / "headline_scores.png"
+            plot_headline(stats, main_benches, main_arms, headline_png)
+            sections.append(f"\n## Plots\n\n![Headline scores]({headline_png.name})\n")
+
+            if ablation_arms:
+                ablation_png = run_dir / "ablation_delta.png"
+                plot_ablation(stats, main_benches, "etz_yosher", ablation_arms, ablation_png)
+                sections.append(f"![Ablation delta]({ablation_png.name})\n")
+
+            print(f"  plots: {headline_png.name}" +
+                  (f", {ablation_png.name}" if ablation_arms else ""),
+                  file=sys.stderr)
+        except Exception as e:
+            print(f"  WARN: plot generation failed: {type(e).__name__}: {e}",
+                  file=sys.stderr)
+
     report = "\n".join(sections)
     output_file.write_text(report)
     print(f"\nReport written to {output_file}", file=sys.stderr)
