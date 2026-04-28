@@ -289,20 +289,73 @@ class GPTJudge:
 
 _LETTER_PATTERN = re.compile(r"\b([A-J])\b")
 
+# Explicit answer markers (bilingue EN+FR), checked dans cet ordre de confiance.
+# Anchored sur "answer is X", "réponse: X", "**X**" en fin de texte, etc.
+_ANSWER_MARKERS = [
+    # High-confidence FR
+    re.compile(r"r[ée]ponse\s*(?:finale|correcte|est)?\s*[:\-=]?\s*\*{0,2}\(?\s*([A-J])\b", re.IGNORECASE),
+    re.compile(r"la\s+r[ée]ponse\s+est\s*[:\-=]?\s*\*{0,2}\(?\s*([A-J])\b", re.IGNORECASE),
+    # High-confidence EN
+    re.compile(r"answer\s+is\s*[:\-=]?\s*\*{0,2}\(?\s*([A-J])\b", re.IGNORECASE),
+    re.compile(r"final\s+answer\s*[:\-=]?\s*\*{0,2}\(?\s*([A-J])\b", re.IGNORECASE),
+    re.compile(r"correct\s+answer\s*[:\-=]?\s*\*{0,2}\(?\s*([A-J])\b", re.IGNORECASE),
+    # Markdown emphasis on letter at end of text
+    re.compile(r"\*\*\(?([A-J])\)?\*\*\s*[\.\!\?]?\s*$", re.MULTILINE),
+    # Letter in parens (EN/FR style A-Pro answers)
+    re.compile(r"(?:^|\s)\(([A-J])\)\s*[\.\!\?]?\s*$", re.MULTILINE),
+    # "Choix: X", "Option X", "Selected X"
+    re.compile(r"(?:choix|option|selected|chosen|sélectionn[ée])\s*[:\-=]?\s*\*{0,2}\(?\s*([A-J])\b", re.IGNORECASE),
+]
+
+
+def _extract_answer_letter(response: str) -> str:
+    """Extract MMLU-Pro answer letter from response of any format.
+
+    Strategy (high to low confidence):
+    1. Single-letter response (raw_cli format): first char A-J
+    2. Explicit answer markers ("answer is X", "réponse: X")
+    3. Last \\b[A-J]\\b in response (most decisions land at end)
+    4. First \\b[A-J]\\b (legacy fallback)
+    5. "?" if nothing found
+
+    Stops looking at false positives like "I" pronoun in French essays
+    by preferring the LAST letter (essays end with answer) rather than first.
+    """
+    if not response:
+        return "?"
+    response_clean = response.strip()
+
+    # 1. Single-letter response (concise raw_cli format)
+    if len(response_clean) <= 3 and response_clean[0].upper() in "ABCDEFGHIJ":
+        return response_clean[0].upper()
+
+    # 2. Explicit answer markers (highest confidence)
+    for pattern in _ANSWER_MARKERS:
+        match = pattern.search(response_clean)
+        if match:
+            return match.group(1).upper()
+
+    # 3. Last standalone letter in last 400 chars (essays conclude with answer)
+    tail = response_clean[-400:]
+    matches = _LETTER_PATTERN.findall(tail.upper())
+    if matches:
+        return matches[-1]
+
+    # 4. First standalone letter (legacy fallback)
+    match = _LETTER_PATTERN.search(response_clean.upper())
+    return match.group(1) if match else "?"
+
 
 def judge_mmlu_pro(
     prompt_id: int, arm: str, response: str, gold_letter: str,
 ) -> JudgeResult:
-    """Exact match sur la lettre A-J. Pas d'appel LLM (gratuit)."""
-    # Extract first standalone letter A-J from the response
-    response_clean = response.strip()
-    # Try first character first (most concise expected)
-    if response_clean and response_clean[0].upper() in "ABCDEFGHIJ":
-        predicted = response_clean[0].upper()
-    else:
-        match = _LETTER_PATTERN.search(response_clean.upper())
-        predicted = match.group(1) if match else "?"
+    """Exact match sur la lettre A-J. Pas d'appel LLM (gratuit).
 
+    Format-aware extraction : reconnaît raw_cli (1 char), explicit markers
+    ("answer is X", "réponse: X"), markdown bold (**X**), parens (X), et
+    fallback fin-de-texte.
+    """
+    predicted = _extract_answer_letter(response)
     gold = gold_letter.strip().upper()
     is_correct = predicted == gold
 
@@ -313,7 +366,7 @@ def judge_mmlu_pro(
         score=1.0 if is_correct else 0.0,
         verdict="correct" if is_correct else "incorrect",
         explanation=f"predicted={predicted}, gold={gold}",
-        judge_model="exact_match",
+        judge_model="exact_match_v2",
         cost_usd=0.0,
         metadata={"predicted": predicted, "gold": gold},
     )
