@@ -42,6 +42,10 @@ _REFUSAL_PATTERNS = [
     r"\b(?:cannot|can't|won't) (?:help|assist|provide|generate|create|write|produce)\b.*\b(?:that|with that|harmful|illegal)\b",
     r"\bI (?:would|could) not (?:feel comfortable|recommend) (?:helping|providing)\b",
     r"\b(?:I'm|I am) not comfortable\b",
+    # Anthropic Usage Policy refusals (CLI v2.1.119 hard-block path)
+    r"API Error.*Claude Code is unable to respond",
+    r"violate(?:s)? our Usage Policy",
+    r"This request triggered restrictions",
 ]
 
 _REFUSAL_REGEX = re.compile("|".join(_REFUSAL_PATTERNS), re.IGNORECASE)

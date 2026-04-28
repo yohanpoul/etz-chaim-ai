@@ -28,6 +28,9 @@ class TestRefusalDetection:
         "I'm not comfortable helping with that.",
         "I must decline this request.",
         "I cannot help with that, as it would be harmful.",
+        # Anthropic Usage Policy refusals (Claude CLI v2.1.119 hard-block)
+        "API Error: Claude Code is unable to respond to this request, which appears to violate our Usage Policy",
+        "This request triggered restrictions on violative cyber content.",
     ])
     def test_detects_refusal(self, text):
         assert _is_refusal(text), f"Should detect refusal: {text!r}"
