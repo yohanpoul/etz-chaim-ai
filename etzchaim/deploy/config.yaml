@@ -718,9 +718,9 @@ autopilot:
   enabled: true
   worker: claude                     # claude | codex
   interval_seconds: 7200             # CONSERVATIVE 2h for first 24-48h ; ramp to 1800 after validation
-  max_open_prs: 2                    # CONSERVATIVE ; ramp to 5 after validation
+  max_open_prs: 5                    # ramped after Step 1+2 validation (3 PRs already open)
   max_workers_threadpool: 1
-  budget_tokens_monthly: 200000      # CONSERVATIVE ~$5 cap ; ramp to 1000000 after validation
+  budget_tokens_monthly: 1000000     # ramped to ~$25 cap after Step 1+2 ($5.85 burned)
   pivot_audit_interval_days: 7
   edge_validation_interval_days: 7
   paper_draft_interval_hours: 24

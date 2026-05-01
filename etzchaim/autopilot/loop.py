@@ -17,6 +17,7 @@ For dry runs : `python -m etzchaim.autopilot.loop --dry-run`.
 from __future__ import annotations
 
 import argparse
+import json
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -27,12 +28,32 @@ from etzchaim.autopilot.delegation import WorkerSpawner
 from etzchaim.autopilot.memory.search import CycleRecord, insert_cycle
 from etzchaim.autopilot.memory.snapshot import load_frozen_snapshot
 from etzchaim.autopilot.memory.trajectory import Trajectory, append_trajectory
+from etzchaim.autopilot.runners.local import LocalRunner
 from etzchaim.autopilot.skills import parse_skill_file
 from etzchaim.autopilot.state import AutopilotState
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 SKILLS_DIR = Path(__file__).resolve().parent / "skills"
 SPECS_DIR = REPO_ROOT / "specs"
+
+
+def _open_pr_count(cwd: Path = REPO_ROOT) -> int:
+    """Count autopilot-style open PRs via `gh pr list`. Returns -1 on failure.
+
+    Lists all open PRs (not filtered by branch — autopilot is the only PR
+    opener in scope today; expand the filter if humans also open PRs).
+    """
+    try:
+        res = LocalRunner().dispatch(
+            ["gh", "pr", "list", "--state", "open", "--json", "number"],
+            cwd=str(cwd),
+            timeout=15,
+        )
+        if not res.success:
+            return -1
+        return len(json.loads(res.stdout or "[]"))
+    except Exception:
+        return -1
 
 
 def _consecutive_failures(state: AutopilotState) -> int:
@@ -102,7 +123,7 @@ def pick_next_task() -> tuple[str, str] | None:
         # Resolve task id (relative path stem) and skill choice.
         rel = spec_path.relative_to(SPECS_DIR)
         task_id = "/".join(rel.with_suffix("").parts)
-        if rel.parts and rel.parts[0] == "rectifiers":
+        if rel.parts and rel.parts[0] in {"rectifiers", "04_rectifiers"}:
             return task_id, "implement-rectifier"
         return task_id, "implement-spec"
     return None
@@ -137,6 +158,17 @@ def run_one_cycle(
         return CycleOutcome(
             status="skipped", summary="monthly token budget exhausted"
         )
+
+    if not dry_run:
+        open_count = _open_pr_count()
+        if 0 <= open_count and open_count >= cfg.max_open_prs:
+            return CycleOutcome(
+                status="skipped",
+                summary=(
+                    f"max {cfg.max_open_prs} open PRs reached "
+                    f"(have {open_count}); merge or close before next cycle"
+                ),
+            )
 
     pick = pick_next_task()
     if pick is None:

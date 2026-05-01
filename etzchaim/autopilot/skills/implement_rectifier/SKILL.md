@@ -1,6 +1,6 @@
 ---
 name: implement-rectifier
-description: Use when implementing one of the 13 rectifier specs from `specs/rectifiers/*.md`. Reads the failure pattern, action options, and invariants; produces a rectifier subclass + tests + PR with neutral naming. Never modifies the probe orchestrator's public contract.
+description: Use when implementing one of the 13 rectifier specs from `specs/04_rectifiers/*.md`. Reads the failure pattern, action options, and invariants; produces a rectifier subclass + tests + PR with neutral naming. Never modifies the probe orchestrator's public contract.
 version: 0.1.0
 license: MIT
 metadata:
@@ -13,17 +13,17 @@ metadata:
 
 ## Overview
 
-Implements one rectifier specification (`specs/rectifiers/<n>.md`) into a
+Implements one rectifier specification (`specs/04_rectifiers/<n>.md`) into a
 runnable Python class extending `BaseRectifier`, plus tests, opens a PR.
 
 ## When to use
 
 When the autopilot loop selects an unimplemented rectifier spec (any file
-under `specs/rectifiers/` whose name has no companion `.implemented` flag).
+under `specs/04_rectifiers/` whose name has no companion `.implemented` flag).
 
 ## Inputs
 
-- Path to the rectifier spec (e.g. `specs/rectifiers/01.md`).
+- Path to the rectifier spec (e.g. `specs/04_rectifiers/01.md`).
 - The frozen context snapshot (mission + autopilot context + operator).
 
 ## Steps
