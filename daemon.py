@@ -56,6 +56,10 @@ CONFIG_PATH = Path(__file__).parent / "config.yaml"
 # ─── Intervals ──────────────────────────────────────────────
 
 INTERVAL_NETZACH = 3600       # 1 heure
+INTERVAL_AUTO_DEV = 1800      # 30 min — autopilot cycle (disabled by default)
+INTERVAL_PIVOT_AUDIT = 7 * 86400      # 7 days
+INTERVAL_EDGE_VALIDATION = 7 * 86400  # 7 days
+INTERVAL_PAPER_DRAFT = 24 * 3600      # 24 hours
 INTERVAL_PARTZUF_REG = 3600   # 1 heure — régulation Partzufim (transitions katnut↔gadlut)
 INTERVAL_DAILY = 86400        # 24 heures
 INTERVAL_OMER = 604800        # 7 jours — Sefirat haOmer hebdomadaire
@@ -265,6 +269,10 @@ def load_state() -> dict:
         "last_din_monitor": 0,
         "last_external_scan": 0,
         "last_orphan_validation": 0,
+        "last_auto_dev": 0,
+        "last_pivot_audit": 0,
+        "last_edge_validation": 0,
+        "last_paper_draft": 0,
     }
 
 
@@ -371,6 +379,27 @@ from daemon_tasks import (  # noqa: E402
     task_validate_orphan_candidates,
     task_yesod_mature,
 )
+
+# Autopilot cycle (disabled by default via config.yaml: autopilot.enabled).
+try:
+    from daemon_tasks.auto_dev import task_auto_dev  # noqa: E402, F401
+except ImportError:
+    task_auto_dev = None  # type: ignore[assignment]
+
+try:
+    from daemon_tasks.pivot_audit import task_pivot_audit  # noqa: E402, F401
+except ImportError:
+    task_pivot_audit = None  # type: ignore[assignment]
+
+try:
+    from daemon_tasks.edge_validation import task_edge_validation  # noqa: E402, F401
+except ImportError:
+    task_edge_validation = None  # type: ignore[assignment]
+
+try:
+    from daemon_tasks.paper_draft import task_paper_draft  # noqa: E402, F401
+except ImportError:
+    task_paper_draft = None  # type: ignore[assignment]
 
 # Re-export threshold constants used by run_cycle indirectly
 from daemon_tasks.daat import (  # noqa: E402, F811
@@ -1605,6 +1634,54 @@ def run_cycle(state: dict, force_daily: bool = False) -> dict:
                 results["din_monitor"] = {"error": str(e)}
 
             state["last_din_monitor"] = now
+
+        # ── Autopilot cycle (toutes les 30 min, disabled by default) ────
+        if task_auto_dev is not None and (
+            now - state.get("last_auto_dev", 0) >= INTERVAL_AUTO_DEV
+        ):
+            try:
+                results["auto_dev"] = task_auto_dev(tree or {})
+                _daemon_emit("auto_dev_done", **_safe_emit_data(results["auto_dev"]))
+            except Exception as e:
+                log.exception("auto_dev raised")
+                results["auto_dev"] = {"error": str(e)}
+            state["last_auto_dev"] = now
+
+        # ── Pivot audit (hebdomadaire, governance) ───────────────────
+        if task_pivot_audit is not None and (
+            now - state.get("last_pivot_audit", 0) >= INTERVAL_PIVOT_AUDIT
+        ):
+            try:
+                results["pivot_audit"] = task_pivot_audit(tree or {})
+                _daemon_emit("pivot_audit_done", **_safe_emit_data(results["pivot_audit"]))
+            except Exception as e:
+                log.exception("pivot_audit raised")
+                results["pivot_audit"] = {"error": str(e)}
+            state["last_pivot_audit"] = now
+
+        # ── Edge validation (hebdomadaire, benchmarks) ──────────────
+        if task_edge_validation is not None and (
+            now - state.get("last_edge_validation", 0) >= INTERVAL_EDGE_VALIDATION
+        ):
+            try:
+                results["edge_validation"] = task_edge_validation(tree or {})
+                _daemon_emit("edge_validation_done", **_safe_emit_data(results["edge_validation"]))
+            except Exception as e:
+                log.exception("edge_validation raised")
+                results["edge_validation"] = {"error": str(e)}
+            state["last_edge_validation"] = now
+
+        # ── Paper draft (quotidien, autopilot opt-in) ────────────────
+        if task_paper_draft is not None and (
+            now - state.get("last_paper_draft", 0) >= INTERVAL_PAPER_DRAFT
+        ):
+            try:
+                results["paper_draft"] = task_paper_draft(tree or {})
+                _daemon_emit("paper_draft_done", **_safe_emit_data(results["paper_draft"]))
+            except Exception as e:
+                log.exception("paper_draft raised")
+                results["paper_draft"] = {"error": str(e)}
+            state["last_paper_draft"] = now
 
         # ── Netzach (toutes les heures) ──────────────────────
         if now - state["last_netzach"] >= INTERVAL_NETZACH:

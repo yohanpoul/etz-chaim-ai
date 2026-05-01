@@ -21,14 +21,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e ".[dev]"
 
-      - name: Ruff lint (strict — new modules)
-        run: ruff check bridge mazalengine partzufim/reshimu.py partzufim/zivvug.py examples scripts/check_doctrine_code_alignment.py
+      - name: Ruff lint (strict — core modules)
+        run: ruff check $(cat .github/lint-strict-paths.txt)
 
-      - name: Ruff format check (strict — new modules)
-        run: ruff format --check bridge mazalengine partzufim/reshimu.py partzufim/zivvug.py examples scripts/check_doctrine_code_alignment.py
+      - name: Ruff format check (strict — core modules)
+        run: ruff format --check $(cat .github/lint-strict-paths.txt)
 
       - name: Ruff lint (informative — full repo, non-blocking)
         run: ruff check . || true
 
       - name: Mypy (non-blocking for now)
-        run: mypy bridge mazalengine partzufim/reshimu.py || true
+        run: mypy $(head -3 .github/lint-strict-paths.txt) || true
+
+      - name: Public surface neutrality
+        run: bash scripts/check_public_surface.sh

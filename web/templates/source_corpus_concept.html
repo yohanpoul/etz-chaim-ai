@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% set active = "source-corpus" %}
+{% block title %}{{ concept_id }} — Source Corpus{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <a href="/source-corpus" class="term-link">&larr; Source Corpus</a>
+    <h1 id="concept-title">{{ concept_id }}</h1>
+</div>
+
+<section class="panel">
+    <div class="panel-header">&#9484;&#9472; CONCEPT &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <pre class="term-block" id="concept-details">Chargement...</pre>
+    </div>
+</section>
+
+<section class="panel">
+    <div class="panel-header">&#9484;&#9472; ASSERTIONS &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <div id="assertions-list" class="term-dim">Chargement...</div>
+    </div>
+</section>
+
+<section class="panel">
+    <div class="panel-header">&#9484;&#9472; RELATIONS &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
+    <div class="panel-body">
+        <div id="relations-list" class="term-dim">Chargement...</div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const conceptId = "{{ concept_id }}";
+
+async function loadConcept() {
+    try {
+        const resp = await fetch(`/api/source-corpus/concept/${conceptId}`);
+        if (resp.status === 404) {
+            document.getElementById('concept-details').textContent = 'Concept introuvable.';
+            return;
+        }
+        const data = await resp.json();
+
+        document.getElementById('concept-title').textContent =
+            `${data.nom_he || conceptId}${data.nom_fr ? ' — ' + data.nom_fr : ''}`;
+        document.getElementById('concept-details').innerHTML =
+            `&#9474; ID:       <code>${data.concept_id}</code>\n` +
+            (data.domaine ? `&#9474; Domaine:  ${data.domaine}\n` : '') +
+            (data.description ? `&#9474; ${data.description}\n` : '') +
+            (data.premiere_apparition ? `&#9474; Premiere: <code>${data.premiere_apparition}</code>` : '');
+
+        if (data.assertions && data.assertions.length > 0) {
+            let html = '<table class="term-table"><thead><tr><th>ID</th><th>Type</th><th>Assertion</th><th>Source</th></tr></thead><tbody>';
+            for (const a of data.assertions) {
+                html += `<tr><td><code>${a.assertion_id}</code></td><td>${a.assertion_type}</td><td>${a.assertion}</td><td dir="rtl">${a.source_he || ''}</td></tr>`;
+            }
+            html += '</tbody></table>';
+            document.getElementById('assertions-list').innerHTML = html;
+        } else {
+            document.getElementById('assertions-list').innerHTML =
+                '<div class="term-dim">Aucune assertion liee.</div>';
+        }
+
+        if (data.relations && data.relations.length > 0) {
+            let html = '<table class="term-table"><thead><tr><th>ID</th><th>Type</th><th>De</th><th>Vers</th><th>Nature</th></tr></thead><tbody>';
+            for (const r of data.relations) {
+                html += `<tr>
+                    <td><code>${r.relation_id}</code></td>
+                    <td>${r.relation_type}</td>
+                    <td>${r.concept_from ? '<a href="/source-corpus/concept/' + r.concept_from + '" class="term-link">' + r.concept_from + '</a>' : ''}</td>
+                    <td>${r.concept_to ? '<a href="/source-corpus/concept/' + r.concept_to + '" class="term-link">' + r.concept_to + '</a>' : ''}</td>
+                    <td>${r.nature}</td>
+                </tr>`;
+            }
+            html += '</tbody></table>';
+            document.getElementById('relations-list').innerHTML = html;
+        } else {
+            document.getElementById('relations-list').innerHTML =
+                '<div class="term-dim">Aucune relation.</div>';
+        }
+    } catch (e) {
+        console.error('Concept load error:', e);
+    }
+}
+
+loadConcept();
+</script>
+{% endblock %}

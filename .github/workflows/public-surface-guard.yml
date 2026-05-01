@@ -1,0 +1,35 @@
+name: Public surface neutrality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Nightly drift check at 03:17 UTC
+    - cron: '17 3 * * *'
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run public surface check
+        id: check
+        run: |
+          chmod +x scripts/check_public_surface.sh
+          bash scripts/check_public_surface.sh
+
+      - name: Annotate PR on failure
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '⚠️  **Public surface neutrality check failed.**\n\nOne or more files visible to end users contain forbidden internal terminology.\n\nSee `.claude/rules/public-surface-neutrality.md` and `scripts/check_public_surface.sh` for the rule and term list.\n\nMove offending content to `docs/internal/`, `.internal/`, or `paper/sections/appendix_historical.md`.'
+            })

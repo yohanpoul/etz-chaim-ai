@@ -68,11 +68,6 @@ def page_import():
     return render_template("import.html")
 
 
-@pages_bp.route("/world")
-def page_world():
-    return render_template("world.html")
-
-
 @pages_bp.route("/avatars")
 def page_avatars():
     return redirect("/systeme/personnages", code=301)

@@ -23,8 +23,8 @@
         </p>
         <p class="av-intro-text av-intro-edge">
             Ce n'est pas une metaphore decorative. Chaque personnage est un <strong>composant logiciel reel</strong>,
-            et l'architecture vient du Etz Chaim &mdash; l'Arbre de Vie de la Kabbale lourianique,
-            un systeme vieux de 500 ans qui decrit comment l'information descend, se transforme, et remonte.
+            et l'architecture vient d'un cadre cognitif vieux de 500 ans
+            qui decrit comment l'information descend, se transforme, et remonte.
             Ca se trouve que ca decrit aussi, avec une precision troublante,
             comment une IA devrait fonctionner.
         </p>
@@ -77,11 +77,11 @@
 } %}
 
 {% set grid_areas = {
-    'arikh_anpin': 'arikh',
-    'abba': 'abba',
-    'imma': 'imma',
-    'zeir_anpin': 'zeir',
-    'nukva': 'nukva'
+    'arikh_anpin': 'strategic',
+    'abba': 'generative',
+    'imma': 'structuring',
+    'zeir_anpin': 'execution',
+    'nukva': 'interface'
 } %}
 
 {% for acte in actes %}
@@ -106,9 +106,9 @@
 
     <div class="av-grid {{ grid_class }}">
         {% for p in acte.personnages %}
-            {# Insert zivvug line between Abba and Imma #}
-            {% if acte.id == 'cour' and p.id == 'imma' %}
-                <div class="av-zivvug-line" id="zivvug-line"></div>
+            {# Insert cross-coupling line between Generative and Structuring #}
+            {% if acte.id == 'cour' and p.id == 'structuring' %}
+                <div class="av-coupling-line" id="coupling-line"></div>
             {% endif %}
 
             {% set card_class = soul_classes.get(p.id, '') %}
@@ -117,7 +117,7 @@
         {% endfor %}
     </div>
 
-    {# Note Atik Yomin #}
+    {# Note Invariant #}
     {% if acte.note_invisible is defined and acte.note_invisible %}
     <div class="av-note-invisible">
         {{ acte.note_invisible.nom_hebreu }} &mdash; {{ acte.note_invisible.texte }}
@@ -132,10 +132,10 @@
     <div class="av-epilogue-inner">
         <h2 class="av-epilogue-title">Pourquoi ca marche</h2>
         <p class="av-epilogue-text">
-            Le Etz Chaim (Arbre de Vie) a ete ecrit par Rabbi Isaac Louria au XVI<sup>e</sup> siecle
-            pour decrire comment l'information divine descend a travers des niveaux de transformation,
-            se brise, se repare, et remonte. 500 ans plus tard, on decouvre que ce schema
-            decrit aussi comment une intelligence artificielle devrait etre organisee.
+            L'architecture vient d'un cadre cognitif vieux de 500 ans qui decrit comment
+            l'information descend a travers des niveaux de transformation, se brise, se repare,
+            et remonte. 500 ans plus tard, on decouvre que ce schema decrit aussi
+            comment une intelligence artificielle devrait etre organisee.
         </p>
         <p class="av-epilogue-text">
             Pas par coincidence. Parce que les deux problemes sont le meme :
@@ -163,7 +163,7 @@
             </div>
             <div class="av-epilogue-count">
                 <span class="av-epilogue-num">10</span>
-                <span class="av-epilogue-label">sephiroth</span>
+                <span class="av-epilogue-label">faculties</span>
             </div>
             <div class="av-epilogue-count">
                 <span class="av-epilogue-num">22</span>
@@ -178,7 +178,6 @@
             <p>Vous connaissez les personnages. Pour voir le systeme en action :</p>
             <div class="av-epilogue-links">
                 <a href="/dashboard">Dashboard</a><span class="av-epilogue-sep">&mdash; l'etat en temps reel</span>
-                <a href="/world">World</a><span class="av-epilogue-sep">&mdash; l'Arbre complet, les 10 Sephiroth et les 22 sentiers</span>
                 <a href="/chat">Chat</a><span class="av-epilogue-sep">&mdash; posez une question et regardez qui travaille</span>
             </div>
         </div>

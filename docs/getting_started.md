@@ -22,7 +22,7 @@ This creates a virtual environment at `.venv/`, installs the project in editable
 make test-core
 ```
 
-You should see around 200 tests green across `bridge/`, `mazalengine/`, and `partzufim/`.
+You should see around 200 tests green across the core modules.
 
 ## Database setup (optional for v0.1.0)
 
@@ -31,8 +31,7 @@ If you want to run the daemon or the runtime validation cycle :
 ```bash
 createdb etz_chaim
 psql etz_chaim -c "CREATE EXTENSION IF NOT EXISTS pgvector;"
-psql etz_chaim < partzufim/zivvug_schema.sql
-psql etz_chaim < causalengine/schema.sql
+psql etz_chaim < scripts/init_schema.sql
 ```
 
 Then configure the connection via the `ETZ_CHAIM_DB_URL` environment variable, for example :
@@ -47,36 +46,31 @@ export ETZ_CHAIM_DB_URL="postgresql://postgres@localhost:5432/etz_chaim"
 make demo
 ```
 
-This runs `scripts/sprint9_force_mazal_cycle.py`, which :
+This runs `scripts/force_probe_cycle.py`, which :
 
-1. Takes a snapshot of `partzufim_state`.
-2. Runs one MazalEngine cycle over the current state.
-3. Verifies that no row of `partzufim_state` was written (Hitlabshut compliance).
-4. Reports any Tikkunim emitted.
+1. Takes a snapshot of the configuration state.
+2. Runs one probe orchestrator cycle over the current state.
+3. Verifies that no row of the configuration state was written (layered composition compliance).
+4. Reports any rectifiers emitted.
 
-Expected output ends with `Verdict : ✓ FIX TIENT`.
+Expected output ends with `Verdict : ✓ FIX HOLDS`.
 
-## Explore the corpus
+## Explore the public API
 
 ```python
-from bridge import load_assertion, load_by_module, search
+from etzchaim import initiate
 
-# Load a single assertion
-a = load_assertion("EC-K5-001")
-print(a["source_he"])
-print(a["assertion"])
+# Plug your LLM into Etz Chaim AI
+agent = initiate(llm="claude-opus-4")
 
-# All assertions that map to a specific module
-for a in load_by_module("partzufim/arikh_anpin.py"):
-    print(a["id"], "-", a["source_ref"])
-
-# Substring search across Hebrew and French fields
-for a in search("notzer chesed"):
-    print(a["id"])
+# Run a query through the cognitive operating system
+response = agent.query("What are your typical failure modes?")
 ```
+
+For corpus exploration and advanced usage, see `etzchaim --explain-origin` or `docs/advanced.md`.
 
 ## Next steps
 
 - Read the [Architecture overview](architecture.md).
-- Explore the [Concepts](concepts/sephirot.md) documentation.
 - Check the [Roadmap](roadmap.md) to see what is planned and where you can contribute.
+- See [`docs/advanced.md`](advanced.md) for the structural framework that inspired the architecture (informational, not required).

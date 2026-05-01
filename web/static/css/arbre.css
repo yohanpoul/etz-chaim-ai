@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   L'Arbre de Vie — Les 10+1 Sephiroth
+   Cognitive Faculty Tree — 10+1 Faculties
    Esthetique : Terminal Codex — manuscrit sacre sur fond terminal
    ═══════════════════════════════════════════════════════════ */
 
@@ -77,7 +77,7 @@
     text-align: center;
 }
 
-/* ─── Section (per Sephirah) ───────────────────────────── */
+/* ─── Section (per Faculty) ───────────────────────────── */
 
 .arbre-section {
     max-width: 720px;
@@ -102,7 +102,7 @@
     margin-bottom: 4px;
 }
 
-/* ─── Sephirah Card ────────────────────────────────────── */
+/* ─── Faculty Card ────────────────────────────────────── */
 
 .arbre-card {
     display: grid;
@@ -460,7 +460,7 @@
    Special Styles per data-style
    ═══════════════════════════════════════════════════════════ */
 
-/* ─── Acquis (Malkuth) — muted, check feel ─────────────── */
+/* ─── Acquis (Action) — muted, check feel ─────────────── */
 
 .arbre-section[data-style="acquis"] .arbre-card {
     border-color: #1a1a14;
@@ -485,7 +485,7 @@
     color: #446633;
 }
 
-/* ─── Mur (Tiferet) — red border accents, emphasis ────── */
+/* ─── Wall (Balance) — red border accents, emphasis ────── */
 
 .arbre-section[data-style="mur"] .arbre-card {
     border-color: #4a1a00;
@@ -558,7 +558,7 @@
     margin-bottom: 8px;
 }
 
-/* ─── Horizon (Keter) — white/gold ethereal ────────────── */
+/* ─── Horizon (Meta) — white/gold ethereal ────────────── */
 
 .arbre-section[data-style="horizon"] .arbre-card {
     border-color: #2a2a1a;

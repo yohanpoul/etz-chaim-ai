@@ -660,7 +660,8 @@ profiles:
       dimensions: 1536
 
 # ═══════════════════════════════════════════════════════════════
-# Sephirot → olam mapping (domain → reasoning tier)
+# Faculty → tier mapping (domain → reasoning tier)
+# Internal naming retained for backend compatibility.
 # ═══════════════════════════════════════════════════════════════
 sephirot:
   yesod:
@@ -697,12 +698,43 @@ daemon:
   novelty_threshold: 0.15
 
 # ═══════════════════════════════════════════════════════════════
-# MazalEngine
+# Probe orchestrator
 # ═══════════════════════════════════════════════════════════════
 mazalengine:
   # observe (default) : signal only.
-  # suggest           : observe + emit `mazal_action_proposed` events.
+  # suggest           : observe + emit `probe_action_proposed` events.
   # act               : suggest + actually apply the action.
   # Observe for 2-4 weeks before switching to `act`.
-  # Override via env var : MAZAL_RECTIFICATION_MODE=suggest|act
+  # Override via env var : PROBE_RECTIFICATION_MODE=suggest|act
   rectification_mode: observe
+
+# ═══════════════════════════════════════════════════════════════
+# Autopilot — internal autonomous coding loop
+# ═══════════════════════════════════════════════════════════════
+# Reads specs/ and dispatches LLM workers to implement them.
+# Opens PRs ; never merges to main without human-approved label.
+# Disable by flipping enabled to false + restarting daemon.
+autopilot:
+  enabled: true
+  worker: claude                     # claude | codex
+  interval_seconds: 7200             # CONSERVATIVE 2h for first 24-48h ; ramp to 1800 after validation
+  max_open_prs: 2                    # CONSERVATIVE ; ramp to 5 after validation
+  max_workers_threadpool: 1
+  budget_tokens_monthly: 200000      # CONSERVATIVE ~$5 cap ; ramp to 1000000 after validation
+  pivot_audit_interval_days: 7
+  edge_validation_interval_days: 7
+  paper_draft_interval_hours: 24
+  worker_paths:
+    claude: claude
+    codex: codex
+  excluded_paths:
+    - sifrei_yesod/
+    - .claude/
+    - paper/sections/appendix_historical.md
+    - bridge/
+    - partzufim/
+    - mazalengine/
+    - specs/
+    - MISSION.md
+    - docs/internal/
+    - .internal/

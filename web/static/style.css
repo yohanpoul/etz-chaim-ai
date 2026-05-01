@@ -732,7 +732,7 @@ form button[type="submit"]:disabled {
     display: block;
 }
 
-.db-sephirah-detail {
+.db-faculty-detail {
     margin-top: 4px;
 }
 
@@ -1604,9 +1604,9 @@ form button[type="submit"]:disabled {
     }
 }
 
-/* ─── MazalEngine widget (Sprint 9, EC-K5-001) ──────────── */
+/* ─── Probe orchestrator widget (Sprint 9, EC-K5-001) ──────────── */
 
-.db-mazal-grid {
+.db-probe-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
@@ -1614,18 +1614,18 @@ form button[type="submit"]:disabled {
 }
 
 @media (max-width: 720px) {
-    .db-mazal-grid {
+    .db-probe-grid {
         grid-template-columns: 1fr;
     }
 }
 
-.db-mazal-card {
+.db-probe-card {
     border: 1px solid var(--border);
     padding: 10px 12px;
     background: var(--bg);
 }
 
-.db-mazal-header {
+.db-probe-header {
     display: flex;
     gap: 10px;
     align-items: baseline;
@@ -1633,7 +1633,7 @@ form button[type="submit"]:disabled {
     flex-wrap: wrap;
 }
 
-.db-mazal-tikkun {
+.db-probe-id {
     font-size: 10px;
     color: var(--text-dim);
     font-weight: 600;
@@ -1641,7 +1641,7 @@ form button[type="submit"]:disabled {
     text-transform: uppercase;
 }
 
-.db-mazal-hebrew {
+.db-probe-name {
     font-size: 18px;
     color: var(--accent, #d4a64a);
     direction: rtl;
@@ -1661,7 +1661,7 @@ form button[type="submit"]:disabled {
     margin-bottom: 6px;
 }
 
-.db-mazal-card .term-block {
+.db-probe-card .term-block {
     font-size: 11px;
     margin: 0;
 }

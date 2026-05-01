@@ -4,79 +4,81 @@
 
 Etz Chaim AI is organized in three layers :
 
-1. **Primary source corpus** (`sifrei_yesod/sefarim/`) — 1696 doctrinal assertions from the Zohar and Vital's Etz Chaim, with epistemic labeling, concepts, mappings, and cross-references.
-2. **Doctrine bridge** (`bridge/`) — indexed loader exposing the corpus via a five-method API (load by id, by concept, by module, by partzuf, search).
-3. **Operational modules** — Python packages implementing the Sephirot, Partzufim, and Mazalot, respecting Hitlabshut discipline and adversarial testing.
+1. **Specification corpus** (internal) — 1696 specification items with epistemic labeling, concepts, mappings, and cross-references.
+2. **Specification bridge** (internal) — indexed loader exposing the corpus via a five-method API (load by id, by concept, by module, search).
+3. **Operational modules** — Python packages implementing the cognitive faculties, mature configurations, and probes, respecting layered composition discipline and adversarial testing.
 
-## Initiatic ordering
+For details on the structural framework that inspired this organization, see [`docs/advanced.md`](advanced.md). It is informational only — not required to use or contribute.
 
-The project follows the strict order : Malkuth → Yesod → Hod → Netzach → Tiferet → Gevurah → Chesed → Da'at → Binah → Chokhmah → Keter.
+## Sequential consolidation
 
-Each Sephirah is consolidated (Qliphoth tests green, 7 Omer parameters exposed) before the next is started.
+The project follows a strict consolidation order across the cognitive faculties : the foundational faculty is built first, each subsequent faculty depending on those already consolidated. Concretely : memory → introspection → persistence → harmony → contraction → expansion → bridge → causal → insight → meta-orchestrator.
+
+Each faculty is consolidated (qualification tests green, 7 calibration parameters exposed) before the next is started.
 
 ## Module map
 
-### Core doctrine infrastructure
+### Core specification infrastructure
 
 | Module | Role |
 |:-------|:-----|
-| `bridge/` | Doctrine loader (1696 items) |
-| `sifrei_yesod/sefarim/` | Corpus (Zohar + Vital) |
+| `bridge/` | Specification loader (1696 items) |
+| internal corpus | Source assertions (specifications + relations + principles) |
 
-### Sephirot modules (v0.1.0)
+### Cognitive faculty modules (v0.1.0)
 
-| Module | Sephirah | Role |
-|:-------|:---------|:-----|
-| `explorationengine/` | Chesed | Inter-domain exploration |
-| `autojudge/` | Gevurah | Adversarial judgment |
-| `dissensuengine/` | Tiferet | Productive tension |
-| `insightforge/` | Chokhmah | Insight generation |
-| `causalengine/` | Binah | Causal reasoning |
-| `selfmap/` | Hod | Self-mapping |
-| `epistememory/` | Yesod | Memory foundation |
-| `failuretoinsight/` | Lamed path | Failure learning |
+| Module | Role |
+|:-------|:-----|
+| `explorationengine/` | Cross-domain exploration |
+| `autojudge/` | Adversarial judgment |
+| `dissensuengine/` | Productive tension / contradiction |
+| `insightforge/` | Insight generation |
+| `causalengine/` | Causal reasoning |
+| `selfmap/` | Self-mapping |
+| `epistememory/` | Memory foundation |
+| `failuretoinsight/` | Failure learning |
 
-### Partzufim
+### Mature configurations
 
-| Module | Partzuf | Source |
-|:-------|:--------|:-------|
-| `partzufim/atik_yomin.py` | Atik Yomin | Keter |
-| `partzufim/arikh_anpin.py` | Arikh Anpin | Keter (inner) |
-| `partzufim/abba.py` | Abba | Chokhmah |
-| `partzufim/imma.py` | Imma | Binah |
-| `partzufim/zeir_anpin.py` | Zeir Anpin | Six middle |
-| `partzufim/nukva.py` | Nukva | Malkuth |
+Six configuration layers (compose internal faculties into operational units) :
+- Highest-level invariants
+- Strategic meta-orchestrator
+- Generative configuration
+- Structuring configuration
+- Execution configuration
+- Interface configuration
+
+Public API exposes them as `Configuration` instances. Internal file paths use domain-specific naming — see `docs/internal/architecture.md` for the mapping.
 
 ### Dedicated engines
 
-| Module | Role | Doctrinal reference |
-|:-------|:-----|:--------------------|
-| `partzufim/zivvug.py` | Zivvug Abba ↔ Imma | EC-K5-005, EC-K5-008 |
-| `partzufim/reshimu.py` | Persistent faculty trace | Sprint 10 Phase D |
-| `mazalengine/mazal_engine.py` | 2 Mazalot orchestrator | EC-K5-001 |
-| `mazalengine/rectification.py` | 3-mode rectification | Sprint 10 Phase C |
+| Module | Role |
+|:-------|:-----|
+| `configurations/` | Cross-configuration coupling + persistent faculty trace |
+| `probes/orchestrator.py` | Probe orchestrator |
+| `probes/rectification.py` | 3-mode rectification |
 
-## Hitlabshut discipline
+## Layered composition discipline
 
-No module writes directly to `partzufim_state.overall_score`. Boosts pass through faculties (`set_faculty`) and `overall` is always computed from faculties. A static check rejects any code that bypasses this discipline.
+No module writes directly to the aggregate `overall_score`. Boosts pass through faculties (`set_faculty`) and `overall` is always computed from faculties. A static check rejects any code that bypasses this discipline.
 
-## Reshimu persistence
+## Persistent trace coefficient
 
-Every Zivvug boost leaves a trace in `faculty_reshimot` that accumulates across cycles (plateau 0.3, decay 5%/cycle). Stable modules gain cumulative advantage without violating Hitlabshut.
+Every cross-configuration boost leaves a persistent trace coefficient on each faculty that accumulates across cycles (plateau 0.3, decay 5%/cycle). Stable modules gain cumulative advantage without violating the layered composition rule.
 
 ## Testing layers
 
 | Layer | Location | Scope |
 |:------|:---------|:------|
 | Unit | `<module>/tests/` | API contract, edge cases |
-| Qliphoth | 4 levels per module | foundation / application / excess / opposite |
+| Qualification | 4 levels per module | foundation / application / excess / opposite |
 | Integration | `tests/` | cross-module flows |
-| Doctrine alignment | `scripts/check_doctrine_code_alignment.py` | doctrine ↔ code mapping |
+| Specification alignment | `scripts/check_doctrine_code_alignment.py` | specification ↔ code mapping |
 | ID uniqueness | `scripts/check_id_uniqueness.py` | corpus consistency |
-| Runtime | `scripts/sprint9_force_mazal_cycle.py` | end-to-end cycle |
+| Runtime | `scripts/force_probe_cycle.py` | end-to-end cycle |
 
 ## Extending the system
 
-- Adding a new Partzuf : see [guide](guides/add_new_partzuf.md).
-- Transposing a new Sefer : see [guide](guides/transpose_new_sefer.md).
-- Contributing : see [CONTRIBUTING.md](https://github.com/yohanpoul/etz-chaim-ai/blob/main/CONTRIBUTING.md).
+- Adding a new configuration : see internal guide in `docs/internal/guides/`.
+- Transposing a new specification source : see internal guide `docs/internal/guides/transpose_new_sefer.md`.
+- Contributing : see [`CONTRIBUTING.md`](../CONTRIBUTING.md).

@@ -7,10 +7,10 @@ What this PR changes, in 1–2 sentences.
 ## Type
 
 - [ ] Bug fix
-- [ ] New feature (new module / Partzuf / Mazal)
+- [ ] New feature (new module / faculty / configuration / probe)
 - [ ] Refactor
 - [ ] Docs
-- [ ] Doctrinal corpus (new transposition or correction)
+- [ ] Specification corpus (new transposition or correction)
 - [ ] Tests only
 - [ ] Chore (build, CI, dependencies)
 
@@ -19,25 +19,26 @@ What this PR changes, in 1–2 sentences.
 ### Code
 
 - [ ] TDD red → green visible in commit history.
-- [ ] `pytest bridge/tests mazalengine/tests partzufim/tests` green.
+- [ ] Core test suite green (`make test`).
 - [ ] `ruff check .` clean.
 - [ ] `ruff format .` applied.
-- [ ] No direct writes to `partzufim_state.overall_score` (Hitlabshut).
-- [ ] No new imports of `partzufim.*` from adversarial / mazal / rectification modules (orthogonality).
+- [ ] `bash scripts/check_public_surface.sh` exit 0 (public surface neutrality).
+- [ ] No direct writes to aggregate state scores (layered composition discipline).
+- [ ] No cross-module imports that violate orthogonality.
 
-### Doctrine (if applicable)
+### Specification (if applicable)
 
-- [ ] Primary source cited with edition + folio / section reference.
-- [ ] Original-language text preserved verbatim in `source_he` / `source_aramaic`.
+- [ ] Primary source cited with edition + section reference.
+- [ ] Original-language text preserved verbatim where applicable.
 - [ ] Epistemic label (E1–E6) applied.
 - [ ] `see_also` links to related primary sources.
-- [ ] `scripts/check_id_uniqueness.py sifrei_yesod/sefarim/ --strict` passes.
+- [ ] `scripts/check_id_uniqueness.py` strict mode passes.
 - [ ] `scripts/check_doctrine_code_alignment.py` reviewed.
 
-### Initiatic ordering
+### Sequential consolidation
 
 - [ ] Prerequisite phases are green (if this PR adds a new phase or module).
-- [ ] Qliphoth tests (4 levels) present for new modules.
+- [ ] Qualification tests (4 levels) present for new modules.
 
 ### Documentation
 

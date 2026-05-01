@@ -4,17 +4,19 @@ Runnable demonstrations of Etz Chaim AI components. Each example is self-contain
 
 ## Available examples
 
-- `01_quickstart.py` — load a doctrinal assertion and print its fields. Zero dependencies beyond `bridge/`.
-- `02_mazalengine_demo.py` — instantiate MazalEngine in `observe` mode and run one cycle (requires DB).
-- `03_corpus_exploration.py` — explore the corpus via `load_by_concept`, `load_by_module`, `search`.
+- `02_probe_orchestrator_demo.py` — instantiate the probe orchestrator in `observe` mode and run one cycle (requires DB).
+
+Additional examples for advanced corpus exploration are in `docs/internal/examples/`.
 
 ## Running
 
 ```bash
 source .venv/bin/activate
-python examples/01_quickstart.py
+python examples/02_probe_orchestrator_demo.py
 ```
 
 ## Adding an example
 
-Keep each example under 150 lines. Favor clarity over completeness. Annotate with doctrinal references (EC-*, Z-*) where relevant. Submit a PR with the example + an entry in this README.
+Keep each example under 150 lines. Favor clarity over completeness. Submit a PR with the example + an entry in this README.
+
+Public-facing examples must pass `bash scripts/check_public_surface.sh`.

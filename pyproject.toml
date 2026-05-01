@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "etzchaim"
 version = "0.2.26"
-description = "AI architecture grounded in Lurianic Kabbalistic discipline — 10 Sephirot, 4 Partzufim, 13 Tikkunei Dikna, 1696 doctrinal assertions. One-command install via Docker Compose."
+description = "Cognitive Operating System for LLM agents — 10 cognitive faculties, 6 mature configurations, 13 rectification mechanisms, 1696 specification items. One-command install via Docker Compose."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "Apache-2.0" }
@@ -13,8 +13,8 @@ authors = [
     { name = "Etz Chaim AI Contributors" },
 ]
 keywords = [
-    "ai", "kabbalah", "lurianic", "partzufim", "sephirot",
-    "adversarial-testing", "llm-orchestration", "doctrinal-ai",
+    "ai", "cognitive-architecture", "llm-orchestration", "agent-framework",
+    "adversarial-testing", "self-improving-agent",
 ]
 classifiers = [
     "Development Status :: 4 - Beta",

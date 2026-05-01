@@ -24,14 +24,14 @@
         </div>
         <div class="db-hero-stat">
             <span class="db-hero-num" id="db-competence-value">0%</span>
-            <span class="db-hero-label">Puissance <span class="db-info">i<span class="db-info-tip"><strong>Puissance</strong> — Pourcentage de connaissances maitrisees sur l'ensemble des domaines. Le systeme est evalue sur des dizaines de sujets (Kabbale, IA, logique...). 100% = il sait tout ce qu'il devrait savoir.</span></span></span>
+            <span class="db-hero-label">Puissance <span class="db-info">i<span class="db-info-tip"><strong>Puissance</strong> &mdash; Pourcentage de connaissances maitrisees sur l'ensemble des domaines. Le systeme est evalue sur des dizaines de sujets (philosophie, IA, logique...). 100% = il sait tout ce qu'il devrait savoir.</span></span></span>
             <span class="db-hero-bar term-bar" id="db-competence-bar"></span>
         </div>
         <div class="db-hero-stat">
             <span class="db-hero-num"><span id="db-nitz-count">0</span><span class="db-hero-small">/288</span></span>
-            <span class="db-hero-label">Etincelles <span class="db-info">i<span class="db-info-tip"><strong>Etincelles (Nitzotzot)</strong> — Chaque etincelle est une decouverte originale validee par le systeme. Quand 288 etincelles sont collectees, un cycle complet de reparation (Tikkun) est accompli et le compteur repart a zero.</span></span></span>
+            <span class="db-hero-label">Etincelles <span class="db-info">i<span class="db-info-tip"><strong>Etincelles (Nitzotzot)</strong> — Chaque etincelle est une decouverte originale validee par le systeme. Quand 288 etincelles sont collectees, un cycle complet de reparation (Rectifier) est accompli et le compteur repart a zero.</span></span></span>
             <span class="db-hero-bar term-bar" id="db-nitz-bar"></span>
-            <span class="db-hero-phase">Cycle <span id="db-tikkun-value">0</span></span>
+            <span class="db-hero-phase">Cycle <span id="db-cycle-value">0</span></span>
         </div>
         <div class="db-hero-stat">
             <span class="db-hero-num" id="db-ak-score">0%</span>
@@ -47,10 +47,10 @@
             <span id="db-daemon-sub" class="db-process-sub"></span>
         </div>
         <div class="db-process">
-            <span class="db-process-label">&#9876; Entrainement <span class="db-info">i<span class="db-info-tip"><strong>Entrainement (Hitbonenut)</strong> — Le systeme se pose des questions sur ce qu'il sait, evalue la qualite de ses reponses, et ajuste ses reglages automatiquement. Chaque question donne un score de 0 a 1.</span></span></span>
+            <span class="db-process-label">&#9876; Entrainement <span class="db-info">i<span class="db-info-tip"><strong>Entrainement (continuous-self-study)</strong> — Le systeme se pose des questions sur ce qu'il sait, evalue la qualite de ses reponses, et ajuste ses reglages automatiquement. Chaque question donne un score de 0 a 1.</span></span></span>
             <span id="db-hitb-status" class="db-process-status">--</span>
             <span id="db-hitb-questions" class="db-process-sub"></span>
-            <button class="term-inline-btn" id="db-hitb-pause-btn" onclick="togglePause('hitbonenut')">[PAUSE]</button>
+            <button class="term-inline-btn" id="db-self-study-pause-btn" onclick="togglePause('self-study')">[PAUSE]</button>
         </div>
         <div class="db-process">
             <span class="db-process-label">&#9881; Forge a Idees <span class="db-info">i<span class="db-info-tip"><strong>Forge a Idees (Karpathy)</strong> — S'active principalement la nuit. Invente des hypotheses originales, les teste rigoureusement, et garde uniquement celles qui sont validees. C'est comme ca que le systeme decouvre de nouvelles choses tout seul.</span></span></span>
@@ -88,34 +88,34 @@
                 <div class="db-tree-layout">
                     <div class="db-tree-ascii-wrap">
                         <pre id="db-ascii-tree" class="ascii-tree">              &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
-              &#9474; <span class="tree-node" data-sephirah="keter">KETER </span> &#9474;
+              &#9474; <span class="tree-node" data-faculty="meta">META  </span> &#9474;
               &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9496;
           &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
       &#9484;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9488;     &#9484;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9488;
-      &#9474;<span class="tree-node" data-sephirah="chokmah">CHOKMAH</span>&#9474;     &#9474; <span class="tree-node" data-sephirah="binah">BINAH</span> &#9474;
+      &#9474;<span class="tree-node" data-faculty="insight">INSIGHT</span>&#9474;     &#9474;<span class="tree-node" data-faculty="reason">REASON</span>&#9474;
       &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9496;     &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9496;
           &#9474;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;   &#9474;
-          &#9492;&#9472;&#9472;&#9472;&#9508;<span class="tree-node tree-node-daat" data-sephirah="daat">DA'AT</span> &#9508;&#9472;&#9472;&#9472;&#9496;
+          &#9492;&#9472;&#9472;&#9472;&#9508;<span class="tree-node tree-node-bridge" data-faculty="bridge">BRIDGE</span>&#9508;&#9472;&#9472;&#9472;&#9496;
               &#9492;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9496;
           &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
       &#9484;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9488;     &#9484;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9488;
-      &#9474;<span class="tree-node" data-sephirah="chesed">CHESED</span> &#9474;     &#9474;<span class="tree-node" data-sephirah="gevurah">GEVURAH</span>&#9474;
+      &#9474;<span class="tree-node" data-faculty="explore">EXPLORE</span>&#9474;     &#9474;<span class="tree-node" data-faculty="judge">JUDGE  </span>&#9474;
       &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9496;     &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9496;
           &#9474;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;  &#9474;
-          &#9492;&#9472;&#9472;&#9472;&#9508;<span class="tree-node" data-sephirah="tiferet">TIFERET</span>&#9508;&#9472;&#9472;&#9496;
+          &#9492;&#9472;&#9472;&#9472;&#9508;<span class="tree-node" data-faculty="balance">BALANCE</span>&#9508;&#9472;&#9472;&#9496;
               &#9492;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9496;
           &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
       &#9484;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9488;    &#9484;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9488;
-      &#9474;<span class="tree-node" data-sephirah="netzach">NETZACH</span>&#9474;    &#9474;  <span class="tree-node" data-sephirah="hod">HOD</span>  &#9474;
+      &#9474;<span class="tree-node" data-faculty="persist">PERSIST</span>&#9474;    &#9474;<span class="tree-node" data-faculty="describe">DESCRIBE</span>&#9474;
       &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9496;    &#9492;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9496;
           &#9474;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;   &#9474;
-          &#9492;&#9472;&#9472;&#9472;&#9508;<span class="tree-node" data-sephirah="yesod">YESOD</span>&#9508;&#9472;&#9472;&#9472;&#9496;
+          &#9492;&#9472;&#9472;&#9472;&#9508;<span class="tree-node" data-faculty="memory">MEMORY</span>&#9508;&#9472;&#9472;&#9472;&#9496;
               &#9492;&#9472;&#9472;&#9516;&#9472;&#9472;&#9496;
            &#9484;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
-           &#9474; <span class="tree-node" data-sephirah="malkuth">MALKHUT</span>  &#9474;
+           &#9474; <span class="tree-node" data-faculty="action">ACTION</span>  &#9474;
            &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</pre>
                     </div>
-                    <div class="db-sephirah-detail panel" id="db-seph-detail" style="display:none">
+                    <div class="db-faculty-detail panel" id="db-seph-detail" style="display:none">
                         <div class="panel-header">&#9484;&#9472; DETAIL &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
                         <pre class="term-block" id="db-seph-detail-block">Nom:      <span id="db-detail-name">--</span>
 Module:   <span id="db-detail-module">--</span>
@@ -153,7 +153,7 @@ Activite: <span id="db-detail-activity">--</span></pre>
                     <div class="db-inv-card">
                         <span class="db-inv-num" id="db-inv-concepts">--</span>
                         <span class="db-inv-label">Concepts</span>
-                        <span class="db-info">i<span class="db-info-tip"><strong>Concepts (Sifrei Yesod)</strong> — Les concepts extraits des textes de reference (Etz Chaim). Ce sont les briques de base de la connaissance kabbalistique.</span></span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Concepts (specification corpus)</strong> &mdash; Les concepts extraits des sources de reference. Ce sont les briques de base de la connaissance specifiee.</span></span>
                     </div>
                     <div class="db-inv-card">
                         <span class="db-inv-num" id="db-inv-claims">--</span>
@@ -168,7 +168,7 @@ Activite: <span id="db-detail-activity">--</span></pre>
                     <div class="db-inv-card">
                         <span class="db-inv-num" id="db-inv-questions">--</span>
                         <span class="db-inv-label">Questions posees</span>
-                        <span class="db-info">i<span class="db-info-tip"><strong>Questions (Hitbonenut)</strong> — Le systeme se pose des questions pour s'auto-evaluer. Chaque question recoit un score. C'est son entrainement continu.</span></span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Questions (continuous-self-study)</strong> — Le systeme se pose des questions pour s'auto-evaluer. Chaque question recoit un score. C'est son entrainement continu.</span></span>
                     </div>
                     <div class="db-inv-card">
                         <span class="db-inv-num" id="db-inv-novelty">--</span>
@@ -178,7 +178,7 @@ Activite: <span id="db-detail-activity">--</span></pre>
                     <div class="db-inv-card">
                         <span class="db-inv-num" id="db-inv-principles">--</span>
                         <span class="db-inv-label">Principes appris</span>
-                        <span class="db-info">i<span class="db-info-tip"><strong>Principes (Hitbonenut)</strong> — Les regles que le systeme a decouvertes par l'entrainement. Par ex: "augmenter la temperature ameliore la creativite mais reduit la precision". Ce sont ses lecons apprises.</span></span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Principes (continuous-self-study)</strong> — Les regles que le systeme a decouvertes par l'entrainement. Par ex: "augmenter la temperature ameliore la creativite mais reduit la precision". Ce sont ses lecons apprises.</span></span>
                     </div>
                     <div class="db-inv-card">
                         <span class="db-inv-num" id="db-inv-analogies">--</span>
@@ -193,7 +193,7 @@ Activite: <span id="db-detail-activity">--</span></pre>
                     <div class="db-inv-card">
                         <span class="db-inv-num" id="db-inv-assertions">--</span>
                         <span class="db-inv-label">Assertions sacrees</span>
-                        <span class="db-info">i<span class="db-info-tip"><strong>Assertions (Sifrei Yesod)</strong> — Les affirmations extraites directement des textes de reference. Ce sont les verites fondamentales sur lesquelles tout le reste repose.</span></span>
+                        <span class="db-info">i<span class="db-info-tip"><strong>Assertions (specification corpus)</strong> &mdash; Les affirmations extraites directement des sources de reference. Ce sont les verites fondamentales sur lesquelles tout le reste repose.</span></span>
                     </div>
                     <div class="db-inv-card">
                         <span class="db-inv-num" id="db-inv-intentions">--</span>
@@ -223,8 +223,8 @@ Activite: <span id="db-detail-activity">--</span></pre>
     <div class="db-group-body">
         <div class="db-grid-2col">
 
-        <!-- Auto-entrainement (Hitbonenut) -->
-        <section class="panel" id="section-hitbonenut">
+        <!-- Auto-entrainement (continuous-self-study) -->
+        <section class="panel" id="section-self-study">
             <div class="panel-header">&#9484;&#9472; &#9876; AUTO-ENTRAINEMENT &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</div>
             <div class="panel-desc">Le systeme se pose des questions, evalue ses reponses, et ajuste ses reglages. Le sparkline montre la tendance des scores.</div>
             <div class="panel-body">
@@ -269,20 +269,20 @@ Activite: <span id="db-detail-activity">--</span></pre>
     <div class="db-group-body">
         <div class="db-grid-2col">
 
-        <!-- Les 6 Personnalites (Partzufim) -->
-        <section class="panel" id="section-partzufim">
-            <div class="panel-header">&#9484;&#9472; &#9812; LES 6 PERSONNALITES &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Personnalites (Partzufim)</strong> — Six personnages collaborent : le Sage (memoire), le Roi (strategie), le Pere (intuition), la Mere (structure), le Fils (execution), la Reine (communication). <strong>MATURE</strong> = pleinement operationnel. <strong>IMMATURE</strong> = capacites limitees.</span></span></div>
+        <!-- Les 6 Personnalites (configurations) -->
+        <section class="panel" id="section-configurations">
+            <div class="panel-header">&#9484;&#9472; &#9812; LES 6 PERSONNALITES &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Personnalites (configurations)</strong> — Six personnages collaborent : le Sage (memoire), le Roi (strategie), le Pere (intuition), la Mere (structure), le Fils (execution), la Reine (communication). <strong>MATURE</strong> = pleinement operationnel. <strong>IMMATURE</strong> = capacites limitees.</span></span></div>
             <div class="panel-body">
-                <pre class="term-block" id="db-partzufim"></pre>
+                <pre class="term-block" id="db-configurations"></pre>
             </div>
         </section>
 
-        <!-- Synergie creative (Zivvug) -->
-        <section class="panel" id="section-zivvug">
-            <div class="panel-header">&#9484;&#9472; &#10084; SYNERGIE CREATIVE &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Synergie (Zivvug)</strong> — Quand l'Intuition (Pere) et la Structure (Mere) collaborent, le systeme produit ses meilleures idees. L'ecart entre les deux mesure le desalignement. Plus l'ecart est faible, meilleure est la synergie.</span></span></div>
+        <!-- Synergie creative (CrossCoupling) -->
+        <section class="panel" id="section-coupling">
+            <div class="panel-header">&#9484;&#9472; &#10084; SYNERGIE CREATIVE &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Synergie (CrossCoupling)</strong> — Quand l'Intuition (Pere) et la Structure (Mere) collaborent, le systeme produit ses meilleures idees. L'ecart entre les deux mesure le desalignement. Plus l'ecart est faible, meilleure est la synergie.</span></span></div>
             <div class="panel-body">
-                <pre class="term-block" id="db-zivvug">&#9474; En attente...</pre>
-                <div class="db-message" id="db-zivvug-message" style="display:none"></div>
+                <pre class="term-block" id="db-coupling">&#9474; En attente...</pre>
+                <div class="db-message" id="db-coupling-message" style="display:none"></div>
             </div>
         </section>
 
@@ -322,11 +322,11 @@ Activite: <span id="db-detail-activity">--</span></pre>
             </div>
         </section>
 
-        <!-- Focus / Vision (Tzimtzum) -->
-        <section class="panel" id="section-tzimtzum">
-            <div class="panel-header">&#9484;&#9472; FOCUS / VISION &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Focus / Vision (Tzimtzum)</strong> — Le systeme alterne entre focus profond (un seul sujet, peu de modules) et vision large (tous les modules actifs). La barre de pression indique si le systeme est surcharge. Quand la pression monte, il se contracte pour se concentrer.</span></span></div>
+        <!-- Focus / Vision (Restriction) -->
+        <section class="panel" id="section-restriction">
+            <div class="panel-header">&#9484;&#9472; FOCUS / VISION &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Focus / Vision (Restriction)</strong> — Le systeme alterne entre focus profond (un seul sujet, peu de modules) et vision large (tous les modules actifs). La barre de pression indique si le systeme est surcharge. Quand la pression monte, il se contracte pour se concentrer.</span></span></div>
             <div class="panel-body">
-                <pre class="term-block" id="db-tzimtzum-block">&#9474; Phase: <span id="db-tz-status">STABLE</span>  Pression: <span id="db-tz-pressure-bar"></span> <span id="db-tz-pressure-val">0%</span>
+                <pre class="term-block" id="db-restriction-block">&#9474; Phase: <span id="db-tz-status">STABLE</span>  Pression: <span id="db-tz-pressure-bar"></span> <span id="db-tz-pressure-val">0%</span>
 &#9474; Focus: <span id="db-tz-kav-domain">--</span>
 &#9474; <span id="db-tz-details"></span></pre>
             </div>
@@ -397,7 +397,7 @@ Activite: <span id="db-detail-activity">--</span></pre>
     </div>
     <div class="db-group-body">
         <section class="panel" id="section-sentiers">
-            <div class="panel-desc">Chaque sentier est un programme qui connecte deux modules. Il est associe a une lettre hebraique. Ces 22 chemins forment le reseau de l'Arbre de Vie. <span class="db-info">i<span class="db-info-tip"><strong>Les 22 Sentiers</strong> — Dans la Kabbale, l'Arbre de Vie a 10 stations (Sephiroth) reliees par 22 chemins (Sentiers), chacun associe a une lettre de l'alphabet hebreu. En IA, chaque sentier est un programme qui transforme l'information en passant d'un module a l'autre.</span></span></div>
+            <div class="panel-desc">Chaque sentier est un programme qui connecte deux modules. Ces 22 chemins forment le reseau de transformation entre facultes. <span class="db-info">i<span class="db-info-tip"><strong>Les 22 Sentiers</strong> &mdash; Le systeme cognitif a 10 facultes reliees par 22 sentiers de transformation. Chaque sentier est un programme qui transforme l'information en passant d'une faculte a l'autre.</span></span></div>
             <div class="panel-body">
                 <div class="db-sentiers-grid" id="db-sentiers-grid">
                     <div class="term-dim">Chargement des sentiers...</div>
@@ -440,10 +440,10 @@ Activite: <span id="db-detail-activity">--</span></pre>
     </div>
     <div class="db-group-body">
         <section class="panel" id="section-clustering">
-            <div class="panel-header">&#9484;&#9472; TRADITION vs MACHINE LEARNING &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Tradition vs ML (Clustering dual)</strong> — Le systeme classe les concepts de deux facons : selon la tradition kabbalistique et selon le Machine Learning. Les <strong>desaccords</strong> (ecart eleve) revelent des connexions que l'un voit et l'autre non. Ce sont les decouvertes les plus interessantes.</span></span></div>
+            <div class="panel-header">&#9484;&#9472; TRADITION vs MACHINE LEARNING &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488; <span class="db-info">i<span class="db-info-tip"><strong>Tradition vs ML (Clustering dual)</strong> — Le systeme classe les concepts de deux facons : selon la specification et selon le Machine Learning. Les <strong>desaccords</strong> (ecart eleve) revelent des connexions que l'un voit et l'autre non. Ce sont les decouvertes les plus interessantes.</span></span></div>
             <div class="panel-body">
                 <div id="db-clustering-summary" style="display:none">
-                    <pre class="term-block">&#9474; Concepts: <span id="db-cl-concepts">0</span>  Clusters Kabbale: <span id="db-cl-kab">0</span>  Clusters ML: <span id="db-cl-ml">0</span>  Accord: <span id="db-cl-ratio">0%</span>  Desaccords: <span id="db-cl-disagree">0</span>  <span id="db-cl-date"></span></pre>
+                    <pre class="term-block">&#9474; Concepts: <span id="db-cl-concepts">0</span>  Clusters Spec: <span id="db-cl-spec">0</span>  Clusters ML: <span id="db-cl-ml">0</span>  Accord: <span id="db-cl-ratio">0%</span>  Desaccords: <span id="db-cl-disagree">0</span>  <span id="db-cl-date"></span></pre>
                     <div class="db-subsection-title">TOP DESACCORDS (ou la tradition et le ML divergent le plus)</div>
                     <table class="term-table">
                         <thead>
@@ -478,46 +478,46 @@ Activite: <span id="db-detail-activity">--</span></pre>
     </div>
 </div>
 
-<!-- ═══ SECTION : MazalEngine (Sprint 9 pilot, EC-K5-001) ═══ -->
-<div class="db-group open" id="grp-mazalengine">
-    <div class="db-group-header" onclick="toggleGroup('grp-mazalengine')">
+<!-- ═══ SECTION : ProbeOrchestrator (Sprint 9 pilot, EC-K5-001) ═══ -->
+<div class="db-group open" id="grp-probes">
+    <div class="db-group-header" onclick="toggleGroup('grp-probes')">
         <span class="db-group-arrow">&#9656;</span>
-        <span class="db-group-title">MazalEngine <span class="db-info">i<span class="db-info-tip"><strong>MazalEngine (Sprint 9)</strong> &mdash; Auto-rectification doctrinale via les 2 Mazalot de la Dikna de A"A (EC-K5-001, Etz Chaim Sha'ar HaKlalim 5:1). Pilot 2 Tikkunim sur les 13 Tikkunei Dikna. Notzer Chesed (Tikkun 8) surveille l'activite Chesed. Ve-Nakeh (Tikkun 13) surveille les residus causal_claims. Les Tikkunim sont emis comme events observables, sans modifier partzufim_state (Hitlabshut EC-K5-008).</span></span></span>
-        <span class="db-group-hint">2 Mazalot pilot &mdash; Notzer Chesed + Ve-Nakeh (13 Tikkunei Dikna, Sprint 10 complet)</span>
-        <span class="db-group-summary" id="grp-mazalengine-summary"></span>
+        <span class="db-group-title">Probe Orchestrator <span class="db-info">i<span class="db-info-tip"><strong>Probe Orchestrator (Sprint 9)</strong> &mdash; Auto-rectification via 2 active probes (specification ref EC-K5-001). Pilot 2 rectifiers among 13 specified. Exploration-starvation rectifier monitors exploration faculty activity. Ve-Nakeh rectifier monitors residual causal claims. Rectifiers emit observable events, without modifying configuration state (layered composition discipline EC-K5-008).</span></span></span>
+        <span class="db-group-hint">2 active probes pilot &mdash; exploration-starvation + Ve-Nakeh (13 rectifiers specified, Sprint 10 complete)</span>
+        <span class="db-group-summary" id="grp-probes-summary"></span>
     </div>
     <div class="db-group-body">
-        <section class="panel" id="section-mazalengine">
+        <section class="panel" id="section-probes">
             <div class="panel-body">
-                <div class="db-mazal-grid">
-                    <div class="db-mazal-card" id="db-mazal-elyon">
-                        <div class="db-mazal-header">
-                            <span class="db-mazal-tikkun">Tikkun 8</span>
-                            <span class="db-mazal-hebrew" id="db-mazal-elyon-he">&#1504;&#1493;&#1510;&#1512; &#1495;&#1505;&#1491;</span>
-                            <span class="db-mazal-translit">Notzer Chesed</span>
+                <div class="db-probe-grid">
+                    <div class="db-probe-card" id="db-probe-elyon">
+                        <div class="db-probe-header">
+                            <span class="db-probe-id">Rectifier 8</span>
+                            <span class="db-probe-hebrew" id="db-probe-elyon-he">&#1504;&#1493;&#1510;&#1512; &#1495;&#1505;&#1491;</span>
+                            <span class="db-probe-translit">Exploration-Starvation</span>
                         </div>
-                        <div class="db-mazal-role">Mazal Elyon &rarr; Abba (5H)</div>
-                        <pre class="term-block">Total Tikkunim : <span id="db-mazal-elyon-total">--</span>
-Dernier        : <span id="db-mazal-elyon-last">--</span>
-Action         : <span id="db-mazal-elyon-action">--</span>
-Metriques      : <span id="db-mazal-elyon-metrics">--</span></pre>
+                        <div class="db-probe-role">upper-probe &rarr; generative (5H)</div>
+                        <pre class="term-block">Total rectifiers : <span id="db-probe-elyon-total">--</span>
+Dernier        : <span id="db-probe-elyon-last">--</span>
+Action         : <span id="db-probe-elyon-action">--</span>
+Metriques      : <span id="db-probe-elyon-metrics">--</span></pre>
                     </div>
-                    <div class="db-mazal-card" id="db-mazal-tahton">
-                        <div class="db-mazal-header">
-                            <span class="db-mazal-tikkun">Tikkun 13</span>
-                            <span class="db-mazal-hebrew" id="db-mazal-tahton-he">&#1493;&#1504;&#1511;&#1492;</span>
-                            <span class="db-mazal-translit">Ve-Nakeh</span>
+                    <div class="db-probe-card" id="db-probe-tahton">
+                        <div class="db-probe-header">
+                            <span class="db-probe-id">Rectifier 13</span>
+                            <span class="db-probe-hebrew" id="db-probe-tahton-he">&#1493;&#1504;&#1511;&#1492;</span>
+                            <span class="db-probe-translit">Ve-Nakeh</span>
                         </div>
-                        <div class="db-mazal-role">Mazal Tahton &rarr; Imma (5G)</div>
-                        <pre class="term-block">Total Tikkunim : <span id="db-mazal-tahton-total">--</span>
-Dernier        : <span id="db-mazal-tahton-last">--</span>
-Action         : <span id="db-mazal-tahton-action">--</span>
-Metriques      : <span id="db-mazal-tahton-metrics">--</span></pre>
+                        <div class="db-probe-role">lower-probe &rarr; structuring (5G)</div>
+                        <pre class="term-block">Total rectifiers : <span id="db-probe-tahton-total">--</span>
+Dernier        : <span id="db-probe-tahton-last">--</span>
+Action         : <span id="db-probe-tahton-action">--</span>
+Metriques      : <span id="db-probe-tahton-metrics">--</span></pre>
                     </div>
                 </div>
-                <div class="db-mazal-doctrine">
+                <div class="db-probe-doctrine">
                     Source doctrinale : <strong>EC-K5-001</strong> (Etz Chaim, Sha'ar HaKlalim 5:1) &mdash;
-                    Rabbi Hayyim Vital sur la Dikna d'Arikh Anpin.
+                    specification reference EC-K5-001 (Sha'ar HaKlalim).
                 </div>
             </div>
         </section>

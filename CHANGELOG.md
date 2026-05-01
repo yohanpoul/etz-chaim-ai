@@ -5,12 +5,12 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.2.23] - 2026-04-27 — Sifrei Yesod corpus seeded via init-db/99
+## [0.2.23] - 2026-04-27 — specification corpus corpus seeded via init-db/99
 
 ### Added
 
-- **`etzchaim/deploy/init-db/99-sifrei_yesod-data.sql`** — auto-generated dump of the entire transposed Etz Chaim corpus (1454 assertions, 700 relations, 302 principes, 3862 concepts, 78 perakim, 13 shaarim, 2216 cross_refs). Idempotent (`INSERT … ON CONFLICT DO UPDATE/NOTHING`), so `etzchaim update` re-applies the file via `_apply_migrations()` and ships every newly transposed perek to all Docker users without any extra command.
-- **`scripts/dump_sifrei_yesod.py`** — regenerates the SQL dump from the dev `etz_chaim` postgres DB. Mirrors the ON CONFLICT keys used by `sifrei_yesod/pipeline/sofer.py` so the dump is semantically identical to a fresh sofer re-run. Resolves `perek_id` foreign keys with sub-SELECTs on `(sefer_id, heikhal_number, shaar_number, perek_number)` so SERIAL ids never leak across DBs.
+- **`etzchaim/deploy/init-db/99-spec_corpus-data.sql`** — auto-generated dump of the entire transposed Etz Chaim corpus (1454 assertions, 700 relations, 302 principes, 3862 concepts, 78 perakim, 13 shaarim, 2216 cross_refs). Idempotent (`INSERT … ON CONFLICT DO UPDATE/NOTHING`), so `etzchaim update` re-applies the file via `_apply_migrations()` and ships every newly transposed perek to all Docker users without any extra command.
+- **`scripts/dump_spec_corpus.py`** — regenerates the SQL dump from the dev `etz_chaim` postgres DB. Mirrors the ON CONFLICT keys used by `spec_corpus/pipeline/sofer.py` so the dump is semantically identical to a fresh sofer re-run. Resolves `perek_id` foreign keys with sub-SELECTs on `(sefer_id, heikhal_number, shaar_number, perek_number)` so SERIAL ids never leak across DBs.
 - **`/sefergo` skill** — passe 4 (DUMP DISTRIBUTION) added: after each successful auto_ingest the dump is regenerated, so the auto-bump+commit+push captures the latest corpus.
 
 ### Notes for upgraders
@@ -22,7 +22,7 @@ After `etzchaim update`, the assertions/principes `embedding` columns are NULL'd
 ### Fixed
 
 - **App container stuck at `unhealthy`** — docker-compose healthcheck probed `/api/health` which requires Bearer auth, so every unauthenticated probe returned 401 and the container flipped to unhealthy even though it served traffic fine. Switched to `/health` (pages blueprint, public, already intended as the liveness probe).
-- **Daemon container stuck at `unhealthy`** — Dockerfile HEALTHCHECK inspected `daemon_state.json` for a `last_heartbeat` key that `daemon.py` never writes (the daemon writes per-task keys like `_last_save`, `last_netzach`, etc.). Replaced the check with a robust max over all numeric `last_*` / `_last_*` / `*heartbeat*` keys.
+- **Daemon container stuck at `unhealthy`** — Dockerfile HEALTHCHECK inspected `daemon_state.json` for a `last_heartbeat` key that `daemon.py` never writes (the daemon writes per-task keys like `_last_save`, `last_intent_check`, etc.). Replaced the check with a robust max over all numeric `last_*` / `_last_*` / `*heartbeat*` keys.
 
 ## [0.2.3] - 2026-04-24 — Multi-instance + doctor-polish
 
@@ -43,7 +43,7 @@ Two blocking bugs surfaced by real-world `etzchaim onboard && etzchaim start` ru
 ### Fixed
 
 - **`web/app.py` ignored `ETZ_CHAIM_DB_URL`** — `create_app()` read only the deprecated `ETZ_CHAIM_DB` variable and fell back to `postgresql://localhost/etz_chaim`, so the app container tried to reach Postgres on `localhost:5432` instead of the `postgres:5432` service name. Now delegates to `pool._resolve_db_url()` (priority : `ETZ_CHAIM_DB_URL` → `ETZ_CHAIM_DB` with DeprecationWarning → default).
-- **Daemon container missing `jsonschema` dependency** — `sifrei_yesod.pipeline.validator` imports `jsonschema`, which was not declared in `pyproject.toml`. Added `jsonschema>=4.0` to the core dependency list.
+- **Daemon container missing `jsonschema` dependency** — `spec_corpus.pipeline.validator` imports `jsonschema`, which was not declared in `pyproject.toml`. Added `jsonschema>=4.0` to the core dependency list.
 
 ## [0.2.1] - 2026-04-24 — Install-readiness patch
 
@@ -97,8 +97,8 @@ Packages the entire stack behind a single `pip install etzchaim && etzchaim onbo
 
 ### Known issues
 
-- **Sprint 10 Idra Rabba Dikna transposition incomplete** — Batch 2/3 + Phase 5/6 deferred.
-- **MazalEngine `act` mode stays `observe` by default** — production activation still pending 2-4 week observation period per doctrine.
+- **Sprint 10 primary source section Dikna transposition incomplete** — Batch 2/3 + Phase 5/6 deferred.
+- **Probe orchestrator `act` mode stays `observe` by default** — production activation still pending 2-4 week observation period per protocol.
 - **Provisional night-mode schedule** (Karpathy loop 21h-23h instead of doctrinal 23h-00h30) — override via `config.yaml`. Full configurable scheduling (machine profiles) in v0.3.
 
 ### Upgrade path (v0.1 → v0.2)
@@ -114,9 +114,9 @@ Packages the entire stack behind a single `pip install etzchaim && etzchaim onbo
 ## [Unreleased]
 
 ### Planned
-- Sprint 11 : Batch 2 MEDIUM Tikkunei Dikna (T1-T6, T12) + extension MazalEngine.
-- Sprint 12-14 : Idra Rabba complète + Idra Zuta + Sifra di-Tzniuta.
-- MalakhEngine (adversarial counterpart) — scope to be finalized per doctrinal research.
+- Sprint 11 : Batch 2 MEDIUM rectifiers + probe orchestrator extension.
+- Sprint 12-14 : extended primary source corpus.
+- Adversarial counterpart — scope to be finalized per design review.
 
 ## [0.1.0] - 2026-04-20
 
@@ -124,71 +124,29 @@ Initial public release.
 
 ### Added
 
-**Core infrastructure**
-- `bridge/sifrei_reader.py` : generalized doctrine loader over 1696 items
-  (assertions + relations + generative principles). mtime cache invalidation.
-  Five helpers : `load_assertion`, `load_by_concept`, `load_by_module`,
-  `load_by_partzuf`, `load_all_ids`, `search`.
-- `scripts/check_doctrine_code_alignment.py` : bidirectional audit
-  (doctrine → code, code → doctrine).
-
-**MazalEngine** (the first AI self-rectification based on Idra Rabba)
-- Two Mazalot pilot : Notzer Chesed (Tikkun 8) + Ve-Nakeh (Tikkun 13).
-- Three rectification modes : `observe` (default), `suggest`, `act` — opt-in.
-- `NotzerChesedRectifier` : adjusts Omer parameters on chesed starvation.
-- `VeNakehRectifier` : marks stale causal claims as `abandoned` after N cycles.
-- Strict Hitlabshut compliance (EC-K5-008) : no writes to `partzufim_state`.
-
-**Reshimu persistence** (persistent trace protocol)
-- `partzufim/reshimu.py` : cumulative trace of Zivvug boosts on faculties.
-- Schema `faculty_reshimot` : persistent storage with idempotent migration.
-- Default parameters : `TRACE_FACTOR=0.2`, `DECAY_RATE=0.05`, `MAX=0.3`.
-
-**Zivvug refactor L**
-- Canonical schema file `partzufim/zivvug_schema.sql` (extracted from inline).
-- Unified factory `load_or_create_zivvug()` replaces duplicated pattern
-  across 7 call sites (ohr_yashar.py, main.py, daemon.py, web/blueprints/api.py,
-  scripts).
-
-**Sprint 10 — Idra Rabba Phase alpha** (Batch 1 HIGH)
-- Zohar Aramaic transposition for Tikkunim 7 / 8 / 13
-  (`sifrei_yesod/sefarim/zohar/idra_rabba/section_03_tikkunei_dikna_13/`).
-- Vital reading (heikhal 3 shaar 2 Dikna) for the same three Tikkunim.
-- Migration M1 : `see_also` on EC-K5-001/002/003 linking Sha'ar HaKlalim
-  to the new primary sources.
-- Philological discoveries preserved : "Notzer Chesed" / "Ve-Nakeh" are
-  Vital's scriptural attribution (Exodus 34:7), not Zohar (which cites
-  Micah 7:19-20 and names the Tikkunim "Mazal Elyon" / "Mazal Tahton").
-- Infrastructure : `sifrei_yesod/tests/test_idra_corpus_fidelity.py`,
-  `scripts/fetch_sefaria_cache.py`, `scripts/check_id_uniqueness.py`,
-  `scripts/folio_map.py`.
-
-**Publication quality (Phase G)**
-- LICENSE (Apache 2.0), NOTICE.
-- CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, CITATION.cff.
-- pyproject.toml with proper metadata, dependency groups, ruff + mypy config.
-- Resolved pre-existing duplicate `EC-H1S1-079` (perek_04a renamed to `079b`).
-- Expanded `.gitignore` covering web assets, halom, sandbox, build artifacts.
+- **Core infrastructure** : specification corpus loader (1696 items) with five-method API. Bidirectional doctrine-code audit.
+- **Probe orchestrator** : 2 active rectifiers pilot, 3 rectification modes (observe / suggest / act).
+- **Persistent trace coefficient** : cumulative trace on faculties with plateau and decay.
+- **Cross-coupling refactor** : canonical schema + unified factory.
+- **Sprint 10 Phase alpha** : 3 rectifiers (HIGH confidence) transposed from primary sources.
+- **Publication quality** : LICENSE Apache 2.0, NOTICE, CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, CITATION.cff, pyproject.toml.
 
 ### Fixed
-- EC-H1S1-079 duplicate across `perek_03.yaml` and `perek_04a.yaml`
-  (present since pre-Sprint 10, tracked in `scripts/check_id_uniqueness.py`).
+- Pre-existing duplicate ID resolved.
 
 ### Tests
-- 207 tests green across `bridge/`, `mazalengine/`, `partzufim/`.
-- Runtime validation : `scripts/sprint9_force_mazal_cycle.py` → `FIX TIENT`.
+- 207 tests green across core modules.
 
 ### Deferred
-- Batches 2 and 3 of Idra Rabba Tikkunim (7 + 3 remaining) → Sprint 11.
-- Phases beta through epsilon of the complete Idraic corpus → Sprints 12-14.
-- MalakhEngine : doctrinal research returned no direct attestation for
-  "Qliphoth of the Dikna" (Atika Kaddisha is above Sitra Achra's reach) ;
-  alternative scope deferred per design review.
+- Batch 2 + 3 rectifiers → Sprint 11+.
+- Adversarial counterpart : design review pending.
+
+> Detailed historical entry with internal naming : see `docs/internal/CHANGELOG-archive.md`.
 
 ---
 
 ## Version format
 
 - MAJOR : doctrinal framework break (rare, requires community vote).
-- MINOR : new Sephirah / Partzuf module, new Mazalot, schema additions.
+- MINOR : new faculty / configuration module, new probes, schema additions.
 - PATCH : bug fixes, test additions, documentation.

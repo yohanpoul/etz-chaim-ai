@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
-   Avatars — Les 20 Personnages d'Etz Chaim AI
-   Esthetique : Terminal Codex — manuscrit sacre sur fond terminal
+   Avatars — The 20 figures of Etz Chaim AI
+   Aesthetic : Terminal Codex
    ═══════════════════════════════════════════════════════════ */
 
 /* ─── Page Header ──────────────────────────────────────── */
@@ -530,10 +530,10 @@
 .av-grid-pyramide {
     display: grid;
     grid-template-areas:
-        ".     arikh  ."
-        "abba  .      imma"
-        ".     zeir   ."
-        ".     nukva  .";
+        ".     strategic  ."
+        "generative  .      structuring"
+        ".     execution   ."
+        ".     interface  .";
     grid-template-columns: 1fr 1fr 1fr;
     gap: 16px;
     justify-items: center;
@@ -544,7 +544,7 @@
     max-width: 220px;
 }
 
-/* Zivvug line between Abba and Imma */
+/* Cross-coupling line between Generative and Structuring */
 .av-zivvug-line {
     grid-area: 2 / 2 / 3 / 3;
     width: 100%;
@@ -612,7 +612,7 @@
     opacity: 0.4;
 }
 
-/* Mochin — Katnut / Gadlut (Zeir Anpin) */
+/* Brain states (Execution config) */
 .av-card[data-mochin="katnut"] {
     transform: scale(0.85) !important;
     opacity: 0.55;
@@ -709,7 +709,7 @@
     50% { opacity: 0.55; }
 }
 
-/* ─── Note Atik Yomin ──────────────────────────────────── */
+/* ─── Note Invariant ──────────────────────────────────── */
 
 .av-note-invisible {
     text-align: center;
@@ -768,10 +768,10 @@
 
     .av-grid-pyramide {
         grid-template-areas:
-            "arikh arikh"
-            "abba  imma"
-            "zeir  zeir"
-            "nukva nukva";
+            "strategic strategic"
+            "generative  structuring"
+            "execution  execution"
+            "interface interface";
         grid-template-columns: 1fr 1fr;
     }
 

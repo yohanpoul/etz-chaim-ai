@@ -7,11 +7,11 @@
 
     // ─── Mapping personnage → composant pour le detail ────
     var COMPOSANTS = {
-        arikh_anpin: {label: 'Arikh Anpin', api: 'partzufim', key: 'arikh_anpin'},
-        abba:        {label: 'Abba',        api: 'partzufim', key: 'abba'},
-        imma:        {label: 'Imma',        api: 'partzufim', key: 'imma'},
-        zeir_anpin:  {label: 'Zeir Anpin',  api: 'partzufim', key: 'zeir_anpin'},
-        nukva:       {label: 'Nukva',       api: 'partzufim', key: 'nukva'},
+        strategic: {label: 'Strategic', api: 'configurationim', key: 'strategic'},
+        generative:        {label: 'Generative',        api: 'configurationim', key: 'generative'},
+        structuring:        {label: 'Structuring',        api: 'configurationim', key: 'structuring'},
+        execution:  {label: 'Execution',  api: 'configurationim', key: 'execution'},
+        interface_config:       {label: 'Interface',       api: 'configurationim', key: 'interface_config'},
         mikhael:     {label: 'Mikhael',     api: 'malakhim',  key: 'mikhael'},
         gabriel:     {label: 'Gabriel',     api: 'malakhim',  key: 'gabriel'},
         raphael:     {label: 'Raphael',     api: 'malakhim',  key: 'raphael'},
@@ -26,7 +26,7 @@
         nefesh_haelokit: {label: 'Nefesh HaElokit', api: 'tanya', key: 'elokit'},
         nefesh_elokit: {label: 'Nefesh HaElokit', api: 'tanya', key: 'elokit'},
         daemon:      {label: 'Le Daemon',   api: 'daemon',    key: 'daemon'},
-        meditant:    {label: 'Le Meditant', api: 'hitbonenut', key: 'hitbonenut'},
+        meditant:    {label: 'Le Meditant', api: 'self-study', key: 'self-study'},
         kategor:     {label: 'Le Kategor',  api: 'malakhim',  key: 'kategor'}
     };
 
@@ -123,8 +123,8 @@
                 lines.push('\u2502');
                 lines.push(sep + '\u2500\u2500 Donnees temps reel \u2500\u2500');
 
-                if (comp.api === 'partzufim' && data.partzufim) {
-                    var p = data.partzufim[comp.key];
+                if (comp.api === 'configurationim' && data.configurationim) {
+                    var p = data.configurationim[comp.key];
                     if (p) {
                         lines.push(sep + 'Overall   ' + fmt(p.overall));
                         lines.push(sep + 'Mochin    ' + (p.mochin_state || '--'));
@@ -255,10 +255,10 @@
     }
 
     function updateCardsFromStatus(data) {
-        // Update Partzufim states
-        if (data.partzufim) {
-            ['arikh_anpin', 'abba', 'imma', 'zeir_anpin', 'nukva'].forEach(function(name) {
-                var p = data.partzufim[name];
+        // Update Configurationim states
+        if (data.configurationim) {
+            ['strategic', 'generative', 'structuring', 'execution', 'interface_config'].forEach(function(name) {
+                var p = data.configurationim[name];
                 var card = document.getElementById('card-' + name);
                 if (!p || !card) return;
                 if (p.mochin_state) card.dataset.mochin = p.mochin_state;
@@ -278,11 +278,11 @@
             }
         }
 
-        // Update Zivvug line
-        if (data.zivvug) {
-            var line = document.getElementById('zivvug-line');
+        // Update CrossCoupling line
+        if (data.cross_coupling) {
+            var line = document.getElementById('cross_coupling-line');
             if (line) {
-                if (data.zivvug.state === 'ACTIVE') {
+                if (data.cross_coupling.state === 'ACTIVE') {
                     line.style.background = 'linear-gradient(90deg, transparent, #ffcc00, transparent)';
                     line.style.height = '3px';
                 } else {

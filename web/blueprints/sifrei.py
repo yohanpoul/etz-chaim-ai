@@ -1,4 +1,4 @@
-"""sifrei_bp — pages + API /sifrei-yesod/* et /api/sifrei-yesod/*.
+"""sifrei_bp — pages + API /source-corpus/* et /api/source-corpus/*.
 
 Audit cycle 4, N1 phase 2 — extraction des 7 routes Sifrei Yesod
 depuis web/app.py. Toutes les requêtes passent par SifreiYesodQuery
@@ -19,29 +19,29 @@ sifrei_bp = Blueprint("sifrei", __name__)
 # ─── Pages HTML ─────────────────────────────────────────────
 
 
-@sifrei_bp.route("/sifrei-yesod")
+@sifrei_bp.route("/source-corpus")
 def page_sifrei_yesod():
-    return render_template("sifrei_yesod.html", active="sifrei-yesod")
+    return render_template("source_corpus.html", active="sifrei-yesod")
 
 
-@sifrei_bp.route("/sifrei-yesod/<sefer_id>")
+@sifrei_bp.route("/source-corpus/<sefer_id>")
 def page_sifrei_yesod_sefer(sefer_id):
     return render_template(
-        "sifrei_yesod_sefer.html", active="sifrei-yesod", sefer_id=sefer_id
+        "source_corpus_sefer.html", active="sifrei-yesod", sefer_id=sefer_id
     )
 
 
-@sifrei_bp.route("/sifrei-yesod/concept/<concept_id>")
+@sifrei_bp.route("/source-corpus/concept/<concept_id>")
 def page_sifrei_yesod_concept(concept_id):
     return render_template(
-        "sifrei_yesod_concept.html", active="sifrei-yesod", concept_id=concept_id
+        "source_corpus_concept.html", active="sifrei-yesod", concept_id=concept_id
     )
 
 
 # ─── API JSON ───────────────────────────────────────────────
 
 
-@sifrei_bp.route("/api/sifrei-yesod/stats")
+@sifrei_bp.route("/api/source-corpus/stats")
 def api_sifrei_yesod_stats():
     try:
         from sifrei_yesod.api.query import SifreiYesodQuery
@@ -51,7 +51,7 @@ def api_sifrei_yesod_stats():
         return jsonify({"error": str(e)}), 500
 
 
-@sifrei_bp.route("/api/sifrei-yesod/sefer/<sefer_id>")
+@sifrei_bp.route("/api/source-corpus/sefer/<sefer_id>")
 def api_sifrei_yesod_sefer(sefer_id):
     try:
         from sifrei_yesod.api.query import SifreiYesodQuery
@@ -66,7 +66,7 @@ def api_sifrei_yesod_sefer(sefer_id):
         return jsonify({"error": str(e)}), 500
 
 
-@sifrei_bp.route("/api/sifrei-yesod/concept/<concept_id>")
+@sifrei_bp.route("/api/source-corpus/concept/<concept_id>")
 def api_sifrei_yesod_concept(concept_id):
     try:
         from sifrei_yesod.api.query import SifreiYesodQuery
@@ -81,7 +81,7 @@ def api_sifrei_yesod_concept(concept_id):
         return jsonify({"error": str(e)}), 500
 
 
-@sifrei_bp.route("/api/sifrei-yesod/search")
+@sifrei_bp.route("/api/source-corpus/search")
 def api_sifrei_yesod_search():
     query = request.args.get("q", "")
     layer = request.args.get("layer", "all")

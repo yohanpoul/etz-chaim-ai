@@ -66,7 +66,7 @@ function escapeHtml(text) {
 function _humanizeConceptName(raw) {
     if (!raw) return '';
     // gate_heh_beth -> Heh-Beth, concept_foo_bar -> Foo Bar
-    return raw.replace(/^(gate|concept|sephirah|path|sefer)_/, '')
+    return raw.replace(/^(gate|concept|faculty|path|sefer)_/, '')
               .replace(/_/g, ' ')
               .replace(/\b\w/g, c => c.toUpperCase());
 }
@@ -79,7 +79,12 @@ const _FR_SOUL_LEVELS = {
     yechidah: 'Yechidah (unite)'
 };
 
-const _FR_SEPHIROT = {
+const _FR_FACULTIES = {
+    meta: 'Volonte', insight: 'Intuition', reason: 'Structure',
+    bridge: 'Connaissance', explore: 'Generosite', judge: 'Rigueur',
+    balance: 'Harmonie', persist: 'Perseverance', describe: 'Analyse',
+    memory: 'Fondation', action: 'Concret',
+    // backend compat aliases:
     keter: 'Volonte', chokmah: 'Intuition', binah: 'Structure',
     daat: 'Connaissance', chesed: 'Generosite', gevurah: 'Rigueur',
     tiferet: 'Harmonie', netzach: 'Perseverance', hod: 'Analyse',
@@ -107,14 +112,14 @@ const _FR_MODULES = {
 };
 
 const _FR_DOMAINS = {
-    shemot: 'Noms divins', sefirot: 'Arbre de vie', partzufim: 'Personnalites',
-    olamot: 'Mondes', kelipot: 'Adversite', tikkunim: 'Reparations',
-    reshimot: 'Empreintes', nitzotzot: 'Etincelles', tsimtsum: 'Contraction',
+    names: 'Noms divins', faculties_tree: 'Arbre des facultes', configurations: 'Personnalites',
+    tiers: 'Mondes', adversarial: 'Adversite', rectifiers: 'Reparations',
+    traces: 'Empreintes', sparks: 'Etincelles', restriction: 'Contraction',
     general: 'General', unknown: 'Inconnu'
 };
 
 function frSoul(level) { return _FR_SOUL_LEVELS[(level || '').toLowerCase()] || level || '--'; }
-function frSephirah(s) { return _FR_SEPHIROT[(s || '').toLowerCase()] || s || ''; }
+function frFaculty(s) { return _FR_FACULTIES[(s || '').toLowerCase()] || s || ''; }
 function frParam(p) { return _FR_PARAMS[(p || '').toLowerCase()] || (p || '').replace(/_/g, ' '); }
 function frModule(m) { return _FR_MODULES[(m || '').toLowerCase()] || (m || '').replace(/_/g, ' '); }
 function frDomain(d) { return _FR_DOMAINS[(d || '').toLowerCase()] || (d || '').replace(/_/g, ' ') || 'Inconnu'; }
@@ -133,7 +138,7 @@ async function loadDashboard() {
         // Update tree nodes
         const modules = data.modules;
         for (const [key, info] of Object.entries(modules)) {
-            const node = document.querySelector(`.tree-node[data-sephirah="${key}"]`);
+            const node = document.querySelector(`.tree-node[data-faculty="${key}"]`);
             if (node) {
                 node.classList.remove('node-online', 'node-offline');
                 node.classList.add(info.status === 'online' ? 'node-online' : 'node-offline');
@@ -141,10 +146,10 @@ async function loadDashboard() {
         }
 
         // Node click → detail
-        document.querySelectorAll('.tree-node[data-sephirah]').forEach(n => {
+        document.querySelectorAll('.tree-node[data-faculty]').forEach(n => {
             n.style.cursor = 'pointer';
             n.addEventListener('click', () => {
-                const key = n.dataset.sephirah;
+                const key = n.dataset.faculty;
                 const info = modules[key];
                 if (!info) return;
                 const detail = document.getElementById('module-detail');
@@ -464,7 +469,7 @@ function initChatV2() {
                     const samaelEl = document.getElementById('meta-kli');
                     if (samaelEl) {
                         const sev = (data.severity * 100).toFixed(0);
-                        samaelEl.textContent += ` | samael: ${data.sephirah} (${sev}%)`;
+                        samaelEl.textContent += ` | samael: ${data.faculty} (${sev}%)`;
                     }
                     break;
 
@@ -828,7 +833,7 @@ function initMemory() {
             }
 
             if (data.sources && Object.keys(data.sources).length) {
-                html += '<div class="db-subsection-title">PAR SOURCE (Sephirah)</div>';
+                html += '<div class="db-subsection-title">PAR SOURCE (Faculty)</div>';
                 html += '<table class="term-table"><thead><tr><th>Source</th><th>Nombre</th></tr></thead><tbody>';
                 for (const [s, c] of Object.entries(data.sources)) {
                     html += `<tr><td>${escapeHtml(s)}</td><td>${c}</td></tr>`;
@@ -963,26 +968,26 @@ function initImport() {
 // Dashboard — Full Terminal Dashboard
 // ═══════════════════════════════════════════════════════════
 
-// ── Sephiroth data ──────────────────────────────────────────
+// ── Faculties data ──────────────────────────────────────────
 
-const SEPH = {
-    keter:   { color:'#c9a84c', heb:'\u05DB\u05B6\u05BC\u05EA\u05B6\u05E8',       fr:'Couronne',      olam:'atzilut' },
-    chokmah: { color:'#c9a84c', heb:'\u05D7\u05B8\u05DB\u05B0\u05DE\u05B8\u05D4', fr:'Sagesse',       olam:'atzilut' },
-    binah:   { color:'#c9a84c', heb:'\u05D1\u05B4\u05BC\u05D9\u05E0\u05B8\u05D4', fr:'Intelligence',  olam:'atzilut' },
-    daat:    { color:'#a78bfa', heb:'\u05D3\u05B7\u05BC\u05E2\u05B7\u05EA',       fr:'Connaissance',  olam:'atzilut' },
-    chesed:  { color:'#60a5fa', heb:'\u05D7\u05B6\u05E1\u05B6\u05D3',             fr:'Bonte',         olam:'briah' },
-    gevurah: { color:'#60a5fa', heb:'\u05D2\u05B0\u05BC\u05D1\u05D5\u05BC\u05E8\u05B8\u05D4', fr:'Rigueur', olam:'briah' },
-    tiferet: { color:'#60a5fa', heb:'\u05EA\u05B4\u05BC\u05E4\u05B0\u05D0\u05B6\u05E8\u05B6\u05EA', fr:'Beaute', olam:'briah' },
-    netzach: { color:'#4ade80', heb:'\u05E0\u05B5\u05E6\u05B7\u05D7',             fr:'Victoire',      olam:'yetzirah' },
-    hod:     { color:'#4ade80', heb:'\u05D4\u05D5\u05B9\u05D3',                   fr:'Splendeur',     olam:'yetzirah' },
-    yesod:   { color:'#4ade80', heb:'\u05D9\u05B0\u05E1\u05D5\u05B9\u05D3',       fr:'Fondation',     olam:'yetzirah' },
-    malkuth: { color:'#fb923c', heb:'\u05DE\u05B7\u05DC\u05B0\u05DB\u05D5\u05BC\u05EA', fr:'Royaume', olam:'assiah' },
+const FACULTY = {
+    meta:     { color:'#c9a84c', fr:'Couronne',      tier:'strategic' },
+    insight:  { color:'#c9a84c', fr:'Sagesse',       tier:'strategic' },
+    reason:   { color:'#c9a84c', fr:'Intelligence',  tier:'strategic' },
+    bridge:   { color:'#a78bfa', fr:'Connaissance',  tier:'strategic' },
+    explore:  { color:'#60a5fa', fr:'Bonte',         tier:'causal' },
+    judge:    { color:'#60a5fa', fr:'Rigueur',       tier:'causal' },
+    balance:  { color:'#60a5fa', fr:'Beaute',        tier:'causal' },
+    persist:  { color:'#4ade80', fr:'Victoire',      tier:'general' },
+    describe: { color:'#4ade80', fr:'Splendeur',     tier:'general' },
+    memory:   { color:'#4ade80', fr:'Fondation',     tier:'general' },
+    action:   { color:'#fb923c', fr:'Royaume',       tier:'fast' },
 };
 
-const SEPH_MODULES = {
-    keter:'Superviseur', chokmah:'InsightForge', binah:'CausalEngine', daat:'SelfModel',
-    chesed:'ExplorationEngine', gevurah:'AutoJudge', tiferet:'DissensuEngine',
-    netzach:'IntentKeeper', hod:'SelfMap', yesod:'EpisteMemory', malkuth:'Interface Web',
+const FACULTY_MODULES = {
+    meta:'Supervisor', insight:'InsightForge', reason:'CausalEngine', bridge:'SelfModel',
+    explore:'ExplorationEngine', judge:'AutoJudge', balance:'DissensuEngine',
+    persist:'IntentKeeper', describe:'SelfMap', memory:'EpisteMemory', action:'Interface Web',
 };
 
 let _dashboardEvtSource = null;
@@ -995,9 +1000,9 @@ let _omerData = null;
 
 function initDashboard() {
     // Setup tree node clicks
-    document.querySelectorAll('#db-ascii-tree .tree-node[data-sephirah]').forEach(n => {
+    document.querySelectorAll('#db-ascii-tree .tree-node[data-faculty]').forEach(n => {
         n.style.cursor = 'pointer';
-        n.addEventListener('click', () => showSephDetail(n.dataset.sephirah));
+        n.addEventListener('click', () => showSephDetail(n.dataset.faculty));
     });
 
     connectDashboardSSE();
@@ -1019,20 +1024,20 @@ function initDashboard() {
     fetchProvider();
     setInterval(fetchInventory, 30000);
 
-    // MazalEngine widget (Sprint 9, EC-K5-001)
-    fetchMazalEngine();
-    setInterval(fetchMazalEngine, 30000);
+    // ProbeOrchestrator widget (Sprint 9, EC-K5-001)
+    fetchProbeOrchestrator();
+    setInterval(fetchProbeOrchestrator, 30000);
 }
 
-function fetchMazalEngine() {
-    apiFetch('/api/mazalengine').then(r => r.json()).then(data => {
-        updateMazalEngine(data);
+function fetchProbeOrchestrator() {
+    apiFetch('/api/probes').then(r => r.json()).then(data => {
+        updateProbeOrchestrator(data);
     }).catch(() => {});
 }
 
-function updateMazalEngine(data) {
-    if (!data || !data.mazalot) return;
-    const mazalot = data.mazalot;
+function updateProbeOrchestrator(data) {
+    if (!data || !data.probeot) return;
+    const probeot = data.probeot;
     const fmtTs = (ts) => {
         if (!ts) return 'jamais';
         const d = new Date(ts * 1000);
@@ -1046,21 +1051,21 @@ function updateMazalEngine(data) {
         return Object.entries(m).map(([k, v]) => `${k}=${v}`).join(', ');
     };
     for (const key of ['elyon', 'tahton']) {
-        const mz = mazalot[key];
+        const mz = probeot[key];
         if (!mz) continue;
         const setTxt = (id, val) => {
             const el = document.getElementById(id);
             if (el) el.textContent = val;
         };
-        setTxt(`db-mazal-${key}-total`, mz.total_tikkunim ?? 0);
-        setTxt(`db-mazal-${key}-last`, fmtTs(mz.last_tikkun_ts));
-        setTxt(`db-mazal-${key}-action`, mz.last_action || 'dormant');
-        setTxt(`db-mazal-${key}-metrics`, fmtMetrics(mz.last_metrics));
+        setTxt(`db-probe-${key}-total`, mz.total_rectifierim ?? 0);
+        setTxt(`db-probe-${key}-last`, fmtTs(mz.last_rectifier_ts));
+        setTxt(`db-probe-${key}-action`, mz.last_action || 'dormant');
+        setTxt(`db-probe-${key}-metrics`, fmtMetrics(mz.last_metrics));
     }
-    const sum = document.getElementById('grp-mazalengine-summary');
+    const sum = document.getElementById('grp-probes-summary');
     if (sum) {
-        const total = (mazalot.elyon?.total_tikkunim || 0) + (mazalot.tahton?.total_tikkunim || 0);
-        sum.textContent = `${total} Tikkun${total > 1 ? 'im' : ''} emis`;
+        const total = (probeot.elyon?.total_rectifierim || 0) + (probeot.tahton?.total_rectifierim || 0);
+        sum.textContent = `${total} Rectifier${total > 1 ? 'im' : ''} emis`;
     }
 }
 
@@ -1096,11 +1101,11 @@ function pollDaemonState() {
         if (_dashboardData) {
             _dashboardData.daemon = data.daemon;
             _dashboardData.karpathy = data.karpathy;
-            // Merge hitbonenut sans écraser 'recent' (fourni par SSE avec les questions)
-            const { recent, ...daemonHitbRest } = data.hitbonenut || {};
-            _dashboardData.hitbonenut = { ...(_dashboardData.hitbonenut || {}), ...daemonHitbRest };
+            // Merge self-study sans écraser 'recent' (fourni par SSE avec les questions)
+            const { recent, ...daemonHitbRest } = data.self-study || {};
+            _dashboardData.self-study = { ...(_dashboardData.self-study || {}), ...daemonHitbRest };
             updateDaemonKarpathy(_dashboardData);
-            updateHitbonenut(_dashboardData.hitbonenut || {});
+            updateSelfStudy(_dashboardData.self-study || {});
         }
     }).catch(() => {});
 }
@@ -1116,14 +1121,14 @@ function handleWorldEvent(data) {
         pulseTreeNode(data.source);
         pulseTreeNode(data.target);
     }
-    if (type === 'hitbonenut_answer' || type === 'hitbonenut_question') {
-        pulseTreeNode('yesod');
-        pulseTreeNode('hod');
+    if (type === 'self-study_answer' || type === 'self-study_question') {
+        pulseTreeNode('memory');
+        pulseTreeNode('describe');
     }
-    if (type === 'nitzutz') pulseTreeNode(data.source || 'tiferet');
+    if (type === 'nitzutz') pulseTreeNode(data.source || 'balance');
     if (type === 'zivug') {
-        pulseTreeNode(data.sephirah_a);
-        pulseTreeNode(data.sephirah_b);
+        pulseTreeNode(data.faculty_a);
+        pulseTreeNode(data.faculty_b);
     }
 
     // Real-time status updates
@@ -1145,7 +1150,7 @@ function handleWorldEvent(data) {
             if (d.karpathy) updateKarpathyLive(d.karpathy);
         }).catch(() => {});
     }
-    if (type === 'hitbonenut_answer') {
+    if (type === 'self-study_answer') {
         const hEl = document.getElementById('db-hitb-status');
         if (hEl) { hEl.textContent = '\u25CF running'; hEl.className = 'term-green'; }
         const qEl = document.getElementById('db-hitb-q-text');
@@ -1174,11 +1179,11 @@ function handleWorldEvent(data) {
 
         // Update sparkline
         const sparkEl = document.getElementById('db-hitb-sparkline');
-        if (sparkEl && _dashboardData && _dashboardData.hitbonenut) {
-            const recent = _dashboardData.hitbonenut.recent || [];
+        if (sparkEl && _dashboardData && _dashboardData.self-study) {
+            const recent = _dashboardData.self-study.recent || [];
             recent.unshift({ question: data.question, domain: data.domain, score: data.score || 0 });
             if (recent.length > 50) recent.pop();
-            _dashboardData.hitbonenut.recent = recent;
+            _dashboardData.self-study.recent = recent;
             const scores = recent.slice(0, 50).reverse().map(r => r.score || 0);
             sparkEl.textContent = sparkline(scores, 30);
             const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
@@ -1186,7 +1191,7 @@ function handleWorldEvent(data) {
             if (avgEl) avgEl.textContent = avg.toFixed(3);
         }
     }
-    if (type === 'hitbonenut_continuous_end' || type === 'hitbonenut_continuous_pause' || type === 'hitbonenut_paused') {
+    if (type === 'self-study_continuous_end' || type === 'self-study_continuous_pause' || type === 'self-study_paused') {
         const hEl = document.getElementById('db-hitb-status');
         if (hEl) {
             const isPaused = type.includes('pause');
@@ -1197,15 +1202,15 @@ function handleWorldEvent(data) {
 }
 
 let _pulseTimers = {};
-function pulseTreeNode(sephirah) {
-    if (!sephirah) return;
-    const node = document.querySelector(`#db-ascii-tree .tree-node[data-sephirah="${sephirah}"]`);
+function pulseTreeNode(faculty) {
+    if (!faculty) return;
+    const node = document.querySelector(`#db-ascii-tree .tree-node[data-faculty="${faculty}"]`);
     if (!node) return;
     node.classList.add('node-pulse');
-    if (_pulseTimers[sephirah]) clearTimeout(_pulseTimers[sephirah]);
-    _pulseTimers[sephirah] = setTimeout(() => {
+    if (_pulseTimers[faculty]) clearTimeout(_pulseTimers[faculty]);
+    _pulseTimers[faculty] = setTimeout(() => {
         node.classList.remove('node-pulse');
-        delete _pulseTimers[sephirah];
+        delete _pulseTimers[faculty];
     }, 3000);
 }
 
@@ -1254,31 +1259,31 @@ function categorizeEvent(data) {
         }
         return { tag: 'karpathy', msg };
     }
-    if (type.startsWith('hitbonenut')) {
-        let msg = type.replace('hitbonenut_', '');
-        if (type === 'hitbonenut_experiment_done') {
+    if (type.startsWith('self-study')) {
+        let msg = type.replace('self-study_', '');
+        if (type === 'self-study_experiment_done') {
             const st = data.status === 'keep' ? '\u2714 Garde' : (data.status === 'crash' ? '\u2718 Echec' : '\u25CB Rejete');
             msg = `${st} ${frModule(data.module)} \u2014 ${frParam(data.param)}`;
-        } else if (type === 'hitbonenut_research_start') {
+        } else if (type === 'self-study_research_start') {
             msg = 'Recherche demarree';
-        } else if (type === 'hitbonenut_research_end') {
+        } else if (type === 'self-study_research_end') {
             msg = `Termine : ${data.experiments || 0} exp, ${data.keeps || 0} gardees, ${data.principles || 0} principes`;
-        } else if (type === 'hitbonenut_answer') {
+        } else if (type === 'self-study_answer') {
             msg = `[${frDomain(data.domain)}] ${data.question || '\u2014'}`;
-        } else if (type === 'hitbonenut_consolidation') {
+        } else if (type === 'self-study_consolidation') {
             msg = `Consolidation #${data.checkpoint || '?'} : score ${((data.overall || 0) * 100).toFixed(0)}%`;
         }
-        return { tag: 'hitbonenut', msg };
+        return { tag: 'self-study', msg };
     }
     if (type === 'sentier_traverse') {
         const arrow = data.status === 'done' ? (data.success ? ' \u2713' : ' \u2717') : ' \u2192';
-        const src = frSephirah(data.source) || data.source || '?';
-        const tgt = frSephirah(data.target) || data.target || '?';
+        const src = frFaculty(data.source) || data.source || '?';
+        const tgt = frFaculty(data.target) || data.target || '?';
         return { tag: 'sentier', msg: `Sentier ${src} \u2194 ${tgt}${arrow}` };
     }
-    if (type === 'nitzutz') return { tag: 'nitzutz', msg: `Etincelle collectee \u2014 source : ${frSephirah(data.source) || data.source || '?'}` };
-    if (type === 'zivug') return { tag: 'zivug', msg: `Synergie : ${frSephirah(data.sephirah_a) || '?'} \u00d7 ${frSephirah(data.sephirah_b) || '?'}` };
-    if (type === 'module_active') return { tag: 'module', msg: `${frSephirah(data.module) || data.module || '?'} \u2014 ${data.action || 'actif'}` };
+    if (type === 'nitzutz') return { tag: 'nitzutz', msg: `Etincelle collectee \u2014 source : ${frFaculty(data.source) || data.source || '?'}` };
+    if (type === 'zivug') return { tag: 'zivug', msg: `Synergie : ${frFaculty(data.faculty_a) || '?'} \u00d7 ${frFaculty(data.faculty_b) || '?'}` };
+    if (type === 'module_active') return { tag: 'module', msg: `${frFaculty(data.module) || data.module || '?'} \u2014 ${data.action || 'actif'}` };
     if (type === 'daemon_task') {
         let msg = `Tache : ${data.task || '?'}`;
         if (data.detail) msg += ` \u2014 ${data.detail}`;
@@ -1322,11 +1327,11 @@ function showSephDetail(key) {
     if (!panel || !_dashboardData) return;
     panel.style.display = 'block';
 
-    const s = SEPH[key];
+    const s = FACULTY[key];
     const mod = (_dashboardData.modules || {})[key] || {};
 
     document.getElementById('db-detail-name').textContent = s.heb + ' \u2014 ' + s.fr;
-    document.getElementById('db-detail-module').textContent = mod.label || SEPH_MODULES[key] || '\u2014';
+    document.getElementById('db-detail-module').textContent = mod.label || FACULTY_MODULES[key] || '\u2014';
     document.getElementById('db-detail-status').textContent = mod.status || 'offline';
     document.getElementById('db-detail-olam').textContent = mod.olam || s.olam;
     document.getElementById('db-detail-activity').textContent = mod.diag && mod.diag.current_task ? mod.diag.current_task : 'idle';
@@ -1359,11 +1364,11 @@ function updateDashboard(data) {
     _dashboardData = data;
     updateGlobalStats(data);
     updateTreeNodes(data.modules || {});
-    updatePartzufim(data.partzufim || {});
-    updateZivvug(data.zivvug || {});
+    updateConfigurations(data.configurations || {});
+    updateCrossCoupling(data.cross_coupling || {});
     updateGovernors(data.governors || {});
     updateOmaqim(data.omaqim || {});
-    updateHitbonenut(data.hitbonenut || {});
+    updateSelfStudy(data.self-study || {});
     updateKarpathyLive(data.karpathy || {});
     updateTzimtzum(data.tzimtzum || {});
     updateOhr(data.ohr || {});
@@ -1403,13 +1408,13 @@ function updateGlobalStats(data) {
     const nitzBar = document.getElementById('db-nitz-bar');
     if (nitzBar) nitzBar.textContent = termProgress((nitz.count || 0) / 288, 20);
 
-    const tikkunVal = document.getElementById('db-tikkun-value');
-    if (tikkunVal) tikkunVal.textContent = nitz.cycle || 0;
+    const rectifierVal = document.getElementById('db-rectifier-value');
+    if (rectifierVal) rectifierVal.textContent = nitz.cycle || 0;
 
     const akScore = document.getElementById('db-ak-score');
     if (akScore) akScore.textContent = ((ak.score || 0) * 100).toFixed(0) + '%';
     const akPhase = document.getElementById('db-ak-phase');
-    const phaseLabels = { tohu: 'Chaos', tikkunim: 'En construction', tikkun_near: 'Presque complet', tikkun: 'Repare', shlemut: 'Accomplissement' };
+    const phaseLabels = { tohu: 'Chaos', rectifierim: 'En construction', rectifier_near: 'Presque complet', rectifier: 'Repare', shlemut: 'Accomplissement' };
     if (akPhase) akPhase.textContent = phaseLabels[ak.phase] || ak.phase || 'tohu';
 
     // Global score badge
@@ -1419,7 +1424,7 @@ function updateGlobalStats(data) {
 
 function updateTreeNodes(modules) {
     for (const [key, info] of Object.entries(modules)) {
-        const node = document.querySelector(`#db-ascii-tree .tree-node[data-sephirah="${key}"]`);
+        const node = document.querySelector(`#db-ascii-tree .tree-node[data-faculty="${key}"]`);
         if (node) {
             node.classList.remove('node-online', 'node-offline');
             node.classList.add(info.status === 'online' ? 'node-online' : 'node-offline');
@@ -1427,11 +1432,11 @@ function updateTreeNodes(modules) {
     }
 }
 
-function updatePartzufim(partzufim) {
-    const container = document.getElementById('db-partzufim');
+function updateConfigurations(configurations) {
+    const container = document.getElementById('db-configurations');
     if (!container) return;
 
-    const order = ['atik_yomin', 'arikh_anpin', 'abba', 'imma', 'zeir_anpin', 'nukva'];
+    const order = ['atik_yomin', 'arikh_anpin', 'generative', 'structuring', 'zeir_anpin', 'nukva'];
     const meta = {
         atik_yomin:  { name: 'Le Sage',      role: 'Memoire profonde, experience accumulee' },
         arikh_anpin: { name: 'Le Roi',        role: 'Vision strategique, decisions de haut niveau' },
@@ -1443,7 +1448,7 @@ function updatePartzufim(partzufim) {
 
     let text = '';
     for (const pname of order) {
-        const p = partzufim[pname] || { hebrew:'', overall:0, mochin_state:'katnut' };
+        const p = configurations[pname] || { hebrew:'', overall:0, mochin_state:'katnut' };
         const m = meta[pname] || { name: pname, role: '' };
         const pct = Math.round(p.overall * 100);
         const bar = termProgress(p.overall, 20);
@@ -1456,26 +1461,26 @@ function updatePartzufim(partzufim) {
     safeHTML(container, text);
 }
 
-function updateZivvug(zivvug) {
-    const container = document.getElementById('db-zivvug');
+function updateCrossCoupling(cross_coupling) {
+    const container = document.getElementById('db-cross_coupling');
     if (!container) return;
 
-    const st = zivvug.state || 'blocked';
+    const st = cross_coupling.state || 'blocked';
     const stateLabels = { active: '\u25CF SYNERGIE ACTIVE', partial: '\u25CF PARTIEL', blocked: '\u25CB BLOQUE' };
     const stateCls = { active: 'term-green', partial: 'term-amber', blocked: 'term-red' };
 
-    const abba = zivvug.abba_score || 0;
-    const imma = zivvug.imma_score || 0;
-    const delta = (zivvug.delta || 0).toFixed(3);
-    const mochin = (zivvug.mochin_quality || 0).toFixed(3);
-    const coupling = (zivvug.coupling_factor || 0).toFixed(3);
+    const abba = cross_coupling.abba_score || 0;
+    const imma = cross_coupling.imma_score || 0;
+    const delta = (cross_coupling.delta || 0).toFixed(3);
+    const mochin = (cross_coupling.mochin_quality || 0).toFixed(3);
+    const coupling = (cross_coupling.coupling_factor || 0).toFixed(3);
 
     safeHTML(container,
         `\u2502 Etat              <span class="${stateCls[st] || 'term-dim'}">${stateLabels[st] || st}</span>\n` +
         `\u2502 Intuition (Pere)   ${termProgress(abba, 20)} ${(abba * 100).toFixed(0)}%\n` +
         `\u2502 Structure (Mere)   ${termProgress(imma, 20)} ${(imma * 100).toFixed(0)}%\n` +
         `\u2502 Ecart              ${delta}  <span class="term-dim">plus c'est bas, mieux c'est</span>\n` +
-        `\u2502 Qualite des idees  ${termProgress(zivvug.mochin_quality || 0, 20)} ${(zivvug.mochin_quality * 100 || 0).toFixed(0)}%\n` +
+        `\u2502 Qualite des idees  ${termProgress(cross_coupling.mochin_quality || 0, 20)} ${(cross_coupling.mochin_quality * 100 || 0).toFixed(0)}%\n` +
         `\u2502 Force du lien      ${(coupling * 100).toFixed(0)}%  <span class="term-dim">intensite de la collaboration</span>`);
 }
 
@@ -1535,7 +1540,7 @@ function updateOmaqim(om) {
         `\u2502 Discernement ${termProgress(pos.m, 20)} ${(pos.m * 100).toFixed(0)}%  ${om.moral_phase ? '<span class="term-dim">' + escapeHtml(om.moral_phase) + '</span>' : ''}`);
 }
 
-function updateHitbonenut(hitb) {
+function updateSelfStudy(hitb) {
     const statusEl = document.getElementById('db-hitb-status');
     if (statusEl) {
         const isPaused = hitb.status === 'paused';
@@ -1545,9 +1550,9 @@ function updateHitbonenut(hitb) {
         statusEl.textContent = (isRunning ? '\u25CF ' : (isPaused ? '\u25CF ' : '\u25CB ')) + (statusLabels[hitb.status] || 'ARRETE');
         statusEl.className = isRunning ? 'term-green' : (isPaused ? 'term-red' : (isStandby ? 'term-yellow' : 'term-dim'));
     }
-    if (_canOverridePause('hitbonenut')) {
+    if (_canOverridePause('self-study')) {
         // Only "paused" (manual) triggers the GO button, not "standby" (Karpathy window)
-        _pauseState.hitbonenut = hitb.status === 'paused';
+        _pauseState.self-study = hitb.status === 'paused';
         updatePauseButtons();
     }
 
@@ -1762,7 +1767,7 @@ function updateTzimtzum(tz) {
     if (details) {
         let text = '';
         if (tz.is_contracted && tz.dormant_modules && tz.dormant_modules.length > 0) {
-            const dormantFr = tz.dormant_modules.map(m => frSephirah(m) || m).join(', ');
+            const dormantFr = tz.dormant_modules.map(m => frFaculty(m) || m).join(', ');
             text += `Modules au repos : ${dormantFr}  `;
         }
         text += `${tz.contraction_count || 0} focus | ${tz.expansion_count || 0} expansions`;
@@ -1835,7 +1840,7 @@ function updateSodHakli(data) {
 
     const categories = [
         { label: 'META-CONTEXTES', range: [1, 4] },
-        { label: 'SEFIROT', range: [5, 13] },
+        { label: 'FACULTIES', range: [5, 13] },
         { label: 'PROCESSUS', range: [14, 16] },
         { label: 'STRUCTURES', range: [17, 29] },
     ];
@@ -1953,14 +1958,14 @@ function updateClustering(cl) {
 
 // ─── Pause / Go ─────────────────────────────────────────────
 
-const _pauseState = { hitbonenut: false, karpathy: false };
+const _pauseState = { self-study: false, karpathy: false };
 // Cooldown: after a manual toggle, ignore SSE/polling overrides for 6 seconds
-const _pauseCooldown = { hitbonenut: 0, karpathy: 0 };
+const _pauseCooldown = { self-study: 0, karpathy: 0 };
 const PAUSE_COOLDOWN_MS = 6000;
 
 function togglePause(target) {
     const btn = document.getElementById(
-        target === 'hitbonenut' ? 'db-hitb-pause-btn' : 'db-karp-pause-btn'
+        target === 'self-study' ? 'db-hitb-pause-btn' : 'db-karp-pause-btn'
     );
     // Immediate visual feedback
     if (btn) {
@@ -1981,7 +1986,7 @@ function togglePause(target) {
             if (btn) btn.disabled = false;
             // Refresh daemon state
             apiFetch('/api/daemon/state').then(r => r.json()).then(data => {
-                if (data.hitbonenut) updateHitbonenut(data.hitbonenut);
+                if (data.self-study) updateSelfStudy(data.self-study);
                 if (data.karpathy) {
                     updateKarpathyLive(data.karpathy);
                     updateDaemonKarpathy(data);
@@ -2005,9 +2010,9 @@ function _canOverridePause(target) {
 function updatePauseButtons() {
     const hitbBtn = document.getElementById('db-hitb-pause-btn');
     if (hitbBtn) {
-        hitbBtn.textContent = _pauseState.hitbonenut ? '[GO]' : '[PAUSE]';
-        hitbBtn.title = _pauseState.hitbonenut ? 'Reprendre Hitbonenut' : 'Pause Hitbonenut';
-        hitbBtn.classList.toggle('is-paused', _pauseState.hitbonenut);
+        hitbBtn.textContent = _pauseState.self-study ? '[GO]' : '[PAUSE]';
+        hitbBtn.title = _pauseState.self-study ? 'Reprendre SelfStudy' : 'Pause SelfStudy';
+        hitbBtn.classList.toggle('is-paused', _pauseState.self-study);
     }
     const karpBtn = document.getElementById('db-karp-pause-btn');
     if (karpBtn) {
@@ -2122,7 +2127,7 @@ function updateConditions(soul) {
     safeHTML(block, t);
 }
 
-// ─── Sefirat Ha'Omer ───────────────────────────────────────
+// ─── Progression counter ───────────────────────────────────
 
 function fetchOmer() {
     apiFetch('/api/omer/today').then(r => r.json()).then(data => {
@@ -2145,8 +2150,8 @@ function updateOmer(data) {
     const day = data.day || 0;
     const week = data.week || 0;
     const dayInWeek = data.day_in_week || 0;
-    const primaryFr = frSephirah(data.primary) || data.primary || '';
-    const secondaryFr = frSephirah(data.secondary) || data.secondary || '';
+    const primaryFr = frFaculty(data.primary) || data.primary || '';
+    const secondaryFr = frFaculty(data.secondary) || data.secondary || '';
     const boosts = data.module_boosts || {};
 
     let t = '';
@@ -2187,9 +2192,9 @@ function updateStatusLine(data) {
     const soulFr = (data.soul && data.soul.level) ? frSoul(data.soul.level) : '--';
     const nitz = (data.nitzotzot && data.nitzotzot.count != null) ? data.nitzotzot.count : '--';
     const zivLabels = { active: '\u25CF', partial: '\u25D0', blocked: '\u25CB' };
-    const ziv = (data.zivvug && data.zivvug.state) ? (zivLabels[data.zivvug.state] || '\u25CB') : '\u25CB';
+    const ziv = (data.cross_coupling && data.cross_coupling.state) ? (zivLabels[data.cross_coupling.state] || '\u25CB') : '\u25CB';
     const comp = (data.soul && data.soul.competence_score != null) ? ((data.soul.competence_score * 100).toFixed(0) + '%') : '--';
-    const hitb = (data.hitbonenut && data.hitbonenut.questions_today) || 0;
+    const hitb = (data.self-study && data.self-study.questions_today) || 0;
     const time = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
     el.textContent = daemon + ' Gardien \u2502 ' + soulFr + ' \u2502 Puissance:' + comp + ' \u2502 \u2726' + nitz + '/288 \u2502 Synergie:' + ziv + ' \u2502 Questions:' + hitb + ' \u2502 ' + time;
 }
@@ -2222,7 +2227,7 @@ function updateAllSummaries(data) {
     const mods = data.modules || {};
     const online = Object.values(mods).filter(m => m.status === 'online').length;
     const total = Object.keys(mods).length;
-    const offline = Object.entries(mods).filter(([k, m]) => m.status !== 'online').map(([k]) => frSephirah(k) || k);
+    const offline = Object.entries(mods).filter(([k, m]) => m.status !== 'online').map(([k]) => frFaculty(k) || k);
     const treeSum = document.getElementById('grp-tree-summary');
     if (treeSum) {
         let text = `<span class="${online === total ? 'term-green' : 'term-amber'}">${online}/${total} actifs</span>`;
@@ -2231,7 +2236,7 @@ function updateAllSummaries(data) {
     }
 
     // Learning summary
-    const hitb = data.hitbonenut || {};
+    const hitb = data.self-study || {};
     const karp = data.karpathy || {};
     const learnSum = document.getElementById('grp-learning-summary');
     if (learnSum) {
@@ -2242,10 +2247,10 @@ function updateAllSummaries(data) {
     }
 
     // Forces (Cour Interieure) summary
-    const partz = data.partzufim || {};
+    const partz = data.configurations || {};
     const matureCount = Object.values(partz).filter(p => p.mochin_state === 'gadlut').length;
     const totalPartz = Object.keys(partz).length;
-    const zState = (data.zivvug || {}).state || 'blocked';
+    const zState = (data.cross_coupling || {}).state || 'blocked';
     const zivLabels = { active: 'Synergie active', partial: 'Synergie partielle', blocked: 'Synergie bloquee' };
     const dom = (data.tanya || {}).dominant_soul || 'neutral';
     const domLabels = { neutral: 'Equilibre', elokit: 'Creativite domine', behamit: 'Prudence domine' };
@@ -2304,10 +2309,10 @@ function updateAllSummaries(data) {
 // ── Messages from API ──────────────────────────────────────
 
 function updateMessages(data) {
-    // Zivvug message
-    const zMsg = document.getElementById('db-zivvug-message');
+    // CrossCoupling message
+    const zMsg = document.getElementById('db-cross_coupling-message');
     if (zMsg) {
-        const msg = (data.zivvug || {}).message;
+        const msg = (data.cross_coupling || {}).message;
         if (msg) {
             zMsg.textContent = msg;
             zMsg.style.display = 'block';
@@ -2356,7 +2361,7 @@ function fetchInventory() {
     Promise.all([
         apiFetch('/api/memory/stats').then(r => r.json()).catch(() => ({})),
         apiFetch('/api/intentions').then(r => r.json()).catch(() => ({ count: 0 })),
-        apiFetch('/api/sifrei-yesod/stats').then(r => r.json()).catch(() => ({ global: {} })),
+        apiFetch('/api/source-corpus/stats').then(r => r.json()).catch(() => ({ global: {} })),
         apiFetch('/api/dashboard/counts').then(r => r.json()).catch(() => ({})),
     ]).then(([mem, intent, sifrei, counts]) => {
         const g = sifrei.global || {};
@@ -2369,9 +2374,9 @@ function fetchInventory() {
         // DB counts from dedicated endpoint
         set('db-inv-claims', counts.causal_claims || 0);
         set('db-inv-tensions', counts.tensions || 0);
-        set('db-inv-questions', counts.hitbonenut_questions || 0);
+        set('db-inv-questions', counts.self-study_questions || 0);
         set('db-inv-novelty', counts.novelty_assessments || 0);
-        set('db-inv-principles', counts.hitbonenut_principles || 0);
+        set('db-inv-principles', counts.self-study_principles || 0);
         set('db-inv-analogies', counts.analogies || 0);
         set('db-inv-explorations', counts.explorations || 0);
         set('db-inv-selfmodel', counts.selfmodel_states || 0);
@@ -2391,8 +2396,8 @@ function renderSentiers(sentiers) {
     if (!grid || !sentiers || sentiers.length === 0) return;
 
     const html = sentiers.map(s => {
-        const src = frSephirah(s.source) || s.source;
-        const tgt = frSephirah(s.target) || s.target;
+        const src = frFaculty(s.source) || s.source;
+        const tgt = frFaculty(s.target) || s.target;
         const prog = s.program || '?';
         return `<div class="db-sentier-item">
             <span class="db-sentier-letter">${s.letter || '?'}</span>

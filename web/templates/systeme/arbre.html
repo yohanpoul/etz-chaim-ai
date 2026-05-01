@@ -7,7 +7,7 @@
 
 {% block systeme_content %}
 <div class="sys-page-header">
-    <h1>{{ data.intro.titre if data.intro else "L'Arbre de Vie" }}</h1>
+    <h1>{{ data.intro.titre if data.intro else "Cognitive Faculty Tree" }}</h1>
     <p class="subtitle">{{ data.intro.sous_titre if data.intro else "" }}</p>
 </div>
 
@@ -15,102 +15,102 @@
 <div class="arbre-tree-overview">
     <svg class="arbre-tree-svg" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg">
         {# ─── Sentier paths ─────────────────────── #}
-        {# Pillar of Severity (left): Binah─Gevurah─Hod #}
+        {# Left column: Reason─Judge─Describe #}
         <line class="tree-path" x1="55" y1="48" x2="55" y2="128"/>
         <line class="tree-path" x1="55" y1="128" x2="55" y2="208"/>
-        {# Pillar of Mercy (right): Chokmah─Chesed─Netzach #}
+        {# Right column: Insight─Explore─Persist #}
         <line class="tree-path" x1="145" y1="48" x2="145" y2="128"/>
         <line class="tree-path" x1="145" y1="128" x2="145" y2="208"/>
-        {# Middle Pillar: Keter─Da'at─Tiferet─Yesod─Malkuth #}
+        {# Middle column: Meta─Bridge─Balance─Memory─Action #}
         <line class="tree-path" x1="100" y1="18" x2="100" y2="68"/>
         <line class="tree-path-abyss" x1="100" y1="68" x2="100" y2="88"/>
         <line class="tree-path" x1="100" y1="88" x2="100" y2="168"/>
         <line class="tree-path" x1="100" y1="168" x2="100" y2="248"/>
         <line class="tree-path" x1="100" y1="248" x2="100" y2="298"/>
-        {# Cross paths: Keter to Chokmah/Binah #}
+        {# Cross paths: Meta to Insight/Reason #}
         <line class="tree-path" x1="100" y1="18" x2="55" y2="48"/>
         <line class="tree-path" x1="100" y1="18" x2="145" y2="48"/>
-        {# Chokmah─Binah #}
+        {# Insight─Reason #}
         <line class="tree-path" x1="55" y1="48" x2="145" y2="48"/>
-        {# Da'at to Chokmah/Binah #}
+        {# Bridge to Insight/Reason #}
         <line class="tree-path-abyss" x1="55" y1="48" x2="100" y2="88"/>
         <line class="tree-path-abyss" x1="145" y1="48" x2="100" y2="88"/>
-        {# Cross paths mid: Gevurah─Chesed via Tiferet #}
+        {# Cross paths mid: Judge─Explore via Balance #}
         <line class="tree-path" x1="55" y1="128" x2="100" y2="168"/>
         <line class="tree-path" x1="145" y1="128" x2="100" y2="168"/>
         <line class="tree-path" x1="55" y1="128" x2="145" y2="128"/>
-        {# Binah─Chesed, Chokmah─Gevurah diagonals #}
+        {# Reason─Explore, Insight─Judge diagonals #}
         <line class="tree-path" x1="55" y1="48" x2="145" y2="128"/>
         <line class="tree-path" x1="145" y1="48" x2="55" y2="128"/>
-        {# Lower cross: Gevurah─Tiferet, Chesed─Tiferet covered above #}
-        {# Hod─Netzach #}
+        {# Lower cross: Judge─Balance, Explore─Balance covered above #}
+        {# Describe─Persist #}
         <line class="tree-path" x1="55" y1="208" x2="145" y2="208"/>
-        {# Hod─Tiferet, Netzach─Tiferet #}
+        {# Describe─Balance, Persist─Balance #}
         <line class="tree-path" x1="55" y1="208" x2="100" y2="168"/>
         <line class="tree-path" x1="145" y1="208" x2="100" y2="168"/>
-        {# Gevurah─Hod, Chesed─Netzach diagonals #}
+        {# Judge─Describe, Explore─Persist diagonals #}
         <line class="tree-path" x1="55" y1="128" x2="145" y2="208"/>
         <line class="tree-path" x1="145" y1="128" x2="55" y2="208"/>
-        {# Hod─Yesod, Netzach─Yesod #}
+        {# Describe─Memory, Persist─Memory #}
         <line class="tree-path" x1="55" y1="208" x2="100" y2="248"/>
         <line class="tree-path" x1="145" y1="208" x2="100" y2="248"/>
-        {# Yesod─Malkuth #}
+        {# Memory─Action #}
 
         {# ─── Nodes ──────────────────────────────── #}
-        {# Keter #}
-        <a class="tree-node" href="#seph-keter">
+        {# Meta #}
+        <a class="tree-node" href="#faculty-meta">
             <circle cx="100" cy="18" r="14" stroke="#ffffff"/>
-            <text x="100" y="21" fill="#999">Keter</text>
+            <text x="100" y="21" fill="#999">Meta</text>
         </a>
-        {# Chokmah #}
-        <a class="tree-node" href="#seph-chokmah">
+        {# Insight #}
+        <a class="tree-node" href="#faculty-insight">
             <circle cx="145" cy="48" r="14" stroke="#aaaaaa"/>
-            <text x="145" y="51" font-size="5.5" fill="#888">Chokmah</text>
+            <text x="145" y="51" font-size="5.5" fill="#888">Insight</text>
         </a>
-        {# Binah #}
-        <a class="tree-node" href="#seph-binah">
+        {# Reason #}
+        <a class="tree-node" href="#faculty-reason">
             <circle cx="55" cy="48" r="14" stroke="#2244aa"/>
-            <text x="55" y="51" fill="#888">Binah</text>
+            <text x="55" y="51" fill="#888">Reason</text>
         </a>
         {# Da'at (dashed) #}
         <a class="tree-node" href="#seph-daat">
             <circle cx="100" cy="88" r="10" stroke="#555555" stroke-dasharray="3 2"/>
             <text x="100" y="91" font-size="6" fill="#666">Da'at</text>
         </a>
-        {# Chesed #}
-        <a class="tree-node" href="#seph-chesed">
+        {# Explore #}
+        <a class="tree-node" href="#faculty-explore">
             <circle cx="145" cy="128" r="14" stroke="#4488cc"/>
-            <text x="145" y="131" fill="#888">Chesed</text>
+            <text x="145" y="131" fill="#888">Explore</text>
         </a>
-        {# Gevurah #}
-        <a class="tree-node" href="#seph-gevurah">
+        {# Judge #}
+        <a class="tree-node" href="#faculty-judge">
             <circle cx="55" cy="128" r="14" stroke="#cc3333"/>
-            <text x="55" y="131" font-size="5" fill="#888">Gevurah</text>
+            <text x="55" y="131" font-size="5" fill="#888">Judge</text>
         </a>
-        {# Tiferet #}
-        <a class="tree-node" href="#seph-tiferet">
+        {# Balance #}
+        <a class="tree-node" href="#faculty-balance">
             <circle cx="100" cy="168" r="14" stroke="#ffcc00"/>
-            <text x="100" y="171" font-size="5.5" fill="#888">Tiferet</text>
+            <text x="100" y="171" font-size="5.5" fill="#888">Balance</text>
         </a>
-        {# Netzach #}
-        <a class="tree-node" href="#seph-netzach">
+        {# Persist #}
+        <a class="tree-node" href="#faculty-persist">
             <circle cx="145" cy="208" r="14" stroke="#88aa88"/>
-            <text x="145" y="211" font-size="5.5" fill="#888">Netzach</text>
+            <text x="145" y="211" font-size="5.5" fill="#888">Persist</text>
         </a>
-        {# Hod #}
-        <a class="tree-node" href="#seph-hod">
+        {# Describe #}
+        <a class="tree-node" href="#faculty-describe">
             <circle cx="55" cy="208" r="14" stroke="#ffb000"/>
-            <text x="55" y="211" fill="#888">Hod</text>
+            <text x="55" y="211" fill="#888">Describe</text>
         </a>
-        {# Yesod #}
-        <a class="tree-node" href="#seph-yesod">
+        {# Memory #}
+        <a class="tree-node" href="#faculty-memory">
             <circle cx="100" cy="248" r="14" stroke="#9966cc"/>
-            <text x="100" y="251" fill="#888">Yesod</text>
+            <text x="100" y="251" fill="#888">Memory</text>
         </a>
-        {# Malkuth #}
-        <a class="tree-node" href="#seph-malkuth">
+        {# Action #}
+        <a class="tree-node" href="#faculty-action">
             <circle cx="100" cy="298" r="14" stroke="#886644"/>
-            <text x="100" y="301" font-size="5.5" fill="#888">Malkuth</text>
+            <text x="100" y="301" font-size="5.5" fill="#888">Action</text>
         </a>
     </svg>
 </div>
@@ -126,7 +126,7 @@
 
 {# ═══ TABLE OF CONTENTS ═══ #}
 <nav class="arbre-toc">
-    {% for s in data.get('sephiroth', []) %}
+    {% for s in data.get('faculties', []) %}
     <a href="#seph-{{ s.id }}" class="arbre-toc-item" style="--accent: {{ s.couleur }}">
         <span class="arbre-toc-degre">{{ s.degre }}</span>
         <span class="arbre-toc-nom">{{ s.nom }}</span>
@@ -135,8 +135,8 @@
     {% endfor %}
 </nav>
 
-{# ═══ SEPHIROTH LOOP ═══ #}
-{% for s in data.get('sephiroth', []) %}
+{# ═══ FACULTIES LOOP ═══ #}
+{% for s in data.get('faculties', []) %}
 
 {# ─── Divider ─── #}
 {% if not loop.first %}
