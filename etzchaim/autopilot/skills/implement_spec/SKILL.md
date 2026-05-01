@@ -47,6 +47,10 @@ When `autopilot.loop.run_one_cycle()` selects an unimplemented spec from
 9. Stage files, write a neutral commit message, commit, push.
 10. Open a PR via `gh pr create` with a neutral title and body. Do not add
     the `human-approved` label.
+11. **STOP IMMEDIATELY** after `gh pr create` returns. Do not run further
+    tests, polish docstrings, refactor, or attempt any post-PR cleanup.
+    Output the PR URL and exit. Burning turns on post-PR work blows the
+    cycle budget for zero added value — the human reviewer handles polish.
 
 ## Guardrails
 
