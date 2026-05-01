@@ -227,6 +227,9 @@ def run_one_cycle(
             "Etz Chaim Autopilot",
             f"Cycle ok : {task_id} ({skill_name})",
         )
+        spec_md = SPECS_DIR / f"{task_id}.md"
+        if spec_md.exists():
+            spec_md.with_suffix(".implemented").touch()
 
     return CycleOutcome(
         status="ok" if result.success else "failed",

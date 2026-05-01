@@ -27,7 +27,7 @@ class ClaudeSkillRunner(Runner):
         self,
         binary: str = DEFAULT_CLAUDE_BIN,
         model: str = "claude-opus-4-7",
-        max_turns: int = 20,
+        max_turns: int = 35,
         local: LocalRunner | None = None,
     ) -> None:
         self.binary = binary
