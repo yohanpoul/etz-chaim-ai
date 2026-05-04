@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **`etzchaim/autopilot/loop.py`** — token budget tracker was never invoked by the cycle loop, so `autopilot_tokens_consumed_month` stayed at 0 forever and the monthly cap was inert. The loop now extracts billable tokens (`input_tokens + output_tokens + cache_creation_input_tokens`; `cache_read_input_tokens` is NOT billable) from worker `RunResult.metadata` and calls `TokenBudget.consume(N)` after each cycle.
 - **`etzchaim/autopilot/loop.py`** — `autopilot_pr_count_open` was read by the `max_open_prs` guard but never written back after `_open_pr_count()` succeeded, so the guard read a value that drifted out of sync (state said 2 while 3 PRs were live). The loop now persists the live count after each successful `gh pr list` query.
-- **CI Docs (`mkdocs --strict`)** — `mkdocs.yml:2 site_description` contained a forbidden public-surface term ("Lurianic Kabbalistic discipline"); replaced with the neutral paper title. Six `nav` entries pointed at absent forbidden-surface pages (`concepts/sephirot.md` etc.); removed. Three orphan pages added to nav (`installation.md`, `advanced.md`, `release-notes-v0.2.0.md`). Broken `../CONTRIBUTING.md` link in `architecture.md` replaced by absolute repo URL.
+- **CI Docs (`mkdocs --strict`)** — `mkdocs.yml:2 site_description` contained a forbidden public-surface term (see `.claude/rules/public-surface-neutrality.md`); replaced with the neutral paper title. Six `nav` entries pointed at absent forbidden-surface pages under `concepts/` and `guides/`; removed. Three orphan pages added to nav (`installation.md`, `advanced.md`, `release-notes-v0.2.0.md`). Broken `../CONTRIBUTING.md` link in `architecture.md` replaced by absolute repo URL.
 - **CI Lint (`ruff` strict paths)** — auto-fix applied: 7 lint errors (F401 unused import + I001 import order + F541 f-string without placeholder) and 7 unformatted files in `scripts/`, `etzchaim/configurations/`, `etzchaim/probes/` resolved.
 - **CI Public surface guard** — workflow lacked `permissions:` block, causing the annotate step to fail with HTTP 403 when posting PR comments. Added explicit `pull-requests: write` + `issues: write`. Annotate step now also guards against PRs from forks. Added `mkdocs.yml` to `PUBLIC_PATHS` scope so future `site_description`-style leaks fail at scan time.
 
@@ -27,7 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **`etzchaim/deploy/config.yaml:718`** — `autopilot.enabled: false` (TEMPORARY; restored to `true` after Phase D foreground dry-run validation per plan `~/.claude/plans/ok-on-fais-ca-cuddly-turing.md`).
-- **`docs/roadmap.md:9`** — replaced `faculty_reshimot` reference with `faculty_persistent_traces` (1 inline neutralization vs scope creep).
+- **`docs/roadmap.md:9`** — replaced one legacy identifier with `faculty_persistent_traces` (1 inline neutralization vs scope creep).
 
 ### Notes for upgraders
 

@@ -67,5 +67,3 @@ nav:
   - Architecture: architecture.md
   - Advanced: advanced.md
   - Roadmap: roadmap.md
-  - Release notes:
-      - v0.2.0: release-notes-v0.2.0.md
