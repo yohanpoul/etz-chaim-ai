@@ -3,17 +3,25 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
 class RunResult:
-    """Outcome of a runner dispatch."""
+    """Outcome of a runner dispatch.
+
+    `metadata` carries per-call cross-cutting data such as token usage
+    (`input_tokens`, `output_tokens`, `cache_creation_input_tokens`,
+    `cache_read_input_tokens`, `total_cost_usd`) when the runner can
+    extract them. Empty by default for runners that have no envelope to
+    parse (e.g., LocalRunner).
+    """
 
     exit_code: int
     stdout: str
     stderr: str
     duration_ms: int
+    metadata: dict[str, str] = field(default_factory=dict)
 
     @property
     def success(self) -> bool:

@@ -5,6 +5,34 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.30] - 2026-05-04 — autopilot budget tracker + PR-count sync + CI unblock
+
+### Fixed
+
+- **`etzchaim/autopilot/loop.py`** — token budget tracker was never invoked by the cycle loop, so `autopilot_tokens_consumed_month` stayed at 0 forever and the monthly cap was inert. The loop now extracts billable tokens (`input_tokens + output_tokens + cache_creation_input_tokens`; `cache_read_input_tokens` is NOT billable) from worker `RunResult.metadata` and calls `TokenBudget.consume(N)` after each cycle.
+- **`etzchaim/autopilot/loop.py`** — `autopilot_pr_count_open` was read by the `max_open_prs` guard but never written back after `_open_pr_count()` succeeded, so the guard read a value that drifted out of sync (state said 2 while 3 PRs were live). The loop now persists the live count after each successful `gh pr list` query.
+- **CI Docs (`mkdocs --strict`)** — `mkdocs.yml:2 site_description` contained a forbidden public-surface term ("Lurianic Kabbalistic discipline"); replaced with the neutral paper title. Six `nav` entries pointed at absent forbidden-surface pages (`concepts/sephirot.md` etc.); removed. Three orphan pages added to nav (`installation.md`, `advanced.md`, `release-notes-v0.2.0.md`). Broken `../CONTRIBUTING.md` link in `architecture.md` replaced by absolute repo URL.
+- **CI Lint (`ruff` strict paths)** — auto-fix applied: 7 lint errors (F401 unused import + I001 import order + F541 f-string without placeholder) and 7 unformatted files in `scripts/`, `etzchaim/configurations/`, `etzchaim/probes/` resolved.
+- **CI Public surface guard** — workflow lacked `permissions:` block, causing the annotate step to fail with HTTP 403 when posting PR comments. Added explicit `pull-requests: write` + `issues: write`. Annotate step now also guards against PRs from forks. Added `mkdocs.yml` to `PUBLIC_PATHS` scope so future `site_description`-style leaks fail at scan time.
+
+### Added
+
+- **`etzchaim/autopilot/runners/base.py`** — `RunResult.metadata: dict[str, str]` field (default empty) for cross-cutting per-call data such as token usage, exit codes, total cost.
+- **`etzchaim/autopilot/runners/claude_skill.py`** — extracts `usage` (`input_tokens`, `output_tokens`, `cache_creation_input_tokens`, `cache_read_input_tokens`) and `total_cost_usd` from the Claude CLI JSON envelope into `RunResult.metadata`.
+- **`etzchaim/autopilot/delegation/subagent.py`** — propagates `RunResult.metadata` into `WorkerResult.metadata`.
+- **`etzchaim/autopilot/tests/test_budget_consume.py`** — 6 regression tests for budget wiring + PR-count sync (24/24 autopilot tests pass).
+- **`specs/06_legacy_surface_sanitize.md`** — new spec tracking systematic cleanup of 99 pre-existing public-surface leaks in legacy paths (`web/templates/*`, `web/static/*`, `etzchaim/cli/commands/*`, `etzchaim/deploy/*`, `pyproject.toml`, `.github/ISSUE_TEMPLATE/`, `.github/workflows/test.yml`). Excluded scope-narrow until sanitize cycles run; marker `.implemented` posted to park autopilot pickup until manual split into 7 sub-specs.
+- **`specs/04_rectifiers/{08,13}.implemented`** + **`specs/05_cognitive_os_eval_suite.implemented`** — markers parking these specs from autopilot pickup. R8 + R13 frontmatter `status: existing` (modules already coded). Spec 05 (eval suite) deferred pending split into ≤50-cycle sub-specs to stay within `budget_tokens_monthly: 1000000` cap.
+
+### Changed
+
+- **`etzchaim/deploy/config.yaml:718`** — `autopilot.enabled: false` (TEMPORARY; restored to `true` after Phase D foreground dry-run validation per plan `~/.claude/plans/ok-on-fais-ca-cuddly-turing.md`).
+- **`docs/roadmap.md:9`** — replaced `faculty_reshimot` reference with `faculty_persistent_traces` (1 inline neutralization vs scope creep).
+
+### Notes for upgraders
+
+This release unblocks the autopilot pipeline that has been stuck since 2026-05-01: 3 PRs (`meta-orchestrator`, `synthesis-bridge`, `multi-provider-wrapper`) were waiting in `ready-review` because all CI checks were red on every commit since `da493c0`. With v0.2.30 + restored `autopilot.enabled: true`, the daemon resumes background cycles producing one rectifier PR per cycle (interval 7200s = 2h, max 5 open PRs, 1M tokens/month cap).
+
 ## [0.2.23] - 2026-04-27 — specification corpus corpus seeded via init-db/99
 
 ### Added

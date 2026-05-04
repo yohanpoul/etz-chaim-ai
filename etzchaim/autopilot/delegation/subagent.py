@@ -15,7 +15,6 @@ from pathlib import Path
 from etzchaim.autopilot.memory.snapshot import ContextSnapshot
 from etzchaim.autopilot.runners.base import Runner, RunResult
 
-
 # Tool categories the worker is forbidden from invoking. Names map to
 # Claude Code's tool surface; the prompt instructs the worker explicitly.
 RESTRICTED_TOOLS: tuple[str, ...] = (
@@ -91,13 +90,15 @@ class IsolatedWorker:
 
     @staticmethod
     def _wrap(result: RunResult, skill_name: str) -> WorkerResult:
+        meta = {
+            "exit_code": str(result.exit_code),
+            "stderr_tail": result.stderr[-2000:] if result.stderr else "",
+        }
+        meta.update(result.metadata)
         return WorkerResult(
             success=result.success,
             output=result.stdout,
             duration_ms=result.duration_ms,
             skill_name=skill_name,
-            metadata={
-                "exit_code": str(result.exit_code),
-                "stderr_tail": result.stderr[-2000:] if result.stderr else "",
-            },
+            metadata=meta,
         )
