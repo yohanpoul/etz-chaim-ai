@@ -60,6 +60,7 @@ def _consecutive_failures(state: AutopilotState) -> int:
     """Count consecutive failed cycles from the FTS-indexed cycle log."""
     try:
         from etzchaim.autopilot.memory.search import recent_cycles
+
         rows = recent_cycles(limit=10)
     except Exception:
         return 0
@@ -76,6 +77,7 @@ def _notify(title: str, body: str) -> None:
     """Best-effort macOS notification. No-op on other platforms or on error."""
     import platform
     import subprocess as sp
+
     if platform.system() != "Darwin":
         return
     try:
@@ -145,9 +147,7 @@ def run_one_cycle(
     dry_run: bool = False,
 ) -> CycleOutcome:
     """Execute exactly one autopilot cycle."""
-    cfg = config or AutopilotConfig.from_file(
-        REPO_ROOT / "etzchaim" / "deploy" / "config.yaml"
-    )
+    cfg = config or AutopilotConfig.from_file(REPO_ROOT / "etzchaim" / "deploy" / "config.yaml")
     st = state or AutopilotState.load()
 
     if not cfg.enabled and not dry_run:
@@ -155,12 +155,13 @@ def run_one_cycle(
 
     budget = TokenBudget(cfg, st)
     if not budget.check().allowed:
-        return CycleOutcome(
-            status="skipped", summary="monthly token budget exhausted"
-        )
+        return CycleOutcome(status="skipped", summary="monthly token budget exhausted")
 
     if not dry_run:
         open_count = _open_pr_count()
+        if open_count >= 0:
+            st.autopilot_pr_count_open = open_count
+            st.save()
         if 0 <= open_count and open_count >= cfg.max_open_prs:
             return CycleOutcome(
                 status="skipped",
@@ -227,6 +228,24 @@ def run_one_cycle(
     completed = time.time()
     summary_parts.append(f"success={result.success}")
     summary = "; ".join(summary_parts)
+
+    # Charge billable tokens against monthly budget. Claude CLI usage envelope
+    # exposes input + output (always billable) and cache_creation (billable on
+    # write) + cache_read (NOT billable; already paid). LocalRunner / codex
+    # paths expose no usage so metadata stays empty and consume(0) is a no-op.
+    def _safe_int(v: str) -> int:
+        try:
+            return int(v)
+        except (ValueError, TypeError):
+            return 0
+
+    billable = (
+        _safe_int(result.metadata.get("input_tokens", "0"))
+        + _safe_int(result.metadata.get("output_tokens", "0"))
+        + _safe_int(result.metadata.get("cache_creation_input_tokens", "0"))
+    )
+    if billable > 0:
+        budget.consume(billable)
 
     # Trajectory
     traj = Trajectory(model=cfg.worker, completed=result.success)

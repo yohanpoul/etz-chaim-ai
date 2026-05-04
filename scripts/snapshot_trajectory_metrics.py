@@ -116,12 +116,10 @@ def collect_metrics(label: str = "default", db_url: str = DB_URL) -> TrajectoryM
         cur = conn.cursor()
 
         # EpisteMemory
-        metrics.epistememory_total = _safe_query(
-            cur, "SELECT COUNT(*) FROM epistememory"
+        metrics.epistememory_total = _safe_query(cur, "SELECT COUNT(*) FROM epistememory")
+        metrics.epistememory_avg_confidence = float(
+            _safe_query(cur, "SELECT AVG(confidence) FROM epistememory", 0.0) or 0.0
         )
-        metrics.epistememory_avg_confidence = float(_safe_query(
-            cur, "SELECT AVG(confidence) FROM epistememory", 0.0
-        ) or 0.0)
         metrics.epistememory_active_count = _safe_query(
             cur, "SELECT COUNT(*) FROM epistememory WHERE epistemic_status = 'active'"
         )
@@ -131,16 +129,16 @@ def collect_metrics(label: str = "default", db_url: str = DB_URL) -> TrajectoryM
         metrics.epistememory_open_contradictions = _safe_query(
             cur,
             "SELECT COUNT(*) FROM epistememory "
-            "WHERE contradicts IS NOT NULL AND array_length(contradicts, 1) > 0"
+            "WHERE contradicts IS NOT NULL AND array_length(contradicts, 1) > 0",
         )
 
         # SelfMap
         metrics.selfmap_total_domains = _safe_query(
             cur, "SELECT COUNT(DISTINCT domain) FROM selfmap_competence"
         )
-        metrics.selfmap_avg_score = float(_safe_query(
-            cur, "SELECT AVG(score) FROM selfmap_competence", 0.0
-        ) or 0.0)
+        metrics.selfmap_avg_score = float(
+            _safe_query(cur, "SELECT AVG(score) FROM selfmap_competence", 0.0) or 0.0
+        )
         metrics.selfmap_calibrated_count = _safe_query(
             cur, "SELECT COUNT(*) FROM selfmap_competence WHERE n_evals >= 5"
         )
@@ -150,9 +148,7 @@ def collect_metrics(label: str = "default", db_url: str = DB_URL) -> TrajectoryM
             cur, "SELECT COUNT(*) FROM selfmodel_predictions"
         )
         metrics.selfmodel_predictions_correct = _safe_query(
-            cur,
-            "SELECT COUNT(*) FROM selfmodel_predictions "
-            "WHERE actual = predicted"
+            cur, "SELECT COUNT(*) FROM selfmodel_predictions WHERE actual = predicted"
         )
         metrics.selfmodel_evolution_count = _safe_query(
             cur, "SELECT COUNT(*) FROM selfmodel_evolution"
@@ -175,27 +171,20 @@ def collect_metrics(label: str = "default", db_url: str = DB_URL) -> TrajectoryM
                 scores = [s["overall_score"] for s in metrics.partzufim_states.values()]
                 metrics.partzufim_avg_overall = sum(scores) / len(scores)
                 metrics.partzufim_gadlut_count = sum(
-                    1 for s in metrics.partzufim_states.values()
-                    if s["mochin_state"] == "gadlut"
+                    1 for s in metrics.partzufim_states.values() if s["mochin_state"] == "gadlut"
                 )
                 metrics.partzufim_panim_count = sum(
-                    1 for s in metrics.partzufim_states.values()
-                    if s["orientation"] == "panim"
+                    1 for s in metrics.partzufim_states.values() if s["orientation"] == "panim"
                 )
         except Exception:
             pass
 
         # Reshimu
         try:
-            cur.execute(
-                "SELECT partzuf, SUM(reshimu_value) FROM faculty_reshimot "
-                "GROUP BY partzuf"
-            )
+            cur.execute("SELECT partzuf, SUM(reshimu_value) FROM faculty_reshimot GROUP BY partzuf")
             for row in cur.fetchall():
                 metrics.reshimu_by_partzuf[row[0]] = float(row[1] or 0.0)
-            metrics.reshimu_total_traces = _safe_query(
-                cur, "SELECT COUNT(*) FROM faculty_reshimot"
-            )
+            metrics.reshimu_total_traces = _safe_query(cur, "SELECT COUNT(*) FROM faculty_reshimot")
         except Exception:
             pass
 
@@ -206,20 +195,23 @@ def collect_metrics(label: str = "default", db_url: str = DB_URL) -> TrajectoryM
         metrics.intentions_completed = _safe_query(
             cur, "SELECT COUNT(*) FROM active_intentions WHERE status = 'completed'"
         )
-        metrics.intentions_avg_age_hours = float(_safe_query(
-            cur,
-            "SELECT AVG(EXTRACT(EPOCH FROM (NOW() - created_at)) / 3600.0) "
-            "FROM active_intentions WHERE status = 'active'",
-            0.0,
-        ) or 0.0)
+        metrics.intentions_avg_age_hours = float(
+            _safe_query(
+                cur,
+                "SELECT AVG(EXTRACT(EPOCH FROM (NOW() - created_at)) / 3600.0) "
+                "FROM active_intentions WHERE status = 'active'",
+                0.0,
+            )
+            or 0.0
+        )
 
         # Hitbonenut
         metrics.hitbonenut_sessions_total = _safe_query(
             cur, "SELECT COUNT(*) FROM hitbonenut_sessions"
         )
-        metrics.hitbonenut_avg_session_score = float(_safe_query(
-            cur, "SELECT AVG(session_score) FROM hitbonenut_sessions", 0.0
-        ) or 0.0)
+        metrics.hitbonenut_avg_session_score = float(
+            _safe_query(cur, "SELECT AVG(session_score) FROM hitbonenut_sessions", 0.0) or 0.0
+        )
         metrics.hitbonenut_principles_emerged = _safe_query(
             cur, "SELECT COUNT(*) FROM hitbonenut_principles"
         )
@@ -246,10 +238,10 @@ def save_snapshot(metrics: TrajectoryMetrics) -> Path:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--label", default="default",
-                        help="Label snapshot (e.g. claude_etz, claude_brut)")
-    parser.add_argument("--print", action="store_true",
-                        help="Print metrics on stdout (debug)")
+    parser.add_argument(
+        "--label", default="default", help="Label snapshot (e.g. claude_etz, claude_brut)"
+    )
+    parser.add_argument("--print", action="store_true", help="Print metrics on stdout (debug)")
     args = parser.parse_args()
 
     print(f"Collecting trajectory metrics (label={args.label})...", file=sys.stderr)
@@ -270,7 +262,7 @@ def main() -> int:
         "hitbonenut_sessions_total": metrics.hitbonenut_sessions_total,
         "reshimu_total_traces": metrics.reshimu_total_traces,
     }
-    print(f"\nSummary:")
+    print("\nSummary:")
     for k, v in summary.items():
         print(f"  {k:35s} {v}", file=sys.stderr)
 

@@ -9,11 +9,17 @@ from __future__ import annotations
 
 from mazalengine import (
     MazalEngine as ProbeOrchestrator,
+)
+from mazalengine import (
     NotzerChesedRectifier as ExplorationStarvationRectifier,
+)
+from mazalengine import (
     ProposedAction,
     RectificationMode,
-    VeNakehRectifier as StaleClaimsRectifier,
     Watcher,
+)
+from mazalengine import (
+    VeNakehRectifier as StaleClaimsRectifier,
 )
 
 __all__ = [

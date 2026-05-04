@@ -1,5 +1,5 @@
 site_name: Etz Chaim AI
-site_description: AI architecture grounded in Lurianic Kabbalistic discipline
+site_description: A Cognitive Operating System for Structurally-Evolving LLM Agents
 site_url: https://yohanpoul.github.io/etz-chaim-ai/
 repo_url: https://github.com/yohanpoul/etz-chaim-ai
 repo_name: yohanpoul/etz-chaim-ai
@@ -63,13 +63,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Getting started: getting_started.md
+  - Installation: installation.md
   - Architecture: architecture.md
-  - Concepts:
-      - Sephirot: concepts/sephirot.md
-      - Partzufim: concepts/partzufim.md
-      - MazalEngine: concepts/mazalengine.md
-      - Sifrei Yesod: concepts/sifrei_yesod.md
-  - Guides:
-      - Add a new Partzuf: guides/add_new_partzuf.md
-      - Transpose a new Sefer: guides/transpose_new_sefer.md
+  - Advanced: advanced.md
   - Roadmap: roadmap.md

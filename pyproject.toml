@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "etzchaim"
-version = "0.2.29"
+version = "0.2.30"
 description = "Cognitive Operating System for LLM agents — 10 cognitive faculties, 6 mature configurations, 13 rectification mechanisms, 1696 specification items. One-command install via Docker Compose."
 readme = "README.md"
 requires-python = ">=3.10"

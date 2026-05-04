@@ -71,16 +71,27 @@ class ClaudeSkillRunner(Runner):
         )
 
         # Try to parse JSON envelope and surface result text in stdout.
+        # Also extract `usage` so the cycle loop can charge billable tokens
+        # against the monthly budget tracker.
         if result.exit_code == 0 and result.stdout:
             try:
                 doc = json.loads(result.stdout)
                 text = str(doc.get("result", "")).strip()
+                usage = doc.get("usage", {}) or {}
+                meta = {
+                    "input_tokens": str(usage.get("input_tokens", 0)),
+                    "output_tokens": str(usage.get("output_tokens", 0)),
+                    "cache_creation_input_tokens": str(usage.get("cache_creation_input_tokens", 0)),
+                    "cache_read_input_tokens": str(usage.get("cache_read_input_tokens", 0)),
+                    "total_cost_usd": str(doc.get("total_cost_usd", 0.0)),
+                }
                 if text:
                     return RunResult(
                         exit_code=0,
                         stdout=text,
                         stderr=result.stderr,
                         duration_ms=int((time.monotonic() - start) * 1000),
+                        metadata=meta,
                     )
             except json.JSONDecodeError:
                 pass

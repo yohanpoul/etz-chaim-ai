@@ -10,6 +10,7 @@ Known pre-Sprint 10 duplicates (résolus Sprint 10 Phase G) :
     - EC-H1S1-079 : perek_03 + perek_04a (Heikhal 1 Shaar 1 igulim)
       FIXED 2026-04-20 : perek_04a renommé en EC-H1S1-079b (Phase G.5).
 """
+
 from __future__ import annotations
 
 import argparse
@@ -67,8 +68,7 @@ def main(argv: list[str]) -> int:
     duplicates = {k: v for k, v in seen.items() if len(v) > 1}
 
     unknown_duplicates = {
-        k: v for k, v in duplicates.items()
-        if args.strict or k not in KNOWN_PREEXISTING_DUPLICATES
+        k: v for k, v in duplicates.items() if args.strict or k not in KNOWN_PREEXISTING_DUPLICATES
     }
 
     if unknown_duplicates:

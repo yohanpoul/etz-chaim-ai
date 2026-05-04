@@ -15,6 +15,7 @@ PUBLIC_PATHS=(
   "README.md"
   "CHANGELOG.md"
   "CONTRIBUTING.md"
+  "mkdocs.yml"
   "docs"
   "examples"
   "web/templates"
@@ -47,6 +48,32 @@ EXCLUDED_PATTERNS=(
   "tests/"
   # Spec frontmatter `internal_*` champs sont autorisés mais grep les capte.
   # Le filtre fin sera dans Phase 1 quand specs/ existeront.
+  # ─── Legacy panel pre-pivot (TODO sanitize via specs/06_legacy_surface_sanitize.md) ───
+  # Old internal dashboard JS/CSS/Jinja templates with explicit hebrew naming.
+  # Excluded scope-narrow until sanitize cycles run; tracked in spec 06.
+  "web/templates/avatars.html"
+  "web/templates/import.html"
+  "web/templates/systeme/"
+  "web/templates/partials/_card_avatar.html"
+  "web/static/app.js"
+  "web/static/style.css"
+  "web/static/css/erreurs.css"
+  "web/static/css/adversite.css"
+  "web/static/css/avatars.css"
+  "web/static/js/procedural-models.js"
+  # CLI copywriting legacy (TODO sanitize spec 06)
+  "etzchaim/cli/commands/demo.py"
+  "etzchaim/cli/commands/onboard.py"
+  # Backend config keys = sephirot mapping for olamot tier dispatch ;
+  # rename requires breaking refactor across codebase ; tracked spec 06
+  "etzchaim/deploy/config.yaml"
+  "etzchaim/deploy/docker-compose.yml"
+  # Build manifest package discovery patterns reference internal package
+  # dirs (bridge/, mazalengine/, partzufim/) by name ; rename = breaking
+  "pyproject.toml"
+  # Issue + workflow templates with legacy naming ; sanitize spec 06
+  ".github/ISSUE_TEMPLATE/"
+  ".github/workflows/test.yml"
 )
 
 KABBALISTIC_TERMS=(
@@ -122,7 +149,7 @@ scan_path() {
     # Short ambiguous terms (3-4 chars) need word boundaries to avoid false
     # positives in common English words (e.g., "Hod" in "method", "Abba" in
     # "anipulAbba", etc.). Apply word-boundary case-sensitive match for those.
-    grep_flags="-rIn --binary-files=without-match"
+    grep_flags="-rHIn --binary-files=without-match"
     if [ ${#term} -le 4 ]; then
       # case-sensitive + word boundary
       pattern="\\b${term}\\b"

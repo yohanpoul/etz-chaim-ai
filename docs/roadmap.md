@@ -6,7 +6,7 @@
 - Sprint 10 Phase α Batch 1 — 3 rectifiers (HIGH confidence)
 - Sprint 10 Phase B — generalized specification bridge (1696 items)
 - Sprint 10 Phase C — probe orchestrator 3-mode rectification (observe / suggest / act)
-- Sprint 10 Phase D — persistent trace coefficient (`faculty_reshimot`)
+- Sprint 10 Phase D — persistent trace coefficient (`faculty_persistent_traces`)
 - Sprint 10 Phase E — coupling refactor (canonical schema + unified factory)
 - Sprint 10 Phase G — Publication polish
 
