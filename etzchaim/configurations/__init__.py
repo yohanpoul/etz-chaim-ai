@@ -8,23 +8,57 @@ remains accessible for developers who need direct module access.
 from __future__ import annotations
 
 from partzufim import (
-    PartzufBase as Configuration,
-    PartzufState as ConfigurationState,
-    ZivugResult as CouplingResult,
-    ZivvugAssessment as CouplingAssessment,
-    ZivvugEngine as CouplingEngine,
-    ZivvugState as CouplingState,
     FACULTY_NAMES,
-    AtikYomin as InvariantConfig,
-    ArikhAnpin as StrategicConfig,
+)
+from partzufim import (
     Abba as GenerativeConfig,
+)
+from partzufim import (
+    ArikhAnpin as StrategicConfig,
+)
+from partzufim import (
+    AtikYomin as InvariantConfig,
+)
+from partzufim import (
     Imma as StructuringConfig,
-    ZeirAnpin as ExecutionConfig,
+)
+from partzufim import (
     Nukva as InterfaceConfig,
+)
+from partzufim import (
+    PartzufBase as Configuration,
+)
+from partzufim import (
+    PartzufState as ConfigurationState,
+)
+from partzufim import (
+    ZeirAnpin as ExecutionConfig,
+)
+from partzufim import (
+    ZivugResult as CouplingResult,
+)
+from partzufim import (
+    ZivvugAssessment as CouplingAssessment,
+)
+from partzufim import (
+    ZivvugEngine as CouplingEngine,
+)
+from partzufim import (
+    ZivvugState as CouplingState,
+)
+from partzufim import (
     feedback_from_malkuth as feedback_from_action,
+)
+from partzufim import (
     get_partzuf as get_configuration,
+)
+from partzufim import (
     init_partzufim as init_configurations,
+)
+from partzufim import (
     list_partzufim as list_configurations,
+)
+from partzufim import (
     update_all_partzufim as update_all_configurations,
 )
 

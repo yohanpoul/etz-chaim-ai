@@ -8,13 +8,14 @@ Détecte les responses dont le texte contient "hit your limit" ou
 2. Retire les prompt_ids correspondants du done set dans bench_state.json
 3. Recompute total_cost / total_calls / tokens
 """
+
 from __future__ import annotations
 
 import json
 import sys
 from pathlib import Path
 
-RATE_LIMIT_MARKERS = ["hit your limit", "resets" + " " ]  # joined to avoid match here
+RATE_LIMIT_MARKERS = ["hit your limit", "resets" + " "]  # joined to avoid match here
 
 
 def is_rate_limited(text: str) -> bool:
@@ -98,6 +99,7 @@ def purge_run(run_dir: Path) -> int:
     state["total_tokens_input"] = total_input
     state["total_tokens_output"] = total_output
     import time as _time
+
     state["last_updated_at"] = _time.time()
 
     tmp_state = state_file.with_suffix(".json.tmp")

@@ -9,6 +9,11 @@ on:
     # Nightly drift check at 03:17 UTC
     - cron: '17 3 * * *'
 
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
 jobs:
   guard:
     runs-on: ubuntu-latest
@@ -23,7 +28,7 @@ jobs:
           bash scripts/check_public_surface.sh
 
       - name: Annotate PR on failure
-        if: failure() && github.event_name == 'pull_request'
+        if: failure() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         uses: actions/github-script@v7
         with:
           script: |

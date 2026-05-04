@@ -22,6 +22,7 @@ Usage:
     python scripts/dump_sifrei_yesod.py --output /path/to/file.sql
     python scripts/dump_sifrei_yesod.py --db postgresql://user@host/db
 """
+
 from __future__ import annotations
 
 import argparse
@@ -33,9 +34,8 @@ from pathlib import Path
 import psycopg2
 import psycopg2.extras
 
-DB_URL = (
-    os.environ.get("ETZ_CHAIM_DB_URL")
-    or os.environ.get("ETZ_CHAIM_DB", "postgresql://localhost/etz_chaim")
+DB_URL = os.environ.get("ETZ_CHAIM_DB_URL") or os.environ.get(
+    "ETZ_CHAIM_DB", "postgresql://localhost/etz_chaim"
 )
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT = REPO_ROOT / "etzchaim" / "deploy" / "init-db" / "99-sifrei_yesod-data.sql"
@@ -85,11 +85,24 @@ def _dump_sefarim(cur, out: list[str]) -> int:
         description = EXCLUDED.description,
         updated_at = NOW()"""
     for row in rows:
-        out.append(_mog(cur, sql, (
-            row["sefer_id"], row["titre_he"], row["titre_fr"], row["auteur"],
-            row["maitre"], row["edition_base"], row["date_composition"],
-            row["structure_type"], row["nombre_shaarim"], row["description"],
-        )))
+        out.append(
+            _mog(
+                cur,
+                sql,
+                (
+                    row["sefer_id"],
+                    row["titre_he"],
+                    row["titre_fr"],
+                    row["auteur"],
+                    row["maitre"],
+                    row["edition_base"],
+                    row["date_composition"],
+                    row["structure_type"],
+                    row["nombre_shaarim"],
+                    row["description"],
+                ),
+            )
+        )
     return len(rows)
 
 
@@ -108,17 +121,26 @@ def _dump_heikhalot(cur, out: list[str]) -> int:
         description = EXCLUDED.description,
         updated_at = NOW()"""
     for row in rows:
-        out.append(_mog(cur, sql, (
-            row["sefer_id"], row["heikhal_number"], row["heikhal_name_he"],
-            row["heikhal_name_fr"], row["nombre_shaarim"], row["description"],
-        )))
+        out.append(
+            _mog(
+                cur,
+                sql,
+                (
+                    row["sefer_id"],
+                    row["heikhal_number"],
+                    row["heikhal_name_he"],
+                    row["heikhal_name_fr"],
+                    row["nombre_shaarim"],
+                    row["description"],
+                ),
+            )
+        )
     return len(rows)
 
 
 def _dump_shaarim(cur, out: list[str]) -> int:
     cur.execute(
-        "SELECT * FROM sifrei_yesod_shaarim "
-        "ORDER BY sefer_id, heikhal_number, shaar_number"
+        "SELECT * FROM sifrei_yesod_shaarim ORDER BY sefer_id, heikhal_number, shaar_number"
     )
     rows = cur.fetchall()
     out.append(f"\n-- ═══ shaarim ({len(rows)} rows) ═══\n")
@@ -137,12 +159,24 @@ def _dump_shaarim(cur, out: list[str]) -> int:
         connexions_domaines = EXCLUDED.connexions_domaines,
         updated_at = NOW()"""
     for row in rows:
-        out.append(_mog(cur, sql, (
-            row["sefer_id"], row["heikhal_number"], row["shaar_number"],
-            row["shaar_name_he"], row["shaar_name_fr"], row["nombre_perakim"],
-            row["sujet_principal"], row["concepts_cles"],
-            row["connexions_modules"], row["connexions_domaines"],
-        )))
+        out.append(
+            _mog(
+                cur,
+                sql,
+                (
+                    row["sefer_id"],
+                    row["heikhal_number"],
+                    row["shaar_number"],
+                    row["shaar_name_he"],
+                    row["shaar_name_fr"],
+                    row["nombre_perakim"],
+                    row["sujet_principal"],
+                    row["concepts_cles"],
+                    row["connexions_modules"],
+                    row["connexions_domaines"],
+                ),
+            )
+        )
     return len(rows)
 
 
@@ -173,14 +207,28 @@ def _dump_perakim(cur, out: list[str]) -> tuple[int, dict[int, tuple]]:
     perek_id_to_coords: dict[int, tuple] = {}
     for row in rows:
         perek_id_to_coords[row["id"]] = (
-            row["sefer_id"], row["heikhal_number"],
-            row["shaar_number"], row["perek_number"],
+            row["sefer_id"],
+            row["heikhal_number"],
+            row["shaar_number"],
+            row["perek_number"],
         )
-        out.append(_mog(cur, sql, (
-            row["sefer_id"], row["heikhal_number"], row["shaar_number"],
-            row["perek_number"], row["source_edition"], row["transposed_by"],
-            row["version"], row["strates"], row["yaml_hash"],
-        )))
+        out.append(
+            _mog(
+                cur,
+                sql,
+                (
+                    row["sefer_id"],
+                    row["heikhal_number"],
+                    row["shaar_number"],
+                    row["perek_number"],
+                    row["source_edition"],
+                    row["transposed_by"],
+                    row["version"],
+                    row["strates"],
+                    row["yaml_hash"],
+                ),
+            )
+        )
     return len(rows), perek_id_to_coords
 
 
@@ -198,10 +246,21 @@ def _dump_concepts(cur, out: list[str]) -> int:
         # metadata is JSONB → wrap in psycopg2.extras.Json so mogrify emits
         # a properly-quoted JSON literal.
         meta = psycopg2.extras.Json(row["metadata"]) if row["metadata"] is not None else None
-        out.append(_mog(cur, sql, (
-            row["concept_id"], row["nom_he"], row["nom_fr"], row["description"],
-            row["domaine"], row["premiere_apparition"], meta,
-        )))
+        out.append(
+            _mog(
+                cur,
+                sql,
+                (
+                    row["concept_id"],
+                    row["nom_he"],
+                    row["nom_fr"],
+                    row["description"],
+                    row["domaine"],
+                    row["premiere_apparition"],
+                    meta,
+                ),
+            )
+        )
     return len(rows)
 
 
@@ -241,15 +300,26 @@ def _dump_assertions(cur, out: list[str], coords_map: dict[int, tuple]) -> int:
     for row in rows:
         coords = coords_map[row["perek_id"]]
         concepts = psycopg2.extras.Json(row["concepts"]) if row["concepts"] is not None else None
-        out.append(_mog(cur, sql, (
-            row["assertion_id"],
-            *coords,
-            row["source_he"], row["source_ref"], row["assertion"],
-            row["assertion_type"], concepts,
-            row["mapping_modules"], row["mapping_tables"],
-            row["mapping_partzufim"], row["mapping_relevance"],
-            row["strate"],
-        )))
+        out.append(
+            _mog(
+                cur,
+                sql,
+                (
+                    row["assertion_id"],
+                    *coords,
+                    row["source_he"],
+                    row["source_ref"],
+                    row["assertion"],
+                    row["assertion_type"],
+                    concepts,
+                    row["mapping_modules"],
+                    row["mapping_tables"],
+                    row["mapping_partzufim"],
+                    row["mapping_relevance"],
+                    row["strate"],
+                ),
+            )
+        )
     return len(rows)
 
 
@@ -277,13 +347,26 @@ def _dump_relations(cur, out: list[str], coords_map: dict[int, tuple]) -> int:
         updated_at = NOW()"""
     for row in rows:
         coords = coords_map[row["perek_id"]]
-        out.append(_mog(cur, sql, (
-            row["relation_id"],
-            *coords,
-            row["relation_type"], row["concept_from"], row["concept_to"],
-            row["paire"], row["via"], row["nature"], row["pattern"],
-            row["assertions_source"], row["bidirectionnel"], row["strate"],
-        )))
+        out.append(
+            _mog(
+                cur,
+                sql,
+                (
+                    row["relation_id"],
+                    *coords,
+                    row["relation_type"],
+                    row["concept_from"],
+                    row["concept_to"],
+                    row["paire"],
+                    row["via"],
+                    row["nature"],
+                    row["pattern"],
+                    row["assertions_source"],
+                    row["bidirectionnel"],
+                    row["strate"],
+                ),
+            )
+        )
     return len(rows)
 
 
@@ -309,13 +392,23 @@ def _dump_principes(cur, out: list[str], coords_map: dict[int, tuple]) -> int:
     for row in rows:
         coords = coords_map[row["perek_id"]]
         meta = psycopg2.extras.Json(row["metadata"]) if row["metadata"] is not None else None
-        out.append(_mog(cur, sql, (
-            row["principe_id"],
-            *coords,
-            row["nom"], row["source_assertions"], row["formalisation"],
-            row["applications_ia"], row["questions_ouvertes"], row["strate"],
-            meta,
-        )))
+        out.append(
+            _mog(
+                cur,
+                sql,
+                (
+                    row["principe_id"],
+                    *coords,
+                    row["nom"],
+                    row["source_assertions"],
+                    row["formalisation"],
+                    row["applications_ia"],
+                    row["questions_ouvertes"],
+                    row["strate"],
+                    meta,
+                ),
+            )
+        )
     return len(rows)
 
 
@@ -346,14 +439,26 @@ def _dump_cross_refs(cur, out: list[str]) -> int:
           AND relation_type = %s
     )"""
     for row in rows:
-        out.append(_mog(cur, sql, (
-            row["source_assertion_id"], row["target_assertion_id"],
-            row["target_sefer"], row["target_ref"],
-            row["relation_type"], row["description"],
-            # WHERE NOT EXISTS params
-            row["source_assertion_id"], row["target_assertion_id"],
-            row["target_sefer"], row["target_ref"], row["relation_type"],
-        )))
+        out.append(
+            _mog(
+                cur,
+                sql,
+                (
+                    row["source_assertion_id"],
+                    row["target_assertion_id"],
+                    row["target_sefer"],
+                    row["target_ref"],
+                    row["relation_type"],
+                    row["description"],
+                    # WHERE NOT EXISTS params
+                    row["source_assertion_id"],
+                    row["target_assertion_id"],
+                    row["target_sefer"],
+                    row["target_ref"],
+                    row["relation_type"],
+                ),
+            )
+        )
     return len(rows)
 
 

@@ -85,9 +85,7 @@ class AuditReport:
         }
 
 
-def snapshot_table(
-    table: str, key_col: str, ts_col: str, db_url: str = DB_URL
-) -> TableSnapshot:
+def snapshot_table(table: str, key_col: str, ts_col: str, db_url: str = DB_URL) -> TableSnapshot:
     """Capturer un snapshot d'une table."""
     from pool import get_pool, init_pool  # type: ignore[import-not-found]
 
@@ -101,19 +99,13 @@ def snapshot_table(
         cur.execute(f"SELECT COUNT(*) FROM {table}")
         count = cur.fetchone()[0]
 
-        cur.execute(
-            f"SELECT {key_col} FROM {table} ORDER BY {ts_col} DESC NULLS LAST LIMIT 1"
-        )
+        cur.execute(f"SELECT {key_col} FROM {table} ORDER BY {ts_col} DESC NULLS LAST LIMIT 1")
         last_row = cur.fetchone()
         last_key = str(last_row[0]) if last_row else None
 
-        cur.execute(
-            f"SELECT * FROM {table} ORDER BY {ts_col} DESC NULLS LAST LIMIT 10"
-        )
+        cur.execute(f"SELECT * FROM {table} ORDER BY {ts_col} DESC NULLS LAST LIMIT 10")
         last_rows = cur.fetchall()
-        rows_str = "|".join(
-            "_".join(str(v) for v in row) for row in last_rows
-        )
+        rows_str = "|".join("_".join(str(v) for v in row) for row in last_rows)
         rows_hash = hashlib.md5(rows_str.encode()).hexdigest()
 
         cur.close()
@@ -135,10 +127,14 @@ def snapshot_all() -> list[TableSnapshot]:
             snaps.append(snapshot_table(table, key_col, ts_col))
         except Exception as exc:
             print(f"WARN: snapshot {table} failed: {exc}", file=sys.stderr)
-            snaps.append(TableSnapshot(
-                table=table, row_count=-1, last_id_or_key=None,
-                last_n_rows_hash=f"ERROR:{exc}",
-            ))
+            snaps.append(
+                TableSnapshot(
+                    table=table,
+                    row_count=-1,
+                    last_id_or_key=None,
+                    last_n_rows_hash=f"ERROR:{exc}",
+                )
+            )
     return snaps
 
 
@@ -151,9 +147,7 @@ def run_daemon_cycle(task: str | None = None) -> float:
         cmd += ["--once"]
 
     t0 = time.time()
-    result = subprocess.run(
-        cmd, cwd=PROJECT_ROOT, capture_output=True, text=True, timeout=300
-    )
+    result = subprocess.run(cmd, cwd=PROJECT_ROOT, capture_output=True, text=True, timeout=300)
     duration = time.time() - t0
 
     if result.returncode != 0:
@@ -176,30 +170,36 @@ def find_divergences(
         a = by_table_a[table]
         b = by_table_b.get(table)
         if not b:
-            divergences.append({
-                "table": table,
-                "kind": "missing_in_b",
-            })
+            divergences.append(
+                {
+                    "table": table,
+                    "kind": "missing_in_b",
+                }
+            )
             continue
         if a.row_count != b.row_count:
-            divergences.append({
-                "table": table,
-                "kind": "row_count_change",
-                "a": a.row_count,
-                "b": b.row_count,
-                "delta": b.row_count - a.row_count,
-            })
+            divergences.append(
+                {
+                    "table": table,
+                    "kind": "row_count_change",
+                    "a": a.row_count,
+                    "b": b.row_count,
+                    "delta": b.row_count - a.row_count,
+                }
+            )
         if a.last_n_rows_hash != b.last_n_rows_hash:
-            divergences.append({
-                "table": table,
-                "kind": "hash_change",
-                "a_hash": a.last_n_rows_hash,
-                "b_hash": b.last_n_rows_hash,
-                "note": (
-                    "rows changed: insert/update on tail. Acceptable if "
-                    "task generates new insights, suspicious if not."
-                ),
-            })
+            divergences.append(
+                {
+                    "table": table,
+                    "kind": "hash_change",
+                    "a_hash": a.last_n_rows_hash,
+                    "b_hash": b.last_n_rows_hash,
+                    "note": (
+                        "rows changed: insert/update on tail. Acceptable if "
+                        "task generates new insights, suspicious if not."
+                    ),
+                }
+            )
 
     return divergences
 
@@ -211,9 +211,7 @@ def assess_verdict(report: AuditReport) -> str:
 
     # Divergences entre cycle_1 et cycle_2 (seules les changements
     # inattendus comptent — un cycle daemon legitime peut creer des rows)
-    cycle_to_cycle_divs = find_divergences(
-        report.after_cycle_1, report.after_cycle_2
-    )
+    cycle_to_cycle_divs = find_divergences(report.after_cycle_1, report.after_cycle_2)
 
     if not cycle_to_cycle_divs:
         return "PASS — divergences only between initial and cycle_1 (legitimate cycle work)"
@@ -241,8 +239,10 @@ def main() -> int:
     print("\n[1/5] Snapshot initial...", file=sys.stderr)
     report.initial_snapshots = snapshot_all()
     for s in report.initial_snapshots:
-        print(f"  {s.table:25s}: {s.row_count:6d} rows, hash={s.last_n_rows_hash[:8]}",
-              file=sys.stderr)
+        print(
+            f"  {s.table:25s}: {s.row_count:6d} rows, hash={s.last_n_rows_hash[:8]}",
+            file=sys.stderr,
+        )
 
     print(f"\n[2/5] Cycle daemon #1 (task={args.task or 'all'})...", file=sys.stderr)
     report.cycle_1_duration_s = run_daemon_cycle(args.task)

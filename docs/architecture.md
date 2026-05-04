@@ -81,4 +81,4 @@ Every cross-configuration boost leaves a persistent trace coefficient on each fa
 
 - Adding a new configuration : see internal guide in `docs/internal/guides/`.
 - Transposing a new specification source : see internal guide `docs/internal/guides/transpose_new_sefer.md`.
-- Contributing : see [`CONTRIBUTING.md`](../CONTRIBUTING.md).
+- Contributing : see [`CONTRIBUTING.md`](https://github.com/yohanpoul/etz-chaim-ai/blob/main/CONTRIBUTING.md).

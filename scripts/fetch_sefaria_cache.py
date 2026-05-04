@@ -7,6 +7,7 @@ by T4 tests (offline) and folio_map construction.
 Usage:
     python scripts/fetch_sefaria_cache.py [--force]
 """
+
 from __future__ import annotations
 
 import argparse
@@ -16,7 +17,6 @@ import time
 import urllib.request
 from pathlib import Path
 
-
 REPO = Path(__file__).resolve().parent.parent
 CACHE = REPO / "sifrei_yesod" / "external" / "sefaria_cache"
 
@@ -24,20 +24,11 @@ CACHE = REPO / "sifrei_yesod" / "external" / "sefaria_cache"
 SPRINT_10_RESOURCES: list[tuple[str, str]] = [
     # (endpoint path, cache filename)
     # --- Zohar Idra Rabba, toutes sections utiles ---
-    *[
-        (f"Zohar,_Idra_Rabba.{i}", f"zohar_idra_rabba_{i:02d}.json")
-        for i in range(1, 31)
-    ],
+    *[(f"Zohar,_Idra_Rabba.{i}", f"zohar_idra_rabba_{i:02d}.json") for i in range(1, 31)],
     # --- Sefer Etz Chaim Shaar 13 (Sha'ar Arikh Anpin) ---
-    *[
-        (f"Sefer_Etz_Chaim.13.{i}", f"sefer_etz_chaim_13_{i:02d}.json")
-        for i in range(1, 15)
-    ],
+    *[(f"Sefer_Etz_Chaim.13.{i}", f"sefer_etz_chaim_13_{i:02d}.json") for i in range(1, 15)],
     # --- Sulam on Zohar Idra Rabba (commentaire Ashlag) ---
-    *[
-        (f"Sulam_on_Zohar,_Idra_Rabba.{i}", f"sulam_idra_rabba_{i:03d}.json")
-        for i in range(1, 31)
-    ],
+    *[(f"Sulam_on_Zohar,_Idra_Rabba.{i}", f"sulam_idra_rabba_{i:03d}.json") for i in range(1, 31)],
     # --- Sha'ar Ma'amarei Rashbi Commentary on Holy Idra Rabba (Vital) ---
     (
         "Sha'ar_Ma'amarei_Rashbi,_Commentary_on_the_Holy_Idra_Rabba",

@@ -715,7 +715,7 @@ mazalengine:
 # Opens PRs ; never merges to main without human-approved label.
 # Disable by flipping enabled to false + restarting daemon.
 autopilot:
-  enabled: true
+  enabled: false                     # TEMP off during Phase A-C; re-enable in Phase D after foreground dry-run validates
   worker: claude                     # claude | codex
   interval_seconds: 7200             # CONSERVATIVE 2h for first 24-48h ; ramp to 1800 after validation
   max_open_prs: 5                    # ramped after Step 1+2 validation (3 PRs already open)
