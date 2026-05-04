@@ -7,6 +7,14 @@ remains accessible for developers who need direct module access.
 
 from __future__ import annotations
 
+from etzchaim._internal.rectifiers import (
+    BaseRectifier,
+    Deviation,
+    Event,
+)
+from etzchaim._internal.rectifiers.r01 import (
+    ContradictionResolutionRectifier,
+)
 from mazalengine import (
     MazalEngine as ProbeOrchestrator,
 )
@@ -27,6 +35,10 @@ __all__ = [
     "Watcher",
     "RectificationMode",
     "ProposedAction",
+    "BaseRectifier",
+    "Deviation",
+    "Event",
     "ExplorationStarvationRectifier",
     "StaleClaimsRectifier",
+    "ContradictionResolutionRectifier",
 ]
