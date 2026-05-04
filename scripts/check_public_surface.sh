@@ -149,7 +149,7 @@ scan_path() {
     # Short ambiguous terms (3-4 chars) need word boundaries to avoid false
     # positives in common English words (e.g., "Hod" in "method", "Abba" in
     # "anipulAbba", etc.). Apply word-boundary case-sensitive match for those.
-    grep_flags="-rIn --binary-files=without-match"
+    grep_flags="-rHIn --binary-files=without-match"
     if [ ${#term} -le 4 ]; then
       # case-sensitive + word boundary
       pattern="\\b${term}\\b"
