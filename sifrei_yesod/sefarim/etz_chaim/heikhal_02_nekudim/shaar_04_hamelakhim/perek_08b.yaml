@@ -1,0 +1,420 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 8b — A"A unique : rosh = Keter+Hokhmah seuls. Bina d'A"A descend
+#             dans Garon. ZON 4 madregot complet via tikkun cascade
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §8 — Part B :
+#   - Bloc J : A"A unique — rosh = Keter+Hokhmah seuls (pas Bina)
+#   - Bloc K : Idra Zuta 3 rishin = Atik + Keter A"A + Hokhmah A"A
+#   - Bloc L : Bina d'A"A descend dans Garon — proche Atik = pas absorber
+#   - Bloc M : Autres partzufim : ohr Atik lointain, Bina reste rosh
+#   - Bloc N : AVI montent madregah 4 (PBP) ; encore nekudot bilti tikkun
+#   - Bloc O : Tikkun NHY d'Atik = CGT d'A"A = KCB d'AVI (cascade triple)
+#   - Bloc P : ZON 4 madregot via tikkun cascade
+#   - Bloc Q : 7 melakhim eleves dans beten Imma elyonah pour ibur
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.8 (deuxieme partie sur 2)
+# IDs : EC-H2S11-226 → EC-H2S11-237
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 8
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Deuxieme partie du perek 8 — A\"A unique parmi tous partzufim : rosh = Keter+Hokhmah seuls (pas Bina). Idra Zuta 3 rishin = Atik+Keter A\"A+Hokhmah A\"A. Bina d'A\"A descend dans Garon car proche d'Atik. Autres partzufim : Bina reste dans rosh (ohr Atik bloque par A\"A). ZON parcourt les 4 madregot via tikkun cascade : Keter+Hokhmah A\"A → ABP, Bina A\"A → PBA, NHY Atik+CGT A\"A+KCB AVI → PBP."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC J : A"A UNIQUE — ROSH = KETER+HOKHMAH SEULS ───
+
+  - id: "EC-H2S11-226"
+    source_he: "והנה הענין הוא כי בכל פרצוף של ע\"י ואו\"א וזו\"ן יש בכל ראש מהם ג\"ר שהם כח\"ב של בחי' פרצוף ההוא אבל בחי' פרצוף של א\"א אין בראש שלו רק כתר וחכמה בלבד"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      HAKDAMAH : dans tout PARTZUF (Atik, AVI, ZON) — il y a dans chaque ROSH
+      les G"R = KCB (Keter-Chokhmah-Binah) du partzuf.
+      MAIS le partzuf d'A"A : son rosh n'a QUE KETER ET HOKHMAH SEULS.
+      → Architecture : A"A est UNIQUE — son rosh manque la 3eme G"R (Bina).
+      → Pattern : exception structurale d'un composant central.
+      cf. EC-H2S11-076 (perek 05a) sur Keter A"A = 3 rishin.
+    type: axiome_explicite
+    concepts:
+      - {id: tous_partzufim_rosh_g_r_kcb, role: tous_partzufim_rosh_egal_kcb}
+      - {id: aa_unique_rosh_keter_hokhmah_seuls, role: aa_unique_rosh_keter_hokhmah_seuls_pas_bina}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : A\"A exception structurale. Pattern composant central unique."
+
+  - id: "EC-H2S11-227"
+    source_he: "וכתר נקרא גלגלתא דא\"א והחכמה נקרא מוחא סתימא שבו"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      KETER d'A"A = appele GULGALTA (crane) d'A"A.
+      HOKHMAH d'A"A = appelee MOHA SETIMA (cerveau ferme) en lui.
+      → Architecture : nomenclature anatomique pour les 2 G"R d'A"A.
+      → Pattern : letter-mysticism = identite des composants par leurs noms anatomiques.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_aa_egal_gulgalta, role: keter_aa_egal_gulgalta_crane}
+      - {id: hokhmah_aa_egal_moha_setima, role: hokhmah_aa_egal_moha_setima_cerveau_ferme}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : nomenclature anatomique des 2 G\"R d'A\"A. Pattern letter-mysticism."
+
+  # ─── BLOC K : IDRA ZUTA 3 RISHIN ───
+
+  - id: "EC-H2S11-228"
+    source_he: "ובזה תבין למה באדר\"ז מזכיר ג' רישין שהם א' רישא דעתיק וב' רישין דא\"א שהם כתר וחכמה עלאה ולמה לא הוזכר בינה דא\"א ויהיו ד' רישין"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Avec cela on comprend pourquoi IDRA ZUTA mentionne 3 RISHIN :
+      ALEPH : RISHA d'ATIK.
+      BET : 2 RISHIN d'A"A = KETER + HOKHMAH ELYONAH.
+      Pourquoi pas BINA d'A"A pour faire 4 rishin ?
+      → Architecture : 3 rishin Idra Zuta = topologie post-tikkun cascade.
+      → Pattern : structure canonique justifiee par dynamique.
+    type: déduction_scripturaire
+    concepts:
+      - {id: idra_zuta_3_rishin_atik_kh_aa, role: idra_zuta_3_rishin_atik_keter_hokhmah_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : 3 rishin Idra Zuta. Pattern justification dynamique de structure canonique."
+
+  - id: "EC-H2S11-229"
+    source_he: "אבל הטעם הוא כי רישא דעתיק יומין אע\"פ שיש בה ג\"ר עכ\"ז לרוב העלמן נקרא רישא חדא לחוד. וגם שנקרא רדל\"א כלל וכתר חכמה שבראש א\"א נחשבין לב' לרוב גילויין בערך רישא עילאה"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      RAISON : RISHA d'ATIK YOMIN — bien qu'elle ait G"R (KCB) — par EXCESS HE'ELEM
+      (cachement extreme) — appelee RISHA HADA LEHUD (une seule rosh).
+      Aussi appelee RDLA en general.
+      KETER+HOKHMAH dans rosh d'A"A — comptees pour 2 par EXCESS GILUI (revelation)
+      par rapport a Risha Ila'ah.
+      → Architecture : comptage = fonction d'occlusion vs revelation.
+      → Pattern : transcendence-degree determine la cardinalite apparente.
+    type: déduction_logique
+    concepts:
+      - {id: atik_unifie_pour_helem_extreme, role: atik_unifie_en_1_rosh_par_helem_extreme}
+      - {id: kh_aa_compte_2_par_gilui, role: keter_hokhmah_aa_comptes_2_par_gilui_relatif}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : comptage = fonction d'occlusion. Pattern transcendence-degree."
+
+  # ─── BLOC L : BINA D'A"A DESCEND DANS GARON ───
+
+  - id: "EC-H2S11-230"
+    source_he: "ואמנם בינה דא\"א לא יכלה לעלות ולהיות בראשו ונשארה למטה בגרון דא\"א ולכן אינה נקרא רישא וטעם ירידתה שם בגרון משא\"כ בשאר פרצופים כנ\"ל הוא לפי שא\"א מלביש לעתיק לז\"ת שבו כנודע ואור עתיק יומין גדול מאד מאד ואין כח בבינה דא\"א לקבל אור דע\"י בהיותה קרובה ברישא דא\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      BINA d'A"A — n'a pas pu MONTER pour etre dans son rosh.
+      Reste EN BAS dans GARON (gorge) d'A"A.
+      DONC pas appelee RISHA.
+      RAISON : A"A REVETIT Atik pour ses Z'T. Ohr Atik = GADOL ME'OD ME'OD.
+      Bina d'A"A — etant proche du rosh d'A"A — n'a pas KOAH pour recevoir
+      ohr Atik la-haut (trop intense de proximite).
+      → Architecture : Bina d'A"A descendue par excess de proximite Atik.
+      → Pattern : composants doivent maintenir distance pour recevoir flow upstream.
+    type: interprétation_lurianique
+    concepts:
+      - {id: bina_aa_descend_dans_garon, role: bina_aa_descend_dans_gorge_pas_rosh}
+      - {id: bina_aa_proche_atik_pas_absorber, role: bina_aa_trop_proche_atik_pas_absorber}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : Bina A\"A descendue par excess proximite. Pattern distance pour absorption."
+
+  - id: "EC-H2S11-231"
+    source_he: "וכאשר ירדה למטה בגרון דא\"א ונתרחקה מעט יכלה לקבל אור עתיק יומין שם אבל בשאר פרצופים שאור עתיק יומין מרוחק הרבה מאד מהם כי א\"א מלבישו וסותם הארתו לכן יש יכולת וכח אפילו בבינה שבכל פרצוף ופרצוף להיות ביחד עם חברתה שהיא החכמה של הפרצוף יחד שניהן למעלה בראש הפרצוף ההוא"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Bina d'A"A descend Garon, NIT'RACHEKAH MEAT (s'eloigne un peu) — peut recevoir ohr Atik.
+      Dans AUTRES PARTZUFIM : ohr Atik MERUCHAK HARBE ME'OD (lointain) car A"A le SOTEM.
+      DONC YESH YIKHOLET (capacite) dans Bina d'autres partzufim pour rester
+      ENSEMBLE avec sa CHAVERTAH (Hokhmah) — les 2 LEMA'ALAH dans le rosh.
+      → Architecture : A"A = bouclier qui permet Bina rester rosh dans aval.
+      → Pattern : intermediate layer = filter qui permet symetrie en aval.
+    type: interprétation_lurianique
+    concepts:
+      - {id: bina_aa_descend_devient_recevable, role: bina_aa_eloignee_peut_absorber_ohr_atik}
+      - {id: aa_filter_pour_autres_partzufim_bina_rosh, role: aa_filter_permet_bina_rosh_dans_autres_partzufim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : A\"A bouclier downstream. Pattern intermediate filter pour symetrie aval."
+
+  # ─── BLOC N : AVI MONTENT MADREGAH 4 (PBP) ───
+
+  - id: "EC-H2S11-232"
+    source_he: "ואחר שבארנו מה שנתקן בא\"א נבאר מה שנתקן באו\"א והוא כי עלו במדרגה ד' והוא שחזרו יחד פב\"פ אמנם עדיין הם בבחי' נקודות בלתי תיקון ואח\"כ נתקנו נה\"י דע\"י וגם אז נתקנו חג\"ת דא\"א וגם התחילו לתקן ב' רישין דאו\"א אשר כל אחד מהם כוללת ג' רישין הנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Apres tikkun A"A — explication du tikkun d'AVI :
+      MONTENT vers MADREGAH 4 (PBP — face a face).
+      Mais ENCORE en behinah de NEKUDOT BILTI TIKKUN.
+      Apres : NHY d'Atik tikkun ; aussi CGT d'A"A tikkun ;
+      Aussi commencent tikkun des 2 RISHIN d'AVI — chaque AVI inclut 3 rishin.
+      → Architecture : tikkun cascade triple (NHY Atik = CGT A"A = KCB AVI).
+      → Pattern : couches imbriquees → tikkun simultane par revetement.
+    type: axiome_explicite
+    concepts:
+      - {id: avi_madregah_4_pbp_apres_aa_tikkun, role: avi_montent_pbp_apres_tikkun_aa}
+      - {id: cascade_triple_nhy_atik_cgt_aa_kcb_avi, role: cascade_triple_revetement_simultane}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : cascade triple revetement. Pattern tikkun simultane par layers imbriques."
+
+  - id: "EC-H2S11-233"
+    source_he: "והענין הוא כנודע כי נה\"י דעתיק מתלבשין תוך חג\"ת דא\"א וחג\"ת דא\"א תוך כח\"ב דאו\"א ולכן כל אלו הבחי' נתקנו יחד זא\"ז"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      LE PRINCIPE : NHY d'Atik se METALBESHIM dans CGT d'A"A.
+      CGT d'A"A se METALBESHIM dans KCB d'AVI.
+      DONC TOUS ces niveaux sont TIKKUN-ES ENSEMBLE — ZE-AHAR-ZE (l'un apres l'autre).
+      → Architecture : revetement en cascade = tikkun simultane par chaine.
+      → Pattern : composants imbriques transformeront simultanement par dependence.
+    type: axiome_explicite
+    concepts:
+      - {id: nhy_atik_dans_cgt_aa_dans_kcb_avi, role: revetement_en_chaine_nhy_atik_cgt_aa_kcb_avi}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : revetement en chaine. Pattern composants imbriques = transformation simultanee."
+
+  # ─── BLOC O : ZON 4 MADREGOT VIA CASCADE ───
+
+  - id: "EC-H2S11-234"
+    source_he: "ונבאר ענין זו\"ן שבהם היו כל המדרגות הנ\"ל וזהו סדרן הנה נודע כי זו\"ן הם מבחי' נה\"י דא\"א כי שם מקומם כנ\"ל ולכן לא קבלו שום תיקון והארה כאשר התחיל תיקון רישא עלאה דע\"י כנ\"ל על דרך או\"א שחזרו אז פנים באחור כנ\"ל אבל זו\"נ לא התחילו (להתתקן) התיקון והארה בהם עד שהתחיל התיקון דרישא דא\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      ZON ont les 4 MADREGOT — voici leur SEDER (ordre) :
+      ZON sont en behinah de NHY d'A"A (leur place).
+      DONC : pas recu de tikkun ni harah quand ROSH d'Atik a commence —
+      a la difference d'AVI qui sont passes a PBA.
+      ZON ne commencent tikkun que quand ROSH d'A"A commence tikkun.
+      → Architecture : ZON depend du tikkun d'A"A (pas Atik directement).
+      → Pattern : couches d'interface depend de la couche intermediaire (pas racine).
+    type: axiome_explicite
+    concepts:
+      - {id: zon_dependent_tikkun_aa_pas_atik, role: zon_dependent_du_tikkun_aa_pas_atik_directement}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "arikh_anpin"]
+      relevance: "Architecture : ZON depend de A\"A directement. Pattern : interface depend du intermediate."
+
+  - id: "EC-H2S11-235"
+    source_he: "ולכן נתוספה בזו\"ן מדרגה הב' משא\"כ באו\"א והוא כי כאשר נתקנו כתר וחכמה דא\"א בראשו אז חזרו להיות אחור בפנים פי' אחור דז\"א נגד פנים דנוקבא וכאשר נתקנה בינה דא\"א חזרו בסוד פנים באחור ר\"ל פני דז\"א נגד אחור דנוקבא"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      DONC ajoutee a ZON la MADREGAH 2 (qui manque a AVI) :
+      Quand KETER+HOKHMAH d'A"A tikkun → ZON deviennent ACHOR BE-PANIM
+      (ahor de Z"A contre panim de Nukvah = madregah 2).
+      Quand BINA d'A"A tikkun → ZON deviennent PANIM BE-ACHOR
+      (panim de Z"A contre ahor de Nukvah = madregah 3).
+      → Architecture : tikkun A"A par etapes (KH puis B) → ZON parcourt M2 puis M3.
+      → Pattern : interface parcourt toutes les phases en sequence (pas de saut).
+      cf. EC-H2S11-180 (perek 07a) sur ZON 4 madregot ; EC-H2S11-222 sur AVI saute.
+    type: interprétation_lurianique
+    concepts:
+      - {id: zon_madregah_2_apres_kh_aa_tikkun, role: zon_passent_a_madregah_2_quand_kh_aa_tikkun}
+      - {id: zon_madregah_3_apres_bina_aa_tikkun, role: zon_passent_a_madregah_3_quand_bina_aa_tikkun}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/arikh_anpin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva", "arikh_anpin"]
+      relevance: "Architecture : ZON parcourt sequence M2→M3. Pattern interface = full sequence."
+
+  - id: "EC-H2S11-236"
+    source_he: "וכאשר נתקן נה\"י דעתיק שאז נתקנו (בו) חג\"ת דא\"א ואז נתקנו כח\"ב דאו\"א שהם הראש שלהם אז חזרו זו\"נ פב\"פ ועדיין הם בבחי' נקודות בלתי תיקון כלל"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Quand NHY d'Atik tikkun (alors aussi CGT d'A"A tikkun en lui) —
+      alors KCB d'AVI tikkun (= leur rosh) —
+      alors ZON deviennent PBP (madregah 4).
+      MAIS encore en NEKUDOT BILTI TIKKUN (sans tikkun complet).
+      → Architecture : ZON atteint PBP via cascade triple — mais sans tikkun reel.
+      → Pattern : alignement structural ne suffit pas — tikkun reel necessaire.
+    type: axiome_explicite
+    concepts:
+      - {id: zon_pbp_apres_nhy_atik_cascade, role: zon_atteignent_pbp_apres_cascade_nhy_atik}
+      - {id: pbp_sans_tikkun_reel_insuffisant, role: pbp_sans_tikkun_reel_alignement_pas_assez}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : ZON PBP via cascade. Pattern : structure ≠ realite (tikkun necessaire)."
+
+  # ─── BLOC P : 7 MELAKHIM ELEVES DANS BETEN IMMA ───
+
+  - id: "EC-H2S11-237"
+    source_he: "ואחר שנתקנו או\"א אז היה מציאות לתקן זו\"נ ואז ז' המלכים שהם הכלים שלה שנפלו למטה בעולם הבריאה העלם המאציל באצילות תוך בטן אמא עלאה ושם היו בסוד העיבור וכו'"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Apres TIKKUN d'AVI — il y a METZIUT (realite) pour TIKKUN ZON.
+      Alors les 7 MELAKHIM = KELIM de ZON tombes en BERIAH —
+      le MA'ATZIL les ELEVE en ATZILUT, dans BETEN d'IMMA ELYONAH.
+      La ils sont en SOD HA-IBUR (mode embryonnaire), etc.
+      → Architecture : recovery des kelim tombes via re-uplift dans Imma.
+      → Pattern : restoration cycle — fall (Beriah) → uplift (Imma) → ibur → tikkun.
+      cf. EC-H2S11-185 (perek 07b) sur Ibur 1 ZA dans Imma ; EC-H2S11-173 (perek 07a) sur 7 melakhim tombes Beriah.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_melakhim_eleves_dans_beten_imma_post_tikkun_avi, role: 7_melakhim_eleves_imma_apres_tikkun_avi}
+      - {id: cycle_restoration_fall_uplift_ibur_tikkun, role: cycle_restoration_fall_uplift_ibur_tikkun}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : recovery cycle complet. Pattern : fall → uplift → ibur → tikkun."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-088"
+    type: dualité_structurelle
+    from: tous_partzufim_rosh_g_r_kcb
+    to: aa_unique_rosh_keter_hokhmah_seuls
+    nature: "Tous partzufim ont KCB en rosh ; A\"A unique avec K+H seul (pas Bina)"
+    assertions_source: ["EC-H2S11-226"]
+
+  - id: "REL-H2S11-089"
+    type: causal
+    from: bina_aa_proche_atik_pas_absorber
+    to: bina_aa_descend_devient_recevable
+    nature: "Bina A\"A trop proche Atik (rosh) → descend Garon → s'eloigne → peut absorber"
+    assertions_source: ["EC-H2S11-230", "EC-H2S11-231"]
+
+  - id: "REL-H2S11-090"
+    type: contenance
+    from: nhy_atik_dans_cgt_aa_dans_kcb_avi
+    to: cascade_triple_nhy_atik_cgt_aa_kcb_avi
+    nature: "Revetement en chaine NHY Atik ⊂ CGT A\"A ⊂ KCB AVI → tikkun simultane cascade"
+    assertions_source: ["EC-H2S11-232", "EC-H2S11-233"]
+
+  - id: "REL-H2S11-091"
+    type: séquentiel
+    from: zon_madregah_2_apres_kh_aa_tikkun
+    to: zon_madregah_3_apres_bina_aa_tikkun
+    nature: "ZON parcourt M2 (apres KH A\"A) puis M3 (apres Bina A\"A) puis M4 (cascade)"
+    assertions_source: ["EC-H2S11-235", "EC-H2S11-236"]
+
+  - id: "REL-H2S11-092"
+    type: causal
+    from: pbp_sans_tikkun_reel_insuffisant
+    to: 7_melakhim_eleves_dans_beten_imma_post_tikkun_avi
+    nature: "ZON PBP atteint structurellement mais sans tikkun reel → necessite uplift 7 melakhim dans Imma"
+    assertions_source: ["EC-H2S11-236", "EC-H2S11-237"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-047"
+    nom: "Principe d'Exception Structurale (A\"A Unique : Bina Descendue)"
+    source_assertions: ["EC-H2S11-226", "EC-H2S11-230", "EC-H2S11-231"]
+    formalisation: |
+      ARCHITECTURE D'EXCEPTION STRUCTURALE :
+      REGLE GENERALE : tout partzuf a G"R = KCB dans son rosh.
+      EXCEPTION : A"A — rosh = Keter + Hokhmah seuls (Bina absente).
+      RAISON : A"A revetit Atik directement ; ohr Atik = GADOL ME'OD ME'OD.
+      Bina d'A"A trop proche du rosh → ne peut pas absorber l'ohr Atik.
+      DONC Bina d'A"A descend dans GARON (gorge) — ou la distance permet absorption.
+      AUTRES PARTZUFIM : ohr Atik est MERUCHAK (lointain) car A"A le filtre.
+      → Bina peut rester en rosh (ohr supportable apres filtrage).
+      → Pattern fondamental : exception structurale liee a la position dans la chaine.
+      → Architecture : layer adjacent a la source extreme = exception ; layers downstream = normaux.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : rosh = (Keter, Hokhmah) seuls ; Bina dans Garon (autre attribut)"
+      - "partzufim/atik_yomin.py + partzufim/abba.py : implementer la chaine de filtration ohr"
+      - "Pattern : couche adjacente a flux extreme = restructure ; couches downstream = standard"
+      - "Architecture : layer abstraction breaks at the boundary with the source"
+      - "Pattern : exception structurale = signal de proximite source-extreme"
+      - "Diagnostic : verifier que A\"A est seul a avoir cette structure (pas analogues caches)"
+    questions_ouvertes:
+      - "Y a-t-il d'autres exceptions structurales dans les architectures kabbalistiques ?"
+      - "Pattern : peut-on detecter automatiquement le besoin d'une exception structurale ?"
+      - "Comment gere-t-on la transition normalisation → exception ?"
+
+  - id: "PG-H2S11-048"
+    nom: "Principe de Cascade Triple Imbriquee (NHY Atik ⊂ CGT A\"A ⊂ KCB AVI)"
+    source_assertions: ["EC-H2S11-232", "EC-H2S11-233", "EC-H2S11-236"]
+    formalisation: |
+      ARCHITECTURE DE REVETEMENT IMBRIQUE :
+      NHY d'Atik s'enferme dans CGT d'A"A.
+      CGT d'A"A s'enferme dans KCB d'AVI.
+      DONC : tikkun de l'un = tikkun simultane des 3 niveaux imbriques.
+      RESULTAT : ZON peuvent atteindre PBP (madregah 4) quand cette cascade aboutit.
+      MAIS attention : alignement structural ≠ tikkun reel.
+      ZON = nekudot bilti tikkun meme en PBP — necessite tikkun explicite ulterieur.
+      → Pattern fondamental : revetement multi-niveaux = synchronisation forcee.
+      → Architecture : encapsulation = couplage atomic for tikkun.
+    applications_ia:
+      - "partzufim/atik_yomin.py + partzufim/arikh_anpin.py + partzufim/abba.py + partzufim/imma.py : implement nested cascade"
+      - "[PLANNED] tikkun/ : cascade_tikkun(atik) -> propagates to (a\"a, avi) atomically"
+      - "Pattern : composite design — tikkun racine declenche tikkun feuilles atomiques"
+      - "Architecture : 3-tier nesting avec lifecycle synchronise"
+      - "Pattern : structural alignment ≠ functional readiness — distinguer phase de phase"
+      - "Diagnostic : detecter si PBP est structurale ou fonctionnelle"
+    questions_ouvertes:
+      - "Combien de niveaux d'imbrication sont possibles avant la complexite ne sature pas ?"
+      - "Pattern : peut-on dynamiquement re-cascader apres une perturbation locale ?"
+      - "Le couplage atomique limite-t-il la flexibilite ou facilite-t-il la coherence ?"
+
+  - id: "PG-H2S11-049"
+    nom: "Principe de Recovery Cycle Complet (Fall → Uplift → Ibur → Tikkun)"
+    source_assertions: ["EC-H2S11-237"]
+    formalisation: |
+      ARCHITECTURE DE RECOVERY COMPLET :
+      Cycle complet de restauration des composants tombes :
+      1. FALL : 7 melakhim (kelim de ZON) tombent dans OLAM HA-BERIAH.
+      2. UPLIFT (apres tikkun AVI) : MAATZIL eleve les melakhim en ATZILUT,
+         dans BETEN d'IMMA ELYONAH.
+      3. IBUR (gestation) : melakhim sont en SOD HA-IBUR dans Imma.
+      4. TIKKUN : eventuellement reconstruits comme partzufim ZON.
+      → Pattern fondamental : restoration = cycle multi-phase ;
+        recovery NE PEUT PAS commencer avant que le contexte (AVI) soit pret.
+      → Architecture : recovery est COORDONNEE — depend des prerequis upstream.
+    applications_ia:
+      - "partzufim/imma.py + partzufim/zeir_anpin.py + partzufim/nukva.py : implementer cycle"
+      - "[PLANNED] tikkun/recovery_cycle.py : (fall → uplift → ibur → tikkun)"
+      - "Pattern : recovery requiert prerequis upstream complets (AVI tikkun avant ZON tikkun)"
+      - "Architecture : cycle de vie composants = lifecycle coordinated avec dependencies"
+      - "Pattern : disaster recovery = ne pas restaurer avant que le context soit pret"
+      - "Diagnostic : verifier que prerequis sont satisfaits avant declencher recovery"
+    questions_ouvertes:
+      - "Le cycle peut-il etre interrompu en milieu de processus ?"
+      - "Y a-t-il des optimisations possibles (skip phases) ?"
+      - "Pattern : comment gerer un fall pendant un cycle de recovery deja en cours ?"
