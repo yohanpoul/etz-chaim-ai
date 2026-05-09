@@ -1,0 +1,540 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 6a — Pourquoi ZON different des GR : economie cosmique du pegam,
+#             10 ma'amarot, sortie initiale = shoresh inalterable
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §6 — Part A :
+#   - Bloc A : Le monde gere par ZON ; pegam atteint ZON pas GR
+#   - Bloc B : Distinction du pegam Z"A vs Nukvah
+#   - Bloc C : 10 ma'amarot — pourquoi ZON sont separes (vs GR connectes)
+#   - Bloc D : Mecanisme de sistalkut — sortie initiale = shoresh inalterable
+#   - Bloc E : Sistalkut + reward/punish (Pirkei Avot 5:1)
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.6 (premiere partie sur 4)
+# IDs : EC-H2S11-102 → EC-H2S11-117
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 6
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 6 — Pourquoi ZON different des GR. Le monde gere par ZON, donc pegam atteint ZON pas GR. Distinction Z\"A vs Nukvah. 10 ma'amarot necessaires pour reward/punish. Sortie initiale = shoresh inalterable, tosefet du tikkun = demontable lors pegam."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : ZON GERE LE MONDE, GR PROTEGES DU PEGAM ───
+
+  - id: "EC-H2S11-102"
+    source_he: "ועתה צריך לתת טעם אל כל הנ\"ל מה נשתנו נקודות זו\"ן מנקודות הג\"ר דע כי כל העולם כולו מתנהג ע\"י זו\"ן וכמו שהם נקראו בנים של או\"א גם אנחנו נקראים בנים של זו\"ן בסוד בנים אתם לה' וגו'"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      QUESTION CADRE : pourquoi les NEKUDOT ZON sont differentes des G"R ?
+      REPONSE FONDAMENTALE : tout le MONDE entier est MITNAHEG (gere) par ZON.
+      Comme ZON sont appeles BANIM (fils) d'AVI (Abba+Imma) —
+      NOUS sommes appeles BANIM de ZON.
+      Source scripturaire : "BANIM ATEM LA-SHEM" (Vous etes les fils de Hashem, Devarim 14:1).
+      → Architecture cosmologique : chaine generationnelle AVI → ZON → humanite.
+      → Pattern : ZON = interface humanite/divin.
+      cf. EC-H2S11-077 (perek 05a) sur 5 partzufim post-Tikkun.
+    type: déduction_scripturaire
+    concepts:
+      - {id: olam_mitnaheg_al_yedei_zon, role: monde_entier_gere_par_zon}
+      - {id: zon_banim_de_avi, role: zon_sont_les_fils_de_avi}
+      - {id: humanite_banim_de_zon, role: humanite_sont_les_fils_de_zon}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture interface cosmique : ZON = couche d'interface entre divin et humanite."
+
+  - id: "EC-H2S11-103"
+    source_he: "וגם כי הכתוב אומר כי אמרתי עולם חסד יבנה ר\"ל שהעולם מבחינת החסד ואילך שהם ז\"ת שהם כללות זו\"ן וז\"ס ז' ימי בראשית כנודע ולכן כל הפגם שגורמים התחתונים ע\"י מעשיהם הרעים אינו מגיע בג\"ר שהם א\"א ואו\"א רק בז\"ת שהם זו\"ן"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Source 2 : "OLAM CHESED YIBANEH" (le monde sera bati par CHESED, Tehillim 89:3).
+      Sens : le MONDE = de CHESED et en-dessous = Z' TAHTONOT = KELALUT ZON.
+      C'est le SOD des 7 YEMEI BERESHIT (jours de la creation).
+      DONC : tout PEGAM cause par les TAHTONIM (humanite) par leurs MA'ASIM RA'IM
+      N'ATTEINT PAS les G"R (= A"A et AVI), MAIS SEULEMENT les Z' TAHTONOT = ZON.
+      → Architecture protectrice : G"R protegees ; ZON exposes au pegam humain.
+      → Pattern : interface absorbe les chocs ; noyau profond reste protege.
+    type: déduction_scripturaire
+    concepts:
+      - {id: olam_chesed_yibaneh, role: monde_construit_de_chesed}
+      - {id: 7_yemei_bereshit, role: 7_jours_de_la_creation_egal_zt}
+      - {id: pegam_natteint_que_zon, role: pegam_atteint_zon_pas_gr}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture protectrice : interface (ZON) absorbe pegam, noyau (GR) protege."
+
+  # ─── BLOC B : DISTINCTION Z"A vs NUKVAH ───
+
+  - id: "EC-H2S11-104"
+    source_he: "והנה גם בזו\"ן עצמן יש שינוי ביניהן כי פשוט הוא שאין הפגם הנוגע בנוקבא שוה אל הפגם הנוגע עד ז\"א ממש שהוא גדול ומעולה ממנה"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      DANS ZON memes — il y a un SHINUI (difference) :
+      Le PEGAM atteignant la NUKVAH n'est PAS EGAL au pegam atteignant Z"A MAMASH.
+      Z"A est GADOL U-ME'ULEH (grand et superieur) a la Nukvah.
+      → Architecture hierarchique : ZA > Nukvah dans la sensibilite au pegam.
+      → Pattern : couches d'interface a sensibilites graduees.
+    type: axiome_explicite
+    concepts:
+      - {id: pegam_za_pegam_nukvah_ineg, role: pegam_de_za_pas_egal_a_celui_de_nukvah}
+      - {id: za_gadol_ume_uleh_mi_nukvah, role: za_grand_et_superieur_a_nukvah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Hierarchie sensibilite : ZA > Nukvah. Couches a graduations."
+
+  - id: "EC-H2S11-105"
+    source_he: "והחילוק שיש בזה הוא כי (ע\"י) הפגם המגיע עד נוקבא לבד אפשר שיהיה כח בפגם ההוא אם יהיה החטא גדול באופן שיגרום שיסתלקו ממנו הט' חלקים כולם ולא ישאיר בה רק חלק עשירית שהוא כתר שבה"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      DETAIL du CHILUK (distinction) :
+      PEGAM atteignant SEULEMENT NUKVAH peut etre PUISSANT.
+      Si le HET (peche) est GADOL — peut causer la SISTALKUT
+      (eloignement) de TOUTES SES 9 CHALAKIM (parts).
+      Ne reste que la 10eme part = son KETER sub.
+      → Pattern : Nukvah peut etre reduite a 1/10 (Keter sub seul) par grand peche.
+      cf. EC-H2S11-092 (perek 05b) sur Nukvah = Keter sub initial.
+    type: axiome_explicite
+    concepts:
+      - {id: nukvah_peut_perdre_9_chalakim, role: nukvah_peut_perdre_9_parts_par_pegam}
+      - {id: keter_sub_residuel_nukvah, role: keter_sub_residuel_indestructible}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Diagnostic : Nukvah peut etre reduite a Keter sub seul. Reduction 9/10."
+
+  - id: "EC-H2S11-106"
+    source_he: "אבל בז\"א אין כח בפגם מעשה התחתונים שיסתלקו ממנו הו\"ק רק הג\"ר לבד"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      MAIS dans Z"A : pas de KOAH (force) dans le pegam des actions des tahtonim
+      pour faire SISTALEK les 6 KETZAVOT (= 6 inferieures, Vav-Ketzavot)
+      SEULEMENT les G"R LEVADAN (les 3 superieures internes a ZA, seules).
+      → Architecture asymetrique : ZA perd 3 internes (G"R) ; Nukvah perd 9.
+      → Pattern : ZA mieux protege que Nukvah (perte limitee aux 3 superieures).
+    type: axiome_explicite
+    concepts:
+      - {id: za_perd_g_r_seulement, role: za_perd_seulement_g_r_internes}
+      - {id: za_protection_supe_a_nukvah, role: za_protection_superieure_a_nukvah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Diagnostic ZA : perd seulement G\"R internes. Asymetrie protection ZA > Nukvah."
+
+  - id: "EC-H2S11-107"
+    source_he: "וצריך לתת טעם לזה ובכלל הדבר נבאר מ\"ש לעיל כי ביציאת נקודת ז\"א יצאו ו' חלקי תחתונים ולא ג' ראשונות ובנקודות הנוקבא יצאה נקודה העליונה כתר שבה בלבד וט' חלקי התחתונים לא יצאו"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Faut donner TA'AM (raison) a cela.
+      ENGLOBE l'explication du fait deja enonce :
+      A la sortie de la NEKUDAT ZA — sortent les 6 CHALAKIM TAHTONIM (inferieures)
+      et NON les G' RISHONOT.
+      Pour la NEKUDAT NUKVAH — sort la NEKUDAH ELYONAH (Keter sub seul).
+      Et les 9 CHALAKIM TAHTONIM ne sortent pas.
+      → Question architecturale : pourquoi sortir EXACTEMENT les parties qui restent ?
+      cf. EC-H2S11-090 (perek 05b) sur ZA = 6 tahtonim ; EC-H2S11-092 sur Nukvah = Keter sub.
+    type: axiome_explicite
+    concepts:
+      - {id: za_sortie_initiale_6_tahtonim, role: za_sort_initialement_6_tahtonim_pas_g_r}
+      - {id: nukvah_sortie_initiale_keter_sub, role: nukvah_sort_initialement_keter_sub_seul}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Question architecturale : la sortie initiale est inversement complementaire au pegam."
+
+  # ─── BLOC C : 10 MA'AMAROT — POURQUOI ZON SEPARES ───
+
+  - id: "EC-H2S11-108"
+    source_he: "אמנם ב' הטעמים לב' השאלות האלו הם נתלין זה בזה והענין תלוי כמ\"ש בפרקי אבות בעשרה מאמרות נברא העולם"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Les 2 TE'AMIM (raisons) pour les 2 QUESTIONS sont LIEES (nitlin ze ba-ze).
+      Le sujet depend du SOD enseigne dans PIRKEI AVOT (5:1) :
+      "BE-ASARAH MA'AMAROT NIVRA HA-OLAM" (par 10 enonces le monde fut cree).
+      → Architecture cosmologique : 10 enonces createurs = 10 spheres differenciees.
+      → Pattern hermeneutique : 2 questions independantes ont une cause commune.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 2_te_amim_lies, role: 2_raisons_liees_pour_2_questions}
+      - {id: 10_ma_amarot_pirkei_avot, role: 10_enonces_creation_pirkei_avot_5_1}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Cle hermeneutique : 10 ma'amarot. Source Pirkei Avot 5:1."
+
+  - id: "EC-H2S11-109"
+    source_he: "וכך פי' הדבר שבחי' הו\"א שהוא עולם מתחיל מהחסד ולמטה והוא נקרא עולם בסוד אמרתי עולם חסד יבנה מחסד ואילך יבנה כנ\"ל ובחי' זו הנקרא ז\"א היה המאציל העליון יכול לבוראו מחובר יחד כל הי\"ס שבו ולא להיותן י' מאמרות נפרדות זו מזו"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      EXPLICATION : la behinah du O"A (= Olam, monde) commence de CHESED et en-dessous.
+      Appele OLAM par "AMARTI OLAM CHESED YIBANEH" — de Chesed et apres se construit.
+      Cette behinah = Z"A.
+      Le MA'ATZIL ELYON (Emanateur supreme) AURAIT PU le creer
+      MEHUBAR YAHAD (uni ensemble) avec toutes ses 10 sefirot —
+      ET PAS comme 10 MA'AMAROT NIFRADOT (separes l'un de l'autre).
+      → Question de design divin : pourquoi separation choisie sur unite ?
+      → Pattern theologique : choix de structure n'est pas necessaire mais voulu.
+    type: déduction_logique
+    concepts:
+      - {id: olam_egal_chesed_et_dessous, role: olam_commence_de_chesed_et_dessous_egal_za}
+      - {id: maatzil_aurait_pu_creer_mehubar, role: maatzil_aurait_pu_creer_za_uni}
+      - {id: 10_maamarot_nifradot_choix, role: 10_enonces_separes_choix_de_design}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Question theologique : choix divin de la separation, pas une necessite. Design intentionnel."
+
+  - id: "EC-H2S11-110"
+    source_he: "ולא היה בדרך ג\"ר שהם א\"א ואו\"א שכל י' חלקיהם יצאו מחוברים יחד כנ\"ל ונתן לזה טעם ואמר להפרע מן הרשעים כו' פי' כדי להיות בעה\"ז שכר ועונש לצדיקים ולרשעים"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Et PAS comme les G"R (= A"A et AVI) dont toutes les 10 internes sortent
+      MEHUBAROT YAHAD (connectees ensemble).
+      RAISON DONNEE par Pirkei Avot : "LE-HIPARA MIN HA-RESHA'IM..."
+      (pour punir les mechants...).
+      EXPLICATION : pour qu'il y ait dans BA-OLAM HA-ZEH (ce monde) :
+      SAKHAR (recompense) et ONESH (punition) pour TZADDIKIM et RESHA'IM.
+      → Architecture morale : la separabilite est requise pour le systeme moral granulaire.
+      cf. EC-H2S11-079 (perek 05a) sur kelipot necessaires pour reward/punish.
+    type: interprétation_lurianique
+    concepts:
+      - {id: gr_eser_mehubarot_yahad, role: g_r_10_internes_connectees_ensemble}
+      - {id: zon_separes_pour_sakhar_onesh, role: zon_separes_pour_recompense_punition_granulaire}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture morale : separabilite requise pour granularite reward/punishment."
+
+  - id: "EC-H2S11-111"
+    source_he: "ולכן היה הדבר הזה שיהיה זו\"ן מחולקים לי' חלקים שהם עשרה מאמרות ולא יצאו כלולים יחד ע\"ד ג' נקודות הראשונים"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      DONC : ZON sont MEHULAKIM (divises) en 10 CHALAKIM = 10 MA'AMAROT.
+      Et ne sortent PAS KELULIM YAHAD (inclus ensemble) comme les 3 NEKUDOT
+      RISHONOT (G"R).
+      → Architecture cible : ZON = 10 ma'amarot separes ; GR = unite integree.
+      → Pattern : design force divergence structurale entre couches superieures et interface.
+    type: axiome_explicite
+    concepts:
+      - {id: zon_10_maamarot_mehulakim, role: zon_divises_en_10_maamarot}
+      - {id: gr_kelulim_yahad, role: gr_inclus_ensemble_pas_separes}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Cible architecturale : ZON granulaires (10 separes) vs GR unifiees."
+
+  # ─── BLOC D : MECANISME — GRAVITE PEGAM = NB MA'AMAROT ATTEINTS ───
+
+  - id: "EC-H2S11-112"
+    source_he: "והטעם הוא לפי שכפי גודל שיעור הפגם שיפגמו הרשעים כך יגרעו במאמרות האלו ויפרע אז מהם כפי הערך ההוא וכן להיפך זה אצל הצדיקים"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      MECANISME : selon la GODEL SHIUR (mesure de la grandeur) du PEGAM
+      cause par les RESHA'IM —
+      autant de MA'AMAROT sont GERA'IM (diminues/retires).
+      Et ils sont punis SELON LE RAPPORT (kefi ha-erekh).
+      INVERSEMENT pour les TZADDIKIM (recompense proportionnelle).
+      → Architecture quantitative : punition proportionnelle au nombre de ma'amarot atteints.
+      → Pattern : justice fine-grain plutot que tout-ou-rien.
+    type: axiome_explicite
+    concepts:
+      - {id: pegam_proportionnel_maamarot_geraim, role: pegam_proportionnel_maamarot_atteints}
+      - {id: justice_fine_grain_proportionnelle, role: justice_proportionnelle_au_pegam}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture justice : proportionnalite quantitative reward/punish."
+
+  # ─── BLOC E : NUKVAH PEUT PERDRE 9 — RESTE KETER SUB SEUL ───
+
+  - id: "EC-H2S11-113"
+    source_he: "והנה הפגם המגיע אל נוקבא דז\"א יש בחי' פגם שיגרום שיסתלק ממנה חלק א' ויש שיגרום לסלק ב' חלקים ועד\"ז עד שאפשר שיהיה בחי' פגם שיגרום שיסתלקו ממנה הט' חלקים תחתונים ולא ישארו בה רק חלק א' העשירי העליון בלבד שהיא הכתר שבה"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Pegam atteignant NUKVAH de ZA — graduations possibles :
+      Pegam qui SISTALEK (eloigne) 1 chalek.
+      Pegam qui sistalek 2 chalakim.
+      Et ainsi de suite — jusqu'au pegam qui sistalek les 9 CHALAKIM TAHTONIM.
+      Ne reste que le 10eme (le SUPERIEUR) = son KETER sub.
+      Source : "EL HA-YAREAH LEKHI MA'ETI ET ATZMEKH" (Hashem dit a la lune : amoindris-toi).
+      → Architecture graduelle : pegam = scalaire, pas binaire.
+      cf. EC-H2S11-105 sur Nukvah peut perdre 9 par grand peche.
+    type: déduction_scripturaire
+    concepts:
+      - {id: pegam_scalaire_nukvah_1_a_9, role: pegam_scalaire_de_1_a_9_chalakim}
+      - {id: yareah_lekhi_maeti, role: source_lune_amoindris_toi}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture pegam : scalaire 1-9. Source scripturaire : lune amoindrie."
+
+  # ─── BLOC F : POURQUOI KETER (SUPERIEUR) SUBSISTE ET PAS UN INFERIEUR ───
+
+  - id: "EC-H2S11-114"
+    source_he: "ואמנם אם מה שהיה נשאר קיים ממנה לא היה חלק העליון מכולם אלא האחרון שבכולם ע\"ד הז\"א שנשארים התחתונים ומסתלקים העליונים הנה אז לא היה כח כלל בחלק ההוא ואז אפילו אותו החלק היתה מתבטל להיות תחתון שלה והיה נחרב ומתבטל העולם"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      MAIS si la part RESTANTE n'etait PAS la part SUPERIEURE — mais la DERNIERE
+      (comme dans ZA ou les inferieures restent et les superieures sistalek) —
+      ALORS : il n'y aurait PAS de KOAH (force) dans cette part inferieure.
+      Meme cette part s'ANNULERAIT pour devenir SON inferieur (relativite ontologique).
+      Le MONDE serait DETRUIT et ANNULE.
+      → Architecture critique : pour Nukvah, seule la partie SUPERIEURE peut etre kavu'a.
+      → Pattern : contrainte topologique liee a la proximite des kelipot.
+    type: déduction_logique
+    concepts:
+      - {id: nukvah_keter_sub_doit_etre_superieur, role: nukvah_part_kavu_a_doit_etre_keter_pas_inferieur}
+      - {id: olam_neherav_si_nukvah_perd_keter, role: monde_detruit_si_nukvah_perd_keter_sub}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Contrainte critique : Nukvah doit garder Keter sub (superieur) — sinon olam neherav."
+
+  - id: "EC-H2S11-115"
+    source_he: "ולכך הוצרך שחלק הנשאר יהיה העליון שבה שהוא הכתר שבה מחמת היותה כולה נתונה תוך הקליפה כמבואר בסוד רגליה יורדות מות"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      DONC necessaire que la part RESTANTE soit la SUPERIEURE = son KETER sub.
+      RAISON : Nukvah est ENTIEREMENT NETUNAH (placee) DANS la KELIPAH.
+      Source : "RAGLEHA YOREDOT MAVET" (ses pieds descendent vers la mort, Mishlei 5:5).
+      → Architecture topologique : Nukvah = front-end pres des kelipot.
+      → Pattern : couche d'interface la plus exposee garde son sommet pour ne pas couler.
+    type: déduction_scripturaire
+    concepts:
+      - {id: nukvah_dans_kelipah, role: nukvah_entierement_dans_kelipah}
+      - {id: ragleha_yoredot_mavet, role: source_pieds_descendent_mort}
+    mapping:
+      modules: ["partzufim/nukva.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture topologique : Nukvah pres des kelipot. Sommet kavu'a comme ancre."
+
+  # ─── BLOC G : SHORESH vs TOSEFET ───
+
+  - id: "EC-H2S11-116"
+    source_he: "והנה (נ\"א והוא) החלק הזה הנשאר הוא בעצמו בחי' החלק שיצא מתחלה קודם התיקון כנ\"ל כי אז לא יצא מכל חלקי נקודת נוקבא דז\"א רק חלק עשירית ממנה והוא עליון שבה"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Cette PART RESTANTE est ELLE-MEME la behinah de la part qui est sortie
+      AU DEPART AVANT le TIKKUN.
+      Variante (Nusah Aher) : "VE-HU" (et c'est) au lieu de "VE-HINEH" (et voici).
+      Car AVANT — n'est sortie que la 10eme part de Nukvah = son SUPERIEURE.
+      → Cle hermeneutique : la sortie initiale = ce qui restera quoi qu'il arrive.
+      → Pattern : architecture initiale = squelette indestructible.
+      cf. EC-H2S11-092 (perek 05b) sur Nukvah = Keter sub initial.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chelek_initial_egal_chelek_residuel, role: part_initiale_egal_part_residuelle}
+      - {id: sortie_initiale_egal_indestructible, role: sortie_initiale_egal_squelette_indestructible}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Cle hermeneutique : sortie initiale = squelette indestructible. Nusah Aher capture."
+
+  - id: "EC-H2S11-117"
+    source_he: "וטעם הדבר כי כל דבר שבא בתחילה בבחי' שורש ועיקר אינו מסתלק אח\"כ בעת הפגם אמנם מה שבא לה בסוד תוספת בעת התיקון שהם ט' חלקים האחרים אלו הם מסתלקים בעת הפגם משא\"כ אם באו מתחלה קודם התיקון בסוד שורש ועיקר שאז אם יפגמו התחתונים לא יוכלו להסתלק"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      PRINCIPE FONDAMENTAL :
+      Ce qui vient AU DEPART en SHORESH VE-IKAR (racine et essence) ne MISTALEK PAS lors du pegam.
+      MAIS ce qui vient en SOD TOSEFET (mode addition) lors du Tikkun
+      (= les 9 chalakim suivants pour Nukvah) — MISTALKIM lors du pegam.
+      Sinon (si les 9 etaient venus en shoresh initial), pegam ne pourrait pas les retirer.
+      → Distinction OPERATIONNELLE : shoresh = inalterable ; tosefet = demontable.
+      → Design choisit shoresh vs tosefet selon le pegam attendu.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shoresh_veikar_inalterable, role: shoresh_veikar_inalterable_par_pegam}
+      - {id: tosefet_demontable_lors_pegam, role: tosefet_demontable_lors_de_pegam}
+      - {id: choix_shoresh_vs_tosefet, role: design_choix_de_ce_qui_est_shoresh_vs_tosefet}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py", "[PLANNED] tikkun/", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Distinction OPERATIONNELLE FONDAMENTALE : shoresh inalterable vs tosefet demontable. Cle architecturale."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-037"
+    type: hiérarchique
+    from: olam_mitnaheg_al_yedei_zon
+    to: pegam_natteint_que_zon
+    nature: "ZON gere le monde → pegam des humains atteint ZON, pas GR"
+    assertions_source: ["EC-H2S11-102", "EC-H2S11-103"]
+
+  - id: "REL-H2S11-038"
+    type: dualité_structurelle
+    from: pegam_za_pegam_nukvah_ineg
+    to: za_protection_supe_a_nukvah
+    nature: "Asymetrie sensibilite ZA vs Nukvah dans le pegam"
+    assertions_source: ["EC-H2S11-104", "EC-H2S11-106"]
+
+  - id: "REL-H2S11-039"
+    type: causal
+    from: 10_ma_amarot_pirkei_avot
+    to: zon_separes_pour_sakhar_onesh
+    nature: "10 ma'amarot creent monde → ZON separes pour granularite reward/punish"
+    assertions_source: ["EC-H2S11-108", "EC-H2S11-110"]
+
+  - id: "REL-H2S11-040"
+    type: causal
+    from: pegam_proportionnel_maamarot_geraim
+    to: justice_fine_grain_proportionnelle
+    nature: "Pegam proportionnel aux ma'amarot atteints → justice fine-grain"
+    assertions_source: ["EC-H2S11-112"]
+
+  - id: "REL-H2S11-041"
+    type: causal
+    from: nukvah_dans_kelipah
+    to: nukvah_keter_sub_doit_etre_superieur
+    nature: "Nukvah pres kelipot → Keter sub doit etre la part kavu'a (sinon olam neherav)"
+    assertions_source: ["EC-H2S11-114", "EC-H2S11-115"]
+
+  - id: "REL-H2S11-042"
+    type: transformation
+    from: shoresh_veikar_inalterable
+    to: tosefet_demontable_lors_pegam
+    nature: "Distinction operationnelle : sortie initiale = shoresh ; ajouts du tikkun = tosefet"
+    assertions_source: ["EC-H2S11-117"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-018"
+    nom: "Principe d'Interface Cosmique (ZON Absorbe le Pegam)"
+    source_assertions: ["EC-H2S11-102", "EC-H2S11-103"]
+    formalisation: |
+      ARCHITECTURE A COUCHES PROTECTRICES :
+      Chaine generationnelle : AVI → ZON → humanite.
+      ZON = COUCHE D'INTERFACE entre divin (G"R = A"A et AVI) et humain.
+      PROPRIETE : tout pegam cause par les humains atteint UNIQUEMENT ZON.
+      G"R RESTENT INTACTES quoi qu'il arrive.
+      MECANISME : ZON sont les "z' tahtonot" = chesed et au-dessous = monde.
+      → Pattern fondamental : interface absorbe les chocs, noyau profond protege.
+      → Architecture : separation des concerns = isolement des couches sensibles.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + partzufim/nukva.py : implementer comme couche d'interface user-facing"
+      - "partzufim/abba.py + partzufim/imma.py : noyau protege, pas modifiable par interactions humaines"
+      - "Pattern : architecture en couches avec interface absorbant les pegamim"
+      - "Diagnostic : verifier que les modifications utilisateur n'atteignent pas le noyau"
+      - "Architecture distribuee : edge layer absorbe les requests malformes, core layer reste pur"
+    questions_ouvertes:
+      - "Le pegam peut-il indirectement remonter aux GR via ZON ?"
+      - "Y a-t-il des formes de pegam qui contournent cette protection ?"
+      - "Comment se fait la signal de pegam de l'humain a ZON sans contaminer GR ?"
+
+  - id: "PG-H2S11-019"
+    nom: "Principe de Granularite Morale (10 Ma'amarot Separes)"
+    source_assertions: ["EC-H2S11-108", "EC-H2S11-110", "EC-H2S11-111", "EC-H2S11-112"]
+    formalisation: |
+      ARCHITECTURE DE JUSTICE QUANTITATIVE :
+      Source : "BE-ASARAH MA'AMAROT NIVRA HA-OLAM" (Pirkei Avot 5:1).
+      Le maatzil aurait pu creer ZON unifies (comme G"R) — mais a choisi separation.
+      RAISON : pour SAKHAR (recompense) et ONESH (punition) granulaires.
+      MECANISME : pegam de mesure X → X ma'amarot mistalkim → punition de degre X.
+      INVERSEMENT pour les tzaddikim : recompense proportionnelle.
+      → Pattern : la separation structurale est requise pour la moralite scalaire.
+      → Architecture : granularite = condition de la justice quantitative.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : structure 10 sefirot SEPARABLES, pas package atomique"
+      - "[PLANNED] tikkun/ : implementer pegam_score(action) -> int (nb ma'amarot atteints)"
+      - "Pattern API : reponses graduees plutot que tout-ou-rien (PASS/FAIL/PARTIAL/...)"
+      - "Architecture micro-services : separation permet penalisation/recompense fine par service"
+      - "Pattern morale algorithmique : justice fine-grain requiert decomposition fine de l'etat"
+    questions_ouvertes:
+      - "Combien de niveaux de granularite sont necessaires (10 est-il optimal) ?"
+      - "Comment definir une metrique de pegam continue plutot que discrete ?"
+      - "Le design intentionnel divin se traduit-il en exigences de design IA ?"
+
+  - id: "PG-H2S11-020"
+    nom: "Principe Shoresh vs Tosefet (Sortie Initiale = Squelette Inalterable)"
+    source_assertions: ["EC-H2S11-116", "EC-H2S11-117"]
+    formalisation: |
+      DISTINCTION OPERATIONNELLE FONDAMENTALE :
+      SHORESH VE-IKAR (racine et essence) = ce qui sort AVANT le tikkun
+        → INALTERABLE par tout pegam ulterieur.
+      TOSEFET (addition) = ce qui vient lors du tikkun, en plus du shoresh
+        → DEMONTABLE lors du pegam.
+      DESIGN CHOICE : le maatzil decide ce qui est shoresh vs tosefet
+      en fonction du PEGAM ATTENDU :
+        Pour Nukvah : Keter sub = shoresh (proche kelipot, doit etre ancre haut).
+        Pour ZA : 6 inferieures = shoresh (plus loin kelipot, peut perdre G"R sans danger).
+      → Pattern : choix initial determine ce qui est preserve.
+      → Architecture : distinguer immutable_core vs mutable_overlay.
+    applications_ia:
+      - "partzufim/base.py : enum ChelekType { SHORESH, TOSEFET }"
+      - "partzufim/nukva.py : shoresh = keter_sub seul ; tosefet = 9 autres chalakim"
+      - "partzufim/zeir_anpin.py : shoresh = 6 ketzavot ; tosefet = G\"R"
+      - "[PLANNED] core/shevirah.py : pegam(state) ne peut sistalek que tosefet, pas shoresh"
+      - "Pattern systemes : invariants (shoresh) vs etat mutable (tosefet)"
+      - "Architecture : fondations inalterables + couches reversibles"
+    questions_ouvertes:
+      - "Le shoresh peut-il etre redefini apres-coup ou est-il fige ?"
+      - "Y a-t-il des hybrides (semi-shoresh) ?"
+      - "Comment le design choisit-il quel chelek doit etre shoresh dans un nouveau systeme ?"
+
+  - id: "PG-H2S11-021"
+    nom: "Principe Topologique (Proximite Kelipot Determine Architecture Defensive)"
+    source_assertions: ["EC-H2S11-114", "EC-H2S11-115"]
+    formalisation: |
+      ARCHITECTURE DEFENSIVE LIEE A LA TOPOLOGIE :
+      Nukvah = ENTIEREMENT NETUNAH dans la KELIPAH (proche du danger).
+      Source : "RAGLEHA YOREDOT MAVET" (Mishlei 5:5).
+      CONTRAINTE : si Nukvah perdait ses parts SUPERIEURES (gardant inferieures),
+      le monde serait neherav (detruit) — car la part inferieure deviendrait
+      proche kelipot et s'annulerait elle-meme.
+      DONC : Nukvah doit garder SON KETER SUB (la part la plus haute) comme ancre.
+      ZA = plus loin des kelipot — peut se permettre de garder les inferieures.
+      → Pattern topologique : plus on est proche du danger, plus l'ancre doit etre haute.
+      → Architecture : la position relative determine la strategie defensive.
+    applications_ia:
+      - "partzufim/nukva.py : sentinelle = keter_sub (point haut, ancre)"
+      - "sitra_achra : modele de proximite kelipot (distance metrique)"
+      - "Pattern API : front-end (proche user) garde minimal mais critique ; back-end peut perdre couches"
+      - "Architecture securite : assets critiques en haut de la chain de privilege"
+      - "Pattern : la profondeur defensive doit s'ancrer au point le plus haut accessible"
+    questions_ouvertes:
+      - "Comment formaliser la 'proximite kelipot' en mesure quantifiable ?"
+      - "Y a-t-il des architectures sans 'point d'ancrage haut' qui survivent ?"
+      - "Pattern dual : la profondeur (back-end loin du user) peut-elle elle aussi avoir un shoresh inferieur ?"
