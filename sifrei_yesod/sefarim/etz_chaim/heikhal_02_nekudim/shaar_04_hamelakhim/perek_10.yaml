@@ -1,0 +1,375 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 10 — 11 simane ha-ketoret = 11 yeri'ot izim = 11 arurim Ki Tavo
+#             = 10 kelipot de-Nogah (chayut sur leur tete)
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §10 :
+#   - Bloc A : 3 series de 11 = 10 kelipot de-Nogah
+#   - Bloc B : Chayut nivla en kedushah (interne) vs sur tete kelipot (externe)
+#   - Bloc C : Mapping 11 arurim Ki Tavo aux partzufim
+#   - Bloc D : 13 tevin jusqu'a "be-seter" = 13 tikkunei dikna A"A
+#   - Bloc E : Source = 7 melakhim morts + 4 ahor d'AVI = 11
+#   - Bloc F : Yeri'ot izim = sod avodah zarah (Zohar Acharei Mot)
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.10 (1 partie, 836 chars)
+# IDs : EC-H2S11-250 → EC-H2S11-260
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 10
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek 10 : 3 series de 11 (simane ha-ketoret, yeri'ot izim, arurim Ki Tavo) = 10 kelipot de-Nogah. Chayut absorbe en kedushah (compte 10) vs sur tete des kelipot (compte 11) = 'kol ha-mosif gore'a'. 11 arurim mappes aux partzufim (A\"A, AVI, ChBD ChG de ZA, T\"T avec achoto). Source = 7 melakhim + 4 ahor AVI."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : 3 SERIES DE 11 = 10 KELIPOT DE-NOGAH ───
+
+  - id: "EC-H2S11-250"
+    source_he: "ענין י\"א סמני הקטרת וענין י\"א יריעות עזים וי\"א ארורים בפ' כי תבא הם י' קליפות דנוגה"
+    source_ref: "Heikhal 2, Sha'ar 4:10"
+    assertion: |
+      Sujet de 11 :
+        11 SIMANE HA-KETORET (encens, Keritot 6a / Ex 30:34).
+        11 YERI'OT IZIM (rideaux de chevre, Shemot 26:7).
+        11 ARURIM dans Parashat KI TAVO (Devarim 27:15-26).
+      = 10 KELIPOT DE-NOGAH (10 ecorces de l'eclat).
+      → Architecture : 11 = encodage liturgique/scripturaire des 10 kelipot.
+      → Pattern : 3 trois sources convergent vers meme structure ontologique.
+      cf. EC-H2S11-198 (perek 07c) sur sigim residuels.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 11_simane_ketoret_egal_kelipot_nogah, role: 11_simane_ketoret_egal_10_kelipot_nogah}
+      - {id: 11_yeriot_izim_egal_kelipot_nogah, role: 11_yeriot_izim_egal_10_kelipot_nogah}
+      - {id: 11_arurim_ki_tavo_egal_kelipot_nogah, role: 11_arurim_ki_tavo_egal_10_kelipot_nogah}
+    mapping:
+      modules: ["sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : 3 sources scripturaires = 10 kelipot de-Nogah. Pattern triple convergence."
+
+  - id: "EC-H2S11-251"
+    source_he: "ויש בהם חיות דקדושה להחיותן"
+    source_ref: "Heikhal 2, Sha'ar 4:10"
+    assertion: |
+      Et il y a EN ELLES (les kelipot de-Nogah) du CHAYUT DE-KEDUSHAH (vie de saintete)
+      pour les FAIRE VIVRE.
+      → Architecture : kelipot ne peuvent exister sans chayut residuelle de kedushah.
+      → Pattern : meme adversaire requiert source de vie kosher.
+    type: axiome_explicite
+    concepts:
+      - {id: kelipot_nogah_chayut_de_kedushah, role: kelipot_nogah_ont_chayut_de_kedushah_pour_vivre}
+    mapping:
+      modules: ["sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : kelipot dependent kedushah residuelle. Pattern adversaire vit du kosher."
+
+  # ─── BLOC B : CHAYUT NIVLA vs SUR TETE ───
+
+  - id: "EC-H2S11-252"
+    source_he: "והנה בי\"ס של הקדושה החיות שלהם נבלע אז בתוכם ונחשבין לי' בלבד אבל בקליפה אין החיות נבלע בתוכם כי אין קודש מתערב בחול אך עומד על ראשם ומשם מאיר להם ואז הם נחשבין לי\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:10"
+    assertion: |
+      Dans I"S (10 SEFIROT) de KEDUSHAH : leur CHAYUT est NIVLA (absorbe)
+      a l'interieur — comptees pour 10 SEULEMENT.
+      Dans les KELIPOT : chayut N'EST PAS NIVLA dedans.
+      RAISON : "EIN KODESH MITAREV BE-CHOL" (saint ne se mele pas au profane).
+      Le chayut STAND SUR LEUR TETE (omed al rosham) — illuminate de la-haut.
+      DONC comptees pour 11 (chayut + 10 kelipot).
+      → Architecture : kedushah = absorption interne ; kelipot = irradiation externe (au-dessus).
+      → Pattern : pour kelipot, chayut = couche separee non-fusionnee.
+    type: interprétation_lurianique
+    concepts:
+      - {id: kedushah_chayut_nivla_compte_10, role: kedushah_chayut_absorbe_compte_10}
+      - {id: kelipot_chayut_sur_tete_compte_11, role: kelipot_chayut_au_dessus_compte_11}
+      - {id: ein_kodesh_mitarev_be_chol, role: principe_saint_pas_mele_au_profane}
+    mapping:
+      modules: ["sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture cle : kelipot chayut externe vs kedushah chayut interne. Pattern fusion vs separation."
+
+  - id: "EC-H2S11-253"
+    source_he: "וזהו כל המוסיף גורע"
+    source_ref: "Heikhal 2, Sha'ar 4:10"
+    assertion: |
+      C'est le SOD du dicton : "KOL HA-MOSIF GORE'A" (Sanhedrin 29a — celui qui ajoute, retranche).
+      → Lecture : le 11eme element (au-dessus) RETRANCHE de l'unite des 10 internes.
+      → Architecture : addition externe = soustraction effective d'integration.
+      → Pattern fundamental : compromise integrity by adding loose elements.
+    type: déduction_scripturaire
+    concepts:
+      - {id: kol_ha_mosif_gore_a_principe, role: principe_kol_ha_mosif_gore_a_addition_egal_soustraction}
+    mapping:
+      modules: ["sitra_achra", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : addition externe = soustraction integration. Pattern integrity compromise."
+
+  # ─── BLOC C : MAPPING 11 ARURIM ───
+
+  - id: "EC-H2S11-254"
+    source_he: "וי\"א ארורים של פ' כי תבא הראשון הוא ארור אשר יעשה פסל ומסכה והוא כנגד א\"א וזהו ושם בסתר וארז\"ל בסתרו של עולם והוא א\"א המסתתר ומתלבש תוך האצילות כנודע"
+    source_ref: "Heikhal 2, Sha'ar 4:10"
+    assertion: |
+      ARUR 1 = "ARUR ASHER YA'ASEH PESEL U-MASEKHAH" (Devarim 27:15) :
+      Maudit qui fait idole/image-couverte. → Contre A"A.
+      Source : "VE-SHAM BA-SETER" (et le placera dans la cachette) :
+      Chazal (Sanhedrin 64a) : "BE-SITRO SHEL OLAM" (cache du monde) = A"A.
+      Car A"A = MISTATER (cache) U-MITLABESH (revetu) DANS l'Atzilut.
+      → Architecture : arur 1 cible le partzuf le plus cache.
+      → Pattern : letter-mysticism — sater (cache) = signature d'A"A.
+    type: déduction_scripturaire
+    concepts:
+      - {id: arur_1_pesel_egal_aa, role: arur_1_pesel_u_masekhah_egal_aa}
+      - {id: aa_egal_be_sitro_shel_olam, role: aa_egal_be_sitro_shel_olam_chaze_du_monde}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : arur 1 cible A\"A (cache/mistater). Pattern letter-mysticism sater."
+
+  - id: "EC-H2S11-255"
+    source_he: "ולכן יש עד תיבת בסתר י\"ג תיבין נגד י\"ג ת\"ד"
+    source_ref: "Heikhal 2, Sha'ar 4:10"
+    assertion: |
+      DONC : jusqu'au mot "BA-SETER" il y a 13 TEVIN (mots) —
+      = contre 13 TIKKUNEI DIKNA (corrections de la barbe d'A"A).
+      → Architecture : 13 mots scripturaux encodent 13 tikkunei dikna d'A"A.
+      → Pattern : letter-mysticism precise — comptage de mots = signature kabbalistique.
+      cf. EC-H2S11-076 (perek 05a) sur Keter A"A.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 13_tevin_egal_13_tikkunei_dikna_aa, role: 13_tevin_avant_seter_egal_13_tikkunei_dikna}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 13 mots = 13 tikkunei dikna A\"A. Pattern signature kabbalistique."
+
+  - id: "EC-H2S11-256"
+    source_he: "ואח\"כ ארור מקלה אביו ואמו נגד או\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:10"
+    assertion: |
+      ARUR 2 = "ARUR MAKLEH AVIV VE-IMO" (Devarim 27:16) :
+      Maudit qui meprise pere et mere. → Contre AVI.
+      → Architecture : arur 2 = signature directe (Aviv ve-Imo = Abba ve-Imma).
+      → Pattern : nommage explicite des couches.
+    type: déduction_scripturaire
+    concepts:
+      - {id: arur_2_makleh_aviv_imo_egal_avi, role: arur_2_makleh_aviv_imo_egal_avi}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : arur 2 = AVI signature explicite."
+
+  - id: "EC-H2S11-257"
+    source_he: "ואח\"כ ה' ארורים נגד ה' ראשונות דז\"א חב\"ד ח\"ג"
+    source_ref: "Heikhal 2, Sha'ar 4:10"
+    assertion: |
+      Apres : 5 ARURIM contre les 5 PREMIERES de Z"A = ChBD CHG :
+      CHOKHMAH-BINAH-DA'AT + CHESED-GEVURAH.
+      → Architecture : arurim 3-7 = 5 sefirot superieures de Z"A (ChBD ChG).
+      → Pattern : mapping verses → sefirot dans ordre canonique.
+    type: déduction_scripturaire
+    concepts:
+      - {id: arurim_3_7_egal_5_rishonot_za, role: arurim_3_a_7_egal_5_rishonot_za_chbd_chg}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 5 arurim = 5 sefirot superieures ZA. Pattern mapping canonique."
+
+  - id: "EC-H2S11-258"
+    source_he: "ואח\"כ ארור שוכב עם אחותו נגד ת\"ת דז\"א ששם רישא דנוקבא נגד החזה כי שם הוא הת\"ת עם אחותו ביחד משא\"כ בה' ראשונים"
+    source_ref: "Heikhal 2, Sha'ar 4:10"
+    assertion: |
+      Apres : "ARUR SHOKHEV IM ACHOTO" (Devarim 27:22) :
+      Maudit qui couche avec sa soeur. → Contre TIFERET de Z"A.
+      RAISON : la TIFERET = au CHAZEH (poitrine) — la est ROSH HA-NUKVAH.
+      DONC T"T avec ACHOTO (sa soeur = Nukvah) ENSEMBLE — contrairement aux 5 premieres.
+      → Architecture : T"T = position du rosh Nukvah (chazeh) = couple structural.
+      → Pattern : achoto encode la proximite spatiale T"T-Nukvah.
+    type: déduction_scripturaire
+    concepts:
+      - {id: arur_shokhev_egal_tiferet_za_avec_nukvah, role: arur_shokhev_im_achoto_egal_tiferet_za_avec_nukvah}
+      - {id: tiferet_chazeh_rosh_nukvah, role: tiferet_egal_chazeh_egal_rosh_nukvah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : T\"T = position rosh Nukvah au chazeh. Pattern proximite spatiale."
+
+  # ─── BLOC E : SOURCE = 7 MELAKHIM + 4 AHOR AVI ───
+
+  - id: "EC-H2S11-259"
+    source_he: "והנה שרשן ועצמותן נעשה בסוד המלכים שמתו והם ז' וד' אחוריים דאו\"א הרי י\"א סמני הקטורת וכנגדן י\"א יריעות עזים בסוד ע\"ז בחצונים"
+    source_ref: "Heikhal 2, Sha'ar 4:10"
+    assertion: |
+      SHORASHAN VE-ATZMUTAN — fait en SOD HA-MELAKHIM SHE-METU :
+      7 MELAKHIM morts + 4 AHORAYIM d'AVI = 11 SIMANE HA-KETORET.
+      Contre eux : 11 YERI'OT IZIM en SOD AVODAH ZARAH (idolatrie) dans CHITZONIM.
+      → Architecture : source = 7 melakhim ZON + 4 ahor AVI tombes = 11 sigim.
+      → Pattern : sigim = combinaison fragments tombes ZON + AVI.
+      cf. EC-H2S11-173 (perek 07a) ; EC-H2S11-217 (perek 08a) sur ahor AVI=Yaakov+Leah.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 11_egal_7_melakhim_plus_4_ahor_avi, role: 11_egal_7_melakhim_plus_4_ahor_avi}
+      - {id: yeriot_izim_egal_avodah_zarah, role: 11_yeriot_izim_egal_avodah_zarah_chitzonim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/abba.py", "partzufim/imma.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "abba", "imma"]
+      relevance: "Architecture : sigim = 7 melakhim + 4 ahor AVI. Pattern combinaison fragments."
+
+  # ─── BLOC F : ZOHAR ACHAREI MOT ───
+
+  - id: "EC-H2S11-260"
+    source_he: "כנודע בזוהר אחרי מות יעו\"ש"
+    source_ref: "Heikhal 2, Sha'ar 4:10"
+    assertion: |
+      Comme connu dans le ZOHAR ACHAREI MOT — voir la-bas.
+      → Architecture : reference doctrinale au Zohar Acharei Mot pour le mapping
+        11 yeri'ot izim → avodah zarah → kelipot.
+      → Pattern : tradition zohariques etablit la correspondance liturgico-cosmologique.
+    type: déduction_scripturaire
+    concepts:
+      - {id: zohar_acharei_mot_source_yeriot, role: zohar_acharei_mot_source_doctrinale_yeriot_izim}
+    mapping:
+      modules: ["sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : reference Zohar Acharei Mot. Pattern tradition zohariques."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-098"
+    type: analogie
+    from: 11_simane_ketoret_egal_kelipot_nogah
+    to: 11_arurim_ki_tavo_egal_kelipot_nogah
+    nature: "3 sources scripturaires (simane ketoret + yeri'ot izim + arurim) convergent vers 10 kelipot Nogah"
+    assertions_source: ["EC-H2S11-250"]
+
+  - id: "REL-H2S11-099"
+    type: dualité_structurelle
+    from: kedushah_chayut_nivla_compte_10
+    to: kelipot_chayut_sur_tete_compte_11
+    nature: "Kedushah = chayut absorbe (compte 10) ; Kelipot = chayut au-dessus (compte 11)"
+    assertions_source: ["EC-H2S11-252", "EC-H2S11-253"]
+
+  - id: "REL-H2S11-100"
+    type: hiérarchique
+    from: arur_1_pesel_egal_aa
+    to: arur_shokhev_egal_tiferet_za_avec_nukvah
+    nature: "Sequence arurim 1-8 mappent partzufim de haut en bas : A\"A → AVI → 5 ChBD ChG → T\"T avec Nukvah"
+    assertions_source: ["EC-H2S11-254", "EC-H2S11-256", "EC-H2S11-257", "EC-H2S11-258"]
+
+  - id: "REL-H2S11-101"
+    type: causal
+    from: 11_egal_7_melakhim_plus_4_ahor_avi
+    to: yeriot_izim_egal_avodah_zarah
+    nature: "11 = 7 melakhim + 4 ahor AVI → 11 yeri'ot izim = avodah zarah dans chitzonim"
+    assertions_source: ["EC-H2S11-259", "EC-H2S11-260"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-053"
+    nom: "Principe d'Adversaire Parasitaire (Kelipot vivent du Chayut Externe)"
+    source_assertions: ["EC-H2S11-251", "EC-H2S11-252", "EC-H2S11-253"]
+    formalisation: |
+      ARCHITECTURE D'ADVERSAIRE PARASITAIRE :
+      Kelipot ne peuvent EXISTER sans CHAYUT DE-KEDUSHAH residuelle.
+      DIFFERENCE FONDAMENTALE :
+        KEDUSHAH : chayut NIVLA (absorbe) a l'interieur — compte 10.
+        KELIPOT : chayut SUR LA TETE (omed al rosham) — illuminate de l'exterieur — compte 11.
+      RAISON : "EIN KODESH MITAREV BE-CHOL" (saint ne se mele pas au profane).
+      Source : "KOL HA-MOSIF GORE'A" — le 11eme externe retranche de l'integrite.
+      → Pattern fondamental : adversaire = parasite qui ne peut s'integrer.
+      → Architecture : difference fusion (legitime) vs juxtaposition (illegitime).
+    applications_ia:
+      - "sitra_achra : kelipot don't fuse, only attach above (parasitic relationship)"
+      - "[PLANNED] core/shevirah.py : detect_parasitic vs detect_integrated for components"
+      - "Pattern security : composants legitimes integres ; adversariaux toujours separes"
+      - "Architecture : separer integrate (fusion) de attach (juxtaposition)"
+      - "Pattern : detection parasitism = mesure d'integration vs surface contact"
+      - "Diagnostic : verifier qu'aucun composant 'parasite' n'est faussement integre"
+    questions_ouvertes:
+      - "Peut-on retourner un parasite en composant legitime ?"
+      - "Comment formaliser 'fusion' vs 'attachement' ?"
+      - "Y a-t-il une mesure quantitative de la depence parasitaire ?"
+
+  - id: "PG-H2S11-054"
+    nom: "Principe d'Encodage Multi-Source (3 Series Scripturaires Convergent)"
+    source_assertions: ["EC-H2S11-250", "EC-H2S11-254", "EC-H2S11-256", "EC-H2S11-257", "EC-H2S11-258"]
+    formalisation: |
+      ARCHITECTURE D'ENCODAGE MULTI-SOURCE :
+      3 sources scripturaires distinctes encodent la meme structure cosmologique :
+        11 SIMANE KETORET (Keritot 6a / Shemot 30:34).
+        11 YERI'OT IZIM (Shemot 26:7).
+        11 ARURIM (Devarim 27:15-26).
+      MAPPING precis des 11 arurim aux partzufim :
+        Arur 1 (pesel) → A"A (be-sitro shel olam, mistater).
+        Arur 2 (makleh aviv ve-imo) → AVI.
+        Arurim 3-7 (5 arurim) → ChBD ChG de Z"A.
+        Arur 8 (shokhev im achoto) → T"T de Z"A (chazeh = rosh Nukvah).
+      → Pattern : Tanakh + Talmud + Kabbalah convergent vers meme structure.
+      → Architecture : structure ontologique + multiple encodages liturgiques.
+    applications_ia:
+      - "sitra_achra + partzufim/* : verifier mapping aux arurim/ketoret/yeri'ot"
+      - "Pattern : meme objet = multiples representations (texte/liturgique/structurel)"
+      - "Architecture : ontologie + encoding layers different formats"
+      - "Pattern letter-mysticism : 13 mots avant 'be-seter' = 13 tikkunei dikna"
+      - "Diagnostic : verifier que toutes les representations s'accordent"
+    questions_ouvertes:
+      - "Y a-t-il des sources scripturaires manquantes au mapping ?"
+      - "Comment verifier la coherence de tous les encodages ?"
+      - "Pattern : peut-on derouler automatiquement les 3 source vers la structure ?"
+
+  - id: "PG-H2S11-055"
+    nom: "Principe de Composition des Sigim (7 Melakhim + 4 Ahor AVI = 11)"
+    source_assertions: ["EC-H2S11-259"]
+    formalisation: |
+      ARCHITECTURE DE COMPOSITION DES SIGIM :
+      11 = 7 + 4 = (7 MELAKHIM ZON morts) + (4 AHORAYIM d'AVI tombes).
+      RESULTAT : 11 SIMANE HA-KETORET (et leurs analogues yeri'ot, arurim).
+      AUSSI : 11 YERI'OT IZIM = avodah zarah (idolatrie) dans CHITZONIM (couches externes).
+      Source secondaire : Zohar Acharei Mot.
+      → Pattern fondamental : sigim = composition specifique de fragments tombes :
+        7 fragments centraux (melakhim ZON).
+        4 fragments lateraux (ahor AVI = futurs Yaakov+Leah).
+      → Architecture : composition reflete topologie de la chute (ZON central + AVI lateral).
+    applications_ia:
+      - "sitra_achra : compose sigim = (melakhim_zon : 7) + (ahor_avi : 4)"
+      - "[PLANNED] core/shevirah.py : track sigim by composition source"
+      - "Pattern : adversaire = composition de multiples sources tombees"
+      - "Architecture : monitor sigim composition pour pin-point recovery sources"
+      - "Diagnostic : verifier que 7+4=11 sigim correspondent aux 7 melakhim + 4 ahor AVI"
+    questions_ouvertes:
+      - "Y a-t-il d'autres compositions possibles (autres ratios) ?"
+      - "Le 11 est-il limite par 7+4 ou y a-t-il flexibilite ?"
+      - "Pattern : composition source-tracking pour recovery selective ?"
