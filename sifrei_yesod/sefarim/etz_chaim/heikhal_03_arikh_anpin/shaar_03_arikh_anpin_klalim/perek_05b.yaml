@@ -1,0 +1,348 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 5b — M"B 4 klalim : longueur cheveux jusqu'a tabura de-leiba ;
+#             rosh ZA source kelipot inverse ; ASHL couleurs ; rosh vs dikna
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §5 — Part B (MB 4 klalim) :
+#   - Bloc K : Klal 1 — 2 sortes cheveux A"A (rosh+dikna), longueur tabura
+#   - Bloc L : Klal 1 (suite) — 4 hivara → ZA, 9 hivara panim → 9 tikkunim ZA
+#   - Bloc M : Klal 2 — Rosh ZA source kelipot, Rosh Nukvah source dinim (inverse)
+#   - Bloc N : Klal 3 — ASHL Adom Shahor Lavan ; Bereshit 21:33
+#   - Bloc O : Klal 4 — Rosh sha'arot lisses ; dikna sha'arot durs
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.5 (parts 2-9, M"B addenda)
+# IDs : EC-H3S13-081 → EC-H3S13-090
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 5
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Deuxieme partie du perek 5 — M\"B 4 klalim : (1) longueur cheveux A\"A jusqu'a tabura de-leiba ; (2) rosh ZA source kelipot, rosh Nukvah source dinim (inverse pour limiter forces destructrices) ; (3) ASHL Adom-Shahor-Lavan ; (4) rosh = chesed Atik (lisses), dikna = gevurah Atik (durs)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-081"
+    source_he: "מ\"ב ד' כללים כלל א: הנה א\"א יש לו שערות רישא שהם חוורתא והנימין הנמשכים מאחוריו ויש לו שערי דיקנא הנמשכין מלפניו. ומקום סיום ב' בחי' אלו הם עד טבורא דלבא"
+    source_ref: "Heikhal 3, Sha'ar 3:5 (MB Klal 1)"
+    assertion: |
+      M"B 4 KLALIM. KLAL 1 :
+      A"A a 2 sortes de cheveux :
+        SHA'AROT ROSH = HIVARA + NIMIN sortants par ahor.
+        SHA'ARI DIKNA = sortants par panim.
+      Longueur de ces 2 = jusqu'au TABURA DE-LEIBA (nombril du coeur).
+      → Architecture : 2 systemes capillaires distincts (front/arriere).
+      → Pattern : interface dual back-and-front coverage.
+      cf. EC-H3S13-076 (perek 05a) sur distribution 13 hivara anatomique.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_2_sortes_cheveux_rosh_ahor_dikna_panim, role: aa_2_sortes_cheveux_rosh_ahor_plus_dikna_panim_jusqu_tabura_leiba}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 2 systemes capillaires. Pattern dual coverage."
+
+  - id: "EC-H3S13-082"
+    source_he: "וביאור טבורא דלבא הוא שת\"ת דא\"א נקרא לב ונקודה מחציתו נקרא טבורא דלבא"
+    source_ref: "Heikhal 3, Sha'ar 3:5 (MB Klal 1)"
+    assertion: |
+      EXPLICATION TABURA DE-LEIBA :
+      T"T (Tiferet) d'A"A = LEV (coeur).
+      NEKUDAH au MILIEU du T"T = TABURA DE-LEIBA (nombril du coeur).
+      → Architecture : reference anatomique precise (mid-T"T d'A"A).
+      → Pattern : positions anatomiques exactes pour interfaces.
+    type: axiome_explicite
+    concepts:
+      - {id: tabura_de_leiba_egal_milieu_tiferet_aa, role: tabura_de_leiba_egal_milieu_tiferet_aa_lev}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : position anatomique exacte. Pattern interface precise."
+
+  - id: "EC-H3S13-083"
+    source_he: "מן הגרון עד חצי ת\"ת מתלבש א\"א ע\"י או\"א אך ב' בחי' שערות הנ\"ל מלבישין לאו\"א מבחוץ מאחוריהם ומלפניהם ונמצא שב' בחינת שערות מגיעין עד טבורא דלבא שהוא חצי ת\"ת"
+    source_ref: "Heikhal 3, Sha'ar 3:5 (MB Klal 1)"
+    assertion: |
+      Du GARON jusqu'au CHATZI T"T (mi-T"T) — A"A est revetu PAR AVI.
+      MAIS les 2 sortes de cheveux REVETIRENT AVI MI-CHUTZ (de l'exterieur) —
+      ahor et panim — jusqu'au tabura de-leiba.
+      → Architecture : cheveux = couche externe enveloppant AVI.
+      → Pattern : outer wrapping of internal layers.
+    type: axiome_explicite
+    concepts:
+      - {id: cheveux_aa_revet_avi_de_lexterieur_jusqu_tabura, role: cheveux_aa_revet_avi_de_lexterieur_jusqu_tabura_de_leiba}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : cheveux = couche externe AVI. Pattern outer wrapping."
+
+  - id: "EC-H3S13-084"
+    source_he: "ומשם ולמטה מלביש ז\"א את שארית א\"א... ומהם נמשכין חיות ושפע אל שערות דרישא דז\"א. שאע\"פ שהם שערות והם דינין עכ\"ז להיותן שערות דא\"א הם יותר רחמים גמורים מן הרחמים דז\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:5 (MB Klal 1)"
+    assertion: |
+      Au-dessous de mi-T"T : Z"A REVETIT le RESTE d'A"A.
+      2 sortes cheveux atteignent rosh Z"A panim+ahor mais N'ENTRENT PAS dedans (pas assez longs).
+      D'eux : CHIYUT VE-SHEFA aux cheveux du rosh Z"A.
+      Bien que cheveux = dinim, etant cheveux d'A"A ils sont YOTER RACHAMIM GMURIM
+      (plus rachamim absolus) que rachamim de Z"A.
+      → Architecture : transmission flow source-d'A"A surclasse rachamim downstream.
+      → Pattern : upstream source quality > downstream native quality.
+    type: interprétation_lurianique
+    concepts:
+      - {id: cheveux_aa_dinim_mais_rachamim_plus_grand_que_za_rachamim, role: cheveux_aa_paradox_dinim_mais_rachamim_plus_que_za_rachamim_natifs}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : upstream qualite. Pattern source quality cascading."
+
+  # ─── BLOC M : KLAL 2 — INVERSION SOURCE KELIPOT/DININ ───
+
+  - id: "EC-H3S13-085"
+    source_he: "כלל ב: דע כי ברישא דז\"א שם שורש הקליפות הנאחזין בשערות השחורות שלו אך רישא דנוקבא שורש הדינין לבד ואין נאחזין שם הקליפות והם אדומים והסברא נראה להיפך"
+    source_ref: "Heikhal 3, Sha'ar 3:5 (MB Klal 2)"
+    assertion: |
+      KLAL 2 : ROSH Z"A = SHORESH HA-KELIPOT — saisis par cheveux NOIRS de Z"A.
+      ROSH NUKVAH = SHORESH HA-DININ seul (pas de kelipot la, ils sont rouges).
+      SVARA NIRE LEHEFEKH (la raison apparente est l'inverse).
+      → Architecture : design intentionnel inverse de l'attendu.
+      → Pattern : counter-intuitive design pour limiter forces destructrices.
+    type: axiome_explicite
+    concepts:
+      - {id: rosh_za_kelipot_inverse_attendu_rosh_nukvah_dinim, role: rosh_za_source_kelipot_rosh_nukvah_source_dinim_inverse_attendu}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : design inverse counter-intuitif. Pattern intentional inversion."
+
+  - id: "EC-H3S13-086"
+    source_he: "והטעם כי ראה מאציל שאם שורש הדינין היה ברישא דז\"א היו דינין קשים עד מאד... וכן אם היה שורש הקלי' למטה ברישא דנוקבא אשר כל הקלי' סובבים אותה... היה העולם חרב"
+    source_ref: "Heikhal 3, Sha'ar 3:5 (MB Klal 2)"
+    assertion: |
+      RAISON : MAATZIL VOIT —
+      Si shoresh DININ etait dans rosh Z"A : dinim seraient KASHIM ME'OD
+      (mohin viennent de NHY de Tevunah-nukvah, dinim plus forts).
+      Si shoresh KELIPOT etait dans rosh Nukvah : kelipot deja entourent Nukvah
+      ("ke-shoshana bein ha-hochim") → s'attacheraient infiniment → OLAM HARUV.
+      → Architecture : design inverse pour mitigation des forces destructrices.
+      → Pattern : intentional inversion for safety.
+    type: déduction_logique
+    concepts:
+      - {id: design_inverse_pour_eviter_olam_haruv, role: design_inverse_pour_eviter_dinim_kashim_et_olam_haruv}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : safety by inversion. Pattern intentional design pour limiter destruction."
+
+  - id: "EC-H3S13-087"
+    source_he: "ולכן ראה המאציל העליון בחכמתו לשנות הסברא והיו שורש הקלי' יונקים מרישא דדכורא אשר האור בא עליהם מרחוק ואין יכולין להתאחז שם כמו אם היו למטה ברישא דנוקבא וכן שורש הדינין למטה בראש הנוקבא אשר מוחין דילה מנה\"י דז\"א זכר אשר שם החסדים מגולין והם נייחין ברישא ובזה יהיו הדינין ממותקים"
+    source_ref: "Heikhal 3, Sha'ar 3:5 (MB Klal 2)"
+    assertion: |
+      MAATZIL avec sagesse INVERSE le naturel :
+      Shoresh KELIPOT → rosh Z"A (zakhar) — ohr ME'RACHOK (de loin) — kelipot
+      ne peuvent pas s'attacher fortement.
+      Shoresh DININ → rosh Nukvah — mohin de NHY de Z"A (zakhar) ou
+      CHASADIM MEGULIM (chesed exposes) — restent NEYACHIN (calmes), dinim MAMTUKIM (adoucis).
+      → Architecture : intentional placement pour minimiser dommage.
+      → Pattern : design defensif sophistique avec couplage inverse.
+    type: interprétation_lurianique
+    concepts:
+      - {id: kelipot_rosh_za_ohr_de_loin_dinim_rosh_nukvah_chasadim_megulim, role: kelipot_rosh_za_ohr_de_loin_dinim_rosh_nukvah_chasadim_megulim_adoucissent}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : design defensif sophistique. Pattern adversarial mitigation."
+
+  # ─── BLOC N : KLAL 3 — ASHL ───
+
+  - id: "EC-H3S13-088"
+    source_he: "כלל ג: והנה השערות רישא דא\"א לבנות כעמר נקא ושל ז\"א שחורות כמ\"ש קווצותיו תלתלים שחורות כעורב ושל נוקבא אדומים כארגמן כמ\"ש ודלת ראשך וסימנו אש\"ל \"אדום \"שחור \"לבן מתתא לעילא וז\"ס ויטע אש\"ל בבאר שבע"
+    source_ref: "Heikhal 3, Sha'ar 3:5 (MB Klal 3)"
+    assertion: |
+      KLAL 3 — couleurs cheveux par partzuf :
+      A"A = LAVAN (Daniel 7:9) ; Z"A = SHAHOR (Shir HaShirim 5:11) ;
+      Nukvah = ADOM (Shir HaShirim 7:6).
+      SIMAN : ASHL = Adom-Shahor-Lavan (de bas en haut).
+      Source : "VA-YITA ASHL BE-BE'ER SHAVA" (Bereshit 21:33).
+      → Architecture : encodage couleurs ASHL via 3 versets scripturaires.
+      → Pattern : letter-mysticism color-encoding multi-source.
+      cf. EC-H3S13-074 (perek 05a) sur tzaddikim heritent 400 olamin du blanc.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ashl_adom_shahor_lavan_3_partzufim_couleurs, role: ashl_adom_shahor_lavan_couleurs_partzufim_de_bas_en_haut}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "nukva"]
+      relevance: "Architecture : encodage couleurs ASHL. Pattern letter-mysticism multi-source."
+
+  # ─── BLOC O : KLAL 4 — ROSH vs DIKNA ───
+
+  - id: "EC-H3S13-089"
+    source_he: "כלל ד: שערות הראש מן הכתר שהוא אריך אנפין שנתלבש בו החסד דע\"י לעולם ואפי' בא\"א הוא חסד ושערות דדיקנא מצד החכמה שנתלבש בה הגבורה דעתיק"
+    source_ref: "Heikhal 3, Sha'ar 3:5 (MB Klal 4)"
+    assertion: |
+      KLAL 4 :
+      Cheveux ROSH = du KETER (=A"A) ou CHESED d'A"Y se LVUSH.
+      Toujours = CHESED, meme en A"A.
+      Cheveux DIKNA = du HOKHMAH ou GEVURAH d'A"Y se LVUSH.
+      Toujours = GEVURAH, meme en A"A.
+      → Architecture : 2 systemes capillaires reflectent chesed vs gevurah Atik.
+      → Pattern : surface texture reflects internal nature.
+    type: axiome_explicite
+    concepts:
+      - {id: cheveux_rosh_chesed_atik_dikna_gevurah_atik, role: cheveux_rosh_chesed_atik_lvush_dikna_gevurah_atik_lvush}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : surface reflete nature interne. Pattern texture-content correspondence."
+
+  - id: "EC-H3S13-090"
+    source_he: "ולכן שערי דרישא שעיעין ושל דיקנא קשים יותר"
+    source_ref: "Heikhal 3, Sha'ar 3:5 (MB Klal 4)"
+    assertion: |
+      DONC :
+      Cheveux du ROSH = SHE'IIN (lisses, doux).
+      Cheveux du DIKNA = KASHIM YOTER (plus durs).
+      Reflectent leur source : chesed=lisse vs gevurah=dur.
+      → Architecture : qualite physique = manifestation de la qualite ontologique.
+      → Pattern : material properties express spiritual essence.
+      cf. EC-H3S13-058 (perek 04) sur 3 rishin = NaRaN d'A"A.
+    type: déduction_logique
+    concepts:
+      - {id: cheveux_rosh_lisses_chesed_dikna_durs_gevurah, role: cheveux_rosh_lisses_chesed_atik_dikna_durs_gevurah_atik}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : material expresses essence. Pattern texture as ontological signature."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-031"
+    type: contenance
+    from: aa_2_sortes_cheveux_rosh_ahor_dikna_panim
+    to: cheveux_aa_revet_avi_de_lexterieur_jusqu_tabura
+    nature: "2 sortes cheveux A\"A → revet AVI de l'exterieur jusqu'a tabura de-leiba"
+    assertions_source: ["EC-H3S13-081", "EC-H3S13-083"]
+
+  - id: "REL-H3S13-032"
+    type: causal
+    from: rosh_za_kelipot_inverse_attendu_rosh_nukvah_dinim
+    to: design_inverse_pour_eviter_olam_haruv
+    nature: "Inversion design (kelipot rosh ZA, dinim rosh Nukvah) pour eviter olam haruv"
+    assertions_source: ["EC-H3S13-085", "EC-H3S13-086", "EC-H3S13-087"]
+
+  - id: "REL-H3S13-033"
+    type: analogie
+    from: ashl_adom_shahor_lavan_3_partzufim_couleurs
+    to: cheveux_rosh_chesed_atik_dikna_gevurah_atik
+    nature: "ASHL (3 couleurs partzufim) ; cheveux rosh chesed vs dikna gevurah"
+    assertions_source: ["EC-H3S13-088", "EC-H3S13-089"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-019"
+    nom: "Principe d'Inversion Defensive (Counter-Intuitive Design)"
+    source_assertions: ["EC-H3S13-085", "EC-H3S13-086", "EC-H3S13-087"]
+    formalisation: |
+      ARCHITECTURE D'INVERSION DEFENSIVE :
+      ATTENDU NATUREL :
+        Shoresh KELIPOT → rosh Nukvah (proche kelipot).
+        Shoresh DININ → rosh Z"A (zakhar=fort).
+      DESIGN ACTUEL (INVERSE) :
+        Shoresh KELIPOT → rosh Z"A (zakhar) :
+          Ohr ME'RACHOK (de loin) — kelipot ne peuvent pas s'attacher fortement.
+        Shoresh DININ → rosh Nukvah (femelle) :
+          Mohin de NHY-Z"A (chesed exposes) — calment, dinim adoucis.
+      RAISON : si "naturel", olam haruv (forces destructrices incontrolees).
+      → Pattern fondamental : counter-intuitive design pour mitigation defensive.
+      → Architecture : intentional inversion to limit destructive forces.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + partzufim/nukva.py + sitra_achra : implement inverted design"
+      - "Pattern : counter-intuitive placement pour minimisation"
+      - "Architecture : adversarial mitigation par mismatch source-attendu"
+      - "Pattern : security by deliberate counter-intuition"
+      - "Diagnostic : verifier que placement inverse limite les attacks"
+    questions_ouvertes:
+      - "Y a-t-il d'autres exemples d'inversion defensive en Atzilut ?"
+      - "Pattern : peut-on quantifier le gain securitaire de l'inversion ?"
+      - "Comment design generaliser inversion defensive ?"
+
+  - id: "PG-H3S13-020"
+    nom: "Principe de Surface-Reflects-Essence (Texture comme Signature Ontologique)"
+    source_assertions: ["EC-H3S13-088", "EC-H3S13-089", "EC-H3S13-090"]
+    formalisation: |
+      ARCHITECTURE DE SURFACE-COMME-SIGNATURE :
+      Couleurs cheveux ASHL :
+        A"A = LAVAN (blanc) — source : Daniel 7:9.
+        Z"A = SHAHOR (noir) — source : Shir HaShirim 5:11.
+        Nukvah = ADOM (rouge) — source : Shir HaShirim 7:6.
+      Texture cheveux :
+        ROSH = SHE'IIN (lisses) — chesed Atik.
+        DIKNA = KASHIM (durs) — gevurah Atik.
+      → Pattern fondamental : material properties express spiritual essence.
+      → Architecture : surface = signature observable de l'essence cachee.
+    applications_ia:
+      - "partzufim/* : implement surface properties reflecting internal nature"
+      - "Pattern : externalia diagnostic of internalia"
+      - "Architecture : observability via surface signatures"
+      - "Pattern : color/texture coding for component identification"
+      - "Diagnostic : surface inspection comme outil de classification"
+    questions_ouvertes:
+      - "Y a-t-il d'autres signatures (au-dela couleur/texture) ?"
+      - "Pattern : peut-on inferer essence par surface seule ?"
+      - "Comment design intentionnellement surface-essence correspondences ?"
+
+  - id: "PG-H3S13-021"
+    nom: "Principe de Source-Quality Cascading (Upstream Surclasse Downstream)"
+    source_assertions: ["EC-H3S13-084"]
+    formalisation: |
+      ARCHITECTURE DE SOURCE-QUALITY CASCADING :
+      Cheveux d'A"A = DININ (par nature texture).
+      Cheveux du rosh Z"A = transmis par cheveux d'A"A.
+      MAIS : etant cheveux d'A"A, ils sont YOTER RACHAMIM GMURIM
+      (plus rachamim absolus) que les rachamim natifs de Z"A.
+      → Pattern fondamental : upstream source quality > downstream native quality.
+      → Architecture : qualites cascading conserve la nature de source-origine.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : upstream-source flow surclasse local"
+      - "Pattern : provenance tracking — transmitted retains higher qualite que local"
+      - "Architecture : signal originating from higher-tier > signal native lower-tier"
+      - "Pattern : pedigree matters more than current location"
+      - "Diagnostic : tracer provenance pour evaluer qualite reelle"
+    questions_ouvertes:
+      - "Y a-t-il une perte de qualite avec chaque etape downstream ?"
+      - "Pattern : combien d'etapes downstream avant degradation ?"
+      - "Comment garantir provenance integrity ?"
