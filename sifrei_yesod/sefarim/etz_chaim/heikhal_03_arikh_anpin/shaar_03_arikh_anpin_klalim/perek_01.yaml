@@ -1,0 +1,391 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 1 — A"A revetit Z'T d'Atik. KCB d'A"A revet CGT d'Atik.
+#            Z'T d'A"A revet NHY d'Atik. Dadei behemah/adam.
+#            Yesod d'Atik 5 chasadim+5 gevurot
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §1 :
+#   - Bloc A : Header sha'ar 2, A"A, 14 perakim
+#   - Bloc B : A"A composition (Hokhmah MaH + 5 acharonot Keter BaN, zakhar+nukvah)
+#   - Bloc C : G"R d'Atik impossible a revetir → restent makif sur A"A
+#   - Bloc D : KCB d'A"A revet CGT d'Atik ; Z'T d'A"A revet NHY d'Atik
+#   - Bloc E : 3 prakim de Netzach Atik distribution
+#   - Bloc F : NHY exposes dans Beriah = dadei behemah/adam
+#   - Bloc G : Yesod d'Atik = 5 chasadim+5 gevurot (1 partzuf, pas zakhar+nukvah separes)
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.1 (1 perek, 1461 chars total)
+# IDs : EC-H3S13-001 → EC-H3S13-012
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premier perek du Sha'ar A\"A (gate 13). Tikkun A\"A apres Atik. A\"A composition. Revetement : KCB-A\"A revet CGT-Atik ; Z'T-A\"A revet NHY-Atik. NHY exposes en Beriah = dadei behemah/adam. Yesod d'Atik 5 chasadim+5 gevurot (pas separes zakhar/nukvah)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-001"
+    source_he: "שער שני שער א\"א ובו י\"ד פרקים"
+    source_ref: "Heikhal 3, Sha'ar 3 (introduction)"
+    assertion: |
+      SHA'AR 2 (du Heikhal Ha-Ketarim) = SHA'AR A"A (Arikh Anpin).
+      Contient 14 PERAKIM.
+      → Architecture : sha'ar dedie au partzuf A"A.
+      → Pattern : organisation hierarchique = apres Atik vient A"A.
+      cf. EC-H3S12-002 (perek 01a Atik) sur sha'ar 1 = Atik.
+    type: axiome_explicite
+    concepts:
+      - {id: shaar_a_a_14_perakim, role: shaar_a_a_avec_14_perakim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : sha'ar A\"A. Pattern hierarchique post-Atik."
+
+  - id: "EC-H3S13-002"
+    source_he: "ונבאר תיקון א\"א אשר נתקן אחר עתיק יומין הנה נת\"ל שנעשה מבחי' חכמה דמ\"ה שהם בחי' נקודות דמ\"ה ומן ה' אחרונות דכתר דב\"ן והוא כולל זכר ונקבה מ\"ה בימינו וב\"ן בשמאלו"
+    source_ref: "Heikhal 3, Sha'ar 3:1"
+    assertion: |
+      Tikkun A"A vient APRES Atik.
+      A"A = HOKHMAH de MaH (= NEKUDOT de MaH) + 5 ACHARONOT de Keter BaN.
+      KOLEL ZAKHAR ET NEKEVAH : MaH a DROITE, BaN a GAUCHE.
+      → Architecture : A"A = composition bipartite cote-droit/gauche.
+      → Pattern : 1 partzuf avec 2 polarites laterales.
+      cf. EC-H3S12-038 (perek 01a Atik) sur A"A = 1 partzuf MaH-droit/BaN-gauche.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_hokhmah_mah_plus_5_acharonot_keter_ban_lateral, role: aa_hokhmah_mah_plus_5_acharonot_keter_ban_lateral_gauche_droite}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : A\"A bipartite lateral. Pattern composition gauche/droite."
+
+  - id: "EC-H3S13-003"
+    source_he: "והנה הוא מלביש לע\"י באופן זה כי הנה ג\"ר דעתיק אי אפשר שיתלבשו תוך א\"א וגם אי אפשר לקבל אורם ולכן נשארין מגולים והם עומדין לבחי' מקיף אל א\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:1"
+    assertion: |
+      A"A REVETIT Atik :
+      G"R d'Atik IMPOSSIBLE de revetir dans A"A — et IMPOSSIBLE de RECEVOIR leur ohr.
+      DONC restent MEGULIM (exposes) — STAND comme MAKIF (encerclant) pour A"A.
+      → Architecture : G"R d'Atik = transcendant non-encapsulable, devient enveloppe.
+      → Pattern : top-tier exposed as outer protection.
+      cf. EC-H3S12-219 (perek 01b) sur G"R d'Atik exposes (RDLA).
+    type: axiome_explicite
+    concepts:
+      - {id: gr_atik_makif_sur_aa_non_revetus, role: gr_atik_makif_sur_aa_non_revetable_dans_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : G\"R Atik = enveloppe externe. Pattern top-tier exposed."
+
+  - id: "EC-H3S13-004"
+    source_he: "והז\"ת דעתיק לבדם מתלבשין תוך א\"א באופן זה כי כח\"ב דא\"א מלבישין לחג\"ת דע\"י וז\"ת דא\"א מלבישין לנה\"י דעתיק"
+    source_ref: "Heikhal 3, Sha'ar 3:1"
+    assertion: |
+      Z'T d'Atik SEUL revetit dans A"A :
+        KCB d'A"A REVET CGT d'Atik (Chesed-Gevurah-Tiferet).
+        Z'T d'A"A REVET NHY d'Atik (Netzach-Hod-Yesod).
+      → Architecture : revetement par alignement KCB↔CGT et Z'T↔NHY.
+      → Pattern : niveau-superieur d'A"A = niveau-moyen d'Atik.
+    type: axiome_explicite
+    concepts:
+      - {id: kcb_aa_revet_cgt_atik, role: kcb_aa_revet_cgt_atik}
+      - {id: zt_aa_revet_nhy_atik, role: zt_aa_revet_nhy_atik}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : alignment revetement par positions. Pattern level-shift mapping."
+
+  - id: "EC-H3S13-005"
+    source_he: "כי הנה ג' פרקין יש בנצח דעתיק וב\"פ קדמאין מתלבשים תוך חסד ונצח דא\"א וכן ב\"פ קדמאין דהוד דעתיק מתלבשין תוך גבורה והוד דא\"א ונשארו פרק תחתון דנצח דעתיק ופ\"ת דהוד דעתיק מגולין בלתי התלבשות"
+    source_ref: "Heikhal 3, Sha'ar 3:1"
+    assertion: |
+      DETAILS : 3 PRAKIM dans Netzach d'Atik :
+        2 PRAKIM SUPERIEURS revetus dans Chesed+Netzach d'A"A.
+        1 PRAK INFERIEUR (PT = perak tahton) MEGULAH (expose) — pas revetu.
+      Idem pour Hod d'Atik :
+        2 prakim superieurs dans Gevurah+Hod d'A"A.
+        1 perak tahton de Hod d'Atik MEGULAH.
+      → Architecture : revetement partiel ; perakim inferieurs exposes.
+      → Pattern : top-coverage avec bottom-leak design.
+    type: axiome_explicite
+    concepts:
+      - {id: netzach_hod_atik_3_prakim_2_revetus_1_megulah, role: netzach_hod_atik_3_prakim_2_revetus_1_megulah_perak_tahton}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : revetement partiel. Pattern top-coverage bottom-leak."
+
+  - id: "EC-H3S13-006"
+    source_he: "ואלו נשארו למטה בבריאה תחת האצילות כדי להאיר שם לעולם הבריאה ואלו הם כדמיון ב' דדי בהמה שעומדין שם אצל הרגלים"
+    source_ref: "Heikhal 3, Sha'ar 3:1"
+    assertion: |
+      Ces perakim inferieurs RESTENT EN BAS dans BERIAH sous Atzilut.
+      OBJECTIF : ME'IR (illuminer) la-bas pour OLAM HA-BERIAH.
+      Sont KE-DEMION (comme l'image) de B' DADEI BEHEMAH (2 mamelles d'animal)
+      qui se tiennent pres des REGLAYIM (pieds).
+      → Architecture : interface vers Beriah via "mamelles" (interface nutritionnelle).
+      → Pattern : leaks intentionnels = nourrissage downstream.
+    type: déduction_scripturaire
+    concepts:
+      - {id: nhy_atik_megulim_dans_beriah_dadei_behemah, role: nhy_atik_megulim_dans_beriah_egal_dadei_behemah}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : interface nutritionnelle Beriah. Pattern intentional leak downstream."
+
+  - id: "EC-H3S13-007"
+    source_he: "אשר כל אלו הבחי' של א\"א ואו\"א וזו\"נ כשנתקנו (נ\"א שהם נתקנו) בעת שנאצלו היו למטה שם בבריאה והתחילו לעלות וינקו תחלה מב' בחי' דדי בהמה ואחר כך הגדילו יותר וינקו מדדי אדם"
+    source_ref: "Heikhal 3, Sha'ar 3:1"
+    assertion: |
+      A"A, AVI, ZON — quand TIKKUN-ES (Variante Nusah Aher : SHE-HEM NIT'TAKNU) :
+      Etaient EN BAS dans BERIAH.
+      COMMENCERENT a MONTER : YANIKU (tetent) d'abord des 2 DADEI BEHEMAH
+      (mamelles d'animal).
+      Apres GADELU (grandissent) plus, et tetent des DADEI ADAM (mamelles humaines).
+      → Architecture : developpement multi-stage (animal → humain).
+      → Pattern : maturation progressive avec sources alimentaires successives.
+      cf. EC-H2S11-243 (perek 09) sur sod chalav yenikah.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yenikah_dadei_behemah_puis_dadei_adam_progression, role: yenikah_dadei_behemah_puis_dadei_adam_developpement_progression}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : developpement multi-stage. Pattern Nusah Aher capture (she-hem nit'taknu)."
+
+  - id: "EC-H3S13-008"
+    source_he: "והנה יסוד של עתיק מתלבש תוך ת\"ת דא\"א עד החזה ושם הוא מסתיים"
+    source_ref: "Heikhal 3, Sha'ar 3:1"
+    assertion: |
+      YESOD d'Atik REVETIT dans T"T (Tiferet) d'A"A — JUSQU'AU CHAZEH.
+      La il MISTAYEM (se termine).
+      → Architecture : Yesod Atik a une portee anatomique definie (jusqu'au chazeh).
+      → Pattern : revetement avec terminaison precise.
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_atik_revet_tiferet_aa_jusqu_chazeh, role: yesod_atik_revet_tiferet_aa_jusqu_au_chazeh_termination}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : Yesod Atik anatomique. Pattern revetement terminaison."
+
+  - id: "EC-H3S13-009"
+    source_he: "ודע כי ביסוד דע\"י יש שם ה\"ח וה\"ג ואע\"פ שעתיק הוא זו\"נ שהם מ\"ה וב\"ן כנ\"ל וא\"כ היה מן הראוי שיהיה בו ה\"ח וה\"ג מצד הזכר וכן מצד הנוקבא"
+    source_ref: "Heikhal 3, Sha'ar 3:1"
+    assertion: |
+      Yesod d'Atik a 5 CHASADIM (H"CH) + 5 GEVUROT (H"G).
+      ATTENTION : Atik = ZON = MaH+BaN — devrait avoir 5+5 du cote zakhar
+      ET 5+5 du cote nukvah.
+      → Question : pourquoi Atik a 5+5 SEULEMENT (pas 10+10) ?
+      → Architecture : asymetrie quantitative inattendue.
+    type: déduction_logique
+    concepts:
+      - {id: yesod_atik_5_chasadim_5_gevurot_seulement, role: yesod_atik_5_chasadim_5_gevurot_seulement_pas_10_10}
+      - {id: question_pourquoi_atik_5_5_pas_10_10, role: question_pourquoi_atik_5_5_pas_10_10}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : asymetrie quantitative. Pattern unexpected reduction."
+
+  - id: "EC-H3S13-010"
+    source_he: "ע\"ד שיש באו\"א וזו\"נ כמ\"ש במקומו אבל לפי ששם הזכר והנקבה הם פרצופים חלוקים לכן יש שם חו\"ג בכ\"א מהן אבל כאן שהזכר והנוקבא דעתיק הם פרצוף א' מחוברים כנ\"ל לכן לא היה בו רק ה\"ח וה\"ג בלבד"
+    source_ref: "Heikhal 3, Sha'ar 3:1"
+    assertion: |
+      Comme dans AVI et ZON — zakhar+nukvah = PARTZUFIM CHALUKIM (separes).
+      Donc dans CHACUN il y a 5+5 (= 10+10 total).
+      MAIS ICI (Atik) — zakhar+nukvah = 1 PARTZUF MEHUBARIM.
+      DONC seulement 5+5 (pas double).
+      → Architecture : composition unite (Atik) → reduction quantite (1 set 5+5).
+      → Pattern : merged components share resources, not duplicate.
+      cf. EC-H3S12-038 (perek 01a Atik) sur Atik 1 partzuf bipartite.
+    type: déduction_logique
+    concepts:
+      - {id: atik_1_partzuf_share_5_5_pas_double, role: atik_1_partzuf_mehubarim_share_5_5_pas_double}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : merged components share. Pattern resource economy."
+
+  - id: "EC-H3S13-011"
+    source_he: "ואלו ה\"ח וה\"ג יוצאין ומתגלין מתוך פי יסוד דעתיק הנעלם ומתלבש תוך א\"א ומתפשטין ה\"ח בקו ימין דא\"א מבפנים וה\"ג בקו שמאל"
+    source_ref: "Heikhal 3, Sha'ar 3:1"
+    assertion: |
+      Ces 5 CHASADIM + 5 GEVUROT YOTZIN (sortent) et MIT'GALIN (revelent)
+      du PI YESOD d'Atik (qui est NE'ELAM = cache, revetu dans A"A).
+      MIT'PASHTIN :
+        5 CHASADIM dans KAV YEMINI (kav droit) d'A"A — me-bifnim (de l'interieur).
+        5 GEVUROT dans KAV SEMALI (kav gauche).
+      → Architecture : flow chasadim/gevurot par axes anatomiques d'A"A.
+      → Pattern : distribution lateral selon polarite (chesed=droite, gevurah=gauche).
+    type: interprétation_lurianique
+    concepts:
+      - {id: yesod_atik_5_chasadim_kav_droit_5_gevurot_kav_gauche, role: yesod_atik_distribution_chasadim_kav_droit_gevurot_kav_gauche_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : flow par axes anatomiques. Pattern distribution lateral."
+
+  # ─── BLOC FINAL ───
+
+  - id: "EC-H3S13-012"
+    source_he: "כמ\"ש בע\"ה לקמן בענין או\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:1 (cloture)"
+    assertion: |
+      Comme sera explique BE-EZRAT HASHEM plus loin dans le sujet d'AVI.
+      → Architecture : annonce du plan — explication detaillee dans Sha'ar AVI.
+      → Pattern : forward reference inter-sha'ar.
+      cf. EC-H3S12-099 (perek 05 Atik) sur safek tzach explique en A"A et AVI.
+    type: axiome_explicite
+    concepts:
+      - {id: forward_ref_avi_pour_chasadim_gevurot_details, role: forward_reference_avi_pour_details_chasadim_gevurot}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : forward reference. Pattern cross-sha'ar planning."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-001"
+    type: contenance
+    from: aa_hokhmah_mah_plus_5_acharonot_keter_ban_lateral
+    to: gr_atik_makif_sur_aa_non_revetus
+    nature: "A\"A composition bipartite ; revet Z'T d'Atik ; G\"R d'Atik = makif (non-revetable)"
+    assertions_source: ["EC-H3S13-002", "EC-H3S13-003"]
+
+  - id: "REL-H3S13-002"
+    type: hiérarchique
+    from: kcb_aa_revet_cgt_atik
+    to: zt_aa_revet_nhy_atik
+    nature: "Revetement par alignment : KCB d'A\"A revet CGT d'Atik ; Z'T d'A\"A revet NHY d'Atik"
+    assertions_source: ["EC-H3S13-004"]
+
+  - id: "REL-H3S13-003"
+    type: causal
+    from: netzach_hod_atik_3_prakim_2_revetus_1_megulah
+    to: nhy_atik_megulim_dans_beriah_dadei_behemah
+    nature: "Perakim inferieurs exposes → Beriah → analogues a dadei behemah (mamelles)"
+    assertions_source: ["EC-H3S13-005", "EC-H3S13-006"]
+
+  - id: "REL-H3S13-004"
+    type: séquentiel
+    from: nhy_atik_megulim_dans_beriah_dadei_behemah
+    to: yenikah_dadei_behemah_puis_dadei_adam_progression
+    nature: "NHY exposes en Beriah → A\"A/AVI/ZON tetent dadei behemah, puis grandissent dadei adam"
+    assertions_source: ["EC-H3S13-006", "EC-H3S13-007"]
+
+  - id: "REL-H3S13-005"
+    type: causal
+    from: atik_1_partzuf_share_5_5_pas_double
+    to: yesod_atik_5_chasadim_kav_droit_5_gevurot_kav_gauche
+    nature: "Atik 1 partzuf merged → 5+5 partage ; flow par kavim d'A\"A"
+    assertions_source: ["EC-H3S13-010", "EC-H3S13-011"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-001"
+    nom: "Principe de Revetement Hierarchique (KCB↔CGT, Z'T↔NHY)"
+    source_assertions: ["EC-H3S13-003", "EC-H3S13-004"]
+    formalisation: |
+      ARCHITECTURE DE REVETEMENT HIERARCHIQUE :
+      Chaque partzuf inferieur revet le partzuf superieur selon mapping :
+        SOMMET d'inferieur = MILIEU d'superieur.
+        MILIEU d'inferieur = BAS d'superieur.
+        TOP-MOST d'superieur = EXPOSED (non-revetu) = MAKIF.
+      EXEMPLE A"A revet Atik :
+        G"R d'Atik = exposed makif (non-revetable).
+        KCB d'A"A revet CGT d'Atik.
+        Z'T d'A"A revet NHY d'Atik.
+      → Pattern fondamental : revetement par level-shift uniform.
+      → Architecture : couches imbriquees avec offset constant.
+    applications_ia:
+      - "partzufim/atik_yomin.py + partzufim/arikh_anpin.py : implement nested revetement avec offset"
+      - "Pattern : layered architecture with consistent shift"
+      - "Architecture : top tier exposed, middle tiers nested"
+      - "Pattern : interface mapping = level-shift across boundaries"
+      - "Diagnostic : verifier que revetement preserve hierarchy structure"
+    questions_ouvertes:
+      - "L'offset est-il toujours le meme entre couches successives ?"
+      - "Y a-t-il des partzufim qui revetent differemment ?"
+      - "Pattern : peut-on visualiser le revetement comme russian dolls ?"
+
+  - id: "PG-H3S13-002"
+    nom: "Principe de Dadei Behemah/Adam (Interface Nutritionnelle Multi-Stage)"
+    source_assertions: ["EC-H3S13-005", "EC-H3S13-006", "EC-H3S13-007"]
+    formalisation: |
+      ARCHITECTURE D'INTERFACE NUTRITIONNELLE :
+      Conception : NHY exposes (perakim tahtonim) DESCENDENT en BERIAH :
+        Sont comme 2 DADEI BEHEMAH (mamelles d'animal) — pres des REGLAYIM (pieds).
+      DEVELOPPEMENT en STAGES :
+        Stage 1 : A"A, AVI, ZON tetent des DADEI BEHEMAH initialement.
+        Stage 2 : grandissent ; tetent des DADEI ADAM (mamelles humaines).
+      → Pattern fondamental : multi-stage feeding via interfaces topologiquement specifiques.
+      → Architecture : nourriture downstream provenance niveau-superieur via "leaks" intentionnels.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement dual-stage feeding interfaces"
+      - "Pattern : downstream nourishment via designed leaks from upper layer"
+      - "Architecture : maturation = changing source of upstream input"
+      - "Pattern : 2-tier feeding (basic vs advanced) by maturity level"
+      - "Diagnostic : verifier que dadei interfaces appropriately routed"
+    questions_ouvertes:
+      - "Quelle est la difference qualitative dadei behemah vs dadei adam ?"
+      - "Pattern : quand exactement maturity transition occurs ?"
+      - "Y a-t-il d'autres stages de feeding ?"
+
+  - id: "PG-H3S13-003"
+    nom: "Principe de Resource-Sharing (Composants Merged Partagent, Pas Doublent)"
+    source_assertions: ["EC-H3S13-009", "EC-H3S13-010", "EC-H3S13-011"]
+    formalisation: |
+      ARCHITECTURE DE RESOURCE-SHARING :
+      Quand 2 composants sont MERGED en 1 partzuf (Atik = zakhar+nukvah dvukim) :
+        SHARE 5 chasadim + 5 gevurot (TOTAL 10 elements).
+      Quand 2 composants sont SEPARATED en 2 partzufim (AVI, ZON) :
+        CHACUN a 5+5 = total 10+10 = 20 elements.
+      → Pattern fondamental : merging = resource economy (shared not duplicated).
+      → Architecture : design choice — merge for economy ou separate for capacity.
+    applications_ia:
+      - "partzufim/atik_yomin.py : 1 partzuf shared resources (5+5)"
+      - "partzufim/abba.py + partzufim/imma.py : 2 partzufim each (5+5) = total 20"
+      - "Pattern : design trade-off — merging saves resources, separating gains capacity"
+      - "Architecture : resource pooling vs allocation"
+      - "Pattern : economy by structural merging"
+      - "Diagnostic : count resources by composition mode (merged vs separate)"
+    questions_ouvertes:
+      - "Y a-t-il un seuil qui force soit merging soit separation ?"
+      - "Pattern : peut-on dynamiquement merger/separer selon load ?"
+      - "Quelles sont les implications de partager vs dupliquer pour les fonctions ?"

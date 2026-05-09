@@ -1,0 +1,19 @@
+sefer_id: "etz_chaim"
+heikhal: 3
+shaar_number: 3
+shaar_name_he: "שער אריך אנפין"
+shaar_name_fr: "Porte d'Arikh Anpin (klalim)"
+sefaria_gate: 13
+nombre_perakim: 14
+sujet_principal: "Sha'ar Arikh Anpin (Heikhal 3, Sefer Etz Chaim 13). 14 perakim systematiques sur le partzuf A\"A : tikkun (apres Atik), structure interne (Keter+Hokhmah, Bina au Garon), revetement de Z'T d'Atik, gulgulta+moach setima, eynayim, chotem, peh, dadei behemah/adam (NHY exposes en Beriah). Auto-transposition Sefaria gate 13 — distincte de shaar_02_dikna qui couvre tikkunei dikna manuels."
+concepts_cles:
+  - arikh_anpin
+  - tikkun_aa_apres_atik
+  - hokhmah_mah_plus_5_acharonot_keter_ban
+  - revetement_zt_atik
+  - gr_atik_makif_sur_aa
+  - kcb_aa_revet_cgt_atik
+  - zt_aa_revet_nhy_atik
+  - dadei_behemah_dadei_adam
+  - yesod_atik_5_chasadim_5_gevurot
+note: "Auto-transposition systematique Sefer Etz Chaim gate 13 (Sha'ar Arikh Anpin) — 14 perakim. Distincte de shaar_02_dikna (manuel, focus tikkunei dikna)."
