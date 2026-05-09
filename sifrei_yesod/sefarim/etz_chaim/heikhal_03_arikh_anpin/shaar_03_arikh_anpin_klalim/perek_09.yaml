@@ -1,0 +1,426 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 9 — 13 Tikkunei Dikna mapping. Mikha (interior shefa) +
+#            Ki Tisa (cheveux/canaux). 2 Mazlot Notzer+Ve-Nakeh
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §9 :
+#   - Bloc A : 13 middot Mikha = shefa pnimi MS dans cheveux
+#   - Bloc B : 13 middot Ki Tisa = cheveux/tzinurot
+#   - Bloc C : 9 middot ZA aussi (Sheloah Lekha)
+#   - Bloc D : Mapping anatomique 13 t"d sur visage A"A
+#   - Bloc E : T8=Notzer Hesed=Mazla Kadisha (sous bouche, en bas)
+#   - Bloc F : 2 Mazlot (T8 et T13) = dukhra+nukvah
+#   - Bloc G : Abba teste de T8 ; Imma de T13
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.9 (1 perek, 2779 chars)
+# IDs : EC-H3S13-132 → EC-H3S13-145
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 9
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "13 Tikkunei Dikna detailed. Mikha 7:18-20 = 13 middot interior shefa MS. Ki Tisa Shemot 34:6-7 = 13 middot cheveux/tzinurot. 9 middot pour ZA (Sheloah Lekha Bamidbar 14). Mapping anatomique 13 t\"d sur visage A\"A. T8=Notzer Hesed=Mazla 1 (sous bouche), T13=Ve-Nakeh=Mazla 2. 2 Mazlot dukhra+nukvah ; Abba teste T8, Imma teste T13."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-132"
+    source_he: "אמנם פי' י\"ג מדות בסוד י\"ג ת\"ד דא\"א נבאר מקום הי\"ג תיקונים היכן הם בדיקנא ואמנם נמנה תחלה התיבות איך הם י\"ג"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      Explication 13 MIDDOT (vertus) en SOD 13 T"D (Tikkunei Dikna) d'A"A.
+      Expliquer place des 13 tikkunim dans dikna.
+      Compter d'abord les TEVOT (mots) — combien 13.
+      → Architecture : explication detaillee 13 t"d via 13 mots scripturaires.
+      → Pattern : letter-mysticism par enumeration mots.
+    type: axiome_explicite
+    concepts:
+      - {id: 13_middot_egal_13_tikkunei_dikna_aa, role: 13_middot_scripturaires_egal_13_tikkunei_dikna_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 13 middot mappes 13 t\"d. Pattern liturgique."
+
+  - id: "EC-H3S13-133"
+    source_he: "א' מי אל כמוך ב' נושא עון ג' ועובר על פשע ד' לשארית נחלתו ה' לא החזיק לעד אפו ו' כי חפץ חסד הוא ז' ישוב ירחמנו ח' יכבוש עונותינו ט' ותשליך במצולות ים כל חטאתם י' תתן אמת ליעקב י\"א חסד לאברהם י\"ב אשר נשבעת לאבותינו י\"ג מימי קדם"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      13 MIDDOT MIKHA (Mikhah 7:18-20) :
+      1.Mi El Kamokha 2.Nose Avon 3.Veever al Pesha 4.Le-Sheerit Nahalato
+      5.Lo Hechezik La'ad Apo 6.Ki Hafetz Hesed Hu 7.Yashuv Yerachamenu
+      8.Yikhbosh Avonoteinu 9.Ve-Tashlikh Be-Metzulot Yam Kol Hatatam
+      10.Titen Emet Le-Yaakov 11.Hesed Le-Avraham 12.Asher Nishbata Le-Avoteinu
+      13.Mimei Kedem.
+      → Architecture : 13 middot Mikha = mots distincts.
+      → Pattern : enumeration scriptural precis.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 13_middot_mikha_7_18_20, role: 13_middot_mikha_7_18_20_enumeration}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 13 middot Mikha enumere. Source liturgique."
+
+  - id: "EC-H3S13-134"
+    source_he: "ואמנם הי\"ג מדות אלו דמיכה הם השפע הפנימיות הנמשכין ממ\"ס בתוך שערות הזקן והם הנקראים שבחא דעתיקא"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      13 middot Mikha = SHEFA HA-PNIMIYUT (flux interieur) NIMSHEKHIN
+      (s'etendent) de MOHA SETIMA dans CHEVEUX du ZAKEN.
+      = appeles SHIVCHA D'ATIKA (louange d'Atika).
+      → Architecture : 13 middot Mikha = INTERIOR flow inside hairs.
+      → Pattern : interior content (Mikha) cached dans surfaces (cheveux).
+    type: interprétation_lurianique
+    concepts:
+      - {id: 13_middot_mikha_egal_shefa_pnimi_ms_cheveux, role: 13_middot_mikha_egal_shefa_pnimi_ms_dans_cheveux_zaken}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : interior content cached dans surface. Pattern hidden in visible."
+
+  - id: "EC-H3S13-135"
+    source_he: "אך שערות הזקן עצמו שהם הצינורות וכלים ומעברים שיריק המשחתא קדישא בהם הם י\"ג מדות שנזכרו בתורה בפרשה כי תשא"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      MAIS cheveux du zaken EUX-MEMES = TZINUROT (canaux) + KELIM + MA'AVRIM
+      (passages) qui versent MISHCHATA KADISHA (huile sainte) en eux.
+      = 13 middot mentionnes dans TORAH Parashat KI TISA (Shemot 34:6-7).
+      → Architecture : 13 middot Ki Tisa = SURFACE structures (cheveux).
+      → Pattern : interior (Mikha) flows through surface (Ki Tisa).
+    type: déduction_scripturaire
+    concepts:
+      - {id: 13_middot_ki_tisa_egal_cheveux_tzinurot_zaken, role: 13_middot_ki_tisa_shemot_34_egal_cheveux_tzinurot_zaken}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : surface structures = cheveux. Pattern interior-surface duality."
+
+  - id: "EC-H3S13-136"
+    source_he: "הם כמו [נ\"א נמי] י\"ג דז\"א כי כבר ידעת שאין בז\"א רק ט' והם של פ' שלח לך וכשמאירין בו י\"ג אלו אז נקרא בשמם והם ע\"ז הסדר אל א' רחום ב' וחנון ג' ארך ד' אפים ה' לפי שארך אפים מורה על ב' מדות יחד ולזה לא אמר ארך אף אלא אפים ורב חסד ו' ואמת ז' נוצר חסד ח' לאלפים ט' נושא עון י' ופשע י\"א וחטאה י\"ב ונקה י\"ג"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      ZA aussi a 13 middot — Variante (Nusah Aher) : "NAMI" (aussi).
+      Mais dans ZA il n'y a que 9 (par defaut) — middot de Sheloah Lekha (Bamidbar 14:18).
+      Quand 13 middot d'A"A ME'IRIN dans ZA — appelees par leurs noms :
+      1.El 2.Rachum 3.Ve-Hanun 4.Erekh 5.Apayim (compte 2 middot) 6.Ve-Rav Hesed
+      7.Ve-Emet 8.Notzer Hesed 9.La-Alafim 10.Nose Avon 11.Va-Pesha
+      12.Ve-Hata'a 13.Ve-Nakeh.
+      → Architecture : 13 middot Ki Tisa partagees A"A+ZA (par illumination).
+      → Pattern : transmission illumination des middot top-down.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 13_middot_ki_tisa_enumere_aa_za_par_illumination, role: 13_middot_ki_tisa_enumere_aa_za_par_illumination_top_down}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : illumination top-down 13 middot. Nusah Aher capture."
+
+  - id: "EC-H3S13-137"
+    source_he: "תחת שני פאתי הראש הם מתחילין ב' רישין דדיקנא והם קצרים ולא רחבים והם כנגד האזן וזהו תיקון א' נקרא אל"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      MAPPING ANATOMIQUE 13 t"d :
+      T1 EL : sous 2 PEAT HA-ROSH (cotes tete) — 2 RISHIN DIKNA debutants.
+      Courts, pas larges. KENEGED HA-OZEN (en face de l'oreille).
+      → Architecture : T1 = 2 rishin laterales en haut du dikna.
+      → Pattern : starting points position lateral haut.
+    type: axiome_explicite
+    concepts:
+      - {id: t1_el_2_rishin_lateraux_oznayim, role: t1_el_2_rishin_dikna_lateraux_haut_kenegued_oznayim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : T1 lateral haut. Pattern anatomical mapping start."
+
+  - id: "EC-H3S13-138"
+    source_he: "תיקון הב' והוא שורות השערות הגדלים בשפה עליונה על הפה לאורך וזהו רחום ג' וחנון הוא אותו ארחא שכנגד האמצעית החוטם ד' ארך הוא שורת שערות שתחת שפה התחתונה ה' אפים הוא ארחא תניינא המפסיק באמצע הזקן והוא מכוון נגד ארחא קדמאה שתחת החוטם"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      T2 RACHUM : SHUROT cheveux moustache (sefah elyonah).
+      T3 VE-HANUN : ARCHA centrale sous CHOTEM (nez).
+      T4 EREKH : shurah cheveux sous sefah tahtonah (levre inf).
+      T5 APAYIM : ARCHA TENINA (2eme) au milieu du dikna, alignee avec T3.
+      → Architecture : T2-T5 = cheveux autour bouche+nez (axes vertic+horiz).
+      → Pattern : symmetric bilateral organization.
+      cf. EC-H3S13-128 (perek 08) sur 13 makif panim = 13 t"d.
+    type: axiome_explicite
+    concepts:
+      - {id: t2_t5_cheveux_autour_bouche_nez, role: t2_t3_t4_t5_cheveux_organisation_autour_bouche_nez}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : T2-T5 organisation autour bouche-nez."
+
+  - id: "EC-H3S13-139"
+    source_he: "ו' ורב חסד הוא תחת תיקון קדמאה דא\"ל והוא סיום שיעור אותן השערות הקצרות של שער הזקן והוא במקום שהתחיל להתרחב מעט שהוא מקום התחלת עצם הלחיים עצמו שהוא יוצא כמין זוית תחת האזן ומשם ולמטה הוא רחב יותר משל מעלה וזהו נקרא ורב חסד וזה נמשך עד המקום שכנגד הפה"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      T6 VE-RAV HESED : sous T1 (El). Sium des cheveux courts.
+      Place ou commence elargissement (lehayim, joues).
+      Sortie comme ZAVIT (angle) sous l'oreille.
+      A partir : plus large qu'au-dessus. Atteint MAKOM KENEGED HA-PEH.
+      → Architecture : T6 = passage point haut → bas (elargissement).
+      → Pattern : transition zone at angular point.
+    type: axiome_explicite
+    concepts:
+      - {id: t6_ve_rav_hesed_zone_transition_elargissement_lehayim, role: t6_ve_rav_hesed_passage_haut_bas_zone_transition_elargissement_lehayim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : transition zone. Pattern angular passage."
+
+  - id: "EC-H3S13-140"
+    source_he: "ז' ואמת הם ב' הפנים החלקים מן השער תרין תפוחין קדישין"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      T7 VE-EMET : 2 PANIM HALAKIM (faces lisses) sans cheveux.
+      = TARIN TAPUHIN KADISHIN (2 pommes saintes) — = jou(es) lisses (sans cheveux).
+      → Architecture : T7 = INTERSTICES sans cheveux dans dikna (figure-ground).
+      → Pattern : void as defining feature.
+    type: axiome_explicite
+    concepts:
+      - {id: t7_ve_emet_2_tapuhin_kadishin_panim_halakim_sans_cheveux, role: t7_ve_emet_2_tapuhin_kadishin_2_pommes_saintes_panim_halakim_sans_cheveux}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : void as feature. Pattern figure-ground."
+
+  - id: "EC-H3S13-141"
+    source_he: "ח' נוצר חסד והוא נקרא מזלא קדישא והוא הזקן מכנגד הפה ולמטה שהוא כללות הזקן בכללותן בחיבור א'"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      T8 NOTZER HESED = MAZLA KADISHA = ZAKEN sous-bouche jusqu'au bas.
+      = KELALUT du zaken en CHIBUR EHAD (un seul bloc).
+      Ce qui est au-dessus = divise en 2 (par 2 tapuhin + chotem entre).
+      → Architecture : T8 = unified bottom-zaken vs divided top.
+      → Pattern : unified vs split section.
+      cf. Manuel transposition perek_07_ve_emet sur Vital perek 10 = T7+T8.
+    type: axiome_explicite
+    concepts:
+      - {id: t8_notzer_hesed_mazla_kadisha_kelalut_zaken_chibur, role: t8_notzer_hesed_mazla_kadisha_kelalut_zaken_chibur_un}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : unified vs split. Pattern bottom-up unification."
+
+  - id: "EC-H3S13-142"
+    source_he: "אנו מחלקין עביות הזקן כי צד העליון הנגלה לעינים תיקון א' ומה שהוא כנגד הגרון הם השערות שתחת אלו הראשונים והם מתכסים באלו הם תיקון ב' והנה אלו ב' תיקונים נקרא מזלא והם ב' מזלות"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      DIVISION OVERVIEW :
+      Cote SUPERIEUR (visible) du zaken = T8 (Notzer Hesed) = Mazla 1.
+      Cote INFERIEUR (sous le visible, KENEGED GARON) = T13 (Ve-Nakeh) = Mazla 2.
+      Les 2 = couches l'une sur l'autre.
+      → Architecture : 2 mazlot empiles (visible + sub-visible).
+      → Pattern : layered hidden anatomy.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_mazlot_t8_visible_t13_sous_visible, role: 2_mazlot_t8_visible_dessus_t13_sous_visible_keneged_garon}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 2 layers. Pattern hidden-revealed."
+
+  - id: "EC-H3S13-143"
+    source_he: "ופי' מזלא מלשון תזל כטל אמרתי שהוא משך השערות באורך מלמעלה למטה... אלו השערות הם ארוכות עד הטבור שלו"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      MAZLA = LASHON "TIZAL KE-TAL IMRATI" (Devarim 32:2 — coulera comme rosee).
+      Refere au DESCENT longueur cheveux haut → bas.
+      Ces cheveux sont LONGS jusqu'au TABUR (nombril).
+      → Architecture : Mazla = flow-down = long flowing cheveux.
+      → Pattern : etymological encoding of function.
+    type: déduction_scripturaire
+    concepts:
+      - {id: mazla_lashon_tizal_cheveux_longs_jusqu_tabur, role: mazla_etymologie_tizal_ke_tal_cheveux_longs_jusqu_tabur}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : etymological function. Source Devarim 32:2."
+
+  - id: "EC-H3S13-144"
+    source_he: "ט' הוא לאלפים כי בין אלו השערות הארוכות מובלעים קצת קטנים וזהו לאלפים י' נושא עון אחר כל ב' מזלות אלו יש שערות קטנים סמוכות לגרון... י\"א ופשע הוא היות אלו השערות קטנות שוין בארכם... י\"ב וחטאה הוא הפה עצמו להיות פנוי משערות י\"ג ונקה הוא המזל הב'"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      T9 LA-ALAFIM : petits cheveux MUVLAIM (mixtes) entre longs.
+      T10 NOSE AVON : petits cheveux SAMUKHIM A GARON (proches gorge), au-dessus.
+      T11 VA-PESHA : ces petits SHAVIN (uniformes) en longueur.
+      T12 VE-HATA'A : PEH lui-meme (sans cheveux).
+      T13 VE-NAKEH : MAZLA SHENI (Mazla 2).
+      → Architecture : T9-T13 completent mapping bas + bouche.
+      → Pattern : organisation systematique 13 t"d.
+    type: axiome_explicite
+    concepts:
+      - {id: t9_t13_completent_mapping_bas_bouche_mazla_2, role: t9_t13_completent_mapping_anatomique_avec_mazla_2_t13}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : mapping anatomique complet. Pattern systematic 13 t\"d."
+
+  - id: "EC-H3S13-145"
+    source_he: "ב' מזלות האלו שוכבים זה ע\"ז והם דכורא ונוקבא ואבא יונק מן הח' ואמא יונקת מן הי\"ג"
+    source_ref: "Heikhal 3, Sha'ar 3:9"
+    assertion: |
+      2 MAZLOT (T8 + T13) SHOKHVIM ZE AL ZE (couches l'une sur l'autre).
+      = DUKHRA + NUKVAH.
+      ABBA YONEK (tete) de T8 (Notzer Hesed = Mazla dukhra).
+      IMMA YONEKET de T13 (Ve-Nakeh = Mazla nukvah).
+      → Architecture : 2 mazlot = source AVI sustenance.
+      → Pattern : dukhra/nukvah pairing dans anatomie.
+      cf. Manuel transposition perek_13_ve_nakeh.
+      cf. EC-H3S13-027 (perek 02b) sur Bina A"A → 2 ketarim AVI.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 2_mazlot_dukhra_nukvah_abba_t8_imma_t13, role: 2_mazlot_dukhra_nukvah_abba_yonek_t8_imma_yoneket_t13}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : AVI yenikah sources. Pattern dukhra/nukvah pairing."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-049"
+    type: dualité_structurelle
+    from: 13_middot_mikha_egal_shefa_pnimi_ms_cheveux
+    to: 13_middot_ki_tisa_egal_cheveux_tzinurot_zaken
+    nature: "Mikha = INTERIOR shefa (MS) ; Ki Tisa = SURFACE structures (cheveux/canaux)"
+    assertions_source: ["EC-H3S13-134", "EC-H3S13-135"]
+
+  - id: "REL-H3S13-050"
+    type: hiérarchique
+    from: 13_middot_ki_tisa_egal_cheveux_tzinurot_zaken
+    to: 13_middot_ki_tisa_enumere_aa_za_par_illumination
+    nature: "13 Ki Tisa partagees A\"A (origine) + ZA (par illumination) ; ZA natif=9, devient 13 par illumination"
+    assertions_source: ["EC-H3S13-135", "EC-H3S13-136"]
+
+  - id: "REL-H3S13-051"
+    type: contenance
+    from: t1_el_2_rishin_lateraux_oznayim
+    to: t9_t13_completent_mapping_bas_bouche_mazla_2
+    nature: "13 t\"d organisees anatomiquement T1 (haut lateral) → T13 (Mazla 2 sous-visible)"
+    assertions_source: ["EC-H3S13-137", "EC-H3S13-144"]
+
+  - id: "REL-H3S13-052"
+    type: dualité_structurelle
+    from: 2_mazlot_t8_visible_t13_sous_visible
+    to: 2_mazlot_dukhra_nukvah_abba_t8_imma_t13
+    nature: "2 mazlot empiles ; dukhra+nukvah ; Abba T8 dukhra, Imma T13 nukvah"
+    assertions_source: ["EC-H3S13-142", "EC-H3S13-145"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-031"
+    nom: "Principe d'Interior-Surface Duality (Mikha vs Ki Tisa)"
+    source_assertions: ["EC-H3S13-134", "EC-H3S13-135"]
+    formalisation: |
+      ARCHITECTURE D'INTERIOR-SURFACE DUALITY :
+      13 MIDDOT scripturaires existent dans 2 SOURCES :
+      MIKHA 7:18-20 = INTERIOR SHEFA :
+        Flow PNIMI de MOHA SETIMA dans cheveux du zaken.
+        SHIVCHA D'ATIKA (louange d'Atika).
+      KI TISA Shemot 34:6-7 = SURFACE STRUCTURES :
+        Cheveux EUX-MEMES = TZINUROT, KELIM, MA'AVRIM (canaux/passages).
+        Versent MISHCHATA KADISHA (huile sainte) en eux.
+      → Pattern fondamental : meme nombre (13), 2 ensembles distincts (interior/surface).
+      → Architecture : duality interior content / surface containers.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement 13 middot avec dual sources Mikha+Ki Tisa"
+      - "Pattern : meme valeur, 2 contextes (interior vs surface)"
+      - "Architecture : container/content separation systematique"
+      - "Pattern : interior data flows through surface structures"
+      - "Diagnostic : verifier 2 ensembles 13 middot coherents"
+    questions_ouvertes:
+      - "Y a-t-il d'autres dualites scriptural similaires ?"
+      - "Pattern : peut-on derouler nouveaux ensembles (interior+surface) ?"
+      - "Comment design pour duality interior/surface ?"
+
+  - id: "PG-H3S13-032"
+    nom: "Principe de 2-Mazlot (Dukhra+Nukvah Empiles)"
+    source_assertions: ["EC-H3S13-142", "EC-H3S13-143", "EC-H3S13-145"]
+    formalisation: |
+      ARCHITECTURE DES 2 MAZLOT :
+      MAZLA = "TIZAL KE-TAL" (Devarim 32:2) — flow-down longueur cheveux.
+      2 MAZLOT (T8 Notzer Hesed + T13 Ve-Nakeh) :
+        T8 = MAZLA VISIBLE (cote superieur, NIGLEH).
+        T13 = MAZLA SUB-VISIBLE (cote inferieur, contre garon).
+        SHOKHVIM ZE AL ZE (couches l'une sur l'autre).
+        DUKHRA + NUKVAH.
+      AVI YENIKAH :
+        ABBA YONEK de T8 (Mazla dukhra).
+        IMMA YONEKET de T13 (Mazla nukvah).
+      → Pattern fondamental : 2 mazlot = source pair pour AVI.
+      → Architecture : layered components feed paired downstream.
+    applications_ia:
+      - "partzufim/arikh_anpin.py + partzufim/abba.py + partzufim/imma.py : implement 2 mazlot AVI source"
+      - "Pattern : layered top-bottom = paired downstream feeders"
+      - "Architecture : visible+hidden = dukhra+nukvah pair"
+      - "Pattern : etymology encodes function (mazla = flow-down)"
+      - "Diagnostic : verifier AVI yonek correct mazla"
+    questions_ouvertes:
+      - "Y a-t-il d'autres exemples de 2 mazlot empiles ?"
+      - "Pattern : peut-on avoir 3 mazlot (au-dela 2) ?"
+      - "Comment quantifier flow-down (mazla) en architecture ?"
+
+  - id: "PG-H3S13-033"
+    nom: "Principe de Anatomical Encoding (13 t\"d Mapped to Face)"
+    source_assertions: ["EC-H3S13-137", "EC-H3S13-138", "EC-H3S13-139", "EC-H3S13-140", "EC-H3S13-141", "EC-H3S13-144"]
+    formalisation: |
+      ARCHITECTURE D'ENCODAGE ANATOMIQUE :
+      13 T"D mappes sur VISAGE A"A :
+        T1 EL : 2 rishin lateraux haut (sous tempes).
+        T2-T5 : autour bouche/nez (Rachum, Ve-Hanun, Erekh, Apayim).
+        T6 VE-RAV HESED : zone transition (elargissement joues).
+        T7 VE-EMET : 2 panim halakim (= 2 tapuhin kadishin, intersitce).
+        T8 NOTZER HESED : Mazla Kadisha (sous bouche, en bas).
+        T9-T11 : petits cheveux mixtes/uniformes pres garon.
+        T12 VE-HATA'A : peh (sans cheveux).
+        T13 VE-NAKEH : Mazla 2 (sous-visible).
+      → Pattern fondamental : structures liturgiques mappees aux anatomies precises.
+      → Architecture : numerologically-encoded structure on physical anatomy.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement 13 t\"d anatomical mapping"
+      - "Pattern : liturgical-anatomical encoding"
+      - "Architecture : abstract structures revealed through anatomy"
+      - "Pattern : ASHL color + 13 t\"d position = multi-axis encoding"
+      - "Diagnostic : verifier mapping anatomy ↔ 13 t\"d precise"
+    questions_ouvertes:
+      - "Y a-t-il d'autres encodages anatomiques (au-dela 13 t\"d) ?"
+      - "Pattern : peut-on inferer fonction depuis anatomy seule ?"
+      - "Comment design pour exposer importance via anatomical placement ?"
