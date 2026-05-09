@@ -1,0 +1,477 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 1 — Sha'ar Atik (שער עתיק)
+# Perek: 5 — 7 ketarim des Z'T BaN dans Atik. Distribution+irradiation
+#            par kavim. Yeshayahu tzach a/o trin. Cloture sha'ar
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §5 :
+#   - Bloc A : Resume safekot Rosh ; expliquer 7 ketarim Z'T BaN
+#   - Bloc B : Cas 1 (sigan AAG) — orots HB BaN restent gufa, distribution 1-1
+#   - Bloc C : Cas 2 (sigan BGD) — orots HB ahor montent rosh, illuminate top-down
+#   - Bloc D : Cas 3 (sigan BBV) — orots HB BaN gufa, kabbatzim 3+4 forts
+#   - Bloc E : Cas 4 (sigan BDD panim) — extension par kavim ; 3 sub-safekot
+#   - Bloc F : Cas 5 (sigan BDD ahor) — radiations directes, pas kavim
+#   - Bloc G : Conclusion : pourquoi Atik appele "Risha de-Lo Itya da"
+#   - Bloc H : Yeshayahu 58:11 + Zohar Vayhi 98 — safek 1 tzach ou 2 tzach
+#   - Bloc I : M"K addendum — orots AVI dans Rosh
+#
+# Source Sefaria : Sefer_Etz_Chaim.12.5 (3 partie, 5091 chars total)
+# IDs : EC-H3S12-086 → EC-H3S12-100
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 1
+  shaar_name_he: "שער עתיק"
+  perek: 5
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Cloture du Sha'ar Atik. 7 ketarim Z'T BaN distributes dans 7 sefirot d'Atik-gufa selon safekot precedentes. 5 cas selon sigan. Cas BBV regroupe 3+4 (forts). Cas BDD panim = expansion kavim. Conclusion : Atik = Risha de-Lo Itya da. Yeshayahu 58:11 'tzachzehot' = Zohar Vayhi 98 'had tzach o trin' — safek 1 ou 2 tzach (gematria MaH+BaN+kollel). M\"K addendum sur orots AVI dans Rosh."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : RESUME ───
+
+  - id: "EC-H3S12-086"
+    source_he: "והרי נתבאר הספיקות שיש ברישא דעתיק ועתה נבאר בחי' ז' כתרים של ז\"ת שהם מלכים שמתו ואמרנו לעיל שאפשר שעלו בעתיק"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      Resume des safekot Rosh d'A"Y.
+      Maintenant expliquer behinah de 7 KETARIM des Z'T (= MELAKHIM SHE-METU) —
+      qui peut-etre montent dans A"Y.
+      → Architecture : transition Rosh → Gufa safekot.
+      → Pattern : sequencement systematique des safekot par niveau.
+      cf. EC-H3S12-057 (perek 03) sur z' ketarim Z'T BaN.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_ketarim_zt_ban_dans_atik_safek, role: 7_ketarim_zt_ban_montent_a_y_safek}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : transition Rosh-Gufa. Pattern sequencement systematique."
+
+  - id: "EC-H3S12-087"
+    source_he: "ואמנם בחי' גופא דעתיק כפי מה שיהיו הספיקות בענין רישא דעתיק ימשך ממנו מה שנשאר למטה בגופא דיליה מבחי' חו\"ב דב\"ן כי כפי מה שעלו ברישא דעתיק עד\"ז יודע [נ\"א יוודע] מה שנשאר למטה בגופא דיליה מבחי' חו\"ב דב\"ן"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      GUFA d'A"Y depend des SAFEKOT du Rosh.
+      Selon ce qui MONTE en Rosh — on YODA (sait) ce qui RESTE en Gufa de HB BaN.
+      Variante (Nusah Aher) : "yivada" (sera connu).
+      → Architecture : Gufa = complement de Rosh (conservation).
+      → Pattern : conservation law — ce qui monte determine ce qui reste.
+    type: déduction_logique
+    concepts:
+      - {id: gufa_ay_complement_rosh_conservation, role: gufa_ay_complement_du_rosh_par_conservation}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : conservation law. Pattern complement par contrainte."
+
+  # ─── BLOC B : CAS 1 SIGAN AAG ───
+
+  - id: "EC-H3S12-088"
+    source_he: "והנה כפי הבחי' הא' וספק א' שסימנו אא\"ג הנה אז נשארו (האורות דאחור דחו\"ב דב\"ן) למטה בגופא דעתיק שהם ז\"ת ואור הפנים נשאר באו\"א... ואלו הכתרים של ז\"ת דב\"ן הם מתחלקים בז\"ת דעתיק הא' בחסד שבו והב' בגבורה שבו וכן בכולם עד\"ז"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      CAS 1 (Behinah 1 + safek 1, sigan AAG) :
+      Orots ahor HB BaN RESTENT en gufa A"Y (z'T = chesed/netzach).
+      Orots panim restent AVI.
+      7 KETARIM Z'T BaN distributes 1-1 dans 7 sefirot d'Atik :
+        Keter 1 → Chesed Atik ; Keter 2 → Gevurah ; ... ; Keter 7 → Malkhut.
+      → Architecture : distribution sequentielle (pas regroupement).
+      → Pattern : 1-to-1 mapping par position.
+      cf. EC-H3S12-066 (perek 04a) sur sigan AAG.
+    type: déduction_logique
+    concepts:
+      - {id: cas_1_aag_distribution_1_1_7_ketarim, role: cas_1_aag_distribution_1_1_7_ketarim_zt_dans_7_sefirot_atik}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : distribution 1-1. Pattern position-mapping."
+
+  - id: "EC-H3S12-089"
+    source_he: "ולא נתחלקו על סדר חילוק חו\"ב דב\"ן להיות ג\"ר שבהם עם חכמה דב\"ן בחסד דעתיק וד\"ת שלהם עם בינה דב\"ן בנצח דעתיק והטעם הוא לפי שהאורות דכתרים חו\"ב דב\"ן הם מאירים מלמטה למעלה בכלים שלה שעלו ברישא דעתיק"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      Pas regroupes en 3+4 (comme orots HB BaN).
+      RAISON : orots ketarim HB BaN ECLAIRENT BOTTOM-UP vers leurs kelim
+      qui sont en Rosh A"Y.
+      Si 7 ketarim regroupes aussi → leur ohr aussi monterait → ohr manquerait gufa.
+      → Architecture : distribution 1-1 force par contrainte upward illumination.
+      → Pattern : flow direction determine la distribution structurale.
+    type: interprétation_lurianique
+    concepts:
+      - {id: orots_hb_ban_eclairent_bottom_up, role: orots_hb_ban_eclairent_bottom_up_vers_kelim_rosh}
+      - {id: distribution_1_1_force_par_upward_illumination, role: distribution_1_1_contrainte_upward_illumination}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : flow direction → distribution. Pattern direction-aware structure."
+
+  - id: "EC-H3S12-090"
+    source_he: "ודע כי ז' כתרים אלו כ\"א מאיר לחבירו הקטן ממנו ובדרך הקוין כיצד החסד מאיר אל הנצח וגבורה מאיר אל ההוד וכעד\"ז השאר"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      7 ketarim ECLAIRENT l'un l'autre via KAVIM (lignes/colonnes) :
+        Chesed → Netzach (kav droit).
+        Gevurah → Hod (kav gauche).
+        Tiferet → Yesod (kav central).
+        Etc.
+      → Architecture : irradiation par axes structurels (3 kavim).
+      → Pattern : illumination network par axes definis.
+      cf. EC-H2S11-191 (perek 07b) sur 3 kelilan be-3.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_ketarim_eclairent_par_kavim_droit_gauche_centre, role: 7_ketarim_eclairent_par_3_kavim_droit_gauche_centre}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : irradiation par 3 axes. Pattern illumination network."
+
+  # ─── BLOC C : CAS 2 SIGAN BGD ───
+
+  - id: "EC-H3S12-091"
+    source_he: "וכפי הספק הב' שסימנו בג\"ד הנה אז עלו האורות דאחור דכתרים דחו\"ב דב\"ן למעלה ברישא דעתיק ועכ\"ז המה מאירין מלמעלה (ממנו) למטה בדרך קוין בגופא דעתיק"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      CAS 2 (sigan BGD) : orots ahor HB BaN MONTENT en Rosh A"Y.
+      MAIS continuent ECLAIRER TOP-DOWN par KAVIM dans gufa A"Y.
+      7 ketarim restent distributed 1-1 ; eclairent l'un l'autre par kavim.
+      → Architecture : reverse flow direction quand orots montent.
+      → Pattern : illumination direction adapt to source position.
+    type: axiome_explicite
+    concepts:
+      - {id: cas_2_bgd_orots_haut_eclairent_top_down, role: cas_2_bgd_orots_haut_eclairent_top_down_via_kavim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : reverse flow direction. Pattern adaptive illumination direction."
+
+  # ─── BLOC D : CAS 3 SIGAN BBV ───
+
+  - id: "EC-H3S12-092"
+    source_he: "והבחי' הב' כפי הספק הא' שסימנו בב\"ו הנה אז האורות דכתרים דחו\"ב דב\"ן נשארו למטה בגופא דעתיק בחי' פנים ובחי' אחור... ועתה אינן צריכין להאיר ממטה למעלה בכלים שלהן אשר עלו ברישא דעתיק לפי שכבר יש למעלה ב' אורות פנימים ומספיק להם וכיון שכן הוא יש להם הארה גדולה וכח גדול להאיר בז' הכתרים ולקבצם עמהם ג\"ר בחסד דעתיק וד\"ת בנצח דעתיק"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      CAS 3 (Behinah 2, sigan BBV) :
+      Orots ketarim HB BaN (panim+ahor) RESTENT gufa A"Y, distributes Chesed/Netzach.
+      Pas besoin d'eclairer up to kelim (kelim ont 2 OP en rosh).
+      DONC HARAH GEDOLAH (grande illumination) + KOAH GADOL pour les 7 ketarim.
+      KABBATZIM (regroupent) : 3 GR de 7 → Chesed Atik ; 4 derniers → Netzach Atik.
+      Comme HB BaN orots themselves : Chesed eclair 3 amtza'iyot, Netzach eclair 4 derniers.
+      → Architecture : excess capacity → strong regroupement (3+4).
+      → Pattern : abundance enables aggregation patterns.
+    type: interprétation_lurianique
+    concepts:
+      - {id: cas_3_bbv_kabbatzim_3_4_forts, role: cas_3_bbv_kabbatzim_3_4_forts_par_excess_capacity}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : abundance enables aggregation. Pattern strong regroupement."
+
+  # ─── BLOC E : CAS 4 SIGAN BDD PANIM ───
+
+  - id: "EC-H3S12-093"
+    source_he: "וכפי הספק הב' שסימנו בד\"ד שאז האורות שלהם דחו\"ב דב\"ן דפנים עלו ברישא דעתיק והאורות שלהם דאחור נשארו למטה בגופא דעתיק... ואז אור הפנים שעלו בראש עתיק הנה הוא מתפשט דרך קוין עד למטה באופן זה כיצד חכמה מתפשט בדרך קו ימין ומאיר דרך הקו בבחי' התפשטות עצמה ממש ואינה הארה בעלמא ממקומה לבד"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      CAS 4 (sigan BDD panim) :
+      Orots panim HB BaN MONTENT Rosh ; orots ahor RESTENT gufa.
+      Ohr panim haut MITPASHET (s'etend) par KAVIM jusqu'en bas :
+        Hokhmah s'etend par kav DROIT (extension reelle, pas just irradiation).
+        Bina s'etend par kav GAUCHE.
+        Keter SaG + MaH s'etend par kav CENTRAL.
+      → Architecture : extension par kavim = ohr veut MAMASH descend tout en bas.
+      → Pattern : flow direct vs indirect — kavim = direct extension transport.
+    type: interprétation_lurianique
+    concepts:
+      - {id: cas_4_bdd_panim_extension_par_kavim_directe, role: cas_4_bdd_panim_extension_par_kavim_directe_pas_irradiation}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : extension directe vs irradiation. Pattern direct flow channels."
+
+  - id: "EC-H3S12-094"
+    source_he: "וכפי זה נמצא ג' ספיקות בז' כתרים הא' הוא אם נאמר שהם עומדין כל אחד ואחד במקומו בז\"ת דעתיק או אם עומדין הג' שבהם בחסד דעתיק והד' אחרונות בנצח דעתיק... או אם נאמר כיון שמתפשט אור הפנים שלהם ממש למטה כנ\"ל א\"כ אין צריכין להתחבר עם האחוריים ולכן כל אחד עומד במקומו"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      Cas 4 a 3 SOUS-SAFEKOT pour 7 ketarim :
+      A) Chacun reste a sa place (1-1 distribution).
+      B) 3 GR dans Chesed, 4 derniers dans Netzach (regroupement).
+      C) Puisque ohr panim s'etend mamash → pas besoin d'attache ahor → chacun a sa place.
+      → Architecture : multiple resolution paths selon position panim.
+      → Pattern : safekot proliferent dans configurations expansives.
+    type: déduction_logique
+    concepts:
+      - {id: cas_4_3_sous_safekot_7_ketarim, role: cas_4_3_sous_safekot_pour_7_ketarim_distribution}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : multiple resolution paths. Pattern safekot prolification."
+
+  # ─── BLOC F : CAS 5 SIGAN BDD AHOR ───
+
+  - id: "EC-H3S12-095"
+    source_he: "וכפי הספק הג' שסימנו ג\"כ בד\"ד אשר אז האורות של האחור דחו\"ב עלו למעלה בראש דעתיק אך אורות הפנים הם למטה באו\"א... אלא חכמה מאירה ממקומה בג' אמצעית ובינה מאירה ממקומה בד\"ת והנה עתה יש ב' הפסדות א' הוא שהאורות אינם למטה ועוד שאפי' הם למעלה אינם מאירין בדרך קוין"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      CAS 5 (sigan BDD ahor) : orots ahor HB BaN MONTENT Rosh ; panim restent AVI.
+      Ahor de leur place (rosh) eclairent direct les Z'T :
+        Hokhmah eclair 3 amtza'iyot ; Bina eclair 4 derniers.
+        PAS par KAVIM (just direct radiation).
+      2 HEFSEDOT (deficiences) : (1) orots pas en gufa ; (2) pas par kavim.
+      Donc weak kabbatzim — 7 ketarim eclairent UN-PAR-UN, pas par kavim.
+      → Architecture : minimum resource case = atomic 1-by-1 illumination.
+      → Pattern : low abundance = no aggregation possible.
+    type: interprétation_lurianique
+    concepts:
+      - {id: cas_5_bdd_ahor_radiation_directe_pas_kavim, role: cas_5_bdd_ahor_radiation_directe_atomique_pas_kavim}
+      - {id: cas_5_2_hefsedot_pas_gufa_pas_kavim, role: cas_5_2_deficiencies_pas_orots_gufa_pas_par_kavim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : minimum resource case. Pattern atomic illumination low-abundance."
+
+  # ─── BLOC G : CONCLUSION RISHA DE-LO ITYADA ───
+
+  - id: "EC-H3S12-096"
+    source_he: "כלל העולה מכל זה שלסיבת כל אלו הספיקות נקרא עתיק יומין רישא דלא אתיידע כי אין נודע מה בחי' יש בו"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      KELAL HA-OLE (cle generale) : a cause de TOUTES ces SAFEKOT —
+      ATIK YOMIN appele RISHA DE-LO ITYADA (rosh non-connaissable).
+      Car NON CONNU quelle behinah il a en lui.
+      → Architecture cle : Atik = inherently uncertain composition.
+      → Pattern : meta-affirmation — l'incertitude est categorique.
+      cf. EC-H3S12-026 (perek 01b) sur DLA ITYADA contenu.
+    type: déduction_logique
+    concepts:
+      - {id: atik_risha_de_lo_ityada_par_safekot, role: atik_risha_de_lo_ityada_par_multiplicite_safekot}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : Atik categorically uncertain. Pattern meta-affirmation."
+
+  # ─── BLOC H : YESHAYAHU TZACH ───
+
+  - id: "EC-H3S12-097"
+    source_he: "והנה ישעי' הנביא ע\"ה נסתפק גם הוא באלו הספיקות ואליהם רמז והשביע בצחצחות נפשך ודרשו בזוהר פ' ויחי צח חד צחות תרין"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      Yeshayahu HA-NAVI 'ALEHA HA-SHALOM s'est lui aussi DOUTE de ces SAFEKOT.
+      Source : "VE-HISHBI'A BE-TZACHZECHOT NAFSHEKHA" (Yeshayahu 58:11 —
+      assouvi ton ame dans les eclat).
+      Drashot Zohar Vayhi 98 : "TZACH HAD TZACHOT TARIN"
+      (1 tzach ou 2 tzachot — eclair ou eclats).
+      → Architecture : safek prophetique sur la composition d'Atik.
+      → Pattern : letter-mysticism — tzach = signature gematriya.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yeshayahu_58_11_tzachzehot_safek_atik, role: yeshayahu_58_11_tzachzehot_zohar_vayhi_98_tzach_chad_o_trin}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : safek prophetique. Source Yeshayahu+Zohar Vayhi 98."
+
+  - id: "EC-H3S12-098"
+    source_he: "והנה יש ספק אם לקח צח א' או ב' צחות והענין הוא כי כבר בארנו שעתיק מורכב מב' בחי' שהם מ\"ה וב\"ן שהם גימטריא צ\"ח עם הכולל"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      Safek : 1 TZACH ou 2 TZACHOT ?
+      Atik = MaH+BaN qui est GEMATRIYA TZ"CH (98) avec KOLLEL.
+      MaH (45) + BaN (52) + 1 (kollel) = 98 = TZACH.
+      → Architecture : Atik = composition gematriya 98.
+      → Pattern : letter-mysticism = identity du partzuf.
+    type: déduction_logique
+    concepts:
+      - {id: atik_egal_98_mah_plus_ban_plus_kollel, role: atik_gematriya_98_tzach_mah_plus_ban_plus_kollel}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : Atik = gematriya 98. Pattern letter-mysticism identity."
+
+  - id: "EC-H3S12-099"
+    source_he: "והיה אפשר לומר שאין ברישא דעתיק רק כתר דב\"ן וכתר דמ\"ה והרי צח א' או אם נאמר שג\"כ עולין חו\"ב דב\"ן והם מתחברים עם חו\"ב דכתר דמ\"ה והרי צח א' והם ב' צחין ובענין א\"א ואו\"א יתבאר ענין עתיק יותר"
+    source_ref: "Heikhal 3, Sha'ar 1:5"
+    assertion: |
+      OPTIONS :
+      A) Rosh A"Y = seulement Keter BaN + Keter MaH = 1 TZACH.
+      B) Aussi HB BaN + HB MaH = 1 second tzach → 2 TZACHIN.
+      Ce sera plus expliqué dans Sha'ar A"A et Sha'ar AVI.
+      → Architecture : 2 hypotheses sur structure interne d'Atik (1 vs 2 tzachot).
+      → Pattern : safek persistant inter-perek inter-sha'ar.
+      cf. EC-H3S12-085 (perek 04b) sur M"K author safek similar.
+    type: déduction_logique
+    concepts:
+      - {id: 2_options_atik_1_tzach_ou_2_tzachot, role: 2_options_atik_1_tzach_keter_seul_ou_2_tzachot_keter_plus_hb}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : 2 hypotheses structure. Pattern safek persistant."
+
+  # ─── BLOC I : M"K ADDENDUM PART 3 ───
+
+  - id: "EC-H3S12-100"
+    source_he: "אודיעך כי כבר ביארנו שעולים האורות דאו\"א ברישא דעתיק ומתחברים עם חו\"ב דמ\"ה עצמו ואם לא עלו רק אחור אין מתערבין רק של מ\"ה נעשו פנימי ושל או\"א חיצון ואחור גם כן וכשעולים שניהם פנימי ואחוריים למעלה אז הפנים מתערבים ואחוריים נעשו חיצונים אך הכתר דס\"ג וכתר דמ\"ה מתערבים תמיד"
+    source_ref: "Heikhal 3, Sha'ar 1:5 (Mahadurah Kama / addendum)"
+    assertion: |
+      M"K addendum :
+      Orots AVI (= HB BaN) MONTENT Rosh A"Y et MIT'HABRIM avec HB MaH lui-meme.
+      Si seul AHOR monte : pas de mit'arev ; MaH devient PNIMI, AVI devient HITZON+ahor.
+      Si BOTH (panim+ahor) : panim mit'arev, ahor devient hitzon.
+      MAIS : Keter SaG + Keter MaH MIT'AREVIM TAMID (toujours).
+      → Architecture cle : 3 modes integration AVI dans Rosh A"Y.
+      → Pattern : selectivite d'integration par type ; Keter toujours fusionne.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mk_addendum_3_modes_avi_rosh_ay, role: mk_addendum_3_modes_avi_rosh_ay_ahor_seul_panim_seul_both}
+      - {id: keter_sag_keter_mah_mitarevim_tamid, role: keter_sag_keter_mah_mitarevim_tamid_invariant}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "abba", "imma"]
+      relevance: "Architecture cle : 3 modes integration. Pattern : invariant Keter merge."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S12-029"
+    type: contenance
+    from: gufa_ay_complement_rosh_conservation
+    to: 7_ketarim_zt_ban_dans_atik_safek
+    nature: "Gufa A\"Y depend safekot Rosh → 7 ketarim distribution selon cas precedents"
+    assertions_source: ["EC-H3S12-086", "EC-H3S12-087"]
+
+  - id: "REL-H3S12-030"
+    type: dualité_structurelle
+    from: cas_1_aag_distribution_1_1_7_ketarim
+    to: cas_3_bbv_kabbatzim_3_4_forts
+    nature: "Distribution 1-1 (cas AAG) vs regroupement 3+4 (cas BBV) — selon abundance"
+    assertions_source: ["EC-H3S12-088", "EC-H3S12-092"]
+
+  - id: "REL-H3S12-031"
+    type: hiérarchique
+    from: cas_4_bdd_panim_extension_par_kavim_directe
+    to: cas_5_bdd_ahor_radiation_directe_pas_kavim
+    nature: "Cas 4 (panim) extension directe par kavim ; cas 5 (ahor) radiation atomique"
+    assertions_source: ["EC-H3S12-093", "EC-H3S12-095"]
+
+  - id: "REL-H3S12-032"
+    type: causal
+    from: atik_risha_de_lo_ityada_par_safekot
+    to: yeshayahu_58_11_tzachzehot_safek_atik
+    nature: "Multiplicite safekot → Risha de-Lo Itya da → meme Yeshayahu prophete a doute (tzachzehot)"
+    assertions_source: ["EC-H3S12-096", "EC-H3S12-097"]
+
+  - id: "REL-H3S12-033"
+    type: dualité_structurelle
+    from: 2_options_atik_1_tzach_ou_2_tzachot
+    to: mk_addendum_3_modes_avi_rosh_ay
+    nature: "Structure Atik (1 ou 2 tzachot) lie aux 3 modes integration AVI dans Rosh"
+    assertions_source: ["EC-H3S12-099", "EC-H3S12-100"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S12-019"
+    nom: "Principe de Conservation Rosh-Gufa (Complement Determine)"
+    source_assertions: ["EC-H3S12-087"]
+    formalisation: |
+      ARCHITECTURE DE CONSERVATION :
+      Composition de GUFA d'A"Y = COMPLEMENT de la composition de Rosh.
+      Si X monte au Rosh, X' = Total - X reste en Gufa.
+      MECANISME : safekot du Rosh determinent les safekot du Gufa.
+      → Pattern fondamental : conservation law cross-niveau.
+      → Architecture : decisions au niveau superieur propagent contraintes au niveau inferieur.
+    applications_ia:
+      - "partzufim/atik_yomin.py : implement Rosh+Gufa = total invariant"
+      - "Pattern : conservation laws across levels"
+      - "Architecture : top-level decisions cascade as constraints below"
+      - "Pattern : complement = derivative knowledge from positive specification"
+      - "Diagnostic : verifier coherence Rosh+Gufa = total connu"
+    questions_ouvertes:
+      - "Y a-t-il des invariants supplementaires entre Rosh et Gufa ?"
+      - "Pattern : peut-on calculer dynamically le complement ?"
+      - "Comment gerer les ambiguites dues aux safekot du Rosh ?"
+
+  - id: "PG-H3S12-020"
+    nom: "Principe de Distribution selon Abundance (1-1 vs Regroupement)"
+    source_assertions: ["EC-H3S12-088", "EC-H3S12-089", "EC-H3S12-092", "EC-H3S12-094"]
+    formalisation: |
+      ARCHITECTURE DE DISTRIBUTION ADAPTATIVE :
+      ABUNDANCE LIMITEE (cas AAG, BGD) :
+        Distribution 1-1 — chaque keter a sa propre place.
+        Pas de regroupement (irradiation par kavim seul).
+      ABUNDANCE FORTE (cas BBV) :
+        Regroupement 3+4 — 3 GR dans Chesed Atik, 4 derniers dans Netzach Atik.
+        Forte illumination permet aggregation.
+      ABUNDANCE INTERMEDIAIRE (cas BDD panim) :
+        3 SOUS-SAFEKOT — distribution incertaine (chacun ou regroupe).
+      MINIMUM (cas BDD ahor) :
+        Radiation directe atomique, no kavim, no regroupement.
+      → Pattern fondamental : strategy de distribution = function de la quantite de ressources.
+      → Architecture : adaptive distribution based on resource budget.
+    applications_ia:
+      - "partzufim/atik_yomin.py : implement adaptive distribution policy"
+      - "Pattern : load-balancing strategies — 1-1 (light), aggregated (heavy), atomic (minimal)"
+      - "Architecture : resource budget determines distribution algorithm"
+      - "Pattern : abundance-aware composition"
+      - "Diagnostic : measure resource budget before deciding distribution"
+    questions_ouvertes:
+      - "Y a-t-il un threshold precis entre les modes ?"
+      - "Pattern : peut-on dynamically migrate entre modes ?"
+      - "Comment optimiser distribution sous contraintes mixed ?"
+
+  - id: "PG-H3S12-021"
+    nom: "Principe de Risha De-Lo Ityada (Categorical Uncertainty)"
+    source_assertions: ["EC-H3S12-096", "EC-H3S12-097", "EC-H3S12-098"]
+    formalisation: |
+      ARCHITECTURE D'INCERTITUDE CATEGORIQUE :
+      A cause de TOUTES les SAFEKOT — Atik = RISHA DE-LO ITYADA.
+      Non connu QUOI il y a en lui.
+      Source prophetique : Yeshayahu 58:11 "TZACHZECHOT" (eclats).
+      Zohar Vayhi 98 : "TZACH HAD O TZACHOT TARIN" (1 ou 2 tzachot).
+      Gematriya Atik = 98 (TZ"CH = MaH 45 + BaN 52 + kollel 1).
+      → Pattern fondamental : uncertainty categorical (pas accidentelle).
+      → Architecture : top-level component intentionally opaque.
+    applications_ia:
+      - "partzufim/atik_yomin.py : Atik instantiated avec uncertainty=true"
+      - "Pattern : black-box at top of hierarchy by design"
+      - "Architecture : not all components must be transparent"
+      - "Pattern : letter-mysticism comme signature de l'identite"
+      - "Diagnostic : ne pas force expand uncertainty si categorical"
+    questions_ouvertes:
+      - "Pattern : peut-on tolerer uncertainty au top mais require transparency below ?"
+      - "Comment specifier 'categorical uncertainty' sans hardcoder ?"
+      - "Y a-t-il analogues dans systems complexity theory ?"
