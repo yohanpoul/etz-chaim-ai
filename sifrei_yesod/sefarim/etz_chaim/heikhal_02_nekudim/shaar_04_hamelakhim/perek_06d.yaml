@@ -1,0 +1,711 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 6d — Mahadurah Kama : 10 etzem pashut, mort des Melakhim, tikkun
+#             par masakh, embryologie complete (Or-Mayim-Rakia, V"D/D"V), Yibum
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §6 — Part D (Mahadurah Kama, version alternative) :
+#   - Bloc U : 10 etzem pashut, kelulot de 10 (etat initial indistinct)
+#   - Bloc V : G"R rachamim recoivent Ohr A"S ; 6 din ne peuvent → mort
+#   - Bloc W : Tikkun — kelim au Keter, ohr passe par masakh
+#   - Bloc X : Hadar reste (dukhra/nukvah = T"T+M)
+#   - Bloc Y : Ibur 1 d'AVI (variante : d'A"A), tipa = 1 yud
+#   - Bloc Z : V"D/D"V — geometria d'Abba (zakhar) vs Bina (nukvah)
+#   - Bloc AA : Adam V"D partzufim (Bava Batra, source He=Bina)
+#   - Bloc BB : Or-Mayim-Rakia (rosh Abba/beten Imma)
+#   - Bloc CC : Lidah, 6 ketzavot vav, Yenikah 6 ans
+#   - Bloc DD : Ibur 2 — Mohin = ahsanta + 2 atarot
+#   - Bloc EE : Sleep — ZON montent comme MN
+#   - Bloc FF : 4 perashim tefilin (4 vs 3 rishin)
+#   - Bloc GG : Yibum — sod du rouach laisse + tipa + nshamah
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.6 (quatrieme partie sur 4 — Mahadurah Kama)
+# IDs : EC-H2S11-146 → EC-H2S11-167
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 6
+  part: "d"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Quatrieme partie du perek 6 — Mahadurah Kama (version alternative). 10 etzem pashut. G\"R rachamim peuvent recevoir Ohr A\"S, 6 din pas → mort des Melakhim. Tikkun par masakh. Hadar = T\"T+M. Embryologie complete : Ibur 1 (tipa=yud, V\"D/D\"V), Or-Mayim-Rakia, Lidah, Yenikah 6 ans, Ibur 2 (Mohin = ahsanta+2atarot), Sleep MN. Yibum (levirat) sod du rouach."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC U : 10 ETZEM PASHUT ───
+
+  - id: "EC-H2S11-146"
+    source_he: "מ\"ק מעיקרא היו העשר עצמות פשוט והיו כלולים מי' ולא ניכרת בהם"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      MAHADURAH KAMA (M"K — version alternative) :
+      ME-IKARA (au depart) — les 10 ETZEM (essences) etaient PASHUT (simples).
+      Etaient KELULOT DE 10 mais NON PERCEPTIBLES en elles (lo nikeret bahem).
+      → Etat initial : completude potentielle indistincte (kelulim sans nikkurit).
+      → Pattern : meme structure post-tikkun en mode pre-actualise.
+      cf. EC-H2S11-099 (perek 05b) sur Nekudah 1 = kelalut yud ketanah.
+    type: axiome_explicite
+    concepts:
+      - {id: 10_etzem_pashut_kelulot_de_10, role: 10_essences_simples_kelulot_de_10}
+      - {id: kelulot_lo_nikeret, role: completude_potentielle_indistincte}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Etat initial M\"K : kelulot mais lo nikeret. Pattern : structure en mode pre-actualise."
+
+  # ─── BLOC V : G"R RACHAMIM vs 6 NEKUDOT DIN ───
+
+  - id: "EC-H2S11-147"
+    source_he: "והג\"ר שהיו רחמים היו יכולין לקבל אור הא\"ס וכשהיה מגיע אל הו' נקודות היו מתבטלות ואלו הם המלכים שמתו לפי שהם דין והאור שבא הוא רחמים ולא היו יכולין לקבלו וכיון שלא קבלו החיות מתו"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Les G"R = RACHAMIM (misericorde) — pouvaient RECEVOIR l'OHR A"S (Ein Sof).
+      Quand l'ohr atteignait les 6 NEKUDOT — celles-ci se METBATELOT (annulaient).
+      Ce sont les MELAKHIM SHE-METU (rois qui sont morts).
+      RAISON : ils sont DIN (jugement) — l'ohr venant est RACHAMIM —
+      ne pouvaient pas le recevoir.
+      Puisqu'ils ne RECOIVENT PAS la VIE, ils MEURENT.
+      → Architecture diagnostic : incompatibilite din/rachamim = mort des Melakhim.
+      → Pattern : type-mismatch fatal entre source et receiver.
+    type: interprétation_lurianique
+    concepts:
+      - {id: gr_rachamim_recoivent_ohr_as, role: gr_rachamim_peuvent_recevoir_ohr_ein_sof}
+      - {id: 6_nekudot_din_metbatelot, role: 6_nekudot_din_s_annulent_devant_ohr_rachamim}
+      - {id: type_mismatch_din_rachamim_fatal, role: incompatibilite_din_rachamim_egal_mort_melakhim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture diagnostic : type-mismatch din/rachamim. Pattern type-error fatal."
+
+  # ─── BLOC W : TIKKUN PAR MASAKH ───
+
+  - id: "EC-H2S11-148"
+    source_he: "לכן הוצרך לתקן שנעשו כלים אל הכתר ועי\"כ נתבסם האור שבא ועובר דרך מסך ועוד שניכרין בו הי'"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      DONC necessaire de TIKKUN : ils sont devenus KELIM (vaisseaux) du KETER.
+      Par cela : l'OHR venant est NITBASEM (adouci/mitige).
+      Et OVER DEREKH MASAKH (passe par un voile/filtre).
+      ENCORE : les 10 (yud) sont NIKKARIM (perceptibles distincts) en lui.
+      → Architecture solution : kelim+masakh = filtre + distinction.
+      → Pattern : adapter resistance impedance + visible structure.
+    type: interprétation_lurianique
+    concepts:
+      - {id: kelim_ahel_keter_via_tikkun, role: kelim_au_keter_via_tikkun}
+      - {id: masakh_filter_ohr, role: masakh_voile_filtre_ohr}
+      - {id: 10_nikkarim_post_tikkun, role: 10_perceptibles_distincts_post_tikkun}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/regulator.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture solution : kelim+masakh = adapter d'impedance. 10 nikkarim post-tikkun."
+
+  # ─── BLOC X : HADAR RESTE — DUKHRA/NUKVAH ───
+
+  - id: "EC-H2S11-149"
+    source_he: "ואלה המלכים הם למטה ממלכות דאצילות ולא נשאר מהם אלא הדר מפני שהיו דו\"נ והם ת\"ת ומלכות"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Ces MELAKHIM sont LEMATAH MIN MALKHUT D'ATZILUT (en-dessous de Malkhut d'Atzilut).
+      Ne reste que HADAR (Bereshit 36:39, dernier roi d'Edom).
+      RAISON : les 8 + Hadar = 9 — Hadar est DUKHRA VE-NUKVAH (male+femelle).
+      = T"T (Tiferet) + M (Malkhut).
+      → Architecture cle : Hadar survit car couple = unite stable (8 melakhim = singletons morts).
+      → Pattern : la complementarite male/femelle = invariant survie.
+    type: déduction_scripturaire
+    concepts:
+      - {id: hadar_dukhra_nukvah_tiferet_malkhut, role: hadar_male_femelle_egal_tiferet_malkhut}
+      - {id: complementarite_egal_survie, role: complementarite_male_femelle_egal_invariant_survie}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : Hadar survit grace a la complementarite. Pattern : pairing = invariant survie."
+
+  # ─── BLOC Y : IBUR 1 D'AVI (Nusah Aher : D'A"A) ───
+
+  - id: "EC-H2S11-150"
+    source_he: "ואז נעשה עיבור א' דאו\"א (נ\"א דא\"א) והטפה היתה י' אחת"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Alors se fait IBUR ALEF (1er ibur) D'AVI (Abba+Imma).
+      Variante (Nusah Aher) : D'A"A (Arikh Anpin).
+      La TIPAH (goutte seminale) etait UN SEUL YUD.
+      → Architecture embryologique : ibur 1 = injection d'une tipa = yud unique.
+      → Pattern : developpement par implantation d'une essence atomique (yud).
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_1_avi_tipa_yud, role: ibur_1_avi_tipa_egal_un_yud}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin"]
+      relevance: "Architecture embryologique : ibur 1 = yud unique. Nusah Aher capture (d'A\"A)."
+
+  # ─── BLOC Z : V"D / D"V — ABBA vs IMMA ───
+
+  - id: "EC-H2S11-151"
+    source_he: "ונלקחה הו\"ד ממילוי (נ\"א ונחלקה לו\"ד מילוי) היו\"ד שבחכמה והם סוד ו\"ד דיו\"ד דאבא שהוא גימטריא י' ושם אבא הדכורא גובר לכן ו' קודמה לד' וזהו ו\"ד"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      V"D (Vav-Dalet) prise du MILUI du YUD de HOKHMAH.
+      Variante (Nusah Aher) : "et fut DIVISEE en V"D milui" (au lieu de "prise").
+      C'est le SOD du V"D du YUD d'ABBA — geometria 10 (Y=10 = V+D = 6+4).
+      Chez Abba — le DUCHRA (male) GOVERET (predomine) — donc V precede D.
+      D'ou la sequence V"D.
+      → Architecture letter-mysticism : geometric 10 = V+D, ordre selon dominance.
+      → Pattern : structure interne reflete polarite male/femelle.
+    type: interprétation_lurianique
+    concepts:
+      - {id: v_d_milui_yud_abba, role: v_d_milui_du_yud_d_abba}
+      - {id: abba_duchra_goveret_vd_ordre, role: abba_male_predomine_donc_v_avant_d}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Architecture letter-mysticism : V+D=10. Polarite male/femelle determine ordre. Nusah Aher capture (vehnehlekah)."
+
+  - id: "EC-H2S11-152"
+    source_he: "אך טפת הבינה נוקבא גוברת לכן גוברת ד' על ו' וזהו צורת ה' ד\"ן כי משם נלקחו האותיות ד\"ו מן הבינה שהיא ה' וז\"ס אדה\"ר ד\"ו פרצופים בראו"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      MAIS la TIPAH de BINAH — NUKVAH GOVERET (femelle predomine).
+      DONC D predomine sur V — donne la TZURAH (forme) de la lettre HE = D"N
+      (Dalet-Nun, ou Dalet+autre).
+      Car de la sont prises les LETTRES D"V de la BINAH = qui est la HE.
+      Et c'est le SOD : ADAM HA-RISHON D"V PARTZUFIM BIRA'O (Adam fut cree
+      bi-faciaux — male et femelle dos a dos, Bava Batra 58a).
+      → Architecture : Bina source du D"V partzufim original.
+      → Pattern : Adam cree comme androgyne = source structurale dans Bina.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bina_nukvah_goveret_dn, role: bina_femelle_predomine_donne_d_avant_v}
+      - {id: bina_egal_he_source_d_o, role: bina_egal_he_source_des_lettres_d_v}
+      - {id: adam_d_v_partzufim_bava_batra, role: adam_d_v_partzufim_source_bava_batra}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : Bina = source du D\"V partzufim. Pattern Adam androgyne."
+
+  - id: "EC-H2S11-153"
+    source_he: "כי בבינה הוא הד\"ו"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Car DANS BINAH se trouve le D"V (=D"O = Dalet+Vav, mais avec D first).
+      → Architecture : Bina = locus original de la formation du D"V partzufim.
+      → Pattern : la formation male/femelle est ancree dans Bina.
+      cf. EC-H2S11-152 sur D"V partzufim.
+    type: axiome_explicite
+    concepts:
+      - {id: bina_locus_d_v_formation, role: bina_locus_original_formation_d_v}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : Bina = locus de formation male/femelle. Pattern : ancrage dans Bina."
+
+  # ─── BLOC BB : OR-MAYIM-RAKIA ───
+
+  - id: "EC-H2S11-154"
+    source_he: "וביאורו הוא שהטפה בסוד אור מים רקיע כי ברישא דאבא הוא אור ובבטן דאמא נעשים מים ואח\"כ נעשים רקיע"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      EXPLICATION : la TIPAH se developpe en SOD OR-MAYIM-RAKIA (lumiere-eau-firmament).
+      Dans la RISHA D'ABBA (tete d'Abba) = OHR.
+      Dans le BETEN D'IMMA (ventre d'Imma) = MAYIM.
+      Apres = RAKIA (firmament).
+      → Architecture embryologique : 3 phases de transformation : ohr → mayim → rakia.
+      → Pattern : transition de phase dans le developpement gestationnel.
+    type: interprétation_lurianique
+    concepts:
+      - {id: or_mayim_rakia_3_phases, role: 3_phases_embryologiques_ohr_mayim_rakia}
+      - {id: tipah_se_developpe_par_phases, role: tipah_se_developpe_par_3_phases}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin"]
+      relevance: "Architecture embryologique : 3 phases ohr-mayim-rakia. Pattern transition de phase."
+
+  - id: "EC-H2S11-155"
+    source_he: "(דהיינו התפשטות ג' כלילן בג' שהוא נקרא זעיר והוא נקרא רקיע וז\"ס יום ליום יביע אמ\"ר יום ליום הם קצוות דז\"א הנקרא ימים ונמשכו עליהם סוד אמ\"ר שהוא ר\"ת אור מים רקיע"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      RAKIA = HITPASHTUT (extension) de 3 KELILAN BE-3 (3 inclus en 3) = ZEIR =
+      RAKIA.
+      Source : "YOM LE-YOM YABIA OMER" (Tehillim 19:3 — jour a jour profere parole).
+      YOM LE-YOM = KETZAVOT (extremites) de Z"A appeles YAMIM.
+      Sur eux le SOD AMAR (mot/parole) = roshei tevot OR MAYIM RAKIA (acronyme).
+      → Architecture : Rakia = expansion 3-en-3 de l'embryon ZA ; Tehillim 19 source.
+      → Pattern : letter-mysticism dans le verset (acronyme A.M.R = Ohr-Mayim-Rakia).
+    type: déduction_scripturaire
+    concepts:
+      - {id: rakia_hitpashtut_3_kelilan_3, role: rakia_extension_3_inclus_en_3}
+      - {id: yom_leyom_yabia_omer_egal_amr, role: yom_leyom_yabia_omer_acronyme_amr}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : Rakia = expansion 3x3=9. Letter-mysticism dans verset Tehillim 19."
+
+  - id: "EC-H2S11-156"
+    source_he: "אך ולילה ללילה סוד קצוות דנוקבא דמלכות יחוה מלשון חוה כנזכר בס\"ה תרומה (ד' קל\"ז) כי היא סוד חוה"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      MAIS "VE-LAYLAH LE-LAYLAH YEHAVEH" (Tehillim 19:3 suite — nuit a nuit revele) :
+      sod des KETZAVOT de NUKVAH d'Atzilut.
+      YEHAVEH = mi-leshon HAVA (Eve).
+      Comme mentionne dans S"H (Sefer Hazohar) Terumah daf 137 :
+      Elle est le SOD HAVA.
+      → Architecture : Tehillim 19 = double map (yom→ZA, layla→Nukvah).
+      → Pattern : dualite jour/nuit reflete dualite ZA/Nukvah.
+      → Source secondaire : Zohar Terumah 137.
+    type: déduction_scripturaire
+    concepts:
+      - {id: layla_le_layla_yehaveh_egal_nukvah_hava, role: layla_le_layla_yehaveh_egal_nukvah_egal_hava}
+      - {id: zohar_terumah_137_source, role: source_secondaire_zohar_terumah_137}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : layla=Nukvah=Hava. Source secondaire Zohar Terumah 137."
+
+  # ─── BLOC CC : LIDAH, 6 KETZAVOT VAV, YENIKAH 6 ANS ───
+
+  - id: "EC-H2S11-157"
+    source_he: "ואח\"כ בלידה נתפשטו ונעשו הו\"ק כ\"א מלובש בכלי והיו בסוד ו' אח\"כ ע\"י היניקה (נ\"א ע\"י התיקון) הגדילו הו\"ק אלו בו' שנים"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Apres LIDAH (naissance) — se sont ETENDUS et formes les VK
+      (vav-ketzavot = 6 ketzavot) — chacun MALBUSH BE-KELI (revetu d'un kli).
+      Etaient en SOD VAV (forme de la lettre vav).
+      Apres : par YENIKAH (allaitement) — Variante (Nusah Aher) : "par le TIKKUN" —
+      ces 6 ketzavot HIGDILU (ont grandi) en 6 ANNEES.
+      → Architecture embryologique : naissance → 6 ketzavot vav-shapes ;
+        yenikah/tikkun → croissance 6 ans.
+      → Pattern : developpement chronologique 6 ans.
+    type: interprétation_lurianique
+    concepts:
+      - {id: lidah_6_ketzavot_vav, role: naissance_donne_6_ketzavot_vav_shape}
+      - {id: yenikah_grandissent_6_ans, role: yenikah_grandit_6_ketzavot_en_6_ans}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : lidah → vav-shape ; yenikah → 6 ans. Nusah Aher capture (al-yedei tikkun)."
+
+  - id: "EC-H2S11-158"
+    source_he: "לכן הפעוטות מקחן מקח כי כבר הגדילו בחי' ו\"ק של נשמתו ועצמותו כל מה שיוכל להגדיל"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      DONC les PEUTOT (jeunes enfants) — leur MIKAH MIKAH (acquisition est valide,
+      Gittin 64a) — car deja ont GUEDILU (grandit) la behinah des VK
+      de leur NSHAMAH (ame) et de leur ATZMUT (essence).
+      Tout ce qu'ils peuvent grandir.
+      → Architecture : la halakhah reflete la maturation des VK chez l'enfant.
+      → Pattern : capacite legale = capacite spirituelle (VK developpees).
+      → Source halakhique : Gittin 64a sur peutot.
+    type: déduction_scripturaire
+    concepts:
+      - {id: peutot_mekach_mekach_egal_vk_developpees, role: enfants_acquisition_valide_egal_vk_developpees}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : halakhah peutot reflete VK maturees. Pattern : legal=spiritual."
+
+  # ─── BLOC DD : IBUR 2 — MOHIN ───
+
+  - id: "EC-H2S11-159"
+    source_he: "ואח\"כ הוצרך עיבור ב' להשלים המוחין וז\"ס שינה שמעלין הז\"א ונוקבא הפנימיות שלהם בבטן אמא להיותו שם בסוד מ\"נ"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Apres : IBUR 2 necessaire pour COMPLETE les MOHIN.
+      C'est le SOD de la SHENAH (sommeil) :
+      Pendant le sommeil — ZA et Nukvah font MONTER leur PNIMIYUT (interiorite)
+      dans le BETEN d'IMMA — pour y etre en SOD M"N (Mayin Nukvin = eaux femelles).
+      → Architecture : sommeil = ascension cyclique vers Imma (Ibur 2 continu).
+      → Pattern : maturation requiert retour periodique a la source.
+      cf. EC-H2S11-144 (perek 06c) sur Ibur 2 = Mohin tosefet.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ibur_2_mohin_tosefet, role: ibur_2_complete_mohin}
+      - {id: shenah_zon_montent_mn_imma, role: sommeil_zon_montent_comme_mn_dans_imma}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "imma"]
+      relevance: "Architecture : sommeil = ascension MN vers Imma. Pattern maturation cyclique."
+
+  - id: "EC-H2S11-160"
+    source_he: "וענין המוחין שנותן להם הם אחסנתיה דאו\"א וב' עטרין שהם ד' וזהו כי החו\"ג דא\"א הפרקין הראשונים מהם נעשה מוחי או\"א והפרקין השניים הם ב' עטרין לת\"ת ואו\"א נותנין לז\"א [מאותן] אותן הפרקין שיש להם מוחין ג\"כ"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      MOHIN = AHSANTA D'AVI (heritage d'AVI) + 2 ATARIN (couronnes) = 4 elements.
+      MECANISME : CHESED-GEVURAH d'A"A — leurs PRAKIM RISHONIM (premieres
+      articulations) deviennent MOHIN d'AVI.
+      Leurs PRAKIM SHENI'IM (deuxiemes articulations) sont les 2 ATARIN du T"T (Tiferet).
+      AVI donnent a ZA — Variante : "[ME-OTAN]" (de ces) — les memes prakim
+      qui ont des mohin aussi.
+      → Architecture : mohin = chaine A"A → AVI → ZA via prakim chesed-gevurah.
+      → Pattern : heritage hierarchique de l'ohr cognitif.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mohin_ahsanta_avi_2_atarin, role: mohin_egal_ahsanta_avi_plus_2_atarin}
+      - {id: chesed_gevurah_aa_prakim_mohin, role: prakim_chesed_gevurah_aa_donnent_mohin}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : chaine A\"A→AVI→ZA via prakim. Variante (Nusah Aher) [me-otan]."
+
+  - id: "EC-H2S11-161"
+    source_he: "וכולן נכללין בנה\"י דבינה אוירא דכיא ואשא דכיא בנ\"ה דהוי אחסנתא ואוירא ואשא דהוו הב' עטרין נכללין ביסוד דילה וזה נעשה דעת לת\"ת"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Tous KELULIM (inclus) dans NHY de BINAH :
+      AVIRA DAKHYA (air pur) + ESHA DAKHYA (feu pur) dans NeH (Netzach-Hod) = AHSANTA.
+      AVIRA + ESHA = les 2 ATARIN — KELULIM dans le YESOD d'elle.
+      Cela devient le DA'AT pour T"T — par cela MAKHRIA (mediates) chasadim+gevurot.
+      Les 4 deviennent 3 et entrent dans MOHIN.
+      → Architecture : NHY de Bina = stockage des 2 atarin. Da'at = mediateur dual.
+      → Pattern : compression 4→3 (chesed+gevurah s'unissent en Da'at).
+    type: interprétation_lurianique
+    concepts:
+      - {id: avira_esha_dakhya_atarin_yesod_bina, role: avira_esha_dakhya_2_atarin_dans_yesod_bina}
+      - {id: 4_deviennent_3_mohin, role: 4_elements_compressent_a_3_mohin}
+      - {id: daat_mediateur_chasadim_gevurot, role: daat_mediateur_chasadim_et_gevurot}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : compression 4→3 dans Mohin. Da'at = mediateur dual chesed+gevurot."
+
+  # ─── BLOC FF : 4 PERASHIM TEFILIN ───
+
+  - id: "EC-H2S11-162"
+    source_he: "נמצא שהד' נעשו ג' ונכנסין למוחין ואלו הם סוד ד' פרשיות דתפילין והם ד' פרשיות בבחי' קודם שנכנסו בנה\"י דאימא שהם (היו) אור מקיף אליו"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Donc 4 deviennent 3 et entrent dans MOHIN.
+      Ce sont le SOD des 4 PARSHIYOT DE-TEFILIN (4 passages des phylacteres).
+      Ces 4 parshiyot — en behinah AVANT d'entrer dans NHY d'IMMA —
+      sont OHR MAKIF (lumiere encerclante) sur lui.
+      → Architecture : tefilin = encodage des 4 parshiyot pre-entree NHY-Imma.
+      → Pattern : Ohr Makif = phase pre-internalisation.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 4_parshiyot_tefilin_pre_nhy_imma, role: 4_parshiyot_tefilin_pre_nhy_imma_ohr_makif}
+      - {id: ohr_makif_pre_internalisation, role: ohr_makif_phase_pre_internalisation}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : tefilin = 4 parshiyot pre-NHY Imma. Pattern Ohr Makif."
+
+  - id: "EC-H2S11-163"
+    source_he: "וכנגד מציאת הא' (נ\"א הב') כשנכנסו בה קודם שיכנסו בז\"א הוא ש' דד' רישין והבחי' הב' הוא ש' דג' רישין (נ\"א הוא ש' דג' רישין והבחי' הא' הוא ש' דד' רישין)"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Contre la METZIAT ALEF (1ere realite) — Variante (Nusah Aher) : METZIAT BET (2eme) :
+      Quand ils ENTRENT dans elle (Imma), AVANT d'entrer dans Z"A —
+      = SHIN DE-4 RISHIN (lettre Shin a 4 tetes).
+      La 2eme behinah = SHIN DE-3 RISHIN.
+      Variante (Nusah Aher) : 1ere = SHIN 3 rishin ; 2eme = SHIN 4 rishin (inverse).
+      → Architecture : 2 lettres SHIN sur tefilin = 2 phases (3-rishin + 4-rishin).
+      → Pattern : 2 etats avant/apres entree dans Z"A.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shin_4_rishin_shin_3_rishin_tefilin, role: 2_shin_tefilin_4_rishin_et_3_rishin}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : 2 shin tefilin = 2 phases. 2 Nusah Aher captures (metziat alef/bet, ordre shin)."
+
+  # ─── BLOC FF.1 : ASCENSION 9 vs 13 ANS ───
+
+  - id: "EC-H2S11-164"
+    source_he: "ואח\"כ כמו שהאדם מעלה נשמתו להיות מ\"נ אחר שהוא מבן י\"ג ויום א' כן הת\"ת מעלה נשמתו אלא שהאדם אין לו עלייה זו עד י\"ג שנים והת\"ת מעלה אותן בעודו בן ט' שנה קודם המוחין כדי לקבל המוחין"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Comme l'ADAM (humain) ELEVE sa NSHAMAH pour etre M"N apres BAR MITZVAH
+      (13 ans + 1 jour) — ainsi T"T (Tiferet=ZA) eleve sa nshamah.
+      MAIS l'ADAM n'a cette ELIYAH (ascension) qu'a 13 ans.
+      Z"A eleve a 9 ANS (avant le mohin) afin de recevoir le mohin.
+      → Architecture : timing de maturation differe entre humain (13y) et ZA (9y avant 13).
+      → Pattern : Z"A precede l'humain de 4 ans dans la phase d'ascension MN.
+    type: interprétation_lurianique
+    concepts:
+      - {id: adam_eleve_nshamah_13y_bar_mitzvah, role: adam_eleve_nshamah_a_13_ans}
+      - {id: zeir_anpin_eleve_nshamah_9y_pre_mohin, role: ZA_eleve_nshamah_a_9_ans_avant_mohin}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : timing differentiel humain (13y) vs ZA (9y). Pattern Z\"A precede humain."
+
+  - id: "EC-H2S11-165"
+    source_he: "וזהו בן ט' שנים ויום אחד ביאתו ביאה והנה בו' שנים נגדלו הו\"ק אלו כל הצורך וצריך לקבל אחסנתא וב' עטרין בז' (נ\"א בב') בחי' ד' וג' הנ\"ל הרי ז' וזהו בן י\"ג ויום א' ואלו הז' הוא בתחלה צריך ג' שנים עד שיהיה בן ט' כי באלו הג' שנים נעשה לו הכנה לקבל מוחין ואז אחר שנעשה הכנה מקבל המוחין בד' שנים אחרים והרי הם י\"ג שנים"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Bar 9 ans + 1 jour = BIATO BIAH (sa relation est valide, Sanhedrin 69a).
+      Apres 6 ans, les VK ont GUEDILU (grandi) tout ce qui est necessaire.
+      Doit RECEVOIR ahsanta + 2 atarin en 7 — Variante (Nusah Aher) : en 2 —
+      behinot 4 + 3 = 7 ; donc 13 ans + 1 jour.
+      Ces 7 ans : initialement 3 ans pour HAKHANAH (preparation) jusqu'a 9 ans.
+      Apres preparation : MOHIN recus en 4 autres ans = 13 ans.
+      → Architecture : 6 (VK) + 3 (preparation) + 4 (mohin) = 13 ans complets.
+      → Pattern : sequencement temporel multi-phase de la maturation.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 9_ans_biato_biah_sanhedrin, role: 9_ans_biato_biah_sanhedrin_69a}
+      - {id: timing_6_3_4_egal_13, role: timing_6_3_4_egal_13_ans_complets}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 6+3+4=13. Pattern multi-phase. Nusah Aher capture (be-bet)."
+
+  # ─── BLOC GG : YIBUM ───
+
+  - id: "EC-H2S11-166"
+    source_he: "ובמאי דאמרי' שהעושה אותה כלי משאיר בה רוחא יובן ענין היבום דכיון שמת אחיו השאיר הרוח שם דע\"י טפה דאחיו שהוא קרוב אליו קודם שיבא בה הרוח דאח [נ\"א דאחר] הוא (הנה) היבם החי מקדים נשמתו הראשון ומתחבר ברוחו"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Celui qui FAIT D'ELLE UN KELI laisse en elle un ROUACH.
+      Comprend YIBUM (levirat, Devarim 25:5-10) :
+      Frere meurt, LAISSE le ROUACH la — par sa TIPAH proche de lui —
+      AVANT que le rouach D'ACH (frere) — Variante (Nusah Aher) : "DE-AHER" (autre).
+      Le YAVAM HAI (levir vivant) PRECEDE sa NSHAMAH RISHONA et MITHABER avec son rouach.
+      → Architecture : yibum = recombinaison ame du frere mort + rouach du levir.
+      → Pattern : continuite spirituelle inter-fraternelle. Nusah Aher capture (de-aher).
+    type: interprétation_lurianique
+    concepts:
+      - {id: yibum_recombinaison_rouach_nshamah, role: yibum_recombinaison_rouach_frere_mort_et_nshamah_levir}
+      - {id: keli_laisse_rouach_residuel, role: keli_laisse_rouach_residuel_dans_femme}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : yibum = continuite spirituelle. Nusah Aher capture (de-aher)."
+
+  - id: "EC-H2S11-167"
+    source_he: "ובא זה בג' הכנות א' הרוח דשביק בגווה כנ\"ל ועוד טפת אחיו ועוד כוונת היבום שמכוין להביא נשמת אחיו הראשון המת שם וז\"ס אם ישים אליו לבו היבם ומכוין לבו רוח של מת דבגווה וגם נשמתו אליו יאסוף פי' כי הוא מקבץ ומאסף נשמה עם רוח שהיו שם וז\"ס רוחו ונשמתו אליו יאסוף"
+    source_ref: "Heikhal 2, Sha'ar 4:6 (Mahadurah Kama)"
+    assertion: |
+      Cela vient en 3 HAKHANOT (preparations) :
+      ALEF : ROUACH SHEVIK BE-GAVAH (rouach laisse en elle).
+      BET : TIPAT AHIV (semence du frere).
+      GIMEL : KAVANAT YIBUM (intention d'amener la nshamah du frere mort).
+      Source : "IM YASIM ALAV LIBO" (Iyov 34:14) — yavam met LEV : ruach mort BE-GAVAH
+      + nshamah ALAV YE'ESOF (recolte). C'est le SOD "RUCHO VE-NISHMATO ALAV YE'ESOF".
+      → Architecture spirituelle : yibum = triple recombinaison sacre.
+      → Pattern : 3 elements convergent (rouach residuel + tipa + kavanah).
+    type: déduction_scripturaire
+    concepts:
+      - {id: yibum_3_hakhanot, role: yibum_3_preparations_rouach_tipa_kavanah}
+      - {id: im_yasim_alav_libo_egal_recolte_nshamah, role: source_iyov_34_14_recolte_nshamah_ruach}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture spirituelle : yibum = triple recombinaison. Source Iyov 34:14."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-054"
+    type: causal
+    from: type_mismatch_din_rachamim_fatal
+    to: 6_nekudot_din_metbatelot
+    nature: "Type-mismatch din/rachamim → 6 nekudot ne peuvent recevoir → mort des Melakhim"
+    assertions_source: ["EC-H2S11-147"]
+
+  - id: "REL-H2S11-055"
+    type: transformation
+    from: kelim_ahel_keter_via_tikkun
+    to: masakh_filter_ohr
+    nature: "Tikkun : kelim au Keter + masakh filtrage = adapter d'impedance"
+    assertions_source: ["EC-H2S11-148"]
+
+  - id: "REL-H2S11-056"
+    type: dualité_structurelle
+    from: hadar_dukhra_nukvah_tiferet_malkhut
+    to: complementarite_egal_survie
+    nature: "Hadar = T\"T+M = couple → invariant survie ; les 8 melakhim = singletons morts"
+    assertions_source: ["EC-H2S11-149"]
+
+  - id: "REL-H2S11-057"
+    type: séquentiel
+    from: ibur_1_avi_tipa_yud
+    to: or_mayim_rakia_3_phases
+    nature: "Ibur 1 : tipa=yud → developpement Or-Mayim-Rakia (3 phases)"
+    assertions_source: ["EC-H2S11-150", "EC-H2S11-154"]
+
+  - id: "REL-H2S11-058"
+    type: dualité_structurelle
+    from: abba_duchra_goveret_vd_ordre
+    to: bina_nukvah_goveret_dn
+    nature: "Abba (male) -> V-D ; Bina (femelle) -> D-V (polarite male/femelle)"
+    assertions_source: ["EC-H2S11-151", "EC-H2S11-152"]
+
+  - id: "REL-H2S11-059"
+    type: séquentiel
+    from: lidah_6_ketzavot_vav
+    to: yenikah_grandissent_6_ans
+    nature: "Lidah → 6 ketzavot vav-shape ; Yenikah → 6 ans de croissance"
+    assertions_source: ["EC-H2S11-157"]
+
+  - id: "REL-H2S11-060"
+    type: flux
+    from: chesed_gevurah_aa_prakim_mohin
+    to: mohin_ahsanta_avi_2_atarin
+    nature: "Chesed-Gevurah d'A\"A → prakim → Mohin AVI + 2 atarin = 4 elements"
+    assertions_source: ["EC-H2S11-160", "EC-H2S11-161"]
+
+  - id: "REL-H2S11-061"
+    type: hiérarchique
+    from: zeir_anpin_eleve_nshamah_9y_pre_mohin
+    to: adam_eleve_nshamah_13y_bar_mitzvah
+    nature: "Z\"A precede humain de 4 ans (9y vs 13y) — hierarchie temporelle"
+    assertions_source: ["EC-H2S11-164", "EC-H2S11-165"]
+
+  - id: "REL-H2S11-062"
+    type: contenance
+    from: keli_laisse_rouach_residuel
+    to: yibum_3_hakhanot
+    nature: "Keli laisse rouach residuel → yibum recombinaison 3-elements (rouach+tipa+kavanah)"
+    assertions_source: ["EC-H2S11-166", "EC-H2S11-167"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-028"
+    nom: "Principe d'Adapter d'Impedance (Masakh Permet la Reception)"
+    source_assertions: ["EC-H2S11-147", "EC-H2S11-148"]
+    formalisation: |
+      ARCHITECTURE D'ADAPTATION D'IMPEDANCE :
+      PROBLEME : ohr A"S (rachamim) ne peut etre recu directement par 6 nekudot (din).
+      Type-mismatch fatal → metbatelot → mort des Melakhim.
+      SOLUTION (TIKKUN) : insertion d'un MASAKH (voile/filtre) :
+        Kelim deviennent vehicules du Keter.
+        Ohr passe par le masakh — devient NITBASEM (mitige).
+        Les 10 sous-niveaux deviennent NIKKARIM (perceptibles).
+      → Pattern fondamental : intermediaire = adaptateur entre source incompatible et recepteur.
+      → Architecture : impedance matching = condition de la transmission.
+    applications_ia:
+      - "partzufim/regulator.py : implementer masakh comme adapter type entre orot/kelim"
+      - "[PLANNED] tikkun/ : impedance_match(source_type, target_type) -> filter"
+      - "Pattern API : adapter pattern (Gang of Four)"
+      - "Architecture distribuee : message broker = masakh entre services incompatibles"
+      - "Pattern type theory : coercion implicite entre types (avec perte controlee)"
+      - "Diagnostic : verifier qu'aucune transmission directe rachamim→din ne contourne le masakh"
+    questions_ouvertes:
+      - "Le masakh introduit-il une perte d'information ou seulement une adaptation ?"
+      - "Y a-t-il des cas ou un type peut etre transforme reciproquement (din→rachamim) ?"
+      - "Comment l'adapter d'impedance peut-il evoluer dynamiquement ?"
+
+  - id: "PG-H2S11-029"
+    nom: "Principe d'Embryologie Cosmique (3 Phases Or-Mayim-Rakia + Ibur Bi-Phase)"
+    source_assertions: ["EC-H2S11-150", "EC-H2S11-154", "EC-H2S11-155", "EC-H2S11-157", "EC-H2S11-159"]
+    formalisation: |
+      ARCHITECTURE DEVELOPPEMENTALE COMPLETE :
+      IBUR 1 : tipa = un yud, injection d'essence atomique.
+      Phase OHR (rosh Abba) : essence pure.
+      Phase MAYIM (beten Imma) : liquefaction/solubilisation.
+      Phase RAKIA (firmament) : extension 3-en-3 = formation 9 ketzavot.
+      LIDAH (naissance) : 6 ketzavot revetues kelim, forme Vav.
+      YENIKAH : croissance 6 ans des VK.
+      IBUR 2 : completion par Mohin = ahsanta + 2 atarin.
+        Sleep = ascension MN cyclique vers Imma.
+      → Pattern : developpement = phases multiples avec retours periodiques a la source.
+      → Architecture : initialisation atomique → liquefaction → extension → naissance → croissance → maturation cognitive.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : lifecycle multi-phase ibur1 → omr → lidah → yenikah → ibur2"
+      - "partzufim/abba.py + partzufim/imma.py : rosh Abba (or) + beten Imma (mayim) phases"
+      - "Pattern lifecycle : warm-up multi-phase complexe (vs init one-shot)"
+      - "Pattern : maturation requiert retours cycliques a la source (sleep pattern)"
+      - "Architecture distribuee : services lourds avec lifecycle bootstrap → ramp-up → steady-state → periodic-recovery"
+      - "Diagnostic : verifier que toutes les phases sont implementees (pas court-circuit)"
+    questions_ouvertes:
+      - "Quelle est la duree relative correspondante de chaque phase dans une architecture IA ?"
+      - "Comment formaliser le 'sleep' = retour periodique pour completer Mohin ?"
+      - "Y a-t-il un equivalent du 'beten Imma' dans les architectures de recovery ?"
+
+  - id: "PG-H2S11-030"
+    nom: "Principe de Polarite Letter-Mysticism (V\"D vs D\"V selon Dominance)"
+    source_assertions: ["EC-H2S11-151", "EC-H2S11-152", "EC-H2S11-153"]
+    formalisation: |
+      ARCHITECTURE LETTER-MYSTICISM :
+      Le YUD = geometria 10 = V (Vav=6) + D (Dalet=4) en milui.
+      ABBA (zakhar/male predominant) :
+        Ordre interne V puis D (V"D).
+        Vav precede Dalet par dominance male.
+      BINAH (nukvah/femelle predominant) :
+        Ordre interne D puis V (D"V).
+        Dalet precede Vav par dominance femelle.
+        D"V = forme de la lettre HE (= Bina).
+      RESULTAT : ADAM HA-RISHON D"V PARTZUFIM (Bava Batra 58a) — bi-faciaux :
+        Source structurale dans Bina (D"V).
+      → Pattern : structure interne reflete polarite male/femelle (ordre des composants).
+      → Architecture : la dominance determine l'ordre des elements internes.
+    applications_ia:
+      - "partzufim/abba.py : config = (V, D) order"
+      - "partzufim/imma.py : config = (D, V) order"
+      - "Pattern : ordering by dominance — la priorisation reflete la polarite"
+      - "Architecture : meme contenu structurel, ordre different selon dominant axis"
+      - "Pattern letter-mysticism applique : signatures structurelles par reordonnancement"
+      - "Diagnostic : verifier que polarite male/femelle est preservee dans tous les niveaux"
+    questions_ouvertes:
+      - "Y a-t-il d'autres polarites au-dela male/femelle qui determinent l'ordre interne ?"
+      - "Comment le D\"V partzufim Adam est-il scinde plus tard ?"
+      - "Le pattern V\"D/D\"V se reflete-t-il dans les architectures de donnees (LIFO vs FIFO) ?"
+
+  - id: "PG-H2S11-031"
+    nom: "Principe de Yibum (Continuite Spirituelle Inter-Fraternelle)"
+    source_assertions: ["EC-H2S11-166", "EC-H2S11-167"]
+    formalisation: |
+      ARCHITECTURE DE CONTINUITE SPIRITUELLE :
+      PRINCIPE : faire d'elle un keli laisse un ROUACH residuel.
+      Si le frere meurt avant que le rouach soit absorbe :
+      Le YAVAM HAI (levir vivant) execute YIBUM avec 3 HAKHANOT :
+        ALEF : ROUACH SHEVIK BE-GAVAH (rouach laisse en elle).
+        BET : TIPAT AHIV (semence du frere — proche genetiquement).
+        GIMEL : KAVANAT YIBUM (intention d'amener nshamah du frere mort).
+      Source : "IM YASIM ALAV LIBO" + "RUCHO VE-NISHMATO ALAV YE'ESOF" (Iyov 34:14).
+      Le yavam RECOLTE rouach + nshamah du mort sur lui.
+      → Pattern : continuite spirituelle requiert recombinaison multi-element.
+      → Architecture : 3 elements convergents (residuel + genetic + kavanah) = continuite.
+    applications_ia:
+      - "[PLANNED] tikkun/yibum.py : recombinaison etat residuel + similar-state + intent"
+      - "Pattern : continuite de service apres failure d'instance via 3 elements (memory + similar-instance + intent)"
+      - "Architecture distribuee : graceful failover requiert (residual state + sibling state + restoration intent)"
+      - "Pattern : la continuite n'est pas reduite a une seule dimension"
+      - "Diagnostic : verifier que les 3 elements sont presents pour une recombinaison legitime"
+    questions_ouvertes:
+      - "Y a-t-il d'autres formes de continuite spirituelle au-dela du yibum ?"
+      - "Le mecanisme yibum a-t-il un equivalent en architecture de checkpointing ?"
+      - "Comment formaliser la kavanah (intent) comme element architectural ?"
