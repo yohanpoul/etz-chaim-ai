@@ -1,0 +1,434 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 1 — Sha'ar Atik (שער עתיק)
+# Perek: 1b — Idra Zuta 3 rishin : (1) Atik nukvah = Risha de-Lo Itya da,
+#             (2) Keter A"A = Risha Ila'ah, (3) Hokhmah A"A = Moha Setima
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §1 — Part B :
+#   - Bloc K : Addendum partition partzuf (1/3 Tiferet)
+#   - Bloc L : Idra Zuta — A"K tamir ve-ganiz, 3 rishin atgalfin
+#   - Bloc M : Cle hermeneutique — A"K = nukvah d'Atik (pas zakhar de MaH)
+#   - Bloc N : Decomposition Keter A"K en Atik+A"A (puis A"A en Keter+Hokhmah)
+#   - Bloc O : 3 rishin = Atik nukvah + Keter A"A + Hokhmah A"A (Moha Setima)
+#   - Bloc P : "Atik Kadisha" = nekudot Keter ha-Zaken
+#   - Bloc Q : Asymetrie MaH zakhar — Atik de Keter MaH, A"A de Hokhmah MaH
+#   - Bloc R : Safekot sur ce que nukvah prend de BaN
+#
+# Source Sefaria : Sefer_Etz_Chaim.12.1 (parties 6-7 sur 7)
+# IDs : EC-H3S12-015 → EC-H3S12-027
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 1
+  shaar_name_he: "שער עתיק"
+  perek: 1
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Deuxieme partie du perek 1 — Detail Idra Zuta sur Atik. A\"K tamir ve-ganiz, 3 rishin atgalfin (288a). Cle hermeneutique : A\"K = nukvah d'Atik (pas dukhra). Decomposition Keter en Atik+A\"A puis A\"A en Keter+Hokhmah (Moha Setima). 3 rishin = Atik nukvah (DLA ITYADA) + Keter A\"A (Risha Ila'ah) + Hokhmah A\"A (Moha Setima). Asymetrie MaH zakhar : Atik de Keter MaH, A\"A de Hokhmah MaH."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC K : ADDENDUM PARTITION 1/3 TIFERET ───
+
+  - id: "EC-H3S12-015"
+    source_he: "ונלעד\"ח שאינו מחציתו ממש בצמצום רק הוא על דרך שאר פרצופים כי עתיק לוקח עד שליש ת\"ת כנודע משאר הציורים כי עד שליש ת\"ת בכ\"מ הוא ציור פרצוף אחד ומשם ולמטה פרצוף ב'"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      ADDENDUM : Atik takes pas exactement la MOITIE — mais comme dans les autres partzufim
+      = jusqu'au TIERS de TIFERET.
+      Convention "partzuf 1" = jusqu'a 1/3 Tiferet ; "partzuf 2" = de 1/3 Tiferet et en-dessous.
+      → Architecture : partition 1/3 Tiferet est convention universelle.
+      → Pattern : split topologique anatomique standardise.
+    type: axiome_explicite
+    concepts:
+      - {id: partition_partzuf_1_3_tiferet, role: partition_universelle_partzuf_a_1_3_tiferet}
+    mapping:
+      modules: ["partzufim/base.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : partition 1/3 Tiferet convention. Pattern split topologique standard."
+
+  # ─── BLOC L : IDRA ZUTA — A"K TAMIR VE-GANIZ ───
+
+  - id: "EC-H3S12-016"
+    source_he: "ונבארם עתה דרך פרט ונאמר ונתחיל לבאר ענין עתיק יומין ותחלה נבאר מי הוא הנקרא ע\"י"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      Maintenant explication DETAILEE — commencons par ATIK YOMIN.
+      D'abord : qui est appele A"Y (Atik Yomin) ?
+      → Architecture : intro a la question identite definitionnelle d'Atik.
+      → Pattern : pre-question = clarifier ce qu'on definit.
+    type: axiome_explicite
+    concepts:
+      - {id: question_identite_atik_yomin, role: question_qui_est_atik_yomin}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : question identite. Pattern pre-question definitionnelle."
+
+  - id: "EC-H3S12-017"
+    source_he: "הנה בתחלת אדר\"ז דרפ\"ח ע\"א וז\"ל האי ע\"ק טמיר וגניז וכו' ג' רישין אתגלפין דא לגו מן דא ודא לעילא מן דא"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      IDRA ZUTA debut (Zohar 288a) : "HAI A"K TAMIR VE-GANIZ" (cet A"K = cache et stocke).
+      "G' RISHIN ATGALFIN DA LE-GAV MIN DA VE-DA LE-EILA MIN DA"
+      (3 tetes graves l'une dans l'autre, l'une au-dessus de l'autre).
+      → Architecture : citation source primaire pour la structure d'Atik.
+      → Pattern : 3 rishin embedded recursive (DA legav min DA = nested).
+      cf. EC-H2S11-076 (perek 05a) sur 3 rishin.
+    type: déduction_scripturaire
+    concepts:
+      - {id: idra_zuta_288a_3_rishin, role: idra_zuta_288a_3_rishin_atgalfin}
+      - {id: a_k_tamir_ve_ganiz, role: a_k_tamir_ve_ganiz_cache_stocke}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : Idra Zuta = source primaire 3 rishin. Pattern recursive nesting."
+
+  # ─── BLOC M : CLE HERMENEUTIQUE — A"K = NUKVAH D'ATIK ───
+
+  - id: "EC-H3S12-018"
+    source_he: "והביאור הוא דע כי זה הע\"ק הנזכר כאן אינו מדבר על הזכר הנעשה משם מ\"ה אלא על נוקבא דעתיק ודא\"א הנעשים מבחי' ספי' הכתר דב\"ן של נקודות של המלכים שמתו"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      EXPLICATION (CLE HERMENEUTIQUE CRUCIALE) :
+      Ce A"K mentionne ICI ne PARLE PAS du ZAKHAR (fait de MaH).
+      Mais sur la NUKVAH d'Atik et la nukvah d'A"A.
+      Faits de la behinah de SEFIRAT KETER de BaN — des nekudot des melakhim morts.
+      → Architecture : hermenutique critique — A"K en Idra Zuta = nukvah, pas dukhra.
+      → Pattern : terme "A"K" est polysémique — disambiguation requise.
+    type: interprétation_lurianique
+    concepts:
+      - {id: a_k_idra_zuta_egal_nukvah_atik_aa, role: a_k_idra_zuta_egal_nukvah_d_atik_et_aa}
+      - {id: nukvah_atik_aa_de_keter_ban, role: nukvah_atik_et_aa_de_keter_ban_des_melakhim_morts}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Cle hermeneutique : A\"K Idra Zuta = nukvah, pas dukhra. Pattern polysemy disambiguation."
+
+  - id: "EC-H3S12-019"
+    source_he: "וזכור הקדמה זו כי היא צריכה לך בכל האדרא לכל הדרושים דעתיק ודא\"א כנ\"ל"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      ZEKHOR HA-HAKDAMAH ZO (souviens-toi de cette HAKDAMAH) :
+      Necessaire dans toute l'Adra Zuta pour tous les drashot d'Atik et d'A"A.
+      → Architecture : hakdamah = pre-requise pour interpretation correcte de tout l'Adra.
+      → Pattern : meta-instruction = encoded prerequisite.
+    type: axiome_explicite
+    concepts:
+      - {id: hakdamah_critique_pour_idra_zuta, role: hakdamah_disambiguation_critique_pour_idra_zuta}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : meta-instruction prerequisite. Pattern encoded prerequisite."
+
+  # ─── BLOC N : DECOMPOSITION KETER A"K ───
+
+  - id: "EC-H3S12-020"
+    source_he: "והנה כתר הזה בכללות כולו נקרא ע\"ק והבן זה מאד. והנה הכתר שהוא כללות ע\"ק מתחלק לב' חלוקות שהם ג'. פירוש כי הנה נחלק לע\"י ולא\"א ואח\"כ גם הא\"א נחלק גם הוא לב' רישין והם כתר שלו של א\"א עצמו והחכמה דא\"א עצמו שהוא מוחא סתימאה שבו"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      KETER (KELALUT KULO) appelle A"K.
+      Ce KETER = KELALUT A"K — divise en 2 CHALUKOT mais en 3 :
+      1ere division : Atik + A"A.
+      2eme : A"A se divise en Keter d'A"A + Hokhmah d'A"A (= MOHA SETIMA).
+      → Architecture : decomposition recursive Keter → 2 → 3 (Atik + Keter A"A + Hokhmah A"A).
+      → Pattern : structure tree avec recursive split.
+      cf. EC-H2S11-076 (perek 05a) sur Keter = 2 rishin + Moha Setima'a.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_decomposition_recursive_2_a_3, role: keter_decomposition_2_chalukot_egal_3_rishin}
+      - {id: aa_subdivise_keter_aa_plus_hokhmah_aa, role: aa_subdivise_en_keter_aa_et_hokhmah_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : recursive decomposition Keter → tree (Atik + Keter A\"A + Hokhmah A\"A)."
+
+  # ─── BLOC O : 3 RISHIN DETAILED ───
+
+  - id: "EC-H3S12-021"
+    source_he: "באופן כי ע\"ק הנ\"ל כאן הוא כולל ג' רישין רישא א' הוא הנקרא ע\"י והוא החלק של ראש העליון אשר בע\"ק וב' רישין תתאין אשר בע\"ק הם הנקרא א\"א הנחלק לכתר ולחכמה שבו עצמו"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      A"K ICI = KOLEL 3 RISHIN :
+        Risha 1 = appelee A"Y = chelek du ROSH ELYON dans A"K.
+        2 RISHIN TATAIN dans A"K = appelees A"A — divises en :
+          Keter d'A"A.
+          Hokhmah d'A"A.
+      → Architecture : 3 rishin = (Atik en haut) + (Keter A"A et Hokhmah A"A en bas).
+      → Pattern : top-1 + bottom-2 hierarchical structure.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_rishin_atik_plus_2_aa, role: 3_rishin_atik_top_keter_aa_hokhmah_aa_bottom}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : 3 rishin = top Atik + bottom 2 (KH d'A\"A). Pattern top-1+bottom-2."
+
+  - id: "EC-H3S12-022"
+    source_he: "כי ע\"ק הוא שם כולל לע\"י ולא\"א בבחי' שם ב\"ן שבו והבן זה מאד"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      A"K = NOM KOLEL (englobant) pour A"Y et A"A — en behinah de SHEM BaN en lui.
+      → Architecture : A"K = label collectif pour Atik+A"A en mode BaN.
+      → Pattern : naming convention pour aggregat de partzufim.
+    type: axiome_explicite
+    concepts:
+      - {id: a_k_label_kolel_atik_aa_en_ban, role: a_k_label_kolel_atik_et_aa_en_mode_ban}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : A\"K = aggregat label en mode BaN. Pattern naming aggregat."
+
+  # ─── BLOC P : "ATIK KADISHA" = NEKUDOT KETER HA-ZAKEN ───
+
+  - id: "EC-H3S12-023"
+    source_he: "ולכן נקרא ע\"ק כי הוא מבחי' נקודות כתר הזקן שבכל י\"ס אשר ממנו נעשה עתיק וא\"א משא\"כ בשם מ\"ה הזכר כי עתיק לבדו נעשה מן הכתר דמ\"ה אבל א\"א לא נעשה אלא מחכמה דמ\"ה"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      RAISON nom A"K (Atik Kadisha) : car de behinah de NEKUDOT KETER HA-ZAKEN
+      (le vieux/ancient, dans les 10 sefirot) — d'ou se fait Atik et A"A.
+      Pas comme dans le shem MaH zakhar : Atik SEUL fait du Keter de MaH ;
+      A"A n'est PAS fait du Keter mais de la HOKHMAH de MaH.
+      → Architecture : asymetrie zakhar/nukvah dans la source de A"A.
+      → Pattern : convention naming reflete origine specifique de chaque mode.
+    type: déduction_logique
+    concepts:
+      - {id: atik_kadisha_de_nekudot_keter_zaken, role: atik_kadisha_de_nekudot_keter_zaken_de_ban}
+      - {id: aa_zakhar_de_hokhmah_mah, role: aa_zakhar_de_hokhmah_mah_pas_keter}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : asymetrie zakhar/nukvah origine. Pattern naming reflet origine specifique."
+
+  # ─── BLOC Q : MAPPING IDRA ZUTA 3 RISHIN ───
+
+  - id: "EC-H3S12-024"
+    source_he: "וז\"ש באדר\"ז ג' רישין מתגלפין וכו' וביאר ענינם ואמר כי ראש התחתון שבהם הוא מוחא סתימאה דא\"א שהוא בחינת החכמה שבו. וז\"ש רישא חדא חכמתא סתימאה דאתכסיא ולא אתגלייא ולא מתפתחא"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      Idra Zuta explicite les 3 rishin :
+      ROSH TAHTON (basse) = MOHA SETIMA d'A"A = behinah Hokhmah en lui.
+      Description : "RISHA HADA HOKHMATA SETIMA'A DE-ITKASIYA VE-LO ITGALYA
+      VE-LO MITPATTHA" (rosh une = sagesse cachee = ce qui est couvert,
+      pas revele, pas deploye).
+      → Architecture : Hokhmah A"A = Moha Setima = couche cachee profonde.
+      → Pattern : sagesse profonde = encapsulee, non-deployable.
+    type: déduction_scripturaire
+    concepts:
+      - {id: rosh_tahton_egal_moha_setima_aa, role: rosh_tahton_egal_moha_setima_d_aa_hokhmah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : Moha Setima = couche cachee profonde. Pattern non-deployable wisdom."
+
+  - id: "EC-H3S12-025"
+    source_he: "ולמעלה ממנו הוא רישא עלאה ע\"ק סתימאה דכל סתימין והוא בחי' הכתר עצמו דא\"א... ולמעלה ממנו הוא רישא דכל רישין רישא דלאו רישא דלא ידעי ודלא אתיידע כלל מה דהוי בההוא רישא"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      Au-dessus de Moha Setima : RISHA ILA'AH = A"K SETIMA'A DE-KOL SETIMIN
+      = behinah du KETER d'A"A.
+      Au-dessus encore : RISHA DE-KOL RISHIN, RISHA DE-LAU RISHA, DE-LA YEDA'I
+      VE-DLA ITYADA KLAL MAH DE-HAVI BE-HAHU RISHA (totalement inconnu).
+      → Architecture : 3 niveaux d'inconnaissabilite progressive.
+      → Pattern : transcendance graduelle (cache → super-cache → totalement inconnaissable).
+      cf. EC-H3S12-021 sur 3 rishin Atik+Keter A"A+Hokhmah A"A.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 3_niveaux_inconnaissabilite_progressive, role: 3_niveaux_de_caches_jusqu_a_DLA_ITYADA}
+      - {id: keter_aa_egal_a_k_setima_de_kol_setimin, role: keter_aa_egal_a_k_setima_de_kol_setimin}
+      - {id: risha_de_lo_yda_dla_ityada, role: risha_de_lo_yda_dla_ityada_totalement_inconnaissable}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : 3 niveaux inconnaissabilite. Pattern transcendance graduelle."
+
+  - id: "EC-H3S12-026"
+    source_he: "והנה זה הראש הג' ממטה למעלה שהוא עליון שבכולם הוא בחי' נוקבא דע\"י ולכן אמר דלא אתיידע מה דהוי בההוא רישא לפי שבעתיק דכורא כבר ביארנו דאתיידע מה דהוי ביה שהוא הכתר משם מ\"ה אבל מה שלוקח משם ב\"ן להאי רישא תליתאה יש בו כמה ספיקות"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      Cette 3eme rosh (en haut) = NUKVAH d'A"Y.
+      Pourquoi DLA ITYADA ? Car en ATIK DUKHRA on a deja ITYADA (= Keter de MaH).
+      MAIS ce que NUKVAH (de A"Y) prend de BaN — il y a SAFEKOT (doutes)
+      sur ce que c'est exactement.
+      → Architecture : ITYADA pour dukhra (MaH bien defini) ; DLA ITYADA pour nukvah (BaN incertain).
+      → Pattern : asymetrie epistemique zakhar (defini) vs nukvah (indetermine).
+    type: interprétation_lurianique
+    concepts:
+      - {id: rosh_3_egal_nukvah_atik_dla_ityada, role: rosh_3_haute_egal_nukvah_atik_dla_ityada}
+      - {id: asymetrie_epistemique_dukhra_ityada_nukvah_safekot, role: asymetrie_epistemique_dukhra_ityada_nukvah_safekot}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : asymetrie epistemique. Pattern dukhra defini vs nukvah indetermine."
+
+  # ─── BLOC R : DLA ITYADA SUR LE CONTENU PAS LA NATURE ───
+
+  - id: "EC-H3S12-027"
+    source_he: "ולכאורה צריך לדייק למה לא אמר ולא אתיידע מה הוי האי רישא א\"כ משמע שכבר אנו יודעין מציאת הרישא בעצמה מה ענינה שהוא הע\"י כנ\"ל אבל מה שיש בתוכה הוא שאין אנו יודעין מה הוא וביאורו הוא על בחי' שם ב\"ן אשר שם כי הוא מברר מן הבירורין (נ\"א מן הכתרים) שיש בשם ב\"ן ומתחברים עמו ונעשים נוקבא אליו זהו שאין אנו יודעין כמה בירר ממנו וחיברו אליו"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      Pourquoi pas dit "lo ityada MAH HU HA-rosh" (sa nature) ?
+      Parce qu'on connait sa MITZIAT (existence) — c'est A"Y (per hakdamah).
+      Mais ce qu'IL Y A DEDANS (mah she-yesh be-tokhah) — INCONNU.
+      Refers a SHEM BaN — selectionne BERURIN — Variante (Nusah Aher) : "min ha-ketarim"
+      (des couronnes) — qui sont dans BaN, et integre/connecte pour faire nukvah.
+      Combien il a selectionne et connecte = INCONNU.
+      → Architecture cle : nature connue, contenu interne inconnu.
+      → Pattern : opaque container — interface known, internals indeterminate.
+    type: interprétation_lurianique
+    concepts:
+      - {id: rosh_3_mitziat_connue_contenu_inconnu, role: rosh_3_existence_connue_contenu_interne_inconnu}
+      - {id: nukvah_atik_compose_de_berurin_ban_indetermine, role: nukvah_atik_compose_de_berurin_ban_quantite_indeterminee}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture cle : opaque container — nature connue, internals inconnus. Nusah Aher capture (min ha-ketarim)."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S12-007"
+    type: causal
+    from: a_k_idra_zuta_egal_nukvah_atik_aa
+    to: hakdamah_critique_pour_idra_zuta
+    nature: "Polysemy A\"K (zakhar vs nukvah) → hakdamah critique pour interpretation Idra Zuta"
+    assertions_source: ["EC-H3S12-018", "EC-H3S12-019"]
+
+  - id: "REL-H3S12-008"
+    type: contenance
+    from: keter_decomposition_recursive_2_a_3
+    to: 3_rishin_atik_plus_2_aa
+    nature: "Keter A\"K → 2 chalukot → 3 rishin (Atik + Keter A\"A + Hokhmah A\"A)"
+    assertions_source: ["EC-H3S12-020", "EC-H3S12-021"]
+
+  - id: "REL-H3S12-009"
+    type: dualité_structurelle
+    from: atik_kadisha_de_nekudot_keter_zaken
+    to: aa_zakhar_de_hokhmah_mah
+    nature: "A\"K nukvah de nekudot Keter ; A\"A zakhar de Hokhmah MaH (pas Keter)"
+    assertions_source: ["EC-H3S12-023"]
+
+  - id: "REL-H3S12-010"
+    type: hiérarchique
+    from: rosh_tahton_egal_moha_setima_aa
+    to: 3_niveaux_inconnaissabilite_progressive
+    nature: "Hierarchie 3 rishin : Moha Setima → Risha Ila'ah (Keter A\"A) → Risha de-Lo Itya da (nukvah Atik)"
+    assertions_source: ["EC-H3S12-024", "EC-H3S12-025"]
+
+  - id: "REL-H3S12-011"
+    type: dualité_structurelle
+    from: rosh_3_egal_nukvah_atik_dla_ityada
+    to: rosh_3_mitziat_connue_contenu_inconnu
+    nature: "Rosh 3 = nukvah Atik DLA ITYADA ; mais mitziat connue, contenu interne inconnu"
+    assertions_source: ["EC-H3S12-026", "EC-H3S12-027"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S12-004"
+    nom: "Principe de Polysemy A\"K (Disambiguation Critique pour Idra Zuta)"
+    source_assertions: ["EC-H3S12-018", "EC-H3S12-019", "EC-H3S12-022"]
+    formalisation: |
+      ARCHITECTURE D'AMBIGUITE TERMINOLOGIQUE :
+      "A"K" (Atik Kadisha) est POLYSEMIQUE — peut referer a :
+        ZAKHAR (Atik dukhra fait de MaH).
+        NUKVAH d'Atik et d'A"A (faits de nekudot Keter de BaN).
+      DANS Idra Zuta : A"K = NUKVAH (pas dukhra).
+      RAISON DE NAMING : car A"K = label kolel (englobant) pour Atik+A"A en mode BaN.
+      MOTIVATION : "nekudot Keter ha-Zaken" — les 2 (Atik+A"A) font partie de Keter BaN.
+      → Pattern fondamental : disambiguation critique avant interpretation.
+      → Architecture : naming polysemic = source d'erreurs hermeneutiques.
+    applications_ia:
+      - "partzufim/atik_yomin.py + partzufim/arikh_anpin.py : disambiguate A\"K mode (zakhar vs nukvah)"
+      - "Pattern : polysemic identifiers requiert context tag explicite"
+      - "Architecture : nommage avec context-binding (e.g., A\"K_zakhar vs A\"K_nukvah_aggregat)"
+      - "Pattern API : meme term, multiple bindings = source d'erreurs"
+      - "Diagnostic : verifier disambiguation a chaque utilisation"
+    questions_ouvertes:
+      - "Pourquoi le meme terme est-il utilise pour 2 entites distinctes ?"
+      - "Y a-t-il d'autres termes polysemiques similaires ?"
+      - "Pattern : peut-on automatiquement detecter et flagger la polysemy ?"
+
+  - id: "PG-H3S12-005"
+    nom: "Principe de Hierarchie d'Inconnaissabilite (3 Niveaux Transcendance)"
+    source_assertions: ["EC-H3S12-024", "EC-H3S12-025", "EC-H3S12-026"]
+    formalisation: |
+      ARCHITECTURE DE HIERARCHIE TRANSCENDENTALE :
+      3 RISHIN d'Idra Zuta = 3 NIVEAUX d'INCONNAISSABILITE PROGRESSIVE :
+      NIVEAU 1 — ROSH TAHTON = Moha Setima d'A"A = Hokhmah :
+        "Sagesse cachee — couvert, pas revele, pas deploye".
+        Niveau : encapsulee mais peut-etre theoriquement saisie.
+      NIVEAU 2 — RISHA ILA'AH = Keter d'A"A = A"K Setima de-kol Setimin :
+        "Cache de tous les caches".
+        Niveau : super-cache, transcendance forte.
+      NIVEAU 3 — RISHA DE-KOL RISHIN = Nukvah d'Atik :
+        "Rosh qui n'est pas rosh, qui n'est pas connue, ne saurait etre connue".
+        DLA ITYADA — totalement inconnaissable.
+      → Pattern fondamental : transcendance = hierarchie de degres d'opacite.
+      → Architecture : 3 niveaux d'access — encapsulated, super-encapsulated, transcendentally-opaque.
+    applications_ia:
+      - "partzufim/atik_yomin.py + partzufim/arikh_anpin.py : 3 niveaux d'opacity"
+      - "Pattern security : 3 levels d'access (private, super-private, opaque-completely)"
+      - "Architecture : hierarchie d'encapsulation a multiple niveaux"
+      - "Pattern : top-of-tree = transcendentally opaque (DLA ITYADA equivalent)"
+      - "Diagnostic : verifier que les niveaux d'opacity sont respectes (pas fuite)"
+    questions_ouvertes:
+      - "Y a-t-il des niveaux au-dela de DLA ITYADA ?"
+      - "Pattern : peut-on quantifier le degre d'opacity ?"
+      - "Comment l'opacity totale est-elle compatible avec la hakdamah qui dit 'c'est A\"Y' ?"
+
+  - id: "PG-H3S12-006"
+    nom: "Principe d'Opaque Container (Mitziat Connue, Contenu Inconnu)"
+    source_assertions: ["EC-H3S12-027"]
+    formalisation: |
+      ARCHITECTURE D'INTERFACE OPAQUE :
+      DISTINCTION CRITIQUE :
+        MITZIAT (existence) du composant = CONNUE.
+        CONTENU INTERNE = INCONNU (DLA ITYADA seulement sur le contenu).
+      MECANISME : Nukvah d'Atik = compose de berurin selectionnes du shem BaN.
+      Variante (Nusah Aher) : "min ha-ketarim" (des couronnes).
+      Mais COMBIEN il a selectionne et integre = inconnu.
+      → Pattern fondamental : opaque container — API publique, internals indeterminate.
+      → Architecture : black-box pattern explicite (les internals echappent a l'analyse).
+    applications_ia:
+      - "partzufim/atik_yomin.py : nukvah implemented as opaque container with known interface"
+      - "Pattern : black-box components — known API, unknown internals"
+      - "Architecture : encapsulation forte = interface stable + internals masques"
+      - "Pattern : API contracts only — no introspection of internals"
+      - "Diagnostic : verifier que les clients ne dependent que de l'interface, pas internals"
+    questions_ouvertes:
+      - "Y a-t-il des cas ou les internals doivent etre rendus connus (debug, audit) ?"
+      - "Pattern : black-box vs glass-box trade-offs ?"
+      - "Comment maintenir l'opacity tout en garantissant les invariants ?"
