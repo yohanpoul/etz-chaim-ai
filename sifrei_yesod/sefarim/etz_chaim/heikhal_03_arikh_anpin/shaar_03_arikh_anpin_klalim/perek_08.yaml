@@ -1,0 +1,407 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 8 — Dikna d'A"A : Bina descendue Garon. 13 makif panim = 13 t"d.
+#            Inversion top-bottom des makif
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §8 :
+#   - Bloc A : A"A unique : Gulgalta + 1 Moach (Hokhmah seul, pas Bina-Da'at)
+#   - Bloc B : Bina d'A"A descend Garon (pas dans rosh)
+#   - Bloc C : 3 GR d'A"A en DA AL DA (pas kavim)
+#   - Bloc D : Reason : Bina dinim, ne peut absorber ohr Atik proche
+#   - Bloc E : Da'at descend dans VK d'A"A, entre 2 epaules
+#   - Bloc F : 10 OP + 10 OM = Keter+Hokhmah de A"A
+#   - Bloc G : 13 makif panim = 13 tikkunei dikna
+#   - Bloc H : Inversion makif (Mlk Hokhmah top, Keter bottom)
+#   - Bloc I : Place dikna depend "hevel" du peh, pas position
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.8 (1 perek)
+# IDs : EC-H3S13-119 → EC-H3S13-131
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 8
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Dikna d'A\"A. A\"A unique : Gulgalta + 1 Moach (Hokhmah seul). Bina descend Garon (pas dans rosh) car ne peut absorber ohr Atik proche. 3 GR en DA AL DA (pas kavim). Da'at entre 2 epaules. 10 OP + 10 OM Keter/Hokhmah ; 13 makif panim = 13 t\"d. Inversion top-bottom des makif."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-119"
+    source_he: "ועתה נבאר מציאות דיקנא דא\"א מה הוא הנה נודע כי א\"א מלביש לעתיק כנ\"ל וכבר ביארנו כי בא\"א יש גלגלתא והוא סוד הכתר דא\"א ובגווה חד מוחא לחוד דלא אתפליג לג' מוחין כמו בז\"א רק חד לחוד והאי מוחא הוא סוד חכמה דא\"א ונקרא מ\"ס"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      DIKNA d'A"A. A"A REVET Atik. A"A : GULGALTA = Keter d'A"A.
+      DEDANS : 1 MOACH SEUL — DLA ATPALIG (pas divise) en 3 mohin comme Z"A.
+      Ce moach = HOKHMAH d'A"A = MOHA SETIMA.
+      Variante (Nusah Aher) : "BE-RISHA" (mention contextuelle).
+      → Architecture : A"A = exception (1 moach seul vs 3 mohin standards).
+      → Pattern : exception structurale signalee.
+      cf. EC-H3S13-046 (perek 03) sur Keter A"A=Gulgalta, Hokhmah A"A=Moha Setima.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_unique_gulgalta_plus_1_moach_seul, role: aa_unique_gulgalta_plus_1_moach_lehud_pas_3_mohin}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : A\"A exception. Pattern unique 1-moach."
+
+  - id: "EC-H3S13-120"
+    source_he: "אמנם שינוי זה יש בא\"א יותר מבשאר פרצופים כי בגלגלתא שלו יש כתר וחכמה אבל בינה ודעת אין בגלגלתא שלו ואמנם בינה דא\"א הוא סוד הגרון דא\"א ותמן נחתת ולא קיימא ברישא"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      SHINUI (difference) en A"A vs autres partzufim :
+      Gulgalta a KETER+HOKHMAH seuls (PAS Bina ni Da'at).
+      BINA d'A"A = sod GARON d'A"A — TAMAN NACHTAT (descend la), LO KAYAMA BE-RISHA.
+      → Architecture : Bina A"A = exception localisation (Garon, pas Rosh).
+      → Pattern : composantes peuvent se delocaliser hors structure standard.
+    type: axiome_explicite
+    concepts:
+      - {id: bina_aa_descend_garon_pas_rosh_lo_kayama, role: bina_aa_descend_garon_pas_dans_rosh_lo_kayama}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : delocalisation Bina A\"A. Pattern composantes hors-place."
+
+  - id: "EC-H3S13-121"
+    source_he: "ומכאן תבין איך בינה נקרא גרון ונקרא כתר ונקרא שופר כי הלא בגרון דא\"א נעשה כתר לאו\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      Comprendre :
+      Bina = appelee GARON (gorge), KETER (couronne), SHOFAR (corne).
+      Car dans le GARON d'A"A se fait le KETER pour AVI.
+      → Architecture : multi-naming refletant multi-fonctionnalite.
+      → Pattern : composante intermediaire = porte dimensions multiples.
+      cf. EC-H3S13-027 (perek 02b) sur Bina A"A → 2 ketarim AVI.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bina_egal_garon_keter_shofar_multi_naming, role: bina_egal_garon_keter_shofar_multi_naming_multi_function}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : multi-naming. Pattern multi-function intermediaire."
+
+  - id: "EC-H3S13-122"
+    source_he: "ג\"ר דא\"א יתבי דא על דא כתר ותחתיו חכמה ותחתיו בינה ואינם בסוד קוין כתר למעלה וחו\"ב למטה מב' צדדי הכתר"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      G"R d'A"A YATBI DA AL DA (siegent l'une au-dessus l'autre) :
+        Keter en haut, Hokhmah dessous, Bina dessous.
+      PAS en SOD KAVIM (Keter haut, CB en bas des 2 cotes du Keter).
+      → Architecture : G"R d'A"A = serie verticale, pas en triangle.
+      → Pattern : vertical stacking au lieu de triangulation.
+    type: axiome_explicite
+    concepts:
+      - {id: g_r_aa_da_al_da_serie_verticale_pas_kavim, role: g_r_aa_yatbi_da_al_da_serie_verticale_pas_triangulation}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : vertical serie. Pattern non-triangulation A\"A."
+
+  - id: "EC-H3S13-123"
+    source_he: "וטעם שינוי זה דא\"א היה כי כבר הודעתיך סוד המלכים שמתו... אך מאריך אנפין ולמטה היה בו בירור ז' מלכים לכן א\"א המלביש ומקבל אור דע\"י עצמו לא היה כח אל הבינה שבו לקבל אורו ולכן ירדה בגרון כי ממקום רחוק תוכל לקבל הארה"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      RAISON shinui A"A : Atik n'a pas eu mort des melakhim.
+      Mais d'A"A en bas il y eut BERUR 7 melakhim.
+      A"A LVUSH d'Atik recoit son ohr — Bina pas KOAH pour recevoir.
+      Variante (Nusah Aher) : "EIN" (negation precise).
+      DONC descend dans GARON — MAKOM RACHOK peut recevoir.
+      → Architecture : Bina insufficient capacity → relocation.
+      → Pattern : capacity-based relocation.
+    type: déduction_logique
+    concepts:
+      - {id: bina_aa_descend_garon_capacity_pour_recevoir_atik, role: bina_aa_descend_garon_par_capacity_insufficient_pour_atik_proche}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : capacity-based relocation. Pattern insufficient → distance."
+
+  - id: "EC-H3S13-124"
+    source_he: "והטעם לפי שבינה דינין מתערין מינה לכן אין בה כח לקבל החלק של אור דעתיק כמו החכמה לכן החכמה נשארה במקומה והבינה ירדה בגרון"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      Bina = "DININ MITARIN MINAH" (jugements s'eveillent d'elle).
+      DONC pas KOAH pour recevoir part d'ohr Atik comme Hokhmah.
+      Hokhmah RESTE en place (rosh).
+      Bina DESCEND Garon.
+      → Architecture : nature dinim limite la capacity.
+      → Pattern : intrinsic property determines placement constraint.
+    type: interprétation_lurianique
+    concepts:
+      - {id: bina_dinim_mitarin_limite_capacity_atik, role: bina_dinim_mitarin_limite_capacity_pour_recevoir_ohr_atik}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : nature limits capacity. Pattern intrinsic constraint."
+
+  - id: "EC-H3S13-125"
+    source_he: "אחר שירדה הבינה בגרון ירד הדעת ונתלבש בו\"ק דא\"א עצמם והיה רוחניות אליהם ואין לו מקום מקובץ כי אם בין תרין כתפוי דא\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      Apres descente Bina dans Garon — DA'AT DESCEND aussi.
+      LVUSH dans VK d'A"A eux-memes.
+      Da'at = RUCHANIUT pour eux.
+      MEKOM MEKUBETZ (lieu de rassemblement) = entre TARIN KATFIN (2 epaules) d'A"A.
+      → Architecture : Da'at relocalise entre epaules ; ruchaniut diffuse VK.
+      → Pattern : descended components find new anchor points.
+    type: axiome_explicite
+    concepts:
+      - {id: daat_aa_descend_vk_anchor_entre_2_epaules, role: daat_aa_descend_vk_lvush_anchor_entre_2_epaules}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : new anchor. Pattern relocation finds new locus."
+
+  - id: "EC-H3S13-126"
+    source_he: "ברישא דא\"א יש כתר וחכמה לבד והנה כל זה הוא בבחי' הכללות אבל כבר ידעת כי כל מדה ומדה מנהון כלולה מי' וא\"כ כתר וחכמה יש בכ\"א י\"ס"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      Rosh A"A = KETER+HOKHMAH seuls (en KELALUT).
+      Mais chaque MIDA KELULAH de 10 → Keter et Hokhmah chacun ont 10 sefirot internes.
+      → Architecture : kelulut fractale meme dans rosh A"A.
+      → Pattern : nested 10×10 internal structure.
+    type: axiome_explicite
+    concepts:
+      - {id: rosh_aa_keter_hokhmah_chacun_10_internes, role: rosh_aa_keter_hokhmah_chacun_10_sefirot_internes}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : nested 10x10. Pattern fractal kelulut."
+
+  - id: "EC-H3S13-127"
+    source_he: "כל שיעור הראש שהוא עד המצח שהוא מקום השערות שם יש כללות י\"ס מן הכתר וי\"ס מן החכמה וכן למטה מן המצח עד הגרון ששם הבינה יש ג\"כ כללות י\"ס מן הכתר וי\"ס מן חכמה וכל זה בבחי' פנימית והנה ג\"כ בבחי' או\"מ יש י' מקיפים מן הכתר וי' מקיפים מן החכמה בראש וכן י' מקיפים מן הכתר וי' מקיפין מהחכמה יש ממקום המצח עד הגרון"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      DISTRIBUTION :
+      Du ROSH au METZAH (place cheveux) : 10 internes Keter + 10 internes Hokhmah (OP).
+      Du METZAH au GARON : meme + 10 makif Keter + 10 makif Hokhmah.
+      Total 4 groupes 10s : 2 OP rosh + 2 OM rosh + 2 OP metzah-garon + 2 OM metzah-garon.
+      → Architecture : 4 zones × 2 origines = 8 groupes 10s.
+      → Pattern : layered distribution OP/OM × position.
+    type: axiome_explicite
+    concepts:
+      - {id: distribution_4_zones_10_op_10_om_keter_hokhmah_aa, role: distribution_4_zones_10_op_10_om_keter_hokhmah_rosh_metzah_garon}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : layered distribution. Pattern OP/OM × position."
+
+  - id: "EC-H3S13-128"
+    source_he: "הנה סוד י\"ג ת\"ד הם סוד מקיפי פנים... אך בסוד מקיף לא יש רק י\"ג מקיפים מכתר וחכמה לבדם כי השאר אינן יכולין להתגלות"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      13 TIKKUNEI DIKNA = sod MAKIF PANIM (encerclants des panim).
+      Bien que OP = 10+10 (Keter+Hokhmah), MAKIF = SEULEMENT 13 du Keter+Hokhmah ensemble.
+      Le reste ne peut PAS se REVELER (extra suppressed).
+      → Architecture : OP fully revealed (20) ; MAKIF compressed (13).
+      → Pattern : visibility constraint sur makif.
+      cf. EC-H3S13-076 (perek 05a) sur 13 hivara distribution.
+    type: déduction_logique
+    concepts:
+      - {id: 13_tikkunei_dikna_egal_makif_panim_compressed, role: 13_tikkunei_dikna_egal_makif_panim_keter_hokhmah_compressed_pas_20}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : compressed visibility makif. Pattern hidden surplus."
+
+  - id: "EC-H3S13-129"
+    source_he: "עשר פנימים עומדין זה ע\"ג זה כסדרן... אמנם המקיפים הם להיפך כי הם מתחילין ממטה למעלה מלכות בראש כל י\"ג ת\"ד והכתר בסופם... וכל הספי' מקיפים של חכמה הם עליונים מכל י\"ס מקיפים של הכתר נמצא כי האחרונה שבכולם שהוא מלכות דחכמה עומדת למעלה מכולם והגבוה ומעולה שבכולם שהוא כתר שבכתר עומד למטה מכולם"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      OP : 10 sefirot ZE AL GABEI ZEH (sequentielles standard).
+      MAKIF : INVERSE — Malkhut au TOP de chaque 13 t"d, Keter au BOTTOM.
+      Hokhmah's 10 makif > Keter's 10 makif (Hokhmah-mlk au sommet).
+      Keter d'Keter au plus bas.
+      → Architecture : structurally INVERSE pour makif.
+      → Pattern : top-down OP, bottom-up MAKIF.
+    type: interprétation_lurianique
+    concepts:
+      - {id: makif_dikna_inverse_mlk_top_keter_bottom, role: makif_dikna_inverse_malkhut_au_top_keter_au_bottom}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : structural inversion. Pattern OP top-down vs MAKIF bottom-up."
+
+  - id: "EC-H3S13-130"
+    source_he: "להיותו אור מגולה מקיף לא היה כח בתחתונים לסבלו ולכן אורות העליונים לא נתגלו רק למטה ממדרגתן ולפיכך כתר שבכתר שהיא מדרגה עליונה יותר נתגלה במדרגה היותר תחתונה שבכולם וכן המלכות שבחכמה שהיא היותר קטנה שבכולם נתגלית למעלה מכולם כי יש כח בתחתונים לקבלה"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      RAISON inversion : ohr MAKIF MEGULEH (revele) — pas KOAH dans tachtonim
+      pour SOVEL.
+      DONC orot SUPERIEURS se REVELENT seulement en DEGRE INFERIEUR.
+      Keter d'Keter (le plus haut) → revele dans le DEGRE LE PLUS BAS.
+      Malkhut d'Hokhmah (le plus petit) → revele AU SOMMET (yesh koah dans tachtonim).
+      → Architecture : inverse hierarchy pour adapter au consumption capacity.
+      → Pattern : highest content → lowest position pour preserver visibility.
+    type: déduction_logique
+    concepts:
+      - {id: inversion_makif_pour_capacity_consumption_tachtonim, role: inversion_makif_top_au_bas_pour_capacity_tachtonim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/regulator.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : inverse hierarchy adaptation. Pattern capacity-aware visibility."
+
+  - id: "EC-H3S13-131"
+    source_he: "אין גדר המקומות כמו שנראה בעניך לסדרם זעג\"ז ממש כי אין סדר המדרגות כפי היות המקום עליון או תחתון... כי הלא המקום שתחת הפה הוא יותר תחתון מכולם ואמנם הוא מכלל מקומות העליונים להיות סמוך אל הפה ומקבל האור וההבל היוצא משם יותר מכמה מקומות העליונים"
+    source_ref: "Heikhal 3, Sha'ar 3:8"
+    assertion: |
+      ATTENTION : ordre des MAKOMOT (places) — PAS comme apparence visuelle.
+      Place sous le PEH (bouche) = topologiquement BAS — mais classee parmi
+      MAKOMOT ELYONIM (lieux superieurs) car PROCHE du peh.
+      Recoit OHR + HEVEL (souffle) du peh.
+      Place dependent de PROXIMITE A HEVEL — pas position verticale.
+      → Architecture : place semantics depend on proximity to source, not position.
+      → Pattern : metric-based ranking ne reflete pas geometric position.
+    type: déduction_logique
+    concepts:
+      - {id: place_dikna_depend_proximite_hevel_peh_pas_position_verticale, role: place_dikna_classee_par_proximite_hevel_peh_pas_position_verticale}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : proximity-based ranking. Pattern semantic distance."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-044"
+    type: causal
+    from: aa_unique_gulgalta_plus_1_moach_seul
+    to: bina_aa_descend_garon_pas_rosh_lo_kayama
+    nature: "A\"A unique 1 moach (Hokhmah seul) → Bina descendue dans Garon, pas dans rosh"
+    assertions_source: ["EC-H3S13-119", "EC-H3S13-120"]
+
+  - id: "REL-H3S13-045"
+    type: causal
+    from: bina_dinim_mitarin_limite_capacity_atik
+    to: bina_aa_descend_garon_capacity_pour_recevoir_atik
+    nature: "Bina = dinim mitarin → capacity limitee pour ohr Atik → descend Garon (distance)"
+    assertions_source: ["EC-H3S13-123", "EC-H3S13-124"]
+
+  - id: "REL-H3S13-046"
+    type: dualité_structurelle
+    from: distribution_4_zones_10_op_10_om_keter_hokhmah_aa
+    to: 13_tikkunei_dikna_egal_makif_panim_compressed
+    nature: "OP = full 20 (10+10) ; MAKIF = compressed 13 t\"d (visibility constraint)"
+    assertions_source: ["EC-H3S13-127", "EC-H3S13-128"]
+
+  - id: "REL-H3S13-047"
+    type: causal
+    from: makif_dikna_inverse_mlk_top_keter_bottom
+    to: inversion_makif_pour_capacity_consumption_tachtonim
+    nature: "Inversion makif (Mlk top, Keter bottom) → pour capacity consumption tachtonim"
+    assertions_source: ["EC-H3S13-129", "EC-H3S13-130"]
+
+  - id: "REL-H3S13-048"
+    type: analogie
+    from: place_dikna_depend_proximite_hevel_peh_pas_position_verticale
+    to: inversion_makif_pour_capacity_consumption_tachtonim
+    nature: "Proximity to hevel = ranking semantique ; inversion makif = ranking semantique aussi"
+    assertions_source: ["EC-H3S13-131", "EC-H3S13-130"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-028"
+    nom: "Principe d'Inversion Makif (Top-Down OP vs Bottom-Up MAKIF)"
+    source_assertions: ["EC-H3S13-129", "EC-H3S13-130"]
+    formalisation: |
+      ARCHITECTURE D'INVERSION MAKIF :
+      OP (Ohr Pnimi) : 10 sefirot ZE AL GABEI ZEH (top-down standard).
+        Keter en haut, Malkhut en bas.
+      MAKIF (Ohr Makif) : ORDRE INVERSE.
+        Malkhut en haut de chaque tikkun ; Keter en bas.
+        Hokhmah's 10 makif TOUS au-dessus de Keter's 10 makif.
+      RAISON : ohr MAKIF MEGULEH (revele) — pas KOAH dans tachtonim pour SOVEL.
+        Donc orot SUPERIEURS doivent se REVELER en DEGRE INFERIEUR.
+        Orot INFERIEURS (plus tolerable) au SOMMET.
+      → Pattern fondamental : inverse-rank pour visibility-capacity.
+      → Architecture : highest content placed lowest pour adapt consumption.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement OP top-down vs MAKIF bottom-up"
+      - "Pattern : capacity-aware ordering of revealed content"
+      - "Architecture : counter-position pour pattern matching avec consumer"
+      - "Pattern : adapter rank to consumer-tolerance"
+      - "Diagnostic : verifier inversion presente quand ohr makif"
+    questions_ouvertes:
+      - "Y a-t-il d'autres situations qui requirent inversion ?"
+      - "Pattern : peut-on dynamiquement choisir orientation ?"
+      - "Comment evaluer optimal ordering pour consumer profile ?"
+
+  - id: "PG-H3S13-029"
+    nom: "Principe de Capacity-Based Relocation (Bina Descend Garon)"
+    source_assertions: ["EC-H3S13-123", "EC-H3S13-124", "EC-H3S13-125"]
+    formalisation: |
+      ARCHITECTURE DE CAPACITY-BASED RELOCATION :
+      Bina d'A"A : "DININ MITARIN MINAH" → capacity insufficient pour ohr Atik.
+      Hokhmah RESTE en place (rachamim, capacity suffisante).
+      Bina DESCEND dans GARON — depuis MAKOM RACHOK (lieu eloigne) peut recevoir.
+      Da'at suit aussi — DESCEND dans VK, anchor entre 2 EPAULES.
+      → Pattern fondamental : composantes a capacity insufficient SE RELOCALISENT.
+      → Architecture : structural reconfiguration pour permit reception.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement Bina dans Garon, Da'at dans VK"
+      - "Pattern : load-shedding components relocate to lower-stress zones"
+      - "Architecture : automatic reconfiguration sous load"
+      - "Pattern : capacity-aware placement (high-stress → safer location)"
+      - "Diagnostic : detecter components a stress → suggest relocation"
+    questions_ouvertes:
+      - "Comment determiner threshold pour relocation ?"
+      - "Pattern : peut-on prevenir relocation par scaling capacity ?"
+      - "Y a-t-il consequences a la relocation (functional changes) ?"
+
+  - id: "PG-H3S13-030"
+    nom: "Principe de Semantic Distance (Proximite Hevel vs Position)"
+    source_assertions: ["EC-H3S13-131"]
+    formalisation: |
+      ARCHITECTURE DE SEMANTIC DISTANCE :
+      ATTENTION : ordre des MAKOMOT (places dikna) — PAS apparence visuelle.
+      Place sous le PEH (bouche) = topologiquement BAS.
+      Mais classee parmi MAKOMOT ELYONIM (lieux superieurs) — car PROXIMITE
+      au peh (source d'ohr+hevel).
+      Place CLASSEE PAR PROXIMITY-TO-SOURCE, pas position spatiale.
+      → Pattern fondamental : ranking semantique != ranking geometric.
+      → Architecture : semantic distance trumps physical position.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement places ranking by proximity-to-peh"
+      - "Pattern : ranking by semantic distance (proximity-to-source)"
+      - "Architecture : metric-based ordering ne reflete pas geometry"
+      - "Pattern : graph-distance vs physical-distance"
+      - "Diagnostic : verifier ranking semantique correct"
+    questions_ouvertes:
+      - "Y a-t-il d'autres metriques semantiques de distance ?"
+      - "Pattern : peut-on combiner geometric + semantic distances ?"
+      - "Comment design pour exposer importance reelle ?"
