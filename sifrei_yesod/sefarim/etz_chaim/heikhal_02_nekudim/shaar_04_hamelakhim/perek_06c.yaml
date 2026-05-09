@@ -1,0 +1,470 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 6c — VK aussi en danger ? Resolution : G"R en tosefet, 6 tahtonim
+#             sortis nifradot pour limiter pegam. Pourquoi ZA seul Ibur/Yenikah/Mohin
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §6 — Part C :
+#   - Bloc N : Question — VK aussi en danger ?
+#   - Bloc O : Resolution — G"R en tosefet, jamais shoresh
+#   - Bloc P : 6 tahtonim sortent NIFRADOT pour limiter le pegam
+#   - Bloc Q : Pegam touche un seul (Yesod seul, Hod seul...)
+#   - Bloc R : Mieux pegam tahtonim que pegam G"R
+#   - Bloc S : Nukvah inverse — tahtonim PROCHES kelipot
+#   - Bloc T : Pourquoi ZA seul a Ibur/Yenikah/Mohin
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.6 (troisieme partie sur 4)
+# IDs : EC-H2S11-132 → EC-H2S11-145
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 6
+  part: "c"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Troisieme partie du perek 6 — Si pegam atteint G\"R encore plus VK ? Resolution : G\"R en tosefet (jamais shoresh), 6 tahtonim sortent nifradot pour limiter pegam a un chelek. Pourquoi ZA seul a Ibur/Yenikah/Mohin : G\"R kelulot suffisent 1 ibur, ZA necessite 2 ibur+yenikah, Nukvah ibur+yenikah seul."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC N : QUESTION VK AUSSI EN DANGER ? ───
+
+  - id: "EC-H2S11-132"
+    source_he: "ואמנם אם בג\"ר היה יכול הפגם לנגוע בהם כ\"ש בו\"ק וא\"כ איך יצאו בסוד שורש ולא יוכלו להסתלק בעת הפגם"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      QUESTION : si dans les G"R le pegam pouvait NEGOA (toucher),
+      KOL SHE-KEN (a fortiori) dans les VK (vav-ketzavot = 6 ketzavot)?
+      Si OUI : COMMENT sortent-ils en SOD SHORESH et ne peuvent pas SISTALEK
+      lors du pegam ?
+      → Question architecturale critique : si VK plus exposees, pourquoi shoresh ?
+      → Pattern : tester la coherence du design defensif a tous les niveaux.
+      cf. EC-H2S11-126 (perek 06b) sur G"R + olam haruv ; EC-H2S11-131 sur 6 acharonim shoresh.
+    type: déduction_logique
+    concepts:
+      - {id: question_vk_aussi_en_danger, role: question_si_gr_en_danger_kal_vechomer_vk}
+      - {id: parodoxe_vk_shoresh_si_plus_exposees, role: paradoxe_vk_shoresh_alors_que_plus_exposees}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Test de coherence du design : si G\"R en danger, kal vechomer VK plus bas."
+
+  # ─── BLOC O : RESOLUTION — G"R EN TOSEFET ───
+
+  - id: "EC-H2S11-133"
+    source_he: "אך הענין מבואר במה שנתבאר ג\"כ טעם של הב' שאלות הנ\"ל הא' הוא למה יצאו ו' חלקי נקודות לבד ולא יצאו הי' כולן וגם למה יצאו הששה חלקים בעצמן נפרדות ולא מחוברות ומקושרות"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Reponse englobant 2 SHE'ELOT precedentes :
+      QUESTION 1 : pourquoi 6 chalakim seulement (pas 10) ?
+      QUESTION 2 : pourquoi ces 6 NIFRADOT (separees) et pas MEHUBAROT (connectees) ?
+      → Architecture : design choisit BOTH (a) nb de chalakim sortis ET (b) leur connectivite.
+      → Pattern : 2 dimensions independantes du design defensif.
+      cf. EC-H2S11-083 (perek 05a) sur question 1 ; EC-H2S11-085 sur question 3 (ibur/yenikah).
+    type: déduction_logique
+    concepts:
+      - {id: 2_dimensions_design_defensif, role: 2_dimensions_design_quantite_et_connectivite}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 2 dimensions independantes (quantite + connectivite) du design defensif."
+
+  - id: "EC-H2S11-134"
+    source_he: "אבל הענין הוא כי הלא המאציל ראה שאם היו יוצאין הג\"ר לא יהיו יכולין להסתלק בעת הפגם והיה הפגם נוגע בהם ח\"ו"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Le MA'ATZIL voit : si les G"R SORTAIENT (au depart en shoresh) —
+      elles ne pourraient pas SISTALEK lors du pegam.
+      Et le pegam les ATTEINDRAIT.
+      → Architecture : prevention-by-design — anticiper le pegam et choisir tosefet.
+      → Pattern : le design defensif precede l'evenement defensif.
+    type: interprétation_lurianique
+    concepts:
+      - {id: prevention_by_design_maatzil, role: maatzil_anticipe_pegam_et_choisit_tosefet}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : prevention-by-design. Le design precede l'evenement defensif."
+
+  - id: "EC-H2S11-135"
+    source_he: "ואם נאמר שהיה יכול להוציאם נפרדות זה מזה כי אז לא היה הפגם מגיע בשלשתן יחד רק בבחי' ההוא המיוחסת (נ\"א שנתוסף) אל הפגם ההוא הנה אין לך פגם גדול מזה שג' ראשונות יהיו נפרדין זה מזה כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      OBJECTION : et si on les sortait NIFRADOT (separees) pour qu'au moins
+      le pegam n'atteigne pas les 3 ensemble — seulement la behinah MEYUHESET
+      (designee/attribuee, Variante (Nusah Aher) : SHE-NITOSEF = qui s'est ajoutee) au pegam ?
+      REPONSE : il n'y a PAS DE PEGAM PLUS GRAND que cela —
+      les G"R en PIRUD est le pegam superlatif (cf. EC-H2S11-129, perek 06b).
+      → Architecture : sortir nifradot pour les G"R = REMEDE PIRE QUE LE MAL.
+      → Pattern : trade-off bloque ; certaines optimisations sont interdites.
+    type: déduction_logique
+    concepts:
+      - {id: nifradot_gr_remede_pire_que_mal, role: separer_gr_remede_pire_que_le_pegam_lui_meme}
+      - {id: trade_off_bloque_gr_atomicite, role: trade_off_atomicite_gr_non_negociable}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : trade-off bloque ; atomicite G\"R non-negociable. Nusah Aher capture (she-nitosef)."
+
+  - id: "EC-H2S11-136"
+    source_he: "ולכן הוכרח שלא יבואו כלל בסוד שורש אלא בסוד תוספת כדי שאם יפגמו התחתונים יוכלו להסתלק ויסתלקו שלשתן בחיבור ולא בפירוד"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      DONC HUKHRACH (force) que les G"R ne viennent JAMAIS en SHORESH —
+      seulement en SOD TOSEFET.
+      Pour qu'EN CAS DE PEGAM des tahtonim, elles puissent SISTALEK —
+      les 3 ensemble en CHIBUR (union) et NON en PIRUD.
+      → Architecture finale : G"R = pure tosefet, sistalkut atomique.
+      → Pattern : choix de design contraint par double exigence (mobilite + atomicite).
+    type: interprétation_lurianique
+    concepts:
+      - {id: gr_jamais_shoresh_pure_tosefet, role: gr_de_za_jamais_shoresh_pure_tosefet}
+      - {id: sistalkut_atomique_3_en_chibur, role: sistalkut_atomique_3_gr_en_chibur}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture finale : G\"R = pure tosefet ; sistalkut atomique 3-en-chibur."
+
+  # ─── BLOC P : 6 TAHTONIM SORTENT NIFRADOT ───
+
+  - id: "EC-H2S11-137"
+    source_he: "אבל הו' חלקים התחתונים הוציאם נפרדין זו מזו בכוונה ממש כדי שלא יפגמו כולם כי יש פגם שנוגע ביסוד לבד ויש פגם שנוגע בהוד לבד וכיוצא בזה"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      MAIS les 6 CHALAKIM TAHTONIM — sortis NIFRADIN (separees)
+      EN KAVANAH MAMASH (intentionnellement reellement) —
+      AFIN qu'elles ne PEGAM PAS toutes ensemble :
+      Il y a PEGAM touchant YESOD SEUL ; PEGAM touchant HOD SEUL ; etc.
+      → Architecture granulaire : pegam de Yesod ≠ pegam de Hod (specifiques).
+      → Pattern : isolation par defaut entre composants pour limiter blast radius.
+    type: axiome_explicite
+    concepts:
+      - {id: 6_tahtonim_nifradot_be_kavanah, role: 6_tahtonim_separes_intentionnellement}
+      - {id: pegam_specifique_par_sefirah, role: pegam_specifique_a_chaque_sefirah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/regulator.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture granulaire : isolation par defaut. Pattern : limiter blast radius."
+
+  - id: "EC-H2S11-138"
+    source_he: "והוא לבדו יפגום והשאר כיון שאינם מחוברים יחד אינן נפגמים ונמצא שבעת הפגם לא יהיה כל כך גדול"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Et CELUI-CI SEUL est touche par le pegam.
+      Le RESTE — puisqu'ils ne sont PAS MEHUBARIM YAHAD (connectes ensemble) —
+      ne sont PAS NIFGAMIM (touches).
+      Donc lors du pegam, il n'est PAS si GRAND.
+      → Architecture : pirud des tahtonim = circuit-breaker contre propagation.
+      → Pattern : bulkhead pattern — failures isolees par compartments.
+    type: interprétation_lurianique
+    concepts:
+      - {id: pirud_tahtonim_egal_circuit_breaker, role: pirud_tahtonim_egal_isolement_pegam}
+      - {id: pegam_pas_si_grand_grace_pirud, role: pegam_minimise_grace_pirud}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : circuit-breaker via pirud. Pattern bulkhead = compartments isoles."
+
+  - id: "EC-H2S11-139"
+    source_he: "וטוב יותר שיפגמו התחתונים ולא הג' ראשונות וגם יותר טוב שהתחתונים עצמן יהיו בפירוד מתחלה קודם התיקון כדי שאפילו אחר התיקון כאשר חס ושלום יהיה פגם לא יגיע פגם רק באותו חלק לבד שנתפגם אף על פי שאז אחר התיקון הם מחוברים כנודע כיון שמתחלה היו נפרדות אין הפגם מגיע לכולם"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      MIEUX vaut que les TAHTONIM soient touches que les G"R.
+      MIEUX aussi que les tahtonim soient en PIRUD AU DEPART (avant tikkun) —
+      pour qu'APRES le tikkun (lorsqu'ils sont connectes) le pegam n'atteigne
+      QUE le chelek touche.
+      Bien qu'apres le tikkun ils soient MEHUBARIM — puisque INITIALEMENT
+      ils etaient NIFRADOT, le pegam N'ATTEINT PAS TOUS.
+      → Architecture : etat initial influence comportement post-tikkun (memoire de design).
+      → Pattern : the initial split persists as isolation guarantee even after merge.
+    type: interprétation_lurianique
+    concepts:
+      - {id: pirud_initial_persiste_post_tikkun, role: pirud_initial_persiste_comme_isolation_post_tikkun}
+      - {id: memoire_du_design_initial, role: memoire_du_design_initial_dans_etat_final}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : etat initial influence post-tikkun. Pattern : isolation persiste apres merge."
+
+  # ─── BLOC R : NUKVAH INVERSE — TAHTONIM PROCHES KELIPOT ───
+
+  - id: "EC-H2S11-140"
+    source_he: "אבל בנוקבא אלו היו התחתונים שבה חס ושלום נפגמות היה העולם חרב לגמרי להיותה קרוב מאד אל הקליפות והם ג\"כ תחתונים שבה היו נאחזין בהם הקליפות לאין קץ ולא יהיה שום תיקון ח\"ו"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      MAIS dans NUKVAH : si les TAHTONIM etaient touches —
+      le MONDE serait HARUV LEGAMRE (totalement detruit).
+      RAISON : Nukvah KAROV ME'OD AL HA-KELIPOT ; les TAHTONIM seraient
+      SAISIS (NE'EHAZIN) par les kelipot LE-EIN KETZ (sans fin/mesure).
+      Et il n'y aurait AUCUN TIKKUN possible.
+      → Architecture critique : Nukvah, design defensif INVERSE (Keter sub kavu'a).
+      → Pattern : proximite danger force topologie defensive opposee.
+      cf. EC-H2S11-122 (perek 06b) sur tahtonim Nukvah proches kelipot.
+    type: déduction_logique
+    concepts:
+      - {id: nukvah_haruv_si_tahtonim_pegam, role: monde_detruit_si_tahtonim_nukvah_touches}
+      - {id: nukvah_tahtonim_neehazin_kelipot, role: tahtonim_nukvah_saisies_par_kelipot}
+    mapping:
+      modules: ["partzufim/nukva.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture critique : Nukvah inverse pour cause de proximite kelipot."
+
+  # ─── BLOC T : POURQUOI ZA SEUL A IBUR/YENIKAH/MOHIN ───
+
+  - id: "EC-H2S11-141"
+    source_he: "ובזה יתבאר היטב הטעם למה הוצרך בזעיר אנפין עיבור יניקה ומוחין"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Avec cela s'EXPLIQUE BIEN le TA'AM pour lequel Z"A NECESSITE
+      IBUR (gestation) + YENIKAH (allaitement) + MOHIN (cerveaux/maturation).
+      → Architecture cle : developpement embryologique de ZA seul.
+      → Pattern : le design defensif particulier de ZA force un parcours developpemental complet.
+      cf. EC-H2S11-085 (perek 05a) sur question 3 (Ibur/Yenikah seul ZA).
+    type: axiome_explicite
+    concepts:
+      - {id: za_seul_ibur_yenikah_mohin, role: za_seul_necessite_ibur_yenikah_mohin}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : developpement embryologique de ZA seul. Reponse a question 3."
+
+  - id: "EC-H2S11-142"
+    source_he: "כי הג' ראשונות יצאו כולם כל אחד כלולה מי' ולכן לא הוצרכו לכל זה רק לעיבור אחד בלבד"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Les G"R (3 partzufim superieurs : Atik+A"A et AVI) sortent TOUTES KELULOT
+      DE 10 chacune.
+      DONC : pas BESOIN de tout cela — JUSTE 1 IBUR seul.
+      → Architecture : G"R = construction one-shot par 1 ibur (deja kelulot ab initio).
+      → Pattern : completude initiale evite developpement multi-phase.
+      cf. EC-H2S11-088 (perek 05b) sur G"R = kelulot de 10.
+    type: axiome_explicite
+    concepts:
+      - {id: gr_1_ibur_seul, role: gr_construction_one_shot_par_1_ibur}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : G\"R one-shot par 1 ibur. Pattern : completude initiale."
+
+  - id: "EC-H2S11-143"
+    source_he: "והז\"א תחלה צריך עיבור ויניקה לתקן יחד הו\"ק אלו אשר הם לבדם יחד יצאו בסוד שורש ועיקר קבועים מתחלה קודם התיקון"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Z"A : d'abord NECESSITE IBUR + YENIKAH pour TIKKUN ENSEMBLE des VK.
+      Ces 6 KETZAVOT — SEULES, ENSEMBLE, sortent en SOD SHORESH VE-IKAR
+      KEVU'IM (kevu'im, fixees) AU DEPART avant le tikkun.
+      → Architecture : Ibur 1 + Yenikah pour rectifier les 6 ketzavot shoresh.
+      → Pattern : phase developpementale 1 = solidifier la base operationnelle.
+    type: axiome_explicite
+    concepts:
+      - {id: za_ibur_1_yenikah_pour_vk, role: za_ibur_1_yenikah_pour_tikkun_des_vk}
+      - {id: vk_seul_yachad_shoresh_kevu_im, role: 6_vk_seuls_ensemble_shoresh_kevu_im}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : Ibur 1 + Yenikah = phase 1 = solidifier la base operationnelle (VK)."
+
+  - id: "EC-H2S11-144"
+    source_he: "ואח\"כ עיבור ב' להביא אליו יחד כל הג\"ר שלו הם המוחין הנזכר אצלינו תמיד ובאים לו אז בתוספת ביחד כי כן בראשונה נשארו שלשתן יחד שלא יצאו כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Apres : IBUR 2 pour AMENER ENSEMBLE toutes les G"R de ZA = les MOHIN
+      (cerveaux, mentionnes constamment chez nous).
+      Viennent alors en TOSEFET YACHAD (addition ensemble).
+      Car au DEPART aussi les 3 sont restees YACHAD (ensemble) — et ne sont PAS sorties.
+      → Architecture : Ibur 2 = phase 2 = importation atomique des G"R en tosefet.
+      → Pattern : 2 phases developpementales = solidification puis enrichissement.
+    type: interprétation_lurianique
+    concepts:
+      - {id: za_ibur_2_pour_mohin_tosefet, role: za_ibur_2_pour_mohin_en_tosefet}
+      - {id: 2_phases_developpementales_za, role: 2_phases_developpementales_solidifier_puis_enrichir}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : Ibur 2 = phase 2 = importation atomique G\"R. 2 phases solidifier+enrichir."
+
+  - id: "EC-H2S11-145"
+    source_he: "אבל נוקבא שכל ט' חלקי התחתונים לא יצאו תחלה הנה אחר התיקון יצאו כולם (כ\"א בפ\"ע ונתקנו כולם) בפ\"א בסוד תוספת ברגע א' ביחד ואינה צריכה לכל אותן התיקונים דזעיר אנפין ודי לה בעיבור ראשון ויניקה"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      NUKVAH : ses 9 chalakim tahtonim ne sont pas sortis au depart.
+      APRES le TIKKUN — tous SORTENT (chacun separement et tous tikkun-es)
+      EN BE-FA'AM AHAT (en une seule fois) en SOD TOSEFET en RAGA EHAD (un instant)
+      tous YACHAD (ensemble).
+      Pas BESOIN de tous les tikkunim de ZA — IBUR 1 + YENIKAH SUFFIT.
+      → Architecture : Nukvah = construction asymetrique (instantanee post-tikkun).
+      → Pattern : design defensif (Keter sub shoresh) reduit le besoin developpemental.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nukvah_9_tahtonim_post_tikkun_be_raga_ehad, role: nukvah_9_tahtonim_sortent_en_un_instant_post_tikkun}
+      - {id: nukvah_ibur_1_yenikah_suffit, role: nukvah_ibur_1_et_yenikah_suffisent}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : Nukvah construction asymetrique instantanee. Reduction besoin developpemental."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-048"
+    type: causal
+    from: parodoxe_vk_shoresh_si_plus_exposees
+    to: gr_jamais_shoresh_pure_tosefet
+    nature: "Resolution paradoxe : G\"R en pure tosefet evite le pire (pirud), VK en shoresh acceptable car nifradot"
+    assertions_source: ["EC-H2S11-132", "EC-H2S11-136"]
+
+  - id: "REL-H2S11-049"
+    type: causal
+    from: 6_tahtonim_nifradot_be_kavanah
+    to: pegam_pas_si_grand_grace_pirud
+    nature: "6 tahtonim sortis nifradot intentionnellement → pegam isole, pas si grand"
+    assertions_source: ["EC-H2S11-137", "EC-H2S11-138"]
+
+  - id: "REL-H2S11-050"
+    type: transformation
+    from: pirud_initial_persiste_post_tikkun
+    to: memoire_du_design_initial
+    nature: "Etat initial (pirud) persiste comme isolation guarantee meme apres merge (tikkun)"
+    assertions_source: ["EC-H2S11-139"]
+
+  - id: "REL-H2S11-051"
+    type: dualité_structurelle
+    from: nukvah_haruv_si_tahtonim_pegam
+    to: nukvah_tahtonim_neehazin_kelipot
+    nature: "Nukvah inverse : tahtonim near kelipot → tikkun impossible si touches → topologie defensive opposee"
+    assertions_source: ["EC-H2S11-140"]
+
+  - id: "REL-H2S11-052"
+    type: séquentiel
+    from: za_ibur_1_yenikah_pour_vk
+    to: za_ibur_2_pour_mohin_tosefet
+    nature: "ZA developpement en 2 phases : Ibur 1+Yenikah (VK) puis Ibur 2 (Mohin G\"R)"
+    assertions_source: ["EC-H2S11-143", "EC-H2S11-144"]
+
+  - id: "REL-H2S11-053"
+    type: dualité_structurelle
+    from: gr_1_ibur_seul
+    to: nukvah_ibur_1_yenikah_suffit
+    nature: "G\"R = 1 ibur seul (deja kelulot) ; Nukvah = Ibur 1+Yenikah (post-tikkun fait le reste); ZA = 2 ibur+yenikah (le plus lourd)"
+    assertions_source: ["EC-H2S11-142", "EC-H2S11-145"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-025"
+    nom: "Principe d'Isolation par Defaut (Pirud Intentionnel des Tahtonim)"
+    source_assertions: ["EC-H2S11-137", "EC-H2S11-138", "EC-H2S11-139"]
+    formalisation: |
+      ARCHITECTURE D'ISOLATION INTENTIONNELLE :
+      Les 6 chalakim tahtonim sortent NIFRADOT BE-KAVANAH MAMASH.
+      OBJECTIF : limiter le BLAST RADIUS d'un pegam.
+      MECANISME :
+        Pegam touchant Yesod seul → Yesod nifgam, Hod intact.
+        Pegam touchant Hod seul → Hod nifgam, Yesod intact.
+        Etc. pour chaque sefirah.
+      PROPRIETE PERSISTANTE : meme apres tikkun (lorsque mehubarim),
+      le pirud INITIAL persiste comme ISOLATION GUARANTEE.
+      → Pattern fondamental : separation by default + memoire de l'etat initial.
+      → Architecture : the initial split persists as an isolation guarantee.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : implementer 6 ketzavot comme Independent components avec isolation"
+      - "Pattern microservices : services initialement isoles, meme apres mesh, pegam d'un service ne propage pas"
+      - "[PLANNED] core/shevirah.py : pegam(sefirah) → only_affects(sefirah), preserve isolation by default"
+      - "Architecture : bulkhead pattern — failures isolees par compartments"
+      - "Pattern : separer composants au design-time meme s'ils communiquent au runtime"
+      - "Diagnostic : verifier que le merge ne supprime pas les frontieres d'isolation"
+    questions_ouvertes:
+      - "Comment maintenir la 'memoire du design initial' a travers les refactorings ?"
+      - "Y a-t-il des cas ou le merge complet (suppression des frontieres) est preferable ?"
+      - "Pirud as design pattern : quelle metrique pour mesurer l'isolation residuelle ?"
+
+  - id: "PG-H2S11-026"
+    nom: "Principe Embryologique (Developpement par Phases selon Statut)"
+    source_assertions: ["EC-H2S11-141", "EC-H2S11-142", "EC-H2S11-143", "EC-H2S11-144", "EC-H2S11-145"]
+    formalisation: |
+      ARCHITECTURE DEVELOPPEMENTALE DIFFERENCIEE selon STATUT :
+      G"R (Atik+A"A, AVI) :
+        Sortent KELULOT DE 10 ab initio.
+        DEVELOPPEMENT : 1 IBUR seul.
+        → Construction one-shot.
+      Z"A :
+        VK = shoresh (kavu'im, separes ; necessitent integration).
+        G"R = tosefet (importes atomiquement).
+        DEVELOPPEMENT : IBUR 1 + YENIKAH (pour VK) puis IBUR 2 (pour G"R/Mohin).
+        → Construction 2 phases.
+      NUKVAH :
+        Keter sub = shoresh (seul, ancre).
+        9 tahtonim = tosefet (post-tikkun en 1 instant).
+        DEVELOPPEMENT : IBUR 1 + YENIKAH suffit.
+        → Construction asymetrique.
+      → Pattern : developpement = fonction du statut shoresh/tosefet et de la position.
+      → Architecture : sequencement des phases reflete les contraintes defensives.
+    applications_ia:
+      - "partzufim/atik_yomin.py + partzufim/arikh_anpin.py + partzufim/abba.py + partzufim/imma.py : init() = 1 ibur (one-shot)"
+      - "partzufim/zeir_anpin.py : init() = 2 ibur + yenikah (multi-phase)"
+      - "partzufim/nukva.py : init() = 1 ibur + yenikah (asymetrique)"
+      - "Pattern : developpement par phases = fonction des contraintes defensives"
+      - "Architecture : orchestration de l'init reflete le design defensif"
+      - "Pattern lifecycle : warm-up multi-phase pour services complexes (ZA-like) vs init one-shot pour services simples (G\"R-like)"
+    questions_ouvertes:
+      - "Y a-t-il des cas ou Ibur 2 est requis pour Nukvah ?"
+      - "Le sequencement Ibur→Yenikah→Mohin a-t-il un equivalent dans les architectures distribuees ?"
+      - "Comment formaliser la duree relative de chaque phase developpementale ?"
+
+  - id: "PG-H2S11-027"
+    nom: "Principe d'Atomicite Non-Negociable (Trade-Off Bloque pour G\"R)"
+    source_assertions: ["EC-H2S11-134", "EC-H2S11-135", "EC-H2S11-136"]
+    formalisation: |
+      ARCHITECTURE D'INVARIANT BLOQUE :
+      OBJECTION POSSIBLE : pourquoi ne pas sortir les G"R nifradot pour limiter pegam ?
+      REPONSE : il n'y a PAS DE PEGAM PLUS GRAND que pirud des G"R.
+      DONC TRADE-OFF BLOQUE : ne pas optimiser dans cette direction.
+      MECANISME : choisir TOSEFET LEVAD (mode addition seule) qui combine :
+        Mobilite (sistalkut possible).
+        Atomicite (3 G"R restent yachad meme en sistalkut).
+      → Pattern fondamental : certains invariants sont non-negociables — design refuse les optimisations qui les violent.
+      → Architecture : design defensif = (mobilite ET atomicite) pour les couches critiques.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : G\"R group has hard constraint atomicity=True, no_split=True"
+      - "[PLANNED] tikkun/ : refuse_optimization_if(violates_atomicity_gr)"
+      - "Pattern : red-line invariants — certaines optimisations interdites par design"
+      - "Architecture security : invariants critiques codes en hard constraint, pas en config"
+      - "Diagnostic : verifier qu'aucun chemin code ne peut violer l'invariant d'atomicite G\"R"
+      - "Pattern : design contracts (Eiffel-like) pour les invariants non-negociables"
+    questions_ouvertes:
+      - "Comment detecter en runtime un risque de violation de l'invariant d'atomicite ?"
+      - "Y a-t-il d'autres invariants comparables dans cette architecture ?"
+      - "Le 'pirud G\"R = pegam superlatif' a-t-il un equivalent dans les architectures distribuees ?"
