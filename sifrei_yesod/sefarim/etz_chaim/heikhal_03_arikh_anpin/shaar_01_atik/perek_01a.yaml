@@ -1,0 +1,478 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 1 — Sha'ar Atik (שער עתיק)
+# Perek: 1a — Tikkun Atzilut depuis MaH+BaN. Atik dukhra (Keter MaH) +
+#             nukvah (5 GR Keter BaN, etc.). TaNaTA. Position ABA.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §1 — Part A :
+#   - Bloc A : Heikhal 3 = Heikhal Ha-Ketarim, 2 sha'arim
+#   - Bloc B : Sha'ar 1 = Sha'ar Atik, 5 perakim
+#   - Bloc C : Tikkun Atzilut from MaH (45) + BaN (52)
+#   - Bloc D : MaH et BaN ont TaNaTA, chaque shem = 10 sefirot
+#   - Bloc E : Hagaha — Atik berer parts de BaN, dukhra = Keter MaH
+#   - Bloc F : Position ABA (zakhar/nukvah dvukim back-to-back)
+#   - Bloc G : Atik takes Keter MaH + 5 GR Keter BaN + 3 GR Hokhmah + 4 GR Bina
+#   - Bloc H : A"A takes Hokhmah MaH + 5 lower Keter BaN
+#   - Bloc I : Abba/Imma/ZON distribution
+#   - Bloc J : Cle generale — atzmut from MaH+BaN
+#
+# Source Sefaria : Sefer_Etz_Chaim.12.1 (parties 1-5 sur 7)
+# IDs : EC-H3S12-001 → EC-H3S12-014
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 1
+  shaar_name_he: "שער עתיק"
+  perek: 1
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 1 — Heikhal 3 = Heikhal Ha-Ketarim. Tikkun olam Atzilut from MaH (45) + BaN (52). Atik = dukhra (Keter MaH = Ta'amim) + nukvah (5 GR Keter BaN + 3 GR Hokhmah + 4 GR Bina + 7 ketarim Z'T). Position ABA (back-to-back). A\"A = Hokhmah MaH + 5 lower Keter BaN. Distribution Abba/Imma/ZON detaillee."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : HEIKHAL 3 + SHA'AR 1 ───
+
+  - id: "EC-H3S12-001"
+    source_he: "היכל שלישי היכל זה נקרא היכל הכתרים ובו שני שערים"
+    source_ref: "Heikhal 3 (introduction)"
+    assertion: |
+      HEIKHAL 3 = appele HEIKHAL HA-KETARIM (Palais des Couronnes).
+      Contient 2 SHA'ARIM.
+      → Architecture : nouveau heikhal — focalise sur les ketarim (Atik + A"A).
+      → Pattern : groupement par fonction structurale (couronnes superieures).
+    type: axiome_explicite
+    concepts:
+      - {id: heikhal_3_egal_heikhal_ha_ketarim, role: heikhal_3_egal_heikhal_des_couronnes}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : heikhal 3 = couronnes (Atik+A\"A). Pattern groupement fonctionnel."
+
+  - id: "EC-H3S12-002"
+    source_he: "השער הראשון שער עתיק ובו ה' פרקים"
+    source_ref: "Heikhal 3, Sha'ar 1 (introduction)"
+    assertion: |
+      SHA'AR 1 = appele SHA'AR ATIK.
+      Contient 5 PEREKIM.
+      → Architecture : sha'ar dedie au partzuf Atik Yomin.
+      → Pattern : organisation hierarchique = partzuf le plus eleve d'abord.
+    type: axiome_explicite
+    concepts:
+      - {id: shaar_1_atik_5_perakim, role: shaar_1_atik_avec_5_perakim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : sha'ar Atik = 5 perakim. Pattern organisation hierarchique."
+
+  # ─── BLOC C : TIKKUN OLAM ATZILUT depuis MaH+BaN ───
+
+  - id: "EC-H3S12-003"
+    source_he: "ועתה נתחיל ונבאר איך נתקן כל עולם האצילות הנעשה מב' בחי' הנ\"ל שהם מ\"ה וב\"ן שהם המלכים שמתו והם בחי' הנקודות דס\"ג ושם מ\"ה החדש"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      Maintenant nous expliquons comment se TIKKUN tout l'OLAM HA-AT'ZILUT —
+      fait des 2 BEHINOT precedentes :
+        MaH (= 45) — SHEM MAH HE-CHADASH (le nouveau).
+        BaN (= 52) — les MELAKHIM SHE-METU = NEKUDOT DE-SaG (63).
+      Faut expliquer ce que chaque partzuf prend de MaH et de BaN.
+      → Architecture : Atzilut entier = construit de 2 sources (MaH+BaN).
+      → Pattern : reconstruction post-shevirah utilise 2 forces complementaires.
+      cf. EC-H2S11-198 (perek 07c) sur sigim ; EC-H2S11-237 sur uplift dans Imma.
+    type: axiome_explicite
+    concepts:
+      - {id: olam_atzilut_construit_de_mah_et_ban, role: olam_atzilut_construit_de_mah_et_ban}
+      - {id: mah_egal_45_chadash, role: mah_egal_45_le_nouveau}
+      - {id: ban_egal_52_nekudot_sag_melakhim, role: ban_egal_52_nekudot_sag_melakhim_morts}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : Atzilut = MaH+BaN. Pattern reconstruction par 2 forces complementaires."
+
+  - id: "EC-H3S12-004"
+    source_he: "כי כבר נתבאר לעיל שיש בעתיק זכר ונקבה וכעד\"ז בא\"א ובאו\"א ובזו\"ן וכבר ידעת כי שם מ\"ה יש לו בחי' טנת\"א וכעד\"ז בשם ב\"ן שהם הנקודות של ס\"ג נחלק לד' בחי' הנ\"ל שהם טנת\"א"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      Atik a ZAKHAR ET NEKEVAH (male+femelle).
+      De meme pour A"A, AVI, ZON.
+      Variante (Nusah Aher) : "TaNaTA" formes complete.
+      Shem MaH a TaNaTA (Ta'amim, Nekudot, Tagin, Otiyot).
+      Shem BaN (= nekudot SaG) divise en TaNaTA aussi.
+      → Architecture : chaque partzuf zakhar+nukvah ; chaque shem 4 behinot TaNaTA.
+      → Pattern : 4-fold division universelle des shemot.
+    type: axiome_explicite
+    concepts:
+      - {id: chaque_partzuf_zakhar_nukvah, role: chaque_partzuf_a_zakhar_et_nukvah}
+      - {id: tanata_taamim_nekudot_tagin_otiyot, role: tanata_4_behinot_de_chaque_shem}
+    mapping:
+      modules: ["partzufim/base.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : 4-fold division TaNaTA universelle. Pattern Nusah Aher capture."
+
+  # ─── BLOC D : SHEM I"S, ZOHAR TANATA ───
+
+  - id: "EC-H3S12-005"
+    source_he: "גם דע כי כמו ששם ב\"ן שהוא הנקודות דס\"ג יש בו י' נקודות שהם י\"ס וכנ\"ל כך שם מ\"ה יש בו י\"ס וכאשר מתחברים אלו ב' שמות מ\"ה וב\"ן בחיבור זכר ונקבה כנ\"ל הם מתחברים י\"ס בי\"ס וצריך לבאר תחלה ענין הטעמים"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      Comme BaN (= nekudot SaG) a 10 NEKUDOT = 10 SEFIROT —
+      ainsi MaH a 10 sefirot.
+      Quand ces 2 SHEMOT s'unissent en zakhar+nukvah —
+      s'unissent 10 IN 10 (i"s be-i"s).
+      Faut expliquer d'abord TA'AMIM.
+      → Architecture : chaque shem 10 sefirot ; union = 10×10.
+      → Pattern : produit cartesien lors de la conjonction.
+    type: axiome_explicite
+    concepts:
+      - {id: mah_ban_chacun_10_sefirot, role: mah_et_ban_chacun_10_sefirot}
+      - {id: union_mah_ban_10_in_10, role: union_mah_ban_egal_10_in_10}
+    mapping:
+      modules: ["partzufim/base.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Architecture : produit cartesien 10×10 lors de l'union MaH+BaN."
+
+  - id: "EC-H3S12-006"
+    source_he: "ודע כי בזוהר אמרו שהטעמים בכתר ונקודות בחכמה ותגין בבינה ואותיות בז\"ת דאצילות שהם נקראו זו\"נ"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      Le ZOHAR enseigne :
+        TA'AMIM dans KETER.
+        NEKUDOT dans HOKHMAH.
+        TAGIN dans BINAH.
+        OTIYOT dans Z'T d'Atzilut = ZON.
+      → Architecture canonique : 4 behinot TaNaTA = 4 niveaux du systeme.
+      → Pattern : Ta'amim=KCB, Otiyot=ZON canonical mapping.
+    type: déduction_scripturaire
+    concepts:
+      - {id: tanata_canonical_mapping_zohar, role: tanata_taamim_keter_nekudot_hokhmah_tagin_bina_otiyot_zon}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : TaNaTA canonical = source Zohar. Pattern 4-niveaux."
+
+  - id: "EC-H3S12-007"
+    source_he: "אבל דע כי זה ההתחלקות הוא בענין י\"ס עצמן של מ\"ה שהם מתחלקים בסדר הזה אמנם כאשר בחי' אלו מתחלקים בעתיק וא\"א וכו' אין סדרם כך אלא באופן אחר"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      ATTENTION : cette HITKHALKUT (division) concerne le I"S de MaH lui-meme.
+      Quand ces behinot se DIVISENT en Atik, A"A, etc. —
+      leur SEDER (ordre) n'est PAS le meme — un AUTRE OFAN (mode).
+      → Architecture cle : 2 niveaux de mapping — interne (MaH I"S) vs cross-partzuf.
+      → Pattern : la meme distinction taxonomique a 2 mappings differents selon contexte.
+    type: déduction_logique
+    concepts:
+      - {id: tanata_2_mappings_internal_vs_cross_partzuf, role: tanata_2_mappings_internal_vs_cross_partzuf}
+    mapping:
+      modules: ["partzufim/base.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : 2 mappings TaNaTA selon contexte. Pattern context-dependent taxonomy."
+
+  - id: "EC-H3S12-008"
+    source_he: "וזה פרטן הנה עתיק וא\"א שניהן נכללין בכתר דאצילות"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      Voici les details : ATIK et A"A — les 2 sont KELULIN (inclus) dans
+      KETER d'AT'ZILUT.
+      → Architecture cle : Keter d'Atzilut = container double (Atik+A"A).
+      → Pattern : sommet hierarchique = compose de 2 sub-couronnes.
+      cf. EC-H2S11-076 (perek 05a) sur Keter = Atik+A"A.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_atzilut_kelul_atik_aa, role: keter_atzilut_inclut_atik_et_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : Keter d'Atzilut = Atik+A\"A. Pattern sommet double."
+
+  # ─── BLOC E : HAGAHA — ATIK BERER ───
+
+  - id: "EC-H3S12-009"
+    source_he: "הגה\"ה ודע כי עתיק בירר משם ב\"ן ה' ראשונות דכתר דב\"ן וג\"ר דחכמה דב\"ן וד\"ר דבינה דב\"ן וז' כתרים מז\"ת דב\"ן ומכל זה נעשה נוקבא דעתיק אמנם דכורא נעשה מכתר כולו דמ\"ה"
+    source_ref: "Heikhal 3, Sha'ar 1:1 (HaGaHa)"
+    assertion: |
+      HAGAHA : ATIK BERER (selectionne) du shem BaN :
+      5 GR Keter BaN + 3 GR Hokhmah BaN + 4 GR Bina BaN + 7 ketarim Z'T BaN
+      = NUKVAH d'ATIK.
+      DUKHRA d'ATIK = KETER ENTIER de MaH.
+      → Architecture : Atik = compose hetero (dukhra MaH + nukvah pieces BaN).
+      → Pattern : selection precise pieces post-shevirah pour reconstruction.
+    type: interprétation_lurianique
+    concepts:
+      - {id: atik_dukhra_keter_entier_mah, role: atik_dukhra_egal_keter_mah_entier}
+      - {id: atik_nukvah_compose_pieces_ban, role: atik_nukvah_compose_5_keter_3_hokhmah_4_bina_7_ketarim_zt}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture cle : Atik = dukhra MaH + nukvah pieces BaN. Pattern selection precise."
+
+  # ─── BLOC F : POSITION ABA (back-to-back) ───
+
+  - id: "EC-H3S12-010"
+    source_he: "אמנם מצבן ומעמדן הוא כן כי בכל א' משניהן יש פנים ואחור. והנה הנקבה והזכר נדבקו אב\"א ואז נשארו פני הזכר מגולים מצד א' ופני הנקבה מגולים מצד א' וב' אחוריים דבוקים יחד ואז הפנים דנוקבא נעשה אחור נגד פני הזכר שנקרא פנים בערכה"
+    source_ref: "Heikhal 3, Sha'ar 1:1 (HaGaHa)"
+    assertion: |
+      MATZAVAN (position) : chacun (zakhar, nukvah) a panim+ahor.
+      Nukvah+Zakhar DVUKIM ABA (colles back-to-back).
+      Panim de zakhar EXPOSE d'un cote ; panim de nukvah expose de l'autre.
+      2 AHORAYIM connectes ENSEMBLE.
+      Panim de Nukvah devient "ahor contre panim de zakhar" — dit "panim relativement".
+      → Architecture spatiale : Atik = unite zakhar/nukvah ABA-config.
+      → Pattern : couples back-to-back avec relabelling contextuel des panim/ahor.
+      cf. EC-H2S11-175 (perek 07a) sur ABA madregah 1.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_zakhar_nukvah_dvukim_aba, role: atik_zakhar_nukvah_dvukim_back_to_back}
+      - {id: panim_be_erkah_relabelling_contextuel, role: panim_relativement_relabelling_contextuel}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : Atik ABA-config + relabelling. Pattern back-to-back contextual labels."
+
+  # ─── BLOC G : ATIK + A"A DETAIL ───
+
+  - id: "EC-H3S12-011"
+    source_he: "והנה העתיק לקח משם מ\"ה בחי' כתר כולו שהם הטעמים ומב\"ן לקח ה\"ר של כתר שלו שהם גם כן בחי' הטעמים ועוד לקח ג\"ר דחכמה דב\"ן וד\"ר דבינה דב\"ן וז' כתרים דז\"ת דב\"ן"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      ATIK prend du MaH : KETER ENTIER (= TA'AMIM).
+      Du BaN : 5 GR Keter + 3 GR Hokhmah + 4 GR Bina + 7 KETARIM Z'T
+      (chaque selection = behinah de Ta'amim car chaque sefirah inclut 10).
+      → Architecture : Atik = mega-fusion : Keter MaH + selections BaN graduelles.
+      → Pattern : asymetrie selection (Keter MaH entier vs BaN par tranches).
+    type: axiome_explicite
+    concepts:
+      - {id: atik_recoit_keter_entier_mah_taamim, role: atik_recoit_keter_mah_egal_taamim}
+      - {id: atik_recoit_selections_graduelles_ban, role: atik_recoit_selections_graduelles_de_ban}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : Atik = Keter MaH + selections BaN. Pattern asymetrie selection."
+
+  - id: "EC-H3S12-012"
+    source_he: "וא\"א לקח משם מ\"ה בחי' חכמה שהם הנקודות ומשם ב\"ן לקח ה' תחתונות דכתר של ב\"ן שהוא מן הת\"ת שלו ולמטה"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      A"A prend du shem MaH :
+        HOKHMAH (= NEKUDOT).
+      Du shem BaN :
+        5 INFERIEURES de KETER de BaN — = de Tiferet et en-dessous.
+      → Architecture : A"A = Hokhmah MaH + 5 lower Keter BaN (complementaire d'Atik).
+      → Pattern : repartition non-overlap entre Atik (5 GR Keter BaN) et A"A (5 lower Keter BaN).
+    type: axiome_explicite
+    concepts:
+      - {id: aa_recoit_hokhmah_mah_nekudot, role: aa_recoit_hokhmah_mah_egal_nekudot}
+      - {id: aa_recoit_5_lower_keter_ban, role: aa_recoit_5_inferieures_keter_ban}
+      - {id: atik_aa_partition_keter_ban_5_5, role: atik_aa_partition_complementaire_keter_ban_5_5}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : A\"A = Hokhmah MaH + 5 lower Keter BaN. Pattern partition complementaire."
+
+  # ─── BLOC H : ABBA + IMMA + ZON DISTRIBUTION ───
+
+  - id: "EC-H3S12-013"
+    source_he: "ואבא הוא חכמה דאצילות ולוקח משם מ\"ה חצי בינה שהם תגין ומשם ב\"ן לוקח ז\"ת של חכמה דב\"ן... ואמא היא בינה שבאצילות ולוקחת משם מ\"ה חצי בינה שהם תגין ומשם ב\"ן לוקחת ו\"ת של בינה דב\"ן... וזו\"ן לקחו אותיות משם מ\"ה שהם הז\"ת דמ\"ה ומשם ב\"ן לקחו ז\"ת שבו חוץ מן הכתרים של אלו הז\"ת דב\"ן"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      ABBA = HOKHMAH d'Atzilut : MaH half-Bina (Tagin) + BaN 7 lower Hokhmah BaN.
+      "Abba achid ve-talia BE-CHESED" — de Chesed et en-dessous de Hokhmah.
+      IMMA = BINA d'Atzilut : MaH half-Bina (Tagin) + BaN 6 lower Bina BaN.
+      "Imma achid ve-talia BE-GEVURAH" — de Gevurah et en-dessous de Bina.
+      ZON : MaH Z'T (Otiyot) + BaN Z'T sans ketarim.
+      → Architecture : distribution complete 4 partzufim selon TaNaTA + selections BaN.
+    type: interprétation_lurianique
+    concepts:
+      - {id: distribution_abba_imma_zon_par_tanata, role: distribution_abba_imma_zon_selon_tanata}
+      - {id: abba_achid_be_chesed_imma_be_gevurah, role: abba_achid_be_chesed_imma_achid_be_gevurah}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : distribution 4 partzufim selon TaNaTA + selections BaN. Sources Zohar."
+
+  # ─── BLOC J : KOL HA-OLEH (synthese) ───
+
+  - id: "EC-H3S12-014"
+    source_he: "כלל העולה כי בעולם אצילות יש בו י\"ס והכתר הוא עתיק וא\"א וחכמה הוא אבא ובינה היא אמא. וו\"ק הם חג\"ת נה\"י הוא ז\"א ומלכות הוא נוקבא דז\"א וכל בחי' אלו נעשה עצמותן מב' בחי' מ\"ה וב\"ן וכל בחי' הדכורים הם ממ\"ה והנוקבא מב\"ן"
+    source_ref: "Heikhal 3, Sha'ar 1:1"
+    assertion: |
+      KELAL HA-OLE : Olam Atzilut a 10 SEFIROT :
+      KETER = ATIK+A"A ; HOKHMAH = ABBA ; BINAH = IMMA ;
+      VK (CGT NHY) = Z"A ; MALKHUT = NUKVAH de Z"A.
+      Atzmut = MaH+BaN ; tous DUKHRIM = MaH ; NUKVAH = BaN.
+      Variante (Nusah Aher) sur paragraphe precedent : "[נ\"א דס\"ג]" — BaN lire SaG.
+      → Architecture finale : 5 partzufim, 10 sefirot, 2 sources (MaH+BaN).
+      → Pattern : organization globale ; nusah aher textuelle SaG vs BaN.
+    type: déduction_logique
+    concepts:
+      - {id: 5_partzufim_10_sefirot_atzilut, role: 5_partzufim_organises_en_10_sefirot_atzilut}
+      - {id: dukhrim_de_mah_nukvah_de_ban, role: dukhrim_de_mah_nukvah_de_ban}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture finale : organization globale Atzilut. Pattern Dukhrim/Nukvah = MaH/BaN."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S12-001"
+    type: contenance
+    from: heikhal_3_egal_heikhal_ha_ketarim
+    to: keter_atzilut_kelul_atik_aa
+    nature: "Heikhal 3 = Heikhal Ha-Ketarim → Keter d'Atzilut = Atik+A\"A"
+    assertions_source: ["EC-H3S12-001", "EC-H3S12-008"]
+
+  - id: "REL-H3S12-002"
+    type: causal
+    from: olam_atzilut_construit_de_mah_et_ban
+    to: dukhrim_de_mah_nukvah_de_ban
+    nature: "Atzilut = MaH+BaN → dukhrim viennent de MaH, nukvah de BaN"
+    assertions_source: ["EC-H3S12-003", "EC-H3S12-014"]
+
+  - id: "REL-H3S12-003"
+    type: dualité_structurelle
+    from: tanata_canonical_mapping_zohar
+    to: tanata_2_mappings_internal_vs_cross_partzuf
+    nature: "Mapping canonique TaNaTA (Zohar) = interne ; mapping cross-partzuf = autre ofan"
+    assertions_source: ["EC-H3S12-006", "EC-H3S12-007"]
+
+  - id: "REL-H3S12-004"
+    type: contenance
+    from: atik_dukhra_keter_entier_mah
+    to: atik_nukvah_compose_pieces_ban
+    nature: "Atik = composition hetero : dukhra Keter MaH entier + nukvah selections BaN"
+    assertions_source: ["EC-H3S12-009", "EC-H3S12-011"]
+
+  - id: "REL-H3S12-005"
+    type: dualité_structurelle
+    from: atik_recoit_selections_graduelles_ban
+    to: aa_recoit_5_lower_keter_ban
+    nature: "Partition complementaire Keter BaN : Atik = 5 GR ; A\"A = 5 lower"
+    assertions_source: ["EC-H3S12-009", "EC-H3S12-012"]
+
+  - id: "REL-H3S12-006"
+    type: hiérarchique
+    from: distribution_abba_imma_zon_par_tanata
+    to: 5_partzufim_10_sefirot_atzilut
+    nature: "Distribution detaillee TaNaTA → organisation globale 5 partzufim 10 sefirot"
+    assertions_source: ["EC-H3S12-013", "EC-H3S12-014"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S12-001"
+    nom: "Principe MaH+BaN (Reconstruction Atzilut depuis 2 Sources Complementaires)"
+    source_assertions: ["EC-H3S12-003", "EC-H3S12-009", "EC-H3S12-014"]
+    formalisation: |
+      ARCHITECTURE DE RECONSTRUCTION DUAL-SOURCE :
+      Tikkun olam Atzilut utilise 2 SOURCES complementaires :
+        MaH (= 45) — SHEM CHADASH (nouveau) = source des DUKHRIM (males).
+        BaN (= 52) — NEKUDOT DE-SaG (les melakhim morts) = source des NUKVAH (femelles).
+      DISTRIBUTION : tous dukhrim viennent de MaH ; toutes nukvah de BaN.
+      MECANISME : selection precise par TaNaTA (Ta'amim, Nekudot, Tagin, Otiyot) :
+        Atik dukhra : Keter MaH entier (Ta'amim).
+        Atik nukvah : 5 GR Keter BaN + 3 GR Hokhmah BaN + 4 GR Bina BaN + 7 ketarim Z'T BaN.
+        A"A : Hokhmah MaH (Nekudot) + 5 lower Keter BaN.
+        Abba/Imma : half-Bina MaH (Tagin) + 7-lower Hokhmah/6-lower Bina BaN.
+        ZON : Z'T MaH (Otiyot) + Z'T BaN (sans ketarim).
+      → Pattern fondamental : reconstruction = composition selective de 2 sources complementaires.
+      → Architecture : reuse des fragments tombes (BaN) + injection forme nouvelle (MaH).
+    applications_ia:
+      - "partzufim/atik_yomin.py + partzufim/arikh_anpin.py + partzufim/abba.py + partzufim/imma.py + partzufim/zeir_anpin.py + partzufim/nukva.py : implement dual-source construction"
+      - "[PLANNED] tikkun/ : reconstruct(partzuf) = combine(mah_part, ban_part)"
+      - "Pattern : reconstruction ARCHITECTURE = selectivement combiner pieces nouvelles (MaH) + recyclees (BaN)"
+      - "Architecture : recovery from shevirah = scoring + selection des bons fragments"
+      - "Pattern : male-female complementarity = signal of MaH+BaN dual-source pattern"
+      - "Diagnostic : verifier que dukhra/nukvah viennent des bonnes sources (MaH/BaN)"
+    questions_ouvertes:
+      - "Comment choisir precisement quels fragments de BaN reutiliser ?"
+      - "Y a-t-il d'autres ratios MaH:BaN possibles ?"
+      - "Pattern : peut-on extraire automatiquement la composition MaH/BaN d'un partzuf ?"
+
+  - id: "PG-H3S12-002"
+    nom: "Principe TaNaTA (4-Fold Division Universelle)"
+    source_assertions: ["EC-H3S12-004", "EC-H3S12-005", "EC-H3S12-006", "EC-H3S12-007"]
+    formalisation: |
+      ARCHITECTURE 4-FOLD UNIVERSELLE :
+      TaNaTA = (Ta'amim, Nekudot, Tagin, Otiyot) = 4 behinot de chaque shem.
+      MAPPING CANONIQUE (Zohar) — pour MaH lui-meme :
+        Ta'amim = Keter.
+        Nekudot = Hokhmah.
+        Tagin = Bina.
+        Otiyot = Z'T (= ZON).
+      MAPPING CROSS-PARTZUF — DIFFERENT :
+        Atik = Ta'amim (Keter MaH entier).
+        A"A = Nekudot (Hokhmah MaH).
+        Abba/Imma = Tagin (half-Bina MaH each).
+        ZON = Otiyot (Z'T MaH).
+      ATTENTION : memes labels TaNaTA, mappings differents selon contexte.
+      → Pattern fondamental : taxonomy reusable avec mappings context-dependent.
+      → Architecture : nomenclature hierarchique applicable a multiples niveaux.
+    applications_ia:
+      - "partzufim/base.py : implement TaNaTA as 4-fold division attribute"
+      - "Pattern : taxonomy 4-niveaux applicable a multiples granularites"
+      - "Architecture : 4-fold pattern (header/body/details/leaves) = pattern reusable"
+      - "Pattern : mapping context-dependent — same names different bindings"
+      - "Diagnostic : valider que mapping correct pour contexte donne (intern vs cross)"
+    questions_ouvertes:
+      - "Pourquoi exactement 4 niveaux (Ta'amim, Nekudot, Tagin, Otiyot) ?"
+      - "Y a-t-il d'autres mappings que internal/cross-partzuf ?"
+      - "Pattern : peut-on automatiser le choix du mapping selon contexte ?"
+
+  - id: "PG-H3S12-003"
+    nom: "Principe ABA-Position avec Relabelling (Atik Compose)"
+    source_assertions: ["EC-H3S12-010"]
+    formalisation: |
+      ARCHITECTURE D'INTERFACE COMPOSEE (Atik = unite zakhar/nukvah) :
+      Atik = ZAKHAR+NUKVAH dvukim ABA (back-to-back).
+      RESULTAT SPATIAL :
+        Panim de zakhar EXPOSE d'un cote.
+        Panim de nukvah EXPOSE de l'autre cote.
+        2 AHORAYIM connectes ENSEMBLE.
+      RELABELLING CONTEXTUEL :
+        Panim de Nukvah devient "ahor contre panim de zakhar" — = "panim relativement".
+      → Pattern fondamental : composite composant avec etiquettes adaptatives.
+      → Architecture : roles label = function du contexte/observateur.
+      cf. EC-H2S11-175 (perek 07a) sur ABA madregah 1.
+    applications_ia:
+      - "partzufim/atik_yomin.py : implement composite zakhar+nukvah with dual exposed faces"
+      - "partzufim/zivvug.py : ABA-config with contextual relabelling"
+      - "Pattern : composite components with role-context dependence"
+      - "Architecture : observer-relative role labels (panim/ahor depend on perspective)"
+      - "Pattern : Janus-faced components — back-to-back unite avec faces externes"
+      - "Diagnostic : tracer le relabelling pour ne pas confondre les contextes"
+    questions_ouvertes:
+      - "Y a-t-il une perspective canonique privilegiee ?"
+      - "Pattern : peut-on traiter zakhar et nukvah comme un seul partzuf ou 2 ?"
+      - "Comment automatiser le relabelling lors d'un changement de contexte ?"

@@ -1,0 +1,20 @@
+sefer_id: "etz_chaim"
+heikhal: 3
+shaar_number: 1
+shaar_name_he: "שער עתיק"
+shaar_name_fr: "Porte d'Atik Yomin"
+sefaria_gate: 12
+nombre_perakim: 5
+sujet_principal: "Sha'ar Atik (Heikhal 3 = Heikhal Ha-Ketarim, premier de 2 sha'arim). Tikkun olam Atzilut depuis MaH (45) et BaN (52). Atik = dukhra (de Keter MaH) + nukvah (de partial KCB ChG d'Atzilut BaN). 3 rishin d'Idra Zuta (Risha Ila'ah, Keter A\"A, Hokhmah Elyonah). Distinction Atik (zakhar) vs Atik (nukvah) chez Idra Zuta. 4 behinot TaNaTA (Ta'amim, Nekudot, Tagin, Otiyot). Place spatiale d'Atik dans Atzilut."
+concepts_cles:
+  - atik_yomin
+  - mah_45_dukhra
+  - ban_52_nukvah
+  - atik_zakhar_de_keter_mah
+  - atik_nukvah_de_5_premieres_keter_ban
+  - 3_rishin_idra_zuta
+  - risha_de_lo_ityada
+  - tanata_taamim_nekudot_tagin_otiyot
+  - tikkun_olam_atzilut
+  - panim_ahor_dvukim_aba
+note: "Premier sha'ar du Heikhal Ha-Ketarim. Sefaria gate 12 = Vital Sha'ar 12. Auto-transposition Sefaria. 5 perakim (12.1-12.5)."
