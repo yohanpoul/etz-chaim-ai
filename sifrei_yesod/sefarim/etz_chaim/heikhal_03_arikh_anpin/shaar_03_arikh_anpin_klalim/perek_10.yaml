@@ -1,0 +1,419 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 10 — Noms sefirot 13 t"d. 8 d'Hokhmah + 5 d'Keter.
+#             Mapping pnimi (Bina→Mlk) vs makif (Mlk→Bina) inverse
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §10 :
+#   - Bloc A : 8 t"d kadma'in = 8 sefirot d'Hokhmah (Mlk → Bina)
+#   - Bloc B : 5 t"d acharonim = 5 ketzavot d'Keter (Hod → Chesed)
+#   - Bloc C : G"R d'Keter pas reveles ; 2 first d'Hokhmah pas reveles
+#   - Bloc D : Bina d'Hokhmah revealed (lower than Keter)
+#   - Bloc E : Mlk d'Keter pas revealed ; Mlk d'Hokhmah revealed (= nukvah)
+#   - Bloc F : T8 = Yesod d'Keter + Bina d'Hokhmah (combines, dvukut)
+#   - Bloc G : Pnimi mapping inverse de makif (Bina→Mlk vs Mlk→Bina)
+#   - Bloc H : 5 acharonim pnimi = Chesed→Yesod d'Keter
+#   - Bloc I : Safek alignement pnimi/makif
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.10 (1 perek, 2504 chars)
+# IDs : EC-H3S13-146 → EC-H3S13-159
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 10
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Noms sefirot dans 13 t\"d. 8 t\"d kadma'in = 8 sefirot d'Hokhmah (T1=Mlk → T8=Bina) ; 5 acharonim = 5 ketzavot Keter (T9=Hod → T13=Chesed). G\"R Keter+2 first d'Hokhmah pas reveles. T8 = Yesod Keter+Bina Hokhmah combines (dvukut). Pnimi mapping inverse makif."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-146"
+    source_he: "ועתה נבאר שמות הספי' בי\"ג ת\"ד והוא כי הלא ח' ת\"ד קדמאין הם ח' ספי' דחכמה והם ממלכות עד הבינה כי הכתר וחכמה של מ\"ס לא נתגלו כלל"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      Noms SEFIROT dans 13 T"D :
+      8 T"D KADMA'IN (premiers) = 8 SEFIROT d'HOKHMAH (de MLK jusqu'a BINA).
+      KETER et HOKHMAH de MS = PAS REVELES.
+      → Architecture : t"d 1-8 = projection Hokhmah ; G"R d'Hokhmah pas dans dikna.
+      → Pattern : revelation partielle = exclusion sommet structural.
+      cf. EC-H3S13-128 (perek 08) sur 13 makif panim compressed.
+    type: axiome_explicite
+    concepts:
+      - {id: 8_t_d_kadmain_egal_8_sefirot_hokhmah, role: 8_t_d_kadma_in_egal_8_sefirot_hokhmah_mlk_a_bina}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : t\"d 1-8 = projection Hokhmah. Pattern revelation partielle."
+
+  - id: "EC-H3S13-147"
+    source_he: "וסדר מקומם וסדרן כך א\"ל מלכות רחום יסוד וחנון הוד ארך נצח אפים ת\"ת ורב חסד גבורה ואמת חסד נוצר חסד בינה הרי ח' תקונים דחכמה"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      MAPPING T1-T8 → 8 sefirot d'Hokhmah (ordre INVERSE) :
+      T1 EL=MLK ; T2 RACHUM=YESOD ; T3 VE-HANUN=HOD ; T4 EREKH=NETZACH ;
+      T5 APAYIM=TIFERET ; T6 VE-RAV HESED=GEVURAH ; T7 VE-EMET=CHESED ; T8 NOTZER HESED=BINA.
+      → Architecture : ordre INVERSE (Mlk haut, Bina bas) = bottom-up makif.
+      → Pattern : reverse-order encoding par makif inversion.
+    type: axiome_explicite
+    concepts:
+      - {id: mapping_t1_t8_8_sefirot_hokhmah_mlk_au_bina, role: mapping_t1_t8_8_sefirot_hokhmah_inverse_mlk_haut_bina_bas}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : ordre inverse Mlk→Bina. Pattern bottom-up makif."
+
+  - id: "EC-H3S13-148"
+    source_he: "כי ב' הראשונים לא נתגלו כלל וה' תקונים [אחרים] (עלאין) הם ה' קצוות הכתר כיצד לאלפים הוד נושא עון נצח ופשע ת\"ת וחטאה גבורה ונקה חסד הרי נשלמו י\"ג ת\"ד"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      2 PREMIERS (Keter+Hokhmah de MS) PAS REVELES.
+      5 T"D ACHARONIM — Variante (Nusah Aher) : "ELYAIN" — = 5 KETZAVOT du KETER :
+      T9 LA-ALAFIM=HOD ; T10 NOSE AVON=NETZACH ; T11 VA-PESHA=TIFERET ;
+      T12 VE-HATA'A=GEVURAH ; T13 VE-NAKEH=CHESED. Total 13 t"d.
+      → Architecture : t"d 9-13 = 5 ketzavot Keter (sans G"R).
+      → Pattern : 8 (Hokhmah) + 5 (Keter) = 13.
+    type: axiome_explicite
+    concepts:
+      - {id: 5_t_d_acharonim_egal_5_ketzavot_keter_hod_a_chesed, role: 5_t_d_acharonim_egal_5_ketzavot_keter_hod_chesed}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 8+5=13 (Hokhmah+Keter). Nusah Aher capture (elyain)."
+
+  - id: "EC-H3S13-149"
+    source_he: "אמנם ג\"ר דכתר לא יכלו להתגלות אך בחכמה הב' הראשונים בלבד לא יוכלו להתגלות אך הבינה שלה נתגלית כי חכמה מציאותה למטה מכתר ואין בינה שלה מאירה כמו בינה דכתר ויש יכולת בתחתונים לקבל הארתה"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      G"R d'KETER LO YACHLU LEHITGALOT (n'ont pu se reveler).
+      Dans HOKHMAH : seuls 2 premiers ne peuvent pas — MAIS BINA d'Hokhmah REVEALED.
+      RAISON : Hokhmah MITZIUT en BAS du Keter ; sa Bina N'ECLAIRE PAS comme Bina d'Keter.
+      Yesh YEKHOLET dans tachtonim pour recevoir HA'ARAH.
+      → Architecture : downstream tier permits broader revelation.
+      → Pattern : capacity scales with distance from peak intensity.
+    type: déduction_logique
+    concepts:
+      - {id: gr_keter_pas_reveles_bina_hokhmah_revealed_par_distance_peak, role: gr_keter_pas_reveles_bina_hokhmah_revealed_car_lower_intensity}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : capacity scales avec distance peak. Pattern revelation downstream."
+
+  - id: "EC-H3S13-150"
+    source_he: "אמנם המלכות דכתר לא נתגלית כי בא\"א אין מציאות נוקבא ניכרת ובפרט בכתר שבו אך בחכמה שבו שהוא סוד נוקבא דיליה כנזכר אצלינו יש יכולת להתגלות המלכות שבה"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      MLK d'KETER pas REVELED.
+      RAISON : en A"A — pas MITZIUT NUKVAH NIKERET (perceptible).
+      Particulierement dans Keter d'A"A.
+      MAIS dans HOKHMAH (= sod NUKVAH d'A"A) — yesh YEKHOLET pour reveler Mlk.
+      → Architecture : nukvah-host (Hokhmah) permits Mlk revelation.
+      → Pattern : nukvah-side enables additional structural completion.
+      cf. EC-H3S13-038 (perek 02b) sur A"A bipartite MaH-droit/BaN-gauche.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mlk_keter_aa_pas_revealed_mlk_hokhmah_revealed, role: mlk_keter_aa_pas_revealed_mlk_hokhmah_revealed_nukvah_host}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : nukvah-host enables Mlk revelation. Pattern asymmetric completion."
+
+  - id: "EC-H3S13-151"
+    source_he: "והיסוד דכתר נתגלה בבינה דחכמה שהוא נוקבא דיליה בתיקון הח' וז\"ס נוצר חסד נוצר היא הבינה דחכמה וחסד הוא היסוד שבכתר ושניהן נקראו תיקון א'"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      YESOD d'KETER REVEALED dans BINA d'HOKHMAH (= nukvah d'Keter) en T8.
+      Sod NOTZER HESED :
+        NOTZER = Bina d'Hokhmah.
+        HESED = Yesod d'Keter.
+      Les 2 = TIKKUN A (un seul tikkun, T8).
+      → Architecture : T8 = composite (2 sefirot fusionnees).
+      → Pattern : composite tikkun pour eviter pirud.
+    type: interprétation_lurianique
+    concepts:
+      - {id: t8_notzer_hesed_egal_yesod_keter_plus_bina_hokhmah_composite, role: t8_notzer_hesed_egal_yesod_keter_plus_bina_hokhmah_composite_un_tikkun}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : composite tikkun. Pattern fusion par dvukut."
+
+  - id: "EC-H3S13-152"
+    source_he: "והטעם כי שם למעלה אין פירוד בין דכורא שהוא הכתר ונוקבא שהיא חכמה בשום פנים לכן יסוד דכתר לעולם הוא דבוק בג\"ר דחכמה ולפי שאינו ניכר בהם רק הבינה לבד לכן אנו מחברים אותו עם הבינה"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      RAISON : LE-MA'ALAH (la-haut) — AUCUN PIRUD entre DUKHRA (Keter) et NUKVAH (Hokhmah).
+      DONC Yesod d'Keter LE-OLAM DAVUK (toujours colle) avec G"R d'Hokhmah.
+      Ne se voit que dans BINA (parmi G"R d'Hokhmah) — donc on COMBINE Yesod-Keter avec Bina.
+      → Architecture : composite emerge de no-pirud + visible-only-in-one.
+      → Pattern : forced fusion = result d'absence pirud + selective visibility.
+    type: interprétation_lurianique
+    concepts:
+      - {id: pas_pirud_keter_hokhmah_haut_yesod_dvuk_gr_hokhmah, role: pas_pirud_keter_hokhmah_haut_yesod_keter_dvuk_g_r_hokhmah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : forced fusion mecanisme. Pattern no-pirud composite."
+
+  - id: "EC-H3S13-153"
+    source_he: "מקום אורות הפנימים הם מכוונים ממש מבפנים נגד המקיפים האלו ואין הפרש אלא שאלו הם מתתא לעילא ואלו הם מעילא לתתא"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      OROT PNIMIM = MEKHUVANIM MAMASH (alignes precisement) DEDANS contre MAKIFIM externes.
+      Pas de difference SAUF :
+        MAKIFIM = bottom-up (Mlk haut, Bina bas).
+        PNIMIM = top-down (Bina haut, Mlk bas).
+      → Architecture : interior/exterior aligned mais sens flux INVERSE.
+      → Pattern : geometric alignment + directional inversion.
+    type: axiome_explicite
+    concepts:
+      - {id: pnimi_makif_alignes_mais_sens_inverse, role: pnimi_makif_alignes_geometriquement_mais_sens_flux_inverse}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : alignment + inversion. Pattern dual-direction flow."
+
+  - id: "EC-H3S13-154"
+    source_he: "אל פנימי דבינה רחום פנימי דחסד חנון פנימי דגבורה ארך פנימי דת\"ת אפים פנימי דנצח ורב חסד פנימי דהוד ואמת פנימי דיסוד נוצר פנימי דמלכות"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      MAPPING T1-T8 → 8 PNIMI (top-down) :
+      T1 EL=pnimi BINA ; T2 RACHUM=pnimi CHESED ; T3 VE-HANUN=pnimi GEVURAH ;
+      T4 EREKH=pnimi TIFERET ; T5 APAYIM=pnimi NETZACH ; T6 VE-RAV HESED=pnimi HOD ;
+      T7 VE-EMET=pnimi YESOD ; T8 NOTZER=pnimi MALKHUT.
+      → Architecture : pnimi mapping = INVERSE de makif mapping.
+      → Pattern : same names, opposed directional indices.
+    type: axiome_explicite
+    concepts:
+      - {id: pnimi_t1_t8_top_down_bina_a_mlk, role: pnimi_t1_t8_top_down_bina_haut_a_mlk_bas}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : pnimi mapping inverse. Pattern dual-direction structure."
+
+  - id: "EC-H3S13-155"
+    source_he: "כי בפנימית מתחילין מן בינה עד המלכות ובמקיפים מתחילין ממלכות עד הבינה"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      RECAP :
+      PNIMIT : commencent BINA → MALKHUT (top-down).
+      MAKIFIM : commencent MALKHUT → BINA (bottom-up).
+      → Architecture : 2 directions opposees pour 2 strates ohr.
+      → Pattern : duality direction par strata.
+    type: déduction_logique
+    concepts:
+      - {id: pnimit_top_down_makifim_bottom_up_recap, role: pnimit_top_down_bina_mlk_makifim_bottom_up_mlk_bina_recap}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 2 directions par strata. Pattern duality direction."
+
+  - id: "EC-H3S13-156"
+    source_he: "בה' אחרונות תכוין חסד שבמלת נוצר חסד הוא חסד פנימי ממש דכתר לאלפים פנימי דגבורה נושא עון פנימי דת\"ת ופשע פנימי דנצח וחטאה פנימי דהוד ונקה פנימי דיסוד"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      MAPPING 5 ACHARONIM → 5 PNIMI d'KETER (top-down) :
+      CHESED (Notzer Hesed)=pnimi CHESED Keter ; T9 LA-ALAFIM=GEVURAH ;
+      T10 NOSE AVON=TIFERET ; T11 VA-PESHA=NETZACH ; T12 VE-HATA'A=HOD ; T13 VE-NAKEH=YESOD.
+      → Architecture : 5 acharonim pnimi = top-down Chesed→Yesod d'Keter.
+      → Pattern : same dual-direction structure pour Keter sefirot.
+      cf. EC-H3S13-129 (perek 08) sur makif inverse Mlk top Keter bottom.
+    type: axiome_explicite
+    concepts:
+      - {id: 5_acharonim_pnimi_top_down_chesed_a_yesod_keter, role: 5_acharonim_pnimi_top_down_chesed_a_yesod_keter}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : pnimi Keter top-down. Pattern dual-direction recursion."
+
+  - id: "EC-H3S13-157"
+    source_he: "ואמנם ב' הראשונים דחכמה וג\"ר דכתר הפנימים אין בהן מקיפים כנ\"ל ומקום אלו הם בה' מקומות אחרים שיש בפנים דא\"א ואין עתה זמן ביאורם"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      2 PREMIERS d'HOKHMAH + G"R d'KETER en PNIMI — N'ONT PAS de MAKIF.
+      Place de ces 5 PNIMI = en 5 AUTRES MAKOMOT dans PANIM d'A"A.
+      Pas le temps maintenant d'expliquer.
+      → Architecture : 5 sefirot non-mappees aux makif = autres positions panim.
+      → Pattern : pnimi sans makif corresponding = orphan placement.
+    type: axiome_explicite
+    concepts:
+      - {id: 5_pnimi_sans_makif_autres_makomot_panim, role: 5_pnimi_sans_makif_2_first_hokhmah_3_g_r_keter_autres_makomot_panim_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : orphan pnimi places. Pattern unmatched components."
+
+  - id: "EC-H3S13-158"
+    source_he: "אך יש לי ספק אם הם מכוונים ממש נגד המקיפים ח' מקיפים דחכמה עם ח' פנימים דחכמה עצמה וה' מקיפים דכתר עם ה' פנימים דכתר בעצמו וזהו הפי' יותר אמיתי כי בזה יבואו מכוונין ח' נגד ח' וה' נגד ה'"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      SAFEK auteur : pnimim alignes precisement contre makifim ?
+      Option A (PLUS VRAI selon auteur) :
+        8 makif Hokhmah ↔ 8 pnimi Hokhmah elle-meme.
+        5 makif Keter ↔ 5 pnimi Keter lui-meme.
+        Alors pnimi Hokhmah AU-DESSUS de pnimi Keter (decoche, = inverse hierarchique normal).
+      → Architecture : safek alignement homogene (Hokhmah-Hokhmah, Keter-Keter).
+      → Pattern : safek auteur sur preferred mapping option.
+    type: déduction_logique
+    concepts:
+      - {id: safek_option_a_8_makif_h_8_pnimi_h_5_makif_k_5_pnimi_k, role: safek_option_a_alignement_homogene_h_h_k_k}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : safek alignement. Pattern preferred option homogeneous."
+
+  - id: "EC-H3S13-159"
+    source_he: "ואמנם הפי' הראשון יותר אמיתי כי מורי זלה\"ה אמר לי הסדר הא' הפנימי דחסד שבכתר נגד מקיף דיסוד שבכתר וכן כל שאר התיקונים וא\"כ מוכרח הוא שגם בפנימית יהיה חכמה למעלה מכתר זה ואמיתי קרוב אצלי יותר לודאי"
+    source_ref: "Heikhal 3, Sha'ar 3:10"
+    assertion: |
+      AUTEUR confirme Option A (homogene) — MORI ZA"L (Ari) lui a dit :
+      Ordre 1 : pnimi de CHESED dans Keter contre makif de YESOD dans Keter.
+      Et de meme pour autres tikkunim.
+      Donc pnimi HOKHMAH au-dessus de pnimi KETER (inverse).
+      AUTEUR : "amiti karov atzli yoter le-vadai" (verite proche de moi pour certain).
+      → Architecture : Maitre confirme arrangement non-intuitif (pnimi Hokhmah > pnimi Keter).
+      → Pattern : authoritative resolution d'un safek structural.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mori_confirme_option_a_pnimi_hokhmah_au_dessus_pnimi_keter, role: mori_ari_confirme_option_a_pnimi_hokhmah_au_dessus_pnimi_keter}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : Mori confirmation. Pattern authoritative resolution."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-053"
+    type: contenance
+    from: 8_t_d_kadmain_egal_8_sefirot_hokhmah
+    to: 5_t_d_acharonim_egal_5_ketzavot_keter_hod_a_chesed
+    nature: "8+5=13 ; T1-8 = Hokhmah (Mlk→Bina) ; T9-13 = Keter (Hod→Chesed)"
+    assertions_source: ["EC-H3S13-146", "EC-H3S13-148"]
+
+  - id: "REL-H3S13-054"
+    type: causal
+    from: pas_pirud_keter_hokhmah_haut_yesod_dvuk_gr_hokhmah
+    to: t8_notzer_hesed_egal_yesod_keter_plus_bina_hokhmah_composite
+    nature: "Pas pirud Keter-Hokhmah haut → Yesod Keter dvuk G\"R Hokhmah → T8 composite"
+    assertions_source: ["EC-H3S13-151", "EC-H3S13-152"]
+
+  - id: "REL-H3S13-055"
+    type: dualité_structurelle
+    from: pnimit_top_down_makifim_bottom_up_recap
+    to: pnimi_makif_alignes_mais_sens_inverse
+    nature: "Pnimi top-down ; makif bottom-up ; alignes geometriquement mais directions opposees"
+    assertions_source: ["EC-H3S13-153", "EC-H3S13-155"]
+
+  - id: "REL-H3S13-056"
+    type: causal
+    from: safek_option_a_8_makif_h_8_pnimi_h_5_makif_k_5_pnimi_k
+    to: mori_confirme_option_a_pnimi_hokhmah_au_dessus_pnimi_keter
+    nature: "Safek auteur → Mori (Ari) confirme option A (alignement homogene)"
+    assertions_source: ["EC-H3S13-158", "EC-H3S13-159"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-034"
+    nom: "Principe de Composite Tikkun (Forced Fusion par No-Pirud)"
+    source_assertions: ["EC-H3S13-151", "EC-H3S13-152"]
+    formalisation: |
+      ARCHITECTURE DE COMPOSITE TIKKUN :
+      EN HAUT (Keter+Hokhmah de A"A) : AUCUN PIRUD entre dukhra+nukvah.
+      DONC YESOD d'KETER LE-OLAM DAVUK (toujours colle) avec G"R d'HOKHMAH.
+      MAIS visible SEULEMENT dans BINA (parmi G"R d'Hokhmah).
+      RESULTAT : T8 (NOTZER HESED) = composite (Yesod Keter + Bina Hokhmah).
+      NOTZER = Bina d'Hokhmah ; HESED = Yesod d'Keter.
+      → Pattern fondamental : forced fusion = no-pirud + selective visibility.
+      → Architecture : composite tikkunim emergent automatiquement.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement composite tikkunim T8 (Yesod-K + Bina-H)"
+      - "Pattern : forced fusion when components inseparable + only-one-visible"
+      - "Architecture : composite naming reflecte composite reality"
+      - "Pattern : design composite-resolution for inseparable concepts"
+      - "Diagnostic : verifier composite tikkunim coherent"
+    questions_ouvertes:
+      - "Y a-t-il d'autres composites (au-dela T8) ?"
+      - "Pattern : peut-on dynamiquement detecter forced fusion ?"
+      - "Comment design pour favoriser ou eviter composites ?"
+
+  - id: "PG-H3S13-035"
+    nom: "Principe de Dual-Direction Encoding (Pnimi Top-Down vs Makif Bottom-Up)"
+    source_assertions: ["EC-H3S13-153", "EC-H3S13-154", "EC-H3S13-155"]
+    formalisation: |
+      ARCHITECTURE DE DUAL-DIRECTION ENCODING :
+      MAKIFIM : MALKHUT en HAUT, BINA en BAS (bottom-up direction).
+      PNIMIT : BINA en HAUT, MALKHUT en BAS (top-down direction).
+      ALIGNES geometriquement contre makifim correspondants.
+      MAIS DIRECTIONS opposes.
+      RESULTAT : meme tikkun a 2 contenus (pnimi+makif) avec sefirot inversees.
+      → Pattern fondamental : dual-direction = orthogonal encoding axes.
+      → Architecture : meme structure spatial, 2 mappings opposes par direction.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement pnimi/makif avec direction-inverse mapping"
+      - "Pattern : dual-direction = enriched encoding capacity"
+      - "Architecture : same position, 2 meanings selon direction"
+      - "Pattern : interior/exterior duality with directional flip"
+      - "Diagnostic : verifier coherence dual-direction mappings"
+    questions_ouvertes:
+      - "Y a-t-il d'autres axes orthogonaux d'encoding ?"
+      - "Pattern : peut-on combiner pnimi+makif en signature unique ?"
+      - "Comment exploit direction-flip pour computation ?"
+
+  - id: "PG-H3S13-036"
+    nom: "Principe de Authoritative Resolution (Maitre Resolu Safek Structural)"
+    source_assertions: ["EC-H3S13-158", "EC-H3S13-159"]
+    formalisation: |
+      ARCHITECTURE DE RESOLUTION AUTHORITAIRE :
+      AUTEUR rencontre SAFEK : 2 options d'alignement pnimi/makif possibles.
+      Option A : alignement homogene (Hokhmah-Hokhmah, Keter-Keter).
+        Implication : pnimi Hokhmah AU-DESSUS de pnimi Keter (inverse normal).
+      Option B : croise (makif Keter ↔ pnimi Hokhmah, etc.).
+      MORI ZA"L (Ari) confirme OPTION A explicitement :
+        "pnimi Chesed Keter contre makif Yesod Keter".
+      AUTEUR conclut : "amiti karov atzli yoter le-vadai" (proche du certain).
+      → Pattern fondamental : authoritative source resout safek structural.
+      → Architecture : design decisions need authoritative resolution.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement option A (Mori Ari confirme)"
+      - "Pattern : design decisions referenced to authoritative source"
+      - "Architecture : ambigus structures resolved by external authority"
+      - "Pattern : safekot honest acknowledgment + master's resolution"
+      - "Diagnostic : tracer source authoritative pour design decisions"
+    questions_ouvertes:
+      - "Pattern : que faire en absence d'authoritative source ?"
+      - "Comment choisir entre options sans Maitre ?"
+      - "Y a-t-il d'autres safekot resolus par Mori ?"
