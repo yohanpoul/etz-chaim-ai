@@ -1,0 +1,428 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 11 — 2 shemot avant 13 t"d = MTzPTz MTzPTz (atbash YHVH).
+#             2 pe'ot = 2 me'orot. ELOHIM = 13 lettres milui. Mn ha-Metzar
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §11 :
+#   - Bloc A : Pe'ah (cote rosh) = Mlk
+#   - Bloc B : 2 pe'ot = 2 MTzPTz (droite/gauche)
+#   - Bloc C : Chaque MTzPTz = 13 t"d via decomposition lettres
+#   - Bloc D : 2 MTzPTz = 2 Elohim milui yodin (gematriya 300=Shin)
+#   - Bloc E : Elohim = 13 lettres milui = 13 t"d
+#   - Bloc F : 2 me'orot ha-gedolim (Zohar Bereshit 22)
+#   - Bloc G : Mlk dikna (T1 EL) = adjacent Mlk pe'ah
+#   - Bloc H : Mn ha-Metzar karati YH (T6 = YH d'Elohim)
+#   - Bloc I : Mem setumah = peh+dents
+#   - Bloc J : Dikna = dinim de Elohim ; le-akpaya
+#   - Bloc K : (M"L) Mlk shaarei rosh+dikna adjacents pas intersection
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.11 (Part 1 + Part 2 court)
+# IDs : EC-H3S13-160 → EC-H3S13-173
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 11
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "2 shemot avant 13 t\"d = YHVH YHVH = 2 MTzPTz (atbash). 2 pe'ot rosh = 2 Mlk = 2 me'orot. Chaque MTzPTz = 13 t\"d (4 mochin Mem + 9 Tzadi-Pe-Tzadi). Elohim milui yodin gematriya 300=Shin. Mn ha-Metzar karati YH (Tehillim 118:5) = T6 Y droite+H gauche d'Elohim. Mem setoumah=peh+dents. Dikna=dinim le-akpaya."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-160"
+    source_he: "ועתה נבאר ב' שמות י\"ג ת\"ד דהיינו יהו\"ה יהו\"ה שקודם להם בתורה"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      Maintenant 2 SHEMOT precedant 13 T"D dans Torah = YHVH YHVH (Shemot 34:6).
+      → Architecture : 2 noms YHVH precedent enumeration 13 middot Ki Tisa.
+      → Pattern : preludes liturgiques aux structures.
+      cf. EC-H3S13-135 (perek 09) sur 13 middot Ki Tisa = cheveux/tzinurot.
+      cf. EC-H3S13-091 (perek 06) sur 7 tikkunim gulgalta.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 2_shemot_yhvh_avant_13_middot_torah, role: 2_shemot_yhvh_yhvh_avant_13_middot_torah_shemot_34_6}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : preludes liturgiques. Pattern naming-before-structure."
+
+  - id: "EC-H3S13-161"
+    source_he: "הספי' האחרונה שהיא מלכות הוא סוד פאה שבראש כי בכ\"מ פאה היא מלכות והנה ברישא דא\"א פאה זאת היא השם מצפ\"ץ"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      SEFIRAH ACHARONAH (Mlk) = SOD PE'AH (tempes/cotes) du rosh.
+      Partout : PE'AH = MLK.
+      Dans rosh A"A : pe'ah = NOM MTzPTz (atbash YHVH — Y↔Tz, H↔Tz, V↔P, H↔Tz).
+      → Architecture : Mlk d'A"A rosh = nom code (MTzPTz = atbash YHVH).
+      → Pattern : letter-mysticism cipher (atbash).
+    type: déduction_scripturaire
+    concepts:
+      - {id: peah_rosh_aa_egal_mlk_egal_mtzptz_atbash, role: peah_rosh_aa_egal_mlk_egal_mtzptz_atbash_yhvh}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : Mlk = nom atbash. Pattern letter-cipher."
+
+  - id: "EC-H3S13-162"
+    source_he: "והם ב' א' מימין וא' משמאל מימין נגד (ז\"א) או\"א ושמאל נגד (נוקבא) ז\"א כי גם בעתיקה יש ז\"א (ונוקבא) ואו\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      2 PE'OT (cotes) du rosh : 1 DROITE + 1 GAUCHE.
+      Variante (Nusah Aher) : "ZA" / "AVI" / "Nukvah" (terminologies multiples).
+      Droite vs AVI ; gauche vs ZA.
+      Car en Atika il y a ZA (et Nukvah) et AVI.
+      → Architecture : 2 pe'ot = source duale (ZA + Nukvah / ou AVI + ZA).
+      → Pattern : dual lateral source pour partzufim downstream.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_peot_droite_gauche_source_zon_avi, role: 2_peot_droite_gauche_source_avi_droite_za_gauche_atika}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : 2 pe'ot dual source. Nusah Aher capture (ZA/AVI/Nukvah)."
+
+  - id: "EC-H3S13-163"
+    source_he: "כל אחד מאלו השמות כולל י\"ג ת\"ד באופן זה כי ד' תיקונים עלאין הם סוד ד' מוחין וז\"ס מ' דמצפ\"ץ וט' תקונים הנשארים הם צ' דמצפ\"ץ"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      Chaque MTzPTz INCLUT 13 t"d :
+      4 TIKKUNIM ELYAIN (superieurs) = sod 4 MOCHIN = MEM (40) de MTzPTz.
+      9 TIKKUNIM RESTANTS = TZADI (90) de MTzPTz.
+      Plus subdivisions Pe (80) + Tzadi finale (90) → encode autres aspects.
+      → Architecture : decomposition lettres MTzPTz ↔ groupements t"d.
+      → Pattern : letter-by-letter mapping en t"d groups.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mtzptz_mem_4_mochin_tzadi_9_tikkunim, role: mtzptz_mem_egal_4_mochin_tzadi_egal_9_tikkunim_restants}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : letter-decomposition mapping. Pattern modular t\"d encoding."
+
+  - id: "EC-H3S13-164"
+    source_he: "הטעם כי הד' ראשונים דת\"ד נכללין בכתר חכמה שבו כי אלו יש להם מעלה יתירה כי הם כוללים רישא דעתיק... אח\"כ הט' נמנין מבינה ולמטה ואח\"כ להיות שעכ\"ז יש יתור לבינה משמונה שתחתיה לכן חזר למנות הח' בפ\"ע והם פ' דמצפ\"ץ ואח\"כ צ' אחרונה הם ט' דז\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      RAISON : 4 PREMIERS t"d KELULIN dans Keter+Hokhmah ; MA'ALAH YETERAH —
+      INCLUT rosh d'Atik.
+      9 RESTANTS = de Bina vers le bas.
+      Bina YETUR (excede) les 8 sous elle → comptees a part = PE (80) de MTzPTz.
+      Tzadi finale = 9 d'Z"A.
+      → Architecture : decomposition hiérarchique Keter-Hokhmah / Bina / Z'T / Z"A.
+      → Pattern : nested counting par tier-importance.
+    type: déduction_logique
+    concepts:
+      - {id: decomposition_hiérarchique_4_kh_bina_8_zt_9_za, role: decomposition_4_kh_bina_8_zt_separes_9_za_finale}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : nested decomposition. Pattern tier-importance counting."
+
+  - id: "EC-H3S13-165"
+    source_he: "אלו הב' שמות משתלשלין מפאת הראש כי הם גי' ש' והנה שם אלהים דיודין גי' ש' כזה אל\"ף למ\"ד ה\"י יו\"ד מ\"ם... ואלהים זה בא\"א הוא ב\"ח מצפ\"ץ כי עליה אתמר ואין אלקים עמדי ואין בו אלא הוי\"ה ובמקום שיש אלקים בז\"א אז בא\"א מתחלף הוי\"ה במצפ\"ץ"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      2 SHEMOT MISHTALSHELIN (descendent) de PE'AT HA-ROSH —
+      gematriya total = 300 (SHIN).
+      ELOHIM milui YODIN = ALEF LAMED HE-YOD YOD MEM = gematriya 300.
+      ELOHIM dans A"A = BHe MTzPTz (= MTzPTz).
+      Source : "VE-EIN ELOHIM IMADI" (Devarim 32:39) — A"A n'a que YHVH.
+      Quand il y a Elohim dans Z"A → en A"A YHVH MIT'HALEF (transforme) en MTzPTz.
+      → Architecture : Elohim downstream = MTzPTz upstream (atbash transformation).
+      → Pattern : transformation entre tiers via cipher.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 2_mtzptz_egal_2_elohim_milui_yodin_300_shin, role: 2_mtzptz_egal_2_elohim_milui_yodin_gematriya_300_shin}
+      - {id: elohim_aa_mit_halef_yhvh_en_mtzptz_atbash, role: elohim_aa_yhvh_mit_halef_en_mtzptz_par_atbash}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : transformation cipher entre tiers. Pattern atbash mapping."
+
+  - id: "EC-H3S13-166"
+    source_he: "אלהים יש לו י\"ג אותיות במלואו לכן הם י\"ג ת\"ד הנמשכין משם"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      ELOHIM en MILUYO (rempli) = 13 LETTRES.
+      DONC 13 T"D NIMSHEKHIN (s'etendent) de la.
+      → Architecture : 13 = letter-count d'Elohim milui = 13 t"d emanant.
+      → Pattern : letter-count of name → number of structures.
+    type: axiome_explicite
+    concepts:
+      - {id: elohim_milui_13_lettres_egal_13_td, role: elohim_milui_13_lettres_egal_13_t_d_emanants}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : letter-count = structure count. Pattern letter-mysticism encoding."
+
+  - id: "EC-H3S13-167"
+    source_he: "ב' פאות הם בב' צדדי הראש והם סוד שני המאורות הגדולים מצפ\"ץ מצפ\"ץ כנזכר זוהר בראשית דכ\"ב והם ב' שמות קודם י\"ג מכילין דרחמי שהם ה' ה' אל רחום"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      2 PE'OT aux 2 COTES du rosh = SOD 2 ME'OROT HA-GEDOLIM (luminaires Bereshit 1:16).
+      Source Zohar Bereshit 22.
+      Sont les 2 SHEMOT precedant 13 MIKILIN DE-RACHAMI :
+      "H' H' EL RACHUM..." (Shemot 34:6).
+      → Architecture : 2 pe'ot = me'orot (anatomical = cosmological).
+      → Pattern : anatomy maps to cosmology (Bereshit creation).
+    type: déduction_scripturaire
+    concepts:
+      - {id: 2_peot_egal_2_meorot_zohar_bereshit_22, role: 2_peot_egal_2_meorot_hagedolim_zohar_bereshit_22}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : anatomie = cosmologie. Pattern Zohar mapping."
+
+  - id: "EC-H3S13-168"
+    source_he: "ז\"א יצא ממצפ\"ץ הימיני ונוקבא ממצפ\"ץ השמאלי... מצד ימין דראש שמשם ה\"ח עטרא דדכורא יצא פאה א' שממנה יונק ז\"א... וה\"ג דשמאל יצאה פאה שמאלי שממנה יונקת נוקבא דיליה"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      Z"A YATZA (sort) de MTzPTz YEMINI (droit).
+      NUKVAH de MTzPTz SEMALI (gauche).
+      Cote DROIT du rosh = source 5 CHASADIM (ATARA d'DUKHRA) → pe'ah droite → ZA tete.
+      Cote GAUCHE = 5 GEVUROT → pe'ah gauche → Nukvah teste.
+      → Architecture : ZA droite (chesed), Nukvah gauche (gevurah) issus pe'ot.
+      → Pattern : lateral polarization en source pe'ot.
+    type: interprétation_lurianique
+    concepts:
+      - {id: za_de_mtzptz_droite_chesed_nukvah_de_mtzptz_gauche_gevurah, role: za_de_mtzptz_yemini_chesed_nukvah_de_mtzptz_semali_gevurah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "nukva"]
+      relevance: "Architecture : lateral polarization sources. Pattern dual-side pe'ot."
+
+  - id: "EC-H3S13-169"
+    source_he: "הלא תיקון ראשון שבדיקנא הוא א\"ל והוא מלכות ופאה בחינת מלכות נמצא שב' מלכיות סמוכים ודבוקים זה לזה כי במקום שמסתיימת מלכות שבראש שהיא פאת הראש משם מתחלת מלכות דדיקנא שהוא תיקון ראשון"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      T1 dikna = EL = MLK ; PE'AH (tempes) = behinah MLK.
+      DONC 2 MLK SAMUKHIM (adjacent) ve-DVUKIM (colles).
+      Ou MLK rosh (pe'ah) se TERMINE → MLK dikna (T1) COMMENCE.
+      → Architecture : continuite Mlk rosh → Mlk dikna (transition adjacent).
+      → Pattern : adjacent components share boundary semantics.
+    type: déduction_logique
+    concepts:
+      - {id: 2_mlk_adjacents_peah_rosh_t1_dikna, role: 2_mlk_pe_ah_rosh_t1_dikna_adjacents_dvukim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : continuite Mlk. Pattern adjacent boundaries."
+
+  - id: "EC-H3S13-170"
+    source_he: "הי\"ג מכילין יונקים מב' פאות הראש לכן בתחלתן אנו מזכירין ב' הויות אלו שהם סוד מצפ\"ץ מצפ\"ץ בחילוף ואח\"כ אנו מזכירין הי\"ג מדות"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      13 MIKILIN YONEKIM (tetent) des 2 PE'OT du rosh.
+      DONC AU DEBUT on MENTIONNE 2 HAVAYOT = sod MTzPTz MTzPTz BE-CHILUF (atbash).
+      Apres on mentionne les 13 middot.
+      → Architecture : sequence liturgique reflete sources upstream.
+      → Pattern : naming order encodes feeding order.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 13_mikilin_yonekim_2_peot_explique_2_yhvh_avant, role: 13_mikilin_yonekim_2_peot_explique_pourquoi_2_yhvh_avant_13_middot}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : naming order = feeding order. Pattern liturgical encoding."
+
+  - id: "EC-H3S13-171"
+    source_he: "מב' אלהים שבפאות הראש נמשכו ב' א\"ל לתיקון הא' והב' י\"ה י\"ה שבב' אלקים נמשכו לתיקון הו' וכנזכר באדרא בביאור מן המצר קראתי י\"ה... ואמנם בתיקון הו' (הא') הוא (במצר) במקצת (נ\"א הוא בסוד) הדיקנא יש שם י\"ה דאלקים י' בימין ה' (דאלקים) בשמאל וזהו מן המצר קראתי י\"ה"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      De 2 ELOHIM dans pe'ot : 2 EL → T1+T2 ; 2 YH → T6 (Mn ha-Metzar karati YH, Tehillim 118:5).
+      Variante (Nusah Aher) : "BE-SOD" au lieu de "BE-MITZAR".
+      Variante (Nusah Aher) : "ha-shem yh be-mitzar ki ein sham mekomo".
+      T6 = sod dikna ; Y droite, H gauche (de Elohim).
+      → Architecture : decomposition Elohim distribute sur t"d specifiques.
+      → Pattern : letter-disribution reflete liturgie scripturaire.
+      cf. EC-H3S13-148 (perek 10) sur 13 t"d = 8 Hokhmah + 5 Keter.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 2_yh_de_2_elohim_t6_mn_ha_metzar_karati_yh, role: 2_yh_de_2_elohim_t6_mn_ha_metzar_karati_yh_tehillim_118_5}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : letter-distribution liturgique. Nusah Aher capture (be-sod)."
+
+  - id: "EC-H3S13-172"
+    source_he: "מ' סתומה דאלקים הוא בפה שהוא כעין מ' סתומה והם ב' ממי\"ן כי שפתים הסוגרים הפה הוא כעין מ' סתום ואח\"כ השיניים הוא ג\"כ כמין חומה עגולה כעין ם' סתומה והם ב' ממי\"ן דשם אלקים"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      MEM SETOUMAH (fermee) d'ELOHIM = dans PEH (bouche) — comme Mem fermee.
+      2 MEMIM :
+        SHEFATAYIM (levres) qui ferment peh = comme Mem ferme.
+        SHINAYIM (dents) = comme HOMA AGULAH (mur rond) = aussi Mem fermee.
+      → Architecture : 2 Mem = anatomie buccale (levres+dents).
+      → Pattern : letter-anatomical encoding precise.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 2_mem_setoumah_egal_levres_plus_dents_anatomie, role: 2_mem_setoumah_d_elohim_egal_levres_plus_dents_anatomie}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : letter-anatomical. Pattern peh structures."
+
+  - id: "EC-H3S13-173"
+    source_he: "כל הדיקנא הוא סוד הדינין משם אלקים והטעם כי כל דיקנא הוא ממוחא והמ\"ס שם שרשי הדינין הכופין כל מה שלמטה מהם ולכן אמרו כי סוד דיקנא לאכפיא דינין"
+    source_ref: "Heikhal 3, Sha'ar 3:11"
+    assertion: |
+      TOUTE DIKNA = SOD DININ de SHEM ELOHIM.
+      RAISON : toute dikna vient de MOACH ; MS = SHORSHEI HA-DININ
+      qui KOFIN (subduisent) tout en-dessous.
+      DONC sod dikna = LE-AKPAYA DININ (subduire les jugements).
+      Plus : "Mlk shaarei rosh+dikna ne se TOUCHENT PAS meme un cheveu"
+      (Berakhot 48b — "ein malkhut nogaat be-haverata afilu ke-mlo nima").
+      → Architecture : dikna = mecanisme global subjugation dinim.
+      → Pattern : top-down subjugation par root-source.
+    type: déduction_scripturaire
+    concepts:
+      - {id: dikna_egal_dinim_de_elohim_le_akpaya, role: dikna_dinim_de_elohim_le_akpaya_dinim_subjugation}
+      - {id: 2_mlk_pas_touchent_meme_cheveu_berakhot_48b, role: 2_mlk_pe_ah_dikna_ne_touchent_pas_meme_cheveu_berakhot_48b}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : subjugation top-down. Pattern source-dominance."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-057"
+    type: causal
+    from: peah_rosh_aa_egal_mlk_egal_mtzptz_atbash
+    to: 2_peot_droite_gauche_source_zon_avi
+    nature: "Pe'ah=Mlk=MTzPTz (atbash YHVH) ; 2 pe'ot droite/gauche source ZON+AVI"
+    assertions_source: ["EC-H3S13-161", "EC-H3S13-162"]
+
+  - id: "REL-H3S13-058"
+    type: contenance
+    from: mtzptz_mem_4_mochin_tzadi_9_tikkunim
+    to: decomposition_hiérarchique_4_kh_bina_8_zt_9_za
+    nature: "MTzPTz Mem=4 mochin, Tzadi=9 tikkunim ; decomposition hierarchique KH/Bina/Z'T/ZA"
+    assertions_source: ["EC-H3S13-163", "EC-H3S13-164"]
+
+  - id: "REL-H3S13-059"
+    type: analogie
+    from: 2_mtzptz_egal_2_elohim_milui_yodin_300_shin
+    to: elohim_milui_13_lettres_egal_13_td
+    nature: "2 MTzPTz=2 Elohim milui yodin=300 ; Elohim 13 lettres=13 t\"d"
+    assertions_source: ["EC-H3S13-165", "EC-H3S13-166"]
+
+  - id: "REL-H3S13-060"
+    type: dualité_structurelle
+    from: za_de_mtzptz_droite_chesed_nukvah_de_mtzptz_gauche_gevurah
+    to: 2_peot_egal_2_meorot_zohar_bereshit_22
+    nature: "ZA droite chesed/Nukvah gauche gevurah ; 2 pe'ot=2 me'orot ha-gedolim"
+    assertions_source: ["EC-H3S13-168", "EC-H3S13-167"]
+
+  - id: "REL-H3S13-061"
+    type: contenance
+    from: 2_mlk_adjacents_peah_rosh_t1_dikna
+    to: 2_mlk_pas_touchent_meme_cheveu_berakhot_48b
+    nature: "2 Mlk adjacents (pe'ah+T1 dikna) ; ne se touchent pas meme un cheveu (Berakhot 48b)"
+    assertions_source: ["EC-H3S13-169", "EC-H3S13-173"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-037"
+    nom: "Principe d'Atbash Cipher (YHVH ↔ MTzPTz Cross-Tier Transformation)"
+    source_assertions: ["EC-H3S13-161", "EC-H3S13-165"]
+    formalisation: |
+      ARCHITECTURE D'ATBASH CIPHER :
+      ATBASH = transposition lettres (A↔T, B↔Sh, etc., hebraïque alphabet inverse).
+      YHVH (Y=10, H=5, V=6, H=5) ↔ MTzPTz (M=40, Tz=90, P=80, Tz=90).
+      MTzPTz = transformation atbash de YHVH.
+      USAGE : quand Z"A a "Elohim" → A"A a "MTzPTz" (transformation cross-tier).
+      Source : "Ein Elohim imadi" (Devarim 32:39) — A"A n'a que YHVH (codification).
+      → Pattern fondamental : meme entite, ENCODING DIFFERENT par tier.
+      → Architecture : letter-cipher = preserve identite, change representation.
+    applications_ia:
+      - "partzufim/arikh_anpin.py + partzufim/zeir_anpin.py : implement atbash cipher entre tiers"
+      - "Pattern : encoding transformation par tier (preserve content, change form)"
+      - "Architecture : cross-tier identity via cipher"
+      - "Pattern : letter-mysticism encryption pour separation tiers"
+      - "Diagnostic : verifier coherence atbash transformations"
+    questions_ouvertes:
+      - "Y a-t-il d'autres ciphers (au-dela atbash) entre tiers ?"
+      - "Pattern : peut-on derouler ciphers automatiquement ?"
+      - "Comment maintenir identite a travers ciphers multiples ?"
+
+  - id: "PG-H3S13-038"
+    nom: "Principe de 2 Pe'ot Lateral Sources (Dual-Side Polarization)"
+    source_assertions: ["EC-H3S13-162", "EC-H3S13-167", "EC-H3S13-168"]
+    formalisation: |
+      ARCHITECTURE DE 2 PE'OT LATERALES :
+      2 PE'OT = 2 cotes du rosh A"A (droite + gauche).
+      = 2 ME'OROT HA-GEDOLIM (Bereshit 1:16, Zohar Bereshit 22).
+      DROITE = source CHESED → pe'ah droite → ZA TETE.
+      GAUCHE = source GEVURAH → pe'ah gauche → NUKVAH TESTE.
+      MTzPTz YEMINI = source ZA ; MTzPTz SEMALI = source NUKVAH.
+      → Pattern fondamental : lateral polarization en source dual.
+      → Architecture : cotes anatomiques = sources differentes downstream.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement 2 pe'ot droite/gauche"
+      - "partzufim/zeir_anpin.py : ZA descend pe'ah droite (chesed)"
+      - "partzufim/nukva.py : Nukvah descend pe'ah gauche (gevurah)"
+      - "Pattern : lateral source polarization pour partzufim downstream"
+      - "Diagnostic : verifier ZA/Nukvah viennent des bonnes pe'ot"
+    questions_ouvertes:
+      - "Y a-t-il d'autres lateral sources (au-dela pe'ot) ?"
+      - "Pattern : peut-on inverser polarization ?"
+      - "Comment design pour clear lateral source mapping ?"
+
+  - id: "PG-H3S13-039"
+    nom: "Principe de Boundary-Touching (Mlk Adjacent sans Intersection)"
+    source_assertions: ["EC-H3S13-169", "EC-H3S13-173"]
+    formalisation: |
+      ARCHITECTURE DE BOUNDARY-TOUCHING :
+      2 MLK ADJACENT (Pe'ah du rosh + T1 dikna) — touchent leur frontiere mais
+      NE SE TOUCHENT PAS meme UN SEUL CHEVEU (KE-MLO NIMA).
+      Source halakhique : "Ein malkhut nogaat be-haverata afilu ke-mlo nima"
+      (Berakhot 48b).
+      RAISON : ou pe'ah Mlk se TERMINE → T1 dikna Mlk COMMENCE (transition exacte).
+      → Pattern fondamental : adjacent boundaries clean (no overlap).
+      → Architecture : composant adjacent = adjacent disjoint (separation propre).
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement Mlk pe'ah + Mlk T1 disjoint adjacent"
+      - "Pattern : zero-overlap boundary entre composants adjacents"
+      - "Architecture : non-intersection invariant pour composants meme-type"
+      - "Pattern : halakhah Berakhot 48b = design rule"
+      - "Diagnostic : verifier no-overlap entre Mlk adjacent"
+    questions_ouvertes:
+      - "Y a-t-il composants OK pour overlap ?"
+      - "Pattern : comment garantir clean adjacency ?"
+      - "Why exactement Mlk = no-overlap (autres sefirot ?)"
