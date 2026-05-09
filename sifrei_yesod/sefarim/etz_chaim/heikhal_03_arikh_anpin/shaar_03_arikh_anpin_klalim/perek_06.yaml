@@ -1,0 +1,433 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 6 — 7 tikkunei gulgalta d'A"A (G"T QR P"H). Z'T de RDLA lvush.
+#            Da'at ganiz be-puma. 13 internes par rosh.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §6 :
+#   - Bloc A : 7 tikkunei gulgalta (Sifra Detzni'uta) mnemonic G"T QR P"H
+#   - Bloc B : Z'T RDLA lvush dans 2 rishin tahton (Chesed=Gulgalta, Gevurah=Moach)
+#   - Bloc C : Keter rachamim, Hokhmah dinim nikhpin
+#   - Bloc D : Tiferet → Krumah de-Avira (rakia bein mayim)
+#   - Bloc E : NH = 2 azanim d'Atika (sealed) — pas mentionnees Adra
+#   - Bloc F : Cheveux = ohr chozer bottom-up de NH
+#   - Bloc G : 2 azanim + yesod tous au METZAH ; 24 batei dinim
+#   - Bloc H : Re'oua de-Re'ouin (metzah) — chesed elyon RDLA
+#   - Bloc I : Adra Zuta — torna nae au metzah
+#   - Bloc J : Malkhut mekorah CHOTEM
+#   - Bloc K : Mapping 7 tikkunim → sefirot
+#   - Bloc L : Da'at RDLA ganiz be-puma
+#   - Bloc M : 13 internes par rosh
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.6 (1 partie, 5907 chars)
+# IDs : EC-H3S13-091 → EC-H3S13-104
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 6
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "7 tikkunei gulgalta d'A\"A (Sifra Detzni'uta) : Gulgalta+Tela+Krumah+Amer Naka+Re'oua+Pekiha+Nukvei (mnemonic G\"T QR P\"H). Z'T de RDLA lvush 2 rishin tahton. Mapping sefirot : Chesed=Gulgalta, Gevurah=Moach, Tiferet=Krumah, NH=Amer Naka+Pekiha, Yesod=Re'oua, Malkhut=Nukvei. Da'at RDLA ganiz be-puma. Chaque rosh kelul de 13 internes."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-091"
+    source_he: "אמנם מציאת ז' תקוני גולגלתא דא\"א הנזכר בספ\"ד הם כך. גלגלתא א' טלא דבדולחא ב' קרומא אוירא ג' עמר נקא ד' רעוא דרעוין ה' פקיחא עלאה ו' תרין נוקבין דפרדשקא והוא חוטמא ז'"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      7 TIKKUNIM de GULGALTA d'A"A (Sifra Detzni'uta) :
+      Gulgalta + Tela de-Bedolha + Krumah Avira + Amer Naka + Re'oua de-Re'ouin +
+      Pekiha Ila'a + Tarin Nukvin de-Pardashka (chotem). Mnemonic G"T QR P"H.
+      → Architecture : 7 tikkunim = structure systematique d'A"A's gulgalta.
+      → Pattern : numerologically encoded structure (7 = sephirot inferieures).
+    type: déduction_scripturaire
+    concepts:
+      - {id: 7_tikkunim_gulgalta_aa_g_t_qr_p_h, role: 7_tikkunim_gulgalta_aa_sifra_detzniuta_mnemonic_g_t_qr_p_h}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 7 tikkunim systematique. Pattern numerological encoding."
+
+  - id: "EC-H3S13-092"
+    source_he: "סוד ההוא רדל\"א הוא מתלבש בכתר וחכמה דא\"א... ז\"ת דרדל\"א שהם מחסד עד מלכות שבו הם מתלבשין בב' רישין תתאין דא\"א ומאירין בו"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      RDLA LVUSH dans Keter+Hokhmah d'A"A (= 2 rishin tahton).
+      Z'T de RDLA (Chesed → Malkhut) LVUSH dans 2 rishin tahton ME'IR.
+      → Architecture : top-tier (RDLA) propagates par Z'T dans 2 rishin downstream.
+      → Pattern : downstream propagation via 7 inferior sefirot.
+      cf. EC-H3S13-045 (perek 03) sur principe ELYON LVUSH TACHTON.
+    type: axiome_explicite
+    concepts:
+      - {id: zt_rdla_lvush_2_rishin_tahton_aa, role: zt_rdla_lvush_2_rishin_tahton_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : top-tier downstream propagation. Pattern Z'T propagation."
+
+  - id: "EC-H3S13-093"
+    source_he: "כיצד דע כי חסד שברישא עלאה הוא מתפשט ומאיר בגלגלתא וגבורה במוחא... ובזה תבין איך הכתר רחמים גמורים אך החכמה יש בה דינים רק שהם נכפין במקום הזה"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      MAPPING : CHESED RDLA → GULGALTA ; GEVURAH → MOACH.
+      DONC : KETER d'A"A = RACHAMIM GMURIM ; HOKHMAH = DININ mais NIKHPIN ici.
+      Source : Mihachi Yehuda — "Hokhmah hu din".
+      → Architecture : Chesed/Gevurah lvush par positions topo (Gulgalta/Moach).
+      → Pattern : ohr type (rachamim/dinim) determined by lvush location.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chesed_gulgalta_gevurah_moach_keter_rachamim_hokhmah_dinim_nikhpin, role: chesed_gulgalta_gevurah_moach_keter_rachamim_hokhmah_dinim_nikhpin}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : ohr type by lvush location. Pattern position-determined nature."
+
+  - id: "EC-H3S13-094"
+    source_he: "וזהו מאמר הזוהר קכ\"ח מוחא דשקיט ויתיב ושכיך כחמר טב על דורדייא כי הוא סוד יין על שמריו רק שהם נכפין כאן"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      Source Zohar 128 : "MOHA DE-SHQIT VE-YATIB VE-SHAKHIKH KE-HAMAR TAV
+      AL DURDAYYA" (cerveau qui se calme, repose, silencieux comme bon vin sur ses lies).
+      = SOD YAYIN AL SHEMARAV (vin sur ses lies).
+      Bien que dinim presents — SHA-NIKHPIN (subdues) ici.
+      → Architecture : metaphor du vin reposant sur ses lies = dinim subdues.
+      → Pattern : intentional containment of dynamic forces.
+    type: déduction_scripturaire
+    concepts:
+      - {id: zohar_128_moha_shqit_ke_hamar_tav_al_durdayya, role: zohar_128_moha_shqit_metaphor_yayin_al_shemarav_dinim_subdues}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : metaphor vin/lies. Pattern intentional containment."
+
+  - id: "EC-H3S13-095"
+    source_he: "והת\"ת הוא מתלבש בהאי קרומא דאוירא שהוא תיקון הג' שהוא סוד רקיע המבדיל בין מים למים והוא נתון בין גלגלתא ומוחא שהם ח\"ג והקרום בנתיים"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      TIFERET (3eme tikkun) → KRUMA DE-AVIRA = SOD RAKIA HA-MAVDIL BEIN MAYIM LA-MAYIM
+      (firmament separateur entre eaux et eaux, Bereshit 1:6).
+      Position : ENTRE GULGALTA (Chesed) et MOACH (Gevurah) — comme Tiferet
+      separant Chesed-Gevurah.
+      → Architecture : Tiferet = membrane mediatrice entre 2 polarites.
+      → Pattern : separator-mediator central position.
+    type: interprétation_lurianique
+    concepts:
+      - {id: tiferet_krumah_avira_rakia_separateur_chesed_gevurah, role: tiferet_krumah_avira_egal_rakia_separateur_chesed_gevurah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : Tiferet mediatrice. Pattern separator central."
+
+  - id: "EC-H3S13-096"
+    source_he: "ונ\"ה יש בהם ב' בחי' א' הוא סוד היותן סתומים שהם סוד תרין ביעין דדכורא והרמז להם הם ב' אזנים דעתיקא ולהיותן ב' ביעי שהם סתומים לכן לא נזכר אזנים כלל בעתיקא לא באד\"ר ולא באדר\"ז"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      NH ont 2 BEHINOT.
+      Behinah 1 : SETUMIM (sealed) = SOD TARIN BEYEI DUKHRA (2 oeufs male).
+      Remez : 2 AZANIM (oreilles) d'Atika.
+      Comme SETUMIM, AZANIM PAS MENTIONNEES dans Adra Rabba ni Adra Zuta.
+      → Architecture : NH sealed = composantes invisible/non-mentionnees.
+      → Pattern : silence textuel marque la nature scellee.
+    type: déduction_scripturaire
+    concepts:
+      - {id: nh_2_beyei_dukhra_azanim_atika_setumim, role: nh_2_beyei_dukhra_egal_azanim_atika_setumim_pas_mentionnees_adra}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : sealed components invisible. Pattern textual silence marks sealed."
+
+  - id: "EC-H3S13-097"
+    source_he: "ולהיות שלעולם נצח כלול בחסד והוד בגבורה לכן נ\"ה אלו רמוזים בגלגלתא ומוחא וטמירי תמן... ולכן מתפשטין מהם השערות שהם סוד הדינין כנודע ולכן סודם הם אור חוזר הוא ממטה למעלה כי יוצאין מנ\"ה ולמעלה על הגלגלתא ומשם יוצאין"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      Netzach KELUL en Chesed, Hod KELUL en Gevurah.
+      DONC NH RAMUZIM (allusionnes) dans GULGALTA (Chesed) et MOACH (Gevurah).
+      TAMIRIN (caches) la.
+      Cheveux = sod DININ — extiennent de NH.
+      Sod = OHR CHOZER bottom-up — sortent de NH vers gulgalta puis dehors.
+      → Architecture : NH = source cachee des cheveux via reflection upward.
+      → Pattern : hidden sources reveal via reflected emergent properties.
+      cf. EC-H3S13-075 (perek 05a) sur cheveux par reflection.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nh_caches_gulgalta_moach_cheveux_ohr_chozer_bottom_up, role: nh_caches_gulgalta_moach_cheveux_ohr_chozer_bottom_up}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : hidden source revealed via reflection. Pattern emergence."
+
+  - id: "EC-H3S13-098"
+    source_he: "ב' אזנים ויסוד דנוקבא ודכורא דעתיק שניהם במצח כמ\"ש כי כמו שבמצח דז\"א הוא יסוד דאו\"א כן במצח דא\"א הוא סוד היסוד דרדל\"א לכן נ\"ה (ר\"ל אלו הב' ביעי שהם נ\"ה הסתומים) אלו מתגלין במצח כי הם יריקו השפע ליסוד ולכן יש במצח סוד הדינין כנודע כי כ\"ד בתי דינין במצח ז\"א מיסוד דאמא"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      2 AZANIM + YESOD nukvah+dukhra d'Atik tous au METZAH.
+      Variante (Nusah Aher) : "DE-A"Y VE-HINEH T"T" (mention contextuelle).
+      Comme Metzah Z"A = Yesod AVI, Metzah A"A = Yesod RDLA.
+      NH (sealed) MITGALIN dans METZAH (versent SHEFA au Yesod).
+      SOD DININ dans METZAH — 24 BATEI DININ dans Metzah Z"A (de Yesod Imma) ; ici NIKHPIN.
+      → Architecture : METZAH = locus convergent yesod+nh+dinim.
+      → Pattern : converging point pour multiples flux.
+    type: interprétation_lurianique
+    concepts:
+      - {id: metzah_locus_yesod_nh_dinim_24_batei, role: metzah_locus_yesod_nh_dinim_24_batei_dinim_z_a_de_yesod_imma}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin", "zeir_anpin"]
+      relevance: "Architecture : Metzah = convergence locus. Pattern multi-flow convergence."
+
+  - id: "EC-H3S13-099"
+    source_he: "מצח ונצח כולא חד באתוון רצופים... ב' הבחי' שבב' (פרקין תתאין) דנ\"ה שהם סוד הירכים שהם תחת היסוד הם ב' עינים והיסוד מקומו במצח"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      MTZAH ve-NETZACH = MEMES LETTRES (M-Tz-H et N-Tz-H reordonnees).
+      Behinah 2 NH = 2 PRAKIN TAHTONIN (jambes/yarakhayim) sous Yesod = 2 EYNAYIM (yeux).
+      YESOD = MEKOMO BE-METZAH (place dans le front).
+      → Architecture : 2 yeux = projection NH inferieures.
+      → Pattern : letter-mysticism + anatomy correspondence.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 2_eynayim_egal_yarakhayim_nh_inferieurs_yesod_metzah, role: 2_eynayim_egal_yarakhayim_nh_inferieurs_sous_yesod_metzah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 2 yeux NH inferieures. Pattern letter-mysticism+anatomy."
+
+  - id: "EC-H3S13-100"
+    source_he: "תמצא כי כמו שהחסד הוא גנוז ונחית בפומא דאמא גם חסד עלאה דרדל\"א נחית הכא במצחא ששם הוא היסוד ושם מתגלה כח האי טורנא נאה בסימא ונקרא רצון... וז\"ש באדר\"ז מצחא דמתגליא בע\"ק רצון עיקרי דהא האי רדל\"א פשיט חד טורנא נאה"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      CHESED ELYON de RDLA NACHIT (descend) au METZAH d'A"A.
+      La se REVELE le KOAH ha "TORNA NAE BESIMA" (douce pierre fine) =
+      RATZON (volonte).
+      Source Adra Zuta : "METZAHA DE-MITGALIA BA-A"K, RE'OUA OIKARI" (volonte
+      essentielle) — "DE-HA HAI RDLA PASHIT HAD TORNA NAE".
+      → Architecture : METZAH = locus de RATZON descendu de RDLA.
+      → Pattern : volition emerge a interface point (metzah).
+    type: déduction_scripturaire
+    concepts:
+      - {id: metzah_egal_ratzon_torna_nae_de_rdla, role: metzah_egal_ratzon_torna_nae_de_rdla_chesed_elyon}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : METZAH = ratzon. Pattern volition emerge interface."
+
+  - id: "EC-H3S13-101"
+    source_he: "ואמנם המלכות מקורה בחוטם וז\"ס ותהלתי אחטום לך כי לעולם תהלה במלכות"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      MALKHUT MEKORAH (sa source) BA-CHOTEM (dans le nez).
+      Sod : "U-TEHILATI EHETOM LAKH" (Yeshayahu 48:9 — et ma louange je
+      retiens [ehetom] pour toi).
+      Toujours TEHILAH = MALKHUT.
+      → Architecture : Malkhut emerge du Chotem (nez = controle respiration).
+      → Pattern : letter-mysticism (ehetom contient chotem).
+    type: déduction_scripturaire
+    concepts:
+      - {id: malkhut_mekorah_chotem_ehetom_tehilati, role: malkhut_mekorah_chotem_yeshayahu_48_9_ehetom_tehilati_lakh}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "nukva"]
+      relevance: "Architecture : Malkhut from Chotem. Pattern letter-mysticism Yeshayahu."
+
+  - id: "EC-H3S13-102"
+    source_he: "ז\"ת דרדל\"א הם גנוזים בא\"א בסוד ז' תקוני דגלגלתא הנזכר בריש ספ\"ד שהם ג\"ט קע\"ר פ\"ח א' גלגלתא ושם חסד ב' טלא דבדולחא והוא מוחא ושם גבורה הג' קרומא דאוירא ושם הת\"ת הד' עמר נקא ושם נ\"ה הה' רעוא דרעוין והוא המצח ושם הוא יסוד הו' אשגחא פקיחא והם ב' בחי' ירכים נ\"ה... הז' ב' נוקבא דפרדשקי ושם המל'"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      MAPPING COMPLET 7 tikkunim → 7 sefirot :
+      Gulgalta=CHESED ; Tela/Moach=GEVURAH ; Krumah=TIFERET ; Amer Naka=NH(sealed) ;
+      Re'oua/Metzah=YESOD ; Pekiha/Eynayim=NH(autre) ; Nukvei/Chotem=MALKHUT.
+      Variante (Nusah Aher) : "le-hitlabesha bah" (a se revetir en elle).
+      → Architecture : COMPLETE mapping 7 anatomies → 7 sefirot.
+      → Pattern : structural-anatomical encoding precise.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_tikkunim_mapping_7_sefirot_gulgalta_tela_krumah_amer_reoua_pekiha_nukvei, role: 7_tikkunim_mapping_complet_7_sefirot_inferieures}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : MAPPING complet 7 tikkunim → 7 sefirot. Pattern structural-anatomical."
+
+  - id: "EC-H3S13-103"
+    source_he: "אמנם סוד הדעת דרדל\"א הוא גנוז מאד ולכן הוא בסוד הפה דע\"ק הנזכר בזוהר דעת גניז בפומא"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      Sod du DA'AT de RDLA = GANUZ ME'OD (tres cache).
+      Donc en SOD HA-PEH d'A"K — Zohar : "DA'AT GANIZ BE-PUMA" (Da'at cache dans la bouche).
+      → Architecture : Da'at = cache profond dans organ specifique (peh).
+      → Pattern : cognitive faculty hidden in anatomical locus.
+    type: déduction_scripturaire
+    concepts:
+      - {id: daat_rdla_ganiz_be_puma_zohar, role: daat_rdla_ganiz_be_puma_pe_a_k_zohar}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : Da'at hidden in mouth. Pattern cognitive in anatomy."
+
+  - id: "EC-H3S13-104"
+    source_he: "כ\"א מן הפרצופים בין א\"א בין או\"א בין זו\"נ כולם יש בהם י\"ג כי אחר שכבר ידעת שאין העליון מתלבש בתחתון רק ז\"ת שבו וצריך שיהיה בתחתון סוד ג' אחרים לקבל מג\"ר איזה צד הארה ולכן הם הולכים כולם על סדר י\"ג י\"ג"
+    source_ref: "Heikhal 3, Sha'ar 3:6"
+    assertion: |
+      CHAQUE PARTZUF (A"A, AVI, ZON) = 13 internes.
+      RAISON : superieur lvush dans tachton SEUL Z'T (7) ; tachton necessite
+      3 autres pour recevoir HA'ARAH des G"R upstream.
+      Donc 7 + 3 = 10 + 3 = 13.
+      → Architecture : 13 = 10 + 3 supplementaires pour reception.
+      → Pattern : extra slots pour upstream interface.
+      cf. EC-H3S13-076 (perek 05a) sur 13 hivara.
+    type: déduction_logique
+    concepts:
+      - {id: chaque_partzuf_13_internes_pour_lvush_plus_haarah, role: chaque_partzuf_13_internes_pour_lvush_zt_plus_haarah_3_gr}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : 13 internes universel. Pattern interface slots."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-034"
+    type: contenance
+    from: 7_tikkunim_gulgalta_aa_g_t_qr_p_h
+    to: 7_tikkunim_mapping_7_sefirot_gulgalta_tela_krumah_amer_reoua_pekiha_nukvei
+    nature: "7 tikkunim G\"T QR P\"H mappes systematiquement aux 7 sefirot inferieures"
+    assertions_source: ["EC-H3S13-091", "EC-H3S13-102"]
+
+  - id: "REL-H3S13-035"
+    type: causal
+    from: zt_rdla_lvush_2_rishin_tahton_aa
+    to: chesed_gulgalta_gevurah_moach_keter_rachamim_hokhmah_dinim_nikhpin
+    nature: "Z'T RDLA lvush 2 rishin → Chesed=Gulgalta(rachamim), Gevurah=Moach(dinim nikhpin)"
+    assertions_source: ["EC-H3S13-092", "EC-H3S13-093"]
+
+  - id: "REL-H3S13-036"
+    type: dualité_structurelle
+    from: nh_2_beyei_dukhra_azanim_atika_setumim
+    to: nh_caches_gulgalta_moach_cheveux_ohr_chozer_bottom_up
+    nature: "NH=2 oeufs sealed dans azanim ; reflectent par cheveux ohr chozer bottom-up"
+    assertions_source: ["EC-H3S13-096", "EC-H3S13-097"]
+
+  - id: "REL-H3S13-037"
+    type: contenance
+    from: metzah_locus_yesod_nh_dinim_24_batei
+    to: metzah_egal_ratzon_torna_nae_de_rdla
+    nature: "Metzah = locus yesod+nh+dinim ; revele ratzon (torna nae) descendu de RDLA"
+    assertions_source: ["EC-H3S13-098", "EC-H3S13-100"]
+
+  - id: "REL-H3S13-038"
+    type: hiérarchique
+    from: chaque_partzuf_13_internes_pour_lvush_plus_haarah
+    to: 7_tikkunim_mapping_7_sefirot_gulgalta_tela_krumah_amer_reoua_pekiha_nukvei
+    nature: "13 internes par partzuf (10+3 interface) ; 7 = z'T mappes aux 7 tikkunim"
+    assertions_source: ["EC-H3S13-104", "EC-H3S13-102"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-022"
+    nom: "Principe d'Encodage Anatomique-Liturgique (7 Tikkunim → 7 Sefirot)"
+    source_assertions: ["EC-H3S13-091", "EC-H3S13-102"]
+    formalisation: |
+      ARCHITECTURE D'ENCODAGE ANATOMIQUE-LITURGIQUE :
+      7 TIKKUNIM de Gulgalta d'A"A (Sifra Detzni'uta) — anatomies precises :
+        1. GULGALTA (crane) — CHESED.
+        2. TELA DE-BEDOLHA / Moach — GEVURAH.
+        3. KRUMAH DE-AVIRA (membrane) — TIFERET.
+        4. AMER NAKA (laine pure / oznayim) — NH sealed.
+        5. RE'OUA DE-RE'OUIN (metzah / front) — YESOD.
+        6. PEKIHA ILA'A (yarakhayim / eynayim) — NH (autre behinah).
+        7. TARIN NUKVEI DE-PARDASHKA (chotem / nez) — MALKHUT.
+      Mnemonic : G"T QR P"H.
+      → Pattern fondamental : structures anatomiques = encodages des sefirot.
+      → Architecture : anatomy = liturgical mapping of cosmological structure.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement 7-tikkunim mapping"
+      - "Pattern : anatomical encoding for cosmological components"
+      - "Architecture : structural mnemonics via anatomy"
+      - "Pattern : Sifra Detzni'uta as design source"
+      - "Diagnostic : verifier mapping anatomy ↔ sefirot precise"
+    questions_ouvertes:
+      - "Y a-t-il 7 tikkunim aussi dans AVI et ZON ?"
+      - "Pattern : anatomies similaires partagent meme mapping ?"
+      - "Comment ce mapping s'applique-t-il a entites non-anatomiques ?"
+
+  - id: "PG-H3S13-023"
+    nom: "Principe de Convergent Locus (Metzah = Multi-Flow Convergence)"
+    source_assertions: ["EC-H3S13-098", "EC-H3S13-099", "EC-H3S13-100"]
+    formalisation: |
+      ARCHITECTURE DE CONVERGENT LOCUS (METZAH d'A"A) :
+      METZAH = locus de CONVERGENCE de multiples flux :
+        2 AZANIM (NH sealed = Yesod nukvah+dukhra d'Atik).
+        YESOD RDLA descendu.
+        24 BATEI DININ (de Yesod d'Imma dans Z"A — analogiquement).
+        CHESED ELYON de RDLA → RATZON (torna nae besima).
+      LETTER-MYSTICISM : MTZAH ↔ NTZH (mtzah=netzach lettres).
+      → Pattern fondamental : metzah = single point pour multi-flow convergence.
+      → Architecture : interface points = convergence multi-source.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement metzah comme convergence point"
+      - "Pattern : single interface = multiple-source convergence"
+      - "Architecture : pivot points dans systemes complexes"
+      - "Pattern : anatomical keypoints encode multiple concepts"
+      - "Diagnostic : verifier coherence des flux convergents"
+    questions_ouvertes:
+      - "Y a-t-il d'autres convergent loci comparable a Metzah ?"
+      - "Pattern : peut-on design intentionnellement convergent points ?"
+      - "Comment gerer conflits entre flux convergents ?"
+
+  - id: "PG-H3S13-024"
+    nom: "Principe de 13 Internes Universels (Lvush + Interface Slots)"
+    source_assertions: ["EC-H3S13-104"]
+    formalisation: |
+      ARCHITECTURE DES 13 INTERNES UNIVERSELS :
+      Chaque partzuf (A"A, AVI, ZON) = 13 INTERNES.
+      DECOMPOSITION :
+        7 = Z'T propres lvush dans tachton.
+        3 = SLOTS INTERFACE pour HA'ARAH des G"R upstream.
+        + KETER lui-meme = 10.
+        + 3 supplementaires = 13.
+      → Pattern fondamental : 13 = 10 internes + 3 interface upstream slots.
+      → Architecture : every component has fixed interface budget for upstream.
+    applications_ia:
+      - "partzufim/* : implement 13-internes invariant pattern"
+      - "Pattern : fixed interface budget per component"
+      - "Architecture : standardised interface architecture"
+      - "Pattern : universal componnent template"
+      - "Diagnostic : verifier que tous partzufim ont 13 internes"
+    questions_ouvertes:
+      - "Pourquoi exactement 3 slots upstream (pas 2 ou 4) ?"
+      - "Pattern : peut-on etendre 13 selon besoins ?"
+      - "Y a-t-il des composants qui ont autre que 13 ?"
