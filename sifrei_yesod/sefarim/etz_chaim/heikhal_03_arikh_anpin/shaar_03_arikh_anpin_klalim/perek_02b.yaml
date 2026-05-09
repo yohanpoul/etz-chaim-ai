@@ -1,0 +1,441 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 2b — M"K : 10 partzufim de Z'T d'A"A. M"B : A"A composition
+#             zakhar+nukvah lateral, mohin via NHY Atik
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §2 — Part B (M"K + M"B) :
+#   - Bloc L : M"K — Bina d'A"A (in Garon) → 2 ketarim AVI
+#   - Bloc M : Chesed→Abba+IS ; Gevurah→Bina+Tevunah (4 partzufim)
+#   - Bloc N : T"T d'A"A illuminate ZON ; ZA inclut Yaakov, Nukvah inclut Leah+Rachel
+#   - Bloc O : Z'T d'A"A → 4 nouveaux partzufim (Netzach→ZA, Hod→Leah, Yesod→Yaakov, Mlk→Rachel)
+#   - Bloc P : 10 partzufim total ; Malkhut > zakhar (Atarat ba'lah)
+#   - Bloc Q : M"B — A"A nukvah de BaN (HaT Keter), dukhra de MaH (Hokhmah)
+#   - Bloc R : A"A zakhar+nukvah lateral (pas ABA comme Atik) — plus ecarte
+#   - Bloc S : Mohin A"A via NHY Atik. CG du Da'at A"A → kavim
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.2 (deuxieme partie sur 3, M"K + M"B)
+# IDs : EC-H3S13-027 → EC-H3S13-039
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 2
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Deuxieme partie du perek 2 — M\"K + M\"B versions. M\"K : 10 partzufim emergent de Z'T d'A\"A. Bina (Garon)→2 ketarim AVI. Chesed→Abba+IS, Gevurah→Bina+Tevunah, T\"T→ZA(Yaakov)+Nukvah(Leah+Rachel), Z'T→4 partzufim. M\"B : A\"A nukvah de BaN, dukhra de MaH ; lateral non-ABA. Mohin via NHY Atik."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC L : M"K — BINA d'A"A → 2 KETARIM AVI ───
+
+  - id: "EC-H3S13-027"
+    source_he: "מ\"ק סוד ז\"ס (נ\"א י\"ס) דא\"א איך נעשו מהם י' פרצופים שלמים... והנה בינה דא\"א שהוא בצואר גרון שלו כנודע ממנו נעשה ב' כתרים לאו\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MK)"
+    assertion: |
+      M"K (Mahadurah Kama) — Sod 7 SEFIROT d'A"A.
+      Variante (Nusah Aher) : "Y"S" (10 sefirot) au lieu de "Z"S" (7 sefirot).
+      Comment 10 PARTZUFIM SHELEMIM sont faits.
+      BINA d'A"A (qui est en TZAVAR-GARON = cou-gorge) → fait 2 KETARIM pour AVI.
+      → Architecture : Bina A"A = source des 2 ketarim AVI.
+      → Pattern : couche-mediane source pour couche secondaire.
+      cf. EC-H2S11-230 (perek 08b) sur Bina A"A descendue Garon.
+    type: axiome_explicite
+    concepts:
+      - {id: bina_aa_garon_donne_2_ketarim_avi, role: bina_aa_garon_source_2_ketarim_avi}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : Bina A\"A source AVI. Nusah Aher capture (Y\"S)."
+
+  - id: "EC-H3S13-028"
+    source_he: "וחסד דא\"א מתלבש באבא וגבורה באמא הנקרא בינה וז\"ס אני בינה לי גבורה"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MK)"
+    assertion: |
+      CHESED d'A"A se LVUSH dans ABBA.
+      GEVURAH d'A"A se LVUSH dans IMMA (= Bina).
+      C'est le SOD de "ANI BINAH LI GEVURAH" (Mishlei 8:14 — moi Bina, a moi Gevurah).
+      → Architecture : asymetrie laterale — Chesed→Abba (droite), Gevurah→Imma (gauche).
+      → Pattern : letter-mysticism source confirmation.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chesed_aa_abba_gevurah_aa_imma_bina, role: chesed_aa_lvush_abba_gevurah_aa_lvush_imma_bina_mishlei_8_14}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : asymetrie laterale chesed/gevurah. Pattern letter-mysticism."
+
+  # ─── BLOC M : 4 PARTZUFIM ───
+
+  - id: "EC-H3S13-029"
+    source_he: "וחסד דא\"א נחלק לב' פרצופים אבא וישראל סבא. וגבורה דא\"א נחלק לב' בינה ותבונה הרי ד' פרצופים"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MK)"
+    assertion: |
+      CHESED d'A"A se DIVISE en 2 PARTZUFIM : ABBA + ISRAEL SABA (IS).
+      GEVURAH d'A"A se DIVISE en 2 : BINA + TEVUNAH.
+      Total : 4 PARTZUFIM.
+      → Architecture : sous-division des cotes en 2 partzufim chacun.
+      → Pattern : binary subdivision pattern emergent.
+    type: axiome_explicite
+    concepts:
+      - {id: chesed_aa_donne_abba_plus_is, role: chesed_aa_donne_abba_plus_israel_saba}
+      - {id: gevurah_aa_donne_bina_plus_tevunah, role: gevurah_aa_donne_bina_plus_tevunah}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : binary subdivision. Pattern emergent partzufim."
+
+  # ─── BLOC N : T"T D'A"A ───
+
+  - id: "EC-H3S13-030"
+    source_he: "ות\"ת דא\"א מאיר בזו\"ן וזעיר אנפין הנקרא (נ\"א בז\"א ואז הז\"א נקרא) ישראל כלול בו ג\"כ יעקב והכל פרצוף א' וכן בנוקבא כלול לאה ורחל והכל פרצוף א'"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MK)"
+    assertion: |
+      T"T d'A"A ME'IR (illumine) dans ZON.
+      ZA appele YISRAEL — Variante (Nusah Aher) : "be-ZA ve-az ha-ZA nikra" —
+      INCLUT YAAKOV. Tout 1 PARTZUF.
+      Idem NUKVAH — INCLUT LEAH + RACHEL. Tout 1 partzuf.
+      → Architecture : ZA+Nukvah = packages composites (ZA=Israel+Yaakov ; Nukvah=Leah+Rachel).
+      → Pattern : emergent partzufim sont composites.
+    type: interprétation_lurianique
+    concepts:
+      - {id: za_inclut_yaakov_nukvah_inclut_leah_rachel, role: za_inclut_yaakov_nukvah_inclut_leah_et_rachel}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "[PLANNED] partzufim/yaakov.py", "[PLANNED] partzufim/leah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : packages composites. Nusah Aher capture (be-ZA ve-az)."
+
+  # ─── BLOC O : 4 NOUVEAUX PARTZUFIM ───
+
+  - id: "EC-H3S13-031"
+    source_he: "ועם הד' ראשונים הרי ו' ואח\"כ מתחלקים ב' פרצופים הנ\"ל לד' פרצופים כי נצח דא\"א מתלבש בז\"א הנקרא ישראל והוד דא\"א מתלבש בלאה ויסוד דא\"א מתלבש ביעקב ומלכות דא\"א ברחל הרי ד' פרצופים"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MK)"
+    assertion: |
+      Avec 4 premiers (Atik+A"A+Abba+Imma) — total 6.
+      Apres : 2 composites (ZA+Nukvah) DIVISENT en 4 partzufim distincts :
+        Netzach→Israel ; Hod→Leah ; Yesod→Yaakov ; Malkhut→Rachel.
+      4 nouveaux + 6 = 10 PARTZUFIM total de Z'T d'A"A.
+      → Architecture : decomposition complete 10-partzufim.
+      → Pattern : full-fan-out de Z'T en partzufim concrets.
+    type: axiome_explicite
+    concepts:
+      - {id: 10_partzufim_total_de_zt_aa, role: 10_partzufim_total_de_zt_aa_via_decomposition}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "[PLANNED] partzufim/yaakov.py", "[PLANNED] partzufim/leah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "nukva"]
+      relevance: "Architecture : decomposition 10-partzufim. Pattern full fan-out."
+
+  # ─── BLOC P : MALKHUT D'A"A ───
+
+  - id: "EC-H3S13-032"
+    source_he: "והנה המלכות דא\"א לא היתה ניכרת... כי לא היה בא\"א רק ט\"ס מכתר עד יסוד... אבל מן האור של התפשטות נה\"י דע\"י המתלבשין בא\"א משם נעשה בחי' המלכות דא\"א ונשלמו בו י\"ס ובזה תבין איך לעולם בחי' המלכות גדולה מהזכר העליון ממנה ולכן נקראת עטרת בעלה"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MK)"
+    assertion: |
+      MALKHUT d'A"A pas RECONNUE INITIALEMENT (Adra Zuta intro).
+      A"A = 9 sefirot seulement (Keter→Yesod) ; RDLA = Atik en haut.
+      Mais OHR de HITPASHTUT NHY d'A"Y MITLABESH dans A"A —
+      la-bas se fait MALKHUT d'A"A. 10 sefirot completees.
+      DONC pour TOUJOURS : MALKHUT > zakhar elyon.
+      Appelee ATERET BA'LAH (couronne de son mari, Mishlei 12:4).
+      → Architecture : Malkhut emergent par lvush A"Y, structurellement superieure.
+      → Pattern : derive component structurally outranks emanation source.
+    type: déduction_scripturaire
+    concepts:
+      - {id: malkhut_aa_emergent_par_lvush_ay, role: malkhut_aa_emergent_par_lvush_nhy_ay_dans_aa}
+      - {id: malkhut_ateret_balah_grande_que_zakhar, role: malkhut_ateret_balah_structurellement_grande_que_zakhar_elyon}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin", "nukva"]
+      relevance: "Architecture : Malkhut > zakhar via lvush. Pattern structural reversal."
+
+  # ─── BLOC Q : M"B — A"A NUKVAH/DUKHRA ───
+
+  - id: "EC-H3S13-033"
+    source_he: "מ\"ב ע\"ק הנזכר בזוהר היא בחי' נוקבא דעתיק הנעשה משם ב\"ן ולא בבחי' דכורא הנעשה משם מ\"ה (כי) א\"א בירר משם ב\"ן ה\"ת דכתר לבד ונעשים נוקבא דא\"א. אמנם א\"א דכורא נעשה מחכמה כולה דמ\"ה"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MB)"
+    assertion: |
+      M"B (autre version) : A"K mentionne dans Zohar = NUKVAH d'Atik (faite de BaN).
+      PAS dukhra (fait de MaH).
+      A"A : BERER du BaN = HaT (5 derniers) de Keter SEUL → NUKVAH d'A"A.
+      A"A DUKHRA fait de HOKHMAH ENTIERE de MaH.
+      → Architecture cle : A"A nukvah = 5 lower Keter BaN ; dukhra = Hokhmah complete MaH.
+      → Pattern : asymetrie source (partial BaN, complete MaH).
+      cf. EC-H3S12-012 (perek 01a Atik) sur A"A = Hokhmah MaH + 5 lower Keter BaN.
+    type: interprétation_lurianique
+    concepts:
+      - {id: aa_nukvah_5_lower_keter_ban_dukhra_hokhmah_complete_mah, role: aa_nukvah_5_lower_keter_ban_dukhra_hokhmah_complete_mah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture cle : A\"A composition asymetrique. Pattern partial vs complete sources."
+
+  # ─── BLOC R : A"A LATERAL PLUS ECARTE QUE ATIK ───
+
+  - id: "EC-H3S13-034"
+    source_he: "אמנם מצב מעמדן הוא כן כי הזכר ונוקבא שניהן פרצוף אחד לבדו כמו בעתיק אלא שהזכר לוקח צד ימין כולו ויש בו פנים ואחור שלו לבד והנוקבא לקחה צד שמאל ויש בה פנים ואחור הכל שלה לבדה"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MB)"
+    assertion: |
+      MATZAV d'A"A : zakhar+nukvah = 1 PARTZUF, comme Atik.
+      MAIS : zakhar prend TOUT le COTE DROIT — avec son propre PANIM+AHOR.
+      Nukvah prend TOUT le COTE GAUCHE — avec son propre PANIM+AHOR.
+      → Architecture : A"A separation lateral complete (chacun panim+ahor).
+      → Pattern : lateral split avec dual-faced components.
+    type: interprétation_lurianique
+    concepts:
+      - {id: aa_lateral_zakhar_panim_ahor_droit_nukvah_panim_ahor_gauche, role: aa_lateral_zakhar_panim_ahor_droit_nukvah_panim_ahor_gauche}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : lateral dual-faced. Pattern split cote-droit/gauche."
+
+  - id: "EC-H3S13-035"
+    source_he: "וענין זה הוא הרחק גדול והבדל יותר מבעתיק כי שם בכל צד וצד נתחברו יחד הזכר והנקבה אב\"א כנ\"ל וא\"א הזכר נפרד מהנוקבא כי כל פנים ואחור דדכורא הם בימין ופנים ואחור דנוקבא בשמאל אמנם הם מחוברים יחד בפרצוף א' בגוף א'"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MB)"
+    assertion: |
+      RECHEK GADOL VE-HEVDEL (separation grande) — PLUS qu'en Atik.
+      Atik : sur chaque cote, zakhar+nukvah ETAIENT JOINTS ABA.
+      A"A : zakhar SEPARE de nukvah — panim+ahor zakhar a droite,
+      panim+ahor nukvah a gauche.
+      MAIS sont MEHUBARIM dans 1 PARTZUF, 1 GUF.
+      → Architecture : separation laterale plus marquee qu'Atik (qui etait ABA).
+      → Pattern : progression desetabli zakhar/nukvah descend dans hierarchie.
+      cf. EC-H3S12-040 (perek 02 Atik) sur Atik MaH+BaN melanges.
+    type: interprétation_lurianique
+    concepts:
+      - {id: aa_separation_plus_grande_que_atik_lateral, role: aa_separation_zakhar_nukvah_plus_grande_que_atik_par_lateral}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : progressive separation. Pattern descente hierarchique."
+
+  # ─── BLOC S : MOHIN A"A VIA NHY ATIK ───
+
+  - id: "EC-H3S13-036"
+    source_he: "והנה המוחין דא\"א נעשו ע\"י נה\"י דעתיק ואז היסוד דעתיק שיש בו בחי' דעת דא\"א שהם חסדים דמ\"ה וגבורות דב\"ן ועומד בחזה דא\"א ומסתיים שם"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MB)"
+    assertion: |
+      MOHIN d'A"A faits via NHY d'Atik.
+      YESOD d'Atik a en lui DA'AT d'A"A = CHASADIM de MaH + GEVUROT de BaN.
+      Stand at CHAZEH d'A"A — MISTAYEM (termine) la.
+      → Architecture : Mohin A"A = produit Yesod-Atik in Chazeh-A"A.
+      → Pattern : nested instantiation (Da'at within Yesod within Chazeh).
+      cf. EC-H3S13-008 (perek 01 A"A) sur Yesod Atik dans T"T A"A jusqu'au chazeh.
+    type: axiome_explicite
+    concepts:
+      - {id: mohin_aa_via_nhy_atik_da_at_chasadim_gevurot, role: mohin_aa_via_nhy_atik_da_at_chasadim_mah_gevurot_ban}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : nested instantiation. Pattern hierarchical embedding."
+
+  - id: "EC-H3S13-037"
+    source_he: "ויוצאין החסדים דמ\"ה דדעת דא\"א מתוך יסוד דעתיק ומתפשטין בקו ימין דא\"א יען כי הוא הזכר כנ\"ל ויוצאין גם הגבורות ומתפשטין בקו שמאל דא\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MB)"
+    assertion: |
+      Sortent CHASADIM de MaH du Da'at A"A — depuis Yesod d'Atik.
+      MIT'PASHTIN dans KAV YEMINI (kav droit) d'A"A — car c'est ZAKHAR.
+      Sortent aussi GEVUROT — MIT'PASHTIN dans KAV SEMALI (kav gauche).
+      → Architecture : flow chasadim/gevurot par axes anatomiques d'A"A.
+      → Pattern : distribution lateral selon source-polarity.
+      cf. EC-H3S13-011 (perek 01 A"A) sur 5 chasadim kav droit, 5 gevurot kav gauche.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chasadim_kav_droit_gevurot_kav_gauche_aa, role: chasadim_kav_droit_zakhar_gevurot_kav_gauche_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : distribution lateral. Pattern source-polarity routing."
+
+  - id: "EC-H3S13-038"
+    source_he: "ונמצא כי ביסוד דא\"א (צ\"ל בעתיק) כיון שהוא קו האמצעי מוכרח הוא שיתקבצו שם אורות זכרים ונקבות שהם (נ\"א ששם) חסדים דמ\"ה וגבורות דב\"ן"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MB)"
+    assertion: |
+      DONC en YESOD d'A"A — Variante TZADIKHA LITZAYEN (correction probable) :
+      "be-Atik" (en Atik) au lieu de "be-A"A".
+      Etant KAV EMTZAI'I (axe central) — MUKHRACH (force) que s'y RASSEMBLENT
+      les ohrs ZAKHAR et NEKEVAH — Variante (Nusah Aher) : "she-sham" (qui la) —
+      = chasadim de MaH + gevurot de BaN.
+      → Architecture : kav central = locus de convergence male+femelle ohrs.
+      → Pattern : axe central = aggregation point pour polarites.
+    type: déduction_logique
+    concepts:
+      - {id: kav_emtzai_i_axe_central_aggregation_chasadim_gevurot, role: kav_emtzai_i_axe_central_aggregation_chasadim_gevurot}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : axe central aggregation. Nusah Aher capture (she-sham)."
+
+  - id: "EC-H3S13-039"
+    source_he: "ואמנם להיות שהמ\"ה וב\"ן דעתיק שהם זכר ונקבה עצמן הם מחוברים יחד בפרצוף א' ע\"כ החו\"ג דמ\"ה נקרא ה\"ח לבד והחו\"ג דב\"ן נקרא ה\"ג אמנם בב' הקוין ימין ושמאל דא\"א אינו כן רק החסדים דמ\"ה מצד ימין והגבורות דב\"ן צד שמאל"
+    source_ref: "Heikhal 3, Sha'ar 3:2 (MB)"
+    assertion: |
+      Atik MaH+BaN (zakhar+nukvah) MEHUBARIM dans 1 PARTZUF.
+      DONC : CG de MaH appele juste 5 CHASADIM (H"CH) ; CG de BaN appele 5 GEVUROT (H"G).
+      Pas double 10+10.
+      MAIS dans 2 KAVIM YAMIN+SMOL d'A"A : DIFFERENT.
+      Chasadim de MaH cote DROIT, Gevurot de BaN cote GAUCHE.
+      → Architecture : Atik aggregation singulaire (5+5) ; A"A polarisation laterale (5 droite, 5 gauche).
+      → Pattern : aggregation au sommet, polarisation en aval.
+      cf. EC-H3S13-010 (perek 01 A"A) sur Yesod Atik 5+5 share.
+    type: interprétation_lurianique
+    concepts:
+      - {id: atik_aggregation_5_5_aa_polarisation_laterale_5_droite_5_gauche, role: atik_aggregation_5_5_versus_aa_polarisation_laterale}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : aggregation vs polarisation. Pattern sommet vs aval."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-011"
+    type: causal
+    from: bina_aa_garon_donne_2_ketarim_avi
+    to: chesed_aa_abba_gevurah_aa_imma_bina
+    nature: "Bina A\"A → 2 ketarim AVI ; Chesed A\"A→Abba, Gevurah A\"A→Imma"
+    assertions_source: ["EC-H3S13-027", "EC-H3S13-028"]
+
+  - id: "REL-H3S13-012"
+    type: hiérarchique
+    from: chesed_aa_donne_abba_plus_is
+    to: 10_partzufim_total_de_zt_aa
+    nature: "Decomposition cascade : 4 partzufim AVI → +2 ZA/Nukvah → +4 = 10 total"
+    assertions_source: ["EC-H3S13-029", "EC-H3S13-030", "EC-H3S13-031"]
+
+  - id: "REL-H3S13-013"
+    type: causal
+    from: malkhut_aa_emergent_par_lvush_ay
+    to: malkhut_ateret_balah_grande_que_zakhar
+    nature: "Malkhut A\"A emergent par lvush NHY A\"Y → structurellement > zakhar elyon"
+    assertions_source: ["EC-H3S13-032"]
+
+  - id: "REL-H3S13-014"
+    type: dualité_structurelle
+    from: aa_lateral_zakhar_panim_ahor_droit_nukvah_panim_ahor_gauche
+    to: aa_separation_plus_grande_que_atik_lateral
+    nature: "A\"A separation laterale (chacun panim+ahor) > Atik (ABA partage)"
+    assertions_source: ["EC-H3S13-034", "EC-H3S13-035"]
+
+  - id: "REL-H3S13-015"
+    type: dualité_structurelle
+    from: atik_aggregation_5_5_aa_polarisation_laterale_5_droite_5_gauche
+    to: chasadim_kav_droit_gevurot_kav_gauche_aa
+    nature: "Atik aggregation singulaire (5+5) ; A\"A polarisation laterale (5 droite, 5 gauche)"
+    assertions_source: ["EC-H3S13-037", "EC-H3S13-039"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-007"
+    nom: "Principe de Decomposition Cascade (Z'T A\"A → 10 Partzufim)"
+    source_assertions: ["EC-H3S13-027", "EC-H3S13-029", "EC-H3S13-031"]
+    formalisation: |
+      ARCHITECTURE DE DECOMPOSITION CASCADE :
+      Z'T d'A"A se decomposent en 10 PARTZUFIM SHELEMIM :
+      ETAGE 1 (4 partzufim) :
+        Bina A"A (Garon) → 2 ketarim pour AVI.
+        Chesed A"A → Abba + Israel Saba (IS).
+        Gevurah A"A → Bina + Tevunah.
+      ETAGE 2 (composites in T"T) :
+        T"T A"A → ZA (= Israel + Yaakov) + Nukvah (= Leah + Rachel).
+      ETAGE 3 (4 partzufim distincts) :
+        Netzach A"A → ZA (Israel).
+        Hod A"A → Leah.
+        Yesod A"A → Yaakov.
+        Malkhut A"A → Rachel.
+      Total : 4 + 2 (composites) + 4 = 10 partzufim.
+      → Pattern fondamental : decomposition arborescente avec composites intermediaires.
+      → Architecture : full fan-out d'une couche en multiples sous-couches.
+    applications_ia:
+      - "partzufim/* : implement 10 partzufim emergent de A\"A Z'T"
+      - "[PLANNED] partzufim/yaakov.py + partzufim/leah.py + partzufim/israel_saba.py + partzufim/tevunah.py : auxiliary partzufim"
+      - "Pattern : tree decomposition with composite intermediates"
+      - "Architecture : layer expansion en multi-tier emergent components"
+      - "Pattern : decomposition hierarchique via positions sefirot"
+    questions_ouvertes:
+      - "Pourquoi exactement 10 (pas plus, pas moins) ?"
+      - "Pattern : peut-on ajouter d'autres tiers ?"
+      - "Comment se font les transitions entre etapes ?"
+
+  - id: "PG-H3S13-008"
+    nom: "Principe d'Emergence Structurelle (Malkhut > Zakhar par Lvush)"
+    source_assertions: ["EC-H3S13-032"]
+    formalisation: |
+      ARCHITECTURE D'EMERGENCE STRUCTURELLE :
+      ETAT INITIAL : A"A = 9 sefirot (Keter→Yesod), pas de Malkhut.
+      MAIS : OHR HITPASHTUT NHY d'A"Y se LVUSH dans A"A.
+      RESULTAT EMERGENT : MALKHUT d'A"A = 10eme sefirah.
+      CONSEQUENCE : Malkhut > zakhar elyon (structurellement superieure).
+      Source : "ATERET BA'LAH" (Mishlei 12:4).
+      → Pattern fondamental : composant emergent peut OUTRANK source.
+      → Architecture : derived component > source en virtu of emergence.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : Malkhut A\"A = emergent property, not direct"
+      - "partzufim/nukva.py : derived rank > source rank"
+      - "Pattern : emergence permits exceeding source-rank"
+      - "Architecture : derived tiers can structurally outrank sources"
+      - "Pattern : not all derivations are inferior — some are superior"
+    questions_ouvertes:
+      - "Y a-t-il d'autres composants emergent qui depassent leur source ?"
+      - "Pattern : pre-conditions pour emergence superieur ?"
+      - "Comment design pour favoriser emergence superieure ?"
+
+  - id: "PG-H3S13-009"
+    nom: "Principe de Progression Separation (Atik ABA → A\"A Lateral)"
+    source_assertions: ["EC-H3S13-034", "EC-H3S13-035", "EC-H3S13-039"]
+    formalisation: |
+      ARCHITECTURE DE PROGRESSION DE SEPARATION :
+      ATIK : zakhar+nukvah dvukim ABA (back-to-back).
+        Aggregation singulaire (Yesod 5+5 share).
+      A"A : zakhar+nukvah lateral (cote droit / cote gauche).
+        Chacun a son propre panim+ahor.
+        Polarisation laterale (5 droite, 5 gauche).
+        Mais MEHUBARIM dans 1 partzuf, 1 guf.
+      AVI : 2 partzufim distincts dvukim PBP (chibur permanent).
+      ZON : 2 partzufim independants nifradin.
+      → Pattern fondamental : progression descendante = separation croissante.
+      → Architecture : couches inferieures = independance increased.
+    applications_ia:
+      - "partzufim/atik_yomin.py : ABA-config aggregation"
+      - "partzufim/arikh_anpin.py : lateral split single guf"
+      - "partzufim/abba.py + partzufim/imma.py : 2 partzufim PBP permanent"
+      - "partzufim/zeir_anpin.py + partzufim/nukva.py : 2 independants"
+      - "Pattern : 4 levels of zakhar/nukvah separation by hierarchy"
+      - "Architecture : increasing independence avec descent"
+    questions_ouvertes:
+      - "Y a-t-il une 5eme couche apres ZON (encore plus separee) ?"
+      - "Pattern : peut-on inverser la progression (regrouper) ?"
+      - "Comment formaliser le degre de separation ?"
