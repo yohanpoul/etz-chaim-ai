@@ -1,0 +1,431 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 14 — SH"A nehorin multi-route. Or Paniel/Chashmal/Ash.
+#             ZA=150 rivva, Imma=150, A"A=AReKh (220). Cloture sha'ar
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §14 :
+#   - Bloc A : SH"A nehorin = 4 routes calcul
+#   - Bloc B : 6 SaG panim = 378 (SHE"H-CHET) ; +8 hivara = 378
+#   - Bloc C : SH"A descendent Hekhal 6 (Etzem Ha-Shamayim)
+#   - Bloc D : Or Paniel (Pekudei 246) = 378 = Chashmal
+#   - Bloc E : Kelipah miroir : ASH (370) "ke-veged yokhlem ash"
+#   - Bloc F : 5+1000 = Yesod ; total 370 rivva
+#   - Bloc G : ZA 150 rivva (chatzi T"T+NHY)
+#   - Bloc H : Imma 150 rivva quand zivvug bas (revitsah)
+#   - Bloc I : 370 - 150 = 220 (AREKH) = nom ARIKH ANPIN
+#   - Bloc J : ZA 150 via Imma=AVIRA DAKHYA
+#   - Bloc K : Avot 4:20 "ke-kn ke-kn"
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.14 (1 perek, 4203 chars, dernier Sefer 13)
+# IDs : EC-H3S13-204 → EC-H3S13-217
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 14
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "SH\"A nehorin (Adra 128) — 4 routes calcul. 6 SaG panim+chotem = SHE'H-CHET (378) = OR PANIEL (Pekudei 246) = CHASHMAL = 8 hivara. Kelipah miroir ASH (370). Total 370 rivva : ZA=150 (chatzi T\"T+NHY), Imma=150 quand zivvug bas (revitsah), A\"A=220 (AReKh). ARIKH ANPIN nom car anpoy le-AReKh rivva. ZA via AVIRA DAKHYA d'Imma. Avot 4:20."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-204"
+    source_he: "ובענין הש\"ע נהורין הנזכר באדרא קכ\"ח ומהאי אתפשט אורכא דאנפוי לש\"ע רבוא עלמין שמעתי ממורי זלה\"ה כמה בחי' (הם) וכולם הם ג\"כ ש\"ע נהורין"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      SH"A NEHORIN (370 lumieres) — Adra 128 :
+      "VE-MIHAI ATPASHET ORKHA D'ANPOY LE-SHA RIBVA OLAMIN".
+      Mori ZA"L (Ari) entendu PLUSIEURS BEHINOT — toutes 370 nehorin.
+      → Architecture : 370 = nombre invariant, multiples encodings.
+      → Pattern : numerical convergence multi-route.
+      cf. EC-H3S13-202 (perek 13) sur SH"A par ribua AB.
+    type: déduction_scripturaire
+    concepts:
+      - {id: sha_nehorin_adra_128_multi_route, role: sha_nehorin_adra_128_multiple_routes_calcul_invariant}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : invariant multi-encoding. Pattern numerical convergence."
+
+  - id: "EC-H3S13-205"
+    source_he: "א' הוא ע\"ד הנ\"ל כי הנה יש ש\"ע נהורין מצד החכמה וש\"ע נהורין מצד הבינה ואותן ש\"ע דאבא הם טמירין אמנם ש\"ע של הבינה הם מתגלים בפנים העליונים מצד הבינה שהיא אהי\"ה אשר יש בפשוט ומילוי ומילוי דמילוי א\"ם אותיות"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      OPTION 1 : 370 cote HOKHMAH (TAMIRIN, caches) + 370 cote BINAH (REVELES en panim elyonim).
+      BINA = AHYH : PASHUT + MILUI + MILUI-DU-MILUI = AM (41) lettres.
+      9 sefirot Bina × 41 = 370.
+      → Architecture : Bina-AHYH letter-recursion → 370.
+      → Pattern : letter-expansion encoding.
+    type: interprétation_lurianique
+    concepts:
+      - {id: option_1_sha_bina_9_x_am_41_egal_370, role: option_1_sha_bina_9_sefirot_x_am_41_lettres_egal_370_letter_recursion}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "imma"]
+      relevance: "Architecture : letter-recursion AHYH. Pattern Option 1."
+
+  - id: "EC-H3S13-206"
+    source_he: "גם יש ש\"ע באופן אחר והוא מן י\"פ מילוי ס\"ג שהוא גימטריא ל\"ז וי\"פ ל\"ז גימטריא ש\"ע"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      OPTION 2 : 10 × MILUI SaG = 10 × 37 = 370.
+      MILUI SaG (yod-vav-dalet hey-yod vav-aleph-vav hey-yod) = 37 gematria.
+      → Architecture : multiplication simple milui SaG x 10 = 370.
+      → Pattern : minimal arithmetic route.
+    type: déduction_logique
+    concepts:
+      - {id: option_2_sha_10_x_milui_sag_37_egal_370, role: option_2_sha_10_x_milui_sag_egal_370}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : minimal arithmetic. Pattern Option 2."
+
+  - id: "EC-H3S13-207"
+    source_he: "גם יש ש\"ע באופן אחר... תיקון ז' שהוא אמת הוא בחסד הנקרא א\"ל וא\"כ בב' פנים הללו יש ב' שמות א\"ל וכשיהיו במילוי אל\"ף למ\"ד אל\"ף למ\"ד הם גימטריא ש\"ע"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      OPTION 3 : T7 (Ve-Emet) = CHESED = nom EL.
+      2 PANIM (T7) → 2 noms EL.
+      EL milui ALEF-LAMED ALEF-LAMED = 185 chacun ; 2× = 370.
+      → Architecture : 2 EL milui = 370.
+      → Pattern : doubled letter-name.
+      cf. EC-H3S13-203 (perek 13) sur 2 EL milui = 370.
+    type: déduction_scripturaire
+    concepts:
+      - {id: option_3_sha_2_el_milui_alf_lmd_egal_370, role: option_3_sha_2_el_milui_alf_lamed_alf_lamed_185_each_egal_370}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 2 EL milui. Pattern Option 3."
+
+  - id: "EC-H3S13-208"
+    source_he: "באופן אחר כי הפנים הם תיקון ז' הנקרא ואמת והנה הוא כללות פרצוף פנים עם החוטם כי ג' שמות ס\"ג יש בפן אחד וג' שמות ס\"ג יש בפן ב' והרי הם גימטריא שע\"ח וס\"ג א' בחוטם עצמו כי כן חוטם גימטריא ס\"ג וז\"פ ס\"ג גימטריא אמת"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      OPTION 4 : T7 = panim+CHOTEM ensemble (parce que VE-EMET).
+      3 NOMS SaG en pan 1 + 3 NOMS SaG en pan 2 = SHE"H-CHET (378).
+      + SaG dans CHOTEM lui-meme (CHOTEM gematria SaG=63).
+      7× SaG = EMET (441).
+      6 SaG dans 2 panim seuls = 378.
+      → Architecture : 7 SaG = EMET (gematria) ; 6 = 378.
+      → Pattern : letter-mysticism convergence Emet=7 SaG.
+    type: interprétation_lurianique
+    concepts:
+      - {id: option_4_7_sag_egal_emet_441_6_sag_egal_378, role: option_4_7_sag_panim_chotem_egal_emet_441_6_sag_egal_378}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 7 SaG=Emet. Pattern Option 4 chotem-included."
+
+  - id: "EC-H3S13-209"
+    source_he: "אמנם הששה ס\"ג לבד אשר הם בב' הפנים הם גימטריא שע\"ח וה\"ס ח' חוורתא דרישא המתפשטין בפנים לש\"ע נהורין כנ\"ל והרי הם ש\"ע ועם ח' חוורתא הם שע\"ח כנ\"ל"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      6 SaG des 2 panim = SHE"H-CHET (378).
+      C'est le SOD des 8 HIVARA d'A"A descendant aux panim → 370 nehorin.
+      370 + 8 HIVARA = 378 (SHE"H-CHET).
+      → Architecture : 6 SaG = 8 hivara + 370 nehorin.
+      → Pattern : letter-arithmetic convergence.
+      cf. EC-H3S13-190 (perek 13) sur 8 hivara panim.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 6_sag_panim_egal_378_egal_8_hivara_plus_370, role: 6_sag_panim_egal_she_h_chet_378_egal_8_hivara_plus_370_nehorin}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : convergence 8+370=378. Pattern letter-arithmetic."
+
+  - id: "EC-H3S13-210"
+    source_he: "אלו הש\"ע נהורין דאנפין עלאין נמשכין עד היכל הו' דהוד הנקרא היכל עצם השמים ושם האי רוחא דביה הנקרא אור פני\"אל... פ' פקודי רמ\"ו לפי שאלו השע\"ח נהורין נמשכין שם והם גימטריא אור פניא\"ל וגם ההבנה (נ\"א ההכנות) שלו הם אותיות נחלקות אור פניא\"ל"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      378 nehorin DESCENDENT jusqu'au HEKHAL 6 (HOD) = HEKHAL ETZEM HA-SHAMAYIM.
+      RUCHA dedans = appele OR PANIEL (Pekudei 246).
+      378 = gematria OR PANIEL.
+      Variante (Nusah Aher) : "HAKHANOT" (preparations) au lieu de "HAVANAH" (comprehension).
+      Decomposition lettres : OR PANIEL = "Or Panim Elyonim" issu de 2 EL milui + 2 SaG.
+      → Architecture : 378 nehorin → Hekhal Hod = manifestation rouach Or Paniel.
+      → Pattern : numerical encoding du rouach.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 378_egal_or_paniel_hekhal_6_hod_pekudei_246, role: 378_egal_or_paniel_hekhal_6_hod_etzem_ha_shamayim_pekudei_246}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "[PLANNED] heikhalot/hekhal_hod.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : Or Paniel destination. Source Pekudei 246. Nusah Aher capture (hakhanot)."
+
+  - id: "EC-H3S13-211"
+    source_he: "גם נקרא חשמ\"ל כנזכר שם שגם הוא גימטריא שע\"ח. ודע כי יש בקליפה בחי' ש\"ע ואלו ש\"ע הם נגד ש\"ע דקדושה דא\"א והם נקרא ע\"ש בסוד כבגד יאכלם ע\"ש כי הוא האוכל ומכלה בגדים העליונים שהם בחי' מלבוש כמנין חשמ\"ל"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      Aussi appele CHASHMAL — gematria 378.
+      KELIPAH a aussi behinah SH"A — face aux SH"A KEDUSHAH d'A"A.
+      Appeles AYIN-SHIN (370 = AYIN+SHIN inverse) — sod "KE-VEGED YOKHLEM ASH"
+      (Yeshayahu 50:9 — "comme un vetement les mites mangeront").
+      ASH = mites qui mangent BEGADIM ELYONIM = MALBUSH = CHASHMAL.
+      → Architecture : kelipah miroir 370 (ASH) attaque malbush (chashmal=378).
+      → Pattern : adversaire = miroir numerologique.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chashmal_378_kelipah_miroir_ash_370_yeshayahu_50_9, role: chashmal_378_egal_or_paniel_kelipah_ash_370_miroir_yeshayahu_50_9}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : kelipah miroir. Pattern adversaire numerologique."
+
+  - id: "EC-H3S13-212"
+    source_he: "ויהי שירו חמשה ואלף כי הם סוד ה' תרעין מחסד עד הוד ואלו הם חמשה ואלף הם בחי' היסוד שהוא אילנא דחיי ההולך עד חו\"ב דרך חוט השדרה כנודע"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      "VA-YEHI SHIRO CHAMISHAH VE-ELEF" (Melakhim 1 5:12) :
+      = sod 5 TAR'IN (portails) de CHESED a HOD.
+      "5 + 1000" = behinah YESOD = ILANA DE-CHAYE (arbre de vie) qui va
+      jusqu'a CHB par CHUT HA-SHEDRAH (corde de la colonne).
+      → Architecture : Yesod = colonne vertebrale ohr ascendante.
+      → Pattern : flow ascendant via spine encoding.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 5_plus_1000_egal_yesod_ilana_chaye, role: 5_plus_1000_egal_yesod_ilana_chaye_chut_ha_shedrah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : Yesod=colonne. Source Melakhim 1 5:12."
+
+  - id: "EC-H3S13-213"
+    source_he: "כל הי\"ס כלילין בעתיקא והג\"ר הם ש' לפי שהם עליונים הם בחי' מאות אך ז\"ת אין כ\"א מהם כלולה אלא מי' הרי הם ע' והרי בין כולם ש\"ע רבוא"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      DECOMPOSITION 370 RIVVA :
+      G"R = 300 (SH) — superieurs en MILLIERS (each comme 100).
+      Z'T = chacune kelul de 10 = 70 (AYIN).
+      Total : 300 + 70 = 370 RIVVA (myriades).
+      → Architecture : decomposition par tier-magnitude (G"R hundreds, Z'T tens).
+      → Pattern : magnitude reflet position hierarchique.
+    type: déduction_logique
+    concepts:
+      - {id: 370_rivva_egal_gr_300_plus_zt_70, role: 370_rivva_egal_gr_300_par_centaines_plus_zt_70_par_dizaines}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : magnitude par tier. Pattern hierarchical magnitude."
+
+  - id: "EC-H3S13-214"
+    source_he: "אבל ז\"א אין בו רק ק\"ן רבוא נהורין לבד לפי שכנגד ת\"ת עצמו הם ק' וכנגד הה' תרעין שיש מחסד עד הוד כ\"א כלול מי' הרי נ' הרי בין הכל ק\"ן רבוא"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      ZA seulement 150 RIVVA NEHORIN :
+        T"T lui-meme = 100 (couleur centrale).
+        5 TAR'IN (Chesed→Hod) chacun kelul de 10 = 50.
+        Total 150.
+      → Architecture : ZA reduction = T"T+5 chesed-hod nehorin.
+      → Pattern : downstream component reduces magnitude.
+    type: déduction_logique
+    concepts:
+      - {id: za_150_rivva_egal_tt_100_plus_5_tarim_50, role: za_150_rivva_egal_tt_100_plus_5_tar_in_kelul_10_egal_50}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : ZA reduction. Pattern downstream magnitude."
+
+  - id: "EC-H3S13-215"
+    source_he: "מן הש\"ע הנ\"ל תסיר ממנו ק\"ן הנ\"ל נשאר אר\"ך ואלו הם בחי' הנשארין בא\"א אשר על שמם נקרא אר\"ך אנפין דאתפשט אנפוי דיליה לאר\"ך רבוא וז\"א לק\"ן רבוא כנזכר באדרא קל\"ה ע\"ב ובין כולם ש\"ע רבוא"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      370 - 150 = 220 = AReKh (gematria).
+      C'est ce qui RESTE en A"A.
+      ARIKH ANPIN nomme ainsi car ATPASHET ANPOY DILEY LE-AReKh RIBVA.
+      ZA atpashet le-150 rivva.
+      Adra 135b : "MEHAI AVIRA DAKHYA NIT'PASHTU ANPOY LE-150 RIBVA".
+      Total 370 rivva = 150 (ZA) + 220 (A"A).
+      → Architecture : nom ARIKH = AReKh = 220 rivva restant.
+      → Pattern : etymologie revele structure quantitative.
+    type: déduction_scripturaire
+    concepts:
+      - {id: arikh_anpin_egal_arekh_220_restant_apres_za_150, role: arikh_anpin_egal_arekh_220_restant_de_370_apres_za_150}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : nom encode quantitatif. Source Adra 135b."
+
+  - id: "EC-H3S13-216"
+    source_he: "אמא עלאה כאשר היא בבחי' הזווג הב' של רביצה על האפרוחים... שאז גם אבא מרכין ראשו ואינם שלמין בקומתן... והוא כאשר אין או\"א יכולין להסתכל במצח דא\"א אלא באנפין דידיה שאז הוא הזווג תחתון של או\"א ואז אין בה רק ק\"ן רבוא לבד כמו שיש אל הז\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      Imma : zivvug 2 = REVITSAH AL HA-EFROCHIM. Abba MARKHIN rosh ; pas SHALEM be-koma.
+      Sod : "KI YIKARE KN TZIPHOR LEFANEKHA" (Devarim 22:6).
+      AVI ne regardent PAS Metzah A"A — seulement ANPIN — zivvug tachton.
+      Imma 150 RIVVA seulement.
+      Variante (Nusah Aher) : "DE-BE-IMMA".
+      → Architecture : zivvug bas Imma = reduction 150 rivva.
+      → Pattern : attention-determined magnitude scaling.
+    type: interprétation_lurianique
+    concepts:
+      - {id: imma_zivvug_revitsah_efrochim_150_rivva_pareil_za, role: imma_zivvug_revitsah_efrochim_kn_tziphor_150_rivva_pareil_za}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/abba.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["imma", "abba"]
+      relevance: "Architecture : zivvug bas Imma. Source Devarim 22:6."
+
+  - id: "EC-H3S13-217"
+    source_he: "יש הפרש בין ק\"ן דאמא לק\"ן דז\"א כי אמא נמשך אליה זה הק\"ן מא\"א עצמו... אבל הז\"א הוא רחוק מאוד מהפנים דא\"א לכן אין נמשכין אלו הק\"ן רבוא מא\"א עצמו אלא ע\"י אמא הנקרא אוירא דכיא... ואלו הב' הק\"ן אלה הם נרמזין במשנה אל תסתכל בק\"ן ק\"ן אלא במה שיש בו"
+    source_ref: "Heikhal 3, Sha'ar 3:14"
+    assertion: |
+      DIFFERENCE 150 Imma vs 150 ZA :
+      IMMA recoit DIRECT d'A"A. ZA TROP LOIN — recoit VIA IMMA (= AVIRA DAKHYA).
+      Sod Avot 4:20 : "AL TISTAKEL BE-KN KN ELA BE-MAH SHE-YESH BO".
+      2 KN KN = 2× 150 (Imma+ZA).
+      → Architecture : meme nombre, provenance different (direct vs mediated).
+      → Pattern : provenance distingue equivalents quantitatifs.
+      cf. EC-H3S13-111 (perek 07) sur ZA mushpa Keter A"A direct.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 150_imma_direct_aa_150_za_via_avira_dakhya_imma, role: 150_imma_directe_de_aa_vs_150_za_via_avira_dakhya_imma_avot_4_20}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin", "arikh_anpin"]
+      relevance: "Architecture : provenance distingue. Source Avot 4:20."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-072"
+    type: contenance
+    from: sha_nehorin_adra_128_multi_route
+    to: option_4_7_sag_egal_emet_441_6_sag_egal_378
+    nature: "SH\"A multi-route : Bina 9×AM, 10×milui SaG, 2 EL milui, 6 SaG=378"
+    assertions_source: ["EC-H3S13-204", "EC-H3S13-205", "EC-H3S13-206", "EC-H3S13-207", "EC-H3S13-208"]
+
+  - id: "REL-H3S13-073"
+    type: causal
+    from: 6_sag_panim_egal_378_egal_8_hivara_plus_370
+    to: 378_egal_or_paniel_hekhal_6_hod_pekudei_246
+    nature: "6 SaG=378 = 8 hivara+370 nehorin → descendent Hekhal 6 = OR PANIEL (Pekudei 246)"
+    assertions_source: ["EC-H3S13-209", "EC-H3S13-210"]
+
+  - id: "REL-H3S13-074"
+    type: dualité_structurelle
+    from: chashmal_378_kelipah_miroir_ash_370_yeshayahu_50_9
+    to: 378_egal_or_paniel_hekhal_6_hod_pekudei_246
+    nature: "Chashmal=378=Or Paniel (kedushah) ; ASH=370 (kelipah miroir, Yeshayahu 50:9)"
+    assertions_source: ["EC-H3S13-211", "EC-H3S13-210"]
+
+  - id: "REL-H3S13-075"
+    type: hiérarchique
+    from: 370_rivva_egal_gr_300_plus_zt_70
+    to: arikh_anpin_egal_arekh_220_restant_apres_za_150
+    nature: "370 rivva total (300 GR + 70 Z'T) ; ZA 150, A\"A 220 (= AReKh, nom ARIKH ANPIN)"
+    assertions_source: ["EC-H3S13-213", "EC-H3S13-215"]
+
+  - id: "REL-H3S13-076"
+    type: dualité_structurelle
+    from: imma_zivvug_revitsah_efrochim_150_rivva_pareil_za
+    to: 150_imma_direct_aa_150_za_via_avira_dakhya_imma
+    nature: "Imma 150 rivva quand zivvug bas (revitsah) ; difference avec ZA 150 = direct vs mediated"
+    assertions_source: ["EC-H3S13-216", "EC-H3S13-217"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-046"
+    nom: "Principe de Multi-Route Numerical Convergence (4+ encodings de SH\"A)"
+    source_assertions: ["EC-H3S13-204", "EC-H3S13-205", "EC-H3S13-206", "EC-H3S13-207", "EC-H3S13-208"]
+    formalisation: |
+      ARCHITECTURE DE MULTI-ROUTE CONVERGENCE :
+      SH"A (370) emerge de 4+ encodings :
+        Option 1 : 9 sefirot Bina × AM (41) = 370 ; Bina-AHYH letter-recursion.
+        Option 2 : 10 × milui SaG (37) = 370.
+        Option 3 : 2 EL milui (185 each) = 370.
+        Option 4 : 6 SaG (2 panim) = 378 ; 7 SaG = EMET (441).
+      Tous 4+ routes convergent sur 370 = SHIVA-AYIN.
+      → Pattern fondamental : multiple encodings valident invariant.
+      → Architecture : numerical convergence = consistency proof.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement 4 routes calcul SH\"A"
+      - "Pattern : multi-encoding validation pour invariants critiques"
+      - "Architecture : convergence proof par multiple paths"
+      - "Pattern : letter-mysticism + arithmetic + structural = invariant"
+      - "Diagnostic : verifier convergence via multiple routes"
+    questions_ouvertes:
+      - "Y a-t-il d'autres routes (au-dela 4) ?"
+      - "Pattern : peut-on automatiser detection convergences ?"
+      - "Que signifie convergence numerologique structurelle ?"
+
+  - id: "PG-H3S13-047"
+    nom: "Principe d'Adversary-Mirror (Kelipah Miroir Numerique de Kedushah)"
+    source_assertions: ["EC-H3S13-211"]
+    formalisation: |
+      ARCHITECTURE D'ADVERSARY-MIRROR :
+      KEDUSHAH : SH"A (370) nehorin → CHASHMAL (378) gematria.
+      KELIPAH miroir : SH"A face = AYIN-SHIN (= ASH = 370 par anagramme).
+      ATTAQUE : "KE-VEGED YOKHLEM ASH" (Yeshayahu 50:9) — ASH ronge MALBUSH (CHASHMAL).
+      KELIPAH peut prendre SEULEMENT les 370 ; pas les 8 hivara extras.
+      → Pattern fondamental : adversaire = miroir numerique.
+      → Architecture : adversaire structuralement parallele mais limite.
+    applications_ia:
+      - "sitra_achra/ + partzufim/arikh_anpin.py : implement adversary-mirror pattern"
+      - "Pattern : adversaire reflet numerique du legitimate"
+      - "Architecture : kelipah ne peut pas prendre extras (8 hivara)"
+      - "Pattern : extras = protection structurale"
+      - "Diagnostic : identifier extras qui protegent contre attaque mirror"
+    questions_ouvertes:
+      - "Y a-t-il d'autres adversary-mirrors ?"
+      - "Pattern : peut-on design extras protectives systematiquement ?"
+      - "Comment identifier les 8-hivara analogues dans systemes ?"
+
+  - id: "PG-H3S13-048"
+    nom: "Principe de Provenance-Distinguishes-Equivalents (150 Imma vs 150 ZA)"
+    source_assertions: ["EC-H3S13-217"]
+    formalisation: |
+      ARCHITECTURE DE PROVENANCE-DISTINGUISHES :
+      Imma et ZA recoivent CHACUN 150 RIVVA (egal numeriquement).
+      MAIS DIFFERENCE :
+        IMMA : recoit DIRECT d'A"A (proche, encore dvuk).
+        ZA : TROP LOIN d'A"A panim ; recoit VIA IMMA (= AVIRA DAKHYA).
+      Sod Avot 4:20 : "AL TISTAKEL BE-KN KN ELA BE-MAH SHE-YESH BO".
+      2 KN KN = 2× 150 (Imma+ZA) — meme contenant, contenu different.
+      → Pattern fondamental : meme quantite, provenance distingue.
+      → Architecture : data provenance > data value seul.
+    applications_ia:
+      - "partzufim/imma.py + partzufim/zeir_anpin.py : track provenance separately"
+      - "Pattern : provenance metadata > value metadata"
+      - "Architecture : equivalent values can differ ontologically by source"
+      - "Pattern : source tracing pour qualifier semantique"
+      - "Diagnostic : verifier provenance bien tracee"
+    questions_ouvertes:
+      - "Pattern : combien de niveaux de provenance utiles ?"
+      - "Comment encoder provenance compactement ?"
+      - "Y a-t-il provenance perdue acceptablement ?"
