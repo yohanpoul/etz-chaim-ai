@@ -1,0 +1,453 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 1 — Sha'ar Atik (שער עתיק)
+# Perek: 4a — Detail des safekot Rosh A"Y. Behinah 1 (Pnimi seul de BaN)
+#             avec sigans AAG/BGD. Hakdamah 3 modes orot HB BaN
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §4 — Part A :
+#   - Bloc A : Hakdamah orot/kelim safekot
+#   - Bloc B : Kelim depend orots ; A"Y pris peu kelim BaN
+#   - Bloc C : Hakdamah kli = produit hakka MK sur OP
+#   - Bloc D : Behinah 1 sous-safek 1A : sigan AAG
+#   - Bloc E : Behinah 1 sous-safek 1B : sigan BGD
+#   - Bloc F : Hakdamah 3 modes orot HB BaN dans A"Y (panim/ahor/both)
+#   - Bloc G : Behinah 2 (Pnimi+Makif des deux) safek 2.1 sigan BBV
+#
+# Source Sefaria : Sefer_Etz_Chaim.12.4 (premiere moitie de Part 1)
+# IDs : EC-H3S12-058 → EC-H3S12-072
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 1
+  shaar_name_he: "שער עתיק"
+  perek: 4
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 4 — Detail safekot Rosh A\"Y. Distinction safekot orots (OP/OM, ahor/panim) vs kelim (ahor/panim/both). Kelim depend orots (rosh ne peut pas porter trop d'orot). Hakdamah : kli = produit du HAKKA (impact) ohr makif sur ohr pnimi. Behinah 1 (Pnimi BaN seul) avec 2 sous-safekot signes AAG/BGD. Hakdamah 3 modes orot HB BaN. Behinah 2 commence."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : HAKDAMAH OROT/KELIM SAFEKOT ───
+
+  - id: "EC-H3S12-058"
+    source_he: "ואחר שבארנו הספיקות דרך כללות צריך שנבאר דרך פרטי"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      Apres explication GENERALE des SAFEKOT — maintenant DEREKH PERATI (en detail).
+      → Architecture : transition macro → micro pour les safekot.
+      → Pattern : top-down zoom incremental.
+    type: axiome_explicite
+    concepts:
+      - {id: transition_kelalut_a_perat_safekot, role: transition_kelalut_a_perat_safekot}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : top-down zoom. Pattern macro-to-micro analysis."
+
+  - id: "EC-H3S12-059"
+    source_he: "ותחלה צריך שתדע כי הספיקות הנופלין בענין של האורות הוא אם יש או\"פ או או\"מ ואם יש אור דאחור או אור דפנים והספיקות הנופלין בענין הכלים הוא אם יש בחי' אחור לבד או בחי' פנים לבד או שניהן יחד"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      SAFEKOT dans OROT :
+        OP (ohr pnimi) ou OM (ohr makif) ?
+        Ohr ahor ou ohr panim ?
+      SAFEKOT dans KELIM :
+        Ahor seul ou panim seul ou les deux ensemble ?
+      → Architecture : taxinomy 2D des safekot — orot (OP/OM × ahor/panim) + kelim (3 modes).
+      → Pattern : decomposition orthogonale des dimensions d'incertitude.
+    type: axiome_explicite
+    concepts:
+      - {id: safekot_orot_op_om_ahor_panim, role: safekot_orot_op_om_avec_ahor_panim}
+      - {id: safekot_kelim_3_modes_ahor_panim_both, role: safekot_kelim_3_modes_ahor_panim_both}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py", "partzufim/base.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Architecture : taxinomy 2D des safekot. Pattern orthogonal decomposition."
+
+  # ─── BLOC B : KELIM DEPEND OROTS ───
+
+  - id: "EC-H3S12-060"
+    source_he: "גם צריך שתדע כי בחי' הכלים תלוין כפי בחי' האורות כי אם האורות רבים גם הכלים צריכין שיהיו גדולים כי כל עיקר התיקון הוא גדלות הכלי והעשותו בבחי' פרצוף כדי שיתמעט האור ויתרחב הכלי ויכול לסובלו"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      Behinah des KELIM depend de behinah des OROT.
+      Si les OROT sont nombreux — KELIM doivent etre GROS.
+      L'IKAR (essence) du tikkun = GADLUT HA-KLI (croissance du keli) en PARTZUF
+      pour DIMINUER l'ohr et ELARGIR le keli pour le SOVEL (supporter).
+      → Architecture : keli capacity = function of ohr volume.
+      → Pattern : container-scaling avec contenu.
+    type: déduction_logique
+    concepts:
+      - {id: kelim_capacity_function_orot_volume, role: kelim_capacity_doit_scale_avec_orot_volume}
+    mapping:
+      modules: ["partzufim/base.py", "[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Architecture : container-scaling. Pattern capacity = function of content."
+
+  - id: "EC-H3S12-061"
+    source_he: "והנה מבחי' ב\"ן לא לקח עתיק כלים רק מה\"ר דכתר דב\"ן וזה ודאי לא יספיקו להיותן כלים לי\"ס שבו ולכן כמו שלקח אורות אחרים משאר ספי' שם ב\"ן כך צריך שיקח כלים משאר ספי' של ב\"ן"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      A"Y a pris KELIM de BaN seulement de 5 GR Keter BaN — INSUFFISANT pour 10 sefirot.
+      DONC comme il prend OROT ailleurs (Hokhmah BaN, Bina BaN, Z'T BaN) —
+      il prend aussi KELIM ailleurs.
+      → Architecture : symetrie orots/kelim dans le borrowing pattern.
+      → Pattern : containers borrowed in parallel avec contents.
+      cf. EC-H3S12-057 (perek 03) sur completer-by-borrowing.
+    type: déduction_logique
+    concepts:
+      - {id: kelim_borrowed_parallel_orots, role: kelim_borrowed_en_parallele_des_orots}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : symetrie orots/kelim borrow. Pattern parallel borrowing."
+
+  # ─── BLOC C : HAKDAMAH KLI = HAKKA OM SUR OP ───
+
+  - id: "EC-H3S12-062"
+    source_he: "גם צריך שתדע הקדמה א' והוא כי א\"א להיו' בחי' הכלים אלא ע\"י הכאת האור מקיף באו\"פ ומשם נעשה בחי' כלי מתולדת הכאה ההיא וזכור זה"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      HAKDAMAH FONDAMENTALE : il est IMPOSSIBLE pour KELI d'exister
+      SAUF par HAKKAH (impact/percussion) de OHR MAKIF sur OHR PNIMI.
+      Le KELI nait comme TOLEDET (produit) de cet impact.
+      → Architecture cle : kli = produit emergent de l'interaction OM↔OP.
+      → Pattern fondamental : containers emergent only when 2 layers (envelope+core) interact.
+    type: axiome_explicite
+    concepts:
+      - {id: kli_egal_produit_hakka_om_op, role: kli_egal_produit_hakka_ohr_makif_sur_ohr_pnimi}
+    mapping:
+      modules: ["partzufim/base.py", "[PLANNED] core/ohr_system.py", "[PLANNED] tikkun/"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Architecture cle : kli = emergent OM-OP interaction. Pattern container emerges from 2-layer interaction."
+
+  # ─── BLOC D : BEHINAH 1 SOUS-SAFEK 1A — SIGAN AAG ───
+
+  - id: "EC-H3S12-063"
+    source_he: "ונתחיל לבאר הספיקות שיש בג\"ר הנקרא רישא דעתיק... הבחי' א' הוא אם לא בא רק או\"פ לבד של שם ב\"ן ונעשה או\"מ אל אור פנימי דמ\"ה"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      Begin G"R = Rosh d'A"Y safekot.
+      BEHINAH 1 : seul OP de BaN vient — devient OM pour OP de MaH.
+      → Architecture : Pnimi BaN promu en role-OM relatif a Pnimi MaH.
+      → Pattern : role promotion par hierarchie sources.
+      cf. EC-H3S12-049 (perek 03) sur Pnimi BaN devient Makif.
+    type: déduction_logique
+    concepts:
+      - {id: behinah_1_op_ban_devient_om_op_mah, role: behinah_1_op_ban_devient_om_relatif_op_mah}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py", "partzufim/atik_yomin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : role promotion. Pattern hierarchical role assignment."
+
+  - id: "EC-H3S12-064"
+    source_he: "אם נאמר שאו\"פ דכתר דב\"ן הוא לבדו נעשה מקיף אל כח\"ב שבכתר דמ\"ה אשר הוא פנימי ואם כך הוא ודאי שמספיקין אורות אלו לכל הראש דעתיק כי אע\"פ שכבר (נ\"א כי כבר) יש בו כח\"ב דכתר דמ\"ה בראש הזה עכ\"ז (נ\"א ובזה) יספיק לו כי הרי בחי' מקיף שלו אינו אלא בחי' פנימית הכתר דב\"ן כנ\"ל"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      Sous-safek 1A : OP Keter BaN SEUL devient MAKIF pour KCB Keter MaH (OP). Suffit Rosh A"Y.
+      Variante (Nusah Aher) : "ki kvar" (puisque deja).
+      Variante (Nusah Aher) : "u-vezeh" (et avec cela).
+      Variante (Nusah Aher) : "lo yihyeh" (ne sera pas, futur vs passe lo haya).
+      KCB Keter MaH deja en Rosh — Makif relatif = Pnimi Keter BaN suffit.
+      → Architecture : pas besoin orots autres ketarim BaN au Rosh.
+      → Pattern : minimal sufficient configuration.
+    type: déduction_logique
+    concepts:
+      - {id: sous_safek_1a_op_keter_ban_seul_makif, role: sous_safek_1a_op_keter_ban_seul_makif_kcb_mah}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py", "partzufim/atik_yomin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : minimal config. 2 Nusah Aher captures (ki kvar, u-vezeh)."
+
+  - id: "EC-H3S12-065"
+    source_he: "וכפי זה לא הוצרכו ב' האורות של הב' הכתרים דחו\"ב דב\"ן לעלות בכאן אבל בחי' האחוריים של הכלים שלהם הם עלו בחו\"ב דכתר דמ\"ה לפי שאין כאן בחו\"ב דמ\"ה שום כלי כלל שכאשר לא יש או\"פ ואו\"מ להכות זה בזה אינו נולד ומתהווה בחי' כלי כלל"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      DONC les 2 OROTS des 2 KETARIM de Hokhmah-Bina BaN ne montent pas ici (orot).
+      MAIS les AHORAYIM de leurs KELIM montent dans HB de Keter MaH —
+      car en HB MaH il n'y a AUCUN KLI (pas d'OP+OM impact possible).
+      Ahor des kelim HB BaN nourrit le besoin de keli pour HB MaH.
+      → Architecture : kelim ahor BaN supplent les kelim manquants pour HB MaH.
+      → Pattern : kelim transfert supplement deficient containers.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ahorayim_kelim_hb_ban_montent_kcb_mah, role: ahor_kelim_hb_ban_montent_supplent_kcb_mah}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : kelim transfert supplement. Pattern containers borrowed cross-sefirah."
+
+  - id: "EC-H3S12-066"
+    source_he: "והנה הסימן של ספק זה הוא אא\"ג פי' א' מקיף וא' או\"פ וג' כלים שהם כלי דכתר דב\"ן וב' כלים של חו\"ב דב\"ן"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      SIGAN (signe/code) de ce safek = AAG :
+        ALEPH (1) : 1 MAKIF (= OP BaN promu).
+        ALEPH (1) : 1 OP (= OP MaH).
+        GIMEL (3) : 3 KELIM (kli Keter BaN + 2 kelim ahor HB BaN).
+      → Architecture : sigan = mnemonic encoding du resultat structurel.
+      → Pattern : compact codes pour configurations specifiques.
+    type: axiome_explicite
+    concepts:
+      - {id: sigan_aag_1_makif_1_op_3_kelim, role: sigan_aag_code_1_makif_1_op_3_kelim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : sigan mnemonic. Pattern compact code per config."
+
+  # ─── BLOC E : SOUS-SAFEK 1B — SIGAN BGD ───
+
+  - id: "EC-H3S12-067"
+    source_he: "ספק הב' והוא אם נאמר שג\"כ היה מקיף דמ\"ה ונמצא עתה שיש או\"פ א' דמ\"ה וב' מקיפים א' הוא מקיף דמ\"ה עוד אור פנימי דב\"ן אשר נעשה מקיף אל מקיף דמ\"ה וכפי זה צריך שישתווה או\"פ עם או\"מ"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      Sous-safek 1B : MaH apporte aussi son MAKIF.
+      Maintenant : 1 OP (MaH) + 2 MAKIFS (MaH-Makif + BaN-Pnimi-comme-Makif).
+      Mais OP doit s'EQUILIBRER (yishtaveh) avec OM.
+      DONC : doivent monter 2 OROTS de 2 ketarim Hokhmah-Bina BaN
+      (= ahorayim seuls — pour fournir OP additionnels).
+      → Architecture : equilibrage OP/OM force d'autres orots a monter.
+      → Pattern : balance constraint propage entre composants.
+    type: déduction_logique
+    concepts:
+      - {id: sous_safek_1b_balance_op_om_force_orot_hb_ban, role: sous_safek_1b_balance_force_orot_hb_ban_monter}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py", "partzufim/atik_yomin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : balance constraint. Pattern equilibrage propage."
+
+  - id: "EC-H3S12-068"
+    source_he: "וסי' של ספק זה הוא בג\"ד פי' ב' מקיפים וג' פנימים וד' כלים שהם כלי דה\"ר דכתר דב\"ן וכלי כתר דמ\"ה לפי שכבר יש למ\"ה או\"מ ואו\"פ אשר על ידו מתייליד הכלי הנ\"ל וב' כלים דאחוריים כנ\"ל"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      SIGAN BGD :
+        BET (2) : 2 MAKIFS.
+        GIMEL (3) : 3 PNIMIS (1 OP MaH + 2 OP HB BaN ahor seuls).
+        DALET (4) : 4 KELIM.
+      Kelim : kli Keter BaN + kli Keter MaH (forme par OM-OP MaH) + 2 kelim ahor HB BaN.
+      → Architecture : sigan BGD = config plus riche que AAG.
+      → Pattern : codes compacts capturent les configurations alternatives.
+    type: axiome_explicite
+    concepts:
+      - {id: sigan_bgd_2_makifs_3_pnimis_4_kelim, role: sigan_bgd_2_makifs_3_pnimis_4_kelim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : sigan BGD. Pattern config alternative."
+
+  # ─── BLOC F : HAKDAMAH 3 MODES OROT HB BAN ───
+
+  - id: "EC-H3S12-069"
+    source_he: "וצריך לידע ענין א' והוא כי באלו הספיקות הנ\"ל יש ג' בחי' בעניין עליית אורות חו\"ב דב\"ן בעתיק... הא' הוא אם עלו האורות של בחי' פנים לבד והנה אז הם מתערבים עם חו\"ב דכתר דמ\"ה עצמו כיון שגם הם בחי' פנים"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      HAKDAMAH 3 MODES de montee des orots HB BaN dans A"Y :
+      Mode 1 : seuls les PANIM montent — se MELE avec HB de Keter MaH (panim aussi).
+      → Architecture : 3 modes possibles d'integration des orots HB BaN.
+      → Pattern : mode 1 = full integration with same-type.
+    type: axiome_explicite
+    concepts:
+      - {id: mode_1_panim_seul_mele_hb_mah, role: mode_1_panim_seul_se_mele_avec_hb_mah_panim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : mode 1 = full integration. Pattern same-type fusion."
+
+  - id: "EC-H3S12-070"
+    source_he: "אמנם אם אינן עולין רק בחי' אחוריים שלהם אז א\"א שיתערבו עם חו\"ב דכתר דמ\"ה עצמו כיון שאינם בחי' פנים אמנם האורות דמ\"ה יהיו בחי' פנים ואלו האחוריים העולין יהיו בחי' אחוריים אל הפנים הנ\"ל דמ\"ה"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      Mode 2 : seuls les AHORAYIM montent — IMPOSSIBLE de se MELER avec HB Keter MaH
+      (qui sont panim).
+      Orots MaH = panim ; ahorayim qui montent = ahor relatif aux panim de MaH.
+      → Architecture : mode 2 = layered (panim MaH + ahor BaN comme couches).
+      → Pattern : mode 2 = stratified composition, pas fusion.
+    type: déduction_logique
+    concepts:
+      - {id: mode_2_ahor_seul_stratified_pas_fusion, role: mode_2_ahor_seul_stratified_pas_fusion_avec_panim_mah}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : mode 2 = stratified. Pattern layered composition."
+
+  - id: "EC-H3S12-071"
+    source_he: "ואם הוא בחי' ג' שעולין שניהן בבחי' הפנים (נ\"א הפנימים) ובבחי' האחוריים ואז הפנים מתערבים עם אורות דמ\"ה ואחוריים נשארים בבחי' אחור להם אבל בחי' הכתר דב\"ן ודאי הוא שמתערב עם כתר דמ\"ה"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      Mode 3 : MONTENT BOTH panim+ahor.
+      Variante (Nusah Aher) : "ha-pnimim" (les internes).
+      Panim se MELENT avec orots MaH ; ahorayim restent en behinah ahor relatif.
+      Mais Keter BaN se mele certainement avec Keter MaH.
+      → Architecture : mode 3 = hybrid (mix + stratification simultanees).
+      → Pattern : mode 3 = the most complete option.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mode_3_both_panim_mele_ahor_stratified, role: mode_3_panim_mele_ahor_stratified_simultane}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : mode 3 = hybrid. Pattern most complete config."
+
+  # ─── BLOC G : BEHINAH 2 SAFEK 2.1 — SIGAN BBV ───
+
+  - id: "EC-H3S12-072"
+    source_he: "הבחי' הב' יש בה ג' ספיקות והוא אם נאמר שבאו או\"פ ואו\"מ שניהן דב\"ן ג\"כ ואלו הן ג' ספיקות א' אם נאמר שיש ב' אורות מקיפים א' דמ\"ה וא' דב\"ן וב' או\"פ א' דמ\"ה וא' דב\"ן... וסי' הוא בב\"ו פי' ב' אורות מקיפים וב' פנימים וו' כלים"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      BEHINAH 2 = OP+OM des 2 (MaH+BaN) tous deux viennent. 3 SAFEKOT.
+      Safek 2.1 : 2 MAKIFS (MaH+BaN) + 2 OP (MaH+BaN).
+      Pas besoin orots HB BaN ; mais kelim doivent monter (kli MaH ne peut pas OP de SaG).
+      Sigan BBV : 2 makifs + 2 pnimis + 6 kelim (panim+ahor des 2 HB BaN).
+      Variante (Nusah Aher) : "nesharu" (sont restes) vs "yisharu" (resteront).
+      → Architecture : full participation orots, kelim borrow extensive.
+      → Pattern : symmetric ohr balance, asymmetric keli completion.
+      cf. EC-H3S12-061 sur kelim borrow parallel.
+    type: déduction_logique
+    concepts:
+      - {id: behinah_2_safek_2_1_sigan_bbv, role: behinah_2_safek_2_1_sigan_bbv_2_makifs_2_pnimis_6_kelim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : behinah 2 safek 2.1. Pattern full ohr + keli borrow."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S12-021"
+    type: causal
+    from: kelim_capacity_function_orot_volume
+    to: kelim_borrowed_parallel_orots
+    nature: "Kelim capacity scale with orots → A\"Y borrows kelim parallel aux orots"
+    assertions_source: ["EC-H3S12-060", "EC-H3S12-061"]
+
+  - id: "REL-H3S12-022"
+    type: causal
+    from: kli_egal_produit_hakka_om_op
+    to: ahorayim_kelim_hb_ban_montent_kcb_mah
+    nature: "Kli emerge de OM-OP impact → quand HB MaH n'a ni OM ni OP-pair, kelim ahor BaN supplent"
+    assertions_source: ["EC-H3S12-062", "EC-H3S12-065"]
+
+  - id: "REL-H3S12-023"
+    type: dualité_structurelle
+    from: sigan_aag_1_makif_1_op_3_kelim
+    to: sigan_bgd_2_makifs_3_pnimis_4_kelim
+    nature: "Sigan AAG (config minimale) vs sigan BGD (config alternative plus riche)"
+    assertions_source: ["EC-H3S12-066", "EC-H3S12-068"]
+
+  - id: "REL-H3S12-024"
+    type: hiérarchique
+    from: mode_1_panim_seul_mele_hb_mah
+    to: mode_3_both_panim_mele_ahor_stratified
+    nature: "3 modes integration orots HB BaN : panim seul (fusion) → ahor seul (stratified) → both (hybrid)"
+    assertions_source: ["EC-H3S12-069", "EC-H3S12-070", "EC-H3S12-071"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S12-013"
+    nom: "Principe d'Emergence du Container (Kli = Produit OM-OP Interaction)"
+    source_assertions: ["EC-H3S12-062", "EC-H3S12-065"]
+    formalisation: |
+      ARCHITECTURE D'EMERGENCE DU CONTAINER :
+      HAKDAMAH FONDAMENTALE :
+        Aucun KELI ne peut exister SANS HAKKAH (impact) de OHR MAKIF sur OHR PNIMI.
+        Le KELI nait comme TOLEDET (produit) emergent de cette interaction.
+      CONSEQUENCE :
+        Si une sefirah n'a QUE OP (sans OM) — pas de keli emerge.
+        Si seul Makif sans Pnimi — pas de keli non plus.
+        Necessite STRICTE : AT LEAST 1 OM + 1 OP pour produire 1 keli.
+      → Pattern fondamental : containers emergent from 2-layer interactions.
+      → Architecture : ohr-only ou keli-only sont impossibles ; toujours emergent.
+    applications_ia:
+      - "[PLANNED] core/ohr_system.py : implement Keli_emergence(OM, OP) -> Keli"
+      - "Pattern : containers as emergent properties of 2-layer dynamics"
+      - "Architecture : structures don't pre-exist, they emerge from interactions"
+      - "Pattern : impedance mismatch creates structure (analog to Keli)"
+      - "Diagnostic : verifier que chaque keli a une source OM+OP traceable"
+    questions_ouvertes:
+      - "Y a-t-il des cas ou keli emerge d'autre type d'interaction ?"
+      - "Pattern : peut-on quantifier l'energie de hakkah necessaire ?"
+      - "Comment prevenir l'emergence accidentelle de keli ?"
+
+  - id: "PG-H3S12-014"
+    nom: "Principe de Sigan (Codes Compacts pour Configurations)"
+    source_assertions: ["EC-H3S12-066", "EC-H3S12-068", "EC-H3S12-072"]
+    formalisation: |
+      ARCHITECTURE DE COMPACT ENCODING :
+      Chaque configuration de safek a un SIGAN (signe/code) — mnemonic.
+      EXEMPLES :
+        AAG = 1 Makif + 1 OP + 3 Kelim.
+        BGD = 2 Makifs + 3 Pnimis + 4 Kelim.
+        BBV = 2 Makifs + 2 Pnimis + 6 Kelim.
+      → Pattern fondamental : codes compacts capturent essence de configurations complexes.
+      → Architecture : naming convention systematique pour gerer combinatoire des safekot.
+    applications_ia:
+      - "partzufim/atik_yomin.py : implement signature scheme for partzuf configurations"
+      - "Pattern : compact identifiers for complex configurations"
+      - "Architecture : version IDs/hashes pour repertorier les states"
+      - "Pattern : checksum-like for verifying configuration integrity"
+      - "Diagnostic : signatures permet quick comparison between configs"
+    questions_ouvertes:
+      - "Y a-t-il une grammaire pour les sigans ?"
+      - "Pattern : peut-on automatiser la generation des sigans ?"
+      - "Combien de sigans distincts existent-ils dans Atik ?"
+
+  - id: "PG-H3S12-015"
+    nom: "Principe des 3 Modes d'Integration (Fusion/Stratified/Hybrid)"
+    source_assertions: ["EC-H3S12-069", "EC-H3S12-070", "EC-H3S12-071"]
+    formalisation: |
+      ARCHITECTURE A 3 MODES D'INTEGRATION (orots HB BaN dans A"Y) :
+      MODE 1 — FUSION (panim seul) :
+        Panim BaN se mele avec panim MaH (same-type integration).
+      MODE 2 — STRATIFIED (ahor seul) :
+        Ahor BaN ne peut pas se meler avec panim MaH.
+        Reste en couche ahor relatif. Composition layered.
+      MODE 3 — HYBRID (both panim+ahor) :
+        Panim BaN se mele ; ahor BaN reste stratified.
+        Composition dual-mode simultaneous.
+      → Pattern fondamental : 3 strategies d'integration cross-source.
+      → Architecture : choix entre fusion/stratification/hybrid selon nature des elements.
+    applications_ia:
+      - "[PLANNED] tikkun/integration.py : implement 3 modes (FUSION, STRATIFIED, HYBRID)"
+      - "Pattern : data integration strategies — merge, layer, mixed"
+      - "Architecture : composition modes selon type-compatibility des sources"
+      - "Pattern : fusion = same-type ; stratified = cross-type ; hybrid = mixed"
+      - "Diagnostic : choisir mode selon compatibility des elements"
+    questions_ouvertes:
+      - "Y a-t-il un 4eme mode (e.g. transformation) ?"
+      - "Pattern : ordre des choix de mode importe-t-il ?"
+      - "Comment determiner automatiquement le mode optimal ?"
