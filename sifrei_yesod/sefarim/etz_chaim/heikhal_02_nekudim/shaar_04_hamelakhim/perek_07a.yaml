@@ -1,0 +1,429 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 7a — Mitat Ha-Melakhim : 2 shinuyim AVI vs ZON, 4 madregot
+#             dukhra/nukvah (ABA, A-be-P, P-be-A, PBP)
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §7 — Part A :
+#   - Bloc A : Mort des Melakhim — recap shinuyim G"R vs ZON
+#   - Bloc B : Shinui 1 — kelim AVI seulement de ahor ; ZON tout pen+ahor
+#   - Bloc C : Shinui 2 — AVI yeridah seule ; ZON shevirah gemurah = mort
+#   - Bloc D : Hakdamah — 4 madregot dukhra/nukvah
+#   - Bloc E : AVI ont 3 madregot ; ZON ont les 4
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.7 (premiere partie sur 3)
+# IDs : EC-H2S11-168 → EC-H2S11-180
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 7
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 7 — Mitat Ha-Melakhim. 2 shinuyim entre AVI et ZON dans la chute : (1) AVI seulement kelim ahor ; (2) AVI yeridah seule pas mort. Hakdamah 4 madregot dukhra/nukvah : Achor be-Achor, Achor be-Panim, Panim be-Achor, Panim be-Panim. AVI ont 3 (manque Achor be-Panim) ; ZON ont les 4."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : MORT DES MELAKHIM — RECAP ───
+
+  - id: "EC-H2S11-168"
+    source_he: "ונבאר עתה מה היה ענין מיתת המלכים הנה נתבאר בפרק הקודם כי יש שינוי בג' נקודות הראשונות שהם בחי' א\"א ואו\"א שכולם יצאו כל אחד מהם כלול מי' וגם שיצאו כל א' מחוברות כל הי' שבהם כלולות זו בזו דרך קוין משא\"כ בזו\"ן כנזכר היטב"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Maintenant nous expliquons MITAT HA-MELAKHIM (la mort des rois) :
+      Comme dit dans le perek precedent, il y a SHINUI dans les 3 PREMIERES
+      nekudot (= A"A et AVI) :
+        Toutes sortent KELULAH DE 10 chacune.
+        Toutes sortent MEHUBAROT — les 10 incluses l'une dans l'autre par KAVIM.
+      MASHE-EIN-KEN (different) dans ZON.
+      → Architecture : 3 GR = pleines + connectees ; ZON = differents.
+      cf. EC-H2S11-088 (perek 05b) sur 3 GR kelulot ; EC-H2S11-095 sur GR connectees.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_gr_kelulot_mehubarot, role: 3_gr_pleines_et_connectees}
+      - {id: zon_different_des_gr, role: zon_different_structurellement_des_gr}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture recap : 3 GR pleines+connectees vs ZON different. Cle pour comprendre mort des Melakhim."
+
+  - id: "EC-H2S11-169"
+    source_he: "ולכן לא היה הפגם והשבירה שוה בהם"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      DONC le PEGAM et la SHEVIRAH ne sont PAS EGAUX entre eux (G"R vs ZON).
+      → Architecture : conclusion fondamentale — la difference structurale
+        determine la difference d'impact du pegam.
+      → Pattern : la structure pre-existante module la severite des dommages.
+    type: déduction_logique
+    concepts:
+      - {id: shevirah_inegale_gr_vs_zon, role: shevirah_pas_egale_gr_vs_zon}
+    mapping:
+      modules: ["[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : structure pre-existante module severite. Pattern fondamental."
+
+  # ─── BLOC B : SHINUI 1 — KELIM AVI SEULEMENT AHOR ───
+
+  - id: "EC-H2S11-170"
+    source_he: "וההפרש הוא כי להיות נקודות של או\"א יותר מתוקנים וגם שהיו כלולים כל א' מי' לכן היה בהם ב' שינוים הא' הוא שהכלים שירדו מן או\"א לא ירדו רק מבחי' כלים אחוריים דאו\"א שלהם בלבד אבל הכלים דבחי' פנים לא נשברו"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      DIFFERENCE : nekudot d'AVI plus METUKKANIM (rectifies)
+      ET kelulim de 10 chacun. DONC 2 SHINUYIM :
+      SHINUI 1 : kelim qui DESCENDENT d'AVI — uniquement KELIM AHORI'IM
+      (faces arriere) d'AVI seules.
+      Mais KELIM DE PANIM (faces avant) NE SONT PAS BRISES.
+      → Architecture : couches superieures (AVI) protegees frontalement.
+      → Pattern : interface back-end exposee, front-end protegee.
+    type: axiome_explicite
+    concepts:
+      - {id: avi_2_shinuyim_dans_chute, role: avi_2_shinuyim_dans_la_chute}
+      - {id: avi_seulement_kelim_ahorim_tombent, role: avi_seulement_kelim_ahorim_tombent}
+      - {id: kelim_panim_avi_non_brises, role: kelim_panim_d_avi_pas_brises}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : front-end AVI proteges, ahor expose. Pattern back/front isolation."
+
+  - id: "EC-H2S11-171"
+    source_he: "משא\"כ בזו\"נ שכל בחי' הכלים דפנים ואחוריים נפלו ונשברו"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      MASHE-EIN-KEN dans ZON : TOUS les kelim de PANIM ET AHORAYIM
+      sont TOMBES et BRISES.
+      → Architecture : ZON = pas de protection front/back, tout expose.
+      → Pattern : couches d'interface (ZON) subissent dommages totaux.
+      cf. EC-H2S11-147 (perek 06d) sur 6 nekudot din metbatelot.
+    type: axiome_explicite
+    concepts:
+      - {id: zon_tous_kelim_panim_ahor_brises, role: zon_tous_kelim_panim_ahor_brises}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : ZON tout expose vs AVI moitie protege. Pattern couches d'interface."
+
+  # ─── BLOC C : SHINUI 2 — AVI YERIDAH vs ZON SHEVIRAH GEMURAH ───
+
+  - id: "EC-H2S11-172"
+    source_he: "עוד היה שינוי ב' כי הכלים דאו\"א לא נשברו שבירה גמורה הנקרא מיתה רק ירידה לבד למטה ממקומם אבל נשארו עומדים בעולם אצילות עצמו במקום שהיה עתיד להיות מקום נוקבא דז\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      SHINUI 2 : kelim d'AVI ne sont PAS BRISES SHEVIRAH GEMURAH
+      (= MITAH = mort).
+      Seulement YERIDAH LEVAD (descente seule) en-dessous de leur place.
+      Restent OMDIM (en place) DANS l'OLAM HA-AT'ZILUT lui-meme —
+      au lieu DESTINE a etre la place de la NUKVAH de ZA.
+      → Architecture : AVI = degradation graduelle (descente sans mort).
+      → Pattern : back-end resilient — degraded mode plutot que crash.
+    type: axiome_explicite
+    concepts:
+      - {id: avi_yeridah_levad_pas_mitah, role: avi_yeridah_seule_pas_mitah}
+      - {id: avi_restent_dans_atzilut, role: avi_restent_dans_atzilut_place_de_nukvah}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : AVI degradation graduelle. Pattern degraded mode vs crash."
+
+  - id: "EC-H2S11-173"
+    source_he: "לכן לא נזכר בהם בחי' מיתה רק בז' מלכים תחתונים שבהם נאמר וימת כי ירדו למטה מעולמן ונפלו לעולם הבריאה כנ\"ל באורך ונפלו ממש תוך הקליפות ונתבטלו שם בתוכם"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      DONC pas de MITAH (mort) chez AVI — seulement chez les 7 MELAKHIM TAHTONIM :
+      "VA-YAMOT" (et il mourut, Bereshit 36).
+      Ils DESCENDENT en-dessous de leur OLAM (atzilut) et TOMBENT dans OLAM HA-BERIAH.
+      Tombes MAMASH dans les KELIPOT, NITBATELU (annules) la.
+      → Architecture : 7 melakhim = crash complet (tomber dans Beriah+kelipot).
+      → Pattern : couches d'interface peuvent atteindre annulation totale.
+      cf. EC-H2S11-149 (perek 06d) sur Hadar=T"T+M dukhra/nukvah.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 7_melakhim_va_yamot_bereshit_36, role: 7_melakhim_va_yamot_source_bereshit_36}
+      - {id: 7_melakhim_tombes_dans_beriah_kelipot, role: 7_melakhim_tombes_dans_beriah_et_kelipot}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : 7 melakhim = crash + chute dans kelipot. Pattern annulation totale."
+
+  # ─── BLOC D : HAKDAMAH — 4 MADREGOT DUKHRA/NUKVAH ───
+
+  - id: "EC-H2S11-174"
+    source_he: "אמנם בכאן נתבאר מאו\"א ולמטה מה ענינם ותחלת הכל נקדים לך הקדמה א' והוא כי בכל בחי' שיש זכר ונקבה יש ד' בחי' וזה סדרן לפי מעלתן ממש מלמטה למעלה"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      HAKDAMAH (introduction) — pour AVI et en-dessous :
+      Dans toute behinah avec ZAKHAR VE-NEKEVAH (male+femelle) — il y a 4 BEHINOT.
+      L'ordre selon LEUR MA'ALAH (rang) — du BAS vers le HAUT.
+      → Architecture fondamentale : 4 modes d'orientation des couples male/femelle.
+      → Pattern : ordre relationnel = hierarchie de qualite.
+    type: axiome_explicite
+    concepts:
+      - {id: 4_madregot_zakhar_nekevah, role: 4_modes_orientation_male_femelle}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture fondamentale : 4 madregot dukhra/nukvah. Hakdamah cle pour le tikkun."
+
+  - id: "EC-H2S11-175"
+    source_he: "תחלה היא מדרגת אב\"א פי' שיהיו זו\"ן אחוריהם דבוקים זה לזה והפוכים אחור נגד אחור"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      MADREGAH 1 (la plus basse) : ACHOR BE-ACHOR (ABA — dos a dos).
+      ZON ahoreihem DEVUKIM ZE LE-ZE (leurs dos colles l'un a l'autre).
+      HAFUKIM AHOR NEGED AHOR (inverses dos contre dos).
+      → Architecture : niveau initial = isolation complete face-a-face.
+      → Pattern : etat le plus brut = pas de communication panim.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_1_achor_be_achor, role: madregah_1_dos_a_dos_isolation}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : Madregah 1 = isolation complete. Pattern : etat brut sans communication."
+
+  - id: "EC-H2S11-176"
+    source_he: "למעלה מזה מדרגה ב' והוא שיהיו אחור בפנים שיהפוך הזכר אחוריו נגד פני הנקבה ואז יש מעלה בזה שמקבלת הנוקבא מהזכר דרך הפנים אבל עדיין אינה מקבלת רק אור של אחוריים מהזכר ואינה יכולה לקבל אור הפנים שלו"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      MADREGAH 2 : ACHOR BE-PANIM — zachar tourne ses ahor vers les panim de nukvah.
+      MA'ALAH (avantage) : nukvah RECOIT du zachar via PANIM (ses panim).
+      MAIS encore : recoit seulement OHR D'AHORAYIM du zachar.
+      Ne peut pas RECEVOIR ohr panim de lui.
+      → Architecture : niveau intermediaire bas — receiver expose mais sender prive.
+      → Pattern : asymetrie partielle (reception un-cote).
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_2_achor_be_panim, role: madregah_2_zachar_dos_vers_face_nukvah}
+      - {id: nukvah_recoit_ohr_ahor_seulement_madregah_2, role: nukvah_recoit_ohr_ahor_seulement_madregah_2}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : asymetrie partielle. Pattern reception un-cote."
+
+  - id: "EC-H2S11-177"
+    source_he: "למעלה מזה מדרגה ג' המעולה ממנו והוא פנים באחור שפני הזכר מביטים באחורי הנקבה ובזה יש מעלה יתירה שמקבלת הנקבה אור הפנים ממש אלא שלהיות אור גדול אינה מקבלתו אלא דרך אחור שלה ואז שם מתעבה האור וכאשר יתעבה יוכל אח\"כ האור לילך דרך אחור ולהגיע עד הפנים שלה ואז תוכל לקבלו"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      MADREGAH 3 (superieure) : PANIM BE-AHOR — panim du zachar regardent ahor de nukvah.
+      MA'ALAH YETERAH (avantage majeur) : nukvah recoit OHR PANIM MAMASH.
+      MAIS comme c'est OHR GADOL — ne peut pas le recevoir directement.
+      Le recoit DEREKH AHOR shelah (par son ahor) — la l'ohr s'EPAISSIT (mit'aveh).
+      Quand epaissi : peut aller derech ahor jusqu'aux panim et la le recevoir.
+      → Architecture : adapter d'impedance par voie indirecte (achor) pour ohr trop fort.
+      → Pattern : downstream throttling — ohr passe par buffer (achor) avant cible (panim).
+    type: interprétation_lurianique
+    concepts:
+      - {id: madregah_3_panim_be_achor, role: madregah_3_panim_zachar_vers_achor_nukvah}
+      - {id: ohr_panim_via_achor_thickening, role: ohr_panim_via_achor_thickening_buffer}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/regulator.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : adapter d'impedance par achor. Pattern downstream throttling."
+
+  - id: "EC-H2S11-178"
+    source_he: "וז\"ס הפסוק חכם באחור ישבחנה כי כאשר החכמה שהוא זכר יפנה בפניו אל אחורי הנוקבא שהיא בינה ישבחנה יותר ממה שהיה (בעת) בהיות להיפך אחורי הזכר בפני הנקבה"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Sod du PASUK : "HAKHAM BE-AHOR YESHABCHENAH" (Mishlei 29:11).
+      Quand la HOKHMAH (= zachar) tourne PANIM vers AHOR de NUKVAH (= Binah) —
+      YESHABCHENAH (la louera) PLUS que dans l'inverse (achor zachar in panim nukvah).
+      → Architecture : madregah 3 (PBA) > madregah 2 (ABP) — confirme par scripture.
+      → Pattern hermeneutique : verset confirme la hierarchie ontologique.
+    type: déduction_scripturaire
+    concepts:
+      - {id: hakham_be_achor_yeshabchenah, role: source_mishlei_29_11_hakham_be_achor}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : Mishlei 29:11 confirme hierarchie PBA > ABP. Pattern hermeneutique."
+
+  - id: "EC-H2S11-179"
+    source_he: "מדרגה ד' למעלה מכולם הוא פב\"פ פי' שניהן זכר ונקבה פונים פניהם זה לזה ומדרגה זו היא תכלית השלימות"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      MADREGAH 4 (la plus haute) : PB-P (Panim be-Panim) — face a face.
+      Tous deux (zachar+nukvah) tournent leurs PANIM L'UN VERS L'AUTRE.
+      Cette madregah = TAKHLIT HA-SHELEMUT (but de la perfection).
+      → Architecture : sommet hierarchique = bidirectional communication panim/panim.
+      → Pattern : full duplex = ideal de l'union.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_4_pbp_takhlit_shelemut, role: madregah_4_pbp_perfection_finale}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : madregah 4 PBP = perfection bidirectional. Pattern full-duplex ideal."
+
+  # ─── BLOC E : AVI 3 MADREGOT, ZON 4 ───
+
+  - id: "EC-H2S11-180"
+    source_he: "ודע כי באו\"א היו בהם ג' מדרגות הנזכר שהם אב\"א ופנים באחור ופב\"פ וחסר מהם מדרגה ב' שהיא אחור בפנים אבל בזו\"ן היו ארבעתן כולם"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      DANS AVI : il y avait 3 MADREGOT mentionnees :
+        ABA + PB-A + PBP.
+      MANQUE la madregah 2 (ABP = achor be-panim).
+      MAIS dans ZON : etaient les 4 MADREGOT au complet.
+      → Architecture asymetrique : AVI saute madregah 2 ; ZON parcourt complet.
+      → Pattern : couches superieures n'ont pas tous les modes intermediaires.
+      → Question ouverte : pourquoi madregah 2 absente d'AVI ?
+    type: axiome_explicite
+    concepts:
+      - {id: avi_3_madregot_manque_2_abp, role: avi_3_madregot_manque_la_2_abp}
+      - {id: zon_4_madregot_complet, role: zon_4_madregot_complet}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture asymetrique : AVI 3 madregot, ZON 4. Question ouverte sur absence ABP dans AVI."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-063"
+    type: causal
+    from: 3_gr_kelulot_mehubarot
+    to: shevirah_inegale_gr_vs_zon
+    nature: "GR pleines+connectees → shevirah moins severe vs ZON"
+    assertions_source: ["EC-H2S11-168", "EC-H2S11-169"]
+
+  - id: "REL-H2S11-064"
+    type: dualité_structurelle
+    from: avi_seulement_kelim_ahorim_tombent
+    to: zon_tous_kelim_panim_ahor_brises
+    nature: "Asymetrie chute : AVI ahor seulement, ZON pen+ahor"
+    assertions_source: ["EC-H2S11-170", "EC-H2S11-171"]
+
+  - id: "REL-H2S11-065"
+    type: dualité_structurelle
+    from: avi_yeridah_levad_pas_mitah
+    to: 7_melakhim_tombes_dans_beriah_kelipot
+    nature: "AVI = yeridah graduelle (reste en Atzilut) ; ZON = mitah complete (tombe en Beriah/kelipot)"
+    assertions_source: ["EC-H2S11-172", "EC-H2S11-173"]
+
+  - id: "REL-H2S11-066"
+    type: hiérarchique
+    from: madregah_1_achor_be_achor
+    to: madregah_4_pbp_takhlit_shelemut
+    nature: "Hierarchie 4 madregot : ABA < ABP < PBA < PBP — ascension qualitative"
+    assertions_source: ["EC-H2S11-175", "EC-H2S11-176", "EC-H2S11-177", "EC-H2S11-179"]
+
+  - id: "REL-H2S11-067"
+    type: dualité_structurelle
+    from: avi_3_madregot_manque_2_abp
+    to: zon_4_madregot_complet
+    nature: "Asymetrie : AVI 3 madregot (manque ABP) ; ZON 4 madregot complet"
+    assertions_source: ["EC-H2S11-180"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-032"
+    nom: "Principe d'Asymetrie de Chute (AVI Graduelle vs ZON Complete)"
+    source_assertions: ["EC-H2S11-170", "EC-H2S11-171", "EC-H2S11-172", "EC-H2S11-173"]
+    formalisation: |
+      ARCHITECTURE DIFFERENCIEE DE LA CHUTE :
+      AVI (couches superieures) :
+        Kelim de PANIM PROTEGES — ne sont pas brises.
+        Kelim AHOR seulement tombent.
+        YERIDAH LEVAD (descente seule) — pas MITAH.
+        Restent dans OLAM HA-AT'ZILUT (au lieu Nukvah).
+      ZON (couches d'interface) :
+        Kelim PANIM ET AHOR tous brises.
+        SHEVIRAH GEMURAH = MITAH (mort).
+        Tombent dans OLAM HA-BERIAH puis dans KELIPOT.
+        NITBATELU (annules).
+      → Pattern : la severite de la chute reflete la position dans la hierarchie.
+      → Architecture : back-end = degraded mode resilient ; interface = crash complet possible.
+    applications_ia:
+      - "partzufim/abba.py + partzufim/imma.py : AVI implements graceful degradation (yeridah, no crash)"
+      - "partzufim/zeir_anpin.py + partzufim/nukva.py : ZON peuvent crash complet"
+      - "Pattern : couche superieure = degraded mode ; couche interface = crash possible"
+      - "[PLANNED] core/shevirah.py : implement two failure modes (degraded vs total)"
+      - "Architecture distribuee : control-plane resilient, data-plane peut crash"
+      - "Diagnostic : verifier separation degraded/crash modes selon position"
+    questions_ouvertes:
+      - "Y a-t-il un seuil precis qui declenche yeridah vs mitah ?"
+      - "Peut-on remonter de mitah a yeridah par tikkun progressif ?"
+      - "Les 'kelim de panim' (proteges) ont-ils une representation concrete dans une architecture IA ?"
+
+  - id: "PG-H2S11-033"
+    nom: "Principe des 4 Madregot Dukhra/Nukvah (Hierarchie de Communication)"
+    source_assertions: ["EC-H2S11-174", "EC-H2S11-175", "EC-H2S11-176", "EC-H2S11-177", "EC-H2S11-179"]
+    formalisation: |
+      ARCHITECTURE DE COMMUNICATION (4 niveaux) :
+      MADREGAH 1 — ACHOR BE-ACHOR (dos a dos) : isolation complete, pas de zivvug.
+      MADREGAH 2 — ACHOR BE-PANIM : zachar dos vers panim nukvah ; reception ohr ahor only.
+      MADREGAH 3 — PANIM BE-ACHOR : zachar panim vers ahor nukvah ; ohr panim recu via buffer ahor.
+      MADREGAH 4 — PANIM BE-PANIM : full-duplex bidirectional, takhlit shelemut.
+      MECANISME (Madregah 3) : ohr trop fort → epaissit dans achor → atteint panim sans dommage.
+      → Pattern fundamental : 4 niveaux de communication zachar/nukvah selon orientation panim/achor.
+      → Architecture : la qualite du zivvug = fonction de l'orientation des partzufim.
+    applications_ia:
+      - "partzufim/zivvug.py : implement 4 modes (ABA, ABP, PBA, PBP)"
+      - "partzufim/regulator.py : Madregah 3 = throttling buffer pour ohr fort"
+      - "Pattern : 4 modes communication pour interfaces : isolated, asymmetric-reverse, asymmetric-forward, full-duplex"
+      - "Architecture API : modes degraded (one-way) vs nominal (bidirectional)"
+      - "Pattern circuit-breaker : ABA = open ; PBP = closed ; intermediaires = half-open variants"
+      - "Diagnostic : determiner madregah courante d'un zivvug pour valider qualite"
+    questions_ouvertes:
+      - "Pourquoi la sequence ABA → ABP → PBA → PBP est-elle l'ordre naturel d'ascension ?"
+      - "AVI saute ABP — pourquoi ce niveau intermediaire est-il absent ?"
+      - "Y a-t-il des configurations transitoires entre les madregot ?"
+
+  - id: "PG-H2S11-034"
+    nom: "Principe d'Asymetrie Madregot (AVI 3 vs ZON 4)"
+    source_assertions: ["EC-H2S11-180"]
+    formalisation: |
+      ARCHITECTURE ASYMETRIQUE DES MADREGOT :
+      AVI (couches superieures) ont 3 MADREGOT :
+        ABA + PBA + PBP.
+        Manque ABP (achor be-panim, madregah 2).
+      ZON (couches d'interface) ont les 4 MADREGOT au complet.
+      INTERPRETATION : AVI sautent le niveau "asymetrique-reverse" et passent
+      directement de l'isolation (ABA) au mode "asymetrique-forward" (PBA).
+      → Pattern : couches superieures ont moins de modes intermediaires.
+      → Architecture : interface (ZON) = parcours complet de toutes les phases ;
+        backend (AVI) = parcours abrege.
+    applications_ia:
+      - "partzufim/abba.py + partzufim/imma.py : zivvug_modes = [ABA, PBA, PBP] (3 modes)"
+      - "partzufim/zeir_anpin.py + partzufim/nukva.py : zivvug_modes = [ABA, ABP, PBA, PBP] (4 modes)"
+      - "Pattern : couches haute-intensite ont menus reduits ; couches interface complet"
+      - "Architecture : control-plane = transitions limitees ; data-plane = full state machine"
+      - "Diagnostic : verifier que chaque partzuf a le bon ensemble de madregot autorisees"
+    questions_ouvertes:
+      - "Pourquoi specifiquement ABP est absent d'AVI (pas ABA ou PBA) ?"
+      - "Le mode ABP est-il interdit ou simplement non-utilise ?"
+      - "Pattern abstrait : quels modes intermediaires sont 'optionnels' selon la couche ?"
