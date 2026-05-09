@@ -1,0 +1,420 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 1 — Sha'ar Atik (שער עתיק)
+# Perek: 4b — Suite safekot Behinah 2. Sigan BDD safek 2.2 + 2.3.
+#             Resolution panim/ahor superieur. M"K addendum auteur
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §4 — Part B :
+#   - Bloc H : Safek 2.2 sigan BDD (panim seul kelim HB BaN)
+#   - Bloc I : Question why orots rise in safek 2 vs safek 1
+#   - Bloc J : Reponse — panim+ahor of kelim → no orots ; panim seul → orots rise
+#   - Bloc K : Safek 2.3 (ahor seul kelim) — orots rise
+#   - Bloc L : Explanation — panim BaN restent dans AVI (their place)
+#   - Bloc M : Resolution — panim+ahor together = panim superior ;
+#              ahor alone = ahor superior
+#   - Bloc N : M"K addendum — author's safek (5 ohr Keter SaG)
+#
+# Source Sefaria : Sefer_Etz_Chaim.12.4 (deuxieme moitie + Part 2)
+# IDs : EC-H3S12-073 → EC-H3S12-085
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 1
+  shaar_name_he: "שער עתיק"
+  perek: 4
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Deuxieme partie du perek 4 — Suite safekot. Safek 2.2 sigan BDD (panim seul kelim HB BaN). Resolution : 2 cas pour superiorite panim vs ahor : si BOTH ensemble, panim superior (tosefet) ; si AHOR SEUL, ahor superior (build partzuf). Donc safek 2 (panim+ahor) → panim peut etre haut ; safek 3 (ahor seul) → ahor peut etre haut. M\"K addendum auteur sur 5 ohr Keter SaG."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC H : SAFEK 2.2 SIGAN BDD ───
+
+  - id: "EC-H3S12-073"
+    source_he: "הספק הב' הוא סי' בד\"ד פי' כי אולי לא הוצרך שיעלו למעלה רק הפנים של הכלים דב' הכתרים דחו\"ב דב\"ן והסימן בד\"ד פי' ב' מקיפים ד' פנימים א' דמ\"ה וא' דב\"ן וב' או\"פ דב' כתרים דחו\"ב דב\"ן וד' כלים ב' דמ\"ה ודב\"ן וב' בחי' הפנים של הכלים דב' כתרים (דחו\"ב) הנ\"ל"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      Safek 2.2 — sigan BDD :
+      Peut-etre seuls les PANIM des kelim de 2 ketarim Hokhmah-Bina BaN montent.
+      Sigan BDD : 2 makifs + 4 pnimis (1 MaH + 1 BaN + 2 OP des 2 ketarim HB BaN)
+      + 4 kelim (2 MaH+BaN + 2 panim des kelim 2 ketarim HB BaN).
+      → Architecture : variation panim seul des kelim → orots BaN HB rise as well.
+      → Pattern : selectional precision in keli-borrowing.
+      cf. EC-H3S12-072 (perek 04a) sur safek 2.1 sigan BBV.
+    type: déduction_logique
+    concepts:
+      - {id: safek_2_2_sigan_bdd_panim_seul_kelim, role: safek_2_2_sigan_bdd_panim_seul_kelim_hb_ban}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : variation panim seul kelim. Pattern selectional precision."
+
+  # ─── BLOC I : POURQUOI OROTS RISE EN SAFEK 2 vs PAS EN SAFEK 1 ───
+
+  - id: "EC-H3S12-074"
+    source_he: "וא\"ת למה למעלה בספק א' [כפי] שאמרנו שעלו (נ\"א שאולי) הכלים של פנים ואחוריים ואמרנו (נ\"א אמרנו) שלא עלו האורות שלהם כלל וכאן אמרו שעלו (נ\"א וכאן בספק הב' שאמרנו שאולי עלו) הפנים של הכלים ואמרנו שגם האורות שלהם דפנים עלו עמהן"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      QUESTION : pourquoi en safek 1 (panim+ahor of kelim montent) — orots NE montent pas ?
+      Variante (Nusah Aher) : "kfi" (selon).
+      Variante (Nusah Aher) : "she'oulai" (peut-etre).
+      Variante (Nusah Aher) : "amaru" (ils dirent).
+      Variante (Nusah Aher) : "ve-khan be-safek ha-bet she-amarnu she-oulai alu" (longue variante de transition).
+      Et ici (safek 2.2) — panim of kelim montent + leurs orots panim aussi montent.
+      → Architecture : asymetrie de regles entre safekot.
+      → Pattern : variation in rule application based on extent of borrowing.
+    type: déduction_logique
+    concepts:
+      - {id: question_difference_safek_1_vs_2_orots, role: question_pourquoi_safek_1_pas_orots_safek_2_oui}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : asymetrie regles. 4 Nusah Aher captures."
+
+  # ─── BLOC J : REPONSE ROSH A"Y CAPACITY ───
+
+  - id: "EC-H3S12-075"
+    source_he: "והענין כי בספק א' כיון שעלו בחי' הפנים ואחוריים של הכלים אי אפשר שיעלו האורות מחציתן למעלה וישארו מחציתן למטה כי הנה לעלות כולם אין כח בכלי דרישא דעתיק לסבול בו כ\"כ אורות ולכן לא עלה שום אור"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      REPONSE : en safek 1 — panim+ahor of kelim montent.
+      IMPOSSIBLE que orots montent moitie en haut, moitie en bas.
+      Pour TOUT monter — pas de KOAH dans kli de Rosh A"Y pour SUPPORTER tant d'orots.
+      DONC AUCUN ohr ne monte.
+      → Architecture : capacity-constrained scaling — all-or-nothing rule.
+      → Pattern : Rosh capacity bottleneck force binary choice.
+    type: interprétation_lurianique
+    concepts:
+      - {id: rosh_ay_capacity_bottleneck_all_or_nothing, role: rosh_ay_capacity_force_all_or_nothing_orot}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : capacity-constrained scaling. Pattern bottleneck = binary choice."
+
+  - id: "EC-H3S12-076"
+    source_he: "אמנם כאשר עולים הפנים של הכלים לבד כנזכר בספק זה אז אפשר שיעלו אורותיהם עמהם ויוכל הראש דעתיק לסובלם כי מועטים הם"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      MAIS quand seuls PANIM of kelim montent (safek 2.2) —
+      possible que leurs orots montent avec eux.
+      Rosh A"Y peut les SOVEL (supporter) car ME'UTIM (peu nombreux).
+      → Architecture : reduced load → orots can accompany kelim.
+      → Pattern : capacity-aware composition — partial allows full transfer.
+    type: déduction_logique
+    concepts:
+      - {id: panim_seul_kelim_orots_aussi_montent, role: panim_seul_kelim_capacity_permet_orots_aussi}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : reduced load capacity. Pattern partial enables full."
+
+  # ─── BLOC K : SAFEK 2.3 SIGAN BDD ───
+
+  - id: "EC-H3S12-077"
+    source_he: "ספק הג' הוא ג\"כ שסימנו בד\"ד והוא ע\"ד הנ\"ל אלא שיש שינוי אחר והוא במקום שנסתפק לנו בספק הב' הנ\"ל אם עלו הפני של הכלים דב' הכתרים דחו\"ב דב\"ן הנה עתה נסתפק לנו אם לא עלו אלא האחוריים לבד כלים שלהם ואורות כנ\"ל"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      SAFEK 2.3 — sigan BDD aussi (variante).
+      Difference : au lieu de panim of kelim — peut-etre seuls AHORAYIM montent.
+      Ahorayim of kelim ET leurs orots montent.
+      Sigan : 2 makifs + 4 pnimis + 4 kelim (mais ahor seul a la place de panim).
+      → Architecture : symetrie panim/ahor — 2 variantes possibles avec meme sigan.
+      → Pattern : structural duality avec mneme code.
+      cf. EC-H3S12-073 sur safek 2.2 sigan BDD (panim seul).
+    type: déduction_logique
+    concepts:
+      - {id: safek_2_3_sigan_bdd_ahor_seul_kelim, role: safek_2_3_sigan_bdd_ahor_seul_au_lieu_de_panim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : 2 variantes panim/ahor meme sigan. Pattern structural duality."
+
+  # ─── BLOC L : EXPLICATION — PANIM RESTENT AVI ───
+
+  - id: "EC-H3S12-078"
+    source_he: "ועתה צריך שנבאר מ\"ש למעלה והוא כי כאשר אנו מסתפקים ואומרים שאפשר שעלו בחי' האחוריים דב' כתרים דחו\"ב דב\"ן אל תטעה לומר כי בחי' הפנים שלהם נשארו למטה בגופא דעתיק כי דבר זה א\"א שהאחוריים יעלו למעלה ברישא והפנים שהם יותר מעולים יהיו למטה בגופא"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      EXPLICATION : quand AHORAYIM des 2 ketarim HB BaN montent —
+      AL TIT'EH (ne te trompe pas) : panim ne RESTENT PAS dans GUFA d'A"Y.
+      IMPOSSIBLE qu'ahor monte rosh et panim (plus eleve normalement) reste gufa.
+      → Architecture : ordre normal — panim toujours plus haut qu'ahor.
+      → Pattern : invariant strict — composante haute reste haute.
+    type: déduction_logique
+    concepts:
+      - {id: invariant_panim_plus_haut_que_ahor, role: invariant_strict_panim_jamais_en_dessous_de_ahor}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : invariant strict. Pattern composante haute reste haute."
+
+  - id: "EC-H3S12-079"
+    source_he: "ואמנם צ\"ל שבחי' הפנים נשארו במקומם שהוא באו\"א לצורך עצמן וא\"ת עדיין קשה הדבר לומר שהאחוריים יעלו ברישא דעתיק ופנים באו\"א הלא או\"א גרועים מגופא דעתיק"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      Resolution : panim restent dans LEUR PLACE = AVI (pour leur propre besoin).
+      Question : ahor monte rosh A"Y ; panim reste AVI — mais AVI < gufa A"Y normalement.
+      Comment ?
+      → Architecture : difficulte topologique — panim AVI plus bas que ahor en rosh A"Y ?
+      → Pattern : tension dans la hierarchie standard.
+    type: déduction_logique
+    concepts:
+      - {id: panim_kelim_hb_ban_restent_avi_pour_eux, role: panim_kelim_hb_ban_restent_dans_avi_pour_propre_besoin}
+      - {id: tension_topologique_ahor_rosh_panim_avi, role: tension_topologique_ahor_rosh_ay_panim_avi_inferieur}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "abba", "imma"]
+      relevance: "Architecture : tension topologique. Pattern hierarchie standard challenged."
+
+  # ─── BLOC M : RESOLUTION PANIM/AHOR ───
+
+  - id: "EC-H3S12-080"
+    source_he: "וי\"ל לזה תשובה ובכללה יתורץ תמיהות אחרות שיש כאן בספיקות האלו הנה נת\"ל כי יש בחי' שהפנים מעולים מהאחוריים ויש בחי' שהאחוריים מעולים מן הפנים"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      Resolution : il y a 2 BEHINOT :
+        BEHINAH A : PANIM superieurs aux AHORAYIM.
+        BEHINAH B : AHORAYIM superieurs aux PANIM.
+      → Architecture : superiorite panim/ahor depend du contexte.
+      → Pattern : context-dependent ranking entre composantes.
+    type: déduction_logique
+    concepts:
+      - {id: 2_behinot_superiorite_panim_ou_ahor_contextuelle, role: 2_behinot_superiorite_panim_ou_ahor_selon_contexte}
+    mapping:
+      modules: ["partzufim/base.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : context-dependent ranking. Pattern superiorite contextuelle."
+
+  - id: "EC-H3S12-081"
+    source_he: "כי בערך שאור הפנים הוא המחברם לחזור פב\"פ נמצא כי אור הפנים גדול ובערך שהאור של האחוריים הם בונין כל פרצוף העיקרי אבל אור הפנים אינו רק להחזירו פב\"פ לכן אור האחוריים גדול מאור הפנים"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      EXPLICATION :
+      OHR PANIM = MEHABER (qui unit) pour faire PBP — son role = facing.
+      OHR AHOR = BONIN KOL HA-PARTZUF HA-IKARI (construit le partzuf principal).
+      DONC : panim = facing-only ; ahor = structural-build.
+      Quand role considere : ahor SUPERIEUR (constructive) ; panim mineur (just face).
+      → Architecture : roles fonctionnels — ahor batisseur, panim socializer.
+      → Pattern : function-based ranking (constructive > social).
+    type: interprétation_lurianique
+    concepts:
+      - {id: ohr_ahor_egal_constructeur_partzuf, role: ohr_ahor_egal_constructeur_du_partzuf_principal}
+      - {id: ohr_panim_egal_facing_socializer, role: ohr_panim_egal_facing_socializer_seulement}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py", "partzufim/zivvug.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Architecture : roles fonctionnels (constructive/social). Pattern function-based ranking."
+
+  - id: "EC-H3S12-082"
+    source_he: "והנה כיון שיש ב' בחי' אלו נכריע ונאמר כי ודאי הוא כאשר אלו ב' בחי' פנים ואחוריים באים ביחד אז ודאי שאור הפנים מעולה לפי שהוא בא בסוד תוספת על היות לו כבר אור האחור וזה נתרבה ונתוסף עליו ומחזירם פב\"פ"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      DONC quand panim+ahor ensemble :
+      PANIM SUPERIEUR — vient en SOD TOSEFET sur ahor existant deja.
+      Et MEHAZIRAM PBP (les retourne face-a-face).
+      → Architecture : ensemble = panim ajoute valeur (tosefet sur ahor base).
+      → Pattern : composition value-add — addition transforms baseline.
+    type: déduction_logique
+    concepts:
+      - {id: panim_ensemble_superior_tosefet_sur_ahor, role: panim_ensemble_avec_ahor_superior_car_tosefet}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Architecture : composition value-add. Pattern panim transforme baseline ahor."
+
+  - id: "EC-H3S12-083"
+    source_he: "ולכן אמרנו בספק ב' שאפשר לומר שאור הפנים עלו למעלה בראש ואור האחוריים נשאר למטה בגופא דיליה אבל בספק הג' שלא בא בעתיק רק בחי' האחור לבד אז אין לומר שגם בחי' הפנים יבואו ויהיו למטה בגופא דעתיק דא\"כ (נ\"א יאיר בגופא דעתיק א\"כ) הרי הם מחוברים ואיך יהיו הפנים למטה והאחור למעלה"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      DONC en safek 2 (both venir) — panim peut monter rosh, ahor reste gufa.
+      Mais en safek 3 (ahor SEUL) — pas dire que panim vient aussi en gufa A"Y :
+      Variante (Nusah Aher) : "ya'ir be-gufa de-Atik a"k" (illuminera dans gufa, donc).
+      Sinon ils seraient MEHUBARIM, et impossible que panim < ahor en hierarchie spatiale.
+      → Architecture : separation requise pour eviter inversion topologique.
+      → Pattern : prevent inverted hierarchy via separation.
+    type: déduction_logique
+    concepts:
+      - {id: safek_3_ahor_seul_panim_reste_avi_pour_eviter_inversion, role: safek_3_ahor_seul_panim_reste_avi_eviter_inversion_topologique}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "abba", "imma"]
+      relevance: "Architecture : prevent inverted hierarchy. Nusah Aher capture (yair be-gufa)."
+
+  - id: "EC-H3S12-084"
+    source_he: "לכן נשאר הפנים באו\"א ואור האחור יעלה בעתיק שכיון שאינן מחובררים יחד בפרצוף א' ודאי הוא שאור האחור גדול מאור הפנים כי אם אור הפנים לא נתוסף על האחור אלא שיהיה לבדו הנה גרוע וקטן מאור האחור לכן נשאר לאו\"א"
+    source_ref: "Heikhal 3, Sha'ar 1:4"
+    assertion: |
+      DONC : PANIM reste dans AVI (pour leur propre usage).
+      OHR AHOR monte dans Atik.
+      Car puisqu'ils ne sont PAS MEHUBARIM dans 1 partzuf — ahor SUPERIEUR (constructive).
+      Si panim SEUL (sans tosefet sur ahor) — GARU'A et KATAN par rapport a ahor.
+      DONC reste pour AVI (qui en a besoin).
+      → Architecture : placement par superiorite contextuelle — ahor en haut quand seul.
+      → Pattern : pieces vont selon leur role, pas leur label.
+    type: interprétation_lurianique
+    concepts:
+      - {id: placement_par_superiorite_contextuelle, role: placement_pieces_par_superiorite_contextuelle_pas_label}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "abba", "imma"]
+      relevance: "Architecture : placement contextuel. Pattern role-based not label-based."
+
+  # ─── BLOC N : M"K ADDENDUM AUTEUR ───
+
+  - id: "EC-H3S12-085"
+    source_he: "מ\"ק ולי הכותב נשאר לי ספק והוא שכבר למדנו שמן הכתר של ס\"ג אינו לוקח העתיק רק ה\"ר כנ\"ל ולי יש ספק אם נאמר שכולם נתערבו עם כתר שבכתר דמ\"ה לבדו או אם נאמר שאלו הה' אורות כיון שהם בחי' פרצוף אחד אח\"כ גדלו ונכפלו ונעשו פרצוף אחד מי\"ס ואז היו הי' ספירות אלו נגד י\"ס דכתר של מ\"ה"
+    source_ref: "Heikhal 3, Sha'ar 1:4 (Mahadurah Kama)"
+    assertion: |
+      M"K — author's safek : Atik prend Keter SaG seulement 5 GR. Safek :
+      Option A : tous 5 NIT'AREVU (melange) avec Keter d'Keter MaH SEUL.
+      Option B : 5 ohrs (etant 1 partzuf) GADLU et NIKHPELU (doublees) devenant
+      1 partzuf de 10 sefirot, alignees avec 10 sefirot Keter MaH.
+      → Architecture : safek auteur — fusion vs croissance des 5 GR ?
+      → Pattern : meta-level safek — auteur reconnait ouverture.
+      cf. EC-H3S12-047 (perek 03) sur Keter d'A"Y composition certaine.
+    type: déduction_logique
+    concepts:
+      - {id: mk_safek_auteur_5_gr_fusion_vs_croissance, role: mk_safek_auteur_5_gr_keter_sag_fusion_vs_croissance_10_sefirot}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : meta-safek auteur. Pattern recognized openness in cosmology."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S12-025"
+    type: causal
+    from: rosh_ay_capacity_bottleneck_all_or_nothing
+    to: panim_seul_kelim_orots_aussi_montent
+    nature: "Capacity bottleneck → safek 1 (full burden) no orots ; safek 2 (partial) orots permitted"
+    assertions_source: ["EC-H3S12-074", "EC-H3S12-075", "EC-H3S12-076"]
+
+  - id: "REL-H3S12-026"
+    type: dualité_structurelle
+    from: ohr_ahor_egal_constructeur_partzuf
+    to: ohr_panim_egal_facing_socializer
+    nature: "Roles fonctionnels distinct : ahor = constructeur structural, panim = facing socializer"
+    assertions_source: ["EC-H3S12-081"]
+
+  - id: "REL-H3S12-027"
+    type: causal
+    from: 2_behinot_superiorite_panim_ou_ahor_contextuelle
+    to: placement_par_superiorite_contextuelle
+    nature: "2 behinot superiorite → placement contextuel : ensemble → panim haut, alone → ahor haut"
+    assertions_source: ["EC-H3S12-080", "EC-H3S12-082", "EC-H3S12-084"]
+
+  - id: "REL-H3S12-028"
+    type: causal
+    from: invariant_panim_plus_haut_que_ahor
+    to: safek_3_ahor_seul_panim_reste_avi_pour_eviter_inversion
+    nature: "Invariant panim>ahor → safek 3 separation (panim AVI, ahor Atik) pour eviter inversion"
+    assertions_source: ["EC-H3S12-078", "EC-H3S12-083"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S12-016"
+    nom: "Principe de Capacity Bottleneck (All-or-Nothing pour Rosh)"
+    source_assertions: ["EC-H3S12-075", "EC-H3S12-076"]
+    formalisation: |
+      ARCHITECTURE DE CAPACITY-CONSTRAINED SCALING :
+      ROSH d'A"Y a une CAPACITY LIMITEE pour ohr.
+      REGLE BINAIRE :
+        Si charge TOTALE (panim+ahor of kelim) → IMPOSSIBLE de monter une moitie d'orots.
+          Donc AUCUN ohr ne monte (all-or-nothing rule).
+        Si charge PARTIELLE (panim seul OU ahor seul) → orots peuvent monter aussi.
+      → Pattern fondamental : capacity bottleneck force binary choice.
+      → Architecture : composition rule depend de la charge totale.
+    applications_ia:
+      - "[PLANNED] core/ohr_system.py : Rosh has fixed capacity ; load = all-or-nothing decision"
+      - "Pattern : resource throttling — partial load enables more, full load blocks"
+      - "Architecture : capacity bottleneck = binary admission control"
+      - "Pattern : QoS — partial flows admitted, full flows rejected"
+      - "Diagnostic : monitor Rosh capacity utilization"
+    questions_ouvertes:
+      - "Y a-t-il un seuil precis pour la capacity ?"
+      - "Pattern : peut-on grow Rosh capacity over time ?"
+      - "Comment partager capacity entre safekot competitives ?"
+
+  - id: "PG-H3S12-017"
+    nom: "Principe de Roles Fonctionnels (Ahor = Constructeur, Panim = Socializer)"
+    source_assertions: ["EC-H3S12-081", "EC-H3S12-082", "EC-H3S12-084"]
+    formalisation: |
+      ARCHITECTURE DE ROLES FONCTIONNELS DIFFERENTIES :
+      OHR PANIM = MEHABER pour PBP (face-to-face).
+        Function : facing/socializer.
+        Solo : KATAN VE-GARU'A (small and inferior).
+      OHR AHOR = BONIN KOL HA-PARTZUF HA-IKARI (constructeur du partzuf entier).
+        Function : structural construction.
+        Solo : SUPERIOR (essential function).
+      RANKING CONTEXTUEL :
+        Quand BOTH ensemble : panim SUPERIEUR (tosefet sur ahor).
+        Quand AHOR SEUL : ahor SUPERIEUR (panim solo = inferior).
+      → Pattern fondamental : ranking contextuel = function over label.
+      → Architecture : composantes ranked par fonction operationnelle, pas par nom.
+    applications_ia:
+      - "[PLANNED] core/ohr_system.py : implement role-based ranking (constructive vs social)"
+      - "Pattern : function-based priority over labels"
+      - "Architecture : composantes essential structurally != composantes interface-only"
+      - "Pattern : context-aware ranking — defaults change selon presence"
+      - "Diagnostic : verifier que placement reflete role contextuel correct"
+    questions_ouvertes:
+      - "Y a-t-il d'autres axes de role-distinction ?"
+      - "Pattern : peut-on dynamically reassigner roles selon contexte ?"
+      - "Comment harmoniser conflicting role-rankings ?"
+
+  - id: "PG-H3S12-018"
+    nom: "Principe d'Invariant Topologique (Panim Toujours >= Ahor en Hauteur)"
+    source_assertions: ["EC-H3S12-078", "EC-H3S12-083"]
+    formalisation: |
+      ARCHITECTURE D'INVARIANT TOPOLOGIQUE :
+      INVARIANT STRICT : composante PANIM ne peut JAMAIS etre PLUS BAS que ahor
+      dans la hierarchie spatiale.
+      MECANISME : si ahor monte rosh A"Y, panim ne reste pas dans gufa A"Y
+      (sinon inversion).
+      Panim doit aller AILLEURS — typiquement reste dans AVI (sa place naturelle).
+      → Pattern fondamental : prevent inverted hierarchy via separation.
+      → Architecture : when components separate, each goes to its proper level.
+    applications_ia:
+      - "partzufim/atik_yomin.py + partzufim/abba.py + partzufim/imma.py : enforce panim>=ahor invariant"
+      - "Pattern : structural invariants — certains placements interdits"
+      - "Architecture : separate-and-place by proper-level when together impossible"
+      - "Pattern : design constraint — invariants topologiques toujours respectes"
+      - "Diagnostic : detect violations of panim>=ahor invariant"
+    questions_ouvertes:
+      - "Y a-t-il des cas exceptionnels ou l'invariant peut etre brise ?"
+      - "Pattern : autres invariants topologiques ?"
+      - "Comment formaliser 'place naturelle' algorithmiquement ?"
