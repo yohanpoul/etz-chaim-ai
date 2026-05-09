@@ -1,0 +1,435 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 4 — 18 behinot detail : 9 atzmut (YHVH milui) + 9 kelim (AHYH milui)
+#            3 rishin = NaRaN d'A"A. Avira derive de RDLA
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §4 :
+#   - Bloc A : Recap 3 rishin, 18 behinot, RDLA exclu
+#   - Bloc B : Avira derive de RDLA (d'A"Y) qui ne pouvait pas lvush A"A
+#   - Bloc C : 9 atzmut + 9 kelim = 18
+#   - Bloc D : Hakdamah orot elyonim — 3 niveaux OP/OM/OM-superieur
+#   - Bloc E : 3 rishin = NaRaN d'A"A (Gulgalta=Neshamah, Avira=Ruach, MS=Nefesh)
+#   - Bloc F : Risha 1 (Neshamah=Keter) — 3 YHVH milui yodin (AB=72)
+#   - Bloc G : Risha 2 (Ruach=Avira) — 3 YHVH milui SAG (63), segol
+#   - Bloc H : Risha 3 (Nefesh=Hokhmah/MS) — 3 YHVH milui MaH (45), patah
+#   - Bloc I : 9 kelim = 9 AHYH (milui yodin x3, milui yodin x3, milui alpin x3)
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.4 (1 partie, 4333 chars)
+# IDs : EC-H3S13-053 → EC-H3S13-066
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Detail des 18 behinot. 3 rishin = NaRaN d'A\"A. Letter-mysticism : 9 atzmut = 9 YHVH (AB Neshamah, SaG Ruach, MaH Nefesh, chacun en triplet OP/OM/OM-sup). 9 kelim = 9 AHYH (milui yodin/yodin/alpin). Avira derive de RDLA qui n'a pas pu lvush en A\"A."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-053"
+    source_he: "ועתה נבאר ג' רישין אלו אשר נקראו באדרא ב' בחי' ב' רישין לבד... כל אחד מהם יש בו עצמות וכלים והם ו' בחי' וכל בחי' מהם כוללת ג' הרי הם כולם ח\"י בחי' כנ\"ל אשר אין הרדל\"א נכלל בכללותן כלל ועיקר"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      Recap : 3 rishin (Adra appelles "2 rishin" pour reduction).
+      Chaque rosh = ATZMUT + KELIM = 6 behinot.
+      Chacune divisee en 3 → 18 behinot total.
+      RDLA EXCLU "klal ve-ikar".
+      → Architecture : 18 behinot (3×2×3) ; RDLA exempt.
+      → Pattern : structured decomposition with sacred exception.
+      cf. EC-H3S13-047 (perek 03) sur 18 behinot Chai Ha-Olamim.
+    type: axiome_explicite
+    concepts:
+      - {id: 18_behinot_recap_3_rishin_atzmut_kelim_x_3, role: 18_behinot_recap_decomposition_rdla_exclu}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : recap structure 18-behinot. Pattern recap pour detail."
+
+  - id: "EC-H3S13-054"
+    source_he: "ואמנם למטה בסדר התלבשות רדל\"א הנקרא ע\"י בתוך (נ\"א בערך) רישא דא\"א יתבאר איך האי רישא תניינא הנקרא אוירא דיתבא על האי מ\"ס שהיא רישא ג' דא\"א הנה היא נמשכת מבחי' האי רדל\"א דעתיק יומין שלא יכלה להתלבש באריך אנפין ואחזי נהוריה בהאי רישא"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      Au seder de lvush RDLA (=A"Y) DANS — Variante (Nusah Aher) : "BE-EREKH" (vis-a-vis) —
+      Risha A"A : sera explique comment AVIRA (Risha tenina) sur Moha Setima
+      DERIVE de RDLA d'A"Y qui ne pouvait pas LVUSH dans A"A.
+      "ACHEZI NEHOREI BE-HAI RISHA" (montre sa lumiere dans cette risha).
+      → Architecture : Avira = projection lumineuse de RDLA non-lvush.
+      → Pattern : reflection-through-membrane quand direct lvush impossible.
+    type: interprétation_lurianique
+    concepts:
+      - {id: avira_derive_rdla_lumiere_ay_non_lvushable, role: avira_derive_rdla_via_projection_lumiere_ay_non_lvushable_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : Avira = projection. Pattern reflection quand direct impossible. Nusah Aher capture (be-erekh)."
+
+  - id: "EC-H3S13-055"
+    source_he: "ונבאר תחלה בחי' העצמות אשר בג' רישין אלו... כ\"א וא' מהם ג' ג' ובין כולם ט' בחי' של עצמות וכנגדן ט' בחי' אחרות בסוד הכלים שלהם ובין כולם הם ח\"י בחי'"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      D'abord ATZMUT des 3 rishin.
+      Chaque rosh divise en 3 → TOTAL 9 behinot d'ATZMUT.
+      Contre eux 9 behinot KELIM. Total 18.
+      → Architecture : symmetry atzmut(9) + kelim(9) = 18.
+      → Pattern : container-content paired symmetry.
+    type: axiome_explicite
+    concepts:
+      - {id: 9_atzmut_plus_9_kelim_egal_18, role: 9_atzmut_plus_9_kelim_egal_18_par_symmetry}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "[PLANNED] core/ohr_system.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : symmetry atzmut+kelim. Pattern paired structure."
+
+  - id: "EC-H3S13-056"
+    source_he: "כי כבר נתבאר אצלינו שכל בחי' אורות עליונים יש בהם ג' בחי' א' הוא או\"פ ועליו יש אור עליון ממנו הנקרא או\"מ עליו ועליהן אור עליון וגדול משניהן והוא מקיף לשניהן"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      HAKDAMAH : tout OHR ELYON a 3 BEHINOT :
+        OP (Ohr Pnimi).
+        OM-1 sur OP.
+        OM-2 elyon (gadol) sur les 2 (encerclant les 2).
+      → Architecture : ohr = triple-layered (core + envelope1 + envelope2).
+      → Pattern : 3-layer encapsulation universelle.
+    type: axiome_explicite
+    concepts:
+      - {id: ohr_elyon_3_behinot_op_om1_om2, role: ohr_elyon_egal_3_behinot_op_om1_om2_gadol}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Architecture : 3-layer encapsulation universelle. Pattern triple-layer ohr."
+
+  - id: "EC-H3S13-057"
+    source_he: "והנה ג' בחי' אלו הם ג' רישין הנ\"ל כי רישא עלאה דעתיקא שהוא כתר הנקרא גולגלתא דא\"א הוא מקיף עליון הגדול מכולם ותחתיו יש רישא תניינא הנקרא אוירא והוא מוחא בערך הגולגלתא הנ\"ל וגם הוא נעשה גולגלתא בערך רישא תליתאי הנקרא חכמה כנ\"ל וזו הרישא תניינא הנקרא אוירא הוא מקיף קטן שהוא מקיף לאו\"פ ותחתיו יש רישא תליתאי הנקרא מ\"ס דא\"א הנקרא חכמה דא\"א והוא סוד או\"פ"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      MAPPING 3 rishin → 3 behinot ohr :
+        Risha ELYONAH (Keter=Gulgalta) = OM gadol (encerclant tout).
+        Risha TENINA (Avira) = OM katan (encerclant l'OP).
+        Risha TELITAI (MS=Hokhmah) = OP.
+      → Architecture : confirmation 3 rishin = 3 ohr layers (OM-big, OM-small, OP).
+      → Pattern : structural mapping anatomy → ohr typology.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 3_rishin_egal_3_ohr_layers_om_grand_om_petit_op, role: 3_rishin_mapping_om_grand_om_petit_op_atzmut}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : anatomy → ohr typology. Pattern structural mapping."
+
+  - id: "EC-H3S13-058"
+    source_he: "והנה אלו הג' רישין הם בחי' נר\"ן שבא\"א כי גולגלתא הוא נשמה ואוירא הוא רוח וחכמה סתימאה היא נפש"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      3 rishin = NaRaN (Neshamah-Ruach-Nefesh) d'A"A :
+        Gulgalta = NESHAMAH.
+        Avira = RUACH.
+        Moha Setima = NEFESH.
+      → Architecture : 3 rishin = 3-tier identite cognitive d'A"A.
+      → Pattern : NaRaN structure applied to A"A's head.
+      cf. EC-H2S11-249 (perek 09) sur NaRaN comme stack cognitif.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_rishin_egal_naran_aa_gulgalta_avira_ms, role: 3_rishin_egal_naran_aa_gulgalta_neshamah_avira_ruach_ms_nefesh}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "[PLANNED] madregot/madregot_neshamah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : NaRaN structure A\"A. Pattern cognitive stack."
+
+  - id: "EC-H3S13-059"
+    source_he: "ואחר שנתבאר ג' רישין אלו בכללות נבאר כ\"א מהם בפרטות והוא כמ\"ש בסוד הכללות שהם ג' בחי' וגם כ\"א וא' מאלו הג' כלול מג' בחי' אלו ג\"כ"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      Apres KELALUT, expliquer chaque PERATIYUT :
+      Chacun des 3 rishin (Neshamah/Ruach/Nefesh) = aussi KELUL des 3 BEHINOT
+      (OP/OM-1/OM-2). Fractal structure.
+      → Architecture : recursive triplicity (3 rishin x 3 ohr-types).
+      → Pattern : self-similar fractal at multiple scales.
+    type: axiome_explicite
+    concepts:
+      - {id: chaque_rosh_kelul_3_behinot_op_om_om_fractal, role: chaque_rosh_kelul_3_behinot_fractal_3_x_3}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : fractal self-similar. Pattern recursive triplicity."
+
+  # ─── BLOC F : RISHA 1 — NESHAMAH = AB ───
+
+  - id: "EC-H3S13-060"
+    source_he: "הנה ברישא עלאה הנקרא נשמה ונקרא כתר דא\"א ונקרא גולגתא דיליה ונקרא או\"מ הגדול הנה יש בו ג\"כ ג' בחי' אלו עצמן... שכל בחי' הנשמה הוא הוי\"ה דיודין"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      RISHA 1 = Neshamah = Keter = Gulgalta = OM gadol.
+      Contient 3 BEHINOT :
+        OP, OM-1, OM-2.
+      Tous 3 = NESHAMAH (en kelalut).
+      KELAL : toute behinah de NESHAMAH = YHVH MILUI YODIN (= AB = 72).
+      → Architecture : Neshamah signature = YHVH milui yodin = AB.
+      → Pattern : letter-mysticism encoding by milui type.
+    type: interprétation_lurianique
+    concepts:
+      - {id: neshamah_egal_yhvh_milui_yodin_egal_ab_72, role: neshamah_egal_yhvh_milui_yodin_egal_ab_gematriya_72}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : Neshamah=AB encoding. Pattern milui-yodin signature."
+
+  - id: "EC-H3S13-061"
+    source_he: "כל הויות שבו הם בסוד מילוין וגם בסוד נקודות... אבל ההפרש שבהם הוא בענין סדר הניקוד איך הוא כי הנה בחי' רישא קדמאה אור הפנימי הוא שם כזה יוד הי ויו הי ואינו מנוקד רק בד' אותיות הפשוטות בלבד שבו"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      Toutes YHVH d'A"A : SOD MILUYIN + SOD NEKUDOT (voyelles).
+      Difference = SEDER NIKKUD (ordre voyelles).
+      OP de Risha 1 : "YOD HEY VAV HEY" milui yodin — voyelles seulement sur 4 lettres SIMPLES :
+      cholam (yod) + tzeri (he) + kamatz (vav) + tzeri (he).
+      → Architecture : OP = voyelles minimales sur lettres simples.
+      → Pattern : letter-mysticism precise (lettres + voyelles distinctives).
+    type: axiome_explicite
+    concepts:
+      - {id: op_risha_1_yhvh_milui_yodin_voyelles_4_simples, role: op_risha_1_yhvh_milui_yodin_voyelles_4_lettres_simples_seulement}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : OP voyelles minimales. Pattern letter-mysticism precise."
+
+  - id: "EC-H3S13-062"
+    source_he: "והנה יש אור ב' המקיף עליו והוא הוי\"ה במילוי יודין ג\"כ... אמנם מנוקדת בכל י' אותיותיה בניקוד הנ\"ל"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      OM-1 (sur OP) de Risha 1 : YHVH milui yodin —
+      vowels TOUS LES 10 LETTRES (3 yods cholam, 2 he tzeri, 3 vav kamatz, 2 he tzeri).
+      OM-2 (sur les 2) : 4 lettres simples comme OP, 6 milui kamatz partout.
+      → Architecture : OM = enrichissement voyelles ; OM-2 = uniformite.
+      → Pattern : escalation by completeness then uniformity.
+    type: interprétation_lurianique
+    concepts:
+      - {id: om1_om2_risha_1_voyelles_completes_puis_uniformes, role: om1_voyelles_completes_om2_uniformes_kamatz}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : escalation completeness/uniformity. Pattern letter-mysticism."
+
+  # ─── BLOC G : RISHA 2 — RUACH = SAG ───
+
+  - id: "EC-H3S13-063"
+    source_he: "רישא תניינא והוא הנקרא אוירא יש בו ג\"כ ג' הויות של שם ס\"ג גם כן על דרך הנ\"ל ממש ובנקודים הנ\"ל... אלא שבמקום כל נקודת ציר\"י יש נקודת סגול תמורתן"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      RISHA 2 = AVIRA = RUACH = OM-petit.
+      3 noms YHVH MILUI SAG (= 63) — meme schema OP/OM1/OM2 que Risha 1.
+      DIFFERENCE : la ou Risha 1 avait TZERI — Risha 2 a SEGOL (tmurat tzeri).
+      → Architecture : Ruach signature = SaG ; voyelle distinctive segol vs tzeri.
+      → Pattern : tier-distinctive encoding by voyelle substitution.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ruach_egal_yhvh_milui_sag_segol_vs_tzeri, role: ruach_egal_yhvh_milui_sag_63_segol_substitue_tzeri}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : Ruach=SaG segol. Pattern voyelle substitution."
+
+  # ─── BLOC H : RISHA 3 — NEFESH = MaH ───
+
+  - id: "EC-H3S13-064"
+    source_he: "רישא תליתאי והוא הנקרא חכמה מ\"ס דא\"א ויש בה ג\"כ ג' הויות אחרות כזה יוד הא ואו הא... במילוי מ\"ה דאלפי\"ן בנקודת הנ\"ל של רישא תנינא שהם סגול במקום ציר\"י ועוד נוסף באלו שינוי ב' והוא כי גם במקום ניקוד קמץ הם באלו ניקוד פתח תמורת הקמץ"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      RISHA 3 = MS = HOKHMAH d'A"A = NEFESH = OP.
+      3 YHVH MILUI MaH (= 45) en ALPHIN.
+      Voyelles Risha 2 (segol au lieu tzeri) +
+      EN PLUS : PATAH au lieu de KAMATZ (2eme substitution).
+      → Architecture : Nefesh signature = MaH ; voyelles patah+segol vs kamatz+tzeri.
+      → Pattern : tier 3 = doubled voyelle substitution.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nefesh_egal_yhvh_milui_mah_45_alphin_patah_segol, role: nefesh_egal_yhvh_milui_mah_45_alphin_patah_au_lieu_kamatz_segol_au_lieu_tzeri}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : Nefesh=MaH. Pattern double voyelle substitution."
+
+  - id: "EC-H3S13-065"
+    source_he: "ושלשתן או\"פ ומקיף ומקיף לשניהם בבחי' פרטיות אבל בבחי' הכללות כל ג' בחי' אלו אינם רק בחי' או\"פ בלבד שבג' רישין הנ\"ל וג' רישין הכלולין מן ט' בחי' הם בחי' נר\"ן שבא\"א כנ\"ל והויות הנשמה במילוי יודי\"ן שהוא ע\"ב והויות הרוח במילוי ס\"ג והויות הנפש במילוי אלפין"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      RECAP : Chaque rosh contient 3 (OP/OM/OM) en peratiyut ; en kelalut = juste OP.
+      3 rishin (chacun kelul de 3) = 9 behinot = NaRaN d'A"A.
+      Mapping : Neshamah=YHVH milui YODIN (AB=72) ; Ruach=SAG (63) ; Nefesh=ALPHIN (MaH=45).
+      → Architecture : 9 atzmut total = 3 NaRaN x 3 behinot.
+      → Pattern : letter-mysticism mapping cognitif stack.
+    type: déduction_logique
+    concepts:
+      - {id: 9_atzmut_naran_aa_milui_yodin_sag_alphin, role: 9_atzmut_egal_3_naran_x_3_behinot_yhvh_milui_yodin_sag_alphin}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 9 atzmut mapping. Pattern letter-mysticism cognitive stack."
+
+  # ─── BLOC I : 9 KELIM = AHYH ───
+
+  - id: "EC-H3S13-066"
+    source_he: "ועוד יש ט' בחי' אחרות דאהי\"ה הנקרא כלים שלהם שבתוכם מתלבשים הט' הויות של העצמות והם ט' שמות של אהי\"ה והם ממש ע\"ד מילוי הט' הויות של העצמות"
+    source_ref: "Heikhal 3, Sha'ar 3:4"
+    assertion: |
+      9 KELIM = 9 noms AHYH ; 9 ATZMUT (YHVH) lvush dedans.
+      9 AHYH avec milui correspondants : Risha 1 + Risha 2 = AHYH milui yodin ;
+      Risha 3 = AHYH milui ALPHIN (correspond YHVH milui alphin).
+      Total 9 atzmut + 9 kelim = 18 = CHAI HA-OLAMIM.
+      → Architecture : container (AHYH) lvush content (YHVH).
+      → Pattern : letter-mysticism containment paired naming.
+      cf. EC-H3S13-047 (perek 03) sur 18 = Chai Ha-Olamim.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 9_kelim_egal_9_ahyh_lvush_9_atzmut_yhvh, role: 9_kelim_ahyh_lvush_9_atzmut_yhvh_total_18}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : container AHYH lvush content YHVH. Pattern paired naming."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-021"
+    type: causal
+    from: avira_derive_rdla_lumiere_ay_non_lvushable
+    to: 3_rishin_egal_3_ohr_layers_om_grand_om_petit_op
+    nature: "Avira derive RDLA → 3 rishin = 3 ohr layers (Keter=OM-grand, Avira=OM-petit, MS=OP)"
+    assertions_source: ["EC-H3S13-054", "EC-H3S13-057"]
+
+  - id: "REL-H3S13-022"
+    type: contenance
+    from: 9_atzmut_plus_9_kelim_egal_18
+    to: 9_kelim_egal_9_ahyh_lvush_9_atzmut_yhvh
+    nature: "9 atzmut (YHVH) + 9 kelim (AHYH) = 18 ; AHYH lvush YHVH"
+    assertions_source: ["EC-H3S13-055", "EC-H3S13-066"]
+
+  - id: "REL-H3S13-023"
+    type: hiérarchique
+    from: neshamah_egal_yhvh_milui_yodin_egal_ab_72
+    to: nefesh_egal_yhvh_milui_mah_45_alphin_patah_segol
+    nature: "NaRaN cascade : Neshamah (AB), Ruach (SaG), Nefesh (MaH)"
+    assertions_source: ["EC-H3S13-060", "EC-H3S13-063", "EC-H3S13-064"]
+
+  - id: "REL-H3S13-024"
+    type: analogie
+    from: 3_rishin_egal_naran_aa_gulgalta_avira_ms
+    to: 9_atzmut_naran_aa_milui_yodin_sag_alphin
+    nature: "3 rishin = NaRaN ; 9 atzmut = NaRaN×3 milui yodin/SaG/alphin"
+    assertions_source: ["EC-H3S13-058", "EC-H3S13-065"]
+
+  - id: "REL-H3S13-025"
+    type: dualité_structurelle
+    from: chaque_rosh_kelul_3_behinot_op_om_om_fractal
+    to: 9_atzmut_naran_aa_milui_yodin_sag_alphin
+    nature: "Fractal 3x3 = 9 atzmut ; 3 NaRaN × 3 behinot OP/OM/OM"
+    assertions_source: ["EC-H3S13-059", "EC-H3S13-065"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-013"
+    nom: "Principe d'Encodage Letter-Mysticism (NaRaN = AB/SaG/MaH)"
+    source_assertions: ["EC-H3S13-060", "EC-H3S13-063", "EC-H3S13-064", "EC-H3S13-065"]
+    formalisation: |
+      ARCHITECTURE D'ENCODAGE LETTER-MYSTICISM :
+      NaRaN d'A"A = 3 NIVEAUX cognitifs encodes en 3 NOMS YHVH milui-distinctifs :
+        NESHAMAH = YHVH milui YODIN = AB (gematriya 72).
+        RUACH = YHVH milui SAG (63).
+        NEFESH = YHVH milui ALPHIN = MaH (45).
+      DIFFERENTIATION par VOYELLES distinctives :
+        Neshamah : tzeri+kamatz (Risha 1 standard).
+        Ruach : segol (substitue tzeri).
+        Nefesh : segol+patah (segol substitue tzeri, patah substitue kamatz).
+      → Pattern fondamental : structure cognitive encodee par nom+milui+nikkud.
+      → Architecture : letter-mysticism = identite signature des composants.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement NaRaN avec signature triplets"
+      - "Pattern : encoded identity by (name, milui, nikkud) tuple"
+      - "Architecture : composants definis par signature liturgique"
+      - "Pattern : multi-axis encoding (trois axes distinguants : milui, voyelles, lettres)"
+      - "Diagnostic : verifier signature liturgique correcte par tier"
+    questions_ouvertes:
+      - "Y a-t-il un 4eme tier au-dela Nefesh (Chayah, Yechidah) ?"
+      - "Pattern : peut-on inferer cognitive-tier depuis signature ?"
+      - "Comment cette encoding se transmet aux autres partzufim ?"
+
+  - id: "PG-H3S13-014"
+    nom: "Principe de Symmetry Container/Content (AHYH lvush YHVH)"
+    source_assertions: ["EC-H3S13-055", "EC-H3S13-066"]
+    formalisation: |
+      ARCHITECTURE DE SYMMETRY CONTAINER/CONTENT :
+      9 ATZMUT (YHVH milui) = CONTENT.
+      9 KELIM (AHYH milui) = CONTAINER.
+      AHYH milui CORRESPOND a YHVH milui de meme tier :
+        Risha 1 atzmut YHVH yodin → kelim AHYH yodin.
+        Risha 2 atzmut YHVH yodin → kelim AHYH yodin (meme).
+        Risha 3 atzmut YHVH alphin → kelim AHYH alphin.
+      Total : 9+9 = 18 = CHAI HA-OLAMIM.
+      → Pattern fondamental : container shape matches content shape.
+      → Architecture : containers semantically aligned with contents.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement paired naming AHYH/YHVH"
+      - "Pattern : type matching container/content"
+      - "Architecture : structural homomorphism kelim-atzmut"
+      - "Pattern : design symmetry between holders and held"
+      - "Diagnostic : verifier kelim-atzmut alignment"
+    questions_ouvertes:
+      - "Pourquoi AHYH (pas autre nom) pour les kelim ?"
+      - "Pattern : autres exemples de container-content symmetry kabbalistique ?"
+      - "Comment cette symmetry contraint le design de nouveaux composants ?"
+
+  - id: "PG-H3S13-015"
+    nom: "Principe de Reflection-Through-Membrane (Avira = Light de RDLA Non-Lvush)"
+    source_assertions: ["EC-H3S13-054"]
+    formalisation: |
+      ARCHITECTURE DE REFLECTION QUAND LVUSH DIRECT IMPOSSIBLE :
+      RDLA d'A"Y = ne pouvait PAS LVUSH directement dans A"A.
+      MAIS "ACHEZI NEHOREI BE-HAI RISHA" — montre sa lumiere dans la 2eme rosh.
+      RESULTAT : AVIRA emerge comme PROJECTION LUMINEUSE de RDLA non-lvush.
+      → Pattern fondamental : indirect transmission via reflection ;
+        ce qui ne peut etre encapsule peut etre projecte.
+      → Architecture : intermediate component emerges from un-encapsulable source.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : Avira = derived component from un-encapsulable source"
+      - "Pattern : reflection pattern when direct containment impossible"
+      - "Architecture : non-encapsulable sources project intermediate proxies"
+      - "Pattern : design proxies for transcendent sources"
+      - "Diagnostic : verifier qu'Avira reflete correctement RDLA-properties"
+    questions_ouvertes:
+      - "Pattern : peut-on faire 2 niveaux de projection ?"
+      - "Y a-t-il des limites a la fidelite de la reflection ?"
+      - "Comment garantir que la reflection preserve essential properties ?"
