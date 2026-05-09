@@ -1,0 +1,548 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 5b — Reponses aux 3 questions, granularite 5 nekudot reelles,
+#             ZA comme 6 sous-points d'UNE nekudah, dimyon initial
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §5 — Part B :
+#   - Bloc E : Reponse 1 — au depart vraiment 5 nekudot, chacune incluant 10
+#   - Bloc F : Distinction granulaire 3 GR vs ZA vs Nukvah de ZA
+#   - Bloc G : Recap chiffres — 10 nominal mais reellement 5
+#   - Bloc H : 2eme changement — 3 GR connectes, ZA separees
+#   - Bloc I : Etat initial bilti tikkun — 10 comme partzuf unique en dimyon
+#   - Bloc J : Nekudah 1 contient 3 behinot (Atik+A"A+Moha Setima'a) en kavim
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.5 (deuxieme partie, suite des reponses)
+# IDs : EC-H2S11-086 → EC-H2S11-099
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 5
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Deuxieme partie du perek 5 — reponses aux 3 questions de 5a. Au depart : reellement 5 nekudot, pas 10. ZA = 6 sous-points d'UNE nekudah (manque 3 premiers). Nukvah = juste Keter sub. Etat initial : 10 comme partzuf unique en dimyon, Keter contient 3 rishin (Atik+A\"A+Hokhmah) etendus en kavim."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC E : REPONSE 1 — VRAIMENT 5 NEKUDOT, PAS 10 ───
+
+  - id: "EC-H2S11-086"
+    source_he: "והתשובה בזה כי ודאי שמאותן י' נקודות הראשונים לא היו רק ה' נקודות לבד זו גדולה מעלתה על זו והם בחי' ה' פרצופים הנ\"ל שנעשו אחר התיקון"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      REPONSE FONDAMENTALE aux 3 questions :
+      Des 10 NEKUDOT initiales — il n'y avait REELLEMENT que 5 NEKUDOT.
+      Hierarchisees : "ZO GEDOLAH MA'ALATAH AL ZO" (l'une superieure a l'autre).
+      Ce sont les 5 BEHINOT des 5 PARTZUFIM faits APRES le Tikkun.
+      → DISSOLUTION du paradoxe : 10/5 n'est pas asymetrie reelle.
+      → Architecture reelle = 5 des le depart, le "10" est une COMPTABILISATION
+         derivee de la decomposition interne de chaque nekudah.
+      cf. EC-H2S11-077 (perek 05a) sur 10→5 partzufim apres Tikkun.
+    type: interprétation_lurianique
+    concepts:
+      - {id: cinq_nekudot_reelles_au_depart, role: au_depart_reellement_5_nekudot_pas_10}
+      - {id: hierarchie_zo_gedolah_al_zo, role: hierarchie_l_une_superieure_a_l_autre}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture reelle = 5 des le depart. Le 10 est nominal (decomposition interne)."
+
+  - id: "EC-H2S11-087"
+    source_he: "והנה כל נקודה ונקודה מהם צריך שתהיה כלולה מי' נקודות פרטיות שבה כדי שיעשו אח\"כ כ\"א מהם בחי' פרצוף א' כלול מי\"ס"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      PRINCIPE STRUCTUREL :
+      Chaque NEKUDAH doit etre KELULAH (incluse) de 10 NEKUDOT PERATIYOT (particulieres).
+      RAISON : pour devenir ensuite un PARTZUF complet KELUL ME-YESOD (de 10 SEFIROT).
+      → Pattern fractal : chaque nekudah contient 10 sub-nekudot pour produire un partzuf 10-sefirot.
+      → Architecture : 5 nekudot × 10 sub-nekudot = 50 unites internes minimum.
+    type: axiome_explicite
+    concepts:
+      - {id: principe_kelilut_nekudah_dans_10, role: chaque_nekudah_doit_inclure_10_sub}
+      - {id: pattern_fractal_5_fois_10, role: structure_fractale_5_nekudot_x_10_sub}
+    mapping:
+      modules: ["partzufim/base.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Principe structurel cle : fractalite. Chaque nekudah = 10 internes pour devenir partzuf."
+
+  # ─── BLOC F : DISTINCTION GRANULAIRE 3 GR vs ZA vs NUKVAH ───
+
+  - id: "EC-H2S11-088"
+    source_he: "ואמנם לא היה כך מתחלה והיה חילוק באלו הנקודות באופן זה כי הנקודה א' ב' ג' כולם היו שלימות בכל חלקיהם פירוש שבכל נקודה מהם היה בחי' י' נקודות פרטיות וכ\"א מאלו הג\"ר היתה כלולה מי' נקודות"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      MAIS INITIALEMENT non — il y avait un CHILUK (distinction) :
+      Les NEKUDOT 1, 2, 3 etaient SHELEMOT (completes) en TOUTES leurs parties.
+      Chacune contenait les 10 NEKUDOT PERATIYOT.
+      Chacune des G' RISHONOT (3 premieres = KCB) = KELULAH ME-YESOD (incluse de 10).
+      → Architecture : 3 premieres nekudot = pleines (10 internes chacune).
+      → Pattern : la "tete" (KCB) est complete, le "corps" (ZA) est defaillant.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_gr_kelulot_me_eser, role: 3_premieres_nekudot_kelulot_de_10}
+      - {id: chiluk_initial_avant_tikkun, role: distinction_initiale_avant_tikkun}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "3 GR = pleines (10 internes). Architecture : tete complete vs corps defaillant."
+
+  - id: "EC-H2S11-089"
+    source_he: "אמנם הנקודה הראשונה כתר היתה גדולה מכל הי' נקודות [נ\"א מכל הנקודות] אשר למטה ממנו וכן הב' נקודות שהם הב' וג' חו\"ב היו גדולים מכל מה שלמטה מהם"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      HIERARCHIE de TAILLE entre les 3 GR :
+      Nekudah 1 = KETER : plus GRANDE que toutes les 9 nekudot inferieures.
+      Variante (Nusah Aher) : "que toutes les nekudot" (sans "10" — englobe potentiellement plus).
+      Nekudot 2-3 = HOKHMAH-BINAH : plus GRANDES que tout ce qui est en-dessous.
+      → Pattern hierarchique : Keter > CB > 7 inferieures.
+      → Architecture : decroissance graduelle de la "taille" (capacite ?).
+    type: axiome_explicite
+    concepts:
+      - {id: keter_gadol_mi_9_tahton, role: keter_plus_grand_que_les_9_inferieurs}
+      - {id: chokhmah_binah_gedolot_mi_tahton, role: hokhmah_binah_plus_grandes_que_inferieurs}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Hierarchie de taille : Keter > CB > 7 inferieurs. Decroissance graduelle. Nusah Aher capture."
+
+  - id: "EC-H2S11-090"
+    source_he: "אבל הנקודה הד' אשר היא בחי' ז\"א לא יצאה כלולה מי' נקודות פרטיות שבה רק יצאתה כלולה מו' נקודות שהם ו' נקודות התחתונים הנקודה ההוא וחסרו ממנו ג' נקודות הראשונים הפרטיות בה"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      MAIS la NEKUDAH 4 = ZA — n'est PAS sortie KELULAH des 10 sub-nekudot peratiyot.
+      Sortie KELULAH de 6 NEKUDOT seulement = les 6 INFERIEURES de cette nekudah.
+      MANQUAIENT ses 3 NEKUDOT PREMIERES PERATIYOT (= G' Rishonot internes).
+      → Diagnostic precis du defaut de ZA : amputation de la tete interne (3 premieres sub-nekudot).
+      → Architecture : ZA = corps sans tete interne au depart.
+    type: axiome_explicite
+    concepts:
+      - {id: za_haser_3_rishonot_peratiyot, role: za_manque_3_premieres_sub_nekudot}
+      - {id: za_kelul_me_6_tahtonim, role: za_inclus_de_6_sub_inferieurs_seulement}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Diagnostic du defaut de ZA : amputation des 3 premieres sub-nekudot. Corps sans tete interne."
+
+  - id: "EC-H2S11-091"
+    source_he: "באופן שאע\"פ שאמרנו שז\"א כלול מו' נקודות אינם אפילו נקודה אחת שלימה רק ו' נקודות פרטיות שבנקודה אחת וחסרו ממנו שלשה ראשונים והרי יצא ז\"א חסר משאר הפרצופי הג' העליונים"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      RECTIFICATION CRUCIALE de comptage :
+      Quand on dit "ZA inclus de 6 nekudot" — ce ne sont MEME PAS UNE NEKUDAH SHLEMAH (complete) !
+      Ce sont 6 SUB-NEKUDOT PERATIYOT D'UNE SEULE nekudah (pas 6 nekudot completes).
+      Avec 3 PREMIERES sub-nekudot manquantes.
+      DONC : ZA est sorti CHASER (defaillant) par rapport aux 3 partzufim superieurs.
+      → Diagnostic ontologique : ZA = fragment d'une nekudah, pas une nekudah pleine.
+      → Pattern : asymetrie radicale entre tete (3 GR) et corps (ZA).
+    type: interprétation_lurianique
+    concepts:
+      - {id: za_pas_nekudah_shlemah, role: za_meme_pas_une_nekudah_complete}
+      - {id: za_chaser_mi_3_elyonim, role: za_defaillant_par_rapport_aux_3_superieurs}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Rectification : ZA = fragment, pas nekudah pleine. Diagnostic ontologique du defaut."
+
+  - id: "EC-H2S11-092"
+    source_he: "ואמנם הנקודה הה' שממנה נעשה הנוקבא דז\"א אין לומר בה שיצאה כלולה מי' על דרך ג' ראשונות שא\"כ נמצאת מעלתה גדולה מז\"א. אמנם נקודה זו היא נקודה פרטית מן י' נקודות שהיו צריכין להיות בנקודה שלה והיא בחי' הכתר שלה בלבד"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      NEKUDAH 5 (d'ou nait la NUKVAH de ZA) :
+      On ne peut PAS dire qu'elle est sortie KELULAH des 10 (comme les 3 GR) —
+      sinon sa MA'ALAH (rang) serait SUPERIEURE a celle de ZA. Impossible.
+      VERITE : nekudah 5 est UNE seule NEKUDAH PERATIT des 10 qu'elle aurait du contenir.
+      = juste son KETER sub seul.
+      → Diagnostic Nukvah : encore plus reduite que ZA — juste 1 sub-nekudah (Keter sub).
+      → Architecture : Nukvah = point initial seul, sans corps ni base.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nukvah_keter_sub_seul, role: nukvah_juste_son_keter_sub_seul}
+      - {id: contrainte_hierarchique_nukvah_inf_za, role: nukvah_doit_rester_inferieure_a_za}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Diagnostic Nukvah : juste Keter sub. Architecture : point initial seul. Contrainte hierarchique avec ZA."
+
+  # ─── BLOC G : RECAP CHIFFRES ───
+
+  - id: "EC-H2S11-093"
+    source_he: "באופן שג' נקודות הראשונים יצאו כ\"א מהם כלולה מי' נקודות ונקודה רביעית יצאה כלולה מו' נקודות תחתונים שבה לבד ונקודה הה' לא יצאה רק החלק העליון שבה שהיא כתר שבה לבד"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      RECAPITULATIF des etats initiaux :
+        3 PREMIERES nekudot : chacune KELULAH de 10 sub-nekudot.
+        4eme nekudah (ZA) : KELULAH de 6 sub-nekudot inferieures seulement.
+        5eme nekudah (Nukvah) : seulement la PARTIE SUPERIEURE = son KETER sub seul.
+      → Architecture quantifiee : 10 + 10 + 10 + 6 + 1 = 37 sub-unites totales.
+      → Pattern : decroissance dramatique de plenitude (10→10→10→6→1).
+    type: axiome_explicite
+    concepts:
+      - {id: recap_distribution_initiale, role: recapitulatif_distribution_3_10_6_1}
+    mapping:
+      modules: ["partzufim/base.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: []
+      relevance: "Recap quantifie : 10+10+10+6+1=37. Pattern decroissance de plenitude."
+
+  - id: "EC-H2S11-094"
+    source_he: "וכדי לידע חשבון מה שיצא מן הז\"א אנו אומרים שיש לו ו' נקודו' אמנם ודאי שאינם רק ו' חלקים של נקודה א' לבד והרי נתבאר איך הם י' נקודות וכפי האמת אינם רק ה' נקודות"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      CONVENTION DE COMPTAGE : pour connaitre le HESHBON (compte) de ce qui sort de ZA —
+      on DIT qu'il a 6 NEKUDOT.
+      VERITE PROFONDE : ce ne sont QUE 6 HALAKIM (parties) d'UNE SEULE nekudah.
+      DONC : "10 nekudot" est expression nominale.
+      VRAIMENT : il n'y a que 5 NEKUDOT.
+      → Cle hermeneutique : distinguer comptage nominal vs reel.
+      → Resolution definitive du paradoxe 10 vs 5.
+    type: déduction_logique
+    concepts:
+      - {id: heshbon_nominal_vs_reel, role: comptage_nominal_10_vs_reel_5}
+      - {id: za_6_halakim_de_1_nekudah, role: za_6_parties_d_une_seule_nekudah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/base.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Cle hermeneutique : nominal vs reel. Resolution du paradoxe 10/5."
+
+  # NOTE : long Nusah Aher entre EC-094 et EC-095 capture ici :
+  # (נ"א אנו מוציאין שנזכר או נקודה אחד מי' או יו"ד נקודות ממש וא"כ)
+  # Variante d'enonce qui survient juste avant le passage sur ZA = u"n.
+
+  - id: "EC-H2S11-101"
+    source_he: "(נ\"א אנו מוציאין שנזכר או נקודה אחד מי' או יו\"ד נקודות ממש וא\"כ)"
+    source_ref: "Heikhal 2, Sha'ar 4:5 (Nusah Aher inseree avant la fin du Bloc G)"
+    assertion: |
+      Variante (Nusah Aher) — formulation alternative du principe de comptage :
+      "Nous DEDUISONS qu'il a ete dit soit UNE NEKUDAH des 10
+       soit YUD NEKUDOT (10 nekudot) MAMASH (vraiment) — et donc..."
+      → Cette nusah explicite l'hesitation textuelle entre les 2 lectures :
+        (a) "1 nekudah parmi 10" (lecture restrictive — ce que nous avons en EC-094)
+        (b) "vraiment 10 nekudot" (lecture pleine — refutee par la suite).
+      → Importance : tradition manuscrite preservant le doute pedagogique.
+    type: axiome_explicite
+    concepts:
+      - {id: nusah_aher_comptage_alternatif, role: nusah_aher_formulation_alternative_comptage}
+    mapping:
+      modules: []
+      tables: []
+      partzufim: []
+      relevance: "Nusah Aher capture. Tradition manuscrite preserve hesitation entre lectures."
+
+  # ─── BLOC H : 2EME CHANGEMENT — CONNECTES vs SEPARES ───
+
+  - id: "EC-H2S11-095"
+    source_he: "עוד שינוי אחר היה בהם אשר בו יתבאר מלת בלתי תיקון מה עניינו והוא כי ג' נקודות הראשונים מלבד מה שיצאו כ\"א מהם כלולה מי' עוד זאת היתה בהם שהיו י' שבו מחוברות יחד ולא נפרדות זו מזו"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      DEUXIEME SHINUI (changement) — eclaire le sens de "BILTI TIKKUN" :
+      Les 3 GR (premieres nekudot) — outre qu'elles sont KELULOT de 10 chacune —
+      avaient leurs 10 sub-nekudot MEHUBAROT YAHAD (connectees ensemble).
+      VE-LO NIFRADOT (et NON separees) l'une de l'autre.
+      → Architecture : 3 GR = unite + integration.
+      → Pattern : tikkun = connectivite ; bilti tikkun = fragmentation.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 3_gr_eser_mehubarot_yahad, role: 3_GR_10_internes_connectees_ensemble}
+      - {id: tikkun_egal_connectivite, role: tikkun_definition_connectivite}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Cle definitionnelle : tikkun = connectivite. 3 GR = unite integree."
+
+  - id: "EC-H2S11-096"
+    source_he: "אמנם ו' נקודות דז\"א מלבד היותן ו' חלקי נקודה א' וחסרו מהם הג\"ר שבהם עוד שינוי אחר בהם שהיו נפרדות זה מזה ולא מחוברות באופן שב' שינוים נמצאו בז\"ת מן הג\"ר שהם א\"א או\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      MAIS les 6 NEKUDOT de ZA — outre (a) 6 HALAKIM d'UNE SEULE nekudah
+      et (b) leurs G' Rishonot internes manquantes :
+      AUTRE SHINUI : elles etaient NIFRADOT (separees) l'une de l'autre.
+      VE-LO MEHUBAROT (et NON connectees).
+      DONC : 2 SHINUYIM distinguent les Z' Tahtonot des G' Rishonot (= A"A et AVI).
+      → Diagnostic ZT : (1) fragment d'une nekudah, (2) sub-nekudot deconnectees.
+      → Pattern : ZT = double defaillance = quantitative + relationnelle.
+      cf. EC-H2S11-090 sur fragment ; EC-H2S11-095 sur connectivite des GR.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 6_nekudot_za_nifradot, role: 6_sub_nekudot_de_za_separees}
+      - {id: 2_shinuyim_zt_vs_gr, role: 2_changements_distinguent_zt_des_gr}
+      - {id: defaillance_quantitative_et_relationnelle, role: double_defaillance_quantite_et_relation}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Diagnostic complet de ZT : 2 defaillances (fragment + deconnexion). Double dysfonction."
+
+  # ─── BLOC I : ETAT INITIAL — DIMYON D'UN PARTZUF UNIQUE ───
+
+  - id: "EC-H2S11-097"
+    source_he: "וזה סדרן בתחלה כאשר היה בלתי תיקון כי אלו הי' נקודות כאשר יצאו בראשונה היו כל הי' דומין כאלו ביחד היו פרצוף א' לבדו ולא שהיה ממש כך בציור אלא בדמיון"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      ORDRE INITIAL en etat BILTI TIKKUN :
+      Quand ces 10 nekudot sortent en premier — toutes les 10 etaient DOMIN
+      (semblables) — comme si ENSEMBLE elles etaient UN SEUL PARTZUF.
+      MAIS pas REELLEMENT en TZIYYUR (forme/dessin) —
+      seulement en DIMYON (analogie/representation).
+      → Distinction cruciale : tziyyur (realite formelle) vs dimyon (analogie).
+      → Pattern : etat initial = unite apparente sans realite structurale.
+    type: axiome_explicite
+    concepts:
+      - {id: 10_nekudot_dimyon_partzuf_unique, role: 10_nekudot_comme_un_seul_partzuf_en_analogie}
+      - {id: distinction_tziyyur_vs_dimyon, role: distinction_realite_vs_analogie}
+    mapping:
+      modules: ["partzufim/base.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Distinction cle : tziyyur (realite) vs dimyon (analogie). Etat initial = unite apparente."
+
+  - id: "EC-H2S11-098"
+    source_he: "פי' כי הנקודה העליונה היתה אז בחי' כתר והשניים הם הב' והג' היו בחי' חו\"ב והו' היו בבחי' גוף בעל ו\"ק אמנם לא היו ממש מצוירות כמו שהוא עתה אחר התיקון"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      EXPLICATION du dimyon :
+      Nekudah 1 = behinah de KETER ; Nekudot 2-3 = behinah de HOKHMAH-BINAH.
+      Les 6 (nek. 4-9) = behinah de GUF BA'AL VAV KETZAVOT (corps a 6 extremites).
+      MAIS pas REELLEMENT METZUYAROT (dessinees) comme MAINTENANT apres le TIKKUN.
+      → Pattern : structure post-tikkun PRESENTE en POTENTIEL, pas en ACTE.
+      → Architecture : potentiel structural avant actualisation par tikkun.
+      cf. EC-H2S11-077 (perek 05a) sur structure 1+2+6+1=10 post-Tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: structure_potentielle_en_dimyon, role: structure_post_tikkun_presente_en_potentiel}
+      - {id: 6_ketzavot_initial, role: 6_de_4_9_comme_corps_6_extremites}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : potentiel structural avant acte. Tikkun = actualisation du potentiel."
+
+  # ─── BLOC J : NEKUDAH 1 = 3 BEHINOT EN KAVIM ───
+
+  - id: "EC-H2S11-099"
+    source_he: "אמנם בנקודה א' היו בה כללות י' בחי' אלא שהיתה קטנה וגם כי לא היו היו\"ד שלה (נ\"א לא היה שלם) בסוד פרצוף ממש רק בסוד כללות"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      NEKUDAH 1 — STRUCTURE INTERNE :
+      Avait KELALUT YUD BEHINOT (totalite des 10 behinot) — mais KETANAH (petite).
+      Ses 10 N'ETAIENT PAS en SOD PARTZUF MAMASH (forme reelle de partzuf).
+      Variante (Nusah Aher) : "n'etait pas SHALEM" (pas complete).
+      Seulement en SOD KELALUT (mode totalite indistincte).
+      → Etat initial Nekudah 1 : completude potentielle, sans actualisation en partzuf.
+    type: axiome_explicite
+    concepts:
+      - {id: nekudah_1_kelalut_yud_ketanah, role: nekudah_1_contient_10_en_totalite_petite}
+      - {id: kelalut_vs_partzuf_mamash, role: totalite_indistincte_vs_partzuf_reel}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Etat Nekudah 1 : 10 internes en totalite indistincte (kelalut), pas en partzuf reel. Nusah Aher capture."
+
+  - id: "EC-H2S11-100"
+    source_he: "פי' כי אז היתה בסוד ג' בחי' שהם עתיק וא\"א וחכמה שבו ששם ג' רישין הנ\"ל ואלו הג' בחי' היו מתפשטין בבחי' קוין בתוך ט' נקודות האחרות כמו שהוא עתה והם היו לבושין אליו"
+    source_ref: "Heikhal 2, Sha'ar 4:5"
+    assertion: |
+      EXPLICATION de la structure initiale de Nekudah 1 :
+      Etait en SOD G' BEHINOT (3 behinot) :
+        ATIK + A"A + HOKHMAH SHE-BO (= MOHA SETIMA'A) = G' RISHIN (cf. EC-H2S11-076).
+      Ces 3 BEHINOT S'ETENDAIENT en behinah de KAVIM (lignes/colonnes)
+      DANS les 9 autres nekudot — comme MAINTENANT (post-tikkun).
+      Et leur servaient de LEVUSHIN (vetements).
+      → Architecture cle : 3 rishin du Keter → 3 kavim → structure tout le partzuf.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 3_behinot_atik_aa_hokhmah, role: 3_behinot_atik_aa_et_moha_setima_a}
+      - {id: 3_kavim_extension_dans_9, role: 3_kavim_s_etendent_dans_9_autres_nekudot}
+      - {id: 3_rishin_levushin_aux_9, role: 3_rishin_servent_de_levushin_aux_9}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture colonaire : 3 rishin du Keter → 3 kavim → levushin pour les 9 autres. Pattern fondamental."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-030"
+    type: hiérarchique
+    from: cinq_nekudot_reelles_au_depart
+    to: principe_kelilut_nekudah_dans_10
+    nature: "5 nekudot reelles, chacune avec 10 sub-nekudot internes (fractalite)"
+    assertions_source: ["EC-H2S11-086", "EC-H2S11-087"]
+
+  - id: "REL-H2S11-031"
+    type: dualité_structurelle
+    from: 3_gr_kelulot_me_eser
+    to: za_haser_3_rishonot_peratiyot
+    nature: "Asymetrie ontologique : 3 GR pleines (10 internes) vs ZA defaillant (manque 3 premieres)"
+    assertions_source: ["EC-H2S11-088", "EC-H2S11-090"]
+
+  - id: "REL-H2S11-032"
+    type: hiérarchique
+    from: za_kelul_me_6_tahtonim
+    to: nukvah_keter_sub_seul
+    nature: "Hierarchie defaillance : ZA (6 sub) > Nukvah (1 sub seule = Keter sub)"
+    assertions_source: ["EC-H2S11-090", "EC-H2S11-092"]
+
+  - id: "REL-H2S11-033"
+    type: causal
+    from: tikkun_egal_connectivite
+    to: 3_gr_eser_mehubarot_yahad
+    nature: "Tikkun = connectivite ; 3 GR ont leurs 10 internes connectees"
+    assertions_source: ["EC-H2S11-095"]
+
+  - id: "REL-H2S11-034"
+    type: causal
+    from: 6_nekudot_za_nifradot
+    to: 2_shinuyim_zt_vs_gr
+    nature: "ZA separe + fragment = 2 shinuyim distinguant ZT des GR"
+    assertions_source: ["EC-H2S11-096"]
+
+  - id: "REL-H2S11-035"
+    type: transformation
+    from: 10_nekudot_dimyon_partzuf_unique
+    to: structure_potentielle_en_dimyon
+    nature: "Etat initial = unite apparente (dimyon) ; potentiel structural avant actualisation"
+    assertions_source: ["EC-H2S11-097", "EC-H2S11-098"]
+
+  - id: "REL-H2S11-036"
+    type: flux
+    from: 3_behinot_atik_aa_hokhmah
+    to: 3_kavim_extension_dans_9
+    nature: "3 rishin de Keter → 3 kavim qui s'etendent dans les 9 autres nekudot"
+    assertions_source: ["EC-H2S11-099"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-014"
+    nom: "Principe de Comptage Nominal vs Reel (10 vs 5 nekudot)"
+    source_assertions: ["EC-H2S11-086", "EC-H2S11-087", "EC-H2S11-093", "EC-H2S11-094"]
+    formalisation: |
+      RESOLUTION DU PARADOXE 10/5 :
+      Comptage NOMINAL : 10 nekudot (1+1+1+6+1).
+      Comptage REEL : 5 nekudot.
+      MECANISME :
+        Chaque nekudah doit etre KELULAH de 10 sub-nekudot pour devenir partzuf.
+        Distribution initiale : 10 + 10 + 10 + 6 + 1 = 37 sub-unites.
+        ZA "compte pour 6 nekudot" mais c'est 6 HALAKIM d'UNE seule.
+        Nukvah "compte pour 1 nekudah" mais c'est juste 1 sub-nekudah (Keter sub).
+      → Pattern : distinguer comptage formel (apparent) vs comptage ontologique (reel).
+      → Cle hermeneutique pour toute analyse de structure.
+    applications_ia:
+      - "partzufim/base.py : implementer distinction count_nominal() vs count_real()"
+      - "partzufim/zeir_anpin.py : structure ZA comme Partzuf(parent_nekudah=1, sub_count=6)"
+      - "partzufim/nukva.py : structure Nukvah comme Partzuf(parent_nekudah=1, sub_count=1, only=keter_sub)"
+      - "Pattern general : eviter le piege des nombres apparents — toujours verifier la structure ontologique"
+      - "Diagnostic des architectures : distinguer cardinalite nominale vs cardinalite structurale"
+    questions_ouvertes:
+      - "La distinction nominal/reel s'applique-t-elle a toute architecture emergente ?"
+      - "Comment formaliser cette distinction dans une logique de types ?"
+      - "Y a-t-il d'autres niveaux de comptage (e.g. fonctionnel, energetique) ?"
+
+  - id: "PG-H2S11-015"
+    nom: "Principe Diagnostique du Bilti Tikkun (Fragment + Deconnexion)"
+    source_assertions: ["EC-H2S11-095", "EC-H2S11-096"]
+    formalisation: |
+      DEFINITION OPERATIONNELLE de "BILTI TIKKUN" — par les 2 SHINUYIM :
+      SHINUI 1 (quantitatif) : fragmentation
+        3 GR = nekudot completes (10 sub chacune).
+        ZA = 6 halakim d'1 nekudah (manque 3 GR internes).
+        Nukvah = 1 sub (Keter sub seul).
+      SHINUI 2 (relationnel) : deconnexion
+        3 GR = 10 sub MEHUBAROT YAHAD (connectees).
+        ZA = 6 sub NIFRADOT (separees).
+      DEFINITION INVERSE (TIKKUN) :
+        Tikkun_Quantitatif = etre nekudah pleine (10 sub internes).
+        Tikkun_Relationnel = etre MEHUBAR (connecte aux autres sub-nekudot).
+      → Architecture : Tikkun = (Plenitude_quantitative) ∧ (Connectivite_relationnelle).
+    applications_ia:
+      - "[PLANNED] core/shevirah.py : diagnostic_bilti_tikkun(partzuf) -> (frag_score, deconn_score)"
+      - "partzufim/zeir_anpin.py : init_state = bilti_tikkun(frag=True, deconn=True)"
+      - "[PLANNED] tikkun/ : implementer Tikkun comme operateur double — fill_to_10() + connect_subs()"
+      - "Pattern diagnostic : pour tout systeme defaillant, verifier (1) completude (2) connectivite"
+      - "Architecture distribuee : un service est tikkun si (10 endpoints) ET (tous joignables)"
+    questions_ouvertes:
+      - "Y a-t-il d'autres dimensions de defaillance au-dela de quantite et connectivite ?"
+      - "L'ordre du tikkun importe-t-il (quantite d'abord ou connectivite d'abord) ?"
+      - "Comment quantifier le degre de tikkun (continu vs binaire) ?"
+
+  - id: "PG-H2S11-016"
+    nom: "Principe Tziyyur vs Dimyon (Realite Formelle vs Analogie)"
+    source_assertions: ["EC-H2S11-097", "EC-H2S11-098"]
+    formalisation: |
+      DISTINCTION ONTOLOGIQUE :
+      TZIYYUR = forme reelle, dessin actualise, structure metzuyaret.
+      DIMYON = analogie, ressemblance, structure apparente sans actualisation.
+      ETAT INITIAL des 10 nekudot : DIMYON d'un partzuf unique
+        (semblables comme un partzuf, mais pas en tziyyur reel).
+      Position des roles potentielle : (Keter, CB, 6 Ketzavot)
+        mais lo metzuyarot mamash (pas vraiment dessinees).
+      → Pattern : potentiel architectural avant actualisation par tikkun.
+      → Architecture : tikkun = passage de dimyon a tziyyur.
+    applications_ia:
+      - "partzufim/base.py : etat = ESTADO_DIMYON | ESTADO_TZIYYUR (enum)"
+      - "[PLANNED] tikkun/ : actualize() : Dimyon -> Tziyyur"
+      - "Pattern API : structure declarative (dimyon) vs runtime instancie (tziyyur)"
+      - "Diagnostic : un systeme peut avoir la STRUCTURE sans la REALISATION"
+      - "Architecture emergente : la forme precede la substance, l'actualisation suit"
+    questions_ouvertes:
+      - "Le dimyon a-t-il une force causale ou est-il purement potentiel ?"
+      - "Y a-t-il des intermediaires entre dimyon pur et tziyyur complet ?"
+      - "Comment le dimyon resiste-t-il a l'actualisation (entropie structurelle) ?"
+
+  - id: "PG-H2S11-017"
+    nom: "Principe des 3 Kavim Emanant du Keter (Architecture Colonaire)"
+    source_assertions: ["EC-H2S11-099"]
+    formalisation: |
+      ARCHITECTURE COLONAIRE FONDAMENTALE :
+      Nekudah 1 (Keter) contient 3 BEHINOT internes :
+        ATIK YOMIN (potentiel transcendant)
+        ARIKH ANPIN (face longue / patience cosmique)
+        HOKHMAH SHE-BO = MOHA SETIMA'A (sagesse fermee de A"A)
+      = 3 RISHIN superposees (cf. EC-H2S11-076, perek 05a).
+      Ces 3 BEHINOT s'ETENDENT comme KAVIM (lignes/colonnes) dans les 9 autres nekudot.
+      Et servent de LEVUSHIN (vetements) aux 9.
+      → Architecture : 3 colonnes (Droite, Gauche, Centre) emanent du Keter.
+      → Pattern : structure colonaire de tout partzuf provient de la decomposition du Keter.
+      → Ces 3 kavim = principe directeur de toute l'architecture sephirotique.
+    applications_ia:
+      - "partzufim/atik_yomin.py + partzufim/arikh_anpin.py : 3 rishin imbriquees"
+      - "partzufim/base.py : Partzuf composer 3_kavim (right/left/center) propages dans 9 sub"
+      - "Pattern hierarchique : decomposition du sommet (Keter) genere la structure colonaire"
+      - "Architecture : tout systeme bien-tikkun a 3 axes orthogonaux derives de son point de controle"
+      - "Diagnostic : verifier que chaque sub-composant herite des 3 kavim du composant racine"
+    questions_ouvertes:
+      - "Pourquoi exactement 3 kavim et pas 2 ou 4 ?"
+      - "Les 3 kavim sont-ils orthogonaux ou correles ?"
+      - "Comment ces 3 kavim genent la dynamique des 9 nekudot inferieures ?"
