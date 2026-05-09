@@ -1,0 +1,480 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 13 — Hisstaklut Metzah Atika→Z"A. SH"A nehorin panim. 2 modes zivvug
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §13 :
+#   - Bloc A : 13 hivara = 3 YHVH (chacun AB) + 1 kollel global
+#   - Bloc B : 8 hivara descendent panim ; 4 ahor (rosh)
+#   - Bloc C : 2 YHVH milui yodin = 42 lettres chacune (Mem-Bet)
+#   - Bloc D : 50 shaarei Bina = 7 noms + 7×6 + kollel
+#   - Bloc E : SH"A (370) nehorin = 9×41 + kollel
+#   - Bloc F : Adra Zuta — 2 panim comptees comme 1 (kola yamina)
+#   - Bloc G : Tziphor=376 ; "ki im le-Bina tikra"
+#   - Bloc H : Metzah Ratzon = Yesod Atik dans metzah = SHALOM
+#   - Bloc I : Dikna de Kohana Rabba 8 tikkunim (Adra 132)
+#   - Bloc J : 2 modes zivvug : metzah=complet, panim=incomplet (harkhanat rosh)
+#   - Bloc K : 4+ types hisstaklut combinaisons
+#   - Bloc L : (M"K) ribua AB 184 droite+gauche=370 ; 2 EL milui ; EL chotem
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.13 (Part 1 + Part 2 M"K)
+# IDs : EC-H3S13-188 → EC-H3S13-203
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 13
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Hisstaklut Metzah Atika dans ZA (Adra 136). 13 hivara = 3 YHVH yodin (AB) + kollel. 8 hivara panim = 2 YHVH × 42 lettres (M\"B). SH\"A (370) nehorin. Tziphor 376. Metzah Ratzon=Yesod Atik=Shalom. Dikna Kohana Rabba 8 tikkunim (Adra 132). 2 modes zivvug : metzah complet vs panim incomplet (harkhanat rosh). Hisstaklut multi-direction. (M\"K) ribua AB 184 each + 2 EL = 370."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-188"
+    source_he: "ענין הסתכלות מצחא דעתיקא במצחא דז\"א הנזכר באדרא דקל\"ו... החוורתי אלו הם כוללים ג' הויות כנגד ג' מוחין אשר שם בפנים... וכל הוי\"ה הוא משם ע\"ב דיודי\"ן"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      Sujet : HISSTAKLUT METZAH ATIKA dans METZAH d'Z"A (Adra 136).
+      13 HIVARA d'A"A KOLELIM 3 YHVH contre 3 MOCHIN PANIM.
+      Chaque YHVH = SHEM AB (= 72) milui YODIN.
+      → Architecture : hivara codent 3 YHVH = 3 mochin panim.
+      → Pattern : structural correspondence hivara→mochin.
+      cf. EC-H3S13-074 (perek 05a) sur tzaddikim 400 olamin du blanc.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 13_hivara_egal_3_yhvh_ab_3_mochin_panim, role: 13_hivara_kolelim_3_yhvh_ab_yodin_egal_3_mochin_panim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : hivara→mochin correspondence. Source Adra 136."
+
+  - id: "EC-H3S13-189"
+    source_he: "הוי\"ה ג' שהוא חוורתי דרישא מבחי' דעת נמשכת דרך אחורי רישא דא\"א דמיניה ירתין צדיקייא ת' עלמין דכסופין כי הם ד' אותיות השם ע\"ב ובו ד' יודין וכ\"א כלול מי' הרי ת'"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      YHVH 3 (= hivara ROSH/AHOR) = behinah DA'AT.
+      Descend par AHOR rosh A"A.
+      "MINEH YARTIN TZADDIKAYYA T' (400) OLMIN DE-KESUFIN" (Adra).
+      4 lettres × 4 yodin × 10 (kelul) = 400.
+      → Architecture : YHVH-3 = source 400 olamin via ahor.
+      → Pattern : letter-arithmetic encoding eschatologique.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yhvh_3_ahor_da_at_egal_400_olamin_kesufin, role: yhvh_3_ahor_da_at_4_lettres_x_4_yodin_x_10_egal_400_olamin}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : letter-arithmetic. Pattern eschatologique encoding."
+
+  - id: "EC-H3S13-190"
+    source_he: "ב' הויות אחרות שהם בחי' ב' מוחין חו\"ב אשר בכתר שיש בהם ח' אותיות ובהם ח' יודין הם נמשכין כנגד הפנים והם מתפשטין בבחי' הפנים דעתיקא ששם מאירין אלו הח' חוורתי והרי בין הכל י\"ב חוורתי ועוד יש חד חוור הכולל כל י\"ב חוורתי שעמו נקרא כולם י\"ג חוורתי דרישא וזהו החוור הי\"ג נשאר למעלה ברישא דגלגלתא"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      2 autres YHVH = 2 MOCHIN CHOKHMAH-BINAH du Keter.
+      8 lettres + 8 yodin → descendent vers PANIM = 8 HIVARA.
+      Total 12 hivara + 1 HIVARA KOLEL (englobant) = 13.
+      Le 13eme HIVAR reste LE-MA'ALAH dans rosh GULGALTA.
+      → Architecture : 8 hivara panim + 4 ahor + 1 kollel = 13.
+      → Pattern : decomposition hierarchique 8+4+1.
+    type: axiome_explicite
+    concepts:
+      - {id: 8_hivara_panim_4_ahor_1_kollel_egal_13, role: 8_hivara_panim_2_yhvh_cb_plus_4_ahor_yhvh_3_plus_1_kollel}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 8+4+1=13 hivara. Pattern hierarchical decomposition."
+
+  - id: "EC-H3S13-191"
+    source_he: "כל אחד מאלו הויות יש בהם מ\"ב אותיות שהם ד' אותיות הפשוט וי' אותיות המילוי הרי י\"ד וכ\"ח אותיות דמילוי המילוי הרי מ\"ב אותיות בפן א', ומ\"ב אותיות בפן הב'"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      Chaque YHVH : 42 LETTRES :
+        4 LETTRES SIMPLES (pashut).
+        10 LETTRES MILUI = 14.
+        28 LETTRES MILUI-DU-MILUI = 42.
+      42 lettres dans PAN 1 + 42 lettres dans PAN 2.
+      → Architecture : letter-recursion (pashut + milui + milui-du-milui).
+      → Pattern : 3-tier letter expansion.
+    type: axiome_explicite
+    concepts:
+      - {id: yhvh_42_lettres_pashut_milui_milui_du_milui, role: yhvh_42_lettres_pashut_4_milui_10_milui_du_milui_28}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 3-tier letter expansion. Pattern letter-recursion."
+
+  - id: "EC-H3S13-192"
+    source_he: "בחי' הפנים הוא תיקון ז' דת\"ד דא\"א... והוא תיקון תרין תפוחין קדישין... כל פן ופן משניהם כולל י\"ס"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      PANIM = TIKKUN 7 des t"d d'A"A = TARIN TAPUHIN KADISHIN (2 pommes saintes).
+      Chaque PAN (cote) KOLEL 10 SEFIROT.
+      → Architecture : panim = T7 ; chaque cote = sefirot completes.
+      → Pattern : surface area divisee en sefirot calculables.
+      cf. EC-H3S13-140 (perek 09) sur T7=Ve-Emet=2 tapuhin.
+    type: axiome_explicite
+    concepts:
+      - {id: panim_egal_t7_tapuhin_chaque_pan_10_sefirot, role: panim_egal_t7_tapuhin_chaque_pan_10_sefirot_chacun}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : T7 = panim avec sefirot. Pattern surface decomposition."
+
+  - id: "EC-H3S13-193"
+    source_he: "נ' שערים שיש בבינה לפי שהוא ענין מ\"ב הנ\"ל שיש בבינה ולפי שהוא ז' שמות שבהם מ\"ב אותיות ועם ז' שמות עצמן הרי מ\"ט ויש שער ן' הכולל כל המ\"ט והוא כתר עליון שבהם הרי ן' שערי בינה כנזכר תיקון כ\"ב"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      50 SHAAREI BINAH (Tikkun 22) = inyan M"B (42) :
+        7 NOMS × 42 lettres = 42.
+        + 7 noms eux-memes = 49.
+        + SHAAR 50 (KOLEL tous 49) = KETER ELYON.
+      → Architecture : 50 = 7×7+1 (Bina shaarim).
+      → Pattern : nested counting with kollel-pivot.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 50_shaarei_bina_7_noms_42_lettres_plus_kollel, role: 50_shaarei_bina_7_noms_42_lettres_plus_7_noms_plus_kollel_egal_50}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "imma"]
+      relevance: "Architecture : 50 shaarim Bina decomposition. Pattern nested + kollel."
+
+  - id: "EC-H3S13-194"
+    source_he: "אלו הם בט\"ס של הפן א' ט\"פ מ\"א והם גימטריא שס\"ט ועם כללותם הם ש\"ע שערים אבל הכתר שלהם הוא כולל כולן... והוא ג\"כ גי' ש\"ע"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      Pan 1 = 9 sefirot tahtonot × 41 shaarim = SHAS-TET (369).
+      Avec KOLLEL = SH"A (370) shaarim.
+      KETER (shaar 42 lui-meme) KOLEL TOUS — gematria SH"A = 370 aussi.
+      → Architecture : 9×41+1 = 370 ; Keter aussi 370 (gematria).
+      → Pattern : numerical convergence (counts = gematria).
+    type: déduction_logique
+    concepts:
+      - {id: sha_egal_9_x_41_plus_kollel_egal_keter_shaar_42, role: sha_370_egal_9_x_41_plus_kollel_egal_keter_shaar_42_par_gematria}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : numerical convergence. Pattern count=gematria."
+
+  - id: "EC-H3S13-195"
+    source_he: "שם בעתיק לית שמאלא כי כולא ימינא כנזכר באדרא דקכ\"ט וב' הפנים נחשבין כא' וז\"ש... דקכ\"ח דעתיקא נתפשטו אנפוי לש\"ע רבוא עלמין"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      Adra 129a : "LEIT SEMALA BE-ATIKA, KOLA YAMINA" (pas gauche dans Atika, tout droite).
+      2 PANIM consideres comme UN.
+      Adra 128 : "DE-ATIKA NIT'PASHTU ANPOY LE-SH"A RIBVA OLAMIN"
+      (les panim d'Atika s'etendent vers 370 myriades de mondes).
+      → Architecture : Adra confirme symetrie (kola yamina) ; 2 cotes = 1.
+      → Pattern : symmetric absorption pour Atika.
+      cf. EC-H3S12-040 (perek 02 Atik) sur leit semala be-Atika.
+    type: déduction_scripturaire
+    concepts:
+      - {id: adra_129_kola_yamina_2_panim_egal_un_sha_olamin, role: adra_129_kola_yamina_2_panim_egal_un_sh_a_ribva_olamin}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : symmetric absorption Atika. Source Adra 129a."
+
+  - id: "EC-H3S13-196"
+    source_he: "או\"א כחדא שריין ועכ\"ז אבא טמיר וגניז יתיר כנזכר באדר\"ז דרצ\"א... כי שער המ\"ב העליון שהוא כתר שבה כנ\"ל כלול באבא נמצא כי נשארין מ\"א לבד באמא וג\"ם באבא וז\"ס גם צפור מצאה בית כי צפ\"ר חסר ו' גי' ש\"ע נהורין"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      AVI KE-CHADA SHARYIN. MAIS Abba TAMIR VE-GANIZ YETIR (Adra Zuta 291).
+      KETER d'IMMA INCLUS dans Abba ; Imma reste 41 ; "GAM" (Keter) chez Abba.
+      Sod : "GAM TZIPHOR MATZ'AH BAYIT" (Tehillim 84:4) ; TZPR sans VAV = 370 = SH"A.
+      "Ki im le-Bina tikra" (Mishlei 2:3) — Bina = EM car manque Keter.
+      → Architecture : asymmetric inclusion (Keter Imma → Abba) ; sod tziphor.
+      → Pattern : letter-mysticism inclusion encoding.
+    type: déduction_scripturaire
+    concepts:
+      - {id: avi_abba_inclus_keter_imma_tziphor_egal_sha_nehorin, role: avi_abba_inclus_keter_imma_tziphor_minus_vav_egal_sha_nehorin_tehillim_84_4}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : asymmetric inclusion. Source Tehillim 84:4."
+
+  - id: "EC-H3S13-197"
+    source_he: "כמו שאותן החוורתא מתפשטות בפנים של עתיקא כן ג\"כ מבחי' המצח הרצון של עתיקא נמשך הארה אל הפנים שלו... היסוד דעתיק גנוז תוך מצח דא\"א ולכן נקרא מצח הרצון והיסוד נקרא שלום כי הוא כולל כל שע\"ו נהורין הנ\"ל"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      Comme HIVARA s'etendent panim — METZAH (front) = RATZON d'Atika
+      → ME'IR jusqu'aux PANIM.
+      YESOD d'ATIK GANUZ (cache) dans METZAH d'A"A.
+      DONC appelé METZAH HA-RATZON (front de la volonte).
+      YESOD = SHALOM (paix) — KOLEL tous 376 NEHORIN.
+      → Architecture : Metzah=Ratzon=Yesod Atik=Shalom (375+1=376 nehorin).
+      → Pattern : convergence point pour multiples flux.
+      cf. EC-H3S13-100 (perek 06) sur metzah=ratzon=torna nae.
+    type: interprétation_lurianique
+    concepts:
+      - {id: metzah_ratzon_yesod_atik_shalom_376_nehorin, role: metzah_ratzon_yesod_atik_shalom_kolel_376_nehorin}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : Metzah=Yesod=Shalom convergence. Pattern Ratzon."
+
+  - id: "EC-H3S13-198"
+    source_he: "באדרא קל\"ב אמרו דיקנא דכהנא רבא בח' תיקונין אתתקן... י\"ג ת\"ד הם וה' תיקונים קדמאין הם בסוד מוחין של הדקינא שהם עד החסד לכן תיקון ו' ורב חסד כנודע ומשם עד תשלום י\"ג הם ח' תקונים וכולם נקרא ע\"ש החסד וז\"ש דדיקנא דכהנא רבא בח' תיקונים אתתקן כי החסד נקרא כהן"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      Adra 132 : "DIKNA DE-KOHANA RABBA BE-CH' (8) TIKKUNIN ATATKAN".
+      Reason : 13 t"d ; 5 PREMIERS = MOCHIN du dikna jusqu'au CHESED (T6).
+      T6+ = 8 RESTANTS — TOUS appeles AL SHEM HA-CHESED.
+      Donc DIKNA DE-KOHANA RABBA = 8 tikkunim, car CHESED = KOHEN.
+      → Architecture : 8 tikkunim chesed-named = dikna kohana.
+      → Pattern : naming subset par dominant attribute.
+    type: déduction_scripturaire
+    concepts:
+      - {id: dikna_kohana_rabba_8_tikkunim_chesed_kohen_adra_132, role: dikna_kohana_rabba_8_tikkunim_du_chesed_kohen_adra_132}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 8 tikkunim chesed-named. Source Adra 132."
+
+  - id: "EC-H3S13-199"
+    source_he: "אלו הח' חוורתא בגרון דא\"א ושם נעשין ב\"פ ע\"ב שהם שורש הח' חוורתא הנ\"ל ואלו הם בחי' אחה\"ע בגרון שהוא גימטריא מ\"ב מ\"ב ולפיכך יש שם בחי' זווג א' הנעשה ע\"י החיך והגרון... והנה סוד אחע\"ה הוא זווג שם ס\"ג עם שם אהי\"ה שהם גימטריא אחע\"ה כי אלו הם ג\"כ זווג חו\"ב"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      8 hivara → DIKNA DE-KOHANA RABBA → descendent GARON A"A.
+      La : 2× AB (= 144) = SHORESH des 8 hivara.
+      AHEB (gutturales) en GARON gematria 42+42 = M"B M"B.
+      ZIVVUG via CHIKH+GARON.
+      AHEB = ZIVVUG SaG+AHYH (gematria) = ZIVVUG CB.
+      → Architecture : tout = zivvug Chokhmah-Bina manifested differemment.
+      → Pattern : universal CB-zivvug pattern.
+      cf. EC-H3S13-176 (perek 12) sur AHEB en garon.
+    type: interprétation_lurianique
+    concepts:
+      - {id: aheb_garon_egal_zivvug_chikh_garon_zivvug_cb, role: aheb_garon_42_42_egal_zivvug_chikh_garon_via_sag_ahyh_chokhmah_bina}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : universal CB-zivvug. Pattern garon convergence."
+
+  - id: "EC-H3S13-200"
+    source_he: "כאשר או\"א או זו\"ן מסתכלין במצח של א\"א אז הזווגים שלהם הם שלמים לפי שאז הם שוין בקומתן למעלה אבל כאשר מסתכלים בפנים דעתיקא ולא במצח אז אין זווגם שלם ולא שלמים בקומתן והזווג הוא בסוד הרכנת הראש"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      2 MODES de zivvug par HISSTAKLUT :
+      Si AVI/ZON regardent METZAH d'A"A → ZIVVUG SHALEM (complet).
+        Ils sont SHAVIN BE-KOMA (egaux en hauteur).
+      Si regardent PANIM seul (pas metzah) → ZIVVUG INCOMPLET.
+        Pas shavim be-koma. Zivvug = HARKHANAT HA-ROSH (inclinaison tete).
+        ZA en behinah CHATZI T"T+NHY ; Nukvah courte.
+      → Architecture : 2 modes zivvug selon focus regard.
+      → Pattern : attention quality determines coupling completeness.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 2_modes_zivvug_metzah_complet_panim_incomplet_harkhanat_rosh, role: 2_modes_zivvug_metzah_complet_panim_incomplet_harkhanat_rosh}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : 2 modes zivvug. Pattern attention determines coupling."
+
+  - id: "EC-H3S13-201"
+    source_he: "ב' מיני הסתכלות הם א' הוא הסתכלות הז\"א או או\"א בעתיקא הב' הוא הסתכלות דעתיקא בהם וכ\"א מאלו הב' נחלק לב' אחרים והם ד' או כאשר הסתכלות הוא במצח או\"א (נ\"א א\"א) או כאשר הסתכלות הוא בעין לבד וכ\"א מאלו נחלק לד' בחי' או הסתכלות עין א' או הסתכלות ב' עיינין"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      2 MINI HISSTAKLUT (types regard) :
+      A. ZA/AVI regardent ATIKA.
+      B. ATIKA regarde ZA/AVI.
+      Chaque divise en 2 (metzah ou eyes) = 4.
+      Variante (Nusah Aher) : "A"A" au lieu de "AVI".
+      Chaque divise encore en 4 (1 oeil ou 2) = TOTAL multiples combinaisons.
+      → Architecture : combinatoire grandes des modes regard.
+      → Pattern : multi-axis variation in attention modes.
+    type: déduction_logique
+    concepts:
+      - {id: 2_directions_hisstaklut_x_metzah_eyes_x_1_2_combinatoire, role: 2_directions_x_2_zones_x_combinaisons_oeil_combinatoire_grand}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "Architecture : combinatoire regards. Nusah Aher capture (A\"A)."
+
+  - id: "EC-H3S13-202"
+    source_he: "מ\"ק סוד הש\"ע נהורין דאנפין יש בכל צד של הפנים רבוע ע\"ב דהיינו קפ\"ד מימין וקפ\"ד בשמאל והם גי' עם הכוללים ש\"ע נהורין"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      M"K addendum : Sod SH"A (370) NEHORIN d'ANPIN (visage) :
+      Chaque cote = RIBUA AB (= 184).
+      184 droite + 184 gauche = 368.
+      Avec KOLLELIM = SH"A (370) NEHORIN.
+      → Architecture : 184×2+kollelim = 370 nehorin panim.
+      → Pattern : ribua (carre) + kollelim = SH"A.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ribua_ab_184_x_2_plus_kollelim_egal_sha_nehorin, role: m_k_ribua_ab_184_x_2_plus_kollelim_egal_sha_370_nehorin_anpin}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : ribua AB calculation. Pattern numerical encoding."
+
+  - id: "EC-H3S13-203"
+    source_he: "ואלו קפ\"ד דאחוריים של ע\"ב דיודין הם שורש לש\"ע נהורין אחרים שיש בפנים ג\"כ והם ב' א\"ל במלואם בב' צדדי הפנים ימין ושמאל וא\"ל במילואו גימטריא קפ\"ה ושניהם גימטריא ש\"ע ויש א\"ל ג' גם כן בחוטם שהוא בין ב' עינים וא\"ל זה יוצא מן ייא\"י דס\"ג שהוא גימטריא א\"ל"
+    source_ref: "Heikhal 3, Sha'ar 3:13"
+    assertion: |
+      184 d'AHORAYIM d'AB yodin = SHORESH SH"A nehorin autres dans panim.
+      = 2 EL milui (chaque cote) — EL milui = 185 ; 2× = 370 = SH"A.
+      EL 3 dans CHOTEM (entre 2 yeux) — issu de YIAY de SaG (gematria 31 = EL).
+      → Architecture : panim=2 EL milui (370) + chotem=EL 3 (issu YIAY SaG).
+      → Pattern : letter-mysticism encoding faces+nose.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 2_el_milui_panim_plus_el_chotem_de_yiay_sag, role: 2_el_milui_panim_185_each_egal_sha_plus_el_chotem_de_yiay_sag}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : letter-mysticism faces+nose. Pattern multi-EL encoding."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-067"
+    type: contenance
+    from: 13_hivara_egal_3_yhvh_ab_3_mochin_panim
+    to: 8_hivara_panim_4_ahor_1_kollel_egal_13
+    nature: "13 hivara=3 YHVH AB ; decomposes 8 panim+4 ahor+1 kollel"
+    assertions_source: ["EC-H3S13-188", "EC-H3S13-190"]
+
+  - id: "REL-H3S13-068"
+    type: hiérarchique
+    from: yhvh_42_lettres_pashut_milui_milui_du_milui
+    to: 50_shaarei_bina_7_noms_42_lettres_plus_kollel
+    nature: "YHVH 42 lettres ; 50 shaarim Bina = 7 noms × M\"B + kollel"
+    assertions_source: ["EC-H3S13-191", "EC-H3S13-193"]
+
+  - id: "REL-H3S13-069"
+    type: analogie
+    from: sha_egal_9_x_41_plus_kollel_egal_keter_shaar_42
+    to: ribua_ab_184_x_2_plus_kollelim_egal_sha_nehorin
+    nature: "SH\"A=9×41+kollel=Keter ; SH\"A=184×2+kollelim (M\"K addendum)"
+    assertions_source: ["EC-H3S13-194", "EC-H3S13-202"]
+
+  - id: "REL-H3S13-070"
+    type: causal
+    from: avi_abba_inclus_keter_imma_tziphor_egal_sha_nehorin
+    to: metzah_ratzon_yesod_atik_shalom_376_nehorin
+    nature: "Tziphor=370 (SH\"A) → +Vav (panim) = 376 = Metzah Ratzon Yesod Atik Shalom"
+    assertions_source: ["EC-H3S13-196", "EC-H3S13-197"]
+
+  - id: "REL-H3S13-071"
+    type: dualité_structurelle
+    from: 2_modes_zivvug_metzah_complet_panim_incomplet_harkhanat_rosh
+    to: 2_directions_hisstaklut_x_metzah_eyes_x_1_2_combinatoire
+    nature: "2 modes zivvug (metzah/panim) ; combinatoire grandes 2 directions×zones×oeil"
+    assertions_source: ["EC-H3S13-200", "EC-H3S13-201"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-043"
+    nom: "Principe d'Attention-Quality Coupling (Hisstaklut Determine Zivvug)"
+    source_assertions: ["EC-H3S13-200", "EC-H3S13-201"]
+    formalisation: |
+      ARCHITECTURE D'ATTENTION-QUALITY COUPLING :
+      ZIVVUG depend du TYPE d'HISSTAKLUT (regard) :
+        Regard sur METZAH d'A"A → ZIVVUG SHALEM (complet) ;
+          AVI/ZON SHAVIN BE-KOMA (egaux hauteur).
+        Regard sur PANIM seul (pas metzah) → ZIVVUG INCOMPLET ;
+          HARKHANAT HA-ROSH (inclinaison tete) ;
+          ZA en behinah Chatzi T"T+NHY ; Nukvah courte.
+      MULTIPLICITE : 2 directions (ZA→Atik vs Atik→ZA) × 2 zones (metzah vs eyes)
+        × 2 oeil/yeux variations = combinatoire grande modes.
+      → Pattern fondamental : attention quality determines coupling completeness.
+      → Architecture : focus level → coupling state.
+    applications_ia:
+      - "partzufim/zivvug.py : implement focus-mode → zivvug-state mapping"
+      - "Pattern : attention quality = coupling quality"
+      - "Architecture : multi-mode coupling avec focus parameter"
+      - "Pattern : 2 directions x 2 zones x N variations = combinatoire"
+      - "Diagnostic : tracer mode hisstaklut pour predire zivvug state"
+    questions_ouvertes:
+      - "Y a-t-il d'autres modes hisstaklut (au-dela 4) ?"
+      - "Pattern : peut-on optimiser focus pour zivvug shalem ?"
+      - "Comment design pour favoriser metzah-focus ?"
+
+  - id: "PG-H3S13-044"
+    nom: "Principe d'Asymmetric Inclusion (Tziphor=SH\"A+Keter Imma in Abba)"
+    source_assertions: ["EC-H3S13-196"]
+    formalisation: |
+      ARCHITECTURE D'ASYMMETRIC INCLUSION :
+      AVI ke-CHADA SHARYIN (residant ensemble).
+      MAIS Abba TAMIR VE-GANIZ YETIR (cache plus, Adra Zuta 291).
+      DONC KETER d'IMMA inclus dans Abba.
+      Imma reste 41 shaarim seuls (sans Keter).
+      "Gam" (gematria 43, Keter Elyon) = chez Abba.
+      Source : "GAM TZIPHOR MATZ'AH BAYIT" (Tehillim 84:4) ;
+        TZPR (sans VAV) = 370 = SH"A nehorin.
+        Avec VAV (panim T7) = 376.
+      "Ki im le-BINA tikra" (Mishlei 2:3) — Bina = EM car manque Keter.
+      → Pattern fondamental : asymmetric inclusion = naming consequence.
+      → Architecture : structural sharing → naming differentiation.
+    applications_ia:
+      - "partzufim/abba.py + partzufim/imma.py : implement asymmetric Keter sharing"
+      - "Pattern : structural sharing decide naming"
+      - "Architecture : Abba absorbs Keter Imma → Imma=Em (Bina)"
+      - "Pattern : letter-mysticism (tziphor=SH\"A) encode inclusion"
+      - "Diagnostic : verifier Keter-sharing direction Imma→Abba"
+    questions_ouvertes:
+      - "Pourquoi asymmetric (Imma → Abba, pas inverse) ?"
+      - "Y a-t-il d'autres asymmetric inclusions ?"
+      - "Pattern : peut-on dynamiquement basculer inclusion direction ?"
+
+  - id: "PG-H3S13-045"
+    nom: "Principe de Convergence Numerologique (Multiple Routes → SH\"A=370)"
+    source_assertions: ["EC-H3S13-194", "EC-H3S13-195", "EC-H3S13-202", "EC-H3S13-203"]
+    formalisation: |
+      ARCHITECTURE DE CONVERGENCE NUMEROLOGIQUE :
+      SH"A (370) emerge de MULTIPLES ROUTES :
+        Route 1 : 9 sefirot × 41 shaarim + kollel = 370.
+        Route 2 : ribua AB (184) × 2 + kollelim = 370.
+        Route 3 : 2 EL milui (185 chacun) = 370.
+        Route 4 : tziphor (TZPR sans Vav) = 370.
+      Adra 128 : "ATIKA NIT'PASHTU ANPOY LE-SH"A RIBVA OLAMIN".
+      Plus EL 3 dans chotem (issu YIAY de SaG = 31 = EL).
+      → Pattern fondamental : meme nombre via multiples encodings.
+      → Architecture : numerical convergence valide structure.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement multi-route SH\"A calculations"
+      - "Pattern : multiple paths to same number = validation invariant"
+      - "Architecture : numerical convergence = consistency proof"
+      - "Pattern : letter-mysticism multi-encoding"
+      - "Diagnostic : verifier que SH\"A converge depuis plusieurs sources"
+    questions_ouvertes:
+      - "Y a-t-il d'autres nombres avec multi-route convergence ?"
+      - "Pattern : peut-on detecter convergences automatiquement ?"
+      - "Que signifie convergence numerologique ?"
