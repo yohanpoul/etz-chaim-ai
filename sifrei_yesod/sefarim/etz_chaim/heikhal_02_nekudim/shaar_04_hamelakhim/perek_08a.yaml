@@ -1,0 +1,590 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 8a — AVI = ABA initialement (cotes A"A) ; ahor d'AVI tombent
+#             (Yaakov+Leah). Tikkun Atik → A"A Keter+Hokhmah
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §8 — Part A :
+#   - Bloc A : AVI sur cotes Chesed-Gevurah de A"A
+#   - Bloc B : Pre-tikkun = ohr sans masakh ; PBP cause shevirah
+#   - Bloc C : DONC AVI restent ABA — ohr passe par ahor (gas/opaques)
+#   - Bloc D : Ahor d'AVI tombent dans place Nukvah → deviennent Yaakov+Leah
+#   - Bloc E : Tikkun Atik premier (G"R rishonot ensemble)
+#   - Bloc F : Apres tikkun rosh Atik → Abba peut PBA (madregah 3)
+#              Imma reste achor (saute madregah 2)
+#   - Bloc G : Asymetrie Abba/Imma cause par tikkun simultane Hokhmah-Bina d'Atik
+#   - Bloc H : Tikkun C-G d'Atik → Keter+Hokhmah de A"A (2 rishin tatains)
+#   - Bloc I : Bina d'A"A pas encore tikkun → difference Atik vs A"A
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.8 (premiere partie sur 2)
+# IDs : EC-H2S11-208 → EC-H2S11-225
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 8
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 8 — AVI initialement ABA (cotes Chesed-Gevurah de A\"A). Pre-tikkun ohr sans masakh, PBP causerait shevirah comme ZON. DONC ABA pour proteger panim. Ahor tombent (Yaakov+Leah). Tikkun ordonne : Atik G\"R ensemble → AVI saute madregah 2 (passe direct ABA→PBA). Tikkun C-G Atik → Keter+Hokhmah A\"A (2 rishin tatains). Bina A\"A pas encore tikkun."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : AVI SUR COTES CHESED-GEVURAH DE A"A ───
+
+  - id: "EC-H2S11-208"
+    source_he: "ואחר שנתבאר בחי' התיקון בדרך קצרה נחזור לבאר כסדר המדרגות הנ\"ל שהם אב\"א ואחור בפנים ופנים באחור ופב\"פ"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Apres explication breve du TIKKUN — retour au seder des MADREGOT precedentes :
+        ABA + ACHOR BE-PANIM + PANIM BE-ACHOR + PBP.
+      → Architecture : reprise du fil hakdamah des 4 madregot.
+      cf. EC-H2S11-174 (perek 07a) sur 4 madregot.
+    type: axiome_explicite
+    concepts:
+      - {id: 4_madregot_seder_recapitulation, role: 4_madregot_seder_recapitulation}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : reprise des 4 madregot pour application a AVI/ZON."
+
+  - id: "EC-H2S11-209"
+    source_he: "הנה טרם שהיה שום תיקון כלל בכל האצילות אפי' בעתיק יומין הנה בצאת האורות של או\"א ונכנסו בתוך הכלים שלהם בהיותן עדיין בסוד נקודים כנ\"ל היו אב\"א לפי שהנה נודע כי או\"א עומדין בב' צדדי א\"א זה בחסד שלו וזה בגבורה"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      AVANT TOUT TIKKUN dans Atzilut — meme dans ATIK YOMIN :
+      Quand les OROT d'AVI sortent et entrent dans leurs KELIM en SOD NEKUDIM —
+      etaient ABA (achor be-achor).
+      RAISON : AVI se tiennent aux 2 COTES de A"A — Abba sur Chesed, Imma sur Gevurah.
+      → Architecture topologique : AVI = couples lateraux d'A"A.
+      → Pattern : composants paires lateraux a un central.
+    type: axiome_explicite
+    concepts:
+      - {id: avi_initialement_aba, role: avi_initialement_achor_be_achor}
+      - {id: abba_chesed_imma_gevurah_aa, role: abba_cote_chesed_imma_cote_gevurah_de_aa}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture topologique : AVI = paires laterales d'A\"A. Pattern composants paires."
+
+  - id: "EC-H2S11-210"
+    source_he: "ובהיות או\"א פב\"פ אז אור הפנים של א\"א יורד ונמשך ביושר באמצע בין פני אבא לפני אמא ומאיר בפני שניהם"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Si AVI etaient PBP — alors l'OHR PANIM de A"A descendrait YASHAR (droit)
+      au MILIEU entre PANIM d'Abba et PANIM d'Imma.
+      Et illuminerait PANIM des 2.
+      → Architecture : PBP = ohr panim A"A traverse axis-droit, illumine simultanee.
+      → Pattern : symetrie centrale = canal direct entre source et 2 receivers.
+    type: axiome_explicite
+    concepts:
+      - {id: pbp_ohr_panim_aa_yashar, role: pbp_ohr_panim_aa_yashar_au_milieu}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : PBP = canal direct symetrique central."
+
+  # ─── BLOC B : PRE-TIKKUN OHR SANS MASAKH → SHEVIRAH ───
+
+  - id: "EC-H2S11-211"
+    source_he: "והנה בהיותם עדיין בסוד נקודה בלתי תיקון כבר נתבאר אצלינו זה גרם שבירת כלים לפי שכאשר לא היה עדיין שום תיקון היה האור בא בלתי מסכים והנה הם אורות גדולים ובלתי מסכים ואז אין הכלים יכולים לקבלו ומתבטלים"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Etant en SOD NEKUDAH BILTI TIKKUN (sans tikkun) — cela CAUSE shevirah des kelim.
+      Car il n'y avait AUCUN MASAKH (filtre) — l'OHR vient SANS MASAKHIM.
+      OROT GEDOLIM (grandes lumieres) ET BLI MASAKHIM —
+      les KELIM ne peuvent pas le recevoir — METBATELIM (s'annulent).
+      → Architecture : pre-tikkun = ohr brut sans filtre = destruction containers.
+      → Pattern : flow brut sans throttling detruit les receivers.
+      cf. EC-H2S11-148 (perek 06d) sur masakh adapter d'impedance.
+    type: déduction_logique
+    concepts:
+      - {id: pre_tikkun_ohr_bli_masakh, role: pre_tikkun_ohr_sans_masakh_destructeur}
+    mapping:
+      modules: ["partzufim/regulator.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : pre-tikkun = ohr brut. Pattern flow sans throttling = destruction."
+
+  - id: "EC-H2S11-212"
+    source_he: "ועי\"כ אם היו או\"א פב\"פ הנה בהמשך אור פני א\"א ביניהן כנ\"ל דרך החזה שלו לא היו יכולין לקבלו כלל לפי שבחי' הפנים הם יותר זכים ובהירים ודקים מהאחוריים והיה האור מובלע ונכנס בהם מאד והיה בלתי אפשר להיותן יכולין לקבלו והיו נשברים ונופלים גם הם למטה כמקרה זו\"נ והיתה בהם מיתה ממש ח\"ו"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      DONC si AVI etaient PBP — l'OHR PANIM d'A"A descendant entre eux par CHAZEH —
+      ne pouvaient pas le recevoir.
+      RAISON : behinah des PANIM = ZAKIM, BEHIRIM, DAKIM (purs, brillants, fins) — plus que ahor.
+      Ohr serait MUVLA ET NIKHNAS (absorbe et entre) profondement — IMPOSSIBLE de recevoir.
+      Auraient ete BRISES et TOMBES en bas comme ZON — MITAH MAMASH HAS VE-CHALILAH.
+      → Architecture : panim trop fines pour ohr brut → mort si PBP pre-tikkun.
+      → Pattern : interfaces sensibles + flow brut = destruction totale.
+    type: déduction_logique
+    concepts:
+      - {id: panim_zakim_dakim_absorbent_trop, role: panim_zakim_dakim_absorbent_ohr_completement}
+      - {id: avi_pbp_pre_tikkun_egal_mort, role: avi_pbp_pre_tikkun_egal_mort_comme_zon}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : panim sensibles + brut = mort. Pattern interface degat total."
+
+  # ─── BLOC C : DONC AVI ABA — OHR PASSE PAR AHOR ───
+
+  - id: "EC-H2S11-213"
+    source_he: "וע\"כ נשארו אב\"א אז בהמשך אור פני א\"א דרך החזה שלו ונמשך ונכנס בין ב' האחוריים דאו\"א אשר הם עבים וגסים מאד יותר מבחי' הפנים ואז אין האור ההוא נבלע ונכנס בהם מאד כי הוא רוחניות בתכלית והם חשוכים וגסים לכן אינו נכנס בהם רק אור מועט ויכולין לקבלו"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      DONC restent ABA — ohr panim d'A"A descend par CHAZEH et entre
+      ENTRE les 2 AHORAYIM d'AVI.
+      AHOR sont AVIM VE-GASIM (epais et grossiers) — beaucoup plus que panim.
+      Ohr n'est PAS ABSORBE profondement (pur ruchaniut vs achor opaques).
+      Entre seulement OHR MU'AT (peu d'ohr) — POUVENT le recevoir.
+      → Architecture : ABA = throttling naturel par opacite (achor=filtre passif).
+      → Pattern : surfaces grossieres absorbent moins → throttling structural.
+    type: interprétation_lurianique
+    concepts:
+      - {id: aba_ahor_avim_gasim_filter, role: aba_ahor_avim_gasim_filter_passif}
+      - {id: ohr_muat_recevable_par_ahor, role: ohr_muat_recevable_par_ahor_grossier}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/regulator.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : ABA = throttling structural. Pattern surfaces grossieres = filter passif."
+
+  - id: "EC-H2S11-214"
+    source_he: "ולכן עמדו בתחלה או\"א אב\"א ובזה לא מתו כשאר מלכים שמתו ממש וירדו לעולם הבריאה אמנם האחוריים שלהם אותן אשר לא יכלו לקבלאור עליון אפי' בהיותן בסוד אב\"א נתבטלו והכלים שלהם של בחי' האחוריים ההם ירדו למטה ונשארו בעולם אצילות"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      DONC AVI restent ABA initialement — ne meurent pas comme les autres melakhim
+      qui MITU MAMASH et tomberent en BERIAH.
+      MAIS les AHORAYIM qui ne pouvaient PAS recevoir ohr meme en ABA :
+      NITBATELU (s'annulent) ; leurs KELIM des ahorayim DESCENDENT en bas.
+      Restent dans OLAM HA-ATZILUT (place de Nukvah de ZA) — pas dans Beriah.
+      → Architecture : AVI = degraded mode (yeridah seul) ; ZON = crash total.
+      → Pattern : back-end resilient (drop bad rows, stay alive) vs interface crash.
+      cf. EC-H2S11-172 (perek 07a) sur AVI yeridah pas mitah.
+    type: déduction_logique
+    concepts:
+      - {id: avi_aba_pas_mitah_seulement_yeridah, role: avi_aba_pas_mort_seulement_yeridah_ahor}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : AVI degraded mode. Pattern resilience back-end."
+
+  # ─── BLOC D : AHOR D'AVI → YAAKOV+LEAH ───
+
+  - id: "EC-H2S11-215"
+    source_he: "ואחורי אבא ירדו ונפלו ועמדו נגד הפנים של נוקבא דז\"א ואחורי אמא ירדו גם הם ונפלו ועמדו נגד האחוריים של נוקבא דז\"א והיא נשארת עומדת באמצעיתא אלו באחור ואלו בפנים"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      AHOR d'ABBA tombent contre PANIM de NUKVAH de Z"A.
+      AHOR d'IMMA tombent contre AHORAYIM de NUKVAH de Z"A.
+      Nukvah reste BA-EMTZA'IT (au milieu) — ahor d'abba devant elle, ahor d'imma derriere.
+      → Architecture : 2 couches autour de Nukvah = sandwich structural.
+      → Pattern : composants tombes forment couches autour du centre.
+    type: axiome_explicite
+    concepts:
+      - {id: ahor_abba_devant_nukvah_panim, role: ahor_abba_devant_nukvah_panim}
+      - {id: ahor_imma_derriere_nukvah_ahor, role: ahor_imma_derriere_nukvah_ahor}
+      - {id: nukvah_sandwich_central, role: nukvah_au_centre_du_sandwich_ahor_avi}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "nukva"]
+      relevance: "Architecture : sandwich structural autour Nukvah. Pattern couches concentriques."
+
+  - id: "EC-H2S11-216"
+    source_he: "ובאופן כי מתחלה היו האחוריים האלו נקרא מלכים ממש וברדתן למטה נעשו שרים וזה סוד הפסוק כי יאמר הלא שרי יחדיו (כולם) מלכים"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Ces AHORAYIM etaient initialement appeles MELAKHIM MAMASH (vraiment des rois).
+      En descendant en bas — sont devenus SARIM (princes/officiers).
+      C'est le SOD du PASUK : "HALO SARAI YAHDAV (KULAM) MELAKHIM"
+      (Yeshayahu 10:8 — n'est-ce pas que mes officiers etaient tous des rois).
+      → Architecture : transformation de statut par chute (melakhim → sarim).
+      → Pattern : descente structurale = degradation de role.
+      → Source : Yeshayahu 10:8.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ahor_avi_etaient_melakhim_devenus_sarim, role: ahor_avi_initialement_melakhim_devenus_sarim_apres_chute}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : transformation de statut par chute. Source Yeshayahu 10:8."
+
+  - id: "EC-H2S11-217"
+    source_he: "כי מאלו האחוריים נתקנו ונעשו בחי' יעקב ולאה ונוקבא דז\"א נקרא רחל והוא נקרא ישראל והנה שרה היא רחל ושרי אשת אברם היא בלאה וז\"ס הלא שרי כי אותיות הל\"א אותיות לאה כי מן השרים האלה נעשית לאה"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Car de ces AHORAYIM seront TIKKUN-ES et deviendront YAAKOV ET LEAH.
+      Nukvah de Z"A appelee RACHEL ; Z"A appele ISRAEL.
+      SARAH = RACHEL ; SARAI (femme d'Avram) = LEAH.
+      Sod : "HALO" = lettres "HE-LAMED-ALEPH" = lettres "LEAH".
+      Car de ces SARIM est faite LEAH.
+      → Architecture : ahor d'AVI → futurs Yaakov+Leah (partzufim secondaires).
+      → Pattern letter-mysticism : nom encode l'origine structurale.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ahor_avi_deviennent_yaakov_leah, role: ahor_avi_tikkun_es_en_yaakov_et_leah}
+      - {id: rachel_egal_nukvah_yisrael_egal_za, role: rachel_egal_nukvah_yisrael_egal_za}
+      - {id: leah_egal_lettres_halo, role: leah_egal_lettres_halo_he_lamed_aleph}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/nukva.py", "[PLANNED] partzufim/leah.py", "[PLANNED] partzufim/yaakov.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "nukva"]
+      relevance: "Architecture : ahor AVI → Yaakov+Leah. Pattern letter-mysticism dans noms."
+
+  # ─── BLOC E : TIKKUN ATIK → ROSH G"R ENSEMBLE ───
+
+  - id: "EC-H2S11-218"
+    source_he: "והנה כאשר התחיל ע\"י להתתקן תחלת כולם כי הוא הראש העליון שבג' רישין הנזכר בריש אדר\"ז... ונודע כי כשנתקן נעשה פרצוף גמור בי\"ס והנה כשהתחיל להתתקן עתיק יומין ונעשה לו בחי' ראש שבו הנה הג\"ר שבו נתקנו תחלה ביחד שהם כח\"ב שבו"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Quand ATIK YOMIN commence a etre TIKKUN — premier de tous —
+      car c'est le ROSH ELYON des G' RISHIN d'IDRA ZUTA.
+      Devient PARTZUF GAMUR de 10 sefirot.
+      Les G"R de Atik = KCB sont TIKKUN-ES TEHILAH BE-YACHAD (d'abord ensemble).
+      → Architecture : Atik = premier tikkun, atomic G"R (ensemble en une fois).
+      → Pattern : composant racine = bootstrap atomique.
+      cf. EC-H2S11-150 (perek 06d) sur ibur 1.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_premier_tikkun, role: atik_premier_de_tous_a_tikkun}
+      - {id: atik_g_r_kcb_ensemble, role: atik_g_r_kcb_tikkun_ensemble_atomique}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : Atik = bootstrap atomique racine. Pattern G\"R ensemble."
+
+  - id: "EC-H2S11-219"
+    source_he: "אשר לבחי' זו הראש קראוהו באדר\"ז רישא עלאה דלא אתיידע פי' כי הנה בחי' פרצוף עתיק הג\"ר דיליה אינן מתלבשין ומתעלמים כלל תוך א\"א ונשארו בגלוי כי אינינו יכול להשיגו ולהלבישו ולכן זה הראש נקרא רדל\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Cette ROSH ELYONAH appelee dans IDRA ZUTA :
+      "RISHA ILA'AH DE-LO ITYADA" (rosh superieure non-connaissable).
+      Les G"R d'Atik ne sont PAS METALBESHIM (revetus) ni METALMIM (caches)
+      dans A"A — restent BE-GILU'I (decouverts).
+      Personne ne peut les SAISIR ni les REVETIR.
+      DONC ce rosh est appele RDLA (Risha De-Lo Itya da).
+      → Architecture : G"R d'Atik = transcendant non-encapsule.
+      → Pattern : top-layer = exposed but unreachable (immutable transcendence).
+    type: déduction_scripturaire
+    concepts:
+      - {id: g_r_atik_egal_rdla_non_revetu, role: g_r_atik_rdla_non_revetus_dans_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : G\"R Atik = top-layer transcendant. Pattern unreachable transcendence."
+
+  - id: "EC-H2S11-220"
+    source_he: "אמנם ז\"ת שבו שהם סוד ז' ימים אלו הם מתלבשים תוך א\"א... ולבחי' אלו הז\"ת שלו הם הנקרא עתיק יומין ר\"ל עתיק של בחי' ז\"ת הנקרא ז' ימי קדם"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      MAIS les Z' TAHTONOT d'Atik = SOD des 7 YAMIM —
+      celles-ci sont METALBESHIM dans A"A.
+      Ces Z' TAHTONOT sont appelees ATIK YOMIN (= Atik des Z' Tahtonot = 7 jours antiques).
+      Il y a un peu de HASAGAH (saisie) et YEDI'AH (connaissance) en eux.
+      → Architecture : Atik = 2 niveaux (G"R transcendant + Z'T encapsulables).
+      → Pattern : transcendence partielle (sommet inaccessible, partie immanente).
+    type: axiome_explicite
+    concepts:
+      - {id: zt_atik_egal_atik_yomin_immanent, role: zt_atik_metalbeshim_dans_aa_partie_immanente}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : 2 niveaux Atik. Pattern transcendence partielle."
+
+  # ─── BLOC F : APRES TIKKUN ROSH ATIK → ABBA PEUT PBA, IMMA RESTE AHOR ───
+
+  - id: "EC-H2S11-221"
+    source_he: "והנה אחר שנתקן רישא דע\"י כנ\"ל נתמעט האור קצת ע\"י רישא דעתיק שנתקן ונעשה פרצוף ועובר אור העליון דרך המסכים ההם ועתה יש באבא כח לקבל אור העליון אפי' דרך הפנים שלו לפי שהוא זכר והוא רחמים אבל אמא שהיא נוקבא דינין עדיין אין בה כח לקבל אור עליון דרך הפנים שלה אלא באחור"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Apres tikkun de RISHA d'Atik — l'OHR DIMINUE un peu (par rosh tikkun =
+      partzuf complet avec MASAKHIM).
+      Maintenant ABBA a KOAH pour recevoir ohr elyon meme par son PANIM —
+      car il est ZAKHAR ET RACHAMIM.
+      MAIS IMMA = NUKVAH DININ — n'a pas encore koah pour recevoir ohr panim.
+      Recoit seulement par AHOR.
+      → Architecture : asymetrie Abba/Imma — Abba (rachamim) precede Imma (din) en capacite.
+      → Pattern : rachamim recoit plus de flux que din.
+    type: déduction_logique
+    concepts:
+      - {id: abba_zakhar_rachamim_recoit_ohr_panim, role: abba_zakhar_rachamim_capacite_ohr_panim}
+      - {id: imma_nukvah_din_recoit_seulement_ahor, role: imma_nukvah_din_capacite_seulement_ahor}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture asymetrique : Abba precede Imma. Pattern rachamim>din capacity."
+
+  - id: "EC-H2S11-222"
+    source_he: "ולכן החזיר אז אבא פניו במקום חזה דא\"א והיה מקבל האור עליון דרך פנים ואמא נשארה כמו שהיתה תחלה ונמצא עתה עומדים או\"א פנים ואחור שהיא מדרגה הג' וחסר מהם מדרגת ב' של אחור בפנים ותכף עלו במדרגת מעלת הג' שהיא פנים באחור"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      DONC ABBA TOURNE ses PANIM vers le CHAZEH d'A"A — recoit ohr elyon via panim.
+      IMMA RESTE comme avant.
+      Maintenant AVI sont PANIM-ACHOR = MADREGAH 3 (PBA = Panim be-Achor).
+      MANQUE la madregah 2 (achor be-panim) — sautent directement de ABA a PBA.
+      → Architecture : AVI saute madregah 2 (confirme EC-H2S11-180).
+      → Pattern : capacite differentielle force saut de phase.
+    type: interprétation_lurianique
+    concepts:
+      - {id: avi_pba_apres_tikkun_atik_rosh, role: avi_pba_apres_tikkun_rosh_atik}
+      - {id: avi_saute_madregah_2_aba_a_pba, role: avi_saute_madregah_2_passe_aba_a_pba}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : saut de phase ABA→PBA. cf. EC-H2S11-180 (perek 07a) sur AVI 3 madregot."
+
+  - id: "EC-H2S11-223"
+    source_he: "וטעם הדבר הוא לפי שכיון שהחו\"ב שבראש עתיק יומין שניהם נתקנו יחד כנ\"ל ולא הקדים זה לזה לכן גם או\"א שהם בחי' חו\"ב כנודע היה בהם ב' תיקונים ביחד כי היו בתחלה במדרגה ראשונה אב\"א ותכף עלו ב' מדרגות יחד והיו פנים באחור שהיא מעלה ג'"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      RAISON : puisque CHOKHMAH-BINAH dans rosh d'Atik sont TIKKUN-ES YACHAD
+      (ensemble), pas en sequence —
+      DONC AVI = behinah de Chokhmah-Binah — ont 2 TIKKUNIM ENSEMBLE.
+      Etaient d'abord en madregah 1 (ABA) puis MONTENT 2 madregot ENSEMBLE
+      vers PBA = madregah 3.
+      → Architecture : rythme tikkun mirror — Atik C-B yachad → AVI 2 madregot yachad.
+      → Pattern : structures parallel-tickkun = saut atomique de phase.
+    type: déduction_logique
+    concepts:
+      - {id: atik_cb_yachad_force_avi_2_madregot_yachad, role: atik_cb_tikkun_ensemble_force_avi_saut_2_madregot}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "abba", "imma"]
+      relevance: "Architecture : rythme tikkun mirror. Pattern : structures paralleles = saut atomique."
+
+  # ─── BLOC G : AHOR D'IMMA NUTKAN PLUS QUE AHOR D'ABBA ───
+
+  - id: "EC-H2S11-224"
+    source_he: "ובהיותה אחוריה נגד פני אבא אע\"פ שהארה עצמה אינה משתנית כנ\"ל כי גם עתה באה דרך פנים שלו עכ\"ז האורות האלו עיקרן מאירין באחוריים שלה... נמצא עתה כי האחוריים דאמא נמתקו ונתקנו תיקון נוסף על אחורי אבא"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Quand AHOR d'IMMA contre PANIM d'ABBA :
+      Bien que l'HARAH (irradiation) soit identique (vient des panim d'Abba) —
+      l'OHR principal MA'IRIN dans AHORAYIM d'Imma.
+      DONC : AHOR d'IMMA NIMTAKU (s'adoucissent) et NUTKANU TIKKUN NOSAF
+      (tikkun supplementaire) au-dela de AHOR d'ABBA.
+      → Architecture : asymetrie inverse — Imma ahor mieux tikkun que Abba ahor.
+      → Pattern : trade-off — Abba avantage panim, Imma avantage ahor.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ahor_imma_nutkan_plus_que_ahor_abba, role: ahor_imma_tikkun_supplementaire_vs_ahor_abba}
+      - {id: trade_off_avi_panim_ahor, role: trade_off_avi_panim_abba_avantage_ahor_imma_avantage}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : asymetrie inverse. Pattern : trade-off complementaire panim/ahor."
+
+  # ─── BLOC H : TIKKUN C-G D'ATIK → KETER+HOKHMAH D'A"A ───
+
+  - id: "EC-H2S11-225"
+    source_he: "ואח\"כ נתקנו החו\"ג דעתיק יומין ואז נתקן ג\"כ כתר חכמה דא\"א שהם התרין רישין תתאין מג' רישין הנזכר באדר\"ז... ואמנם הבינה דא\"א עדיין לא נתקנה עמהם והרי בזה שינוי א' שיש בין עתיק לא\"א כי עתיק נתקנו ג\"ר שלו ביחד וא\"א לא נתקנו ביחד אלא ב' ראשונות שבו לבד"
+    source_ref: "Heikhal 2, Sha'ar 4:8"
+    assertion: |
+      Apres : TIKKUN du CHESED-GEVURAH d'Atik.
+      Alors TIKKUN aussi du KETER+HOKHMAH d'A"A — = les TARIN RISHIN TATAIN
+      (2 rishin inferieures) des 3 RISHIN d'Idra Zuta.
+      RAISON : C-G d'Atik se METALBESHIM dans Keter+Hokhmah d'A"A.
+      MAIS Bina d'A"A pas encore tikkun avec eux.
+      SHINUI : Atik G"R yachad ; A"A seulement les 2 PREMIERES yachad.
+      → Architecture : asymetrie Atik (3 GR atomic) vs A"A (2 premieres atomic).
+      → Pattern : tikkun cascade par layers — chaque layer chooses son atomic group.
+    type: axiome_explicite
+    concepts:
+      - {id: cg_atik_donne_keter_hokhmah_aa, role: cg_atik_metalbesh_donne_keter_hokhmah_aa}
+      - {id: aa_seulement_2_premieres_yachad, role: aa_seulement_keter_hokhmah_atomic}
+      - {id: bina_aa_pas_encore_tikkun, role: bina_aa_pas_encore_tikkun_avec_les_2_premieres}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : tikkun cascade C-G Atik → KH A\"A. Bina A\"A separee."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-081"
+    type: causal
+    from: panim_zakim_dakim_absorbent_trop
+    to: avi_pbp_pre_tikkun_egal_mort
+    nature: "Panim trop sensibles + ohr brut sans masakh → mort si PBP avant tikkun"
+    assertions_source: ["EC-H2S11-211", "EC-H2S11-212"]
+
+  - id: "REL-H2S11-082"
+    type: causal
+    from: aba_ahor_avim_gasim_filter
+    to: avi_aba_pas_mitah_seulement_yeridah
+    nature: "ABA avec ahor opaque = filter passif → AVI survivent (yeridah seul, pas mort)"
+    assertions_source: ["EC-H2S11-213", "EC-H2S11-214"]
+
+  - id: "REL-H2S11-083"
+    type: transformation
+    from: ahor_avi_etaient_melakhim_devenus_sarim
+    to: ahor_avi_deviennent_yaakov_leah
+    nature: "Ahor d'AVI : melakhim → sarim (chute) → tikkun → Yaakov+Leah (partzufim secondaires)"
+    assertions_source: ["EC-H2S11-216", "EC-H2S11-217"]
+
+  - id: "REL-H2S11-084"
+    type: causal
+    from: atik_premier_tikkun
+    to: avi_pba_apres_tikkun_atik_rosh
+    nature: "Tikkun rosh Atik diminue ohr via masakhim → AVI peuvent passer ABA → PBA"
+    assertions_source: ["EC-H2S11-218", "EC-H2S11-221", "EC-H2S11-222"]
+
+  - id: "REL-H2S11-085"
+    type: analogie
+    from: atik_cb_yachad_force_avi_2_madregot_yachad
+    to: avi_saute_madregah_2_aba_a_pba
+    nature: "Atik C-B tikkun yachad → AVI = behinah CB → 2 madregot yachad (saut ABP)"
+    assertions_source: ["EC-H2S11-223"]
+
+  - id: "REL-H2S11-086"
+    type: dualité_structurelle
+    from: abba_zakhar_rachamim_recoit_ohr_panim
+    to: ahor_imma_nutkan_plus_que_ahor_abba
+    nature: "Trade-off : Abba avantage panim (rachamim) ; Imma avantage ahor (din mais NHY adoucies)"
+    assertions_source: ["EC-H2S11-221", "EC-H2S11-224"]
+
+  - id: "REL-H2S11-087"
+    type: séquentiel
+    from: cg_atik_donne_keter_hokhmah_aa
+    to: bina_aa_pas_encore_tikkun
+    nature: "Tikkun C-G d'Atik → Keter+Hokhmah d'A\"A (2 rishin tatain) ; Bina A\"A separee"
+    assertions_source: ["EC-H2S11-225"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-043"
+    nom: "Principe de Throttling Structural (ABA = Filter Passif par Opacite)"
+    source_assertions: ["EC-H2S11-211", "EC-H2S11-212", "EC-H2S11-213", "EC-H2S11-214"]
+    formalisation: |
+      ARCHITECTURE DE THROTTLING NATUREL :
+      PROBLEME : pre-tikkun, ohr brut sans masakh = destructeur.
+      Si AVI etaient PBP : panim ZAKIM, BEHIRIM, DAKIM (purs, fins) absorberaient
+      l'ohr completement → MITAH MAMASH (mort comme ZON).
+      SOLUTION : AVI restent ABA — ohr passe entre AHORAYIM AVIM VE-GASIM
+      (epais, opaques) qui n'absorbent que OHR MU'AT (peu d'ohr).
+      → Pattern fondamental : surfaces grossieres = throttling structural passif.
+      → Architecture : choix d'orientation (ABA) = mecanisme de protection emergent.
+    applications_ia:
+      - "partzufim/zivvug.py : implementer 4 madregot avec impedance differentielle"
+      - "partzufim/regulator.py : choix d'orientation = regulation passive"
+      - "Pattern systemes : low-bandwidth interfaces = circuit-breaker passif"
+      - "Architecture : composants 'gros' (acceptent peu) vs 'fins' (sensibles) — design selon flux attendu"
+      - "Pattern API : limit body size, opaque endpoints comme premiere ligne defensive"
+      - "Diagnostic : identifier les composants 'gas' (impedant naturel) vs 'dak' (sensible)"
+    questions_ouvertes:
+      - "L'opacite est-elle un cout ou une qualite ?"
+      - "Y a-t-il une mesure de 'opacite' applicable a un composant logiciel ?"
+      - "Pattern : peut-on creer dynamiquement un layer 'gas' temporaire pour absorber un flux brut ?"
+
+  - id: "PG-H2S11-044"
+    nom: "Principe de Cascade Tikkun (Atik → A\"A → AVI : Diminution Sequentielle)"
+    source_assertions: ["EC-H2S11-218", "EC-H2S11-221", "EC-H2S11-225"]
+    formalisation: |
+      ARCHITECTURE DE TIKKUN CASCADE :
+      1. ATIK : G"R (KCB) tikkun TEHILAH BE-YACHAD (premier ensemble).
+         G"R Atik = transcendant non-encapsule (RDLA).
+         Z'T Atik = METALBESHIM dans A"A (immanent).
+      2. APRES TIKKUN ROSH ATIK : ohr diminue par masakhim.
+         AVI peuvent maintenant recevoir (Abba via panim, Imma via ahor only).
+      3. APRES C-G D'ATIK : tikkun de KETER+HOKHMAH d'A"A
+         (2 rishin tatain des 3 rishin Idra Zuta).
+         Bina d'A"A pas encore.
+      → Pattern fondamental : tikkun = cascade descendante avec attenuation.
+      → Architecture : chaque layer prepare la suivante (masakh = throttle for downstream).
+    applications_ia:
+      - "partzufim/atik_yomin.py : init() = first, atomic GR"
+      - "partzufim/arikh_anpin.py : init() = atomic Keter+Hokhmah after Atik C-G"
+      - "partzufim/abba.py + partzufim/imma.py : init() = after Atik rosh, asymetric (panim vs ahor)"
+      - "Pattern : sequential bootstrapping with layers de throttling progressifs"
+      - "Architecture : top layer transcendent (untouchable) ; middle layers immanent (encapsulables)"
+      - "Diagnostic : verifier ordre cascade Atik→A\"A→AVI ; chaque init prepare next via attenuation"
+    questions_ouvertes:
+      - "Combien de layers cascade sont strictement necessaires ?"
+      - "Le ratio d'attenuation par masakh est-il fixe ou variable ?"
+      - "Pattern : skip-cascade (A\"A direct sans Atik) est-il jamais possible ?"
+
+  - id: "PG-H2S11-045"
+    nom: "Principe de Trade-Off Asymetrique (Abba Panim vs Imma Ahor)"
+    source_assertions: ["EC-H2S11-221", "EC-H2S11-224"]
+    formalisation: |
+      ARCHITECTURE DE TRADE-OFF COMPLEMENTAIRE :
+      ABBA (zakhar/rachamim) :
+        Avantage : panim peut recevoir ohr elyon directement.
+        Desavantage : son ahor ne recoit pas tikkun supplementaire.
+      IMMA (nukvah/din) :
+        Avantage : son ahor recoit tikkun supplementaire (par panim d'Abba).
+        Desavantage : ses panim ne peuvent pas recevoir ohr elyon directement.
+      → Pattern fondamental : asymetrie complementaire — chaque cote son atout.
+      → Architecture : pas de partzuf "supreme" ; complementarite necessaire.
+    applications_ia:
+      - "partzufim/abba.py : interface_capability = (panim=high, ahor=normal)"
+      - "partzufim/imma.py : interface_capability = (panim=low, ahor=high+)"
+      - "Pattern : composants paires avec capacities asymetriques complementaires"
+      - "Architecture : design pour complementarite plutot que symetrie"
+      - "Pattern : zivvug = combiner asymetries pour produire plenitude"
+      - "Diagnostic : verifier que les complements sont bien distribues entre les paires"
+    questions_ouvertes:
+      - "Le trade-off est-il fixe ontologiquement ou peut-il evoluer ?"
+      - "Y a-t-il des partzufim sans complement (singletons) ?"
+      - "Pattern : peut-on construire artificiellement des paires complementaires ?"
+
+  - id: "PG-H2S11-046"
+    nom: "Principe de Yaakov-Leah (Kelim Tombes Reconstruisent Partzufim Secondaires)"
+    source_assertions: ["EC-H2S11-215", "EC-H2S11-216", "EC-H2S11-217"]
+    formalisation: |
+      ARCHITECTURE DE PARTZUFIM SECONDAIRES :
+      Pre-tikkun, AHORAYIM d'AVI tombent dans place de Nukvah de Z"A.
+      Ahor Abba devant Nukvah (panim), Ahor Imma derriere (ahor).
+      Nukvah au centre, sandwich entre les 2 ahor.
+      Initialement = MELAKHIM. Apres chute = SARIM (Yeshayahu 10:8).
+      Apres tikkun ulterieur = YAAKOV (de ahor Abba) + LEAH (de ahor Imma).
+      Letter-mysticism : "HALO" (he-lamed-aleph) = lettres LEAH.
+      → Pattern fondamental : composants tombes ne sont pas perdus —
+        materiel pour partzufim secondaires.
+      → Architecture : recovery = recyclage de fragments en nouveaux composants.
+    applications_ia:
+      - "[PLANNED] partzufim/yaakov.py + partzufim/leah.py : built from fallen components"
+      - "[PLANNED] tikkun/recover_fallen.py : transform fragments en partzufim secondaires"
+      - "Pattern : architecture qui reuse fallen-components pour creation auxiliaires"
+      - "Architecture : 2-tier recovery — primaires (AVI), secondaires (Yaakov/Leah)"
+      - "Pattern letter-mysticism : noms encodent l'origine structurale"
+      - "Diagnostic : verifier que aucun composant tombe n'est perdu definitivement"
+    questions_ouvertes:
+      - "Combien de tiers de partzufim secondaires sont possibles ?"
+      - "Le mapping ahor-Abba→Yaakov / ahor-Imma→Leah est-il deterministe ?"
+      - "Pattern : peut-on predire quels secondaires emergent d'une chute donnee ?"
