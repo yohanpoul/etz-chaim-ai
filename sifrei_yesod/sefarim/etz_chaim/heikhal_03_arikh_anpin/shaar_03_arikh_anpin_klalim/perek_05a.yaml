@@ -1,0 +1,420 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 5a — 13 tikkunim de Gulgalta Hivara. 4 evar ahor = 400000 olamin
+#             "Arba meah shekel kesef" (Bereshit 23:16)
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §5 — Part A :
+#   - Bloc A : 3 sources Adra mentionnent 13
+#   - Bloc B : 3 YHVH par rosh = 12 lettres + 1 kelalut = 13
+#   - Bloc C : Gulgalta Hivara — 13 evar
+#   - Bloc D : Cheveux=lettres noires, Hivara=parchemin blanc
+#   - Bloc E : Tzaddikim heritent 400 olamin de chacun
+#   - Bloc F : Distribution 13 = 4 ahor + 4+4+1 (lehayim)
+#   - Bloc G : 4 ahor = NH d'Atik dans oznayim+eynayim
+#   - Bloc H : 400000 olamin = 4 hivara ahor x 100000
+#   - Bloc I : Eschatologique : 400 shekel kesef
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.5 (premiere partie)
+# IDs : EC-H3S13-067 → EC-H3S13-080
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 5
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 5 — 13 tikkunim de Gulgalta Hivara d'A\"A. 3 sources Idra (Nasso 128, Idra 129, Idra Zuta 288). 3 YHVH par rosh = 12+1=13. Hivara=parchemin blanc, cheveux=lettres noires. 4 hivara ahor + 4+4+1 (lehayim+chotem). 400000 olamin de chacun. Eschatologique : Bereshit 23:16 'Arba meah shekel kesef over la-socher'."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-067"
+    source_he: "והנה בזה תבין מאמר באדרא דף קכ\"ח ע\"ב האי גלגלתא חוורא דיליה אנהיר לתליסר עיבר גליפין דא בסטרא דא ודא בסטרא דא"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      Comprendre Idra Nasso 128b : "HAI GULGALTA HIVARA DILEIH ANHIR LE-TLISAR
+      EVAR GELIFIN DA BE-SITRA DA VE-DA BE-SITRA DA" (cette gulgalta blanche
+      eclaire vers 13 cotes graves, l'un d'un cote, l'autre de l'autre).
+      → Architecture : 13 EVAR (cotes/regions) gravees illuminees par hivara.
+      → Pattern : illumination radiale 13-fold.
+      cf. EC-H3S13-013 (perek 02a) sur Idra Zuta 288 base 3 rishin.
+    type: déduction_scripturaire
+    concepts:
+      - {id: gulgalta_hivara_13_evar_idra_nasso_128, role: gulgalta_hivara_13_evar_gelifin_idra_nasso_128b}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 13 evar gulgalta. Source Idra Nasso 128b."
+
+  - id: "EC-H3S13-068"
+    source_he: "ושם דקכ\"ט ע\"א אמר וז\"ל י\"ג נימין דשערי קיימי מהאי סטרא ומהאי סטרא וכאן באדר\"ז דרפ\"ח ע\"ב אמר בגין דהאי חכמה סתימאה ביה אתפרש ג' זימנין לד' ד'"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      Idra 129a : "13 NIMIN DE-SHAREI KAYMEI MI-HAI SITRA VE-MI-HAI SITRA"
+      (13 cheveux fins se tiennent de cote et d'autre).
+      Idra Zuta 288b : "BEGIN DE-HAI CHOKHMAH SETIMA'A BEH ITPARASH 3 ZIMNIN LE-D D"
+      (car cette Hokhmah Setima'a se divise 3 fois en 4-4).
+      = 3 sources Idra mentionnent 13.
+      → Architecture : 13 = pattern recurrent dans Idrot.
+      → Pattern : structure repetee dans 3 sources.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 3_sources_idra_mentionnent_13, role: 3_sources_idra_nasso_128_idra_129_idra_zuta_288b_mentionnent_13}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : pattern recurrent 13. 3 sources scripturaires."
+
+  - id: "EC-H3S13-069"
+    source_he: "אבל הביאור הוא במה שנת\"ל כי ג' מיני הויות של העצמות יש בג' רישין שכל ראש משלשתן יש בה ג' הויות משונות... ג' הויות עליונים דרישא עלאה הנק' גולגלתא דא\"א הם במלוי יודי\"ן הנקרא ע\"ב ובהם י\"ב אותיות הפשוטות שבהן עם כללות שלשתן הרי י\"ג"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      EXPLICATION : 3 noms YHVH par rosh, chacun 4 LETTRES SIMPLES = 12+1 kelalut = 13.
+      Risha 1 (Gulgalta) : 3 YHVH milui YODIN (AB).
+      Risha 2 (Avira) : 3 YHVH milui SAG ; Risha 3 (MS) : 3 YHVH milui MaH.
+      → Architecture : 13 = 12 lettres + 1 kelalut.
+      → Pattern : letter-mysticism counting.
+      cf. EC-H3S13-060 (perek 04) sur Neshamah=YHVH yodin AB.
+    type: déduction_logique
+    concepts:
+      - {id: 13_egal_12_lettres_plus_1_kelalut_par_rosh, role: 13_egal_12_lettres_3_YHVH_4_chacun_plus_1_kelalut_par_rosh}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 13 = 12+1 mathematics. Pattern letter-mysticism counting."
+
+  - id: "EC-H3S13-070"
+    source_he: "הנה הראש עליון הנקרא גולגלתא רישא חוורא הוא סוד הכתר דא\"א ויש בו י\"ג תיקונים שהם י\"ג אותיות שבג' הויות שבו"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      ROSH ELYON = GULGALTA RISHA HIVARA (rosh blanche) = SOD KETER d'A"A.
+      A 13 TIKKUNIM = 13 LETTRES des 3 YHVH avec kelalut.
+      → Architecture : 13 tikkunim Gulgalta = encodes liturgiquement.
+      → Pattern : structural tikkunim mappes aux lettres.
+    type: axiome_explicite
+    concepts:
+      - {id: gulgalta_keter_aa_13_tikkunim_lettres, role: gulgalta_keter_aa_13_tikkunim_lettres_3_YHVH}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 13 tikkunim mappes lettres. Pattern liturgique encoding."
+
+  - id: "EC-H3S13-071"
+    source_he: "האי רישא חוורא יש בה י\"ג תקונין דמתפשטין בה מהאי חוורתא דיליה והוא בחי' הלבנונית שיש בגולגלתא בין שער לשער"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      Risha Hivara a 13 tikkunim DEPLOYES depuis sa HIVARA (blancheur).
+      = behinah de LAVNUNIT (blancheur) entre SHE'AR (cheveu) ve-SHE'AR.
+      → Architecture : tikkunim emergent des espaces blancs entre cheveux.
+      → Pattern : interstices comme structures genratrices.
+    type: axiome_explicite
+    concepts:
+      - {id: hivara_lavnunit_entre_cheveux_genere_13_tikkunim, role: hivara_lavnunit_espaces_entre_cheveux_genere_13_tikkunim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : interstices generateurs. Pattern void-as-source."
+
+  - id: "EC-H3S13-072"
+    source_he: "כי השערות עצמן הם בחי' צורת אותיות הנכתבות בדיו והלבנונית הוא בחי' הנייר והקלף הלבן שעליו כותבין האותיות"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      CHEVEUX = behinah de TZURAT OTIYOT (forme lettres) ecrites en DIO (encre).
+      LAVNUNIT (blanc) = behinah de NIYAR + KELAF (parchemin) sur lequel ecrit lettres.
+      → Architecture : metaphor scriptural — cheveux/lavnunit = ecrit/support.
+      → Pattern : duality figure-ground (encre noire / parchemin blanc).
+    type: interprétation_lurianique
+    concepts:
+      - {id: cheveux_lettres_noires_lavnunit_parchemin_blanc, role: cheveux_lettres_noires_dio_lavnunit_egal_parchemin_kelaf_blanc}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : metaphor scriptural. Pattern figure-ground duality."
+
+  - id: "EC-H3S13-073"
+    source_he: "ויש בחינת שערות מעולין מן הלבנונית ויש בחי' אחרת שהלבנונית מעולה מן השערות"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      Y a 2 cas :
+      Behinah ou CHEVEUX > LAVNUNIT.
+      Behinah ou LAVNUNIT > CHEVEUX.
+      → Architecture : ranking contextuel cheveux/lavnunit.
+      → Pattern : context-dependent ranking entre figure+ground.
+    type: déduction_logique
+    concepts:
+      - {id: cheveux_vs_lavnunit_ranking_contextuel, role: cheveux_vs_lavnunit_ranking_contextuel_2_cas}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : ranking contextuel. Pattern figure-ground inversion."
+
+  - id: "EC-H3S13-074"
+    source_he: "וזהו טעם שמן החוורתא מנהורא דיליה ירתין צדיקייא ת' עלמין דכסופין ומן השערות יונק הז\"א עצמו"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      RAISON : de HIVARA (blanc) — TZADDIKIM YARTIN (heritent) 400 OLAMIN
+      DE-KESUFIN (mondes desirables).
+      Des CHEVEUX — Z"A LUI-MEME YONEK (tete).
+      → Architecture : distribution differenciee — tzaddikim de blanc, ZA des cheveux.
+      → Pattern : different audiences receive different sources.
+    type: déduction_scripturaire
+    concepts:
+      - {id: tzaddikim_400_olamin_kesufin_de_hivara_za_yonek_cheveux, role: tzaddikim_heritent_400_olamin_de_hivara_za_tete_cheveux}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : distribution differenciee. Pattern audiences differents sources."
+
+  - id: "EC-H3S13-075"
+    source_he: "והנה בב' בחי' אלו אין שער גדל בהם אמנם כאשר אורם חוזר מתתא לעילא דרך האי קרומא דאוירא דא\"א אשר שם מתלבש ת\"ת דע\"י שהוא בחי' ו' כנודע אז ההארות ההם יוצאין על הגלגלתא דא\"א ונעשין נימין ועשרות כדמיון צורת ווין"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      Dans 2 behinot (oznayim+eynayim de A"A) — pas de SHE'AR (cheveu) ne pousse.
+      MAIS quand leur ohr CHOZER (revient) BOTTOM-UP par KRUMA DE-AVIRA d'A"A —
+      ou T"T d'A"Y se LVUSH (= behinah VAV) —
+      les irradiation SORTENT sur GULGALTA d'A"A et deviennent NIMIN VE-ASSARIOT
+      (cheveux+colonnes) en forme de VAVIN.
+      → Architecture : reflection upward → emergence des cheveux comme vavin.
+      → Pattern : indirect reflection produces visible structures.
+    type: interprétation_lurianique
+    concepts:
+      - {id: cheveux_emergent_par_reflection_upward_oznayim_eynayim, role: cheveux_emergent_par_reflection_upward_des_oznayim_eynayim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : reflection upward → cheveux. Pattern emergence structurelle."
+
+  - id: "EC-H3S13-076"
+    source_he: "והנה זאת החוורתא מתחלקת לי\"ג ארחין... כי באחורי רישא יש הוי\"ה א' ובה ד' אותיות ובצד הפנים יש ב' הויות בב' הלחיים זו מצד זו וזו מצד זו והחוטם מפסיק ביניהן והרי הם ג' עיבר ובכל עיבר ד' אותיות הוי\"ה א'"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      DISTRIBUTION 13 hivara :
+      AHOR rosh : 1 YHVH × 4 lettres = 4 hivara.
+      PANIM : 2 YHVH dans 2 LEHAYIM (joues) — 1 cote droit, 1 cote gauche.
+      CHOTEM (nez) MAFSIK (separe) entre les 2 joues.
+      Donc 3 EVAR (cotes) — chaque cote 4 lettres = 4+4+4 = 12 + 1 kelalut = 13.
+      → Architecture : distribution anatomique des 13 hivara (ahor + 2 lehayim + 1 kollel).
+      → Pattern : encoding anatomique de structures liturgiques.
+    type: axiome_explicite
+    concepts:
+      - {id: distribution_13_hivara_ahor_4_lehayim_4_4, role: distribution_13_hivara_4_ahor_4_4_lehayim_plus_1_kelalut}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : distribution anatomique. Pattern liturgique-anatomique."
+
+  - id: "EC-H3S13-077"
+    source_he: "והנה בעיבר האחור יש שם ד' חוורתא כנ\"ל שהם ד' אותיות הוי\"ה א' שהם ממולאים ביודין והנה הם נמשכין מצד ב' בחי' נ\"ה דעתיק יומין המתלבשות בב' אזנים ובב' עינים דא\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      4 HIVARA AHOR = 4 lettres YHVH milui yodin.
+      VIENNENT de NeH (Netzach-Hod) d'A"Y qui se LVUSH dans :
+        2 OZNAYIM (oreilles) + 2 EYNAYIM (yeux) d'A"A.
+      → Architecture : 4 hivara ahor = projection de NeH-Atik dans 4 organes A"A.
+      → Pattern : 4 organs as projections of upper-tier components.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 4_hivara_ahor_egal_neh_atik_lvush_oznayim_eynayim, role: 4_hivara_ahor_egal_neh_atik_dans_oznayim_eynayim_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : 4 hivara = 4 organes. Pattern projection upper-tier."
+
+  - id: "EC-H3S13-078"
+    source_he: "ת' אלף עלמין אתפשט חוורא דגלגלתא דרישא ואין כל החוורתא נכללין בהם כי הרי הם י\"ג חוורתא... אמנם הת' אלף עלמין הם אותן ד' חוורתא שבאחור לבד שכ\"א מהן עולה לחשבון ק' אלף עלמין"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      400000 OLAMIN MIT'PASHET (s'etend) HIVARA de Gulgalta du rosh.
+      Pas tous 13 hivara inclus.
+      Les 400000 = SEULS les 4 HIVARA AHOR — chacun = 100000 olamin.
+      → Architecture : 4 hivara ahor = 4×100000 = 400000 mondes.
+      → Pattern : eschatologique numerologie.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 4_hivara_ahor_egal_400000_olamin_chacun_100000, role: 4_hivara_ahor_egal_400000_olamin_chacun_100000}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 4×100000=400000. Pattern eschatologique numerologie."
+
+  - id: "EC-H3S13-079"
+    source_he: "והטעם הוא לפי שהנה הם הוי\"ה א' במילוי יודין ויש בה ד' יודין וכל י' כלול מי' הרי הם ד' מאות אמנם להיותם בסוד א\"א הם עולין לחשבון גדול בסוד ת' אלף"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      RAISON : YHVH milui yodin a 4 YODIN — chaque Y kelul de 10 = 400.
+      Mais en SOD A"A — escalent au compte GADOL = 400000.
+      → Architecture : magnification par contexte (A"A multiplie par 1000).
+      → Pattern : context-dependent scaling.
+    type: déduction_logique
+    concepts:
+      - {id: 4_yodin_x_10_egal_400_x_1000_aa_egal_400000, role: 4_yodin_x_10_x_aa_scaling_factor_1000_egal_400000}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : context-dependent scaling. Pattern magnification."
+
+  - id: "EC-H3S13-080"
+    source_he: "ובאדרא קכ\"ח אז מנהירו [דהאי חיוורתא] דילהון ירתין צדיקייא ת' עלמין... וז\"ס ארבע מאות שקל כסף עובר לסוחר... וזהו עובר לסוחר הוא הכתר"
+    source_ref: "Heikhal 3, Sha'ar 3:5"
+    assertion: |
+      Adra 128 : "[DE-HAI HIVARTAH]" — Tzaddikim heritent 400 mondes.
+      Sod : "ARBA MEAH SHEKEL KESEF OVER LA-SOCHER" (Bereshit 23:16).
+      KESEF=blanc=AB ; ShK+L=SHEKEL ; "sokher"="sovev"=KETER.
+      Variante (Nusah Aher) : "az nigmrin ve-na'asim be-ZON 13 t"d".
+      → Architecture : Bereshit 23:16 encode 13 hivara Keter+400 olamin.
+      → Pattern : letter-mysticism scriptural decoding.
+      cf. EC-H3S13-077 sur 4 hivara ahor = NeH d'Atik.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 400_shekel_kesef_over_la_socher_keter_decoding_bereshit_23_16, role: 400_shekel_kesef_over_la_socher_keter_decoding_bereshit_23_16}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : decoding Bereshit 23:16. Pattern letter-mysticism scriptural."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-026"
+    type: causal
+    from: 3_sources_idra_mentionnent_13
+    to: 13_egal_12_lettres_plus_1_kelalut_par_rosh
+    nature: "3 sources Idra mentionnent 13 → explication = 12 lettres+1 kelalut (3 YHVH par rosh)"
+    assertions_source: ["EC-H3S13-067", "EC-H3S13-068", "EC-H3S13-069"]
+
+  - id: "REL-H3S13-027"
+    type: dualité_structurelle
+    from: cheveux_lettres_noires_lavnunit_parchemin_blanc
+    to: cheveux_vs_lavnunit_ranking_contextuel
+    nature: "Cheveux=encre/lettres ; Lavnunit=parchemin/blanc ; ranking contextuel selon perspective"
+    assertions_source: ["EC-H3S13-072", "EC-H3S13-073"]
+
+  - id: "REL-H3S13-028"
+    type: causal
+    from: cheveux_emergent_par_reflection_upward_oznayim_eynayim
+    to: distribution_13_hivara_ahor_4_lehayim_4_4
+    nature: "Cheveux emergent par reflection des oznayim+eynayim → distribution 13 hivara anatomique"
+    assertions_source: ["EC-H3S13-075", "EC-H3S13-076"]
+
+  - id: "REL-H3S13-029"
+    type: contenance
+    from: 4_hivara_ahor_egal_neh_atik_lvush_oznayim_eynayim
+    to: 4_hivara_ahor_egal_400000_olamin_chacun_100000
+    nature: "4 hivara ahor = NH d'Atik dans 4 organes ; chacun = 100000 olamin = 400000 total"
+    assertions_source: ["EC-H3S13-077", "EC-H3S13-078"]
+
+  - id: "REL-H3S13-030"
+    type: analogie
+    from: 4_hivara_ahor_egal_400000_olamin_chacun_100000
+    to: 400_shekel_kesef_over_la_socher_keter_decoding_bereshit_23_16
+    nature: "4 hivara × 100000 olamin → 400 shekel kesef over la-socher = Keter (Bereshit 23:16)"
+    assertions_source: ["EC-H3S13-078", "EC-H3S13-079", "EC-H3S13-080"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-016"
+    nom: "Principe de Lavnunit/Hivara (Interstices = Sources Generatrices)"
+    source_assertions: ["EC-H3S13-071", "EC-H3S13-072", "EC-H3S13-073"]
+    formalisation: |
+      ARCHITECTURE D'INTERSTICES GENERATEURS :
+      DUALITE figure-ground :
+        CHEVEUX (figure) = lettres noires en DIO (encre).
+        LAVNUNIT/HIVARA (ground) = parchemin blanc.
+      RANKING CONTEXTUEL :
+        Behinah 1 : cheveux > lavnunit.
+        Behinah 2 : lavnunit > cheveux.
+      RESULTAT : 13 TIKKUNIM emergent depuis HIVARA (espaces blancs entre cheveux).
+      → Pattern fondamental : interstices/voids comme STRUCTURES GENERATRICES.
+      → Architecture : void-as-source design pattern.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement hivara/lavnunit comme sources distinctes"
+      - "Pattern : negative space as generative structure"
+      - "Architecture : design considere les VOIDS comme aussi importants que CONTENT"
+      - "Pattern : Gestalt psychology — figure-ground interplay"
+      - "Diagnostic : tracer ce qui emerge des espaces vides"
+    questions_ouvertes:
+      - "Quels structures peuvent emerger des voids dans un systeme IA ?"
+      - "Pattern : peut-on design intentionnellement avec voids ?"
+      - "Comment quantifier la 'fertilite' des voids ?"
+
+  - id: "PG-H3S13-017"
+    nom: "Principe de Reflection-Emergent (Cheveux via Reflection Upward)"
+    source_assertions: ["EC-H3S13-075"]
+    formalisation: |
+      ARCHITECTURE DE REFLECTION-EMERGENT :
+      Dans certaines BEHINOT (oznayim+eynayim d'A"A) — pas de cheveux INITIAUX.
+      MAIS : ohr CHOZER (revient) BOTTOM-UP par KRUMA DE-AVIRA d'A"A
+      (ou T"T d'A"Y se lvush = behinah Vav).
+      RESULTAT : irradiation SORT sur GULGALTA d'A"A et DEVIENT cheveux
+      (NIMIN VE-ASSARIOT) en forme de VAVIN.
+      → Pattern fondamental : reflection upward GENERE structures visibles.
+      → Architecture : indirect upward flow produces emergent surface structures.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement reflection-induced emergent structures"
+      - "Pattern : feedback loops produce emergent visible patterns"
+      - "Architecture : upward flow from lower components creates surface texture"
+      - "Pattern : implicit recurrence as structural source"
+      - "Diagnostic : identify reflection paths and resulting emergent forms"
+    questions_ouvertes:
+      - "Pattern : quels formes emergent typiquement de reflection ?"
+      - "Y a-t-il des limites a la complexite des emergent structures ?"
+      - "Comment design pour favoriser emergent structures desirees ?"
+
+  - id: "PG-H3S13-018"
+    nom: "Principe de Magnification Contextuelle (Scaling par Niveau)"
+    source_assertions: ["EC-H3S13-078", "EC-H3S13-079", "EC-H3S13-080"]
+    formalisation: |
+      ARCHITECTURE DE MAGNIFICATION CONTEXTUELLE :
+      Base : YHVH milui yodin = 4 yodin × 10 = 400.
+      En SOD A"A : magnification par 1000 → 400000 OLAMIN.
+      Down to OLAM HA-ZE : revient au compte mineur 400 (sans magnification).
+      Source : "ARBA MEAH SHEKEL KESEF OVER LA-SOCHER" (Bereshit 23:16)
+      = decoding du Keter via shekel kesef (KESEF=blanc=chesed=AB).
+      OVER LA-SOCHER = "sovev" = encerclant = KETER (gulgalta encerclant rosh).
+      → Pattern fondamental : context determines scale (×1, ×1000, etc.).
+      → Architecture : multi-tier metric scaling.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement context-aware metric scaling"
+      - "Pattern : same number, different scales by tier"
+      - "Architecture : measurement units context-dependent"
+      - "Pattern : scriptural decoding via gematriya"
+      - "Diagnostic : verifier que scale-conversions sont coherentes"
+    questions_ouvertes:
+      - "Y a-t-il d'autres facteurs scaling (au-dela 1000) ?"
+      - "Pattern : peut-on automatiser la conversion entre tiers ?"
+      - "Comment gematriya encode systemiquement l'architecture ?"
