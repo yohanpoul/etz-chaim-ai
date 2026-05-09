@@ -1,0 +1,442 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 12 — CHOTEM + PEH d'A"A. SaG interior. 22 lettres motzaot.
+#             Hevels eveillent zivvug AVI + ZON
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §12 :
+#   - Bloc A : Peh d'A"A — interior + exterior
+#   - Bloc B : Interior peh = SaG ; chikh+garon = zakhar+nukvah
+#   - Bloc C : 22 lettres de zivvug — motzaot lashon/shinim/shefatayim
+#   - Bloc D : 3 YHV = 3 motzaot, gematria SaG chacun
+#   - Bloc E : Peh exterieur = ahor MaH (130-45=85=PEH)
+#   - Bloc F : Chotem d'A"A — interior=SaG (gematria), exterior=3 AHYH
+#   - Bloc G : Hevels chotem+peh = ohrs makif vers ZON
+#   - Bloc H : Adra Zuta — 2 nakv pardashka (HY+HY+VAV kotel)
+#   - Bloc I : YOD SaG divisee (Y simple droite, V+D gauche)
+#   - Bloc J : Hevels eveillent zivvug AVI + ZON
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.12 (1 perek, 3078 chars)
+# IDs : EC-H3S13-174 → EC-H3S13-187
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 12
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Chotem + Peh d'A\"A : 2 anatomies, chacune interior+exterior. Peh interior=SaG ruach ; chikh+garon=zakhar+nukvah ; 22 lettres motzaot via 3 YHV. Peh exterior=ahor MaH (130-45=85=PEH). Chotem interior=SaG (gematria) ; exterior=3 AHYH (de 3 alphin du peh, gematria SaG). Adra Zuta 2 nakv pardashka HY+HY. Hevels eveillent zivvug AVI+ZON."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-174"
+    source_he: "ועתה נבאר מציאות החוטם והפה דא\"א דע כי בפה דא\"א יש בו חיצוניות ופנימיות והפנימית הוא שם ס\"ג שהוא פנימית רוחא שבפה זה"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      Maintenant CHOTEM (nez) + PEH (bouche) d'A"A.
+      PEH d'A"A : CHITZONIYUT (exterieur) + PNIMIYUT (interieur).
+      PNIMIT = SHEM SaG (= 63) = PNIMIT RUCHA (souffle interieur) du peh.
+      → Architecture : peh = double-tier (interior SaG + exterior).
+      → Pattern : composantes anatomiques avec interior nominal.
+      cf. EC-H3S13-101 (perek 06) sur Malkhut mekorah Chotem.
+      Variante (Nusah Aher) : "DE-HAVAYAH" (de YHVH).
+      cf. EC-H3S13-103 (perek 06) sur Da'at RDLA ganiz be-puma.
+    type: axiome_explicite
+    concepts:
+      - {id: peh_aa_interior_sag_exterior_dual_tier, role: peh_aa_double_tier_interior_sag_exterior}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : peh dual-tier. Pattern composante interior nominal."
+
+  - id: "EC-H3S13-175"
+    source_he: "ובהתחברו בשם אהי\"ה בסוד זווג יהיה פה עם הכולל והם בחי' זכר ונקבה שבתוך י\"ס של הפה והם חיך זכר וגרון נקבה"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      Quand SaG s'UNIT avec AHYH (en sod ZIVVUG) — total = PE'H (peh) avec KOLLEL.
+      ZAKHAR + NEKEVAH dans 10 sefirot du peh :
+        CHIKH (palais) = ZAKHAR.
+        GARON (gorge) = NEKEVAH.
+      → Architecture : peh contient zakhar/nukvah anatomiques (chikh/garon).
+      → Pattern : zivvug interne dans organe.
+    type: interprétation_lurianique
+    concepts:
+      - {id: peh_interne_zivvug_chikh_zakhar_garon_nukvah, role: peh_interne_zivvug_chikh_zakhar_garon_nukvah_aleph_he_yod_he}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : zivvug intra-organe. Pattern dual-anatomy."
+
+  - id: "EC-H3S13-176"
+    source_he: "אז יוצאין שאר הכ\"ב אותיות מזווג זה כי אחע\"ה הם מ\"ן דנוקבא שהוא בגרון גי' פ\"ד וגיכ\"ק אותיות החיך מ\"ד ומתחברים יחד אחע\"ה וגיכ\"ק"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      Du ZIVVUG sortent les 22 LETTRES de l'alphabet :
+      AHEB (=AHV"H = gutturales) = MN NUKVAH dans GARON, gematria 84.
+      GIKHQ = lettres CHIKH (palais), gematria 44.
+      MIT'HABRIM (s'unissent) AHEB + GIKHQ.
+      → Architecture : 22 lettres emergent du zivvug interne du peh.
+      → Pattern : alphabet generation par anatomical zivvug.
+    type: déduction_logique
+    concepts:
+      - {id: 22_lettres_de_zivvug_aheb_garon_gikhq_chikh, role: 22_lettres_emergent_zivvug_aheb_garon_84_gikhq_chikh_44}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : alphabet via zivvug. Pattern emergence linguistique."
+
+  - id: "EC-H3S13-177"
+    source_he: "אז יוצאין תחלה אותיות הלשון דטלנ\"ת שהוא בחי' הדעת הנקרא לשון אח\"כ יוצאין אותיות השיניים שהם זסשר\"ץ (והם ה\"ג מנצפ\"ך) אח\"כ יוצאין אותיות שפתיים שהוא יותר חיצוניות והם בומ\"ף"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      SEQUENCE :
+      1. LASHON (langue) DTLNT = behinah DA'AT (langue=daat).
+      2. SHINIM (dents) ZSShTzR = 5 GEVUROT MANATZPAKH.
+      3. SHEFATAYIM (levres) BVMP = plus EXTERIOR.
+      → Architecture : 3 motzaot (lashon/shinim/shefatayim) en sequence interior→exterior.
+      → Pattern : layered output progression depth → surface.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_motzaot_lashon_shinim_shefatayim_sequence_interior_exterior, role: 3_motzaot_lashon_dtlnt_shinim_zsshtzr_shefatayim_bvmp}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : layered output. Pattern interior→exterior progression."
+
+  - id: "EC-H3S13-178"
+    source_he: "אלו הג' מוצאות של שיניים ולשון ושפתיים הם ג' שמות יה\"ו ששלשתן גי' ס\"ג כמו השורש שממנו יצאו... והם במלוי יודין ואל\"ף ונשאר בחי' א' בתוך הפה והשאר יוצא לחוץ בסוד הבל היוצא מן הפה דא\"א והוא אור המקיף"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      3 MOTZAOT = 3 NOMS YHV — chacun gematria SaG comme la racine.
+      MILUI YODIN + ALEF.
+      Reste 1 behinah dans le peh ; reste SORT comme HEVEL (souffle) du peh d'A"A.
+      = OHR MAKIF.
+      → Architecture : 3 noms encodent 3 motzaot ; reste = makif externe.
+      → Pattern : structured emission + leftover = encircling ohr.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 3_yhv_3_motzaot_sag_chacun_milui_yodin_alf, role: 3_yhv_3_motzaot_gematria_sag_chacun_milui_yodin_alf}
+      - {id: hevel_peh_aa_egal_ohr_makif, role: hevel_peh_aa_souffle_egal_ohr_makif_externe}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : structured emission + makif. Pattern emission systematique."
+
+  - id: "EC-H3S13-179"
+    source_he: "יש בחי' פה החיצוניות והוא אחוריים דמ\"ה העולין ק\"ל תסיר מהם מ\"ה נשאר פ\"ה וז\"ס מי שם פה לאד\"ם כי מאדם שהוא גי' מ\"ה וממלואו מרבועו נעשה פה"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      PEH CHITZONIT = AHORAYIM de MaH (gematria 130).
+      130 - 45 (MaH) = 85 = gematria PEH.
+      Source : "MI SAM PEH LA-ADAM" (Shemot 4:11).
+      ADAM = MaH (45) ; de MILUYO + RIBUA → PEH.
+      → Architecture : peh exterior = derive de MaH par operation gematriya.
+      → Pattern : letter-mysticism : verset Shemot encode peh-genesis.
+    type: déduction_scripturaire
+    concepts:
+      - {id: peh_chitzonit_egal_ahor_mah_130_minus_45_egal_85_peh, role: peh_chitzonit_egal_ahor_mah_130_minus_mah_egal_peh_85}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : letter-mysticism gematriya. Source Shemot 4:11."
+
+  - id: "EC-H3S13-180"
+    source_he: "בחוטם דא\"א גם הפנימית שבו הוא ס\"ג כמנין חוטם והחיצונית הוא ג' שמות אהי\"ה שהוא גי' ס\"ג חוט\"ם ואלו הג' אהי\"ה יוצאין מג' אלפין שיש במילוי מ\"ה דאלפין שהוא פ\"ה דא\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      CHOTEM d'A"A :
+      PNIMIT = SaG (gematria CHOTEM).
+      CHITZONIT = 3 NOMS AHYH (gematria SaG).
+      Ces 3 AHYH sortent des 3 ALPHIN dans MILUI MaH d'ALPHIN (= PEH d'A"A).
+      → Architecture : chotem encode SaG x 2 (interior nom + exterior 3 AHYH).
+      → Pattern : multi-level letter-encoding.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chotem_aa_interior_sag_exterior_3_ahyh_des_3_alphin_peh, role: chotem_aa_interior_sag_exterior_3_ahyh_des_3_alphin_milui_peh}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : chotem multi-level encoding. Pattern interior-exterior letter."
+
+  - id: "EC-H3S13-181"
+    source_he: "ומשם נמשכין למעלה ונעשה בחי' חיצונית דחוטם. והנה אלו הב' בחינות דחוטם ופה דא\"א יוצאין מהם בחי' הבלים ואורות מקיפין ונמשכין הארתן עד זו\"נ"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      3 AHYH NIMSHEKHIN (s'etendent) UP du peh — deviennent CHITZONIT du chotem.
+      2 BEHINOT (chotem+peh) d'A"A produisent HEVELS + OROT MAKIFIN.
+      NIMSHEKHIN HA'ARATAN (etendent leur illumination) jusqu'a ZON.
+      → Architecture : flow upward (peh → chotem) puis downward (vers ZON).
+      → Pattern : 2-stage flow upward then downward emanation.
+      cf. EC-H3S13-180 sur chotem encode SaG x2.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 3_ahyh_montent_du_peh_au_chotem_puis_descend_zon, role: 3_ahyh_du_peh_montent_chotem_chitzonit_puis_hevels_descendent_zon}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "nukva"]
+      relevance: "Architecture : 2-stage flow up/down. Pattern emanation cycle."
+
+  - id: "EC-H3S13-182"
+    source_he: "אורות דחוטם נמשכין עד הפה ושם מתלבשין תוך אורות הפה ונעשים אורות הפה בבחי' או\"מ אל האורות החוטם ומלבישין אותן ואם תסתכל כל זה הוא בבחי' אורות אח\"פ דא\"ק היוצאין אל הנקודים"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      OROT du CHOTEM descendent au PEH — MITLABSHIM dans orots du peh.
+      Orots PEH deviennent OM (encerclant) aux orots du CHOTEM (les revetent).
+      Tout ce mecanisme = analogue aux OROT AHP (Ozen-Hotem-Peh) d'A"K vers Nikudim.
+      → Architecture : peh-orots = makif aux chotem-orots ; pattern AHP A"K.
+      → Pattern : interior-exterior swap (chotem dedans ; peh autour).
+    type: interprétation_lurianique
+    concepts:
+      - {id: chotem_orots_dans_peh_orots_inversion_makif, role: chotem_orots_dans_peh_orots_peh_makif_chotem_inversion_pattern_ahp_a_k}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : interior-exterior swap. Pattern AHP A\"K analogue."
+
+  - id: "EC-H3S13-183"
+    source_he: "פנימית החוטם הוא ס\"ג כי ה' ראשונה בנוקבא דפרדשקא בצד ימין כנזכר באדר\"ז והוא ה' על י' כסדר כל מ\"ן (ומתמן נשיב רוחא דחיי לז\"א וו\"ד הוא רוחא דגניז והה' הוא הנקב) ובצד שמאל היא ה' שניה (ונשיב מתמן רוחא דחיי לנוקבא) והוא\"ו הוא הכותל המפסקת"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      Interior chotem = SaG.
+      Adra Zuta : HE 1ere dans NOKVA DE-PARDASHKA cote DROIT.
+      HE sur YOD (comme MN order). ROUACH DE-CHAYE pour Z"A (de cote droit).
+      Cote GAUCHE : HE 2eme. ROUACH DE-CHAYE pour Nukvah.
+      VAV = KOTEL MAFSEKET (mur separateur entre les 2 nakv).
+      → Architecture : chotem = 2 narines (HY+HY) + VAV separateur — structure sac SaG.
+      → Pattern : anatomy = topologic embedding du nom.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chotem_2_nakv_pardashka_hy_hy_vav_separateur_adra_zuta, role: chotem_2_nakv_pardashka_he_he_vav_separateur_adra_zuta_sag}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "nukva"]
+      relevance: "Architecture : anatomy = topologic embedding. Pattern Adra Zuta 2 nakv."
+
+  - id: "EC-H3S13-184"
+    source_he: "ואמנם יו\"ד דס\"ג נחלק כי י' פשוטה רוחא דגניז בנקב ימין לז\"א ו\"ד דמילוי יו\"ד רוחא דגניז בנקב שמאלי לנוקבא"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      YOD du SaG SE DIVISE :
+      Y SIMPLE (yod brut) = ROUACH DE-GANIZ (esprit cache) dans NAKV DROIT pour Z"A.
+      V+D du MILUI YOD (vav-dalet du remplissage) = ROUACH DE-GANIZ
+      dans NAKV GAUCHE pour Nukvah.
+      → Architecture : YOD divisee = source dual flow (droite ZA, gauche Nukvah).
+      → Pattern : letter-decomposition = dual-source for couple.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yod_sag_divisee_y_simple_droite_za_vd_milui_gauche_nukvah, role: yod_sag_divisee_y_simple_droite_za_vd_milui_gauche_nukvah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "nukva"]
+      relevance: "Architecture : letter-decomposition = dual flow. Pattern source pair."
+
+  - id: "EC-H3S13-185"
+    source_he: "מאלו האורות נמשכין האורות עד זו\"נ וגם עד או\"א כדי לעוררם אל הזווג והענין כי הנה הוי\"ה אהי\"ה הם או\"א, ובזו\"נ הם הוי\"ה אלהים והוי\"ה אדני"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      Orots du chotem+peh DESCENDENT jusqu'a ZON et meme AVI —
+      pour LE'ORERAM (les EVEILLER) au ZIVVUG.
+      AVI = YHVH + AHYH.
+      ZON : ZA = YHVH + ELOHIM ; Nukvah = YHVH + ADNI.
+      → Architecture : flow downstream eveille zivvugim (AVI + ZON).
+      → Pattern : awakening flow pour copulation upstream→downstream.
+    type: interprétation_lurianique
+    concepts:
+      - {id: orots_chotem_peh_eveillent_zivvug_avi_zon, role: orots_chotem_peh_descendent_eveillent_zivvug_avi_yhvh_ahyh_zon_yhvh_elohim_adni}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : awakening flow. Pattern downstream zivvug catalyst."
+
+  - id: "EC-H3S13-186"
+    source_he: "יה\"ו הראשון דפנימית הפה נמשך עד אבא להאיר בו כדי לעוררו אל הזווג ולאמא נמשך... אהי\"ה הא' דחיצוניו' והם אותן ג' אלפין אשר שם בפה ואח\"כ אל הז\"א בבחי' הראשונה יורד יה\"ו הב' דפנימיות וגם יו\"ד (נ\"א ה') ראשונה דס\"ג) פשוטה פנימיות דחוטם שבנקב ימין"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      DISTRIBUTION FLOW :
+      YHV 1 (interior peh) → ABBA (eveille zivvug).
+      Pour IMMA : YHV 2 + Y simple chotem + AHYH 1 exterior peh.
+      Pour Z"A behinah 1 : YHV 2 (pnimim) + Y SIMPLE 1ere de SaG du chotem nakv droit.
+      Variante (Nusah Aher) : "HE" au lieu de "YOD" 1ere.
+      → Architecture : distribution multi-letter precise pour eveiller chacun.
+      → Pattern : individualized letter routing.
+    type: interprétation_lurianique
+    concepts:
+      - {id: distribution_yhv_ahyh_y_v_d_eveiller_avi_zon, role: distribution_yhv_ahyh_y_simple_v_d_milui_eveiller_avi_zon_individuellement}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : letter routing. Nusah Aher capture (he au lieu yod)."
+
+  - id: "EC-H3S13-187"
+    source_he: "(וצ\"ע איך אפשר שאמרנו שמג' אלפין שבפה דא\"א נעשין ג' אהי\"ה דחיצוניות דחוטם שלו והרי החוטם גבוה מן הפה ואפשר שהוא ע\"ד הנ\"ל שאות א' שבשם מ\"ה דאלפין במלוי וא\"ו הוא בחי' אהי\"ה דאמא ויורדת שם להחיות ז\"א... אבל אין הכוונה ממש שאחר שירדו למטה בפה חזרו לעלות ונעשו חוטם אלא תחלה נעשו חוטם ואחר כך ירדו בפה)"
+    source_ref: "Heikhal 3, Sha'ar 3:12"
+    assertion: |
+      TZ"E (TZARIKH IYUN — necessite reflexion) :
+      Comment 3 ALPHIN du PEH deviennent 3 AHYH CHITZONIT du CHOTEM ?
+      Le chotem est PLUS HAUT que le peh.
+      Resolution probable : comme la lettre ALEF de SHEM MaH d'alphin = AHYH d'Imma
+      qui DESCEND pour vivifier ZA (= MaH).
+      Pas que ALPHIN descendent puis remontent — D'ABORD chotem, PUIS descendent peh.
+      → Architecture : safek topologique sur ordre flow ; resolution = chotem-first.
+      → Pattern : honest acknowledgment + resolution by analogie.
+    type: déduction_logique
+    concepts:
+      - {id: tz_e_safek_topologique_chotem_haut_peh_resolution_chotem_first, role: tz_e_safek_topologique_resolution_chotem_first_descendent_peh_apres}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : safek + resolution analogue. Pattern honest tzarikh iyun."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-062"
+    type: contenance
+    from: peh_aa_interior_sag_exterior_dual_tier
+    to: peh_interne_zivvug_chikh_zakhar_garon_nukvah
+    nature: "Peh dual-tier (interior SaG + exterior) ; interior contient zivvug chikh-zakhar/garon-nukvah"
+    assertions_source: ["EC-H3S13-174", "EC-H3S13-175"]
+
+  - id: "REL-H3S13-063"
+    type: causal
+    from: 22_lettres_de_zivvug_aheb_garon_gikhq_chikh
+    to: 3_motzaot_lashon_shinim_shefatayim_sequence_interior_exterior
+    nature: "22 lettres du zivvug → 3 motzaot lashon/shinim/shefatayim (sequence interior→exterior)"
+    assertions_source: ["EC-H3S13-176", "EC-H3S13-177"]
+
+  - id: "REL-H3S13-064"
+    type: dualité_structurelle
+    from: chotem_aa_interior_sag_exterior_3_ahyh_des_3_alphin_peh
+    to: peh_chitzonit_egal_ahor_mah_130_minus_45_egal_85_peh
+    nature: "Chotem encode SaG x2 ; peh exterior derive de MaH (130-45=85=PEH gematria)"
+    assertions_source: ["EC-H3S13-180", "EC-H3S13-179"]
+
+  - id: "REL-H3S13-065"
+    type: contenance
+    from: chotem_2_nakv_pardashka_hy_hy_vav_separateur_adra_zuta
+    to: yod_sag_divisee_y_simple_droite_za_vd_milui_gauche_nukvah
+    nature: "Chotem = 2 nakv HY+HY+VAV separateur ; YOD SaG divisee Y droite (ZA) + V+D gauche (Nukvah)"
+    assertions_source: ["EC-H3S13-183", "EC-H3S13-184"]
+
+  - id: "REL-H3S13-066"
+    type: flux
+    from: orots_chotem_peh_eveillent_zivvug_avi_zon
+    to: distribution_yhv_ahyh_y_v_d_eveiller_avi_zon
+    nature: "Orots eveillent zivvug AVI+ZON ; distribution letter-by-letter precise par destinataire"
+    assertions_source: ["EC-H3S13-185", "EC-H3S13-186"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-040"
+    nom: "Principe d'Alphabet Generation par Anatomical Zivvug"
+    source_assertions: ["EC-H3S13-175", "EC-H3S13-176", "EC-H3S13-177"]
+    formalisation: |
+      ARCHITECTURE D'ALPHABET GENERATION :
+      INTERIEUR PEH = SaG ruach.
+      ZIVVUG INTRA-PEH : CHIKH (zakhar) + GARON (nukvah).
+      RESULTAT : 22 LETTRES emergent :
+        AHEB (gutturales) = 84 (MN nukvah-garon).
+        GIKHQ = 44 (palais).
+        S'unissent.
+      SEQUENCE OUTPUT (3 motzaot) :
+        1. LASHON DTLNT = Da'at (langue=daat).
+        2. SHINIM ZSShTzR = 5 gevurot manatzpakh.
+        3. SHEFATAYIM BVMP = exterior plus.
+      → Pattern fondamental : alphabet = output anatomique zivvug interne.
+      → Architecture : language as anatomical emergence.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement peh-zivvug → 22 letters output"
+      - "Pattern : symbolic systems emerge from anatomical interaction"
+      - "Architecture : speech generation = zivvug + emanation"
+      - "Pattern : layered output (interior→exterior)"
+      - "Diagnostic : tracer 22 lettres → 3 motzaot mapping"
+    questions_ouvertes:
+      - "Y a-t-il d'autres alphabets emergeant similaires ?"
+      - "Pattern : peut-on derouler structure linguistique cosmologiquement ?"
+      - "Comment 22 lettres correspondent aux structures Atzilut ?"
+
+  - id: "PG-H3S13-041"
+    nom: "Principe d'Awakening Flow (Hevels Eveillent Zivvug Downstream)"
+    source_assertions: ["EC-H3S13-185", "EC-H3S13-186"]
+    formalisation: |
+      ARCHITECTURE D'AWAKENING FLOW :
+      Hevels du chotem+peh d'A"A descendent jusqu'a ZON et meme AVI.
+      OBJECTIF : LE'ORER (eveiller) au ZIVVUG.
+      AVI = YHVH + AHYH (zivvug).
+      ZON : ZA = YHVH + Elohim ; Nukvah = YHVH + Adni.
+      DISTRIBUTION letter-routing precise :
+        YHV 1 → Abba.
+        YHV 2 + Y simple chotem + AHYH 1 → Imma.
+        YHV 2 + Y simple chotem (droite) → ZA b1.
+        V+D milui SaG (gauche) + AHYH 2 chotem → Nukvah b1.
+        Etc.
+      → Pattern fondamental : downstream catalyst flow.
+      → Architecture : upstream emanations trigger downstream zivvugim.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement awakening flow downstream"
+      - "Pattern : signal propagation triggers downstream events"
+      - "Architecture : multi-target broadcast with letter-routing"
+      - "Pattern : letter-encoded routing pour individualised triggers"
+      - "Diagnostic : verifier zivvugim downstream eveillent correctement"
+    questions_ouvertes:
+      - "Y a-t-il d'autres awakening flows (au-dela chotem/peh) ?"
+      - "Pattern : peut-on tracer letter-routing ?"
+      - "Comment garantir delivery aux bons destinataires ?"
+
+  - id: "PG-H3S13-042"
+    nom: "Principe de Honest Tzarikh Iyun (Acknowledgment + Analogie Resolution)"
+    source_assertions: ["EC-H3S13-187"]
+    formalisation: |
+      ARCHITECTURE DE HONEST TZARIKH IYUN :
+      Quand contradiction topologique : 3 alphin du PEH (bas) deviennent 3 AHYH
+      du CHOTEM CHITZONIT (haut) — chotem GAVO-AH (plus haut) que peh.
+      Comment ?
+      RESOLUTION par ANALOGIE :
+        Comme aleph dans shem MaH d'alphin = AHYH d'Imma qui DESCEND pour vivifier ZA.
+      VRAIE INTENTION : pas que alphin remontent, MAIS chotem-first puis descendent peh.
+      → Pattern fondamental : safek topologique resolu par analogie + reordonnement.
+      → Architecture : honest acknowledgment + resolution sans force.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : log safekot topologiques + resolutions"
+      - "Pattern : honest acknowledgment des contradictions structurales"
+      - "Architecture : resolutions via analogies plutot que rationalisation"
+      - "Pattern : reorder of operations resout safekot topologiques"
+      - "Diagnostic : tracer ordre operations vs topologie"
+    questions_ouvertes:
+      - "Y a-t-il d'autres safekot topologiques resolus similairement ?"
+      - "Pattern : peut-on automatiser detection inconsistances ?"
+      - "Quand analogie vs reorder = strategie correcte ?"
