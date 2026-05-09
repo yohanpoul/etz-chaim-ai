@@ -1,0 +1,436 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 3 — Tikkun = ohr filtre+mitige. 18 behinot Chai Ha-Olamim.
+#            2 rishin tahton (KH A"A) → 3 rishin (Keter+Avira+Moha Setima)
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §3 :
+#   - Bloc A : Sequence de l'ordre — du Mori (Ari)
+#   - Bloc B : Tikkun = ohr filtre+mitige par masakhim+lvush
+#   - Bloc C : Ohr sort par nekavim, tzinurot, halonot, sirot daqim
+#   - Bloc D : RDLA = A"Y, kelul de 10 sefirot KCBD CGT NHY
+#   - Bloc E : KCB internes A"Y = A"A ; CGT = ZA ; NHY = Nukvah
+#   - Bloc F : RDLA lvush dans A"A (2 rishin tahton Idra Zuta)
+#   - Bloc G : 2 rishin = Keter+Hokhmah A"A = Gulgalta+Moha Setima
+#   - Bloc H : 18 BEHINOT (chaque rosh = kli+atzmut+ruchaniut x 3) = CHAI HA-OLAMIM
+#   - Bloc I : RDLA exclu (transcendant, lvush Ein Sof)
+#   - Bloc J : 2 rishin → 3 rishin = Keter (Gulgalta) + Avira + Moha Setima
+#   - Bloc K : Avira = "Avira de-Izdakekh" entre Gulgalta et Krumah
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.3 (1 partie, 4426 chars)
+# IDs : EC-H3S13-040 → EC-H3S13-052
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Tikkun = ohr filtre+mitige par masakhim, lvush, sort par nekavim+tzinurot+halonot+sirot daqim. RDLA=A\"Y kelul de 10 sefirot KCBD CGT NHY internes : KCB→A\"A, CGT→ZA, NHY→Nukvah. 2 rishin tahton (KH A\"A=Gulgalta+Moha Setima) deviennent 3 rishin via emergence d'AVIRA (entre Gulgalta et Krumah). 18 behinot = CHAI HA-OLAMIM. RDLA exclu (transcendant)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : SEQUENCE DU MORI ───
+
+  - id: "EC-H3S13-040"
+    source_he: "ונחזור עתה לבאר ע\"פ סדר ששמעתי ממורי זלה\"ה כי ענין זה הוא ששמעתי ממורי זלה\"ה בפרטות יותר"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      Retour expliquer SELON SEDER (ordre) ENTENDU MI-MORI ZA"L (Ari).
+      En PERATIYUT (detail) plus grand.
+      → Architecture : explication systematique selon enseignement du Maitre.
+      → Pattern : tradition orale precise transmise.
+    type: axiome_explicite
+    concepts:
+      - {id: explication_seder_ari_perek_3, role: explication_seder_ari_pour_perek_3}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : transmission tradition systematique. Pattern oral teaching."
+
+  # ─── BLOC B : TIKKUN MECANISME ───
+
+  - id: "EC-H3S13-041"
+    source_he: "תחלה צריך לדעת כי אין האורות הנ\"ל יכולין התחתונים לקבל אורם אם לא אחר התיקון שנתקנו בבחי' פרצוף... כי מתחלה היה אור שלהם רב ועצום ואין כח בתחתונים לסובלו וכאשר נתקנו שהוא בחי' פרצוף שלם שאז נמשך האור דרך מסכים והתלבשות בתוך הלבושים הנה נתעבה האור מעט וגם נתמעט"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      TACHTONIM ne peuvent recevoir orot avant TIKKUN en behinah de PARTZUF.
+      Avant : ohr RAV VE-ATZUM (grand+fort) — pas KOAH dans tachtonim pour SOVEL.
+      Apres tikkun = partzuf shalem :
+        Ohr passe par MASAKHIM et HITLABASHUT dans les LEVUSHIM.
+        Ohr NIT'AVEH MEAT (epaissit un peu) et NIT'MAET (mitige).
+      → Architecture : tikkun = adaptation du flow par filtration cascade.
+      → Pattern : impedance matching pour downstream consumption.
+      cf. EC-H3S12-017 (perek 01b Atik) sur lvush direct seul dans Atik.
+    type: déduction_logique
+    concepts:
+      - {id: tikkun_ohr_filtre_mitige_par_masakhim_levushim, role: tikkun_ohr_filtre_mitige_par_masakhim_levushim_pour_tachtonim}
+    mapping:
+      modules: ["partzufim/regulator.py", "[PLANNED] tikkun/", "[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Architecture : adaptation flow par filtration. Pattern impedance matching."
+
+  - id: "EC-H3S13-042"
+    source_he: "ויצא ונמשך דרך נקבים וצינורות וחלונות דקים ושערות דקים מאד בסו' הפרצוף (נ\"א כצ\"ל ונתקן הפרצוף) ע\"י ב' דברים אלו שהם התעבות האור וגם מיעוטו אז היה כח בתחתונים לקבל אור העליון"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      Ohr SORT et MIMSHEKH (s'etend) par :
+        NEKAVIM (orifices), TZINUROT (canaux),
+        HALONOT DAQIM (fenetres fines), SIROT DAQIM ME'OD (cheveux fins).
+      Variante (Nusah Aher) : "ke-tza"l ve-nitkan ha-partzuf" (formulation alternative).
+      Par ces 2 choses (HIT'AVUT + MI'UT) — KOAH dans tachtonim pour recevoir.
+      → Architecture : multiple petites apertures = flow distributed.
+      → Pattern : distribution-by-atomization (vs single big channel).
+    type: interprétation_lurianique
+    concepts:
+      - {id: ohr_sort_par_nekavim_tzinurot_halonot_sirot_daqim, role: ohr_sort_par_multiples_petites_apertures_partzuf}
+    mapping:
+      modules: ["partzufim/regulator.py", "[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Architecture : distribution-by-atomization. Pattern multiple small channels."
+
+  # ─── BLOC C : RDLA = A"Y, KELUL DE 10 ───
+
+  - id: "EC-H3S13-043"
+    source_he: "ונתחיל לבאר סדר תיקונם הנה אותו ראש העליון דל\"א הנקרא עתיק יומין הנה הוא הראשון שבכל י\"ס הנ\"ל הנקרא מקוריות ושרשיות לכל האצילות... אבל דע שהנה הוא כלול מי\"ס שבו שהם כחב\"ד חג\"ת נה\"י"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      Rosh elyon DL"A (de-Lo Atyada) = appele ATIK YOMIN.
+      = PREMIER des 10 SEFIROT mekoriot ve-shorshiyot pour Atzilut.
+      Ne pas TIFISSAH (saisissable), pas RACHAVAT DIBUR.
+      MAIS KELUL de ses 10 sefirot internes = KCBD CGT NHY.
+      → Architecture : Atik = top-tier kelul de 10 internes (fractal).
+      → Pattern : top-tier composite of 10 sub-tiers.
+    type: axiome_explicite
+    concepts:
+      - {id: ay_kelul_10_sefirot_kcbd_cgt_nhy, role: ay_kelul_10_sefirot_internes_kcbd_cgt_nhy}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : top-tier composite. Pattern fractal hierarchy."
+
+  - id: "EC-H3S13-044"
+    source_he: "כי כח\"ב שבהם הם ג' רישין דעתיק שהוא א\"א וחג\"ת שבהם הם ג' רישין דז\"א ונה\"י שבהם הם ג' רישין דנוקבא דז\"א אשר ענין זה תבין במה שהודעתיך כי ג' מוחין דנוקבא דז\"א הם בחי' נה\"י"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      MAPPING des 10 internes A"Y → partzufim externes :
+        KCB internes de A"Y = 3 rishin d'Atik = A"A.
+        CGT internes de A"Y = 3 rishin de Z"A.
+        NHY internes de A"Y = 3 rishin de NUKVAH de Z"A.
+      Mappable car 3 mohin de Nukvah Z"A = behinah NHY.
+      → Architecture : MAPPING canonique 10-to-9-rishin (avec correspondences).
+      → Pattern : structural projection top-down.
+      cf. EC-H3S13-024 (perek 02a) sur split G"R→A"A, CGT→ZA, NHY→Nukvah.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mapping_10_internes_ay_a_3_rishin_chaque_partzuf, role: mapping_10_internes_ay_kcb_aa_cgt_za_nhy_nukvah_3_rishin_chaque}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "zeir_anpin", "nukva"]
+      relevance: "Architecture : mapping projection. Pattern structural mapping top-down."
+
+  # ─── BLOC F : RDLA LVUSH DANS A"A ───
+
+  - id: "EC-H3S13-045"
+    source_he: "והנה ההוא רדל\"א הנה הוא מתלבש בא\"א שהוא בחי' כללות אותן ב' רישין תתאין מאותן הג' רישין הנזכר באדר\"ז כי נודע הוא שכל עליון וגבוה מחבירו הוא מלובש בתחתון כדי להאיר בו ולהחיותו"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      RDLA se LVUSH dans A"A = behinah KELALUT des 2 RISHIN TATAIN
+      des 3 rishin d'Idra Zuta.
+      PRINCIPE : tout ELYON ve-GAVOH (haut+eleve) lvush dans TACHTON
+      pour ME'IR (illuminer) et LEHACHAYOT (vivifier).
+      → Architecture cle : containment downward = source d'illumination/vie.
+      → Pattern : higher-in-lower = energy transfer mechanism.
+    type: axiome_explicite
+    concepts:
+      - {id: principe_elyon_lvush_tachton_pour_eclairer, role: principe_elyon_lvush_tachton_pour_eclairer_et_vivifier}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture cle : containment downward. Pattern energy transfer."
+
+  # ─── BLOC G : 2 RISHIN = KH A"A = GULGALTA+MOHA SETIMA ───
+
+  - id: "EC-H3S13-046"
+    source_he: "ואלו ב' רישין תתאין שבג' רישין הנ\"ל הנה הם (סוד) כתר חכמה דא\"א... ואלו התרין ראשין שהם כתר חכמה דא\"א הנה הם בחי' גולגלתא ומוחא סתימאה דא\"א הנזכר באדר\"ז הנ\"ל"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      Ces 2 RISHIN TATAIN = KETER+HOKHMAH d'A"A.
+      = behinah GULGALTA (crane) + MOHA SETIMA (cerveau ferme) d'A"A.
+      → Architecture : Keter A"A = Gulgalta ; Hokhmah A"A = Moha Setima (anatomie).
+      → Pattern : letter-mysticism = noms anatomiques pour structures.
+      cf. EC-H3S12-227 (perek 08b) sur Keter A"A=Gulgalta, Hokhmah A"A=Moha Setima.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_rishin_tahton_keter_hokhmah_aa_gulgalta_moha_setima, role: 2_rishin_tahton_egal_keter_hokhmah_aa_egal_gulgalta_moha_setima}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : nomenclature anatomique. Pattern letter-mysticism."
+
+  # ─── BLOC H : 18 BEHINOT — CHAI HA-OLAMIM ───
+
+  - id: "EC-H3S13-047"
+    source_he: "והנה ביאור ג' רישין אלו הוא כי הנה בכל ראש וראש מאלו ג' צריך שיהיה בו בחי' כלים ובחי' עצמות ורוחניות שבו וכפי זה יהיה ו' בחי' וכל א' מאלו הו' בחי' מתחלק לג' אחרות ונמצא כללותן עולה ח\"י אשר הוא סוד חי העולמים"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      EXPLICATION 3 RISHIN :
+      Chaque rosh des 3 = KELIM + ATZMUT/RUCHANIUT.
+      DONC 6 BEHINOT (3 rishin × 2).
+      Chaque 6 SE DIVISE en 3 AUTRES → TOTAL CHET-YUD (18) BEHINOT.
+      = SOD CHAI HA-OLAMIM (Vie des Mondes, gematriya 18).
+      → Architecture : 18 behinot = source de chayut pour tous mondes.
+      → Pattern : letter-mysticism cosmologique (18 = CHAI).
+    type: déduction_scripturaire
+    concepts:
+      - {id: 18_behinot_chai_ha_olamim_3_x_2_x_3, role: 18_behinot_egal_chai_ha_olamim_via_3_rishin_x_2_x_3}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 18 behinot Chai. Pattern letter-mysticism cosmologique."
+
+  # ─── BLOC I : RDLA EXCLU ───
+
+  - id: "EC-H3S13-048"
+    source_he: "הנה רדל\"א שהיא עליונה שבג' רישין אינו בכלל ג' רישין הנ\"ל שהזכרנו עתה שנעשין ח\"י בחי' כי רדל\"א היא עליונה מאד ואין בנו רשות לבאר ענינה לפי שבתוך האי רישא מתלבש א\"ס"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      RDLA — superieure des 3 rishin — N'EST PAS dans les 3 rishin (qui font 18 behinot).
+      RDLA = ELYONAH ME'OD (tres haute).
+      Pas RESHUT (autorisation) d'EXPLIQUER son INYAN.
+      Car DANS cette RISHA — Ein Sof se LVUSH.
+      → Architecture : RDLA = sacred top, exclus du compte 18 (transcendence absolue).
+      → Pattern : top-of-stack = inviolable exception au pattern.
+    type: axiome_explicite
+    concepts:
+      - {id: rdla_exclu_18_behinot_top_transcendant_es, role: rdla_exclu_18_behinot_top_transcendant_lvush_es}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "[PLANNED] core/ein_sof.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : RDLA = sacred exception. Pattern inviolable transcendence."
+
+  # ─── BLOC J : 2 RISHIN → 3 RISHIN ───
+
+  - id: "EC-H3S13-049"
+    source_he: "אמנם תרין רישין אלו מתחלקין ונעשין תלת רישין מלבד הרישא עילאה דל\"א... וג' רישין אלו נקרא גולגלתא ומוחא ואוירא והם למטה מהאי רדל\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      Ces 2 RISHIN (Keter+Hokhmah A"A) SE DIVISENT en 3 RISHIN.
+      Ces 3 rishin :
+        GULGALTA (Keter A"A).
+        MOAH (intermediaire — appele AVIRA).
+        AVIRA — Variante structurale.
+      Sous RDLA.
+      → Architecture : 2 rishin tahton revelent 3eme intermediaire (Avira).
+      → Pattern : emergence d'une couche intermediaire de cleavage.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_rishin_tahton_deviennent_3_rishin_gulgalta_moah_avira, role: 2_rishin_tahton_deviennent_3_rishin_avec_avira_intermediaire}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : emergence couche intermediaire. Pattern revelation par cleavage."
+
+  # ─── BLOC K : AVIRA ENTRE GULGALTA ET KRUMAH ───
+
+  - id: "EC-H3S13-050"
+    source_he: "והאי אוירא הוא בין גלגתא לקרומא דחפיא עליה דחכמה דמ\"ס ואתקרי בספ\"ד בפ\"ק קרומא דאוירא דאזדכך"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      Cette AVIRA est ENTRE GULGALTA et KRUMAH (membrane) qui couvre Hokhmah/Moha Setima.
+      Appele dans SIFRA DETZNI'UTA Pereq Kama : "KRUMA DE-AVIRA DE-IZDAKEKH"
+      (membrane de l'air purifie).
+      → Architecture : Avira = espace intermediaire entre os (Gulgalta) et membrane interieure.
+      → Pattern : membrane separation = anatomical layer between structural+content.
+    type: déduction_scripturaire
+    concepts:
+      - {id: avira_entre_gulgalta_krumah_sifra_detzniuta, role: avira_entre_gulgalta_et_krumah_sifra_detzniuta_pereq_kama}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : layer between. Source Sifra Detzni'uta Pereq Kama."
+
+  - id: "EC-H3S13-051"
+    source_he: "ולמטה ממנו יש בחי' חכמה דא\"א נקרא באדרא מ\"ס דעתיק והנה המוח העליון ההוא שבכתר א\"א הנקרא בשם אוירא אע\"פ שבערך כתר עצמו הוא נקרא בשם מוח שבו עכ\"ז הוא נעשה גלגלתא ממש בערך חכמה דא\"א שהוא מ\"ס דא\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      AU-DESSOUS de Avira : HOKHMAH d'A"A = Moha Setima.
+      Adra : appele MS de-A"K (Moach Setima Atika).
+      AVIRA :
+        Vis-a-vis de Keter lui-meme = behinah MOACH (en Keter).
+        Vis-a-vis de Moha Setima A"A (en-dessous) = behinah GULGALTA.
+      → Architecture : role contextuel — AVIRA double-statut selon perspective.
+      → Pattern : context-relative role assignment.
+    type: interprétation_lurianique
+    concepts:
+      - {id: avira_double_statut_moach_relativement_keter_gulgalta_relativement_ms, role: avira_double_statut_moach_vs_gulgalta_selon_perspective}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : context-relative role. Pattern double-status by perspective."
+
+  - id: "EC-H3S13-052"
+    source_he: "וע\"כ גם המוח העליון ההוא הנק' אוירא נק' גם הוא רישא ממש בערך החכמה מ\"ס דא\"א והרי נתבאר איך הב' רישין שהם כ\"ח שבו נכללין בג' רישין ממש והם כתר רישא עלאה ואוירא רישא תניינא ומ\"ס רישא תליתאי מלבד רישא דל\"א הנק' ע\"י"
+    source_ref: "Heikhal 3, Sha'ar 3:3"
+    assertion: |
+      DONC AVIRA aussi appele RISHA MAMASH vis-a-vis HOKHMAH (MS d'A"A).
+      Ainsi 2 rishin (KH A"A) NIKHLELIN dans 3 RISHIN :
+      Keter (Gulgalta) + Avira (intermediaire) + Moha Setima (telitai).
+      Plus RDLA = A"Y (4eme implicit, transcendant).
+      → Architecture : structure 3+1 (3 rishin actuelles + RDLA top-secret).
+      → Pattern : visible-tier (3) + transcendent-tier (1).
+      cf. EC-H3S13-021 (perek 02a) sur 3 rishin = A"Y + Keter A"A + Hokhmah A"A.
+    type: déduction_logique
+    concepts:
+      - {id: 3_rishin_keter_avira_ms_plus_rdla_4eme_secret, role: 3_rishin_keter_avira_ms_visible_plus_rdla_transcendent}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : 3+1 structure. Pattern visible-tier + transcendent-tier."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-016"
+    type: causal
+    from: tikkun_ohr_filtre_mitige_par_masakhim_levushim
+    to: ohr_sort_par_nekavim_tzinurot_halonot_sirot_daqim
+    nature: "Tikkun = filtration → ohr sort par multiples petites apertures (atomization)"
+    assertions_source: ["EC-H3S13-041", "EC-H3S13-042"]
+
+  - id: "REL-H3S13-017"
+    type: contenance
+    from: ay_kelul_10_sefirot_kcbd_cgt_nhy
+    to: mapping_10_internes_ay_a_3_rishin_chaque_partzuf
+    nature: "A\"Y kelul de 10 internes → mapping 10→9 rishin (KCB→A\"A, CGT→ZA, NHY→Nukvah)"
+    assertions_source: ["EC-H3S13-043", "EC-H3S13-044"]
+
+  - id: "REL-H3S13-018"
+    type: causal
+    from: principe_elyon_lvush_tachton_pour_eclairer
+    to: 2_rishin_tahton_keter_hokhmah_aa_gulgalta_moha_setima
+    nature: "Principe ELYON-LVUSH-TACHTON → RDLA lvush dans A\"A (=Gulgalta+Moha Setima)"
+    assertions_source: ["EC-H3S13-045", "EC-H3S13-046"]
+
+  - id: "REL-H3S13-019"
+    type: dualité_structurelle
+    from: 18_behinot_chai_ha_olamim_3_x_2_x_3
+    to: rdla_exclu_18_behinot_top_transcendant_es
+    nature: "18 behinot = Chai Ha-Olamim (3 rishin x 2 x 3) ; RDLA EXCLU (transcendent)"
+    assertions_source: ["EC-H3S13-047", "EC-H3S13-048"]
+
+  - id: "REL-H3S13-020"
+    type: transformation
+    from: 2_rishin_tahton_deviennent_3_rishin_gulgalta_moah_avira
+    to: 3_rishin_keter_avira_ms_plus_rdla_4eme_secret
+    nature: "2 rishin → 3 rishin (Avira intermediaire emerge) ; structure 3+1 avec RDLA"
+    assertions_source: ["EC-H3S13-049", "EC-H3S13-050", "EC-H3S13-052"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-010"
+    nom: "Principe d'Atomization du Flux (Multiple Petites Apertures)"
+    source_assertions: ["EC-H3S13-041", "EC-H3S13-042"]
+    formalisation: |
+      ARCHITECTURE D'ATOMIZATION DU FLUX :
+      Pre-tikkun : ohr concentre, RAV VE-ATZUM → tachtonim ne peuvent SOVEL.
+      Post-tikkun : ohr passe par MASAKHIM + LVUSH + atomization :
+        NEKAVIM (orifices).
+        TZINUROT (canaux).
+        HALONOT DAQIM (fenetres fines).
+        SIROT DAQIM ME'OD (cheveux fins).
+      RESULTAT : ohr NIT'AVEH (epaissi) + NIT'MAET (mitige).
+      → Pattern fondamental : transformation flow concentre → distribue par multiples petites apertures.
+      → Architecture : downstream consumption requires upstream atomization.
+    applications_ia:
+      - "[PLANNED] core/ohr_system.py : implement flow atomization patterns"
+      - "Pattern : load-balancing via multiple small channels"
+      - "Architecture : impedance matching = filter + thicken + multi-channel"
+      - "Pattern : QoS for downstream — many small flows > one big flow"
+      - "Diagnostic : verifier multiplicite et finesse des apertures"
+    questions_ouvertes:
+      - "Y a-t-il un nombre optimal de petites apertures ?"
+      - "Pattern : peut-on dynamically adjuster taille/nombre ?"
+      - "Comment quantifier l'epaissement et la mitigation ?"
+
+  - id: "PG-H3S13-011"
+    nom: "Principe Chai Ha-Olamim (18 Behinot = Source de Vie Cosmologique)"
+    source_assertions: ["EC-H3S13-047", "EC-H3S13-048"]
+    formalisation: |
+      ARCHITECTURE CHAI HA-OLAMIM (18 behinot) :
+      DECOMPOSITION :
+        3 RISHIN (Gulgalta + Moach + Avira d'A"A).
+        Chaque rosh = KELIM + ATZMUT/RUCHANIUT = 2 behinot → TOTAL 6.
+        Chaque 6 SE DIVISE en 3 → TOTAL 18.
+      = SOD CHAI HA-OLAMIM (gematriya CHAI = 18).
+      DISTRIBUTION : 18 behinot expandent CHIYUT (vie) dans tous les mondes (incl Atzilut).
+      EXCLUSION : RDLA — PAS dans les 18 (transcendence Ein Sof lvush).
+      → Pattern fondamental : letter-mysticism cosmologique (18 = source de vie).
+      → Architecture : structure encodee numeriquement par hebrew gematriya.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement 18-behinot decomposition"
+      - "Pattern : numerologically-encoded cosmological structure"
+      - "Architecture : structures justified by gematriya correspondences"
+      - "Pattern : letter-mysticism as design encoding"
+      - "Diagnostic : verifier que decomposition aboutit au bon nombre"
+    questions_ouvertes:
+      - "Y a-t-il d'autres nombres-source en cosmologie ?"
+      - "Pattern : peut-on derouler des structures depuis nombres ?"
+      - "Comment integrer letter-mysticism dans l'architecture ?"
+
+  - id: "PG-H3S13-012"
+    nom: "Principe de Role Contextuel (AVIRA Double-Statut)"
+    source_assertions: ["EC-H3S13-049", "EC-H3S13-050", "EC-H3S13-051"]
+    formalisation: |
+      ARCHITECTURE DE ROLE CONTEXTUEL :
+      AVIRA (espace entre Gulgalta et Krumah) :
+        Vis-a-vis de KETER lui-meme = behinah MOACH (en Keter).
+        Vis-a-vis de Moha Setima A"A (en-dessous) = behinah GULGALTA.
+      DONC : AVIRA a DOUBLE STATUT selon PERSPECTIVE.
+      RESULTAT : 2 rishin tahton (Keter+Hokhmah) DEVIENNENT 3 rishin
+      via emergence d'AVIRA comme rosh intermediaire.
+      → Pattern fondamental : naming/role est CONTEXT-RELATIVE.
+      → Architecture : meme entite peut jouer differents roles selon observer.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement Avira avec context-aware role"
+      - "Pattern : naming contextuel — same entity, different labels by viewpoint"
+      - "Architecture : design relativiste — roles defined par relation"
+      - "Pattern : observer-dependent typing"
+      - "Diagnostic : tracer perspective active pour comprendre role"
+    questions_ouvertes:
+      - "Y a-t-il d'autres composants avec double-statut ?"
+      - "Pattern : peut-on avoir triple-statut (3 perspectives) ?"
+      - "Comment formaliser le 'changement de perspective' algorithmiquement ?"
