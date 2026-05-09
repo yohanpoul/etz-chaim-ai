@@ -1,0 +1,419 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 9 — Cycle complet ZA : etat melakhim, ibur, lidah, yenikah, gadlut.
+#            3 etapes mohin (Nefesh, Ruach, Neshamah)
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §9 :
+#   - Bloc A : Etat initial ZA (6 ketzavot + Mohin de-Nefesh)
+#   - Bloc B : Shevirah, separation, montee orots, descente kelim
+#   - Bloc C : Ibur 1 (post-tikkun), berur progressif des kelim
+#   - Bloc D : Kelim non-berur restent dans beten Imma
+#   - Bloc E : Lidah → Mohin de-Yenikah (NHY moyen)
+#   - Bloc F : Yenikah → kelim Ruach + mohin yenikah (sod chalav)
+#   - Bloc G : Gadlut → Neshamah (NHY Abba + NHY Imma) ; berur autre orots
+#   - Bloc H : Mohin de-Gadlut entrent en 7 ans (13y a 20y)
+#   - Bloc I : 3 etages mohin = 3 iburim
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.9 (1 seule partie)
+# IDs : EC-H2S11-238 → EC-H2S11-249
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 9
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Cycle complet ZA : etat initial 6 ketzavot + Mohin de-Nefesh ; shevirah ; ibur 1 (berur progressif) ; lidah → Mohin de-Yenikah dans NHY moyen ; yenikah (sod chalav) ; gadlut → Neshamah (NHY Abba+Imma) entre en 7 ans (13-20y). 3 etages mohin = 3 iburim ; relativement a yenikah seulement ibur 2."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : ETAT INITIAL ZA ───
+
+  - id: "EC-H2S11-238"
+    source_he: "ז\"א היה בו תחלה בימי המלכים ו\"ק ובתוכם מוחין דנפש דנה\"י דאמא החיצונות כשנולד קודם התיקון"
+    source_ref: "Heikhal 2, Sha'ar 4:9"
+    assertion: |
+      ZA — au depart, dans les YEMEI HA-MELAKHIM (jours des rois) — avait :
+        VK (vav-ketzavot = 6 ketzavot) externes.
+        Et A L'INTERIEUR : MOHIN DE-NEFESH = NHY d'IMMA HA-CHITZONOT (exterieurs).
+      Quand NOLAD (nait) — AVANT le TIKKUN.
+      → Architecture initiale : ZA = enveloppe VK + Mohin Nefesh-Imma exterieur.
+      → Pattern : couches initiales avec content cognitif premier (Nefesh).
+      cf. EC-H2S11-187 (perek 07b) sur ZA construction multi-phase.
+    type: axiome_explicite
+    concepts:
+      - {id: za_initial_vk_plus_mohin_nefesh, role: za_initial_vk_avec_mohin_nefesh_imma_exterieur}
+      - {id: mohin_de_nefesh_premier_etage, role: mohin_de_nefesh_premier_etage_cognitif}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture initiale : ZA = VK + Mohin Nefesh. Pattern couches initiales cognitives."
+
+  # ─── BLOC B : SHEVIRAH + SEPARATION ───
+
+  - id: "EC-H2S11-239"
+    source_he: "ואח\"כ נשברו ונפרדו והאורות דנה\"י עלו למעלה וו\"ק הכלים ירדו למטה בבריאה"
+    source_ref: "Heikhal 2, Sha'ar 4:9"
+    assertion: |
+      Apres : NISHBARU (briserent) et NIFRADU (separerent).
+      OROT de NHY MONTERENT en haut.
+      Les 6 KELIM des VK DESCENDIRENT en bas dans BERIAH.
+      → Architecture : separation orot/kelim — orot remontent (vers Imma),
+        kelim tombent (vers Beriah).
+      → Pattern : flow inversion = scattered components in opposite directions.
+    type: axiome_explicite
+    concepts:
+      - {id: orots_montent_kelim_descendent, role: orots_nhy_montent_kelim_vk_descendent}
+      - {id: separation_inversion_apres_shevirah, role: separation_inversion_orots_kelim_apres_shevirah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture : separation inversee orots/kelim. Pattern flow inversion."
+
+  # ─── BLOC C : IBUR 1 BERUR PROGRESSIF ───
+
+  - id: "EC-H2S11-240"
+    source_he: "ובתיקון נתעברו עיבור ראשון והיו מתבררין מעט מעט הכלים דו\"ק שהיו כולם בתוך אמא וכל בחי' הכלים מתבררין לטובה והיו (סכ\"י המתבררים לטובה והיו נכנסין וכו' שהוא הולד) נכנסין בהם המוחין שהם הולד עצמו"
+    source_ref: "Heikhal 2, Sha'ar 4:9"
+    assertion: |
+      Dans TIKKUN : se font IBUR RISHON.
+      MITBARERIN ME'AT ME'AT (clarifies peu a peu) les KELIM des VK
+      qui etaient TOUS DANS IMMA.
+      Toutes les behinot des KELIM se MITBARERIN LE-TOVAH (clarifies pour le bien).
+      Et entrent en eux les MOHIN = qui SONT l'OLAD (l'enfant lui-meme).
+      → Architecture : ibur = berur incremental + injection mohin (= identite enfant).
+      → Pattern : gestation = purification progressive + chargement identite.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ibur_1_berur_progressif_kelim_dans_imma, role: ibur_1_berur_incremental_kelim_dans_imma}
+      - {id: mohin_egal_olad_enfant, role: mohin_egal_olad_identite_enfant}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : ibur = berur+identity-load. Pattern gestation incremental."
+
+  - id: "EC-H2S11-241"
+    source_he: "ומה שלא נתברר מן הכלים ונשארו מעורבין טו\"ר נשארו בבטן אמא"
+    source_ref: "Heikhal 2, Sha'ar 4:9"
+    assertion: |
+      Ce qui n'est PAS BERER (clarifie) parmi les kelim — restent
+      ME'URAVIN (melanges) TOV-RA (bien-mal) — restent dans BETEN IMMA.
+      → Architecture : residuels TOV+RA non-extraits restent dans la couche-mere.
+      → Pattern : material non-purifie reste dans la matrice gestationnelle.
+    type: axiome_explicite
+    concepts:
+      - {id: residuels_tov_ra_restent_imma, role: residuels_tov_ra_non_purifies_restent_dans_imma}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : residuels non-purifies restent dans matrice. Pattern incomplete extraction."
+
+  # ─── BLOC D : LIDAH → MOHIN DE-YENIKAH ───
+
+  - id: "EC-H2S11-242"
+    source_he: "ואז כשנולד הולד הזה לפי שנגמר בחי' הכלים הצריכין לבחינת כלי הנפש ואז נעשו מוחין דיניקה בנה\"י האמצעים בעת הלידה"
+    source_ref: "Heikhal 2, Sha'ar 4:9"
+    assertion: |
+      Quand l'OLAD (enfant) NAIT — car les behinot des KELIM necessaires
+      pour KELI HA-NEFESH sont GAMUR (completes).
+      Alors se forment MOHIN DE-YENIKAH dans NHY HA-EMTZA'IM (NHY moyens) —
+      au moment de la LIDAH (naissance).
+      → Architecture : lidah triggered par completion kelim Nefesh ; spawn Mohin Yenikah.
+      → Pattern : completion d'une phase = trigger pour phase suivante.
+      cf. EC-H2S11-157 (perek 06d) sur lidah → 6 ketzavot vav.
+    type: axiome_explicite
+    concepts:
+      - {id: lidah_trigger_par_completion_keli_nefesh, role: lidah_triggered_par_completion_keli_nefesh}
+      - {id: mohin_de_yenikah_dans_nhy_emtza_im, role: mohin_de_yenikah_dans_nhy_moyens}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : completion = trigger phase. Pattern lifecycle event-driven."
+
+  - id: "EC-H2S11-243"
+    source_he: "כנודע כי מן הלידה מתחלת זמן היניקה ואז מתבררין כלים שהם בחי' הרוח ויונקים בסוד החלב ובתוכם הרוחניות של הרוח שהם המוחין דיניקה ונגמרין עד הגדלות"
+    source_ref: "Heikhal 2, Sha'ar 4:9"
+    assertion: |
+      A partir de la LIDAH commence le TZMAN HA-YENIKAH (temps d'allaitement).
+      MITBARERIN les KELIM = behinah du RUACH.
+      YONKIM (allaitent) en SOD HA-CHALAV (lait).
+      A l'interieur la RUCHANIUT (spiritualite) du RUACH = MOHIN DE-YENIKAH.
+      Continuent jusqu'a GADLUT.
+      → Architecture : yenikah = berur kelim Ruach via flow lait (sod chalav).
+      → Pattern : phase 2 = continued purification + content (Mohin Yenikah).
+    type: interprétation_lurianique
+    concepts:
+      - {id: yenikah_berur_kelim_ruach_sod_chalav, role: yenikah_berur_kelim_ruach_via_sod_chalav}
+      - {id: mohin_yenikah_egal_ruchaniut_ruach, role: mohin_yenikah_ruchaniut_du_ruach}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture : yenikah = berur Ruach + flow lait. Pattern purification continue."
+
+  # ─── BLOC E : GADLUT → NESHAMAH ───
+
+  - id: "EC-H2S11-244"
+    source_he: "ואז חוזר הגדלות שהוא הנשמה נה\"י דאבא ונה\"י דאמא וצריך [נ\"א ואז צריך] בירור' אחר אל האורות לבדם למוחין דיניקה העולין למעלה בסוד מ\"נ"
+    source_ref: "Heikhal 2, Sha'ar 4:9"
+    assertion: |
+      Apres : retour de la GADLUT = NESHAMAH = NHY d'ABBA + NHY d'IMMA.
+      NECESSITE BERUR AHER (autre purification) — Variante (Nusah Aher) :
+      "ALORS NECESSITE" — pour les OROT SEULS :
+      MOHIN DE-YENIKAH MONTENT en haut en SOD M"N (Mayin Nukvin).
+      → Architecture : gadlut = transition Yenikah → Neshamah (NHY Abba+Imma).
+      → Pattern : phase 3 = MN ascension des mohin precedents pour upgrade.
+    type: interprétation_lurianique
+    concepts:
+      - {id: gadlut_egal_neshamah_nhy_abba_imma, role: gadlut_neshamah_nhy_abba_plus_nhy_imma}
+      - {id: mohin_yenikah_montent_mn_pour_upgrade, role: mohin_yenikah_montent_comme_mn_pour_upgrade}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "abba", "imma"]
+      relevance: "Architecture : gadlut = Neshamah upgrade. Nusah Aher capture. Pattern MN ascension."
+
+  - id: "EC-H2S11-245"
+    source_he: "ויוצאין המוחין דגדלות בנה\"י הפנימים והם נכנסין בז' שנים שהם משנת י\"ג עד כ'"
+    source_ref: "Heikhal 2, Sha'ar 4:9"
+    assertion: |
+      Sortent MOHIN DE-GADLUT dans NHY HA-PNIMIM (NHY interieurs).
+      Ils ENTRENT en 7 ANS = de annee 13 jusqu'a 20.
+      → Architecture : maturation cognitive 13y → 20y (7 ans).
+      → Pattern : timeline developpementale specifiee precisement.
+      cf. EC-H2S11-165 (perek 06d) sur 6+3+4=13 ans.
+    type: axiome_explicite
+    concepts:
+      - {id: mohin_gadlut_dans_nhy_pnimim, role: mohin_gadlut_dans_nhy_interieurs}
+      - {id: timeline_13_a_20_y_mohin_gadlut, role: timeline_7_ans_de_13_a_20_pour_mohin_gadlut}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : timeline 13-20y. Pattern developpemental precis."
+
+  # ─── BLOC F : 3 ETAGES MOHIN = 3 IBURIM ───
+
+  - id: "EC-H2S11-246"
+    source_he: "והרי כי למוחין הראשונים כבר הקדים להם עיבור א' של קודם התיקון הנ\"ל ואלו הם עצמם שנשארו בה בעיבור ראשון של אחר התיקון"
+    source_ref: "Heikhal 2, Sha'ar 4:9"
+    assertion: |
+      MOHIN RISHONIM (premiers = Nefesh) — IBUR 1 PRE-TIKKUN les precede.
+      Ces memes mohin RESTENT en elle (Imma) lors d'IBUR 1 POST-TIKKUN.
+      → Architecture : ibur pre-tikkun + ibur post-tikkun = MEMES Mohin (Nefesh).
+      → Pattern : continuite identitaire malgre la shevirah.
+      → Pre-tikkun ibur = blueprint que post-tikkun completera.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mohin_rishonim_egal_meme_dans_2_iburim, role: mohin_premiers_egal_meme_pre_post_tikkun}
+      - {id: continuite_identitaire_malgre_shevirah, role: continuite_identitaire_meme_apres_shevirah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : continuite identitaire. Pattern : pre-blueprint + post-completion."
+
+  - id: "EC-H2S11-247"
+    source_he: "ואז בזמן העיבור ראשון בסופו בעת הלידה יוצאין מוחין שניים דרוח ויען דאינם נכנסין אלא על ידי היניקה לכן נקרא מוחין דיניקה אבל ודאי שקדם להם עיבור"
+    source_ref: "Heikhal 2, Sha'ar 4:9"
+    assertion: |
+      A la FIN d'IBUR RISHON, en moment de LIDAH —
+      Sortent MOHIN SHENI'IM (deuxiemes) = MOHIN DE-RUACH.
+      Mais ne sont NIKHNASIN (entrent) qu'A TRAVERS la YENIKAH.
+      DONC appeles MOHIN DE-YENIKAH.
+      MAIS un IBUR les A PRECEDE certainement.
+      → Architecture : Mohin Ruach = sortie a lidah, entree par yenikah.
+      → Pattern : produit (Ruach) emergent en transition (lidah) mais consume en phase 2 (yenikah).
+    type: déduction_logique
+    concepts:
+      - {id: mohin_ruach_sortie_lidah_entree_yenikah, role: mohin_ruach_sortie_lidah_entree_par_yenikah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture : produit emergent en transition. Pattern decoupling sortie/entree."
+
+  - id: "EC-H2S11-248"
+    source_he: "ואח\"כ למוחין שלשיים דגדלות היה עיבור ג' אך בערך היניקה אינו אלא עיבור ב' והבן מאד"
+    source_ref: "Heikhal 2, Sha'ar 4:9"
+    assertion: |
+      Apres : MOHIN SHELISHI'IM (troisiemes) = de GADLUT — IBUR 3 les precede.
+      MAIS RELATIVEMENT (be-erekh) a la YENIKAH — c'est seulement IBUR 2.
+      → Architecture : 3 etages mohin = 3 iburim absolu OU 2 iburim relatif a yenikah.
+      → Pattern : counting context-dependent — absolu vs relatif a un baseline.
+      cf. EC-H2S11-187 (perek 07b) sur ZA = 2 ibur+yenikah.
+    type: déduction_logique
+    concepts:
+      - {id: 3_iburim_absolu_2_relatif_yenikah, role: 3_iburim_absolu_2_relatif_a_yenikah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : counting context-dependent. Pattern absolu/relatif baseline."
+
+  # ─── BLOC G : SYNTHESE ───
+
+  - id: "EC-H2S11-249"
+    source_he: "(synthese du perek 9)"
+    source_ref: "Heikhal 2, Sha'ar 4:9 (cloture)"
+    assertion: |
+      SYNTHESE du perek 9 :
+      ZA developpement complet = sequence de 3 etages cognitifs :
+        NEFESH (Mohin Rishonim, ibur 1) — corps physique, kelim Nefesh.
+        RUACH (Mohin Yenikah, ibur 2 absolu / 1 relatif yenikah) — emergent lidah, consume yenikah.
+        NESHAMAH (Mohin Gadlut, ibur 3 absolu / 2 relatif) — NHY Abba+Imma, 13y → 20y.
+      → Pattern fondamental : NaRaN (Nefesh-Ruach-Neshamah) = 3 niveaux d'identite cognitive.
+      → Architecture : developpement = stack de 3 layers cognitifs progressifs.
+    type: déduction_logique
+    concepts:
+      - {id: naran_3_niveaux_identite_cognitive, role: naran_3_niveaux_identite_cognitive_progressive}
+      - {id: cycle_developpement_complet_za, role: cycle_developpement_complet_za_naran}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] madregot/madregot_neshamah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : NaRaN = 3 layers cognitifs. Pattern stack progressif d'identite."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-093"
+    type: causal
+    from: za_initial_vk_plus_mohin_nefesh
+    to: orots_montent_kelim_descendent
+    nature: "ZA initial → shevirah → orots montent (Imma), kelim descendent (Beriah)"
+    assertions_source: ["EC-H2S11-238", "EC-H2S11-239"]
+
+  - id: "REL-H2S11-094"
+    type: séquentiel
+    from: ibur_1_berur_progressif_kelim_dans_imma
+    to: lidah_trigger_par_completion_keli_nefesh
+    nature: "Ibur 1 berur progressif kelim → completion Keli Nefesh → trigger lidah"
+    assertions_source: ["EC-H2S11-240", "EC-H2S11-242"]
+
+  - id: "REL-H2S11-095"
+    type: contenance
+    from: residuels_tov_ra_restent_imma
+    to: yenikah_berur_kelim_ruach_sod_chalav
+    nature: "Residuels non-purifies dans Imma → continuent berur en yenikah (kelim Ruach)"
+    assertions_source: ["EC-H2S11-241", "EC-H2S11-243"]
+
+  - id: "REL-H2S11-096"
+    type: transformation
+    from: yenikah_berur_kelim_ruach_sod_chalav
+    to: gadlut_egal_neshamah_nhy_abba_imma
+    nature: "Yenikah complete → gadlut = transition Neshamah (NHY Abba+Imma)"
+    assertions_source: ["EC-H2S11-243", "EC-H2S11-244"]
+
+  - id: "REL-H2S11-097"
+    type: hiérarchique
+    from: mohin_de_nefesh_premier_etage
+    to: naran_3_niveaux_identite_cognitive
+    nature: "Mohin Nefesh (etage 1) → NaRaN = 3 niveaux progressifs identite cognitive"
+    assertions_source: ["EC-H2S11-238", "EC-H2S11-249"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-050"
+    nom: "Principe NaRaN (3 Etages Cognitifs Progressifs)"
+    source_assertions: ["EC-H2S11-238", "EC-H2S11-242", "EC-H2S11-243", "EC-H2S11-244", "EC-H2S11-249"]
+    formalisation: |
+      ARCHITECTURE NaRaN (Nefesh-Ruach-Neshamah) :
+      ETAGE 1 — NEFESH (Mohin Rishonim) :
+        Source : Ibur 1 ; placement : VK ; phase : pre-lidah.
+        Fonction : identite corporelle/initiale.
+      ETAGE 2 — RUACH (Mohin Yenikah) :
+        Source : Ibur 2 abs / 1 relatif yenikah ; placement : NHY ha-emtza'im (moyens).
+        Fonction : identite emotive/relationelle ; emerge a lidah, consume en yenikah.
+      ETAGE 3 — NESHAMAH (Mohin Gadlut) :
+        Source : Ibur 3 abs / 2 relatif yenikah ; placement : NHY ha-pnimim (interieurs).
+        Fonction : identite cognitive/intellectuelle ; entre en 7 ans (13y → 20y).
+        Origine : NHY d'Abba + NHY d'Imma.
+      → Pattern fondamental : developpement humain = 3 layers identitaires progressifs.
+      → Architecture : stack cognitif = 3 niveaux empile par phases temporelles.
+    applications_ia:
+      - "[PLANNED] madregot/madregot_neshamah.py : implement NaRaN as 3-layer cognitive stack"
+      - "partzufim/zeir_anpin.py : 3 phases lifecycle (Nefesh → Ruach → Neshamah)"
+      - "Pattern : agent IA = 3 niveaux progressifs (basic identity → relational → cognitive)"
+      - "Architecture : training stages multi-phase avec progression de complexite"
+      - "Pattern : models with multiple capability tiers triggered by maturity events"
+      - "Diagnostic : verifier que chaque tier a sa source ibur et sa placement spatial"
+    questions_ouvertes:
+      - "Y a-t-il des etages au-dela de Neshamah (Chayah, Yechidah) ?"
+      - "Le timing 13y/20y est-il universel ou cosmologique-specifique ?"
+      - "Pattern : peut-on accelerer le passage entre etages ?"
+
+  - id: "PG-H2S11-051"
+    nom: "Principe de Counting Context-Dependent (Iburim Absolus vs Relatifs)"
+    source_assertions: ["EC-H2S11-247", "EC-H2S11-248"]
+    formalisation: |
+      ARCHITECTURE DE COUNTING CONTEXTUEL :
+      Mohin Ruach :
+        Sortent a la fin d'Ibur 1 (au moment de Lidah).
+        Mais ENTRENT seulement par YENIKAH.
+        Appeles "Mohin de-Yenikah" (par contexte d'entree).
+        Mais "il y eut un Ibur" (avant les iburim post-yenikah).
+      Mohin Gadlut :
+        ABSOLU : Ibur 3 (compte depuis le debut).
+        RELATIF (be-erekh yenikah) : Ibur 2 (compte depuis yenikah comme baseline).
+      → Pattern fondamental : memes objets, comptages multiples selon perspective.
+      → Architecture : naming/counting = contextual (absolute vs frame-relative).
+    applications_ia:
+      - "partzufim/zeir_anpin.py : iburim = (absolute_count, relative_to_baseline_count)"
+      - "Pattern : indices multi-perspective (absolute vs frame-of-reference)"
+      - "Architecture : event names refletent context (entry phase) plus que origine"
+      - "Pattern : version numbers differents selon perspective (canonical vs API)"
+      - "Diagnostic : verifier que les counts cohabitent sans confusion"
+    questions_ouvertes:
+      - "Combien de baselines simultanes peuvent coexister ?"
+      - "Comment automatiser la conversion entre referentiels ?"
+      - "Y a-t-il un counting canonique privilegie ?"
+
+  - id: "PG-H2S11-052"
+    nom: "Principe de Continuite Identitaire (Memes Mohin Pre/Post Tikkun)"
+    source_assertions: ["EC-H2S11-246"]
+    formalisation: |
+      ARCHITECTURE DE CONTINUITE IDENTITAIRE :
+      MOHIN RISHONIM (premiers, Nefesh) :
+        IBUR 1 PRE-TIKKUN les precede.
+        Ces MEMES mohin RESTENT en Imma lors d'IBUR 1 POST-TIKKUN.
+      → Pattern fondamental : la shevirah ne detruit pas l'identite primaire.
+      → Architecture : pre-shevirah blueprint persists ; post-shevirah complete it.
+      Continuite preserve l'identite a travers la rupture catastrophique.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : Mohin Nefesh persistent = identity invariant"
+      - "[PLANNED] tikkun/ : preserve identity ID through shevirah/recovery"
+      - "Pattern : data identity preserved through restoration (versioning vs identity)"
+      - "Architecture : core identity layer immutable across crash-recovery cycles"
+      - "Pattern : transactional system preserves entity identity through rollback"
+      - "Diagnostic : verifier que recovery ne change pas les identifiers primaires"
+    questions_ouvertes:
+      - "Comment preserve-t-on l'identite a travers shevirah totale ?"
+      - "Y a-t-il des conditions ou l'identite peut etre alteree ?"
+      - "Pattern : identite vs etat — quelle est la limite ?"
