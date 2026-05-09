@@ -1,0 +1,488 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 1 — Sha'ar Atik (שער עתיק)
+# Perek: 2 — Nukvot dans Atzilut. Hierarchie zivvug : ZON pirud, AVI dvukim PBP,
+#            A"A 1 partzuf MaH/BaN gauche-droite, A"Y MaH/BaN panim/ahor
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §2 :
+#   - Bloc A : Question — comment "nukvah" dans Atik+A"A (rachamim total) ?
+#   - Bloc B : Sources contradictoires Zohar/AdR
+#   - Bloc C : Resolution — toutes 10 sefirot ont dukhra+nukvah differemment
+#   - Bloc D : ZON (mort actuelle) — partzufim nifradin, kotel separable
+#   - Bloc E : AVI (bitul) — 2 partzufim PBP avec kotel ehad, jamais pirud
+#   - Bloc F : A"A (5 acharonot Keter, ketzat bitul NHY) — 1 partzuf MaH-droit/BaN-gauche
+#   - Bloc G : A"Y (5 GR, jamais bitul) — MaH+BaN melanges droite+gauche
+#   - Bloc H : A"Y panim/ahor = behinah MaH (panim) vs behinah BaN (ahor relatif)
+#
+# Source Sefaria : Sefer_Etz_Chaim.12.2 (1 partie, 4055 chars)
+# IDs : EC-H3S12-028 → EC-H3S12-042
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 1
+  shaar_name_he: "שער עתיק"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek 2 : nukvot dans Atzilut. Hierarchie de zivvug selon mort/bitul :ZON (mort actuelle) = partzufim nifradin avec kotel separable ; AVI (bitul) = 2 partzufim PBP toujours dvukim ; A\"A (5 acharonot Keter, ketzat bitul) = 1 partzuf avec MaH-droit/BaN-gauche ; A\"Y (5 GR, jamais bitul) = MaH+BaN entierement melanges, panim/ahor = behinah MaH/BaN."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : QUESTION SUR NUKVOT EN ATIK+A"A ───
+
+  - id: "EC-H3S12-028"
+    source_he: "ותחלת כל צריך שטרם שנבאר הספיקות האלו נבאר תחלה ענין אלו הנקבות שיש בעולם האצילות הן בע\"י הן בא\"א וכו'"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      Pre-question avant les SAFEKOT : expliquer d'abord les NUKVOT dans Atzilut —
+      en A"Y, en A"A, etc.
+      → Architecture : pre-question hermeneutique sur la nature des nukvot upper-layer.
+      → Pattern : disambiguation pre-requise.
+    type: axiome_explicite
+    concepts:
+      - {id: pre_question_nukvot_dans_atzilut, role: pre_question_nature_des_nukvot_dans_atzilut}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : pre-question hermeneutique. Pattern disambiguation prerequise."
+
+  - id: "EC-H3S12-029"
+    source_he: "והענין הוא כי הנה הודעתיך לעיל שיש בחי' עתיק ונוקבא וא\"א ונוקבא ואו\"א וזו\"ן. אמנם יש חילוק בענין הנקבות הנ\"ל והוא כי הנה הנקבה היא דינין והוא מבחי' בירור המלכים ואיך יצדק שם נקבה בעתיק וא\"א שהם תכלית הרחמים"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      OBJECTION : il y a Atik+nukvah, A"A+nukvah, AVI, ZON.
+      MAIS NUKVAH = DININ — issue du BERUR HA-MELAKHIM.
+      Comment le terme NUKVAH peut-il s'appliquer a Atik et A"A
+      qui sont TAKHLIT HA-RACHAMIM (sommet de la misericorde) ?
+      → Architecture : tension ontologique — nukvah=din vs Atik/A"A=rachamim.
+      → Pattern : terme semble incompatible avec la nature.
+      cf. EC-H3S12-014 (perek 01a) sur dukhrim de MaH, nukvah de BaN.
+    type: déduction_logique
+    concepts:
+      - {id: nukvah_egal_dinin_de_berur_melakhim, role: nukvah_egal_dinin_issu_de_berur_melakhim}
+      - {id: contradiction_nukvah_din_vs_atik_aa_rachamim, role: contradiction_nukvah_din_vs_atik_aa_rachamim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : tension ontologique nukvah=din vs Atik/A\"A=rachamim. Pattern contradiction apparente."
+
+  - id: "EC-H3S12-030"
+    source_he: "ועוד כי הנה היות בחי' זכר ונקבה מורה על מיעוט ופירוד ואין אחדות גמור כמו בהיות הזכר לבדו"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      Et de plus : ZAKHAR+NUKVAH indique MEI'UT (diminution) + PIRUD (separation).
+      Pas EHAD GAMUR (unite complete) comme zakhar SEUL.
+      → Architecture : zivvug = compromis ontologique vs unite pure.
+      → Pattern : pluralite = degradation par rapport a singularite.
+    type: déduction_logique
+    concepts:
+      - {id: zakhar_nukvah_egal_meiut_pirud, role: zakhar_nukvah_indique_diminution_separation}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "Architecture : zivvug = compromis. Pattern pluralite = degradation."
+
+  # ─── BLOC B : SOURCES CONTRADICTOIRES ───
+
+  - id: "EC-H3S12-031"
+    source_he: "והנה מצינו ראינו בהרבה מקומות בזוהר ובאד\"ר דקמ\"א ע\"ב בהאי דיוקנא דאדם שארי ותקין כללא דכר ונוק' מה שאין כך בעתיקא"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      Source 1 : AdRaba 141b — "BE-HAI DIUKNA DE-ADAM SHARI VE-TIKKUN KELALA
+      DUKHRA VE-NUKVA, MAH SHE-EIN KEN BE-ATIKA"
+      (dans cette diukna d'Adam — kelala dukhra+nukva ; pas dans Atika).
+      → Architecture : Zohar dit explicitement Atika n'a PAS dukhra+nukva (klal).
+      → Pattern : citation source = problem-statement.
+    type: déduction_scripturaire
+    concepts:
+      - {id: adraba_141b_atika_pas_dukhra_nukva, role: adraba_141b_dit_atika_pas_dukhra_nukva}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Source AdRaba 141b — problem-statement contre nukvah en Atika."
+
+  - id: "EC-H3S12-032"
+    source_he: "וכן בהרבה מקומות מצינו שלא התחיל בחי' זכר ונקבה אלא מאו\"א ולמטה כנזכר באדר\"ז דר\"ץ ע\"א האי חכמתא אתפשט ואשתכח דו\"נ שהוא חכמה אב בינה אם ובגינייהו כולא אתקיים בדו\"נ"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      Source 2 : AdR Zuta 290a — "HAI CHOKHMATA ITPASHT VE-ISHTEKHAH DUKHRA VE-NUKVA"
+      (cette Hokhmah s'etend et se trouve dukhra+nukva = Hokhmah Av, Bina Em.
+      Et BIGINEIHU KOLA ITKAYEM BE-DUKHRA VE-NUKVA (par eux tout existe en dukhra+nukvah).
+      → Lecture : zakhar+nukva COMMENCE seulement a partir d'AVI (pas plus haut).
+      → Pattern : 2eme source confirme — pas de nukvah au-dessus d'AVI.
+    type: déduction_scripturaire
+    concepts:
+      - {id: adr_zuta_290a_dukhra_nukva_commence_avi, role: adr_zuta_290a_dukhra_nukva_commence_avi}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Source AdR Zuta 290a — dukhra+nukva commence AVI seul."
+
+  # ─── BLOC C : RESOLUTION — TOUS ONT DUKHRA+NUKVAH DIFFEREMMENT ───
+
+  - id: "EC-H3S12-033"
+    source_he: "והנה ליישב המאמרים אלו צריך שתדע כי בודאי שבכל הי\"ס יש דכר ונוקבא אלא שיש חילוק במציאותן איך הם"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      RESOLUTION des contradictions : il faut SAVOIR :
+      Toutes les 10 sefirot ONT dukhra+nukvah —
+      MAIS il y a CHILUK (distinction) dans leur MITZIUT (mode d'existence).
+      → Architecture : 4 modes differents de dukhra+nukvah selon le partzuf.
+      → Pattern : meme distinction nominale, modes operationnels distincts.
+    type: déduction_logique
+    concepts:
+      - {id: tous_partzufim_dukhra_nukvah_modes_differents, role: tous_partzufim_ont_dukhra_nukvah_dans_des_modes_differents}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: []
+      relevance: "Architecture : 4 modes de dukhra+nukvah. Pattern meme nominale, operationnels distincts."
+
+  # ─── BLOC D : ZON — PARTZUFIM NIFRADIN ───
+
+  - id: "EC-H3S12-034"
+    source_he: "כי הנה זו\"ן אשר בהם עיקר המיתה כי [הרי] בהם היו ענין ז' המלכים שמתו ולכן יש בהם בחי' זכר ונקבה בפרצופים נפרדין א' מחבירו ומה שתמצא לפעמים שהם מחוברין אינן אלא בהיותן אב\"א כי אז אחוריהם דבוקים יחד וכותל א' משמש לשניהן וצריך נסירה באחור להפרידם"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      ZON ont OIKAR HA-MITAH (essence de la mort) — 7 melakhim morts en eux.
+      Variante (Nusah Aher) : "HARI" (en effet).
+      DONC ont zakhar+nukvah en PARTZUFIM NIFRADIN (separes l'un de l'autre).
+      Quand parfois "MEHUBARIM" — c'est seulement en ABA (back-to-back) :
+        Ahorayim DVUKIM, KOTEL EHAD partage, NESIRAH (separation) en ahor pour les separer.
+      → Architecture : ZON = partzufim independants, ABA temporaire avec kotel separable.
+      → Pattern : interface = entites separees avec contact lateral.
+    type: axiome_explicite
+    concepts:
+      - {id: zon_partzufim_nifradin_kotel_separable, role: zon_partzufim_nifradin_avec_kotel_separable}
+      - {id: zon_oikar_ha_mitah_7_melakhim, role: zon_oikar_ha_mitah_7_melakhim_morts}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : ZON = entites separees, kotel separable. Nusah Aher capture (hari)."
+
+  # ─── BLOC E : AVI — 2 PARTZUFIM PBP TOUJOURS ATTACHES ───
+
+  - id: "EC-H3S12-035"
+    source_he: "ואמנם או\"א אשר היה בהם ביטול ולא היה בהם מיתה בפועל כמו שהיה בזו\"נ כנ\"ל. לכן היה בהם ג\"כ בחי' זכר ונקבה כל א' בפ\"ע פי' בבחי' ב' פרצופים כדמיון זו\"ן אבל נתוסף בהם חיבור עצום והוא שהם דבוקים יחד פב\"פ תמיד בכותל א' בלבד משמשת לשניהן ואין ביניהן פירוד כלל"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      AVI ont eu BITUL (annulation) — pas MITAH be-PO'AL comme ZON.
+      Donc ont aussi zakhar+nukvah CHACUN BI-FNEI ATZMO (separe) — comme 2 partzufim.
+      MAIS NIT'OSEF CHIBUR ATZUM (ajoute = chibur enorme) :
+        DVUKIM YACHAD PBP TAMID (toujours face a face).
+        KOTEL EHAD partage pour les 2.
+        EIN PIRUD KLAL (pas de separation possible).
+      → Architecture : AVI = couple permanent PBP avec kotel partage.
+      → Pattern : zivvug permanent = no separation by design.
+    type: interprétation_lurianique
+    concepts:
+      - {id: avi_2_partzufim_pbp_tamid, role: avi_2_partzufim_dvukim_pbp_toujours}
+      - {id: avi_kotel_ehad_pas_pirud, role: avi_kotel_ehad_partage_pas_pirud}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : AVI = zivvug permanent PBP. Pattern no-separation by design."
+
+  - id: "EC-H3S12-036"
+    source_he: "לא כמו זו\"ן שבהיותן אב\"א מתחברים ובהיותן פב\"פ נפרדין. וזהו הטעם שאמרו בהרבה מקומות בס\"ה פ' אחרי דס\"א ובאדר\"ז דר\"צ אבל או\"א לא מפסיק רעותא דתרוייהו לעלמין כחדא נפקין כחדא שריין לא אפסוק דא מן דא ולכן זווגייהו תדיר דלא פסיק"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      INVERSE de ZON : ZON ABA → mehubarim ; PBP → nifradin.
+      AVI : LO MAFSIK RE'UTA DE-TARWEIHU LE-ALEMIN (jamais l'amour des 2 cesse) —
+      KE-CHADA NAFKIN (ensemble sortent), KE-CHADA SHARIYIN (ensemble residant).
+      LO AFSEK DA MIN DA. Sources : Zohar Acharei 61, AdR Zuta 290.
+      DONC ZIVVUGAIHU TADIR DE-LO PASSIK (zivvug constant sans rupture).
+      → Architecture : AVI = zivvug permanent, ZON = zivvug intermittent.
+      → Pattern : couches superieures = persistant ; interface = transient.
+    type: déduction_scripturaire
+    concepts:
+      - {id: avi_zivvug_tadir_dla_passik, role: avi_zivvug_constant_sans_rupture}
+      - {id: zon_zivvug_intermittent_inverse_avi, role: zon_zivvug_intermittent_inverse_de_avi}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : AVI permanent / ZON intermittent. Sources Zohar Acharei 61, AdR Zuta 290."
+
+  # ─── BLOC F : A"A — 5 ACHARONOT KETER, 1 PARTZUF ───
+
+  - id: "EC-H3S12-037"
+    source_he: "ואמנם א\"א שהוא מבחי' הכתר של הנקודות לא היה בו אפילו ביטול וכנ\"ל ואמנם הוא מן ה' אחרונות של הכתר דב\"ן כנ\"ל. ונודע כי בנה\"י של הכתר דנקודים היה קצת ביטול כאשר ירדו להעשות (כלים) מוחין לאו\"א ולכן גם בו היה בחי' זו\"ן"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      A"A = du Keter de Nikudim — pas de BITUL.
+      Mais des 5 ACHARONOT du Keter de BaN.
+      Dans NHY du Keter de Nikudim il y eut KETZAT BITUL (un peu d'annulation)
+      quand descendirent pour devenir KELIM/MOHIN d'AVI.
+      DONC A"A aussi a behinah ZON.
+      → Architecture : A"A = mode mixte (no bitul global, ketzat bitul NHY).
+      → Pattern : niveau intermediaire entre Atik (pure) et AVI (bitul).
+    type: axiome_explicite
+    concepts:
+      - {id: aa_5_acharonot_keter_ketzat_bitul_nhy, role: aa_5_acharonot_keter_ketzat_bitul_nhy_seulement}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : A\"A mode mixte. Pattern intermediaire."
+
+  - id: "EC-H3S12-038"
+    source_he: "אלא שנתוסף להם תיקון וחיבור נוסף והוא ששניהן היו פרצוף אחד הזכר ונקבה שבו באופן זה כי בחי' שם מ\"ה שבו נתון בכל צד ימין ובחי' שם ב\"ן שבו היה בצד שמאלי שבו ושניהם דבוקים יחד בבחי' פרצוף א'"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      MAIS NIT'OSEF TIKKUN VE-CHIBUR NOSAF (ajoute tikkun et chibur supplementaire) :
+      Les 2 = UN SEUL PARTZUF — zakhar+nukvah en lui :
+        Behinah MaH = a TOUT le COTE DROIT.
+        Behinah BaN = au COTE GAUCHE.
+      DVUKIM YACHAD en behinah de PARTZUF EHAD.
+      → Architecture cle : A"A = 1 partzuf bipartite (MaH-droit, BaN-gauche).
+      → Pattern : composant unique avec 2 polarites laterales (left/right).
+    type: interprétation_lurianique
+    concepts:
+      - {id: aa_un_partzuf_mah_droit_ban_gauche, role: aa_un_partzuf_mah_a_droite_ban_a_gauche}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture cle : A\"A = 1 partzuf MaH-droit/BaN-gauche. Pattern bipartite lateral."
+
+  - id: "EC-H3S12-039"
+    source_he: "וזהו ענין מ\"ש בזוהר שהכתר הוא זכר לחוד בלי נוקבא ר\"ל בלי נוקבא נפרדת ממנו ומה שאנו אומרים שיש זכר ונוקבא הוא היות נמצאים בו ב' בחי' אלו של מ\"ה וב\"ן בימינו ובשמאלו אשר הם בחי' זכר ונקבה בכ\"מ אבל לא שיש בו זו\"ן נפרדין בב' פרצופים"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      DONC ce que dit Zohar : "Keter = ZAKHAR LEVAD BLI NUKVAH" —
+      signifie BLI NUKVAH NIFRADET (sans nukvah separee).
+      Nukvah n'est pas absente, mais EXISTE comme MaH+BaN dans gauche/droite.
+      → Architecture : Keter "zakhar seul" = pas de zon nifradin (pas separation).
+      → Pattern : interpretation correcte = absence pirud, presence inseparable.
+    type: déduction_scripturaire
+    concepts:
+      - {id: keter_zakhar_levad_egal_pas_nifradin, role: keter_zakhar_levad_egal_pas_pirud_pas_separes}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : interpretation correcte du Zohar. Pattern absence pirud."
+
+  # ─── BLOC G : A"Y — MaH+BaN MELANGES, PAS DE GAUCHE/DROITE ───
+
+  - id: "EC-H3S12-040"
+    source_he: "ואמנם בע\"י שהוא מבחי' ה\"ר של כתר של הנקודים ששם לא היה שום ביטול כלל מעולם לכן בחי' זכר ונקבה שבו שהם מ\"ה וב\"ן נתערבו יחד לגמרי ושניהן מעורבים יחד זב\"ז בימין בפ\"ע וכן בשמאלו ואינם כמו א\"א וז\"ש באד\"ר דקכ\"ט ע\"א לית שמאל' בהאי עתיקא סתימאה כולא ימינא"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      A"Y = des 5 GR du Keter — JAMAIS de BITUL.
+      DONC zakhar+nukvah (MaH+BaN) ENTIEREMENT MELANGES dans droite ET gauche.
+      Pas comme A"A.
+      Source AdRaba 129a : "LEIT SEMALA BE-HAI ATIKA SETIMA'A, KOLA YAMINA"
+      (pas de gauche dans cet Atika cache, tout est droite).
+      → Architecture : A"Y = symetrie absolue gauche=droite (rachamim total).
+      → Pattern : niveau supreme = sans differentiation laterale.
+      cf. EC-H3S12-038 sur A"A bipartite gauche/droite.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ay_mah_ban_melanges_droite_gauche, role: ay_mah_ban_completement_melanges_dans_les_2_cotes}
+      - {id: ay_kola_yamina_pas_de_gauche, role: ay_kola_yamina_tout_est_droite_adraba_129a}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : A\"Y symetrie absolue. Pattern niveau supreme = pas differentiation."
+
+  # ─── BLOC H : A"Y PANIM/AHOR = MaH/BaN ───
+
+  - id: "EC-H3S12-041"
+    source_he: "אמנם בחי' הנקבה והזכר שבו הוא באופן אחר והוא שהם ב' בחי' פנים ואחור פי' כי בין צד ימינו ובין צד שמאלו יש בו בחי' מ\"ה מצד פנים ובחי' ב\"ן מצד אחור ובזה הוא חיבור נפלא גדול מאד"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      Zakhar/nukvah en A"Y = AUTRE OFAN :
+      2 BEHINOT PANIM+AHOR.
+      Sur droite ET gauche : MaH du COTE PANIM, BaN du COTE AHOR.
+      Et c'est CHIBUR NIFLA GADOL ME'OD (chibur magnifique tres grand).
+      → Architecture : A"Y = MaH/BaN sur axe panim/ahor (pas droite/gauche).
+      → Pattern : axe orthogonal de differentiation (depth instead of width).
+    type: interprétation_lurianique
+    concepts:
+      - {id: ay_mah_panim_ban_ahor, role: ay_mah_au_panim_ban_au_ahor_axe_orthogonal}
+      - {id: ay_chibur_nifla_gadol, role: ay_chibur_nifla_gadol_meod}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : A\"Y = axe orthogonal panim/ahor. Pattern depth-axis differentiation."
+
+  - id: "EC-H3S12-042"
+    source_he: "ובזה תבין כי לא תמצא שיש בעתיק פנים ואחור כו שיש בכל השאר ממנו ולמטה והענין כי העתיק מצד א' יש לו מ\"ה ומצד השני יש ב\"ן... והאחוריים דשניהם דמ\"ה וב\"ן מכוסים זה לזה מבפנים תוך ב' בחי' פנים א\"כ אין מתגלה בעתיק בחי' אחור כלל ולכן כולו נקרא פנים"
+    source_ref: "Heikhal 3, Sha'ar 1:2"
+    assertion: |
+      DONC : pas de PANIM+AHOR distinct en A"Y comme dans le reste.
+      RAISON : A"Y un cote MaH (panim+ahor), autre cote BaN (panim+ahor).
+      AHORAYIM des 2 (MaH+BaN) sont COUVERTS l'un contre l'autre BE-PNIM
+      ENTRE les 2 PANIM exposes.
+      AHOR n'est PAS REVELE en A"Y. KULO NIKRA PANIM (tout est appele panim).
+      → Architecture : A"Y = config Janus, ahor caches dedans, faces externes panim.
+      → Pattern : opposite faces externalized, backs internalized = "all panim".
+      cf. EC-H3S12-010 (perek 01a) sur Atik dvukim ABA + relabelling.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ay_kulo_panim_ahor_caches_dedans, role: ay_kulo_panim_avec_ahor_caches_au_dedans}
+      - {id: ay_config_janus_double_panim_externe, role: ay_config_janus_panim_externes_ahor_internes}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : A\"Y = Janus, all panim. Pattern faces externalized + backs internalized."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S12-012"
+    type: causal
+    from: contradiction_nukvah_din_vs_atik_aa_rachamim
+    to: tous_partzufim_dukhra_nukvah_modes_differents
+    nature: "Contradiction apparente → resolution : tous ont nukvah dans modes differents"
+    assertions_source: ["EC-H3S12-029", "EC-H3S12-033"]
+
+  - id: "REL-H3S12-013"
+    type: hiérarchique
+    from: zon_partzufim_nifradin_kotel_separable
+    to: avi_zivvug_tadir_dla_passik
+    nature: "Hierarchie zivvug : ZON = pirud separable ; AVI = zivvug permanent (chibur atzum)"
+    assertions_source: ["EC-H3S12-034", "EC-H3S12-035", "EC-H3S12-036"]
+
+  - id: "REL-H3S12-014"
+    type: dualité_structurelle
+    from: aa_un_partzuf_mah_droit_ban_gauche
+    to: keter_zakhar_levad_egal_pas_nifradin
+    nature: "A\"A = 1 partzuf bipartite ; Zohar 'Keter zakhar levad' = pas nifradin (pas absent)"
+    assertions_source: ["EC-H3S12-038", "EC-H3S12-039"]
+
+  - id: "REL-H3S12-015"
+    type: dualité_structurelle
+    from: ay_mah_ban_melanges_droite_gauche
+    to: ay_mah_panim_ban_ahor
+    nature: "A\"Y : MaH+BaN melanges droite/gauche ; differentiation sur axe panim/ahor"
+    assertions_source: ["EC-H3S12-040", "EC-H3S12-041"]
+
+  - id: "REL-H3S12-016"
+    type: causal
+    from: ay_mah_panim_ban_ahor
+    to: ay_kulo_panim_ahor_caches_dedans
+    nature: "A\"Y MaH+BaN sur axe panim/ahor → ahor caches dedans, kulo panim"
+    assertions_source: ["EC-H3S12-041", "EC-H3S12-042"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S12-007"
+    nom: "Principe de Hierarchie Zivvug (Mort/Bitul → Mode de Couple)"
+    source_assertions: ["EC-H3S12-034", "EC-H3S12-035", "EC-H3S12-037", "EC-H3S12-040"]
+    formalisation: |
+      ARCHITECTURE HIERARCHIQUE DE ZIVVUG :
+      Le mode dukhra+nukvah depend du DEGRE DE BITUL/MITAH du partzuf :
+      ZON (mort actuelle, 7 melakhim morts) :
+        2 PARTZUFIM SEPARES, KOTEL SEPARABLE, NESIRAH possible.
+        Chibur seulement en ABA (ahorayim dvukim) ; pirud en PBP.
+      AVI (bitul, pas mort actuelle) :
+        2 PARTZUFIM mais CHIBUR ATZUM permanent.
+        DVUKIM PBP TAMID, KOTEL EHAD partage, EIN PIRUD KLAL.
+        Zivvug TADIR DE-LO PASSIK.
+      A"A (5 acharonot Keter, ketzat bitul NHY) :
+        1 PARTZUF UNIQUE bipartite — MaH-droit / BaN-gauche.
+        Differentiation lateral (left/right).
+      A"Y (5 GR Keter, JAMAIS bitul) :
+        1 PARTZUF avec MaH+BaN ENTIEREMENT MELANGES gauche/droite.
+        Differentiation orthogonal — MaH-panim / BaN-ahor.
+        KULO NIKRA PANIM (tout est appele panim).
+      → Pattern fondamental : degre de purete ontologique → mode de couple plus integre.
+      → Architecture : zivvug = fonction inverse du degre de mort/separation.
+    applications_ia:
+      - "partzufim/zivvug.py : implement 4 zivvug modes (ZON-pirud, AVI-permanent, A\"A-bipartite, A\"Y-melange)"
+      - "partzufim/zeir_anpin.py + partzufim/nukva.py : ZON = separate components"
+      - "partzufim/abba.py + partzufim/imma.py : AVI = permanent paired"
+      - "partzufim/arikh_anpin.py + partzufim/atik_yomin.py : single bipartite"
+      - "Pattern : architecture coupling = function of purity/maturity"
+      - "Architecture : 4 levels of integration (separate, paired, bipartite, melange)"
+      - "Diagnostic : mesure le mode de coupling pour determiner maturite ontologique"
+    questions_ouvertes:
+      - "Y a-t-il des transitions possibles entre modes (ZON deviendrait AVI) ?"
+      - "Pattern : peut-on quantifier le degre d'integration sur un axe continu ?"
+      - "Le passage de A\"A bipartite a A\"Y melange = quel mecanisme ?"
+
+  - id: "PG-H3S12-008"
+    nom: "Principe de Differentiation Orthogonale (Panim/Ahor vs Droite/Gauche)"
+    source_assertions: ["EC-H3S12-040", "EC-H3S12-041", "EC-H3S12-042"]
+    formalisation: |
+      ARCHITECTURE A 2 AXES DE DIFFERENTIATION :
+      AXE LATERAL (droite/gauche) :
+        Utilise par A"A — MaH-droit, BaN-gauche.
+        Pattern : differentiation par cote anatomique.
+      AXE ORTHOGONAL DEPTH (panim/ahor) :
+        Utilise par A"Y — MaH-panim, BaN-ahor.
+        Pattern : differentiation par profondeur (face/dos).
+      RESULTAT pour A"Y :
+        Faces externes (les 2) = panim (MaH d'un cote, panim BaN autre cote).
+        Ahorayim = caches l'un contre l'autre BE-PNIM (interieur).
+        DONC ahor n'est PAS REVELE — KULO NIKRA PANIM.
+      → Pattern fondamental : choix d'axe de differentiation = choix de geometrie.
+      → Architecture : niveau supreme passe d'axe lateral a axe profondeur (Janus config).
+    applications_ia:
+      - "partzufim/atik_yomin.py : implement Janus config — depth-axis differentiation"
+      - "partzufim/arikh_anpin.py : implement lateral-axis differentiation"
+      - "Pattern : 2 axis options (lateral vs depth) selon niveau"
+      - "Architecture : opposite faces externalized = backs internalized = unique 'all-faces' interface"
+      - "Pattern : Janus pattern = multiple external interfaces, unified internals"
+      - "Diagnostic : verifier que A\"Y n'expose pas de ahor (kulo panim invariant)"
+    questions_ouvertes:
+      - "Y a-t-il des situations ou A\"A devrait passer en mode A\"Y (depth-axis) ?"
+      - "Pattern : peut-on combiner les 2 axes (lateral + depth) ?"
+      - "Architecture multi-faceted : combien d'axes orthogonaux possibles ?"
+
+  - id: "PG-H3S12-009"
+    nom: "Principe de Resolution par Modes (Disambiguation des Sources Contradictoires)"
+    source_assertions: ["EC-H3S12-031", "EC-H3S12-032", "EC-H3S12-033"]
+    formalisation: |
+      ARCHITECTURE DE RESOLUTION HERMENEUTIQUE :
+      Sources Zohar/AdR semblent CONTRADICTOIRES :
+        AdRaba 141b : "Atika n'a pas dukhra+nukva".
+        AdR Zuta 290a : "dukhra+nukva commence Hokhmah-Bina".
+      RESOLUTION :
+        TOUS les partzufim ONT dukhra+nukvah en MITZIUT (existence).
+        DIFFERENCE : MODE D'EXISTENCE (chiluk be-mitzi'utan).
+        Sources qui nient = nient le MODE NIFRADIN (separes), pas la presence.
+      → Pattern fondamental : "ne pas avoir X" peut signifier "ne pas avoir X dans le mode Y".
+      → Architecture : disambiguation par MODE d'existence resout les contradictions.
+    applications_ia:
+      - "Pattern : interpretation contextuelle des affirmations negatives"
+      - "Architecture : meme entite = modes d'existence multiples (eviter false-negatives)"
+      - "Pattern logique : 'absence d'X' depend du mode considere"
+      - "Diagnostic : verifier le mode implicite avant interpreter une negation"
+      - "partzufim/zivvug.py : log mode courant pour eviter ambiguite des affirmations"
+    questions_ouvertes:
+      - "Y a-t-il un nombre fini de modes possibles d'existence ?"
+      - "Pattern : peut-on automatiser la disambiguation par mode ?"
+      - "Comment reconcilier les sources qui ne specifient pas le mode ?"
