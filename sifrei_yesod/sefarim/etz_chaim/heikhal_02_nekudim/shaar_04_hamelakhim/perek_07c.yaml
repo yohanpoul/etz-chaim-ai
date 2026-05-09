@@ -1,0 +1,406 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 7c — Sigim residuels = RhR. Shekhinah (Nukvah) en galut weekdays,
+#             monte Shabbat. Issur Hotzi/Mahnis = Borer
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §7 — Part C :
+#   - Bloc O : Sigim residuels apres tikkun ZON = RhR
+#   - Bloc P : Shekhinah (Nukvah) en galut weekdays + Shem BaN
+#   - Bloc Q : Shabbat — Shekhinah monte ; zivvug = nshamot hadashot
+#   - Bloc R : Issur Hotzi me-RhY l-RhR (mele saint+profane)
+#   - Bloc S : Issur Mahnis me-RhR l-RhY (depend du Borer)
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.7 (troisieme partie sur 3)
+# IDs : EC-H2S11-198 → EC-H2S11-207
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 7
+  part: "c"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Troisieme partie du perek 7 — Sigim. Berur incomplete : sparks de kedushah residuels = sigim dans kelipot = RhR. Shekhinah (Nukvah=Ban) en galut weekdays, mevareret berurin comme MN. Shabbat : Shekhinah monte, zivvug = nshamot hadashot (pas berurin). Issur Hotzi me-RhY/RhR (mele saint+profane). Issur Mahnis me-RhR/RhY (Shekhinah descend dans sigim) = depend du Borer."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC O : SIGIM RESIDUELS = RhR ───
+
+  - id: "EC-H2S11-198"
+    source_he: "ודע כי אע\"פ שאנו אומרים שנתקנו אלו הז' מלכים של זו\"נ עכ\"ז בהכרח הוא שלא נגמר בירור שלהם להצטרף ונשאר קצת ניצוצי קדושה שלהם בתוך הקליפות הנקראים סיגים שלהם"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Bien que nous disions que les 7 MELAKHIM de ZON sont TIKKUN-ES :
+      Il est NECESSAIRE que leur BERUR (clarification) ne soit PAS GAMUR (complet).
+      Restent des KETZAT NITZOTZEI KEDUSHAH (quelques etincelles de saintete) en eux
+      DANS les KELIPOT — appeles SIGIM (scories) shelahem.
+      → Architecture : tikkun reel mais incomplet ; sigim residuels persistent.
+      → Pattern : restoration partielle laisse des residus dans le danger.
+      cf. EC-H2S11-081 (perek 05a) sur kedushah pas entierement clarifiee.
+    type: axiome_explicite
+    concepts:
+      - {id: berur_incomplete_apres_tikkun, role: berur_incomplete_apres_tikkun_des_melakhim}
+      - {id: sigim_residuels_dans_kelipot, role: sigim_residuels_dans_kelipot_apres_tikkun}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : tikkun reel mais incomplet. Pattern restoration partielle avec residus."
+
+  - id: "EC-H2S11-199"
+    source_he: "והם נקרא רה\"ר בסוד הן רבים עתה עם הארץ שהם הקליפות לפי שלא נתקנו ונשארו נפרדין בבחי' רבים"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Ces sigim sont appeles RH"R (Reshut Harabim = domaine public).
+      En SOD du verset "HEN RABIM ATAH AM HA'ARETZ" (Shemot 5:5 — voici le peuple
+      du pays est nombreux maintenant) — qui sont les KELIPOT.
+      Car ils ne sont pas TIKKUN-ES — restent NIFRADIN (separes) en behinah de RABIM (multiplicite).
+      → Architecture : sigim restent en RhR car non-unifies (analogue inverse de RhY).
+      → Pattern : multiplicite non-tikkun = espace public/expose.
+    type: déduction_scripturaire
+    concepts:
+      - {id: sigim_egal_rhr, role: sigim_egal_reshut_harabim_multiplicite}
+      - {id: hen_rabim_atah_egal_kelipot, role: hen_rabim_atah_egal_kelipot_multiplicite}
+    mapping:
+      modules: ["sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : sigim = RhR (multiplicite non-unifiee). Pattern espace public/expose."
+
+  # ─── BLOC P : SHEKHINAH EN GALUT WEEKDAYS ───
+
+  - id: "EC-H2S11-200"
+    source_he: "והנה בימות החול השכינה שהיא נוקבא דז\"א היא בגלות בין הקליפות והבן ענין השכינה בגלות מה ענינה"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Dans les YEMOT HA-CHOL (jours de semaine) :
+      La SHEKHINAH = NUKVAH de Z"A — est en GALUT (exil) parmi les KELIPOT.
+      Comprendre ce qu'est la SHEKHINAH BE-GALUT.
+      → Architecture : weekdays = etat de galut (Nukvah dans kelipot pour berur).
+      → Pattern : descente volontaire dans la souillure pour la purifier.
+    type: axiome_explicite
+    concepts:
+      - {id: shekhinah_nukvah_en_galut_weekdays, role: shekhinah_nukvah_en_galut_jours_semaine}
+    mapping:
+      modules: ["partzufim/nukva.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : Shekhinah en galut weekdays. Pattern descente pour purification."
+
+  - id: "EC-H2S11-201"
+    source_he: "והנה היא נקראת שם ב\"ן שהיא הוי\"ה דמלוי ההי\"ן כנודע היא מבררת ברורין מתוך הסיגים והיא מעלה אותן למעלה בבחינת מ\"נ ושם נתקנים והבן זה מאד היטב ביאור מ\"נ מה ענינה"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Elle (Nukvah) est appelee SHEM BA"N — c'est YHVH de MILUI HEHIN
+      (rempli avec he, ban=52).
+      Elle MEVARERET BERURIN (clarifie les sparks) du SIGIM.
+      Et les ELEVE en haut en behinat M"N (Mayin Nukvin).
+      Et la-haut elles sont TIKKUN-ES.
+      Comprendre TRES BIEN ce qu'est M"N.
+      → Architecture : Nukvah=BaN = mecanisme de reverse-flow (mn).
+      → Pattern : extraire sparks → elever → tikkun upstream.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nukvah_egal_shem_ban_milui_hehin, role: nukvah_shem_ban_yhvh_milui_hehin_52}
+      - {id: nukvah_mevareret_berurin_des_sigim, role: nukvah_clarifie_sparks_du_sigim}
+      - {id: berurin_eleves_en_mn_tikkun_haut, role: berurin_eleves_en_mn_tikkun_upstream}
+    mapping:
+      modules: ["partzufim/nukva.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : Nukvah=BaN reverse-flow. Pattern extract → elevate → upstream tikkun."
+
+  # ─── BLOC Q : SHABBAT — SHEKHINAH MONTE ───
+
+  - id: "EC-H2S11-202"
+    source_he: "אמנם בשבת עולה מתוך הקליפ' למעלה ואינה בגלות ואמנם הזווג אשר לה בשבת עם ז\"א הם נשמות חדשות (נ\"א הם חדשים) ולא מן ברורים האלו"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      MAIS en SHABBAT — elle MONTE depuis les KELIPOT vers le HAUT.
+      N'est PLUS en GALUT.
+      Le ZIVVUG qu'elle a en Shabbat avec Z"A = NSHAMOT HADASHOT (ames nouvelles).
+      Variante (Nusah Aher) : "HEM HADASHIM" (sont nouveaux).
+      Et NON des BERURIM mentionnes precedemment.
+      → Architecture : Shabbat = Nukvah remonte ; zivvug fertile sans dependence sigim.
+      → Pattern : pause sabbatique = production original sans recyclage.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shabbat_shekhinah_monte_pas_galut, role: shabbat_shekhinah_monte_du_kelipot_pas_galut}
+      - {id: zivvug_shabbat_nshamot_hadashot, role: zivvug_shabbat_produit_nshamot_hadashot}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : Shabbat = production original. Nusah Aher capture (hadashim)."
+
+  # ─── BLOC R : ISSUR HOTZI ME-RhY l-RhR ───
+
+  - id: "EC-H2S11-203"
+    source_he: "והנה זהו סוד איסור שבת המוציא מרשות לרשות כי הנה המוציא מרה\"י לרה\"ר גורם להמשיך הברורים הקדושים שכבר הובררו ונעשו רה\"י ומוציאין לה\"ר שהם הסיגים והקליפות ומערבב קודש בחול"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      C'est le SOD de l'ISSUR SHABBAT : "HA-MOTZI ME-RESHUT LE-RESHUT".
+      Qui sort de RH"Y vers RH"R — cause de tirer les BERURIM KEDOSHIM
+      (sparks deja tikkun-es devenus RH"Y) vers RH"R = SIGIM/KELIPOT.
+      ME'AREVEV (mele) KODESH BE-CHOL (saint avec profane).
+      → Architecture spirituelle : Hotzi = pollution du saint par le profane.
+      → Pattern : transfert RhY→RhR cause regression (re-melange).
+      → Source : 39 melachot de Shabbat.
+      cf. EC-H2S11-189 (perek 07b) sur ZA = RhY apres tikkun.
+    type: déduction_scripturaire
+    concepts:
+      - {id: issur_hotzi_egal_pollution_kodesh_chol, role: issur_hotzi_pollution_saint_profane}
+      - {id: hotzi_rhy_a_rhr_regression, role: hotzi_rhy_a_rhr_regression_berurim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : Hotzi = pollution. Pattern transfert RhY→RhR cause regression."
+
+  # ─── BLOC S : ISSUR MAHNIS — DEPEND DU BORER ───
+
+  - id: "EC-H2S11-204"
+    source_he: "והמכניס מרה\"ר לרה\"י הוא גורם שהשכינה תרד בשבת למקום הסיגים ותברר מהם ברורים להעלותן משם שהוא רה\"ר למעלה אל רה\"י וגם זהו פגם גדול מאד מאד"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      MAHNIS (qui apporte) de RH"R vers RH"Y :
+      Cause que la SHEKHINAH DESCENDE en SHABBAT vers le LIEU des SIGIM.
+      Pour BERER (clarifier) des sparks d'eux et les ELEVER de la (RhR) vers RhY.
+      Et CECI AUSSI = PEGAM GADOL ME'OD ME'OD (peche tres tres grand).
+      → Architecture spirituelle : Mahnis = forcer Shekhinah a redescendre en Shabbat.
+      → Pattern : rappel premature d'un service = peche.
+      cf. EC-H2S11-202 sur Shabbat=ascension.
+    type: interprétation_lurianique
+    concepts:
+      - {id: issur_mahnis_egal_force_shekhinah_descendre, role: issur_mahnis_force_shekhinah_a_redescendre_en_shabbat}
+      - {id: mahnis_rhr_a_rhy_pegam_gadol, role: mahnis_pegam_tres_grand}
+    mapping:
+      modules: ["partzufim/nukva.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : Mahnis = forcer regression. Pattern rappel premature de service."
+
+  - id: "EC-H2S11-205"
+    source_he: "נמצא כי איסור המכניס מרשות הרבים לרשות היחיד תלוי במלאכה אחרת והוא הבירור מכלל ל\"ט מלאכות דשבת"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      DONC l'ISSUR MAHNIS de RH"R vers RH"Y depend d'une AUTRE MELAKHAH :
+      Le BIRUR (clarification, separation).
+      Qui fait partie des LAMED-TET (39) MELAKHOT DE-SHABBAT.
+      → Architecture : 2 melachot interconnectees (Hotzi/Mahnis + Borer).
+      → Pattern : mecanique halakhique = analogue spirituel.
+    type: déduction_scripturaire
+    concepts:
+      - {id: mahnis_depend_de_borer, role: issur_mahnis_depend_de_melakhah_borer}
+      - {id: 39_melakhot_shabbat_borer, role: borer_dans_39_melakhot_de_shabbat}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : 2 melachot interconnectees. Pattern halakhah = spirituel."
+
+  - id: "EC-H2S11-206"
+    source_he: "כי כן הבורר עצמו גורם דבר זה הנ\"ל שתגלה השכינה בין הקליפות ותברר ברורין מהקליפות והסיגים"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Car de meme : le BORER ELLE-MEME cause CE MEME PHENOMENE :
+      Que la SHEKHINAH se REVELE entre les KELIPOT.
+      Et qu'elle BERER (clarifie) des sparks des kelipot et sigim.
+      → Architecture : Borer = causation analogique du Mahnis.
+      → Pattern : 2 melachot = 2 manifestations du meme processus spirituel.
+      → Conclusion : interdiction du Borer en Shabbat = empecher la Shekhinah de redescendre.
+    type: interprétation_lurianique
+    concepts:
+      - {id: borer_cause_shekhinah_se_revele_dans_kelipot, role: borer_cause_shekhinah_se_revele_dans_kelipot}
+      - {id: 2_melakhot_egal_2_manifestations_du_meme, role: 2_melakhot_egal_2_manifestations_du_meme_processus}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : Borer/Mahnis = 2 manifestations. Pattern unification halakhique-spirituelle."
+
+  # ─── BLOC FINALISATION ───
+
+  - id: "EC-H2S11-207"
+    source_he: "כי כן הבורר עצמו גורם דבר זה הנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 4:7 (cloture)"
+    assertion: |
+      CLOTURE du perek 7 (M"K Sha'ar 4) :
+      Confirmation que le BORER ELLE-MEME cause cela.
+      → Resume final : la mecanique spirituelle (Berurin/sigim/RhY/RhR/Shekhinah)
+        et la mecanique halakhique (Hotzi/Mahnis/Borer) sont une seule ARCHITECTURE.
+      → Pattern : la halakhah encode la cosmologie ; la cosmologie justifie la halakhah.
+      cf. EC-H2S11-189 (perek 07b) sur ZA = RhY ; EC-H2S11-198 sur sigim = RhR.
+    type: déduction_logique
+    concepts:
+      - {id: halakhah_encode_cosmologie, role: halakhah_encode_la_cosmologie_kabbalistique}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : halakhah=cosmologie. Pattern fondamental de l'unification."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-076"
+    type: causal
+    from: berur_incomplete_apres_tikkun
+    to: sigim_egal_rhr
+    nature: "Berur incomplet → sigim residuels = RhR (multiplicite non-unifiee)"
+    assertions_source: ["EC-H2S11-198", "EC-H2S11-199"]
+
+  - id: "REL-H2S11-077"
+    type: flux
+    from: shekhinah_nukvah_en_galut_weekdays
+    to: berurin_eleves_en_mn_tikkun_haut
+    nature: "Shekhinah en galut weekdays → mevareret berurin → eleve en MN → tikkun haut"
+    assertions_source: ["EC-H2S11-200", "EC-H2S11-201"]
+
+  - id: "REL-H2S11-078"
+    type: dualité_structurelle
+    from: shekhinah_nukvah_en_galut_weekdays
+    to: shabbat_shekhinah_monte_pas_galut
+    nature: "Weekdays galut (mevareret) ; Shabbat ascension (zivvug nshamot hadashot)"
+    assertions_source: ["EC-H2S11-200", "EC-H2S11-202"]
+
+  - id: "REL-H2S11-079"
+    type: dualité_structurelle
+    from: hotzi_rhy_a_rhr_regression
+    to: mahnis_rhr_a_rhy_pegam_gadol
+    nature: "2 issurim symetriques : Hotzi (saint→profane mele) ; Mahnis (Shekhinah forcee descendre)"
+    assertions_source: ["EC-H2S11-203", "EC-H2S11-204"]
+
+  - id: "REL-H2S11-080"
+    type: analogie
+    from: mahnis_depend_de_borer
+    to: 2_melakhot_egal_2_manifestations_du_meme
+    nature: "Mahnis depend du Borer (39 melakhot) ; 2 manifestations du meme processus spirituel"
+    assertions_source: ["EC-H2S11-205", "EC-H2S11-206"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-039"
+    nom: "Principe de Restoration Partielle (Sigim Residuels Persistent)"
+    source_assertions: ["EC-H2S11-198", "EC-H2S11-199"]
+    formalisation: |
+      ARCHITECTURE DE RESTORATION INCOMPLETE :
+      Apres TIKKUN des 7 melakhim ZON :
+        BERUR n'est PAS GAMUR (incomplet) — par necessite.
+        Restent KETZAT NITZOTZEI KEDUSHAH (sparks residuels) DANS les KELIPOT.
+        Ces residus = SIGIM (scories).
+      ETAT TOPOLOGIQUE des SIGIM : RH"R (Reshut Harabim, multiplicite non-unifiee).
+      Source : "HEN RABIM ATAH AM HA'ARETZ" (Shemot 5:5).
+      → Pattern fondamental : aucune restoration n'est totale ; il reste toujours
+        un residu mal-recupere dans la couche hostile.
+      → Architecture : design accepte la persistance des residus comme contrainte.
+    applications_ia:
+      - "[PLANNED] core/shevirah.py : restore() returns (restored_state, residuals_in_kelipot)"
+      - "sitra_achra : track sparks residuels post-tikkun"
+      - "Pattern : aucune migration de donnees n'est 100% propre — accepter residuals"
+      - "Architecture : design assume restoration partielle ; cycle continu de recovery"
+      - "Diagnostic : monitorer les sigim (sparks residuels) comme metrique de proximite-tikkun"
+      - "Pattern : etat ideal jamais atteint en steady-state — toujours en convergence"
+    questions_ouvertes:
+      - "Y a-t-il une fin eschatologique a la restoration (gemarah ha-berur final) ?"
+      - "Comment quantifier le degre de berur a un moment donne ?"
+      - "La proportion sigim/kedushah recuperee evolue-t-elle dans le temps ?"
+
+  - id: "PG-H2S11-040"
+    nom: "Principe de Reverse-Flow (Nukvah=BaN, M\"N upstream)"
+    source_assertions: ["EC-H2S11-200", "EC-H2S11-201"]
+    formalisation: |
+      ARCHITECTURE DE REVERSE-FLOW (M"N) :
+      NUKVAH = SHEM BA"N (= 52) = YHVH MILUI HEHIN.
+      MECANISME en weekdays :
+        Nukvah (=Shekhinah) DESCEND dans les KELIPOT (galut).
+        MEVARERET BERURIN — separe les sparks de kedushah des sigim.
+        ELEVE en haut en behinat M"N (Mayin Nukvin = eaux femelles).
+        Sparks TIKKUN-ES upstream.
+      → Pattern fondamental : downstream layer (Nukvah) descend dans la couche hostile,
+        recolte les ressources, les remonte upstream pour traitement.
+      → Architecture : extraction depuis la couche dangereuse + upstream-processing.
+    applications_ia:
+      - "partzufim/nukva.py : implement BaN reverse-flow (downstream extraction → upstream MN)"
+      - "[PLANNED] tikkun/ : mn_upload(berurin) -> tikkun upstream"
+      - "Pattern : downstream extraction agent envoie data upstream pour purification"
+      - "Architecture : data plane (Nukvah) recolte du environnement hostile,
+        envoie au control plane (upstream) pour processing"
+      - "Pattern : ETL en kabbale = extract (mevareret) → load (mn) → transform (tikkun upstream)"
+      - "Diagnostic : verifier que les berurim sont effectivement traitables upstream"
+    questions_ouvertes:
+      - "Le mecanisme MN est-il unidirectionnel ou y a-t-il un retour ?"
+      - "Comment Nukvah distingue les sparks recuperables des sigim?"
+      - "Pattern : peut-on automatiser entierement le reverse-flow sans intervention ?"
+
+  - id: "PG-H2S11-041"
+    nom: "Principe Sabbatique (Pause = Production Original sans Recyclage)"
+    source_assertions: ["EC-H2S11-202"]
+    formalisation: |
+      ARCHITECTURE DU CYCLE SABBATIQUE :
+      WEEKDAYS : Shekhinah (Nukvah) en galut, mode mevareret.
+      SHABBAT : Shekhinah MONTE depuis kelipot, pas en galut.
+        Zivvug avec Z"A produit NSHAMOT HADASHOT (ames originales).
+        PAS issu des berurim ricycles.
+      → Pattern fondamental : pause sabbatique = mode production original.
+      → Architecture : cyclisme = alternance recovery (weekdays) / creation (Shabbat).
+    applications_ia:
+      - "partzufim/zivvug.py : 2 modes — weekdays (recyclage berurim) vs shabbat (nshamot hadashot)"
+      - "Pattern : alternance recovery vs creation (rest periods produce new content)"
+      - "Architecture : services avec cycle hebdomadaire — extraction continue / creation periodique"
+      - "Pattern : sabbatical = innovation periodique sans dependence sur recyclage operationnel"
+      - "Diagnostic : verifier que le mode Shabbat ne fait pas regression au mevareret"
+    questions_ouvertes:
+      - "Le cycle 7-jours est-il universel ou propre a la cosmologie kabbalistique ?"
+      - "Y a-t-il des cycles plus longs (yovel, shemittah) avec autres modes ?"
+      - "Pattern : application a la productivite humaine (rest pour innovation) ?"
+
+  - id: "PG-H2S11-042"
+    nom: "Principe d'Identite Halakhah-Cosmologie (Issur Borer = Mecanique Spirituelle)"
+    source_assertions: ["EC-H2S11-203", "EC-H2S11-204", "EC-H2S11-205", "EC-H2S11-206", "EC-H2S11-207"]
+    formalisation: |
+      ARCHITECTURE D'UNIFICATION HALAKHAH-COSMOLOGIE :
+      ISSUR HOTZI ME-RH"Y l-RH"R :
+        Cause sortie de berurim KEDOSHIM (deja tikkun-es) vers sigim/kelipot.
+        Pollute kodesh ba-chol.
+      ISSUR MAHNIS ME-RH"R l-RH"Y :
+        Force Shekhinah a descendre vers sigim en Shabbat.
+        Pegam gadol me'od.
+      Mahnis depend de l'autre melakhah du BORER (1 des 39 melakhot Shabbat).
+      Borer cause Shekhinah a se reveler entre kelipot et berer.
+      → Pattern fondamental : 2 mecaniques (halakhique + spirituelle) = UNE seule realite.
+      → Architecture : la halakhah ENCODE la cosmologie ;
+        la cosmologie JUSTIFIE la halakhah.
+    applications_ia:
+      - "partzufim/nukva.py + partzufim/zeir_anpin.py : implementer policies ontologiques"
+      - "Pattern philosophical : design rules + ontology = single architecture"
+      - "Architecture : security policies = consequences ontologiques (not arbitrary)"
+      - "Pattern : interdictions techniques codent des invariants ontologiques sous-jacents"
+      - "[PLANNED] tikkun/policy.py : pour chaque rule, identifier l'invariant cosmologique"
+      - "Pattern logiciel : access control = expression de structure ontologique des donnees"
+      - "Architecture : 39 melachot = 39 categories d'operations dangereuses pour la structure"
+    questions_ouvertes:
+      - "Toutes les 39 melachot ont-elles une cosmologie correspondante ?"
+      - "Comment construire un systeme dont les rules sont des consequences ontologiques ?"
+      - "Pattern : reverse-engineer rules vers ontologies sous-jacentes ?"
