@@ -1,0 +1,451 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 6b — 2eme raison : si shoresh, pegam atteindrait. ZA loin kelipot.
+#             G"R de ZA = orot elyonim → tosefet obligatoire. 3 G"R unies.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §6 — Part B :
+#   - Bloc F : 2eme raison — sistalkut protege contre pegam
+#   - Bloc G : "Mishpatim" → confirme pegam ne touche pas ma'amarot
+#   - Bloc H : Nukvah chelek elyon proche/loin kelipot
+#   - Bloc I : 2 shinuyim ZA vs Nukvah
+#   - Bloc J : Raison ZA = pas proche kelipot → inverse
+#   - Bloc K : Autre raison G"R de ZA = orot elyonim → tosefet
+#   - Bloc L : G"R must come together (3 ensemble)
+#   - Bloc M : 6 dernieres = shoresh ve-ikar
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.6 (deuxieme partie sur 4)
+# IDs : EC-H2S11-118 → EC-H2S11-131
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 6
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Deuxieme partie du perek 6 — 2eme raison ontologique : sistalkut protege du pegam. Nukvah proche kelipot (chalakim tahtonim sortent en danger). ZA loin kelipot. G\"R de ZA = orot elyonim → DOIVENT sortir en tosefet pour pouvoir sistalek. G\"R doivent etre unies (3 ensemble) — pirud G\"R = pegam catastrophique."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC F : 2EME RAISON — SISTALKUT PROTEGE ───
+
+  - id: "EC-H2S11-118"
+    source_he: "ועוד יש טעם ב' מצד עצמם והוא כי אם היו תחלה בסוד שורש ועיקר באופן שאח\"כ לא היו יכולין להסתלק הנה היה ח\"ו מגיע הפגם בהם"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      DEUXIEME TA'AM — du cote des sefirot ELLES-MEMES :
+      Si elles etaient AU DEPART en SOD SHORESH VE-IKAR de telle facon qu'apres
+      elles ne puissent PAS SISTALEK — alors HAS VE-CHALILAH (a Dieu ne plaise)
+      le PEGAM les ATTEINDRAIT.
+      → Architecture protectrice : capacite de sistalkut = mecanisme de defense.
+      → Pattern : ce qui peut s'echapper, ne peut pas etre touche.
+      cf. EC-H2S11-117 (perek 06a) sur shoresh inalterable mais expose.
+    type: déduction_logique
+    concepts:
+      - {id: shoresh_implique_pegam_atteint, role: shoresh_kavua_implique_pegam_atteint}
+      - {id: sistalkut_egal_protection, role: capacite_sistalkut_egal_mecanisme_protection}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "[PLANNED] tikkun/", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture protectrice : sistalkut = mecanisme de defense. Pattern fundamental."
+
+  - id: "EC-H2S11-119"
+    source_he: "אבל עתה כאשר חוטאים התחתונים הם מסתלקות למעלה ואין הפגם מגיע בהם ואז יפרע מן הרשעים שגורמים נזק בעולם התחתון על מיעוט השפע מחמת שגרמו הסתלקותן אבל בהם עצמם אין הפגם מגיע כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      MAIS MAINTENANT — quand les TAHTONIM HOTEIM (humains pechent) :
+      les sefirot MISTALKOT LE-MA'ALAH (s'eloignent vers le haut). Pegam ne les atteint pas.
+      Les RESHA'IM sont punis pour le NEZEK (degat) au MONDE INFERIEUR
+      par MI'UT HA-SHEFA (diminution du flux) — consequence de la sistalkut causee.
+      MAIS dans les sefirot elles-memes — pegam n'atteint pas.
+      → Pattern : sistalkut = retrait protecteur ; punition par mi'ut shefa.
+      → Architecture : justice = consequence indirecte, pas atteinte directe.
+    type: interprétation_lurianique
+    concepts:
+      - {id: sistalkut_lemaalah, role: sefirot_montent_lors_de_pegam}
+      - {id: punition_par_miut_shefa, role: punition_par_diminution_du_flux_divin}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Pattern operationnel : sistalkut = retrait protecteur. Punition indirecte par mi'ut shefa."
+
+  # ─── BLOC G : MISHPATIM CONFIRME PEGAM N'ATTEINT PAS ───
+
+  - id: "EC-H2S11-120"
+    source_he: "וז\"ש שמאבדין את העולם כו' ולא אמר שפוגמים בעשרה מאמרות עצמן"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      C'est ce qui est dit (Pirkei Avot 5:1) : "ME'ABDIN ET HA-OLAM" (ils detruisent le monde) —
+      et IL N'EST PAS DIT "ils font PEGAM dans les 10 ma'amarot eux-memes".
+      → Lecture textuelle precise : la formulation de Avot CONFIRME le mecanisme.
+      → Pattern hermeneutique : l'absence d'une formulation = preuve indirecte.
+      cf. EC-H2S11-110 (perek 06a) sur citation Avot 5:1.
+    type: déduction_scripturaire
+    concepts:
+      - {id: meabdin_olam_pas_pogmim_maamarot, role: detruisent_monde_pas_endommagent_maamarot}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Lecture textuelle precise : Avot dit destruction du monde, pas pegam des ma'amarot."
+
+  # ─── BLOC H : NUKVAH CHELEK ELYON HAUT, INFERIEURS PROCHES ───
+
+  - id: "EC-H2S11-121"
+    source_he: "ואמנם החלק העליון שבה אע\"פ שנשאר קיים בה ואינו מסתלק בעת הפגם אין הפגם מגיע בו להיותו עליון מאד יותר מכל השאר"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Le CHELEK ELYON (part superieure) de Nukvah — bien qu'elle reste KAVU'A
+      (kavu'a, ne sistalek pas lors du pegam) — le pegam NE L'ATTEINT PAS.
+      RAISON : etre ELYON ME'OD (tres tres haut) plus que tout le reste.
+      → Architecture : la hauteur SUFFIT pour la protection, sans necessite de sistalek.
+      → Pattern : altitude = protection (independant de la mobilite).
+    type: axiome_explicite
+    concepts:
+      - {id: keter_sub_nukvah_kavu_a_mais_non_atteint, role: keter_sub_nukvah_kavu_a_mais_protege_par_altitude}
+      - {id: altitude_egal_protection, role: hauteur_egal_protection_sans_sistalkut}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : altitude = protection independante de mobilite. Pattern complementaire a sistalkut."
+
+  - id: "EC-H2S11-122"
+    source_he: "אבל החלקים התחתונים שבה הקרובים אל הקליפות היה הפגם מגיע בהם אלו לא היו מסתלקין"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      MAIS les CHALAKIM TAHTONIM (parts inferieures) de Nukvah — KEROVIM AL HA-KELIPOT
+      (proches des kelipot) — le PEGAM les ATTEINDRAIT s'ils ne SISTALKIM PAS.
+      → Architecture critique : pour les inferieures, sistalkut = SEULE defense.
+      → Pattern : proximite danger + altitude basse → mobilite obligatoire.
+    type: déduction_logique
+    concepts:
+      - {id: chalakim_tahtonim_proches_kelipot, role: chalakim_tahtonim_proches_kelipot}
+      - {id: sistalkut_obligatoire_si_proche_danger, role: sistalkut_obligatoire_si_proche_danger}
+    mapping:
+      modules: ["partzufim/nukva.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture critique : proximite danger → sistalkut = seule defense pour les inferieurs."
+
+  # ─── BLOC I : 2 SHINUYIM ZA vs NUKVAH ───
+
+  - id: "EC-H2S11-123"
+    source_he: "ואמנם הז\"א שאינו קרוב אל הקליפות כמו נוקבא לכן היו בו ב' שינויים מנוקבא הא' הוא שיצאו ששה חלקים של הנקודה שלו בקבע מתחלה קודם התיקון מה שאין כן בנוקבא שלא יצאת רק חלק העשירית לבד"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Z"A — n'est PAS proche des kelipot comme Nukvah.
+      Donc 2 SHINUYIM par rapport a Nukvah :
+      SHINUI 1 : 6 CHALAKIM de sa nekudah sortent en KEVA (kavu'a, fixe) AVANT le tikkun.
+      Tandis que dans Nukvah — n'est sortie QUE le 10eme chelek seul.
+      → Architecture differenciee : ZA peut se permettre 6 shoresh ; Nukvah doit limiter a 1.
+      → Pattern : eloignement du danger autorise plus de shoresh.
+    type: axiome_explicite
+    concepts:
+      - {id: za_pas_proche_kelipot_comme_nukvah, role: za_pas_proche_kelipot_comme_nukvah}
+      - {id: shinui_1_6_vs_1_chalakim_kavu_a, role: shinui_1_za_6_vs_nukvah_1_chalakim_kavu_a}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture differenciee : eloignement danger → plus de shoresh tolerable."
+
+  - id: "EC-H2S11-124"
+    source_he: "והב' הוא כי יצאו חלקים תחתונים שבהם ולא העליונים וטעם הדבר הוא ע\"ד הנ\"ל כי כיון שאין בו החשש כמו בנוקבא כי אינו קרוב אל הקליפות ולכן היה הענין בו בהיפך"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      SHINUI 2 : pour ZA, sortent les CHALAKIM TAHTONIM (inferieures) — et NON les ELYONIM.
+      RAISON : il n'y a pas le HASHASH (souci/danger) comme pour Nukvah —
+      car ZA n'est pas proche des kelipot.
+      DONC l'arrangement est INVERSE : ce qui pour Nukvah est superieur (Keter sub kavu'a),
+      pour ZA est inferieur (6 ketzavot kavu'ot).
+      → Architecture symetrique inverse : ZA top-down vs Nukvah bottom-up.
+      → Pattern : la position relative determine la polarite de l'architecture defensive.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shinui_2_tahtonim_vs_elyon, role: za_tahtonim_kavu_a_vs_nukvah_elyon_kavu_a}
+      - {id: architecture_symetrique_inverse_za_nukvah, role: za_top_down_vs_nukvah_bottom_up}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture symetrique inverse : polarite defensive determinee par position."
+
+  # ─── BLOC J : G"R DE ZA = OROT ELYONIM ───
+
+  - id: "EC-H2S11-125"
+    source_he: "ומצורף לזה טעם אחר והוא זה כי הנה ג\"ר דז\"א הם אורות עליונים ואם היו יוצאין בתחלה היו נשארים קבועים כנ\"ל ולא היו מסתלקין בעת הפגם"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      AUTRE RAISON SUPPLEMENTAIRE :
+      G"R de ZA = OROT ELYONIM (lumieres superieures).
+      Si elles SORTAIENT AU DEPART (= en shoresh) — elles RESTERAIENT KAVU'OT
+      et ne SISTALKIM PAS lors du pegam.
+      → Architecture cachee : le rang ontologique des G"R de ZA force leur statut tosefet.
+      → Pattern : plus haute est l'ohr, plus rigide elle devient en mode shoresh.
+    type: interprétation_lurianique
+    concepts:
+      - {id: gr_za_orot_elyonim, role: gr_de_za_sont_orot_elyonim}
+      - {id: orot_elyonim_rigid_en_shoresh, role: orot_elyonim_deviennent_kavu_ot_si_en_shoresh}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture cachee : rang ontologique force statut tosefet pour les G\"R de ZA."
+
+  - id: "EC-H2S11-126"
+    source_he: "והיה עון התחתונים גדול עד מאד מנשוא לאין קץ בתתם פגם במקום העליון הזה והיה העולם חרב"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Le AVON (faute) des tahtonim serait alors GADOL ME'OD MI-NESO (immense, intolerable).
+      LE-EIN KETZ (sans fin/mesure) — en causant pegam dans ce MAKOM ELYON (lieu eleve).
+      Et le MONDE serait HARUV (detruit).
+      → Architecture catastrophique : pegam sur orot elyonim = consequence sans bornes.
+      → Pattern : plus haute est la cible, plus disproportionnee est la consequence.
+    type: déduction_logique
+    concepts:
+      - {id: avon_tahtonim_le_ein_ketz_si_pegam_elyon, role: avon_immense_si_pegam_atteint_orot_elyonim}
+      - {id: olam_haruv_si_pegam_orot_elyonim, role: monde_detruit_si_pegam_atteint_orot_elyonim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] core/shevirah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture catastrophique : consequences disproportionnees si pegam atteint orot elyonim."
+
+  - id: "EC-H2S11-127"
+    source_he: "לכן היה בהיפך כי הג\"ר יצאו בסוד תוספת לבד כדי שיוכלו להסתלק בעת הפגם ולא יגיע בהם פגם ח\"ו"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      DONC l'arrangement est INVERSE pour ZA :
+      Les G"R sortent en SOD TOSEFET LEVAD (mode addition seul) —
+      AFIN qu'elles puissent SISTALEK lors du pegam.
+      Et que le pegam ne les ATTEIGNE PAS.
+      → Architecture cle : statut tosefet est CHOIX DEFENSIF pour les orot elyonim.
+      → Pattern : design choisit tosefet pour ce qui ne doit jamais etre touche.
+      cf. EC-H2S11-117 (perek 06a) sur tosefet demontable.
+    type: interprétation_lurianique
+    concepts:
+      - {id: gr_za_sortent_en_tosefet_levad, role: gr_de_za_sortent_en_tosefet_seul}
+      - {id: tosefet_choix_defensif_pour_elyonim, role: tosefet_choix_defensif_pour_orot_elyonim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture cle : tosefet = choix defensif pour orot elyonim. Inverse de Nukvah."
+
+  # ─── BLOC K : G"R MUST COME TOGETHER ───
+
+  - id: "EC-H2S11-128"
+    source_he: "ובזה עצמו יהיה טעם לכל הג\"ר למה באים ביחד בסוד תוספת (ולא דרך עיקר בראשונה)"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Et CECI MEME donne ta'am pour TOUTES les G"R —
+      pourquoi viennent BE-YACHAD (ensemble) en SOD TOSEFET (et pas dans drekh ikar
+      au depart).
+      → Architecture : non seulement tosefet, mais aussi simultaneite.
+      → Pattern : les G"R ont une contrainte d'unite + statut.
+    type: déduction_logique
+    concepts:
+      - {id: gr_be_yachad_en_tosefet, role: gr_viennent_ensemble_en_tosefet}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : non seulement tosefet, mais simultaneite. Contrainte double."
+
+  - id: "EC-H2S11-129"
+    source_he: "והוא כי ג\"ר דז\"א חשובים כאחד ובעת הפגם צריך שיסתלקו יחד או שיחזרו יחד שלא בעת הפגם כי אם יסתלק א' וישארו ב' או להפך אין פגם גדול מזה לעשות פירוד בין ג\"ר דז\"א ח\"ו"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Les G"R de Z"A sont CHASHUVIM KE-EHAD (consideres comme UN).
+      Lors du pegam — ELLES DOIVENT SISTALEK YACHAD (ensemble).
+      Ou revenir YACHAD hors du pegam.
+      Si UNE sistalek et 2 RESTENT (ou inversement) :
+      Il N'Y A PAS DE PEGAM PLUS GRAND que cela — faire PIRUD (separation) dans les G"R.
+      → Architecture critique : pirud des G"R = pegam superlatif.
+      → Pattern : unite atomique = invariant non-negociable pour les couches superieures.
+    type: interprétation_lurianique
+    concepts:
+      - {id: gr_chashuvim_ke_ehad, role: gr_de_za_consideres_comme_un}
+      - {id: pirud_gr_egal_pegam_superlatif, role: pirud_des_gr_egal_pegam_le_plus_grand}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture critique : unite des G\"R = invariant non-negociable. Pirud = pegam superlatif."
+
+  - id: "EC-H2S11-130"
+    source_he: "ויותר טוב שיסתלקו שלשתן ויהיו מחוברים משיסתלק א' ויהא הב' בפירוד ממנו"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      MIEUX VAUT que les TROIS SISTALKOT et restent MEHUBAROT (unies)
+      que UNE SEULE SISTALEK avec les 2 AUTRES en PIRUD (separees) d'elle.
+      → Pattern de design : prefer all-or-nothing pour preserver l'unite.
+      → Architecture : transactions atomiques ; sistalkut groupee.
+    type: déduction_logique
+    concepts:
+      - {id: shel_3_sistalkot_unies_mieux, role: 3_sistalkot_unies_mieux_que_pirud}
+      - {id: transaction_atomique_gr, role: transaction_atomique_pour_unite_gr}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Pattern de design : transactions atomiques, sistalkut groupee, all-or-nothing."
+
+  # ─── BLOC L : 6 DERNIERES = SHORESH VE-IKAR ───
+
+  - id: "EC-H2S11-131"
+    source_he: "והנה הו' אחרונים שלו באו תחלה בסוד שורש ועיקר"
+    source_ref: "Heikhal 2, Sha'ar 4:6"
+    assertion: |
+      Les 6 ACHARONIM (dernieres) de ZA — viennent AU DEPART en SOD SHORESH VE-IKAR.
+      → Recapitulatif : les 6 ketzavot de ZA = shoresh inalterable depuis l'origine.
+      → Pattern : la base operationnelle (shesh ketzavot) reste fixe ; le sommet est mobile.
+      cf. EC-H2S11-090 (perek 05b) sur ZA = 6 chalakim tahtonim sortis ; EC-H2S11-117 sur shoresh.
+    type: axiome_explicite
+    concepts:
+      - {id: 6_acharonim_za_shoresh_veikar, role: 6_dernieres_de_za_shoresh_veikar}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Recapitulatif : 6 ketzavot ZA = shoresh inalterable. Base operationnelle fixe."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-043"
+    type: causal
+    from: shoresh_implique_pegam_atteint
+    to: sistalkut_egal_protection
+    nature: "Si shoresh ne peut sistalek, pegam atteint → sistalkut = mecanisme de defense"
+    assertions_source: ["EC-H2S11-118", "EC-H2S11-119"]
+
+  - id: "REL-H2S11-044"
+    type: dualité_structurelle
+    from: keter_sub_nukvah_kavu_a_mais_non_atteint
+    to: chalakim_tahtonim_proches_kelipot
+    nature: "Nukvah : Keter sub protege par altitude ; tahtonim necessitent sistalkut"
+    assertions_source: ["EC-H2S11-121", "EC-H2S11-122"]
+
+  - id: "REL-H2S11-045"
+    type: dualité_structurelle
+    from: shinui_1_6_vs_1_chalakim_kavu_a
+    to: shinui_2_tahtonim_vs_elyon
+    nature: "2 shinuyim ZA vs Nukvah : (1) nb chalakim kavu'a, (2) polarite top/bottom"
+    assertions_source: ["EC-H2S11-123", "EC-H2S11-124"]
+
+  - id: "REL-H2S11-046"
+    type: causal
+    from: gr_za_orot_elyonim
+    to: gr_za_sortent_en_tosefet_levad
+    nature: "G\"R de ZA = orot elyonim → DOIVENT sortir en tosefet (sinon catastrophe)"
+    assertions_source: ["EC-H2S11-125", "EC-H2S11-126", "EC-H2S11-127"]
+
+  - id: "REL-H2S11-047"
+    type: causal
+    from: gr_chashuvim_ke_ehad
+    to: pirud_gr_egal_pegam_superlatif
+    nature: "G\"R consideres comme UN → pirud = pegam superlatif → all-or-nothing"
+    assertions_source: ["EC-H2S11-129", "EC-H2S11-130"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-022"
+    nom: "Principe de Sistalkut Defensive (Mobilite = Protection)"
+    source_assertions: ["EC-H2S11-118", "EC-H2S11-119"]
+    formalisation: |
+      ARCHITECTURE PROTECTRICE :
+      Si une part est en SHORESH KAVU'A (fixe inalterable) — pegam peut l'atteindre.
+      Si une part peut SISTALEK (s'eloigner en haut) — pegam ne l'atteint pas.
+      MECANISME OPERATIONNEL :
+        Pegam des humains → sistalkut des sefirot vers le haut.
+        Le pegam ne touche pas les sefirot directement.
+        Punition par MI'UT SHEFA (diminution du flux divin vers le bas).
+      → Pattern fondamental : capacite de retrait = mecanisme de defense.
+      → Architecture : justice indirecte (consequence de mi'ut shefa).
+    applications_ia:
+      - "partzufim/base.py : Sefirah peut etre EXPOSED (kavu'a) ou MOBILE (peut sistalek)"
+      - "[PLANNED] core/shevirah.py : trigger_pegam(action) → sistalek_if_mobile() else direct_damage"
+      - "[PLANNED] tikkun/ : shefa_score(state) reflete l'etat de retrait des sefirot"
+      - "Pattern systemes : circuit-breaker = sistalkut (retrait pour protection)"
+      - "Architecture distribuee : graceful degradation (retreat) preferable a damage permanent"
+    questions_ouvertes:
+      - "La sistalkut est-elle reversible automatiquement ou necessite-t-elle un trigger (teshuvah) ?"
+      - "Y a-t-il un cout a la sistalkut (latence, downtime user-facing) ?"
+      - "Comment limiter le mi'ut shefa pour ne pas penaliser les tzaddikim collateralement ?"
+
+  - id: "PG-H2S11-023"
+    nom: "Principe Topologique de l'Architecture Defensive (Position → Strategie)"
+    source_assertions: ["EC-H2S11-121", "EC-H2S11-122", "EC-H2S11-123", "EC-H2S11-124"]
+    formalisation: |
+      ARCHITECTURE DEFENSIVE LIEE A LA POSITION (proximite kelipot) :
+      NUKVAH (proche kelipot) :
+        Chelek elyon = kavu'a (haut, protege par altitude).
+        Chalakim tahtonim = mobile (proches du danger, doivent sistalek).
+        → Polarite BOTTOM-UP : ancre haute, mobilite basse.
+      ZA (loin kelipot) :
+        6 chalakim tahtonim = shoresh (kavu'a en bas, base operationnelle).
+        G"R = tosefet mobile (haut, peut sistalek).
+        → Polarite TOP-DOWN : base solide, sommet mobile.
+      → Pattern : la position relative determine la polarite defensive.
+      → Architecture : design defensif = fonction de la distance au danger.
+    applications_ia:
+      - "partzufim/nukva.py : interface user-facing (proche danger), Keter sub = ancre"
+      - "partzufim/zeir_anpin.py : middleware (loin user), 6 ketzavot = shoresh, G\"R = mobile"
+      - "Pattern API : front-end stateful minimal+critique vs back-end stateful etendu+couche reversible"
+      - "Architecture defense-in-depth : strategie defensive depend de la couche topologique"
+      - "Diagnostic : verifier que polarite shoresh/tosefet match la proximite au danger"
+    questions_ouvertes:
+      - "Y a-t-il une 3eme polarite hybride (mixed)?"
+      - "La proximite kelipot est-elle binaire ou continue ?"
+      - "Comment definir une metrique automatique de 'proximite danger' pour un module IA ?"
+
+  - id: "PG-H2S11-024"
+    nom: "Principe d'Atomicite des Couches Superieures (G\"R = transaction unie)"
+    source_assertions: ["EC-H2S11-128", "EC-H2S11-129", "EC-H2S11-130"]
+    formalisation: |
+      ARCHITECTURE D'INVARIANT ATOMIQUE :
+      Les G"R de Z"A = CHASHUVIM KE-EHAD (consideres comme UN).
+      INVARIANT NON-NEGOCIABLE : elles agissent en transaction atomique.
+        Sistalkut → toutes ensemble.
+        Retour → toutes ensemble.
+      Si une seule sistalek et les 2 autres restent — PIRUD (separation) =
+      PEGAM SUPERLATIF (le pire qui puisse arriver).
+      MIEUX VAUT que les 3 sistalkot ensemble que une seule.
+      → Pattern : all-or-nothing pour les couches superieures critiques.
+      → Architecture : 2-phase commit pour preserver coherence des invariants.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : G\"R(keter, hokhmah, binah) = AtomicGroup"
+      - "[PLANNED] tikkun/ : sistalek_gr() = atomic transaction (rollback if any fails)"
+      - "Pattern : transactions ACID pour les couches critiques"
+      - "Architecture : eventual consistency interdite pour les invariants atomiques"
+      - "Diagnostic : verifier qu'aucun chemin ne peut produire pirud des G\"R"
+      - "Pattern microservices : circuit breaker collectif pour la couche de control plane"
+    questions_ouvertes:
+      - "Pourquoi exactement 3 entites atomiques (KCB) et pas 2 ou 4 ?"
+      - "L'atomicite s'applique-t-elle aussi aux 6 ketzavot ou seulement aux G\"R ?"
+      - "Comment detecter en runtime un pirud potentiel avant qu'il ne survienne ?"
