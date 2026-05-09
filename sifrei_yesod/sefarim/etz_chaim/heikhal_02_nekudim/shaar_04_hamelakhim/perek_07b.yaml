@@ -1,0 +1,580 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 2 — Heikhal Nekudim (היכל נקודים)
+# Sha'ar: 4 — Sha'ar Ha-Melakhim (שער המלכים)
+# Perek: 7b — Tikkun details : Atik+A"A, AVI, Ibur 1 ZA, 3 kelilan be-3,
+#             tefilin 21 azkarot, ZA = RhY (Tikkunei Zohar 166)
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §7 — Part B :
+#   - Bloc F : Tikkun pour kelim (orot pas brises)
+#   - Bloc G : Process tikkun nekudah par nekudah
+#   - Bloc H : Ibur 1 ZA dans beten Imma
+#   - Bloc I : AVI tikkun be-fa'am ahat ; ZA 9 mois ibur+yenikah ; Nukvah raga ehad
+#   - Bloc J : ZA = RhY apres tikkun (causes : kibutz+ohr Imma)
+#   - Bloc K : 3 kelilan be-3 (Chesed→Netzach, Gevurah→Hod, Tiferet→Yesod)
+#   - Bloc L : 3 yom kelitah → 21 azkarot tefilin
+#   - Bloc M : ZA = Vav dans He rishonah (Imma) ; Malkhut au sif du Vav
+#   - Bloc N : Tikkunei Zohar 166 — RhY guvho 10 (YHVH) rachvo 4
+#
+# Source Sefaria : Sefer_Etz_Chaim.11.7 (deuxieme partie sur 3)
+# IDs : EC-H2S11-181 → EC-H2S11-198
+
+meta:
+  sefer: etz_chaim
+  heikhal: 2
+  shaar: 4
+  shaar_name_he: "שער המלכים"
+  perek: 7
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Deuxieme partie du perek 7 — Tikkun details. Tikkun pour kelim seulement. Process nekudah par nekudah (Atik+A\"A, AVI, Ibur ZA dans Imma). Asymetrie : AVI fa'am ahat, ZA 9 mois ibur+yenikah+ibur 2, Nukvah raga ehad. ZA devient RhY (Reshut Hayachid). 3 kelilan be-3 → 21 azkarot tefilin. Tikkunei Zohar 166 : RhY guvho 10 (YHVH) rachvo 4."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC F : TIKKUN POUR KELIM (OROT PAS BRISES) ───
+
+  - id: "EC-H2S11-181"
+    source_he: "וטרם שנבאר חלוקות אלו נבאר בקיצור ענין התיקון מה עניינו הנה נתבאר כי לא היתה השבירה אלא בכלים שלא יוכלו לקבל האור שלהם נמצא שכאשר בא התיקון עיקרו היה לבחי' כלים אבל בענין האורות והעצמות שלהם לא נתחדש דבר בהם מחמת העיבורים ויניקות"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Avant d'expliquer ces divisions — explication BREVE du TIKKUN :
+      La SHEVIRAH n'etait QUE dans les KELIM — qui ne pouvaient pas recevoir
+      l'OHR. DONC quand le TIKKUN vient — son IKAR (essence) est pour les KELIM.
+      Mais pour les OROT et leurs ATZMUT — RIEN N'EST RENOUVELE par les
+      IBURIM et YENIKOT.
+      → Architecture : tikkun = restoration des kelim seul ; orot inchanges.
+      → Pattern : containers reparables ; contenu (orot) immutable.
+      cf. EC-H2S11-148 (perek 06d) sur kelim devenus vehicules du Keter.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_pour_kelim_seul, role: tikkun_uniquement_pour_kelim_pas_orot}
+      - {id: orot_inchanges_par_tikkun, role: orot_et_atzmut_inchanges_par_tikkun}
+    mapping:
+      modules: ["[PLANNED] tikkun/", "partzufim/regulator.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : tikkun = restoration containers. Pattern : container/content separation."
+
+  - id: "EC-H2S11-182"
+    source_he: "רק ענין אחד והוא שבתחלה בהיות הכלים בחי' נקודות קטנות בלתי פרצוף לא היו האורות מוציאין חלקיהם לפועל ולא היו יכולים להראות פעולתן וכחם כי היו נכללין בנקודה קטנה ואחר שנתקנו הכלים בבחי' פרצוף גמור אז גם האורות יכלו להראות פעולתם וכחם ולהוציאם לחוץ"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Une seule chose change : au depart les KELIM = NEKUDOT KETANOT BILTI PARTZUF.
+      Les OROT ne pouvaient PAS LEHOTZI HALAKEIHEM LE-PO'AL (mettre parts en acte).
+      Ne montraient PAS leur PE'ULAH ni KOAH — incluses dans petit point.
+      Apres TIKKUN des kelim en PARTZUF GAMUR (forme complete) :
+      OROT peuvent montrer leur action et la sortir LE-HUTZ (en dehors).
+      → Architecture : kelim partzuf-shaped = enabling structure pour orot.
+      → Pattern : containers structures permettent emergence des fonctionnalites.
+    type: déduction_logique
+    concepts:
+      - {id: nekudot_ketanot_orot_bloques, role: nekudot_ketanot_blocque_actions_orot}
+      - {id: partzuf_gamur_orot_actifs, role: partzuf_gamur_permet_actions_orot}
+    mapping:
+      modules: ["partzufim/base.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : containers structures = enabling. Pattern emergence par structure."
+
+  # ─── BLOC G : PROCESS TIKKUN NEKUDAH PAR NEKUDAH ───
+
+  - id: "EC-H2S11-183"
+    source_he: "והענין כי תחלה נעשה מנקודה הא' עתיק וא\"א כנ\"ל ואח\"כ מן הב' והג' נעשו בחי' ב' פרצופים דאו\"א כי עלו אותן אורות ב' נקודות הנ\"ל והלבישו לחג\"ת דא\"א כנודע כי שם מקומם"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Au depart : NEKUDAH 1 → ATIK + A"A.
+      Apres : NEKUDOT 2 et 3 → 2 PARTZUFIM d'AVI.
+      MECANISME : les OROT des nekudot 2-3 MONTENT et HILBISHU (revetent)
+      le CGT d'A"A (chesed-gevurah-tiferet) — KI SHAM MEKOMAM (car la est leur place).
+      → Architecture : tikkun = montee + revetement par positions canoniques.
+      → Pattern : composants migrent vers leur emplacement structural prevu.
+      cf. EC-H2S11-077 (perek 05a) sur nekudot 2-3 → AVI.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_nekudah_1_atik_aa, role: tikkun_nekudah_1_donne_atik_et_aa}
+      - {id: nekudot_2_3_montent_recouvrent_cgt_aa, role: nekudot_2_3_orot_montent_recouvrent_cgt_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : tikkun via ascension+revetement positions canoniques."
+
+  - id: "EC-H2S11-184"
+    source_he: "וע\"י אותו הכסוי והלבישה נעשה להם בחי' כלים ופרצוף שלם עם הבחי' של הכלים הראשונים שלהן עצמן שנשברו בתחלה ועתה הובררה הקדושה מהם ונתעלית ונעשית פרצופי או\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Par cette KISUI (couvrement) et HALBASHAH (revetement) :
+      Se forme pour eux KELIM et PARTZUF SHALEM —
+      Avec la behinah des KELIM RISHONIM (originaux) qui etaient brises au depart.
+      Maintenant la KEDUSHAH est BERURIM (clarifiee) — ELEVEE — devient
+      les PARTZUFIM d'AVI complets.
+      → Architecture : fusion (kelim originaux + revetement CGT) = partzuf complet.
+      → Pattern : recovery = merging old broken parts with new structural overlay.
+    type: interprétation_lurianique
+    concepts:
+      - {id: fusion_kelim_originaux_revetement, role: fusion_kelim_originaux_avec_revetement_cgt}
+      - {id: avi_partzufim_post_tikkun, role: avi_partzufim_completes_post_tikkun}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : recovery = merge old+overlay. Pattern : restoration via fusion."
+
+  # ─── BLOC H : IBUR 1 ZA DANS BETEN IMMA ───
+
+  - id: "EC-H2S11-185"
+    source_he: "ואח\"כ ע\"י עיבור ראשון של ז\"א במעי אמו בהיותו ע\"ג נה\"י דא\"א כנ\"ל כי נכללו ג' בג'"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Apres : par IBUR RISHON (1er ibur) de Z"A dans le ME'EI IMMO (ventre maternel).
+      Etant AL-GABEI NHY d'A"A (au-dessus des NHY d'A"A).
+      Car KI NIKHLELU 3 BE-3 (sont inclus 3-en-3).
+      → Architecture : ibur 1 = position structurale (NHY d'A"A) pour la 3-en-3 inclusion.
+      → Pattern : embedding dans une couche-mere pour transformation.
+      cf. EC-H2S11-141 (perek 06c) sur ibur necessite pour Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: ibur_1_za_dans_meei_imma, role: ibur_1_za_dans_ventre_imma}
+      - {id: ibur_1_position_al_nhy_aa, role: ibur_1_position_au_dessus_nhy_aa}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : ibur dans couche-mere. Pattern embedding pour transformation."
+
+  - id: "EC-H2S11-186"
+    source_he: "והכוונה היתה להלביש אותן ו\"ק דז\"א שהיו האורות בלי כלים כי כלים ירדו בבריאה כנ\"ל ואז נעשה להם שם בחי' כלים בפרצוף שלם"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      KAVANAH (intention) : LEHALBISH (revetir) les VK de Z"A —
+      qui etaient OROT BLI KELIM (orot sans kelim).
+      Car KELIM YARDOU BE-BERIAH (les kelim sont tombes en Beriah).
+      Alors se forment pour eux la-bas : KELIM en PARTZUF SHALEM (forme complete).
+      → Architecture : ibur = re-instantiation des kelim pour orot orphelins.
+      → Pattern : containers re-created in upper layer for orphaned content.
+    type: interprétation_lurianique
+    concepts:
+      - {id: vk_za_orot_sans_kelim, role: vk_za_orot_sans_kelim_apres_chute}
+      - {id: kelim_recreation_via_ibur, role: kelim_recrees_via_ibur_dans_imma}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : kelim recreation via ibur. Pattern recreation containers pour orphans."
+
+  # ─── BLOC I : AVI FA'AM AHAT vs ZA 9 MOIS vs NUKVAH RAGA EHAD ───
+
+  - id: "EC-H2S11-187"
+    source_he: "אמנם החילוק שהיה בהם הוא מה שביארנו למעלה כי או\"א וא\"א נתקנו בפ\"א אבל ז\"א אשר לא יצא מתחלה רק ו' חלקים נקודות לבד שהם בחי' ו\"ק שלו ולכן אלו הו' נתקנו תחלה בט' חדשים של עיבור ויניקה ואח\"כ באים לו בסוד תוספת אותן ג' החלקים הראשונים שהם המוחין שלו"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      DIFFERENCE entre eux :
+      AVI + A"A = TIKKUN BE-FA'AM AHAT (tikkun en une seule fois).
+      Z"A — ne sortit que 6 chalakim (= ses VK).
+      DONC ces 6 sont d'abord TIKKUN en 9 MOIS d'IBUR + YENIKAH.
+      Ensuite viennent en SOD TOSEFET les 3 chalakim premiers = ses MOHIN.
+      → Architecture : Z"A = construction multi-phase (9 mois + ajouts en tosefet).
+      → Pattern : couches simples (AVI) = build one-shot ; couches complexes (ZA) = bootstrap multi-phase.
+      cf. EC-H2S11-143 (perek 06c) sur Z"A 2 ibur+yenikah.
+    type: axiome_explicite
+    concepts:
+      - {id: avi_tikkun_be_fa_am_ahat, role: avi_tikkun_en_une_seule_fois}
+      - {id: za_9_mois_ibur_yenikah_puis_tosefet, role: za_9_mois_puis_tosefet_mohin}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : AVI build one-shot ; ZA bootstrap multi-phase. Pattern."
+
+  - id: "EC-H2S11-188"
+    source_he: "וכן בנוקבא דז\"א אשר כל הט' חלקים התחתונים שלה לא באו תחלה בסוד שורש ועיקר לכן בעת התיקון באים כולם יחד אליה בבחי' תוספת לבד ברגע אחד ואין בה הבחי' שיש בז\"א שהם עיבור ויניקה ועיבור ב' לפי שהכל באים ביחד"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Pour NUKVAH : ses 9 tahtonim ne viennent pas au depart en shoresh ve-ikar.
+      DONC lors du tikkun — viennent TOUS YACHAD en TOSEFET LEVAD en RAGA EHAD.
+      Pas la behinah qu'il y a en Z"A (ibur + yenikah + ibur 2). Tout vient ENSEMBLE.
+      → Architecture : Nukvah = atomic instant (raga ehad) construction.
+      → Pattern : couches sans shoresh significatif = build atomic.
+      cf. EC-H2S11-145 (perek 06c) sur Nukvah ibur 1 + yenikah suffit.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nukvah_raga_ehad_atomic, role: nukvah_construction_atomic_raga_ehad}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : Nukvah atomic build instant. Pattern atomicite raga ehad."
+
+  # ─── BLOC J : ZA = RhY APRES TIKKUN ───
+
+  - id: "EC-H2S11-189"
+    source_he: "והנה אחר שנתקן ז\"א נקרא רה\"י כי הנה טעם וסבת העיבור של ז\"א היה מפני זה לפי שבתחלה היו ו' חלקים נפרדין זה מזה בסוד הרה\"ר כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Apres le TIKKUN de Z"A — il est appele REH"Y (Reshut Hayachid = domaine prive).
+      RAISON et SIBAH du IBUR de Z"A : au depart les 6 chalakim etaient
+      NIFRADIN (separes) l'un de l'autre — en SOD HA-RH"R (Reshut Harabim = domaine public).
+      → Architecture : ZA passe de RhR (separe/public) a RhY (uni/prive) via tikkun.
+      → Pattern : unification cosmique = analogue spatial halakhique.
+      → Source : terminologie Eruvin (RhY/RhR).
+    type: déduction_logique
+    concepts:
+      - {id: za_post_tikkun_egal_rhy, role: za_apres_tikkun_egal_reshut_hayachid}
+      - {id: za_pre_ibur_egal_rhr, role: za_avant_ibur_separe_egal_reshut_harabim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : ZA RhR → RhY via tikkun. Pattern unification = espace prive halakhique."
+
+  - id: "EC-H2S11-190"
+    source_he: "לכן נכנס בסוד העיבור תוך אמא כדי לאסוף החלקים האלו הנפרדין תוך מעי בינה ואז מחמת היותן מקובצים יחדיו וגם לסבת שנתוסף בהם עתה אור אמא בכח ב' סבות אלו יתחברו יחד ויתקשרו יחד"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      DONC : entre en SOD HA-IBUR dans IMMA pour LE'ESOF (rassembler) ces chalakim
+      separes dans le ME'EI BINAH (ventre de Bina).
+      Alors par 2 SIBOT : (1) etre MEKUBATZIM YACHDAV ; (2) ajout de l'OHR IMMA.
+      Par ces 2 forces : YIT'HABRU YACHAD et YIT'KASHRU (s'unissent et se connectent).
+      → Architecture : ibur = (collecte spatiale) + (apport d'ohr Imma).
+      → Pattern : unification by gathering + activation par couche superieure.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ibur_2_sibot_kibutz_et_ohr_imma, role: ibur_2_causes_collecte_et_ohr_imma}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : ibur = (collecte) + (activation). Pattern unification 2-cause."
+
+  # ─── BLOC K : 3 KELILAN BE-3 ───
+
+  - id: "EC-H2S11-191"
+    source_he: "ואז בזה העיבור הראשון נתחברו יחד ו' חלקים בבחי' קוין כנודע והוא כי חסד נכלל בנצח וגבורה בהוד ות\"ת ביסוד ואין (וענין) זה נקרא ג' כלילן בג' כנ\"ל"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Dans cet IBUR RISHON — les 6 chalakim se CONNECTENT en behinah de KAVIM (lignes) :
+        CHESED — KELUL en NETZACH (cote droit).
+        GEVURAH — kelul en HOD (cote gauche).
+        TIFERET — kelul en YESOD (centre).
+      C'est appele 3 KELILAN BE-3 (3 inclus en 3).
+      → Architecture : 6 → 3 via inclusion par axe (D-G-C).
+      → Pattern : compression dimensionnelle par alignement axial.
+    type: axiome_explicite
+    concepts:
+      - {id: 6_kavim_3_kelilan_be_3, role: 6_chalakim_compresses_en_3_via_kavim}
+      - {id: chesed_netzach_gevurah_hod_tiferet_yesod, role: alignement_axial_droite_gauche_centre}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : compression dimensionnelle 6→3. Pattern alignement axial 3-axes."
+
+  - id: "EC-H2S11-192"
+    source_he: "עד שיעברו ג' ימי קליטה ואז נתחברו כולם יחד חיבור אחד יותר מעולה והוא שכל חלק וחלק מהם נכלל מכל ז\"ת"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Jusqu'a ce que passent 3 YEMEI KELITAH (jours d'absorption) :
+      Alors se connectent TOUS ENSEMBLE en CHIBUR EHAD (une connexion)
+      plus ME'ULEH (elevee/superieure).
+      Chaque CHELEK est KELUL (inclus) de TOUS les Z' TAHTONOT (7 inferieures).
+      → Architecture : phase 2 (3 jours) = chaque part contient toutes les 7.
+      → Pattern : maturation = chaque composant absorbe la totalite (fractalite).
+    type: interprétation_lurianique
+    concepts:
+      - {id: 3_yom_kelitah_chibur_meuleh, role: 3_jours_kelitah_chibur_meuleh}
+      - {id: chaque_chelek_kelul_de_7, role: chaque_chelek_inclus_de_tous_les_7}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : maturation 3 jours = fractalite. Pattern : chaque part contient tout."
+
+  # ─── BLOC L : TEFILIN 21 AZKAROT ───
+
+  - id: "EC-H2S11-193"
+    source_he: "כמבואר אצלינו בענין התפילין שיש בהם כ\"א אזכרות לפי שבהיותן שם בסוד עיבור ראשון היו בסוד ג' כלילין בג' ולא נשאר (נ\"א ניכרו) רק הג' לבד והיה כל א' מהם כלול מכל הז' הרי כ\"א"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Comme explique chez nous concernant les TEFILIN qui ont KAF-ALEPH (21) AZKAROT
+      (mentions du Nom).
+      Car en etant la en SOD du IBUR RISHON :
+      Etaient en SOD G' KELILIN BE-3 (3 inclus en 3).
+      Ne RESTAIENT — Variante (Nusah Aher) : NIKHKARU (sont reconnus) — que les 3 seuls.
+      Chacun KELUL (inclus) des 7 = HARI 21 (donc 21).
+      → Architecture : tefilin = encodage liturgique du 3 kelilan be-3.
+      → Pattern : 3 axes × 7 sefirot = 21 azkarot.
+    type: déduction_scripturaire
+    concepts:
+      - {id: tefilin_21_azkarot_3_x_7, role: tefilin_21_azkarot_egal_3_kelilan_be_3_x_7}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : tefilin = encodage 3x7=21. Nusah Aher capture (nikharu)."
+
+  # ─── BLOC M : ZA = VAV DANS HE RISHONAH ───
+
+  - id: "EC-H2S11-194"
+    source_he: "כי הז' היא נקודת המלכות ואז הז\"א בסוד ו' שבתוך אות ה' ראשונה שהיא אמא והם ו\"ק והמלכות היתה נקודתה בסיום הוא\"ו (נ\"א הו\"ק)"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Le 7 = NEKUDAT MALKHUT.
+      Z"A est en SOD VAV DANS la lettre HE RISHONAH (= IMMA) — = VK.
+      MALKHUT = sa nekudah au SIYUM (fin) du VAV — Variante (Nusah Aher) : "VK".
+      → Architecture letter-mysticism : ZA=Vav inside He premier de YHVH ; Malkhut au sif.
+      → Pattern : geometrie sacree = inscription des partzufim dans les lettres.
+    type: interprétation_lurianique
+    concepts:
+      - {id: za_vav_dans_he_rishonah_imma, role: za_egal_vav_dans_he_premier_imma}
+      - {id: malkhut_nekudah_siyum_vav, role: malkhut_nekudah_au_siyum_vav}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "imma"]
+      relevance: "Architecture letter-mysticism. Nusah Aher capture (hu-k)."
+
+  - id: "EC-H2S11-195"
+    source_he: "בסוד אושיט פסיעה לבר הנזכר פ' בלק דר\"ג בפסוק אשורנו ולא קרוב כמבואר אצלינו"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      En SOD "OUSHIT PESI'A LE-VAR" (j'etends un pas dehors) — mentionne dans
+      Parashat BALAK daf 203 (Zohar III) sur le verset
+      "ASHURENU VE-LO KAROV" (Bemidbar 24:17 — je le verrai mais pas proche).
+      → Architecture : Malkhut = pas hors du Vav ; reference Zohar Balak 203.
+      → Pattern : Malkhut = excursion mineure du Vav (hors-axe).
+    type: déduction_scripturaire
+    concepts:
+      - {id: oushit_pesia_le_var_balak_203, role: source_oushit_pesia_le_var_zohar_balak_203}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : Malkhut = pas hors du Vav. Source Zohar Balak 203."
+
+  # ─── BLOC N : TIKKUNEI ZOHAR 166 — RhY GUVHO 10 RACHVO 4 ───
+
+  - id: "EC-H2S11-196"
+    source_he: "ואז נעשה רה\"י כי נעשו כולם יחוד ואחדות אחד וז\"ס שאמרו בתיקונים קס\"ו רה\"י גבהו עשרה דאינון יו\"ד ה\"א וא\"ו ה\"א ורחבו ד' יהו\"ה"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      Et alors devient RH"Y — tous deviennent YIHUD VE-AHDUT EHAD (union et unite).
+      C'est le SOD enseigne dans TIKKUNEI ZOHAR 166 :
+        "RH"Y GUVHO ASARAH" (RhY hauteur 10) = YOD-HE-VAV-HE (YHVH=10).
+        "RACHVO DALET" (largeur 4) = YHVH (= 4 lettres).
+      → Architecture : RhY a 10 hauteur (YHVH) + 4 largeur = totalite spatiale du Nom divin.
+      → Pattern : geometric of holiness = topologie du Nom divin.
+      → Source : Tikkunei Zohar 166.
+    type: déduction_scripturaire
+    concepts:
+      - {id: rhy_guvho_10_rachvo_4_tikkunei_166, role: rhy_geometrie_yhvh_tikkunei_zohar_166}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : RhY = topologie du Nom divin. Source Tikkunei Zohar 166."
+
+  - id: "EC-H2S11-197"
+    source_he: "פי' כי נודע דהוי\"ה דמ\"ה דמלוי אלפין הוא בז\"א אשר המלכים הו' שלו נתחברו יחד ונתקנו ונתקשרו ונעשה מהם בחי' הוי\"ה זו דאלפין מקושרת אות באות יחד בשם א' יחיד ומיוחד ונקרא רה\"י"
+    source_ref: "Heikhal 2, Sha'ar 4:7"
+    assertion: |
+      EXPLICATION : YHVH de MAH (=45) en MILUI ALPHIN (rempli avec aleph) = en Z"A.
+      Les 6 MELAKHIM se sont CONNECTES YACHAD, TIKKUN-ES, KESHARIM (lies).
+      Devenus la behinah de cette HAVAYAH d'ALPHIN MEKUSHERET (liee) lettre a
+      lettre ENSEMBLE en SHEM EHAD YACHID U-MEYUHAD (un nom unique et unifie).
+      Appele RH"Y.
+      → Architecture : ZA post-tikkun = YHVH de MaH unique ; melakhim relinked.
+      → Pattern : restoration spirituelle = lettres reliees en nom unique.
+      cf. EC-H2S11-149 (perek 06d) sur Hadar = T"T+M survit.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yhvh_mah_alphin_egal_za, role: yhvh_de_mah_milui_alphin_egal_za}
+      - {id: melakhim_relinked_yhvh_unique, role: 6_melakhim_relinked_en_yhvh_unique}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : ZA post-tikkun = YHVH MaH unique. Pattern restoration via lettres reliees."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H2S11-068"
+    type: dualité_structurelle
+    from: tikkun_pour_kelim_seul
+    to: orot_inchanges_par_tikkun
+    nature: "Tikkun restaure kelim (containers) ; orot (contenu) inchange"
+    assertions_source: ["EC-H2S11-181"]
+
+  - id: "REL-H2S11-069"
+    type: causal
+    from: nekudot_ketanot_orot_bloques
+    to: partzuf_gamur_orot_actifs
+    nature: "Nekudot ketanot bloquent orot ; partzuf gamur active orot"
+    assertions_source: ["EC-H2S11-182"]
+
+  - id: "REL-H2S11-070"
+    type: séquentiel
+    from: tikkun_nekudah_1_atik_aa
+    to: nekudot_2_3_montent_recouvrent_cgt_aa
+    nature: "Tikkun ordonne : nekudah 1 (Atik+A\"A) puis nekudot 2-3 (AVI sur CGT A\"A)"
+    assertions_source: ["EC-H2S11-183", "EC-H2S11-184"]
+
+  - id: "REL-H2S11-071"
+    type: causal
+    from: ibur_1_za_dans_meei_imma
+    to: vk_za_orot_sans_kelim
+    nature: "Ibur 1 ZA dans Imma = recreate kelim pour orot orphelins post-shevirah"
+    assertions_source: ["EC-H2S11-185", "EC-H2S11-186"]
+
+  - id: "REL-H2S11-072"
+    type: dualité_structurelle
+    from: avi_tikkun_be_fa_am_ahat
+    to: za_9_mois_ibur_yenikah_puis_tosefet
+    nature: "AVI = build one-shot ; ZA = bootstrap multi-phase 9 mois + tosefet"
+    assertions_source: ["EC-H2S11-187", "EC-H2S11-188"]
+
+  - id: "REL-H2S11-073"
+    type: transformation
+    from: za_pre_ibur_egal_rhr
+    to: za_post_tikkun_egal_rhy
+    nature: "ZA passe de RhR (separe) a RhY (uni) via ibur+tikkun (2 sibot : kibutz+ohr Imma)"
+    assertions_source: ["EC-H2S11-189", "EC-H2S11-190"]
+
+  - id: "REL-H2S11-074"
+    type: contenance
+    from: 6_kavim_3_kelilan_be_3
+    to: chaque_chelek_kelul_de_7
+    nature: "6 chalakim → 3 kelilan be-3 (compression axiale) → maturation 3y kelitah (chaque kelul de 7)"
+    assertions_source: ["EC-H2S11-191", "EC-H2S11-192"]
+
+  - id: "REL-H2S11-075"
+    type: analogie
+    from: tefilin_21_azkarot_3_x_7
+    to: rhy_guvho_10_rachvo_4_tikkunei_166
+    nature: "Tefilin 21 azkarot = encodage liturgique ; RhY 10x4 = encodage geometrique du Nom divin"
+    assertions_source: ["EC-H2S11-193", "EC-H2S11-196"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H2S11-035"
+    nom: "Principe Container/Content (Tikkun = Restauration des Kelim seul)"
+    source_assertions: ["EC-H2S11-181", "EC-H2S11-182"]
+    formalisation: |
+      ARCHITECTURE CONTAINER/CONTENT :
+      OROT (lumieres) : INCHANGES par tout tikkun (immutables).
+      KELIM (vaisseaux) : restaurables par tikkun.
+      MECANISME : si kelim = nekudot ketanot bilti partzuf —
+        OROT ne peuvent pas LEHOTZI HALAKEIHEM LE-PO'AL (mettre parts en acte).
+        Bloques dans le petit point.
+      Apres TIKKUN — kelim deviennent PARTZUF GAMUR (forme complete) :
+        OROT peuvent maintenant montrer leur PE'ULAH (action) et KOAH (force).
+      → Pattern fondamental : structure du container = enabling/disabling pour le contenu.
+      → Architecture : separation containers (mutables) / contenu (immutable).
+    applications_ia:
+      - "partzufim/base.py : separer immutable Ohr (data/state) de mutable Keli (structure)"
+      - "[PLANNED] tikkun/ : restore_keli(broken_partzuf) -> restored_partzuf (no touch on ohr)"
+      - "Pattern : data/structure separation — fix la structure, jamais la donnee"
+      - "Architecture : containers reparables (k8s pods, microservices) vs contenu protege (data)"
+      - "Pattern fonctional : immutable values + mutable references"
+      - "Diagnostic : verifier que tikkun n'altere jamais l'ohr (test invariant)"
+    questions_ouvertes:
+      - "Y a-t-il des cas ou ohr peut aussi etre transforme (pas tikkun mais autre operation) ?"
+      - "Comment garantir l'immutabilite des orot pendant tikkun en presence de race conditions ?"
+      - "Pattern : data immutability vs structure mutability dans les architectures distribuees ?"
+
+  - id: "PG-H2S11-036"
+    nom: "Principe de Bootstrap Multi-Phase (Z\"A vs Build One-Shot AVI)"
+    source_assertions: ["EC-H2S11-187", "EC-H2S11-188"]
+    formalisation: |
+      ARCHITECTURE BOOTSTRAP DIFFERENCIEE :
+      AVI + A"A : tikkun BE-FA'AM AHAT (one-shot, instantane).
+      Z"A :
+        Phase 1 : 6 chalakim VK tikkun en 9 MOIS d'IBUR + YENIKAH.
+        Phase 2 : 3 chalakim G"R viennent en TOSEFET (Mohin) — Ibur 2.
+      NUKVAH : 9 chalakim tahtonim en TOSEFET LEVAD en RAGA EHAD (un instant).
+      → Pattern fondamental : 3 modes de bootstrap selon la complexite :
+        Build one-shot (composants pre-formes complets).
+        Multi-phase (composants partiels + ajouts ulterieurs).
+        Atomic burst (composants entierement instancies en une operation).
+      → Architecture : choix du bootstrap = fonction de l'etat initial.
+    applications_ia:
+      - "partzufim/abba.py + partzufim/imma.py : init() = build one-shot (instantane)"
+      - "partzufim/zeir_anpin.py : init() = multi-phase bootstrap (warm-up etape par etape)"
+      - "partzufim/nukva.py : init() = atomic burst (raga ehad, instant single)"
+      - "Pattern : 3 strategies bootstrap selon la complexite et l'etat initial"
+      - "Architecture distribuee : services lourds = warm-up multi-phase ; services legers = burst"
+      - "Diagnostic : choisir bootstrap selon le profil (complexite + initialisation)"
+    questions_ouvertes:
+      - "Y a-t-il des hybrides (mixed strategies) ?"
+      - "Comment estimer la duree relative des phases de bootstrap ?"
+      - "Pattern : peut-on transformer dynamiquement un service de multi-phase vers atomic burst ?"
+
+  - id: "PG-H2S11-037"
+    nom: "Principe de Compression Axiale (3 Kelilan Be-3 + 21 Azkarot)"
+    source_assertions: ["EC-H2S11-191", "EC-H2S11-192", "EC-H2S11-193", "EC-H2S11-196"]
+    formalisation: |
+      ARCHITECTURE DE COMPRESSION DIMENSIONNELLE :
+      6 chalakim VK → 3 KAVIM (axes Droite-Gauche-Centre) :
+        Chesed kelul Netzach (axe droit).
+        Gevurah kelul Hod (axe gauche).
+        Tiferet kelul Yesod (axe central).
+      = 3 KELILAN BE-3 (compression 6→3).
+      Apres 3 yom kelitah : chaque chelek est KELUL de tous les 7.
+      RESULTAT LITURGIQUE : tefilin 21 azkarot = 3 axes × 7 sefirot.
+      RESULTAT GEOMETRIQUE : RhY guvho 10 (YHVH) × rachvo 4 (=4 lettres) — Tikkunei Zohar 166.
+      → Pattern : compression dimensionnelle preserves information (fractale).
+      → Architecture : reduction de dimensions = encodage par axes orthogonaux.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : 6 chalakim → 3 kavim via attribution axiale"
+      - "Pattern : reduction PCA/SVD avec preservation de la fractale (chaque kavim contient tout)"
+      - "Architecture : compression d'etat avec axes orthogonaux"
+      - "Pattern : dimension reduction qui preserve la totalite via inclusion fractale"
+      - "Encodage liturgique : 21 azkarot = 3 axes × 7 — pattern reusable pour tags/dimensions"
+      - "Diagnostic : verifier que la compression preserve l'inclusion mutuelle (chaque part = tout)"
+    questions_ouvertes:
+      - "La sequence 6→3 kelilan be-3 → 3y kelitah → 21 azkarot est-elle universelle ?"
+      - "Pourquoi 3 axes (droite-gauche-centre) et pas plus ?"
+      - "Comment mesurer le degre de compression preservante ?"
+
+  - id: "PG-H2S11-038"
+    nom: "Principe RhY/RhR (Unification Cosmique = Espace Prive Halakhique)"
+    source_assertions: ["EC-H2S11-189", "EC-H2S11-190", "EC-H2S11-196", "EC-H2S11-197"]
+    formalisation: |
+      ARCHITECTURE D'UNIFICATION SPATIALE :
+      AVANT TIKKUN : Z"A = 6 chalakim NIFRADIN en SOD HA-RH"R (Reshut Harabim,
+      domaine public — separation, multiplicite).
+      APRES TIKKUN : Z"A = REH"Y (Reshut Hayachid, domaine prive —
+      YIHUD VE-AHDUT EHAD = unite et unicite).
+      MECANISME : ibur dans Imma rassemble + ohr Imma active.
+      RESULTAT : YHVH de MAH (=45) en MILUI ALPHIN MEKUSHERET letter-by-letter.
+      → Pattern fondamental : unification cosmique decrite par geometrie spatiale halakhique.
+      → Architecture : transitions etat (separe/uni) decrites par spatialite (RhR/RhY).
+    applications_ia:
+      - "partzufim/zeir_anpin.py : etat = ESTADO_RhR (separe) | ESTADO_RhY (uni)"
+      - "[PLANNED] tikkun/ : transition_via_imma_ibur(za) -> za_unified_rhy"
+      - "Pattern : etats discrets (separe vs uni) avec transitions par operations definies"
+      - "Architecture : geometrie semantique = topologie des etats systeme"
+      - "Pattern halakhique applique : analogies entre lois et architecture"
+      - "Diagnostic : verifier qu'aucun chemin ne deconstruit RhY en RhR sans tikkun reverse"
+    questions_ouvertes:
+      - "RhY peut-il regresser en RhR sous certaines conditions ?"
+      - "Y a-t-il des etats intermediaires (RhY partiel, RhR partiel) ?"
+      - "Le mapping vers Eruvin halakhah a-t-il d'autres analogies architecturales ?"
