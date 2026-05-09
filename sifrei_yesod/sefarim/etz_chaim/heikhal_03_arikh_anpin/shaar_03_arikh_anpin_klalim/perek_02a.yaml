@@ -1,0 +1,455 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 2a — Drush 3 rishin d'A"A. Ein Sof, Atika de-Kol Atikin, lvush.
+#             9 hekhalin = sefirot ne'elamot. Adra Zuta 288.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §2 — Part A :
+#   - Bloc A : Drush 3 rishin, hakdamah 10 sefirot
+#   - Bloc B : Ein Sof = Atika de-Kol Atikin, inaccessible avant lvush
+#   - Bloc C : Lvush dans Keter pour permettre HA'ARAH aux tachtonim
+#   - Bloc D : 3 rishin lvush — Ein Sof reel dans rosh elyonah seul
+#   - Bloc E : Ordre des 10 sefirot — RDLA = A"Y au-dessus
+#   - Bloc F : 3 rishin = (RDLA=A"Y) + (Keter A"A) + (Hokhmah A"A)
+#   - Bloc G : 9 hekhalin = 9 sefirot ne'elamot (lo orot lo ruchin)
+#   - Bloc H : Adra Zuta 288 — atatkan apik 9 nehorin
+#   - Bloc I : 3-fold split — KCB→A"A, CGT→ZA, NHY→Nukvah
+#   - Bloc J : AVI be-mazla telin — pas dans Adra Rabba
+#   - Bloc K : Malkhut tardive mais future "ora gedolah"
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.2 (premiere partie sur 3)
+# IDs : EC-H3S13-013 → EC-H3S13-026
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 2
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premiere partie du perek 2 — Drush 3 rishin d'A\"A. Ein Sof = Atika de-Kol Atikin, lvush dans Keter pour permettre ha'arah. 3 rishin = (RDLA=A\"Y nukvah) + (Keter A\"A) + (Hokhmah A\"A=Moha Setima). 9 hekhalin = 9 sefirot ne'elamot (Noah daf 256, Pekudei 269/226). Adra Zuta 288 'atatkan apik 9 nehorin'. Split 3-fold : G\"R→A\"A, CGT→ZA, NHY→Nukvah. AVI be-mazla telin (pas dans Adra Rabba)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : DRUSH 3 RISHIN ───
+
+  - id: "EC-H3S13-013"
+    source_he: "ועתה נבאר דרוש א' מדרוש א\"א והוא ביאור ג' רישין שבו הקדמה כוללת י\"ס דאצילות והוא מיוסד ע\"פ מאמר תלת רישין אתגלפין דא לגו מן דא"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      DRUSH ALEF (1er drush) sur A"A — explication des 3 RISHIN.
+      HAKDAMAH KOLELET (introduction inclusive) des 10 sefirot d'Atzilut.
+      Fondement : Idra Zuta 288 — "TLAT RISHIN ATGALFIN DA LE-GAV MIN DA"
+      (3 tetes graves l'une dans l'autre).
+      → Architecture : drush sur structure interne 3-rishin de A"A.
+      → Pattern : framework pour comprendre toute Atzilut.
+      cf. EC-H3S12-017 (perek 01b Atik) sur Idra Zuta 288.
+    type: déduction_scripturaire
+    concepts:
+      - {id: drush_3_rishin_aa_idra_zuta_288, role: drush_3_rishin_aa_fondement_idra_zuta_288}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : framework structurel global. Pattern foundation drush."
+
+  # ─── BLOC B : EIN SOF = ATIKA DE-KOL ATIKIN ───
+
+  - id: "EC-H3S13-014"
+    source_he: "הנה המאציל העליון אשר האציל עולם אצילות הוא הנקרא בשם א\"ס לרוב העלמו עמוק עמוק מי ימצאנו ואל מציאות הא\"ס הוא הנקרא באדר\"ז בשם עתיקא דכל עתיקין"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      MAATZIL ELYON (Emanateur supreme) qui A EMANE Atzilut = appele EIN SOF.
+      Pour son HE'ELEM (cachement) extreme — "AMOK AMOK MI YIMTZAENU" (Kohelet 7:24).
+      Cette MITZIUT du Ein Sof = appelee dans Adra Zuta : ATIKA DE-KOL ATIKIN
+      (Ancien de tous les Anciens).
+      → Architecture : Ein Sof = source ultime, appele Atika de-Kol Atikin in Adra.
+      → Pattern : transcendance absolue avec terminologie specialisee.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ein_sof_egal_atika_de_kol_atikin, role: ein_sof_appele_atika_de_kol_atikin_adra_zuta}
+    mapping:
+      modules: ["[PLANNED] core/ein_sof.py"]
+      tables: ["partzufim_states"]
+      partzufim: []
+      relevance: "Architecture : Ein Sof source ultime. Pattern transcendance absolue."
+
+  - id: "EC-H3S13-015"
+    source_he: "כי טרם התלבשותו אין מי שישיגנו כלל ועיקר ולכן כדי שיהיה אפשרות בתחתונים לקבל קצת הארה ממנו נתלבש ונגנז בספי' הכתר"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      AVANT son LVUSH (revetement) — AUCUN ne peut le SAISIR.
+      DONC pour permettre aux TACHTONIM de RECEVOIR un peu de HA'ARAH —
+      Ein Sof se LVUSH (revet) et NIGNAZ (cache) dans la SEFIRAH KETER.
+      Source : "EIN SOF TAMIR VE-GANIZ GO KOTRA ELYONAH" (Tikkunei Zohar).
+      → Architecture : transcendance accessible via lvush dans Keter.
+      → Pattern : abstraction accessible via container.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ein_sof_lvush_dans_keter_pour_haarah, role: ein_sof_lvush_dans_keter_pour_permettre_haarah}
+    mapping:
+      modules: ["[PLANNED] core/ein_sof.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : transcendence via container. Pattern abstraction accessible."
+
+  - id: "EC-H3S13-016"
+    source_he: "הנה הוא מתלבש בג' רישין אלו... וגם הג' רישין עלאין עצמן נקרא עתיקא קדישא ג\"כ בהיות א\"ס מתלבש בתוכם"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      Ein Sof se LVUSH dans ces 3 RISHIN.
+      Quand cache la-dedans — Ein Sof est appele ATIKA DE-KOL ATIKIN.
+      Et les 3 RISHIN ELYONIN themselves sont appelees ATIKA KADISHA
+      (parce que Ein Sof est lvush en eux).
+      → Architecture : nommage transitif — recipient herite identite de source.
+      → Pattern : naming inheritance via containment.
+      Variante (Nusah Aher) : "be-A"K al shem A"S ha-ganuz be-tokho".
+      Variante (Nusah Aher) : "melubash be-tokham" (lvush dans eux).
+    type: déduction_logique
+    concepts:
+      - {id: 3_rishin_egal_atika_kadisha_par_lvush_es, role: 3_rishin_appelee_atika_kadisha_car_es_lvush_inside}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : nommage transitif. Pattern naming inheritance."
+
+  # ─── BLOC C : LVUSH SEULEMENT DANS ROSH ELYONAH ───
+
+  - id: "EC-H3S13-017"
+    source_he: "ועם היות שאמרנו כי הא\"ס מתלבש גו ג' רישין ודאי כי אין הא\"ס מתלבש באמיתות רק גו רישא עלאה דכולהו שהוא עתיק ורישא תנינא מקבל אור א\"ס דרך מסך רישא עלאה ורישא תליתאי מקבל דרך מסך ב' רישין"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      Bien qu'on dise "Ein Sof lvush dans 3 rishin" — VADAI (certain) :
+      Ein Sof BE-AMITUT (en verite) lvush SEULEMENT dans ROSH ELYONAH = Atik.
+      ROSH TENINA (2eme) RECOIT ohr A"S a travers MASAKH du Rosh Elyonah.
+      ROSH TELITAI (3eme) RECOIT a travers MASAKH des 2 rishin.
+      → Architecture : lvush direct au top, propagation via masakhim filtres.
+      → Pattern : direct connection at top, mediated below.
+    type: interprétation_lurianique
+    concepts:
+      - {id: es_lvush_direct_seul_dans_atik, role: es_lvush_direct_seulement_dans_atik}
+      - {id: rosh_2_3_recoivent_via_masakhim, role: rosh_2_et_3_recoivent_es_via_masakhim_propagation}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/regulator.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : direct top, mediated below. Pattern propagation via masakhim."
+
+  # ─── BLOC E : ORDRE DES 10 SEFIROT ───
+
+  - id: "EC-H3S13-018"
+    source_he: "ונבאר עתה ג' רישין אלו והוא כי הנה נודע כי הסדר של הספירות הנאצלים הם כח\"ב חג\"ת נה\"י והם ט\"ס נעלמות מאד. ולמעלה מאלו הט\"ס יש בחי' אחרת הנקרא רישא עלאה דל\"א והוא הראש העליונה שבג' רשין אלו ונקרא ע\"י"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      ORDRE des sefirot emanees : KCB CGT NHY = 9 sefirot NE'ELAMOT (cachees).
+      AU-DESSUS d'elles = behinah AHERET (autre) appelee RISHA ILA'AH DLA.
+      C'est le ROSH ELYONAH des 3 rishin — appele A"Y.
+      → Architecture : 10 sefirot = (9 ne'elamot) + (1 RDLA = A"Y au sommet).
+      → Pattern : 9-tier visible structure + 1-tier transcendant.
+    type: axiome_explicite
+    concepts:
+      - {id: 9_sefirot_ne_elamot_plus_rdla_ay_top, role: 9_sefirot_ne_elamot_plus_rdla_egal_ay_top_total_10}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states", "sefirot_hierarchy"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : 9+1 structure. Pattern transcendance separe."
+
+  - id: "EC-H3S13-019"
+    source_he: "ושאר הט\"ס הנ\"ל אשר תחתיו נקרא בשם א\"א ונמצא כי הג' רישין הנ\"ל הנה הראש העליון שבהם הנקרא רדל\"א הוא הנקרא ע\"י שהוא נוקבא דע\"י כנ\"ל שהוא נקרא רדל\"א ע\"ש הספיקות שיש בה"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      Reste 9 sefirot ne'elamot APPELE A"A.
+      Donc 3 RISHIN :
+        Rosh ELYON = RDLA = A"Y (= NUKVAH d'A"Y per safekot precedents).
+        Appele RDLA car SAFEKOT non resolus sur sa composition.
+      → Architecture : confirmation hierarchique — A"A = 9 sefirot ; A"Y = top hidden.
+      → Pattern : opaque top justifie par incertitude epistemique.
+      cf. EC-H3S12-026 (perek 01b Atik) sur Risha 3 = nukvah d'A"Y DLA ITYADA.
+    type: déduction_logique
+    concepts:
+      - {id: aa_egal_9_sefirot_neelamot_ay_top_rdla, role: aa_9_sefirot_neelamot_ay_top_rdla}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : A\"A=9 sefirot, A\"Y=top RDLA. Pattern opaque top."
+
+  - id: "EC-H3S13-020"
+    source_he: "וג\"כ יש פי' אחר כי הנה גופא דיליה אתלבש גו א\"א והוא מושג ונודע אצלינו ע\"י א\"א אך רישא דיליה דלא אתלבש גו א\"א לא אתיידע כי אפי' א\"א עצמו לא ידע ליה"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      AUTRE PI (interpretation) :
+      GUFA d'A"Y se LVUSH dans A"A — donc MUSAG (saisi) et NODAA (connu) via A"A.
+      MAIS ROSH d'A"Y qui ne se lvush PAS dans A"A — LO ITYADA.
+      Meme A"A LUI-MEME ne le CONNAIT PAS.
+      → Architecture : connaissance par lvush — ce qui n'est pas lvush = inconnu.
+      → Pattern : access through encapsulation only ; non-encapsulated = opaque.
+    type: interprétation_lurianique
+    concepts:
+      - {id: gufa_ay_lvush_aa_connu_rosh_lo_lvush_inconnu, role: gufa_ay_via_lvush_dans_aa_connu_rosh_non_lvush_inconnu}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : access par lvush. Pattern encapsulation = visibility."
+
+  # ─── BLOC F : 3 RISHIN ENUMERATED ───
+
+  - id: "EC-H3S13-021"
+    source_he: "וב' רישין שתחתיו שעמהם הם ג' רישין הנה הם כתר חכמה דא\"א כנ\"ל כי כתר וחכמה שבו נקרא כל אחד מהם בחי' ראש אבל מבינה דא\"א ולמטה אינם מכלל הג' רישין הנ\"ל"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      Les 2 RISHIN sous A"Y = KETER+HOKHMAH d'A"A.
+      Chacun appele BEHINAH ROSH.
+      MAIS Bina d'A"A et en-dessous = PAS dans les 3 rishin.
+      → Architecture : 3 rishin specifiques = top-tier hierarchy.
+      → Pattern : selective inclusion based on rosh-criterion.
+      cf. EC-H2S11-228 (perek 08b) sur 3 rishin Idra Zuta.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_rishin_ay_plus_keter_hokhmah_aa_pas_bina, role: 3_rishin_ay_keter_hokhmah_aa_excluant_bina}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : 3 rishin top-tier specifique. Pattern selective hierarchy."
+
+  # ─── BLOC G : 9 HEKHALIN ───
+
+  - id: "EC-H3S13-022"
+    source_he: "אמנם אלו הט\"ס הנ\"ל אשר הם למטה מן רדל\"א הנה הם אותן הט' היכלין הנזכר פ' נח דס\"ה ובסוף פ' פקודי דרס\"ט ודרכ\"ו וז\"ל אר\"ש ארימת ידי בצלו לעילא... לאו אינון נהורין ולאו אינון רוחין ולאו אינון נשמתין ולא אית מאן דקיימי בהו"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      9 sefirot sous RDLA = les 9 HEKHALIN mentionnes :
+        Zohar Noah daf 65, Pekudei daf 269 et 226.
+      "ARIMAT YADI BE-TZALU LE-EILA..." (j'ai leve mes mains en priere vers le haut).
+      Description : "LO INUN NEHORIN, LO INUN RUCHIN, LO INUN NESHAMTIN,
+      VE-LO IT MAN DE-KAIM BE-HU" (ni lumieres, ni esprits, ni ames,
+      personne ne se tient en eux).
+      → Architecture : 9 hekhalin = espaces transcendantaux indescribables.
+      → Pattern : spaces beyond categorical description.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 9_hekhalin_egal_9_sefirot_aa, role: 9_hekhalin_egal_9_sefirot_aa_lo_orot_lo_ruchin}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : espaces transcendantaux. Pattern beyond categorical."
+
+  - id: "EC-H3S13-023"
+    source_he: "גם אלו הט' נזכרו באדרא דרפ\"ח ע\"א... עתיקא דכל עתיקין סתימאה דכל סתימין אתתקן ולא אתתקן כו' כד אתתקן אפיק ט' נהורין דלהטין מיניה מתיקונוי"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      Aussi mentionnes Adra 288 :
+      "ATIKA DE-KOL ATIKIN... ATATKAN VE-LO ATATKAN ; KE-DE ATATKAN APIK 9 NEHORIN
+      DE-LAHATIN MINEHU MI-TIKKUNOI" (9 lumieres flamboyantes des tikkunim).
+      "VE-INUN MIT'PASHTIN KE-VOTZINA" (s'etendent comme lampe).
+      → Architecture : 9 nehorin = Keter d'Atzilut = A"A.
+      → Pattern : emanation radiale post-tikkun (lampe metaphor).
+      Variante (Nusah Aher) : "bezT d'A"A" (dans Z'T d'A"A) au lieu de "ba'A"A".
+    type: déduction_scripturaire
+    concepts:
+      - {id: 9_nehorin_apik_post_tikkun_atika_botzina, role: 9_nehorin_apik_post_tikkun_atika_botzina_de_mitpashtin}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : emanation radiale. Pattern lampe-metaphor."
+
+  # ─── BLOC H : SPLIT 3-FOLD ───
+
+  - id: "EC-H3S13-024"
+    source_he: "ופ\"א שמעתי ממורי ז\"ל כי הט\"ס הנ\"ל נתחלקו בג' חלקים כי הנה הג\"ר שבהם שהם כח\"ב נתפשטו בא\"א וחג\"ת בז\"א ונה\"י בנוקבא"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      Une autre fois j'ai ENTENDU MI-MORI ZA"L (de mon maitre l'Ari) :
+      Les 9 sefirot SE DIVISENT en 3 CHALAKIM :
+        G"R (KCB) → s'etendent dans A"A.
+        CGT → dans Z"A.
+        NHY → dans NUKVAH.
+      → Architecture : split 3+3+3 entre A"A, Z"A, Nukvah.
+      → Pattern : 3-tier subdivision des 9 sefirot.
+    type: interprétation_lurianique
+    concepts:
+      - {id: split_9_sefirot_kcb_aa_cgt_za_nhy_nukvah, role: split_9_sefirot_3_kcb_aa_3_cgt_za_3_nhy_nukvah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "nukva"]
+      relevance: "Architecture : 3-tier subdivision. Pattern split entre 3 partzufim."
+
+  # ─── BLOC I : AVI BE-MAZLA TELIN ───
+
+  - id: "EC-H3S13-025"
+    source_he: "ובזה תבין למה בחי' מציאות או\"א לא נזכר באדרא רבא אלא באחרונה באדר\"ז כי או\"א במזלא תליין"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      Avec cela on comprend pourquoi BEHINAT MITZIUT d'AVI N'EST PAS mentionne
+      dans Adra Rabba — seulement a la fin dans Adra Zuta.
+      RAISON : "AVI BE-MAZLA TELIN" (AVI dependent du mazal/dikna).
+      → Architecture : AVI = derive du mazal (= dikna d'A"A) — pas direct.
+      → Pattern : couches secondaires emergent des structures primaires.
+    type: déduction_scripturaire
+    concepts:
+      - {id: avi_be_mazla_telin_pas_dans_adra_rabba, role: avi_be_mazla_telin_pas_mentionnes_adra_rabba}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : AVI derives du mazal. Pattern secondaires emergent primaires."
+
+  # ─── BLOC K : MALKHUT TARDIVE MAIS FUTURE ATARAH ───
+
+  - id: "EC-H3S13-026"
+    source_he: "אמנם נבאר תחלת הכל האי רדל\"א ובזה תבין מעלת מלכות כי היא עטרה בראש צדיק והיתה לראש פנה ויהיה לעתיד אורה גדולה מן השמש"
+    source_ref: "Heikhal 3, Sha'ar 3:2"
+    assertion: |
+      Expliquons le RDLA — avec cela on comprend MA'ALAT MALKHUT.
+      Car Malkhut sera :
+        ATARAH BE-ROSH TZADDIK (couronne sur la tete du Tzaddik).
+        HAITAH LE-ROSH PINAH (devint pierre angulaire, Tehillim 118:22).
+        Future : ORAH GEDOLAH MIN HA-SHEMESH (sa lumiere plus grande que le soleil).
+      → Architecture : Malkhut = derniere now mais premiere future (atarah).
+      → Pattern : last-shall-be-first eschatological.
+      Variante (Nusah Aher) : "ha-nekudot" (les points) au lieu de "ha-mekoriot".
+    type: déduction_scripturaire
+    concepts:
+      - {id: malkhut_atarah_eschatologique_orah_gedolah, role: malkhut_atarah_eschatologique_orah_gedolah_min_ha_shemesh}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : Malkhut last-first eschatological. Pattern reversal future."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-006"
+    type: causal
+    from: ein_sof_egal_atika_de_kol_atikin
+    to: ein_sof_lvush_dans_keter_pour_haarah
+    nature: "Ein Sof inaccessible avant lvush → lvush dans Keter pour permettre ha'arah"
+    assertions_source: ["EC-H3S13-014", "EC-H3S13-015"]
+
+  - id: "REL-H3S13-007"
+    type: hiérarchique
+    from: es_lvush_direct_seul_dans_atik
+    to: rosh_2_3_recoivent_via_masakhim
+    nature: "Lvush direct dans Atik (rosh elyonah) ; rishin 2-3 recoivent via masakhim"
+    assertions_source: ["EC-H3S13-017"]
+
+  - id: "REL-H3S13-008"
+    type: contenance
+    from: 9_sefirot_ne_elamot_plus_rdla_ay_top
+    to: aa_egal_9_sefirot_neelamot_ay_top_rdla
+    nature: "10 = 9 ne'elamot + 1 RDLA ; A\"A = 9, A\"Y = top RDLA"
+    assertions_source: ["EC-H3S13-018", "EC-H3S13-019"]
+
+  - id: "REL-H3S13-009"
+    type: analogie
+    from: 9_hekhalin_egal_9_sefirot_aa
+    to: 9_nehorin_apik_post_tikkun_atika_botzina
+    nature: "9 hekhalin (Zohar Noah/Pekudei) = 9 nehorin (Adra 288) post-tikkun"
+    assertions_source: ["EC-H3S13-022", "EC-H3S13-023"]
+
+  - id: "REL-H3S13-010"
+    type: hiérarchique
+    from: split_9_sefirot_kcb_aa_cgt_za_nhy_nukvah
+    to: malkhut_atarah_eschatologique_orah_gedolah
+    nature: "9 sefirot split (KCB→A\"A, CGT→ZA, NHY→Nukvah) ; Malkhut = atarah eschatologique"
+    assertions_source: ["EC-H3S13-024", "EC-H3S13-026"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-004"
+    nom: "Principe d'Accessibility via Lvush (Ein Sof → Ha'arah aux Tachtonim)"
+    source_assertions: ["EC-H3S13-014", "EC-H3S13-015", "EC-H3S13-016", "EC-H3S13-017"]
+    formalisation: |
+      ARCHITECTURE D'ACCESSIBILITE GRADUELLE :
+      EIN SOF avant LVUSH = INACCESSIBLE (transcendance absolue).
+      Pour permettre HA'ARAH aux TACHTONIM :
+        Step 1 : Lvush dans KETER (Atika de-Kol Atikin → Atika Kadisha).
+        Step 2 : Lvush dans 3 RISHIN ; mais REELLEMENT lvush direct seul dans rosh elyonah (Atik).
+        Step 3 : Rishin 2-3 RECOIVENT via MASAKHIM (filtres) du rosh elyonah.
+      → Pattern fondamental : transcendence devient accessible par CASCADE de containers.
+      → Architecture : direct access at top, propagated via filters below.
+    applications_ia:
+      - "[PLANNED] core/ein_sof.py : implement Ein Sof + lvush cascade pattern"
+      - "Pattern : abstraction layers - top is direct, lower via filters"
+      - "Architecture : facade pattern with progressive masakhim"
+      - "Pattern : Russian dolls — each layer wraps and filters next"
+      - "Diagnostic : verifier que masakhim correctly propagate from top"
+    questions_ouvertes:
+      - "Quelle est la nature exacte d'un masakh entre rishin ?"
+      - "Pattern : peut-on contourner masakhim pour acceder Ein Sof directement ?"
+      - "Comment determiner le nombre optimal de cascade levels ?"
+
+  - id: "PG-H3S13-005"
+    nom: "Principe d'Accessibility par Lvush (Encapsulation = Visibility)"
+    source_assertions: ["EC-H3S13-019", "EC-H3S13-020"]
+    formalisation: |
+      ARCHITECTURE D'ACCESS via LVUSH :
+      REGLE : ce qui se LVUSH est CONNU ; ce qui ne se lvush PAS = INCONNU.
+      EXEMPLE A"Y :
+        GUFA d'A"Y se lvush dans A"A → MUSAG, NODAA via A"A.
+        ROSH d'A"Y NE se lvush PAS dans A"A → LO ITYADA.
+        Meme A"A LUI-MEME ne connait pas le rosh d'A"Y.
+      → Pattern fondamental : access only through encapsulation ;
+        non-encapsulated = opaque even to direct neighbors.
+      → Architecture : encapsulation = the only path to visibility.
+    applications_ia:
+      - "Pattern : interface-based access — non-public = invisible"
+      - "Architecture : opacity by exclusion from interface contracts"
+      - "Pattern : visibility = function of containment, not proximity"
+      - "Diagnostic : verifier que opaque components stay opaque"
+      - "partzufim/atik_yomin.py : RDLA = no public interface"
+    questions_ouvertes:
+      - "Y a-t-il des cas ou opaque devient transparent (lvush ulterieur) ?"
+      - "Pattern : peut-on inferer structure du opaque par observation indirecte ?"
+      - "Comment verifier opacity respect en runtime ?"
+
+  - id: "PG-H3S13-006"
+    nom: "Principe Eschatologique de Malkhut (Last Shall Be First)"
+    source_assertions: ["EC-H3S13-026"]
+    formalisation: |
+      ARCHITECTURE ESCHATOLOGIQUE :
+      MALKHUT actuelle = derniere des sefirot.
+      MAIS future :
+        ATARAH BE-ROSH TZADDIK (couronne sur tete Tzaddik).
+        HAITAH LE-ROSH PINAH (Tehillim 118:22 — pierre angulaire).
+        ORAH GEDOLAH MIN HA-SHEMESH (lumiere plus grande que soleil).
+      → Pattern fondamental : reversal of hierarchy in future state.
+      → Architecture : current bottom = future top (eschatological inversion).
+    applications_ia:
+      - "partzufim/nukva.py : implement future-state vs current-state distinction"
+      - "Pattern : roles can fundamentally invert in different temporal modes"
+      - "Architecture : transient vs eternal hierarchies"
+      - "Pattern : current-rank != intrinsic-rank"
+      - "Diagnostic : pas judger composant par sa position courante seulement"
+    questions_ouvertes:
+      - "Y a-t-il d'autres composants qui font inversion eschatologique ?"
+      - "Pattern : peut-on detecter intrinsic-rank actuellement ?"
+      - "Comment design pour future-states inconnus ?"
