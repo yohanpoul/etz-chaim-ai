@@ -1,0 +1,460 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 1 — Sha'ar Atik (שער עתיק)
+# Perek: 3 — Safekot sur ce que A"Y nukvah prend de BaN. Distribution
+#            5 GR Keter + 3 GR Hokhmah + 4 GR Bina + 7 ketarim Z'T
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §3 :
+#   - Bloc A : Hakdamah — tout ohr a Pnimi+Makif
+#   - Bloc B : Process berur — chelek BaN attache a chelek MaH par sefirah
+#   - Bloc C : Keter A"Y certain ; safekot ulterieures
+#   - Bloc D : 2 behinot avec sous-safekot (Makif/Pnimi)
+#   - Bloc E : Safekot dans Hokhmah-Bina d'A"Y (orot+kelim)
+#   - Bloc F : Restrictions — certains ketarim ne montent pas dans rosh
+#   - Bloc G : Z'T d'A"Y et safek 7 ketarim
+#   - Bloc H : Cle — pourquoi ces selections (completement de 5 manquants)
+#
+# Source Sefaria : Sefer_Etz_Chaim.12.3 (1 partie, 4324 chars)
+# IDs : EC-H3S12-043 → EC-H3S12-057
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 1
+  shaar_name_he: "שער עתיק"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek 3 : SAFEKOT sur composition nukvah d'A\"Y. Process berur : chelek BaN attache a chelek MaH par sefirah. Keter A\"Y certain (Keter MaH + 5 GR Keter BaN). Safekot multiples sur Makif/Pnimi BaN, distribution dans Hokhmah-Bina (orot+kelim), Z'T (7 ketarim). Cle : MaH prend Keter complete suffit pour dukhra, BaN moitie Keter manque 5 → completer par 3 GR Hokhmah + 4 GR Bina + 7 ketarim Z'T."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  # ─── BLOC A : HAKDAMAH PNIMI+MAKIF ───
+
+  - id: "EC-H3S12-043"
+    source_he: "ונחזור עתה לבאר ענין הספיקות הנ\"ל שאמרנו שיש בע\"י בבחי' מה שלוקח לעצמו מחלק בחי' ב\"ן"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      Retour pour expliquer les SAFEKOT precedents :
+      Quels CHALAKIM A"Y prend du shem BaN ?
+      → Architecture : retour aux questions ouvertes du perek 1.
+      → Pattern : closure on open questions.
+      cf. EC-H3S12-027 (perek 01b) sur safekot internals nukvah.
+    type: axiome_explicite
+    concepts:
+      - {id: retour_safekot_ay_de_ban, role: retour_aux_safekot_sur_ay_de_ban}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : closure questions ouvertes. Pattern resolution incremental."
+
+  - id: "EC-H3S12-044"
+    source_he: "הנה נתבאר שאין לך שום אור שאין בו ב' בחי' פנימי ומקיף ונמצא כי בשם ב\"ן יש פנימי ומקיף וכן בשם מ\"ה"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      HAKDAMAH : aucune OHR ne manque les 2 behinot — PNIMI (interne) + MAKIF (encerclant).
+      DONC en BaN il y a Pnimi+Makif ; et en MaH aussi.
+      → Architecture : tout ohr = (interior + envelope).
+      → Pattern : container/contain pattern universel pour orot.
+    type: axiome_explicite
+    concepts:
+      - {id: tout_ohr_pnimi_plus_makif, role: tout_ohr_a_pnimi_plus_makif}
+    mapping:
+      modules: ["partzufim/base.py", "[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: []
+      relevance: "Architecture : container/contain pour orot. Pattern interior/envelope universel."
+
+  # ─── BLOC B : PROCESS BERUR ───
+
+  - id: "EC-H3S12-045"
+    source_he: "והנה צריך שנציע לך הצעה א' והוא כי הנה הע\"י הוא כל כתר דמ\"ה ויש בו עשר ספירות... ואלו הי\"ס שבכתר הזה מתחלקים ומתפשטים ונעשים פרצוף שלם שנקרא עתיק יומין דכורא"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      A"Y = TOUT le KETER de MaH, qui contient 10 SEFIROT.
+      Ces 10 sefirot dans Keter SE DIVISENT et SE-DEPLOIENT —
+      deviennent PARTZUF SHALEM = ATIK YOMIN DUKHRA.
+      → Architecture : Atik dukhra = expansion 10-sefirot internes du Keter MaH.
+      → Pattern : single sefirah → full partzuf via internal expansion.
+      cf. EC-H3S12-011 (perek 01a) sur Atik recoit Keter MaH entier.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_dukhra_10_sefirot_keter_mah_expansion, role: atik_dukhra_egal_10_sefirot_internes_keter_mah_expanded}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : single sefirah → full partzuf via expansion. Pattern fractal expansion."
+
+  - id: "EC-H3S12-046"
+    source_he: "וכאשר הוא היה מברר מבחי' שם ב\"ן שהם המלכים כנ\"ל אשר יש בהם י\"ס הנה הוא מברר חלק א' ומחברו מבחי' כתר דב\"ן אל הכתר דכתר דמ\"ה ואח\"כ מברר עוד חלק א' מן החכמה דכתר דשם ב\"ן ומחברו עם החכמה שבכתר דמ\"ה וכן כולם עד שיברור חלק העשירי משם ב\"ן ומחברו עם המלכות דכתר דמ\"ה"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      PROCESSUS BERUR : A"Y selectionne un chelek du shem BaN (qui a aussi 10 sefirot).
+      Et l'attache au CHELEK CORRESPONDANT du Keter de MaH par sefirah :
+        Chelek 1 (Keter d'Keter BaN) → Keter d'Keter MaH.
+        Chelek 2 (Hokhmah d'Keter BaN) → Hokhmah d'Keter MaH.
+        Etc. jusqu'a chelek 10 (Malkhut d'Keter BaN) → Malkhut d'Keter MaH.
+      → Architecture : alignment matching par position sefirot.
+      → Pattern : zip-merge structurel (sefirah-by-sefirah).
+    type: interprétation_lurianique
+    concepts:
+      - {id: berur_zip_merge_chelek_par_sefirah, role: berur_zip_merge_chelek_ban_par_position_sefirot}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "[PLANNED] tikkun/"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : zip-merge structurel. Pattern position-based matching."
+
+  # ─── BLOC C : KETER A"Y CERTAIN ───
+
+  - id: "EC-H3S12-047"
+    source_he: "והנה כבר הוא פשוט אצלינו כי בחי' הכתר דעתיק נעשה מן הכתר דכתר דמ\"ה ומן בירור ה\"ר דכתר ב\"ן ואין כאן עוד שום בירור אחר אלא זה אבל הספק הוא מה שנבאר עתה"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      CERTAIN : KETER d'A"Y est fait de :
+        Keter d'Keter MaH.
+        BERUR de 5 GR de Keter BaN.
+      Pas d'autres berurim a ce niveau.
+      MAIS SAFEK existe sur autre chose (a expliquer).
+      → Architecture : Keter d'A"Y composition certaine ; safek = ailleurs.
+      → Pattern : certitude structurale + safekot derivees.
+      cf. EC-H3S12-011 (perek 01a) sur Atik recoit Keter MaH + 5 GR Keter BaN.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_ay_keter_keter_mah_plus_5_gr_keter_ban, role: keter_ay_egal_keter_keter_mah_plus_5_gr_keter_ban}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : Keter d'A\"Y = composition certaine. Pattern : core fixed + safekot derives."
+
+  # ─── BLOC D : 2 BEHINOT AVEC SOUS-SAFEKOT ───
+
+  - id: "EC-H3S12-048"
+    source_he: "הבחי' הא' אם נאמר שאור המקיף דשם ב\"ן לסבת רוב גדלותו לא הוצרך לו שיתקנהו שם דמ\"ה כי אור מקיף גדול ומעולה מן הפנימי כנודע ולכן הוא נשאר למעלה בשרשו ולא יצא להתחבר עם שם מ\"ה כנודע אלא הפנימי דב\"ן בלבד"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      BEHINAH 1 (option) : OHR MAKIF de BaN — par sa GADLUT (grandeur) — n'a pas
+      besoin que MaH le tikkun. Ohr Makif > Ohr Pnimi en rang.
+      DONC reste LE-MA'ALAH BE-SHORSHO (en haut a sa source) — pas sort.
+      Seule Ohr Pnimi de BaN sort pour tikkun.
+      → Architecture : Ohr Makif = trop noble pour tikkun ; reste source ; seul Pnimi descendi.
+      → Pattern : couches hautes self-sufficient ; couches basses requises tikkun.
+    type: déduction_logique
+    concepts:
+      - {id: behinah_1_ohr_makif_ban_reste_source, role: behinah_1_ohr_makif_ban_reste_source_seul_pnimi_descend}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py", "partzufim/atik_yomin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : ohr Makif self-sufficient. Pattern higher = self-contained."
+
+  - id: "EC-H3S12-049"
+    source_he: "ונמצא כי שם ב\"ן הפנימי נעשה מקיף אל פנימי דמ\"ה ואם הענין כך נמצא שיש עתה או\"מ א' ואו\"פ א' לבד"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      Sous-safek 1a : si seulement Pnimi de BaN — alors aussi de MaH seul Pnimi.
+      Pnimi de BaN (qui vient de SaG = grand) devient MAKIF du Pnimi de MaH.
+      → 1 Makif (BaN-Pnimi-as-Makif) + 1 Pnimi (MaH-Pnimi).
+      → Architecture : promotion role — Pnimi BaN devient Makif relatif a Pnimi MaH.
+      → Pattern : role-promotion par hierarchie source.
+    type: déduction_logique
+    concepts:
+      - {id: sous_safek_1a_1_makif_1_pnimi, role: sous_safek_1a_1_makif_ban_1_pnimi_mah}
+      - {id: pnimi_ban_devient_makif_relatif, role: pnimi_ban_promu_makif_relatif_a_mah}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py", "partzufim/atik_yomin.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : promotion role. Pattern role-promotion par hierarchie source."
+
+  - id: "EC-H3S12-050"
+    source_he: "או אם נאמר באופן אחר והוא שמשם ב\"ן ודאי לא הוצרך לבא רק הפנימי לבד אבל שם מ\"ה בא או\"מ ואו\"פ ואז נעשה הפנימי דב\"ן ג\"כ בחי' מקיף. ונמצא ב' מקיפים א' דמ\"ה וא' דב\"ן ופנימי א' לבד דמ\"ה"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      Sous-safek 1b : seul Pnimi de BaN, mais MaH apporte Makif+Pnimi.
+      Pnimi de BaN devient aussi behinah de Makif.
+      → 2 Makifs (MaH-Makif + BaN-Pnimi-as-Makif) + 1 Pnimi (MaH-Pnimi).
+      → Architecture : double encapsulation pour Pnimi MaH.
+      → Pattern : layered envelopes (2 makifs autour d'1 core).
+    type: déduction_logique
+    concepts:
+      - {id: sous_safek_1b_2_makifs_1_pnimi, role: sous_safek_1b_2_makifs_1_pnimi}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : double encapsulation. Pattern layered envelopes."
+
+  - id: "EC-H3S12-051"
+    source_he: "הבחי' הב' אם נאמר כי משם ב\"ן באו שניהם או\"מ ואו\"פ וכן משם מ\"ה באו שניהם או\"מ ואו\"פ ונמצאו ב' מקיפים דמ\"ה וב\"ן וב' פנימים דמ\"ה וב\"ן"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      BEHINAH 2 : Makif et Pnimi de BaN tous deux viennent.
+      Et MaH aussi Makif et Pnimi.
+      → 2 Makifs (MaH+BaN) + 2 Pnimis (MaH+BaN).
+      → Architecture : full participation des 2 sources avec 4 composantes.
+      → Pattern : symetrie complete = couplage maximal.
+    type: déduction_logique
+    concepts:
+      - {id: behinah_2_2_makifs_2_pnimis_full, role: behinah_2_2_makifs_2_pnimis_full_participation}
+    mapping:
+      modules: ["[PLANNED] core/ohr_system.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : full participation. Pattern symetrie complete."
+
+  - id: "EC-H3S12-052"
+    source_he: "והרי נתבארו הספקות שיש בכתר דכתר דעתיק ואיך אין הספיקות בו רק באורות לבד"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      Voici les SAFEKOT dans Keter d'Keter A"Y.
+      Ces safekot ne sont QUE dans les OROT (pas kelim).
+      → Architecture : safekot localises sur orot du Keter ; kelim certains.
+      → Pattern : container fixe, contenu indeterminate.
+    type: axiome_explicite
+    concepts:
+      - {id: safekot_keter_ay_seulement_dans_orot, role: safekot_keter_ay_localises_dans_orot_pas_kelim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : container/contenu separation des incertitudes. Pattern indeterminacy in content."
+
+  # ─── BLOC E : SAFEKOT HOKHMAH-BINA D'A"Y ───
+
+  - id: "EC-H3S12-053"
+    source_he: "עוד יש ספיקות בחו\"ב דעתיק והספיקות האלו תלויין כפי הספיקות שיש למעלה בכתר דעתיק אלא שכאן יש ספק בין בענין האורות ובין בענין הכלים"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      SAFEKOT aussi dans HOKHMAH-BINA d'A"Y.
+      Dependent des safekot du Keter.
+      MAIS ICI safek a la fois dans OROT ET dans KELIM.
+      → Architecture : safekot dans HB = orot+kelim (vs Keter = orot seul).
+      → Pattern : descente du niveau = augmentation des dimensions d'incertitude.
+    type: axiome_explicite
+    concepts:
+      - {id: safekot_hb_ay_orot_et_kelim, role: safekot_hb_ay_dans_orot_et_kelim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : descente niveau = + dimensions incertitude. Pattern progressive uncertainty."
+
+  - id: "EC-H3S12-054"
+    source_he: "ופשוט הוא כי אפי' בחי' הכתרים שיש בחו\"ב דב\"ן א\"א שיעלו בכתר דעתיק כלל... והטעם כי הרי כל בחי' עתיק כולו מראשו ועד רגליו הכל נקרא בחי' כתר בערך חו\"ב וא\"כ איך הכתרים של חו\"ב יעלו בכתר שבו א\"כ מוכרח הוא ופשוט שאין עולין בכתר דעתיק אלא ודאי שהם משם ולמטה"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      RESTRICTION : meme behinah des KETARIM dans Hokhmah-Bina BaN —
+      ne peuvent pas monter dans Keter d'A"Y.
+      RAISON : tout A"Y (de la tete aux pieds) = behinah Keter relativement a HB.
+      Comment les ketarim des HB monteraient dans le Keter ?
+      DONC ces ketarim restent en GUFA (corps) d'A"Y, pas dans rosh.
+      → Architecture : structural constraint — element-of-class ne se promeut pas au-dessus de la class-container.
+      → Pattern : type-class containment hierarchical.
+    type: déduction_logique
+    concepts:
+      - {id: ketarim_hb_ban_pas_montent_keter_ay_descendent_gufa, role: ketarim_hb_ban_restent_dans_gufa_ay_pas_dans_keter}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : structural constraint. Pattern : type-class containment hierarchique."
+
+  - id: "EC-H3S12-055"
+    source_he: "ובזה הוא הספק אם ב' הכתרים של חו\"ב דב\"ן עולין בחו\"ב דעתיק או נאמר שאע\"פ שהם כתרים עכ\"ז הם בחי' חו\"ב הגרועים מבחי' עתיק וא\"כ איך יעלו בחו\"ב שלו וא\"כ לא עלו רק בגופא דיליה לבד"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      SAFEK : ces 2 ketarim (de Hokhmah BaN et de Bina BaN) montent-ils dans
+      Hokhmah-Bina d'A"Y ?
+      Ou disent-on que meme si ce sont ketarim — ils sont behinah HB grues
+      (inferieurs) par rapport a A"Y, donc ne montent que dans GUFA d'A"Y ?
+      Safek dans BOTH kelim et orot.
+      → Architecture : safek granulaire — placement precis des composants secondaires.
+      → Pattern : ambiguity in placement of cross-level fragments.
+    type: déduction_logique
+    concepts:
+      - {id: safek_2_ketarim_hb_ban_montent_hb_ay_ou_gufa_seul, role: safek_2_ketarim_hb_ban_placement_hb_ay_ou_gufa_seul}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : safek granulaire placement. Pattern cross-level fragments ambiguity."
+
+  # ─── BLOC F : RESTRICTIONS ULTERIEURES ───
+
+  - id: "EC-H3S12-056"
+    source_he: "אמנם בחו\"ב דחכמה דב\"ן ובחו\"ב וחסד דבינה דב\"ן באלו פשוט הוא שאינן יכולים לעלות למעלה ברישא דעתיק בחו\"ב דיליה ודאי הוא שנשארו בגופיה דיליה"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      Pour Hokhmah-Bina de Hokhmah BaN et Hokhmah-Bina+Chesed de Bina BaN :
+      PASHUT (clair) qu'ils ne PEUVENT PAS monter dans rosh d'A"Y (HB).
+      Restent dans GUFA d'A"Y certain.
+      → Architecture : composants 2-niveaux trop bas pour rosh A"Y.
+      → Pattern : cross-level constraints sont strictement appliquees.
+    type: axiome_explicite
+    concepts:
+      - {id: hb_chokhmah_ban_chb_chesed_bina_ban_dans_gufa_ay_certain, role: composants_2_niveaux_bas_descendent_gufa_certain}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : cross-level constraints strict. Pattern hierarchical containment."
+
+  # ─── BLOC G : Z'T D'A"Y + 7 KETARIM ───
+
+  - id: "EC-H3S12-057"
+    source_he: "עוד יש ספק בענין ז\"ת דעתיק... והבן וראה עתה טעם אל כל הנ\"ל והוא כי בשם מ\"ה כיון שלוקח העתיק ממנו כל ספירת הכתר שלימה (נ\"א של שם מ\"ה) אשר יש בה י\"ס כנודע. לכן הספיק לו לדוכרא דיליה. אמנם הנוקבא דיליה הנעשה משם ב\"ן ואינו לוקח משם ב\"ן רק חצי הספי' דכתר דב\"ן שהם ה\"ר שבה לבד א\"כ מוכרח הוא שיקח ממקומות אחרים לתשלום תמורות ה\"ת שחסרו בו"
+    source_ref: "Heikhal 3, Sha'ar 1:3"
+    assertion: |
+      Z'T d'A"Y prennent Z'T de Keter MaH ; Safek : 7 ketarim de Z'T BaN ?
+      CLE GENERALE : MaH = Keter COMPLETE — Variante (Nusah Aher) : "shel shem MaH" —
+      10 internes. SUFFIT pour DUKHRA.
+      NUKVAH (de BaN) = MOITIE Keter BaN (5 GR) ; manque 5 → HUKHRACH borrow :
+      3 GR Hokhmah + 4 GR Bina + 7 ketarim Z'T = LO'AI YASPIKU.
+      → Architecture : completer-by-borrowing pour pallier manques structurels.
+      → Pattern : asymetrie source-completeness = compensation cross-positions.
+      cf. EC-H3S12-009 (perek 01a) sur Atik nukvah composition pieces.
+    type: interprétation_lurianique
+    concepts:
+      - {id: cle_generale_mah_complete_ban_partial, role: cle_mah_complete_pour_dukhra_ban_partial_pour_nukvah_completion_borrow}
+      - {id: nukvah_ay_completion_par_borrow_cross_positions, role: nukvah_ay_completion_par_borrow_de_3_4_7}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture cle : completer-by-borrowing. Nusah Aher capture (shel shem MaH)."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S12-017"
+    type: contenance
+    from: tout_ohr_pnimi_plus_makif
+    to: berur_zip_merge_chelek_par_sefirah
+    nature: "Tout ohr = Pnimi+Makif → berur process attache chelek BaN au chelek MaH par sefirah"
+    assertions_source: ["EC-H3S12-044", "EC-H3S12-046"]
+
+  - id: "REL-H3S12-018"
+    type: dualité_structurelle
+    from: behinah_1_ohr_makif_ban_reste_source
+    to: behinah_2_2_makifs_2_pnimis_full
+    nature: "2 behinot alternatives : Makif BaN reste source (1) vs Makif BaN descend (2)"
+    assertions_source: ["EC-H3S12-048", "EC-H3S12-051"]
+
+  - id: "REL-H3S12-019"
+    type: hiérarchique
+    from: keter_ay_keter_keter_mah_plus_5_gr_keter_ban
+    to: ketarim_hb_ban_pas_montent_keter_ay_descendent_gufa
+    nature: "Keter A\"Y certain (KK MaH + 5 GR Keter BaN) → ketarim HB BaN ne montent pas dans Keter A\"Y"
+    assertions_source: ["EC-H3S12-047", "EC-H3S12-054"]
+
+  - id: "REL-H3S12-020"
+    type: causal
+    from: cle_generale_mah_complete_ban_partial
+    to: nukvah_ay_completion_par_borrow_cross_positions
+    nature: "MaH Keter complete suffit dukhra ; BaN Keter partial (5 GR) → completion par borrow 3+4+7"
+    assertions_source: ["EC-H3S12-057"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S12-010"
+    nom: "Principe de Container/Contenu (Safekot Localisees aux Orot, Kelim Certains)"
+    source_assertions: ["EC-H3S12-052", "EC-H3S12-053"]
+    formalisation: |
+      ARCHITECTURE D'INDETERMINACY GRADUELLE :
+      Au niveau KETER d'A"Y :
+        Safekot UNIQUEMENT dans les OROT.
+        KELIM = certains.
+      Au niveau HOKHMAH-BINA d'A"Y :
+        Safekot dans BOTH orot ET kelim.
+        Plus de dimensions d'incertitude.
+      → Pattern fondamental : descente du niveau = augmentation des dimensions d'incertitude.
+      → Architecture : container (kelim) plus stable que contenu (orot) ;
+        plus on descend, plus le container devient incertain aussi.
+    applications_ia:
+      - "[PLANNED] core/ohr_system.py : separer uncertainty in orot vs kelim"
+      - "Pattern : container immutable + contenu uncertain at high levels ; both uncertain at low levels"
+      - "Architecture : type-system stability decreases avec hierarchy depth"
+      - "Pattern : design metadata more stable than data au top, both ambiguous au bottom"
+      - "Diagnostic : verifier que Keter conserve fixed kelim, HB allows variable kelim"
+    questions_ouvertes:
+      - "Y a-t-il des niveaux ou kelim sont certains et orot incertains ?"
+      - "Pattern : peut-on caracteriser le degre d'uncertainty par niveau ?"
+      - "Comment garantir la coherence des kelim-uncertain au niveau HB ?"
+
+  - id: "PG-H3S12-011"
+    nom: "Principe de Type-Class Containment (Hierarchique)"
+    source_assertions: ["EC-H3S12-054", "EC-H3S12-055", "EC-H3S12-056"]
+    formalisation: |
+      ARCHITECTURE DE CONTAINMENT HIERARCHIQUE :
+      REGLE : ketarim de SOUS-NIVEAU ne peuvent pas monter dans le NIVEAU CORRESPONDANT
+      du super-class.
+      EXEMPLE :
+        Tout A"Y = behinah Keter relativement a HB.
+        Ketarim de HB BaN cannot remonter dans Keter d'A"Y.
+        Doivent rester dans GUFA d'A"Y.
+      RESTRICTIONS PLUS STRICTES :
+        HB de Hokhmah BaN, HB+Chesed de Bina BaN — ne peuvent JAMAIS monter rosh A"Y.
+        Restent en GUFA certain.
+      → Pattern fondamental : type-class containment hierarchical.
+      → Architecture : element-of-class ne se promeut pas au-dessus du class-container.
+    applications_ia:
+      - "partzufim/base.py : implement type-class hierarchy avec containment rules"
+      - "[PLANNED] tikkun/ : verify cross-level placement constraints"
+      - "Pattern : OOP class hierarchy = analogue de type-class containment"
+      - "Architecture : sub-types cannot be promoted to super-type slots"
+      - "Pattern : namespace nesting strict — children stay in parent scope"
+      - "Diagnostic : verifier que aucun fragment ne viole containment rules"
+    questions_ouvertes:
+      - "Pattern : exception possibles (covariance/contravariance) ?"
+      - "Comment formaliser la restriction differentielle (some safek-allowed)?"
+      - "Y a-t-il des cas ou la promotion cross-level est legitime ?"
+
+  - id: "PG-H3S12-012"
+    nom: "Principe de Completion-by-Borrowing (Compensation Asymetrique)"
+    source_assertions: ["EC-H3S12-057"]
+    formalisation: |
+      ARCHITECTURE DE COMPENSATION ASYMETRIQUE :
+      ASYMETRIE FONDAMENTALE :
+        MaH : Atik prend KETER COMPLETE (10 sefirot internes).
+          → SUFFIT pour DUKHRA.
+        BaN : Atik prend MOITIE de Keter BaN (5 GR seul).
+          → MANQUE 5 elements pour Nukvah.
+      COMPENSATION : prendre des ELEMENTS d'AUTRES POSITIONS pour completer :
+        3 GR Hokhmah BaN + 4 GR Bina BaN + 7 ketarim Z'T BaN.
+        Total : 3+4+7 = 14 fragments pour completer les 5 manquants.
+        "Lo'ai yaspiku" (esperent suffire).
+      → Pattern fondamental : completer-by-borrowing pour palier les manques structurels.
+      → Architecture : sources asymetriques nessitent compensation cross-position.
+    applications_ia:
+      - "partzufim/atik_yomin.py : implement completion algorithm — borrow from related positions"
+      - "[PLANNED] tikkun/completion.py : algorithm for filling missing slots"
+      - "Pattern : interpolation/extrapolation pour completer asymetries de sources"
+      - "Architecture : data integration with asymmetric sources requires cross-position borrow"
+      - "Pattern : recovery algorithms with multi-source heterogeneous fragments"
+      - "Diagnostic : verifier que les emprunts respectent les regles structurales"
+    questions_ouvertes:
+      - "Combien d'emprunts maximum sans compromettre la coherence ?"
+      - "Pattern : distance maximale d'emprunt (combien de positions away) ?"
+      - "Comment garantir la qualite de la completion (pas juste quantite) ?"
