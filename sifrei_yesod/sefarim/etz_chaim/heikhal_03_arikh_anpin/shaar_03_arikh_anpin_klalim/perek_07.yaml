@@ -1,0 +1,436 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 3 — Heikhal Ha-Ketarim (היכל הכתרים)
+# Sha'ar: 3 — Sha'ar Arikh Anpin Klalim (שער א"א)
+# Perek: 7 — Z'T d'Atik dans 7 gulgalta. ZA telia ba'Atika. Mohin ZA via 3 sources
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §7 :
+#   - Bloc A : "Atik Yomin" = pi yomin (7 jours/Z'T mitgalin gulgalta)
+#   - Bloc B : Cheveux dinim mais yoter rachamim que ZA
+#   - Bloc C : 3 sources d'illumination mohin ZA
+#   - Bloc D : Avi mi-mazla ; ZA mushpa de Keter A"A
+#   - Bloc E : Adra Zuta — ZA telia ve-achid be-Atika
+#   - Bloc F : A"A revet tout Atzilut sauf rosh
+#   - Bloc G : Tiferet partage chaque tier
+#   - Bloc H : 2 rishin lvush kechada (comme AVI)
+#   - Bloc I : Hod = zaken (femmes/saris)
+#
+# Source Sefaria : Sefer_Etz_Chaim.13.7 (1 perek)
+# IDs : EC-H3S13-105 → EC-H3S13-118
+
+meta:
+  sefer: etz_chaim
+  heikhal: 3
+  shaar: 3
+  shaar_name_he: "שער אריך אנפין"
+  perek: 7
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Z'T d'Atik mitgalin dans 7 gulgalta d'A\"A — sod 'Atik Yomin'. ZA telia ve-achid be-Atika (Adra Zuta 292). 3 sources mohin ZA : Chesed elyon Keter A\"A → mazal → Da'at AVI ; Hokhmah MS A\"A → cheveux+dikna ; Yesod Atik → metzah. A\"A revet tout Atzilut sauf rosh. Tiferet partage entre tier+tier suivant. Hod=zaken (femmes/saris pas de zaken)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H3S13-105"
+    source_he: "והנה כבר נתבאר כי ז\"ת דעתיק הנה הם מתגלין בז' דגלגלתא דא\"א והוא סוד הנזכר בזוהר עתיק יומין פי' שאין מתגלה רק בחי' יומין שהם ז' ימי בראשית ז\"ת דיליה ובכ\"מ פי' עתיק יומין הם ז\"ת המתגלין בז' דגלגלתא"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      Z'T d'Atik MITGALIN dans 7 de GULGALTA d'A"A.
+      C'est le SOD du nom "ATIK YOMIN" (Daniel 7:9) :
+      "YOMIN" = 7 YEMEI BERESHIT = Z'T.
+      "Atik Yomin" PARTOUT = Z'T MITGALIN dans 7 d'A"A's gulgalta.
+      → Architecture : nom revele structure — Atik Yomin = Z'T-revelation.
+      → Pattern : naming encodes which tier reveals.
+      cf. EC-H3S13-091 (perek 06) sur 7 tikkunim gulgalta.
+    type: déduction_scripturaire
+    concepts:
+      - {id: atik_yomin_egal_zt_atik_dans_7_gulgalta, role: atik_yomin_egal_zt_atik_mitgalin_dans_7_gulgalta_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : nom revele tier. Pattern naming encodes revelation."
+
+  - id: "EC-H3S13-106"
+    source_he: "ובערך שהוא מתלבש בא\"א כתיב ביה ושער רישיה כעמר נקא"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      Vis-a-vis du LVUSH dans A"A : ecrit "U-SE'AR REISHEH KE-AMER NAKA"
+      (les cheveux de sa tete comme laine pure, Daniel 7:9).
+      → Architecture : verset Daniel encode lvush A"A's tete.
+      → Pattern : letter-mysticism scriptural.
+    type: déduction_scripturaire
+    concepts:
+      - {id: usear_reisheh_keamer_naka_aa_lvush, role: daniel_7_9_usear_reisheh_keamer_naka_egal_aa_lvush}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : verset Daniel = lvush A\"A. Pattern liturgique."
+
+  - id: "EC-H3S13-107"
+    source_he: "ודע כי אע\"פ שכל אלו הם שערות בסוד שורש הדנין עכ\"ז הנה הם יותר רחמים מרחמי ז\"א ולכן מאלו השערות נמשך השפעה לז\"א ואינן מגיעין רק עד רישא דז\"א ולא יותר ושאר כללות הז\"א הוא חלק וז\"ס ואנכי איש חלק"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      Bien que cheveux = SHORESH HA-DININ — sont YOTER RACHAMIM que rachamim ZA.
+      DONC d'eux : SHEFA → ZA. Atteignent SEUL rosh ZA, pas plus.
+      Reste de ZA = HALAK (lisse, sans cheveux).
+      Sod : "VE-ANOKHI ISH HALAK" (Bereshit 27:11 — Yaakov "homme lisse").
+      → Architecture : transmission upstream surclasse local quality.
+      → Pattern : provenance > local nature.
+      cf. EC-H3S13-084 (perek 05b) sur cheveux d'A"A dinim mais rachamim+grands.
+    type: déduction_scripturaire
+    concepts:
+      - {id: cheveux_aa_dinim_mais_rachamim_yoter_que_za_anokhi_ish_halak, role: cheveux_aa_yoter_rachamim_za_halak_anokhi_ish_halak_yaakov}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : provenance > local. Pattern source-quality cascading."
+
+  - id: "EC-H3S13-108"
+    source_he: "(ז\"א מאירין בו כמה מיני אורות במוחין דיליה א הוא שמתפשטת הארה מהחסד העליון שמתלבש בכתר דא\"א ומשם מתפשטת עד מזל הי\"ג דאריך ומשם מתפשט עוד הארה ההיא עד הדעת שבין או\"א ומיחד אותן ואז בכח הזה נעשה מוחין דז\"א המתלבשין בנה\"י אמא"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      MOHIN de ZA recoivent 3 SOURCES d'illumination :
+      SOURCE 1 : Chesed Elyon (RDLA) lvush dans Keter A"A → ME'IR jusqu'au
+      MAZLA HA-13 d'Arikh → DA'AT entre AVI → MEYACHED (unifie) AVI →
+      par cette force = MOHIN ZA dans NHY d'Imma.
+      → Architecture : source 1 = chemin Chesed elyon → mazal → Da'at AVI → ZA.
+      → Pattern : multi-step pathway pour mohin generation.
+    type: interprétation_lurianique
+    concepts:
+      - {id: source_1_mohin_za_chesed_elyon_mazal_13_daat_avi, role: source_1_mohin_za_chesed_elyon_keter_aa_mazal_13_daat_avi}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : multi-step mohin pathway. Pattern source 1 RDLA-cascade."
+
+  - id: "EC-H3S13-109"
+    source_he: "ב' הארה נמשכת ממ\"ס דא\"א ויורדת דרך שערות דרישא ודרך שערות דדיקנא דא\"א ג\"כ ונמשכין עד דיקנא דז\"א ומאירין במוחין דיליה"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      SOURCE 2 : HA'ARAH NIMSHEKHET (s'etend) de MOHA SETIMA d'A"A.
+      Descend par cheveux ROSH et cheveux DIKNA d'A"A.
+      Atteint dikna de Z"A → ME'IR dans MOHIN.
+      → Architecture : source 2 = chemin Hokhmah A"A → cheveux → mohin ZA.
+      → Pattern : capillary transmission.
+    type: interprétation_lurianique
+    concepts:
+      - {id: source_2_mohin_za_ms_aa_par_cheveux_rosh_dikna, role: source_2_mohin_za_ms_aa_par_cheveux_rosh_et_dikna_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : capillary transmission. Pattern source 2."
+
+  - id: "EC-H3S13-110"
+    source_he: "ג' הארה יוצאת מיסוד דעתיק אשר תוכו (מ\"ס פנימים) מוחא דדעת דא\"א ובוקע מצח דא\"א ויוצא הארה עד מצחא דז\"א ומאיר במצחא דיליה בפנים של המוחין בתוך מצחא דיליה ואז מתבטלין כל הדינין שבמצח (נ\"א שבמוחין) דז\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      SOURCE 3 : YOTZET (sort) du YESOD d'Atik —
+      dont l'INTERIEUR (Variante : "MS PNIMIM") = MOHA d'DA'AT d'A"A.
+      BOKE'A (perce) METZAH d'A"A → ME'IR jusqu'au METZAH ZA.
+      Annule tous les DININ dans METZAH — Variante (Nusah Aher) : "BA-MOHIN" (mohin) — d'ZA.
+      → Architecture : source 3 = chemin yesod Atik → bokea metzah → annule dinim ZA.
+      → Pattern : dinim cancellation via deep upstream flow.
+      cf. EC-H3S13-098 (perek 06) sur 24 batei dinim metzah ZA.
+    type: interprétation_lurianique
+    concepts:
+      - {id: source_3_mohin_za_yesod_atik_metzah_annule_dinim, role: source_3_mohin_za_yesod_atik_bokea_metzah_aa_annule_dinim_metzah_za}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : dinim cancellation via deep flow. 2 Nusah Aher captures."
+
+  - id: "EC-H3S13-111"
+    source_he: "אחורי הראש הם נמשכין עם י\"ג נימין דשערי דרישא הנמשכין אחורי הראש עד רישא דז\"א ומשם יורד השפע לרישא דז\"א הנה א\"כ כי או\"א מושפעים מסוד מזלא דע\"ק כי הם נמשכין ממ\"ס חכמה דכתר והז\"א מושפע יותר מלמעלה מכתר דא\"א שמשם נמשכין י\"ג חוורתא ומפאת בחי' זו הוא יותר מעולה הז\"א לפעמים מאו\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      4 hivara ahor + 13 nimin shaarei rosh ahor → atteignent rosh Z"A.
+      AVI = MUSHPA-IM (irrigues) du SOD MAZLA d'A"K (= MS d'A"A's chokhmah).
+      Z"A = MUSHPA YOTER me-LAMA'ALAH (de plus haut) — du KETER d'A"A
+      (d'ou viennent 13 hivara).
+      DONC parfois ZA est PLUS ELEVE qu'AVI (par cette behinah).
+      → Architecture : ZA recoit du Keter ; AVI du Hokhmah → ZA peut surclasser AVI.
+      → Pattern : downstream component peut depasser intermediate via upstream-superieur.
+    type: interprétation_lurianique
+    concepts:
+      - {id: za_mushpa_keter_aa_avi_mushpa_ms_aa_za_parfois_superieur_avi, role: za_mushpa_de_keter_aa_via_hivara_avi_mushpa_de_ms_aa_via_mazla_za_parfois_plus_eleve}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : downstream peut surclasser intermediate. Pattern bypass."
+
+  - id: "EC-H3S13-112"
+    source_he: "וז\"ס הנרמז באדר\"ז רצ\"ב או\"א מהאי מוחא נפקי ז\"א בעתיקא תליא ואחיד"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      Sod Adra Zuta 292 : "AVI ME-HAI MOHA NAFKI, ZA BE-ATIKA TELIA VE-ACHID"
+      (AVI sortent de cette MOHA [d'A"A], ZA est suspendu et attache a Atika).
+      → Architecture : ZA depend directement Atika ; AVI seulement via Moha (intermediaire).
+      → Pattern : direct dependency vs mediated.
+    type: déduction_scripturaire
+    concepts:
+      - {id: adra_zuta_292_avi_de_moha_za_be_atika_telia_achid, role: adra_zuta_292_avi_me_hai_moha_nafki_za_be_atika_telia_ve_achid}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "atik_yomin"]
+      relevance: "Architecture : direct vs mediated dependency. Source Adra Zuta 292."
+
+  - id: "EC-H3S13-113"
+    source_he: "כי הוא אחיד שם ממש בנה\"י אך בערך אלו י\"ג תקוני חוורתא כנז' ע\"ז אמר תלייא כי בהם נתלה ז\"א ולא אחיד ובערך ב' בחי' אלו אמר אחיד ותליא"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      "TELIA" + "ACHID" = 2 RELATIONS distinctes :
+      ACHID = attache REELLEMENT dans NHY d'A"A (revetement direct).
+      TELIA = SUSPENDU (lien moins direct) aux 13 hivara.
+      → Architecture : 2 modes de connexion (firm attachment vs hanging).
+      → Pattern : multiple binding strengths entre composants.
+    type: interprétation_lurianique
+    concepts:
+      - {id: achid_attachement_ferme_telia_suspension_2_modes_connexion, role: achid_attachement_ferme_nhy_telia_suspension_hivara_2_modes_connexion}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : 2 modes connexion. Pattern binding strengths."
+
+  - id: "EC-H3S13-114"
+    source_he: "א\"א מתלבש בכל אצילות כולו אך ראשו אינו מתלבש כי אין העליון מתלבש בתחתון אם לא בז\"ת כי הג\"ר נשארים בסוד מקיף וז\"ס הנרמז באדר\"ז ודאי בהאי עתיקא לא אתגלייא אלא רישא בלחודוי"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      A"A REVET tout ATZILUT — sauf son ROSH (pas revetu).
+      Principe : superieur lvush dans tachton SEUL Z'T ; G"R restent MAKIF.
+      Sod Adra Zuta : "BE-HAI ATIKA LO ATGALYA ELA RISHA BIL'HUDOI"
+      (dans cet Atika ne se revele que la rosh seule).
+      → Architecture : visible part = rosh seule ; le reste lvush.
+      → Pattern : visibility limited to top-tier.
+      cf. EC-H3S13-045 (perek 03) sur principe ELYON LVUSH TACHTON.
+    type: déduction_scripturaire
+    concepts:
+      - {id: aa_lvush_tout_atzilut_sauf_rosh_visible, role: aa_lvush_tout_atzilut_sauf_rosh_visible_adra_zuta}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : visibility limited top-tier. Pattern revelation reserve."
+
+  - id: "EC-H3S13-115"
+    source_he: "מתחלת הגרון עד טבורא דלבא דא\"א שם מציאת או\"א כי עד שם מלבישין אותו ומשם ולמטה מלבישו ז\"א וז\"ס הת\"ת שנקרא לב והבן זה ומטבורא דלבא שהוא חצי ת\"ת שלו מתחיל משם סוד רישא דז\"א"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      Du GARON jusqu'au TABURA DE-LEIBA d'A"A : MITZIUT d'AVI (revetent A"A jusque la).
+      De la-bas et en bas : ZA REVETIT A"A.
+      Sod : T"T = LEV (coeur) ; tabura de-leiba = MI-T"T.
+      Du tabura = ROSH d'Z"A commence.
+      → Architecture : 2 zones revetement (haute=AVI, basse=ZA).
+      → Pattern : sectional coverage par tier.
+      cf. EC-H3S13-082 (perek 05b) sur tabura de-leiba=mi-T"T A"A.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_zones_revetement_avi_garon_a_tabura_za_tabura_a_bas, role: 2_zones_revetement_aa_par_avi_haut_et_za_bas}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : sectional coverage par tier. Pattern partitioned wrapping."
+
+  - id: "EC-H3S13-116"
+    source_he: "ואם תדקדק תמצא כי תמיד ת\"ת נעשה ממנו הכתר שהוא גלגלתא כי ת\"ת דעתיק תמן גלגלתא דאו\"א שהוא סוד בינה דא\"א ומת\"ת [נ\"א וכן ת\"ת] דא\"א נעשה כתר וגלגלתא דז\"א וכן מת\"ת דז\"א נעשה כתר וגלגלתא דנוקבא"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      PATTERN : T"T (Tiferet) → KETER du tier suivant.
+      T"T d'Atik → Gulgalta d'AVI (= Bina d'A"A).
+      Variante (Nusah Aher) : "ve-khen T"T" (et de meme T"T).
+      T"T d'A"A → Keter+Gulgalta d'Z"A.
+      T"T d'Z"A → Keter+Gulgalta d'Nukvah.
+      → Architecture : recursive cascade Tiferet→Keter (next).
+      → Pattern : middle becomes top of next.
+    type: axiome_explicite
+    concepts:
+      - {id: tiferet_devient_keter_du_tier_suivant_recursif, role: tiferet_devient_keter_gulgalta_du_tier_suivant_recursif}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : recursive cascade. Pattern middle→top next."
+
+  - id: "EC-H3S13-117"
+    source_he: "סוד ת\"ת דא\"א נחלק לב' חצאין חציו למציאת או\"א לצורך גופם וחציו לכתר ז\"א הרי כי או\"א וז\"א הם ב' מלכים משתמשין בכתר א'"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      T"T d'A"A se DIVISE en 2 CHATZAYIM (moities) :
+      Moitie pour MITZIUT d'AVI (leur guf).
+      Moitie pour KETER de Z"A.
+      Comparaison : 2 ROIS partagent 1 KETER.
+      Idem : T"T de Z"A → moitie Z"A guf, moitie Keter de Nukvah.
+      → Architecture : Tiferet partagee = ressource commune entre tier+tier-suivant.
+      → Pattern : resource sharing between adjacent tiers.
+    type: interprétation_lurianique
+    concepts:
+      - {id: tiferet_partage_2_chatzayim_2_rois_un_keter, role: tiferet_partage_2_chatzayim_2_rois_partagent_un_keter}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "nukva"]
+      relevance: "Architecture : resource sharing between tiers. Pattern shared crown."
+
+  - id: "EC-H3S13-118"
+    source_he: "סוד הוד זקן [נ\"א הוא זקן דא\"א] הנזכר באדרא גם דדיקנא (כי גם בו נכלל ההוא כי הדיקנא) אינו אלא בחי' יסוד לכן הנשים [והסריס] אין להם זקן"
+    source_ref: "Heikhal 3, Sha'ar 3:7"
+    assertion: |
+      Sod : HOD = ZAKEN (barbe).
+      Variante (Nusah Aher) : "HU ZAKEN d'A"A".
+      Adra : meme DIKNA = behinah YESOD (kelul HOD aussi).
+      DONC NASHIM (femmes) — Variante (Nusah Aher) : "VE-HASARIS" (eunuques) —
+      n'ont PAS de zaken (manquent yesod fonctionnel).
+      → Architecture : zaken = manifestation Yesod ; absence = manque Yesod.
+      → Pattern : surface signature reveals reproductive function.
+    type: déduction_scripturaire
+    concepts:
+      - {id: hod_egal_zaken_yesod_femmes_pas_de_zaken, role: hod_egal_zaken_dikna_yesod_femmes_et_saris_pas_de_zaken}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : zaken=Yesod signature. 2 Nusah Aher captures."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H3S13-039"
+    type: causal
+    from: atik_yomin_egal_zt_atik_dans_7_gulgalta
+    to: usear_reisheh_keamer_naka_aa_lvush
+    nature: "Atik Yomin = Z'T mitgalin → Daniel 7:9 'usear reisheh keamer naka' encode lvush A\"A"
+    assertions_source: ["EC-H3S13-105", "EC-H3S13-106"]
+
+  - id: "REL-H3S13-040"
+    type: contenance
+    from: source_1_mohin_za_chesed_elyon_mazal_13_daat_avi
+    to: source_3_mohin_za_yesod_atik_metzah_annule_dinim
+    nature: "3 sources mohin ZA via 3 chemins : (1) Chesed→mazal→Da'at AVI, (2) MS→cheveux→dikna, (3) Yesod Atik→metzah"
+    assertions_source: ["EC-H3S13-108", "EC-H3S13-109", "EC-H3S13-110"]
+
+  - id: "REL-H3S13-041"
+    type: dualité_structurelle
+    from: za_mushpa_keter_aa_avi_mushpa_ms_aa_za_parfois_superieur_avi
+    to: adra_zuta_292_avi_de_moha_za_be_atika_telia_achid
+    nature: "ZA mushpa direct Keter A\"A (peut surclasser AVI) ; Adra Zuta 292 confirme"
+    assertions_source: ["EC-H3S13-111", "EC-H3S13-112"]
+
+  - id: "REL-H3S13-042"
+    type: hiérarchique
+    from: aa_lvush_tout_atzilut_sauf_rosh_visible
+    to: 2_zones_revetement_avi_garon_a_tabura_za_tabura_a_bas
+    nature: "A\"A revet tout sauf rosh ; revetement par 2 zones (AVI haut, ZA bas, separes par tabura)"
+    assertions_source: ["EC-H3S13-114", "EC-H3S13-115"]
+
+  - id: "REL-H3S13-043"
+    type: transformation
+    from: tiferet_devient_keter_du_tier_suivant_recursif
+    to: tiferet_partage_2_chatzayim_2_rois_un_keter
+    nature: "Tiferet devient Keter next tier ; partage 2 moities (tier+suivant) = 2 rois 1 keter"
+    assertions_source: ["EC-H3S13-116", "EC-H3S13-117"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H3S13-025"
+    nom: "Principe de Multi-Source Mohin (3 Chemins Convergents)"
+    source_assertions: ["EC-H3S13-108", "EC-H3S13-109", "EC-H3S13-110"]
+    formalisation: |
+      ARCHITECTURE DE MULTI-SOURCE MOHIN (ZA) :
+      ZA recoit MOHIN de 3 SOURCES distinctes :
+      SOURCE 1 — CHESED ELYON pathway :
+        Chesed RDLA → lvush Keter A"A → Mazla 13 → Da'at entre AVI →
+        unifie AVI → MOHIN ZA (lvush NHY Imma).
+      SOURCE 2 — HOKHMAH MS pathway :
+        Moha Setima A"A → cheveux ROSH + DIKNA d'A"A →
+        atteint dikna ZA → ME'IR mohin.
+      SOURCE 3 — YESOD ATIK pathway :
+        Yesod Atik (interieur = Da'at A"A) → BOKEA METZAH A"A →
+        atteint METZAH ZA → annule DININ.
+      → Pattern fondamental : composante critique recoit de multiples sources.
+      → Architecture : redundancy + complementarity in flow paths.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : implement 3-source mohin reception"
+      - "Pattern : critical component fed by multiple paths for redundancy"
+      - "Architecture : multi-path delivery for high-priority components"
+      - "Pattern : functional specialization per path (chesed/hokhmah/yesod sources)"
+      - "Diagnostic : verifier les 3 sources sont actives"
+    questions_ouvertes:
+      - "Y a-t-il une priorite entre les 3 sources ?"
+      - "Pattern : peut-on operer avec 2 sources si 1 fail ?"
+      - "Comment combiner les 3 contributions sans conflit ?"
+
+  - id: "PG-H3S13-026"
+    nom: "Principe de Bypass Hierarchique (ZA peut Surclasser AVI via Direct Source)"
+    source_assertions: ["EC-H3S13-111", "EC-H3S13-112", "EC-H3S13-113"]
+    formalisation: |
+      ARCHITECTURE DE BYPASS HIERARCHIQUE :
+      AVI = MUSHPA-IM par MAZLA d'A"K (= MS d'A"A).
+      ZA = MUSHPA YOTER ME-LAMA'ALAH (de plus haut) — du KETER d'A"A
+      (d'ou viennent 13 hivara).
+      DONC parfois ZA SURCLASSE AVI structurellement.
+      Adra Zuta 292 : "AVI me-hai moha nafki ; ZA be-Atika telia ve-achid".
+      2 modes connexion : ACHID (ferme dans NHY) + TELIA (suspendu via hivara).
+      → Pattern fondamental : downstream peut bypasser intermediate via upstream-superieur.
+      → Architecture : non-linear hierarchy avec direct connections.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : implement direct connection to A\"A bypassing AVI"
+      - "Pattern : non-linear hierarchy with bypass paths"
+      - "Architecture : downstream can have superior provenance"
+      - "Pattern : multiple connection modes (firm vs suspended)"
+      - "Diagnostic : tracer paths effectives, pas seulement hierarchy nominale"
+    questions_ouvertes:
+      - "Y a-t-il limites au bypass ?"
+      - "Pattern : peut-on dynamiquement basculer ACHID/TELIA ?"
+      - "Comment design pour permettre bypass legitime ?"
+
+  - id: "PG-H3S13-027"
+    nom: "Principe de Tiferet Cascade (Middle Becomes Top of Next)"
+    source_assertions: ["EC-H3S13-116", "EC-H3S13-117"]
+    formalisation: |
+      ARCHITECTURE DE CASCADE TIFERET → KETER :
+      PATTERN RECURSIF :
+        T"T d'Atik → Keter (Gulgalta) d'AVI (= Bina d'A"A).
+        T"T d'A"A → Keter d'Z"A.
+        T"T d'Z"A → Keter d'Nukvah.
+      RESOURCE-SHARING :
+        T"T se DIVISE en 2 CHATZAYIM :
+          Moitie pour le partzuf actuel (guf).
+          Moitie pour le Keter du partzuf suivant.
+        = 2 ROIS partagent 1 KETER.
+      → Pattern fondamental : middle = top du next ; ressource partagee.
+      → Architecture : cascading hierarchy with resource sharing.
+    applications_ia:
+      - "partzufim/* : implement T\"T → Keter recursive cascade"
+      - "Pattern : middle-of-current = top-of-next pour cascade design"
+      - "Architecture : resource sharing entre tiers adjacents"
+      - "Pattern : 2-rois-1-keter = shared crown abstraction"
+      - "Diagnostic : verifier coherence cascade T\"T → Keter"
+    questions_ouvertes:
+      - "Y a-t-il limites a la cascade (combien de tiers max) ?"
+      - "Pattern : peut-on partager d'autres composantes que T\"T ?"
+      - "Comment gerer conflits dans 2-rois-1-keter ?"
