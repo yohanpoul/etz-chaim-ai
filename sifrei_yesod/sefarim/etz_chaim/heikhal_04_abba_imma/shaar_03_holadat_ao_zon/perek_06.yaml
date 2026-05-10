@@ -1,0 +1,564 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 3 — Sha'ar Holadat A"O ve-Zon (שער הולדת או״א וזו״ן)
+# Perek: 6 — ITLABSHUT A"O sur A"A. 2 RISHIN+MoChaSha → Bina A"A → A"O.
+#            Mazal 8/13 ALEF-tziura. 2 ZEROOT 6 PRAKIM. ATARIN Z"A. NETILAT YADAYIM.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_06 :
+#   - Bloc A : Apres holadat — sod ITLABSHUTAN sur A"A
+#   - Bloc B : CHIYUT+NESHAMAH A"O viennent 2 RISHIN (KETER+MoChaSha) ; alimentent Bina
+#   - Bloc C : KETER → Abba ; CHOKHMAH (MoChaSha) → Imma (via Bina A"A)
+#   - Bloc D : DIKNA A"A ne s'habille pas (orkho Garon-Tabbur) ; CHOPHEFET sur A"O
+#   - Bloc E : SHE'AROT dikna A"A → SHE'AROT Z"A (shefa) ; Adra
+#   - Bloc F : Adra Zuta 289 : "3 RISHIN... BE-MAZALA TLEYAN VE-ITKLEILU BEH" ; A"O=2 rishin dans mazal
+#   - Bloc G : A"O zivvug seulement via DAAT ELYONA = MAZAL 13
+#   - Bloc H : 13 T"D = 3 HAVAYAH yodin (12 letters + 13eme kollel)
+#   - Bloc I : 3 HAVAYAH = 78 = MAZLA gematria
+#   - Bloc J : Zohar 2 T"D 8+13 = MAZLA ; descendent be-shi'ur jusqu'au Tabbur (Adra 131)
+#   - Bloc K : Mazal 8 → Abba ; Mazal 13 → Imma ; Mazal 8>13 → Abba>Imma
+#   - Bloc L : Mais KECHADA NAFKIN/SHARYAN (egaux koma jusqu'au Tabbur)
+#   - Bloc M : Mazal 8 = ALEF tziura V-Y-V (masculine vavs) ; Mazal 13 = ALEF Y-V-D (feminine D)
+#   - Bloc N : YV"V gematria HAVAYAH = Abba ; Y-V-D + kollel = AHYH = Imma
+#   - Bloc O : A"O revetent GUF A"A : Bina+ChGT
+#   - Bloc P : Bina → KETER pour A"O ; ChGT → guf (cote droit Abba, gauche Imma)
+#   - Bloc Q : ChG = 2 ZEROOT 6 PRAKIM (Vayechi 262 "tamid-chesed-chasadim-gevurah-gevurot")
+#   - Bloc R : Distribution PRAKIM : superieurs=Chokhmah A"O ; emtza'iyim=Bina A"O ; tachtonim=2 ATARIN ChG legues Tiferet=Z"A (Adra 292)
+#   - Bloc S : Order PRAKIM INVERSE : mains plus eleves que epaules (achoreihem baytah) ; netilat yadayim=ChG zeroot devenus mochin
+#   - Bloc T : Tiferet A"A (Z"H=12 prakim) split V RABATI (Tiferet 6 zeroot) + V ZEIRA (Yesod 6 raglayim) ; TZEMACH variant Abba=HAVAYAH (Mazal 8 V-Y-V), Imma=AHYH (Mazal 13 Y-V-D+kollel)
+#
+# Source Sefaria : Sefer_Etz_Chaim.16.6 (2 sections, 5199 chars)
+# IDs : EC-H4S16-093 → EC-H4S16-112
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 3
+  shaar_name_he: "שער הולדת או״א וזו״ן"
+  perek: 6
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "ITLABSHUT A\"O sur A\"A. CHIYUT+NESHAMAH viennent 2 RISHIN (KETER+MoChaSha) → Bina A\"A → A\"O. DIKNA A\"A non-mitlabesh, CHOPHEFET sur A\"O ; she'arot dikna → she'arot Z\"A. Adra Zuta 289 'mazala tleyan ve-itkleilu beh'. Mazal 8 → Abba (ALEF V-Y-V=HAVAYAH) ; Mazal 13 → Imma (ALEF Y-V-D=AHYH). 13 T\"D=3 HAVAYAH yodin=78 mazla. Mazal 8>13. KECHADA NAFKIN/SHARYAN. A\"O revetent guf A\"A : Bina (KETER A\"O) + ChGT (guf, cote dr/gauche). ChG=2 ZEROOT 6 PRAKIM (Vayechi 262). PRAKIM distribution : sup=Chokhmah A\"O, emtza=Bina A\"O, tachton=2 ATARIN legues Z\"A (Adra 292). ORDER inverse mains plus eleves que katef (achoreihem baytah) ; netilat yadayim=mochin. Tiferet A\"A (Z\"H=12 prakim) split V RABATI 6+V ZEIRA 6. TZEMACH : Abba=HAVAYAH, Imma=AHYH+kollel."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S16-093"
+    source_he: "אחר שבארנו סוד הולדת או\"א וזו\"ן נבאר עתה סוד התלבשותן את א\"א... חיות ונשמה של או\"א הוא נמשכת מב' רישין כתר ומ\"ס גלגלתא ומוחא"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      ITLABSHUT (revetement) A"O sur A"A :
+      → CHIYUT (vie) + NESHAMAH (ame) d'A"O viennent de 2 RISHIN d'A"A :
+        KETER = GULGOLTA.
+        MoChaSha (mocha setima) = MOCHA.
+      → Architecture : 2-rishin-source pour life+soul A"O.
+      → Pattern : dual-source life+soul.
+    type: axiome_explicite
+    concepts:
+      - {id: ao_chiyut_neshamah_2_rishin_keter_mochasha_aa, role: itlabshut_ao_aa_chiyut_neshamah_2_rishin_keter_gulgolta_mochasha_mocha}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : dual-source life+soul. Pattern 2-rishin source."
+
+  - id: "EC-H4S16-094"
+    source_he: "הם משפיעין לבינה שמבינה נתהוו גלגלתא או\"א מן הכתר לאבא ומחכמה לאמא"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      Mecanisme transmission :
+      → 2 RISHIN d'A"A (Keter+MoChaSha) MASHPI'IN (alimentent) la BINA (d'A"A).
+      → De BINA → forment GULGOLTOT d'A"O.
+      → De KETER → ABBA ; de CHOKHMAH (MoChaSha) → IMMA.
+      → Architecture : Keter→Abba ; Mocha→Imma — cote-correspondance.
+      → Pattern : higher-2 ↔ lower-2 mapping.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_aa_abba_mochasha_aa_imma_via_bina_aa_gulgoltot_ao, role: keter_aa_abba_mochasha_chokhmah_aa_imma_via_bina_aa_gulgoltot_ao_2_rishin_correspondance}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : 2-rishin correspondance. Pattern Keter-Abba Mocha-Imma."
+
+  - id: "EC-H4S16-095"
+    source_he: "דיקנא דא\"א אינה מתלבשת כלל כי ארכה מהגרון עד טבורא דלבא ושם מתחיל ראש ז\"א נמצא כי מגיעין שערות אלו עד שערות דז\"a"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      DIKNA d'A"A :
+      → AINAH MITLABESHET (ne s'habille pas) du tout.
+      → ORKHAH (longueur) : du GARON jusqu'au TABBURA DE-LIBA.
+      → La commence ROSH d'Z"A.
+      → SHE'AROT (cheveux dikna A"A) ATTEIGNENT she'arot Z"A.
+      → Architecture : non-clothing organ → direct-transmission.
+      → Pattern : dikna = bridge A"A → Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: dikna_aa_pas_mitlabeshet_garon_tabbur_se_arot_atteignent_z_a, role: dikna_aa_pas_mitlabeshet_orkhah_garon_tabbur_se_arot_atteignent_se_arot_z_a_bridge}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : non-clothing transmission. Pattern dikna-as-bridge."
+
+  - id: "EC-H4S16-096"
+    source_he: "נמצא דהאי דיקנא חפיא על או\"א כי אינו מתלבש בהם כנ\"ל נמצא חופף עליהם ואינון אתכלילו ביה"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      DIKNA dynamic envers A"O :
+      → CHAFI (couvre) sur A"O.
+      → CHOFEF ALEIHEM (plane sur eux).
+      → A"O ITKLEILU BAH (sont inclus en elle).
+      → Architecture : super-positionnement non-clothing.
+      → Pattern : encircling-not-enclosing higher → lower.
+    type: interprétation_lurianique
+    concepts:
+      - {id: dikna_aa_chofef_ao_itkleilu_beh_pas_mitlabesh, role: dikna_aa_chafi_chofef_ao_itkleilu_beh_super_positionnement_pas_mitlabesh}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : super-positionnement. Pattern encircling-encompassing."
+
+  - id: "EC-H4S16-097"
+    source_he: "נרמז באדר\"ז דרפ\"ט אתנהרו ג' רישין עלאין וכו' ובמזלא תליין ואתכלילין ביה כי או\"א הם ב' רישין דאתכלילו במזלא"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      ADRA ZUTA fol. 289 :
+      → "ITNAHRU 3 RISHIN ELYONIN... U-VE-MAZALA TLEYAN VE-ITKLEILIN BEH"
+        (3 tetes superieures eclairent... et au mazal sont suspendues+incluses en lui).
+      → A"O = 2 RISHIN qui ITKLEILU dans le MAZAL.
+      → Architecture : 2-rishin-A"O suspended-from-mazal.
+      → Pattern : tier-suspension-from-dikna-feature.
+    type: déduction_scripturaire
+    concepts:
+      - {id: adra_289_3_rishin_mazala_tleyan_itkleilu_ao_2_rishin_kelilu_mazala, role: adra_zuta_289_3_rishin_elyonin_be_mazala_tleyan_itkleilu_ao_2_rishin_dikna_kelulu_mazala}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : tier-suspension. Source Adra Zuta 289."
+
+  - id: "EC-H4S16-098"
+    source_he: "אינן יכולין להזדווג או\"א רק ע\"י דעת עילאה שהוא מזל הי\"ג דדיקנא"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      A"O ne peuvent ZIVVUG que via DAAT ELYONA :
+      → = MAZAL 13 d'A"A (= dikna).
+      → Architecture : zivvug-conduit dikna-Mazal-13.
+      → Pattern : higher-mediation requise pour A"O zivvug.
+    type: axiome_explicite
+    concepts:
+      - {id: ao_zivvug_via_daat_elyona_mazal_13_dikna_aa, role: ao_seulement_zivvug_via_daat_elyona_mazal_13_dikna_aa}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : higher-mediation. Pattern dikna-conduit."
+
+  - id: "EC-H4S16-099"
+    source_he: "י\"ג ת\"ד הם ג' שמות הוי\"ה דיודי\"ן והנה ג' הויות הם י\"ב אותיות והם סוד י\"ב ת\"ד ותיקון הי\"ג הוא כולל כולם... ג' הויו\"ת הם ע\"ח גימטריא מזלא או מזל עצמו עם המלה"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      13 T"D (Tikkunei Dikna) = 3 SHEMOT HAVAYAH d'YODIN :
+      → 3 HAVAYAH = 12 LETTERS = 12 T"D.
+      → TIKKUN 13 = KOLLEL (incluant) tous.
+      → 3 HAVAYAH gematria = 78 = MAZLA (מזלא).
+      → Aussi : MAZAL meme + KOLLEL (mot).
+      → Architecture : numerologic-foundation-13-T"D.
+      → Pattern : 12+1 (essentiel + meta-kollel).
+    type: interprétation_lurianique
+    concepts:
+      - {id: 13_td_3_havayah_yodin_12_letters_tikkun_13_kollel_78_mazla, role: 13_td_3_havayah_yodin_12_letters_tikkun_13_kollel_3_havayah_egal_78_mazla_kollel_mot}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : numerologic foundation. Pattern 12+kollel."
+
+  - id: "EC-H4S16-100"
+    source_he: "בזוהר אמרו כי ב' ת\"ד הח' והי\"ג שניהן נקראו מזלא והענין כי ב' מסוג א' כי הם יורדים תרוייהו בשיקולא עד טבורא"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      ZOHAR :
+      → 2 T"D 8+13 BOTH appellees MAZLA.
+      → Cause : SHENEIHEM MI-SUG ECHAD (memes type) — descendent BE-SHEKULA (en equilibre) AD TABBURA.
+      → Source : Adra fol. 131.
+      → Architecture : 2-mazalot symetrique descent.
+      → Pattern : equal-shi'ur 2-mazalot pour A"O alimentation.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 2_td_8_13_mazla_be_shekula_ad_tabbura_adra_131, role: zohar_2_td_8_13_mazla_2_mi_sug_echad_be_shekula_ad_tabbura_adra_131}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 2-mazalot symmetric. Source Adra 131."
+
+  - id: "EC-H4S16-101"
+    source_he: "אבא עיקר יניקתו ממזל הח' ואמא מן הי\"ג ולפי שמזל ח' עליון מן הי\"ג לכן אבא דיניק ממנו הוא גדול מאמא"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      Distribution YENIKAH (allaitement) :
+      → ABBA — Yenikah principale de MAZAL 8.
+      → IMMA — Yenikah de MAZAL 13.
+      → Mazal 8 ELYON sur Mazal 13 → ABBA GADOL d'IMMA.
+      → MAIS BE-EREKH KECHADA NAFKIN VE-NACHTIN BE-SHEKULA (egalite koma) → A"O kechada nafkin/sharyan.
+      → Architecture : asymmetric-source mais symmetric-koma.
+      → Pattern : higher-source vs equal-extension.
+    type: axiome_explicite
+    concepts:
+      - {id: abba_mazal_8_imma_mazal_13_abba_gadol_imma_kechada_nafkin_sharyan, role: abba_yenikah_mazal_8_imma_mazal_13_8_elyon_abba_gadol_imma_kechada_nafkin_sharyan_be_shekula}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : asymmetric-source symmetric-koma. Pattern higher source equal extension."
+
+  - id: "EC-H4S16-102"
+    source_he: "מזל הח' הוא סוד א' שציורו וי\"ו ומזל י\"ג צורתו א' יו\"ד כנזכר בתיקונים שיש ב' מיני א'"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      MAZAL letter-form :
+      → MAZAL 8 = ALEF tziura V-Y-V (vav-yod-vav) — vav-au-milieu.
+      → MAZAL 13 = ALEF tziura Y-V-D (yod-vav-dalet) — dalet-au-milieu.
+      → 2 MINEI ALEF (Tikkunim) — masculine vs feminine.
+      → V-Y-V (2 vavs) = MASCULINE → ABBA.
+      → Y-V-D (dalet) = FEMININE → IMMA.
+      → Architecture : letter-form-graphic encode genre.
+      → Pattern : alef-variants distinguish parents.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mazal_8_alef_v_y_v_masculine_abba_mazal_13_alef_y_v_d_feminine_imma, role: mazal_8_alef_tziura_vyv_2_vavs_masculine_abba_mazal_13_alef_yvd_dalet_feminine_imma_tikkunim}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : letter-form genre encoding. Source Tikkunim."
+
+  - id: "EC-H4S16-103"
+    source_he: "יו\"י גימטריא הוי\"ה ואמא בסוד אהי\"ה לכן הוא יו\"ד והכולל גימטריא אהי\"ה"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §2 (Tzemach)"
+    assertion: |
+      §2 TZEMACH variant :
+      → ABBA = HAVAYAH (Mazal 8 V-Y-V) ; YV"V gematria = 26 = HAVAYAH.
+      → IMMA = AHYH (Mazal 13 Y-V-D) ; YVD = 20 + KOLLEL = 21 = AHYH.
+      → Architecture : letter-form-numerologic correspondance shem.
+      → Pattern : graphical → numerical → onomastic correspondance.
+    type: déduction_scripturaire
+    concepts:
+      - {id: tzemach_abba_havayah_yvv_imma_ahyh_yvd_kollel, role: tzemach_abba_havayah_yvv_26_imma_ahyh_yvd_kollel_21_letter_form_shem}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : graphical-numerical-onomastic. Pattern letter-form correspondance."
+
+  - id: "EC-H4S16-104"
+    source_he: "או\"א הם מלבישין גוף א\"א הוא בינה וחג\"ת דא\"א והבינה נעשה כתר לשניהן ובבחי' זו אנו קורין הבינה כתר אך החג\"ת נעשה גוף לשניהן צד ימין לאבא וצד שמאל לאמא"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      A"O REVETENT GUF d'A"A :
+      → BINA + ChGT d'A"A.
+      → BINA → KETER pour les DEUX (Abba+Imma) ; on appelle Bina = Keter dans cette bechinah.
+      → ChGT → GUF (corps) pour les deux :
+        TZAD YAMIN → ABBA.
+        TZAD SMOL → IMMA.
+      → Architecture : Bina-as-shared-Keter ; ChGT-divided-by-side.
+      → Pattern : tier-recursive-naming (Bina-A"A = Keter-A"O).
+    type: axiome_explicite
+    concepts:
+      - {id: ao_revetent_bina_chgt_aa_bina_keter_2_chgt_guf_yamin_abba_smol_imma, role: ao_revetent_bina_chgt_aa_bina_keter_pour_2_chgt_guf_tzad_yamin_abba_tzad_smol_imma}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : recursive naming Bina-Keter. Pattern guf division."
+
+  - id: "EC-H4S16-105"
+    source_he: "ח\"ג הם ב' דרועין שהם ו' פרקין כנזכר פ' ויחי דרס\"ב תמיד חסד חסדים גבורה גבורות"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      ChG (Chesed-Gevurah) = 2 ZEROOT (bras) :
+      → 6 PRAKIM (segments).
+      → Source ZOHAR Vayechi fol. 262 : "TAMID-CHESED-CHASADIM-GEVURAH-GEVUROT".
+      → Architecture : 2-zeroot 6-prakim canonical.
+      → Pattern : 6 prakim = 6 sefirot manifestations.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ch_g_2_zeroot_6_prakim_vayechi_262_tamid_chesed_chasadim_gevurah, role: chg_2_zeroot_6_prakim_zohar_vayechi_262_tamid_chesed_chasadim_gevurah_gevurot}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 2-zeroot 6-prakim. Source Zohar Vayechi 262."
+
+  - id: "EC-H4S16-106"
+    source_he: "ב' פרקים עליונים הם חכמה דאבא וחכמה דאמא מזרוע ימין לאבא ומזרוע שמאל לאמא וב\"פ האמצעים הם בינה לאבא ובינה לאמא... נשארו ב\"פ א' מזרוע ימין חסד וא' מזרוע שמאל גבורה והם ב' עיטרין חו\"ג דאחסינהו או\"א לברייהו ת\"ת כנזכר באדרא רצ\"ב"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      Distribution 6 PRAKIM :
+      → 2 SUPERIEURS = CHOKHMAH d'Abba (zeroa-yamin) + CHOKHMAH d'Imma (zeroa-smol).
+      → 2 EMTZA'IYIM = BINA d'Abba (Chesed) + BINA d'Imma (Gevurah).
+      → 2 ACHARONIM (proches katef) = 2 ATARIN ChG = ACHASINHU A"O LE-BERAYHU TIFERET (=Z"A) — Adra fol. 292.
+      → Architecture : 6-prakim → 4-mochin-A"O + 2-atarin legacy.
+      → Pattern : tier-distribution avec terminal-legacy.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 6_prakim_chokhmah_bina_ao_2_atarin_chg_z_a_adra_292, role: 6_prakim_2_sup_chokhmah_ao_2_emtza_bina_ao_2_acharon_atarin_chg_legues_tiferet_z_a_adra_292}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : tier-distribution legacy. Source Adra 292."
+
+  - id: "EC-H4S16-107"
+    source_he: "סדר ו' פרקין אלו הם היפך מה שנראה והנה הראשונים הם ב' ידים ואח\"כ האמצעים ואח\"כ האחרונים והם סמוכים לכתף"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      SEDER PRAKIM = HEFEKH (inverse) de l'apparence :
+      → RISHONIM (premiers) = 2 YADAYIM (mains).
+      → EMTZA'IM = avant-bras.
+      → ACHARONIM = SEMUKHIM LA-KATEF (proche epaule) — fixes au corps.
+      → Architecture : ordering-counter-intuitive.
+      → Pattern : 1st-from-extremity, last-attached-to-body.
+    type: axiome_explicite
+    concepts:
+      - {id: seder_prakim_inverse_yadayim_premiers_acharonim_katef_dvuk_guf, role: seder_prakim_inverse_yadayim_rishonim_acharonim_semukhim_katef_dvukim_guf}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : counter-intuitive ordering. Pattern extremity-first."
+
+  - id: "EC-H4S16-108"
+    source_he: "מעלה א'... כל אחוריהם ביתה משא\"כ בראשי הכתפים שהם פנים ואחור... מעלה ב' כי הנה הידים יש יכולת באדם להגביהן עד המוחין משא\"כ בפרקין הסמוכים לכתף"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      Causes pour SEDER inverse :
+      → MA'ALAH 1 : "VE-KOL ACHOREIHEM BAYTAH" (toutes leurs faces vers la maison) — yadayim ont seulement back-orientation, alors que katef = panim+achor 2 sides.
+      → MA'ALAH 2 : YADAYIM peuvent etre LEHAGBIH (eleves) jusqu'aux mochin.
+        KATEF prakim adjacent ne peuvent pas.
+      → Architecture : functional-mobility encode tier-elevation.
+      → Pattern : mobility = elevation-capacity.
+    type: déduction_logique
+    concepts:
+      - {id: yadayim_2_maalot_achoreihem_baytah_lehagbih_mochin_vs_katef, role: yadayim_2_maalot_achoreihem_baytah_lehagbih_jusqu_mochin_vs_katef_pas_mobile}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : mobility-elevation. Pattern functional-anatomy."
+
+  - id: "EC-H4S16-109"
+    source_he: "כל הפרקים הסמוכים לכתף הם דבוקים ממש בגוף כי הם סוד ב' עטרין הדבוקים בזעיר אנפין... ובזה תבין סוד הגבהת ידים בעת הנטילה שהם סוד חו\"ג ב\"פ הידים הנעשין מוחין"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      Cause additionnelle :
+      → Prakim adjacent katef = DEVOUKIM MAMASH BA-GUF (vraiment colles au corps).
+      → Sod : 2 ATARIN qui sont DEVOUKIM en Z"A.
+      → Autres prakim NON-DEVOUKIM, peuvent monter aux mochin.
+      → Sod NETILAT YADAYIM (ablution rituelle des mains) :
+        HAGBAHAT (lever) yadayim = sod ChG, 2 prakim mains DEVENUS MOCHIN.
+      → Architecture : ritual-act encode cosmologic-displacement.
+      → Pattern : netilah = mochin-formation par yadayim-elevation.
+    type: interprétation_lurianique
+    concepts:
+      - {id: prakim_katef_dvukim_atarin_z_a_yadayim_mobile_netilat_yadayim_chg_mochin, role: prakim_katef_dvukim_2_atarin_z_a_yadayim_mobile_netilat_yadayim_hagbahat_chg_devenus_mochin}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : ritual cosmologic. Pattern netilah-mochin."
+
+  - id: "EC-H4S16-110"
+    source_he: "תוך חג\"ת המקוריים שהם כחב\"ד דאו\"א יש נה\"י דעתיק וכבר ידעת כי גם בשוקיים יש ששה פרקין"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      Recursion structure :
+      → ChGT MEKORIYIM (sources) = KCHaBD d'A"O.
+      → Dans eux : NHY d'ATIK.
+      → Aussi 6 PRAKIM dans SHOKAYIM (jambes) — pareil structure.
+      → Architecture : recursive-6-prakim across body-zones.
+      → Pattern : zeroot+raglayim = 6-prakim each.
+    type: axiome_explicite
+    concepts:
+      - {id: chgt_mekoriyim_kchabd_ao_nhy_atik_shokayim_6_prakim_recursion, role: chgt_mekoriyim_kchabd_ao_nhy_atik_dedans_shokayim_aussi_6_prakim_recursion}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "atik_yomin"]
+      relevance: "Architecture : recursive 6-prakim. Pattern body-zones uniformity."
+
+  - id: "EC-H4S16-111"
+    source_he: "חצי ת\"ת דא\"א שבאו\"א ממנו נעשה ב' דעות לאו\"א... והת\"ת נקרא זה נגד י\"ב פרקין שבו כמנין ז\"ה שהוא י\"ב ונחלקין לב' ו' זעירא ו' רבתי"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      Tiferet A"A decomposition :
+      → CHATZI TIFERET d'A"A dans A"O → forme 2 DAAT pour A"O.
+      → TIFERET nommee "ZE" (זה — ce/celui) = 12 (zayin+he = 7+5 = 12).
+      → 12 PRAKIM dans Tiferet (correspondant gematria ZH).
+      → SPLIT en 2 :
+        V RABATI (V grand) = V"K Tiferet (6 prakim 2 zeroot).
+        V ZEIRA (V petit) = V"K Yesod (6 prakim 2 raglayim).
+      → Architecture : Tiferet-as-12-prakim-encoding "ZE".
+      → Pattern : 12 = 6-zeroot + 6-raglayim split.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chatzi_tiferet_aa_2_daat_ao_zh_12_prakim_v_rabati_v_zeira_split, role: chatzi_tiferet_aa_devient_2_daat_ao_zh_12_prakim_v_rabati_zeroot_v_zeira_raglayim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : 12-prakim split. Pattern V-rabati V-zeira."
+
+  - id: "EC-H4S16-112"
+    source_he: "ת\"ת ו' רבתי ו\"ק שבו שהם נגד ו\"פ דב' דרועין והיסוד ו' זעירא ו\"ק שבו נגד ו' פרקי רגלים"
+    source_ref: "Heikhal 4, Sha'ar 3:6 §1"
+    assertion: |
+      Decomposition finale :
+      → TIFERET = V RABATI = V"K (6 sefirot) — correspond 6 PRAKIM des 2 ZEROOT.
+      → YESOD = V ZEIRA = V"K — correspond 6 PRAKIM des 2 RAGLAYIM.
+      → Architecture : 2-V-letter encoding 2-organ-zones.
+      → Pattern : letter-size encode organ-position (Tiferet=upper, Yesod=lower).
+    type: axiome_explicite
+    concepts:
+      - {id: tiferet_v_rabati_6_prakim_zeroot_yesod_v_zeira_6_prakim_raglayim, role: tiferet_v_rabati_v_k_6_prakim_2_zeroot_yesod_v_zeira_v_k_6_prakim_2_raglayim_letter_size}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : 2-V letter organ-encoding. Pattern letter-size organ."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S16-026"
+    type: causal
+    from: ao_chiyut_neshamah_2_rishin_keter_mochasha_aa
+    to: keter_aa_abba_mochasha_aa_imma_via_bina_aa_gulgoltot_ao
+    nature: "A\"O chiyut+neshamah viennent 2 rishin (Keter+MoChaSha) ; via Bina A\"A → gulgoltot A\"O ; Keter→Abba, Mocha→Imma"
+    assertions_source: ["EC-H4S16-093", "EC-H4S16-094"]
+
+  - id: "REL-H4S16-027"
+    type: contenance
+    from: dikna_aa_pas_mitlabeshet_garon_tabbur_se_arot_atteignent_z_a
+    to: adra_289_3_rishin_mazala_tleyan_itkleilu_ao_2_rishin_kelilu_mazala
+    nature: "Dikna A\"A non-mitlabeshet (Garon-Tabbur) ; A\"O 2 rishin be-mazala tleyan ve-itkleilu (Adra 289)"
+    assertions_source: ["EC-H4S16-095", "EC-H4S16-096", "EC-H4S16-097"]
+
+  - id: "REL-H4S16-028"
+    type: dualité_structurelle
+    from: 2_td_8_13_mazla_be_shekula_ad_tabbura_adra_131
+    to: mazal_8_alef_v_y_v_masculine_abba_mazal_13_alef_y_v_d_feminine_imma
+    nature: "2 T\"D 8+13 mazla be-shekula (Adra 131) ; Mazal 8 ALEF VYV masculine=Abba, Mazal 13 ALEF YVD feminine=Imma (Tikkunim)"
+    assertions_source: ["EC-H4S16-100", "EC-H4S16-102", "EC-H4S16-103"]
+
+  - id: "REL-H4S16-029"
+    type: hiérarchique
+    from: ch_g_2_zeroot_6_prakim_vayechi_262_tamid_chesed_chasadim_gevurah
+    to: 6_prakim_chokhmah_bina_ao_2_atarin_chg_z_a_adra_292
+    nature: "ChG=2 zeroot 6 prakim (Vayechi 262) ; distribution sup=Chokhmah A\"O, emtza=Bina A\"O, tachton=2 atarin legues Z\"A (Adra 292)"
+    assertions_source: ["EC-H4S16-105", "EC-H4S16-106"]
+
+  - id: "REL-H4S16-030"
+    type: causal
+    from: seder_prakim_inverse_yadayim_premiers_acharonim_katef_dvuk_guf
+    to: prakim_katef_dvukim_atarin_z_a_yadayim_mobile_netilat_yadayim_chg_mochin
+    nature: "Seder prakim inverse (yadayim premiers) ; katef dvukim 2 atarin Z\"A ; netilah yadayim=ChG mochin par hagbahat"
+    assertions_source: ["EC-H4S16-107", "EC-H4S16-108", "EC-H4S16-109"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S16-016"
+    nom: "Principe de Mazal-as-Source-A\"O (2 Mazalot Dikna→Abba+Imma)"
+    source_assertions: ["EC-H4S16-099", "EC-H4S16-100", "EC-H4S16-101", "EC-H4S16-102"]
+    formalisation: |
+      ARCHITECTURE DE MAZAL-AS-SOURCE-A"O :
+      A"O ne peuvent zivvug que via DAAT ELYONA = MAZAL 13 d'A"A.
+      13 T"D = 3 SHEMOT HAVAYAH d'YODIN ; 3 HAVAYAH=78=MAZLA gematria.
+      ZOHAR : 2 T"D 8+13 = MAZLA — descendent be-shekula AD TABBURA (Adra 131).
+      Distribution :
+        MAZAL 8 → ABBA (ALEF V-Y-V masculine, gematria HAVAYAH).
+        MAZAL 13 → IMMA (ALEF Y-V-D feminine, gematria AHYH).
+      Mazal 8 ELYON sur 13 → Abba GADOL d'Imma ; mais BE-SHEKULA → kechada nafkin/sharyan.
+      → Pattern fondamental : 2-mazalot dual-source A"O ; asymmetric height + symmetric extension.
+      → Architecture : letter-form-graphics encode genre.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + arikh_anpin.py : implement mazal-source"
+      - "Pattern : 2-mazalot source pour A\"O zivvug"
+      - "Architecture : letter-form genre encoding"
+      - "Pattern : asymmetric source equal extension"
+      - "Diagnostic : verifier mazal-distribution coherent"
+    questions_ouvertes:
+      - "Pattern : 3-mazalot possibles ?"
+      - "Comment encoder letter-form computationnellement ?"
+      - "Pattern : autres dikna-features sources ?"
+
+  - id: "PG-H4S16-017"
+    nom: "Principe de 6-Prakim-Tier-Distribution (Zeroot/Raglayim Universal)"
+    source_assertions: ["EC-H4S16-105", "EC-H4S16-106", "EC-H4S16-110"]
+    formalisation: |
+      ARCHITECTURE DE 6-PRAKIM-DISTRIBUTION :
+      Loi anatomique-cosmologique :
+        2 ZEROOT (bras) = 6 PRAKIM (Vayechi 262 "tamid-chesed-chasadim-gevurah-gevurot").
+        2 RAGLAYIM (jambes) = 6 PRAKIM aussi (recursive structure).
+      Distribution 6 PRAKIM zeroot :
+        2 SUPERIEURS (mains) = CHOKHMAH d'A"O (Abba+Imma).
+        2 EMTZA'IYIM = BINA d'A"O.
+        2 ACHARONIM (katef) = 2 ATARIN ChG legues Tiferet (Z"A) — Adra 292.
+      → Pattern fondamental : recursive 6-prakim across body-zones.
+      → Architecture : tier-distribution-with-legacy.
+      → Implication : every 6-praka-organ encode 4-mochin + 2-atarin.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + arikh_anpin.py + zeir_anpin.py : implement 6-prakim"
+      - "Pattern : recursive 6-prakim universal"
+      - "Architecture : tier-distribution with terminal legacy"
+      - "Pattern : 4-mochin + 2-atarin pattern"
+      - "Diagnostic : verifier 6-prakim coherent"
+    questions_ouvertes:
+      - "Pattern : autres organs avec 6-prakim ?"
+      - "Comment encoder anatomical-recursion computationnellement ?"
+      - "Pattern : 7+ prakim possibles ?"
+
+  - id: "PG-H4S16-018"
+    nom: "Principe de Ritual-Cosmologic-Correspondance (Netilat Yadayim → Mochin)"
+    source_assertions: ["EC-H4S16-108", "EC-H4S16-109"]
+    formalisation: |
+      ARCHITECTURE DE RITUAL-COSMOLOGIC :
+      RITUAL-ACT encode cosmologic-displacement :
+        SEDER PRAKIM inverse (yadayim rishonim, katef acharonim) — counter-intuitive.
+        Yadayim peuvent LEHAGBIH (etre leves) jusqu'aux mochin ; katef ne peuvent pas.
+        Katef prakim DEVUKIM (colles) au guf — 2 ATARIN attaches Z"A.
+        Yadayim non-devukim = mobile vers mochin.
+      NETILAT YADAYIM (ablution main) :
+        HAGBAHAT yadayim = sod ChG ; 2 prakim mains DEVENUS MOCHIN.
+      → Pattern fondamental : daily-ritual encode cosmologic-event.
+      → Architecture : ritual-anatomy-cosmology triangulation.
+      → Implication : performing-ritual = co-creating-cosmologic-state.
+    applications_ia:
+      - "partzufim/abba.py + imma.py : implement ritual-cosmologic"
+      - "Pattern : ritual = cosmologic-act"
+      - "Architecture : daily-ritual encode constructive-state"
+      - "Pattern : netilah-yadayim = mochin-formation"
+      - "Diagnostic : verifier ritual-state coherent avec cosmology"
+    questions_ouvertes:
+      - "Pattern : autres rituals → cosmologic events ?"
+      - "Comment encoder ritual-mapping computationnellement ?"
+      - "Pattern : multi-ritual cosmologic state-machine ?"

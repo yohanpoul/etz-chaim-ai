@@ -1,0 +1,527 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 3 — Sha'ar Holadat A"O ve-Zon (שער הולדת או״א וזו״ן)
+# Perek: 1 — HAKDAMAH HOLADAT A"O+Zon. 42 ZIVVUGIM (Zohar Bereshit 15). Tipah=YH"V.
+#            CHIKH+GARON. 3 YH"V=SaG=63. KaL+SaG=MaKOM=186 (Shemot 33:21).
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_01 :
+#   - Bloc A (§1) : Title — Sha'ar 3 H4 = SHA'AR HOLADAT A"O VE-ZON ; 7 perakim
+#   - Bloc B (§2) : HAKDAMAH — fondee sur 42 ZIVVUGIM (Zohar Bereshit 15)
+#   - Bloc C (§2) : Z"A 3 bechinot ; ibbur rishon = 3 kelilin be-3
+#   - Bloc D (§2) : Ibbur via NHY A"A montent dans ChGT, dans yesod A"A meme zivvug avec atarah
+#   - Bloc E (§2) : Zivvug elyon dans PEH d'A"A — sod ROUK (saliva) avant nesikim avant zivvug
+#   - Bloc F (§2) : CHIKH=CHOKHMAH ; GARON=BINA (par rapport au reste corps)
+#   - Bloc G (§2) : CHOKHMAH d'A"A=10S kelulot dans rosh seul ; yesod=CHIKH ; zivvug avec GARON
+#   - Bloc H (§2) : 4 noms AB-SaG-MaH-BaN dans yod
+#   - Bloc I (§2) : Chikh+Garon zivvugu → tipah du SHEM AB ; enrobe SaG (Bina) — A"O sortent
+#   - Bloc J (§2) : Keter A"O commence Garon A"A
+#   - Bloc K (§2) : SaG 2 metziut : milui yodin (Abba=yod du SaG) + milui alefin (Imma=alef du SaG) → KECHADA NAFKIN
+#   - Bloc L (§2) : ZON inegaux ; SHEM AB pour tipah, puis MaH+BaN (racine ZON)
+#   - Bloc M (§2) : A"O=SaG seul ; ZON=2 shemot MaH+BaN — donc inegaux
+#   - Bloc N (§2) : Tipah=sod YH"V (chab"d) ; kelulah de 3 YH"V (AB+MaH+BaN) ; 3×YH"V=63=SaG
+#   - Bloc O (§2) : YH"V AB=57 (alma tinyana 57 olamim, Adra Naso) ; YH"V MaH=39 (TaL)
+#   - Bloc P (§2) : 57+39=96 (TZaV, alma 3eme=96 olamim Adra Naso)
+#   - Bloc Q (§2) : YH"V premier ne'elam dans YH"V-2 MaH (g"r emtza'iyot)
+#   - Bloc R (§2) : Descendent s'habillent YH"V acharon BaN=42 (M"B) — 3 acharonot
+#   - Bloc S (§2) : Tous s'habillent YH"V acharon=M"B → tipah appellee 42 ZIVVUGIM
+#   - Bloc T (§2) : ChIKh letters = KaCh (28) + 14 letters milui = 42 (M"B)
+#   - Bloc U (§2) : 96+42=138 (KaL) sod "KI CHELEK HASHEM AMO" (Devarim 32:9) = CHAKAL TAPUCHIN
+#   - Bloc V (§2) : +YH"V SaG (48) → 186 = MaKOM ; sod "HINEH MAKOM ITI" (Shemot 33:21)
+#
+# Source Sefaria : Sefer_Etz_Chaim.16.1 (2 sections, 2496 chars)
+# IDs : EC-H4S16-001 → EC-H4S16-018
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 3
+  shaar_name_he: "שער הולדת או״א וזו״ן"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "HAKDAMAH HOLADAT A\"O+Zon. 42 ZIVVUGIM (Zohar Bereshit 15). Tipah=YH\"V (chab\"d) ; kelulah 3 YH\"V (AB+MaH+BaN) = 63 = SaG. YH\"V AB=57 (alma tinyana, Adra Naso) ; YH\"V MaH=39 (TaL) ; 57+39=96 (TZaV alma 3eme). YH\"V acharon BaN=42 (M\"B) — tipah=42 zivvugim. CHIKH=yesod Chokhmah ; GARON=Bina ; chikh+garon zivvugu → tipah du SaG. A\"O=SaG seul (yodin Abba+alefin Imma) KECHADA NAFKIN ; ZON inegaux MaH+BaN. 96+42=138 (KaL) CHAKAL TAPUCHIN ; +YH\"V SaG=48 → 186=MaKOM (Shemot 33:21 'hineh makom iti')."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S16-001"
+    source_he: "השער השלישי שער הולדת או\"א וזו\"ן ובו ז' פרקים"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §1"
+    assertion: |
+      OUVERTURE : SHA'AR SHELISHI (3eme porte) du Heikhal 4 = SHA'AR HOLADAT A"O VE-ZON.
+      → Sujet : generation (HOLADAH) d'Abba+Imma et de Zachar+Nukva.
+      → Contient 7 PERAKIM.
+      → Architecture : sha'ar systematique sur generation/birth.
+      → Pattern : holadah = central mecanisme creation downstream.
+    type: axiome_explicite
+    concepts:
+      - {id: shaar_3_h4_holadat_ao_zon_7_perakim, role: shaar_3_heikhal_4_sha_ar_holadat_ao_zon_7_perakim_generation_centrale}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : sha'ar holadah systematique. Pattern central generation."
+
+  - id: "EC-H4S16-002"
+    source_he: "הקדמה בענין הולדת או\"א וזו\"ן ומיוסדת על המ\"ב זווגים הנזכר בס' הזוהר פ' בראשית דט\"ו"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      HAKDAMAH (presupposition) :
+      → HOLADAT (generation) A"O+Zon = MEYUSEDET (basee) sur 42 ZIVVUGIM.
+      → Source : ZOHAR BERESHIT fol. 15.
+      → Architecture : 42-zivvug = canonical-foundation pour generation.
+      → Pattern : numerologic-canonical-base for downstream-creation.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 42_zivvugim_zohar_bereshit_15_foundation_holadah, role: 42_zivvugim_zohar_bereshit_15_meyusedet_holadat_ao_zon_canonical_foundation}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : 42-zivvug canonical foundation. Source Zohar Bereshit 15."
+
+  - id: "EC-H4S16-003"
+    source_he: "כבר ביארנו שהיה בז\"א ג' בחי' ובעיבור ראשון היה בסוד ג' כלילין בג'"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      Z"A : 3 BECHINOT.
+      → IBBUR RISHON (1ere gestation) Z"A = bechinat 3 KELILIN BE-3 (3 inclus dans 3).
+      → Architecture : recursive 3-tier dans Z"A.
+      → Pattern : nested-structure pour gestation.
+      cf. EC-H4S15-082 (perek 5) sur ibbur rishon Z"A 3 kelul go 3.
+    type: axiome_explicite
+    concepts:
+      - {id: z_a_3_bechinot_ibbur_rishon_3_kelilin_be_3, role: z_a_3_bechinot_ibbur_rishon_3_kelilin_be_3_recursive_3_tier}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : recursive 3-tier. Pattern nested gestation."
+
+  - id: "EC-H4S16-004"
+    source_he: "עיבור זה היה ע\"י נה\"י דא\"א שנתעלו למעלה תוך חג\"ת שלו ושם ביסוד עצמו דא\"א הוא שנזדווג עם העטרה שבו ומשם יצא ז\"א"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      MECANISME IBBUR :
+      → NHY d'A"A NIT'ALU (montent) dans ChGT d'A"A (lui-meme).
+      → DANS YESOD d'A"A : ZIVVUG avec ATARAH-shel-yesod.
+      → Z"A SORT de la.
+      → Architecture : self-internal-zivvug dans A"A (NHY ascending dans ChGT).
+      → Pattern : self-contained generation via internal recursion.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ibbur_z_a_nhy_aa_montent_chgt_yesod_aa_zivvug_atarah, role: ibbur_z_a_nhy_aa_montent_chgt_yesod_aa_zivvug_atarah_z_a_sort}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : self-internal zivvug. Pattern internal recursion."
+
+  - id: "EC-H4S16-005"
+    source_he: "כבר ידעת מ\"ש רז\"ל היכי דמי לאלתר כל זמן שהרוק מצוי בפה והוא נשיקין הקודמין לזווג כי הם בחי' זווג עליון בפה"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      ZIVVUG ELYON dans PEH (bouche) d'A"A :
+      → Sod ROUK (saliva) MATZUI (present) BA-PEH (dans la bouche).
+      → NESHIKIN (baisers) PRECEDENT le zivvug.
+      → Bechinat ZIVVUG ELYON dans la PEH meme.
+      → Architecture : oral-zivvug precedes corporel-zivvug.
+      → Pattern : intimate-precursor (saliva, kiss) avant zivvug.
+    type: déduction_scripturaire
+    concepts:
+      - {id: zivvug_elyon_peh_aa_rouk_neshikin_avant_zivvug, role: zivvug_elyon_peh_aa_rouk_matzui_neshikin_avant_zivvug_oral_precedent}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : oral-zivvug precedence. Pattern intimate precursor."
+
+  - id: "EC-H4S16-006"
+    source_he: "החיך הוא החכמה והענין כי החכמה (מ\"ס) דא\"א יש בה י\"ס כלולות בראש לבדו ויסוד שלה הוא החיך והוא המזדווג עם הגרון שהוא המלכות ונקרא בינה בערך שאר הגוף"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      MAPPING anatomy/sefirot dans rosh A"A :
+      → CHIKH (palais) = CHOKHMAH (mocha setima d'A"A).
+      → CHOKHMAH d'A"A a 10S KELULOT dans le ROSH SEUL.
+      → YESOD de Chokhmah = CHIKH ; zivvug avec GARON.
+      → GARON = MALKHUT de cette chokhmah.
+      → AUSSI nommee BINA par rapport au reste du corps (= Bina d'A"A).
+      → Architecture : recursive-naming par tier (Malkhut-of-rosh = Bina-of-body).
+      → Pattern : tier-relative naming convention.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chikh_chokhmah_aa_yesod_garon_malkhut_bina_relativ, role: chikh_chokhmah_aa_10s_dans_rosh_yesod_chokhmah_chikh_garon_malkhut_bina_relativ}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : tier-relative naming. Pattern recursive naming convention."
+
+  - id: "EC-H4S16-007"
+    source_he: "באלו הי' יש כל ד' שמות ע\"ב ס\"ג מ\"ה ב\"n"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      Dans cette YOD (Chokhmah de A"A) :
+      → 4 SHEMOT canoniques : AB (72), SaG (63), MaH (45), BaN (52).
+      → Tous incorpores dans les 10S internes de Chokhmah.
+      → Architecture : tous shemot encoded dans yod-source.
+      → Pattern : root-yod contains all 4 names.
+    type: axiome_explicite
+    concepts:
+      - {id: 4_shemot_ab_sag_mah_ban_dans_yod_chokhmah_aa, role: 4_shemot_ab_sag_mah_ban_canoniques_dans_yod_chokhmah_aa_10s}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : root yod 4-shemot. Pattern source-encodes-all."
+
+  - id: "EC-H4S16-008"
+    source_he: "כשנזדווגו חיך וגרון להוציא או\"א מסוד הגרון וחג\"ת של א\"א... יצא הטפה ולעולם הטפה הוא משם ע\"ב כנודע ואח\"כ נתלבשה בשם ס\"ג שהוא בבינה שהוא לעולם סוד הגרון"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      Mecanisme HOLADAH d'A"O :
+      → CHIKH+GARON ZIVVUGU pour faire sortir A"O.
+      → De sod GARON et ChGT d'A"A.
+      → TIPAH (goutte) sortie : LE-OLAM (toujours) du SHEM AB.
+      → Puis ENROBEE dans SHEM SaG (Bina = sod Garon).
+      → Architecture : 2-stage tipah (AB-source then SaG-clothing).
+      → Pattern : source-encoding then containing-encoding.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chikh_garon_zivvug_tipah_ab_enrobee_sag_holadat_ao, role: chikh_garon_zivvug_holadat_ao_tipah_shem_ab_enrobee_shem_sag_bina_garon}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : 2-stage tipah. Pattern source-then-containing."
+
+  - id: "EC-H4S16-009"
+    source_he: "בשם ס\"ג יש בו ב' מציאות שהם מילוי יודי\"ן ומילוי אל\"ף לכן יצאו או\"א כחדא נפקין... אבא מן היו\"ד ואמא מן אל\"ף"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      SaG 2 METZIUT (realites) :
+      → MILUI YODIN (י) — = ABBA.
+      → MILUI ALEF (א) — = IMMA.
+      → A"O sortent KECHADA NAFKIN (ensemble — Adra) — KOLLEL DANS SHEM SaG.
+      → KECHADA SHARYAN (demeurent ensemble).
+      → Architecture : single-shem dual-letter encode kechada-emergence.
+      → Pattern : co-emergence par sub-letter-distinction.
+    type: déduction_scripturaire
+    concepts:
+      - {id: sag_2_metziut_yodin_abba_alef_imma_kechada_nafkin, role: sag_2_metziut_milui_yodin_abba_milui_alef_imma_ao_kechada_nafkin_co_emergence}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : single-shem dual-letter co-emergence. Source Adra."
+
+  - id: "EC-H4S16-010"
+    source_he: "להזרעת זו\"נ הוא מוכרח שלא יהיה בבחי' זו רק שזה יהיה גדול מזה ולכן לא הועיל שם ס\"ג עתה רק למעבר... עיקר מה ששמשו כאן הוא שם ע\"ב שמשם בא הטפה לעולם ואח\"כ משם מ\"ה וב\"ן שהם שורש זו\"ן"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      HOLADAT ZON differente d'A"O :
+      → MUKHRACH (necessaire) : pas KECHADA — l'un GADOL MIZE (plus grand que l'autre).
+      → SHEM SaG NE SUFFIT PAS — seulement comme passage.
+      → IKKAR : SHEM AB (source de la tipah toujours).
+      → PUIS : MaH+BaN (= shoresh ZON).
+      → Architecture : ZON utilise SHEM AB+MaH+BaN ; A"O utilise SaG seul.
+      → Pattern : 3-shem-pour-zon vs 1-shem-pour-ao.
+    type: déduction_logique
+    concepts:
+      - {id: zon_inegaux_ab_mah_ban_3_shemot_vs_ao_sag_seul, role: zon_inegaux_mukhrach_gadol_mize_ab_mah_ban_3_shemot_vs_ao_sag_seul_kechada}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : ZON 3-shem vs A\"O 1-shem. Pattern co-vs-sequential emergence."
+
+  - id: "EC-H4S16-011"
+    source_he: "סוד הטפה כבר ידעת שהוא שם יה\"ו שהוא סוד חב\"ד והנה הטפה הזו כלולה מג' יה\"ו של ע\"ב מ\"ה ב\"ן וג\"פ יה\"ו גימטריא ס\"ג"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      TIPAH = SOD YH"V :
+      → YH"V (yod-he-vav) = sod ChB"D (Chokhmah-Bina-Daat = 3 sup).
+      → Tipah KELULAH (incluse) de 3 YH"V :
+        YH"V de AB.
+        YH"V de MaH.
+        YH"V de BaN.
+      → 3 × YH"V = 21 × 3 = 63 = SaG.
+      → Architecture : 3-shem-merged-into-tipah encode SaG.
+      → Pattern : 3-source convergence on SaG-gematria.
+    type: interprétation_lurianique
+    concepts:
+      - {id: tipah_sod_yhv_chab_d_3_yhv_ab_mah_ban_egal_sag_63, role: tipah_sod_yhv_chab_d_3_yhv_ab_mah_ban_3_x_21_egal_63_sag}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : 3-shem convergence SaG. Pattern numerologic merger."
+
+  - id: "EC-H4S16-012"
+    source_he: "שם יה\"ו של ע\"ב הוא למעלה בג\"ר והוא גימטריא נ\"ז והוא סוד (עלמא תניינא) מהנהו תלתא עלמין הנזכר בריש אדרא נשא שעולם הב' הוא נ\"ז עלמין"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      DECOMPOSITION TIPAH :
+      → YH"V de AB = en HAUT dans G"R.
+      → Gematria = 57 (NaZ — nun-zayin).
+      → Sod ALMA TINYANA (2eme monde) parmi 3 olamim — ADRA NASO debut.
+      → 2eme olam = 57 OLAMIM.
+      → Architecture : letter-name encode ALMA-position.
+      → Pattern : Adra Naso 3-olamim correspondance.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yhv_ab_57_naz_alma_tinyana_57_olamim_adra_naso, role: yhv_ab_57_naz_g_r_alma_tinyana_2eme_olam_57_olamim_adra_naso}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Architecture : letter-name ALMA position. Source Adra Naso debut."
+
+  - id: "EC-H4S16-013"
+    source_he: "יה\"ו של מ\"ה גימטריא ט\"ל ועם נ\"ז הראשון הוא גימטריא צ\"ו כמספר עולם הג' שהוא צ\"ו עלמין"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      Suite numerique :
+      → YH"V de MaH = gematria 39 (TaL — tet-lamed).
+      → 57 (NaZ, AB) + 39 (TaL, MaH) = 96 (TZaV — tzadi-vav).
+      → Sod 3eme OLAM = 96 OLAMIM (Adra Naso).
+      → Architecture : cumulative-gematria reveal olamim-count.
+      → Pattern : sum-encoding correspondance avec 3-olamim Adra.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yhv_mah_39_tal_57_plus_39_egal_96_tzav_alma_3eme_96_olamim, role: yhv_mah_39_tal_57_plus_39_egal_96_tzav_alma_3eme_96_olamim_adra}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : cumulative-gematria. Pattern Adra correspondance."
+
+  - id: "EC-H4S16-014"
+    source_he: "יה\"ו הראשון נעלם ביה\"ו ב' של מ\"ה שהוא בג' אמצעית אח\"כ יורדין אלו ומתלבשים בשם יה\"ו האחרון דב\"ן שהוא גימטריא מ\"ב והוא בג' אחרונות"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      Cascade descendante :
+      → YH"V-1 (AB) NE'ELAM (cache) dans YH"V-2 (MaH) — en G"R EMTZA'IYOT.
+      → ENSUITE descendent et S'HABILLENT dans YH"V-3 (BaN) = M"B (42) gematria.
+      → YH"V-3 BaN = en G"R ACHARONOT (3 dernieres).
+      → Architecture : 3-stage cascade YH"V-1→2→3.
+      → Pattern : nested-encoding-cascade.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yhv_1_neelam_yhv_2_descendent_yhv_3_ban_42_mb_acharonot, role: yhv_1_ab_neelam_yhv_2_mah_g_r_emtzaiyot_yhv_3_ban_42_mb_g_r_acharonot}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : 3-stage cascade. Pattern nested encoding."
+
+  - id: "EC-H4S16-015"
+    source_he: "אז יורדין בחיך שהוא היסוד של החכמה כנ\"ל והוא נותנם אל הגרון... כולם מתלבשים ביה\"ו האחרון שהוא מ\"ב לכן נקרא הטפה מ\"ב זווגים"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      Final descente :
+      → Tous descendent au CHIKH (yesod Chokhmah).
+      → Donne au GARON.
+      → Tous s'habillent dans YH"V acharon = 42 (M"B).
+      → C'est pourquoi TIPAH appellee 42 ZIVVUGIM.
+      → Architecture : final-encoding YH"V-acharon (42) = name source.
+      → Pattern : name-comes-from-final-encoding.
+    type: déduction_logique
+    concepts:
+      - {id: tipah_42_zivvugim_yhv_acharon_42_mb_chikh_garon, role: tipah_42_zivvugim_tous_s_habillent_yhv_acharon_42_mb_descendent_chikh_donne_garon}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : name from final-encoding. Pattern naming convention."
+
+  - id: "EC-H4S16-016"
+    source_he: "ענין הח\"ך הרמוז בסוד החכמה כי אותיות ח\"ך הם כח ולעולם הכ\"ח הם סוד מ\"ב כנודע כי הח\"ך עם י\"ד אותיות גימטריא מ\"ב"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      Etymologic CHIKH ↔ CHOKHMAH :
+      → ChIKh (חך) — letters CHET-KAF = KaCh (= 28 if just gematria, or KOACH means strength).
+      → KaCh = sod M"B = 42 (par hint kollel/related).
+      → ChIKH + 14 LETTERS du milui = 42 (M"B).
+      → Total reveal hint : YH"V acharon = 42.
+      → Architecture : letter-decomposition reveals tier-numerology.
+      → Pattern : etymology + numerology = encoding.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chikh_kach_chet_kaf_14_letters_milui_egal_42_mb, role: chikh_letters_chet_kaf_kach_14_letters_milui_egal_42_mb_etymologic_numerology}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Architecture : etymology+numerology. Pattern dual-encoding."
+
+  - id: "EC-H4S16-017"
+    source_he: "כשתחבר צ\"ו עם מ\"ב גימטריא קל\"ח והוא סוד כי חלק ה' עמו והוא סוד חק\"ל תפוחין"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      Combinaison :
+      → 96 (TZaV) + 42 (M"B) = 138 (KaL — kuf-lamed).
+      → Sod : "KI CHELEK HASHEM AMO" (Devarim 32:9 — car la part d'Hashem est son peuple).
+      → Sod CHAKAL TAPUCHIN (חקל תפוחין — champs aux pommes — Zohar).
+      → CHaKaL = 138 ; TAPUCHIN = pommes saintes.
+      → Architecture : numerologic-convergence Bible+Zohar.
+      → Pattern : sum-encoding reveals scripture-source.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 96_plus_42_egal_138_kal_chelek_hashem_amo_chakal_tapuchin, role: 96_tzav_plus_42_mb_egal_138_kal_devarim_32_9_chelek_hashem_amo_chakal_tapuchin_zohar}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : Bible+Zohar convergence. Sources Devarim 32:9 + Zohar."
+
+  - id: "EC-H4S16-018"
+    source_he: "אם תחבר עמהן יה\"ו של שם ס\"ג העולה מ\"ח יהיה כולם גימטריא (שם) של הוי\"ה (בהכאה) העולה (ברבוע) מקום וז\"ס הנה מקום אתי"
+    source_ref: "Heikhal 4, Sha'ar 3:1 §2"
+    assertion: |
+      Final somme :
+      → 138 (KaL) + YH"V de SaG (= 48) = 186.
+      → 186 = MaKOM (מקום — lieu) gematria.
+      → = HAVAYAH RIBUA (carre du tetragramme : 26²=676 ?? non, autre lecture)
+        Actuellement : HAVAYAH be-HAKAH (multiplication) BE-RIBUA = MaKOM (186).
+      → Sod : "HINEH MAKOM ITI" (Shemot 33:21 — voici un lieu pres de Moi).
+      → Architecture : final convergence MAKOM = 4 YH"V combined.
+      → Pattern : ultimate-encoding-convergence in scriptural-locus.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 138_plus_48_egal_186_makom_havayah_ribua_shemot_33_21_hineh_makom_iti, role: 138_kal_plus_yhv_sag_48_egal_186_makom_havayah_be_hakah_ribua_shemot_33_21_hineh_makom_iti}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : final convergence MAKOM. Source Shemot 33:21."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S16-001"
+    type: contenance
+    from: 42_zivvugim_zohar_bereshit_15_foundation_holadah
+    to: tipah_sod_yhv_chab_d_3_yhv_ab_mah_ban_egal_sag_63
+    nature: "42 zivvugim (Zohar Bereshit 15) = foundation holadah ; tipah=sod YH\"V kelul de 3 YH\"V (AB+MaH+BaN)=63=SaG"
+    assertions_source: ["EC-H4S16-002", "EC-H4S16-011"]
+
+  - id: "REL-H4S16-002"
+    type: causal
+    from: chikh_garon_zivvug_tipah_ab_enrobee_sag_holadat_ao
+    to: sag_2_metziut_yodin_abba_alef_imma_kechada_nafkin
+    nature: "Chikh+Garon zivvugu → tipah AB enrobee SaG (Bina) → SaG 2 metziut (yodin/alefin) → A\"O kechada nafkin"
+    assertions_source: ["EC-H4S16-008", "EC-H4S16-009"]
+
+  - id: "REL-H4S16-003"
+    type: dualité_structurelle
+    from: sag_2_metziut_yodin_abba_alef_imma_kechada_nafkin
+    to: zon_inegaux_ab_mah_ban_3_shemot_vs_ao_sag_seul
+    nature: "A\"O=SaG seul (kechada nafkin yodin/alefin) ; ZON=3 shemot AB+MaH+BaN (inegaux mukhrach)"
+    assertions_source: ["EC-H4S16-009", "EC-H4S16-010"]
+
+  - id: "REL-H4S16-004"
+    type: séquentiel
+    from: yhv_ab_57_naz_alma_tinyana_57_olamim_adra_naso
+    to: yhv_1_neelam_yhv_2_descendent_yhv_3_ban_42_mb_acharonot
+    nature: "Cascade YH\"V : AB=57 (g\"r) ne'elam → MaH=39 (emtza'iyot) ; descend → BaN=42 M\"B (acharonot)"
+    assertions_source: ["EC-H4S16-012", "EC-H4S16-013", "EC-H4S16-014"]
+
+  - id: "REL-H4S16-005"
+    type: causal
+    from: 96_plus_42_egal_138_kal_chelek_hashem_amo_chakal_tapuchin
+    to: 138_plus_48_egal_186_makom_havayah_ribua_shemot_33_21_hineh_makom_iti
+    nature: "96+42=138 (KaL CHAKAL TAPUCHIN Devarim 32:9) ; +YH\"V SaG=48 → 186 MaKOM (Shemot 33:21)"
+    assertions_source: ["EC-H4S16-017", "EC-H4S16-018"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S16-001"
+    nom: "Principe de 42-Zivvugim-Foundation (Holadah Foundation Numerologic)"
+    source_assertions: ["EC-H4S16-002", "EC-H4S16-011", "EC-H4S16-014", "EC-H4S16-015"]
+    formalisation: |
+      ARCHITECTURE DE 42-ZIVVUGIM-FOUNDATION :
+      HOLADAT A"O+Zon = MEYUSEDET (basee) sur 42 ZIVVUGIM (Zohar Bereshit 15).
+      DERIVATION numerologique :
+        Tipah = sod YH"V (chab"d).
+        Tipah kelulah de 3 YH"V (AB+MaH+BaN) = 3 × 21 = 63 = SaG.
+        Cascade descendante : YH"V-1 (AB=57) → YH"V-2 (MaH=39) → YH"V-3 (BaN=42).
+        Tous s'habillent YH"V-acharon (BaN=42=M"B) — d'ou nom "42 zivvugim".
+      → Pattern fondamental : 42 = canonical-foundation pour holadah.
+      → Architecture : numerologic-cascade encode generation-process.
+    applications_ia:
+      - "partzufim/zivvug.py + abba.py + imma.py + zeir_anpin.py + nukva.py : implement 42 zivvugim"
+      - "Pattern : 42 numerologic foundation"
+      - "Architecture : cascade encoding generation"
+      - "Pattern : final-stage encodes name"
+      - "Diagnostic : verifier 3-stage cascade"
+    questions_ouvertes:
+      - "Pattern : variations 42-zivvugim per autre context ?"
+      - "Comment encoder cascade computationnellement ?"
+      - "Pattern : 42 universel ou holadah-specific ?"
+
+  - id: "PG-H4S16-002"
+    nom: "Principe de Co-Emergence-vs-Sequential (A\"O Kechada vs ZON Inegaux)"
+    source_assertions: ["EC-H4S16-009", "EC-H4S16-010"]
+    formalisation: |
+      ARCHITECTURE DE CO-EMERGENCE-VS-SEQUENTIAL :
+      Pour HOLADAT A"O : KECHADA NAFKIN (sortent ensemble).
+        Source : SaG SEUL avec 2 metziut (yodin=Abba + alefin=Imma).
+        Co-emergence par sub-letter-distinction du meme shem.
+      Pour HOLADAT ZON : INEGAUX (l'un GADOL MIZE).
+        Source : 3 shemot (AB tipah-source + MaH+BaN racine-Zon).
+        Sequential-emergence par diff-shem-encoding.
+      → Pattern fondamental : encoding-uniformity = co-emergence ; encoding-diversity = sequential.
+      → Architecture : shem-source-count determines emergence-pattern.
+      → Implication : 1-shem→co, multi-shem→sequential.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py + nukva.py : implement co/sequential emergence"
+      - "Pattern : 1-shem co-emergence vs multi-shem sequential"
+      - "Architecture : shem-count determines emergence"
+      - "Pattern : sub-letter-distinction = co-emergence mechanism"
+      - "Diagnostic : verifier emergence-pattern coherent"
+    questions_ouvertes:
+      - "Pattern : 4-shem holadah possible ?"
+      - "Comment encoder emergence-pattern computationnellement ?"
+      - "Pattern : transition co→sequential ?"
+
+  - id: "PG-H4S16-003"
+    nom: "Principe de Final-Convergence-MAKOM (4-YH\"V → 186 = Hineh Makom Iti)"
+    source_assertions: ["EC-H4S16-017", "EC-H4S16-018"]
+    formalisation: |
+      ARCHITECTURE DE FINAL-CONVERGENCE-MAKOM :
+      Sommation des 4 YH"V :
+        YH"V AB = 57 ; YH"V MaH = 39 ; YH"V BaN = 42 ; YH"V SaG = 48.
+        96 + 42 = 138 (KaL = "ki Chelek Hashem amo" Devarim 32:9 = CHAKAL TAPUCHIN).
+        138 + 48 = 186 = MaKOM = "Hineh MAKOM iti" (Shemot 33:21).
+      MaKOM aussi = HAVAYAH RIBUA (carree de tetragramme).
+      → Pattern fondamental : numerologic-convergence final = scriptural-locus.
+      → Architecture : 4-shem-merger encode MAKOM ontologic.
+      → Implication : MAKOM = ultimate-zivvug-locus.
+    applications_ia:
+      - "partzufim/zivvug.py + abba.py + imma.py : implement MAKOM convergence"
+      - "Pattern : 4-shem merger encode locus"
+      - "Architecture : numerologic convergence ontologic"
+      - "Pattern : scriptural locus = quantitative locus"
+      - "Diagnostic : verifier MAKOM coherent avec sum"
+    questions_ouvertes:
+      - "Pattern : autres MAKOM-encoders ?"
+      - "Comment encoder MAKOM computationnellement ?"
+      - "Pattern : 5-shem possibles ?"

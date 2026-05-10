@@ -1,0 +1,502 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 3 — Sha'ar Holadat A"O ve-Zon (שער הולדת או״א וזו״ן)
+# Perek: 2 — Letters GYKQ chikh = CHaKAL. M"D descend, M"N monte. 2 AHYH
+#            "asher AHYH" (Shemot 3:14). 6 AHYH = 2×SaG. 2×M"B = 84 zivvugim.
+#            Yesod A"A inseminate BRIT KADISHA.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_02 :
+#   - Bloc A : M"B descend chikh → garon en zivvug peh elyon A"A
+#   - Bloc B : Letters GYKQ (gimel-yod-kaf-kuf) en chikh = 3 YH"V montent CHaKAL (138)
+#   - Bloc C : GYKQ + 4 letters + mot = 138 (CHaKAL gematria)
+#   - Bloc D : Tipah M"D (mai dukhrin) = M"B (42)
+#   - Bloc E : PRINCIPE : "ein tipah yoredet me-le-maala she-ein tipayim olin lemata kenegda"
+#   - Bloc F : M"N (mai nukvin) = du Garon (cote nukva)
+#   - Bloc G : GARON A"A → KETER pour A"O ; GARON = BINA d'A"A
+#   - Bloc H : 2 bechinot Garon : 1 Abba + 1 Imma — 2 noms AHYH
+#   - Bloc I : Sod "EHYEH ASHER EHYEH" (Shemot 3:14) — Moshe yetzira Z"A annoncee
+#   - Bloc J : AHYH-1=Abba ; AHYH-2=Imma ; ASHER=letters ROSH (anagram, ROSH=zachar, ASHER=nukva)
+#   - Bloc K : 2 tipot AHYH montent (= 2 YH"V) — chikh 1 tipah descend
+#   - Bloc L : Garon = 6 AHYH (2 yodin g"r + 2 alefin emtza'iyot + 2 hehin acharonot) s'habillent dans 2 AHYH
+#   - Bloc M : Distribution Z"A : g"r=Keter+ChB ASHER+2 AHYH ; emtza'iyot=ChG+Tiferet+ASHER ; acharonot=NH+Yesod+ASHER
+#   - Bloc N : Tiferet+Yesod = ASHER (les deux)
+#   - Bloc O : 1 tipah YH"V (zachar) = 2 tipot AHYH (nukva) — ratio 1:2
+#   - Bloc P : 3 YH"V = SaG (63) ; 6 AHYH = 2 SaG (symetrie)
+#   - Bloc Q : Apres holadah → IBBUR 9 mois ; foetus appele NUKVA (Bina)
+#   - Bloc R : 3eme AHYH (Shemot 3:14) = Z"A pendant ibbur dans Bina = AHYH
+#   - Bloc S : Apres ibbur+NIKAR comme Z"A → nomme HAVAYAH (verset suivant)
+#   - Bloc T : 2 AHYH gematria (4+10+28=42) = 2×M"B = 84 = M"B ZIVVUGIM (Bereshit ch1)
+#   - Bloc U : Tous descendent au YESOD A"A → MAZRIA (insemine) BRIT KADISHA
+#
+# Source Sefaria : Sefer_Etz_Chaim.16.2 (1 section, 3545 chars)
+# IDs : EC-H4S16-019 → EC-H4S16-035
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 3
+  shaar_name_he: "שער הולדת או״א וזו״ן"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "M\"B descend chikh→garon zivvug peh A\"A. GYKQ en chikh = 138 CHaKAL. Tipah M\"D=M\"B. M\"N monte du Garon. 2 AHYH 'asher AHYH' (Shemot 3:14) = Abba+Imma. 6 AHYH (yodin g\"r+alefin emtza+hehin acharonot) s'habillent dans 2 AHYH externes. Distribution Z\"A : g\"r ASHER Keter+ChB ; emtza ChG Tiferet ASHER ; acharonot NH Yesod ASHER (T+Y=ASHER). 1 tipah YH\"V (zachar)=2 tipot AHYH (nukva). 6 AHYH=2 SaG (symetrie 3 YH\"V=SaG). Post-holadah IBBUR 9 mois — foetus=NUKVA (Bina) ; AHYH-3 (Shemot 3:14)=Z\"A pendant ibbur ; NIKAR=HAVAYAH (verset suivant). 2 AHYH gematria (4+10+28=42) ; 2×M\"B=84=42 ZIVVUGIM (Bereshit ch1). Tous descendent yesod A\"A → MAZRIA BRIT KADISHA."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S16-019"
+    source_he: "אותיות גיכ\"ק הם בחיך והם רומזים אל הג' יה\"ו העולין חק\"ל כי גיכ\"ק עם הד' אותיות ועם המלה הכל גי' חק\"ל"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      LETTERS GYKQ (gimel-yod-kaf-kuf — guttural-palatal) en CHIKH :
+      → REMEZ (allusion) aux 3 YH"V montant CHaKAL (138).
+      → GYKQ (3+10+20+100=133) + 4 letters + 1 (kollel-mot) = 138 (CHaKAL).
+      → Architecture : letter-set in chikh encode numerologic-cascade.
+      → Pattern : phonetic-class (palatals) = locus-encoding.
+    type: interprétation_lurianique
+    concepts:
+      - {id: gykq_chikh_3_yhv_chakal_138, role: gykq_palatals_chikh_remez_3_yhv_chakal_138_letters_kollel}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba"]
+      relevance: "Architecture : phonetic-locus encoding. Pattern letter-class numerologic."
+
+  - id: "EC-H4S16-020"
+    source_he: "כאן טפת מ\"ד שעולה מ\"ב וכבר ידעת שאין טפה יורדת מלמעלה שאין טפיים עולה מלמטה (למעלה) כנגדה והם סוד מ\"נ של הגרון"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      TIPAH M"D (Mai DUKHRIN — eaux masculines) = M"B (42).
+      PRINCIPE FONDAMENTAL :
+      → "EIN TIPAH YOREDET ME-LE-MAALAH SHE-EIN TIPAYIM OLIN LEMATA KENEGDA"
+        (aucune goutte ne descend du haut sans 2 gouttes montant du bas en correspondance).
+      → 2 gouttes montantes = sod M"N (Mai NUKVIN — eaux femeles) du GARON.
+      → Architecture : reciprocity-rule descent-ascent.
+      → Pattern : 1-down-requires-2-up ratio.
+    type: interprétation_lurianique
+    concepts:
+      - {id: tipah_md_mb_42_principe_md_mn_2_olin_kenegda_garon, role: tipah_md_mai_dukhrin_42_principe_descend_kenegda_2_tipot_mn_mai_nukvin_montent_garon}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : reciprocity descent-ascent. Pattern M\"D-M\"N rule."
+
+  - id: "EC-H4S16-021"
+    source_he: "מגרון א\"א נעשה כתר לראש או\"א והגרון כבר ידעת שהוא בינה דא\"א"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      GARON A"A → KETER pour ROSH A"O.
+      → GARON A"A = BINA d'A"A (renvoi).
+      → Donc Bina-A"A = source-tete pour Abba+Imma.
+      → Architecture : tier-source-relationship Bina-A"A → Keter-A"O.
+      → Pattern : higher-Bina becomes lower-Keter.
+      cf. EC-H4S14-013 (perek 01a) sur 2 keterim A"O sur Garon A"A.
+    type: axiome_explicite
+    concepts:
+      - {id: garon_aa_keter_ao_bina_aa_tier_source, role: garon_aa_devient_keter_ao_garon_egal_bina_aa_higher_bina_lower_keter}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : tier-source relationship. Pattern higher-Bina lower-Keter."
+
+  - id: "EC-H4S16-022"
+    source_he: "מוכרח שיהיו ב' בחי' א' לאבא ואחד לאימא ושניהן ב' שמות של אהי\"ה המורים על היותן מבינה דא\"א"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      2 BECHINOT necessaires dans Garon :
+      → 1 pour ABBA, 1 pour IMMA.
+      → Tous DEUX = SHEMOT AHYH (montrent leur origine BINA d'A"A).
+      → Architecture : bi-furcation Garon necessaire pour 2 partzufim parents.
+      → Pattern : 1 source → 2 enfants par bi-aspect.
+    type: déduction_logique
+    concepts:
+      - {id: 2_bechinot_garon_abba_imma_2_ahyh_bina_aa, role: 2_bechinot_garon_aa_abba_imma_2_shemot_ahyh_bina_aa_origine}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : bi-furcation Garon. Pattern source-bifurcation."
+
+  - id: "EC-H4S16-023"
+    source_he: "וז\"ס אהי\"ה אשר אהיה כי כל מה שאמר הקב\"ה למשה הוא שהודיעו ענין יצירה דז\"א... בזוהר ויקרא די\"א"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      Sod "EHYEH ASHER EHYEH" (Shemot 3:14) :
+      → Tout ce qu'HASHEM dit a MOSHE = ANNONCE-d'YETZIRA Z"A.
+      → De debut a fin (mi-tchilato ad sofo).
+      → Source : Zohar Vayikra fol. 11.
+      → Architecture : verse encode complete-Z"A-genesis.
+      → Pattern : scriptural-revelation = cosmologic-narrative.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ehyeh_asher_ehyeh_shemot_3_14_yetzira_z_a_zohar_vayikra_11, role: ehyeh_asher_ehyeh_shemot_3_14_annonce_yetzira_z_a_complete_zohar_vayikra_11}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : verse encodes Z\"A genesis. Sources Shemot 3:14 + Zohar Vayikra 11."
+
+  - id: "EC-H4S16-024"
+    source_he: "אהי\"ה הא' בסוד אבא ואהי\"ה הב' בסוד אמא ואשר (הם) אותיות ראש באמצע ב' שמות אהי\"ה להורות כי גרון זה נעשה ראש לב' אהי\"ה הנ\"ל"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      Decomposition verset :
+      → AHYH-1 = sod ABBA.
+      → AHYH-2 = sod IMMA.
+      → "ASHER" (אשר) = letters ROSH (ראש) — anagram.
+      → ASHER au MILIEU des 2 AHYH = montre que GARON devient ROSH (tete) pour 2 AHYH.
+      → Architecture : verse-position encode partzuf-anatomical-relation.
+      → Pattern : middle-word = relational-marker.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ahyh_1_abba_ahyh_2_imma_asher_rosh_anagram_garon_rosh_2_ahyh, role: ahyh_1_abba_ahyh_2_imma_asher_letters_rosh_anagram_milieu_garon_devient_rosh_2_ahyh}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : verse-position relational. Pattern middle-word marker."
+
+  - id: "EC-H4S16-025"
+    source_he: "ראש הוא לזכר ואשר הוא לנקבה אך לפי שאו\"א שניהם מן הגרון שהוא הבינה לכן שניהן נקראין אשר ושניהן נקראין אהי\"e"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      ROSH vs ASHER :
+      → ROSH = pour ZACHAR (male).
+      → ASHER = pour NEKEVAH (femelle, anagram).
+      → MAIS A"O tous DEUX issus de Garon (=Bina) — donc tous deux APPELES ASHER + AHYH.
+      → Architecture : double-naming when both-from-female-source.
+      → Pattern : source-uniformity → naming-uniformity.
+    type: déduction_logique
+    concepts:
+      - {id: rosh_zachar_asher_nukva_ao_2_du_garon_bina_2_asher_2_ahyh, role: rosh_zachar_asher_nukva_anagram_ao_2_du_garon_bina_donc_2_asher_2_ahyh_uniformity}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : source-uniformity naming. Pattern double-female-source."
+
+  - id: "EC-H4S16-026"
+    source_he: "מן החיך ירד טפה אחד שהוא יה\"ו אחד ומלמטה עולין ב' טפות שהם ב' אהי\"ה (כי אהי\"ה גי') יה\"ו"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      Asymmetric tipot :
+      → CHIKH (zachar) descend 1 TIPAH = 1 YH"V.
+      → MILMATAH (nukva) montent 2 TIPOT = 2 AHYH.
+      → AHYH gematria = 21 = YH"V gematria — donc ratio 1:2 par-poids egal.
+      → Architecture : 1-male-2-female asymmetric tipot.
+      → Pattern : zachar-down-1, nukva-up-2 (necessaire pour A"O).
+    type: déduction_logique
+    concepts:
+      - {id: chikh_1_yhv_descend_garon_2_ahyh_montent_ratio_1_2_egal_gematria, role: chikh_1_tipah_yhv_descend_garon_2_tipot_2_ahyh_montent_ratio_1_2_ahyh_yhv_meme_gematria_21}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/arikh_anpin.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : asymmetric tipot. Pattern 1:2 zachar-nukva ratio."
+
+  - id: "EC-H4S16-027"
+    source_he: "כמו שמן הי\"ס של הח\"ך ירדו ב' יה\"ו והם מלובשים ביה\"ו האחרון כן עתה יעלו כפלים מן הגרון והם ו' אהי\"ה וכוללים בב' אהי\"ה לבד"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      Symetrie :
+      → CHIKH 10S → 3 YH"V s'habillent YH"V acharon (= M"B).
+      → GARON KEFLAYIM (double) → 6 AHYH s'habillent dans 2 AHYH (yodin externes).
+      → 6 AHYH = 2 (g"r yodin) + 2 (emtza'iyot alefin) + 2 (acharonot hehin).
+      → Architecture : 6-AHYH-Garon parallel 3-YH"V-Chikh (× 2 ratio).
+      → Pattern : female-double male in count.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chikh_3_yhv_acharon_garon_6_ahyh_2_externes_yodin_alefin_hehin, role: chikh_3_yhv_s_habillent_acharon_garon_6_ahyh_yodin_alefin_hehin_s_habillent_2_externes_yodin}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : female-double male. Pattern 6-AHYH parallel 3-YH\"V."
+
+  - id: "EC-H4S16-028"
+    source_he: "ב' אהי\"ה הם בג\"ר דאבא וג\"ר דאמא ושניהן במילוי יודי\"ן ואח\"כ בג' אמצעיות דאבא ושלש דאמא הם ב' אהי\"ה דאלפי\"ן ואחר כך בג\"ת דאבא וג\"ת דאמא הם אהי\"ה דההי\"ן"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      Distribution 6 AHYH :
+      → 2 AHYH d'YODIN : G"R d'Abba + G"R d'Imma.
+      → 2 AHYH d'ALEFIN : 3 emtza'iyot d'Abba + 3 emtza'iyot d'Imma.
+      → 2 AHYH d'HEHIN : 3 acharonot (G"T) d'Abba + 3 d'Imma.
+      → Architecture : 3-tier × 2-genre = 6 AHYH distinctes.
+      → Pattern : matrix-decomposition tier × parent.
+    type: axiome_explicite
+    concepts:
+      - {id: 6_ahyh_distribution_yodin_gr_alefin_emtza_hehin_acharonot_abba_imma, role: 6_ahyh_distribution_yodin_gr_abba_imma_alefin_emtzaiyot_abba_imma_hehin_acharonot_abba_imma_matrix}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : matrix decomposition. Pattern tier × parent."
+
+  - id: "EC-H4S16-029"
+    source_he: "ג\"פ הם נקרא אהי\"ה אשר אהי\"ה ביודי\"ן בההי\"ן באלפי\"ן כי בג\"ר נקרא אשר בחי' כתר וב' אהי\"ה הם חו\"ב וג' אמצעיות ב' אהי\"ה הם חו\"ג ואשר בת\"ת"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      3 fois "EHYEH ASHER EHYEH" — distribution Z"A :
+      → G"R : ASHER=Keter ; 2 AHYH=Chokhmah+Bina (yodin).
+      → 3 EMTZA'IYOT : 2 AHYH=Chesed+Gevurah (alefin) ; ASHER=Tiferet.
+      → 3 ACHARONOT : 2 AHYH=Netzach+Hod (hehin) ; ASHER=Yesod.
+      → Architecture : verse appears 3 times in 3 milui-types.
+      → Pattern : recursive-verse-encoding 3-tier.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 3_fois_ehyeh_asher_ehyeh_yodin_alefin_hehin_distribution_z_a_10s, role: 3_fois_ehyeh_asher_ehyeh_yodin_alefin_hehin_distribution_z_a_keter_chb_chg_t_nh_yesod}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : recursive-verse 3-tier. Pattern verse-cascade encoding."
+
+  - id: "EC-H4S16-030"
+    source_he: "הת\"ת ויסוד שניהן נקראו אשר... כולם נכללו באהיה אשר אהיה העליונים של יודי\"ן כי אלו עולין מלמטה למעלה אך ביה\"ו הוא להיפך שנכללין ביה\"ו האחרון של ההי\"ן שיורדין מלמעלה למטה"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      INVERSE direction :
+      → 6 AHYH MONTENT mi-mata-le-MA'ALAH (du bas vers le haut).
+      → INCLUS dans AHYH ASHER AHYH ELYONIM (yodin) — au-dessus.
+      → CONTRAIREMENT YH"V : descendent mi-ma'alah-le-MATAH ; inclus dans YH"V acharon (hehin) en bas.
+      → Architecture : direction-inverse pour male/female encoding.
+      → Pattern : ascent (female) vs descent (male).
+    type: interprétation_lurianique
+    concepts:
+      - {id: 6_ahyh_montent_inclus_yodin_externes_vs_yhv_descendent_inclus_hehin_acharon, role: 6_ahyh_montent_mi_mata_inclus_yodin_externes_elyonim_vs_3_yhv_descendent_mi_maala_inclus_hehin_acharon}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : direction-inverse genre. Pattern ascent female descent male."
+
+  - id: "EC-H4S16-031"
+    source_he: "אל תטעה במה שאמרתי שכל האהי\"ה הללו הם באבא ואמא כי כולם הם בגרון של א\"א עצמו אך הכוונה לומר כי לפי שמן הגרון הזה היה בו כח להוציא או\"א"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      AVERTISSEMENT contre erreur :
+      → "AL TIT'EH" (ne te trompes pas) — tous ces AHYH sont dans le GARON d'A"A LUI-MEME.
+      → PAS dans Abba+Imma.
+      → INTENTION : Garon a la KOACH (force) pour produire A"O.
+      → Architecture : capacity-source != produced-entity.
+      → Pattern : explicit-disambiguation pedagogical.
+    type: axiome_explicite
+    concepts:
+      - {id: avertissement_ahyh_dans_garon_aa_pas_abba_imma_capacity_source, role: avertissement_al_titeh_ahyh_dans_garon_aa_pas_dans_abba_imma_capacity_source_produit}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : capacity-source vs produced. Pattern pedagogical disambiguation."
+
+  - id: "EC-H4S16-032"
+    source_he: "כ\"כ גדולה טפה א' של יה\"ו כשנים של אהי\"ה גם תראה כי כמו שטפת יה\"ו הם ג' יה\"ו שהם גימטריא ס\"ג (כך) באהי\"ה הם ב' כנגד ב' טיפות כי הם ו' אהי\"ה והם ב' שמות ס\"ג"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      EQUIVALENCE :
+      → 1 tipah YH"V = 2 tipot AHYH (proportion).
+      → Comme tipah-YH"V = 3 YH"V = SaG (63), idem :
+        2 tipot AHYH = 6 AHYH = 2 SaG (chacune SaG).
+      → Architecture : symetrie zachar 1×SaG vs nukva 2×SaG.
+      → Pattern : nukva-double pour necessite Abba+Imma.
+    type: déduction_logique
+    concepts:
+      - {id: 1_yhv_egal_2_ahyh_3_yhv_sag_6_ahyh_2_sag_symetrie, role: 1_tipah_yhv_egal_2_tipot_ahyh_3_yhv_sag_egal_6_ahyh_2_sag_symetrie_double}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : symmetric SaG zachar/nukva. Pattern proportional doubling."
+
+  - id: "EC-H4S16-033"
+    source_he: "אחר הולדתו אז נזכר עיבורו שהוא השתהות הולד במעי אמו ט' חדשים ואז כל הולד עם היותו נעשה מזכר ונקבה נקרא כולו בשם הנוקבא"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      Apres HOLADAH (sortie tipah) → IBBUR (gestation) :
+      → 9 CHODSHIM (mois) dans MEEI IMMO (matrice de la mere).
+      → Pendant ibbur : VLAD (foetus) — bien qu'il soit fait de zachar+nukva — APPELE ENTIER par nom de NUKVA.
+      → Architecture : pre-natal-state encoded as feminine.
+      → Pattern : containment-by-mother determine naming.
+    type: axiome_explicite
+    concepts:
+      - {id: post_holadah_ibbur_9_mois_meei_imma_vlad_appele_nukva, role: post_holadah_ibbur_9_chodshim_meei_imma_vlad_zachar_nukva_appele_entierement_nukva}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : pre-natal feminine-naming. Pattern containment-determines-name."
+
+  - id: "EC-H4S16-034"
+    source_he: "אהי\"ה הג' הנכתב בפסוק כי כל מציאות הז\"א הנ\"ל נקרא עתה בשם אהי\"ה להיותו במעי בינה ואחר שנולד ויצא אז ניכר מציאותו ונקרא יהו\"ה כנזכר בפסוק הב'"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      AHYH-3 (3eme dans Shemot 3:14) :
+      → = Z"A pendant IBBUR dans Bina (donc nomme AHYH=Bina).
+      → Apres NIKAR (reconnu comme distinct) → nomme HAVAYAH (verset suivant Shemot 3:15).
+      → Verset 14 : 3 fois AHYH ; verset 15 : HAVAYAH.
+      → Architecture : grammatical-shift encode birth-event.
+      → Pattern : verse-progression = ontologic-progression.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ahyh_3_z_a_ibbur_dans_bina_nikar_havayah_shemot_3_14_15, role: ahyh_3_z_a_dans_meei_bina_appele_ahyh_nikar_apres_holadah_havayah_shemot_3_14_15}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture : grammatical-shift birth. Source Shemot 3:14-15."
+
+  - id: "EC-H4S16-035"
+    source_he: "ד' אותיות של אהי\"ה וי' של המילוי ועם ה\"ח של מילוי המילוי הם מ\"ב הרי ב\"פ מ\"ב בב' אהי\"ה ואלו הם סוד המ\"ב זווגים הנזכר בפרשה בראשית... וכל אלו ירדו אח\"כ למטה ליסוד של א\"א ושם מזריע ההוא ברית קדישא"
+    source_ref: "Heikhal 4, Sha'ar 3:2"
+    assertion: |
+      DECOMPOSITION 2 AHYH numerique + DESCENTE :
+      → AHYH : 4 (pashut) + 10 (milui) + 28 (milui-milui) = 42 (M"B) chacune.
+      → 2 AHYH = 2 × 42 = 84.
+      → SOD M"B ZIVVUGIM (Zohar Bereshit ch. 1) — 2× M"B des 2 AHYH.
+      → APRES : tous DESCENDENT au YESOD A"A.
+      → MAZRIA (insemine) BRIT KADISHA (alliance sainte).
+      → Architecture : ultimate-descent vers yesod = peak-zivvug consummation.
+      → Pattern : 2-shem-encoding → physical-zivvug downward.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 2_ahyh_2x_mb_84_42_zivvugim_descend_yesod_aa_mazria_brit_kadisha, role: 2_ahyh_chacune_mb_4_10_28_total_84_42_zivvugim_descend_yesod_aa_mazria_brit_kadisha}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : ultimate descent zivvug. Pattern peak consummation."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S16-006"
+    type: causal
+    from: tipah_md_mb_42_principe_md_mn_2_olin_kenegda_garon
+    to: chikh_1_yhv_descend_garon_2_ahyh_montent_ratio_1_2_egal_gematria
+    nature: "Principe M\"D-M\"N : tipah descend kenegda 2 montent ; chikh 1 YH\"V descend, garon 2 AHYH montent (ratio 1:2)"
+    assertions_source: ["EC-H4S16-020", "EC-H4S16-026"]
+
+  - id: "REL-H4S16-007"
+    type: contenance
+    from: ahyh_1_abba_ahyh_2_imma_asher_rosh_anagram_garon_rosh_2_ahyh
+    to: 3_fois_ehyeh_asher_ehyeh_yodin_alefin_hehin_distribution_z_a_10s
+    nature: "Verset Shemot 3:14 'EHYEH ASHER EHYEH' : 3 fois en yodin/alefin/hehin distribuees sur 10S Z\"A (Keter/ChB/Tiferet/Yesod=ASHER)"
+    assertions_source: ["EC-H4S16-024", "EC-H4S16-029"]
+
+  - id: "REL-H4S16-008"
+    type: dualité_structurelle
+    from: 6_ahyh_distribution_yodin_gr_alefin_emtza_hehin_acharonot_abba_imma
+    to: 6_ahyh_montent_inclus_yodin_externes_vs_yhv_descendent_inclus_hehin_acharon
+    nature: "6 AHYH (yodin/alefin/hehin × Abba/Imma) montent inclus yodin externes ; YH\"V descendent inclus hehin acharon — direction inverse"
+    assertions_source: ["EC-H4S16-028", "EC-H4S16-030"]
+
+  - id: "REL-H4S16-009"
+    type: séquentiel
+    from: post_holadah_ibbur_9_mois_meei_imma_vlad_appele_nukva
+    to: ahyh_3_z_a_ibbur_dans_bina_nikar_havayah_shemot_3_14_15
+    nature: "Post-holadah → ibbur 9 mois → vlad appele NUKVA ; AHYH-3 (Shemot 3:14)=Z\"A dans Bina ; apres NIKAR → HAVAYAH (Shemot 3:15)"
+    assertions_source: ["EC-H4S16-033", "EC-H4S16-034"]
+
+  - id: "REL-H4S16-010"
+    type: causal
+    from: 1_yhv_egal_2_ahyh_3_yhv_sag_6_ahyh_2_sag_symetrie
+    to: 2_ahyh_2x_mb_84_42_zivvugim_descend_yesod_aa_mazria_brit_kadisha
+    nature: "1 YH\"V=2 AHYH (3 YH\"V=SaG vs 6 AHYH=2 SaG) ; 2 AHYH=2×M\"B=84=42 zivvugim descend yesod A\"A → MAZRIA BRIT KADISHA"
+    assertions_source: ["EC-H4S16-032", "EC-H4S16-035"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S16-004"
+    nom: "Principe de M\"D-M\"N-Reciprocity (Tipah Descent-Ascent Rule)"
+    source_assertions: ["EC-H4S16-020", "EC-H4S16-026"]
+    formalisation: |
+      ARCHITECTURE DE M"D-M"N-RECIPROCITY :
+      Loi fondamentale du zivvug :
+        "EIN TIPAH YOREDET ME-LE-MAALAH SHE-EIN TIPAYIM OLIN LEMATA KENEGDA".
+        (aucune goutte ne descend du haut sans 2 gouttes montant en correspondance).
+      M"D (Mai DUKHRIN — eaux masculines) descend.
+      M"N (Mai NUKVIN — eaux femeles) montent — DOUBLES (kefelayim).
+      RATIO 1:2 par AHYH=YH"V (meme gematria 21).
+      → Pattern fondamental : reciprocity-rule asymmetric (1-down → 2-up).
+      → Architecture : zivvug requires bidirectional flow.
+      → Implication : female-double pour necessite holadat 2 enfants (Abba+Imma).
+    applications_ia:
+      - "partzufim/zivvug.py + abba.py + imma.py : implement M\"D-M\"N reciprocity"
+      - "Pattern : asymmetric reciprocity rule"
+      - "Architecture : bidirectional zivvug flow"
+      - "Pattern : 1:2 ratio explained by 2-children-need"
+      - "Diagnostic : verifier reciprocity respectee dans zivvug"
+    questions_ouvertes:
+      - "Pattern : autres ratios possibles (1:3, 1:4) ?"
+      - "Comment encoder reciprocity computationnellement ?"
+      - "Pattern : reciprocity universal ou holadah-specific ?"
+
+  - id: "PG-H4S16-005"
+    nom: "Principe de Verse-Cascade-Encoding (3 EHYEH ASHER EHYEH = 3-Tier Distribution)"
+    source_assertions: ["EC-H4S16-023", "EC-H4S16-024", "EC-H4S16-029"]
+    formalisation: |
+      ARCHITECTURE DE VERSE-CASCADE :
+      Verset Shemot 3:14 "EHYEH ASHER EHYEH" :
+        Apparait 3 FOIS implicitement (yodin + alefin + hehin).
+        Distribution 10S Z"A :
+          G"R : ASHER=Keter ; 2 AHYH=Chokhmah+Bina (yodin).
+          EMTZA'IYOT : 2 AHYH=Chesed+Gevurah (alefin) ; ASHER=Tiferet.
+          ACHARONOT : 2 AHYH=Netzach+Hod (hehin) ; ASHER=Yesod.
+        Tiferet+Yesod = ASHER (les deux en kav-emtza).
+      → Pattern fondamental : verset = cascade-encoding 3-tier.
+      → Architecture : recursive-verse-application encode 10S structure.
+      → Implication : single-verse = full-Z"A-encoding via tiers.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + abba.py + imma.py : implement verse-cascade"
+      - "Pattern : single-verse 3-tier cascade"
+      - "Architecture : verset recursive-application"
+      - "Pattern : ASHER kav-emtza marker"
+      - "Diagnostic : verifier 10S coherent avec verse structure"
+    questions_ouvertes:
+      - "Pattern : autres versets cascade-encoded ?"
+      - "Comment encoder cascade-application ?"
+      - "Pattern : 4-tier verse possible ?"
+
+  - id: "PG-H4S16-006"
+    nom: "Principe de Pre-Natal-Feminine-Naming (Vlad Pendant Ibbur = Nukva)"
+    source_assertions: ["EC-H4S16-033", "EC-H4S16-034"]
+    formalisation: |
+      ARCHITECTURE DE PRE-NATAL-FEMININE-NAMING :
+      Pendant IBBUR (gestation 9 mois) :
+        VLAD (foetus) — meme s'il est zachar+nukva — APPELE entierement NUKVA.
+        Cause : containment-by-mother (meei imma).
+      Verset Shemot 3:14-15 :
+        AHYH-3 = Z"A pendant ibbur dans Bina (= AHYH=Bina-naming).
+        Apres NIKAR (reconnu) → HAVAYAH (Shemot 3:15).
+      → Pattern fondamental : containment-determines-naming.
+      → Architecture : ontological-status during-containment = host-name.
+      → Implication : grammatical-shift encode ontologic-event (birth).
+    applications_ia:
+      - "partzufim/imma.py + zeir_anpin.py : implement pre-natal naming"
+      - "Pattern : containment determines naming"
+      - "Architecture : grammatical-shift encode birth"
+      - "Pattern : pre-natal = host-name"
+      - "Diagnostic : verifier naming coherent avec containment-state"
+    questions_ouvertes:
+      - "Pattern : autres containment situations ?"
+      - "Comment encoder pre-natal-state computationnellement ?"
+      - "Pattern : multi-stage naming ?"

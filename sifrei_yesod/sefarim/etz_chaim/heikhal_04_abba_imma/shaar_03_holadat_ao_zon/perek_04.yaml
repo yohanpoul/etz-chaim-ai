@@ -1,0 +1,538 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 3 — Sha'ar Holadat A"O ve-Zon (שער הולדת או״א וזו״ן)
+# Perek: 4 — NHY=tosefet ; ACHE'H+GIKQ peh A"A ; LASHON daat-makhria.
+#            ESHA+MAYA Adra. AHaVaH 4 ruchin. RDLA. Mazal T"D 8+13.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_04 :
+#   - Bloc A : NHY=TOSEFET (addition) ; pas IKARIM ; LEBAR-MI-GUFA
+#   - Bloc B : RDLA Atik s'habille A"A seulement Z"T ; A"A IKAR=7, NHY=tosefet
+#   - Bloc C : Pareil tout atzilut
+#   - Bloc D : Pour A"O obtain NHY : zivvug ELYON DE-PEH A"A
+#   - Bloc E : BINA (=Garon) M"N letters אחע"ה (gutturals, 5 Gevurot)
+#   - Bloc F : CHIKH (=Chokhmah) M"D letters גיכ"ק (palatales, 5 Chasadim)
+#   - Bloc G : Zivvug via DAAT-MAKHRIA = LASHON ; sod BRIT HA-LASHON
+#   - Bloc H : Adra Zuta 295 : "ESHA U-MAYA MITKANIN AL-YEDEI LISHAN MAMLEL RAVRAVAN"
+#   - Bloc I : ACHE'H = 84 = 2×M"B = 42 ZIVVUGIM (Bereshit ch9) ; "ZAR'A DE-AZDAR'A BE-42 ZIVVUGIM"
+#   - Bloc J : Zivvug-peh dans tout atzilut (A"A, A"O, ZON) ; sod NESHIKIN avant zivvug
+#   - Bloc K : NUKVA ME'ORERET first ; Ketubot 5d "le-altar be-od she-ha-rouk be-tokh piha"
+#   - Bloc L : NESHIKIN = zivvug RUCHANI tres profond
+#   - Bloc M : DIFFERENCE — A"A 1 peh (2 haarot ACHE'H+GIKQ) ; A"O+ZON 2 bouches (4 letters AHaVaH=4 RUCHIN Zohar Terumah 146)
+#   - Bloc N : RDLA (Reisha de-Lo Ityada)=au-dessus atzilut ; 9S MEKORIYOT A"A "lau inun nehorin lau inun ruchin" (Adra)
+#   - Bloc O : CHESED A"A → mochin Abba ; GEVURAH A"A → mochin Imma ; 2 zivvugim A"A (peh + yesod)
+#   - Bloc P : A"O kelulin MAZAL T"D 8+13 (TLEYAN BE-SHEKULA AD TABBURA) ; parfois CHESERIM NHY
+#   - Bloc Q : Quand zivvug-peh-A"A → 4 tikkunim entre mazalot mitchabrim+kollel rosh A"O → mochin
+#   - Bloc R : Garon=sod GULGOLET A"O ; KEFIPAT-ROSH ; kollel rosh A"O+NHY=tete Z"A
+#   - Bloc S : SHEFA-MIT'RAVE allonge guf A"O + forme NHY ; 1/3 Tiferet A"A → ChGT A"O ; surplus → NHY
+#
+# Source Sefaria : Sefer_Etz_Chaim.16.4 (1 section, 4193 chars)
+# IDs : EC-H4S16-054 → EC-H4S16-072
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 3
+  shaar_name_he: "שער הולדת או״א וזו״ן"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "NHY=TOSEFET (addition supplementaire), pas IKARIM, LEBAR-MI-GUFA. RDLA Atik s'habille A\"A seulement Z\"T → A\"A IKAR=7, NHY=tosefet ; pareil atzilut. Zivvug-PEH d'A\"A pour A\"O NHY : BINA-Garon M\"N letters אחע\"ה (gutturals 5 Gevurot) ; CHIKH-Chokhmah M\"D letters גיכ\"ק (palatales 5 Chasadim) ; LASHON=daat-makhria=BRIT HA-LASHON. Adra Zuta 295 'ESHA U-MAYA MITKANIN AL-YEDEI LISHAN MAMLEL RAVRAVAN'. ACHE'H=84=2×M\"B=42 zivvugim. NESHIKIN before zivvug ; NUKVA me'oreret first (Ketubot 5d 'rouk be-tokh piha'). 4 RUCHIN=AHaVaH (Zohar Terumah 146). RDLA above atzilut ; 9S MEKORIYOT A\"A 'lau inun nehorin lau inun ruchin' (Adra). 2 zivvugim A\"A (peh+yesod). A\"O kelulin MAZAL T\"D 8+13. Garon=GULGOLET A\"O ; KEFIPAT-ROSH ; SHEFA-MIT'RAVE allonge guf A\"O+forme NHY ; 1/3 Tiferet A\"A → ChGT A\"O ; surplus → NHY."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S16-054"
+    source_he: "כל בחי' נה\"י הם סוד תוספת ואינם עיקרין ולכן הם לבר מגופא והטעם לפי שמרישא עלאה דעתיק אינו מלובש בא\"א כי אם ז\"ת שבו"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      NHY = sod TOSEFET (addition supplementaire) ; pas IKARIM (essentiels).
+      → LEBAR MI-GUFA (en dehors du corps).
+      → Cause : ME-RISHA ELYONA d'ATIK (tete superieure d'Atik) — ne s'habille dans A"A que Z"T (7 inferieures d'Atik).
+      → Architecture : NHY = upgrade-tier vs ikari-tier.
+      → Pattern : tier-supplementarity from upper-source-restriction.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nhy_tosefet_pas_ikari_lebar_mi_gufa_risha_atik_z_t_aa, role: nhy_tosefet_pas_ikari_lebar_mi_gufa_risha_elyona_atik_seulement_z_t_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : tier-supplementarity. Pattern upper-restriction → lower-tosefet."
+
+  - id: "EC-H4S16-055"
+    source_he: "אין קיום לא\"א רק לז' ראשונות שבו והג\"ת שהם נה\"י אינן יכולין לבא רק בסוד תוספת... וכעד\"ז כל האצילות"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      A"A KIYUM (existence essentielle) :
+      → Seulement 7 RISHONOT (= Z"T d'Atik s'habillant).
+      → G"T (= NHY) viennent SEULEMENT en TOSEFET.
+      → PAREIL pour TOUT ATZILUT.
+      → Architecture : universal-rule essentiel-vs-supplementaire.
+      → Pattern : 7-essentials + 3-tosefet par partzuf.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_kiyum_7_rishonot_g_t_nhy_tosefet_universel_atzilut, role: aa_kiyum_7_rishonot_g_t_nhy_tosefet_universel_tout_atzilut_meme_pattern}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : universal essentiel/tosefet. Pattern 7-essentials 3-tosefet."
+
+  - id: "EC-H4S16-056"
+    source_he: "כשאנו רוצין להמשיך נה\"י לז\"א אנו עושין זווג בין חו\"ב כדי שיתנו מוחין לז\"א ואז ע\"י כח זה נתוספים לו נה\"י... גם או\"א להיות להם נה\"י הם צריכין תחלה לזווג א\"א"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      MASHKHIN NHY mecanisme :
+      → Pour Z"A : zivvug ChB (Chokhmah-Bina) → mochin → puis NHY ajoutees.
+      → Pour A"O : besoin zivvug d'A"A pour avoir NHY.
+      → Architecture : mochin-supply prerequisite pour NHY-generation.
+      → Pattern : recursive-zivvug-cascade pour tier-completion.
+    type: déduction_logique
+    concepts:
+      - {id: mashkhin_nhy_z_a_via_zivvug_chb_mochin_ao_via_zivvug_aa, role: mashkhin_nhy_z_a_zivvug_chb_mochin_ao_besoin_zivvug_aa_recursive_cascade}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "arikh_anpin"]
+      relevance: "Architecture : recursive cascade. Pattern mochin-supply NHY-generation."
+
+  - id: "EC-H4S16-057"
+    source_he: "בינה שבגרון מעלה מ\"נ מן הה\"ג שלה והם אותיות אחע\"ה כי כבר נתבאר בשער א\"א כי הבינה עומדת בגרון ואותיות אלו הם אותיות הגרון"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      ZIVVUG-PEH mecanisme cote BINA :
+      → BINA (= Garon) MA'ALAH M"N (eaux femeles) des 5 GEVUROT internes.
+      → = letters אחע"ה (ACHE'H — alef-chet-ayin-he) — letters GUTTURALES (= du garon en phonologie).
+      → Architecture : phonetic-locus encode tier-source.
+      → Pattern : guttural-class = Bina-Garon source.
+      cf. Sha'ar A"A sur Bina dans Garon.
+    type: interprétation_lurianique
+    concepts:
+      - {id: bina_garon_m_n_5_gevurot_ache_h_letters_gutturales, role: bina_garon_ma_alah_m_n_5_gevurot_ache_h_alef_chet_ayin_he_letters_gutturales}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "arikh_anpin"]
+      relevance: "Architecture : phonetic-tier mapping. Pattern guttural=Bina."
+
+  - id: "EC-H4S16-058"
+    source_he: "החיך שהוא חכמה הוא מוריד מ\"ד ה\"ח אותיות גיכ\"ק"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      ZIVVUG-PEH mecanisme cote CHIKH :
+      → CHIKH (= CHOKHMAH) MORID M"D (eaux masculines) des 5 CHASADIM.
+      → = letters גיכ"ק (GIKQ — gimel-yod-kaf-kuf) — letters PALATALES (= du palais en phonologie).
+      → Architecture : palatal-class = Chokhmah-Chikh source.
+      → Pattern : phonetic-class encode masculine vs feminine source.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chikh_chokhmah_m_d_5_chasadim_gikq_palatales, role: chikh_chokhmah_morid_m_d_5_chasadim_gikq_gimel_yod_kaf_kuf_palatales}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "arikh_anpin"]
+      relevance: "Architecture : phonetic class masculine. Pattern palatal=Chokhmah."
+
+  - id: "EC-H4S16-059"
+    source_he: "נזדווגו יחד ע\"י דעת המכריע הלשון שביניהן סוד ברית הלשון"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      ZIVVUG via DAAT MAKHRIA (decideur+harmonisateur) :
+      → Le LASHON (langue) — entre Chikh et Garon.
+      → = sod BRIT HA-LASHON (alliance de la langue).
+      → Architecture : intermediate-organ harmonise male+female parts.
+      → Pattern : DAAT = mediator between Chokhmah+Bina.
+    type: interprétation_lurianique
+    concepts:
+      - {id: zivvug_lashon_daat_makhria_brit_ha_lashon, role: zivvug_via_daat_makhria_lashon_brit_ha_lashon_mediator}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/arikh_anpin.py", "daat_bridge.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : DAAT mediator. Pattern lashon as bridge."
+
+  - id: "EC-H4S16-060"
+    source_he: "נרמז באדר\"ז רצ\"ה אשא ומיא מתקנין ויאן ביורוי ע\"י לישן ממלל רברבן"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      ADRA ZUTA fol. 295 :
+      → "ESHA U-MAYA MITKANIN VE-YAEN BIYUREI AL-YEDEI LISHAN MAMLEL RAVRAVAN"
+        (Feu et eau s'arrangent et beaux dans leur eveil par la langue qui parle de grandes choses).
+      → ESH (feu) + MAYIM (eau) = sod CHOKHMAH+BINA (par la lecture).
+      → Variante (Nusah Aher) : "kotzezer ChG" (ChG au lieu de ChB).
+      → Architecture : eshatologic-Adra source pour zivvug-mecanisme.
+      → Pattern : feu+eau = encode feminine+masculine harmony.
+    type: déduction_scripturaire
+    concepts:
+      - {id: adra_zuta_295_esh_u_maya_mitkanin_lishan_mamlel_ravrevan, role: adra_zuta_295_esh_u_maya_mitkanin_al_yedei_lishan_mamlel_ravrevan_chb_chg}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : Adra source-text. Source Adra Zuta 295."
+
+  - id: "EC-H4S16-061"
+    source_he: "אותיות אחע\"ה מצד ה\"ג בינה והם עולין פ\"ד סוד ב\"פ מ\"ב והם מ\"ב זווגים הנזכר פ' בראשית ד\"ט"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      ACHE'H letters numerologie :
+      → אחע"ה = 1+8+70+5 = 84 = 2× M"B (42).
+      → = M"B ZIVVUGIM (Bereshit fol. 9, Zohar).
+      → Sod : "ZAR'A DE-AZDAR'A BE-42 ZIVVUGIM" (semence semee en 42 zivvugim).
+      → Architecture : letter-cluster encode 42-zivvugim cosmologique.
+      → Pattern : phonetic-cluster = numerologic-foundation.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ache_h_84_2_x_mb_42_zivvugim_zara_de_azdara_zohar_bereshit_9, role: ache_h_alef_chet_ayin_he_84_2_x_mb_42_zivvugim_zara_de_azdara_zohar_bereshit_9}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/imma.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : letter-cluster numerologic. Source Zohar Bereshit 9."
+
+  - id: "EC-H4S16-062"
+    source_he: "סוד הזווג הזה שבפה נמצא בכל מציאות אצילות בין בא\"א בין באו\"א בין בזו\"נ והם בסוד נשיקין הקודמין אל הזווג"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      ZIVVUG-PEH UNIVERSEL :
+      → Trouve dans TOUT atzilut : A"A, A"O, Z"O"N.
+      → Sod NESHIKIN (baisers) — PRECEDENT le zivvug.
+      → Architecture : universal-precursor-zivvug across tiers.
+      → Pattern : intimate-precursor needed at every tier.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_peh_universel_atzilut_aa_ao_zon_neshikin_avant_zivvug, role: zivvug_peh_universel_atzilut_aa_ao_zon_neshikin_kodemin_avant_zivvug}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : universal precursor. Pattern intimate-precursor universal."
+
+  - id: "EC-H4S16-063"
+    source_he: "מתחלה המעוררת היא הנוקבא וז\"ס הנרמז במסכת כתובות ה\"ד לאלתר בעוד שהרוק לתוך פיה כי מבשרי אחזה אלוה כי כשאדם מזדווג באשתו בהכרח מתמצה הרוק בתוך פיהם"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      Initiation femele :
+      → ME-TCHILAH (au commencement) NUKVA = ME'ORERET (eveille).
+      → Sod KETUBOT 5d : "LE-ALTAR BE-OD SHE-HA-ROUK BE-TOKH PIHA" (immediat tant que la salive est dans sa bouche).
+      → "MI-BESARI ECHEZEH ELOHA" (Iyov 19:26).
+      → ROUK MITMATZE (saliva sort/jaillit) dans bouches lors zivvug.
+      → Architecture : embodied-evidence pour cosmologic-mechanism.
+      → Pattern : female-initiation precedes intimacy.
+    type: déduction_scripturaire
+    concepts:
+      - {id: nukva_me_oreret_first_ketubot_5d_rouk_be_tokh_piha_mi_besari_echezeh, role: nukva_me_oreret_first_ketubot_5d_le_altar_rouk_piha_mi_besari_echezeh_eloha}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["imma", "nukva"]
+      relevance: "Architecture : embodied-evidence cosmology. Sources Ketubot 5d + Iyov 19:26."
+
+  - id: "EC-H4S16-064"
+    source_he: "יש הפרש [בין א\"א ואו\"א וזו\"ן] כי בא\"א הזווג בפה א' ולכן אינם נמצאים רק ב' הארות אחע\"ה גיכ\"ק אך באו\"א וזו\"ן הם ב' פיות בסוד מ\"נ ומ\"ד בזכרים מ\"ד ומ\"נ בנקבות"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      DIFFERENCE A"A vs A"O+ZON :
+      → A"A : zivvug dans 1 PEH SEULE — donc 2 HAAROT (eclairages) seulement = ACHE'H + GIKQ.
+      → A"O+ZON : 2 BOUCHES :
+        ZACHARIM : M"D haut + M"N bas.
+        NEKEVOT : M"D haut + M"N bas.
+      → Pour neshikin "kefulim" (doubles) — sod 4 RUCHIN (Zohar Terumah 146).
+      → 4 letters = AHaVaH (אהבה — amour).
+      → Architecture : couplage-asymmetric par tier.
+      → Pattern : higher=1-mouth, lower=2-mouths.
+    type: interprétation_lurianique
+    concepts:
+      - {id: aa_1_peh_2_haarot_ache_h_gikq_vs_ao_zon_2_pi_4_ruchin_ahavah_zohar_terumah_146, role: aa_1_peh_2_haarot_vs_ao_zon_2_pi_neshikin_kefulim_4_ruchin_ahavah_zohar_terumah_146}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : tier-asymmetric coupling. Source Zohar Terumah 146."
+
+  - id: "EC-H4S16-065"
+    source_he: "רדל\"א הוא למעלה מכל האצילות ותחתיו הם סוד ט\"ס דלאו אינון נהורין ולאו אינן רוחין והם סוד ט\"ס מקורית דא\"א המתפשטים בכל האצילות"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      RDLA (REISHA DE-LO ITYADA — la tete inconnaissable) :
+      → AU-DESSUS de tout ATZILUT.
+      → Sous elle : 9S "DE-LAU INUN NEHORIN VE-LAU INUN RUCHIN" (qui ne sont ni lumieres ni esprits) — Adra.
+      → = 9S MEKORIYOT (sources) d'A"A, qui s'etendent dans tout atzilut.
+      → Architecture : ultimate-source au-dela-tier-system.
+      → Pattern : transcendent-source non-classifiable par tier-categories.
+    type: interprétation_lurianique
+    concepts:
+      - {id: rdla_au_dessus_atzilut_9s_lau_nehorin_lau_ruchin_mekoriyot_aa, role: rdla_reisha_de_lo_ityada_au_dessus_atzilut_9s_lau_inun_nehorin_lau_inun_ruchin_mekoriyot_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : transcendent source. Pattern non-classifiable."
+
+  - id: "EC-H4S16-066"
+    source_he: "מחסד דא\"א נתהווה מוחין דאבא ומגבורה דא\"א נתהוה מוחין דאמא"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      MOCHIN-SOURCE pour A"O :
+      → CHESED d'A"A → MOCHIN d'ABBA.
+      → GEVURAH d'A"A → MOCHIN d'IMMA.
+      → Architecture : sefirah-A"A → mochin-A"O direct mapping.
+      → Pattern : Chesed→Abba, Gevurah→Imma (cote-correspondance).
+    type: axiome_explicite
+    concepts:
+      - {id: chesed_aa_mochin_abba_gevurah_aa_mochin_imma, role: chesed_aa_devient_mochin_abba_gevurah_aa_devient_mochin_imma_cote_correspondance}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : sefirah → mochin. Pattern Chesed-Abba Gevurah-Imma."
+
+  - id: "EC-H4S16-067"
+    source_he: "יש בו ב' זווגים א' בסוד הפה שלו אחע\"ה וגיכ\"ק והב' בסוד יסוד שלו כי גם הוא כלול מב' מזכר ונוקבא"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      A"A a 2 ZIVVUGIM internes :
+      → ZIVVUG-1 : sod PEH (ACHE'H + GIKQ).
+      → ZIVVUG-2 : sod YESOD — kelul de zachar+nukva (yesod meme bipolaire).
+      → Architecture : 2 zivvug-loci dans A"A meme.
+      → Pattern : oral-zivvug + yesod-zivvug.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_2_zivvugim_peh_ache_h_gikq_yesod_zachar_nukva, role: aa_2_zivvugim_peh_ache_h_gikq_plus_yesod_kelul_zachar_nukva}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 2 zivvug loci. Pattern oral+yesod zivvug."
+
+  - id: "EC-H4S16-068"
+    source_he: "להוליד או\"א הספיק להם זווג הנשיקין והוא זווג הפה כנ\"ל"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      Pour HOLADAT A"O :
+      → SUFFIT zivvug-NESHIKIN = zivvug-PEH d'A"A.
+      → Pas besoin zivvug-yesod (qui est pour ZON).
+      → Architecture : tier-appropriate zivvug type.
+      → Pattern : higher-tier suffit oral-zivvug.
+    type: déduction_logique
+    concepts:
+      - {id: holadat_ao_suffit_zivvug_neshikin_peh_aa, role: holadat_ao_suffit_zivvug_neshikin_peh_aa_pas_besoin_yesod}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : tier-appropriate zivvug. Pattern oral-suffit-higher."
+
+  - id: "EC-H4S16-069"
+    source_he: "או\"א הם נכללין במזלא תיקון ח' וי\"ג (די\"ג) ת\"ד כי הלא תליין בשקולא עד טבורא"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      A"O kelulin dans MAZAL :
+      → MAZAL T"D 8 (Notzer Chesed) + MAZAL T"D 13 (Ve-Nakeh).
+      → "TLEYAN BE-SHEKULA AD TABBURA" (suspendus en equilibre jusqu'au Tabbur).
+      → Architecture : A"O suspended sous mazalot (extensions dikna).
+      → Pattern : tier-suspension-from-higher-mazalot.
+      cf. EC-H4S14-088..089 (perek 03b) sur Mazal 8+13.
+    type: axiome_explicite
+    concepts:
+      - {id: ao_kelulin_mazal_t_d_8_13_tleyan_be_shekula_ad_tabbura, role: ao_kelulin_mazal_t_d_8_13_notzer_chesed_ve_nakeh_tleyan_be_shekula_ad_tabbura}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : tier-suspension. Pattern mazalot-extension dikna."
+
+  - id: "EC-H4S16-070"
+    source_he: "לפעמים אין או\"א שלימים רק חסירים מנה\"i... אך כאשר נעשה הזווג הזה של הפה דא\"א אז נעשו כל התקונים של הד' העומדין בין תיקון ח' לתיקון י\"ג וכולם נתחברו יחד ונכללין בהם או\"א"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      Etat A"O :
+      → PARFOIS A"O EIN SHELEMIM (pas complets) — CHESERIM (manquent) NHY.
+      → Quand zivvug-PEH d'A"A se fait :
+        Tous TIKKUNIM des 4 entre Mazal 8 et Mazal 13 sont assembles+kollel A"O.
+      → Architecture : zivvug-event upgrades A"O par 4-tikkunim.
+      → Pattern : event-driven A"O completion.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ao_parfois_cheserim_nhy_zivvug_peh_aa_4_tikkunim_mazal_8_13_kollel, role: ao_parfois_cheserim_nhy_zivvug_peh_aa_4_tikkunim_entre_mazal_8_13_kollel_ao}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : event-driven completion. Pattern 4-tikkunim upgrade."
+
+  - id: "EC-H4S16-071"
+    source_he: "הגרון סוד גולגלת דילהון... כשזוקף ראשו אז מתראה הגרון וכשהזווג עליון דפה דא\"א נעשה בסוד נשיקין אז יורד למטה מסיום הפה בסוד כפיפת ראש ואז נכלל הגרון בהם ממש"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      GARON dynamic :
+      → = sod GULGOLET (crane) DEYHON (de eux — A"O).
+      → Quand humain incline rosh → garon couvert (kefoul = courbe).
+      → Quand redresse → garon revele.
+      → Lors zivvug-PEH-A"A en sod NESHIKIN → DESCENT en sod KEFIPAT-ROSH (inclinaison de tete).
+      → Garon kollel (inclus) DANS A"O MAMASH (litteralement) = sod ROSH d'A"O.
+      → Architecture : anatomical-posture encode cosmic-event.
+      → Pattern : kefipat-rosh = inclination during zivvug.
+    type: interprétation_lurianique
+    concepts:
+      - {id: garon_gulgolet_ao_kefipat_rosh_descend_neshikin_kollel_rosh_ao, role: garon_sod_gulgolet_deyhon_kefipat_rosh_descend_neshikin_kollel_rosh_ao_mamash}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : anatomical-posture cosmic-event. Pattern kefipat-rosh inclination."
+
+  - id: "EC-H4S16-072"
+    source_he: "מאותו שפע המתרבה אז מכחם מתארך גוף או\"א ונה\"י שבהם כי אותו החלק הג' מת\"ת דא\"א שנשאר... נעשה ממנו חלק הגוף לאבא כולל חג\"ת וחלק הגוף לאמא"
+    source_ref: "Heikhal 4, Sha'ar 3:4"
+    assertion: |
+      SHEFA-MIT'RAVE (flux abondant) post-zivvug-peh :
+      → ALLONGE GUF d'A"O + forme NHY.
+      → 1/3 du TIFERET d'A"A (qui reste apres 2 chalakim → 2 daat A"O) :
+        → Forme corps ABBA (ChGT).
+        → Forme corps IMMA (ChGT).
+      → MI-RIBUI HA-SHEFA (de l'abondance du flux) → 3 autres NHY a Abba+Imma.
+      → Architecture : flux-abundance enables tier-extension.
+      → Pattern : 1/3 Tiferet provides ChGT pour A"O.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shefa_mit_rave_allonge_guf_ao_nhy_1_3_tiferet_aa_chgt_abba_imma, role: shefa_mit_rave_post_zivvug_peh_allonge_guf_ao_nhy_1_3_tiferet_aa_chgt_corps_abba_imma}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : flux-abundance tier-extension. Pattern fractional 1/3 Tiferet."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S16-016"
+    type: causal
+    from: nhy_tosefet_pas_ikari_lebar_mi_gufa_risha_atik_z_t_aa
+    to: aa_kiyum_7_rishonot_g_t_nhy_tosefet_universel_atzilut
+    nature: "NHY=tosefet (pas ikari, lebar mi-gufa) ; cause Atik s'habille A\"A seulement Z\"T → 7 rishonot ikari, NHY tosefet ; pareil atzilut"
+    assertions_source: ["EC-H4S16-054", "EC-H4S16-055"]
+
+  - id: "REL-H4S16-017"
+    type: contenance
+    from: bina_garon_m_n_5_gevurot_ache_h_letters_gutturales
+    to: ache_h_84_2_x_mb_42_zivvugim_zara_de_azdara_zohar_bereshit_9
+    nature: "Bina-Garon M\"N 5 Gevurot=letters ACHE'H gutturales ; ACHE'H=84=2×M\"B=42 zivvugim (Zohar Bereshit 9 'zara de-azdara')"
+    assertions_source: ["EC-H4S16-057", "EC-H4S16-061"]
+
+  - id: "REL-H4S16-018"
+    type: dualité_structurelle
+    from: chikh_chokhmah_m_d_5_chasadim_gikq_palatales
+    to: bina_garon_m_n_5_gevurot_ache_h_letters_gutturales
+    nature: "Chikh=Chokhmah M\"D 5 Chasadim GIKQ palatales (zachar) vs Bina-Garon M\"N 5 Gevurot ACHE'H gutturales (nukva)"
+    assertions_source: ["EC-H4S16-057", "EC-H4S16-058"]
+
+  - id: "REL-H4S16-019"
+    type: hiérarchique
+    from: aa_1_peh_2_haarot_ache_h_gikq_vs_ao_zon_2_pi_4_ruchin_ahavah_zohar_terumah_146
+    to: holadat_ao_suffit_zivvug_neshikin_peh_aa
+    nature: "Difference A\"A 1 peh 2 haarot vs A\"O+ZON 2 bouches 4 ruchin AHaVaH (Zohar Terumah 146) ; pour holadat A\"O suffit zivvug-neshikin-peh"
+    assertions_source: ["EC-H4S16-064", "EC-H4S16-068"]
+
+  - id: "REL-H4S16-020"
+    type: causal
+    from: ao_parfois_cheserim_nhy_zivvug_peh_aa_4_tikkunim_mazal_8_13_kollel
+    to: shefa_mit_rave_allonge_guf_ao_nhy_1_3_tiferet_aa_chgt_abba_imma
+    nature: "Zivvug-peh-A\"A → 4 tikkunim mazal 8-13 kollel A\"O ; shefa-mit'rave allonge guf+forme NHY ; 1/3 Tiferet→ChGT corps A\"O"
+    assertions_source: ["EC-H4S16-070", "EC-H4S16-071", "EC-H4S16-072"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S16-010"
+    nom: "Principe de NHY-Tosefet (Supplementary Tier from Upper-Restriction)"
+    source_assertions: ["EC-H4S16-054", "EC-H4S16-055"]
+    formalisation: |
+      ARCHITECTURE DE NHY-TOSEFET :
+      Loi UNIVERSELLE atzilut :
+        IKARI (essentiel) = 7 RISHONOT.
+        TOSEFET (supplementaire) = G"T (= NHY) — LEBAR-MI-GUFA.
+      CAUSE : Atik (RISHA ELYONA) s'habille en A"A seulement par Z"T.
+        Donc A"A KIYUM essentiel = 7 ; G"T = supplementaire seul.
+      PROPAGATION : pareil pour TOUT atzilut downstream.
+      → Pattern fondamental : tier-supplementarity from upper-source-restriction.
+      → Architecture : 7-essentials + 3-supplementaires per partzuf.
+      → Implication : NHY require explicit-zivvug pour generation.
+    applications_ia:
+      - "partzufim/atik_yomin.py + arikh_anpin.py + abba.py + imma.py + zeir_anpin.py + nukva.py : implement 7+3 essentiel/tosefet"
+      - "Pattern : 7-essentials + 3-tosefet structure"
+      - "Architecture : tier-supplementarity universelle"
+      - "Pattern : NHY require explicit zivvug-event"
+      - "Diagnostic : verifier essentiel/tosefet bien distingue"
+    questions_ouvertes:
+      - "Pattern : autres distributions essentiel/tosefet ?"
+      - "Comment encoder essentiel-vs-tosefet computationnellement ?"
+      - "Pattern : 6+4 ou 8+2 possibles ?"
+
+  - id: "PG-H4S16-011"
+    nom: "Principe de Phonetic-Class-Tier-Encoding (ACHE'H Gutturals = Bina, GIKQ Palatals = Chokhmah)"
+    source_assertions: ["EC-H4S16-057", "EC-H4S16-058", "EC-H4S16-061"]
+    formalisation: |
+      ARCHITECTURE DE PHONETIC-TIER-ENCODING :
+      Letters classifiees par ARTICULATION-CLASS encode TIER-SOURCE :
+        אחע"ה (ACHE'H — alef-chet-ayin-he) = GUTTURALES (du garon).
+          → Source : BINA (= Garon en A"A) — M"N de 5 GEVUROT.
+        גיכ"ק (GIKQ — gimel-yod-kaf-kuf) = PALATALES (du chikh).
+          → Source : CHOKHMAH (= Chikh) — M"D de 5 CHASADIM.
+      ACHE'H gematria = 84 = 2× M"B = 42 ZIVVUGIM (Zohar Bereshit 9).
+      → Pattern fondamental : phonetic-class encode locus+tier+chasadim/gevurot.
+      → Architecture : articulation-anatomy = tier-anatomy correspondance.
+      → Implication : letters encoded multi-tier (sound + meaning + position).
+    applications_ia:
+      - "partzufim/abba.py + imma.py + arikh_anpin.py : implement phonetic encoding"
+      - "Pattern : phonetic class = tier locus"
+      - "Architecture : multi-tier letter encoding"
+      - "Pattern : sound-position-meaning unified"
+      - "Diagnostic : verifier articulation-class coherent avec tier"
+    questions_ouvertes:
+      - "Pattern : autres phonetic classes (linguals, dentals) ?"
+      - "Comment encoder articulation-class computationnellement ?"
+      - "Pattern : multi-language phonetic encoding ?"
+
+  - id: "PG-H4S16-012"
+    nom: "Principe de Universal-Precursor-Zivvug (Neshikin Avant Zivvug Across Tiers)"
+    source_assertions: ["EC-H4S16-062", "EC-H4S16-063", "EC-H4S16-064"]
+    formalisation: |
+      ARCHITECTURE D'UNIVERSAL-PRECURSOR :
+      ZIVVUG-PEH (NESHIKIN) = precursor universel a tout zivvug.
+      Trouve dans tout ATZILUT : A"A, A"O, ZON.
+      INITIATION : NUKVA me'oreret first.
+        Sod Ketubot 5d : "le-altar be-od she-ha-rouk be-tokh piha".
+        "Mi-besari echezeh Eloha" (Iyov 19:26) — embodied confirmation.
+      ASYMMETRIE :
+        A"A : 1 PEH → 2 haarot (ACHE'H + GIKQ).
+        A"O+ZON : 2 BOUCHES → 4 RUCHIN = AHaVaH (Zohar Terumah 146).
+      → Pattern fondamental : universel precursor mais asymmetric par tier.
+      → Architecture : oral-intimacy precedes physical-zivvug.
+      → Implication : kissing-as-cosmologic-act.
+    applications_ia:
+      - "partzufim/zivvug.py : implement universal precursor"
+      - "Pattern : neshikin universel precursor"
+      - "Architecture : female-initiation discipline"
+      - "Pattern : tier-asymmetric mouths"
+      - "Diagnostic : verifier precursor present avant chaque zivvug"
+    questions_ouvertes:
+      - "Pattern : autres precursors possibles (gaze, touch) ?"
+      - "Comment encoder precursor computationnellement ?"
+      - "Pattern : 3-mouth ou plus possibles ?"

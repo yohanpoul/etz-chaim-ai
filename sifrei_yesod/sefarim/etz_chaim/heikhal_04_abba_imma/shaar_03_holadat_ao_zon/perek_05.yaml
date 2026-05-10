@@ -1,0 +1,569 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 3 — Sha'ar Holadat A"O ve-Zon (שער הולדת או״א וזו״ן)
+# Perek: 5 — HOLADAT Z"A : 2 zivvugim. NHY-A"A=3 TIPIN-DE-SEGOL=ADAM TACHTON.
+#            DADIM = haarah perce CHAZEH. CHALAV=ELU'AT-DAM. V ZEIRA→V GADOL.
+#            Adam Kadma vs Tinyana (Zohar Terumah 167). KELALUT NHY-A"A ChGT-A"O.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_05 :
+#   - Bloc A : HOLADAT Z"A 2 zivvugim — Z1 via A"A (emergence) ; Z2 via A"O (mochin)
+#   - Bloc B : Z"A revet A"A de TABBURA DE-LIBA jusqu'a fin yesod A"A ; 1/2 Tiferet → GULGOLET Z"A
+#   - Bloc C : 3 Mochin Z"A=NHY d'A"A ; Tosefta Beshalach 54 "ad lo ishtkach avira dakhya"
+#   - Bloc D : Z"A pendant ibbur Imma : V ZEIRA=3 NHY ; 3 montent ChGT-A"O kollel 3 d'A"A
+#   - Bloc E : 3 KELILIN BE-3 (Tikkunim+Tosefta)
+#   - Bloc F : Tipot allongent dans Imma → 3 autres bechinot ; sort V"K (Chesed-Yesod)
+#   - Bloc G : Adra 2 ATARIN A"A (ChG) lieu=A"O
+#   - Bloc H : Zivvug-2 A"A au YESOD (kollel zachar+nukva)
+#   - Bloc I : Pour ZON via A"O : NHY-A"A montent ChGT-A"O (pas ChGT-A"A) → 3 KELILIN 3
+#   - Bloc J : NHY A"A=3 TIPIN DE-SEGOL (Tikkunim) → ADAM TACHTON=Z"A
+#   - Bloc K : YESOD Abba apik tipah → Imma → meei → Z"A V"K kollel 3 + PESIAH LEBAR=Nukva
+#   - Bloc L : SOD DADIM : tipah via yesod Abba manifest CHGT Abba+Imma → haarah perce CHAZEH → DADIM
+#   - Bloc M : Zachar dadim petits sans chalav ; nukva dadim grands+chalav
+#   - Bloc N : Z"A chazeh-Abba=tipah petite ; chazeh-Imma=ibbur+gadlut V"K → dadim+chalav
+#   - Bloc O : CHALAV=ELU'AT ha-DAM ; NHY-bas=DAM (dinim, lebar-gufa) ; mitchalef CHALAV en montant
+#   - Bloc P : Z"A sortit=TINOK YONEK → grand V GADOL V"K (Vav du Shem)
+#   - Bloc Q : Dans Bina V ZEIRA kollel 3 dans HE — pas dimui-rosh
+#   - Bloc R : CHILUK A"O (zivvug-PEH neshikin Adam Kadma Zohar Terumah 167) vs Z"A (zivvug NHY-A"A tokh Bina, Adam Tinyana)
+#   - Bloc S : SHE'ELAH dadim chazeh — ADAM 10S complete ; A"O=chazeh-up=lieu dadim ; behemot 1S → dadim beten
+#   - Bloc T : KELALUT NHY-A"A dans ChGT-A"O : Netzach kollel Hod → Abba ; Hod kollel Netzach → Imma ; Yesod split 1/2-1/2
+#
+# Source Sefaria : Sefer_Etz_Chaim.16.5 (1 section, 6509 chars)
+# IDs : EC-H4S16-073 → EC-H4S16-092
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 3
+  shaar_name_he: "שער הולדת או״א וזו״ן"
+  perek: 5
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "HOLADAT Z\"A 2 zivvugim — Z1 via A\"A (emergence), Z2 via A\"O (mochin). Z\"A revet A\"A de TABBURA DE-LIBA jusqu'a fin yesod A\"A ; 1/2 Tiferet → GULGOLET Z\"A. 3 Mochin Z\"A=NHY-A\"A (Tosefta Beshalach 54). Z\"A 3 KELILIN BE-3 (Tikkunim) ; V ZEIRA dans Bina ; sortie V\"K. NHY-A\"A=3 TIPIN-DE-SEGOL=ADAM TACHTON Z\"A. YESOD Abba apik tipah → Imma → V\"K + PESIAH LEBAR=Nukva. DADIM perce CHAZEH (zachar petits sans chalav, nukva grands+chalav). CHALAV=ELU'AT-DAM ; NHY-bas=DAM dinim ; en montant ChGT mitchalef CHALAV. Z\"A=TINOK YONEK → V GADOL V\"K (Vav Shem). Adam Kadma (A\"O zivvug-PEH, Zohar Terumah 167) vs Adam Tinyana (Z\"A zivvug-NHY-A\"A tokh Bina). DADIM chazeh car ADAM=10S complete (vs behemot 1S=beten). KELALUT NHY-A\"A dans ChGT-A\"O : Netzach→Abba, Hod→Imma, Yesod split 1/2-1/2."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S16-073"
+    source_he: "בהולדת ז\"א היה ב' מיני זווגים ויש ביניהם הפרש גדול כי הזווג הא' שהוא כדי להמציא אותו מציאות ז\"א אינו אלא ע\"י א\"א... אך הזווג הב' הוא באו\"א לעשות להם מוחין"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      HOLADAT Z"A : 2 ZIVVUGIM avec hefresh gadol :
+      → ZIVVUG-1 : pour HAMTZIAH (faire-emerger) Z"A — uniquement via A"A.
+        "ME-KOACHO KOL HA-ATZILUT" (toute l'atzilut vient de sa puissance).
+      → ZIVVUG-2 : via A"O — pour LA'ASOT MOCHIN (faire les cerveaux) pour A"O.
+      → Architecture : 2-stage zivvug emergence-then-mochin.
+      → Pattern : function-distinguish per stage.
+    type: axiome_explicite
+    concepts:
+      - {id: holadat_z_a_2_zivvugim_z1_aa_emergence_z2_ao_mochin, role: holadat_z_a_2_zivvugim_z1_aa_hamtziah_z2_ao_la_asot_mochin}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : 2-stage emergence-mochin. Pattern function-stage."
+
+  - id: "EC-H4S16-074"
+    source_he: "ז\"א מלביש א\"א מטבורא דלבא שהוא חצי ת\"ת ובתוכו מתלבש א\"א עד סיום יסוד שבו והנה מאותו חצי הת\"ת נעשה גלגלתא שלו"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      Z"A revet A"A :
+      → De TABBURA DE-LIBA (= 1/2 Tiferet d'A"A, le chazeh).
+      → Jusqu'a SIYUM YESOD d'A"A (fin du yesod).
+      → 1/2 Tiferet d'A"A → GULGOLTA (crane) de Z"A.
+      → Architecture : Z"A occupies lower-half-A"A ; chazeh-A"A becomes Z"A-crown.
+      → Pattern : 1/2-Tiferet-A"A = Z"A-Keter-locus.
+    type: axiome_explicite
+    concepts:
+      - {id: z_a_revet_aa_tabbura_de_liba_chazeh_chatzi_tiferet_gulgolta_z_a, role: z_a_revet_aa_de_tabbura_de_liba_jusqu_yesod_aa_chatzi_tiferet_aa_gulgolta_z_a}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "arikh_anpin"]
+      relevance: "Architecture : Z\"A locus mapping. Pattern Tabbur-Yesod range."
+
+  - id: "EC-H4S16-075"
+    source_he: "ג' מוחין שלו נעשין מנה\"י דא\"א וז\"ס הרומז בתוספתא פ' בשלח ד\"ן עד לא אשתכח אוירא דכיא"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      3 MOCHIN de Z"A = NHY d'A"A.
+      → Sod (Tosefta Beshalach fol. 54) : "AD LO ISHTKACH AVIRA DAKHYA" (avant que l'air pur ne soit trouve).
+      → Architecture : NHY-superieur = mochin-inferieur (cascade).
+      → Pattern : tier-translation par anatomical-displacement.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 3_mochin_z_a_nhy_aa_tosefta_beshalach_54_avira_dakhya, role: 3_mochin_z_a_egal_nhy_aa_sod_tosefta_beshalach_54_ad_lo_ishtkach_avira_dakhya}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "arikh_anpin"]
+      relevance: "Architecture : tier-translation. Source Tosefta Beshalach 54."
+
+  - id: "EC-H4S16-076"
+    source_he: "ז\"א בחי' א' במעי אמא כי אז היה ו' זעירא ג' לבד והם נה\"י דז\"א... ולכן אלו הג' הם ו' זעירא"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      Z"A pendant IBBUR dans Meei IMMA :
+      → V ZEIRA (vav petit) = 3 letters seulement.
+      → Ces 3 = NHY d'Z"A.
+      → 3 KELILIN BE-3 (3 inclus dans 3) — les autres 3 montent dans A"O.
+      → Architecture : reduction in mother's womb = V ZEIRA.
+      → Pattern : pre-natal V ZEIRA vs post-natal V GADOL.
+    type: interprétation_lurianique
+    concepts:
+      - {id: z_a_meei_imma_v_zeira_3_letters_nhy_3_kelilin_be_3, role: z_a_pendant_ibbur_meei_imma_v_zeira_3_letters_nhy_z_a_3_kelilin_be_3}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : pre-natal reduction. Pattern V ZEIRA gestation."
+
+  - id: "EC-H4S16-077"
+    source_he: "סוד הזווג ב' דא\"א נעשה ביסוד שלו הכולל ימין ושמאל זכר ונקבה"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      ZIVVUG-2 d'A"A :
+      → Au YESOD d'A"A (lui-meme).
+      → YESOD = KOLLEL (incluant) YAMIN+SMOL = ZACHAR+NUKVA.
+      → Architecture : yesod = bipolaire interne (z+n).
+      → Pattern : second-zivvug-locus = yesod-organ.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_2_aa_yesod_kollel_yamin_smol_zachar_nukva, role: zivvug_2_aa_yesod_kollel_yamin_smol_zachar_nukva_bipolaire}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : yesod bipolaire. Pattern second zivvug locus."
+
+  - id: "EC-H4S16-078"
+    source_he: "להיות מציאת הזו\"ן תחתון למטה מאו\"א א\"כ הוצרך שיעשה ג\"כ זווג זה ע\"י או\"א... אותן נה\"י דא\"א שהיו למטה מאו\"א נתעלו למעלה באו\"א בתוך חג\"ת שלהם ולא בחג\"ת דא\"א עצמו"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      Pour ZON tachton via A"O :
+      → NHY d'A"A (qui etaient EN BAS d'A"O) MONTENT vers A"O.
+      → Mais s'incluent dans CHGT d'A"O (PAS dans ChGT d'A"A meme).
+      → Pas en bechinat MOCHIN d'A"O — mais simplement nikhalu dans ChGT d'A"O.
+      → Architecture : NHY-A"A propagated to A"O-ChGT specifically.
+      → Pattern : displacement-internal-A"O without overriding.
+    type: interprétation_lurianique
+    concepts:
+      - {id: zon_via_ao_nhy_aa_montent_chgt_ao_pas_chgt_aa, role: zon_tachton_via_ao_nhy_aa_montent_chgt_ao_pas_chgt_aa_pas_mochin}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : NHY displacement. Pattern internal-A\"O propagation."
+
+  - id: "EC-H4S16-079"
+    source_he: "נה\"י דא\"א הם סוד ג' טיפין דסגול הנזכר בתיקונים שמהן נעשה אדם תתאה שהוא ז\"א"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      NHY d'A"A = sod 3 TIPIN DE-SEGOL :
+      → SEGOL (vocalisation hebreu — 3 points triangulaires).
+      → Mentionnees dans TIKKUNIM.
+      → De ces 3 tipin → fait ADAM TACHTON (= Z"A).
+      → Architecture : vowel-marker encode 3-tipin-NHY-A"A.
+      → Pattern : nikud-shape encode cosmologic-form.
+    type: déduction_scripturaire
+    concepts:
+      - {id: nhy_aa_3_tipin_de_segol_tikkunim_adam_tachton_z_a, role: nhy_aa_3_tipin_de_segol_tikkunim_adam_tachton_z_a}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : nikud shape encoding. Source Tikkunim."
+
+  - id: "EC-H4S16-080"
+    source_he: "יסוד אבא אפיק טפה חדא ואעיל לה באמא ותמן במעוי דאמא אתעביד ז\"א ו' זעירא ג' כליל בג' לחוד... ובסופו של ו' פסיעה לבר סוד נוקבא עמו"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      Mecanisme HOLADAT Z"A detaille :
+      → YESOD d'ABBA APIK (sort) une TIPAH (goutte).
+      → A'EIL-LAH (entre) dans IMMA.
+      → DANS MEEI d'IMMA (matrice) — IT'AVIDA (devient) Z"A = V ZEIRA, 3 KELIL BE-3 SEUL.
+      → BE-SOFO SHEL VAV — PESIAH LEBAR (un pas dehors) = sod NUKVA AVEC LUI.
+      → Architecture : transmission Yesod-Abba → Imma → Z"A.
+      → Pattern : V finishes with NUKVA-extension (Pesiah Lebar).
+    type: interprétation_lurianique
+    concepts:
+      - {id: yesod_abba_apik_tipah_imma_meei_z_a_v_zeira_pesiah_lebar_nukva, role: yesod_abba_apik_tipah_imma_meei_z_a_v_zeira_3_kelil_3_pesiah_lebar_sod_nukva}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : transmission cascade Z\"A formation. Pattern Pesiah Lebar Nukva."
+
+  - id: "EC-H4S16-081"
+    source_he: "סוד הדדים של אשה... כי אותו אור הגדול שנתוסף עתה אל נה\"י דא\"א... זה נתהווה תחלה בחג\"ת אבא ואח\"כ בחג\"ת אמא... והאירה דרך שם בחזה דאו\"א לכן יש דדים בזכר ונקבה"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      SOD DADIM (mamelles) :
+      → Or-grand ajoute aux NHY-A"A pour zivvug → manifest D'ABORD dans ChGT d'ABBA, puis ChGT d'IMMA.
+      → HAARAH PUISSANTE PERCE le CHAZEH d'A"O.
+      → Resultat : DADIM apparent dans ZACHAR + NEKEVAH.
+      → Architecture : ChGT-channel produces dadim-organ at chazeh.
+      → Pattern : cosmologic-haarah → physical-anatomical-feature.
+    type: interprétation_lurianique
+    concepts:
+      - {id: dadim_femme_haarah_chgt_abba_imma_perce_chazeh_ao_zachar_nukva, role: dadim_femme_haarah_grande_chgt_abba_imma_perce_chazeh_ao_dadim_zachar_nukva}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : haarah → physical anatomy. Pattern cosmologic anatomical."
+
+  - id: "EC-H4S16-082"
+    source_he: "אותן של זכר הם קטנים ואין בו חלב ושל אשה גדולות ויש להם חלב והטעם כי בהיות ז\"א תוך חזה אבא לא היה כי אם מציאת טפה קטנה אך בהיותו בחזה אמא שם מתגדל בסוד העיבור עד שנעשה ו' כלול בתוך ג'"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      Asymmetric DADIM :
+      → ZACHAR : dadim PETITS, PAS de chalav.
+      → ASHA : dadim GRANDS, AVEC chalav.
+      → Cause :
+        Z"A dans CHAZEH ABBA = TIPAH PETITE seulement.
+        Z"A dans CHAZEH IMMA = MITGADAL en sod IBBUR jusqu'a V kollel-3.
+      → Donc dadim-Imma s'agrandissent + chalav (de l'abondance d'or).
+      → Architecture : duration-of-stay determines anatomic-extent.
+      → Pattern : gestation-amount = breast-development.
+    type: déduction_logique
+    concepts:
+      - {id: zachar_dadim_petits_no_chalav_nukva_grands_chalav_ibbur_imma, role: zachar_dadim_petits_no_chalav_z_a_chazeh_abba_tipah_petite_nukva_grands_chalav_imma_ibbur}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : duration-anatomic. Pattern gestation breast."
+
+  - id: "EC-H4S16-083"
+    source_he: "סוד החלב הוא עילוי הדם למעלה ומתהפך לחלב ומתמתק וכן נה\"י לעולם למטה הם דם סוד הדינין כי לכן הם בכ\"מ לבר מגופא כנ\"ל ובעלותן למעלה בהתכללותן למעלה בחג\"ת אז הם מתהפכין לחלב"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      DAM ↔ CHALAV transformation :
+      → CHALAV = ELU'AT ha-DAM (elevation du sang) — MITHAPEKH (transforme) en lait + se sucre.
+      → NHY toujours en BAS = DAM = sod DININ (jugements) — donc LEBAR-MI-GUFA.
+      → En MONTANT (kelul ChGT) → MITHAPEKHIN a CHALAV.
+      → Architecture : motion-direction encode substance-transformation.
+      → Pattern : ascent = sweetening (din → rachamim).
+    type: interprétation_lurianique
+    concepts:
+      - {id: chalav_eluat_dam_nhy_dam_dinim_lebar_gufa_montent_chgt_chalav, role: chalav_eluat_dam_mithapekh_nhy_toujours_bas_dam_dinim_lebar_mi_gufa_montent_chgt_chalav}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : motion-substance. Pattern ascent-sweetening."
+
+  - id: "EC-H4S16-084"
+    source_he: "יצא ז\"א לחוץ דמיון תינוק היונק ומרוב אותו חלב נתגדל ונעשה ו' גדולה בו\"ק לבד שהוא ו' דשמא קדישא"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      Z"A SORTIT EHORS = TINOK YONEK (nourrisson allaitant).
+      → De ROV CHALAV (abondance lait) — NITGADAL (s'agrandit).
+      → Devient V GADOL en V"K (6 sefirot) — c'est V du SHEMA KADISHA (Shem Havayah).
+      → Architecture : post-natal nourishing → vav-gadol formation.
+      → Pattern : V GADOL = V"K-completed Z"A.
+    type: déduction_logique
+    concepts:
+      - {id: z_a_tinok_yonek_chalav_nitgadal_v_gadol_vk_shem_kadisha, role: z_a_tinok_yonek_rov_chalav_nitgadal_v_gadol_v_k_v_dshema_kadisha_havayah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : post-natal nourishing. Pattern V GADOL completion."
+
+  - id: "EC-H4S16-085"
+    source_he: "בתוך בינה היה סוד ו' זעירא כלול מג' תוך ה' דבינה אמא עלאה ולכן אין שום דמות ראש לזו הו'"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      V ZEIRA pre-natal :
+      → Dans BINA = sod V ZEIRA KOLLEL DE-3 dans HE-Bina-IMMA-elyona.
+      → Pas de DIMUI ROSH (apparence de tete) — V courbe sans tete.
+      → Architecture : letter-form encode pre-natal V"K-only state.
+      → Pattern : no-head V = no-mochin yet.
+      cf. EC-H4S15-205 (perek 4 Sha'ar 2) sur Vav sans tete dans HE.
+    type: interprétation_lurianique
+    concepts:
+      - {id: v_zeira_dans_he_bina_imma_pas_dimui_rosh_pre_natal, role: v_zeira_kollel_3_dans_he_bina_imma_elyona_pas_dimui_rosh_pre_natal_v_courbe}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : pre-natal letter-form. Pattern V courbe no-head."
+
+  - id: "EC-H4S16-086"
+    source_he: "מה שבארנו חילוק בין הולדת או\"א ובריאותן לבריאת זו\"ן זה נרמז בזהר פרשת תרומה דף קס\"ז... אדם קדמאה אגליף ציורא דיליה גו משחתא וכו' שפי' כי א\"ק הוא מציאת... או\"א ואגליף בסוד הזרעת הטפה ציורא דיליה גו משחתא שהם או\"א תוך שערות רישא דא\"א ודיקנא יקירא דיליה הנקרא משחתא אך אדם תניינא ז\"א היה ע\"י זיווג נה\"י דא\"א תוץ בינה"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      CHILUK A"O (Adam Kadma) vs Z"A (Adam Tinyana) — Zohar Terumah 167 :
+      → ADAM KADMA = A"O ; AGLIF (sculpte) ZURATA DILEH GU MASHCHATA :
+        = A"O dans SE'AROT ROSH d'A"A + DIKNA YAKIRA (= MASHCHATA, onction).
+        Via zivvug-PEH (HAZRA'AT-TIPAH).
+      → ADAM TINYANA = Z"A — via zivvug NHY-A"A TOKH BINA.
+      → Architecture : 2-Adam-types par zivvug-mecanisme distinct.
+      → Pattern : Kadma-via-peh ; Tinyana-via-NHY-Bina.
+    type: déduction_scripturaire
+    concepts:
+      - {id: adam_kadma_ao_aglif_mashchata_zohar_terumah_167_vs_adam_tinyana_z_a_nhy_aa_bina, role: zohar_terumah_167_adam_kadma_ao_aglif_zurata_dileh_gu_mashchata_dikna_se_arot_aa_vs_adam_tinyana_z_a_nhy_aa_bina}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : 2 Adam types. Source Zohar Terumah 167."
+
+  - id: "EC-H4S16-087"
+    source_he: "כל אדם נרמזין בו כל הי\"ס מא\"א עד הנוקבא וא\"כ כשנצייר צורת דדים לא נצטייר בציור בינה לבדה או נוקבא לבד רק במציאת כוללת כל אורך י\"ס"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      SHE'ELAH dadim chazeh — REPONSE :
+      → ADAM (humain) RAMUZIN-BO (allusionne) TOUS 10S — d'A"A jusqu'a NUKVA.
+      → Pas Tiferet+Malkhut SEULS.
+      → Quand on TZAYER (figure) tzurat dadim — c'est sur l'ENSEMBLE du shi'ur 10S.
+      → Architecture : human-anatomy encode complete-cosmic-shi'ur.
+      → Pattern : complete-tier-mapping pour humain.
+    type: déduction_logique
+    concepts:
+      - {id: adam_complete_10s_aa_jusqu_nukva_dadim_kollel_shi_ur_total, role: adam_ramuzin_complete_10s_aa_nukva_dadim_kollel_shi_ur_total_pas_tiferet_seul}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : human complete tier-mapping. Pattern 10S complete."
+
+  - id: "EC-H4S16-088"
+    source_he: "כשנתעלו נה\"י דא\"א בחג\"ת דאו\"א... חג\"ת דאו\"a הם באמצעית ממש כי כח\"ב למעלה ונה\"י למטה וחג\"ת באמצע והנה שיעור או\"א בחצי גוף העליון דא\"א מגרון עד חצי לב ואם תעריך דדי אשה תמצאם שהם ממש במקום הזה באמצע חצי גוף עליון שמן הצואר עד טבורא דלבא"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      Position dadim explained :
+      → ChGT d'A"O = AU MILIEU (KCHaBD haut, NHY bas, ChGT centre).
+      → Shi'ur A"O dans CHATZI-GUF-ELYON d'A"A = de Garon a Tabbura de-Liba (chazeh).
+      → Dadim-asha = exactement DANS CETTE ZONE = milieu chatzi-guf-elyon = TZAVAR (cou) jusqu'a TABBURA DE-LIBA.
+      → Architecture : anatomical-position correspondance ChGT-A"O.
+      → Pattern : breast-position = mid-upper-body locus.
+    type: déduction_logique
+    concepts:
+      - {id: dadim_chazeh_zone_chgt_ao_milieu_garon_tabbura_de_liba, role: dadim_chazeh_position_chgt_ao_milieu_chatzi_guf_elyon_aa_garon_tabbura_de_liba}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : anatomy ChGT correspondance. Pattern mid-upper-body."
+
+  - id: "EC-H4S16-089"
+    source_he: "בבהמות וחיות שהם בסוד מין א' לבד ואינו כולל כמו האדם לכן באו בהם הדדים בבטנם ממש"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      BEHEMOT (animaux) + CHAYOT :
+      → Sod MIN ECHAD (une seule espece-tier).
+      → Ne sont PAS COMPLETS comme ADAM.
+      → Donc DADIM dans BETEN (ventre) MAMASH (litteralement) — pas chazeh.
+      → Architecture : species-tier-incomplete = lower-anatomical-locus.
+      → Pattern : single-tier-species → terminal-position dadim.
+    type: déduction_logique
+    concepts:
+      - {id: behemot_chayot_min_echad_dadim_beten_pas_chazeh, role: behemot_chayot_min_echad_pas_complete_comme_adam_dadim_beten_mamash}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : species-tier-incomplete. Pattern terminal-position."
+
+  - id: "EC-H4S16-090"
+    source_he: "יסוד דא\"א זהו סוד השופר שהוא צר וגם אמרו עליו מן המצר ואמרו בזוהר אמור דשופר זה אפיק קול והוא אש ומים רוח והוא ענין זווג א\"א להוציא ז\"א ג' כליל בג' חסד דין רחמים אמ\"ר והוא סוד ו' זעירא קול דנפיק משופר"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      YESOD A"A = sod SHOFAR (cor) :
+      → TZAR (etroit) — sod "MIN HA-METZAR" (Tehilim 118:5 — du etroit).
+      → ZOHAR EMOR : "SHOFAR APIK KOL" (le shofar emet voix).
+      → KOL = ESH+MAYIM+RUACH (feu+eau+esprit).
+      → INYAN ZIVVUG d'A"A pour faire sortir Z"A : 3 KELIL BE-3 = CHESED+DIN+RACHAMIM = AMaR (אמ"ר).
+      → V ZEIRA = KOL DE-NAFIK (qui sort) du shofar.
+      → Architecture : yesod-as-shofar-anatomy.
+      → Pattern : organ-as-instrument cosmologic.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yesod_aa_shofar_min_ha_metzar_amar_kol_z_a_v_zeira, role: yesod_aa_shofar_zohar_emor_min_ha_metzar_tehilim_118_5_amar_chesed_din_rachamim_kol_v_zeira_z_a}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : organ-as-instrument. Sources Zohar Emor + Tehilim 118:5."
+
+  - id: "EC-H4S16-091"
+    source_he: "אופן כללות נה\"י בחג\"ת דאו\"א הוא עד\"ז... נצח הכלול מהוד עלה לאבא והוד כלול מנצח עלה לאמא ואז מכח ב' בחי' אלו שבכל א' וא' נמשכו הדדים מרוב האור"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      KELALUT NHY-A"A dans ChGT-A"O (detail) :
+      → 1/2 Tiferet d'A"A reste en bas (NHY-A"A locale).
+      → L'autre 1/2 monte dans Tiferet d'A"O.
+      → NETZACH kollel-de-Hod monte vers ABBA.
+      → HOD kollel-de-Netzach monte vers IMMA.
+      → 2 BECHINOT dans chacun (Abba+Imma) → DADIM emergent (de l'abondance d'or).
+      → YESOD se split : 1/2 vers Yesod-Abba + 1/2 vers Yesod-Imma.
+      → Architecture : detailed mapping NHY-A"A → ChGT-A"O components.
+      → Pattern : cross-kollel transfer Netzach↔Hod.
+    type: interprétation_lurianique
+    concepts:
+      - {id: kelalut_nhy_aa_chgt_ao_netzach_abba_hod_imma_yesod_split_dadim, role: kelalut_nhy_aa_chgt_ao_netzach_kollel_hod_abba_hod_kollel_netzach_imma_yesod_split_1_2_dadim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : cross-kollel transfer. Pattern Netzach-Abba Hod-Imma."
+
+  - id: "EC-H4S16-092"
+    source_he: "באדם דהיינו אבא יהיה בלי חלב וזה לפי שאין הדבר שם רק לפי שעה בסוד טפת הזרע אך בסוד בינה ששם נתהוו כל איברי הגוף דז\"א היתה הארה גדולה בהתפשטותו וממנו נמשך החלב לכן היו ב' דדים לכל א' נגד ב' בחי' שבכל א' מהם"
+    source_ref: "Heikhal 4, Sha'ar 3:5"
+    assertion: |
+      Asymmetric dadim-chalav explained :
+      → ADAM (=ABBA) : dadim BLI CHALAV (sans lait).
+      → Cause : tipah-zerah seulement TEMPORAIRE.
+      → BINA (=IMMA) : tous IVREI HA-GUF d'Z"A se forment ; HAARAH GADOLAH ; CHALAV nimshakh.
+      → 2 DADIM par chacun = 2 BECHINOT (Netzach+Hod kollel-distinguishe).
+      → Architecture : function-locus-determines-substance-presence.
+      → Pattern : passive-organ vs active-organ asymmetry.
+    type: déduction_logique
+    concepts:
+      - {id: abba_dadim_no_chalav_temporaire_imma_chalav_haarah_grande_2_dadim_chacun, role: abba_dadim_bli_chalav_temporaire_tipah_imma_chalav_haarah_gadolah_2_dadim_chacun_bechinot}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : function-substance asymmetry. Pattern passive vs active."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S16-021"
+    type: dualité_structurelle
+    from: holadat_z_a_2_zivvugim_z1_aa_emergence_z2_ao_mochin
+    to: zon_via_ao_nhy_aa_montent_chgt_ao_pas_chgt_aa
+    nature: "2 zivvugim Z\"A — Z1 emergence via A\"A, Z2 mochin via A\"O ; ZON tachton via A\"O = NHY-A\"A montent ChGT-A\"O"
+    assertions_source: ["EC-H4S16-073", "EC-H4S16-077", "EC-H4S16-078"]
+
+  - id: "REL-H4S16-022"
+    type: causal
+    from: nhy_aa_3_tipin_de_segol_tikkunim_adam_tachton_z_a
+    to: yesod_abba_apik_tipah_imma_meei_z_a_v_zeira_pesiah_lebar_nukva
+    nature: "NHY-A\"A=3 tipin de-segol (Tikkunim)=Adam Tachton ; Yesod Abba apik tipah → Imma → meei → Z\"A V ZEIRA + Pesiah Lebar Nukva"
+    assertions_source: ["EC-H4S16-079", "EC-H4S16-080"]
+
+  - id: "REL-H4S16-023"
+    type: transformation
+    from: chalav_eluat_dam_nhy_dam_dinim_lebar_gufa_montent_chgt_chalav
+    to: z_a_tinok_yonek_chalav_nitgadal_v_gadol_vk_shem_kadisha
+    nature: "DAM (NHY bas, dinim) en MONTANT ChGT → CHALAV (eluat-dam mitchalef) ; Z\"A=tinok yonek → V GADOL V\"K (Shem)"
+    assertions_source: ["EC-H4S16-083", "EC-H4S16-084"]
+
+  - id: "REL-H4S16-024"
+    type: dualité_structurelle
+    from: adam_kadma_ao_aglif_mashchata_zohar_terumah_167_vs_adam_tinyana_z_a_nhy_aa_bina
+    to: dadim_chazeh_zone_chgt_ao_milieu_garon_tabbura_de_liba
+    nature: "Adam Kadma (A\"O peh-zivvug Zohar Terumah 167) vs Adam Tinyana (Z\"A NHY-A\"A Bina) ; dadim chazeh=zone ChGT-A\"O milieu Garon-Tabbur"
+    assertions_source: ["EC-H4S16-086", "EC-H4S16-087", "EC-H4S16-088"]
+
+  - id: "REL-H4S16-025"
+    type: causal
+    from: kelalut_nhy_aa_chgt_ao_netzach_abba_hod_imma_yesod_split_dadim
+    to: abba_dadim_no_chalav_temporaire_imma_chalav_haarah_grande_2_dadim_chacun
+    nature: "KELALUT NHY-A\"A ChGT-A\"O (Netzach→Abba, Hod→Imma, Yesod split) → 2 dadim chacun ; Abba sans chalav temporaire, Imma avec chalav haarah grande"
+    assertions_source: ["EC-H4S16-091", "EC-H4S16-092"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S16-013"
+    nom: "Principe de NHY-A\"A-as-Mochin-Z\"A (Cascade Tier-Translation)"
+    source_assertions: ["EC-H4S16-074", "EC-H4S16-075", "EC-H4S16-079", "EC-H4S16-091"]
+    formalisation: |
+      ARCHITECTURE DE NHY-A"A-AS-MOCHIN-Z"A :
+      Cascade-tier-translation entre A"A et Z"A :
+        Z"A revet A"A de TABBURA DE-LIBA jusqu'a fin yesod A"A.
+        1/2 Tiferet A"A → GULGOLTA Z"A.
+        3 MOCHIN Z"A = NHY d'A"A.
+        NHY A"A = sod 3 TIPIN DE-SEGOL (Tikkunim) → ADAM TACHTON.
+      KELALUT detail :
+        Netzach kollel-Hod → Abba.
+        Hod kollel-Netzach → Imma.
+        Yesod split 1/2-1/2 entre Abba+Imma.
+      Source : Tosefta Beshalach 54.
+      → Pattern fondamental : higher-NHY = lower-mochin.
+      → Architecture : tier-displacement reverses NHY-vs-mochin role.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + arikh_anpin.py + abba.py + imma.py : implement NHY-mochin cascade"
+      - "Pattern : NHY-of-higher = mochin-of-lower"
+      - "Architecture : tier-translation cascade"
+      - "Pattern : 3-tipin-segol Adam Tachton encoding"
+      - "Diagnostic : verifier cascade coherent"
+    questions_ouvertes:
+      - "Pattern : 4-tier cascade possible ?"
+      - "Comment encoder kollel-cross transfer ?"
+      - "Pattern : autres organ-tier displacements ?"
+
+  - id: "PG-H4S16-014"
+    nom: "Principe de DAM-CHALAV-Transformation (Ascent = Sweetening)"
+    source_assertions: ["EC-H4S16-083", "EC-H4S16-084"]
+    formalisation: |
+      ARCHITECTURE DE DAM-CHALAV-TRANSFORMATION :
+      Substance-transformation par MOTION-DIRECTION :
+        DAM (sang) en BAS = sod DININ (jugements).
+        NHY toujours en bas = LEBAR-MI-GUFA (a l'exterieur).
+        En MONTANT (kelul ChGT) → MITHAPEKHIN a CHALAV (lait, sweetened).
+      CHALAV = ELU'AT ha-DAM (elevation du sang).
+      Z"A apres naissance = TINOK YONEK → grandit V GADOL V"K.
+      Avant : V ZEIRA dans Bina sans dimui-rosh (no-mochin).
+      → Pattern fondamental : ascent encodes-din-to-rachamim transformation.
+      → Architecture : motion-direction = substance-quality axis.
+      → Implication : tier-elevation purifies substance.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py : implement DAM-CHALAV transformation"
+      - "Pattern : ascent = sweetening axis"
+      - "Architecture : substance-quality motion-encoded"
+      - "Pattern : nourishing post-natal V GADOL"
+      - "Diagnostic : verifier substance-state aligned avec direction"
+    questions_ouvertes:
+      - "Pattern : autres substance-transformations directionnelles ?"
+      - "Comment encoder substance-quality computationnellement ?"
+      - "Pattern : 3-substance-cycle (DAM/CHALAV/?) ?"
+
+  - id: "PG-H4S16-015"
+    nom: "Principe de Adam-Encodes-10S-Complete (Pas T+M Seuls)"
+    source_assertions: ["EC-H4S16-086", "EC-H4S16-087", "EC-H4S16-088", "EC-H4S16-089"]
+    formalisation: |
+      ARCHITECTURE DE ADAM-COMPLETE-10S :
+      ADAM (humain) = ramuzin TOUS 10S (d'A"A jusqu'a Nukva).
+      DADIM-ANATOMY confirme :
+        Position chazeh = milieu chatzi-guf-elyon = ChGT-A"O = entre Garon et Tabbur.
+        Pas Tiferet+Malkhut seuls.
+      BEHEMOT (animaux) = MIN ECHAD (une seule espece-tier).
+        DADIM dans BETEN (ventre) — terminal-position.
+      DISTINCTION 2-Adam-types (Zohar Terumah 167) :
+        ADAM KADMA = A"O ; AGLIF GU MASHCHATA (sculpte dans dikna+se'arot A"A) ; via zivvug-PEH.
+        ADAM TINYANA = Z"A ; via zivvug NHY-A"A tokh Bina.
+      → Pattern fondamental : human-anatomy encode complete-cosmic-shi'ur.
+      → Architecture : anatomical-position = tier-position-mapping.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py + nukva.py : implement Adam complete-10S"
+      - "Pattern : human anatomy = full tier mapping"
+      - "Architecture : anatomical position determines tier"
+      - "Pattern : 2-Adam-types distinct mecanismes"
+      - "Diagnostic : verifier anatomical-tier coherent"
+    questions_ouvertes:
+      - "Pattern : autres anatomical-cosmic mappings ?"
+      - "Comment encoder species-tier distinction ?"
+      - "Pattern : 3-Adam-types possibles ?"

@@ -1,0 +1,41 @@
+# ═══════════════════════════════════════════════════════════════════
+# Heikhal 04 / Shaar 03 — Holadat A"O ve-Zon (שער הולדת או״א וזו״ן)
+# Sefaria : Sefer_Etz_Chaim.16 (gate 16, 3eme sha'ar Heikhal 4)
+# 7 perakim sur la generation d'A"O et de Zon ; 42 ZIVVUGIM
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer_id: "etz_chaim"
+  heikhal: 4
+  shaar_number: 3
+  shaar_name_he: "שער הולדת או״א וזו״ן"
+  shaar_name_fr: "Porte de la generation d'A\"O et de Zon"
+  sefaria_gate: 16
+  nombre_perakim: 7
+  sujet_principal: |
+    Sha'ar HoladaT A"O VE-ZON (Heikhal 4, Sefer Etz Chaim 16). 7 perakim systematiques sur :
+    - Hakdamah HOLADAT A"O+Zon
+    - 42 ZIVVUGIM (Zohar Bereshit 15)
+    - Tipah du SHEM AB ; sod YH"V (chab"d)
+    - 3 YH"V (AB+MaH+BaN) = 63 = SaG ; YH"V SaG=48 → MaKOM=186 (Shemot 33:21)
+    - CHIKH (palais) = yesod Chokhmah = ChG"T 28+14 letters = 42
+    - GARON = Bina (par rapport au reste du corps)
+    - SaG 2 metziut : milui yodin (Abba) + milui alefin (Imma) → A"O kechada nafkin
+    - ZON inegaux MaH+BaN (vs A"O qui sont SaG seul kechada)
+    - Sods CHAKAL TAPUCHIN (138) ; KI CHELEK HASHEM AMO (Devarim 32:9)
+  concepts_cles:
+    - 42_zivvugim_zohar_bereshit_15
+    - tipah_yhv_chab_d
+    - chikh_chokhmah_garon_bina
+    - ab_sag_mah_ban_dans_yod
+    - ao_kechada_nafkin_sag_yodin_alefin
+    - zon_inegaux_mah_ban
+    - yh_v_ab_57_yh_v_mah_39_tal
+    - ki_chelek_hashem_amo_devarim_32_9
+    - hineh_makom_iti_shemot_33_21
+  note: "Auto-transposition systematique Sefer Etz Chaim gate 16 (Sha'ar Holadat A\"O ve-Zon) — 7 perakim. 3eme sha'ar Heikhal 4."
+  source_primary: "Sefaria Sefer Etz Chaim gate 16 (https://www.sefaria.org/Sefer_Etz_Chaim.16)"
+  source_edition_default: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  strates: ["base"]
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1

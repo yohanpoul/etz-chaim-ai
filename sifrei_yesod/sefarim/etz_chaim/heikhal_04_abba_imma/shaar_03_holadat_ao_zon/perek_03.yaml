@@ -1,0 +1,524 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 3 — Sha'ar Holadat A"O ve-Zon (שער הולדת או״א וזו״ן)
+# Perek: 3 — 3 AHYH A"O. CHALAV/DAM = 2×M"B. SHADIM (=304) gematria.
+#            "KOH TOMAR" Shemot 3:14b. 27 letters = 22 alphabet + 5 manatzpach.
+#            Zivvug Tevunah = beit-herayon. Z"A 1/3 Tiferet A"A.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_03 :
+#   - Bloc A : 3 AHYH A"O distribution 3 milui-types (yodin g"r, alefin emtza, hehin g"t)
+#   - Bloc B : 3 M"B : 1 YH"V zachar split 2 AHYH-M"B + 2 M"B = 2 AHYH yodin/alefin (hehin pas M"B)
+#   - Bloc C : M"B-1 (zachar) = CHALAV (lait, loven Z"A) ; AHYH-Imma = DAM (sang odem)
+#   - Bloc D : CHALAV+DAM = 2×M"B = 84 ; "CHALAV VE-DAM LA-GAVOA SALKEI" (Talmud Bekhorot 6b)
+#   - Bloc E : AHYH-2 (alefin, emtza, lieu DADIM mamelles)
+#   - Bloc F : Apres lidah-vlad : DAM-elyon → CHALAV (transformation post-naissance)
+#   - Bloc G : DAM descend AHYH-3 (g"t) ; achor ribua=44=DM
+#   - Bloc H : 2 AHYH yodin+alefin gematria SH"D (304) ; mehem SHADIM+DADIM
+#   - Bloc I : AHYH-yodin descend AHYH-alefin (Tiferet chazeh) → SHADIM
+#   - Bloc J : AHYH-acharon DM monte AHYH-alefin → CHALAV (allaiter le foetus)
+#   - Bloc K : Z"A yetzira via AHYH-3 hehin = "KOH TOMAR EHYEH SHELACHANI" (Shemot 3:14b)
+#   - Bloc L : AHYH-hehin milui-milui=25 letters (KoH=25) ; 25-4=21=AHYH
+#   - Bloc M : 2 AHYH yodin+alefin=27 letters = 22 alphabet + 5 manatzpach (Bina)
+#   - Bloc N : Tipah descendent yesod A"A → ATARAH (1/3 yesod)=Malkhut
+#   - Bloc O : Zivvug pas A"A seul — NHY A"A montent ChGT (3 kelilin 3) → Z"A V"K levush NHY A"A
+#   - Bloc P : NHY A"A = neshamah 9S Z"A (Netzach=kav-yamin Ch-Ch-N ; Hod=smol B-G-H ; Yesod=emtza D-T-Y)
+#   - Bloc Q : Tout dans MEEI TEVUNAH ; Bina=chazeh-up Imma ; Tev=chazeh-down (beit-herayon)
+#   - Bloc R : Tev=EM HA-BANIM ; Ibbur Z"A LIMKETOIM ~7 mois (Moshe, Shmuel, Peretz/Zerach, tzadikim)
+#   - Bloc S : Z"A=Tabbur-A"A-down ; A"O=Garon-Tabbur (2/3 Tiferet) ; Z"A occupe 1/3 Tiferet+1/3 yesod=Atarah
+#
+# Source Sefaria : Sefer_Etz_Chaim.16.3 (1 section, 4682 chars)
+# IDs : EC-H4S16-036 → EC-H4S16-053
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 3
+  shaar_name_he: "שער הולדת או״א וזו״ן"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "3 AHYH A\"O distribution 3 milui-types. 1 YH\"V zachar split 2 AHYH-M\"B (yodin+alefin) ; AHYH-3 hehin pas M\"B (Bina A\"M=41 letters). M\"B-1 zachar=CHALAV (loven) ; AHYH-Imma=DAM (odem) ; 2×M\"B=84 (Talmud Bekhorot 6b 'chalav ve-dam la-gavoa salkei'). Post-lidah DAM-elyon→CHALAV. 2 AHYH yodin+alefin=SH\"D (304) → SHADIM+DADIM. Z\"A yetzira via AHYH-3 hehin 'KOH TOMAR' (Shemot 3:14b)=25 letters (KoH=25). 27 letters yodin+alefin=22 alphabet+5 manatzpach. Tipah descendent yesod A\"A → ATARAH=1/3 yesod=Malkhut. Zivvug NHY A\"A monterent ChGT (3 kelilin 3) → Z\"A V\"K levush. NHY A\"A=neshamah 9S Z\"A (Netzach kav-yamin/Hod smol/Yesod emtza). MEEI TEVUNAH (Tev=chazeh-down=beit-herayon=EM HA-BANIM). Ibbur Z\"A LIMKETOIM ~7 mois (Moshe, Shmuel, Peretz, Zerach, tzadikim). Z\"A=Tabbur-down ; occupe 1/3 Tiferet A\"A + 1/3 yesod=Atarah."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S16-036"
+    source_he: "ג' אהי\"ה הם באו\"א א' למעלה במילוי יודי\"ן בג\"ר וא' בג' אמצעיות במילוי אלפי\"ן וא' בג\"ת במילוי ההי\"n"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      3 AHYH dans A"O distribution :
+      → AHYH-1 : MILUI YODIN, en G"R (3 sup).
+      → AHYH-2 : MILUI ALEFIN, en 3 EMTZA'IYOT (medianes).
+      → AHYH-3 : MILUI HEHIN, en G"T (3 acharonot).
+      → Architecture : 3-tier-AHYH par milui-type.
+      → Pattern : milui-type encode position-tier.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_ahyh_ao_yodin_gr_alefin_emtza_hehin_gt, role: 3_ahyh_ao_yodin_gr_alefin_emtzaiyot_hehin_gt_3_milui_types}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : milui-type encode tier. Pattern 3-tier AHYH."
+
+  - id: "EC-H4S16-037"
+    source_he: "ג' מ\"ב הם א' מיה\"ו של הזכר אשר אח\"כ נחלק לב' אהי\"ה שהם ג\"כ מ\"ב וב' מ\"ב אחרים הם בב' אהי\"ה דיודי\"ן ואלפי\"ן כי באהי\"ה הג' דההי\"ן אין במילוי מ\"ב אתוון"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      3 M"B distribution :
+      → M"B-1 : du YH"V zachar (qui se divise en 2 AHYH = 2× M"B).
+      → 2 M"B autres : dans 2 AHYH yodin+alefin.
+      → AHYH-3 (hehin) : N'A PAS 42 letters dans le milui (= Bina A"M=41).
+      → Architecture : asymmetric milui-letter-count entre milui-types.
+      → Pattern : hehin-milui shorter than yodin/alefin.
+    type: déduction_logique
+    concepts:
+      - {id: 3_mb_yhv_zachar_2_ahyh_yodin_alefin_hehin_pas_42, role: 3_mb_yhv_zachar_split_2_ahyh_yodin_alefin_42_chacune_hehin_pas_42_milui_letters}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : asymmetric milui-count. Pattern hehin-shorter."
+
+  - id: "EC-H4S16-038"
+    source_he: "המ\"ב הא' של הזכר ממנו נעשה החלב שהוא לובן דז\"א ומאהי\"ה דאמא נעשה הדם שהוא אודם והנה דם וחלב הם כמספר ב\"פ מ\"ב ולכן חלב ודם לעולם לגבוה סלקי"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      Substances biologiques :
+      → M"B-1 (zachar) → CHALAV (lait, חלב = LOVEN/blanc Z"A).
+      → AHYH d'IMMA → DAM (sang, אדום/rouge).
+      → DAM (4+40=44) + CHALAV (8+30+2=40) = 84 = 2× M"B.
+      → Talmud (Bekhorot 6b) : "CHALAV VE-DAM LA-GAVOA SALKEI" (lait+sang montent vers le haut/sublime).
+      → Architecture : biology-as-cosmology (lait+sang = encoding).
+      → Pattern : physical-fluids encode spiritual-shem.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chalav_loven_dam_odem_2x_mb_84_la_gavoa_salkei_bekhorot_6b, role: chalav_loven_zachar_dam_odem_imma_2_x_mb_84_talmud_bekhorot_6b_la_gavoa_salkei}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : biology-as-cosmology. Source Talmud Bekhorot 6b."
+
+  - id: "EC-H4S16-039"
+    source_he: "אהי\"ה הב' שהוא מ\"ב הב' שהוא בג' אמצעיות במקום דדים של האשה ושם אחר לידת הולד חוזר הדם העליון להיות חלב"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      AHYH-2 (alefin, emtza'iyot) :
+      → Lieu = DADIM (mamelles) de l'isha (femme).
+      → APRES LIDAT HA-VLAD (naissance du foetus) : DAM ELYON CHOZER (revient) LIHIYOT CHALAV.
+      → Sang superieur transforme en lait pour allaitement.
+      → Architecture : post-natal substance-transformation.
+      → Pattern : DAM→CHALAV apres birth-event.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ahyh_2_alefin_dadim_lidat_vlad_dam_elyon_chazer_chalav, role: ahyh_2_alefin_emtzaiyot_dadim_post_lidah_dam_elyon_chazer_chalav_transformation}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : substance-transformation post-natal. Pattern DAM→CHALAV."
+
+  - id: "EC-H4S16-040"
+    source_he: "סוד הדם כפי האמת הוא יורד למטה באהי\"ה של ההי\"ן דג\"ת ושם נעשה הדם כי אז נעשה באחוריים של ג\"ת שהם רבוע של אהי\"ה העולה מ\"ד ושם הוא ד\"ם"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      DAM realite plus profonde :
+      → DAM descend a AHYH-3 (hehin) en G"T (3 acharonot).
+      → Devient DAM dans ACHORAYIM des G"T = RIBUA d'AHYH.
+      → Ribua AHYH = 44 (D"M = dalet-mem).
+      → Architecture : ribua-encoding pour matter-formation.
+      → Pattern : achor-ribua = locus-of-physical-formation.
+    type: déduction_logique
+    concepts:
+      - {id: dam_ahyh_3_hehin_gt_achor_ribua_44_dm, role: dam_descend_ahyh_3_hehin_gt_achor_ribua_ahyh_44_dm_locus_formation}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : achor-ribua matter-formation. Pattern locus encoding."
+
+  - id: "EC-H4S16-041"
+    source_he: "ב' אהי\"ה הראשונים דיודי\"ן ואלפי\"ן הם גימטריא ש\"ד... ומהם מתהוים ונעשו שדים והדדים שיורד אהי\"ה דיודי\"ן למקום אהי\"ה דאלפי\"ן שמקומו בת\"ת נגד החזה ושם מתחברים שניהם ונעשו שדים ודדים"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      2 AHYH yodin+alefin combines :
+      → Gematria SH"D (304 — alef-lamed-pe-he-yod + alef-he-yod-he par lecture) — formation seins.
+      → AHYH-yodin DESCEND vers AHYH-alefin (lieu : Tiferet, niveau CHAZEH).
+      → MITCHABRIM SHENEIHEM (les deux se combinent).
+      → DEVIENNENT SHADIM + DADIM (seins et mamelles).
+      → Architecture : merger-letter-encoding genere anatomy.
+      → Pattern : letter-merger creates physical-organ.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 2_ahyh_yodin_alefin_shd_304_yodin_descend_alefin_tiferet_chazeh_shadim_dadim, role: 2_ahyh_yodin_alefin_shd_304_yodin_descend_alefin_tiferet_chazeh_mitchabrim_shadim_dadim}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : letter-merger anatomy. Pattern numerologic creation."
+
+  - id: "EC-H4S16-042"
+    source_he: "אהי\"ה האחרון העולה דם עולה למעלה באהי\"ה דאלפין ושם מתחלף ונעשה חלב לינק הולד אחר שנולד"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      AHYH-acharon (DM=44) MONTE :
+      → De g"t monte vers AHYH-alefin (emtza'iyot, lieu DADIM).
+      → MITCHALEF (substitue/transforme) → DEVIENT CHALAV.
+      → Pour LINOK (allaiter) le VLAD apres birth.
+      → Architecture : ascending-substance-transformation cycle.
+      → Pattern : DM→CHALAV par migration-tier.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ahyh_acharon_dm_monte_alefin_mitchalef_chalav_linok_vlad, role: ahyh_acharon_dm_monte_alefin_dadim_mitchalef_chalav_linok_vlad_post_birth}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : ascending transformation. Pattern migration substance."
+
+  - id: "EC-H4S16-043"
+    source_he: "מציאות יצירת הולד ז\"א היה בבחי' אהי\"ה האחר' שהוא אהי\"ה דההי\"ן הרומז בפסוק כה תאמר אהיה שלחני אליכם והנה אהי\"ה של ההי\"ן מילוי המילוי אין בו רק כ\"ה אותיות"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      Z"A YETZIRAH (formation foetus) :
+      → Via AHYH-3 d'HEHIN (acharon).
+      → Sod : "KOH TOMAR EHYEH SHELACHANI ALEIKHEM" (Shemot 3:14b — ainsi tu diras EHYEH m'a envoye a vous).
+      → AHYH d'HEHIN MILUI-DU-MILUI = 25 LETTERS seulement.
+      → KOH (כה) = 25 — auto-reference numerologique du verset.
+      → Architecture : verse self-references letter-count.
+      → Pattern : numerologic prefix marks letter-content.
+    type: déduction_scripturaire
+    concepts:
+      - {id: z_a_yetzira_ahyh_3_hehin_koh_tomar_shemot_3_14b_25_letters, role: z_a_yetzira_ahyh_3_hehin_koh_tomar_ehyeh_shelachani_shemot_3_14b_25_letters_milui_milui_koh_25}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : verse self-reference. Source Shemot 3:14b."
+
+  - id: "EC-H4S16-044"
+    source_he: "ב' אהי\"ה דיודי\"ן ואלפי\"ן הם כ\"ז וז\"ס כ\"ה תאמר אהיה שלחני אליכם... אמנם הב' אהי\"ה שיש בהם כ\"ז אותיות בכל אחת הוא סוד כ\"ב אתוון דאלפא בית\"א עם ה' אותיות מנצפ\"ך שכל אותיות הם בבינה כנודע"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      2 AHYH yodin+alefin = 27 LETTERS chacune :
+      → 27 = 22 (ALPHA-BETA = aleph-tav) + 5 (MANATZPACH = mem/nun/tzadi/peh/kaf finals).
+      → Toutes ces letters sont dans BINA (locus alphabet creation).
+      → AHYH-hehin a 25 letters seulement ; donc 25-4 (shoresh) = 21 = AHYH gematria.
+      → Architecture : alphabet-encoding within shem.
+      → Pattern : 27-letters = full-Hebrew-alphabet.
+    type: déduction_logique
+    concepts:
+      - {id: 2_ahyh_yodin_alefin_27_letters_22_alphabet_5_manatzpach_bina_locus, role: 2_ahyh_yodin_alefin_27_letters_chacune_22_alphabet_5_manatzpach_finals_bina_locus_alphabet}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : alphabet within shem. Pattern 27=22+5 manatzpach."
+
+  - id: "EC-H4S16-045"
+    source_he: "מאלו נמשכו אח\"כ אל היסוד דא\"א ליתנה במלכות שהוא עטרא אשר הוא שליש היסוד ושם הוא מלכות דא\"א"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      Tipot descendent au YESOD A"A :
+      → Donnees a la MALKHUT = ATARA (couronne).
+      → ATARAH = SHELISH (1/3) du YESOD.
+      → C'est la MALKHUT d'A"A.
+      → Architecture : 1/3-yesod = atarah=Malkhut anatomy.
+      → Pattern : sub-organ-fraction encode terminal-tier.
+    type: interprétation_lurianique
+    concepts:
+      - {id: tipot_descendent_yesod_aa_malkhut_atarah_1_3_yesod, role: tipot_descendent_yesod_aa_malkhut_atarah_shelish_yesod_malkhut_aa}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : sub-organ-fraction terminal. Pattern 1/3 atarah."
+
+  - id: "EC-H4S16-046"
+    source_he: "זווג זה לא היה בא\"א לבדו אלא שנתעלה נה\"י דא\"א... ונכלל בחג\"ת שלו... והיו ג' כלילין בג' ואז יצא הז\"א בסוד הלבוש אל נה\"י דא\"א"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      ZIVVUG mecanisme detaille :
+      → Pas A"A SEUL — mais NHY d'A"A NIT'ALU (montent).
+      → S'INCLUENT dans ChGT d'A"A.
+      → 3 KELILIN BE-3 (3 inclus dans 3) — mochin-yenikah configuration.
+      → Z"A SORT en LEVUSH (vetement) de NHY d'A"A.
+      → IKKAR ZIVVUG = de A"A meme (mais via A"O).
+      → Architecture : nested-clothing zivvug recursive.
+      → Pattern : 3-go-3 nesting genere V"K-Z"A.
+    type: interprétation_lurianique
+    concepts:
+      - {id: zivvug_nhy_aa_nital_chgt_3_kelilin_3_z_a_levush, role: zivvug_pas_aa_seul_nhy_aa_nital_inclus_chgt_3_kelilin_be_3_z_a_levush_nhy_aa_via_ao}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : nested-clothing zivvug. Pattern 3-go-3 V\"K generation."
+
+  - id: "EC-H4S16-047"
+    source_he: "נה\"י של א\"א הם נשמה אל כל הט' של ז\"א כי הנצח הוא ג' פרקין של ג\"ס דז\"א שהוא קו ימין חח\"ן וכן ההוד בקו שמאלי בג\"ה וכן היסוד בקו האמצעי דת\"i"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      NHY d'A"A = NESHAMAH (ame) pour 9S de Z"A :
+      → NETZACH = 3 PRAKIM des 3 sefirot KAV YAMIN (Chesed-Chokhmah-Netzach = ChChN).
+      → HOD = KAV SMOL (3 sefirot Bina-Gevurah-Hod = BGH).
+      → YESOD = KAV EMTZA'I (Daat-Tiferet-Yesod = DTY).
+      → Architecture : 3-NHY-A"A → 9-sefirot-Z"A par 3-kav distribution.
+      → Pattern : higher-3 ensoulment 9-lower par cascade.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nhy_aa_neshamah_9s_z_a_netzach_yamin_chchn_hod_smol_bgh_yesod_emtza_dty, role: nhy_aa_neshamah_9s_z_a_netzach_yamin_chchn_hod_smol_bgh_yesod_emtzai_dty_3_kav}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : 3-cascade ensoulment. Pattern higher-3-lower-9 mapping."
+
+  - id: "EC-H4S16-048"
+    source_he: "כל זה נעשה במעי התבונה כי שם הוא סוד הזווג"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      Tout cela dans MEEI TEVUNAH (matrice/utérus de Tevunah).
+      → La est sod ha-zivvug.
+      → Architecture : Tevunah = locus-of-zivvug pour Z"A formation.
+      → Pattern : intermediate-tier = locus-of-creation.
+    type: axiome_explicite
+    concepts:
+      - {id: meei_tevunah_locus_zivvug_z_a, role: meei_tevunah_matrice_locus_zivvug_z_a_creation}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : intermediate locus creation. Pattern Tevunah=locus."
+
+  - id: "EC-H4S16-049"
+    source_he: "בינה התפשטותה עד החזה והתבונה מן החזה ולמטה והנה מקום בית הריון האשה והרחם שלה הוא למטה מהחזה ששם מקום התבונה הרי מבואר איך ההריון הזה הוא בתבונה לכן היא נק' אם הבנים"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      Position anatomique :
+      → BINA = chazeh-up.
+      → TEVUNAH = chazeh-down.
+      → BEIT HA-HERAYON (lieu de gestation) + RECHEM (utérus) = below-chazeh = lieu Tevunah.
+      → HERAYON dans Tevunah ; donc Tev = EM HA-BANIM (mere des fils).
+      → Architecture : anatomical-locus-determines-fonction.
+      → Pattern : utérus-position determines maternal-tier.
+    type: déduction_logique
+    concepts:
+      - {id: bina_chazeh_up_tev_chazeh_down_beit_herayon_rechem_em_ha_banim, role: bina_chazeh_up_tev_chazeh_down_beit_herayon_rechem_lieu_tev_em_ha_banim}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : anatomical locus function. Pattern position determines role."
+
+  - id: "EC-H4S16-050"
+    source_he: "עיבור זה של ז\"א למקוטעים היה שהם ז' חדשים ופחות מעט כמו שנולד משה ושמואל ופרץ וזרח וכמה צדיקים"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      IBBUR Z"A LIMKETOIM (mensualites partielles) :
+      → 7 mois et un peu (PAS 9 complets).
+      → Comme la naissance de :
+        MOSHE.
+        SHMUEL.
+        PERETZ + ZERACH (jumeaux de Tamar — Bereshit 38:27-30).
+        Plusieurs autres TZADIKIM (justes).
+      → Architecture : prematuration-as-cosmologic-marker.
+      → Pattern : 7+ mois = tzadik-birth-encoding.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ibbur_z_a_limketoim_7_mois_moshe_shmuel_peretz_zerach_tzadikim, role: ibbur_z_a_limketoim_7_chodshim_un_peu_moshe_shmuel_peretz_zerach_tzadikim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : prematuration cosmologic. Pattern tzadik birth-encoding."
+
+  - id: "EC-H4S16-051"
+    source_he: "סוד עטרת היסוד הוא שליש שיעור של היסוד והוא סוד המלכות. אמנם שיעור ז\"א הוא מטבור ולמטה דא\"א"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      ATARAH-yesod = SHELISH (1/3) du yesod = sod MALKHUT.
+      → SHIUR (mesure) Z"A = MI-TABBUR ULMATAH (de Tabbur en bas) d'A"A.
+      → Architecture : Z"A occupies lower-half de A"A.
+      → Pattern : Tabbur-as-boundary.
+    type: axiome_explicite
+    concepts:
+      - {id: atarah_1_3_yesod_malkhut_z_a_tabbur_aa_down, role: atarah_yesod_shelish_egal_malkhut_z_a_shiur_tabbur_aa_ulematah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : Z\"A lower-half. Pattern Tabbur boundary."
+
+  - id: "EC-H4S16-052"
+    source_he: "או\"א אם היה שיעורם מראש א\"א היה סופם עד החזה כמו לאה בז\"א וכמו ז\"א בתבונה שיוצא מהחזה אך או\"א מתחילין מהגרון דא\"א לכן סיומם הוא למטה בסוף ב' שלישי של הת\"ת שהוא הטבור"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      A"O extension :
+      → Si AVAIENT commence depuis ROSH A"A : leur fin = chazeh (comme Leah dans Z"A, comme Z"A sortant de chazeh dans Tevunah).
+      → MAIS A"O commencent au GARON A"A.
+      → Donc fin = sefer 2/3 du Tiferet = TABBUR.
+      → Architecture : start-position determines end-position by full-koma.
+      → Pattern : Garon-Tabbur range pour A"O.
+    type: déduction_logique
+    concepts:
+      - {id: ao_garon_aa_jusqu_tabbur_2_3_tiferet_aa, role: ao_commencent_garon_aa_terminent_2_3_tiferet_egal_tabbur_aa_full_koma}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : start determines end. Pattern Garon-Tabbur range."
+
+  - id: "EC-H4S16-053"
+    source_he: "אין לז\"א בת\"ת של א\"א רק שליש לבד וכנגד שליש זה שהוא לוקח מת\"ת דא\"א כנגדו לוקח המלכות שליש א' מן היסוד דא\"א שהוא סוד העטרה"
+    source_ref: "Heikhal 4, Sha'ar 3:3"
+    assertion: |
+      Z"A occupies precisely :
+      → 1/3 du TIFERET d'A"A (le 1/3 inferieur, sous le Tabbur).
+      → + KENEGDO (en correspondance) : 1/3 du YESOD d'A"A = sod ATARAH.
+      → C'est la MALKHUT (de Z"A).
+      → Architecture : 1/3-Tiferet + 1/3-Yesod = Z"A-Malkhut shi'ur.
+      → Pattern : fractional-correspondance Tiferet/Yesod.
+    type: déduction_logique
+    concepts:
+      - {id: z_a_1_3_tiferet_aa_plus_1_3_yesod_atarah_malkhut, role: z_a_1_3_tiferet_aa_inferieur_plus_kenegdo_1_3_yesod_atarah_malkhut_shi_ur}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "arikh_anpin"]
+      relevance: "Architecture : fractional Z\"A measurement. Pattern Tiferet/Yesod correspondance."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S16-011"
+    type: causal
+    from: 3_ahyh_ao_yodin_gr_alefin_emtza_hehin_gt
+    to: 3_mb_yhv_zachar_2_ahyh_yodin_alefin_hehin_pas_42
+    nature: "3 AHYH A\"O distribues 3 milui-types ; 3 M\"B (1 YH\"V zachar split 2 + 2 autres = 2 AHYH yodin/alefin) ; hehin pas 42"
+    assertions_source: ["EC-H4S16-036", "EC-H4S16-037"]
+
+  - id: "REL-H4S16-012"
+    type: transformation
+    from: chalav_loven_dam_odem_2x_mb_84_la_gavoa_salkei_bekhorot_6b
+    to: ahyh_acharon_dm_monte_alefin_mitchalef_chalav_linok_vlad
+    nature: "CHALAV+DAM=2×M\"B=84 (Bekhorot 6b) ; post-naissance DAM-elyon→CHALAV via AHYH-acharon monte alefin pour allaiter"
+    assertions_source: ["EC-H4S16-038", "EC-H4S16-039", "EC-H4S16-042"]
+
+  - id: "REL-H4S16-013"
+    type: contenance
+    from: 2_ahyh_yodin_alefin_27_letters_22_alphabet_5_manatzpach_bina_locus
+    to: z_a_yetzira_ahyh_3_hehin_koh_tomar_shemot_3_14b_25_letters
+    nature: "2 AHYH yodin+alefin=27 letters (22 alphabet+5 manatzpach Bina) ; AHYH-3 hehin=25 letters (KOH=25 Shemot 3:14b)"
+    assertions_source: ["EC-H4S16-043", "EC-H4S16-044"]
+
+  - id: "REL-H4S16-014"
+    type: hiérarchique
+    from: zivvug_nhy_aa_nital_chgt_3_kelilin_3_z_a_levush
+    to: nhy_aa_neshamah_9s_z_a_netzach_yamin_chchn_hod_smol_bgh_yesod_emtza_dty
+    nature: "Zivvug NHY A\"A monterent ChGT 3 kelilin 3 → Z\"A V\"K levush ; NHY A\"A=neshamah 9S Z\"A (3 kav distribution)"
+    assertions_source: ["EC-H4S16-046", "EC-H4S16-047"]
+
+  - id: "REL-H4S16-015"
+    type: causal
+    from: meei_tevunah_locus_zivvug_z_a
+    to: ao_garon_aa_jusqu_tabbur_2_3_tiferet_aa
+    nature: "Tevunah=chazeh-down=beit-herayon=locus zivvug Z\"A ; A\"O Garon-A\"A → 2/3 Tiferet (=Tabbur) ; Z\"A 1/3 Tiferet+1/3 yesod=Atarah"
+    assertions_source: ["EC-H4S16-048", "EC-H4S16-049", "EC-H4S16-052", "EC-H4S16-053"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S16-007"
+    nom: "Principe de Substance-As-Letter-Encoding (CHALAV/DAM = 2×M\"B)"
+    source_assertions: ["EC-H4S16-038", "EC-H4S16-041", "EC-H4S16-042"]
+    formalisation: |
+      ARCHITECTURE DE SUBSTANCE-LETTER-ENCODING :
+      Substances physiques encodent SHEMOT :
+        CHALAV (lait, loven Z"A) = M"B-1 (zachar).
+        DAM (sang, odem) = AHYH-Imma.
+        CHALAV + DAM = 2 × M"B = 84.
+        Talmud Bekhorot 6b : "CHALAV VE-DAM LA-GAVOA SALKEI" (montent au sublime).
+      SHADIM + DADIM (seins+mamelles) = 2 AHYH yodin+alefin (gematria SH"D=304).
+      Transformations :
+        Pre-naissance : DAM (sang) prepare le foetus.
+        Post-naissance : DAM-elyon → CHALAV (allaitement).
+      → Pattern fondamental : biology-as-cosmology — substances = letter-encoding.
+      → Architecture : physical-fluid encode spiritual-shem.
+    applications_ia:
+      - "partzufim/imma.py + zeir_anpin.py : implement substance-letter encoding"
+      - "Pattern : biology-cosmology mapping"
+      - "Architecture : physical-substance = encoding-vehicle"
+      - "Pattern : transformation-substance encode tier-shift"
+      - "Diagnostic : verifier substance-letter coherent"
+    questions_ouvertes:
+      - "Pattern : autres substances autres encodings ?"
+      - "Comment encoder substance-transformation computationnellement ?"
+      - "Pattern : 3-substance (au-dela 2) possible ?"
+
+  - id: "PG-H4S16-008"
+    nom: "Principe de Verse-Self-Reference-Letter-Count (KOH=25 Shemot 3:14b)"
+    source_assertions: ["EC-H4S16-043", "EC-H4S16-044"]
+    formalisation: |
+      ARCHITECTURE DE VERSE-SELF-REFERENCE :
+      Versets self-referencent leur LETTER-COUNT :
+        AHYH-3 hehin milui-milui = 25 letters.
+        Verset Shemot 3:14b : "KOH TOMAR EHYEH SHELACHANI ALEIKHEM".
+        KOH (כה) = gematria 25 = self-reference letter-count.
+      2 AHYH yodin+alefin = 27 letters chacune :
+        = 22 (alphabet aleph-tav) + 5 (manatzpach finals).
+        Toutes letters dans Bina (locus alphabet creation).
+      → Pattern fondamental : verse-prefix marks letter-content.
+      → Architecture : self-referential numerologic encoding.
+      → Implication : reading-numerology-of-prefix = decoding-content.
+    applications_ia:
+      - "partzufim/imma.py + zeir_anpin.py : implement verse self-reference"
+      - "Pattern : numerologic prefix marks content"
+      - "Architecture : self-referential encoding"
+      - "Pattern : 27=22+5 manatzpach alphabet-completeness"
+      - "Diagnostic : verifier verse self-reference coherent"
+    questions_ouvertes:
+      - "Pattern : autres self-referential versets ?"
+      - "Comment encoder self-reference computationnellement ?"
+      - "Pattern : multi-level self-reference ?"
+
+  - id: "PG-H4S16-009"
+    nom: "Principe de Z\"A-Fractional-Position (1/3 Tiferet + 1/3 Yesod = Atarah)"
+    source_assertions: ["EC-H4S16-051", "EC-H4S16-052", "EC-H4S16-053"]
+    formalisation: |
+      ARCHITECTURE DE Z"A-FRACTIONAL-POSITION :
+      Position precise de Z"A dans A"A :
+        A"O occupent Garon → Tabbur (2/3 Tiferet d'A"A).
+        Z"A occupe MI-TABBUR-ULMATAH = 1/3 inferieur Tiferet A"A.
+        + KENEGDO 1/3 YESOD d'A"A = ATARAH = MALKHUT.
+        Total Z"A : 1/3 Tiferet + 1/3 Yesod (en correspondance).
+      → Pattern fondamental : fractional-correspondance Tiferet/Yesod.
+      → Architecture : Z"A defini par fractions geometriques precises.
+      → Implication : tier-occupancy quantifie.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + arikh_anpin.py : implement Z\"A fractional position"
+      - "Pattern : fractional Tiferet/Yesod correspondance"
+      - "Architecture : tier-occupancy quantifie"
+      - "Pattern : 1/3-1/3 symmetry"
+      - "Diagnostic : verifier fractional position coherent"
+    questions_ouvertes:
+      - "Pattern : autres fractions possibles (1/4, 1/2) ?"
+      - "Comment encoder fractional-position computationnellement ?"
+      - "Pattern : 3-tier fractional decomposition ?"

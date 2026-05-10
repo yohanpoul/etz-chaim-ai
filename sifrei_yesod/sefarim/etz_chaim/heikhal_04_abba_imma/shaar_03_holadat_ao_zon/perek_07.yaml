@@ -1,0 +1,373 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 3 — Sha'ar Holadat A"O ve-Zon (שער הולדת או״א וזו״ן)
+# Perek: 7 — DERNIER perek (7/7) Sha'ar Holadat. ITLABSHUT Z"A sur NHY-A"A.
+#            BUTZINA+AVIRA DAKHYA → GULGOLET Z"A. RECAP : Bina→Keter A"O,
+#            ChGT→Makifim Z"A, NHY→Pnimim Z"A. Variante MOHARCHA"V chatzi/shelish.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_07 :
+#   - Bloc A : Order ITLABSHUT Z"A sur NHY-A"A
+#   - Bloc B : CHATZI TIFERET MEKORI → GULGOLET Z"A (Adra)
+#   - Bloc C : NIT'CHABRU AVIRA DAKHYA + BUTZINA DE-KARDINUTA → APIKU GULGOLTA TAKIFA
+#   - Bloc D : MoChaSha=GEVURAH d'Atik ; NIRSHAM-bah BUTZINA DE-KARDINUTA (source dinim)
+#   - Bloc E : BUTZINA DE-KARDINUTA = source DININ olamim ; KEFINIM (subjugues) dans MoChaSha
+#   - Bloc F : CHESED Atik=GULGOLET ; GEVURAH Atik=MOCHA → CHESED→Abba, GEVURAH→Imma
+#   - Bloc G : AVIRA DAKHYA=CHESED ; BUTZINA DE-KARDINUTA=GEVURAH
+#   - Bloc H : Gulgolet Z"A formee de Tiferet A"A ; ChG nit'chabru → apiku gulgolta de back-Tiferet
+#   - Bloc I : RECAP : Bina d'A"A→Keter A"O ; ChGT d'A"A→Mochin Makifim Z"A ; NHY d'A"A→Mochin Pnimim Z"A (s'etendent comme NHY-A"O)
+#   - Bloc J : (§2) Variante MOHARCHA"V Mevo Sha'arim 112b — chatzi-tachton vs shelish-tachton Tiferet A"A donne Z"A
+#   - Bloc K : Resolution suggeree : 1/3 quand mochin Imma seul ; 1/2 quand mochin Abba aussi (parallele Tiferet Imma dans Keter Z"A)
+#
+# Source Sefaria : Sefer_Etz_Chaim.16.7 (2 sections, 1123 chars) — DERNIER perek Sha'ar 3
+# IDs : EC-H4S16-113 → EC-H4S16-123
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 3
+  shaar_name_he: "שער הולדת או״א וזו״ן"
+  perek: 7
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "DERNIER perek Sha'ar Holadat A\"O ve-Zon. ITLABSHUT Z\"A sur NHY-A\"A : CHATZI TIFERET MEKORI→GULGOLET Z\"A (Adra) ; NIT'CHABRU AVIRA DAKHYA+BUTZINA DE-KARDINUTA → apiku gulgolta takifa. MoChaSha=GEVURAH d'Atik=BUTZINA DE-KARDINUTA (source dinim olamim, kefinim dans MoChaSha). CHESED Atik gulgolet=AVIRA DAKHYA→Abba ; GEVURAH Atik mocha=BUTZINA→Imma. RECAP final : Bina d'A\"A=Keter A\"O ; ChGT d'A\"A=Mochin Makifim Z\"A ; NHY d'A\"A=Mochin Pnimim Z\"A. Variante MOHARCHA\"V (Mevo Sha'arim 112b) : chatzi-tachton vs shelish-tachton Tiferet A\"A donne Z\"A — resolution : 1/3 mochin Imma seul, 1/2 quand mochin Abba aussi (parallele Tiferet Imma Keter Z\"A). Sha'ar 3 H4 COMPLET (7/7 perakim)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S16-113"
+    source_he: "סדר התלבשות ז\"א את נה\"י דא\"א כך הוא כי חצי ת\"ת המקוריי נעשה גולגלת לז\"א כנזכר באדרא"
+    source_ref: "Heikhal 4, Sha'ar 3:7 §1"
+    assertion: |
+      ITLABSHUT Z"A sur NHY-A"A — order :
+      → CHATZI TIFERET MEKORI (mi-Tiferet original) d'A"A → NA'ASEH GULGOLET (devient crane) pour Z"A.
+      → Source ADRA.
+      → Architecture : half-Tiferet origine = Z"A-Keter.
+      → Pattern : tier-source-formation cascade.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chatzi_tiferet_mekori_aa_gulgolet_z_a_adra, role: chatzi_tiferet_mekori_aa_devient_gulgolet_z_a_adra_source}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : half-Tiferet → Z\"A Keter. Source Adra."
+
+  - id: "EC-H4S16-114"
+    source_he: "נתחברו אוירא ובוצינא ואפיקו האי גלגלתא תקיפא"
+    source_ref: "Heikhal 4, Sha'ar 3:7 §1"
+    assertion: |
+      Mecanisme formation :
+      → NIT'CHABRU (se sont combines) AVIRA DAKHYA (air pur) + BUTZINA DE-KARDINUTA (lampe-darkness).
+      → APIKU (font sortir) HAI GULGOLTA TAKIFA (ce crane puissant).
+      → Architecture : 2-element-merger genere outer-crown.
+      → Pattern : opposite-elements + → power-result.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nit_chabru_avira_butzina_apiku_gulgolta_takifa, role: nit_chabru_avira_dakhya_butzina_de_kardinuta_apiku_hai_gulgolta_takifa_z_a}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : opposite-merger creation. Pattern paradox-power."
+
+  - id: "EC-H4S16-115"
+    source_he: "מ\"ס להיות שבו סוד הגבורה דעתיק לכן נרשם בה סוד הבוצינא דקרדינותא ושם שרשה כי בוצינא דקרדינותא הוא שורש לכל הדינין שבעולם"
+    source_ref: "Heikhal 4, Sha'ar 3:7 §1"
+    assertion: |
+      MoChaSha (Mocha Setima) = sod GEVURAH d'ATIK :
+      → NIRSHAM-bah (s'inscrit en elle) sod BUTZINA DE-KARDINUTA.
+      → Sham SHARSHAH (la est sa racine).
+      → BUTZINA = SHORESH (racine) pour TOUS DININ ba-OLAM.
+      → MAIS dans MoChaSha = KEFINIM (subjugues, sublimes).
+      → Architecture : hidden-root-of-judgment dans tier-supreme.
+      → Pattern : transcendant-source = subjugated-original.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mochasha_gevurah_atik_butzina_kardinuta_shoresh_dinim_kefinim, role: mochasha_sod_gevurah_atik_nirsham_butzina_de_kardinuta_shoresh_dinim_olamim_kefinim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : hidden-root judgment. Pattern transcendant-source subjugated."
+
+  - id: "EC-H4S16-116"
+    source_he: "ממו\"ס נתפשט לאמא (נ\"א לאו\"א) כנ\"ל כי גלגלתא ומוחא דא\"א הם שורש או\"א וחסד דעתיק הוא בגלגלתא והגבורה במוחא"
+    source_ref: "Heikhal 4, Sha'ar 3:7 §1"
+    assertion: |
+      Distribution Atik dans A"A :
+      → CHESED d'ATIK = dans GULGOLET d'A"A.
+      → GEVURAH d'ATIK = dans MOCHA (= MoChaSha) d'A"A.
+      → Variante (Nusah Aher) : "le-A"O" (au lieu de "le-Imma").
+      → De MoChaSha → s'etend a IMMA.
+      → Architecture : Atik primary-poles distributed dans A"A.
+      → Pattern : Chesed-up Gevurah-mid distribution.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chesed_atik_gulgolet_aa_gevurah_atik_mocha_aa_etend_imma, role: chesed_atik_dans_gulgolet_aa_gevurah_atik_dans_mocha_aa_extend_imma_ou_ao}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "imma"]
+      relevance: "Architecture : Atik distribution. Pattern Chesed-up Gevurah-mid."
+
+  - id: "EC-H4S16-117"
+    source_he: "דוגמתן הם למטה באו\"א חסד באבא וגבורה באמא"
+    source_ref: "Heikhal 4, Sha'ar 3:7 §1"
+    assertion: |
+      DUGMATAN (parallele) en bas dans A"O :
+      → CHESED → ABBA.
+      → GEVURAH → IMMA.
+      → Architecture : Atik-pattern reproduit dans A"O.
+      → Pattern : recursive-distribution-tier.
+    type: déduction_logique
+    concepts:
+      - {id: chesed_abba_gevurah_imma_dugmatan_atik, role: chesed_abba_gevurah_imma_dugmatan_atik_recursive_pattern_distribution}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : recursive distribution. Pattern Atik-A\"O parallel."
+
+  - id: "EC-H4S16-118"
+    source_he: "אלו הב' נקרא בוצינא דקרדינותא גבורה ואוירא דכיא חסד"
+    source_ref: "Heikhal 4, Sha'ar 3:7 §1"
+    assertion: |
+      Naming canonique :
+      → BUTZINA DE-KARDINUTA = GEVURAH (cote-imma).
+      → AVIRA DAKHYA = CHESED (cote-abba).
+      → Architecture : 2-named-encoding-pole.
+      → Pattern : darkness-lamp (Gevurah) vs pure-air (Chesed).
+    type: axiome_explicite
+    concepts:
+      - {id: butzina_de_kardinuta_gevurah_avira_dakhya_chesed_canonique, role: butzina_de_kardinuta_gevurah_avira_dakhya_chesed_canonical_naming}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : canonical naming. Pattern Gevurah-darkness Chesed-purity."
+
+  - id: "EC-H4S16-119"
+    source_he: "מת\"ת שבא\"א (נ\"א שבאו\"א) מהם נעשה גלגלתא דז\"א כי הנה החו\"ג שעל הת\"ת נתחברו ואפיקו האי גולגלתא מסוד הת\"ת שלאחריהן וז\"ס אתחברות בוצינא ואוירא דכיא"
+    source_ref: "Heikhal 4, Sha'ar 3:7 §1"
+    assertion: |
+      Formation GULGOLET Z"A :
+      → De TIFERET d'A"A (Variante : "d'A"O").
+      → ChG sur Tiferet NIT'CHABRU.
+      → APIKU HAI GULGOLTA mi-sod TIFERET SHE-LE-ACHAREIHEN (du Tiferet derriere eux = back-Tiferet).
+      → C'est sod ITCHABRUT (combinaison) BUTZINA + AVIRA DAKHYA.
+      → Architecture : back-Tiferet-mater pour gulgolet-Z"A.
+      → Pattern : behind-creation-locus.
+    type: interprétation_lurianique
+    concepts:
+      - {id: gulgolet_z_a_tiferet_aa_chg_nit_chabru_back_tiferet_butzina_avira, role: gulgolet_z_a_tiferet_aa_chg_nit_chabru_apiku_back_tiferet_itchabrut_butzina_avira_dakhya}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : back-Tiferet creation. Pattern behind-locus."
+
+  - id: "EC-H4S16-120"
+    source_he: "סוד בינה דא\"א היא כתר על או\"א וחג\"ת דא\"א הם נעשין מוחין מקיפין לז\"א ומנה\"י דא\"א נעשה לו מוחין פנימים ומתפשטין בו כסדר נה\"י דאו\"א"
+    source_ref: "Heikhal 4, Sha'ar 3:7 §1"
+    assertion: |
+      RECAP final mapping (CLOTURE) :
+      → BINA d'A"A → KETER pour A"O (les deux).
+      → ChGT d'A"A → MOCHIN MAKIFIM (encerclants) pour Z"A.
+      → NHY d'A"A → MOCHIN PNIMIM (interieurs) pour Z"A — s'etendent dans lui comme seder NHY-A"O.
+      → Architecture : tier-translation A"A → A"O+Z"A unified-mapping.
+      → Pattern : recursive structural cascading.
+    type: axiome_explicite
+    concepts:
+      - {id: bina_aa_keter_ao_chgt_aa_makifim_z_a_nhy_aa_pnimim_z_a, role: bina_aa_keter_ao_chgt_aa_mochin_makifim_z_a_nhy_aa_mochin_pnimim_z_a_seder_nhy_ao}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : unified mapping. Pattern recursive cascading."
+
+  - id: "EC-H4S16-121"
+    source_he: "ז\"ל מוהרח\"ו בספר מבו\"ש דקי\"ב ע\"ב. גם ראיתי שינוי אחר בענין הת\"ת דא\"א כי פ\"א שמעתי כי כל חצי התחתון ניתן אל הז\"א ורוב פעמים שמעתי בדקדק שאינו רק שליש התחתון לבד"
+    source_ref: "Heikhal 4, Sha'ar 3:7 §2"
+    assertion: |
+      §2 MOHARCHA"V (Mevo Sha'arim 112b) :
+      → SHINUI ACHER (variante doctrinale) sur Tiferet A"A donnee a Z"A.
+      → PA'AM ECHAT (une fois) entendu : tout CHATZI TACHTON (1/2 inferieure) → Z"A.
+      → ROV PE'AMIM (la plupart du temps) entendu : seulement SHELISH TACHTON (1/3 inferieur) → Z"A.
+      → Architecture : doctrinal-uncertainty preservee — chatzi vs shelish.
+      → Pattern : Vital track ses propres receptions variantes.
+    type: axiome_explicite
+    concepts:
+      - {id: moharchav_mevo_shaarim_112b_chatzi_vs_shelish_tachton_tiferet_aa_z_a, role: moharchav_chaim_vital_mevo_shaarim_112b_chatzi_tachton_vs_shelish_tachton_tiferet_aa_donne_z_a_variante}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : doctrinal-variant. Source Mevo Sha'arim 112b."
+
+  - id: "EC-H4S16-122"
+    source_he: "איני יודע תירוץ אם לא שנאמר על דרך הת\"ת דאימא המתלבש בכתר דז\"א כי בהיות לו מוחין דאימא לבד אינו לוקח רק שלישו ובהיות לו גם מוחין דאבא לוקח חציו"
+    source_ref: "Heikhal 4, Sha'ar 3:7 §2"
+    assertion: |
+      RESOLUTION suggeree :
+      → Comme TIFERET d'IMMA mitlabesh dans KETER d'Z"A.
+      → Mochin d'IMMA SEUL → Z"A prend SEULEMENT 1/3.
+      → Mochin d'ABBA AUSSI → Z"A prend 1/2.
+      → Pareil ici (suggestion KaNiL — KE-NIL'AD).
+      → Architecture : conditional-allocation par mochin-state.
+      → Pattern : extension depend de la richesse-mochin.
+    type: déduction_logique
+    concepts:
+      - {id: resolution_chatzi_shelish_par_mochin_imma_seul_ou_avec_abba, role: resolution_chatzi_vs_shelish_par_mochin_imma_seul_1_3_avec_abba_1_2_kanild}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : conditional allocation. Pattern mochin-richness."
+
+  - id: "EC-H4S16-123"
+    source_he: "וכן יהיה כאן כנלע\"ד"
+    source_ref: "Heikhal 4, Sha'ar 3:7 §2"
+    assertion: |
+      CLOTURE Sha'ar 3 :
+      → "VE-KHEN YIHEYEH KAN KE-NIL'AD" (et ainsi sera ici selon ce qu'il me semble).
+      → Marquer SHEILAH-TZARIKH-IYUN ouvert.
+      → Sha'ar 3 H4 (Sha'ar Holadat A"O ve-Zon) COMPLET — 7/7 perakim.
+      → Architecture : closing-uncertainty marker preserve.
+      → Pattern : chapitre-clos avec ouverture pour future-doctrinal-revision.
+    type: axiome_explicite
+    concepts:
+      - {id: cloture_shaar_3_ve_khen_yiheyeh_kan_kanild, role: cloture_shaar_3_h4_holadat_ao_zon_ve_khen_yiheyeh_kan_kanild_doctrinal_open}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : closing-with-openness. Pattern Sha'ar 3 COMPLET."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S16-031"
+    type: causal
+    from: chatzi_tiferet_mekori_aa_gulgolet_z_a_adra
+    to: nit_chabru_avira_butzina_apiku_gulgolta_takifa
+    nature: "Chatzi Tiferet mekori A\"A → Gulgolet Z\"A (Adra) ; mecanisme NIT'CHABRU AVIRA+BUTZINA → APIKU gulgolta takifa"
+    assertions_source: ["EC-H4S16-113", "EC-H4S16-114"]
+
+  - id: "REL-H4S16-032"
+    type: contenance
+    from: mochasha_gevurah_atik_butzina_kardinuta_shoresh_dinim_kefinim
+    to: chesed_atik_gulgolet_aa_gevurah_atik_mocha_aa_etend_imma
+    nature: "MoChaSha=Gevurah Atik=Butzina shoresh dinim olamim kefinim ; CHESED Atik gulgolet→Abba, GEVURAH Atik mocha→Imma"
+    assertions_source: ["EC-H4S16-115", "EC-H4S16-116"]
+
+  - id: "REL-H4S16-033"
+    type: dualité_structurelle
+    from: butzina_de_kardinuta_gevurah_avira_dakhya_chesed_canonique
+    to: chesed_abba_gevurah_imma_dugmatan_atik
+    nature: "BUTZINA DE-KARDINUTA=Gevurah, AVIRA DAKHYA=Chesed (canonical) ; dugmatan en bas A\"O : Chesed→Abba, Gevurah→Imma"
+    assertions_source: ["EC-H4S16-117", "EC-H4S16-118"]
+
+  - id: "REL-H4S16-034"
+    type: hiérarchique
+    from: gulgolet_z_a_tiferet_aa_chg_nit_chabru_back_tiferet_butzina_avira
+    to: bina_aa_keter_ao_chgt_aa_makifim_z_a_nhy_aa_pnimim_z_a
+    nature: "Gulgolet Z\"A formee back-Tiferet ; RECAP : Bina A\"A→Keter A\"O, ChGT A\"A→Makifim Z\"A, NHY A\"A→Pnimim Z\"A"
+    assertions_source: ["EC-H4S16-119", "EC-H4S16-120"]
+
+  - id: "REL-H4S16-035"
+    type: dualité_structurelle
+    from: moharchav_mevo_shaarim_112b_chatzi_vs_shelish_tachton_tiferet_aa_z_a
+    to: resolution_chatzi_shelish_par_mochin_imma_seul_ou_avec_abba
+    nature: "MOHARCHA\"V variante chatzi vs shelish (Mevo Sha'arim 112b) ; resolution : 1/3 mochin Imma seul, 1/2 avec mochin Abba"
+    assertions_source: ["EC-H4S16-121", "EC-H4S16-122"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S16-019"
+    nom: "Principe d'Opposite-Element-Merger (Avira+Butzina → Gulgolta Takifa)"
+    source_assertions: ["EC-H4S16-113", "EC-H4S16-114", "EC-H4S16-118"]
+    formalisation: |
+      ARCHITECTURE D'OPPOSITE-ELEMENT-MERGER :
+      Mecanisme creation Gulgolet :
+        AVIRA DAKHYA (air pur) = CHESED.
+        BUTZINA DE-KARDINUTA (lampe-darkness) = GEVURAH.
+        Ces 2 OPPOSES SE COMBINENT → APIKU GULGOLTA TAKIFA (crane puissant).
+      → Pattern fondamental : opposite-merger genere stronger-result.
+      → Architecture : paradox-power principle.
+      → Implication : stronger-output requires opposite-source-balance.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + arikh_anpin.py + atik_yomin.py : implement opposite-merger"
+      - "Pattern : opposite-merger paradox-power"
+      - "Architecture : Chesed+Gevurah balance creation"
+      - "Pattern : darkness+light fusion stronger"
+      - "Diagnostic : verifier merger-balance bien constitue"
+    questions_ouvertes:
+      - "Pattern : autres oppositions creatrices ?"
+      - "Comment encoder opposite-merger computationnellement ?"
+      - "Pattern : 3-element merger possible ?"
+
+  - id: "PG-H4S16-020"
+    nom: "Principe de Hidden-Root-Subjugated (Butzina dans MoChaSha = Kefinim)"
+    source_assertions: ["EC-H4S16-115"]
+    formalisation: |
+      ARCHITECTURE DE HIDDEN-ROOT-SUBJUGATED :
+      Sources transcendantes contenir leur racine subjuguee :
+        BUTZINA DE-KARDINUTA = SHORESH (racine) pour TOUS DININ olamim.
+        Mais dans MoChaSha (=Gevurah Atik) = KEFINIM (subjugues, dompted).
+      MoChaSha contient mais sublime la source-de-judgment.
+      → Pattern fondamental : transcendant-tier subjugates source-elements.
+      → Architecture : higher-source-contains-lower-root-subdued.
+      → Implication : peak-tier = balance, not absence-of-judgment.
+    applications_ia:
+      - "partzufim/atik_yomin.py + arikh_anpin.py : implement hidden-subjugated"
+      - "Pattern : transcendent contains-and-subdues"
+      - "Architecture : higher = balance not exclusion"
+      - "Pattern : root-of-judgment transcendent"
+      - "Diagnostic : verifier subjugation-state coherent"
+    questions_ouvertes:
+      - "Pattern : autres roots-subjugated transcendant ?"
+      - "Comment encoder subjugation-state computationnellement ?"
+      - "Pattern : multi-level subjugation ?"
+
+  - id: "PG-H4S16-021"
+    nom: "Principe de Conditional-Mochin-Allocation (Imma-Seul vs Avec-Abba)"
+    source_assertions: ["EC-H4S16-121", "EC-H4S16-122"]
+    formalisation: |
+      ARCHITECTURE DE CONDITIONAL-MOCHIN-ALLOCATION :
+      Allocation tier-extension depend mochin-state :
+        Mochin d'IMMA SEUL → Z"A prend SEULEMENT 1/3 (shelish-tachton Tiferet A"A).
+        Mochin d'ABBA AUSSI → Z"A prend 1/2 (chatzi-tachton Tiferet A"A).
+      Variante doctrinale (MOHARCHA"V — Mevo Sha'arim 112b) Vital :
+        Pa'am echat entendu chatzi (1/2).
+        Rov pe'amim entendu shelish (1/3).
+      Resolution : conditional par richesse-mochin.
+      → Pattern fondamental : extension-conditional-on-mochin-richness.
+      → Architecture : tier-allocation dynamic vs static.
+      → Implication : current-mochin-state determines current-extension.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py : implement conditional allocation"
+      - "Pattern : extension-conditional-richness"
+      - "Architecture : tier-allocation dynamic"
+      - "Pattern : Imma-seul vs Imma+Abba scenarios"
+      - "Diagnostic : verifier allocation coherent avec mochin-state"
+    questions_ouvertes:
+      - "Pattern : autres conditional allocations ?"
+      - "Comment encoder dynamic-tier allocation computationnellement ?"
+      - "Pattern : 3-state mochin (no/Imma/Imma+Abba/full) ?"
