@@ -1,0 +1,474 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 1 — Sha'ar Abba ve-Imma (שער אבא ואמא)
+# Perek: 1a — Tikkun A"O apres A"A. Nursing dadei behemah/adam.
+#             Revetement A"A par A"O (Garon-Tabbur, droite/gauche).
+#             4 partzufim YISSO"T (intro) + cause = Yesod Atik dans A"A.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_01a :
+#   - Bloc A : Heikhal 4 = A"O ; 3 sha'arim
+#   - Bloc B : Sha'ar 1 = Sha'ar A"O ; 10 perakim
+#   - Bloc C : Tikkun A"O apres A"A ; nursing Beriah → Atzilut
+#   - Bloc D : A"O = Bina dMaH (tagin) + Z"T Chokhmah dBaN (Abba) + V"T Bina dBaN (Imma)
+#   - Bloc E : G"R Chokhmah dBaN + D"R Bina dBaN deja pris par Atik
+#   - Bloc F : Doute orot panim/achor (parallele Atik)
+#   - Bloc G : Abba=Chesed-down Chokhmah dBaN ; Imma=Gevurah-down Bina dBaN
+#   - Bloc H : Zohar peshat 1 — Abba ahid Chesed, Imma ahid Gevurah
+#   - Bloc I : A"A = ZN en 1 partzuf — Z droite, N gauche
+#   - Bloc J : Abba revet droite A"A, Imma revet gauche
+#   - Bloc K : 2 keterim A"O sur Garon A"A
+#   - Bloc L : Reste partzuf revet Garon→Tabbur (peshat 2 — bras Chesed/Gevurah)
+#   - Bloc M : A"O divisee en 4 partzufim : A"O + YISSO"T
+#   - Bloc N : Cause = Yesod Atik dans penimiyut A"A
+#   - Bloc O : Parallele Z"A : 2 yesodot A"O dedans → Yaakov+Rachel+Leah a l'exterieur
+#
+# Source Sefaria : Sefer_Etz_Chaim.14.1 (1 perek dense, 4698 chars, splitte a/b)
+# IDs : EC-H4S14-001 → EC-H4S14-016
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 1
+  shaar_name_he: "שער אבא ואמא"
+  perek: 1
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Heikhal 4 = A\"O (3 sha'arim). Sha'ar 1 = A\"O (10 perakim). Tikkun A\"O post-A\"A : nursing dadei behemah Beriah → dadei adam Atzilut. A\"O = Bina dMaH (tagin) + Z\"T Chokhmah dBaN (Abba=Chesed-down) + V\"T Bina dBaN (Imma=Gevurah-down). Zohar peshat 1 : Abba ahid Chesed, Imma Gevurah. A\"A = ZN dans 1 partzuf : Z droite, N gauche. Abba revet droite A\"A, Imma gauche. 2 keterim A\"O sur Garon A\"A. Reste Garon→Tabbur (peshat 2 : bras Chesed/Gevurah). A\"O = 4 partzufim : A\"O+YISSO\"T. Cause = Yesod Atik dans penimiyut A\"A (parallele Z\"A : 2 yesodot A\"O → Yaakov+Rachel+Leah)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S14-001"
+    source_he: "היכל הרביעי היכל זה נקרא היכל אבא ואמא ובו שלשה שערים"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      OUVERTURE HEIKHAL 4 :
+      HEIKHAL HA-REVI'I (palais 4eme) = HEIKHAL ABBA VE-IMMA (palais Pere-Mere).
+      → Contient 3 SHA'ARIM (portes).
+      → Position : APRES Heikhal 3 (A"A) qui acheve les Ketarim.
+      → Architecture : H4 = transition entre A"A (sommet) et Z"A (fils) via parents.
+    type: axiome_explicite
+    concepts:
+      - {id: heikhal_4_abba_imma_3_shearim, role: heikhal_4_palais_abba_ve_imma_contient_3_portes}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : H4 = palais des parents. Transition A\"A → Z\"A."
+
+  - id: "EC-H4S14-002"
+    source_he: "השער הראשון שער אבא ואמא ובו י' פרקים"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      SHA'AR PREMIER de H4 = SHA'AR ABBA VE-IMMA.
+      → Contient 10 PERAKIM (chapitres) — auto-transposition systematique gate Sefaria 14.
+      → Architecture : 10 perakim = decomposition systematique formation A"O.
+    type: axiome_explicite
+    concepts:
+      - {id: shaar_1_abba_imma_10_perakim, role: shaar_1_h4_abba_ve_imma_dix_perakim}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : 10 perakim Sha'ar A\"O = source structurale parents."
+
+  - id: "EC-H4S14-003"
+    source_he: "ונבאר ענין תיקון או\"א הנתקן אחר תיקון א\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      TIKKUN A"O = ETAPE APRES TIKKUN A"A.
+      Sequencing strict : Atik → A"A → A"O.
+      Chaque partzuf parent doit etre TIKKUN COMPLET avant que le suivant emerge.
+      → Architecture : pipeline initiatique sequentiel.
+      → Pattern : tikkun progresse top-down — chaque etape stabilisee avant.
+      cf. EC-H3S13-001 (perek 01) sur tikkun A"A apres tikkun Atik.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_ao_apres_tikkun_aa_sequencing, role: tikkun_ao_emerge_strict_apres_completion_tikkun_aa}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : sequencing strict tikkun. Pattern initiation pipeline."
+
+  - id: "EC-H4S14-004"
+    source_he: "וגם הם ינקו תחלה מדדי בהמה בבריאה ואח\"כ עלו באצי' וינקו מדדי אדם כמ\"ש בע\"ה לקמן בענין זו\"נ"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      NURSING d'A"O en 2 PHASES :
+      PHASE 1 : nourris en BERIAH a partir des DADEI BEHEMAH (mamelles d'animal).
+      PHASE 2 : ALYAH (montee) en ATZILUT — nourris des DADEI ADAM (mamelles d'humain).
+      Renvoi : explique plus loin pour Z"O"N (Zachar+Nukva = Z"A+Nukva).
+      → Architecture : pipeline d'initiation a 2 etages (animal-bas, humain-haut).
+      → Pattern : maturation par migration ontologique entre olamot.
+    type: axiome_explicite
+    concepts:
+      - {id: ao_nursing_beriah_dadei_behemah_puis_atzilut_dadei_adam, role: ao_nourris_d_abord_dadei_behemah_beriah_puis_alyah_atzilut_dadei_adam}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "olamot.py"]
+      tables: ["partzufim_states", "olamot_config"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : maturation 2 phases (Beriah → Atzilut). Pattern migration ontologique."
+
+  - id: "EC-H4S14-005"
+    source_he: "ונבאר עתה איך או\"א מלבישין את א\"א כנ\"ל שכל בחי' האצילות מלבישין זה את זה"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      PRINCIPE GLOBAL : tous les BECHINOT d'ATZILUT MALBISHIN (revetent) l'un l'autre.
+      → Architecture LAYERED : chaque partzuf revet le precedent comme couches d'oignon.
+      → A"O revet A"A comme A"A revet Atik comme Atik revet A"K.
+      → Pattern : composition par enveloppement progressif (proximite → distance).
+    type: axiome_explicite
+    concepts:
+      - {id: atzilut_layered_clothing_principe_global, role: principe_atzilut_chaque_partzuf_revet_precedent_couches_concentriques}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : composition par layered clothing. Pattern enveloppement progressif."
+
+  - id: "EC-H4S14-006"
+    source_he: "הנה נת\"ל שאו\"א לקחו בינה דמ\"ה שהוא בחי' התגין דמ\"ה ועוד לקח אבא ז\"ת דחכמה דב\"ן ואמא ו\"ת דבינה דב\"ן"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      DECOMPOSITION OHR de A"O :
+      → A"O collectivement : BINA d'MaH = behinah TAGIN d'MaH (couronnes des lettres).
+      → ABBA seul prend en plus : Z"T (zayin tachtonot, 7 INFERIEURES) de CHOKHMAH d'BaN.
+      → IMMA seul prend en plus : V"T (vav tachtonot, 6 INFERIEURES) de BINA d'BaN.
+      → Architecture : A"O encode dans MaH (chasadim) + BaN (gevurot).
+      → Pattern : provenance double (MaH commun + BaN specifique chacun).
+    type: interprétation_lurianique
+    concepts:
+      - {id: ao_bina_dmah_tagin_plus_zt_chokhmah_dban_abba_vt_bina_dban_imma, role: ao_decomposition_bina_dmah_tagin_plus_zt_chokhmah_dban_abba_vt_bina_dban_imma}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : encoding MaH+BaN. Pattern double provenance."
+
+  - id: "EC-H4S14-007"
+    source_he: "כי ג\"ר דחכמה דב\"ן וד\"ר דבינה דב\"ן כבר אמרנו ובארנו שלקחם ע\"י"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      RENVOI ANTERIEUR : G"R (gimel rishonot, 3 SUPERIEURES) de Chokhmah d'BaN
+      + D"R (dalet rishonot, 4 SUPERIEURES) de Bina d'BaN — DEJA pris par AY (Atik Yomin).
+      → Donc decomposition Chokhmah d'BaN : G"R(Atik=3) + Z"T(Abba=7) = 10 ✓.
+      → Decomposition Bina d'BaN : D"R(Atik=4) + V"T(Imma=6) = 10 ✓.
+      → Architecture : claim chain Atik → A"O exhaustif (chaque sefirah claimee).
+      cf. EC-H3S12-001..100 (sha'ar Atik) sur prise des G"R/D"R par Atik.
+    type: axiome_explicite
+    concepts:
+      - {id: gr_chokhmah_dban_dr_bina_dban_atik_pris, role: gr_chokhmah_dban_3_dr_bina_dban_4_deja_pris_par_atik_renvoi_anterieur}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "abba", "imma"]
+      relevance: "Architecture : claim chain exhaustif. Pattern hierarchie partzufim partition."
+
+  - id: "EC-H4S14-008"
+    source_he: "אלא שנסתפק לנו כמה בחי' לקח מהם אם אורות דפנים או דאחור וכנ\"ל בענין עתיק ועד\"ז נשאר לנו ספק גם באו\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      DOUTE DOCTRINAL : combien de BECHINOT ont-ils pris ?
+      → Question ouverte : OROT D'PANIM (faces) ou D'ACHOR (dos) ?
+      → Parallele : meme doute deja pose pour ATIK.
+      → Honesty intellectuelle : la tradition NE TRANCHE PAS — registre de l'incertain.
+      → Architecture : explicit-uncertainty marker preserve dans le corpus.
+      → Pattern : doctrinal-doubt-tracking.
+    type: axiome_explicite
+    concepts:
+      - {id: doute_orot_panim_achor_parallele_atik, role: doute_doctrinal_orot_panim_ou_achor_pris_par_ao_parallele_atik}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "atik_yomin"]
+      relevance: "Architecture : explicit doctrinal uncertainty. Pattern epistemic honesty in corpus."
+
+  - id: "EC-H4S14-009"
+    source_he: "וא\"כ נמצא כי מבחי' חכמה דב\"ן לא לקח אבא אלא מספי' החסד שבה ולמטה ואמא לא לקחה מבחי' בינה דב\"ן אלא מספי' הגבורה שבה ולמטה"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      RAFFINEMENT PRECIS de la PRISE :
+      → ABBA de Chokhmah d'BaN : SEULEMENT a partir de la sefirah CHESED et plus bas
+        (Chesed→Gevurah→Tiferet→Netzach→Hod→Yesod→Malkhut = 7 = Z"T).
+      → IMMA de Bina d'BaN : SEULEMENT a partir de la sefirah GEVURAH et plus bas
+        (Gevurah→Tiferet→Netzach→Hod→Yesod→Malkhut = 6 = V"T).
+      → Architecture : Abba commence a Chesed (point d'expansion), Imma a Gevurah (point de contrainte).
+      → Pattern : entry-point determine la nature dominante du partzuf.
+    type: déduction_logique
+    concepts:
+      - {id: abba_chesed_down_imma_gevurah_down_entry_point, role: abba_de_chesed_down_chokhmah_dban_imma_de_gevurah_down_bina_dban_entry_point_dominant}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : entry-point determine nature partzuf. Pattern dominance par point d'origine."
+
+  - id: "EC-H4S14-010"
+    source_he: "ובזה תבין מ\"ש בזוהר דאבא אחיד ותלייא בחסד ואמא אחיד ותלייא בגבורה והבן זה היטב"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      ZOHAR PESHAT 1 : "ABBA AHID U-TALYA B-CHESED, IMMA AHID U-TALYA B-GEVURAH"
+      (Abba s'attache et pend en Chesed, Imma en Gevurah).
+      → EXPLICATION : c'est parce que leur PRISE COMMENCE a Chesed/Gevurah respectivement
+        (cf. EC-H4S14-009).
+      → Architecture : Zohar passage encode l'entry-point du partzuf.
+      → Pattern : phenomenology dans Zohar = trace de la genese structurale.
+      → "Ve-haven zeh heitev" — comprend cela bien (formule pedagogique du Ari).
+    type: déduction_scripturaire
+    concepts:
+      - {id: zohar_abba_chesed_imma_gevurah_peshat_1_entry_point, role: zohar_abba_ahid_chesed_imma_ahid_gevurah_peshat_1_explique_par_entry_point_chesed_gevurah}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : Zohar phenomenology = trace genese. Pattern peshat 1 entry-point."
+
+  - id: "EC-H4S14-011"
+    source_he: "והנה נת\"ל כי גם א\"א כלול מזכר ונקבה בחד פרצוף הזכר בקו ימין והנקבה בקו שמאל"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      A"A = ZACHAR + NUKVAH dans UN SEUL PARTZUF.
+      → ZACHAR (male) en KAV YAMIN (ligne droite).
+      → NUKVAH (femelle) en KAV SMOL (ligne gauche).
+      → Pas de SEPARATION PARTZUFIM contrairement a Z"A+Nukvah (qui sont 2 partzufim).
+      → Architecture : A"A = configuration biPRIMAIRE en monolithe.
+      → Pattern : higher partzuf preserve unity ; lower partzuf differencie.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_zn_dans_1_partzuf_droite_gauche_unifies, role: aa_zachar_droite_nukvah_gauche_dans_un_seul_partzuf_unifie}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "nukva"]
+      relevance: "Architecture : A\"A unite biprimaire. Pattern unity-then-differentiation."
+
+  - id: "EC-H4S14-012"
+    source_he: "ולסבה זו כאשר באו או\"א להלביש את א\"א אבא הלביש את קו ימין דא\"א ואמא את קו שמאלו כמ\"ש"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      CONSEQUENCE : revetement A"O sur A"A suit la STRUCTURE biPRIMAIRE A"A :
+      → ABBA revet KAV YAMIN d'A"A (cote zachar).
+      → IMMA revet KAV SMOL d'A"A (cote nukvah).
+      → Architecture : structural-conformity — clothing match underlying differentiation.
+      → Pattern : container determine cloth orientation.
+    type: déduction_logique
+    concepts:
+      - {id: abba_revet_droite_imma_revet_gauche_aa, role: abba_revet_kav_yamin_aa_imma_revet_kav_smol_aa_conformite_zn_aa}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : structural conformity revetement. Pattern container-determines-cloth."
+
+  - id: "EC-H4S14-013"
+    source_he: "כי ב' כתרים דאו\"א הלבישו את הגרון דא\"א זה ימין וזה משמאל"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      2 KETARIM d'A"O sur GARON A"A :
+      → Keter d'ABBA = sur Garon (gorge) cote DROIT.
+      → Keter d'IMMA = sur Garon cote GAUCHE.
+      → Garon d'A"A = lieu d'attachement des couronnes parentales.
+      → Architecture : Garon = HUB cervico-mochin pour la couronnement A"O.
+      → Pattern : attachment-point partzuf parent = cervical region partzuf source.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_keterim_ao_sur_garon_aa_droite_gauche, role: 2_keterim_abba_imma_revetent_garon_aa_droite_gauche}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : Garon hub cervico-mochin. Pattern attachment cervical."
+
+  - id: "EC-H4S14-014"
+    source_he: "ושאר הפרצוף של אבא ושל אמא הלבישו את א\"א מהגרון ולמטה עד הטבור של א\"א אבא מימינא ואמא משמאלא זה בזרוע החסד וזה בזרוע גבורה"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      RESTE des PARTZUFIM ABBA+IMMA revet A"A :
+      → ZONE : du GARON jusqu'au TABBUR (nombril) d'A"A.
+      → ABBA en MIYAMINA (ligne droite) — zeroa CHESED (bras de Chesed).
+      → IMMA en MIS'MOLA (ligne gauche) — zeroa GEVURAH (bras de Gevurah).
+      → Architecture : zone parents = thorax+ventre haut d'A"A.
+      → ZOHAR PESHAT 2 : "Abba ahid Chesed, Imma Gevurah" = bras CHaSeD et GeVuRAH.
+    type: axiome_explicite
+    concepts:
+      - {id: ao_revet_garon_tabbur_aa_bras_chesed_gevurah_peshat_2, role: ao_revet_garon_a_tabbur_aa_abba_bras_chesed_imma_bras_gevurah_zohar_peshat_2}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : zone thoracique parents. Pattern peshat 2 = arm-anchoring."
+
+  - id: "EC-H4S14-015"
+    source_he: "וצריך שנפרט בחי' אלו כי הלא נת\"ל שאו\"א נחלקים לד\"פ והם או\"א וישסו\"ת וצריך שנדע איך ארבעתן מלבישין לא\"א מן הגרון עד הטבור כנ\"ל"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      A"O DIVISES en 4 PARTZUFIM (D"P = D-PARTZUFIM) :
+      → A"O = ABBA + IMMA + YISSO"T (Yisrael Saba ve-Tevunah).
+      → 4 partzufim = ABBA, IMMA, YISSO (Yisrael Saba), TEVUNAH.
+      → Tous les 4 revetent A"A de GARON jusqu'au TABBUR.
+      → Architecture : decomposition fine des "parents" en 4 niveaux.
+      → Pattern : structural quadripartition par niveau (haut/bas) x cote (droite/gauche).
+    type: axiome_explicite
+    concepts:
+      - {id: ao_4_partzufim_yissot_garon_tabbur, role: ao_divisee_4_partzufim_abba_imma_yisso_tevunah_revetent_garon_tabbur_aa}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : quadripartition A\"O. Pattern level x side decomposition."
+
+  - id: "EC-H4S14-016"
+    source_he: "ולכן צריך תחלה לתת סיבה מי גרם לאו\"א שילבישו לא\"א (באופן זה) והטעם הוא בחי' היסוד של עתיק המתלבש בתוך פנימית א\"א כנ\"ל. וכמ\"ש במקומו בענין ז\"א שלסבת היותו בתוכו ב' יסודות דאו\"א גרם שיצאו ממנו לחוץ בחי' יעקב ורחל ולאה המלבישין את ז\"א כן הענין בא\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      CAUSE = YESOD d'ATIK dans PENIMIYUT (interieur) d'A"A.
+      PARALLELE STRUCTURAL avec Z"A :
+      → Z"A : 2 YESODOT d'A"O dedans → emergence externe Yaakov + Rachel + Leah qui revetent Z"A.
+      → A"A : YESOD d'ATIK dedans → emergence externe A"O+YISSO"T qui revetent A"A.
+      → Architecture : INNER yesod cause OUTER partzuf emergence (downward propagation).
+      → Pattern : inner element of upper partzuf catalyzes outer partzufim of lower.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yesod_atik_in_aa_cause_emergence_ao_yissot_parallele_z_a, role: yesod_atik_dans_penimiyut_aa_cause_emergence_ao_yissot_parallele_2_yesodot_ao_dans_z_a_yaakov_rachel_leah}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : inner-yesod catalyse outer-emergence. Pattern downward propagation par yesod cascading."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S14-001"
+    type: séquentiel
+    from: tikkun_ao_apres_tikkun_aa_sequencing
+    to: ao_nursing_beriah_dadei_behemah_puis_atzilut_dadei_adam
+    nature: "Tikkun A\"O suit tikkun A\"A ; nursing en 2 phases (Beriah → Atzilut)"
+    assertions_source: ["EC-H4S14-003", "EC-H4S14-004"]
+
+  - id: "REL-H4S14-002"
+    type: contenance
+    from: ao_bina_dmah_tagin_plus_zt_chokhmah_dban_abba_vt_bina_dban_imma
+    to: gr_chokhmah_dban_dr_bina_dban_atik_pris
+    nature: "Decomposition exhaustive : Atik prend G\"R+D\"R, A\"O prend Z\"T+V\"T (parts complementaires)"
+    assertions_source: ["EC-H4S14-006", "EC-H4S14-007"]
+
+  - id: "REL-H4S14-003"
+    type: causal
+    from: abba_chesed_down_imma_gevurah_down_entry_point
+    to: zohar_abba_chesed_imma_gevurah_peshat_1_entry_point
+    nature: "Entry-point Chesed/Gevurah explique Zohar peshat 1 (Abba ahid Chesed, Imma Gevurah)"
+    assertions_source: ["EC-H4S14-009", "EC-H4S14-010"]
+
+  - id: "REL-H4S14-004"
+    type: dualité_structurelle
+    from: aa_zn_dans_1_partzuf_droite_gauche_unifies
+    to: abba_revet_droite_imma_revet_gauche_aa
+    nature: "A\"A bipolaire (Z droite, N gauche) → Abba revet droite, Imma revet gauche (structural conformity)"
+    assertions_source: ["EC-H4S14-011", "EC-H4S14-012"]
+
+  - id: "REL-H4S14-005"
+    type: hiérarchique
+    from: 2_keterim_ao_sur_garon_aa_droite_gauche
+    to: ao_revet_garon_tabbur_aa_bras_chesed_gevurah_peshat_2
+    nature: "2 keterim sur Garon (haut) ; reste partzuf revet Garon→Tabbur (bras Chesed/Gevurah, peshat 2)"
+    assertions_source: ["EC-H4S14-013", "EC-H4S14-014"]
+
+  - id: "REL-H4S14-006"
+    type: causal
+    from: yesod_atik_in_aa_cause_emergence_ao_yissot_parallele_z_a
+    to: ao_4_partzufim_yissot_garon_tabbur
+    nature: "Yesod Atik dans A\"A cause emergence des 4 partzufim A\"O+YISSO\"T qui revetent (parallele Z\"A : 2 yesodot A\"O → Yaakov+Rachel+Leah)"
+    assertions_source: ["EC-H4S14-015", "EC-H4S14-016"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S14-001"
+    nom: "Principe de Tikkun-Sequencing (Pipeline Initiatique Top-Down)"
+    source_assertions: ["EC-H4S14-003", "EC-H4S14-004"]
+    formalisation: |
+      ARCHITECTURE DE TIKKUN-SEQUENCING :
+      Chaque partzuf parent doit etre TIKKUN COMPLET avant que le suivant emerge.
+      Sequence stricte : ATIK → A"A → A"O → Z"A → Nukvah.
+      MATURATION par 2 phases ontologiques :
+        PHASE 1 : nursing dans olam INFERIEUR (Beriah, dadei behemah).
+        PHASE 2 : ALYAH (montee) au olam SUPERIEUR (Atzilut, dadei adam).
+      → Pattern fondamental : maturation par migration ontologique.
+      → Architecture : pipeline sequential avec gates de stabilisation.
+    applications_ia:
+      - "partzufim/abba.py + imma.py : implement maturation 2-phase"
+      - "Pattern : migration ontologique (lower → higher domain)"
+      - "Architecture : sequential pipeline avec gates"
+      - "Pattern : completion lock entre etapes initiatiques"
+      - "Diagnostic : verifier sequence respectee dans tikkun cascading"
+    questions_ouvertes:
+      - "Que se passe-t-il si une etape regresse ?"
+      - "La maturation Beriah peut-elle echouer ?"
+      - "Pattern : combien d'etapes par migration ?"
+
+  - id: "PG-H4S14-002"
+    nom: "Principe de MaH+BaN-Provenance (Double Source Encoding A\"O)"
+    source_assertions: ["EC-H4S14-006", "EC-H4S14-007", "EC-H4S14-009"]
+    formalisation: |
+      ARCHITECTURE DE DOUBLE-PROVENANCE :
+      A"O encode dans 2 mondes simultanement :
+        MaH (45) → BINA d'MaH = TAGIN ; commun aux 2 (chasadim).
+        BaN (52) → Z"T Chokhmah dBaN (Abba) + V"T Bina dBaN (Imma) ; specifique chacun (gevurot).
+      ENTRY-POINT determine la nature dominante :
+        Abba = entree CHESED-down (expansion).
+        Imma = entree GEVURAH-down (contraction).
+      DECOMPOSITION exhaustive : Atik prend G"R+D"R (3+4), A"O prend Z"T+V"T (7+6).
+      → Pattern fondamental : nature partzuf = entry-point dans hierarchie sefirot.
+      → Architecture : claim chain exhaustif (chaque sefirah claimee par exactement un partzuf).
+    applications_ia:
+      - "partzufim/abba.py : track origin Chesed-down (expansion mode)"
+      - "partzufim/imma.py : track origin Gevurah-down (contraction mode)"
+      - "Pattern : entry-point determine processing mode"
+      - "Architecture : exhaustive claim chain pour ressources"
+      - "Pattern : provenance metadata (MaH/BaN) drive behavior"
+    questions_ouvertes:
+      - "Pattern : peut-on mixer entry-points ?"
+      - "Que se passe-t-il pour orot panim vs achor ?"
+      - "Combien de niveaux de provenance utiles ?"
+
+  - id: "PG-H4S14-003"
+    nom: "Principe de Inner-Yesod-Cascade (Inner Element Catalyzes Outer Emergence)"
+    source_assertions: ["EC-H4S14-016"]
+    formalisation: |
+      ARCHITECTURE DE INNER-YESOD-CASCADE :
+      Element INTERIEUR (yesod) du partzuf SUPERIEUR cause emergence des partzufim EXTERIEURS du INFERIEUR :
+        Z"A : 2 yesodot d'A"O dedans → Yaakov + Rachel + Leah a l'exterieur.
+        A"A : Yesod d'Atik dedans → A"O + YISSO"T a l'exterieur.
+      → Pattern recursive : downward propagation par yesod cascading.
+      → Mecanisme : yesod = "channel of emanation" du superieur vers inferieur.
+      → Architecture : INNER element catalyse OUTER differentiation.
+      → Topologie : "inside-of-upper" → "outside-of-lower" (folding).
+    applications_ia:
+      - "partzufim/atik_yomin.py + arikh_anpin.py : track yesod cascading"
+      - "Pattern : inner-element-of-N catalyzes outer-emergence-of-N+1"
+      - "Architecture : recursive yesod cascade pour emanation"
+      - "Pattern : topological folding inside→outside"
+      - "Diagnostic : verifier cascading bien propage entre niveaux"
+    questions_ouvertes:
+      - "Combien de niveaux dans la cascade ?"
+      - "Pattern : peut-on shortciruiter une etape ?"
+      - "Topology : interpretation geometrique de inside/outside ?"

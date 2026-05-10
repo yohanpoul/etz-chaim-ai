@@ -1,0 +1,30 @@
+# ═══════════════════════════════════════════════════════════════════
+# Heikhal 04 — Abba ve-Imma (אבא ואמא)
+# Cree pour Sha'ar Abba ve-Imma (Sefer Etz Chaim 14, Sefaria gate 14)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  heikhal_name_he: "היכל אבא ואמא"
+  heikhal_name_fr: "Palais d'Abba et Imma (Pere et Mere)"
+  partzuf: abba_imma
+  partzuf_name_fr: "Pere et Mere — Chokhmah et Bina (Z\"A enfants)"
+  etz_chaim_shaar_reference: 14  # Sefaria gate 14 = premier Sha'ar de H4
+  shearim:
+    shaar_01_abba_ve_imma:
+      status: in_progress_auto
+      description: "Sha'ar Abba ve-Imma (Sefaria gate 14, 10 perakim) — tikkun A\"O apres A\"A, revetement A\"A, 4 partzufim YISSO\"T, MaH+BaN encoding"
+    shaar_02_planned:
+      status: planned
+      description: "2eme sha'ar de H4 — TBD apres fetch Sefer 15"
+    shaar_03_planned:
+      status: planned
+      description: "3eme sha'ar de H4 — TBD apres fetch Sefer 16"
+
+  source_edition_default: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  source_tradition: "Etz Chaim de R. Hayyim Vital — lecture Lourianique systematique"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Heikhal 4 ouvre le cycle des Partzufim INTERMEDIAIRES entre A\"A (H3) et Z\"A. A\"O nourrit Z\"A par mochin. Distinction MaH/BaN structurelle."

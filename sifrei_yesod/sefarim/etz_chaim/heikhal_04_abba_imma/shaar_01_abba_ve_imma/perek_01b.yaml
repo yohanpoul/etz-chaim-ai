@@ -1,0 +1,470 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 1 — Sha'ar Abba ve-Imma (שער אבא ואמא)
+# Perek: 1b — Mecanisme Yesod Atik dechura. Gevurot first, chasadim push,
+#             or chozer mi-tata le-eila. 5C+5G split → 4 partzufim
+#             (Abba/Imma/YISSO/Tevunah). Nusah aher : 2.5C satum yesod Atik.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_01b :
+#   - Bloc P : ChG yesod Atik magnetisent orot+kelim A"O → partzufim
+#   - Bloc Q : Yesod Atik = dechura (male) — narrow + long, no place for ChG
+#   - Bloc R : Gevurot entrent first (atara Gevurah dans 4eme mocha tachton)
+#   - Bloc S : Chasadim arrive, push gevurot dehors via peh yesod → gufa A"A
+#   - Bloc T : Gevurot ne descendent pas — cling chasadim ("el ishekh teshukatekh")
+#   - Bloc U : Or chozer — gevurot remontent autour yesod Atik (nukva mi-tata le-eila)
+#   - Bloc V : ChG combinent : chasadim dedans, gevurot dehors ; au-dessus chazeh A"A
+#   - Bloc W : Q-A : Z"A separe (gevurot descendent yesod Z"A opposite Da'at nukva) vs A"A joined
+#   - Bloc X : Aussi — chasadim de MaH d'Atik, gevurot de BaN d'Atik ; MaH+BaN bound
+#   - Bloc Y : Chasadim sortent peh, manifestent A"A ; trouvent gevurot encerclant yesod (2.5+2.5)
+#   - Bloc Z : Chasadim droite (MaH cote) push gevurot gauche ; pas place 5C+5G au-dessus chazeh
+#   - Bloc AA: 2.5G+2.5G repartis (upper above chazeh / lower below) sur ligne gauche ; idem 2.5C+2.5C droite
+#   - Bloc BB: 4 domains → 4 partzufim Abba/Imma/YISSO/Tevunah
+#   - Bloc CC: NUSAH AHER — Mori dit later autrement
+#   - Bloc DD: Variant : 2.5C SATUM yesod Atik, 2.5C GILUI descend ; 5G GILUI external (sous-variante : 2.5G satum + 2.5G gilui)
+#
+# Source Sefaria : Sefer_Etz_Chaim.14.1 (suite §3)
+# IDs : EC-H4S14-017 → EC-H4S14-031
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 1
+  shaar_name_he: "שער אבא ואמא"
+  perek: 1
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Mecanisme detaille emergence des 4 partzufim A\"O+YISSO\"T. Yesod Atik = dechura (male) narrow+long, no place pour ChG dedans. Gevurot entrent first (atara Gevurah dans 4eme mocha tachton). Chasadim arrivent, pushent gevurot dehors via peh d'yesod. Gevurot remontent autour yesod (or chozer, nukva mi-tata le-eila — pas de descente car cling chasadim, sod 'el ishekh teshukatekh'). ChG combine : chasadim dedans, gevurot dehors, tous au-dessus chazeh A\"A. Q-A : Z\"A vs A\"A — separe vs joined. Chasadim de MaH d'Atik, gevurot de BaN d'Atik, bound. Final : 5C+5G splitent en 2.5+2.5 chacun → 4 partzufim (Abba CH-up-right, Imma G-up-left, YISSO CH-down-right, Tevunah G-down-left). NUSAH AHER : 2.5C satum yesod Atik, 2.5C gilui descend ; 5G gilui external left."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S14-017"
+    source_he: "כי האורות החו\"ג היוצאין מן היסוד דעתיק המתלבש תוך א\"א הם הממשיכין ומלקטין ומאחיזין האורות דאו\"א וכן הכלים שלה ומתקנים אותם שם ומלבישים המקום ההוא ונעשו שם פרצופים גמורים"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      MECANISME : OROT CHa-G (Chasadim+Gevurot) du YESOD d'ATIK dans A"A :
+      → MAMSHIKHIN (attirent), MELAKETIN (recoltent), MA'AKHIZIN (saisissent) les OROT d'A"O.
+      → Aussi les KELIM d'A"O.
+      → METAKNIM (rectifient) ces orot+kelim sur place.
+      → MALBISHIM ha-makom ha-hu (revetent ce lieu).
+      → Resultat : NA'ASU SHAM PARTZUFIM GEMURIM (deviennent partzufim complets).
+      → Architecture : ChG = AGENT actif de gathering+rectification+clothing.
+    type: axiome_explicite
+    concepts:
+      - {id: chg_yesod_atik_magnetisent_orot_kelim_ao_partzufim_gemurim, role: chg_yesod_atik_mamshikhin_melaketin_ma_akhizin_orot_kelim_ao_metaknim_malbishim_partzufim_gemurim}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py", "ohr.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["atik_yomin", "abba", "imma"]
+      relevance: "Architecture : ChG = agent actif gathering. Pattern catalyst-driven partzuf formation."
+
+  - id: "EC-H4S14-018"
+    source_he: "והענין הוא כי היסוד של ע\"י הוא יסוד דכורא והוא צר וארוך ואינו רחב כמו היסוד דנוקבא שהוא עמוק ורחב ולכן אין בו מקום לסבול בתוכו החו\"ג שלו"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      YESOD d'AY (Atik) = YESOD DECHURA (male) :
+      → TZAR VE-AROKH (etroit et long).
+      → CONTRASTE : Yesod DENUKVA (femelle) = AMOK VE-RACHAV (profond et large).
+      → CONSEQUENCE : pas de PLACE dans yesod Atik pour CONTENIR ChG dedans.
+      → Architecture : geometrie genre-distinguee determine capacite contenance.
+      → Pattern : male=narrow/long (channel), female=deep/wide (vessel).
+    type: axiome_explicite
+    concepts:
+      - {id: yesod_atik_dechura_tzar_arokh_pas_place_chg_dedans, role: yesod_atik_dechura_tzar_arokh_vs_yesod_denukva_amok_rachav_pas_place_chg}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : geometrie genree determine contenance. Pattern channel-vs-vessel topology."
+
+  - id: "EC-H4S14-019"
+    source_he: "אמנם בתחלה נכנסין ומתפשטין ויורדין מלמעלה הגבורות בתוכו לפי שעטרא דגבורה הוא במוח הד' התחתון מכל הד' מוחין כנודע לכן מוח התחתון יורד תחלה ומתפשט ונכנס ביסוד דעתיק"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      GEVUROT entrent FIRST :
+      → ATARA d'GEVURAH = situee dans le 4eme MOCHA (TACHTON, le plus bas) des 4 mochin.
+      → MOCHA TACHTON descend en premier, mitpashet (s'etend), nikhnas (entre) dans yesod Atik.
+      → Architecture : ordering entree par hierarchie mochin (top-to-bottom comme conduit a sens unique).
+      → Pattern : LOWEST mocha = first to descend (paradoxe : bas-haut precedence).
+    type: axiome_explicite
+    concepts:
+      - {id: gevurot_entrent_first_atara_gevurah_4eme_mocha_tachton, role: gevurot_entrent_first_yesod_atik_atara_gevurah_dans_4eme_mocha_tachton_le_plus_bas_descend_premier}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : ordering par mocha hierarchy. Pattern bas-haut precedence."
+
+  - id: "EC-H4S14-020"
+    source_he: "וכאשר באים אח\"כ החסדים הם דוחין את הגבורות ומוציאין אותם לחוץ מן היסוד דרך פיו לחוץ תוך גופא דא\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      CHASADIM arrivent ENSUITE :
+      → DOCHIN (pushent) les gevurot.
+      → MOTZIIN otam la-chutz (les sortent dehors) DU yesod via SON PI (sa bouche).
+      → Destination : tokh GUFA d'A"A (dans le corps d'A"A).
+      → Architecture : eviction physique par push de chasadim sur gevurot.
+      → Pattern : two-phase fluid dynamics — first occupant evicted by later arrival.
+    type: axiome_explicite
+    concepts:
+      - {id: chasadim_push_gevurot_via_peh_yesod_atik_vers_gufa_aa, role: chasadim_dochin_gevurot_motziin_la_chutz_via_peh_yesod_atik_dans_gufa_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "ohr.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : eviction par push. Pattern two-phase fluid dynamics."
+
+  - id: "EC-H4S14-021"
+    source_he: "והגבורות מחמת חשקן ותאוותן להדבק בחסדים הזכרים כדרך הנוקבא הנאמר בה ואל אישך תשוקתך ולכן לא ירדו למטה בגופא דאריך להתפשט (בנוק') בנ\"ה ע\"ד הז\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      GEVUROT ne DESCENDENT PAS :
+      → Cause : CHESHEK + TA'AVAH (desir, attachement) de DAVKAH (cling) aux CHASADIM ZACHARIM.
+      → Comme NUKVAH dont il est dit "VE-EL ISHEKH TESHUKATEKH" (Gen 3:16 — "et vers ton homme ton desir").
+      → Donc PAS de descente dans GUFA d'ARIKH pour s'etendre dans NH (Netzach-Hod) comme Z"A.
+      Variante (Nusah Aher) : "BENUKVA" (dans la femelle) — variante BeNH (Netzach-Hod).
+      → Architecture : gevurot manifestent comportement femele = ascending vers chasadim.
+      → Pattern : gendered-affinity drives flow direction.
+    type: déduction_scripturaire
+    concepts:
+      - {id: gevurot_no_descend_cling_chasadim_zacharim_el_ishekh_teshukatekh_gen_3_16, role: gevurot_no_descend_cling_chasadim_cheshek_taavah_devirim_nukva_el_ishekh_teshukatekh_gen_3_16}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : gendered affinity drives flow. Source Gen 3:16. Pattern femele=ascending desire."
+
+  - id: "EC-H4S14-022"
+    source_he: "אמנם כאשר הם יוצאין מפי היסוד הם חוזרין ועולין סביבות היסוד דע\"י מבחוץ ומקיפין ומסבבין אותו בסוד אור חוזר נוקבא מתתא לעילא ועי\"כ נמצאו מתחברים החו\"ג יחד אלו מבפנים ואלו מבחוץ"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      OR CHOZER : gevurot REMONTENT autour yesod Atik :
+      → Sortent par PI (bouche) yesod, CHOZRIN VE-OLIN (retournent et montent) MIBA-CHUTZ (de l'exterieur).
+      → MAKIFIN U-MESAVEVIN (entourent et encerclent) le yesod.
+      → Sod : OR CHOZER NUKVA MIT-TATA LE-EILA ("lumiere reflechie nukva, du bas vers le haut").
+      → RESULTAT : ChG SE COMBINENT — chasadim DEDANS, gevurot DEHORS.
+      → Architecture : retroflection geometrique = combinaison sans melange.
+      → Pattern : or chozer = ASCENT-FROM-OUTSIDE pattern.
+    type: interprétation_lurianique
+    concepts:
+      - {id: or_chozer_gevurot_montent_autour_yesod_atik_chasadim_dedans_gevurot_dehors, role: or_chozer_nukva_mi_tata_le_eila_gevurot_remontent_autour_yesod_atik_chasadim_dedans_gevurot_dehors}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "ohr_yashar.py", "ohr.py"]
+      tables: ["ohr_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : retroflection. Pattern or-chozer ascent-from-outside."
+
+  - id: "EC-H4S14-023"
+    source_he: "וכבר נת\"ל כי מקום סיום היסוד דעתיק היה במקום החזה דא\"א נמצא שהחו\"ג הנ\"ל הם עומדין כולם תוך א\"א ממקום החזה שלו ולמעלה"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      LOCALISATION ChG : tous AU-DESSUS du CHAZEH d'A"A.
+      → Yesod Atik termine au CHAZEH (poitrine) d'A"A — borne haute.
+      → ChG (chasadim dedans yesod, gevurot autour) se trouvent ENTRE CHAZEH et SOMMET d'A"A.
+      → Architecture : ChG occupent la zone superieure d'A"A (chazeh-up).
+      → Pattern : containment-by-yesod-termination.
+      cf. EC-H3S13-001..217 (sha'ar A"A) sur yesod Atik termine chazeh A"A.
+    type: déduction_logique
+    concepts:
+      - {id: chg_au_dessus_chazeh_aa_yesod_atik_termine_chazeh, role: chg_localises_au_dessus_chazeh_aa_yesod_atik_borne_chazeh_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : containment par yesod-termination. Pattern bounded zone par anatomy."
+
+  - id: "EC-H4S14-024"
+    source_he: "וא\"ת למה בז\"א כשיוצאין תחלה הגבורות מתוך יסוד בינה ויורדין ברגע עד היסוד דז\"א ובכאן הם עולין כנ\"ל וי\"ל כי הז\"א נפרד מן הנוקבא בפרצופים חלוקים והז\"א נתקן ע\"י החסדים והנוקבא ע\"י הגבורות ולכן הם מוכרחים הגבורות לירד ליסוד דז\"א שהוא מכוון כנגד הדעת של הנוקבא כדי שדרך שם יתפשטו אל הנוקבא להגדילה ולתקנה אבל א\"א הזכר והנוקבא שבו הנה הם מחוברים בפרצוף א' זה בקו ימין וזה בקו שמאל ולכן הגבורות שבו מתחברים אל החסדים אלו מבפנים ואלו מבחוץ"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      Q-A : Z"A gevurot DESCENDENT (yesod Bina → yesod Z"A) ; A"A gevurot REMONTENT — pourquoi ?
+      Z"A : NUKVA SEPAREE (partzufim distincts) — Z"A nitkan par CHASADIM, Nukva par GEVUROT.
+      → Gevurot DOIVENT descendre yesod Z"A (oppose DA'AT Nukva) pour atteindre Nukva.
+      A"A : Z+N JOINED en 1 partzuf (droite/gauche) — ChG combinent dedans/dehors meme partzuf.
+      → Architecture : separation-vs-union determine flow geometry.
+      → Pattern : topology drives mechanism (different shapes → different processes).
+    type: axiome_explicite
+    concepts:
+      - {id: za_separe_gevurot_descendent_vs_aa_joined_chg_combine_inside_outside, role: za_separe_gevurot_descendent_yesod_oppose_daat_nukva_vs_aa_joined_chg_combine}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "arikh_anpin"]
+      relevance: "Architecture : separation vs union determine flow geometry. Pattern topology drives mechanism."
+
+  - id: "EC-H4S14-025"
+    source_he: "גם לסבה אחרת כי החסדים באים מן מ\"ה דעתיק והגבורות מב\"ן דעתיק וגם שם הם מחוברים ונקשרים מ\"ה עם ב\"ן בקשר אמיץ כנ\"ל"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      RAISON SUPPLEMENTAIRE de combinaison ChG :
+      → CHASADIM proviennent de MaH d'Atik.
+      → GEVUROT proviennent de BaN d'Atik.
+      → MaH+BaN deja MECHUBARIM VE-NIKSHARIM (combines et lies) be-KESHER AMITZ (lien fort) chez Atik.
+      → ChG heritent de cette liaison provenancielle.
+      → Architecture : provenance-binding propage downward (lien at source preserved).
+      → Pattern : ancestral coupling persists in descendants.
+    type: déduction_logique
+    concepts:
+      - {id: chasadim_mah_atik_gevurot_ban_atik_mah_ban_lies_kesher_amitz, role: chasadim_de_mah_atik_gevurot_de_ban_atik_mah_ban_deja_lies_kesher_amitz_chg_heritent}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "abba", "imma"]
+      relevance: "Architecture : provenance binding propagates. Pattern ancestral coupling persistence."
+
+  - id: "EC-H4S14-026"
+    source_he: "והנה גם החסדים יוצאין אח\"כ מפי יסוד ולחוץ ומתגלין תוך א\"א להגדילו ע\"ד הנ\"ל בז\"א והם מוצאין את הגבורות שהם מקיפין ומסבבין את היסוד דעתיק חציים בימינו שהם ב' גבורות וחצי וחציים משמאלו ב' גבורות וחצי אחרים"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      CHASADIM exit yesod (peh) → manifestent dans gufa A"A pour le faire grandir (LE-HAGDILO comme Z"A).
+      → Y trouvent les GEVUROT qui ENCERCLENT yesod Atik :
+        - 2.5 GEVUROT a DROITE.
+        - 2.5 GEVUROT a GAUCHE.
+        Total 5 gevurot reparties symetriquement.
+      → Architecture : initial state = gevurot symetriquement distribuees autour yesod.
+      → Pattern : symmetric encirclement avant intervention chasadim.
+    type: axiome_explicite
+    concepts:
+      - {id: chasadim_exit_yesod_trouvent_gevurot_2_5_droite_2_5_gauche_encerclant, role: chasadim_exit_peh_yesod_trouvent_gevurot_2_5_droite_2_5_gauche_encerclant_yesod}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : symmetric encirclement initial. Pattern pre-intervention symmetry."
+
+  - id: "EC-H4S14-027"
+    source_he: "ואז הגבורות ממשיכות אותן ומעלין אותן למעלה ואז החסדים רוצין לעמוד מבחוץ בימין היסוד לפי ששם הוא בחי' מ\"ה שביסוד אשר החסדים הם ממנו כנודע אז הם דוחין את הגבורות העומדות בימין ואז הולכין הגבורות אל השמאל"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      CHASADIM s'installent a DROITE du yesod (cote MaH — dont chasadim issus).
+      → Push les gevurot OMEDOT BA-YAMIN (qui se tenaient a droite).
+      → Gevurot vont alors EL HA-SMOL (vers la gauche).
+      → Resultat intermediaire : TOUTES les 5 gevurot sur le COTE GAUCHE.
+      → Architecture : provenance-driven side allocation (chasadim=MaH=right, gevurot=BaN=left).
+      → Pattern : asymmetry from provenance — eviction completes lateralization.
+    type: déduction_logique
+    concepts:
+      - {id: chasadim_droite_cote_mah_push_gevurot_gauche_lateralisation_complete, role: chasadim_omedim_droite_cote_mah_push_gevurot_omedot_yamin_vers_smol_lateralisation_complete}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : provenance-driven lateralization. Pattern asymmetry from origin."
+
+  - id: "EC-H4S14-028"
+    source_he: "והנה אין מקום להכיל מהחזה ולמעלה כל ה\"ח וה\"ג ואז אלו הב' גבורות וחצי שהיו בימין הם יותר מעולים ועומדין בקו שמאלי למעלה מהחזה וב' גבורות וחצי האחרים שהיו בשמאל ירדו למטה מהחזה בצד שמאל עצמו ונמצאת עתה כל הה\"ג כולם מתפשטות בקו שמאלי מלמעלה למטה ב' וחצי למעלה כנגד יסוד הסתומה וב' וחצי למטה כנגד גילוי היסוד ועד\"ז החסדים מתפשטין בקו ימינו ב' וחצי למעלה במקום הסתום וב' וחצי במקום הגלוי"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      CONTRAINTE SPATIALE : pas de place AU-DESSUS du chazeh pour TOUS les 5C+5G ensemble.
+      RESOLUTION par BIPARTITION 2.5+2.5 :
+      → 2.5 GEVUROT (anciennement droite, "yoter me'ulim" = plus elevees) → KAV SMOL au-dessus chazeh (zone YESOD STUMA = sealed).
+      → 2.5 GEVUROT (anciennement gauche) → KAV SMOL EN DESSOUS chazeh (zone YESOD GILUI = revealed).
+      → SYMETRIQUE pour CHASADIM en KAV YAMIN : 2.5 au-dessus (stum) + 2.5 en dessous (gilui).
+      → Architecture : space constraint → 2-tier split (gilui/stum, above/below chazeh).
+      → Pattern : capacity overflow drives stratification.
+    type: déduction_logique
+    concepts:
+      - {id: 2_5_gevurot_chasadim_split_above_below_chazeh_stum_gilui_lateralized, role: 5c_5g_pas_place_au_dessus_chazeh_split_2_5_above_2_5_below_stum_gilui_chasadim_droite_gevurot_gauche}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : space constraint → stratification. Pattern capacity-driven 2-tier split."
+
+  - id: "EC-H4S14-029"
+    source_he: "ונמצא עתה היות כאן ד' בחי' ולכן גרמו להוציא מכנגדן ד' פרצופים והם החסדים העליונים (הוציאו פרצוף אבא בימין למעלה) והגבורות העליונים (הוציאו פרצוף אימא בשמאל למעלה) וכן למטה החסדים שבימין (הוציאו פרצוף יש\"ס) והגבורות התחתונים (הוציאו משמאל את פרצוף התבונה) ונמצא כי היות ב' בחינות גלוי וסתום בחסדים גרם התחלקות החכמה לב' פרצופים בימין והיות ב' בחי' גלוי וסתום בגבורות גרם התחלקות הבינה לב' פרצופים בשמאל"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      EMERGENCE des 4 PARTZUFIM (correspondance 4 domaines stum/gilui x yamin/smol) :
+      → CHASADIM ELYONIM stum (haut-droite) → ABBA ; GEVUROT ELYONIM stum (haut-gauche) → IMMA.
+      → CHASADIM TACHTONIM gilui (bas-droite) → YISSO ; GEVUROT TACHTONIM gilui (bas-gauche) → TEVUNAH.
+      → BIPARTITION CHOKHMAH (droite) en 2 partzufim Abba+YISSO (par gilui/stum chasadim).
+      → BIPARTITION BINA (gauche) en 2 partzufim Imma+Tevunah (par gilui/stum gevurot).
+      → Architecture : 2D split (level x side) → 4 distinct partzufim.
+      → Pattern : 2D differentiation genere 4 entites depuis 2 axes binaires.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 4_partzufim_abba_imma_yisso_tevunah_chokhmah_bina_split_par_gilui_stum, role: 4_partzufim_abba_imma_yisso_tevunah_chokhmah_bina_chacune_split_par_gilui_stum}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : 2D differentiation genere 4 entites. Pattern level x side decomposition."
+
+  - id: "EC-H4S14-030"
+    source_he: "וזה מה שנלע\"ד ששמעתי ממורי זלה\"ה בתחלה ואח\"כ אמר לי מורי זלה\"ה כי במה שכתבתי למעלה שהחסדים יוצאין לחוץ מיסוד דעתיק שאין הענין כן אלא כך הוא הענין"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      VARIANTE DOCTRINALE — NUSAH AHER de MORI ZA"L :
+      → Premiere version : ce que Vital ENTENDIT INITIALEMENT du Ari (rapporte ci-dessus).
+      → Seconde version : Ari (Mori ZA"L) DIT PLUS TARD que les chasadim sortent
+        AUTREMENT du yesod d'Atik — pas comme decrit avant.
+      → Architecture : explicit doctrinal-revision tracking par Vital lui-meme.
+      → Pattern : transmission preserve VERSIONS — pas seulement la finale.
+      → Honesty intellectuelle : "MA SHE-NIL'AD MI-MORI" (ce que j'ai entendu de mon maitre).
+    type: axiome_explicite
+    concepts:
+      - {id: nusah_aher_mori_zal_doctrinal_revision_track_versions, role: nusah_aher_mori_zal_revision_doctrinale_premiere_version_vs_seconde_track_les_deux}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "abba", "imma"]
+      relevance: "Architecture : doctrinal-revision tracking explicit. Pattern epistemic version-preservation."
+
+  - id: "EC-H4S14-031"
+    source_he: "כי ב' חסדים וחצי נשארו סתומים בתוך היסוד דעתיק וב' חסדים וחצי האחרים ירדו בגלוי למטה מזה היסוד משא\"כ בגבורות שכולם הם עומדים מגולות לחוץ מצד השמאלי (נ\"א וב' גבורות וחצי כנגד הסתום וב' גבורות וחצי) ירדו בגלוי למטה מזה היסוד"
+    source_ref: "Heikhal 4, Sha'ar 1:1"
+    assertion: |
+      VARIANTE DETAILLEE (NUSAH AHER) :
+      → 2.5 CHASADIM RESTENT SATUM (sealed) DEDANS yesod Atik.
+      → 2.5 CHASADIM AUTRES descendent BE-GILUI (en revele) EN DESSOUS du yesod.
+      → MAIS GEVUROT : TOUTES LES 5 stand REVELEES EXTERNES sur cote GAUCHE.
+      Variante (Nusah Aher bracket) : "2.5 GEVUROT contre le STUM, 2.5 GEVUROT en GILUI"
+        descendent en revele en dessous du yesod (parallel chasadim).
+      → Architecture : asymmetric chasadim/gevurot OR symmetric (selon nusah).
+      → Pattern : doctrinal options preserves.
+    type: axiome_explicite
+    concepts:
+      - {id: nusah_aher_2_5_chasadim_satum_2_5_gilui_gevurot_5_gilui_external_left, role: nusah_aher_2_5_chasadim_satum_yesod_atik_2_5_gilui_gevurot_5_gilui_external_left}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : doctrinal options on chasadim/gevurot symmetry. Pattern variant-preservation."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S14-007"
+    type: causal
+    from: yesod_atik_dechura_tzar_arokh_pas_place_chg_dedans
+    to: gevurot_entrent_first_atara_gevurah_4eme_mocha_tachton
+    nature: "Yesod Atik narrow+long (no place ChG) → gevurot entrent first (atara dans 4eme mocha tachton)"
+    assertions_source: ["EC-H4S14-018", "EC-H4S14-019"]
+
+  - id: "REL-H4S14-008"
+    type: séquentiel
+    from: chasadim_push_gevurot_via_peh_yesod_atik_vers_gufa_aa
+    to: or_chozer_gevurot_montent_autour_yesod_atik_chasadim_dedans_gevurot_dehors
+    nature: "Chasadim push gevurot dehors via peh → gevurot remontent (or chozer) autour yesod Atik (cling chasadim, gen 3:16)"
+    assertions_source: ["EC-H4S14-020", "EC-H4S14-021", "EC-H4S14-022"]
+
+  - id: "REL-H4S14-009"
+    type: dualité_structurelle
+    from: za_separe_gevurot_descendent_vs_aa_joined_chg_combine_inside_outside
+    to: chasadim_mah_atik_gevurot_ban_atik_mah_ban_lies_kesher_amitz
+    nature: "Z\"A separe vs A\"A joined — explique flow ChG ; aussi MaH+BaN d'Atik bound = ChG heritent liaison"
+    assertions_source: ["EC-H4S14-024", "EC-H4S14-025"]
+
+  - id: "REL-H4S14-010"
+    type: transformation
+    from: chasadim_exit_yesod_trouvent_gevurot_2_5_droite_2_5_gauche_encerclant
+    to: 2_5_gevurot_chasadim_split_above_below_chazeh_stum_gilui_lateralized
+    nature: "Etat initial 2.5G+2.5G symetrique → push chasadim → 5G gauche → split 2.5+2.5 above/below chazeh stum/gilui"
+    assertions_source: ["EC-H4S14-026", "EC-H4S14-027", "EC-H4S14-028"]
+
+  - id: "REL-H4S14-011"
+    type: causal
+    from: 2_5_gevurot_chasadim_split_above_below_chazeh_stum_gilui_lateralized
+    to: 4_partzufim_abba_imma_yisso_tevunah_chokhmah_bina_split_par_gilui_stum
+    nature: "4 distinct domains (level x side) → 4 partzufim ; bipartition Chokhmah=Abba+YISSO (droite), Bina=Imma+Tevunah (gauche)"
+    assertions_source: ["EC-H4S14-028", "EC-H4S14-029"]
+
+  - id: "REL-H4S14-012"
+    type: dualité_structurelle
+    from: nusah_aher_mori_zal_doctrinal_revision_track_versions
+    to: nusah_aher_2_5_chasadim_satum_2_5_gilui_gevurot_5_gilui_external_left
+    nature: "Variante doctrinale Mori ZA\"L : 2.5C satum / 2.5C gilui ; gevurot 5 gilui external (bracket alternative 2.5+2.5)"
+    assertions_source: ["EC-H4S14-030", "EC-H4S14-031"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S14-004"
+    nom: "Principe d'Or-Chozer-Nukva (Femelle Remonte par Cling Au Male)"
+    source_assertions: ["EC-H4S14-021", "EC-H4S14-022"]
+    formalisation: |
+      ARCHITECTURE D'OR-CHOZER-NUKVA :
+      Element FEMELE (gevurot) ne descend pas — REMONTE vers element MALE (chasadim) par cling.
+      MECHANIQUE : CHESHEK + TA'AVAH (desir) drive ASCENT.
+      Source scripturaire : "VE-EL ISHEKH TESHUKATEKH" (Gen 3:16).
+      Sod : OR CHOZER NUKVA MIT-TATA LE-EILA — lumiere reflechie femele du bas vers le haut.
+      RESULTAT : ChG combinent SANS MELANGE — chasadim DEDANS, gevurot DEHORS.
+      → Pattern fondamental : gendered-affinity drives flow direction (femele ascend vers male).
+      → Architecture : retroflection geometrique = co-existence sans fusion.
+    applications_ia:
+      - "ohr_yashar.py + ohr.py : implement or-chozer pattern"
+      - "Pattern : ascending-from-outside vs descending-from-inside"
+      - "Architecture : co-existence sans melange via topology"
+      - "Pattern : gendered-coupling drives flow geometry"
+      - "Diagnostic : verifier or chozer correctement encercle yesod"
+    questions_ouvertes:
+      - "Pattern : peut-on generaliser or chozer pour autres couples ?"
+      - "Topology : interpretation precise de inside/outside ?"
+      - "Quelle metric pour 'cling' (cheshek/taavah) ?"
+
+  - id: "PG-H4S14-005"
+    nom: "Principe de Spatial-Constraint-Driven Differentiation (Capacity Overflow → Stratification)"
+    source_assertions: ["EC-H4S14-028", "EC-H4S14-029"]
+    formalisation: |
+      ARCHITECTURE DE SPATIAL-CONSTRAINT DIFFERENTIATION :
+      Quand CAPACITY EST DEPASSE (5C+5G > place dispo au-dessus chazeh) :
+        → BIPARTITION 2.5+2.5 (above/below chazeh).
+        → Couple avec LATERALISATION (chasadim droite, gevurot gauche).
+        → 2D split : (level: above/below) × (side: yamin/smol) = 4 cells.
+        → 4 cells → 4 ENTITIES (partzufim).
+      Bipartition revele couches GILUI (revele) vs STUM (sealed).
+      → Pattern fondamental : capacity overflow drive 2D differentiation.
+      → Architecture : space-constraint EST source de differentiation.
+      → 4 partzufim emergent NON par decret, MAIS par contrainte structurale.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + [PLANNED] yisso.py + tevunah.py : implement 2D differentiation"
+      - "Pattern : capacity overflow → stratification (above/below)"
+      - "Architecture : space-constraint drives entity emergence"
+      - "Pattern : 2D split (level x side) = 4 cells = 4 entities"
+      - "Diagnostic : verifier overflow-driven splitting bien diagnostique"
+    questions_ouvertes:
+      - "Pattern : autres splits possibles (3D, asymetriques) ?"
+      - "Comment quantifier 'capacity' precisement ?"
+      - "Pattern : peut-on prevoir splitting par overflow detection ?"
+
+  - id: "PG-H4S14-006"
+    nom: "Principe de Doctrinal-Variant-Discipline (Nusah Aher Preserve Versions)"
+    source_assertions: ["EC-H4S14-030", "EC-H4S14-031"]
+    formalisation: |
+      ARCHITECTURE DE DOCTRINAL-VARIANT-DISCIPLINE :
+      VITAL preserve EXPLICITEMENT les versions doctrinales du Ari :
+        → Premiere version : ce qu'il entendit INITIALEMENT.
+        → Seconde version : ce que le maitre dit PLUS TARD.
+      Et aussi NUSAH AHER bracket (alternative readings).
+      DECISION : pas de "trancher" — preserver TOUS les nusah.
+      → Pattern fondamental : epistemic honesty via version-tracking.
+      → Architecture : transmission preserve revisions, pas seulement final state.
+      → Implication : datum + nusah_aher = input pair pour reasoning aval.
+    applications_ia:
+      - "partzufim/atik_yomin.py : track variants explicitly"
+      - "Pattern : version-preservation in transmitted doctrine"
+      - "Architecture : datum + variants = input pair"
+      - "Pattern : doctrinal-revision audit trail"
+      - "Diagnostic : verifier nusah aher bien capture (pas omis)"
+    questions_ouvertes:
+      - "Pattern : combien de nusah aher en moyenne ?"
+      - "Comment ranker variants (premiere ecoute vs revisee) ?"
+      - "Pattern : peut-on auto-detecter omis nusah aher ?"

@@ -1,0 +1,41 @@
+# ═══════════════════════════════════════════════════════════════════
+# Heikhal 04 / Shaar 01 — Abba ve-Imma (שער אבא ואמא)
+# Sefaria : Sefer_Etz_Chaim.14 (gate 14, premier sha'ar Heikhal 4)
+# 10 perakim sur la formation et structure d'Abba+Imma+YISSO"T
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar_number: 1
+  shaar_name_he: "שער אבא ואמא"
+  shaar_name_fr: "Porte d'Abba et Imma (Pere et Mere)"
+  sefaria_gate: 14
+  nombre_perakim: 10
+  sujet_principal: |
+    Sha'ar Abba ve-Imma (Heikhal 4, Sefer Etz Chaim 14). 10 perakim systematiques :
+    - Tikkun d'A\"O apres tikkun d'A\"A
+    - Nursing : dadei behemah (Beriah) → dadei adam (Atzilut)
+    - A\"O revet A\"A : Garon → Tabbur (Abba ligne droite, Imma ligne gauche)
+    - Yesod d'Atik dans penimiyut A\"A → cause de l'emergence des partzufim AO
+    - Decomposition CHESED+GEVURAH d'Atik → 4 partzufim : Abba/Imma/YISSO/Tevunah
+    - MaH (Chasadim) + BaN (Gevurot) tracking
+    - Structure interne mochin
+  concepts_cles:
+    - tikkun_ao_apres_aa
+    - nursing_dadei_behemah_beriah_puis_dadei_adam_atzilut
+    - ao_revet_aa_garon_to_tabbur
+    - 2_keterim_ao_sur_garon_aa
+    - yesod_atik_in_penimiyut_aa
+    - 4_partzufim_ao_yisso_t
+    - 5_chasadim_5_gevurot_atik_split
+    - or_chozer_nukva_mi_tata_le_eila
+    - mah_chasadim_ban_gevurot
+    - mocha_4_tachton_gevurot_first
+    - chasadim_push_gevurot_via_peh_yesod
+  note: "Auto-transposition systematique Sefer Etz Chaim gate 14 (Sha'ar Abba ve-Imma) — 10 perakim. Premier sha'ar Heikhal 4 (Abba ve-Imma)."
+  source_primary: "Sefaria Sefer Etz Chaim gate 14 (https://www.sefaria.org/Sefer_Etz_Chaim.14)"
+  source_edition_default: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  strates: ["base"]
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
