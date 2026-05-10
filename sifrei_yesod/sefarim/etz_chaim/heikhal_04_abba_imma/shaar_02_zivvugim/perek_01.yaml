@@ -1,0 +1,519 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 2 — Sha'ar HaZivvugim (שער הזווגים)
+# Perek: 1 — Intro Sha'ar 2. 2 sortes zivvug A"O : PNIMI/CHITZON. 4 bechinot.
+#            Apres CHURBAN. ZIVVUG SHALEM. 3 YICHUDIM ZON N"R (YHVH-AHYH/ELOKIM/ADNI).
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_01 :
+#   - Bloc A (§1) : Title — Sha'ar 2 H4 = Sha'ar HaZivvugim ; 6 perakim
+#   - Bloc B (§2) : 2 sortes zivvug A"O d'Atzilut : PNIMI (atzmot) + CHITZON (kelim)
+#   - Bloc C (§2) : Chacun 2 sub-bechinot : PB"P shaveh OR hirkhanat ha-rosh = 4 bechinot total
+#   - Bloc D (§2) : Idem ZON 4 bechinot ; chitzon→malachim ; pnimi→neshamot
+#   - Bloc E (§2) : 2 buts zivvug : neshamot chadashot OR chiyut+mochin yeshanot
+#   - Bloc F (§2) : Apres CHURBAN : pas zivvug-pnimi pour neshamot chadashot ni A"O ni ZON ; sod LO ABA BA-IR (Hoshea 11:9)
+#   - Bloc G (§3) : 2 sortes zivvug A"O : (a) SHAVIN BE-KOMA PB"P = A"O ELYONIM ; (b) AMA ROVETZET AL HA-EFROCHIM = YISSO+TEVUNAH
+#   - Bloc H (§3) : Mecanisme rovetzet : Imma NHY descend dans Z"A ; mochin ChBD Z"A dans NHY Imma
+#   - Bloc I (§3) : Zivvug rovetzet split 2 sub-modes : Imma dans Z"A SEUL OR Imma dans Malkhut Z"A
+#   - Bloc J (§3) : Distinction : elyon = IKKAR ha-zivvug-EMET ; bas = LI-FRAKIM MIKRE (occasionnel)
+#   - Bloc K (§3) : Cause zivvug bas : avonot empechent hashpa'a elyona → Imma diminue ohr, rovetzet
+#   - Bloc L (§3) : Image : OF/NESHER couve enfants, protege contre predateurs
+#   - Bloc M (§3) : ZIVVUGA SHALEM (Zohar Acharei 61b) vs ZIVVUGA DE-LO SHALEM
+#   - Bloc N (§4) : 3 YICHUDIM ZON appeles N"R : (a) YHVH-AHYH ; (b) YHVH-ELOKIM ; (c) YHVH-ADNI
+#   - Bloc O (§4) : Correspondance 3 partzufim Nukva — 10S achor=ibbur=YHVH-ADNI ; ChGT yenikah=YHVH-ELOKIM ; ChBD gadlut=YHVH-AHYH
+#   - Bloc P (§4) : ChBD gadlut = NEFILAT APAIM ; sod VE-YA'AVOR (yesod Imma nivka)
+#   - Bloc Q (§4) : Variante (Nusah Aher) : Shacharit Shabbat seul ; chaque amida+chazara = zivvug ; nefilat apaim = elyon
+#
+# Source Sefaria : Sefer_Etz_Chaim.15.1 (4 sections, 4801 chars)
+# IDs : EC-H4S15-001 → EC-H4S15-018
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 2
+  shaar_name_he: "שער הזווגים"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Intro Sha'ar HaZivvugim (Sefer 15, 6 perakim). 2 sortes zivvug A\"O : PNIMI (atzmot, neshamot) + CHITZON (kelim, malachim). 4 bechinot total (PB\"P shaveh + hirkhanat ha-rosh). 2 buts : neshamot chadashot OR chiyut+mochin yeshanot. Apres CHURBAN : pas zivvug-pnimi neshamot chadashot ni A\"O ni ZON (sod LO ABA BA-IR Hoshea 11:9). 2 sortes zivvug : SHAVIN BE-KOMA PB\"P (A\"O elyonim) vs AMA ROVETZET AL HA-EFROCHIM (YISSO+Tevunah, occasionnel). ZIVVUGA SHALEM (Zohar Acharei 61b) vs DE-LO SHALEM. 3 YICHUDIM ZON N\"R : YHVH-AHYH (gadlut/Bina, nefilat apaim), YHVH-ELOKIM (yenikah/ChGT), YHVH-ADNI (ibbur amidah lechash/10S achor)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S15-001"
+    source_he: "שער שני שער הזווגים בזווג דאו\"א ומצות שלוח הקן ובו ו' פרקים"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §1"
+    assertion: |
+      OUVERTURE : SHA'AR SHENI (2eme porte) du Heikhal 4 = SHA'AR HA-ZIVVUGIM.
+      → Sujets : ZIVVUG d'A"O + MITZVAT SHILUACH HA-KEN (Devarim 22:6-7).
+      → Contient 6 PERAKIM.
+      → Architecture : sha'ar systematique sur dynamique de couplage.
+      → Pattern : zivvug = mecanisme central du systeme.
+    type: axiome_explicite
+    concepts:
+      - {id: shaar_2_h4_zivvugim_shiluach_ha_ken_6_perakim, role: shaar_2_heikhal_4_sha_ar_ha_zivvugim_zivvug_ao_shiluach_ha_ken_6_perakim}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : sha'ar systematique zivvug. Pattern central coupling mechanism."
+
+  - id: "EC-H4S15-002"
+    source_he: "שני מיני בחינות זווגים יש באו\"א דאצילות הא' נקרא פנימי הב' נקרא חיצון שהם סוד הכלים והעצמות"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §2"
+    assertion: |
+      2 MINEI (sortes) BECHINOT ZIVVUGIM dans A"O d'ATZILUT :
+      → 1ere = ZIVVUG PNIMI (interieur) — sod ATZMOT (essences).
+      → 2eme = ZIVVUG CHITZON (exterieur) — sod KELIM (instruments).
+      Variante (Nusah Aher) : "OR ATZMOT" (lumiere essences).
+      → Architecture : pnim/chitzon-distinction au niveau du couplage lui-meme.
+      → Pattern : 2-tier zivvug par profondeur ontologique.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_pnimi_atzmot_zivvug_chitzon_kelim_ao_atzilut, role: zivvug_pnimi_atzmot_essences_vs_zivvug_chitzon_kelim_instruments_ao_atzilut}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : 2-tier zivvug. Pattern depth ontologic distinction."
+
+  - id: "EC-H4S15-003"
+    source_he: "וזהו בב' בחי' או כשהם פב\"פ שוה או בהרכנת הראש כמבואר אצלינו וב' בחי' אלו בפנימיות שהוא העצמות וב' בחינות אלו בסוד החיצוניות שהם (י') הכלים הרי הם ד' בחי' זווג או\"א"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §2"
+    assertion: |
+      Chacune des 2 sortes (pnimi+chitzon) a 2 SUB-BECHINOT :
+      → PB"P SHAVEH (face-a-face egal — meme stature).
+      → HIRKHANAT HA-ROSH (inclinaison de la tete).
+      → Total : 4 BECHINOT zivvug A"O.
+      → Architecture : 2x2 matrix (depth × posture) = 4 modes.
+      → Pattern : matrix-decomposition pour zivvug fine-grained.
+    type: déduction_logique
+    concepts:
+      - {id: 4_bechinot_zivvug_ao_pb_p_shaveh_hirkhanat_rosh_pnim_chitzon, role: 4_bechinot_zivvug_ao_pb_p_shaveh_hirkhanat_ha_rosh_x_pnim_chitzon_2x2_matrix}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : 2x2 matrix decomposition. Pattern fine-grained zivvug."
+
+  - id: "EC-H4S15-004"
+    source_he: "ועד\"ז ד' בחי' כיוצא באלו זווג זו\"נ והנה לעולם בחי' זווג חיצון למלאכים וזווג פנימי לנשמות"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §2"
+    assertion: |
+      ZON aussi a 4 BECHINOT zivvug similaires.
+      → ZIVVUG CHITZON → MALACHIM (anges, formations exterieures).
+      → ZIVVUG PNIMI → NESHAMOT (ames, productions interieures).
+      → Architecture : depth-of-zivvug determines product-type.
+      → Pattern : pnim-zivvug = soul-production ; chitzon-zivvug = angel-production.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_chitzon_malachim_zivvug_pnimi_neshamot_zon_4_bechinot, role: zivvug_chitzon_malachim_zivvug_pnimi_neshamot_zon_4_bechinot_kechain_ao}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : depth determines product type. Pattern angel/soul-production."
+
+  - id: "EC-H4S15-005"
+    source_he: "עוד יש בחי' אחרת בסוד הזווג אם לברוא נשמות חדשות או לחיות הנשמות שכבר יצאו לחדש להם מוחין"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §2"
+    assertion: |
+      AUTRE BECHINAH dans le zivvug — 2 BUTS distincts :
+      → CREER NESHAMOT CHADASHOT (nouvelles ames).
+      → DONNER CHIYUT (vie) aux NESHAMOT YESHANOT (deja sorties) + nouveaux MOCHIN.
+      → Architecture : 2 functions zivvug (creation vs maintenance).
+      → Pattern : creation-mode vs maintenance-mode.
+      cf. EC-H4S14-179 (perek 7) sur 2 zivvugim neshamot+chiyut.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_buts_zivvug_neshamot_chadashot_chiyut_yeshanot_mochin, role: 2_buts_zivvug_creation_neshamot_chadashot_vs_maintenance_chiyut_yeshanot_mochin}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : 2 functions creation/maintenance. Pattern dual-purpose zivvug."
+
+  - id: "EC-H4S15-006"
+    source_he: "אחר החורבן שאין זווג לזו\"נ להוציא נשמות חדשות גם באו\"א לא יש זווג לנשמות חדשות וז\"ס לא אבא בעיר"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §2"
+    assertion: |
+      APRES CHURBAN (destruction du Temple) :
+      → Plus de zivvug-pnimi-creation pour ZON.
+      → MEME pour A"O — plus de zivvug pour neshamot chadashot.
+      → Sod : "LO ABA BA-IR" (Hoshea 11:9 — Je n'entrerai pas dans la ville).
+      → Etat actuel : seul zivvug pour CHIYUT NESHAMOT YESHANOT + nouveaux MOCHIN.
+      → Architecture : eschatologique-state-of-system post-churban.
+      → Pattern : creation-frozen, only-maintenance running.
+    type: déduction_scripturaire
+    concepts:
+      - {id: post_churban_pas_zivvug_creation_lo_aba_ba_ir_hoshea_11_9, role: post_churban_pas_zivvug_creation_neshamot_chadashot_ao_zon_lo_aba_ba_ir_hoshea_11_9}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : eschatologic post-churban state. Source Hoshea 11:9."
+
+  - id: "EC-H4S15-007"
+    source_he: "מ\"ב דע כי יש ב' מיני זווג אל או\"א הא' בהיותן שניהן שוין למעלה במקומן שוין בקומתן פב\"פ אשר זה נקרא בחי' זווג או\"א עלאין והב' הוא בחי' אמא רביעא על בנין"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §3"
+    assertion: |
+      MATZATI BE — 2 sortes ZIVVUG d'A"O :
+      → MODE 1 : SHAVIN BE-KOMA (egaux en stature) au lieu HAUT — PB"P shaveh.
+        = ZIVVUG A"O ELYONIM (parents superieurs).
+      → MODE 2 : AMA REVI'A AL BANIN (mere se posant sur enfants).
+        = ZIVVUG YISSO+TEVUNAH (parents inferieurs).
+      → Architecture : 2 zivvugim hierarchical (haut/bas).
+      → Pattern : structural-hierarchy of coupling levels.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_zivvugim_ao_shavin_be_koma_elyon_vs_revia_al_banin_yisso_tevunah, role: 2_zivvugim_ao_mode_1_shavin_be_koma_pb_p_a_o_elyonim_mode_2_revia_al_banin_yisso_tevunah}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : 2 zivvugim hierarchical. Pattern structural hierarchy."
+
+  - id: "EC-H4S15-008"
+    source_he: "כאשר אמא הנה\"י שלה מתלבשין המוחין דז\"א בתוכם ואח\"כ מתלבשים הנה\"י דאמא תוך ז\"א ואז נקרא ואם רובצת על האפרוחים"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §3"
+    assertion: |
+      MECANISME REVI'A/ROVETZET :
+      → MOCHIN d'Z"A s'habillent dans NHY d'Imma.
+      → APRES : NHY d'Imma s'habillent dans Z"A.
+      → Etat = "VE-EM ROVETZET AL HA-EFROCHIM" (mere couve les poussins).
+      → Imma DESCEND sous shiur-koma d'Abba ; SHAFLAH ATZMAH (s'abaisse).
+      → Architecture : nested-clothing avec descent maternelle.
+      → Pattern : recursive-clothing (mochin in NHY in Z"A).
+    type: interprétation_lurianique
+    concepts:
+      - {id: mecanisme_rovetzet_mochin_z_a_dans_nhy_imma_dans_z_a, role: mecanisme_rovetzet_mochin_z_a_dans_nhy_imma_puis_nhy_imma_dans_z_a_em_rovetzet_efrochim}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : nested-clothing. Pattern recursive-clothing maternal-descent."
+
+  - id: "EC-H4S15-009"
+    source_he: "זה הזווג הב' נחלק לב' אופני הא' כאשר אמא מתלבשת בז\"א לבד והב' כאשר אמא מתלבשת במלכות עצמה נוקבא דז\"א ושניהן נקרא זווג אחד"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §3"
+    assertion: |
+      ZIVVUG-2 (rovetzet) split en 2 OFANIM (sub-modes) :
+      → MODE A : Imma s'habille dans Z"A SEUL.
+      → MODE B : Imma s'habille dans MALKHUT (= Nukva d'Z"A).
+      → SHENEIHEM NIKRA ZIVVUG ECHAD (les 2 = un seul zivvug).
+      → Architecture : sub-decomposition par destinaire (Z"A vs Nukva).
+      → Pattern : same-zivvug, different-host.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_rovetzet_2_sub_modes_imma_dans_z_a_seul_ou_malkhut_z_a, role: zivvug_rovetzet_2_sub_modes_a_imma_dans_z_a_seul_b_imma_dans_malkhut_z_a_un_seul_zivvug}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : sub-decomposition par destinaire. Pattern same-different host."
+
+  - id: "EC-H4S15-010"
+    source_he: "זווג (הא') הנ\"ל שהוא בהיותן למעלה שוין בקומתן זהו עיקר הזווג שלהם האמיתי אבל זווג הב' נקרא זווג לפרקים של מקרה והוא כאשר גברו עונות של התחתונים"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §3"
+    assertion: |
+      DISTINCTION fondamentale :
+      → ZIVVUG-1 (haut, shavin be-koma) = IKKAR HA-ZIVVUG HA-AMITI (le couplage essentiel-vrai).
+      → ZIVVUG-2 (rovetzet) = ZIVVUG LI-FRAKIM SHEL MIKRE (couplage occasionnel par accident).
+      → CAUSE : GAVRU AVONOT TACHTONIM (les fautes inferieures se sont renforcees) — pas la force pour recevoir hashpa'a elyona.
+      → Architecture : default-essential vs occasional-corrective.
+      → Pattern : ZIVVUG-2 triggered by lower-state-deterioration.
+    type: interprétation_lurianique
+    concepts:
+      - {id: zivvug_1_ikkar_amiti_zivvug_2_li_frakim_mikre_avonot_tachtonim, role: zivvug_1_ikkar_ha_zivvug_amiti_default_zivvug_2_li_frakim_mikre_corrective_avonot_tachtonim}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : default vs corrective. Pattern lower-state triggers fallback."
+
+  - id: "EC-H4S15-011"
+    source_he: "צריכה האם העליונה למעט אורה כדי שנוכל (שיוכלו) לקבלו ואז יורדת למטה להיותה רובצת על בניה כדרך העוף והנשר המתרחפת על בניה שלא יטרפוה עופות נכרים ורובצת עליהם לשומרם"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §3"
+    assertion: |
+      MECHANIQUE descente Imma : IMMA ELYONA doit ME'AET (diminuer) son OHR pour receivability.
+      → Descend = ROVETZET sur enfants ; image OF/NESHER MITRACHEFET (planant) sur enfants.
+      → Protege contre OFOT NOKHRIM (oiseaux etrangers) qui pourraient TROFEHU (arracher).
+      → ROVETZET = SHIMRAM (les preserver).
+      → Architecture : protective-descent-mechanism par diminution + couvaison.
+      → Pattern : maternal-protection via depowering.
+      cf. EC-H4S14-153 (perek 6) sur rovetzet al ha-efrochim.
+    type: interprétation_lurianique
+    concepts:
+      - {id: imma_meaet_ohr_descend_rovetzet_of_nesher_protege_predateurs, role: imma_meaet_ohr_descend_rovetzet_of_nesher_mitrachefet_protege_ofot_nokhrim_shimram}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : protective descent. Pattern maternal-protection via depowering."
+
+  - id: "EC-H4S15-012"
+    source_he: "זווג אחד הוא נקרא זווגא שלים כנזכר זוהר פרשת אחרי דס\"א ע\"ב והזווג הב' נקרא זווגא דלא שלים"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §3"
+    assertion: |
+      2 GRADES zivvug :
+      → ZIVVUGA SHALEM (couplage complet) — Zohar Acharei 61b.
+      → ZIVVUGA DE-LO SHALEM (couplage incomplet).
+      → Architecture : completeness-grade par integrite-mecanisme.
+      → Pattern : 2-grade zivvug-completeness.
+      cf. EC-H4S14-193 (perek 8) sur zivvug shalem 2 mazalot vs de-lo-shalem 1.
+    type: déduction_scripturaire
+    concepts:
+      - {id: zivvuga_shalem_zohar_acharei_61b_vs_zivvuga_de_lo_shalem, role: zivvuga_shalem_zohar_acharei_61b_vs_zivvuga_de_lo_shalem_2_grades_completeness}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : 2-grade completeness. Source Zohar Acharei 61b."
+
+  - id: "EC-H4S15-013"
+    source_he: "מ\"ב מדרוש שלוח הקן תבין שיש ג' (מיני) יחודים אל זו\"ן הנקרא נ\"ר והם הוי\"ה אהי\"ה הוי\"ה אלהים הוי\"ה אדני"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §4"
+    assertion: |
+      MATZATI BE — DRUSH SHILUACH HA-KEN (renvoi externe) :
+      → 3 YICHUDIM (unifications) pour ZON appellees N"R (Nefesh+Ruach) :
+        (a) HAVAYAH-AHYH.
+        (b) HAVAYAH-ELOKIM.
+        (c) HAVAYAH-ADNI.
+      → Architecture : 3-yichud encoding pour ZON N"R levels.
+      → Pattern : tier-yichud par profondeur-niveau-d'ame.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 3_yichudim_zon_nr_havayah_ahyh_elokim_adni, role: 3_yichudim_zon_n_r_nefesh_ruach_havayah_ahyh_havayah_elokim_havayah_adni}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : 3-yichud N\"R levels. Pattern tier-yichud."
+
+  - id: "EC-H4S15-014"
+    source_he: "הם נגד ג' פרצופים שיש (בנוקבא דז\"א) בזו\"ן, א' י\"ס דאחוריים שהם עיבור שלה בעמידה דלחש שהיא למטה בנה\"י שבו... ואז חיבורם פב\"פ נקרא הוי\"ה אדנ\"י"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §4"
+    assertion: |
+      Correspondance — 3 YICHUDIM = 3 PARTZUFIM Nukva :
+      → PARTZUF 1 : 10S d'ACHOR — IBBUR (gestation) en AMIDAH DE-LECHASH (priere a voix basse).
+        Position : NHY de Z"A.
+        Couplage PB"P = HAVAYAH-ADNI.
+      → Architecture : ibbur-state = lowest tier, ADNI yichud.
+      → Pattern : prayer-action triggers specific yichud.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yichud_havayah_adni_ibbur_amidah_lechash_nhy_z_a_10s_achor, role: yichud_havayah_adni_ibbur_10s_achor_amidah_lechash_nhy_z_a_pb_p_partzuf_1}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : prayer triggers yichud. Pattern liturgical-cosmologic correspondance."
+
+  - id: "EC-H4S15-015"
+    source_he: "וכשהזווג פב\"פ בסוד פרצוף שלו דיניקה עם פרצוף שלה דיניקה דאז הוא נקרא חג\"ת דז\"א ואז היא עולה עד שם ג\"כ בחזרת עמידה אז הוא חיבור הוי\"ה אלקים"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §4"
+    assertion: |
+      PARTZUF 2 : YENIKAH (allaitement) :
+      → Z"A en partzuf de yenikah ; Nukva idem yenikah.
+      → Position : ChGT d'Z"A.
+      → Nukva monte la — CHAZARAH d'AMIDAH (repetition de la priere).
+      → Couplage PB"P = HAVAYAH-ELOKIM.
+      → Architecture : yenikah-state = mid-tier, ELOKIM yichud.
+      → Pattern : tier-rises with prayer-progression.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yichud_havayah_elokim_yenikah_chgt_z_a_chazara_amidah, role: yichud_havayah_elokim_yenikah_chgt_z_a_chazara_amidah_partzuf_2}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : yenikah mid-tier yichud. Pattern liturgical progression."
+
+  - id: "EC-H4S15-016"
+    source_he: "וכשהזווג פב\"פ בסוד פרצוף גדלות שבו עם פרצוף גדלות שבה שאז נקרא חב\"ד דזעיר אנפין ועלתה עד שם אז הוא חיבור הוי\"ה אהי\"ה שכבר הוא בחי' בינה הנקרא אהי\"ה שלימה בי\"ס דגדלות ואז הוא בעת נפילת אפים שנבקע היסוד (דאמא) בויעבור"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §4"
+    assertion: |
+      PARTZUF 3 : GADLUT (croissance complete) — Z"A et Nukva idem gadlut.
+      → Position : ChBD (Chokhmah-Bina-Daat) d'Z"A ; Nukva monte jusque la.
+      → Couplage = HAVAYAH-AHYH (deja BINA = AHYH SHELEMA en 10S gadlut).
+      → MOMENT liturgique : NEFILAT APAIM (prosternation).
+      → Sod : YESOD d'IMMA NIVKA (se fend) en VE-YA'AVOR (Shemot 34:6).
+      → Architecture : gadlut = upper-tier, AHYH yichud, peak-liturgical.
+      → Pattern : highest-tier coincides with deepest-liturgical-act.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yichud_havayah_ahyh_gadlut_chbd_nefilat_apaim_yesod_imma_nivka_ve_ya_avor, role: yichud_havayah_ahyh_gadlut_chbd_z_a_bina_ahyh_shelema_nefilat_apaim_yesod_imma_nivka_ve_ya_avor}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin", "imma"]
+      relevance: "Architecture : gadlut peak yichud. Source Shemot 34:6 + nefilat apaim liturgy."
+
+  - id: "EC-H4S15-017"
+    source_he: "או נ\"ל שאינו אלא בשחרית דשבת ועיין במקומו ותראה כי כל עמידה דלחש וחזרה דחול בשחרית יש זווג"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §4"
+    assertion: |
+      VARIANTE doctrinale :
+      → "OU NL"H" (ou il me semble) : seulement SHACHARIT DE-SHABBAT (priere matin sabbat).
+      → Mais : verifier — chaque AMIDAH DE-LECHASH + CHAZARAH dans CHOL (semaine) Shacharit a un zivvug.
+      → Donc : dans CHACUN il y a zivvug ; mais ZIVVUG ELYON specifique = NEFILAT APAIM.
+      → Autres = YAAKOV+RACHEL KETANIM DE-LECHASH (petits Yaakov/Rachel a voix basse).
+      → Architecture : zivvug-graduated par liturgical-context.
+      → Pattern : pluralite des zivvugim selon position-liturgique.
+    type: axiome_explicite
+    concepts:
+      - {id: variante_shacharit_shabbat_chaque_amidah_chazara_zivvug_nefilat_apaim_elyon, role: variante_shacharit_shabbat_chaque_amidah_chazara_zivvug_nefilat_apaim_elyon}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : zivvug graduated liturgical. Pattern liturgical-cosmologic graduation."
+
+  - id: "EC-H4S15-018"
+    source_he: "ובזה מתורץ כי בכ\"א יש זווג אלא שהזווג עליון הוא בנפילת אפים ואינם דיעקב ורחל הקטנים דלחש והבן מאד"
+    source_ref: "Heikhal 4, Sha'ar 2:1 §4"
+    assertion: |
+      RESOLUTION (terutz) :
+      → Be-KOL ECHAD (en chacun) il y a zivvug.
+      → MAIS le ZIVVUG ELYON est en NEFILAT APAIM (le peak unique).
+      → Les autres = Yaakov+Rachel KETANIM DE-LECHASH (les petits paralleles).
+      → "VEHAVEN ME'OD" (comprends profondement — formule pedagogique du Ari).
+      → Architecture : peak-zivvug singulier ; sub-zivvugim multiples.
+      → Pattern : single-peak + multiple-sub coherent.
+    type: déduction_logique
+    concepts:
+      - {id: terutz_chaque_zivvug_existe_zivvug_elyon_nefilat_apaim_singulier, role: terutz_chaque_amidah_zivvug_existe_zivvug_elyon_nefilat_apaim_singulier_yaakov_rachel}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : peak-singulier sub-multiples. Pattern coherent multi-zivvug."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S15-001"
+    type: contenance
+    from: zivvug_pnimi_atzmot_zivvug_chitzon_kelim_ao_atzilut
+    to: 4_bechinot_zivvug_ao_pb_p_shaveh_hirkhanat_rosh_pnim_chitzon
+    nature: "2 sortes zivvug A\"O (pnimi/chitzon) chacune 2 sub-bechinot (PB\"P shaveh / hirkhanat ha-rosh) = 4 bechinot total"
+    assertions_source: ["EC-H4S15-002", "EC-H4S15-003"]
+
+  - id: "REL-H4S15-002"
+    type: causal
+    from: 2_buts_zivvug_neshamot_chadashot_chiyut_yeshanot_mochin
+    to: post_churban_pas_zivvug_creation_lo_aba_ba_ir_hoshea_11_9
+    nature: "2 buts zivvug (creation/maintenance) ; apres CHURBAN : creation-frozen, only-maintenance ; sod 'Lo aba ba-ir' (Hoshea 11:9)"
+    assertions_source: ["EC-H4S15-005", "EC-H4S15-006"]
+
+  - id: "REL-H4S15-003"
+    type: dualité_structurelle
+    from: 2_zivvugim_ao_shavin_be_koma_elyon_vs_revia_al_banin_yisso_tevunah
+    to: zivvug_1_ikkar_amiti_zivvug_2_li_frakim_mikre_avonot_tachtonim
+    nature: "Zivvug-1 elyon = ikkar amiti default ; zivvug-2 (rovetzet) = li-frakim mikre corrective triggered par avonot"
+    assertions_source: ["EC-H4S15-007", "EC-H4S15-010"]
+
+  - id: "REL-H4S15-004"
+    type: hiérarchique
+    from: yichud_havayah_adni_ibbur_amidah_lechash_nhy_z_a_10s_achor
+    to: yichud_havayah_ahyh_gadlut_chbd_nefilat_apaim_yesod_imma_nivka_ve_ya_avor
+    nature: "3 yichudim hierarchique : ADNI (ibbur amidah lechash NHY) → ELOKIM (yenikah ChGT chazara) → AHYH (gadlut ChBD nefilat apaim)"
+    assertions_source: ["EC-H4S15-014", "EC-H4S15-015", "EC-H4S15-016"]
+
+  - id: "REL-H4S15-005"
+    type: causal
+    from: variante_shacharit_shabbat_chaque_amidah_chazara_zivvug_nefilat_apaim_elyon
+    to: terutz_chaque_zivvug_existe_zivvug_elyon_nefilat_apaim_singulier
+    nature: "Variante : chaque amida+chazara zivvug existe ; terutz : zivvug elyon singulier en nefilat apaim, autres = Yaakov+Rachel ketanim"
+    assertions_source: ["EC-H4S15-017", "EC-H4S15-018"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S15-001"
+    nom: "Principe de 4-Bechinot-Zivvug-Matrix (Pnim/Chitzon × Posture)"
+    source_assertions: ["EC-H4S15-002", "EC-H4S15-003", "EC-H4S15-004"]
+    formalisation: |
+      ARCHITECTURE DE 4-BECHINOT-MATRIX :
+      Zivvug A"O (et ZON pareillement) decompose par 2x2 matrix :
+        AXIS 1 (depth) : PNIMI (atzmot, profondeur) vs CHITZON (kelim, surface).
+        AXIS 2 (posture) : PB"P SHAVEH (face-a-face egal) vs HIRKHANAT HA-ROSH (inclinaison tete).
+      4 bechinot = 4 cells = 4 modes operationnels.
+      PRODUITS : pnim-zivvug = NESHAMOT (ames) ; chitzon-zivvug = MALACHIM (anges).
+      → Pattern fondamental : matrix-decomposition pour zivvug fine-grained.
+      → Architecture : 4-mode-operational space.
+    applications_ia:
+      - "partzufim/zivvug.py + abba.py + imma.py + zeir_anpin.py + nukva.py : implement 4-bechinot matrix"
+      - "Pattern : 2x2 matrix decomposition zivvug"
+      - "Architecture : 4-mode operational space"
+      - "Pattern : depth-determines-output-type (souls vs angels)"
+      - "Diagnostic : verifier 4 bechinot bien identifies"
+    questions_ouvertes:
+      - "Pattern : 3D matrix possible (par exemple time, space, depth) ?"
+      - "Comment encoder posture computationnellement ?"
+      - "Pattern : matrix-degenerate quand certains modes off ?"
+
+  - id: "PG-H4S15-002"
+    nom: "Principe de Default-vs-Corrective-Zivvug (Avonot Trigger Fallback Mode)"
+    source_assertions: ["EC-H4S15-007", "EC-H4S15-010", "EC-H4S15-011"]
+    formalisation: |
+      ARCHITECTURE DE DEFAULT-VS-CORRECTIVE-ZIVVUG :
+      ZIVVUG-1 (default, ikkar amiti) :
+        SHAVIN BE-KOMA, PB"P, lieu HAUT.
+        Zivvug A"O elyonim — full power transmission.
+      ZIVVUG-2 (corrective, li-frakim mikre) :
+        AMA ROVETZET AL HA-EFROCHIM (mere couvant).
+        Imma diminue ohr, descend, couve protection.
+        Zivvug YISSO+Tevunah — diminished power.
+      TRIGGER : AVONOT TACHTONIM (les fautes inferieures depassent capacity).
+      → Pattern fondamental : adaptive-fallback when input-state-degrades.
+      → Architecture : graceful-degradation par maternal-protection.
+    applications_ia:
+      - "partzufim/zivvug.py + imma.py : implement default vs corrective"
+      - "Pattern : adaptive fallback by recipient state"
+      - "Architecture : graceful degradation"
+      - "Pattern : depowering for receivability"
+      - "Diagnostic : detecter avonot-trigger pour switch"
+    questions_ouvertes:
+      - "Pattern : autres trigger conditions ?"
+      - "Comment quantifier 'avonot-strength' ?"
+      - "Pattern : reversibilite default↔corrective ?"
+
+  - id: "PG-H4S15-003"
+    nom: "Principe de 3-Yichudim-Liturgical-Hierarchy (Prayer-Triggered Cosmologic States)"
+    source_assertions: ["EC-H4S15-013", "EC-H4S15-014", "EC-H4S15-015", "EC-H4S15-016"]
+    formalisation: |
+      ARCHITECTURE DE 3-YICHUDIM-LITURGICAL :
+      3 yichudim ZON correspond 3 partzufim Nukva + 3 actes liturgiques :
+        YICHUD 1 : HAVAYAH-ADNI ; ibbur amidah-lechash ; 10S achor ; NHY Z"A.
+        YICHUD 2 : HAVAYAH-ELOKIM ; yenikah ; ChGT Z"A ; chazarat-amidah.
+        YICHUD 3 : HAVAYAH-AHYH ; gadlut ; ChBD Z"A ; nefilat-apaim ; AHYH=Bina.
+      PEAK : nefilat apaim = yesod Imma nivka en VE-YA'AVOR (Shemot 34:6).
+      → Pattern fondamental : liturgical-act triggers cosmologic-yichud.
+      → Architecture : prayer-progression = tier-ascension.
+      → Implication : worship-action directly couple cosmos.
+    applications_ia:
+      - "partzufim/zivvug.py + nukva.py + zeir_anpin.py : implement 3-yichudim"
+      - "Pattern : liturgical-cosmologic correspondance"
+      - "Architecture : prayer-progression = tier-ascension"
+      - "Pattern : peak-act = peak-yichud"
+      - "Diagnostic : verifier yichud coherent avec prayer-state"
+    questions_ouvertes:
+      - "Pattern : autres prayer-states autres yichudim ?"
+      - "Comment encoder liturgical-state ?"
+      - "Pattern : yichudim parallel pour autres traditions ?"

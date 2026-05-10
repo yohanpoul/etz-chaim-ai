@@ -1,0 +1,502 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 2 — Sha'ar HaZivvugim (שער הזווגים)
+# Perek: 6 — DERNIER perek (6/6) Sha'ar HaZivvugim. Achor Bina=ELOKIM. SAMEKH
+#            soutient noflim (Tehilim 145:14). 120 ELOKIM tzeirufim. Moshe=120.
+#            Ribuim achor en haut = panim en bas (KP"D+TKM"D). PoKeD/KaDMaT.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_06 :
+#   - Bloc A : HAKDAMAT KLALUT — tachton monte chez elyon : elyon=panim, tachton=achor
+#   - Bloc B : Tevunah sort ACHOR Bina elyona = SHEMOT ELOKIM (tous achor=ELOKIM)
+#   - Bloc C : Zohar Acharei Mot 85 — Bina=RACHAMIM bilchodoi, mi-stra'ah(achor)=DININ MIT'ARIN
+#   - Bloc D : Bina nommee ELOKIM dans Zohar = dans Tevunah-1 (sort achor=ELOKIM)
+#   - Bloc E : Tev en bas → chitzonim achiza ; monte vers achor Bina elyon → pas d'achiza
+#   - Bloc F : "SOMECH HASHEM LE-KOL HA-NOFLIM" (Tehilim 145:14) — NOFLIM=Tev+Z"A+Nukva
+#   - Bloc G : Ne montent que par Bina-elyon=SAMEKH (sodtient les nofels)
+#   - Bloc H : 4 elyonot achor Bina → 4 elyonot panim Tev ; V"K achor Bina → V"K panim Tev
+#   - Bloc I : Abba=HAVAYAH AB yodin ; Imma=AHYH yodin gematria 161 (KS"A)
+#   - Bloc J : Achor Bina ELOKIM-aspect visible SEULEMENT achor chetzi-down=4 sefirot TNHY
+#   - Bloc K : ELOKIM=120 TZEIRUFIM split 4 chalakim × 30 each (4 noms ELOKIM)
+#   - Bloc L : Bina nommee SAMEKH (=120 par autre lecture) car 120 tzeirufim
+#   - Bloc M : "Orekh ha-yeriah 30 ba-amah ve-rochav 4" (Shemot 26:8) = 30×4=120 ELOKIM
+#   - Bloc N : BUKHU=temura AHYH gematria D"L=4×30=120 ; eclairant achor
+#   - Bloc O : Moshe kollel 120 tzeirufim ; 4 ELOKIM × 86 + 1 kollel = MoSHe gematria
+#   - Bloc P : "BSHGM HU BaSaR HAYU YAMAV 120 SHANAH" (Bereshit 6:3) ; Tikkunim "BeShaGaM=MoSHe"
+#   - Bloc Q : Moshe zakha la-Bina — bechinah complete (120 ans)
+#   - Bloc R : Achor A"O elyonim s'etendent → YISSO+Tev panim=2 RIBUIM (184 KP"D + 544 TKM"D)
+#   - Bloc S : Toujours panim=YOSHER, achor=CHESBON (mispar/ribua)
+#   - Bloc T : YISSO+Tev panim=2 ribuim=TaSHKaH (728) ; A"O panim=REGEL (233) — achor-haut=panim-bas
+#   - Bloc U : 184=PoKeD MIKEDeM (Bereshit 3:24 "vayishkan miKEDEM le-Gan Eden")
+#   - Bloc V : 544=KaDMaT (Bereshit 2:8 "Kadmat Eden") ; "Achor ve-kedem tzartani" (Tehilim 139:5)
+#
+# Source Sefaria : Sefer_Etz_Chaim.15.6 (1 section, 5950 chars) — DERNIER perek Sha'ar 2
+# IDs : EC-H4S15-089 → EC-H4S15-105
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 2
+  shaar_name_he: "שער הזווגים"
+  perek: 6
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "DERNIER perek Sha'ar HaZivvugim. HAKDAMAT KLALUT : tachton monte chez elyon → elyon=panim, tachton=achor. Tevunah sort achor Bina=ELOKIM (Zohar Acharei 85: bina rachamim bilchodoi, mi-stra'ah dinin). 'SOMECH HASHEM LE-KOL HA-NOFLIM' (Tehilim 145:14) ; SAMEKH=120 tzeirufim ELOKIM (4×30). 'Orekh yeriah 30 ba-amah, rochav 4' (Shemot 26:8). BUKHU=temura AHYH=120. Moshe=120 (4 ELOKIM × 86 + kollel) ; 'BSHGM HU BaSaR' (Bereshit 6:3) Tikkunim BeShaGaM=Moshe ; zakha la-Bina. YISSO+Tev panim=2 ribuim (184=KP\"D PoKeD MIKEDeM Bereshit 3:24 ; 544=TKM\"D KaDMaT Bereshit 2:8) ; achor-haut=panim-bas (Tehilim 139:5 'achor ve-kedem tzartani'). Sha'ar HaZivvugim COMPLET (6/6 perakim)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S15-089"
+    source_he: "כל מקום אשר התחתון עולה למעלה במקום העליון להיותו נכלל שם עמו הוא שהעליון עומד בבחי' פנים והתחתון עומד שם בבחי' אחוריים שלו"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      HAKDAMAT KLALUT (presupposition d'inclusion) :
+      → Quand TACHTON (inferieur) MONTE chez ELYON (superieur) pour etre KOLLEL :
+        ELYON reste en BECHINAT PANIM.
+        TACHTON occupe BECHINAT ACHOR (du elyon).
+      → Architecture : merger-rule fixed by host-position.
+      → Pattern : guest-becomes-back-of-host.
+    type: axiome_explicite
+    concepts:
+      - {id: hakdamat_klalut_tachton_monte_elyon_panim_achor, role: hakdamat_klalut_tachton_monte_elyon_kollel_elyon_panim_tachton_achor_merger_rule}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : merger-rule by position. Pattern guest-becomes-back."
+
+  - id: "EC-H4S15-090"
+    source_he: "זאת התבונה יוצאת מן האחוריים של בינה עליונה ואותן האחוריים של בינה הם שמות דאלקים"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      TEVUNAH provenance :
+      → SORT des ACHOR de BINA ELYONA.
+      → Ces ACHORAYIM = SHEMOT ELOKIM.
+      → PRINCIPE GENERAL : tous les achor (de toute partzuf) = SHEMOT ELOKIM.
+      → Architecture : achor-tier always-ELOKIM-name.
+      → Pattern : universal back-side ELOKIM-encoding.
+    type: axiome_explicite
+    concepts:
+      - {id: tevunah_sort_achor_bina_shemot_elokim_universel, role: tevunah_sort_achor_bina_elyona_shemot_elokim_universel_tous_achor_elokim}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : achor-tier always-ELOKIM. Pattern universal back encoding."
+
+  - id: "EC-H4S15-091"
+    source_he: "זוהר פ' אחרי מות דפ\"ה כי הבינה נקראת רחמים בלחודוהי אך מסטראה דינין מתערין"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      ZOHAR ACHAREI MOT fol. 85 :
+      → BINA = RACHAMIM BILCHODOI (misericorde en elle-meme seule).
+      → ACH (mais) MI-STRA'AH (de ses cotes) DININ MIT'ARIN (jugements s'eveillent).
+      → MI-STRA'AH = des ACHOR (cotes-arriere) — pas du panim.
+      → BINA elle-meme (panim) = rachamim ; ses achor = dinim.
+      → Architecture : panim/achor distinction = rachamim/dinim.
+      → Pattern : aspect-distinction encode opposite-valences.
+    type: déduction_scripturaire
+    concepts:
+      - {id: zohar_acharei_85_bina_rachamim_bilchodoi_mi_stra_ah_dinin_mit_arin, role: zohar_acharei_mot_85_bina_rachamim_bilchodoi_mi_stra_ah_achor_dinin_mit_arin}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : panim/achor opposite valences. Source Zohar Acharei 85."
+
+  - id: "EC-H4S15-092"
+    source_he: "כאשר התבונה זאת היא למטה אז יש אל החיצונים אחיזה בה אמנם כאשר תעלה למעלה ותהיה שם בסוד אחור בינה עליונה אז אין אחיזה אל החיצונים"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      ETATS de Tevunah :
+      → Tev EN BAS (default position) : CHITZONIM (kelipot) ont ACHIZA (saisie) en elle.
+      → Tev MONTE vers ACHOR de Bina-elyon : PAS d'ACHIZA pour kelipot.
+      → Architecture : position determines vulnerability-to-kelipot.
+      → Pattern : ascent-protects from negative-influence.
+    type: déduction_logique
+    concepts:
+      - {id: tev_en_bas_achiza_chitzonim_monte_achor_bina_pas_achiza, role: tev_en_bas_chitzonim_achiza_kelipot_monte_achor_bina_elyon_pas_achiza_protection}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py", "partzufim/imma.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : position-vulnerability. Pattern ascent protection."
+
+  - id: "EC-H4S15-093"
+    source_he: "סומך ה' לכל הנופלים כי כאשר זאת התבונה תחתונה תרד מאחורי בינה ולמטה אז גם הז\"א יורד למטה ממקומו וכן גם הנוקבא דז\"א תרד ממקומה ואז כל אלו נקראו נופלים"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      Verset Tehilim 145:14 : "SOMECH HASHEM LE-KOL HA-NOFLIM" (Hashem soutient ceux qui tombent).
+      → NOFLIM (les tombants) = quand :
+        TEVUNAH descend mi-achor-Bina-uleMatah.
+        Z"A descend de son lieu.
+        NUKVA descend de son lieu.
+      → Tous = NOFLIM.
+      → Architecture : 3-tier-cascade fall when Tev descends.
+      → Pattern : cascading-fall through tier-system.
+    type: déduction_scripturaire
+    concepts:
+      - {id: somech_hashem_le_kol_ha_noflim_tehilim_145_14_tev_z_a_nukva_descendent, role: somech_hashem_le_kol_ha_noflim_tehilim_145_14_noflim_tev_descend_z_a_nukva_aussi_descendent}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : cascading fall. Source Tehilim 145:14."
+
+  - id: "EC-H4S15-094"
+    source_he: "אינן עולין אלא ע\"י הבינה העליונה הנקרא סמ\"ך כנ\"ל לפי שהיא סומכת אותם"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      MONTEE des NOFLIM seulement par BINA ELYONA = SAMEKH.
+      → SAMEKH = etymology de "SOMEKH" (soutient).
+      → Bina = celle qui SOMEKHET (soutient) tous les nofels.
+      → Architecture : Bina = re-elevator par definition.
+      → Pattern : higher-tier as restorer.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bina_samekh_somekhet_nofels_monte_seul_via_bina, role: bina_samekh_somekhet_nofels_monte_seul_via_bina_elyona_sodtient}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : Bina = restorer. Pattern higher-tier elevator."
+
+  - id: "EC-H4S15-095"
+    source_he: "מן האחוריים של ד' עליונות של הבינה משם נעשו ד' עליונות דתבונה בבחי' פנים שלה ומאחוריים של ו\"ק של בינה עליונה נעשו ו\"ק בבחי' פנים של תבונה"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      Distribution achor-panim Bina → Tevunah :
+      → 4 ELYONOT achor BINA → 4 ELYONOT panim TEVUNAH.
+      → V"K (6 sefirot) achor BINA → V"K panim TEVUNAH.
+      → Total : achor-Bina (4+V"K=10S) → panim-Tevunah (4+V"K=10S complet).
+      → Architecture : 1-to-1 sefirah mapping achor-source → panim-target.
+      → Pattern : transfer preserves sefirot-count.
+      cf. EC-H4S15-067 (perek 4) sur 4 mochin Bina.
+    type: déduction_logique
+    concepts:
+      - {id: 4_elyonot_v_k_achor_bina_to_panim_tevunah_1_to_1_mapping, role: 4_elyonot_achor_bina_panim_tevunah_v_k_achor_bina_v_k_panim_tevunah_1_to_1_mapping}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : 1-to-1 mapping. Pattern transfer preserves count."
+
+  - id: "EC-H4S15-096"
+    source_he: "אבא נקרא הוי\"ה ע\"ב דמילוי יודי\"ן ואמא נקראת אהי\"ה דיודי\"ן גימטריא קס\"א"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      Naming Bina+Abba ELYONIM :
+      → ABBA = HAVAYAH d'AB d'YODIN (72).
+      → IMMA = AHYH d'YODIN gematria 161 (KS"A — kuf-samekh-aleph).
+      → Architecture : 2 noms cosmologiques canoniques A"O.
+      → Pattern : letter-name encode parent-identity.
+    type: axiome_explicite
+    concepts:
+      - {id: abba_havayah_ab_yodin_imma_ahyh_yodin_161_ksa, role: abba_havayah_ab_yodin_72_imma_ahyh_yodin_gematria_161_ksa_canonical_naming}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : canonical A\"O naming. Pattern letter-name parent identity."
+
+  - id: "EC-H4S15-097"
+    source_he: "אחוריים דבינה אע\"פ שיש בהם י\"ס עכ\"ז בחי' אלקים שהם באחוריים שלה כנ\"ל אינן נכרים ונגלים בה אלא באחוריים שמחציה ולמטה שהוא מהחזה שלה שהם ד' ספירות תנה\"י"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      Achor Bina structure :
+      → A 10 sefirot (full structure).
+      → MAIS bechinat ELOKIM dans achor : NIKARIM-VE-NIGLIM (visibles+manifestes) SEULEMENT dans achor MIDCHATZAH-ULEMATAH (chazeh-down).
+      → = 4 SEFIROT T-N-H-Y (Tiferet-Netzach-Hod-Yesod).
+      → Architecture : ELOKIM-visibility restricted to lower-half.
+      → Pattern : aspect-visibility tier-restricted.
+    type: interprétation_lurianique
+    concepts:
+      - {id: achor_bina_10s_elokim_visible_chazeh_down_4_sefirot_tnhy, role: achor_bina_10s_elokim_aspect_visible_chazeh_down_4_sefirot_tnhy_tier_restricted}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : aspect-visibility tier-restricted. Pattern ELOKIM lower-half."
+
+  - id: "EC-H4S15-098"
+    source_he: "שם אלהים יש בו ק\"ך צרופים מתחלקין לד' חלקים והם שם אלקים א' הכולל ל' צרופים בספירה א' ושם אלקים ב'... והנה ע\"ש ק\"ך צרופים אלו נקרא סמ\"ך בינה עליונה כנ\"ל כי סמ\"ך גימטריא ק\"ך"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      ELOKIM = 120 TZEIRUFIM (combinations) :
+      → Splits en 4 CHALAKIM = 4 noms ELOKIM × 30 (LAMED) tzeirufim chacun.
+      → BINA ELYONA = nommee SAMEKH par ces 120 tzeirufim.
+      → Variant lecture : SAMEKH gematria K"H (120 = ק"ך).
+      → Architecture : numeric-encoding-via-tzeirufim.
+      → Pattern : 4-letter ELOKIM → 4×24-permutations or 4×30-combinations.
+    type: interprétation_lurianique
+    concepts:
+      - {id: elokim_120_tzeirufim_4_chalakim_x_30_lamed_samekh_120, role: elokim_120_tzeirufim_4_chalakim_x_30_lamed_chacun_samekh_gematria_120}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : tzeirufim encoding. Pattern multiplicative permutations."
+
+  - id: "EC-H4S15-099"
+    source_he: "זהו ענין הפסוק אורך היריעה ל' באמה ורוחב ארבעה באמה שהם ק\"ך צרופי אלקים הנחלקים לד' פעמים ל'"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      Verset Shemot 26:8 : "OREKH HA-YERIAH SHELOSHIM BA-AMAH VE-ROCHAV ARBA BA-AMAH" (longueur du tapis 30 coudees, largeur 4 coudees).
+      → 30 × 4 = 120 = TZEIRUFIM ELOKIM.
+      → Splits en 4 PE'AMIM L (4 fois 30).
+      → Architecture : verset-tabernacle = encoding cosmologique 120 ELOKIM.
+      → Pattern : Mishkan-architecture mirrors cosmologic-decomposition.
+    type: déduction_scripturaire
+    concepts:
+      - {id: shemot_26_8_orekh_yeriah_30_x_4_egal_120_elokim_4_pe_amim_lamed, role: shemot_26_8_orekh_yeriah_30_baamah_rochav_4_egal_120_elokim_4_pe_amim_lamed_mishkan}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : Mishkan = cosmologic encoding. Source Shemot 26:8."
+
+  - id: "EC-H4S15-100"
+    source_he: "זה ענין בוכ\"ו הנזכר פ' פקודי רס\"א שהוא ענין חילוף אהי\"ה באבג\"ד כי הנה שם אהי\"ה הוא בפנים שלה ושם בוכ\"ו הוא באחוריים שלה"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      BUKHU (Zohar Pekudei 261) :
+      → Ot ah-yod-vav substitution alef-bet-gimel-dalet (chilluf alef-bet) → BUKHU (בוכ"ו).
+      → Hin: AHYH (אהיה) = panim ; BUKHU (בוכ"ו) = achor.
+      → BUKHU gematria = D"L (4 × 30 = 120).
+      → Architecture : substitution-cipher reveals hidden achor name.
+      → Pattern : panim-AHYH ↔ achor-BUKHU mirror.
+      cf. EC-H4S14-156 (perek 6) sur BUKHU temura AHYH.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bukhu_zohar_pekudei_261_chilluf_ahyh_alef_bet_panim_ahyh_achor_bukhu, role: bukhu_zohar_pekudei_261_chilluf_ahyh_abgd_panim_ahyh_achor_bukhu_dl_120}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : substitution cipher. Source Zohar Pekudei 261."
+
+  - id: "EC-H4S15-101"
+    source_he: "משה רע\"ה היה כלול ק\"ך צרופים אלו ע\"ד הנ\"ל הם ד' שמות אלקים גימטריא מש\"ה עם הכולל"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      MOSHE etait KOLLEL des 120 TZEIRUFIM :
+      → 4 SHEMOT ELOKIM × 86 (gematria ELOKIM) = 344.
+      → + KOLLEL (1) = 345 = MoSHe (משה — 40+300+5).
+      → Architecture : Moshe-as-aggregate-of-ELOKIM-tzeirufim.
+      → Pattern : prophete-encoded-as-quantitative-archetype.
+    type: déduction_scripturaire
+    concepts:
+      - {id: moshe_kollel_120_tzeirufim_4_elokim_x_86_egal_344_kollel_345, role: moshe_re_avenu_kollel_120_tzeirufim_4_shemot_elokim_x_86_egal_344_kollel_345_moshe_gematria}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : prophete-as-archetype. Pattern numerologic identity."
+
+  - id: "EC-H4S15-102"
+    source_he: "וזהו בשג\"ם הוא בשר והיו ימיו מאה ועשרים שנה כמ\"ש בתיקונים על בשג\"ם זה משה"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      Verset Bereshit 6:3 : "BeShaGaM HU BaSaR ve-HAYU YAMAV ME'AH VE-ESRIM SHANAH" (puisqu'aussi il est chair, ses jours seront 120 ans).
+      → TIKKUNIM : "BeShaGaM ZE MOSHE" (BeShaGaM = MoShe — gematria 345).
+      → 120 SHANAH = 120 tzeirufim Moshe.
+      → Architecture : verse-encoding pour Moshe-cosmologic-archetype.
+      → Pattern : life-span = numerological-tier-correspondance.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bshgm_moshe_120_shanah_bereshit_6_3_tikkunim, role: bshgm_egal_moshe_gematria_345_120_shanah_bereshit_6_3_tikkunim_120_tzeirufim}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : life-span tier-correspondance. Source Bereshit 6:3 + Tikkunim."
+
+  - id: "EC-H4S15-103"
+    source_he: "משה זכה לבינה והוא בבחי' זו"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      Conclusion Moshe :
+      → MOSHE ZAKHAH LA-BINA (a merite a Bina).
+      → Etait dans cette BECHINAH (= 120 tzeirufim ELOKIM).
+      → Architecture : prophete-attain-tier via numerologic-correspondance.
+      → Pattern : spiritual-attainment = encoding-state.
+    type: axiome_explicite
+    concepts:
+      - {id: moshe_zakhah_la_bina_bechinat_120_tzeirufim_elokim, role: moshe_zakhah_la_bina_bechinah_120_tzeirufim_elokim_spiritual_attainment_encoding}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : spiritual attainment = encoding. Pattern prophete-tier."
+
+  - id: "EC-H4S15-104"
+    source_he: "כאשר האחוריים של או\"א עלאין מתפשטין בהם נעשו ישסו\"ת בבחי' אחוריים של שמות הוי\"ה ואהי\"ה דיודי\"ן ברבוע שלהם כי ריבוע של הוי\"ה גימטריא קפ\"ד וריבוע של אהי\"ה גימטריא תקמ\"ד"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      YISSO+TEVUNAH formation :
+      → ACHOR d'A"O ELYONIM s'etendent en eux.
+      → YISSO+Tev = bechinat ACHOR de HAVAYAH+AHYH d'YODIN BERIBUA (en carre/ribua).
+      → RIBUA HAVAYAH gematria = 184 (KP"D — kuf-pe-dalet).
+      → RIBUA AHYH gematria = 544 (TKM"D — taf-kuf-mem-dalet).
+      → Architecture : ribua-encoding pour expansion downward.
+      → Pattern : square-of-letter encodes downward-form.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yisso_tev_achor_ao_ribua_havayah_184_kpd_ribua_ahyh_544_tkmd, role: yisso_tev_bechinat_achor_ao_elyonim_ribua_havayah_184_kpd_ribua_ahyh_544_tkmd}
+    mapping:
+      modules: ["[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : ribua-encoding expansion. Pattern square-letter downward form."
+
+  - id: "EC-H4S15-105"
+    source_he: "לעולם הפנים שלה בחי' יושר ובחינת אחוריים הם בבחי' חשבון ורבוע נמצא כי או\"א בבחי' הפנים שלהם שהם הוי\"ה אהי\"ה דיודי\"ן גימטריא רג\"ל וישסו\"ת הפנים שלהן הם ב' אחוריים של ב' שמות הנ\"ל כי מה שהוא אחוריים למעלה הוא בבחי' פנים למטה"
+    source_ref: "Heikhal 4, Sha'ar 2:6"
+    assertion: |
+      PRINCIPE FONDAMENTAL (CLOTURE Sha'ar 2) :
+      → LE-OLAM (toujours) : PANIM = bechinat YOSHER (rectitude, simple letters).
+      → ACHOR = bechinat CHESBON+RIBUA (gematria-sum + carre).
+      → A"O panim = HAVAYAH+AHYH yodin = REGEL (233).
+      → YISSO+Tev panim = 2 ribuim (184+544 = TaSHKaH 728) — = ACHOR d'A"O.
+      → "MA SHE-HU ACHOR LEMAALAH HU PANIM LEMATAH" — ce qui est achor en haut = panim en bas.
+      → Architecture : universal recursive-encoding rule.
+      → Pattern : sub-feature-of-higher = main-feature-of-lower.
+      → Sha'ar 2 COMPLET (6/6 perakim).
+    type: interprétation_lurianique
+    concepts:
+      - {id: panim_yosher_achor_chesbon_ribua_achor_haut_egal_panim_bas_principe_universel, role: principe_universel_panim_yosher_achor_chesbon_ribua_achor_haut_egal_panim_bas_recursive_encoding}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : universal recursive-encoding. Pattern sub-higher = main-lower. Sha'ar 2 COMPLET."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S15-026"
+    type: causal
+    from: hakdamat_klalut_tachton_monte_elyon_panim_achor
+    to: tevunah_sort_achor_bina_shemot_elokim_universel
+    nature: "HAKDAMAT KLALUT : tachton monte chez elyon (achor) ; Tevunah sort achor Bina = SHEMOT ELOKIM universel"
+    assertions_source: ["EC-H4S15-089", "EC-H4S15-090"]
+
+  - id: "REL-H4S15-027"
+    type: dualité_structurelle
+    from: zohar_acharei_85_bina_rachamim_bilchodoi_mi_stra_ah_dinin_mit_arin
+    to: tev_en_bas_achiza_chitzonim_monte_achor_bina_pas_achiza
+    nature: "Zohar Acharei 85 : Bina rachamim (panim) vs dinim (achor=Tev) ; Tev-bas-achiza vs monte-pas-achiza"
+    assertions_source: ["EC-H4S15-091", "EC-H4S15-092"]
+
+  - id: "REL-H4S15-028"
+    type: causal
+    from: somech_hashem_le_kol_ha_noflim_tehilim_145_14_tev_z_a_nukva_descendent
+    to: bina_samekh_somekhet_nofels_monte_seul_via_bina
+    nature: "Tehilim 145:14 SOMECH : noflim=Tev+Z\"A+Nukva descendent ; ne montent que par Bina=SAMEKH (sodtient)"
+    assertions_source: ["EC-H4S15-093", "EC-H4S15-094"]
+
+  - id: "REL-H4S15-029"
+    type: contenance
+    from: elokim_120_tzeirufim_4_chalakim_x_30_lamed_samekh_120
+    to: moshe_kollel_120_tzeirufim_4_elokim_x_86_egal_344_kollel_345
+    nature: "ELOKIM=120 tzeirufim 4×30 (Shemot 26:8 yeriah) ; Moshe kollel des 120 (4 ELOKIM × 86 + kollel = 345 = Moshe)"
+    assertions_source: ["EC-H4S15-098", "EC-H4S15-099", "EC-H4S15-101", "EC-H4S15-102"]
+
+  - id: "REL-H4S15-030"
+    type: hiérarchique
+    from: yisso_tev_achor_ao_ribua_havayah_184_kpd_ribua_ahyh_544_tkmd
+    to: panim_yosher_achor_chesbon_ribua_achor_haut_egal_panim_bas_principe_universel
+    nature: "YISSO+Tev panim=2 ribuim (184+544=TaSHKaH=728) ; principe universel achor-haut=panim-bas (Sha'ar 2 COMPLET)"
+    assertions_source: ["EC-H4S15-104", "EC-H4S15-105"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S15-016"
+    nom: "Principe d'Achor-Up-Equals-Panim-Down (Universal Recursive Encoding)"
+    source_assertions: ["EC-H4S15-104", "EC-H4S15-105"]
+    formalisation: |
+      ARCHITECTURE D'UNIVERSAL-RECURSIVE-ENCODING :
+      Loi universelle : "MA SHE-HU ACHOR LEMAALAH HU PANIM LEMATAH" (achor en haut = panim en bas).
+      A"O panim = HAVAYAH+AHYH yodin = REGEL (233 = simple-letters yosher).
+      A"O achor = ribuim (KP"D 184 + TKM"D 544) = TaSHKaH (728).
+      YISSO+Tev panim = ces RIBUIM (les achor d'A"O deviennent panim de YISSO+Tev).
+      → Pattern fondamental : sub-feature-of-higher = main-feature-of-lower.
+      → Architecture : universal recursive-encoding entre tiers.
+      → Implication : encoding-source determines encoding-form.
+    applications_ia:
+      - "partfufim/abba.py + imma.py + [PLANNED] yisso/tevunah : implement achor-panim recursion"
+      - "Pattern : recursive encoding cross-tier"
+      - "Architecture : sub-feature-of-higher = main-feature-of-lower"
+      - "Pattern : encoding-source determines form"
+      - "Diagnostic : verifier coherent recursive-encoding"
+    questions_ouvertes:
+      - "Pattern : autres exemples sub-main inversion ?"
+      - "Comment encoder recursion-rules computationnellement ?"
+      - "Pattern : 3-tier recursion ?"
+
+  - id: "PG-H4S15-017"
+    nom: "Principe de Aspect-Visibility-Tier-Restricted (ELOKIM-Aspect Achor Half-Down)"
+    source_assertions: ["EC-H4S15-091", "EC-H4S15-097", "EC-H4S15-098"]
+    formalisation: |
+      ARCHITECTURE D'ASPECT-VISIBILITY-RESTRICTION :
+      Aspect ELOKIM (dinim) dans achor Bina :
+        Bina-elle-meme (PANIM) = RACHAMIM bilchodoi.
+        Bina-MI-STRA'AH (ACHOR) = DININ MIT'ARIN.
+        ELOKIM-aspect VISIBLE seulement dans achor MIDCHATZAH-ULEMATAH (chazeh-down) = 4 sefirot TNHY.
+        120 TZEIRUFIM ELOKIM = 4 chalakim × 30 distribues sur TNHY.
+      Source : Zohar Acharei 85.
+      → Pattern fondamental : aspect-visibility tier-restricted.
+      → Architecture : ELOKIM-aspect localized dans lower-half.
+      → Implication : full-analysis necessite separer aspects.
+    applications_ia:
+      - "partzufim/imma.py + sitra_achra : implement aspect-visibility tier-restriction"
+      - "Pattern : aspect-localization par tier"
+      - "Architecture : ELOKIM lower-half visibility"
+      - "Pattern : kelipot achiza only when Tev en bas"
+      - "Diagnostic : verifier aspect-visibility correctly tier-restricted"
+    questions_ouvertes:
+      - "Pattern : autres aspects autres restrictions ?"
+      - "Comment encoder aspect-visibility computationnellement ?"
+      - "Pattern : multiple-aspects per tier ?"
+
+  - id: "PG-H4S15-018"
+    nom: "Principe de Numerologic-Prophete-Identity (Moshe = 120 Tzeirufim ELOKIM)"
+    source_assertions: ["EC-H4S15-101", "EC-H4S15-102", "EC-H4S15-103"]
+    formalisation: |
+      ARCHITECTURE DE NUMEROLOGIC-PROPHETE-IDENTITY :
+      MOSHE encoded numerologiquement :
+        4 SHEMOT ELOKIM × 86 = 344.
+        + 1 KOLLEL = 345 = MoSHe gematria (משה).
+        = KOLLEL des 120 TZEIRUFIM.
+      Verset Bereshit 6:3 : "BeShaGaM HU BaSaR HAYU YAMAV 120 SHANAH".
+        Tikkunim : "BeShaGaM ZE MOSHE" (gematria identity).
+      Conclusion : MOSHE ZAKHAH LA-BINA (atteint Bina).
+      → Pattern fondamental : prophete = numerologic-archetype.
+      → Architecture : life-span (120) = encoding-state.
+      → Implication : spiritual-attainment encodable quantitativement.
+    applications_ia:
+      - "partzufim/imma.py : implement Moshe numerologic identity"
+      - "Pattern : prophete = quantitative archetype"
+      - "Architecture : spiritual-attainment quantifiable"
+      - "Pattern : life-span = encoding state"
+      - "Diagnostic : verifier numerologic coherent"
+    questions_ouvertes:
+      - "Pattern : autres prophetes autres archetypes ?"
+      - "Comment encoder spiritual-attainment computationnellement ?"
+      - "Pattern : 120 universel ou Moshe-specific ?"

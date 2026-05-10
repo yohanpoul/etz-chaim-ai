@@ -1,0 +1,40 @@
+# ═══════════════════════════════════════════════════════════════════
+# Heikhal 04 / Shaar 02 — Zivvugim (שער הזווגים)
+# Sefaria : Sefer_Etz_Chaim.15 (gate 15, 2eme sha'ar Heikhal 4)
+# 6 perakim sur les couplages d'A"O et la mitzvat SHILUACH HA-KEN
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar_number: 2
+  shaar_name_he: "שער הזווגים"
+  shaar_name_fr: "Porte des Couplages (zivvug A\"O + mitzvat shiluach ha-ken)"
+  sefaria_gate: 15
+  nombre_perakim: 6
+  sujet_principal: |
+    Sha'ar HaZivvugim (Heikhal 4, Sefer Etz Chaim 15). 6 perakim systematiques sur :
+    - 2 sortes zivvug A"O : PNIMI (neshamot) + CHITZON (malachim)
+    - Sub-distinctions : PB"P shaveh OU hirkhanat ha-rosh
+    - 2 buts : neshamot chadashot OR chiyut+mochin pour yeshanot
+    - Apres CHURBAN : pas zivvug-pnimi pour neshamot chadashot ni A"O ni ZON
+    - ZIVVUG SHALEM (2 mazalot dikna) vs ZIVVUGA DE-LO SHALEM (Mazal 13 seul)
+    - AMA ROVETZET AL HA-EFROCHIM (Imma descend, couve)
+    - 3 YICHUDIM ZON N"R : YHVH-AHYH (gadlut/Bina), YHVH-ELOKIM (yenikah), YHVH-ADNI (ibbur amidah lechash)
+    - MITZVAT SHILUACH HA-KEN (Devarim 22:6-7) — sod ha-zivvug
+  concepts_cles:
+    - zivvug_pnimi_chitzon
+    - shavin_be_koma_pb_p
+    - ama_rovetzet_al_ha_efrochim
+    - zivvug_le_perakim_mikre
+    - zivvuga_shalem_vs_de_lo_shalem
+    - 3_yichudim_zon_n_r
+    - yhvh_ahyh_yhvh_elokim_yhvh_adni
+    - shiluach_ha_ken
+    - lo_aba_ba_ir_hoshea_11_9
+  note: "Auto-transposition systematique Sefer Etz Chaim gate 15 (Sha'ar HaZivvugim) — 6 perakim. 2eme sha'ar Heikhal 4."
+  source_primary: "Sefaria Sefer Etz Chaim gate 15 (https://www.sefaria.org/Sefer_Etz_Chaim.15)"
+  source_edition_default: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  strates: ["base"]
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1

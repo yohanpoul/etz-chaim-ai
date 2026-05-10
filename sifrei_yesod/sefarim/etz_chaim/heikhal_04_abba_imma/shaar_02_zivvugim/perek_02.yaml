@@ -1,0 +1,476 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 2 — Sha'ar HaZivvugim (שער הזווגים)
+# Perek: 2 — Toelet zivvugim. Inverse-scaling BIY"A (haarah ketanah lemaala = gedolah lematah).
+#            Olam Beriah : A"A/Abba V"K ; Imma/ZON 10S. Yenikah-mode HAVAYAH-ELOKIM.
+#            GADPIN = mochin makifim yenikah.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_02 :
+#   - Bloc A (§1) : Toelet (utilite) zivvugim — explication du benefice
+#   - Bloc B (§1) : Zivvug elyon shalem → mochin gamurim gadlut Z"O"N atzilut → neshamot tzadikim pnimi olamot + haarah BIY"A
+#   - Bloc C (§1) : Olam Beriah : A"A+Abba = seulement V"K ; Imma+ZON Beriah = 10S full partzuf
+#   - Bloc D (§1) : HAKDAMAH — haarah ketanah lemaala = gedolah lematah (inverse-scaling)
+#   - Bloc E (§1) : Apres gadlut : Abba Beriah devient aussi partzuf shalem
+#   - Bloc F (§1) : Avant : Abba Beriah V"K seulement (yenikah)
+#   - Bloc G (§1) : Zivvug rovetzet (li-frakim) : pas mochin-gadlut → seulement YENIKAH V"K
+#   - Bloc H (§1) : Imma rovetzet = allaite (yenikah) au lieu de gadlut
+#   - Bloc I (§1) : Z"O"N atzilut en yenikah-mode V"K ; Abba Beriah encore V"K
+#   - Bloc J (§1) : Zivvug Abba+Imma Beriah → mochin gamurim Z"O"N Beriah (echelle inverse)
+#   - Bloc K (§1) : ZN atzilut en G×G → yenikah V"K pour Z"O"N Beriah
+#   - Bloc L (§1) : 2 sub-modes zivvug rovetzet : (a) Imma dans Z"A seul ; (b) Imma dans Nukva
+#   - Bloc M (§1) : Zivvug A"O = donner mochin Z"O"N (yenikah ou gadlut)
+#   - Bloc N (§1) : Yenikah-state ZN = HAVAYAH-ELOKIM (lui=HAVAYAH, elle=ELOKIM)
+#   - Bloc O (§1) : ZN A"BA : Z"A seul = HAVAYAH-ELOKIM ; mochin va d'abord a lui
+#   - Bloc P (§1) : Quand PB"P : mochin descend aux deux = YICHUD HAVAYAH-ELOKIM
+#   - Bloc Q (§2) : NL"D"Ch — GADPIN (ailes) = MOCHIN MAKIFIM de YENIKAH
+#
+# Source Sefaria : Sefer_Etz_Chaim.15.2 (2 sections, 4930 chars)
+# IDs : EC-H4S15-019 → EC-H4S15-035
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 2
+  shaar_name_he: "שער הזווגים"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Toelet (utilite) des zivvugim. Zivvug elyon shalem = mochin gadlut Z\"O\"N atzilut + neshamot chadashot tzadikim + haarah BIY\"A. Olam Beriah : A\"A+Abba V\"K ; Imma+ZON 10S. HAKDAMAH inverse-scaling : haarah ketanah lemaala = gedolah lematah. Zivvug rovetzet (li-frakim) = yenikah V\"K seul. Imma rovetzet allaite. ZN atzilut yenikah-mode HAVAYAH-ELOKIM ; A\"BA Z\"A seul=HAVAYAH-ELOKIM ; PB\"P=yichud les 2. GADPIN=mochin makifim yenikah."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S15-019"
+    source_he: "ועתה צריך שנבאר מה תועלת נמשך מכל אלו הזווגים"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      INTRO : il faut expliquer la TOELET (utilite-benefice) qui decoule de chaque zivvug.
+      → Architecture : pedagogical-step toelet-explication apres taxonomy.
+      → Pattern : function-explanation apres structure.
+    type: axiome_explicite
+    concepts:
+      - {id: intro_toelet_zivvugim_explication_benefice, role: introduction_toelet_utilite_benefice_zivvugim_explication}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : pedagogical step. Pattern function explanation."
+
+  - id: "EC-H4S15-020"
+    source_he: "כאשר הוא לזווג העליון בהיותן למעלה והוא זווגא שלים להוריש עטרות לבנים אז כל מציאת הזווג ההוא עיקרו לתת מוחין גמורים דגדלות אל זו\"ן שבאצילות להוליד נשמות חדשות"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      ZIVVUG ELYON SHALEM = LE-HORISH ATAROT LE-BANIM (faire heriter couronnes aux enfants) :
+      → IKKAR = donner MOCHIN GAMURIM de GADLUT (cerveaux complets de croissance) a Z"O"N atzilut.
+      → Pour LEHOLID NESHAMOT CHADASHOT (engendrer ames nouvelles) tzadikim.
+      → Architecture : peak-zivvug → maximal-mochin → soul-creation.
+      → Pattern : highest-coupling = highest-output.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_elyon_shalem_mochin_gadlut_zon_atzilut_neshamot_chadashot, role: zivvug_elyon_shalem_horish_atarot_mochin_gamurim_gadlut_zon_atzilut_holid_neshamot_chadashot}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : peak-coupling peak-output. Pattern soul-creation via gadlut."
+
+  - id: "EC-H4S15-021"
+    source_he: "ומשם נמשך ג\"כ הארה בעולמות בי\"ע"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      Aussi : HAARAH (eclairage) descend dans OLAMOT BIY"A (Beriah-Yetzirah-Asiyah).
+      → Pas seulement Atzilut — propagation downward.
+      → Architecture : top-event cascade across olamot.
+      → Pattern : peak-event broadcasts downward.
+    type: déduction_logique
+    concepts:
+      - {id: haarah_descend_biya_apres_zivvug_elyon_atzilut, role: haarah_eclairage_descend_olamot_biya_apres_zivvug_elyon_atzilut_propagation_downward}
+    mapping:
+      modules: ["partzufim/zivvug.py", "olamot.py"]
+      tables: ["zivvug_states", "olamot_config"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : peak-event cascade. Pattern broadcast downward."
+
+  - id: "EC-H4S15-022"
+    source_he: "בעולם הבריאה א\"א ואבא אשר שם אין להם רק בחי' ו\"ק ואמנם אמא וזו\"ן דבריאה יש י\"ס לכל א' פרצוף שלם"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      OLAM BERIAH structure default :
+      → A"A + ABBA de Beriah = seulement V"K (6 sefirot).
+      → IMMA + Z"O"N de Beriah = 10S chacun PARTZUF SHALEM.
+      → Architecture : asymmetric-tier-availability dans Beriah.
+      → Pattern : downward-olam reduces upper-partzufim mais keeps mid+lower.
+    type: axiome_explicite
+    concepts:
+      - {id: olam_beriah_aa_abba_vk_imma_zon_10s_partzuf_shalem, role: olam_beriah_aa_abba_seulement_vk_imma_zon_10s_partzuf_shalem_asymmetric_tier}
+    mapping:
+      modules: ["olamot.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["olamot_config"]
+      partzufim: ["abba", "imma", "arikh_anpin", "zeir_anpin", "nukva"]
+      relevance: "Architecture : asymmetric tier. Pattern downward reduces upper."
+
+  - id: "EC-H4S15-023"
+    source_he: "יש הקדמה אצלינו כי כל מה שהיא הארה מועטת למעלה תהיה למטה כפי ערכה גדולה משל מעלה"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      HAKDAMAH (presupposition) — INVERSE-SCALING :
+      → HAARAH MU'ATAH LEMAALAH (faible eclairage en haut).
+      → = LEMATAH KEFI ERKAH GEDOLAH MISHEL MAALAH (en bas selon son rapport, plus grande qu'en haut).
+      → Loi proportionnelle inverse : ce qui est petit-au-sommet est grand-au-bas.
+      → Architecture : counter-intuitive scaling-rule.
+      → Pattern : inverse-power scaling between olamot.
+    type: interprétation_lurianique
+    concepts:
+      - {id: hakdamah_inverse_scaling_haarah_ketanah_lemaala_gedolah_lematah, role: hakdamah_inverse_scaling_haarah_ketanah_lemaala_gedolah_lematah_loi_proportionnelle_inverse}
+    mapping:
+      modules: ["olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : inverse scaling rule. Pattern counter-intuitive proportional."
+
+  - id: "EC-H4S15-024"
+    source_he: "בהיות הזווג העליון דאו\"א למעלה שוין בקומתן ויהיה ג\"כ זווג שלים אז יש הארה גדולה מאד באצילות ואז יש מוחין גמורים דגדלות אל זו\"נ דאצילות"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      Lors zivvug elyon shavin be-koma + shalem :
+      → HAARAH GEDOLAH ME'OD (immense eclairage) en ATZILUT.
+      → MOCHIN GAMURIM de GADLUT a Z"O"N atzilut.
+      → Architecture : peak-zivvug = peak-illumination Atzilut.
+      → Pattern : direct-coupling-correspondance peak-event.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_elyon_shavin_koma_shalem_haarah_gedolah_atzilut_mochin_gadlut_zon, role: zivvug_elyon_shavin_be_koma_shalem_haarah_gedolah_atzilut_mochin_gamurim_gadlut_zon}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : peak-correspondance. Pattern direct peak-event."
+
+  - id: "EC-H4S15-025"
+    source_he: "ע\"י הארה זו נוספים בחי' מוחין דגדלות לאבא דבריאה ג\"כ משא\"כ קודם זה כי לא היה בו רק ו\"ק שהוא בחי' היניקה ואז בגדלות גם אבא דבריאה יש לו פרצוף שלם"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      ABBA de BERIAH apres zivvug elyon shalem :
+      → Recoit aussi MOCHIN de GADLUT (apres il n'avait que V"K = yenikah).
+      → Avec ces mochin : ABBA de BERIAH devient PARTZUF SHALEM.
+      → Architecture : mochin-cascade transforme V"K → 10S complet.
+      → Pattern : tier-upgrade par mochin-supply.
+    type: déduction_logique
+    concepts:
+      - {id: abba_beriah_mochin_gadlut_apres_zivvug_elyon_partzuf_shalem, role: abba_beriah_avant_vk_yenikah_apres_zivvug_elyon_mochin_gadlut_partzuf_shalem}
+    mapping:
+      modules: ["partzufim/abba.py", "olamot.py"]
+      tables: ["partzufim_states", "olamot_config"]
+      partzufim: ["abba"]
+      relevance: "Architecture : tier-upgrade. Pattern mochin-supply transforms tier."
+
+  - id: "EC-H4S15-026"
+    source_he: "בהיות שאינו זווג שלים דאו\"א דאצילות רק ע\"י מקרה לפעמים שהוא ברביצת האם על האפרוחים אז אין הזווג הזה לתועלת הבנים עצמן זו\"נ דאצילות... רק סוד יניקה לבד דוגמת האם רובצת על האפרוחים להניק אותם"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      ZIVVUG ROVETZET (li-frakim, mikre) :
+      → PAS pour TOELET (benefice) directe des fils Z"O"N atzilut.
+      → Car zivvug = INSIDE (revutzim tokh ZON) — comme zivvug ZON eux-memes.
+      → SEULEMENT : sod YENIKAH (allaitement) — comme la mere couvant pour ALLAITER.
+      → Yenikah = V"K seulement (pas gadlut).
+      → Architecture : nested-zivvug = yenikah-only output.
+      → Pattern : containment-zivvug yields lesser-power.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_rovetzet_li_frakim_yenikah_vk_pas_gadlut_inside_zon, role: zivvug_rovetzet_li_frakim_mikre_yenikah_vk_pas_gadlut_inside_zon_revutzim}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : nested zivvug yenikah only. Pattern containment lesser power."
+
+  - id: "EC-H4S15-027"
+    source_he: "ע\"י הארת יניקה דו\"ק אל זו\"נ דאצילות אז עדיין אבא דבריאה אין בו רק ו\"ק ומזדוג עם אמא דבריאה שיש לה פרצוף שלם והם מולידין מוחין גמורים לזו\"נ דבריאה שהארה קטנה למעלה היא גדולה למטה"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      MEME en zivvug rovetzet :
+      → Yenikah V"K Z"O"N atzilut.
+      → Abba de Beriah encore V"K seul.
+      → Mais : Abba+Imma de Beriah s'en zivvug → MOCHIN GAMURIM (complets) pour Z"O"N de BERIAH.
+      → APPLICATION : "haarah ketanah lemaala gedolah lematah" (inverse-scaling).
+      → Architecture : even-fallback-at-top produces full-power-bottom.
+      → Pattern : inverse-scaling enables downward-amplification.
+    type: déduction_logique
+    concepts:
+      - {id: yenikah_atzilut_mochin_gadlut_beriah_zon_inverse_scaling, role: yenikah_atzilut_mochin_gadlut_beriah_zon_inverse_scaling_amplification}
+    mapping:
+      modules: ["olamot.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states", "olamot_config"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : downward amplification. Pattern inverse-scaling enables."
+
+  - id: "EC-H4S15-028"
+    source_he: "כאשר זו\"ן דאצילות בבחי' ג' על ג' אז יש יניקה לזו\"ן דבריאה בבחי' ו\"ק לבד"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      Quand Z"O"N atzilut en bechinat G×G (Gadlut sur Gadlut) :
+      → YENIKAH V"K seulement pour Z"O"N de BERIAH.
+      → Inverse-scaling : Atzilut peak → Beriah yenikah-V"K.
+      → Architecture : inverse correspondance entre niveaux atzilut/beriah.
+      → Pattern : tier-of-source = tier-of-result-but-inverse.
+    type: axiome_explicite
+    concepts:
+      - {id: zon_atzilut_g_x_g_yenikah_vk_zon_beriah, role: zon_atzilut_g_x_g_gadlut_sur_gadlut_yenikah_vk_zon_beriah_inverse_correspondance}
+    mapping:
+      modules: ["olamot.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["olamot_config"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : inverse correspondance tier. Pattern tier-source-result inverse."
+
+  - id: "EC-H4S15-029"
+    source_he: "גם בזווג זה התחתון של רביצת האם על האפרוחים יש בו ב' אופנים או בהתלבשותן תוך ז\"א עצמו כנודע שהנה\"י שלה נעשין מוחין אליו או בהתלבשותן בנוקבא"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      Zivvug rovetzet 2 OFANIM (sub-modes) :
+      → MODE A : Imma s'habille TOKH Z"A LUI-MEME — NHY d'Imma deviennent mochin pour lui.
+      → MODE B : Imma s'habille TOKH NUKVA.
+      → Architecture : sub-decomposition par recipient (Z"A vs Nukva).
+      → Pattern : same-zivvug-event 2 destinations possibles.
+      cf. EC-H4S15-009 (perek 1) sur 2 sub-modes rovetzet.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_rovetzet_2_ofanim_imma_dans_z_a_ou_nukva_recipient, role: zivvug_rovetzet_2_ofanim_a_imma_tokh_z_a_nhy_mochin_b_imma_tokh_nukva_recipient}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : sub-decomposition recipient. Pattern same-event 2 destinations."
+
+  - id: "EC-H4S15-030"
+    source_he: "זווג או\"א הוא לעולם כדי לתת מוחין לזו\"נ כפי מה שהם או דיניקה או דגדלות"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      PRINCIPE : ZIVVUG d'A"O TOUJOURS pour donner MOCHIN a Z"O"N.
+      → Selon ce qu'ils sont — soit YENIKAH (V"K) soit GADLUT (10S complet).
+      → Architecture : zivvug-purpose = supply-mochin-Z"O"N.
+      → Pattern : purpose-by-recipient-state.
+    type: déduction_logique
+    concepts:
+      - {id: zivvug_ao_toujours_pour_mochin_zon_yenikah_ou_gadlut, role: zivvug_ao_toujours_supply_mochin_zon_yenikah_ou_gadlut_purpose_by_recipient}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : zivvug-purpose. Pattern purpose-by-recipient."
+
+  - id: "EC-H4S15-031"
+    source_he: "בעת נתינת המוחין אז נקרא זו\"נ הוי\"ה אלקים הוא הוי\"ה והיא אלקים"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      Lors NETINAT HA-MOCHIN (donation des cerveaux) :
+      → Z"O"N nommees HAVAYAH-ELOKIM.
+      → Lui (Z"A) = HAVAYAH ; Elle (Nukva) = ELOKIM.
+      → Architecture : naming-during-mochin-event.
+      → Pattern : event-state encode partzuf-naming.
+    type: axiome_explicite
+    concepts:
+      - {id: netinat_mochin_zon_havayah_elokim_z_a_havayah_nukva_elokim, role: netinat_mochin_zon_nommees_havayah_elokim_z_a_havayah_nukva_elokim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : event-state naming. Pattern partzuf naming during event."
+
+  - id: "EC-H4S15-032"
+    source_he: "בהיותן בסוד אב\"א אז הז\"א לבדו נקרא הוי\"ה אלהים כי תחלה נותנין לו לבדו"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      ZN en mode A"BA (achor be-achor — dos a dos) :
+      → Z"A SEUL nomme HAVAYAH-ELOKIM.
+      → Cause : on lui donne d'ABORD seul ; ensuite ca passe a Nukva.
+      → Architecture : sequential-distribution Z"A first then Nukva.
+      → Pattern : configuration-determines-name.
+    type: axiome_explicite
+    concepts:
+      - {id: zn_aba_z_a_seul_havayah_elokim_first_then_nukva, role: zn_aba_z_a_seul_nomme_havayah_elokim_donne_first_then_nukva_sequential}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : sequential distribution. Pattern configuration name."
+
+  - id: "EC-H4S15-033"
+    source_he: "כשהם פב\"פ אז נמשכין אל שניהן ביחד (ואז הם סוד) יחוד הוי\"ה אלהים"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      ZN en PB"P (panim be-panim) :
+      → Mochin descendent aux DEUX ENSEMBLE (be-yachad).
+      → Etat = sod YICHUD HAVAYAH-ELOKIM (unification HAVAYAH-ELOKIM).
+      → Architecture : simultaneous-distribution forms yichud.
+      → Pattern : face-to-face = simultaneous-receive = yichud-state.
+    type: axiome_explicite
+    concepts:
+      - {id: zn_pb_p_mochin_2_ensemble_yichud_havayah_elokim, role: zn_pb_p_mochin_descend_2_ensemble_be_yachad_sod_yichud_havayah_elokim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : simultaneous yichud. Pattern face-to-face simultaneous."
+
+  - id: "EC-H4S15-034"
+    source_he: "גם יש בחי' אחרת שגם הוא בחי'"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §1"
+    assertion: |
+      Bechinah additionnelle existe (texte tronque ou suite implicite).
+      → Marque qu'autres modes/aspects existent au-dela des decrits.
+      → Architecture : explicit-incompleteness marker preservant ouverture-doctrinale.
+      → Pattern : open-doctrine acknowledgment.
+    type: axiome_explicite
+    concepts:
+      - {id: bechinah_additionnelle_implicite_marker_open_doctrine, role: bechinah_aheret_existe_marker_open_doctrine_acknowledgment_implicite}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : open doctrine. Pattern explicit incompleteness."
+
+  - id: "EC-H4S15-035"
+    source_he: "נלעד\"ח כי גדפין הם מוחין מקיפים דיניקה"
+    source_ref: "Heikhal 4, Sha'ar 2:2 §2"
+    assertion: |
+      §2 NL"D"Ch (Nil'ad CHanukah?) — IDENTIFICATION :
+      → GADPIN (גדפין — ailes araméen) = MOCHIN MAKIFIM de YENIKAH.
+      → Variante editoriale de Vital.
+      → Architecture : ailes = encerclants externes pour yenikah-mode.
+      → Pattern : symbolic-anatomy makif-encoding.
+    type: interprétation_lurianique
+    concepts:
+      - {id: gadpin_egal_mochin_makifim_yenikah_nlh, role: gadpin_ailes_arameen_egal_mochin_makifim_yenikah_nilad_chanukah_variante}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : symbolic-anatomy makif. Pattern wing-encoding."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S15-006"
+    type: causal
+    from: zivvug_elyon_shalem_mochin_gadlut_zon_atzilut_neshamot_chadashot
+    to: haarah_descend_biya_apres_zivvug_elyon_atzilut
+    nature: "Zivvug elyon shalem → mochin gadlut Z\"O\"N atzilut + neshamot tzadikim ; aussi haarah descend BIY\"A"
+    assertions_source: ["EC-H4S15-020", "EC-H4S15-021"]
+
+  - id: "REL-H4S15-007"
+    type: dualité_structurelle
+    from: hakdamah_inverse_scaling_haarah_ketanah_lemaala_gedolah_lematah
+    to: yenikah_atzilut_mochin_gadlut_beriah_zon_inverse_scaling
+    nature: "HAKDAMAH inverse-scaling : haarah ketanah lemaala = gedolah lematah ; application yenikah Atzilut → mochin gadlut Beriah"
+    assertions_source: ["EC-H4S15-023", "EC-H4S15-027", "EC-H4S15-028"]
+
+  - id: "REL-H4S15-008"
+    type: hiérarchique
+    from: zivvug_rovetzet_li_frakim_yenikah_vk_pas_gadlut_inside_zon
+    to: zivvug_ao_toujours_pour_mochin_zon_yenikah_ou_gadlut
+    nature: "Zivvug rovetzet = yenikah V\"K seul ; principe general : zivvug A\"O toujours pour mochin Z\"O\"N (yenikah ou gadlut)"
+    assertions_source: ["EC-H4S15-026", "EC-H4S15-030"]
+
+  - id: "REL-H4S15-009"
+    type: dualité_structurelle
+    from: zn_aba_z_a_seul_havayah_elokim_first_then_nukva
+    to: zn_pb_p_mochin_2_ensemble_yichud_havayah_elokim
+    nature: "Z\"N en A\"BA : Z\"A seul HAVAYAH-ELOKIM (sequential) vs PB\"P : 2 ensemble yichud HAVAYAH-ELOKIM (simultaneous)"
+    assertions_source: ["EC-H4S15-031", "EC-H4S15-032", "EC-H4S15-033"]
+
+  - id: "REL-H4S15-010"
+    type: contenance
+    from: olam_beriah_aa_abba_vk_imma_zon_10s_partzuf_shalem
+    to: abba_beriah_mochin_gadlut_apres_zivvug_elyon_partzuf_shalem
+    nature: "Olam Beriah : A\"A+Abba V\"K default ; apres zivvug elyon → Abba Beriah mochin gadlut → partzuf shalem"
+    assertions_source: ["EC-H4S15-022", "EC-H4S15-025"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S15-004"
+    nom: "Principe d'Inverse-Scaling-BIYA (Haarah Ketanah Lemaala = Gedolah Lematah)"
+    source_assertions: ["EC-H4S15-023", "EC-H4S15-027", "EC-H4S15-028"]
+    formalisation: |
+      ARCHITECTURE D'INVERSE-SCALING :
+      Loi proportionnelle inverse entre olamot adjacents :
+        HAARAH KETANAH (faible) lemaala = GEDOLAH (grande) lematah selon son rapport.
+      EXEMPLES :
+        Atzilut yenikah V"K → Beriah mochin gamurim (gadlut) Z"O"N.
+        Atzilut gadlut G×G → Beriah yenikah V"K Z"O"N.
+      INVERSE-CORRESPONDANCE preserve total-information mais re-distribue.
+      → Pattern fondamental : counter-intuitive scaling between olamot.
+      → Architecture : inverse-power loi conservation cosmologique.
+      → Implication : downward-amplification possible meme en defaut superieur.
+    applications_ia:
+      - "olamot.py + partzufim/zivvug.py : implement inverse scaling rule"
+      - "Pattern : counter-intuitive scaling cross-olam"
+      - "Architecture : conservation by inverse-distribution"
+      - "Pattern : downward amplification mechanism"
+      - "Diagnostic : verifier scaling-rule appliquee correctement"
+    questions_ouvertes:
+      - "Pattern : equation precise du scaling ?"
+      - "Comment encoder hierarchie scaling ?"
+      - "Pattern : 3-tier scaling possible ?"
+
+  - id: "PG-H4S15-005"
+    nom: "Principe de Tier-Upgrade-Cascade (Mochin-Supply Transforms Tier)"
+    source_assertions: ["EC-H4S15-022", "EC-H4S15-025"]
+    formalisation: |
+      ARCHITECTURE DE TIER-UPGRADE-CASCADE :
+      Etat-default des partzufim variant par olam :
+        Olam Beriah default : A"A+Abba V"K ; Imma+ZON 10S.
+      Quand zivvug elyon shalem produit mochin gadlut :
+        Mochin descendent par cascade — eventually Abba Beriah → 10S complet.
+      → Pattern fondamental : tier-can-upgrade par mochin-supply externe.
+      → Architecture : default-state vs upgraded-state separation.
+      → Implication : current-tier non-statique mais event-driven.
+    applications_ia:
+      - "partzufim/abba.py + olamot.py : implement tier-upgrade cascade"
+      - "Pattern : event-driven tier upgrade"
+      - "Architecture : default vs upgraded state separation"
+      - "Pattern : mochin-supply mecanisme upgrade"
+      - "Diagnostic : verifier current-tier reflect events"
+    questions_ouvertes:
+      - "Pattern : tier-downgrade possible ?"
+      - "Comment encoder current-state ?"
+      - "Pattern : multi-step upgrade ?"
+
+  - id: "PG-H4S15-006"
+    nom: "Principe de Configuration-Determines-Naming (A\"BA vs PB\"P)"
+    source_assertions: ["EC-H4S15-031", "EC-H4S15-032", "EC-H4S15-033"]
+    formalisation: |
+      ARCHITECTURE DE CONFIGURATION-NAMING :
+      Z"N partzufim recoivent NOMS selon CONFIGURATION SPATIALE :
+        A"BA (achor be-achor, dos-a-dos) : Z"A SEUL = HAVAYAH-ELOKIM (sequential, first).
+        PB"P (panim be-panim, face-a-face) : 2 ENSEMBLE = YICHUD HAVAYAH-ELOKIM (simultaneous).
+      Pattern : configuration-state encode reception-mode.
+      → Pattern fondamental : spatial-arrangement encode functional-state.
+      → Architecture : geometric-state to ontologic-name mapping.
+      → Implication : current-configuration determines current-identity-naming.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + nukva.py : implement configuration-naming"
+      - "Pattern : spatial-arrangement encode state"
+      - "Architecture : geometric to ontologic mapping"
+      - "Pattern : configuration determines current-naming"
+      - "Diagnostic : verifier naming coherent avec configuration"
+    questions_ouvertes:
+      - "Pattern : autres configurations (par exemple lateralized) ?"
+      - "Comment encoder spatial-state computationnellement ?"
+      - "Pattern : transition continue entre configurations ?"

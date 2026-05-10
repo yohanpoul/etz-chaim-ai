@@ -1,0 +1,516 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 2 — Sha'ar HaZivvugim (שער הזווגים)
+# Perek: 3 — Drush MITZVAT SHILUACH HA-KEN. KAN-TZIPUR=150 vs SH"A=370. KAN-TZIPUR
+#            = zivvug-mikre rovetzet (Imma kotzeret koma). 2 YICHUDIM HAVAYAH-ELOKIM.
+#            DEREKH (224) = 2× HAVAYAH-ELOKIM. LIFANEKHA vs MILIFANEKHA.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_03 :
+#   - Bloc A : Drush SHILUACH HA-KEN (Devarim 22:6-7) — "Ki yikare KAN TZIPOR"
+#   - Bloc B : Zivvug rovetzet montre faiblesse Z"N (V"K=efrochim, ketanim)
+#   - Bloc C : Imma rovezet pour shimram (proteger) chitzonim ; Abba markhin rosh
+#   - Bloc D : Pas zivvug-ikari mais zivvug-mikre (occasionnel)
+#   - Bloc E : "Ki yikare" → PRAT LE-MEZUMAN (excluant zivvug-prepare ikari) — Chullin 138a
+#   - Bloc F : "SHE-YIH'YU TZRIKHIN LE-IMAM" (fils besoin de mere)
+#   - Bloc G : KAN-TZIPUR = encoding zivvug-mikre (150 rivva) vs SH"A=370 zivvug-shavin
+#   - Bloc H : SH"A nehorin = 9S × 41 (M"A) = 369~370 (cf. perek 14 H3S13)
+#   - Bloc I : PB"P shavin be-koma : Imma+Abba regardent metzah A"A → zivvug elyon → Imma 9S × M"A = 370 rivva
+#   - Bloc J : Imma regarde PANIM A"A (kotzeret) : 3S × 41 + 2/3 Tiferet (chazeh-down) = 150 rivva
+#   - Bloc K : KAN-TZIPUR = 150 RIVVA seul ; en Imma (qui descend) pas Abba
+#   - Bloc L : "KAN" : Imma MEKANENA AL BANIN (Tikkunei Zohar) ; Z"A=TZIPOR
+#   - Bloc M : Tikkunim : MEKANENET AL BANIN pas YETIVA AL BANIN — "kinun" marque zivvug-mikre
+#   - Bloc N : "LIFANEKHA" vs "MILIFANEKHA" — Bina=mi-lifanai (interior) ; Malkhut=lifanav (Tiferet side)
+#   - Bloc O : "LIFANEKHA" zivvug-2 : Imma descend Z"A devient Malkhut → "LIFANEKHA"
+#   - Bloc P : 2 YICHUDIM HAVAYAH-ELOKIM (renvoi) — yichud A zivvug A"O mochin Z"N
+#   - Bloc Q : Yichud B : 2 metzioti zivvug-rovetzet — Imma dans Z"A (mochin) OR Malkhut (makif)
+#   - Bloc R : Dans Z"A : Z"A seul HAVAYAH-ELOKIM ; sur Malkhut : ZN ensemble HE-ELOKIM
+#   - Bloc S : Total 2 yichudim = DEREKH (224 = 2 × 112 = 2 × HAVAYAH-ELOKIM)
+#
+# Source Sefaria : Sefer_Etz_Chaim.15.3 (1 section, 4926 chars)
+# IDs : EC-H4S15-036 → EC-H4S15-053
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 2
+  shaar_name_he: "שער הזווגים"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Drush MITZVAT SHILUACH HA-KEN (Devarim 22:6-7). Zivvug rovetzet = faiblesse Z\"N (V\"K=efrochim) ; Imma rovezet pour shimram chitzonim ; pas ikari, mikre. 'Ki yikare'=PRAT LE-MEZUMAN. SH\"A nehorin=9S×41(M\"A)=370 ; KAN-TZIPUR=150 rivva (Imma kotzeret quand regard panim A\"A pas metzah). 'KAN' = Imma MEKANENA AL BANIN (Tikkunei Zohar) ; Z\"A=TZIPOR. 'LIFANEKHA' (Malkhut) vs 'MILIFANEKHA' (Bina interior). 2 YICHUDIM HAVAYAH-ELOKIM : (A) zivvug A\"O mochin Z\"N (A\"BA Z\"A seul vs PB\"P 2 ensemble) ; (B) zivvug rovetzet Imma dans Z\"A (mochin) ou Malkhut (makif). Total = DEREKH (224=2×112=2×HAVAYAH-ELOKIM)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S15-036"
+    source_he: "ונבאר עתה מצות שלוח הקן כי יקרא קן צפור וגו' הנה כאשר הזווג דאו\"א הוא בבחינת רביצת על האפרוחים כנ\"ל וזה מורה על חולשת הבנים זו\"נ"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      DRUSH MITZVAT SHILUACH HA-KEN (mitzvat de chasser le mere du nid) — Devarim 22:6-7 :
+      → "KI YIKARE KAN TZIPOR LEFANEKHA" (lorsque tu rencontreras un nid d'oiseau).
+      → APPLICATION : zivvug rovetzet sur les efrochim.
+      → MORE (indique) la CHULSHAT HA-BANIM (faiblesse des fils) Z"O"N.
+      → Architecture : mitzvat-as-encoding-of-cosmologic-state.
+      → Pattern : commandment-encodes-divine-dynamic.
+    type: déduction_scripturaire
+    concepts:
+      - {id: drush_shiluach_ha_ken_devarim_22_6_zivvug_rovetzet_chulshat_zon, role: drush_shiluach_ha_ken_devarim_22_6_7_ki_yikare_kan_tzipor_zivvug_rovetzet_chulshat_zon}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : mitzvat-as-cosmologic-encoding. Source Devarim 22:6-7."
+
+  - id: "EC-H4S15-037"
+    source_he: "הם חלשים בבחי' ו\"ק הנקרא אפרוחים והם קטנים וצריכין עדיין לאמא וצריכה אמא לרבוץ עליהם לשומרם מן החיצונים ואז גם אבא יורד עמה ומרכין ראשו"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      DETAIL faiblesse :
+      → CHALASHIM (faibles) en V"K — appellees EFROCHIM (poussins).
+      → KETANIM (petits) — TZRIKHIN ADAYIN LA-IMA (besoin encore de la mere).
+      → IMMA doit ROVETZET (couver) pour SHIMRAM (proteger) MIN HA-CHITZONIM.
+      → ABBA aussi YORED (descend), MARKHIN ROSH (incline tete).
+      → Architecture : maternal-protection mecanisme due a infant-vulnerability.
+      → Pattern : protective-descent triggered by recipient-weakness.
+    type: axiome_explicite
+    concepts:
+      - {id: efrochim_zon_vk_chalashim_imma_rovetzet_shimram_chitzonim, role: efrochim_zon_vk_chalashim_ketanim_tzrikhin_imma_rovetzet_shimram_chitzonim_abba_markhin_rosh}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin", "abba"]
+      relevance: "Architecture : maternal protection. Pattern protective descent triggered."
+
+  - id: "EC-H4S15-038"
+    source_he: "אין זה הזווג העקרי של או\"א אלא זווג המקרה כאשר הבנים בסוד יניקה צריכין לאמא"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      Distinction explicite :
+      → Pas ZIVVUG IKARI (essentiel) d'A"O.
+      → Mais ZIVVUG HA-MIKRE (occasionnel) — quand banim sont en YENIKAH-mode et besoin Imma.
+      → Architecture : default-zivvug vs occasional-fallback.
+      → Pattern : zivvug-mode triggered by recipient-tier.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_pas_ikari_mais_mikre_yenikah_besoin_imma, role: zivvug_pas_ikari_essentiel_mais_mikre_occasionnel_yenikah_banim_besoin_imma}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : default vs occasional. Pattern zivvug-mode by tier."
+
+  - id: "EC-H4S15-039"
+    source_he: "ארז\"ל כי יקרא קן צפור פרט למזומן גם אמרו שיהיו צריכין לאמם"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      DERIVATION HALAKHIQUE (Chazal — Chullin 138b-139b) :
+      → "KI YIKARE" (lorsque tu rencontreras) → PRAT LE-MEZUMAN (excluant ce qui est prepare).
+      → Donc : ne s'applique PAS au cas du zivvug-IKARI-MEZUMAN.
+      → "SHE-YIH'YU TZRIKHIN LE-IMAM" (qu'ils aient besoin de leur mere).
+      → Architecture : exegese halakhique encode cosmologic-precondition.
+      → Pattern : hermeneutic-extraction (PRAT) reveals partzuf-mode.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ki_yikare_prat_mezuman_chullin_138_tzrikhin_le_imam, role: chazal_chullin_138_ki_yikare_prat_le_mezuman_tzrikhin_le_imam_exegetique}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : hermeneutic precondition. Source Chullin 138b-139b."
+
+  - id: "EC-H4S15-040"
+    source_he: "ק\"ן צפו\"ר... כאשר הזווג הוא למעלה שוין בקומתן אז יש להם ש\"ע נהורין כמנין צפור"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      KAN-TZIPUR — encoding numerologique :
+      → Quand zivvug shavin be-koma (haut, peak) : ils ont SH"A NEHORIN (370 lumieres).
+      → Gematria TZIPOR (צפור) = 376 (avec anpin = 6 du vav).
+      → Architecture : peak-zivvug = peak-illumination encoded TZIPOR-gematria.
+      → Pattern : letter-name encode quantitative-cosmologic-state.
+      cf. EC-H3S13-204..217 (sha'ar A"A perek 14) sur SH"A nehorin.
+    type: déduction_scripturaire
+    concepts:
+      - {id: kan_tzipur_sha_nehorin_370_zivvug_shavin_be_koma_peak, role: kan_tzipur_sha_nehorin_370_zivvug_shavin_be_koma_peak_gematria_tzipor_376}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : peak-illumination encoded. Pattern letter-name quantitative."
+
+  - id: "EC-H4S15-041"
+    source_he: "כשהוא זה הזווג של מקרה שהוא התחתון אז אין לאמא רק ק\"ן נהורין מכל הצפו\"ר שהם הש\"ע נהורין"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      Zivvug-mikre tachton :
+      → Imma a SEULEMENT KaN (150) NEHORIN sur les SH"A (370) totaux.
+      → KAN = 150 ; perte de 220 (de 370 - 150).
+      → Architecture : downsizing-by-mode loss-of-tier-illumination.
+      → Pattern : mode-degraded encoding loses-half-power.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_mikre_imma_kan_150_nehorin_sur_sha_370, role: zivvug_mikre_tachton_imma_kan_150_nehorin_sur_sha_370_perte_220}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : downsizing by mode. Pattern mode-degraded encoding."
+
+  - id: "EC-H4S15-042"
+    source_he: "ש\"ע נהורין הם ט\"ס כל אחד כלול ממ\"א שערים"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      DECOMPOSITION SH"A nehorin :
+      → 9S sefirot.
+      → Chacune KELUL (incluant) M"A (41) SHE'ARIM (portes).
+      → 9 × 41 = 369 ≈ SH"A 370 (avec kollel +1).
+      → Architecture : 9-x-41 quantitative decomposition.
+      → Pattern : multiplicative encoding tier × subtier.
+    type: axiome_explicite
+    concepts:
+      - {id: sha_nehorin_9s_x_41_ma_shearim_kollel, role: sha_nehorin_9_sefirot_x_41_ma_shearim_kelul_chacun_kollel}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : multiplicative encoding. Pattern tier × subtier."
+
+  - id: "EC-H4S15-043"
+    source_he: "כאשר הזווג דאו\"א עלאין בהיותן פב\"פ שוין בקומתן ואז מסתכלין במצח דא\"א... ושם מלבישין הכתרים שלהם את הגרון דא\"א ומשם נמשך הזווג העליון דאו\"א ואז קומה דאמא שיעורה ט\"ס כל א' כלולה ממ\"א הרי ש\"ע רבוא"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      Zivvug A"O ELYONIM PB"P shavin :
+      → MISTAKLIM dans METZAH d'A"A (regardent metzah).
+      → KETERIM revetent GARON d'A"A.
+      → Zivvug ELYON descend → Imma KOMAH = 9S × M"A (41) = 370 RIVVA.
+      → Architecture : peak-state = full-koma + full-illumination.
+      → Pattern : peak-config corresponds peak-quantitative-state.
+    type: interprétation_lurianique
+    concepts:
+      - {id: zivvug_elyon_pb_p_shavin_mistaklim_metzah_aa_imma_9s_x_ma_370_rivva, role: zivvug_elyon_pb_p_shavin_mistaklim_metzah_aa_keterim_garon_imma_komah_9s_ma_370_rivva}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : peak-config peak-state. Pattern full-correspondance."
+
+  - id: "EC-H4S15-044"
+    source_he: "בהיות אמא מסתכלת בפנים דא\"א ואז האמא היא קצרת הקומה מהחזה דאבא ולמטה לבד עד סוף נה\"י שלו הם ג' ספי' כל א' כלולה ממ\"א הם קכ\"ג וב' שלישי ת\"ת הם כ\"ז ועם קכ\"ג הרי ק\"ן רבוא"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      Imma regarde PANIM A"A (kotzeret-koma — pas metzah) :
+      → De CHAZEH d'Abba ulematah jusqu'a fin NHY = 3 sefirot × 41 = 123 (KKa"G).
+      → + 2/3 TIFERET = 27 (KaZ).
+      → 123 + 27 = 150 (KaN) RIVVA.
+      → Architecture : restricted-gaze restricted-state.
+      → Pattern : kotzer-haKomah quantifie precisement.
+    type: déduction_logique
+    concepts:
+      - {id: imma_regarde_panim_aa_kotzeret_3s_41_plus_2_3_tiferet_egal_150_kan, role: imma_regarde_panim_aa_kotzeret_komah_3s_x_41_plus_2_3_tiferet_27_egal_150_kan_rivva}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : restricted gaze quantified. Pattern kotzer-haKomah encoding."
+
+  - id: "EC-H4S15-045"
+    source_he: "ק\"ן צפור שבזווג של מקרה הזה אין לה רק ק\"ן רבוא נהורין... וכל זה הוא באמא לפי שיורדת למטה משא\"כ באבא"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      KAN-TZIPUR = encoding zivvug-mikre :
+      → Imma SEULEMENT 150 RIVVA NEHORIN (sur SH"A=370).
+      → Tout cela en IMMA (qui descend) — PAS en ABBA.
+      → Architecture : descent-asymmetric (Imma descend, Abba reste).
+      → Pattern : female-descent encodes mikre-mode.
+    type: axiome_explicite
+    concepts:
+      - {id: kan_tzipur_zivvug_mikre_imma_150_rivva_descend_pas_abba, role: kan_tzipur_zivvug_mikre_imma_150_rivva_descend_pas_abba_descent_asymmetric}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "abba"]
+      relevance: "Architecture : descent asymmetric. Pattern female descent encodes mikre."
+
+  - id: "EC-H4S15-046"
+    source_he: "מה שקרא לזווג זה קן צפור לשון ק\"ן ר\"ל כי עתה בזווג זה נקרא מקננא על בנין כי הבן שהוא ז\"א נקרא צפור והיא מקננת עליו"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      Etymologie KAN-TZIPUR :
+      → "K"N" lashon (langage) MEKANENA AL BANIN (qui niche sur les fils).
+      → Z"A = TZIPOR (oiseau-fils).
+      → Imma se "niche" sur Z"A.
+      → Source : Tikkunei Zohar.
+      → Architecture : nesting-iconography pour zivvug-mikre.
+      → Pattern : verb-naming encode dynamic-relation.
+    type: déduction_scripturaire
+    concepts:
+      - {id: kan_lashon_mekanena_al_banin_z_a_tzipor_tikkunei_zohar, role: kan_lashon_mekanena_al_banin_tikkunei_zohar_z_a_tzipor_imma_mekanenet}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : nesting iconography. Source Tikkunei Zohar."
+
+  - id: "EC-H4S15-047"
+    source_he: "לא אמרו בתיקונים דאמא יתבא על בנין רק מקננת על בנין כי לשון קינון מורה על הזווג שמזדווגת אז עם אבא בהיותה היא אם על הבנים שהוא הזווג הזה הב' הנ\"ל הנקרא מקרה לפרקים"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      DISTINCTION TIKKUNIM :
+      → PAS "AMA YETIVA AL BANIN" (mere assise sur fils).
+      → MAIS "MEKANENET AL BANIN" (qui niche sur fils).
+      → KINUN (nicher) → ZIVVUG-mode specifique en IMMA-AL-BANIM.
+      → Marque ZIVVUG-2 = MIKRE LI-FRAKIM.
+      → Architecture : verb-distinction encode mode-distinction.
+      → Pattern : kinun-vs-yetiva = active-zivvug-vs-stationary.
+    type: déduction_scripturaire
+    concepts:
+      - {id: tikkunim_mekanenet_pas_yetiva_kinun_zivvug_mikre_li_frakim, role: tikkunim_mekanenet_al_banin_pas_yetiva_kinun_lashon_zivvug_mikre_li_frakim}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : verb-mode distinction. Pattern active vs stationary zivvug."
+
+  - id: "EC-H4S15-048"
+    source_he: "ב' מיני יחודים הם של הוי\"ה אלקי\"ם הא' הוא כי ענין זווג או\"א לעולם הוא כדי לתת מוחין אל הבנים ובעת נתינת המוחין נקרא זו\"ן הוי\"ה אלקים"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      2 MINEI YICHUDIM HAVAYAH-ELOKIM :
+      → YICHUD A : zivvug A"O = donner mochin Z"N → Z"N nommees HAVAYAH-ELOKIM.
+        - A"BA : Z"A SEUL HAVAYAH-ELOKIM (mochin first to him).
+        - PB"P : 2 ENSEMBLE = YICHUD HAVAYAH-ELOKIM.
+      → Architecture : taxonomy 2 yichudim (event-based + configuration-based).
+      → Pattern : multi-yichud-types per cosmologic-state.
+      cf. EC-H4S15-031..033 (perek 2) sur HAVAYAH-ELOKIM A"BA/PB"P.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_yichudim_havayah_elokim_yichud_a_zivvug_ao_mochin_zn_aba_pb_p, role: 2_minei_yichudim_havayah_elokim_yichud_a_zivvug_ao_mochin_zn_aba_z_a_seul_pb_p_2_ensemble}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : multi-yichud taxonomy. Pattern state-based naming."
+
+  - id: "EC-H4S15-049"
+    source_he: "ויחוד הב' של הוי\"ה אלקים הוא ג\"כ כמ\"ש לעיל כי בזה הזווג הב' התחתון דאו\"א יש ב' מציאות או כשיורדת בז\"א... או כשיורדת במלכות"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      YICHUD B : 2 METZIOTI (realites) du zivvug-rovetzet :
+      → REALITE 1 : Imma DESCEND dans Z"A — entre dans lui — NHY deviennent mochin.
+      → REALITE 2 : Imma DESCEND dans MALKHUT — pas dedans, reste OR MAKIF (encerclant).
+      → Architecture : 2 different-targets pour Imma-descent.
+      → Pattern : same-action different-recipients.
+    type: axiome_explicite
+    concepts:
+      - {id: yichud_b_2_metzioti_zivvug_rovetzet_imma_dans_z_a_ou_malkhut_makif, role: yichud_b_2_metzioti_zivvug_rovetzet_imma_descend_z_a_nhy_mochin_ou_malkhut_or_makif}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : 2 targets descent. Pattern same-action different-recipients."
+
+  - id: "EC-H4S15-050"
+    source_he: "כאשר נכנסת בז\"א אז הז\"א לבדו נקרא הוי\"ה אלהים כי הוא לוקח הכל ואח\"כ הוא נותן לה המוחין שלה וכשיורדת על המלכות ולא בתוכם ממש אז שניהן ביחד זו\"ן נקרא ה' אלהים"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      Naming par REALITE :
+      → REALITE 1 (Imma DANS Z"A) : Z"A SEUL nomme HAVAYAH-ELOKIM (il prend tout, puis donne).
+      → REALITE 2 (Imma SUR Malkhut, pas dedans) : 2 ENSEMBLE nommees HE-ELOKIM.
+      → Architecture : containment-determines-naming.
+      → Pattern : inside = single-name ; outside-on = pair-name.
+    type: axiome_explicite
+    concepts:
+      - {id: realite_1_imma_dans_z_a_z_a_seul_havayah_elokim_realite_2_imma_sur_malkhut_zn_he_elokim, role: realite_1_imma_dans_z_a_z_a_seul_havayah_elokim_realite_2_imma_sur_malkhut_pas_dedans_zn_he_elokim}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : containment determines naming. Pattern inside vs outside-on."
+
+  - id: "EC-H4S15-051"
+    source_he: "ב' מיני יחודים הם של היו\"ה אלהים הנמצא בזווג זה הב' של מקרה וכנגדן אמר בדרך שהוא גימטריא ב\"פ הוי\"ה אלהים"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      TOTAL = 2 MINEI YICHUDIM HAVAYAH-ELOKIM (zivvug-2 mikre).
+      → KENEGDAN (en correspondance) le verset dit "DEREKH".
+      → DEREKH (דרך) = GEMATRIA 2 PE'AMIM HAVAYAH-ELOKIM = 2×112 = 224.
+      → Architecture : numerologic-confirmation taxonomy.
+      → Pattern : verse-gematria validates structural-count.
+    type: déduction_scripturaire
+    concepts:
+      - {id: derekh_224_egal_2x_havayah_elokim_112_validation_2_yichudim, role: derekh_gematria_224_egal_2_pe_amim_havayah_elokim_112_validation_2_yichudim_taxonomy}
+    mapping:
+      modules: ["partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : numerologic taxonomy validation. Pattern verse-gematria validates."
+
+  - id: "EC-H4S15-052"
+    source_he: "אמרו לפניך... כי בינה נקרא מלפני ה' שהוא יותר פנימי מן הוי\"ה אבל המלכות נקרא לפני ה' שהוא לפניו של הת\"ת"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      "LIFANEKHA" vs "MILIFANEKHA" — distinction subtle :
+      → BINA = "MILIFANEI HASHEM" (de devant Dieu — encore plus interieur que HAVAYAH).
+      → MALKHUT = "LIFANEI HASHEM" (devant Dieu — devant Tiferet, exterieurement).
+      → Verset SHILUACH HA-KEN dit "LIFANEKHA" — Imma descendue = Malkhut.
+      → Architecture : preposition-encoding spatial-position.
+      → Pattern : grammatical-distinction encode ontologic-position.
+    type: déduction_scripturaire
+    concepts:
+      - {id: lifanekha_malkhut_milifanekha_bina_preposition_position, role: lifanekha_malkhut_lifanav_tiferet_milifanekha_bina_pnimi_havayah_preposition_position}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "nukva"]
+      relevance: "Architecture : preposition spatial-position. Pattern grammatical encodes ontologic."
+
+  - id: "EC-H4S15-053"
+    source_he: "ולזה אמר לפניך כי עתה בזווג זה האמא יורדת למטה ומתלבשת בז\"א ונקרא לפניך ולא מלפניך"
+    source_ref: "Heikhal 4, Sha'ar 2:3"
+    assertion: |
+      RESOLUTION :
+      → Verset dit "LIFANEKHA" (pas "milifanekha").
+      → Car en zivvug-mikre, IMMA DESCEND ulematah, MITLABESHET dans Z"A.
+      → Devient comme MALKHUT — = "LIFANEKHA" (pas plus "milifanekha"/Bina-niveau).
+      → Architecture : grammatical-encoding-validates-cosmologic-state.
+      → Pattern : verse-grammar = state-marker.
+    type: déduction_scripturaire
+    concepts:
+      - {id: lifanekha_imma_descend_devient_malkhut_pas_milifanekha, role: lifanekha_imma_descend_mitlabeshet_z_a_devient_comme_malkhut_pas_milifanekha_bina}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "nukva"]
+      relevance: "Architecture : grammatical validates state. Pattern verse-grammar marker."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S15-011"
+    type: causal
+    from: drush_shiluach_ha_ken_devarim_22_6_zivvug_rovetzet_chulshat_zon
+    to: zivvug_pas_ikari_mais_mikre_yenikah_besoin_imma
+    nature: "Drush shiluach ha-ken indique zivvug rovetzet (chulshat ZON) ; pas ikari mais mikre quand banim besoin Imma"
+    assertions_source: ["EC-H4S15-036", "EC-H4S15-037", "EC-H4S15-038"]
+
+  - id: "REL-H4S15-012"
+    type: hiérarchique
+    from: kan_tzipur_sha_nehorin_370_zivvug_shavin_be_koma_peak
+    to: zivvug_mikre_imma_kan_150_nehorin_sur_sha_370
+    nature: "Zivvug shavin be-koma=SH\"A 370 nehorin (TZIPUR) ; zivvug-mikre Imma seulement KaN 150 (perte 220)"
+    assertions_source: ["EC-H4S15-040", "EC-H4S15-041", "EC-H4S15-042"]
+
+  - id: "REL-H4S15-013"
+    type: dualité_structurelle
+    from: zivvug_elyon_pb_p_shavin_mistaklim_metzah_aa_imma_9s_x_ma_370_rivva
+    to: imma_regarde_panim_aa_kotzeret_3s_41_plus_2_3_tiferet_egal_150_kan
+    nature: "Zivvug elyon : Imma regarde metzah → 9S×41=370 ; zivvug-mikre : Imma regarde panim kotzeret → 3S×41+2/3T=150"
+    assertions_source: ["EC-H4S15-043", "EC-H4S15-044"]
+
+  - id: "REL-H4S15-014"
+    type: hiérarchique
+    from: 2_yichudim_havayah_elokim_yichud_a_zivvug_ao_mochin_zn_aba_pb_p
+    to: derekh_224_egal_2x_havayah_elokim_112_validation_2_yichudim
+    nature: "2 yichudim HAVAYAH-ELOKIM (yichud A zivvug A\"O + yichud B descend Z\"A/Malkhut) ; total = DEREKH (224=2×112)"
+    assertions_source: ["EC-H4S15-048", "EC-H4S15-049", "EC-H4S15-051"]
+
+  - id: "REL-H4S15-015"
+    type: dualité_structurelle
+    from: lifanekha_malkhut_milifanekha_bina_preposition_position
+    to: lifanekha_imma_descend_devient_malkhut_pas_milifanekha
+    nature: "Preposition LIFANEKHA=Malkhut, MILIFANEKHA=Bina ; verset shiluach ha-ken 'lifanekha' = Imma descend devient Malkhut"
+    assertions_source: ["EC-H4S15-052", "EC-H4S15-053"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S15-007"
+    nom: "Principe de Mitzvat-as-Cosmologic-Encoding (Halakha Encodes Divine Dynamic)"
+    source_assertions: ["EC-H4S15-036", "EC-H4S15-039", "EC-H4S15-046"]
+    formalisation: |
+      ARCHITECTURE DE MITZVAT-COSMOLOGIC-ENCODING :
+      MITZVOT ENCODENT etats cosmologiques :
+        SHILUACH HA-KEN (Devarim 22:6-7) → encode ZIVVUG-rovetzet (Imma faiblesse-Z"O"N).
+        Hermeneutic-extraction : "KI YIKARE" → PRAT LE-MEZUMAN (Chullin 138b).
+        Etymologic-derivation : KAN = Imma MEKANENET AL BANIN (Tikkunei Zohar).
+      PATTERN : commandment encode divine-dynamic via :
+        - Action prescriptive (chasser mere du nid).
+        - Hermeneutique halakhique (PRAT excludes).
+        - Etymologie (verb-form).
+      → Pattern fondamental : halakha = layered-encoding cosmologic-state.
+      → Architecture : multi-layer extraction (action + hermeneutic + etymologic).
+    applications_ia:
+      - "partzufim/zivvug.py + imma.py : implement mitzvat-cosmologic encoding"
+      - "Pattern : halakha multi-layer encoding"
+      - "Architecture : action+hermeneutic+etymologic extraction"
+      - "Pattern : commandment as encoding of dynamic"
+      - "Diagnostic : verifier encoding coherent across layers"
+    questions_ouvertes:
+      - "Pattern : autres mitzvot encodent autres dynamiques ?"
+      - "Comment encoder hermeneutic-rules computationnellement ?"
+      - "Pattern : 4-layer ou plus possibles ?"
+
+  - id: "PG-H4S15-008"
+    nom: "Principe de KAN-vs-SH\"A-Quantitative-Encoding (150 vs 370 Nehorin)"
+    source_assertions: ["EC-H4S15-040", "EC-H4S15-041", "EC-H4S15-043", "EC-H4S15-044"]
+    formalisation: |
+      ARCHITECTURE DE QUANTITATIVE-ZIVVUG-ENCODING :
+      Etat zivvug encode quantitativement :
+        ZIVVUG SHAVIN BE-KOMA (peak) : SH"A 370 nehorin = 9S × M"A (41).
+        ZIVVUG ROVETZET (mikre) : KaN 150 nehorin = 3S × 41 + 2/3 Tiferet × ratio.
+      Decomposition spatial-quantitative :
+        Imma regarde metzah = full koma (370).
+        Imma regarde panim = kotzeret koma (150) = chazeh-down-only.
+      Gematria encoding :
+        TZIPOR = 370 + 6 anpin = 376.
+        KAN = 150.
+      → Pattern fondamental : zivvug-state = quantitative-cosmologic-spec.
+      → Architecture : gaze-direction quantifies illumination.
+    applications_ia:
+      - "partzufim/imma.py + abba.py : implement KAN/SH\"A quantitative encoding"
+      - "Pattern : gaze-direction encodes illumination quantity"
+      - "Architecture : zivvug-state quantifiable"
+      - "Pattern : letter-name = quantitative state-marker"
+      - "Diagnostic : verifier nehorin-count coherent avec gaze"
+    questions_ouvertes:
+      - "Pattern : autres zivvug-states autres quantites ?"
+      - "Comment encoder gaze-direction ?"
+      - "Pattern : intermediate-states existent (200, 300) ?"
+
+  - id: "PG-H4S15-009"
+    nom: "Principe de Grammatical-Encoding-Cosmologic (LIFANEKHA vs MILIFANEKHA)"
+    source_assertions: ["EC-H4S15-052", "EC-H4S15-053"]
+    formalisation: |
+      ARCHITECTURE DE GRAMMATICAL-COSMOLOGIC :
+      Distinctions grammaticales encode positions cosmologiques :
+        BINA = "MILIFANEI HASHEM" (de-devant Dieu — interior, beyond).
+        MALKHUT = "LIFANEI HASHEM" (devant Dieu — exterieur, in-front-of Tiferet).
+      Verset shiluach ha-ken dit "LIFANEKHA" → Imma descendue = Malkhut-like state.
+      → Pattern fondamental : preposition encode spatial-position.
+      → Architecture : grammar-as-state-marker.
+      → Implication : meta-syntactic info distincte de syntactic info.
+    applications_ia:
+      - "partzufim/imma.py + nukva.py : implement grammatical position encoding"
+      - "Pattern : preposition encodes position"
+      - "Architecture : grammar as state-marker"
+      - "Pattern : meta-syntactic distinct semantic"
+      - "Diagnostic : verifier preposition-state coherent"
+    questions_ouvertes:
+      - "Pattern : autres prepositions autres positions ?"
+      - "Comment encoder preposition-meaning computationnellement ?"
+      - "Pattern : multi-language preposition encoding ?"

@@ -1,0 +1,496 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 2 — Sha'ar HaZivvugim (שער הזווגים)
+# Perek: 4 — 3 BECHINOT IMMA : SAMEKH/MEM/DALET. ANI YESHENA=SHENI"A. Z"A+TEVUNOT
+#            →BINOT. Yod-milui=BINA (V+D ordre, V tete). HE-rishona=TEVUNAH-1 (D+V
+#            ordre, V sans tete). 4 mochin Bina dans Tevunah.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_04 :
+#   - Bloc A : 3 BECHINOT IMMA ELYONA — SAMEKH (Bina), MEM SETUMAH (Tevunah-1), DALET (Tevunah-3)
+#   - Bloc B : 3eme Tevunah (DALET) = NHY revetent Z"A en mochin
+#   - Bloc C : Z"A+Tevunah-3 montent → kollel dans Tevunah-1 (mem setumah)
+#   - Bloc D : Sod "ANI YESHENA" (Cantique 5:2) = letters SHENI"A (2eme)
+#   - Bloc E : Tevunah-1+Tevunah-3 → 2 TEVUNOT (pluriel) ; Z"A = "ISH TEVUNOT YIDLENA" (Mishlei 20:5)
+#   - Bloc F : Z"A+3 montent vers BINA → "BINOT" pluriel ; Z"A = "IM BINOT"
+#   - Bloc G : Avant montee : "LO AM BINOT HU" (Yeshayahu 27:11) ; Bina = rachamim peshutim
+#   - Bloc H : Bina elyona = pas d'achiza pour kelipot ; rachamim gemurim
+#   - Bloc I : SY 1:4 "HABEN BE-CHOKHMAH" — dans Yod (Chokhmah) il y a Bina
+#   - Bloc J : Yod milui = HE forme V+D = BINA ELYONA
+#   - Bloc K : He-rishona Shem = TEVUNAH-1 ; "VE-CHAKHAM BE-VINAH" — Yod dans He = YISSO
+#   - Bloc L : Drush tefilin : ecrire yod en koren-zavit du He
+#   - Bloc M : VAV-DALET (Bina V+D ordre) vs DALET-VAV (Tevunah dans He D+V ordre) — reverse-encoding
+#   - Bloc N : VAV yod-milui a TETE (10S) ; VAV dans He sans TETE (V"K seul)
+#   - Bloc O : RAISON : Vav du yod-milui = Bina elyona AVEC mochin pnim → tete (10S)
+#   - Bloc P : DALET yod-milui = 4 mochin Bina (achor chetzi tiferet+NHY) puis tete Tevunah
+#   - Bloc Q : He-rishona = Tevunah-1 sans mochin pnim → vav sans tete
+#   - Bloc R : Yod sur Vav (dans He) = OR MAKIF galgalta exterieur (pas encore pnim)
+#   - Bloc S : Dalet eloignee de Vav dans He = Tevunah-1 monte vers Bina pour recevoir mochin pnim
+#
+# Source Sefaria : Sefer_Etz_Chaim.15.4 (1 section, 3575 chars)
+# IDs : EC-H4S15-054 → EC-H4S15-070
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 2
+  shaar_name_he: "שער הזווגים"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "3 BECHINOT IMMA ELYONA : SAMEKH (Bina), MEM SETUMAH (Tevunah-1), DALET (Tevunah-3=NHY revet Z\"A). Z\"A+Tev-3 montent → kollel dans Tev-1 (sod ANI YESHENA Cantique 5:2 = SHENI\"A). 2 TEVUNOT pluriel ; Z\"A=ISH TEVUNOT YIDLENA (Mishlei 20:5). Montee vers Bina → BINOT pluriel ; avant : LO AM BINOT HU (Yeshayahu 27:11). Bina=rachamim peshutim, pas achiza kelipot. SY 1:4 HABEN BE-CHOKHMAH/CHAKHAM BE-VINAH. Yod-milui=BINA (V+D ordre, Vav avec tete=10S, mochin pnim). HE-rishona=TEVUNAH-1 (D+V ordre, Vav sans tete=V\"K seul). DALET yod-milui=4 mochin Bina (achor+NHY puis tete Tevunah). Yod sur Vav He = or makif galgalta exterieur."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S15-054"
+    source_he: "ודע כי למעלה באמא עלאה יש ג' בחי' א' נקרא סמ\"ך ונקרא בינה והב' נקרא ם סתומה ונקרא תבונה והג' נקרא ד' ונקרא ג\"כ תבונה"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      3 BECHINOT dans IMMA ELYONA — encoding par lettres :
+      → BECHINAH 1 : SAMEKH (ס) = BINA.
+      → BECHINAH 2 : MEM SETUMAH (ם final-mem) = TEVUNAH (1ere/rishonah).
+      → BECHINAH 3 : DALET (ד) = TEVUNAH (aussi appellee) — c'est la 3eme.
+      → Architecture : 3-tier letter-encoding pour Imma decomposition.
+      → Pattern : letter-symbol = ontologic-tier marker.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_bechinot_imma_samekh_bina_mem_tevunah_1_dalet_tevunah_3, role: 3_bechinot_imma_elyona_samekh_bina_mem_setumah_tevunah_1_dalet_tevunah_3}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : 3-tier letter encoding. Pattern letter-symbol tier."
+
+  - id: "EC-H4S15-055"
+    source_he: "וזאת התבונה שהיא בחי' הג' היא אשר מתלבשת נה\"י שלה תוך ז\"א להעשות לו מוחין"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      TEVUNAH-3 (DALET) :
+      → Ses NHY se REVETENT TOKH (dans) Z"A.
+      → DEVIENNENT MOCHIN (cerveaux) pour lui.
+      → Architecture : terminal-tier-tevunah = mochin-source-Z"A.
+      → Pattern : lower-most-tevunah = active-mochin-supplier.
+    type: axiome_explicite
+    concepts:
+      - {id: tevunah_3_dalet_nhy_revet_z_a_mochin, role: tevunah_3_dalet_nhy_revet_dans_z_a_mochin_terminale_active}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : terminal-tevunah mochin-source. Pattern active supplier."
+
+  - id: "EC-H4S15-056"
+    source_he: "כאשר ז\"א ותבונה זו שהיא הבחי' הג' המתלבשת בז\"א בהיותן שניהן עולין למעלה אצל הבחי' הב' שהיא ם' סתומה תבונה ראשונה אשר היא ב' אל הבינה ועליה נאמר אני ישנה אותיות שני\"ה ואז נכללת תבונה הב' בתבונה הא'"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      Quand Z"A + Tevunah-3 (qui s'habille en lui) MONTENT :
+      → Vers BECHINAH-2 (MEM SETUMAH = TEVUNAH-1).
+      → Tevunah-1 = la 2eme par rapport a la BINA (sur l'ordre Bina-Tev1-Tev3).
+      → Verset : "ANI YESHENA" (Cantique 5:2 — je suis endormie).
+      → Letters SHENI"A (שני"ה — fem. de "shenit", 2eme).
+      → Tevunah-2 (= Tev-3 montant) NIKHLELET (incluse) dans Tevunah-1.
+      → Architecture : ascent-merger 3eme-into-1ere.
+      → Pattern : ascending-tier merges-into-host.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ani_yeshena_sheni_a_tevunah_3_kollel_tevunah_1, role: z_a_tevunah_3_montent_kollel_tevunah_1_ani_yeshena_sheni_a_cantique_5_2}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : ascent-merger. Source Cantique 5:2."
+
+  - id: "EC-H4S15-057"
+    source_he: "אז שתיהם נקרא תבונות ואז ז\"א נאמר עליו ואיש תבונות ידלנה כי הרי עולה עמהם למעלה ונכלל בשתיהן ועתה דולה ומשקה אפילו מאותה תבונה הא' וזהו ידלנה לשון יחיד"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      Tevunah-1 + Tevunah-3-merged = SHTEHEM (les deux) = TEVUNOT (pluriel).
+      → Z"A devient "ISH TEVUNOT YIDLENA" (Mishlei 20:5 — homme-de-tevunot la puise).
+      → Z"A monte avec elles, NIKHLAL (inclu) dans les 2.
+      → DOLEH U-MASHKEH (puise et arrose) — meme de la 1ere Tevunah.
+      → "YIDLENA" verbe SINGULIER — il puise des deux unifiees.
+      → Architecture : Z"A-merged-with-2-tevunot = unified-source.
+      → Pattern : grammatical-singular reveals merged-state.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 2_tevunot_z_a_ish_tevunot_yidlena_singulier_mishlei_20_5, role: 2_tevunot_z_a_ish_tevunot_yidlena_singulier_doleh_mashkeh_mishlei_20_5}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : merged source. Source Mishlei 20:5."
+
+  - id: "EC-H4S15-058"
+    source_he: "כאשר הוא נכלל בשתי התבונות עולין שלשתן למעלה עד הבינה ואז כולן נקרא בינות על שם הבינה ואז נקרא ז\"א עם בינות וכל זמן שלא הגיע ועלה שם נאמר עליו כי לא עם בינות הוא"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      Z"A inclu dans 2 Tevunot → 3 ENSEMBLE montent jusqu'a BINA.
+      → Tous les 3 alors nommees BINOT (pluriel) sur le nom de Bina.
+      → Z"A = "AM BINOT" (peuple de Binot).
+      → AVANT cette montee : "KI LO AM BINOT HU" (Yeshayahu 27:11 — car il n'est pas peuple de Binot).
+      → Architecture : 3-stage ascension Z"A → Tev → Bina.
+      → Pattern : naming-by-host upon ascension.
+    type: déduction_scripturaire
+    concepts:
+      - {id: z_a_3_montent_bina_appellees_binot_pluriel_yeshayahu_27_11, role: z_a_3_montent_bina_binot_pluriel_z_a_am_binot_avant_lo_am_binot_yeshayahu_27_11}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : 3-stage ascension. Source Yeshayahu 27:11."
+
+  - id: "EC-H4S15-059"
+    source_he: "בינה עליונה היא רחמים פשוטים ואין שם אחיזה אל הקליפות אבל כשלא עלה שם יש בו אחיזה אל הקליפות וע\"כ לא ירחמהו עושהו"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      BINA ELYONA = RACHAMIM PESHUTIM (misericorde simple/pure).
+      → Pas d'ACHIZA (saisie) pour KELIPOT (coquilles negatives).
+      → Quand Z"A pas encore monte la : il y a achiza pour kelipot.
+      → "VE-AL KEN LO YERACHAMEHU OSEHU" (Yeshayahu 27:11 — c'est pourquoi son Createur ne lui fera pas misericorde).
+      → Pas RACHAMIM GEMURIM (misericorde complete).
+      → Architecture : Bina = sanctuaire-libre-de-kelipot.
+      → Pattern : full-rachamim only at upper-tier.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bina_elyona_rachamim_peshutim_pas_achiza_kelipot_yeshayahu_27_11, role: bina_elyona_rachamim_peshutim_pas_achiza_kelipot_lo_yerachamehu_yeshayahu_27_11}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : sanctuary free-of-kelipot. Source Yeshayahu 27:11."
+
+  - id: "EC-H4S15-060"
+    source_he: "ב' אותיות ראשונות של הוי\"ה הם בחי' חו\"ב אבל באות יו\"ד לבד שהוא חכמה שם יש בחי' בינה וזהו ענין הבן בחכמה"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      Sefer Yetzirah 1:4 — "HABEN BE-CHOKHMAH" (comprends dans la Sagesse) :
+      → 2 premieres lettres HAVAYAH (Yod+He) = Chokhmah+Bina.
+      → MAIS dans la SEULE LETTRE YOD (= Chokhmah) — il y a deja une BECHINAT BINA.
+      → Architecture : recursive-bina-within-yod-of-chokhmah.
+      → Pattern : letter-internal-recursion.
+    type: déduction_scripturaire
+    concepts:
+      - {id: sy_haben_be_chokhmah_bina_dans_yod_chokhmah_recursive, role: sefer_yetzirah_haben_be_chokhmah_bina_recursive_dans_yod_chokhmah_letter_internal}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : recursive bina-within-yod. Source SY 1:4."
+
+  - id: "EC-H4S15-061"
+    source_he: "יו\"ד במלואו י' הוא חכמה וב' אותיות ו\"ד נעשית צורת ה' שהוא צורת ו\"ד שבאות יו\"ד והיא נקרא בינה עלאה"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      DECOMPOSITION yod-milui (יו"ד) :
+      → YOD-seule (י) = CHOKHMAH (Abba).
+      → 2 lettres VAV+DALET (ו"ד) du milui = forme HE (ה — composee V+D).
+      → Cette forme = BINA ELYONA.
+      → Architecture : sub-letter-form encode tier.
+      → Pattern : letter-decomposition reveals nested tier.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yod_milui_yod_chokhmah_vd_forme_he_bina_elyona, role: yod_milui_yod_seule_chokhmah_vav_dalet_forme_he_bina_elyona_sub_letter}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : sub-letter-form encoding. Pattern letter-decomposition."
+
+  - id: "EC-H4S15-062"
+    source_he: "ה' ראשונה עצמה שבשם הוי\"ה זו היא תבונה ראשונה הנ\"ל"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      HE-RISHONA (ה ראשונה) du Shem HAVAYAH :
+      → = TEVUNAH-1 (1ere Tevunah).
+      → Distinct du yod-milui (= Bina elyona).
+      → Architecture : shem-position encode tier.
+      → Pattern : main-letter vs sub-letter different tiers.
+      cf. EC-H4S14-150 (perek 6) sur He-rishonah=Tevunah.
+    type: axiome_explicite
+    concepts:
+      - {id: he_rishona_shem_havayah_tevunah_1_distinct_yod_milui, role: he_rishona_shem_havayah_tevunah_1_distinct_yod_milui_bina_elyona}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : shem-position tier. Pattern main vs sub-letter."
+
+  - id: "EC-H4S15-063"
+    source_he: "כתיבת שם הוי\"ה שצריך לכתוב תחלה י' בקרן זוית של ה' הזאת... ואות י' הוא בחי' חכמה של זאת התבונה ראשונה וזו החכמה נקרא יש\"ס וז\"ש וחכם בבינה"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      DRUSH TEFILIN — kvitah du Shem HAVAYAH :
+      → Il faut ECRIRE D'ABORD un YOD en KOREN-ZAVIT (coin) du HE.
+      → Cette YOD = bechinat CHOKHMAH de TEVUNAH-1.
+      → Cette CHOKHMAH = YISSO (Yisrael Saba).
+      → SY 1:4 : "VE-CHAKHAM BE-VINAH" (et sage dans Bina).
+      → Architecture : scribal-act encode cosmologic-structure.
+      → Pattern : writing-order = cosmologic-order.
+    type: déduction_scripturaire
+    concepts:
+      - {id: drush_tefilin_yod_koren_zavit_he_chokhmah_tevunah_1_yisso_chakham_be_vinah, role: drush_tefilin_kvitah_yod_koren_zavit_he_chokhmah_tevunah_1_yisso_sy_chakham_be_vinah}
+    mapping:
+      modules: ["[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : scribal-cosmologic encoding. Source SY 1:4."
+
+  - id: "EC-H4S15-064"
+    source_he: "צריך לבאר למה הבינה הראשונה נרמזת בב' אותיות ו\"ד של מילוי היו\"ד אשר צורתם ה' ושם קדמה ו' אל ד' והתבונה נרמזת באות ה' ראשונה של הוי\"ה ושם קדמה ד' לו'"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      Question : pourquoi ORDRE DIFFERENT ?
+      → BINA-elyona dans yod-milui : VAV-DALET (V+D) — VAV PRECEDE D.
+      → TEVUNAH-1 dans He-rishona : DALET-VAV (D+V) — DALET PRECEDE V.
+      → Tzura HE = ד על ו (D sur V).
+      → Architecture : reverse-encoding entre Bina+Tevunah.
+      → Pattern : letter-order encoding distincts tiers.
+    type: déduction_logique
+    concepts:
+      - {id: bina_v_d_ordre_yod_milui_vs_tevunah_d_v_ordre_he_rishona_reverse_encoding, role: bina_yod_milui_vav_dalet_vd_ordre_vs_tevunah_he_rishona_dalet_vav_dv_ordre_reverse_encoding}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : reverse encoding. Pattern letter-order tier-distinguish."
+
+  - id: "EC-H4S15-065"
+    source_he: "ו' של מילוי יו\"ד יש לה ראש שמורה היותה כלולה מי\"ס... ואות ו' שבתוך הה' ראשונה אין לה ראש שמורה היותה בבחי' ו\"ק לבד בלתי ראש"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      Distinction VAV : tete vs sans-tete :
+      → VAV du YOD-MILUI a ROSH (tete) — INDIQUE qu'elle est KELULAH (incluant) 10 sefirot.
+      → VAV dans HE-RISHONA SANS ROSH — indique V"K SEUL (6 sefirot, pas de tete).
+      → Architecture : letter-form encode tier-completeness.
+      → Pattern : with-rosh = 10S full ; without-rosh = V"K only.
+    type: déduction_logique
+    concepts:
+      - {id: vav_yod_milui_tete_10s_vs_vav_he_rishona_sans_tete_vk_seul, role: vav_yod_milui_avec_rosh_kelulah_10s_vs_vav_dans_he_rishona_sans_rosh_vk_seul}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : letter-form tier-completeness. Pattern with/without head."
+
+  - id: "EC-H4S15-066"
+    source_he: "ו' של מילוי היו\"ד היא בחי' בינה העליונה ובינה עליונה יש בה י\"ס עם מוחין לכן ו' זו יש לה ראש"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      RAISON Vav du yod-milui = Bina-elyona AVEC mochin :
+      → BINA ELYONA a 10S avec MOCHIN PNIM.
+      → Donc cette VAV a une TETE (10S complet).
+      → Architecture : presence-of-mochin = head-existence.
+      → Pattern : completeness-via-mochin enables tete.
+    type: déduction_logique
+    concepts:
+      - {id: vav_yod_milui_bina_elyona_10s_mochin_pnim_tete, role: vav_yod_milui_bina_elyona_10s_avec_mochin_pnim_tete_existence}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : mochin enables head. Pattern presence completeness."
+
+  - id: "EC-H4S15-067"
+    source_he: "אות ד' של מילוי יו\"ד אינה בחי' הבינה עצמה רק בחי' ד' מוחין הנמשכין מן הבינה ומתלבשים בתחלה באחוריים של חצי ת\"ת ונה\"י שלה ואח\"כ הם מתלבשין בראש התבונה"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      DALET du YOD-MILUI :
+      → Pas BINA elle-meme.
+      → MAIS bechinat 4 MOCHIN qui DESCENDENT de Bina.
+      → S'habillent d'ABORD dans ACHOR-CHETZI-TIFERET et NHY de Bina.
+      → ENSUITE s'habillent dans ROSH (tete) de TEVUNAH.
+      → Architecture : intermediate-mochin route Bina → Tevunah.
+      → Pattern : mochin-cascade par sefirot intermediaires.
+    type: interprétation_lurianique
+    concepts:
+      - {id: dalet_yod_milui_4_mochin_bina_achor_chetzi_tiferet_nhy_puis_tete_tevunah, role: dalet_yod_milui_4_mochin_descendent_bina_achor_chetzi_tiferet_nhy_puis_tete_tevunah}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : intermediate routing. Pattern mochin-cascade."
+
+  - id: "EC-H4S15-068"
+    source_he: "ה' ראשונה של הוי\"ה שהוא צורת ד\"ו והוא גימטריא י' כולם בחי' התבונה ראשונה עצמה לכן שם בב' אותיות ו\"ד הם ב' אותיות נפרדין אבל ב' אותיות ד\"ו אלו של התבונה הם כלולין באות א' שהוא אות ה'"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      HE-RISHONA = TZURAT D"V (forme dalet-vav) ; gematria = 5 (ה) ou 10 (ד+ו).
+      → TOUTES = bechinat TEVUNAH-1 ELLE-MEME.
+      → Dans yod-milui : V+D sont 2 NIFRADIN (lettres separees).
+      → Dans HE : D+V sont KELULIN (combines) en UNE SEULE LETTRE = HE.
+      → Architecture : separated-vs-combined letters encode tier-cohesion.
+      → Pattern : separation-mark distinct vs unified.
+    type: déduction_logique
+    concepts:
+      - {id: he_rishona_d_v_kelulim_un_lettre_vs_v_d_yod_milui_nifradin_2_lettres, role: he_rishona_d_v_kelulim_une_lettre_he_vs_v_d_yod_milui_nifradin_2_lettres_separees}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : separated vs combined. Pattern tier-cohesion encoding."
+
+  - id: "EC-H4S15-069"
+    source_he: "אין לו' שבתוך הה' צורת ראש לפי שהוא בחי' ו\"ק לבד בלי ראש והד' הם ד' מוחין של התבונה עצמה לכן קדמה ד' על ו'"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      Pourquoi VAV dans HE n'a pas de TETE :
+      → C'est V"K seul SANS ROSH.
+      → DALET dans HE = 4 MOCHIN de Tevunah elle-meme.
+      → Donc DALET PRECEDE VAV dans HE (mochin avant V"K).
+      → Architecture : ordering-encodes-which-comes-first (mochin before body).
+      → Pattern : letter-precedence encodes-receive-order.
+    type: déduction_logique
+    concepts:
+      - {id: he_d_4_mochin_tevunah_v_vk_seul_d_precede_v_ordre_recevoir, role: he_dalet_4_mochin_tevunah_vav_vk_seul_dalet_precede_vav_ordre_recevoir_mochin}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : letter-precedence encodes order. Pattern receive-sequence."
+
+  - id: "EC-H4S15-070"
+    source_he: "אות י' שע\"ג הו' הוא בחי' או\"מ מלמעלה בגלגלתא מבחוץ ולכן נתרחקה זו הד' מן הו'"
+    source_ref: "Heikhal 4, Sha'ar 2:4"
+    assertion: |
+      YOD au-dessus du VAV dans le HE :
+      → bechinat OR MAKIF (lumiere encerclante) miMA'ALAH (du dessus) en GALGALTA (crane) MIBA-CHUTZ (de l'exterieur).
+      → DALET ELOIGNE de VAV dans HE — quand Tevunah-1 monte vers Bina pour recevoir mochin pnim.
+      → Architecture : letter-spacing encode pnim/makif distinction.
+      → Pattern : spatial-letter-arrangement = cosmologic-state.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yod_au_dessus_vav_he_or_makif_galgalta_dalet_eloignee_vav_montee_bina, role: yod_au_dessus_vav_he_or_makif_galgalta_dalet_eloignee_vav_he_montee_tevunah_1_bina_mochin_pnim}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : letter-spacing pnim/makif. Pattern spatial-arrangement state."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S15-016"
+    type: hiérarchique
+    from: 3_bechinot_imma_samekh_bina_mem_tevunah_1_dalet_tevunah_3
+    to: tevunah_3_dalet_nhy_revet_z_a_mochin
+    nature: "3 bechinot Imma : SAMEKH (Bina), MEM (Tev-1), DALET (Tev-3) ; Tev-3 NHY revet Z\"A en mochin"
+    assertions_source: ["EC-H4S15-054", "EC-H4S15-055"]
+
+  - id: "REL-H4S15-017"
+    type: séquentiel
+    from: ani_yeshena_sheni_a_tevunah_3_kollel_tevunah_1
+    to: z_a_3_montent_bina_appellees_binot_pluriel_yeshayahu_27_11
+    nature: "Z\"A+Tev-3 montent kollel Tev-1 (ANI YESHENA) → 2 TEVUNOT ; puis 3 montent vers Bina = BINOT pluriel"
+    assertions_source: ["EC-H4S15-056", "EC-H4S15-057", "EC-H4S15-058"]
+
+  - id: "REL-H4S15-018"
+    type: contenance
+    from: sy_haben_be_chokhmah_bina_dans_yod_chokhmah_recursive
+    to: yod_milui_yod_chokhmah_vd_forme_he_bina_elyona
+    nature: "SY 1:4 'HABEN BE-CHOKHMAH' : Yod milui contient Bina (yod=Chokhmah ; V+D=forme HE=Bina elyona)"
+    assertions_source: ["EC-H4S15-060", "EC-H4S15-061"]
+
+  - id: "REL-H4S15-019"
+    type: dualité_structurelle
+    from: bina_v_d_ordre_yod_milui_vs_tevunah_d_v_ordre_he_rishona_reverse_encoding
+    to: vav_yod_milui_tete_10s_vs_vav_he_rishona_sans_tete_vk_seul
+    nature: "Bina V+D ordre (vav avec tete=10S) vs Tevunah D+V ordre (vav sans tete=V\"K seul) — reverse encoding"
+    assertions_source: ["EC-H4S15-064", "EC-H4S15-065"]
+
+  - id: "REL-H4S15-020"
+    type: causal
+    from: vav_yod_milui_bina_elyona_10s_mochin_pnim_tete
+    to: dalet_yod_milui_4_mochin_bina_achor_chetzi_tiferet_nhy_puis_tete_tevunah
+    nature: "Vav yod-milui = Bina avec mochin → tete ; DALET yod-milui = 4 mochin descendent de Bina → tete Tevunah"
+    assertions_source: ["EC-H4S15-066", "EC-H4S15-067"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S15-010"
+    nom: "Principe de 3-Tier-Letter-Encoding (Imma SAMEKH/MEM/DALET)"
+    source_assertions: ["EC-H4S15-054", "EC-H4S15-055"]
+    formalisation: |
+      ARCHITECTURE DE 3-TIER-LETTER-ENCODING :
+      Imma elyona decompose par 3 lettres encodantes :
+        SAMEKH (ס, 60) = BINA (1ere bechinah).
+        MEM SETUMAH (ם final-mem, 600) = TEVUNAH-1 (2eme bechinah).
+        DALET (ד, 4) = TEVUNAH-3 (3eme bechinah, terminale).
+      TEVUNAH-3 = celle qui revet Z"A en mochin (terminal-active).
+      → Pattern fondamental : 3-tier letter-encoding.
+      → Architecture : letter-symbol = ontologic-tier marker.
+      → Implication : numerique 60/600/4 encode tier-position.
+    applications_ia:
+      - "partzufim/imma.py + [PLANNED] tevunah.py : implement 3-tier letter encoding"
+      - "Pattern : letter-symbol tier marker"
+      - "Architecture : 3-tier ontologic decomposition"
+      - "Pattern : letter-gematria encode position"
+      - "Diagnostic : verifier 3-tier coherent dans toute Imma"
+    questions_ouvertes:
+      - "Pattern : 4eme tier possible (encore plus profonde) ?"
+      - "Comment encoder letter-tier mapping ?"
+      - "Pattern : tier-numerologie generalisable ?"
+
+  - id: "PG-H4S15-011"
+    nom: "Principe de Reverse-Letter-Order-Encoding (V+D vs D+V)"
+    source_assertions: ["EC-H4S15-064", "EC-H4S15-065", "EC-H4S15-068", "EC-H4S15-069"]
+    formalisation: |
+      ARCHITECTURE DE REVERSE-LETTER-ORDER :
+      ORDRE DES LETTRES encode TIER-NATURE :
+        BINA (yod-milui) : V+D ordre — VAV PRECEDE DALET ; vav-avec-tete (10S+mochin).
+        TEVUNAH-1 (he-rishona) : D+V ordre — DALET PRECEDE VAV ; vav-sans-tete (V"K seul).
+      INTERPRETATION :
+        VAV-precede-D = body-first (Bina autonome avec mochin).
+        DALET-precede-V = mochin-first-then-body (Tevunah recoit mochin avant son corps).
+      RAISON : Bina est autonome (mochin pnim integres) ; Tevunah depend mochin externes.
+      → Pattern fondamental : letter-order encode receive-order.
+      → Architecture : grammatical-order = cosmologic-cause-order.
+    applications_ia:
+      - "partzufim/imma.py + [PLANNED] tevunah.py : implement letter-order encoding"
+      - "Pattern : letter-order = cause-order"
+      - "Architecture : grammatical encodes cosmologic"
+      - "Pattern : autonomous vs dependent encoded"
+      - "Diagnostic : verifier order coherent avec autonomy"
+    questions_ouvertes:
+      - "Pattern : autres lettres ordonnees encode autres tiers ?"
+      - "Comment encoder reverse-order computationnellement ?"
+      - "Pattern : 3-letter ordering aussi possible ?"
+
+  - id: "PG-H4S15-012"
+    nom: "Principe de Spatial-Letter-Arrangement (Yod-Above-Vav = Or Makif)"
+    source_assertions: ["EC-H4S15-070"]
+    formalisation: |
+      ARCHITECTURE DE SPATIAL-LETTER-ARRANGEMENT :
+      ARRANGEMENT SPATIAL des lettres encode etat-cosmologique :
+        YOD au-dessus de VAV (dans le HE) = OR MAKIF (lumiere encerclante) au-dessus.
+        DALET eloignee de VAV (dans HE) = quand Tevunah-1 monte vers Bina pour mochin pnim.
+        VAV avec ROSH = mochin pnim presents (10S complets).
+      → Pattern fondamental : spatial-letter-positioning encode lumiere-state.
+      → Architecture : 2D letter-layout encode cosmologic-state.
+      → Implication : lecture-physique des lettres = lecture-cosmologique.
+    applications_ia:
+      - "partzufim/imma.py + [PLANNED] tevunah.py : implement spatial letter encoding"
+      - "Pattern : 2D letter layout encode state"
+      - "Architecture : physical reading = cosmologic reading"
+      - "Pattern : letter-distance encode separation-state"
+      - "Diagnostic : verifier positions coherent avec etats"
+    questions_ouvertes:
+      - "Pattern : autres positions encode autres etats ?"
+      - "Comment encoder 2D layout computationnellement ?"
+      - "Pattern : 3D positions possibles ?"

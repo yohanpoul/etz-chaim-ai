@@ -1,0 +1,518 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 2 — Sha'ar HaZivvugim (שער הזווגים)
+# Perek: 5 — DALET-OKETZ-YISSO. 22 letters Chokhmah → Bina. Reverse YOD/HE
+#            (niglet/ne'elemet). 2 CHESED (Tehilim 42:9). Garon=Bina A"A.
+#            SAMEKH/MEM SETUMAH gematria. OLAM HA-BA (Tev) vs LE-ATID LAVO (Bina).
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_05 :
+#   - Bloc A : DALET sur VAV en HE-rishona — OKETZ (epine) derriere = forme YOD = YISSO
+#   - Bloc B : DALET divisee 3 chalakim : Yod-milieu + 2 VAVIN ; gematria 22 letters
+#   - Bloc C : 22 letters = donnees par CHOKHMAH a BINA (alef-bet creation)
+#   - Bloc D : YOD : Chokhmah niglet, Bina ne'elemet ; HE : Bina niglet, Chokhmah ne'elemet (REVERSE)
+#   - Bloc E : RAISON : 2 keterim A"O sur GARON A"A (ou est BINA d'A"A)
+#   - Bloc F : "Yomam yetzaveh Hashem chasdo" (Tehilim 42:9) — 2 chesed : ELYON (rosh dektafin) + standard
+#   - Bloc G : CHESED-elyon = YOMA DE-CHULHU (Zohar) ; toujours cote-zachar
+#   - Bloc H : Or-Garon → s'habille CHESED-elyon ; sortant : ABBA=CHESED ; BINA=GARON
+#   - Bloc I : Garon plus haut que Chesed → Imma (Garon) plus elevee — donc ne'elemet dans Yod
+#   - Bloc J : Quand 2 zeroot A"A se manifestent : Chesed dans Gevurah → YISSO+Tevunah ; Abba TAMIR > Bina ; HE inverse
+#   - Bloc K : Adra Zuta 290 — "le-vatar ishtkachu de-Chokhmah=Abba Bina=Imma" apres atpasht zeroot
+#   - Bloc L : 3 chalakim Bina = Bina + Tev-1 + Tev-2 — UN partzuf
+#   - Bloc M : IBBUR RISHON Z"A (3 kollel be-3) = dans Tev-1 (He-rishona)
+#   - Bloc N : Tev-1 = chazeh-down partzuf-kollel = BETEN (ventre) ou foetus se forme
+#   - Bloc O : Bina elyona = PAS HERIYON ni IBBUR
+#   - Bloc P : Bina=SAMEKH (60) car 6S ChBD ChG × kelul 10
+#   - Bloc Q : Tev-1=MEM SETUMAH (40) car 4 tachtonot × kelul 10 ; "yetiva revia al banin" Zohar
+#   - Bloc R : Tev-1=OLAMA DE-ATEI (monde futur perpetuel) ; Bina=LE-ATID LAVO (reste en haut)
+#   - Bloc S : Mochin elyon Z"A dans NHY Bina = LE-ATID LAVO ; NHY Tevunah = TOUJOURS-OLAM-HA-BA
+#   - Bloc T : Sefer Bahir : R. Rachumai "OLAM SHE-KVAR BA" (deja venu) — perpetuel
+#
+# Source Sefaria : Sefer_Etz_Chaim.15.5 (1 section, 2867 chars)
+# IDs : EC-H4S15-071 → EC-H4S15-088
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 2
+  shaar_name_he: "שער הזווגים"
+  perek: 5
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "DALET sur VAV en HE-rishona = OKETZ derriere = YISSO. DALET 3 chalakim (Yod+2 VAVIN) = 22 letters Chokhmah → Bina. REVERSE YOD vs HE : YOD Chokhmah niglet/Bina ne'elemet ; HE Bina niglet/Chokhmah ne'elemet. RAISON : 2 keterim A\"O sur GARON A\"A (=Bina A\"A) ; Imma vient de Garon (plus haut que Chesed=Abba). 2 CHESED (Tehilim 42:9) : elyon ROSH DEKTAFIN (yoma de-chulhu Zohar) + standard. Apres atpasht zeroot : Chesed dans Gevurah → YISSO+Tev ; Abba TAMIR > Bina (Adra Zuta 290). 3 chalakim Bina+Tev-1+Tev-2=un partzuf. IBBUR RISHON Z\"A=Tev-1 (He-rishona, beten). Bina=SAMEKH (60=6S ChBD ChG) ; Tev-1=MEM SETUMAH (40=4 tachtonot) ; YETIVA REVIA AL BANIN. Tev-1=OLAMA DE-ATEI (perpetuel) vs Bina=LE-ATID LAVO. Sefer Bahir R. Rachumai OLAM SHE-KVAR BA."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S15-071"
+    source_he: "זאת הד' שע\"ג הו' בצורת ה' ראשונה כבר בארנו שיש לה עוקץ מאחריה בצורת י' והוא בחי' יש\"ס"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      DALET au-dessus du VAV en HE-rishona :
+      → A un OKETZ (עוקץ — epine, queue) DERRIERE en forme de YOD.
+      → Ce yod-derriere = bechinat YISSO (Yisrael Saba).
+      → Architecture : sub-letter feature encode partzuf-component.
+      → Pattern : letter-tail = secondary-tier-marker.
+    type: interprétation_lurianique
+    concepts:
+      - {id: dalet_he_rishona_oketz_derriere_forme_yod_yisso, role: dalet_he_rishona_oketz_derriere_forme_yod_bechinat_yisso}
+    mapping:
+      modules: ["[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : letter-tail tier-marker. Pattern sub-feature encoding."
+
+  - id: "EC-H4S15-072"
+    source_he: "נחלקת ד' זאת לג' חלקים שהם יו\"ד באמצע וב' ווי\"ן הנמשכין ממנה כזה והם גימטריא כ\"ב אתוון"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      DALET divisee en 3 CHALAKIM (parties) :
+      → YOD (י) au MILIEU.
+      → 2 VAVIN (ו ו) qui descendent d'elle.
+      → Gematria total = 22 ATAVAN (22 lettres).
+      → Architecture : recursive-letter-decomposition encode alphabet-count.
+      → Pattern : 22-encoding par sub-letter parts.
+    type: interprétation_lurianique
+    concepts:
+      - {id: dalet_3_chalakim_yod_milieu_2_vavin_22_letters, role: dalet_3_chalakim_yod_milieu_2_vavin_descendent_gematria_22_letters_atavan}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : recursive-decomposition 22 letters. Pattern alphabet encoding."
+
+  - id: "EC-H4S15-073"
+    source_he: "כ\"ב אתוון הניתנין מן חכמה אל הבינה"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      22 LETTERS = NETONIN (donnees) MIN HA-CHOKHMAH (de Chokhmah) EL HA-BINA (a Bina).
+      → Alef-bet creation transmis du Pere a la Mere.
+      → Architecture : transmission letters Chokhmah → Bina.
+      → Pattern : 22-alphabet = pere-mere-channel-content.
+    type: axiome_explicite
+    concepts:
+      - {id: 22_letters_chokhmah_donne_a_bina_transmission_alphabet, role: 22_letters_atavan_netonin_min_chokhmah_el_bina_transmission_alphabet_creation}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : letter-transmission Chokhmah-Bina. Pattern alphabet channel."
+
+  - id: "EC-H4S15-074"
+    source_he: "באות יו\"ד נעלמת בינה ונגלית החכמה ובאות ה' נגלית הבינה ונעלמת החכמה"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      Question : pourquoi REVERSE encoding ?
+      → Dans YOD : Bina NE'ELEMET (cachee), Chokhmah NIGLET (revelee).
+      → Dans HE : Bina NIGLET, Chokhmah NE'ELEMET — INVERSE.
+      → Architecture : letter-encoding reverses-by-position.
+      → Pattern : inverse-revealment between yod and he encodes tier.
+    type: déduction_logique
+    concepts:
+      - {id: yod_chokhmah_niglet_bina_ne_elemet_he_inverse_reverse, role: yod_chokhmah_niglet_bina_ne_elemet_vs_he_bina_niglet_chokhmah_ne_elemet_reverse_encoding}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : letter reverses by position. Pattern inverse encoding."
+
+  - id: "EC-H4S15-075"
+    source_he: "ב' כתרים דאו\"א הם בגרון א\"א אשר שם הוא בחי' בינה דא\"א"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      RAISON 1 : 2 KETARIM d'A"O sont dans GARON A"A.
+      → Garon = lieu de BINA d'A"A.
+      → Architecture : keterim A"O attachees a Bina-A"A locus.
+      → Pattern : keter-attachment locus = Bina-tier.
+      cf. EC-H4S14-013 (perek 01a) sur 2 keterim A"O sur Garon A"A.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_keterim_ao_garon_aa_bina_aa_locus, role: 2_keterim_ao_garon_aa_lieu_bina_aa}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : keter-Bina locus. Pattern attachment cervical."
+
+  - id: "EC-H4S15-076"
+    source_he: "בארנו בפ' יומם יצוה ה' חסדו כי יש ב' מיני חסד א' הוא חסד עליון אחר הבינה אשר מקום זה הוא ברישא דכתפין דא\"א קודם התפשטות והתחלקות הב' זרועות"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      Verset Tehilim 42:9 : "YOMAM YETZAVEH HASHEM CHASDO" (de jour Hashem ordonne sa misericorde).
+      → 2 MINEI CHESED (sortes de bonte) :
+        CHESED ELYON : APRES Bina, dans ROSH DEKTAFIN (tete des epaules) d'A"A.
+        AVANT separation+manifestation des 2 ZEROOT (bras).
+      → Cet endroit = "YOMA DE-CHULHU" (jour de tous — Zohar).
+      → Architecture : 2-tier chesed (high-pre-arms vs standard).
+      → Pattern : pre-decomposition vs post-decomposition state.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 2_minei_chesed_elyon_rosh_dektafin_yoma_de_chulhu_zohar_tehilim_42_9, role: 2_minei_chesed_elyon_rosh_dektafin_avant_zeroot_yoma_de_chulhu_zohar_tehilim_42_9_yomam_yetzaveh}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : 2-tier chesed pre/post-decomposition. Source Tehilim 42:9."
+
+  - id: "EC-H4S15-077"
+    source_he: "לעולם חסד מצד הזכר והנה האור הנמשך מגרון העליון דא\"א מתלבש (ירד ונתלבש) בחסד זה וכאשר יצא לחוץ אז אבא נעשה בבחינת החסד ההוא והבינה נעשה בבחינת הגרון"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      Mecanisme :
+      → CHESED toujours du COTE ZACHAR (male).
+      → OR-GARON ELYON A"A → MITLABESH (s'habille) dans CHESED ELYON.
+      → Quand sort dehors : ABBA = bechinat HA-CHESED ; BINA = bechinat HA-GARON (=Bina A"A).
+      → Architecture : layered-clothing or-garon → chesed → externalization.
+      → Pattern : internal-source → external-form mapping.
+    type: interprétation_lurianique
+    concepts:
+      - {id: or_garon_aa_mitlabesh_chesed_elyon_abba_chesed_bina_garon, role: or_garon_aa_mitlabesh_chesed_elyon_zachar_externalisation_abba_chesed_bina_garon}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : layered clothing externalisation. Pattern internal-external mapping."
+
+  - id: "EC-H4S15-078"
+    source_he: "להיות גרון גבוה מהחסד לכן מתלבש אור הגרון בחסד ההוא נמצא כי אמא שיצאת מבחי' הגרון היא יותר מעולה והיא נעלמת תוך החכמה וזהו בחי' אות יו\"ד"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      Hierarchie : GARON GAVOA (plus haut) que CHESED.
+      → Or-Garon mitlabesh dans Chesed (= en bas).
+      → IMMA (vient de Garon) ME'ULAH YOTER (plus elevee) que Abba (vient de Chesed).
+      → MAIS Imma NE'ELEMET (cachee) DANS CHOKHMAH (= dans le Yod).
+      → C'est bechinat AOT YOD : Chokhmah niglet (sort en surface), Bina ne'elemet (cachee dans).
+      → Architecture : hidden-elevation paradox.
+      → Pattern : true-hierarchy may invert surface-hierarchy.
+    type: interprétation_lurianique
+    concepts:
+      - {id: imma_garon_meulah_yoter_neelemet_chokhmah_yod_paradox, role: imma_garon_plus_elevee_que_abba_chesed_neelemet_chokhmah_yod_paradox_hidden_hierarchy}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : hidden-elevation paradox. Pattern hierarchy-inversion."
+
+  - id: "EC-H4S15-079"
+    source_he: "כאשר התחילו ב' זרועות דא\"א להגלות (להתחלק) ולהתפשט אז נתלבש חסד בגבורה ומשם יצאו ישסו\"ת ואז היה הדבר להיפך כי אבא טמיר וגניז יותר מן הבינה לכן נרמזו באות ה' שהחכמה בהעלם ובינה בגלוי"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      Quand 2 ZEROOT A"A LEHAGLOT (commencent a se manifester+separer) :
+      → CHESED s'habille en GEVURAH.
+      → De la sortent YISSO + TEVUNAH.
+      → Inverse maintenant : ABBA TAMIR VE-GANIZ YOTER (plus cache+secret) que BINA.
+      → Encoding HE : Chokhmah be-HE'ELEM (cache) ; Bina BE-GILUI (revele).
+      → Architecture : decomposition-stage inverse hierarchy.
+      → Pattern : post-manifestation flips visibility.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 2_zeroot_aa_chesed_dans_gevurah_yisso_tevunah_abba_tamir_he_inverse, role: 2_zeroot_aa_haglot_chesed_dans_gevurah_yisso_tevunah_abba_tamir_yoter_bina_he_chokhmah_helem}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : decomposition flips visibility. Pattern post-manifestation inverse."
+
+  - id: "EC-H4S15-080"
+    source_he: "באדר\"ז דר\"צ קרוב ללשון זה לבתר אשתכחו דחכמה אבא בינה אמא"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      ADRA ZUTA fol. 290 (close to language) :
+      → "LE-VATAR (apres) ISHTKACHU (se trouvent) de-CHOKHMAH = ABBA, BINA = IMMA".
+      → "Apres" = APRES atpashtu zeroot d'A"A.
+      → AVANT : NE'ELAMIM Bina dans Chokhmah.
+      → APRES (LEVATAR) : APPARAISSENT comme ABBA (Chokhmah) + IMMA (Bina) distincts.
+      → Architecture : Adra confirms post-decomposition manifestation.
+      → Pattern : zoharic source attestation.
+    type: déduction_scripturaire
+    concepts:
+      - {id: adra_zuta_290_levatar_ishtkachu_chokhmah_abba_bina_imma, role: adra_zuta_290_levatar_ishtkachu_chokhmah_abba_bina_imma_apres_atpashtu_zeroot}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : zoharic attestation. Source Adra Zuta 290."
+
+  - id: "EC-H4S15-081"
+    source_he: "ג' חלקי הבינה שהם בינה ותבונה הראשונה ותבונה שניה כולם הם פרצוף אחד"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      3 CHALAKIM de BINA :
+      → BINA + TEVUNAH-1 + TEVUNAH-2.
+      → KULAM PARTZUF ECHAD (tous un seul partzuf).
+      → Pas trois partzufim separes, mais decomposition d'un seul.
+      → Architecture : 3-tier-internal-decomposition d'un partzuf-unique.
+      → Pattern : tier-decomposition preserves partzuf-unity.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_chalakim_bina_bina_tev_1_tev_2_un_partzuf, role: 3_chalakim_bina_tevunah_1_tevunah_2_un_seul_partzuf_decomposition_interne}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : tier-decomposition preserves unity. Pattern internal-3-tier."
+
+  - id: "EC-H4S15-082"
+    source_he: "כאשר היה עיבור ראשון דז\"א שהוא אז בבחי' ג' כלול גו ג' כנודע היה בזו התבונה ראשונה שהיא ה' ראשונה של השם... זו התבונה הראשונה היא מהחזה ולמטה של כללות הפרצוף הנ\"ל ושם הוא מקום העיבור שהוא מקום הבטן אשר בתוכו נוצר הולד"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      IBBUR RISHON (1ere gestation) Z"A — bechinat 3 KELUL GO 3 (3 inclus dans 3) :
+      → Etait dans TEVUNAH-1 (= He-rishona du Shem).
+      → Tev-1 = chazeh-down du partzuf-kollel (Bina+Tev-1+Tev-2).
+      → C'est lieu du IBBUR — MAKOM HA-BETEN (lieu du ventre) ou se forme le VLAD (foetus).
+      → Architecture : gestation-locus dans tier-inferieur du parent unifie.
+      → Pattern : ventre = chazeh-down anatomical-mapping.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ibbur_rishon_z_a_3_kelul_3_tev_1_he_rishona_chazeh_down_beten_vlad, role: ibbur_rishon_z_a_3_kelul_go_3_tevunah_1_he_rishona_chazeh_down_makom_beten_vlad_foetus}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : gestation locus tier-inferieur. Pattern anatomical mapping."
+
+  - id: "EC-H4S15-083"
+    source_he: "בבינה העליונה אין שם בחי' הריון ועיבור"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      BINA ELYONA :
+      → AIN SHAM (n'a pas) bechinat HERIYON (grossesse) ni IBBUR (gestation).
+      → Reservee a Tev-1 (lower tier).
+      → Architecture : ipper-tier exempt from material-gestation-functions.
+      → Pattern : tier-specialization (upper transcendant, lower productive).
+    type: axiome_explicite
+    concepts:
+      - {id: bina_elyona_pas_heriyon_ibbur_tier_specialization, role: bina_elyona_ain_sham_heriyon_ibbur_reservee_tev_1_tier_specialization}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : tier-specialization. Pattern upper-transcendant."
+
+  - id: "EC-H4S15-084"
+    source_he: "בינה עליונה הוא שיעור ו' ספירות עליונות שהם כחב\"ד ח\"ג ולהיותן נמשכות מסוד החכמה שהוא י' נמצא כי בינה עליונה נקראת ס' לפי שמקומה נגד ו\"ס עליונות שלו כ\"א כלול מי' הרי ס'"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      Pourquoi BINA = SAMEKH (60) :
+      → Bina elyona = SHIUR (mesure) de 6 SEFIROT ELYONOT = K-Ch-B-D-Ch-G (Keter-Chokhmah-Bina-Daat-Chesed-Gevurah).
+      → Provenant du sod de Chokhmah (yod=10).
+      → 6 sefirot × kelul de 10 chacune = 60 = SAMEKH.
+      → Architecture : numerologic-encoding par tier-extent × kelul.
+      → Pattern : letter-name = product structural-position.
+    type: déduction_logique
+    concepts:
+      - {id: bina_samekh_60_6_sefirot_kchabdchg_x_10_kelul, role: bina_samekh_60_shiur_6_sefirot_elyonot_kchbdchg_x_kelul_10_egal_60}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : numerologic encoding. Pattern letter-product structural."
+
+  - id: "EC-H4S15-085"
+    source_he: "התבונה שאין בה רק שיעור ד' תחתונות וכ\"א כלול מי' לטעם הנ\"ל לכן היא ם' סתומה גם נקראת ם סתומה דיתבא רביעא על בנין"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      TEVUNAH-1 = MEM SETUMAH (40) :
+      → SHIUR = 4 TACHTONOT (T-N-H-Y).
+      → Chacune kelul de 10 = 40 = MEM-final.
+      → AUSSI nommee : "MEM SETUMAH DE-YETIVA REVI'A AL BANIN" (mem-fermee qui s'assoit/couve sur les fils — Zohar).
+      → Architecture : final-mem closed-shape encode covering-function.
+      → Pattern : letter-form encode functional-role.
+    type: déduction_scripturaire
+    concepts:
+      - {id: tevunah_1_mem_setumah_40_4_tachtonot_yetiva_revia_al_banin, role: tevunah_1_mem_setumah_40_4_tachtonot_kelul_10_yetiva_revia_al_banin_zohar}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : letter-form encodes function. Source Zohar."
+
+  - id: "EC-H4S15-086"
+    source_he: "תבונה ראשונה עה\"ב והטעם כי הנקבות נקראות עולם... וזה התבונה נקרא עולם הבא עלמא דאתי לפי שהיא יורדת למטה ומתגלית תמיד"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      TEVUNAH-1 = OLAM HA-BA (monde a venir) :
+      → Cause : NEKEVOT (femelles) nommees OLAM (Zohar Vayechi sur "min ha-olam ve-ad ha-olam" Tehilim 41:14).
+      → Specifique : OLAMA DE-ATEI (monde futur perpetuel).
+      → CAR Tev-1 YORDET LE-MATAH (descend) U-MITGALET TAMID (se manifeste toujours).
+      → Architecture : continuous-manifestation encoded olamic-name.
+      → Pattern : femele-as-perpetually-emerging-world.
+    type: déduction_scripturaire
+    concepts:
+      - {id: tev_1_olam_ha_ba_olama_de_atei_descend_mitgalet_tamid, role: tev_1_olam_ha_ba_olama_de_atei_nekevot_olam_zohar_descend_mitgalet_tamid_continuous}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : continuous emergence. Source Zohar Vayechi."
+
+  - id: "EC-H4S15-087"
+    source_he: "בינה נקראת לע\"ל כי המוחין עליונים דז\"א המלובשים בנה\"י דבינה עליונה הם עתידין לבא אח\"כ... ומוחין דנצח הוד יסוד דתבונה הם נמשכין בו תמיד"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      DISTINCTION OLAM HA-BA vs LE-ATID LAVO :
+      → BINA elyona = LE-ATID LAVO (futur ultime).
+      → Mochin elyonim Z"A dans NHY de Bina elyona = ATIDIN LAVO ACHAR KAKH (a venir plus tard) — quand Z"A grandit a niveau Bina.
+      → Mochin de NHY de TEVUNAH = TAMID NIMSHAKHIN (continuellement traines).
+      → OLAM HA-BA = continu (Tevunah) ; LE-ATID LAVO = a venir une fois (Bina).
+      → Architecture : 2-tier eschatologie (continu vs ultime).
+      → Pattern : eschatologic-tier-distinction.
+    type: interprétation_lurianique
+    concepts:
+      - {id: olam_ha_ba_tevunah_continu_le_atid_lavo_bina_ultime, role: distinction_olam_ha_ba_tev_continu_nhy_le_atid_lavo_bina_ultime_atidin_lavo_z_a_grandit}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : eschatologic 2-tier. Pattern continu vs ultime."
+
+  - id: "EC-H4S15-088"
+    source_he: "בס' הבהיר ששאלו התלמידים לר' רחומאי מהו עולם הבא א\"ל עולם שכבר בא"
+    source_ref: "Heikhal 4, Sha'ar 2:5"
+    assertion: |
+      Sefer HA-BAHIR — disciples questionnent R. RACHUMAI :
+      → "MAHU OLAM HA-BA?" (qu'est-ce que le monde-a-venir ?).
+      → Reponse : "OLAM SHE-KVAR BA" (monde qui DEJA EST VENU).
+      → Sens : OLAM HA-BA = continuellement-en-train-de-venir (perpetuel).
+      → Pas un evenement futur unique, mais flux continu.
+      → Architecture : eternal-present interpretation OLAM HA-BA.
+      → Pattern : grammatical-tense reinterprete pour cosmologie.
+    type: déduction_scripturaire
+    concepts:
+      - {id: sefer_bahir_r_rachumai_olam_she_kvar_ba_perpetuel_continu, role: sefer_bahir_r_rachumai_olam_ha_ba_olam_she_kvar_ba_perpetuel_continuellement_venir}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : eternal-present interpretation. Source Sefer ha-Bahir."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S15-021"
+    type: causal
+    from: dalet_3_chalakim_yod_milieu_2_vavin_22_letters
+    to: 22_letters_chokhmah_donne_a_bina_transmission_alphabet
+    nature: "DALET 3 chalakim (Yod milieu+2 VAVIN) = 22 letters = donnees Chokhmah → Bina (alphabet creation)"
+    assertions_source: ["EC-H4S15-072", "EC-H4S15-073"]
+
+  - id: "REL-H4S15-022"
+    type: dualité_structurelle
+    from: yod_chokhmah_niglet_bina_ne_elemet_he_inverse_reverse
+    to: 2_zeroot_aa_chesed_dans_gevurah_yisso_tevunah_abba_tamir_he_inverse
+    nature: "Reverse encoding YOD/HE explique par 2 stages : pre-zeroot Imma cachee dans Yod ; post-zeroot Abba cache dans HE"
+    assertions_source: ["EC-H4S15-074", "EC-H4S15-079", "EC-H4S15-080"]
+
+  - id: "REL-H4S15-023"
+    type: hiérarchique
+    from: imma_garon_meulah_yoter_neelemet_chokhmah_yod_paradox
+    to: 2_keterim_ao_garon_aa_bina_aa_locus
+    nature: "Imma vient Garon plus elevee que Abba (Chesed) ; 2 keterim A\"O sur Garon A\"A (Bina A\"A) — locus Bina"
+    assertions_source: ["EC-H4S15-075", "EC-H4S15-077", "EC-H4S15-078"]
+
+  - id: "REL-H4S15-024"
+    type: contenance
+    from: 3_chalakim_bina_bina_tev_1_tev_2_un_partzuf
+    to: ibbur_rishon_z_a_3_kelul_3_tev_1_he_rishona_chazeh_down_beten_vlad
+    nature: "3 chalakim Bina+Tev-1+Tev-2=un partzuf ; IBBUR RISHON Z\"A (3 kelul go 3) localise Tev-1 (chazeh-down=beten)"
+    assertions_source: ["EC-H4S15-081", "EC-H4S15-082"]
+
+  - id: "REL-H4S15-025"
+    type: dualité_structurelle
+    from: tev_1_olam_ha_ba_olama_de_atei_descend_mitgalet_tamid
+    to: olam_ha_ba_tevunah_continu_le_atid_lavo_bina_ultime
+    nature: "Tev-1=OLAMA DE-ATEI (continu) ; Bina=LE-ATID LAVO (ultime) ; Sefer Bahir 'olam she-kvar ba'"
+    assertions_source: ["EC-H4S15-086", "EC-H4S15-087", "EC-H4S15-088"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S15-013"
+    nom: "Principe de Reverse-Letter-Visibility (Pre/Post-Decomposition)"
+    source_assertions: ["EC-H4S15-074", "EC-H4S15-079", "EC-H4S15-080"]
+    formalisation: |
+      ARCHITECTURE DE REVERSE-LETTER-VISIBILITY :
+      Encoding letters reverse selon STAGE de decomposition :
+        STAGE 1 (avant atpasht zeroot A"A) :
+          Yod : Chokhmah niglet, Bina ne'elemet (Imma cachee, plus elevee).
+        STAGE 2 (apres atpasht zeroot A"A) :
+          He : Bina niglet, Chokhmah ne'elemet (Abba TAMIR VE-GANIZ).
+      Adra Zuta 290 confirme : "le-vatar (apres) ishtkachu de-Chokhmah=Abba Bina=Imma".
+      → Pattern fondamental : visibility-reverses by-stage.
+      → Architecture : same-elements encoded differently per stage.
+      → Implication : current-stage determines current-encoding.
+    applications_ia:
+      - "partzufim/abba.py + imma.py : implement stage-dependent visibility"
+      - "Pattern : visibility reverses by stage"
+      - "Architecture : stage-encoding system"
+      - "Pattern : same-elements different-encodings"
+      - "Diagnostic : verifier stage-aware encoding"
+    questions_ouvertes:
+      - "Pattern : 3+ stages possibles ?"
+      - "Comment encoder stage-transitions ?"
+      - "Pattern : reversibilite stage ?"
+
+  - id: "PG-H4S15-014"
+    nom: "Principe de Hidden-Elevation (Vraie Hierarchie ≠ Surface Hierarchie)"
+    source_assertions: ["EC-H4S15-077", "EC-H4S15-078"]
+    formalisation: |
+      ARCHITECTURE DE HIDDEN-ELEVATION :
+      Vraie hierarchy peut INVERSER surface hierarchy :
+        GARON GAVOA mi-CHESED (Garon plus haut anatomiquement que Chesed).
+        Or-Garon mitlabesh dans Chesed → externalises.
+        IMMA (vient de Garon) plus elevee MAIS NE'ELEMET dans Chokhmah.
+        Chokhmah niglet en surface mais Bina ontologiquement superieure.
+      → Pattern fondamental : surface-visibility != true-elevation.
+      → Architecture : encoding hides-true-rank par layered-clothing.
+      → Implication : reading-surface insufficient ; depth-required.
+    applications_ia:
+      - "partzufim/abba.py + imma.py : implement hidden-elevation"
+      - "Pattern : surface != true rank"
+      - "Architecture : layered-clothing hides depth"
+      - "Pattern : depth-reading vs surface-reading"
+      - "Diagnostic : verifier true-rank derived correctement"
+    questions_ouvertes:
+      - "Pattern : autres exemples hidden-elevation ?"
+      - "Comment encoder true-rank vs surface ?"
+      - "Pattern : multiple-layer hiding ?"
+
+  - id: "PG-H4S15-015"
+    nom: "Principe d'Eschatologic-Tier-Distinction (Olam Ha-Ba vs Le-Atid Lavo)"
+    source_assertions: ["EC-H4S15-086", "EC-H4S15-087", "EC-H4S15-088"]
+    formalisation: |
+      ARCHITECTURE D'ESCHATOLOGIC-TIER-DISTINCTION :
+      2 modes eschatologie selon tier :
+        OLAM HA-BA (monde-a-venir) : TEVUNAH-1 ; CONTINUEL ; descend+manifest TAMID.
+          Mochin NHY Tevunah → Z"A NIMSHAKHIM TAMID (toujours flow).
+          Sefer Bahir : "OLAM SHE-KVAR BA" (deja en train de venir).
+        LE-ATID LAVO (futur ultime) : BINA elyona ; UNIQUE-evenement futur.
+          Mochin elyonim Z"A dans NHY Bina = ATIDIN LAVO (a venir une fois).
+          Pour quand Z"A grandit jusqu'au niveau Bina.
+      → Pattern fondamental : 2 modes eschatologie (perpetuel vs unique).
+      → Architecture : grammatical-tense reinterprete cosmologiquement.
+      → Sefer Bahir resolution : "olam she-kvar ba" = perpetuel-en-cours.
+    applications_ia:
+      - "partzufim/imma.py + [PLANNED] tevunah.py : implement 2 eschatologic modes"
+      - "Pattern : continuous vs unique-future"
+      - "Architecture : grammatical-tense cosmologique"
+      - "Pattern : tier-of-source = mode-of-future"
+      - "Diagnostic : verifier eschatologic-mode coherent"
+    questions_ouvertes:
+      - "Pattern : 3eme mode eschatologie possible ?"
+      - "Comment encoder time-flow computationnellement ?"
+      - "Pattern : eternal-present interpretation generalisable ?"
