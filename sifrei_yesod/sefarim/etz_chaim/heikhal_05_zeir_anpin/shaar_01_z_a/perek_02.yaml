@@ -1,0 +1,561 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 5 — Heikhal Ze'eir Anpin (היכל זעיר אנפין)
+# Sha'ar: 1 — Sha'ar Z"A (שער ז"א)
+# Perek: 2 — IBBUR Z"O"N. ASOF RAGLAV. Z"T MELAKHIM. 3-GO-3 KOLLEL. RH"Y vs RH"R.
+#            YESOD ATIK NIVKA. 2 partzufim Abba+YISSO+Bina+Tevunah unifies.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_02 :
+#   - Bloc A : Apres tikkun A"O — restent Z"T MELAKHIM morts (Z"T BaN) sans tikkun
+#   - Bloc B : A"A encore non-revetu Tabbur-down ; megaleh sans levush
+#   - Bloc C : Pour tikkun → besoin IBBUR dans IMMA
+#   - Bloc D : ASOF RAGLAV — A"A NHY montent dans 3 emtza'iyot ChGT-A"A
+#   - Bloc E : Atik aussi 2 prakim emtza-NHY → revetus tokh prakim rishonim
+#   - Bloc F : Yesod-Atik pas besoin monter (termine chazeh A"A deja)
+#   - Bloc G : ChG+1/2-Tiferet-elyon-A"A revetent 2 prakim emtza-NHY-Atik+Yesod-Atik
+#   - Bloc H : NH-A"A → ChG-A"A ; 1/2-Tiferet-tachton revet 1/2-elyon ; Yesod-A"A revet 1/2-Tiferet-tachton
+#   - Bloc I : Ataret-yesod monte vers Yesod ; ChGT-Z"A montent revetent NH+atarah-A"A
+#   - Bloc J : NHY-Z"A montent revetent ChGT-Z"A ; Nukva (Malkhut=ATARAH) revet Yesod-Z"A
+#   - Bloc K : Z"A=KOLLEL 3-go-3 (V"K) — Tosefta Beshalach 54 "3 ruchin kelilin 3 shekiyin"
+#   - Bloc L : Z"A=RUACH ; Malkhut=EVEN ; "avnin shekiyen"
+#   - Bloc M : Apres : A"O+YISSO+Tev REVETENT toutes ces bechinot (tier-clothing comprehensive)
+#   - Bloc N : A"O courts (Garon-Tabbur) restent comme avant ; Atik+A"A longs lift-tachton+kollel
+#   - Bloc O : Cause Z"A 3-go-3 cohesion : LE-KABETZAM VE-LE-KASHRAM yachad — RH"Y (unite) vs RH"R (division=mort melakhim)
+#   - Bloc P : Z"A entre NHY-A"A et PNIMIYUT-A"O = sod IBBUR (foetus dans meei imma)
+#   - Bloc Q : Pas de hefsek A"A-A"O car Z"A petit ; Z"A occupe 1/2 Tiferet-tachton Imma=lieu HERON
+#   - Bloc R : Apres : MITKABTZIM dans meei Imma ; Abba donne 1/2 a Imma (lieu IBBUR amiti)
+#   - Bloc S : De ascension+kollel → or grand sort YESOD ATIK (nivka, sodek mi-le-maala-le-mata)
+#   - Bloc T : Or sort → CHOKHMAH+YISSO=1 partzuf ; IMMA+TEVUNAH=1 partzuf ; orot egaux pas keisuy/giluy distinct
+#   - Bloc U : 2 partzufim seul : Abba+YISSO et Bina+Tevunah ; Garon→Tabbur ; HAKDAMAH chaque zivvug-mochin-Z"A
+#
+# Source Sefaria : Sefer_Etz_Chaim.17.2 (1 section, 3545 chars)
+# IDs : EC-H5S17-019 → EC-H5S17-038
+
+meta:
+  sefer: etz_chaim
+  heikhal: 5
+  shaar: 1
+  shaar_name_he: "שער ז\"א"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "IBBUR Z\"O\"N. Apres tikkun A\"O reste 7 MELAKHIM (Z\"T BaN) ; A\"A non-revetu Tabbur-down. ASOF RAGLAV : NHY-A\"A→ChGT-A\"A ; Atik 2-prakim-emtza→prakim rishonim ; Yesod-Atik pas monter (chazeh deja). Cascade : ChG+1/2-Tiferet-elyon→prakim-emtza Atik ; NH-A\"A→ChG-A\"A ; 1/2 tachton→1/2 elyon ; Yesod-A\"A→1/2 tachton ; Atarah→Yesod ; ChGT-Z\"A→NH-A\"A ; NHY-Z\"A→ChGT-Z\"A ; Nukva→Yesod-Z\"A. Z\"A 3-go-3 (Tosefta Beshalach 54 'ruchin kelilin shekiyin' ; Z\"A=RUACH, Malkhut=EVEN). A\"O+YISSO+Tev revetent. Cause kollel 3-go-3 : LE-KABETZAM YACHAD RH\"Y (unite) vs RH\"R (mort melakhim par parud). Z\"A entre NHY-A\"A et pnimiyut-A\"O=IBBUR (meei imma). Z\"A occupe 1/2 Tiferet-tachton Imma=heron. Apres : MITKABTZIM meei Imma ; or grand sort yesod-Atik (nivka). Chokhmah+YISSO=1 partzuf ; Bina+Tevunah=1 partzuf. HAKDAMAH chaque zivvug-mochin."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H5S17-019"
+    source_he: "אחר שנתקנו או\"א נשארו עתה בחי' ז' מלכים שמתו ועדיין היו בלי תיקון ואמנם הם בחי' ז\"ת דב\"n"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      Apres TIKKUN A"O — ETAT residuel :
+      → Restent Z"T MELAKHIM SHE-METU (7 rois morts) — pas encore en tikkun.
+      → Ces 7 = bechinat Z"T d'BaN.
+      → Architecture : melakhim residuels apres tikkun parents.
+      → Pattern : downstream-residue requires-additional-tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: post_ao_z_t_melakhim_metu_z_t_ban_residus, role: post_tikkun_ao_zt_melakhim_metu_zt_ban_residus_pas_tikkun}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : downstream residue. Pattern post-parents-tikkun."
+
+  - id: "EC-H5S17-020"
+    source_he: "אז היה עדיין א\"א בלתי התלבשות מטבור ולמטה עד סיום רגליו והיה מגולה מבלי לבוש"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      ETAT A"A pre-Z"O"N :
+      → Encore SANS LEVUSH (vetement) du TABBUR jusqu'a SIYUM RAGLAV.
+      → MEGALEH (revele) MIBLI LEVUSH (sans habit).
+      → Architecture : pre-Z"O"N A"A partially-uncovered.
+      → Pattern : downstream-uncovered awaits Z"O"N-clothing.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_pre_zon_megaleh_tabbur_down_sans_levush, role: aa_pre_zon_megaleh_mibli_levush_tabbur_jusqu_raglav_sans_clothing}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : pre-Z\"O\"N uncovered. Pattern awaits clothing."
+
+  - id: "EC-H5S17-021"
+    source_he: "כדי לתקן הז' מלכים שמתו אשר מהם נעשה זו\"נ הנ\"ל היה צריך שיהיה בסוד העיבור בתוך אמא וז\"ס העיבור"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      MOTIVATION IBBUR Z"O"N :
+      → Pour TIKKUN les Z"T MELAKHIM (qui forment Z"O"N).
+      → Necessite IBBUR (gestation) dans IMMA.
+      → Z"O"N reproduit-cycle pour residus melakhim.
+      → Architecture : ibbur = restoration-cycle.
+      → Pattern : maternal-gestation = residus-tikkun-mechanism.
+    type: déduction_logique
+    concepts:
+      - {id: ibbur_zon_tikkun_z_t_melakhim_dans_imma_restoration, role: ibbur_zon_pour_tikkun_z_t_melakhim_metu_dans_imma_restoration_cycle}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "imma"]
+      relevance: "Architecture : restoration cycle. Pattern maternal mechanism."
+
+  - id: "EC-H5S17-022"
+    source_he: "תחלה אסף א\"א את רגליו ר\"ל כי נה\"י שלו שעדיין היו מגולין כנ\"ל נתעלו למעלה עד הג' אמצעית חג\"ת דא\"א עצמו המתלבשים תוך או\"א מקודם זה כנ\"ל"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      ETAPE 1 — A"A ASOF RAGLAV (rassemble pieds) :
+      → NHY d'A"A (qui etaient encore megalim) NIT'ALU LE-MA'ALAH.
+      → Jusqu'aux 3 EMTZA'IYOT = ChGT d'A"A meme — qui revetent A"O.
+      → Architecture : ascending-tachtonim into emtza'iyot.
+      → Pattern : compactification ascending-cascade.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_asof_raglav_nhy_aa_montent_chgt_aa_emtza_iyot, role: aa_asof_raglav_nhy_aa_megalim_nit_alu_chgt_aa_3_emtzaiyot_compactification}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : compactification ascending. Pattern asof raglav."
+
+  - id: "EC-H5S17-023"
+    source_he: "עתיק התחיל לאסוף ב' פרקין האמצעים שלו (על גבי) ב\"פ הראשונים דנ\"ה שלו והיו מלובשים ב\"פ עליונים תוך ב\"פ אמצעים אבל היסוד דעתיק אינו צריך לעלות כי הוא מסתיים למעלה בחזה דא\"a"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      ATIK ascend aussi :
+      → 2 PRAKIM EMTZA'IM (medians) d'Atik AL-GABEI (sur) 2 PRAKIM RISHONIM des NHY.
+      → 2 prakim ELYONIM REVETUS dans 2 prakim EMTZA'IM.
+      → MAIS : YESOD d'Atik PAS BESOIN MONTER — TERMINE deja en HAUT au CHAZEH d'A"A.
+      → Architecture : selective-ascent — yesod-Atik already-positioned.
+      → Pattern : pre-positioned-elements skip ascent.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_2_prakim_emtza_revetus_prakim_rishonim_yesod_atik_pas_monter, role: atik_2_prakim_emtza_im_revetent_prakim_rishonim_nhy_yesod_atik_pas_monter_chazeh_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : selective ascent. Pattern pre-positioned skip."
+
+  - id: "EC-H5S17-024"
+    source_he: "הלבישו החסד והגבורה וחצי ת\"ת העליון דאריך אנפין לאותן ב\"פ אמצעים דנ\"ה ואת היסוד דעתיק"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      Cascade revetement detail-1 :
+      → CHESED + GEVURAH + 1/2 TIFERET ELYON d'A"A → REVETENT :
+        2 PRAKIM EMTZA'IM des NHY-Atik.
+        + YESOD d'Atik.
+      → Architecture : ChG+top-half-Tiferet covers Atik mid+yesod.
+      → Pattern : layered-coverage-cascade.
+    type: axiome_explicite
+    concepts:
+      - {id: chesed_gevurah_1_2_tiferet_elyon_aa_revetent_prakim_emtza_atik_yesod, role: chesed_gevurah_1_2_tiferet_elyon_aa_revetent_2_prakim_emtza_im_nhy_atik_plus_yesod_atik}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : layered cascade. Pattern coverage-step."
+
+  - id: "EC-H5S17-025"
+    source_he: "הלבישו נ\"ה דא\"א לח\"ג שלו עצמו וחצי ת\"ת התחתון שבו הלביש את חצי העליון והיסוד דא\"א הלביש אח\"כ את חצי ת\"ת תתאה שבו ועלתה העטרה אל יסוד שבו והלבישה את היסוד עצמו שבו"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      Cascade detail-2 (suite) :
+      → NH-A"A REVETENT ChG-A"A meme.
+      → 1/2 Tiferet TACHTON-A"A REVET 1/2 ELYON-A"A.
+      → YESOD-A"A REVET 1/2 Tiferet TACHTON.
+      → ATARAH MONTE vers YESOD ; revet YESOD lui-meme.
+      → Architecture : self-contracting A"A — chacque sefirah s'inscrit dans superieur.
+      → Pattern : recursive self-clothing during ibbur.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nh_aa_chg_aa_yesod_aa_1_2_tiferet_tachton_atarah_monte_yesod, role: nh_aa_revet_chg_aa_1_2_tiferet_tachton_revet_1_2_elyon_yesod_aa_revet_tiferet_tachton_atarah_monte_yesod}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : self-contracting A\"A. Pattern recursive self-clothing."
+
+  - id: "EC-H5S17-026"
+    source_he: "עלו חג\"ת דז\"א והלבישו לנ\"ה ועטרת היסוד דא\"א ואחר כך עלו נה\"י דז\"א והלבישו לחג\"ת דז\"א עצמו ואח\"כ עלתה הנוק' שהיא המל' בסוד העטרה והלבישה את היסוד דז\"א"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      Z"A+Nukva ascension dans cascade :
+      → ChGT-Z"A montent → REVETENT NH+ATARAT-YESOD-A"A.
+      → Apres : NHY-Z"A montent → REVETENT ChGT-Z"A meme.
+      → Apres : NUKVA (=Malkhut, sod ATARAH) monte → REVET YESOD-Z"A.
+      → Architecture : Z"O"N nested-ascension chacquee partie revet la precedente.
+      → Pattern : recursive-self-clothing pour Z"O"N pendant ibbur.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chgt_z_a_nh_atarah_aa_nhy_z_a_chgt_z_a_nukva_yesod_z_a_recursive, role: chgt_z_a_revetent_nh_atarat_yesod_aa_nhy_z_a_revetent_chgt_z_a_nukva_atarah_revet_yesod_z_a_recursive_clothing}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : Z\"O\"N nested ascension. Pattern recursive self-clothing."
+
+  - id: "EC-H5S17-027"
+    source_he: "ז\"א כלול ג' גו ג' שהם ו\"ק שבו ג' כליל בג' ונרמז זה פ' בשלח ד\"ן ע\"א בתוספתא ג' רוחין דכלילין בג' הוי שקיעין כו' ונודע כי ז\"א הוא בחי' רוח והמל' נקראת אבן וזהו אבנין שקיען"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      Z"A KOLLEL 3-GO-3 (3 inclus dans 3) :
+      → V"K (6 sefirot) en mode 3-kelilin-be-3.
+      → Tosefta Beshalach fol. 54 : "3 RUCHIN DE-KELILIN BE-3 HOY SHEKIYIN" (3 esprits inclus dans 3 sont enfouis).
+      → Z"A = bechinat RUACH ; MALKHUT = EVEN (pierre).
+      → "AVNIN SHEKIYEN" (pierres enfouies — Malkhut presente).
+      → Architecture : compactified-Z"A pour ibbur.
+      → Pattern : nested-3 = ibbur-config.
+      cf. EC-H4S15-082 (perek 5 sha'ar HaZivvugim) sur ibbur rishon.
+    type: déduction_scripturaire
+    concepts:
+      - {id: z_a_kollel_3_go_3_vk_tosefta_beshalach_54_ruchin_kelilin_shekiyin, role: z_a_kollel_3_go_3_vk_3_kelilin_3_tosefta_beshalach_54_3_ruchin_kelilin_3_shekiyin_z_a_ruach_malkhut_even}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : ibbur compactification. Source Tosefta Beshalach 54."
+
+  - id: "EC-H5S17-028"
+    source_he: "אחר כל הנ\"ל הלבישו או\"א ויש\"ס ותבונה את כל הבחי' הנ\"ל... או\"א נשארו כמו שהיו בראשונה תמיד לפי שהם קצרי קומה כנ\"ל"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      Apres ascension : A"O+YISSO+Tev REVETENT toutes ces bechinot :
+      → A"O sont KETZAREI KOMA (courts en stature) — restent KMO SHE-HAYU BARASHONAH (comme avant) TAMID.
+      → ATIK + A"A ARUKHIM (longs) — necessitent ascension+kollel des kvazoteihen.
+      → Architecture : tier-stature determine si ascension necessaire.
+      → Pattern : short-stays + long-must-compact.
+    type: déduction_logique
+    concepts:
+      - {id: ao_ketzarei_komah_restent_atik_aa_arukhim_ascension_kollel, role: ao_ketzarei_komah_restent_pareils_atik_aa_arukhim_ascension_kollel_kvazoteihen}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : tier-stature ascension. Pattern short-stay long-compact."
+
+  - id: "EC-H5S17-029"
+    source_he: "הכוונה היתה לקבצם ולקשרם יחד שיהיו רה\"י באחדות ולא ר\"ה דרך פירוד כי זו היתה סבת מיתת המלכים בראשונה"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      RAISON Z"A 3-GO-3 cohesion :
+      → KAVANAH = LE-KABETZAM VE-LE-KASHRAM YACHAD (rassembler+lier ensemble).
+      → SHE-YIH'YU RH"Y (reshut hayachid = domaine prive = unite) BE-ACHDUT.
+      → PAS RH"R (rabim, public, division).
+      → SIBAH la mort des MELAKHIM PA'AM RISHONAH = HEYU PARUDIM (etaient separes).
+      → Architecture : cohesion-prevention de melakhim-failure.
+      → Pattern : tikkun-via-unity vs death-via-separation.
+    type: interprétation_lurianique
+    concepts:
+      - {id: z_a_3_go_3_le_kabetzam_le_kashram_rh_y_unite_vs_rh_r_parud_melakhim_metu, role: z_a_3_go_3_kavanah_le_kabetzam_le_kashram_yachad_rh_y_unite_vs_rh_r_parud_sibah_mort_melakhim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : cohesion-prevention. Pattern tikkun unity vs death separation."
+
+  - id: "EC-H5S17-030"
+    source_he: "זו\"ן הם עומדין באמצע בין נה\"י דא\"א ובין פנימית או\"א ואז היו שם בתוך פנימית או\"א בסוד עיבור כדרך הולד הניתן במעי אמו"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      Z"O"N position pendant ibbur :
+      → Au MILIEU entre NHY d'A"A et PNIMIYUT d'A"O.
+      → DANS pnimiyut A"O = sod IBBUR.
+      → Comme VLAD (foetus) dans MEEI IMMO (matrice de la mere).
+      → Architecture : nested-ibbur Z"O"N a l'interieur d'A"O.
+      → Pattern : sandwich-position-during-gestation.
+    type: axiome_explicite
+    concepts:
+      - {id: zon_meei_imma_pnimiyut_ao_entre_nhy_aa_ibbur_vlad_foetus, role: zon_meei_imma_pnimiyut_ao_entre_nhy_aa_sod_ibbur_vlad_foetus_meei_imma}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "abba", "imma"]
+      relevance: "Architecture : nested ibbur. Pattern sandwich gestation."
+
+  - id: "EC-H5S17-031"
+    source_he: "אין זה חציצה והפסק בין א\"א לאו\"א לפי שזו\"ן הוא קטן מחד בערכם ובפרט עתה שאין לו י\"ס רק ו\"ק בלבד ואפילו אלו הו\"ק אינן מתפשטין רק ג' כליל בג'"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      Pas de CHATZITZAH (interruption) A"A-A"O :
+      → Z"O"N est KATAN MI-CHAD BE-ERKAM (extremement petit en valeur).
+      → Maintenant il n'a que V"K (pas 10S).
+      → MEME ces V"K = 3-KELIL-BE-3 (encore plus reduits).
+      → Architecture : minimal-Z"O"N-during-ibbur enables A"A-A"O contiguity.
+      → Pattern : compactness preserves structural-flow.
+    type: déduction_logique
+    concepts:
+      - {id: zon_katan_v_k_3_go_3_pas_chatzitzah_aa_ao, role: zon_katan_v_k_3_go_3_pas_chatzitzah_hefsek_aa_ao_compactness_preserves_flow}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : minimal Z\"O\"N preserves flow. Pattern compactness flow."
+
+  - id: "EC-H5S17-032"
+    source_he: "מקום ומצב ומעמד הז\"א אינו רק בחצי ת\"ת התחתון דאמא אשר שם מקום הריון ועיבור הולד"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      Z"A precise location :
+      → 1/2 TIFERET TACHTON d'IMMA seulement.
+      → Lieu HERON (grossesse) + IBBUR HA-VLAD (gestation foetus).
+      → Architecture : Z"A localized in lower-half-Tiferet-Imma.
+      → Pattern : ibbur-locus-precise.
+    type: axiome_explicite
+    concepts:
+      - {id: z_a_1_2_tiferet_tachton_imma_heron_ibbur_vlad, role: z_a_1_2_tiferet_tachton_imma_lieu_heron_ibbur_vlad_gestation}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture : ibbur-locus precise. Pattern lower-Tiferet-Imma."
+
+  - id: "EC-H5S17-033"
+    source_he: "נצח וחסד וחצי ת\"ת וחצי יסוד וחצי מל' של ז\"א נתונים מצד ימין בתוך אבא וחצי האחר נתונים בצד שמאל תוך אמא אמנם אח\"כ כולם מתקבצין במעוי דאמא ואבא נותן המחצה שלו במעי דאמא"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      Z"A distribution detaillee :
+      → 1/2 Z"A (Netzach+Chesed+1/2 Tiferet+1/2 Yesod+1/2 Malkhut) = COTE DROIT dans ABBA.
+      → AUTRE 1/2 = COTE GAUCHE dans IMMA.
+      → APRES : tous MITKABTZIM dans MEEI IMMA.
+      → ABBA donne SA MOITIE a IMMA — la est MAKOM IBBUR HA-AMITI (lieu vrai d'ibbur).
+      → Architecture : initial-bilateral split → final-unification dans Imma.
+      → Pattern : bilateral-merger pour ibbur-amiti.
+    type: interprétation_lurianique
+    concepts:
+      - {id: z_a_1_2_droite_abba_1_2_gauche_imma_mitkabtzim_meei_imma_amiti, role: z_a_1_2_droite_abba_1_2_gauche_imma_apres_mitkabtzim_meei_imma_abba_donne_imma_makom_ibbur_amiti}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "abba", "imma"]
+      relevance: "Architecture : bilateral-merger. Pattern split-then-unify."
+
+  - id: "EC-H5S17-034"
+    source_he: "מכח עליית כל האורות הנ\"ל וכללותן למעלה וכן מכח עליית ב\"פ האמצעיים דנ\"ה דעתיק למעלה בב\"פ קדמאין נוסף שם אור גדול ועצום ואין בו כח ביסוד דעתיק לסבלו כי הוא צר מאד ואז נבקע ונסדק מלמעלה למטה לארכו ויצא האור לחוץ"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      Resultat ascension+kollel — OR GADOL VE-ATZUM :
+      → Yesod d'Atik n'a pas le KOACH (force) pour CONTENIR.
+      → Yesod TZAR ME'OD (tres etroit).
+      → NIVKA VE-NIDSAK (se fend+craque) MI-LEMAALAH-LE-MATAH LE-ARKHO (du haut vers le bas).
+      → OR YOTZ'A LE-CHUTZ (lumiere sort dehors).
+      → Architecture : overflow-event yesod-Atik bursting.
+      → Pattern : capacity-overflow → structural-rupture.
+    type: interprétation_lurianique
+    concepts:
+      - {id: or_gadol_yesod_atik_nivka_nidsak_mi_lemaala_le_mata_or_yotza_chutz, role: or_gadol_atzum_yesod_atik_pas_koach_tzar_meod_nivka_nidsak_mi_lemaalah_le_matah_le_arkho_or_yotza_chutz}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "zeir_anpin"]
+      relevance: "Architecture : overflow rupture. Pattern capacity-burst."
+
+  - id: "EC-H5S17-035"
+    source_he: "חכמה ויש\"ס העומדין בימין מתחברים ונעשו פרצוף אחד בלבד וכן אמא ותבונה שבצד שמאל נעשו פרצוף אחד לבד כי עתה אורות היסוד שוין בענין גילוי בהשוואה א' ואין עתה כסוי וגלוי הגורם חילוק פרצופים"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      Apres or-yotz'a : COMBINATION partzufim :
+      → CHOKHMAH + YISSO (kav-yamin) MITCHABRIM → 1 PARTZUF ECHAD seul.
+      → IMMA + TEVUNAH (kav-smol) NA'ASU 1 PARTZUF ECHAD.
+      → Cause : OROT YESOD SHAVIN BE-INYAN GILUI BE-HASHVAAH ECHAT (egaux en revelation).
+      → Pas de KISUI/GILUI distinguant — donc pas de division des partzufim.
+      → Architecture : equal-light-state collapses 4-partzufim → 2-partzufim.
+      → Pattern : revelation-uniformity = partzuf-merger.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chokhmah_yisso_unifie_imma_tevunah_unifie_orot_yesod_shavin_pas_kisui_gilui, role: chokhmah_yisso_kav_yamin_1_partzuf_imma_tevunah_kav_smol_1_partzuf_orot_yesod_shavin_be_hashvaah_pas_kisui_gilui}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : revelation-uniformity merger. Pattern light-state-driven."
+
+  - id: "EC-H5S17-036"
+    source_he: "עתה אין שם רק ב' פרצופים לבד אחד מאבא ואחד מאמא ושיעורם למעלה מן הגרון עד למטה בטבורא דא\"א"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      ETAT FINAL — 2 PARTZUFIM SEUL :
+      → Un d'ABBA (= Abba+YISSO unifies).
+      → Un d'IMMA (= Imma+Tevunah unifies).
+      → Shi'ur : du GARON jusqu'au TABBURA d'A"A.
+      → Architecture : 4→2-partzufim consolidation pour zivvug-mochin.
+      → Pattern : pre-zivvug consolidation.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_partzufim_seul_abba_yisso_imma_tevunah_garon_tabbura, role: 2_partzufim_seul_abba_unifie_yisso_imma_unifie_tevunah_shiur_garon_tabbura}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : 4→2 consolidation. Pattern pre-zivvug."
+
+  - id: "EC-H5S17-037"
+    source_he: "זכור הקדמה זו כי בכל פעם שרוצין או\"א להזדווג לצורך מוחין לז\"א נעשה הכל פרצוף אחד לבד לאבא ויש\"ס ופרצוף אחד לבינה"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      HAKDAMAH cruciale :
+      → CHAQUE FOIS qu'A"O veulent ZIVVUG pour MOCHIN Z"A :
+        Tout devient 1 PARTZUF — Abba+YISSO unifies.
+        Et 1 PARTZUF — Imma+Tevunah unifies.
+      → ZAKHOR (souviens-toi) — principe a memoriser.
+      → Architecture : universal-rule pour all-future-zivvug-mochin.
+      → Pattern : recurring-consolidation pattern.
+    type: axiome_explicite
+    concepts:
+      - {id: hakdamah_zivvug_mochin_z_a_ao_2_partzufim_unifies_universal, role: hakdamah_zakhor_zivvug_ao_mochin_z_a_2_partzufim_unifies_abba_yisso_imma_tevunah_universal}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py", "partzufim/zeir_anpin.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : universal-rule. Pattern recurring-consolidation."
+
+  - id: "EC-H5S17-038"
+    source_he: "כי שם הוא מקום העיבור האמיתי וכמ\"ש בע\"ה"
+    source_ref: "Heikhal 5, Sha'ar 1:2"
+    assertion: |
+      CLOTURE perek 2 :
+      → MAKOM HA-IBBUR HA-AMITI (lieu vrai d'ibbur) = dans MEEI IMMA.
+      → "VE-KMO SHE-NEKTOV BE'EZRAT HASHEM" — sera ecrit avec l'aide d'Hashem (formule pedagogique).
+      → Architecture : perek-closure avec promise pour developpement-futur.
+      → Pattern : pedagogical-bookend forward-pointer.
+    type: axiome_explicite
+    concepts:
+      - {id: cloture_perek_2_makom_ibbur_amiti_meei_imma_pedagogical, role: cloture_perek_2_makom_ibbur_amiti_meei_imma_kmo_she_nektov_pedagogical_forward}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : pedagogical bookend. Pattern forward pointer."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H5S17-006"
+    type: causal
+    from: post_ao_z_t_melakhim_metu_z_t_ban_residus
+    to: ibbur_zon_tikkun_z_t_melakhim_dans_imma_restoration
+    nature: "Apres tikkun A\"O restent Z\"T melakhim metu (Z\"T BaN) ; ibbur ZON dans Imma = restoration-cycle pour tikkun melakhim"
+    assertions_source: ["EC-H5S17-019", "EC-H5S17-021"]
+
+  - id: "REL-H5S17-007"
+    type: hiérarchique
+    from: aa_asof_raglav_nhy_aa_montent_chgt_aa_emtza_iyot
+    to: chgt_z_a_nh_atarah_aa_nhy_z_a_chgt_z_a_nukva_yesod_z_a_recursive
+    nature: "ASOF RAGLAV cascade : NHY-A\"A→ChGT-A\"A ; Atik 2 prakim ; ChG+Tiferet revetent ; Z\"O\"N nested ascension chacque revet precedente"
+    assertions_source: ["EC-H5S17-022", "EC-H5S17-023", "EC-H5S17-024", "EC-H5S17-025", "EC-H5S17-026"]
+
+  - id: "REL-H5S17-008"
+    type: causal
+    from: z_a_kollel_3_go_3_vk_tosefta_beshalach_54_ruchin_kelilin_shekiyin
+    to: z_a_3_go_3_le_kabetzam_le_kashram_rh_y_unite_vs_rh_r_parud_melakhim_metu
+    nature: "Z\"A 3-go-3 V\"K (Tosefta Beshalach 54 ruchin kelilin shekiyin) ; cause = LE-KABETZAM YACHAD RH\"Y unite vs RH\"R parud (cause mort melakhim)"
+    assertions_source: ["EC-H5S17-027", "EC-H5S17-029"]
+
+  - id: "REL-H5S17-009"
+    type: contenance
+    from: zon_meei_imma_pnimiyut_ao_entre_nhy_aa_ibbur_vlad_foetus
+    to: z_a_1_2_droite_abba_1_2_gauche_imma_mitkabtzim_meei_imma_amiti
+    nature: "Z\"O\"N entre NHY-A\"A et pnimiyut-A\"O=ibbur ; Z\"A 1/2 dans Abba droite + 1/2 dans Imma gauche → mitkabtzim meei Imma=ibbur amiti"
+    assertions_source: ["EC-H5S17-030", "EC-H5S17-033"]
+
+  - id: "REL-H5S17-010"
+    type: causal
+    from: or_gadol_yesod_atik_nivka_nidsak_mi_lemaala_le_mata_or_yotza_chutz
+    to: hakdamah_zivvug_mochin_z_a_ao_2_partzufim_unifies_universal
+    nature: "Yesod-Atik nivka or yotza chutz → Chokhmah+YISSO=1 partzuf, Imma+Tevunah=1 partzuf ; HAKDAMAH chaque zivvug-mochin Z\"A pareil"
+    assertions_source: ["EC-H5S17-034", "EC-H5S17-035", "EC-H5S17-037"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H5S17-004"
+    nom: "Principe d'Asof-Raglav-Compactification (Pre-Ibbur Tier-Compaction)"
+    source_assertions: ["EC-H5S17-022", "EC-H5S17-023", "EC-H5S17-024", "EC-H5S17-025"]
+    formalisation: |
+      ARCHITECTURE D'ASOF-RAGLAV-COMPACTIFICATION :
+      Avant ibbur Z"O"N : massive ASCENSION-CASCADE :
+        A"A : NHY → ChGT (asof raglav).
+        Atik : 2 prakim emtza → 2 prakim rishonim.
+        Yesod-Atik : pas-besoin (deja chazeh-A"A).
+        ChG+1/2 Tiferet elyon → revetent prakim emtza Atik+yesod Atik.
+        NH-A"A → ChG-A"A ; 1/2 Tiferet tachton → 1/2 elyon ; Yesod-A"A → 1/2 Tiferet tachton.
+        Atarah-yesod → Yesod ; ChGT-Z"A → NH+atarah ; NHY-Z"A → ChGT-Z"A ; Nukva → Yesod-Z"A.
+      → Pattern fondamental : pre-event compaction = energie-amplification.
+      → Architecture : recursive-self-clothing tier-cascade.
+      → Implication : compactification produces or-gadol leading to yesod-Atik rupture.
+    applications_ia:
+      - "partzufim/arikh_anpin.py + atik_yomin.py + zeir_anpin.py + nukva.py : implement asof-raglav cascade"
+      - "Pattern : pre-event compaction"
+      - "Architecture : recursive cascade self-clothing"
+      - "Pattern : compactification produces overflow"
+      - "Diagnostic : verifier ascension-cascade coherent"
+    questions_ouvertes:
+      - "Pattern : autres compactifications possibles ?"
+      - "Comment encoder cascade computationnellement ?"
+      - "Pattern : reverse-cascade post-ibbur ?"
+
+  - id: "PG-H5S17-005"
+    nom: "Principe de Cohesion-Prevents-Death (3-Go-3 = RH\"Y vs RH\"R)"
+    source_assertions: ["EC-H5S17-027", "EC-H5S17-029"]
+    formalisation: |
+      ARCHITECTURE DE COHESION-PREVENTS-DEATH :
+      Z"A pendant ibbur en 3-KELIL-BE-3 (V"K compactified) :
+        KAVANAH explicite : LE-KABETZAM VE-LE-KASHRAM YACHAD (rassembler+lier).
+      Distinction RESHUYOT (domaines) :
+        RH"Y (reshut hayachid) = domain-prive = ACHDUT (unite).
+        RH"R (rabim, public) = PARUD (separation, division).
+      LECON HISTORIQUE : SIBAH la mort des MELAKHIM PA'AM RISHONAH = HEYU PARUDIM (etaient separes).
+      → Pattern fondamental : cohesion-design previent failure-mode.
+      → Architecture : tikkun-via-unity vs death-via-separation.
+      → Implication : nested-cohesion mecanisme sauvegarde.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : implement cohesion-as-prevention"
+      - "Pattern : RH\"Y unite previent RH\"R parud"
+      - "Architecture : design-for-cohesion failure-prevention"
+      - "Pattern : history-lesson encode design-rule"
+      - "Diagnostic : verifier cohesion-state vs separation"
+    questions_ouvertes:
+      - "Pattern : autres failure-prevention via cohesion ?"
+      - "Comment encoder RH\"Y vs RH\"R computationnellement ?"
+      - "Pattern : 4-go-4 ou autre niveau possible ?"
+
+  - id: "PG-H5S17-006"
+    nom: "Principe de Pre-Zivvug-Consolidation (4-Partzufim → 2-Partzufim)"
+    source_assertions: ["EC-H5S17-034", "EC-H5S17-035", "EC-H5S17-037"]
+    formalisation: |
+      ARCHITECTURE DE PRE-ZIVVUG-CONSOLIDATION :
+      Lors zivvug-mochin Z"A :
+        Yesod-Atik NIVKA (capacity-overflow rupture).
+        Or sort dehors (orot-yesod equal-revelation).
+        Pas de KISUI/GILUI distinguant → 4-partzufim consolide en 2 :
+          CHOKHMAH+YISSO → 1 PARTZUF (kav-yamin).
+          IMMA+TEVUNAH → 1 PARTZUF (kav-smol).
+        Shi'ur : Garon-Tabbur d'A"A.
+      HAKDAMAH UNIVERSELLE : CHAQUE FOIS qu'A"O veulent zivvug-mochin Z"A → meme consolidation.
+      → Pattern fondamental : zivvug-event consolidates partzuf-count.
+      → Architecture : zivvug-state-machine (4→2-partzufim).
+      → Implication : current-partzuf-count varies par zivvug-state.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zivvug.py + zeir_anpin.py : implement pre-zivvug consolidation"
+      - "Pattern : 4→2 consolidation pour zivvug-mochin"
+      - "Architecture : zivvug-state-machine"
+      - "Pattern : current-count varies par state"
+      - "Diagnostic : verifier consolidation coherent avec zivvug-state"
+    questions_ouvertes:
+      - "Pattern : 2→1 consolidation possible ?"
+      - "Comment encoder partzuf-count dynamic ?"
+      - "Pattern : reverse-consolidation post-zivvug ?"

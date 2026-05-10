@@ -1,0 +1,22 @@
+# ═══════════════════════════════════════════════════════════════════
+# Heikhal 05 — Ze'eir Anpin (היכל זעיר אנפין)
+# Cree pour Sha'ar Z"A (Sefer Etz Chaim 17, Sefaria gate 17)
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer_id: "etz_chaim"
+  heikhal_number: 5
+  heikhal_name_he: "היכל זעיר אנפין"
+  heikhal_name_fr: "Palais de Z'eir Anpin (Petit Visage)"
+  partzuf: zeir_anpin
+  partzuf_name_fr: "Petit Visage — Z\"A, partzuf central"
+  etz_chaim_shaar_reference: 17  # Sefaria gates 17-33 ; 17 sha'arim
+  nombre_shaarim: 17
+  description: "Heikhal 5 = palais Z\"A. 17 sha'arim systematiques sur la tikkun, les mochin, les zivvugim de Z\"A. Pivot du systeme."
+
+  source_edition_default: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  source_tradition: "Etz Chaim de R. Hayyim Vital — lecture Lourianique systematique"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Heikhal central du systeme. 17 sha'arim couvrent tikkun, mochin, zivvugim, gadlut Z\"A."

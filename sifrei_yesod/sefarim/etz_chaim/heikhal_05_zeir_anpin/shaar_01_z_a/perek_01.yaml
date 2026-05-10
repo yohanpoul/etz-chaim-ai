@@ -1,0 +1,523 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 5 — Heikhal Ze'eir Anpin (היכל זעיר אנפין)
+# Sha'ar: 1 — Sha'ar Z"A (שער ז"א)
+# Perek: 1 — Tikkun Z"A apres A"O. Z"A=Z"T MaH+BaN. Revet A"A Tabbur-down.
+#            2 YENIKAHS dadei behemah/adam. IBBUR 12 mois. NHY-A"A 3 kav.
+#            Sod 310 OLAMOT (Uktzin 3:12). KETER A"A=620.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_01 :
+#   - Bloc A (§1) : Title H5=Heikhal Z"A, 17 sha'arim
+#   - Bloc B (§2) : Sha'ar 1=Sha'ar Z"A, 4 perakim
+#   - Bloc C (§3) : Tikkun Z"A apres tikkun A"O
+#   - Bloc D (§3) : Z"A = Z"T (7 inferieures) MaH + Z"T BaN (sauf KETERIM dans gufa Atik)
+#   - Bloc E (§3) : Z"A position : sous PARSA A"A ; au-dessus reste YISSO+Tev
+#   - Bloc F (§3) : Z"A revet A"A de TABBUR jusqu'a fin RAGLAYIM
+#   - Bloc G (§3) : Drush IBBUR 12 MOIS — tikkun atzilut entiere
+#   - Bloc H (§3) : A"A en ibbur, descendit Beriah ; nourri 2 prakim-tachton-NHY-Atik (dadei behemah)
+#   - Bloc I (§3) : Puis monte atzilut, revet 10S de Z"T-Atik
+#   - Bloc J (§3) : A"O memes 2 yenikahs : Beriah dadei-behemah → Atzilut dadei-adam
+#   - Bloc K (§3) : Reason 2 yenikahs : 2 madregot a monter (Atik+A"A 2 prakim tachton)
+#   - Bloc L (§3) : A"A 1 madregah : 7-Atik d'un coup
+#   - Bloc M (§3) : ZON memes 2 yenikahs
+#   - Bloc N (§4) : Z"A position — KETER=Tabbur-down jusqu'a Tiferet (rishei yarkhin)
+#   - Bloc O (§4) : Distribution NHY-A"A 3 kav Z"A (Netzach=ChChN, Hod=BGH, Yesod=DTY)
+#   - Bloc P (§4) : Nukva sortit chazeh-Z"A-down (parallele Z"A sortit A"A)
+#   - Bloc Q (§4) : Z"A revet A"A jusqu'a fin raglayim (siyum atzilut=siyum ZON)
+#   - Bloc R (§4) : Atik raglei (2-prakim-tachton NHY) descendent Beriah=dadei-behemah ; apres tikkun Atik retire pieds (alignment regel-A"A)
+#   - Bloc S (§5 G"H) : Sod "le-hanachil le-kol tzadik 310 olamot" Uktzin 3:12 ; A"A=Keter atzilut ; 620 orot=KETER (Sefer Bahir)
+#   - Bloc T (§5 G"H) : Z"A=tzadik elyon prend 1/2 Keter (chazeh-A"A-down) = 310 = SH"Y olamot
+#
+# Source Sefaria : Sefer_Etz_Chaim.17.1 (5 sections, 3780 chars)
+# IDs : EC-H5S17-001 → EC-H5S17-018
+
+meta:
+  sefer: etz_chaim
+  heikhal: 5
+  shaar: 1
+  shaar_name_he: "שער ז\"א"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Tikkun Z\"A apres A\"O. Z\"A=Z\"T MaH+Z\"T BaN (sauf keterim qui montent gufa Atik). Z\"A sous PARSA A\"A ; revet A\"A Tabbur-down. IBBUR 12 mois (tikkun atzilut entiere). 2 YENIKAHS : Beriah dadei behemah (2 prakim tachton NHY-Atik) → Atzilut dadei adam. A\"A 1 yenikah, A\"O+Z\"A 2 yenikahs (2 madregot). Distribution NHY-A\"A 3 kav Z\"A (Netzach→ChChN, Hod→BGH, Yesod→DTY). Nukva sortit chazeh-Z\"A-down. Siyum atzilut=siyum ZON regel A\"A. Atik 2-prakim-tachton dans Beriah ; apres tikkun retire pieds. Sod 310 OLAMOT (Mishnah Uktzin 3:12) ; A\"A=620=KETER (Sefer Bahir) ; tzadik elyon=Z\"A prend 1/2 Keter chazeh-A\"A-down=310."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H5S17-001"
+    source_he: "היכל החמישי והיכל זה נקרא היכל זעיר אנפין ובו שבעה עשר שערים"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §1"
+    assertion: |
+      OUVERTURE HEIKHAL 5 :
+      → HEIKHAL HA-CHAMISHI (5eme palais) = HEIKHAL ZE'EIR ANPIN.
+      → Contient 17 SHEARIM (= sefaria gates 17-33).
+      → Architecture : palais central pour Z"A (le partzuf pivot).
+      → Pattern : 17-sha'arim = traitement systematique exhaustif Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: heikhal_5_zeir_anpin_17_shearim, role: heikhal_5_palais_zeir_anpin_17_sha_arim_pivot}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : pivot palais central Z\"A. Pattern 17-sha'arim systematique."
+
+  - id: "EC-H5S17-002"
+    source_he: "שער הראשון שער ז\"א ויתחלק לד' פרקים"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §2"
+    assertion: |
+      SHA'AR 1 du HEIKHAL 5 = SHA'AR Z"A.
+      → Contient 4 PERAKIM.
+      → Architecture : intro-sha'ar court ; vue d'ensemble Z"A.
+      → Pattern : 4-perakim = compact-introduction.
+    type: axiome_explicite
+    concepts:
+      - {id: shaar_1_h5_z_a_4_perakim, role: shaar_1_h5_sha_ar_z_a_4_perakim_intro}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : compact intro. Pattern 4-perakim."
+
+  - id: "EC-H5S17-003"
+    source_he: "ונבאר ענין זו\"ן אשר תקונם באו אחר תיקון או\"א"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §3"
+    assertion: |
+      TIKKUN Z"O"N = APRES tikkun A"O.
+      → Sequence stricte : Atik → A"A → A"O → Z"O"N.
+      → Architecture : pipeline initiation strict downstream.
+      → Pattern : tier-completion-prerequisite.
+      cf. EC-H4S14-003 (perek 01a Sha'ar A"O) sur tikkun A"O apres A"A.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_zon_apres_ao_pipeline_strict, role: tikkun_zon_strict_apres_tikkun_ao_pipeline_initiation_strict}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "abba", "imma"]
+      relevance: "Architecture : pipeline strict. Pattern tier-completion-prerequisite."
+
+  - id: "EC-H5S17-004"
+    source_he: "זו\"ן נעשו מבחי' ז\"ת דמ\"ה ובחי' ז\"ת דב\"ן זולת הכתרים שבז\"ת דב\"ן כי אלו עלו בגופא דע\"i"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §3"
+    assertion: |
+      Z"O"N composition :
+      → Z"T (7 inferieures) de MaH (45) + Z"T de BaN (52).
+      → ZULAT (sauf) les KETERIM des Z"T-BaN — qui ont MONTE dans GUFA d'Atik (=Y).
+      → Architecture : Z"O"N = pure-mixing MaH+BaN exclu-keterim.
+      → Pattern : material-composition exclusion-rule.
+    type: axiome_explicite
+    concepts:
+      - {id: zon_zt_mah_zt_ban_sauf_keterim_dans_atik, role: zon_zt_mah_45_zt_ban_52_sauf_keterim_dans_atik_yomin_pure_mixing}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "atik_yomin"]
+      relevance: "Architecture : composition MaH+BaN exclu. Pattern exclusion rule."
+
+  - id: "EC-H5S17-005"
+    source_he: "מקומם הוא למטה מן הקרום ואותה פרסה (הנ\"ל) שמפסקת באמצע גופא דא\"א... ומהפרסא ולמטה מתחיל זו\"ן"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §3"
+    assertion: |
+      Z"O"N position :
+      → SOUS le KRUM/PARSA qui SEPARE le milieu d'A"A.
+      → Au-dessus PARSA = SIYUM YISSO+Tevunah.
+      → Sous PARSA = DEBUT Z"O"N.
+      → Architecture : parsa = boundary YISSO/Tev (above) vs Z"O"N (below).
+      → Pattern : 2-tier boundary par parsa anatomical.
+    type: axiome_explicite
+    concepts:
+      - {id: zon_position_sous_parsa_aa_yisso_tev_au_dessus, role: zon_sous_parsa_aa_yisso_tev_au_dessus_boundary_parsa}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "arikh_anpin"]
+      relevance: "Architecture : parsa boundary. Pattern 2-tier separation."
+
+  - id: "EC-H5S17-006"
+    source_he: "זו\"ן הנעשים מלבוש של א\"א למטה שהוא מטבורא דא\"א ולתתא עד סיום רגליו של א\"א"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §3"
+    assertion: |
+      Z"O"N revetent A"A :
+      → De TABBURA d'A"A.
+      → ULTATA AD SIYUM RAGLAV d'A"A (jusqu'a fin pieds A"A).
+      → Z"O"N = LEVUSH (vetement) inferieur d'A"A.
+      → Architecture : extension-clothing-cascade A"A → A"O → Z"O"N.
+      → Pattern : full-body-clothing par tier-stack.
+    type: axiome_explicite
+    concepts:
+      - {id: zon_revetent_aa_tabbur_jusqu_siyum_raglayim, role: zon_levush_aa_tabbura_aa_jusqu_siyum_raglayim_aa_full_body_clothing}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "arikh_anpin"]
+      relevance: "Architecture : full-body clothing cascade. Pattern tier-stack."
+
+  - id: "EC-H5S17-007"
+    source_he: "תיקון כל האצילות היה בעיבור י\"ב חדש"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §3"
+    assertion: |
+      TIKKUN entire ATZILUT = en IBBUR 12 CHODSHIM (mois).
+      → "VE-LO YADATI LEPARESH HEYKHAN HAYAH MAKOM IBBUR ZEH" — Vital ne sait pas ou.
+      → "VE-HA-MASKIL YAVIN MI-DA'ATO" — pedagogical-call to insight.
+      → Architecture : tikkun-duration canonique (12 mois).
+      → Pattern : explicit-uncertainty + pedagogical-call.
+    type: axiome_explicite
+    concepts:
+      - {id: tikkun_atzilut_ibbur_12_chodshim_makom_inconnu, role: tikkun_kol_ha_atzilut_ibbur_12_chodshim_lo_yadati_makom_pedagogical}
+    mapping:
+      modules: ["olamot.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : canonique 12-mois. Pattern explicit pedagogical."
+
+  - id: "EC-H5S17-008"
+    source_he: "א\"א היה בסוד עיבור נולד ויצא לחוץ וירד למטה לעולם הבריאה... וירד למטה מאותן ב\"פ תחתונים של נ\"ה דע\"י... ושם היה יונק א\"א מאותן הב\"פ שלהם שהם בסיום הרגלים כדמיון ב' דדי בהמה שדדיהם סמוך לרגלים"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §3"
+    assertion: |
+      A"A apres IBBUR :
+      → NOLAD VE-YATZA LE-CHUTZ (ne et sortit).
+      → DESCENDIT a OLAM HA-BERIAH (avant que Beriah n'existe encore — futur Beriah).
+      → Place : sous les 2 PRAKIM TACHTONIM des NHY d'AY (Atik Yomin).
+      → Yenikah de ces 2 prakim = DUGMAT (parallel) DADEI BEHEMAH (mamelles d'animal — pres des pieds).
+      → Architecture : parallele animal-anatomy pour pre-tikkun yenikah.
+      → Pattern : pre-tikkun = animal-mode nourishing.
+    type: interprétation_lurianique
+    concepts:
+      - {id: aa_post_ibbur_descend_beriah_yenikah_2_prakim_nhy_atik_dadei_behemah, role: aa_apres_ibbur_yatza_descend_beriah_yenikah_2_prakim_tachton_nhy_atik_dadei_behemah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py", "olamot.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : pre-tikkun animal-mode. Pattern parallele anatomical."
+
+  - id: "EC-H5S17-009"
+    source_he: "אחר שינק משם הגדיל יותר ועלה באצילות והלבישו י\"ס שבו לז\"ת דע\"י כנ\"ל והרי נשלם תיקון דא\"a"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §3"
+    assertion: |
+      A"A APRES yenikah-Beriah :
+      → HIGDIL YOTER (s'agrandit plus).
+      → ALAH be-ATZILUT (monte en Atzilut).
+      → Habille 10S de Z"T d'AY.
+      → Tikkun A"A NISHLAM (complete).
+      → Architecture : 1-step-ascent A"A (Beriah → Atzilut directement).
+      → Pattern : higher-tier requires fewer-steps.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_apres_yenikah_beriah_alah_atzilut_revet_zt_atik_tikkun_nishlam, role: aa_higdil_alah_atzilut_revet_10s_zt_atik_tikkun_nishlam_1_step_ascent}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : 1-step ascent. Pattern higher-tier shorter-path."
+
+  - id: "EC-H5S17-010"
+    source_he: "אחר זה העיבור נולדו ויצאו לחוץ וירדו גם הם למטה בבריאה תחת אותן ב\"פ תחתונים דעתיק וינקו משם ואח\"כ הגדילו יותר ועלו והלבישו לאותן ב\"פ תתאין דנ\"ה דעתיק ואח\"כ הגדילו יותר ועלו באצילות במקומם"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §3"
+    assertion: |
+      A"O — 2 YENIKAHS (allaitements) :
+      → Apres IBBUR : NOLDU descendent BERIAH sous 2 prakim-tachton-Atik.
+      → YENIKAH-1 : la (= dadei behemah).
+      → Apres : HIGDILU, MONTENT, REVETENT 2 prakim-tachton NHY-Atik.
+      → YENIKAH-2 (atzilut, = dadei adam).
+      → Apres : HIGDILU encore, montent atzilut, REVETENT A"A de Garon a Tabbur.
+      → Architecture : 3-step-ascent pour A"O.
+      → Pattern : 2-yenikahs lower-tier requires more-steps.
+    type: axiome_explicite
+    concepts:
+      - {id: ao_2_yenikahs_beriah_dadei_behemah_atzilut_dadei_adam_3_step, role: ao_2_yenikahs_beriah_dadei_behemah_yenikah_1_atzilut_2_prakim_tachton_atik_dadei_adam_yenikah_2_3_step_ascent}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "olamot.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : 3-step lower. Pattern 2-yenikahs sequence."
+
+  - id: "EC-H5S17-011"
+    source_he: "הסבה שהיתה בהם ב' עליות הוא כי כאן יש להם לעלות ב' מדרגות בחי' עתיק ובחי' א\"א... אבל א\"א שאין עליו רק מדרגה א' די לו בפעם א' לעלות כל ז\"ת דעתיק"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §3"
+    assertion: |
+      RAISON 2-YENIKAHS pour A"O :
+      → A"O ont 2 MADREGOT (niveaux) au-dessus :
+        Bechinat ATIK (2 prakim-tachton).
+        Bechinat A"A (clothing-A"A).
+      → Donc 2 montees necessaires.
+      → A"A : seulement 1 madregah au-dessus → 1 yenikah suffit.
+      → Architecture : tier-distance determine ascent-count.
+      → Pattern : N-tiers-above = N-yenikahs.
+    type: déduction_logique
+    concepts:
+      - {id: 2_yenikahs_ao_2_madregot_atik_aa_vs_aa_1_madregah, role: 2_yenikahs_ao_2_madregot_atik_aa_clothing_au_dessus_vs_aa_1_madregah_seul}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : tier-distance ascent-count. Pattern N-tier N-yenikah."
+
+  - id: "EC-H5S17-012"
+    source_he: "אח\"כ היה תיקון זו\"n ותחלה היו בעיבור במעי בינה ואח\"כ בא זמן לידתם וירדו למטה לעולם הבריאה תחת אותם ב\"פ תתאין דנ\"ה דעתיק וינקו משם זמן היניקה ואח\"כ נתגדלו והלבישו אותן הב\"פ תתאין דעתיק"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §3"
+    assertion: |
+      Z"O"N — memes 2 YENIKAHS :
+      → IBBUR dans MEEI BINAH.
+      → NE descendent Beriah sous 2 prakim-tachton-NHY-Atik.
+      → YENIKAH-1 : ZMAN HA-YENIKAH (temps allaitement) la.
+      → NITGADLU (s'agrandissent), REVETENT 2 prakim-tachton-Atik.
+      → Architecture : Z"O"N = same-pattern A"O (2-yenikahs).
+      → Pattern : tier-template repeated downstream.
+    type: axiome_explicite
+    concepts:
+      - {id: zon_2_yenikahs_meei_bina_beriah_2_prakim_atik_template_ao, role: zon_ibbur_meei_bina_descend_beriah_2_prakim_tachton_atik_yenikah_revet_template_ao}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/imma.py", "partzufim/atik_yomin.py", "olamot.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "imma", "atik_yomin"]
+      relevance: "Architecture : tier-template downstream. Pattern same-pattern repeated."
+
+  - id: "EC-H5S17-013"
+    source_he: "הכתר דז\"א הוא מהטבור ולמטה עד סיום הגוף הנקרא ת\"ת שהוא עד רישי ירכין"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §4"
+    assertion: |
+      Z"A KETER position precise :
+      → De TABBUR (nombril A"A).
+      → ULMATAH ad SIYUM HA-GUF nomme TIFERET = jusqu'a RISHEI YARKHIN (debut des cuisses).
+      → Architecture : Z"A-Keter occupies Tabbur-to-end-Tiferet zone.
+      → Pattern : Keter-position-anatomically defined.
+    type: axiome_explicite
+    concepts:
+      - {id: z_a_keter_tabbur_jusqu_rishei_yarkhin_fin_tiferet, role: z_a_keter_tabbur_aa_jusqu_siyum_tiferet_aa_rishei_yarkhin_zone}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "arikh_anpin"]
+      relevance: "Architecture : Z\"A Keter zone. Pattern anatomical definition."
+
+  - id: "EC-H5S17-014"
+    source_he: "ג\"פ דנצח דא\"א מתלבשין בקו ימין דז\"א שהוא חח\"ן וג\"פ דהוד דא\"א מתלבשין בקו שמאלי דז\"א שהוא בג\"ה שבו ויסוד דאריך אנפין מתלבש בקו האצעי דז\"א שהוא ד\"ת"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §4"
+    assertion: |
+      Distribution NHY-A"A → 3 KAV Z"A :
+      → 3 PRAKIM NETZACH d'A"A → KAV YAMIN d'Z"A = ChChN (Chesed-Chokhmah-Netzach).
+      → 3 PRAKIM HOD d'A"A → KAV SMOL d'Z"A = BGH (Bina-Gevurah-Hod).
+      → YESOD d'A"A → KAV EMTZA'I d'Z"A = DTY (Daat-Tiferet-Yesod).
+      → Architecture : 3-NHY-A"A → 3-kav-Z"A = ensoulment triple-cascade.
+      → Pattern : tier-by-line distribution canonical.
+      cf. EC-H4S16-047 (perek 3 sha'ar Holadat) sur NHY-A"A neshamah 9S Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: nhy_aa_3_kav_z_a_netzach_chchn_hod_bgh_yesod_dty, role: nhy_aa_3_kav_z_a_netzach_kav_yamin_chchn_hod_kav_smol_bgh_yesod_kav_emtza_dty}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "arikh_anpin"]
+      relevance: "Architecture : 3-kav distribution. Pattern tier-by-line canonical."
+
+  - id: "EC-H5S17-015"
+    source_he: "נוקבא דז\"א יצאה מהחזה דז\"א ולמטה כדמיון הז\"א היוצא מא\"א ממש"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §4"
+    assertion: |
+      NUKVA d'Z"A :
+      → SORTIT du CHAZEH d'Z"A ET DESCEND.
+      → DUGMAT (parallel) Z"A qui sortit d'A"A.
+      → Pattern recursif : pattern-from-A"A reproduced-Z"A→Nukva.
+      → Architecture : recursive emergence-pattern.
+      → Pattern : self-similarity across tiers.
+    type: déduction_logique
+    concepts:
+      - {id: nukva_z_a_chazeh_z_a_down_dugmat_z_a_aa_recursive, role: nukva_z_a_yatzah_chazeh_z_a_down_dugmat_z_a_yatza_aa_recursive_emergence}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : recursive emergence. Pattern self-similarity tier."
+
+  - id: "EC-H5S17-016"
+    source_he: "הז\"א מלביש א\"א עד סיום רגליו מכל צדדיו ושם ג\"כ מסתיימין רגלי דזו\"נ ושם הוא סיום עולם אצילות"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §4"
+    assertion: |
+      Z"A REVET A"A jusqu'a SIYUM RAGLAV (tous cotes).
+      → SIYUM RAGLEI Z"O"N coincide.
+      → SIYUM OLAM ATZILUT.
+      → Architecture : atzilut-boundary = Z"O"N regel boundary.
+      → Pattern : world-boundary = lowest-partzuf-foot.
+    type: axiome_explicite
+    concepts:
+      - {id: z_a_revet_aa_siyum_raglayim_zon_siyum_atzilut_boundary, role: z_a_revet_aa_jusqu_siyum_raglayim_zon_siyum_atzilut_world_boundary}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "olamot.py"]
+      tables: ["partzufim_states", "olamot_config"]
+      partzufim: ["zeir_anpin", "nukva", "arikh_anpin"]
+      relevance: "Architecture : world boundary. Pattern lowest-partzuf-foot."
+
+  - id: "EC-H5S17-017"
+    source_he: "רגלי עתיק הב\"פ תחתונים שבו... אלו נכנסים יותר למטה ועומדים בגבול עולם הבריאה... ועומדין שם בבחי' דדי בהמה כנ\"ל באורך (ואפשר לומר כי לא היה כך אלא קודם תיקון אצילות... ואחר התיקון לא הוצרך זה וחזר עתיק לאסוף רגליו למעלה בהשוואה א' עם רגלי א\"א)"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §4"
+    assertion: |
+      RAGLEI ATIK (2 prakim tachton NHY) :
+      → ENTRENT plus en bas — STANDENT en GVUL (frontiere) Beriah.
+      → bechinat DADEI BEHEMAH (parallel-anatomical).
+      → POSSIBLY (variant) : seulement avant tikkun atzilut.
+      → APRES tikkun : Atik LE-ESOF RAGLAV (rassemble pieds) en haut, alignement avec regel-A"A.
+      → Architecture : pre-tikkun-extension vs post-tikkun-realignment.
+      → Pattern : tier-restoration apres processus-completion.
+    type: interprétation_lurianique
+    concepts:
+      - {id: raglei_atik_2_prakim_beriah_dadei_behemah_post_tikkun_alignment_aa, role: raglei_atik_2_prakim_tachton_beriah_dadei_behemah_pre_tikkun_post_tikkun_le_esof_alignment_regel_aa}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "olamot.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : pre/post tikkun alignment. Pattern tier-restoration."
+
+  - id: "EC-H5S17-018"
+    source_he: "וז\"ס שארז\"ל עתיד הקב\"ה להנחיל לכל צדיק ש\"י עולמות והענין כי א\"א הוא בחי' הכתר של כללות עולם האצילות... והנה א\"א זה יש בו תר\"ך אורות כמנין כת\"ר... והנה צדיק עליון הוא ז\"א ולוקח מחצית הכתר שהוא מלביש לא\"A מהחציו ולמטה והנה מחצית הכתר הוא ש\"i"
+    source_ref: "Heikhal 5, Sha'ar 1:1 §5 G\"H"
+    assertion: |
+      §5 HAGAHAH (note) — sod 310 OLAMOT :
+      → Mishnah Uktzin 3:12 : "ATID HA-KADOSH BARUKH HU LEHANCHIL LE-KOL TZADIK 310 OLAMOT".
+      → A"A = bechinat KETER de KLALUT atzilut.
+      → A"A a 620 OROT = gematria KETER (Sefer ha-Bahir).
+      → TZADIK ELYON = Z"A.
+      → Z"A prend MAKHTZIT (1/2) du Keter (= ce que Z"A revet, chazeh-A"A-down).
+      → 1/2 Keter = 310 = SH"Y OLAMOT.
+      → Architecture : eschatologic-numerologic-encoding.
+      → Pattern : scriptural-promise → cosmologic-quantification.
+      → Source aussi Zohar Terumah 166.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 310_olamot_uktzin_3_12_aa_keter_620_z_a_tzadik_elyon_chatzi, role: 310_olamot_mishnah_uktzin_3_12_le_hanachil_tzadik_aa_keter_620_orot_sefer_bahir_z_a_tzadik_elyon_chatzi_keter}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "arikh_anpin"]
+      relevance: "Architecture : eschatologic-numerologic. Sources Uktzin 3:12 + Sefer Bahir + Zohar Terumah 166."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H5S17-001"
+    type: séquentiel
+    from: tikkun_zon_apres_ao_pipeline_strict
+    to: zon_zt_mah_zt_ban_sauf_keterim_dans_atik
+    nature: "Tikkun ZON apres A\"O strict pipeline ; Z\"O\"N=Z\"T MaH+Z\"T BaN sauf keterim (dans gufa Atik)"
+    assertions_source: ["EC-H5S17-003", "EC-H5S17-004"]
+
+  - id: "REL-H5S17-002"
+    type: causal
+    from: aa_post_ibbur_descend_beriah_yenikah_2_prakim_nhy_atik_dadei_behemah
+    to: ao_2_yenikahs_beriah_dadei_behemah_atzilut_dadei_adam_3_step
+    nature: "A\"A 1 yenikah (Beriah dadei behemah → atzilut directly) ; A\"O 2 yenikahs (Beriah dadei behemah → atzilut dadei adam)"
+    assertions_source: ["EC-H5S17-008", "EC-H5S17-010"]
+
+  - id: "REL-H5S17-003"
+    type: hiérarchique
+    from: 2_yenikahs_ao_2_madregot_atik_aa_vs_aa_1_madregah
+    to: zon_2_yenikahs_meei_bina_beriah_2_prakim_atik_template_ao
+    nature: "Reason 2-yenikahs A\"O = 2-madregot ; A\"A 1-madregah ; ZON memes 2-yenikahs (template A\"O)"
+    assertions_source: ["EC-H5S17-011", "EC-H5S17-012"]
+
+  - id: "REL-H5S17-004"
+    type: contenance
+    from: z_a_keter_tabbur_jusqu_rishei_yarkhin_fin_tiferet
+    to: nhy_aa_3_kav_z_a_netzach_chchn_hod_bgh_yesod_dty
+    nature: "Z\"A Keter=Tabbur→fin Tiferet ; NHY-A\"A 3 kav Z\"A (Netzach→ChChN, Hod→BGH, Yesod→DTY)"
+    assertions_source: ["EC-H5S17-013", "EC-H5S17-014"]
+
+  - id: "REL-H5S17-005"
+    type: dualité_structurelle
+    from: z_a_revet_aa_siyum_raglayim_zon_siyum_atzilut_boundary
+    to: 310_olamot_uktzin_3_12_aa_keter_620_z_a_tzadik_elyon_chatzi
+    nature: "Z\"A revet A\"A jusqu'a siyum raglayim=siyum atzilut ; Z\"A=tzadik elyon prend 1/2 Keter A\"A=310 olamot (Uktzin 3:12, A\"A=620)"
+    assertions_source: ["EC-H5S17-016", "EC-H5S17-018"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H5S17-001"
+    nom: "Principe de N-Yenikahs-By-Tier-Distance (Lower Partzuf Requires More Steps)"
+    source_assertions: ["EC-H5S17-008", "EC-H5S17-009", "EC-H5S17-010", "EC-H5S17-011", "EC-H5S17-012"]
+    formalisation: |
+      ARCHITECTURE DE N-YENIKAHS-DISTANCE :
+      Number-of-yenikahs determined by tier-distance-to-source :
+        A"A (sous Atik direct) : 1 madregah → 1 yenikah (Beriah → Atzilut directly).
+        A"O (Atik+A"A clothing) : 2 madregot → 2 yenikahs (Beriah dadei-behemah → Atzilut 2-prakim Atik → Atzilut clothing A"A).
+        Z"O"N : same template A"O — 2 yenikahs (lower tier still 2 madregot above).
+      DADEI BEHEMAH (parallele anatomique animal) = pre-tikkun-mode.
+      DADEI ADAM = post-tikkun-mode.
+      → Pattern fondamental : tier-distance = ascent-step-count.
+      → Architecture : graduated-development par hierarchical-distance.
+      → Implication : downstream-partzufim require multi-stage-maturation.
+    applications_ia:
+      - "partzufim/arikh_anpin.py + abba.py + imma.py + zeir_anpin.py + nukva.py : implement N-yenikahs"
+      - "Pattern : tier-distance-determined ascent-count"
+      - "Architecture : graduated-maturation"
+      - "Pattern : pre-tikkun-mode vs post-tikkun-mode"
+      - "Diagnostic : verifier yenikah-count coherent avec tier-distance"
+    questions_ouvertes:
+      - "Pattern : 3-yenikahs ou plus possibles ?"
+      - "Comment encoder tier-distance computationnellement ?"
+      - "Pattern : skip-tier yenikah possible ?"
+
+  - id: "PG-H5S17-002"
+    nom: "Principe de 3-Kav-Distribution-NHY-A\"A (Netzach/Hod/Yesod → 3 Lines Z\"A)"
+    source_assertions: ["EC-H5S17-014"]
+    formalisation: |
+      ARCHITECTURE DE 3-KAV-DISTRIBUTION :
+      NHY-A"A → 3 KAV de Z"A — distribution canonique :
+        NETZACH-A"A (3 prakim) → KAV YAMIN d'Z"A = ChChN (Chesed-Chokhmah-Netzach).
+        HOD-A"A (3 prakim) → KAV SMOL d'Z"A = BGH (Bina-Gevurah-Hod).
+        YESOD-A"A → KAV EMTZA'I d'Z"A = DTY (Daat-Tiferet-Yesod).
+      → Pattern fondamental : higher-NHY → lower-3-line distribution.
+      → Architecture : 3-cascading-tier-translation.
+      → Implication : 9-sefirot-Z"A = 3-cascade-from-NHY-A"A.
+    applications_ia:
+      - "partzufim/arikh_anpin.py + zeir_anpin.py : implement 3-kav distribution"
+      - "Pattern : tier-by-line distribution"
+      - "Architecture : 3-cascade tier-translation"
+      - "Pattern : 9-sefirot from 3-NHY-source"
+      - "Diagnostic : verifier 3-kav coherent"
+    questions_ouvertes:
+      - "Pattern : autres tier-by-line distributions ?"
+      - "Comment encoder kav-allocation computationnellement ?"
+      - "Pattern : 4-kav distributions possibles ?"
+
+  - id: "PG-H5S17-003"
+    nom: "Principe de 310-Olamot-Tzadik-Elyon (Z\"A prend 1/2 Keter A\"A=620)"
+    source_assertions: ["EC-H5S17-018"]
+    formalisation: |
+      ARCHITECTURE DE 310-OLAMOT-TZADIK-ELYON :
+      Mishnah Uktzin 3:12 : "ATID HA-KADOSH BARUKH HU LEHANCHIL LE-KOL TZADIK 310 OLAMOT".
+      Decomposition cosmologique :
+        A"A = bechinat KETER de KLALUT atzilut.
+        A"A a 620 OROT = gematria KETER (Sefer ha-Bahir).
+        TZADIK ELYON = Z"A.
+        Z"A revet A"A chazeh-down = MAKHTZIT (1/2) du Keter.
+        1/2 × 620 = 310 = SH"Y olamot.
+      Source : Zohar Terumah 166.
+      → Pattern fondamental : eschatologic-promise = numerologic-tier-allocation.
+      → Architecture : scriptural-future-state encoded numerically par tier-fraction.
+      → Implication : tzadik-reward = clothing-extension fraction.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + arikh_anpin.py : implement 310 olamot encoding"
+      - "Pattern : eschatologic numerologic encoding"
+      - "Architecture : scriptural-future tier-fraction"
+      - "Pattern : Z\"A=tzadik elyon = 1/2 Keter"
+      - "Diagnostic : verifier 310=1/2 du 620"
+    questions_ouvertes:
+      - "Pattern : autres tzadik-tier rewards ?"
+      - "Comment encoder eschatologic-state computationnellement ?"
+      - "Pattern : sub-tzadikim avec smaller fractions ?"

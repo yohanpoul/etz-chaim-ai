@@ -1,0 +1,505 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 5 — Heikhal Ze'eir Anpin (היכל זעיר אנפין)
+# Sha'ar: 1 — Sha'ar Z"A (שער ז"א)
+# Perek: 3 — Z"A=V"K MaH+BaN. Mochin chacun MaH+BaN (zachar+nukva).
+#            HADAR+MEHEITAVEL=ZON-MaH. 7 melakhim ikkar tikkun. Naso 131.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_03 :
+#   - Bloc A : Z"A=V"K MaH+V"K BaN sauf keterim (=Malkhut Z"A)
+#   - Bloc B : Nukva=Z"-MaH+Z"-BaN sauf keter
+#   - Bloc C : Mochin=2 bechinot NHY-A"O ; Abba zorea 4 mochin MaH ; Imma 4 mochin BaN
+#   - Bloc D : NIT'CHALFU : Chokhmah-MaH+BaN=ChB tzelem Abba ; Bina-MaH+BaN=ChB tzelem Imma
+#   - Bloc E : Chasadim-MaH+BaN=Daat ChG Abba ; Gevurah-MaH+BaN=Daat ChG Imma
+#   - Bloc F : Cause : zachar+nukva (MaH+BaN) chacun pour zivvug
+#   - Bloc G : Z"A revet NHY-A"A ChG ChB MaH+BaN ; Nukva idem revet Z"A
+#   - Bloc H : Aucun 10S sauf ZON a MaH+BaN dans zachar+nukva
+#   - Bloc I : AUTRE TA'AM : chaque partzuf ajoute shinui ; ZON ajoute kelul MaH+BaN
+#   - Bloc J : AUTRE TA'AM : en haut Nukva pas separe → mocha-zachar=MaH seul ; A"O zachar+nukva separe
+#   - Bloc K : Sod "VA-YIVEN HASHEM ELOKIM ET HA-TZELA" (Bereshit 2:22) ; Pekudei 221, Naso 128
+#   - Bloc L : Apres : 7 MELAKHIM ACHERIM-MaH=ZON-MaH=HADAR (Z"A-MaH 6)+MEHEITAVEL (Nukva-MaH)
+#   - Bloc M : NL"H : surement 10 sortirent ; 7 melakhim ikkar nommes (tikkun seulement Z"T)
+#   - Bloc N : TIRUTZ Naso 122 : 7 melakhim dans A"A, A"O, Z"O"N respectivement
+#   - Bloc O : MaH+BaN tous deux ont ChG ; HADAR-klal=AB+SaG+MaH+BaN ; BaN-klal idem
+#   - Bloc P : Naso 131 : 4 sortes melakhim ; 5 partzufim chacun MaH+BaN ; A"A seul sans nukva
+#   - Bloc Q : (§2 TZEMACH) : chaque partzuf sortit HADAR CHADASH pour fix 7 elyon
+#
+# Source Sefaria : Sefer_Etz_Chaim.17.3 (2 sections, 3297 chars)
+# IDs : EC-H5S17-039 → EC-H5S17-055
+
+meta:
+  sefer: etz_chaim
+  heikhal: 5
+  shaar: 1
+  shaar_name_he: "שער ז\"א"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Z\"A=V\"K MaH+V\"K BaN sauf keterim (=Malkhut). Nukva=Z\"-MaH+Z\"-BaN sauf keter. Mochin=2 bechinot NHY-A\"O. Abba zorea 4 mochin MaH ; Imma 4 mochin BaN. NIT'CHALFU : Chokhmah-MaH+BaN=ChB Abba ; Bina-MaH+BaN=ChB Imma ; Chasadim/Gevurah-MaH+BaN=Daat Abba/Imma. Cause : zachar+nukva (MaH+BaN) chacun pour zivvug. Z\"O\"N seul a MaH+BaN dans zachar+nukva. Sod 'Va-yiven Hashem Elokim et ha-Tzela' (Bereshit 2:22). Apres : 7 MELAKHIM ACHERIM-MaH=ZON-MaH=HADAR+MEHEITAVEL. NL\"H 10 sortirent mais 7 ikkar tikkun. Naso 122 : 7 melakhim dans A\"A, A\"O, ZON. Naso 131 : 4 sortes melakhim ; 5 partzufim avec MaH+BaN ; A\"A seul sans nukva ; Atik=shoresh. TZEMACH : chaque partzuf sortit HADAR CHADASH."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H5S17-039"
+    source_he: "ז\"א בירר ו\"ק דמ\"ה ונעשים דכורא ובירר מן ב\"ן ו\"ק זולתי הכתרים והיא מל' שבו"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      Z"A composition fine :
+      → BERER (extrait) V"K (6 sefirot) de MaH (45) → DEVIENT ZACHAR.
+      → BERER de BaN V"K — ZULAT (sauf) les KETERIM.
+      → Cela = MALKHUT shel Z"A (= sa Nukva interne avant separation).
+      → Architecture : tier-internal-extraction.
+      → Pattern : 6+6 dual-source assemblage.
+    type: axiome_explicite
+    concepts:
+      - {id: z_a_v_k_mah_zachar_v_k_ban_sauf_keterim_malkhut, role: z_a_berer_v_k_mah_devient_zachar_berer_v_k_ban_sauf_keterim_malkhut_z_a_avant_separation}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : tier-extraction. Pattern dual-source assemblage."
+
+  - id: "EC-H5S17-040"
+    source_he: "נוק' ביררה הז' דמ\"ה והז' דב\"ן זולת הכתר"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      NUKVA composition :
+      → BERRA (extrait, fem.) Z" (7 inferieures) de MaH + Z" de BaN — ZULAT (sauf) le KETER.
+      → Architecture : Nukva 7+7 dual-source.
+      → Pattern : female-mirror tier-extraction.
+    type: axiome_explicite
+    concepts:
+      - {id: nukva_z_mah_z_ban_sauf_keter, role: nukva_berra_z_t_mah_z_t_ban_sauf_keter_dual_source_female_mirror}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : female-mirror extraction. Pattern Nukva-tier."
+
+  - id: "EC-H5S17-041"
+    source_he: "המוחין שלהם הם ב' בחי' נה\"י דאו\"א ואבא הזריע ד' מוחין משלו משם מ\"ה ואמא הזריע ד' מוחין משלה משם ב\"n"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      MOCHIN Z"O"N :
+      → 2 bechinot = NHY d'A"O.
+      → ABBA HIZRIA (insemine) 4 MOCHIN MI-SHELO MI-SHEM MaH.
+      → IMMA HIZRIA 4 MOCHIN MI-SHELAH MI-SHEM BaN.
+      → Architecture : 2-source mochin (Abba-MaH + Imma-BaN).
+      → Pattern : parental-zorah-fournit-mochin.
+    type: axiome_explicite
+    concepts:
+      - {id: mochin_zon_2_bechinot_nhy_ao_abba_4_mochin_mah_imma_4_mochin_ban, role: mochin_zon_2_bechinot_nhy_ao_abba_hizria_4_mochin_mah_imma_hizria_4_mochin_ban}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : 2-source mochin. Pattern parental-zorah."
+
+  - id: "EC-H5S17-042"
+    source_he: "אח\"כ נתחלפו באופן זה חכמה דמ\"ה וחכמה דב\"ן הם חו\"ב דצלם דאבא בינה דמ\"ה ובינה דב\"ן הם חו\"ב דצלם דאימא וחסדים דמ\"ה וחסדים דב\"ן הם דעת הכולל חו\"ג דצלם דאבא וגבורה דמ\"ה וגבורה דב\"ן הם דעת הכולל חו\"ג דצלם דאמא"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      NIT'CHALFU (echange) — distribution :
+      → CHOKHMAH-MaH + CHOKHMAH-BaN = ChB du TZELEM d'ABBA.
+      → BINA-MaH + BINA-BaN = ChB du TZELEM d'IMMA.
+      → CHASADIM-MaH + CHASADIM-BaN = DAAT KOLLEL ChG du TZELEM d'ABBA.
+      → GEVURAH-MaH + GEVURAH-BaN = DAAT KOLLEL ChG du TZELEM d'IMMA.
+      → Architecture : same-sefirah-MaH+BaN paire dans TZELEM-parent-correspondant.
+      → Pattern : pair-creation par MaH+BaN intra-sefirah.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nit_chalfu_chokhmah_mah_ban_chb_abba_bina_mah_ban_chb_imma_chasadim_gevurah_mah_ban_daat_chg, role: nit_chalfu_chokhmah_mah_ban_chb_tzelem_abba_bina_mah_ban_chb_tzelem_imma_chasadim_gevurah_mah_ban_daat_chg_tzelem}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : pair-creation MaH+BaN. Pattern sefirah-pair tzelem."
+
+  - id: "EC-H5S17-043"
+    source_he: "הטעם כדי שיהיה צלם דאבא חו\"ב זכר ונוק' מ\"ה וב\"ן וכן הצלם דאמא חו\"ב זכר ונוק' מ\"ה וב\"ן... דאל\"כ איך יזדוגו זכר (עם) זכר ונוק' עם נוק'"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      RAISON nit'chalfu :
+      → TZELEM d'Abba ChB doit avoir ZACHAR+NUKVA (MaH+BaN).
+      → TZELEM d'Imma ChB pareil.
+      → ChG d'Abba+Imma pareil.
+      → SINON : impossibilite ZIVVUG zachar-zachar OR nukva-nukva.
+      → Architecture : zivvug-prerequisite zachar+nukva pair.
+      → Pattern : pair-design-prevents-impossible-zivvug.
+    type: déduction_logique
+    concepts:
+      - {id: tzelem_abba_imma_chb_chg_zachar_nukva_mah_ban_zivvug_prerequisite, role: tzelem_abba_chb_chg_zachar_nukva_mah_ban_imma_chb_chg_idem_prerequisite_zivvug_zachar_zachar_impossible}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : zivvug prerequisite. Pattern pair-design."
+
+  - id: "EC-H5S17-044"
+    source_he: "ז\"א מלביש לבדו לכל נה\"י דא\"א אשר שם החו\"ג דימין ושמאל ע\"כ לקח הז\"א לבדו חו\"ג חו\"ב דמ\"ה וב\"ן בזכר ועד\"ז בנקבה"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      Z"A REVET SEUL tous NHY-A"A :
+      → ChG yamin+smol dedans.
+      → Donc Z"A SEUL prend ChG+ChB de MaH+BaN dans ZACHAR.
+      → IDEM Nukva (revet Z"A revetant les 2 cotes A"A).
+      → Architecture : sole-cloth-of-NHY-A"A → exclusive-content.
+      → Pattern : exclusivity-of-clothing → exclusivity-of-content.
+    type: déduction_logique
+    concepts:
+      - {id: z_a_revet_seul_nhy_aa_chg_chb_mah_ban_zachar_nukva, role: z_a_revet_seul_nhy_aa_chg_yamin_smol_chg_chb_mah_ban_zachar_nukva_exclusive}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "arikh_anpin"]
+      relevance: "Architecture : sole-cloth → exclusive content. Pattern exclusivity."
+
+  - id: "EC-H5S17-045"
+    source_he: "אין בכל הי\"ס מי שיהיה בו מ\"ה וב\"ן בזכר ומ\"ה וב\"ן בנוק' כי אם זו\"ן"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      UNICITE Z"O"N :
+      → Aucun autre 10S a MaH+BaN dans ZACHAR ET MaH+BaN dans NUKVA.
+      → SEULEMENT Z"O"N (= Z"A + Nukva).
+      → Architecture : ZON unique-tier-with-double-MaH-BaN.
+      → Pattern : terminal-tier maximal-internal-mixture.
+    type: axiome_explicite
+    concepts:
+      - {id: z_o_n_seul_mah_ban_dans_zachar_nukva_unique, role: z_o_n_seul_mah_ban_dans_zachar_et_nukva_aucun_autre_10s_unique}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : Z\"O\"N unique. Pattern maximal mixture."
+
+  - id: "EC-H5S17-046"
+    source_he: "בכל בחי' דעתיק וא\"א ואו\"א נתוסף בו שינוי א' בענין הזכר ונקבה שבהם וע\"כ השינוי שנתוסף בזו\"ן הוא זה כי כל אחד משניהן כלול ממ\"ה וב\"n"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      AUTRE TA'AM (raison) — pattern shinui :
+      → Chaque tier (Atik, A"A, A"O) ajoute UN SHINUI dans relation zachar-nukva.
+      → ZON ajoute le shinui = chacun des 2 KELUL de MaH+BaN.
+      → Architecture : tier-progressive-differentiation.
+      → Pattern : downstream-adds-internal-mixture.
+    type: interprétation_lurianique
+    concepts:
+      - {id: pattern_shinui_progressif_atik_aa_ao_zon_kelul_mah_ban, role: pattern_shinui_progressif_chaque_tier_atik_aa_ao_zon_kelul_mah_ban}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : progressive differentiation. Pattern downstream-mixture."
+
+  - id: "EC-H5S17-047"
+    source_he: "למעלה אין ניכר רק זכר לבד והנוק' כלולה בו וע\"כ המוח של הזכר מ\"ה לבדו ושל נוק' ב\"ן לבדו אך או\"א זכר ונקבה גמורים בפרצופים גמורים נפרדין וכ\"א צריך לתת מחלקו לכל אחד מבניו לבן ולבת"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      AUTRE TA'AM additionnel :
+      → En HAUT (Atik+A"A) : seulement zachar NIKAR ; nukva KELULAH dans lui.
+      → MOCH du ZACHAR = MaH SEUL ; MOCH de NUKVA = BaN SEUL.
+      → MAIS A"O = ZACHAR+NEKEVAH GEMURIM PARTZUFIM NIFRADIM (separes).
+      → Chacun donne MI-CHELKO (de sa portion) a chaque enfant — au BEN (fils) et BAT (fille).
+      → Architecture : separation-up-stream → distribution-down-stream.
+      → Pattern : united-source vs separated-source heritage.
+    type: déduction_logique
+    concepts:
+      - {id: en_haut_zachar_seul_mah_nukva_kelulah_ban_a_o_separes_distribute_ben_bat, role: en_haut_zachar_seul_nikar_nukva_kelulah_mocha_zachar_mah_nukva_ban_a_o_partzufim_nifradin_distribute_ben_bat}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : united vs separated source. Pattern heritage distribution."
+
+  - id: "EC-H5S17-048"
+    source_he: "הבן שהוא ז\"א יורש או\"א ולקח מ\"ה וב\"ן ונקבה יורשת או\"א בסוד ויבן ה' אלהים את הצלע ולקחה מ\"ה וב\"ן ועיין פ' פקודי דרכ\"א ונשא דף קכ\"ח ותבין איך הז' מלכים הם זו\"ן דב\"n"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      Z"A et NUKVA heritage :
+      → BEN (Z"A) YORESH (herite) A"O → prend MaH+BaN.
+      → NEKEVAH (Nukva) YORESHET A"O → sod "VA-YIVEN HASHEM ELOKIM ET HA-TZELA" (Bereshit 2:22 — Hashem-Elokim batit la cote en femme).
+      → Aussi prend MaH+BaN.
+      → Sources Zohar : Pekudei 221, Naso 128.
+      → Comprendre : 7 MELAKHIM = ZON-BaN.
+      → Architecture : sibling-inheritance-rule.
+      → Pattern : both-children-inherit-MaH-BaN.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ben_z_a_nukva_yorshim_ao_mah_ban_va_yiven_bereshit_2_22_pekudei_221_naso_128, role: ben_z_a_nukva_yorshim_ao_chacun_mah_ban_va_yiven_hashem_elokim_ha_tzela_bereshit_2_22_pekudei_221_naso_128_z_t_melakhim_zon_ban}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : sibling inheritance. Sources Bereshit 2:22 + Pekudei 221 + Naso 128."
+
+  - id: "EC-H5S17-049"
+    source_he: "אח\"כ יצאו ז' מלכים אחרים דמ\"ה והם זו\"נ דמ\"ה ונקרא הדר שהוא ז\"א דמ\"ה שהם ו' מלכים ומהיטבאל נוק' דמ\"ה וע\"י אלו נתקנו ז\"ת"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      Apres : 7 MELAKHIM ACHERIM (autres) de MaH :
+      → = Z"O"N de MaH.
+      → NOMMES :
+        HADAR (= Z"A-MaH) — 6 melakhim (V"K).
+        MEHEITAVEL (Bereshit 36:39 femme de Hadar) — Nukva-MaH.
+      → Par eux NITKENU Z"T (les 7 inferieures).
+      → Architecture : second-set-of-7 pour fix-first-7-broken.
+      → Pattern : tikkun-via-mirror-pair (7-fix-7).
+    type: axiome_explicite
+    concepts:
+      - {id: 7_melakhim_acherim_mah_zon_mah_hadar_meheitavel_tikkun_z_t, role: 7_melakhim_acherim_mah_zon_mah_hadar_z_a_v_k_meheitavel_nukva_tikkun_z_t}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : second-set tikkun. Pattern mirror-pair fix."
+
+  - id: "EC-H5S17-050"
+    source_he: "ונלע\"ד ודאי שיצאו י' דמ\"ה אלא כיון שעיקר התיקון הוא אל ז' מלכים דב\"ן לבד לכן נזכרו בשם שבע אבל ודאי היו כלולים מי\"ס"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      NL"H (Nilad) — note Vital :
+      → SUREMENT 10 SORTIRENT (10 melakhim acherim de MaH).
+      → MAIS IKKAR HA-TIKKUN (essentiel reparation) = pour les 7 melakhim de BaN seulement.
+      → Donc NIZKARU BE-SHEM 7 (mentionnes "7" dans le texte).
+      → Architecture : nominal-count-by-essential-purpose.
+      → Pattern : naming-reflects-key-function not total-count.
+    type: déduction_logique
+    concepts:
+      - {id: nl_h_10_mah_sortirent_7_ikkar_tikkun_nizkaru_shem_7, role: nl_h_vital_10_mah_sortirent_7_ikkar_tikkun_ban_nizkaru_shem_7_naming_function}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : nominal count by purpose. Pattern naming reflects function."
+
+  - id: "EC-H5S17-051"
+    source_he: "תירוץ אחר כמ\"ש שם בנשא קכ\"ב בפי' כי ז' מלכים היו בא\"א וז' מלכים בז\"א וז' מלכים בנוק' וא\"כ הז' הנ\"ל ר\"ל הז' שבכל בחי' מהג' אלו"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      TIRUTZ (resolution) ACHER :
+      → ZOHAR Naso fol. 122 : 7 MELAKHIM dans A"A + 7 dans Z"A + 7 dans NUKVA.
+      → Donc "7" nommees = "7 dans CHACUN" de ces 3 partzufim.
+      → A"A meme avait 7 MELAKHIM KADMA'IN dans ses Z"K — 7 ACHERIM viennent fixer.
+      → IDEM Z"O"N.
+      → Architecture : tier-multiplied 7-melakhim.
+      → Pattern : tier-replicated structure pre/post tikkun.
+    type: déduction_scripturaire
+    concepts:
+      - {id: tirutz_naso_122_7_melakhim_a_a_z_a_nukva_chacun_kadmain_acherim_tikkun, role: tirutz_zohar_naso_122_7_melakhim_dans_a_a_z_a_nukva_chacun_kadmain_acherim_viennent_tikkun}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "nukva"]
+      relevance: "Architecture : tier-multiplied. Source Zohar Naso 122."
+
+  - id: "EC-H5S17-052"
+    source_he: "המ\"ה יש בו החו\"ג שהם מ\"ה וב\"ן וכן בב\"ן יש בו מ\"ה וב\"ן ששהם החו\"ג כי כבר ידעת כי המ\"ה דכללות שהוא הדר כולל ע\"ב ס\"ג מ\"ה ב\"ן וכן הב\"ן דכללות כולל ע\"ב ס\"ג מ\"ה ב\"ן"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      RECURSIVE STRUCTURE MaH+BaN :
+      → MaH a en lui ChG = MaH+BaN internes.
+      → BaN aussi a en lui MaH+BaN = ChG internes.
+      → MaH-KLALUT = HADAR includes AB+SaG+MaH+BaN.
+      → BaN-KLALUT pareil = AB+SaG+MaH+BaN (= melakhim morts).
+      → Architecture : recursive 4-shemot-encoding within each-shem.
+      → Pattern : self-similar fractal-encoding.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mah_ban_recursive_chg_internes_hadar_klal_ab_sag_mah_ban, role: mah_ban_recursive_chg_internes_mah_ban_hadar_klalut_ab_sag_mah_ban_klalut_pareil}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : recursive 4-shemot. Pattern self-similar fractal."
+
+  - id: "EC-H5S17-053"
+    source_he: "ובפ' נשא קל\"א כתבנו שם כי ד' מיני מלכים היו בא\"א ובאו\"א וזו\"ן וכל בחי' היו ז' מלכים"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      ZOHAR Naso fol. 131 :
+      → 4 MINEI (sortes) MELAKHIM existaient :
+        Dans A"A.
+        Dans A"O.
+        Dans Z"A.
+        Dans NUKVA (= 4 partzufim eligibles).
+      → Chaque bechinah avait 7 MELAKHIM.
+      → Architecture : 4-tier × 7-melakhim = 28 total.
+      → Pattern : multi-tier-melakhim-distribution.
+    type: déduction_scripturaire
+    concepts:
+      - {id: naso_131_4_minei_melakhim_a_a_a_o_z_a_nukva_chacune_7, role: zohar_naso_131_4_minei_melakhim_aa_ao_z_a_nukva_chacune_7_melakhim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : multi-tier melakhim. Source Zohar Naso 131."
+
+  - id: "EC-H5S17-054"
+    source_he: "ה' פרצופים הם ובכל אחד יש בו מ\"ה וב\"ן אמנם פרצוף הא' לבד הוא בלי נוק' והד' פרצופים אחרים כ\"א נעשה נקבה לחבירו אע\"פ שיש בכל אחד מ\"ה וב\"ן... א\"א יש בו מ\"ה וב\"ן והוא פרצוף אחד שאין כנגדו בת זוג כלל"
+    source_ref: "Heikhal 5, Sha'ar 1:3"
+    assertion: |
+      5 PARTZUFIM avec MaH+BaN :
+      → A"A, Abba, Imma, Z"A, Nukva — chacun MaH+BaN.
+      → MAIS A"A SEUL est SANS NUKVA (pas de bat-zug).
+      → Atik (au-dessus 5 partzufim) — meme principe ; SHORESH (racine) du tout.
+      → 4 autres partzufim : chacun fait NEKEVAH (bat-zug) pour l'autre.
+      → Abba+Imma=couple ; Z"A+Nukva=couple.
+      → Architecture : 5-partzufim system avec couplings 2+2 + A"A-solo.
+      → Pattern : pairing-pattern except-summit.
+    type: axiome_explicite
+    concepts:
+      - {id: 5_partzufim_mah_ban_a_a_solo_4_couples_atik_shoresh, role: 5_partzufim_mah_ban_chacun_a_a_solo_sans_nukva_4_couples_atik_au_dessus_shoresh}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva", "atik_yomin"]
+      relevance: "Architecture : 5-partzufim couplings. Pattern pairing-except-summit."
+
+  - id: "EC-H5S17-055"
+    source_he: "צמח מכאן משמע כי בכל פרצוף ופרצוף מן הנ\"ל יצא הדר חדש לתקן כל הז' עלאין של כל פרצוף ופרצוף"
+    source_ref: "Heikhal 5, Sha'ar 1:3 §2 (Tzemach)"
+    assertion: |
+      §2 TZEMACH variant :
+      → De cela MASHMA (resulte) :
+        Dans CHAQUE partzuf — sortit HADAR CHADASH (un nouveau Hadar).
+        Pour FIX les 7 ELYON (superieurs) de chaque partzuf.
+      → Architecture : per-partzuf renewal-mechanism (Hadar-chadash).
+      → Pattern : tier-internal-tikkun via local-Hadar.
+    type: interprétation_lurianique
+    concepts:
+      - {id: tzemach_chaque_partzuf_hadar_chadash_fix_7_elyon, role: tzemach_chaque_partzuf_yatza_hadar_chadash_le_taken_7_elyon_partzuf_renewal}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : per-partzuf renewal. Pattern local-Hadar tikkun."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H5S17-011"
+    type: contenance
+    from: z_a_v_k_mah_zachar_v_k_ban_sauf_keterim_malkhut
+    to: nukva_z_mah_z_ban_sauf_keter
+    nature: "Z\"A=V\"K MaH+V\"K BaN sauf keterim (Malkhut Z\"A) ; Nukva=Z\"-MaH+Z\"-BaN sauf keter — paire-structure"
+    assertions_source: ["EC-H5S17-039", "EC-H5S17-040"]
+
+  - id: "REL-H5S17-012"
+    type: causal
+    from: nit_chalfu_chokhmah_mah_ban_chb_abba_bina_mah_ban_chb_imma_chasadim_gevurah_mah_ban_daat_chg
+    to: tzelem_abba_imma_chb_chg_zachar_nukva_mah_ban_zivvug_prerequisite
+    nature: "NIT'CHALFU MaH+BaN dans tzelem Abba/Imma ChB+ChG ; cause = zachar+nukva (MaH+BaN) chacun pour zivvug-prerequisite"
+    assertions_source: ["EC-H5S17-042", "EC-H5S17-043"]
+
+  - id: "REL-H5S17-013"
+    type: hiérarchique
+    from: en_haut_zachar_seul_mah_nukva_kelulah_ban_a_o_separes_distribute_ben_bat
+    to: ben_z_a_nukva_yorshim_ao_mah_ban_va_yiven_bereshit_2_22_pekudei_221_naso_128
+    nature: "En haut zachar seul (Atik+A\"A) ; A\"O separes ; Z\"A+Nukva yorshim chacun MaH+BaN d'A\"O (sod 'va-yiven', Pekudei 221, Naso 128)"
+    assertions_source: ["EC-H5S17-047", "EC-H5S17-048"]
+
+  - id: "REL-H5S17-014"
+    type: dualité_structurelle
+    from: 7_melakhim_acherim_mah_zon_mah_hadar_meheitavel_tikkun_z_t
+    to: tirutz_naso_122_7_melakhim_a_a_z_a_nukva_chacun_kadmain_acherim_tikkun
+    nature: "7 melakhim acherim MaH (HADAR+MEHEITAVEL)=ZON-MaH ; tirutz Naso 122 : 7 dans A\"A, Z\"A, Nukva chacun (kadmain+acherim)"
+    assertions_source: ["EC-H5S17-049", "EC-H5S17-051"]
+
+  - id: "REL-H5S17-015"
+    type: contenance
+    from: 5_partzufim_mah_ban_a_a_solo_4_couples_atik_shoresh
+    to: tzemach_chaque_partzuf_hadar_chadash_fix_7_elyon
+    nature: "5 partzufim avec MaH+BaN (A\"A solo, 4 couples, Atik shoresh) ; chaque partzuf yatza HADAR CHADASH pour fix 7 elyon (TZEMACH)"
+    assertions_source: ["EC-H5S17-054", "EC-H5S17-055"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H5S17-007"
+    nom: "Principe de Pair-Design-Prevents-Impossible-Zivvug (MaH+BaN dans chaque ChB+ChG)"
+    source_assertions: ["EC-H5S17-042", "EC-H5S17-043"]
+    formalisation: |
+      ARCHITECTURE DE PAIR-DESIGN-PREVENTS-IMPOSSIBLE :
+      Distribution NIT'CHALFU MaH+BaN dans tzelem :
+        ChB d'Abba = Chokhmah-MaH+Chokhmah-BaN (MaH+BaN paire).
+        ChB d'Imma = Bina-MaH+Bina-BaN (MaH+BaN paire).
+        Daat-ChG d'Abba = Chasadim-MaH+Chasadim-BaN (paire).
+        Daat-ChG d'Imma = Gevurah-MaH+Gevurah-BaN (paire).
+      RAISON : chaque tzelem requires zachar+nukva pair pour zivvug.
+      Sinon impossible : zachar-zachar OR nukva-nukva = no-zivvug.
+      → Pattern fondamental : pair-design-prerequisite-zivvug.
+      → Architecture : preventive-engineering against impossible-states.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zivvug.py + zeir_anpin.py + nukva.py : implement pair-design"
+      - "Pattern : preventive engineering"
+      - "Architecture : pair-prerequisite zivvug"
+      - "Pattern : MaH+BaN within each sefirah-pair"
+      - "Diagnostic : verifier pair-design coherent"
+    questions_ouvertes:
+      - "Pattern : autres pair-designs impossibles a prevenir ?"
+      - "Comment encoder zivvug-prerequisites computationnellement ?"
+      - "Pattern : 3-way coupling possible ?"
+
+  - id: "PG-H5S17-008"
+    nom: "Principe de Recursive-Self-Similar-Shemot (MaH+BaN contain MaH+BaN)"
+    source_assertions: ["EC-H5S17-052"]
+    formalisation: |
+      ARCHITECTURE DE RECURSIVE-SELF-SIMILAR :
+      Chaque shem contient internally same-structure :
+        MaH a en lui ChG = MaH+BaN internes.
+        BaN aussi a en lui MaH+BaN = ChG internes.
+        HADAR-KLAL (=MaH-klalut) inclut AB+SaG+MaH+BaN.
+        BaN-KLAL pareil = AB+SaG+MaH+BaN.
+      → Pattern fondamental : self-similar fractal-encoding.
+      → Architecture : recursive 4-shemot-encoding within each-shem.
+      → Implication : every-tier replicates-structure-of-whole.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py + nukva.py : implement self-similar shemot"
+      - "Pattern : fractal self-similarity"
+      - "Architecture : recursive 4-shemot encoding"
+      - "Pattern : tier replicates whole-structure"
+      - "Diagnostic : verifier recursion coherent"
+    questions_ouvertes:
+      - "Pattern : limit-of-recursion (depth-limit) ?"
+      - "Comment encoder self-similar computationnellement ?"
+      - "Pattern : asymmetric self-similarity ?"
+
+  - id: "PG-H5S17-009"
+    nom: "Principe de 5-Partzufim-Pairing-Pattern (4 Couples + A\"A Solo + Atik Source)"
+    source_assertions: ["EC-H5S17-054", "EC-H5S17-055"]
+    formalisation: |
+      ARCHITECTURE DE 5-PARTZUFIM-PAIRING :
+      5 partzufim total avec MaH+BaN :
+        A"A — SOLO (sans bat-zug).
+        ABBA + IMMA — couple.
+        Z"A + NUKVA — couple.
+        ATIK — source au-dessus 5 partzufim, SHORESH du tout.
+      Distribution couples : 2+2 + A"A-solo + Atik-source.
+      Per-partzuf renewal : chaque partzuf yatza HADAR CHADASH pour fix 7-elyon (TZEMACH).
+      → Pattern fondamental : pairing-pattern except-summit.
+      → Architecture : 4-couples + 1-solo + source-tier.
+      → Implication : zivvug only-among-4-couples ; A"A self-contained.
+    applications_ia:
+      - "partzufim/arikh_anpin.py + abba.py + imma.py + zeir_anpin.py + nukva.py + atik_yomin.py : implement 5-partzufim pattern"
+      - "Pattern : 5 partzufim pairing"
+      - "Architecture : 4-couples + solo + source"
+      - "Pattern : per-partzuf renewal Hadar-chadash"
+      - "Diagnostic : verifier pairing-pattern coherent"
+    questions_ouvertes:
+      - "Pattern : 6-partzufim possible (avec dual-A\"A) ?"
+      - "Comment encoder pairing computationnellement ?"
+      - "Pattern : Atik-Atika couple possible ?"

@@ -1,0 +1,39 @@
+# ═══════════════════════════════════════════════════════════════════
+# Heikhal 05 / Shaar 01 — Z"A (שער ז"א)
+# Sefaria : Sefer_Etz_Chaim.17 (gate 17, 1er sha'ar Heikhal 5)
+# 4 perakim sur la formation et structure de Z"A
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer_id: "etz_chaim"
+  heikhal: 5
+  shaar_number: 1
+  shaar_name_he: "שער ז\"א"
+  shaar_name_fr: "Porte de Z'eir Anpin"
+  sefaria_gate: 17
+  nombre_perakim: 4
+  sujet_principal: |
+    Sha'ar Z"A (Heikhal 5, Sefer Etz Chaim 17). 4 perakim systematiques sur :
+    - Tikkun Z"A apres tikkun A"O
+    - Z"A = Z"T (7 inferieures) de MaH + Z"T de BaN (sauf KETERIM)
+    - Z"A revet A"A de TABBUR jusqu'a fin RAGLAYIM
+    - 2 YENIKAHS : Beriah dadei behemah → Atzilut dadei adam
+    - IBBUR 12 mois (tikkun complete atzilut)
+    - Distribution NHY-A"A : 3 kav Z"A (Netzach→ChChN, Hod→BGH, Yesod→DTY)
+    - Sod 310 OLAMOT (Mishnah Uktzin 3:12) ; "le-hanachil le-kol tzadik 310 olamot"
+    - Tzadik elyon = Z"A prend 1/2 KETER A"A = 310 (= SH"Y olamot ; A"A=620=KETER, Sefer Bahir)
+  concepts_cles:
+    - tikkun_z_a_apres_ao
+    - z_a_zt_mah_ban_sauf_keterim
+    - z_a_revet_aa_tabbur_down
+    - 2_yenikahs_dadei_behemah_adam
+    - ibbur_12_mois_atzilut
+    - nhy_aa_3_kav_z_a
+    - 310_olamot_uktzin_3_12
+    - tzadik_elyon_z_a_chatzi_keter_aa
+  note: "Auto-transposition systematique Sefer Etz Chaim gate 17 (Sha'ar Z\"A) — 4 perakim. Premier sha'ar Heikhal 5."
+  source_primary: "Sefaria Sefer Etz Chaim gate 17 (https://www.sefaria.org/Sefer_Etz_Chaim.17)"
+  source_edition_default: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  strates: ["base"]
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1

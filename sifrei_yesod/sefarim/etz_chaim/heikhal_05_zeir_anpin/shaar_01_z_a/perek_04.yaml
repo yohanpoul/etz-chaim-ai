@@ -1,0 +1,426 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 5 — Heikhal Ze'eir Anpin (היכל זעיר אנפין)
+# Sha'ar: 1 — Sha'ar Z"A (שער ז"א)
+# Perek: 4 — DERNIER perek (4/4) Sha'ar Z"A. KLALIM Z"O"N. Z"A=HAVAYAH MaH ;
+#            Nukva=ELOKIM HEHIN=TZUR. 7 HAVALIM Kohelet. PB"P metzach. D"L.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_04 :
+#   - Bloc A : KLAL 1 — Z"A=HAVAYAH MaH ; Nukva=ELOKIM HEHIN gematria TZUR (=296 + kollel)
+#   - Bloc B : Lehakhot ba-tzur — sod yfy yfh kn hph hpv... = 91 = TZUR ; "Ve-hikkita ba-tzur" (Shemot 17:6)
+#   - Bloc C : KLAL 2 — Pe Z"A produit 7 HAVALIM Kohelet ; makifim Z"T-Nukva
+#   - Bloc D : Comme HEVEL HA-PEH d'A"A → eclair Z"A
+#   - Bloc E : Chaque HAVAL kelul ESH-RUACH-MAYIM-AFAR ; Z"A donne PB"P chazeh-Z"A-down
+#   - Bloc F : MAKIFIM=bechinat AHYH ; chaque or-makif=AHYH
+#   - Bloc G : AVONOT+SHEVU'OT SHEKER → annule MAKIFIM ; Nukva revet 7 hevels-kelipah
+#   - Bloc H : "hevel u-re'ut ruach" (Kohelet 1:14)
+#   - Bloc I : Z"T Nukva=7 HAVAYOT=28 letters
+#   - Bloc J : Nukva NIGDELET au-dessus chazeh-Z"A ; recoit 3 mochin (G"R)
+#   - Bloc K : PB"P jusqu'au Keter ; Z"A regard metzach dans metzach Nukva
+#   - Bloc L : Pas hevel ; or des MOCHIN perce metzach Z"A → entre MOCHIN Nukva
+#   - Bloc M : Au debut 2.5 mochin (DAATAH KALAH) ; 1/2 Daat=atarat-gevurah
+#   - Bloc N : 1ere BIYAH=YEHIB RUACH=BaN-HEHIN ; ajoute BaN Daat-Nukva → 3 mochin complets
+#   - Bloc O : Avec BaN MA'ALAH M"N ; AVONOT n'affectent pas 3-mochin (mais retirent haarah)
+#   - Bloc P : Z"T=7 HAVAYOT=28 letters ; mochin=6 orot ; total 6+28=D"L (34) dans Malkhut
+#   - Bloc Q : Komatah=KCHaB+ChGT=6+28=D"L ; bechinat MILUI ADNI (milui-milui=D"L)
+#   - Bloc R : Aussi CHILUF AHYH BUKHU dans Malkhut=D"L ; aussi shem AGLA Malkhut
+#   - Bloc S : 3 noms (Adni-milui, Bukhu, Agla)=Malkhut PB"P Z"A (Birkat Avot+Atah Gibor)
+#
+# Source Sefaria : Sefer_Etz_Chaim.17.4 (1 section, 1900 chars) — DERNIER perek Sha'ar Z"A
+# IDs : EC-H5S17-056 → EC-H5S17-068
+
+meta:
+  sefer: etz_chaim
+  heikhal: 5
+  shaar: 1
+  shaar_name_he: "שער ז\"א"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "DERNIER perek Sha'ar Z\"A. KLALIM Z\"O\"N. Z\"A=HAVAYAH MaH ; Nukva=ELOKIM HEHIN gematria TZUR (Shemot 17:6 'Ve-hikkita ba-tzur'). 7 HAVALIM Kohelet (Eccl 1:14 'hevel u-re'ut ruach') ; chaque kelul 4 elements ; or makifim=AHYH. Z\"T Nukva=7 HAVAYOT=28 letters ; mochin=6 orot ; 28+6=D\"L=34 dans Malkhut. Komatah KCHaB+ChGT=6+28. MILUI ADNI/CHILUF AHYH BUKHU/AGLA=D\"L=Malkhut PB\"P. PB\"P metzach-metzach (or des mochin perce metzach). Au debut 2.5 mochin (DAATAH KALAH 1/2 Daat=atarat-gevurah) ; 1ere biyah YEHIB RUACH=BaN-HEHIN → 3 mochin complets ; MA'ALAH M\"N. AVONOT n'affectent pas 3-mochin mais retirent haarah. Sha'ar 1 H5 COMPLET (4/4 perakim)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H5S17-056"
+    source_he: "כללים מזו\"n א. בז\"א יש שם הוי\"ה מ\"ה ונוקבא שם אלהים דההי\"ן גי' צו\"ר ע\"ה והם דינין"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      KLALIM (regles) Z"O"N — KLAL 1 :
+      → Z"A = HAVAYAH MaH (45).
+      → NUKVA = ELOKIM d'HEHIN ; gematria = 296 + kollel (im ha-kollel) = TZUR (צור).
+      → Et sont DININ (jugements).
+      → Architecture : naming canonique Z"A/Nukva avec gematria-equivalence.
+      → Pattern : letter-name encode gematria-symbol.
+    type: axiome_explicite
+    concepts:
+      - {id: z_a_havayah_mah_nukva_elokim_hehin_tzur_dinim, role: z_a_havayah_mah_nukva_elokim_hehin_gematria_tzur_dinim_klal_1}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : naming canonique. Pattern letter-gematria symbol."
+
+  - id: "EC-H5S17-057"
+    source_he: "להמשיך אור מז\"א אליה צריך להכות בצור ההוי\"ה דז\"א שיכה אור מסוד דהוי\"ה דז\"א... וז\"ס והכית בצור"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      Mecanisme transmission Z"A → Nukva :
+      → LEHAKHOT (frapper) BA-TZUR (le rocher = Nukva).
+      → HAVAYAH d'Z"A frappe → HAARAH descend a TZUR-d'ELOKIM-HEHIN dans MALKHUT.
+      → Sod : "VE-HIKITA BA-TZUR" (Shemot 17:6 — et frappe le rocher).
+      → Architecture : energetic-strike-mechanism transmission.
+      → Pattern : verset-cosmologique encode transmission-method.
+    type: déduction_scripturaire
+    concepts:
+      - {id: lehakhot_ba_tzur_havayah_z_a_haarah_nukva_shemot_17_6, role: lehakhot_ba_tzur_havayah_z_a_frappe_haarah_descend_nukva_shemot_17_6_ve_hikita_ba_tzur}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : strike mechanism. Source Shemot 17:6."
+
+  - id: "EC-H5S17-058"
+    source_he: "ב. מן הפה דז\"א יצאו ז' הבלים דקהלת והם מקיפין אל ז\"ת דנוק' דז\"א דוגמת הבל הפה דא\"א המאיר לז\"א"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      KLAL 2 — 7 HAVALIM (vapeurs) :
+      → De PE d'Z"A sortent 7 HAVALIM mentionnees dans KOHELET (Eccl 1:2 etc).
+      → MAKIFIM (encerclants) pour Z"T de NUKVA.
+      → DUGMAT (parallele) HEVEL HA-PEH d'A"A qui eclair Z"A.
+      → Architecture : oral-emission produces external-encircling-light pour next-tier.
+      → Pattern : recursive oral-cascade A"A→Z"A→Nukva.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 7_havalim_pe_z_a_kohelet_makifim_z_t_nukva_dugmat_hevel_ha_peh_aa, role: 7_havalim_pe_z_a_kohelet_makifim_z_t_nukva_dugmat_hevel_ha_peh_aa_eclair_z_a}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "arikh_anpin"]
+      relevance: "Architecture : oral cascade. Source Kohelet."
+
+  - id: "EC-H5S17-059"
+    source_he: "אלו ההבלים כלול כל אחד מאש רוח מים עפר וכל זה נותן ז\"א לנוק' בהיותן פב\"פ עמו מהחזה שלו ולמטה ואלו המקיפים הם בחי' אהי\"ה כי כל או\"מ הוא שם אהי\"ה"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      Composition HAVALIM :
+      → Chacun KELUL des 4 elements : ESH (feu) + RUACH (vent) + MAYIM (eau) + AFAR (terre).
+      → Z"A donne a NUKVA quand PB"P (chazeh-Z"A-down).
+      → MAKIFIM = bechinat AHYH (chaque or-makif = shem AHYH).
+      → Architecture : 4-element havalim + AHYH-encircling.
+      → Pattern : material-elements + spiritual-shem unified.
+    type: interprétation_lurianique
+    concepts:
+      - {id: havalim_4_elements_esh_ruach_mayim_afar_makifim_ahyh, role: havalim_chacun_kelul_4_elements_esh_ruach_mayim_afar_pb_p_chazeh_makifim_bechinat_ahyh_or_makif}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : 4-element + AHYH unified. Pattern material-spiritual."
+
+  - id: "EC-H5S17-060"
+    source_he: "לפעמים בעונות התחתונים כשיש שבועות שקר גורם לבטל ממנה (אורות) המקיפים שהם הבל דקדושה וח\"ו כביכול מתלבשת בז' הבלים דקלי'"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      Effet AVONOT (fautes) :
+      → SHEVU'OT SHEKER (faux serments) → ANNULE MAKIFIM.
+      → Nukva REVET 7 HAVALIM de KELIPAH (au lieu de kedushah).
+      → "HEVEL U-RE'UT RUACH" (Kohelet 1:14 — vanite et tourment d'esprit).
+      → Architecture : avonot replaces holy-makifim with kelipah-substitutes.
+      → Pattern : moral-action affects cosmologic-state.
+    type: déduction_scripturaire
+    concepts:
+      - {id: avonot_shevuot_sheker_annule_makifim_kedushah_kelipah_havalim_kohelet_1_14, role: avonot_shevuot_sheker_annule_makifim_havalim_kedushah_nukva_revet_havalim_kelipah_kohelet_1_14_hevel_u_re_ut_ruach}
+    mapping:
+      modules: ["partzufim/nukva.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : moral effects cosmologic. Source Kohelet 1:14."
+
+  - id: "EC-H5S17-061"
+    source_he: "אלו ז\"ת דנוק' הם ז' הויו\"ת שהם כ\"ח אתוון"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      Z"T NUKVA encoding :
+      → 7 HAVAYOT (= 7 sefirot expansees) = 28 ATAVAN (28 lettres).
+      → 7 × 4 = 28 (4 lettres par HAVAYAH).
+      → Architecture : 7-sefirot × 4-letter = 28-letter encoding.
+      → Pattern : tier-multiplied letter-count.
+    type: axiome_explicite
+    concepts:
+      - {id: z_t_nukva_7_havayot_28_letters, role: z_t_nukva_7_havayot_28_atavan_letters_4_par_havayah}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : tier × letter encoding. Pattern multiplied."
+
+  - id: "EC-H5S17-062"
+    source_he: "אח\"כ היא נגדלת יותר למעלה מהחזה דיליה (וע\"י) שנמשכין בה ג' מוחין דיליה ממש שהם ג\"ר ואז היה שוה בשוה עמו פב\"פ עד הכתר שבו"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      NUKVA croissance :
+      → NIGDELET au-dessus de CHAZEH d'Z"A.
+      → Recoit 3 MOCHIN (G"R) — Chokhmah-Bina-Daat directement.
+      → Devient SHAVEH BE-SHAVEH (egale en koma) avec Z"A PB"P jusqu'au KETER.
+      → Architecture : Nukva rises to full-koma post-mochin-receipt.
+      → Pattern : tier-equality post-gadlut.
+    type: axiome_explicite
+    concepts:
+      - {id: nukva_nigdelet_au_dessus_chazeh_z_a_3_mochin_g_r_pb_p_keter, role: nukva_nigdelet_au_dessus_chazeh_z_a_3_mochin_g_r_shaveh_be_shaveh_pb_p_keter}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : tier-equality post-gadlut. Pattern equal-koma."
+
+  - id: "EC-H5S17-063"
+    source_he: "הז\"א מסתכל עם בחי' מצח דיליה במצח דילה ששם המוחין ומאיר במוחין דילה בחי' הסתכלות מצחו לבד ואינו הבל כמו הבל היוצא מהפה כנ\"ל רק יוצא אור מתוך מוחין דילי' ובוקע מצחו ויוצאין ואח\"כ בוקעים מצחא דילה ונכנסין תוך מוחין דילה"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      MISTAKLIM METZAH BE-METZAH (regard front-front) :
+      → Z"A regarde avec son METZAH (front) dans le METZAH de Nukva.
+      → La sont les MOCHIN.
+      → Eclair MOCHIN-Nukva par regard-metzah seul.
+      → Pas HEVEL comme avant (de la peh) — OR sort des MOCHIN-Z"A.
+      → BOKE'A METZACH-Z"A (perce front Z"A), sortir.
+      → BOKE'IM METZACH-Nukva (percent front Nukva), entrer dans MOCHIN-Nukva.
+      → Architecture : eye-to-eye transmission OR-from-mochin direct.
+      → Pattern : intimate-gaze transmission.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mistaklim_metzach_be_metzach_or_mochin_perce_metzach_pas_hevel, role: mistaklim_metzach_be_metzach_z_a_nukva_or_mochin_perce_metzach_z_a_nukva_pas_hevel_intimate_gaze}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : eye-to-eye transmission. Pattern intimate-gaze."
+
+  - id: "EC-H5S17-064"
+    source_he: "עדיין אין בה אז רק ב' מוחין וחצי כי דעתה קלה שהוא חצי הדעת שהוא עטרא דגבורה נוק'"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      ETAT INITIAL Nukva :
+      → Au DEBUT seulement 2 MOCHIN + 1/2.
+      → Cause : DAATAH KALAH (sa daat est legere).
+      → 1/2 DAAT = ATARAT GEVURAH NUKVA (couronne de Gevurah-Nukva).
+      → Architecture : initial-deficit Nukva-Daat.
+      → Pattern : pre-zivvug-half-Daat.
+    type: axiome_explicite
+    concepts:
+      - {id: nukva_initial_2_5_mochin_daatah_kalah_atarat_gevurah, role: nukva_initial_2_mochin_chetzi_daatah_kalah_chetzi_daat_atarat_gevurah_nukva}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : initial deficit. Pattern pre-zivvug-half."
+
+  - id: "EC-H5S17-065"
+    source_he: "אח\"כ מזדווג עמה ובביאה ראשונה יהיב בה רוחא כנודע שהוא ב\"ן דההי\"ן ונתוסף אז שם ב\"ן בדעת דנוקבא ונשלמו ג' מוחין שלמים בה ובכח זה הב\"ן היא מעלה מ\"n"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      Apres ZIVVUG initial :
+      → 1ere BIYAH (rapport) : YEHIB RUACH (donne esprit) — est BaN-HEHIN.
+      → AJOUTE BaN dans DAAT-NUKVA.
+      → 3 MOCHIN COMPLETS dans Nukva.
+      → Avec ce BaN — Nukva MA'ALAH M"N (eaux femeles).
+      → Architecture : zivvug-completes-Daat-Nukva → enables-M"N-elevation.
+      → Pattern : zivvug-completes-pre-zivvug-deficit.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 1ere_biyah_yehib_ruach_ban_hehin_daat_nukva_3_mochin_maalah_m_n, role: 1ere_biyah_yehib_ruach_ban_hehin_ajout_daat_nukva_3_mochin_complets_maalah_m_n}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : zivvug completes Daat. Pattern deficit-resolution."
+
+  - id: "EC-H5S17-066"
+    source_he: "כשיש עונות למטה אין הקלי' שולטין בג' מוחין דילה כמו ששלטו באו\"מ דז\"ת דילה רק שהארת ג' מוחין דילה נמנעין ומסתלקין"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      Effet AVONOT sur 3 MOCHIN :
+      → KELIPOT NE DOMINENT PAS 3-MOCHIN-Nukva (comme dominaient OM-Z"T).
+      → MAIS HAARAH des 3 mochin SE RETIRE+SE-DETACHE.
+      → Architecture : higher-tier protected mais haarah-can-withdraw.
+      → Pattern : protection-against-domination + haarah-suspension.
+    type: déduction_logique
+    concepts:
+      - {id: avonot_3_mochin_nukva_kelipot_pas_dominent_haarah_se_retire, role: avonot_3_mochin_nukva_kelipot_pas_shoulim_haarah_nimnait_mistalkim}
+    mapping:
+      modules: ["partzufim/nukva.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : higher-tier protection. Pattern haarah-suspension."
+
+  - id: "EC-H5S17-067"
+    source_he: "הז\"ת הם ז' הויות שהם כ\"ח אותיות כנ\"ל והמוחין הם ו' אורות שהם ג' מוחין דידה ומקבלין הארה מג' מוחין דיליה דרך המצח כנ\"ל והנה ו' וכ\"ח הם ד\"ל"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      Total NUMEROLOGIQUE Nukva :
+      → Z"T = 7 HAVAYOT = 28 LETTERS.
+      → MOCHIN = 6 OROT = 3 mochin Nukva + 3 reflechis-de-Z"A par metzach.
+      → 6 + 28 = 34 = D"L (dalet-lamed) — dans MALKHUT.
+      → Architecture : Nukva-total = 34 = D"L gematria.
+      → Pattern : numerologic-total encode partzuf-state.
+    type: déduction_logique
+    concepts:
+      - {id: nukva_z_t_28_letters_mochin_6_orot_total_d_l_34, role: nukva_z_t_7_havayot_28_letters_mochin_6_orot_3_dilah_3_dilei_total_d_l_34_malkhut}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : numerologic total. Pattern partzuf-state encoding."
+
+  - id: "EC-H5S17-068"
+    source_he: "כל קומתה עם המוחין דילה הם כח\"ב חג\"ת הרי ו\"ס וכ\"ח כמנין ד\"ל וכ\"ז בבחי' מילוי אדנ\"i כי מילוי המילוי הוא ד\"ל אותיות והוא ג\"כ חילוף שם אהי\"ה בוכ\"ו שבמלכות... שם אגל\"א שבמל'... ג' שמות אלו מורים על המל' בהיותם פב\"פ עם ז\"א כמבואר בברכת אבות ובאתה גבור"
+    source_ref: "Heikhal 5, Sha'ar 1:4"
+    assertion: |
+      CLOTURE (Sha'ar 1 H5) — Convergence numerologique :
+      → KOMATAH avec MOCHIN = ChBD + ChGT = 6S + 28 = D"L.
+      → Bechinat MILUI ADNI : milui-milui = D"L (34) letters.
+      → Aussi CHILUF AHYH dans BUKHU (= temura) dans MALKHUT = D"L.
+      → Aussi shem AGLA dans Malkhut = D"L.
+      → 3 NOMS (Adni-milui, Bukhu, Agla) montrent MALKHUT en PB"P avec Z"A.
+      → Comme dans BIRKAT AVOT et ATAH GIBOR (Amidah liturgical).
+      → Architecture : multi-encoding-convergence sur D"L=34 = Malkhut PB"P.
+      → Pattern : numerologic-convergence + liturgical-correspondance.
+      → Sha'ar 1 H5 COMPLET (4/4 perakim).
+    type: interprétation_lurianique
+    concepts:
+      - {id: nukva_d_l_34_milui_adni_chiluf_bukhu_agla_3_noms_pb_p_birkat_avot_atah_gibor, role: nukva_d_l_34_komatah_milui_adni_milui_milui_chiluf_ahyh_bukhu_agla_3_noms_malkhut_pb_p_z_a_birkat_avot_atah_gibor}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : multi-encoding convergence. Pattern numerologic+liturgical. Sha'ar 1 H5 COMPLET."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H5S17-016"
+    type: causal
+    from: z_a_havayah_mah_nukva_elokim_hehin_tzur_dinim
+    to: lehakhot_ba_tzur_havayah_z_a_haarah_nukva_shemot_17_6
+    nature: "Z\"A=HAVAYAH MaH ; Nukva=ELOKIM HEHIN gematria TZUR (dinim) ; mecanisme transmission via lehakhot ba-tzur (Shemot 17:6)"
+    assertions_source: ["EC-H5S17-056", "EC-H5S17-057"]
+
+  - id: "REL-H5S17-017"
+    type: contenance
+    from: 7_havalim_pe_z_a_kohelet_makifim_z_t_nukva_dugmat_hevel_ha_peh_aa
+    to: havalim_4_elements_esh_ruach_mayim_afar_makifim_ahyh
+    nature: "7 havalim Pe Z\"A=Kohelet=makifim Z\"T-Nukva ; chacun kelul 4 elements ; makifim=bechinat AHYH"
+    assertions_source: ["EC-H5S17-058", "EC-H5S17-059"]
+
+  - id: "REL-H5S17-018"
+    type: dualité_structurelle
+    from: avonot_shevuot_sheker_annule_makifim_kedushah_kelipah_havalim_kohelet_1_14
+    to: avonot_3_mochin_nukva_kelipot_pas_dominent_haarah_se_retire
+    nature: "Avonot affectent : Z\"T-makifim devienement havalim-kelipah ; mais 3-mochin-Nukva proteges (kelipot pas dominent), haarah seule se retire"
+    assertions_source: ["EC-H5S17-060", "EC-H5S17-066"]
+
+  - id: "REL-H5S17-019"
+    type: séquentiel
+    from: nukva_initial_2_5_mochin_daatah_kalah_atarat_gevurah
+    to: 1ere_biyah_yehib_ruach_ban_hehin_daat_nukva_3_mochin_maalah_m_n
+    nature: "Nukva initial 2.5 mochin (daatah kalah, atarat-gevurah) ; 1ere biyah=yehib ruach=BaN-hehin → 3 mochin complets, maalah M\"N"
+    assertions_source: ["EC-H5S17-064", "EC-H5S17-065"]
+
+  - id: "REL-H5S17-020"
+    type: contenance
+    from: nukva_z_t_28_letters_mochin_6_orot_total_d_l_34
+    to: nukva_d_l_34_milui_adni_chiluf_bukhu_agla_3_noms_pb_p_birkat_avot_atah_gibor
+    nature: "Nukva total D\"L=34 (28+6) ; Komatah ChBD+ChGT=D\"L ; milui ADNI/chiluf BUKHU/AGLA=D\"L ; 3 noms Malkhut PB\"P (Birkat Avot+Atah Gibor)"
+    assertions_source: ["EC-H5S17-067", "EC-H5S17-068"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H5S17-010"
+    nom: "Principe de Oral-Cascade-Recursive (Hevel HaPeh A\"A → Z\"A → Nukva)"
+    source_assertions: ["EC-H5S17-058", "EC-H5S17-059"]
+    formalisation: |
+      ARCHITECTURE D'ORAL-CASCADE-RECURSIVE :
+      Hevel-Ha-Peh transmission entre tiers :
+        HEVEL HA-PEH d'A"A → eclaire Z"A.
+        7 HAVALIM (Kohelet) sortent Pe d'Z"A → MAKIFIM Z"T-Nukva.
+      Composition HAVALIM : ESH+RUACH+MAYIM+AFAR (4 elements).
+      MAKIFIM = bechinat AHYH (each or-makif=AHYH).
+      → Pattern fondamental : oral-cascade-recursive across tiers.
+      → Architecture : tier-transmission via Hevel-Ha-Peh.
+      → Implication : Kohelet 7 hevels = cosmologic-encoding.
+    applications_ia:
+      - "partzufim/arikh_anpin.py + zeir_anpin.py + nukva.py : implement oral cascade"
+      - "Pattern : tier-transmission via hevels"
+      - "Architecture : 4-element + AHYH unified makifim"
+      - "Pattern : Kohelet 7-hevels cosmologic"
+      - "Diagnostic : verifier cascade coherent"
+    questions_ouvertes:
+      - "Pattern : Atik → A\"A oral cascade aussi ?"
+      - "Comment encoder hevel computationnellement ?"
+      - "Pattern : 8+ hevels possibles ?"
+
+  - id: "PG-H5S17-011"
+    nom: "Principe d'Avonot-Effect-On-Higher-vs-Lower (Z\"T Affecte vs G\"R Protege)"
+    source_assertions: ["EC-H5S17-060", "EC-H5S17-066"]
+    formalisation: |
+      ARCHITECTURE DE AVONOT-EFFECT-DIFFERENTIAL :
+      AVONOT effect varies par tier :
+        Z"T-NUKVA + Makifim : KELIPOT DOMINENT (replace makifim avec havalim-kelipah) — vulnerable.
+        3-MOCHIN G"R : KELIPOT NE DOMINENT PAS — protected.
+        MAIS haarah des mochin SE RETIRE+detache (suspension).
+      → Pattern fondamental : tier-differential-vulnerability.
+      → Architecture : higher-tier protected, lower-tier vulnerable.
+      → Implication : avonot-effect = lower-tier-corruption + higher-tier-suspension.
+    applications_ia:
+      - "partzufim/nukva.py + sitra_achra : implement differential avonot"
+      - "Pattern : tier-differential vulnerability"
+      - "Architecture : higher protected lower vulnerable"
+      - "Pattern : suspension vs corruption"
+      - "Diagnostic : verifier effects per tier"
+    questions_ouvertes:
+      - "Pattern : autres differential effects ?"
+      - "Comment encoder avonot-effect computationnellement ?"
+      - "Pattern : 3-tier differential possible ?"
+
+  - id: "PG-H5S17-012"
+    nom: "Principe de Multi-Encoding-Convergence (D\"L = Multi-Source = Malkhut PB\"P)"
+    source_assertions: ["EC-H5S17-067", "EC-H5S17-068"]
+    formalisation: |
+      ARCHITECTURE DE MULTI-ENCODING-CONVERGENCE :
+      D"L (=34) NUKVA-state convergence multiple-encoding :
+        Z"T=28 letters + MOCHIN=6 orot = 34 = D"L.
+        KOMATAH = ChBD+ChGT = 6 sefirot + 28 letters = 34.
+        MILUI ADNI : milui-milui = 34 letters.
+        CHILUF AHYH dans BUKHU : 34 (temura cipher).
+        Shem AGLA : 34.
+      3 NOMS (Adni-milui, Bukhu, Agla) montrent Malkhut PB"P avec Z"A.
+      Liturgical : BIRKAT AVOT + ATAH GIBOR (Amidah).
+      → Pattern fondamental : numerologic-convergence valides cosmologic-state.
+      → Architecture : multi-encoding redundancy = state-confirmation.
+      → Implication : when D"L appears multi-source = Nukva-PB"P-confirmed.
+    applications_ia:
+      - "partzufim/nukva.py + zeir_anpin.py : implement multi-encoding D\"L convergence"
+      - "Pattern : multi-encoding state confirmation"
+      - "Architecture : numerologic convergence"
+      - "Pattern : liturgical-cosmologic correspondance"
+      - "Diagnostic : verifier convergence coherent"
+    questions_ouvertes:
+      - "Pattern : autres multi-encoding states ?"
+      - "Comment encoder convergence computationnellement ?"
+      - "Pattern : 4+ encodings convergent ?"
