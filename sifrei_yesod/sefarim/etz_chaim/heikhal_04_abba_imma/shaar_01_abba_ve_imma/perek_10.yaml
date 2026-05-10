@@ -1,0 +1,517 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 1 — Sha'ar Abba ve-Imma (שער אבא ואמא)
+# Perek: 10 — DERNIER perek du Sha'ar Abba ve-Imma (10/10).
+#             Chaque shem inclut 10S internes par lettre. AB/SaG/MaH/BaN places.
+#             G"R = M"B letters (4+10+28). CHESBON dans Malkhut. 28 letters
+#             milui-milui = ROKHEV AL HA-KISSEH (Zohar Kedoshim Ra"M 82).
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_10 :
+#   - Bloc A : Renvoi perek 7 — chaque shem inclut tous 10S de la sefirah
+#   - Bloc B : Exemple Keter Abba HAVAYAH simple — 10S internes par lettre
+#   - Bloc C : Achor Keter — y/yh/yhv/yhvh distribues 10S
+#   - Bloc D : Chokhmah Abba 10 letters yod-vav-dalet milui distribuees 10S
+#   - Bloc E : Distribution canonique : AB Chokhmah, SaG Bina, MaH Z"A, BaN Nukva
+#   - Bloc F : G"R chacun = M"B letters (4+10+28) — bechinat OTIYOT pas chesbon
+#   - Bloc G : 4 letters pashut dans KETER ; 10 milui dans CHOKHMAH ; 28 milui-milui dans BINA
+#   - Bloc H : Z"T = 1 HAVAYAH milui yodin (10 letters cumulees Z"T entier)
+#   - Bloc I : Sidur shemot — sefirah classification : MISPAR (count) vs CHESBON (gematria sum)
+#   - Bloc J : CHESBON-bechinah TOUJOURS dans MALKHUT (universel)
+#   - Bloc K : Malkhut Abba = chesbon HAVAYAH AB = 72 ; Malkhut Imma = chesbon SaG = 63
+#   - Bloc L : Idem TOUS shemot du monde — chesbon dans Malkhut
+#   - Bloc M : Panim+achor d'A"O : AB+KS"A = REGEL ; DPK+TKM"D = TaSHKaH ; dans Malkhut A"O
+#   - Bloc N : CHESBON 28 LETTERS extras = 728 - (3×233) ; issus 'yod-he-yod' (3 bechinot yod milui)
+#   - Bloc O : Ces 28 plus eleves que le reste (3 ou 4 ×REGEL)
+#   - Bloc P : Mais s'habillent en 4 RAGLAIM (= 4 raglei kisseh) — sod ZOHAR KEDOSHIM Ra"M 82
+#   - Bloc Q : 28 letters = HA-KISSEH ATZMO
+#   - Bloc R : ROKHEV AL HA-KISSEH = 28 letters MILUI-MILUI HAVAYAH d'YODIN ; pas par chesbon
+#
+# Source Sefaria : Sefer_Etz_Chaim.14.10 (1 section, 2049 chars) — DERNIER perek Sha'ar 1
+# IDs : EC-H4S14-215 → EC-H4S14-232
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 1
+  shaar_name_he: "שער אבא ואמא"
+  perek: 10
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "DERNIER perek du Sha'ar Abba ve-Imma. Chaque shem inclut 10S internes (kotzo/yod/he/vav/he distribues). Distribution canonique : AB Chokhmah, SaG Bina, MaH Z\"A, BaN Nukva. G\"R = M\"B letters (4+10+28) — bechinat OTIYOT (count), vs CHESBON (gematria sum). 4 pashut dans KETER, 10 milui dans CHOKHMAH, 28 milui-milui dans BINA. Z\"T=1 HAVAYAH (10 letters cumulees). CHESBON-bechinah TOUJOURS dans MALKHUT. Malkhut Abba = AB(72), Malkhut Imma = SaG(63). Panim+achor : AB+KS\"A=REGEL ; DPK+TKM\"D=TaSHKaH. 28 letters extras au-dela 3×REGEL = HA-KISSEH ATZMO ; ROKHEV AL HA-KISSEH = 28 letters MILUI-MILUI (Zohar Kedoshim Ra\"M 82)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S14-215"
+    source_he: "דע כי כל שם מאלו הנזכר בפרק ז' כולל כל י\"ס שבאותה ספירה המשל בזה כתר דאבא הוא הוי\"ה פשוט ונחלק לי\"ס דכתר"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      RENVOI perek 7 : chaque SHEM (nom) inclut tous 10S de la sefirah.
+      → EXEMPLE : KETER d'ABBA = HAVAYAH PASHUT.
+      → Se DIVISE en 10 SEFIROT internes du Keter.
+      → Architecture : recursive-self-decomposition par shem-letter.
+      → Pattern : sefirah-internal 10S structure universelle.
+      cf. EC-H4S14-162 (perek 7) sur Keter Abba HAVAYAH.
+    type: axiome_explicite
+    concepts:
+      - {id: chaque_shem_inclut_10s_internes_keter_abba_exemple, role: chaque_shem_inclut_tous_10s_internes_keter_abba_havayah_pashut_exemple_canonique}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : recursive self-decomposition. Pattern internal 10S universal."
+
+  - id: "EC-H4S14-216"
+    source_he: "קוץ י' הוא הכתר י' חכמה ה' בינה ו' ו\"ק ה' מלכות הרי י\"ס שבכתר דאבא דפנים וכן באחוריים שהם י' י\"ה יה\"ו יהו\"ה והוא י' כתר י\"ה חכמה ובינה יה\"ו חג\"ת יהו\"ה נהי\"ם"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      KETER d'Abba — distribution PANIM (HAVAYAH simple) :
+      → KOTZO de YOD → KETER interne.
+      → YOD (י) → CHOKHMAH ; HE (ה) → BINA ; VAV (ו) → V"K ; HE (ה) → MALKHUT.
+      ACHOR (ribua pashut y/yh/yhv/yhvh) :
+      → י (yod seul) → KETER ; י"ה (yh) → CHOKHMAH+BINA.
+      → יה"ו (yhv) → ChGT ; יהו"ה (yhvh) → NHY+MALKHUT (4 letters → 4 dernieres).
+      → Architecture : letter-position encode internal-sefirah-position.
+      → Pattern : letter-progression = sefirah-progression.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_abba_panim_kotzo_yod_he_vav_he_10s_achor_y_yh_yhv_yhvh_10s, role: keter_abba_panim_kotzo_yod_he_vav_he_distribues_10s_achor_y_yh_yhv_yhvh_distribues_10s}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Architecture : letter-position encodes sefirah-position. Pattern progression mapping."
+
+  - id: "EC-H4S14-217"
+    source_he: "וכן בחכמה דאבא יש יו\"ד ה\"י וי\"ו ה\"י ונחלקים כך קוץ הי' כתר יו\"ד חכמה ה\"י בינה וי\"ו ו\"ק ה\"י מלכות ואלו הם הפנים"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      CHOKHMAH d'Abba — 10 letters MILUI YOD-VAV-DALET HEH-YOD VAV-YOD-VAV HEH-YOD :
+      → KOTZO → KETER interne.
+      → YOD → CHOKHMAH interne.
+      → HEH-YOD → BINA interne.
+      → VAV-YOD-VAV → V"K interne.
+      → HEH-YOD → MALKHUT interne.
+      → Architecture : multi-letter-distribution preserve 10-tier mapping.
+      → Pattern : recursive-letter-encoding pour deeper-sefirah.
+    type: axiome_explicite
+    concepts:
+      - {id: chokhmah_abba_10_letters_milui_yvd_distribues_10s_internes_panim, role: chokhmah_abba_10_letters_milui_yod_vav_dalet_distribues_kotzo_yod_hi_viv_hi_10s_panim}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Architecture : multi-letter 10-tier mapping. Pattern recursive deeper encoding."
+
+  - id: "EC-H4S14-218"
+    source_he: "ע\"ב דיודין בחכמה וס\"ג בבינה ומ\"ה בז\"א וב\"ן בנוקבא"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      DISTRIBUTION CANONIQUE des SHEMOT par PARTZUF :
+      → AB d'YODIN (72) → CHOKHMAH (Abba).
+      → SaG (63) → BINA (Imma).
+      → MaH (45) → Z"A.
+      → BaN (52) → NUKVA.
+      → Architecture : 4-shem-canonical-mapping pour 4 partzufim downstream.
+      → Pattern : shem-as-partzuf-identity standard.
+      cf. EC-H4S14-133 (perek 5) sur ZON shemot.
+    type: axiome_explicite
+    concepts:
+      - {id: ab_chokhmah_sag_bina_mah_z_a_ban_nukva_canonical_mapping, role: ab_chokhmah_sag_bina_mah_z_a_ban_nukva_canonical_4_shem_mapping_4_partzufim}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : 4-shem canonical mapping. Pattern shem-as-identity."
+
+  - id: "EC-H4S14-219"
+    source_he: "ג\"ר שיש בכ\"א מאלו יש בה סוד מ\"ב אתוון דפשוט ומילוי ומילוי דמילוי אשר אין בחי' אלו בחינת מספר וחשבון וגי' רק חשבון אותיות לבד ואין נקרא חשבון אלא סכום כמה עולה כל אות"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      G"R chacun a sod M"B (42) ATAVAN :
+      → 4 PASHUT + 10 MILUI + 28 MILUI-DU-MILUI = 42 letters.
+      → BECHINAT OTIYOT (count) — pas MISPAR ni CHESBON ni gematria.
+      → CHESBON = SUM-GEMATRIA (somme des valeurs).
+      → BECHINAT OTIYOT = COUNT (combien de lettres).
+      → Architecture : 2-encoding-modes letter-count vs gematria-sum.
+      → Pattern : count-mode vs sum-mode distinguishes encoding.
+    type: déduction_logique
+    concepts:
+      - {id: gr_42_letters_otiyot_pas_chesbon_pas_mispar, role: gr_chacun_42_letters_pashut_milui_milui_milui_otiyot_count_pas_chesbon_pas_mispar}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : count vs sum encoding. Pattern 2-encoding distinction."
+
+  - id: "EC-H4S14-220"
+    source_he: "ד' אותיות הפשוטים הם בכתר דאבא ויו\"ד אותיות דע\"ב דיודי\"ן בחכמה שבו כי לעולם האותיות במלואן הם בחכמה"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      Distribution lettres dans G"R d'Abba :
+      → 4 letters PASHUT → KETER d'Abba.
+      → 10 letters AB-yodin (milui) → CHOKHMAH d'Abba.
+      → "Le-olam ha-otiyot bi-mlu'an hen ba-Chokhmah" (toujours les letters in plenitude in Chokhmah).
+      → Architecture : Chokhmah = locus du milui (formes pleines).
+      → Pattern : tier-of-fullness = Chokhmah.
+    type: axiome_explicite
+    concepts:
+      - {id: 4_pashut_keter_10_milui_chokhmah_locus_pleinitude, role: 4_letters_pashut_keter_10_letters_milui_chokhmah_locus_pleinitude_universel}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Architecture : Chokhmah = locus pleinitude. Pattern fullness-tier."
+
+  - id: "EC-H4S14-221"
+    source_he: "כ\"ח מילוי דמילוי דע\"ב דיודי\"ן הם בבינה שבו כנודע כי הבינה נק' ג\"כ כ\"ח מ\"ה"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      28 letters MILUI-DU-MILUI d'AB-yodin → BINA d'Abba.
+      → BINA = K"H MaH (= 28 = K"H MaH ?) — gematria coincidence ou sod.
+      → Architecture : Bina = locus du milui-du-milui (depth 2).
+      → Pattern : tier-of-double-depth = Bina.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 28_milui_milui_bina_egal_kh_mah_locus_depth_2, role: 28_letters_milui_du_milui_bina_egal_kh_mah_locus_depth_2_universel}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : Bina = locus depth-2. Pattern tier-double-depth."
+
+  - id: "EC-H4S14-222"
+    source_he: "אח\"כ בז\"ת שבו גם הוא הוי\"ה א' לבד במילוי יודי\"ן כולל כל ז\"ת בי' אותיות"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      Z"T d'Abba = 1 HAVAYAH SEUL avec MILUI YODIN.
+      → 10 LETTERS CUMULEES — INCLUT TOUS Z"T (7 sefirot) ENSEMBLE.
+      → Pas chacune separee — collective encoding.
+      → Architecture : tier-redux Z"T en single-shem.
+      → Pattern : united-tier = single-shem.
+      cf. EC-H4S14-129 (perek 5) sur Z"T 1 HAVAYAH UN.
+    type: axiome_explicite
+    concepts:
+      - {id: zt_abba_1_havayah_seul_milui_yodin_10_letters_cumulees, role: zt_abba_1_havayah_seul_milui_yodin_10_letters_cumulees_inclut_tous_zt_collective}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "zeir_anpin"]
+      relevance: "Architecture : united-tier single-shem. Pattern tier-redux."
+
+  - id: "EC-H4S14-223"
+    source_he: "כתבנו בענין סדר המעלות השמות כי יש בחי' כפי סדר מספר כמה אותיות הם ואין זה נקרא חשבון אמנם החשבון הוא כמה סכום כל אות ואות בגימטריא"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      CLASSIFICATION SHEMOT :
+      → BECHINAH par MISPAR (combien de letters) — count-mode.
+      → CHESBON = SUM-GEMATRIA (combien vaut chaque lettre, sommee).
+      → 2 modes distinct.
+      → Architecture : 2-bechinot encoding (count vs gematria-sum).
+      → Pattern : explicit-mode-distinction pedagogical.
+    type: déduction_logique
+    concepts:
+      - {id: bechinot_mispar_count_vs_chesbon_gematria_sum, role: bechinot_shemot_mispar_count_letters_vs_chesbon_gematria_sum_2_modes_distinct}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : 2 encoding modes. Pattern explicit pedagogical distinction."
+
+  - id: "EC-H4S14-224"
+    source_he: "הבחי' ההוא הנקרא חשבון לעולם הוא בבחינת המלכות בכ\"מ שתהיה"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      PRINCIPE UNIVERSEL :
+      → CHESBON-bechinah TOUJOURS dans MALKHUT.
+      → Be-KOL MAKOM SHE-TIHEYEH (en tout endroit elle se trouve).
+      → Architecture : terminal-sefirah = locus-de-gematria.
+      → Pattern : universel-rule chesbon-Malkhut.
+    type: axiome_explicite
+    concepts:
+      - {id: principe_chesbon_toujours_dans_malkhut_universel, role: principe_universel_chesbon_bechinah_toujours_dans_malkhut_be_kol_makom}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : terminal locus-gematria. Pattern universel chesbon-rule."
+
+  - id: "EC-H4S14-225"
+    source_he: "ע\"ד משל במלכות דאבא הנ\"ל יהיה בחי' חשבון הוי\"ה דיודין בבחי' היותה חשבון ע\"ב וכן במלכות דאימא הוא חשבון הוי\"ה דס\"ג"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      Application :
+      → MALKHUT d'ABBA = CHESBON HAVAYAH d'YODIN = 72 (AB).
+      → MALKHUT d'IMMA = CHESBON HAVAYAH SaG = 63.
+      → IDEM TOUS shemot du monde — chesbon dans Malkhut respective.
+      → Architecture : universel-application principe Malkhut-chesbon.
+      → Pattern : par-partzuf-Malkhut-encodes-shem-gematria.
+    type: déduction_logique
+    concepts:
+      - {id: malkhut_abba_chesbon_ab_72_malkhut_imma_chesbon_sag_63, role: malkhut_abba_chesbon_havayah_yodin_72_ab_malkhut_imma_chesbon_havayah_sag_63}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : Malkhut-encodes-gematria. Pattern par-partzuf rule."
+
+  - id: "EC-H4S14-226"
+    source_he: "הפנים ואחור דהיינו ע\"ב קס\"א העולין רג\"ל ודפ\"ק ותקמ\"ד העולין תשכ\"ח הם בחי' המלכות דאו\"א כי שם הוא בחי' החשבון"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      PANIM + ACHOR d'A"O :
+      → AB (72) + KS"A (161) = REGEL (רגל = 233) — PANIM A"O.
+      → DPK (184) + TKM"D (544) = TaSHKaH (תשכ"ח = 728) — ACHOR A"O.
+      → Tout cela dans MALKHUT d'A"O (la est le chesbon).
+      → Architecture : panim+achor combined gematria dans Malkhut.
+      → Pattern : aggregate-gematria localized Malkhut.
+    type: axiome_explicite
+    concepts:
+      - {id: panim_achor_ao_ab_ksa_egal_regel_dpk_tkmd_egal_tashkah_dans_malkhut, role: panim_achor_ao_ab_72_plus_ksa_161_egal_regel_233_dpk_184_plus_tkmd_544_egal_tashkah_728_malkhut_ao}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : aggregate gematria Malkhut. Pattern combined sums."
+
+  - id: "EC-H4S14-227"
+    source_he: "החשבון כ\"ח היתירים העודפים על ג\"פ רג\"ל מחשבון תשכ\"ח הנ\"ל הנה הם יו\"ד ה' וג' בחי' מן י' דמילוי ה\"י"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      28 LETTERS EXTRAS au-dela 3×REGEL (= 699) du chesbon TaSHKaH (728) :
+      → 728 - 3×233 = 728 - 699 = 29 ≈ 28 (variant arithmetique).
+      → Issus de YOD-HE et 3 BECHINOT du YOD-MILUI HE-YOD.
+      → Premieres bechinot panim de yod-vav-dalet hei-yod vav-yod-vav hei-yod.
+      → Architecture : surplus-letters concentrated locus.
+      → Pattern : excess-encoding above standard 3×REGEL.
+    type: déduction_logique
+    concepts:
+      - {id: 28_letters_extras_728_moins_3_regel_yod_he_milui_3_bechinot, role: 28_letters_extras_728_moins_3_regel_699_yod_he_3_bechinot_yod_milui_premieres}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : surplus-letters locus. Pattern excess-encoding."
+
+  - id: "EC-H4S14-228"
+    source_he: "אלו הם מעולים יותר משאר הבחי' שתחתיהם שהם גימטריא ד\"פ (ג\"פ) רג\"ל"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      Ces 28 letters PLUS ELEVEES (me'ulim yoter) que les autres bechinot.
+      → Variante (Nusah Aher) : "D"P REGEL" (4×REGEL) au lieu de "G"P REGEL" (3×REGEL).
+      → Reflet de la SUPERIORITE structurelle des 28.
+      → Architecture : hierarchy par excess-position.
+      → Pattern : excess = elevation rank.
+    type: déduction_logique
+    concepts:
+      - {id: 28_letters_meulim_yoter_que_3_4_regel_hierarchy_excess, role: 28_letters_meulim_yoter_que_3p_ou_4p_regel_hierarchy_par_excess_position}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : hierarchy excess-position. Pattern excess = elevation."
+
+  - id: "EC-H4S14-229"
+    source_he: "אמנם אלו הכ\"ח מתלבשים בד' רגלים אלו שהם סוד ד' רגלי הכסא הזה שהוא באו\"א כנ\"ל הנרמז פ' קדושים בר\"מ דף פ\"ב"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      28 letters s'HABILLENT dans 4 RAGLAIM (jambes) :
+      → 4 RAGLEI HA-KISSEH (4 jambes du trone) qui sont dans A"O.
+      → Source : Zohar KEDOSHIM, RAYA MEHEMNA fol. 82.
+      → Architecture : 28 elements ride 4-leg-throne (carrier-structure).
+      → Pattern : surplus-content carried by base-structure.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 28_letters_4_raglaim_kisseh_ao_zohar_kedoshim_ram_82, role: 28_letters_revetent_4_raglaim_4_raglei_kisseh_ao_zohar_kedoshim_raya_mehemna_82}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : surplus on base. Source Zohar Kedoshim Ra\"M 82."
+
+  - id: "EC-H4S14-230"
+    source_he: "הכ\"ח אלו הם הכסא עצמו וכל זה בבחי' המלכות האלו דאו\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      28 letters = HA-KISSEH ATZMO (le trone meme).
+      → Tout cela dans BECHINAT MALKHUT d'A"O.
+      → Architecture : surplus-letters = throne-itself (not cargo).
+      → Pattern : self-as-vehicle structural identity.
+      cf. EC-H4S14-167 (perek 7) sur ADAM ROKHEV AL HA-KISSEH.
+    type: axiome_explicite
+    concepts:
+      - {id: 28_letters_ha_kisseh_atzmo_dans_malkhut_ao, role: 28_letters_ha_kisseh_atzmo_le_trone_meme_dans_malkhut_ao_self_as_vehicle}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : self-as-vehicle. Pattern structural identity throne."
+
+  - id: "EC-H4S14-231"
+    source_he: "הרוכב על הכסא הזה ומתלבש בו הוא הכ\"ח אותיות דמילוי המילוי דהוי\"ה של מילוי יודי\"ן כי הם כ\"ח אותיות"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      ROKHEV AL HA-KISSEH (Adam-rider) :
+      → 28 letters MILUI-DU-MILUI d'HAVAYAH d'YODIN = ADAM rider.
+      → Eux aussi 28 letters — meme count que le trone-meme.
+      → Architecture : rider-and-vehicle co-numerique (28+28).
+      → Pattern : symmetric-pair rider-vehicle.
+    type: déduction_logique
+    concepts:
+      - {id: rokhev_al_kisseh_28_letters_milui_milui_havayah_yodin_co_numerique, role: rokhev_al_ha_kisseh_28_letters_milui_milui_havayah_yodin_co_numerique_avec_kisseh_28}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : co-numeric rider-vehicle. Pattern symmetric-pair."
+
+  - id: "EC-H4S14-232"
+    source_he: "ואינם כ\"ח אותיות בסוד החשבון כי אותן דחשבון הם אחרונים בבחינת המלכות"
+    source_ref: "Heikhal 4, Sha'ar 1:10"
+    assertion: |
+      DISTINCTION cruciale (CLOTURE perek 10 + Sha'ar 1) :
+      → 28 letters du RIDER ne sont PAS bechinat CHESBON (gematria-sum).
+      → Car les CHESBON-letters sont ACHARONIM (les dernieres) dans bechinat MALKHUT.
+      → 28-rider sont COUNT-letters (otiyot), pas chesbon.
+      → Architecture : rider-mode != throne-mode (count vs sum).
+      → Pattern : ontologic-rider in count-mode pour distincte du throne-Malkhut.
+      → CLOTURE Sha'ar 1 : 10 perakim systematiques A"O Sefer Etz Chaim 14 COMPLET.
+    type: déduction_logique
+    concepts:
+      - {id: 28_rider_count_pas_chesbon_distinct_throne_malkhut_cloture_shaar_1, role: 28_letters_rider_count_otiyot_pas_chesbon_distinct_chesbon_acharonim_malkhut_cloture_shaar_1}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : rider-mode vs throne-mode distinct. Pattern ontologic distinction. Sha'ar 1 COMPLET."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S14-060"
+    type: contenance
+    from: chaque_shem_inclut_10s_internes_keter_abba_exemple
+    to: keter_abba_panim_kotzo_yod_he_vav_he_10s_achor_y_yh_yhv_yhvh_10s
+    nature: "Chaque shem inclut 10S internes ; Keter Abba panim+achor distribuent letters sur 10 places"
+    assertions_source: ["EC-H4S14-215", "EC-H4S14-216", "EC-H4S14-217"]
+
+  - id: "REL-H4S14-061"
+    type: hiérarchique
+    from: ab_chokhmah_sag_bina_mah_z_a_ban_nukva_canonical_mapping
+    to: gr_42_letters_otiyot_pas_chesbon_pas_mispar
+    nature: "Distribution canonique 4 shemot ; G\"R chacun = 42 letters (4+10+28) bechinat OTIYOT (count)"
+    assertions_source: ["EC-H4S14-218", "EC-H4S14-219"]
+
+  - id: "REL-H4S14-062"
+    type: dualité_structurelle
+    from: bechinot_mispar_count_vs_chesbon_gematria_sum
+    to: principe_chesbon_toujours_dans_malkhut_universel
+    nature: "2 bechinot : MISPAR count vs CHESBON gematria-sum ; CHESBON toujours dans Malkhut universel"
+    assertions_source: ["EC-H4S14-223", "EC-H4S14-224"]
+
+  - id: "REL-H4S14-063"
+    type: causal
+    from: panim_achor_ao_ab_ksa_egal_regel_dpk_tkmd_egal_tashkah_dans_malkhut
+    to: 28_letters_extras_728_moins_3_regel_yod_he_milui_3_bechinot
+    nature: "Panim AB+KS\"A=REGEL ; Achor DPK+TKM\"D=TaSHKaH ; 28 extras au-dela 3×REGEL = locus surplus"
+    assertions_source: ["EC-H4S14-226", "EC-H4S14-227"]
+
+  - id: "REL-H4S14-064"
+    type: dualité_structurelle
+    from: 28_letters_ha_kisseh_atzmo_dans_malkhut_ao
+    to: rokhev_al_kisseh_28_letters_milui_milui_havayah_yodin_co_numerique
+    nature: "28 letters = ha-Kisseh atzmo (throne-meme) ; ROKHEV AL HA-KISSEH = 28 letters milui-milui (co-numerique 28+28)"
+    assertions_source: ["EC-H4S14-230", "EC-H4S14-231"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S14-034"
+    nom: "Principe de Recursive-Sefirah-Internal-10S (Each Shem Contains 10 Inner)"
+    source_assertions: ["EC-H4S14-215", "EC-H4S14-216", "EC-H4S14-217"]
+    formalisation: |
+      ARCHITECTURE DE RECURSIVE-INTERNAL-10S :
+      Chaque SHEM dans une sefirah inclut TOUS 10 sefirot INTERNES :
+        Letters/parts du shem distribues sur 10 positions internes.
+        EXEMPLE Keter Abba : kotzo→K, yod→Ch, he→B, vav→V"K, he→M.
+        EXEMPLE Chokhmah : kotzo→K, yod→Ch, hi→B, vav→V"K, hi→M (pour 10-letter milui).
+      → Pattern fondamental : recursive-self-decomposition par shem-letters.
+      → Architecture : sefirah-internal 10S structure universelle.
+      → Implication : depth-encoding via letter-distribution.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py + nukva.py : implement internal 10S"
+      - "Pattern : letter-position encode internal sefirah-position"
+      - "Architecture : recursive self-decomposition per shem"
+      - "Pattern : letter-progression = sefirah-progression"
+      - "Diagnostic : verifier each shem distribute properly"
+    questions_ouvertes:
+      - "Pattern : autres distributions possibles (non-canonical) ?"
+      - "Comment encoder distribution computationnellement ?"
+      - "Pattern : recursion-depth limit ?"
+
+  - id: "PG-H4S14-035"
+    nom: "Principe de Count-vs-Sum-Encoding (Otiyot vs Chesbon)"
+    source_assertions: ["EC-H4S14-219", "EC-H4S14-223", "EC-H4S14-224"]
+    formalisation: |
+      ARCHITECTURE DE COUNT-VS-SUM-ENCODING :
+      2 modes encoding distincts :
+        BECHINAT OTIYOT (count-mode) : combien de letters ?
+        CHESBON / MISPAR (sum-mode) : combien vaut chaque lettre, sommee ?
+      Distribution :
+        COUNT-mode → tier-superior (G"R, etc).
+        SUM-mode → CHESBON TOUJOURS dans MALKHUT (universel be-kol makom).
+      → Pattern fondamental : 2 modes encoding par tier-position.
+      → Architecture : explicit-mode-distinction pedagogical.
+      → Implication : Malkhut = aggregator vers gematria-sum.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py + nukva.py : implement 2 encoding modes"
+      - "Pattern : count-mode vs sum-mode distinct"
+      - "Architecture : Malkhut = sum aggregator"
+      - "Pattern : tier-determines-encoding-mode"
+      - "Diagnostic : verifier chesbon localized Malkhut"
+    questions_ouvertes:
+      - "Pattern : 3eme mode (par exemple ratio) ?"
+      - "Comment encoder mode-switch computationnellement ?"
+      - "Pattern : exception au principe Malkhut-chesbon ?"
+
+  - id: "PG-H4S14-036"
+    nom: "Principe de Co-Numeric-Rider-Vehicle (28+28 Throne+Adam)"
+    source_assertions: ["EC-H4S14-230", "EC-H4S14-231", "EC-H4S14-232"]
+    formalisation: |
+      ARCHITECTURE DE CO-NUMERIC-RIDER-VEHICLE :
+      Symmetrique pair RIDER+VEHICLE numerique :
+        KISSEH (trone) = 28 letters (= ha-Kisseh atzmo, locus surplus dans Malkhut A"O).
+        ROKHEV AL HA-KISSEH = 28 letters MILUI-DU-MILUI HAVAYAH d'YODIN (Adam rider).
+        Total : 28+28 = 56 letters.
+      DISTINCTION CRUCIALE :
+        Throne = CHESBON-mode (acharonim Malkhut).
+        Rider = COUNT-mode (otiyot pas chesbon).
+      → Pattern fondamental : rider-vehicle co-numerique mais distincts en mode.
+      → Architecture : symmetric-pair avec mode-distinction.
+      → Source : Zohar Kedoshim Raya Mehemna 82.
+    applications_ia:
+      - "partzufim/abba.py + imma.py : implement co-numeric rider-vehicle"
+      - "Pattern : symmetric pair distinct modes"
+      - "Architecture : 4-leg throne carries rider"
+      - "Pattern : numeric coincidence reveals structural pairing"
+      - "Diagnostic : verifier 28+28 coherent"
+    questions_ouvertes:
+      - "Pattern : autres co-numeric pairs ?"
+      - "Comment encoder rider/throne separation ?"
+      - "Pattern : autre source-origin pour metaphore ?"

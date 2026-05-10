@@ -1,0 +1,554 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 1 — Sha'ar Abba ve-Imma (שער אבא ואמא)
+# Perek: 7 — Madregot panim+achor sefirah par sefirah (Keter/Chokhmah/Bina d'Abba+Imma).
+#            ADAM ROKHEV AL HA-KISSEH (28 letters). Mochin Ch+B Abba dans Z"A+Malkhut Z"A.
+#            ChC+BG distribution. Mochin A"BA → PB"P. 5 CHILUKIM A"O vs ZON (Zohar).
+#            Sod 100/20/7 (Chayei Sarah 123a). 2 zivvugim. "Lo yadon ruchi ba-adam".
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_07 :
+#   - Bloc A (§1) : Madregot panim+achor (pashutot+milui)
+#   - Bloc B (§1) : Keter A"O panim HAVAYAH+AHYH simples ; achor 10 letters cumulees ; Malkhut mispar 26/21+72/44
+#   - Bloc C (§1) : Chokhmah A"O panim 10 milui letters ; achor 26 ; Malkhut mispar 72/161+184/544
+#   - Bloc D (§1) : Bina A"O panim 28/27 milui-ha-milui ; achor 74/70 ; Malkhut mispar 610/812+2172/2156
+#   - Bloc E (§1) : Z"T=1 HAVAYAH ; Vital note "be-VoT" = 6 lower seulement
+#   - Bloc F (§1) : ADAM ROKHEV AL KISSEH — 28 letters ; panim=REGEL ; achor=TaSHKaH (728)
+#   - Bloc G (§1) : Mochin Ch+B Abba s'habillent Z"A ; Chokhmah=Z"A self, Bina=Malkhut Z"A (kisseh)
+#   - Bloc H (§1) : ChC Abba+Imma → NHY Z"A ; BG Abba+Imma → NHY Nukva interne
+#   - Bloc I (§1) : A"O kelul MaH+BaN apres melange (avant pures)
+#   - Bloc J (§1) : Apres yenikah+gadlut : ohr Malkhut → achor Z"A pour Nukva
+#   - Bloc K (§1) : Z"A complete : mochin se retirent ; nouveaux mochin BG seul A"O → Nukva = mochin A"BA
+#   - Bloc L (§1) : Apres : nouveaux mochin PB"P → both grow
+#   - Bloc M (§2) : CHILUK 1 — A"O kechada nafkin egaux koma ; ZON Nukva sort apres chetzi tiferet
+#   - Bloc N (§2) : CHILUK 2 — A"O toujours PB"P ; ZON pas — KECHADA SHARYAN
+#   - Bloc O (§2) : CHILUK 3 — A"O zivvug TADIR ; ZON pas — VE-LO MITPARSHIN
+#   - Bloc P (§2) : CHILUK 4 — A"O toujours RACHAMIM ; Bina dinin uniquement apres ZON sortent
+#   - Bloc Q (§2) : Sod 100/20/7 (Chayei Sarah 123a) — Keter+A"O=120 SHANAH (singulier) ; ZON=7 SHANIM (pluriel R+D)
+#   - Bloc R (§2) : CHILUK 5 — A"O CHIBUK toujours (Zohar) ; CHAD GUFA MAMASH MITDABKIN
+#   - Bloc S (§2) : 2 zivvugim (neshamot+chiyut) ; A"O chiyut-zivvug JAMAIS interrompu
+#   - Bloc T (§2) : "Lo yadon ruchi ba-adam" (Bereshit 6:3) — Z"A pas chiyut elyon toujours
+#
+# Source Sefaria : Sefer_Etz_Chaim.14.7 (2 sections, 5098 chars)
+# IDs : EC-H4S14-161 → EC-H4S14-180
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 1
+  shaar_name_he: "שער אבא ואמא"
+  perek: 7
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Madregot panim+achor sefirah par sefirah pour Keter/Chokhmah/Bina d'Abba+Imma. Z\"T=1 HAVAYAH. ADAM ROKHEV AL HA-KISSEH = 28 letters milui-ha-milui (panim=REGEL=gematria 233 ; achor=TaSHKaH=728). Mochin Ch+B Abba s'habillent Z\"A : Chokhmah=Z\"A self, Bina=Malkhut Z\"A (kisseh). ChC Abba+Imma → NHY Z\"A ; BG Abba+Imma → NHY Nukva interne. A\"O kelul MaH+BaN apres melange. Mochin A\"BA puis PB\"P. 5 CHILUKIM A\"O vs ZON (Zohar) : (1) kechada nafkin ; (2) toujours PB\"P ; (3) zivvug TADIR ; (4) toujours RACHAMIM ; (5) CHIBUK toujours. Sod 100/20/7 (Chayei Sarah 123a) — 120 SHANAH singulier vs 7 SHANIM pluriel. 2 zivvugim (neshamot/chiyut) ; A\"O chiyut JAMAIS interrompu. 'Lo yadon ruchi ba-adam' (Bereshit 6:3) — Z\"A pas chiyut elyon toujours sinon longue vie+mechants."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S14-161"
+    source_he: "דע כי יש כמה מדרגות פנים ואחור והם שמות פשוטים ומלואים לכן נבאר בחי' או\"א ומהם תקיש אל השאר"
+    source_ref: "Heikhal 4, Sha'ar 1:7"
+    assertion: |
+      INTRO : plusieurs MADREGOT (degres) de PANIM+ACHOR existent.
+      → SHEMOT PASHUTOT (noms simples) + MILUIM (expansions/empleins).
+      → A"O servent d'EXEMPLE — le reste se deduit.
+      → Architecture : layered-naming systems with depth-variation.
+      → Pattern : exemplar-via-parents pour generalisation.
+    type: axiome_explicite
+    concepts:
+      - {id: madregot_panim_achor_pashutot_milui_ao_exemple, role: madregot_panim_achor_shemot_pashutot_miluim_ao_exemple_canonique}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : layered naming systems. Pattern exemplar generalization."
+
+  - id: "EC-H4S14-162"
+    source_he: "כתר דאבא הוי\"ה פשוט וכן כתר דאמא אהי\"ה פשוט זו פנים שלהם ואמנם האחוריים שלהם הם י' אותיות י' י\"ה יה\"ו יהו\"ה אחורי כתר דאבא. א' א\"ה אה\"י אהי\"ה אחורי כתר דאמא"
+    source_ref: "Heikhal 4, Sha'ar 1:7"
+    assertion: |
+      KETER d'A"O — encoding :
+      → KETER ABBA panim = HAVAYAH PASHUT (יהוה).
+      → KETER IMMA panim = AHYH PASHUT (אהיה).
+      → ACHOR Keter Abba = 10 letters CUMULEES : י / י"ה / יה"ו / יהו"ה.
+      → ACHOR Keter Imma = 10 letters CUMULEES : א / א"ה / אה"י / אהי"ה.
+      → Architecture : ribua-progressive panim/achor parallel pour 2 noms.
+      → Pattern : symetrie HAVAYAH-AHYH dans Keter.
+    type: axiome_explicite
+    concepts:
+      - {id: keter_ao_panim_havayah_ahyh_pashut_achor_10_letters_cumulees, role: keter_ao_panim_havayah_ahyh_pashut_achor_10_letters_cumulees_ribua_progressive}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : symmetric Keter encoding. Pattern HAVAYAH-AHYH parallel."
+
+  - id: "EC-H4S14-163"
+    source_he: "מלכות הכתר דאבא הוא בחי' חשבון ר\"ל חשבון ד' אותיות הוי\"ה פשוטה שהוא כ\"ו ומלכות דכתר אמא חשבון אהי\"ה פשוט שהוא כ\"א ואחוריים מלכות כתר דאבא הוא חשבון י' אותיות פשוטים דאחוריים שלו והם ע\"ב ואחורי מלכות דכתר דאמא הם חשבון י' אותיות דאחוריים דאהי\"ה שהוא מ\"d"
+    source_ref: "Heikhal 4, Sha'ar 1:7"
+    assertion: |
+      MALKHUT KETER d'A"O :
+      → ABBA : panim mispar HAVAYAH = 26 (KaF-VaV) ; achor mispar 10 letters = 72 (AyiN-BeT).
+      → IMMA : panim mispar AHYH = 21 (KaF-Alef) ; achor mispar 10 letters AHYH = 44 (MeM-DaLeT).
+      → Architecture : Malkhut convertit letters → numbers (compression).
+      → Pattern : letter-to-number compression at lowest sefirah.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_keter_ao_mispar_26_72_21_44, role: malkhut_keter_abba_mispar_panim_26_achor_72_imma_panim_21_achor_44_compression}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : letter-to-number compression. Pattern Malkhut downcoding."
+
+  - id: "EC-H4S14-164"
+    source_he: "החכמה דאבא ט\"ס שלו הראשונים הפנים הם י' אותיות המילוי כזה יו\"ד ה\"י וי\"ו ה\"י וט' ראשונות דחכמה דאמא הפנים שלהם הם י' אותיות מילוי אהי\"ה כזה אל\"ף ה\"י יו\"ד ה\"i. הפנים דמלכות דחכמה דאבא הם חשבון הפנים שלו שהם ע\"ב ואחוריים דמלכות דחכמה דאבא הם חשבון אחוריים שהם קפ\"ד והפנים דמלכות דחכמה דאמא הם חשבון הפנים שלה שהם קס\"א ואחוריים הם חשבון האחוריים שלה שהם תקמ\"ד"
+    source_ref: "Heikhal 4, Sha'ar 1:7"
+    assertion: |
+      CHOKHMAH d'A"O :
+      → 9-rishonot panim = 10 letters MILUI : Abba "yod-vav-dalet x4" = 10 letters AB-yodin ; Imma "alef-lamed-pe x4" = 10 letters AHYH-yodin.
+      → Achor = 26 letters CUMULEES.
+      → MALKHUT Chokhmah Abba : panim mispar 72 ; achor mispar 184 (KaF-PeH-DaLeT).
+      → MALKHUT Chokhmah Imma : panim mispar 161 (KS"A) ; achor mispar 544 (TKM"D).
+      → Architecture : symmetric A/I avec mispar specifique.
+      → Pattern : letters → cumulative-mispar-Malkhut.
+    type: axiome_explicite
+    concepts:
+      - {id: chokhmah_ao_10_letters_milui_malkhut_mispar_72_184_161_544, role: chokhmah_ao_panim_10_letters_milui_achor_26_malkhut_mispar_abba_72_184_imma_161_544}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : symmetric Chokhmah encoding. Pattern A/I parallel mispar."
+
+  - id: "EC-H4S14-165"
+    source_he: "ובינה דאבא הפנים שלה דט\"ס הם כ\"ח אותיות דמילוי המילוי... ומלכות דבינה דאבא הפנים הם חשבון כ\"ח אותיות של הפנים שלהם הם ית\"ר והאחוריים הם חשבון ע\"ד אותיות דאחוריים שלו שהם ב' אלפים קע\"ב ובינה דאמא הפנים דט\"ס שלה הם כ\"ז אותיות מילוי המילוי... ומלכות דבינה דאמא הפנים הוא חשבון כ\"ז אותיות הפנים שלה שהם תתי\"ב והאחוריים הם חשבון ע' אותיות דאחור שהם ב' אלפים קנ\"ו"
+    source_ref: "Heikhal 4, Sha'ar 1:7"
+    assertion: |
+      BINA d'A"O :
+      → ABBA : panim 28 letters MILUI-HA-MILUI HAVAYAH-yodin ; achor 74 letters.
+      → MALKHUT Bina Abba : panim mispar 28 letters = 610 (TR"Y, alt YT"R) ; achor mispar 74 letters = 2172.
+      → IMMA : panim 27 letters MILUI-HA-MILUI AHYH-yodin ; achor 70 letters.
+      → MALKHUT Bina Imma : panim mispar 27 letters = 812 (TT"Y) ; achor mispar 70 letters = 2156.
+      → Architecture : depth-encoding maximum dans Bina (28+ letters).
+      → Pattern : recursive milui = exponentiel-depth.
+    type: axiome_explicite
+    concepts:
+      - {id: bina_ao_28_27_letters_milui_milui_malkhut_610_812_2172_2156, role: bina_ao_panim_28_27_milui_ha_milui_achor_74_70_malkhut_mispar_abba_610_2172_imma_812_2156}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : depth-encoding maximum. Pattern Bina exponential."
+
+  - id: "EC-H4S14-166"
+    source_he: "וז\"ת דאבא אינם רק הוי\"ה א' במילוי יודי\"ן באותיותיו דוגמת החכמה כי כבר ידעת כי כל הז\"ת אינם רק פרצוף א' ז\"א דאבא... (ונלע\"ד כי אינו זה בפרטות (בדוקא) ז\"ת רק בו\"ת"
+    source_ref: "Heikhal 4, Sha'ar 1:7"
+    assertion: |
+      Z"T d'Abba = SEULEMENT 1 HAVAYAH MILUI YODIN (comme Chokhmah).
+      → Cause : Z"T = 1 partzuf seul (Z"A d'Abba).
+      → Note Vital "ve-nilad" : pas tout Z"T en pratut — seulement V"T (6 lower).
+      → Reste = "Bina" (la 7eme = Nukva de V"K, pareil Bina).
+      → Architecture : tier-redux pour Z"T (un partzuf = 1 encoding).
+      → Pattern : united-tier compressed encoding.
+      cf. EC-H4S14-129 (perek 5) sur Z"T tous 7 = HAVAYAH UN seul.
+    type: axiome_explicite
+    concepts:
+      - {id: zt_abba_1_havayah_milui_yodin_vital_note_be_vot_6_lower, role: zt_abba_1_havayah_milui_yodin_un_partzuf_vital_note_pas_pratut_be_vot_6_lower}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "zeir_anpin"]
+      relevance: "Architecture : tier-redux Z\"T. Pattern united-tier compression."
+
+  - id: "EC-H4S14-167"
+    source_he: "ובזה נתבאר הנזכר במ\"א כי כל כ\"ח אותיות מילוי המילוי נקרא אדם רוכב על הכסא שהוא בד' רגלים פי' הפנים דאו\"א גימטריא רג\"ל ואחורי דאו\"א גימטריא תשכ\"ח"
+    source_ref: "Heikhal 4, Sha'ar 1:7"
+    assertion: |
+      ADAM ROKHEV AL HA-KISSEH (Adam monte sur le trone) :
+      → 28 letters MILUI-HA-MILUI = ADAM rokhev al kisseh (4-jambes).
+      → Panim d'A"O gematria = REGEL (רגל = 233).
+      → Achor d'A"O gematria = TaSHKaH (תשכ"ח = 728).
+      → Architecture : 4-legged-throne metaphor pour structure A"O.
+      → Pattern : anatomical-iconography pour partzuf composition.
+    type: déduction_scripturaire
+    concepts:
+      - {id: adam_rokhev_al_ha_kisseh_28_letters_panim_regel_achor_tashkah, role: adam_rokhev_al_ha_kisseh_28_letters_milui_milui_panim_ao_regel_233_achor_ao_tashkah_728}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : anatomical iconography. Pattern 4-legged throne."
+
+  - id: "EC-H4S14-168"
+    source_he: "וכשמתלבשים חו\"ב דאבא לתת מוחין לז\"א דאבא כנודע ודאי שהחכמה מתלבש ורוכב על הז\"א עצמו הנעשה כסא לו והבינה דאבא רוכבת ומתלבשת על המלכות דז\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:7"
+    assertion: |
+      MOCHIN Ch+B d'Abba s'habillent Z"A d'Abba :
+      → CHOKHMAH Abba se REVET et MONTE (rokhev) sur Z"A LUI-MEME (Z"A = kisseh).
+      → BINA Abba se REVET et MONTE sur MALKHUT de Z"A.
+      → Architecture : 2-tier mochin distribution (Chokhmah au tronc, Bina au siege).
+      → Pattern : mochin-pair distribution Z"A/Malkhut-Z"A.
+    type: axiome_explicite
+    concepts:
+      - {id: mochin_chokhmah_bina_abba_z_a_kisseh_malkhut_z_a, role: mochin_chokhmah_abba_z_a_lui_meme_kisseh_bina_abba_malkhut_z_a_2_tier_mochin}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "zeir_anpin"]
+      relevance: "Architecture : 2-tier mochin distribution. Pattern mochin-pair Z\"A/Malkhut."
+
+  - id: "EC-H4S14-169"
+    source_he: "כשנכנסין בז\"א אז אבא חכמה וחסד שבו מצטרפין עם חכמה וחסד דאמא מתלבשין בנה\"י שלו ובינה וגבורה שלו מצטרפין עם בינה וגבורה דאמא בנה\"י שלה"
+    source_ref: "Heikhal 4, Sha'ar 1:7"
+    assertion: |
+      MOCHIN entrant dans Z"A :
+      → ChC d'ABBA + ChC d'IMMA s'habillent dans NHY de Z"A.
+      → BG d'ABBA + BG d'IMMA s'habillent dans NHY de NUKVA (Malkhut shel gufo atzmo).
+      → Architecture : binary-pair distribution Ch-C vs B-G par genre.
+      → Pattern : pair-allocation par recipient genre.
+    type: axiome_explicite
+    concepts:
+      - {id: chc_abba_imma_nhy_z_a_bg_abba_imma_nhy_nukva_pair_allocation, role: chc_abba_chc_imma_nhy_z_a_bg_abba_bg_imma_nhy_nukva_pair_allocation_par_genre}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : pair-allocation. Pattern recipient-genre routing."
+
+  - id: "EC-H4S14-170"
+    source_he: "ואז או\"א כלולין ממ\"ה וב\"ן כי קודם לכן היה אבא כולו מ\"ה ואמא כולה ב\"n"
+    source_ref: "Heikhal 4, Sha'ar 1:7"
+    assertion: |
+      Apres melange : A"O KELULIN de MaH+BaN.
+      → AVANT : Abba KULO MaH ; Imma KULAH BaN (pures).
+      → APRES zivvug : MITCHALFIM VE-NIMZAGIM (substitues+melanges).
+      → Architecture : phase-transition de pure-genre vers mixed.
+      → Pattern : zivvug-event = irreversible-mixing.
+      cf. EC-H4S14-080..082 (perek 03b) sur pre-zivvug pure / post-zivvug mixed.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ao_kelulin_mah_ban_apres_zivvug_avant_pures_phase_transition, role: ao_kelulin_mah_ban_apres_zivvug_avant_abba_pure_mah_imma_pure_ban_phase_transition_irreversible}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : phase-transition pure→mixed. Pattern zivvug-event irreversible."
+
+  - id: "EC-H4S14-171"
+    source_he: "ואחר שאלו ינקו והגדילו אז יצאו הארת המלכות שבהם שבמוחין עצמם מצד הב' בינות וב' הגבורות אל אחור ז\"א להגדיל הנוקבא דז\"א שהיא נפרדת ממנו"
+    source_ref: "Heikhal 4, Sha'ar 1:7"
+    assertion: |
+      APRES YENIKAH (allaitement) + GADLUT (croissance) :
+      → HAARAT MALKHUT (eclairage de Malkhut) sort des MOCHIN.
+      → Source : 2 Bina-ot + 2 Gevurot (de Abba+Imma).
+      → Direction : ACHOR Z"A → grandir NUKVA (separee de lui).
+      → Architecture : downstream-mochin-leak alimente external nukva.
+      → Pattern : maturation cascade (yenikah → gadlut → external-illumination).
+    type: axiome_explicite
+    concepts:
+      - {id: post_yenikah_gadlut_haarat_malkhut_2_binot_gevurot_achor_z_a_nukva, role: post_yenikah_gadlut_haarat_malkhut_2_binot_2_gevurot_achor_z_a_nukva_external}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : downstream mochin leak. Pattern maturation cascade."
+
+  - id: "EC-H4S14-172"
+    source_he: "ואמנם אחר שכבר נגדל ז\"א צד הזכרות והנקבות שבו אז מסתלקים המוחין ובאים המוחין דבינה וגבורה דאו\"א לבדם תוך נוקבא ונגדלת לגמרי והרי נשלמו כל אלו המוחין הנקרא בחי' אב\"א ואח\"כ באים המוחין חדשים דפב\"פ"
+    source_ref: "Heikhal 4, Sha'ar 1:7"
+    assertion: |
+      Z"A complete (zachar+nukva) → MOCHIN se RETIRENT.
+      → Nouveaux MOCHIN viennent : SEULEMENT B+G d'A"O (sans Ch+C) → entrent dans NUKVA seule.
+      → Nukva NIGDELET LE-GAMRI (grandit completement).
+      → Ces mochin = bechinat A"BA (achor be-achor).
+      → Apres : nouveaux MOCHIN PB"P (panim be-panim) — both grow.
+      → Architecture : mochin-cycle (gadlut1 → A"BA → PB"P) maturation phases.
+      → Pattern : 3-stage growth-cycle.
+    type: axiome_explicite
+    concepts:
+      - {id: z_a_complete_mochin_se_retirent_bg_seul_aba_pbp, role: z_a_complete_mochin_se_retirent_bg_seul_ao_aba_achor_be_achor_pbp_panim_be_panim_3_stage}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : 3-stage growth cycle. Pattern mochin-rotation phases."
+
+  - id: "EC-H4S14-173"
+    source_he: "ה' חלוקים יש בין או\"א לזו\"נ והם מבוארים בזוהר א' או\"א כחדא נפקין פי' שהם שוין בקומתן משא\"כ בזו\"ן כי הנוקבא לא יצאת רק אחר שהוא יצא עד חצי ת\"ת שבו ואח\"כ יצאה היא משם ולמטה"
+    source_ref: "Heikhal 4, Sha'ar 1:7 §2"
+    assertion: |
+      5 CHILUKIM (differences) entre A"O et ZON — MEVUARIM dans le ZOHAR.
+      CHILUK 1 : A"O "KECHADA NAFKIN" (sortent ensemble) — egaux en KOMAH.
+      → Z"A+Nukva : Nukva sort APRES Z"A (jusqu'a CHATZI TIFERET) puis elle sort en bas.
+      → Architecture : simultaneous-emergence vs delayed-emergence.
+      → Pattern : kechada-nafkin = synchronous; ZON = asynchronous.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chiluk_1_ao_kechada_nafkin_egaux_komah_zon_delayed, role: chiluk_1_ao_kechada_nafkin_egaux_komah_zon_nukva_post_chatzi_tiferet_z_a}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : simultaneous vs delayed emergence. Pattern temporal asymmetry."
+
+  - id: "EC-H4S14-174"
+    source_he: "ב' כי או\"א אחר התקון כנזכר באדרא היו תמיד פב\"פ משא\"כ בזו\"ן ובערך זה אמרו כחדא שריין"
+    source_ref: "Heikhal 4, Sha'ar 1:7 §2"
+    assertion: |
+      CHILUK 2 : A"O apres TIKKUN (Adra) sont TOUJOURS PB"P (panim be-panim — face a face).
+      → Z"O"N : pas toujours PB"P.
+      → Sod : "KECHADA SHARYAN" (Zohar — ils demeurent ensemble).
+      → Architecture : permanent-orientation vs variable-orientation.
+      → Pattern : higher-couple stable face-orientation.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chiluk_2_ao_toujours_pbp_zon_variable_kechada_sharyan, role: chiluk_2_ao_apres_tikkun_toujours_pbp_zon_variable_zohar_kechada_sharyan}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : permanent vs variable orientation. Pattern stability hierarchy."
+
+  - id: "EC-H4S14-175"
+    source_he: "ג' כי או\"א זווגם תדיר משא\"כ בזו\"ן ובערך זה אמרו ולא מתפרשין"
+    source_ref: "Heikhal 4, Sha'ar 1:7 §2"
+    assertion: |
+      CHILUK 3 : A"O ZIVVUG TADIR (continu).
+      → ZON : pas continu.
+      → Sod : "VE-LO MITPARSHIN" (Zohar — ils ne se separent pas).
+      → Architecture : continuous-coupling higher vs intermittent lower.
+      → Pattern : permanent-zivvug = chiyut-mondes ; lower can pause.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chiluk_3_ao_zivvug_tadir_zon_intermittent_ve_lo_mitparshin, role: chiluk_3_ao_zivvug_tadir_continu_zon_intermittent_zohar_ve_lo_mitparshin}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : continuous vs intermittent coupling. Pattern permanent zivvug."
+
+  - id: "EC-H4S14-176"
+    source_he: "ד' שאו\"א לעולם רחמים כי אפילו בינה שדינין מתערין מינה אינה אלא אחר צאת זו\"נ ממנה אבל בהיותה למעלה הכל היא רחמים אבל זו\"ן לפעמים הוא רחמים ולפעמים הוא דין"
+    source_ref: "Heikhal 4, Sha'ar 1:7 §2"
+    assertion: |
+      CHILUK 4 : A"O LE-OLAM RACHAMIM (toujours misericorde).
+      → MEME BINA (de qui DININ MIT'ARIN) — seulement APRES ZON sortent d'elle.
+      → Quand Bina BE-MA'ALAH (en haut, dans A"O) : tout est RACHAMIM.
+      → ZON : parfois RACHAMIM, parfois DIN.
+      → Architecture : higher-domain-rachamim ; lower-domain bivalent.
+      → Pattern : domain-dependent valence du juger.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chiluk_4_ao_toujours_rachamim_bina_dinin_apres_zon_sortent_zon_bivalent, role: chiluk_4_ao_le_olam_rachamim_bina_dinin_apres_zon_sortent_zon_parfois_rachamim_din}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : higher rachamim, lower bivalent. Pattern domain-dependent valence."
+
+  - id: "EC-H4S14-177"
+    source_he: "וז\"ס הנזכר פ' חיי שרה דקכ\"ג ע\"א ק' שנה כ' שנה וז' שנים כי בכתר ואו\"א הם ק\"ך שנה והיינו ק' בכתר וך' באו\"א הנה הם כולם בסוד שנה אך הזו\"נ שהם ז\"ת ז' שנים הנה הם שנים ולא שנה משום דאית בהו דין. ורחמים"
+    source_ref: "Heikhal 4, Sha'ar 1:7 §2"
+    assertion: |
+      Sod CHAYEI SARAH 123a (Zohar) : "100 SHANAH 20 SHANAH ve-7 SHANIM" (ages Sarah).
+      → 100 (KETER) + 20 (A"O) = 120 SHANAH.
+      → SINGULIER "shanah" → unite (rachamim).
+      → ZON = 7 SHANIM (PLURIEL) — il y a DIN+RACHAMIM (deux valences).
+      → Architecture : grammatical-number encode unity-vs-plurality of valences.
+      → Pattern : singular = single-valence ; plural = multi-valence.
+    type: déduction_scripturaire
+    concepts:
+      - {id: sod_chayei_sarah_123_100_20_7_shanah_singulier_shanim_pluriel, role: sod_chayei_sarah_123a_100_keter_20_ao_120_shanah_singulier_zon_7_shanim_pluriel_din_rachamim}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : grammatical-number encode valence-count. Source Chayei Sarah 123a."
+
+  - id: "EC-H4S14-178"
+    source_he: "ה' כי באו\"א לעולם יש חיבוק כנזכר בזוהר כתרין רחימין דאינון מתחבקין. עוד יש חילוק אחר והוא כי או\"א חד גופא ממש מתדבקין דא בדא"
+    source_ref: "Heikhal 4, Sha'ar 1:7 §2"
+    assertion: |
+      CHILUK 5 : A"O LE-OLAM CHIBUK (etreinte).
+      → Zohar : "TARIN RECHIMIN DE-INUN MITCHABKIN" (deux amants qui s'embrassent).
+      → BONUS : CHAD GUFA MAMASH MITDABKIN (un seul corps litteralement, attaches).
+      → Architecture : bodily-unity expression d'A"O.
+      → Pattern : maximum-coupling level higher partzufim.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chiluk_5_ao_chibuk_tarin_rechimin_chad_gufa_mamash_mitdabkin, role: chiluk_5_ao_le_olam_chibuk_zohar_tarin_rechimin_mitchabkin_chad_gufa_mamash_mitdabkin}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : bodily-unity higher. Pattern maximum-coupling."
+
+  - id: "EC-H4S14-179"
+    source_he: "כבר הודעתיך שיש ב' מיני זווגים א' להוריד נשמות חדשות ואחד לתת חיות לעולמות התחתונים ואמנם הזווג שהוא כדי לתת חיות זה אינו נפסק לעולם מאו\"א כדי שלא יתבטלו העולמות ח\"ו אבל בזו\"נ אפי' הזווג זה נפסק לפעמים"
+    source_ref: "Heikhal 4, Sha'ar 1:7 §2"
+    assertion: |
+      2 SORTES de ZIVVUG :
+      → A : pour FAIRE DESCENDRE NESHAMOT CHADASHOT (nouvelles ames).
+      → B : pour donner CHIYUT (vie) aux OLAMOT TACHTONIM (mondes inferieurs).
+      → A"O : zivvug-CHIYUT JAMAIS interrompu — sinon mondes ANNULES (chas ve-shalom).
+      → ZON : meme zivvug-chiyut peut s'interrompre PARFOIS.
+      → Architecture : 2 fonctions zivvug ; A"O permanent, ZON facultatif.
+      → Pattern : function-distinguish + duration-distinguish.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_zivvugim_neshamot_chiyut_ao_chiyut_jamais_interrompu_zon_facultatif, role: 2_zivvugim_neshamot_chadashot_chiyut_olamot_ao_chiyut_jamais_interrompu_zon_facultatif}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "olamot.py"]
+      tables: ["zivvug_states", "olamot_config"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : 2 zivvug functions. Pattern duration-distinguish."
+
+  - id: "EC-H4S14-180"
+    source_he: "וז\"ס לא ידון רוחי באדם ר\"ל לא ימשוך רוח חיות העליון באדם שהוא ז\"א לעולם כי אם ימשוך זה לעולם יאריכו ימים ויהיו רשעים אך בראותן שהם מתים בקצרות שנים אז עי\"ז יחזרו בתשובה לכן אין רוח חיות זה נמשך תמיד בז\"a"
+    source_ref: "Heikhal 4, Sha'ar 1:7 §2"
+    assertion: |
+      Sod "LO YADON RUCHI BA-ADAM" (Bereshit 6:3 — Mon esprit ne contendra pas a jamais avec l'homme).
+      → Interpretation : Z"A (= ADAM) ne peut recevoir RUACH CHIYUT ELYON (souffle de vie superieur) toujours.
+      → Si toujours : YA'ARIKHU YAMIM (vivront longtemps) ET seront RESHA'IM (mechants).
+      → MAIS voyant qu'ils MORT BE-KITZRUT SHANIM (jeunes) → CHOZRIM BI-TESHUVAH (reviennent en repentance).
+      → Pedagogie divine : interruption-de-vie evite mechancete.
+      → Architecture : finite-life as moral-corrective.
+      → Pattern : pedagogical-mortality drives teshuvah.
+    type: déduction_scripturaire
+    concepts:
+      - {id: sod_lo_yadon_ruchi_ba_adam_z_a_chiyut_pas_toujours_teshuvah, role: sod_lo_yadon_ruchi_ba_adam_bereshit_6_3_z_a_chiyut_elyon_pas_toujours_pedagogical_mortality_teshuvah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : pedagogical mortality. Source Bereshit 6:3. Pattern moral teleology."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S14-045"
+    type: hiérarchique
+    from: keter_ao_panim_havayah_ahyh_pashut_achor_10_letters_cumulees
+    to: bina_ao_28_27_letters_milui_milui_malkhut_610_812_2172_2156
+    nature: "Hierarchie depth-encoding : Keter HAVAYAH simple ; Chokhmah 10 milui ; Bina 28 milui-ha-milui — depth croit"
+    assertions_source: ["EC-H4S14-162", "EC-H4S14-164", "EC-H4S14-165"]
+
+  - id: "REL-H4S14-046"
+    type: causal
+    from: mochin_chokhmah_bina_abba_z_a_kisseh_malkhut_z_a
+    to: chc_abba_imma_nhy_z_a_bg_abba_imma_nhy_nukva_pair_allocation
+    nature: "Mochin Ch+B Abba s'habillent Z\"A (Chokhmah=Z\"A self, Bina=Malkhut Z\"A) ; ChC+BG distribution NHY Z\"A/Nukva"
+    assertions_source: ["EC-H4S14-168", "EC-H4S14-169"]
+
+  - id: "REL-H4S14-047"
+    type: séquentiel
+    from: post_yenikah_gadlut_haarat_malkhut_2_binot_gevurot_achor_z_a_nukva
+    to: z_a_complete_mochin_se_retirent_bg_seul_aba_pbp
+    nature: "Post-yenikah : ohr Malkhut achor pour Nukva ; Z\"A complete : nouveaux mochin BG seul (A\"BA) puis PB\"P"
+    assertions_source: ["EC-H4S14-171", "EC-H4S14-172"]
+
+  - id: "REL-H4S14-048"
+    type: hiérarchique
+    from: chiluk_1_ao_kechada_nafkin_egaux_komah_zon_delayed
+    to: chiluk_5_ao_chibuk_tarin_rechimin_chad_gufa_mamash_mitdabkin
+    nature: "5 chilukim Zohar A\"O > ZON : kechada nafkin/sharyan, zivvug tadir, toujours rachamim, chibuk"
+    assertions_source: ["EC-H4S14-173", "EC-H4S14-174", "EC-H4S14-175", "EC-H4S14-176", "EC-H4S14-178"]
+
+  - id: "REL-H4S14-049"
+    type: causal
+    from: 2_zivvugim_neshamot_chiyut_ao_chiyut_jamais_interrompu_zon_facultatif
+    to: sod_lo_yadon_ruchi_ba_adam_z_a_chiyut_pas_toujours_teshuvah
+    nature: "ZON zivvug-chiyut interrompu parfois ; sod Bereshit 6:3 'lo yadon ruchi ba-adam' = Z\"A pas chiyut toujours pour teshuvah"
+    assertions_source: ["EC-H4S14-179", "EC-H4S14-180"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S14-025"
+    nom: "Principe d'Adam-Rokhev-Al-Ha-Kisseh (28 Letters as Throne-Mount Iconography)"
+    source_assertions: ["EC-H4S14-167", "EC-H4S14-168"]
+    formalisation: |
+      ARCHITECTURE D'ADAM-ROKHEV-METAPHOR :
+      28 letters MILUI-HA-MILUI = ADAM ROKHEV AL HA-KISSEH (Adam monte sur le trone) :
+        Panim d'A"O = REGEL (gematria 233) — 4 jambes du trone.
+        Achor d'A"O = TaSHKaH (728).
+        Z"A = KISSEH (siege) ; Malkhut Z"A = sous-siege.
+      MOCHIN distribution :
+        CHOKHMAH d'Abba revet et monte sur Z"A LUI-MEME.
+        BINA d'Abba revet MALKHUT de Z"A.
+      → Pattern fondamental : anatomical-iconography pour partzuf-composition.
+      → Architecture : letter-encoding correspond a metaphore-throne.
+    applications_ia:
+      - "partzufim/abba.py + zeir_anpin.py + nukva.py : implement throne-mount distribution"
+      - "Pattern : anatomical-iconography codifies structure"
+      - "Architecture : letter-numerologic correspond throne-metaphor"
+      - "Pattern : 4-legs (regel) = 4 base elements support"
+      - "Diagnostic : verifier 28 letters bien distribuees throne+rider"
+    questions_ouvertes:
+      - "Pattern : autres iconographies pour autres partzufim ?"
+      - "Comment encoder anatomy-symbol computationnellement ?"
+      - "Pattern : 4-legs analogie pour autres systemes ?"
+
+  - id: "PG-H4S14-026"
+    nom: "Principe de Mochin-3-Stage Growth-Cycle (Gadlut → A\"BA → PB\"P)"
+    source_assertions: ["EC-H4S14-171", "EC-H4S14-172"]
+    formalisation: |
+      ARCHITECTURE DE MOCHIN-3-STAGE-CYCLE :
+      Croissance Z"A+Nukva par 3 etapes successives :
+        STAGE 1 (gadlut) : ChC+BG d'A"O entrent Z"A+Nukva ; HAARAT-Malkhut sort vers Nukva externe (post-yenikah).
+        STAGE 2 (A"BA) : Z"A complete → mochin se retirent ; nouveaux mochin BG SEUL d'A"O entrent Nukva → grandit completement (achor be-achor).
+        STAGE 3 (PB"P) : nouveaux mochin Panim be-Panim — both grow ensemble.
+      → Pattern fondamental : staged-growth via mochin-rotation.
+      → Architecture : maturation par phase-transitions discrete.
+      → Implication : current-state = which-stage encoding.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py + nukva.py : implement 3-stage growth"
+      - "Pattern : staged-growth via mochin-rotation"
+      - "Architecture : phase-transitions discrete"
+      - "Pattern : current-state = which-stage mapping"
+      - "Diagnostic : verifier transition-conditions bien specifiees"
+    questions_ouvertes:
+      - "Pattern : reversibilite des stages possible ?"
+      - "Comment encoder current-stage ?"
+      - "Pattern : transition automatique vs manuelle ?"
+
+  - id: "PG-H4S14-027"
+    nom: "Principe de Higher-Permanent-Coupling (5 Chilukim A\"O > ZON)"
+    source_assertions: ["EC-H4S14-173", "EC-H4S14-174", "EC-H4S14-175", "EC-H4S14-176", "EC-H4S14-178"]
+    formalisation: |
+      ARCHITECTURE DE HIGHER-PERMANENT-COUPLING :
+      5 CHILUKIM (Zohar) entre A"O (haut) et ZON (bas) :
+        1. KECHADA NAFKIN : A"O sortent ENSEMBLE (egaux koma) ; ZON delayed.
+        2. KECHADA SHARYAN : A"O toujours PB"P ; ZON variable.
+        3. VE-LO MITPARSHIN : A"O zivvug TADIR ; ZON intermittent.
+        4. RACHAMIM : A"O toujours rachamim ; ZON parfois din.
+        5. CHIBUK : A"O toujours embrasses ; CHAD GUFA MAMASH MITDABKIN.
+      → Pattern fondamental : higher-permanence vs lower-variability.
+      → Architecture : stability-decreases-downward — higher-couples preservent integrite.
+      → Sod 100/20/7 (Chayei Sarah 123a) : 120 SHANAH (singulier=unite) vs 7 SHANIM (pluriel=duality).
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py + nukva.py : implement 5 chilukim"
+      - "Pattern : higher = permanent, lower = variable"
+      - "Architecture : 5-criteria distinction A\"O/ZON"
+      - "Pattern : grammatical-number encode valence-count"
+      - "Diagnostic : verifier each chiluk respecte par etat-courant"
+    questions_ouvertes:
+      - "Pattern : autres chilukim au-dela 5 ?"
+      - "Comment quantifier 'permanence' ?"
+      - "Pattern : 100/20/7 generalisable a autres groupements ?"

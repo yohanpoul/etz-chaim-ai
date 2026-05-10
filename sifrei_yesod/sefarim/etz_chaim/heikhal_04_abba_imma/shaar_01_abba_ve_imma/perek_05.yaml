@@ -1,0 +1,589 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 1 — Sha'ar Abba ve-Imma (שער אבא ואמא)
+# Perek: 5 — Distribution SHEMOT (HAVAYAH+AHYH) entre 4 partzufim A"O+YISSO"T.
+#            Z"T = HAVAYAH simple ; G"R = M"B letters (4-10-28). Calcul detaille
+#            Keter+Chokhmah+Bina d'Abba avec milui+ribua+mispar. Principe :
+#            milui augmente DIN, pashtut = takhlit rachamim.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_05 :
+#   - Bloc A : Abba klalut A"O = HAVAYAH AB + AHYH YODIN (panim+achor)
+#   - Bloc B : Imma kollelet YISSO+Tevunah = HAVAYAH SaG + AHYH YODIN
+#   - Bloc C : Cela dans Z"T ; G"R = M"B letters (formula 4+10+28)
+#   - Bloc D : Sum M"B aussi dans Malkhut de chacun ; pareil MaH, BaN, ZON
+#   - Bloc E : Exemple AB — 4 madregot dans Keter Abba seul (panim+achor x 2)
+#   - Bloc F : Keter Abba panim 9 rishonot = HAVAYAH simple (4 letters distribuees 9 places)
+#   - Bloc G : Achorayim Keter = ribua pashut (10+15+21+26 letters cumulees)
+#   - Bloc H : Malkhut Keter — panim mispar 26, achorayim mispar 72
+#   - Bloc I : Chokhmah Abba — panim 9 = 10 letters milui AB-yodin ; achor ribua 26
+#   - Bloc J : Chokhmah Abba — Malkhut panim mispar AB=72 ; Malkhut achor mispar ribua=184
+#   - Bloc K : Bina Abba — panim 9 = 28 letters milui-ha-milui ; achor ribua 156
+#   - Bloc L : Bina Abba — Malkhut panim mispar 28=610 ; Malkhut achor mispar ribua-achor=2172
+#   - Bloc M : PRINCIPE — plus HAVAYAH milui, plus DIN ; pashtut = takhlit ha-rachamim
+#   - Bloc N : G"R 3 partzufim panim = 42 letters = SHEM M"B "DE-IHI BE-RISHA" (Tikkunim 132)
+#   - Bloc O : 3 Malkhuyot G"R aussi M"B letters mispar = "EYNAYIKH BREKHOT" (Zohar Pinchas)
+#   - Bloc P : Z"T Abba tous 7 = HAVAYAH UN AB-yodin (Z"A Abba un seul partzuf) ; vs G"R chacun
+#   - Bloc Q : Note Z"A+Chokhmah identite (miror) ; ou Nukva 7eme = bechinat mispar AB
+#   - Bloc R : Variante Nukva = 28 letters comme Bina ; Malkhut ZON = mispar ChB ; TZARIKH IYUN
+#   - Bloc S : Mapping global Imma d'Abba=AHYH-yodin ; YISSO=SaG ; Tevunah=AHYH-yodin
+#   - Bloc T : Mapping ZON — Z"A=MaH-alefin ; Nukva=BaN-hehin (variante : Leah/Yaakov/Rachel)
+#   - Bloc U : Reprise — A"O=AB+AHYH-yodin ; YISSO+Tevunah=SaG+AHYH-yodin ; §2 N"L variante "AD"
+#
+# Source Sefaria : Sefer_Etz_Chaim.14.5 (2 sections, 2803 chars)
+# IDs : EC-H4S14-116 → EC-H4S14-136
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 1
+  shaar_name_he: "שער אבא ואמא"
+  perek: 5
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Distribution SHEMOT (HAVAYAH+AHYH) entre 4 partzufim A\"O+YISSO\"T. Abba=AB+AHYH-yodin (Z\"T) ; Imma=SaG+AHYH-yodin ; YISSO=SaG ; Tevunah=AHYH-yodin. G\"R = M\"B letters (4+10+28 letters HAVAYAH/milui/milui-ha-milui). 4 madregot par sefirah : panim 9-rishonot, achorayim, Malkhut panim, Malkhut achorayim. Calcul detaille Keter+Chokhmah+Bina d'Abba avec milui+ribua+mispar. PRINCIPE : milui augmente DIN, pashtut = takhlit ha-rachamim. Z\"T tous 7 = HAVAYAH UN seul (Z\"A = un partzuf) vs G\"R chacun. SHEM M\"B 'DE-IHI BE-RISHA' (Tikkunim 132). 'EYNAYIKH BREKHOT' (Zohar Pinchas). Mapping complet : Z\"A=MaH-alefin, Nukva=BaN-hehin (variante : Leah/Yaakov/Rachel separes)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S14-116"
+    source_he: "הנה תבין היטב כי אבא הוא כללות או\"א והם הוי\"ה ע\"ב ואהי\"ה דיודין בפנים וכן באחוריים"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      ABBA = KLALUT A"O (totalite ABBA-IMMA) :
+      → Encode SHEMOT (noms divins) :
+        HAVAYAH d'AB (72) — gematria de YHVH milui d'YODIN.
+        AHYH d'YODIN (= 161 ou 21+45+95+(?), milui d'YODIN).
+      → Tant en PANIM (devant) qu'en ACHORAYIM (arriere).
+      → Architecture : noms encodent identite partzuf.
+      → Pattern : double-name distribution panim+achor.
+    type: interprétation_lurianique
+    concepts:
+      - {id: abba_klalut_ao_havayah_ab_ahyh_yodin_panim_achor, role: abba_klalut_ao_havayah_ab_72_ahyh_yodin_panim_achorayim_double_name}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : noms divins encodent identite partzuf. Pattern double-name."
+
+  - id: "EC-H4S14-117"
+    source_he: "ואמא כוללת יש\"ס ותבונה והם הוי\"ה דס\"ג ואהי\"ה דיודין בפנים שלהם וכן באחוריים"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      IMMA = KOLLELET YISSO + TEVUNAH (englobe les deux niveaux inferieurs) :
+      → Encode :
+        HAVAYAH d'SaG (63) — milui d'HE+YOD+ALEF+YOD-VAV-...
+        AHYH d'YODIN.
+      → Tant en PANIM qu'en ACHORAYIM.
+      → Architecture : Imma agglomere son enfant Tevunah (idem Abba+YISSO).
+      → Pattern : parent-encoding contient enfant-encoding.
+    type: interprétation_lurianique
+    concepts:
+      - {id: imma_kollelet_yisso_tevunah_havayah_sag_63_ahyh_yodin, role: imma_kollelet_yisso_tevunah_havayah_sag_63_ahyh_yodin_panim_achorayim}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : parent-agglomeration. Pattern parent contains child encoding."
+
+  - id: "EC-H4S14-118"
+    source_he: "ותראה במ\"א שאין כל זה רק בז\"ת של כ\"א מהן אך בג\"ר של כ\"א מהם הוא מ\"ב אתוון שהם ד' י' כ\"ח ומספרם וחשבונם הם מ\"ב במלכות של כ\"א מהם"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      DETAIL : shemot s'appliquent QUE dans Z"T (7 inf) de chacun.
+      → G"R (3 sup) chacun = M"B (42) ATAVAN (lettres) — decomposition : 4+10+28.
+      → 4 letters HAVAYAH simple (Keter) ; 10 milui (Chokhmah) ; 28 milui-ha-milui (Bina).
+      → MISPAR total = M"B aussi dans MALKHUT de chacun.
+      → Architecture : distinct-encoding G"R (letters) vs Z"T (gematria simple).
+      → Pattern : tier-specific encoding mode.
+    type: déduction_logique
+    concepts:
+      - {id: zt_havayah_ab_simple_gr_42_letters_4_10_28_keter_chokhmah_bina, role: zt_havayah_ab_gematria_gr_42_letters_decompose_4_10_28_keter_chokhmah_bina_milui_layered}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : tier-specific encoding. Pattern letter-vs-gematria modes."
+
+  - id: "EC-H4S14-119"
+    source_he: "וכן במ\"ה וכן בב\"ן וכן בזו\"ן ד' פרצופים וענינם (הוא) כך בשם ע\"ב וממנו תבין לכל השאר"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      MEME PATTERN pour MaH, BaN, ZON :
+      → Tous 4 partzufim suivent meme structure (Abba+Imma+ZON).
+      → Detail expose pour SHEM AB ; le reste se deduit par analogie.
+      → Architecture : universel-pattern across 4 partzufim levels.
+      → Pattern : exemple-canonique pour generaliser.
+    type: déduction_logique
+    concepts:
+      - {id: pattern_universel_4_partzufim_ab_mah_ban_zon_exemple_ab, role: pattern_universel_4_partzufim_ab_mah_ban_zon_meme_structure_exemple_ab_canonique}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : universal pattern. Pattern canonical-example generalization."
+
+  - id: "EC-H4S14-120"
+    source_he: "כתר דאבא הפנים שלו הם ד' אותיות הוי\"ה פשוטה בט' ראשונות שלו שהם קוצו של י' בכתר י' בחכמה ה' בבינה ו' ו\"ק ה' עטרת יסוד וכל ט' בחי' אלו הם בחי' הפנים הזכר"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      KETER d'ABBA — PANIM des 9 rishonot — 4 lettres HAVAYAH PASHUT distribuees :
+      → KOTZO SHEL YOD (epine du yod) → KETER.
+      → YOD (י) → CHOKHMAH ; HE (ה) → BINA.
+      → VAV (ו) → V"K (Z"A 6 sefirot Chesed-Yesod) ; HE (ה) → ATERET YESOD (Malkhut).
+      → 9 BECHINOT = PANIM ZACHAR ; 4 letters compressees sur 9 places.
+      → Architecture : letter-distribution = sefirah-place mapping.
+      → Pattern : compressed encoding par sefirah.
+    type: déduction_scripturaire
+    concepts:
+      - {id: keter_abba_panim_9_rishonot_havayah_pashut_4_letters, role: keter_abba_panim_9_rishonot_havayah_pashut_kotzo_yod_he_vav_he_distribuee_zachar}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Architecture : letter-place mapping. Pattern compressed encoding."
+
+  - id: "EC-H4S14-121"
+    source_he: "ואחוריים שלו הוא י' י\"ה יה\"ו יהו\"ה שהוא נקרא רבוע פשוט"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      ACHORAYIM KETER d'Abba = RIBUA PASHUT (carre simple) :
+      → י (yod) — 1 lettre.
+      → יה (yod-he) — 2 lettres.
+      → יהו (yod-he-vav) — 3 lettres.
+      → יהוה (yod-he-vav-he) — 4 lettres.
+      → Total cumulatif : 1+2+3+4 = 10 lettres / mispar 10+15+21+26=72.
+      → Architecture : ribua-pashut = triangulaire-letters.
+      → Pattern : back-side = expansion progressive (complementaire panim).
+    type: axiome_explicite
+    concepts:
+      - {id: achor_keter_abba_ribua_pashut_y_yh_yhv_yhvh_72, role: achor_keter_abba_ribua_pashut_y_yh_yhv_yhvh_letters_cumulees_10_lettres_mispar_72}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Architecture : ribua-pashut triangular. Pattern back-expansion."
+
+  - id: "EC-H4S14-122"
+    source_he: "ומלכות הכתר דאבא פניה הם חשבון הפנים הראשונים שהוא הוי\"ה שמספרה כ\"ו ואחוריים הוא רבוע הנ\"ל בבחי' מספר שהוא ע\"ב"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      MALKHUT du KETER d'Abba :
+      → PANIM = MISPAR (gematria) des panim ci-dessus = HAVAYAH = 26 (kaf-vav).
+      → ACHORAYIM = RIBUA en MISPAR = 72 (ayin-bet).
+      → Architecture : Malkhut = compressed-numerical-form de panim/achor letters.
+      → Pattern : letter→number compression at lower sefirah.
+      → 4 madregot total dans Keter Abba : panim-9, achor-9, panim-Malkhut, achor-Malkhut.
+    type: axiome_explicite
+    concepts:
+      - {id: malkhut_keter_abba_panim_26_achor_72_4_madregot_total, role: malkhut_keter_abba_panim_havayah_26_achor_ribua_mispar_72_4_madregot_total_keter}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Architecture : letter-to-number compression. Pattern 4-madregot per sefirah."
+
+  - id: "EC-H4S14-123"
+    source_he: "ואח\"כ חכמה דאבא פנים דט' ראשונות שבה הוא י' אותיות דמילוי דע\"ב דיודין בבחי' אותיות לבד ואחר כך אחוריים לבד שהוא רבוע שלהן כ\"ו אותיות ואח\"כ פנים דמלכות חכמה דאבא שהוא מספר הוי\"ה דע\"ב דיודין בבחי' מספר דע\"ב ואח\"כ אחוריים דמלכות שהוא מספר רבוע דע\"ב דיודין שהוא גימטריא קפ\"ד"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      CHOKHMAH d'Abba — 4 madregot :
+      → PANIM 9-rishonot = 10 letters MILUI d'AB-yodin (yod-vav-dalet x 4).
+      → ACHOR 9 = RIBUA = 26 letters cumulees.
+      → MALKHUT PANIM = MISPAR HAVAYAH d'AB-yodin = 72.
+      → MALKHUT ACHOR = MISPAR RIBUA d'AB-yodin = 184 (kuf-pe-dalet).
+      → Architecture : meme structure 4-madregot mais PROFONDEUR croit (10 vs 4 letters).
+      → Pattern : tier-deeper = letter-count-augmente.
+    type: axiome_explicite
+    concepts:
+      - {id: chokhmah_abba_4_madregot_10_letters_milui_ab_yodin_184, role: chokhmah_abba_4_madregot_panim_9_10_letters_milui_ab_yodin_achor_ribua_26_malkhut_72_184}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Architecture : tier-deeper letter-count augmente. Pattern hierarchical depth."
+
+  - id: "EC-H4S14-124"
+    source_he: "אח\"כ ד' מדרגות אחרות בבינה דאבא פנים דט' ראשונות שבה והם כ\"ח אותיות דמילוי המילוי דהוי\"ה דיודין ואחריהן רבוע דכ\"ח אותיו' דמילוי המילוי שהם קנ\"ו אותיות ואח\"כ פנים דמל' דבינה דאבא שהוא מספר כ\"ח אותיות מילוי המילוי שהוא גימטריא תר\"י"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      BINAH d'Abba — 4 madregot :
+      → PANIM 9-rishonot = 28 letters MILUI-HA-MILUI (milui du milui) d'HAVAYAH d'YODIN.
+      → ACHOR 9 = RIBUA des 28 letters = 156 letters.
+      → MALKHUT PANIM = MISPAR des 28 letters MILUI-HA-MILUI = 610 (TaR"Y, taf-resh-yod).
+      → Architecture : encore plus profond (28 letters vs 10) — depth recursion.
+      → Pattern : recursive milui = exponentiel-depth.
+    type: axiome_explicite
+    concepts:
+      - {id: bina_abba_4_madregot_28_letters_milui_ha_milui_yodin_156_610, role: bina_abba_4_madregot_panim_28_letters_milui_ha_milui_achor_156_malkhut_panim_610}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : recursive milui exponentiel. Pattern depth-recursion."
+
+  - id: "EC-H4S14-125"
+    source_he: "ואח\"כ אחוריים דמלכות הנ\"ל שהם מספר אותיות רבוע דאחוריים דמילוי המילוי שהוא גימטריא של (קנ\"ו) ע\"ד אותיות וחשבונם ב' אלפים קע\"ב"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      BINAH d'Abba — 4eme madregat :
+      → MALKHUT ACHORAYIM = MISPAR letters RIBUA-d'ACHORAYIM-de-MILUI-HA-MILUI.
+      → Variante (Nusah Aher) : "(קנ\"ו)" ou "ע\"ד" letters.
+      → Compute : 2172 (BET ALAFIM KOF AYIN BET).
+      → Architecture : maximum-depth dans Malkhut achor = nombre maximal.
+      → Pattern : back-of-bottom = max-numerical-encoding.
+    type: axiome_explicite
+    concepts:
+      - {id: bina_abba_malkhut_achor_ribua_milui_ha_milui_2172_max, role: bina_abba_malkhut_achor_mispar_ribua_achor_milui_ha_milui_2172_max_depth_encoding}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : max-depth back-bottom. Pattern numerical encoding extremum."
+
+  - id: "EC-H4S14-126"
+    source_he: "נמצא כי כל מה שהוי\"ה הולכת ומתמלאת הוא יותר דין ועצמותם בפשיטותם הוא תכלית הרחמים"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      PRINCIPE FONDAMENTAL :
+      → Plus HAVAYAH MIT'MAL'AH (se remplit, milui+milui-ha-milui) = PLUS DE DIN (jugement).
+      → ATZMUTAM BE-PSHITUTAM (essence en simplicite) = TAKHLIT HA-RACHAMIM (sommet de la misericorde).
+      → Architecture : depth-encoding correlates avec severity-axis.
+      → Pattern : surface-simple = compassion ; depth-complex = strict-judgment.
+    type: interprétation_lurianique
+    concepts:
+      - {id: principe_milui_egal_din_pshitut_egal_rachamim_takhlit, role: principe_milui_havayah_egal_din_pshitut_atzmut_egal_takhlit_ha_rachamim_axis}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : depth-severity correlation. Pattern fundamental Din/Rachamim axis."
+
+  - id: "EC-H4S14-127"
+    source_he: "והנה ג\"ר אלו דאבא הפנים שלהם הם מ\"ב אותיות של הט' ראשונות שבכל א' וא' מן הג' שהם זכרים וז\"ס שם מ\"ב דאיהי ברישא כנזכר בתיקונים קל\"ב"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      G"R d'Abba — PANIM = M"B (42) letters total :
+      → 4 (Keter) + 10 (Chokhmah) + 28 (Bina) = 42 letters.
+      → Tous des 9-rishonot des 3 ZACHARIM (Keter+Chokhmah+Bina G"R).
+      → Sod : SHEM M"B "DE-IHI BE-RISHA" (qui est dans la tete) — TIKKUNIM 132.
+      → Architecture : 42-letter sacred-name encode dans tete partzuf.
+      → Pattern : invariant numerologique sacred-name.
+    type: déduction_scripturaire
+    concepts:
+      - {id: gr_abba_panim_42_letters_shem_mb_tikkunim_132, role: gr_abba_panim_42_letters_keter_chokhmah_bina_3_zacharim_shem_mb_de_ihi_be_risha_tikkunim_132}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : sacred-name encode tete. Source Tikkunim 132."
+
+  - id: "EC-H4S14-128"
+    source_he: "וגם בג' מלכיות שבהם יש מ\"ב אתוון עצמן אלא שהם בסוד מספר וז\"ס עיניך בריכות בחשבון כנזכר בזוהר פנחס"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      Aussi dans 3 MALKHUYOT G"R : memes M"B letters mais en MISPAR (chesbon).
+      → Sod : "EYNAYIKH BREKHOT" (Cantique 7:5 — tes yeux sont des piscines) BE-CHESBON.
+      → Citation : ZOHAR PINCHAS — chesbon+gematria sont dans MALKHUT.
+      → "MALKHUT = bechinat MISPAR du ZACHAR shela" (la femelle = compute du male).
+      → Architecture : Malkhut convertit letters → numbers (encoding-mode-shift).
+      → Pattern : feminine-bottom = numerical-form du masculin-letter-form.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 3_malkhuyot_gr_42_letters_mispar_eynayikh_brekhot_zohar_pinchas, role: 3_malkhuyot_gr_42_letters_mispar_chesbon_eynayikh_brekhot_cantique_7_5_zohar_pinchas}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : Malkhut letter→number conversion. Sources Cantique 7:5 + Zohar Pinchas."
+
+  - id: "EC-H4S14-129"
+    source_he: "והנה הז\"ת של אבא כל הז' אין להם אלא הוי\"ה א' דע\"ב דיודין"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      Z"T d'Abba (7 inferieures) :
+      → Tous les 7 ensemble = HAVAYAH UN SEUL d'AB-yodin.
+      → Pas chacun une HAVAYAH separee.
+      → RAISON : Z"T = un PARTZUF UN seul (Z"A d'Abba).
+      → CONTRASTE : G"R = chaque sefirah = un partzuf separe.
+      → Architecture : Z"T-united-partzuf vs G"R-separate-partzufim.
+      → Pattern : tier-composition differs (collective vs individual).
+    type: axiome_explicite
+    concepts:
+      - {id: zt_abba_havayah_un_partzuf_un_za_abba_vs_gr_separes, role: zt_abba_un_havayah_ab_yodin_un_partzuf_un_seul_za_abba_vs_gr_3_partzufim_separes}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "zeir_anpin"]
+      relevance: "Architecture : Z\"T-united vs G\"R-separate. Pattern tier composition mode."
+
+  - id: "EC-H4S14-130"
+    source_he: "ונ\"ל שכיון שגם שם הם דו\"נ א\"כ ו\"ת לבד יהיה שם ע\"ב דיודין בבחי' אותיות ונוקבא השביעית יהיה בחינת מספר ע\"ב ע\"ד הנ\"ל והענין כי ז\"א וחכמה הכל א' וכמו שהחכמה י' אותיות דע\"ב כן הז\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      NL"H (note de Vital) — Z"T = ZN aussi :
+      → V"T (6 superieures Z"A) = AB-yodin en LETTERS.
+      → NUKVAH 7eme = AB en MISPAR.
+      → Cause : Z"A et CHOKHMAH HA-KOL ECHAD (sont un — meme essence).
+      → Comme Chokhmah a 10 letters AB, Z"A pareil.
+      → Architecture : Z"A-mirror-Chokhmah identite.
+      → Pattern : downstream-mirror upstream essence.
+    type: déduction_logique
+    concepts:
+      - {id: za_chokhmah_echad_zt_vt_letters_nukva_7eme_mispar, role: za_chokhmah_kol_echad_zt_vt_letters_ab_yodin_nukva_7eme_mispar_ab_mirror}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/abba.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "abba", "nukva"]
+      relevance: "Architecture : Z\"A-Chokhmah mirror identity. Pattern downstream-essence-mirror."
+
+  - id: "EC-H4S14-131"
+    source_he: "או אפשר שגם הנוקבא תהיה בחי' כ\"ח אותיות המילוי דמיון הבינה. אמנם המלכות של זו\"ן הם יהיה מספר ע\"ד הנ\"ל בחו\"ב וצ\"ע"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      VARIANTE doctrinale :
+      → OU EFSHAR (peut-etre) : Nukva = 28 letters MILUI-HA-MILUI comme BINA.
+      → Mais MALKHUT de ZON = MISPAR comme dans CHB (Chokhmah-Bina).
+      → TZARIKH IYUN (necessite reflexion plus).
+      → Architecture : doctrinal-uncertainty preservee — 2 lectures alternatives.
+      → Pattern : Nukva-mirror peut etre Chokhmah ou Bina.
+    type: axiome_explicite
+    concepts:
+      - {id: variante_nukva_28_letters_bina_malkhut_zon_mispar_chb_tzarikh_iyun, role: variante_nukva_28_letters_milui_ha_milui_bina_malkhut_zon_mispar_chb_tzarikh_iyun}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "imma"]
+      relevance: "Architecture : doctrinal variants preserved. Pattern Nukva-mirror options."
+
+  - id: "EC-H4S14-132"
+    source_he: "והנה כל (שם) זה באבא דאבא. אמנם באמא דאבא הוא שם אהי\"ה דיודין ע\"ד הנ\"ל ואח\"כ ביש\"ס שם ס\"ג ובתבונה שם אהי\"ה דיודין על דרך הנ\"ל"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      Mapping AVANCE A"O+YISSO"T :
+      → ABBA d'ABBA = HAVAYAH AB d'YODIN (deja decrit).
+      → IMMA d'ABBA = AHYH d'YODIN.
+      → YISSO = HAVAYAH SaG (63).
+      → TEVUNAH = AHYH d'YODIN.
+      → Architecture : naming-hierarchy par partzuf-position.
+      → Pattern : Imma+Tevunah partagent AHYH-yodin (echo).
+    type: axiome_explicite
+    concepts:
+      - {id: mapping_abba_dabba_ab_imma_dabba_ahyh_yodin_yisso_sag_tevunah_ahyh_yodin, role: mapping_abba_dabba_ab_imma_dabba_ahyh_yodin_yisso_sag_tevunah_ahyh_yodin_naming_hierarchy}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : naming-hierarchy par position. Pattern Imma-Tevunah AHYH echo."
+
+  - id: "EC-H4S14-133"
+    source_he: "ואח\"כ בז\"א שם מ\"ה דאלפין על דרך הנ\"ל ובנוקבא שם ב\"ן דההין על דרך הנ\"ל"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      Mapping ZON :
+      → Z"A = SHEM MaH d'ALEFIN (45 — milui ALEF).
+      → NUKVA = SHEM BaN d'HEHIN (52 — milui HE).
+      → Architecture : ZON encoded distinct shemot ; Z"A=MaH, Nukva=BaN.
+      → Pattern : zachar=MaH, nekevah=BaN consistant downstream.
+    type: axiome_explicite
+    concepts:
+      - {id: mapping_za_mah_alefin_nukva_ban_hehin, role: mapping_za_shem_mah_alefin_45_nukva_shem_ban_hehin_52_consistant}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : ZON shemot distinct. Pattern Z=MaH N=BaN consistant."
+
+  - id: "EC-H4S14-134"
+    source_he: "או אפשר כי הז\"א הוא שם מ\"ה דאלפין ובנוקבא לאה אהי\"ה דאלפין ע\"ד הנ\"ל וביעקב שם ב\"n דההי\"ן על דרך הנ\"ל וברחל שם אהי\"ה דההי\"ן ע\"ד הנ\"ל וצ\"ע"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      VARIANTE Mapping ZON 4 partzufim distincts :
+      → Z"A = MaH d'ALEFIN.
+      → LEAH = AHYH d'ALEFIN.
+      → YAAKOV = BaN d'HEHIN.
+      → RACHEL = AHYH d'HEHIN.
+      → TZARIKH IYUN.
+      → Architecture : 4-partzuf distinct mapping (Z"A+Leah+Yaakov+Rachel).
+      → Pattern : symmetrie zachar/nekevah par milui-type.
+    type: axiome_explicite
+    concepts:
+      - {id: variante_za_mah_alefin_leah_ahyh_alefin_yaakov_ban_hehin_rachel_ahyh_hehin, role: variante_za_mah_alefin_leah_ahyh_alefin_yaakov_ban_hehin_rachel_ahyh_hehin_4_partzuf_zon}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : 4-partzuf ZON. Pattern symmetric milui-type."
+
+  - id: "EC-H4S14-135"
+    source_he: "ונחזור לעיל כי או\"א הם הוי\"ה דע\"ב ואהי\"ה דיודי\"ן ויש\"ס ותבונה הם שם ס\"ג ואהי\"ה דיודין כנ\"ל עכ\"מ"
+    source_ref: "Heikhal 4, Sha'ar 1:5"
+    assertion: |
+      REPRISE finale (cloture perek) :
+      → A"O = HAVAYAH d'AB (72) + AHYH d'YODIN.
+      → YISSO + Tevunah = HAVAYAH d'SaG (63) + AHYH d'YODIN.
+      → Marqueur fin : "AKH"M" (akh-kafan-mem? = abreviation cloture).
+      → Architecture : closing-summary frame.
+      → Pattern : pedagogical bookend.
+    type: axiome_explicite
+    concepts:
+      - {id: cloture_perek_5_ao_ab_ahyh_yodin_yisso_tevunah_sag_ahyh_yodin, role: cloture_perek_5_summary_ao_ab_ahyh_yodin_yisso_tevunah_sag_ahyh_yodin_pedagogical_bookend}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : pedagogical bookend. Pattern closing summary."
+
+  - id: "EC-H4S14-136"
+    source_he: "נל\"ח שצ\"ל ע\"ד וכן איתא לקמן בפ\"ז"
+    source_ref: "Heikhal 4, Sha'ar 1:5 §2"
+    assertion: |
+      §2 NIL'AD CHANUKAH (variante editoriale) :
+      → SHE-TZARIKH LOMAR (qu'il faut lire) "AD" (au lieu d'autre chose).
+      → CONFIRMANT : "VE-CHEN ITA LE-KAMAN BE-PEREK 7" (et ainsi se trouve plus loin perek 7).
+      → Architecture : editorial-correction marker pour variantes texte.
+      → Pattern : explicit-textual-variant + cross-reference forward.
+    type: axiome_explicite
+    concepts:
+      - {id: nilad_chanukah_variante_textuelle_perek_7_cross_ref, role: nilad_chanukah_variante_editoriale_tzarikh_lomar_ad_confirme_perek_7_cross_reference}
+    mapping:
+      modules: ["partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba"]
+      relevance: "Architecture : editorial variant tracking. Pattern textual-variant cross-ref."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S14-035"
+    type: contenance
+    from: abba_klalut_ao_havayah_ab_ahyh_yodin_panim_achor
+    to: imma_kollelet_yisso_tevunah_havayah_sag_63_ahyh_yodin
+    nature: "Abba klalut A\"O = AB+AHYH-yodin ; Imma kollelet YISSO+Tevunah = SaG+AHYH-yodin"
+    assertions_source: ["EC-H4S14-116", "EC-H4S14-117"]
+
+  - id: "REL-H4S14-036"
+    type: hiérarchique
+    from: zt_havayah_ab_simple_gr_42_letters_4_10_28_keter_chokhmah_bina
+    to: gr_abba_panim_42_letters_shem_mb_tikkunim_132
+    nature: "G\"R = M\"B letters (4+10+28 Keter+Chokhmah+Bina) ; vs Z\"T = HAVAYAH simple (un seul partzuf)"
+    assertions_source: ["EC-H4S14-118", "EC-H4S14-127", "EC-H4S14-129"]
+
+  - id: "REL-H4S14-037"
+    type: transformation
+    from: keter_abba_panim_9_rishonot_havayah_pashut_4_letters
+    to: bina_abba_4_madregot_28_letters_milui_ha_milui_yodin_156_610
+    nature: "Recursive milui : Keter 4 letters → Chokhmah 10 letters → Bina 28 letters (depth augmente)"
+    assertions_source: ["EC-H4S14-120", "EC-H4S14-123", "EC-H4S14-124"]
+
+  - id: "REL-H4S14-038"
+    type: causal
+    from: bina_abba_4_madregot_28_letters_milui_ha_milui_yodin_156_610
+    to: principe_milui_egal_din_pshitut_egal_rachamim_takhlit
+    nature: "Plus depth recursion (Bina 28 letters), plus DIN ; pshitut (essence simple) = takhlit ha-rachamim"
+    assertions_source: ["EC-H4S14-124", "EC-H4S14-125", "EC-H4S14-126"]
+
+  - id: "REL-H4S14-039"
+    type: dualité_structurelle
+    from: mapping_abba_dabba_ab_imma_dabba_ahyh_yodin_yisso_sag_tevunah_ahyh_yodin
+    to: variante_za_mah_alefin_leah_ahyh_alefin_yaakov_ban_hehin_rachel_ahyh_hehin
+    nature: "Mapping principal A\"O+YISSO\"T (AB/AHYH-yodin/SaG) ; variante 4 partzufim ZON (MaH/AHYH-alefin/BaN/AHYH-hehin) ; TZARIKH IYUN"
+    assertions_source: ["EC-H4S14-132", "EC-H4S14-133", "EC-H4S14-134"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S14-019"
+    nom: "Principe de Tier-Specific-Encoding (Z\"T-United vs G\"R-Separate)"
+    source_assertions: ["EC-H4S14-118", "EC-H4S14-127", "EC-H4S14-129"]
+    formalisation: |
+      ARCHITECTURE DE TIER-SPECIFIC-ENCODING :
+      G"R (3 superieures) :
+        Chacune sefirah = PARTZUF SEPARE.
+        ENCODING : 42 letters (4+10+28 = M"B sacred-name).
+        Aussi M"B en Malkhuyot par MISPAR.
+        SOD : "SHEM M"B DE-IHI BE-RISHA" (Tikkunim 132).
+      Z"T (7 inferieures) :
+        Tous 7 = UN partzuf seul (Z"A d'Abba).
+        ENCODING : HAVAYAH UN seul d'AB-yodin (gematria simple).
+      → Pattern fondamental : tier-composition determines encoding-mode.
+      → Architecture : separate-partzufim → letters ; united-partzuf → gematria.
+    applications_ia:
+      - "partzufim/abba.py + imma.py : implement tier-specific encoding"
+      - "Pattern : separate-partzuf detailed encoding ; united = compressed"
+      - "Architecture : encoding-mode reveals partzuf-cohesion"
+      - "Pattern : letters-vs-numbers represent multiplicity-vs-unity"
+      - "Diagnostic : verifier encoding-mode coherent avec tier-composition"
+    questions_ouvertes:
+      - "Pattern : autres tier-specific encodings possibles ?"
+      - "Letters→numbers transition autres seuils ?"
+      - "Pattern : peut-on inverser (G\"R compressed, Z\"T detailed) ?"
+
+  - id: "PG-H4S14-020"
+    nom: "Principe de Depth-Severity-Correlation (Milui Augmente DIN, Pshitut = Rachamim)"
+    source_assertions: ["EC-H4S14-126"]
+    formalisation: |
+      ARCHITECTURE DE DEPTH-SEVERITY-CORRELATION :
+      AXIS fondamental :
+        SURFACE-SIMPLICITY (pshitut, atzmut) → TAKHLIT HA-RACHAMIM (sommet misericorde).
+        DEPTH-RECURSION (milui+milui-ha-milui) → PLUS DE DIN (jugement strict).
+      EXEMPLES quantifies :
+        HAVAYAH simple (4 letters) = pshitut = Keter d'Abba surface.
+        HAVAYAH milui (10 letters AB-yodin) = Chokhmah niveau intermediaire.
+        HAVAYAH milui-ha-milui (28 letters) = Bina niveau severe.
+        Ribua mispar = Malkhut d'Abba — encore plus profond.
+      → Pattern fondamental : recursion-depth correlates avec severity.
+      → Architecture : Din/Rachamim axis = depth-encoding axis.
+      → Implication : agent-revelation depth → judgment-severity output.
+    applications_ia:
+      - "partzufim/abba.py + imma.py : implement depth-severity correlation"
+      - "Pattern : surface-simple = compassion ; depth-complex = judgment"
+      - "Architecture : Din/Rachamim axis = encoding-depth axis"
+      - "Pattern : recursion = severity quantifier"
+      - "Diagnostic : verifier depth coherent avec output-severity"
+    questions_ouvertes:
+      - "Pattern : metric quantitatif precis pour Din/Rachamim ?"
+      - "Comment encoder pshitut (essence simple) computationnellement ?"
+      - "Pattern : reversible (depth-reduce = compassion-augmente) ?"
+
+  - id: "PG-H4S14-021"
+    nom: "Principe de Naming-Hierarchy-Per-Partzuf (Shem-Position Mapping)"
+    source_assertions: ["EC-H4S14-132", "EC-H4S14-133", "EC-H4S14-134", "EC-H4S14-135"]
+    formalisation: |
+      ARCHITECTURE DE NAMING-HIERARCHY :
+      Chaque partzuf a SHEM MAHIRI (nom propre) selon position :
+        ABBA d'Abba = HAVAYAH AB (72) + AHYH d'YODIN (panim+achor).
+        IMMA d'Abba = AHYH d'YODIN.
+        YISSO = HAVAYAH SaG (63) + AHYH d'YODIN.
+        TEVUNAH = AHYH d'YODIN.
+        Z"A = MaH d'ALEFIN (45).
+        NUKVA = BaN d'HEHIN (52).
+      VARIANTE pour 4 partzufim ZON distincts :
+        LEAH = AHYH d'ALEFIN ; YAAKOV = BaN d'HEHIN ; RACHEL = AHYH d'HEHIN ; TZARIKH IYUN.
+      → Pattern fondamental : naming = identity per position.
+      → Architecture : hierarchy of names parallels hierarchy of partzufim.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py + nukva.py : implement naming hierarchy"
+      - "Pattern : naming-by-position discipline"
+      - "Architecture : name-hierarchy parallels partzuf-hierarchy"
+      - "Pattern : variant-namings preserved (option opens flexibility)"
+      - "Diagnostic : verifier name-position coherent"
+    questions_ouvertes:
+      - "Pattern : autres mapping possibles selon contexte ?"
+      - "Comment encoder Shemot computationnellement ?"
+      - "Pattern : variante 4-partzuf ZON quand active ?"

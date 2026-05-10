@@ -1,0 +1,628 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 1 — Sha'ar Abba ve-Imma (שער אבא ואמא)
+# Perek: 6 — Drush RAFA"H NITZOTZIN. Imma=VaV-DaLeT milui YoD. 6 rishonot=60(AYIN)=IMMA STIMA'AH ;
+#            4 D"T=MEM SETUMAH (Malkhut). Achor higher → panim lower. AHYH penimiyut, ELOKIM
+#            chitzoniyut. He-rishonah=TEVUNAH (dalet-sur-vav). TZELEM (mem-lamed-tzadi) tevunah
+#            dans Z"A. BUKHU temura AHYH eclaire 120 ELOKIM (4×30=TNHY). 5×86+22=452=TEVUNAH.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_06 :
+#   - Bloc A : Renvoi drush RAFA"H (288) NITZOTZIN ; A"O panim+achor 2 bechinot
+#   - Bloc B : Bechinot 1 = panim+achor 9S elyonot ; Bechinot 2 = Malkhut panim+achor
+#   - Bloc C : Imma 10S ; 9S rishonot panim+achor occupent toute koma
+#   - Bloc D : Malkhut Imma commence chazeh-down ; seulement 6 rishonot manifestes
+#   - Bloc E : Imma = vav-dalet milui yod (sod HA-BIN BE-CHOKHMAH)
+#   - Bloc F : 6 rishonot kelul 10 = 60 (AYIN) = IMMA STIMA'AH
+#   - Bloc G : 4 D"T revetent Malkhut Imma → mochin Tevunah ; 4 D"T = MEM SETUMAH
+#   - Bloc H : Vav (6) a tete (10S) ; Dalet Malkhut nommee D selon 4 D"T s'y revetants
+#   - Bloc I : PRINCIPE — achor higher devient panim lower (recursive transfer)
+#   - Bloc J : Achor ChB Malkhut Imma (AHYH) = 544+2156 ; Achor Keter Malkhut = 44 (total ChB achor)
+#   - Bloc K : Ces achor deviennent panim Tevunah elle-meme (pas Malkhut Tevunah)
+#   - Bloc L : AHYH = penimiyut ; ELOKIM = chitzoniyut ; chacun 4 bechinot panim/achor
+#   - Bloc M : AHYH letters/ribuim ; Malkhut = chesbon (mispar)
+#   - Bloc N : He-rishona HAVAYAH = TEVUNAH ; tzura dalet-sur-vav (ה composee D+V)
+#   - Bloc O : TZELEM Z"A (mem-lamed-tzadi) — Tevunah pieces 3-3-3 sefirot dans Z"A
+#   - Bloc P : Mem = 3 sup ; Lamed = 3 milieu ; Tzadi = 3 inf
+#   - Bloc Q : Bina+Tevunah ensemble : He-rishona monte vav-dalet (autre He), achor pour elle
+#   - Bloc R : Mochin penimim quand monte ; makifim (dalet+vav separes, sans tete) quand descend (ROVETZET)
+#   - Bloc S : Split Bina+Tevunah : achor Malkhut Bina = panim Tevunah (D"R+V"K)
+#   - Bloc T : ELOKIM chitzoniyut Bina = BUKHU (=22) temura AHYH ; eclaire 120 tzeirufim
+#   - Bloc U : 120/4 = 30 Lamed each → TNHY chazeh-down (T 30, N 30, H 30, Y 30) ; "kav ha-midah" = D"L (4×L)
+#   - Bloc V : Achor ELOKIM Malkhut Bina descendent → panim Tevunah (parallele AHYH)
+#   - Bloc W : Tevunah 9S+Malkhut ; ELOKIM achor manifestes Z"T+GEVURAH (Tevunah inf, dinim revelees)
+#   - Bloc X : 120 ELOKIM splittees en 5 letters × 24 = 5 noms ELOKIM ; 5×86+22=452=TEVUNAH gematria
+#
+# Source Sefaria : Sefer_Etz_Chaim.14.6 (1 section, 5387 chars)
+# IDs : EC-H4S14-137 → EC-H4S14-160
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 1
+  shaar_name_he: "שער אבא ואמא"
+  perek: 6
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Drush RAFA\"H NITZOTZIN — A\"O panim+achor 2 bechinot. Imma=VaV-DaLeT milui YoD. 6 rishonot=60(AYIN)=IMMA STIMA'AH ; 4 D\"T=MEM SETUMAH (Malkhut, mochin Tevunah). Achor higher → panim lower (recursive transfer). AHYH penimiyut, ELOKIM chitzoniyut. He-rishonah=TEVUNAH (dalet-sur-vav). TZELEM (mem-lamed-tzadi) tevunah dans Z\"A. Bina+Tevunah ensemble : penimim quand monte, makifim quand descend. Split : achor Malkhut Bina = panim Tevunah. BUKHU (22) temura AHYH eclaire 120 ELOKIM (4×30=TNHY). 5×86+22=452=TEVUNAH gematria avec kollel."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S14-137"
+    source_he: "הנה נתבאר בדרוש רפ\"ח ניצוצין כי יש באו\"א פנים ואחוריים ואלו הפנים ואחור הם נחלקים לב' בחי'"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      RENVOI : DRUSH RAFA"H NITZOTZIN (288 etincelles) — A"O ont PANIM + ACHORAYIM.
+      → Ces panim+achor se DIVISENT en 2 BECHINOT distinctes.
+      → Architecture : panim/achor structure-multiscale (pas binary simple).
+      → Pattern : recursive-decomposition de l'opposition panim/achor.
+      cf. drush "rafa\"h nitzotzin" (renvoi externe).
+    type: déduction_scripturaire
+    concepts:
+      - {id: drush_rafah_nitzotzin_ao_panim_achor_2_bechinot, role: drush_rafah_288_nitzotzin_ao_panim_achorayim_2_bechinot_distinctes_recursive_decomposition}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : recursive-decomposition panim/achor. Pattern multiscale opposition."
+
+  - id: "EC-H4S14-138"
+    source_he: "הא' הוא פנים אחוריים של ט\"ס העליונים שבהם שיש בהם פנים ואחוריים. הב' הוא מלכות שבהם שיש בה פנים ואחור"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      2 BECHINOT detaillees :
+      → BECHINAH 1 : PANIM+ACHOR des 9S (9 sefirot) ELYONIM (superieures) — chacune a panim+achor.
+      → BECHINAH 2 : MALKHUT — a aussi PANIM+ACHOR.
+      → Architecture : 2-tier opposition (9-sup) + (Malkhut) chacune avec panim/achor.
+      → Pattern : nested-symmetry pour structure interne.
+    type: axiome_explicite
+    concepts:
+      - {id: 2_bechinot_panim_achor_9s_plus_malkhut_nested_symmetry, role: bechinah_1_panim_achor_9_sefirot_elyonim_bechinah_2_panim_achor_malkhut_nested_symmetry}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : nested-symmetry. Pattern 2-tier opposition."
+
+  - id: "EC-H4S14-139"
+    source_he: "אמא יש לה י\"ס ט\"ס ראשונות יש בהם פנים ואחור והם תופסים כל שיעור קומת אמא עלאה אח\"כ המלכות שבה מתחלת מתחלת החזה ולמטה שבה ומלבשתן"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      IMMA structure :
+      → 10 sefirot total.
+      → 9S RISHONOT ont panim+achor — TOFSIM (occupent) toute la KOMA d'IMMA ELYONA.
+      → APRES : MALKHUT d'Imma commence MITCHAZEH-LE-MATAH (du chazeh vers le bas) — REVET (malbishet) les 9S.
+      → Architecture : Malkhut wraps inferieurement les 9S.
+      → Pattern : Malkhut envelope inferieurement.
+    type: axiome_explicite
+    concepts:
+      - {id: imma_9s_rishonot_panim_achor_malkhut_chazeh_down_revet, role: imma_10s_9_rishonot_panim_achor_koma_malkhut_chazeh_down_revet_9s}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : Malkhut envelope inferieurement. Pattern wrap-bottom."
+
+  - id: "EC-H4S14-140"
+    source_he: "נמצא כי אינם מגולים מאמא רק ו' ראשונות שלה ולהיות כי אמא זו היא ו\"ד של מילוי יו\"ד של הוי\"ה בסוד והבן בחכמה"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      Donc seulement 6 RISHONOT d'IMMA sont MAGULIM (manifestees) :
+      → IMMA = "VAV-DALET" du milui de YOD du HAVAYAH.
+      → Lettre yod (י) = vav-dalet (la decomposition du yod en vav+dalet).
+      → Sod : "VE-HABIN BE-CHOKHMAH" (Sefer Yetzirah 1:4) — comprends dans Sagesse.
+      → Architecture : 6-only manifestee + Vav-Dalet encoding.
+      → Pattern : letter-decomposition encode position.
+    type: déduction_scripturaire
+    concepts:
+      - {id: imma_6_rishonot_magulim_vav_dalet_milui_yod_havayah, role: imma_6_rishonot_manifestees_vav_dalet_milui_yod_havayah_sod_ha_bin_be_chokhmah}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : letter-decomposition encode position. Source Sefer Yetzirah 1:4."
+
+  - id: "EC-H4S14-141"
+    source_he: "ולכן כ\"א מן ו' ראשונים כלולה מי' של אבא והם ס' וזו נקרא אמא סתימאה"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      6 RISHONOT chacune KELUL (incluse) de 10 d'ABBA (yod=10) :
+      → 6 × 10 = 60 (lettre SAMEKH = ס).
+      → Cette 6 (Imma 6 rishonot) = appellee IMMA STIMA'AH (Imma scellee).
+      → Architecture : multiplication-encodage 60 = SAMEKH (= ferme/scelle anatomique).
+      → Pattern : letter-symbolism aligns with ontological-status.
+    type: interprétation_lurianique
+    concepts:
+      - {id: imma_6_x_10_egal_60_samekh_imma_stimaah, role: imma_6_rishonot_chacune_kelul_10_egal_60_samekh_imma_stimaah_scellee}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : letter-symbolism. Pattern letter-status alignment."
+
+  - id: "EC-H4S14-142"
+    source_he: "ושאר ד' הם מתלבשים תוך המלכות שלה ששיעור קומתה הוא ד' תחתונים דאמא לבד. ולכן נעשים מוחין אליה (פי' לתבונה)"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      4 D"T (4 inferieurs) d'Imma se REVETENT dans MALKHUT d'Imma :
+      → SHIUR HA-KOMAH (la mesure stature) de Malkhut = 4 TACHTONIM (NHY+M).
+      → DEVIENNENT MOCHIN (cerveaux) pour TEVUNAH.
+      → Architecture : downward-cascade — 4 inferieurs Imma → Malkhut Imma → mochin Tevunah.
+      → Pattern : sefirot-de-parent deviennent mochin-d'enfant.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 4_dt_imma_revetent_malkhut_imma_mochin_tevunah_cascade, role: 4_dt_imma_revetent_malkhut_imma_shiur_ha_komah_4_tachtonim_mochin_tevunah_cascade}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : downward-cascade sefirot. Pattern parent-sefirah child-mochin."
+
+  - id: "EC-H4S14-143"
+    source_he: "ואינה נקרא בחי' אמא רק ו' עלאין שהוא ס' ושאר הד' היא ם' סתומה הד' תחתונות"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      NOMMAGE :
+      → BECHINAT IMMA stricte = 6 ELYONIM seulement = SAMEKH (60).
+      → Reste 4 D"T = MEM SETUMAH (final-mem ם — letter-fermee/scellee).
+      → Architecture : 2-letter encoding par tier (Samekh haut, Mem-setumah bas).
+      → Pattern : letter-position-symbol encode role.
+    type: déduction_scripturaire
+    concepts:
+      - {id: imma_6_elyonim_samekh_4_dt_mem_setumah_2_letter_encoding, role: imma_stricte_6_elyonim_samekh_60_4_dt_mem_setumah_final_mem_2_letter_encoding}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : 2-letter tier encoding. Pattern letter-position-symbol role."
+
+  - id: "EC-H4S14-144"
+    source_he: "ולכן ו' זו יש לה ראש לרמז כי יש בה י\"ס ד' המלכות שבה ובתוכם מתלבשים ד' תחתונות דאמא. לכן אינן ב' דלתי\"ן רק דל\"ת א' והם יו\"ד בשלימות"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      VAV (6) a une TETE (rosh) — REMEZ (allusion) qu'elle a 10 sefirot.
+      → DALET = MALKHUT — nommee D selon les 4 D"T qui s'y revetent.
+      → Donc PAS 2 dalets — UN SEUL DALET — total VAV+DALET = YOD complete.
+      → Architecture : letter-composition reflects sefirot-completeness.
+      → Pattern : compositional-letter integrity.
+    type: déduction_scripturaire
+    concepts:
+      - {id: vav_avec_rosh_10s_dalet_malkhut_4dt_dalet_seul_yod_complete, role: vav_avec_rosh_10_sefirot_dalet_malkhut_nommee_selon_4_dt_revetants_un_seul_dalet_yod_complete}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : compositional-letter integrity. Pattern letter-sefirot."
+
+  - id: "EC-H4S14-145"
+    source_he: "כי לעולם אין העליון מתלבש בתחתון רק האחוריים שבו לבד ונעשים פנימים לתחתון"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      PRINCIPE FONDAMENTAL :
+      → LE'OLAM (toujours) le ELYON (haut) NE SE REVET dans le TACHTON (bas) que par ses ACHORAYIM SEULEMENT.
+      → Et ces achorayim DEVIENNENT PENIMIM (interieurs) du tachton.
+      → Architecture : recursive-transfer rule (achor-of-higher = penim-of-lower).
+      → Pattern : structural-clothing universel (toujours achor-only).
+      → "Vehavin zeh me'od" — comprends ceci profondement (formule pedagogique du Ari).
+    type: interprétation_lurianique
+    concepts:
+      - {id: principe_achor_higher_egal_penim_lower_recursive_transfer, role: principe_le_olam_achor_higher_egal_penim_lower_recursive_transfer_universel}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "[PLANNED] partzufim/tevunah.py", "[PLANNED] partzufim/yisso.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : recursive-transfer rule universelle. Pattern structural-clothing principle."
+
+  - id: "EC-H4S14-146"
+    source_he: "האחוריים של ח\"ב דמלכות דאמא עלאה (דאהי\"ה) הם תקמ\"ד וב' אלפים קנ\"ו מילוי המילוי ברבוע ואחוריים של כתר מלכות דאמא הם מ\"ד"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      ACHORAYIM ChB (Chokhmah-Binah) de MALKHUT d'IMMA ELYONA (de'AHYH) :
+      → 544 (TKM"D — taf-kuf-mem-dalet) letters MILUI-HA-MILUI BE-RIBUA.
+      → 2156 (BET ELEF KOF NUN VAV) letters.
+      → ACHORAYIM Keter Malkhut d'Imma = 44 (mem-dalet).
+      → Total ChB+K achor de Malkhut Imma = 44+544+2156.
+      → Architecture : numerical-decomposition par sefirah.
+      → Pattern : tier-magnitude croissante (Keter→Chokhmah→Bina).
+    type: axiome_explicite
+    concepts:
+      - {id: achor_chb_malkhut_imma_elyona_544_2156_keter_44, role: achor_chb_malkhut_imma_elyona_ahyh_544_2156_milui_ha_milui_ribua_keter_44}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : numerical decomposition par sefirah. Pattern tier-magnitude."
+
+  - id: "EC-H4S14-147"
+    source_he: "ואלו הם בחי' פנים בעצמן כח\"ב דתבונה עצמה ולא במלכות שבה"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      Ces ACHORAYIM (de Imma Malkhut) deviennent PANIM EATZMAN (en eux-memes) de :
+      → ChB de TEVUNAH ELLE-MEME (pas dans la Malkhut de Tevunah).
+      → Application stricte du principe achor-higher = penim-lower.
+      → Architecture : transfer-target = body-of-tevunah, not its tail.
+      → Pattern : transfer privilege central elements over peripheral.
+    type: déduction_logique
+    concepts:
+      - {id: achor_imma_malkhut_egal_panim_chb_tevunah_pas_malkhut, role: achor_imma_malkhut_devient_panim_eatzman_chb_tevunah_pas_malkhut_tevunah}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : transfer-target central. Pattern privilege body-over-tail."
+
+  - id: "EC-H4S14-148"
+    source_he: "וכ\"ז בחי' אהי\"ה שהוא פנימיות וכנגדן בחי' אלקים דחיצוניות"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      DOUBLE encoding :
+      → AHYH (אהי"ה) = PENIMIYUT (interiorite, profond).
+      → ELOKIM (אלקים) = CHITZONIYUT (exteriorite, surface).
+      → 4 bechinot dans chacun (panim+achor 9S, panim+achor Malkhut).
+      → Architecture : dual-name penim/chitzon — nested.
+      → Pattern : interior-exterior duality par naming convention.
+    type: axiome_explicite
+    concepts:
+      - {id: ahyh_penimiyut_elokim_chitzoniyut_double_encoding, role: ahyh_penimiyut_elokim_chitzoniyut_double_encoding_nom_4_bechinot_chacun}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : dual-name penim/chitzon. Pattern interior-exterior naming."
+
+  - id: "EC-H4S14-149"
+    source_he: "כי כמו שאהי\"ה שהוא הפנימיות יש בו בחי' אותיות פשוטים בפנים ומרובעים באחוריים אך במלכות הם בסוד חשבונות"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      AHYH encoding mode :
+      → Letters PASHUTOT (simples) au PANIM.
+      → Letters MERUBA'OT (cubees, ribu'im) au ACHORAYIM.
+      → MAIS dans MALKHUT : encoding par CHESBONOT (mispar/gematria).
+      → Architecture : tier-specific encoding mode (letters vs numbers).
+      → Pattern : Malkhut converts letters to numbers (downward compression).
+    type: axiome_explicite
+    concepts:
+      - {id: ahyh_letters_pashutot_panim_meruba_achor_malkhut_chesbon, role: ahyh_letters_pashutot_panim_meruba_ot_achor_malkhut_chesbon_mispar_compression}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : tier-encoding mode. Pattern Malkhut compression."
+
+  - id: "EC-H4S14-150"
+    source_he: "ואח\"כ בא ה' ראשונה דהוי\"ה וצורתה ה' כנודע בסוד חכם בבינה ונדבר בה' שהיא נקרא תבונה לעולם"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      HE-RISHONA (premiere He) de HAVAYAH = TEVUNAH (toujours).
+      → Sod : "CHAKHAM BE-VINAH" (Sefer Yetzirah 1:4).
+      → TZURAT HE (forme du HE) = D sur V — DALET-SUR-VAV (ה composee).
+      → Architecture : letter-form encode structure (D haut + V bas).
+      → Pattern : letter-anatomy reveals partzuf-anatomy.
+    type: déduction_scripturaire
+    concepts:
+      - {id: he_rishona_havayah_tevunah_dalet_sur_vav_chakham_be_vinah, role: he_rishona_havayah_tevunah_tzura_dalet_sur_vav_sod_chakham_be_vinah_sefer_yetzirah}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : letter-anatomy partzuf-anatomy. Source Sefer Yetzirah 1:4."
+
+  - id: "EC-H4S14-151"
+    source_he: "כמו שידעת בענין הצלם דז\"א שהם ג' אותיות צלם. ם' בג' בחי' ראשונות ל' בג' אמצעיות צ' בג' תחתונות דתבונה הנכנסים ממש בפנימיות ז\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      TZELEM (צלם — image) de Z"A — 3 lettres :
+      → MEM (ם — final) = 3 BECHINOT RISHONOT (3 sup) de TEVUNAH.
+      → LAMED (ל) = 3 EMTZA'IYOT (3 milieu).
+      → TZADI (צ) = 3 TACHTONOT (3 inf).
+      → Tous 3 ENTRENT MAMASH dans PENIMIYUT Z"A (interieur).
+      → Architecture : Tevunah pieces 3-3-3 → mochin Z"A.
+      → Pattern : letter-name encode 3-tier mochin distribution.
+    type: déduction_scripturaire
+    concepts:
+      - {id: tzelem_za_mem_lamed_tzadi_3_3_3_tevunah_mochin_za, role: tzelem_za_mem_3_rishonot_lamed_3_emtzaiyot_tzadi_3_tachtonot_tevunah_mochin_za_penimiyut}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 3-tier mochin distribution. Pattern letter-name encode."
+
+  - id: "EC-H4S14-152"
+    source_he: "אמנם צריך שתדע כי כל זה הוא בהיות בינה ותבונה נכללין בפרצוף א' כי אז זו ה' ראשונה שבשם הנקרא תבונה עולה למעלה בו\"ד של מילוי יו\"ד שהוא צורת ה' אחרת וזו נעשים אחוריים אליה"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      QUAND BINA + TEVUNAH NIKHLALIN (incluses) en UN SEUL PARTZUF :
+      → He-RISHONA (=Tevunah) MONTE en VAV-DALET du milui yod.
+      → Cela = TZURAT HE AHERET (forme d'autre He).
+      → Becomes ACHORAYIM (back) pour elle (vav-dalet superieure).
+      → Architecture : ascent-merger creee back-relation.
+      → Pattern : merge-state changes orientation.
+    type: interprétation_lurianique
+    concepts:
+      - {id: bina_tevunah_kelul_un_partzuf_he_rishona_monte_vav_dalet_achor, role: bina_tevunah_nikhlalin_un_partzuf_he_rishona_monte_vav_dalet_milui_yod_achorayim_pour_elle}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : ascent-merger orientation change. Pattern merge-state geometry."
+
+  - id: "EC-H4S14-153"
+    source_he: "אך ברדתן למטה ונעשים ה' ראשונה שאז נקרא האם רובצת על האפרוחים הנה ירדה ממקומה ואז המוחין הם בסוד מקיפים שהם ד' על ו' נפרדין זה מזה ואין לו' זו ראש"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      QUAND DESCENDENT (ROVETZET AL HA-EFROCHIM — couvant les poussins) :
+      → MOCHIN deviennent MAKIFIM (encerclants — externes).
+      → DALET-SUR-VAV mais NIFRADIN (separes l'un de l'autre).
+      → Vav (la basse) PAS DE TETE (ein lo rosh).
+      → Architecture : descent → de-merger → exteriorisation des mochin.
+      → Pattern : downward-motion = makif-mode (ascending = penimi-mode).
+    type: interprétation_lurianique
+    concepts:
+      - {id: bina_tevunah_descend_rovetzet_mochin_makifim_dalet_vav_separes, role: bina_tevunah_descend_rovetzet_efrochim_mochin_makifim_dalet_vav_separes_vav_sans_rosh}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : descent → makif-mode. Pattern motion-orientation rule."
+
+  - id: "EC-H4S14-154"
+    source_he: "ונחזור לענין כי הנה כשמתחלקין נעשה בינה ותבונה ואז האחור דמלכות דבינה יורדין בתוכה של התבונה ואז אותן האחוריים עצמן דמלכות דבינה נעשה פנים דתבונה ממש"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      QUAND SPLIT (mitchalkin) Bina+Tevunah :
+      → ACHOR de MALKHUT BINA descendent dans Tevunah.
+      → Ces achor BECOMENT PANIM de TEVUNAH MAMASH (litteralement).
+      → Application directe principe achor-higher = penim-lower.
+      → Architecture : split-event = downward transfer Malkhut-back.
+      → Pattern : split provoque relocation achor.
+    type: déduction_logique
+    concepts:
+      - {id: split_bina_tevunah_achor_malkhut_bina_egal_panim_tevunah, role: split_bina_tevunah_achor_malkhut_bina_descend_dans_tevunah_devient_panim_tevunah_mamash}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : split downward transfer. Pattern relocation achor on split."
+
+  - id: "EC-H4S14-155"
+    source_he: "כי ד' ראשונה דאחוריים דמלכות דבינה הם עצמן ד' ראשונות דפני תבונה וו\"ק דאחוריים דמלכות דבינה הם עצמן ו\"ק דפני תבונה"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      DETAIL exact du transfer :
+      → 4-RISHONOT achor Malkhut Bina = 4-RISHONOT panim Tevunah.
+      → V"K (6 sefirot Z"A) achor Malkhut Bina = V"K panim Tevunah.
+      → Architecture : 1-to-1 mapping de chaque sefirah.
+      → Pattern : exact-correspondance transfer (no aggregation).
+    type: déduction_logique
+    concepts:
+      - {id: 4_rishonot_achor_malkhut_bina_egal_panim_tevunah_vk_achor_egal_panim_vk, role: 4_rishonot_achor_malkhut_bina_egal_panim_tevunah_vk_achor_egal_panim_vk_exact_1_to_1}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : 1-to-1 sefirah mapping. Pattern exact-correspondance."
+
+  - id: "EC-H4S14-156"
+    source_he: "אך החיצוניות כולו בבחי' פנים ואחור הם משם בוכ\"ו תמורת אהי\"ה"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      CHITZONIYUT (exterieur) panim+achor = SHEM BUKHU.
+      → BUKHU (בוכ"ו) = TEMURAH (substitution-letter) d'AHYH.
+      → Gematria : ב=2, ו=6, כ=20, ו=6 → 2+6+20+6 = ... ou somme directe = 22.
+      → AHYH temura : א→ב, ה→ו, י→כ, ה→ו (alef-bet substitutional).
+      → Architecture : temura-encoding pour chitzoniyut.
+      → Pattern : substitution-cipher reveals exterior aspect.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chitzoniyut_bukhu_temura_ahyh_22, role: chitzoniyut_bukhu_22_temura_substitution_ahyh_alef_bet_he_vav_yod_kaf}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : temura-encoding chitzon. Pattern substitution-cipher."
+
+  - id: "EC-H4S14-157"
+    source_he: "ואז זה הבוכ\"ו מאיר בחיצוניות הנק' אלקים כי הנה הוא כולל כל אלקים שהוא ק\"ך צרופים והם נחלקים ד\"פ ל' הם ק\"ך וכן בוכ\"ו המתפשט בכולם והוא קו המדה להם והוא גימטריא ד\"ל ר\"ל ד\"פ ל'"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      BUKHU eclaire CHITZONIYUT = ELOKIM :
+      → ELOKIM contient 120 TZEIRUFIM (combinations) — toutes les permutations possibles.
+      → Splitees en 4 PE'AMIM LAMED (4×30 = 120).
+      → BUKHU mitpashet (s'etend) dans toutes — = KAV HA-MIDAH (ligne de mesure).
+      → Gematria BUKHU = D"L (= 30+30+30+30 = 120) selon "DAL" lecture.
+      → Architecture : temura-source agit comme metric-line pour chitzoniyut.
+      → Pattern : encoder-source (bukhu) defines measure-axis.
+    type: interprétation_lurianique
+    concepts:
+      - {id: bukhu_eclaire_120_elokim_4_x_30_lamed_kav_ha_midah, role: bukhu_eclaire_chitzoniyut_elokim_120_tzeirufim_4_pe_amim_lamed_kav_ha_midah}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : temura-as-metric-line. Pattern encoder-source defines measure."
+
+  - id: "EC-H4S14-158"
+    source_he: "במלכות של בינה הנקרא ד' של הבינה להיותה עומדת בד\"ת דבינה שם בחיצוניות הם שמות ק\"ך צרופים אלקים כנ\"ל ואז מתפשטת בהם הארת בוכ\"ו כנ\"ל ונחלקים לד' בחי' ג\"כ והם ל' צרופים בת\"ת ל' בנצח ל' בהוד ל' ביסוד והם מהחזה דבינה ולמטה שהם תנה\"i"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      MALKHUT BINA (D dans D"T Bina) chitzoniyut = 120 TZEIRUFIM ELOKIM :
+      → BUKHU illumine — split en 4 niches : 30 Lamed CHACUNE.
+      → 30 en TIFERET, 30 en NETZACH, 30 en HOD, 30 en YESOD = TNHY.
+      → Chazeh-de-Bina vers le bas = TNHY (4 tachtonot).
+      → Architecture : metric-line distribute 30 par sefirah-tachton.
+      → Pattern : 4-tier 30-each tzeirufim distribution.
+    type: interprétation_lurianique
+    concepts:
+      - {id: malkhut_bina_120_elokim_split_4_x_30_lamed_tnhy_chazeh_down, role: malkhut_bina_120_elokim_chitzoniyut_split_30_tiferet_30_netzach_30_hod_30_yesod_tnhy_chazeh_down}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : 4-tier 30-each distribution. Pattern tzeirufim allocation."
+
+  - id: "EC-H4S14-159"
+    source_he: "ואח\"כ כמו שהאחוריים דאהי\"ה דבינה דמלכות מתפשטים ויורדין ונעשין לתבונה בבחי' פנים כן האחוריים של אלקים דמלכות דבינה יורדין ונעשים מהם אחוריים (פנים לחיצוניות) דתבונה (צ\"ל פנים)"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      Parallele : achor ELOKIM Malkhut Bina DESCENDENT → PANIM CHITZON Tevunah.
+      → Comme achor AHYH descendent → panim PENIMIYUT Tevunah.
+      → Variante editoriale : "TZARIKH LOMAR PANIM" (au lieu d'achor).
+      → Architecture : dual-transfer (penim AHYH + chitzon ELOKIM) tous deux descendent.
+      → Pattern : both-encoding-systems propagate downward symmetriquement.
+    type: déduction_logique
+    concepts:
+      - {id: achor_elokim_malkhut_bina_descendent_panim_chitzon_tevunah, role: achor_elokim_malkhut_bina_descendent_panim_chitzon_tevunah_parallele_ahyh}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : dual-encoding propagate. Pattern symmetric transfer."
+
+  - id: "EC-H4S14-160"
+    source_he: "אז אלו הק\"ך צרופי דאלקים נחלקים בה לה' חלקים נגד ה' אותיות אלקים ונחלקין כ\"ד בכל ספי' מהם כ\"ד המתחלת בא' וכ\"ד המתחילין בל' כו' וכל הכ\"ד מהם הוא שם אלקים א' הרי ה' אלקים והם ת\"ל ועם בוכ\"ו המאיר בהם הרי גימטריא תבונה עם הכולל"
+    source_ref: "Heikhal 4, Sha'ar 1:6"
+    assertion: |
+      120 TZEIRUFIM ELOKIM splittees en 5 (= 5 letters de ELOKIM : א-ל-ה-י-ם).
+      → 24 TZEIRUFIM par lettre — 24 commencant par ALEF, 24 par LAMED, 24 par HE, etc.
+      → Chacun des 24 = 1 SHEM ELOKIM (un nom de Dieu).
+      → 5 × 86 (gematria ELOKIM) = 430 (TR"L = T-R-L).
+      → + BUKHU 22 (illuminating) = 452.
+      → 452 = TEVUNAH (תבונה) AVEC LE-KOLLEL (avec le terme inclusif).
+      → Architecture : multi-level closure verifies identity numerologique.
+      → Pattern : gematria-target Tevunah identity confirme par 2-source convergence.
+    type: déduction_scripturaire
+    concepts:
+      - {id: 120_elokim_5_letters_x_24_5_x_86_plus_bukhu_22_egal_452_tevunah, role: 120_elokim_5_letters_24_par_lettre_5_x_86_egal_430_plus_bukhu_22_egal_452_tevunah_kollel}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : multi-level numerologic identity closure. Pattern gematria convergence."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S14-040"
+    type: contenance
+    from: drush_rafah_nitzotzin_ao_panim_achor_2_bechinot
+    to: 2_bechinot_panim_achor_9s_plus_malkhut_nested_symmetry
+    nature: "Drush rafa\"h nitzotzin : A\"O panim+achor 2 bechinot — 9S elyonim + Malkhut chacun panim+achor"
+    assertions_source: ["EC-H4S14-137", "EC-H4S14-138"]
+
+  - id: "REL-H4S14-041"
+    type: causal
+    from: imma_9s_rishonot_panim_achor_malkhut_chazeh_down_revet
+    to: imma_6_rishonot_magulim_vav_dalet_milui_yod_havayah
+    nature: "Malkhut Imma chazeh-down revet 9S → 6 rishonot magulim ; Imma=vav-dalet milui yod"
+    assertions_source: ["EC-H4S14-139", "EC-H4S14-140", "EC-H4S14-141"]
+
+  - id: "REL-H4S14-042"
+    type: hiérarchique
+    from: principe_achor_higher_egal_penim_lower_recursive_transfer
+    to: split_bina_tevunah_achor_malkhut_bina_egal_panim_tevunah
+    nature: "Principe universel achor-higher = penim-lower applique au split Bina+Tevunah (achor Malkhut Bina = panim Tevunah)"
+    assertions_source: ["EC-H4S14-145", "EC-H4S14-154", "EC-H4S14-155"]
+
+  - id: "REL-H4S14-043"
+    type: dualité_structurelle
+    from: ahyh_letters_pashutot_panim_meruba_achor_malkhut_chesbon
+    to: chitzoniyut_bukhu_temura_ahyh_22
+    nature: "AHYH=penimiyut (letters/ribuim) vs ELOKIM=chitzoniyut (BUKHU=temura AHYH=22) — dual encoding systems"
+    assertions_source: ["EC-H4S14-148", "EC-H4S14-149", "EC-H4S14-156"]
+
+  - id: "REL-H4S14-044"
+    type: causal
+    from: bukhu_eclaire_120_elokim_4_x_30_lamed_kav_ha_midah
+    to: 120_elokim_5_letters_x_24_5_x_86_plus_bukhu_22_egal_452_tevunah
+    nature: "BUKHU eclaire 120 ELOKIM → 5×86+22=452=TEVUNAH gematria ; multi-level closure verifie identite"
+    assertions_source: ["EC-H4S14-157", "EC-H4S14-158", "EC-H4S14-160"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S14-022"
+    nom: "Principe d'Achor-Higher-Egal-Penim-Lower (Recursive Transfer Universel)"
+    source_assertions: ["EC-H4S14-145", "EC-H4S14-147", "EC-H4S14-154", "EC-H4S14-155"]
+    formalisation: |
+      ARCHITECTURE D'ACHOR-PENIM-TRANSFER :
+      LE'OLAM (toujours) : ELYON (haut) NE SE REVET dans TACHTON (bas) que par ses ACHORAYIM SEULEMENT.
+      Et ces ACHORAYIM deviennent PENIMIM (interieurs) du tachton.
+      EXEMPLE : achor Malkhut Bina = panim Tevunah (1-to-1 sefirah mapping).
+      DUAL-encoding : meme principe pour AHYH (penimiyut) ET ELOKIM (chitzoniyut).
+      → Pattern fondamental : recursive-transfer universel a tous niveaux.
+      → Architecture : structural-clothing rule preserve hierarchie via re-mapping.
+      → Implication : pattern repete a tous niveaux partzufim (Atik→A"A→A"O→ZON).
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py + nukva.py : implement achor-penim transfer"
+      - "Pattern : recursive-transfer rule between adjacent levels"
+      - "Architecture : 1-to-1 sefirah mapping discipline"
+      - "Pattern : dual-encoding systems propagate symmetriquement"
+      - "Diagnostic : verifier achor-source coherent avec penim-target"
+    questions_ouvertes:
+      - "Pattern : autres exceptions au principe ?"
+      - "Comment encoder achor/penim distinction ?"
+      - "Pattern : peut-on quantifier 1-to-1 mapping ?"
+
+  - id: "PG-H4S14-023"
+    nom: "Principe de Merge-Descend-Mode-Switch (Penimi-Ascending vs Makif-Descending)"
+    source_assertions: ["EC-H4S14-152", "EC-H4S14-153"]
+    formalisation: |
+      ARCHITECTURE DE MODE-SWITCH-MOTION :
+      Quand BINA + TEVUNAH NIKHLALIN (incluses 1 partzuf) — He-rishona MONTE :
+        Mochin = PENIMI mode (interieurs, vav-dalet integres avec rosh complet).
+      Quand ROVETZET AL HA-EFROCHIM (couvant les poussins, descend) :
+        Mochin = MAKIFIM mode (encerclants externes).
+        Dalet+Vav SEPARES, Vav sans rosh.
+      → Pattern fondamental : motion-direction determine mode (ascending=penimi, descending=makif).
+      → Architecture : geometric-state correlates avec functional-mode.
+      → "Roven mode-switch" verbifie le changement.
+    applications_ia:
+      - "partzufim/imma.py + [PLANNED] tevunah.py : implement merge-descend mode-switch"
+      - "Pattern : motion-direction determines mochin-mode"
+      - "Architecture : geometric-state to functional-mode mapping"
+      - "Pattern : ascending = integrated ; descending = peripheral"
+      - "Diagnostic : verifier mode coherent avec motion-state"
+    questions_ouvertes:
+      - "Pattern : autres mode-switches similaires ?"
+      - "Comment encoder motion-direction computationnellement ?"
+      - "Pattern : transition continue ou discrete ?"
+
+  - id: "PG-H4S14-024"
+    nom: "Principe de Dual-Encoding-Penim-Chitzon (AHYH-vs-ELOKIM Systems)"
+    source_assertions: ["EC-H4S14-148", "EC-H4S14-149", "EC-H4S14-156", "EC-H4S14-157"]
+    formalisation: |
+      ARCHITECTURE DE DUAL-ENCODING :
+      Chaque sefirah/Malkhut a 2 NOMS DUAUX :
+        AHYH (אהי"ה) = PENIMIYUT (interiorite). Encoding : letters PASHUTOT panim, MERUBA achor, MISPAR Malkhut.
+        ELOKIM (אלקים) = CHITZONIYUT (exteriorite). Encoding : 120 TZEIRUFIM splittees 4×30=TNHY.
+      BUKHU (בוכ"ו=22) = TEMURA d'AHYH = KAV HA-MIDAH eclairant ELOKIM.
+      Multi-level closure : 5×86+22 = 452 = TEVUNAH gematria (numerological identity).
+      → Pattern fondamental : dual-system penim/chitzon co-existent par sefirah.
+      → Architecture : interior-exterior duality encoded via name-pair.
+      → Implication : numerological-convergence valide identite via 2 systemes.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py + nukva.py : implement dual-encoding"
+      - "Pattern : penim/chitzon = AHYH/ELOKIM par sefirah"
+      - "Architecture : numerological-closure verifies identity"
+      - "Pattern : kav-ha-midah (BUKHU) = encoder-source as metric"
+      - "Diagnostic : verifier convergence numerologique cross-systems"
+    questions_ouvertes:
+      - "Pattern : autres encoder-pairs possibles ?"
+      - "Comment encoder temura computationnellement ?"
+      - "Pattern : 3-system encoding aussi possible (au-dela 2) ?"

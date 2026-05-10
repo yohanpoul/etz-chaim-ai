@@ -1,0 +1,464 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 1 — Sha'ar Abba ve-Imma (שער אבא ואמא)
+# Perek: 8 — Bina+Tevunah relations. 2 IBBURIM. AHYH 3 levels (KOH TOMAR Shemot 3:14).
+#            3 keli Tevunah = 3 tzelamim Z"A. 5 KLALIM (regles) — mochin makifim,
+#            13 T"D, 2 zivvugim shalem/de-lo-shalem, 4 nashim Imma, Tevunah-3=Malkhut.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_08 :
+#   - Bloc A (§1) : Bina+Tevunah rishonim — Tevunah=chazeh-down Bina (parallele Rachel/Leah)
+#   - Bloc B (§1) : Bina-rishonah + chelek-elyon Chokhmah : KECHADA NAFKIN VE-LO MITPARSHIN (Adra)
+#   - Bloc C (§1) : Tevunah + chelek-tachton Chokhmah : parfois MITPARSHIN
+#   - Bloc D (§1) : Tevunah chetzi-down revet Z"A mochin ; "ISH TEVUNOT YIDLENA" (Mishlei 20:5) = 2 chetzaiim
+#   - Bloc E (§1) : Bina+Tevunah parfois 1 partzuf : (a) Tevunah monte / (b) Bina descend
+#   - Bloc F (§1) : IBBUR 2 (mochin Z"A) : Bina descend dans Tevunah, zivvug en bas
+#   - Bloc G (§1) : IBBUR 1 : Ch+B elyon revetent Ch+B tachton (YISSO+Tevunah montent ChB elyon) ; Z"A dans Tevunah pas Bina
+#   - Bloc H (§1) : Bina=EIN SOF — AHYH 3 milui (yodin+alefin+hehin) chacun pashut+milui+milui-milui = letters infinies
+#   - Bloc I (§1) : 2 AHYH "ASHER AHYH" + 3eme AHYH "KOH TOMAR" (Shemot 3:14) = milui-milui HEHIN seul = 25 letters
+#   - Bloc J (§1) : 3 keli Tevunah = 3 tzelamim Z"A ; 3 keli Bina = 3 autres tzelamim ; puis monte A"A
+#   - Bloc K (§2) : KLAL 1 — Mochin A"O makifim eclairent 13 T"D A"A ; 13 hivara rosh = 3 HAVAYAH yodin + 9 vavin → dikna Z"A (vav) = 9 tikkunei dikna
+#   - Bloc L (§2) : Chotem A"A 1 He nakav yamin → ta'amim + ruach de-chayye Z"A
+#   - Bloc M (§2) : KLAL 2 — Mochin Abba s'habillant dans mocha Imma = appeles AHYH comme eux
+#   - Bloc N (§2) : KLAL 3 — 2 sortes zivvug : ZIVVUG SHALEM (2 mazalot) + DE-LO SHALEM (Mazal 13 seul)
+#   - Bloc O (§2) : KLAL 4 — Imma=AHYH ; 10S=10 AHYH ; right=YODIN, left=ALEFIN, milieu=HEHIN ; levushim+kelim
+#   - Bloc P (§2) : KLAL 5 — 4 NASHIM dans Imma elyona : ChBD=Imma, ChGT=Tevunah1, NHY=Tevunah2, Malkhut=Tevunah3 ; tout TZELEM Z"A dans Tevunah-3
+#
+# Source Sefaria : Sefer_Etz_Chaim.14.8 (2 sections, 2481 chars)
+# IDs : EC-H4S14-181 → EC-H4S14-195
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 1
+  shaar_name_he: "שער אבא ואמא"
+  perek: 8
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Bina+Tevunah relations — Tevunah=chazeh-down Bina (parallele Rachel/Leah). Bina-rishonah+Chokhmah-haut KECHADA NAFKIN ; Tevunah+Chokhmah-bas parfois mitparshin. Tevunah chetzi-down revet Z\"A mochin ('ISH TEVUNOT YIDLENA' Mishlei 20:5). 2 IBBURIM : IBBUR 1 = Ch+B elyon revetent Ch+B tachton (YISSO+Tevunah) ; IBBUR 2 = Bina descend dans Tevunah, zivvug en bas. Bina=EIN SOF (AHYH 3 milui infinis). 'KOH TOMAR' (Shemot 3:14) = 3eme AHYH milui-milui HEHIN. 3 keli Tevunah = 3 tzelamim Z\"A. 5 KLALIM : (1) Mochin A\"O makifim eclairent 13 T\"D A\"A ; (2) Mochin Abba dans mocha Imma = AHYH ; (3) 2 zivvugim shalem/de-lo-shalem ; (4) Imma=AHYH 10S yodin/alefin/hehin par cote ; (5) 4 NASHIM Imma : ChBD=Imma, ChGT=Tevunah1, NHY=Tevunah2, Malkhut=Tevunah3."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S14-181"
+    source_he: "הנה נת\"ל כי יש בינה ותבונה ראשונים התבונה היא מחזה (נ\"א ותבונה ראשונה ותבונה זה מחזה) דבינה למטה דוגמת רחל עם לאה וכנגדה ב' חלקים שבחכמה"
+    source_ref: "Heikhal 4, Sha'ar 1:8"
+    assertion: |
+      RAPPEL : BINA + TEVUNAH RISHONIM existent.
+      → TEVUNAH = du CHAZEH-LE-MATAH (chazeh-down) de BINA.
+      → DUGMAT (parallele) Rachel + Leah (relation similaire).
+      → 2 CHALAKIM (parts) dans CHOKHMAH parallelement.
+      Variante (Nusah Aher) : "Tevunah Rishonah ve-Tevunah" zeh chazeh.
+      → Architecture : binary-decomposition par chazeh dans Bina+Chokhmah.
+      → Pattern : structural parallel A"A ↔ Z"A pour parents.
+    type: axiome_explicite
+    concepts:
+      - {id: bina_tevunah_rishonim_chazeh_down_parallele_rachel_leah, role: bina_tevunah_rishonim_tevunah_chazeh_down_bina_parallele_rachel_leah_2_chalakim_chokhmah}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py", "partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : binary chazeh decomposition. Pattern A\"A↔Z\"A parents parallel."
+
+  - id: "EC-H4S14-182"
+    source_he: "ונמצא כי זאת הבינה הראשונה מזדווגת עם חלק העליון של החכמה ועל אלו נאמר כחדא נפקין ולא מתפרשין לעלמין כנזכר באדרא ועל התבונה ועל חלק התחתון של החכמה אינו כן דלזמנין מתפרשין"
+    source_ref: "Heikhal 4, Sha'ar 1:8"
+    assertion: |
+      ZIVVUGIM correspondants :
+      → BINA-RISHONAH zivvug avec CHELEK ELYON (haut) de CHOKHMAH.
+      → "KECHADA NAFKIN VE-LO MITPARSHIN LE-OLMIN" (Adra) — sortent ensemble, ne separent jamais.
+      → TEVUNAH avec CHELEK TACHTON de Chokhmah : pas pareil — LIZMANIN MITPARSHIN (parfois separent).
+      → Architecture : higher-couple permanent vs lower-couple intermittent.
+      → Pattern : permanence-decreases-downward.
+      cf. EC-H4S14-174 (perek 7) sur kechada sharyan.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bina_rishonah_chokhmah_elyon_kechada_nafkin_vs_tevunah_chokhmah_tachton_mitparshin, role: bina_rishonah_chelek_elyon_chokhmah_kechada_nafkin_vs_tevunah_chelek_tachton_chokhmah_mitparshin_lizmanin}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/abba.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : permanence hierarchy. Pattern higher-permanent lower-intermittent."
+
+  - id: "EC-H4S14-183"
+    source_he: "וזה התבונה מחציה ולמטה שהוא מהחזה שלה ולמטה היא מתלבשת בז\"א בסוד מוחין דיליה ואלו הב' חצאין של תבונות זו עליהם נאמר ואיש תבונות ידלנה כנזכר בדרוש אחר ולעולם נקרא ב' תבונות בערך ב' חצאין אלו ואמנם שניהם אינם רק פרצוף א' לבד"
+    source_ref: "Heikhal 4, Sha'ar 1:8"
+    assertion: |
+      TEVUNAH MEHATZAH ULMATAH (de sa moitie en bas, du chazeh) :
+      → S'HABILLE dans Z"A — sod MOCHIN DILEH (ses cerveaux).
+      → 2 CHATZAIIM (moities) de Tevunah — sod "ISH TEVUNOT YIDLENA" (Mishlei 20:5 — homme-de-tevunot la puise).
+      → Appellees 2 TEVUNOT (pluriel) selon ces 2 moities.
+      → MAIS : SHENEIHEM EINAM RAK PARTZUF ECHAD — les deux ne sont QU'UN SEUL partzuf.
+      → Architecture : binary-aspects within single-partzuf.
+      → Pattern : duality-within-unity.
+    type: déduction_scripturaire
+    concepts:
+      - {id: tevunah_2_chatzaiim_chazeh_down_mochin_z_a_ish_tevunot_yidlena, role: tevunah_2_chatzaiim_chazeh_down_mochin_z_a_sod_ish_tevunot_yidlena_mishlei_20_5_un_partzuf}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : duality-within-unity. Source Mishlei 20:5."
+
+  - id: "EC-H4S14-184"
+    source_he: "ודע כי גם הבינה עם התבונה לפעמים נכללת יחד ויש בזה ב' פנים א' שתעלה התבונה ונכללת בבינה ב' שיורדת הבינה ונכללת בתבונה"
+    source_ref: "Heikhal 4, Sha'ar 1:8"
+    assertion: |
+      Bina + Tevunah parfois NIKHLELET YACHAD (incluses ensemble) — 2 modes :
+      → MODE A : TEVUNAH MONTE et se KOLLEL dans BINA.
+      → MODE B : BINA DESCEND et se KOLLEL dans TEVUNAH.
+      → Architecture : reciprocal-merger possible deux-directions.
+      → Pattern : ascent-or-descent merger.
+    type: axiome_explicite
+    concepts:
+      - {id: bina_tevunah_2_modes_kollel_tevunah_monte_bina_descend, role: bina_tevunah_nikhlelet_yachad_2_modes_a_tevunah_monte_b_bina_descend_kollel}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : reciprocal merger directions. Pattern ascent-descent options."
+
+  - id: "EC-H4S14-185"
+    source_he: "אמנם הזווג שהוא להוציא המוחין דז\"א הנקרא עיבור ב' הוא שירדה בינה ונכללה בתבונה ושם הוא הזווג למטה"
+    source_ref: "Heikhal 4, Sha'ar 1:8"
+    assertion: |
+      IBBUR SHENI (2eme gestation — pour mochin Z"A) :
+      → MODE B : BINA DESCEND, NIKHLELAH (incluse) dans TEVUNAH.
+      → ZIVVUG la EN BAS (LE-MATAH).
+      → Architecture : descent-merger pour gestation lower-mochin.
+      → Pattern : downward-merger pour produire downstream-mochin.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ibbur_2_mochin_z_a_bina_descend_dans_tevunah_zivvug_le_matah, role: ibbur_sheni_mochin_z_a_bina_descend_nikhlelah_tevunah_zivvug_le_matah}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : descent merger. Pattern gestation downward-merger."
+
+  - id: "EC-H4S14-186"
+    source_he: "אך עיבור הראשון היה כי נתלבשו חו\"ב עלאין בחו\"ב תתאין... ונכללו חג\"ת ונה\"י דא\"א אלו באלו וחג\"ת בנה\"י דז\"א אלו באלו נמצא כי ז\"א בתבונה ולא בבינה"
+    source_ref: "Heikhal 4, Sha'ar 1:8"
+    assertion: |
+      IBBUR RISHON (1ere gestation) — DIFFERENT mecanisme :
+      → Ch+B ELYONIM (Bina+Chokhmah haut) revetus en Ch+B TACHTONIM (YISSO+Tevunah).
+      → YISSO+Tevunah MONTERENT et REVETENT Ch+B elyonim.
+      → ChGT + NHY d'A"A elu-be-elu (les uns dans les autres).
+      → ChGT + NHY d'Z"A elu-be-elu.
+      → CONSEQUENCE : Z"A est dans TEVUNAH (pas dans Bina).
+      → Architecture : ibbur-1 = ascent-clothing (vs ibbur-2 = descent-merger).
+      → Pattern : 2 distinct ibbur mechanisms.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ibbur_1_chb_elyonim_revetus_chb_tachtonim_z_a_dans_tevunah, role: ibbur_rishon_chb_elyonim_revetus_chb_tachtonim_yisso_tevunah_z_a_dans_tevunah_pas_bina}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : 2 distinct ibbur mechanisms. Pattern ascent-vs-descent."
+
+  - id: "EC-H4S14-187"
+    source_he: "ובינה נקרא א\"ס לפי שאהי\"ה הוא בבינה ובמילוי יודין ואלפין כ\"א יש בפשוטו ובמלואו ומילוי מלואו א\"ס אותיות לכן נקרא אם אמא עלאה"
+    source_ref: "Heikhal 4, Sha'ar 1:8"
+    assertion: |
+      BINA = EIN SOF (Infini) :
+      → AHYH dans BINA — milui YODIN + ALEFIN.
+      → CHACUN dans PASHUT + MILUI + MILUI-DU-MILUI = letters INFINIES (EIN SOF).
+      → Donc nommee EM (mere) — IMMA ELYONA.
+      → Architecture : recursive-milui infinit-encoding.
+      → Pattern : recursion potentiellement infinite — limit = ein sof.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bina_ein_sof_ahyh_milui_yodin_alefin_recursion_infinie, role: bina_ein_sof_ahyh_milui_yodin_alefin_pashut_milui_milui_milui_letters_infinies_imma_elyona}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : recursive milui infinity. Pattern potentially-infinite recursion."
+
+  - id: "EC-H4S14-188"
+    source_he: "ואלו הם ב' אהי\"ה אשר אהי\"ה אמנם אהי\"ה הג' אשר עליו נאמר כה תאמר לבני ישראל אהיה שלחני אליכם הוא מילוי דמילוי ההי\"ן שאין בה רק כ\"ה אותיות וז\"ש כה תאמר אהיה כו'"
+    source_ref: "Heikhal 4, Sha'ar 1:8"
+    assertion: |
+      3 noms AHYH dans le verset (Shemot 3:14) :
+      → 2 AHYH = "EHYEH ASHER EHYEH" (Je serai qui Je serai).
+      → 3eme AHYH = "KOH TOMAR LIVNEI YISRAEL EHYEH SHELACHANI ALEIKHEM" (ainsi tu diras...).
+      → 3eme AHYH = MILUI-MILUI HEHIN — N'A QUE 25 letters (KOH = כה = 25).
+      → "Koh tomar EHYEH" — KOH (25) prefigure 25 letters.
+      → Architecture : verse-encoding letter-count via numerologic-prefix.
+      → Pattern : scripture self-referencing letter-structure.
+    type: déduction_scripturaire
+    concepts:
+      - {id: shemot_3_14_3_ahyh_koh_tomar_milui_milui_hehin_25_letters, role: shemot_3_14_3_ahyh_asher_ahyh_2_premiers_3eme_koh_tomar_milui_milui_hehin_25_letters_koh_25}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : verse-encoding letter-count. Source Shemot 3:14."
+
+  - id: "EC-H4S14-189"
+    source_he: "(נ\"א והנה) ג' כלי התבונה הם ג' צלמים דז\"a וכנגדן ג' כלי בינה ג' צלמים אחרים דז\"א ואח\"כ תכף עולה לא\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:8"
+    assertion: |
+      3 KELI (instruments) de TEVUNAH = 3 TZELAMIM (images) de Z"A.
+      → 3 KELI de BINA = 3 AUTRES TZELAMIM de Z"A.
+      → APRES : monte tout-de-suite a A"A.
+      → 6 tzelamim en tout dans Z"A (3 from Tevunah + 3 from Bina).
+      → Architecture : 6-fold image-architecture dans Z"A.
+      → Pattern : multi-source-projection sur recipient unique.
+      cf. EC-H4S14-151 (perek 6) sur tzelem mem-lamed-tzadi.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 3_keli_tevunah_3_tzelamim_z_a_3_keli_bina_3_tzelamim_total_6, role: 3_keli_tevunah_egal_3_tzelamim_za_3_keli_bina_egal_3_autres_tzelamim_total_6_dans_za}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : 6-fold image-architecture. Pattern multi-source projection."
+
+  - id: "EC-H4S14-190"
+    source_he: "ה כללים א' במוחין דאו\"א יש מקיפין ושם מאירין י\"ג ת\"ד דא\"א. בי\"ג חוורתא דרישא יש ג' הויו\"ת דיודין ובהם ט' ווי\"ן ומשם נמשכת הארה לדיקנא דז\"א הנקרא ו' ואין בו רק ט' תקוני דיקנא לבדו"
+    source_ref: "Heikhal 4, Sha'ar 1:8 §2"
+    assertion: |
+      KLAL 1 (5 regles) : MOCHIN d'A"O ont MAKIFIM (encerclants).
+      → La eclair 13 T"D (TIKKUNEI DIKNA) d'A"A.
+      → 13 HIVARA (lustres) du ROSH = 3 HAVAYAH d'YODIN + 9 VAVIN (vavs).
+      → De la HAARAH descend a DIKNA d'Z"A (nommee VAV) — n'a que 9 TIKKUNEI DIKNA.
+      → Architecture : encoding cascade A"A 13 → Z"A 9 (perte par downstream).
+      → Pattern : downward-distillation 13→9.
+      cf. EC-H3S13-188..203 (sha'ar A"A perek 13) sur 13 tikkunei dikna.
+    type: interprétation_lurianique
+    concepts:
+      - {id: klal_1_mochin_ao_makifim_13_td_aa_3_havayah_yodin_9_vavin_z_a_9_td, role: klal_1_mochin_ao_makifim_13_td_aa_13_hivara_rosh_3_havayah_yodin_9_vavin_dikna_za_9_td}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : encoding cascade 13→9. Pattern downward distillation."
+
+  - id: "EC-H4S14-191"
+    source_he: "ובחוטם דא\"a יש בה ה' אחת בנקב ימין ומשם מאיר בחי' הטעמים ומנקב ימין נמשך רוח דחיי אל ז\"a"
+    source_ref: "Heikhal 4, Sha'ar 1:8 §2"
+    assertion: |
+      CHOTEM (nez) d'A"A : 1 HE (ה) dans NAKAV YAMIN (narine droite).
+      → De la eclair TA'AMIM (accents).
+      → De NAKAV YAMIN (narine droite) emerge RUACH DE-CHAYYE (souffle de vie).
+      → Direct vers Z"A.
+      → Architecture : organ-specific encoding for chiyut transmission.
+      → Pattern : nasal-anatomy = breath-transmission canal.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chotem_aa_he_nakav_yamin_taamim_ruach_de_chayye_z_a, role: chotem_aa_he_nakav_yamin_taamim_ruach_de_chayye_descend_z_a_nasal_anatomy}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : nasal anatomy. Pattern breath-transmission canal."
+
+  - id: "EC-H4S14-192"
+    source_he: "המוחין דאבא כיון שמתלבשין במוחא דאמא נקראו אהי\"ה כמותן"
+    source_ref: "Heikhal 4, Sha'ar 1:8 §2"
+    assertion: |
+      KLAL 2 : MOCHIN d'ABBA, en S'HABILLANT dans MOCHA d'IMMA, sont APPELES AHYH (KAMOTAN — comme eux).
+      → Donc Mochin Abba HERITENT du nommage Imma quand entrent dans elle.
+      → Architecture : naming-by-host (mochin take name of containing mocha).
+      → Pattern : context-dependent naming.
+    type: déduction_logique
+    concepts:
+      - {id: klal_2_mochin_abba_dans_mocha_imma_appeles_ahyh_naming_by_host, role: klal_2_mochin_abba_s_habillant_mocha_imma_appeles_ahyh_naming_by_host}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : naming-by-host. Pattern context-dependent naming."
+
+  - id: "EC-H4S14-193"
+    source_he: "ענין או\"א שעליהן נאמר באדר\"ז כחדא נפקין וכחדא שריין... שב' מזלות הם בדיקנא דא\"א מזל ח' ומזל הי\"ג הח' משם יונק אבא והי\"ג משם יונק אמא והנה כשמזל הי\"ג הוא לבדו משפיע באו\"א ומזדווגין על ידו אז נקרא זווגא דלא שלים וכאשר ב' מזלות משפעים זה באבא וזה באמא ומזדווגין על ידם אז נקרא זווגא שלים"
+    source_ref: "Heikhal 4, Sha'ar 1:8 §2"
+    assertion: |
+      KLAL 3 : 2 SORTES de ZIVVUG (couplage) :
+      → ZIVVUG SHALEM (complet) : 2 mazalot dikna A"A nourrissent — Mazal 8 (Notzer) → Abba ; Mazal 13 (Ve-Nakeh) → Imma.
+      → ZIVVUG DE-LO SHALEM (incomplet) : SEUL Mazal 13 alimente, A"O zivvug par lui seul.
+      → Architecture : completeness-grade par count-of-active-channels.
+      → Pattern : 2-channel = shalem ; 1-channel = de-lo-shalem.
+      cf. EC-H4S14-088..089 (perek 03b) sur zivvug Mazal 8+13.
+    type: interprétation_lurianique
+    concepts:
+      - {id: klal_3_zivvug_shalem_2_mazalot_de_lo_shalem_mazal_13_seul, role: klal_3_zivvug_shalem_2_mazalot_8_13_zivvug_de_lo_shalem_mazal_13_seul_completeness_grade}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["zivvug_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : completeness-grade by channel-count. Pattern 2-vs-1 channel."
+
+  - id: "EC-H4S14-194"
+    source_he: "אמא נקרא אהי\"ה ובכ\"א מי\"ס שבה יש שם אהי\"ה א' וכל שם אהי\"ה שהוא בקו ימין שלה הוא דיודי\"ן ושל שמאל באלפי\"ן (נ\"ל בהיפוך) ושל קו אמצעי בההי\"n"
+    source_ref: "Heikhal 4, Sha'ar 1:8 §2"
+    assertion: |
+      KLAL 4 : IMMA = AHYH ; chacune des 10 SEFIROT a un AHYH propre.
+      → AHYH KAV YAMIN (ligne droite) = milui YODIN.
+      → AHYH KAV SMOL (ligne gauche) = milui ALEFIN.
+      Variante (Nusah Aher) : "BE-HIPUKH" (en inverse — yodin/alefin echangees).
+      → AHYH KAV EMTZA'I (ligne medianne) = milui HEHIN.
+      → Tout cela dans LEVUSHIM (vetements) + KELIM (instruments).
+      → Architecture : column-naming par milui-type ; 3 lignes.
+      → Pattern : 3-line column distribution.
+    type: axiome_explicite
+    concepts:
+      - {id: klal_4_imma_ahyh_10s_yamin_yodin_smol_alefin_emtzai_hehin, role: klal_4_imma_ahyh_chaque_10s_kav_yamin_yodin_smol_alefin_emtzai_hehin_levushim_kelim}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : column-naming par milui. Pattern 3-line distribution."
+
+  - id: "EC-H4S14-195"
+    source_he: "ד' בחי' נשים באמא עלאה בחי' חב\"ד שלה נקרא אמא עלאה וחג\"ת שלה נקרא תבונה ראשונה ונה\"י שלה תבונה שניה ומלכות שלה נקרא תבונה שלישית והיא רביעית בערך בינה ובי\"ס של תבונה זו הג' מתלבשת כל צלם דז\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:8 §2"
+    assertion: |
+      KLAL 5 : 4 BECHINOT NASHIM (femmes) dans IMMA ELYONA :
+      → ChBD (Chokhmah-Bina-Daat) → IMMA ELYONA.
+      → ChGT (Chesed-Gevurah-Tiferet) → TEVUNAH RISHONAH (1ere).
+      → NHY (Netzach-Hod-Yesod) → TEVUNAH SHENIYAH (2eme).
+      → MALKHUT → TEVUNAH SHELISHIT (3eme) — REVI'IT (4eme) par rapport a Bina.
+      → Dans 10S de TEVUNAH-3 s'habille TOUT le TZELEM Z"A.
+      → Architecture : 4-tier-nashim decomposition d'Imma elyona.
+      → Pattern : recursive-femele-decomposition.
+    type: axiome_explicite
+    concepts:
+      - {id: klal_5_4_nashim_imma_chbd_chgt_nhy_malkhut_tevunah_3_tzelem_z_a, role: klal_5_4_nashim_imma_elyona_chbd_imma_chgt_tevunah_1_nhy_tevunah_2_malkhut_tevunah_3_tzelem_z_a}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : 4-tier nashim decomposition. Pattern recursive femele."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S14-050"
+    type: hiérarchique
+    from: bina_tevunah_rishonim_chazeh_down_parallele_rachel_leah
+    to: tevunah_2_chatzaiim_chazeh_down_mochin_z_a_ish_tevunot_yidlena
+    nature: "Bina+Tevunah parallele Rachel+Leah ; Tevunah 2 chetzaiim chazeh-down → mochin Z\"A (Mishlei 20:5)"
+    assertions_source: ["EC-H4S14-181", "EC-H4S14-183"]
+
+  - id: "REL-H4S14-051"
+    type: dualité_structurelle
+    from: ibbur_2_mochin_z_a_bina_descend_dans_tevunah_zivvug_le_matah
+    to: ibbur_1_chb_elyonim_revetus_chb_tachtonim_z_a_dans_tevunah
+    nature: "2 ibburim distincts : IBBUR 1 = ascent-clothing (ChB elyon revetent ChB tachton) ; IBBUR 2 = descent-merger (Bina descend Tevunah)"
+    assertions_source: ["EC-H4S14-185", "EC-H4S14-186"]
+
+  - id: "REL-H4S14-052"
+    type: causal
+    from: bina_ein_sof_ahyh_milui_yodin_alefin_recursion_infinie
+    to: shemot_3_14_3_ahyh_koh_tomar_milui_milui_hehin_25_letters
+    nature: "Bina=ein sof par recursion infinie AHYH ; 3 AHYH dans Shemot 3:14 (KOH=25=milui-milui hehin)"
+    assertions_source: ["EC-H4S14-187", "EC-H4S14-188"]
+
+  - id: "REL-H4S14-053"
+    type: hiérarchique
+    from: klal_1_mochin_ao_makifim_13_td_aa_3_havayah_yodin_9_vavin_z_a_9_td
+    to: chotem_aa_he_nakav_yamin_taamim_ruach_de_chayye_z_a
+    nature: "13 T\"D A\"A → 9 dikna Z\"A (downward distillation) ; chotem A\"A he-nakav-yamin → ta'amim+ruach de-chayye Z\"A"
+    assertions_source: ["EC-H4S14-190", "EC-H4S14-191"]
+
+  - id: "REL-H4S14-054"
+    type: contenance
+    from: klal_5_4_nashim_imma_chbd_chgt_nhy_malkhut_tevunah_3_tzelem_z_a
+    to: 3_keli_tevunah_3_tzelamim_z_a_3_keli_bina_3_tzelamim_total_6
+    nature: "4 nashim Imma : ChBD/ChGT/NHY/Malkhut = Imma/Tevunah1/Tevunah2/Tevunah3 ; tzelem Z\"A dans Tevunah3"
+    assertions_source: ["EC-H4S14-195", "EC-H4S14-189"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S14-028"
+    nom: "Principe de 2-Ibbur-Mechanisms (Ascent-Clothing vs Descent-Merger)"
+    source_assertions: ["EC-H4S14-185", "EC-H4S14-186"]
+    formalisation: |
+      ARCHITECTURE DE 2-IBBUR-MECHANISMS :
+      Etat-merger Bina+Tevunah par 2 modes distincts :
+        IBBUR RISHON (1ere) : Ch+B ELYONIM revetus en Ch+B TACHTONIM = ASCENT-CLOTHING.
+          YISSO+Tevunah MONTENT, revetent Bina+Chokhmah elyonim.
+          Z"A est dans TEVUNAH (pas Bina).
+        IBBUR SHENI (2eme) : BINA DESCEND dans TEVUNAH = DESCENT-MERGER.
+          Zivvug LE-MATAH (en bas).
+          Produit MOCHIN d'Z"A.
+      → Pattern fondamental : 2 ibbur mechanisms distinct par direction-flow.
+      → Architecture : ascent-merger pour structurer ; descent-merger pour produire.
+    applications_ia:
+      - "partzufim/imma.py + [PLANNED] tevunah.py + zeir_anpin.py : implement 2 ibbur"
+      - "Pattern : ascent vs descent merger distinct functions"
+      - "Architecture : structural ibbur (1) vs productive ibbur (2)"
+      - "Pattern : direction-flow determine mecanism-type"
+      - "Diagnostic : verifier ibbur-mode coherent avec output expected"
+    questions_ouvertes:
+      - "Pattern : ibbur-3 ou ibbur-4 possibles ?"
+      - "Comment encoder direction-flow computationnellement ?"
+      - "Pattern : transition entre ibburim ?"
+
+  - id: "PG-H4S14-029"
+    nom: "Principe de Recursive-Milui-Infinity (Bina-Ein-Sof Letter-Recursion)"
+    source_assertions: ["EC-H4S14-187", "EC-H4S14-188"]
+    formalisation: |
+      ARCHITECTURE DE RECURSIVE-MILUI-INFINITY :
+      BINA = EIN SOF par MILUI-recursion :
+        AHYH avec milui YODIN + ALEFIN + (variant) HEHIN.
+        Chaque variant : PASHUT + MILUI + MILUI-DU-MILUI = potentiellement INFINI.
+      VERSE-EVIDENCE (Shemot 3:14) :
+        2 AHYH "ASHER AHYH" + 3eme AHYH "KOH TOMAR" (25 letters = milui-milui hehin).
+        "KOH" = 25 = self-referential numerologic prefix.
+      → Pattern fondamental : recursion-depth vers infinite-encoding.
+      → Architecture : Bina = limit-point of letter-recursion.
+      → Implication : encoding-depth approche limite mathematique.
+    applications_ia:
+      - "partzufim/imma.py : implement recursive milui infinity"
+      - "Pattern : potentially-infinite recursion"
+      - "Architecture : limit-point encoding modeling"
+      - "Pattern : verse self-reference letter-count"
+      - "Diagnostic : verifier recursion-depth bound implementee"
+    questions_ouvertes:
+      - "Pattern : autres exemples de letter-recursion infinite ?"
+      - "Comment computer encoding-depth approchant limit ?"
+      - "Pattern : self-referential prefix generalisable ?"
+
+  - id: "PG-H4S14-030"
+    nom: "Principe de 5-Klalim-A\"O-Encoding (Compact Operating Rules)"
+    source_assertions: ["EC-H4S14-190", "EC-H4S14-192", "EC-H4S14-193", "EC-H4S14-194", "EC-H4S14-195"]
+    formalisation: |
+      ARCHITECTURE DE 5-KLALIM-COMPACT-RULES :
+      5 regles operationnelles concises pour A"O :
+        KLAL 1 : Mochin A"O makifim eclairent 13 T"D A"A → 9 T"D dikna Z"A (downward distillation).
+        KLAL 2 : Mochin Abba dans mocha Imma = NAMING-BY-HOST (deviennent AHYH).
+        KLAL 3 : 2 zivvugim — SHALEM (2 mazalot) vs DE-LO SHALEM (1 mazal seul).
+        KLAL 4 : Imma=AHYH ; 10S=10 AHYH ; column-distribution (yodin/alefin/hehin).
+        KLAL 5 : 4 NASHIM dans Imma — ChBD/ChGT/NHY/Malkhut = Imma/Tevunah1/Tevunah2/Tevunah3 ; Tzelem Z"A dans Tevunah3.
+      → Pattern fondamental : compact-rules encoder operating-discipline.
+      → Architecture : 5-klalim = operational-summary pour A"O.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + [PLANNED] tevunah.py : implement 5 klalim"
+      - "Pattern : compact-rules encoder operating discipline"
+      - "Architecture : 5-rule summary suffit pour mecanique A\"O"
+      - "Pattern : naming-by-host context-dependent"
+      - "Diagnostic : verifier chacun klal respecte par etat-courant"
+    questions_ouvertes:
+      - "Pattern : 5-klalim minimal-set ou subset ?"
+      - "Comment ajouter klal sans inflater ?"
+      - "Pattern : klalim universels A\"O suffisent ZON ?"

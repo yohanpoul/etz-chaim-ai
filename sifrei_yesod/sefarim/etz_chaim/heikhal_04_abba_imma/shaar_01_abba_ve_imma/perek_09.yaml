@@ -1,0 +1,530 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 1 — Sha'ar Abba ve-Imma (שער אבא ואמא)
+# Perek: 9 — SIDUR BINA VE-TEVUNAH AL MATKONATAM. Imma=SaG nukva d'Abba=AB.
+#            SaG split en 4 (2 AHYH yodin + 1 alefin + 1 hehin). 3 HEHIN par He-rishona.
+#            Vav SaG=V"K Z"A Tevunah. Mochin pnim+makif. Heikhal 7 Beriah=4 mochin
+#            =Adam rokhev al ha-kisseh. Yetzirah/Asiyah : Malkhut le-Malkhut seul.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_09 :
+#   - Bloc A (§1) : Title — SIDUR BINA VE-TEVUNAH AL MATKONATAM
+#   - Bloc B (§2) : Imma elyona = HAVAYAH SaG ; nukva d'Abba (HAVAYAH AB) ; nikud ELOKIM
+#   - Bloc C (§2) : SaG split en 4 bechinot par 4 letters : 2 AHYH d'YODIN + 1 d'ALEFIN + 1 d'HEHIN
+#   - Bloc D (§2) : He-rishona HAVAYAH englobe atzilut entier ; Abba=Yod, Imma=He-rishona
+#   - Bloc E (§2) : Imma 10S ; split en 2 : Bechinah 1=milui VaD du yod (Imma elyona AHYH yodin) ; Bechinah 2=He-rishona (Tevunah SaG)
+#   - Bloc F (§2) : Bina=9S rishonot ; Tevunah=Malkhut Bina ; revet Bina chazeh-down (parallel Rachel/Z"A)
+#   - Bloc G (§2) : Bina + Tevunah ont chacun PNIMIYUT + CHITZONIYUT (universel)
+#   - Bloc H (§2) : Tevunah = SaG complete : 9S avec pnim+chitzon
+#   - Bloc I (§2) : G"R Tevunah = 3 partzufim ChBD ; He-yod rishonah SaG-kollel
+#   - Bloc J (§2) : 3 HEHIN dans He-rishona : 1 G"R, 1 V"K, 1 Malkhut (3-kav ChBD)
+#   - Bloc K (§2) : Yod du milui He divisee en 2 HEHIN (V"K = ChGT + NHY)
+#   - Bloc L (§2) : Vav d'SaG-kollel = V"K Z"A Tevunah ; 2 nikudim tachton yod → mochin (pnim+chitzon)
+#   - Bloc M (§2) : Total 13 pnim + 13 chitzon ; mochin pnim+makif comme Z"A
+#   - Bloc N (§3) : 6 heikhalot Beriah = 6 dragin ; Heikhal 7 elyon = 4 mochin ChBD = 4 raglaim
+#   - Bloc O (§3) : 4 mochin = orot+neshamat Beriah ; emanes 10S Malkhut atzilut (4 tachtonot Z"A)
+#   - Bloc P (§3) : 4 orot = HA-KISSEH atzmo ; 4 orot = 4 D"T
+#   - Bloc Q (§3) : Malkhut atzilut descend mi'ut ha-yareach revet = sod ADAM ROKHEV AL HA-KISSEH = IMMA MEKANENA BE-KURSIYA
+#   - Bloc R (§3) : Yetzirah/Asiyah + Beriah/Yetzirah : SEULEMENT Malkhut le-Malkhut (pas tous 10S)
+#
+# Source Sefaria : Sefer_Etz_Chaim.14.9 (3 sections, 6286 chars)
+# IDs : EC-H4S14-196 → EC-H4S14-214
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 1
+  shaar_name_he: "שער אבא ואמא"
+  perek: 9
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "SIDUR BINA VE-TEVUNAH AL MATKONATAM. Imma elyona = HAVAYAH SaG (nukva d'Abba=AB) ; nikud ELOKIM. SaG split en 4 bechinot (2 AHYH yodin + 1 alefin + 1 hehin). Bina=9S, Tevunah=Malkhut Bina (revet chazeh-down parallel Rachel/Z\"A). 3 HEHIN dans He-rishona = G\"R+V\"K+Malkhut. Yod milui He = 2 HEHIN (V\"K = ChGT+NHY). Vav SaG-kollel = V\"K Z\"A Tevunah ; 2 nikudim tachton yod = mochin. Mochin pnim+makif. Heikhal 7 Beriah = 4 mochin ChBD = 4 raglaim = Kisseh atzmo = ADAM ROKHEV AL HA-KISSEH (Imma mekanena be-kursiya). Beriah/Yetzirah/Asiyah : Malkhut le-Malkhut seul descend (pas tous 10S)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S14-196"
+    source_he: "סידור בינה ותבונה על מתכונתם"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §1"
+    assertion: |
+      TITLE : SIDUR BINA VE-TEVUNAH AL MATKONATAM (ordonnement Bina+Tevunah selon leur structure exacte).
+      → Architecture : explicit-section-header pour discipline doctrinale.
+      → Pattern : structured-treatise mark.
+    type: axiome_explicite
+    concepts:
+      - {id: title_sidur_bina_tevunah_al_matkonatam, role: title_sidur_bina_ve_tevunah_al_matkonatam_section_header}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : explicit section header. Pattern structured treatise."
+
+  - id: "EC-H4S14-197"
+    source_he: "אמא עלאה יש לה הוי\"ה דס\"ג והוא נוקבא אל אבא שהוא הוי\"ה דע\"ב והנה הוי\"ה זו דס\"ג נקודתה בנקודת אלהים כנודע כי הבינה הוי\"ה בניקוד אלהים"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      IMMA ELYONA = HAVAYAH d'SaG (63).
+      → NUKVA d'ABBA = HAVAYAH d'AB (72).
+      → NEKUDAH (vocalisation) = NIKUD ELOKIM.
+      → BINA = HAVAYAH BE-NIKUD ELOKIM (le tetragramme vocalise comme ELOKIM).
+      → Architecture : nom + vocalisation duals encode complete identity.
+      → Pattern : letter+vowel = full-encoding spec.
+    type: axiome_explicite
+    concepts:
+      - {id: imma_havayah_sag_nukva_abba_havayah_ab_nikud_elokim, role: imma_elyona_havayah_sag_nukva_abba_havayah_ab_havayah_be_nikud_elokim}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "abba"]
+      relevance: "Architecture : letter+vowel full encoding. Pattern dual-spec identity."
+
+  - id: "EC-H4S14-198"
+    source_he: "והנה הוי\"ה זו נחלקת לד' בחי' בד' אותיותיה והם ב' אהי\"ה דיודי\"ן וא' דאלפי\"ן וא' דההי\"ן"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      HAVAYAH SaG d'IMMA divisee en 4 BECHINOT par les 4 lettres :
+      → 2 AHYH d'YODIN.
+      → 1 AHYH d'ALEFIN.
+      → 1 AHYH d'HEHIN.
+      → Architecture : 4-letter = 4-AHYH variants (3 different milui-types).
+      → Pattern : decomposition par milui-type pour 4-letter source.
+    type: interprétation_lurianique
+    concepts:
+      - {id: sag_imma_4_bechinot_2_ahyh_yodin_1_alefin_1_hehin, role: havayah_sag_imma_4_bechinot_4_letters_2_ahyh_yodin_1_alefin_1_hehin}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : 4-letter milui-decomposition. Pattern decomposition by source-letter."
+
+  - id: "EC-H4S14-199"
+    source_he: "ואבא הוא י' של שם הוי\"ה כנ\"ל ואמא זו היא י\"ס גמורות... אז בחי' ראשונה נרמזת במילוי ו\"ד דיו\"ד דהוי\"ה הכוללת... ובחי' ב' נרמזה בה' ראשונה דהוי\"ה"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      Distribution dans HAVAYAH KOLLELET :
+      → ABBA = YOD (י) du Shem.
+      → IMMA elyona = 10 sefirot ; quand split en 2 :
+        BECHINAH 1 (Bina/Imma elyona = AHYH d'YODIN) → MILUI VAV-DALET (V"D) du YOD.
+        BECHINAH 2 (Tevunah = SaG) → HE-RISHONA d'HAVAYAH.
+      → Architecture : nested-encoding (V"D du yod = Imma profonde dans la lettre meme).
+      → Pattern : letter-internal-decomposition.
+    type: interprétation_lurianique
+    concepts:
+      - {id: bechinah_1_imma_elyona_milui_vd_yod_bechinah_2_tevunah_he_rishona, role: bechinah_1_imma_elyona_milui_vav_dalet_yod_bechinah_2_tevunah_sag_he_rishona_havayah}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : letter-internal decomposition. Pattern nested encoding."
+
+  - id: "EC-H4S14-200"
+    source_he: "הבינה היא בחי' ט\"ס הראשונים והתבונה היא בחי' המלכות של הבינה הנ\"ל ודע כי כמו שרחל נוקבא דז\"א... כן תבונה זו שהיא המלכות דבינה מלבשת את הבינה מהחזה ולמטה בלבד"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      Definition formelle :
+      → BINA = 9S RISHONOT (9 superieures).
+      → TEVUNAH = MALKHUT de BINA.
+      → Tevunah revet Bina CHAZEH-DOWN seulement (parallel RACHEL nukva Z"A revet Z"A chazeh-down).
+      → Architecture : Malkhut-revet-tronc structurel discipline.
+      → Pattern : terminal-sefirah covers half-of-source.
+      cf. EC-H4S14-181 (perek 8) sur Tevunah chazeh-down Bina.
+    type: axiome_explicite
+    concepts:
+      - {id: bina_9s_rishonot_tevunah_malkhut_revet_chazeh_down_parallel_rachel, role: bina_9s_rishonot_tevunah_malkhut_bina_revet_bina_chazeh_down_parallel_rachel_z_a}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py", "partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "nukva"]
+      relevance: "Architecture : Malkhut-revet-tronc. Pattern terminal-cover-half."
+
+  - id: "EC-H4S14-201"
+    source_he: "הבינה יש בה פנימיות וחיצוניות וכן במלכות שלה הנקרא תבונה יש בה פנימית וחיצונית שאי לך דבר בעולם שאין בו פנימית וחצונית"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      PRINCIPE UNIVERSEL : TOUTE chose AU MONDE a PNIMIYUT + CHITZONIYUT.
+      → Bina : pnim + chitzon.
+      → Tevunah (Malkhut Bina) : pnim + chitzon.
+      → "She-i lekha davar ba-olam she-ein bo pnimi-chitzon".
+      → Architecture : universal-duality interior-exterior.
+      → Pattern : ontological-pair pour toute entite.
+    type: axiome_explicite
+    concepts:
+      - {id: principe_universel_pnimiyut_chitzoniyut_bina_tevunah, role: principe_universel_toute_chose_pnimiyut_chitzoniyut_bina_tevunah}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : universal duality. Pattern ontological-pair."
+
+  - id: "EC-H4S14-202"
+    source_he: "תבונה זו... כולה היא שם ס\"ג א' שלם כולל כל ט\"ס שבה בפנימית וחיצונית והנה ג\"ר שבה הם דוגמת ג' פרצופים והם כח\"ב ונרמזין ביו\"ד ה\"י דס\"ג הכולל"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      TEVUNAH = SaG complet :
+      → Tout entier UN SaG SHALEM (entier).
+      → Inclut tous 9 sefirot avec pnim+chitzon.
+      → G"R de Tevunah = 3 PARTZUFIM (ChBD).
+      → Encodes par YOD-HE-YOD du SaG kollel (les 3 premieres letters de la milui).
+      → Architecture : tier-internal partzuf-iteration.
+      → Pattern : 3-partzuf G"R recursive structure.
+    type: interprétation_lurianique
+    concepts:
+      - {id: tevunah_sag_complet_gr_3_partzufim_chbd_yod_he_yod, role: tevunah_sag_shalem_gr_3_partzufim_chbd_encodage_yod_he_yod_sag_kollel}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : recursive partzuf G\"R. Pattern tier-internal iteration."
+
+  - id: "EC-H4S14-203"
+    source_he: "ה\"י ראשונה דס\"ג היא בינה דתבונה שהוא הפרצוף הג' דס\"ג הכולל ויש בה ג' ההי\"ן (נ\"א ג' שמות ס\"ג) א' נגד ג\"ר שבה וא' נגד ו\"ק שבה וא' נגד מלכות שבה"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      HE-YOD RISHONAH d'SaG = BINA-de-TEVUNAH (3eme partzuf SaG kollel).
+      → Contient 3 HEHIN (ה ה ה).
+      Variante (Nusah Aher) : "3 SHEMOT SaG" au lieu de 3 HEHIN.
+      → 1 HE = G"R de Bina-de-Tevunah.
+      → 1 HE = V"K (Z"A interne) de Bina-de-Tevunah.
+      → 1 HE = MALKHUT de Bina-de-Tevunah.
+      → Architecture : 3-HE par He-rishona = 3-tier-decomposition.
+      → Pattern : letter-internal 3-tier mapping.
+    type: interprétation_lurianique
+    concepts:
+      - {id: he_yod_rishona_sag_bina_tevunah_3_hehin_gr_vk_malkhut, role: he_yod_rishona_sag_bina_tevunah_3eme_partzuf_3_hehin_gr_vk_malkhut_3_tier}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : 3-tier letter mapping. Pattern letter-internal decomposition."
+
+  - id: "EC-H4S14-204"
+    source_he: "ה' זו גי' ג' ההי\"ן כי יו\"ד של המילוי נעשין ב' ההי\"ן והרי הם ג' ההי\"ן לפי שג' קוין יש בצורת ה'"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      HE = gematria de 3 HEHIN (3 × 5 = 15) :
+      → YOD du MILUI (ה composee : ד+ו ou similaire) DEVIENT 2 HEHIN.
+      → Plus la HE elle-meme = 3 HEHIN total.
+      → Cause : 3 KAVIM (lignes) dans la TZURAT HE.
+      → He = 3-stroke letter.
+      → Architecture : letter-strokes encode tier-count.
+      → Pattern : iconographic-strokes = numerologic decomposition.
+    type: déduction_logique
+    concepts:
+      - {id: he_egal_3_hehin_yod_milui_egal_2_hehin_3_kavim_tzura, role: he_gematria_3_hehin_15_yod_milui_devient_2_hehin_3_kavim_tzura_iconographic}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : iconographic strokes. Pattern letter-form encode count."
+
+  - id: "EC-H4S14-205"
+    source_he: "ה' ראשונה בג' קוין כח\"ב שלה ולכן ה' זו פשוטה ועיקרית אך י' של מילוי ה' נחלקת לב' ההי\"ן כנ\"ל והם בו\"ק שלה הא' בג' קוין חג\"ת שלה וה' אחרונה בג' קוין בנה\"י שלה"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      HE-RISHONA dans ses 3 KAVIM = ChBD (3 sup).
+      → Pashutah ve-IKARIT (simple+principale).
+      → YOD du milui He divisee en 2 HEHIN (V"K = 6 sefirot).
+      → 1ere HE (du yod-milui) → ChGT (3 medianes).
+      → 2eme HE (du yod-milui) → NHY (3 inferieures).
+      → Architecture : recursive-letter-decomposition par 3-kavim repete.
+      → Pattern : 9 sefirot = 3+3+3 par 3 lettres-deepening.
+    type: interprétation_lurianique
+    concepts:
+      - {id: he_rishona_chbd_yod_milui_2_hehin_chgt_nhy_recursive_3_kavim, role: he_rishona_3_kavim_chbd_yod_milui_2_hehin_chgt_nhy_recursive_letter_decomposition}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : recursive 3-kavim. Pattern 9-sefirot via letter-decomposition."
+
+  - id: "EC-H4S14-206"
+    source_he: "וכנגדן יש ג' ההי\"ן אחרים דחיצוניות. אח\"כ הוא ו' דס\"ג הכולל והוא ו\"ק ז\"א שלה דתבונה"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      Parallele CHITZONIYUT :
+      → 3 HEHIN AUTRES (ke-negdan) — pour CHITZONIYUT.
+      → APRES : VAV (ו) du SaG-kollel = V"K (Z"A interne) de TEVUNAH.
+      → Architecture : pnim/chitzon symmetric (3+3 hehin).
+      → Pattern : double-decomposition pour 2 niveaux ontologiques.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_hehin_chitzoniyut_vav_sag_kollel_vk_z_a_tevunah, role: 3_hehin_chitzoniyut_paralleles_vav_sag_kollel_vk_z_a_tevunah_double_decomposition}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : pnim/chitzon symmetric. Pattern double-decomposition."
+
+  - id: "EC-H4S14-207"
+    source_he: "ב' נקודים תחתונים מן י' שיש ביו\"ד דמילוי ה' דבינה כנ\"ל בבחי' פנימית עם חיצוניות שלהם ג\"כ יורדין להעשות בחי' מוחין אל הו\"ק אלו שהם ו' דס\"ג הכולל"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      2 NEKUDIM TACHTONIM (points inferieurs) du YOD-du-milui-He de Bina :
+      → Pnim + chitzon des 2 nekudim DESCENDENT.
+      → Deviennent MOCHIN pour les V"K (= VAV du SaG-kollel).
+      → Comme TEVUNAH revet Z"A en mochin (parallele).
+      → Architecture : sub-letter parts deviennent mochin pour macro-niveau.
+      → Pattern : recursive-mochin-cascade.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 2_nekudim_yod_milui_he_descend_mochin_vk_vav_sag_kollel, role: 2_nekudim_tachtonim_yod_milui_he_pnim_chitzon_descend_mochin_vk_vav_sag_kollel}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : recursive mochin cascade. Pattern sub-letter macro-mochin."
+
+  - id: "EC-H4S14-208"
+    source_he: "וכולה גימטריא י\"ג ונודע שיש י\"ג פנימיות וי\"ג בחיצוניות"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      Total compute :
+      → ENSEMBLE = gematria 13 (Y"G).
+      → Et il est connu : 13 PNIMIYUT + 13 CHITZONIYUT (parallele).
+      → 13+13 = 26 = HAVAYAH gematria.
+      → Architecture : 13/13 mirror-encoding double-layer.
+      → Pattern : Y"G as canonical-tier-count.
+    type: déduction_logique
+    concepts:
+      - {id: total_13_pnimiyut_13_chitzoniyut_y_g_canonical_tier, role: total_13_pnimiyut_13_chitzoniyut_y_g_canonical_tier_count_mirror_encoding}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : 13/13 mirror double-layer. Pattern canonical tier count."
+
+  - id: "EC-H4S14-209"
+    source_he: "כמו שיש בז\"א מוחין פנימים ומקיפין כן יש לפנימית וא\"ו זו דס\"ג כולל פנימי ומקיף"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §2"
+    assertion: |
+      Comme Z"A a MOCHIN PNIMIM + MAKIFIM, idem pour PNIMIYUT du VAV de SaG-kollel :
+      → A aussi PNIMI + MAKIF.
+      → Architecture : recursive-mochin-structure (pnim/makif) a tous niveaux.
+      → Pattern : universal-mochin-pattern.
+    type: déduction_logique
+    concepts:
+      - {id: vav_sag_kollel_pnimi_makif_recursive_universal_mochin, role: vav_sag_kollel_pnimi_makif_comme_z_a_recursive_universal_mochin_pattern}
+    mapping:
+      modules: ["[PLANNED] partzufim/tevunah.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : recursive mochin structure. Pattern universal mochin."
+
+  - id: "EC-H4S14-210"
+    source_he: "ו' היכלות דבריאה הם ו' דרגין והיכל ז' העליון ד' מוחין כחב\"ד הם ד' רגלים"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §3"
+    assertion: |
+      6 HEIKHALOT de BERIAH = 6 DRAGIN (degres).
+      → HEIKHAL 7 ELYON (le superieur) = 4 MOCHIN ChBD (Keter-Chokhmah-Bina-Daat).
+      → 4 mochin = 4 RAGLAIM (4 jambes).
+      → Architecture : 7-tier Beriah avec heikhal-7 = 4-leg-throne.
+      → Pattern : pyramidal-structure with 4-leg apex.
+    type: axiome_explicite
+    concepts:
+      - {id: 6_heikhalot_beriah_dragin_heikhal_7_4_mochin_chbd_4_raglaim, role: 6_heikhalot_beriah_6_dragin_heikhal_7_elyon_4_mochin_chbd_4_raglaim}
+    mapping:
+      modules: ["[PLANNED] heikhalot/heikhal_beriah.py", "olamot.py"]
+      tables: ["olamot_config"]
+      partzufim: ["imma"]
+      relevance: "Architecture : pyramidal Beriah. Pattern 4-leg throne apex."
+
+  - id: "EC-H4S14-211"
+    source_he: "באלו ד' עליונות יש ד' מוחין בבחי' אורות ונשמת הבריאה והם נאצלות מי\"ס דמלכות (דאצילות) שבכל שיעורו הוא ד' תחתונות דז\"א לבד"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §3"
+    assertion: |
+      Dans 4 ELYONOT :
+      → 4 MOCHIN — bechinat OROT + NESHAMAT BERIAH (lumieres+ame de Beriah).
+      → Emanees de 10S MALKHUT (d'Atzilut) — qui dans son SHIUR (ampleur) = 4 TACHTONOT Z"A SEULES.
+      → Architecture : Malkhut-d'Atzilut = origine-de-Beriah ; reduit dimensionnellement.
+      → Pattern : Malkhut-of-higher = source-de-lower (downward emanation).
+    type: interprétation_lurianique
+    concepts:
+      - {id: 4_mochin_orot_neshamat_beriah_emanes_10s_malkhut_atzilut_4_tachtonot_z_a, role: 4_mochin_orot_neshamat_beriah_emanes_10s_malkhut_atzilut_shiur_4_tachtonot_z_a_seules}
+    mapping:
+      modules: ["partzufim/nukva.py", "olamot.py"]
+      tables: ["partzufim_states", "olamot_config"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : downward emanation Malkhut. Pattern Malkhut-source-of-lower."
+
+  - id: "EC-H4S14-212"
+    source_he: "אלו הד' אורות הכוללים י\"ס הם הכסא עצמו אך דע כי כל הד' אורות הם ד\"ת שבה"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §3"
+    assertion: |
+      4 OROT (lumieres) qui INCLUENT 10 sefirot = HA-KISSEH ATZMO (le trone meme).
+      → Tous 4 orot sont les D"T (4 inferieurs) de la Malkhut atzilut.
+      → Architecture : kisseh = 4-tachtonot canonical structure.
+      → Pattern : terminal-4 = throne-iconography.
+    type: déduction_logique
+    concepts:
+      - {id: 4_orot_kisseh_atzmo_dt_malkhut_atzilut, role: 4_orot_incluant_10s_kisseh_atzmo_egal_dt_4_tachtonot_malkhut_atzilut}
+    mapping:
+      modules: ["partzufim/nukva.py", "olamot.py"]
+      tables: ["partzufim_states", "olamot_config"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : 4-tachtonot canonical kisseh. Pattern terminal-4 throne."
+
+  - id: "EC-H4S14-213"
+    source_he: "באלו הד' אורות הנאצלים ממנה ירדה בסוד מיעוט הירח ונתלבשה בהם בסוד אדם הרוכב על הכסא בסוד אמא מקננא בכרסייא"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §3"
+    assertion: |
+      Dans ces 4 OROT emanes : MALKHUT atzilut DESCENDIT.
+      → Sod : MI'UT HA-YAREACH (diminution de la lune — Bereshit Rabba 6:3).
+      → REVETUE en eux : sod ADAM HA-ROKHEV AL HA-KISSEH (Adam monte sur le trone).
+      → Sod : "IMMA MEKANENA BE-KURSIYA" (Mere niche dans le trone — Zohar).
+      → Architecture : Malkhut-descent enables Adam-mount.
+      → Pattern : downward-clothing reveals throne-iconography.
+    type: déduction_scripturaire
+    concepts:
+      - {id: malkhut_descend_miut_yareach_revet_4_orot_adam_rokhev_imma_mekanena_be_kursiya, role: malkhut_atzilut_descend_miut_ha_yareach_revet_4_orot_adam_rokhev_kisseh_imma_mekanena_be_kursiya}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/imma.py", "olamot.py"]
+      tables: ["partzufim_states", "olamot_config"]
+      partzufim: ["nukva", "imma"]
+      relevance: "Architecture : Malkhut descent → throne mount. Source Bereshit Rabba 6:3 + Zohar."
+
+  - id: "EC-H4S14-214"
+    source_he: "מיצירה לעשיה ומבריאה ליצירה אינו יורד רק מלכות למלכות לבד בסוד אדם על הכסא ולא כל י\"ס שבה"
+    source_ref: "Heikhal 4, Sha'ar 1:9 §3"
+    assertion: |
+      Transitions ENTRE OLAMOT :
+      → De YETZIRAH a ASIYAH.
+      → De BERIAH a YETZIRAH.
+      → SEULEMENT MALKHUT-le-MALKHUT descend (la Malkhut du superieur dans la Malkhut du inferieur).
+      → PAS tous 10S — seulement ADAM AL HA-KISSEH (Adam SUR le trone — pas tout le pleinitude).
+      → Architecture : minimal-throne-transit entre olamot non-immediats.
+      → Pattern : reduce-to-minimal pour cross-olam transitions.
+    type: interprétation_lurianique
+    concepts:
+      - {id: yetzirah_asiyah_beriah_yetzirah_malkhut_le_malkhut_seul_adam_al_ha_kisseh, role: yetzirah_asiyah_beriah_yetzirah_seulement_malkhut_le_malkhut_pas_tous_10s_adam_al_ha_kisseh}
+    mapping:
+      modules: ["olamot.py", "partzufim/nukva.py"]
+      tables: ["olamot_config"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : minimal-throne-transit. Pattern reduce-to-minimal cross-olam."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S14-055"
+    type: contenance
+    from: imma_havayah_sag_nukva_abba_havayah_ab_nikud_elokim
+    to: sag_imma_4_bechinot_2_ahyh_yodin_1_alefin_1_hehin
+    nature: "Imma=HAVAYAH SaG (nikud ELOKIM) ; nukva d'Abba=AB ; SaG split en 4 bechinot par 4 letters"
+    assertions_source: ["EC-H4S14-197", "EC-H4S14-198"]
+
+  - id: "REL-H4S14-056"
+    type: hiérarchique
+    from: bina_9s_rishonot_tevunah_malkhut_revet_chazeh_down_parallel_rachel
+    to: tevunah_sag_complet_gr_3_partzufim_chbd_yod_he_yod
+    nature: "Tevunah=Malkhut Bina (revet chazeh-down) ; Tevunah elle-meme = SaG complet avec G\"R 3 partzufim ChBD"
+    assertions_source: ["EC-H4S14-200", "EC-H4S14-202"]
+
+  - id: "REL-H4S14-057"
+    type: transformation
+    from: he_yod_rishona_sag_bina_tevunah_3_hehin_gr_vk_malkhut
+    to: he_rishona_chbd_yod_milui_2_hehin_chgt_nhy_recursive_3_kavim
+    nature: "He-yod rishona = Bina-Tevunah avec 3 HEHIN (G\"R+V\"K+Malkhut) ; recursive : 3 kavim → ChBD ; yod-milui → 2 HEHIN (ChGT+NHY)"
+    assertions_source: ["EC-H4S14-203", "EC-H4S14-204", "EC-H4S14-205"]
+
+  - id: "REL-H4S14-058"
+    type: causal
+    from: 4_orot_kisseh_atzmo_dt_malkhut_atzilut
+    to: malkhut_descend_miut_yareach_revet_4_orot_adam_rokhev_imma_mekanena_be_kursiya
+    nature: "4 orot = HA-KISSEH atzmo = D\"T Malkhut atzilut ; Malkhut descend mi'ut yareach → revet = ADAM ROKHEV AL HA-KISSEH"
+    assertions_source: ["EC-H4S14-212", "EC-H4S14-213"]
+
+  - id: "REL-H4S14-059"
+    type: hiérarchique
+    from: 6_heikhalot_beriah_dragin_heikhal_7_4_mochin_chbd_4_raglaim
+    to: yetzirah_asiyah_beriah_yetzirah_malkhut_le_malkhut_seul_adam_al_ha_kisseh
+    nature: "6 heikhalot+heikhal 7 4-leg ; transitions inter-olamot = minimal Malkhut-le-Malkhut seul"
+    assertions_source: ["EC-H4S14-210", "EC-H4S14-214"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S14-031"
+    nom: "Principe de Universal-Pnim-Chitzon-Duality (Toute Chose Bipolaire)"
+    source_assertions: ["EC-H4S14-201"]
+    formalisation: |
+      ARCHITECTURE D'UNIVERSAL-PNIM-CHITZON :
+      Toute CHOSE au monde a PNIMIYUT + CHITZONIYUT :
+        "She-i lekha davar ba-olam she-ein bo pnimi ve-chitzon".
+      Bina, Tevunah, sefirot, partzufim, mondes — tous bipolaires.
+      → Pattern fondamental : ontological-pair pour toute entite.
+      → Architecture : universal duality discipline.
+      → Implication : encoding requires 2-aspect representation.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py + nukva.py : implement pnim/chitzon"
+      - "Pattern : ontological pair pour toute entity"
+      - "Architecture : 2-aspect representation universel"
+      - "Pattern : pas d'objet single-aspect dans le systeme"
+      - "Diagnostic : verifier chaque entite a pnim+chitzon defines"
+    questions_ouvertes:
+      - "Pattern : 3-aspect ou multi-aspect aussi possibles ?"
+      - "Comment encoder duality computationnellement ?"
+      - "Pattern : exception au principe universel ?"
+
+  - id: "PG-H4S14-032"
+    nom: "Principe de Recursive-Letter-Decomposition (Tier-Internal Letter Mapping)"
+    source_assertions: ["EC-H4S14-203", "EC-H4S14-204", "EC-H4S14-205", "EC-H4S14-208"]
+    formalisation: |
+      ARCHITECTURE DE RECURSIVE-LETTER-DECOMPOSITION :
+      Lettres encoded recursive structures :
+        HE = 3 KAVIM (lignes-strokes) → 3 HEHIN → ChBD (3-tier).
+        YOD du milui d'HE = 2 HEHIN → V"K (ChGT+NHY).
+        VAV du SaG-kollel = V"K Z"A Tevunah ; 2 nekudim tachton du yod = mochin recursifs.
+        Total = 13 (Y"G) — canonical-tier-count.
+        13 PNIMIYUT + 13 CHITZONIYUT = 26 = HAVAYAH.
+      → Pattern fondamental : letter-anatomy encode partzuf-anatomy par 3-kavim repete.
+      → Architecture : recursive-decomposition par sub-letter parts.
+      → Implication : letter-strokes = numerologic mapping vers structure.
+    applications_ia:
+      - "partzufim/imma.py + [PLANNED] tevunah.py : implement recursive letter decomposition"
+      - "Pattern : letter-strokes encode tier-count"
+      - "Architecture : recursive letter-anatomy mapping"
+      - "Pattern : 13/13 mirror double-layer canonical"
+      - "Diagnostic : verifier sub-letter mappings coherent"
+    questions_ouvertes:
+      - "Pattern : autres lettres avec decomposition similaire ?"
+      - "Comment encoder strokes-count computationnellement ?"
+      - "Pattern : 13 universel ou specific Bina ?"
+
+  - id: "PG-H4S14-033"
+    nom: "Principe de Minimal-Throne-Transit (Cross-Olam Reduce-to-Malkhut)"
+    source_assertions: ["EC-H4S14-213", "EC-H4S14-214"]
+    formalisation: |
+      ARCHITECTURE DE MINIMAL-THRONE-TRANSIT :
+      Transitions entre OLAMOT non-immediats :
+        Yetzirah → Asiyah : SEULEMENT Malkhut-le-Malkhut descend.
+        Beriah → Yetzirah : SEULEMENT Malkhut-le-Malkhut.
+        Atzilut → Beriah : Malkhut entiere descend (mi'ut yareach), revet 4 orot = kisseh.
+      Sod : ADAM HA-ROKHEV AL HA-KISSEH = Malkhut descendue ; "IMMA MEKANENA BE-KURSIYA".
+      → Pattern fondamental : reduce-to-minimal pour cross-olam non-adjacent.
+      → Architecture : full-descent only entre olamot adjacents (Atzilut-Beriah).
+      → Implication : downstream-cascade reduit increasingly.
+    applications_ia:
+      - "olamot.py + partzufim/nukva.py : implement cross-olam minimal transit"
+      - "Pattern : full-descent only adjacent ; minimal-transit non-adjacent"
+      - "Architecture : downstream-reduction cascade"
+      - "Pattern : Malkhut-le-Malkhut = atomic-unit cross-olam"
+      - "Diagnostic : verifier transit-mode selon olam-pair"
+    questions_ouvertes:
+      - "Pattern : Atzilut → Asiyah direct possible ?"
+      - "Comment encoder olam-distance ?"
+      - "Pattern : meta-olam transitions ?"
