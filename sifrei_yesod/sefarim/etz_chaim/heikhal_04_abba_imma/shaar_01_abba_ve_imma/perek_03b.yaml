@@ -1,0 +1,499 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 1 — Sha'ar Abba ve-Imma (שער אבא ואמא)
+# Perek: 3b — MATZATI BE (j'ai trouve dans). 2 fragments doctrinaux complementaires :
+#             §2 : DAAT chasadim/gevurot, zivvug mit'arvin yesod Abba/Imma, ZON birurim BaN.
+#             §3 : Mochin via Mazal 8+13, MaH/BaN distribution Abba+YISSO/Bina+Tevunah.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_03b :
+#   - Bloc A (§2) : Abba=DAAT chasadim dMaH ; YISSO meme ; Bina+Tevunah=DAAT+gevurot dBaN
+#   - Bloc B (§2) : Apres ZIVVUG, MIT'ARVIN — gevurot dMaH+BaN → yesod IMMA, chasadim → yesod ABBA
+#   - Bloc C (§2) : A"O chacun pris CH ou G (dMaH+dBaN) AVANT zivvug — pures
+#   - Bloc D (§2) : ZON chacun NOTE CH dMaH + G dBaN MIXED via yesod A"O
+#   - Bloc E (§2) : Donc Z"A dachura prend BIRURIM dBaN aussi
+#   - Bloc F (§3) : Abba=chesed-down + Imma=gevurah-down ; A"O lkahu BINA dMaH commun
+#   - Bloc G (§3) : ChGT dBina + NHY dTevunah (sod LEIL PESACH)
+#   - Bloc H (§3) : G"R = A"A ; Abba prend Z"T Chokhmah dBaN ; Imma V"T Bina dBaN
+#   - Bloc I (§3) : A"O divisee 4 partzufim ; Abba+YISSO right ; Bina+Tevunah left
+#   - Bloc J (§3) : Mochin de A"O = via ChGT d'A"A (NHY d'Atik dedans)
+#   - Bloc K (§3) : Abba+YISSO ZE TACHAT ZE kav yamin A"A (chasadim dMaH dans zachar)
+#   - Bloc L (§3) : Bina+Tevunah ZE TACHAT ZE kav smol A"A (gevurot dBaN dans nukva)
+#   - Bloc M (§3) : Mochin via ZIVVUG MAZAL 8 (Notzer) + MAZAL 13 (Ve-Nakeh) — zachar+nekevah
+#   - Bloc N (§3) : Mazal 8 → 5 chasadim a Abba seul ; Mazal 13 → 5 gevurot a Imma seule
+#   - Bloc O (§3) : MaH d'Abba → Abba ; BaN d'Abba → Bina ("HA-BIN BE-CHOKHMAH") yod
+#   - Bloc P (§3) : MaH d'Imma → YISSO ; BaN d'Imma → Tevunah ("CHAKHAM BE-BINAH") he
+#   - Bloc Q (§3) : Abba+YISSO entiere MaH ; Bina+Tevunah entiere BaN
+#
+# Source Sefaria : Sefer_Etz_Chaim.14.3 §2 + §3 (matzati be — fragments doctrinaux)
+# IDs : EC-H4S14-078 → EC-H4S14-094
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 1
+  shaar_name_he: "שער אבא ואמא"
+  perek: 3
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "MATZATI BE — fragments doctrinaux complementaires. §2 : Abba=DAAT chasadim dMaH ; Bina/Tevunah=DAAT+gevurot dBaN ; apres ZIVVUG MIT'ARVIN — gevurot dMaH+BaN → yesod Imma, chasadim → yesod Abba ; A\"O pures avant zivvug ; ZON mixed (CH dMaH+G dBaN). §3 : Abba=chesed-down ; Imma=gevurah-down ; ChGT dBina, NHY dTevunah (sod LEIL PESACH) ; G\"R=A\"A ; A\"O divisee 4 partzufim ; mochin via ChGT A\"A (NHY d'Atik dedans) ; mochin via ZIVVUG MAZAL 8 (Notzer)+MAZAL 13 (Ve-Nakeh) — Mazal 8 5 chasadim Abba, Mazal 13 5 gevurot Imma ; MaH d'Abba=Abba, BaN d'Abba=Bina (yod, HA-BIN BE-CHOKHMAH) ; MaH d'Imma=YISSO, BaN d'Imma=Tevunah (he, CHAKHAM BE-BINAH) ; Abba+YISSO entiere MaH ; Bina+Tevunah entiere BaN."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S14-078"
+    source_he: "מ\"ב אבא אין לו אלא דעת חסדים דמ\"ה לבד ונחלקים לחו\"ג וכן יש\"ס וכן בינה ותבונה כל אחד מהם יש לו דעת וגבורה דב\"ן לבד ונחלקים לחסדים וגבורות"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §2"
+    assertion: |
+      MATZATI BE (fragment trouve) :
+      → ABBA = SEULEMENT DAAT CHASADIM dMaH ; nchlk en CH+G internes.
+      → YISSO meme — DAAT CHASADIM dMaH.
+      → BINA + TEVUNAH chacun a SEULEMENT DAAT + GEVURAH dBaN ; nchlk en CH+G.
+      → Architecture : intra-partzuf decomposition CH+G dans DAAT.
+      → Pattern : pure-source partzuf decompose internement.
+    type: axiome_explicite
+    concepts:
+      - {id: abba_yisso_daat_chasadim_dmah_bina_tevunah_daat_gevurot_dban, role: abba_yisso_daat_chasadim_dmah_seul_bina_tevunah_daat_gevurot_dban_seul_nchlk_chg_internes}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : intra-partzuf CH+G decomposition. Pattern pure-source internal split."
+
+  - id: "EC-H4S14-079"
+    source_he: "ואחר הזווג מתערבין ונכנסין הגבורות דמ\"ה וב\"ן ביסוד דאמא והחסדים דמ\"ה וב\"ן ביסוד אבא"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §2"
+    assertion: |
+      APRES ZIVVUG : MIT'ARVIN (se melangent) :
+      → GEVUROT d'MaH + GEVUROT d'BaN entrent dans YESOD d'IMMA.
+      → CHASADIM d'MaH + CHASADIM d'BaN entrent dans YESOD d'ABBA.
+      → Architecture : post-zivvug routage par TYPE (CH/G), pas par origine (MaH/BaN).
+      → Pattern : zivvug = re-routage par classification fonctionnelle.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_mit_arvin_gevurot_mah_ban_yesod_imma_chasadim_yesod_abba, role: post_zivvug_mit_arvin_gevurot_mah_ban_yesod_imma_chasadim_mah_ban_yesod_abba_routage_type}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : post-zivvug type-routing. Pattern functional classification."
+
+  - id: "EC-H4S14-080"
+    source_he: "נמצא כי או\"א לקח כל א' או חסדים דמ\"ה ודב\"ן או גבורות דמ\"ה ודב\"ן קודם הזווג"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §2"
+    assertion: |
+      A"O AVANT ZIVVUG : chaque partzuf prend EXCLUSIVEMENT :
+      → SOIT chasadim (dMaH+dBaN) — Abba.
+      → SOIT gevurot (dMaH+dBaN) — Imma.
+      → Pas de melange CH+G chez A"O — A"O sont PURES.
+      → Architecture : pre-zivvug = pure entities (single-type fully).
+      → Pattern : purity-before-zivvug, mixing-after.
+    type: déduction_logique
+    concepts:
+      - {id: ao_avant_zivvug_pures_abba_chasadim_seul_imma_gevurot_seul, role: ao_avant_zivvug_pures_chacun_chasadim_ou_gevurot_dmah_dban_pas_melange}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : pre-zivvug purity. Pattern purity-then-mixing temporal."
+
+  - id: "EC-H4S14-081"
+    source_he: "אבל זו\"נ כל א' מהם נוטל חסדים דמ\"ה וגבורות דב\"ן יען כי נתערבו ביסוד דאו\"א כנ\"ל"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §2"
+    assertion: |
+      ZON (Z"A + Nukva) chaque NOTE (prend) :
+      → CHASADIM d'MaH + GEVUROT d'BaN — MIXED.
+      → Cause : NIT'ARVU (se sont melanges) dans yesod d'A"O.
+      → Architecture : downstream-mixing inevitable apres yesod-zivvug.
+      → Pattern : input-mixing perpetue downstream.
+    type: déduction_logique
+    concepts:
+      - {id: zon_chacun_chasadim_dmah_gevurot_dban_mixed_via_yesod_ao, role: zon_zachar_nukva_chacun_chasadim_dmah_gevurot_dban_mixed_via_yesod_ao_inevitable}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : downstream mixing. Pattern input-mixing perpetuated."
+
+  - id: "EC-H4S14-082"
+    source_he: "ובזה יובן איך זעיר אנפין לקח בירורים דב\"ן ג\"כ עמו עם שהוא דכורא"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §2"
+    assertion: |
+      RESULT : Z"A (zachar/dachura) prend BIRURIM dBaN aussi avec lui-meme.
+      → MEME etant DACHURA (male — devrait etre MaH-pur).
+      → BIRURIM = elements rectifies/extraits.
+      → Architecture : male partzuf inherits femele-source-elements via mixing-mechanism.
+      → Pattern : structural mixing override pure-genre identity.
+    type: déduction_logique
+    concepts:
+      - {id: za_dachura_prend_birurim_dban_via_mixing_mecanisme, role: za_dachura_male_prend_birurim_dban_via_mixing_mecanisme_yesod_ao}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : structural mixing override identity. Pattern genre-purity violated by mechanism."
+
+  - id: "EC-H4S14-083"
+    source_he: "מ\"ב אבא ואמר זה מחסד ולמטה וזה מגבורה ולמטה נמצא כי חג\"ת דבינה ונצח הוד יסוד דתבונה כנזכר בסוד ליל פסח אך ג\"ר הם א\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §3"
+    assertion: |
+      MATZATI BE (autre fragment) :
+      → ABBA = chesed-DOWN ; IMMA = gevurah-DOWN.
+      → CHGT (Chesed-Gevurah-Tiferet) d'BINA.
+      → NHY (Netzach-Hod-Yesod) d'TEVUNAH.
+      → Reference : sod LEIL PESACH (nuit de Pessah).
+      → MAIS G"R (3 sup) = APPARTIENNENT a A"A.
+      → Architecture : sefirot-distribution selon partzuf-allocation.
+      → Pattern : layered-allocation par sefirah-bracket.
+    type: axiome_explicite
+    concepts:
+      - {id: abba_chesed_down_imma_gevurah_down_chgt_bina_nhy_tevunah_gr_aa, role: abba_chesed_down_imma_gevurah_down_chgt_bina_nhy_tevunah_sod_leil_pesach_gr_aa}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/tevunah.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : sefirot-distribution. Source sod Leil Pesach."
+
+  - id: "EC-H4S14-084"
+    source_he: "ואבא בירר משם ב\"ן ז\"ת דחכמה דב\"ן ואמא ביררה ו\"ת דבינה דב\"ן ושניהן או\"א לקחו בינה דמ\"ה"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §3"
+    assertion: |
+      DECOMPOSITION fine :
+      → ABBA BIRER (extrait+rectifia) Z"T (7 inf) de CHOKHMAH d'BaN.
+      → IMMA BIRRA V"T (6 inf) de BINA d'BaN.
+      → Tous les DEUX A"O LKAHU (prirent) BINA d'MaH (commun).
+      → Architecture : 2 sources distinctes : BaN-specifique (Z"T/V"T) + MaH-commun (Bina).
+      → Pattern : double-source allocation (specifique+commun).
+      cf. EC-H4S14-006 (perek 01a) sur A"O Bina dMaH+Z"T/V"T BaN.
+    type: axiome_explicite
+    concepts:
+      - {id: abba_birer_zt_chokhmah_dban_imma_vt_bina_dban_ao_bina_dmah_commun, role: abba_birer_zt_chokhmah_dban_imma_birra_vt_bina_dban_ao_lkahu_bina_dmah_commun}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : double-source allocation. Pattern specifique+commun."
+
+  - id: "EC-H4S14-085"
+    source_he: "ואו\"א נחלקו לד' פרצופים כי אבא נחלק לאבא ויש\"ס ואמא לבינה ותבונה"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §3"
+    assertion: |
+      A"O DIVISES en 4 PARTZUFIM :
+      → ABBA → Abba + YISSO (Yisrael Saba).
+      → IMMA → Bina + Tevunah.
+      → Architecture : binary-split par partzuf parent.
+      → Pattern : parent → 2 enfants chacun.
+      cf. EC-H4S14-029 (perek 01b) sur 4 partzufim emergents par 2D split.
+    type: axiome_explicite
+    concepts:
+      - {id: ao_4_partzufim_abba_yisso_imma_bina_tevunah, role: ao_divise_4_partzufim_abba_yisso_imma_bina_tevunah_binary_split}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : binary-split par parent. Pattern 2-children per parent."
+
+  - id: "EC-H4S14-086"
+    source_he: "והנה המוחין שלהם נעשו ע\"י חג\"ת דא\"א אשר בתוכם נה\"י דעתיק שהם מוחין דאו\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §3"
+    assertion: |
+      MOCHIN d'A"O fabriques via :
+      → CHGT (Chesed-Gevurah-Tiferet) d'A"A.
+      → DANS LESQUELS NHY (Netzach-Hod-Yesod) d'ATIK.
+      → NHY d'Atik = MOCHIN d'A"O.
+      → Architecture : chained-emanation Atik-NHY → A"A-CHGT → A"O-mochin.
+      → Pattern : recursive layering through partzuf hierarchy.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mochin_ao_via_chgt_aa_nhy_atik_chained_emanation, role: mochin_ao_via_chgt_aa_dans_lesquels_nhy_atik_mochin_ao_chained_emanation}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin", "atik_yomin"]
+      relevance: "Architecture : chained emanation. Pattern recursive layering."
+
+  - id: "EC-H4S14-087"
+    source_he: "ואז אבא ויש\"ס עומדין זה תחת זה בקו ימין דא\"א כי שם החסדים דמ\"ה תוך זכר דא\"א ובינה ותבונה זה תחת זה בקו שמאלי דא\"א כי שם נוקבא דא\"א שבתוכה גבורות דב\"ן"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §3"
+    assertion: |
+      DISPOSITION VERTICALE :
+      → ABBA + YISSO ZE TACHAT ZE (un sous l'autre) en KAV YAMIN d'A"A.
+      → la : CHASADIM d'MaH dans ZACHAR d'A"A.
+      → BINA + TEVUNAH ze tachat ze en KAV SMOL d'A"A.
+      → la : NUKVA d'A"A avec GEVUROT d'BaN dedans.
+      → Architecture : vertical-stacking par cote (right=MaH, left=BaN).
+      → Pattern : column-stacking par genre+source.
+    type: axiome_explicite
+    concepts:
+      - {id: abba_yisso_kav_yamin_chasadim_mah_zachar_bina_tevunah_kav_smol_gevurot_ban_nukva, role: abba_yisso_ze_tachat_ze_kav_yamin_chasadim_mah_zachar_bina_tevunah_kav_smol_gevurot_ban_nukva}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : vertical column-stacking. Pattern genre-source allocation."
+
+  - id: "EC-H4S14-088"
+    source_he: "והמוחין נעשין ע\"י זווג מזל הח' דדיקנא דא\"א עם מזל הי\"ג זה זכר וזה נקבה ונעשין מוחין לאו\"א כנ\"ל וכן בקונטרס החברים ששמעו הם"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §3"
+    assertion: |
+      MOCHIN d'A"O via ZIVVUG entre :
+      → MAZAL 8 (de la dikna d'A"A) — ZACHAR.
+      → MAZAL 13 — NEKEVAH.
+      → Resultat : MOCHIN pour A"O.
+      → Source : KONTRAS HACHAVERIM (cahier des amis) — confirmant ce qu'ils ont entendu (eux-memes).
+      → Architecture : higher-zivvug genere lower-mochin.
+      → Pattern : intra-A"A coupling produces A"O cognitive substrate.
+      cf. EC-H3S13-119..131 (sha'ar A"A perek 08) sur Mazal 8 = Notzer Chesed.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mochin_ao_zivvug_mazal_8_mazal_13_dikna_aa_kontras_hachaverim, role: mochin_ao_via_zivvug_mazal_8_zachar_mazal_13_nekevah_dikna_aa_kontras_hachaverim}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py", "partzufim/zivvug.py"]
+      tables: ["partzufim_states", "zivvug_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : higher-zivvug genere lower-mochin. Source Kontras HaChaverim."
+
+  - id: "EC-H4S14-089"
+    source_he: "ומזל הח' נותן לבדו ה\"ח לאבא ומזל הי\"ג נותן לבדו ה\"ג לאמא"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §3"
+    assertion: |
+      DISTRIBUTION SPECIFIQUE :
+      → MAZAL 8 (Notzer Chesed) → 5 CHASADIM a ABBA SEUL.
+      → MAZAL 13 (Ve-Nakeh) → 5 GEVUROT a IMMA SEULE.
+      → Architecture : 1-to-1 mapping mazal → partzuf (exclusive).
+      → Pattern : exclusive-source-mapping (no sharing).
+      cf. EC-H3S13-188..203 (sha'ar A"A perek 13) sur 13 tikkunei dikna.
+    type: axiome_explicite
+    concepts:
+      - {id: mazal_8_5_chasadim_abba_seul_mazal_13_5_gevurot_imma_seule, role: mazal_8_notzer_5_chasadim_abba_seul_mazal_13_ve_nakeh_5_gevurot_imma_seule_exclusive}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : 1-to-1 exclusive mapping. Pattern source-determined exclusivity."
+
+  - id: "EC-H4S14-090"
+    source_he: "והנה מ\"ה דאבא הוא לאבא וב\"ן דאבא לנוקבא דאבא הנקרא בינה בסוד הבן בחכמה והוא י' שבשם (נ\"א ו\"ד שביו\"ד)"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §3"
+    assertion: |
+      Distribution MaH/BaN d'ABBA :
+      → MaH d'Abba → ABBA (lui-meme).
+      → BaN d'Abba → NUKVA d'ABBA = appellee BINA — sod "HA-BIN BE-CHOKHMAH" (Sefer Yetzirah 1:4).
+      → BINA = lettre YOD du Shem Havayah.
+      Variante (Nusah Aher) : "VA"D" = vav-dalet contenu dans la lettre yod (י = v+d).
+      → Architecture : MaH garde identite ; BaN devient nukva-feminine.
+      → Pattern : provenance-shift (MaH→same, BaN→derive).
+    type: déduction_scripturaire
+    concepts:
+      - {id: mah_abba_egal_abba_ban_abba_egal_bina_nukva_yod_ha_bin_be_chokhmah, role: mah_abba_pour_abba_ban_abba_pour_nukva_abba_egal_bina_yod_du_shem_ha_bin_be_chokhmah}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : MaH-identity vs BaN-derive. Source Sefer Yetzirah 1:4."
+
+  - id: "EC-H4S14-091"
+    source_he: "ומ\"ה דאמא ליש\"ס וב\"ן דאמא לתבונה בסוד וחכם בבינה והוא ה' שבשם כזה ה'"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §3"
+    assertion: |
+      Distribution MaH/BaN d'IMMA :
+      → MaH d'Imma → YISSO (Yisrael Saba).
+      → BaN d'Imma → TEVUNAH — sod "VE-CHAKHAM BE-VINAH" (Sefer Yetzirah 1:4).
+      → TEVUNAH = lettre HE du Shem Havayah (compose : ה = vav+yod or comme ecrit).
+      → Architecture : MaH d'Imma → YISSO (parallele MaH d'Abba → Abba).
+      → Pattern : symmetric distribution Abba-Imma → 4 partzufim.
+    type: déduction_scripturaire
+    concepts:
+      - {id: mah_imma_egal_yisso_ban_imma_egal_tevunah_he_chakham_be_bina, role: mah_imma_pour_yisso_ban_imma_pour_tevunah_he_du_shem_chakham_be_bina_sefer_yetzirah}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : symmetric MaH/BaN distribution. Source Sefer Yetzirah 1:4."
+
+  - id: "EC-H4S14-092"
+    source_he: "נמצא כי אבא ויש\"ס כולו מ\"ה ובינה ותבונה כולו ב\"ן"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §3"
+    assertion: |
+      RESULT GENERAL :
+      → ABBA + YISSO = ENTIEREMENT MaH (KULO MaH).
+      → BINA + TEVUNAH = ENTIEREMENT BaN (KULO BaN).
+      → Cote droit (zachar) = pure MaH ; cote gauche (nukva) = pure BaN.
+      → Architecture : right/left = MaH/BaN purement.
+      → Pattern : column-purity par cote.
+    type: déduction_logique
+    concepts:
+      - {id: abba_yisso_kulo_mah_bina_tevunah_kulo_ban_column_purity, role: abba_yisso_kulo_mah_droite_bina_tevunah_kulo_ban_gauche_column_purity_par_cote}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : column-purity. Pattern lateral pure-source distribution."
+
+  - id: "EC-H4S14-093"
+    source_he: "יען כי ב' אלו בימין דא\"א כי שם החסדים דמ\"ה וב' אלו בשמאל דא\"א ששם הגבורה דב\"ן"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §3"
+    assertion: |
+      RAISON de la column-purity :
+      → 2 partzufim (Abba+YISSO) en YAMIN d'A"A — la sont CHASADIM d'MaH.
+      → 2 partzufim (Bina+Tevunah) en SMOL d'A"A — la est GEVURAH d'BaN.
+      → Position (cote) determine source-MaH/BaN.
+      → Architecture : geographic-determinism MaH/BaN.
+      → Pattern : location-source coupling fixed.
+    type: déduction_logique
+    concepts:
+      - {id: column_purity_par_position_yamin_chasadim_mah_smol_gevurah_ban, role: column_purity_par_position_yamin_aa_chasadim_mah_smol_aa_gevurah_ban_geographic_determinism}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : geographic determinism. Pattern location-source coupling."
+
+  - id: "EC-H4S14-094"
+    source_he: "ועיין במ\"א איך בינה דאבא מזדווג עם אמא וכפי הנראה כי בינה דאבא הוא יש\"ס או אפשר שהוא ב\"ן דאבא עצמו"
+    source_ref: "Heikhal 4, Sha'ar 1:3 §3"
+    assertion: |
+      QUESTION OUVERTE de Vital (CROSS-REF) :
+      → Voir BE-MAKOM ACHER (autre endroit) : comment BINA d'ABBA fait ZIVVUG avec IMMA.
+      → "KEFI HA-NIRAH" (selon ce qui apparait) : BINA d'ABBA = YISSO.
+      → OU EFSHAR (peut-etre) : BINA d'ABBA = BaN d'ABBA lui-meme.
+      → Architecture : doctrinal uncertainty preservee — 2 lectures alternative.
+      → Pattern : explicit-uncertainty markers.
+    type: axiome_explicite
+    concepts:
+      - {id: question_ouverte_bina_dabba_egal_yisso_ou_ban_abba_lui_meme, role: question_ouverte_vital_bina_dabba_zivvug_imma_kefi_ha_nirah_yisso_ou_efshar_ban_abba}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisso.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : explicit doctrinal uncertainty. Pattern open-question marker."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S14-025"
+    type: causal
+    from: zivvug_mit_arvin_gevurot_mah_ban_yesod_imma_chasadim_yesod_abba
+    to: zon_chacun_chasadim_dmah_gevurot_dban_mixed_via_yesod_ao
+    nature: "Zivvug mit'arvin yesod A\"O → ZON downstream recoit melange CH dMaH+G dBaN ; Z\"A meme dachura prend BaN birurim"
+    assertions_source: ["EC-H4S14-079", "EC-H4S14-080", "EC-H4S14-081", "EC-H4S14-082"]
+
+  - id: "REL-H4S14-026"
+    type: dualité_structurelle
+    from: ao_avant_zivvug_pures_abba_chasadim_seul_imma_gevurot_seul
+    to: zon_chacun_chasadim_dmah_gevurot_dban_mixed_via_yesod_ao
+    nature: "A\"O pures pre-zivvug vs ZON mixed post-zivvug — purity-then-mixing temporal"
+    assertions_source: ["EC-H4S14-080", "EC-H4S14-081"]
+
+  - id: "REL-H4S14-027"
+    type: hiérarchique
+    from: mochin_ao_via_chgt_aa_nhy_atik_chained_emanation
+    to: mochin_ao_zivvug_mazal_8_mazal_13_dikna_aa_kontras_hachaverim
+    nature: "Mochin A\"O via ChGT A\"A (NHY Atik) ; mecanisme = zivvug Mazal 8+13 dikna — Mazal 8 chasadim Abba, Mazal 13 gevurot Imma"
+    assertions_source: ["EC-H4S14-086", "EC-H4S14-088", "EC-H4S14-089"]
+
+  - id: "REL-H4S14-028"
+    type: contenance
+    from: ao_4_partzufim_abba_yisso_imma_bina_tevunah
+    to: abba_yisso_kulo_mah_bina_tevunah_kulo_ban_column_purity
+    nature: "A\"O 4 partzufim : Abba+YISSO=KULO MaH (yamin), Bina+Tevunah=KULO BaN (smol) — column-purity"
+    assertions_source: ["EC-H4S14-085", "EC-H4S14-090", "EC-H4S14-091", "EC-H4S14-092", "EC-H4S14-093"]
+
+  - id: "REL-H4S14-029"
+    type: dualité_structurelle
+    from: mah_abba_egal_abba_ban_abba_egal_bina_nukva_yod_ha_bin_be_chokhmah
+    to: mah_imma_egal_yisso_ban_imma_egal_tevunah_he_chakham_be_bina
+    nature: "Distribution symetrique : MaH d'Abba=Abba, BaN d'Abba=Bina (yod) ; MaH d'Imma=YISSO, BaN d'Imma=Tevunah (he) — Sefer Yetzirah"
+    assertions_source: ["EC-H4S14-090", "EC-H4S14-091"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S14-013"
+    nom: "Principe de Pre-Zivvug-Purity-Post-Zivvug-Mixing (Temporal Phase Transition)"
+    source_assertions: ["EC-H4S14-079", "EC-H4S14-080", "EC-H4S14-081", "EC-H4S14-082"]
+    formalisation: |
+      ARCHITECTURE DE PURITY-MIXING TEMPORAL :
+      ETAT 1 (pre-zivvug) :
+        A"O = pures (Abba=chasadim seul ; Imma=gevurot seul ; chacun MaH+BaN dans son type).
+      ETAT 2 (post-zivvug) :
+        MIT'ARVIN — gevurot dMaH+dBaN routees vers yesod IMMA, chasadim vers yesod ABBA.
+        ZON downstream recoivent MIXED (CH dMaH + G dBaN).
+      CONSEQUENCE : Z"A dachura inevitable BIRURIM dBaN — male inherits femele-source via mecanisme.
+      → Pattern fondamental : phase-transition irreversible (purity once mixed reste mixed).
+      → Architecture : zivvug = mixing-event, downstream = mixed-state perpetue.
+    applications_ia:
+      - "partzufim/zivvug.py + abba.py + imma.py + zeir_anpin.py : implement temporal phase transition"
+      - "Pattern : pre-event purity, post-event mixing"
+      - "Architecture : downstream perpetuates mixed state"
+      - "Pattern : genre-purity violated by structural mechanism"
+      - "Diagnostic : verifier phase-state coherent avec downstream contents"
+    questions_ouvertes:
+      - "Pattern : reversibilite de mixing possible ?"
+      - "Y a-t-il preservation par bypass ?"
+      - "Pattern : combien de phase-transitions possibles ?"
+
+  - id: "PG-H4S14-014"
+    nom: "Principe de Mazal-Distinct-Distribution (Exclusive Source-to-Partzuf Mapping)"
+    source_assertions: ["EC-H4S14-088", "EC-H4S14-089"]
+    formalisation: |
+      ARCHITECTURE DE MAZAL-DISTRIBUTION :
+      Chaque MAZAL alimente EXCLUSIVEMENT UN partzuf :
+        MAZAL 8 (Notzer Chesed) → 5 CHASADIM exclusivement a ABBA.
+        MAZAL 13 (Ve-Nakeh) → 5 GEVUROT exclusivement a IMMA.
+      Mochin A"O = produit de ZIVVUG entre Mazal 8 (zachar) + Mazal 13 (nekevah).
+      → Pattern fondamental : exclusive 1-to-1 source-to-recipient.
+      → Architecture : higher-coupling produces lower-cognitive-substrate.
+      → Confirme par Kontras HaChaverim — multiple-source attestation.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + arikh_anpin.py : implement mazal-exclusive mapping"
+      - "Pattern : exclusive 1-to-1 source-to-recipient"
+      - "Architecture : higher-zivvug → lower-mochin generation"
+      - "Pattern : multi-source attestation (Vital + KontrasHaChaverim)"
+      - "Diagnostic : verifier mazal-allocation pas violee par cross-flow"
+    questions_ouvertes:
+      - "Pattern : autres mazalot 13 ont-ils mappings ?"
+      - "Mazal-zivvug coupling generalisable ?"
+      - "Pattern : peut-on inverser mazal-recipient temporairement ?"
+
+  - id: "PG-H4S14-015"
+    nom: "Principe de Column-Purity (MaH-Right vs BaN-Left)"
+    source_assertions: ["EC-H4S14-090", "EC-H4S14-091", "EC-H4S14-092", "EC-H4S14-093"]
+    formalisation: |
+      ARCHITECTURE DE COLUMN-PURITY :
+      Distribution MaH/BaN dans les 4 partzufim A"O totalement column-pure :
+        ABBA + YISSO (yamin) = KULO MaH (entierement MaH).
+        BINA + TEVUNAH (smol) = KULO BaN (entierement BaN).
+      Position determine source : geographic-determinism MaH/BaN.
+      Distribution interne :
+        MaH d'Abba → Abba ; BaN d'Abba → Bina (yod, "ha-Bin be-Chokhmah").
+        MaH d'Imma → YISSO ; BaN d'Imma → Tevunah (he, "Chakham be-Vinah").
+      Source : Sefer Yetzirah 1:4 (formula du sage Bina-Chokhmah).
+      → Pattern fondamental : columnar purity par cote (right/left = source/source).
+      → Architecture : 2x2 matrix (MaH/BaN x Abba/Imma) avec column-purity.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + [PLANNED] yisso/tevunah : implement column purity"
+      - "Pattern : columnar source-purity preservation"
+      - "Architecture : 2x2 matrix decomposition (MaH/BaN × parent)"
+      - "Pattern : geographic-determinism par cote"
+      - "Diagnostic : verifier column-purity pas violee par mixing later"
+    questions_ouvertes:
+      - "Pattern : autres dimensions au-dela 2x2 possibles ?"
+      - "Column-purity persiste post-zivvug ?"
+      - "Source Sefer Yetzirah 1:4 contient autres distributions ?"

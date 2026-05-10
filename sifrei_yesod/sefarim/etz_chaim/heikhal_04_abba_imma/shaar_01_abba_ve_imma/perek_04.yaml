@@ -1,0 +1,575 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 1 — Sha'ar Abba ve-Imma (שער אבא ואמא)
+# Perek: 4 — NISTAPEK Vital sur 4 partzufim distribution. Kontras d'A"K
+#            distribution chiffree MaH/BaN. Hevel yesod Atik → 2 rosh A"O.
+#            A"O CHELAKIM (sans se'arot). Mochin ZON. "Borei shamayim ve-notehem".
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_04 :
+#   - Bloc A (§1) : NISTAPEK Vital sur 4 partzufim distribution
+#   - Bloc B (§1) : LECTURE A — Abba+YISSO=MaH+BaN d'Abba ; Bina+Tevunah=MaH+BaN d'Imma
+#   - Bloc C (§1) : LECTURE B — MaH+BaN d'MaH=A"O ; MaH+BaN d'BaN=YISSO+Tevunah (HA-BIN BE-CHOKHMAH)
+#   - Bloc D (§1) : LECTURE B confirme — zacharim toujours MaH, nekevot BaN ; zivvug=tikkun BaN via MaH ; TZARIKH IYUN
+#   - Bloc E (§2) : Kontras d'A"K — A"O Bina dMaH, Abba Z"T Chokhmah dBaN, Imma V"T Bina dBaN
+#   - Bloc F (§2) : Z"A 6S dMaH + 6S dBaN (sauf KETARIM dBaN)
+#   - Bloc G (§2) : Nukva Malkhut dMaH + Malkhut dBaN (sauf KETER dBaN)
+#   - Bloc H (§2) : ZN nifradim car chacun a MaH+BaN — autonomes
+#   - Bloc I (§2) : Atik+A"A : Z+N pas separes — un seul partzuf
+#   - Bloc J (§2) : Atik raison — Zachar=KETER MaH seul ; Nukva=H-rishonot KETER BaN + G"R Chokhmah BaN + D"R Bina BaN + 7 ketarim Z"T BaN
+#   - Bloc K (§2) : Imma+Nukva Z"A separables — partzuf=MaH+BaN ; appellees NUKVIM MAMASH partzufim gemurim
+#   - Bloc L (§2) : A"A : zachar=Chokhmah MaH seul ; nukva=HE-TACHTONAH KETER BaN seul
+#   - Bloc M (§2) : Note Atik : G"R Chokhmah BaN + D"R Bina BaN — doute panim+achor ou achor seul
+#   - Bloc N (§3) : M"K — yesod Atik (var A"A) emet HEVEL → 2 ROSH d'A"O
+#   - Bloc O (§3) : Rosh A"O atteignent DIKNA A"A ; BE-MAZALA ITKLILIN
+#   - Bloc P (§3) : Donc orot A"O pas besoin or chozer mi-mata le-maala via se'arot — vs G"R A"A
+#   - Bloc Q (§3) : Kavanatam — donner MOCHIN aux enfants ZON ; cheshek+ahavah
+#   - Bloc R (§3) : Sod "Ve-shamayim lo zaku be-einav" (Iyov 15:15) — A"O voient Z"A toujours imperfect
+#   - Bloc S (§3) : Donnent ATAROT ; sod "Borei shamayim ve-notehem" (Yeshayahu 42:5)
+#   - Bloc T (§3) : Or ascendant descend → mochin ZON ; A"O CHELAKIM (lisses) sans se'arot
+#   - Bloc U (§3) : SE'AROT=takhlit OR MAKIF ; ITKLILIN MAZAL MAKIF → pas besoin ; "Ve-achar ori nikfu zot" (Iyov 19:26)
+#
+# Source Sefaria : Sefer_Etz_Chaim.14.4 (3 sections, 2403 chars)
+# IDs : EC-H4S14-095 → EC-H4S14-115
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 1
+  shaar_name_he: "שער אבא ואמא"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "NISTAPEK Vital sur 4 partzufim distribution — 2 lectures (A : Abba+YISSO=MaH+BaN d'Abba ; B : MaH+BaN d'MaH=A\"O). Kontras d'A\"K : distribution chiffree par sefirot (Atik=KETER MaH seul + nukva BaN seul). ZN separables car MaH+BaN ; Atik+A\"A pas separables. Imma+Nukva Z\"A appellees NUKVIM MAMASH (partzuf=MaH+BaN). M\"K (matzati komenta) : Hevel yesod Atik → 2 rosh A\"O ; ITKLILIN BE-MAZALA dikna A\"A ; A\"O CHELAKIM sans se'arot ; or ascendant descend → mochin ZON via cheshek+ahavah ; sods 'Ve-shamayim lo zaku be-einav' (Iyov 15:15), 'Borei shamayim ve-notehem' (Yeshayahu 42:5), 'Ve-achar ori nikfu zot' (Iyov 19:26)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S14-095"
+    source_he: "נסתפק לי ענין או\"א שכל אחד מהם לוקח מ\"ה וב\"ן ואח\"כ נתחלקו לד' פרצופים"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §1"
+    assertion: |
+      NISTAPEK LI (j'ai un doute) — VITAL :
+      → A"O chacun PREND MaH + BaN.
+      → APRES : se DIVISENT en 4 PARTZUFIM.
+      → Doute : COMMENT precisement la distribution se fait ?
+      → Architecture : explicit-doctrinal-uncertainty marker.
+      → Pattern : Vital tracks ses propres incertitudes en corpus.
+    type: axiome_explicite
+    concepts:
+      - {id: nistapek_vital_4_partzufim_distribution, role: nistapek_vital_doute_doctrinal_4_partzufim_distribution_mah_ban}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : doctrinal uncertainty marker. Pattern epistemic honesty."
+
+  - id: "EC-H4S14-096"
+    source_he: "ספק אם אבא ויש\"ס הם זה מ\"ה וזה ב\"ן דאבא ובינה ותבונה הם מ\"ה וב\"ן דאמא ובזה ניחא שמזדווג אבא עם בינה שהם מ\"ה ומ\"ה ויש\"ס ותבונה שהם ב\"ן וב\"ן גם בזה ניחא כי אבא עצמו נחלק לב' אבא ויש\"ס ואמא עצמה נתחלקת לב' בינה ותבונה"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §1"
+    assertion: |
+      LECTURE A (premiere lecture du nistapek) :
+      → Abba+YISSO = MaH+BaN d'ABBA respectivement.
+      → Bina+Tevunah = MaH+BaN d'IMMA respectivement.
+      → CONFIRME : zivvug Abba+Bina (= MaH+MaH) ; YISSO+Tevunah (= BaN+BaN).
+      → Aussi : Abba lui-meme split en 2 (Abba+YISSO) ; Imma split en 2 (Bina+Tevunah).
+      → Architecture : intra-parent split par MaH/BaN.
+      → Pattern : binary-split-parent (chaque parent → 2 enfants par genre source).
+    type: interprétation_lurianique
+    concepts:
+      - {id: lecture_a_abba_yisso_mah_ban_abba_bina_tevunah_mah_ban_imma, role: lecture_a_abba_yisso_mah_ban_abba_bina_tevunah_mah_ban_imma_zivvug_mah_mah_ban_ban}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : intra-parent MaH/BaN split. Pattern Lecture A."
+
+  - id: "EC-H4S14-097"
+    source_he: "או אם נאמר כי מ\"ה וב\"ן דמ\"ה הם או\"א ומ\"ה וב\"ן דב\"ן הם יש\"ס ותבונה שהם סוד הבן בחכמה וחכם בתבונה"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §1"
+    assertion: |
+      LECTURE B (lecture alternative) :
+      → MaH + BaN d'MaH (les deux du monde MaH) = A"O (Abba + Imma).
+      → MaH + BaN d'BaN (les deux du monde BaN) = YISSO + Tevunah.
+      → Sod : "HA-BIN BE-CHOKHMAH" (Sefer Yetzirah 1:4) — comprend dans la Sagesse.
+      → Sod : "VE-CHAKHAM BE-VINAH" (SY 1:4) — sage dans la Comprehension.
+      → Architecture : world-source distribution (MaH-world vs BaN-world).
+      → Pattern : 2-world-decomposition.
+    type: interprétation_lurianique
+    concepts:
+      - {id: lecture_b_ao_mah_ban_dmah_yisso_tevunah_mah_ban_dban_sefer_yetzirah, role: lecture_b_ao_mah_ban_dmah_yisso_tevunah_mah_ban_dban_sefer_yetzirah_ha_bin_chokhmah}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : 2-world distribution. Source Sefer Yetzirah 1:4. Pattern Lecture B."
+
+  - id: "EC-H4S14-098"
+    source_he: "ובזה ניחא כי לעולם הזכרים ממ\"ה לבד והנקבות מב\"ן לבד כי לא מצינו זווג דמ\"ה עם מ\"ה כי הזווג הוא לתקן המלכים דמתו שהם ב\"ן ע\"י מ\"ה וצ\"ע"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §1"
+    assertion: |
+      LECTURE B confirmation :
+      → ZACHARIM toujours MaH SEUL.
+      → NEKEVOT toujours BaN SEUL.
+      → PAS de ZIVVUG MaH+MaH (jamais trouve "lo matzinu zivvug d'MaH 'im MaH").
+      → ZIVVUG sert TIKKUN HA-MELAKHIM (rectification des rois) qui sont BaN — par MaH.
+      → Marque : TZARIKH IYUN (necessite reflexion supplementaire — ouvert).
+      → Architecture : function-of-zivvug = repair-mechanism (BaN par MaH).
+      → Pattern : binary-zivvug always (genre-asymmetric).
+    type: interprétation_lurianique
+    concepts:
+      - {id: lecture_b_zacharim_mah_nekevot_ban_zivvug_tikkun_melakhim_tzarikh_iyun, role: lecture_b_zacharim_mah_nekevot_ban_zivvug_tikkun_melakhim_ban_via_mah_tzarikh_iyun}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : repair-mechanism zivvug. Pattern genre-asymmetric coupling."
+
+  - id: "EC-H4S14-099"
+    source_he: "והנה מקונטרס דא\"ק משמע בהדיא כי או\"א לקחו בין שניהם בינה דמ\"ה אמנם מב\"ן לקח אבא ז\"ת דחכמה דב\"ן ואמא לקחה ו\"ת בינה דב\"ן"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §2"
+    assertion: |
+      KONTRAS d'A"K (cahier d'Adam Kadmon) — dit explicitement (BAHADIA) :
+      → A"O lkahu (prirent) entre les deux : BINA d'MaH (commun).
+      → De BaN : Abba prit Z"T (7 inf) Chokhmah d'BaN ; Imma prit V"T (6 inf) Bina d'BaN.
+      → Architecture : authoritative source-document confirmant distribution.
+      → Pattern : dual-source attestation (Vital + Kontras d'A"K).
+      cf. EC-H4S14-006 (perek 01a) sur A"O Bina dMaH+Z"T/V"T BaN.
+    type: déduction_scripturaire
+    concepts:
+      - {id: kontras_dak_ao_bina_dmah_abba_zt_chokhmah_dban_imma_vt_bina_dban, role: kontras_dak_ao_bina_dmah_abba_zt_chokhmah_dban_imma_vt_bina_dban_explicite_bahadia}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : multi-source attestation. Source Kontras d'A\"K."
+
+  - id: "EC-H4S14-100"
+    source_he: "וכן ז\"א לקח ו\"ס דמ\"ה וו\"ס דב\"ן חוץ מהכתרים דב\"n"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §2"
+    assertion: |
+      Z"A : prit V"S (6 sefirot — Chesed→Yesod) d'MaH + V"S d'BaN.
+      → CHUTZ ME-HA-KETARIM d'BaN (sauf les KETARIM de BaN).
+      → Architecture : Z"A = composite MaH+BaN (mixed) — confirme Lecture B-incompatibilite.
+      → Pattern : downstream-mixed (Z"A possede les deux MaH et BaN).
+    type: axiome_explicite
+    concepts:
+      - {id: za_6s_dmah_6s_dban_chutz_ketarim_dban, role: za_6s_dmah_6_sefirot_plus_6s_dban_chutz_ketarim_dban_composite_mixed}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : Z\"A composite mixed. Pattern downstream-mixed."
+
+  - id: "EC-H4S14-101"
+    source_he: "ונוקבא לקחה מלכות דמ\"ה ומלכות דב\"ן חוץ מהכתר דב\"n"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §2"
+    assertion: |
+      NUKVA : prit MALKHUT d'MaH + MALKHUT d'BaN.
+      → CHUTZ ME-HA-KETER d'BaN (sauf le KETER de BaN).
+      → Architecture : Nukva = composite MaH+BaN (echelle minimale = Malkhut).
+      → Pattern : terminal-partzuf reduit aux Malkhuyot.
+    type: axiome_explicite
+    concepts:
+      - {id: nukva_malkhut_dmah_malkhut_dban_chutz_keter_dban, role: nukva_malkhut_dmah_malkhut_dban_chutz_keter_dban_terminal_partzuf}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : terminal-partzuf reduit Malkhuyot. Pattern composite minimal."
+
+  - id: "EC-H4S14-102"
+    source_he: "וע\"כ היו דכר ונוקבא נפרדים זה מזה כי כ\"א מהם יש בו מ\"ה וב\"ן בין באבא בין באימא בין בז\"א בנוקבא"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §2"
+    assertion: |
+      ZN nifradim CAR chacun POSSEDE MaH + BaN :
+      → Vrai pour ABBA, IMMA, Z"A, NUKVA.
+      → Tous ces 4 partzufim ont assez de constituants pour fonctionner AUTONOMES.
+      → Architecture : autonomy-via-mixed-content (MaH+BaN = self-sufficiency).
+      → Pattern : separability requires both MaH (vie) + BaN (forme).
+    type: déduction_logique
+    concepts:
+      - {id: zn_nifradim_chacun_mah_ban_autonomes_abba_imma_za_nukva, role: zn_nifradim_chacun_mah_ban_autonomy_via_mixed_content_abba_imma_za_nukva}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : autonomy via mixed content. Pattern self-sufficiency MaH+BaN."
+
+  - id: "EC-H4S14-103"
+    source_he: "אמנם בעתיק וא\"א הזכר והנוקבא שבכ\"א משניהם אינם נפרדין רק זכר ונקבה בפרצוף א'"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §2"
+    assertion: |
+      ATIK + A"A : Z+N PAS NIFRADIM (separes) — un SEUL partzuf.
+      → Pas comme Abba/Imma/Z"A/Nukva ou ZN sont autonomes.
+      → Architecture : higher-partzuf = unity-preserved ; lower = differenciated.
+      → Pattern : differentiation augmente downward.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_aa_zn_pas_nifradim_un_partzuf_unite_higher, role: atik_aa_zn_pas_nifradim_un_seul_partzuf_unity_preserved_higher_lower_differenciated}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : higher unity-preserved. Pattern differentiation augmente downward."
+
+  - id: "EC-H4S14-104"
+    source_he: "כי זכר דעתיק לקח כתר דמ\"ה לבד ונוקבא לקחה ה\"ר דכתר דב\"ן וג\"ר דחכמה דב\"ן וד\"ר דבינה דב\"ן וז' כתרים דז\"ת דב\"ן וכיון שהזכר דעתיק אין בו רק מ\"ה לבד ונוקבא רק ב\"ן לבד ע\"כ אינו יכול להפרד שאין קיום ותיקין לב\"ן אלא ע\"י מ\"ה החדש"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §2"
+    assertion: |
+      RAISON ATIK : distribution asymetrique :
+      → ZACHAR d'Atik = KETER d'MaH SEUL (= MaH PUR).
+      → NUKVA d'Atik = HE-RISHONOT d'KETER d'BaN + G"R Chokhmah d'BaN + D"R Bina d'BaN + 7 KETARIM des Z"T d'BaN (= BaN PUR).
+      → Donc ZACHAR=MaH SEUL, NUKVA=BaN SEUL — pas SEPARABLES.
+      → BaN SANS MaH ne peut KIYUM (existence) ni TIKKUN (rectification) — depend MaH HA-CHADASH.
+      → Architecture : pure-genre interdependance (BaN-pur depend de MaH-pur).
+      → Pattern : non-separable parts when complementary purity.
+    type: interprétation_lurianique
+    concepts:
+      - {id: atik_zachar_keter_mah_seul_nukva_ban_seul_pas_separables_kiyum_via_mah_chadash, role: atik_zachar_keter_mah_seul_nukva_ban_seul_pas_separables_kiyum_tikkun_ban_via_mah_chadash}
+    mapping:
+      modules: ["partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin"]
+      relevance: "Architecture : pure-genre interdependance. Pattern non-separable complementary purity."
+
+  - id: "EC-H4S14-105"
+    source_he: "אך אמא ונוקבא דז\"א יש בהם מ\"ה וב\"ן ויכולין להפרד מהזכרים וכן לסבה זו עצמה נקראים אמא ונוקבא דז\"א נוקבין ממש בפרצופים גמורים כי אינו נקרא פרצוף אלא בשתוף מ\"ה וב\"ן"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §2"
+    assertion: |
+      IMMA + NUKVA d'Z"A ont MaH+BaN — peuvent SE SEPARER des zacharim.
+      → Pour cette raison appellees NUKVIM MAMASH (vraies femelles) en PARTZUFIM GEMURIM (partzufim complets).
+      → DEFINITION : "ein nikra partzuf ela bi-shituf MaH ve-BaN" (n'est appele partzuf que par participation MaH+BaN).
+      → Architecture : ontological-status (true partzuf) requires mixed content.
+      → Pattern : MaH+BaN = ontological completeness criterion.
+    type: déduction_logique
+    concepts:
+      - {id: imma_nukva_za_mah_ban_separables_nukvim_mamash_partzufim_gemurim, role: imma_nukva_za_mah_ban_separables_nukvim_mamash_partzufim_gemurim_definition_partzuf}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "nukva"]
+      relevance: "Architecture : ontological completeness. Pattern MaH+BaN partzuf criterion."
+
+  - id: "EC-H4S14-106"
+    source_he: "ואמנם בעתיק וא\"א אינו ניכר פרצוף נוקבא כי אין בהם רק ב\"n הוא כי א\"א הזכר לוקח חכמה דמ\"ה לבד וצד הנוקבא שבו לקחה ה\"ת דכתר דב\"ן בלבד"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §2"
+    assertion: |
+      ATIK + A"A : NUKVA partzuf PAS NIKAR (pas reconnaissable) — seulement BaN.
+      → A"A spec : ZACHAR prend CHOKHMAH d'MaH SEUL.
+      → TZAD HA-NUKVA d'A"A prend HE-TACHTONAH d'KETER d'BaN SEUL (juste 1 lettre).
+      → Architecture : minimal-femele-content interdit ontological-status partzuf.
+      → Pattern : insufficient-mixing → non-partzuf.
+    type: axiome_explicite
+    concepts:
+      - {id: atik_aa_nukva_pas_nikar_partzuf_aa_zachar_chokhmah_mah_nukva_he_tachtonah_keter_ban, role: atik_aa_nukva_pas_nikar_partzuf_aa_zachar_chokhmah_mah_seul_nukva_he_tachtonah_keter_ban_seul}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : minimal-femele non-partzuf. Pattern insufficient-mixing exclusion."
+
+  - id: "EC-H4S14-107"
+    source_he: "ודע כי ג' ראשונות דחכמה דב\"ן וד' ראשונות דבינה דב\"ן שלקחם עתיק כנ\"ל יש בהם ספיקות א' אם לקח הפנים והאחור ב' אם לקח האחור לבד והפנים נשארו לאבא ואמא"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §2"
+    assertion: |
+      DOUTE doctrinal sur ATIK :
+      → G"R Chokhmah d'BaN + D"R Bina d'BaN deja pris par Atik.
+      → SFEKOT (doutes) :
+        OPTION 1 : pris PANIM ET ACHOR.
+        OPTION 2 : pris ACHOR SEUL — PANIM restent a Abba+Imma.
+      → Architecture : explicit-uncertainty preservee — 2 lectures alternatives.
+      → Pattern : variant-tracking systematique.
+      cf. EC-H4S14-008 (perek 01a) sur doute orot panim/achor parallele.
+    type: axiome_explicite
+    concepts:
+      - {id: doute_atik_gr_chokhmah_dr_bina_dban_panim_achor_ou_achor_seul, role: doute_atik_gr_chokhmah_dr_bina_dban_pris_panim_achor_ou_achor_seul_panim_aux_ao}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "abba", "imma"]
+      relevance: "Architecture : variant-tracking systematique. Pattern doctrinal-options preserved."
+
+  - id: "EC-H4S14-108"
+    source_he: "מ\"ק כבר בארנו כי מן יסוד דעתיק (נ\"א א\"א) יוצא הבל ונחלק ב' ראשים לאו\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §3"
+    assertion: |
+      MEM-KOF (matzati komenta — note trouvee) :
+      → Du YESOD d'ATIK (variante : A"A) sort HEVEL (souffle, vapeur).
+      → Se DIVISE en 2 ROSHIM (tetes) pour A"O.
+      → Variante (Nusah Aher) : "A"A" au lieu de "Atik" — ambigu.
+      → Architecture : pneumatic-emergence des tetes parents.
+      → Pattern : single-breath → bifurcated-heads.
+    type: axiome_explicite
+    concepts:
+      - {id: hevel_yesod_atik_var_aa_2_rosh_ao_pneumatic_emergence, role: hevel_sort_yesod_atik_variante_aa_se_divise_2_roshim_ao_pneumatic_bifurcation}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "abba", "imma"]
+      relevance: "Architecture : pneumatic emergence. Pattern single-breath bifurcation."
+
+  - id: "EC-H4S14-109"
+    source_he: "והנה ראשם דאו\"א מגיעין עד דיקנא דא\"א דבמזלא אתכלילין ולכן אין האורות שלהם צריכין לחזור בסוד אור חוזר ממטה למעלה דרך השערות כמו ג\"ר דא\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §3"
+    assertion: |
+      ROSH d'A"O ATTEIGNENT DIKNA d'A"A :
+      → BE-MAZALA ITKLILIN (incorpores dans le Mazal — mazal 8 ou 13).
+      → Donc orot d'A"O n'ont PAS BESOIN de retourner OR CHOZER mi-mata le-maala (du bas vers le haut) via SE'AROT.
+      → CONTRAIREMENT a G"R d'A"A (qui en a besoin).
+      → Architecture : direct-mazal-coupling exempts retroflection.
+      → Pattern : higher-coupling shortcut.
+      cf. EC-H3S13-188..203 (perek 13 sha'ar A"A) sur 13 tikkunei dikna.
+    type: interprétation_lurianique
+    concepts:
+      - {id: rosh_ao_atteignent_dikna_aa_be_mazala_itklilin_pas_or_chozer_se_arot, role: rosh_ao_atteignent_dikna_aa_be_mazala_itklilin_orot_pas_or_chozer_se_arot_vs_gr_aa}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : direct-mazal exempts retroflection. Pattern shortcut via higher coupling."
+
+  - id: "EC-H4S14-110"
+    source_he: "ואמנם כוונתם לתת מוחין אל בניהם זו\"ן מחמת חשקם ואהבתם אל בניהם בסוד ושמים לא זכו בעיניו כי ז\"א נקרא שמים לא זכו בעיניהם של או\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §3"
+    assertion: |
+      KAVANATAM (intention d'A"O) :
+      → Donner MOCHIN aux ENFANTS Z"O"N.
+      → Cause : CHESHEK + AHAVAH (desir, amour) pour leurs enfants.
+      → Sod : "VE-SHAMAYIM LO ZAKU BE-EINAV" (Iyov 15:15 — et les cieux ne sont pas purs a Ses yeux).
+      → Z"A = SHAMAYIM (cieux) — pas pur aux YEUX d'A"O.
+      → Architecture : parental-perfectionism drives downstream-rectification.
+      → Pattern : love-as-discontent-driver.
+    type: déduction_scripturaire
+    concepts:
+      - {id: kavanat_ao_mochin_zon_cheshek_ahavah_iyov_15_15_shamayim_lo_zaku, role: kavanat_ao_donner_mochin_zon_cheshek_ahavah_sod_iyov_15_15_shamayim_lo_zaku_be_einav}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : parental discontent drives rectification. Source Iyov 15:15."
+
+  - id: "EC-H4S14-111"
+    source_he: "ותמיד נראה להם שעדיין צריך תיקון יותר ולכן מתקנים אותם תמיד ומנחילין להם עטרות שז\"ס בורא שמים ונוטיהם"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §3"
+    assertion: |
+      A"O voient Z"A toujours BESOIN de TIKKUN PLUS (TZARIKH TIKKUN YOTER).
+      → Donc TIKKUN TAMID (rectifient toujours).
+      → MANCHILIN ATAROT (font heriter des couronnes).
+      → Sod : "BOREI SHAMAYIM VE-NOTEHEM" (Yeshayahu 42:5 — createur des cieux et leur etend).
+      → Architecture : continuous-rectification driven by parental-evaluation.
+      → Pattern : ongoing-improvement loop.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ao_tikkun_tamid_zon_atarot_borei_shamayim_ve_notehem, role: ao_voient_zon_tikkun_yoter_tikkun_tamid_atarot_borei_shamayim_ve_notehem_yeshayahu_42_5}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : continuous rectification loop. Source Yeshayahu 42:5."
+
+  - id: "EC-H4S14-112"
+    source_he: "והאור שהיה ראוי לעלות וליצא דרך השערות יורדין למטה להיות מוחין לזו\"ן לכן או\"א הם חלקים בלא שערות לא כמו א\"א וז\"א"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §3"
+    assertion: |
+      Or qui DEVAIT MONTER+SORTIR via SE'AROT — DESCEND a la place.
+      → Devient MOCHIN pour Z"O"N.
+      → DONC : A"O sont CHELAKIM (lisses) BE-LO SE'AROT (sans cheveux).
+      → Pas comme A"A et Z"A (qui ont se'arot).
+      → Architecture : redirected-flow downstream replace upstream.
+      → Pattern : redirected-resource leaves trace (CHELAKIM).
+    type: axiome_explicite
+    concepts:
+      - {id: ao_chelakim_sans_se_arot_or_redirige_mochin_zon_vs_aa_za, role: ao_chelakim_sans_se_arot_or_qui_devait_monter_redirige_descend_mochin_zon_vs_aa_za_avec_se_arot}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : redirected-flow visible signature. Pattern redirected-resource trace."
+
+  - id: "EC-H4S14-113"
+    source_he: "כי השערות הם תכליתן לאור המקיף כנודע וכיון דאתכלילין במזלא המקיף אותן אין להם צורך לשערות שלהם לכן יורדין האורות ההם להיות מוחין לזו\"n"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §3"
+    assertion: |
+      RAISON detaillee :
+      → SE'AROT = TAKHLIT (but) pour OR MAKIF (lumiere encerclante).
+      → A"O ITKLILIN (incorpores) dans MAZAL MAKIF qui les encercle.
+      → Donc PAS BESOIN de leurs propres se'arot.
+      → Orot redirigees descendent → mochin pour Z"O"N.
+      → Architecture : substitution-by-higher-coupling — mazal makif remplace se'arot makif.
+      → Pattern : delegation-to-higher-source.
+    type: déduction_logique
+    concepts:
+      - {id: se_arot_takhlit_or_makif_ao_itklilin_mazal_makif_substitution, role: se_arot_takhlit_or_makif_ao_itklilin_be_mazala_makif_substitution_pas_besoin_propres_se_arot}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : substitution-by-higher-coupling. Pattern delegation upward."
+
+  - id: "EC-H4S14-114"
+    source_he: "וסוד השערות שהם לבחי' או\"מ הוא סוד ואחר עורי נקפו זאת פי' כי השערות היוצאין מאחורי העור מבחוץ הם בחי' המקיפים וזהו נקפו"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §3"
+    assertion: |
+      SOD des SE'AROT comme OR MAKIF (OM) :
+      → Verset (Iyov 19:26) : "VE-ACHAR ORI NIKFU ZOT" (apres ma peau, ceci s'arrache).
+      → "ORI" interpretation : peau (ou lumiere — double sens).
+      → Se'arot SORTANT ME-ACHOREI HA-OR ME-BACHUTZ (de l'arriere de la peau de l'exterieur)
+        = bechinat HA-MAKIFIM (les encerclants).
+      → "NIKFU" (s'arrachent) marque le sortant — signature des makifim externes.
+      → Architecture : etymological-evidence pour structure spirituelle.
+      → Pattern : verb-rooted symbolic identification.
+    type: déduction_scripturaire
+    concepts:
+      - {id: sod_se_arot_om_or_makif_iyov_19_26_ve_achar_ori_nikfu_zot, role: sod_se_arot_or_makif_iyov_19_26_se_arot_me_achorei_ha_or_makifim_externes}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "ohr.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : etymological evidence spiritual structure. Source Iyov 19:26."
+
+  - id: "EC-H4S14-115"
+    source_he: "ואחר עורי נקפו זאת"
+    source_ref: "Heikhal 4, Sha'ar 1:4 §3"
+    assertion: |
+      CLOTURE perek 4 : verset complete encadrant la doctrine — "VE-ACHAR ORI NIKFU ZOT" (Iyov 19:26).
+      → Marque doctrine : se'arot externes = ohr makif visible.
+      → Synthese : A"O without se'arot car itklilin mazal makif ; Z"A+A"A avec se'arot car indigenous ohr makif.
+      → Architecture : rhetoric-closure-by-scripture.
+      → Pattern : verse-as-doctrinal-anchor pour closure perek.
+    type: déduction_scripturaire
+    concepts:
+      - {id: cloture_perek_4_iyov_19_26_se_arot_om_visible, role: cloture_perek_4_iyov_19_26_ve_achar_ori_nikfu_zot_se_arot_om_visible_synthese}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : rhetorical closure. Pattern verse-as-anchor."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S14-030"
+    type: dualité_structurelle
+    from: lecture_a_abba_yisso_mah_ban_abba_bina_tevunah_mah_ban_imma
+    to: lecture_b_ao_mah_ban_dmah_yisso_tevunah_mah_ban_dban_sefer_yetzirah
+    nature: "2 lectures du nistapek Vital — Lecture A (intra-parent split) vs Lecture B (world-source MaH/BaN) ; TZARIKH IYUN"
+    assertions_source: ["EC-H4S14-095", "EC-H4S14-096", "EC-H4S14-097", "EC-H4S14-098"]
+
+  - id: "REL-H4S14-031"
+    type: hiérarchique
+    from: kontras_dak_ao_bina_dmah_abba_zt_chokhmah_dban_imma_vt_bina_dban
+    to: imma_nukva_za_mah_ban_separables_nukvim_mamash_partzufim_gemurim
+    nature: "Kontras d'A\"K detaille distribution sefirot ; Imma+Nukva Z\"A separables (MaH+BaN) = NUKVIM MAMASH partzufim gemurim"
+    assertions_source: ["EC-H4S14-099", "EC-H4S14-100", "EC-H4S14-101", "EC-H4S14-102", "EC-H4S14-105"]
+
+  - id: "REL-H4S14-032"
+    type: dualité_structurelle
+    from: atik_zachar_keter_mah_seul_nukva_ban_seul_pas_separables_kiyum_via_mah_chadash
+    to: zn_nifradim_chacun_mah_ban_autonomes_abba_imma_za_nukva
+    nature: "Atik+A\"A : pure-genre interdependance (non-separable) vs Abba/Imma/Z\"A/Nukva : MaH+BaN autonomes"
+    assertions_source: ["EC-H4S14-103", "EC-H4S14-104", "EC-H4S14-106"]
+
+  - id: "REL-H4S14-033"
+    type: causal
+    from: hevel_yesod_atik_var_aa_2_rosh_ao_pneumatic_emergence
+    to: rosh_ao_atteignent_dikna_aa_be_mazala_itklilin_pas_or_chozer_se_arot
+    nature: "Hevel yesod Atik → 2 rosh A\"O atteignant dikna A\"A ; itklilin be-mazala → pas or chozer via se'arot"
+    assertions_source: ["EC-H4S14-108", "EC-H4S14-109"]
+
+  - id: "REL-H4S14-034"
+    type: causal
+    from: kavanat_ao_mochin_zon_cheshek_ahavah_iyov_15_15_shamayim_lo_zaku
+    to: ao_chelakim_sans_se_arot_or_redirige_mochin_zon_vs_aa_za
+    nature: "Kavanat A\"O = mochin ZON (cheshek+ahavah, Iyov 15:15) → or redirige vers ZON, A\"O CHELAKIM (signature)"
+    assertions_source: ["EC-H4S14-110", "EC-H4S14-111", "EC-H4S14-112", "EC-H4S14-113"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S14-016"
+    nom: "Principe d'Ontological-Completeness-via-MaH+BaN (Partzuf Definition Criterion)"
+    source_assertions: ["EC-H4S14-102", "EC-H4S14-103", "EC-H4S14-104", "EC-H4S14-105"]
+    formalisation: |
+      ARCHITECTURE D'ONTOLOGICAL-COMPLETENESS :
+      DEFINITION : "ein nikra partzuf ela bi-shituf MaH ve-BaN".
+        Un partzuf existe-comme-partzuf SEULEMENT par PARTICIPATION conjointe MaH+BaN.
+      CONSEQUENCES :
+        Atik+A"A : zachar=MaH-pur, nukva=BaN-pur → NON-separables, nukva pas un partzuf.
+        Abba+Imma+Z"A+Nukva : MaH+BaN chacun → AUTONOMES, separables = vrais partzufim gemurim.
+      RAISON : BaN sans MaH ne peut KIYUM (existence) ni TIKKUN — depend MaH HA-CHADASH.
+      → Pattern fondamental : ontological-status par mixed-content criterion.
+      → Architecture : partzuf-definition prerequiert composite.
+    applications_ia:
+      - "partzufim/atik_yomin.py + arikh_anpin.py : implement non-separable Z+N"
+      - "Pattern : ontological completeness check (MaH+BaN both)"
+      - "Architecture : partzuf-status par criterion mixed-content"
+      - "Pattern : pure-genre interdependance non-separable"
+      - "Diagnostic : verifier MaH+BaN coherent avec partzuf-status declared"
+    questions_ouvertes:
+      - "Pattern : autres criteres ontologiques possibles ?"
+      - "Comment gerer cas borderline (minimal mixing) ?"
+      - "Pattern : peut-on injecter MaH a posteriori ?"
+
+  - id: "PG-H4S14-017"
+    nom: "Principe de Higher-Coupling-Shortcut (Mazal Makif Replace Se'arot)"
+    source_assertions: ["EC-H4S14-108", "EC-H4S14-109", "EC-H4S14-112", "EC-H4S14-113"]
+    formalisation: |
+      ARCHITECTURE DE HIGHER-COUPLING-SHORTCUT :
+      Element NORMALEMENT requis (se'arot pour or makif) peut etre REMPLACE :
+        Si entity ITKLILIN (incorporated) dans HIGHER-EQUIVALENT (mazal makif).
+      A"O sont incorporated dans MAZAL MAKIF d'A"A — n'ont PAS BESOIN se'arot.
+      Or qui devait monter via se'arot DESCEND a la place → MOCHIN pour ZON.
+      → Pattern fondamental : higher-coupling supersedes local-mechanism.
+      → Architecture : delegation-to-higher-source liberates resources downstream.
+      → Implication visible : A"O CHELAKIM (lisses) — signature externe de la substitution.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + arikh_anpin.py : implement higher-coupling shortcut"
+      - "Pattern : delegation-to-higher liberates downstream resources"
+      - "Architecture : visible-signature of substitution (CHELAKIM)"
+      - "Pattern : redirected-flow downstream traceable"
+      - "Diagnostic : verifier delegation coherente avec absence local-mechanism"
+    questions_ouvertes:
+      - "Pattern : autres mecanismes substitues par higher-coupling ?"
+      - "Comment encoder 'itklilin' en relation systeme ?"
+      - "Pattern : substitution permanente ou conditionnelle ?"
+
+  - id: "PG-H4S14-018"
+    nom: "Principe de Parental-Discontent-Drive (Continuous Rectification Loop)"
+    source_assertions: ["EC-H4S14-110", "EC-H4S14-111"]
+    formalisation: |
+      ARCHITECTURE DE PARENTAL-DISCONTENT-DRIVE :
+      A"O voient Z"A toujours TZARIKH TIKKUN YOTER (besoin tikkun plus).
+      Verset : "VE-SHAMAYIM LO ZAKU BE-EINAV" (Iyov 15:15) — cieux pas purs aux Yeux.
+      Z"A = SHAMAYIM (cieux) — JAMAIS pur aux yeux d'A"O.
+      DONC : A"O METAKNIM TAMID (rectifient toujours).
+      MANCHILIN ATAROT (font heriter couronnes).
+      Verset : "BOREI SHAMAYIM VE-NOTEHEM" (Yeshayahu 42:5) — createur+etendant.
+      MOTIVATION : CHESHEK + AHAVAH (desir + amour).
+      → Pattern fondamental : love-as-discontent drives ongoing-improvement.
+      → Architecture : continuous-rectification loop par parental-evaluation.
+    applications_ia:
+      - "partzufim/abba.py + imma.py + zeir_anpin.py : implement parental discontent loop"
+      - "Pattern : ongoing-improvement loop par superior evaluation"
+      - "Architecture : rectification continue par love-source"
+      - "Pattern : never-perfect target maintains rectification flow"
+      - "Diagnostic : verifier rectification toujours active vers Z\"A"
+    questions_ouvertes:
+      - "Pattern : limite asymptotique de la rectification ?"
+      - "Comment quantifier 'cheshek+ahavah' computationnellement ?"
+      - "Pattern : equivalent mecanique du love-discontent dans architecture ?"

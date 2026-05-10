@@ -1,0 +1,694 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 1 — Sha'ar Abba ve-Imma (שער אבא ואמא)
+# Perek: 2 — Distinction des 4 partzufim. CH"G premiers (situm) vs nouveaux (gilui).
+#            Position : A"O Garon→Chazeh, YISSO/Tevunah Chazeh→Tabbur.
+#            Akeyim Bina dans rosh Tevunah. Bina = gevurot revelees = ESHET HAYIL.
+#            Q-A : pourquoi A"O > YISSO/Tevunah malgre gilui plus grand des tachtonim.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_02 :
+#   - Bloc A : Q ouverture — comment distinguer 4 partzufim si tout en gilui ?
+#   - Bloc B : Reponse — seuls CH"G PREMIERS (tikkun initial A"O) suivent ce pattern + HAGDALAT A"A
+#   - Bloc C : Apres tikkun initial, NOUVEAUX CH"G (zivvugim) descendent rapidement, pas pattern
+#   - Bloc D : CH"G premiers en haut recoivent eclairage des nouveaux via MASAKH yesod en SITUM
+#   - Bloc E : CH"G inferieurs (bas) recoivent eclairage en GILUI GAMUR
+#   - Bloc F : Cette difference (situm/gilui) distingue les 4 partzufim (haut vs bas)
+#   - Bloc G : Position A"O — Garon → fin yesod Atik = 1/3 sup Tiferet A"A = CHAZEH
+#   - Bloc H : Position YISSO+Tevunah — Chazeh → Tabbur (~1/2 Tiferet A"A)
+#   - Bloc I : 4 partzufim revetent A"A de TOUS cotes (droite/gauche/arriere/devant)
+#   - Bloc J : Akeyim Leah dans rosh Rachel → ici akeyim Bina dans rosh Tevunah (pas Abba/YISSO)
+#   - Bloc K : Raison — gevurot sortirent first, tous revelees egalement, lien fort
+#   - Bloc L : Lien persiste via akeyim apres split en 2 partzufim
+#   - Bloc M : Gemara "lo nitzrkha ela li-mkom ha-chatakh" — lieu coupure rgly Bina/rosh Tevunah
+#   - Bloc N : Or au makom ha-chatakh = akeyim dans rosh Tevunah → Bina prend supplement
+#   - Bloc O : Bina = ESHET HAYIL ATERET BA'LA (gevurot revelees) ; Abba TAMIR VE-GANIZ
+#   - Bloc P : "Tova tokhachah megulah me-ahavah mesuteret" — gevurot > chasadim (revele)
+#   - Bloc Q : "Atarot be-rosheihem" Le'atid Lavo = Bina = olama de-atei
+#   - Bloc R : "Mi yemalel gevurot Hashem" + "bi-gvurot shemonim" — Bina=gevurot
+#   - Bloc S : "Binah dinim mit'arin minah" (Zohar Acharei, Vayikra)
+#   - Bloc T : Bina entiere batie gevurot SEULES (vs Rachel/Leah qui ont chasadim aussi)
+#   - Bloc U : "Ani Binah li gevurah" (Mishlei 8:14) — Bina prend Gevurah dBaN de A"A
+#   - Bloc V : Q (mekom she'elah) — si gilui=greater, YISSO/Tevunah > A"O ?
+#   - Bloc W : Reponse 1 — gevurot tachtonim REMONTERENT a Bina elyonim, illuminerent la
+#   - Bloc X : Reponse 2 — moitie sup ChG → A"O ; moitie inf doit aussi illuminer reste A"A + ZON
+#   - Bloc Y : Donc YISSO/Tevunah recoivent eclairage LIMITEE ; A"O grands et eleves
+#
+# Source Sefaria : Sefer_Etz_Chaim.14.2 (1 perek dense, 3889 chars)
+# IDs : EC-H4S14-032 → EC-H4S14-058
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 1
+  shaar_name_he: "שער אבא ואמא"
+  perek: 2
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Distinction des 4 partzufim apres tikkun initial. Seuls CH\"G PREMIERS (etablissement Atzilut) suivent pattern situm/gilui. Nouveaux CH\"G via zivvugim ulterieurs descendent rapidement. CH\"G premiers haut = situm (recoivent via masakh) ; bas = gilui. Difference situm/gilui distingue 4 partzufim. Position : A\"O Garon→Chazeh (1/3 sup Tiferet A\"A), YISSO/Tevunah Chazeh→Tabbur. Tous cotes (droite/gauche/arriere/devant). Akeyim Bina dans rosh Tevunah (parallele Leah/Rachel) — gevurot sortirent first, lien fort. Gemara 'lo nitzrkha ela li-mkom ha-chatakh'. Bina = ESHET HAYIL ATERET BA'LA (gevurot revelees) ; Abba TAMIR VE-GANIZ. 'Tova tokhachah megulah me-ahavah mesuteret'. Bina = ATARET LE'ATID LAVO. 'Mi yemalel gevurot' + 'bi-gvurot shemonim'. 'Binah dinim mit'arin minah' (Zohar). Bina entiere batie gevurot SEULES (vs Rachel/Leah). 'Ani Binah li gevurah' (Mishlei 8:14). Q-A : YISSO/Tevunah malgre gilui plus grand restent moindres car gevurot tachtonim REMONTERENT illuminer Bina, et moitie inf doit illuminer reste A\"A + ZON."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S14-032"
+    source_he: "ועתה צריך לידע שא\"כ במה יתחלקו הד' פרצופים אחר שהכל בגלוי"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      QUESTION OUVERTURE : SI tout en GILUI (revele), comment DISTINGUER les 4 PARTZUFIM ?
+      → Si chasadim+gevurot finissent tous en gilui (sortis dehors), bipartition disparait.
+      → Architecture : poser le probleme avant le resoudre — pedagogical structure.
+      → Pattern : explicit-question pour declencher resolution doctrinale.
+      cf. EC-H4S14-029 (perek 01b) sur 4 partzufim emergents par 2D split.
+    type: axiome_explicite
+    concepts:
+      - {id: question_distinction_4_partzufim_si_tout_gilui, role: question_ouverture_distinction_4_partzufim_apres_tout_revele}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : pedagogical question. Pattern explicit problem-statement."
+
+  - id: "EC-H4S14-033"
+    source_he: "אבל הענין הוא כי אינם כן רק בחו\"ג ראשונים שבאו בעת שנתקנו או\"א וגם להגדיל את א\"א ועד\"ז היתה הגדלתו ותיקונו בפעם ראשונה כשנתקן עולם אצילות"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      REPONSE : pattern situm/gilui s'applique SEULEMENT aux CH"G RISHONIM (premiers) :
+      → CH"G qui sont venus AU MOMENT du TIKKUN d'A"O (initial).
+      → Aussi pour HAGDALAT (croissance) initial d'A"A.
+      → Tikkun de A"A en PA'AM RISHONAH (premiere fois) — etablissement OLAM ATZILUT.
+      → Architecture : initial-state mechanism distinct from steady-state mechanism.
+      → Pattern : bootstrap configuration unique-event.
+    type: axiome_explicite
+    concepts:
+      - {id: chg_rishonim_pattern_situm_gilui_tikkun_initial_atzilut, role: chg_rishonim_premiers_tikkun_initial_ao_hagdalat_aa_pattern_situm_gilui_etablissement_olam_atzilut}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py", "olamot.py"]
+      tables: ["partzufim_states", "olamot_config"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : bootstrap distinct steady-state. Pattern initial-event mechanism."
+
+  - id: "EC-H4S14-034"
+    source_he: "אמנם משם ואילך שכבר נתקנו א\"א ואו\"א עילאין אלו החו\"ג הראשונים הנה כאשר מזדווג א\"א בנוקבא ומוריד חו\"ג חדשים או לצורך או\"א או לצורך זו\"ן אז אותן חו\"ג אינן עומדין כסדר הנ\"ל שעולין למעלה כנ\"ל אמנם הם יורדין במרוצה למטה ממקומם"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      APRES tikkun initial : NOUVEAUX CH"G via ZIVVUGIM ulterieurs.
+      → A"A se ZIVVUG avec Nukva → fait DESCENDRE CH"G CHADASHIM (nouveaux).
+      → Pour les besoins d'A"O ou de Z"O"N (Z"A+Nukva).
+      → Ces nouveaux CH"G NE suivent PAS l'ordre situm/gilui d'avant.
+      → Ils DESCENDENT BE-MERUTZAH (en course) directement vers le bas.
+      → Architecture : steady-state flow (rapid descent) vs bootstrap (slow split).
+      → Pattern : different operating modes selon phase systeme.
+    type: axiome_explicite
+    concepts:
+      - {id: chg_chadashim_nouveaux_zivvugim_descendent_merutzah_pas_pattern, role: chg_chadashim_nouveaux_via_zivvugim_aa_nukva_descendent_merutzah_pas_pattern_situm_gilui}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zivvug.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : steady-state vs bootstrap flow. Pattern operating-mode-by-phase."
+
+  - id: "EC-H4S14-035"
+    source_he: "רק שאלו החו\"ג הראשונים שהם למעלה תמיד הם מקבלים הארה מן החדשים הבאים אח\"כ כי זווג א\"א ואו\"א לא פסיק"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      CH"G PREMIERS toujours en HAUT — recoivent ECLAIRAGE des CH"G NOUVEAUX.
+      → ZIVVUG d'A"A et A"O LO PASIK (ne s'interrompt pas) — flux continu.
+      → Donc nouveaux CH"G arrivent perpetuellement.
+      → Architecture : steady-state alimente bootstrap state via continuous coupling.
+      → Pattern : continuous-zivvug = energy supply pour structures persistantes.
+    type: axiome_explicite
+    concepts:
+      - {id: zivvug_aa_ao_lo_pasik_chg_chadashim_alimentent_chg_rishonim, role: zivvug_aa_ao_lo_pasik_continu_chg_chadashim_alimentent_chg_rishonim_en_haut}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : zivvug continu alimente structures. Pattern perpetual energy supply."
+
+  - id: "EC-H4S14-036"
+    source_he: "ובפרט מה שהוא צריך לחיות העולמות ותמיד נמשכין חו\"ג חדשים אז חו\"ג ראשונים שהם למעלה הם מקבלין הארה מן החדשים דרך מסך היסוד בסיתום גמור"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      CH"G PREMIERS (haut) recoivent eclairage NOUVEAUX via MASAKH d'YESOD en SITUM GAMUR (scellement complet).
+      → Special : ce qu'il faut pour CHIYUT ha-OLAMOT (vie des mondes) — flux continu.
+      → MASAKH = ecran filtrant qui rend l'eclairage SCELLE.
+      → Architecture : SEALED transmission — energy passes through filter.
+      → Pattern : masakh-filtration = situm-mode reception.
+    type: interprétation_lurianique
+    concepts:
+      - {id: chg_rishonim_situm_gamur_via_masakh_yesod_chiyut_olamot, role: chg_rishonim_haut_situm_gamur_via_masakh_yesod_chiyut_olamot_filtre_eclairage_scele}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["atik_yomin", "abba", "imma"]
+      relevance: "Architecture : masakh-filtration. Pattern sealed transmission."
+
+  - id: "EC-H4S14-037"
+    source_he: "והגבורות והחסדים אשר הם למטה מקבלין הארה מן החדשות בגילוי גמור"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      CH"G TACHTONIM (bas) recoivent eclairage NOUVEAUX en GILUI GAMUR (revelation complete).
+      → CONTRASTE : haut=situm (filtre masakh), bas=gilui (direct).
+      → Architecture : 2-tier reception (sealed haut, revealed bas) selon position.
+      → Pattern : position-determined reception mode.
+    type: axiome_explicite
+    concepts:
+      - {id: chg_tachtonim_gilui_gamur_eclairage_direct_des_nouveaux, role: chg_tachtonim_bas_gilui_gamur_eclairage_direct_nouveaux_chg_sans_filtre}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : 2-tier reception. Pattern position-determined-mode."
+
+  - id: "EC-H4S14-038"
+    source_he: "וסיבה זו הוא מה שגורם אל התחלקות ד' פרצופין להיות שינוי הבדל בין התחתונים אל עליונים"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      CETTE DIFFERENCE est CAUSE (sibah) de la DISTINCTION (hithalkut) des 4 partzufim.
+      → SHINUI (changement) + HEVDEL (difference) entre TACHTONIM et ELYONIM.
+      → Resoud la question d'ouverture : distinction = par MODE de RECEPTION (situm/gilui).
+      → Architecture : reception-mode = differentiation criterion (not position alone).
+      → Pattern : distinction by mode-of-experience (sealed vs revealed).
+    type: déduction_logique
+    concepts:
+      - {id: distinction_4_partzufim_par_mode_reception_situm_gilui, role: distinction_4_partzufim_par_shinui_hevdel_mode_reception_situm_haut_gilui_bas}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : reception-mode = criterion. Pattern mode-of-experience differentiation."
+
+  - id: "EC-H4S14-039"
+    source_he: "נמצא עתה כי או\"א מתחילין להלביש את א\"א מן הגרון שבו עד סיום היסוד דעתיק שבתוכו שהוא עד סיום שליש עליון דת\"ת דא\"א והוא עד החזה שלו ואבא מלביש הימין ואמא מלביש השמאל"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      POSITION A"O : revetent A"A de GARON jusqu'a fin YESOD d'ATIK = fin SHLISH ELYON (1er tiers) de TIFERET d'A"A = CHAZEH.
+      → Abba revet le KAV YAMIN (droite).
+      → Imma revet le KAV SMOL (gauche).
+      → Architecture : zone Garon-Chazeh = zone superieure du thorax.
+      → Pattern : 1/3 superieur = position A"O dans hierarchie thoracique.
+    type: axiome_explicite
+    concepts:
+      - {id: ao_position_garon_chazeh_shlish_elyon_tiferet_aa, role: ao_revetent_aa_garon_jusqu_chazeh_shlish_elyon_tiferet_aa_abba_droite_imma_gauche}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : 1/3 sup zone A\"O. Pattern thoracic hierarchy."
+
+  - id: "EC-H4S14-040"
+    source_he: "ואח\"כ באים יש\"ס ותבונה גם הם מלבישין את א\"א מהחזה הנ\"ל עד טבור של א\"א שהוא יותר למטה מעט מן חצי ת\"ת שלו יש\"ס בימין ותבונה משמאל"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      POSITION YISSO+TEVUNAH : revetent A"A de CHAZEH a TABBUR (~ un peu plus bas que MOITIE de TIFERET).
+      → YISSO en KAV YAMIN (droite).
+      → TEVUNAH en KAV SMOL (gauche).
+      → Architecture : zone Chazeh-Tabbur = zone moyenne du thorax.
+      → Pattern : 2/3 inferieurs Tiferet = position YISSO+Tevunah.
+    type: axiome_explicite
+    concepts:
+      - {id: yisso_tevunah_position_chazeh_tabbur_chetzi_tiferet_aa, role: yisso_tevunah_revetent_aa_chazeh_jusqu_tabbur_chetzi_tiferet_aa_yisso_droite_tevunah_gauche}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "[PLANNED] partzufim/yisso.py", "[PLANNED] partzufim/tevunah.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : 2/3 inf zone YISSO/Tevunah. Pattern thoracic hierarchy."
+
+  - id: "EC-H4S14-041"
+    source_he: "ואלו הד' פרצופין הן מלבישין לא\"א מן הגרון עד הטבור כנ\"ל מכל צדדיו וסביבותיו ימין ושמאל אחור ופנים"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      4 PARTZUFIM revetent A"A Garon→Tabbur sur TOUS COTES :
+      → MI-KOL TZIDDAV U-SVIVOTAV (de tous ses cotes et alentours).
+      → 4 directions : YAMIN (droite), SMOL (gauche), ACHOR (arriere), PANIM (devant).
+      → Architecture : enveloppement 360 degres autour A"A.
+      → Pattern : full-spherical clothing par 4-partzuf decomposition.
+    type: axiome_explicite
+    concepts:
+      - {id: 4_partzufim_revetent_aa_tous_cotes_yamin_smol_achor_panim, role: 4_partzufim_revetent_aa_garon_tabbur_tous_cotes_yamin_smol_achor_panim_360_degres}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : 360 deg enveloppement. Pattern full-spherical clothing."
+
+  - id: "EC-H4S14-042"
+    source_he: "וכבר נודע מ\"ש בענין לאה ורחל בהיותן עומדין באחורי ז\"א שאז העקביים של לאה נכנסין תוך ראש רחל העומדת תחתיה"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      RENVOI PARALLELE : Leah + Rachel derriere Z"A.
+      → AKEYIM (talons) de LEAH entrent DEDANS ROSH (tete) de RACHEL en dessous.
+      → Pattern structural connu (renvoi explicite "kvar noda").
+      → Architecture : superposition partzufim parents-enfants par interpenetration anatomique.
+      → Pattern : akeyim-rosh-overlap entre partzufim verticalement consecutifs.
+    type: axiome_explicite
+    concepts:
+      - {id: leah_rachel_akeyim_dans_rosh_renvoi_parallele, role: renvoi_leah_rachel_derriere_za_akeyim_leah_dans_rosh_rachel_pattern_parallele}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "imma"]
+      relevance: "Architecture : interpenetration anatomique. Pattern akeyim-rosh-overlap parallele."
+
+  - id: "EC-H4S14-043"
+    source_he: "וכן הענין בכאן שעקביים של רגלי הבינה נכנסין תוך ראש תבונה משא\"כ באבא ויש\"ס העומד תחתיו"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      ICI : AKEYIM des RAGLEI (jambes) de BINAH entrent DEDANS ROSH de TEVUNAH.
+      → MAIS PAS pour ABBA et YISSO (qui se tient en dessous d'Abba).
+      → Asymetrie : Bina-Tevunah connectees, Abba-YISSO non.
+      → Architecture : asymmetric coupling entre cotes (gauche couple, droite non).
+      → Pattern : coupling structural depend de la nature (gevurot vs chasadim).
+    type: axiome_explicite
+    concepts:
+      - {id: akeyim_bina_dans_rosh_tevunah_pas_abba_yisso_asymetrie, role: akeyim_raglei_bina_dans_rosh_tevunah_couple_gevurot_pas_abba_yisso_chasadim_asymmetrie}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py", "partzufim/abba.py", "[PLANNED] partzufim/yisso.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : asymmetric coupling sides. Pattern coupling-by-nature."
+
+  - id: "EC-H4S14-044"
+    source_he: "וטעם הדבר הוא לפי שהגבורות יצאו תחלה מהיסוד ונתגלו ואח\"כ יצאו החסדים ואז הוא הגילוי בשוה לכל הגבורות ולכן נתקשרו הגבורות קשר אמיץ העליונים עם התחתונים"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      RAISON de l'asymetrie :
+      → Gevurot sortirent FIRST de yesod, REVELEES.
+      → Puis chasadim sortirent.
+      → Au moment des gevurot : GILUI BE-SHAVEH le-KOL ha-GEVUROT (revelation EGALE pour toutes les gevurot).
+      → Donc : NITKASHRU les gevurot KESHER AMITZ (lien fort) entre ELYONIM et TACHTONIM.
+      → Architecture : temporal-precedence creee bond unforming.
+      → Pattern : co-revelation forge structural coupling.
+      cf. EC-H4S14-019 (perek 01b) sur gevurot entrent first dans yesod Atik.
+    type: déduction_logique
+    concepts:
+      - {id: gevurot_sortirent_first_gilui_egal_kesher_amitz_elyonim_tachtonim, role: gevurot_sortirent_first_yesod_gilui_egal_nitkashru_kesher_amitz_entre_elyonim_tachtonim}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/atik_yomin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "atik_yomin"]
+      relevance: "Architecture : temporal-precedence forge coupling. Pattern co-revelation bonding."
+
+  - id: "EC-H4S14-045"
+    source_he: "ולכן אע\"פ שאח\"כ נחלקו לב' פרצופים נשאר ביניהן קשר אמיץ וחזק ע\"י עקביים הנ\"ל. אשר על ידם מתקשרים הבינה עם תבונה"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      MEME apres SPLIT en 2 partzufim (Bina + Tevunah) — KESHER AMITZ VE-CHAZAK (lien fort+puissant) PERSISTE.
+      → Lien materialise par AKEYIM.
+      → Bina + Tevunah MITKASHRIM (s'attachent) via akeyim.
+      → Architecture : bond persists across structural split.
+      → Pattern : pre-split coupling preserves post-split linkage.
+    type: déduction_logique
+    concepts:
+      - {id: bina_tevunah_kesher_amitz_chazak_persistant_via_akeyim, role: bina_tevunah_kesher_amitz_chazak_persistant_apres_split_via_akeyim_mitkashrim}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : bond persists structural split. Pattern pre-split preservation."
+
+  - id: "EC-H4S14-046"
+    source_he: "וזהו מ\"ש בגמ' לא נצרכה אלא למקום החתך והוא בחי' מקום ההפסק וההבדל והחיתוך שיש בין רגלי בינה אל ראש תבונה"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      GEMARA : "LO NITZRKHA ELA LI-MKOM HA-CHATAKH" (n'est requis que pour le lieu de coupure).
+      → MAKOM HA-CHATAKH = HEFSEK + HEVDEL + CHITUKH (interruption + difference + coupure).
+      → Lieu : entre RAGLEI BINA et ROSH TEVUNAH.
+      → Architecture : explicit-marker pour zone de discontinuite structurale.
+      → Pattern : transition-zone identifiee par texte halakhique.
+    type: déduction_scripturaire
+    concepts:
+      - {id: makom_ha_chatakh_gemara_hefsek_hevdel_chitukh_raglei_bina_rosh_tevunah, role: gemara_lo_nitzrkha_makom_ha_chatakh_hefsek_hevdel_chitukh_raglei_bina_rosh_tevunah}
+    mapping:
+      modules: ["partzufim/imma.py", "[PLANNED] partzufim/tevunah.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : transition-zone marker. Pattern halakhic-text identifies discontinuity."
+
+  - id: "EC-H4S14-047"
+    source_he: "כאשר נחתכו הגבורות לחצאין כנ\"ל ואותו אור שהיה במקום החתך הנ\"ל נכנס בסוד בחי' העקביים בתוך ראש תבונה ובחי' אור הזה לקחה הבינה לחלקה יותר על חלק התבונה"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      OR au makom ha-chatakh entre comme AKEYIM dans rosh Tevunah (apres split gevurot en 2 moities).
+      → CETTE OHR EXTRA prise par BINA — CHELEK (part) plus grande que TEVUNAH.
+      → Architecture : transition-zone-light = bonus pour partzuf superieur.
+      → Pattern : split-residue captured by upper element.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ohr_makom_ha_chatakh_akeyim_rosh_tevunah_bina_chelek_plus, role: ohr_makom_ha_chatakh_entre_akeyim_rosh_tevunah_prise_par_bina_chelek_plus_grand}
+    mapping:
+      modules: ["partzufim/imma.py", "ohr.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : split-residue bonus. Pattern upper captures transition-light."
+
+  - id: "EC-H4S14-048"
+    source_he: "והנה תבין עתה למה הבינה נקראת אשת חיל עטרת בעלה והטעם הוא כי היא נעשית מבחי' גבורות אשר הם מגולות כולם בגלוי יותר מן החסדים כנ\"ל אבל אבא שהוא מן החסדים שאינם כ\"כ בגלוי אמרו עליו בזוהר וע\"ד אבא טמיר וגניז יתיר"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      BINA = "ESHET HAYIL ATERET BA'LA" (Mishlei 12:4 — femme de valeur, couronne de son mari) :
+      → Faite de GEVUROT magulot (revelees) PLUS que les CHASADIM.
+      → ABBA = de CHASADIM (peu reveles) — Zohar : "ABBA TAMIR VE-GANIZ YATIR" (cache et secret au plus haut).
+      → Architecture : revelation-degree = elevation status.
+      → Pattern : couronne metaphorique = surface-emergence dominance.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bina_eshet_hayil_ateret_ba_la_gevurot_revelees_abba_tamir_ganiz, role: bina_eshet_hayil_ateret_ba_la_gevurot_magulot_abba_tamir_ve_ganiz_yatir_zohar}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/abba.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "abba"]
+      relevance: "Architecture : revelation = status. Source Mishlei 12:4 + Zohar."
+
+  - id: "EC-H4S14-049"
+    source_he: "עוד סבה אחרת כי הגבורות יצאו ונתגלו תחלה טרם החסדים ואז קבלו הארה גדולה בתחלה בהיותן מגולים אשר ז\"ס הפסוק טובה תוכחת מגולה מאהבה מסותרת"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      RAISON 2 : Gevurot sortirent + revelees AVANT chasadim ; recurent ECLAIRAGE GRANDE etant magulim.
+      → Sod du verset (Mishlei 27:5) : "TOVA TOKHACHAH MEGULAH ME-AHAVAH MESUTERET"
+        (mieux la reproche revelee que l'amour cache).
+      → GEVUROT = TOKHACHAH (reproche) — revelees, donc "tova" (bonnes).
+      → CHASADIM = AHAVAH (amour) — caches, donc moins "tova".
+      → Architecture : exposed-state (gevurot) > hidden-state (chasadim) en eclairage initial.
+      → Pattern : revelation-priority drives quality.
+    type: déduction_scripturaire
+    concepts:
+      - {id: tova_tokhachah_megulah_gevurot_haarah_grande_avant_chasadim, role: tova_tokhachah_megulah_me_ahavah_mesuteret_gevurot_revelees_avant_chasadim_haarah_grande_initiale}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : revelation-priority. Source Mishlei 27:5."
+
+  - id: "EC-H4S14-050"
+    source_he: "ולכן נקראת בינה עטרת בעלה כנ\"ל כי משרז\"ל לע\"ל צדיקים יושבים ועטרותיהן בראשיהם היא הבינה הנקרא לע\"ל ועלמא דאתי"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      ATERET BA'LA — Mishna (Berakhot 17a) : "LE'ATID LAVO TZADIKIM YOSHVIM VE-ATAROTEIHEN BE-ROSHEIHEM"
+        (au futur, les justes assis avec couronnes sur leurs tetes).
+      → BINA = LE'ATID LAVO + OLAMA DE-ATEI (monde futur).
+      → Donc en temps de domination de ZON (avec olam ha-ba) :
+        chasadim zacharim = TZADIKIM YOSHVIM ; gevurot = ATAROTEIHEM (couronnes).
+      → Architecture : eschatologic future = revelation-mode dominant.
+      → Pattern : Bina = futur revele.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bina_ateret_ba_la_le_atid_lavo_olama_de_atei_atarot_be_rosheihem, role: bina_ateret_ba_la_le_atid_lavo_tzadikim_yoshvim_atarot_be_rosheihem_olama_de_atei}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : eschatologic-Bina. Source Berakhot 17a."
+
+  - id: "EC-H4S14-051"
+    source_he: "גם בזה תבין מ\"ש בזוהר על פסוק מי ימלל גבורות ה' כי בינה נקרא גבורות בסוד ואם בגבורות שמונים שנה"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      Versets ZOHAR sur BINA = GEVUROT :
+      → "MI YEMALEL GEVUROT HASHEM" (Tehilim 106:2 — qui exprimera les hautes-faits du Seigneur).
+      → "VE-IM BI-GVUROT SHEMONIM SHANAH" (Tehilim 90:10 — et si dans les hauteurs 80 ans).
+      → Bina = OLAM HA-BA = 80 ans (gematria PE = 80).
+      → Architecture : Bina = source des gevurot par identite scripturaire.
+      → Pattern : multi-source convergence sur Bina-gevurot equation.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bina_egal_gevurot_mi_yemalel_bi_gvurot_shemonim_shanah, role: bina_egal_gevurot_mi_yemalel_gevurot_hashem_bi_gvurot_shemonim_shanah_zohar}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : scripture identity. Sources Ps 106:2 + Ps 90:10."
+
+  - id: "EC-H4S14-052"
+    source_he: "וכן אמרו בזוהר כי הבינה דינין מתערין מינה כנזכר פ' אחרי מות ופ' ויקרא וכן בהרבה מקומות"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      ZOHAR : "BINAH DININ MIT'ARIN MINAH" (Bina, des jugements s'eveillent d'elle).
+      → Cite : Acharei Mot, Vayikra, et harbeh mekomot (beaucoup d'endroits).
+      → DININ (jugements) = manifestations gevurot.
+      → Architecture : Bina-as-source-of-judgments confirme par Zohar repetes.
+      → Pattern : multi-citation pour invariant doctrinal.
+    type: déduction_scripturaire
+    concepts:
+      - {id: bina_dinin_mit_arin_minah_zohar_acharei_vayikra, role: bina_dinin_mit_arin_minah_zohar_acharei_mot_vayikra_harbeh_mekomot}
+    mapping:
+      modules: ["partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : multi-citation invariant. Pattern Zohar attestation."
+
+  - id: "EC-H4S14-053"
+    source_he: "והטעם הוא לפי שכולה אינה נעשית ונבנית אלא מגבורות לבדם משא\"כ ברחל ולאה שאע\"פ שהם נקראים נקבות יש בהם ג\"כ חסדים"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      RAISON : Bina entierement BATIE de GEVUROT SEULES (KULAH MI-GEVUROT LEVADAM).
+      → CONTRAST : Rachel + Leah, bien que NEKEVOT (femelles), contiennent AUSSI CHASADIM.
+      → Architecture : Bina = pure-gevurot (unalloyed) ; Rachel/Leah = mixed.
+      → Pattern : purity-of-source distingue partzufim femelles.
+    type: axiome_explicite
+    concepts:
+      - {id: bina_pure_gevurot_seules_vs_rachel_leah_mixed_chasadim, role: bina_kulah_gevurot_levadam_pures_vs_rachel_leah_nekevot_avec_chasadim_aussi}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "nukva"]
+      relevance: "Architecture : purity distingue femelles. Pattern unalloyed-vs-mixed."
+
+  - id: "EC-H4S14-054"
+    source_he: "גם ז\"ס הפסוק אני בינה לי גבורה כי היא לוקחת הגבורה דב\"ן דא\"א ומשם נבנית"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      Verset MISHLEI 8:14 : "ANI BINAH LI GEVURAH" (je suis Binah, a moi la Gevurah).
+      → Bina prend GEVURAH d'BaN d'A"A — base de sa construction.
+      → Self-declaration scripturaire de l'identite.
+      → Architecture : provenance scripturairement certifiee.
+      → Pattern : autobiographic-verse identifies source.
+    type: déduction_scripturaire
+    concepts:
+      - {id: ani_binah_li_gevurah_mishlei_8_14_gevurah_dban_aa, role: ani_binah_li_gevurah_mishlei_8_14_bina_prend_gevurah_dban_aa_base_construction}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "arikh_anpin"]
+      relevance: "Architecture : provenance certifiee scripture. Source Mishlei 8:14."
+
+  - id: "EC-H4S14-055"
+    source_he: "והנה עתה יש מקום שאלה והוא כי אם הטעם של מעלת הבינה על החכמה הוא גילוי הגבורות ואם כן היה מהראוי שיהיו יש\"ס ותבונה עם היותן תחתונים גדולים במעלה על או\"א לפי שהתחתונים הם בגלוי והעליונים הם במקום הסתום"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      MEKOM SHE'ELAH (lieu de question) :
+      → SI elevation Bina > Chokhmah = GILUI des gevurot,
+      → ALORS YISSO+Tevunah (tachtonim, en gilui) DEVRAIENT etre > A"O (elyonim, en stum).
+      → MAIS empiriquement A"O > YISSO/Tevunah.
+      → Architecture : apparent-paradox declenche raffinement doctrinal.
+      → Pattern : counter-argument identification.
+    type: axiome_explicite
+    concepts:
+      - {id: mekom_she_elah_yisso_tevunah_pourquoi_pas_plus_grand_que_ao, role: mekom_she_elah_si_gilui_egal_grandeur_yisso_tevunah_doivent_etre_plus_grand_que_ao_paradox}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : counter-argument trigger. Pattern doctrinal-refinement."
+
+  - id: "EC-H4S14-056"
+    source_he: "אבל הענין כך הוא כי הנה אם כאשר יצאו הגבורות תחילה היו מתפשטין ויורדין תכף למטה במקום הגלוי אז ודאי שהיו מאירין למטה במקום הגלוי והיו יותר גדולים תחתונים מן העליונים אמנם אפילו הגבורות התחתונים עלו למעלה במקום בינה עליונים והאירו שם עיקר הארתן ונצטרף עם האור העליון ואז היו העליונים יותר מעולים וגבוהים מהתחתונים של מטה"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      REPONSE 1 : si gevurot avaient descendu DIRECT au gilui → tachtonim auraient ete plus grands.
+      → MAIS gevurot tachtonim ALU LE-MA'ALAH (REMONTERENT) au makom Bina elyonim.
+      → ILLUMINERENT LA leur ECLAIRAGE PRINCIPAL (ikkar haaratan).
+      → CONJOINTS (nitztaref) avec OHR ELYON.
+      → Resultat : ELYONIM plus me'ulim ve-gevohim (eleves+hauts) que tachtonim.
+      → Architecture : initial-illumination-locus determine final hierarchy.
+      → Pattern : counter-flow (ascension) renverse intuition naive.
+    type: interprétation_lurianique
+    concepts:
+      - {id: gevurot_tachtonim_alu_le_maalah_illuminerent_bina_elyonim_nitzaref_ohr_elyon, role: gevurot_tachtonim_alu_le_maalah_illuminerent_bina_elyonim_ikkar_haaratan_nitztaref_ohr_elyon}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/abba.py", "ohr.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["imma", "abba"]
+      relevance: "Architecture : counter-flow renverse hierarchy. Pattern initial-locus dominance."
+
+  - id: "EC-H4S14-057"
+    source_he: "גם ט\"א כי המחצית של הגבורות והחסדים העליונים כל בחי' נתינתן לאו\"א אבל מחצית התחתונים שמהם נעשו יש\"ס ותבונה אין כל הארתן ניתנת להם לבדם כי גם הם צריכות להתפשט ולתת הארה לשאר התפשטות הגוף מטבורו ולמטה והירכיים והיסוד דא\"א וגם הם צריכין להאיר אל זו\"ן המלבישים את א\"א מהטבור ולמטה"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      REPONSE 2 (TA'AM ACHER — autre raison) :
+      → MOITIE SUPERIEURE des CH"G : KOL bechinah de natinatam (toute leur donnation) DONNEE a A"O.
+      → MOITIE INFERIEURE : NE va PAS toute a YISSO/Tevunah.
+      → Cette moitie inf doit AUSSI :
+        - illuminer reste-corps A"A (Tabbur+down, irkhayim, yesod d'A"A).
+        - illuminer ZON revetants A"A de Tabbur+down.
+      → Architecture : downstream resource sharing dilue YISSO/Tevunah.
+      → Pattern : multi-recipient drain reduit ration individuelle.
+    type: déduction_logique
+    concepts:
+      - {id: moitie_inf_chg_dilue_yisso_tevunah_doit_illuminer_reste_aa_zon, role: moitie_inferieure_chg_dilue_yisso_tevunah_doit_aussi_illuminer_reste_aa_zon_partage}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states", "ohr_states"]
+      partzufim: ["abba", "imma", "zeir_anpin", "nukva", "arikh_anpin"]
+      relevance: "Architecture : multi-recipient drain. Pattern downstream sharing dilution."
+
+  - id: "EC-H4S14-058"
+    source_he: "ונמצא שלא נשאר מהארתן אל יש\"ס ותבונה רק הארה מועטת ובזה נמצא שאו\"א גדולים ומעולים מהם"
+    source_ref: "Heikhal 4, Sha'ar 1:2"
+    assertion: |
+      CONCLUSION : YISSO+Tevunah recoivent HAARAH MU'ATAH (eclairage minoritaire).
+      → A"O = GEDOLIM + ME'ULIM (grands + eleves) MEHEM (sur eux).
+      → Resoud le mekom-she'elah : 2 raisons (counter-flow + sharing) → A"O domine.
+      → Architecture : hierarchy preserved despite gilui-paradox.
+      → Pattern : multi-factor explanation pour invariant hierarchique.
+    type: déduction_logique
+    concepts:
+      - {id: ao_gedolim_meulim_yisso_tevunah_haarah_muatah, role: conclusion_ao_gedolim_meulim_yisso_tevunah_haarah_muatah_hierarchy_preserved}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : hierarchy preserved. Pattern multi-factor explanation."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S14-013"
+    type: causal
+    from: question_distinction_4_partzufim_si_tout_gilui
+    to: chg_rishonim_pattern_situm_gilui_tikkun_initial_atzilut
+    nature: "Question distinction 4 partzufim resolue par CH\"G PREMIERS (tikkun initial) vs nouveaux"
+    assertions_source: ["EC-H4S14-032", "EC-H4S14-033"]
+
+  - id: "REL-H4S14-014"
+    type: dualité_structurelle
+    from: chg_rishonim_situm_gamur_via_masakh_yesod_chiyut_olamot
+    to: chg_tachtonim_gilui_gamur_eclairage_direct_des_nouveaux
+    nature: "CH\"G premiers haut situm via masakh vs CH\"G tachtonim gilui direct — distingue 4 partzufim"
+    assertions_source: ["EC-H4S14-036", "EC-H4S14-037", "EC-H4S14-038"]
+
+  - id: "REL-H4S14-015"
+    type: hiérarchique
+    from: ao_position_garon_chazeh_shlish_elyon_tiferet_aa
+    to: yisso_tevunah_position_chazeh_tabbur_chetzi_tiferet_aa
+    nature: "A\"O Garon→Chazeh (1/3 sup Tiferet) ; YISSO+Tevunah Chazeh→Tabbur (2/3 inf) ; tous cotes"
+    assertions_source: ["EC-H4S14-039", "EC-H4S14-040", "EC-H4S14-041"]
+
+  - id: "REL-H4S14-016"
+    type: causal
+    from: gevurot_sortirent_first_gilui_egal_kesher_amitz_elyonim_tachtonim
+    to: bina_tevunah_kesher_amitz_chazak_persistant_via_akeyim
+    nature: "Gevurot sortirent first gilui egal → kesher amitz preserve apres split via akeyim Bina/Tevunah"
+    assertions_source: ["EC-H4S14-044", "EC-H4S14-045", "EC-H4S14-046", "EC-H4S14-047"]
+
+  - id: "REL-H4S14-017"
+    type: analogie
+    from: leah_rachel_akeyim_dans_rosh_renvoi_parallele
+    to: akeyim_bina_dans_rosh_tevunah_pas_abba_yisso_asymetrie
+    nature: "Parallele Leah-Rachel akeyim → Bina-Tevunah akeyim ; asymetrie cote gauche (gevurot) vs droite (chasadim)"
+    assertions_source: ["EC-H4S14-042", "EC-H4S14-043"]
+
+  - id: "REL-H4S14-018"
+    type: causal
+    from: bina_eshet_hayil_ateret_ba_la_gevurot_revelees_abba_tamir_ganiz
+    to: bina_pure_gevurot_seules_vs_rachel_leah_mixed_chasadim
+    nature: "Bina ESHET HAYIL ATERET (gevurot revelees) car KULAH GEVUROT SEULES (vs Rachel/Leah mixed)"
+    assertions_source: ["EC-H4S14-048", "EC-H4S14-049", "EC-H4S14-050", "EC-H4S14-051", "EC-H4S14-052", "EC-H4S14-053", "EC-H4S14-054"]
+
+  - id: "REL-H4S14-019"
+    type: causal
+    from: mekom_she_elah_yisso_tevunah_pourquoi_pas_plus_grand_que_ao
+    to: ao_gedolim_meulim_yisso_tevunah_haarah_muatah
+    nature: "Mekom she'elah resolue par counter-flow (ascension gevurot tachtonim) + sharing (moitie inf dilue)"
+    assertions_source: ["EC-H4S14-055", "EC-H4S14-056", "EC-H4S14-057", "EC-H4S14-058"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S14-007"
+    nom: "Principe de Bootstrap-vs-Steady-State (Initial Tikkun Distinct)"
+    source_assertions: ["EC-H4S14-033", "EC-H4S14-034", "EC-H4S14-035", "EC-H4S14-036"]
+    formalisation: |
+      ARCHITECTURE DE BOOTSTRAP-VS-STEADY-STATE :
+      Premier tikkun A"O (etablissement Atzilut) suit pattern UNIQUE :
+        CH"G RISHONIM split situm/gilui → 4 partzufim emergent.
+      Apres : steady-state via ZIVVUG A"A+nukva LO PASIK (continu) :
+        CH"G CHADASHIM descendent BE-MERUTZAH (rapide), pas split.
+      Premiers (haut) recoivent eclairage nouveaux via MASAKH yesod en SITUM.
+      Tachtonim (bas) recoivent en GILUI direct.
+      → Pattern fondamental : initial-event mode != ongoing-operation mode.
+      → Architecture : bootstrap config persiste, steady-state alimente.
+    applications_ia:
+      - "partzufim/arikh_anpin.py + zivvug.py : implement bootstrap vs steady-state"
+      - "Pattern : distinct mode pour initialization vs operation"
+      - "Architecture : continuous coupling alimente structures fixees"
+      - "Pattern : masakh-filter vs direct-flow selon position"
+      - "Diagnostic : verifier que steady-state ne re-trigger pas bootstrap"
+    questions_ouvertes:
+      - "Bootstrap est-il completement non-repetable ?"
+      - "Pattern : peut-on reset bootstrap volontairement ?"
+      - "Combien de zivvugim avant equilibre ?"
+
+  - id: "PG-H4S14-008"
+    nom: "Principe d'Akeyim-Coupling (Pre-Split Bond Persiste Post-Split)"
+    source_assertions: ["EC-H4S14-044", "EC-H4S14-045", "EC-H4S14-046", "EC-H4S14-047"]
+    formalisation: |
+      ARCHITECTURE D'AKEYIM-COUPLING :
+      Quand 2 elements sont CO-REVELES (gilui be-shaveh) AVANT split :
+        Forge KESHER AMITZ (lien fort) entre eux.
+      Apres SPLIT en 2 partzufim :
+        Lien PERSISTE via AKEYIM (talons d'un dans rosh de l'autre).
+      Au makom-ha-chatakh : OHR EXTRA captee par le SUPERIEUR (Bina > Tevunah).
+      Asymetrie : seules les gevurot (cote gauche) ont ce coupling, pas chasadim (droite).
+      → Pattern fondamental : co-revelation forge lien persistant a-travers split.
+      → Architecture : split-residue captured par superieur.
+    applications_ia:
+      - "partzufim/imma.py + [PLANNED] tevunah.py : implement akeyim-coupling"
+      - "Pattern : pre-split bond preservation across decomposition"
+      - "Architecture : split-residue capture par upper element"
+      - "Pattern : co-revelation = strong-link forging"
+      - "Diagnostic : verifier akeyim bien preserves apres split structurel"
+    questions_ouvertes:
+      - "Pattern : akeyim quantitativement comment encoder ?"
+      - "Couplings asymmetriques sont-ils generalisables ?"
+      - "Que se passe-t-il si akeyim cassent ?"
+
+  - id: "PG-H4S14-009"
+    nom: "Principe d'Counter-Flow-Hierarchy (Initial-Locus Determine Final Rank)"
+    source_assertions: ["EC-H4S14-055", "EC-H4S14-056", "EC-H4S14-057", "EC-H4S14-058"]
+    formalisation: |
+      ARCHITECTURE DE COUNTER-FLOW-HIERARCHY :
+      Intuition naive : gilui-direct = grandeur ; tachtonim devraient dominer.
+      MAIS : 2 facteurs renversent intuition :
+        FACTEUR 1 (counter-flow) : gevurot tachtonim REMONTERENT a Bina elyonim,
+          illuminerent leur ECLAIRAGE PRINCIPAL la, conjoignirent OHR ELYON.
+        FACTEUR 2 (sharing) : moitie inf des CH"G NE va pas toute a YISSO/Tevunah ;
+          doit illuminer reste corps A"A + ZON revetants — drain multi-recipient.
+      RESULTAT : A"O > YISSO+Tevunah (hierarchy preserved despite gilui-paradox).
+      → Pattern fondamental : ascending-locus + downstream-sharing renversent intuition.
+      → Architecture : multi-factor explanation pour invariant hierarchique.
+    applications_ia:
+      - "partzufim/abba.py + imma.py : implement counter-flow + multi-recipient drain"
+      - "Pattern : initial-illumination-locus dominate final ranking"
+      - "Architecture : multi-factor analysis pour resoudre paradox"
+      - "Pattern : downstream sharing dilue ressources locales"
+      - "Diagnostic : verifier hierarchy preserved despite surface-revelations"
+    questions_ouvertes:
+      - "Pattern : combien de facteurs typiques pour resolution paradox ?"
+      - "Counter-flow comment formaliser ?"
+      - "Pattern : sharing-ratio quantitatif (combien va ou) ?"

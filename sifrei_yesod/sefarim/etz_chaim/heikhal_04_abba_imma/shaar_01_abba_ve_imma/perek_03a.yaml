@@ -1,0 +1,522 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 4 — Heikhal Abba ve-Imma (היכל אבא ואמא)
+# Sha'ar: 1 — Sha'ar Abba ve-Imma (שער אבא ואמא)
+# Perek: 3a — Chilukim A"A vs Z"A. Allocation chasadim/gevurot (joined vs separe).
+#             1 yesod (Atik) vs 2 yesodot (Abba+Imma). Yaakov/DoM/Leah/Rachel.
+#             Mekuseh/gilui par nb masakhim. PARSA+MASAKH MAVDIL milieu A"A.
+#             Anatomie : krum yoteret ha-kaved (Zohar Bereshit "yehi rakia").
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_03a :
+#   - Bloc A : Intro chilukim A"A vs Z"A (renvoi anterieur)
+#   - Bloc B : Chiluk 1 — allocation chasadim/gevurot : Z"A separe vs A"A joined
+#   - Bloc C : Chiluk 2 — A"A 4 partzufim de 1 yesod ; Z"A de 2 yesodot
+#   - Bloc D : Z"A 4 partzufim = Yaakov, Dor ha-Midbar, Leah, Rachel
+#   - Bloc E : Atik aussi Z+N joined → sibah pour shinui Z"A
+#   - Bloc F : A"A nekevot (Bina+Tevunah) sortent panim ; Z"A Leah+Rachel achor
+#   - Bloc G : Chiluk 3 — Z"A 2 nekevot : Leah (mekuseh), Rachel (gilui)
+#   - Bloc H : Yaakov + Dor ha-Midbar BOTH gilui (sous yesod)
+#   - Bloc I : Raison : Z"A a 2 MASAKHIM au-dessus (yesod Abba dans yesod Imma)
+#   - Bloc J : Yaakov+DoM yesod Abba — pas force sortir au-dessus (2 masakhim)
+#   - Bloc K : Leah yesod Imma — 1 masakh seul — peut sortir au-dessus mekuseh
+#   - Bloc L : A"A : 1 seul yesod = 1 masakh → 1 sup situm + 1 inf gilui
+#   - Bloc M : POINT KOLLEL (general) — milieu corps A"A : PARSA + MASAKH MAVDIL
+#   - Bloc N : Anatomie : krum separe NESHIMAH des inf — mi-besari echezeh
+#   - Bloc O : YOTERET HA-KAVED = kruma de-pasik (Zohar Bereshit yehi rakia)
+#   - Bloc P : Parsa incline — front sous chazeh, arriere niveau tabbur
+#   - Bloc Q : A"O 2 cotes A"A panim el panim
+#   - Bloc R : Beten+keres A"O bombe ; bord = parsa start
+#   - Bloc S : Derriere A"A — yarekayim A"O longs descendent tabbur ; fin parsa achor
+#
+# Source Sefaria : Sefer_Etz_Chaim.14.3 §1
+# IDs : EC-H4S14-059 → EC-H4S14-077
+
+meta:
+  sefer: etz_chaim
+  heikhal: 4
+  shaar: 1
+  shaar_name_he: "שער אבא ואמא"
+  perek: 3
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Chilukim A\"A vs Z\"A : (1) chasadim/gevurot allocation par genre (separe vs joined) ; (2) 1 yesod (Atik) vs 2 yesodot (Abba+Imma) ; (3) nekevot panim vs achor. Z\"A 4 partzufim = Yaakov+DoM+Leah+Rachel. Mekuseh/gilui par nb masakhim. Z\"A 2 masakhim (yesod Abba dans yesod Imma) — Yaakov+DoM sortent seulement gilui (1 masakh) ; Leah de yesod Imma seul → peut sortir mekuseh ; A\"A 1 yesod = 1 masakh → 1 sup situm + 1 inf gilui. POINT KOLLEL : PARSA+MASAKH MAVDIL milieu A\"A separant 1/2 sup et 1/2 inf. Anatomie : krum yoteret ha-kaved (Zohar Bereshit yehi rakia). Parsa incline : front sous chazeh, arriere niveau tabbur. A\"O panim el panim aux 2 cotes A\"A ; yarekayim long descendent tabbur."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H4S14-059"
+    source_he: "ונבאר עתה קצת חילוקים שיש בין א\"א אל ז\"א עם שכבר ביארנו לעיל קצת שנויים אחרים"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      INTRO : nous expliquerons quelques CHILUKIM (differences) entre A"A et Z"A.
+      → Renvoi anterieur : "kvar bi'arnu le'el ketzat shinuyim acherim".
+      → Architecture : pedagogical comparative scheme.
+      → Pattern : explicit-comparison structures pour clarification.
+      cf. EC-H4S14-024 (perek 01b) sur differences mecaniques Z"A vs A"A.
+    type: axiome_explicite
+    concepts:
+      - {id: chilukim_aa_vs_za_intro, role: introduction_chilukim_aa_vs_za_renvoi_anterieur_shinuyim_acherim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : comparative pedagogical structure. Pattern explicit-comparison."
+
+  - id: "EC-H4S14-060"
+    source_he: "כי הנה הז\"א החסדים מתפשטים בכל גופו וגבורות ניתנו כולם לנוקבא משא\"כ כאן והטעם הוא לפי ששם הזכר והנקבה הם פרצופים נפרדין לכן הזכר לוקח החסדים והנוקבא לוקחת הגבורות"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      CHILUK 1 : ALLOCATION CHASADIM/GEVUROT.
+      → Z"A : chasadim S'ETENDENT BE-KOL GUFO (tout le corps) ; gevurot ENTIEREMENT a NUKVA.
+      → Cause : Z+N pertzufim NIFRADIM (separes) → zachar=chasadim, nukva=gevurot.
+      → Architecture : separation-by-genre forcee allocation par partzuf entier.
+      → Pattern : separated entities = full-allocation par genre.
+    type: axiome_explicite
+    concepts:
+      - {id: za_chasadim_kol_gufo_gevurot_nukva_partzufim_separes, role: za_chasadim_dans_kol_gufo_gevurot_a_nukva_partzufim_separes_par_genre}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : separated entities allocation. Pattern full-by-genre."
+
+  - id: "EC-H4S14-061"
+    source_he: "אמנם בא\"א שהזכר ונקבה שבו פרצוף א' אלא שזה עומד בצד ימין וזה בשמאל לכן ג\"כ מתפשטין עד\"ז החסדים בקו ימין אשר שם הזכר והגבורות בשמאל אשר שם הנקבה"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      A"A : Z+N partzuf UN — zachar TZAD YAMIN, nekevah TZAD SMOL.
+      → Donc : chasadim s'etendent KAV YAMIN (la ou zachar).
+      → Gevurot s'etendent KAV SMOL (la ou nekevah).
+      → Architecture : joined-entities allocation par cote (laterale).
+      → Pattern : joined = side-allocation au lieu de full-by-partzuf.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_chasadim_kav_yamin_gevurot_kav_smol_joined, role: aa_chasadim_kav_yamin_zachar_gevurot_kav_smol_nukva_partzufim_joined_side_allocation}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : joined side-allocation. Pattern lateral allocation."
+
+  - id: "EC-H4S14-062"
+    source_he: "עוד יש חילוק אחר כי בא\"א יוצאין ד' פרצופין מבחי' יסוד אחד בלבד שבתוכו שהוא היסוד דעתיק כנ\"l. ושם בז\"א מב' יסודות שיש בתוכו שהם יסוד דאבא ויסוד דאמא"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      CHILUK 2 : NOMBRE de YESODOT internes.
+      → A"A : 4 partzufim sortent de 1 SEUL YESOD interne = YESOD d'ATIK.
+      → Z"A : 4 partzufim sortent de 2 YESODOT internes = YESOD d'ABBA + YESOD d'IMMA.
+      → Architecture : count of internal cause = different mechanism.
+      → Pattern : input-count determine output-mechanism.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_4_partzufim_de_1_yesod_atik_vs_za_4_de_2_yesodot_abba_imma, role: aa_4_partzufim_de_1_yesod_atik_vs_za_4_partzufim_de_2_yesodot_abba_imma}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py", "partzufim/atik_yomin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin", "atik_yomin", "abba", "imma"]
+      relevance: "Architecture : input-count determine mechanism. Pattern N-causes-N-different-flow."
+
+  - id: "EC-H4S14-063"
+    source_he: "אין יוצאין רק ד' פרצופים לבד שהם יעקב ודור המדבר ולאה ורחל כמבואר במקומו"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      Z"A : 4 PARTZUFIM sortants nommes :
+      → YAAKOV.
+      → DOR HA-MIDBAR (generation du desert).
+      → LEAH.
+      → RACHEL.
+      → Renvoi explicite : "ke-mevu'ar bi-mkomo".
+      → Architecture : nominal designation des 4 partzufim Z"A.
+      → Pattern : naming-by-biblical-figure pour partzufim derives.
+    type: axiome_explicite
+    concepts:
+      - {id: za_4_partzufim_yaakov_dor_ha_midbar_leah_rachel, role: za_4_partzufim_yaakov_dor_ha_midbar_leah_rachel_renvoi_explicite}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : nominal designation. Pattern biblical-figure naming."
+
+  - id: "EC-H4S14-064"
+    source_he: "והענין הוא כי גם בא\"A (בעתיק) יש ב' בחי' שהם זכר ונקבה כנודע אצלינו אלא שהם מחוברים יחד כנ\"l ולסבת התחברותם גרם שינוי אחר מכאן אל הז\"a"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      ATIK aussi a 2 BECHINOT : ZACHAR + NEKEVAH (kanodea atzlenu — connu de nous).
+      → MAIS MECHUBARIM YACHAD (joints ensemble) — comme A"A.
+      → Cette CONJOINTENESS cause un AUTRE SHINUI distincte de Z"A.
+      → Architecture : Atik herite Z+N-joined comme A"A — propagation downward.
+      → Pattern : property-inheritance le long chaine partzufim.
+    type: interprétation_lurianique
+    concepts:
+      - {id: atik_aussi_zn_joined_propagation_aa_distincte_za, role: atik_aussi_zn_joined_kanodea_atzlenu_mechubarim_yachad_propagation_aa_distincte_za}
+    mapping:
+      modules: ["partzufim/atik_yomin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["atik_yomin", "arikh_anpin"]
+      relevance: "Architecture : property propagation downward. Pattern inheritance partzufim chain."
+
+  - id: "EC-H4S14-065"
+    source_he: "כי בכאן אפי' הנקבות שהם בינה ותבונה יוצאין דרך הפנים דא\"א אבל לא באחור משא\"כ בז\"א שלאה ורחל הם באחור ז\"a"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      A"A : MEME les NEKEVOT (Bina+Tevunah) sortent DERECH HA-PANIM (par devant) d'A"A.
+      → PAS BE-ACHOR (en arriere).
+      → Z"A : Leah+Rachel sont BE-ACHOR Z"A.
+      → Architecture : panim-vs-achor exit-direction par genre+context.
+      → Pattern : exit-direction determine par joining-state.
+    type: axiome_explicite
+    concepts:
+      - {id: aa_nekevot_bina_tevunah_derech_panim_vs_za_leah_rachel_achor, role: aa_bina_tevunah_sortent_derech_panim_vs_za_leah_rachel_be_achor}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/nukva.py", "partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "nukva", "arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : exit-direction by genre+context. Pattern joining-state determines exit."
+
+  - id: "EC-H4S14-066"
+    source_he: "עוד יש חילוק אחר והוא כי בז\"א יצאו ב' נקבות שהם לאה ורחל אחת נגד מקום המגולה למטה מיסוד ואחת כנגד מקום המכוסה כמו שהם כאן בינה ותבונה"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      CHILUK 3 : Z"A 2 NEKEVOT (Leah+Rachel) chacune dans une zone differente :
+      → LEAH = makom MEKUSEH (sealed/couvert).
+      → RACHEL = makom MUGALEH (revele) en bas yesod.
+      → COMME ICI : Bina (mekuseh) + Tevunah (mugaleh).
+      → Architecture : 2-tier femelle decomposition (sealed+revealed) parallele.
+      → Pattern : structural parallel A"A ↔ Z"A pour nekevot.
+    type: axiome_explicite
+    concepts:
+      - {id: za_2_nekevot_leah_mekuseh_rachel_mugaleh_parallele_bina_tevunah, role: za_2_nekevot_leah_mekuseh_rachel_mugaleh_yesod_parallele_bina_tevunah}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "nukva"]
+      relevance: "Architecture : 2-tier femelle parallel. Pattern A\"A↔Z\"A nekevot."
+
+  - id: "EC-H4S14-067"
+    source_he: "אבל ביעקב ודור המדבר אינם יוצאין שניהם אלא למטה במקום הגלוי"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      MAIS YAAKOV + DOR HA-MIDBAR (zacharim Z"A) sortent TOUS LES DEUX seulement EN BAS makom MUGALEH.
+      → Difference avec nekevot : zacharim Z"A pas dans mekuseh.
+      → Architecture : asymetrie genre dans Z"A — nekevot 2-tier mais zacharim 1-tier (gilui seul).
+      → Pattern : genre-asymmetry dans Z"A decomposition.
+    type: axiome_explicite
+    concepts:
+      - {id: yaakov_dor_ha_midbar_seulement_mugaleh_pas_mekuseh_asymetrie_genre, role: yaakov_dor_ha_midbar_zacharim_seulement_mugaleh_en_bas_pas_mekuseh_asymetrie_genre_za}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : genre-asymmetry dans Z\"A. Pattern asymmetric decomposition."
+
+  - id: "EC-H4S14-068"
+    source_he: "והטעם הוא לפי ששם בז\"א יש למעלה במקום המכוסה ב' מסכים שהם מחיצות יסוד דאבא ויסוד דאמא המלביש ליסוד אבא"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      RAISON : Z"A makom MEKUSEH (haut) a 2 MASAKHIM (filtres-mechitzot) :
+      → MEHITZOT YESOD d'ABBA + YESOD d'IMMA qui REVET le yesod d'Abba.
+      → Architecture : double-filter dans zone mekuseh Z"A.
+      → Pattern : 2-masakh = 2x filtration = barrier renforce.
+    type: déduction_logique
+    concepts:
+      - {id: za_2_masakhim_yesod_abba_yesod_imma_dans_yesod_abba_zone_mekuseh, role: za_2_masakhim_mechitzot_yesod_abba_yesod_imma_revet_yesod_abba_zone_mekuseh_haut}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "abba", "imma"]
+      relevance: "Architecture : double-filter mekuseh. Pattern reinforced barrier."
+
+  - id: "EC-H4S14-069"
+    source_he: "והנה יעקב ודור המדבר שתיהן יוצאין מן יסוד דאבא שמתעלם תוך יסוד דאמא ואין להם כח לצאת לחוץ שם למעלה אבל למטה במקום המגולה שאין שם מסך דיסוד דאמא רך מסך דאבא לבד יכולין לצאת שם"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      YAAKOV + DOR HA-MIDBAR sortent du YESOD d'ABBA qui est ENCLOS (mit'alem) dans yesod Imma.
+      → Pas de KOACH (force) pour sortir AU-DESSUS la (2 masakhim).
+      → En bas (mugaleh) : pas masakh d'Imma — seulement masakh Abba — peuvent sortir.
+      → Architecture : double-filter blocks above ; single-filter permits below.
+      → Pattern : barrier-count = exit-permission threshold.
+    type: déduction_logique
+    concepts:
+      - {id: yaakov_dom_yesod_abba_dans_yesod_imma_pas_force_haut_seulement_bas, role: yaakov_dom_de_yesod_abba_enclos_yesod_imma_pas_koach_haut_seulement_bas_1_masakh}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "abba", "imma"]
+      relevance: "Architecture : barrier-count threshold. Pattern exit-permission gradient."
+
+  - id: "EC-H4S14-070"
+    source_he: "משא\"כ בלאה שהוא מיסוד אמא ואפילו למעלה אין לה אלא מסך אחד לכן יצאתה אפילו במקום עליון המכוסה"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      LEAH = du YESOD d'IMMA — SEULEMENT 1 MASAKH meme en haut.
+      → Donc peut sortir MEME au makom ELYON HA-MEKUSEH.
+      → Asymetrie : Leah seule a 1 masakh ; Yaakov+DoM ont 2 masakhim au-dessus.
+      → Architecture : provenance (yesod Abba vs Imma) determine masakh-count.
+      → Pattern : provenance-determined permission dans Z"A.
+    type: déduction_logique
+    concepts:
+      - {id: leah_yesod_imma_1_masakh_peut_sortir_mekuseh_haut, role: leah_de_yesod_imma_1_masakh_meme_haut_peut_sortir_mekuseh_elyon}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "imma"]
+      relevance: "Architecture : provenance-determined permission. Pattern source-asymmetry."
+
+  - id: "EC-H4S14-071"
+    source_he: "אבל כאן בא\"א אין בו רק יסוד אחד לבד דעתיק ואפילו למעלה לא יש רק מסך א' בלבד ולכן יכול לצאת פרצוף אחד שם למעלה במקום הסתום ופרצוף אחד למטה במקום גלוי"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      A"A : 1 SEUL YESOD (Atik) → meme en haut SEULEMENT 1 MASAKH.
+      → Donc 1 PARTZUF peut sortir en haut au makom HA-SATUM (Bina).
+      → 1 PARTZUF en bas au makom HA-GILUI (Tevunah).
+      → Architecture : single-filter permits emergence in both zones.
+      → Pattern : 1 filter = 2 zones (above+below) accessible.
+    type: déduction_logique
+    concepts:
+      - {id: aa_1_yesod_atik_1_masakh_1_partzuf_satum_1_partzuf_gilui, role: aa_1_seul_yesod_atik_1_masakh_meme_haut_1_partzuf_makom_satum_1_partzuf_makom_gilui}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/atik_yomin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "atik_yomin", "imma"]
+      relevance: "Architecture : single-filter dual-zone. Pattern emergence-permission."
+
+  - id: "EC-H4S14-072"
+    source_he: "וצריך שתדע ענין אחד והוא כולל בכל בחי' הפרצופים והענין כי בא\"א באמצע גופו יש חד פרסא ומסך מבדיל בין חצי העליונה לחצי התחתונה"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      POINT KOLLEL (general — applies all partzufim) :
+      → AU MILIEU GUFA d'A"A : il y a 1 PARSA + 1 MASAKH MAVDIL.
+      → Separe CHATZI ELYONAH (moitie sup) de CHATZI TACHTONAH (moitie inf).
+      → Architecture : universal-internal-divider dans tous partzufim.
+      → Pattern : middle-parsa = canonical anatomical separation.
+    type: axiome_explicite
+    concepts:
+      - {id: kollel_parsa_masakh_mavdil_milieu_aa_chatzi_sup_inf, role: point_kollel_general_partzufim_parsa_masakh_mavdil_milieu_gufa_aa_chatzi_elyonah_tachtonah}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : universal-internal-divider. Pattern canonical parsa middle."
+
+  - id: "EC-H4S14-073"
+    source_he: "כנראה בחוש הראות ומבשרי אחזה אלוה איך יש קרום א' מחיצה המפסקת בין איברי הנשמה (הנשימה) שהם הריאה והלב ובין איברים התחתונים שהם כבד ובני מעיים"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      ANATOMIE : KRUM (membrane) + MEHITZAH MAFSEKET separant :
+      → IVREI HA-NESHIMAH (organes respiration) : RIYAH (poumon) + LEV (coeur).
+      → De IVREI HA-TACHTONIM (organes inferieurs) : KAVED (foie) + BNEI MEEI (intestins).
+      → Iyov 19:26 "MI-BESARI ECHEZEH ELOHA" — depuis ma chair je verrai Dieu.
+      → Architecture : anatomical-divider observable corresponds spiritual-divider.
+      → Pattern : embodied-knowledge confirme structure abstraite.
+    type: déduction_scripturaire
+    concepts:
+      - {id: krum_mehitzah_separant_neshima_riyah_lev_inf_kaved_bnei_meei, role: krum_mehitzah_mafseket_riyah_lev_neshima_vs_kaved_bnei_meei_inf_mi_besari_echezeh_eloha}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : embodied confirms abstract. Source Iyov 19:26."
+
+  - id: "EC-H4S14-074"
+    source_he: "וזהו נקרא יותרת הכבד קרומא דפסיק גו מעוי דב\"נ כנזכר בזוהר פ' בראשית ע\"פ יהי רקיע בתוך המים"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      Cette membrane = YOTERET HA-KAVED (excroissance du foie, terme Talmudique).
+      → ZOHAR Bereshit cite : "KRUMA DE-PASIK GO MEEI DE-B'N'" (membrane qui coupe au milieu des intestins de l'humain).
+      → Source biblique : Bereshit 1:6 "YEHI RAKIA BE-TOKH HA-MAYIM" (qu'il y ait un firmament au milieu des eaux).
+      → Parsa = RAKIA cosmologique au milieu A"A.
+      → Architecture : RAKIA-anatomical-correspondence — micro-macrocosm.
+      → Pattern : creation-firmament repete structure dans corps partzuf.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yoteret_ha_kaved_kruma_de_pasik_zohar_bereshit_yehi_rakia, role: yoteret_ha_kaved_kruma_de_pasik_go_meei_zohar_bereshit_yehi_rakia_be_tokh_ha_mayim}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : micro-macrocosm correspondence. Sources Zohar Bereshit + Gen 1:6."
+
+  - id: "EC-H4S14-075"
+    source_he: "והנה זה הפרסא אינו ביושר רק כי כאשר מתחלת מצד הפנים היא מתחלת מתחת החזה ממש וכשמתרחבת ומתפשטת עד האחור היא עומדת (נמוכה עד) כנגד מקום הטבור"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      PARSA n'est PAS BE-YOSHER (pas horizontale) :
+      → PANIM (devant) : commence SOUS LE CHAZEH (poitrine).
+      → ACHOR (arriere) : se trouve NEMUKHAH (basse) AU NIVEAU du TABBUR (nombril).
+      → Inclinee de l'avant vers l'arriere descendant.
+      → Architecture : sloped-divider — descending front-to-back.
+      → Pattern : oblique-divider plus realiste que horizontal.
+    type: axiome_explicite
+    concepts:
+      - {id: parsa_pas_yashar_panim_chazeh_achor_tabbur_inclinee, role: parsa_pas_yashar_panim_sous_chazeh_achor_niveau_tabbur_inclinee_descendante}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : sloped-divider. Pattern oblique geometry."
+
+  - id: "EC-H4S14-076"
+    source_he: "והנה או\"א עומדין בב' הצדדין דא\"א זה בימין וזה בשמאל ועומדין פניהם איש אל אחיו פב\"פ והנה בחוש הראות אנו רואין שמקום חיבור ב' בחי' הבטן והכרס של שניהן בולט ויוצא לחוץ משאר הגוף ושם במקום סיום הכרס שלהם של או\"א שם כנגד מקום זה בא\"א מתחיל הקרום הנ\"ל להתפשט עד אחוריו"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      A"O aux 2 COTES d'A"A : YAMIN (Abba) et SMOL (Imma).
+      → PANIM EL ACHIV PB"P (panim be-panim — face a face).
+      → Conjonction BETEN+KERES (ventre) d'A"O BOLET (saille) de chaque cote.
+      → Position SIYUM HA-KERES d'A"O = la ou parsa commence dans A"A (front).
+      → Architecture : external-anatomical-marker localise interne-divider.
+      → Pattern : surface-bulge marks deep-structural-transition.
+    type: axiome_explicite
+    concepts:
+      - {id: ao_2_cotes_aa_panim_panim_keres_bolet_marque_parsa_start, role: ao_2_cotes_aa_panim_be_panim_face_face_keres_bolet_siyum_marque_parsa_start_panim_aa}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : external markers internal structure. Pattern surface-deep correspondence."
+
+  - id: "EC-H4S14-077"
+    source_he: "וכאשר הולך ומתפשט ונמשך זה לאחורי א\"A שם הוא הירכיים של או\"א שהם יותר ארוכים מן הכרס שלהם ויורדין ונמשכין למטה עד מקום הטבור של א\"א ושם מסתיימין אורך התפשטות ירכין דאו\"א וגם הקרום עד שם מתפשטת באחור"
+    source_ref: "Heikhal 4, Sha'ar 1:3"
+    assertion: |
+      DERRIERE A"A : YIRKHAYIM (cuisses) d'A"O plus longs que keres.
+      → Descendent jusqu'au TABBUR d'A"A.
+      → La SE TERMINE l'orikh-hitpashtut yarekayim d'A"O.
+      → KRUM/PARSA aussi se prolonge jusque la BE-ACHOR (arriere).
+      → Architecture : posterior-extension descend a tabbur — parsa et yarekayim coextensifs.
+      → Pattern : back-anatomy plus longue que front (asymmetric depth).
+    type: axiome_explicite
+    concepts:
+      - {id: yirkhayim_ao_descendent_tabbur_aa_parsa_co_extensive_achor, role: yirkhayim_ao_plus_longs_keres_descendent_tabbur_aa_parsa_co_extensive_achor_ferme_extension}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "arikh_anpin"]
+      relevance: "Architecture : posterior coextension. Pattern asymmetric front-back depth."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H4S14-020"
+    type: dualité_structurelle
+    from: za_chasadim_kol_gufo_gevurot_nukva_partzufim_separes
+    to: aa_chasadim_kav_yamin_gevurot_kav_smol_joined
+    nature: "Z\"A separe : full-allocation par genre ; A\"A joined : side-allocation lateralisee"
+    assertions_source: ["EC-H4S14-060", "EC-H4S14-061"]
+
+  - id: "REL-H4S14-021"
+    type: causal
+    from: aa_4_partzufim_de_1_yesod_atik_vs_za_4_de_2_yesodot_abba_imma
+    to: aa_1_yesod_atik_1_masakh_1_partzuf_satum_1_partzuf_gilui
+    nature: "A\"A 1 yesod = 1 masakh → 1 partzuf satum + 1 gilui ; Z\"A 2 yesodot = 2 masakhim haut, 1 bas"
+    assertions_source: ["EC-H4S14-062", "EC-H4S14-068", "EC-H4S14-069", "EC-H4S14-070", "EC-H4S14-071"]
+
+  - id: "REL-H4S14-022"
+    type: analogie
+    from: za_2_nekevot_leah_mekuseh_rachel_mugaleh_parallele_bina_tevunah
+    to: yaakov_dor_ha_midbar_seulement_mugaleh_pas_mekuseh_asymetrie_genre
+    nature: "Parallele Z\"A 2 nekevot 2-tier (Leah/Rachel) ↔ A\"A Bina/Tevunah ; mais zacharim Z\"A asymetrie (1-tier gilui)"
+    assertions_source: ["EC-H4S14-066", "EC-H4S14-067"]
+
+  - id: "REL-H4S14-023"
+    type: contenance
+    from: kollel_parsa_masakh_mavdil_milieu_aa_chatzi_sup_inf
+    to: yoteret_ha_kaved_kruma_de_pasik_zohar_bereshit_yehi_rakia
+    nature: "Point kollel : parsa+masakh middle = yoteret ha-kaved anatomique = rakia cosmologique (Zohar Bereshit)"
+    assertions_source: ["EC-H4S14-072", "EC-H4S14-073", "EC-H4S14-074"]
+
+  - id: "REL-H4S14-024"
+    type: séquentiel
+    from: parsa_pas_yashar_panim_chazeh_achor_tabbur_inclinee
+    to: yirkhayim_ao_descendent_tabbur_aa_parsa_co_extensive_achor
+    nature: "Parsa inclinee panim chazeh → achor tabbur ; yarekayim A\"O descendent tabbur, parsa co-extensive"
+    assertions_source: ["EC-H4S14-075", "EC-H4S14-076", "EC-H4S14-077"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H4S14-010"
+    nom: "Principe de Joining-State-Determines-Allocation (Separe vs Joined Z+N)"
+    source_assertions: ["EC-H4S14-060", "EC-H4S14-061", "EC-H4S14-064", "EC-H4S14-065"]
+    formalisation: |
+      ARCHITECTURE DE JOINING-STATE-ALLOCATION :
+      Allocation de RESSOURCES (chasadim/gevurot) determinee par etat Z+N :
+        SEPARE (Z"A+Nukva) → full-by-genre : zachar=chasadim, nukva=gevurot.
+        JOINED (A"A, Atik) → side-by-side : right=chasadim, left=gevurot.
+      Aussi : EXIT-DIRECTION par genre :
+        Joined : nekevot panim (devant).
+        Separe : nekevot achor (derriere).
+      → Pattern fondamental : joining-state structurel determine allocation+exit-geometry.
+      → Architecture : binary-state-causes-different-mode universellement.
+    applications_ia:
+      - "partzufim/arikh_anpin.py + zeir_anpin.py : implement joining-state allocation"
+      - "Pattern : binary structural state → mode-switch global"
+      - "Architecture : allocation discipline depend de joining"
+      - "Pattern : exit-geometry varies by joining state"
+      - "Diagnostic : verifier joining-state coherent avec allocation/exit"
+    questions_ouvertes:
+      - "Pattern : autres bipolaire-states determine mode ?"
+      - "Que se passe-t-il dans transition separe→joined ?"
+      - "Pattern : exit-direction generalisable ?"
+
+  - id: "PG-H4S14-011"
+    nom: "Principe de Barrier-Count-Determines-Permission (Masakh-Filtration Threshold)"
+    source_assertions: ["EC-H4S14-068", "EC-H4S14-069", "EC-H4S14-070", "EC-H4S14-071"]
+    formalisation: |
+      ARCHITECTURE DE BARRIER-COUNT-PERMISSION :
+      Nombre de MASAKHIM (filtres) determine PERMISSION-de-sortie :
+        2 masakhim (Z"A haut : yesod Abba dans yesod Imma) → BLOQUE (sortie impossible).
+        1 masakh (Z"A bas, ou Leah de yesod Imma seul) → PERMET sortie.
+      A"A : 1 yesod (Atik) = 1 masakh universel → 1 partzuf above (satum) + 1 below (gilui).
+      → Pattern fondamental : barrier-count = exit-permission threshold.
+      → Architecture : layered-protection-by-count systematic.
+      → Implication : provenance de l'agent (yesod Abba vs Imma) determine masakh-count effective.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + abba.py + imma.py : implement masakh-count permission"
+      - "Pattern : threshold-by-barrier-count pour exit-permission"
+      - "Architecture : layered-protection systematic dans tous Z\"A"
+      - "Pattern : provenance-determined effective barrier"
+      - "Diagnostic : verifier nb masakhim coherent avec permission"
+    questions_ouvertes:
+      - "Pattern : 3+ masakhim possibles ?"
+      - "Comment encoder masakh-count efficacement ?"
+      - "Pattern : peut-on bypass masakh par autre route ?"
+
+  - id: "PG-H4S14-012"
+    nom: "Principe de Universal-Internal-Divider (Parsa Anatomical Cosmological)"
+    source_assertions: ["EC-H4S14-072", "EC-H4S14-073", "EC-H4S14-074", "EC-H4S14-075"]
+    formalisation: |
+      ARCHITECTURE D'UNIVERSAL-INTERNAL-DIVIDER :
+      Tous partzufim ont KOLLEL (universel) un PARSA + MASAKH MAVDIL au MILIEU :
+        SEPARE chatzi-elyonah (sup) et chatzi-tachtonah (inf).
+      ANATOMIQUEMENT : krum/yoteret-ha-kaved separe NESHIMAH (riah+lev) des inf (kaved+bnei meei).
+      COSMOLOGIQUEMENT : RAKIA "yehi rakia be-tokh ha-mayim" (Bereshit 1:6).
+      KAVANIQUE : INCLINE — front sous chazeh, achor niveau tabbur.
+      → Pattern fondamental : middle-divider universel a 3 niveaux : anatomical, cosmological, structural.
+      → Architecture : embodied-knowledge confirme structure abstraite.
+      → "MI-BESARI ECHEZEH ELOHA" (Iyov 19:26) — corps-source-de-connaissance.
+    applications_ia:
+      - "partzufim/arikh_anpin.py : implement universal parsa middle"
+      - "Pattern : 3-level correspondence (anatomical/cosmic/structural)"
+      - "Architecture : embodied-confirmation discipline"
+      - "Pattern : oblique geometry plus realiste que horizontal"
+      - "Diagnostic : verifier parsa coherente entre niveaux"
+    questions_ouvertes:
+      - "Pattern : autres anatomical-cosmological correspondences ?"
+      - "Comment quantifier obliqueness ?"
+      - "Pattern : 3-level correspondence generalisable ?"
