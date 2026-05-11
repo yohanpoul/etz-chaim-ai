@@ -237,6 +237,68 @@ as a CI gate not referenced by AGENTS.md.
 
 ---
 
+### [2026-05-11] Model-string leaks eliminated via model_registry.py
+
+**What happened**: Sprint 0.5 documented (in ADR-0007) that 2 sites
+hardcoded model strings: `claude_skill.py:29` default arg and
+`anthropic_sdk.py::MODEL_SLUGS`. The MODEL_SLUGS `"opus"` entry pointed to
+`claude-opus-4-20250514` (Opus 4, May 2025) while `config.yaml` used
+`claude-opus-4-7` (Opus 4.7, April 2026) — a year of silent quality
+regression risk for any path resolving "opus" via MODEL_SLUGS.
+
+**Why it's wrong**: Violates `.claude/rules/python-dev.md` ("never hardcode
+model names") and invariant #7 (provider-agnostic core). Multiple sources
+of truth = drift.
+
+**The rule**: All model alias resolution goes through
+`etzchaim/llm/model_registry.py::resolve_model()`. The `MODEL_SLUGS` dict
+is deleted. The `make check-model-leaks` target enforces this going
+forward; Sprint 4 will promote it to a CI gate.
+
+**Detection**: ADR-0007 spec + `make check-model-leaks` scan.
+
+---
+
+### [2026-05-11] Pre-existing test failures on main as of Sprint 1.A merge — documented for tracking, not fixed in this PR
+
+**What happened**: When running the full suite (`pytest tests/`) on `main`
+at commit `5253e23` (the Sprint 1.A merge base), three tests fail
+deterministically:
+
+1. `tests/test_olamot_temperature_warning.py::TestTemperatureWarning::test_real_config_briah_warns_under_claude_max`
+   — fails both isolated and in full-suite mode; expects the briah olam
+   to emit an `IGNORÉE` warning under the `claude_max` profile, but the
+   warning never fires (signature drift between the test and the
+   `_warn_temperature_unsupported_for_claude_code` helper, likely).
+2. `tests/test_sprint8_d1_hitlabshut.py::test_delta_overall_matches_doctrinal_calibration`
+   — passes in isolation, fails in full-suite mode. ΔOverall observed
+   0.1691 vs expected 0.06 ± 0.015 → 3× the calibrated value. Test
+   pollution from an earlier test mutating shared partzufim / boost state.
+3. `tests/test_sprint8_d1_hitlabshut.py::test_multiple_mutual_reinforcements_accumulate_correctly`
+   — same isolation-vs-full divergence, same likely cause.
+
+**Why it's wrong**: An unstable suite hides regressions. Tests that
+depend on import order or global state violate test-isolation discipline
+(`tests/__init__.py` should fence cross-test mutation). The temperature
+warning test is a flat assertion failure that suggests the helper
+contract changed without the test being updated.
+
+**The rule**: Sprint 1.A is a pure refactor with zero touchpoints on
+`olamot.py`, partzufim state, or boost calibration. These failures are
+**not** introduced by Sprint 1.A. Verified by running the full suite on
+both `main` and `sprint-1.a/model-registry`: same 3 failures, same
+assertion messages, identical numerics. Filing here so a future sprint
+(Sprint 2 candidate) can pick them up.
+
+**Detection**: Sprint 1.A verification step. Branch full-suite: 1305
+passed / 3 failed. Main full-suite at `5253e23`: 1293 passed / 3 failed.
+Delta = +12 new tests (`tests/test_llm/`), 0 new failures, same 3
+pre-existing failures.
+
+**Spec refs**: none yet — Sprint 2 follow-up will open issues per failure.
+
+---
+
 ## How to use this file effectively
 
 1. **At PR review time**, if you spot a category of mistake not yet in

@@ -16,6 +16,7 @@ import time
 
 from etzchaim.autopilot.runners.base import Runner, RunResult
 from etzchaim.autopilot.runners.local import LocalRunner
+from etzchaim.llm.model_registry import resolve_model
 
 DEFAULT_CLAUDE_BIN = os.environ.get("ETZ_CLAUDE_BIN", "claude")
 
@@ -26,12 +27,12 @@ class ClaudeSkillRunner(Runner):
     def __init__(
         self,
         binary: str = DEFAULT_CLAUDE_BIN,
-        model: str = "claude-opus-4-7",
+        model: str | None = None,
         max_turns: int = 60,
         local: LocalRunner | None = None,
     ) -> None:
         self.binary = binary
-        self.model = model
+        self.model = model if model is not None else resolve_model("opus")
         self.max_turns = max_turns
         self.local = local or LocalRunner()
 

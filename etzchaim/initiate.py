@@ -68,6 +68,8 @@ class LLMClient(Protocol):
         ...
 
 
+# TODO Sprint 1.B: fold this catalog into etzchaim.llm.model_registry so the
+# identifier→LLMSpec mapping is no longer hardcoded here. Tracked in ADR-0007.
 _CANONICAL_LLMS: dict[str, LLMSpec] = {
     "claude-opus-4-7": LLMSpec(provider="anthropic", model="claude-opus-4-7"),
     "claude-sonnet-4-6": LLMSpec(provider="anthropic", model="claude-sonnet-4-6"),
