@@ -1,0 +1,689 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 5 — Heikhal Ze'eir Anpin (היכל זעיר אנפין)
+# Sha'ar: 2 — Sha'ar Rapach Nitzotzin (שער רפ"ח ניצוצין)
+# Perek: 4 — NHY = 3 SHEMOT י"ה (pas havayot gemurot). Nitzotzin
+#            NHY MONTENT avec MaH-Tiferet (anchor mispar). 3×י"ה
+#            milui alafin = 15 letters > 10 letters MaH montes.
+#            KELIM NHY restent BILTI NITZOTZIN → yenikat klipot.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_04 :
+#   - Bloc A : Question — RaPaCh = CHG+TIFERET+MALKHUT ; NHY descendent aussi mais pas comptés. Pourquoi?
+#   - Bloc B : N+H = 2 PALGEI DE-GUFA (2 moities corps) ; 1 havayah entre 2 ; chaque = 1/2 havayah = י"ה
+#   - Bloc C : Citation "ki yad al kes Yah" (Shemot 17:16) ; ו"ה pas shem en soi
+#   - Bloc D : Yesod = י"ה (haarah kelulah orot elyonim, pas behinah bifnei atzmah)
+#   - Bloc E : 2 YESODOT AbA-IMA habillent dans Z"A ; chacun 5 CHASADIM + 5 GEVUROT
+#   - Bloc F : YESOD-IMMA 5 chasadim → CHG-TIFERET-NH d'Z"A
+#   - Bloc G : YESOD-IMMA 5 gevurot + YESOD-ABA 5+5 → YESOD-Z"A
+#   - Bloc H : YESOD-ABA termine au YESOD-Z"A ; 15 chasadim+gevurot dans YESOD-Z"A = mispar י"ה (15)
+#   - Bloc I : Reponse 3 — 5 chasadim Yesod-Imma 3 behinot dans Z"A : (1) Daat shoresh, (2) Hitpashtut Chesed-Hod, (3) Reagregation Yesod = 15 chasadim = י"ה
+#   - Bloc J : NHY = PAS HAVAYOT GEMUROT, mais 3 shemot י"ה (3 noms 2 letters)
+#   - Bloc K : Toutes 12 madregot existent AUSSI dans י"ה ; analogie MaH
+#   - Bloc L : Restent en atzilut : 2 mad premieres + achorayim mad 2 (י, י"ה)
+#   - Bloc M : Mad 3+ descendent en Beriah (comme MaH)
+#   - Bloc N : POURQUOI pas comptés? — nitzotzin NHY MITCHABRIM avec nitzotzin TIFERET (=MaH)
+#   - Bloc O : Achorayim NHY : pas besoin justification (panim>achor regle)
+#   - Bloc P : Panim NHY = 3×י"ה = 45 = MaH ; donc collent nitzotzin MaH
+#   - Bloc Q : MILUI 3 shemot י"ה = ALAFIN (NHY=Z"A=milui alafin)
+#   - Bloc R : י"ה milui alafin = יו"ד ה"א = 26 ; lien avec MaH mad 3 (mispar 26)
+#   - Bloc S : Mecanique — 10 letters MaH milui MONTERENT avec 10 letters SAG ; CRAINTE mispar MaH (mad 7) monte aussi
+#   - Bloc T : Si mispar monte = KELI TIFERET (MaH) reste GARU'A RIKAN BILTI NITZOTZIN — irreversible
+#   - Bloc U : SOLUTION — nitzotzin NHY MONTENT vers TIFERET ; LIENT mispar MaH-mad-7 (anchor-down)
+#   - Bloc V : Pas-shavin acceptable ; but est creation lien (pas exact match)
+#   - Bloc W : Question AV — pourquoi pas crainte? Reponse : AV mad 5 RESTE atzilut ; seul mispar AV descendu ; pas risque montee
+#   - Bloc X : Question MaH-shoresh-monte? : 3×י"ה milui (15 letters) sert comme TEMURAH pour 10 letters MaH ; 15>10 acceptable
+#   - Bloc Y : Donc nitzotzin NHY MONTENT (pas descendent) ; pas comptés en bifnei atzmah
+#   - Bloc Z : KELIM NHY RESTENT BILTI NITZOTZIN ATZMAN ; YENIKAT KELIPOT sourcée d'eux
+#   - Bloc AA : Question 1 part 2 — pourquoi 3×י"ה compté en haut, mais UNE-FOIS 26 ici? Reponse : 3-fois י"ה se LIENT seulement ensemble ; כ"ו lie individuellement
+#   - Bloc BB : Question 2 part 2 — SAG-mispar peut monter a shoresh ; pourquoi pas crainte? Reponse : MaH-mispar monte → KELI MaH (TIFERET) bilti ohr=probleme ; SAG-mispar monte = KELI SAG dans son KLI propre = pas-probleme
+#
+# Source Sefaria : Sefer_Etz_Chaim.18.4 (2 sections, 5210 chars)
+# IDs : EC-H5S18-092 → EC-H5S18-115
+
+meta:
+  sefer: etz_chaim
+  heikhal: 5
+  shaar: 2
+  shaar_name_he: "שער רפ\"ח ניצוצין"
+  perek: 4
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek dedie a NHY (Netzach-Hod-Yesod) : pourquoi nitzotzin NHY pas comptés en bifnei atzmah dans 288 RaPaCh? NHY = PAS HAVAYOT GEMUROT mais 3 SHEMOT י\"ה (yod-he 2 letters). N+H = 2 PALGEI DE-GUFA (Shemot 17:16 'ki yad al kes Yah') ; chaque moitie = 1/2 havayah = י\"ה. Yesod = י\"ה (haarah kelulah). Confirmation : 2 YESODOT d'AbA-IMA habillent dans Z\"A ; 5+5+5 chasadim/gevurot = 15 = mispar י\"ה. Aussi 5 chasadim Yesod-Imma → 3 behinot dans Z\"A (Daat shoresh, hitpashtut Chesed-Hod, reagregation Yesod) = 15 = י\"ה. Toutes 12 madregot existent dans י\"ה ; analogie MaH. Restent atzilut : mad 1-2 + achorayim mad 2. Mad 3+ descendent. POURQUOI pas comptés en bifnei atzmah? Nitzotzin NHY MITCHABRIM avec nitzotzin TIFERET (=MaH). Panim NHY 3×י\"ה=45=MaH (donc collent MaH). MILUI 3 shemot י\"ה = ALAFIN (NHY=Z\"A=milui alafin) ; י\"ה milui alafin = יו\"ד ה\"א = 26 ; lien avec MaH mad 3 (mispar 26). Mecanique COSMIQUE : 10 letters MaH milui MONTERENT avec 10 letters SAG ; CRAINTE = mispar MaH (mad 7=45) monte aussi → KELI TIFERET-MaH reste BILTI NITZOTZIN irreversible. SOLUTION : nitzotzin NHY MONTENT vers TIFERET ; ANCHOR mispar MaH-mad-7 down. Pas-shavin acceptable. Question AV pas crainte : AV mad 5 reste atzilut. Question MaH-shoresh-monte : 3×י\"ה milui (15 letters) = TEMURAH pour 10 letters MaH ; 15>10 ok. Conclusion : nitzotzin NHY MONTENT (pas descendent) ; KELIM NHY restent BILTI NITZOTZIN ATZMAN → YENIKAT KELIPOT (succion klipot) sourcée d'eux. Part 2 questions/reponses : (1) 3-fois yh compté ensemble ; KW (26) individuellement car y a bichinah pour collage. (2) SAG-mispar peut monter mais pas-probleme car SAG-keli reste dans son kli."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H5S18-092"
+    source_he: "ועתה נשאר לנו לבאר ענין א' והוא כי נת\"ל כי מן הח\"ג ומן הת\"ת והמל' ירדו רפ\"ח ניצוצין שהם ד\"פ ע\"ב ועתה צריך לבאר כי בהכרח הוא שגם מן הנה\"י ירדו ניצוצין"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      Question NHY (cf. EC-H5S18-063 sur 4×72=288, EC-H5S18-056 sur AV-CHESED) :
+      → 288 RaPaCh = 4×72 issu de CHG+TIFERET+MALKHUT (Chesed-Gevurah, Tiferet, Malkhut).
+      → BE-HEKHRAH (necessairement) : aussi de NHY (Netzach-Hod-Yesod) descendent NITZOTZIN.
+      → POURQUOI pas comptés dans le total 288?
+      → Architecture : missing-tier-question NHY-nitzotzin status.
+      → Pattern : completeness-check 7-Z"T accounting.
+    type: axiome_explicite
+    concepts:
+      - {id: question_nhy_nitzotzin_pas_compté_288_rapach_chg_tiferet_malkhut, role: question_nhy_descendent_nitzotzin_aussi_pas_compté_288_chg_tiferet_malkhut_completeness_check}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : completeness check NHY. Pattern missing-tier accounting."
+
+  - id: "EC-H5S18-093"
+    source_he: "הנה נודע כי נ\"ה הם ב' פלגי דגופא כנ\"ל לכן אין הוי\"ה גמורה בכל א' מהם רק הוי\"ה א' בין שניהם נמצא כי חצי הוי\"ה הוא אור של נצח וחצי הוי\"ה הוא אור של הוד"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      N+H = 2 PALGEI DE-GUFA (2 moities du corps) :
+      → Netzach et Hod = 2 PALGEI DE-GUFA (deux moities du corps).
+      → DONC : pas HAVAYAH GEMURAH (complete) dans CHACUN.
+      → Une seule HAVAYAH ENTRE les deux.
+      → CHATZI HAVAYAH (1/2 havayah) = OHR de Netzach.
+      → CHATZI HAVAYAH = OHR de Hod.
+      → Architecture : 2-half-of-name structure for N+H pair.
+      → Pattern : pair-tier-shares-name.
+    type: axiome_explicite
+    concepts:
+      - {id: n_h_2_palgei_de_gufa_chatzi_havayah_chacun_partage_nom, role: netzach_hod_2_palgei_de_gufa_chatzi_havayah_ohr_netzach_chatzi_havayah_ohr_hod_pair_tier_shares}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : pair tier shares name. Pattern half-havayah each."
+
+  - id: "EC-H5S18-094"
+    source_he: "ופשוט כי כשהוי\"ה נחלקת לב' אינה עולה בשם בפ\"ע רק חצי העליון שהם ב' אותיות י\"ה כמ\"ש כי יד על כס י\"ה כי ב' אותיות ו\"ה אינן שם בפ\"ע"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      Justification scripturaire — moitie superieure י"ה seule shem :
+      → Quand HAVAYAH NEHELEKET LE-2 (divisee en 2) : NE FORME PAS shem bifnei atzmah.
+      → Seule CHATZI HA-ELYON (moitie superieure) = 2 letters י"ה (yod-he) = SHEM.
+      → Source : "KI YAD AL KES Y"H" (Shemot 17:16 — main sur trône de Yah).
+      → Les 2 letters ו"ה (vav-he) NE SONT PAS shem en soi.
+      → Architecture : asymmetric-half-validity (top-half=shem, bottom-half=not).
+      → Pattern : top-letters preserve sacred-name.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chatzi_elyon_yh_shem_chatzi_tachton_vh_pas_shem_shemot_17_16, role: chatzi_elyon_yh_2_letters_shem_chatzi_tachton_vh_pas_shem_bifnei_atzmah_shemot_17_16_yad_al_kes_yh_asymmetric}
+    mapping:
+      modules: ["shemot/transform.py", "shemot/core.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : asymmetric half-validity. Source Shemot 17:16."
+
+  - id: "EC-H5S18-095"
+    source_he: "נמצא כי נצח נקרא י\"ה וכן ההוד וכן היסוד י\"ה כי היסוד אינה בחי' בפ\"ע רק הארה כלולה מהאורות עליונים כנודע"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      NHY = 3 SHEMOT י"ה :
+      → Netzach = nikra (appele) י"ה (yah).
+      → Hod = aussi י"ה.
+      → Yesod = aussi י"ה.
+      → CAR Yesod EINAH BEHINAH BIFNEI ATZMAH (pas behinah en soi) — seulement HAARAH KELULAH MIN HA-OROT HA-ELYONIM.
+      → Architecture : 3-name-grouping NHY = 3×י"ה.
+      → Pattern : Yesod-as-aggregate-of-superiors.
+    type: axiome_explicite
+    concepts:
+      - {id: nhy_3_shemot_yh_yesod_haarah_kelulah_orot_elyonim, role: netzach_hod_yesod_3_shemot_yh_yesod_einah_bifnei_atzmah_haarah_kelulah_orot_elyonim_aggregate}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : NHY=3×Y\"H. Pattern Yesod aggregate."
+
+  - id: "EC-H5S18-096"
+    source_he: "ועוד ט\"א במה שנבאר כי ב' יסודות דאו\"א מתלבשין תוך ז\"א וכל א' מהם יש בו ה\"ח וה\"ג"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      TA'AM ACHER (autre raison) — 2 YESODOT AbA-IMA :
+      → 2 YESODOT d'AbA+IMA s'habillent (mitlabshim) DANS Z"A.
+      → CHACUN porte H"CH (5 chasadim) + H"G (5 gevurot).
+      → Architecture : maternal+paternal-yesodot embedded in Z"A.
+      → Pattern : embedded-yesodot inject capacities.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 2_yesodot_aba_ima_mitlabshim_z_a_5_chasadim_5_gevurot_chacun, role: 2_yesodot_aba_ima_mitlabshim_z_a_chacun_5_chasadim_5_gevurot_embedded_inject}
+    mapping:
+      modules: ["partzufim/yesod.py [PLANNED]", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["abba", "imma", "zeir_anpin"]
+      relevance: "Architecture : embedded yesodot. Pattern inject capacities."
+
+  - id: "EC-H5S18-097"
+    source_he: "וה\"ח דיסוד דאמא הם מתפשטין בז\"א בח\"ג ת\"ת ונ\"ה שלו והה\"ג דיסוד דאמא וכן הה\"ח וה\"ג דיסוד דאבא אשר לא נתגלו ולא יצאו הנה כל אלו הם יורדין אל היסוד דז\"א"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      Distribution H"CH/H"G dans Z"A :
+      → H"CH d'YESOD-IMMA → MITPASHTIM dans CHG-TIFERET-NH d'Z"A.
+      → H"G d'YESOD-IMMA + H"CH+H"G d'YESOD-ABA (LO NITGALU = pas reveles, pas sortis) → DESCENDENT au YESOD-Z"A.
+      → Architecture : 5+15 chasadim-gevurot distribution Z"A.
+      → Pattern : exposed-vs-concealed differential routing.
+    type: axiome_explicite
+    concepts:
+      - {id: distribution_h_ch_yesod_imma_chg_tiferet_nh_z_a_h_g_yesod_aba_ima_yesod_z_a, role: h_ch_yesod_imma_mitpashtim_chg_tiferet_nh_z_a_h_g_imma_h_ch_h_g_aba_lo_nitgalu_descendent_yesod_z_a_routing}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/yesod.py [PLANNED]"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 5+15 distribution. Pattern exposed-vs-concealed routing."
+
+  - id: "EC-H5S18-098"
+    source_he: "וכבר ידעת כי סיום היסוד דאבא הוא מסתיים ביסוד דז\"א עצמו נמצא כי ט\"ו חסדים וגבורות יש ביסוד דז\"א אשר מספרם י\"ה"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      YESOD-ABA termine YESOD-Z"A :
+      → SIYUM (fin) du YESOD-ABA SE-TERMINE BE-YESOD-Z"A LUI-MEME.
+      → 15 CHASADIM+GEVUROT dans YESOD-Z"A.
+      → MISPARAM (leur nombre) = 15 = mispar י"ה (yod-he = 10+5).
+      → Architecture : YESOD-Z"A houses-15-h-g = יה.
+      → Pattern : numeric-confirmation NHY=Y"H.
+    type: déduction_logique
+    concepts:
+      - {id: yesod_aba_termine_yesod_z_a_15_chasadim_gevurot_mispar_yh, role: yesod_aba_siyum_yesod_z_a_15_chasadim_gevurot_misparam_yh_15_yod_he_numeric_confirmation}
+    mapping:
+      modules: ["partzufim/yesod.py [PLANNED]", "partzufim/zeir_anpin.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : YESOD-Z\"A=15. Pattern numeric NHY=Y\"H."
+
+  - id: "EC-H5S18-099"
+    source_he: "עוד ט\"א... ג' בחי' יש אל החסדים דז\"א א' הוא למעלה במקום הדעת דז\"א... ואח\"כ מן הארתן מתפשטין ה\"ח מן החסד שבו עד הוד שבו ואח\"כ מהארתן של החסדים המתפשטין מתקבץ הארתן ביסוד דז\"א ה\"ח אחרים"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      3 BEHINOT chasadim Z"A :
+      → BEHINAH 1 : DAAT d'Z"A (shoresh chasadim).
+      → BEHINAH 2 : MITPASHTIM 5 chasadim de CHESED a HOD d'Z"A.
+      → BEHINAH 3 : MITKABETZ HAARATAN BE-YESOD-Z"A 5 NOUVEAUX CHASADIM (kol = jar/recipient).
+      → Total = 3×5 = 15 chasadim = mispar י"ה.
+      → Architecture : triple-distribution chasadim Z"A.
+      → Pattern : recursive-aggregation Yesod-as-jar.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 3_behinot_chasadim_z_a_daat_hitpashtut_yesod_15_total_yh, role: 3_behinot_chasadim_z_a_daat_shoresh_hitpashtut_chesed_hod_yesod_kol_15_chasadim_yh_recursive_aggregation_jar}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/yesod.py [PLANNED]"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : triple distribution. Pattern recursive aggregation jar."
+
+  - id: "EC-H5S18-100"
+    source_he: "נמצא כי נה\"י אינן הויות גמורות רק ג' שמות של י\"ה כנ\"ל"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      KLAL — NHY = PAS HAVAYOT GEMUROT :
+      → NHY EINAN HAVAYOT GEMUROT (pas tetragrammaton complets).
+      → MAIS 3 SHEMOT de י"ה (3 noms 2-letters yod-he).
+      → Architecture : NHY-classification = sub-tetragrammaton.
+      → Pattern : reduced-name-form for lower-tier.
+    type: déduction_logique
+    concepts:
+      - {id: nhy_pas_havayot_gemurot_3_shemot_yh_sub_tetragrammaton, role: nhy_einan_havayot_gemurot_3_shemot_yh_sub_tetragrammaton_reduced_name_form}
+    mapping:
+      modules: ["shemot/transform.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : NHY sub-tetragrammaton. Pattern reduced name form."
+
+  - id: "EC-H5S18-101"
+    source_he: "והנה כל בחי' המדרגות שנת\"ל בשם יהו\"ה כולם ג\"כ יש בשם י\"ה ודוגמת מה שירד משם מ\"ה כך ירד מג' שמות י\"ה הנ\"ל כי לא נשארו באצילות רק ב' מדרגות הראשונים לבד שהם ב' אותיות י\"ה וגם האחוריים שלהם בבחי' אותיות לבד שהם י' י\"ה"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      MADREGOT י"ה analogues a MaH (cf. EC-H5S18-029→EC-H5S18-040) :
+      → Toutes les MADREGOT existent AUSSI dans le shem י"ה.
+      → DUGMAT (analogie) MaH : descendu meme schema des 3 shemot י"ה.
+      → Restent en atzilut : MAD 1-2 SEULES = 2 letters י"ה (mad 1) + ACHORAYIM mad 2 letters seulement (י, י"ה).
+      → Architecture : NHY-pattern mirrors MaH (with 2 letters not 4).
+      → Pattern : structural-analogy preserved across reduction.
+    type: déduction_logique
+    concepts:
+      - {id: nhy_madregot_yh_analogues_mah_mad_1_2_atzilut_mad_3_descendent, role: nhy_madregot_yh_analogues_mah_dugmat_mad_1_2_atzilut_yh_achor_mad_2_letters_y_yh_mad_3_eilakh_descendent_structural_analogy}
+    mapping:
+      modules: ["shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : NHY mirrors MaH. Pattern structural analogy."
+
+  - id: "EC-H5S18-102"
+    source_he: "ואמנם הטעם למה אין בחי' כל הניצוצין האלו נזכר בפ\"ע ע\"ד שהוזכרו שאר הנצוצין הענין הוא לפי שכל הנצוצין שירדו מן נה\"י מתחברים כולם עם הניצוצין של ת\"ת"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      POURQUOI pas comptés bifnei atzmah?
+      → KOL HA-NITZOTZIN qui descendent NHY MITCHABRIM KULAM (s'unissent tous) avec NITZOTZIN de TIFERET (=MaH).
+      → Et nit'al la regle : ce qui se lie au superieur ne EINAH OLAH BE-SHEM BIFNEI ATZMAH (ne forme pas shem en soi) (cf. EC-H5S18-076 sur shavin).
+      → Architecture : NHY-Tiferet-coalescence absorbs counting.
+      → Pattern : downstream-coalescence prevents independent-count.
+    type: déduction_logique
+    concepts:
+      - {id: nhy_nitzotzin_mitchabrim_tiferet_mah_pas_compté_bifnei_atzmah, role: kol_nitzotzin_nhy_yardu_mitchabrim_nitzotzin_tiferet_mah_pas_compté_bifnei_atzmah_downstream_coalescence}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : NHY-Tiferet coalescence. Pattern downstream coalesce."
+
+  - id: "EC-H5S18-103"
+    source_he: "הנה הם ג\"פ י\"ה הם מ\"ה לכן ניצוצותיו מתחברים עם ניצוצות מ\"ה כנ\"ל ואע\"פ שאין מספרם שוין כי חשבון של זה מן המילוי וחשבון של זה מן הפשוט אין בזה חשש"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      Justification numerologique — 3×י"ה = 45 = MaH :
+      → 3 PE'AMIM (×) י"ה (15) = 45 = MaH (gimatria).
+      → DONC nitzotzin NHY MITCHABRIM avec nitzotzin MaH.
+      → AF AL PI (bien que) MISPARAM EINAM SHAVIN au sens strict.
+      → CHESHBON de NHY = MIN HA-MILUI ; cheshbon de MaH = MIN HA-PASHUT.
+      → EIN BAZE CHASHASH (pas de souci ici).
+      → Architecture : aggregate-equality (3×Y"H=MaH=45).
+      → Pattern : numerologic-coalescence justifies merger.
+    type: déduction_logique
+    concepts:
+      - {id: 3_yh_45_mah_nhy_mitchabrim_mah_aggregate_equality, role: 3_pe_amim_yh_45_mah_nhy_mitchabrim_mah_pas_shavin_strict_milui_pashut_mais_aggregate_equality}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : aggregate equality. Pattern numerologic coalescence."
+
+  - id: "EC-H5S18-104"
+    source_he: "וכן מילוי ג' שמות י\"ה הנ\"ל הוא באלפין לפי שנה\"י אלו הם נה\"י של ז\"א שהוא בחי' מילוי אלפין והנה י\"ה דמילוי אלפין הם גי' כ\"ו ולכן הוא מתחבר עם שם מ\"ה במדרגה הג' שלו שג\"כ מספרה כ\"ו"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      MILUI ALAFIN — autre lien avec MaH mad 3 :
+      → Milui des 3 shemot י"ה = ALAFIN (alefin = aleph milui).
+      → CAR NHY = NHY de Z"A = behinat MILUI ALAFIN.
+      → י"ה milui alafin = יו"ד ה"א = 26 (yod=20, he=6).
+      → Donc MITCHABER avec MaH mad 3 (mispar 4 letters peshutim PANIM = 26).
+      → Architecture : milui-alafin-mispar matches MaH-mad-3.
+      → Pattern : Z"A-specific-milui aligns numerically.
+    type: déduction_logique
+    concepts:
+      - {id: milui_alafin_yh_yod_dalet_he_alef_26_mah_mad_3_panim, role: milui_alafin_3_shemot_yh_yud_dalet_he_alef_26_mah_mad_3_mispar_panim_z_a_specific_alignment}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : milui-alafin matches MaH mad-3. Pattern Z\"A-specific."
+
+  - id: "EC-H5S18-105"
+    source_he: "והענין הוא כי כבר בארנו שי' אותיות המילוי דשם מ\"ה של ת\"ת עלו עם י' אותיות דס\"ג למעלה ונתחברו עמהן והנה מתיראים אנחנו כי כיון שעלו אלו הי' אותיות למעלה שלא יעלה ג\"כ עמהן המספר שלהם שהוא גי' מ\"ה"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      CRAINTE COSMOLOGIQUE — mispar MaH montant :
+      → Deja explique : 10 OTIYOT MILUI MaH (TIFERET) sont MONTEES avec 10 OTIYOT SAG en haut (cf. EC-H5S18-080).
+      → MITYARIM ANACHNU (nous craignons) : puisque ces 10 letters MONTENT, le MISPAR (=45=MaH, mad 7) MONTERA AUSSI.
+      → Le mispar EST-TIRE-PAR (nigrar) les letters qui sont sa SOURCE (shorsham).
+      → Architecture : letter-fall risk-of-mispar-fall companion.
+      → Pattern : root-letter-pull threatens-mispar-stability.
+    type: interprétation_lurianique
+    concepts:
+      - {id: crainte_mispar_mah_monte_avec_10_letters_mah_montes_sag_letter_pull, role: crainte_mispar_mah_monte_10_otiyot_milui_mah_montes_sag_mispar_nigrar_otiyot_shorsham_letter_pull_risk}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : letter-fall risk mispar fall. Pattern root-pull threat."
+
+  - id: "EC-H5S18-106"
+    source_he: "ואם יעלו גם הם נמצא שהכלי של הת\"ת יהיה בתכלית הגרוע ריקן בלתי ניצוצין ולא יוכלו אח\"כ להתתקן בעת תיקון שאר הכלים"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      Consequence catastrophique :
+      → Si mispar MaH MONTE AUSSI : KELI de TIFERET TAKHLIT GARU'A RIKAN BILTI NITZOTZIN (extreme-degraded vide sans nitzotzin).
+      → LO YOKHLU LEHITTAKEN (ne pourront se rectifier) au temps tikkun des autres kelim.
+      → Architecture : nitzotzin-loss = irreversible-keli-degradation.
+      → Pattern : cosmologic-catastrophe-risk irrecoverable.
+    type: déduction_logique
+    concepts:
+      - {id: kli_tiferet_takhlit_garua_rikan_pas_lehittaken_irreversible, role: kli_tiferet_takhlit_garua_rikan_bilti_nitzotzin_pas_lehittaken_tikkun_irreversible_catastrophe}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : irreversible degradation risk. Pattern catastrophe."
+
+  - id: "EC-H5S18-107"
+    source_he: "לכן עולין ניצוצין של נה\"י למעלה בת\"ת שיתקשרו עם מספר מ\"ה מדרגה ז' של הת\"ת ואז לא יעלה מספר ההוא למעלה בשם ס\"ג"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      SOLUTION COSMOLOGIQUE — anchor-mechanism :
+      → DONC OLIN (montent) NITZOTZIN de NHY EN-HAUT en TIFERET.
+      → Pour LIER (yitkashru) avec MISPAR MaH mad 7 du TIFERET.
+      → ALORS MISPAR MaH NE MONTERA PAS dans SAG.
+      → Architecture : NHY-as-anchor for-MaH-mispar.
+      → Pattern : tier-stabilization via lower-tier-pull.
+    type: interprétation_lurianique
+    concepts:
+      - {id: solution_nhy_montent_tiferet_anchor_mispar_mah_pas_monte_sag, role: solution_nitzotzin_nhy_olin_tiferet_yitkashru_mispar_mah_mad_7_pas_monte_sag_anchor_mechanism}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : NHY as anchor. Pattern tier-stabilization."
+
+  - id: "EC-H5S18-108"
+    source_he: "ולכן כיון שאין עלית הניצוצין אלו רק לסבה זו לכן אין חשש וקפידא בדבר ההוא למעלה שיהיה חשבונם שוין ובלאו הכי עולין לסבה הנ\"ל"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      Pas-shavin acceptable pour anchor :
+      → Puisque la MONTEE des nitzotzin NHY est UNIQUEMENT pour cette raison (anchor).
+      → EIN CHASHASH VE-KEPIDAH (pas de souci ni precision) que les CHESHBONAM SHAVIN.
+      → BE-LO HAKHI olin (sans cela montent) pour la raison ci-dessus.
+      → Architecture : functional-link sufficient ; exact-match-not-required.
+      → Pattern : anchoring-via-coalescence not-via-equality.
+    type: déduction_logique
+    concepts:
+      - {id: pas_shavin_acceptable_anchor_function_sufficient_lien_creation, role: pas_shavin_acceptable_anchor_function_sufficient_lien_creation_pas_exact_match_required}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : functional link sufficient. Pattern anchor-via-coalescence."
+
+  - id: "EC-H5S18-109"
+    source_he: "וא\"ת למה בשם של ע\"ב אין אנו חוששין אולי יעלה המספר של שם ע\"ב שהוא המדרגה הז' עם שרשו... התשובה הוא כי שם בע\"ב לא ירדו י' אותיות המילוי כלל בבריאה כי נשארו באצילות"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      Question AV — Reponse :
+      → Pourquoi pas crainte similaire pour AV?
+      → Reponse : SHEM AV — 10 LETTERS MILUI N'ONT PAS DESCENDU DU TOUT en Beriah ; sont RESTEES en ATZILUT.
+      → Seul le MISPAR (=72) descendu en Beriah.
+      → Architecture : AV preserves-letter-base in atzilut ; only-mispar descended.
+      → Pattern : asymmetric-fall-pattern AV-vs-MaH.
+    type: déduction_logique
+    concepts:
+      - {id: question_av_pas_crainte_10_letters_milui_av_atzilut_seul_mispar_descendu, role: question_av_pas_crainte_10_letters_milui_av_lo_yardu_atzilut_seul_mispar_72_descendu_beriah_asymmetric_fall}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : AV preserves letter-base. Pattern asymmetric fall."
+
+  - id: "EC-H5S18-110"
+    source_he: "ולכן אין חשש שיעלו כי אין עולין מעולם לעולם אחר כי אינן יכולין... ובפרט כי הרי בעל כרחם ירדו מאצילות לבריאה לפי שלא היה להם כח לעמוד שם ונשברו ואיך עתה יעלו אל האצילות אחר שנשברו ונפלו"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      Pas de remontee possible AV-mispar :
+      → EIN OLIN ME-OLAM LE-OLAM ACHER (pas montant d'un monde a un autre).
+      → AV-mispar EN BERIAH n'a PAS LA CAPACITE de remonter.
+      → BIFRAT (en particulier) : descendu BE-AL KORHAM (forces) car LO HAYAH LAHEM KO'AH LA'AMOD (pas pouvoir de tenir) → NISHBERU.
+      → Comment maintenant remonteraient apres avoir nishberu ve-naflu?
+      → Architecture : tier-bound mispar trapped-in-Beriah.
+      → Pattern : post-shevirah descents irreversible direction.
+    type: déduction_logique
+    concepts:
+      - {id: pas_remontee_av_mispar_beriah_olam_olam_acher_post_shevirah_irreversible, role: pas_olin_me_olam_le_olam_acher_av_mispar_beriah_be_al_korham_lo_hayah_koach_la_amod_nishberu_naflu_pas_remonte_irreversible}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : tier-bound trapped. Pattern post-shevirah irreversible."
+
+  - id: "EC-H5S18-111"
+    source_he: "אבל המספר של מ\"ה הוא יכול לעלות אל שרשו שהם י' אותיות דמ\"ה אשר עלו ונתקשרו עם י' אותיות דס\"ג לפי שכולן בבריאה הם עומדין והם יכולין לעלות"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      MaH-mispar PEUT remonter :
+      → MISPAR de MaH PEUT MONTER vers son SHORESH (10 letters MaH).
+      → Car 10 letters MaH MONTERENT et NITKASHRU avec 10 letters SAG.
+      → KULAN BE-BERIAH OMDIN (ils tiennent en Beriah ; les letters MaH sont en Beriah/SAG-region).
+      → YEKHOLIM LA'ALOT (peuvent monter) — donc CRAINTE.
+      → Architecture : MaH-letters in-shared-tier enable-mispar-pull-up.
+      → Pattern : same-tier-letters create-pull-vector.
+    type: déduction_logique
+    concepts:
+      - {id: mah_mispar_peut_monter_shoresh_10_letters_mah_montes_sag_pull_vector, role: mah_mispar_yakhol_la_alot_shoresh_10_letters_mah_olu_nitkashru_sag_kulan_beriah_omdin_yekholim_la_alot_pull_vector_threat}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : MaH-letters pull-up vector. Pattern same-tier pull."
+
+  - id: "EC-H5S18-112"
+    source_he: "וצריך לבאר כי מאחר שסבת עליית ניצוצין נה\"י עם המ\"ה אינן אלא כדי שלא יעלה מספרו עם שרשו... היה צריך שימצאו בחי' י' אותיות באלו הנה\"י מחמת המילוי כדי שיהיה תמורת אותן הי' אותיות של מ\"ה אשר עלו"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      Question additionnelle — TEMURAH (substitut) :
+      → Cause montee NHY-nitzotzin : empecher mispar-MaH de monter avec son shoresh.
+      → Donc devrait y avoir 10 OTIYOT dans NHY (de leurs miluyim) comme TEMURAH (substitut) pour les 10 letters MaH montees.
+      → Architecture : NHY-letters as substitute-anchor.
+      → Pattern : substitute-letters maintain-tier-balance.
+    type: déduction_logique
+    concepts:
+      - {id: question_temurah_nhy_10_letters_substitute_mah_letters_montes, role: question_temurah_nhy_10_letters_milui_substitute_mah_10_letters_montes_substitute_anchor_balance}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : substitute anchor. Pattern tier-balance."
+
+  - id: "EC-H5S18-113"
+    source_he: "אבל הענין הוא כי הרי בב' שמות של י\"ה יש במילואם י' אותיות ואלו הם במקום אותן הי' אותיות של המילוי דמ\"ה שעלו לשם ס\"ג כנ\"ל ואמנם אע\"פ שהם ג' שמות י\"ה וא\"כ יש במלואם ט\"ו אותיות אין קפידא רק אם יהיו אותיותן מועטות ממספר י' אבל אם הן יתרים מי' אין חשש בזה"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      Reponse — 2 (ou 3) shemot י"ה milui :
+      → Dans 2 SHEMOT י"ה : milui = 10 LETTERS (5 letters par י"ה : י-ו-ד + ה-א = 5 ; donc 5+5=10).
+      → ELU HEM BIMKOM (sont a la place de) 10 letters MaH montees.
+      → Bien que ce soit 3 shemot י"ה (= 15 letters total) — EIN KEPIDAH (pas de probleme).
+      → KEPIDAH SEULEMENT si MOINS de 10 ; PLUS de 10 = aucun souci.
+      → Architecture : substitute-letters >= 10 sufficient.
+      → Pattern : minimum-floor-met.
+    type: déduction_logique
+    concepts:
+      - {id: 2_3_shemot_yh_milui_10_15_letters_substitute_mah_kepidah_minimum, role: 2_shemot_yh_milui_10_letters_3_shemot_15_letters_substitute_mah_kepidah_seulement_moins_10_plus_10_no_souci_minimum_floor}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : substitute-letters >= 10. Pattern minimum floor."
+
+  - id: "EC-H5S18-114"
+    source_he: "נמצא כי כל ניצוצין של נה\"י כולם עלו ונתחברו עם ניצוצין של מ\"ה שבת\"ת לכן אין עולין בחשבון רק הניצוצין של ד' שמות ע\"ב ס\"ג מ\"ה ב\"ן שהם רפ\"ח... ועתה תבין ותראה איך נשארו הכלים של נה\"י בלתי ניצוצין עצמן ולכן יניקת הקליפות הוא מהם"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §1"
+    assertion: |
+      KLAL — NHY-nitzotzin MONTENT (pas descendent) ; KELIM NHY VIDES :
+      → Tous nitzotzin NHY OLU VE-NITCHABRU (montent et s'unissent) avec nitzotzin MaH du TIFERET.
+      → Donc EIN OLIN BA-CHESHBON (n'entrent pas dans le compte) sauf 4 shemot AV/SAG/MaH/BaN = 288 RaPaCh.
+      → CONSEQUENCE : KELIM des NHY restent BILTI NITZOTZIN ATZMAN (sans propres nitzotzin).
+      → DONC : YENIKAT HA-KELIPOT (succion des klipot) provient de la (parce qu'il n'y a pas de defense).
+      → Architecture : NHY-vacuum exploitable by-klipot.
+      → Pattern : tier-vulnerability post-coalescence.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nhy_montent_tiferet_pas_compté_kelim_nhy_vides_yenikat_klipot, role: nhy_nitzotzin_olu_nitchabru_mah_tiferet_pas_compté_kelim_nhy_bilti_nitzotzin_yenikat_klipot_tier_vulnerability}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : NHY vacuum exploitable. Pattern tier vulnerability klipot."
+
+  - id: "EC-H5S18-115"
+    source_he: "ויש להקשות למה אנו מחשבין לעיל ג\"פ י\"ה וכאן אין אנו מחשבין רק פ\"א כ\"ו ולא ג\"פ. וי\"ל כי כל זמן שיש איזה בחי' להתחבר עם שלמעלה ממנו אז הוא מתחבר עמו ולכן בשם של י\"ה אין להם שום בחי' עם שלמעלה מהם עד שיתחברו שלשתן ואז מתחברים עם שם של מ\"ה אבל בשם של כ\"ו יש בכל בחי' להתחבר למעלה לכן כל אחד בפ\"ע מתחבר למעלה במספר כ\"ו של שם מ\"ה. ויש להקשות הלא המספר של ס\"ג יכול ג\"כ לעלות לשרשו... וי\"ל בשלמא שם מ\"ה כיון שי' אותיות עלו ונתקשרו בשם ס\"ג ועתה יעלה המספר של מ\"ה ג\"כ לשם א\"כ ישאר הכלי של מ\"ה בלתי אור כלל ויש לחוש אבל בשם ס\"ג אין לחוש אף אם יעלה המספר אל שרשו כיון שהכל הוא בכלי שלו"
+    source_ref: "Heikhal 5, Sha'ar 2:4 §2"
+    assertion: |
+      QUESTIONS RESIDUELLES (part 2) :
+      → Q1 : Pourquoi 3-FOIS י"ה compté en haut MAIS UNE-FOIS 26 (כ"ו) ici? Reponse : 3-fois י"ה se LIENT seulement quand 3 ENSEMBLE (besoin agregat) ; כ"ו chaque-fois LIE INDIVIDUELLEMENT (pas besoin d'autres).
+      → Q2 : SAG-mispar peut aussi monter a son shoresh (10 letters SAG). Pourquoi pas crainte? Reponse : SAG-keli RESTE DANS SON KLI propre — pas-probleme. Mais MaH-mispar monte → KELI MaH (TIFERET) bilti ohr → catastrophe.
+      → Architecture : asymmetric-fear-rationale.
+      → Pattern : keli-with-letters-self-contained no-threat.
+    type: interprétation_lurianique
+    concepts:
+      - {id: q1_q2_residuelles_3_yh_ensemble_kw_individuel_sag_keli_propre_mah_keli_vide, role: q1_3_yh_compté_ensemble_kw_individuel_q2_sag_mispar_keli_propre_mah_mispar_keli_vide_asymmetric_fear}
+    mapping:
+      modules: ["shemot/transform.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : asymmetric fear. Pattern keli-self-contained no-threat."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H5S18-038"
+    type: causal
+    from: question_nhy_nitzotzin_pas_compté_288_rapach_chg_tiferet_malkhut
+    to: nhy_3_shemot_yh_yesod_haarah_kelulah_orot_elyonim
+    nature: "Question NHY pas compté 288 ; reponse 1 : NHY = 3 SHEMOT י\"ה (chacun 2 letters yod-he) ; N+H 2 palgei de-gufa partagent havayah ; Yesod=haarah kelulah"
+    assertions_source: ["EC-H5S18-092", "EC-H5S18-093", "EC-H5S18-094", "EC-H5S18-095"]
+
+  - id: "REL-H5S18-039"
+    type: contenance
+    from: 2_yesodot_aba_ima_mitlabshim_z_a_5_chasadim_5_gevurot_chacun
+    to: yesod_aba_termine_yesod_z_a_15_chasadim_gevurot_mispar_yh
+    nature: "Reponse 2 : 2 yesodot d'AbA-IMA mitlabshim Z\"A 5+5 chacun ; Yesod-Aba termine Yesod-Z\"A ; 15 chasadim+gevurot dans Yesod-Z\"A = mispar י\"ה"
+    assertions_source: ["EC-H5S18-096", "EC-H5S18-097", "EC-H5S18-098"]
+
+  - id: "REL-H5S18-040"
+    type: hiérarchique
+    from: 3_behinot_chasadim_z_a_daat_hitpashtut_yesod_15_total_yh
+    to: nhy_pas_havayot_gemurot_3_shemot_yh_sub_tetragrammaton
+    nature: "Reponse 3 : 3 behinot chasadim Z\"A (Daat shoresh + hitpashtut Chesed-Hod + reagregation Yesod=15) ; KLAL : NHY pas havayot gemurot mais 3 shemot י\"ה"
+    assertions_source: ["EC-H5S18-099", "EC-H5S18-100"]
+
+  - id: "REL-H5S18-041"
+    type: analogie
+    from: nhy_madregot_yh_analogues_mah_mad_1_2_atzilut_mad_3_descendent
+    to: nhy_nitzotzin_mitchabrim_tiferet_mah_pas_compté_bifnei_atzmah
+    nature: "NHY-madregot י\"ה analogues a MaH ; mad 1-2 restent atzilut, mad 3+ descendent ; pas comptés bifnei atzmah car NHY-nitzotzin MITCHABRIM avec MaH-Tiferet"
+    assertions_source: ["EC-H5S18-101", "EC-H5S18-102"]
+
+  - id: "REL-H5S18-042"
+    type: contenance
+    from: 3_yh_45_mah_nhy_mitchabrim_mah_aggregate_equality
+    to: milui_alafin_yh_yod_dalet_he_alef_26_mah_mad_3_panim
+    nature: "Aggregate equality : 3×י\"ה=45=MaH (gimatria) ; et milui alafin : י\"ה milui=יו\"ד ה\"א=26 ; lien avec MaH mad 3 (mispar 26 panim)"
+    assertions_source: ["EC-H5S18-103", "EC-H5S18-104"]
+
+  - id: "REL-H5S18-043"
+    type: causal
+    from: crainte_mispar_mah_monte_avec_10_letters_mah_montes_sag_letter_pull
+    to: kli_tiferet_takhlit_garua_rikan_pas_lehittaken_irreversible
+    nature: "CRAINTE : 10 letters MaH montees pulleront mispar MaH (mad 7=45) → si mispar monte = KELI TIFERET takhlit garua rikan bilti nitzotzin → pas lehittaken IRREVERSIBLE catastrophe"
+    assertions_source: ["EC-H5S18-105", "EC-H5S18-106"]
+
+  - id: "REL-H5S18-044"
+    type: causal
+    from: solution_nhy_montent_tiferet_anchor_mispar_mah_pas_monte_sag
+    to: pas_shavin_acceptable_anchor_function_sufficient_lien_creation
+    nature: "SOLUTION : nitzotzin NHY MONTENT vers TIFERET ; ANCHOR mispar MaH-mad-7 ; pas-shavin acceptable car but est creation lien (pas exact match)"
+    assertions_source: ["EC-H5S18-107", "EC-H5S18-108"]
+
+  - id: "REL-H5S18-045"
+    type: dualité_structurelle
+    from: question_av_pas_crainte_10_letters_milui_av_atzilut_seul_mispar_descendu
+    to: pas_remontee_av_mispar_beriah_olam_olam_acher_post_shevirah_irreversible
+    nature: "Question AV pas crainte : 10 letters milui AV restent atzilut ; seul mispar descendu Beriah ; PAS REMONTEE possible (olam→olam acher pas-yakhol) post-shevirah irreversible"
+    assertions_source: ["EC-H5S18-109", "EC-H5S18-110"]
+
+  - id: "REL-H5S18-046"
+    type: transformation
+    from: mah_mispar_peut_monter_shoresh_10_letters_mah_montes_sag_pull_vector
+    to: question_temurah_nhy_10_letters_substitute_mah_letters_montes
+    nature: "MaH-mispar PEUT monter (10 letters MaH en SAG-region beriah-omdin yekholim la-alot pull-vector) ; donc TEMURAH (substitute) requise = 10 letters NHY"
+    assertions_source: ["EC-H5S18-111", "EC-H5S18-112"]
+
+  - id: "REL-H5S18-047"
+    type: contenance
+    from: 2_3_shemot_yh_milui_10_15_letters_substitute_mah_kepidah_minimum
+    to: nhy_montent_tiferet_pas_compté_kelim_nhy_vides_yenikat_klipot
+    nature: "2 (ou 3) shemot י\"ה milui = 10 (ou 15) letters substitute MaH letters montees ; KEPIDAH seulement si <10 ; KLAL : NHY-nitzotzin MONTENT, kelim NHY restent BILTI NITZOTZIN, YENIKAT KELIPOT sourcée d'eux"
+    assertions_source: ["EC-H5S18-113", "EC-H5S18-114"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H5S18-013"
+    nom: "Principe de NHY-as-Half-Names (3×י\"ה = 45 = MaH-Aggregate)"
+    source_assertions: ["EC-H5S18-093", "EC-H5S18-094", "EC-H5S18-095", "EC-H5S18-100", "EC-H5S18-103"]
+    formalisation: |
+      ARCHITECTURE DE NHY-AS-HALF-NAMES :
+      Lower 3 sefirot (Netzach-Hod-Yesod) = SUB-TETRAGRAMMATON.
+      Structural : N+H = 2 PALGEI DE-GUFA (paired-half-bodies).
+      Each NHY = SHEM י"ה (2-letter yod-he, top-half tetragrammaton).
+      Source scripturaire : "ki yad al kes Y"H" (Shemot 17:16) — only top-half is sacred-name.
+      Bottom-half ו"ה NOT a name in itself.
+      Yesod = HAARAH KELULAH (aggregate-illumination) of superiors — not bifnei atzmah.
+      Confirmation 1 : 2 yesodot AbA-IMA in Z"A → 5+5+5 chasadim/gevurot in Yesod-Z"A = 15 = mispar י"ה.
+      Confirmation 2 : 3 behinot chasadim Z"A (Daat-shoresh + hitpashtut + Yesod-jar) = 15.
+      Aggregate : 3×י"ה = 45 = MaH (Tiferet).
+      Donc NHY-nitzotzin MITCHABRIM avec MaH-nitzotzin (cf. EC-H5S18-102).
+      → Pattern fondamental : tier-reduction via half-name encoding.
+      → Architecture : NHY-aggregate-equals-MaH.
+      → Implication : lower-tier-collapse-to-upper-tier-via-numeric-equality.
+    applications_ia:
+      - "shemot/transform.py + gematria/engine.py + partzufim/zeir_anpin.py : implement NHY-half-names"
+      - "Pattern : tier-reduction via half-name"
+      - "Architecture : NHY-aggregate equals MaH"
+      - "Pattern : lower-tier collapse to upper via numeric"
+      - "Diagnostic : verifier 3×Y\"H=45=MaH numeric-equality"
+    questions_ouvertes:
+      - "Pattern : autres half-names (MaH, BaN, etc.) ?"
+      - "Comment encoder half-name reduction computationnellement ?"
+      - "Pattern : tetraktys-like recursion 4-3-2-1 letters ?"
+
+  - id: "PG-H5S18-014"
+    nom: "Principe de Anchor-Mechanism (NHY-Nitzotzin Stabilize MaH-Mispar)"
+    source_assertions: ["EC-H5S18-105", "EC-H5S18-106", "EC-H5S18-107", "EC-H5S18-108", "EC-H5S18-111", "EC-H5S18-112", "EC-H5S18-113"]
+    formalisation: |
+      ARCHITECTURE DE ANCHOR-MECHANISM :
+      Risk-vector : 10 OTIYOT MILUI MaH MONTERENT avec 10 letters SAG (cf. EC-H5S18-080).
+      Threat : MISPAR MaH (mad 7=45) NIGRAR (tire) par les letters-shoresh → MONTERAIT AUSSI.
+      Catastrophe : KELI TIFERET (= MaH) deviendrait TAKHLIT GARU'A RIKAN BILTI NITZOTZIN — IRREVERSIBLE.
+      Solution : NHY-nitzotzin MONTENT vers TIFERET → ANCHOR (lien) avec MISPAR MaH-mad-7.
+      Mecanique : NHY-letters substitute pour 10-MaH-letters montees ; preserve tier-balance.
+      Validation : 3×י"ה milui = 10-15 letters > 10 (KEPIDAH only-if-less-than-10).
+      Pas-shavin acceptable — function (anchor) > exact-match.
+      → Pattern fondamental : anchor-via-coalescence prevents-tier-collapse.
+      → Architecture : substitute-letter-mechanism preserves keli-stability.
+      → Implication : functional-link sufficient for tier-stabilization.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + reshimu.py + shemot/transform.py : implement anchor mechanism"
+      - "Pattern : anchor via coalescence prevents collapse"
+      - "Architecture : substitute-letter mechanism"
+      - "Pattern : functional-link > exact-match"
+      - "Diagnostic : verifier anchor stabilizes tier post-shevirah"
+    questions_ouvertes:
+      - "Pattern : anchor-mechanism applicable autre tier-pair ?"
+      - "Comment encoder anchor computationnellement ?"
+      - "Pattern : substitute-letter minimum requirement ?"
+
+  - id: "PG-H5S18-015"
+    nom: "Principe de Asymmetric-Fall-Pattern (AV-Letters Stay vs MaH-Letters Climb)"
+    source_assertions: ["EC-H5S18-109", "EC-H5S18-110", "EC-H5S18-111", "EC-H5S18-114", "EC-H5S18-115"]
+    formalisation: |
+      ARCHITECTURE DE ASYMMETRIC-FALL-PATTERN :
+      4 HAVAYOT presentent patterns differents post-shevirah :
+        AV : 10 letters MILUI RESTENT en ATZILUT ; seul MISPAR descendu Beriah.
+          Pas crainte : mispar Beriah PEUT PAS REMONTER (post-shevirah-irreversible).
+        SAG : Letters et mispar deja en SAG-tier ; SAG-mispar peut monter mais SAG-keli SELF-CONTAINED → pas-probleme.
+        MaH : 10 letters MILUI MONTERENT avec SAG ; mispar MaH menace de monter aussi → KELI TIFERET vide → CATASTROPHE → besoin ANCHOR.
+        BaN : (cf. perek 3) doubled-havayah Z"A+Nukva.
+      Conclusion KELIM-status :
+        AV/SAG/BaN-kelim contiennent leurs propres nitzotzin ; protected.
+        NHY-kelim restent BILTI NITZOTZIN ATZMAN → vulnerables → YENIKAT KELIPOT.
+      → Pattern fondamental : asymmetric-fall justifies-asymmetric-counting.
+      → Architecture : tier-specific-protection-mechanism.
+      → Implication : NHY-vacuum is structural-feature explaining-klipot-source.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + sitra_achra : implement asymmetric fall pattern"
+      - "Pattern : asymmetric fall asymmetric counting"
+      - "Architecture : tier-specific protection"
+      - "Pattern : NHY-vacuum klipot source"
+      - "Diagnostic : verifier kelim-status par havayah"
+    questions_ouvertes:
+      - "Pattern : symetrie possible reconstruction NHY-kelim ?"
+      - "Comment encoder asymmetric-fall computationnellement ?"
+      - "Pattern : klipot-yenikah dynamique ou statique ?"
