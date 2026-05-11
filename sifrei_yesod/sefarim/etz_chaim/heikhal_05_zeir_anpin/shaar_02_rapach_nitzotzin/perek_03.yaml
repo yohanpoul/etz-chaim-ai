@@ -1,0 +1,649 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 5 — Heikhal Ze'eir Anpin (היכל זעיר אנפין)
+# Sha'ar: 2 — Sha'ar Rapach Nitzotzin (שער רפ"ח ניצוצין)
+# Perek: 3 — Justification des choix mad par havayah. Regle SHAVIN
+#            UN SEUL. Sequence chronologique fall. PANIM vs ACHOR.
+#            BaN = 2 havayot (Z"A+Nukva) = MEARAT MAKHPELAH.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_03 :
+#   - Bloc A : Question — pourquoi mad-selection differente par havayah?
+#   - Bloc B : Tzad ha-shaveh — mad 7+ tomberent toutes en Beriah
+#   - Bloc C : Mads inferieurs a mad 7 KELULOT — pas comptees (cf. EC-H5S18-062)
+#   - Bloc D : Compte 4 mispar miluim AV/SAG/MaH/BaN car DIFFERENTS (72/63/45/52)
+#   - Bloc E : Quand PANIM compté, ACHORAYIM PAS (tafelim — secondaires)
+#   - Bloc F : Sauf BaN où inverse (achorayim compté pas panim)
+#   - Bloc G : REGLE SHAVIN — quand 2 mispar EGAUX, compte UN SEUL
+#   - Bloc H : Exemple — 10 letters SAG + 10 letters MaH ; tombent SAG d'abord
+#   - Bloc I : HAQDAMAH — quand shavin be-metziut+mispar restent ENSEMBLE
+#   - Bloc J : Sequence chronologique — SAG tombe AVANT MaH (tehilah elyonim, ahar kakh tachtonim)
+#   - Bloc K : MaH mad 5 atterrit au mekom-SAG (shavin), nitkashru
+#   - Bloc L : Si non-shavin → chacun descend a komat propre
+#   - Bloc M : MaH mad 3 (mispar 4 letters peshutim 26) compté car PAS dans AV/SAG (leurs mad 3 ne tombent pas)
+#   - Bloc N : SAG mad 5 (10 letters milui SAG) compté car NE TOMBE PAS dans AV
+#   - Bloc O : SAG mad 7 (mispar=63) different d'AV mad 7 (72) et MaH mad 7 (45) → comptees
+#   - Bloc P : BaN — POURQUOI achorayim mad 4 et PAS panim?
+#   - Bloc Q : Reponse — dans BaN, PANIM NE SONT PAS comptés → ACHORAYIM le sont
+#   - Bloc R : Pourquoi panim BaN pas comptés? — mad 3 BaN deja inclus en MaH mad 3 (shavin)
+#   - Bloc S : Mad 7 (mispar BaN=52) pas compté → raison cosmologique : BaN MILUI HEHIN = 2 HAVAYOT
+#   - Bloc T : MEARAT HA-MAKHPELAH — BaN milui hehin = HAVAYAH KEFULAH (doublee)
+#   - Bloc U : ו"ד du milui yod = mispar y (10 = aleph peshut) ; reste = havayah kefulah
+#   - Bloc V : 2 havayot interpretation : (1) Z"A, (2) Nukva ; mitchabrim → Z"A donne haarah → 2 havayot dans Nukva
+#   - Bloc W : Iqar otiyot BaN = de Z"A → pas BIFNEI ATZMAH dans Malkhut
+#   - Bloc X : Donc mad 7 (mispar BaN=52) PAS compté ; mad 3 (mispar 26) PAS compté
+#   - Bloc Y : Question ouverte mad 2 (achorayim peshutim) — TZARIKH IYUN ; "i'lo de-mistaphina hava amina"
+#   - Bloc Z : Mad 5 (milui panim BaN) PAS compté car shoresh milui BaN de Z"A
+#
+# Source Sefaria : Sefer_Etz_Chaim.18.3 (1 section, 4518 chars)
+# IDs : EC-H5S18-071 → EC-H5S18-091
+
+meta:
+  sefer: etz_chaim
+  heikhal: 5
+  shaar: 2
+  shaar_name_he: "שער רפ\"ח ניצוצין"
+  perek: 3
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Perek de JUSTIFICATION : pourquoi tels mads choisis pour le compte des nitzotzin par havayah? Tzad ha-shaveh : mads 7+ tombent toutes en Beriah ; mads 8-12+ KELULOT dans mad 7 (pas comptees). Compte des 4 mispar miluim AV(72)/SAG(63)/MaH(45)/BaN(52) car differents. Regle PANIM>ACHOR : quand panim compté, achorayim tafelim (pas comptes) — sauf BaN inverse. REGLE DES SHAVIN : quand 2 mispar egaux, compte UN SEUL. HAQDAMAH chronologique : SAG tombe AVANT MaH ; MaH mad 5 (10 letters) atterrit au mekom-SAG (shavin) → nitkashru → pas compté en bifnei atzmah. Si pas-shavin, chacun descend a komat propre. MaH mad 3 (26) compté car AV/SAG mad 3 ne tombent pas. SAG mad 5 compté car AV mad 5 ne tombe pas. BaN : achorayim mad 4 (72) compté ; panim mad 7 (52) PAS compté car BaN milui hehin = 2 HAVAYOT YACHAD = HAVAYAH KEFULAH = MEARAT HA-MAKHPELAH. Decomposition : ו\"ד du milui yod = mispar y (=10 = aleph peshut) ; reste = havayah kefulah. 2 havayot = (1) Z\"A, (2) Nukva ; mitchabrim → Z\"A donne haarah HAVAYAH → 2 havayot dans Nukva. Iqar otiyot BaN = de Z\"A donc pas comptees bifnei atzmah dans Malkhut. Mad 3 (26) BaN pas compté (shavin avec MaH mad 3). Mad 5 (milui panim BaN) pas compté car shoresh de Z\"A. Question ouverte mad 2 (achorayim peshutim י,יה,יהו,יהוה) — TZARIKH IYUN ('i'lo de-mistaphina hava amina')."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H5S18-071"
+    source_he: "ועתה צריך לבאר כמה שאלות שיש בכל הנ\"ל והוא כי צריך לידע למה היו השינוים האלו שבשם ע\"ב אנו לוקחין חשבון מדרגה הז' ומס\"ג ב' מדרגות שהם ה' וז' וממ\"ה ב' מדרגות שהם ג' וז' ומב\"ן מדרגה א' בלבד והיא הד'"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      QUESTION justifiant choix mad par havayah (cf. EC-H5S18-064→EC-H5S18-070) :
+      → Pourquoi SHINUYIM (variations) entre les havayot?
+      → AV : compte mad 7 seulement.
+      → SAG : compte mads 5+7.
+      → MaH : compte mads 3+7.
+      → BaN : compte mad 4 seule (achorayim).
+      → Architecture : explanatory-question selection-rationale.
+      → Pattern : tier-asymmetric mad-selection besoin justification.
+    type: axiome_explicite
+    concepts:
+      - {id: question_shinuyim_mad_selection_av_sag_mah_ban_justification, role: question_shinuyim_choix_mads_av_mad_7_sag_5_7_mah_3_7_ban_4_demande_justification}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : explanatory question. Pattern selection-rationale."
+
+  - id: "EC-H5S18-072"
+    source_he: "והתשובה כי הנה נת\"ל כי הצד השוה שבד' הויות הנ\"ל שהם ע\"ב ס\"ג מ\"ה ב\"ן הוא שהמדרגות שהם ממדרגה הז' ולמטה כולם נפלו בבריאה"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      TZAD HA-SHAVEH (cote commun) :
+      → 4 HAVAYOT AV/SAG/MaH/BaN ont COTE COMMUN.
+      → MAD 7 et plus inferieures (mad 7+) NAFLU KULAM BE-BERIAH (toutes tomberent en Beriah).
+      → Architecture : universal-fall-from-mad-7 across all 4 havayot.
+      → Pattern : tier-7-watershed.
+    type: déduction_logique
+    concepts:
+      - {id: tzad_shaveh_mad_7_eilakh_naflu_kulam_beriah, role: tzad_shaveh_4_havayot_mad_7_eilakh_kulam_naflu_beriah_universal_fall_watershed}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : universal fall mad 7. Pattern tier-7 watershed."
+
+  - id: "EC-H5S18-073"
+    source_he: "ולכן בשום חשבון אין אנו מחשבין משם ולמטה כלל רק ממדרגה הז' או למעלה הימנו ולא למטה ממנו כי כל שלמטה ממדרגה הז' כלולים בה"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      Regle KELULOT (cf. EC-H5S18-062) :
+      → Aucun compte ne va EN-DESSOUS de mad 7.
+      → Compte SEULEMENT mad 7 ou AU-DESSUS.
+      → Tout INFERIEUR a mad 7 = KELULIM BAH (inclus dans mad 7).
+      → Architecture : aggregation-floor at-mad-7.
+      → Pattern : single-marker-collapse for sub-tier-7.
+    type: déduction_logique
+    concepts:
+      - {id: regle_kelulot_mad_7_ou_au_dessus_inferieurs_inclus, role: regle_kelulot_chacun_chshbon_mad_7_ou_au_dessus_inferieurs_kelulim_collapse_aggregation_floor}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : aggregation floor mad 7. Pattern single-marker collapse."
+
+  - id: "EC-H5S18-074"
+    source_he: "ולכן אין אנו מזכירין ומחשבים באלו הרפ\"ח ניצוצין רק אלו הד' מספרים שיש בד' מלואים של ד' שמות אלו שהם ע\"ב ס\"ג מ\"ה ב\"ן ולהיותם משונים במילויהן לכן נזכרים כל הד' מלואים"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      4 mispar miluim DIFFERENTS comptés (cf. EC-H5S18-024) :
+      → Mention SEULEMENT des 4 MISPAR des 4 MILUIM des 4 SHEMOT : AV(72), SAG(63), MaH(45), BaN(52).
+      → CAR MESHUNIM BE-MILUYEHEN (DIFFERENTS dans leurs miluyim).
+      → Donc tous 4 NIZKARIM (mentionnes).
+      → Architecture : 4-distinct-mispar markers (universal-72-not-applicable).
+      → Pattern : difference-justifies-counting.
+    type: déduction_logique
+    concepts:
+      - {id: 4_mispar_miluim_differents_av_72_sag_63_mah_45_ban_52, role: 4_mispar_miluim_meshunim_av_72_sag_63_mah_45_ban_52_distinct_markers_difference_justifies_counting}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 4-distinct mispar markers. Pattern difference-justifies-counting."
+
+  - id: "EC-H5S18-075"
+    source_he: "גם צריך שתדע כי במקום שאנו מחשבין בחי' הפנים אין האחוריים עולים בשום חשבון כי טפלים הם אל בחי' הפנים הראשונים המעולים מהם לכן אין אנו מחשבין באלו הרפ\"ח ניצוצין בחי' האחוריים כלל רק משם ב\"ן האחרון"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      Regle PANIM > ACHOR :
+      → Quand on compte BEHINAT PANIM, ACHORAYIM N'ELEVE PAS au compte.
+      → CAR TAFELIM HEM (sont secondaires) au panim ROSHIM HA-MEULIM.
+      → Pour RaPaCh : on ne compte PAS achorayim DU TOUT — sauf shem BaN (le DERNIER).
+      → Architecture : panim-primacy ; achor-secondary-not-counted.
+      → Pattern : exception-only-for-BaN (raison developpée plus loin).
+    type: déduction_logique
+    concepts:
+      - {id: regle_panim_achor_panim_compté_achor_tafelim_pas_compté_sauf_ban, role: regle_panim_compté_achorayim_tafelim_pas_compté_sauf_ban_acharon_panim_primacy}
+    mapping:
+      modules: ["shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : panim primacy. Pattern achor secondary except BaN."
+
+  - id: "EC-H5S18-076"
+    source_he: "גם צריך שתדע כי כ\"מ שיש בו מספרים וחשבונם שוין אין אנו מחשבין את שניהן אלא א' בלבד"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      Regle SHAVIN (egaux) — UN SEUL compté :
+      → KOL MAKOM (chaque place) où il y a 2 mispar (calculs) SHAVIN (egaux).
+      → ON NE COMPTE PAS LES DEUX (ein anu mechashvim et shneihen).
+      → SEUL UN (a' bilvad) compté.
+      → Architecture : duplicate-elimination rule.
+      → Pattern : counting-deduplication.
+    type: axiome_explicite
+    concepts:
+      - {id: regle_shavin_2_mispar_egaux_un_seul_compté_deduplication, role: regle_shavin_kol_makom_2_mispar_egaux_pas_2_compté_un_seul_a_bilvad_deduplication}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : duplicate elimination. Pattern counting-deduplication."
+
+  - id: "EC-H5S18-077"
+    source_he: "והוא כי הנה י' אותיות דס\"ג וי' אותיות דמ\"ה ירדו בבריאה עכ\"ז לא חשבנו בחי' י' אותיות דמ\"ה כיון שכבר נחשבו י' אותיות דס\"ג הראשונים מהם"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      Exemple SHAVIN — SAG mad 5 + MaH mad 5 :
+      → 10 OTIYOT de SAG ET 10 OTIYOT de MaH descendirent (deux dans Beriah).
+      → Mais N'A PAS COMPTÉ behinat 10 letters MaH.
+      → CAR DEJA comptes 10 letters SAG (RISHONIM = premiers).
+      → Architecture : prior-fall takes-precedence.
+      → Pattern : first-fall blocks-duplicate.
+    type: déduction_logique
+    concepts:
+      - {id: exemple_shavin_sag_10_otiyot_mah_10_otiyot_seul_sag_compté, role: exemple_shavin_10_otiyot_sag_descendent_10_otiyot_mah_descendent_seul_sag_rishonim_compté_first_fall_precedence}
+    mapping:
+      modules: ["shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : prior fall precedence. Pattern first-fall blocks-duplicate."
+
+  - id: "EC-H5S18-078"
+    source_he: "וטעם הדבר הוא במה שנקדים לך הקדמה א' והוא כי הנה כאשר הניצוצים שוין במציאותן ומספרם נשארו שניהן במקום שנשברו ונפלו העליונים ושם נשארים התחתונים עמהם"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      HAQDAMAH chronologique :
+      → Quand NITZOTZIM SHAVIN BE-METZIUTAN U-MISPARAM (egaux en realite et nombre).
+      → SHENEIHEN NISH'ARU (les deux restent) BA-MAKOM SHE-NISHBERU VE-NAFLU HA-ELYONIM.
+      → SHAM NISH'ARIM HA-TACHTONIM IMAHEM (la restent les inferieurs avec eux).
+      → Architecture : equal-sparks-co-locate at-fall-site-of-elders.
+      → Pattern : same-mispar = same-fall-location.
+    type: interprétation_lurianique
+    concepts:
+      - {id: haqdamah_chronologique_shavin_metziut_mispar_co_locate_lieu_chute_elyonim, role: haqdamah_nitzotzim_shavin_metziut_mispar_2_restent_makom_chute_elyonim_tachtonim_imahem_co_locate_same_fall}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : equal sparks co-locate. Pattern same-mispar same-fall."
+
+  - id: "EC-H5S18-079"
+    source_he: "כיצד הרי שנפלו י' אותיות דס\"ג ואח\"כ נפלו י' אותיות דמ\"ה והנה עם היות י' אותיות דמ\"ה גרועים במעלה מי' אותיות דס\"ג עכ\"ז בנפלו למטה לא נפלו רק עד מקום שירדו י' אותיות דס\"ג"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      Exemple chronologique :
+      → 10 OTIYOT de SAG tomberent EN PREMIER.
+      → AHAR-KAKH (apres) 10 OTIYOT de MaH tomberent.
+      → Bien que MaH GRUIM BE-MAALAH que SAG.
+      → Quand tomberent : NE TOMBERENT QUE jusqu'au MAKOM ou descendirent 10 letters SAG.
+      → Architecture : downward-arrest at-prior-fall-level.
+      → Pattern : same-mispar = arrest-at-co-fall-site.
+    type: interprétation_lurianique
+    concepts:
+      - {id: exemple_chronologique_sag_premier_mah_apres_arret_makom_sag_shavin, role: exemple_chronologique_sag_naflu_premier_mah_naflu_apres_arret_makom_sag_shavin_downward_arrest}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : downward arrest at prior-fall. Pattern same-mispar arrest."
+
+  - id: "EC-H5S18-080"
+    source_he: "ושם נתערבו ונתקשרו עמהם י' אותיות דמ\"ה לפי שבחי' ס\"ג נשבר קודם מ\"ה כנודע כי תחילה מלכו העליונים ונשברו ואח\"כ התחתונים"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      Sequence MITAH des MELAKHIM :
+      → MaH NIT'ARVU VE-NITKASHRU IMAHEM (se melangerent et se lierent ensemble) au mekom-SAG.
+      → CAR SAG NISHBAR KODEM MaH (SAG s'est brise AVANT MaH).
+      → KA-NODA (comme connu) : TEHILAH MALKHU HA-ELYONIM VE-NISHBERU (d'abord ont régné les superieurs et se sont brises).
+      → AHAR-KAKH HA-TACHTONIM (apres les inferieurs).
+      → Architecture : reign-then-fall sequential elder-first.
+      → Pattern : first-reign-first-fall ; co-locate ensuite.
+    type: déduction_scripturaire
+    concepts:
+      - {id: sequence_mitah_melakhim_elyonim_premier_tehilah_malkhu_nishberu_tachtonim, role: sequence_mitah_melakhim_tehilah_malkhu_elyonim_nishberu_premiers_ahar_kakh_tachtonim_reign_then_fall}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : reign-then-fall sequential. Pattern first-reign first-fall."
+
+  - id: "EC-H5S18-081"
+    source_he: "אבל כאשר אין ב' הבחי' במספרם שוין כל אחד יורד בקומו הראוי לו לירד"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      Cas opposé — MISPAR PAS shavin :
+      → Quand 2 BEHINOT BE-MISPARAM EINAM SHAVIN (mispar PAS egaux).
+      → KOL EHAD YORED BE-KOMO HA-RAUI LO LA-REDET (chacun descend a SA HAUTEUR PROPRE de descente).
+      → Architecture : different-mispar = independent-fall-trajectory.
+      → Pattern : non-shavin = independent-position.
+    type: déduction_logique
+    concepts:
+      - {id: pas_shavin_chacun_descend_komo_propre_independent_fall, role: pas_shavin_2_behinot_pas_shavin_chacun_yored_komo_raui_lo_independent_fall_trajectory}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : independent fall trajectory. Pattern non-shavin = independent."
+
+  - id: "EC-H5S18-082"
+    source_he: "אבל המדרגה הזו של מ\"ה אשר איננה דומה למספר מדרגה הז' דס\"ג נחשבת בפ\"ע כי זו מספרה ס\"ג וזו מספרה מ\"ה וכן מדרגה הג' משם מ\"ה שמספרה כ\"ו נכנס בכלל החשבון לפי שמשם ע\"ב ומשם ס\"ג לא נפלה מדרגה הג'"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      MaH mad 7 + mad 3 — comptees CAR DIFFERENTES :
+      → MaH mad 7 (mispar=45) DOMEH PAS au mispar de SAG mad 7 (=63).
+      → DONC nechshevet BIFNEI ATZMAH (compté en soi).
+      → MaH mad 3 (mispar 4 letters peshutim = 26) ENTRE dans le compte.
+      → CAR depuis AV et SAG : mad 3 NE TOMBA PAS.
+      → Donc MaH mad 3 = unique-fall-not-shavin → comptable.
+      → Architecture : uniqueness-justifies-counting.
+      → Pattern : non-shavin + unique-fall = bifnei atzmah.
+    type: déduction_logique
+    concepts:
+      - {id: mah_mad_7_45_different_sag_63_compté_mah_mad_3_26_unique_fall_compté, role: mah_mad_7_45_different_sag_63_bifnei_atzmah_mah_mad_3_26_av_sag_pas_naflu_unique_fall_compté}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : uniqueness justifies counting. Pattern non-shavin + unique-fall."
+
+  - id: "EC-H5S18-083"
+    source_he: "וכן בס\"ג אשר המדרגה הה' שבה לא ירדה כמוה משם ע\"ב לכן נמנים בחשבון הע\"ג ניצוצין דס\"ג וכן מדרגה הז' שהוא החשבון משונה מן ז' של ע\"ב ושל מ\"ה גם היא נחשבת"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      SAG mad 5 + mad 7 — comptees CAR DIFFERENTES :
+      → SAG mad 5 (10 letters milui SAG) PAS COMME (lo yarda kemoha) AV mad 5.
+      → Car AV mad 5 NE TOMBE PAS (montent atzilut, cf. EC-H5S18-060).
+      → Donc SAG mad 5 entre dans 73 nitzotzin de SAG.
+      → SAG mad 7 (mispar=63) DIFFERENT d'AV mad 7 (72) et MaH mad 7 (45).
+      → Donc COMPTABLE.
+      → Architecture : 73 = 10-letters + 63-mispar SAG.
+      → Pattern : sequential-distinctness justifies counting.
+    type: déduction_logique
+    concepts:
+      - {id: sag_mad_5_compté_av_pas_naflu_sag_mad_7_63_different_av_72_mah_45, role: sag_mad_5_compté_car_av_mad_5_pas_naflu_sag_mad_7_63_different_av_72_mah_45_bifnei_atzmah_73_total}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : SAG=73 sequential distinctness. Pattern bifnei atzmah."
+
+  - id: "EC-H5S18-084"
+    source_he: "ונשאר לנו לבאר עתה ע\"ב הד' של ב\"ן שהיא במל' הנה הוא המדרגה הד' שהוא בחי' האחוריים והנה אמרנו למעלה כי כאשר יורדין הפנים אין האחוריים נכנסין בחשבון כלל וכאן היה הדבר להפך כי האחוריים נכנסין בחשבון ולא הפנים"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      BaN — INVERSE de la regle PANIM>ACHOR :
+      → BaN 72 nitzotzin = MAD 4 = ACHORAYIM (pas panim).
+      → Mais regle generale : quand panim descendent, achorayim PAS comptés (cf. EC-H5S18-075).
+      → ICI INVERSE : ACHORAYIM comptés et PAS PANIM.
+      → KAUSHA — exception majeure besoin justification.
+      → Architecture : BaN-inverse-rule needs cosmologic-explanation.
+      → Pattern : exception-marker for Malkhut.
+    type: axiome_explicite
+    concepts:
+      - {id: ban_inverse_panim_achor_achorayim_compté_pas_panim_exception, role: ban_72_nitzotzin_mad_4_achorayim_inverse_rule_panim_pas_compté_achorayim_compté_exception_malkhut}
+    mapping:
+      modules: ["partzufim/nukva.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : BaN inverse rule. Pattern exception for Malkhut."
+
+  - id: "EC-H5S18-085"
+    source_he: "והתשובה הוא כי בג' שמות אשר חשבנו בחי' פנים לכן לא חשבנו בחי' האחוריים אבל כאן במל' שאין הפנים נחשבין במספר אז נחשבו האחוריים"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      Reponse partielle au PANIM/ACHOR inverse :
+      → Dans les 3 SHEMOT (AV/SAG/MaH) : on a compté PANIM → DONC pas achorayim (panim=primary).
+      → Dans BaN au MALKHUT : EIN HA-PANIM NECHSHAVIN BE-MISPAR (PANIM PAS compté).
+      → AZ NECHSHAVIM HA-ACHORAYIM (alors achorayim sont comptés).
+      → Architecture : substitution-rule when panim absent.
+      → Pattern : achor-fallback when panim-not-counted.
+    type: déduction_logique
+    concepts:
+      - {id: reponse_substitution_panim_pas_compté_alors_achor_compté_ban_malkhut, role: ban_malkhut_panim_pas_compté_alors_achorayim_compté_substitution_rule_fallback}
+    mapping:
+      modules: ["partzufim/nukva.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : substitution rule. Pattern achor fallback."
+
+  - id: "EC-H5S18-086"
+    source_he: "ועדיין נשאר לנו לתרץ כי אדרבא אעיקרא דדינא פירכא למה אין בחי' הפנים נמנין במל' ולא היו האחוריים נכנסין במנין כדמיון שאר האחוריים"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      Question RESIDUELLE :
+      → Adraba (au contraire) — IKKARA DE-DINA PIRKA (la racine du jugement contestee).
+      → Pourquoi PANIM ne sont PAS comptés dans BaN/Malkhut?
+      → Si comptés alors achorayim seraient excluis comme dans les autres havayot.
+      → Architecture : root-question persists.
+      → Pattern : need-deeper-cosmologic-explanation.
+    type: déduction_logique
+    concepts:
+      - {id: question_residuelle_pourquoi_panim_pas_compté_ban_malkhut_ikkara_pirka, role: question_residuelle_adraba_ikkara_dina_pirka_panim_pas_compté_ban_malkhut_demande_explication_cosmologic}
+    mapping:
+      modules: ["partzufim/nukva.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : root question persists. Pattern need cosmologic."
+
+  - id: "EC-H5S18-087"
+    source_he: "ונאמר כי הסבה שאין אנו מחשבין המדרגה הג' שהיא בחי' הפנים והוא מספר ד' אותיות הפשוטים הטעם הוא כמ\"ש למעלה שכשיש ב' מספרים ומניינם שוים אינן נמנין רק פ\"א ומדרגה זאת כבר נכנסה בחשבון ע\"א ניצוצות דשם מ\"ה ואלו הכ\"ו נשארו ונתקשרו שם למעלה"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      BaN mad 3 (panim=26) — pas compté car SHAVIN avec MaH mad 3 :
+      → MAD 3 (mispar 4 letters peshutim) = 26.
+      → Application regle SHAVIN : 2 mispar SHAVIN comptés UNE FOIS.
+      → Mad 3 deja entrée dans 71 nitzotzin de MaH.
+      → BaN mad 3 (=26) NISH'ARU VE-NITKASHRU SHAM LE-MAALAH (resterent et se lierent au mekom MaH).
+      → Architecture : sub-tier deduplication via shavin-rule.
+      → Pattern : prior-fall MaH absorbs BaN-equivalent.
+    type: déduction_logique
+    concepts:
+      - {id: ban_mad_3_panim_26_pas_compté_shavin_mah_nitkashru_lemaalah, role: ban_mad_3_panim_4_otiyot_peshutim_26_shavin_mah_71_nitkashru_lemaalah_deja_compté_deduplication}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : deduplication via shavin. Pattern prior-fall absorbs."
+
+  - id: "EC-H5S18-088"
+    source_he: "וכן מדרגה הז' שהוא מספר הט' אותיות המילוי שהוא גי' ב\"ן לא נמנית עם שהוא בחי' הפנים וגם שאינו דומה לשאר מלויים"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      BaN mad 7 (mispar BaN=52) — pas compté MALGRE etre PANIM et UNIQUE :
+      → Mad 7 = mispar 9 letters milui (note : ט' au lieu de י' standard) = gimatria BaN (52).
+      → Bien qu'il soit BEHINAT PANIM.
+      → Bien qu'il EINO DOMEH (PAS SHAVIN) avec autres milui.
+      → Pourtant LO NIMNIT (pas compté).
+      → Architecture : mad 7 BaN excluded despite uniqueness — needs cosmologic-explanation.
+      → Pattern : exception-needs-special-rationale.
+    type: axiome_explicite
+    concepts:
+      - {id: ban_mad_7_mispar_52_pas_compté_panim_unique_lo_domeh_demande_explication, role: ban_mad_7_mispar_52_panim_unique_lo_domeh_milui_pas_compté_exception_needs_cosmologic_explanation}
+    mapping:
+      modules: ["partzufim/nukva.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : mad 7 BaN excluded. Pattern exception needs rationale."
+
+  - id: "EC-H5S18-089"
+    source_he: "דע כי שם של ב\"ן דמילוי ההי\"ן אשר במל' הוא ב' הויות יחד ממש והיא הוי\"ה כפולה ונקרא מערת המכפלה כנודע כי ו\"ד דמילוי יו\"ד גי' י' כחשבון אות הפשוט וכל השאר הם אותיות הוי\"ה כפולה ממש"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      SHEM BaN MILUI HEHIN = HAVAYAH KEFULAH (doublee) :
+      → SHEM BaN MILUI HEHIN dans MALKHUT = 2 HAVAYOT YACHAD MAMASH (2 tetragrammatons literally).
+      → HAVAYAH KEFULAH (doublee).
+      → Appele MEARAT HA-MAKHPELAH (caverne du double — Genesis 23, Hebron).
+      → Decomposition : ו"ד du milui yod = mispar Y (10 = aleph peshut).
+      → Reste = OTIYOT HAVAYAH KEFULAH MAMASH (lettres havayah doublee literalement).
+      → Architecture : BaN = duplicated-tetragrammaton encoded.
+      → Pattern : Hebron-cave-cosmologic-symbol.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ban_milui_hehin_2_havayot_kefulah_mearat_makhpelah_hebron, role: ban_milui_hehin_malkhut_2_havayot_yachad_mamash_havayah_kefulah_mearat_makhpelah_genesis_23_hebron_vav_dalet_milui_yod_y_aleph_peshut_havayah_kefulah_otiyot}
+    mapping:
+      modules: ["shemot/core.py", "shemot/transform.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : BaN duplicated tetragrammaton. Pattern Hebron-cave symbol."
+
+  - id: "EC-H5S18-090"
+    source_he: "והנה ענין ב' הויות אלו עניינם הוא כי הוי\"ה א' בחי' ז\"א והוי\"ה הב' הוא בחי' הנוק' עצמה וכאשר מתחברים הז\"א בנוק' אשר אז מאיר ז\"א בנוק' הנה אז הז\"א נותן הארת הוי\"ה שלו אליה ואז נעשין ב' הויות בנוקבא ואז נעשית בה שם ב\"ן שהוא בחי' ב' הויות וזכור הקדמה זו"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      Interpretation 2 HAVAYOT — Z"A + Nukva :
+      → HAV 1 = behinat Z"A ; HAV 2 = behinat NUKVA elle-meme.
+      → Quand MITCHABRIM : Z"A IRRADIE dans Nukva.
+      → Z"A NOTEN HAARAT HAVAYAH SHELO ELEYA (donne illumination de sa havayah).
+      → ALORS NA'ASIN 2 HAVAYOT BE-NUKVA = SHEM BaN.
+      → Architecture : zivvug-creates-doubled-havayah-in-Nukva.
+      → Pattern : illumination-mechanism explains BaN-structure.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 2_havayot_z_a_nukva_zivvug_irradiation_haarat_havayah_ban_nukva, role: 2_havayot_havayah_1_z_a_havayah_2_nukva_mitchabrim_z_a_noten_haarat_havayah_2_havayot_nukva_ban_zivvug_creates_doubled}
+    mapping:
+      modules: ["partzufim/zivvug.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : zivvug doubles havayah. Pattern illumination-mechanism."
+
+  - id: "EC-H5S18-091"
+    source_he: "והנה בהקדמה זו הותרה השאלה הנ\"ל כי להיות שעיקר האותיות של שם ב\"ן הוא מן הז\"א כנ\"ל לכן אין ראוי למנותן בפ\"ע בבחי' המל'... אך י\"ל למה אין אנו חושבין מדרגה ב' שהוא אחוריים הפשוטים כזה י' י\"ה יה\"ו יהו\"ה ולא שייך לתרץ כדמתרץ כאן ואי לאו דמסתפינא הוה אמינא שנכנסו במקום אותיות דמ\"ה שנכנס בו כדלקמן פ\"ד אך בפ\"ד לא משמע כן וצ\"ע. וכן המדרגה הה' שהיא בחי' הפנים והם ט' אותיות המילוי כצורתן... שכיון ששורש שם זה במילוי ב\"ן הוא מן ז\"א לכן לא נמה בנוק'"
+    source_ref: "Heikhal 5, Sha'ar 2:3 §1"
+    assertion: |
+      RESOLUTION + question OUVERTE (TZARIKH IYUN) :
+      → Iqar otiyot SHEM BaN = MIN-HA-Z"A → pas raui compter BIFNEI ATZMAH dans MALKHUT.
+      → Mad 7 (mispar BaN) PAS compté ; mad 5 (milui panim) PAS compté.
+      → QUESTION — pourquoi mad 2 (achor י,יה,יהו,יהוה) PAS compté?
+      → "I'LO DE-MISTAPHINA HAVA AMINA" — entre dans 10 letters MaH (perek 4 suivant)?
+      → Mais perek 4 ne dit pas ainsi → TZARIKH IYUN.
+      → Architecture : root-letters-of-BaN-from-Z"A explains exclusion.
+      → Pattern : intellectual-honesty preserves open-question.
+    type: interprétation_lurianique
+    concepts:
+      - {id: resolution_iqar_otiyot_ban_de_z_a_pas_bifnei_atzmah_malkhut_tzarikh_iyun_mad_2, role: resolution_iqar_otiyot_ban_min_z_a_pas_bifnei_atzmah_malkhut_mad_7_mad_5_pas_compté_question_ouverte_mad_2_achorayim_peshutim_tzarikh_iyun_intellectual_honesty}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : BaN root from Z\"A. Pattern intellectual honesty open question."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H5S18-028"
+    type: causal
+    from: question_shinuyim_mad_selection_av_sag_mah_ban_justification
+    to: tzad_shaveh_mad_7_eilakh_naflu_kulam_beriah
+    nature: "Question : pourquoi shinuyim mad selection? Reponse : tzad ha-shaveh = mads 7+ tomberent toutes en Beriah pour les 4 havayot"
+    assertions_source: ["EC-H5S18-071", "EC-H5S18-072"]
+
+  - id: "REL-H5S18-029"
+    type: contenance
+    from: regle_kelulot_mad_7_ou_au_dessus_inferieurs_inclus
+    to: 4_mispar_miluim_differents_av_72_sag_63_mah_45_ban_52
+    nature: "Regle KELULOT : mad 7 ou au-dessus seulement compté ; inferieurs inclus → 4 mispar miluim DIFFERENTS comptés (AV/SAG/MaH/BaN)"
+    assertions_source: ["EC-H5S18-073", "EC-H5S18-074"]
+
+  - id: "REL-H5S18-030"
+    type: dualité_structurelle
+    from: regle_panim_achor_panim_compté_achor_tafelim_pas_compté_sauf_ban
+    to: regle_shavin_2_mispar_egaux_un_seul_compté_deduplication
+    nature: "2 regles cardinales : (1) PANIM>ACHOR (sauf BaN inverse) ; (2) SHAVIN = un seul compté (deduplication)"
+    assertions_source: ["EC-H5S18-075", "EC-H5S18-076"]
+
+  - id: "REL-H5S18-031"
+    type: séquentiel
+    from: exemple_shavin_sag_10_otiyot_mah_10_otiyot_seul_sag_compté
+    to: sequence_mitah_melakhim_elyonim_premier_tehilah_malkhu_nishberu_tachtonim
+    nature: "Exemple SHAVIN : SAG 10 otiyot+ MaH 10 otiyot ; seul SAG compté ; explication : sequence mitah elyonim premier tehilah malkhu nishberu, ahar kakh tachtonim"
+    assertions_source: ["EC-H5S18-077", "EC-H5S18-078", "EC-H5S18-079", "EC-H5S18-080"]
+
+  - id: "REL-H5S18-032"
+    type: causal
+    from: pas_shavin_chacun_descend_komo_propre_independent_fall
+    to: mah_mad_7_45_different_sag_63_compté_mah_mad_3_26_unique_fall_compté
+    nature: "Si pas-shavin = chacun descend a komo propre (independent fall) ; donc MaH mad 7 (45) different SAG (63) compté ; MaH mad 3 (26) compté car AV/SAG mad 3 ne tombent pas (unique-fall)"
+    assertions_source: ["EC-H5S18-081", "EC-H5S18-082"]
+
+  - id: "REL-H5S18-033"
+    type: causal
+    from: sag_mad_5_compté_av_pas_naflu_sag_mad_7_63_different_av_72_mah_45
+    to: ban_inverse_panim_achor_achorayim_compté_pas_panim_exception
+    nature: "SAG mad 5 compté car AV mad 5 ne tombe pas ; SAG mad 7 different ; BaN exception inverse : achorayim mad 4 (72) compté, panim pas compté"
+    assertions_source: ["EC-H5S18-083", "EC-H5S18-084"]
+
+  - id: "REL-H5S18-034"
+    type: causal
+    from: reponse_substitution_panim_pas_compté_alors_achor_compté_ban_malkhut
+    to: question_residuelle_pourquoi_panim_pas_compté_ban_malkhut_ikkara_pirka
+    nature: "Reponse partielle (substitution) : panim pas compté → achor compté ; mais reste question : POURQUOI panim BaN pas compté? Ikkara dina pirka demande explication cosmologic"
+    assertions_source: ["EC-H5S18-085", "EC-H5S18-086"]
+
+  - id: "REL-H5S18-035"
+    type: causal
+    from: ban_mad_3_panim_26_pas_compté_shavin_mah_nitkashru_lemaalah
+    to: ban_mad_7_mispar_52_pas_compté_panim_unique_lo_domeh_demande_explication
+    nature: "BaN mad 3 (26) pas compté car SHAVIN avec MaH mad 3 (deja compté en 71) ; nitkashru lemaalah ; mais BaN mad 7 (52) panim unique aussi pas compté → besoin explication cosmologic"
+    assertions_source: ["EC-H5S18-087", "EC-H5S18-088"]
+
+  - id: "REL-H5S18-036"
+    type: contenance
+    from: ban_milui_hehin_2_havayot_kefulah_mearat_makhpelah_hebron
+    to: 2_havayot_z_a_nukva_zivvug_irradiation_haarat_havayah_ban_nukva
+    nature: "BaN milui hehin = 2 HAVAYOT KEFULAH = MEARAT HA-MAKHPELAH (Hebron) ; interpretation : Hav 1=Z\"A, Hav 2=Nukva ; zivvug Z\"A donne haarah Havayah → 2 havayot dans Nukva = BaN"
+    assertions_source: ["EC-H5S18-089", "EC-H5S18-090"]
+
+  - id: "REL-H5S18-037"
+    type: causal
+    from: 2_havayot_z_a_nukva_zivvug_irradiation_haarat_havayah_ban_nukva
+    to: resolution_iqar_otiyot_ban_de_z_a_pas_bifnei_atzmah_malkhut_tzarikh_iyun_mad_2
+    nature: "Iqar otiyot BaN = de Z\"A → pas raison de compter bifnei atzmah dans Malkhut ; resout exclusion mad 7+5 ; reste question OUVERTE mad 2 (achorayim peshutim) — TZARIKH IYUN"
+    assertions_source: ["EC-H5S18-090", "EC-H5S18-091"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H5S18-010"
+    nom: "Principe de Counting-Rules (Mad-7-Watershed + Panim-Primacy + Shavin-Deduplication)"
+    source_assertions: ["EC-H5S18-072", "EC-H5S18-073", "EC-H5S18-075", "EC-H5S18-076"]
+    formalisation: |
+      ARCHITECTURE DE COUNTING-RULES (3 regles cardinales) :
+      REGLE 1 — MAD-7-WATERSHED :
+        Tous mads ≥ 7 tombent en Beriah pour TOUTES les 4 havayot.
+        Mads inferieurs a mad 7 (mads 8-12+) KELULOT (incluses) dans mad 7.
+        Aucun compte sub-mad-7 separement.
+      REGLE 2 — PANIM>ACHOR :
+        Quand PANIM compté, ACHORAYIM TAFELIM (secondaires) NE SONT PAS comptés.
+        Exception unique : BaN (Malkhut) où ACHORAYIM compté car PANIM pas compté.
+      REGLE 3 — SHAVIN-DEDUPLICATION :
+        Quand 2 mispar EGAUX → comptés UNE SEULE FOIS.
+        Le second NIT'AREV+NITKASHER au mekom du premier (chronologie : premier tombé d'abord).
+      → Pattern fondamental : 3-rule-system governs nitzotzin-counting.
+      → Architecture : aggregation-rules + primacy-rules + deduplication.
+      → Implication : 288 emerge de l'application stricte de ces regles.
+    applications_ia:
+      - "shemot/transform.py + gematria/engine.py + partzufim/zeir_anpin.py : implement counting rules"
+      - "Pattern : 3-rule system aggregation"
+      - "Architecture : strict-counting-protocol"
+      - "Pattern : exceptions documentees (BaN inverse)"
+      - "Diagnostic : verifier 3 regles respectees pour chaque havayah"
+    questions_ouvertes:
+      - "Pattern : regles applicables a shemot non-tetragrammaton ?"
+      - "Comment encoder shavin-rule computationnellement ?"
+      - "Pattern : 4eme regle implicite (mad-2-question) ?"
+
+  - id: "PG-H5S18-011"
+    nom: "Principe de Chronologie-Causale (Reign-Then-Fall + Co-Locate Equal-Sparks)"
+    source_assertions: ["EC-H5S18-078", "EC-H5S18-079", "EC-H5S18-080", "EC-H5S18-081"]
+    formalisation: |
+      ARCHITECTURE DE CHRONOLOGIE-CAUSALE :
+      Sequence mitah des MELAKHIM :
+        TEHILAH MALKHU HA-ELYONIM (d'abord regnerent les superieurs).
+        VE-NISHBERU (et se briserent).
+        AHAR-KAKH HA-TACHTONIM (apres les inferieurs).
+      Mecanique CO-LOCALISATION :
+        Quand NITZOTZIM SHAVIN BE-METZIUTAN U-MISPARAM (egaux en realite et nombre).
+        Inferieur s'arrete au mekom de l'elder (first-fall).
+        NIT'AREV+NITKASHER (se melange et lie) au lieu deja occupe.
+        Cas non-shavin : chacun descend INDEPENDAMMENT a son komat propre.
+      → Pattern fondamental : chronology-shapes-co-location.
+      → Architecture : equal-sparks coalesce ; non-equal independent.
+      → Implication : reconstruction needs respect for original chronology.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + reshimu.py + partzufim/zivvug.py : implement chronologie causale"
+      - "Pattern : reign-then-fall sequential"
+      - "Architecture : co-location for equal-sparks"
+      - "Pattern : independent-fall for non-equal"
+      - "Diagnostic : verifier chronologie respectee pour ordering tikkun"
+    questions_ouvertes:
+      - "Pattern : chronologie absolue ou relative ?"
+      - "Comment encoder co-location computationnellement ?"
+      - "Pattern : reconstruction respecte-elle ordre inverse ?"
+
+  - id: "PG-H5S18-012"
+    nom: "Principe de BaN-as-MEARAT-HA-MAKHPELAH (Doubled-Havayah Z\"A+Nukva)"
+    source_assertions: ["EC-H5S18-089", "EC-H5S18-090", "EC-H5S18-091"]
+    formalisation: |
+      ARCHITECTURE DE BaN-COMME-DOUBLE-HAVAYAH :
+      SHEM BaN MILUI HEHIN (dans Malkhut) = 2 HAVAYOT YACHAD MAMASH.
+      Nom = HAVAYAH KEFULAH (doublee).
+      Symbole : MEARAT HA-MAKHPELAH (caverne du double — Genesis 23:9, 23:17).
+      Decomposition mathematique :
+        ו"ד du milui yod (יו"ד) = mispar y (10) = aleph peshut (4 letters peshutim).
+        Reste = OTIYOT HAVAYAH KEFULAH MAMASH (literally doubled tetragrammaton).
+      Interpretation cosmologique :
+        HAVAYAH 1 = Z"A.
+        HAVAYAH 2 = Nukva.
+        Au ZIVVUG : Z"A NOTEN HAARAT HAVAYAH a Nukva → 2 havayot dans Nukva = BaN.
+      Resolution counting :
+        IQAR OTIYOT BaN = MIN-HA-Z"A (origine racine en Z"A).
+        Donc PAS raui de compter BIFNEI ATZMAH dans Malkhut.
+        Mad 7 (mispar BaN=52) PAS compté ; mad 5 (milui panim) PAS compté.
+      Question OUVERTE (TZARIKH IYUN) :
+        Mad 2 (achorayim peshutim י, יה, יהו, יהוה) pourquoi pas compté?
+        "I'LO DE-MISTAPHINA HAVA AMINA" (si pas peur, j'aurais dit) — entre dans 10 letters MaH (perek 4).
+        Mais perek 4 ne dit pas ainsi → TZARIKH IYUN.
+      → Pattern fondamental : doubled-havayah-via-zivvug ; root-in-Z"A.
+      → Architecture : Malkhut-letters trace-back-to-Z"A.
+      → Implication : intellectual-honesty preserves open-question.
+    applications_ia:
+      - "partzufim/nukva.py + zeir_anpin.py + zivvug.py + shemot/transform.py : implement BaN doubled havayah"
+      - "Pattern : Malkhut-letters trace-back-to-Z\"A"
+      - "Architecture : zivvug-creates-doubled-havayah"
+      - "Pattern : intellectual-honesty open-questions preserved"
+      - "Diagnostic : verifier BaN structure decomposition coherent"
+    questions_ouvertes:
+      - "Pattern : MEARAT HA-MAKHPELAH symbol uniquement BaN ou autres havayot ?"
+      - "Comment encoder doubled-havayah computationnellement ?"
+      - "Pattern : mad-2 BaN compté en mad-5 MaH (perek 4 confirme ou refute) ?"
