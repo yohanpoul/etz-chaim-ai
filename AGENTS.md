@@ -83,7 +83,7 @@ LLM dispatch is **profile-keyed**, not single-model. Configuration lives in:
 | Profile | Use case |
 |---|---|
 | `claude_max` | Anthropic Pro/Max plan via Claude Code CLI (no API key needed) |
-| `sefira_full` | Full Anthropic API via key (Opus + Sonnet + Haiku 4.x) |
+| `anthropic_full` | Full Anthropic API via key (Opus + Sonnet + Haiku 4.x) |
 | `gpt5_full` | OpenAI GPT-5.x family via API |
 | `gemini_full` | Google Gemini 3 family via API |
 | `bedrock` | Anthropic models via AWS Bedrock |

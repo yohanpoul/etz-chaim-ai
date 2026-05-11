@@ -48,7 +48,7 @@ which dispatches to the active profile in `config.yaml`.
 | Profile | Stack | When to use |
 |---|---|---|
 | `claude_max` | Anthropic CLI subprocess | You have Claude Pro/Max (no API key in env) |
-| `sefira_full` | Anthropic API direct (Opus + Sonnet + Haiku 4.x) | Full Anthropic, programmatic |
+| `anthropic_full` | Anthropic API direct (Opus + Sonnet + Haiku 4.x) | Full Anthropic, programmatic |
 | `gpt5_full` | OpenAI GPT-5.x family | Full OpenAI stack |
 | `gemini_full` | Google Gemini 3 family | Full Google stack |
 | `bedrock` | Anthropic via AWS Bedrock | Enterprise / AWS-aligned |
@@ -59,9 +59,9 @@ cognitive engine adapts automatically.
 
 ```yaml
 # config.yaml (excerpt — real structure)
-active_profile: sefira_full  # ← change this line to switch
+active_profile: anthropic_full  # ← change this line to switch
 profiles:
-  sefira_full:
+  anthropic_full:
     primary: anthropic/claude-opus-4-7
     fast: anthropic/claude-haiku-4-5
     # ...
@@ -222,4 +222,4 @@ turn it on for the extra polish. Otherwise, the system works.
 - [Agent Skills cross-tool standard](https://www.agensi.io/learn/agent-skills-open-standard)
 - [AGENTS.md cross-tool guide](https://vibecoding.app/blog/agents-md-guide)
 - [Anthropic OpenAI SDK compatibility caveats](https://docs.anthropic.com/en/api/openai-sdk)
-- The real configuration: see [`config.yaml`](../config.yaml) in repo root
+- The real configuration: see `config.yaml` (in repo root) in repo root
