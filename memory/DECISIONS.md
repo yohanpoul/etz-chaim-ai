@@ -188,7 +188,7 @@ Works in VS Code, GitHub Codespaces (free 60h/month), JetBrains, Cursor.
 ## ADR-0007 — Single `model_registry.py` to eliminate slug drift
 
 **Date**: 2026-05-11
-**Status**: PROPOSED (will be ACCEPTED in Sprint 1)
+**Status**: ACCEPTED (Sprint 1.A)
 
 ### Context
 
@@ -265,6 +265,32 @@ After Sprint 1:
 - [`.claude/rules/python-dev.md`](.claude/rules/python-dev.md) — "never hardcode model names"
 - [Anthropic model migration guide](https://docs.anthropic.com/en/docs/about-claude/models/migrating-to-claude-4)
 - [Pydantic AI model overview](https://pydantic.dev/docs/ai/models/overview/)
+
+### Implementation notes (Sprint 1.A)
+
+Landed on branch `sprint-1.a/model-registry`. Module
+`etzchaim/llm/model_registry.py` exposes `resolve_model`,
+`resolve_model_for_task`, `get_active_profile`, `list_aliases`,
+`UnknownModelError`, and the underlying `ModelRegistry` class (lazy
+mtime-invalidated singleton). Provider prefix (``anthropic/``, ``openai/``,
+``bedrock/`` …) is stripped before returning so SDK callsites keep getting
+bare slugs.
+
+Migrated leak sites:
+- `etzchaim/providers/anthropic_sdk.py` — `MODEL_SLUGS` and `_resolve_model`
+  deleted; SDK now calls `resolve_model()`.
+- `etzchaim/providers/__init__.py` — dropped `MODEL_SLUGS` re-export.
+- `etzchaim/autopilot/runners/claude_skill.py` — default model is now
+  `resolve_model("opus")`.
+- `tests/test_providers/test_anthropic_sdk.py` — rewrote
+  `test_generate_resolves_short_alias_to_full_slug` to assert against
+  `resolve_model("opus")`.
+
+Out of scope for 1.A (deferred to 1.B with inline TODO):
+- `etzchaim/initiate.py::_CANONICAL_LLMS` — user-facing identifier registry
+  excluded from `make check-model-leaks` until the catalog migrates.
+- `etzchaim/providers/litellm_provider.py` docstring examples — same
+  treatment.
 
 ---
 

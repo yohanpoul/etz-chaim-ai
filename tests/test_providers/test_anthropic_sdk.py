@@ -28,16 +28,18 @@ def test_generate_returns_text_and_latency():
 
 
 def test_generate_resolves_short_alias_to_full_slug():
-    from etzchaim.providers.anthropic_sdk import AnthropicSDKProvider, MODEL_SLUGS
+    """Short alias is resolved through etzchaim.llm.model_registry."""
+    from etzchaim.llm.model_registry import resolve_model
+    from etzchaim.providers.anthropic_sdk import AnthropicSDKProvider
     client = _mock_client()
     p = AnthropicSDKProvider(client=client)
     p.generate(prompt="test", model="opus", max_tokens=100)
     call_kwargs = client.messages.create.call_args.kwargs
-    assert call_kwargs["model"] == MODEL_SLUGS["opus"]
+    assert call_kwargs["model"] == resolve_model("opus")
 
 
 def test_generate_passes_through_full_slug():
-    """If caller provides a full API slug (not in MODEL_SLUGS), it passes through."""
+    """If caller provides a full API slug unknown to the registry, it passes through."""
     from etzchaim.providers.anthropic_sdk import AnthropicSDKProvider
     client = _mock_client()
     p = AnthropicSDKProvider(client=client)

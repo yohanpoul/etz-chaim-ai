@@ -12,13 +12,12 @@ Built-in providers :
 """
 from __future__ import annotations
 
-from etzchaim.providers.anthropic_sdk import MODEL_SLUGS, AnthropicSDKProvider
+from etzchaim.providers.anthropic_sdk import AnthropicSDKProvider
 from etzchaim.providers.litellm_provider import LiteLLMProvider
 from etzchaim.providers.registry import select_claude_backend
 
 __all__ = [
     "AnthropicSDKProvider",
     "LiteLLMProvider",
-    "MODEL_SLUGS",
     "select_claude_backend",
 ]

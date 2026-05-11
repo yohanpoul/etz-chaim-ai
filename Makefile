@@ -1,5 +1,5 @@
 # Etz Chaim AI — Makefile
-.PHONY: help install test lint format docs docs-serve demo clean release
+.PHONY: help install test lint format docs docs-serve demo clean release check-model-leaks
 
 PY ?= python3
 VENV ?= .venv
@@ -60,3 +60,24 @@ clean:
 release: clean lint test docs
 	@echo "✓ Release readiness verified"
 	@echo "Next : git tag v0.1.0 && git push --tags"
+
+# Scan for hardcoded model slugs outside the model registry.
+# Sprint 4 candidate to promote to a CI gate.
+# initiate.py + litellm_provider.py temporarily excluded; folded into the
+# registry in Sprint 1.B (see memory/DECISIONS.md ADR-0007).
+# Portable: uses git+grep so it runs in any /bin/sh without ripgrep.
+check-model-leaks:
+	@echo "Scanning for hardcoded model slugs outside the registry..."
+	@files=$$(git ls-files 'etzchaim/*.py' | grep -vE \
+		'^(etzchaim/llm/model_registry\.py|etzchaim/initiate\.py|etzchaim/providers/litellm_provider\.py)$$' \
+		| grep -v '^etzchaim/tests/'); \
+	if [ -z "$$files" ]; then echo "No files to scan."; exit 0; fi; \
+	if printf '%s\n' $$files | xargs grep -nE 'claude-(opus|sonnet|haiku)-[0-9]' 2>/dev/null; then \
+		echo "ERROR: hardcoded Claude model slugs found outside the registry. Use resolve_model() instead."; \
+		exit 1; \
+	fi; \
+	if printf '%s\n' $$files | xargs grep -nE 'gpt-[0-9]\.[0-9]' 2>/dev/null; then \
+		echo "ERROR: hardcoded GPT model slugs found."; \
+		exit 1; \
+	fi; \
+	echo "OK - no hardcoded model slugs detected outside the registry."

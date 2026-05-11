@@ -5,6 +5,77 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-05-11 — model registry + slug drift fix (Sprint 1.A)
+
+Implements [ADR-0007](memory/DECISIONS.md).
+
+### Breaking changes
+
+- **`etzchaim.providers.MODEL_SLUGS` removed.** The dict re-exported from
+  `etzchaim.providers.__init__` and defined in
+  `etzchaim/providers/anthropic_sdk.py` is gone. The dict was a year behind
+  reality (`"opus" → "claude-opus-4-20250514"` while `config.yaml` already
+  used `claude-opus-4-7`), so external consumers were silently picking the
+  older model. Migrate to:
+
+  ```python
+  # before
+  from etzchaim.providers import MODEL_SLUGS
+  slug = MODEL_SLUGS["opus"]
+
+  # after
+  from etzchaim.llm.model_registry import resolve_model
+  slug = resolve_model("opus")          # uses active profile from config.yaml
+  slug = resolve_model("opus", profile="benchmark_opus")  # explicit override
+  ```
+
+  `resolve_model` is profile-aware and reads `config.yaml` lazily with mtime
+  invalidation; it strips the LiteLLM `<provider>/` prefix so SDK callers
+  keep getting bare slugs.
+
+- **`ClaudeSkillRunner(model=...)` default changed** from the hardcoded
+  string `"claude-opus-4-7"` to `None`, which now resolves to
+  `resolve_model("opus")` against the active profile. Under the default
+  `claude_max` profile this resolves to `"opus"` (the CLI alias). Both
+  values are accepted by the Claude Code CLI; the new default tracks the
+  profile declaration instead of a hardcoded SDK-style slug.
+
+### Added
+
+- **`etzchaim/llm/model_registry.py`** — single source of truth for model
+  alias resolution. Exposes `resolve_model`, `resolve_model_for_task`,
+  `get_active_profile`, `list_aliases`, `UnknownModelError`, and the
+  `ModelRegistry` class. Lazy, mtime-invalidated, thread-safe.
+- **`make check-model-leaks`** target — scans `etzchaim/` for hardcoded
+  Claude / GPT slugs outside the registry. Portable git+grep
+  implementation. Sprint 4 candidate for CI promotion.
+- **`tests/test_llm/test_model_registry.py`** — 12 tests, <100 ms.
+
+### Changed
+
+- **`etzchaim/providers/anthropic_sdk.py`** — `MODEL_SLUGS` dict and
+  `_resolve_model` helper deleted; the SDK now resolves slugs through
+  `etzchaim.llm.model_registry.resolve_model()`.
+- **`etzchaim/autopilot/runners/claude_skill.py`** — default model resolved
+  through the registry.
+- **ADR-0007** in `memory/DECISIONS.md` promoted from `PROPOSED` to
+  `ACCEPTED` with implementation notes.
+
+### Notes for upgraders
+
+If you imported `MODEL_SLUGS` directly, switch to `resolve_model`. No other
+behavior is changed: the active profile and the slugs it declares are
+unchanged. The change ships `etzchaim/initiate.py::_CANONICAL_LLMS` and
+`etzchaim/providers/litellm_provider.py` docstring examples unchanged — a
+follow-up Sprint 1.B folds them into the registry.
+
+Sprint 1.B (planned) will:
+- Fold `etzchaim/initiate.py::_CANONICAL_LLMS` into the registry
+- Add prompt caching wired through `resolve_model()` (~90% cost reduction
+  on the spec corpus)
+- Migrate deep facultés to Opus 4.7
+- Wire Batch API for the nightly daemon
+
 ## [0.2.30] - 2026-05-04 — autopilot budget tracker + PR-count sync + CI unblock
 
 ### Fixed
