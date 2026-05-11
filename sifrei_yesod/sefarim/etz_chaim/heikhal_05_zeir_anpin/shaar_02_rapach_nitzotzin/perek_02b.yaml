@@ -1,0 +1,619 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 5 — Heikhal Ze'eir Anpin (היכל זעיר אנפין)
+# Sha'ar: 2 — Sha'ar Rapach Nitzotzin (שער רפ"ח ניצוצין)
+# Perek: 2b — HAQDAMAH 10 nekudim → A"A/AbA-IMA/Z"A/Nukva placement.
+#             AV/SAG/MaH/BaN distribution Z"T A"A. RAPACH = 4×72.
+#             Calcul nitzotzin par havayah. Closing : 4 havayot dans BaN.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_02b :
+#   - Bloc T : HAQDAMAH — 10 nekudim sortis nikvei einayim A"K
+#   - Bloc U : KETER nekudah → A"A (post-tikkun atzilut)
+#   - Bloc V : CHB nekudot → 2 partzufim AbA+IMA
+#   - Bloc W : CHESED-YESOD (6S) → Z"A ; MALKHUT → Nukva-Z"A
+#   - Bloc X : Au TIKKUN : pas placés au makom rishon ; A"A descend jusqu'a siyum atzilut
+#   - Bloc Y : AbA+IMA habillent CHESED-GEVURAH d'A"A (PAS CHB d'A"A, contre l'attente)
+#   - Bloc Z : Z"A ne habille pas VK A"A ; seulement de CHATZI TIFERET-A"A et descend
+#   - Bloc AA : NUKVA reste makom rishon = habille MALKHUT d'A"A
+#   - Bloc BB : KLAL — AV en CHESED A"A ; SAG en GEVURAH ; MaH en CHATZI TIFERET+NHY ; BaN en MALKHUT
+#   - Bloc CC : 4 HAVAYOT toutes en Z"T A"A
+#   - Bloc DD : AV — 6 mad premieres montent atzilut ; mad 7 (mispar 10 lettres milui = 72 = AV)
+#   - Bloc EE : Mad inferieures incluses dans AV (kelulot) ; pas comptees comme dabar bifnei atzmah
+#   - Bloc FF : RPCH = 4 × AV (72) ; AV : 72 nitzotzin
+#   - Bloc GG : SAG — 4 mad premieres montent ; descendent mad 5 + mad 7 = 10 letters + 63 = 73
+#   - Bloc HH : MaH — 2 mad premieres montent ; descend = 26 + 45 = 71
+#   - Bloc II : BaN — toutes mad descendent SAUF mad 1 (Malkhut nekudah ahat reste atzilut) ; ירדו י' אותיות achor BaN = 72
+#   - Bloc JJ : Total = 4 × 72 = 288 RaPaCh ; mais distinction : AV=mad7 ; SAG=mad 5+7 ; MaH=mad 3+7 ; BaN=mad 4
+#   - Bloc KK : Closing — tous AV+SAG+MaH+BaN dans shem BaN qui inclut 10 nekudot et se divise
+#
+# Source Sefaria : Sefer_Etz_Chaim.18.2 (2eme moitie + part 1, ~2700 chars)
+# IDs : EC-H5S18-050 → EC-H5S18-070
+
+meta:
+  sefer: etz_chaim
+  heikhal: 5
+  shaar: 2
+  shaar_name_he: "שער רפ\"ח ניצוצין"
+  perek: 2
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part B de 2 — HAQDAMAH 10 nekudim sortis nikvei einayim A\"K → KETER=A\"A, CHB=AbA+IMA, CHESED-YESOD(6S)=Z\"A, MALKHUT=Nukva. Au TIKKUN : pas placement original — A\"A descend jusqu'a siyum atzilut ; AbA-IMA habillent CHESED-GEVURAH A\"A (PAS CHB) ; Z\"A habille seulement chatzi-Tiferet-A\"A et descend ; NUKVA seule reste makom rishon=Malkhut A\"A. KLAL : AV en CHESED A\"A (CHESED gimatria=72) ; SAG en GEVURAH ; MaH en chatzi-Tiferet+NHY (V\"K Z\"A) ; BaN en MALKHUT. 4 HAVAYOT toutes en Z\"T A\"A. AV : 6 mad premieres montent atzilut ; mad 7 = mispar 10 lettres milui = 72 = AV ; mad inferieures kelulot. RPCH = 4×AV(72) = 288. SAG : 4 mad premieres montent ; descend mad 5+7 = 10 lettres + 63 = 73. MaH : 2 mad premieres montent ; descend mad 3+7 = 26 + 45 = 71. BaN : toutes mad descendent SAUF mad 1 (Malkhut nekudah ahat reste atzilut) ; achorayim BaN = 72. Total 4×72 = 288 RaPaCh. Distinction : AV=mad7 ; SAG=mad 5+7 (73) ; MaH=mad 3+7 (71) ; BaN=mad 4 (72). Closing : tous AV/SAG/MaH/BaN dans shem BaN englobant 10 nekudot."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H5S18-050"
+    source_he: "וטרם שנבאר מספר כ\"א ואחד צריך שנקדים הקדמה א' והוא זה. דע כי כאשר יצאו הי' נקודים מנקבי עינים דא\"ק כנודע הנה בצאתן הניחו רושם שלהם בעולם אצילות"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §18"
+    assertion: |
+      HAQDAMAH (cf. EC-H5S18-010 sur 7 melakhim, EC-H1S4 sur nikvei einayim) :
+      → Avant de detailler mispar nitzotzin de chaque havayah, HAQDAMAH (preliminaire) necessaire.
+      → DA (sache) : quand 10 NEKUDIM sortirent NIKVEI EINAYIM A"K (cf. shaar precedent).
+      → BE-TZE'TAN HINIḤU ROSHEM SHELAHEM (en sortant ils laisserent leur empreinte) en OLAM ATZILUT.
+      → Architecture : ocular-emanation leaves trace-pattern in Atzilut.
+      → Pattern : reshimu-mechanism foundation Atzilut-structure.
+    type: axiome_explicite
+    concepts:
+      - {id: haqdamah_10_nekudim_nikvei_einayim_ak_roshem_atzilut, role: haqdamah_10_nekudim_sortis_nikvei_einayim_ak_hiniḥu_roshem_olam_atzilut_trace_pattern}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "adam_kadmon"]
+      relevance: "Architecture : ocular emanation trace. Pattern reshimu foundation."
+
+  - id: "EC-H5S18-051"
+    source_he: "והוא מנקודת הכתר שלהם נעשה ממנה אח\"כ כששנתקן עולם האצילות בחי' פרצוף א\"א ומנקודת חו\"ב נעשה ב' פרצופים או\"א ומן חסד עד היסוד שבהם הם ו\"ס נעשו פרצוף ז\"א ומן י' נעשה פרצוף נוק' דז\"א"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §18"
+    assertion: |
+      Mapping NEKUDOT → PARTZUFIM (post-tikkun atzilut) :
+      → KETER nekudah → ARIKH ANPIN (A"A) — partzuf #1.
+      → CHB (Chokhmah+Bina) nekudot → 2 partzufim AbA+IMA — #2-3.
+      → CHESED-YESOD (6 sefirot intermediaires) → Z"A — #4.
+      → MALKHUT (י) → NUKVA d'Z"A — #5.
+      → Architecture : 10-nekudim → 5-partzufim mapping.
+      → Pattern : 10-to-5 condensation post-tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: 10_nekudim_to_5_partzufim_keter_aa_chb_aba_ima_chesed_yesod_z_a_malkhut_nukva, role: 10_nekudim_to_5_partzufim_keter_arikh_anpin_chb_aba_ima_chesed_yesod_6s_z_a_malkhut_nukva_z_a_condensation}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : 10-to-5 condensation. Pattern partzufim mapping."
+
+  - id: "EC-H5S18-052"
+    source_he: "ואמנם כאשר היה אח\"כ זמן התיקון אשר אז הלבישו זה לזה כנ\"ל באורך ולא הונחו במקומם הראשון ממש אמנם היה באופן אחר"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §18"
+    assertion: |
+      ZMAN HA-TIKKUN — placement different (cf. EC-H5S17-001 sur Z"A revet A"A) :
+      → Quand vint ZMAN HA-TIKKUN : HILBISHU ZEH LE-ZEH (s'habillerent l'un l'autre).
+      → LO HUNḤU BE-MEKOMAM HA-RISHON MAMASH (PAS placés au lieu original).
+      → AMNAM HAYAH BE-OFEN AHER (mais ce fut d'une autre maniere).
+      → Architecture : tikkun-placement deviates from initial-mapping.
+      → Pattern : post-tikkun-rearrangement.
+    type: axiome_explicite
+    concepts:
+      - {id: zman_tikkun_lo_makom_rishon_hilbishu_zeh_lezeh_ofen_aher, role: zman_tikkun_hilbishu_zeh_lezeh_lo_hunḥu_makom_rishon_mamash_ofen_aher_post_tikkun_rearrangement}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin"]
+      relevance: "Architecture : tikkun deviation. Pattern rearrangement."
+
+  - id: "EC-H5S18-053"
+    source_he: "והוא כי הנה נודע כי א\"א מתפשט עד סיום אצילות ממש ומהראוי היה שאו\"א יהיו למעלה במקום חו\"ב דא\"א כי הרי הם חו\"ב אבל לא כך היה אלא שהלבישו את חו\"ג דא\"א"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §18"
+    assertion: |
+      A"A et placement AbA-IMA :
+      → A"A MITPASHET (s'etend) AD SIYUM ATZILUT MAMASH (jusqu'a fin atzilut).
+      → MIN-HA-RAUI HAYAH (il aurait du etre) que AbA-IMA = LE-MAALAH BE-MAKOM CHB d'A"A (en haut au lieu CHB d'A"A) — car ce sont CHB.
+      → MAIS LO KAKH HAYAH (pas ainsi) — HILBISHU CHESED-GEVURAH d'A"A (habillerent Chesed-Gevurah, pas Chokhmah-Binah).
+      → Architecture : tier-shift-down AbA-IMA from CHB to CHG.
+      → Pattern : expected-vs-actual placement deviation.
+    type: axiome_explicite
+    concepts:
+      - {id: a_a_mitpashet_siyum_atzilut_aba_ima_chesed_gevurah_pas_chb, role: a_a_mitpashet_siyum_atzilut_mamash_aba_ima_devraient_chb_aa_mais_hilbishu_chesed_gevurah_aa_tier_shift_down}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : tier-shift-down placement. Pattern expected-vs-actual."
+
+  - id: "EC-H5S18-054"
+    source_he: "וכן מהראוי היה שז\"א אשר בחינתו ו\"ק מחסד עד יסוד ילביש ו\"ק דא\"א ולא כך היה אלא שאינו מלביש רק מחצי ת\"ת דא\"א ולמטה"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §18"
+    assertion: |
+      Z"A placement (cf. EC-H5S17-005 sur Z"A revet A"A Tabbur-down) :
+      → Z"A behinato V"K (6 katzvot) MI-CHESED AD YESOD.
+      → MIN-HA-RAUI YALBISH V"K d'A"A (devrait habiller V"K d'A"A entierement).
+      → Mais LO KAKH HAYAH — habille SEULEMENT MI-CHATZI TIFERET d'A"A et BAS.
+      → Architecture : Z"A-placement starts mid-Tiferet-A"A (NOT from Chesed-A"A).
+      → Pattern : partial-coverage with displacement-down.
+    type: axiome_explicite
+    concepts:
+      - {id: z_a_v_k_chesed_yesod_chatzi_tiferet_aa_lemata_pas_tout_v_k_aa, role: z_a_v_k_chesed_yesod_devrait_v_k_aa_mais_seulement_chatzi_tiferet_aa_lemata_partial_coverage_displacement}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "arikh_anpin"]
+      relevance: "Architecture : Z\"A partial coverage A\"A. Pattern displacement-down."
+
+  - id: "EC-H5S18-055"
+    source_he: "ואמנם נוק' דז\"א נשארה במקומה הראשון והוא שהיא מלבשת את המל' דא\"א"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §18"
+    assertion: |
+      NUKVA — exception (cf. EC-H5S17-013 sur Nukva chazeh-Z"A-down) :
+      → NUKVA d'Z"A NISHARA BE-MEKOMAH HA-RISHON (RESTE au makom original).
+      → Habille MALKHUT d'A"A.
+      → Architecture : Nukva is sole-partzuf preserving original-mapping.
+      → Pattern : extreme-tier-stability.
+    type: axiome_explicite
+    concepts:
+      - {id: nukva_makom_rishon_malbeshet_malkhut_aa_exception, role: nukva_z_a_nisharah_makom_rishon_malbeshet_malkhut_aa_seule_exception_extreme_tier_stability}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "arikh_anpin"]
+      relevance: "Architecture : Nukva preserves original placement. Pattern stability."
+
+  - id: "EC-H5S18-056"
+    source_he: "כלל העולה מכל זה כי שם ע\"ב אשר מקומו בחכמה ושם ס\"ג אשר מקומו בבינה ירדו למטה ולא הלבישו אלא את חו\"ג דא\"א"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §18"
+    assertion: |
+      KLAL HA-OLEH — distribution post-tikkun :
+      → AV : MEKOMO BE-CHOKHMAH ; descendu et habille (avec Aba) CHESED d'A"A.
+      → SAG : MEKOMO BE-BINAH ; descendu et habille (avec Ima) GEVURAH d'A"A.
+      → Architecture : AV-CHESED + SAG-GEVURAH (compressed to Z"T-A"A).
+      → Pattern : top-tier-names compress to mid-tier of A"A.
+    type: déduction_logique
+    concepts:
+      - {id: klal_av_chesed_aa_sag_gevurah_aa_yardu_lemata, role: klal_haoleh_av_chokhmah_descendu_chesed_aa_sag_binah_descendu_gevurah_aa_top_tier_compress_mid_tier}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "abba", "imma"]
+      relevance: "Architecture : top-tier compress mid-A\"A. Pattern AV-CHESED SAG-GEVURAH."
+
+  - id: "EC-H5S18-057"
+    source_he: "ונמצא כי שם ע\"ב בחסד ולכן חסד גימ' ע\"ב ושם ס\"ג בגבורה ושם מ\"ה בחצי ת\"ת ונה\"י בלבד עם היותו כולל ו\"ק גמורים"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §18"
+    assertion: |
+      Confirmation gematriot AV/SAG/MaH placement :
+      → AV en CHESED — confirme par CHESED gimatria = 72 (ע"ב = 72 ; חסד = ח+ס+ד = 8+60+4 = 72).
+      → SAG en GEVURAH.
+      → MaH en CHATZI TIFERET + NHY (V"K bas) — bien qu'il soit V"K KOLEL gemurim.
+      → Architecture : gematria-confirms-placement (CHESED=72=AV).
+      → Pattern : numeric-validation cosmologic-mapping.
+    type: déduction_scripturaire
+    concepts:
+      - {id: chesed_gematria_72_av_sag_gevurah_mah_chatzi_tiferet_nhy_kolel_v_k, role: confirmation_chesed_gematria_72_av_sag_gevurah_mah_chatzi_tiferet_nhy_kolel_v_k_gemurim_numeric_validation_mapping}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/arikh_anpin.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "arikh_anpin"]
+      relevance: "Architecture : gematria confirms placement. Pattern numeric validation."
+
+  - id: "EC-H5S18-058"
+    source_he: "הרי איך הז\"א שהוא בחי' ו\"ק דאצילות שהם בחי' שם מ\"ה הוא שם בחצי ת\"ת דא\"א (מ\"מ די לו לסבת גודל אצילות שכל בחי' שם מ\"ה הושם בחצי ת\"ת דא\"א ומנה\"י בלבד ושם ב\"ן הוא במל' לבדה)"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §18"
+    assertion: |
+      Z"A=MaH placement + BaN dans Malkhut :
+      → Z"A = V"K d'ATZILUT = SHEM MaH ; place en CHATZI TIFERET d'A"A.
+      → DAI LO LE-SIBAT GODEL ATZILUT (suffit a cause de la grandeur d'atzilut).
+      → Tout SHEM MaH place en chatzi-Tiferet d'A"A et NHY seulement.
+      → SHEM BaN en MALKHUT seule (le-vada).
+      → Architecture : MaH-Z"A in chatzi-Tiferet+NHY ; BaN-Nukva in Malkhut.
+      → Pattern : 4-name-placement encode Z"T-A"A.
+    type: déduction_logique
+    concepts:
+      - {id: z_a_mah_chatzi_tiferet_nhy_aa_ban_malkhut_lo_vada, role: z_a_mah_v_k_atzilut_chatzi_tiferet_aa_godel_atzilut_ban_malkhut_aa_le_vada_4_name_placement_z_t_aa}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "partzufim/arikh_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "arikh_anpin"]
+      relevance: "Architecture : 4-name placement Z\"T-A\"A. Pattern MaH-Z\"A BaN-Nukva."
+
+  - id: "EC-H5S18-059"
+    source_he: "והנה נתבאר איך כל הד' הויות ע\"ב ס\"ג מ\"ה ב\"ן כולם הם בז\"ת דא\"א לבד והרי נתבאר הקדמה א' הנ\"ל"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §18"
+    assertion: |
+      KLAL — 4 HAVAYOT toutes en Z"T A"A :
+      → Toutes les 4 HAVAYOT (AV/SAG/MaH/BaN) sont KULAM BE-Z"T d'A"A LE-VAD (seules dans les 7 inferieures d'A"A).
+      → Pas dans G"R d'A"A (3 superieures).
+      → HARI NITBAR HAQDAMAH 1 (HAQDAMAH 1 expliquee).
+      → Architecture : 4-havayot compressed Z"T-A"A only.
+      → Pattern : preliminary-haqdamah complete.
+    type: déduction_logique
+    concepts:
+      - {id: 4_havayot_kulam_z_t_aa_pas_g_r_aa_haqdamah_1_complete, role: 4_havayot_av_sag_mah_ban_kulam_z_t_aa_le_vad_pas_g_r_aa_haqdamah_1_complete}
+    mapping:
+      modules: ["partzufim/arikh_anpin.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["arikh_anpin", "zeir_anpin"]
+      relevance: "Architecture : 4-havayot compressed Z\"T-A\"A. Pattern haqdamah complete."
+
+  - id: "EC-H5S18-060"
+    source_he: "הנה מהוי\"ה דע\"ב אשר בחסד האורות שלו שעלו למעלה באצילות כשנשברו הכלים היו ו' מדרגות הראשונות ושאר המדרגות מן הז' ואילך"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §19"
+    assertion: |
+      AV — orot ALU (montent) atzilut :
+      → De HAVAYAH d'AV (en CHESED) : OROT QUI MONTERENT en atzilut quand kelim NISHBERU.
+      → 6 MADREGOT PREMIERES (mad 1-6) montent (cf. EC-H5S18-029→EC-H5S18-034).
+      → SHE'AR HA-MADREGOT (le reste) MIN MAD 7 VE-EILAKH (a partir de mad 7) descendent.
+      → Architecture : 6-up + 6-down split for AV.
+      → Pattern : higher-mad up, lower-mad down.
+    type: axiome_explicite
+    concepts:
+      - {id: av_6_mad_premieres_montent_atzilut_mad_7_eilakh_descendent, role: av_orot_chesed_6_madregot_premieres_montent_atzilut_mad_7_ve_eilakh_descendent_higher_up_lower_down}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 6-up 6-down split AV. Pattern higher-up lower-down."
+
+  - id: "EC-H5S18-061"
+    source_he: "והוא בכלל שהוא חשבון ומספר י' אותיות המילוי שהם גי' ע\"ב ומשם ואילך כולם ירדו בבריאה עם הכלים בסוד הניצוצין"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §19"
+    assertion: |
+      AV — KLAL nitzotzin descendus :
+      → Le KLAL = MISPAR de 10 lettres MILUI = 72 (gematria AV) = MAD 7.
+      → Et MISHAM VE-EILAKH (a partir de la) tous descendent en BERIAH avec kelim.
+      → BE-SOD HA-NITZOTZIN (en sod des etincelles).
+      → Architecture : mad-7-as-summarizing-tier ; downward-cascade-from-7.
+      → Pattern : 72-as-aggregate-marker.
+    type: axiome_explicite
+    concepts:
+      - {id: av_mad_7_mispar_milui_72_klal_descendent_beriah_nitzotzin, role: av_klal_mispar_10_otiyot_milui_72_av_mad_7_misham_ve_eilakh_descendent_beriah_nitzotzin}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : mad-7 summary AV. Pattern 72-aggregate marker."
+
+  - id: "EC-H5S18-062"
+    source_he: "ופשוט הוא שכל המדרגות שלמטה ממנו נכללין בה ואינם נחשבים בה כדבר בפ\"ע ולכן אינה עולה במספר ולכן אינו נחשב רק מדרגה זו בחי' מספר י' אותיות המילוי שהוא גי' ע\"ב וכל שאר הניצוצין שלמטה מהם נכללין באלו ע\"ב"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §19"
+    assertion: |
+      AV — KOLELOT principle :
+      → Toutes les madregot INFERIEURES (mad 8-12+) sont NIKHLALIM (incluses) dans mad-7.
+      → Pas comptees comme DABAR BIFNEI ATZMAH (chose en soi).
+      → MISPAR ne s'eleve pas pour elles.
+      → Seul mad-7 (MISPAR 10 letters milui = 72) compte.
+      → SHE'AR HA-NITZOTZIN inferieurs INCLUS dans ces 72.
+      → Architecture : aggregation-by-tier-7 ; lower-mads-collapsed.
+      → Pattern : single-marker-aggregation.
+    type: déduction_logique
+    concepts:
+      - {id: av_mad_inferieurs_kolelot_dans_mad_7_72_pas_compte_dabar_bifnei_atzmah, role: av_madregot_inferieurs_nikhlalim_mad_7_72_pas_compte_dabar_bifnei_atzmah_aggregation_collapse}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : aggregation by tier-7. Pattern collapse-marker."
+
+  - id: "EC-H5S18-063"
+    source_he: "וכבר נת\"ל במקומות רבים כי מציאת מספר רפ\"ח ניצוצין הם ד' בחי' ע\"ב שירדו מאלו הד' הויות וכולם יחד הם רפ\"ח ניצוצים"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §19"
+    assertion: |
+      RaPaCh = 4 × 72 (cf. EC-H5S18-022 sur 288 nitzotzin) :
+      → Mispar RPCH (288) = 4 BEHINOT D'AV (72 each).
+      → DESCENDUS des 4 HAVAYOT (AV+SAG+MaH+BaN).
+      → KULAM YACHAD (tous ensemble) = 288.
+      → Architecture : 4×72=288 = aggregate sparks formula.
+      → Pattern : universal-72-marker × 4-havayot.
+    type: déduction_logique
+    concepts:
+      - {id: rapach_4_behinot_av_72_4_havayot_288_total, role: rapach_4_behinot_av_72_descend_4_havayot_kulam_yachad_288_aggregate_formula}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 4×72=288. Pattern universal-72 × 4-havayot."
+
+  - id: "EC-H5S18-064"
+    source_he: "והנה נתבאר ע\"ב ניצוצין שירדו מכלל הרפ\"ח ניצוצים והם מהוי\"ה ראשונה דע\"ב ומשם ס\"ג שהוא יותר תחתון משל ע\"ב לא עלו האורות שלו באצילות רק ד' מדרגות הראשונים בלבד"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §19"
+    assertion: |
+      AV : 72 nitzotzin ; SAG transition :
+      → AV : 72 nitzotzin descendent (premiere havayah).
+      → SAG (yoter tachton que AV) : seulement 4 MADREGOT PREMIERES MONTENT en atzilut (vs 6 pour AV).
+      → Architecture : tier-down = fewer-mads-up ; more-mads-down.
+      → Pattern : descending-tier monotonic-decrease in upward-mads.
+    type: axiome_explicite
+    concepts:
+      - {id: av_72_nitzotzin_sag_4_mad_premieres_montent_atzilut, role: av_72_nitzotzin_sag_yoter_tachton_4_mad_premieres_seulement_montent_atzilut_decreasing_upward}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : tier-down fewer-mads-up. Pattern monotonic decrease."
+
+  - id: "EC-H5S18-065"
+    source_he: "נמצא כי ירדו בבריאה ב' מדרגות אחרות יותר עליונים שהם י' אותיות דמילוי הס\"ג ובחי' האחור שלהם שהם מדרגה ה' וז' וכאשר נמנה בחי' המדרגה הה' שהם י' אותיות דמילוי ס\"ג בבחי' אותיות עצמן ונמנה גם מספרם שהוא ס\"ג הרי ע\"ג ניצוצין שירדו משם ס\"ג"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §19"
+    assertion: |
+      SAG : 73 nitzotzin :
+      → 2 MADREGOT additionnelles plus elevees descendent (vs AV).
+      → MAD 5 (10 letters milui SAG) + MAD 7 (mispar de cela = 63).
+      → Compte mad 5 (10 letters otiyot) + mispar (63 = SAG) = 10 + 63 = 73.
+      → Architecture : SAG = 73 nitzotzin (10 letters + 63 mispar).
+      → Pattern : tier-down-add-letters-and-mispar.
+    type: déduction_logique
+    concepts:
+      - {id: sag_73_nitzotzin_mad_5_10_letters_milui_mad_7_mispar_63, role: sag_2_mad_additionnelles_descendent_mad_5_10_letters_milui_sag_mad_7_mispar_63_total_73_nitzotzin}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : SAG=73. Pattern tier-down add letters+mispar."
+
+  - id: "EC-H5S18-066"
+    source_he: "ומשם מ\"ה שהוא הת\"ת ירדו ב' מדרגות עליונים יותר לפי שהוא גרוע במעלה מן ס\"ג ולא עלו באצילות רק ב' מדרגות ראשונים לבד וכל השאר ירדו בבריאה נמצא כי הניצוצין שלהם הם ע\"א ניצוצין כ\"ו ומ\"ה"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §19"
+    assertion: |
+      MaH : 71 nitzotzin :
+      → MaH (en TIFERET, gru'a be-maalah que SAG) : 2 mad supplementaires descendent.
+      → Seulement MAD 1-2 montent atzilut (vs 4 pour SAG).
+      → Le reste descend en Beriah.
+      → 71 nitzotzin = 26 (mad 3 mispar 4 letters peshutim panim) + 45 (mad 7 mispar 10 letters milui = MaH).
+      → Architecture : MaH = 71 nitzotzin (26+45).
+      → Pattern : tier-down accelerating-fall.
+    type: déduction_logique
+    concepts:
+      - {id: mah_71_nitzotzin_mad_3_26_mad_7_45_total_71, role: mah_tiferet_2_mad_supplementaires_descendent_mad_1_2_montent_71_nitzotzin_26_mad_3_45_mad_7_total_71}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : MaH=71 (26+45). Pattern accelerating-fall."
+
+  - id: "EC-H5S18-067"
+    source_he: "פי' כי מספר ד' אותיות הפשוטים הם מספר כ\"ו ומספר י' אותיות מילוי הם מ\"ה והנה כ\"ו ומ\"ה הם ע\"א ניצוצין הרי הם ג\"פ ע\"ב"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §19"
+    assertion: |
+      MaH — explication mispar 71 :
+      → MISPAR de 4 OTIYOT PESHUTIM (panim simples) = 26.
+      → MISPAR de 10 OTIYOT MILUI = 45 (= MaH).
+      → 26 + 45 = 71 nitzotzin = G"P (= grande precision approximative) AV (72).
+      → 71 ≈ 72 - 1 (approximation 3-fois AV apres total compute).
+      → Architecture : MaH-71-nitzotzin = 26+45 sum.
+      → Pattern : numeric-precision near-72-marker.
+    type: déduction_logique
+    concepts:
+      - {id: mah_71_explication_26_4_otiyot_peshutim_45_10_otiyot_milui, role: mah_71_explication_26_4_otiyot_peshutim_panim_45_10_otiyot_milui_mah_total_71_proche_72}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : MaH=71 (26+45). Pattern near-72 marker."
+
+  - id: "EC-H5S18-068"
+    source_he: "ומשם ב\"ן ירדו כל המדרגות חוץ מן העליונה והראשונה לפי שלהיות בחי' ב\"ן מל' והיא תחתונה מכולם היה בה שבירה יותר מכום שלמעלה ממנה ולא עלו ממנה רק ד' אותיות פשוטים בבחי' אותיות עצמן וכל השאר ירדו לבריאה"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §19"
+    assertion: |
+      BaN — toutes mad descendent SAUF mad 1 :
+      → BaN = MALKHUT = TACHTONAH MI-KULAM (la plus inferieure).
+      → SHEVIRAH > kulam she-le-maalah (plus que tous les superieurs).
+      → SEULEMENT 4 OTIYOT PESHUTIM (mad 1) montent ; tout le reste descend Beriah.
+      → Architecture : BaN-extreme-shevirah only-mad-1-survives.
+      → Pattern : terminal-tier maximum-fall.
+    type: axiome_explicite
+    concepts:
+      - {id: ban_malkhut_tachtonah_shevirah_max_seule_mad_1_4_otiyot_montent, role: ban_malkhut_tachtonah_kulam_shevirah_yoter_seulement_mad_1_4_otiyot_peshutim_montent_terminal_tier_max_fall}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : BaN extreme shevirah. Pattern terminal-tier max-fall."
+
+  - id: "EC-H5S18-069"
+    source_he: "וז\"ס שאנו אומרים בכ\"מ כי המלכות נשארה באצילות בבחינת נקודה א' בלבד וכל השאר נתמעט ממנה וירדו אל הבריאה והבן זה כי הנה נקודה ההיא היא בחי' מדרגה ראשונה שבכולם בלבד"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §19"
+    assertion: |
+      MALKHUT = NEKUDAH ACHAT atzilut :
+      → SOD bien connu : MALKHUT NISHARAH BE-ATZILUT BE-BEHINAT NEKUDAH ACHAT BILVAD (un seul point).
+      → Tout le reste se reduisit (NITMA'ET) et descendit en BERIAH.
+      → Cette nekudah = MAD 1 (plus elevee parmi toutes).
+      → Architecture : Malkhut-residual = single-point survives.
+      → Pattern : minimum-residual single-degree.
+    type: interprétation_lurianique
+    concepts:
+      - {id: malkhut_nekudah_achat_atzilut_mad_1_seul_survit, role: malkhut_nisharah_atzilut_nekudah_achat_bilvad_nitmaet_yardu_beriah_mad_1_seul_minimum_residual}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : Malkhut single-point residual. Pattern minimum residual."
+
+  - id: "EC-H5S18-070"
+    source_he: "ואמנם מספר הע\"ב ניצוצין שירדו ממנה הם בחי' המספר והחשבון של י' אותיות דאחור דב\"ן ולא הפנים דשם עצמו שהוא מדרגה א' רק אחוריים שהם גימ' ע\"ב הרי ד\"פ ע\"ב שירדו מן ד' הויות ומספר כולם הם רפ\"ח ניצוצין"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §19"
+    assertion: |
+      BaN — 72 nitzotzin = mad 4 ; total 4×72=288 :
+      → 72 nitzotzin BaN = MISPAR de 10 OTIYOT D'ACHOR de BaN (= mad 4).
+      → PAS PANIM du shem (mad 1) ; ACHORAYIM gematria = 72.
+      → 4 PE'AMIM (× ) AV (72) = 288 RaPaCh.
+      → MISPAR KULAM = 288 nitzotzin.
+      → Architecture : BaN=72 = achor-tetration ; total 4×72=288 RaPaCh confirme.
+      → Pattern : universal-72 across-4-tiers.
+    type: déduction_logique
+    concepts:
+      - {id: ban_72_nitzotzin_mad_4_achorayim_total_4_havayot_72_288_rapach, role: ban_72_nitzotzin_mispar_10_otiyot_achor_ban_mad_4_pas_panim_4_havayot_72_total_288_rapach_universal_marker}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : BaN=72 achor + 4×72=288. Pattern universal-72."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H5S18-019"
+    type: causal
+    from: haqdamah_10_nekudim_nikvei_einayim_ak_roshem_atzilut
+    to: 10_nekudim_to_5_partzufim_keter_aa_chb_aba_ima_chesed_yesod_z_a_malkhut_nukva
+    nature: "HAQDAMAH 10 nekudim nikvei einayim A\"K → roshem atzilut → KETER=A\"A, CHB=AbA-IMA, CHESED-YESOD=Z\"A, MALKHUT=Nukva (mapping post-tikkun)"
+    assertions_source: ["EC-H5S18-050", "EC-H5S18-051"]
+
+  - id: "REL-H5S18-020"
+    type: transformation
+    from: zman_tikkun_lo_makom_rishon_hilbishu_zeh_lezeh_ofen_aher
+    to: a_a_mitpashet_siyum_atzilut_aba_ima_chesed_gevurah_pas_chb
+    nature: "Zman tikkun : pas placement makom rishon ; A\"A descend siyum atzilut ; AbA-IMA habillent CHESED-GEVURAH A\"A pas CHB (devraient mais non — tier-shift-down)"
+    assertions_source: ["EC-H5S18-052", "EC-H5S18-053"]
+
+  - id: "REL-H5S18-021"
+    type: dualité_structurelle
+    from: z_a_v_k_chesed_yesod_chatzi_tiferet_aa_lemata_pas_tout_v_k_aa
+    to: nukva_makom_rishon_malbeshet_malkhut_aa_exception
+    nature: "Z\"A V\"K Chesed-Yesod habille seulement chatzi-Tiferet-A\"A et bas (pas tout V\"K) ; Nukva exception : reste makom rishon = malbeshet Malkhut A\"A"
+    assertions_source: ["EC-H5S18-054", "EC-H5S18-055"]
+
+  - id: "REL-H5S18-022"
+    type: contenance
+    from: klal_av_chesed_aa_sag_gevurah_aa_yardu_lemata
+    to: chesed_gematria_72_av_sag_gevurah_mah_chatzi_tiferet_nhy_kolel_v_k
+    nature: "KLAL : AV en CHESED A\"A (CHESED gematria=72=AV) ; SAG en GEVURAH ; MaH en chatzi-Tiferet+NHY V\"K kolel ; numeric validation"
+    assertions_source: ["EC-H5S18-056", "EC-H5S18-057"]
+
+  - id: "REL-H5S18-023"
+    type: hiérarchique
+    from: z_a_mah_chatzi_tiferet_nhy_aa_ban_malkhut_lo_vada
+    to: 4_havayot_kulam_z_t_aa_pas_g_r_aa_haqdamah_1_complete
+    nature: "Z\"A=MaH en chatzi-Tiferet+NHY ; BaN en Malkhut le-vada ; KLAL : 4 havayot kulam Z\"T A\"A le-vad pas G\"R ; HAQDAMAH 1 complete"
+    assertions_source: ["EC-H5S18-058", "EC-H5S18-059"]
+
+  - id: "REL-H5S18-024"
+    type: séquentiel
+    from: av_6_mad_premieres_montent_atzilut_mad_7_eilakh_descendent
+    to: av_mad_inferieurs_kolelot_dans_mad_7_72_pas_compte_dabar_bifnei_atzmah
+    nature: "AV : 6 mad premieres montent atzilut ; mad 7 et plus descendent ; mad inferieurs (8-12) NIKHLALIM dans mad 7 (72) ; pas comptees dabar bifnei atzmah"
+    assertions_source: ["EC-H5S18-060", "EC-H5S18-061", "EC-H5S18-062"]
+
+  - id: "REL-H5S18-025"
+    type: contenance
+    from: rapach_4_behinot_av_72_4_havayot_288_total
+    to: ban_72_nitzotzin_mad_4_achorayim_total_4_havayot_72_288_rapach
+    nature: "RaPaCh = 4 behinot d'AV (72 each) descendent 4 havayot = 288 ; confirme avec BaN=72 (mad 4 achorayim) — universal-72 marker × 4-tiers"
+    assertions_source: ["EC-H5S18-063", "EC-H5S18-070"]
+
+  - id: "REL-H5S18-026"
+    type: séquentiel
+    from: av_72_nitzotzin_sag_4_mad_premieres_montent_atzilut
+    to: mah_71_nitzotzin_mad_3_26_mad_7_45_total_71
+    nature: "AV : 72 nitzotzin (mad 7 only) ; SAG : 73 nitzotzin (mad 5+7=10+63) ; MaH : 71 nitzotzin (mad 3+7=26+45) — descending tier accelerating fall"
+    assertions_source: ["EC-H5S18-064", "EC-H5S18-065", "EC-H5S18-066", "EC-H5S18-067"]
+
+  - id: "REL-H5S18-027"
+    type: causal
+    from: ban_malkhut_tachtonah_shevirah_max_seule_mad_1_4_otiyot_montent
+    to: malkhut_nekudah_achat_atzilut_mad_1_seul_survit
+    nature: "BaN Malkhut tachtonah : shevirah maximum ; seulement mad 1 (4 otiyot peshutim) monte ; SOD : Malkhut nisharah atzilut nekudah achat bilvad (mad 1 unique)"
+    assertions_source: ["EC-H5S18-068", "EC-H5S18-069"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H5S18-007"
+    nom: "Principe de Tikkun-Placement-Deviation (Expected vs Actual Mapping)"
+    source_assertions: ["EC-H5S18-052", "EC-H5S18-053", "EC-H5S18-054", "EC-H5S18-055"]
+    formalisation: |
+      ARCHITECTURE DE TIKKUN-PLACEMENT-DEVIATION :
+      Initial 10-nekudim → 5-partzufim mapping (theoretical) :
+        KETER → A"A.
+        CHB → AbA+IMA.
+        6S (CHESED-YESOD) → Z"A.
+        MALKHUT → NUKVA.
+      Au TIKKUN : LO HUNḤU BE-MEKOMAM HA-RISHON MAMASH.
+      Reality :
+        A"A descend MITPASHET ad-siyum-atzilut.
+        AbA+IMA habillent CHESED-GEVURAH d'A"A (PAS CHB, comme attendu).
+        Z"A habille SEULEMENT chatzi-Tiferet-A"A et bas (PAS V"K-A"A entier).
+        NUKVA SEULE preserve makom rishon = MALKHUT A"A.
+      → Pattern fondamental : tikkun-rearrangement systematique.
+      → Architecture : expected-vs-actual placement-deviation.
+      → Implication : tier-shift-down applies to all-except-Nukva.
+    applications_ia:
+      - "partzufim/arikh_anpin.py + abba.py + imma.py + zeir_anpin.py + nukva.py : implement tikkun-placement"
+      - "Pattern : tikkun-rearrangement vs initial mapping"
+      - "Architecture : tier-shift-down systematic"
+      - "Pattern : Nukva exception (preserves original)"
+      - "Diagnostic : verifier placement post-tikkun deviates"
+    questions_ouvertes:
+      - "Pattern : pourquoi Nukva seule preserve original placement ?"
+      - "Comment encoder tier-shift-down computationnellement ?"
+      - "Pattern : tier-shift universel ou specifique aux 4 partzufim ?"
+
+  - id: "PG-H5S18-008"
+    nom: "Principe de RaPaCh-Calculus (4×72 = 288 via Tier-Decreasing-Mad-Selection)"
+    source_assertions: ["EC-H5S18-060", "EC-H5S18-061", "EC-H5S18-063", "EC-H5S18-064", "EC-H5S18-065", "EC-H5S18-066", "EC-H5S18-067", "EC-H5S18-068", "EC-H5S18-070"]
+    formalisation: |
+      ARCHITECTURE DE RaPaCh-CALCULUS :
+      Total RaPaCh = 4 × 72 = 288 nitzotzin.
+      Mais distribution par havayah hetero-uniforme :
+        AV : 72 nitzotzin (mad 7 = mispar 10 letters milui = 72).
+          6 mad premieres MONTENT ; 6 mad+ descendent.
+          Lower mads NIKHLALIM dans mad-7-aggregate.
+        SAG : 73 nitzotzin = mad 5 (10 letters milui SAG) + mad 7 (mispar = 63).
+          4 mad premieres montent ; mad 5+7 descendent additionellement.
+        MaH : 71 nitzotzin = mad 3 (mispar 26) + mad 7 (mispar 45).
+          2 mad premieres montent ; mad 3+ descendent.
+        BaN : 72 nitzotzin = mad 4 (mispar 10 letters achor BaN = 72).
+          SEULE mad 1 (4 otiyot peshutim) monte ; tout le reste descend.
+          Malkhut residue = NEKUDAH ACHAT (single-point survives).
+      Sum : 72 + 73 + 71 + 72 = 288 (cf. variant-precision near-72).
+      → Pattern fondamental : monotonic-decreasing-mad-up across havayot.
+      → Architecture : universal-72-marker × 4-tiers + tier-specific-mad-selection.
+      → Implication : 288 = invariant total despite tier-asymmetric distribution.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + nukva.py + reshimu.py + gematria/engine.py : implement RaPaCh calculus"
+      - "Pattern : monotonic-decreasing mad-up"
+      - "Architecture : universal-72 × 4-tiers"
+      - "Pattern : tier-specific mad selection"
+      - "Diagnostic : verifier 4×72=288 invariant"
+    questions_ouvertes:
+      - "Pattern : 73+71+72+72=288 vs 4×72=288 — exactness ou approximation ?"
+      - "Comment encoder tier-asymmetric-distribution computationnellement ?"
+      - "Pattern : 288 = invariant cosmologic ou contingent ?"
+
+  - id: "PG-H5S18-009"
+    nom: "Principe de Tier-Decreasing-Resilience (Higher-Tier Fewer-Mads-Down)"
+    source_assertions: ["EC-H5S18-060", "EC-H5S18-064", "EC-H5S18-066", "EC-H5S18-068"]
+    formalisation: |
+      ARCHITECTURE DE TIER-DECREASING-RESILIENCE :
+      Mads MONTANT en atzilut (resilience) par havayah :
+        AV (highest) : 6 mads montent (mad 1-6).
+        SAG : 4 mads montent (mad 1-4).
+        MaH : 2 mads montent (mad 1-2).
+        BaN (lowest) : 1 mad monte (mad 1 seule).
+      Pattern : monotonic-decrease 6 → 4 → 2 → 1.
+      Inversement : mads DESCENDANT (shevirah) augmentent.
+      → Pattern fondamental : tier-resilience inversely-correlated tier-position.
+      → Architecture : higher-tier more-mads-survive.
+      → Implication : restoration-effort minimal-for-AV maximal-for-BaN.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + nukva.py : implement tier-decreasing-resilience"
+      - "Pattern : monotonic decrease in upward mads"
+      - "Architecture : tier-position dictates resilience"
+      - "Pattern : restoration effort scales with tier-fall"
+      - "Diagnostic : verifier 6/4/2/1 pattern AV/SAG/MaH/BaN"
+    questions_ouvertes:
+      - "Pattern : pattern 6/4/2/1 = sequence-arithmetic ou cosmologic-specific ?"
+      - "Comment encoder tier-resilience computationnellement ?"
+      - "Pattern : restoration-cost = inverse-resilience ?"

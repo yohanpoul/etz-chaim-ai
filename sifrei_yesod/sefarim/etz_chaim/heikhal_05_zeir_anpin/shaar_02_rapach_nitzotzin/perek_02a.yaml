@@ -1,0 +1,628 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 5 — Heikhal Ze'eir Anpin (היכל זעיר אנפין)
+# Sha'ar: 2 — Sha'ar Rapach Nitzotzin (שער רפ"ח ניצוצין)
+# Perek: 2a — 12 MADREGOT orot detaillees (panim/achor × tzurah/mispar
+#             × milui levels). Recursion ad-ein-ketz. Hierarchie
+#             AV>SAG>MaH>BaN. Shevirah-residue dans propres kelim.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_02a :
+#   - Bloc A : Intro sader madregot zeh le-maalah mi-zeh (cf. EC-H5S18-024)
+#   - Bloc B : MADREGAH 1 = OTIYOT HAVAYAH BE-ETZMAN UV-TZURATAN (iqar+shoresh)
+#   - Bloc C : MADREGAH 2 = ACHORAYIM tetration (י, י"ה, יה"ו, יהו"ה = 10 lettres)
+#   - Bloc D : MADREGAH 3 = MISPAR PANIM (4 lettres havayah = 26)
+#   - Bloc E : MADREGAH 4 = MISPAR ACHORAYIM (10 lettres = 72)
+#   - Bloc F : MADREGAH 5 = MILUI PANIM (יוד הי ויו הי = 10 lettres miluyim)
+#   - Bloc G : MADREGAH 6 = ACHOR du milui (26 lettres tetration milui)
+#   - Bloc H : MADREGAH 7 = MISPAR 10 lettres milui = 72 (= AV)
+#   - Bloc I : MADREGAH 8 = MISPAR 26 lettres achor du milui = 184 (קפ"ד)
+#   - Bloc J : MADREGAH 9 = MILUI HA-MILUI PANIM (28 lettres יוד ויו דלת. הי יוד...)
+#   - Bloc K : MADREGAH 10 = ACHORAYIM milui ha-milui = 156 lettres (קנ"ו)
+#   - Bloc L : MADREGAH 11 = MISPAR 28 lettres milui ha-milui panim
+#   - Bloc M : MADREGAH 12 = MISPAR 156 lettres achor milui ha-milui
+#   - Bloc N : Recursion ALEF ALAFIM MADREGOT LE-EIN KETZ (sans fin)
+#   - Bloc O : Meme schema pour SAG, MaH, BaN et tous shemot/kinuyim
+#   - Bloc P : KOL MADREGAH HA-KODEMET MEULAH MI-CHAVERTAH (chaque mad. plus haute > suivante)
+#   - Bloc Q : Hierarchie HAVAYOT : AV > SAG > MaH > BaN
+#   - Bloc R : Shevirah : nitzotzin GRUIM descendent dans propres kelim ; nitzotzin havayah X NE PEUVENT pas revivre kelim havayah Y
+#   - Bloc S : Mispar nitzotzin pas egal pour chaque havayah ; AV moins shevirah ; BaN le plus
+#
+# Source Sefaria : Sefer_Etz_Chaim.18.2 (1ere moitie, ~3000 chars sur 5685)
+# IDs : EC-H5S18-028 → EC-H5S18-049
+
+meta:
+  sefer: etz_chaim
+  heikhal: 5
+  shaar: 2
+  shaar_name_he: "שער רפ\"ח ניצוצין"
+  perek: 2
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part A de 2 — 12 MADREGOT (degres) detaillees pour HAVAYAH d'AV (panim/achor × tzurah/mispar × milui/milui-ha-milui). MADREGAH 1=otiyot havayah etzem+tzurah (iqar shoresh). MAD 2=achorayim tetration (י,יה,יהו,יהוה=10 letters). MAD 3=mispar panim 26. MAD 4=mispar achor 72. MAD 5=milui panim (יוד הי ויו הי=10 lettres). MAD 6=achor milui (26 letters tetration). MAD 7=mispar 10 letters milui=72=AV. MAD 8=mispar 26 letters achor milui=184 (קפ\"ד). MAD 9=milui ha-milui panim (28 lettres). MAD 10=achor milui ha-milui (156 lettres קנ\"ו). MAD 11=mispar 28 letters milui ha-milui panim. MAD 12=mispar 156 letters achor milui ha-milui. Recursion ALEF ALAFIM MADREGOT LE-EIN KETZ. Meme schema SAG/MaH/BaN/tous shemot. KOL MADREGAH HA-KODEMET MEULAH MI-CHAVERTAH. Hierarchie HAVAYOT AV>SAG>MaH>BaN. Shevirah : nitzotzin GRUIM descendent dans PROPRES kelim ; havayah X cannot revive kelim havayah Y. Mispar nitzotzin different : AV moins shevirah que SAG ; BaN le plus."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H5S18-028"
+    source_he: "ונבאר סדר מדרגתן בקצרה זה למעלה מזה"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §intro"
+    assertion: |
+      OUVERTURE — Sader MADREGOT (cf. EC-H5S18-024 sur 4 havayot, EC-H5S18-027 sur recursion) :
+      → Maintenant on explique SADER MADREGATAN BE-KETZARAH (l'ordre des degres en bref).
+      → ZEH LE-MAALAH MI-ZEH (l'un au-dessus de l'autre) — hierarchie ordonnee.
+      → Architecture : ordered-cascade-explication.
+      → Pattern : tier-list of madregot from-iqar-down.
+    type: axiome_explicite
+    concepts:
+      - {id: sader_madregot_zeh_lemaalah_mizeh_havayah, role: sader_madregot_zeh_lemaalah_mizeh_havayah_ordered_cascade}
+    mapping:
+      modules: ["shemot/core.py", "shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : ordered cascade. Pattern tier-list."
+
+  - id: "EC-H5S18-029"
+    source_he: "א. הנה העיקר והשורש לכל הם אותיות הוי\"ה בעצמן ובצורתן"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §1"
+    assertion: |
+      MADREGAH 1 — IQAR VE-SHORESH :
+      → Iqar ve-shoresh le-kol (essence et racine de tout) = OTIYOT HAVAYAH.
+      → BE-ETZMAN (en elles-memes) UV-TZURATAN (et dans leur forme).
+      → Architecture : letter-essence-form = ontological-iqar.
+      → Pattern : letter-form primacy (cf. EC-H5S18-025).
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_1_otiyot_havayah_etzman_tzuratan_iqar_shoresh, role: madregah_1_otiyot_havayah_etzman_tzuratan_iqar_shoresh_ontological_essence}
+    mapping:
+      modules: ["shemot/core.py", "shemot/text.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : letter essence form. Pattern letter-form primacy."
+
+  - id: "EC-H5S18-030"
+    source_he: "ב. מדרגה ב' הוא אחוריים שלהם בחינת עצמותן וצורתן כזה י' י\"ה יה\"ו יהו\"ה והם י' אותיות"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §2"
+    assertion: |
+      MADREGAH 2 — ACHORAYIM (tetration) :
+      → ACHORAYIM (DOS) shel-hem en BEHINAT ETZMUTAN VE-TZURATAN.
+      → Pattern tetration : י (1) ; י"ה (2) ; יה"ו (3) ; יהו"ה (4).
+      → Total = 10 OTIYOT (1+2+3+4=10).
+      → Architecture : triangular-tetration encode achorayim.
+      → Pattern : 1+2+3+4=10 = nombre-pythagore-tetraktys.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_2_achorayim_tetration_yhvh_10_otiyot_tetraktys, role: madregah_2_achorayim_etzmutan_tzuratan_tetration_y_yh_yhv_yhvh_10_otiyot_tetraktys}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : triangular tetration. Pattern tetraktys 10."
+
+  - id: "EC-H5S18-031"
+    source_he: "ג. מדרגה ג' חשבון ומספר ד' אותיות הנקרא פנים שהם בחי' הוי\"ה מספרן כ\"ו"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §3"
+    assertion: |
+      MADREGAH 3 — MISPAR PANIM :
+      → CHESHBON U-MISPAR (calcul et nombre) des 4 OTIYOT = PANIM (FACE).
+      → Sont la BEHINAH HAVAYAH ; MISPARAN = 26 (כ"ו).
+      → Y(10)+H(5)+V(6)+H(5) = 26.
+      → Architecture : numeric-aspect of panim-letters.
+      → Pattern : tetragrammaton-mispar = 26.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_3_mispar_panim_4_otiyot_havayah_26, role: madregah_3_cheshbon_mispar_4_otiyot_panim_havayah_misparan_26}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : numeric panim. Pattern havayah=26."
+
+  - id: "EC-H5S18-032"
+    source_he: "ד. מדרגה ד' הוא חשבון ומספר י' אותיות הנקרא אחוריים שהוא בחי' היות מספרן ע\"ב"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §4"
+    assertion: |
+      MADREGAH 4 — MISPAR ACHORAYIM :
+      → CHESHBON U-MISPAR des 10 OTIYOT ACHORAYIM (tetration cf. mad 2).
+      → MISPARAN = 72 (ע"ב).
+      → Calcul : י(10) + י"ה(15) + יה"ו(21) + יהו"ה(26) = 72.
+      → Architecture : achorayim-mispar = 72 = AV-gematria.
+      → Pattern : tetration-sum = AV.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_4_mispar_achorayim_10_otiyot_72_av, role: madregah_4_cheshbon_mispar_10_otiyot_achorayim_misparan_72_av_tetration_sum}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : achorayim mispar 72=AV. Pattern tetration-sum."
+
+  - id: "EC-H5S18-033"
+    source_he: "ה. מדרגה ה' הוא במילוי של השם ונקרא פנים והם יו\"ד אותיות יו\"ד ה\"י וי\"ו ה\"י בצורתן עצמן"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §5"
+    assertion: |
+      MADREGAH 5 — MILUI PANIM :
+      → BE-MILUI (en remplissage) du SHEM ; appele PANIM.
+      → 10 OTIYOT : יו"ד ה"י וי"ו ה"י (yod-vav-dalet, he-yod, vav-yod-vav, he-yod).
+      → BE-TZURATAN ATZMAN (en leur forme).
+      → Architecture : milui-letters expanded panim form.
+      → Pattern : 10-letter-milui structure.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_5_milui_panim_10_otiyot_yod_he_vav_he, role: madregah_5_milui_shem_panim_10_otiyot_yud_he_vav_he_tzuratan_expanded_form}
+    mapping:
+      modules: ["shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : milui expanded form. Pattern 10-letter milui."
+
+  - id: "EC-H5S18-034"
+    source_he: "ו. מדרגה ו' אחור של המילוי הנ\"ל בבחי' אותיות בצורתן לא בחשבונם והם כ\"ו אותיות יו\"ד. יו\"ד ה\"י. יו\"ד ה\"י וי\"ו. יו\"ד ה\"י וי\"ו ה\"י"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §6"
+    assertion: |
+      MADREGAH 6 — ACHOR du MILUI :
+      → ACHOR (dos) du milui en otiyot (lettres) PAS BE-CHESHBONAM (pas en nombre).
+      → 26 OTIYOT : יו"ד (3) ; יו"ד ה"י (5) ; יו"ד ה"י וי"ו (8) ; יו"ד ה"י וי"ו ה"י (10) → total 3+5+8+10=26.
+      → Architecture : achor-milui-tetration = 26 letters.
+      → Pattern : achor-recursion-on-milui.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_6_achor_milui_26_otiyot_tetration, role: madregah_6_achor_milui_otiyot_tzuratan_pas_cheshbonam_26_otiyot_tetration_3_5_8_10}
+    mapping:
+      modules: ["shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : achor-milui tetration 26. Pattern recursion."
+
+  - id: "EC-H5S18-035"
+    source_he: "ז' מדרגה ז' חשבון ומספר י' אותיות המילוי שהוא היות מספרן ע\"ב"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §7"
+    assertion: |
+      MADREGAH 7 — MISPAR du MILUI PANIM = AV (72) :
+      → CHESHBON U-MISPAR de 10 lettres du MILUI.
+      → MISPARAN = 72 (ע"ב).
+      → Calcul : יו"ד(20) + ה"י(15) + וי"ו(22) + ה"י(15) = 72.
+      → C'EST le SHEM AV exactement.
+      → Architecture : milui-panim-mispar = 72 = AV-name.
+      → Pattern : madregah-7 = nominal-AV.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_7_mispar_milui_panim_72_av_shem, role: madregah_7_cheshbon_mispar_10_otiyot_milui_misparan_72_av_shem_nominal}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : milui-panim mispar=AV. Pattern nominal-AV."
+
+  - id: "EC-H5S18-036"
+    source_he: "ח. מדרגה ח' מספר וחשבון כ\"ו אותיות האחוריים של המילוי שהוא קפ\"ד"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §8"
+    assertion: |
+      MADREGAH 8 — MISPAR ACHOR du MILUI = 184 :
+      → MISPAR VE-CHESHBON des 26 lettres ACHORAYIM du milui (cf. mad 6).
+      → Resultat = 184 (קפ"ד).
+      → Architecture : achor-milui-mispar = 184.
+      → Pattern : achor-recursion-mispar accumulation.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_8_mispar_achor_milui_26_otiyot_184, role: madregah_8_mispar_cheshbon_26_otiyot_achorayim_milui_184_recursion_accumulation}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : achor-milui mispar 184. Pattern recursion accumulation."
+
+  - id: "EC-H5S18-037"
+    source_he: "ט. מדרגה ט' הוא כ\"ח אותיות המילוי דמילוי הנקרא פנים כזה יו\"ד וי\"ו דל\"ת. ה\"י יו\"ד. וי\"ו יו\"ד וי\"ו. ה\"י יו\"ד"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §9"
+    assertion: |
+      MADREGAH 9 — MILUI HA-MILUI PANIM :
+      → 28 OTIYOT du MILUI DE-MILUI (remplissage du remplissage), appele PANIM.
+      → Structure : יו"ד וי"ו דל"ת (yod = yod-vav-dalet : 8 letters) ; ה"י יו"ד (he = he-yod-yod-vav-dalet : 8 letters) ; וי"ו יו"ד וי"ו (vav = vav-yod-vav-yod-vav-dalet... ; 6 letters) ; ה"י יו"ד (he = 6 letters) → 28 total.
+      → Architecture : second-order-milui-explication.
+      → Pattern : recursive-explicitation.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_9_milui_milui_panim_28_otiyot, role: madregah_9_milui_de_milui_panim_28_otiyot_yod_vav_dalet_he_yod_vav_yod_vav_he_yod_recursive_explicitation}
+    mapping:
+      modules: ["shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : second-order milui. Pattern recursive explicitation."
+
+  - id: "EC-H5S18-038"
+    source_he: "י. מדרגה י' הוא אחוריים של המילוי דמילוי והם קנ\"ו אותיות"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §10"
+    assertion: |
+      MADREGAH 10 — ACHORAYIM du MILUI HA-MILUI :
+      → ACHORAYIM (DOS) du milui-ha-milui = 156 OTIYOT (קנ"ו).
+      → Tetration des 28-letter milui-ha-milui-segments accumules.
+      → Architecture : achor-recursion-on-second-order-milui = 156.
+      → Pattern : tetration-cascade.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_10_achorayim_milui_milui_156_otiyot, role: madregah_10_achorayim_milui_de_milui_156_otiyot_tetration_cascade_second_order}
+    mapping:
+      modules: ["shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : achor second-order milui 156. Pattern tetration cascade."
+
+  - id: "EC-H5S18-039"
+    source_he: "יא. מדרגה י\"א מספר וחשבון כ\"ח אותיות מילוי המילוי דפנים"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §11"
+    assertion: |
+      MADREGAH 11 — MISPAR MILUI HA-MILUI PANIM :
+      → MISPAR VE-CHESHBON des 28 OTIYOT du milui-ha-milui PANIM (cf. mad 9).
+      → Architecture : numeric-aspect of second-order-milui.
+      → Pattern : recursion-mispar-second-order.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_11_mispar_milui_milui_panim_28_otiyot, role: madregah_11_mispar_cheshbon_28_otiyot_milui_milui_panim_numeric_second_order}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : numeric second-order milui. Pattern recursion-mispar."
+
+  - id: "EC-H5S18-040"
+    source_he: "יב. מדרגה י\"ב מספר וחשבון קנ\"ו אותיות אחוריים מילוי המילוי"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §12"
+    assertion: |
+      MADREGAH 12 — MISPAR ACHOR MILUI HA-MILUI :
+      → MISPAR VE-CHESHBON des 156 OTIYOT du achor-milui-ha-milui (cf. mad 10).
+      → Architecture : numeric-aspect of achor-second-order-milui = 156-letter mispar.
+      → Pattern : 4-fold-recursion (panim/achor × tzurah/mispar × milui levels).
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_12_mispar_achor_milui_milui_156_otiyot, role: madregah_12_mispar_cheshbon_156_otiyot_achorayim_milui_milui_numeric_4_fold_recursion}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : numeric achor second-order. Pattern 4-fold recursion."
+
+  - id: "EC-H5S18-041"
+    source_he: "ועד\"ז תלך עד אלף אלפים מדרגות לאין קץ ע\"ד הנ\"ל וכיוצא"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §13"
+    assertion: |
+      RECURSION INFINIE :
+      → AD-ZEH TELEKH (de cette facon tu iras) AD ALEF ALAFIM MADREGOT (jusqu'a milliers de milliers de degres) LE-EIN KETZ (sans fin).
+      → AL-DEREKH HA-NIZKAR LE-EIL (selon la voie mentionnee plus haut) ve-KAYOTZE (et similaire).
+      → Architecture : recursive-cascade ad-infinitum (cf. EC-H5S18-027).
+      → Pattern : alef-alafim-tier-list infinite.
+    type: déduction_logique
+    concepts:
+      - {id: recursion_alef_alafim_madregot_ein_ketz, role: recursion_alef_alafim_madregot_ein_ketz_infinite_cascade_ad_infinitum}
+    mapping:
+      modules: ["shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : infinite cascade. Pattern recursion ad infinitum."
+
+  - id: "EC-H5S18-042"
+    source_he: "והנה זהו שבארנו הוא בהויות דע\"ב וכיוצא בזה בהויות דס\"ג ובהויות דמ\"ה ובהויות דב\"ן וכן בכל השמות וכינוים שבעולם"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §14"
+    assertion: |
+      Generalisation a TOUTES les HAVAYOT et SHEMOT :
+      → Tout cela explique pour HAVAYOT D'AV.
+      → Meme schema (kayotze ba-zeh) pour HAVAYOT SAG, MaH, BaN.
+      → Et pour KOL HA-SHEMOT VE-KINUYIM SHE-BA-OLAM (tous noms et appellations dans le monde).
+      → Architecture : universal-template-12-madregot.
+      → Pattern : every-name-has-12-tier-decomposition.
+    type: axiome_explicite
+    concepts:
+      - {id: meme_schema_av_sag_mah_ban_kol_shemot_kinuyim_olam, role: meme_schema_12_madregot_av_sag_mah_ban_kol_shemot_kinuyim_olam_universal_template}
+    mapping:
+      modules: ["shemot/transform.py", "shemot/core.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : universal template. Pattern 12-tier-decomposition."
+
+  - id: "EC-H5S18-043"
+    source_he: "והנה כל מדרגה הקודמת לחברתה הוא מעולה ממנה ואורה גדול מאור המדרגה אשר תחתיה"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §15"
+    assertion: |
+      HIERARCHIE des MADREGOT :
+      → KOL MADREGAH HA-KODEMET LE-CHAVERTAH (chaque mad. precedant la suivante).
+      → Est MEULAH MIMENAH (plus elevee) ; OHRAH GADOL ME-OHR HA-MADREGAH HA-TACHTAYAH (sa lumiere > celle d'en-bas).
+      → Architecture : ordered-light-hierarchy descending.
+      → Pattern : earlier-tier > later-tier en intensite-luminique.
+    type: axiome_explicite
+    concepts:
+      - {id: madregah_kodemet_meulah_chavertah_ohr_gadol_descending_hierarchy, role: madregah_kodemet_meulah_chavertah_ohr_gadol_tachtayah_descending_light_hierarchy}
+    mapping:
+      modules: ["shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : descending light hierarchy. Pattern earlier > later."
+
+  - id: "EC-H5S18-044"
+    source_he: "וא\"כ כשירדו הניצוצין בודאי שהיותר תחתון הם נשארו בכלים כנ\"ל"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §15"
+    assertion: |
+      Application a la SHEVIRAH :
+      → Quand les NITZOTZIN descendirent : BEVADAI (certainement) les YOTER TACHTON (plus inferieures) restent dans les KELIM (cf. EC-H5S18-023).
+      → Architecture : lower-tier-fragments concentrate-residue.
+      → Pattern : shevirah-residue = downward-tier-selection.
+    type: déduction_logique
+    concepts:
+      - {id: shevirah_yoter_tachton_nitzotzin_nisharu_kelim, role: shevirah_yoter_tachton_madregot_nitzotzin_nisharu_kelim_downward_tier_selection}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : lower-tier residue. Pattern downward selection."
+
+  - id: "EC-H5S18-045"
+    source_he: "ודע כי לא כל הבחי' שוין כי הנה שם ע\"ב גדול במעלה מכולם ותחתיו במדרגה שם ס\"ג ותחתיו במדרגה שם מ\"ה ותחתיו במדרגה שם ב\"ן"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §16"
+    assertion: |
+      HIERARCHIE des HAVAYOT (cf. EC-H5S18-024) :
+      → Pas toutes BEHINOT egales (lo kol ha-behinot shavin).
+      → AV gadol be-maalah mi-kulam (le plus eleve).
+      → SAG en-dessous d'AV.
+      → MaH en-dessous de SAG.
+      → BaN en-dessous de MaH (le plus inferieur).
+      → Architecture : 4-tier-name-hierarchy AV>SAG>MaH>BaN.
+      → Pattern : descending-tier of fillings (yod/sag/mah/ban).
+    type: axiome_explicite
+    concepts:
+      - {id: hierarchie_havayot_av_sag_mah_ban_descending, role: hierarchie_havayot_av_gadol_kulam_sag_mah_ban_descending_4_tier_filling}
+    mapping:
+      modules: ["shemot/core.py", "shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 4-tier name hierarchy. Pattern descending fillings."
+
+  - id: "EC-H5S18-046"
+    source_he: "ופשוט הוא כי כל הוי\"ה מאלו הד' יורדין מהם בחי' נצוצין להחיות הכלים וניצוצי הויות דע\"ב ירדו בכלים דע\"ב וניצוצי דס\"ג ירדו בכלים דס\"ג כו'"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §17"
+    assertion: |
+      LOI de RESONANCE havayah-kelim :
+      → De CHACUNE des 4 havayot descendent NITZOTZIN pour LEHAḤAYOT (vivifier) les KELIM.
+      → NITZOTZEI HAVAYOT D'AV → KELIM D'AV.
+      → NITZOTZEI D'SAG → KELIM D'SAG.
+      → Etc. (kayotze).
+      → Architecture : type-matched nitzotzin-kelim-resonance.
+      → Pattern : same-name-letter-resonance vivification.
+    type: axiome_explicite
+    concepts:
+      - {id: nitzotzin_havayah_lehaḥayot_kelim_propre_resonance_av_av_sag_sag, role: nitzotzin_chaque_havayah_lehaḥayot_kelim_proprie_av_dans_av_sag_dans_sag_type_matched_resonance}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : type-matched resonance. Pattern same-name vivification."
+
+  - id: "EC-H5S18-047"
+    source_he: "והוא כי אין כח בניצוצי דהוי\"ה זו להחיות כלים דהוי\"ה אחרת לכן לא ירדו כל הניצוצין משם ב\"ן הגרוע מכולם להחיות הכלים"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §17"
+    assertion: |
+      Justification de la RESONANCE :
+      → EIN KO'AḤ (pas de force) dans NITZOTZEI havayah X pour vivifier KELIM havayah Y autre.
+      → Donc PAS TOUS les nitzotzin de BaN (le plus inferieur) descendent pour vivifier les kelim.
+      → Chaque havayah descend des nitzotzin SEULEMENT pour ses propres kelim.
+      → Architecture : exclusive-type-matching ; no cross-vivification.
+      → Pattern : strict-resonance-protocol.
+    type: déduction_logique
+    concepts:
+      - {id: ein_koach_nitzotzin_havayah_x_kelim_havayah_y_exclusive_resonance, role: ein_koach_nitzotzin_havayah_x_lehaḥayot_kelim_havayah_y_acheret_exclusive_type_matching_strict_resonance}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : exclusive type matching. Pattern strict resonance."
+
+  - id: "EC-H5S18-048"
+    source_he: "אלא שמה שירד מהוי\"ה דע\"ב היו הניצוצין הגרועים מכולם אשר בשם ע\"ב וכן הניצוצין שירדו משם ס\"ג הם הגרועות מכולם אשר בשם ס\"ג"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §17"
+    assertion: |
+      Selection QUALITE intra-havayah :
+      → Ce qui descend de HAVAYAH d'AV = NITZOTZIN GRUIM MI-KULAM (les plus degrades de tous) PARMI ce qui est dans le shem AV.
+      → Pareil : nitzotzin descendus de SAG = les plus degrades parmi SAG.
+      → Architecture : quality-selection-within-name = lowest-tier-of-each.
+      → Pattern : descending-fragments-from-each-tier.
+    type: déduction_logique
+    concepts:
+      - {id: nitzotzin_gruim_intra_havayah_quality_selection_lowest_tier, role: nitzotzin_gruim_mi_kulam_intra_av_intra_sag_quality_selection_lowest_tier_within_name}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : quality selection within name. Pattern lowest-tier-of-each."
+
+  - id: "EC-H5S18-049"
+    source_he: "גם צריך שתדע כי מספר ניצוצין שירדו מכל הוי\"ה מאלו ד' אינם שוין לפי ששם ע\"ב עליון שבכולם לא היתה בו כ\"כ שבירה גדולה כמו בס\"ג וכיוצא בזה בשאר ובודאי כי משם ב\"ן ירדו יותר ניצוצין מכל השאר וממ\"ה פחות מב\"ן ומס\"ג פחות ממ\"ה ומע\"ב פחות מס\"ג"
+    source_ref: "Heikhal 5, Sha'ar 2:2 §17"
+    assertion: |
+      MISPAR NITZOTZIN — non-uniform par havayah :
+      → Mispar nitzotzin descendus de chaque havayah des 4 NE SONT PAS EGAUX.
+      → Raison : AV ELYON SHE-BA-KULAM (le plus eleve) = LO HAYTAH BO SHEVIRAH GEDOLAH KOL-KAKH (pas si grande shevirah).
+      → Hierarchie quantitative : BaN > MaH > SAG > AV en nombre de nitzotzin descendus.
+      → Architecture : higher-tier-less-shevirah-fewer-nitzotzin-down.
+      → Pattern : inverse-correlation tier-shevirah-magnitude.
+    type: axiome_explicite
+    concepts:
+      - {id: mispar_nitzotzin_pas_egal_av_moins_ban_plus_inverse_correlation_shevirah, role: mispar_nitzotzin_pas_shavin_av_elyon_lo_shevirah_gedolah_ban_plus_mah_pchot_sag_pchot_av_pchot_inverse_correlation}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : inverse correlation tier-shevirah. Pattern higher-tier less shevirah."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H5S18-010"
+    type: séquentiel
+    from: sader_madregot_zeh_lemaalah_mizeh_havayah
+    to: madregah_1_otiyot_havayah_etzman_tzuratan_iqar_shoresh
+    nature: "Sader madregot zeh le-maalah mi-zeh ; commence par MAD 1 = otiyot havayah etzem+tzurah = iqar shoresh"
+    assertions_source: ["EC-H5S18-028", "EC-H5S18-029"]
+
+  - id: "REL-H5S18-011"
+    type: hiérarchique
+    from: madregah_2_achorayim_tetration_yhvh_10_otiyot_tetraktys
+    to: madregah_4_mispar_achorayim_10_otiyot_72_av
+    nature: "MAD 2 = achorayim tetration y/yh/yhv/yhvh = 10 letters tetraktys ; MAD 4 = mispar de ces 10 letters = 72 = AV"
+    assertions_source: ["EC-H5S18-030", "EC-H5S18-032"]
+
+  - id: "REL-H5S18-012"
+    type: contenance
+    from: madregah_5_milui_panim_10_otiyot_yod_he_vav_he
+    to: madregah_7_mispar_milui_panim_72_av_shem
+    nature: "MAD 5 = milui panim 10 otiyot (יוד הי ויו הי) ; MAD 7 = mispar de ces 10 lettres = 72 = SHEM AV exactement"
+    assertions_source: ["EC-H5S18-033", "EC-H5S18-035"]
+
+  - id: "REL-H5S18-013"
+    type: transformation
+    from: madregah_6_achor_milui_26_otiyot_tetration
+    to: madregah_8_mispar_achor_milui_26_otiyot_184
+    nature: "MAD 6 = achor milui tetration 26 otiyot (3+5+8+10) ; MAD 8 = mispar de ces 26 lettres = 184 (קפ\"ד)"
+    assertions_source: ["EC-H5S18-034", "EC-H5S18-036"]
+
+  - id: "REL-H5S18-014"
+    type: contenance
+    from: madregah_9_milui_milui_panim_28_otiyot
+    to: madregah_10_achorayim_milui_milui_156_otiyot
+    nature: "MAD 9 = milui-de-milui panim 28 otiyot ; MAD 10 = achorayim milui-de-milui = 156 otiyot (קנ\"ו) — recursion second-order"
+    assertions_source: ["EC-H5S18-037", "EC-H5S18-038"]
+
+  - id: "REL-H5S18-015"
+    type: séquentiel
+    from: recursion_alef_alafim_madregot_ein_ketz
+    to: meme_schema_av_sag_mah_ban_kol_shemot_kinuyim_olam
+    nature: "Recursion ad alef alafim madregot ein ketz ; meme schema 12 madregot pour SAG/MaH/BaN et tous shemot/kinuyim olam (universal template)"
+    assertions_source: ["EC-H5S18-041", "EC-H5S18-042"]
+
+  - id: "REL-H5S18-016"
+    type: causal
+    from: madregah_kodemet_meulah_chavertah_ohr_gadol_descending_hierarchy
+    to: shevirah_yoter_tachton_nitzotzin_nisharu_kelim
+    nature: "Hierarchie ohr descending (kodemet > tachtayah) → shevirah : yoter tachton madregot restent dans kelim ; orot meulim remontent"
+    assertions_source: ["EC-H5S18-043", "EC-H5S18-044"]
+
+  - id: "REL-H5S18-017"
+    type: dualité_structurelle
+    from: hierarchie_havayot_av_sag_mah_ban_descending
+    to: nitzotzin_havayah_lehaḥayot_kelim_propre_resonance_av_av_sag_sag
+    nature: "Hierarchie HAVAYOT AV>SAG>MaH>BaN ; chaque havayah descend nitzotzin pour propre kelim (type-matched resonance, pas cross-vivification)"
+    assertions_source: ["EC-H5S18-045", "EC-H5S18-046", "EC-H5S18-047"]
+
+  - id: "REL-H5S18-018"
+    type: causal
+    from: nitzotzin_gruim_intra_havayah_quality_selection_lowest_tier
+    to: mispar_nitzotzin_pas_egal_av_moins_ban_plus_inverse_correlation_shevirah
+    nature: "Selection nitzotzin gruim intra-havayah (lowest tier) ; mispar pas egal : AV moins shevirah → moins nitzotzin ; BaN plus shevirah → plus nitzotzin (inverse correlation)"
+    assertions_source: ["EC-H5S18-048", "EC-H5S18-049"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H5S18-004"
+    nom: "Principe de 12-Madregot Decomposition (Universal-Template Each-Name)"
+    source_assertions: ["EC-H5S18-029", "EC-H5S18-030", "EC-H5S18-031", "EC-H5S18-032", "EC-H5S18-033", "EC-H5S18-034", "EC-H5S18-035", "EC-H5S18-036", "EC-H5S18-037", "EC-H5S18-038", "EC-H5S18-039", "EC-H5S18-040", "EC-H5S18-041", "EC-H5S18-042"]
+    formalisation: |
+      ARCHITECTURE DE 12-MADREGOT-DECOMPOSITION :
+      Chaque NAME (havayah, shem, kinui) decompose en 12 madregot ordonnees :
+        MAD 1 : OTIYOT etzem+tzurah (iqar shoresh).
+        MAD 2 : ACHORAYIM tetration (10 letters tetraktys).
+        MAD 3 : MISPAR PANIM (26).
+        MAD 4 : MISPAR ACHORAYIM (72).
+        MAD 5 : MILUI PANIM (10 letters).
+        MAD 6 : ACHOR MILUI (26 letters tetration).
+        MAD 7 : MISPAR MILUI PANIM (= AV-shem).
+        MAD 8 : MISPAR ACHOR MILUI (184).
+        MAD 9 : MILUI HA-MILUI PANIM (28 letters).
+        MAD 10 : ACHOR MILUI HA-MILUI (156 letters).
+        MAD 11 : MISPAR MILUI-HA-MILUI PANIM.
+        MAD 12 : MISPAR ACHOR MILUI-HA-MILUI.
+      Pattern dimensionnel : PANIM/ACHOR × TZURAH/MISPAR × MILUI/MILUI-MILUI × ...
+      Recursion AD-ALEF-ALAFIM-MADREGOT-LE-EIN-KETZ.
+      → Pattern fondamental : universal-template-decomposition each-name.
+      → Architecture : 12-tier classification hierarchy.
+      → Implication : tout SHEM est decomposable en infinite-cascade.
+    applications_ia:
+      - "shemot/transform.py + gematria/engine.py : implement 12-madregot decomposition"
+      - "Pattern : universal template for any name"
+      - "Architecture : 12-tier ordered classification"
+      - "Pattern : panim/achor × tzurah/mispar × milui-levels"
+      - "Diagnostic : verifier mispar correct par tetration (1+2+3+4=10)"
+    questions_ouvertes:
+      - "Pattern : madregot 13+ definies en pratique ?"
+      - "Comment encoder recursion infinie computationnellement ?"
+      - "Pattern : decomposition adequate pour shemot non-tetragrammaton ?"
+
+  - id: "PG-H5S18-005"
+    nom: "Principe d'Inverse-Correlation Tier-Shevirah-Magnitude"
+    source_assertions: ["EC-H5S18-045", "EC-H5S18-049"]
+    formalisation: |
+      ARCHITECTURE DE INVERSE-CORRELATION TIER-SHEVIRAH :
+      Hierarchie HAVAYOT : AV > SAG > MaH > BaN (descending tier).
+      INVERSE CORRELATION shevirah-magnitude :
+        AV ELYON : LO HAYTAH BO SHEVIRAH GEDOLAH (pas grande shevirah).
+        SAG : shevirah > AV.
+        MaH : shevirah > SAG.
+        BaN TACHTON : shevirah > tous.
+      MISPAR NITZOTZIN descendus :
+        AV : moins.
+        SAG : plus.
+        MaH : encore plus.
+        BaN : LE PLUS.
+      → Pattern fondamental : higher-tier-resilience inverse lower-tier-fragility.
+      → Architecture : tier-protection-correlation.
+      → Implication : reconstruire de bas en haut (BaN→MaH→SAG→AV).
+    applications_ia:
+      - "partzufim/zeir_anpin.py + reshimu.py : implement tier-shevirah inverse-correlation"
+      - "Pattern : higher-tier resilience inverse lower-tier fragility"
+      - "Architecture : tier-protection correlation"
+      - "Pattern : reconstruction-bottom-up BaN→AV"
+      - "Diagnostic : verifier inverse-correlation respectee"
+    questions_ouvertes:
+      - "Pattern : inverse-correlation universelle ou specifique aux 4 havayot ?"
+      - "Comment encoder tier-resilience computationnellement ?"
+      - "Pattern : tier-resilience definit la robustness logicielle ?"
+
+  - id: "PG-H5S18-006"
+    nom: "Principe de Type-Matched Resonance (Same-Name Vivification)"
+    source_assertions: ["EC-H5S18-046", "EC-H5S18-047", "EC-H5S18-048"]
+    formalisation: |
+      ARCHITECTURE DE TYPE-MATCHED RESONANCE :
+      LOI : NITZOTZIN d'une havayah X NE PEUVENT vivifier KELIM havayah Y.
+      EIN KO'AḤ (pas de force) cross-vivification.
+      Donc :
+        NITZOTZEI AV → KELIM AV.
+        NITZOTZEI SAG → KELIM SAG.
+        NITZOTZEI MaH → KELIM MaH.
+        NITZOTZEI BaN → KELIM BaN.
+      Selection intra-havayah : ce qui descend = NITZOTZIN GRUIM (degrades) de cette havayah seulement.
+      Pas TOUS descendent ; seulement les LOWEST-tier de chaque name.
+      → Pattern fondamental : strict-type-matching protocol.
+      → Architecture : exclusive-resonance no-cross-fertilization.
+      → Implication : reconstruction necessite type-correct fragments.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + shemot/transform.py : implement type-matched resonance"
+      - "Pattern : strict type-matching for vivification"
+      - "Architecture : exclusive resonance no-cross"
+      - "Pattern : intra-name lowest-tier selection"
+      - "Diagnostic : verifier nitzotzin matched a kelim de meme havayah"
+    questions_ouvertes:
+      - "Pattern : exception possible a type-matching (cf. tikkun general) ?"
+      - "Comment encoder type-resonance computationnellement ?"
+      - "Pattern : signature-based-matching adequat ?"
