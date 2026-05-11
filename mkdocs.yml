@@ -67,3 +67,9 @@ nav:
   - Architecture: architecture.md
   - Advanced: advanced.md
   - Roadmap: roadmap.md
+  - Standards-first:
+    - Portability: PORTABILITY.md
+    - Code with Claude 2026: CODE_WITH_CLAUDE_2026.md
+    - References: REFERENCES.md
+  - Internal:
+    - Origin: internal/origin.md

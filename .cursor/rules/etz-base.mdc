@@ -1,0 +1,14 @@
+---
+description: Etz Chaim AI base rules — see AGENTS.md for canonical instructions
+alwaysApply: true
+---
+
+# Etz Chaim AI — Cursor rules
+
+The canonical agent instructions for this project live in
+[AGENTS.md](../../AGENTS.md). Read that file first.
+
+Cursor reads both AGENTS.md and CLAUDE.md natively as of v0.45+, so this
+rule file mainly serves as a discovery breadcrumb.
+
+For the full source-unique config, see [AGENTS.md](../../AGENTS.md).

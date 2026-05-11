@@ -90,7 +90,6 @@ prompt-sifrei-yesod-infra.md
 WORLD_TEMPLE_AUDIT.md
 KABBALISTIC_AUDIT.md
 ROADMAP.md
-CLAUDE.md
 
 # Internal phase specs & diagnostics (local only)
 phases/
@@ -122,3 +121,9 @@ site/
 
 # benchmark results (large, ephemeral - shipped via tar.gz at end)
 benchmarks/results/cache/
+
+# CLAUDE.md is a symlink to AGENTS.md (see scripts/setup-symlinks.sh)
+# Tracked because it's part of the standards-first config.
+# The local backup files however should be ignored:
+CLAUDE.md.backup.*
+README.OLD-before-sprint0.md

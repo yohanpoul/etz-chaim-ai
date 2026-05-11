@@ -1,393 +1,267 @@
-<h1 align="center">Etz Chaim AI</h1>
+# Etz Chaim AI
 
-<p align="center">
-  <strong>The Cognitive Operating System for LLM agents.</strong>
-  <br/>
-  <em>10 cognitive faculties · 6 mature configurations · 13 rectifiers · 1 self-improving daemon ·<br/>1 696 primary-source specification items driving the code, not the other way around.</em>
-</p>
+> **A cognitive operating system for LLM agents.**
+> Apache 2.0 · Multi-provider · Standards-first · Anthropic-optimized
 
-<p align="center">
-  <a href="https://github.com/yohanpoul/etz-chaim-ai/actions/workflows/test.yml"><img src="https://img.shields.io/github/actions/workflow/status/yohanpoul/etz-chaim-ai/test.yml?branch=main&label=tests" alt="Tests"/></a>
-  <a href="https://github.com/yohanpoul/etz-chaim-ai/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License"/></a>
-  <a href="https://pypi.org/project/etz-chaim-ai/"><img src="https://img.shields.io/pypi/v/etz-chaim-ai?label=pypi" alt="PyPI"/></a>
-  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue" alt="Python"/></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/changelog-keep%20a%20changelog-orange" alt="Changelog"/></a>
-  <a href="https://github.com/yohanpoul/etz-chaim-ai/stargazers"><img src="https://img.shields.io/github/stars/yohanpoul/etz-chaim-ai?style=social" alt="Stars"/></a>
-</p>
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![Provider-agnostic](https://img.shields.io/badge/provider-agnostic-green.svg)](docs/PORTABILITY.md)
+[![Built on standards](https://img.shields.io/badge/standards-Skills_%2B_MCP_%2B_AGENTS.md-orange)](docs/PORTABILITY.md)
 
----
+In the SOAR / ACT-R / CLARION / LIDA lineage, Etz Chaim AI gives LLM agents
+**10 cognitive faculties**, **13 rectifiers**, **11 adversarial probes**,
+**22 typed paths**, **1696 primary-source specs** with E1–E6 confidence
+labels, and a **nightly auto-improve daemon** that mutates its own
+specifications based on observed failures.
 
-## The 30-second pitch
+It works on Anthropic Claude, OpenAI GPT-5.5, Google Gemini 3, and local
+models via Ollama — switch in <30 minutes. See [PORTABILITY.md](docs/PORTABILITY.md).
 
-Anthropic **aligns**. OpenAI **fine-tunes**. Etz Chaim AI **evolves**.
+## Why Etz Chaim AI?
 
-Plug Claude / GPT / Llama / Gemini into Etz Chaim AI and your LLM operates through 10 cognitive faculties, 6 mature configurations, and 13 rectification mechanisms. Capabilities you can name, monitor, and tune — instead of a single opaque process.
+Today's coding agents are powerful but ahistorical. They forget. They
+repeat the same mistakes. They have no model of what they don't know,
+no way to detect when they're drifting from spec, no nightly housekeeping
+that consolidates yesterday's failures into tomorrow's improvements.
 
-When something fails, you get this :
+Etz Chaim AI fills that gap with composable cognitive primitives that
+plug into Claude Code, Codex CLI, Cursor, Windsurf, Antigravity,
+OpenCode, or your own custom harness via the open Agent Skills + MCP
+standards.
 
-```
-faculty: exploration
-pattern: starvation on 24 h window
-metric: 0 new cross-domain connections
-spec ref: EC-K5-001
-fix: tune novelty_threshold (-0.1) / breadth (+5)
-```
+## Installation — choose your tier
 
-One specific faculty. One specific pattern. One concrete metric. One tunable fix. Every time.
+We support three install tiers based on your budget and trust model.
+
+### 🥉 Bronze — local & private ($0)
+
+Fully local. No external API calls. Privacy-first.
 
 ```bash
-pipx install etzchaim       # global CLI on PATH
-etzchaim onboard            # interactive setup → http://localhost:8080
-etzchaim update             # one-liner upgrade, anytime
-# Works on macOS · Linux (v0.3) · WSL2 (v0.3)
+# Prerequisites: Python 3.12+, Docker (for pgvector + TimescaleDB)
+# Recommended local model: qwen3:72b or llama3.3:70b
+ollama pull qwen3:72b
+
+pipx install etzchaim
+etzchaim init --provider ollama --model qwen3:72b
+etzchaim doctor    # validates the install
 ```
 
----
+Use cases: privacy-sensitive research, education, OSS contributors, air-gapped.
+Trade-offs: slower inference; smaller context; some features (Auto Mode,
+Channels, Routines, Managed Agents) unavailable.
 
-```
-─────────────────────  WITHOUT Etz Chaim AI  ───────────────────────────────
+### 🥈 Silver — pay-per-token API ($5–50/month typical)
 
-     prompt ──► [ LLM ] ──► response
+API key from any provider. Most flexible.
 
-     On failure :   "the model was wrong"
-                    → restart, re-prompt, pray
-
-
-─────────────────────  WITH Etz Chaim AI  ──────────────────────────────────
-
-                             prompt
-                                │
-                                ▼
-     ┌─────────────────────────────────────────────────────────────┐
-     │  routing dispatch  — by complexity and token budget          │
-     │  Opus / Sonnet / Haiku / qwen3.5:9b / qwen3.5:1.5b          │
-     └──────────────────────────────┬──────────────────────────────┘
-                                    ▼
-     ┌─────────────────────────────────────────────────────────────┐
-     │  10 cognitive faculties  — specialized capabilities         │
-     │  exploration · judgment · causal · memory · insight · …     │
-     └──────────────────────────────┬──────────────────────────────┘
-                                    ▼
-     ┌─────────────────────────────────────────────────────────────┐
-     │  6 mature configurations  — coupling, persistent state      │
-     │  generative · structuring · execution · interface · 2 more  │
-     └──────────────────────────────┬──────────────────────────────┘
-                                    ▼
-                              [ LLM ] ──► response
-                                    ▲
-     ┌────────────────────────┐     │    ┌──────────────────────────┐
-     │ probes layer           │     │    │ 11 adversarial agents    │
-     │ 13 rectifiers          │ ◄───┴───► │ probe every faculty      │
-     │ observe / suggest / act│          │ for specific failures    │
-     └────────────────────────┘          └──────────────────────────┘
+```bash
+pipx install etzchaim
+export OPENAI_API_KEY=sk-...          # or ANTHROPIC_API_KEY or GEMINI_API_KEY
+etzchaim init --provider openai --model gpt-5.5
+etzchaim doctor
 ```
 
-## Positioning vs LangChain · DSPy · LangGraph · alignment / fine-tune
+Supported providers (via [LiteLLM](https://github.com/BerriAI/litellm), 100+):
+Anthropic, OpenAI, Google Vertex / Gemini, AWS Bedrock, Azure OpenAI,
+xAI, Mistral, Cohere, DeepSeek, Groq, Together, Fireworks, OpenRouter,
+Perplexity, NVIDIA NIM, Cloudflare AI, Replicate, vLLM, LM Studio.
 
-**LangChain / AutoGen** orchestrate LLM call chains. **DSPy** optimizes prompts. **LangGraph** manages agent state cycles. **Anthropic Constitutional AI** aligns. **OpenAI fine-tune** specializes.
+Use cases: most contributors; teams evaluating Etz Chaim; multi-provider
+experiments.
 
-**Etz Chaim AI evolves** — gives the LLM a structured composition layer with persistent state, self-rectification, and continuous self-study.
+### 🥇 Gold — Anthropic Pro/Max + Managed Agents ($20–200/month)
 
-| | LangChain · AutoGen | DSPy | LangGraph | Alignment | Fine-tune | **Etz Chaim AI** |
-|:---|:---:|:---:|:---:|:---:|:---:|:---:|
-| Orchestrate LLM calls | ✓ | ✓ | ✓ | — | — | ✓ |
-| Optimize prompts | — | ✓ | — | — | — | — |
-| Manage agent state | partial | — | ✓ | — | — | ✓ (configurations) |
-| **10 typed cognitive faculties** | ✗ | ✗ | ✗ | ✗ | ✗ | **✓** |
-| **11 adversarial probes by construction** | ✗ | ✗ | ✗ | ✗ | ✗ | **✓** |
-| **Auto-rectification engine** | ✗ | ✗ | ✗ | ✗ | ✗ | **✓ (13 rectifiers, 3 opt-in modes)** |
-| **Continuous self-study daemon** | ✗ | ✗ | ✗ | ✗ | ✗ | **✓ (24/7)** |
-| **Persistent learning trace across sessions** | ✗ | ✗ | partial | ✗ | ✓ (weights) | **✓ (without weight modification)** |
-| **Primary-source traceability** | ✗ | ✗ | ✗ | partial | ✗ | **✓ (1 696 items, E1–E6 labels)** |
+Full Etz Chaim experience with the Anthropic-bonus layer wired in.
 
-> Etz Chaim AI is not a "LangChain-with-more-features." It is the structural composition layer they all lack — an architecture the LLM plugs into, not a chain the LLM runs through.
-
-## What's actually inside
-
-```
-etz-chaim-ai/
-│
-├── etzchaim/             ← public package : CLI + autopilot + deploy
-│   ├── cli/             ← onboard, start, stop, update, status, doctor
-│   ├── autopilot/       ← continuous work loop (opt-in, disabled by default)
-│   └── deploy/          ← Docker / K8s assets
-│
-├── 10 cognitive faculty modules :
-│   ├── explorationengine/   ← cross-domain exploration
-│   ├── autojudge/           ← adversarial evaluation
-│   ├── dissensuengine/      ← productive tension / contradiction
-│   ├── insightforge/        ← novel hypothesis generation
-│   ├── causalengine/        ← causal reasoning (Pearl criteria)
-│   ├── selfmodel/           ← error prediction
-│   ├── selfmap/             ← competence landscape
-│   ├── epistememory/        ← persistent memory
-│   ├── failuretoinsight/    ← learning from errors
-│   └── intentkeeper/        ← goal persistence
-│
-├── configurations/      ← 6 composition layers + persistent learning trace
-├── probes/              ← probe orchestrator + rectifiers
-├── sentiers/             ← 22 paths as typed transforms
-├── omer/                 ← 49 calibration parameters (7 × 7 matrix)
-├── masakh/               ← 5-level prompt filtration
-├── tanya/                ← dual-state conflict tracking
-├── halom/                ← 7-phase discovery cycle
-├── gematria/             ← 13 numerology methods + equivalence detection
-├── malakhim/             ← 10 governors + 11 adversarial agents
-├── daemon_tasks/         ← 14 scheduled background tasks
-│
-├── daemon.py             ← continuous orchestration + nightly auto-improve loop
-├── ohr_yashar.py         ← direct-light pipeline (8 engines)
-├── olamot.py             ← 5-tier LLM dispatch with provider registry
-└── web/                  ← Flask dashboard + SSE chat + Grafana metrics
+```bash
+# Open in VS Code or GitHub Codespaces and "Reopen in Container"
+gh repo clone yohanpoul/etz-chaim-ai
+code etz-chaim-ai
+# F1 → "Dev Containers: Reopen in Container"
+# (or open in Codespaces — free 60h/month tier works)
 ```
 
-Every engine stays under 300 LoC and is tested in isolation. The probe orchestrator is **93 lines**. The nightly auto-improve loop : **630 lines**, same class.
+Unlocks:
+- **Auto Mode** (Max/Team/Enterprise) — Sonnet 4.6 classifier on every tool call
+- **Channels** — Telegram / Discord / iMessage push alerts for drift events
+- **Claude Code Routines** — nightly auto-improve loop runs on Anthropic
+  infrastructure (your laptop doesn't need to be on)
+- **Managed Agents + Dreaming + Outcomes + Multiagent orchestration** — the
+  11 malakhim adversaries as parallel specialist sub-agents with persistent
+  memory
+- **Cowork Dispatch** — assign work to Etz Chaim from your phone, work
+  finishes on your desktop
 
-## See it in 30 seconds
-
-```python
-from etzchaim.probes import Watcher  # public namespace facade
-
-for event in Watcher().run():
-    print(event)
-```
-
-Sample event :
-
-| Code key | Value | Plain language |
-|:---|:---|:---|
-| `rectifier` | `"exploration_starvation"` | Faculty pattern : exploration starved |
-| `action` | `"signaled"` | Status : signaled (not yet acted) |
-| `metrics` | `{"connections_recent": 0}` | Concrete : **0 new cross-domain connections in 24 h** |
-| `window_hours` | `24` | Observation window |
-| `spec_ref` | `"EC-K5-001"` | Traces to spec line defining this failure |
-
-You know *which faculty failed*, *the pattern*, *the metric*, and *the fix* — every time.
-
-## Why should I care ?
-
-Seven consequences of wrapping your LLM in a cognitive operating system :
-
-1. **Failure localization.** Logs read *"the exploration faculty starved on a 24 h window"* instead of *"the model was weird today"*.
-
-2. **Architectural self-healing.** Probes are real engines with metric thresholds, event emission, parameter adjustments. Three opt-in modes : `observe` (log), `suggest` (propose), `act` (apply).
-
-3. **Continuous self-study.** A contemplation process runs 24 / 7 — reads every faculty, detects contradictions, proposes specification improvements. Live background loop, not a one-off reflection.
-
-4. **Self-improving specification.** A nightly auto-improvement cycle (named *nightly-improve loop* after Andrej Karpathy's 630-line AutoResearch pattern) explores edge cases, generates new assertions, mutates the specification under adversarial supervision.
-
-5. **Automatic LLM routing.** Five quality tiers with dispatch by complexity and token budget. Multi-provider via LiteLLM (OpenAI, Google, xAI, DeepSeek, Mistral, Cohere, Groq, Together…).
-
-6. **Adversarial probing by construction.** Eleven adversarial agents continuously probe the system for specific failure modes : false authority, unbounded exploration, concealed failures, aesthetic deception, overconfidence, and seven more.
-
-7. **Layered composition discipline.** The architecture forbids direct writes to aggregate scores ; all improvements must pass through named faculty channels. A static check rejects bypass attempts.
-
-## Requirements
-
-- **Python 3.10+** (tested on 3.10 / 3.11 / 3.12 / 3.13)
-- **PostgreSQL 16+** with the [`pgvector`](https://github.com/pgvector/pgvector) extension
-- **[TimescaleDB](https://docs.timescale.com/self-hosted/latest/install/) extension** (recommended, optional)
-- **Docker** runtime (optional, for the bundled compose stack) — OrbStack, Docker Desktop, Colima, podman
-- **At least one LLM provider** — see [docs/installation.md](docs/installation.md)
-- If using Ollama : `ollama pull nomic-embed-text` + `ollama pull qwen3.5:9b`
-
-Etz Chaim routes four reasoning tiers to providers you pick. Supported via the [LiteLLM](https://docs.litellm.ai) gateway :
-
-| Category | Providers |
-|:---|:---|
-| **Frontier cloud** | Anthropic · OpenAI · Google Gemini · xAI · Mistral · Cohere · DeepSeek |
-| **Aggregators** | OpenRouter · Together · Groq · Fireworks · Perplexity |
-| **Enterprise** | AWS Bedrock · Azure OpenAI |
-| **Open-weight** | HuggingFace · NVIDIA NIM · Cloudflare AI · Replicate |
-| **Self-hosted** | Ollama · vLLM · LM Studio · LocalAI |
-| **Subscription** | Claude Code CLI (Claude Max OAuth) |
+If you maintain an active OSS project, apply for the
+**[Claude for Open Source Program](https://claude.com/contact-sales/claude-for-oss)**
+— 6 months of Claude Max free for approved OSS maintainers. Deadline:
+June 30, 2026. See [`scripts/apply-oss-program.md`](scripts/apply-oss-program.md)
+for our application template.
 
 ## Quick start
 
-```bash
-brew install pipx        # macOS — or `apt install pipx` on Debian/Ubuntu
-pipx ensurepath          # adds ~/.local/bin to your PATH
-
-pipx install etzchaim    # `etzchaim` is now on PATH from any terminal
-etzchaim onboard         # interactive 8-step wizard → http://localhost:8080
-```
-
-The wizard walks you through : system detection, Postgres configuration, LLM provider selection (multi-select), profile composition, web + auth, observability, feature flags, review.
-
-**Non-interactive install with a preset**
+After install, in your project directory:
 
 ```bash
-etzchaim onboard --non-interactive --preset local-only
-etzchaim onboard --non-interactive --preset anthropic-full
+# 1. Run the doctor
+etzchaim doctor               # 20 health checks should pass
+
+# 2. Try a faculty
+etzchaim faculty causal-pearl \
+  --query "Does drinking coffee cause better focus?"
+
+# 3. Run the bidirectional spec↔code audit
+etzchaim verify-bidirectional
+
+# 4. (Optional) trigger the auto-improve loop manually
+etzchaim improve --once
+
+# 5. Connect a coding agent
+# Claude Code: just run `claude` in this directory; .claude/ and skills/ are pre-wired
+# Codex CLI:   run `codex` — reads AGENTS.md and .codex/skills/
+# Cursor:      open the folder — .cursor/rules/etz-base.mdc references AGENTS.md
 ```
 
-Already running your own Postgres or Ollama ? Skip Docker entirely with the [manual install path](docs/installation.md).
+## The architecture in 30 seconds
 
-## Updating
-
-```bash
-etzchaim update          # one command, everywhere
+```
+┌──────────────────────────────────────────────────────────────────┐
+│  10 facultés cognitives                                          │
+│  exploration · judgment · causal · dissensus · insight           │
+│  selfmodel · selfmap · epistememory · failuretoinsight · intent  │
+└─────────────────────┬────────────────────────────────────────────┘
+                      │ compose via 22 sentiers (typed paths)
+                      ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  6 mature configurations                                         │
+│  diagnose · explore · judge · synthesize · audit · learn         │
+└─────────────────────┬────────────────────────────────────────────┘
+                      │ policed by
+                      ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  13 rectifiers + 11 malakhim adversaries                         │
+│  Background daemons detecting drift, contradictions, decay       │
+└─────────────────────┬────────────────────────────────────────────┘
+                      │ feed into
+                      ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  Nightly auto-improve daemon (Karpathy pattern)                  │
+│  Read failure traces → propose spec mutations → verify → PR      │
+└──────────────────────────────────────────────────────────────────┘
 ```
 
-Pin a specific version with `pipx install etzchaim==0.2.6`. Full documentation : [docs/installation.md](docs/installation.md).
+The full architecture: [`memory/ARCHITECTURE.md`](memory/ARCHITECTURE.md).
 
-## By the numbers (v0.2)
+## Why standards-first?
 
-|  |  |
-|---:|:---|
-| **107 000** | lines of production Python |
-| **53 000** | lines of tests |
-| **1 388** | tests collected (pytest) |
-| **275** | tests green locally |
-| **1 696** | primary-source specification items |
-| **36 086** | lines of machine-readable specification corpus |
-| **93** | lines — the probe orchestrator |
-| **~3** | seconds — core test suite runtime |
-| **0** | direct writes to aggregate scores allowed (static check) |
-| **0** | hardcoded paths remaining in Python (portable cross-OS) |
+Etz Chaim is built on **open standards**, not vendor-specific APIs:
 
-## Engineering discipline
+- **[Agent Skills](https://agentskills.io)** — 13 portable SKILL.md files,
+  work in Claude Code, Codex CLI, Cursor, Gemini CLI, Antigravity, OpenCode,
+  goose, Letta, Amp, Devin (35+ platforms)
+- **[Model Context Protocol](https://modelcontextprotocol.io)** —
+  `etzchaim-mcp` server consumable by any MCP client (Claude Code, Codex,
+  Cursor, Windsurf, ChatGPT Dev Mode)
+- **[AGENTS.md (Linux Foundation AAIF)](https://agents.md)** — single
+  source of truth, symlinked to `CLAUDE.md` / `.codex/AGENTS.md`
+- **[LiteLLM](https://github.com/BerriAI/litellm)** — 100+ LLM providers
+  via OpenAI-compatible interface
 
-**Five proof points :**
+Switching from Anthropic Claude to OpenAI GPT-5.5 is **one line** in
+`litellm.config.yaml`. The cognitive engine, the rectifiers, the spec
+corpus, the daemon — all keep working. See [PORTABILITY.md](docs/PORTABILITY.md).
 
-- **275 tests** green locally, **1 388 collected**. Four Python versions × two operating systems on CI.
-- **48 explicit failure-mode tests** — four levels per module (foundation · application · excess · inverse), across twelve core modules.
-- **11 adversarial agents** probe every faculty for specific failure patterns. Named attackers matched to specific failure modes.
-- **93 lines** : the probe orchestrator. Full orchestrator, no magic, no hidden state.
-- **1 696 specification items** with primary-source citations : edition + section + page, labeled E1 (verbatim) to E6 (speculation).
+## Contributing
 
-**Three disciplines that shape every file :**
+Etz Chaim follows the
+**[Boris Cherny workflow](https://www.threads.com/@boris_cherny/post/DTBVlMIkpcm)**
+adapted for cognitive-architecture work:
 
-- **No dual writes on aggregate scores.** All improvements flow through named faculty channels. Enforced by static check.
-- **Circuit breakers on every external call.** PostgreSQL and Ollama wrapped in 5-failure / 30-second cooldown breaker.
-- **Bidirectional specification ↔ code audit.** Every module cited in the spec exists in code ; every spec ID cited in code exists in the spec.
+1. **Start in Plan mode** (Shift+Tab×2 in Claude Code) for any spec mutation
+2. **Run the `verify-spec` subagent** before marking complete (the 2-3×
+   quality boost insight)
+3. **Every mistake → `memory/MISTAKES.md`** rule (`/mistake-to-rule`)
+4. **For batch changes → `/batch-migration`** (parallel worktree workers)
+5. **For adversarial validation → `/adversarial-probe`** (11 malakhim in
+   parallel)
+6. **CLAUDE.md is a symlink to AGENTS.md** — edit AGENTS.md only
 
-### In the lineage of cognitive architectures
+Behavioral rules and Boris references in [`AGENTS.md`](AGENTS.md).
+Full anti-pattern catalog in [`memory/MISTAKES.md`](memory/MISTAKES.md).
 
-Cognitive architectures as a field — **SOAR** (Laird, Newell, Rosenbloom 1987), **ACT-R** (Anderson 1993), **LIDA** (Franklin 2006), **CLARION** (Sun 2006) — have long argued that intelligence is best modeled as *a coordinated set of specialized capabilities*, not a single monolithic process. The LLM era has so far mostly ignored this lineage, treating the model as the whole of cognition.
+See [`memory/DECISIONS.md`](memory/DECISIONS.md) for our Architecture
+Decision Records (ADRs) — particularly:
+- **ADR-0001**: Standards-first architecture
+- **ADR-0003**: Boris's verify-spec subagent pattern
+- **ADR-0004**: Skills + 5 subagents (Barry Zhang's thesis applied)
 
-Etz Chaim AI is a modern cognitive operating system for the LLM era : the LLM becomes the *generative substrate*, and ten specialized faculties + six mature configurations + twenty-two paths + one probe orchestrator become the *structured composition layer* around it. The specification framework provides a **500-year-old library of named capabilities, failure modes, and rectification mechanics** that the cognitive-architectures field never had access to in machine-readable form.
+## Documentation
 
-## Who should use this
+- [`AGENTS.md`](AGENTS.md) — agent instructions (source unique)
+- [`memory/ARCHITECTURE.md`](memory/ARCHITECTURE.md) — system invariants &
+  faculty contracts
+- [`memory/MISTAKES.md`](memory/MISTAKES.md) — anti-patterns (living doc)
+- [`memory/DECISIONS.md`](memory/DECISIONS.md) — ADRs
+- [`docs/PORTABILITY.md`](docs/PORTABILITY.md) — cross-provider switching
+- [`docs/CODE_WITH_CLAUDE_2026.md`](docs/CODE_WITH_CLAUDE_2026.md) —
+  Anthropic 2026 features map
+- [`docs/REFERENCES.md`](docs/REFERENCES.md) — full external reference index
 
-- You build **agentic systems** and want capability-level diagnostics instead of *"the LLM was wrong"*.
-- You ship **long-running AI agents** that need to auto-detect drift without babysitting.
-- You are an **AI researcher** interested in modular cognitive architectures as a grounded alternative to monolithic models.
-- You build a **scientific-discovery loop** where insight, causal validation, and failure learning must be independently tunable.
-- You want an **LLM stack with automatic quality-tier routing** — expensive inference only where depth is needed.
+## Roadmap
 
-## Who should *not* use this
+| Sprint | Focus | Status |
+|---|---|---|
+| 0 | Standards-first foundation + Claude for OSS application | 🟢 Active (May 2026) |
+| 1 | Prompt caching, Opus 4.7, Batch API, Citations API | 🔵 Next |
+| 2 | 13 Skills (cross-tool, agentskills.io standard) | 🔵 Planned |
+| 3 | 5 subagents (Boris pattern, isolation: worktree) | 🔵 Planned |
+| 4 | Hooks + Sandbox + Auto Mode + DevContainer | 🔵 Planned |
+| 5 | MCP server `etzchaim-mcp` (npm + PyPI) | 🔵 Planned |
+| 6 | Plugin distribution (5 marketplaces) | 🔵 Planned |
+| 7 | Cloud asynchrone (Routines + Channels + Webhooks) | 🟡 Anthropic-only |
+| 8 | Managed Agents + Dreaming + Outcomes + Multiagent | 🟡 Anthropic-only |
+| 9 | arXiv paper, Code with Claude talks, v1.0 | 🟢 Q3 2026 |
 
-- You need a **generic agent orchestrator** — use [LangChain](https://github.com/langchain-ai/langchain) or AutoGen.
-- You need a **prompt-engineering optimizer** — use [DSPy](https://github.com/stanfordnlp/dspy).
-- You need a **trained model** — this is *not* a model. It calls Claude / Ollama / OpenAI under the hood.
-- You only need **a one-shot prompt** or a single-turn chatbot — the architecture is overkill.
+## License
 
-## Detailed install
+Apache 2.0 — see [LICENSE](LICENSE).
 
-The **Quick start** above handles 90 % of users. The section below is for contributors and advanced setups.
+## Citation
 
-### From source (contributors)
+If you use Etz Chaim AI in research, please cite:
 
-```bash
-git clone https://github.com/yohanpoul/etz-chaim-ai.git
-cd etz-chaim-ai
-make install       # venv + dependencies + pre-commit hooks
-make test          # 275 tests, ~3 seconds
+```bibtex
+@software{etz_chaim_ai_2026,
+  author = {Yohan Poul},
+  title = {Etz Chaim AI: A Cognitive Operating System for LLM Agents},
+  year = {2026},
+  url = {https://github.com/yohanpoul/etz-chaim-ai},
+  license = {Apache-2.0}
+}
 ```
 
-### Prerequisites
+## Acknowledgments
 
-| Component | Required | Notes |
-|:---|:-:|:---|
-| Python ≥ 3.10 | ✓ | 3.13 recommended |
-| Docker runtime | ✓ | Docker Desktop / **OrbStack** / Colima / podman |
-| Ollama | ✓ (for embeddings) | `brew install ollama` on macOS, [curl installer](https://ollama.ai/download) on Linux |
-| `ANTHROPIC_API_KEY` | optional | Required for `claude-max` preset |
+Etz Chaim AI builds directly on the work of:
 
-### Onboard presets
+- **Anthropic** for the Skills + MCP + Auto Mode foundations, and the
+  engineering papers that shaped the architecture
+- **Boris Cherny** (creator of Claude Code) whose workflow patterns are
+  encoded throughout this project — [thread](https://www.threads.com/@boris_cherny/post/DTBVlMIkpcm)
+- **Barry Zhang & Mahesh Murag** for the
+  ["Don't build agents, build skills"](https://www.youtube.com/watch?v=CEvIs9y1uog)
+  thesis we apply
+- **Erik Schluntz** for the
+  [Building Effective Agents](https://resources.anthropic.com/building-effective-ai-agents)
+  patterns
+- **Andrej Karpathy** for the autonomous research loop concept that
+  underlies our nightly daemon
+- **Sun, Anderson, Newell, Franklin, Pearl** for the cognitive
+  architecture lineage Etz Chaim sits in
+- **The Linux Foundation AAIF** for stewarding the AGENTS.md and MCP
+  standards
+- **The agentskills.io community** for the cross-tool skills standard
+- **The LiteLLM team** for making provider-agnostic LLM dispatch routine
 
-- **`claude-max`** — Claude Opus / Sonnet / Haiku via Anthropic SDK. Prompt caching → ~ 90 % token cost savings.
-- **`local-only`** — Ollama `qwen3.5:9b`. Zero API keys. ~ 5 GB disk.
-
-Extended presets (OpenAI, Google Gemini, xAI Grok, DeepSeek, Mistral, Cohere, Groq-hosted Llama, Together, Fireworks) via LiteLLM in v0.3.
-
-## Maturity and roadmap
-
-**v0.2.0 (current)** :
-
-- Eight layers operational : cognitive, composition, paths, routing, probes, calibration, adversarial, daemon.
-- 10 cognitive faculties + 6 configurations + 22 paths + 5 routing tiers + 14 daemon tasks + 11 adversaries.
-- Probes with 2 active rectifiers, 11 more specified.
-- Persistent learning trace with plateau and decay.
-- Static safety checks, bidirectional spec ↔ code audit, automatic docs, circuit breakers.
-- Installable via `pipx install etzchaim` + Docker Compose on macOS.
-
-**Planned** :
-
-- [ ] **v0.3.0** — Multi-provider LLM via LiteLLM · Linux/Windows first-class · 9 additional CLI commands · Wizard extended to 9 steps with machine profiles · Doctor 20 checks + `--fix` · `backup` / `restore` · v0.1 → v0.2 migration tooling.
-- [ ] **v0.4.0** — Full probes : all 13 rectifiers active with `act`-mode defaults once observation data supports them.
-- [ ] **v0.5.0** — Adversarial counterpart : detection of corruption-by-inversion attacks.
-- [ ] **v1.0.0** — Academic paper on arXiv, stable public API, LangChain / DSPy adapters.
-
-See [CHANGELOG.md](CHANGELOG.md) for the full v0.2.0 entry.
-
-## Origin
-
-The architecture is not arbitrary. It derives from a 500-year-old cognitive description framework that specifies :
-
-- **10 discrete attributes** through which intelligence organizes itself.
-- **6 mature configurations** built from those attributes.
-- **22 typed paths** connecting the configurations.
-- **5 tiers** describing the descent from abstract intent to concrete action.
-- **13 rectification mechanisms** for specific failure modes.
-- **49 calibration cycles** — a seven-by-seven matrix of inner-within-outer tuning.
-- **Rules of layered composition** forbidding direct writes across layers.
-
-We translated the framework into **1 696 machine-readable assertions** with edition + section + page references. The code is built *against those assertions*, not the other way around.
-
-You do not need to know the source tradition to use, test, or contribute. The public API is plain Python with plain-English docstrings.
-
-> Want to know which 500-year-old tradition we drew from and why ? Run `etzchaim --explain-origin` or read [docs/advanced.md](docs/advanced.md). It's transparent — but not required.
-
-## FAQ
-
-**Do I need any specific background to use this ?**
-No. The public API is plain Python. Specification framework details are documented in `docs/advanced.md` for the curious — never required.
-
-**Does it work with OpenAI / Anthropic / Ollama / local models ?**
-Yes, and it *automatically picks the right one*. Five quality tiers with routing by complexity and token budget. v0.3 extends to OpenAI, Google, xAI, DeepSeek, Mistral, Cohere, Groq, Together, Fireworks, Perplexity via LiteLLM.
-
-**Is this production-ready ?**
-Beta (v0.2.0). 275 tests pass locally, 1 388 collected total. API stability guaranteed from v1.0 onwards.
-
-**Can I contribute ?**
-Yes — for any pure-code contribution (faculty, test, bug fix, adapter). See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-**What's the "nightly-improve loop" ?**
-A nightly auto-improvement daemon task (23h – 00h30) named after [Andrej Karpathy](https://karpathy.ai/)'s 630-line [AutoResearch](https://github.com/karpathy/nanoGPT) pattern — the minimum-viable research loop. It explores edge cases, generates new assertions, mutates the specification under adversarial supervision.
-
-**Where are the primary sources ?**
-Internal corpus shipped via the package. License : public domain for pre-1923 sources, CC-BY-3.0 for Sefaria portions (see [NOTICE](NOTICE)). For details, see `etzchaim --explain-origin`.
-
-## Community and support
-
-- **Documentation** — [docs/](docs/)
-- **Contributing** — [CONTRIBUTING.md](CONTRIBUTING.md) before your first PR.
-- **Security** — [SECURITY.md](SECURITY.md) for responsible disclosure.
-- **Commercial inquiries / partnerships / acquisition** — open an issue tagged `[BUSINESS]` or reach the maintainer via GitHub.
-- **Maintainer** — [@yohanpoul](https://github.com/yohanpoul).
-
-## License and citation
-
-Apache License 2.0 — see [LICENSE](LICENSE). Internal specification corpus is transposed from public-domain texts and CC-BY-3.0 portions ; see [NOTICE](NOTICE) for detailed attribution and [LICENSE_THIRD_PARTY.md](LICENSE_THIRD_PARTY.md) for additional inspirations.
-
-If you use Etz Chaim AI in academic work, see [CITATION.cff](CITATION.cff) for the preferred citation format.
-
----
-
-<p align="center">
-  <sub>If Etz Chaim AI changes how you think about AI architecture, please ★ the repository.</sub>
-  <br/>
-  <sub>Built by <a href="https://github.com/yohanpoul">@yohanpoul</a>. Open by design — Apache 2.0.</sub>
-</p>
+Full reference index: [`docs/REFERENCES.md`](docs/REFERENCES.md).
