@@ -1,0 +1,754 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 5 — Heikhal Ze'eir Anpin (היכל זעיר אנפין)
+# Sha'ar: 2 — Sha'ar Rapach Nitzotzin (שער רפ"ח ניצוצין)
+# Perek: 1 — IBBUR Z"A. 3 BEHINOT a tikkun. RaPaCh nitzotzin (288).
+#            Hevel de-garmei. 7 Melakhim shevirah. TOHU VAVOHU = MeT+RaPaCh.
+#            4 HAVAYOT (AV/SAG/MaH/BaN). MILUI=DINIM=ELOHIM.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_01 :
+#   - Bloc A (§1) : Title H5 Sha'ar 2 = Sha'ar RaPaCh Nitzotzin, 6 perakim
+#   - Bloc B : IBBUR Z"A dans pratzuf "ha-kolel" Bina+Tevunah
+#   - Bloc C : 3 BEHINOT a tikkun par ibbur (orot melakhim retires, RaPaCh nitzotzin, kelim shevurim)
+#   - Bloc D : BEHINAH 1 — orot melakhim remontent ; kelim "morts" en Beriah
+#   - Bloc E : BEHINAH 2 — RaPaCh nitzotzin restant pour vie diminuee (chiyut metzumtzam)
+#   - Bloc F : Analogie adam tachton mort — chelek nefesh reste guf pour TECHIYAT HA-METIM
+#   - Bloc G : Source Zohar Shelach 170 — pekudana de-ruach le-nefesh la nuit
+#   - Bloc H : Hevel de-Garmei Zohar 169 — ba'alat ov+Shmuel ; verset Yeshayah 58:11
+#   - Bloc I : BEHINAH 3 — kelim eux-memes shevurim, descendus Beriah
+#   - Bloc J : 7 NEKUDOT TACHTONIM = 7 MELAKHIM = ZON BaN sortis NIKVEI EINAYIM A"K
+#   - Bloc K : Kelim sortirent d'abord ; orot ne supportent ; SHEVIRAH ; kelim descendent futur Beriah
+#   - Bloc L : YERIDAH = MITAH (sortir d'olamo vers olam acher = mort)
+#   - Bloc M : 7 melakhim = Z"T = ZON Atzilut ; contraste ACHORAYIM A"O tombes pas morts
+#   - Bloc N : Comparaison adam tachton — neshamah remonte Atzilut ; gufam (kelim) en Beriah = kevurah
+#   - Bloc O : Ne'emar "ve-nafsho alav te'evul" ; reste behinah ruchani = HEVEL DE-GARMEI pour TECHIYAH
+#   - Bloc P : Avon (RIBBIT, KOFER BE-TECHIYAH) → seche ruchaniyut → pas de techiyah ; verset Yeshayah 58:11
+#   - Bloc Q : Yechezkel vision atzamot yeveishot — ish neshikh+marbit, atzamot sechees, pas techiyah
+#   - Bloc R : Pareil 7 melakhim — ruchaniyut reste pour TIKKUN ATZILUT = TECHIYAH
+#   - Bloc S : Klal — kol ma she-yesh be-olam ha-zeh = comme 7 melakhim ; "ein chadash tachat ha-shemesh" (Eccl 1:9)
+#   - Bloc T : Ruchaniyut nishar = NITZOTZIN orot elyonim restes kelim metim ; iqarei orot remonterent
+#   - Bloc U : Mispar nitzotzin = RPCH (288) ; sod "vehaaretz hayetah TOHU VAVOHU" (Bereshit 1:2)
+#   - Bloc V : "Eretz Edom" = Malkhut A"K (Bereshit 36) ; "Ruach Elohim MERAḤEFET aleyhon" ; tevat MERAḤEFET = MeT (מ"ת=440) + RaPaCh (רפ"ח=288) = 728
+#   - Bloc W : Pashut — ohr me'uleh ala lemalah ; behinah gru'ah resta = DININ GEMURIM
+#   - Bloc X : Seder orot Atzilut = HAVAYOT ; 4 BEHINOT HAVAYAH (AV/SAG/MaH/BaN) avec miluyim
+#   - Bloc Y : HAVAYAH d'AV — etzem ohr = 4 lettres havayah simples ; aspect MISPAR (havayah=26) ; tzurah > mispar
+#   - Bloc Z : Aspect PANIM ; ACHORAYIM ; tzurah-letter ou mispar
+#   - Bloc AA : MILUI = DININ ; gimatria milui = ELOHIM ; milui-milui ad ein ketz (recursion infinie)
+#
+# Source Sefaria : Sefer_Etz_Chaim.18.1 (2 sections, 4529 chars)
+# IDs : EC-H5S18-001 → EC-H5S18-024
+
+meta:
+  sefer: etz_chaim
+  heikhal: 5
+  shaar: 2
+  shaar_name_he: "שער רפ\"ח ניצוצין"
+  perek: 1
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Premier perek Sha'ar RaPaCh Nitzotzin (Sefer Etz Chaim 18). IBBUR Z\"A dans pratzuf Imma+Tevunah ha-kolel. 3 BEHINOT a tikkun par ibbur : (1) orot melakhim retires, (2) RaPaCh nitzotzin = 288 etincelles restees kelim pour CHIYUT METZUMTZAM, (3) kelim shevurim descendus Beriah. Analogie adam tachton mort : chelek nefesh reste guf pour TECHIYAT HA-METIM. HEVEL DE-GARMEI (Zohar Shelach 169-170). Verset Yeshayah 58:11 ('ve-hisbi'a be-tzachtzachot nafshekha ve-atzmotekha yachalitz') ; ba'alat ov Shmuel ; Yechezkel vision atzamot yeveishot (37) ; usurier RIBBIT seche os pas techiyah. 7 MELAKHIM = ZON BaN sortis NIKVEI EINAYIM A\"K ; kelim sortirent d'abord, orot ne supportent → SHEVIRAH ; kelim descendent futur Beriah ; orot remontent. YERIDAH=MITAH (mort). Klal 'ein chadash tachat ha-shemesh' (Eccl 1:9) — tout olam ha-zeh = melakhim. Mispar nitzotzin = RPCH (288). Sod TOHU VAVOHU (Bereshit 1:2) ; 'Eretz Edom' = Malkhut A\"K (Bereshit 36 — rois morts) ; tevat MERAḤEFET = MeT (מ\"ת=440) + RaPaCh (רפ\"ח=288) = 728. Ohr me'uleh remonta ; behinah gru'ah resta = DININ GEMURIM. Seder 4 HAVAYOT Atzilut : AV (יוד הי ויו הי=72), SAG (יוד הי ואו הי=63), MaH (יוד הא ואו הא=45), BaN (יוד הה וו הה=52). Etzem ohr = 4 lettres simples ; aspect MISPAR (havayah=26) ; tzurah > mispar. PANIM/ACHORAYIM. MILUI = DININ = ELOHIM ; milui-milui ad ein ketz (recursion infinie)."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H5S18-001"
+    source_he: "השער השני שער רפ\"ח ניצוצין ובו ו' פרקים"
+    source_ref: "Heikhal 5, Sha'ar 2:1 §title"
+    assertion: |
+      OUVERTURE SHA'AR 2 H5 :
+      → SHA'AR HA-SHENI (2eme porte du Heikhal Z"A) = SHA'AR RaPaCh NITZOTZIN.
+      → 288 ETINCELLES (rapach = רפ"ח = 288).
+      → Contient 6 PERAKIM.
+      → Architecture : porte specialisee pour les 288 etincelles restees dans les kelim shevurim.
+      → Pattern : 288-nitzotzin = doctrine fondatrice Lurianique du tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: shaar_2_h5_rapach_nitzotzin_6_perakim_288, role: shaar_2_heikhal_5_porte_288_etincelles_6_perakim_doctrine_fondatrice_tikkun_lurianique}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture : porte 288 etincelles. Pattern doctrine fondatrice tikkun."
+
+  - id: "EC-H5S18-002"
+    source_he: "ועתה צריך שנבאר באיזה אופן היה עיבור ז\"א בתוך פרצוף זה הכולל בינה ותבונה כנ\"ל"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      IBBUR Z"A — contexte :
+      → Maintenant on explique le mode d'IBBUR (gestation) de Z"A.
+      → DANS le PRATZUF HA-KOLEL (partzuf englobant) = BINA + TEVUNAH (cf. EC-H5S17-001 sur Z"A).
+      → Architecture : Z"A gestation in maternal-pratzuf composite (Bina+Tevunah).
+      → Pattern : ibbur dans matrix-composite enables tikkun.
+    type: axiome_explicite
+    concepts:
+      - {id: ibbur_z_a_pratzuf_ha_kolel_bina_tevunah, role: ibbur_z_a_dans_pratzuf_kolel_bina_tevunah_matrix_composite_maternal}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture : matrix composite pour ibbur. Pattern maternal-pratzuf."
+
+  - id: "EC-H5S18-003"
+    source_he: "ומתחילה צריך שנבאר ענין ג' בחי' אלו שיש אל ז\"א ולכולם צריך תיקון על ידי עיבור זה"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      3 BEHINOT a TIKKUN par IBBUR :
+      → Z"A possede 3 BEHINOT (aspects) qui necessitent TOUS tikkun par cet ibbur.
+      → BEHINAH 1 = OROT des MELAKHIM (lumieres des rois) qui se sont retires des kelim et sont remontes ; les kelim sont morts (METU) et descendus en BERIAH.
+      → BEHINAH 2 = RaPaCh NITZOTZIN (288 etincelles) restes dans kelim shevurim pour CHIYUT METZUMTZAM (vie reduite).
+      → BEHINAH 3 = KELIM EUX-MEMES qui se sont brises et descendus en BERIAH.
+      → Architecture : 3-aspect-tikkun = orot+nitzotzin+kelim.
+      → Pattern : compound-tikkun pour shevirah-aftermath.
+    type: axiome_explicite
+    concepts:
+      - {id: 3_behinot_tikkun_ibbur_orot_melakhim_rapach_nitzotzin_kelim, role: 3_behinot_tikkun_par_ibbur_orot_remontes_rapach_nitzotzin_chiyut_metzumtzam_kelim_shevurim_beriah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture : 3-aspect tikkun compound. Pattern shevirah-aftermath."
+
+  - id: "EC-H5S18-004"
+    source_he: "הא' הוא בחינת אורות של המלכים שנסתלקו מהכלים ועלו למעלה ומתו הכלים וירדו לבריאה"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      BEHINAH 1 — OROT MELAKHIM :
+      → Les LUMIERES des MELAKHIM (rois) se sont SEPAREES des KELIM.
+      → ALU LE-MAALAH (sont remontees en haut).
+      → Les KELIM sont MORTS (METU).
+      → Les kelim sont DESCENDUS en BERIAH (yeradu le-Beriah).
+      → Architecture : light-vessel-separation = upward-light + downward-dead-vessels.
+      → Pattern : shevirah-bifurcation orot-up vs kelim-down.
+    type: axiome_explicite
+    concepts:
+      - {id: orot_melakhim_alu_lemalah_kelim_metu_yeradu_beriah, role: orot_melakhim_separes_remontent_kelim_morts_descendent_beriah_bifurcation_shevirah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : shevirah bifurcation. Pattern orot-up kelim-down."
+
+  - id: "EC-H5S18-005"
+    source_he: "הב' הוא בחי' רפ\"ח ניצוצין של אור שנשארו בתוך הכלים בהיותן שבורים כדי להחיותן חיות מצומצם כדי שעי\"כ יהיה בהם מציאות לחזור ולהתתקן ולהחיות ע\"י עיבור"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      BEHINAH 2 — RaPaCh NITZOTZIN :
+      → 288 NITZOTZIN d'OHR sont restes DANS les KELIM SHEVURIM.
+      → But : LEHAḤAYOTAN CHIYUT METZUMTZAM (les vivifier d'une vie reduite/contractee).
+      → Cette vie minimale = condition de possibilite (METZIUT) pour POUVOIR : (a) revenir, (b) se rectifier (LEHITTAKEN), (c) revivre par IBBUR.
+      → Architecture : residual-light-trace enables future-tikkun.
+      → Pattern : minimum-vitality preserves tikkun-possibility.
+    type: interprétation_lurianique
+    concepts:
+      - {id: rapach_nitzotzin_288_chiyut_metzumtzam_kelim_shevurim_lehittaken_ibbur, role: rapach_288_etincelles_kelim_shevurim_chiyut_metzumtzam_metziut_lehittaken_lehaḥayot_ibbur}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : residual-light-trace. Pattern minimum-vitality preserves tikkun."
+
+  - id: "EC-H5S18-006"
+    source_he: "ואל תתמה מזה כי כן האדם התחתון בעה\"ז אחר שמת ויצאה נפשו ממנו נשאר חלק מנפשו בתוך הגוף כדי שעל ידי זה יוכל לקום בתחיית המתים"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      ANALOGIE — ADAM TACHTON apres mort :
+      → Apres MITAH : NEFESH SORT (yatzeah).
+      → MAIS reste CHELEK MI-NAFSHO (part de son ame) DANS le GUF (corps).
+      → But : permettre LAKUM BE-TECHIYAT HA-METIM (resurrection des morts).
+      → Architecture : death-residue enables-resurrection.
+      → Pattern : same-mechanism micro (homme) macro (melakhim).
+    type: analogie_explicative
+    concepts:
+      - {id: adam_tachton_mort_chelek_nefesh_reste_guf_techiyat_ha_metim, role: adam_tachton_apres_mort_chelek_nefesh_reste_guf_techiyat_ha_metim_micro_macro_melakhim}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : micro-macro analogie. Pattern death-residue resurrection."
+
+  - id: "EC-H5S18-007"
+    source_he: "וכמ\"ש זוהר פ' שלח לך דק\"ע אבל השתא פקדונא איהו לנפשא דאיהי משתככא ואשתארת בשכוכי גו גרמי ובג\"כ בריש כל ליליא פקדונא (כלילא) דרוחא לנפשא ולא על בשרא"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      Source ZOHAR Shelach 170 :
+      → "PEKUDANA IHU LE-NAFSHA" (depot pour la nefesh).
+      → La nefesh "MISHTAKHA VE-ISHTAARAT BE-SHIKHKHEI GO GARMEI" (s'assoupit et reste dans les recoins des os).
+      → Donc chaque nuit : "PEKUDANA (KELILA) DE-RUACHA LE-NAFSHA VE-LO AL BISRA" (depot du ruach a la nefesh, pas a la chair).
+      → Architecture : nightly-deposit-mechanism.
+      → Pattern : ruach-nefesh exchange via bone-residue.
+    type: déduction_scripturaire
+    concepts:
+      - {id: zohar_shelach_170_pekudana_nefesh_garmei_lailah_ruach, role: zohar_shelach_170_pekudana_nefesh_mishtakha_garmei_lailah_pekudana_ruach_nefesh_pas_bisra}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : nightly deposit. Source Zohar Shelach 170."
+
+  - id: "EC-H5S18-008"
+    source_he: "גם בדקס\"ט ענין הבל דגרמי דאשתאר בקברא במעשה בעלת אוב בשמואל וז\"ס פסוק והשביע בצחצחות נפשך ועצמותיך יחליץ"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      HEVEL DE-GARMEI — Zohar 169 :
+      → "HEVEL DE-GARMEI ISHTAR BE-KIVRA" (la VAPEUR DES OS reste dans la tombe).
+      → Episode BA'ALAT OV (necromancienne) avec SHMUEL (1 Sam 28).
+      → Sod du verset : "VE-HISBI'A BE-TZACHTZACHOT NAFSHEKHA VE-ATZMOTEKHA YACHALITZ" (Yeshayah 58:11 — il rassasiera ton ame d'eclats et fortifiera tes os).
+      → Architecture : bone-vapor-residue persistant post-mortem.
+      → Pattern : verset-cosmologique encode hevel-mechanism.
+    type: déduction_scripturaire
+    concepts:
+      - {id: hevel_de_garmei_kivra_zohar_169_baalat_ov_shmuel_yeshayah_58_11, role: hevel_de_garmei_vapeur_os_kivra_zohar_169_baalat_ov_shmuel_1sam_28_yeshayah_58_11_tzachtzachot_atzmotekha_yachalitz}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : bone-vapor residue. Sources Zohar 169, 1 Sam 28, Yesh 58:11."
+
+  - id: "EC-H5S18-009"
+    source_he: "הג' הוא בחי' הכלים עצמן שנשברו וירדו לבריאה וכל אלו הג' בחינות צריכין להתתקן על ידי עיבור"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      BEHINAH 3 — KELIM EUX-MEMES :
+      → Les KELIM mehmes se sont BRISES (nishberu).
+      → Sont DESCENDUS en BERIAH (yeradu le-Beriah).
+      → CES 3 BEHINOT necessitent TOUTES tikkun par IBBUR.
+      → Architecture : kelim-shevurim descend Beriah ; tous-3-besoin-tikkun.
+      → Pattern : compound-tikkun-via-ibbur.
+    type: axiome_explicite
+    concepts:
+      - {id: behinah_3_kelim_shevurim_yeradu_beriah_3_behinot_tikkun_ibbur, role: behinah_3_kelim_eux_memes_nishberu_yeradu_beriah_3_behinot_necessitent_tikkun_ibbur}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "imma"]
+      relevance: "Architecture : kelim shevurim. Pattern compound tikkun ibbur."
+
+  - id: "EC-H5S18-010"
+    source_he: "הנה נת' כי ז' נקודות תחתונים הנקראים ז' מלכים שהם בחי' זו\"נ דשם ב\"ן הנ\"ל שיצאו מנקבי עינים דא\"ק"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      Identite des MELAKHIM (cf. EC-H1S4 sur nikvei einayim, EC-H2S1 sur nekudot) :
+      → 7 NEKUDOT TACHTONIM (points inferieurs) = 7 MELAKHIM (rois).
+      → Sont la BEHINAH de ZON (Zeir+Nukva) du SHEM BaN (52).
+      → Sortis des NIKVEI EINAYIM (orifices des yeux) d'A"K.
+      → Architecture : 7-melakhim = ZON-BaN issus de A"K-eyes.
+      → Pattern : ocular-emanation source des nekudot.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_melakhim_nekudot_tachtonim_zon_ban_nikvei_einayim_a_k, role: 7_melakhim_7_nekudot_tachtonim_zon_shem_ban_52_sortis_nikvei_einayim_adam_kadmon}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva", "adam_kadmon"]
+      relevance: "Architecture : ocular emanation. Pattern ZON-BaN A\"K-eyes."
+
+  - id: "EC-H5S18-011"
+    source_he: "כאשר יצאו בחי' הכלים תחילה וכאשר יצאו אח\"ך אורות לכנוס בכלים שלהם האלו לא יכלו הכלים ההם לסבלם ונשברו וירדו הכלים למטה במקום שהוא עתיד להיות עולם הבריאה אח\"כ והאורות נסתלקו ועמדו למעלה באצילות"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      Mecanique de la SHEVIRAH (cf. EC-H2S2, EC-H1S5) :
+      → KELIM sortirent EN PREMIER ; OROT ensuite pour entrer.
+      → Kelim NE PURENT SUPPORTER (lo savlam) → NISHBERU.
+      → KELIM descendirent au lieu FUTUR DE BERIAH.
+      → OROT remonterent et resterent en ATZILUT.
+      → Architecture : sequential-emergence kelim-first orot-second incompatibility.
+      → Pattern : capacity-overflow shevirah.
+    type: axiome_explicite
+    concepts:
+      - {id: kelim_sortirent_premier_orot_ensuite_lo_savlu_nishberu_yeradu_beriah_orot_alu_atzilut, role: kelim_sortirent_premier_orot_ensuite_kelim_lo_savlu_nishberu_yeradu_beriah_orot_alu_atzilut_capacity_overflow}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : capacity overflow shevirah. Pattern sequential emergence."
+
+  - id: "EC-H5S18-012"
+    source_he: "וירידה זו נקרא מיתה לפי שכל שיוצא מעולמו ויורד והולך לעולם אחר זולתו נקרא אצלו מיתה"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      Definition MITAH (mort) :
+      → YERIDAH (descente) = MITAH (mort).
+      → KOL SHE-YOTZEH ME-OLAMO (tout ce qui sort de son monde) ET YORED VE-HOLEKH LE-OLAM ACHER ZULATO (descend vers un autre monde).
+      → C'est appele MITAH pour lui.
+      → Architecture : tier-displacement = death.
+      → Pattern : ontological-death = world-exit.
+    type: axiome_explicite
+    concepts:
+      - {id: yeridah_mitah_yotzeh_olamo_yored_olam_acher, role: yeridah_mitah_definition_yotzeh_olamo_yored_olam_acher_zulato_tier_displacement_ontological_death}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : tier displacement = death. Pattern ontological."
+
+  - id: "EC-H5S18-013"
+    source_he: "והנה אלו ז' מלכים הם בחי' ז\"ת שהם הנקרא זו\"נ של עולם האצילות וכיון שירדו אל הבריאה נקרא אצלם מיתה משא\"כ באחוריים דאו\"א שנפלו ולא מתו"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      7 MELAKHIM vs ACHORAYIM A"O :
+      → 7 melakhim = Z"T (7 inferieures) = ZON Atzilut.
+      → Descendus en Beriah → MITAH.
+      → CONTRASTE : ACHORAYIM (dos) d'A"O (Aba+Ima) sont TOMBES (NAFLU) mais N'ONT PAS MOURU (lo metu).
+      → Architecture : differential-fate ZON-mort vs A"O-achorayim-tombes-pas-morts.
+      → Pattern : tier-differential post-shevirah.
+    type: axiome_explicite
+    concepts:
+      - {id: 7_melakhim_zon_atzilut_mitah_vs_achorayim_a_o_naflu_pas_metu, role: 7_melakhim_zon_atzilut_yeradu_beriah_mitah_vs_achorayim_aba_ima_naflu_pas_metu_differential_fate}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/abba.py", "partzufim/imma.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "abba", "imma"]
+      relevance: "Architecture : differential fate. Pattern tier-differential post-shevirah."
+
+  - id: "EC-H5S18-014"
+    source_he: "והוא אצלם כדמיון אדם התחתון בעה\"ז כשמת... כי נשמתן שהם אורות שלהם עלו אל מקומם הראשון שהוא אצילות אמנם גופם שהם הכלים שלהם ירדו לעולם הבריאה ושם היה קבורתם"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      DEDOUBLEMENT mort des MELAKHIM (analogie adam tachton) :
+      → NESHAMAH (= OROT) remontent au MAKOM RISHON = ATZILUT.
+      → GUFAM (= KELIM) descendent en BERIAH = leur KEVURAH (sepulture).
+      → Comme adam tachton : nefesh remonte vers Elohim ; guf-afar retourne terre.
+      → Architecture : neshamah-up + guf-down = death-bifurcation.
+      → Pattern : micro-macro identical separation.
+    type: analogie_explicative
+    concepts:
+      - {id: melakhim_neshamah_orot_remontent_atzilut_gufam_kelim_descendent_beriah_kevurah, role: melakhim_neshamah_orot_remontent_makom_rishon_atzilut_gufam_kelim_descendent_beriah_kevurah_analogie_adam_tachton}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : death bifurcation. Pattern micro-macro identical."
+
+  - id: "EC-H5S18-015"
+    source_he: "ונשאר בו אותו הבחי' של הרוחני של עצמותיהן הנקרא בזוהר הבל דגרמי כנ\"ל כדי שיהיה לו איזה חיות כדי שיוכל להתקיים עד זמן התחייה"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      HEVEL DE-GARMEI — fonction :
+      → Reste BEHINAH RUCHANI des ATZAMOT (os).
+      → Appele dans le ZOHAR : HEVEL DE-GARMEI (vapeur des os).
+      → But : avoir QUELQUE CHIYUT (vie) ; permettre HITKAYMUT (subsistance) jusqu'au ZMAN HA-TECHIYAH.
+      → Architecture : ossuary-vapor-residue = subsistence-mechanism.
+      → Pattern : minimal-spirituality preserves resurrection-capacity.
+    type: interprétation_lurianique
+    concepts:
+      - {id: hevel_de_garmei_ruchani_atzamot_chiyut_hitkaymut_techiyah, role: hevel_de_garmei_ruchani_atzamot_zohar_chiyut_hitkaymut_zman_techiyah_ossuary_vapor_residue_subsistence}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : ossuary vapor subsistence. Pattern minimal spirituality preserves."
+
+  - id: "EC-H5S18-016"
+    source_he: "וזהו ענין שארז\"ל יש מי שאינם קמים בתח\"ה לסבת עון כמו עון רבית וכופר בתח\"ה וכיוצא בזה כי אותו העון גורם להסתלק רוחניות המלחלח העצמות ההם בקבר ונשארים יבישים ושוב אינן יכולין לחיות"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      AVON empeche TECHIYAH :
+      → Yesh mi she-einam KAMIM be-TECHIYAH (certains ne se levent pas a la resurrection).
+      → CAUSE : AVON comme RIBBIT (usure) ou KOFER BE-TECHIYAH (denegation de la techiyah).
+      → Mecanisme : avon fait HISTALEK (retirer) la RUCHANIYUT qui HUMECTAIT (MELACHLEACH) les os dans la tombe.
+      → ATZAMOT restent YEVEISHIM (secs) → ne peuvent plus revivre.
+      → Architecture : avon-dries-spiritual-moisture = irreversible-death.
+      → Pattern : moral-failure dries hevel-de-garmei.
+    type: déduction_scripturaire
+    concepts:
+      - {id: avon_ribbit_kofer_bitechiyah_histalek_ruchaniyut_atzamot_yeveishim_pas_techiyah, role: avon_ribbit_kofer_techiyah_histalek_ruchaniyut_melachleach_atzamot_kivra_yeveishim_irreversible_death}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : avon dries moisture. Pattern moral failure irreversible."
+
+  - id: "EC-H5S18-017"
+    source_he: "וז\"ס והשביע בצחצחות נפשך ועצמותיך יחליץ והיית כגן רוה וכמוצא מים אשר לא יכזבו מימיו כי ע\"י לחלוחית ממי האורה (נ\"א מעט והארה) אשר נכנס בעצמות לא יכזבו מימיו ויקום בתח\"ה"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      Verset YESHAYAH 58:11 — sod :
+      → "VE-HISBI'A BE-TZACHTZACHOT NAFSHEKHA VE-ATZMOTEKHA YACHALITZ" (rassasiera ton ame de tzachtzachot et fortifiera tes os).
+      → "VE-HAYITA KE-GAN RAVEH U-KE-MOTZA MAYIM ASHER LO YEKHAZVU MEIMAV" (tu seras comme jardin abreuve et source d'eau dont les eaux ne tarissent).
+      → MECANISME : LACHLUCHIT (humidite) MI-MEI HA-ORAH (des eaux de la lumiere) (variante Nusah Aher : "MEAT VE-HE'ARAH" — peu et illumination) entre dans les ATZAMOT → mayim ne tarissent → revit en TECHIYAH.
+      → Variante (Nusah Aher) : "מעט והארה" au lieu de "ממי האורה".
+      → Architecture : verset-encode mei-orah moisture mechanism.
+      → Pattern : water-light-moisture preserves bones.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yeshayah_58_11_tzachtzachot_atzmotekha_yachalitz_lachluchit_mei_orah_techiyah, role: yeshayah_58_11_tzachtzachot_yachalitz_gan_raveh_motza_mayim_lachluchit_mei_orah_meat_he_arah_revit_techiyah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : water-light moisture. Source Yesh 58:11 + Nusah Aher."
+
+  - id: "EC-H5S18-018"
+    source_he: "וזה מ\"ש יחזקאל בענין העצמות היבישות ההם שארז\"ל שהיה איש א' שבנשך נתן ובתרבית לקח ועי\"כ נתייבשו עצמותיו בלתי שום לחלוחית מצוה ולא קם בתח\"ה"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      Vision YECHEZKEL 37 — ATZAMOT YEVEISHOT :
+      → Yechezkel parle des os secs (Ezek 37 — vision os secs valle).
+      → ARZ"L : c'etait UN HOMME (ish ehad) qui PRETAIT a NESHEKH (interet) et PRENAIT a TARBIT (usure).
+      → Consequence : ses ATZAMOT NITYABSHU (se sont sechees) sans aucune LACHLUCHIT MITZVAH (humidite de mitzvah).
+      → LO KAM BE-TECHIYAH (n'est pas leve a la resurrection).
+      → Architecture : usurer-no-mitzvah-moisture = irreversible-bones-dry.
+      → Pattern : Talmudic-narrative validates avon-mechanism.
+    type: déduction_scripturaire
+    concepts:
+      - {id: yechezkel_37_atzamot_yeveishot_ish_neshekh_marbit_pas_lachluchit_mitzvah_pas_techiyah, role: yechezkel_37_vision_atzamot_yeveishot_ish_ehad_neshekh_natan_tarbit_lakach_atzamot_nityabshu_pas_lachluchit_mitzvah_pas_kam_techiyah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : usurer no moisture. Source Ezek 37 + ARZ\"L."
+
+  - id: "EC-H5S18-019"
+    source_he: "והנה עד\"ז גם בז' מלכים נשאר בהם קצת רוחניות כדי להחיות את הכלים ההם בזמן תחייתם שהוא זמן תיקון האצילות"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      Application aux 7 MELAKHIM :
+      → De la meme facon (ad-zeh) : dans les 7 MELAKHIM reste KETZAT RUCHANIYUT (un peu de spiritualite).
+      → But : LEHAḤAYOT les KELIM au ZMAN TECHIYATAM (temps de leur resurrection).
+      → CE TEMPS = ZMAN TIKKUN HA-ATZILUT (temps de la rectification d'Atzilut).
+      → Architecture : melakhim-techiyah = atzilut-tikkun-time.
+      → Pattern : equivalence-techiyah-tikkun cosmologic.
+    type: interprétation_lurianique
+    concepts:
+      - {id: 7_melakhim_ketzat_ruchaniyut_lehaḥayot_kelim_zman_techiyah_tikkun_atzilut, role: 7_melakhim_ketzat_ruchaniyut_lehaḥayot_kelim_zman_techiyatam_zman_tikkun_ha_atzilut_equivalence}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : techiyah-tikkun equivalence. Pattern cosmologic."
+
+  - id: "EC-H5S18-020"
+    source_he: "ודע כלל זה כי כל מה שיש בעה\"ז הכל הוא כדוגמת מה שהיה באלו ז' מלכים ואין כל חדש תחת השמש ומיתת המלכים ותיקונם הוא ענין תח\"ה להם וכך יהיה לגופים השפלים בעה\"ז לע\"ל"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      KLAL ZEH (regle generale) :
+      → Tout ce qui est en OLAM HA-ZEH = comme ce qui fut dans les 7 MELAKHIM.
+      → "EIN CHADASH TACHAT HA-SHEMESH" (Eccl 1:9 — rien de nouveau sous le soleil).
+      → MITAH des melakhim + leur TIKKUN = TECHIYAH pour eux.
+      → Pareil pour GUFIM SHEFALIM (corps inferieurs) en olam ha-zeh, LE-ATID LAVO (au monde futur).
+      → Architecture : universal-template-melakhim micro-macro-isomorphism.
+      → Pattern : cosmic-history = anthropic-history isomorphism.
+    type: déduction_scripturaire
+    concepts:
+      - {id: klal_olam_ha_zeh_dugma_7_melakhim_ein_chadash_tachat_ha_shemesh_techiyah_universal_template, role: klal_olam_ha_zeh_dugma_7_melakhim_eccl_1_9_ein_chadash_tachat_ha_shemesh_mitah_tikkun_techiyah_gufim_shefalim_le_atid_lavo_micro_macro}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : universal template. Source Eccl 1:9. Pattern micro-macro isomorphism."
+
+  - id: "EC-H5S18-021"
+    source_he: "והנה הרוחניות הנשאר בהם הנקרא הבל דגרמי הם בחי' ניצוצין של האורות העליונים שנשארו בכלים המתים ההם ועיקרי האורות נסתלקו למעלה וקצת ניצוצין מהם נשארו בכלים להחיותן בזמן תיקון של אצילות"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      Identification HEVEL DE-GARMEI = NITZOTZIN :
+      → RUCHANIYUT NISHAR (spiritualite restante) = HEVEL DE-GARMEI.
+      → = NITZOTZIN des OROT ELYONIM (etincelles des lumieres superieures) restees dans les KELIM HA-METIM.
+      → IQAREI HA-OROT (lumieres principales) NISTALKU LE-MAALAH (remonterent en haut).
+      → KETZAT NITZOTZIN (quelques etincelles) restent dans les kelim pour LEHAḤAYOTAN au TIKKUN ATZILUT.
+      → Architecture : main-light-up + spark-residue-down.
+      → Pattern : light-fragmentation post-shevirah.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ruchaniyut_nishar_hevel_garmei_nitzotzin_iqarei_nistalku_ketzat_kelim_tikkun, role: hevel_de_garmei_identification_nitzotzin_orot_elyonim_iqarei_nistalku_ketzat_kelim_tikkun_atzilut_fragmentation}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : light fragmentation. Pattern main-up sparks-down."
+
+  - id: "EC-H5S18-022"
+    source_he: "והנה מספר הניצוצין ההם היו רפ\"ח ניצוצין וז\"ס והארץ היתה תהו ובהו שהם בחי' המלכים הנקרא ע\"ש המל' דא\"ק הנקרא ארץ אדום אשר מתו ונשתברו ונעשו תהו ובהו ונשאר קצת ניצוצין הנקרא רוח אלקים מרחפת עליהון ותיבת מרחפת הוא מ\"ת רפ\"ח כי הרפ\"ח ניצוצין היה תוך המתים הנ\"ל"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      MISPAR NITZOTZIN = RPCH (288) — sod (cf. EC-H2S2 sur shevirah) :
+      → Nombre nitzotzin = 288 (רפ"ח). Sod "VEHA-ARETZ HAYETAH TOHU VAVOHU" (Bereshit 1:2).
+      → ARETZ = MELAKHIM = MALKHUT A"K = ERETZ EDOM (Bereshit 36 — pays des rois morts).
+      → Mourirent, NISHTABRU, devinrent TOHU VAVOHU.
+      → Restent NITZOTZIN = "RUACH ELOHIM MERAḤEFET ALEYHON" (Elohim plane sur eux).
+      → TEVAT MERAḤEFET (מרחפת) = MeT (מ"ת=440) + RaPaCh (רפ"ח=288) = 728 (288 dans les morts).
+      → Architecture : verset-encoding rapach gematria.
+      → Pattern : creation-narrative encode shevirah-numbers.
+    type: déduction_scripturaire
+    concepts:
+      - {id: mispar_nitzotzin_rapach_288_sod_tohu_vavohu_eretz_edom_meraḥefet_met_rapach_728, role: mispar_nitzotzin_rapach_288_sod_tohu_vavohu_bereshit_1_2_eretz_edom_malkhut_ak_bereshit_36_meraḥefet_met_440_rapach_288_total_728_creation_narrative_encode_shevirah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "adam_kadmon"]
+      relevance: "Architecture : verset encode rapach gematria. Source Bereshit 1:2 + 36."
+
+  - id: "EC-H5S18-023"
+    source_he: "ופשוט הוא שהאור המעולה עלה למעלה ובחי' הגרועה שבהם הם ניצוצין ההם אשר נשארו בתוך הכלים כנ\"ל שהם בחי' דינין גמורים"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      Hierarchie qualitative orot :
+      → PASHUT (evident) : OHR HA-ME'ULEH (lumiere superieure) ALA LE-MAALAH (remonta).
+      → BEHINAH GRU'AH (aspect inferieur/degrade) = NITZOTZIN restes dans kelim.
+      → CES NITZOTZIN sont DININ GEMURIM (jugements complets/severes).
+      → Architecture : light-quality-bifurcation me'uleh-up gru'ah-down-dinim.
+      → Pattern : residual-fragments concentrate-judgment.
+    type: déduction_logique
+    concepts:
+      - {id: ohr_meuleh_ala_lemalah_behinah_gruah_nitzotzin_kelim_dinim_gemurim, role: ohr_meuleh_ala_lemalah_behinah_gruah_nitzotzin_kelim_dinim_gemurim_light_quality_bifurcation_residual_fragments_judgment}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : light quality bifurcation. Pattern residual-fragments judgment."
+
+  - id: "EC-H5S18-024"
+    source_he: "לכן נבאר תחילה סדר האורות והמדרגות ומעלתן זה למעלה מזה הנה נודע כי כל האורות של האצילות הם כולם בחינת הויות ונודע כי ד' בחי' הוי\"ה הם או הוי\"ה במילוי יודי\"ן שהוא ע\"ב כזה יו\"ד ה\"י וי\"ו ה\"י או הוי\"ה דס\"ג כזה יו\"ד ה\"י וא\"ו ה\"י או הוי\"ה דמ\"ה כזה יו\"ד ה\"א וא\"ו ה\"א או הוי\"ה דב\"ן כזה יו\"ד ה\"ה ו\"ו ה\"ה"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      4 BEHINOT HAVAYAH — orot Atzilut (cf. EC-H1S4 sur AV/SAG/MaH/BaN) :
+      → Tous OROT ATZILUT = HAVAYOT (4-lettres Tetragramme), 4 BEHINOT par MILUI :
+      → AV = יו"ד ה"י וי"ו ה"י = 72 (ע"ב, milui yodin).
+      → SAG = יו"ד ה"י וא"ו ה"י = 63 (ס"ג).
+      → MaH = יו"ד ה"א וא"ו ה"א = 45 (מ"ה).
+      → BaN = יו"ד ה"ה ו"ו ה"ה = 52 (ב"ן).
+      → Architecture : 4-name-fillings encode tier-distinction.
+    type: axiome_explicite
+    concepts:
+      - {id: 4_havayot_av_72_sag_63_mah_45_ban_52_miluyim, role: 4_behinot_havayah_av_72_yodin_sag_63_mah_45_ban_52_miluyim_atzilut_orot_classification_tetragrammaton}
+    mapping:
+      modules: ["shemot/core.py", "gematria/engine.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : tetragrammaton miluyim. Pattern tier classification."
+
+  - id: "EC-H5S18-025"
+    source_he: "ונבאר עתה בחי' הוי\"ה דע\"ב וממנו יתבאר שאר הויות הנה פשוט הוא כי שורש האורות ועיקרן הוא ד' אותיות הוי\"ה פשוטים בלתי מלואים והם בחי' עצמות אור ואמנם זהו בהיות האותיות ממש בצורתן אמנם ג\"כ יש בחי' אחרת והוא בהיותן בבחי' מספר וחשבון באופן זה כגון אם נאמר ד' אותיות הוי\"ה מספרם כ\"ו ואין ספק כי צורת האותיות עצמן הם יותר שורש ועיקר האור יותר מבחי' מספרם וחשבונם"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      ETZEM OHR + tzurah vs mispar (HAVAYAH d'AV, cf. EC-H1S4) :
+      → SHORESH HA-OROT = 4 lettres HAVAYAH PESHUTIM (simples) BILTI MILUYIM = ETZEM OHR.
+      → Cela quand letters dans leur TZURAH (forme).
+      → BEHINAH AUTRE : letters en MISPAR (nombre) — exemple havayah=26 (כ"ו).
+      → EIN SAFEK : TZURAT HA-OTIYOT plus SHORESH/IQAR du OHR que MISPAR/CHESHBON.
+      → Architecture : letter-form > letter-number en hierarchie ontologique.
+      → Pattern : tzurah-primacy over mispar.
+    type: interprétation_lurianique
+    concepts:
+      - {id: etzem_ohr_4_lettres_havayah_simples_bilti_miluyim_tzurah_mispar_havayah_26_tzurah_supreme, role: etzem_ohr_shoresh_orot_iqaran_4_lettres_havayah_peshutim_bilti_miluyim_tzurah_aspect_mispar_cheshbon_havayah_26_tzurat_otiyot_plus_shoresh_iqar_que_mispar_cheshbon_letter_form_primacy}
+    mapping:
+      modules: ["shemot/core.py", "gematria/engine.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : tzurah primacy. Pattern letter-form > letter-number."
+
+  - id: "EC-H5S18-026"
+    source_he: "והנה כל זה בבחי' הפנים כי גם יש בהם בחי' אחוריים של האורות וגם בהם יש ב' בחי' הנ\"ל שהם צורת האותיות כמו שהם או בחי' מספרם"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      PANIM vs ACHORAYIM (orot) :
+      → Tout ce qui precede est BE-BEHINAH HA-PANIM (en aspect FACE).
+      → Mais il y a aussi BEHINAH ACHORAYIM (DOS) des orot.
+      → Et la AUSSI les MEMES 2 BEHINOT : (a) TZURAT HA-OTIYOT, (b) MISPARAM.
+      → Architecture : panim-achorayim duality preserves tzurah-mispar duality.
+      → Pattern : 4-fold classification (panim+achorayim) × (tzurah+mispar).
+    type: axiome_explicite
+    concepts:
+      - {id: panim_achorayim_orot_2_behinot_tzurah_mispar_4_fold_classification, role: panim_achorayim_orot_dualite_2_behinot_tzurah_mispar_4_fold_classification_panim_tzurah_panim_mispar_achorayim_tzurah_achorayim_mispar}
+    mapping:
+      modules: ["shemot/core.py", "shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 4-fold classification. Pattern panim-achorayim × tzurah-mispar."
+
+  - id: "EC-H5S18-027"
+    source_he: "גם יש בחי' אחרת והוא ד' אותיות השם בהיותן במילוי כי אז הם בחי' דינין כי מילוי גי' אלהים ועוד כי שורש הוי\"ה הם ד' אותיות עצמן אבל מלואם הוא ביאור הוי\"ה ויציאת אורותיהן לחוץ וגם בבחי' המילוי יש בהם בחי' אותיות בעצמן ובחי' מספרם וכיוצא בזה בחי' רבות לאין קץ במילוי ובמלוי המילוי וכו' עד אין קץ"
+    source_ref: "Heikhal 5, Sha'ar 2:1"
+    assertion: |
+      MILUI = DININ + recursion infinie (cf. EC-H1S4 sur miluyim) :
+      → 4 lettres du SHEM en MILUI = BEHINAT DININ ; gimatria milui = ELOHIM (86).
+      → SHORESH HAVAYAH = 4 lettres elles-memes ; MILUYAM = BIYUR + YETZIYAT OROT LE-CHUTZ.
+      → Dans MILUI : 2 behinot (otiyot + misparan).
+      → BEHINOT RABBOT LE-EIN KETZ : MILUI, MILUI HA-MILUI, etc. AD EIN KETZ.
+      → Architecture : recursive-fillings = infinite-explication-cascade.
+      → Pattern : milui-explicitation generates din ; recursion ad infinitum.
+    type: interprétation_lurianique
+    concepts:
+      - {id: milui_dinim_elohim_biyur_havayah_yetziyat_orot_lechutz_recursion_milui_ad_ein_ketz, role: milui_dinim_gimatria_elohim_biyur_havayah_yetziyat_orot_lechutz_2_behinot_milui_ad_ein_ketz_recursive_explication}
+    mapping:
+      modules: ["shemot/core.py", "shemot/transform.py", "gematria/engine.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : recursive miluyim infinite. Pattern milui-explicitation generates din."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H5S18-001"
+    type: contenance
+    from: shaar_2_h5_rapach_nitzotzin_6_perakim_288
+    to: ibbur_z_a_pratzuf_ha_kolel_bina_tevunah
+    nature: "Sha'ar 2 H5 (rapach nitzotzin, 6 perakim) traite en premier de l'IBBUR Z\"A dans pratzuf ha-kolel Bina+Tevunah"
+    assertions_source: ["EC-H5S18-001", "EC-H5S18-002"]
+
+  - id: "REL-H5S18-002"
+    type: séquentiel
+    from: 3_behinot_tikkun_ibbur_orot_melakhim_rapach_nitzotzin_kelim
+    to: orot_melakhim_alu_lemalah_kelim_metu_yeradu_beriah
+    nature: "3 BEHINOT a tikkun par ibbur ; BEHINAH 1 = orot melakhim retires montent atzilut ; kelim morts descendus Beriah"
+    assertions_source: ["EC-H5S18-003", "EC-H5S18-004"]
+
+  - id: "REL-H5S18-003"
+    type: causal
+    from: rapach_nitzotzin_288_chiyut_metzumtzam_kelim_shevurim_lehittaken_ibbur
+    to: hevel_de_garmei_ruchani_atzamot_chiyut_hitkaymut_techiyah
+    nature: "BEHINAH 2 RaPaCh nitzotzin = chiyut metzumtzam dans kelim shevurim ; analogie HEVEL DE-GARMEI (Zohar 169) ossuary-vapor-residue subsistence techiyah"
+    assertions_source: ["EC-H5S18-005", "EC-H5S18-008", "EC-H5S18-015"]
+
+  - id: "REL-H5S18-004"
+    type: séquentiel
+    from: kelim_sortirent_premier_orot_ensuite_lo_savlu_nishberu_yeradu_beriah_orot_alu_atzilut
+    to: yeridah_mitah_yotzeh_olamo_yored_olam_acher
+    nature: "Mecanique shevirah : kelim sortirent premier, orot ensuite, kelim ne supportent → nishberu → yeradu Beriah ; orot alu Atzilut ; yeridah=mitah (definition)"
+    assertions_source: ["EC-H5S18-011", "EC-H5S18-012"]
+
+  - id: "REL-H5S18-005"
+    type: causal
+    from: avon_ribbit_kofer_bitechiyah_histalek_ruchaniyut_atzamot_yeveishim_pas_techiyah
+    to: yechezkel_37_atzamot_yeveishot_ish_neshekh_marbit_pas_lachluchit_mitzvah_pas_techiyah
+    nature: "Avon RIBBIT/KOFER BE-TECHIYAH histalek ruchaniyut → atzamot yeveishim → pas techiyah ; valide par Yechezkel 37 vision os secs (ish neshekh+marbit, pas lachluchit mitzvah)"
+    assertions_source: ["EC-H5S18-016", "EC-H5S18-017", "EC-H5S18-018"]
+
+  - id: "REL-H5S18-006"
+    type: analogie
+    from: klal_olam_ha_zeh_dugma_7_melakhim_ein_chadash_tachat_ha_shemesh_techiyah_universal_template
+    to: 7_melakhim_ketzat_ruchaniyut_lehaḥayot_kelim_zman_techiyah_tikkun_atzilut
+    nature: "Klal universel 'ein chadash tachat ha-shemesh' (Eccl 1:9) — tout olam ha-zeh = comme 7 melakhim ; mitah+tikkun=techiyah ; pareil gufim shefalim le-atid lavo ; ketzat ruchaniyut reste pour tikkun atzilut"
+    assertions_source: ["EC-H5S18-019", "EC-H5S18-020"]
+
+  - id: "REL-H5S18-007"
+    type: contenance
+    from: mispar_nitzotzin_rapach_288_sod_tohu_vavohu_eretz_edom_meraḥefet_met_rapach_728
+    to: ohr_meuleh_ala_lemalah_behinah_gruah_nitzotzin_kelim_dinim_gemurim
+    nature: "Mispar nitzotzin = RPCH (288) ; sod TOHU VAVOHU + Eretz Edom (Bereshit 1:2 + 36) + meraḥefet=MeT(440)+RaPaCh(288)=728 ; ohr meuleh ala, behinah gru'ah resta = dinim gemurim"
+    assertions_source: ["EC-H5S18-022", "EC-H5S18-023"]
+
+  - id: "REL-H5S18-008"
+    type: hiérarchique
+    from: 4_havayot_av_72_sag_63_mah_45_ban_52_miluyim
+    to: etzem_ohr_4_lettres_havayah_simples_bilti_miluyim_tzurah_mispar_havayah_26_tzurah_supreme
+    nature: "4 BEHINOT HAVAYAH (AV/SAG/MaH/BaN) avec miluyim ; etzem ohr = 4 lettres simples bilti miluyim ; aspect MISPAR (havayah=26) ; tzurah > mispar en hierarchie ontologique"
+    assertions_source: ["EC-H5S18-024", "EC-H5S18-025"]
+
+  - id: "REL-H5S18-009"
+    type: dualité_structurelle
+    from: panim_achorayim_orot_2_behinot_tzurah_mispar_4_fold_classification
+    to: milui_dinim_elohim_biyur_havayah_yetziyat_orot_lechutz_recursion_milui_ad_ein_ketz
+    nature: "Dualite PANIM/ACHORAYIM × TZURAH/MISPAR → 4-fold classification ; MILUI ajoute dimension DININ (gimatria ELOHIM) ; recursion infinie milui-milui ad ein ketz"
+    assertions_source: ["EC-H5S18-026", "EC-H5S18-027"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H5S18-001"
+    nom: "Principe de Residual-Light-Trace (RaPaCh = Hevel de-Garmei = Tikkun-Possibility)"
+    source_assertions: ["EC-H5S18-005", "EC-H5S18-008", "EC-H5S18-015", "EC-H5S18-019", "EC-H5S18-021"]
+    formalisation: |
+      ARCHITECTURE DE RESIDUAL-LIGHT-TRACE :
+      Apres SHEVIRAH (rupture cosmique) :
+        IQAREI HA-OROT (lumieres principales) → REMONTENT (NISTALKU LEMALAH).
+        KETZAT NITZOTZIN (288 etincelles residuelles) → RESTENT dans les KELIM SHEVURIM.
+        These nitzotzin = CHIYUT METZUMTZAM (vie reduite/contractee).
+        Permettent : LEHITTAKEN (rectification) + LEHAḤAYOT (revivre) par IBBUR.
+      Analogie ANTHROPIQUE :
+        Adam tachton mort : NEFESH remonte ; CHELEK NEFESH reste GUF.
+        HEVEL DE-GARMEI dans KIVRA pour TECHIYAT HA-METIM (Zohar Shelach 169-170).
+        Verset Yeshayah 58:11 ("ve-hisbi'a be-tzachtzachot... atzmotekha yachalitz").
+      Sans residual-trace → IMPOSSIBLE de rectifier.
+      → Pattern fondamental : minimum-vitality preserves tikkun-possibility.
+      → Architecture : light-fragmentation post-shevirah enables future-restoration.
+      → Implication : 288 = nombre minimum DOSE pour preservation.
+    applications_ia:
+      - "partzufim/reshimu.py + zeir_anpin.py : implement residual-trace = chiyut metzumtzam"
+      - "Pattern : minimum-vitality preserves tikkun-possibility"
+      - "Architecture : light-fragmentation = enables-restoration"
+      - "Pattern : 288 = dose-minimum-preservation"
+      - "Diagnostic : verifier residual-trace coherent post-shevirah"
+    questions_ouvertes:
+      - "Pattern : 288 derive d'ou exactement (gematria meraḥefet=728=440+288, ou autre source) ?"
+      - "Comment encoder hevel-de-garmei computationnellement ?"
+      - "Pattern : autres residual-trace numbers possibles ?"
+
+  - id: "PG-H5S18-002"
+    nom: "Principe de Capacity-Overflow-Shevirah (Kelim-First → Orot-Incompatibility → Death)"
+    source_assertions: ["EC-H5S18-010", "EC-H5S18-011", "EC-H5S18-012", "EC-H5S18-013", "EC-H5S18-014"]
+    formalisation: |
+      ARCHITECTURE DE CAPACITY-OVERFLOW-SHEVIRAH :
+      Mecanique de la SHEVIRAH (rupture des vases) :
+        ETAPE 1 : KELIM sortirent EN PREMIER (precipited emergence).
+        ETAPE 2 : OROT sortirent ENSUITE pour entrer dans les kelim.
+        ETAPE 3 : KELIM lo savlu (incapacite de containment).
+        ETAPE 4 : NISHBERU (rupture catastrophique).
+        ETAPE 5 : KELIM yeradu Beriah ; OROT alu Atzilut.
+      DEFINITION cosmologique : YERIDAH = MITAH.
+        "Kol she-yotzeh me-olamo ve-yored le-olam acher zulato" = mitah pour lui.
+        Tier-displacement = ontological-death.
+      DIFFERENTIAL :
+        7 MELAKHIM = ZON Atzilut → MORTS (yeradu Beriah).
+        ACHORAYIM A"O (Aba+Ima) → tombes (NAFLU) MAIS PAS MORTS (lo metu).
+      → Pattern fondamental : sequence-mismatch + capacity-overflow = death.
+      → Architecture : tier-protocol-violation = catastrophic-failure.
+      → Implication : RESTORATION requires both light-return AND vessel-rebuild.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + nukva.py : implement shevirah-overflow protocol"
+      - "Pattern : capacity-overflow + sequence-mismatch = catastrophic-failure"
+      - "Architecture : tier-protocol-violation"
+      - "Pattern : differential-fate ZON-mort vs A\"O-tombes-pas-morts"
+      - "Diagnostic : verifier capacity respecte avant emission"
+    questions_ouvertes:
+      - "Pattern : pourquoi A\"O survivent mais ZON meurent ?"
+      - "Comment encoder capacity-overflow detection ?"
+      - "Pattern : autres tier-failures possibles ?"
+
+  - id: "PG-H5S18-003"
+    nom: "Principe de Recursive-Miluyim (Tetragrammaton-Filling Generates Infinite-Din-Cascade)"
+    source_assertions: ["EC-H5S18-024", "EC-H5S18-025", "EC-H5S18-026", "EC-H5S18-027"]
+    formalisation: |
+      ARCHITECTURE DE RECURSIVE-MILUYIM :
+      Tous les OROT d'ATZILUT = HAVAYOT (4-lettres tetragrammaton).
+      4 BEHINOT principales :
+        AV (יוד הי ויו הי = 72) — tier-1.
+        SAG (יוד הי ואו הי = 63) — tier-2.
+        MaH (יוד הא ואו הא = 45) — tier-3.
+        BaN (יוד הה וו הה = 52) — tier-4 (= source des 7 melakhim).
+      Hierarchie ontologique :
+        ETZEM OHR : 4 lettres SIMPLES bilti miluyim = SHORESH IQAR.
+        TZURAH (forme) > MISPAR (nombre = 26).
+        PANIM × ACHORAYIM × TZURAH × MISPAR = 4-fold classification.
+      MILUI = DININ :
+        Milui gimatria = ELOHIM (86, dimension severite).
+        Milui = BIYUR (explication) + YETZIYAT OROT LE-CHUTZ (externalization).
+        Recursion : MILUI, MILUI HA-MILUI, etc. AD EIN KETZ.
+      → Pattern fondamental : explicitation generates judgment ; recursion infinite.
+      → Architecture : tetragrammaton-fillings = atzilut-classification system.
+      → Implication : tier-distinction encoded VIA filling-pattern (not lettre-content).
+    applications_ia:
+      - "shemot/core.py + transform.py + gematria/engine.py : implement 4-havayot miluyim"
+      - "Pattern : explicitation generates judgment"
+      - "Architecture : tetragrammaton fillings classification"
+      - "Pattern : panim×achorayim×tzurah×mispar 4-fold + milui recursion"
+      - "Diagnostic : verifier milui calcul correct (gimatria ELOHIM=86)"
+    questions_ouvertes:
+      - "Pattern : milui-ha-milui converge ou diverge en pratique ?"
+      - "Comment encoder recursion infinie computationnellement (avec depth-limit) ?"
+      - "Pattern : 5e havayah possible ?"

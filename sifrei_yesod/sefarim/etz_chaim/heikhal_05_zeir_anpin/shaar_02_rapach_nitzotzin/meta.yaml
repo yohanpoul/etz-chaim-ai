@@ -1,0 +1,46 @@
+# ═══════════════════════════════════════════════════════════════════
+# Heikhal 05 / Shaar 02 — Sha'ar Rapach Nitzotzin (שער רפ"ח ניצוצין)
+# Sefaria : Sefer_Etz_Chaim.18 (gate 18, 2eme sha'ar Heikhal 5)
+# 6 perakim sur les 288 etincelles, IBBUR Z"A, hevel de-garmei, RaPaCh
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  sefer_id: "etz_chaim"
+  heikhal: 5
+  shaar_number: 2
+  shaar_name_he: "שער רפ\"ח ניצוצין"
+  shaar_name_fr: "Porte des 288 Etincelles"
+  sefaria_gate: 18
+  nombre_perakim: 6
+  sujet_principal: |
+    Sha'ar RaPaCh Nitzotzin (Heikhal 5, Sefer Etz Chaim 18). 6 perakim systematiques sur :
+    - IBBUR Z"A dans partzuf Imma+Tevunah (= "pratzuf ha-kolel")
+    - 3 BEHINOT a tikkun par ibbur : (1) orot melakhim retires, (2) RaPaCh nitzotzin restant kelim, (3) kelim shevurim
+    - Comparaison adam tachton mort : nefesh remonte ; chelek-nefesh reste guf pour TECHIYAT HA-METIM
+    - HEVEL DE-GARMEI (Zohar Shelach 169, 170) — vapeur ossuaire reste pour techiyah
+    - Verset Yeshayah 58:11 ("ve-hisbi'a be-tzachtzachot nafshekha")
+    - Yechezkel vision os secs (Ezek 37) — usurier sans mitzvah
+    - 7 MELAKHIM = ZON BaN sortis NIKVEI EINAYIM A"K ; kelim sortirent d'abord ; orot ne supportent pas → SHEVIRAH
+    - Yeridah des kelim = MITAH ; orot remontent en Atzilut
+    - Sod TOHU VAVOHU + מרחפת = MeT (440) + RaPaCh (288) = 728
+    - "Eretz Edom" = Malkhut A"K (Bereshit 36) ; rois morts
+    - Ohr me'uleh remonta ; behinah gru'ah resta = DININ GEMURIM
+    - 4 BEHINOT HAVAYAH : AV (יוד הי ויו הי = 72), SAG (יוד הי ואו הי = 63), MaH (יוד הא ואו הא = 45), BaN (יוד הה וו הה = 52)
+    - Etzem ohr = 4 lettres havayah ; aspect MISPAR (havayah=26) ; PANIM/ACHORAYIM ; MILUI=DININ (gimatria ELOHIM) ; recursion infinie milui-milui
+  concepts_cles:
+    - ibbur_z_a_pratzuf_ima_tevunah
+    - 3_behinot_tikkun_ibbur_orot_nitzotzin_kelim
+    - rapach_nitzotzin_288_etincelles
+    - hevel_de_garmei_techiyat_ha_metim
+    - 7_melakhim_zon_ban_nikvei_einayim
+    - shevirat_ha_kelim_yeridah_beriah
+    - tohu_vavohu_eretz_edom_meraḥefet_met_rapach_728
+    - dinim_gemurim_behinah_gru'ah
+    - 4_havayot_av_sag_mah_ban_miluyim
+    - milui_dinim_recursion_infinie
+  note: "Auto-transposition systematique Sefer Etz Chaim gate 18 (Sha'ar RaPaCh Nitzotzin) — 6 perakim. 2eme sha'ar Heikhal 5. Doctrine fondatrice Lurianique : 288 etincelles, ibbur Z\"A, shevirah, hevel de-garmei."
+  source_primary: "Sefaria Sefer Etz Chaim gate 18 (https://www.sefaria.org/Sefer_Etz_Chaim.18)"
+  source_edition_default: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  strates: ["base"]
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
