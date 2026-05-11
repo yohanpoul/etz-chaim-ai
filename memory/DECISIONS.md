@@ -2,9 +2,6 @@
 
 > Lightweight ADRs for Etz Chaim AI. Format inspired by
 > [adr.github.io](https://adr.github.io) but kept minimal.
->
-> Each decision has: ID, date, status, context, decision, consequences,
-> alternatives considered. Done in 100–200 lines max per ADR.
 
 ---
 
@@ -22,55 +19,35 @@ stars), maintainers and contributors increasingly ask: "What if I want
 to use GPT-5.5 instead of Claude?" or "Can I run this fully locally on
 Ollama?"
 
-Two architectural paths:
-1. **Anthropic-primary, hard-coded**: maximum feature richness today, but
-   migration to another provider would require weeks of rework.
-2. **Standards-first**: portable core, Anthropic features as bonuses.
-
 ### Decision
 
 We choose **standards-first with Anthropic-bonus**:
 
-- Cognitive engine routes through [LiteLLM](https://github.com/BerriAI/litellm)
-  (100+ providers, one-line switching)
+- Cognitive engine routes through LiteLLM (100+ providers) and the
+  in-repo `etzchaim/providers/` registry
 - Skills follow the [agentskills.io](https://agentskills.io) standard
-  (35+ tools, cross-vendor)
 - Agent instructions live in [AGENTS.md](https://agents.md) (AAIF / Linux
   Foundation), with `CLAUDE.md` as a symlink
 - MCP server uses the [open MCP standard](https://modelcontextprotocol.io)
-- DevContainer uses the open [Dev Containers spec](https://containers.dev/)
-  (works in VS Code, Codespaces, JetBrains)
 
 Anthropic-only features (Auto Mode, Channels, Routines, Managed Agents,
-Dreaming, Outcomes) are wired in optionally behind feature flags. Their
-presence improves the experience but is not required.
+Dreaming, Outcomes) are wired in optionally behind feature flags.
 
 ### Consequences
 
-- ✓ A contributor on GPT-5.5 / Cursor / Codex / Ollama can use Etz Chaim
+- ✓ Contributor on GPT-5.5 / Cursor / Codex / Ollama can use Etz Chaim
   without an Anthropic key
 - ✓ Distribution surface expands (skills.sh, mcp.so, agensi.io, npm, PyPI,
   buildwithclaude — five marketplaces)
-- ✓ Provider switching is one line in `litellm.config.yaml`
+- ✓ Provider switching is a profile swap in `config.yaml`
 - ⚠ Maintaining feature parity between providers requires capability
-  checks throughout (extended thinking, prompt caching, citations differ)
-- ⚠ The Anthropic-bonus layer must be carefully isolated so its absence
-  is graceful
-
-### Alternatives considered
-
-- **Anthropic-primary hard-coded**: rejected — too risky given Etz Chaim's
-  positioning as open-source infrastructure
-- **OpenAI-primary**: rejected — Anthropic's developer tooling (Skills,
-  MCP, Auto Mode) is currently more mature
-- **Custom abstraction layer (no LiteLLM)**: rejected — reinventing what
-  LiteLLM already does well
+  checks throughout
+- ⚠ The Anthropic-bonus layer must be carefully isolated
 
 ### References
 
 - [LiteLLM 100+ providers list](https://docs.litellm.ai/docs/providers)
 - [Pydantic AI one-line provider switching](https://ai.pydantic.dev/)
-- [OpenCode 75+ providers via Models.dev](https://opencode.ai/)
 
 ---
 
@@ -82,41 +59,26 @@ presence improves the experience but is not required.
 ### Context
 
 In 2026 every coding agent reads a different config file by default:
-- Claude Code → `CLAUDE.md`
-- Codex CLI → `AGENTS.md` (also `~/.codex/AGENTS.md` global)
-- Cursor → `.cursor/rules/*.mdc` (also reads `AGENTS.md` and `CLAUDE.md`)
-- Windsurf → `.windsurfrules` (also `AGENTS.md`)
-- Gemini CLI → `GEMINI.md`
-- GitHub Copilot → `.github/copilot-instructions.md`
-
-Maintaining six separate files with the same content guarantees drift.
+Claude Code → `CLAUDE.md`, Codex CLI → `AGENTS.md`, Cursor → `.cursor/rules/`,
+Windsurf → `.windsurfrules`, Gemini CLI → `GEMINI.md`, GitHub Copilot
+→ `.github/copilot-instructions.md`. Maintaining six separate files with
+the same content guarantees drift.
 
 ### Decision
 
 `AGENTS.md` is the **source unique** for Etz Chaim AI. All other config
 files are symlinks (where supported) or references (where not).
-
-- `CLAUDE.md` → symlink to `AGENTS.md` (Claude Code reads symlinks)
-- `.codex/AGENTS.md` → symlink to `../AGENTS.md`
-- `.cursor/rules/etz-base.mdc` → frontmatter `references: AGENTS.md` + brief
-  pointer
-
-The `scripts/setup-symlinks.sh` post-clone script wires this up.
+`scripts/setup-symlinks.sh` wires this up.
 
 ### Consequences
 
 - ✓ Single edit point; zero drift between tools
-- ✓ Boris Cherny's CLAUDE.md guidance (≤100 lines, ~2500 tokens) applies
-  uniformly
-- ⚠ Windows users may need WSL2 for symlinks (or git config
-  `core.symlinks=true`)
-- ⚠ The convention is non-standard (most repos still maintain separate
-  files); we document it explicitly in the README
+- ⚠ Windows users may need WSL2 for symlinks
+- ⚠ The convention is non-standard; documented explicitly in README
 
 ### References
 
-- [AGENTS.md official spec](https://agents.md)
-- [Cursor reads AGENTS.md and CLAUDE.md](https://benjamincrozat.com/agents-md)
+- [AGENTS.md spec](https://agents.md)
 - [Augment Code guide to AGENTS.md](https://www.augmentcode.com/guides/how-to-build-agents-md)
 
 ---
@@ -128,46 +90,23 @@ The `scripts/setup-symlinks.sh` post-clone script wires this up.
 
 ### Context
 
-Boris Cherny (creator of Claude Code) repeatedly identifies the
-**verification loop** as the #1 driver of AI coding quality. From his
-[Jan 2 2026 thread](https://www.threads.com/@boris_cherny/post/DTBVlMIkpcm):
-_"Give Claude a way to verify its work. If Claude has that feedback loop,
-it will 2-3x the quality of the final result."_
-
-Etz Chaim's spec mutation workflow is exactly the kind of high-stakes
-operation that needs this gate.
+Boris Cherny identifies the verification loop as the #1 driver of AI
+coding quality. From his [Jan 2 2026 thread](https://www.threads.com/@boris_cherny/post/DTBVlMIkpcm):
+_"Give Claude a way to verify its work. 2-3× the quality of the final
+result."_
 
 ### Decision
 
-We adopt the verify-spec subagent pattern. Every spec mutation requires
-the `verify-spec` subagent (in `agents/verify-spec.md`) to return
-APPROVED before the change can be marked complete. The subagent
-deterministically checks:
-
-1. Spec_ref exists in the corpus
-2. E-label is valid and justified
-3. Bidirectional spec↔code audit clean
-4. 1388 / 1388 tests pass
-5. 11 / 11 adversarial probes pass
-6. No aggregate-write violations
-7. Outcome rubric met (Sprint 8 when Outcomes is wired)
-
-This is enforced by:
+Every spec mutation requires the `verify-spec` subagent (in
+`agents/verify-spec.md`) to return APPROVED before merge. Enforced by:
 - `Stop-verify-app.sh` hook in Claude Code
-- A pre-commit hook for non-Claude tools
-- The `etzchaim mutate-spec` CLI which refuses to commit without VERIFY OK
+- Pre-commit hook for non-Claude tools
+- `etzchaim mutate-spec` CLI refuses to commit without VERIFY OK
 
 ### Consequences
 
-- ✓ Quality gate before merge; reduces spec corpus drift
-- ✓ Aligns with Boris's empirical 2-3x finding
-- ⚠ Adds ~15s to every mutation (acceptable for our spec cadence)
-- ⚠ The subagent itself must be tested; it can fail to fail
-
-### References
-
-- [Boris Cherny — verification loop = 2-3x quality](https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are)
-- [Boris on `verify-app` subagent (post 8 of his thread)](https://www.threads.com/@boris_cherny/post/DTBVlMIkpcm)
+- ✓ Quality gate before merge
+- ⚠ Adds ~15s to every mutation
 
 ---
 
@@ -178,41 +117,23 @@ This is enforced by:
 
 ### Context
 
-Initial plan envisioned 13 subagents (one per faculty) plus 13 skills.
-Re-reading Barry Zhang & Mahesh Murag's
-[Don't Build Agents, Build Skills Instead](https://www.youtube.com/watch?v=CEvIs9y1uog)
+Initial plan envisioned 13 subagents (one per faculty). Re-reading
+[Barry Zhang & Mahesh Murag's "Don't Build Agents, Build Skills Instead"](https://www.youtube.com/watch?v=CEvIs9y1uog)
 clarified the Anthropic 2026 thesis: **one universal agent + library of
 skills + the right MCP servers** beats multiple specialized agents.
 
-Subagents should only exist where context isolation is essential.
-
 ### Decision
 
-- **13 skills** in `/skills/` (10 facultés + 3 utility) — auto-loaded by
-  description match
-- **5 subagents** in `/agents/` — only where context isolation is
-  essential:
-  - `triage` — initial dispatch (avoids polluting main session)
-  - `verify-spec` — verification gate (must not see proposer's reasoning)
-  - `improve-loop` — long-running nightly worker (isolated `worktree`)
-  - `spec-auditor` — bidirectional audit (heavy file I/O, isolate)
-  - `doctor` — 20 health checks (parallelizable, isolate)
-- **11 malakhim adversaries** — implemented as either:
-  - Parallel `--worktree` + tmux sessions via `/adversarial-probe`, OR
-  - Multiagent orchestration sub-agents under Managed Agents (Sprint 8)
+- **13 skills** in `/skills/` (10 facultés + 3 utility)
+- **5 subagents** in `/agents/` — only where context isolation is essential:
+  `triage`, `verify-spec`, `improve-loop`, `spec-auditor`, `doctor`
+- **11 malakhim adversaries** — implemented as parallel `--worktree` + tmux
+  sessions via `/adversarial-probe`
 
 ### Consequences
 
-- ✓ Lighter session context (most facultés as skills, lazy-loaded)
+- ✓ Lighter session context
 - ✓ Aligns with Anthropic's stated direction
-- ⚠ Less "neat" symmetry (10 skills + 5 subagents + 11 adversaries
-  instead of 13×3)
-
-### References
-
-- [Barry Zhang & Mahesh Murag — Don't Build Agents, Build Skills Instead](https://www.youtube.com/watch?v=CEvIs9y1uog)
-- [Anthropic — Equipping agents with Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
-- [Barry Zhang bio + key principles](https://thefocus.ai/reports/aiecode-2025-11/speakers/barry-zhang/bio/)
 
 ---
 
@@ -224,38 +145,22 @@ Subagents should only exist where context isolation is essential.
 ### Context
 
 The Karpathy auto-improve loop currently runs as a local Python daemon
-(`etzchaim/daemon/improve_loop.py`, 630 lines). This requires the
-maintainer's machine to be on at the scheduled time.
-
-Anthropic launched [Claude Code Routines](https://thenewstack.io/claude-code-can-now-do-your-job-overnight/)
-in March 2026: cloud-hosted scheduled prompts on Anthropic
-infrastructure, triggered by schedule / GitHub webhooks / API.
-
-Pro: 5 routines/day, Max: 15, Team/Enterprise: 25.
+(`daemon.py`, ~2554 lines). Anthropic launched
+[Claude Code Routines](https://thenewstack.io/claude-code-can-now-do-your-job-overnight/)
+in March 2026: cloud-hosted scheduled prompts.
 
 ### Decision
 
-When the maintainer has a Max+ Anthropic plan (via the Claude for OSS
-Program or paid), the nightly improve loop runs as a **Claude Code
-Routine** in `.claude/routines/nightly-improve.yml`. The Python daemon
-becomes the fallback for non-Anthropic users.
-
 Triple-stack strategy:
-1. **Primary**: Claude Code Routine (cloud, no local machine needed)
+1. **Primary**: Claude Code Routine (cloud, no local machine needed) — when
+   maintainer has Max+
 2. **Fallback**: GitHub Actions workflow on schedule
 3. **Local**: Python daemon for fully offline / non-Anthropic setups
 
 ### Consequences
 
 - ✓ Maintainer's laptop doesn't need to be on overnight
-- ✓ Centralized observability via Anthropic Console + webhooks
 - ⚠ Adds an Anthropic-only path (mitigated by GHA fallback)
-- ⚠ Webhooks require Hookdeck / equivalent for at-least-once dedup
-
-### References
-
-- [Claude Code Routines launch — TheNewStack](https://thenewstack.io/claude-code-can-now-do-your-job-overnight/)
-- [Anthropic Managed Agents webhooks](https://hookdeck.com/blog/anthropic-managed-agent-webhooks)
 
 ---
 
@@ -266,38 +171,148 @@ Triple-stack strategy:
 
 ### Context
 
-For an open-source cognitive OS, the install experience is the
-distribution. If cloning + running takes >10 minutes, contribution
-velocity drops.
+For an open-source cognitive OS, install experience is distribution.
 
 ### Decision
 
-Etz Chaim ships with a `.devcontainer/` configuration based on the
-official [Dev Containers spec](https://containers.dev/). Works in:
-- VS Code with Dev Containers extension
-- GitHub Codespaces (free tier 60h/month — perfect for evaluating)
-- JetBrains IDEs (Toolbox + Dev Containers)
-- Cursor (supports Dev Containers since v0.45)
-
-The devcontainer:
-- Installs Python 3.12, Node 22, Postgres+pgvector, Ollama, Claude Code
-- Wires the firewall pattern from
-  [Trail of Bits sandboxed devcontainer](https://github.com/trailofbits/claude-code-devcontainer)
-- Runs `pipx install -e .` and `etzchaim doctor` on first start
-- Provisions a TimescaleDB volume for the rectifier time series
+`.devcontainer/` based on [Dev Containers spec](https://containers.dev/).
+Works in VS Code, GitHub Codespaces (free 60h/month), JetBrains, Cursor.
 
 ### Consequences
 
 - ✓ "Reopen in Container" → operational in <5 minutes
-- ✓ Codespaces works zero-install (60h/month free)
-- ⚠ Docker Desktop license consideration for corporate users (mitigated
-  by Codespaces, Podman, OrbStack alternatives — documented)
+- ⚠ Docker Desktop licensing for corporate users (mitigated by Codespaces)
+
+---
+
+## ADR-0007 — Single `model_registry.py` to eliminate slug drift
+
+**Date**: 2026-05-11
+**Status**: PROPOSED (will be ACCEPTED in Sprint 1)
+
+### Context
+
+Claude Code's audit of PR #12 (Sprint 0) surfaced **two leak sites**
+of hardcoded model strings, violating `.claude/rules/python-dev.md`
+("never hardcode model names"):
+
+1. `etzchaim/autopilot/runners/claude_skill.py:29` →
+   `model: str = "claude-opus-4-7"` as a default argument
+2. `etzchaim/providers/anthropic_sdk.py:27-29` → `MODEL_SLUGS` alias
+   table:
+   ```python
+   "opus":   "claude-opus-4-20250514"  # ← Opus 4 from May 2025
+   "sonnet": "claude-sonnet-4-5-20250929"
+   "haiku":  "claude-haiku-4-20250801"
+   ```
+
+Worse, `MODEL_SLUGS["opus"]` points at `claude-opus-4-20250514` (May 2025,
+Opus 4) while `config.yaml` already uses `claude-opus-4-7` (April 2026,
+Opus 4.7). **The alias table is a year behind reality** — silent
+quality regression on any code path that resolves "opus" through
+MODEL_SLUGS rather than config.yaml.
+
+Two naming conventions cohabit in the codebase:
+- Dated full slugs (`claude-opus-4-20250514`)
+- Alias-style (`claude-opus-4-7`)
+
+### Decision
+
+In Sprint 1, introduce `etzchaim/llm/model_registry.py` as the **single
+source of truth** for all model aliases. Every other module that needs
+a model identifier imports from there:
+
+```python
+from etzchaim.llm.model_registry import resolve_model
+
+# Returns the canonical slug for the active profile
+model = resolve_model("opus")  # → "claude-opus-4-7" (from config.yaml)
+```
+
+The registry:
+- Reads `config.yaml` for canonical slugs
+- Maps friendly aliases (`opus`, `sonnet`, `haiku`, `gpt-5`, `gemini-3-pro`)
+  to current canonical slugs
+- Exposes a single function `resolve_model(alias: str) -> str`
+- Raises typed `UnknownModelError` for unrecognized aliases
+- Has its own test suite (`tests/test_llm/test_model_registry.py`)
+
+After Sprint 1:
+- `anthropic_sdk.py::MODEL_SLUGS` is **deleted**
+- `claude_skill.py:29` default becomes `resolve_model("opus")`
+- Linter check (Sprint 4) refuses PRs that import model slug strings
+  outside `model_registry.py` or `config.yaml`
+
+### Consequences
+
+- ✓ Eliminates silent regression risk (Opus 4 vs Opus 4.7 drift)
+- ✓ Aligns the codebase with `.claude/rules/python-dev.md`
+- ✓ Single point to upgrade model versions
+- ⚠ Migration touches `~8` files; needs careful PR review
+- ⚠ Tests that mock specific slugs need re-wiring
+
+### Alternatives considered
+
+- **Status quo (live with drift)**: rejected — silent quality regression
+  is a strict failure mode for a cognitive architecture project
+- **Use LiteLLM aliases natively**: rejected — LiteLLM aliases require
+  a running proxy server; we want library-only resolution too
+- **Just rename `MODEL_SLUGS` entries**: rejected — doesn't fix the
+  architectural problem, just patches symptoms
 
 ### References
 
-- [Anthropic Claude Code devcontainer docs](https://code.claude.com/docs/en/devcontainer)
-- [Trail of Bits sandboxed devcontainer](https://github.com/trailofbits/claude-code-devcontainer)
-- [centminmod multi-CLI devcontainer (Claude + Codex + Gemini)](https://github.com/centminmod/claude-code-devcontainers)
+- [`.claude/rules/python-dev.md`](.claude/rules/python-dev.md) — "never hardcode model names"
+- [Anthropic model migration guide](https://docs.anthropic.com/en/docs/about-claude/models/migrating-to-claude-4)
+- [Pydantic AI model overview](https://pydantic.dev/docs/ai/models/overview/)
+
+---
+
+## ADR-0008 — AGENTS.md correctness audits (Boris pattern)
+
+**Date**: 2026-05-11
+**Status**: ACCEPTED
+
+### Context
+
+The Sprint 0 AGENTS.md contained at least 3 architectural inaccuracies
+that survived multiple internal review passes:
+
+1. Referenced `litellm.config.yaml` (file doesn't exist) — real config
+   is `config.yaml` with 6 profiles
+2. Did not mention `.claude/rules/` (475 lines of project-scoped rules)
+3. Listed 7 invariants but omitted public-surface neutrality
+   (CI-gated by `scripts/check_public_surface.sh`)
+
+These were caught only when Claude Code's first audit of the merged PR
+discovered them (the rapport included in commit history of Sprint 0.5).
+
+### Decision
+
+Adopt **AGENTS.md correctness audit** as a recurring discipline:
+
+1. **Per-PR check**: any PR that modifies AGENTS.md must include a
+   "Verification" section in the description listing the commands run
+   to verify each claim against the actual codebase
+2. **First-action audit on every fresh Claude Code / Codex CLI session**:
+   the first instruction to the agent is to inspect the codebase
+   read-only and report deltas vs AGENTS.md before any modification
+3. **`/agents-md-audit` slash command** (Sprint 3): packages this
+   pattern as a one-shot command — agent runs `rg` + `find` against
+   AGENTS.md claims, reports drift, no changes made
+
+### Consequences
+
+- ✓ AGENTS.md drift is detected before propagating to downstream agents
+- ✓ Documents the lesson: AGENTS.md is **especially** prone to drift
+  because it's prose, not code
+- ⚠ One extra step per AGENTS.md PR (acceptable — these PRs are rare)
+
+### References
+
+- The Sprint 0.5 audit rapport (this ADR's origin)
+- `memory/MISTAKES.md` entries dated 2026-05-11 for the 3 specific drifts
+- Boris Cherny: ["Every mistake becomes a rule"](https://www.threads.com/@boris_cherny/post/DTBVlMIkpcm)
 
 ---
 

@@ -35,9 +35,7 @@ Each entry follows this template:
 
 ## Anti-patterns (chronological)
 
-### [2026-05-11] Seed entries
-
-#### Direct write to aggregate score
+### [2026-05-11] Direct write to aggregate score
 
 **What happened**: An agent wrote `causalengine.aggregate_score = 0.85`
 directly, bypassing channel infrastructure.
@@ -54,7 +52,7 @@ the bidirectional spec↔code audit.
 
 ---
 
-#### Citing a spec without E-label
+### [2026-05-11] Citing a spec without E-label
 
 **What happened**: An agent added `spec_ref="EC-K7-042"` to a function
 comment but did not include `e_label="E3"` or a justification.
@@ -73,7 +71,7 @@ and a one-line justification. Format:
 
 ---
 
-#### Marking a task "done" without running verify-spec
+### [2026-05-11] Marking a task "done" without running verify-spec
 
 **What happened**: An agent declared a spec mutation complete after
 running only `make test`, without invoking the `verify-spec` subagent.
@@ -91,7 +89,7 @@ returning APPROVED. No exceptions. See `agents/verify-spec.md`.
 
 ---
 
-#### Loading the full spec corpus into context
+### [2026-05-11] Loading the full spec corpus into context
 
 **What happened**: An agent ran `cat etzchaim/specs/*.md` to "understand
 all 1696 specs."
@@ -103,23 +101,20 @@ This is the "context rot" Anthropic warns about in
 
 **The rule**: Use the `etz-spec-lookup` skill or the `etzchaim-mcp`
 `lookup_spec_item` tool to fetch ONLY the specs needed for the current
-task. Just-in-time, not just-in-case. CLAUDE.md is the upfront context;
-specs are JIT.
+task. Just-in-time, not just-in-case.
 
 **Detection**: PR review or token usage spike in `/cost`.
 
 ---
 
-#### Direct `--dangerously-skip-permissions` outside sandbox
+### [2026-05-11] Direct `--dangerously-skip-permissions` outside sandbox
 
 **What happened**: A contributor ran `claude --dangerously-skip-permissions`
 on a host machine to "speed up the nightly loop."
 
 **Why it's wrong**: That flag disables all approval prompts on the host.
 A model misstep (or prompt injection from external content) could `rm -rf`,
-exfiltrate `.env`, or push to main. Anthropic's
-[Claude Code Auto Mode](https://www.anthropic.com/engineering/claude-code-auto-mode)
-exists precisely to avoid this.
+exfiltrate `.env`, or push to main.
 
 **The rule**: Use one of:
 1. `Auto Mode` (Max/Team/Enterprise/API plan)
@@ -132,7 +127,7 @@ Never use the raw flag on a host with credentials present.
 
 ---
 
-#### Editing CLAUDE.md and AGENTS.md separately
+### [2026-05-11] Editing CLAUDE.md and AGENTS.md separately
 
 **What happened**: An agent updated CLAUDE.md to add a rule but didn't
 update AGENTS.md.
@@ -149,21 +144,96 @@ If the symlinks were never set up, run `./scripts/setup-symlinks.sh`.
 
 ---
 
-#### Hardcoding a provider model string
+### [2026-05-11] Hardcoding a provider model string
 
 **What happened**: A faculty module hardcoded
 `anthropic.messages.create(model="claude-opus-4-7", ...)`.
 
 **Why it's wrong**: Invariant 7 — provider-agnostic core. Hardcoding a
-provider couples Etz Chaim to Anthropic. If we want to support GPT-5.5,
-Gemini 3, Ollama, etc., we must route through LiteLLM.
+provider couples Etz Chaim to Anthropic. Also violates `.claude/rules/python-dev.md`
+("never hardcode model names").
 
-**The rule**: All LLM calls go through `etzchaim.llm.completion(...)`
-which dispatches via LiteLLM with the model identifier from
-`litellm.config.yaml`. Provider-specific features (extended thinking,
-prompt caching, citations) are wrapped in capability checks.
+**The rule**: All LLM calls go through `etzchaim/providers/registry.py`
+which dispatches via the active profile in `config.yaml`. After Sprint 1,
+model aliases resolve through `etzchaim/llm/model_registry.py` — single
+source of truth.
 
-**Detection**: `grep -r "anthropic\." etzchaim/` finds direct SDK use.
+**Detection**: `rg "claude-opus|claude-sonnet|claude-haiku|gpt-5|gemini-" etzchaim/`
+finds direct slug use.
+
+---
+
+### [2026-05-11] AGENTS.md mentioned `litellm.config.yaml` — wrong filename
+
+**What happened**: The Sprint 0 AGENTS.md claimed *"edit `litellm.config.yaml`,
+one line"* to switch providers. That file does not exist in the repo.
+The actual provider config is `config.yaml` at the repo root, with 6 profile
+blocks (`sefira_full`, `gpt5_full`, `gemini_full`, `bedrock`, `claude_max`,
+`benchmark_opus`).
+
+**Why it's wrong**: AGENTS.md is the single source of truth for agent
+instructions. When it describes architecture that doesn't match the
+codebase, every downstream agent (Claude Code, Codex CLI, Cursor) operates
+on false context. Documentation drift in the source unique = cascading
+errors.
+
+**The rule**: AGENTS.md, `docs/PORTABILITY.md`, and any architectural doc
+must reference **real filenames** verified against `ls` output. When
+proposing structural changes, run the audit first (Claude Code: "without
+changing anything, inspect and report"). Documentation lies more often than
+code does.
+
+**Detection**: Claude Code audit on PR #12 (Sprint 0) discovered the drift
+between AGENTS.md claims and `find . -name "litellm*"` reality.
+
+**Spec refs**: ADR-0008 (added in Sprint 0.5 fix).
+
+---
+
+### [2026-05-11] AGENTS.md silent on `.claude/rules/` — discoverability gap
+
+**What happened**: The Sprint 0 AGENTS.md did not mention the
+`.claude/rules/` directory (6 files, 475 lines of engineering discipline:
+`session-discipline.md`, `python-dev.md`, `public-surface-neutrality.md`,
+`kabbalistic-rigor.md`, `hitlabshut.md`, `reshimu_persistence.md`).
+
+**Why it's wrong**: New contributors or agents arriving at the repo via
+AGENTS.md never learn that these rules exist and auto-apply. Worst case:
+agents violate `python-dev.md` ("never hardcode model names") because
+nothing in AGENTS.md says they shouldn't.
+
+**The rule**: AGENTS.md must index every project-scoped rule layer Claude
+Code auto-loads. The "Layered project rules" section (added in Sprint 0.5)
+makes `.claude/rules/` first-class in the AGENTS.md contract.
+
+When adding a new rules file in `.claude/rules/`, also add a row to the
+AGENTS.md "Layered project rules" table.
+
+**Detection**: Claude Code audit on PR #12 surfaced two real violations
+(`claude_skill.py:29` default + `anthropic_sdk.py::MODEL_SLUGS`) of
+`python-dev.md` that AGENTS.md was silent on.
+
+---
+
+### [2026-05-11] Missing 8th invariant: public-surface neutrality
+
+**What happened**: The Sprint 0 AGENTS.md listed 7 system invariants but
+omitted **public-surface neutrality** — the rule that public paths
+(`README`, `docs/`, `web/`, CLI surfaces, spec filenames, paper body)
+contain zero Hebrew doctrinal terms. This rule is enforced by
+`scripts/check_public_surface.sh` and gated in CI.
+
+**Why it's wrong**: An invariant enforced by CI but absent from AGENTS.md
+is invisible until it bites. An agent making changes to public docs would
+have no way to know the rule exists until the CI build fails.
+
+**The rule**: Invariant 8 ("Public-surface neutrality") is now first-class
+in AGENTS.md. Before any PR touching public paths, run
+`make check-public-surface` locally. See
+`.claude/rules/public-surface-neutrality.md` for the full rename map.
+
+**Detection**: Claude Code audit identified `scripts/check_public_surface.sh`
+as a CI gate not referenced by AGENTS.md.
 
 ---
 
