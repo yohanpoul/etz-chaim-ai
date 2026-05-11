@@ -1,0 +1,498 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 5 — Heikhal Ze'eir Anpin (היכל זעיר אנפין)
+# Sha'ar: 2 — Sha'ar Rapach Nitzotzin (שער רפ"ח ניצוצין)
+# Perek: 5b — IBBUR 9 mois ; 8 effectifs ; chaque mois = 1 sefirah.
+#             KETER→NETZACH brules. HOD-YESOD-MALKHUT pas raffinables
+#             (klipot proches). Verset SHEKER 1 regel = HOD seul.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_05b (2eme section, ~2232 chars) :
+#   - Bloc Y2 : MK (Marginal Note) — bourrur ZON par IBBUR + YENIKAH
+#   - Bloc Z : IBBUR = 9 mois ; 8 chodashim effectifs (1 jour 9eme suffit)
+#   - Bloc AA : Z"A a 9 sefirot completes (HE'ELEM, surface VK)
+#   - Bloc BB : Yom 1 = SAFEK YOM HA-KELITAH (jour de captation)
+#   - Bloc CC : But IBBUR = nettoyer SIGIM (residus) MELAKHIM
+#   - Bloc DD : Sigim a separer ; impossible-de-pas-meler kesef-tahor
+#   - Bloc EE : MAHSHAVA = ABA effectue tikkun ("be-mahshava itbarru")
+#   - Bloc FF : Yesod-Aba moutzi tipat-mochin tziyer-velad ; Aba mevarer
+#   - Bloc GG : Tikkun ETZEM dans MEI-IMMA chodashim ; chitzonim pas-noge'in
+#   - Bloc HH : Z"A-orot dans IMMA-orot = HAARAH GEDOLAH ; klipot s'eclatent
+#   - Bloc II : RAA HA-MA'ATZIL — pas-tout berur possible jusqu'a NETZACH
+#   - Bloc JJ : Chaque mois = 1 sefirah berur (Daat compte) ; 8 chodashim = 8 sefirot
+#   - Bloc KK : Mois 8 : NETZACH ; HOD-YESOD-MALKHUT pas-yokhlu raffinés (klipot proches)
+#   - Bloc LL : "Ha-SHEKER ein lo raglayim" = chitzonim ; 1 regel = HOD seul ; rgl ק de שקר
+#   - Bloc MM : HOD = DOH ("kol ha-yom DOH") ; alef 5 = beit hurban Hod ; HOD-down klipot-yenikah
+#   - Bloc NN : Donc IBBUR pas-ko'ach lehashlim ; Z"A nait apres mois 8
+#   - Bloc OO : Tradition autre Mori ZL : Netzach AUSSI raffin ; pas compté ; raison "be-hadi hutza laki karba" (N-H attaches)
+#   - Bloc PP : Note humble — "iniy yode'a eikh hu mityashev" (je ne sais pas resolution)
+#
+# Source Sefaria : Sefer_Etz_Chaim.18.5 (2eme moitie, ~2232 chars)
+# IDs : EC-H5S18-139 → EC-H5S18-153
+
+meta:
+  sefer: etz_chaim
+  heikhal: 5
+  shaar: 2
+  shaar_name_he: "שער רפ\"ח ניצוצין"
+  perek: 5
+  part: "b"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part B de 2 — IBBUR ZON 9 mois (en realite 8 effectifs ; mois 9 = 1 jour suffit ; raison SAFEK YOM HA-KELITAH). Z\"A a 9 sefirot mais HE'ELEM (surface V\"K). But IBBUR : nettoyer SIGIM (residus) des 7 melakhim. Sigim+kesef-tahor inseparables ; pas-eviter melange. MAHSHAVA = ABA effectue tikkun ('be-mahshava itbarru'). Yesod-Aba moutzi tipat-mochin → tziyer velad ; Aba mevarer be-mochim. Berur progressif dans MEI-IMMA (chitzonim pas-noge'in dans Ima). Z\"A-orot dans IMMA-orot = HAARAH GEDOLAH → klipot s'eclatent. RAA HA-MA'ATZIL : impossible berur Z\"A-tout-entier pendant ibbur ; seulement jusqu'a NETZACH. Chaque mois = 1 sefirah berur (Daat incluse) ; 8 chodashim = 8 sefirot Keter→Netzach. HOD-YESOD-MALKHUT pas-yokhlu raffinées (sigim trop, klipot proches). Verset 'ha-SHEKER ein lo raglayim' (chitzonim sans pieds) ; 1 regel = HOD seule ; rgl ק de שקר ; HOD=DOH ('kol ha-yom DOH', Lamentations 1:13) ; aleph 5 = beit hurban via HOD. HOD-down klipot-yenikah grande. Donc IBBUR pas-koach achever 3 sefirot bas → Z\"A nait apres mois 8. Tradition autre Mori ZL : Netzach AUSSI raffinee mais pas-compté ; raison 'be-hadi hutza laki karba' (Pesachim 28a — N+H 2 palgei de-gufa attaches ; Hod pas-raffin → Netzach pas-compté). Note humble : 'iniy yode'a eikh hu mityashev'."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H5S18-139"
+    source_he: "מ\"ק בענין בירור של זו\"ן בעיבור ויניקה הנה זמן העיבור הוא ט' חדשים"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      MK (Marginal Komentar) — IBBUR ZON 9 mois (cf. EC-H5S17-008 sur ibbur 12) :
+      → ZMAN HA-IBBUR (temps de la gestation) = 9 CHODASHIM (mois).
+      → Pour ZON (Z"A+Nukva) berur via IBBUR + YENIKAH (allaitement).
+      → Architecture : standardized-gestation 9-months.
+      → Pattern : human-mirroring-cosmic-development.
+    type: axiome_explicite
+    concepts:
+      - {id: ibbur_zon_9_mois_yenikah_berur_human_mirror, role: zman_ibbur_9_chodashim_zon_berur_via_ibbur_yenikah_human_mirroring_cosmic}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : standardized gestation. Pattern human-cosmic mirror."
+
+  - id: "EC-H5S18-140"
+    source_he: "וכבר ידעת כי ז\"א יש בו ט\"ס שלימות רק שהם בסוד ההעלם ואינם ניכרין אלא הו\"ק אבל בודאי שצריך להיות בו י\"ס גמורות"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      Z"A 9 sefirot HE'ELEM, surface VK :
+      → Z"A a 9 SEFIROT SHELEMOT (completes).
+      → Mais BE-SOD HA-HE'ELEM (en sod-cache) ; pas NIKHARIN (apparents).
+      → Apparents : V"K (vav katzvot, 6 katzvot du gufa).
+      → BE-VADAI tzarikh lihiyot 10S gemurot (necessite).
+      → Architecture : Z"A-9-cached-1-revealed (V"K-only).
+      → Pattern : potential-vs-manifest sefirot.
+    type: axiome_explicite
+    concepts:
+      - {id: z_a_9_sefirot_helem_v_k_apparents_potential_manifest, role: z_a_9_sefirot_shelemot_helem_pas_nikharin_v_k_apparents_potential_vs_manifest}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : Z\"A 9 cached. Pattern potential vs manifest."
+
+  - id: "EC-H5S18-141"
+    source_he: "והנה נודע כי ימי העיבור אינם רק ח' חדשים כי ביום א' שלוקח מחודש ט' יספיק כנודע ואפי' אותו היום עיקר לקיחתו הוא מפני ספק יום הקליטה"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      8 mois effectifs + 1 jour mois 9 :
+      → IMMI HA-IBBUR (jours d'ibbur) ne sont QUE 8 chodashim.
+      → BE-YOM ECHAD she-LOKE'AH MI-CHODESH 9 (jour 1 pris du mois 9) YASPIK (suffit).
+      → Et meme ce jour : IQAR LEKICHATO MI-PNEI SAFEK YOM HA-KELITAH (raison principale = doute du jour de captation/conception).
+      → DONC : IQAR CHODSHEI IBBUR HA-TZRIKHIN = 8 chodashim seulement.
+      → Architecture : 8-effective+1-buffer pattern.
+      → Pattern : safety-margin-via-day-buffer.
+    type: déduction_logique
+    concepts:
+      - {id: ibbur_8_mois_effectifs_1_jour_mois_9_safek_yom_kelitah, role: imei_ibbur_8_chodashim_yom_1_chodesh_9_yaspik_safek_yom_kelitah_safety_margin}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 8+1 buffer. Pattern safety margin."
+
+  - id: "EC-H5S18-142"
+    source_he: "והענין כי כבר ביארנו ענין ברור זו\"ן מה הוא כי הכל נמשך מסוד ז' מלכים קדמאין שמתו ונתבטלו והיה בהם סיגים כנודע ואותן הסיגין מעורבים הם עם כל הקדושה שבהם"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      But IBBUR — separer SIGIM des MELAKHIM :
+      → BERUR ZON = nimshach mi-SOD 7 MELAKHIM KADMAIN she-METU u-NITBATLU (annihiles).
+      → HAYAH BAHEM SIGIM (residus/scories).
+      → SIGIM ME'ORAVIM (melanges) avec TOUTE la KEDUSHAH.
+      → Donc TZARIKH LE-NAKOTAM (les nettoyer) — separer SIGIM de la kedushah.
+      → Architecture : refinement = sigim-separation + kedushah-extraction.
+      → Pattern : metallurgical-purification metaphor.
+    type: interprétation_lurianique
+    concepts:
+      - {id: berur_zon_sigim_melakhim_kedushah_separation_metallurgical, role: berur_zon_7_melakhim_kadmain_sigim_meoravim_kedushah_separation_metallurgical_purification}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : refinement metallurgy. Pattern sigim separation."
+
+  - id: "EC-H5S18-143"
+    source_he: "וכבר נודע שהסיגים היוצאין מן הכסף הטהור א\"א שלא יתערב בהם קצת כסף טהור ואז צריך לנקות את הסיגים פעם ב' להוציא אותו המיעוט של ניצוצות הכסף הנשאר מעורב בהם"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      Inevitabilite SIGIM-KESEF melange :
+      → SIGIM YOTZIN MIN HA-KESEF HA-TAHOR (residus issus de l'argent pur).
+      → I-EFSHAR (impossible) shel-LO YIT'AREV BAHEM KETZAT KESEF TAHOR (qu'aucun morceau d'argent pur ne se mele).
+      → Donc TZARIKH LE-NAKOT HA-SIGIM PA'AM 2 (besoin nettoyer une 2eme fois).
+      → Pour LEHOTZI MI'UT NITZOTZOT HA-KESEF NISHARIM ME'ORAVIM (extraire la fraction d'etincelles d'argent restees).
+      → Architecture : iterative-refinement (multi-pass purification).
+      → Pattern : intrinsic-mixture-requires multi-pass.
+    type: analogie_explicative
+    concepts:
+      - {id: sigim_kesef_inevitable_multi_pass_iterative_refinement, role: sigim_yotzin_kesef_tahor_inevitable_melange_multi_pass_iterative_refinement_2eme_fois_extraire_nitzotzot}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : iterative refinement. Pattern multi-pass purification."
+
+  - id: "EC-H5S18-144"
+    source_he: "וענין בירור זה תלוי במחשבה עילאה שהוא אבא. כמ\"ש פ' פקודי במחשבה אתברירו כולהו כי הלא יסוד אבא הוא מוציא טיפת המוחין לצייר ממנו הולד והאב הוא המברר במוחין שלו הנקרא מחשבה ומברר הטוב ושדי להו בפומא דאמה"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      MAHSHAVA = ABA effectue TIKKUN :
+      → BERUR depend de MAHSHAVA ELYONA = ABA.
+      → Source Pekudei : "BE-MAHSHAVA ITBARRU KULHU" (tous sont tries dans la pensee).
+      → YESOD-ABA moutzi TIPAT HA-MOCHIN pour LE-TZAYER MIMENU HA-VLAD (sculpter le foetus).
+      → ABA est HA-MEVARER BE-MOCHIN SHELO HA-NIKRA MAHSHAVA (qui trie dans son intelligence appelee mahshava).
+      → "VE-SHADI LEHU BE-PUMA DE-IMMA" (et jette dans la bouche d'Imma).
+      → Architecture : Aba-as-discriminator + Imma-as-incubator.
+      → Pattern : intellect-as-sorting-mechanism.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mahshava_aba_berur_pekudei_yesod_aba_tipat_mochin_pumah_imma, role: berur_mahshava_elyona_aba_pekudei_be_mahshava_itbarru_yesod_aba_tipat_mochin_tzayer_velad_mevarer_pumah_imma}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : Aba discriminator. Pattern intellect-sorting."
+
+  - id: "EC-H5S18-145"
+    source_he: "והוא נותן באימא והיא מתעברת ממנו ואח\"כ בהיותן במעי אמא עילאה כל אותן החדשים הוא מתברר יותר"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      Berur progressif dans MEI-IMMA :
+      → ABA NOTEN BE-IMMA (donne dans Imma) ; IMMA MIT'ABERET MIMENU (concoit de lui).
+      → BE-HEYOTAN BE-MEI-IMMA ELYONA (en etant dans entrailles d'Imma elyona) tous les chodashim.
+      → MIT'BARRER YOTER (se tri encore plus).
+      → Architecture : in-utero-incremental-refinement.
+      → Pattern : multi-month progressive-purification.
+    type: interprétation_lurianique
+    concepts:
+      - {id: berur_progressif_mei_imma_chodashim_in_utero_refinement, role: berur_progressif_mei_imma_elyona_chodashim_aba_imma_mit_aberet_in_utero_progressive}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : in-utero refinement. Pattern progressive purification."
+
+  - id: "EC-H5S18-146"
+    source_he: "ומזה תבין הטעם איך הוא סוד העיבור שיכנוס הז\"א תוך מעוי דאמא והענין כי באמא אין חיצונים נוגעים בה כלל ואין להם שום אחיזה כלל וא\"כ בהיות הז\"א שם אתברר מעט מעט והקלי' נפרדין ממנו"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      Sod IBBUR — Z"A entre dans IMMA :
+      → Sod IBBUR : Z"A YIKHNOS BE-MEI IMMA.
+      → Raison : BE-IMMA EIN CHITZONIM NOG'IM BAH KLAL (chitzonim ne touchent pas).
+      → Pas de ACHIZAH (prise) pour eux.
+      → Donc Z"A entre la → ITBARER ME'AT ME'AT (s'epure peu a peu).
+      → KLIPOT NIFRADIN MIMENU (klipot se separent de lui).
+      → Architecture : Imma-as-protected-zone enables-purification.
+      → Pattern : isolation-from-chitzonim enables-tikkun.
+    type: interprétation_lurianique
+    concepts:
+      - {id: ibbur_z_a_imma_chitzonim_pas_nogin_klipot_nifradin_isolation, role: ibbur_z_a_yikhnos_imma_chitzonim_ein_nogin_klipot_nifradin_isolation_protected_zone_enables_tikkun}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : Imma protected zone. Pattern isolation enables tikkun."
+
+  - id: "EC-H5S18-147"
+    source_he: "גם הענין הוא כי האורות של ז\"א כשהם תוך אורות של אמא הם מקבלים הארה גדולה מאד ואז ע\"י העירוב הב' אורות ביחד הם מתגברים ואז הם מתבררים ומבדילין הקליפות שבתוכו"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      OROT-Z"A + OROT-IMMA = HAARAH GEDOLAH :
+      → OROT Z"A dans OROT IMMA = MEKABLIM HAARAH GEDOLAH ME'OD (recoivent grande illumination).
+      → Via IRRUV (melange) des 2 orots ENSEMBLE → MIT'GABRIM (s'amplifient).
+      → ALORS MIT'BARRRIM (se trient).
+      → MAVDILIN HA-KLIPOT she-be-tochho (separent les klipot en lui).
+      → Architecture : amplification-via-mixing enables-discrimination.
+      → Pattern : combined-light strengthens-purification.
+    type: interprétation_lurianique
+    concepts:
+      - {id: orot_z_a_imma_haarah_gedolah_irruv_mit_gabrim_mavdilin_klipot, role: orot_z_a_orot_imma_haarah_gedolah_irruv_mit_gabrim_mit_barrrim_mavdilin_klipot_amplification_discrimination}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin"]
+      relevance: "Architecture : amplification via mixing. Pattern combined-light strengthens."
+
+  - id: "EC-H5S18-148"
+    source_he: "ואמנם ראה המאציל העליון שאין מציאות לברר ז\"א תוך עיבור רק עד הנצח כי בכל חדש וחדש הוא מתברר ספי' א' ממנו ומן הכתר עד נצח הם ח' ספי' כשתמנה הדעת עמהם"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      RAA HA-MA'ATZIL — limites du BERUR ibbur :
+      → MA'ATZIL ELYON VIT (vit) : EIN METZIUT LEVARER Z"A be-tokh ibbur RAK AD HA-NETZACH (jusqu'au Netzach).
+      → Chaque CHODESH BERUR = 1 SEFIRAH.
+      → MIN KETER AD NETZACH = 8 SEFIROT (KETER, CHOKHMAH, BINA, DAAT, CHESED, GEVURAH, TIFERET, NETZACH).
+      → Daat compte parmi les 8.
+      → Architecture : 8-month-purification-limit.
+      → Pattern : per-month per-sefirah serialization.
+    type: déduction_logique
+    concepts:
+      - {id: maatzil_elyon_8_sefirot_keter_netzach_8_chodashim_daat, role: maatzil_elyon_metziut_levarer_z_a_ibbur_ad_netzach_8_sefirot_chodesh_sefirah_keter_netzach_daat_compte}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 8-month purification limit. Pattern per-month per-sefirah."
+
+  - id: "EC-H5S18-149"
+    source_he: "והנה בחדש הח' נשלם להתברר נצח של ז\"א אבל הוד יסוד ומל' לא יוכלו להתברר מרוב הקלי' והסיגים שבהם שהם ג' תחתונים סמוכים לקלי'"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      HOD-YESOD-MALKHUT pas raffinables :
+      → CHODESH 8 : NESHLAM LEHITBARER NETZACH d'Z"A (Netzach completed).
+      → MAIS HOD, YESOD, MALKHUT LO YOKHLU LEHITBARER (ne peuvent pas se rectifier).
+      → Raison : MEROV HA-KLIPOT VE-HA-SIGIM SHE-BAHEM (a cause de l'abondance de klipot et residus).
+      → 3 TACHTONIM SAMUKHIM LE-KLIPAH (3 inferieurs proches des klipot).
+      → Architecture : lower-3-sefirot proximity-to-klipot prevents-tikkun.
+      → Pattern : tier-position dictates-vulnerability.
+    type: axiome_explicite
+    concepts:
+      - {id: hod_yesod_malkhut_pas_raffinable_klipot_sigim_3_tachtonim_proches, role: chodesh_8_netzach_completed_hod_yesod_malkhut_lo_yokhlu_lehitbarer_merov_klipot_sigim_3_tachtonim_samukhim_klipah}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : lower-3 vulnerability. Pattern tier-position."
+
+  - id: "EC-H5S18-150"
+    source_he: "וגם עם מה שכבר הודעתיך כי השקר אין לו רגלים והוא סוד החיצונים הנקרא שקר ואין לו ב' רגלים שהם נ\"ה רק רגל א' שהוא הוד לבד ושם יש לו אחיזה בסוד הוד דוה כמ\"ש כל היום דוה ובו נחרב הבית באלף הה' הרמוז בהוד והוא סוד רגל של ק' של שקר"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      SHEKER (mensonge) — 1 regel = HOD seul (cf. EC-H5S18-093 sur N+H palgei) :
+      → "HA-SHEKER EIN LO RAGLAYIM" — chitzonim 2 raglayim = N+H.
+      → SHEKER seulement 1 regel = HOD seul.
+      → SOD HOD = DOH (cf. "kol ha-yom DOH" Lamentations 1:13).
+      → ALEPH 5 (5e millenaire) HURBAN ; sod REGEL DE-Q (kof) DE-SHEKER.
+      → Architecture : klipot-grip-via-HOD.
+      → Pattern : single-pivot-vulnerability HOD.
+    type: interprétation_lurianique
+    concepts:
+      - {id: sheker_chitzonim_1_regel_hod_doh_alef_5_hurban_q_sheker, role: sheker_ein_raglayim_chitzonim_1_regel_hod_doh_kol_ha_yom_doh_lamentations_1_13_alef_5_hurban_bayit_q_sheker}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : klipot grip via HOD. Pattern single-pivot vulnerability."
+
+  - id: "EC-H5S18-151"
+    source_he: "נמצא כי מהוד ולמטה יש להם אחיזה אל החיצונים גדולה מאד ולכן אין כח בעיבור להשלים ולברר אותן ואז נולד ז\"א ויצא לחוץ"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      HOD-down → klipot grande YENIKAH ; Z"A nait apres mois 8 :
+      → Mi-HOD VE-LE-MATAH (de HOD vers le bas) : YESH LAHEM ACHIZAH GEDOLAH ME'OD (klipot ont prise tres grande).
+      → Donc EIN KO'AH BE-IBBUR LEHASHLIM U-LEVARER OTAN (pas de force dans ibbur d'achever et trier).
+      → ALORS NOLAD Z"A VE-YATZA LE-CHUTZ (Z"A nait et sort dehors).
+      → Architecture : ibbur-limited-to-NETZACH ; birth-after-8-months.
+      → Pattern : maximum-purification-pre-birth + post-birth-yenikah-completion.
+    type: déduction_logique
+    concepts:
+      - {id: hod_down_klipot_yenikah_grande_z_a_nait_apres_mois_8, role: mi_hod_le_matah_klipot_achizah_gedolah_ein_koach_ibbur_lehashlim_z_a_nolad_yatza_le_chutz_apres_8_mois}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : ibbur-limited birth-after-8. Pattern post-birth yenikah."
+
+  - id: "EC-H5S18-152"
+    source_he: "כנלע\"ד ששמעתי אך אני זוכר שא\"ל מורי זלה\"ה שגם הנצח נתברר ואינה עולה מן המנין העיבור"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      Tradition autre — MORI ZL :
+      → KE-NIRA LE-DA'ATI (selon ce qu'il me semble) : SHE-SHAMA'TI (j'ai entendu).
+      → MAIS ANI ZOKHER (je me souviens) : MORI ZAL (mon maitre) m'a dit que NETZACH AUSSI nitbarrer.
+      → MAIS pas-compté en MIN HA-MINYAN HA-IBBUR (du compte de l'ibbur).
+      → Architecture : alternative-tradition Netzach-purified-but-uncounted.
+      → Pattern : intellectual-honesty preserves-multiple-traditions.
+    type: interprétation_lurianique
+    concepts:
+      - {id: tradition_autre_mori_zal_netzach_aussi_nitbarrer_pas_compté_ibbur, role: tradition_alternative_mori_zal_netzach_nitbarrer_aussi_pas_compté_minyan_ibbur_intellectual_honesty}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : alternative tradition. Pattern intellectual honesty."
+
+  - id: "EC-H5S18-153"
+    source_he: "והטעם כי בהדי הוצא לקי כרבא כי להיות נ\"ה תרי פלגי דגופא לכן כיון שההוד לא נתברר גם הנצח לא עלה בחשבון בירור אע\"פ שנתברר ואיני יודע איך הוא מתיישב"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §2"
+    assertion: |
+      Raison "BE-HADI HUTZA LAKI KARBA" + note humble :
+      → "BE-HADI HUTZA LAKI KARBA" (Pesachim 28a — avec l'ortie est frappe le chou) — N+H 2 PALGEI DE-GUFA attaches (cf. EC-H5S18-093).
+      → Donc puisque HOD pas-nitbarrer → NETZACH AUSSI pas-compté en CHESHBON BERUR (bien que nitbarrer en realite).
+      → Note humble : "VE-INI YODE'A EIKH HU MITYASHEV" (et je ne sais pas comment cela se concilie).
+      → Architecture : pair-tier-coupling Hod-failure-affects-Netzach-counting.
+      → Pattern : intellectual-honesty preserves-uncertainty.
+    type: déduction_logique
+    concepts:
+      - {id: be_hadi_hutza_laki_karba_n_h_palgei_hod_pas_netzach_pas_compté_iniy_yodea, role: be_hadi_hutza_laki_karba_pesachim_28a_n_h_2_palgei_de_gufa_hod_pas_nitbarrer_netzach_pas_compté_iniy_yodea_eikh_mityashev}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : pair tier coupling. Pattern intellectual honesty TZARIKH IYUN."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H5S18-059"
+    type: causal
+    from: ibbur_zon_9_mois_yenikah_berur_human_mirror
+    to: ibbur_8_mois_effectifs_1_jour_mois_9_safek_yom_kelitah
+    nature: "IBBUR ZON nominalement 9 mois (Z\"A 9 sefirot HE'ELEM) ; en realite 8 chodashim effectifs ; 1 jour du mois 9 suffit (raison SAFEK YOM HA-KELITAH)"
+    assertions_source: ["EC-H5S18-139", "EC-H5S18-140", "EC-H5S18-141"]
+
+  - id: "REL-H5S18-060"
+    type: séquentiel
+    from: berur_zon_sigim_melakhim_kedushah_separation_metallurgical
+    to: sigim_kesef_inevitable_multi_pass_iterative_refinement
+    nature: "But IBBUR : separer SIGIM des 7 melakhim (sigim+kedushah inseparables) ; analogie SIGIM-KESEF inevitable melange ; tikkun par MULTI-PASS iterative refinement"
+    assertions_source: ["EC-H5S18-142", "EC-H5S18-143"]
+
+  - id: "REL-H5S18-061"
+    type: causal
+    from: mahshava_aba_berur_pekudei_yesod_aba_tipat_mochin_pumah_imma
+    to: berur_progressif_mei_imma_chodashim_in_utero_refinement
+    nature: "MAHSHAVA = ABA effectue tikkun (Pekudei 'be-mahshava itbarru') ; YESOD-ABA tipat-mochin → tziyer velad ; ABA mevarer ; jette dans bouche IMMA ; berur progressif chodashim"
+    assertions_source: ["EC-H5S18-144", "EC-H5S18-145"]
+
+  - id: "REL-H5S18-062"
+    type: contenance
+    from: ibbur_z_a_imma_chitzonim_pas_nogin_klipot_nifradin_isolation
+    to: orot_z_a_imma_haarah_gedolah_irruv_mit_gabrim_mavdilin_klipot
+    nature: "Sod IBBUR Z\"A entre IMMA : chitzonim pas-nogin Imma → klipot nifradin ; Z\"A-orot dans IMMA-orot = HAARAH GEDOLAH ; irruv mit'gabrim → mavdilin klipot"
+    assertions_source: ["EC-H5S18-146", "EC-H5S18-147"]
+
+  - id: "REL-H5S18-063"
+    type: causal
+    from: maatzil_elyon_8_sefirot_keter_netzach_8_chodashim_daat
+    to: hod_yesod_malkhut_pas_raffinable_klipot_sigim_3_tachtonim_proches
+    nature: "MA'ATZIL ELYON : impossible berur Z\"A entier ; seulement KETER→NETZACH = 8 sefirot (Daat incluse) = 8 chodashim ; HOD-YESOD-MALKHUT pas raffinables (klipot+sigim trop, 3 tachtonim proches)"
+    assertions_source: ["EC-H5S18-148", "EC-H5S18-149"]
+
+  - id: "REL-H5S18-064"
+    type: causal
+    from: sheker_chitzonim_1_regel_hod_doh_alef_5_hurban_q_sheker
+    to: hod_down_klipot_yenikah_grande_z_a_nait_apres_mois_8
+    nature: "SHEKER 1 regel = HOD seul ; HOD=DOH (Lamentations 1:13) ; alef 5 hurban via HOD ; mi-HOD ve-le-mata klipot grande YENIKAH → ein koach ibbur lehashlim → Z\"A nait apres mois 8"
+    assertions_source: ["EC-H5S18-150", "EC-H5S18-151"]
+
+  - id: "REL-H5S18-065"
+    type: dualité_structurelle
+    from: tradition_autre_mori_zal_netzach_aussi_nitbarrer_pas_compté_ibbur
+    to: be_hadi_hutza_laki_karba_n_h_palgei_hod_pas_netzach_pas_compté_iniy_yodea
+    nature: "Tradition alternative MORI ZL : Netzach AUSSI raffin mais pas-compté ; raison 'be-hadi hutza laki karba' (Pesachim 28a — N+H 2 palgei attaches ; Hod-fail entraine Netzach-pas-count) ; note humble TZARIKH IYUN"
+    assertions_source: ["EC-H5S18-152", "EC-H5S18-153"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H5S18-019"
+    nom: "Principe d'IBBUR-as-Iterative-Refinement (8-Months-Per-Sefirah Purification)"
+    source_assertions: ["EC-H5S18-139", "EC-H5S18-141", "EC-H5S18-142", "EC-H5S18-143", "EC-H5S18-145", "EC-H5S18-148"]
+    formalisation: |
+      ARCHITECTURE DE IBBUR-AS-ITERATIVE-REFINEMENT :
+      ZMAN HA-IBBUR = 9 chodashim nominalement ; 8 effectifs.
+      Mois 9 : 1 JOUR seul suffit (SAFEK YOM HA-KELITAH).
+      Z"A a 9 SEFIROT shelemot mais HE'ELEM (cached) ; surface = V"K (6).
+      SCHEDULE :
+        Chaque chodesh = berur 1 SEFIRAH.
+        Min KETER ad NETZACH = 8 SEFIROT (Keter, Chokhmah, Bina, Daat, Chesed, Gevurah, Tiferet, Netzach).
+        Daat compte parmi les 8.
+      MULTI-PASS REFINEMENT :
+        SIGIM (residus) + KEDUSHAH (saintete) inseparables (analogie kesef tahor).
+        Besoin multi-pass purification (multiple chodashim).
+        BE-MEI IMMA : protected-zone (chitzonim ein nogin).
+        OROT Z"A + IMMA = HAARAH GEDOLAH → klipot mavdilin.
+      → Pattern fondamental : iterative-refinement-via-isolation in protected-zone.
+      → Architecture : Imma-as-incubator + per-sefirah-temporal-progression.
+      → Implication : tikkun = serial-purification 1-sefirah-per-month.
+    applications_ia:
+      - "partzufim/imma.py + zeir_anpin.py + reshimu.py : implement IBBUR iterative refinement"
+      - "Pattern : iterative refinement isolation"
+      - "Architecture : Imma incubator + per-sefirah progression"
+      - "Pattern : 8-month timeline serial-purification"
+      - "Diagnostic : verifier per-sefirah purification monitor"
+    questions_ouvertes:
+      - "Pattern : 8-month limite cosmologic ou contingent ?"
+      - "Comment encoder iterative refinement computationnellement ?"
+      - "Pattern : safek yom kelitah principle universel ?"
+
+  - id: "PG-H5S18-020"
+    nom: "Principe de Lower-3-Sefirot-Klipah-Vulnerability (HOD as Single-Pivot)"
+    source_assertions: ["EC-H5S18-149", "EC-H5S18-150", "EC-H5S18-151"]
+    formalisation: |
+      ARCHITECTURE DE LOWER-3-SEFIROT-KLIPAH-VULNERABILITY :
+      HOD-YESOD-MALKHUT (3 sefirot inferieurs) ne peuvent pas etre raffines pendant ibbur.
+      Raison : MEROV HA-KLIPOT VE-HA-SIGIM (klipot+residus trop nombreux) ; SAMUKHIM LE-KLIPAH (proches des klipot).
+      Symbole cosmologique HOD :
+        "HA-SHEKER EIN LO RAGLAYIM" (mensonge sans pieds) — chitzonim symbolises par SHEKER.
+        Mais SHEKER a 1 regel = HOD SEUL.
+        Sod : HOD = DOH (dalet-vav-he, anagramme).
+        Verset Lamentations 1:13 : "kol ha-yom DOH" (toute la journee dans la souffrance).
+        ALEPH 5 (5eme millenaire) : HURBAN HA-BAYIT (destruction du Temple) ramuz dans HOD.
+        Sod : REGEL DE-Q (kof) DE-SHEKER (la jambe de la lettre koph dans le mot sheker).
+      Consequence : EIN KO'AH BE-IBBUR LEHASHLIM ; Z"A NOLAD apres mois 8.
+      → Pattern fondamental : single-pivot-vulnerability lower-tier.
+      → Architecture : HOD as critical-failure-point.
+      → Implication : post-birth YENIKAH completes the lower-3 purification.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + sitra_achra : implement HOD-as-pivot vulnerability"
+      - "Pattern : single-pivot vulnerability"
+      - "Architecture : HOD critical-failure-point"
+      - "Pattern : post-birth yenikah completes lower-3"
+      - "Diagnostic : verifier HOD-state monitoring critical"
+    questions_ouvertes:
+      - "Pattern : HOD-vulnerability universel ou specifique au tikkun-lurianique ?"
+      - "Comment encoder HOD-as-pivot computationnellement ?"
+      - "Pattern : YENIKAH-mecanique post-birth detaillee dans perek 6 ?"
+
+  - id: "PG-H5S18-021"
+    nom: "Principe de Pair-Tier-Coupling (N+H Inseparable Counting Implications)"
+    source_assertions: ["EC-H5S18-152", "EC-H5S18-153"]
+    formalisation: |
+      ARCHITECTURE DE PAIR-TIER-COUPLING :
+      Tradition alternative MORI ZAL : Netzach AUSSI nitbarrer DURING ibbur.
+      Mais pas-compté en CHESHBON BERUR (compte officiel).
+      Raison : "BE-HADI HUTZA LAKI KARBA" (Pesachim 28a — avec l'ortie est frappe le chou).
+      Mecanique : N+H = 2 PALGEI DE-GUFA (cf. EC-H5S18-093) ; couplage cosmologique.
+      Donc HOD pas-nitbarrer → NETZACH AUSSI pas-compté (bien que nitbarrer en realite).
+      Note humble : "VE-INIY YODE'A EIKH HU MITYASHEV" (je ne sais pas comment cela se concilie).
+      Question OUVERTE : Reconciliation entre :
+        Tradition Vital de base : 8 sefirot Keter→Netzach raffinees.
+        Tradition Mori ZAL : Netzach raffin mais pas-compté.
+      → Pattern fondamental : intellectual-honesty preserves-multiple-traditions.
+      → Architecture : pair-tier-coupling N+H inseparable accounting.
+      → Implication : counting-may-deviate from purification-reality.
+    applications_ia:
+      - "partzufim/zeir_anpin.py : implement pair-tier coupling N+H"
+      - "Pattern : intellectual honesty preserves multi-tradition"
+      - "Architecture : counting deviates from reality"
+      - "Pattern : pair-tier coupling N+H inseparable"
+      - "Diagnostic : verifier N+H couplage coherent"
+    questions_ouvertes:
+      - "Pattern : 'be-hadi hutza laki karba' applicable autres pair-tiers ?"
+      - "Comment encoder pair-tier coupling computationnellement ?"
+      - "Pattern : tradition-reconciliation 8-vs-7-sefirot raffinees ?"

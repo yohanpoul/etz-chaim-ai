@@ -1,0 +1,695 @@
+# ═══════════════════════════════════════════════════════════════════
+# SIFREI YESOD — ספרי יסוד
+# Sefer: Etz Chaim (עץ חיים)
+# Heikhal: 5 — Heikhal Ze'eir Anpin (היכל זעיר אנפין)
+# Sha'ar: 2 — Sha'ar Rapach Nitzotzin (שער רפ"ח ניצוצין)
+# Perek: 5a — RaPaCh = GEVUROT/DININ. Sources Zohar (Pekudei,
+#             Tazria, Idra). 320/325/640 nitzotzin = 7 ADAM × 45 +
+#             tikkun. NA'AR/NA'ARAH. MNTzPCh = פ"ר. SHACh vs PaR.
+# ═══════════════════════════════════════════════════════════════════
+#
+# STRUCTURE §perek_05a (1ere section, ~5662 chars) :
+#   - Bloc A : RaPaCh = GEVUROT + DININ GEMURIM
+#   - Bloc B : Source Zohar Pekudei — BOTzINA DE-KARDINUTA bashes Mahshava → 320 nitzotzin
+#   - Bloc C : Source Tazria 48b — 325 nitzotzin de Botzina (mi-sitra de-Gevurah)
+#   - Bloc D : Source Idra 132 — NEHIRA YEKIRA + 325 ibrin
+#   - Bloc E : 320 vs 288 vs 325 — same matter
+#   - Bloc F : 320 = 7 MELAKHIM × ADAM ; Z"A=ADAM=havayah milui alafin=45
+#   - Bloc G : 7 × 45 = 315 (שט"ו) ; +5 chadasim = 320
+#   - Bloc H : Tikkun via TIPAT ABA (5 chasadim, pas nitzotzin) + TIPAT M"N IMA (5 gevurot, nitzotzin)
+#   - Bloc I : Z"A total = 320 ; Nukva total = 320 (klalut 7 melakhim)
+#   - Bloc J : Gevurot DUPLICATED → 2×320 dans Z"A → SHaMSH ; 2×320 dans Nukva → TaMaR
+#   - Bloc K : Mitarvim be-mei aamma + tikkun (oeufs maternels)
+#   - Bloc L : Source Bo 31b — NA'AR / NA'ARAH
+#   - Bloc M : Shem ADNI = DIN (3 dernieres letters) + ALEPH (premiere = AHYH = rehamim)
+#   - Bloc N : Malkhut = DINA RAFIA (rigueur douce) — AHYH adoucit
+#   - Bloc O : 5 GEVUROT = 5 DIN = 5×64 = 320 (ש"ך)
+#   - Bloc P : Source Pekudei — BOTzINA jette nitzotzin → birur pesolet via 5 gevurot
+#   - Bloc Q : 5 ALEFIN ajoutees → ADNI 5 fois = 325 (שכ"ה) ; pure-din mitigee
+#   - Bloc R : 320 = SHaCh = NA'AR (pre-mitigation) ; 325 = SHaChE = NA'ARAH (post-mitigation, +H' rehamim)
+#   - Bloc S : MNTzPCh (5 letters finales) = פ"ר = 280 = 5 GEVUROT mitigees mieux
+#   - Bloc T : Difference SHaCh vs PaR : SHaCh = gevurot Nukva elle-meme (kelim 3 ADNI) ; PaR = gevurot Z"A donnes a Nukva (atterrissent NEKUDAT TZIYON, Yesod-Nukva)
+#   - Bloc U : MNTzPCh ממותקות plus que SHaCh
+#   - Bloc V : Resemblances autres nitzotzin (groupes 4 ou 2) — TZARIKH IYUN
+#
+# Source Sefaria : Sefer_Etz_Chaim.18.5 (1ere moitie ~5662 chars / 7894 total)
+# IDs : EC-H5S18-116 → EC-H5S18-138
+
+meta:
+  sefer: etz_chaim
+  heikhal: 5
+  shaar: 2
+  shaar_name_he: "שער רפ\"ח ניצוצין"
+  perek: 5
+  part: "a"
+  source_edition: "Sefaria / hebrew.grimoar.cz (Public Domain)"
+  transposed_by: "Claude Opus 4.7 (auto-transposition)"
+  version: 1
+  strates: ["base"]
+  note: "Part A de 2 — RaPaCh = GEVUROT/DININ GEMURIM. Sources Zohar : Pekudei (BOTzINA DE-KARDINUTA bashes MAHSHAVA, jette ש\"ך/320 nitzotzin), Tazria 48b (שכ\"ה=325 ibrin sitra de-Gevurah), Idra 132 (Nehira Yekira sliq le-325 ibrin). Variante 320/288/325 = same matter. Calcul 320 : Z\"A=ADAM (havayah milui alafin=45) ; 7 melakhim × ADAM = שט\"ו (315) ; +5 chadashim (5 gevurot tipat M\"N Ima) = 320 (ש\"ך). Tipat Aba = 5 chasadim pas nitzotzin. Nukva aussi = 320 (klalut 7 melakhim). Gevurot duplicated → 2×320 = 640 = SHaMSH (שמ\"ש en Z\"A) / TaMaR (תמ\"ר en Nukva). Source Bo 31b NA\"AR (320 nitzotzin pre-mitigation) / NA\"ARAH (325 post-mitigation +H'). Mecanique : Shem ADNI = DIN (3 lettres dernieres) + ALEPH (1ere = AHYH = rehamim) ; Malkhut DINA RAFIA. 5 GEVUROT = 5 DIN = 5×64 = 320 ; +5 ALEFIN (5 AHYH dans H'-elyonah=Bina) → 5 ADNI = 325 ; mitigation. SHaCh (du ZAchAR/Z\"A) = 320 dans Z\"A ; SHaChE (325) = NA'ARAH = mitigated dans Nukva. MNTzPCh (5 lettres finales) = פ\"ר = 280 = 5 gevurot Z\"A donnes a Nukva (NEKUDAT TZIYON) ; mieux mitigees que SHaCh. SHaCh = gevurot Nukva ELLE-MEME (kelim 3 noms ADNI) ; PaR = gevurot Z\"A. Resemblances autres nitzotzin (4 ou 2) — TZARIKH IYUN."
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 1 : PESHAT-MACHINE
+# ═══════════════════════════════════════════════════════════════════
+
+assertions:
+
+  - id: "EC-H5S18-116"
+    source_he: "ודע כי בחי' אלו הרפ\"ח ניצוצין הנ\"ל הם כולם בחינת גבורות ודינין גמורים"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      RaPaCh = GEVUROT/DININ (cf. EC-H5S18-023 sur dinim gemurim) :
+      → DA (sache) : RPCH (288) NITZOTZIN sont TOUS en BEHINAT GEVUROT.
+      → Et DININ GEMURIM (jugements complets/severes).
+      → Architecture : RaPaCh-as-pure-judgment-residue.
+      → Pattern : light-residue-from-shevirah = severity-concentrated.
+    type: axiome_explicite
+    concepts:
+      - {id: rapach_gevurot_dinim_gemurim_pure_judgment_residue, role: rapach_288_nitzotzin_kulam_gevurot_dinim_gemurim_pure_judgment_residue_severity}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : pure judgment residue. Pattern severity-concentrated."
+
+  - id: "EC-H5S18-117"
+    source_he: "ואליהם רמזו בזוהר במקומות הרבה כנזכר פ' פקודי ת\"ח רישא דמהימנותא בטש (מחשבה) בוצינא דקרדוניתא וסליק גו מחשבה ואפיק ניצוצין זריק לש\"ך עיבר ובריר פסולת מגו מחשבה"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      Source ZOHAR Pekudei :
+      → "RESHA DE-MEHEMNUTA BATSH (MAHSHAVA) BOTZINA DE-KARDINUTA" (la tete de la foi frappe la pensee, l'etincelle de durete).
+      → "VE-SLIK GO MAHSHAVA" (et monte dans la pensee).
+      → "VE-AFIK NITZOTZIN ZARIK LE-SHACH IBAR" (et fait sortir des etincelles, jette vers 320 transversalement).
+      → "U-VARIR PESOLET MI-GO MAHSHAVA" (et separe le residu de la pensee).
+      → Architecture : botzina-mechanism produces 320 nitzotzin.
+      → Pattern : zoharic-foundation cosmologic-mechanism.
+    type: déduction_scripturaire
+    concepts:
+      - {id: zohar_pekudei_botzina_de_kardinuta_batsh_mahshava_320_nitzotzin_pesolet, role: zohar_pekudei_resha_mehemnuta_botzina_de_kardinuta_batsh_mahshava_aphik_nitzotzin_zarik_320_ibar_birur_pesolet}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : botzina mechanism. Source Zohar Pekudei."
+
+  - id: "EC-H5S18-118"
+    source_he: "ובפ' תזריע דמ\"ח ע\"ב תנא מן בוצינא דקרדינותא נפקין שכ\"ה ניצוצין וכו' מסטרא דגבורה דאתקריאן גבורה כו' ובאדרא קל\"ב מסתכל הוינא וארו חמינא נהורא יקירא דבוציצא עילאין נהיר וסליק לשכ\"ה עיברין"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      Sources additionnelles Zohar :
+      → ZOHAR Tazria 48b : "TANA MIN BOTZINA DE-KARDINUTA NAFKIN SHACHE NITZOTZIN" (de la botzina sortent 325 etincelles) MI-SITRA DE-GEVURAH (du cote de la severite).
+      → IDRA 132 : "MISTAKEL HEVENA VE-ARU HAMINA NEHORA YAKIRA DE-BOTZITZA ELYONIN NEHIR VE-SLIK LE-SHACHE IBRIN" (je voyais une lumiere precieuse de la lampe sublime brillait et montait vers 325 cotés).
+      → Architecture : multiple-zohar-sources convergent on 325.
+      → Pattern : cross-textual-validation of sparks-numerology.
+    type: déduction_scripturaire
+    concepts:
+      - {id: zohar_tazria_48b_idra_132_325_nitzotzin_botzina_gevurah, role: zohar_tazria_48b_idra_132_325_nitzotzin_botzina_de_kardinuta_sitra_gevurah_cross_textual_validation}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : multiple zoharic convergence. Sources Tazria + Idra."
+
+  - id: "EC-H5S18-119"
+    source_he: "ואע\"פ ששם נראה שהם ש\"ך ניצוצין וכאן אנו קוראין אותו רפ\"ח (נ\"א שכ\"ה) ניצוצין הכל הוא ענין א'"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      Variantes 320/288/325 = MEME chose :
+      → SHAM NIRA = 320 nitzotzin (NA'AR pre-mitigation).
+      → ICI nous appelons RPCH (288) NITZOTZIN.
+      → Variante (Nusah Aher) : SHACHE (325 = שכ"ה).
+      → "HA-KOL HU INYAN ECHAD" — meme inyan ; 320=ש"ך ; 288=רפ"ח ; 325=שכ"ה.
+      → Architecture : multi-encoding-convergence on shevirah-sparks.
+      → Pattern : 3-numbers-1-doctrine.
+    type: interprétation_lurianique
+    concepts:
+      - {id: variantes_320_288_325_meme_inyan_shach_rapach_shache, role: variantes_320_shach_288_rapach_325_shache_nusah_aher_meme_inyan_doctrine_multi_encoding}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : multi-encoding convergence. Pattern 3-numbers 1-doctrine."
+
+  - id: "EC-H5S18-120"
+    source_he: "והנה היותן מספר ש\"ך ניצוצין הוא כי אלו הניצוצין הם מבחי' ז' מלכים שמתו והנה הם מבחי' ז\"א והנה ז\"א נקרא אדם לפי שהוא הוי\"ה במילוי אלפין גי' אד\"ם וכל מלך א' מאלו הוא אדם א' נמצא כי ז\"פ אדם הוא גי' שט\"ו"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      Calcul 320 — 7×ADAM=315 :
+      → Nitzotzin issus de 7 MELAKHIM SHE-METU.
+      → Sont en BEHINAT Z"A.
+      → Z"A nikra ADAM (homme) car HAVAYAH BE-MILUI ALAFIN gimatria = ADAM (45).
+      → Chaque MELEKH = un ADAM.
+      → 7 PE'AMIM (×) ADAM = SHTU (שט"ו = 315 ; 7×45=315).
+      → Architecture : 7-melakhim-as-7-Adam = 315.
+      → Pattern : tier-aggregate-numerology.
+    type: déduction_logique
+    concepts:
+      - {id: 7_melakhim_z_a_adam_havayah_milui_alafin_45_315_shtu, role: 7_melakhim_z_a_adam_havayah_milui_alafin_45_chaque_melekh_adam_7_pe_amim_45_315_shtu}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 7-melakhim-as-7-Adam. Pattern tier-aggregate."
+
+  - id: "EC-H5S18-121"
+    source_he: "וכאשר נתקנו במעי אמם בינה כבר נתבאר שהיה ע\"י טיפת אבא שנתן בה מחדש והיא כוללת ה\"ח ואמא ג\"כ נתנה בהם טיפת מ\"נ הכוללת ה\"ג"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      TIKKUN dans BINA (cf. EC-H5S18-002 sur ibbur) :
+      → Quand NITKANU (rectifies) BE-MEI AAMMA BINA (dans entrailles maternelles).
+      → Via TIPAT ABA (goutte du Pere) qu'il donne MI-CHADASH (a nouveau) — KOLELET 5 CHASADIM.
+      → Et IMMA aussi donna TIPAT M"N (goutte d'eaux feminines) — KOLELET 5 GEVUROT.
+      → Architecture : zivvug-bi-tipah produces tikkun-energies.
+      → Pattern : Aba=chasadim, Ima=gevurot complementary.
+    type: interprétation_lurianique
+    concepts:
+      - {id: tikkun_bina_tipat_aba_5_chasadim_tipat_m_n_ima_5_gevurot, role: tikkun_bina_mei_aamma_tipat_aba_kolelet_5_chasadim_tipat_m_n_ima_kolelet_5_gevurot_complementary}
+    mapping:
+      modules: ["partzufim/abba.py", "partzufim/imma.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["abba", "imma"]
+      relevance: "Architecture : zivvug bi-tipah. Pattern Aba-chasadim Ima-gevurot."
+
+  - id: "EC-H5S18-122"
+    source_he: "וע\"י נתקנו אלו השט\"ו הנ\"ל ובין כולם הם ש\"ך ניצוצין דז\"א כי ה\"ח דאבא אינן ניצוצין רק חסדים שהניצוצין הם גבורות בלבד באופן שהשט\"ו ניצוצין הם ישנות של המלכים וה' ניצוצין אחרים הם חדשות וסך כולם הם ש\"ך בז\"א"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      Total Z"A = 320 (315+5) :
+      → Via tikkun les SHTU (315) rectifies.
+      → BEIN KULAM = 320 NITZOTZIN dans Z"A.
+      → 5 CHASADIM ABA = PAS NITZOTZIN ; NITZOTZIN = GEVUROT BILVAD.
+      → 315 = ISHANOT (anciens melakhim) ; 5 = CHADASHOT (Tipat-M"N-Ima).
+      → SACH KULAM = 320 (ש"ך) Z"A.
+      → Architecture : 315-old + 5-new = 320.
+      → Pattern : ancient+new aggregate-total.
+    type: déduction_logique
+    concepts:
+      - {id: total_z_a_320_315_old_5_new_chasadim_aba_pas_nitzotzin_gevurot_bilvad, role: total_z_a_320_315_ishanot_5_chadashot_chasadim_aba_pas_nitzotzin_nitzotzin_gevurot_bilvad}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : 320 Z\"A=315+5. Pattern ancient+new."
+
+  - id: "EC-H5S18-123"
+    source_he: "וכבר ידעת כי גם נוק' דז\"א שהוא מדה הז' שבמלכים יש בה כללות כל הז' מלכים כנודע דלית ספי' דלא אתכליל בה בחי' המלכים ונמצא כי הם ש\"ך ניצוצין אחרים בנוקבא דז\"א"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      Nukva = aussi 320 (klalut 7 melakhim) :
+      → NUKVA d'Z"A = MIDAH 7 (7eme mesure = MALKHUT) parmi les MELAKHIM.
+      → Mais YESH BAH KLALUT KOL HA-7 MELAKHIM (contient inclusion de tous les 7 rois).
+      → "LEIT SEFIRAH DE-LO ATKLIL BEYN BEHINAT HA-MELAKHIM" (pas de sefirah qui n'inclut tous les melakhim).
+      → DONC : 320 NITZOTZIN ACHERIM (autres 320) en NUKVA d'Z"A.
+      → Architecture : Nukva-as-aggregator inherits 320 marker.
+      → Pattern : tier-7-includes-all-tiers.
+    type: déduction_logique
+    concepts:
+      - {id: nukva_320_nitzotzin_klalut_7_melakhim_midah_7_aggregator, role: nukva_z_a_midah_7_klalut_7_melakhim_leit_sefirah_de_lo_atklil_320_nitzotzin_acherim_aggregator}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : Nukva aggregator. Pattern tier-7 includes all."
+
+  - id: "EC-H5S18-124"
+    source_he: "ונודע כי הגבורות והדינין הם כפולות ונמצא שיש ב\"פ ש\"ך בז\"א אשר לסבה זו נקרא הז\"א שמ\"ש שהם בחי' הניצוצין האלו וב\"פ ש\"ך בנוק' אשר לסבתם נק' היא תמ\"ר"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      DUPLICATION 2×320 → SHaMSH/TaMaR :
+      → GEVUROT et DININ sont KEFULOT (dupliquees).
+      → Donc 2 PE'AMIM (×) 320 = 640 dans Z"A.
+      → Z"A appele SHaMSH (שמ"ש = 640 = 2×320) = soleil.
+      → Aussi 2×320 dans Nukva.
+      → Nukva appele TaMaR (תמ"ר = 640 = 2×320) = palmier.
+      → Architecture : duplication-doubles-marker SHaMSH/TaMaR.
+      → Pattern : symbolic-encoding nitzotzin = kosmik-name.
+    type: interprétation_lurianique
+    concepts:
+      - {id: duplication_2_320_shamsh_z_a_tamar_nukva_640, role: gevurot_dinim_kefulot_2_pe_amim_320_z_a_shamsh_640_nukva_tamar_640_symbolic_encoding}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/nukva.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin", "nukva"]
+      relevance: "Architecture : duplication doubles marker. Pattern symbolic encoding."
+
+  - id: "EC-H5S18-125"
+    source_he: "וכל אלו הניצוצין שלו ושלה הם מתערבים במעי אמא ומצטיירין ונתקנו שם"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      MITARVIM dans MEI-IMMA :
+      → Tous nitzotzin de Z"A et Nukva MITARVIM (se melangent) BE-MEI AAMMA (entrailles maternelles).
+      → MITSTAYRIM (sont formes/sculptes).
+      → NITKANU SHAM (rectifies la).
+      → Architecture : maternal-vessel = tikkun-workshop.
+      → Pattern : in-utero formation rectification.
+    type: interprétation_lurianique
+    concepts:
+      - {id: nitzotzin_z_a_nukva_mitarvim_mei_aamma_mitstayrim_tikkun, role: nitzotzin_z_a_nukva_mitarvim_mei_aamma_mitstayrim_nitkanu_in_utero_formation_workshop}
+    mapping:
+      modules: ["partzufim/imma.py", "partzufim/zeir_anpin.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma", "zeir_anpin", "nukva"]
+      relevance: "Architecture : maternal vessel workshop. Pattern in-utero formation."
+
+  - id: "EC-H5S18-126"
+    source_he: "ולהבין ענין השכ\"ה וענין הרפ\"ח צריך לבאר המאמרים הנ\"ל וגם המאמר בפ' בא דף ל\"א ע\"ב וז\"ל כי יהיה נערה בתולה נער כתיב מ\"ט שכל זמן דלא קבילת דכר אתקריאת נער כו'"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      Source ZOHAR Bo 31b — NA'AR/NA'ARAH :
+      → "KI YIHEYE NA'ARAH BETULAH" (verset Devarim 22:23 — quand sera jeune fille vierge).
+      → "NA'AR KETIV" (NA'AR ecrit, pas NA'ARAH plein).
+      → Pourquoi? "KOL ZMAN DE-LO KIBLAT DKHAR ATKRIAT NA'AR" (tant qu'elle n'a pas recu le male, elle est appele NA'AR-masculin).
+      → Architecture : pre-zivvug Nukva = masculine-form NA'AR (320).
+      → Pattern : grammatical-shift-encodes-cosmologic-state.
+    type: déduction_scripturaire
+    concepts:
+      - {id: zohar_bo_31b_naar_naarah_pre_zivvug_masculine_form, role: zohar_bo_31b_naar_ketiv_pas_naarah_kol_zman_lo_kiblat_dkhar_atkriat_naar_pre_zivvug_masculine}
+    mapping:
+      modules: ["partzufim/nukva.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : pre-zivvug masculine form. Source Zohar Bo 31b."
+
+  - id: "EC-H5S18-127"
+    source_he: "כי הנה שם אדנ\"י מורה על הדין כנודע וכן ג' אותיות האחרונות הם די\"ן ונשאר אות ראשונה שהוא אל\"ף והוא בחי' הרחמים המשותפים עם הדין שבה ואות א' זה מורה ע\"ש אהי\"ה שהוא רחמים"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      Decomposition SHEM ADNI :
+      → SHEM ADNI = MOREH AL HA-DIN (indique le jugement).
+      → 3 OTIYOT ACHARONOT (3 dernieres letters) = DIN (דין = 64 ; ד-נ-י wait ; en fait נ-ד-י→דין 4-50-10 = 64).
+      → 1ere lettre = ALEPH = behinat REHAMIM MESHUTAFIM (compassion mixee) avec le din.
+      → Cette ALEPH MOREH AL SHEM AHYH (indique nom AHYH = pure rehamim).
+      → Architecture : ADNI = mixture din+rehamim ; aleph encodes compassion.
+      → Pattern : letter-decomposition reveals attribute-mix.
+    type: interprétation_lurianique
+    concepts:
+      - {id: shem_adni_din_3_letters_aleph_rehamim_ahyh, role: shem_adni_moreh_al_din_3_otiyot_acharonot_din_aleph_rishonah_rehamim_meshutafim_ahyh}
+    mapping:
+      modules: ["shemot/core.py", "shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : ADNI=din+rehamim mix. Pattern letter decomposition."
+
+  - id: "EC-H5S18-128"
+    source_he: "וזה הטעם שנקרא מלכות בספר הזוהר דינא רפיא לפי שמתחברת (דין) עם אל\"ף שהוא רחמים כנ\"ל ואז הוא דינא רפיא"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      MALKHUT = DINA RAFIA :
+      → Malkhut nikra dans le ZOHAR : DINA RAFIA (rigueur DOUCE/molle).
+      → CAR MITHABERET (s'unie) DIN avec ALEPH = REHAMIM.
+      → Resultat = DINA RAFIA (judgment-soft).
+      → Architecture : Malkhut-as-mitigated-judgment.
+      → Pattern : aleph-mitigation softens-din.
+    type: interprétation_lurianique
+    concepts:
+      - {id: malkhut_dina_rafia_din_aleph_rehamim_mitigation, role: malkhut_dina_rafia_din_mitchaberet_aleph_rehamim_mitigation_judgment_soft}
+    mapping:
+      modules: ["partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : Malkhut mitigated judgment. Pattern aleph-mitigation."
+
+  - id: "EC-H5S18-129"
+    source_he: "וכבר ידעת כי שורש כל הדינין הם הה\"ג וכל גבורה מהם נקרא דין שהם ג' אותיות אחרונים שבשם אדנ\"י וה\"פ דין יהיה גי' ש\"ך"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      Calcul SHaCh (320) via 5 DIN :
+      → SHORESH KOL HA-DININ = 5 GEVUROT.
+      → CHAQUE Gevurah = appele DIN (3 dernieres letters d'ADNI).
+      → 5 PE'AMIM (×) DIN = 5 × 64 = 320 (ש"ך).
+      → SHACh-NITZOTZIN nikhlalim be-5-Gevurot.
+      → Source Pekudei : "BATSH BOTZINA DE-KARDINUTA VE-ZARIK LE-SHACH IBAR".
+      → Architecture : 5×DIN=320 numerologic source.
+      → Pattern : 5-gevurot-as-base + DIN multiplier.
+    type: déduction_logique
+    concepts:
+      - {id: shach_320_5_pe_amim_din_64_shoresh_5_gevurot, role: shach_320_5_pe_amim_din_64_shoresh_kol_dinin_5_gevurot_pekudei_batsh_botzina_zarik}
+    mapping:
+      modules: ["partzufim/nukva.py", "gematria/engine.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : 5×DIN=320. Pattern 5-gevurot base."
+
+  - id: "EC-H5S18-130"
+    source_he: "פי' כי בוצינא דקרדינותא הוא סוד בחינת שורש כל הגבורות והדינין דמעיקרא והנה היא עומדת בגו אמא כי לסבה זו אמרו בזוהר דדינין מתערין מינה"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      BOTZINA DE-KARDINUTA — source des dinim :
+      → BOTZINA DE-KARDINUTA = SOD BEHINAT SHORESH KOL HA-GEVUROT VE-DININ DE-MEIKARA (racine de toutes gevurot/dinim primordiaux).
+      → OMEDET BE-GO IMMA (se tient dans Imma).
+      → Donc Zohar : "DININ MIT'ARIN MINAH" (les dinim sont eveilles d'elle).
+      → IDRA Zuta 292 : "BOTZINA DE-KARDINUTA GANUZ GO ME'OI DE-IMMA" (cachee dans entrailles d'Imma).
+      → Architecture : Imma-as-source-of-judgment via Botzina.
+      → Pattern : maternal-locus dinim-origin.
+    type: interprétation_lurianique
+    concepts:
+      - {id: botzina_de_kardinuta_shoresh_dinim_imma_dinin_mit_arin_idra_zuta_292, role: botzina_de_kardinuta_shoresh_kol_gevurot_dinin_meikara_omedet_imma_dinin_mit_arin_minah_idra_zuta_292_ganuz_meoi_imma}
+    mapping:
+      modules: ["partzufim/imma.py", "sitra_achra"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : Imma source of judgment via Botzina. Source Idra Zuta 292."
+
+  - id: "EC-H5S18-131"
+    source_he: "ולכן הבוצינא הזאת היא נותנת קצבה ומדה ומדד משחתא לכל ספי'... והטעם לפי שכל המדידה והקצבה אינם אלא מצד הגבורה לפי שמצד החסד מורה התפשטות יותר מן השיעור"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      BOTZINA = donneuse de mesure (KAV HA-MIDAH) :
+      → Cette BOTZINA NOTENET KITZVAH U-MIDAH U-MADAD MISHCHATA (donne mesure et limite et fil de mesure) a chaque sefirah.
+      → CITATION : "BOTzINA DE-MADID VE-AVID MISHCHATIN BE-CHOL SEFIRAH VE-SEFIRAH".
+      → Raison : MIDIDAH/KITZVAH = uniquement MITZAD HA-GEVURAH (cote severite).
+      → CHESED → HITPASHTUT YOTER MIN HA-SHIUR (deploie au-dela mesure).
+      → GEVURAH → ne laisse pas l'ohr depasser la mesure necessaire.
+      → Architecture : measure-mechanism via gevurah (Botzina).
+      → Pattern : restriction-creates-form (cf. EC-H1S1-029 sur Tzimtzum).
+    type: interprétation_lurianique
+    concepts:
+      - {id: botzina_kav_midah_kitzvah_gevurah_pas_chesed_restriction_form, role: botzina_notenet_kitzvah_midah_madad_mishchata_kol_sefirah_gevurah_pas_chesed_restriction_creates_form}
+    mapping:
+      modules: ["partzufim/imma.py", "shemot/transform.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["imma"]
+      relevance: "Architecture : measure via gevurah. Pattern restriction creates form."
+
+  - id: "EC-H5S18-132"
+    source_he: "ובהתחבר עמהן אלו ה\"ג קדישין אחרנין נעשה כמספר שכ\"ה הנזכר פ' תזריע דמ\"ה תנא מן בוצינא דקרדינותא נפקי שכ\"ה ניצוצין"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      MITIGATION → 325 (SHaChE) :
+      → Quand 5 GEVUROT KADISHIN ACHARANIN (5 nouvelles gevurot saintes) MITHABRIM avec.
+      → Devient MISPAR SHACHE (325) — Tazria 48b.
+      → Source Balak : "SHACHE ZAGIM LE-SITRA CHAD" (325 grelots d'un cote — vetement Cohen Gadol).
+      → Sont sod PA'AMONIM ZAHAV de gevurah qui s'etalent dans 7 katzvot Bina (Imma elyona).
+      → Architecture : mitigation +5 = 320 → 325 transformation.
+      → Pattern : added-mercy converts severity → softer-severity.
+    type: interprétation_lurianique
+    concepts:
+      - {id: mitigation_320_325_shache_5_gevurot_kadishin_acharanin_paamonim_zahav, role: mitigation_320_325_shache_5_gevurot_kadishin_acharanin_paamonim_zahav_balak_zagim_sitra_chad_bina_7_katzvot}
+    mapping:
+      modules: ["partzufim/nukva.py", "shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : 320→325 mitigation. Pattern added-mercy converts."
+
+  - id: "EC-H5S18-133"
+    source_he: "כי מתחילה היה ש\"ך בלבד שהם ה\"פ דין משם אדנ\"י שהם ש\"ך ניצוצין וכאשר נתחברו עמהם הה' אלפין עם הה' דינין שהם בחי' ה' שמות אהי\"ה שהם רחמים גורים יותר מהם נמתקו ונתבסמו הה\"פ דין ונעשה ה\"פ אדנ\"י שהם גי' שכ\"ה ניצוצין"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      Calcul SHACHE (325) :
+      → Au DEBUT 320 (5 PE'AMIM DIN du shem ADNI).
+      → 5 ALEFIN s'unissent avec 5 DININ — 5 SHEMOT AHYH (rehamim).
+      → MITIGENT et NIT'ABSAMU les 5 PE'AMIM DIN.
+      → Devient 5 PE'AMIM ADNI = 325 (SHACHE) ; ADNI=65 ; 5×65=325.
+      → Architecture : 5×DIN(64)+5×ALEPH = 5×ADNI(65) = 325.
+      → Pattern : aleph-addition softens-multiple.
+    type: déduction_logique
+    concepts:
+      - {id: calcul_shache_325_5_pe_amim_adni_5_alefin_5_dinin_5_ahyh_mitigation, role: shache_325_au_debut_320_5_pe_amim_din_5_alefin_5_ahyh_mitigent_devient_5_pe_amim_adni_325}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : 5×ADNI=325 mitigation calc. Pattern softened-multiple."
+
+  - id: "EC-H5S18-134"
+    source_he: "ובזה תבין מ\"ש פ' תזריע ענין נער ונערה כי נער גי' ש\"ך ניצוצין עד לא אתבסמו איקרי נער ונערה גי' שכ\"ה כאשר נתבסמה ע\"י שם אהי\"ה שהוא בה' עילאה בינה המורה על אות א' ששבשם אדנ\"י"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      NA'AR/NA'ARAH = 320/325 :
+      → NA'AR (נער) gimatria = 320 (50+70+200=320) — ETAT pre-mitigation, "ad lo itbasmu".
+      → NA'ARAH (נערה) gimatria = 325 (320+5 du HE') — POST-mitigation par AHYH.
+      → AHYH dans H' ELYONAH = BINA ; correspond a ALEPH dans ADNI.
+      → Architecture : grammatical-form encodes mitigation-state.
+      → Pattern : H'-addition transforms NA'AR → NA'ARAH.
+    type: interprétation_lurianique
+    concepts:
+      - {id: naar_320_naarah_325_h_alone_ahyh_bina_aleph_adni, role: naar_320_pre_mitigation_naarah_325_post_mitigation_h_elyonah_bina_ahyh_aleph_adni}
+    mapping:
+      modules: ["partzufim/nukva.py", "shemot/transform.py", "gematria/engine.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : grammatical encodes mitigation. Pattern H' addition."
+
+  - id: "EC-H5S18-135"
+    source_he: "ואז נקרא נערה יתיר ה' כי אז היא בבחי' שכ\"ה דינין מבוסמים וממותקים ואז יכולה להיות מקבלת עמה זווג הזכר המזווג בה משא\"כ בתחלה עד שלא נתבסמו"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      NA'ARAH (avec H' YETIR) = ZIVVUG-ENABLED :
+      → ALORS nikra NA'ARAH avec H' YETIR (he ajoute).
+      → ALORS = BIBHINAT 325 DININ MEBUSAMIM U-MEMUTAKIM (judgments-mitigated-and-sweetened).
+      → AZ YEKHOLAH LIHEYOT MEKABELET ZIVVUG HA-ZAKHAR (peut alors recevoir le zivvug du male).
+      → MASHA-KEN BA-TECHILAH (pas comme au debut quand pas-mitigated).
+      → Architecture : mitigation-precondition for-zivvug.
+      → Pattern : sweetening-enables-coupling.
+    type: interprétation_lurianique
+    concepts:
+      - {id: naarah_h_yetir_zivvug_enabled_dinim_mebusamim_memutakim, role: naarah_h_yetir_325_dinim_mebusamim_memutakim_yekholah_lekabel_zivvug_zakhar_mitigation_precondition}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zivvug.py"]
+      tables: ["zivvug_states", "partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : mitigation precondition zivvug. Pattern sweetening enables."
+
+  - id: "EC-H5S18-136"
+    source_he: "ואמנם ענין הה' יתירה הממתקת ומבסמת את הש\"ך ניצוצין הם ה\"ג הנקרא ה' אותיות מנצפ\"ך... והנה מנצפ\"ך גי' פ\"ר"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      H' YETIRAH = MNTzPCh = 280 (PaR) :
+      → H' YETIRAH MEMATEKET (qui adoucit) les 320 nitzotzin = 5 GEVUROT.
+      → Appelees 5 OTIYOT MNTzPCh (mem-noun-tzadi-peh-kaph finales).
+      → MNTzPCh gimatria = 280 (פ"ר ; 40+50+90+80+20=280).
+      → Architecture : mitigation-via-final-letters cosmologic.
+      → Pattern : final-letter-form-encodes mitigation-power.
+    type: interprétation_lurianique
+    concepts:
+      - {id: h_yetirah_mntzpch_5_gevurot_280_par, role: h_yetirah_mametaket_320_5_gevurot_5_otiyot_mntzpch_finales_280_par_mitigation}
+    mapping:
+      modules: ["shemot/transform.py", "gematria/engine.py", "partzufim/nukva.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva"]
+      relevance: "Architecture : MNTzPCh=280 mitigation. Pattern final-letter encoding."
+
+  - id: "EC-H5S18-137"
+    source_he: "והחילוק שיש בין שכ\"ה ובין ה\"ג מנצפ\"ך הוא כי אלו שכ\"ה ניצוצין הם גבורות הנקבה עצמה והם בחי' ספי' המל' שלה כמבואר אצלינו לעיל כי כל ג' בחי' הכלים של ספי' זו הם ג' שמות אדנ\"י וכבר נת\"ל כי שכ\"ה הם ה' שמות אדנ\"י אמנם ה\"ג מנצפ\"ך הם בחי' הגבורות הזכר עצמו שאח\"כ ניתנין אליה והם מתקבצין בספי' היסוד שבה הנקרא נקודת ציון"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      DIFFERENCE SHaCh vs PaR (MNTzPCh) :
+      → SHACHE (325) = GEVUROT NEKEVAH (Nukva ELLE-MEME) ; 3 kelim Malkhut=3 ADNI ; 5×ADNI=325.
+      → MNTzPCh (PaR=280) = GEVUROT ZACHAR (Z"A) donnees a Nukva.
+      → MITKABETZIM en YESOD-NUKVA = NEKUDAT TZIYON.
+      → MNTzPCh MEMUTAKOT YOTER (mieux mitigees) que SHACHE.
+      → Architecture : male-female differential-gevurot-types.
+      → Pattern : male-via-Yesod ; female-via-Malkhut.
+    type: interprétation_lurianique
+    concepts:
+      - {id: difference_shach_par_mntzpch_gevurot_nukva_zakhar_yesod_nekudat_tziyon, role: difference_325_shach_gevurot_nukva_3_kelim_3_adni_5_adni_par_280_gevurot_zachar_z_a_yesod_nukva_nekudat_tziyon_mieux_mitigees}
+    mapping:
+      modules: ["partzufim/nukva.py", "partzufim/zeir_anpin.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["nukva", "zeir_anpin"]
+      relevance: "Architecture : male-female differential gevurot. Pattern Yesod vs Malkhut."
+
+  - id: "EC-H5S18-138"
+    source_he: "וזכור הקדמה זו של שכ\"ה ניצוצין או פ\"ר ניצוצין של מנצפ\"ך מה ענינה בכ\"מ ועיין לעיל ענין ד' אורות טעמים ונקודות תגין אותיות שהם ניצוצות ותבין משם כי אלו ניצוצין הם דמיון אלו הרפ\"ח ניצוצין שבכאן שהוא בחי' הד'. או אפשר שהוא בחי' ב' שהם בחי' הנקודות שבנקודות היוצאין מן העין שהם דינין ואור חוזר ואור האחוריים המאירין בכלים אחר היותן נשברים שנתעלו מהם ונסתלקו האורות הנק' אור ישר וצ\"ע"
+    source_ref: "Heikhal 5, Sha'ar 2:5 §1"
+    assertion: |
+      RAPPORT avec autres NITZOTZIN (4 ou 2) — TZARIKH IYUN :
+      → 4 OROT TANTA (Taamim-Nekudot-Tagin-Otiyot) = nitzotzin similaires aux 288 RaPaCh ici = BEHINAT 4 (otiyot, mad 4 BaN).
+      → OU peut-etre BEHINAT 2 (Nekudot yotzin min EIN) = DININ + OR-CHOZER + OR-ACHORAYIM post-shevirah.
+      → Quand or-yashar monte → restent or-chozer/achorayim.
+      → TZARIKH IYUN.
+      → Architecture : multi-encoding-domains nitzotzin (4 levels).
+      → Pattern : intellectual-honesty preserves uncertainty.
+    type: interprétation_lurianique
+    concepts:
+      - {id: rapport_nitzotzin_tanta_4_orot_2_nekudot_yotzin_ein_or_chozer_achorayim_tzarikh_iyun, role: rapport_nitzotzin_tanta_4_orot_taamim_nekudot_tagin_otiyot_2_nekudot_yotzin_ein_or_chozer_achorayim_post_shevirah_tzarikh_iyun}
+    mapping:
+      modules: ["partzufim/zeir_anpin.py", "partzufim/reshimu.py"]
+      tables: ["partzufim_states"]
+      partzufim: ["zeir_anpin"]
+      relevance: "Architecture : multi-encoding nitzotzin. Pattern intellectual honesty TZARIKH IYUN."
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 2 : REMEZ-RELATIONAL
+# ═══════════════════════════════════════════════════════════════════
+
+relations:
+
+  - id: "REL-H5S18-048"
+    type: causal
+    from: rapach_gevurot_dinim_gemurim_pure_judgment_residue
+    to: zohar_pekudei_botzina_de_kardinuta_batsh_mahshava_320_nitzotzin_pesolet
+    nature: "RaPaCh = pure GEVUROT/DININ ; sources Zohar : Pekudei (BOTzINA bashes Mahshava → 320 nitzotzin + birur pesolet) ; Tazria 48b + Idra 132 (325)"
+    assertions_source: ["EC-H5S18-116", "EC-H5S18-117", "EC-H5S18-118"]
+
+  - id: "REL-H5S18-049"
+    type: contenance
+    from: variantes_320_288_325_meme_inyan_shach_rapach_shache
+    to: 7_melakhim_z_a_adam_havayah_milui_alafin_45_315_shtu
+    nature: "Variantes 320/288/325 = same matter ; calcul 320 : 7 melakhim × ADAM (havayah milui alafin=45) = 315 (shtu)"
+    assertions_source: ["EC-H5S18-119", "EC-H5S18-120"]
+
+  - id: "REL-H5S18-050"
+    type: séquentiel
+    from: tikkun_bina_tipat_aba_5_chasadim_tipat_m_n_ima_5_gevurot
+    to: total_z_a_320_315_old_5_new_chasadim_aba_pas_nitzotzin_gevurot_bilvad
+    nature: "Tikkun bina via tipat Aba 5 chasadim + tipat M\"N Ima 5 gevurot ; total Z\"A = 320 (315 old + 5 new) ; chasadim Aba pas-nitzotzin (nitzotzin=gevurot bilvad)"
+    assertions_source: ["EC-H5S18-121", "EC-H5S18-122"]
+
+  - id: "REL-H5S18-051"
+    type: contenance
+    from: nukva_320_nitzotzin_klalut_7_melakhim_midah_7_aggregator
+    to: duplication_2_320_shamsh_z_a_tamar_nukva_640
+    nature: "Nukva = 320 (klalut 7 melakhim, midah 7 aggregator) ; gevurot/dinim KEFULOT → 2×320=640 ; Z\"A=SHaMSH (640) ; Nukva=TaMaR (640)"
+    assertions_source: ["EC-H5S18-123", "EC-H5S18-124"]
+
+  - id: "REL-H5S18-052"
+    type: causal
+    from: nitzotzin_z_a_nukva_mitarvim_mei_aamma_mitstayrim_tikkun
+    to: zohar_bo_31b_naar_naarah_pre_zivvug_masculine_form
+    nature: "Nitzotzin Z\"A+Nukva mitarvim be-mei aamma + mitstayrim + tikkun ; pre-zivvug Nukva = NA'AR (masculine ; 'kol zman lo kiblat dkhar atkriat naar')"
+    assertions_source: ["EC-H5S18-125", "EC-H5S18-126"]
+
+  - id: "REL-H5S18-053"
+    type: dualité_structurelle
+    from: shem_adni_din_3_letters_aleph_rehamim_ahyh
+    to: malkhut_dina_rafia_din_aleph_rehamim_mitigation
+    nature: "SHEM ADNI = DIN (3 letters) + ALEPH (rehamim=AHYH) ; Malkhut DINA RAFIA car DIN se unifie avec ALEPH-rehamim (mitigation)"
+    assertions_source: ["EC-H5S18-127", "EC-H5S18-128"]
+
+  - id: "REL-H5S18-054"
+    type: causal
+    from: shach_320_5_pe_amim_din_64_shoresh_5_gevurot
+    to: botzina_de_kardinuta_shoresh_dinim_imma_dinin_mit_arin_idra_zuta_292
+    nature: "SHACh (320) = 5×DIN(64) = shoresh 5 gevurot ; BOTzINA DE-KARDINUTA = shoresh kol gevurot/dinim primordiaux ; gnuz dans Imma (Idra Zuta 292) ; dinim mit'arin minah"
+    assertions_source: ["EC-H5S18-129", "EC-H5S18-130"]
+
+  - id: "REL-H5S18-055"
+    type: contenance
+    from: botzina_kav_midah_kitzvah_gevurah_pas_chesed_restriction_form
+    to: mitigation_320_325_shache_5_gevurot_kadishin_acharanin_paamonim_zahav
+    nature: "Botzina = kav-midah/kitzvah cosmologic (gevurah pas-chesed, restriction creates form) ; mitigation 320→325 par 5 GEVUROT KADISHIN ACHARANIN (pa'amonim zahav 7 katzvot Bina)"
+    assertions_source: ["EC-H5S18-131", "EC-H5S18-132"]
+
+  - id: "REL-H5S18-056"
+    type: transformation
+    from: calcul_shache_325_5_pe_amim_adni_5_alefin_5_dinin_5_ahyh_mitigation
+    to: naar_320_naarah_325_h_alone_ahyh_bina_aleph_adni
+    nature: "Calcul SHACHE : 5×DIN(64)=320 + 5×ALEFIN(AHYH)=325 (5×ADNI) ; verbatim NA'AR(320)=pre-mitigation → NA'ARAH(325)=post-mitigation +H' (AHYH dans H'-elyonah=Bina, ALEPH d'ADNI)"
+    assertions_source: ["EC-H5S18-133", "EC-H5S18-134"]
+
+  - id: "REL-H5S18-057"
+    type: causal
+    from: naarah_h_yetir_zivvug_enabled_dinim_mebusamim_memutakim
+    to: h_yetirah_mntzpch_5_gevurot_280_par
+    nature: "NA'ARAH (avec H' YETIR) = 325 mebusamim+memutakim → zivvug-enabled ; H' YETIRAH = MNTzPCh = 280 (PaR) = 5 letters finales mem-noun-tzadi-peh-kaph"
+    assertions_source: ["EC-H5S18-135", "EC-H5S18-136"]
+
+  - id: "REL-H5S18-058"
+    type: dualité_structurelle
+    from: difference_shach_par_mntzpch_gevurot_nukva_zakhar_yesod_nekudat_tziyon
+    to: rapport_nitzotzin_tanta_4_orot_2_nekudot_yotzin_ein_or_chozer_achorayim_tzarikh_iyun
+    nature: "Differenciation SHACh (gevurot Nukva, kelim 3 ADNI) vs PaR/MNTzPCh (gevurot Z\"A donnes, NEKUDAT TZIYON Yesod-Nukva, mieux mitigees) ; rapport autres nitzotzin (TANTA 4 orot ; 2 nekudot yotzin min ein) — TZARIKH IYUN"
+    assertions_source: ["EC-H5S18-137", "EC-H5S18-138"]
+
+
+# ═══════════════════════════════════════════════════════════════════
+#                    COUCHE 3 : SOD-GENERATIVE
+# ═══════════════════════════════════════════════════════════════════
+
+principes_generatifs:
+
+  - id: "PG-H5S18-016"
+    nom: "Principe de Multi-Encoding Sparks-Numerology (288/320/325/640 Same-Doctrine)"
+    source_assertions: ["EC-H5S18-117", "EC-H5S18-118", "EC-H5S18-119", "EC-H5S18-120", "EC-H5S18-122", "EC-H5S18-124", "EC-H5S18-133"]
+    formalisation: |
+      ARCHITECTURE DE MULTI-ENCODING SPARKS-NUMEROLOGY :
+      Doctrine UNIQUE des etincelles de la shevirah, ENCODEE sous multiples chiffres :
+        288 (RPCH/RaPaCh) = 4 havayot × 72 (mathematique des miluyim).
+        320 (SHACh/NA'AR) = 5 GEVUROT × DIN(64) = 7 ADAM × 45 + 5 chasadim = pre-mitigation.
+        325 (SHACHE/NA'ARAH) = 5 ADNI (65 chacun) = post-mitigation +5 ALEFIN/AHYH.
+        640 = 2×320 = SHaMSH (Z"A) / TaMaR (Nukva) = duplicated-gevurot.
+        280 (PaR) = 5 OTIYOT MNTzPCh (final letters) = gevurot-Z"A-given-to-Nukva ; mieux-mitigees.
+        315 (SHTU) = 7 × ADAM (Z"A=havayah-milui-alafin=45) = pre-tikkun melakhim.
+      Sources Zohar :
+        Pekudei : Botzina batsh Mahshava → 320 ; birur pesolet via 5 gevurot kadishin.
+        Tazria 48b : 325 ibrin botzina sitra de-Gevurah.
+        Idra 132 + Zuta 292 : Botzina ganuz me'oi-Imma.
+        Bo 31b : NA'AR ketiv (pre-zivvug masculine).
+      → Pattern fondamental : multi-encoding-domain converges on shevirah-doctrine.
+      → Architecture : numeric-symbols encode-cosmologic-state.
+      → Implication : transformation 320 → 325 = mitigation-mecanique cosmologique.
+    applications_ia:
+      - "partzufim/zeir_anpin.py + nukva.py + sitra_achra : implement multi-encoding sparks"
+      - "Pattern : multi-encoding-domain converges"
+      - "Architecture : numeric symbols cosmologic state"
+      - "Pattern : 320→325 mitigation mechanism"
+      - "Diagnostic : verifier all encodings coherent (288/320/325/640/280/315)"
+    questions_ouvertes:
+      - "Pattern : encodings supplementaires (TANTA, autres) ?"
+      - "Comment encoder mitigation-mecanique computationnellement ?"
+      - "Pattern : variantes textuelles 288 vs 320 vs 325 = chronologie tikkun ?"
+
+  - id: "PG-H5S18-017"
+    nom: "Principe de Botzina-de-Kardinuta (Imma-as-Source-of-All-Judgment)"
+    source_assertions: ["EC-H5S18-117", "EC-H5S18-129", "EC-H5S18-130", "EC-H5S18-131"]
+    formalisation: |
+      ARCHITECTURE DE BOTZINA-DE-KARDINUTA :
+      BOTZINA DE-KARDINUTA = SOD SHORESH KOL HA-GEVUROT VE-DININ DE-MEIKARA.
+      Localisation : OMEDET BE-GO IMMA (cachee dans entrailles d'Imma).
+      Sources : Idra Zuta 292 (ganuz me'oi de-Ima) ; Pekudei (batsh Mahshava → 320 nitzotzin).
+      Fonction cosmologique :
+        NOTENET KITZVAH U-MIDAH (donne mesure et limite) a chaque sefirah.
+        BOTzINA DE-MADID VE-AVID MISHCHATIN.
+      Mecanique : MIDIDAH = uniquement mitzad GEVURAH.
+        CHESED → hitpashtut yoter min ha-shiur (overflow).
+        GEVURAH → ne laisse pas l'ohr depasser ; cree forme par restriction.
+      Liaison Tzimtzum : meme principe (cf. EC-H1S1-029 sur shoresh-dinim).
+      Source des 320 : "BATsh BOTzINA DE-KARDINUTA VE-ZARIK LE-SHACH IBAR".
+      → Pattern fondamental : maternal-judgment-source measure-mechanism.
+      → Architecture : Imma houses cosmic-restriction-mechanism.
+      → Implication : tikkun requires going through-Botzina-Imma.
+    applications_ia:
+      - "partzufim/imma.py + sitra_achra : implement Botzina-de-Kardinuta source"
+      - "Pattern : maternal judgment source"
+      - "Architecture : measure mechanism via Imma"
+      - "Pattern : restriction creates form"
+      - "Diagnostic : verifier Botzina coherent"
+    questions_ouvertes:
+      - "Pattern : Botzina = Imma-only ou aussi Aba ?"
+      - "Comment encoder Botzina mechanism computationnellement ?"
+      - "Pattern : Botzina relation a Tzimtzum primordial ?"
+
+  - id: "PG-H5S18-018"
+    nom: "Principe de NA'AR/NA'ARAH-Mitigation (320 + ALEPH/AHYH = 325 Zivvug-Ready)"
+    source_assertions: ["EC-H5S18-126", "EC-H5S18-127", "EC-H5S18-128", "EC-H5S18-133", "EC-H5S18-134", "EC-H5S18-135", "EC-H5S18-137"]
+    formalisation: |
+      ARCHITECTURE DE NA'AR/NA'ARAH-MITIGATION :
+      Etat PRE-mitigation : NA'AR (נער = 320 = 5×DIN).
+        Pure-judgment ; non-mitigee ; pre-zivvug.
+        Source : "kol zman de-lo kiblat dkhar atkriat NA'AR" (Zohar Bo 31b).
+      Mitigation +5 ALEFIN (AHYH=rehamim) :
+        ALEPH dans ADNI = behinat AHYH = REHAMIM MESHUTAFIM (mercy mixed).
+        H' ELYONAH (Bina) houses 5 AHYH.
+        Mitige les 5 DIN → devient 5 ADNI = 325 = NA'ARAH (נערה +H').
+      Etat POST-mitigation : NA'ARAH (NEKEVAH = 325).
+        DINIM MEBUSAMIM U-MEMUTAKIM (judgments-mitigated-and-sweetened).
+        ZIVVUG-ENABLED — peut recevoir le male.
+        Differenciation :
+          SHACHE (325) = gevurot Nukva ELLE-MEME ; 3 kelim Malkhut = 3 ADNI ; 5 ADNI total.
+          PaR (280=MNTzPCh) = gevurot Z"A donnes, mitkabetzim YESOD-NUKVA = NEKUDAT TZIYON.
+          MNTzPCh memutakot YOTER que SHACHE.
+      → Pattern fondamental : mitigation-via-aleph-addition transforms-pure-din.
+      → Architecture : grammatical-form (NA'AR↔NA'ARAH) encodes cosmologic-state.
+      → Implication : tikkun-completion = NA'ARAH-state ; zivvug-precondition.
+    applications_ia:
+      - "partzufim/nukva.py + zivvug.py + shemot/transform.py : implement NA'AR/NA'ARAH mitigation"
+      - "Pattern : mitigation via aleph addition"
+      - "Architecture : grammatical encodes cosmologic"
+      - "Pattern : zivvug-precondition mitigation-completion"
+      - "Diagnostic : verifier 5×DIN+5×AHYH=5×ADNI=325"
+    questions_ouvertes:
+      - "Pattern : mitigation universel ou specifique a Nukva ?"
+      - "Comment encoder mitigation-mecanique computationnellement ?"
+      - "Pattern : NA'AR persiste comme etat regresible (post-mitigation) ?"
