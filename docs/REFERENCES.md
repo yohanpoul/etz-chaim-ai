@@ -221,9 +221,9 @@ For understanding the Claude Code vs Codex CLI vs Cursor vs OpenCode landscape:
 ## XVI. Etz Chaim AI itself
 
 - [GitHub repo](https://github.com/yohanpoul/etz-chaim-ai)
-- Installation: see [`README.md`](../README.md)
-- Architecture: see [`memory/ARCHITECTURE.md`](../memory/ARCHITECTURE.md)
-- Decisions: see [`memory/DECISIONS.md`](../memory/DECISIONS.md)
-- Anti-patterns: see [`memory/MISTAKES.md`](../memory/MISTAKES.md)
-- Portability: see [`docs/PORTABILITY.md`](PORTABILITY.md)
-- 2026 features map: see [`docs/CODE_WITH_CLAUDE_2026.md`](CODE_WITH_CLAUDE_2026.md)
+- Installation: see `README.md` (in repo root)
+- Architecture: see `memory/ARCHITECTURE.md` (in repo root)
+- Decisions: see `memory/DECISIONS.md` (in repo root)
+- Anti-patterns: see `memory/MISTAKES.md` (in repo root)
+- Portability: see `docs/PORTABILITY.md` → see [PORTABILITY.md](PORTABILITY.md)
+- 2026 features map: see `docs/CODE_WITH_CLAUDE_2026.md` → see [CODE_WITH_CLAUDE_2026.md](CODE_WITH_CLAUDE_2026.md)
