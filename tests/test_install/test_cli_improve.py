@@ -56,6 +56,7 @@ def test_improve_dry_run_json(monkeypatch, tmp_path):
     assert data["events"][0]["id"] == "known-p0-psql-helper-pollution"
     assert data["events"][0]["verified"] is False
     assert data["events"][0]["verification_result"]["passed"] is False
+    assert data["would_write"]["ledger"].startswith(str(tmp_path))
     assert not (tmp_path / ".etz-chaim").exists()
 
 
@@ -79,10 +80,13 @@ def test_improve_once_json_writes_only_under_temp_home(monkeypatch, tmp_path):
     data = json.loads(result.stdout)
     report_path = data["written"]["report"]
     state_path = data["written"]["state"]
+    ledger_path = data["written"]["ledger"]
     assert report_path.startswith(str(tmp_path))
     assert state_path.startswith(str(tmp_path))
+    assert ledger_path.startswith(str(tmp_path))
     assert (tmp_path / ".etz-chaim" / "runs" / "improve-20260604T120000Z.md").exists()
     assert (tmp_path / ".etz-chaim" / "state" / "last_improve_run.json").exists()
+    assert (tmp_path / ".etz-chaim" / "state" / "improve_ledger.jsonl").exists()
 
 
 def test_improve_requires_once():

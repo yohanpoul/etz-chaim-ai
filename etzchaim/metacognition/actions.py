@@ -38,6 +38,19 @@ def propose_action(event: MetacognitionEvent) -> ProposedAction:
             verification_command=event.verification_command,
         )
 
+    if event.source == "pytest":
+        return ProposedAction(
+            id=f"test-{event.id}",
+            type="test",
+            title=f"Add or adjust a bounded test for {event.title}",
+            description=(
+                "Use the observed bounded pytest failure as a reproducible test signal; "
+                "do not modify the corpus or apply repairs automatically in Phase 2B."
+            ),
+            event_ids=[event.id],
+            verification_command=event.verification_command,
+        )
+
     if event.source == "python":
         return ProposedAction(
             id=f"rule-{event.id}",
@@ -74,5 +87,9 @@ def propose_action(event: MetacognitionEvent) -> ProposedAction:
     )
 
 
-def propose_actions(events: Iterable[MetacognitionEvent]) -> list[ProposedAction]:
+def synthesize_actions(events: Iterable[MetacognitionEvent]) -> list[ProposedAction]:
     return [propose_action(event) for event in sort_events(events)]
+
+
+def propose_actions(events: Iterable[MetacognitionEvent]) -> list[ProposedAction]:
+    return synthesize_actions(events)

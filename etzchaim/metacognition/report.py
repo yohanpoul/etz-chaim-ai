@@ -7,7 +7,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from etzchaim._paths import state_dir
-from etzchaim.metacognition.actions import choose_top_issue, propose_actions
+from etzchaim.metacognition.actions import choose_top_issue, synthesize_actions
 from etzchaim.metacognition.collectors import collect_events
 
 
@@ -24,6 +24,36 @@ def _planned_paths(now: datetime) -> dict[str, str]:
     return {
         "report": str(base / "runs" / f"improve-{_timestamp(now)}.md"),
         "state": str(base / "state" / "last_improve_run.json"),
+        "ledger": str(base / "state" / "improve_ledger.jsonl"),
+    }
+
+
+def _action_for_top_issue(payload: dict) -> dict | None:
+    top_issue = payload.get("top_issue")
+    actions = payload.get("proposed_actions", [])
+    if not actions:
+        return None
+    if not top_issue:
+        return actions[0]
+    top_issue_id = top_issue.get("id")
+    for action in actions:
+        if top_issue_id in action.get("event_ids", []):
+            return action
+    return actions[0]
+
+
+def _ledger_entry(payload: dict) -> dict:
+    top_issue = payload.get("top_issue") or {}
+    action = _action_for_top_issue(payload) or {}
+    return {
+        "timestamp": payload["generated_at"],
+        "top_issue_id": top_issue.get("id"),
+        "action_id": action.get("id"),
+        "action_type": action.get("type"),
+        "applies_patch": action.get("applies_patch", False),
+        "verified": top_issue.get("verified"),
+        "verification_result": top_issue.get("verification_result"),
+        "guardian_verdict": "not_evaluated_p2b",
     }
 
 
@@ -37,7 +67,7 @@ def build_run_payload(
     root = Path(repo_root or Path.cwd())
     events = collect_events(root)
     top_issue = choose_top_issue(events)
-    actions = propose_actions(events)
+    actions = synthesize_actions(events)
 
     payload = {
         "status": "dry-run" if dry_run else "ready",
@@ -148,8 +178,11 @@ def run_improve_once(
 
     report_path = Path(paths["report"])
     state_path = Path(paths["state"])
+    ledger_path = Path(paths["ledger"])
     report_path.parent.mkdir(parents=True, exist_ok=True)
     state_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(render_markdown(payload), encoding="utf-8")
     state_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    with ledger_path.open("a", encoding="utf-8") as ledger_file:
+        ledger_file.write(json.dumps(_ledger_entry(payload), sort_keys=True) + "\n")
     return payload

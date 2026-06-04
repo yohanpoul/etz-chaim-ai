@@ -66,6 +66,8 @@ class ProposedAction:
         if self.type not in ACTION_TYPES:
             allowed = ", ".join(sorted(ACTION_TYPES))
             raise ValueError(f"Unsupported action type: {self.type}. Expected one of: {allowed}")
+        if self.applies_patch is not False:
+            raise ValueError("applies_patch must remain False for metacognition actions")
 
     def to_dict(self) -> dict:
         return {
