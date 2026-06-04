@@ -1,14 +1,30 @@
-"""Dormant macOS LaunchAgent template for Phase 3B supervision."""
+"""Dormant macOS LaunchAgent template for Phase 3C supervision."""
 
 from __future__ import annotations
 
 import plistlib
+from collections.abc import Mapping
 from pathlib import Path
 
 LABEL = "com.etzchaim.loop-once"
 PROGRAM_ARGUMENTS = ["etzchaim", "loop", "--once", "--json"]
-PHASE = "3B"
-REFUSAL_MESSAGE = "Phase 3B refuses real LaunchAgent installation. Use --dry-run only."
+PHASE = "3C"
+REFUSAL_MESSAGE = "Real plist write requires --allow-real-write and exact --ack."
+FORBIDDEN_TRIGGER_KEYS = (
+    "StartInterval",
+    "StartCalendarInterval",
+    "WatchPaths",
+    "QueueDirectories",
+)
+ALLOWED_KEYS = frozenset(
+    {
+        "Label",
+        "ProgramArguments",
+        "RunAtLoad",
+        "KeepAlive",
+        "Disabled",
+    }
+)
 
 
 def default_launchagent_path(home: Path | None = None) -> Path:
@@ -18,7 +34,11 @@ def default_launchagent_path(home: Path | None = None) -> Path:
     return root / "Library" / "LaunchAgents" / f"{LABEL}.plist"
 
 
-def launchagent_payload(executable: str = "etzchaim") -> dict[str, object]:
+def launchagent_payload(
+    *,
+    executable: str = "etzchaim",
+    disabled: bool = True,
+) -> dict[str, object]:
     """Return a dormant LaunchAgent payload for one bounded loop cycle."""
 
     return {
@@ -26,22 +46,100 @@ def launchagent_payload(executable: str = "etzchaim") -> dict[str, object]:
         "ProgramArguments": [executable, *PROGRAM_ARGUMENTS[1:]],
         "RunAtLoad": False,
         "KeepAlive": False,
-        "Disabled": True,
+        "Disabled": disabled,
     }
 
 
-def render_launchagent_plist(executable: str = "etzchaim") -> bytes:
+def render_launchagent_plist(
+    *,
+    executable: str = "etzchaim",
+    disabled: bool = True,
+) -> bytes:
     """Render the dormant LaunchAgent as XML plist bytes."""
 
     return plistlib.dumps(
-        launchagent_payload(executable=executable),
+        launchagent_payload(executable=executable, disabled=disabled),
         fmt=plistlib.FMT_XML,
         sort_keys=False,
     )
 
 
-def _template_summary(executable: str = "etzchaim") -> dict[str, object]:
-    payload = launchagent_payload(executable=executable)
+def parse_launchagent_plist(path: Path) -> dict[str, object]:
+    """Parse a LaunchAgent plist and require a dictionary payload."""
+
+    with path.open("rb") as handle:
+        payload = plistlib.load(handle)
+    if not isinstance(payload, dict):
+        raise ValueError("LaunchAgent plist must contain a dict")
+    return payload
+
+
+def validate_launchagent_payload(payload: Mapping[str, object]) -> list[str]:
+    """Return validation errors for unsafe or unexpected LaunchAgent payloads."""
+
+    errors: list[str] = []
+    if payload.get("Label") != LABEL:
+        errors.append(f"Label must be {LABEL}")
+    if payload.get("ProgramArguments") != PROGRAM_ARGUMENTS:
+        errors.append("ProgramArguments must be etzchaim loop --once --json")
+    if payload.get("RunAtLoad") is not False:
+        errors.append("RunAtLoad must be false")
+    if payload.get("KeepAlive") is not False:
+        errors.append("KeepAlive must be false")
+    if payload.get("Disabled") not in {True, False}:
+        errors.append("Disabled must be a boolean")
+    for key in FORBIDDEN_TRIGGER_KEYS:
+        if key in payload:
+            errors.append(f"{key} is not allowed in Phase 3C")
+    for key in payload:
+        if key not in ALLOWED_KEYS and key not in FORBIDDEN_TRIGGER_KEYS:
+            errors.append(f"{key} is not allowed in Phase 3C")
+    return errors
+
+
+def write_launchagent_plist(
+    *,
+    home: Path | None = None,
+    disabled: bool = True,
+    target_path: Path | None = None,
+) -> dict[str, object]:
+    """Write the LaunchAgent plist to the single expected user path.
+
+    ``home`` must be explicit so lower-level callers cannot accidentally write to
+    the real user LaunchAgents directory by relying on ``Path.home()`` defaults.
+    The CLI may pass ``Path.home()`` only after its double-confirmation guard.
+    """
+
+    if home is None:
+        raise ValueError("explicit home is required for LaunchAgent plist writes")
+
+    expected_path = default_launchagent_path(home=home)
+    path = target_path or expected_path
+    if path != expected_path:
+        raise ValueError("target_path is outside the expected LaunchAgents path")
+
+    rendered = render_launchagent_plist(disabled=disabled)
+    payload = plistlib.loads(rendered)
+    errors = validate_launchagent_payload(payload)
+    if errors:
+        raise ValueError("; ".join(errors))
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(rendered)
+    return {
+        "status": "written",
+        "path": str(path),
+        "bytes": len(rendered),
+        "disabled": disabled,
+    }
+
+
+def _template_summary(
+    *,
+    executable: str = "etzchaim",
+    disabled: bool = True,
+) -> dict[str, object]:
+    payload = launchagent_payload(executable=executable, disabled=disabled)
     return {
         "label": payload["Label"],
         "program_arguments": payload["ProgramArguments"],
@@ -72,11 +170,15 @@ def preflight_payload(home: Path | None = None) -> dict[str, object]:
     }
 
 
-def install_dry_run_payload(home: Path | None = None) -> dict[str, object]:
+def install_dry_run_payload(
+    home: Path | None = None,
+    *,
+    disabled: bool = True,
+) -> dict[str, object]:
     """Return the planned plist write without writing any file."""
 
     target_path = default_launchagent_path(home=home)
-    rendered = render_launchagent_plist()
+    rendered = render_launchagent_plist(disabled=disabled)
     return {
         "status": "dry-run",
         "phase": PHASE,
@@ -89,7 +191,7 @@ def install_dry_run_payload(home: Path | None = None) -> dict[str, object]:
             "path": str(target_path),
             "exists": target_path.exists(),
         },
-        "template": _template_summary(),
+        "template": _template_summary(disabled=disabled),
         "would_write": {
             "path": str(target_path),
             "bytes": len(rendered),
