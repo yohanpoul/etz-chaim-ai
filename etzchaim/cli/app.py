@@ -56,6 +56,7 @@ from etzchaim.cli.commands import open as _open_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import start as _start_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import status as _status_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import stop as _stop_cmd  # noqa: E402, F401
+from etzchaim.cli.commands import supervision as _supervision_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import update as _update_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import version as _version_cmd  # noqa: E402, F401
 

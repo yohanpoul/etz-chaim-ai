@@ -13,7 +13,7 @@ def test_version_prints_package_version():
     result = runner.invoke(app, ["version"])
     assert result.exit_code == 0
     assert "etzchaim" in result.stdout.lower()
-    assert "0.2." in result.stdout
+    assert "0.3." in result.stdout
 
 
 def test_version_json():
@@ -51,5 +51,5 @@ def test_help_shows_all_commands():
     result = runner.invoke(app, ["--help"])
     assert result.exit_code == 0
     for cmd in ["version", "info", "onboard", "start", "stop", "status",
-                "logs", "doctor", "demo", "update", "loop"]:
+                "logs", "doctor", "demo", "update", "loop", "supervision"]:
         assert cmd in result.stdout, f"Command '{cmd}' not listed in --help"
