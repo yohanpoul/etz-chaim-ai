@@ -105,6 +105,32 @@ Production fix:
 - Isolated HOME smokes: `POST_ABSOLUTE_EXEC_SMOKES_OK`
   - preflight/dry-run/writes now show absolute venv executable under `uv run --frozen`.
 
+## Second fix: guarded enable for rollback override
+
+The first rollback used `launchctl disable`, which created a disabled override visible via:
+
+```text
+launchctl print-disabled gui/502 | grep -i etzchaim
+"com.etzchaim.loop-once" => disabled
+```
+
+To make retry possible without manual unguarded launchctl commands, a guarded `--enable`
+mode was added:
+
+- `launchctl.enable_command()` builds `launchctl enable gui/502/com.etzchaim.loop-once`.
+- `etzchaim supervision --enable --dry-run --json` returns a JSON command plan.
+- Real enable requires `--allow-real-launchctl --ack "ENABLE PHASE 3C LAUNCHAGENT"`.
+- `enable` is included in the internal launchctl allowlist but remains mutation-guarded.
+- `load` and `start` remain unsupported/refused.
+
+Validation after guarded-enable fix:
+
+- Phase 3C targeted tests: `30 passed`
+- loop/CLI subset: `24 passed`
+- psql + folio subset: `17 passed`
+- Ruff touched files: `All checks passed!`
+- Isolated HOME smokes: `POST_ENABLE_SMOKES_OK`
+
 ## Current safe state before retry
 
 - Real LaunchAgent service: not loaded (`launchctl list | grep -i etzchaim` empty).

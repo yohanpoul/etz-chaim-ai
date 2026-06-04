@@ -45,6 +45,7 @@ def test_supervision_help_works():
     assert "--kickstart" in result.stdout
     assert "--bootout" in result.stdout
     assert "--disable" in result.stdout
+    assert "--enable" in result.stdout
     assert "--write" in result.stdout
     assert "--allow-real-write" in result.stdout
     assert "--allow-real-launchctl" in result.stdout
@@ -232,6 +233,7 @@ def test_supervision_launchctl_dry_run_modes_return_plans_without_subprocess(mon
         "--kickstart": "kickstart",
         "--bootout": "bootout",
         "--disable": "disable",
+        "--enable": "enable",
     }
 
     for mode, action in expected_first_actions.items():
@@ -275,7 +277,7 @@ def test_supervision_mutable_launchctl_modes_require_exact_ack_before_subprocess
     calls = _guard_activation_commands(monkeypatch)
     runner = CliRunner()
 
-    for mode in ["--bootstrap", "--kickstart", "--bootout", "--disable"]:
+    for mode in ["--bootstrap", "--kickstart", "--bootout", "--disable", "--enable"]:
         result = runner.invoke(
             app,
             [
@@ -323,6 +325,7 @@ def test_supervision_mutable_launchctl_modes_are_mocked(monkeypatch, tmp_path):
         ("--kickstart", "KICKSTART PHASE 3C LOOP ONCE", "kickstart"),
         ("--bootout", "BOOTOUT PHASE 3C LAUNCHAGENT", "bootout"),
         ("--disable", "DISABLE PHASE 3C LAUNCHAGENT", "disable"),
+        ("--enable", "ENABLE PHASE 3C LAUNCHAGENT", "enable"),
     ]
 
     for mode, ack, action in cases:
@@ -348,6 +351,7 @@ def test_supervision_mutable_launchctl_modes_are_mocked(monkeypatch, tmp_path):
         ["launchctl", "kickstart"],
         ["launchctl", "bootout"],
         ["launchctl", "disable"],
+        ["launchctl", "enable"],
     ]
 
 
@@ -365,7 +369,7 @@ def test_supervision_preflight_and_install_together_is_invalid(monkeypatch, tmp_
     assert data["status"] == "error"
     assert data["message"] == (
         "Choose exactly one mode: --preflight, --status, --install, --bootstrap, "
-        "--kickstart, --bootout, or --disable."
+        "--kickstart, --bootout, --disable, or --enable."
     )
     assert _relative_files(tmp_path) == []
     assert calls == []

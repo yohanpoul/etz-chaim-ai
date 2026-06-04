@@ -38,6 +38,11 @@ def test_launchctl_command_builders_use_fixed_argument_lists():
         "disable",
         "gui/501/com.etzchaim.loop-once",
     ]
+    assert launchctl.enable_command(uid=501) == [
+        "launchctl",
+        "enable",
+        "gui/501/com.etzchaim.loop-once",
+    ]
 
 
 def test_run_launchctl_uses_subprocess_run_shell_false(monkeypatch):
@@ -103,7 +108,6 @@ def test_run_launchctl_refuses_unsupported_subcommands_even_with_explicit_allow(
     monkeypatch.setattr(subprocess, "run", fake_run)
 
     for command in [
-        ["launchctl", "enable", "gui/501/com.etzchaim.loop-once"],
         ["launchctl", "start", "gui/501/com.etzchaim.loop-once"],
         ["launchctl", "load", "/tmp/agent.plist"],
     ]:
@@ -137,7 +141,7 @@ def test_run_launchctl_captures_returncode_stdout_stderr(monkeypatch):
     }
 
 
-def test_no_load_start_enable_commands_are_built():
+def test_no_load_or_start_commands_are_built():
     from etzchaim.supervision import launchctl
 
     commands = [
@@ -146,9 +150,9 @@ def test_no_load_start_enable_commands_are_built():
         launchctl.kickstart_command(uid=501),
         launchctl.bootout_command(uid=501),
         launchctl.disable_command(uid=501),
+        launchctl.enable_command(uid=501),
     ]
 
     command_words = {word for command in commands for word in command}
     assert "load" not in command_words
     assert "start" not in command_words
-    assert "enable" not in command_words

@@ -9,7 +9,7 @@ from pathlib import Path
 
 from etzchaim.supervision.launchagent import LABEL
 
-MUTATING_SUBCOMMANDS = frozenset({"bootstrap", "kickstart", "bootout", "disable"})
+MUTATING_SUBCOMMANDS = frozenset({"bootstrap", "kickstart", "bootout", "disable", "enable"})
 READ_ONLY_SUBCOMMANDS = frozenset({"print"})
 ALLOWED_SUBCOMMANDS = READ_ONLY_SUBCOMMANDS | MUTATING_SUBCOMMANDS
 
@@ -44,6 +44,10 @@ def bootout_command(uid: int | None = None, label: str = LABEL) -> list[str]:
 
 def disable_command(uid: int | None = None, label: str = LABEL) -> list[str]:
     return ["launchctl", "disable", service_target(uid, label)]
+
+
+def enable_command(uid: int | None = None, label: str = LABEL) -> list[str]:
+    return ["launchctl", "enable", service_target(uid, label)]
 
 
 def run_launchctl(command: Sequence[str], *, allow_mutation: bool = False) -> dict[str, object]:

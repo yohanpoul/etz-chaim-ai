@@ -18,6 +18,7 @@ LAUNCHCTL_ACKS = {
     "kickstart": "KICKSTART PHASE 3C LOOP ONCE",
     "bootout": "BOOTOUT PHASE 3C LAUNCHAGENT",
     "disable": "DISABLE PHASE 3C LAUNCHAGENT",
+    "enable": "ENABLE PHASE 3C LAUNCHAGENT",
 }
 
 
@@ -97,6 +98,8 @@ def _launchctl_command_for(mode: str) -> list[str]:
         return launchctl.bootout_command()
     if mode == "disable":
         return launchctl.disable_command()
+    if mode == "enable":
+        return launchctl.enable_command()
     raise ValueError(f"Unsupported launchctl mode: {mode}")
 
 
@@ -152,6 +155,11 @@ def supervision(
         "--disable",
         help="Plan or run launchctl disable.",
     ),
+    enable: bool = typer.Option(
+        False,
+        "--enable",
+        help="Plan or run launchctl enable after a guarded rollback disable.",
+    ),
     dry_run: bool = typer.Option(
         False,
         "--dry-run",
@@ -194,13 +202,14 @@ def supervision(
         "kickstart": kickstart,
         "bootout": bootout,
         "disable": disable,
+        "enable": enable,
     }
     selected = [name for name, enabled in modes.items() if enabled]
 
     if len(selected) != 1:
         payload = _error_payload(
             "Choose exactly one mode: --preflight, --status, --install, --bootstrap, "
-            "--kickstart, --bootout, or --disable.",
+            "--kickstart, --bootout, --disable, or --enable.",
         )
         _emit_payload(payload, json=json)
         raise typer.Exit(1)
