@@ -131,6 +131,35 @@ Validation after guarded-enable fix:
 - Ruff touched files: `All checks passed!`
 - Isolated HOME smokes: `POST_ENABLE_SMOKES_OK`
 
+## Third fix: explicit WorkingDirectory for relative project commands
+
+The retry with an absolute executable spawned successfully and exited `0`, but the run evidence
+showed a collector warning:
+
+```text
+_collect_pytest raised FileNotFoundError: [Errno 2] No such file or directory: '.venv/bin/python'
+```
+
+Root cause: launchd started the absolute executable without the project repository as current
+working directory, while the metacognition collector intentionally uses project-relative
+commands such as `.venv/bin/python`.
+
+Fix:
+
+- Added `WorkingDirectory` to the LaunchAgent payload.
+- `WorkingDirectory` resolves to the current repository path at plist render/write time.
+- The Phase 3C allowlist includes only this additional launchd key.
+- Validation now requires `WorkingDirectory` to be an absolute existing directory.
+- Regression tests cover absolute working directory rendering and relative working directory rejection.
+
+Validation after WorkingDirectory fix:
+
+- Phase 3C targeted tests: `32 passed`
+- loop/CLI subset: `24 passed`
+- psql + folio subset: `17 passed`
+- Ruff touched files: `All checks passed!`
+- Isolated HOME smokes: `POST_WORKING_DIRECTORY_SMOKES_OK`
+
 ## Current safe state before retry
 
 - Real LaunchAgent service: not loaded (`launchctl list | grep -i etzchaim` empty).

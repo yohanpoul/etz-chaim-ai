@@ -26,6 +26,7 @@ ALLOWED_KEYS = frozenset(
         "RunAtLoad",
         "KeepAlive",
         "Disabled",
+        "WorkingDirectory",
     }
 )
 
@@ -50,9 +51,17 @@ def resolve_executable(executable: str | None = None) -> str:
     return resolved
 
 
+def resolve_working_directory(working_directory: Path | str | None = None) -> str:
+    """Resolve the launchd working directory to an absolute existing path."""
+
+    path = Path(working_directory).expanduser() if working_directory is not None else Path.cwd()
+    return str(path.resolve())
+
+
 def launchagent_payload(
     *,
     executable: str | None = None,
+    working_directory: Path | str | None = None,
     disabled: bool = True,
 ) -> dict[str, object]:
     """Return a dormant LaunchAgent payload for one bounded loop cycle."""
@@ -60,6 +69,7 @@ def launchagent_payload(
     return {
         "Label": LABEL,
         "ProgramArguments": [resolve_executable(executable), *LOOP_ARGUMENTS],
+        "WorkingDirectory": resolve_working_directory(working_directory),
         "RunAtLoad": False,
         "KeepAlive": False,
         "Disabled": disabled,
@@ -69,12 +79,17 @@ def launchagent_payload(
 def render_launchagent_plist(
     *,
     executable: str | None = None,
+    working_directory: Path | str | None = None,
     disabled: bool = True,
 ) -> bytes:
     """Render the dormant LaunchAgent as XML plist bytes."""
 
     return plistlib.dumps(
-        launchagent_payload(executable=executable, disabled=disabled),
+        launchagent_payload(
+            executable=executable,
+            working_directory=working_directory,
+            disabled=disabled,
+        ),
         fmt=plistlib.FMT_XML,
         sort_keys=False,
     )
@@ -106,6 +121,15 @@ def _validate_program_arguments(value: object) -> list[str]:
     return errors
 
 
+def _validate_working_directory(value: object) -> list[str]:
+    if not isinstance(value, str):
+        return ["WorkingDirectory must be an absolute directory path"]
+    path = Path(value)
+    if not path.is_absolute() or not path.is_dir():
+        return ["WorkingDirectory must be an absolute directory path"]
+    return []
+
+
 def validate_launchagent_payload(payload: Mapping[str, object]) -> list[str]:
     """Return validation errors for unsafe or unexpected LaunchAgent payloads."""
 
@@ -113,6 +137,7 @@ def validate_launchagent_payload(payload: Mapping[str, object]) -> list[str]:
     if payload.get("Label") != LABEL:
         errors.append(f"Label must be {LABEL}")
     errors.extend(_validate_program_arguments(payload.get("ProgramArguments")))
+    errors.extend(_validate_working_directory(payload.get("WorkingDirectory")))
     if payload.get("RunAtLoad") is not False:
         errors.append("RunAtLoad must be false")
     if payload.get("KeepAlive") is not False:
@@ -174,6 +199,7 @@ def _template_summary(
     return {
         "label": payload["Label"],
         "program_arguments": payload["ProgramArguments"],
+        "working_directory": payload["WorkingDirectory"],
         "run_at_load": payload["RunAtLoad"],
         "keep_alive": payload["KeepAlive"],
         "disabled": payload["Disabled"],

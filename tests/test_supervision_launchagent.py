@@ -85,6 +85,25 @@ def test_validate_rejects_unknown_launchd_keys():
     assert "StartOnMount is not allowed in Phase 3C" in launchagent.validate_launchagent_payload(payload)
 
 
+def test_plist_sets_absolute_working_directory(tmp_path):
+    from etzchaim.supervision import launchagent
+
+    rendered = launchagent.render_launchagent_plist(working_directory=tmp_path)
+    data = plistlib.loads(rendered)
+
+    assert data["WorkingDirectory"] == str(tmp_path)
+    assert launchagent.validate_launchagent_payload(data) == []
+
+
+def test_validate_rejects_relative_working_directory():
+    from etzchaim.supervision import launchagent
+
+    payload = launchagent.launchagent_payload(working_directory=Path.cwd())
+    payload["WorkingDirectory"] = "relative/path"
+
+    assert "WorkingDirectory must be an absolute directory path" in launchagent.validate_launchagent_payload(payload)
+
+
 def test_validate_rejects_relative_program_executable():
     from etzchaim.supervision import launchagent
 
@@ -122,6 +141,7 @@ def test_write_launchagent_plist_writes_only_expected_tmp_home_path(monkeypatch,
     assert written_path.exists()
     data = launchagent.parse_launchagent_plist(written_path)
     assert data["Disabled"] is True
+    assert data["WorkingDirectory"] == str(Path.cwd().resolve())
     assert Path(data["ProgramArguments"][0]).is_absolute()
     assert data["ProgramArguments"][1:] == ["loop", "--once", "--json"]
     assert sorted(
