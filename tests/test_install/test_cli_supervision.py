@@ -72,7 +72,8 @@ def test_supervision_preflight_json_is_read_only(monkeypatch, tmp_path):
     assert data["label"] == "com.etzchaim.loop-once"
     assert data["target"]["path"].startswith(str(tmp_path))
     assert data["target"]["exists"] is False
-    assert data["template"]["program_arguments"] == ["etzchaim", "loop", "--once", "--json"]
+    assert data["template"]["program_arguments"][0].startswith("/")
+    assert data["template"]["program_arguments"][1:] == ["loop", "--once", "--json"]
     assert _relative_files(tmp_path) == []
     assert calls == []
 
@@ -180,7 +181,8 @@ def test_supervision_install_write_disabled_plist_under_tmp_home(monkeypatch, tm
     assert plist["Disabled"] is True
     assert plist["RunAtLoad"] is False
     assert plist["KeepAlive"] is False
-    assert plist["ProgramArguments"] == ["etzchaim", "loop", "--once", "--json"]
+    assert plist["ProgramArguments"][0].startswith("/")
+    assert plist["ProgramArguments"][1:] == ["loop", "--once", "--json"]
     assert calls == []
 
 

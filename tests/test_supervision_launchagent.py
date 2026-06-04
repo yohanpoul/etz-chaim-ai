@@ -13,7 +13,8 @@ def test_disabled_plist_is_default_and_dormant():
     data = plistlib.loads(rendered)
 
     assert data["Label"] == "com.etzchaim.loop-once"
-    assert data["ProgramArguments"] == ["etzchaim", "loop", "--once", "--json"]
+    assert Path(data["ProgramArguments"][0]).is_absolute()
+    assert data["ProgramArguments"][1:] == ["loop", "--once", "--json"]
     assert data["RunAtLoad"] is False
     assert data["KeepAlive"] is False
     assert data["Disabled"] is True
@@ -30,7 +31,8 @@ def test_enabled_plist_is_only_disabled_false_and_still_dormant():
     data = plistlib.loads(rendered)
 
     assert data["Label"] == "com.etzchaim.loop-once"
-    assert data["ProgramArguments"] == ["etzchaim", "loop", "--once", "--json"]
+    assert Path(data["ProgramArguments"][0]).is_absolute()
+    assert data["ProgramArguments"][1:] == ["loop", "--once", "--json"]
     assert data["RunAtLoad"] is False
     assert data["KeepAlive"] is False
     assert data["Disabled"] is False
@@ -83,6 +85,15 @@ def test_validate_rejects_unknown_launchd_keys():
     assert "StartOnMount is not allowed in Phase 3C" in launchagent.validate_launchagent_payload(payload)
 
 
+def test_validate_rejects_relative_program_executable():
+    from etzchaim.supervision import launchagent
+
+    payload = launchagent.launchagent_payload(executable="/usr/bin/true")
+    payload["ProgramArguments"] = ["etzchaim", "loop", "--once", "--json"]
+
+    assert "ProgramArguments[0] must be an absolute executable path" in launchagent.validate_launchagent_payload(payload)
+
+
 def test_write_launchagent_plist_requires_explicit_home(monkeypatch, tmp_path):
     from etzchaim.supervision import launchagent
 
@@ -111,7 +122,8 @@ def test_write_launchagent_plist_writes_only_expected_tmp_home_path(monkeypatch,
     assert written_path.exists()
     data = launchagent.parse_launchagent_plist(written_path)
     assert data["Disabled"] is True
-    assert data["ProgramArguments"] == ["etzchaim", "loop", "--once", "--json"]
+    assert Path(data["ProgramArguments"][0]).is_absolute()
+    assert data["ProgramArguments"][1:] == ["loop", "--once", "--json"]
     assert sorted(
         str(path.relative_to(tmp_path))
         for path in tmp_path.rglob("*")

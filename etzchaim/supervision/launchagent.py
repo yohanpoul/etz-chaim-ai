@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+import os
 import plistlib
+import shutil
 from collections.abc import Mapping
 from pathlib import Path
 
 LABEL = "com.etzchaim.loop-once"
-PROGRAM_ARGUMENTS = ["etzchaim", "loop", "--once", "--json"]
+LOOP_ARGUMENTS = ["loop", "--once", "--json"]
+PROGRAM_ARGUMENTS = ["etzchaim", *LOOP_ARGUMENTS]
 PHASE = "3C"
 REFUSAL_MESSAGE = "Real plist write requires --allow-real-write and exact --ack."
 FORBIDDEN_TRIGGER_KEYS = (
@@ -34,16 +37,29 @@ def default_launchagent_path(home: Path | None = None) -> Path:
     return root / "Library" / "LaunchAgents" / f"{LABEL}.plist"
 
 
+def resolve_executable(executable: str | None = None) -> str:
+    """Resolve the etzchaim console script to an absolute launchd-safe path."""
+
+    candidate = executable or "etzchaim"
+    expanded = Path(candidate).expanduser()
+    if expanded.is_absolute():
+        return str(expanded)
+    resolved = shutil.which(candidate)
+    if not resolved:
+        raise FileNotFoundError(f"Could not resolve executable on PATH: {candidate}")
+    return resolved
+
+
 def launchagent_payload(
     *,
-    executable: str = "etzchaim",
+    executable: str | None = None,
     disabled: bool = True,
 ) -> dict[str, object]:
     """Return a dormant LaunchAgent payload for one bounded loop cycle."""
 
     return {
         "Label": LABEL,
-        "ProgramArguments": [executable, *PROGRAM_ARGUMENTS[1:]],
+        "ProgramArguments": [resolve_executable(executable), *LOOP_ARGUMENTS],
         "RunAtLoad": False,
         "KeepAlive": False,
         "Disabled": disabled,
@@ -52,7 +68,7 @@ def launchagent_payload(
 
 def render_launchagent_plist(
     *,
-    executable: str = "etzchaim",
+    executable: str | None = None,
     disabled: bool = True,
 ) -> bytes:
     """Render the dormant LaunchAgent as XML plist bytes."""
@@ -74,14 +90,29 @@ def parse_launchagent_plist(path: Path) -> dict[str, object]:
     return payload
 
 
+def _validate_program_arguments(value: object) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(value, list) or len(value) != 1 + len(LOOP_ARGUMENTS):
+        return ["ProgramArguments must be absolute etzchaim loop --once --json"]
+    executable = value[0]
+    if not isinstance(executable, str) or not Path(executable).is_absolute():
+        errors.append("ProgramArguments[0] must be an absolute executable path")
+    elif not Path(executable).exists():
+        errors.append("ProgramArguments[0] executable must exist")
+    elif not os.access(executable, os.X_OK):
+        errors.append("ProgramArguments[0] executable must be executable")
+    if value[1:] != LOOP_ARGUMENTS:
+        errors.append("ProgramArguments must end with loop --once --json")
+    return errors
+
+
 def validate_launchagent_payload(payload: Mapping[str, object]) -> list[str]:
     """Return validation errors for unsafe or unexpected LaunchAgent payloads."""
 
     errors: list[str] = []
     if payload.get("Label") != LABEL:
         errors.append(f"Label must be {LABEL}")
-    if payload.get("ProgramArguments") != PROGRAM_ARGUMENTS:
-        errors.append("ProgramArguments must be etzchaim loop --once --json")
+    errors.extend(_validate_program_arguments(payload.get("ProgramArguments")))
     if payload.get("RunAtLoad") is not False:
         errors.append("RunAtLoad must be false")
     if payload.get("KeepAlive") is not False:
