@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Mapping
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -76,6 +77,7 @@ def build_run_payload(
     dry_run: bool,
     repo_root: Path | str | None = None,
     now: datetime | None = None,
+    faculty_adapters: Mapping[str, object] | None = None,
 ) -> dict:
     current = now or utc_now()
     root = Path(repo_root or Path.cwd())
@@ -83,7 +85,11 @@ def build_run_payload(
     top_issue = choose_top_issue(events)
     actions = synthesize_actions(events)
     top_action = _action_for_event(top_issue, actions)
-    faculty_evaluation = evaluate_faculties_for_event(top_issue, top_action)
+    faculty_evaluation = evaluate_faculties_for_event(
+        top_issue,
+        top_action,
+        adapters=faculty_adapters,
+    )
 
     payload = {
         "status": "dry-run" if dry_run else "ready",
@@ -213,9 +219,15 @@ def run_improve_once(
     dry_run: bool,
     repo_root: Path | str | None = None,
     now: datetime | None = None,
+    faculty_adapters: Mapping[str, object] | None = None,
 ) -> dict:
     current = now or utc_now()
-    payload = build_run_payload(dry_run=dry_run, repo_root=repo_root, now=current)
+    payload = build_run_payload(
+        dry_run=dry_run,
+        repo_root=repo_root,
+        now=current,
+        faculty_adapters=faculty_adapters,
+    )
     if dry_run:
         return payload
 

@@ -58,13 +58,9 @@ def test_improve_dry_run_json(monkeypatch, tmp_path):
     assert data["events"][0]["verified"] is False
     assert data["events"][0]["verification_result"]["passed"] is False
     assert data["faculty_evaluation"]["failure_insight"]["status"] == "unavailable"
-    assert data["faculty_evaluation"]["guardian"]["verdict"] in {
-        "proceed",
-        "caution",
-        "veto",
-        "unavailable",
-    }
+    assert data["faculty_evaluation"]["guardian"]["verdict"] == "unavailable"
     assert data["faculty_evaluation"]["intent"]["status"] == "no_active_intent"
+    assert all(action["applies_patch"] is False for action in data["proposed_actions"])
     assert data["would_write"]["ledger"].startswith(str(tmp_path))
     assert not (tmp_path / ".etz-chaim").exists()
 
