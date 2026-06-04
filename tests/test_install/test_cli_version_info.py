@@ -51,5 +51,5 @@ def test_help_shows_all_commands():
     result = runner.invoke(app, ["--help"])
     assert result.exit_code == 0
     for cmd in ["version", "info", "onboard", "start", "stop", "status",
-                "logs", "doctor", "demo", "update"]:
+                "logs", "doctor", "demo", "update", "loop"]:
         assert cmd in result.stdout, f"Command '{cmd}' not listed in --help"
