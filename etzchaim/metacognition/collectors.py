@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 from collections.abc import Callable, Iterable
 from pathlib import Path
@@ -201,6 +202,58 @@ def _summarize_pytest_output(result: dict) -> list[str]:
     return (interesting or lines)[:8]
 
 
+MISSING_TIKKUNIM_RE = re.compile(
+    r"Tikkunim missing \(other than expected T11\): (?P<missing>\[[^\]]+\])"
+)
+NON_BIDIRECTIONAL_RE = re.compile(
+    r"Non-bidirectional: (?P<source>\S+)(?:→|->)(?P<target>\S+) "
+    r"but not (?P=target)(?:→|->)(?P=source)"
+)
+
+
+def _diagnose_pytest_corpus_gate(result: dict) -> tuple[str, str, list[str]] | None:
+    output = "\n".join(
+        part for part in (result.get("stdout", ""), result.get("stderr", "")) if part
+    )
+    missing_match = MISSING_TIKKUNIM_RE.search(output)
+    non_bidir_matches = list(NON_BIDIRECTIONAL_RE.finditer(output))
+    non_bidir_match = next(
+        (
+            match
+            for match in non_bidir_matches
+            if "{" not in match.group("source")
+            and "}" not in match.group("source")
+            and "{" not in match.group("target")
+            and "}" not in match.group("target")
+        ),
+        None,
+    )
+    if not missing_match and not non_bidir_match:
+        return None
+
+    evidence = ["diagnostic_category=corpus-gate"]
+    suffix_parts: list[str] = []
+    title_parts: list[str] = []
+    if missing_match:
+        evidence.append(
+            f"missing_tikkunim_unexpected={missing_match.group('missing')}"
+        )
+        suffix_parts.append("missing-tikkunim")
+        title_parts.append("missing tikkunim")
+    if non_bidir_match:
+        source = non_bidir_match.group("source")
+        target = non_bidir_match.group("target")
+        evidence.append(
+            f"non_bidirectional_first={source}→{target} missing reciprocal"
+        )
+        suffix_parts.append("non-bidir-links")
+        title_parts.append("non-bidirectional links")
+
+    event_id = f"pytest-corpus-gate-{'-'.join(suffix_parts)}"
+    title = f"Corpus gate pytest failed: {' and '.join(title_parts)}"
+    return event_id, title, evidence
+
+
 def collect_pytest_events(
     repo_root: Path | str,
     paths: Iterable[str] = DEFAULT_PYTEST_PATHS,
@@ -212,17 +265,32 @@ def collect_pytest_events(
     result = runner(command, root, 30)
     if result.get("passed") is True:
         return []
+    diagnostic = _diagnose_pytest_corpus_gate(result)
+    if diagnostic:
+        event_id, title, diagnostic_evidence = diagnostic
+        description = (
+            "The bounded pytest subset reached a source-backed corpus gate: "
+            "the Idra corpus is incomplete or has asymmetric `see_also` links. "
+            "P2A observes this as a verification signal and does not repair "
+            "corpus content automatically."
+        )
+        evidence = [*diagnostic_evidence, *_summarize_pytest_output(result)]
+    else:
+        event_id = "pytest-bounded-subset-failed"
+        title = "Bounded pytest observer found failures"
+        description = (
+            "A bounded read-only pytest subset failed. P2A observes this as a "
+            "verification signal and does not repair corpus or services."
+        )
+        evidence = _summarize_pytest_output(result)
     return [
         MetacognitionEvent(
-            id="pytest-bounded-subset-failed",
+            id=event_id,
             source="pytest",
             severity="error" if result.get("exit_code") not in (None, 0) else "warning",
-            title="Bounded pytest observer found failures",
-            description=(
-                "A bounded read-only pytest subset failed. P2A observes this as a "
-                "verification signal and does not repair corpus or services."
-            ),
-            evidence=_summarize_pytest_output(result),
+            title=title,
+            description=description,
+            evidence=evidence,
             priority=95,
             verification_command=str(result.get("command") or " ".join(command)),
             verified=False,

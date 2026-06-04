@@ -137,6 +137,37 @@ def test_synthesize_maps_sources_to_action_types():
     assert by_event["python-command-missing"].type == "rule"
 
 
+def test_corpus_gate_pytest_action_is_concrete_and_non_applying():
+    from etzchaim.metacognition.actions import propose_action
+    from etzchaim.metacognition.events import MetacognitionEvent
+
+    event = MetacognitionEvent(
+        id="pytest-corpus-gate-missing-tikkunim-non-bidir-links",
+        source="pytest",
+        severity="error",
+        title="Corpus gate pytest failed: missing tikkunim and non-bidirectional links",
+        description="Bounded pytest found source-backed corpus debt.",
+        evidence=[
+            "diagnostic_category=corpus-gate",
+            "missing_tikkunim_unexpected=[1, 2, 3, 4, 5, 6, 9, 10, 12]",
+            "non_bidirectional_first=Z-IR-T08-001→EC-H3S2-T08-001 missing reciprocal",
+        ],
+        priority=95,
+        verification_command=".venv/bin/python -m pytest sifrei_yesod/tests/test_idra_corpus_fidelity.py -q",
+        verified=False,
+    )
+
+    action = propose_action(event)
+
+    assert action.id == "test-pytest-corpus-gate-missing-tikkunim-non-bidir-links"
+    assert action.type == "test"
+    assert action.applies_patch is False
+    assert "corpus-gate" in action.title.lower()
+    assert "missing tikkunim" in action.description
+    assert "non-bidirectional" in action.description
+    assert "do not repair the corpus automatically" in action.description
+
+
 def test_actions_never_apply_patch():
     from etzchaim.metacognition.actions import synthesize_actions
     from etzchaim.metacognition.events import MetacognitionEvent, ProposedAction

@@ -38,6 +38,21 @@ def propose_action(event: MetacognitionEvent) -> ProposedAction:
             verification_command=event.verification_command,
         )
 
+    if event.id.startswith("pytest-corpus-gate-"):
+        return ProposedAction(
+            id=f"test-{event.id}",
+            type="test",
+            title="Triage corpus-gate pytest failure",
+            description=(
+                "Use the concrete corpus-gate diagnostic to plan source-backed "
+                "missing tikkunim work and non-bidirectional `see_also` link "
+                "repairs; do not repair the corpus automatically in the safe "
+                "metacognition loop."
+            ),
+            event_ids=[event.id],
+            verification_command=event.verification_command,
+        )
+
     if event.source == "pytest":
         return ProposedAction(
             id=f"test-{event.id}",

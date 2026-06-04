@@ -134,7 +134,7 @@ def test_pytest_failures_become_events(tmp_path):
             "command": ".venv/bin/python -m pytest sifrei_yesod/tests/test_idra_corpus_fidelity.py::test_s1_each_tikkun_has_zohar_and_vital -q",
             "exit_code": 1,
             "passed": False,
-            "stdout": "FAILED test_s1_each_tikkun_has_zohar_and_vital\nAssertionError: missing tikkunim",
+            "stdout": "FAILED test_s1_each_tikkun_has_zohar_and_vital\nAssertionError: unrelated failure",
             "stderr": "",
             "duration_seconds": 0.42,
             "timed_out": False,
@@ -162,4 +162,40 @@ def test_pytest_failures_become_events(tmp_path):
         "pytest",
         "sifrei_yesod/tests/test_idra_corpus_fidelity.py::test_s1_each_tikkun_has_zohar_and_vital",
         "-q",
+    ]
+
+
+def test_idra_corpus_gate_pytest_output_becomes_diagnostic_event(tmp_path):
+    from etzchaim.metacognition.collectors import collect_pytest_events
+
+    def fake_runner(command, cwd, timeout_seconds):
+        return {
+            "command": " ".join(command),
+            "exit_code": 1,
+            "passed": False,
+            "stdout": """
+FAILED sifrei_yesod/tests/test_idra_corpus_fidelity.py::test_s1_each_tikkun_has_zohar_and_vital
+AssertionError: Tikkunim missing (other than expected T11): [1, 2, 3, 4, 5, 6, 9, 10, 12]
+assert aid in id_to_seealso[t], f"Non-bidirectional: {aid}→{t} but not {t}→{aid}"
+FAILED sifrei_yesod/tests/test_idra_corpus_fidelity.py::test_s3_see_also_bidirectional
+AssertionError: Non-bidirectional: Z-IR-T08-001→EC-H3S2-T08-001 but not EC-H3S2-T08-001→Z-IR-T08-001
+""",
+            "stderr": "",
+            "duration_seconds": 0.42,
+            "timed_out": False,
+        }
+
+    events = collect_pytest_events(tmp_path, runner=fake_runner)
+
+    assert len(events) == 1
+    event = events[0]
+    assert event.id == "pytest-corpus-gate-missing-tikkunim-non-bidir-links"
+    assert event.source == "pytest"
+    assert event.title == "Corpus gate pytest failed: missing tikkunim and non-bidirectional links"
+    assert event.verified is False
+    assert event.verification_result["exit_code"] == 1
+    assert event.evidence[:3] == [
+        "diagnostic_category=corpus-gate",
+        "missing_tikkunim_unexpected=[1, 2, 3, 4, 5, 6, 9, 10, 12]",
+        "non_bidirectional_first=Z-IR-T08-001→EC-H3S2-T08-001 missing reciprocal",
     ]
