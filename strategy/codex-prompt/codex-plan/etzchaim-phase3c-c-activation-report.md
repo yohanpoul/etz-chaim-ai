@@ -166,6 +166,52 @@ Validation after WorkingDirectory fix:
 - Real plist exists but is disabled from rollback.
 - No push or PR.
 
+## Final Phase 3C-C activation result
+
+Final retry after the absolute executable, guarded enable, and WorkingDirectory fixes:
+
+- HEAD used for final retry: `b9d4c0e`.
+- Real plist write enabled: exit `0`, `plutil -lint` OK.
+- Final plist payload:
+  - `ProgramArguments[0] = /Users/fffff/Desktop/developper/claude/etz-chaim-ai/.venv/bin/etzchaim`
+  - `WorkingDirectory = /Users/fffff/Desktop/developper/claude/etz-chaim-ai`
+  - `RunAtLoad=false`
+  - `KeepAlive=false`
+  - `Disabled=false`
+- Guarded `launchctl enable`: exit `0`; disabled override became enabled.
+- Guarded `launchctl bootstrap`: exit `0`; service registered.
+- Guarded `launchctl kickstart -k`: exit `0`.
+- Status after 12 seconds:
+  - `runs = 1`
+  - `last exit code = 0`
+  - `state = not running`
+  - working directory printed by launchd as the repo root.
+- Heartbeat appended to `~/.etz-chaim/state/loop_heartbeat.jsonl`:
+
+```json
+{"action_count": 7, "applies_patch": false, "cycle_id": "loop-20260604T193534Z", "guardian_verdict": "unavailable", "improve_status": "written", "status": "written", "timestamp": "2026-06-04T19:35:34.610489Z", "top_issue_id": "known-p0-psql-helper-pollution"}
+```
+
+Latest state artifacts:
+
+- `~/.etz-chaim/state/last_loop_run.json`
+- `~/.etz-chaim/state/last_improve_run.json`
+- `~/.etz-chaim/runs/improve-20260604T193534Z.md`
+
+The previous `posix_spawn(etzchaim)` failure and the subsequent `.venv/bin/python`
+relative-cwd failure are both resolved for this controlled one-shot LaunchAgent run.
+The loop now reaches the actual project health queue; current top issue is the known
+P0 psql helper pollution / local Postgres environment issue, not LaunchAgent activation.
+
+## Current operational state
+
+- LaunchAgent label: `com.etzchaim.loop-once`
+- LaunchAgent is bootstrapped and enabled.
+- It is dormant after the one-shot run (`RunAtLoad=false`, `KeepAlive=false`, no interval/path trigger).
+- It can be kicked manually through the guarded Phase 3C CLI.
+
 ## Next action
 
-Commit the absolute-executable fix locally, then rerun Phase 3C-C real activation with the corrected plist.
+Proceed to the next operational hardening step: address the loop's top issue
+`known-p0-psql-helper-pollution` and/or the local Postgres/Docker observer failures,
+without changing external services unless explicitly authorized.
