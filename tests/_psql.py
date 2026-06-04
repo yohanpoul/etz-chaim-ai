@@ -12,12 +12,19 @@ from __future__ import annotations
 import os
 import shutil
 
-PSQL_BIN: str | None = os.environ.get("ETZ_PSQL_BIN") or shutil.which("psql")
+def resolve_psql_bin() -> str | None:
+    """Resolve psql from the current environment."""
+    return os.environ.get("ETZ_PSQL_BIN") or shutil.which("psql")
+
+
+PSQL_BIN: str | None = resolve_psql_bin()
 """Absolute path to psql, or None if not found."""
 
 
 def require_psql() -> str:
-    """Return PSQL_BIN or raise RuntimeError with install hint."""
+    """Return the current psql path or raise RuntimeError with install hint."""
+    global PSQL_BIN
+    PSQL_BIN = resolve_psql_bin()
     if PSQL_BIN is None:
         raise RuntimeError(
             "psql non trouvé. Installe postgresql-client "

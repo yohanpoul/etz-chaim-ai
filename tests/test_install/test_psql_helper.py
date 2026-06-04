@@ -50,3 +50,20 @@ def test_require_psql_returns_path_when_found(monkeypatch):
     import tests._psql
     importlib.reload(tests._psql)
     assert tests._psql.require_psql() == "/my/psql"
+
+
+def test_require_psql_re_resolves_after_env_override_removed(monkeypatch):
+    """require_psql() must not keep a stale ETZ_PSQL_BIN from a prior test."""
+    monkeypatch.setenv("ETZ_PSQL_BIN", "/my/psql")
+    import tests._psql
+    importlib.reload(tests._psql)
+    assert tests._psql.require_psql() == "/my/psql"
+
+    monkeypatch.delenv("ETZ_PSQL_BIN", raising=False)
+    monkeypatch.setattr(
+        tests._psql.shutil,
+        "which",
+        lambda command: "/real/psql" if command == "psql" else None,
+    )
+
+    assert tests._psql.require_psql() == "/real/psql"

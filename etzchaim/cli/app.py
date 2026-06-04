@@ -47,6 +47,7 @@ def _root(
 from etzchaim.cli.commands import claude_bridge as _claude_bridge_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import demo as _demo_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import doctor as _doctor_cmd  # noqa: E402, F401
+from etzchaim.cli.commands import improve as _improve_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import info as _info_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import logs as _logs_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import onboard as _onboard_cmd  # noqa: E402, F401
