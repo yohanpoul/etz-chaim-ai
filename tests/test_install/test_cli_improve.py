@@ -39,6 +39,7 @@ def test_improve_dry_run_json(monkeypatch, tmp_path):
     from etzchaim.metacognition import report
 
     monkeypatch.setenv("HOME", str(tmp_path))
+    monkeypatch.delenv("ETZCHAIM_STATE_DIR", raising=False)
     monkeypatch.setattr(report, "collect_events", lambda repo_root: [_sample_event()])
     monkeypatch.setattr(
         report,
@@ -56,6 +57,14 @@ def test_improve_dry_run_json(monkeypatch, tmp_path):
     assert data["events"][0]["id"] == "known-p0-psql-helper-pollution"
     assert data["events"][0]["verified"] is False
     assert data["events"][0]["verification_result"]["passed"] is False
+    assert data["faculty_evaluation"]["failure_insight"]["status"] == "unavailable"
+    assert data["faculty_evaluation"]["guardian"]["verdict"] in {
+        "proceed",
+        "caution",
+        "veto",
+        "unavailable",
+    }
+    assert data["faculty_evaluation"]["intent"]["status"] == "no_active_intent"
     assert data["would_write"]["ledger"].startswith(str(tmp_path))
     assert not (tmp_path / ".etz-chaim").exists()
 
@@ -84,6 +93,17 @@ def test_improve_once_json_writes_only_under_temp_home(monkeypatch, tmp_path):
     assert report_path.startswith(str(tmp_path))
     assert state_path.startswith(str(tmp_path))
     assert ledger_path.startswith(str(tmp_path))
+    assert data["faculty_evaluation"]["failure_insight"]["source"] in {
+        "stub",
+        "failuretoinsight.guide_next_hypothesis",
+        "failuretoinsight.analyze_failure",
+    }
+    assert data["faculty_evaluation"]["guardian"]["verdict"] in {
+        "proceed",
+        "caution",
+        "veto",
+        "unavailable",
+    }
     assert (tmp_path / ".etz-chaim" / "runs" / "improve-20260604T120000Z.md").exists()
     assert (tmp_path / ".etz-chaim" / "state" / "last_improve_run.json").exists()
     assert (tmp_path / ".etz-chaim" / "state" / "improve_ledger.jsonl").exists()

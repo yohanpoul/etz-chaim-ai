@@ -35,6 +35,14 @@ def test_dry_run_returns_would_write_without_creating_state(monkeypatch, tmp_pat
 
     assert result["status"] == "dry-run"
     assert result["dry_run"] is True
+    assert result["faculty_evaluation"]["failure_insight"]["status"] == "unavailable"
+    assert result["faculty_evaluation"]["guardian"]["verdict"] in {
+        "proceed",
+        "caution",
+        "veto",
+        "unavailable",
+    }
+    assert result["faculty_evaluation"]["intent"]["status"] == "no_active_intent"
     assert result["would_write"]["report"].endswith("improve-20260604T120000Z.md")
     assert "written" not in result
     assert not (tmp_path / ".etz-chaim").exists()
@@ -61,8 +69,17 @@ def test_once_writes_report_and_state_under_temp_home(monkeypatch, tmp_path):
     assert result["written"]["state"] == str(state_path)
     assert report_path.exists()
     assert state_path.exists()
-    assert "Known /my/psql test helper pollution" in report_path.read_text(encoding="utf-8")
-    assert json.loads(state_path.read_text(encoding="utf-8"))["top_issue"]["id"] == (
+    rendered_report = report_path.read_text(encoding="utf-8")
+    state = json.loads(state_path.read_text(encoding="utf-8"))
+    assert "Known /my/psql test helper pollution" in rendered_report
+    assert "## Faculty Bridge" in rendered_report
+    assert state["faculty_evaluation"]["guardian"]["verdict"] in {
+        "proceed",
+        "caution",
+        "veto",
+        "unavailable",
+    }
+    assert state["top_issue"]["id"] == (
         "known-p0-psql-helper-pollution"
     )
 
@@ -94,7 +111,7 @@ def test_ledger_appends_one_line_per_run(monkeypatch, tmp_path):
     assert entries[0]["action_id"] == "patch-known-p0-psql-helper-pollution"
     assert entries[0]["action_type"] == "patch"
     assert entries[0]["applies_patch"] is False
-    assert entries[0]["guardian_verdict"] == "not_evaluated_p2b"
+    assert entries[0]["guardian_verdict"] in {"proceed", "caution", "veto", "unavailable"}
     assert entries[1]["timestamp"] == "2026-06-04T12:01:00Z"
 
 

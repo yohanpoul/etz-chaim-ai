@@ -9,6 +9,7 @@ from pathlib import Path
 from etzchaim._paths import state_dir
 from etzchaim.metacognition.actions import choose_top_issue, synthesize_actions
 from etzchaim.metacognition.collectors import collect_events
+from etzchaim.metacognition.faculties import evaluate_faculties_for_event
 
 
 def utc_now() -> datetime:
@@ -42,9 +43,22 @@ def _action_for_top_issue(payload: dict) -> dict | None:
     return actions[0]
 
 
+def _action_for_event(event: object | None, actions: list) -> object | None:
+    if not actions:
+        return None
+    if event is None:
+        return actions[0]
+    event_id = getattr(event, "id", None)
+    for action in actions:
+        if event_id in getattr(action, "event_ids", []):
+            return action
+    return actions[0]
+
+
 def _ledger_entry(payload: dict) -> dict:
     top_issue = payload.get("top_issue") or {}
     action = _action_for_top_issue(payload) or {}
+    guardian = payload.get("faculty_evaluation", {}).get("guardian", {})
     return {
         "timestamp": payload["generated_at"],
         "top_issue_id": top_issue.get("id"),
@@ -53,7 +67,7 @@ def _ledger_entry(payload: dict) -> dict:
         "applies_patch": action.get("applies_patch", False),
         "verified": top_issue.get("verified"),
         "verification_result": top_issue.get("verification_result"),
-        "guardian_verdict": "not_evaluated_p2b",
+        "guardian_verdict": guardian.get("verdict", "unavailable"),
     }
 
 
@@ -68,6 +82,8 @@ def build_run_payload(
     events = collect_events(root)
     top_issue = choose_top_issue(events)
     actions = synthesize_actions(events)
+    top_action = _action_for_event(top_issue, actions)
+    faculty_evaluation = evaluate_faculties_for_event(top_issue, top_action)
 
     payload = {
         "status": "dry-run" if dry_run else "ready",
@@ -76,6 +92,7 @@ def build_run_payload(
         "events": [event.to_dict() for event in events],
         "top_issue": top_issue.to_dict() if top_issue else None,
         "proposed_actions": [action.to_dict() for action in actions],
+        "faculty_evaluation": faculty_evaluation,
     }
     if dry_run:
         payload["would_write"] = _planned_paths(current)
@@ -157,6 +174,36 @@ def render_markdown(payload: dict) -> str:
         )
     if not payload["proposed_actions"]:
         lines.extend(["No action proposed.", ""])
+
+    faculty_evaluation = payload.get("faculty_evaluation", {})
+    failure_insight = faculty_evaluation.get("failure_insight", {})
+    guardian = faculty_evaluation.get("guardian", {})
+    intent = faculty_evaluation.get("intent", {})
+    lines.extend(
+        [
+            "## Faculty Bridge",
+            "",
+            "### FailureToInsight",
+            "",
+            f"- Status: `{failure_insight.get('status')}`",
+            f"- Source: `{failure_insight.get('source')}`",
+            f"- Hypothesis: {failure_insight.get('hypothesis')}",
+            "",
+            "### Guardian",
+            "",
+            f"- Verdict: `{guardian.get('verdict')}`",
+            f"- Confidence: `{guardian.get('confidence')}`",
+            f"- Reason: {guardian.get('reason')}",
+            f"- Active biases: `{', '.join(guardian.get('active_biases') or [])}`",
+            "",
+            "### IntentKeeper",
+            "",
+            f"- Status: `{intent.get('status')}`",
+            f"- Intent ID: `{intent.get('intent_id')}`",
+            f"- Summary: {intent.get('summary')}",
+            "",
+        ]
+    )
 
     return "\n".join(lines).rstrip() + "\n"
 
