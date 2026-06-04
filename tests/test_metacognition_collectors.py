@@ -36,16 +36,75 @@ def test_missing_python_command_becomes_rule_event(monkeypatch):
     assert any(event.id == "python-command-missing" for event in events)
 
 
-def test_p0_psql_known_issue_is_collected_when_report_exists(tmp_path):
+def test_p0_psql_known_issue_is_collected_when_current_reproduction_still_fails(tmp_path):
     from etzchaim.metacognition.collectors import collect_known_p0_events
 
     report = tmp_path / "strategy" / "codex-prompt" / "codex-plan" / "etzchaim-p0-preflight.md"
     report.parent.mkdir(parents=True)
     report.write_text("The full test reproduced /my/psql inter-test pollution.", encoding="utf-8")
 
-    events = collect_known_p0_events(tmp_path)
+    def fake_runner(command, cwd, timeout_seconds):
+        return {
+            "command": " ".join(command),
+            "exit_code": 1,
+            "passed": False,
+            "stdout": "subprocess tried /my/psql after helper pollution",
+            "stderr": "",
+            "duration_seconds": 0.1,
+            "timed_out": False,
+        }
+
+    events = collect_known_p0_events(tmp_path, runner=fake_runner)
 
     assert [event.id for event in events] == ["known-p0-psql-helper-pollution"]
+    assert events[0].verified is False
+    assert events[0].verification_result["passed"] is False
+
+
+def test_p0_psql_known_issue_is_suppressed_when_current_reproduction_passes(tmp_path):
+    from etzchaim.metacognition.collectors import collect_known_p0_events
+
+    report = tmp_path / "strategy" / "codex-prompt" / "codex-plan" / "etzchaim-p0-preflight.md"
+    report.parent.mkdir(parents=True)
+    report.write_text("The full test reproduced /my/psql inter-test pollution.", encoding="utf-8")
+
+    def fake_runner(command, cwd, timeout_seconds):
+        return {
+            "command": " ".join(command),
+            "exit_code": 0,
+            "passed": True,
+            "stdout": "17 passed",
+            "stderr": "",
+            "duration_seconds": 0.16,
+            "timed_out": False,
+        }
+
+    events = collect_known_p0_events(tmp_path, runner=fake_runner)
+
+    assert events == []
+
+
+def test_p0_psql_known_issue_is_suppressed_when_current_failure_is_different(tmp_path):
+    from etzchaim.metacognition.collectors import collect_known_p0_events
+
+    report = tmp_path / "strategy" / "codex-prompt" / "codex-plan" / "etzchaim-p0-preflight.md"
+    report.parent.mkdir(parents=True)
+    report.write_text("The full test reproduced /my/psql inter-test pollution.", encoding="utf-8")
+
+    def fake_runner(command, cwd, timeout_seconds):
+        return {
+            "command": " ".join(command),
+            "exit_code": 1,
+            "passed": False,
+            "stdout": "RuntimeError: psql non trouvé",
+            "stderr": "",
+            "duration_seconds": 0.1,
+            "timed_out": False,
+        }
+
+    events = collect_known_p0_events(tmp_path, runner=fake_runner)
+
+    assert events == []
 
 
 def test_collector_exception_becomes_event(monkeypatch, tmp_path):

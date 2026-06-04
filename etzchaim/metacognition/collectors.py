@@ -28,6 +28,14 @@ DEFAULT_PYTEST_PATHS: tuple[str, ...] = (
     "sifrei_yesod/tests/test_idra_corpus_fidelity.py::test_s1_each_tikkun_has_zohar_and_vital",
     "sifrei_yesod/tests/test_idra_corpus_fidelity.py::test_s3_see_also_bidirectional",
 )
+KNOWN_P0_PSQL_COMMAND: tuple[str, ...] = (
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/test_install/test_psql_helper.py",
+    "sifrei_yesod/tests/test_folio_map.py",
+    "-q",
+)
 
 
 def _slug(value: str) -> str:
@@ -124,7 +132,10 @@ def collect_python_events() -> list[MetacognitionEvent]:
     ]
 
 
-def collect_known_p0_events(repo_root: Path | str) -> list[MetacognitionEvent]:
+def collect_known_p0_events(
+    repo_root: Path | str,
+    runner: Callable[[list[str], Path, int], dict] = run_verification,
+) -> list[MetacognitionEvent]:
     root = Path(repo_root)
     report_path = (
         root
@@ -141,6 +152,15 @@ def collect_known_p0_events(repo_root: Path | str) -> list[MetacognitionEvent]:
         return []
     if "/my/psql" not in text:
         return []
+
+    command = list(KNOWN_P0_PSQL_COMMAND)
+    result = runner(command, root, 30)
+    output = "\n".join(
+        part for part in (result.get("stdout", ""), result.get("stderr", "")) if part
+    )
+    if result.get("passed") is True or "/my/psql" not in output:
+        return []
+
     return [
         MetacognitionEvent(
             id="known-p0-psql-helper-pollution",
@@ -149,15 +169,16 @@ def collect_known_p0_events(repo_root: Path | str) -> list[MetacognitionEvent]:
             title="Known /my/psql test helper pollution",
             description=(
                 "P0 reproduced an inter-test pollution where the psql helper kept "
-                "`/my/psql` after a helper test."
+                "`/my/psql` after a helper test; the current reproduction still fails."
             ),
-            evidence=[f"{report_path}: contains /my/psql reproduction notes"],
+            evidence=[
+                f"{report_path}: contains /my/psql reproduction notes",
+                *_summarize_pytest_output(result),
+            ],
             priority=100,
-            verification_command=(
-                ".venv/bin/python -m pytest "
-                "tests/test_install/test_psql_helper.py "
-                "sifrei_yesod/tests/test_folio_map.py -q"
-            ),
+            verification_command=str(result.get("command") or " ".join(command)),
+            verified=False,
+            verification_result=result,
         )
     ]
 
