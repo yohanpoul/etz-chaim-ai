@@ -73,3 +73,34 @@ def test_verify_makes_pytest_environment_read_only(monkeypatch, tmp_path):
     assert result["passed"] is True
     assert seen["env"]["PYTHONDONTWRITEBYTECODE"] == "1"
     assert seen["env"]["PYTEST_ADDOPTS"] == "--strict-markers -p no:cacheprovider"
+
+
+def test_verify_sets_psql_override_for_launchd_pytest(monkeypatch, tmp_path):
+    from etzchaim.metacognition import verify
+
+    seen = {}
+
+    class Completed:
+        returncode = 0
+        stdout = ""
+        stderr = ""
+
+    def fake_run(command, **kwargs):
+        seen["env"] = kwargs["env"]
+        return Completed()
+
+    def fake_which(command, path=None):
+        if command == "psql" and path and "/opt/homebrew/bin" in path:
+            return "/opt/homebrew/bin/psql"
+        return None
+
+    monkeypatch.delenv("ETZ_PSQL_BIN", raising=False)
+    monkeypatch.setenv("PATH", "/bin:/usr/bin")
+    monkeypatch.setattr(verify.shutil, "which", fake_which)
+    monkeypatch.setattr(verify.subprocess, "run", fake_run)
+
+    result = verify.run_verification(["pytest", "tests/example.py", "-q"], cwd=tmp_path)
+
+    assert result["passed"] is True
+    assert seen["env"]["ETZ_PSQL_BIN"] == "/opt/homebrew/bin/psql"
+    assert "/opt/homebrew/bin" in seen["env"]["PATH"]

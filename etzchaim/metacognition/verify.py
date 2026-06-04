@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 import shlex
+import shutil
 import subprocess
 import time
 from collections.abc import Sequence
@@ -11,6 +12,14 @@ from pathlib import Path
 
 DEFAULT_TIMEOUT_SECONDS = 30
 MAX_CAPTURE_CHARS = 4000
+LAUNCHD_PATH_FALLBACKS = (
+    "/opt/homebrew/bin",
+    "/usr/local/bin",
+    "/usr/bin",
+    "/bin",
+    "/opt/homebrew/sbin",
+    "/usr/local/sbin",
+)
 
 
 def _as_command_list(command: Sequence[str] | str) -> list[str]:
@@ -40,13 +49,33 @@ def _command_string(command: Sequence[str]) -> str:
     return " ".join(command)
 
 
+def _path_with_launchd_fallbacks(env: dict[str, str]) -> str:
+    existing_parts = [part for part in env.get("PATH", "").split(os.pathsep) if part]
+    merged = [*existing_parts]
+    for part in LAUNCHD_PATH_FALLBACKS:
+        if part not in merged:
+            merged.append(part)
+    return os.pathsep.join(merged)
+
+
+def _ensure_psql_override(env: dict[str, str]) -> None:
+    if env.get("ETZ_PSQL_BIN"):
+        return
+    search_path = env["PATH"]
+    psql = shutil.which("psql", path=search_path)
+    if psql:
+        env["ETZ_PSQL_BIN"] = psql
+
+
 def _pytest_env() -> dict[str, str]:
     env = os.environ.copy()
+    env["PATH"] = _path_with_launchd_fallbacks(env)
     env["PYTHONDONTWRITEBYTECODE"] = "1"
     existing = env.get("PYTEST_ADDOPTS", "").strip()
     cache_flag = "-p no:cacheprovider"
     if cache_flag not in existing:
         env["PYTEST_ADDOPTS"] = f"{existing} {cache_flag}".strip()
+    _ensure_psql_override(env)
     return env
 
 
