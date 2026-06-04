@@ -1,5 +1,5 @@
 # Etz Chaim AI — Makefile
-.PHONY: help install test lint format docs docs-serve demo clean release check-model-leaks
+.PHONY: help install test lint format docs docs-serve demo doctor clean release check-model-leaks
 
 PY ?= python3
 VENV ?= .venv
@@ -18,6 +18,7 @@ help:
 	@echo "  docs           Build MkDocs site (requires 'docs' extras)"
 	@echo "  docs-serve     Serve docs locally on :8000"
 	@echo "  demo           Run MazalEngine runtime validation cycle"
+	@echo "  doctor         Run read-only CLI diagnostic checks"
 	@echo "  clean          Remove build artifacts"
 	@echo "  release        Verify release readiness (tests + lint + docs)"
 
@@ -50,6 +51,9 @@ docs-serve:
 
 demo:
 	$(PYBIN) scripts/sprint9_force_mazal_cycle.py
+
+doctor:
+	$(VENV)/bin/etzchaim doctor --json
 
 clean:
 	rm -rf build dist *.egg-info

@@ -36,6 +36,7 @@ def test_dry_run_returns_would_write_without_creating_state(monkeypatch, tmp_pat
     assert result["status"] == "dry-run"
     assert result["dry_run"] is True
     assert result["would_write"]["report"].endswith("improve-20260604T120000Z.md")
+    assert "written" not in result
     assert not (tmp_path / ".etz-chaim").exists()
 
 

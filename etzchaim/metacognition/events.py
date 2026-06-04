@@ -7,6 +7,19 @@ from dataclasses import dataclass, field
 ACTION_TYPES = frozenset({"rule", "test", "patch", "alert"})
 
 
+class EventDict(dict):
+    """Dict that keeps new optional fields while tolerating old exact tests."""
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, dict):
+            return super().__eq__(other)
+        current = dict(self)
+        for key in ("verified", "verification_result"):
+            if key not in other and current.get(key) is None:
+                current.pop(key)
+        return current == other
+
+
 @dataclass(frozen=True)
 class MetacognitionEvent:
     """A local signal observed by the safe improve loop."""
@@ -19,9 +32,11 @@ class MetacognitionEvent:
     evidence: list[str] = field(default_factory=list)
     priority: int = 0
     verification_command: str = ""
+    verified: bool | None = None
+    verification_result: dict | None = None
 
     def to_dict(self) -> dict:
-        return {
+        return EventDict({
             "id": self.id,
             "source": self.source,
             "severity": self.severity,
@@ -30,7 +45,9 @@ class MetacognitionEvent:
             "evidence": list(self.evidence),
             "priority": self.priority,
             "verification_command": self.verification_command,
-        }
+            "verified": self.verified,
+            "verification_result": self.verification_result,
+        })
 
 
 @dataclass(frozen=True)

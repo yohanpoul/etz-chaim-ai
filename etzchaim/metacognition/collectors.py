@@ -14,12 +14,20 @@ from etzchaim.cli.doctor.checks import (
     check_postgres_healthy,
 )
 from etzchaim.metacognition.events import MetacognitionEvent
+from etzchaim.metacognition.verify import run_verification
 
 DOCTOR_CHECKS: list[tuple[str, Callable[[], tuple[bool, str]]]] = [
     ("docker_running", check_docker_running),
     ("compose_services_up", check_compose_services_up),
     ("postgres_healthy", check_postgres_healthy),
 ]
+
+DEFAULT_PYTEST_PATHS: tuple[str, ...] = (
+    "tests/test_install/test_psql_helper.py",
+    "sifrei_yesod/tests/test_folio_map.py",
+    "sifrei_yesod/tests/test_idra_corpus_fidelity.py::test_s1_each_tikkun_has_zohar_and_vital",
+    "sifrei_yesod/tests/test_idra_corpus_fidelity.py::test_s3_see_also_bidirectional",
+)
 
 
 def _slug(value: str) -> str:
@@ -154,6 +162,54 @@ def collect_known_p0_events(repo_root: Path | str) -> list[MetacognitionEvent]:
     ]
 
 
+def _summarize_pytest_output(result: dict) -> list[str]:
+    output = "\n".join(
+        part for part in (result.get("stdout", ""), result.get("stderr", "")) if part
+    )
+    lines = [line.strip() for line in output.splitlines() if line.strip()]
+    if not lines:
+        return ["pytest exited without captured output"]
+    interesting = [
+        line
+        for line in lines
+        if line.startswith("FAILED ")
+        or " failed" in line
+        or " error" in line
+        or "AssertionError" in line
+    ]
+    return (interesting or lines)[:8]
+
+
+def collect_pytest_events(
+    repo_root: Path | str,
+    paths: Iterable[str] = DEFAULT_PYTEST_PATHS,
+    runner: Callable[[list[str], Path, int], dict] = run_verification,
+) -> list[MetacognitionEvent]:
+    root = Path(repo_root)
+    selected_paths = list(paths)
+    command = [".venv/bin/python", "-m", "pytest", *selected_paths, "-q"]
+    result = runner(command, root, 30)
+    if result.get("passed") is True:
+        return []
+    return [
+        MetacognitionEvent(
+            id="pytest-bounded-subset-failed",
+            source="pytest",
+            severity="error" if result.get("exit_code") not in (None, 0) else "warning",
+            title="Bounded pytest observer found failures",
+            description=(
+                "A bounded read-only pytest subset failed. P2A observes this as a "
+                "verification signal and does not repair corpus or services."
+            ),
+            evidence=_summarize_pytest_output(result),
+            priority=95,
+            verification_command=str(result.get("command") or " ".join(command)),
+            verified=False,
+            verification_result=result,
+        )
+    ]
+
+
 def _collect_known_p0(repo_root: Path) -> list[MetacognitionEvent]:
     return collect_known_p0_events(repo_root)
 
@@ -170,11 +226,16 @@ def _collect_python(_repo_root: Path) -> list[MetacognitionEvent]:
     return collect_python_events()
 
 
+def _collect_pytest(repo_root: Path) -> list[MetacognitionEvent]:
+    return collect_pytest_events(repo_root)
+
+
 COLLECTORS: list[Callable[[Path], Iterable[MetacognitionEvent]]] = [
     _collect_known_p0,
     _collect_doctor,
     _collect_status,
     _collect_python,
+    _collect_pytest,
 ]
 
 

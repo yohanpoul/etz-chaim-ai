@@ -73,6 +73,7 @@ def render_markdown(payload: dict) -> str:
                 f"- Priority: `{top_issue['priority']}`",
                 f"- Title: {top_issue['title']}",
                 f"- Verification: `{top_issue['verification_command']}`",
+                f"- Verified: `{top_issue.get('verified')}`",
                 "",
             ]
         )
@@ -91,10 +92,22 @@ def render_markdown(payload: dict) -> str:
                 f"- Title: {event['title']}",
                 f"- Description: {event['description']}",
                 f"- Verification: `{event['verification_command']}`",
+                f"- Verified: `{event.get('verified')}`",
                 "- Evidence:",
             ]
         )
         lines.extend(f"  - {item}" for item in event["evidence"])
+        verification_result = event.get("verification_result")
+        if verification_result:
+            lines.extend(
+                [
+                    "- Verification result:",
+                    f"  - Command: `{verification_result.get('command')}`",
+                    f"  - Exit code: `{verification_result.get('exit_code')}`",
+                    f"  - Passed: `{verification_result.get('passed')}`",
+                    f"  - Duration seconds: `{verification_result.get('duration_seconds')}`",
+                ]
+            )
         lines.append("")
 
     lines.extend(["## Proposed Actions", ""])

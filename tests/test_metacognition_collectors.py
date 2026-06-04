@@ -62,3 +62,45 @@ def test_collector_exception_becomes_event(monkeypatch, tmp_path):
     assert events[0].source == "collector"
     assert events[0].severity == "warning"
     assert "boom" in events[0].description
+
+
+def test_pytest_failures_become_events(tmp_path):
+    from etzchaim.metacognition.collectors import collect_pytest_events
+
+    calls = []
+
+    def fake_runner(command, cwd, timeout_seconds):
+        calls.append((command, cwd, timeout_seconds))
+        return {
+            "command": ".venv/bin/python -m pytest sifrei_yesod/tests/test_idra_corpus_fidelity.py::test_s1_each_tikkun_has_zohar_and_vital -q",
+            "exit_code": 1,
+            "passed": False,
+            "stdout": "FAILED test_s1_each_tikkun_has_zohar_and_vital\nAssertionError: missing tikkunim",
+            "stderr": "",
+            "duration_seconds": 0.42,
+            "timed_out": False,
+        }
+
+    events = collect_pytest_events(
+        tmp_path,
+        paths=["sifrei_yesod/tests/test_idra_corpus_fidelity.py::test_s1_each_tikkun_has_zohar_and_vital"],
+        runner=fake_runner,
+    )
+
+    assert len(events) == 1
+    event = events[0]
+    assert event.id == "pytest-bounded-subset-failed"
+    assert event.source == "pytest"
+    assert event.verified is False
+    assert event.verification_result["exit_code"] == 1
+    assert event.verification_command == (
+        ".venv/bin/python -m pytest "
+        "sifrei_yesod/tests/test_idra_corpus_fidelity.py::test_s1_each_tikkun_has_zohar_and_vital -q"
+    )
+    assert calls[0][0] == [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "sifrei_yesod/tests/test_idra_corpus_fidelity.py::test_s1_each_tikkun_has_zohar_and_vital",
+        "-q",
+    ]

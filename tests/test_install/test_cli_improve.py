@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from datetime import UTC, datetime
+from pathlib import Path
 
 from typer.testing import CliRunner
 
@@ -18,6 +19,8 @@ def _sample_event():
         evidence=["/my/psql appears in P0"],
         priority=100,
         verification_command=".venv/bin/python -m pytest tests/test_install/test_psql_helper.py sifrei_yesod/tests/test_folio_map.py -q",
+        verified=False,
+        verification_result={"command": "fake", "exit_code": 1, "passed": False},
     )
 
 
@@ -51,6 +54,8 @@ def test_improve_dry_run_json(monkeypatch, tmp_path):
     assert data["status"] == "dry-run"
     assert data["dry_run"] is True
     assert data["events"][0]["id"] == "known-p0-psql-helper-pollution"
+    assert data["events"][0]["verified"] is False
+    assert data["events"][0]["verification_result"]["passed"] is False
     assert not (tmp_path / ".etz-chaim").exists()
 
 
@@ -88,3 +93,11 @@ def test_improve_requires_once():
 
     assert result.exit_code != 0
     assert "Phase 1A only supports explicit --once" in result.stdout
+
+
+def test_make_doctor_target_exists():
+    makefile = Path("Makefile").read_text(encoding="utf-8")
+
+    assert ".PHONY:" in makefile
+    assert "doctor" in makefile
+    assert "$(VENV)/bin/etzchaim doctor --json" in makefile
