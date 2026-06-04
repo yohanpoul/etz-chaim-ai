@@ -33,7 +33,7 @@ def _resolve_slug(m: str) -> str:
     """
     try:
         return resolve_model(m)
-    except UnknownModelError:
+    except (UnknownModelError, KeyError):
         return m
 
 

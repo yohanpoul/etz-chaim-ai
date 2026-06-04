@@ -36,7 +36,7 @@ import os
 import shutil
 import subprocess
 import time
-from typing import Callable
+from collections.abc import Callable
 
 log = logging.getLogger(__name__)
 
@@ -47,11 +47,18 @@ def _identity(out: str) -> str:
 
 
 def strip_codex_banner(out: str) -> str:
-    """Drop the ASCII banner Codex CLI prints on non-TTY output."""
-    lines = out.splitlines()
-    # Banner lines start with '╭', '│', '╰' box-drawing characters.
-    payload = [ln for ln in lines if not ln.lstrip().startswith(("╭", "│", "╰"))]
-    return "\n".join(payload).strip()
+    """Extract the assistant payload from Codex CLI non-JSON stdout."""
+    normalized = out.replace("\r\n", "\n")
+    marker = "\ncodex\n"
+    if marker in normalized:
+        payload = normalized.rsplit(marker, 1)[1]
+        if "\ntokens used\n" in payload:
+            payload = payload.split("\ntokens used\n", 1)[0]
+        return payload.strip()
+    lines = normalized.splitlines()
+    # Older Codex builds printed box-drawing banner lines on non-TTY output.
+    payload_lines = [ln for ln in lines if not ln.lstrip().startswith(("╭", "│", "╰"))]
+    return "\n".join(payload_lines).strip()
 
 
 def strip_gh_copilot_wrapper(out: str) -> str:
@@ -79,11 +86,39 @@ def _resolve_binary(cli_name: str) -> str | None:
     """Return the absolute path of the CLI binary, or None if missing.
 
     `gh copilot` is a special case : the binary is `gh` and the extension
-    must be installed (`gh extension install github/gh-copilot`).
+    must be installed (`gh extension install github/gh-copilot`). For host
+    CLIs launched from sparse environments (notably macOS launchd), also check
+    common user install directories such as ~/.npm-global/bin.
     """
-    if cli_name == "gh copilot":
-        return shutil.which("gh")
-    return shutil.which(cli_name)
+    binary_name = "gh" if cli_name == "gh copilot" else cli_name
+    path = shutil.which(binary_name)
+    if path:
+        return path
+
+    # launchd and service managers often provide a tiny PATH. Codex/Gemini are
+    # commonly npm-installed into ~/.npm-global/bin, while Python/uv tools often
+    # land in ~/.local/bin. Keep this host-only fallback explicit and bounded.
+    if "/" not in binary_name and " " not in binary_name:
+        home = os.environ.get("HOME")
+        candidates = []
+        if home:
+            home_path = os.path.expanduser(home)
+            candidates.extend(
+                [
+                    os.path.join(home_path, ".npm-global", "bin", binary_name),
+                    os.path.join(home_path, ".local", "bin", binary_name),
+                ]
+            )
+        candidates.extend(
+            [
+                os.path.join("/opt/homebrew", "bin", binary_name),
+                os.path.join("/usr/local", "bin", binary_name),
+            ]
+        )
+        for candidate in candidates:
+            if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
+                return candidate
+    return None
 
 
 def check_cli_available(cli_name: str) -> tuple[bool, str]:

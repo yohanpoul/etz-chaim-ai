@@ -44,7 +44,7 @@ class TestActiveProfile:
         # Profiles listed in config.yaml (v0.2.1 expanded set).
         assert name in (
             "local_only", "anthropic_full", "openai_full", "gemini_full",
-            "bedrock_full", "hybrid", "claude_max",
+            "bedrock_full", "hybrid", "claude_max", "codex_cli",
             # Legacy names kept for back-compat reading of older config.yaml.
             "local_only",
         )
@@ -82,7 +82,7 @@ class TestProviderModel:
     def test_get_provider_returns_string(self):
         import olamot
         prov = olamot.get_provider("briah")
-        assert prov in ("ollama", "claude_code", "anthropic")
+        assert prov in ("ollama", "claude_code", "anthropic", "cli")
 
     def test_get_model_returns_string(self):
         import olamot

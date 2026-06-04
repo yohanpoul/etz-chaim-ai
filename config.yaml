@@ -18,7 +18,7 @@
 # silently skipped at runtime (the dispatcher falls back to the next
 # provider in the chain).
 
-active_profile: claude_max
+active_profile: codex_cli
 
 machine:
   name: local
@@ -553,34 +553,34 @@ profiles:
   # Auth   : codex  (runs the OAuth flow once)
   # Note   : does NOT work inside Docker (browser OAuth). Host-only.
   codex_cli:
-    description: OpenAI Codex CLI (ChatGPT subscription — OAuth, host-only).
+    description: OpenAI Codex CLI (ChatGPT subscription — OAuth, host-only; no API key).
     olamot:
       atziluth:
         provider: cli
         cli: codex
-        model: gpt-5
-        args: ["exec", "--model", "{model}", "-"]
+        model: gpt-5.5
+        args: ["exec", "--ignore-user-config", "--ignore-rules", "--sandbox", "read-only", "--ephemeral", "--model", "{model}", "-"]
         response_parser: strip_codex_banner
         timeout: 300
       briah:
         provider: cli
         cli: codex
-        model: gpt-5
-        args: ["exec", "--model", "{model}", "-"]
+        model: gpt-5.5
+        args: ["exec", "--ignore-user-config", "--ignore-rules", "--sandbox", "read-only", "--ephemeral", "--model", "{model}", "-"]
         response_parser: strip_codex_banner
         timeout: 240
       yetzirah:
         provider: cli
         cli: codex
-        model: gpt-5-mini
-        args: ["exec", "--model", "{model}", "-"]
+        model: gpt-5.5
+        args: ["exec", "--ignore-user-config", "--ignore-rules", "--sandbox", "read-only", "--ephemeral", "--model", "{model}", "-"]
         response_parser: strip_codex_banner
         timeout: 120
       assiah:
         provider: cli
         cli: codex
-        model: gpt-5-nano
-        args: ["exec", "--model", "{model}", "-"]
+        model: gpt-5.5
+        args: ["exec", "--ignore-user-config", "--ignore-rules", "--sandbox", "read-only", "--ephemeral", "--model", "{model}", "-"]
         response_parser: strip_codex_banner
         timeout: 60
     embedding:

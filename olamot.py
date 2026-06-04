@@ -858,6 +858,11 @@ def ollama_generate(
             tree_signals=tree_signals,
         )
         assembled_prompt = assembly["prompt_final"]
+        assembled_prompt += (
+            "\n\n[CONTRAINTE] Tu es en mode texte pur sans accès aux fichiers. "
+            "Réponds directement. Ne tente PAS de lire des fichiers, "
+            "d'exécuter des commandes ou d'utiliser des outils."
+        )
 
         from etzchaim.providers.cli_generic import cli_generate
         cfg = _get_olam_config(olam)
@@ -1212,6 +1217,64 @@ def ollama_generate_stream(
             )
         return
 
+    # ─── Generic CLI subscription pseudo-stream (Codex, Gemini, Copilot) ──
+    if provider == "cli":
+        if kavvanah is None:
+            import traceback
+            caller = "".join(traceback.format_stack(limit=3)[:-1]).strip()
+            log.warning(
+                "ollama_generate_stream() appelé SANS kavvanah (olam=%s, provider=cli).\n%s",
+                olam, caller,
+            )
+
+        ctx_window = get_context_window(olam)
+        assembler = ContextAssembler(db_pool_fn=_get_db_conn)
+        assembly = assembler.assemble(
+            olam=olam,
+            prompt=prompt,
+            context_window=ctx_window,
+            kavvanah=kavvanah,
+            context_items=context_items,
+            principles=principles,
+            domain=domain,
+            facts=facts,
+            pressure_regulated=pressure_regulated,
+            daemon_block=daemon_block,
+            tree_signals=tree_signals,
+        )
+        assembled_prompt = assembly["prompt_final"]
+        assembled_prompt += (
+            "\n\n[CONTRAINTE] Tu es en mode texte pur sans accès aux fichiers. "
+            "Réponds directement. Ne tente PAS de lire des fichiers, "
+            "d'exécuter des commandes ou d'utiliser des outils."
+        )
+
+        from etzchaim.providers.cli_generic import cli_generate
+        cfg = _get_olam_config(olam)
+        t0 = time.monotonic()
+        response_text, latency = cli_generate(
+            cli=cfg["cli"],
+            args=cfg.get("args", []),
+            model=model or get_model(olam),
+            prompt=assembled_prompt,
+            timeout=timeout or get_timeout(olam),
+            response_parser=cfg.get("response_parser", "identity"),
+        )
+        latency = latency or ((time.monotonic() - t0) * 1000)
+        try:
+            yield {"response": response_text, "done": True}
+        finally:
+            _persist_post_response(
+                olam=olam,
+                model=model or get_model(olam),
+                response_text=response_text,
+                latency=latency,
+                assembly=assembly,
+                kavvanah=kavvanah,
+                stream=True,
+            )
+        return
+
     # ─── Ollama stream (code existant) ───────────────────────
     # EC-SHK-038 : « Sans aucune Kavvanah, elles ne peuvent pas monter du tout. »
     if kavvanah is None:
@@ -1330,6 +1393,13 @@ def check_models() -> dict[str, bool]:
                 results[olam_name] = False
         elif prov == "anthropic":
             results[olam_name] = bool(os.environ.get("ANTHROPIC_API_KEY"))
+        elif prov == "cli":
+            try:
+                from etzchaim.providers.cli_generic import check_cli_available
+                ok, _message = check_cli_available(olam_cfg.get("cli", ""))
+                results[olam_name] = ok
+            except Exception:
+                results[olam_name] = False
 
     # Embedding
     emb = profile.get("embedding", {})

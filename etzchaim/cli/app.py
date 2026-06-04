@@ -53,6 +53,7 @@ from etzchaim.cli.commands import loop as _loop_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import logs as _logs_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import onboard as _onboard_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import open as _open_cmd  # noqa: E402, F401
+from etzchaim.cli.commands import pulse as _pulse_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import start as _start_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import status as _status_cmd  # noqa: E402, F401
 from etzchaim.cli.commands import stop as _stop_cmd  # noqa: E402, F401
