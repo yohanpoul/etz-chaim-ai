@@ -57,6 +57,7 @@ class ModelCall:
     provider: str
     done_reason: str | None = None
     latency_ms: int = 0
+    cost_usd: float = 0.0  # measured from the provider when available (Ollama leaves 0)
 
     @property
     def total_tokens(self) -> int:
@@ -164,4 +165,60 @@ def chat(
         provider=r.provider,
         done_reason=body.get("done_reason"),
         latency_ms=latency_ms,
+    )
+
+
+def chat_claude_cli(
+    messages: list[dict[str, str]],
+    *,
+    alias: str = "haiku",
+    profile: str = "anthropic_full",
+    max_turns: int = 1,
+    timeout: int = 180,
+) -> ModelCall:
+    """Frontier (Haiku) call via the OAuth Max Claude CLI — MEASURED tokens + cost.
+
+    Reuses ``benchmarks.claude_cli.ClaudeCLIInvoker`` (forces the OAuth path; reads
+    ``usage.input_tokens``/``output_tokens`` and ``total_cost_usd`` straight off the CLI
+    JSON — measured, never fabricated).
+
+    The model slug is resolved through ``resolve_model`` (config single source) and
+    guarded against a stale slug: only a current Haiku 4.5 slug is accepted, so the
+    Phase-0 ``claude-*-20250514`` regression cannot slip through and the stale
+    ``claude_cli.DEFAULT_MODEL`` is never used.
+    """
+    slug = resolve_model(alias, profile=profile)
+    if "haiku-4-5" not in slug:
+        raise RuntimeError(
+            f"resolved model {slug!r} is not a current Haiku 4.5 slug — refusing "
+            f"(stale-slug guard; cf the Phase-0 claude-*-20250514 bug)."
+        )
+
+    system = "\n\n".join(
+        m["content"] for m in messages if m.get("role") == "system"
+    )
+    prompt = "\n\n".join(
+        m["content"] for m in messages if m.get("role") == "user"
+    )
+
+    from benchmarks.claude_cli import ClaudeCLIInvoker
+
+    invoker = ClaudeCLIInvoker()
+    kwargs: dict = {"model": slug, "max_turns": max_turns, "timeout": timeout}
+    if system:
+        kwargs["system_prompt"] = system
+    result = invoker.invoke(prompt, **kwargs)
+    if not result.success:
+        raise RuntimeError(
+            f"claude CLI call failed (model={slug}): {result.error}"
+        )
+    return ModelCall(
+        text=result.text,
+        prompt_tokens=result.usage_input,       # MEASURED
+        completion_tokens=result.usage_output,  # MEASURED
+        model=slug,
+        provider="anthropic_oauth_cli",
+        done_reason=result.stop_reason,
+        latency_ms=result.duration_ms,
+        cost_usd=result.cost_usd,               # MEASURED (CLI total_cost_usd)
     )
