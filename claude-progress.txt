@@ -1,51 +1,106 @@
 ETZ CHAIM AI — claude-progress.txt
-Updated: 2026-06-13 | Phase 2 TEMPS 1 COMPLETE (gating wire + green plumbing probe)
+Updated: 2026-06-14 | Phase 2 TEMPS 2d COMPLETE — datalib prior-trap probe NO-GO
+(Haiku reads the short inlined library and picks `settle` 10/10; raw_deadend = 0.00)
 
 == STATE (current) ==
-Phase 2 TEMPS 1 done. Micro-probe GREEN 3/3 (.venv/bin/pytest gating/tests/). Commit 268288a.
-Labelled HONESTLY: "PLUMBING, NOT the edge."
-  - Proves: (1) a FACT belief survives a context wipe + is re-read from the persistent Postgres
-    store (matched_belief_id == stored_id); (2) ETZ_GATING flag truly ablates (off = passthrough).
-  - Does NOT prove the ADR-0009 edge: gate keys on a FACT belief by EXACT TAG; embedding is faked
-    in the test; bypasses contradict / deprecate / semantic recall. Green probe = wire conducts,
-    not direction validated. gating/ is additive (zero edits to existing modules).
-DISCOVERY actée dans ADR-0009: epistememory/db.py:171 — search_by_embedding filtre
-  `epistemic_status != 'deprecated'` => croyances deprecated INVISIBLES à recall(). Donc le
-  différenciateur contradiction/deprecate d'ADR-0009 n'est PAS atteignable via recall.
-Infra confirmée locale: Postgres up :5432 (DB test etz_chaim_test), nomic-embed-text (Ollama),
-  modèles locaux qwen3.5:9b/gemma4 dispo. .venv créé (gitignored) — requirements/pyproject
-  incomplets (numpy + chemin embedding manquants), contournés, PAS corrigés.
+Phase 2 TEMPS 2 / 2b / 2c / 2d done across two CC sessions. Suite 35/35 green
+(18 prior + 17 new offline datalib tests). 2d work is additive under
+benchmarks/gating_harness/ — zero edits to existing modules. NOT yet committed at time
+of writing this line (commit follows: 3 source files + this progress file, NO push).
+Commits adc0861 (T2) / 1890924 (T2b) / 7d564ae (T2c) — LOCAL, NOT pushed.
 
-== NEXT STEP (Phase 2 TEMPS 2) ==
-Smoke du harness A0/A1/A2 (domaine code/debug vs oracle de référence). Décision actée:
-  - (A) KILL-TEST d'abord: "gate imposé sur mémoire structurée > CHANGELOG consultatif".
-    Si un FACT-gate imposé ne bat même pas la baseline CHANGELOG (A1), (B) est mort -> stop.
-    Si signal -> (B) = ajouter un lookup deprecated/contradiction dans epistememory (vraie thèse).
-  - Provider = OLLAMA LOCAL (qwen3.5:9b/gemma4, coût $0, tokens quand même MESURÉS, jamais
-    fabriqués). Haiku via config = option pour le vrai run plus tard. AUCUN modèle en dur (resolve
-    via config / model_registry.resolve_model).
-  - APPROBATION MANUELLE par edit. PAS d'Auto-accept. Monter le harness + 1 smoke minuscule
-    (1 tâche, 2 sessions), PUIS STOP. PAS de run complet.
-  - Arms: A0 = nu contexte frais ; A1 = nu + CHANGELOG failed-approaches (baseline à battre) ;
-    A2 = nu + gate EtzChaim (gating.core.gate_intention sur store persistant).
-  - Métriques MESURÉES: dead-end re-attempt rate, self-contradiction rate, itérations/tokens
-    jusqu'à l'oracle, correction finale.
-  - Fichiers prévus: benchmarks/gating_harness/{__init__,task/,arms,metrics,run}.py + tests/test_smoke.py.
+  - TEMPS 2 (adc0861): harness A0 (bare) / A1 (bare+CHANGELOG advisory) / A2 (bare+gate
+    gating.core.gate_intention on persistent Postgres store), task = balanced_brackets
+    (external, pytest oracle, count dead-end via trap "([)]"). Smoke Ollama qwen end-to-end
+    (tokens MEASURED, model via resolve_model, zero hardcoded slug). Decision (A) = KILL
+    TEST: A2 matches by exact tag via a stipulated-perfect classifier = UPPER BOUND of
+    enforcement. A2<=A1 -> pivot; A2>A1 -> floor crossed, NOT validated (real matching +
+    deprecate/contradict lifecycle = future B).
+  - TEMPS 2b (1890924): hardened code-first matching (extract_code salvage, classify_from_code
+    AST, infer_approach_key). test_gate_fires.py go/no-go 3/3 (gate REJECTS a count dead-end
+    matched from CODE across a wipe; ablation ETZ_GATING=off passes through).
+  - TEMPS 2c (7d564ae): cheap Haiku elicitation probe on balanced_brackets. provider.chat_claude_cli
+    = frontier via OAuth Max CLI (tokens + cost MEASURED, slug claude-haiku-4-5 + stale-slug guard).
+    RESULT NO-GO: raw_deadend 0.00 (stack 10/10) — balanced_brackets TOO EASY (frontier *authors*
+    the correct algorithm). 2b parser held on real Haiku output (unknown_rate=0).
+  - TEMPS 2d (this session): REDESIGN to a "prior-trap / obsolete-API" task. New files (additive):
+      benchmarks/gating_harness/task/datalib_prior_trap.py  — inlined `datalib` with TRAP `total`
+        (naive sum, verb-matched, listed first) vs CORRECT `settle` (adds flat HANDLING_FEE_CENTS=13
+        for orders of >=3 line-items; the fee is an ARBITRARY magic constant => forces library use,
+        a bypass-reimplement gets it wrong and fails the oracle). DATALIB_SOURCE = single source of
+        truth (inlined into PROMPT *and* exec'd at oracle time). Dead-end label = AST detects a call
+        to datalib.total (deterministic; settle-wins tie; 2-pass alias table robust to every import
+        form). Sandbox = guarded __import__ + ModuleType in sys.modules (import datalib AND
+        from-import both resolve; `import os` blocked). hit_trap = behavioural cross-check.
+      benchmarks/gating_harness/probe_datalib.py  — N=10 single-shot Haiku, framing-split diversity
+        (no CLI --temperature flag, re-confirmed), 4 buckets {total/settle/bypass/unknown}, reports
+        raw AND conditioned dead-end rate, tokens+cost MEASURED, --full refused, STOP after probe.
+      benchmarks/gating_harness/tests/test_task_datalib.py  — 17 offline tests (classifier x4 import
+        forms + tie + bypass + local-shadow; oracle trap-fails/settle-passes through sandbox; from-import
+        resolves; arbitrary import blocked; sys.modules restored; code-first no-APPROACH-line;
+        ORACLE_CASES locked to DATALIB_SOURCE + >=1 discriminating). All green BEFORE any Haiku spend.
+
+== PROBE RESULT 2d — NO-GO (clean, structural) ==
+claude-haiku-4-5, N=10, framing split, MEASURED: raw_deadend = 0.00, conditioned = 0.00.
+keys: total=0, settle=10, bypass=0, unknown=0. pass_rate=0.70 (3 settle-callers over-engineered
+their wrapper and failed all cases — still key=settle; irrelevant to the dead-end question).
+tokens 7408, CLI cost $0.1189, list-price est $0.0367. ~117s.
+ALL 10 declared lines explicitly reasoned about settle + the fee (e.g. "13¢ for 3+ items",
+"handles base total + handling fee") — Haiku READ the short inlined docstring and chose the
+documented-correct function, even on the relaxed "quick/simple" half.
+STOPPED after one probe (honest-calibration constraint: do NOT sur-tune the trap to force a fall;
+the 2-3 iter cap is a ceiling, not a quota). The only remaining knobs would either HIDE the fee
+(the deception explicitly forbidden) or switch to a REAL deprecated API (sacrifices
+self-containment — a different design, not a knob).
+
+== THE FINDING (matters for ADR-0009 / DIRECTION) ==
+Cheap single-shot Haiku elicitation has now failed on TWO task classes for TWO structural reasons:
+  (i)  author-the-algorithm (balanced_brackets) -> a frontier model writes the CORRECT algorithm.
+  (ii) choose-from-an-invented-library (datalib) -> a frontier model READS the short inlined source
+       and picks the documented-correct function. An *invented, self-contained* library carries NO
+       obsolete-API training prior to exploit (nothing "obsolete" exists in the model's weights).
+Deeper point: the dead-end ADR-0009 actually cares about is a RE-ATTEMPT across context wipes
+(does the agent re-commit a belief it already refuted), which only manifests in the MULTI-SESSION
+loop — NOT in a single shot. A single-shot probe tests "make the mistake once"; the experiment tests
+"re-make it after memory said no". The cheap single-shot gate may be structurally unable to surface
+the very dead-end the full experiment is built around.
+
+== NEXT STEP (reprise — founder decides the fork) ==
+The harness, classifier, sandbox, Haiku provider, and offline-proven gate are ALL ready; the open
+problem is purely "find a task that elicits a recurrent dead-end in a frontier model". Options:
+  A) REAL deprecated-API trap (datetime.utcnow / pandas df.append / np.float) — genuine training-prior
+     pull, still cheap single-shot, but SACRIFICES self-containment and Haiku 4.5's prior may already
+     be current (it may know they're deprecated). Cheapest next probe IF keeping the single-shot gate.
+  B) MULTI-STEP / accumulating-state task where the dead-end EMERGES from context pressure — far
+     closer to the real ADR-0009 phenomenon (re-attempt across wipes), but costlier than single-shot
+     and no longer "cheap probe".
+  C) Re-frame the test around dead-end RE-ATTEMPT (the true ADR-0009 claim) rather than first-attempt
+     dead-end — which only exists multi-session, implying the cheap single-shot gate is the wrong gate.
+  D) Probe a weaker model — REJECTED: DIRECTION requires a frontier model (Haiku min); eliciting on a
+     weak model proves nothing about whether the gate helps a frontier model.
+Recommendation: A is the cheapest honest next probe to try; if it also NO-GOes, accept that the cheap
+single-shot gate is structurally wrong and move to B/C (design the dead-end into a multi-session loop,
+which is ADR-0009's native domain anyway).
+ADR-0009 hypothesis (active gating != passive retrieval) is NOT refuted — still untestable while no
+task elicits the dead-end. Project remains on the active PIVOT TRIGGER.
 
 == GUARDRAILS ==
-raw/ = READ-ONLY (référence seule, immuable). NO push (jamais). Travail confiné à projets/etz-chaim-ai/.
-Là où AGENTS.md/ARCHITECTURE.md contredisent docs/STATE_MAP.md -> faire confiance au STATE_MAP.
-verify-spec absent -> substitut = lancer les nouveaux tests + re-grep (modèle en dur + public surface).
-Neutralité surface publique (invariant #8): docs/ scanné, garder neutre; gating/+tests/ non scannés.
+raw/ = READ-ONLY (reference only). NO push (ever). Work confined to projets/etz-chaim-ai/.
+Where AGENTS.md/ARCHITECTURE.md contradict docs/STATE_MAP.md -> trust STATE_MAP.
+Plan mode + manual approval, never Auto. Tokens MEASURED never fabricated. Model via resolve_model,
+never a hardcoded/stale slug. The full run needs a frontier model (Haiku min). HONEST calibration:
+never tune a trap to deceive the model into falling — the dead-end must be NATURAL or it is reported
+as NO-GO. results/ stays ephemeral (untracked, never committed).
 
 == HISTORIQUE COMPACT ==
-Phase 0 (commit 41ea770): audit read-only 151 éléments = 82 real / 37 partial / 32 shell.
-  docs/STATE_MAP.md (neutre) + docs/internal/STATE_MAP_DETAIL.md (preuves). Top 3 gaps: edge
-  réfuté par le propre benchmark; loop auto-improve non bouclé (verify-spec absent); docs fictifs.
-Phase 1 (commit 349d301): docs/DIRECTION.md + ADR-0009 PROPOSED. Direction = état métacognitif
-  persistant, contradiction-aware, qui GATE activement la boucle multi-session (gating actif !=
-  retrieval passif). Domaine harness décidé = (a) code/debug vs oracle; (b) recherche open-ended
-  seulement si (a) valide. Risque #1: la baseline CHANGELOG suffit peut-être déjà.
-Phase 2 TEMPS 1 (commit 268288a): voir STATE ci-dessus.
-Le projet est sur un PIVOT TRIGGER actif: la direction est la voie de sortie, pas un edge prouvé.
-Elle ne tient que si TEMPS 2 A2 bat A1. Égalité -> pivot (ADR-0009 le dit).
+Phase 0 (41ea770): read-only audit 151 elements = 82 real / 37 partial / 32 shell. Top gaps:
+  edge refuted by repo's own benchmark; auto-improve loop not closed (verify-spec absent); fictional docs.
+Phase 1 (349d301): docs/DIRECTION.md + ADR-0009 PROPOSED. Direction = persistent contradiction-aware
+  self-state that GATES a multi-session loop (active gating != passive retrieval). Domain = code/debug.
+  Risk #1: the CHANGELOG baseline (A1) may already be good enough.
+Phase 2 TEMPS 1 (268288a): ablatable gate + green PLUMBING micro-probe (FACT exact-tag, NOT the edge;
+  db.py:171 filters deprecated -> invisible to recall).
+Phase 2 TEMPS 2/2b/2c (adc0861/1890924/7d564ae): harness + parser + Haiku probe. NO-GO on balanced_brackets.
+Phase 2 TEMPS 2d (this session, pending commit): datalib prior-trap. NO-GO (Haiku reads short inlined lib).
+  Two NO-GOs => cheap single-shot frontier elicitation is hard; the real dead-end is a multi-session
+  RE-ATTEMPT, not a single-shot first mistake. Founder fork A/B/C above.
