@@ -342,6 +342,71 @@ Adopt **AGENTS.md correctness audit** as a recurring discipline:
 
 ---
 
+## ADR-0009 — Direction: persistent contradiction-aware self-state that gates a long-horizon loop
+
+**Date**: 2026-06-13
+**Status**: PROPOSED
+
+### Context
+
+Phase-0 audit (docs/STATE_MAP.md) found the cognitive faculties mostly real but the loop, the
+benchmark↔mission link, and the docs hollow; the v2 benchmark shows the wrapper *degrades* the host
+on single-shot factual/safety. A Phase-1 adversarial collapse-test of four candidate directions
+(D1 calibrated abstention, D2 contradiction-aware belief lifecycle, D3 learning verify-loop, D4 drift
+monitor) returned **COLLAPSES** on all four *as currently built* — every one reduces to a generic
+primitive (conformal prediction / generic RAG / native `/goal` / Stop-hook) for the SAME reason: the
+faculties exist as isolated DB/method primitives with **no synthesis layer that makes persistent
+self-state actively gate the live loop at decision points across context wipes**. Native Claude 2026
+already owns scheduling, looping, verify-against-oracle, parallelism, and unstructured cross-session
+memory (CHANGELOG), so those cannot be the edge.
+
+### Decision
+
+Pursue **D2's substance + the missing gating wire**: persistent, contradiction-aware self-state
+(`epistememory` lifecycle + `dissensuengine` divergence) that actively gates a long-horizon,
+multi-session agent loop — auto-rejecting re-entry of refuted approaches and flagging
+self-contradiction at `set_intention`/`submit_conclusion`. `selfmap.calibrate` is the measurement
+instrument. D1/D3/D4 are deferred; D3 is rejected outright (native `/goal` + shell substrate).
+
+**Harness domain (decided):** the Phase-2 mechanism test runs on **(a) code/debug against a
+reference oracle** — cleanest ground truth, objective dead-end/contradiction labels. **(b) open-ended
+research/analysis is pursued ONLY if (a) first validates the gating mechanism.** (c) a synthetic
+injected-dead-end task is an optional sanity sub-check.
+
+### Consequences
+- ✓ Builds on the two strongest real faculties (epistememory 44 tests, dissensuengine 95+ tests).
+- ✓ Has a real native baseline (CHANGELOG) → beating it is unfakeable proof of edge.
+- ✓ The needed work is the *thinnest* concrete wire, not new faculties.
+- ⚠ The differentiation rests entirely on "active gating ≠ passive retrieval"; if unproven, PIVOT.
+- ⚠ Requires a multi-session harness + objective dead-end/contradiction labels (judge-bias risk;
+  the reference-oracle domain is chosen to keep labels objective).
+- ✗ Out of scope for single-shot factual/safety — the wrapper should not be in that path.
+
+### Alternatives considered
+- **D1 calibrated abstention** — rejected as primary: collapses to conformal/Brier; `verify_prediction`
+  circular; kept as the measurement layer.
+- **D3 learning verify-loop** — rejected: ≈ native `/goal`; depends on shell failure-mining modules.
+- **D4 drift monitor** — deferred: ≈ Stop-hook; integrator absent; intentkeeper only partial.
+- **Status quo / keep current benchmark** — rejected: it measures the wrong class and refutes the
+  mission's own claim.
+
+### Falsification (the test that would kill this direction)
+
+Multi-session context-wiped task, arms A0 (bare) / A1 (bare + CHANGELOG) / A2 (+ gating). If A2 does
+not significantly beat **A1** on dead-end re-attempt rate and self-contradiction rate at equal/better
+correctness — or if an ablation (gating off) does not erase the gain — the direction collapses to
+generic memory and a PIVOT TRIGGER fires.
+
+### References
+
+- docs/DIRECTION.md (this direction, full reasoning)
+- docs/STATE_MAP.md + docs/internal/STATE_MAP_DETAIL.md (Phase-0 audit)
+- Anthropic — *Long-running Claude for scientific computing* (CHANGELOG failed-approaches pattern)
+- Claude Code — `/goal` (stateless completion evaluator); Boris Cherny tips (loop/schedule/verify)
+- MISSION.md PIVOT TRIGGERS (collapse to generic framework; rectifier = known ML primitive)
+
+---
+
 ## ADR template (copy this for new decisions)
 
 ```markdown
