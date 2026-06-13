@@ -397,9 +397,37 @@ not significantly beat **A1** on dead-end re-attempt rate and self-contradiction
 correctness — or if an ablation (gating off) does not erase the gain — the direction collapses to
 generic memory and a PIVOT TRIGGER fires.
 
+### Discovery (2026-06-13, Phase 2 TEMPS 1) — recall hides deprecated beliefs
+
+`epistememory/db.py:171` — `search_by_embedding` filters `epistemic_status != 'deprecated'`.
+**Consequence:** deprecated beliefs are invisible to `recall()`. The ADR-0009 differentiator
+(gate on *deprecated / contradicted* beliefs) is therefore **NOT reachable through `recall`**.
+
+The TEMPS-1 micro-probe (`gating/` + `gating/tests/test_micro_probe.py`, all green) accordingly
+proves **PLUMBING ONLY**: a FACT belief survives a context wipe and is re-read from the persistent
+Postgres store, and the `ETZ_GATING` flag truly ablates the gate. To do so it keys on a **FACT
+"approach X fails"** belief matched by an **exact tag**, deliberately **bypassing**
+`epistememory.contradict`, `epistememory.deprecate`, and semantic `recall` ranking (the test fakes
+the embedding). **A green probe = the wire conducts, NOT the direction is validated.**
+
+### Open question for the next decision (A vs B) — not decided here
+
+- **(A) Test the NARROW claim** — "an *enforced* gate over structured memory (FACT-refutation,
+  persistent) beats an *advisory* CHANGELOG." Testable now with the current wire (recall FACT path),
+  cheap. But it is a weaker claim than the contradiction/deprecate edge ADR-0009 actually names.
+- **(B) Test the TRUE thesis** — add a deprecated/contradiction lookup path in `epistememory`
+  (a query that *includes* deprecated rows + walks the `contradicts` graph), then gate on it. Tests
+  the real ADR-0009 differentiator, but touches `epistememory` (more than a thin additive wire).
+
+**Recommendation (founder decides):** do **(A) first** as a cheap go/no-go in the TEMPS-2 harness —
+if an enforced FACT-gate cannot even beat a CHANGELOG baseline, (B) is moot (the edge is dead
+regardless of which signal feeds it). If (A) shows signal, do (B) to test the genuine
+contradiction/deprecate edge. Status stays **PROPOSED**.
+
 ### References
 
 - docs/DIRECTION.md (this direction, full reasoning)
+- gating/ + gating/tests/test_micro_probe.py (TEMPS-1 wire + green plumbing probe)
 - docs/STATE_MAP.md + docs/internal/STATE_MAP_DETAIL.md (Phase-0 audit)
 - Anthropic — *Long-running Claude for scientific computing* (CHANGELOG failed-approaches pattern)
 - Claude Code — `/goal` (stateless completion evaluator); Boris Cherny tips (loop/schedule/verify)
