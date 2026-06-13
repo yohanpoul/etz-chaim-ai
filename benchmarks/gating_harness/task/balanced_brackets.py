@@ -20,6 +20,7 @@ identification is the gate's upper bound (see gating_harness/__init__.py).
 
 from __future__ import annotations
 
+import ast
 import signal
 import threading
 from dataclasses import dataclass, field
@@ -83,21 +84,30 @@ def extract_declared_approach(text: str) -> str:
 
 
 def extract_code(text: str) -> str | None:
-    """Return the first fenced python block (or any fenced block) if present."""
+    """Return the candidate code from a model response.
+
+    Prefers a fenced block; if there is no fence (the observed qwen case), salvages
+    from the first ``def is_balanced`` to the end of the text. Salvage is best-effort:
+    trailing prose makes ``ast.parse`` fail, which ``classify_from_code`` handles by
+    falling back (see infer_approach_key).
+    """
     fences = text.split("```")
-    if len(fences) < 3:
-        return None
-    block = fences[1]
-    # drop a leading language tag like "python\n"
-    if "\n" in block:
-        first, rest = block.split("\n", 1)
-        if first.strip().lower() in {"python", "py", ""}:
-            return rest
-    return block
+    if len(fences) >= 3:
+        block = fences[1]
+        # drop a leading language tag like "python\n"
+        if "\n" in block:
+            first, rest = block.split("\n", 1)
+            if first.strip().lower() in {"python", "py", ""}:
+                return rest
+        return block
+    idx = text.find("def is_balanced")
+    if idx != -1:
+        return text[idx:]
+    return None
 
 
 def classify_approach(text: str) -> str:
-    """Deterministically map declared-approach text (or code) to an approach key.
+    """Keyword classifier on free text (declared approach OR raw code). Fallback layer.
 
     STIPULATED PERFECT for decision (A): treat this as a ground-truth identifier of
     'same approach'. Real deployment needs fuzzy/semantic matching; that gap is exactly
@@ -111,6 +121,67 @@ def classify_approach(text: str) -> str:
         return CORRECT_APPROACH
     if any(s in t for s in count_signals):
         return DEADEND_APPROACH
+    return "unknown"
+
+
+def classify_from_code(code: str | None) -> str | None:
+    """Structural (AST) approach detection — robust to a missing 'APPROACH:' line.
+
+    Deterministic. Covers the two canonical solutions:
+      - COUNT (the dead-end): per-type ``s.count(...)`` or ``collections.Counter`` and
+        no stack -> ``count``.
+      - STACK (correct): a list used as a stack (``append`` and/or ``pop``) -> ``stack``.
+    Returns None when the code does not parse or matches neither signature (the caller
+    then falls back to the keyword classifier). When BOTH signatures appear, ``stack``
+    wins — it is the structural discriminator (a stack solution may also count).
+
+    STIPULATED PERFECT for the kill-test (A): this is the most reliable matcher we can
+    build, i.e. the UPPER BOUND of enforcement. Real matching is fuzzy/semantic.
+    """
+    if not code or not code.strip():
+        return None
+    try:
+        tree = ast.parse(code)
+    except SyntaxError:
+        return None
+    methods: set[str] = set()
+    names: set[str] = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Attribute):
+            methods.add(node.attr)
+        elif isinstance(node, ast.Name):
+            names.add(node.id)
+    has_stack = bool({"append", "pop"} & methods)
+    has_count = ("count" in methods) or ("Counter" in names)
+    if has_stack:
+        return CORRECT_APPROACH
+    if has_count:
+        return DEADEND_APPROACH
+    return None
+
+
+def infer_approach_key(declared: str, code: str | None) -> str:
+    """Best available approach key: CODE-FIRST (structural), then keyword fallbacks.
+
+    Robust to the qwen failure mode (declared == '' and no fenced block): the structural
+    AST read of the code yields the key even with no 'APPROACH:' line. Order:
+      1. classify_from_code(code)         — structural, most reliable
+      2. classify_approach(declared)      — keyword on the declared line
+      3. classify_approach(code)          — keyword on raw code (rescues non-AST-parsable)
+      4. 'unknown'
+    """
+    if code:
+        from_code = classify_from_code(code)
+        if from_code is not None:
+            return from_code
+    if declared:
+        k = classify_approach(declared)
+        if k != "unknown":
+            return k
+    if code:
+        k = classify_approach(code)
+        if k != "unknown":
+            return k
     return "unknown"
 
 

@@ -75,6 +75,48 @@ def test_oracle_no_code_is_failure():
     assert res.passed is False and res.error
 
 
+# bare code (no fence, no APPROACH line) — the observed qwen failure mode
+_COUNT_CODE_BARE = (
+    "def is_balanced(s):\n"
+    "    return (s.count('(')==s.count(')') and s.count('[')==s.count(']')\n"
+    "            and s.count('{')==s.count('}'))\n"
+)
+_STACK_CODE_BARE = (
+    "def is_balanced(s):\n"
+    "    pairs={')':'(',']':'[','}':'{'}\n"
+    "    st=[]\n"
+    "    for c in s:\n"
+    "        if c in '([{':\n"
+    "            st.append(c)\n"
+    "        elif c in pairs:\n"
+    "            if not st or st.pop()!=pairs[c]:\n"
+    "                return False\n"
+    "    return not st\n"
+)
+
+
+def test_classify_from_code_structural():
+    assert task.classify_from_code(_COUNT_CODE_BARE) == task.DEADEND_APPROACH
+    assert task.classify_from_code(_STACK_CODE_BARE) == task.CORRECT_APPROACH
+    assert task.classify_from_code("def f():\n    return 1\n") is None       # neither
+    assert task.classify_from_code("def is_balanced(s): return (((") is None  # unparsable
+
+
+def test_extract_code_salvages_unfenced():
+    # No ``` fence, no APPROACH line, with trailing prose -> salvage from the def.
+    text = "Sure, here is the function.\n" + _COUNT_CODE_BARE + "\nThat checks counts."
+    code = task.extract_code(text)
+    assert code is not None and "def is_balanced" in code
+    # AST parse fails on the trailing prose -> keyword fallback still yields 'count'.
+    assert task.infer_approach_key("", code) == task.DEADEND_APPROACH
+
+
+def test_infer_approach_key_is_code_first_without_approach_line():
+    assert task.infer_approach_key("", _COUNT_CODE_BARE) == task.DEADEND_APPROACH
+    assert task.infer_approach_key("", _STACK_CODE_BARE) == task.CORRECT_APPROACH
+    assert task.infer_approach_key("", None) == "unknown"
+
+
 # --------------------------------------------------------------------------- #
 # Provider: tokens are MEASURED from the response, never fabricated
 # --------------------------------------------------------------------------- #

@@ -58,7 +58,8 @@ def _generate(extra_context: str | None = None) -> provider.ModelCall:
 def _parse(call: provider.ModelCall) -> tuple[str, str, str | None]:
     declared = task.extract_declared_approach(call.text)
     code = task.extract_code(call.text)
-    approach_key = task.classify_approach(declared or (code or ""))
+    # CODE-FIRST matching: robust even when the model omits the 'APPROACH:' line.
+    approach_key = task.infer_approach_key(declared, code)
     return declared, approach_key, code
 
 
