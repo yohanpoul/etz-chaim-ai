@@ -1,0 +1,43 @@
+ETZ CHAIM AI — claude-progress.txt
+Updated: 2026-06-13 | Phase 0 DIAGNOSTIC complete (no fixes applied)
+
+== STATE ==
+Read-only audit of 151 elements via 16 parallel agents. Tally: 82 real / 37 partial / 32 shell.
+Full map: docs/STATE_MAP.md (neutral) + docs/internal/STATE_MAP_DETAIL.md (full evidence, file:line).
+Cognitive faculties = solid (7/10 real). Hollow zones = benchmark<->mission link, auto-improve loop, docs.
+
+== TOP 3 GAPS (ambition vs reality) ==
+1. Edge unproven AND refuted: own benchmark = 3 arms (not 4 baselines), 4 NLP benches (not the 8
+   mission metrics), 1 hardcoded model (not 4 LLMs), fabricated Etz cost; result = Etz makes Claude
+   WORSE (reasoning -79pp, truthfulqa -35pp, harmbench -10pp). "Boost the AI" currently disproven.
+2. Self-improve loop not closed: daemon runs a narrow inline hypothesis loop; failure-read/cluster/
+   spec-mutate/verify/test/PR/notify are shell. verify-spec subagent (invariant #3 + mission gate)
+   DOES NOT EXIST. No scheduler (plist missing). No `etzchaim improve` CLI.
+3. Docs fictional: AGENTS.md/ARCHITECTURE.md describe etzchaim/{faculties,rectifiers,...}, agents/,
+   skills/, commands/, MCP server, 1696 specs, 1388 tests, 6 profiles, .claude/rules -- mostly absent
+   or wrong (real: ~250 specs, 4557 tests, 21 profiles, flat modules, 0 slash cmds). Invariants 1&3
+   unenforceable.
+
+== KEY EVIDENCE ANCHORS ==
+- verify-spec / agents/ / skills/ / commands/ / hooks/ / evals/ / etzchaim_mcp / .mcp.json /
+  .claude-plugin / 6x .claude/rules : ALL MISSING.
+- Model-leak gate blind spot: Makefile check-model-leaks scans only etzchaim/*.py, exempts
+  initiate.py; misses benchmarks/arms.py:31 (claude-opus-4-20250514) + initiate.py:73-83.
+- Daemon: zero git/gh/webhook; _notify()=pass; task_auto_improve in daemon_tasks/exploration.py:207.
+- Rectifiers: R01-06 real; R07,R09-R12 shell; R08/R13 real but in wrong module path.
+- Faculties partial: explorationengine (no faculty interface), causalengine (no Pearl),
+  failuretoinsight (2 dead sub-modules). Guardian (selfmodel) = dead code.
+- check_public_surface.sh = EXIT 0 (invariant #8 green). 4557 tests NOT executed (static audit).
+
+== NEXT STEPS (Phase 1, when authorized -- diagnostic only here) ==
+A. Decide truth direction: align docs DOWN to code, or build code UP to docs (per pivot triggers).
+B. Re-link benchmark to MISSION: implement the 8 metrics OR rewrite north-star to what's measurable;
+   add real baselines; remove fabricated Etz cost; de-hardcode model via config.
+C. Close the loop minimally: create verify-spec subagent; wire one real step end-to-end before more.
+D. Fix invariant #7 gate blind spot (scan benchmarks/ + top-level; un-exempt initiate.py).
+E. NONE of the above now -- Phase 0 is diagnostic only.
+
+== CONSTRAINTS HONORED ==
+raw/ untouched (reference only). No push. Work confined to projets/etz-chaim-ai/.
+verify-spec gate unrunnable (absent) -> substituted independent re-grep verification.
+docs/STATE_MAP.md kept neutral (invariant #8); full internal-path evidence in docs/internal/.
