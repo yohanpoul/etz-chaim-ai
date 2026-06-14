@@ -225,14 +225,17 @@ def run_smoke(sessions: int = 2, task=task) -> tuple[dict, Path]:
 # Experiment (TEMPS 3): multi-session re-attempt — A0 / A1 (noise sweep) / A2 / A2-ablation
 # --------------------------------------------------------------------------- #
 
-_DEFAULT_NOISE_LEVELS = [0, 5, 20, 50]
+_DEFAULT_NOISE_LEVELS = [0, 10, 20, 40]
+# Stage-2 MEASURED cost/call ($0.1096 / 8 = $0.0137); the list-price estimate underestimates
+# this ~3.5x, so the preflight leads with the measured rate.
+_MEASURED_USD_PER_CALL = 0.0137
 
 
 def _noise(n: int, *, deadend_key: str) -> list[str]:
-    """N unrelated prior-failure CHANGELOG entries — the discriminant regime (Risk #1): a
-    realistic noisy history that stresses A1's PASSIVE recall while the gate stays O(1) keyed.
-    Guaranteed NOT to contain the dead-end key, so A1.memory_had_deadend is driven only by
-    REAL refutations the run accumulates."""
+    """N unrelated prior-failure entries — the discriminant regime (Risk #1). The SAME N failures
+    feed BOTH arms: A1 as flat CHANGELOG text, A2 as domain-tagged store beliefs. A realistic
+    history that stresses A1's PASSIVE scan while A2's domain+tag-keyed gate ignores them.
+    Guaranteed NOT to contain the dead-end key (the relevant refutation is the SEED, not noise)."""
     entries = []
     for k in range(n):
         e = (
@@ -244,44 +247,55 @@ def _noise(n: int, *, deadend_key: str) -> list[str]:
     return entries
 
 
-def _experiment_calls(k: int, noise_levels: list[int]) -> int:
-    """Upper-bound Haiku call count for the preflight (A2 may double on a gate reject)."""
+def _experiment_breakdown(k: int, levels: list[int]) -> dict:
+    """Exact Haiku call breakdown for the preflight. SEEDED A2 (gate on) fires EVERY session ->
+    2 generations/session; A0 is unseeded + noise-independent (1xK)."""
+    nlev = len(levels)
     a0 = k
-    a1 = k * len(noise_levels)
-    a2 = 2 * k        # gate-on: up to 2 generations/session on a reject
-    a2_ablation = k   # gate off: never rejects -> 1 generation/session
-    return a0 + a1 + a2 + a2_ablation
-
-
-def _preflight(k: int, noise_levels: list[int]) -> dict:
-    calls = _experiment_calls(k, noise_levels)
-    est_in = calls * _EST_TOKENS_IN_PER_CALL
-    est_out = calls * _EST_TOKENS_OUT_PER_CALL
-    est_cost = (
-        est_in * HAIKU_4_5_IN_PER_MTOK + est_out * HAIKU_4_5_OUT_PER_MTOK
-    ) / 1_000_000
-    return {"calls": calls, "est_in": est_in, "est_out": est_out, "est_cost_usd": est_cost}
+    a1 = k * nlev
+    a2_gate = 2 * k * nlev      # seeded -> gate fires every session -> 2 generations
+    a2_ablation = k * nlev      # gate off -> 1 generation/session
+    return {
+        "A0": a0, "A1": a1, "A2_gate": a2_gate, "A2_ablation": a2_ablation,
+        "total": a0 + a1 + a2_gate + a2_ablation,
+    }
 
 
 def run_experiment(
     task_name: str = "recurring_deadend",
-    k: int = 12,
+    k: int = 15,
     noise_levels: list[int] | None = None,
     confirm: bool = False,
 ) -> tuple[dict, Path] | None:
-    """TEMPS-3 experiment. Shows a PRE-NETWORK budget preflight; without --confirm it is a
-    human gate and returns None (spends nothing)."""
+    """TEMPS-3 SEEDED re-attempt experiment. The dead-end is pre-loaded into A1 (CHANGELOG) and
+    A2 (store) from session 0 (the adversary null-probe, DIRECTION §6) so every session is an IID
+    memory-conditioned trial. The NOISE SWEEP IS the experiment: with the refutation buried under
+    N unrelated failures, does A1's flat recall degrade while A2's keyed gate stays flat? A0 stays
+    unseeded (base-rate control). Shows a PRE-NETWORK preflight; without --confirm it is a human
+    gate that spends nothing."""
     task_mod = _resolve_task(task_name)
     levels = list(noise_levels) if noise_levels is not None else list(_DEFAULT_NOISE_LEVELS)
-    pf = _preflight(k, levels)
+    bd = _experiment_breakdown(k, levels)
+    est_measured = bd["total"] * _MEASURED_USD_PER_CALL
+    est_list = (
+        bd["total"]
+        * (
+            _EST_TOKENS_IN_PER_CALL * HAIKU_4_5_IN_PER_MTOK
+            + _EST_TOKENS_OUT_PER_CALL * HAIKU_4_5_OUT_PER_MTOK
+        )
+    ) / 1_000_000
 
     print("=" * 72)
-    print(f"EXPERIMENT PREFLIGHT — task={task_name}  K={k}  noise_levels={levels}")
-    print(f"  arms: A0 · A1 (×{len(levels)} noise levels) · A2 (gate ON) · A2 (ablation, gate OFF)")
+    print(f"EXPERIMENT PREFLIGHT — task={task_name}  K={k}  noise_levels={levels}  (SEEDED)")
+    print(f"  arms: A0 (unseeded control) · A1/A2/A2-ablation × {len(levels)} noise levels")
+    print("  seeding: dead-end pre-loaded in A1 CHANGELOG + A2 store from session 0 (every session conditioned)")
     print("  model: Haiku 4.5 via OAuth CLI — tokens + cost MEASURED post-run (never fabricated)")
-    print(f"  estimated Haiku calls (upper bound): {pf['calls']}")
-    print(f"  estimated tokens: ~{pf['est_in']} in / ~{pf['est_out']} out")
-    print(f"  estimated cost (list-price, NOT the billed amount): ${pf['est_cost_usd']:.2f}")
+    print(
+        f"  Haiku calls: A0={bd['A0']}  A1={bd['A1']}  A2-gate={bd['A2_gate']} (x2/sess, seeded)  "
+        f"A2-ablation={bd['A2_ablation']}  ->  TOTAL={bd['total']}"
+    )
+    print(f"  est cost (Stage-2 MEASURED rate ${_MEASURED_USD_PER_CALL}/call): ${est_measured:.2f}")
+    print(f"  est cost (list-price, underestimates ~3.5x): ${est_list:.2f}")
     print("=" * 72)
     if not confirm:
         print("\nNOT spending. Re-run with --confirm to execute the networked experiment.")
@@ -290,32 +304,34 @@ def run_experiment(
     gen = provider.chat_claude_cli  # frontier (Haiku), measured tokens + cost
     mem = _setup_store()
     try:
-        a0 = run_a0(k, task=task_mod, gen=gen)
+        a0 = run_a0(k, task=task_mod, gen=gen)  # unseeded base-rate control (store-independent)
 
         a1_by_noise: dict[int, list] = {}
+        a2_by_noise: dict[int, list] = {}
+        abl_by_noise: dict[int, list] = {}
         for n in levels:
+            noise = _noise(n, deadend_key=task_mod.DEADEND_APPROACH)
             a1_by_noise[n] = run_a1(
-                k,
-                task=task_mod,
-                gen=gen,
-                changelog_noise=_noise(n, deadend_key=task_mod.DEADEND_APPROACH),
+                k, task=task_mod, gen=gen, changelog_noise=noise, seed_deadend=True
             )
-
-        _truncate_store()  # fresh store for the live gate arm
-        a2 = run_a2(k, mem, task=task_mod, gen=gen, gating=True)
-
-        _truncate_store()  # fresh store for the ablation arm
-        a2_ablation = run_a2(k, mem, task=task_mod, gen=gen, gating=False)
+            _truncate_store()  # fresh seeded store for the live gate arm
+            a2_by_noise[n] = run_a2(
+                k, mem, task=task_mod, gen=gen, gating=True,
+                seed_deadend=True, store_noise=noise,
+            )
+            _truncate_store()  # fresh seeded store for the ablation arm
+            abl_by_noise[n] = run_a2(
+                k, mem, task=task_mod, gen=gen, gating=False,
+                seed_deadend=True, store_noise=noise,
+            )
     finally:
         mem.close()
 
-    results = {
-        "A0": (a0, compute_metrics(a0)),
-        "A2": (a2, compute_metrics(a2)),
-        "A2_ablation": (a2_ablation, compute_metrics(a2_ablation)),
-    }
+    results = {"A0": (a0, compute_metrics(a0))}
     for n in levels:
-        results[f"A1_noise{n}"] = (a1_by_noise[n], compute_metrics(a1_by_noise[n]))
+        results[f"A1_n{n}"] = (a1_by_noise[n], compute_metrics(a1_by_noise[n]))
+        results[f"A2_n{n}"] = (a2_by_noise[n], compute_metrics(a2_by_noise[n]))
+        results[f"A2abl_n{n}"] = (abl_by_noise[n], compute_metrics(abl_by_noise[n]))
 
     run_id = datetime.now().strftime("%Y%m%d-%H%M%S")
     report = _render_experiment_report(task_mod, results, k, levels, run_id)
@@ -326,28 +342,36 @@ def run_experiment(
 def _render_experiment_report(task_mod, results: dict, k: int, levels: list[int],
                               run_id: str) -> str:
     a0m = results["A0"][1]
-    a2m = results["A2"][1]
-    abm = results["A2_ablation"][1]
-    arms = ["A0"] + [f"A1_noise{n}" for n in levels] + ["A2", "A2_ablation"]
+    arms = (
+        ["A0"]
+        + [f"A1_n{n}" for n in levels]
+        + [f"A2_n{n}" for n in levels]
+        + [f"A2abl_n{n}" for n in levels]
+    )
     keys = [
-        ("dead_end_reattempt_rate", "dead-end re-attempt rate (memory-conditioned)"),
+        ("dead_end_reattempt_rate", "dead-end re-attempt (memory-conditioned)"),
         ("raw_dead_end_rate", "raw dead-end rate"),
         ("self_contradiction_rate", "self-contradiction rate"),
-        ("n_sessions_with_prior_knowledge", "sessions with prior knowledge"),
         ("total_generations", "iterations (generations)"),
         ("total_tokens", "tokens (measured)"),
         ("final_correctness_passed_any", "final correctness (passed any)"),
         ("gate_rejections", "gate rejections"),
     ]
     lines = [
-        "# Gating harness — Phase 2 TEMPS 3 — EXPERIMENT (multi-session re-attempt)",
+        "# Gating harness — Phase 2 TEMPS 3 — EXPERIMENT (seeded multi-session re-attempt)",
         "",
         f"- run_id: `{run_id}`",
         f"- task: `{task_mod.TASK_ID}` (reference-oracle ground truth, no LLM judge)",
-        f"- K sessions per arm: {k}  ·  context-wiped between sessions  ·  model: Haiku 4.5 (OAuth CLI)",
+        f"- K sessions per arm: {k}  ·  context-wiped between sessions  ·  Haiku 4.5 (OAuth CLI)",
+        "- SEEDED: dead-end pre-loaded in A1 CHANGELOG + A2 store from session 0 -> every session "
+        "is a memory-conditioned trial. A0 unseeded (base-rate control).",
+        "- discriminant: the SAME N unrelated failures feed BOTH arms — A1 as a flat CHANGELOG, A2 "
+        "as domain-tagged beliefs (the keyed gate's domain filter excludes other-domain noise).",
+        "- BASELINE NOTE: A1 is the FLAT-CHANGELOG native pattern; a domain-sectioned CHANGELOG "
+        "might not degrade — A2's edge is the structured domain+tag index, which is the claim.",
         "- tokens + cost MEASURED from the CLI response, never fabricated",
         "",
-        "## Metrics",
+        "## Metrics (per arm × noise level)",
         "",
         "| metric | " + " | ".join(arms) + " |",
         "|" + "---|" * (len(arms) + 1),
@@ -358,33 +382,36 @@ def _render_experiment_report(task_mod, results: dict, k: int, levels: list[int]
 
     lines += [
         "",
-        "## Discriminant curve — A1 re-attempt vs CHANGELOG noise length",
+        "## Discriminant curve — dead-end re-attempt vs noise length N",
         "",
-        "| CHANGELOG noise length | A1 dead-end re-attempt (memory-conditioned) |",
-        "|---|---|",
+        "| N (noise) | A1 (flat CHANGELOG) | A2 (keyed gate) | A2-ablation (gate off) |",
+        "|---|---|---|---|",
     ]
     for n in levels:
         lines.append(
-            f"| {n} | {_fmt(results[f'A1_noise{n}'][1].get('dead_end_reattempt_rate'))} |"
+            f"| {n} | {_fmt(results[f'A1_n{n}'][1].get('dead_end_reattempt_rate'))} "
+            f"| {_fmt(results[f'A2_n{n}'][1].get('dead_end_reattempt_rate'))} "
+            f"| {_fmt(results[f'A2abl_n{n}'][1].get('dead_end_reattempt_rate'))} |"
         )
     lines += [
-        f"| A2 (gate, reference) | {_fmt(a2m.get('dead_end_reattempt_rate'))} |",
-        f"| A2 ablation (gate off) | {_fmt(abm.get('dead_end_reattempt_rate'))} |",
+        f"| A0 base-rate (unseeded ref) | raw {_fmt(a0m.get('raw_dead_end_rate'))} | — | — |",
         "",
-        "Hypothesis: A1 rises with noise length (passive recall loses the needle); A2 stays flat",
-        "(O(1) keyed gate). If A1 holds flat even when long, the CHANGELOG suffices -> PIVOT.",
+        "Hypothesis: A1 rises with N (flat recall loses the buried refutation); A2 stays flat",
+        "(domain+tag-keyed gate ignores other-domain noise). A1 flat even at high N -> the",
+        "CHANGELOG suffices -> PIVOT. A2-ablation = the no-suppression floor (gate off, seed",
+        "present but unread); it must NOT beat A2-gate, and should track A0's base rate.",
         "",
         "## Verdict scaffold (fill from the numbers above)",
         "",
-        "- **A2 (tag-exact upper bound) <= best A1** -> PIVOT immediately (an enforced gate "
-        "cannot beat an advisory CHANGELOG even at the upper bound; do not touch the lifecycle).",
-        "- **A2 >> best A1 AND ablation erases the gain** -> floor crossed, NOT validated -> "
-        "Stage 3b (real variant matching / deprecate-contradict via db.py:171).",
+        "- **best A2 (tag-exact upper bound) <= best A1** -> PIVOT immediately (an enforced gate "
+        "cannot beat a flat CHANGELOG even at the upper bound; do not touch the lifecycle).",
+        "- **A2 << A1 at high N AND A2-ablation erases the gain (ablation ~ A0 base rate)** -> "
+        "floor crossed, NOT validated -> Stage 3b (real variant matching / deprecate-contradict, "
+        "db.py:171, after STOP+review).",
         "",
-        f"- A0 raw dead-end rate: {_fmt(a0m.get('raw_dead_end_rate'))} "
-        "(if ~0, the frontier never enters the dead-end -> the phenomenon does not exist here).",
-        f"- A2 gate rejections fired: {a2m.get('gate_rejections')}  ·  "
-        f"A2-ablation gate rejections: {abm.get('gate_rejections')} (must be 0).",
+        f"- A0 base-rate re-attempt: {_fmt(a0m.get('raw_dead_end_rate'))} "
+        "(Stage-2 measured ~0.25; if ~0 here the phenomenon vanished).",
+        "- A2-gate gate_rejections must be > 0 at every N; A2-ablation gate_rejections must be 0.",
         "",
     ]
     return "\n".join(lines)
@@ -418,11 +445,11 @@ def main() -> None:
     parser.add_argument("--sessions", type=int, default=2, help="smoke sessions per arm")
     parser.add_argument("--task", default="balanced_brackets", help="task module name")
     parser.add_argument(
-        "-k", "--k", type=int, default=12, help="experiment sessions per arm (10-15 recommended)"
+        "-k", "--k", type=int, default=15, help="experiment sessions per arm (seeded; 15 = power)"
     )
     parser.add_argument(
         "--noise-levels", type=int, nargs="+", default=None,
-        help="CHANGELOG noise lengths for the A1 discriminant sweep (default 0 5 20 50)",
+        help="noise lengths for the seeded discriminant sweep (default 0 10 20 40)",
     )
     parser.add_argument(
         "--confirm", action="store_true",

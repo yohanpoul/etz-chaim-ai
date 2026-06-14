@@ -16,7 +16,7 @@ from __future__ import annotations
 from gating.core import gate_intention
 
 from benchmarks.gating_harness import provider
-from benchmarks.gating_harness.arms import run_a0, run_a2
+from benchmarks.gating_harness.arms import run_a0, run_a1, run_a2
 from benchmarks.gating_harness.metrics import compute_metrics
 from benchmarks.gating_harness.task import recurring_deadend as task
 from benchmarks.gating_harness.tests.conftest import TEST_DB_URL
@@ -47,6 +47,20 @@ def _stub(text: str):
             text=text, prompt_tokens=12, completion_tokens=12, model="stub", provider="stub"
         )
 
+    return gen
+
+
+def _spy(text: str):
+    """A stub gen that also records the messages it was called with (to assert prompt content)."""
+    captured: list = []
+
+    def gen(messages):
+        captured.append(messages)
+        return provider.ModelCall(
+            text=text, prompt_tokens=12, completion_tokens=12, model="stub", provider="stub"
+        )
+
+    gen.captured = captured
     return gen
 
 
@@ -143,3 +157,77 @@ def test_a2_prefix_never_trapped_no_rejection(mem, fake_embed):
     m = compute_metrics(a2)
     assert m["final_correctness_passed_any"] is True
     assert m["gate_rejections"] == 0  # the correct approach is never refuted -> never gated
+
+
+# --------------------------------------------------------------------------- #
+# 3. SEEDED Stage-3a path: every session memory-conditioned; noise sweep plumbing
+# --------------------------------------------------------------------------- #
+
+
+def test_a1_seeded_changelog_carries_buried_refutation():
+    from benchmarks.gating_harness.run import _noise
+
+    spy = _spy(_NAIVE_RESPONSE)
+    noise = _noise(5, deadend_key=task.DEADEND_APPROACH)
+    recs = run_a1(2, task=task, gen=spy, changelog_noise=noise, seed_deadend=True)
+    # every session is memory-conditioned (seed present from session 0), log frozen
+    assert all(r.memory_had_deadend for r in recs)
+    user_msg = spy.captured[0][1]["content"]
+    assert "CHANGELOG" in user_msg
+    assert task.DEADEND_APPROACH in user_msg   # the seed names the dead-end
+    assert "variant-000" in user_msg           # the noise is present (buried)
+    # stub always returns naive -> a re-attempt on a conditioned trial
+    assert all(r.committed_refuted for r in recs)
+
+
+def test_a2_seeded_gate_rejects_every_session_despite_noise(mem, fake_embed):
+    from benchmarks.gating_harness.run import _noise
+
+    a2 = run_a2(
+        3, mem, task=task, gen=_stub(_NAIVE_RESPONSE), gating=True,
+        seed_deadend=True, store_noise=_noise(10, deadend_key=task.DEADEND_APPROACH),
+    )
+    m = compute_metrics(a2)
+    assert m["gate_rejections"] == 3              # seeded -> fires every session
+    assert all(r.memory_had_deadend for r in a2)  # noise in other domains does not block the gate
+
+
+def test_a2_seeded_ablation_floor(mem, fake_embed):
+    from benchmarks.gating_harness.run import _noise
+
+    a2 = run_a2(
+        3, mem, task=task, gen=_stub(_NAIVE_RESPONSE), gating=False,
+        seed_deadend=True, store_noise=_noise(5, deadend_key=task.DEADEND_APPROACH),
+    )
+    m = compute_metrics(a2)
+    assert m["gate_rejections"] == 0              # gate off -> no suppression
+    assert all(r.memory_had_deadend for r in a2)  # but memory HAS the dead-end (the floor)
+    assert m["dead_end_reattempt_rate"] == 1.0    # stub naive, unsuppressed
+
+
+def test_experiment_breakdown_counts():
+    from benchmarks.gating_harness.run import _experiment_breakdown
+
+    bd = _experiment_breakdown(15, [0, 10, 20, 40])
+    assert bd == {"A0": 15, "A1": 60, "A2_gate": 120, "A2_ablation": 60, "total": 255}
+
+
+def test_noise_excludes_deadend_key():
+    from benchmarks.gating_harness.run import _noise
+
+    entries = _noise(40, deadend_key=task.DEADEND_APPROACH)
+    assert len(entries) == 40
+    assert all(task.DEADEND_APPROACH not in e for e in entries)
+
+
+def test_experiment_preflight_spends_nothing(capsys):
+    from benchmarks.gating_harness.run import run_experiment
+
+    out = run_experiment(
+        task_name="recurring_deadend", k=15, noise_levels=[0, 10, 20, 40], confirm=False
+    )
+    assert out is None  # human gate: no --confirm -> returns None, no network
+    printed = capsys.readouterr().out
+    assert "PREFLIGHT" in printed
+    assert "TOTAL=255" in printed
+    assert "NOT spending" in printed

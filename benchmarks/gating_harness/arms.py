@@ -124,18 +124,30 @@ def run_a1(
     task=_default_task,
     gen=None,
     changelog_noise: list[str] | None = None,
+    seed_deadend: bool = False,
 ) -> list[SessionRecord]:
     records: list[SessionRecord] = []
-    # changelog_noise = N unrelated prior failures seeding A1's log (discriminant regime,
-    # Risk #1): stresses passive recall in a realistic noisy history. Default empty -> smoke
-    # unchanged. Noise entries MUST NOT contain task.DEADEND_APPROACH (caller's contract).
-    changelog: list[str] = list(changelog_noise or [])
+    # changelog_noise = N unrelated prior failures (discriminant regime, Risk #1): a realistic
+    # FLAT CHANGELOG that stresses passive recall. Noise MUST NOT contain task.DEADEND_APPROACH.
+    noise = list(changelog_noise or [])
+    if seed_deadend:
+        # SEED the refutation (the adversary null-probe, DIRECTION §6): the dead-end is known
+        # from session 0, BURIED at the top (oldest) of the flat log under the N noise entries.
+        # The log is FROZEN (no in-run learning) so every session is an IID conditioned trial of
+        # recalling the buried refutation.
+        seed = (
+            f"approach '{task.DEADEND_APPROACH}' was proven WRONG on {task.TASK_ID}: it fails "
+            f"the reference oracle ({task.TRAP_CASE}). Do NOT use it; use a different approach."
+        )
+        changelog: list[str] = [seed] + noise
+    else:
+        changelog = noise  # default: accumulates in-run (smoke path, byte-stable)
     for i in range(sessions):
-        knew = any(task.DEADEND_APPROACH in e for e in changelog)
+        knew = True if seed_deadend else any(task.DEADEND_APPROACH in e for e in changelog)
         call = _generate(_changelog_block(changelog), task=task, gen=gen)
         declared, key, code = _parse(call, task=task)
         oracle = task.run_oracle(code)
-        if oracle.hit_trap or not oracle.passed:
+        if not seed_deadend and (oracle.hit_trap or not oracle.passed):
             changelog.append(
                 f"approach '{key}' fails cases {oracle.failed_cases or ['(wrong)']}"
             )
@@ -177,13 +189,42 @@ def _a2_store_knows_deadend(mem, *, task=_default_task, gating: bool = True) -> 
 
 
 def run_a2(
-    sessions: int, mem, *, task=_default_task, gen=None, gating: bool = True
+    sessions: int,
+    mem,
+    *,
+    task=_default_task,
+    gen=None,
+    gating: bool = True,
+    seed_deadend: bool = False,
+    store_noise: list[str] | None = None,
 ) -> list[SessionRecord]:
-    # gating=False is the ablation arm: the store still accumulates dead-ends, but the gate
+    # gating=False is the ablation arm: the store still holds the dead-end, but the gate
     # is disabled (passthrough), so any re-attempt suppression must vanish -> proves the wire.
+    if seed_deadend:
+        # SEED the refutation FACT (the gate keys on its tags, O(1) by domain) + the N unrelated
+        # noise FACTs in OTHER domains: the gate's domain filter excludes them, so the keyed gate
+        # stays flat vs noise — unlike A1's flat CHANGELOG. Same N+1 failures both sides, different
+        # representation (structured store vs flat log). Store FROZEN (no in-run learning).
+        mem.remember(
+            content=f"approach {task.DEADEND_APPROACH} fails on {task.TASK_ID} — trap '{task.TRAP_CASE}'",
+            source_sephirah="external",
+            confidence=0.95,  # >= 0.9 -> FACT
+            domain=task.TASK_ID,
+            tags=["deadend", f"approach:{task.DEADEND_APPROACH}"],
+        )
+        for j, entry in enumerate(store_noise or []):
+            mem.remember(
+                content=entry,
+                source_sephirah="external",
+                confidence=0.95,
+                domain=f"noise-domain-{j % 9}",  # other domain -> excluded by the gate's filter
+                tags=[],
+            )
     records: list[SessionRecord] = []
     for i in range(sessions):
-        knew = _a2_store_knows_deadend(mem, task=task, gating=gating)
+        # Seeded: memory CONTAINS the refutation (knew=True) regardless of the gate; the gate's
+        # job is whether it ACTS on it. Unseeded: probe the store via the gate (legacy path).
+        knew = True if seed_deadend else _a2_store_knows_deadend(mem, task=task, gating=gating)
 
         # Generate, then gate the DECLARED intention (set_intention point).
         call = _generate(task=task, gen=gen)
@@ -215,8 +256,9 @@ def run_a2(
 
         oracle = task.run_oracle(code)
 
-        # Record the dead-end into the persistent store for the NEXT session.
-        if oracle.hit_trap:
+        # Record the dead-end into the persistent store for the NEXT session (unseeded path
+        # only; a seeded store is frozen so every session is an IID conditioned trial).
+        if oracle.hit_trap and not seed_deadend:
             mem.remember(
                 content=(
                     f"approach {key} fails on {task.TASK_ID} — trap '{task.TRAP_CASE}'"
