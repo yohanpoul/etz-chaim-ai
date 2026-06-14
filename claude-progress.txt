@@ -1,88 +1,101 @@
 ETZ CHAIM AI — claude-progress.txt
-Updated: 2026-06-14 | Phase 2 TEMPS 2d COMPLETE — datalib prior-trap probe NO-GO
-(Haiku reads the short inlined library and picks `settle` 10/10; raw_deadend = 0.00)
+Updated: 2026-06-14 | Phase 2 TEMPS 2e COMPLETE — REAL deprecated-API probe = 3rd NO-GO (DECISIVE)
+(Haiku writes current pandas/numpy 20/20; df.append + np.float priors do NOT trap a frontier single-shot)
 
 == STATE (current) ==
-Phase 2 TEMPS 2 / 2b / 2c / 2d done across two CC sessions. Suite 35/35 green
-(18 prior + 17 new offline datalib tests). 2d work is additive under
-benchmarks/gating_harness/ — zero edits to existing modules. NOT yet committed at time
-of writing this line (commit follows: 3 source files + this progress file, NO push).
-Commits adc0861 (T2) / 1890924 (T2b) / 7d564ae (T2c) — LOCAL, NOT pushed.
+Phase 2 TEMPS 2 / 2b / 2c / 2d / 2e done across three CC sessions. Suite 69/69 green
+(35 prior + 34 new deprecated-API tests; 0 skipped after pandas installed). 2e work is additive
+under benchmarks/gating_harness/ — ZERO edits to existing modules (git diff empty outside 3 new
+files). NOT yet committed at time of writing (commit follows: 3 source files + this progress file,
+NO push). Commits adc0861 (T2) / 1890924 (T2b) / 7d564ae (T2c) — datalib 2d pending its own commit.
 
   - TEMPS 2 (adc0861): harness A0 (bare) / A1 (bare+CHANGELOG advisory) / A2 (bare+gate
-    gating.core.gate_intention on persistent Postgres store), task = balanced_brackets
-    (external, pytest oracle, count dead-end via trap "([)]"). Smoke Ollama qwen end-to-end
-    (tokens MEASURED, model via resolve_model, zero hardcoded slug). Decision (A) = KILL
-    TEST: A2 matches by exact tag via a stipulated-perfect classifier = UPPER BOUND of
-    enforcement. A2<=A1 -> pivot; A2>A1 -> floor crossed, NOT validated (real matching +
-    deprecate/contradict lifecycle = future B).
-  - TEMPS 2b (1890924): hardened code-first matching (extract_code salvage, classify_from_code
-    AST, infer_approach_key). test_gate_fires.py go/no-go 3/3 (gate REJECTS a count dead-end
-    matched from CODE across a wipe; ablation ETZ_GATING=off passes through).
-  - TEMPS 2c (7d564ae): cheap Haiku elicitation probe on balanced_brackets. provider.chat_claude_cli
-    = frontier via OAuth Max CLI (tokens + cost MEASURED, slug claude-haiku-4-5 + stale-slug guard).
-    RESULT NO-GO: raw_deadend 0.00 (stack 10/10) — balanced_brackets TOO EASY (frontier *authors*
-    the correct algorithm). 2b parser held on real Haiku output (unknown_rate=0).
-  - TEMPS 2d (this session): REDESIGN to a "prior-trap / obsolete-API" task. New files (additive):
-      benchmarks/gating_harness/task/datalib_prior_trap.py  — inlined `datalib` with TRAP `total`
-        (naive sum, verb-matched, listed first) vs CORRECT `settle` (adds flat HANDLING_FEE_CENTS=13
-        for orders of >=3 line-items; the fee is an ARBITRARY magic constant => forces library use,
-        a bypass-reimplement gets it wrong and fails the oracle). DATALIB_SOURCE = single source of
-        truth (inlined into PROMPT *and* exec'd at oracle time). Dead-end label = AST detects a call
-        to datalib.total (deterministic; settle-wins tie; 2-pass alias table robust to every import
-        form). Sandbox = guarded __import__ + ModuleType in sys.modules (import datalib AND
-        from-import both resolve; `import os` blocked). hit_trap = behavioural cross-check.
-      benchmarks/gating_harness/probe_datalib.py  — N=10 single-shot Haiku, framing-split diversity
-        (no CLI --temperature flag, re-confirmed), 4 buckets {total/settle/bypass/unknown}, reports
-        raw AND conditioned dead-end rate, tokens+cost MEASURED, --full refused, STOP after probe.
-      benchmarks/gating_harness/tests/test_task_datalib.py  — 17 offline tests (classifier x4 import
-        forms + tie + bypass + local-shadow; oracle trap-fails/settle-passes through sandbox; from-import
-        resolves; arbitrary import blocked; sys.modules restored; code-first no-APPROACH-line;
-        ORACLE_CASES locked to DATALIB_SOURCE + >=1 discriminating). All green BEFORE any Haiku spend.
+    gating.core.gate_intention on persistent Postgres). Decision (A) = KILL TEST (stipulated-perfect
+    classifier = UPPER BOUND of enforcement). A2<=A1 -> pivot; A2>A1 -> floor crossed, NOT validated.
+  - TEMPS 2b (1890924): hardened code-first matching (AST + salvage + infer_approach_key).
+    test_gate_fires.py 3/3 (gate REJECTS a count dead-end across a wipe; ablation passes through).
+  - TEMPS 2c (7d564ae): cheap Haiku probe on balanced_brackets. NO-GO: raw_deadend 0.00 — too easy,
+    frontier *authors* the correct algorithm.
+  - TEMPS 2d (pending commit): datalib_prior_trap (invented self-contained lib). NO-GO: raw_deadend
+    0.00 — frontier *reads* the short inlined source and picks settle 10/10. An invented lib carries
+    NO obsolete-API training prior to exploit.
+  - TEMPS 2e (this session): REAL deprecated-API trap (option A, founder fork). New files (additive):
+      benchmarks/gating_harness/task/deprecated_api_trap.py — TWO basket subtasks, NEUTRAL framing
+        (never names the deprecated method nor the fix):
+          P (pandas)  build_ledger(records) — DEAD-END DataFrame.append (removed pandas 2.0). Streaming
+            "one record at a time" framing = the natural footgun. CORRECT = list-accumulate -> pd.DataFrame
+            / pd.concat.
+          N (numpy)   to_amounts(values)    — DEAD-END np.float / np.int (removed numpy 1.24). Old reflex
+            np.array(values, dtype=np.float). CORRECT = dtype=float / np.float64.
+        Classifier = behavioral oracle (the removed API *raises* AttributeError -> bucket `deprecated`)
+        + AST cross-check (PRIMARY). The pandas AST is robust to list.append: a 3-pass DataFrame-typed
+        name table flags `<name>.append(` ONLY when <name> is DataFrame-typed (assigned from
+        pd.DataFrame/concat/merge/read_*/from_records or `from pandas import DataFrame` ctor), never
+        list.append; chained pd.DataFrame(...).append(...) caught. numpy AST flags np.float exactly
+        (np.float64 stays correct), walks ast.Attribute (catches dtype=np.float, never a Call). Version
+        guard: PANDAS_OK / NUMPY_OK computed at import, module imports CLEAN even with pandas absent;
+        an unavailable subtask self-skips (OracleResult.skipped). Real-lib sandbox: guarded __import__
+        allows ONLY pandas/numpy from sys.modules, blocks `import os`; tight _SAFE_BUILTINS whitelist
+        (libs run via their own globals, so pd.DataFrame works under the whitelist); NO sys.modules
+        save/restore (real libs are permanent).
+      benchmarks/gating_harness/probe_deprecated.py — iterates AVAILABLE_SUBTASKS, N=10/subtask, style A0,
+        framing-split (relaxed "quick/simple" / modern "production-ready, current best practices" — never
+        names the API), 5 buckets {deprecated/correct/bypass/unknown/skipped}, raw + conditioned dead-end
+        PER subtask + combined, tokens+cost MEASURED, slug via resolve_model + stale-slug guard, --full
+        refused, results ephemeral (untracked). Report records pandas+numpy versions for repro.
+      benchmarks/gating_harness/tests/test_task_deprecated.py — 34 tests. Classifier tests UNCONDITIONAL
+        (pure ast): list.append -> correct (cardinal false-positive guard), df.append all import forms ->
+        deprecated, chained -> deprecated, np.float -> deprecated, np.float64/dtype=float -> correct,
+        np.bool NOT flagged. Oracle tests skipif-guarded (run when lib present): trap raises + hit_trap,
+        correct passes, from-import resolves, `import os` blocked, ORACLE_CASES consistent + discriminating.
+        ALL GREEN before any Haiku spend (numpy live, pandas skipped pre-install -> proves absent-lib
+        import contract); ALL 69 green after pandas installed.
 
-== PROBE RESULT 2d — NO-GO (clean, structural) ==
-claude-haiku-4-5, N=10, framing split, MEASURED: raw_deadend = 0.00, conditioned = 0.00.
-keys: total=0, settle=10, bypass=0, unknown=0. pass_rate=0.70 (3 settle-callers over-engineered
-their wrapper and failed all cases — still key=settle; irrelevant to the dead-end question).
-tokens 7408, CLI cost $0.1189, list-price est $0.0367. ~117s.
-ALL 10 declared lines explicitly reasoned about settle + the fee (e.g. "13¢ for 3+ items",
-"handles base total + handling fee") — Haiku READ the short inlined docstring and chose the
-documented-correct function, even on the relaxed "quick/simple" half.
-STOPPED after one probe (honest-calibration constraint: do NOT sur-tune the trap to force a fall;
-the 2-3 iter cap is a ceiling, not a quota). The only remaining knobs would either HIDE the fee
-(the deception explicitly forbidden) or switch to a REAL deprecated API (sacrifices
-self-containment — a different design, not a knob).
+== PROBE RESULT 2e — 3rd NO-GO (clean, structural, DECISIVE) ==
+claude-haiku-4-5, N=10/subtask (20 calls), framing split, MEASURED. pandas 3.0.3 (installed TEST-ONLY
+into the etz-chaim .venv, NOT in pyproject, so the df.append prior could be tested), numpy 2.4.6.
+  pandas: raw_deadend 0.00 | conditioned 0.00 | deprecated=0 correct=10 bypass=0 unknown=0 | pass 0.80 | hit_trap 0.00
+  numpy:  raw_deadend 0.00 | conditioned 0.00 | deprecated=0 correct=10 bypass=0 unknown=0 | pass 1.00 | hit_trap 0.00
+  COMBINED raw 0.00 | conditioned 0.00.  tokens 16806, CLI cost $0.2117, list-price est $0.0833. 249.8s.
+Haiku wrote current-era code on EVERY trial, both framings, both subtasks. The pandas "modern" half
+EXPLICITLY rejected the footgun the prompt invited — declared lines like "batch-create DataFrame once
+(efficient vs incremental)" and "collect stream to list, build DataFrame once". The streaming "one by
+one" framing fired NATURALLY; Haiku simply did not fall. (2 pandas trials pass=False = over-engineered
+wrappers that still key `correct` — irrelevant to the dead-end question, same artifact as 2d.)
+STOPPED after one probe (honest-calibration cap). The only remaining single-shot knobs would HIDE the
+modern path or bias the prompt toward the deprecated API — both explicitly forbidden. NOT torturing the
+trap to avoid the NO-GO.
 
 == THE FINDING (matters for ADR-0009 / DIRECTION) ==
-Cheap single-shot Haiku elicitation has now failed on TWO task classes for TWO structural reasons:
-  (i)  author-the-algorithm (balanced_brackets) -> a frontier model writes the CORRECT algorithm.
-  (ii) choose-from-an-invented-library (datalib) -> a frontier model READS the short inlined source
-       and picks the documented-correct function. An *invented, self-contained* library carries NO
-       obsolete-API training prior to exploit (nothing "obsolete" exists in the model's weights).
-Deeper point: the dead-end ADR-0009 actually cares about is a RE-ATTEMPT across context wipes
-(does the agent re-commit a belief it already refuted), which only manifests in the MULTI-SESSION
-loop — NOT in a single shot. A single-shot probe tests "make the mistake once"; the experiment tests
-"re-make it after memory said no". The cheap single-shot gate may be structurally unable to surface
-the very dead-end the full experiment is built around.
+Cheap single-shot Haiku elicitation has now NO-GO'd on THREE task classes for THREE structural reasons:
+  (i)   author-the-algorithm (balanced_brackets) -> frontier writes the CORRECT algorithm.
+  (ii)  choose-from-an-invented-library (datalib) -> frontier READS the short inlined source, picks correct.
+  (iii) REAL deprecated-API prior (pandas df.append / np.float) -> a current frontier (Haiku 4.5, late
+        2025) ALREADY KNOWS the API moved on and writes the post-removal code by default. A strong
+        training prior is NOT enough: the model's *recency* overrides the *footgun*.
+Decisive read: the dead-end ADR-0009 actually cares about is a RE-ATTEMPT across context wipes (does the
+agent re-commit a belief it already refuted), which only manifests in the MULTI-SESSION loop — NOT in a
+single shot. A single-shot probe tests "make the mistake once"; the experiment tests "re-make it after
+memory said no". Option A (cheap single-shot gate) is now EXHAUSTED and confirmed structurally unable to
+surface the very dead-end the full experiment is built around. This is a clean negative result, not a
+failure — it removes single-shot from the table without ambiguity.
 
-== NEXT STEP (reprise — founder decides the fork) ==
-The harness, classifier, sandbox, Haiku provider, and offline-proven gate are ALL ready; the open
-problem is purely "find a task that elicits a recurrent dead-end in a frontier model". Options:
-  A) REAL deprecated-API trap (datetime.utcnow / pandas df.append / np.float) — genuine training-prior
-     pull, still cheap single-shot, but SACRIFICES self-containment and Haiku 4.5's prior may already
-     be current (it may know they're deprecated). Cheapest next probe IF keeping the single-shot gate.
-  B) MULTI-STEP / accumulating-state task where the dead-end EMERGES from context pressure — far
-     closer to the real ADR-0009 phenomenon (re-attempt across wipes), but costlier than single-shot
-     and no longer "cheap probe".
-  C) Re-frame the test around dead-end RE-ATTEMPT (the true ADR-0009 claim) rather than first-attempt
-     dead-end — which only exists multi-session, implying the cheap single-shot gate is the wrong gate.
-  D) Probe a weaker model — REJECTED: DIRECTION requires a frontier model (Haiku min); eliciting on a
-     weak model proves nothing about whether the gate helps a frontier model.
-Recommendation: A is the cheapest honest next probe to try; if it also NO-GOes, accept that the cheap
-single-shot gate is structurally wrong and move to B/C (design the dead-end into a multi-session loop,
-which is ADR-0009's native domain anyway).
-ADR-0009 hypothesis (active gating != passive retrieval) is NOT refuted — still untestable while no
-task elicits the dead-end. Project remains on the active PIVOT TRIGGER.
+== NEXT STEP (reprise — option A closed, fork B/C is the path) ==
+Founder fork: A (cheap single-shot real-deprecated-API) was the last cheap probe and it NO-GO'd
+decisively. Reprise = MULTI-SESSION (B/C), ADR-0009's NATIVE domain:
+  B) MULTI-STEP / accumulating-state task where the dead-end EMERGES from context pressure and a
+     re-attempt across a wipe is the observable — the real ADR-0009 phenomenon. Costlier than single-shot,
+     no longer a "cheap probe".
+  C) Re-frame the test around dead-end RE-ATTEMPT (commit a refuted belief AGAIN after a wipe) rather than
+     first-attempt dead-end. This is the claim ADR-0009 makes; it only exists multi-session.
+The harness, classifier, sandbox, Haiku provider, and offline-proven gate (test_gate_fires 3/3) are ALL
+ready and reusable. The open problem moves from "find a task that elicits a single-shot dead-end" (proven
+unsolvable cheaply) to "design a multi-session loop where a frontier model re-commits a refuted approach
+across a wipe, and measure whether the A2 gate prevents it BETTER than the A1 CHANGELOG". A2 must beat
+A1, not A0; ablation (ETZ_GATING=off) must erase the gain or it is not the gate doing the work.
+ADR-0009 hypothesis (active gating != passive retrieval) is still NOT refuted — and no longer testable
+single-shot. Project moves OFF the cheap-probe track onto the multi-session build. Pivot trigger remains
+active until B/C produces a measured A2-vs-A1 contrast.
 
 == GUARDRAILS ==
 raw/ = READ-ONLY (reference only). NO push (ever). Work confined to projets/etz-chaim-ai/.
@@ -91,6 +104,10 @@ Plan mode + manual approval, never Auto. Tokens MEASURED never fabricated. Model
 never a hardcoded/stale slug. The full run needs a frontier model (Haiku min). HONEST calibration:
 never tune a trap to deceive the model into falling — the dead-end must be NATURAL or it is reported
 as NO-GO. results/ stays ephemeral (untracked, never committed).
+NOTE: pandas 3.0.3 installed test-only in the etz-chaim .venv for 2e (NOT in pyproject). Harmless to
+leave; `pip uninstall pandas python-dateutil six` to revert. The deprecated_api_trap module + its
+classifier tests still import/run with pandas absent (numpy subtask only); only the pandas oracle tests
+skip without it.
 
 == HISTORIQUE COMPACT ==
 Phase 0 (41ea770): read-only audit 151 elements = 82 real / 37 partial / 32 shell. Top gaps:
@@ -98,9 +115,9 @@ Phase 0 (41ea770): read-only audit 151 elements = 82 real / 37 partial / 32 shel
 Phase 1 (349d301): docs/DIRECTION.md + ADR-0009 PROPOSED. Direction = persistent contradiction-aware
   self-state that GATES a multi-session loop (active gating != passive retrieval). Domain = code/debug.
   Risk #1: the CHANGELOG baseline (A1) may already be good enough.
-Phase 2 TEMPS 1 (268288a): ablatable gate + green PLUMBING micro-probe (FACT exact-tag, NOT the edge;
-  db.py:171 filters deprecated -> invisible to recall).
+Phase 2 TEMPS 1 (268288a): ablatable gate + green PLUMBING micro-probe (FACT exact-tag, NOT the edge).
 Phase 2 TEMPS 2/2b/2c (adc0861/1890924/7d564ae): harness + parser + Haiku probe. NO-GO on balanced_brackets.
-Phase 2 TEMPS 2d (this session, pending commit): datalib prior-trap. NO-GO (Haiku reads short inlined lib).
-  Two NO-GOs => cheap single-shot frontier elicitation is hard; the real dead-end is a multi-session
-  RE-ATTEMPT, not a single-shot first mistake. Founder fork A/B/C above.
+Phase 2 TEMPS 2d (pending commit): datalib invented-lib prior-trap. NO-GO (Haiku reads short inlined lib).
+Phase 2 TEMPS 2e (this session, pending commit): REAL deprecated-API trap (pandas df.append + np.float).
+  3rd NO-GO, DECISIVE. THREE single-shot NO-GOs => cheap single-shot frontier elicitation is structurally
+  the wrong gate; the real dead-end is a multi-session RE-ATTEMPT. Option A exhausted -> fork B/C.
