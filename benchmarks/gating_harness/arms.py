@@ -26,13 +26,18 @@ from gating.core import gate_intention
 
 from . import provider
 from .metrics import SessionRecord
-from .task import balanced_brackets as task
+from .task import balanced_brackets as _default_task
+
+# Default task keeps the smoke byte-stable; the experiment passes task=... explicitly.
+task = _default_task
 
 
 @contextlib.contextmanager
-def _gating_on():
+def _gating(on: bool = True):
+    """Set ETZ_GATING for the duration. on=True is the live gate; on=False is the
+    ABLATION (gate_intention passes through) used by the experiment's A2-ablation arm."""
     prev = os.environ.get("ETZ_GATING")
-    os.environ["ETZ_GATING"] = "on"
+    os.environ["ETZ_GATING"] = "on" if on else "off"
     try:
         yield
     finally:
@@ -48,14 +53,19 @@ _SYSTEM = (
 )
 
 
-def _generate(extra_context: str | None = None) -> provider.ModelCall:
+def _generate(
+    extra_context: str | None = None, *, task=_default_task, gen=None
+) -> provider.ModelCall:
+    # gen is the model-call callable: default = local Ollama (smoke); experiment passes
+    # provider.chat_claude_cli (Haiku). Both take messages and return a ModelCall.
+    gen = gen or provider.chat
     user = task.PROMPT if not extra_context else f"{extra_context}\n\n{task.PROMPT}"
-    return provider.chat(
+    return gen(
         [{"role": "system", "content": _SYSTEM}, {"role": "user", "content": user}]
     )
 
 
-def _parse(call: provider.ModelCall) -> tuple[str, str, str | None]:
+def _parse(call: provider.ModelCall, *, task=_default_task) -> tuple[str, str, str | None]:
     declared = task.extract_declared_approach(call.text)
     code = task.extract_code(call.text)
     # CODE-FIRST matching: robust even when the model omits the 'APPROACH:' line.
@@ -79,11 +89,11 @@ def _changelog_block(entries: list[str]) -> str | None:
 # --------------------------------------------------------------------------- #
 
 
-def run_a0(sessions: int) -> list[SessionRecord]:
+def run_a0(sessions: int, *, task=_default_task, gen=None) -> list[SessionRecord]:
     records: list[SessionRecord] = []
     for i in range(sessions):
-        call = _generate()
-        declared, key, code = _parse(call)
+        call = _generate(task=task, gen=gen)
+        declared, key, code = _parse(call, task=task)
         oracle = task.run_oracle(code)
         records.append(
             SessionRecord(
@@ -108,13 +118,22 @@ def run_a0(sessions: int) -> list[SessionRecord]:
 # --------------------------------------------------------------------------- #
 
 
-def run_a1(sessions: int) -> list[SessionRecord]:
+def run_a1(
+    sessions: int,
+    *,
+    task=_default_task,
+    gen=None,
+    changelog_noise: list[str] | None = None,
+) -> list[SessionRecord]:
     records: list[SessionRecord] = []
-    changelog: list[str] = []
+    # changelog_noise = N unrelated prior failures seeding A1's log (discriminant regime,
+    # Risk #1): stresses passive recall in a realistic noisy history. Default empty -> smoke
+    # unchanged. Noise entries MUST NOT contain task.DEADEND_APPROACH (caller's contract).
+    changelog: list[str] = list(changelog_noise or [])
     for i in range(sessions):
         knew = any(task.DEADEND_APPROACH in e for e in changelog)
-        call = _generate(_changelog_block(changelog))
-        declared, key, code = _parse(call)
+        call = _generate(_changelog_block(changelog), task=task, gen=gen)
+        declared, key, code = _parse(call, task=task)
         oracle = task.run_oracle(code)
         if oracle.hit_trap or not oracle.passed:
             changelog.append(
@@ -143,31 +162,36 @@ def run_a1(sessions: int) -> list[SessionRecord]:
 # --------------------------------------------------------------------------- #
 
 
-def _a2_store_knows_deadend(mem) -> bool:
+def _a2_store_knows_deadend(mem, *, task=_default_task, gating: bool = True) -> bool:
     """Does the persistent store already hold a FACT that refutes the dead-end?
 
     Uses the gate itself (the wire under test) as the probe: a rejection means a
-    committed refutation is present and re-readable after the context wipe.
+    committed refutation is present and re-readable after the context wipe. Under the
+    ablation (gating=False) the gate passes through, so this reports False.
     """
-    with _gating_on():
+    with _gating(gating):
         probe = gate_intention(
             mem, goal="probe", approach_key=task.DEADEND_APPROACH, domain=task.TASK_ID
         )
     return probe.allowed is False
 
 
-def run_a2(sessions: int, mem) -> list[SessionRecord]:
+def run_a2(
+    sessions: int, mem, *, task=_default_task, gen=None, gating: bool = True
+) -> list[SessionRecord]:
+    # gating=False is the ablation arm: the store still accumulates dead-ends, but the gate
+    # is disabled (passthrough), so any re-attempt suppression must vanish -> proves the wire.
     records: list[SessionRecord] = []
     for i in range(sessions):
-        knew = _a2_store_knows_deadend(mem)
+        knew = _a2_store_knows_deadend(mem, task=task, gating=gating)
 
         # Generate, then gate the DECLARED intention (set_intention point).
-        call = _generate()
-        declared, key, code = _parse(call)
+        call = _generate(task=task, gen=gen)
+        declared, key, code = _parse(call, task=task)
         generations = 1
         gate_rejected = False
 
-        with _gating_on():
+        with _gating(gating):
             decision = gate_intention(
                 mem, goal=declared or task.PROMPT, approach_key=key, domain=task.TASK_ID
             )
@@ -176,11 +200,10 @@ def run_a2(sessions: int, mem) -> list[SessionRecord]:
             gate_rejected = True
             note = (
                 f"REJECTED by memory gate: approach '{declared}' was previously proven "
-                f"wrong on input '{task.TRAP_CASE}'. Use a fundamentally different "
-                f"approach (do not just re-count brackets)."
+                f"wrong on '{task.TRAP_CASE}'. Use a fundamentally different approach."
             )
-            call2 = _generate(note)
-            declared, key, code = _parse(call2)
+            call2 = _generate(note, task=task, gen=gen)
+            declared, key, code = _parse(call2, task=task)
             generations = 2
             call = provider.ModelCall(  # accumulate tokens across both generations
                 text=call2.text,
@@ -196,8 +219,7 @@ def run_a2(sessions: int, mem) -> list[SessionRecord]:
         if oracle.hit_trap:
             mem.remember(
                 content=(
-                    f"approach {key} fails on balanced-brackets — trap "
-                    f"'{task.TRAP_CASE}' (counts balanced, nesting wrong)"
+                    f"approach {key} fails on {task.TASK_ID} — trap '{task.TRAP_CASE}'"
                 ),
                 source_sephirah="external",
                 confidence=0.95,  # >= 0.9 -> EpistemicStatus.FACT
