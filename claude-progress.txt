@@ -1,5 +1,14 @@
 ETZ CHAIM AI — claude-progress.txt
-Updated: 2026-06-14 | Phase 2 TEMPS 2e COMPLETE — REAL deprecated-API probe = 3rd NO-GO (DECISIVE)
+Updated: 2026-06-16 | ADR-0009 REFUTED — shov-gate gating edge falsified on code/oracle -> PIVOT
+(Seeded multi-session A1=A2=0.00: an advisory CHANGELOG already suppresses dead-end re-attempt 100%;
+ a FAIR canonical-keyed log is information-equal to the code-keyed gate -> matching AND enforcement
+ both fall. The "different-name" residual vanishes by construction; requiring a natural run = weakening
+ A1 to prose = forbidden strawman, so NO natural run was spent. Prior: 3 single-shot NO-GO + this
+ multi-session KILL. DIRECTION.md §8(b) open domain does NOT open (conditioned on §8a, which failed).
+ Trace: benchmarks/results/gating_harness/PREREGISTER_20260616.md + experiment_20260614-204600.)
+
+== PRIOR STATE (Phase 2 TEMPS 2e, 2026-06-14) — superseded by the REFUTED verdict above ==
+Phase 2 TEMPS 2e COMPLETE — REAL deprecated-API probe = 3rd NO-GO (DECISIVE)
 (Haiku writes current pandas/numpy 20/20; df.append + np.float priors do NOT trap a frontier single-shot)
 
 == STATE (current) ==

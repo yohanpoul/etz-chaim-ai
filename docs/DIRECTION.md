@@ -2,8 +2,10 @@
 
 > Where does wrapping an LLM in EtzChaim augment it *measurably*, and via which real faculties?
 > Grounded on the Phase-0 audit (docs/STATE_MAP.md) — built on what exists, not what docs promise.
-> Status: PROPOSED (ADR-0009). The project currently sits on a pivot-trigger edge; this direction is
-> the escape route, conditional on the Phase-2 test below.
+> Status: **REFUTED (2026-06-16, ADR-0009).** The Phase-2 test below killed the gating edge on the
+> code/oracle domain: seeded multi-session returned A1 = A2 = 0.00, and a fair canonical-keyed
+> CHANGELOG is information-equal to the gate (the "different-name" residual vanishes by construction).
+> PIVOT TRIGGER fired — see `memory/DECISIONS.md` ADR-0009 Resolution. **§8(b) does NOT open.**
 
 ## 1. Answer in one line
 Yes — but only for **long-horizon, multi-session, context-wiped agentic work**, where the edge is
@@ -63,6 +65,9 @@ Metrics per task across N sessions: (1) **dead-end re-attempt rate**, (2) **self
 - **Proof:** A2 significantly < A1 on (1)+(2) at equal/better (3)+(4), and an **ablation** (disable
   the `contradict`/`deprecate` gating) erases the gain → the gating wire is the cause.
 - **Refutation (null → PIVOT):** A2 ≈ A1 → the lifecycle adds nothing beyond a markdown log.
+  **FIRED (2026-06-16):** the seeded multi-session run returned A1 = A2 = 0.00; and a fair
+  information-symmetric A1 (canonical-key log) is information-equal to the code-keyed gate, so the
+  surviving "different-name" residual vanishes by construction. ADR-0009 **REFUTED**.
 
 Adversary's precise null-probe: Session A creates + deprecates "approach X fails" as a committed
 fact; Session B `set_intention("try X again")` must auto-reject or warn with the prior fact — if it
@@ -84,6 +89,7 @@ these labels objective.)
 - **(b) Open-ended research/analysis across sessions — DEFERRED, conditional.** Pursued **only if
   (a) first validates the gating mechanism.** This is where the broader identity lives, but its
   dead-end/contradiction labels are subjective, so it must not be the mechanism's first test.
+  **(2026-06-16) (a) REFUTED → (b) does NOT open.**
 - **(c) Synthetic task with injected known dead-ends — optional sanity sub-check** alongside (a) to
   isolate the gating logic from domain noise.
 ```

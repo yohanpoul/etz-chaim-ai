@@ -345,7 +345,7 @@ Adopt **AGENTS.md correctness audit** as a recurring discipline:
 ## ADR-0009 — Direction: persistent contradiction-aware self-state that gates a long-horizon loop
 
 **Date**: 2026-06-13
-**Status**: PROPOSED
+**Status**: REFUTED (2026-06-16) — gating edge falsified on the code/oracle domain; PIVOT TRIGGER fired. See **Resolution** below.
 
 ### Context
 
@@ -423,6 +423,35 @@ the embedding). **A green probe = the wire conducts, NOT the direction is valida
 if an enforced FACT-gate cannot even beat a CHANGELOG baseline, (B) is moot (the edge is dead
 regardless of which signal feeds it). If (A) shows signal, do (B) to test the genuine
 contradiction/deprecate edge. Status stays **PROPOSED**.
+
+### Resolution (2026-06-16) — REFUTED (both volets fall)
+
+Verdict forced WITHOUT a Phase-2 natural run — by an already-run experiment plus a fairness
+argument. No tokens were spent to close this.
+
+- **Enforcement edge — dead.** The SEEDED multi-session experiment already ran
+  (`benchmarks/results/gating_harness/experiment_20260614-204600`, Haiku 4.5, K=15): A1 (advisory
+  CHANGELOG) = A2 (enforced gate) = **0.00** dead-end re-attempt at every noise level N=0..40. An
+  explicit "failed approach" log suppresses re-attempt 100 %, so an enforced gate has **zero
+  headroom** over it. The ablation returned to the A0 base rate (~0.20–0.27), confirming the gate
+  *functions* — but with **no edge** over the log.
+- **Matching edge — dead by construction.** The only residual the seeded design cannot surface is
+  re-entry of a refuted approach **under a different name**. But a *fair* A1 (Risk #1,
+  information-symmetric) logs the **canonical approach key** — `arms.py` already does this
+  (`approach '{key}' fails`, the same `infer_approach_key` the gate uses) — so a strong A1 catches a
+  renamed re-entry BY THE KEY exactly as the code-keyed gate does. The residual vanishes.
+  Manufacturing it would require weakening A1 to prose-only matching = a **strawman the founder
+  pre-commitment forbids** (`PREREGISTER_20260616.md` §1).
+- **Therefore** the load-bearing claim "active gating ≠ passive retrieval" (the ⚠ in Consequences) is
+  **refuted on code/oracle**: a strong canonical-keyed CHANGELOG is information-equal to the
+  FACT/exact-tag gate, and the seeded result shows advice already equals enforcement for the
+  frontier. The pre-registered KILL criterion is met → MISSION.md PIVOT TRIGGER fires ("collapse to
+  generic framework"). Both volets ADR-0009 names — *matching* (structured vs flat) and *enforcement*
+  (imposed vs advisory) — fall together.
+- **§8(b) open-ended domain does NOT open** — it was conditional on §8(a) code/oracle first
+  *validating* the mechanism; §8(a) refuted it. DIRECTION.md §8 updated accordingly.
+- **Trace (untracked, ephemeral):** `PREREGISTER_20260616.md` (pre-run prediction + KILL criterion),
+  `experiment_20260614-204600` (seeded A1=A2=0.00), `probe_reattempt_20260614-184138` (base rate 0.25).
 
 ### References
 
