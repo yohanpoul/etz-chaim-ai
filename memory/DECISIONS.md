@@ -464,6 +464,95 @@ argument. No tokens were spent to close this.
 
 ---
 
+## ADR-0010 — SPEC-007 PredictionGate: NO-GO (precondition absent on verifiable tasks)
+
+**Date**: 2026-06-27
+**Status**: NO-GO / PARKED
+
+### Context
+
+SPEC-007 (PredictionGate) was the post-ADR-0009 retry on a *different* wire: instead of
+gating on stored beliefs (refuted in ADR-0009 as information-equal to a CHANGELOG), gate on
+the **measured gap between a committed prediction and a withheld ground-truth observation**.
+The thesis: this gap is *externally grounded* (the oracle decides), so it sidesteps the
+self-correction unreliability (Huang et al., ICLR 2024) and could beat a native
+**self-confidence** gate (A1) **precisely on confident-but-wrong cases** — the cell where
+self-confidence is blind.
+
+Built and validated dry, zero prod tokens:
+- ÉTAPE 1 — synthetic harness (`etzchaim/_internal/prediction_gate.py`): gate state machine
+  + objective gap metric + `refutation_gate` + a `confident_wrong_rate`-knobbed generator.
+  Two-sided sanity confirmed: edge (SURVIVES) appears only when synthetic
+  `confident_wrong_rate` > ~0.05; below it, REFUTED. (commits `4aee71f`.)
+- ÉTAPE 2 — real oracle adapter (`etzchaim/_internal/oracle_adapter.py`): code/debug bugs
+  with a **withheld** reference oracle (Invariant 1; the model never sees the test), model
+  injected via the SPEC-003 Anthropic path. Adversarial 10-bug suite engineered to *elicit*
+  confident-but-wrong (banker's rounding, bool⊆int, `or`-default on falsey, `str.strip` ≠
+  `removeprefix`, list mutation, lexicographic vs numeric sort, even-median, empty-guard,
+  chunk remainder, dedupe order) — traps proven at the oracle level. (commits `d35186f`,
+  `5cf753c`.)
+
+### Decision
+
+**NO-GO. Park SPEC-007.** The **mechanism is sound** (the gate, gap, and refutation logic
+work and are two-sided), but its **precondition — confident-AND-wrong errors — is rare on
+verifiable tasks**: the model's error *correlates with its uncertainty*, so native
+self-confidence (A1) already catches the failures and the external gap (A2) adds no edge.
+
+Pilot evidence (Haiku 4.5 = ceiling/cheap, one attempt per bug, prediction committed before
+the withheld oracle runs):
+- **easy suite: confident_wrong_rate = 0/6 (0.0).** Solved all 6, calibrated.
+- **adversarial suite: confident_wrong_rate = 0/10 (0.0).** Solved 9/10; on the single miss
+  it predicted `will_pass` but **under-confident (<0.6)** → caught by A1 *and* A2 → they tie,
+  A2 edge = 0. The confident-wrong cell stayed **empty even under adversarial gotchas**.
+
+This is consistent with ADR-0009: the gating edge keeps failing to materialize on
+code/oracle — there, advice already equals enforcement and (now) self-confidence already
+equals the external gap, because frontier models are well-calibrated on verifiable work.
+
+### Consequences
+
+- ✓ Closed cheaply and falsifiably: ~16 Haiku calls total, zero prod tokens, no N-session run.
+- ✓ Harness retained in `etzchaim/_internal/` (dry, tested) — re-runnable if the revisit
+  condition below is ever met.
+- ⚠ Thin N (easy 6, adversarial 10; 1 total error) → wide error bars on a 0.0 estimate. The
+  verdict is directional, but the *direction* is corroborated by the calibration mechanism and
+  by ADR-0009, not by N alone.
+- ⚠ Competence-ceiling tension (intrinsic, not fixable by harder bugs): bugs hard enough to
+  break the model also make it *uncertain* → A1 catches them → they don't test the gate.
+  Engineering an honest confident-wrong case is structurally hard — **that difficulty is the
+  finding.** More capable prod models are usually *better* calibrated, so étape 3 on prod is
+  **not justified**.
+- ✗ No `.implemented` marker created. No claim the edge is real.
+
+### Revisit condition (narrow)
+
+Reopen **only** if a domain appears that has **both**: (i) the model is **confident-but-wrong**
+at a non-trivial rate, **and** (ii) an **objective oracle** exists to ground the gap. This
+combo is rare: where an objective oracle exists, frontier models tend to be calibrated; where
+models are confidently wrong (open-ended research/analysis), labels are subjective — which is
+exactly the open-ended space **DIRECTION.md §8(b) already deferred as non-labellable**. Absent
+that combo, PredictionGate has no edge to capture.
+
+### Alternatives considered
+
+- **Run étape 3 on a prod model** — rejected: prod models calibrate *better* on verifiable
+  tasks → confident-wrong would stay ~0 for the wrong reason (no signal, not mechanism failure).
+- **Harden the bug suite further** — rejected: hits the competence-ceiling tension above
+  (harder ⇒ uncertain ⇒ A1 catches it), so it cannot populate the confident-wrong cell honestly.
+- **Widen N (30–40 bugs) before parking** — declined by founder; the directional verdict plus
+  the calibration mechanism and ADR-0009 consistency suffice.
+
+### References
+
+- specs/07_prediction_gate.md (spec, internal origin, falsification design)
+- etzchaim/_internal/prediction_gate.py + oracle_adapter.py (+ tests) — dry harness, all green
+- ADR-0009 (gating edge refuted on code/oracle; this is the same outcome via a different wire)
+- DIRECTION.md §8 (harness domain (a) code/oracle, (b) open-ended deferred, (c) synthetic sanity)
+- Huang et al., ICLR 2024 — LLM self-correction unreliability (motivation the gap aimed to dodge)
+
+---
+
 ## ADR template (copy this for new decisions)
 
 ```markdown
