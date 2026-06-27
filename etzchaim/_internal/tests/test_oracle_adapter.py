@@ -160,3 +160,45 @@ class TestRealClientIsLazy:
         client = oa.AnthropicModelClient(model_alias="haiku")
         assert client.model_alias == "haiku"
         assert client._client is None  # nothing constructed, nothing called, zero tokens
+
+
+# ─────────── withholding: the model must NOT see the reference oracle ───────────
+class TestWithholding:
+    def test_prompt_hides_the_reference_oracle(self):
+        for bug in oa.ADVERSARIAL_SUITE:
+            prompt = oa._build_prompt(bug)
+            # the hidden adversarial assertions are the withheld ground truth
+            assert bug.test_code not in prompt, bug.id
+
+    def test_prompt_shows_spec_and_visible_examples(self):
+        for bug in oa.ADVERSARIAL_SUITE:
+            prompt = oa._build_prompt(bug)
+            assert bug.spec in prompt, bug.id
+            assert bug.visible in prompt, bug.id
+
+
+# ─────────── adversarial suite: traps must fire at the ORACLE level (no LLM) ───────────
+class TestAdversarialSuite:
+    def test_size_eight_to_twelve(self):
+        assert 8 <= len(oa.ADVERSARIAL_SUITE) <= 12
+
+    def test_ids_unique(self):
+        ids = [b.id for b in oa.ADVERSARIAL_SUITE]
+        assert len(ids) == len(set(ids))
+
+    def test_reference_passes_the_hidden_oracle(self):
+        for b in oa.ADVERSARIAL_SUITE:
+            assert run_oracle(b.reference, b.test_code) == "will_pass", b.id
+
+    def test_buggy_passes_visible_but_fails_hidden(self):
+        # the lure: the shown examples are satisfied, so a model is led to confidence…
+        for b in oa.ADVERSARIAL_SUITE:
+            assert run_oracle(b.buggy, b.visible) == "will_pass", (b.id, "buggy must pass shown")
+            assert run_oracle(b.buggy, b.test_code) != "will_pass", (b.id, "…but fail hidden")
+
+    def test_plausible_fix_passes_visible_but_fails_hidden(self):
+        # the obvious "fix" a capable model writes is still wrong on the hidden edge → the trap is real
+        for b in oa.ADVERSARIAL_SUITE:
+            assert b.plausible, b.id
+            assert run_oracle(b.plausible, b.visible) == "will_pass", (b.id, "plausible must pass shown")
+            assert run_oracle(b.plausible, b.test_code) != "will_pass", (b.id, "…but fail hidden")

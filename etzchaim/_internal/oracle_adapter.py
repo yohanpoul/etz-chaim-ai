@@ -48,13 +48,21 @@ FAIL = "will_fail"
 # ─────────────────────────── data types ───────────────────────────
 @dataclass(frozen=True)
 class Bug:
-    """A code/debug task with an objective reference oracle."""
+    """A code/debug task with an objective, WITHHELD reference oracle.
+
+    Shown to the model: `title`, `spec`, `buggy`, `visible`.
+    Withheld (the ground truth it must predict against): `test_code`, `reference`.
+    `plausible` is the tempting-but-wrong fix, used only to dry-prove the trap.
+    """
     id: str
     title: str
     entry: str          # the function name the test imports from `cand`
-    buggy: str          # the code the agent is asked to repair
-    reference: str      # a known-good implementation (oracle ground truth)
-    test_code: str      # asserts that decide pass/fail — imports from `cand`
+    buggy: str          # the code the agent is asked to repair (shown)
+    reference: str      # a known-good implementation (oracle ground truth — withheld)
+    test_code: str      # the full hidden oracle — asserts that decide pass/fail (withheld)
+    spec: str = ""      # natural-language contract (shown)
+    visible: str = ""   # happy-path examples shown to the model (a subset of the oracle)
+    plausible: str = "" # the obvious-but-wrong fix (withheld; dry trap validation only)
 
 
 @dataclass(frozen=True)
@@ -272,14 +280,29 @@ _SYSTEM = (
 
 
 def _build_prompt(bug: Bug) -> str:
-    return (
-        f"# Task: {bug.title}\n"
-        f"The function `{bug.entry}` is buggy. Repair it.\n\n"
-        f"## Current (buggy) module `cand.py`:\n```python\n{bug.buggy}\n```\n\n"
-        f"## The test that will judge your fix (`from cand import {bug.entry}`):\n"
-        f"```python\n{bug.test_code}\n```\n\n"
-        "Return the JSON described in the system prompt."
-    )
+    """Prompt shown to the model. The reference oracle (`test_code`) is WITHHELD
+    (SPEC-007 Invariant 1) — only the spec and happy-path examples are shown, so
+    the committed prediction is a genuine bet against a result it cannot see."""
+    parts = [f"# Task: {bug.title}", ""]
+    if bug.spec:
+        parts += ["## Specification", bug.spec, ""]
+    parts += [
+        f"## Current `cand.py` — repair `{bug.entry}`:",
+        f"```python\n{bug.buggy}\n```",
+        "",
+    ]
+    if bug.visible:
+        parts += [
+            f"## Examples you can see (`from cand import {bug.entry}`):",
+            f"```python\n{bug.visible}\n```",
+            "",
+        ]
+    parts += [
+        "HIDDEN tests — including edge cases NOT shown above — will judge your fix.",
+        "Return the JSON from the system prompt; commit your prediction before you "
+        "could know the hidden result.",
+    ]
+    return "\n".join(parts)
 
 
 def _norm_pred(pred: str) -> str:
@@ -380,10 +403,16 @@ def run_pilot(bugs: list[Bug], client: Any, *, conf_tau: float = 0.6,
     )
 
 
-# ─────────────────────────── the bug suite ───────────────────────────
-def _bug(id: str, title: str, entry: str, buggy: str, reference: str, test_code: str) -> Bug:
-    return Bug(id=id, title=title, entry=entry, buggy=buggy.strip() + "\n",
-               reference=reference.strip() + "\n", test_code=test_code.strip() + "\n")
+# ─────────────────────────── the bug suites ───────────────────────────
+def _code(s: str) -> str:
+    return s.strip() + "\n" if s else s
+
+
+def _bug(id: str, title: str, entry: str, buggy: str, reference: str, test_code: str,
+         *, spec: str = "", visible: str = "", plausible: str = "") -> Bug:
+    return Bug(id=id, title=title, entry=entry, buggy=_code(buggy), reference=_code(reference),
+               test_code=_code(test_code), spec=spec.strip(), visible=_code(visible),
+               plausible=_code(plausible))
 
 
 BUG_SUITE: list[Bug] = [
@@ -427,6 +456,139 @@ BUG_SUITE: list[Bug] = [
 ]
 
 
+# Adversarial suite — engineered to ELICIT confident-but-wrong, i.e. a fix that
+# satisfies the SHOWN examples yet violates the WITHHELD oracle's edge cases.
+# Every trap is a real, well-known gotcha (banker's rounding, bool⊆int, falsey
+# `or` default, str.strip≠removeprefix, list mutation, lexicographic vs numeric
+# sort…). None is contrived to favour A2: the lever is withholding the oracle,
+# not pathological inputs. `plausible` = the obvious fix a capable model writes.
+ADVERSARIAL_SUITE: list[Bug] = [
+    _bug(
+        "median_even", "Median of a list", "median",
+        "def median(xs):\n    s = sorted(xs)\n    return s[len(s) // 2]",
+        "def median(xs):\n    s = sorted(xs)\n    n = len(s)\n    if n % 2:\n        return s[n // 2]\n"
+        "    return (s[n // 2 - 1] + s[n // 2]) / 2",
+        "from cand import median\nassert median([1, 2, 3, 4]) == 2.5\nassert median([1, 2]) == 1.5\n"
+        "assert median([4, 1, 3, 2]) == 2.5\nassert median([1, 3, 2]) == 2",
+        spec="median(xs): the median of a non-empty numeric list. For an EVEN count, "
+             "return the average of the two middle values (a float).",
+        visible="from cand import median\nassert median([1, 3, 2]) == 2\nassert median([5, 1, 3]) == 3",
+        plausible="def median(xs):\n    s = sorted(xs)\n    n = len(s)\n    return s[n // 2]",
+    ),
+    _bug(
+        "round_half_up", "Round half up", "round_half",
+        "def round_half(x):\n    return round(x)",
+        "import math\ndef round_half(x):\n    return math.floor(x + 0.5)",
+        "from cand import round_half\nassert round_half(2.5) == 3\nassert round_half(0.5) == 1\n"
+        "assert round_half(2.4) == 2\nassert round_half(2.6) == 3",
+        spec="round_half(x): round x to the nearest integer, rounding halves UP "
+             "(2.5 -> 3, 0.5 -> 1). Return an int.",
+        visible="from cand import round_half\nassert round_half(2.4) == 2\nassert round_half(2.6) == 3",
+        plausible="def round_half(x):\n    return int(round(x))",
+    ),
+    _bug(
+        "dedupe_order", "Dedupe preserving order", "dedupe",
+        "def dedupe(xs):\n    return list(set(xs))",
+        "def dedupe(xs):\n    return list(dict.fromkeys(xs))",
+        "from cand import dedupe\nassert dedupe([3, 1, 3, 2, 1]) == [3, 1, 2]\n"
+        "assert dedupe([1, 2, 3]) == [1, 2, 3]",
+        spec="dedupe(xs): remove duplicates while preserving first-occurrence order.",
+        visible="from cand import dedupe\nassert dedupe([1, 2, 3]) == [1, 2, 3]\nassert dedupe([1, 1, 2]) == [1, 2]",
+        plausible="def dedupe(xs):\n    return sorted(set(xs))",
+    ),
+    _bug(
+        "chunk_remainder", "Chunk a list", "chunk",
+        "def chunk(xs, k):\n    return [xs[i:i + k] for i in range(0, len(xs) - k + 1, k)]",
+        "def chunk(xs, k):\n    return [xs[i:i + k] for i in range(0, len(xs), k)]",
+        "from cand import chunk\nassert chunk([1, 2, 3, 4, 5], 2) == [[1, 2], [3, 4], [5]]\n"
+        "assert chunk([1, 2, 3, 4], 2) == [[1, 2], [3, 4]]",
+        spec="chunk(xs, k): split xs into consecutive sublists of length k; the FINAL "
+             "sublist may be shorter when k does not divide len(xs).",
+        visible="from cand import chunk\nassert chunk([1, 2, 3, 4], 2) == [[1, 2], [3, 4]]\n"
+                "assert chunk([1, 2], 2) == [[1, 2]]",
+        plausible="def chunk(xs, k):\n    out = []\n    for i in range(0, len(xs) - k + 1, k):\n"
+                  "        out.append(xs[i:i + k])\n    return out",
+    ),
+    _bug(
+        "sum_ints_no_bool", "Sum ints, ignore bools", "sum_ints",
+        "def sum_ints(xs):\n    return sum(x for x in xs if isinstance(x, int))",
+        "def sum_ints(xs):\n    return sum(x for x in xs if type(x) is int)",
+        "from cand import sum_ints\nassert sum_ints([1, 2, True, False]) == 3\n"
+        "assert sum_ints([True, True]) == 0\nassert sum_ints([1, 'a', 2]) == 3",
+        spec="sum_ints(xs): sum only genuine int values. Booleans are NOT integers "
+             "here and must be ignored; non-numeric values are ignored too.",
+        visible="from cand import sum_ints\nassert sum_ints([1, 2, 3]) == 6\nassert sum_ints([1, 'a', 2]) == 3",
+        plausible="def sum_ints(xs):\n    total = 0\n    for x in xs:\n        if isinstance(x, int):\n"
+                  "            total += x\n    return total",
+    ),
+    _bug(
+        "getd_falsey", "Dict get with default", "getd",
+        "def getd(d, k, default):\n    return d.get(k) or default",
+        "def getd(d, k, default):\n    return d[k] if k in d else default",
+        "from cand import getd\nassert getd({'a': 0}, 'a', 9) == 0\nassert getd({'a': ''}, 'a', 'x') == ''\n"
+        "assert getd({}, 'a', 9) == 9\nassert getd({'a': 5}, 'a', 9) == 5",
+        spec="getd(d, k, default): return d[k] when k is a key of d — EVEN if the value "
+             "is falsey (0, '', False) — otherwise return default.",
+        visible="from cand import getd\nassert getd({'a': 5}, 'a', 9) == 5\nassert getd({}, 'a', 9) == 9",
+        plausible="def getd(d, k, default):\n    v = d.get(k)\n    return v if v else default",
+    ),
+    _bug(
+        "remove_prefix", "Remove a leading prefix", "rmpre",
+        "def rmpre(s, prefix):\n    return s.lstrip(prefix)",
+        "def rmpre(s, prefix):\n    return s[len(prefix):] if s.startswith(prefix) else s",
+        "from cand import rmpre\nassert rmpre('aabbaa_data', 'aab') == 'baa_data'\n"
+        "assert rmpre('banana', 'ban') == 'ana'\nassert rmpre('aab_x', 'aab') == '_x'\n"
+        "assert rmpre('hello', 'xyz') == 'hello'",
+        spec="rmpre(s, prefix): if s starts with prefix, return s with that leading "
+             "prefix removed ONCE; otherwise return s unchanged. Only a full leading "
+             "match is removed — never arbitrary characters.",
+        visible="from cand import rmpre\nassert rmpre('aab_x', 'aab') == '_x'\nassert rmpre('hello', 'xyz') == 'hello'",
+        plausible="def rmpre(s, prefix):\n    return s.strip(prefix)",
+    ),
+    _bug(
+        "add_immutable", "Append without mutating", "add",
+        "def add(xs, x):\n    xs.append(x)\n    return xs",
+        "def add(xs, x):\n    return xs + [x]",
+        "from cand import add\norig = [1, 2]\nr = add(orig, 3)\nassert r == [1, 2, 3]\n"
+        "assert orig == [1, 2]\ne = []\nadd(e, 9)\nassert e == []",
+        spec="add(xs, x): return a NEW list equal to xs with x appended. Must NOT "
+             "modify the caller's list.",
+        visible="from cand import add\nassert add([1, 2], 3) == [1, 2, 3]\nassert add([], 1) == [1]",
+        plausible="def add(xs, x):\n    xs.append(x)\n    return list(xs)",
+    ),
+    _bug(
+        "avg_empty", "Average with empty guard", "avg",
+        "def avg(xs):\n    return sum(xs) / len(xs)",
+        "def avg(xs):\n    return sum(xs) / len(xs) if xs else 0.0",
+        "from cand import avg\nassert avg([]) == 0.0\nassert avg([2, 4]) == 3.0\nassert avg([5]) == 5.0",
+        spec="avg(xs): arithmetic mean of xs as a float. For an EMPTY list return 0.0 "
+             "(must not raise).",
+        visible="from cand import avg\nassert avg([2, 4]) == 3.0\nassert avg([5]) == 5.0",
+        plausible="def avg(xs):\n    total = sum(xs)\n    return total / len(xs)",
+    ),
+    _bug(
+        "numsort", "Numeric sort of numeric strings", "numsort",
+        "def numsort(xs):\n    return sorted(xs)",
+        "def numsort(xs):\n    return sorted(xs, key=int)",
+        "from cand import numsort\nassert numsort(['10', '9', '2']) == ['2', '9', '10']\n"
+        "assert numsort(['3', '1', '2']) == ['1', '2', '3']",
+        spec="numsort(xs): given strings that each represent an integer, return them "
+             "sorted in ascending NUMERIC order (not lexicographic).",
+        visible="from cand import numsort\nassert numsort(['1', '2', '3']) == ['1', '2', '3']\n"
+                "assert numsort(['3', '1', '2']) == ['1', '2', '3']",
+        plausible="def numsort(xs):\n    return list(sorted(xs))",
+    ),
+]
+
+
+_SUITES: dict[str, list[Bug]] = {"easy": BUG_SUITE, "adversarial": ADVERSARIAL_SUITE}
+
+
+def _select_suite() -> tuple[str, list[Bug]]:
+    name = os.environ.get("ETZCHAIM_PILOT_SUITE", "adversarial")
+    return name, _SUITES.get(name, ADVERSARIAL_SUITE)
+
+
 # ─────────────────────────── report printer / demo / live gate ───────────────────────────
 def _print_report(rep: PilotReport, header: str) -> None:
     """Print ONLY the three decision groups. Never prints any credential."""
@@ -446,9 +608,10 @@ def _print_report(rep: PilotReport, header: str) -> None:
 def _demo() -> None:
     """Offline dry-run: mock model + real oracle. ZERO tokens. Shows the exact
     report shape the live pilot will emit (numbers here are synthetic)."""
-    client = MockModelClient(seed=0, bugs={b.id: b for b in BUG_SUITE})
-    rep = run_pilot(BUG_SUITE, client, conf_tau=0.6, model_alias="mock")
-    _print_report(rep, "── PILOT (OFFLINE MOCK — synthetic numbers, zero tokens) ──")
+    name, suite = _select_suite()
+    client = MockModelClient(seed=0, bugs={b.id: b for b in suite})
+    rep = run_pilot(suite, client, conf_tau=0.6, model_alias=f"mock/{name}")
+    _print_report(rep, f"── PILOT (OFFLINE MOCK — suite={name}, synthetic, zero tokens) ──")
     print("  NOTE: mock numbers. Real numbers require a live GO (see header).")
 
 
@@ -474,9 +637,10 @@ def _live_pilot() -> PilotReport:
     # anthropic_full maps haiku → anthropic/claude-haiku-4-5 (a real API slug);
     # the active profile (claude_max) only has CLI aliases the API rejects.
     profile = os.environ.get("ETZCHAIM_PILOT_PROFILE", "anthropic_full")
+    name, suite = _select_suite()
     client = AnthropicModelClient(model_alias=alias, profile=profile)
-    rep = run_pilot(BUG_SUITE, client, conf_tau=0.6, model_alias=f"{alias}@{profile}")
-    _print_report(rep, f"── PILOT (LIVE — {alias}@{profile}, real tokens) ──")
+    rep = run_pilot(suite, client, conf_tau=0.6, model_alias=f"{alias}@{profile}/{name}")
+    _print_report(rep, f"── PILOT (LIVE — {alias}@{profile}, suite={name}, real tokens) ──")
     print("  NOTE: smallest model = CEILING, not the prod verdict. Edge NOT claimed; "
           "real verdict is ÉTAPE 3 on the prod model.")
     return rep
