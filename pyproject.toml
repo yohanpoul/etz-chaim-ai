@@ -122,6 +122,7 @@ testpaths = [
     "mazalengine/tests",
     "partzufim/tests",
     "sifrei_yesod/tests",
+    "etzchaim/_internal/tests",
 ]
 python_files = "test_*.py"
 python_classes = "Test*"

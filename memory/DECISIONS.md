@@ -342,6 +342,217 @@ Adopt **AGENTS.md correctness audit** as a recurring discipline:
 
 ---
 
+## ADR-0009 — Direction: persistent contradiction-aware self-state that gates a long-horizon loop
+
+**Date**: 2026-06-13
+**Status**: REFUTED (2026-06-16) — gating edge falsified on the code/oracle domain; PIVOT TRIGGER fired. See **Resolution** below.
+
+### Context
+
+Phase-0 audit (docs/STATE_MAP.md) found the cognitive faculties mostly real but the loop, the
+benchmark↔mission link, and the docs hollow; the v2 benchmark shows the wrapper *degrades* the host
+on single-shot factual/safety. A Phase-1 adversarial collapse-test of four candidate directions
+(D1 calibrated abstention, D2 contradiction-aware belief lifecycle, D3 learning verify-loop, D4 drift
+monitor) returned **COLLAPSES** on all four *as currently built* — every one reduces to a generic
+primitive (conformal prediction / generic RAG / native `/goal` / Stop-hook) for the SAME reason: the
+faculties exist as isolated DB/method primitives with **no synthesis layer that makes persistent
+self-state actively gate the live loop at decision points across context wipes**. Native Claude 2026
+already owns scheduling, looping, verify-against-oracle, parallelism, and unstructured cross-session
+memory (CHANGELOG), so those cannot be the edge.
+
+### Decision
+
+Pursue **D2's substance + the missing gating wire**: persistent, contradiction-aware self-state
+(`epistememory` lifecycle + `dissensuengine` divergence) that actively gates a long-horizon,
+multi-session agent loop — auto-rejecting re-entry of refuted approaches and flagging
+self-contradiction at `set_intention`/`submit_conclusion`. `selfmap.calibrate` is the measurement
+instrument. D1/D3/D4 are deferred; D3 is rejected outright (native `/goal` + shell substrate).
+
+**Harness domain (decided):** the Phase-2 mechanism test runs on **(a) code/debug against a
+reference oracle** — cleanest ground truth, objective dead-end/contradiction labels. **(b) open-ended
+research/analysis is pursued ONLY if (a) first validates the gating mechanism.** (c) a synthetic
+injected-dead-end task is an optional sanity sub-check.
+
+### Consequences
+- ✓ Builds on the two strongest real faculties (epistememory 44 tests, dissensuengine 95+ tests).
+- ✓ Has a real native baseline (CHANGELOG) → beating it is unfakeable proof of edge.
+- ✓ The needed work is the *thinnest* concrete wire, not new faculties.
+- ⚠ The differentiation rests entirely on "active gating ≠ passive retrieval"; if unproven, PIVOT.
+- ⚠ Requires a multi-session harness + objective dead-end/contradiction labels (judge-bias risk;
+  the reference-oracle domain is chosen to keep labels objective).
+- ✗ Out of scope for single-shot factual/safety — the wrapper should not be in that path.
+
+### Alternatives considered
+- **D1 calibrated abstention** — rejected as primary: collapses to conformal/Brier; `verify_prediction`
+  circular; kept as the measurement layer.
+- **D3 learning verify-loop** — rejected: ≈ native `/goal`; depends on shell failure-mining modules.
+- **D4 drift monitor** — deferred: ≈ Stop-hook; integrator absent; intentkeeper only partial.
+- **Status quo / keep current benchmark** — rejected: it measures the wrong class and refutes the
+  mission's own claim.
+
+### Falsification (the test that would kill this direction)
+
+Multi-session context-wiped task, arms A0 (bare) / A1 (bare + CHANGELOG) / A2 (+ gating). If A2 does
+not significantly beat **A1** on dead-end re-attempt rate and self-contradiction rate at equal/better
+correctness — or if an ablation (gating off) does not erase the gain — the direction collapses to
+generic memory and a PIVOT TRIGGER fires.
+
+### Discovery (2026-06-13, Phase 2 TEMPS 1) — recall hides deprecated beliefs
+
+`epistememory/db.py:171` — `search_by_embedding` filters `epistemic_status != 'deprecated'`.
+**Consequence:** deprecated beliefs are invisible to `recall()`. The ADR-0009 differentiator
+(gate on *deprecated / contradicted* beliefs) is therefore **NOT reachable through `recall`**.
+
+The TEMPS-1 micro-probe (`gating/` + `gating/tests/test_micro_probe.py`, all green) accordingly
+proves **PLUMBING ONLY**: a FACT belief survives a context wipe and is re-read from the persistent
+Postgres store, and the `ETZ_GATING` flag truly ablates the gate. To do so it keys on a **FACT
+"approach X fails"** belief matched by an **exact tag**, deliberately **bypassing**
+`epistememory.contradict`, `epistememory.deprecate`, and semantic `recall` ranking (the test fakes
+the embedding). **A green probe = the wire conducts, NOT the direction is validated.**
+
+### Open question for the next decision (A vs B) — not decided here
+
+- **(A) Test the NARROW claim** — "an *enforced* gate over structured memory (FACT-refutation,
+  persistent) beats an *advisory* CHANGELOG." Testable now with the current wire (recall FACT path),
+  cheap. But it is a weaker claim than the contradiction/deprecate edge ADR-0009 actually names.
+- **(B) Test the TRUE thesis** — add a deprecated/contradiction lookup path in `epistememory`
+  (a query that *includes* deprecated rows + walks the `contradicts` graph), then gate on it. Tests
+  the real ADR-0009 differentiator, but touches `epistememory` (more than a thin additive wire).
+
+**Recommendation (founder decides):** do **(A) first** as a cheap go/no-go in the TEMPS-2 harness —
+if an enforced FACT-gate cannot even beat a CHANGELOG baseline, (B) is moot (the edge is dead
+regardless of which signal feeds it). If (A) shows signal, do (B) to test the genuine
+contradiction/deprecate edge. Status stays **PROPOSED**.
+
+### Resolution (2026-06-16) — REFUTED (both volets fall)
+
+Verdict forced WITHOUT a Phase-2 natural run — by an already-run experiment plus a fairness
+argument. No tokens were spent to close this.
+
+- **Enforcement edge — dead.** The SEEDED multi-session experiment already ran
+  (`benchmarks/results/gating_harness/experiment_20260614-204600`, Haiku 4.5, K=15): A1 (advisory
+  CHANGELOG) = A2 (enforced gate) = **0.00** dead-end re-attempt at every noise level N=0..40. An
+  explicit "failed approach" log suppresses re-attempt 100 %, so an enforced gate has **zero
+  headroom** over it. The ablation returned to the A0 base rate (~0.20–0.27), confirming the gate
+  *functions* — but with **no edge** over the log.
+- **Matching edge — dead by construction.** The only residual the seeded design cannot surface is
+  re-entry of a refuted approach **under a different name**. But a *fair* A1 (Risk #1,
+  information-symmetric) logs the **canonical approach key** — `arms.py` already does this
+  (`approach '{key}' fails`, the same `infer_approach_key` the gate uses) — so a strong A1 catches a
+  renamed re-entry BY THE KEY exactly as the code-keyed gate does. The residual vanishes.
+  Manufacturing it would require weakening A1 to prose-only matching = a **strawman the founder
+  pre-commitment forbids** (`PREREGISTER_20260616.md` §1).
+- **Therefore** the load-bearing claim "active gating ≠ passive retrieval" (the ⚠ in Consequences) is
+  **refuted on code/oracle**: a strong canonical-keyed CHANGELOG is information-equal to the
+  FACT/exact-tag gate, and the seeded result shows advice already equals enforcement for the
+  frontier. The pre-registered KILL criterion is met → MISSION.md PIVOT TRIGGER fires ("collapse to
+  generic framework"). Both volets ADR-0009 names — *matching* (structured vs flat) and *enforcement*
+  (imposed vs advisory) — fall together.
+- **§8(b) open-ended domain does NOT open** — it was conditional on §8(a) code/oracle first
+  *validating* the mechanism; §8(a) refuted it. DIRECTION.md §8 updated accordingly.
+- **Trace (untracked, ephemeral):** `PREREGISTER_20260616.md` (pre-run prediction + KILL criterion),
+  `experiment_20260614-204600` (seeded A1=A2=0.00), `probe_reattempt_20260614-184138` (base rate 0.25).
+
+### References
+
+- docs/DIRECTION.md (this direction, full reasoning)
+- gating/ + gating/tests/test_micro_probe.py (TEMPS-1 wire + green plumbing probe)
+- docs/STATE_MAP.md + docs/internal/STATE_MAP_DETAIL.md (Phase-0 audit)
+- Anthropic — *Long-running Claude for scientific computing* (CHANGELOG failed-approaches pattern)
+- Claude Code — `/goal` (stateless completion evaluator); Boris Cherny tips (loop/schedule/verify)
+- MISSION.md PIVOT TRIGGERS (collapse to generic framework; rectifier = known ML primitive)
+
+---
+
+## ADR-0010 — SPEC-007 PredictionGate: NO-GO (precondition absent on verifiable tasks)
+
+**Date**: 2026-06-27
+**Status**: NO-GO / PARKED
+
+### Context
+
+SPEC-007 (PredictionGate) was the post-ADR-0009 retry on a *different* wire: instead of
+gating on stored beliefs (refuted in ADR-0009 as information-equal to a CHANGELOG), gate on
+the **measured gap between a committed prediction and a withheld ground-truth observation**.
+The thesis: this gap is *externally grounded* (the oracle decides), so it sidesteps the
+self-correction unreliability (Huang et al., ICLR 2024) and could beat a native
+**self-confidence** gate (A1) **precisely on confident-but-wrong cases** — the cell where
+self-confidence is blind.
+
+Built and validated dry, zero prod tokens:
+- ÉTAPE 1 — synthetic harness (`etzchaim/_internal/prediction_gate.py`): gate state machine
+  + objective gap metric + `refutation_gate` + a `confident_wrong_rate`-knobbed generator.
+  Two-sided sanity confirmed: edge (SURVIVES) appears only when synthetic
+  `confident_wrong_rate` > ~0.05; below it, REFUTED. (commits `4aee71f`.)
+- ÉTAPE 2 — real oracle adapter (`etzchaim/_internal/oracle_adapter.py`): code/debug bugs
+  with a **withheld** reference oracle (Invariant 1; the model never sees the test), model
+  injected via the SPEC-003 Anthropic path. Adversarial 10-bug suite engineered to *elicit*
+  confident-but-wrong (banker's rounding, bool⊆int, `or`-default on falsey, `str.strip` ≠
+  `removeprefix`, list mutation, lexicographic vs numeric sort, even-median, empty-guard,
+  chunk remainder, dedupe order) — traps proven at the oracle level. (commits `d35186f`,
+  `5cf753c`.)
+
+### Decision
+
+**NO-GO. Park SPEC-007.** The **mechanism is sound** (the gate, gap, and refutation logic
+work and are two-sided), but its **precondition — confident-AND-wrong errors — is rare on
+verifiable tasks**: the model's error *correlates with its uncertainty*, so native
+self-confidence (A1) already catches the failures and the external gap (A2) adds no edge.
+
+Pilot evidence (Haiku 4.5 = ceiling/cheap, one attempt per bug, prediction committed before
+the withheld oracle runs):
+- **easy suite: confident_wrong_rate = 0/6 (0.0).** Solved all 6, calibrated.
+- **adversarial suite: confident_wrong_rate = 0/10 (0.0).** Solved 9/10; on the single miss
+  it predicted `will_pass` but **under-confident (<0.6)** → caught by A1 *and* A2 → they tie,
+  A2 edge = 0. The confident-wrong cell stayed **empty even under adversarial gotchas**.
+
+This is consistent with ADR-0009: the gating edge keeps failing to materialize on
+code/oracle — there, advice already equals enforcement and (now) self-confidence already
+equals the external gap, because frontier models are well-calibrated on verifiable work.
+
+### Consequences
+
+- ✓ Closed cheaply and falsifiably: ~16 Haiku calls total, zero prod tokens, no N-session run.
+- ✓ Harness retained in `etzchaim/_internal/` (dry, tested) — re-runnable if the revisit
+  condition below is ever met.
+- ⚠ Thin N (easy 6, adversarial 10; 1 total error) → wide error bars on a 0.0 estimate. The
+  verdict is directional, but the *direction* is corroborated by the calibration mechanism and
+  by ADR-0009, not by N alone.
+- ⚠ Competence-ceiling tension (intrinsic, not fixable by harder bugs): bugs hard enough to
+  break the model also make it *uncertain* → A1 catches them → they don't test the gate.
+  Engineering an honest confident-wrong case is structurally hard — **that difficulty is the
+  finding.** More capable prod models are usually *better* calibrated, so étape 3 on prod is
+  **not justified**.
+- ✗ No `.implemented` marker created. No claim the edge is real.
+
+### Revisit condition (narrow)
+
+Reopen **only** if a domain appears that has **both**: (i) the model is **confident-but-wrong**
+at a non-trivial rate, **and** (ii) an **objective oracle** exists to ground the gap. This
+combo is rare: where an objective oracle exists, frontier models tend to be calibrated; where
+models are confidently wrong (open-ended research/analysis), labels are subjective — which is
+exactly the open-ended space **DIRECTION.md §8(b) already deferred as non-labellable**. Absent
+that combo, PredictionGate has no edge to capture.
+
+### Alternatives considered
+
+- **Run étape 3 on a prod model** — rejected: prod models calibrate *better* on verifiable
+  tasks → confident-wrong would stay ~0 for the wrong reason (no signal, not mechanism failure).
+- **Harden the bug suite further** — rejected: hits the competence-ceiling tension above
+  (harder ⇒ uncertain ⇒ A1 catches it), so it cannot populate the confident-wrong cell honestly.
+- **Widen N (30–40 bugs) before parking** — declined by founder; the directional verdict plus
+  the calibration mechanism and ADR-0009 consistency suffice.
+
+### References
+
+- specs/07_prediction_gate.md (spec, internal origin, falsification design)
+- etzchaim/_internal/prediction_gate.py + oracle_adapter.py (+ tests) — dry harness, all green
+- ADR-0009 (gating edge refuted on code/oracle; this is the same outcome via a different wire)
+- DIRECTION.md §8 (harness domain (a) code/oracle, (b) open-ended deferred, (c) synthetic sanity)
+- Huang et al., ICLR 2024 — LLM self-correction unreliability (motivation the gap aimed to dodge)
+
+---
+
 ## ADR template (copy this for new decisions)
 
 ```markdown
